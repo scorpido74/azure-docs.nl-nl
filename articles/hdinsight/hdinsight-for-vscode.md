@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 03d0d26a21e710c07019d3ffcb13a1482a96af50
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 9a81868d678b4c0277e904e879c73185a378bf70
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311734"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435685"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Gebruik de Spark-& Hive-Hulpprogram Ma's voor Visual Studio code
 
@@ -287,7 +287,7 @@ Methode 2 een bestand verzenden en u ziet dat de map. vscode automatisch wordt t
     | file | Bestand met de toepassing die moet worden uitgevoerd | Pad (vereist) |
     | proxyUser | Gebruiker die moet worden geïmiteerd bij het uitvoeren van de taak | Tekenreeks |
     | className | Hoofd klasse java/Spark-toepassing | Tekenreeks |
-    | args | Opdracht regel argumenten voor de toepassing | Lijst met teken reeksen |
+    | argumenten | Opdracht regel argumenten voor de toepassing | Lijst met teken reeksen |
     | jars | Potten die in deze sessie moeten worden gebruikt | Lijst met teken reeksen | 
     | pyFiles | Python-bestanden die moeten worden gebruikt in deze sessie | Lijst met teken reeksen |
     | files | Bestanden die moeten worden gebruikt in deze sessie | Lijst met teken reeksen |
@@ -308,7 +308,7 @@ Methode 2 een bestand verzenden en u ziet dat de map. vscode automatisch wordt t
     | id | Sessie-id | Int |
     | appId | Toepassings-id van deze sessie | Tekenreeks |
     | appInfo | Gedetailleerde toepassings informatie | Toewijzing van sleutel = val |
-    | logbestand | Logboek regels | Lijst met teken reeksen |
+    | logboek | Logboek regels | Lijst met teken reeksen |
     | state |Batch status | Tekenreeks |
 
     > [!NOTE]
@@ -403,7 +403,7 @@ Wanneer u een taak verzendt naar een HDInsight-cluster met behulp van Data Lake 
 
 > [!NOTE]
 >
-> U kunt de toegangs sleutel voor het opslag account ophalen van de Azure Portal. Zie [toegangs sleutels weer geven en kopiëren](https://docs.microsoft.com/azure/storage/common/storage-account-manage#access-keys)voor meer informatie.
+> U kunt de toegangs sleutel voor het opslag account ophalen van de Azure Portal. Zie [toegangs sleutels voor opslag accounts beheren](../storage/common/storage-account-keys-manage.md)voor meer informatie.
 
 ## <a name="unlink-cluster"></a>Cluster ontkoppelen
 

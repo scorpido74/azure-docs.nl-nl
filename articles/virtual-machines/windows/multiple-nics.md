@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: cynthn
-ms.openlocfilehash: 0e826442c816f83c875b907bbf3054793ebb382a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 20a595e1386a8d33c919ad4ff151d65e30b31eda
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033137"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358272"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Een virtuele Windows-machine met meerdere Nic's maken en beheren
 Aan virtuele machines (Vm's) in azure kunnen meerdere Nic's (virtuele netwerk interface kaarten) zijn gekoppeld. Een veelvoorkomend scenario is om verschillende subnetten te hebben voor de connectiviteit van front-end-en back-end. U kunt meerdere Nic's aan een virtuele machine koppelen aan meerdere subnetten, maar deze subnetten moeten zich allemaal in hetzelfde virtuele netwerk (vNet) bevinden. In dit artikel vindt u informatie over het maken van een VM waaraan meerdere Nic's zijn gekoppeld. U leert ook hoe u Nic's kunt toevoegen aan of verwijderen uit een bestaande virtuele machine. Verschillende [VM-grootten](sizes.md) ondersteunen een variërend aantal nic's, dus grootte van uw virtuele machine dienovereenkomstig.
@@ -29,7 +29,7 @@ Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waar
 
  
 
-## <a name="create-a-vm-with-multiple-nics"></a>Een VM met meerdere NIC's maken
+## <a name="create-a-vm-with-multiple-nics"></a>Een virtuele machine met meerdere NIC's maken
 Maak eerst een resource groep. In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *eastus* :
 
 ```powershell
@@ -218,7 +218,7 @@ Als u een virtuele NIC van een bestaande VM wilt verwijderen, moet u de toewijzi
     ```   
 
 ## <a name="create-multiple-nics-with-templates"></a>Meerdere Nic's maken met sjablonen
-Azure Resource Manager sjablonen bieden een manier om meerdere exemplaren van een resource te maken tijdens de implementatie, zoals het maken van meerdere Nic's. Resource Manager-sjablonen gebruiken declaratieve JSON-bestanden om uw omgeving te definiëren. Zie [overzicht van Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)voor meer informatie. U kunt *kopiëren* gebruiken om het aantal te maken exemplaren op te geven:
+Azure Resource Manager sjablonen bieden een manier om meerdere exemplaren van een resource te maken tijdens de implementatie, zoals het maken van meerdere Nic's. Resource Manager-sjablonen gebruiken declaratieve JSON-bestanden om uw omgeving te definiëren. Zie [overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md)voor meer informatie. U kunt *kopiëren* gebruiken om het aantal te maken exemplaren op te geven:
 
 ```json
 "copy": {

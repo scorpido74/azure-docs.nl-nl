@@ -5,29 +5,29 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.openlocfilehash: c4f975b56d3658731b6dc165e01b54ac09f3b89c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 12/06/2019
+ms.openlocfilehash: 238f37cc1e8cbc8d3260693181d6e54ac5f592f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076235"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435712"
 ---
 # <a name="use-mapreduce-in-apache-hadoop-on-hdinsight"></a>MapReduce gebruiken in Apache Hadoop in HDInsight
 
 Meer informatie over het uitvoeren van MapReduce-taken op HDInsight-clusters.
 
-## <a id="data"></a>Voorbeeld gegevens
+## <a name="example-data"></a>Voorbeeldgegevens
 
-HDInsight biedt diverse voor beelden van gegevens sets, die worden opgeslagen `/example/data` in `/HdiSamples` de map en. Deze directory's bevinden zich in de standaard opslag voor uw cluster. In dit document gebruiken we het `/example/data/gutenberg/davinci.txt` bestand. Dit bestand bevat de notebooks van Leonardo da Vinci.
+HDInsight biedt diverse voor beelden van gegevens sets, die worden opgeslagen in de map `/example/data` en `/HdiSamples`. Deze directory's bevinden zich in de standaard opslag voor uw cluster. In dit document gebruiken we het `/example/data/gutenberg/davinci.txt`-bestand. Dit bestand bevat de notebooks van Leonardo da Vinci.
 
-## <a id="job"></a>Voor beeld MapReduce
+## <a name="example-mapreduce"></a>Voor beeld MapReduce
 
-Het HDInsight-cluster bevat een voor beeld van een toepassing met het aantal woorden MapReduce. Dit voor beeld bevindt zich `/example/jars/hadoop-mapreduce-examples.jar` op de standaard opslag voor uw cluster.
+Het HDInsight-cluster bevat een voor beeld van een toepassing met het aantal woorden MapReduce. Dit voor beeld bevindt zich op `/example/jars/hadoop-mapreduce-examples.jar` in de standaard opslag voor uw cluster.
 
-De volgende Java-code is de bron van de MapReduce-toepassing die `hadoop-mapreduce-examples.jar` zich in het bestand bevindt:
+De volgende Java-code is de bron van de MapReduce-toepassing in het `hadoop-mapreduce-examples.jar`-bestand:
 
 ```java
 package org.apache.hadoop.examples;
@@ -101,35 +101,22 @@ public class WordCount {
 }
 ```
 
-Raadpleeg het volgende document voor instructies voor het schrijven van uw eigen MapReduce-toepassingen:
+Zie [Java MapReduce-toepassingen voor HDInsight ontwikkelen](apache-hadoop-develop-deploy-java-mapreduce-linux.md)voor instructies voor het schrijven van uw eigen MapReduce-toepassingen.
 
-* [Java MapReduce-toepassingen voor HDInsight ontwikkelen](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
-
-## <a id="run"></a>De MapReduce uitvoeren
+## <a name="run-the-mapreduce"></a>De MapReduce uitvoeren
 
 HDInsight kan HiveQL-taken uitvoeren met behulp van verschillende methoden. Gebruik de volgende tabel om te bepalen welke methode het meest geschikt is voor u en volg de koppeling voor een overzicht.
 
-| **Gebruik dit**... | **...om hiervoor** | ...door dit **cluster-besturingssysteem** | ...from dit **clientbesturingssysteem** |
+| **Gebruik dit**... | **...om hiervoor** |  ...from dit **clientbesturingssysteem** |
 |:--- |:--- |:--- |:--- |
-| [SSH](apache-hadoop-use-mapreduce-ssh.md) |De Hadoop-opdracht via **SSH** gebruiken |Linux |Linux, UNIX, Mac OS X of Windows |
-| [Curl](apache-hadoop-use-mapreduce-curl.md) |De taak extern verzenden met behulp van **rest** |Linux of Windows |Linux, UNIX, Mac OS X of Windows |
-| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |De taak extern verzenden met behulp van **Windows Power shell** |Linux of Windows |Windows |
+| [SSH](apache-hadoop-use-mapreduce-ssh.md) |De Hadoop-opdracht via **SSH** gebruiken |Linux, UNIX, Mac OS X of Windows |
+| [Curl](apache-hadoop-use-mapreduce-curl.md) |De taak extern verzenden met behulp van **rest** |Linux, UNIX, Mac OS X of Windows |
+| [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |De taak extern verzenden met behulp van **Windows Power shell**  |Windows |
 
-## <a id="nextsteps"></a>Volgende stappen
+## <a name="next-steps"></a>Volgende stappen
 
 Raadpleeg de volgende documenten voor meer informatie over het werken met gegevens in HDInsight:
 
 * [Java MapReduce-Program ma's ontwikkelen voor HDInsight](apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
-* [Apache Hive gebruiken met HDInsight][hdinsight-use-hive]
-
-* [Apache Pig gebruiken met HDInsight][hdinsight-use-pig]
-
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-get-started]:apache-hadoop-linux-tutorial-get-started.md
-[hdinsight-develop-mapreduce-jobs]: apache-hadoop-develop-deploy-java-mapreduce-linux.md
-[hdinsight-use-hive]:../hdinsight-use-hive.md
-[hdinsight-use-pig]:hdinsight-use-pig.md
-
-
-[powershell-install-configure]: /powershell/azureps-cmdlets-docs
+* [Apache Hive gebruiken met HDInsight](./hdinsight-use-hive.md)

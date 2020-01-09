@@ -2,18 +2,18 @@
 title: Apache Hadoop clusters maken met Azure REST API-Azure
 description: Meer informatie over het maken van HDInsight-clusters door Azure Resource Manager sjablonen te verzenden naar de Azure-REST API.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/02/2018
-ms.author: hrasheed
-ms.openlocfilehash: 963dc71097a1ac53df77f3ab9c804b53597adeb5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.custom: hdinsightactive
+ms.date: 12/10/2019
+ms.openlocfilehash: e2d63626ec548f0107d7af935af32e90d6972849
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152007"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435534"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Apache Hadoop clusters maken met behulp van de Azure-REST API
 
@@ -227,7 +227,7 @@ Volg de stappen die worden beschreven in aan de [slag met Azure cli](https://doc
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
-    Selecteer in de lijst het abonnement dat u wilt gebruiken en noteer de kolommen **Subscription_ID** en __Tenant_ID__ . Sla deze waarden op.
+    Selecteer in de lijst het abonnement dat u wilt gebruiken en noteer de **Subscription_ID** en __Tenant_ID__ kolommen. Sla deze waarden op.
 
 2. Gebruik de volgende opdracht om een toepassing te maken in Azure Active Directory.
 
@@ -343,7 +343,7 @@ Met deze opdracht wordt een JSON-document geretourneerd dat informatie bevat ove
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
-Zie [Vereisten voor toegangsbeheer](hdinsight-hadoop-create-linux-clusters-portal.md) als u problemen ondervindt met het maken van HDInsight-clusters.
+Zie [Vereisten voor toegangsbeheer](./hdinsight-hadoop-customize-cluster-linux.md#access-control) als u problemen ondervindt met het maken van HDInsight-clusters.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -352,7 +352,6 @@ Nu u een HDInsight-cluster hebt gemaakt, gebruikt u de volgende informatie om te
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop clusters
 
 * [Apache Hive gebruiken met HDInsight](hadoop/hdinsight-use-hive.md)
-* [Apache Pig gebruiken met HDInsight](hadoop/hdinsight-use-pig.md)
 * [MapReduce gebruiken met HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase-clusters

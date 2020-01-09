@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 41166d57a8ea9b9cf34f76ecce318351d5131794
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: b77cb73f08852768d10de8c76cde5e299f0776c2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559985"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408899"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Aangepaste gegevens op een raster kaart weer geven
 
@@ -22,12 +22,14 @@ In dit artikel wordt uitgelegd hoe u de [statische installatie kopie service](ht
 
 Als u aangepaste markerings punten, labels en geometrie-overlays wilt weer geven, kunt u de toepassing postman gebruiken. U kunt Azure Maps [Data Service-api's](https://docs.microsoft.com/rest/api/maps/data) gebruiken om overlays op te slaan en weer te geven.
 
+> [!Tip]
+> Het is vaak veel rendabeler om de Azure Maps Web-SDK te gebruiken voor het weer geven van een eenvoudige kaart op een webpagina dan voor het gebruik van de statische installatie kopie service. De Web-SDK gebruikt kaart tegels en tenzij de gebruiker de kaart pannt en inzoomt, wordt er vaak slechts een fractie van een trans actie per kaart belasting gegenereerd. Houd er rekening mee dat de Azure Maps Web-SDK opties heeft voor het uitschakelen van pannen en zoomen. Daarnaast biedt de Azure Maps Web-SDK een uitgebreidere set opties voor gegevens visualisatie dan een statische map-webservice.  
 
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="create-an-azure-maps-account"></a>Een Azure Maps-account maken
 
-Als u de procedures in dit artikel wilt uitvoeren, moet u eerst een Azure Maps-account maken door de instructies in het [account beheren](https://docs.microsoft.com/azure/azure-maps/how-to-manage-account-keys#create-a-new-account) te volgen en de stappen in [primaire sleutel ophalen](./tutorial-search-location.md#getkey) om een primaire abonnements sleutel voor uw account op te halen.
+Als u de procedures in dit artikel wilt uitvoeren, moet u eerst een Azure Maps-account maken en de account sleutel van Maps ophalen. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) voor het maken van een abonnement op een Azure Maps-account en volg de stappen in de [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](./how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 
 
 ## <a name="render-pushpins-with-labels-and-a-custom-image"></a>Markerings punten met labels en een aangepaste installatie kopie weer geven

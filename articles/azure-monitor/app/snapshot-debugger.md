@@ -1,6 +1,6 @@
 ---
-title: Azure-toepassing Insights-Snapshot Debugger voor .NET-Apps | Microsoft Docs
-description: Moment opnamen van fout opsporing worden automatisch verzameld wanneer uitzonde ringen worden gegenereerd in productie-.NET-Apps
+title: Azure-toepassing Insights-Snapshot Debugger voor .NET-Apps
+description: Fouten opsporen in momentopnamen worden automatisch verzameld wanneer er uitzonderingen zijn opgetreden in productie .NET-apps
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
@@ -8,24 +8,24 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/23/2019
 ms.reviewer: brahmnes
-ms.openlocfilehash: 33a9db5fa9f31a0c4548ecdeb6c0ca2f12ac8246
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 681190a23fd09402ae96c328b7d98044baf3444e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899797"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406398"
 ---
-# <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Fout opsporing voor moment opnamen op uitzonde ringen in .NET-Apps
-Wanneer er een uitzonde ring optreedt, kunt u automatisch een moment opname van de fout opsporing verzamelen vanuit uw Live Web-app. De moment opname toont de status van de bron code en variabelen op het moment dat de uitzonde ring werd gegenereerd. Met de Snapshot Debugger (preview) in [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) wordt de telemetrie van de uitzonde ring van uw web-app gecontroleerd. Er worden moment opnamen van uw belangrijkste uitzonde ringen verzameld, zodat u over de benodigde informatie beschikt voor het vaststellen van problemen in de productie. Neem het [snap shot Collector NuGet-pakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) op in uw toepassing en configureer optioneel verzamelings parameters in [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Moment opnamen worden weer gegeven op [uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md) in de Application Insights Portal.
+# <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Fouten opsporen in momentopnamen op uitzonderingen in .NET-apps
+Wanneer er een uitzondering optreedt, kunt u automatisch een momentopname voor foutopsporing verzamelen van uw live webtoepassing. De momentopname toont de status van de broncode en variabelen op het moment dat de uitzondering is opgetreden. De Snapshot Debugger (preview) in [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) bewaakt uitzonderingstelemetrie van uw web-app. Deze verzamelt momentopnamen op uw uitzonderingen boven activerende zodat u de informatie die u nodig hebt om problemen in de productieomgeving te diagnosticeren. Neem het [snap shot Collector NuGet-pakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) op in uw toepassing en configureer optioneel verzamelings parameters in [ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md). Moment opnamen worden weer gegeven op [uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md) in de Application Insights Portal.
 
-U kunt foutopsporingsmomentopnamen in het portaal bekijken om de aanroepstack te zien en variabelen inspecteren bij elk aanroepstackframe. Open moment opnamen met Visual Studio 2019 Enter prise voor een krachtigere fout opsporing met de bron code. In Visual Studio kunt u Snappoints zo [instellen dat er interactief moment opnamen worden](https://aka.ms/snappoint) gemaakt zonder dat er wordt gewacht op een uitzonde ring.
+U kunt foutopsporingsmomentopnamen in het portaal bekijken om de aanroepstack te zien en variabelen inspecteren bij elk aanroepstackframe. Open moment opnamen met Visual Studio 2019 Enter prise voor een krachtigere fout opsporing met de bron code. In Visual Studio, kunt u ook [Snappoints om interactief momentopnamen te instellen](https://aka.ms/snappoint) zonder te wachten op een uitzondering.
 
-Debug-moment opnamen worden 15 dagen bewaard. Dit Bewaar beleid is ingesteld op basis van elke toepassing. Als u deze waarde wilt verhogen, kunt u een verhoging aanvragen door een ondersteunings aanvraag te openen in de Azure Portal.
+Debug-moment opnamen worden 15 dagen bewaard. Deze bewaarbeleid is ingesteld op basis van de per toepassing. Als u nodig hebt om deze waarde te verhogen, kunt u een toename van aanvragen door een ondersteuningsaanvraag opent in de Azure-portal.
 
 ## <a name="enable-application-insights-snapshot-debugger-for-your-application"></a>Application Insights Snapshot Debugger inschakelen voor uw toepassing
-Momentopname verzameling is beschikbaar voor:
-* .NET Framework-en ASP.NET-toepassingen met .NET Framework 4,5 of hoger.
-* .NET Core 2,0 en ASP.NET Core 2,0-toepassingen die worden uitgevoerd op Windows.
+Verzameling van de momentopname is beschikbaar voor:
+* .NET framework en ASP.NET-toepassingen met .NET Framework 4.5 of hoger.
+* .NET core 2.0 en ASP.NET Core 2.0-toepassingen worden uitgevoerd op Windows.
 
 De volgende omgevingen worden ondersteund:
 
@@ -36,29 +36,29 @@ De volgende omgevingen worden ondersteund:
 * [On-premises virtuele of fysieke machines](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) met Windows Server 2012 R2 of hoger
 
 > [!NOTE]
-> Client toepassingen (bijvoorbeeld WPF, Windows Forms of UWP) worden niet ondersteund.
+> Client-toepassingen (bijvoorbeeld WPF, Windows Forms of UWP) worden niet ondersteund.
 
 Raadpleeg de gids voor het [oplossen van problemen](snapshot-debugger-troubleshoot.md?toc=/azure/azure-monitor/toc.json)als u snapshot debugger hebt ingeschakeld, maar geen moment opnamen ziet.
 
 ## <a name="grant-permissions"></a>Machtigingen verlenen
 
-Toegang tot moment opnamen wordt beveiligd door middel van op rollen gebaseerd toegangs beheer (RBAC). Als u een moment opname wilt inspecteren, moet u eerst worden toegevoegd aan de gewenste rol door de eigenaar van het abonnement.
+Toegang tot momentopnamen is beveiligd met op rollen gebaseerd toegangsbeheer (RBAC). Als u wilt controleren van een momentopname, moet u eerst worden toegevoegd aan de benodigde rol door de eigenaar van een abonnement.
 
 > [!NOTE]
-> Eigen aren en mede werkers hebben deze rol niet automatisch. Als ze moment opnamen willen bekijken, moeten ze zichzelf aan de rol toevoegen.
+> Eigenaren en medewerkers automatisch geen deze rol. Als ze momentopnamen weergeven willen, moeten ze zelf toevoegen aan de rol.
 
-Abonnements eigenaren moeten de `Application Insights Snapshot Debugger` rol toewijzen aan gebruikers die moment opnamen zullen inspecteren. Deze rol kan worden toegewezen aan afzonderlijke gebruikers of groepen op abonnements eigenaren voor het doel Application Insights bron of de resource groep of het abonnement.
+Eigenaars van abonnementen toe te kennen de `Application Insights Snapshot Debugger` rol voor gebruikers die zullen momentopnamen inspecteren. Deze rol kan worden toegewezen aan individuele gebruikers of groepen door abonnementseigenaren voor Application Insights-resource van het doel of de resourcegroep of abonnement.
 
-1. Navigeer naar de Application Insights-resource in de Azure Portal.
+1. Navigeer naar de Application Insights-resource in Azure portal.
 1. Klik op **Toegangsbeheer (IAM)** .
-1. Klik op de knop **+ roltoewijzing toevoegen** .
-1. Selecteer **Application Insights snapshot debugger** in de vervolg keuzelijst **rollen** .
-1. Zoek en voer een naam in voor de gebruiker die u wilt toevoegen.
-1. Klik op de knop **Opslaan** om de gebruiker toe te voegen aan de rol.
+1. Klik op de **+ roltoewijzing toevoegen** knop.
+1. Selecteer **Application Insights Snapshot Debugger** uit de **rollen** vervolgkeuzelijst.
+1. Zoek en voer een naam voor de gebruiker toe te voegen.
+1. Klik op de **opslaan** om toe te voegen van de gebruiker aan de rol.
 
 
 > [!IMPORTANT]
-> Moment opnamen kunnen mogelijk persoonlijke en andere gevoelige informatie bevatten in variabele en parameter waarden.
+> Momentopnamen kunnen mogelijk persoonlijke en andere gevoelige gegevens in waarden van variabelen en parameter bevatten.
 
 ## <a name="view-snapshots-in-the-portal"></a>Moment opnamen weer geven in de portal
 
@@ -68,68 +68,68 @@ Nadat er een uitzonde ring is opgetreden in uw toepassing en er een moment opnam
 
 Selecteer een bewerking of uitzonde ring in het rechterdeel venster om het deel venster **end-to-end trans actie Details** te openen en selecteer vervolgens de uitzonderings gebeurtenis. Als er een moment opname beschikbaar is voor de gegeven uitzonde ring, wordt in het rechterdeel venster een knop voor het maken van een **moment opname** met details weer gegeven met informatie over de [uitzonde ring](../../azure-monitor/app/asp-net-exceptions.md).
 
-![Knop voor moment opname van fout opsporing openen in uitzonde ring](./media/snapshot-debugger/e2e-transaction-page.png)
+![De knop openen fouten opsporen in momentopname van uitzondering](./media/snapshot-debugger/e2e-transaction-page.png)
 
-In de momentopname weergave voor fout opsporing ziet u een deel venster aanroep stack en een variabelen. Wanneer u frames van de aanroep stack selecteert in het deel venster aanroep stack, kunt u lokale variabelen en para meters voor die functie aanroep in het deel venster variabelen weer geven.
+In de weergave fouten opsporen in momentopname ziet u een aanroepstack en een deelvenster Variabelen. Wanneer u frames van de aanroepstack in het deelvenster met call stack selecteert, vindt u lokale variabelen en parameters voor deze functie aanroepen in het deelvenster Variabelen.
 
-![Moment opname van fout opsporing weer geven in de portal](./media/snapshot-debugger/open-snapshot-portal.png)
+![Weergave fouten opsporen in momentopname in de portal](./media/snapshot-debugger/open-snapshot-portal.png)
 
-Moment opnamen kunnen gevoelige informatie bevatten en zijn standaard niet zichtbaar. Als u moment opnamen wilt weer geven, moet de `Application Insights Snapshot Debugger` rol aan u zijn toegewezen.
+Momentopnamen kunnen gevoelige gegevens bevatten, en standaard ze niet kan worden weergegeven. Als u momentopnamen, hebt u de `Application Insights Snapshot Debugger` rol die aan u zijn toegewezen.
 
 ## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>Moment opnamen weer geven in Visual Studio 2017 Enter prise of hoger
 1. Klik op de knop **moment opname downloaden** om een `.diagsession` bestand te downloaden dat door Visual Studio Enter prise kan worden geopend.
 
 2. Als u het `.diagsession` bestand wilt openen, moet u het onderdeel Snapshot Debugger Visual Studio hebben geïnstalleerd. Het Snapshot Debugger onderdeel is een vereist onderdeel van de ASP.net-werk belasting in Visual Studio en kan worden geselecteerd in de lijst met afzonderlijke onderdelen in het Visual Studio-installatie programma. Als u een versie van Visual Studio gebruikt die ouder is dan Visual Studio 2017 versie 15,5, moet u de uitbrei ding installeren vanuit de [Visual Studio Marketplace](https://aka.ms/snapshotdebugger).
 
-3. Nadat u het momentopname bestand hebt geopend, wordt de pagina mini maal fout opsporing in Visual Studio weer gegeven. Klik op **fout opsporing beheerde code** om de fout opsporing van de moment opname te starten. De moment opname wordt geopend met de regel code waar de uitzonde ring is opgetreden, zodat u de huidige status van het proces kunt opsporen.
+3. Nadat u de momentopnamebestand opent, wordt de pagina Minidump foutopsporing in Visual Studio weergegeven. Klik op **fouten opsporen in beheerde Code** foutopsporing van de momentopname te starten. De momentopname wordt geopend aan de coderegel waar de uitzondering is opgetreden, zodat u kunt fouten opsporen in de huidige status van het proces.
 
-    ![Moment opname van fout opsporing in Visual Studio weer geven](./media/snapshot-debugger/open-snapshot-visualstudio.png)
+    ![Weergave-momentopname voor foutopsporing in Visual Studio](./media/snapshot-debugger/open-snapshot-visualstudio.png)
 
-De gedownloade moment opname bevat alle symbool bestanden die op de webtoepassingsserver zijn gevonden. Deze symbool bestanden zijn vereist om momentopname gegevens te koppelen aan de bron code. Voor App Service-apps moet u de optie voor het implementeren van symbolen inschakelen wanneer u uw web-apps publiceert.
+De momentopname van het gedownloade bevat symboolbestanden die zijn gevonden op uw webserver van de toepassing. Deze symboolbestanden moet momentopname van de gegevens koppelen met de broncode. Voor App Service-apps, zorg ervoor dat u het symbool implementatie in te schakelen wanneer u uw web-apps publiceren.
 
-## <a name="how-snapshots-work"></a>Hoe moment opnamen werken
+## <a name="how-snapshots-work"></a>De werking van momentopnamen
 
-De Snapshot Collector wordt geïmplementeerd als een [Application Insights Telemetry-processor](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-processors-aspnet). Wanneer uw toepassing wordt uitgevoerd, wordt de Snapshot Collector telemetrie-processor toegevoegd aan de telemetrie-pijp lijn van uw toepassing.
-Telkens wanneer uw toepassing [TrackException](../../azure-monitor/app/asp-net-exceptions.md#exceptions)aanroept, wordt door de snapshot Collector een probleem-id berekend op basis van het type uitzonde ring dat wordt gegenereerd en de methode voor het activeren.
-Telkens wanneer uw toepassing TrackException aanroept, wordt een teller verhoogd voor de juiste probleem-ID. Wanneer het item de `ThresholdForSnapshotting` waarde bereikt, wordt de probleem-ID toegevoegd aan een verzamelings plan.
+De Snapshot Collector wordt geïmplementeerd als een [Application Insights Telemetry Processor](../../azure-monitor/app/configuration-with-applicationinsights-config.md#telemetry-processors-aspnet). Wanneer uw toepassing wordt uitgevoerd, wordt de telemetrie-Processor van Snapshot Collector wordt toegevoegd aan van de toepassing telemetrie pijplijn.
+Telkens wanneer die uw toepassing aanroepen [TrackException](../../azure-monitor/app/asp-net-exceptions.md#exceptions), de Snapshot Collector berekent een probleem-ID van het type uitzondering en de activerend methode.
+Telkens wanneer uw toepassing TrackException, roept wordt een item verhoogd voor de juiste probleem-ID. Wanneer de teller de `ThresholdForSnapshotting` waarde, de probleem-ID wordt toegevoegd aan een verzameling van plan bent.
 
-De Snapshot Collector bewaakt ook uitzonde ringen als deze worden gegenereerd door u te abonneren op de gebeurtenis [AppDomain. currentDomain. FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception) . Wanneer deze gebeurtenis wordt geactiveerd, wordt de probleem-ID van de uitzonde ring berekend en vergeleken met de probleem-Id's in het verzamelings plan.
-Als er een overeenkomst wordt gevonden, wordt een moment opname van het actieve proces gemaakt. Aan de moment opname is een unieke id toegewezen en er wordt een uitzonde ring met die id stempel gemaakt. Nadat de FirstChanceException-handler retourneert, wordt de gegenereerde uitzonde ring als normaal verwerkt. Uiteindelijk bereikt de uitzonde ring de TrackException-methode opnieuw, waar deze samen met de moment opname-id wordt gerapporteerd aan Application Insights.
+De Snapshot Collector bewaakt ook uitzonderingen als ze zijn gegenereerd met een abonnement op de [AppDomain.CurrentDomain.FirstChanceException](https://docs.microsoft.com/dotnet/api/system.appdomain.firstchanceexception) gebeurtenis. Wanneer die gebeurtenis wordt geactiveerd, wordt de probleem-ID van de uitzondering berekend en vergeleken met de probleem-id's in de verzameling van plan bent.
+Als er een overeenkomst is, wordt een momentopname van het actieve proces gemaakt. De momentopname is een unieke id toegewezen en de uitzondering is een factureringslabel die id. Nadat de handler FirstChanceException worden geretourneerd, is de thrown uitzondering wordt verwerkt die normaal werken. De uitzondering bereikt uiteindelijk de methode TrackException opnieuw waar, samen met de id van de momentopname, wordt dit apparaat gerapporteerd naar Application Insights.
 
-Het belangrijkste proces blijft het uitvoeren en verwerken van verkeer naar gebruikers met een beetje onderbreking. Ondertussen wordt de moment opname doorgestuurd naar het Uploader-proces van de moment opname. De moment opname van Uploader maakt een mini maal en uploadt deze naar Application Insights samen met alle relevante Symbol-bestanden (. pdb).
+De belangrijkste proces wordt voortgezet uit te voeren en verkeer voor gebruikers met weinig onderbreking fungeren. De momentopname wordt ondertussen doorgegeven aan de momentopname Uploader-proces. De momentopname van Uploader maakt u een minidump en geüpload naar Application Insights, samen met eventuele relevante (.pdb)-symboolbestanden.
 
 > [!TIP]
-> - Een proces momentopname is een gesuspendeerde kloon van het proces dat wordt uitgevoerd.
-> - Het maken van de moment opname neemt ongeveer 10 tot 20 milliseconden in beslag.
-> - De standaard waarde voor `ThresholdForSnapshotting` is 1. Dit is ook de minimum waarde. Uw app moet daarom dezelfde uitzonde ring **twee keer** activeren voordat een moment opname wordt gemaakt.
-> - Stel `IsEnabledInDeveloperMode` in op True als u moment opnamen wilt genereren tijdens fout opsporing in Visual Studio.
-> - Het aanmaak tempo van de moment opname wordt beperkt door de `SnapshotsPerTenMinutesLimit` instelling. Standaard is de limiet één moment opname elke tien minuten.
-> - Er kunnen niet meer dan 50 moment opnamen per dag worden geüpload.
+> - Een momentopname van een proces is een onderbroken kloon van het proces dat wordt uitgevoerd.
+> - Het maken van de momentopname van het duurt ongeveer 10 tot 20 milliseconden.
+> - De standaardwaarde voor `ThresholdForSnapshotting` is 1. Dit is ook de minimale waarde. Daarom uw app heeft voor het activeren van de dezelfde uitzondering **tweemaal** voordat er een momentopname wordt gemaakt.
+> - Stel `IsEnabledInDeveloperMode` in op true als u genereren van momentopnamen wilt bij foutopsporing in Visual Studio.
+> - De frequentie voor het maken van momentopnamen wordt beperkt door de `SnapshotsPerTenMinutesLimit` instelling. Standaard heeft de limiet is een momentopname van elke tien minuten.
+> - Niet meer dan 50 momentopnamen per dag kunnen worden geüpload.
 
 ## <a name="limitations"></a>Beperkingen
 
 De standaard Bewaar periode voor gegevens is 15 dagen. Voor elke Application Insights-instantie is een maximum aantal moment opnamen van 50 per dag toegestaan.
 
 ### <a name="publish-symbols"></a>Symbolen publiceren
-De Snapshot Debugger vereist symbool bestanden op de productie server om variabelen te decoderen en om een fout opsporing in Visual Studio te bieden.
-Met versie 15,2 (of hoger) van Visual Studio 2017 worden symbolen voor release builds standaard gepubliceerd wanneer deze naar App Service worden gepubliceerd. In eerdere versies moet u de volgende regel toevoegen aan uw publicatie profiel `.pubxml` bestand zodat de symbolen in de release modus worden gepubliceerd:
+De Snapshot Debugger vereist symboolbestanden op de productieserver moet worden gedecodeerd variabelen en om een probleemoplossingservaring in Visual Studio.
+Versie 15.2 (of hoger) van Visual Studio 2017 publiceert symbolen voor release standaard bouwt wanneer deze wordt gepubliceerd naar App Service. In eerdere versies, moet u de volgende regel toevoegen aan uw publicatieprofiel `.pubxml` bestand, zodat de symbolen in de releasemodus worden gepubliceerd:
 
 ```xml
     <ExcludeGeneratedDebugSymbol>False</ExcludeGeneratedDebugSymbol>
 ```
 
-Voor Azure Compute en andere typen zorgt u ervoor dat de symbool bestanden zich in dezelfde map bevinden als de hoofd toepassing. dll (meestal `wwwroot/bin`) of beschikbaar zijn in het huidige pad.
+Voor Azure Compute en andere typen, zorg ervoor dat het symboolbestanden zich in dezelfde map van de hoofdtoepassing dll-bestanden (normaal gesproken `wwwroot/bin`) of beschikbaar zijn op het huidige pad.
 
 > [!NOTE]
 > Raadpleeg de [documentatie van Visual Studio](https://docs.microsoft.com/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019#output
 )voor meer informatie over de verschillende beschik bare symbool opties. Voor de beste resultaten raden wij u aan ' Full ', ' Portable ' of ' embedded ' te gebruiken.
 
 ### <a name="optimized-builds"></a>Geoptimaliseerde builds
-In sommige gevallen kunnen lokale variabelen niet worden weer gegeven in release builds vanwege optimalisaties die worden toegepast door de JIT-compiler.
-In Azure-app Services kan de Snapshot Collector echter de methoden die deel uitmaken van het verzamelings plan, deoptimaliseeren.
+In sommige gevallen kunnen geen lokale variabelen worden weergegeven in de release builds vanwege optimalisaties die worden toegepast door de JIT-compiler.
+De Snapshot Collector kan echter in Azure App Services deoptimize activerend methoden die deel van de verzameling van plan bent uitmaken.
 
 > [!TIP]
-> Installeer de Application Insights site-uitbrei ding in uw App Service om ondersteuning voor deoptima Lise ring te verkrijgen.
+> Installeer de Application Insights-Site-extensie in uw App Service deoptimization ondersteuning krijgen.
 
 ## <a name="next-steps"></a>Volgende stappen
 Application Insights Snapshot Debugger voor uw toepassing inschakelen:
@@ -142,6 +142,6 @@ Application Insights Snapshot Debugger voor uw toepassing inschakelen:
 
 Meer dan Application Insights Snapshot Debugger:
  
-* [Stel snappoints in uw code in](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) om moment opnamen op te halen zonder dat er wordt gewacht op een uitzonde ring.
-* [Diagnose uitzonde ringen in uw web-apps](../../azure-monitor/app/asp-net-exceptions.md) wordt uitgelegd hoe u meer uitzonde ringen zichtbaar maakt voor Application Insights.
-* [Slimme detectie](../../azure-monitor/app/proactive-diagnostics.md) detecteert automatisch prestatie afwijkingen.
+* [Snappoints instellen in uw code](https://docs.microsoft.com/visualstudio/debugger/debug-live-azure-applications) momentopnamen ophalen zonder te wachten op een uitzondering.
+* [Diagnose-uitzonderingen in uw web-apps](../../azure-monitor/app/asp-net-exceptions.md) wordt uitgelegd hoe u meer uitzonderingen zichtbaar maken voor Application Insights.
+* [Slimme detectie](../../azure-monitor/app/proactive-diagnostics.md) automatisch detecteert afwijkende prestaties.

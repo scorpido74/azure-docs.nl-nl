@@ -6,19 +6,19 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 26a166e61086af8cf10f761b608fcf66eb8734fd
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 12/12/2019
+ms.openlocfilehash: 39217a883863fd663b02cafea699dcbc4e070dfb
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406252"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435731"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>De Apache Beeline-client gebruiken met Apache Hive
 
 Meer informatie over het gebruik van [Apache Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline–NewCommandLineShell) om Apache Hive-query's uit te voeren op HDInsight.
 
-Beeline is een Hive-client die is opgenomen op de hoofd knooppunten van uw HDInsight-cluster. Beeline maakt gebruik van JDBC om verbinding te maken met HiveServer2, een service die wordt gehost op uw HDInsight-cluster. U kunt Beeline ook gebruiken voor toegang tot de component op HDInsight op afstand via internet. De volgende voor beelden bieden de meest voorkomende verbindings reeksen die worden gebruikt om verbinding te maken met HDInsight vanuit beeline:
+Beeline is een Hive-client die is opgenomen op de hoofd knooppunten van uw HDInsight-cluster. Als u Beeline lokaal wilt installeren, raadpleegt u [Beeline-client installeren](#install-beeline-client)hieronder. Beeline maakt gebruik van JDBC om verbinding te maken met HiveServer2, een service die wordt gehost op uw HDInsight-cluster. U kunt Beeline ook gebruiken voor toegang tot de component op HDInsight op afstand via internet. De volgende voor beelden bieden de meest voorkomende verbindings reeksen die worden gebruikt om verbinding te maken met HDInsight vanuit beeline:
 
 ## <a name="types-of-connections"></a>Typen verbindingen
 
@@ -59,19 +59,19 @@ Vervang `<username>` door de naam van een account in het domein met machtigingen
 
 ### <a name="over-public-or-private-endpoints"></a>Via open bare of persoonlijke eind punten
 
-Wanneer u verbinding maakt met een cluster met behulp van de open bare of persoonlijke eind punten, moet u de naam van het cluster aanmeldings account (standaard `admin`) en het wacht woord opgeven. Bijvoorbeeld, met behulp van Beeline van een-client systeem om verbinding te maken met het `<clustername>.azurehdinsight.net` adres. Deze verbinding wordt tot stand gebracht via poort `443`en is versleuteld met SSL:
+Wanneer u verbinding maakt met een cluster met behulp van de open bare of persoonlijke eind punten, moet u de naam van het cluster aanmeldings account (standaard `admin`) en het wacht woord opgeven. Bijvoorbeeld, met behulp van Beeline van een-client systeem om verbinding te maken met het `clustername.azurehdinsight.net` adres. Deze verbinding wordt tot stand gebracht via poort `443`en is versleuteld met SSL:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
 of voor een persoonlijk eind punt:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p 'password'
 ```
 
-Vervang `clustername` door de naam van uw HDInsight-cluster. Vervang `<username>` door het cluster aanmeldings account voor uw cluster. Gebruik voor ESP-clusters de volledige UPN (bijvoorbeeld user@domain.com). Vervang `password` door het wacht woord voor het account voor het aanmelden bij het cluster.
+Vervang `clustername` door de naam van uw HDInsight-cluster. Vervang `admin` door het cluster aanmeldings account voor uw cluster. Gebruik voor ESP-clusters de volledige UPN (bijvoorbeeld user@domain.com). Vervang `password` door het wacht woord voor het account voor het aanmelden bij het cluster.
 
 Persoonlijke eind punten verwijzen naar een basis load balancer, die alleen toegankelijk is vanaf de VNETs die in dezelfde regio is gepeerd. Zie [beperkingen voor wereld wijde VNet-peering en load balancers](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) voor meer informatie. U kunt de `curl` opdracht met `-v` optie om verbindings problemen met open bare of persoonlijke eind punten op te lossen voordat u Beeline gebruikt.
 
@@ -86,16 +86,16 @@ Apache Spark biedt een eigen implementatie van HiveServer2, die ook wel de Spark
 Het gebruikte connection string is iets anders. In plaats van `httpPath=/hive2` `httpPath/sparkhive2`:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
 
 of voor een persoonlijk eind punt:
 
 ```bash
-beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n <username> -p password
+beeline -u 'jdbc:hive2://clustername-int.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p 'password'
 ```
 
-Vervang `clustername` door de naam van uw HDInsight-cluster. Vervang `<username>` door het cluster aanmeldings account voor uw cluster. Gebruik voor ESP-clusters de volledige UPN (bijvoorbeeld user@domain.com). Vervang `password` door het wacht woord voor het account voor het aanmelden bij het cluster.
+Vervang `clustername` door de naam van uw HDInsight-cluster. Vervang `admin` door het cluster aanmeldings account voor uw cluster. Gebruik voor ESP-clusters de volledige UPN (bijvoorbeeld user@domain.com). Vervang `password` door het wacht woord voor het account voor het aanmelden bij het cluster.
 
 Persoonlijke eind punten verwijzen naar een basis load balancer, die alleen toegankelijk is vanaf de VNETs die in dezelfde regio is gepeerd. Zie [beperkingen voor wereld wijde VNet-peering en load balancers](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) voor meer informatie. U kunt de `curl` opdracht met `-v` optie om verbindings problemen met open bare of persoonlijke eind punten op te lossen voordat u Beeline gebruikt.
 
@@ -238,7 +238,7 @@ Dit voor beeld is gebaseerd op het gebruik van de Beeline-client van een SSH-ver
 
 6. Gebruik `!exit`om Beeline af te sluiten.
 
-## <a id="file"></a>Een HiveQL-bestand uitvoeren
+## <a name="run-a-hiveql-file"></a>Een HiveQL-bestand uitvoeren
 
 Dit is een voortzetting van het vorige voor beeld. Gebruik de volgende stappen om een bestand te maken en voer het vervolgens uit met Beeline.
 
@@ -292,7 +292,64 @@ Dit is een voortzetting van het vorige voor beeld. Gebruik de volgende stappen o
         +---------------+---------------+---------------+---------------+---------------+---------------+---------------+--+
         3 rows selected (0.813 seconds)
 
-## <a id="summary"></a><a id="nextsteps"></a>Volgende stappen
+## <a name="install-beeline-client"></a>Beeline-client installeren
+
+Hoewel Beeline is opgenomen op de hoofd knooppunten van uw HDInsight-cluster, wilt u deze mogelijk op een lokale computer installeren.  De onderstaande stappen voor het installeren van Beeline op een lokale computer zijn gebaseerd op een [Windows-subsysteem voor Linux](https://docs.microsoft.com/windows/wsl/install-win10).
+
+1. Pakket lijsten bijwerken. Voer de volgende opdracht in uw bash-shell in:
+
+    ```bash
+    sudo apt-get update
+    ```
+
+1. Installeer Java als dat niet is geïnstalleerd. U kunt controleren met de `which java` opdracht.
+
+    1. Als er geen Java-pakket is geïnstalleerd, voert u de volgende opdracht in:
+
+        ```bash
+        sudo apt install openjdk-11-jre-headless
+        ```
+
+    1. Het bashrc-bestand (meestal gevonden in ~/.bashrc) wijzigen. Open het bestand met `nano ~/.bashrc` en voeg de volgende regel toe aan het einde van het bestand:
+
+        ```bash
+        export JAVA_HOME=/usr/lib/jvm/java-1.11.0-openjdk-amd64
+        ```
+
+        Druk vervolgens op **CTRL + X**, vervolgens op **j**en vervolgens op ENTER.
+
+1. Down load Hadoop-en Beeline-archieven, voer de volgende opdrachten in:
+
+    ```bash
+    wget https://archive.apache.org/dist/hadoop/core/hadoop-2.7.3/hadoop-2.7.3.tar.gz
+    wget https://archive.apache.org/dist/hive/hive-1.2.1/apache-hive-1.2.1-bin.tar.gz
+    ```
+
+1. De archieven uitpakken, voert u de volgende opdrachten in:
+
+    ```bash
+    tar -xvzf hadoop-2.7.3.tar.gz
+    tar -xvzf apache-hive-1.2.1-bin.tar.gz
+    ```
+
+1. Wijzig het bashrc-bestand verder. U moet het pad naar de locatie waar de archieven zijn uitgepakt, identificeren. Als u het [Windows-subsysteem voor Linux](https://docs.microsoft.com/windows/wsl/install-win10)gebruikt en u de stappen precies hebt gevolgd, wordt het pad `/mnt/c/Users/user/`, waarbij `user` uw gebruikers naam is.
+
+    1. Open het bestand: `nano ~/.bashrc`
+    1. Wijzig de onderstaande opdrachten met het juiste pad en voer deze vervolgens aan het einde van het bashrc-bestand in:
+
+        ```bash
+        export HADOOP_HOME=/$(path_where_the_archives_were_unpacked)/hadoop-2.7.3
+        export HIVE_HOME=/$(path_where_the_archives_were_unpacked)/apache-hive-1.2.1-bin
+        PATH=$PATH:$HIVE_HOME/bin
+        ```
+
+    1. Druk vervolgens op **CTRL + X**, vervolgens op **j**en vervolgens op ENTER.
+
+1. Sluit de bash-sessie en open deze opnieuw.
+
+1. Test de verbinding. Gebruik de verbindings indeling van [meer dan open bare of persoonlijke eind punten](#over-public-or-private-endpoints).
+
+## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Apache Hive gebruiken met Apache Hadoop in hdinsight](hdinsight-use-hive.md) voor meer algemene informatie over Hive in hdinsight
 

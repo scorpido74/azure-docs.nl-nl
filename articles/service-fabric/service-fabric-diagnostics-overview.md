@@ -1,104 +1,95 @@
 ---
-title: Azure Service Fabric-bewaking en diagnostische gegevens overzicht | Microsoft Docs
-description: Meer informatie over controle en diagnostische gegevens voor Azure Service Fabric-clusters, toepassingen en services.
-services: service-fabric
-documentationcenter: .net
+title: Overzicht van Azure Service Fabric bewaking en diagnostische gegevens
+description: Meer informatie over controle en diagnostische gegevens voor Azure Service Fabric-clusters,-toepassingen en-services.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: a6c32058c68adbfd11a4cede6332b42076bea015
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef77810adfab213845c7824740effc3416d85407
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60952071"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349701"
 ---
-# <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Bewaking en diagnose voor Azure Service Fabric
+# <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Bewaking en diagnostische gegevens voor Azure Service Fabric
 
-Dit artikel bevat een overzicht van controle en diagnostische gegevens voor Azure Service Fabric. Controle en diagnose zijn essentieel voor het ontwikkelen, testen en implementeren van workloads in een cloudomgeving. Bijvoorbeeld, kunt u bijhouden hoe uw toepassingen worden gebruikt, de acties die door de Service Fabric-platform, uw gebruik van resources met behulp van prestatiemeteritems en de algemene status van uw cluster. U kunt deze informatie gebruiken om te onderzoeken en oplossen van problemen en te voorkomen dat ze zich voordoet in de toekomst. De volgende gedeelten wordt kort uitgelegd voor elk gebied van Service Fabric bewaken om te overwegen voor productieworkloads. 
+Dit artikel bevat een overzicht van controle en diagnostische gegevens voor Azure Service Fabric. Bewaking en diagnose zijn essentieel voor het ontwikkelen, testen en implementeren van werk belastingen in elke cloud omgeving. U kunt bijvoorbeeld bijhouden hoe uw toepassingen worden gebruikt, de acties die worden uitgevoerd door het Service Fabric platform, het resource gebruik met prestatie meter items en de algehele status van uw cluster. U kunt deze informatie gebruiken om problemen vast te stellen en te verhelpen en te voor komen dat ze in de toekomst optreden. In de volgende gedeelten wordt elk gebied van Service Fabric bewaking in het kort uitgelegd voor productie werkbelastingen. 
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="application-monitoring"></a>Toepassingsbewaking
-Bewaking van toepassingen wordt bijgehouden hoe functies en onderdelen van uw toepassing worden gebruikt. U wilt bewaken van uw toepassingen om te maken of problemen die van belang zijn worden opgepikt door gebruikers. De verantwoordelijkheid van de toepassingsbewaking is op de gebruikers die het ontwikkelen van een toepassing en de bijbehorende services omdat deze uniek is voor de bedrijfslogica van uw toepassing. Bewaking van uw toepassingen kan nuttig zijn in de volgende scenario's:
-* Hoeveel verkeer ondervindt mijn toepassing? -U moet uw services om te voldoen aan de eisen van de gebruiker of het adres een mogelijke knelpunt in uw toepassing schalen?
-* Zijn mijn service-naar-serviceaanroepen geslaagd en bijgehouden?
-* Welke acties worden uitgevoerd door de gebruikers van mijn toepassing? -Verzamelen van telemetrische gegevens kan dienen als richtlijn toekomstige functie ontwikkelings- en betere diagnostische gegevens van toepassingsfouten
-* Mijn toepassing is die niet-verwerkte uitzonderingen veroorzaakt? 
-* Wat gebeurt er in de services die worden uitgevoerd in mijn containers?
+Met toepassings bewaking wordt bijgehouden hoe onderdelen en onderdelen van uw toepassing worden gebruikt. U wilt uw toepassingen controleren om ervoor te zorgen dat er problemen optreden die van invloed zijn op gebruikers. De verantwoordelijkheid van toepassings bewaking bevindt zich op de gebruikers die een toepassing en de bijbehorende services ontwikkelen, omdat deze uniek is voor de bedrijfs logica van uw toepassing. Het bewaken van uw toepassingen kan nuttig zijn in de volgende scenario's:
+* Hoeveel verkeer is mijn toepassing ondervonden? -Wilt u uw services schalen om te voldoen aan de behoeften van de gebruiker of een mogelijke knel punt in uw toepassing oplossen?
+* Zijn mijn service voor service aanroepen geslaagd en getraceerd?
+* Welke acties worden uitgevoerd door de gebruikers van mijn toepassing? -Telemetrie verzamelen kan de ontwikkeling van toekomstige functies en betere diagnoses voor toepassings fouten hand leiding
+* Worden niet-verwerkte uitzonde ringen toegepast op mijn toepassing? 
+* Wat gebeurt er binnen de services die in mijn containers worden uitgevoerd?
 
-Het mooie over het controleren van toepassing is die ontwikkelaars de hulpprogramma's en framework die ze zouden graag omdat deze zich in de context van uw toepassing bevinden kunnen gebruiken. U kunt meer informatie over de Azure-oplossing voor het bewaken met Azure Monitor - Application Insights in [gebeurtenisanalyse met Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md).
-We hebben ook een zelfstudie met het [Stel deze optie voor .NET-toepassingen](service-fabric-tutorial-monitoring-aspnet.md). In deze zelfstudie gaat over het installeren van de juiste hulpprogramma's, een voorbeeld van de aangepaste telemetrie schrijven in uw toepassing en de application diagnostics- en telemetrie bekijken in Azure portal. 
+Het grote voor de toepassing van toepassingen is dat ontwikkel aars de hulpprogram ma's en het Framework kunnen gebruiken die ze graag sinds in de context van uw toepassing. U vindt meer informatie over de Azure-oplossing voor toepassings bewaking met Azure Monitor-Application Insights in [gebeurtenis analyse met Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md).
+Er is ook een zelf studie over het [instellen van dit voor .NET-toepassingen](service-fabric-tutorial-monitoring-aspnet.md). In deze zelf studie wordt uitgelegd hoe u de juiste hulpprogram ma's installeert, een voor beeld van het schrijven van aangepaste telemetriegegevens in uw toepassing en het weer geven van de Application Diagnostics en telemetrie in de Azure Portal. 
 
 
-## <a name="platform-cluster-monitoring"></a>Bewaking van platform (Cluster)
-Een gebruiker is controle over welke telemetrie afkomstig is van de toepassing omdat een gebruiker de code zelf, maar wat over de diagnostische gegevens van de Service Fabric-platform schrijft? Een van de doelstellingen van Service Fabric is om toepassingen te houden tegen hardwarefouten. Dit doel wordt bereikt door middel van het platform systeemservices mogelijkheid voor het detecteren van problemen met infrastructuur en snel failover-workloads naar andere knooppunten in het cluster. Maar in dit geval, wat gebeurt er als de systeemservices zelf problemen? Of als bij een poging om te implementeren of verplaatsen van een werkbelasting, regels voor de plaatsing van services zijn geschonden? Service Fabric biedt diagnostische gegevens voor deze en nog veel meer om te controleren of dat u worden geïnformeerd over de activiteiten die plaatsvinden in uw cluster. Enkele eenvoudige voorbeeldscenario's voor bewaking van het cluster zijn onder andere:
+## <a name="platform-cluster-monitoring"></a>Platform-bewaking (cluster)
+Een gebruiker heeft controle over welke telemetrie afkomstig is van de toepassing, omdat een gebruiker de code zelf schrijft, maar wat de diagnostische gegevens van het Service Fabric platform? Een van de doelen van Service Fabric is om toepassingen te laten overgaan op hardwarestoringen. Dit doel wordt bereikt door de mogelijkheid van de systeem services van het platform om infrastructuur problemen en snelle failover-workloads te detecteren naar andere knoop punten in het cluster. Maar in dit geval is het wat als de systeem services zelf problemen ondervinden? Of als u een werk belasting probeert te implementeren of verplaatsen, worden de regels voor het plaatsen van services geschonden? Service Fabric voorziet in diagnostische gegevens voor deze en meer om er zeker van te zijn dat u op de hoogte bent van de activiteit die in uw cluster wordt uitgevoerd. Enkele voor beelden van scenario's voor cluster bewaking zijn:
 
-Service Fabric biedt een uitgebreide set met gebeurtenissen uit het vak. Deze [Service Fabric-gebeurtenissen](service-fabric-diagnostics-events.md) is toegankelijk via de EventStore of het operationele kanaal (event kanaal die worden weergegeven door het platform). 
+Service Fabric biedt een uitgebreide set gebeurtenissen uit het vak. Deze [service Fabric gebeurtenissen](service-fabric-diagnostics-events.md) zijn toegankelijk via de Event Store of het operationele kanaal (gebeurtenis kanaal dat wordt weer gegeven door het platform). 
 
-* Service Fabric event kanalen - op Windows Service Fabric-gebeurtenissen zijn beschikbaar vanuit één ETW-provider met een set van relevante `logLevelKeywordFilters` gebruikt om te kiezen tussen de operationele gegevens & Messaging en kanalen - dit is de manier waarop we uitgaande onderscheiden Service Fabric-gebeurtenissen worden gefilterd op die nodig zijn. Op Linux Service Fabric-gebeurtenissen binnenkomen via LTTng en van waar ze kunnen worden gefilterd zo nodig in een opslagtabel, zijn geplaatst. Deze kanalen bevatten samengestelde, gestructureerde gebeurtenissen die kunnen worden gebruikt voor meer informatie over de status van uw cluster. Diagnostische gegevens zijn standaard ingeschakeld op het moment van het maken van het cluster, die het maken van een Azure Storage-tabel waar de gebeurtenissen van deze kanalen kunt u query's uitvoeren in de toekomst worden verzonden. 
+* Service Fabric gebeurtenis kanalen: in Windows zijn Service Fabric gebeurtenissen beschikbaar van een enkele ETW-provider met een set relevante `logLevelKeywordFilters` die wordt gebruikt om te kiezen tussen operationele en Data & Messa ging-kanalen. Dit is de manier waarop we uitgaande Service Fabric gebeurtenissen die moeten worden gefilterd, scheiden als dat nodig is. In Linux komen Service Fabric gebeurtenissen via LTTng en worden ze in één opslag tabel geplaatst, van waaruit ze kunnen worden gefilterd als ze nodig zijn. Deze kanalen bevatten gestructureerde, gestructureerde gebeurtenissen die kunnen worden gebruikt om de status van uw cluster beter te begrijpen. Diagnostische gegevens zijn standaard ingeschakeld tijdens het maken van het cluster, waardoor een Azure Storage tabel wordt gemaakt waarin de gebeurtenissen van deze kanalen voor u in de toekomst worden verzonden. 
 
-* EventStore - de EventStore is een functie die wordt aangeboden door het platform waarmee u Service Fabric-platformgebeurtenissen beschikbaar in de Service Fabric Explorer en via REST-API. Hier ziet u een momentopname van wat in uw cluster voor elke entiteit bijvoorbeeld gebeurt er knooppunt, service, toepassing en query's op basis van de tijd van de gebeurtenis. U kunt ook meer informatie over de EventStore op de [overzicht van EventStore](service-fabric-diagnostics-eventstore.md).    
+* Event Store: de Event Store is een functie die wordt aangeboden door het platform dat Service Fabric platform gebeurtenissen bevat die beschikbaar zijn in de Service Fabric Explorer en via REST API. Op basis van de tijd van de gebeurtenis ziet u een moment opname van wat er in uw cluster gebeurt voor elke entiteit, bijvoorbeeld knoop punt, service, toepassing en query. Meer informatie over de Event Store vindt u in het [overzicht van Event Store](service-fabric-diagnostics-eventstore.md).    
 
-![EventStore](media/service-fabric-diagnostics-overview/eventstore.png)
+![Event Store](media/service-fabric-diagnostics-overview/eventstore.png)
 
-De diagnostische gegevens over het opgegeven zijn in de vorm van een uitgebreide set met gebeurtenissen uit het vak. Deze [Service Fabric-gebeurtenissen](service-fabric-diagnostics-events.md) laten zien van acties die worden uitgevoerd door het platform op verschillende entiteiten zoals knooppunten, toepassingen, Services, partities enzovoort. In het bovenstaande laatste scenario als een knooppunt uitvallen, het platform zou verzenden een `NodeDown` gebeurtenis en u het kan onmiddellijk worden gemeld door het hulpprogramma voor bewaking van keuze. Andere algemene voorbeelden zijn `ApplicationUpgradeRollbackStarted` of `PartitionReconfigured` tijdens een failover. **Dezelfde gebeurtenissen zijn beschikbaar op zowel Windows als Linux-clusters.**
+De beschik bare diagnostische gegevens bevinden zich in de vorm van een uitgebreide set gebeurtenissen uit het vak. Deze [service Fabric gebeurtenissen](service-fabric-diagnostics-events.md) illustreren acties die door het platform worden uitgevoerd op verschillende entiteiten, zoals knoop punten, toepassingen, services, partities, enzovoort. Als in het laatste scenario hierboven een knoop punt uitvalt, zou het platform een `NodeDown` gebeurtenis kunnen verzenden. u kunt onmiddellijk op de hoogte worden gesteld door het bewakings programma van de keuze. Andere gang bare voor beelden zijn `ApplicationUpgradeRollbackStarted` of `PartitionReconfigured` tijdens een failover. **Dezelfde gebeurtenissen zijn beschikbaar voor zowel Windows-als Linux-clusters.**
 
-De gebeurtenissen worden verzonden via standaard kanalen op zowel Windows als Linux, en kunnen worden gelezen door een controleprogramma die ondersteuning biedt voor deze. De oplossing Azure Monitor is Azure Monitor-Logboeken. U kunt meer informatie over onze [Azure Monitor-integratie van logboeken](service-fabric-diagnostics-event-analysis-oms.md) dat een aangepast dashboard voor het cluster en enkele voorbeeldquery's die u kunt waarschuwingen maken voor een operationele omvat. Meer controle cluster-concepten zijn beschikbaar op [Platform op gebeurtenis- en logboekbestanden genereren](service-fabric-diagnostics-event-generation-infra.md).
+De gebeurtenissen worden verzonden via de standaard kanalen in Windows en Linux en kunnen worden gelezen door elk bewakings programma dat deze ondersteunt. De Azure Monitor oplossing is Azure Monitor Logboeken. U kunt meer lezen over de integratie van de [Azure monitor logboeken](service-fabric-diagnostics-event-analysis-oms.md) , met daarin een aangepast operationeel dash board voor uw cluster en enkele voorbeeld query's van waaruit u waarschuwingen kunnen maken. Er zijn meer concepten voor cluster bewaking beschikbaar op [platform niveau gebeurtenis en logboek generatie](service-fabric-diagnostics-event-generation-infra.md).
 
 ### <a name="health-monitoring"></a>Statuscontrole
-Het Service Fabric-platform bevat een health-model, waarmee u uitbreidbare health rapportage van de status van entiteiten in een cluster. Elk knooppunt, toepassing, service, partitie, replica of instantie heeft de status health continu worden bijgewerkt. De status kan zijn 'OK', "Waarschuwing" of "Error". Service Fabric-gebeurtenissen beschouwen als termen die worden uitgevoerd door het cluster voor diverse entiteiten en status als geadjectiveerde voor elke entiteit. Telkens wanneer de status van een bepaalde entiteit verandert, wordt een gebeurtenis ook worden verzonden. Deze manier waarop die u query's en waarschuwingen voor statusgebeurtenissen instellen in uw bewaking hulpprogramma naar keuze, net als andere gebeurtenis optreedt kunt. 
+Het Service Fabric-platform bevat een status model dat uitbreid bare status rapportage biedt voor de status van entiteiten in een cluster. Elk knoop punt, elke toepassing, service, partitie, replica of exemplaar, heeft een voortdurend bij te werken status. De status kan ' OK ', ' warning ' of ' fout ' zijn. Denk aan Service Fabric gebeurtenissen zoals werk woorden die door het cluster worden uitgevoerd, naar verschillende entiteiten en status als een bijvoegings groep voor elke entiteit. Telkens wanneer de status van een bepaalde entiteit overgang is, wordt er ook een gebeurtenis verzonden. Op deze manier kunt u query's en waarschuwingen instellen voor status gebeurtenissen in het bewakings programma van Choice, net als bij elke andere gebeurtenis. 
 
-Bovendien toestaan we ook dat gebruikers status voor entiteiten negeren. Als uw toepassing is er een upgrade voor aangebracht en hebt u validatietests mislukt, kunt u naar Service Fabric-status schrijven met behulp van de Health-API om aan te geven van uw toepassing in orde is en Service Fabric wordt automatisch terugdraaien van de upgrade. Bekijk voor meer informatie over het status-model, de [Inleiding tot Service Fabric-statuscontrole](service-fabric-health-introduction.md)
+Daarnaast kunnen gebruikers de status van entiteiten zelfs negeren. Als uw toepassing een upgrade uitvoert en er validatie tests worden uitgevoerd, kunt u naar Service Fabric status schrijven met de status-API om aan te geven dat uw toepassing niet meer in orde is en dat de upgrade automatisch wordt teruggedraaid door Service Fabric. Lees voor meer informatie over het status model de [Inleiding tot service Fabric status controle](service-fabric-health-introduction.md)
 
-![SFX health dashboard](media/service-fabric-diagnostics-overview/sfx-healthstatus.png)
+![SFX-status dashboard](media/service-fabric-diagnostics-overview/sfx-healthstatus.png)
 
 
-### <a name="watchdogs"></a>Watchdogs
-Over het algemeen is een watchdog een afzonderlijke service die u kunt bekijken van status en laden in services, ping-eindpunten en de gezondheid van het rapport voor alles wat in het cluster. Dit kan helpen voorkomen dat er fouten die niet kunnen worden gedetecteerd op basis van de weergave van een service. Watchdogs zijn ook een goede plaats code kunt hosten die corrigerende acties zonder tussenkomst van de gebruiker (bijvoorbeeld het opschonen van de logboekbestanden in de opslag op bepaalde tijdsintervallen) uitvoert. U vindt een voorbeeld watchdog-service-implementatie [hier](https://github.com/Azure-Samples/service-fabric-watchdog-service).
+### <a name="watchdogs"></a>Watchdog
+Over het algemeen is een watchdog een afzonderlijke service die de status kan bekijken en laden tussen services, ping-eind punten en status rapporten voor alles in het cluster. Dit kan helpen voor komen dat fouten die niet worden gedetecteerd op basis van de weer gave van één service. Watchdog zijn ook een goede plaats voor het hosten van code voor het uitvoeren van herstel acties zonder tussen komst van de gebruiker (bijvoorbeeld het opschonen van logboek bestanden in de opslag met bepaalde tijds intervallen). [Hier](https://github.com/Azure-Samples/service-fabric-watchdog-service)vindt u een voor beeld van een watchdog-service-implementatie.
 
-## <a name="infrastructure-performance-monitoring"></a>Infrastructuurbewaking (prestaties)
-Nu dat we de diagnostische gegevens in uw toepassing en het platform besproken hebben, hoe weet ik dat de hardware werkt zoals verwacht? Bewaking van de onderliggende infrastructuur is een belangrijk onderdeel van de status van het cluster en het gebruik van uw resources begrijpen. Meten van prestaties van het systeem, hangt af van veel factoren die kunnen subjectief zijn, afhankelijk van uw workloads. Deze factoren zijn gewoonlijk gemeten via prestatiemeteritems. Deze prestatiemeteritems kunnen afkomstig zijn uit verschillende bronnen, met inbegrip van het besturingssysteem, de .NET framework, of de Service Fabric-platform zelf wordt geboden. Sommige scenario's waarin ze handig zijn zijn
+## <a name="infrastructure-performance-monitoring"></a>Bewaking van infra structuur (prestaties)
+Nu we de diagnostische gegevens in uw toepassing en het platform hebben behandeld, hoe weten we dat de hardware goed werkt zoals verwacht? Het bewaken van de onderliggende infra structuur is een belang rijk onderdeel van de status van uw cluster en het gebruik van resources. Het meten van de systeem prestaties is afhankelijk van een groot aantal factoren die afhankelijk van uw werk belastingen kunnen worden toegepast. Deze factoren worden doorgaans gemeten via prestatie meter items. Deze prestatie meter items kunnen afkomstig zijn uit verschillende bronnen, waaronder het besturings systeem, het .NET Framework of het Service Fabric-platform zelf. Sommige scenario's waarin ze nuttig zijn, zijn
 
-* Ben ik mijn hardware efficiënt gebruik? Wilt u het gebruik van uw hardware op 90% CPU- of 10% CPU. Dit is handig wanneer schalen van het cluster, of het optimaliseren van uw toepassing verwerkt.
-* Kan ik infrastructuur problemen proactief voorspellen? -heel wat problemen worden voorafgegaan door een plotselinge wijzigingen (val) in de prestaties, zodat u kunt prestatiemeteritems, zoals netwerk-i/o en CPU-gebruik om te voorspellen en problemen proactief.
+* Kan ik mijn hardware efficiënt gebruiken? Wilt u uw hardware gebruiken met een CPU van 90% of 10%. Dit is handig bij het schalen van uw cluster of het optimaliseren van de processen van uw toepassing.
+* Kan ik de infrastructuur problemen proactief voors pellen? -veel problemen worden voorafgegaan door onverwachte wijzigingen (drup pels) in prestaties, zodat u prestatie meter items zoals netwerk-I/O-en CPU-gebruik kunt gebruiken om de problemen proactief te voors pellen en te diagnosticeren.
 
-Een lijst met prestatiemeteritems die moeten worden verzameld op het niveau van de infrastructuur kan worden gevonden op [maatstaven voor prestaties](service-fabric-diagnostics-event-generation-perf.md). 
+Een lijst met prestatie meter items die moeten worden verzameld op het niveau van de infra structuur, is te vinden op [prestatie gegevens](service-fabric-diagnostics-event-generation-perf.md). 
 
-Service Fabric biedt ook een set prestatiemeteritems voor de programmeermodellen Reliable Services en actoren. Als u een van deze modellen worden gebruikt, kunnen deze prestatiemeteritems gegevens om ervoor te zorgen dat uw actors zijn draaiende omhoog en omlaag correct, of dat uw betrouwbare serviceaanvragen snel genoeg worden verwerkt. Zie voor meer informatie, [bewaking voor externe communicatie Reliable Service](service-fabric-reliable-serviceremoting-diagnostics.md#performance-counters) en [prestatiecontrole voor betrouwbare actoren](service-fabric-reliable-actors-diagnostics.md#performance-counters). 
+Service Fabric biedt ook een aantal prestatie meter items voor de programmeer modellen Reliable Services en actors. Als u een van deze modellen gebruikt, kunnen deze prestatie meter items gegevens controleren om ervoor te zorgen dat uw actors correct draaien en naar behoren werken, of dat uw betrouw bare service aanvragen snel genoeg worden verwerkt. Zie [bewaking voor betrouw bare service externe communicatie](service-fabric-reliable-serviceremoting-diagnostics.md#performance-counters) en [prestaties controleren voor reliable actors](service-fabric-reliable-actors-diagnostics.md#performance-counters)voor meer informatie. 
 
-De oplossing Azure Monitor voor het verzamelen van deze is Logboeken van Azure Monitor net als platform niveau bewaking. Moet u de [Log Analytics-agent](service-fabric-diagnostics-oms-agent.md) naar de juiste prestatiemeteritems verzamelen en ze weergeven in Azure Monitor-Logboeken.
+De Azure Monitor oplossing voor het verzamelen van deze gegevens is Azure Monitor logboeken, net als op platform niveau controleren. U moet de [log Analytics agent](service-fabric-diagnostics-oms-agent.md) gebruiken om de juiste prestatie meter items te verzamelen en weer te geven in azure monitor-Logboeken.
 
-## <a name="recommended-setup"></a>Aanbevolen instellingen
-Nu dat we elk gebied van controle en voorbeeld van de scenario's hebt overschreden, als volgt een samenvatting van de Azure-hulpprogramma's voor controle en het instellen van nodig voor het bewaken van alle bovenstaande gebieden. 
+## <a name="recommended-setup"></a>Aanbevolen installatie
+Nu we over elk gebied van bewakings-en voorbeeld scenario's hebben gewerkt, is hier een samen vatting van de Azure-controle hulpprogramma's en zo nodig ingesteld om alle bovenstaande gebieden te bewaken. 
 
-* Toepassingsbewaking met [Application Insights](service-fabric-tutorial-monitoring-aspnet.md)
-* Bewaking van het cluster met [Diagnostics-Agent](service-fabric-diagnostics-event-aggregation-wad.md) en [Azure Monitor-Logboeken](service-fabric-diagnostics-oms-setup.md)
-* Infrastructuurbewaking met [Azure Monitor-Logboeken](service-fabric-diagnostics-oms-agent.md)
+* Toepassings bewaking met [Application Insights](service-fabric-tutorial-monitoring-aspnet.md)
+* Cluster controle met [Diagnostische agent](service-fabric-diagnostics-event-aggregation-wad.md) en [Azure monitor-logboeken](service-fabric-diagnostics-oms-setup.md)
+* Infra structuur controleren met [Azure monitor-logboeken](service-fabric-diagnostics-oms-agent.md)
 
-U kunt ook gebruiken en wijzigen van de ARM-voorbeeldsjabloon zich [hier](service-fabric-diagnostics-oms-setup.md#deploy-azure-monitor-logs-with-azure-resource-manager) om de implementatie van alle benodigde resources en de agents te automatiseren. 
+U kunt ook de voor beeld-ARM-sjabloon die [hier](service-fabric-diagnostics-oms-setup.md#deploy-azure-monitor-logs-with-azure-resource-manager) zich bevindt, gebruiken en wijzigen om de implementatie van alle benodigde resources en agents te automatiseren. 
 
-## <a name="other-logging-solutions"></a>Andere oplossingen voor logboekregistratie
+## <a name="other-logging-solutions"></a>Andere oplossingen voor logboek registratie
 
-Hoewel de twee oplossingen die we aanbevolen, [logboeken van Azure Monitor](service-fabric-diagnostics-event-analysis-oms.md) en [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) hebt gebouwd in integratie met Service Fabric, veel gebeurtenissen worden geschreven via ETW-providers en zijn uit te breiden met andere oplossingen voor logboekregistratie. U moet ook zoeken in de [Elastic Stack](https://www.elastic.co/products) (met name als u een cluster uitvoert in een offline-omgeving overweegt), [Dynatrace](https://www.dynatrace.com/), of elk ander platform van uw voorkeur. We hebben een lijst met geïntegreerde partners beschikbaar [hier](service-fabric-diagnostics-partners.md).
+Hoewel de twee oplossingen worden aanbevolen, [Azure monitor-logboeken](service-fabric-diagnostics-event-analysis-oms.md) en [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) zijn geïntegreerd met Service Fabric, worden veel gebeurtenissen geschreven via etw-providers en kunnen ze worden uitgebreid met andere logboek registratie oplossingen. U moet ook kijken naar de [elastische stack](https://www.elastic.co/products) (met name als u overweegt een cluster in een offline omgeving uit te voeren), [Dynatrace](https://www.dynatrace.com/)of een ander platform van uw voor keur. Hier vindt u een lijst met geïntegreerde partners die u [hier](service-fabric-diagnostics-partners.md)kunt vinden.
 
-De belangrijkste punten voor elk platform dat u kiest moeten opnemen met het scenario dat u met de gebruikersinterface, de mogelijkheden van een query uitvoeren op de aangepaste visualisaties en dashboards die beschikbaar zijn en de extra hulpprogramma's bieden als u wilt uw controle-ervaring te verbeteren. 
+De belangrijkste punten voor elk platform dat u kiest, moeten de volgende zaken bevatten: de gebruikers interface, de query mogelijkheden, de aangepaste visualisaties en dash boards die beschikbaar zijn, en de extra hulp middelen die ze bieden om uw bewakings ervaring te verbeteren. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor het aan de slag met het instrumenteren van uw toepassingen, [toepassing niveau gebeurtenis- en logboekbestanden genereren](service-fabric-diagnostics-event-generation-app.md).
-* Doorloop de stappen voor het instellen van Application Insights voor uw toepassing met [bewaken en diagnosticeren van een ASP.NET Core-toepassing in Service Fabric](service-fabric-tutorial-monitoring-aspnet.md).
-* Meer informatie over het controleren van het platform en de Service Fabric biedt voor u op gebeurtenissen [Platform op gebeurtenis- en logboekbestanden genereren](service-fabric-diagnostics-event-generation-infra.md).
-* De integratie van Azure Monitor configureren met Service Fabric op [Azure Monitor-logboeken voor een cluster instellen](service-fabric-diagnostics-oms-setup.md)
-* Meer informatie over het instellen van Azure Monitor-logboeken voor het bewaken van containers- [bewaking en diagnostische gegevens voor Windows-Containers in Azure Service Fabric](service-fabric-tutorial-monitoring-wincontainers.md).
-* Zie het voorbeeld van de diagnostische gegevens over problemen en oplossingen met Service Fabric in [oplossen van veelvoorkomende scenario's](service-fabric-diagnostics-common-scenarios.md)
-* Bekijk andere producten van diagnostische gegevens die kunnen worden geïntegreerd met Service Fabric in [diagnostische Service Fabric-partners](service-fabric-diagnostics-partners.md)
-* Meer informatie over algemene aanbevelingen voor bewaking voor Azure-resources - [Best Practices - bewaking en diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). 
+* Zie [gebeurtenis-en logboek registratie op toepassings niveau](service-fabric-diagnostics-event-generation-app.md)voor het aan de slag gaan met het instrumenteren van uw toepassingen.
+* Door loop de stappen om Application Insights voor uw toepassing in te stellen met behulp van [een ASP.net core-toepassing in service Fabric te controleren en te diagnosticeren](service-fabric-tutorial-monitoring-aspnet.md).
+* Meer informatie over het bewaken van het platform en de gebeurtenissen Service Fabric biedt u de beschikking over [gebeurtenis-en logboek genereren op platform niveau](service-fabric-diagnostics-event-generation-infra.md).
+* De integratie van de Azure Monitor logboeken configureren met Service Fabric bij [het instellen van Azure monitor logboeken voor een cluster](service-fabric-diagnostics-oms-setup.md)
+* Meer informatie over het instellen van Azure Monitor-logboeken voor het bewaken van containers: [bewaking en diagnose voor Windows-containers in Azure service Fabric](service-fabric-tutorial-monitoring-wincontainers.md).
+* Bekijk voor beelden van diagnostische problemen en oplossingen met Service Fabric bij het [vaststellen van veelvoorkomende scenario's](service-fabric-diagnostics-common-scenarios.md)
+* Bekijk andere diagnostische producten die met Service Fabric worden geïntegreerd in [service Fabric diagnostische partners](service-fabric-diagnostics-partners.md)
+* Meer informatie over algemene controle aanbevelingen voor Azure-resources- [Aanbevolen procedures-bewaking en diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring). 

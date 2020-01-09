@@ -1,6 +1,6 @@
 ---
-title: Voorbeelden van Azure PowerShell - Gegevensschijven koppelen en gebruiken | Microsoft Docs
-description: Voorbeelden van Azure PowerShell
+title: Azure PowerShell-voor beelden-gegevens schijven koppelen en gebruiken
+description: Met dit script maakt u een virtuele-machine schaalset van Azure en koppelt en bereidt u gegevens schijven voor met behulp van Power shell.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bf7f86deb71aabfb8e06ce30abac92fc1777aae9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f7098808837b9fd0206323fca03da4c98096d3c5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60391375"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350957"
 ---
 # <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-powershell"></a>Gegevensschijven met een virtuele-machineschaalset koppelen en gebruiken met PowerShell
 Met dit script maakt u een virtuele-machineschaalset, koppelt u gegevensschijven en bereidt u deze voor.

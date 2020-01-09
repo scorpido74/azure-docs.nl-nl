@@ -1,56 +1,56 @@
 ---
-title: Hoog contrast inschakelen in Azure portal | Microsoft Docs
-description: Leer hoe u hoog contrast inschakelen of wijzigen van de Azure portal thema.
+title: Hoog contrast inschakelen in Azure Portal | Microsoft Docs
+description: Wijzig het Azure Portal thema om de weer gegeven achtergrond-en lettertype kleuren te kiezen. Schakel hoog contrast in om de Azure Portal sneller en gemakkelijker te lezen te maken.
 services: azure-portal
 keywords: ''
-author: kfollis
-ms.author: kfollis
-ms.date: 04/08/2019
+author: mblythe
+ms.author: mblythe
+ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: accessibility
 manager: mtillman
-ms.openlocfilehash: 59824c4a10c50265ea0a15be69755748b87d4a3f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: db0b010d1adcf4f5178390913bedf773580dbb80
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60690385"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640377"
 ---
-# <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Hoog contrast inschakelen of wijzigen van het thema in Azure portal
+# <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>Schakel hoog contrast in of wijzig het thema in het Azure Portal
 
-Hoog contrast instellingen zodat de Azure-portal gemakkelijker te lezen. U kunt ook een thema dat de achtergrondkleur van de portal wordt gewijzigd.
+Met instellingen voor hoog contrast kunt u de Azure Portal eenvoudiger te lezen. U kunt ook een thema kiezen waarmee de achtergrond kleuren van de portal worden gewijzigd.
 
-Als u meer contrast nodig hebt of u wilt wijzigen van het kleurenschema in Azure portal, gaat u naar de portal-instellingen om de wijziging te maken.
+Als u meer contrast nodig hebt of als u het kleuren schema in de Azure Portal wilt wijzigen, gaat u naar de Portal instellingen om de wijziging door te voeren.
 
 ## <a name="turn-on-high-contrast"></a>Hoog contrast inschakelen
 
-1. In de koptekst van de [Azure-portal](https://portal.azure.com), selecteer **instellingen**.
+1. Selecteer in de koptekst van de [Azure Portal](https://portal.azure.com) **instellingen**.
 
-    ![Schermafbeelding waarin de dat instellingen voor de tandwielpictogram in de Azure-portal](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+    ![Scherm afbeelding met het tandwiel pictogram voor de Portal instellingen in de Azure Portal](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
 1. Kies **wit** of **zwart**.
 
-    ![Schermafbeelding van hoog contrast opties in de Azure portal-instellingen](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
+    ![Scherm afbeelding met opties voor hoog contrast in de Azure Portal instellingen](./media/azure-portal-change-theme-high-contrast/azure-portal-highcontrast-options.png)
 1. Selecteer **Toepassen**.
 
 > [!NOTE]
-> Als u een thema met hoog contrast selecteert, overschrijft alle andere thema selecties.
+> Als u een thema met hoog contrast selecteert, worden alle andere thema selecties vervangen.
 >
 >
 
 ## <a name="change-theme"></a>Thema wijzigen
 
-1. In de koptekst van de [Azure-portal](https://portal.azure.com), selecteer **instellingen**.
+1. Selecteer in de koptekst van de [Azure Portal](https://portal.azure.com) **instellingen**.
 
-    ![Schermafbeelding waarin de dat instellingen voor de tandwielpictogram in de Azure-portal](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
+    ![Scherm afbeelding met het tandwiel pictogram voor de Portal instellingen in de Azure Portal](./media/azure-portal-change-theme-high-contrast/azure-portal-settings-icon.png)
 
 1. Kies een thema.
 
-    ![Schermafbeelding van het themaopties in de Azure portal-instellingen](./media/azure-portal-change-theme-high-contrast/azure-portal-theme-options.png)
+    ![Scherm afbeelding met de thema opties in de Azure Portal instellingen](./media/azure-portal-change-theme-high-contrast/azure-portal-theme-options.png)
 
 1. Selecteer **Toepassen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Sneltoetsen gebruiken in Azure portal](azure-portal-keyboard-shortcuts.md)
+- [Sneltoetsen in Azure Portal](azure-portal-keyboard-shortcuts.md)
 - [Ondersteunde browsers en apparaten](../azure-preview-portal-supported-browsers-devices.md)

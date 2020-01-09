@@ -8,20 +8,20 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3477bac051346e4b334ff3437085c402090b2c98
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 6143f50b9f1f6738daf3e69d4cc0e00742e1e35a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74765458"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356357"
 ---
 # <a name="coarse-relocalization"></a>Coarse-relokalisatie
 
-Ruwe Herlokalisatie is een functie die een eerste antwoord geeft op de vraag: *waar is mijn apparaat nu/welke inhoud moet ik naachten?* Het antwoord is niet nauw keurig, maar in plaats daarvan bevindt zich in de vorm: *u sluit deze ankers, probeer een van de items te zoeken*.
+Ruwe Herlokalisatie is een functie die een eerste antwoord geeft op de vraag: *waar is mijn apparaat nu/welke inhoud moet ik naachten?* Het antwoord is niet nauw keurig, maar in plaats daarvan bevindt zich in de vorm: *u sluit deze ankers aan. Probeer een van de twee te vinden*.
 
-Ruwe Herlokalisatie werkt door verschillende metingen op de sensor van een apparaat te koppelen aan zowel het maken als de query op ankers. Voor scenario's voor buiten komen de sensor gegevens doorgaans de GPS (Global Positioning System) positie van het apparaat. Wanneer GPS niet beschikbaar of onbetrouwbaar is (zoals binnendeuren), bestaan de sensor gegevens in de Wi-Fi-toegangs punten en Bluetooth beacons in het bereik. Alle verzamelde sensor gegevens dragen bij aan het behoud van een ruimtelijke index. De ruimtelijke index wordt gebruikt door de anchor-service om snel de ankers te bepalen die zich binnen ongeveer 100 meters van uw apparaat bevinden.
+Ruwe Herlokalisatie werkt door verschillende metingen op de sensor van een apparaat te koppelen aan zowel het maken als de query op ankers. Voor scenario's voor buiten komen de sensor gegevens doorgaans de GPS (Global Positioning System) positie van het apparaat. Wanneer GPS niet beschikbaar of onbetrouwbaar is (zoals in de lucht), bestaan de sensor gegevens uit de Wi-Fi-toegangs punten en Bluetooth beacons in het bereik. Alle verzamelde sensor gegevens dragen bij aan het behoud van een ruimtelijke index. dit wordt gebruikt door de ruimtelijke ankers van Azure om snel de ankers te bepalen die zich binnen ongeveer 100 meters van uw apparaat bevinden.
 
-De snelle zoek functie die door ruwe Herlokalisatie is ingeschakeld, vereenvoudigt de ontwikkeling van toepassingen die worden ondersteund door grootschalige verzamelingen van (voor miljoenen geo-gedistribueerde) ankers. De complexiteit van anker beheer is verborgen, zodat u meer aandacht kunt richten op uw meester toepassings logica. Alle bijwerkende ankers worden door de service op de achtergrond uitgevoerd.
+De snelle zoek functie die door ruwe Herlokalisatie is ingeschakeld, vereenvoudigt de ontwikkeling van toepassingen die worden ondersteund door grootschalige verzamelingen (bijvoorbeeld miljoenen geo-gedistribueerde) ankers. De complexiteit van anker beheer is verborgen, zodat u meer aandacht kunt richten op uw meester toepassings logica. Alle verankeringen worden vóór de schermen zwaar gemaakt door Azure spatiale ankers.
 
 ## <a name="collected-sensor-data"></a>Verzamelde sensor gegevens
 
@@ -105,7 +105,7 @@ cloudSpatialAnchorSession = std::make_shared<CloudSpatialAnchorSession>();
 cloudSpatialAnchorSession->LocationProvider(sensorProvider);
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++WinRT](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 ```cpp
 // Create the sensor fingerprint provider
 PlatformLocationProvider sensorProvider = PlatformLocationProvider();
@@ -118,13 +118,13 @@ cloudSpatialAnchorSession.LocationProvider(sensorProvider);
 ```
 ---
 
-Vervolgens moet u bepalen welke Sens oren u wilt gebruiken voor grove Herlokalisatie. Deze beslissing is in het algemeen specifiek voor de toepassing die u ontwikkelt, maar de aanbevelingen in de volgende tabel moeten u een goed uitgangs punt bieden:
+Vervolgens moet u bepalen welke Sens oren u wilt gebruiken voor grove Herlokalisatie. Deze beslissing is specifiek voor de toepassing die u ontwikkelt, maar de aanbevelingen in de volgende tabel moeten u een goed uitgangs punt bieden:
 
 
 |             | Binnendeuren | Gek |
 |-------------|---------|----------|
 | GPS         | Uit | Aan |
-| WiFi        | Aan | Aan (optioneel) |
+| Wi-Fi        | Aan | Aan (optioneel) |
 | Conbakeners | Aan (optioneel met aanvullende opmerkingen, zie hieronder) | Uit |
 
 
@@ -166,7 +166,7 @@ const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
 sensors->GeoLocationEnabled(true);
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++WinRT](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 SensorCapabilities sensors = sensorProvider.Sensors()
@@ -182,8 +182,9 @@ Wanneer u GPS gebruikt in uw toepassing, moet u er ook voor zorgen dat de beschi
 
 In het algemeen worden zowel het besturings systeem als het ruimtelijke anker van Azure een aantal filtering en extrapolatie op het onbewerkte GPS-signaal in een poging om deze problemen te verhelpen. Deze extra verwerking vereist extra tijd voor convergentie, zodat u de beste resultaten kunt proberen:
 
-* de sensor vingerafdruk provider zo snel mogelijk in uw toepassing maken
-* de sensor vingerafdruk provider actief houden en delen tussen meerdere sessies
+* zo snel mogelijk een provider voor sensor vingerafdruk maken in uw toepassing
+* de sensor vingerafdruk provider in stand houden tussen meerdere sessies
+* de sensor vingerafdruk provider delen tussen meerdere sessies
 
 Als u van plan bent de sensor vingerafdruk provider buiten een anker sessie te gebruiken, moet u deze starten voordat u de sensor schattingen aanvraagt. De volgende code zorgt er bijvoorbeeld voor dat de positie van uw apparaat in real-time wordt bijgewerkt op de kaart:
 
@@ -291,7 +292,7 @@ while (m_isRunning)
 sensorProvider->Stop();
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++WinRT](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 // Game about to start, start tracking the sensors
@@ -351,7 +352,7 @@ const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
 sensors->WifiEnabled(true);
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++WinRT](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 SensorCapabilities sensors = sensorProvider.Sensors()
@@ -409,7 +410,7 @@ const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
 sensors->BluetoothEnabled(true);
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++WinRT](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 SensorCapabilities sensors = sensorProvider.Sensors();
@@ -418,7 +419,7 @@ sensors.BluetoothEnabled(true);
 
 ---
 
-Beacons zijn doorgaans veelzijdige apparaten, waarbij alles, inclusief UUIDs en MAC-adressen, kan worden geconfigureerd. Deze flexibiliteit kan problemen opleveren voor Azure spatiale ankers die van mening zijn dat beacons uniek worden geïdentificeerd door hun UUID. Het is niet mogelijk om ervoor te zorgen dat deze uniekheid het meest waarschijnlijk wordt omgezet in ruimtelijk worm holes. Voor de beste resultaten moet u het volgende doen:
+Beacons zijn doorgaans veelzijdige apparaten, waarbij alles, inclusief UUIDs en MAC-adressen, kan worden geconfigureerd. Deze flexibiliteit kan problemen opleveren voor Azure spatiale ankers, omdat er beacons zijn die uniek worden geïdentificeerd door hun UUID. Het is niet mogelijk om ervoor te zorgen dat deze uniekheid waarschijnlijk ruimtelijke worm holes veroorzaakt. Voor de beste resultaten moet u het volgende doen:
 
 * Wijs unieke UUID toe aan uw beacons.
 * Implementeer deze-doorgaans in een gewoon patroon, zoals een raster.
@@ -477,7 +478,7 @@ const std::shared_ptr<SensorCapabilities>& sensors = sensorProvider->Sensors();
 sensors->KnownBeaconProximityUuids(uuids);
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++WinRT](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 std::vector<winrt::hstring> uuids;
@@ -490,13 +491,13 @@ sensors.KnownBeaconProximityUuids(uuids);
 
 ---
 
-In azure spatiale ankers worden alleen Bluetooth-beacons bijgehouden die in de lijst staan. Kwaadwillende beacons die zijn geprogrammeerd met Allow-List-UUIDen kunnen nog steeds een negatieve invloed hebben op de kwaliteit van de service. Daarom moet u bakens alleen gebruiken in de ruimten met een hoofd element, waar u de implementatie ervan kunt beheren.
+In azure spatiale ankers worden alleen Bluetooth-beacons bijgehouden die zich in de lijst met bekende Beacon-UUID bevinden. Kwaadwillende beacons die zijn geprogrammeerd met Allow-List-UUIDen kunnen nog steeds een negatieve invloed hebben op de kwaliteit van de service. Daarom moet u bakens alleen gebruiken in de ruimten met een hoofd element, waar u de implementatie ervan kunt beheren.
 
 ## <a name="querying-with-sensor-data"></a>Query's uitvoeren met sensor gegevens
 
-Zodra u ankers met gekoppelde sensor gegevens hebt gemaakt, kunt u deze ophalen met behulp van de sensor-lees acties die zijn gerapporteerd door uw apparaat. U hoeft de service niet langer te leveren met een lijst met bekende ankers die u verwacht te vinden. in plaats daarvan kunt u de service alleen de locatie van uw apparaat laten weten zoals gerapporteerd door de opstart Sens oren. De spatiale ankers-service wordt vervolgens de set ankers dicht op het apparaat afgestemd en probeert ze visueel met elkaar te vergelijken.
+Zodra u ankers met gekoppelde sensor gegevens hebt gemaakt, kunt u deze ophalen met behulp van de sensor-lees acties die zijn gerapporteerd door uw apparaat. U hoeft de service niet langer te leveren met een lijst met bekende ankers die u verwacht te vinden. in plaats daarvan kunt u de service alleen de locatie van uw apparaat laten weten zoals gerapporteerd door de opstart Sens oren. In azure spatiale ankers worden vervolgens de set ankers dicht op het apparaat weer gegeven en wordt geprobeerd om deze visueel te vergelijken.
 
-Als u wilt dat query's de sensor gegevens gebruiken, begint u met het maken van zoek criteria:
+Als u wilt dat query's gebruikmaken van de sensor gegevens, begint u met het maken van "bijna op apparaat" criteria:
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
@@ -573,7 +574,7 @@ auto anchorLocateCriteria = std::make_shared<AnchorLocateCriteria>();
 anchorLocateCriteria->NearDevice(nearDeviceCriteria);
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++WinRT](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 NearDeviceCriteria nearDeviceCriteria = NearDeviceCriteria();
@@ -593,7 +594,7 @@ anchorLocateCriteria.NearDevice(nearDeviceCriteria);
 
 De `DistanceInMeters` para meter bepaalt hoe ver de anker grafiek wordt verkend om inhoud op te halen. Stel dat u een ruimte hebt gevuld met ankers met een constante densiteit van 2 elke meter. Bovendien bewaart de camera op het apparaat een enkel anker en de service heeft deze gevonden. U bent waarschijnlijk geïnteresseerd in het ophalen van alle ankers die u in de buurt hebt geplaatst, in plaats van het ene anker dat u momenteel bekijkt. Ervan uitgaande dat de ankers die u hebt geplaatst in een grafiek zijn verbonden, kan de service alle in de buurt geplaatste ankers voor u ophalen door de randen in de grafiek te volgen. De hoeveelheid gewerkte grafiek doorvoer wordt bepaald door `DistanceInMeters`. u krijgt alle ankers die zijn verbonden met het account dat u hebt gevonden, die dichter bij `DistanceInMeters`vallen.
 
-Het is belang rijk dat grote waarden voor `MaxResultCount` een negatieve invloed hebben op de prestaties. Probeer deze in te stellen op een goed te begrijpen waarde voor uw toepassing.
+Het is belang rijk dat grote waarden voor `MaxResultCount` een negatieve invloed hebben op de prestaties. Stel deze in op een bestellende waarde voor uw toepassing.
 
 Ten slotte moet u de sessie laten weten dat u de op de sensor gebaseerde zoek opdracht wilt gebruiken:
 
@@ -627,7 +628,7 @@ cloudSpatialAnchorSession.createWatcher(anchorLocateCriteria);
 cloudSpatialAnchorSession->CreateWatcher(anchorLocateCriteria);
 ```
 
-# <a name="c-winrttabcppwinrt"></a>[C++WinRT](#tab/cppwinrt)
+# <a name="c-winrttabcppwinrt"></a>[C++ WinRT](#tab/cppwinrt)
 
 ```cpp
 cloudSpatialAnchorSession.CreateWatcher(anchorLocateCriteria);
@@ -650,7 +651,7 @@ In de onderstaande tabel wordt de verwachte Zoek ruimte voor elk type sensor ges
 | Sensoren      | RADIUS van zoek ruimte (ong.) | Details |
 |-------------|:-------:|---------|
 | GPS         | 20 m-30 m | Bepaald door de GPS-onzekerheid onder andere factoren. De gerapporteerde getallen worden geschat voor de mediaan GPS nauw keurigheid van mobiele telefoons met een-GPS, dat wil zeggen 7 meters. |
-| WiFi        | 50 m-100 m | Bepaald door het bereik van de draadloze toegangs punten. Is afhankelijk van de frequentie, de verzender sterkte, de fysieke obstakels, de interferentie, enzovoort. |
+| Wi-Fi        | 50 m-100 m | Bepaald door het bereik van de draadloze toegangs punten. Is afhankelijk van de frequentie, de verzender sterkte, de fysieke obstakels, de interferentie, enzovoort. |
 | Conbakeners |  70 m | Bepaald door het bereik van het Beacon. Is afhankelijk van de frequentie, overdrachts sterkte, fysieke obstakels, interferentie, enzovoort. |
 
 ## <a name="per-platform-support"></a>Ondersteuning per platform
@@ -661,7 +662,7 @@ De volgende tabel bevat een overzicht van de sensor gegevens die op elk van de o
 |             | HoloLens | Android | iOS |
 |-------------|----------|---------|-----|
 | GPS         | N/A | Ondersteund via [LocationManager][3] API'S (GPS en netwerk) | Ondersteund via [CLLocationManager][4] -api's |
-| WiFi        | Wordt ondersteund met een snelheid van ongeveer één scan om de 3 seconden | Ondersteund. Vanaf API Level 28 worden WiFi-scans om de 2 minuten beperkt tot 4 aanroepen. In Android 10 kan de beperking worden uitgeschakeld vanuit het menu instellingen voor ontwikkel aars. Raadpleeg de [Android-documentatie][5]voor meer informatie. | N.v.t.-geen open bare API |
+| Wi-Fi        | Wordt ondersteund met een snelheid van ongeveer één scan om de 3 seconden | Ondersteund. Vanaf API Level 28 worden WiFi-scans om de 2 minuten beperkt tot 4 aanroepen. In Android 10 kan de beperking worden uitgeschakeld vanuit het menu instellingen voor ontwikkel aars. Raadpleeg de [Android-documentatie][5]voor meer informatie. | N.v.t.-geen open bare API |
 | Conbakeners | Beperkt tot [Eddystone][1] en [iBeacon][2] | Beperkt tot [Eddystone][1] en [iBeacon][2] | Beperkt tot [Eddystone][1] en [iBeacon][2] |
 
 ## <a name="next-steps"></a>Volgende stappen

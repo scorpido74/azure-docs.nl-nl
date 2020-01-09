@@ -2,17 +2,17 @@
 title: Veelgestelde vragen over persoonlijke koppelingen van Azure
 description: Meer informatie over persoonlijke Azure-koppelingen.
 services: private-link
-author: asudbring
+author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 53cb9b91d62c65cefb33451c716e677599306e9c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7870b68ca931123d50e88e846aa066ce53972dbc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229337"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349940"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Veelgestelde vragen over persoonlijke koppelingen van Azure
 
@@ -28,6 +28,7 @@ Verkeer wordt privé verzonden met micro soft backbone. Er wordt geen verbinding
  
 ### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Wat is het verschil tussen een service-eind punt en een persoonlijk eind punt?
 - Wanneer u privé-eind punten gebruikt, wordt netwerk toegang verleend aan specifieke bronnen achter een bepaalde service die een gedetailleerde segmentatie levert. het verkeer kan ook de service resource van on-premises bereiken zonder gebruik te maken van open bare eind punten.
+- Een service-eind punt blijft een openbaar routeerbaar IP-adres.  Een persoonlijk eind punt is een privé-IP in de adres ruimte van het virtuele netwerk waar het persoonlijke eind punt is geconfigureerd.
 
 ### <a name="what-is-the-relationship-between-private-link-service-and-private-endpoint"></a>Wat is de relatie tussen de service voor persoonlijke koppelingen en het persoonlijke eind punt?
 Persoonlijk eind punt biedt toegang tot de resource typen van een persoonlijke koppeling, met inbegrip van Azure PaaS Services en uw eigen persoonlijke koppelings service. Het is een een-op-veel-relatie. Een service voor persoonlijke koppelingen kan verbindingen van meerdere persoonlijke eind punten ontvangen. Aan de andere kant kan één persoonlijk eind punt alleen verbinding maken met één privé koppelings service.    

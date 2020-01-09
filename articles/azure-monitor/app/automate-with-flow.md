@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/29/2019
-ms.openlocfilehash: ff0896498c0270b8eb43b762228916985f924def
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 7d9c966051c2756d7936fa079a0aac68e694425d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678324"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407548"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Azure-toepassing Insights-processen automatiseren met de connector voor Microsoft Flow
 
@@ -119,7 +119,7 @@ Wanneer u uw eigen query's maakt, controleert u of ze correct werken in Analytic
 
 Klik op **Opslaan**.
 
-U kunt wachten tot de trigger deze actie uitvoert. u kunt ook op ![beaker test pictogram klikken ](./media/automate-with-flow/testicon.png) bovenaan te **testen** .
+U kunt wachten tot de trigger deze actie uitvoert. u kunt ook op ![beker glas klikken](./media/automate-with-flow/testicon.png) pictogram bovenaan **testen** .
 
 Na het selecteren van **test**:
 

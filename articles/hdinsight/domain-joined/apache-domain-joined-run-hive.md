@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: 9005b2e01cdb17d6aa6c630ec8be3d702d5b138c
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ff612c43a058fce02bd801e15632c27979f22d17
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688106"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435861"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Apache Hive-beleidsregels configureren in HDInsight met Enterprise Security Package
 
@@ -40,11 +40,11 @@ Meer informatie over het configureren van Apache zwerver-beleids regels voor Apa
 
 ## <a name="create-domain-users"></a>Domeingebruikers maken
 
-Zie [een HDInsight-cluster met ESP maken](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp)voor informatie over het maken van hiveruser1 en hiveuser2. U gebruikt de twee gebruikers accounts in dit artikel.
+Zie [een HDInsight-cluster met ESP maken](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp)voor informatie over het maken van hiveruser1 en hiveuser2. U gebruikt de twee gebruikers accounts in dit artikel.
 
 ## <a name="create-ranger-policies"></a>Ranger-beleidsregels maken
 
-In deze sectie maakt u twee zwerver-beleids regels voor toegang tot hivesampletable. U geeft de machtiging SELECT op voor verschillende sets kolommen. Beide gebruikers zijn gemaakt met behulp [van een HDInsight-cluster met ESP maken](apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp). In de volgende sectie test u de twee beleids regels in Excel.
+In deze sectie maakt u twee zwerver-beleids regels voor toegang tot hivesampletable. U geeft de machtiging SELECT op voor verschillende sets kolommen. Beide gebruikers zijn gemaakt met behulp [van een HDInsight-cluster met ESP maken](apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp). In de volgende sectie test u de twee beleids regels in Excel.
 
 **Ranger-beleidsregels maken**
 
@@ -56,10 +56,10 @@ In deze sectie maakt u twee zwerver-beleids regels voor toegang tot hivesampleta
     |---|---|
     |Policy Name|lezen-hivesampletable-alle|
     |Hive-data base|standaardinstelling|
-    |tabel|hivesampletable|
+    |table|hivesampletable|
     |Hive-kolom|*|
     |Select User|hiveuser1|
-    |Machtigingen|uitgeschakeld|
+    |Machtigingen|selecteert u|
 
     ![HDInsight ESP zwerver Hive-beleid configureren](./media/apache-domain-joined-run-hive/hdinsight-domain-joined-configure-ranger-policy.png).
 
@@ -74,10 +74,10 @@ In deze sectie maakt u twee zwerver-beleids regels voor toegang tot hivesampleta
     |---|---|
     |Policy Name|lezen-hivesampletable-devicemake|
     |Hive-data base|standaardinstelling|
-    |tabel|hivesampletable|
+    |table|hivesampletable|
     |Hive-kolom|ClientID, devicemake|
     |Select User|hiveuser2|
-    |Machtigingen|uitgeschakeld|
+    |Machtigingen|selecteert u|
 
 ## <a name="create-hive-odbc-data-source"></a>Hive ODBC-gegevensbron maken
 

@@ -8,14 +8,14 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 11/27/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: c08de444b691e7bdc1a378e307637fed15b390c3
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: aaa551619b48bb385bf5b1fef2331d382e32a040
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559097"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406535"
 ---
-# <a name="manage-usage-and-costs-for-application-insights"></a>Het gebruik en de kosten voor Application Insights beheren
+# <a name="manage-usage-and-costs-for-application-insights"></a>Gebruik en kosten van Application Insights beheren
 
 > [!NOTE]
 > In dit artikel wordt beschreven hoe u de kosten voor Application Insights begrijpt en beheert.  Een verwant artikel, het [bewaken van het gebruik en de geschatte kosten](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs) , beschrijft het weer geven van het gebruik en de geschatte kosten in meerdere Azure-bewakings functies voor verschillende prijs modellen.
@@ -40,7 +40,7 @@ Er zijn twee benaderingen om dit op te lossen: gebruik van standaard bewaking en
 
 Met de [adaptieve steek proef](https://docs.microsoft.com/azure/azure-monitor/app/sampling#adaptive-sampling-in-your-aspnetaspnet-core-web-applications)van de ASP.NET SDK wordt het gegevens volume automatisch aangepast om binnen een opgegeven maximum frequentie aan verkeer te blijven voor standaard Application Insights bewaking. Als de toepassing een geringe hoeveelheid telemetrie produceert, zoals bij het opsporen van fouten of wegens een laag gebruik, worden de items niet verwijderd door de sampling processor zolang het volume minder is dan het geconfigureerde aantal gebeurtenissen per seconde niveau. Voor een toepassing met hoge volumes, met de standaard drempelwaarde van vijf gebeurtenissen per seconde, wordt het aantal dagelijkse gebeurtenissen door adaptieve steek proeven beperkt tot 432.000. Met een typische gemiddelde gebeurtenis grootte van 1 KB komt dit overeen met 13,4 GB telemetrie per 31-daagse maand per knoop punt dat als host fungeert voor uw toepassing (aangezien de steek proef op elk knoop punt wordt uitgevoerd). 
 
-Voor Sdk's die geen adaptieve bemonstering ondersteunen, kunt u [opname sampling](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)gebruiken, die voor beelden van de gegevens die worden ontvangen door Application Insights op basis van een percentage van de gegevens die moeten worden bewaard, of een [vast aantal steek proeven voor ASP.net, ASP.net core en Java websites](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications) voor het verminderen van het verkeer dat wordt verzonden vanaf uw webserver en webbrowsers
+Voor Sdk's die geen adaptieve bemonstering ondersteunen, kunt u [opname sampling](https://docs.microsoft.com/azure/azure-monitor/app/sampling#ingestion-sampling)gebruiken, die voor beelden van de gegevens die worden ontvangen door Application Insights op basis van een percentage van de gegevens die moeten worden bewaard, of een [vast aantal steek proeven voor ASP.net, ASP.net core en Java-websites](https://docs.microsoft.com/azure/azure-monitor/app/sampling#fixed-rate-sampling-for-aspnet-aspnet-core-java-websites-and-python-applications) om het verkeer te verminderen dat vanaf uw webserver en webbrowsers wordt verzonden.
 
 ### <a name="learn-from-what-similar-customers-collect"></a>Meer informatie over wat vergelijk bare klanten verzamelen
 
@@ -157,9 +157,9 @@ U kunt het dagelijks volume kapje gebruiken om de verzamelde gegevens te beperke
 
 In plaats van de dagelijkse volume limiet te gebruiken, gebruikt u [steek proeven](../../azure-monitor/app/sampling.md) om het gegevens volume op het gewenste niveau af te stemmen. Gebruik het dagelijks kapje alleen als een ' laatste redmiddel ' voor het geval uw toepassing een grote grotere hoeveelheid telemetrie verstuurt.
 
-### <a name="identify-what-daily-data-limit-to-define"></a>Identificeren welke dagelijkse gegevens limiet moet worden gedefinieerd
+### <a name="identify-what-daily-data-limit-to-define"></a>Identificeren welke dagelijkse limiet voor gegevens definiëren
 
-Bekijk Application Insights gebruik en de geschatte kosten om inzicht te krijgen in de trend van de gegevens opname en wat het dagelijkse volume Cap is dat moet worden gedefinieerd. U moet er rekening mee houden, omdat u uw resources niet kunt bewaken nadat de limiet is bereikt. 
+Bekijk Application Insights gebruik en de geschatte kosten om inzicht te krijgen in de trend van de gegevens opname en wat het dagelijkse volume Cap is dat moet worden gedefinieerd. Deze moet worden overwogen zorgvuldig, omdat het niet mogelijk om te controleren van uw bronnen nadat de limiet is bereikt. 
 
 ### <a name="set-the-daily-cap"></a>Het dagelijks kapje instellen
 
@@ -195,7 +195,7 @@ Gebruik een [Analytics-query](analytics.md)om de werkelijke sampling frequentie 
 
 In elk bewaarde record geeft `itemCount` het aantal oorspronkelijke records dat het vertegenwoordigt. De waarde is gelijk aan 1 + het aantal eerder verwijderde records. 
 
-## <a name="change-the-data-retention-period"></a>De Bewaar periode voor gegevens wijzigen
+## <a name="change-the-data-retention-period"></a>Wijzigen van de bewaartermijn voor gegevens
 
 De standaard Bewaar periode voor Application Insights resources is 90 dagen. Er kunnen verschillende retentieperioden worden geselecteerd voor elke Application Insights-resource. De volledige set beschik bare Bewaar perioden is 30, 60, 90, 120, 180, 270, 365, 550 of 730 dagen. 
 
@@ -259,7 +259,7 @@ Omdat deze laag alleen van toepassing is op klanten met een Operations Managemen
 |:---------------------------------------|:----------------:|
 | 1 toepassing met 3 Azure App Service exemplaren en 1 virtuele server | 4 |
 | 3 toepassingen die worden uitgevoerd op 2 Vm's; de Application Insights resources voor deze toepassingen bevinden zich in hetzelfde abonnement en in de laag per knoop punt | 2 | 
-| 4 toepassingen waarvan de toepassingen Insights-resources zich in hetzelfde abonnement bevinden; elke toepassing die 2 instanties uitvoert gedurende 16-piek uren en 4 instanties gedurende 8 piek uren | 13,33 | 
+| 4 toepassingen waarvan de toepassingen Insights-resources zich in hetzelfde abonnement bevinden; elke toepassing die 2 instanties uitvoert gedurende 16-piek uren en 4 instanties gedurende 8 piek uren | 13.33 | 
 | Cloud Services met één werknemersrol en één webrol, elk met 2 exemplaren | 4 | 
 | Een Azure Service Fabric-cluster met 5 knoop punten met 50 micro Services; elke micro service die drie instanties uitvoert | 5|
 

@@ -1,5 +1,5 @@
 ---
-title: 'Slimme detectie: er is een mogelijke geheugenlek gedetecteerd door Azure-toepassing Insights | Microsoft Docs'
+title: Geheugenlek detecteren-Azure-toepassing Insights Slimme detectie
 description: Bewaak toepassingen met Azure-toepassing inzichten voor mogelijke geheugen lekkages.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/12/2017
-ms.openlocfilehash: f07da754c6c9e0ad0541db12740c1d80f7f884fd
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: cc6074732a86be02a8d8c596c46e154db4e8ad7f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72818805"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406468"
 ---
 # <a name="memory-leak-detection-preview"></a>Detectie van geheugenlek (preview-versie)
 
@@ -26,7 +26,7 @@ Een typische melding volgt een consistente toename van het geheugen verbruik ged
 ## <a name="does-my-app-really-have-a-problem"></a>Heeft mijn app echt een probleem?
 Nee, een melding betekent niet dat uw app een probleem heeft. Hoewel er in het geval van geheugen lekken meestal een toepassings probleem duiden, kunnen deze patronen typisch zijn voor uw specifieke proces, of kunnen ze natuurlijk zakelijke rechtvaardiging hebben en kunnen ze worden genegeerd.
 
-## <a name="how-do-i-fix-it"></a>Hoe kan ik oplossen?
+## <a name="how-do-i-fix-it"></a>Hoe herstel ik deze?
 De meldingen bevatten diagnostische gegevens voor ondersteuning bij het diagnostische analyse proces:
 1. **Sorteren.** In de melding ziet u de hoeveelheid geheugen toename (in GB) en het tijds bereik waarin het geheugen is toegenomen. Dit kan handig zijn bij het toewijzen van een prioriteit aan het probleem.
 2. **Ligt.** Hoeveel computers hebben het geheugen lekkage patroon vertoond? Hoeveel uitzonde ringen zijn er geactiveerd tijdens het mogelijke geheugenlek? Deze informatie kan worden opgehaald uit de melding.

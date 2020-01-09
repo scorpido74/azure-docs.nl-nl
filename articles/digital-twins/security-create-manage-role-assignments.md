@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 12/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45ce22f208ee31b7202705eb4e42c38bedf09a8b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 7eeaadc80a97a96e6effdfc9e5cc76c201998f3f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013957"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438059"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>Roltoewijzingen in azure Digital Apparaatdubbels maken en beheren
 
@@ -36,12 +36,12 @@ Elke roltoewijzing voldoet aan de volgende definitie:
 
 In de volgende tabel wordt elk kenmerk beschreven:
 
-| Kenmerk | Naam | Vereist | Type | Beschrijving |
+| Kenmerk | Name | Verplicht | Type | Beschrijving |
 | --- | --- | --- | --- | --- |
 | roleId | Roldefinitie-id | Ja | Tekenreeks | De unieke ID van de gewenste roltoewijzing. Zoek roldefinities en hun id door een query uit te zoeken naar de onderstaande systeem-API of-tabel. |
 | object-id | Object-id | Ja | Tekenreeks | Een Azure Active Directory-ID, Service-Principal object-ID of domein naam. Waaraan de roltoewijzing is toegewezen. De roltoewijzing moet worden ingedeeld volgens het bijbehorende type. Voor de `DomainName` objectIdType moet objectId beginnen met het `“@”` teken. |
 | objectIdType | Type object-id | Ja | Tekenreeks | Het soort object-id dat wordt gebruikt. Zie de **ondersteunde ObjectIdTypes** hieronder. |
-| pad | Pad naar Space | Ja | Tekenreeks | Het volledige pad naar het `Space`-object. Een voorbeeld is `/{Guid}/{Guid}`. Als een id de roltoewijzing voor de hele grafiek vereist, geeft u `"/"`op. Met dit teken wordt de hoofdmap aangeduid, maar het gebruik ervan wordt afgeraden. Volg altijd het principe van minimale bevoegdheden. |
+| Pad | Pad naar Space | Ja | Tekenreeks | Het volledige pad naar het `Space`-object. Een voorbeeld is `/{Guid}/{Guid}`. Als een id de roltoewijzing voor de hele grafiek vereist, geeft u `"/"`op. Met dit teken wordt de hoofdmap aangeduid, maar het gebruik ervan wordt afgeraden. Volg altijd het principe van minimale bevoegdheden. |
 | tenantId | Tenant-id | Varieert | Tekenreeks | In de meeste gevallen wordt de Tenant-ID van Azure Active Directory. Niet toegestaan voor `DeviceId` en `TenantId` ObjectIdTypes. Vereist voor `UserId` en `ServicePrincipalId` ObjectIdTypes. Optioneel voor de DomainName-ObjectIdType. |
 
 ### <a name="supported-role-definition-identifiers"></a>Definitie-id's van ondersteunde rollen
@@ -163,10 +163,10 @@ YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH
 
 | **Parameter waarde** | **Vereist** |  **Type** |  **Beschrijving** |
 | --- | --- | --- | --- |
-| YOUR_USER_ID |  True | Tekenreeks |   De objectId voor de gebruikers-id objectIdType. |
-| YOUR_PATH | True | Tekenreeks |   Het gekozen pad om de toegang voor te controleren. |
-| YOUR_ACCESS_TYPE |  True | Tekenreeks |   *Lezen*, *maken*, *bijwerken*of *verwijderen* |
-| YOUR_RESOURCE_TYPE | True | Tekenreeks |  *Apparaat*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *Extended type*, *eind punt* *, Keys*, *Matcher*, *Ontology*, *rapport*, *RoleDefinition*, *sensor*, *SensorExtendedProperty*, *Space*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *systeem*,  *UerDefinedFunction*, *User*, *UserBlobMetadata*of *UserExtendedProperty* |
+| YOUR_USER_ID |  Waar | Tekenreeks |   De objectId voor de gebruikers-id objectIdType. |
+| YOUR_PATH | Waar | Tekenreeks |   Het gekozen pad om de toegang voor te controleren. |
+| YOUR_ACCESS_TYPE |  Waar | Tekenreeks |   *Lezen*, *maken*, *bijwerken*of *verwijderen* |
+| YOUR_RESOURCE_TYPE | Waar | Tekenreeks |  *Apparaat*, *DeviceBlobMetadata*, *DeviceExtendedProperty*, *ExtendedPropertyKey*, *Extended type*, *eind punt* *, Keys*, *Matcher*, *Ontology*, *rapport*, *RoleDefinition*, *sensor*, *SensorExtendedProperty*, *Space*, *SpaceBlobMetadata*, *SpaceExtendedProperty*, *SpaceResource*, *SpaceRoleAssignment*, *systeem*,  *UerDefinedFunction*, *User*, *UserBlobMetadata*of *UserExtendedProperty* |
 
 Een geslaagde aanvraag retourneert een Booleaanse `true` of `false` om aan te geven of het toegangs type is toegewezen aan de gebruiker voor het gegeven pad en de opgegeven bron.
 

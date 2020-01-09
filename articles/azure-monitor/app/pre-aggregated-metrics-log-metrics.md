@@ -8,14 +8,14 @@ author: vgorbenko
 ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: e0a0784c6331bdf4575f5c044c67cf9b4df3152f
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 384e3c9032b324ee92762db9156c628a05e5e862
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820671"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406596"
 ---
-# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Op logboek gebaseerde en vooraf geaggregeerde metrische gegevens in Application Insights
+# <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Vooraf samengevoegde metrische gegevens op basis van logboeken in Application Insights
 
 In dit artikel wordt uitgelegd wat het verschil is tussen ' traditionele ' Application Insights metrische gegevens die zijn gebaseerd op Logboeken en vooraf geaggregeerde metrische gegevens die momenteel beschikbaar zijn in de open bare preview. Beide soorten metrische gegevens zijn beschikbaar voor de gebruikers van Application Insights en elk een unieke waarde voor het controleren van de status van toepassingen, diagnostische gegevens en analyses. De ontwikkel aars die toepassingen maken, kunnen bepalen welk type metrische gegevens het meest geschikt zijn voor een bepaald scenario, afhankelijk van de grootte van de toepassing, het verwachte volume van de telemetrie en zakelijke vereisten voor de precisie van metrische gegevens en waarschuwingen.
 
@@ -41,13 +41,13 @@ De nieuwere Sdk's ([Application Insights 2,7](https://www.nuget.org/packages/Mic
 
 Voor de Sdk's die geen vooraf aggregatie implementeren (dat wil zeggen, oudere versies van Application Insights Sdk's of voor browser instrumentatie), vult de Application Insights back-end nog steeds de nieuwe metrische gegevens in door het samen voegen van de gebeurtenissen die door de toepassing worden ontvangen Het eind punt voor het verzamelen van Insights-gebeurtenissen. Dit betekent dat u niet profiteert van de gereduceerde hoeveelheid gegevens die via de kabel wordt verzonden, maar u kunt nog steeds gebruikmaken van de vooraf samengestelde metrieken en betere prestaties en ondersteuning bieden voor de nabije real-time driedimensionale waarschuwingen met Sdk's die niet statistische metrische gegevens tijdens het verzamelen.
 
-Het is belang rijk dat het verzamelings eindpunt gebeurtenissen vóór opname samenvoegt, wat betekent dat de [steek proeven voor opname](https://docs.microsoft.com/azure/application-insights/app-insights-sampling) nooit van invloed zijn op de nauw keurigheid van vooraf geaggregeerde metrische gegevens, ongeacht de SDK-versie die u gebruikt met uw modules.  
+Het is belang rijk dat het verzamelings eindpunt gebeurtenissen vóór opname samenvoegt, wat betekent dat de [steek proeven voor opname](https://docs.microsoft.com/azure/application-insights/app-insights-sampling) nooit van invloed zijn op de nauw keurigheid van vooraf geaggregeerde metrische gegevens, ongeacht de SDK-versie die u met uw toepassing gebruikt.  
 
 ## <a name="using-pre-aggregation-with-application-insights-custom-metrics"></a>Vooraf aggregatie gebruiken met Application Insights aangepaste metrische gegevens
 
 U kunt vooraf aggregatie met aangepaste metrische gegevens gebruiken. De twee belangrijkste voor delen zijn de mogelijkheid om een dimensie van een aangepaste metriek te configureren en te waarschuwen en de hoeveelheid gegevens die vanuit de SDK wordt verzonden naar het eind punt van de Application Insights verzameling te verminderen.
 
-Er zijn verschillende [manieren om aangepaste metrische gegevens van de Application INSIGHTS SDK te verzenden](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Als uw versie van de SDK de [GetMetric-en TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric) -methoden biedt, is dit de voorkeurs methode voor het verzenden van aangepaste metrische gegevens, omdat in dit geval vooraf aggregatie plaatsvindt binnen de SDK, en niet alleen het volume van de in azure opgeslagen opslag, maar ook het volume van gegevens die van de SDK naar Application Insights worden verzonden. Als dat niet het geval is, gebruikt u de methode [trackMetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) , waarmee metrische gebeurtenissen vooraf worden geaggregeerd tijdens gegevens opname.
+Er zijn verschillende [manieren om aangepaste metrische gegevens van de Application INSIGHTS SDK te verzenden](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Als uw versie van de SDK de [GetMetric-en TrackValue](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#getmetric) -methoden biedt, is dit de voorkeurs methode voor het verzenden van aangepaste metrische gegevens, omdat in dit geval vooraf aggregatie plaatsvindt binnen de SDK, niet alleen het volume van de in azure opgestelde Data, maar ook het volume van de gegevens die van de sdk naar Application Insights worden verzonden. Als dat niet het geval is, gebruikt u de methode [trackMetric](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackmetric) , waarmee metrische gebeurtenissen vooraf worden geaggregeerd tijdens gegevens opname.
 
 ## <a name="custom-metrics-dimensions-and-pre-aggregation"></a>Aangepaste dimensies voor metrische gegevens en vooraf aggregatie
 
@@ -63,7 +63,7 @@ Het verzamelen van dimensies met aangepaste metrische gegevens is standaard uitg
 
 Gebruik [Azure Monitor Metrics Explorer](../platform/metrics-getting-started.md) voor het uitzetten van grafieken van vooraf geaggregeerde en op Logboeken gebaseerde metrische gegevens en om Dash boards te ontwerpen met grafieken. Nadat u de gewenste Application Insights resource hebt geselecteerd, gebruikt u de naam ruimte kiezer om te scha kelen tussen Standard (preview) en metrische gegevens op basis van een logboek of selecteert u een aangepaste metrische naam ruimte:
 
-![Metrische naam ruimte](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
+![Metrische naamruimte](./media/pre-aggregated-metrics-log-metrics/002-metric-namespace.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

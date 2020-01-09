@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: f62406a341c7e1467cdf17b21662bb5c0993881c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 901e075572e0ed73dc7d0633941311c04b4f3c1c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232403"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358357"
 ---
 # <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
 
@@ -103,7 +103,7 @@ De volgende tabel bevat een verwijzing naar andere Data Format-Api's die mogelij
 
 API | Standaard gegevens indeling | Andere indelingen
 --------|---------------------|--------------
-/instance | json | text
+/Instance | json | tekst
 /scheduledevents | json | geen
 /attested | json | geen
 
@@ -125,7 +125,7 @@ Aanvragen moeten ook een `Metadata: true`-header bevatten om ervoor te zorgen da
 
 Als er geen gegevens element is gevonden of een ongeldige aanvraag is, retourneert de Instance Metadata Service standaard HTTP-fouten. Bijvoorbeeld:
 
-HTTP-status code | Reden
+HTTP-statuscode | Reden
 ----------------|-------
 200 OK |
 400 ongeldige aanvraag | `Metadata: true` header ontbreekt of de indeling ontbreekt tijdens het uitvoeren van een query op een Leaf-knoop punt
@@ -359,17 +359,17 @@ Gegevens | Beschrijving | Geïntroduceerde versie
 azEnvironment | Azure-omgeving waarin de virtuele machine wordt uitgevoerd | 10-01-2018
 customData | [Aangepaste gegevens](#custom-data) weer geven | 2019-02-01
 location | Azure-regio waarin de virtuele machine wordt uitgevoerd | 2017-04-02
-naam | Naam van de virtuele machine | 2017-04-02
+name | Naam van de virtuele machine | 2017-04-02
 offer | Informatie over de installatie kopie van de virtuele machine weer geven en die alleen aanwezig is voor installatie kopieën die vanuit de Azure-installatie kopie galerie | 2017-04-02
 besturingssysteemtype | Linux of Windows | 2017-04-02
 placementGroupId | [Plaatsings groep](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) van de schaalset voor virtuele machines | 2017-08-01
-Fonds | [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) met naam, product en uitgever voor een virtuele machine als de Azure Marketplace-installatie kopie | 2018-04-02
+plannen | [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) met naam, product en uitgever voor een virtuele machine als de Azure Marketplace-installatie kopie | 2018-04-02
 platformUpdateDomain |  [Domein bijwerken](manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
 platformFaultDomain | [Fout domein](manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
-providers | Provider van de virtuele machine | 10-01-2018
+provider | Provider van de virtuele machine | 10-01-2018
 publicKeys | [Verzameling van open bare sleutels](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) die zijn toegewezen aan de virtuele machine en de paden | 2018-04-02
 publisher | Uitgever van de VM-installatie kopie | 2017-04-02
-resourceGroupName | [Resource groep](../../azure-resource-manager/resource-group-overview.md) voor uw virtuele machine | 2017-08-01
+resourceGroupName | [Resource groep](../../azure-resource-manager/management/overview.md) voor uw virtuele machine | 2017-08-01
 resourceId | De [volledig gekwalificeerde](https://docs.microsoft.com/rest/api/resources/resources/getbyid) id van de resource | 2019-03-11
 sku | Specifieke SKU voor de VM-installatie kopie | 2017-04-02
 subscriptionId | Azure-abonnement voor de virtuele machine | 2017-08-01
@@ -644,7 +644,7 @@ Verification successful
 Gegevens | Beschrijving
 -----|------------
 nonce | Door de gebruiker opgegeven optionele teken reeks met de aanvraag. Als er geen nonce in de aanvraag is opgegeven, wordt de huidige UTC-tijds tempel geretourneerd
-Fonds | Een virtuele machine in een Azure Marketplace-installatie kopie [plannen](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) , met naam, product en uitgever
+plannen | Een virtuele machine in een Azure Marketplace-installatie kopie [plannen](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) , met naam, product en uitgever
 timestamp/createdOn | Het tijds tempel waarop het eerste ondertekende document is gemaakt
 timestamp/expiresOn | Het tijds tempel waarop het ondertekende document verloopt
 vmId |  De [unieke id](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) voor de virtuele machine

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 1b9d8c98391e7e2bac3492dcf696f098f5c6cf57
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 7553499dc9aba8d20bee126204b6d19f2386d295
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903182"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408436"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Snelstartgids: een interactieve Zoek toewijzing maken met behulp van Azure Maps
 
@@ -26,24 +26,38 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-## <a name="create-an-account-and-get-your-key"></a>Een account maken en de sleutel ophalen
+<a id="createaccount"></a>
 
-1. Selecteer in de linkerbovenhoek van de [Azure-portal](https://portal.azure.com) **Een resource maken**.
-2. Voer **Maps** in in het vak **Marketplace doorzoeken**.
-3. Selecteer **Toewijzingen** in de **Resultaten**. Selecteer de knop **Maken** die onder de kaart wordt weergegeven.
-4. Voer de volgende waarden in op de pagina **Azure Maps-account maken**:
-   - De **Naam** van uw nieuwe account.
-   - Het **Abonnement** dat u wilt gebruiken voor dit account.
-   - De **Resourcegroep** voor dit account. U kunt kiezen of u een **Nieuwe** of **Bestaande** resourcegroep wilt gebruiken.
-   - Selecteer de gewenste **prijscategorie**.
-   - Lees de **Licentie** en **Privacyverklaring**. Schakel het selectievakje in om de voorwaarden te accepteren.
-   - Selecteer tot slot de knop **Maken**.
+## <a name="create-an-account-with-azure-maps"></a>Een account van Azure Maps maken
 
-     ![Een Azure Maps-account maken in de portal](./media/quick-demo-map-app/create-account.png)
+Voer de volgende stappen uit om een nieuw Maps-account te maken:
 
-5. Nadat uw account is gemaakt, opent u het account en zoekt u de sectie Instellingen van het accountmenu. Selecteer **verificatie** om de primaire en secundaire sleutels voor uw Azure Maps-account weer te geven. Kopieer de waarde van de **Primaire sleutel** naar uw lokale klembord voor gebruik in de volgende sectie.
+1. Klik in de linkerbovenhoek van [Azure Portal](https://portal.azure.com) op **Een resource maken**.
+2. Typ **Maps** in het vak *Marketplace doorzoeken*.
+3. Selecteer **Toewijzingen** in de *Resultaten*. Klik op de knop **Maken** die onder de kaart wordt weergegeven.
+4. Voer de volgende waarden in op de pagina **Azure Kaarten-account maken**:
+    * Het *Abonnement* dat u wilt gebruiken voor dit account.
+    * De naam van de *Resourcegroep* voor dit account. U kunt kiezen om een *Nieuwe* of *Bestaande* resourcegroep te gebruiken.
+    * De *Naam* van uw nieuwe account.
+    * De *prijs categorie* voor dit account.
+    * Lees de *licentie* en de *privacyverklaring*, en schakel het selectievakje in om de voorwaarden te accepteren.
+    * Klik op de knop **Maken**.
+
+![Maps-account maken in de portal](./media/quick-demo-map-app/create-account.png)
+
+<a id="getkey"></a>
+
+## <a name="get-the-primary-key-for-your-account"></a>De primaire sleutel voor uw account ophalen
+
+Als het Azure Kaarten-account is gemaakt, haalt u de sleutel op waarmee u query's kunt uitvoeren op de API's van kaarten. U kunt het beste de primaire sleutel van uw account gebruiken als abonnements sleutel bij het aanroepen van Azure Maps Services.
+
+1. Open uw Maps-account in de portal.
+2. Selecteer in de sectie instellingen de optie **verificatie**.
+3. Kopieer de **Primaire Sleutel** naar het Klembord. Sla de sleutel lokaal op voor gebruik verderop in deze zelfstudie.
+
+![Primaire sleutel in de portal ophalen](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>De toepassing downloaden
 

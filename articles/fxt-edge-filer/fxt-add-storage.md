@@ -1,17 +1,17 @@
 ---
-title: Back-end-opslag toevoegen aan het FXT Edge-cluster van Microsoft Azure
+title: 'Zelf studie: opslag toevoegen aan een Azure FXT Edge-bestands cluster'
 description: Back-end-opslag en de client gerichte pseudonamespace voor de Azure FXT Edge-Bestandsr configureren
 author: ekpgh
+ms.author: rohogue
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: rohogue
-ms.openlocfilehash: ecc246368cae74440ada782940931b3588193975
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: 3f736942627d088e3a639f89bef5438714c2608b
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72256059"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551961"
 ---
 # <a name="tutorial-add-back-end-storage-and-configure-the-virtual-namespace"></a>Zelf studie: back-end-opslag toevoegen en de virtuele naam ruimte configureren 
 
@@ -55,7 +55,7 @@ Nadat u een kern bestand hebt toegevoegd, kunt u de instellingen ervan bijwerken
 
 ## <a name="add-a-core-filer"></a>Een kern bestand toevoegen
 
-Definieer een kern bestand door te klikken op de knop **maken** op de pagina **core filer** >  instellingen voor**kern bestanden beheren** .
+Definieer een kern bestand door te klikken op de knop **maken** op de pagina **kern bestand** > instellingen voor **kern bestanden beheren** .
 
 ![Klik op de knop maken boven de lijst met kern bestanden op de pagina kern bestanden beheren](media/fxt-cluster-config/create-core-filer-button.png)
 
@@ -79,7 +79,7 @@ Subtaken zijn onder andere:
 
   ![Informatie over Cloud core-bestanden in de wizard nieuwe kern bestand](media/fxt-cluster-config/new-core-filer-cloud3.png) 
   
-  Als u de Cloud toegangs referenties voor dit cluster al hebt toegevoegd, worden ze weer gegeven in de lijst. Referenties bijwerken en toevoegen op de pagina **Cluster** >  instellingen voor**Cloud referenties** . 
+  Als u de Cloud toegangs referenties voor dit cluster al hebt toegevoegd, worden ze weer gegeven in de lijst. Referenties bijwerken en toevoegen op de pagina **Cluster** > instellingen voor **Cloud referenties** . 
 
 Nadat u alle vereiste instellingen in de wizard hebt ingevuld, klikt u op de knop **bestand toevoegen** om de wijziging in te dienen.
 
@@ -129,7 +129,7 @@ Als u een nieuwe vserver wilt maken, hebt u de volgende informatie nodig:
 
 * Als uw netwerk VLAN'S heeft, welk VLAN moet worden gebruikt voor deze vserver
 
-Gebruik de pagina **VServer** >  VServers-instellingen**beheren** om een nieuwe vserver te maken. Lees voor meer informatie [een vserver maken](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) in de cluster configuratie handleiding. 
+Gebruik de pagina **VServer** > VServers-instellingen **beheren** om een nieuwe vserver te maken. Lees voor meer informatie [een vserver maken](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_vserver_manage.html#creating-a-vserver) in de cluster configuratie handleiding. 
 
 ![pop-upvenster voor het maken van een nieuwe vserver](media/fxt-cluster-config/new-vserver.png)
 
@@ -141,7 +141,7 @@ U kunt dit systeem gebruiken voor het vereenvoudigen van het pad dat wordt gebru
 
 ![Pagina Wizard nieuwe verbinding toevoegen met instellingen ingevuld](media/fxt-cluster-config/add-junction-full.png)
 
-Raadpleeg [ **vserver** > -**naam ruimte** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html) in de cluster configuratie handleiding voor gedetailleerde informatie over het maken van een naam ruimte koppeling.
+Raadpleeg [ **vserver** > **naam ruimte** ](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html) in de cluster configuratie handleiding voor meer informatie over het maken van een naam ruimte koppeling.
 
 ![De pagina VServer > naam ruimte-instellingen geeft Details voor een verbinding weer](media/fxt-cluster-config/namespace-populated.png)
 
@@ -151,7 +151,7 @@ Wanneer u zowel een vserver als een kern bestand hebt, moet u de export regels a
 
 Gebruik eerst de pagina **VServer** > **export regels** om nieuwe regels toe te voegen, het standaard beleid te wijzigen of uw eigen aangepaste export beleid te maken.
 
-Gebruik vervolgens de pagina **VServer** > **exporteren** om het aangepaste beleid toe te passen op de export van uw kern bestand wanneer dit wordt geopend via die vserver.
+Gebruik vervolgens de pagina **VServer** > - **beleid exporteren** om het aangepaste beleid toe te passen op de export van uw kern bestand wanneer dit wordt geopend via die vserver.
 
 Raadpleeg het artikel over de cluster configuratie handleiding voor meer informatie over het beheren van de [toegang tot de kern bestands export](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/export_rules_overview.html) .
 

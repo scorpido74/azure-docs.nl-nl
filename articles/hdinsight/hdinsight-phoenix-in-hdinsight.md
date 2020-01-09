@@ -5,22 +5,21 @@ author: ashishthaps
 ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 09/05/2019
-ms.openlocfilehash: 23c2a4e8c576f3f2355db0d903c43c9c5b24cc18
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.custom: hdinsightactive
+ms.date: 12/17/2019
+ms.openlocfilehash: b1d81296c996ab09cb6482cb970496779ccf8bd6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311645"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435498"
 ---
 # <a name="apache-phoenix-in-azure-hdinsight"></a>Apache Phoenix in azure HDInsight
 
 [Apache Phoenix](https://phoenix.apache.org/) is een open-source, enorm parallelle relationele data base-laag die is gebouwd op [Apache HBase](hbase/apache-hbase-overview.md). Met Phoenix kunt u SQL-achtige query's gebruiken via HBase. Phoenix maakt gebruik van JDBC-Stuur Programma's onder om gebruikers in staat te stellen SQL-tabellen, indexen, weer gaven en reeksen en upsert te maken, verwijderen, wijzigen en meerdere rijen tegelijk en in bulk. Phoenix gebruikt noSQL systeem eigen compilatie in plaats van MapReduce te gebruiken voor het compileren van query's, waardoor toepassingen met lage latentie op HBase kunnen worden gemaakt. Phoenix voegt coprocessoren toe ter ondersteuning van het uitvoeren van de door de client geleverde code in de adres ruimte van de server, waarbij de code wordt uitgevoerd die zich in de gegevens bevindt. Deze aanpak minimaliseert de client/server-gegevens overdracht.
 
 Apache Phoenix opent big data query's naar niet-ontwikkel aars die een SQL-achtige syntaxis kunnen gebruiken in plaats van Program meren. Phoenix is zeer geoptimaliseerd voor HBase, in tegens telling tot andere hulpprogram ma's, zoals [Apache Hive](hadoop/hdinsight-use-hive.md) en Apache Spark SQL. Het voor deel van ontwikkel aars is het schrijven van zeer krachtige query's met veel minder code.
-<!-- [Spark SQL](spark/apache-spark-sql-with-hdinsight.md)  -->
 
 Wanneer u een SQL-query verzendt, compileert Phoenix de query om systeem eigen HBase-aanroepen uit te voeren en wordt de scan (of het plan) parallel uitgevoerd voor Optima Lise ring. Deze laag van abstractie maakt de ontwikkelaar de mogelijkheid om MapReduce-taken te schrijven, om in plaats daarvan zich te richten op de bedrijfs logica en de werk stroom van hun toepassing rond de big data opslag van Phoenix.
 
@@ -38,7 +37,7 @@ Maak een secundaire index met de `CREATE INDEX` opdracht:
 CREATE INDEX ix_purchasetype on SALTEDWEBLOGS (purchasetype, transactiondate) INCLUDE (bookname, quantity);
 ```
 
-Deze aanpak kan leiden tot een aanzienlijke prestatie verhoging voor het uitvoeren van query's met één geïndexeerde waarde. Dit type secundaire index is een **bedekte index**die alle kolommen bevat die in de query zijn opgenomen. Daarom is de zoek opdracht naar tabellen niet vereist en de index voldoet aan de volledige query.
+Deze aanpak kan leiden tot een aanzienlijke prestatie verhoging voor het uitvoeren van query's met één geïndexeerde waarde. Dit type secundaire index is een **bedekte index**die alle kolommen bevat die in de query zijn opgenomen. Daarom is het opzoeken van de tabel niet vereist en de index voldoet aan de volledige query.
 
 ### <a name="views"></a>Weergaven
 
@@ -51,8 +50,8 @@ Dit is bijvoorbeeld een fysieke tabel met de naam `product_metrics` met de volge
 ```sql
 CREATE  TABLE product_metrics (
     metric_type CHAR(1),
-    created_by VARCHAR, 
-    created_date DATE, 
+    created_by VARCHAR,
+    created_date DATE,
     metric_id INTEGER
     CONSTRAINT pk PRIMARY KEY (metric_type, created_by, created_date, metric_id));
 ```
@@ -138,3 +137,5 @@ An HDInsight HBase-cluster bevat de [Ambari-gebruikers interface](hdinsight-hado
 ## <a name="see-also"></a>Zie ook
 
 * [Apache Phoenix gebruiken met HBase-clusters op basis van Linux in HDInsight](hbase/apache-hbase-query-with-phoenix.md)
+
+* [Apache Zeppelin gebruiken om Apache Phoenix query's uit te voeren op Apache HBase in azure HDInsight](./hbase/apache-hbase-phoenix-zeppelin.md)

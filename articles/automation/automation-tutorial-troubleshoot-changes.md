@@ -2,21 +2,17 @@
 title: Problemen met wijzigingen in een virtuele machine van Azure oplossen | Microsoft Docs
 description: Gebruik Wijzigingen bijhouden om problemen met wijzigingen in een virtuele machine van Azure op te lossen.
 services: automation
-ms.service: automation
 ms.subservice: change-inventory-management
 keywords: bijhouden, wijzigingen, automation
-author: jennyhunter-msft
-ms.author: jehunte
 ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
-manager: carmonm
-ms.openlocfilehash: 92f25d956bc8f1f930ae6ebbf7ee48c144bf8a30
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: 60ca1ef3d5c14a0f3dea5b662fc5c95184e6574d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67476861"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420641"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Problemen met wijzigingen in uw omgeving oplossen
 
@@ -26,7 +22,7 @@ Door deze configuratiewijzigingen op te sporen, kunt operationele problemen in u
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een virtuele machine onboarden voor Wijzigingen bijhouden en Inventaris
+> * Een VM onboarden voor Wijzigingen bijhouden en Inventaris
 > * Zoeken in wijzigingenlogboeken voor gestopte services
 > * Wijzigingen bijhouden configureren
 > * Verbinding met activiteitenlogboek inschakelen
@@ -48,7 +44,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Wijzigingen bijhouden en Inventaris inschakelen
 
-U moet voor deze zelfstudie eerst Wijzigingen bijhouden en Inventaris voor uw virtuele machine inschakelen. Als u eerder een andere automatiseringsoplossing voor een virtuele machine hebt ingeschakeld, is deze stap niet nodig.
+U moet voor deze zelfstudie eerst Wijzigingen bijhouden en Inventaris voor uw virtuele machine inschakelen. Als u eerder een andere automatiseringsoplossing voor een VM hebt ingeschakeld, is deze stap niet nodig.
 
 1. Selecteer in het menu links **Virtuele machines** en selecteer een virtuele machine in de lijst.
 1. Klik in het menu links in de sectie **Bewerkingen** op **Inventaris**. De pagina **Wijzigingen bijhouden** wordt geopend.
@@ -99,12 +95,12 @@ In het venster **Werkruimteconfiguratie** voegt u Windows-registersleutels, Wind
 
 1. In **Windows-register voor het bijhouden van wijzigingen toevoegen** voert u de gegevens in die u wilt bijhouden voor de sleutel en klikt u op **Opslaan**
 
-|Eigenschap  |Description  |
+|Eigenschap  |Beschrijving  |
 |---------|---------|
-|Enabled     | Bepaalt of de instelling wordt toegepast        |
+|Ingeschakeld     | Bepaalt of de instelling wordt toegepast        |
 |Itemnaam     | Beschrijvende naam van het bestand dat moet worden bijgehouden        |
 |Groep     | De naam van een groep voor het logisch groeperen van bestanden        |
-|Windows-registersleutel   | Het pad voor het bestand, bijvoorbeeld: HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup      |
+|Windows-registersleutel   | Het pad voor het controleren op het bestand, bijvoorbeeld: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ### <a name="add-a-windows-file"></a>Een Windows-bestand toevoegen
 
@@ -112,9 +108,9 @@ In het venster **Werkruimteconfiguratie** voegt u Windows-registersleutels, Wind
 
 1. In **Windows-bestand voor het bijhouden van wijzigingen toevoegen** voert u de gegevens van het bestand of de map voor het bijhouden van wijzigingen in en klikt u op **Opslaan**
 
-|Eigenschap  |Description  |
+|Eigenschap  |Beschrijving  |
 |---------|---------|
-|Enabled     | Bepaalt of de instelling wordt toegepast        |
+|Ingeschakeld     | Bepaalt of de instelling wordt toegepast        |
 |Itemnaam     | Beschrijvende naam van het bestand dat moet worden bijgehouden        |
 |Groep     | De naam van een groep voor het logisch groeperen van bestanden        |
 |Pad invoeren     | Het pad voor het controleren op het bestand, bijvoorbeeld: "C:\temp\\\*.txt"<br>U kunt ook omgevingsvariabelen gebruiken zoals ' %winDir%\System32\\\*. * "         |
@@ -127,9 +123,9 @@ In het venster **Werkruimteconfiguratie** voegt u Windows-registersleutels, Wind
 
 1. In **Linux-bestand voor het bijhouden van wijzigingen toevoegen** voert u de gegevens van het bestand of de map voor het bijhouden van wijzigingen in en klikt u op **Opslaan**
 
-|Eigenschap  |Description  |
+|Eigenschap  |Beschrijving  |
 |---------|---------|
-|Enabled     | Bepaalt of de instelling wordt toegepast        |
+|Ingeschakeld     | Bepaalt of de instelling wordt toegepast        |
 |Itemnaam     | Beschrijvende naam van het bestand dat moet worden bijgehouden        |
 |Groep     | De naam van een groep voor het logisch groeperen van bestanden        |
 |Pad invoeren     | Het pad voor het controleren op het bestand, bijvoorbeeld: "/etc/*.conf"       |
@@ -211,14 +207,14 @@ Selecteer onder **Regel maken** bij **Acties aanpassen** de optie **E-mailonderw
 
 In de volgende afbeelding ziet u een e-mail die u zou kunnen ontvangen wanneer de W3SVC-service stopt.
 
-![email](./media/automation-tutorial-troubleshoot-changes/email.png)
+![e-mail](./media/automation-tutorial-troubleshoot-changes/email.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Een virtuele machine onboarden voor Wijzigingen bijhouden en Inventaris
+> * Een VM onboarden voor Wijzigingen bijhouden en Inventaris
 > * Zoeken in wijzigingenlogboeken voor gestopte services
 > * Wijzigingen bijhouden configureren
 > * Verbinding met activiteitenlogboek inschakelen

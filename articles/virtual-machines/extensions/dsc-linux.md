@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: b631a370c64522c201f1208819b5a76895d83b09
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: d19b3d59c48cfc8fc91d4678c2f979b110575b1a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457521"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359150"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC-extensie voor Linux (micro soft. OSTCExtensions. DSCForLinux)
 
@@ -82,7 +82,7 @@ Hier vindt u alle ondersteunde beveiligings configuratie parameters:
 * `RegistrationKey`: (optioneel, String) de toegangs sleutel van het Azure Automation-account
 
 
-## <a name="scenarios"></a>Scenario 's
+## <a name="scenarios"></a>Scenario's
 
 ### <a name="register-an-azure-automation-account"></a>Een Azure Automation-account registreren
 protected.json
@@ -281,7 +281,7 @@ Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sja
 
 Het voor beeld van een resource manager-sjabloon is [201-DSC-Linux-Azure-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-azure-storage-on-ubuntu) en [201-DSC-Linux-Public-Storage-on-Ubuntu](https://github.com/Azure/azure-quickstart-templates/tree/master/201-dsc-linux-public-storage-on-ubuntu).
 
-Zie [Azure Resource Manager sjablonen ontwerpen](../../azure-resource-manager/resource-group-authoring-templates.md)voor meer informatie over de Azure Resource Manager sjabloon.
+Zie [Azure Resource Manager sjablonen ontwerpen](../../azure-resource-manager/templates/template-syntax.md)voor meer informatie over de Azure Resource Manager sjabloon.
 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI-implementatie

@@ -2,17 +2,17 @@
 title: Wat is een Cloud service model en-pakket | Microsoft Docs
 description: Hierin worden het Cloud service model (. csdef,. cscfg) en het pakket (. cspkg) in azure beschreven
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: 47d031e339b3677e0bf6ddcbad9456041c53c6e2
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 0d04236861287074087cc125d7b0d44dc65eccbf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359552"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360698"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>Wat is het Cloud service model en hoe kan ik het pakket inpakken?
 Een Cloud service wordt gemaakt op basis van drie onderdelen, de service definitie *(. csdef)* , de service configuratie *(. cscfg)* en een service pakket *(. cspkg)* . De bestanden **ServiceDefinition. csdef** en **ServiceConfig. cscfg** zijn gebaseerd op XML en beschrijven de structuur van de Cloud service en hoe deze zijn geconfigureerd. het model wordt gezamenlijk genoemd. **ServicePackage. cspkg** is een zip-bestand dat is gegenereerd op basis van de **ServiceDefinition. csdef** en onder andere, bevat alle vereiste op basis van binaire afhankelijkheden. Azure maakt een Cloud service van zowel **ServicePackage. cspkg** als **ServiceConfig. cscfg**.
@@ -106,7 +106,7 @@ Bevat de definities voor lokale opslag resources. Een lokale opslag resource is 
 **Rusland**  
 Bevat de definities voor geïmporteerde modules. Het vorige code voorbeeld toont de modules voor Verbinding met extern bureaublad en Azure Connect.
 
-**Opstarten**  
+**Start-ups**  
 Bevat taken die worden uitgevoerd wanneer de rol wordt gestart. De taken worden gedefinieerd in een. cmd-of een uitvoerbaar bestand.
 
 <a name="cscfg"></a>
@@ -137,7 +137,7 @@ Het service configuratie bestand is niet verpakt met de toepassing, maar wordt a
 U kunt het schema voor [Service configuratie](/previous-versions/azure/reference/ee758710(v=azure.100)) raadplegen voor een beter inzicht in het XML-schema dat hier wordt gebruikt, maar hier volgt een korte uitleg van de elementen:
 
 **Vaak**  
-Hiermee configureert u het aantal actieve instanties voor de rol. Om te voor komen dat uw Cloud service mogelijk niet meer beschikbaar is tijdens upgrades, is het raadzaam om meer dan één exemplaar van de webfacing-rollen te implementeren. Door meer dan één exemplaar te implementeren, moet u zich houden aan de richt lijnen in de [Azure compute service level Agreement (Sla)](https://azure.microsoft.com/support/legal/sla/), die 99,95% externe connectiviteit voor Internet gerichte rollen garandeert wanneer twee of meer rolinstanties voor een service worden geïmplementeerd. .
+Hiermee configureert u het aantal actieve instanties voor de rol. Om te voor komen dat uw Cloud service mogelijk niet meer beschikbaar is tijdens upgrades, is het raadzaam om meer dan één exemplaar van de webfacing-rollen te implementeren. Door meer dan één exemplaar te implementeren, moet u zich houden aan de richt lijnen in de [Azure compute service level Agreement (Sla)](https://azure.microsoft.com/support/legal/sla/), die 99,95% externe connectiviteit voor Internet gerichte rollen garandeert wanneer twee of meer rolinstanties voor een service worden geïmplementeerd.
 
 **ConfigurationSettings**  
 Hiermee configureert u de instellingen voor de actieve instanties voor een rol. De naam van de `<Setting>` elementen moet overeenkomen met de instellings definities in het service definitie bestand.
@@ -218,7 +218,7 @@ De [Azure runtime library](/previous-versions/azure/reference/mt419365(v=azure.1
 ## <a name="servicepackagecspkg"></a>ServicePackage.cspkg
 Als u een toepassing als een Cloud service in azure wilt implementeren, moet u de toepassing eerst in de juiste indeling inpakken. U kunt het opdracht regel programma **CSPack** (geïnstalleerd met de Azure- [SDK](https://azure.microsoft.com/downloads/)) gebruiken om het pakket bestand te maken als een alternatief voor Visual Studio.
 
-**CSPack** maakt gebruik van de inhoud van het service definitie bestand en service configuratie bestand om de inhoud van het pakket te definiëren. **CSPack** genereert een toepassings pakket bestand (. cspkg) dat u naar Azure kunt uploaden met behulp van de [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy). Het pakket `[ServiceDefinitionFileName].cspkg`heet standaard, maar u kunt een andere naam opgeven met behulp van de `/out` optie **CSPack**.
+**CSPack** maakt gebruik van de inhoud van het service definitie bestand en service configuratie bestand om de inhoud van het pakket te definiëren. **CSPack** genereert een toepassings pakket bestand (. cspkg) dat u naar Azure kunt uploaden met behulp van de [Azure Portal](cloud-services-how-to-create-deploy-portal.md#create-and-deploy). Het pakket heeft standaard de naam `[ServiceDefinitionFileName].cspkg`, maar u kunt een andere naam opgeven met behulp van de `/out` optie **CSPack**.
 
 **CSPack** bevindt zich op  
 `C:\Program Files\Microsoft SDKs\Azure\.NET SDK\[sdk-version]\bin\`
@@ -263,7 +263,7 @@ Waar de variabelen als volgt worden gedefinieerd:
 | --- | --- |
 | \[DirectoryName\] |De submap onder de hoofdmap van het project met het. csdef-bestand van het Azure-project. |
 | \[ServiceDefinition\] |De naam van het service definitie bestand. Dit bestand heeft standaard de naam ServiceDefinition. csdef. |
-| \[OutputFileName\] |De naam voor het gegenereerde pakket bestand. Dit wordt doorgaans ingesteld op de naam van de toepassing. Als er geen bestands naam is opgegeven, wordt het toepassings pakket gemaakt \[als\]ApplicationName. cspkg. |
+| \[OutputFileName\] |De naam voor het gegenereerde pakket bestand. Dit wordt doorgaans ingesteld op de naam van de toepassing. Als er geen bestands naam is opgegeven, wordt het toepassings pakket gemaakt als \[ApplicationName\]. cspkg. |
 | \[RoleName\] |De naam van de rol zoals gedefinieerd in het service definitie bestand. |
 | \[RoleBinariesDirectory] |De locatie van de binaire bestanden voor de rol. |
 | \[VirtualPath\] |De fysieke mappen voor elk virtueel pad dat is gedefinieerd in de sectie sites van de service definitie. |
@@ -289,3 +289,6 @@ Ik gebruik Visual Studio en ik wil...
 [vs_deploy]: ../vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md
 [vs_reconfigure]: ../vs-azure-tools-configure-roles-for-cloud-service.md
 [vs_create]: ../vs-azure-tools-azure-project-create.md
+
+
+

@@ -2,19 +2,15 @@
 title: Updatebeheer oplossing in azure
 description: In dit artikel wordt beschreven hoe u de Azure Updatebeheer-oplossing gebruikt voor het beheren van updates voor uw Windows-en Linux-computers.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/03/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 06d7ede1e9b91832f908c87a22cca37ec2866365
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 924f5bee94544c533f3a2548d931fce292469567
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806538"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420343"
 ---
 # <a name="update-management-solution-in-azure"></a>Updatebeheer oplossing in azure
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: cbdf4a4c9e7f3816a0a5b280c81bfa60b65d9769
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 3bb58334e96bf5378fb78b70125f9c7994a7c2fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687897"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435645"
 ---
 # <a name="authorize-users-for-apache-ambari-views"></a>Gebruikers machtigen voor Apache Ambari-weergaven
 
@@ -240,7 +240,7 @@ In de blok weergave wordt elke rol in een eigen rij weer gegeven en worden de ro
 
 ![Blok weergave van Apache Ambari-rollen](./media/hdinsight-authorize-users-to-ambari/ambari-roles-block-view.png)
 
-### <a name="list-view"></a>Lijst weergave
+### <a name="list-view"></a>Lijstweergave
 
 De lijst weergave biedt snelle bewerkings mogelijkheden in twee categorieën: gebruikers en groepen.
 
@@ -248,7 +248,7 @@ De lijst weergave biedt snelle bewerkings mogelijkheden in twee categorieën: ge
 
     ![Weer gave Apache Ambari-rollen lijst-gebruikers](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* In de categorie groepen van de lijst weergave worden alle groepen weer gegeven, evenals de rol die aan elke groep is toegewezen. In ons voor beeld wordt de lijst met groepen gesynchroniseerd vanuit de Azure AD-groepen die zijn opgegeven in de eigenschap **gebruikers groep** van het cluster. Zie [een HDInsight-cluster maken waarvoor ESP is ingeschakeld](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp).
+* In de categorie groepen van de lijst weergave worden alle groepen weer gegeven, evenals de rol die aan elke groep is toegewezen. In ons voor beeld wordt de lijst met groepen gesynchroniseerd vanuit de Azure AD-groepen die zijn opgegeven in de eigenschap **gebruikers groep** van het cluster. Zie [een HDInsight-cluster maken waarvoor ESP is ingeschakeld](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-an-hdinsight-cluster-with-esp).
 
     ![Apache Ambari roles list view-groups](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 

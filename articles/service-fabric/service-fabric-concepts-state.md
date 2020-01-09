@@ -1,44 +1,35 @@
 ---
-title: Status in Azure Service Fabric-services beheren | Microsoft Docs
-description: Informatie over het definiëren en beheren in Service Fabric-services.
-services: service-fabric
-documentationcenter: .net
+title: Status in azure Service Fabric Services beheren
+description: Meer informatie over de status in azure Service Fabric, waaronder het definiëren en beheren van de service status in Service Fabric Services.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: f5e618a5-3ea3-4404-94af-122278f91652
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e3ab36def2d210bd763f3ce2dc5df155e37e2dba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9acd3031d1071d1822791b333976aaf76161600f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60870890"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614567"
 ---
 # <a name="service-state"></a>Servicestatus
-**Status service** verwijst naar het geheugen of op schijfgegevens die een service nodig voor de functie heeft. Het kan bijvoorbeeld bevat de gegevensstructuren en variabelen die de service leest en schrijft om te werken. Afhankelijk van hoe de service is ontworpen, kan deze ook bestanden of andere bronnen die zijn opgeslagen op schijf bevatten. Bijvoorbeeld, de bestanden een database wilt gebruiken voor het opslaan van gegevens en transactielogboeken.
+**Service status** verwijst naar de in-Memory of op schijf gegevens die een service nodig heeft om te functioneren. Het bevat bijvoorbeeld de variabelen voor gegevens structuren en leden die door de service worden gelezen en geschreven om te werken. Afhankelijk van hoe de service is ontworpen, kan deze ook bestanden of andere bronnen die op schijf zijn opgeslagen, bevatten. De bestanden die door een Data Base zouden worden gebruikt voor het opslaan van gegevens en transactie Logboeken.
 
-Als een voorbeeld van de service, laten we eens een calculator. Een eenvoudige rekenmachine-service heeft twee getallen en retourneert de som. Omvat het uitvoeren van deze berekening geen lidvariabelen of andere informatie.
+Als voorbeeld service kunt u een Calculator beschouwen. Een Basic Calculator-service gebruikt twee getallen en retourneert de som ervan. Het uitvoeren van deze berekening bestaat uit geen lidvariabelen of andere informatie.
 
-Bekijk nu de Rekenmachine van dezelfde, maar met een aanvullende methode voor het opslaan en retourneren van de laatste som deze is berekend. Deze service is nu stateful. Stateful betekent dat deze een status die schrijft naar bij het berekent de som van een nieuwe en leest uit als u deze naar de laatste berekende som retourneren bevat.
+Denk nu aan dezelfde reken machine, maar met een extra methode voor het opslaan en retour neren van de laatste som die is berekend. Deze service is nu stateful. Stateful houdt in dat er een status wordt vermeld waarnaar wordt geschreven wanneer er een nieuwe som wordt berekend en gelezen wanneer u vraagt om de laatst berekende som te retour neren.
 
-In Azure Service Fabric, is de eerste service een stateless service genoemd. De tweede service is een stateful service genoemd.
+In azure Service Fabric wordt de eerste service een stateless service genoemd. De tweede service wordt een stateful service genoemd.
 
-## <a name="storing-service-state"></a>Opslaan van de status van service
-Status kan worden externalized of CO-locatie met de code die de status is bewerken. Bedrijfsprocessen van status wordt meestal gedaan met behulp van een externe database of ander gegevensarchief die wordt uitgevoerd op verschillende computers via het netwerk of buiten het proces op dezelfde computer. In ons voorbeeld calculator mogelijk het gegevensarchief een SQL-database of een exemplaar van Azure Table-Store. Elke aanvraag voor het berekenen van de som een update wordt uitgevoerd op deze gegevens en aanvragen bij de service naar het resultaat van de waarde in de huidige waarde wordt opgehaald uit de store. 
+## <a name="storing-service-state"></a>Service status opslaan
+De status kan extern of gezamenlijk worden gevonden met de code die de status bewerkt. De Externalization van de status wordt doorgaans uitgevoerd met behulp van een externe data base of een ander gegevens archief dat wordt uitgevoerd op verschillende computers via het netwerk of out-of-process op dezelfde computer. In het voor beeld van de reken machine kan het gegevens archief een SQL database of een exemplaar van het Azure-tabel archief zijn. Elke aanvraag voor het berekenen van de som voert een update op deze gegevens uit en vraagt naar de service om de waarde te retour neren in de huidige waarde die wordt opgehaald uit de Store. 
 
-Status kan ook worden dezelfde locatie bevindt als de code die de status wordt bewerkt. Stateful services in Service Fabric worden gewoonlijk samengesteld met behulp van dit model. Service Fabric biedt de infrastructuur om ervoor te zorgen dat deze status hoge beschikbaarheid, consistente en duurzame is en dat de services op deze manier opgebouwd eenvoudig schalen.
+De status kan ook naast elkaar worden gevonden met de code die de status bewerkt. Stateful Services in Service Fabric zijn doorgaans gebouwd met behulp van dit model. Service Fabric biedt de infra structuur om ervoor te zorgen dat deze status Maxi maal beschikbaar, consistent en duurzaam is en dat de services die op deze manier zijn gebouwd, eenvoudig kunnen worden geschaald.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen voor meer informatie over Service Fabric-concepten:
+Raadpleeg de volgende artikelen voor meer informatie over Service Fabric concepten:
 
-* [Beschikbaarheid van Service Fabric-services](service-fabric-availability-services.md)
-* [Schaalbaarheid van Service Fabric-services](service-fabric-concepts-scalability.md)
-* [Service Fabric-services partitioneren](service-fabric-concepts-partitioning.md)
+* [Beschik baarheid van Service Fabric Services](service-fabric-availability-services.md)
+* [Schaal baarheid van Service Fabric Services](service-fabric-concepts-scalability.md)
+* [Service Fabric Services partitioneren](service-fabric-concepts-partitioning.md)
 * [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md)

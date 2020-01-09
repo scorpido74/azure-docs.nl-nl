@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/14/2019
 ms.author: helohr
-ms.openlocfilehash: fde3ddf052e47e7550d15aba4ff26d32c91e34b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
-ms.translationtype: MT
+ms.openlocfilehash: 8d9a6664caa7d0d84de54de232d6f8d0eab0a793
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972385"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356253"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-app-koppeling instellen
 
@@ -172,8 +172,8 @@ Maak in uw Windows Virtual Desktop-omgeving een netwerk share en verplaats het p
 Als uw app gebruikmaakt van een certificaat dat niet openbaar of zelfondertekend is, kunt u dit als volgt installeren:
 
 1. Klik met de rechter muisknop op het pakket en selecteer **Eigenschappen**.
-2. In het venster dat wordt weer gegeven, selecteert u het tabblad **digitale hand tekeningen** . Er mag slechts één item in de lijst staan op het tabblad, zoals wordt weer gegeven in de volgende afbeelding. Selecteer het item dat u wilt markeren en selecteer vervolgens * * de
-3. Wanneer het venster Details van digitale signalen wordt weer gegeven, selecteert u het tabblad **Algemeen** en selecteert u **certificaat installeren**.
+2. In het venster dat wordt weer gegeven, selecteert u het tabblad **digitale hand tekeningen** . Er mag slechts één item in de lijst staan op het tabblad, zoals wordt weer gegeven in de volgende afbeelding. Selecteer het item dat u wilt markeren en selecteer vervolgens **Details**.
+3. Wanneer het venster Details van digitale hand tekening wordt weer gegeven, selecteert u het tabblad **Algemeen** en selecteert u **certificaat installeren**.
 4. Wanneer het installatie programma wordt geopend, selecteert u **lokale computer** als uw opslag locatie en selecteert u vervolgens **volgende**.
 5. Als het installatie programma u vraagt of u wilt toestaan dat de app wijzigingen in uw apparaat aanbrengt, selecteert u **Ja**.
 6. Selecteer **alle certificaten in het onderstaande archief opslaan**en selecteer vervolgens **Bladeren**.
@@ -199,12 +199,12 @@ Voordat u de Power shell-scripts bijwerkt, moet u ervoor zorgen dat u de volume-
 
 2.  Klik met de rechter muisknop op de VHD en selecteer **koppelen**. Hiermee wordt de VHD gekoppeld aan een stationsletter.
 
-3.  Nadat u de VHD hebt gekoppeld, wordt het venster **bestanden Verkenner** geopend. De bovenliggende map vastleggen en de variabele **\$parentFolder** bijwerken
+3.  Nadat u de VHD hebt gekoppeld, wordt het venster **bestanden Verkenner** geopend. De bovenliggende map vastleggen en de **$parentFolder** variabele bijwerken
 
     >[!NOTE]
     >Als u geen bovenliggende map ziet, betekent dit dat de MSIX niet goed is uitgevouwen. Voer de vorige sectie opnieuw uit en probeer het opnieuw.
 
-4.  Open de bovenliggende map. Als het pakket correct is uitgevouwen, ziet u een map met dezelfde naam als het Pack. Werk de variabele van de **\$pakket** naam bij zodat deze overeenkomt met die van deze map.
+4.  Open de bovenliggende map. Als het pakket correct is uitgevouwen, ziet u een map met dezelfde naam als het Pack. Werk de **$packageName** variabele bij zodat deze overeenkomt met de naam van deze map.
 
     Bijvoorbeeld `VSCodeUserSetup-x64-1.38.1_1.38.1.0_x64__8wekyb3d8bbwe`.
 
@@ -227,7 +227,7 @@ Voordat u de Power shell-scripts bijwerkt, moet u ervoor zorgen dat u de volume-
     ```
 
 
-6.  Werk de **\$volumeGuid** -variabele met de volume-GUID die u zojuist hebt gekopieerd.
+6.  Werk de **$volumeGuid** variabele bij met de volume-GUID die u zojuist hebt gekopieerd.
 
 7. Open een Power shell-prompt voor beheerders en werk het volgende Power shell-script bij met de variabelen die van toepassing zijn op uw omgeving.
 
@@ -256,9 +256,9 @@ Voordat u de Power shell-scripts bijwerkt, moet u ervoor zorgen dat u de volume-
 
     {
 
-    Mount-Diskimage -ImagePath \$vhdSrc -NoDriveLetter -Access ReadOnly
+    Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
 
-    Write-Host ("Mounting of " + \$vhdSrc + " was completed!") -BackgroundColor Green
+    Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
 
     }
 
@@ -266,7 +266,7 @@ Voordat u de Power shell-scripts bijwerkt, moet u ervoor zorgen dat u de volume-
 
     {
 
-    Write-Host ("Mounting of " + \$vhdSrc + " has failed!") -BackgroundColor Red
+    Write-Host ("Mounting of " + $vhdSrc + " has failed!") -BackgroundColor Red
 
     }
 
@@ -298,8 +298,8 @@ Voordat u de Power shell-scripts bijwerkt, moet u ervoor zorgen dat u de volume-
     Add-Type -AssemblyName System.Runtime.WindowsRuntime
 
     $asTask = ([System.WindowsRuntimeSystemExtensions].GetMethods() | Where {
-    $_.ToString() -eq 'System.Threading.Tasks.Task\`1[TResult]
-    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress\`2[TResult,TProgress])'})[0]
+    $_.ToString() -eq 'System.Threading.Tasks.Task`1[TResult]
+    AsTask[TResult,TProgress](Windows.Foundation.IAsyncOperationWithProgress`2[TResult,TProgress])'})[0]
 
     $asTaskAsyncOperation =
     $asTask.MakeGenericMethod([Windows.Management.Deployment.DeploymentResult],
@@ -344,7 +344,7 @@ Add-AppxPackage -Path $path -DisableDevelopmentMode -Register
 
 ### <a name="deregister-powershell-script"></a>Het Power shell-script deregistreren
 
-Voor dit script vervangt u de tijdelijke aanduiding voor **\$pakketmap** door de naam van het pakket dat u wilt testen.
+Voor dit script vervangt u de tijdelijke aanduiding voor **$packageName** door de naam van het pakket dat u wilt testen.
 
 ```powershell
 #MSIX app attach deregistration sample
@@ -364,7 +364,7 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 
 ### <a name="destage-powershell-script"></a>Power shell-script destage
 
-Voor dit script vervangt u de tijdelijke aanduiding voor **\$pakketmap** door de naam van het pakket dat u wilt testen.
+Voor dit script vervangt u de tijdelijke aanduiding voor **$packageName** door de naam van het pakket dat u wilt testen.
 
 ```powershell
 #MSIX app attach de staging sample

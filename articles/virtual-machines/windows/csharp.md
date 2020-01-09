@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: fe838ade7a65161efaeb60b9e4d8de17a7080da1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bb0962991701dc780e50fec60982083b20d4ab0e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032792"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75358374"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Virtuele Windows-machines maken en beheren in azure met behulp vanC# #
 
@@ -111,7 +111,7 @@ Voordat u met deze stap begint, moet u ervoor zorgen dat u toegang hebt tot een 
 
 ### <a name="create-the-resource-group"></a>De resourcegroep maken
 
-Alle resources moeten deel uitmaken van een [resource groep](../../azure-resource-manager/resource-group-overview.md).
+Alle resources moeten deel uitmaken van een [resource groep](../../azure-resource-manager/management/overview.md).
 
 Als u waarden voor de toepassing wilt opgeven en de resource groep wilt maken, voegt u deze code toe aan de methode Main:
 
@@ -362,7 +362,7 @@ Console.WriteLine("Press enter to continue...");
 Console.ReadLine();
 ```
 
-### <a name="add-a-data-disk-to-the-vm"></a>Een gegevens schijf toevoegen aan de VM
+### <a name="add-a-data-disk-to-the-vm"></a>Een gegevensschijf toevoegen aan de virtuele machine
 
 Als u een gegevens schijf aan de virtuele machine wilt toevoegen, voegt u deze code toe aan de methode Main. In dit voor beeld wordt een gegevens schijf met een grootte van 2 GB toegevoegd, Han een LUN van 0 en het cache type ReadWrite:
 

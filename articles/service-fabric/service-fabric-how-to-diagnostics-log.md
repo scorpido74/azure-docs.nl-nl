@@ -1,39 +1,30 @@
 ---
-title: Gebeurtenissen genereren vanuit een .NET Service Fabric-app in Azure of een zelfstandige-cluster
-description: Meer informatie over hoe u logboekregistratie toevoegen aan uw .NET Service Fabric-toepassing die wordt gehost op een Azure-cluster of een zelfstandige-cluster.
-services: service-fabric
-documentationcenter: .net
+title: Logboek gebeurtenissen genereren op basis van een .NET-app
+description: Meer informatie over het toevoegen van logboek registratie aan uw .NET Service Fabric-toepassing die wordt gehost op een Azure-cluster of een zelfstandig cluster.
 author: srrengar
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/27/2018
 ms.author: srrengar
-ms.openlocfilehash: d1b3dc25dd9bda9d7f9d9152c2a94cea8321f5cf
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8c4721584e74bd7f7111c516f2d16bd190392bb5
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60482604"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614363"
 ---
-# <a name="add-logging-to-your-service-fabric-application"></a>Logboekregistratie toevoegen aan uw Service Fabric-toepassing
+# <a name="add-logging-to-your-service-fabric-application"></a>Logboek registratie toevoegen aan uw Service Fabric-toepassing
 
-Uw toepassing moet voldoende informatie gegeven om volledig foutopsporing kunt uitvoeren wanneer er zich problemen voordoen opgeven. Logboekregistratie is een van de meest belangrijke dingen die u aan uw Service Fabric-toepassing toevoegen kunt. Wanneer een fout optreedt, kunt goede logboekregistratie geven u een manier voor het onderzoeken van fouten. Door het logboek patronen analyseren, merkt u misschien verbeteren de prestaties of het ontwerp van uw toepassing. Dit document ziet u een aantal verschillende logboekregistratie-opties.
+Uw toepassing moet voldoende informatie geven om forensically te kunnen opsporen wanneer er problemen optreden. Logboek registratie is een van de belangrijkste dingen die u aan uw Service Fabric-toepassing kunt toevoegen. Als er een fout optreedt, kan een goede logboek registratie u de mogelijkheid geven om fouten te onderzoeken. Door logboek patronen te analyseren, kunt u de prestaties of het ontwerp van uw toepassing verbeteren. In dit document ziet u een aantal verschillende opties voor logboek registratie.
 
-## <a name="eventflow"></a>EventFlow
+## <a name="eventflow"></a>Event flow
 
-De [EventFlow bibliotheek](https://github.com/Azure/diagnostics-eventflow) suite zorgt ervoor dat toepassingen om te definiëren welke diagnostische gegevens te verzamelen en waar ze moeten worden output aan. Diagnostische gegevens kan van alles van prestatiemeteritems kunnen toepassingstraceringen zijn. Deze wordt uitgevoerd in hetzelfde proces als de toepassing, zodat de overhead van de communicatie wordt geminimaliseerd. Zie voor meer informatie over EventFlow en Service Fabric [Azure Service Fabric Event aggregatie samenstellen met EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md).
+Met de [Event flow-bibliotheek](https://github.com/Azure/diagnostics-eventflow) Suite kunnen toepassingen bepalen welke diagnostische gegevens moeten worden verzameld en waar ze moeten worden gegenereerd. Diagnostische gegevens kunnen van invloed zijn op prestatie meter items voor toepassings traceringen. Het wordt uitgevoerd in hetzelfde proces als de toepassing, waardoor de communicatie overhead is geminimaliseerd. Zie [Azure service Fabric Event Aggregation with Event flow](service-fabric-diagnostics-event-aggregation-eventflow.md)(Engelstalig) voor meer informatie over event flow en service Fabric.
 
-### <a name="using-structured-eventsource-events"></a>Met behulp van gestructureerde EventSource gebeurtenissen
+### <a name="using-structured-eventsource-events"></a>Gestructureerde Event source-gebeurtenissen gebruiken
 
-Definiëren bericht gebeurtenissen door use-case kunt u gegevens over het softwarepakket over de gebeurtenis, in de context van de gebeurtenis. Kunt u eenvoudig kunt zoeken en filteren op basis van de namen of waarden van de eigenschappen van de opgegeven gebeurtenis. Structureren van de uitvoer instrumentation maakt vereist het gemakkelijker te lezen, maar meer thought en tijd voor het definiëren van een gebeurtenis voor elk use-case. 
+Als u bericht gebeurtenissen per use-case definieert, kunt u gegevens over de gebeurtenis verpakken in de context van de gebeurtenis. U kunt gemakkelijker zoeken en filteren op basis van de namen of waarden van de opgegeven eigenschappen van de gebeurtenis. Door het samen stellen van de instrumentatie-uitvoer is het eenvoudiger te lezen, maar is er meer tijd nodig om een gebeurtenis voor elke use-case te definiëren. 
 
-Sommige event-definities kunnen worden gedeeld met de gehele toepassing. Bijvoorbeeld, een methode starten of stoppen zou gebeurtenis worden hergebruikt voor veel services binnen een toepassing. Een service domeinspecifieke, zoals een systeem order mogelijk een **CreateOrder** gebeurtenis die een eigen unieke evenement heeft. Deze aanpak kan veel gebeurtenissen genereren en vereisen mogelijk coördinatie van id's tussen projectteams. 
+Sommige gebeurtenis definities kunnen worden gedeeld in de hele toepassing. Zo zou de gebeurtenis start of stop van de methode opnieuw worden gebruikt voor veel services in een toepassing. Een computerspecifieke service, zoals een bestel systeem, kan een **CreateOrder** -gebeurtenis hebben die een eigen unieke gebeurtenis heeft. Deze aanpak kan veel gebeurtenissen genereren en er is mogelijk een coördinatie van id's tussen project teams vereist. 
 
 ```csharp
 [EventSource(Name = "MyCompany-VotingState-VotingStateService")]
@@ -66,9 +57,9 @@ internal sealed class ServiceEventSource : EventSource
 
 ```
 
-### <a name="using-eventsource-generically"></a>Met behulp van de gebeurtenisbron algemeen
+### <a name="using-eventsource-generically"></a>Source Event algemeen gebruiken
 
-Omdat het definiëren van specifieke gebeurtenissen kan lastig zijn, definiëren veel mensen een aantal gebeurtenissen met een gemeenschappelijke set parameters die in het algemeen hun informatie als een tekenreeks voeren. Veel van het gestructureerde aspect verloren, en is het moeilijker om te zoeken en de resultaten te filteren. In deze benadering, zijn enkele gebeurtenissen die meestal met de niveaus voor logboekregistratie overeen worden gedefinieerd. Het volgende fragment definieert een bericht voor foutopsporing en fout:
+Omdat het definiëren van specifieke gebeurtenissen lastig kan zijn, definiëren veel mensen een aantal gebeurtenissen met een gemeen schappelijke set para meters die over het algemeen hun informatie als een teken reeks uitvoeren. Veel van het gestructureerde aspect gaat verloren en het is moeilijker om de resultaten te doorzoeken en te filteren. In deze benadering worden enkele gebeurtenissen gedefinieerd die meestal overeenkomen met de registratie niveaus. In het volgende code fragment wordt een debug-en fout bericht gedefinieerd:
 
 ```csharp
 [EventSource(Name = "MyCompany-VotingState-VotingStateService")]
@@ -99,27 +90,27 @@ internal sealed class ServiceEventSource : EventSource
 
 ```
 
-Met behulp van een hybride van gestructureerde en algemene instrumentation kan ook goed werken. Gestructureerde instrumentation wordt gebruikt voor het melden van fouten en metrische gegevens. Algemene gebeurtenissen kunnen worden gebruikt voor de gedetailleerde logboekregistratie die wordt gebruikt door technici voor het oplossen van problemen.
+Het gebruik van een Hybrid of Structured en generic instrumentatie kan ook goed werken. Gestructureerd instrumentatie wordt gebruikt voor het rapporteren van fouten en metrische gegevens. Algemene gebeurtenissen kunnen worden gebruikt voor gedetailleerde logboek registratie die door technici wordt verbruikt voor het oplossen van problemen.
 
 ## <a name="microsoftextensionslogging"></a>Microsoft.Extensions.Logging
 
-De ASP.NET Core logboekregistratie ([Microsoft.Extensions.Logging NuGet-pakket](https://www.nuget.org/packages/Microsoft.Extensions.Logging)) is een framework voor logboekregistratie een API standaard logboekregistratie voor uw toepassing biedt. Ondersteuning voor andere back-ends voor logboekregistratie kan worden aangesloten op ASP.NET Core logboekregistratie. Dit biedt u tal van ondersteuning voor logboekregistratie in uw toepassing is verwerkt, zonder veel code te wijzigen.
+Het ASP.NET Core logboek registratie ([micro soft. Extensions. logging NuGet-pakket](https://www.nuget.org/packages/Microsoft.Extensions.Logging)) is een logboek registratie raamwerk dat een standaard logboek registratie-API biedt voor uw toepassing. Ondersteuning voor andere back-endservers voor logboek registratie kan worden aangesloten op ASP.NET Core logboek registratie. Dit geeft u een breed scala aan ondersteuning voor logboek registratie in uw toepassing, zonder dat u veel code hoeft te wijzigen.
 
-1. Voeg de **Microsoft.Extensions.Logging** NuGet pakket aan het project die u wilt die is geregistreerd. Alle pakketten provider ook toe te voegen. Zie voor meer informatie, [logboekregistratie in ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/logging).
-2. Voeg een **met behulp van** richtlijn voor **Microsoft.Extensions.Logging** naar uw servicebestand.
-3. Definieer een persoonlijke variabele in uw serviceklasse.
+1. Voeg het NuGet-pakket **micro soft. Extensions. logging** toe aan het project dat u wilt instrumenteren. Voeg ook alle provider pakketten toe. Zie [Logging in ASP.net core](https://docs.microsoft.com/aspnet/core/fundamentals/logging)voor meer informatie.
+2. Voeg een **using** -instructie toe voor **micro soft. Extensions. log** in uw service bestand.
+3. Definieer een persoonlijke variabele binnen uw service klasse.
 
    ```csharp
    private ILogger _logger = null;
    ```
 
-4. Voeg deze code toe in de constructor van uw serviceklasse:
+4. Voeg deze code toe aan de constructor van uw service klasse:
 
    ```csharp
    _logger = new LoggerFactory().CreateLogger<Stateless>();
    ```
 
-5. Start het instrumenteren van uw code in uw methoden. Hier volgen enkele voorbeelden:
+5. Begin met het instrumenteren van uw code in uw methoden. Hier volgen enkele voor beelden:
 
    ```csharp
    _logger.LogDebug("Debug-level event from Microsoft.Logging");
@@ -130,24 +121,24 @@ De ASP.NET Core logboekregistratie ([Microsoft.Extensions.Logging NuGet-pakket](
    _logger.LogInformation("{RequestName} {Duration}", "MyRequest", requestDuration);
    ```
 
-### <a name="using-other-logging-providers"></a>Met behulp van andere leveranciers van logboekregistratie
+### <a name="using-other-logging-providers"></a>Andere logboek registratie providers gebruiken
 
-Sommige providers van derden gebruiken de benadering die wordt beschreven in de vorige sectie, met inbegrip van [Serilog](https://serilog.net/), [NLog](https://nlog-project.org/), en [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). U kunt elk van deze elementen in ASP.NET Core logboekregistratie aansluiten of u afzonderlijk kunt gebruiken. Serilog heeft een functie waarmee u alle berichten van een logger verrijkt. Deze functie is handig om uit te voeren van de servicenaam, het type en de partitie-informatie. Als u deze mogelijkheid in de ASP.NET Core-infrastructuur, moet u deze stappen uitvoeren:
+Sommige providers van derden gebruiken de benadering die wordt beschreven in de voor gaande sectie, waaronder [Serilog](https://serilog.net/), [NLog](https://nlog-project.org/)en [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). U kunt deze koppelen aan ASP.NET Core logboek registratie of u kunt ze afzonderlijk gebruiken. Serilog heeft een functie die alle berichten verrijkt die vanuit een logboek worden verzonden. Deze functie kan nuttig zijn bij het uitvoeren van de service naam, het type en de partitie-informatie. Ga als volgt te werk om deze mogelijkheid te gebruiken in de ASP.NET Core-infra structuur:
 
-1. Voeg de **Serilog**, **Serilog.Extensions.Logging**, **Serilog.Sinks.Literate**, en **Serilog.Sinks.Observable** NuGet-pakketten aan het project. 
-2. Maak een `LoggerConfiguration` en de logger-instantie.
+1. Voeg de **Serilog**, **Serilog. Extensions. logging**, **Serilog. Sinks. transcrib**en **Serilog. sinks** toe aan het project. 
+2. Maak een `LoggerConfiguration` en het logboek exemplaar.
 
    ```csharp
    Log.Logger = new LoggerConfiguration().WriteTo.LiterateConsole().CreateLogger();
    ```
 
-3. Voeg een `Serilog.ILogger` argument voor de constructor van de service, en geeft u de zojuist gemaakte logger.
+3. Voeg een `Serilog.ILogger` argument toe aan de service-constructor en laat de zojuist gemaakte logger door.
 
    ```csharp
    ServiceRuntime.RegisterServiceAsync("StatelessType", context => new Stateless(context, Log.Logger)).GetAwaiter().GetResult();
    ```
 
-4. Hiermee maakt u in de constructor service eigenschap enrichers voor **ServiceTypeName**, **ServiceName**, **PartitionId**, en **InstanceId** .
+4. In de service-constructor maakt eigenschaps verrijkers voor **ServiceTypeName**, **ServiceName**, **PartitionId**en **InstanceId**.
 
    ```csharp
    public Stateless(StatelessServiceContext context, Serilog.ILogger serilog)
@@ -167,15 +158,15 @@ Sommige providers van derden gebruiken de benadering die wordt beschreven in de 
    }
    ```
 
-5. Instrumenteer de code hetzelfde als wanneer u ASP.NET Core zonder Serilog gebruikten.
+5. Instrumenteer de code op dezelfde wijze als wanneer u ASP.NET Core zonder Serilog gebruikt.
 
    >[!NOTE]
-   >We raden aan dat u *niet* gebruikt u de statische `Log.Logger` met het voorgaande voorbeeld. Service Fabric kan meerdere exemplaren van het type van de dezelfde service binnen een enkel proces host. Als u de statische `Log.Logger`, de laatste schrijver van de eigenschap enrichers ziet u waarden voor alle exemplaren die worden uitgevoerd. Dit is een reden waarom de _logger variabele $a persoonlijk lid van de serviceklasse. Bovendien moet u ervoor de `_logger` beschikbaar voor algemene code, die kan worden gebruikt voor services.
+   >Het is raadzaam om de statische `Log.Logger` *niet* te gebruiken met het vorige voor beeld. Service Fabric kunnen in één proces meerdere exemplaren van hetzelfde service type hosten. Als u de statische `Log.Logger`gebruikt, worden in de laatste schrijver van de eigenschaps verrijkingen waarden weer gegeven voor alle exemplaren die worden uitgevoerd. Dit is een reden waarom de variabele _logger een persoonlijk lidvariabele van de service klasse is. U moet de `_logger` ook beschikbaar maken voor algemene code, die in verschillende services kan worden gebruikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees meer informatie over [toepassing bewaken in Service Fabric](service-fabric-diagnostics-event-generation-app.md).
-- Meer informatie over logboekregistratie met [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) en [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md).
+- Meer informatie over [toepassings bewaking vindt u in service Fabric](service-fabric-diagnostics-event-generation-app.md).
+- Meer informatie over logboek registratie met [Event flow](service-fabric-diagnostics-event-aggregation-eventflow.md) en [Windows Azure Diagnostics](service-fabric-diagnostics-event-aggregation-wad.md).
 
 
 

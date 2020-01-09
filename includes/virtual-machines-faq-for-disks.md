@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8eda3ed7d35c9ff94a00eacb49f2e4f3b3e6f150
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7e83aa69cb4099885fc45e719c812a6c92299b7a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796079"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359904"
 ---
 In dit artikel vindt u antwoorden op enkele veelgestelde vragen over Azure Managed Disks en Azure Premium-SSD-schijven.
 
@@ -169,7 +169,7 @@ Azure Disk-reserve ringen worden aangeschaft voor een specifieke regio en SKU (z
 **Wat gebeurt er wanneer mijn Azure disks-reserve ring verloopt?**
 U ontvangt een e-mail melding van 30 dagen vóór de verval datum en opnieuw op het verloop van de gegevens. Zodra de reserve ring verloopt, blijven geïmplementeerde schijven actief en wordt de laatste betalen naar gebruik- [tarieven](https://azure.microsoft.com/pricing/details/managed-disks/)in rekening gebracht.
 
-## <a name="ultra-disks"></a>Ultra schijven
+## <a name="ultra-disks"></a>Ultraschijven
 
 **Hoe stel ik mijn Ultra Disk-door Voer in op?**
 Als u niet zeker weet wat uw schijf doorvoer moet instellen, raden we u aan om te beginnen met een i/o-grootte van 16 KiB en de prestaties van daar aan te passen terwijl u uw toepassing bewaakt. De formule is: door Voer in MBps = aantal IOPS * 16/1000.
@@ -254,7 +254,7 @@ Zie [een virtuele machine maken op basis van een Windows-installatie kopie met S
 
 **Kan ik mijn bestaande schijven converteren naar Standard-SSD?**
 Ja, dat is mogelijk. Raadpleeg de [opslag voor Azure Managed disks converteren van Standard naar Premium en](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) omgekeerd voor de algemene richt lijnen voor het converteren van Managed disks. En gebruik de volgende waarde om het schijf type bij te werken naar Standard-SSD.
--Account type StandardSSD_LRS
+-AccountType StandardSSD_LRS
 
 **Wat is het voor deel van het gebruik van Standard-SSD schijven in plaats van HDD?**
 Standard-SSD schijven bieden betere latentie, consistentie, Beschik baarheid en betrouw baarheid in vergelijking met HDD-schijven. Werk belastingen van toepassingen worden veel soepeler uitgevoerd op Standard-SSD vanwege dat. Houd er rekening mee dat Premium-SSD schijven de aanbevolen oplossing zijn voor de meeste IO-intensieve productie workloads.
@@ -398,7 +398,7 @@ Nee, standaard SSD-beheerde schijven van elke grootte kunnen niet worden gebruik
 
 **Wat is de grootste beheerde schijf grootte die wordt ondersteund voor besturings systeem en gegevens schijven?**
 
-Het partitie type dat door Azure wordt ondersteund voor een besturingssysteem schijf is de Master Boot Record (MBR). De MBR-indeling ondersteunt een schijf grootte van Maxi maal twee TiB. De maximale grootte die Azure ondersteunt voor een besturingssysteem schijf is 2 TiB. Azure biedt ondersteuning voor Maxi maal 32 TiB voor beheerde gegevens schijven in wereld wijd Azure, 4 TiB in azure soevereine Clouds.
+Het partitie type dat door Azure wordt ondersteund voor een besturingssysteem schijf is de Master Boot Record (MBR). De MBR-indeling ondersteunt een schijf grootte van Maxi maal twee TiB. De maximale grootte die Azure ondersteunt voor een besturingssysteem schijf is 2 TiB. Azure biedt ondersteuning voor Maxi maal 32 TiB voor beheerde gegevens schijven.
 
 **Wat is de grootste niet-beheerde schijf grootte die wordt ondersteund voor besturings systeem en gegevens schijven?**
 
@@ -412,7 +412,7 @@ De grootste grootte van de pagina-blob die door Azure wordt ondersteund, is 8 Ti
 
 U hoeft de bestaande Azure-hulpprogram ma's niet bij te werken om schijven groter dan 1 TiB te maken, te koppelen of te wijzigen. Als u uw VHD-bestand rechtstreeks van on-premises naar Azure wilt uploaden als pagina-BLOB of een niet-beheerde schijf, moet u de meest recente programma sets gebruiken die hieronder worden weer gegeven. Er worden alleen VHD-uploads ondersteund van Maxi maal 8 TiB.
 
-|Azure-hulpprogram ma's      | Ondersteunde versies                                |
+|Azure-hulpprogramma 's      | Ondersteunde versies                                |
 |-----------------|---------------------------------------------------|
 |Azure PowerShell | Versie nummer 4.1.0: juni 2017 release of hoger|
 |Azure CLI v1     | Versie nummer 0.10.13: mogelijk 2017 release of hoger|
@@ -441,7 +441,7 @@ De grootste schijf grootte die wordt ondersteund door Azure Backup en Azure Site
 
 **Wat zijn de aanbevolen VM-grootten voor grotere schijf grootten (> 4 TiB) voor Standard-SSD en Standard-HDD schijven voor een geoptimaliseerde schijf-IOPS en band breedte?**
 
-We raden u aan een nieuwe VM te implementeren vanaf een van de volgende VM-grootten om de prestaties van Standard-SSD en Standard-HDD groot aantal schijven (> 4 TiB 60 500) te verzorgen om uw prestatie te optimaliseren: B-serie, DSv2-serie, Dsv3-Series, ESv3-serie , FS-serie, Fsv2-serie, M-series, GS-serie, NCv2-serie, NCv3-Series of LS-serie-Vm's. Als u grote schijven koppelt aan bestaande Vm's of Vm's die niet gebruikmaken van de aanbevolen groottes, kan dit de prestaties verlagen.
+Als u de schijf doorvoer van Standard-SSD en Standard-HDD groot aantal schijven (> 4 TiB) wilt verruimen tot 500 IOPS en 60 MiB/s, we raden u aan een nieuwe VM te implementeren vanaf een van de volgende VM-grootten om uw prestaties te optimaliseren: B-serie, DSv2-serie, Dsv3-serie, ESv3-serie, FS-serie, Fsv2-serie, M-serie, GS-serie, NCv2-serie, NCv3-serie of LS-serie-Vm's. Als u grote schijven koppelt aan bestaande Vm's of Vm's die niet gebruikmaken van de aanbevolen groottes, kan dit de prestaties verlagen.
 
 **Hoe kan ik een upgrade uitvoeren van mijn schijven (> 4 TiB) die zijn geïmplementeerd tijdens de preview-versie van grotere schijven om de meer IOPS & band breedte te verkrijgen bij GA?**
 

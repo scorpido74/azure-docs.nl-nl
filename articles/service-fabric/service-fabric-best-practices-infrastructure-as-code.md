@@ -1,35 +1,26 @@
 ---
-title: Azure Service Fabric-infra structuur als best practices voor code | Microsoft Docs
-description: Aanbevolen procedures voor het beheren van Service Fabric als een infra structuur als code.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric-infra structuur als best practices voor code
+description: Best practices en ontwerp overwegingen voor het beheren van Azure Service Fabric als infra structuur als code.
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 83439a913989875c5e26ee51901f10558e5debd5
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 1c044d5fd973d3c577088a887f2fac413d2ab79d
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68955615"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551808"
 ---
 # <a name="infrastructure-as-code"></a>Infrastructure als code
 
 Maak in een productie scenario Azure Service Fabric-clusters met behulp van Resource Manager-sjablonen. Resource Manager-sjablonen bieden meer controle over de bron eigenschappen en zorgen ervoor dat u een consistent resource model hebt.
 
-Voorbeeld sjablonen voor Resource Manager zijn beschikbaar voor Windows en Linux in de [Azure-voor beelden op github](https://github.com/Azure-Samples/service-fabric-cluster-templates). Deze sjablonen kunnen worden gebruikt als uitgangs punt voor uw cluster sjabloon. Down `azuredeploy.json` load `azuredeploy.parameters.json` en bewerk ze om te voldoen aan uw aangepaste vereisten.
+Voorbeeld sjablonen voor Resource Manager zijn beschikbaar voor Windows en Linux in de [Azure-voor beelden op github](https://github.com/Azure-Samples/service-fabric-cluster-templates). Deze sjablonen kunnen worden gebruikt als uitgangs punt voor uw cluster sjabloon. Down load `azuredeploy.json` en `azuredeploy.parameters.json` en bewerk ze om te voldoen aan uw aangepaste vereisten.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Gebruik de volgende `azuredeploy.json` Azure `azuredeploy.parameters.json` cli-opdrachten om de en sjablonen te implementeren die u hierboven hebt gedownload:
+Gebruik de volgende Azure CLI-opdrachten om de `azuredeploy.json`-en `azuredeploy.parameters.json`-sjablonen te implementeren die u hierboven hebt gedownload:
 
 ```azurecli
 ResourceGroupName="sfclustergroup"
@@ -100,7 +91,7 @@ microservices_sfpkg.close()
 ```
 
 ## <a name="azure-virtual-machine-operating-system-automatic-upgrade-configuration"></a>Automatische upgrade configuratie van het besturings systeem van de virtuele machine van Azure 
-Het upgraden van uw virtuele machines is een door de gebruiker geïnitieerde bewerking. het wordt aanbevolen dat u de Schaalset voor de virtuele machine gebruikt voor het [automatisch bijwerken van het besturings systeem](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) voor Azure service Fabric clusters host patch management; Patch Orchestration Application is een alternatieve oplossing die is bedoeld voor wanneer deze buiten Azure wordt gehost, maar POA kan worden gebruikt in azure, waarbij de overhead van het hosten van POA in azure een gemeen schappelijke reden is om een automatische upgrade van het besturings systeem van de virtuele machine te maken over POA. Hieronder vindt u de eigenschappen van de Resource Manager-sjabloon voor de berekening van de virtuele machine Scale set om automatische upgrades van besturings systemen in te scha kelen:
+Het upgraden van uw virtuele machines is een door de gebruiker geïnitieerde bewerking. het wordt aanbevolen dat u de Schaalset voor de virtuele machine gebruikt voor het [automatisch bijwerken van het besturings systeem](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade) voor Azure service Fabric clusters host patch management; Patch Orchestration Application is een alternatieve oplossing die is bedoeld voor wanneer deze buiten Azure wordt gehost, maar POA kan worden gebruikt in azure, waarbij de overhead van het hosten van POA in azure een gemeen schappelijke reden is om de voor keur te geven aan een automatische upgrade van het besturings systeem van de virtuele machine over POA. Hieronder vindt u de eigenschappen van de Resource Manager-sjabloon voor de berekening van de virtuele machine Scale set om automatische upgrades van besturings systemen in te scha kelen:
 
 ```json
 "upgradePolicy": {
@@ -113,7 +104,7 @@ Het upgraden van uw virtuele machines is een door de gebruiker geïnitieerde bew
 ```
 Wanneer u automatische OS-upgrades gebruikt met Service Fabric, wordt de nieuwe installatie kopie van het besturings systeem samen met één update domein per keer uitgedraaid om hoge Beschik baarheid van de services die in Service Fabric worden uitgevoerd, te onderhouden. Als u automatische besturingssysteem upgrades wilt gebruiken in Service Fabric moet uw cluster zijn geconfigureerd voor het gebruik van de Silver duurzaamheid-laag of hoger.
 
-Zorg ervoor dat de volgende register sleutel is ingesteld op false om te voor komen dat uw Windows-hostcomputers niet-gecoördineerde updates initiëren: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
+Zorg ervoor dat de volgende register sleutel is ingesteld op false om te voor komen dat uw Windows-hostcomputers niet-gecoördineerde updates initiëren: HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
 
 Hieronder vindt u de eigenschappen van de Resource Manager-sjabloon voor het berekenen van de naam van de compute virtual machine set om de register sleutel WindowsUpdate in te stellen op False
 ```json
@@ -142,6 +133,6 @@ Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Een cluster maken op Vm's of computers met Windows Server: [Service Fabric cluster maken voor Windows Server](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-* Een cluster maken op Vm's of op computers met Linux: [Een Linux-cluster maken](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+* Een cluster maken op Vm's of computers met Windows Server: [service Fabric cluster maken voor Windows Server](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+* Een cluster maken op Vm's of computers met Linux: [een Linux-cluster maken](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 * Meer informatie over [ondersteuningsopties voor Service Fabric](service-fabric-support.md)

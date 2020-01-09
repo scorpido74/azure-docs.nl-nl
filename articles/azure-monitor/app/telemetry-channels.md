@@ -4,16 +4,16 @@ description: Telemetrie-kanalen aanpassen in Azure-toepassing Insights-Sdk's voo
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: cijothomas
-ms.author: cithomas
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: cef8a06fb7e4cfb713d6531f23df9ae9c5836b68
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: cef35ae5cb2b66385332a3b1f9ebe177ea26a3e4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173614"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406360"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetrie-kanalen in Application Insights
 
@@ -146,7 +146,7 @@ Het korte antwoord is dat geen van de ingebouwde kanalen een transactie type gar
 
 1. Items in het geheugen gaan verloren wanneer de toepassing vastloopt.
 
-1. Telemetrie gaat verloren tijdens een lange periode van netwerk problemen. Telemetrie wordt op de lokale schijf opgeslagen tijdens netwerk storingen of wanneer er problemen optreden met de Application Insights back-end. Items die ouder zijn dan 24 uur, worden echter verwijderd.
+1. Telemetrie gaat verloren tijdens een lange periode van netwerk problemen. Telemetrie wordt op de lokale schijf opgeslagen tijdens netwerk storingen of wanneer er problemen optreden met de Application Insights back-end. Items die ouder zijn dan 48 uur, worden echter verwijderd.
 
 1. De standaard schijf locaties voor het opslaan van telemetrie in Windows zijn% LOCALAPPDATA% of% TEMP%. Deze locaties zijn doorgaans lokaal voor de computer. Als de toepassing fysiek van de ene locatie naar de andere migreert, gaan alle telemetrie die op de oorspronkelijke locatie zijn opgeslagen verloren.
 

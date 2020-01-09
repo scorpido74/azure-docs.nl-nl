@@ -1,22 +1,24 @@
 ---
 title: Beheer groepen maken om resources te organiseren-Azure governance
 description: Meer informatie over het maken van Azure-beheer groepen voor het beheren van meerdere resources met behulp van de portal, Azure PowerShell en Azure CLI.
-ms.date: 04/05/2019
+ms.date: 12/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: 335dd8f7f3a9ec20c2b7740e4ec97454489027f6
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: d9bb2e82404c0188094298f40da3346ee132eec3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960205"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436532"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Beheer groepen maken voor resource organisatie en-beheer
 
 Beheer groepen zijn containers die u helpen bij het beheren van de toegang, het beleid en de naleving van meerdere abonnementen. Maak deze containers om een effectieve en efficiënte hiërarchie te maken die kan worden gebruikt met [Azure Policy](../policy/overview.md) en [toegangs beheer op basis van rollen in azure](../../role-based-access-control/overview.md). Zie [uw resources organiseren met Azure-beheer groepen](overview.md)voor meer informatie over beheer groepen.
 
-Het kan tot vijf tien minuten duren voordat de eerste beheer groep die in de Directory is gemaakt, is voltooid. Er zijn processen die de eerste keer worden uitgevoerd om de service voor beheer groepen in te stellen in azure voor uw Directory. U ontvangt een melding wanneer het proces is voltooid.
+Het kan tot vijf tien minuten duren voordat de eerste beheer groep die in de Directory is gemaakt, is voltooid. Er zijn processen die de eerste keer worden uitgevoerd om de service voor beheer groepen in te stellen in azure voor uw Directory. U ontvangt een melding wanneer het proces is voltooid. Zie [eerste instellingen van beheer groepen](./overview.md#initial-setup-of-management-groups)voor meer informatie. 
 
 ## <a name="create-a-management-group"></a>Een beheergroep maken
+
+Elke Azure AD-gebruiker in de Tenant kan een beheer groep maken zonder dat de machtiging schrijven voor de beheer groep is toegewezen aan die gebruiker.  Deze nieuwe beheer groep wordt een onderliggend item van de hoofd beheer groep en de maker krijgt de roltoewijzing ' eigenaar '. Met de beheer groep-service kan deze functie worden ingesteld, zodat roltoewijzingen niet nodig zijn op het hoofd niveau. Gebruikers hebben geen toegang tot de hoofd beheer groep wanneer deze wordt gemaakt.  Om te voor komen dat de drempel van het vinden van de globale beheerders van Azure AD om beheer groepen te kunnen gebruiken, wordt het maken van de eerste beheer groepen op het hoofd niveau toegestaan.      
 
 U kunt de beheer groep maken met behulp van de portal, Power shell of Azure CLI. Op dit moment kunt u geen Resource Manager-sjablonen gebruiken om beheer groepen te maken.
 

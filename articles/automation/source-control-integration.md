@@ -2,19 +2,15 @@
 title: Integratie van broncode beheer in Azure Automation
 description: In dit artikel wordt de integratie van broncode beheer met GitHub in Azure Automation beschreven.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/10/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 4e5e0135e4ab56d319c78b7daeab9dd2e9d101f9
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 837ebd71886e9435a44080b06c079623c3936c69
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996507"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417070"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integratie van broncodebeheer in Azure Automation
 
@@ -103,7 +99,7 @@ Voor meer informatie over het maken van een persoonlijk toegangs token in GitHub
 |schrijven: repo_hook     | Opslag plaats-hooks schrijven         |
 |lezen: repo_hook|Opslag plaats hooks lezen|
 
-#### <a name="azure-repos"></a>Azure-opslagplaatsen
+#### <a name="azure-repos"></a>Azure Repos
 
 Ga voor meer informatie over het maken van een persoonlijk toegangs token in azure opslag plaatsen naar [verificatie van toegang met persoonlijke toegangs tokens](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate).
 

@@ -8,17 +8,17 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/22/2019
 ms.reviewer: olegan
-ms.openlocfilehash: 94ae9035c1657c1ce20c40234ddca95ae30d9edd
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: f7f32cc7f160a7ac9253b60e8c0c13926c110ac2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677540"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407105"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>De Application Insights-SDK configureren met ApplicationInsights.config of ApplicationInsights.xml
 De Application Insights .NET SDK bestaat uit een aantal NuGet-pakketten. Het [kern pakket](https://www.nuget.org/packages/Microsoft.ApplicationInsights) biedt de API voor het verzenden van telemetrie naar de Application Insights. [Aanvullende pakketten](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) bieden telemetrie- *modules* en *initialisatie functies* voor het automatisch traceren van telemetrie van uw toepassing en de bijbehorende context. Door het configuratie bestand aan te passen, kunt u telemetrie-modules en initialisatie functies in-of uitschakelen en para meters instellen voor een aantal hiervan.
 
-Het configuratie bestand heeft de naam `ApplicationInsights.config` of `ApplicationInsights.xml`, afhankelijk van het type toepassing. Het wordt automatisch toegevoegd aan uw project wanneer u [de meeste versies van de SDK installeert][start]. Wanneer u de geautomatiseerde ervaring gebruikt vanuit de Visual Studio-sjabloon projecten die ondersteuning bieden voor **toevoegen > Application Insights Telemetry**, wordt het bestand ApplicationInsights. config standaard gemaakt in de hoofdmap van het project en wordt de naleving gekopieerd naar de bin-map. Het wordt ook toegevoegd aan een web-app door [status monitor op een IIS-server][redfield]. Het configuratie bestand wordt genegeerd als de [extensie voor de Azure-website](azure-web-apps.md) of- [extensie voor de virtuele machine van Azure en](azure-vm-vmss-apps.md) de VM-schaalset wordt gebruikt.
+Het configuratie bestand heeft de naam `ApplicationInsights.config` of `ApplicationInsights.xml`, afhankelijk van het type toepassing. Het wordt automatisch toegevoegd aan uw project wanneer u [de meeste versies van de SDK installeert][start]. Wanneer u de geautomatiseerde ervaring gebruikt vanuit de Visual Studio-sjabloon projecten die ondersteuning bieden voor **toevoegen > Application Insights Telemetry**, wordt het ApplicationInsights. config-bestand standaard gemaakt in de hoofdmap van het project en wordt de naleving naar de bin-map gekopieerd. Het wordt ook toegevoegd aan een web-app door [status monitor op een IIS-server][redfield]. Het configuratie bestand wordt genegeerd als de [extensie voor de Azure-website](azure-web-apps.md) of- [extensie voor de virtuele machine van Azure en](azure-vm-vmss-apps.md) de VM-schaalset wordt gebruikt.
 
 Er is geen gelijkwaardig bestand voor het beheren [van de SDK op een webpagina][client].
 
@@ -66,13 +66,13 @@ De `DiagnosticsTelemetryModule` rapporteert fouten in de Application Insights in
 Rapporteert de [reactie tijd en de resultaat code](../../azure-monitor/app/asp-net.md) van HTTP-aanvragen.
 
 * `Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule`
-* Het NuGet-pakket [micro soft. ApplicationInsights. Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web)
+* [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet package
 
-### <a name="exception-tracking"></a>Uitzonde ringen bijhouden
+### <a name="exception-tracking"></a>Uitzonderingen bijhouden
 `ExceptionTrackingTelemetryModule` worden niet-verwerkte uitzonde ringen in uw web-app bijgehouden. Bekijk [storingen en uitzonde ringen][exceptions].
 
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
-* Het NuGet-pakket [micro soft. ApplicationInsights. Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web)
+* [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet package
 * `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule`-houdt niet- [waargenomen taak uitzonderingen](https://blogs.msdn.com/b/pfxteam/archive/2011/09/28/task-exception-handling-in-net-4-5.aspx)bij.
 * `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule`: Hiermee worden niet-verwerkte uitzonde ringen bijgehouden voor worker-rollen, Windows-Services en console toepassingen.
 * [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) NuGet-pakket.
@@ -81,15 +81,15 @@ Rapporteert de [reactie tijd en de resultaat code](../../azure-monitor/app/asp-n
 met `EventSourceTelemetryModule` kunt u Event source-gebeurtenissen configureren voor verzen ding naar Application Insights als traceringen. Zie [gebeurtenis source Events gebruiken](../../azure-monitor/app/asp-net-trace-logs.md#use-eventsource-events)voor meer informatie over het volgen van Event source-gebeurtenissen.
 
 * `Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule`
-* [Micro soft. ApplicationInsights. EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
+* [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
 
 ### <a name="etw-event-tracking"></a>ETW-gebeurtenis tracering
 met `EtwCollectorTelemetryModule` kunt u gebeurtenissen configureren van ETW-providers die naar Application Insights worden verzonden als traceringen. Zie [etw-gebeurtenissen gebruiken](../../azure-monitor/app/asp-net-trace-logs.md#use-etw-events)voor meer informatie over het volgen van etw-gebeurtenissen.
 
 * `Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule`
-* [Micro soft. ApplicationInsights. EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
+* [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
 
-### <a name="microsoftapplicationinsights"></a>Micro soft. ApplicationInsights
+### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
 Het pakket micro soft. ApplicationInsights biedt de [kern-API](https://msdn.microsoft.com/library/mt420197.aspx) van de SDK. De andere telemetrie-modules gebruiken deze en u kunt [deze ook gebruiken om uw eigen telemetrie te definiëren](../../azure-monitor/app/api-custom-events-metrics.md).
 
 * Geen vermelding in ApplicationInsights. config.
@@ -124,7 +124,7 @@ De standaard initialisatie functies zijn allemaal ingesteld door de web-of Windo
 * `OperationNameTelemetryInitializer` werkt de eigenschap `Name` van de `RequestTelemetry` en de eigenschap `Name` van de `Operation` context van alle telemetrie-items op basis van de HTTP-methode, evenals namen van de ASP.NET MVC-controller en de actie die is aangeroepen om de aanvraag te verwerken.
 * `OperationIdTelemetryInitializer` of `OperationCorrelationTelemetryInitializer` werkt de eigenschap `Operation.Id` context bij van alle telemetriegegevens die worden bijgehouden tijdens het verwerken van een aanvraag met de automatisch gegenereerde `RequestTelemetry.Id`.
 * `SessionTelemetryInitializer` werkt de eigenschap `Id` van de `Session` context voor alle telemetrie-items uit met een waarde die is geëxtraheerd uit de `ai_session` cookie die wordt gegenereerd door de ApplicationInsights java script Instrumentation-code die wordt uitgevoerd in de browser van de gebruiker.
-* met `SyntheticTelemetryInitializer` of `SyntheticUserAgentTelemetryInitializer` worden de eigenschappen `User`, `Session` en `Operation` bijgewerkt van alle telemetriegegevens die worden bijgehouden bij het afhandelen van een aanvraag van een synthetische bron, zoals een beschikbaarheids test of een zoek machine-bot. [Metrics Explorer](../../azure-monitor/app/metrics-explorer.md) worden standaard geen synthetische telemetrie weer gegeven.
+* met `SyntheticTelemetryInitializer` of `SyntheticUserAgentTelemetryInitializer` worden de eigenschappen `User`, `Session`en `Operation` bijgewerkt van alle telemetriegegevens die worden bijgehouden bij het afhandelen van een aanvraag van een synthetische bron, zoals een beschikbaarheids test of een zoek machine-bot. [Metrics Explorer](../../azure-monitor/app/metrics-explorer.md) worden standaard geen synthetische telemetrie weer gegeven.
 
     De `<Filters>` het identificeren van eigenschappen van de aanvragen.
 * `UserTelemetryInitializer` werkt de `Id`-en `AcquisitionDate` eigenschappen van `User` context voor alle telemetrie-items uit met waarden die zijn geëxtraheerd uit de `ai_user` cookie die wordt gegenereerd door de Application Insights java script Instrumentation-code die wordt uitgevoerd in de browser van de gebruiker.
@@ -198,7 +198,7 @@ Het aantal telemetriegegevens dat kan worden opgeslagen in de opslag ruimte in h
 Bepaalt hoe vaak de gegevens die in de opslag in het geheugen zijn opgeslagen, moeten worden leeg gemaakt (verzonden naar Application Insights).
 
 * Min: 1
-* Max.: 300
+* Max: 300
 * Standaard: 5
 
 ```
@@ -216,7 +216,7 @@ Bepaalt hoe vaak de gegevens die in de opslag in het geheugen zijn opgeslagen, m
 Bepaalt de maximale grootte in MB die wordt toegewezen aan de permanente opslag op de lokale schijf. Deze opslag wordt gebruikt voor het persistent maken van telemetriegegevens van items die niet naar het Application Insights-eind punt konden worden verzonden. Wanneer aan de opslag grootte is voldaan, worden nieuwe telemetriegegevens genegeerd.
 
 * Min: 1
-* Max.: 100
+* Max: 100
 * Standaard: 10
 
 ```
@@ -230,47 +230,23 @@ Bepaalt de maximale grootte in MB die wordt toegewezen aan de permanente opslag 
    </ApplicationInsights>
 ```
 
-#### <a name="local-forwarder"></a>Lokale doorstuurserver
-
-[Lokale doorstuur server](opencensus-local-forwarder.md) is een agent die de telemetrie van Application Insights of [opentellingen](https://opencensus.io/) verzamelt vanuit diverse sdk's en frameworks en deze naar Application Insights stuurt. Het kan worden uitgevoerd onder Windows en Linux. Wanneer de lokale doorstuur server is gekoppeld aan de Application Insights Java-SDK, biedt dit volledige ondersteuning voor [Live metrische gegevens](../../azure-monitor/app/live-stream.md) en adaptieve steek proeven.
-
-```xml
-<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
-<EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
-
-<!-- The properties below are optional. The values shown are the defaults for each property -->
-
-<FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
-<MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
-</Channel>
-```
-
-Als u SpringBoot Starter gebruikt, voegt u het volgende toe aan uw configuratie bestand (toepassing. eigenschappen):
-
-```yml
-azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->
-azure.application-insights.channel.local-forwarder.flush-interval-in-seconds=<!--optional-->
-azure.application-insights.channel.local-forwarder.max-telemetry-buffer-capacity=<!--optional-->
-```
-
-De standaard waarden zijn hetzelfde voor SpringBoot Application. Properties en applicationinsights. xml-configuratie.
-
-## <a name="instrumentationkey"></a>instrumentationKey
+## <a name="instrumentationkey"></a>InstrumentationKey
 Hiermee bepaalt u de Application Insights resource waarin uw gegevens worden weer gegeven. Doorgaans maakt u een afzonderlijke resource, met een afzonderlijke sleutel, voor elk van uw toepassingen.
 
 Als u de sleutel dynamisch wilt instellen, bijvoorbeeld als u de resultaten van uw toepassing naar verschillende resources wilt verzenden, kunt u de sleutel uit het configuratie bestand weglaten en in plaats daarvan instellen in de code.
 
-Als u de sleutel wilt instellen voor alle exemplaren van TelemetryClient, met inbegrip van standaard-telemetriegegevens, stelt u de sleutel in TelemetryConfiguration. Active. Doe dit in een initialisatie methode, zoals global.aspx.cs in een ASP.NET-service:
+De sleutel instellen voor alle exemplaren van TelemetryClient, met inbegrip van standaard-telemetrie-modules. Doe dit in een initialisatie methode, zoals global.aspx.cs in een ASP.NET-service:
 
 ```csharp
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights;
 
     protected void Application_Start()
     {
-      Microsoft.ApplicationInsights.Extensibility.
-        TelemetryConfiguration.Active.InstrumentationKey =
-          // - for example -
-          WebConfigurationManager.AppSettings["ikey"];
-      //...
+        TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
+        configuration.InstrumentationKey = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
+        var telemetryClient = new TelemetryClient(configuration);
+   
 ```
 
 Als u alleen een specifieke set gebeurtenissen naar een andere resource wilt verzenden, kunt u de sleutel voor een specifieke TelemetryClient instellen:
@@ -288,7 +264,7 @@ Als u een nieuwe sleutel wilt ophalen, [maakt u een nieuwe resource in de Applic
 
 
 
-## <a name="applicationid-provider"></a>ApplicationId-provider
+## <a name="applicationid-provider"></a>ApplicationId Provider
 
 _Beschikbaar vanaf v 2.6.0_
 
@@ -316,7 +292,7 @@ Deze provider wordt toegevoegd aan uw configuratie bestand wanneer u [micro soft
 
 Deze klasse heeft een optionele eigenschap `ProfileQueryEndpoint`.
 Deze instelling is standaard ingesteld op `https://dc.services.visualstudio.com/api/profiles/{0}/appId`.
-Als u een proxy voor deze configuratie wilt configureren, is het raadzaam om het basis adres te adresseren en '/API/Profiles/{0}/appId ' toe te staan. Houd er rekening mee dat {0} wordt vervangen tijdens runtime per aanvraag met de instrumentatie sleutel.
+Als u een proxy voor deze configuratie wilt configureren, is het raadzaam om het basis adres te adresseren en '/API/Profiles/{0}/appId ' toe te staan. Houd er rekening mee dat{0}wordt vervangen tijdens runtime per aanvraag met de instrumentatie sleutel.
 
 #### <a name="example-configuration-via-applicationinsightsconfig"></a>Voorbeeld configuratie via ApplicationInsights. config:
 ```xml

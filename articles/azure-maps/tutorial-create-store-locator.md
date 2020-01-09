@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 52deb1cf872176b69975d550dd89d870b34d9bf0
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b5ce78e95d139cf16b6193fedffc563513b39719
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107085"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75408031"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Zelf studie: een Store-Locator maken met behulp van Azure Maps
 
@@ -35,20 +35,18 @@ Spring vooruit naar het [live-winkelzoekervoorbeeld](https://azuremapscodesample
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de stappen in deze zelf studie wilt volt ooien, moet u eerst [uw Azure Maps-account maken](./tutorial-search-location.md#createaccount) en de stappen in [primaire sleutel ophalen](./tutorial-search-location.md#getkey) om de primaire abonnements sleutel voor uw account te krijgen.
+Als u de stappen in deze zelf studie wilt volt ooien, moet u eerst een Azure Maps account maken en uw primaire sleutel (abonnements sleutel) ophalen. Volg de instructies in [een account maken](quick-demo-map-app.md#create-an-account-with-azure-maps) om een abonnement voor een Azure Maps account te maken met de prijs categorie S1 en volg de stappen in [primaire sleutel ophalen](quick-demo-map-app.md#get-the-primary-key-for-your-account) om de primaire sleutel voor uw account op te halen. Zie [verificatie beheren in azure Maps](how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 
-## <a name="design"></a>Ontwerp
+## <a name="design"></a>Ontwerpen
 
 Voordat u in de code duikt, is het een goed idee om met een ontwerp te beginnen. Uw winkelzoeker kan zo eenvoudig of zo ingewikkeld zijn als u wilt. In deze zelfstudie maken we een eenvoudige winkelzoeker. We nemen onderweg enkele tips op om u te helpen sommige functies uit te breiden als u dat wilt. We maken een winkelzoeker voor het fictieve bedrijf Contoso Coffee. De volgende afbeelding toont een draadmodel van de algemene indeling van de winkelzoeker die we in deze zelfstudie bouwen:
 
-<br/>
 <center>
 
 ![draad model van een Store-Locator voor de micro soft-winkel locaties van Contoso koffie,](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 Om de bruikbaarheid van deze winkelzoeker te maximaliseren, gebruiken we een responsieve lay-out die wordt aangepast wanneer de schermbreedte van een gebruiker kleiner is dan 700 pixels. Een responsieve lay-out maakt het gemakkelijk om de winkelzoeker op een klein scherm te gebruiken, zoals op een mobiel apparaat. Hier volgt een draadmodel van een lay-out voor een klein scherm:  
 
-<br/>
 <center>
 
 ![draad model van de contoso-Store-Locator op een mobiel apparaat](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
@@ -73,7 +71,6 @@ De draadmodellen tonen een redelijk eenvoudige toepassing. De toepassing heeft e
 
 Voordat we een winkelzoektoepassing ontwikkelen, moeten we een gegevensset maken van de winkels die we willen weergeven op de kaart. In deze zelfstudie gebruiken we een gegevensset voor een fictieve koffiebar met de naam Contoso Coffee. De gegevensset voor deze eenvoudige winkelzoeker wordt beheerd in een Excel-werkmap. De gegevensset bevat 10.213 contoso koffie-winkel locaties die zijn verspreid over negen landen/regio's: de Verenigde Staten, Canada, het Verenigd Konink rijk, Frank rijk, Duitsland, Italië, Nederland, Denemarken en Spanje. Hier volgt een schermopname van hoe de gegevens eruitzien:
 
-<br/>
 <center>
 
 ![scherm opname van de Store Locator-gegevens in een Excel-werkmap](./media/tutorial-create-store-locator/StoreLocatorDataSpreadsheet.png)</center>
@@ -95,14 +92,12 @@ Een andere benadering is om deze dataset om te zetten in een bestand met platte 
 
 Als u de werkmap wilt converteren naar een platte-tekstbestand, slaat u de werkmap op als een door tabs gescheiden bestand. De kolommen worden gescheiden door tabtekens, zodat de kolommen gemakkelijk te parseren zijn in onze code. U zou de CSV-indeling kunnen gebruiken (bestand met door komma's gescheiden waarden), maar voor die optie is meer parseringslogica nodig. Elk veld dat door komma's wordt gescheiden, zou dan worden omgeven door aanhalingstekens. Om deze gegevens in Excel te exporteren als een door tabs gescheiden bestand, selecteert u **Opslaan als**. Selecteer in de vervolgkeuzelijst **Opslaan als** de optie **Tekst (tab is scheidingsteken) (*.txt)** . Noem het bestand *ContosoCoffee.txt*. 
 
-<br/>
 <center>
 
 ![scherm afbeelding van het dialoog venster Opslaan als type](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)</center>
 
 Als u het bestand in Kladblok opent, ziet dit eruit als in de volgende afbeelding:
 
-<br/>
 <center>
 
 ![scherm opname van een Klad blok-bestand waarin een door tabs gescheiden gegevensset wordt weer gegeven](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
@@ -112,7 +107,6 @@ Als u het bestand in Kladblok opent, ziet dit eruit als in de volgende afbeeldin
 
 Voor het maken van het project kunt u [Visual Studio](https://visualstudio.microsoft.com) of de code-editor van uw keuze gebruiken. Maak in de projectmap drie bestanden: *index.html*, *index.css* en *index.js*. Deze bestanden definiëren de lay-out, stijl en logica voor de toepassing. Maak een map met de naam *data* en voeg *ContosoCoffee.txt* toe aan deze map. Maak een andere map met de naam *images* (afbeeldingen). We gebruiken tien afbeeldingen in deze toepassing, voor pictogrammen, knoppen en markeringen op de kaart. U kunt [deze afbeeldingen downloaden](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Uw projectmap zou er nu uit moeten zien als in de volgende afbeelding:
 
-<br/>
 <center>
 
 ![scherm opname van de projectmap voor het archief van de eenvoudige Store-map](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)</center>
@@ -930,21 +924,18 @@ Nu hebt u een volledig functionele winkelzoeker. Open het *index.html*-bestand v
 
 De eerste keer dat een gebruiker de knop Mijn locatie selecteert, geeft de browser een beveiligingswaarschuwing weer die om toestemming vraagt ​​voor toegang tot de locatie van de gebruiker. Als de gebruiker ermee instemt om zijn/haar locatie te delen, zoomt de kaart in op de locatie van de gebruiker en worden nabijgelegen koffiebars getoond. 
 
-<br/>
 <center>
 
 ![scherm afbeelding van de aanvraag van de browser voor toegang tot de locatie van de gebruiker](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
 Wanneer u sterk genoeg inzoomt op een gebied met koffiebarlocaties, worden de clusters gescheiden in afzonderlijke locaties. Selecteer een van de pictogrammen op de kaart of selecteer een item in het zijpaneel om een ​​pop-upvenster te bekijken met informatie over die locatie.
 
-<br/>
 <center>
 
 ![scherm opname van de voltooide Store-Locator](./media/tutorial-create-store-locator/FinishedSimpleStoreLocator.png)</center>
 
 Als u het formaat van het browservenster verkleint tot minder dan 700 pixels breed of de toepassing op een mobiel apparaat opent, verandert de lay-out zodat deze beter geschikt is voor kleinere schermen. 
 
-<br/>
 <center>
 
 ![scherm opname van de Small Screen-versie van de Store-Locator](./media/tutorial-create-store-locator/FinishedSimpleStoreLocatorSmallScreen.png)</center>

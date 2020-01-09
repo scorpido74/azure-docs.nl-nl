@@ -6,12 +6,12 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 762cea6dce3e0c6be3f5e977c5f9de806ca0880e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 56103ed89d2e7813fd60bc50ecca7271f5421a4a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73516394"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438691"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Ondersteunde gegevens archieven in azure data share
 
@@ -28,23 +28,23 @@ De onderstaande tabel bevat een overzicht van de ondersteunde gegevens bronnen v
 | Azure Blob Storage |✓ | |
 | Azure Data Lake Storage Gen1 |✓ | |
 | Azure Data Lake Storage Gen2 |✓ ||
-| Azure SQL Database |Open bare preview | |
-| Azure SQL Data Warehouse |Open bare preview | |
+| Azure SQL Database |Openbare Preview | |
+| Azure Synapse Analytics (voorheen Azure SQL DW) |Openbare Preview | |
 | Azure Data Explorer | |[Beperkte preview](https://aka.ms/azuredatasharepreviewsignup) |
 
 ## <a name="data-store-support-matrix"></a>Ondersteunings matrix voor gegevens opslag
 
-Azure-gegevens share biedt gegevens gebruikers flexibiliteit bij het bepalen van een gegevens archief om gegevens te accepteren in. Gegevens die vanuit Azure SQL Database worden gedeeld, kunnen bijvoorbeeld worden ontvangen in Azure Data Lake Store Gen2, Azure SQL Database of Azure SQL Data Warehouse. Klanten kunnen kiezen in welke indeling gegevens moeten worden ontvangen bij het configureren van een ontvangen gegevens share. 
+Azure-gegevens share biedt gegevens gebruikers flexibiliteit bij het bepalen van een gegevens archief om gegevens te accepteren in. Gegevens die vanuit Azure SQL Database worden gedeeld, kunnen bijvoorbeeld worden ontvangen in Azure Data Lake Store Gen2, Azure SQL Database of Azure Synapse Analytics. Klanten kunnen kiezen in welke indeling gegevens moeten worden ontvangen bij het configureren van een ontvangen gegevens share. 
 
 De onderstaande tabel bevat informatie over verschillende combi Naties en keuzen die gebruikers van gegevens hebben wanneer ze hun gegevens delen accepteren en configureren. Zie [toewijzing van gegevensset configureren](how-to-configure-mapping.md)voor meer informatie over het configureren van gegevensset-toewijzingen.
 
-|  | Azure Blob Storage | Azure SQL Data Lake gen1 | Azure SQL Data Lake Gen2 | Azure SQL Database | Azure SQL Data Warehouse 
+|  | Azure Blob Storage | Azure SQL Data Lake gen1 | Azure SQL Data Lake Gen2 | Azure SQL Database | Azure Synapse Analytics 
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob Storage |✓ ||✓|
 | Azure Data Lake Storage Gen1 |✓ | |✓|
 | Azure Data Lake Storage Gen2 |✓ | |✓|
 | Azure SQL Database |✓ | |✓|✓|✓|
-| Azure SQL Data Warehouse |✓ | |✓|✓|✓|
+| Azure Synapse Analytics |✓ | |✓|✓|✓|
 
 ## <a name="next-steps"></a>Volgende stappen
 

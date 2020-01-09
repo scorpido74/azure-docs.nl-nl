@@ -6,19 +6,19 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: e5a3df82fae9d81a870d3dba929bc7e4cd4123d2
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 1bfb9362aa0e893a8bf1a758e5a0069e85ab227b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904694"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438750"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Aan de slag met Azure Data Lake Storage Gen1 met behulp van de Azure Portal
 
 > [!div class="op_single_selector"]
 > * [Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
-> * [Azure CLI](data-lake-store-get-started-cli-2.0.md)
+> * [Azure-CLI](data-lake-store-get-started-cli-2.0.md)
 >
 >
 
@@ -42,7 +42,7 @@ Voordat u met deze zelfstudie begint, moet u beschikken over de volgende items:
 
    * **Naam**. Voer een unieke naam in voor het Data Lake Storage Gen1-account.
    * **Abonnement**. Selecteer het abonnement waaronder u een nieuw Data Lake Storage Gen1 account wilt maken.
-   * **Resourcegroep**. Selecteer een bestaande resourcegroep of selecteer de optie **Nieuwe maken** om er een te maken. Een resourcegroep is een container met verwante resources voor een toepassing. Zie [Resourcegroepen in Azure](../azure-resource-manager/resource-group-overview.md#resource-groups) voor meer informatie.
+   * **Resourcegroep**. Selecteer een bestaande resourcegroep of selecteer de optie **Nieuwe maken** om er een te maken. Een resourcegroep is een container met verwante resources voor een toepassing. Zie [Resourcegroepen in Azure](../azure-resource-manager/management/overview.md#resource-groups) voor meer informatie.
    * **Locatie**: Selecteer een locatie waar u het data Lake Storage gen1 account wilt maken.
    * **Versleutelingsinstellingen**. Er zijn drie opties:
 

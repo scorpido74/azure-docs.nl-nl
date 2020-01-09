@@ -2,19 +2,15 @@
 title: Runbook-uitvoer en berichten in Azure Automation
 description: Hierin wordt beschreven hoe u uitvoer-en fout berichten van runbooks maakt en ophaalt in Azure Automation.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 12/04/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: af199439fedddaef5b1bd3b219a60db697fb25ab
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 34246d66a48baec160a83411511ed78948c5dd8d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849646"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421042"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook-uitvoer en berichten in Azure Automation
 
@@ -22,7 +18,7 @@ De meeste Azure Automation runbooks hebben een vorm van uitvoer. Deze uitvoer ka
 
 De volgende tabel bevat een korte beschrijving van elk van de stromen en hun gedrag in de Azure Portal voor gepubliceerde runbooks en bij het [testen van een runbook](automation-testing-runbook.md). Meer informatie over elke stroom vindt u in latere secties.
 
-| Stream | Beschrijving | Gepubliceerd | Testen |
+| Stream | Beschrijving | Gepubliceerd | Test |
 |:--- |:--- |:--- |:--- |
 | Uitvoer |Objecten die zijn bedoeld om te worden verbruikt door andere runbooks. |Naar de taakgeschiedenis geschreven. |In het deelvenster Testuitvoer weergegeven. |
 | Waarschuwing |Waarschuwingsbericht bedoeld voor de gebruiker. |Naar de taakgeschiedenis geschreven. |In het deelvenster Testuitvoer weergegeven. |

@@ -1,6 +1,6 @@
 ---
-title: Azure portal dashboards maken en delen | Microsoft Docs
-description: Dit artikel wordt beschreven hoe u kunt maken, aanpassen, publiceren en delen van dashboards in de Azure-portal.
+title: Azure Portal Dash boards maken en delen | Microsoft Docs
+description: In dit artikel wordt beschreven hoe u Dash boards kunt maken, aanpassen, publiceren en delen in de Azure Portal.
 services: azure-portal
 documentationcenter: ''
 author: sewatson
@@ -13,164 +13,164 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/01/2019
-ms.author: kfollis
-ms.openlocfilehash: 8dd1349ca9ab62484eb6693291e3b869ff079dc1
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.author: mblythe
+ms.openlocfilehash: a3b4d7cb33bf0da0c4431d76a54644208ea6468f
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537227"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640453"
 ---
-# <a name="create-and-share-dashboards-in-the-azure-portal"></a>Dashboards in de Azure-portal maken en delen
+# <a name="create-and-share-dashboards-in-the-azure-portal"></a>Dasboards maken en delen in Azure Portal
 
-Dashboards bieden een manier om te maken van een weergave gerichte en geordend in de Azure-portal van uw cloudresources. Dashboards gebruiken als een werkruimte waar u kunt snel starten-taken voor dagelijkse taken en resources bewaken.  Bouw aangepaste dashboards op basis van projecten, taken of gebruikersrollen, bijvoorbeeld.  De Azure portal biedt een standaarddashboard als uitgangspunt. U kunt het standaarddashboard bewerken, en meer dashboards, aanpassen en publiceren dashboards maken en delen zodat ze beschikbaar voor andere gebruikers. In dit artikel wordt beschreven hoe u een nieuw dashboard maken, de interface, aanpassen en publiceren en delen van dashboards.
+Dash boards bieden u een manier om een geordende en georganiseerde weer gave te maken in het Azure Portal van uw cloud resources. Gebruik dashboards als werkruimte waar u snel taken kunt starten voor dagelijkse bewerkingen en resources kunt bewaken.  Bouw bijvoorbeeld aangepaste dashboards op basis van projecten, taken of gebruikersrollen.  De Azure Portal biedt een standaard dashboard als uitgangs punt. U kunt het standaard dashboard bewerken, extra dashboards maken en aanpassen, en dashboards publiceren en delen om ze beschikbaar te maken voor andere gebruikers. In dit artikel wordt beschreven hoe u een nieuw dash board kunt maken, de interface kunt aanpassen en dash boards kunt publiceren en delen.
 
 ## <a name="create-a-new-dashboard"></a>Een nieuw dashboard maken
 
-In dit voorbeeld wordt een nieuwe, persoonlijk dashboard maken en wijs een naam. Volg deze stappen om aan de slag:
+In dit voor beeld maken we een nieuw persoonlijk dash board en wijzen we een naam toe. Volg deze stappen om aan de slag te gaan:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Selecteer **Dashboard** in het bovenste gedeelte van de linkerzijbalk. Uw standaardweergave kan al zijn ingesteld op het dashboard.
-1. Selecteer **+ nieuw dashboard**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Selecteer **dash board** in het bovenste gedeelte van de zijbalk links. De standaard weergave is mogelijk al ingesteld op dash board.
+1. Selecteer **+ Nieuw dash board**.
 
-    ![Schermopname van het standaarddashboard](./media/azure-portal-dashboards/dashboard-new.png)
+    ![Scherm opname van standaard dashboard](./media/azure-portal-dashboards/dashboard-new.png)
 
-4. Deze actie opent u de **Tegelgalerie**, van waaruit u selecteert tegels en een leeg raster waar u de tegels zult rangschikken.
+4. Met deze actie wordt de **tegel galerie**geopend, van waaruit u tegels selecteert en een leeg raster waarin u de tegels rangschikt.
 
-    ![Schermopname van tegelgalerie en een leeg raster](./media/azure-portal-dashboards/dashboard-name.png)
+    ![Scherm opname van Tegel galerie en leeg raster](./media/azure-portal-dashboards/dashboard-name.png)
 
-5. Selecteer de **mijn Dashboard** tekst in het dashboard worden gelabeld en voer een naam in waarmee u eenvoudig bepalen het aangepaste dashboard.
-1. Selecteer **aanpassen voltooid** modus bewerken in de paginakoptekst om af te sluiten.
+5. Selecteer de tekst van **mijn dash board** in het label van het dash board en voer een naam in waarmee u het aangepaste dash board eenvoudig kunt identificeren.
+1. Selecteer **gereed aanpassen** in de paginakop tekst om de bewerkings modus af te sluiten.
 
-De dashboardweergave ziet u nu uw leeg dashboard. Selecteer de vervolgkeuzelijst naast de naam van het dashboard om dashboards die voor u beschikbaar te geven – de lijst met dashboards die andere gebruikers hebt gemaakt en gedeeld kan bevatten.
+In de dashboard weergave wordt nu uw lege dash board weer gegeven. Selecteer de vervolg keuzelijst naast de naam van het dash board om Dash boards weer te geven die voor u beschikbaar zijn: de lijst kan Dash boards bevatten die andere gebruikers hebben gemaakt en gedeeld.
 
 ## <a name="edit-a-dashboard"></a>Een dashboard bewerken
 
-Nu gaan we bewerken van het dashboard dat u wilt toevoegen, vergroten of verkleinen en de tegels die staan voor uw Azure-resources te regelen.
+Nu gaan we het dash board bewerken om tegels die uw Azure-resources vertegenwoordigen, toe te voegen, te verg Roten of te verkleinen en te rangschikken.
 
 ### <a name="add-tiles"></a>Tegels toevoegen
 
-Tegels toevoegen aan een dashboard, de volgende stappen uit:
-1. Selecteer ![bewerkpictogram](./media/azure-portal-dashboards/dashboard-edit-icon.png) **bewerken** van koptekst van de pagina.
+Voer de volgende stappen uit om tegels toe te voegen aan een dash board:
+1. Selecteer ![pictogram bewerken](./media/azure-portal-dashboards/dashboard-edit-icon.png) **bewerken** in de koptekst van de pagina.
 
-    ![Schermopname van het dashboard bewerken markeren](./media/azure-portal-dashboards/dashboard-edit.png)
+    ![Scherm opname van het markeren van Dash boards bewerken](./media/azure-portal-dashboards/dashboard-edit.png)
 
-2. Ga de **Tegelgalerie** of gebruik het zoekveld de tegel die u wilt zoeken.
-1. Selecteer **toevoegen** de tegel automatisch worden toegevoegd aan het dashboard met een standaard-grootte en locatie. Of, sleept u de tegel op het raster en plaats deze waar u wilt.
+2. Blader door de **tegel galerie** of gebruik het zoek veld om de gewenste tegel te vinden.
+1. Selecteer **toevoegen** om de tegel automatisch toe te voegen aan het dash board met een standaard grootte en-locatie. U kunt ook de tegel naar het raster slepen en daar neerzetten.
 
-Veel resource's (ook wel bekend als ' blades') bevatten een pictogram punaise in de opdrachtbalk. Als u het pictogram selecteert, wordt een tegel voor de bronpagina is vastgemaakt aan het dashboard dat momenteel actief is. Deze methode is een alternatieve manier om tegels toevoegen aan uw dashboard.
+Veel resource pagina's (ook wel ' Blades ' genoemd) bevatten een pictogram van een punaise in de opdracht balk. Als u het pictogram selecteert, wordt een tegel die de bron pagina vertegenwoordigt, vastgemaakt aan het dash board dat momenteel actief is. Deze methode is een alternatieve manier om tegels aan uw dash board toe te voegen.
 
-![Schermafbeelding van pagina opdrachtbalk met speldpictogram](./media/azure-portal-dashboards/dashboard-pin-blade.png)
+![Scherm afbeelding van de opdracht balk pagina met een speld pictogram](./media/azure-portal-dashboards/dashboard-pin-blade.png)
 
 > [!TIP]
-> Als u met meer dan één organisatie werkt, voegt u toe de **organisatie identity** tegel aan uw dashboard om duidelijk welke organisatie de resources weer te geven tot behoren.
+> Als u met meer dan één organisatie werkt, voegt u de tegel **organisatie-identiteit** toe aan uw dash board om duidelijk te zien in welke organisatie de resources horen.
 >
 >
-### <a name="resize-or-rearrange-tiles"></a>Formaat tegels of opnieuw rangschikken
-De grootte van een tegel wijzigen of opnieuw rangschikken van de tegels op een dashboard, als volgt te werk:
+### <a name="resize-or-rearrange-tiles"></a>Tegels verg Roten of verkleinen of rangschikken
+Als u de grootte van een tegel wilt wijzigen of de tegels op een dash board opnieuw wilt rangschikken, volgt u deze stappen:
 
-1. Selecteer ![bewerkpictogram](./media/azure-portal-dashboards/dashboard-edit-icon.png) **bewerken** van koptekst van de pagina.
-1. Selecteer het contextmenu in de rechterbovenhoek van een tegel. Kies vervolgens de grootte van een tegel. Tegels die ondersteuning bieden voor elke grootte bevatten ook een 'ingang' in de rechterbenedenhoek waarmee u sleept u de tegel naar de gewenste grootte.
+1. Selecteer ![pictogram bewerken](./media/azure-portal-dashboards/dashboard-edit-icon.png) **bewerken** in de koptekst van de pagina.
+1. Selecteer het context menu in de rechter bovenhoek van een tegel. Kies vervolgens een tegel grootte. Tegels die elke grootte ondersteunen, bevatten ook een ' ingang ' in de rechter benedenhoek waarmee u de tegel naar de gewenste grootte kunt slepen.
 
-   ![Schermopname van het dashboard met tegel grootte menu openen](./media/azure-portal-dashboards/dashboard-tile-resize.png)
+   ![Scherm opname van het dash board met het menu grootte van Tegel open](./media/azure-portal-dashboards/dashboard-tile-resize.png)
 
-3. Selecteer een tegel en sleep deze naar een nieuwe locatie in het raster rangschikken van uw dashboard.
+3. Selecteer een tegel en sleep deze naar een nieuwe locatie op het raster om uw dash board te rangschikken.
 
 ### <a name="additional-tile-configuration"></a>Aanvullende tegel configuratie
 
-Sommige tegels mogelijk meer configuratie om de gewenste informatie weer te geven. Bijvoorbeeld, de **grafiek met metrische gegevens** tegel moet worden ingesteld voor het weergeven van metrische gegevens van **Azure Monitor**. U kunt ook de gegevens van de tegel om te overschrijven de standaardinstellingen tijd van het dashboard aanpassen.
+Sommige tegels hebben mogelijk meer configuratie nodig om de gewenste informatie weer te geven. De tegel grafiek met **metrische gegevens** moet bijvoorbeeld worden ingesteld om een metrische waarde van **Azure monitor**weer te geven. U kunt ook tegel gegevens aanpassen om de standaard tijd instellingen van het dash board te overschrijven.
 
-Een willekeurige tegel die moet worden ingesteld met geeft een **configureren tegel** banner totdat u de tegel aanpassen. Selecteer deze banner en voer vervolgens de vereiste instellingen.
+Elke tegel die moet worden ingesteld, geeft een **tegel banner configureren** weer totdat u de tegel aanpast. Selecteer de banner en voer de vereiste installatie uit.
 
-![Schermafbeelding van de tegel die worden geconfigureerd moet](./media/azure-portal-dashboards/dashboard-configure-tile.png)
+![Scherm opname van de tegel waarvoor configuratie is vereist](./media/azure-portal-dashboards/dashboard-configure-tile.png)
 
 > [!NOTE]
-> Een tegel markdown, kunt u aangepaste, statische inhoud weergeven op uw dashboard. Dit kan worden algemene instructies, een afbeelding, een set hyperlinks of neem contact op met informatie. Zie voor meer informatie over het gebruik van een tegel markdown [gebruiken een aangepaste markdown-tegel](azure-portal-markdown-tile.md).
+> Met de tegel prijs verlaging kunt u aangepaste statische inhoud op uw dash board weer geven. Dit kunnen basis instructies, een afbeelding, een aantal hyper links of zelfs contact gegevens zijn. Zie voor meer informatie over het gebruik van een geprijsde tegel [een aangepaste prijs verlaging gebruiken](azure-portal-markdown-tile.md).
 >
 >
-### <a name="customize-tile-data"></a>Tegelgegevens aanpassen
+### <a name="customize-tile-data"></a>Tegel gegevens aanpassen
 
-Gegevens op het dashboard toont automatisch activiteit voor de afgelopen 24 uur. Als u wilt een andere tijdsduur voor alleen deze tegel weergeven, de volgende stappen uit:
+Gegevens in het dash board geven automatisch activiteiten weer voor de afgelopen 24 uur. Voer de volgende stappen uit om een andere tijds Panne voor alleen deze tegel weer te geven:
 
-1. Selecteer de ![filterpictogram](./media/azure-portal-dashboards/dashboard-filter.png) filterpictogram in de linkerbovenhoek van de tegel of selecteer **tegelgegevens aanpassen** in het contextmenu.
+1. Selecteer het pictogram ![filter](./media/azure-portal-dashboards/dashboard-filter.png) pictogram filter in de linkerbovenhoek van de tegel of selecteer **tegel gegevens aanpassen** in het context menu.
 
-   ![Schermopname van het contextmenu van tegel](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
+   ![Scherm opname van context menu voor tegel](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
-2. Het selectievakje voor het **overschrijf de dashboardinstellingen op het niveau van de tegel**.
+2. Schakel het selectie vakje in om **de instellingen van het dash board te overschrijven op het niveau van de tegel**.
 
-   ![Schermopname van het dialoogvenster voor tijd tegelinstellingen configureren](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
+   ![Scherm opname van dialoog venster voor het configureren van de instellingen voor de tegel tijd](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
 
-3. Kies de tijdsduur voor deze tegel worden weergegeven. U kunt kiezen uit de afgelopen 30 minuten voor de afgelopen 30 dagen of een aangepast datumbereik te definiëren.
-1. Kies de tijdgranulatie om weer te geven. U kunt een willekeurige plaats in stappen van één minuut weergeven aan één maand.
+3. Kies de tijds duur die voor deze tegel moet worden weer gegeven. U kunt kiezen uit de afgelopen 30 minuten tot de afgelopen 30 dagen of een aangepast bereik definiëren.
+1. Kies de tijd granulariteit om weer te geven. U kunt elk van de stappen van één minuut tot één maand weer geven.
 1. Selecteer **Toepassen**.
 
 ## <a name="delete-a-tile"></a>Een tegel verwijderen
 
-Als u wilt verwijderen een tegel uit een dashboard, de volgende stappen uit:
+Voer de volgende stappen uit om een tegel uit een dash board te verwijderen:
 
-* Selecteer het contextmenu in de rechterbovenhoek van de tegel en selecteer vervolgens **uit dashboard verwijderen**. Of
-* Selecteer ![bewerkpictogram](./media/azure-portal-dashboards/dashboard-edit-icon.png) **bewerken** om aanpassingen te activeren. Beweeg de muisaanwijzer in de rechterbovenhoek van de tegel en selecteer vervolgens de ![verwijderpictogram](./media/azure-portal-dashboards/dashboard-delete-icon.png) verwijderpictogram als u wilt verwijderen van de tegel vanuit het dashboard.
+* Selecteer het context menu in de rechter bovenhoek van de tegel en selecteer vervolgens **verwijderen in het dash board**. Of
+* Selecteer ![pictogram bewerken](./media/azure-portal-dashboards/dashboard-edit-icon.png) **bewerken** om de aanpassings modus in te voeren. Plaats de muis aanwijzer in de rechter bovenhoek van de tegel en selecteer vervolgens het pictogram ![verwijderen](./media/azure-portal-dashboards/dashboard-delete-icon.png) pictogram verwijderen om de tegel te verwijderen uit het dash board.
 
-   ![Schermopname die laat zien hoe u een tegel uit dashboard verwijderen](./media/azure-portal-dashboards/dashboard-delete-tile.png)
+   ![Scherm afbeelding die laat zien hoe u de tegel van het dash board kunt verwijderen](./media/azure-portal-dashboards/dashboard-delete-tile.png)
 
 ## <a name="clone-a-dashboard"></a>Een dashboard klonen
 
-Voor het gebruik van een bestaand dashboard als een sjabloon voor een nieuw dashboard, de volgende stappen uit:
+Ga als volgt te werk om een bestaand dash board als sjabloon te gebruiken voor een nieuw dash board:
 
-1. Zorg ervoor dat de dashboardweergave wordt weergegeven het dashboard dat u wilt kopiëren.
-1. Selecteer in de paginakoptekst ![kloon pictogram](./media/azure-portal-dashboards/dashboard-clone.png) **kloon**.
-1. Een kopie van het dashboard met de naam ' klonen van *de dashboardnaam van uw*' wordt geopend in de modus bewerken. Gebruik de voorgaande stappen in dit artikel te wijzigen en aanpassen van het dashboard.
+1. Zorg ervoor dat in de dashboard weergave het dash board wordt weer gegeven dat u wilt kopiëren.
+1. Selecteer in de paginakop tekst ![kloon pictogram](./media/azure-portal-dashboards/dashboard-clone.png) **kloon**.
+1. Een kopie van het dash board met de naam ' kloon van *uw dashboard naam*' wordt geopend in de bewerkings modus. Gebruik de voor gaande stappen in dit artikel om de naam van het dash board te wijzigen en aan te passen.
 
-## <a name="publish-and-share-a-dashboard"></a>Publiceren en een dashboard delen
+## <a name="publish-and-share-a-dashboard"></a>Een dash board publiceren en delen
 
-Wanneer u een dashboard maakt, is het standaard persoonlijk wat betekent dat u de enige bent die ze kunnen bekijken. Als u dashboards aan anderen, kunt u deze delen met andere gebruikers. U moet eerst publiceren van het dashboard als een Azure-resource. Als u wilt publiceren en delen van een aangepast dashboard, de volgende stappen uit:
+Wanneer u een dash board maakt, is dit standaard privé, wat betekent dat u het enige kunt zien. Als u Dash boards beschikbaar wilt maken voor anderen, kunt u deze delen met andere gebruikers. Eerst moet u het dash board publiceren als een Azure-resource. Als u een aangepast dash board wilt publiceren en delen, volgt u deze stappen:
 
-1. Selecteer ![deelpictogram](./media/azure-portal-dashboards/dashboard-share-icon.png) **delen** van koptekst van de pagina. De **delen en toegangsbeheer** formulier wordt weergegeven.
-1. Controleer of de naam van de juiste dashboard wordt weergegeven.
-1. Selecteer een **abonnementsnaam**. Gebruikers met toegang tot het abonnement kunnen het gedeelde dashboard gebruiken. Toegang tot de resources die wordt vertegenwoordigd door de afzonderlijke tegels wordt bepaald door de op rollen gebaseerd toegangsbeheer in Azure.
-1. Schakel het selectievakje in voor het publiceren van dit dashboard naar de resourcegroep 'dashboards' voor het geselecteerde abonnement. Of schakel het selectievakje uit en kies publiceren naar een bestaande resourcegroep in plaats daarvan.
-1. Kies een locatie voor de resource van het dashboard. U wordt aangeraden dat u het dashboard met andere resources vinden. Opmerking: als u uit bestaande resourcegroepen kiezen, het dashboard bevindt automatisch in die resourcegroep.
+1. Selecteer ![pictogram delen](./media/azure-portal-dashboards/dashboard-share-icon.png) **share** uit de paginakop tekst. Het formulier voor **delen en toegangs beheer** wordt weer gegeven.
+1. Controleer of de juiste dashboard naam wordt weer gegeven.
+1. Selecteer een **naam**voor het abonnement. Gebruikers met toegang tot het abonnement kunnen het gedeelde dash board gebruiken. Toegang tot de resources vertegenwoordigd door de afzonderlijke tegels wordt bepaald door toegangs beheer op basis van rollen in Azure.
+1. Schakel het selectie vakje in om dit dash board te publiceren naar de resource groep Dash boards voor het geselecteerde abonnement. Of schakel het selectie vakje uit en kies in plaats daarvan naar een bestaande resource groep te publiceren.
+1. Kies een locatie voor de resource in het dash board. We raden u aan het dash board met andere resources te vinden. Opmerking: als u kiest voor bestaande resource groepen, wordt het dash board automatisch gevonden met die resource groep.
 1. Selecteer **Publiceren**.
 
-   ![Schermopname van dialoogvenster voor het publiceren van dashboard](./media/azure-portal-dashboards/dashboard-publish.png)
+   ![Scherm afbeelding van het dialoog venster dash board publiceren](./media/azure-portal-dashboards/dashboard-publish.png)
 
-### <a name="set-access-control-on-a-shared-dashboard"></a>Toegangsbeheer instellen op een gedeeld dashboard
+### <a name="set-access-control-on-a-shared-dashboard"></a>Toegangs beheer instellen op een gedeeld dash board
 
-Nadat het dashboard is gepubliceerd, kunt u beheren wie toegang heeft tot het dashboard door de volgende stappen:
+Nadat het dash board is gepubliceerd, beheert u wie toegang heeft tot het dash board door de volgende stappen uit te voeren:
 
-1. In de **delen en toegangsbeheer** venster **gebruikers beheren**.
+1. Selecteer in het deel venster **delen en toegangs beheer** de optie **gebruikers beheren**.
 
-   ![Schermopname van het dashboard delen en beheren van dialoogvenster](./media/azure-portal-dashboards/dashboard-share-access-control.png)
+   ![Scherm afbeelding van het delen van het dash board en het dialoog venster toegangs beheer](./media/azure-portal-dashboards/dashboard-share-access-control.png)
 
-2. De **Access Control** pagina wordt geopend. Op deze pagina kunt u het niveau van toegang voor iemand anders te controleren of een nieuwe roltoewijzing toevoegen. Wanneer u een roltoewijzing hier toevoegt, verleent u machtigingen aan het dashboard.
+2. De pagina **Access Control** wordt geopend. Op deze pagina kunt u het toegangs niveau voor iemand controleren of een nieuwe roltoewijzing toevoegen. Wanneer u hier een roltoewijzing toevoegt, verleent u machtigingen aan het dash board.
 
 > [!NOTE]
-> Tegels zijn representatieve weergaven van bronnen in uw organisatie. Toegang tot resources wordt beheerd door besturingselement toewijzen van rollen gebaseerde toegang en machtigingen worden overgenomen van het abonnement op de resource. Verlenen van toegang aan een dashboard, niet automatisch machtigingen toewijzen aan de resources die worden weergegeven op het dashboard. Zie voor meer informatie over machtigingen voor gedeelde dashboards en op rollen gebaseerd toegangsbeheer voor resources, [dashboards delen met op rollen gebaseerd toegangsbeheer](azure-portal-dashboard-share-access.md).
+> Tegels zijn representatieve weer gaven van resources in uw organisatie. Toegang tot resources wordt beheerd via de toewijzing van toegangs beheer op basis van rollen en machtigingen worden overgenomen van het abonnement tot de resource. Door toegang te verlenen aan een dash board worden niet automatisch machtigingen toegewezen aan de resources die worden weer gegeven op het dash board. Zie [Dash boards delen met op rollen gebaseerd toegangs beheer](azure-portal-dashboard-share-access.md)voor meer informatie over machtigingen voor gedeelde Dash boards en op rollen gebaseerd toegangs beheer voor resources.
 
-### <a name="open-a-shared-dashboard"></a>Een gedeeld dashboard openen
+### <a name="open-a-shared-dashboard"></a>Een gedeeld dash board openen
 
-Als u wilt zoeken en openen van een gedeeld dashboard, de volgende stappen uit:
+Voer de volgende stappen uit om een gedeeld dash board te zoeken en te openen:
 
-1. Selecteer de vervolgkeuzelijst naast de naam van het dashboard.
-1. Selecteer een van de weergegeven lijst met dashboards of **alle dashboards doorzoeken** als het dashboard dat u wilt openen, niet wordt weergegeven.
+1. Selecteer de vervolg keuzelijst naast de naam van het dash board.
+1. Selecteer in de weer gegeven lijst met Dash boards of **Blader door alle Dash boards** als het dash board dat u wilt openen, niet wordt weer gegeven.
 
-   ![Schermafbeelding van de selectie in het menu](./media/azure-portal-dashboards/dashboard-browse.png)
+   ![Scherm opname van het menu dash board selecteren](./media/azure-portal-dashboards/dashboard-browse.png)
 
-3. In de **Type** veld **gedeelde dashboards**.
-1. Selecteer een of meer abonnementen. U kunt ook tekst dashboards filteren op naam invoeren.
-1. Selecteer een dashboard in de lijst met gedeelde dashboards.
+3. In het veld **type** selecteert u **gedeelde Dash boards**.
+1. Selecteer een of meer abonnementen. U kunt ook tekst invoeren om Dash boards op naam te filteren.
+1. Selecteer een dash board in de lijst met gedeelde Dash boards.
 
 ## <a name="delete-a-dashboard"></a>Een dashboard verwijderen
 
-Als u wilt een persoonlijke of gedeelde dashboard definitief verwijderen, de volgende stappen uit:
+Voer de volgende stappen uit om een persoonlijk of gedeeld dash board permanent te verwijderen:
 
-1. Selecteer het dashboard dat u wilt verwijderen uit de vervolgkeuzelijst naast de naam van het dashboard.
-1. Selecteer ![verwijderpictogram](./media/azure-portal-dashboards/dashboard-delete-icon.png) **verwijderen** van koptekst van de pagina.
-1. Selecteer voor een persoonlijke dashboard **OK** in het bevestigingsvenster op het dashboard verwijderen. Selecteer het selectievakje in om te bevestigen dat het gepubliceerde dashboard niet meer weergegeven door andere gebruikers worden kan voor een gedeeld dashboard, in het bevestigingsvenster. Selecteer vervolgens **OK**.
+1. Selecteer het dash board dat u wilt verwijderen in de vervolg keuzelijst naast de naam van het dash board.
+1. Selecteer ![pictogram verwijderen](./media/azure-portal-dashboards/dashboard-delete-icon.png) **verwijderen** uit de paginakop tekst.
+1. Voor een persoonlijk dash board selecteert u **OK** in het bevestigings venster om het dash board te verwijderen. Voor een gedeeld dash board selecteert u in het bevestigings dialoogvenster het selectie vakje om te bevestigen dat het gepubliceerde dash board niet meer door anderen kan worden weer gegeven. Selecteer vervolgens **OK**.
 
-   ![Schermafbeelding van bevestiging verwijderen](./media/azure-portal-dashboards/dashboard-delete-dash.png)
+   ![Scherm opname van verwijderen bevestigen](./media/azure-portal-dashboards/dashboard-delete-dash.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Dashboards delen met op rollen gebaseerd toegangsbeheer](azure-portal-dashboard-share-access.md)
-* [Programmatische wijze Azure-dashboards maken](azure-portal-dashboards-create-programmatically.md)
+* [Dash boards delen met op rollen gebaseerd toegangs beheer](azure-portal-dashboard-share-access.md)
+* [Programmatisch Azure-Dash boards maken](azure-portal-dashboards-create-programmatically.md)

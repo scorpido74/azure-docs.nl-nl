@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2019
-ms.openlocfilehash: 1719c917ee2a4c0a11e4a79953a8b67e946d5931
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5a47f5c2f9c9d4e22e8205853d85214997a2bea7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74889121"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406943"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters-Inleiding
 
@@ -55,7 +55,7 @@ Voor apps die worden uitgevoerd in .NET Core 3,0 worden de volgende prestatie me
 |`Microsoft.AspNetCore.Hosting` | `failed-requests` |
 
 > [!NOTE]
-> Tellers van de categorie micro soft. AspNetCore. hosting worden alleen toegevoegd aan Asp.Net core-toepassingen.
+> Tellers van de categorie micro soft. AspNetCore. hosting worden alleen toegevoegd in ASP.NET Core toepassingen.
 
 ## <a name="customizing-counters-to-be-collected"></a>Te verzamelen items aanpassen
 
@@ -95,19 +95,19 @@ In het volgende voor beeld ziet u hoe u tellers kunt toevoegen/verwijderen. Deze
 
 ## <a name="event-counters-in-metric-explorer"></a>Gebeurtenis tellers in metrische Explorer
 
-Als u metrische gegevens van Event Counter wilt weer geven in de [metrische Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), selecteert u Application Insights resource en kiest u metrische gegevens op basis van een logboek als metrische naam ruimte. Vervolgens worden event Counter-metrische gegevens weer gegeven onder de categorie Performance Counter.
+Als u metrische gegevens van Event Counter wilt weer geven in de [metrische Explorer](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts), selecteert u Application Insights resource en kiest u metrische gegevens op basis van een logboek als metrische naam ruimte. Vervolgens worden event Counter-metrische gegevens weer gegeven onder aangepaste categorie.
 
 > [!div class="mx-imgBorder"]
 > ![gebeurtenis tellers die zijn gerapporteerd in Application Insights](./media/event-counters/metrics-explorer-counter-list.png)
 
 ## <a name="event-counters-in-analytics"></a>Gebeurtenis tellers in Analytics
 
-U kunt ook rapporten over gebeurtenis tellers in [Analytics](../../azure-monitor/app/analytics.md)zoeken en weer geven in de tabel **Performance Counters** .
+U kunt ook rapporten over gebeurtenis tellers in [Analytics](../../azure-monitor/app/analytics.md)zoeken en weer geven in de tabel **customMetrics** .
 
 Voer bijvoorbeeld de volgende query uit om te zien welke tellers worden verzameld en beschikbaar zijn voor het uitvoeren van query's:
 
 ```Kusto
-performanceCounters | summarize avg(value) by name
+customMetrics | summarize avg(value) by name
 ```
 
 > [!div class="mx-imgBorder"]
@@ -116,7 +116,7 @@ performanceCounters | summarize avg(value) by name
 Voer de volgende query uit om een grafiek van een specifieke teller te verkrijgen (bijvoorbeeld `ThreadPool Completed Work Item Count`) in de recente periode.
 
 ```Kusto
-performanceCounters 
+customMetrics 
 | where name contains "System.Runtime|ThreadPool Completed Work Item Count"
 | where timestamp >= ago(1h)
 | summarize  avg(value) by cloud_RoleInstance, bin(timestamp, 1m)
@@ -125,7 +125,7 @@ performanceCounters
 > [!div class="mx-imgBorder"]
 > ![chatten van één item in Application Insights](./media/event-counters/analytics-completeditems-counters.png)
 
-Net als bij andere telemetrie heeft **Performance Counters** ook een kolom `cloud_RoleInstance` die de identiteit aangeeft van het exemplaar van de hostserver waarop uw app wordt uitgevoerd. De bovenstaande query toont de item waarde per exemplaar en kan worden gebruikt om de prestaties van verschillende server instanties te vergelijken.
+Net als bij andere telemetrie heeft **customMetrics** ook een kolom `cloud_RoleInstance` die de identiteit aangeeft van het exemplaar van de hostserver waarop uw app wordt uitgevoerd. De bovenstaande query toont de item waarde per exemplaar en kan worden gebruikt om de prestaties van verschillende server instanties te vergelijken.
 
 ## <a name="alerts"></a>Waarschuwingen
 Net als bij andere metrische gegevens kunt u [een waarschuwing instellen](../../azure-monitor/app/alerts.md) om u te waarschuwen als een gebeurtenis teller buiten een limiet valt die u opgeeft. Open het deel venster waarschuwingen en klik op waarschuwing toevoegen.

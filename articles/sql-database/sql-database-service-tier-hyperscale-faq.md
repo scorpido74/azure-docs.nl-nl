@@ -1,5 +1,5 @@
 ---
-title: Veelgestelde vragen-grootschalige (Citus)-Azure Database for PostgreSQL
+title: Veelgestelde vragen over Azure SQL Database grootschalige
 description: Antwoorden op veelgestelde vragen klanten vragen over een Azure-SQL database in de grootschalige-service laag, meestal een grootschalige-data base genoemd.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/12/2019
-ms.openlocfilehash: 377de93733d94d8cff5518eebb8ebba38154d10d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 6a25d5197746e04ffa25ee397e6d8451e24ae176
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974016"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614993"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Veelgestelde vragen over Azure SQL Database grootschalige
 
@@ -157,7 +157,7 @@ Het transactie logboek met grootschalige is nagenoeg oneindig. U hoeft zich geen
 
 ### <a name="does-my-tempdb-scale-as-my-database-grows"></a>Wordt mijn `tempdb` geschaald naarmate mijn data base groeit
 
-Uw `tempdb`-Data Base bevindt zich op lokale SSD-opslag en wordt geconfigureerd op basis van de berekenings grootte die u inricht. Uw `tempdb` is geoptimaliseerd voor maximale prestatie voordelen. `tempdb` grootte kan niet worden geconfigureerd en wordt voor u beheerd.
+Uw `tempdb`-Data Base bevindt zich op de lokale SSD-opslag en heeft een proportionele grootte ten opzichte van de omvang van de computer die u inricht. Uw `tempdb` is geoptimaliseerd voor maximale prestatie voordelen. `tempdb` grootte kan niet worden geconfigureerd en wordt voor u beheerd.
 
 ### <a name="does-my-database-size-automatically-grow-or-do-i-have-to-manage-the-size-of-data-files"></a>Neemt de grootte van de data base automatisch toe of moet ik de grootte van de gegevens bestanden beheren
 
@@ -165,7 +165,7 @@ De grootte van de data base neemt automatisch toe tijdens het invoegen/opnemen v
 
 ### <a name="what-is-the-smallest-database-size-that-hyperscale-supports-or-starts-with"></a>Wat is de kleinste grootte van de data base die grootschalige ondersteunt of begint met
 
-10 GB.
+40 GB. Een grootschalige-data base wordt gemaakt met een begin grootte van 10 GB. Vervolgens begint het te groeien met 10 GB om de 10 minuten, totdat de grootte van 40 GB wordt bereikt. Elk van deze 10 GB chucks wordt toegewezen in een andere pagina Server, zodat er meer IOPS en een hogere I/O-parallellisme kunnen worden gemaakt. Vanwege deze optimalisatie, zelfs als u de oorspronkelijke grootte van de data base kleiner dan 40 GB kiest, wordt de data base automatisch uitgebreid tot ten minste 40 GB.
 
 ### <a name="in-what-increments-does-my-database-size-grow"></a>In welke stappen groeit de grootte van mijn data base
 
@@ -268,13 +268,13 @@ Ja.
 
 De RPO is 0 min. Het doel van de RTO is minder dan 10 minuten, ongeacht de grootte van de data base. 
 
-### <a name="do-backups-of-large-databases-affect-compute-performance-on-my-primary"></a>Back-ups van grote data bases invloed hebben op de reken prestaties op mijn primaire
+### <a name="does-database-backup-affect-compute-performance-on-my-primary-or-secondary-replicas"></a>Is de database back-up van invloed op de reken prestaties op mijn primaire of secundaire replica's
 
-Nee. Back-ups worden beheerd door het opslag subsysteem en maken gebruik van opslag momentopnamen. Ze hebben geen invloed op de werk belasting van de gebruiker op de primaire.
+Nee. Back-ups worden beheerd door het opslag subsysteem en maken gebruik van opslag momentopnamen. Ze hebben geen invloed op de werk belasting van de gebruiker.
 
 ### <a name="can-i-perform-geo-restore-with-a-hyperscale-database"></a>Kan ik geo-herstel uitvoeren met een grootschalige-data base
 
-Ja.  Geo-Restore wordt volledig ondersteund.
+Ja.  Geo-Restore wordt volledig ondersteund. In tegens telling tot het herstel punt in de tijd is het mogelijk dat voor geo-herstel een langdurige bewerking met een lange uitvoerings grootte nodig is.
 
 ### <a name="can-i-set-up-geo-replication-with-hyperscale-database"></a>Kan ik geo-replicatie met grootschalige-data base instellen
 
@@ -296,7 +296,7 @@ Nee. Poly Base wordt niet ondersteund in Azure SQL Database.
 
 ### <a name="does-hyperscale-have-support-for-r-and-python"></a>Biedt grootschalige ondersteuning voor R en python
 
-Nee. R en python worden niet ondersteund in Azure SQL Database.
+Op dit moment niet.
 
 ### <a name="are-compute-nodes-containerized"></a>Worden reken knooppunten container
 
@@ -306,11 +306,11 @@ Nee. Grootschalige processen worden uitgevoerd op een [service Fabric](https://a
 
 ### <a name="how-much-write-throughput-can-i-push-in-a-hyperscale-database"></a>Hoeveel schrijf doorvoer kan ik pushen in een grootschalige-data base
 
-De doorvoer limiet voor het transactie logboek is ingesteld op 100 MB/s voor een grootschalige-reken grootte. De mogelijkheid om dit aantal te bereiken, is afhankelijk van meerdere factoren, zoals het type werk belasting, de client configuratie en de juiste reken capaciteit op de primaire Compute-replica om het logboek op basis van dit aantal te maken.
+De doorvoer capaciteit van het transactie logboek is ingesteld op 100 MB/s voor elke grootschalige-reken grootte. De mogelijkheid om dit aantal te bereiken, is afhankelijk van meerdere factoren, zoals het type werk belasting, de client configuratie en de juiste reken capaciteit op de primaire Compute-replica om het logboek op basis van dit aantal te maken.
 
 ### <a name="how-many-iops-do-i-get-on-the-largest-compute"></a>Hoeveel IOPS krijg ik op de grootste compute
 
-IOPS en IO-latentie variëren afhankelijk van de werkbelasting patronen. Als de gegevens die worden geopend, worden opgeslagen in de cache op de compute-replica, worden dezelfde i/o-prestaties weer gegeven als bij lokale SSD.
+IOPS en IO-latentie variëren afhankelijk van de werkbelasting patronen. Als de gegevens die worden geopend, worden opgeslagen in de cache op de compute-replica, worden vergelijk bare i/o-prestaties weer gegeven als met de lokale SSD.
 
 ### <a name="does-my-throughput-get-affected-by-backups"></a>Wordt mijn door Voer beïnvloed door back-ups
 
@@ -318,7 +318,11 @@ Nee. De compute wordt losgekoppeld van de opslaglaag. Dit elimineert de prestati
 
 ### <a name="does-my-throughput-get-affected-as-i-provision-additional-compute-replicas"></a>Wordt de door Voer beïnvloed als ik extra reken replica's richt
 
-Omdat de opslag wordt gedeeld en er geen directe fysieke replicatie plaatsvindt tussen de primaire en secundaire reken replica's, wordt de door Voer van de primaire replica niet beïnvloed door het toevoegen van secundaire replica's. We kunnen echter doorlopende werk belasting voor agressief schrijven beperken om het aanmelden op secundaire replica's en pagina servers toe te staan om de Lees prestaties van secundaire replica's te voor komen.
+Omdat de opslag wordt gedeeld en er geen directe fysieke replicatie plaatsvindt tussen primaire en secundaire reken replica's, wordt de door Voer op de primaire replica niet rechtstreeks beïnvloed door het toevoegen van secundaire replica's. We kunnen er echter voor zorgen dat continue agressieve werk belasting op de primaire regel wordt toegepast, zodat het logboek van toepassing is op secundaire replica's en pagina servers om te voor komen dat de Lees prestaties van secundaire replica's worden vertraagd.
+
+### <a name="how-do-i-diagnose-and-troubleshoot-performance-problems-in-a-hyperscale-database"></a>Hoe kan ik problemen vaststellen en problemen oplossen in een grootschalige-data base
+
+Voor de meeste prestatie problemen, met name de items die niet zijn geroot tijdens de opslag prestaties, worden algemene SQL Server diagnose en stappen voor probleem oplossing van toepassing. Zie [SQL grootschalige Performance Troubleshooting Diagnostics](sql-database-hyperscale-performance-diagnostics.md)(Engelstalig) voor grootschalige-specifieke opslag diagnose.
 
 ## <a name="scalability-questions"></a>Vragen over schaal baarheid
 
@@ -367,7 +371,7 @@ Nee. U kunt alleen verbinding maken met het lezen van scale-out replica's door `
 
 ### <a name="does-the-system-do-intelligent-load-balancing-of-the-read-workload"></a>Voert het systeem intelligente taak verdeling van de werk belasting lezen uit
 
-Nee. Een verbinding met alleen-lezen intentie wordt omgeleid naar een wille keurige uitschaal replica.
+Nee. Een nieuwe verbinding met alleen-lezen intentie wordt omgeleid naar een wille keurige uitschaal replica.
 
 ### <a name="can-i-scale-updown-the-secondary-compute-replicas-independently-of-the-primary-replica"></a>Kan ik de secundaire reken replica's onafhankelijk van de primaire replica omhoog/omlaag schalen
 
@@ -383,7 +387,7 @@ Nee. Grootschalige-data bases hebben gedeelde opslag, wat betekent dat alle reke
 
 ### <a name="how-much-delay-is-there-going-to-be-between-the-primary-and-secondary-compute-replicas"></a>Hoeveel vertraging er tussen de primaire en secundaire Compute-replica's plaatsvindt
 
-Vanaf het moment dat een trans actie wordt doorgevoerd op de primaire, afhankelijk van de huidige frequentie voor het genereren van het logboek, kan deze onmiddellijk of in een laag aantal milliseconden worden uitgevoerd.
+Gegevens latentie vanaf het moment dat een trans actie wordt doorgevoerd op de primaire en de tijd die op een secundair item wordt weer gegeven, is afhankelijk van de huidige frequentie van de logboek generatie. De gemiddelde gegevens latentie is in geringe milliseconden.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,25 +1,16 @@
 ---
-title: Overzicht van de levens cyclus van Azure Service Fabric actor | Microsoft Docs
+title: Overzicht van de levens cyclus van Azure Service Fabric actor
 description: Hierin worden de Service Fabric betrouw bare actor levenscyclus, garbage collection en hand matig verwijderen van actors en hun status uitgelegd
-services: service-fabric
-documentationcenter: .net
 author: amanbha
-manager: chackdan
-editor: vturecek
-ms.assetid: b91384cc-804c-49d6-a6cb-f3f3d7d65a8e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: 1a8e95c634a1d30b7c566fcd907cb06f34043fa9
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b05da78091260297d94062c06cba100d01ce7e2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706497"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349337"
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>Actor-levens cyclus, automatische garbage collection en hand matig verwijderen
 Er wordt een actor geactiveerd wanneer een aanroep voor de eerste keer wordt uitgevoerd naar een van de methoden. Een actor wordt gedeactiveerd (garbagecollection door de actors-runtime) als deze niet wordt gebruikt voor een Configureer bare periode. Een actor en de status kunnen op elk gewenst moment hand matig worden verwijderd.

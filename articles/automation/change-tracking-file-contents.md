@@ -2,19 +2,15 @@
 title: Wijzigingen in bestands inhoud weer geven met Azure Automation
 description: Gebruik de functie voor het wijzigen van de bestands inhoud van het bijhouden van wijzigingen om de inhoud weer te geven van een bestand dat is gewijzigd.
 services: automation
-ms.service: automation
 ms.subservice: change-inventory-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 07/03/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 4ab88aa2dc604172f00d875353dabba61fd101af
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 23c4f24e430d58895eb551c3e2cb62b5f0003ac0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850581"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75418816"
 ---
 # <a name="view-contents-of-a-file-that-is-being-tracked-with-change-tracking"></a>Inhoud weer geven van een bestand dat wordt bijgehouden met Wijzigingen bijhouden
 
@@ -34,7 +30,7 @@ Met het bijhouden van bestands inhoud kunt u de inhoud van een bestand weer geve
 2. Selecteer in het bovenste menu **Instellingen bewerken**.
 3. Selecteer **Bestands inhoud** en klik op **koppelen**. Hiermee opent u het deel venster **locatie van inhoud toevoegen voor wijzigingen bijhouden** .
 
-   ![Inschakelen](./media/change-tracking-file-contents/enable.png)
+   ![inschakelen](./media/change-tracking-file-contents/enable.png)
 
 4. Selecteer het abonnement en het opslag account dat moet worden gebruikt voor het opslaan van de bestands inhoud. Als u het bijhouden van bestands inhoud voor alle bestaande bijgehouden bestanden wilt inschakelen, selecteert u **aan** voor **uploaden van bestands inhoud voor alle instellingen**. U kunt dit later voor elk bestandspad wijzigen.
 

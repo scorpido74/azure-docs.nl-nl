@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: gwallace
-ms.openlocfilehash: b8a5a344f2f1d8280ca60169786e72a0e1dd291e
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 046e61d82893bf1fcdb2d6697cfaaa9f5bde8c2c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073153"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359359"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>De diagnostische Linux-extensie gebruiken om metrische gegevens en logboeken te bewaken
 
@@ -127,7 +127,7 @@ Deze set configuratie-informatie bevat gevoelige informatie die moet worden beve
 }
 ```
 
-Naam | Waarde
+Name | Waarde
 ---- | -----
 storageAccountName | De naam van het opslag account waarin de gegevens worden geschreven door de extensie.
 storageAccountEndPoint | Beschrijving Het eind punt dat de Cloud aanduidt waarin het opslag account zich bevindt. Als deze instelling niet aanwezig is, wordt LAD standaard ingesteld op de open bare Azure-Cloud `https://core.windows.net`. Als u een opslag account in azure Duitsland, Azure Government of Azure China wilt gebruiken, stelt u deze waarde dienovereenkomstig in.
@@ -135,7 +135,7 @@ storageAccountSasToken | Een [account-SAS-token](https://azure.microsoft.com/blo
 mdsdHttpProxy | Beschrijving Er zijn HTTP-proxy gegevens nodig om de extensie in te scha kelen om verbinding te maken met het opgegeven opslag account en eind punt.
 sinksConfig | Beschrijving Details van alternatieve doelen waarop metrische gegevens en gebeurtenissen kunnen worden geleverd. De specifieke details van elke gegevens sink die wordt ondersteund door de uitbrei ding, worden behandeld in de volgende secties.
 
-Gebruik de functie **listAccountSas** om een SAS-token in een resource manager-sjabloon op te halen. Zie voor beeld van een voorbeeld sjabloon [lijst functie](../../azure-resource-manager/resource-group-template-functions-resource.md#list-example).
+Gebruik de functie **listAccountSas** om een SAS-token in een resource manager-sjabloon op te halen. Zie voor beeld van een voorbeeld sjabloon [lijst functie](../../azure-resource-manager/templates/template-functions-resource.md#list-example).
 
 U kunt eenvoudig de vereiste SAS-token maken via de Azure Portal.
 
@@ -274,7 +274,7 @@ scheduledTransferPeriod | De frequentie waarmee statistische gegevens worden ber
 
 Voor beelden van de metrische gegevens die zijn opgegeven in de sectie Performance Counters worden elke 15 seconden verzameld of op basis van de sampling frequentie die expliciet voor de teller is gedefinieerd. Als er meerdere scheduledTransferPeriod-frequenties worden weer gegeven (zoals in het voor beeld), wordt elke aggregatie afzonderlijk berekend.
 
-#### <a name="performancecounters"></a>Performance Counters
+#### <a name="performancecounters"></a>performanceCounters
 
 ```json
 "performanceCounters": {
@@ -309,14 +309,14 @@ Deze optionele sectie bepaalt het verzamelen van metrische gegevens. Onbewerkte 
 
 Element | Waarde
 ------- | -----
-Wastafel | Beschrijving Een door komma's gescheiden lijst met de namen van de sinks waarnaar LAD geaggregeerde metrische resultaten verzendt. Alle geaggregeerde metrische gegevens worden gepubliceerd naar elke vermelde sink. Zie [sinksConfig](#sinksconfig). Voorbeeld: `"EHsink1, myjsonsink"`.
+wastafel | Beschrijving Een door komma's gescheiden lijst met de namen van de sinks waarnaar LAD geaggregeerde metrische resultaten verzendt. Alle geaggregeerde metrische gegevens worden gepubliceerd naar elke vermelde sink. Zie [sinksConfig](#sinksconfig). Voorbeeld: `"EHsink1, myjsonsink"`.
 type | Identificeert de werkelijke provider van de metriek.
 Klasse | Samen met "Counter" identificeert de specifieke metriek binnen de naam ruimte van de provider.
 counter | Samen met "class" identificeert de specifieke metriek binnen de naam ruimte van de provider.
 counterSpecifier | Identificeert de specifieke metrische waarde binnen de metrische naam ruimte van Azure.
 condition | Beschrijving Selecteert een specifiek exemplaar van het object waarop de metriek van toepassing is of selecteert de aggregatie voor alle exemplaren van dat object. Zie de `builtin` metrische definities voor meer informatie.
 sampleRate | IS 8601-interval waarmee de snelheid wordt ingesteld waarmee onbewerkte voor beelden voor deze metrische gegevens worden verzameld. Als deze niet is ingesteld, wordt het verzamelings interval ingesteld met de waarde [sampleRateInSeconds](#ladcfg). De kortste ondersteunde sample frequentie is 15 seconden (PT15S).
-teleenheid | Moet een van de volgende teken reeksen zijn: "Count", "bytes", "seconden", "percent", "CountPerSecond", "BytesPerSecond", "milliseconde". Hiermee definieert u de eenheid voor de metriek. Consumenten van de verzamelde gegevens verwachten dat de verzamelde gegevens waarden overeenkomen met deze eenheid. Dit veld wordt door LAD genegeerd.
+eenheid | Moet een van de volgende teken reeksen zijn: "Count", "bytes", "seconden", "percent", "CountPerSecond", "BytesPerSecond", "milliseconde". Hiermee definieert u de eenheid voor de metriek. Consumenten van de verzamelde gegevens verwachten dat de verzamelde gegevens waarden overeenkomen met deze eenheid. Dit veld wordt door LAD genegeerd.
 displayName | Het label (in de taal die is opgegeven door de instellingen van de bijbehorende land instellingen) dat aan deze gegevens in azure-metrieken moet worden gekoppeld. Dit veld wordt door LAD genegeerd.
 
 De counterSpecifier is een wille keurige id. Consumenten van metrische gegevens, zoals het Azure Portal grafiek-en waarschuwings onderdeel, gebruiken counterSpecifier als de "sleutel" waarmee een metriek of een exemplaar van een metriek wordt aangeduid. Voor `builtin` metrische gegevens raden we u aan om counterSpecifier-waarden te gebruiken die beginnen met `/builtin/`. Als u een specifiek exemplaar van een metriek verzamelt, raden we u aan de id van het exemplaar te koppelen aan de waarde counterSpecifier. Een aantal voorbeelden:
@@ -355,7 +355,7 @@ De syslogEventConfiguration-verzameling heeft één vermelding voor elke syslog-
 
 Element | Waarde
 ------- | -----
-Wastafel | Een door komma's gescheiden lijst met de namen van de sinks waarnaar afzonderlijke logboek gebeurtenissen worden gepubliceerd. Alle logboek gebeurtenissen die overeenkomen met de beperkingen in syslogEventConfiguration, worden gepubliceerd naar elke vermelde sink. Voor beeld: "EHforsyslog"
+wastafel | Een door komma's gescheiden lijst met de namen van de sinks waarnaar afzonderlijke logboek gebeurtenissen worden gepubliceerd. Alle logboek gebeurtenissen die overeenkomen met de beperkingen in syslogEventConfiguration, worden gepubliceerd naar elke vermelde sink. Voor beeld: "EHforsyslog"
 facilityName | De naam van een syslog-faciliteit (bijvoorbeeld ' logboek\_gebruiker ' of ' LOG\_LOCAL0 '). Zie de sectie ' faciliteit ' op de [pagina syslog man](http://man7.org/linux/man-pages/man3/syslog.3.html) voor de volledige lijst.
 minSeverity | Een niveau van syslog-Ernst (zoals ' logboek\_fout ' of ' logboek\_INFO '). Zie de sectie ' niveau ' van de [pagina syslog-man](http://man7.org/linux/man-pages/man3/syslog.3.html) voor de volledige lijst. De extensie legt gebeurtenissen vast die zijn verzonden naar de faciliteit op of boven het opgegeven niveau.
 
@@ -388,7 +388,7 @@ naamruimte | Beschrijving De OMI-naam ruimte waarbinnen de query moet worden uit
 query | De OMI-query die moet worden uitgevoerd.
 table | Beschrijving De Azure Storage-tabel, in het toegewezen opslag account (Zie [beveiligde instellingen](#protected-settings)).
 frequency | Beschrijving Het aantal seconden tussen de uitvoering van de query. De standaard waarde is 300 (5 minuten); de minimum waarde is 15 seconden.
-Wastafel | Beschrijving Een door komma's gescheiden lijst met namen van extra sinks waarmee de resultaten van onbewerkte voorbeeld gegevens moeten worden gepubliceerd. Geen aggregatie van deze onbewerkte voor beelden wordt berekend door de uitbrei ding of door de metrische gegevens van Azure.
+wastafel | Beschrijving Een door komma's gescheiden lijst met namen van extra sinks waarmee de resultaten van onbewerkte voorbeeld gegevens moeten worden gepubliceerd. Geen aggregatie van deze onbewerkte voor beelden wordt berekend door de uitbrei ding of door de metrische gegevens van Azure.
 
 U moet ' Table ' of ' sinks ' of beide opgeven.
 
@@ -410,7 +410,7 @@ Element | Waarde
 ------- | -----
 file | De volledige padnaam van het logboek bestand dat moet worden bekeken en vastgelegd. De padnaam moet een naam hebben van één bestand; de naam van een map kan niet worden genoemd of joker tekens bevatten.
 table | Beschrijving De Azure Storage-tabel, in het toegewezen opslag account (zoals opgegeven in de beveiligde configuratie), waarin nieuwe regels van de "staart" van het bestand worden geschreven.
-Wastafel | Beschrijving Een door komma's gescheiden lijst met namen van extra sinks waarnaar logboek regels worden verzonden.
+wastafel | Beschrijving Een door komma's gescheiden lijst met namen van extra sinks waarnaar logboek regels worden verzonden.
 
 U moet ' Table ' of ' sinks ' of beide opgeven.
 
@@ -539,7 +539,7 @@ Op basis van de voor gaande definities ziet u hier een voor beeld van een LAD-ex
 
 Deze persoonlijke instellingen configureren:
 
-* een opslag account
+* Een opslag account
 * een overeenkomend account SAS-token
 * verschillende Sinks (JsonBlob of event hubs met SAS-tokens)
 
@@ -682,7 +682,7 @@ De `resourceId` in de configuratie moet overeenkomen met die van de VM of de sch
 * Als u Azure automatisch schalen gebruikt, moet de resourceId in de configuratie voor automatisch schalen overeenkomen met de resourceId die wordt gebruikt door LAD.
 * De resourceId is ingebouwd in de namen van JsonBlobs die zijn geschreven door LAD.
 
-## <a name="view-your-data"></a>Uw gegevens weer geven
+## <a name="view-your-data"></a>Uw gegevens weergeven
 
 Gebruik de Azure Portal om prestatie gegevens weer te geven of waarschuwingen in te stellen:
 
@@ -695,7 +695,7 @@ Gegevens die worden verzonden naar JsonBlob-sinks, worden opgeslagen in blobs in
 Daarnaast kunt u deze hulpprogram ma's voor de gebruikers interface gebruiken om toegang te krijgen tot de gegevens in Azure Storage:
 
 * Visual Studio Server Explorer.
-* [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Opslagverkenner").
+* [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Azure Storage-verkenner").
 
 Deze moment opname van een Microsoft Azure Storage Explorer-sessie toont de gegenereerde Azure Storage tabellen en containers van een correct geconfigureerde LAD 3,0-extensie op een test-VM. De installatie kopie komt niet exact overeen met de voor [beeld-LAD 3,0-configuratie](#an-example-lad-30-configuration).
 

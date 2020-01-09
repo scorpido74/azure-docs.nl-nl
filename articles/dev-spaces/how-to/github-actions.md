@@ -3,15 +3,15 @@ title: GitHub-acties & Azure Kubernetes-service
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
-description: Bekijk en test wijzigingen van een pull-aanvraag rechtstreeks in azure Kubernetes service met behulp van GitHub-acties en Azure dev Spaces.
+description: Wijzigingen van een pull-aanvraag rechtstreeks controleren en testen in azure Kubernetes service met GitHub-acties en Azure dev Spaces
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, GitHub acties, helm, Service-Mesh, Service-Mesh-route ring, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: e20efc6b109eeef234dcd621374d25b812cdc0ce
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
-ms.translationtype: MT
+ms.openlocfilehash: ace94bdeccf3063f6a3b72ea208f437a14332694
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483935"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438494"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub acties & Azure Kubernetes service (preview)
 
@@ -25,13 +25,13 @@ In deze handleiding leert u het volgende:
 * Test één micro service in een geïsoleerde ontwikkel ruimte binnen de context van de volledige toepassing.
 
 > [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
+> Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 * [Azure CLI geïnstalleerd][azure-cli-installed].
-* [Helm 2,13-2,16 geïnstalleerd][helm-installed].
+* [Helm 3 is geïnstalleerd][helm-installed].
 * Een GitHub-account waarvoor [github-acties zijn ingeschakeld][github-actions-beta-signup].
 * De [Azure dev Spaces Bike-voorbeeld toepassing](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp/README.md) die wordt uitgevoerd op een AKS-cluster.
 
@@ -180,8 +180,7 @@ Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te 
 [github-actions-beta-signup]: https://github.com/features/actions
 [github-action-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikes.yml
 [github-action-bikesharing-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikesharing.yml
-[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
-[tiller-rbac]: https://helm.sh/docs/using_helm/#role-based-access-control
+[helm-installed]: https://helm.sh/docs/intro/install/
 [supported-regions]: ../about.md#supported-regions-and-configurations
 [sp-acr]: ../../container-registry/container-registry-auth-service-principal.md
 [sp-aks]: ../../aks/kubernetes-service-principal.md

@@ -1,5 +1,5 @@
 ---
-title: Snelstartgids - Een schaalset voor virtuele Linux-machines maken met een Azure-sjabloon | Microsoft Docs
+title: 'Snelstartgids: een schaalset voor virtuele Linux-machines maken met een Azure-sjabloon'
 description: Leer hoe u snel een virtuele-machineschaalset in Linux maakt met behulp van een Azure Resource Manager-sjabloon waarmee een voorbeeld-app wordt geïmplementeerd en regels voor automatisch schalen worden geconfigureerd
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,14 +16,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: aa1aca6a1c47e486e0630e779c975b699a193d41
-ms.sourcegitcommit: aebe5a10fa828733bbfb95296d400f4bc579533c
+ms.openlocfilehash: 34cc269bc9355fa6744c7d31fff7e986baf1e049
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70375952"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351111"
 ---
-# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>Quickstart: Een virtuele-machineschaalset in Linux maken met een Azure-sjabloon
+# <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>Snelstartgids: Een schaalset voor virtuele Linux-machines maken met een Azure-sjabloon
 Met een virtuele-machineschaalset kunt u een reeks identieke virtuele machines met automatisch schalen implementeren en beheren. U kunt het aantal VM’s in de schaalset handmatig schalen of regels voor automatisch schalen definiëren op basis van resourcegebruik zoals CPU, vraag naar geheugen, of netwerkverkeer. Een Azure load balancer verdeelt het verkeer vervolgens naar de VM-exemplaren in de schaalset. In deze snelstartgids gebruikt u een Azure Resource Manager-sjabloon om een schaalset voor virtuele machines te maken en een voorbeeldtoepassing te implementeren.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
@@ -42,9 +42,9 @@ Als u een schaal wilt maken met behulp van een sjabloon, definieert u de juiste 
 
 | Eigenschap                     | Beschrijving van eigenschap                                  | Voorbeeldwaarde van sjabloon                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
-| Type                         | Azure-resourcetype dat moet worden gemaakt                            | Microsoft.Compute/virtualMachineScaleSets |
+| type                         | Azure-resourcetype dat moet worden gemaakt                            | Microsoft.Compute/virtualMachineScaleSets |
 | name                         | De naam van de schaalset                                       | myScaleSet                                |
-| location                     | De locatie voor het maken van de schaalset                     | East US                                   |
+| location                     | De locatie voor het maken van de schaalset                     | VS - oost                                   |
 | sku.name                     | De VM-grootte voor elke instantie van de schaalset                  | Standard_A1                               |
 | sku.capacity                 | Het aantal VM-instanties dat in het begin moet worden gemaakt           | 2                                         |
 | upgradePolicy.mode           | Upgrademodus voor VM-instantie wanneer er wijzigingen optreden              | Automatisch                                 |
@@ -161,7 +161,7 @@ az network public-ip list \
     --query [*].ipAddress -o tsv
 ```
 
-Geef het open bare IP-adres van de Load Balancer op in een webbrowser in de notatie *http\/:/publicIpAddress: 9000/do_work*. Via de load balancer wordt verkeer naar een van uw VM-instanties gedistribueerd, zoals wordt weergegeven in het volgende voorbeeld:
+Geef het open bare IP-adres van de load balancer op in een webbrowser in de notatie *http:\//publicIpAddress: 9000/do_work*. Via de load balancer wordt verkeer naar een van uw VM-instanties gedistribueerd, zoals wordt weergegeven in het volgende voorbeeld:
 
 ![Standaardwebpagina in NGINX](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 

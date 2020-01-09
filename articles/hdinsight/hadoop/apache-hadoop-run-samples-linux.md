@@ -1,127 +1,128 @@
 ---
-title: Apache Hadoop MapReduce-voorbeelden op HDInsight - Azure uitvoeren
-description: Aan de slag met voorbeelden van MapReduce in jar-bestanden die zijn opgenomen in HDInsight. SSH gebruiken om te verbinden met het cluster, en gebruik vervolgens de opdracht Hadoop voorbeeldtaken uit te voeren.
-keywords: Voorbeeld van de jar van hadoop, hadoop voorbeelden jar, hadoop mapreduce-voorbeelden, mapreduce-voorbeelden
+title: Apache Hadoop MapReduce-voor beelden uitvoeren op HDInsight-Azure
+description: Aan de slag met MapReduce-voor beelden in JAR-bestanden die zijn opgenomen in HDInsight. Gebruik SSH om verbinding te maken met het cluster en gebruik vervolgens de Hadoop-opdracht om voorbeeld taken uit te voeren.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 04/25/2019
-ms.author: hrasheed
-ms.openlocfilehash: f0251e3926c569b45ebebcd18b98df5af4564443
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 12/12/2019
+ms.openlocfilehash: 58f7d99af638c8d03bbce46b7fcf8204aaca11d9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64706664"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435756"
 ---
-# <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>De opgenomen in HDInsight MapReduce-voorbeelden uitvoeren
+# <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>De MapReduce-voor beelden uit HDInsight uitvoeren
 
 [!INCLUDE [samples-selector](../../../includes/hdinsight-run-samples-selector.md)]
 
-Informatie over het uitvoeren van de MapReduce-voorbeelden opgenomen met Apache Hadoop op HDInsight.
+Meer informatie over het uitvoeren van de MapReduce-voor beelden die zijn opgenomen in Apache Hadoop op HDInsight.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Apache Hadoop-cluster in HDInsight. Zie [aan de slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
+* Een Apache Hadoop cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
 * Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="the-mapreduce-examples"></a>De MapReduce-voorbeelden
+## <a name="the-mapreduce-examples"></a>De MapReduce-voor beelden
 
-**Locatie**: De voorbeelden bevinden zich op het HDInsight-cluster op `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`.
+De voor beelden bevinden zich op het HDInsight-cluster op `/usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar`. De bron code voor deze steek proeven is opgenomen in het HDInsight-cluster op `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
 
-**Inhoud**: De volgende voorbeelden zijn opgenomen in dit archief:
+De volgende voor beelden zijn opgenomen in dit archief:
 
-* `aggregatewordcount`: Mapreduce-programma dat de woorden in de invoerbestanden geteld op basis van een statistische functie.
-* `aggregatewordhist`: Mapreduce-programma dat het histogram van de woorden in de invoerbestanden worden berekend op basis van een statistische functie.
-* `bbp`: Een mapreduce-programma dat gebruikmaakt van Bailey-Borwein-Plouffe voor het berekenen van de exacte cijfers van Pi.
-* `dbcount`: Een voorbeeld van de taak waarmee de paginaweergave-logboeken die zijn opgeslagen in een database wordt geteld.
-* `distbbp`: Een mapreduce-programma dat gebruikmaakt van een formule BBP-type voor het berekenen van de exacte aantal bits van Pi.
-* `grep`: Een mapreduce-programma waarmee de resultaten van een reguliere expressie in de invoer wordt geteld.
-* `join`: Een taak die een lid worden van uitvoert gesorteerd, even gepartitioneerd gegevenssets.
-* `multifilewc`: Een taak die de woorden uit verschillende bestanden geteld.
-* `pentomino`: Een mapreduce tegel rangschikken programma om oplossingen voor problemen die pentomino te vinden.
-* `pi`: Een mapreduce-programma dat u maakt een schatting van Pi met behulp van een quasi Monte Carlo-methode.
-* `randomtextwriter`: Een mapreduce-programma dat 10 GB aan willekeurige tekstuele gegevens per knooppunt schrijft.
-* `randomwriter`: Een mapreduce-programma dat 10 GB aan willekeurige gegevens per knooppunt schrijft.
-* `secondarysort`: Een voorbeeld van een secundaire sorteren definiëren met de fase verminderen.
-* `sort`: Een mapreduce-programma dat de gegevens die zijn geschreven door de willekeurige writer worden.
-* `sudoku`: Een solver sudoku.
-* `teragen`: Gegevens voor de terasort genereren.
-* `terasort`: De terasort worden uitgevoerd.
-* `teravalidate`: Resultaten van terasort controleren.
-* `wordcount`: Een mapreduce-programma dat de woorden in de invoerbestanden geteld.
-* `wordmean`: Een mapreduce-programma dat de gemiddelde lengte van de woorden in de invoerbestanden telt.
-* `wordmedian`: Een mapreduce-programma dat de gemiddelde duur van de woorden in de invoerbestanden telt.
-* `wordstandarddeviation`: Een mapreduce-programma waarmee de standaardafwijking van de lengte van de woorden in de invoerbestanden wordt geteld.
+|Voorbeeld |Beschrijving |
+|---|---|
+|aggregatewordcount|Telt de woorden in de invoer bestanden.|
+|aggregatewordhist|Hiermee berekent u het histogram van de woorden in de invoer bestanden.|
+|bbp|Maakt gebruik van Bailey-Borwein-Plouffe voor het berekenen van exacte cijfers pi.|
+|dbcount|Telt de pagina weergave-logboeken die in een Data Base zijn opgeslagen.|
+|distbbp|Maakt gebruik van een BBP formule voor het berekenen van exacte bits pi.|
+|grep|Telt de treffers van een regex in de invoer.|
+|join|Voert een koppeling uit op gesorteerde, gelijkmatig gepartitioneerde gegevens sets.|
+|multifilewc|Telt woorden uit verschillende bestanden.|
+|pentomino|Tegel programma voor het vinden van oplossingen voor pentomino-problemen.|
+|IP|Schat Pi met behulp van een quasi-Monte Carlo-methode.|
+|randomtextwriter|Schrijft 10 GB aan wille keurige tekstuele gegevens per knoop punt.|
+|randomwriter|Schrijft 10 GB aan wille keurige gegevens per knoop punt.|
+|secondarysort|Hiermee definieert u een secundaire sortering op de reductie fase.|
+|sorteren|Hiermee worden de gegevens gesorteerd die door de wille keurige schrijver zijn geschreven.|
+|sudoku|Een Sudoku-Oplosser.|
+|teragen|Gegevens voor de terasort genereren.|
+|terasort|Voer de terasort uit.|
+|teravalidate|De resultaten van terasort controleren.|
+|WordCount|Telt de woorden in de invoer bestanden.|
+|wordmean|Telt de gemiddelde lengte van de woorden in de invoer bestanden.|
+|wordmedian|Telt de mediaan lengte van de woorden in de invoer bestanden.|
+|wordstandarddeviation|Telt de standaard afwijking van de lengte van de woorden in de invoer bestanden.|
 
-**Broncode**: Broncode voor deze voorbeelden is opgenomen in het HDInsight-cluster op `/usr/hdp/current/hadoop-client/src/hadoop-mapreduce-project/hadoop-mapreduce-examples`.
+## <a name="run-the-wordcount-example"></a>Het WordCount-voor beeld uitvoeren
 
-## <a name="run-the-wordcount-example"></a>Het wordcount-voorbeeld uitvoeren
-
-1. Verbinding maken met HDInsight met behulp van SSH. Vervang `CLUSTER` met de naam van uw cluster en voer de volgende opdracht uit:
+1. Verbinding maken met HDInsight via SSH. Vervang `CLUSTER` door de naam van uw cluster en voer de volgende opdracht in:
 
     ```cmd
     ssh sshuser@CLUSTER-ssh.azurehdinsight.net
     ```
 
-2. Uit de `username@#######:~$` vragen, gebruikt u de volgende opdracht uit om de voorbeelden weer te geven:
+2. Gebruik in de SSH-sessie de volgende opdracht om de voor beelden weer te geven:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar
     ```
 
-    Met deze opdracht wordt de lijst met voorbeeld gegenereerd uit de vorige sectie van dit document.
+    Met deze opdracht wordt de lijst met voor beelden uit de vorige sectie van dit document gegenereerd.
 
-3. Gebruik de volgende opdracht om hulp te krijgen op een specifiek voorbeeld. In dit geval de **wordcount** voorbeeld:
+3. Gebruik de volgende opdracht om hulp te krijgen voor een specifiek voor beeld. In dit geval is het **WordCount** -voor beeld:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount
     ```
 
-    Het volgende foutbericht wordt weergegeven:
+    Het volgende bericht wordt weer gegeven:
 
-        Usage: wordcount <in> [<in>...] <out>
+    ```output
+    Usage: wordcount <in> [<in>...] <out>
+    ```
 
-    Dit bericht geeft aan dat u verschillende invoerpaden voor de brondocumenten bieden kan. Het uiteindelijke pad is waar de uitvoer (aantal woorden in de brondocumenten) worden opgeslagen.
+    Dit bericht geeft aan dat u verschillende invoer paden voor de bron documenten kunt opgeven. Het laatste pad is de locatie waar de uitvoer (aantal woorden in de bron documenten) wordt opgeslagen.
 
-4. Gebruik de volgende voor het tellen van alle woorden in de laptops van Leonardo da Vinci, die alleen als van voorbeeldgegevens met uw cluster dienen:
+4. Gebruik de volgende informatie om alle woorden in de notebooks van Leonardo da Vinci te tellen, die als voorbeeld gegevens worden meegeleverd met uw cluster:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/davinciwordcount
     ```
 
-    Invoer voor deze taak worden gelezen uit de `/example/data/gutenberg/davinci.txt`. Uitvoer voor dit voorbeeld wordt opgeslagen in `/example/data/davinciwordcount`. Beide paden bevinden zich in de standaardopslag voor het cluster, niet het lokale bestandssysteem.
+    Invoer voor deze taak wordt gelezen uit `/example/data/gutenberg/davinci.txt`. De uitvoer van dit voor beeld wordt opgeslagen in `/example/data/davinciwordcount`. Beide paden bevinden zich in de standaard opslag voor het cluster, niet op het lokale bestands systeem.
 
    > [!NOTE]  
-   > Zoals aangegeven in de help voor het wordcount-voorbeeld, kunt u ook meerdere invoerbestanden opgeven. Bijvoorbeeld, `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` woorden in zowel davinci.txt en ulysses.txt zou tellen.
+   > Zoals vermeld in de Help voor het WordCount-voor beeld, kunt u ook meerdere invoer bestanden opgeven. `hadoop jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar wordcount /example/data/gutenberg/davinci.txt /example/data/gutenberg/ulysses.txt /example/data/twowordcount` telt bijvoorbeeld woorden in zowel DaVinci. txt als Ulysses. txt.
 
-5. Zodra de taak is voltooid, gebruikt u de volgende opdracht uit om de uitvoer weer te geven:
+5. Wanneer de taak is voltooid, gebruikt u de volgende opdracht om de uitvoer weer te geven:
 
     ```bash
     hdfs dfs -cat /example/data/davinciwordcount/*
     ```
 
-    Met deze opdracht worden samengevoegd in alle de uitvoerbestanden die worden geproduceerd door de taak. De uitvoer wordt weergegeven in de console. De uitvoer lijkt op het volgende:
+    Met deze opdracht worden alle uitvoer bestanden die door de taak worden geproduceerd, samengevoegd. De uitvoer naar de-console wordt weer gegeven. De uitvoer lijkt op het volgende:
 
         zum     1
         zur     1
         zwanzig 1
         zweite  1
 
-    Elke regel vertegenwoordigt een woord en het aantal keren dat het probleem is opgetreden in de ingevoerde gegevens.
+    Elke regel vertegenwoordigt een woord en hoe vaak het is opgetreden in de invoer gegevens.
 
-## <a name="the-sudoku-example"></a>Het voorbeeld Sudoku
+## <a name="the-sudoku-example"></a>Het Sudoku-voor beeld
 
-[Sudoku](https://en.wikipedia.org/wiki/Sudoku) is een logische puzzel opgebouwd uit negen 3 x 3 rasters. Aantal cellen in het raster zijn getallen, terwijl anderen leeg zijn en het doel is om op te lossen voor de lege cellen. De vorige koppeling meer informatie over de puzzel heeft, maar het doel van dit voorbeeld is om op te lossen voor de lege cellen. De invoer moet dus een bestand dat zich in de volgende indeling:
+[Sudoku](https://en.wikipedia.org/wiki/Sudoku) is een Logic puzzel die bestaat uit negen 3x3 rasters. Sommige cellen in het raster hebben cijfers, terwijl andere leeg zijn, en het doel is om de lege cellen op te lossen. De vorige koppeling bevat meer informatie over de puzzel, maar het doel van dit voor beeld is om een oplossing voor de lege cellen te maken. Daarom moet de invoer een bestand zijn met de volgende indeling:
 
-* Negen rijen van de negen kolommen
-* Elke kolom kan bevatten een getal of `?` (wat aangeeft dat het een lege cel)
+* Negen rijen van negen kolommen
+* Elke kolom kan een getal of een `?` bevatten (wat een lege cel aangeeft)
 * Cellen worden gescheiden door een spatie
 
-Er is een bepaalde manier om samen te stellen Sudoku puzzels; een getal in een kolom of rij kan niet worden herhaald. Er is een voorbeeld van het HDInsight-cluster die correct is samengesteld. Deze bevindt zich op `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` en bevat de volgende tekst:
+Er is een bepaalde manier om Sudoku-puzzels samen te stellen. u kunt een getal in een kolom of rij niet herhalen. Er is een voor beeld van het HDInsight-cluster dat op de juiste manier is gebouwd. Deze bevindt zich op `/usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta` en bevat de volgende tekst:
 
     8 5 ? 3 9 ? ? ? ?
     ? ? 2 ? ? ? ? ? ?
@@ -133,13 +134,13 @@ Er is een bepaalde manier om samen te stellen Sudoku puzzels; een getal in een k
     ? ? ? ? ? ? 2 ? ?
     ? ? ? ? 4 5 ? 7 8
 
-Als u wilt dit probleem voorbeeld doorloopt u het voorbeeld Sudoku, gebruik de volgende opdracht:
+Als u dit voorbeeld probleem wilt uitvoeren via het Sudoku-voor beeld, gebruikt u de volgende opdracht:
 
 ```bash
 yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar sudoku /usr/hdp/*/hadoop/src/hadoop-mapreduce-project/hadoop-mapreduce-examples/src/main/java/org/apache/hadoop/examples/dancing/puzzle1.dta
 ```
 
-De resultaten worden weergegeven die vergelijkbaar is met de volgende tekst:
+De resultaten lijken op de volgende tekst:
 
     8 5 1 3 9 2 6 4 7
     4 3 2 6 7 8 1 9 5
@@ -151,45 +152,45 @@ De resultaten worden weergegeven die vergelijkbaar is met de volgende tekst:
     1 8 5 7 3 9 2 6 4
     2 6 3 1 4 5 9 7 8
 
-## <a name="pi--example"></a>Voorbeeld van pi (π)
+## <a name="pi--example"></a>PI (π)-voor beeld
 
-In het pi-voorbeeld wordt een statistische (quasi Monte Carlo) methode voor het schatten van de waarde van pi. Punten worden in willekeurige volgorde geplaatst in een vierkant eenheid. Het vierkant bevat ook een cirkel. De kans dat de punten vallen binnen de cirkel gelijk zijn aan het gebied van de cirkel, pi/4. De waarde van pi kan worden geschat van de waarde van 4R. R is de verhouding van het aantal punten die in de cirkel in op het totale aantal punten die zich binnen het vierkant. Hoe groter het voorbeeld van de punten die wordt gebruikt, hoe beter de schatting wordt weergegeven.
+In het voor beeld pi wordt een statistische (quasi-Monte Carlo)-methode gebruikt om de waarde van pi te schatten. Punten worden in wille keurige volg orde in een vier Kante eenheid geplaatst. Het kwadraat bevat ook een cirkel. De kans dat de punten binnen de cirkel vallen, is gelijk aan het gebied van de cirkel, Pi/4. De waarde van pi kan worden geschat op basis van de waarde van 4R. R is de verhouding van het aantal punten in de cirkel tot het totale aantal punten in het vier kant. Hoe groter het voor beeld van de gebruikte punten, hoe beter de schatting is.
 
-Gebruik de volgende opdracht om uit te voeren in dit voorbeeld. Met deze opdracht maakt gebruik van 16 kaarten met 10.000.000 voorbeelden om te schatten van de waarde van pi:
+Gebruik de volgende opdracht om dit voor beeld uit te voeren. Deze opdracht maakt gebruik van 16 kaarten met 10.000.000 voor beelden om de waarde van pi te schatten:
 
 ```bash
 yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar pi 16 10000000
 ```
 
-De waarde die wordt geretourneerd door deze opdracht is vergelijkbaar met **3.14159155000000000000**. Voor verwijzingen naar zijn de eerste 10 decimalen van pi 3.1415926535.
+De waarde die door deze opdracht wordt geretourneerd, is vergelijkbaar met **3.14159155000000000000**. Voor verwijzingen is de eerste tien decimale posities van Pi 3,1415926535.
 
-## <a name="10-gb-graysort-example"></a>10 GB GraySort-voorbeeld
+## <a name="10-gb-graysort-example"></a>10 GB GraySort-voor beeld
 
-GraySort is een benchmark-sorteren. De metrische gegevens is de snelheid met sorteren (TB per minuut) die tijdens het sorteren van grote hoeveelheden gegevens, meestal een 100 TB minimale is bereikt.
+GraySort is een bench Mark-Sorteer bewerking. De metriek is de sorteer frequentie (TB/minuut) die wordt behaald bij het sorteren van grote hoeveel heden gegevens, meestal een minimum van 100 TB.
 
-In dit voorbeeld maakt gebruik van een gemiddelde hoeveelheden 10 GB aan gegevens zodat deze kan relatief snel kan worden uitgevoerd. De MapReduce-toepassingen die zijn ontwikkeld door Owen O'Malley en Arun Murthy wordt gebruikt. Deze toepassingen gewonnen de jaarlijkse voor algemeen gebruik ("Daytona") terabyte sorteren benchmark in 2009, met een snelheid van 0.578 TB/min (100 TB in 173 minuten). Zie voor meer informatie over deze en andere sorteren benchmarks de [sorteren Benchmark](https://sortbenchmark.org/) site.
+In dit voor beeld wordt gebruikgemaakt van een bescheiden 10 GB aan gegevens, zodat deze relatief snel kunnen worden uitgevoerd. Het maakt gebruik van de MapReduce-toepassingen die zijn ontwikkeld door Owen O'Malley en Arun Murthy. Met deze toepassingen is het jaarlijkse algemene doel ("Daytona") terabyte-benchmark waarde in 2009 gewonnen, met een frequentie van 0,578 TB/min (100 TB in 173 minuten). Zie voor meer informatie over deze en andere sorterings benchmarks de site voor het [sorteren van benchmarks](https://sortbenchmark.org/) .
 
-In dit voorbeeld maakt gebruik van drie sets MapReduce-programma's:
+In dit voor beeld worden drie sets MapReduce-Program ma's gebruikt:
 
-* **TeraGen**: Een MapReduce-programma dat wordt gegenereerd rijen met gegevens om te sorteren
+* **TeraGen**: een MapReduce-programma waarmee rijen met gegevens worden gegenereerd om te sorteren
 
-* **TeraSort**: Voorbeelden van de ingevoerde gegevens en MapReduce gebruikt voor het sorteren van de gegevens in een volgorde van de totale
+* **TeraSort**: Hiermee worden de invoer gegevens gesampled en wordt MapReduce gebruikt om de gegevens in een totale volg orde te sorteren
 
-    TeraSort is een standaard MapReduce sorteren, met uitzondering van een aangepaste partitioner. De partitioner maakt gebruik van een gesorteerde lijst met sleutels voor N-1 steekproef die het belangrijkste bereik voor elke verminderen definiëren. In het bijzonder, alle sleutels dergelijke die voorbeeld [i-1] < sleutel = < voorbeeld [i] om te beperken i worden verzonden. Deze partitioner garanties dat de uitvoer van i beperken zijn alle kleiner is dan de uitvoer van verminderen i + 1.
+    TeraSort is een standaard MapReduce-sortering, met uitzonde ring van een aangepaste partitioner. De partitioner gebruikt een gesorteerde lijst met N-1 beproefde sleutels waarmee het sleutel bereik voor elke reductie wordt gedefinieerd. In het bijzonder worden alle sleutels, zoals het voor beeld [i-1] < = Key < voor beeld [i], verzonden om i te verminderen. Deze partitioner garandeert dat de uitvoer van minder dan de uitvoer van i + 1 vermindert.
 
-* **TeraValidate**: Een MapReduce-programma die valideert dat de uitvoer wereldwijd is gesorteerd
+* **TeraValidate**: een MapReduce-programma dat valideert dat de uitvoer wereld wijd is gesorteerd
 
-    Een kaart per bestand in de uitvoermap wordt gemaakt en elke kaart zorgt ervoor dat elke sleutel kleiner dan of gelijk zijn aan het vorige voorbeeld is. De functie kaart genereert records van de eerste en laatste sleutels van elk bestand. De functie verminderen zorgt ervoor dat de eerste sleutel van i-bestand groter dan de laatste sleutel van het bestand i-1 is. Geen problemen worden gerapporteerd als uitvoer van de fase verminderen met de sleutels die niet de juiste volgorde zijn.
+    Er wordt één kaart per bestand in de uitvoermap gemaakt en elke kaart zorgt ervoor dat elke sleutel kleiner dan of gelijk is aan de vorige. De functie map genereert records van de eerste en laatste sleutels van elk bestand. De functie verminderen zorgt ervoor dat de eerste sleutel van bestand i groter is dan de laatste sleutel van bestand i-1. Eventuele problemen worden gerapporteerd als uitvoer van de reductie fase, met de sleutels die niet in orde zijn.
 
-Gebruik de volgende stappen voor het genereren van gegevens, sorteren en controleer vervolgens of de uitvoer:
+Gebruik de volgende stappen om gegevens te genereren, te sorteren en de uitvoer te valideren:
 
-1. Genereren van 10 GB aan gegevens, die is opgeslagen in standaardopslag voor het HDInsight-cluster op `/example/data/10GB-sort-input`:
+1. 10 GB aan gegevens genereren, die worden opgeslagen in de standaard opslag van het HDInsight-cluster op `/example/data/10GB-sort-input`:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teragen -Dmapred.map.tasks=50 100000000 /example/data/10GB-sort-input
     ```
 
-    De `-Dmapred.map.tasks` Hadoop aangeeft hoeveel kaart taken moet worden gebruikt voor deze taak. De laatste twee parameters geven de taak te maken van 10 GB aan gegevens en bewaar deze op `/example/data/10GB-sort-input`.
+    De `-Dmapred.map.tasks` vertelt Hadoop hoeveel toewijzings taken voor deze taak moeten worden gebruikt. De laatste twee para meters geven de taak de opdracht om 10 GB aan gegevens te maken en deze op te slaan op `/example/data/10GB-sort-input`.
 
 2. Gebruik de volgende opdracht om de gegevens te sorteren:
 
@@ -197,9 +198,9 @@ Gebruik de volgende stappen voor het genereren van gegevens, sorteren en control
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar terasort -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-input /example/data/10GB-sort-output
     ```
 
-    De `-Dmapred.reduce.tasks` Hadoop geeft aan hoeveel aantal taken te verkleinen om te gebruiken voor de taak. De laatste twee parameters zijn alleen de invoer- en -locaties voor gegevens.
+    De `-Dmapred.reduce.tasks` vertelt Hadoop hoe veel minder taken voor de taak moeten worden gebruikt. De laatste twee para meters zijn alleen de invoer-en uitvoer locaties voor gegevens.
 
-3. Gebruik de volgende voor het valideren van de gegevens die worden gegenereerd door de sortering:
+3. Gebruik de volgende informatie om de gegevens te valideren die door de sorteer bewerking worden gegenereerd:
 
     ```bash
     yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-mapreduce-examples.jar teravalidate -Dmapred.map.tasks=50 -Dmapred.reduce.tasks=25 /example/data/10GB-sort-output /example/data/10GB-sort-validate
@@ -207,8 +208,7 @@ Gebruik de volgende stappen voor het genereren van gegevens, sorteren en control
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u kunt de voorbeelden met de HDInsight op basis van Linux-clusters uitvoeren. Zie de volgende onderwerpen voor zelfstudies over Pig, Hive en MapReduce gebruiken met HDInsight:
+In dit artikel hebt u geleerd hoe u de voor beelden kunt uitvoeren die zijn opgenomen in de op Linux gebaseerde HDInsight-clusters. Zie de volgende onderwerpen voor zelf studies over het gebruik van Pig, Hive en MapReduce met HDInsight:
 
-* [Apache Pig gebruiken met Apache Hadoop op HDInsight](hdinsight-use-pig.md)
 * [Apache Hive gebruiken met Apache Hadoop op HDInsight](hdinsight-use-hive.md)
 * [MapReduce gebruiken met Apache Hadoop op HDInsight](hdinsight-use-mapreduce.md)

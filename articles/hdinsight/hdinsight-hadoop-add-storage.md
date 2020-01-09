@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: e29041942157e720cce3414f7b6e6904667c1894
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 86b9230dbdca82c5599c1839fd64bd3df4725051
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665479"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435580"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Extra opslag accounts toevoegen aan HDInsight
 
@@ -24,13 +24,13 @@ Meer informatie over het gebruik van script acties om extra Azure Storage- *acco
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Hadoop-cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./hadoop/apache-hadoop-linux-tutorial-get-started.md).
-* Naam en sleutel van het opslag account. Zie [instellingen voor opslag accounts beheren in de Azure Portal](../storage/common/storage-account-manage.md).
+* Naam en sleutel van het opslag account. Zie [toegangs sleutels voor opslag accounts beheren](../storage/common/storage-account-keys-manage.md).
 * De naam van het [juiste cluster](hdinsight-hadoop-manage-ambari-rest-api.md#identify-correctly-cased-cluster-name)is in gebruik.
 * Als u Power shell gebruikt, hebt u de AZ-module nodig.  Zie [overzicht van Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview).
 * Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure-opdracht regel interface (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest).
 * Als u bash of een Windows-opdracht prompt gebruikt, hebt u ook **JQ**, een opdracht regel-JSON-processor nodig.  Zie [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/). Zie [Windows-subsysteem voor Linux-installatie handleiding voor Windows 10](https://docs.microsoft.com/windows/wsl/install-win10)voor bash op Ubuntu in Windows 10.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Het werkt als volgt
 
 Voor dit script worden de volgende para meters gebruikt:
 

@@ -14,22 +14,24 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6b2546226d31334592034cfe0455fc32644a3900
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7c93538982b7fd7bb2f5ac25027ed92cc6ccbfa3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132775"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75357846"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Ondersteuning voor SQL Server 2008 en SQL Server 2008 R2 met Azure uitbreiden
 
-SQL Server 2008 en SQL Server 2008 R2 volgen beide het [einde van hun levens cyclus](https://www.microsoft.com/sql-server/sql-server-2008). Omdat veel klanten nog steeds gebruikmaken van beide versies, bieden we verschillende opties om ondersteuning te blijven krijgen. U kunt uw on-premises SQL Server-exemplaren migreren naar Azure virtual machines (Vm's), migreren naar Azure SQL Database, of on-premises blijven en uitgebreide beveiligings updates aanschaffen.
+SQL Server 2008 en SQL Server 2008 R2 hebben het [einde van hun levens cyclus voor de ondersteuning (EOS)](https://www.microsoft.com/sql-server/sql-server-2008)bereikt. Omdat veel klanten nog steeds gebruikmaken van beide versies, bieden we verschillende opties om ondersteuning te blijven krijgen. U kunt uw on-premises SQL Server-exemplaren migreren naar Azure virtual machines (Vm's), migreren naar Azure SQL Database, of on-premises blijven en uitgebreide beveiligings updates aanschaffen.
 
 In tegens telling tot een beheerd exemplaar moet u uw toepassingen niet opnieuw certificeren met een virtuele machine van Azure. En in tegens telling tot on-premises, ontvangt u gratis uitgebreide beveiligings patches door te migreren naar een virtuele machine van Azure.
 
 De rest van dit artikel bevat overwegingen voor het migreren van uw SQL Server-exemplaar naar een virtuele machine van Azure.
 
-## <a name="provisioning"></a>Inrichten
+Zie [End of support](/sql/sql-server/end-of-support/sql-server-end-of-life-overview)(Engelstalig) voor meer informatie over het einde van de ondersteunings opties.
+
+## <a name="provisioning"></a>Inrichting
 
 Er is een betalen naar gebruik- **SQL Server 2008 R2 op de Windows Server 2008 R2** -installatie kopie beschikbaar op Azure Marketplace.
 
@@ -87,3 +89,7 @@ Aan de slag met SQL Server op Azure Virtual Machines:
 Antwoorden vinden op veelgestelde vragen over SQL Server Vm's:
 
 * [Veelgestelde vragen over SQL Server op Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-faq.md)
+
+Meer informatie over het einde van de ondersteunings opties en uitgebreide beveiligings updates:
+
+* [Einde van ondersteuning](/sql/sql-server/end-of-support/sql-server-end-of-life-overview) & [uitgebreide beveiligings updates](/sql/sql-server/end-of-support/sql-server-extended-security-updates)

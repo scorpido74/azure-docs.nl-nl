@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 9c86b69239bed1a15c754ce28232b97e8439942b
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: db23fae6bb15e851d22e54b323428c061f55b34f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819102"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406556"
 ---
 # <a name="performance-testing"></a>Prestaties testen
 
@@ -38,9 +38,9 @@ Ga onder **configureren**naar **prestatie testen** en klik op **Nieuw** om een t
 
 Als u een basis prestatie test wilt maken, selecteert u een test type **hand matig testen** en vult u de gewenste instellingen voor de test in.
 
-|Instelling| Maximum waarde
+|Instelling| Maximumwaarde
 |----------|------------|
-| Gebruikers belasting | 20.000 |
+| Gebruikersbelasting | 20,000 |
 | Duur (minuten)  | 60 |  
 
 Nadat de test is gemaakt, klikt u op **test uitvoeren**.

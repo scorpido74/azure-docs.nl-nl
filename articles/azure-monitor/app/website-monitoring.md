@@ -10,7 +10,7 @@ ms.date: 07/15/2019
 ms.custom: mvc
 ms.openlocfilehash: 75c61452e73c50cbdaed03a27481d920e4c2ad86
 ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 12/25/2019
 ms.locfileid: "75406230"

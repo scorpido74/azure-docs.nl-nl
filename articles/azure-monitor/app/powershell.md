@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 10/17/2019
-ms.openlocfilehash: 75490edfd30541aa641656a2ccc17a259bfbe927
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 3f9a04d767ffeb5112e2b06ed319a3c28f3b7f57
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951357"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406520"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-resources beheren met Power shell
 
@@ -164,7 +164,8 @@ Maak een nieuw. JSON-bestand: Bel het `template1.json` in dit voor beeld. Kopiee
                 "location": "[parameters('appLocation')]",
                 "tags": {},
                 "properties": {
-                    "ApplicationId": "[parameters('appName')]"
+                    "ApplicationId": "[parameters('appName')]",
+                    "retentionInDays": "[parameters('retentionInDays')]"
                 },
                 "dependsOn": []
             },
@@ -178,7 +179,6 @@ Maak een nieuw. JSON-bestand: Bel het `template1.json` in dit voor beeld. Kopiee
                 ],
                 "properties": {
                     "CurrentBillingFeatures": "[variables('pricePlan')]",
-                    "retentionInDays": "[parameters('retentionInDays')]",
                     "DataVolumeCap": {
                         "Cap": "[parameters('dailyQuota')]",
                         "WarningThreshold": "[parameters('warningThreshold')]",
@@ -394,7 +394,7 @@ Voor het automatiseren van het maken van een andere bron, maakt u hand matig een
     `"apiVersion": "2015-05-01",`
 
 ### <a name="parameterize-the-template"></a>De sjabloon para meters
-Nu moet u de specifieke namen vervangen door para meters. Als u [een sjabloon wilt para meters](../../azure-resource-manager/resource-group-authoring-templates.md), schrijft u expressies met behulp [van een set hulp functies](../../azure-resource-manager/resource-group-template-functions.md). 
+Nu moet u de specifieke namen vervangen door para meters. Als u [een sjabloon wilt para meters](../../azure-resource-manager/templates/template-syntax.md), schrijft u expressies met behulp [van een set hulp functies](../../azure-resource-manager/resource-group-template-functions.md). 
 
 U kunt niet slechts een deel van een teken reeks para meters, dus gebruik `concat()` om teken reeksen te bouwen.
 

@@ -1,77 +1,66 @@
 ---
-title: Volgende stappen voor projectcreatie service Fabric | Microsoft Docs
-description: Meer informatie over het toepassingsproject die u zojuist hebt gemaakt in Visual Studio.  Informatie over het bouwen van services met behulp van zelfstudies en meer informatie over het ontwikkelen van services voor Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 299d1f97-1ca9-440d-9f81-d1d0dd2bf4df
-ms.service: service-fabric
-ms.devlang: dotNet
+title: De volgende stappen voor projectcreatie in Service Fabric
+description: Meer informatie over het toepassings project dat u zojuist hebt gemaakt in Visual Studio.  Meer informatie over het bouwen van services met zelf studies en meer informatie over het ontwikkelen van services voor Service Fabric.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 12/07/2017
-ms.author: atsenthi
-ms.openlocfilehash: e5371cd3ea9de1993f0f824325f6cbf1e25343d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8fc105657bda6114851f4819be4658926ad621c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60773040"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349401"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Uw Service Fabric-toepassing en de volgende stappen
-Uw Azure Service Fabric-toepassing is gemaakt. Dit artikel beschrijft enkele zelfstudies om uit te proberen, de samenstelling van uw project en sommige informatie die u mogelijk geïnteresseerd in mogelijke Vervolgstappen.
+Uw Azure Service Fabric-toepassing is gemaakt. In dit artikel worden enkele zelf studies beschreven voor het uitproberen, het Makeup van uw project, een aantal meer informatie die u mogelijk interesseert en mogelijke volgende stappen.
 
-## <a name="get-started-with-tutorials-walk-throughs-and-samples"></a>Aan de slag met de zelfstudies, zelfstudies en voorbeelden
-Klaar om te beginnen?  
+## <a name="get-started-with-tutorials-walk-throughs-and-samples"></a>Aan de slag met zelf studies, instructies en voor beelden
+Klaar om aan de slag te gaan?  
 
-Werken met de zelfstudie over .NET-toepassingen. Meer informatie over het [een app bouwen](service-fabric-tutorial-create-dotnet-app.md) met een ASP.NET Core front-end en een stateful back-end, [implementeren van de toepassing](service-fabric-tutorial-deploy-app-to-party-cluster.md) naar een cluster [CI/CD configureren](service-fabric-tutorial-deploy-app-with-cicd-vsts.md), en [instellen controle en diagnose](service-fabric-tutorial-monitoring-aspnet.md).
+Gebruik de zelf studie voor .NET-toepassingen. Meer informatie over het [bouwen van een app](service-fabric-tutorial-create-dotnet-app.md) met een ASP.net core front-end en een stateful back-end, [het implementeren van de toepassing](service-fabric-tutorial-deploy-app-to-party-cluster.md) naar een cluster, het [configureren van CI/cd](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)en het [instellen van controle en diagnostische gegevens](service-fabric-tutorial-monitoring-aspnet.md).
 
-Probeer een van de volgende zelfstudies en uw eerste...
-- [C#Reliable Services-service op Windows](service-fabric-reliable-services-quick-start.md) 
-- [C#Reliable Actors-service op Windows](service-fabric-reliable-actors-get-started.md) 
-- [Gast uitvoerbare service op Windows](quickstart-guest-app.md) 
+Of probeer een van de volgende instructies uit en maak uw eerste...
+- [C#Reliable Services-service in Windows](service-fabric-reliable-services-quick-start.md) 
+- [C#Reliable Actors-service in Windows](service-fabric-reliable-actors-get-started.md) 
+- [Uitvoer bare gast-service in Windows](quickstart-guest-app.md) 
 - [Windows-containertoepassing](service-fabric-get-started-containers.md) 
 
-Bent u mogelijk ook geïnteresseerd in uit te proberen onze [voorbeeldtoepassingen](https://aka.ms/servicefabricsamples).
+Misschien bent u ook geïnteresseerd in het uitproberen van de [voorbeeld toepassingen](https://aka.ms/servicefabricsamples).
 
-## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>Hebt u vragen of feedback?  Wilt u een probleem melden?
-Lees het artikel [Veelgestelde vragen over](service-fabric-common-questions.md) en vind antwoorden over Service Fabric kunt doen en hoe deze moet worden gebruikt.
+## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>Vragen of feedback?  Wilt u een probleem melden?
+Lees de [Veelgestelde vragen](service-fabric-common-questions.md) en vind antwoorden op wat service Fabric kan doen en hoe dit moet worden gebruikt.
 
-[Ondersteuningsopties](service-fabric-support.md) een lijst met forums op StackOverflow en MSDN voor het stellen van vragen, evenals de opties voor het melden van problemen en verzenden van productfeedback ondersteuning krijgen.
+[Ondersteunings opties bieden](service-fabric-support.md) een lijst met forums over stack overflow en MSDN voor het stellen van vragen, evenals opties voor het rapporteren van problemen, het verkrijgen van ondersteuning en het indienen van product feedback.
 
-## <a name="the-application-project"></a>Het toepassingsproject
-Elke nieuwe toepassing bevat een project voor een toepassing. Er is mogelijk een of twee extra projecten, afhankelijk van het type service gekozen.
+## <a name="the-application-project"></a>Het toepassings project
+Elke nieuwe toepassing bevat een toepassings project. Er kunnen één of twee extra projecten zijn, afhankelijk van het gekozen type service.
 
-Het toepassingsproject bestaat uit:
+Het toepassings project bestaat uit:
 
-* Een set van verwijzingen naar de services die gezamenlijk uw toepassing.
-* Drie publiceren profielen (1-Node lokale, 5-knooppunten lokale en Cloud) die u gebruiken kunt voor het beheren van voorkeuren voor het werken met verschillende omgevingen, zoals voorkeuren met betrekking tot het eindpunt van een cluster en of u de upgrade implementaties standaard.
-* Drie toepassing parameter bestanden (hetzelfde als hierboven) die u gebruiken kunt om te onderhouden omgevingsspecifieke toepassingsconfiguraties, zoals het aantal partities te maken voor een service. Meer informatie over het [uw toepassing configureren voor meerdere omgevingen](service-fabric-manage-multiple-environment-app-configuration.md).
-* Een script voor een implementatie die u gebruiken kunt om uw toepassing vanaf de opdrachtregel of als onderdeel van een geautomatiseerde continue integratie en implementatie-pijplijn te implementeren. Meer informatie over [implementeren van toepassingen met behulp van PowerShell](service-fabric-deploy-remove-applications.md).
-* Het toepassingsmanifest, waarin de toepassing wordt beschreven. U kunt het manifest vinden onder de map ApplicationPackageRoot. Meer informatie over [toepassing en service manifesten](service-fabric-application-model.md).
+* Een verzameling verwijzingen naar de services waaruit uw toepassing is opgebouwd.
+* Drie publicatie profielen (lokaal van 1 knoop punt, lokaal 5 knoop punt en Cloud) die u kunt gebruiken om voor keuren te onderhouden voor het werken met verschillende omgevingen, zoals voor keuren die betrekking hebben op een cluster eindpunt en of er standaard upgrade-implementaties moeten worden uitgevoerd.
+* Drie toepassings parameter bestanden (hetzelfde als hierboven) die u kunt gebruiken voor het onderhouden van omgevings-specifieke toepassings configuraties, zoals het aantal partities dat moet worden gemaakt voor een service. Meer informatie over het [configureren van uw toepassing voor meerdere omgevingen](service-fabric-manage-multiple-environment-app-configuration.md).
+* Een implementatie script dat u kunt gebruiken om uw toepassing te implementeren vanaf de opdracht regel of als onderdeel van een automatische continue integratie-en implementatie pijplijn. Meer informatie over het [implementeren van toepassingen met behulp van Power shell](service-fabric-deploy-remove-applications.md).
+* Het toepassings manifest, waarmee de toepassing wordt beschreven. U vindt het manifest in de map Application Package root. Meer informatie over [toepassings-en service manifesten](service-fabric-application-model.md).
 
 
 
-## <a name="learn-more-about-the-programming-models"></a>Meer informatie over de programmeermodellen
-Service Fabric biedt verschillende manieren om te schrijven en beheren van uw services.  Hier volgt overzicht en algemene informatie van [staatloze en stateful Reliable Services](service-fabric-reliable-services-introduction.md), [Reliable Actors](service-fabric-reliable-actors-introduction.md), [containers](service-fabric-containers-overview.md), [gastbestanden ](service-fabric-guest-executables-introduction.md), en [staatloze en stateful ASP.NET Core services](service-fabric-reliable-services-communication-aspnetcore.md).
+## <a name="learn-more-about-the-programming-models"></a>Meer informatie over de programmeer modellen
+Service Fabric biedt meerdere manieren om uw services te schrijven en te beheren.  Hier vindt u een overzicht en conceptuele informatie over [stateless en stateful reliable Services](service-fabric-reliable-services-introduction.md), [reliable actors](service-fabric-reliable-actors-introduction.md), [containers](service-fabric-containers-overview.md), [uitvoer bare gast bestanden](service-fabric-guest-executables-introduction.md)en stateless [ASP.net Core Services](service-fabric-reliable-services-communication-aspnetcore.md).
 
-## <a name="learn-about-service-communication"></a>Meer informatie over servicecommunicatie
-Een Service Fabric-toepassing bestaat uit verschillende services uit, waarbij elke service een speciale taak uitvoert. Deze services kunnen communiceren met elkaar en kunnen er clienttoepassingen buiten het cluster die verbinding maken met en communiceren met services. Meer informatie over het [stelt u de communicatie met en tussen uw services](service-fabric-connect-and-communicate-with-services.md) in Service Fabric. 
+## <a name="learn-about-service-communication"></a>Meer informatie over service communicatie
+Een Service Fabric-toepassing bestaat uit verschillende services, waarbij elke service een gespecialiseerde taak uitvoert. Deze services kunnen met elkaar communiceren en er kunnen client toepassingen buiten het cluster zijn die verbinding maken met en communiceren met Services. Meer informatie over het [instellen van communicatie met en tussen uw services](service-fabric-connect-and-communicate-with-services.md) in service Fabric. 
 
-## <a name="learn-about-configuring-application-security"></a>Meer informatie over het configureren van beveiliging van toepassingen
-U kunt toepassingen die worden uitgevoerd in het cluster onder verschillende gebruikersaccounts beveiligen. Service Fabric helpt ook bij het beveiligen van de resources die worden gebruikt door toepassingen op het moment van implementatie onder de gebruikersaccounts, bijvoorbeeld, bestanden, mappen en certificaten. Hierdoor actieve toepassingen, zelfs in een gedeelde omgeving, beter te beveiligen van elkaar.  Meer informatie over het [beveiligingsbeleid configureren voor uw toepassing](service-fabric-application-runas-security.md).
+## <a name="learn-about-configuring-application-security"></a>Meer informatie over het configureren van de beveiliging van toepassingen
+U kunt toepassingen die in het cluster worden uitgevoerd, beveiligen onder verschillende gebruikers accounts. Service Fabric helpt ook bij het beveiligen van de bronnen die worden gebruikt door toepassingen op het moment van de implementatie onder de gebruikers accounts, bijvoorbeeld bestanden, directory's en certificaten. Dit maakt het uitvoeren van toepassingen, zelfs in een gedeelde gehoste omgeving, veiliger van elkaar.  Meer informatie over het [configureren van beveiligings beleid voor uw toepassing](service-fabric-application-runas-security.md).
 
-Uw toepassing mogelijk vertrouwelijke gegevens, zoals storage-verbindingsreeksen, wachtwoorden, of andere waarden die niet moeten worden verwerkt als tekst zonder opmaak bevatten. Meer informatie over het [geheimen in uw toepassing beheren](service-fabric-application-secret-management.md).
+Uw toepassing kan gevoelige informatie bevatten, zoals verbindings reeksen voor opslag, wacht woorden of andere waarden die niet in tekst zonder opmaak moeten worden verwerkt. Meer informatie over het [beheren van geheimen in uw toepassing](service-fabric-application-secret-management.md).
 
-## <a name="learn-about-the-application-lifecycle"></a>Meer informatie over de levensduur van toepassingen
-Wanneer een Service Fabric-toepassing met andere platforms, meestal niet via de volgende fasen: ontwerp, ontwikkeling, testen, implementeren, upgraden, onderhoud en verwijderen. [In dit artikel](service-fabric-application-lifecycle.md) biedt een overzicht van de API's en hoe ze worden gebruikt door de verschillende rollen in de fasen van de levensduur van de Service Fabric-toepassingen.
+## <a name="learn-about-the-application-lifecycle"></a>Meer informatie over de levens cyclus van toepassingen
+Net als bij andere platforms gaat een Service Fabric-toepassing doorgaans door de volgende fasen: ontwerpen, ontwikkelen, testen, implementeren, bijwerken, onderhoud en verwijderen. [Dit artikel](service-fabric-application-lifecycle.md) bevat een overzicht van de api's en hoe deze worden gebruikt door de verschillende rollen in de fasen van de levens cyclus van de service Fabric-toepassing.
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Een Windows-cluster maken in Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
-- Een cluster, met inbegrip van geïmplementeerde toepassingen en de fysieke indeling met visualiseren [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
+- [Maak een Windows-cluster in azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+- Visualiseer uw cluster, inclusief geïmplementeerde toepassingen en fysieke indeling, met [service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
 - [Versie en upgrade van uw services](service-fabric-application-upgrade-tutorial.md)
 
 

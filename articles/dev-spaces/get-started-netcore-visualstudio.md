@@ -5,14 +5,14 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 07/09/2018
 ms.topic: tutorial
-description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
+description: In deze zelf studie leert u hoe u Azure dev Spaces en Visual Studio kunt gebruiken om fouten op te sporen en snel een .NET-kern toepassing te herhalen in azure Kubernetes service
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: bd59046af58f63c974d5c8d6a97a372f63b848ae
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
-ms.translationtype: MT
+ms.openlocfilehash: 71c0a87e8743ccbab8aa39888bf3a2edbf78000c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327327"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438566"
 ---
 # <a name="create-a-kubernetes-dev-space-visual-studio-and-net-core-with-azure-dev-spaces"></a>Maak een Kubernetes dev-ruimte: Visual Studio en .NET core met Azure dev Spaces
 
@@ -62,7 +62,7 @@ Maak in Visual Studio een nieuw project. Op dit moment moet het project een **AS
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog1.png)
 
-Selecteer de sjabloon **Web Application (Model-View-Controller)** en selecteer **.NET Core** en **ASP.NET Core 2.0** in de twee vervolgkeuzelijsten boven in het dialoogvenster. Klik op **OK** om het project aan te maken.
+Selecteer de sjabloon **Web Application (Model-View-Controller)** en selecteer **.NET Core** en **ASP.NET Core 2.0** in de twee vervolgkeuzelijsten boven in het dialoogvenster. Klik op **OK** om het project te maken.
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
 
@@ -80,7 +80,7 @@ Laat de waarde in de vervolgkeuzelijst **Space** voorlopig op `default` staan. L
 
 ![](media/get-started-netcore-visualstudio/Azure-Dev-Spaces-Dialog2.png)
 
-Klik op **OK** om het cluster te selecteren of maken.
+Klik op **OK** om het cluster te selecteren of een cluster te maken.
 
 Als u een cluster kiest dat niet is ingeschakeld om te werken met Azure Dev Spaces, ziet u een bericht waarin u wordt gevraagd of u dit cluster wilt configureren.
 

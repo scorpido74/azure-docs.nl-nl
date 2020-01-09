@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f98373fe8eab07519e665ab1eddfd7a9ce6b7e22
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 481e1762e805f162aa515dd4d12cc7b6b2e95d71
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847863"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75560253"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>Wachtwoordbeveiliging in Azure AD implementeren
 
@@ -129,11 +129,13 @@ Er zijn twee vereiste installatie Programma's voor Azure AD-wachtwoord beveiligi
      In het resultaat moet de **status** ' running ' worden weer gegeven.
 
 1. Registreer de proxy.
-   * Nadat stap 3 is voltooid, wordt de proxy service op de computer uitgevoerd. Maar de service heeft nog niet de benodigde referenties om te communiceren met Azure AD. Registratie bij Azure AD is vereist:
+   * Nadat stap 3 is voltooid, wordt de proxy service op de computer uitgevoerd, maar heeft deze nog niet de benodigde referenties om te communiceren met Azure AD. Registratie bij Azure AD is vereist:
 
      `Register-AzureADPasswordProtectionProxy`
 
-     Voor deze cmdlet zijn globale beheerders referenties voor uw Azure-Tenant vereist. U hebt ook on-premises Active Directory domein Administrator bevoegdheden nodig in het forest-hoofd domein. Wanneer deze opdracht eenmaal is geslaagd voor een proxy service, worden er aanvullende aanroepen van het object uitgevoerd, maar dit is niet nodig.
+     Voor deze cmdlet zijn globale beheerders referenties voor uw Azure-Tenant vereist. U hebt ook on-premises Active Directory domein Administrator bevoegdheden nodig in het forest-hoofd domein. U moet deze cmdlet ook uitvoeren met een account met lokale Administrator bevoegdheden.
+
+     Wanneer deze opdracht eenmaal is geslaagd voor een proxy service, worden er aanvullende aanroepen van het object uitgevoerd, maar dit is niet nodig.
 
       De cmdlet `Register-AzureADPasswordProtectionProxy` ondersteunt de volgende drie verificatie modi. De eerste twee modi ondersteunen Azure Multi-Factor Authentication, maar de derde modus niet. Raadpleeg de opmerkingen hieronder voor meer informatie.
 
@@ -177,7 +179,9 @@ Er zijn twee vereiste installatie Programma's voor Azure AD-wachtwoord beveiligi
    > De eerste keer dat deze cmdlet wordt uitgevoerd voor een specifieke Azure-Tenant, kan er een merkbaar vertraging optreden. Als er geen fout wordt gerapporteerd, hoeft u zich geen zorgen te maken over deze vertraging.
 
 1. Registreer het forest.
-   * U moet de on-premises Active Directory-forest initialiseren met de benodigde referenties om te communiceren met Azure met behulp van de `Register-AzureADPasswordProtectionForest` Power shell-cmdlet. Voor de cmdlet zijn globale beheerders referenties voor uw Azure-Tenant vereist. Er zijn ook on-premises Active Directory Enter prise-beheerders bevoegdheden vereist. Deze stap wordt eenmaal per forest uitgevoerd.
+   * U moet de on-premises Active Directory-forest initialiseren met de benodigde referenties om te communiceren met Azure met behulp van de `Register-AzureADPasswordProtectionForest` Power shell-cmdlet.
+
+      Voor de cmdlet zijn globale beheerders referenties voor uw Azure-Tenant vereist.  U moet deze cmdlet ook uitvoeren met een account met lokale Administrator bevoegdheden. Er zijn ook on-premises Active Directory Enter prise-beheerders bevoegdheden vereist. Deze stap wordt eenmaal per forest uitgevoerd.
 
       De cmdlet `Register-AzureADPasswordProtectionForest` ondersteunt de volgende drie verificatie modi. De eerste twee modi ondersteunen Azure Multi-Factor Authentication, maar de derde modus niet. Raadpleeg de opmerkingen hieronder voor meer informatie.
 

@@ -1,5 +1,5 @@
 ---
-title: Overzicht van grootschalige
+title: Overzicht van Azure SQL Database grootschalige | Microsoft Docs
 description: In dit artikel wordt de grootschalige-servicelaag in het op vCore gebaseerde aankoop model beschreven in Azure SQL Database en wordt uitgelegd hoe dit verschilt van de Algemeen en Bedrijfskritiek service lagen.
 services: sql-database
 ms.service: sql-database
@@ -7,16 +7,16 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: dimitri-furman
-ms.author: dfurman
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: b2a8ad40092a2c02f00803e699de9d6dd8feebd0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8c694cbd8d9386401b8ad26cf5ce6ce31e6b9bd9
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978625"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614935"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -38,7 +38,7 @@ De grootschalige van de service tier in Azure SQL Database biedt de volgende aan
 
 - Ondersteuning voor Maxi maal 100 TB aan database grootte
 - Bijna momentane database back-ups (op basis van moment opnamen van bestanden die zijn opgeslagen in Azure Blob Storage), ongeacht de grootte zonder IO-impact op reken bronnen  
-- Snel herstel van data base Point-in-time (op basis van moment opnamen van bestanden) in minuten in plaats van uren of dagen (geen grootte van gegevens bewerking)
+- Snel terugzetten van de data base (op basis van moment opnamen van bestanden) in minuten in plaats van uren of dagen (geen grootte van de gegevens bewerking)
 - Betere prestaties als gevolg van een betere logboek doorvoer en snellere doorvoer tijden voor trans acties, ongeacht gegevens volumes
 - Snel uitschalen: u kunt een of meer alleen-lezen knoop punten inrichten voor het offloaden van uw Lees werk belasting en voor gebruik als hot stand-by
 - Snel omhoog schalen: u kunt in een constant tijdstip uw reken resources zo schalen dat er zware werk belastingen worden uitgevoerd als en wanneer dat nodig is, en vervolgens de reken bronnen weer lager instellen wanneer ze niet nodig zijn.
@@ -82,7 +82,7 @@ In tegens telling tot traditionele data base-engines die alle gegevens beheer fu
 
 In het volgende diagram ziet u de verschillende typen knoop punten in een grootschalige-Data Base:
 
-![architectuur](./media/sql-database-hyperscale/hyperscale-architecture2.png)
+![architectuur](./media/sql-database-hyperscale/hyperscale-architecture.png)
 
 Een grootschalige-Data Base bevat de volgende verschillende soorten onderdelen:
 
@@ -98,13 +98,13 @@ Pagina servers zijn systemen die een scale-out opslag engine vertegenwoordigen. 
 
 De logboek service accepteert logboek records van de primaire Compute-replica, slaat ze op in een duurzame cache en stuurt de logboek records door naar de rest van reken replica's (zodat ze hun caches kunnen bijwerken) en de relevante pagina ('s), zodat de gegevens kunnen worden bijgewerkt kent. Op deze manier worden alle gegevens wijzigingen van de primaire Compute-replica door de logboek service door gegeven aan alle secundaire reken replica's en pagina servers. Ten slotte worden de logboek records gepusht naar lange termijn opslag in Azure Storage. Dit is een bijna oneindige opslag opslagplaats. Dit mechanisme verwijdert de nood zaak van een veelvuldige afkap ping van het logboek. De logboek service heeft ook lokale cache om de toegang tot logboek records te versnellen.
 
-### <a name="azure-storage"></a>Azure Storage
+### <a name="azure-storage"></a>Azure-opslag
 
 Azure Storage bevat alle gegevens bestanden in een Data Base. Pagina servers houden gegevens bestanden in Azure Storage up-to-date. Deze opslag wordt gebruikt voor back-updoeleinden en voor replicatie tussen Azure-regio's. Back-ups worden geïmplementeerd met behulp van opslag momentopnamen van gegevens bestanden. Herstel bewerkingen met behulp van moment opnamen zijn snel, ongeacht de grootte van de gegevens. Gegevens kunnen worden hersteld naar elk gewenst moment binnen de Bewaar periode van de back-up van de data base.
 
 ## <a name="backup-and-restore"></a>Back-up maken en terugzetten
 
-Back-ups zijn gebaseerd op bestands momentopnamen en daarom zijn ze bijna direct. Met opslag-en Compute-schei ding kunt u de bewerking voor back-up/herstel naar de opslaglaag beperken om de verwerkings belasting van de primaire Compute replica te verminderen. Als gevolg hiervan is het maken van een back-up van de data base geen invloed op de prestaties van het primaire reken knooppunt. op dezelfde manier worden herstel bewerkingen uitgevoerd door terug te keren naar moment opnamen van bestanden. Dit is geen grootte van de gegevens bewerking. Herstellen is een constante tijd, en zelfs meerdere terabyte-data bases kunnen binnen enkele minuten worden hersteld in plaats van uren of dagen. Het maken van nieuwe data bases door het herstellen van een bestaande back-up maakt ook gebruik van deze functie: het maken van database kopieën binnen dezelfde logische server voor ontwikkelings-en test doeleinden, zelfs op terabyte-formaat databases, is doable binnen enkele minuten.
+Back-ups zijn gebaseerd op bestands momentopnamen en daarom zijn ze bijna direct. Met opslag-en Compute-schei ding kunt u de bewerking voor back-up/herstel naar de opslaglaag beperken om de verwerkings belasting van de primaire Compute replica te verminderen. Als gevolg hiervan is het maken van een back-up van de data base geen invloed op de prestaties van het primaire reken knooppunt. op dezelfde manier worden herstel bewerkingen uitgevoerd door terug te keren naar moment opnamen van bestanden. Dit is geen grootte van de gegevens bewerking. Herstellen is een constante tijd, en zelfs meerdere terabyte-data bases kunnen binnen enkele minuten worden hersteld in plaats van uren of dagen. Bij het maken van nieuwe data bases door een bestaande back-up te herstellen, wordt ook gebruikgemaakt van deze functie: het maken van database kopieën voor ontwikkelings-of test doeleinden, zelfs op terabyte-formaat databases, is doable binnen enkele minuten.
 
 ## <a name="scale-and-performance-advantages"></a>Schaal-en prestatie voordelen
 
@@ -114,7 +114,7 @@ Met de mogelijkheid om snel extra alleen-lezen Compute-knoop punten in te zetten
 
 Een grootschalige-data base kan worden gemaakt met behulp van de [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [Power shell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) of [cli](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Grootschalige-data bases zijn alleen beschikbaar via het [op vCore gebaseerde aankoop model](sql-database-service-tiers-vcore.md).
 
-Met de volgende T-SQL-opdracht maakt u een grootschalige-data base. U moet zowel de editie als de service doelstelling opgeven in de instructie `CREATE DATABASE`. Raadpleeg de [resource limieten](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen5) voor een lijst met geldige service doelstellingen.
+Met de volgende T-SQL-opdracht maakt u een grootschalige-data base. U moet zowel de editie als de service doelstelling opgeven in de instructie `CREATE DATABASE`. Raadpleeg de [resource limieten](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4) voor een lijst met geldige service doelstellingen.
 
 ```sql
 -- Create a HyperScale Database
@@ -196,25 +196,25 @@ Als u een grootschalige-Data Base wilt maken in een regio die niet wordt weer ge
 
 De mogelijkheid om grootschalige-data bases te maken in niet-vermelde regio's aanvragen:
 
-1. Selecteer in het menu Azure Portal de optie **Help en ondersteuning**, of zoek naar Help en **ondersteuning** op een wille keurige pagina en selecteer deze.
+1. Ga naar de [Blade Help en ondersteuning van Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 
-2. In [Help en ondersteuning van Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)selecteert u [**nieuwe ondersteunings aanvraag**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+2. Klik op [ **nieuwe ondersteunings aanvraag**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
-3. Selecteer voor **probleem type** **service-en abonnements limieten (quota's)** .
+    ![De Blade Help en ondersteuning van Azure](media/sql-database-service-tier-hyperscale/request-screen-1.png)
 
-4. Kies het abonnement dat u wilt gebruiken voor het maken van de data base (s).
+3. Selecteer voor **probleem type** **service-en abonnements limieten (quota's)**
 
-5. Selecteer **SQL database**bij **quotum type**.
+4. Kies het abonnement dat u wilt gebruiken voor het maken van de data base (s)
 
-    ![De Blade Help en ondersteuning van Azure](media/sql-database-service-tier-hyperscale/new-support-request-screen.png)
+5. Selecteer **SQL database** bij **quotum type**
 
-6. Klik op **volgende: oplossingen**.
+6. Klik op **volgende: oplossingen**
 
-7. Klik op **Details opgeven**.
+1. Klik op **Details opgeven**
 
     ![Details van probleem](media/sql-database-service-tier-hyperscale/request-screen-2.png)
 
-8. Kies **SQL database quotum type**: **andere quotum aanvraag**.
+8. **SQL database quotum type**kiezen: **andere quotum aanvraag**
 
 9. Vul de volgende sjabloon in:
 
@@ -227,11 +227,11 @@ De mogelijkheid om grootschalige-data bases te maken in niet-vermelde regio's aa
     > Aantal TB geschat 
     >
 
-10. Kies **Ernst C**.
+10. Kies **Ernst C**
 
 11. Kies de juiste contact wijze en vul de details in.
 
-12. Klik op **Opslaan** en **door gaan**.
+12. Klik op **Opslaan** en **door gaan**
 
 ## <a name="known-limitations"></a>Bekende beperkingen
 Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We werken actief om zoveel mogelijk van deze beperkingen te verwijderen.
@@ -245,7 +245,7 @@ Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We 
 | Managed Instance | Azure SQL Database beheerde instantie wordt momenteel niet ondersteund met grootschalige-data bases. |
 | Elastische pools |  Elastische Pools worden momenteel niet ondersteund met SQL Database grootschalige.|
 | Migratie naar grootschalige is momenteel een eenrichtings bewerking | Wanneer een Data Base wordt gemigreerd naar grootschalige, kan deze niet rechtstreeks naar een andere servicelaag worden gemigreerd. Op dit moment is de enige manier om een Data Base te migreren van grootschalige naar een niet-grootschalige, het exporteren/importeren met behulp van een BACPAC-bestand of andere technologieën voor gegevens verplaatsing (Bulk Copy, Azure Data Factory, Azure Databricks, SSIS, enzovoort).|
-| Migratie van data bases met in-Memory OLTP-objecten | Grootschalige biedt alleen ondersteuning voor een subset van in-Memory OLTP-object typen, waaronder door het geheugen geoptimaliseerde tabel typen, opgeslagen procedures met systeem eigen compilaties en functies. Als er echter een in-Memory OLTP-object in de data base aanwezig is, wordt direct migreren van Premium-en Bedrijfskritiek-service lagen naar grootschalige niet ondersteund. Voor het migreren van een dergelijke Data Base naar grootschalige zijn drie stappen vereist: (1) Haal alle in-Memory OLTP-objecten en hun afhankelijkheden weg. Als u gegevens in tabellen die zijn geoptimaliseerd voor geheugen, wilt behouden, converteert u deze naar schijf tabellen. (2) Wijzig de servicelaag van de data base in grootschalige. (3) eerder verwijderde objecten opnieuw te maken. Duurzame en niet-duurzame tabellen die zijn geoptimaliseerd voor geheugen, worden momenteel niet ondersteund in grootschalige en moeten schijf tabellen blijven. Tabel variabelen die zijn geoptimaliseerd voor geheugen worden ondersteund. |
+| Migratie van data bases met persistente in-Memory objecten | Grootschalige ondersteunt alleen niet-permanente objecten in het geheugen (tabel typen, systeem eigen SPs en functies).  Permanente in-Memory tabellen en andere objecten moeten worden verwijderd en opnieuw worden gemaakt als objecten die geen deel uitmaken van het geheugen voordat een Data Base naar de service tier grootschalige wordt gemigreerd.|
 | Tracering wijzigen | Wijzigingen bijhouden is momenteel beschikbaar als open bare preview en kan worden ingeschakeld voor nieuwe of bestaande grootschalige-data bases. |
 | Geo-replicatie  | U kunt geo-replicatie voor Azure SQL Database grootschalige nog niet configureren. |
 | Data base kopiëren | U kunt geen database kopie gebruiken om een nieuwe data base in Azure SQL grootschalige te maken. |

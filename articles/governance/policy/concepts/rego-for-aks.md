@@ -3,12 +3,12 @@ title: Meer informatie over Azure Policy voor de Azure Kubernetes-service
 description: Meer informatie over hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters op de Azure Kubernetes-service.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: d8d5c1ebeded62f475804e4e704f823aba2c10eb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9a4dd6bbc71c66c3ff37200ed57859b309909ae9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279400"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436393"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Meer informatie over Azure Policy voor de Azure Kubernetes-service
 
@@ -29,11 +29,11 @@ Als u Azure Policy wilt inschakelen en gebruiken voor AKS met uw AKS-cluster, vo
 
 ## <a name="opt-in-for-preview"></a>Opt-in voor preview
 
-Voordat u de Azure Policy invoeg toepassing installeert of een van de service functies inschakelt, moet uw abonnement de resource provider **micro soft. container service** en de resource provider **micro soft. PolicyInsights** inschakelen en vervolgens worden goedgekeurd om Neem lid van de preview-versie. Als u wilt deel nemen aan de preview, volgt u deze stappen in de Azure Portal of met Azure CLI:
+Voordat u de Azure Policy invoeg toepassing installeert of een van de service functies inschakelt, moet uw abonnement de resource provider **micro soft. container service** en de resource provider **micro soft. PolicyInsights** inschakelen en vervolgens worden goedgekeurd om lid te worden van de preview-versie. Als u wilt deel nemen aan de preview, volgt u deze stappen in de Azure Portal of met Azure CLI:
 
 - Azure Portal:
 
-  1. Registreer de resource providers **micro soft. container service** en **micro soft. PolicyInsights** . Zie [resource providers en-typen](../../../azure-resource-manager/resource-manager-supported-services.md#azure-portal)voor instructies.
+  1. Registreer de resource providers **micro soft. container service** en **micro soft. PolicyInsights** . Zie [resource providers en-typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)voor instructies.
 
   1. Start de Azure Policy-service in Azure Portal door **Alle services** te selecteren en dan **Beleid** te zoeken en te selecteren.
 
@@ -123,7 +123,7 @@ Voordat u de invoeg toepassing in uw AKS-cluster installeert, moet de uitbrei di
 
 Zodra de vereisten zijn voltooid, installeert u de Azure Policy-invoeg toepassing in het AKS-cluster dat u wilt beheren.
 
-- Azure-portal
+- Azure Portal
 
   1. Start de AKS-service in de Azure Portal door op **alle services**te klikken en vervolgens op **Kubernetes Services**te zoeken en te selecteren.
 
@@ -206,7 +206,7 @@ Als u logboeken van gate keeper-containers wilt weer geven, volgt u de stappen i
 
 Als u de invoeg toepassing Azure Policy wilt verwijderen uit uw AKS-cluster, gebruikt u de Azure Portal of Azure CLI:
 
-- Azure-portal
+- Azure Portal
 
   1. Start de AKS-service in de Azure Portal door op **alle services**te klikken en vervolgens op **Kubernetes Services**te zoeken en te selecteren.
 

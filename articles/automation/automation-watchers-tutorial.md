@@ -2,18 +2,15 @@
 title: Een Watcher-taak maken in het Azure Automation-account
 description: Meer informatie over het maken van een Watcher-taak in het Azure Automation-account om te kijken naar nieuwe bestanden die in een map zijn gemaakt.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: eamonoreilly
-ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 75341fa2df6972dbf05542577d56ab35315919e6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 5dc6145940883ff6f4446ad67c399cdf4931d38e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989235"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75419746"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Een Azure Automation Watcher-taken maken om bestands wijzigingen op een lokale computer bij te houden
 
@@ -81,7 +78,7 @@ U kunt dit runbook ook vanuit de Portal importeren in uw Automation-account door
 1. Navigeer naar uw Automation-account en selecteer **Runbooks** in de categorie **proces automatisering** .
 1. Klik op de knop **Bladeren in Galerie** .
 1. Zoek naar ' Watcher actie ' en selecteer **Watcher actie waarmee gebeurtenissen worden verwerkt die zijn geactiveerd door een Watcher-runbook** en selecteer **importeren**.
-  ![Actie runbook importeren uit gebruikers interface](media/automation-watchers-tutorial/importsourceaction.png)
+  ![het importeren van een actie runbook uit de gebruikers interface](media/automation-watchers-tutorial/importsourceaction.png)
 1. Geef een naam en beschrijving op voor het runbook en selecteer **OK** om het runbook te importeren in uw Automation-account.
 1. Selecteer **bewerken** en klik vervolgens op **publiceren**. Wanneer u wordt gevraagd, selecteert u **Ja** om het runbook te publiceren.
 
@@ -156,7 +153,7 @@ Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een Watcher-runbook importeren

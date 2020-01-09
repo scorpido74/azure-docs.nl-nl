@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: c8ab954471e597cfea5c6f56cd45b2191aa73242
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
-ms.translationtype: MT
+ms.openlocfilehash: 92ff08d460e9bf11b49700570a156a101811a533
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74424077"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436005"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Aan de slag-handleiding voor Azure-ontwikkelaars
 
@@ -93,7 +93,7 @@ In plaats van dat u zich zorgen hoeft te maken over het bouwen en beheren van ee
 Azure Service Fabric is een platform voor gedistribueerde systemen. Met dit platform kunnen schaal bare en betrouw bare micro services eenvoudig worden gebouwd, verpakt, geïmplementeerd en beheerd. Het biedt ook uitgebreide mogelijkheden voor toepassings beheer, zoals: 
 
 * Inrichting
-* Installeert 
+* Implementeren 
 * Controleren
 * Bijwerken/patchen
 * Deleting 
@@ -240,7 +240,7 @@ Azure biedt twee manieren om uw toepassingen en services te beheren vanaf de opd
 
 ### <a name="azure-portal"></a>Azure Portal
 
-De [Azure Portal](https://portal.azure.com) is een webtoepassing. U kunt de Azure Portal gebruiken om Azure-resources en-services te maken, te beheren en te verwijderen. Het bevat:
+De [Azure Portal](https://portal.azure.com) is een webtoepassing. U kunt de Azure Portal gebruiken om Azure-resources en-services te maken, te beheren en te verwijderen. De Store bestaat uit de volgende afzonderlijke Stores:
 
 * Een configureerbaar dash board
 * Azure resource management-hulpprogram ma's
@@ -266,7 +266,7 @@ Services als [Mobile apps](../../app-service-mobile/app-service-mobile-dotnet-ho
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager 
     
-Als uw app wordt uitgevoerd in azure, is het mogelijk dat u werkt met meerdere Azure-Services. Deze services volgen dezelfde levens cyclus en kunnen worden beschouwd als een logische eenheid. Een web-app kan bijvoorbeeld Web Apps, SQL Database, opslag, Azure cache voor redis en Azure Content Delivery Network Services gebruiken. Met [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) kunt u als groep werken met de resources in uw toepassing. U kunt alle resources implementeren, bijwerken of verwijderen in een enkele, gecoördineerde bewerking.
+Als uw app wordt uitgevoerd in azure, is het mogelijk dat u werkt met meerdere Azure-Services. Deze services volgen dezelfde levens cyclus en kunnen worden beschouwd als een logische eenheid. Een web-app kan bijvoorbeeld Web Apps, SQL Database, opslag, Azure cache voor redis en Azure Content Delivery Network Services gebruiken. Met [Azure Resource Manager](../../azure-resource-manager/management/overview.md) kunt u als groep werken met de resources in uw toepassing. U kunt alle resources implementeren, bijwerken of verwijderen in een enkele, gecoördineerde bewerking.
 
 Naast het logisch groeperen en beheren van gerelateerde resources bevat Azure Resource Manager implementatie mogelijkheden waarmee u de implementatie en configuratie van gerelateerde resources kunt aanpassen. U kunt bijvoorbeeld Resource Manager gebruiken om een toepassing te implementeren en te configureren. Deze toepassing kan bestaan uit meerdere virtuele machines, een load balancer en een Azure SQL database als één eenheid.
 
@@ -298,7 +298,7 @@ Wanneer u nieuwe Azure-Services inricht, doet u dat in een bepaald abonnement. A
 
 De Azure Resource Explorer is een uitstekend hulp programma voor het visualiseren van de resources die u al hebt gemaakt in uw abonnement. Zie [Azure resource Explorer gebruiken om resources te bekijken en te wijzigen](../../resource-manager-resource-explorer.md)voor meer informatie.
 
-#### <a name="grant-access-to-resources"></a>Toegang verlenen tot resources
+#### <a name="grant-access-to-resources"></a>Toegang tot resources verlenen
 
 Wanneer u toegang verleent tot Azure-resources, is het altijd een best practice om gebruikers de minste bevoegdheid te geven die nodig is om een bepaalde taak uit te voeren.
 
@@ -324,7 +324,7 @@ Met Azure Resource Manager kunt u aangepaste labels toewijzen aan afzonderlijke 
 
 U kunt meerdere labels toewijzen aan elke resource. Zie [Tags gebruiken om uw Azure-resources te organiseren](../../resource-group-using-tags.md)voor meer informatie.
 
-### <a name="billing"></a>Facturering
+### <a name="billing"></a>Billing
 
 In de overstap van on-premises computing naar in de Cloud gehoste services zijn het bijhouden en ramen van service gebruik en gerelateerde kosten aanzienlijk van belang. Het is belang rijk om te schatten welke nieuwe resources maandelijks moeten worden uitgevoerd. U kunt ook projecteren hoe de facturering zoekt naar een bepaalde maand op basis van de huidige uitgaven.
 

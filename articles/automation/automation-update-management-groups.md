@@ -2,19 +2,15 @@
 title: Dynamische groepen gebruiken met Azure Updatebeheer
 description: In dit artikel wordt beschreven hoe dynamische groepen werken met Azure Automation Updatebeheer.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/20/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 022c2061febb54666acee1cfed4ec595421660a3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 678b3f361e4456a2c482896f7d7dc20d530b917b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278723"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420402"
 ---
 # <a name="use-dynamic-groups-with-update-management"></a>Dynamische groepen gebruiken met Updatebeheer
 

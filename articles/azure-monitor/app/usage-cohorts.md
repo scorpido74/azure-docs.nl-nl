@@ -8,12 +8,12 @@ author: NumberByColors
 ms.author: daviste
 ms.date: 04/10/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: d6762ac9253c838f715588451441aa9aa467f673
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 27b57477712c61fc97ae31ac353647896cca18af
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72899497"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406320"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights cohortes
 
@@ -118,7 +118,7 @@ De vorige twee cohortes zijn gedefinieerd met behulp van vervolg keuzelijsten. U
     | where client_CountryOrRegion == "United Kingdom"
     ```
 
-3. Selecteer **query uitvoeren**. Als er geen gebruikers-Id's worden weer gegeven in de tabel, wijzigt u in een land/regio waarin uw toepassing gebruikers heeft.
+3. Selecteer **Query uitvoeren**. Als er geen gebruikers-Id's worden weer gegeven in de tabel, wijzigt u in een land/regio waarin uw toepassing gebruikers heeft.
 
 4. Sla de cohort op en noem deze.
 

@@ -1,7 +1,7 @@
 ---
-title: Snelstartgids - Een schaalset voor virtuele machines maken in Azure Portal | Microsoft Docs
-description: Leer hoe u snel een schaalset voor virtuele machines kunt maken in Azure Portal
-services: virtual-machine-scale-sets
+title: 'Snelstartgids: een schaalset voor virtuele machines maken in de Azure Portal'
+description: Ga aan de slag met uw implementaties door te leren hoe u snel een virtuele machine kunt maken met een schaal Azure Portal.
+services: virtual-machine-scale-sets.
 author: cynthn
 manager: gwallace
 tags: azure-resource-manager
@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 1bbbef6d8037b819c557e1c7fc3fff6248507986
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5a44aad7471c29a387337a5ee988e66287fca3ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466372"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351143"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Snelstartgids: Een schaalset voor virtuele machines maken in Azure Portal
 
@@ -27,7 +27,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 
 ## <a name="log-in-to-azure"></a>Meld u aan bij Azure.
-Meld u aan bij de Azure-portal op https://portal.azure.com.
+Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="create-a-load-balancer"></a>Een load balancer maken
 
@@ -42,12 +42,12 @@ Maak eerst een openbare basis load balancer met behulp van de portal. De naam en
     | ---| ---|
     | Abonnement  | Selecteer uw abonnement.    |    
     | Resourcegroep | Selecteer **nieuwe maken** en typ *myVMSSResourceGroup* in het tekstvak.|
-    | Naam           | *myLoadBalancer*         |
+    | Name           | *myLoadBalancer*         |
     | Regio         | Selecteer **US - oost**.       |
-    | Type          | Select **Openbaar**.       |
-    | SKU           | selecteer **Standaard**.       |
+    | Type          | Selecteer **Openbaar**.       |
+    | SKU           | Selecteer **standaard**.       |
     | Openbaar IP-adres | Selecteer **Nieuw maken**. |
-    | Naam openbaar IP-adres  | *MyPip*   |
+    | Naam openbare IP-adres  | *MyPip*   |
     | Toewijzing| Statisch |
 
 1. Wanneer u klaar bent, selecteert u **controleren + maken** 

@@ -3,12 +3,12 @@ title: 'Snelstartgids: nieuwe beleids toewijzing met sjablonen'
 description: In deze Quick Start gebruikt u een resource manager-sjabloon om een beleids toewijzing te maken om niet-compatibele resources te identificeren.
 ms.date: 11/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 61bffcdeb5d562fe18df98fda091d5d6aa4b4051
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: e22c14768622408fb3afb0e491d4179b6113e4ca
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482342"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436456"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Snelstartgids: een beleids toewijzing maken om niet-compatibele resources te identificeren met behulp van een resource manager-sjabloon
 
@@ -39,13 +39,13 @@ Hier volgt een kopie van de sjabloon:
 
 1. Selecteer of voer de volgende waarden in:
 
-   | Naam | Waarde |
+   | Name | Waarde |
    |------|-------|
    | Abonnement | Selecteer uw Azure-abonnement. |
    | Resourcegroep | Selecteer **nieuwe maken**, geef een naam op en selecteer **OK**. In de scherm opname is de naam van de resource groep _mypolicyquickstart\<datum in MMDD\>RG_. |
    | Locatie | Selecteer een regio. Bijvoorbeeld **US - centraal**. |
    | Naam van beleids toewijzing | Geef een naam op voor het toewijzings beleid. U kunt de beleids definitie weer geven als u wilt. U kunt bijvoorbeeld **Vm's controleren die geen beheerde schijven gebruiken**. |
-   | RG naam | Geef een naam op voor de resource groep waaraan u het beleid wilt toewijzen. In deze Quick Start gebruikt u de standaard waarde **[resourceGroup (). naam]** . **[resourceGroup ()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** is een sjabloon functie die de resource groep ophaalt. |
+   | RG naam | Geef een naam op voor de resource groep waaraan u het beleid wilt toewijzen. In deze Quick Start gebruikt u de standaard waarde **[resourceGroup (). naam]** . **[resourceGroup ()](../../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)** is een sjabloon functie die de resource groep ophaalt. |
    | Beleids definitie-ID | Geef **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a**op. |
    | Ik ga akkoord met de bovenstaande voor waarden | Uitgeschakeld |
 
@@ -55,7 +55,7 @@ Enkele aanvullende bronnen:
 
 - Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)start-sjabloon voor meer voor beelden van sjablonen.
 - Voor een overzicht van de sjabloon verwijzing gaat u naar de [Naslag informatie voor Azure-sjablonen](/azure/templates/microsoft.authorization/allversions).
-- Zie [Azure Resource Manager-documentatie](../../azure-resource-manager/resource-group-overview.md)voor meer informatie over het ontwikkelen van Resource Manager-sjablonen.
+- Zie [Azure Resource Manager-documentatie](../../azure-resource-manager/management/overview.md)voor meer informatie over het ontwikkelen van Resource Manager-sjablonen.
 - Zie [resource groepen en-resources op abonnements niveau maken](../../azure-resource-manager/deploy-to-subscription.md)voor meer informatie over implementatie op abonnements niveau.
 
 ## <a name="identify-non-compliant-resources"></a>Niet-compatibele resources identificeren

@@ -1,5 +1,5 @@
 ---
-title: Prestaties van toepassingen bewaken die worden gehost op Azure VM en virtuele-machine schaal sets van Azure | Microsoft Docs
+title: Prestaties bewaken op virtuele machines van Azure-Azure-toepassing Insights
 description: Bewaking van toepassings prestaties voor Azure VM en virtuele-machine schaal sets van Azure. Grafiek belasting en respons tijd, afhankelijkheids informatie en waarschuwingen instellen voor prestaties.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 08/26/2019
-ms.openlocfilehash: 248dfb83c26d3f49fb492272ee3bd87d1e34fefa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 2fdd07d01e6bb1258a3f2ae2e856e440e5ed2818
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161475"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407335"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>De Azure Monitor Application Insights-agent implementeren op virtuele machines van Azure en virtuele-machine schaal sets van Azure
 
@@ -50,7 +50,7 @@ Er zijn twee manieren om toepassings bewaking in te scha kelen voor virtuele mac
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machines-using-powershell"></a>Application Insights agent voor .NET-toepassingen op Azure virtual machines beheren met Power shell
 
 > [!NOTE]
-> Voordat u de Application Insights-Agent installeert, hebt u een instrumentatie sleutel nodig. [Maak een nieuwe Application Insights resource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) of kopieer de instrumentatie sleutel van een bestaande Application Insights-resource.
+> Voordat u de Application Insights-Agent installeert, hebt u een connection string nodig. [Maak een nieuwe Application Insights resource](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource) of kopieer de Connection String van een bestaande Application Insights-resource.
 
 > [!NOTE]
 > Nieuw in Power shell? Bekijk de [aan de slag-hand leiding](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azps-2.5.0).
@@ -65,8 +65,9 @@ $publicCfgJsonString = '
         {
           "appFilter": ".*",
           "machineFilter": ".*",
+          "virtualPathFilter": ".*",
           "instrumentationSettings" : {
-            "instrumentationKey": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+            "connectionString": "InstrumentationKey=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
           }
         }
       ]
@@ -105,7 +106,7 @@ Get-AzResource -ResourceId "/subscriptions/<mySubscriptionId>/resourceGroups/<my
 U kunt geïnstalleerde uitbrei dingen ook bekijken op de [Blade virtuele Azure-machine](https://docs.microsoft.com/azure/virtual-machines/extensions/overview) in de portal.
 
 > [!NOTE]
-> Controleer de installatie door op Live Metrics Stream te klikken in de Application Insights resource die is gekoppeld aan de instrumentatie sleutel die u hebt gebruikt voor het implementeren van de extensie van de Application Insights agent. Als u gegevens van meerdere Virtual Machines verzendt, selecteert u de virtuele Azure-doel machines onder Server naam. Het kan tot een minuut duren voordat gegevens worden gefloweerd.
+> Controleer de installatie door op Live Metrics Stream te klikken in de Application Insights resource die is gekoppeld aan het connection string dat u hebt gebruikt om de uitbrei ding voor de Application Insights agent te implementeren. Als u gegevens van meerdere Virtual Machines verzendt, selecteert u de virtuele Azure-doel machines onder Server naam. Het kan tot een minuut duren voordat gegevens worden gefloweerd.
 
 ## <a name="manage-application-insights-agent-for-net-applications-on-azure-virtual-machine-scale-sets-using-powershell"></a>Application Insights agent voor .NET-toepassingen beheren op virtuele-machine schaal sets van Azure met behulp van Power shell
 
@@ -119,8 +120,9 @@ $publicCfgHashtable =
         @{
           "appFilter"= ".*";
           "machineFilter"= ".*";
-          "instrumentationSettings"= @{
-            "instrumentationKey"= "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"; # Application Insights Instrumentation Key, create new Application Insights resource if you don't have one. https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/microsoft.insights%2Fcomponents
+          "virtualPathFilter": ".*",
+          "instrumentationSettings" : {
+            "connectionString": "InstrumentationKey=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" # Application Insights connection string, create new Application Insights resource if you don't have one. https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/microsoft.insights%2Fcomponents
           }
         }
       )

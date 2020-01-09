@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 803deb9a4d9eaf02129bd16dd6465362b87b7e84
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 1e6465584dd4e67f736b94d2939678c1a69163bf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995912"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435670"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Apache HBase-cluster replicatie in virtuele Azure-netwerken instellen
 
@@ -51,7 +51,7 @@ U hebt drie configuratie opties:
 
 In dit artikel wordt het geo-replicatie scenario besproken.
 
-We hebben enkele [Azure Resource Manager sjablonen](../../azure-resource-manager/resource-group-overview.md)gemaakt om u te helpen bij het instellen van de omgevingen. Als u de omgevingen liever via andere methoden wilt instellen, raadpleegt u:
+We hebben enkele [Azure Resource Manager sjablonen](../../azure-resource-manager/management/overview.md)gemaakt om u te helpen bij het instellen van de omgevingen. Als u de omgevingen liever via andere methoden wilt instellen, raadpleegt u:
 
 - [Apache Hadoop clusters maken in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
 - [Apache HBase-clusters maken in azure Virtual Network](apache-hbase-provision-vnet.md)
@@ -104,7 +104,7 @@ In de laatste sectie maakt de sjabloon een virtuele Ubuntu-machine in elk van de
 
 Voor het installeren van een BIND moet yon het open bare IP-adres van de twee virtuele DNS-machines vinden.
 
-1. Open de [Azure-portal](https://portal.azure.com).
+1. Open de [Azure Portal](https://portal.azure.com).
 2. Open de virtuele DNS-machine door **resource groepen te selecteren > [naam resource groep] > [vnet1DNS]** .  De naam van de resource groep is het account dat u in de laatste procedure maakt. De standaard namen van de virtuele DNS-machines zijn *vnet1DNS* en *vnet2NDS*.
 3. Selecteer **Eigenschappen** om de pagina eigenschappen van het virtuele netwerk te openen.
 4. Noteer het **open bare IP-adres**en Controleer ook het **privé-IP-adres**.  Het privé-IP-adres is **10.1.0.4** voor vnet1DNS en **10.2.0.4** voor vnet2DNS.  
@@ -285,7 +285,7 @@ In de volgende stappen wordt beschreven hoe u de script actie script aanroept va
 
 **HBase-replicatie inschakelen vanuit de Azure Portal**
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Open het bron HBase-cluster.
 3. Selecteer **script acties**in het menu cluster.
 4. Selecteer aan de bovenkant van de pagina de optie **Nieuw verzenden**.
@@ -307,7 +307,7 @@ In de volgende stappen wordt beschreven hoe u de script actie script aanroept va
 
 Vereiste argumenten:
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |----|-----------|
 |-s,--src-cluster | Hiermee geeft u de DNS-naam van het bron HBase-cluster. Bijvoorbeeld:-s hbsrccluster,--src-cluster = hbsrccluster |
 |-d,--DST-cluster | Hiermee geeft u de DNS-naam van het doel (replica) HBase-cluster. Bijvoorbeeld:-s dsthbcluster,--src-cluster = dsthbcluster |
@@ -316,7 +316,7 @@ Vereiste argumenten:
 
 Optionele argumenten:
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |----|-----------|
 |-su, --src-ambari-user | Hiermee geeft u de gebruikers naam van de beheerder voor Ambari op het HBase-bron cluster. De standaard waarde is **admin**. |
 |-du,--DST-ambari-User | Hiermee geeft u de gebruikers naam van de beheerder voor Ambari op het cluster van de doel-HBase. De standaard waarde is **admin**. |

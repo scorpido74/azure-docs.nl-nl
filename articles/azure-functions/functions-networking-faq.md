@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 4534e20a1156f1d3550d247dfd15d9dc538e9d80
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: acb1e942c1f342ce6fee7d8aeacafcc1d7b6fd91
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226837"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409530"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>Veelgestelde vragen over netwerken in Azure Functions
 
@@ -51,9 +51,7 @@ Door gebruik te maken van virtuele netwerk integratie kunt u toegang krijgen tot
 
 U kunt HTTP-triggers toestaan van een virtueel netwerk met behulp van [service-eind punten](./functions-networking-options.md#private-site-access). 
 
-U kunt ook een functie activeren vanuit een bron in een virtueel netwerk door uw functie-app te implementeren in een App Service Environment. Zie [een interne Load Balancer met een app service Environment maken en gebruiken](../app-service/environment/create-ilb-ase.md)voor meer informatie over het gebruik van een app service environment.
-
-Het Premium-en App Service-abonnement ondersteunen HTTP-triggers van een virtueel netwerk, maar alleen een App Service omgeving ondersteunt alle andere typen functie Triggers via een virtueel netwerk.
+U kunt ook een functie activeren vanuit alle andere resources in een virtueel netwerk door uw functie-app te implementeren in een Premium-abonnement, App Service plan of App Service Environment. Zie [niet-http-triggers voor virtuele netwerken](./functions-networking-options.md#virtual-network-triggers-non-http) voor meer informatie
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>Hoe kan ik mijn functie-app in een virtueel netwerk implementeren?
 

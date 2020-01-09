@@ -1,6 +1,6 @@
 ---
-title: Voorbeelden van Azure PowerShell - Automatisch schalen op basis van een host inschakelen | Microsoft Docs
-description: Voorbeelden van Azure PowerShell
+title: Azure PowerShell-voor beelden-automatisch schalen op basis van een host inschakelen
+description: Met dit script maakt u een virtuele-machineschaalset met Windows Server 2016 en gebruikt u metrische gegevens op basis van een host voor automatisch schalen wanneer de CPU-belasting verandert.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,19 +16,19 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bf424cabdfee4e325078594b8b0cc09fe26e9625
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 92411785419a1544b2d172d3a18661d501d4e5cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980632"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350840"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-powershell"></a>Een virtuele-machineschaalset automatisch schalen met Azure PowerShell
 Met dit script maakt u een virtuele-machineschaalset met Windows Server 2016 en gebruikt u metrische gegevens op basis van een host voor automatisch schalen wanneer de CPU-belasting verandert.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="sample-script"></a>Voorbeeldscript
 

@@ -1,29 +1,29 @@
 ---
 title: De structuur van Azure-Dash boards | Microsoft Docs
-description: In dit artikel wordt de JSON-structuur van een Azure-dash board uitgelegd
+description: Door loop de JSON-structuur van een Azure-dash board met behulp van een voorbeeld dashboard. Bevat verwijzingen naar resource-eigenschappen.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
-manager: dougeby
+manager: mtillman
 editor: tysonn
 ms.service: azure-portal
 ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 09/01/2017
-ms.author: kfollis
-ms.openlocfilehash: 5933521993b598ae3758df6e2e7dbf61bf424779
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 12/20/2019
+ms.author: mblythe
+ms.openlocfilehash: 18125e119e7ffdd2f8fa8ca3c5c1b12c8c9a94e0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832798"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75640360"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>De structuur van Azure-Dash boards
 In dit document wordt de structuur van een Azure-dash board beschreven, met behulp van het volgende dash board:
 
-![voorbeeld dashboard](./media/azure-portal-dashboards-structure/sample-dashboard.png)
+![voorbeelddashboard](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
 Omdat gedeelde [Azure-Dash boards resources zijn](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), kan dit dash board worden weer gegeven als JSON.  In de volgende JSON staat het dash board dat hierboven is gevisualiseerd.
 
@@ -295,10 +295,10 @@ Laten we de relevante secties van de JSON opsplitsen.  De eigenschappen van het 
 
 ### <a name="the-id-property"></a>De eigenschap ID
 
-De Azure-resource-id, met inachtneming [van de naamgevings regels van Azure-resources](/azure/architecture/best-practices/resource-naming). Wanneer de portal een dash board maakt, kiest deze in het algemeen een id in de vorm van een GUID, maar u kunt een geldige naam gebruiken wanneer u ze via een programma maakt. 
+De Azure-Resource-ID, met inachtneming [van de naamgevings regels van Azure-resources](/azure/architecture/best-practices/resource-naming). Wanneer de portal een dash board maakt, kiest deze in het algemeen een ID in de vorm van een GUID, maar u kunt een geldige naam gebruiken wanneer u ze via een programma maakt. 
 
 ### <a name="the-name-property"></a>De eigenschap name
-De naam is het segment van de resource-id die het abonnement, het resource type of de informatie over de resource groep niet bevat. In feite is dit het laatste segment van de resource-id.
+De naam is het segment van de resource-ID die het abonnement, het resource type of de informatie over de resource groep niet bevat. In feite is dit het laatste segment van de resource-ID.
 
 ### <a name="the-type-property"></a>De eigenschap type
 Alle Dash boards zijn van het type __micro soft. Portal/Dash boards__.
@@ -312,13 +312,13 @@ Tags zijn een gemeen schappelijke functie van Azure-resources waarmee u uw resou
 `"tags": { "hidden-title": "Created via API" }`
 
 ### <a name="the-properties-object"></a>Het object Properties
-Het object Properties bevat twee eigenschappen, __lenzen__ en __meta gegevens__. De eigenschap __lenzen__ bevat informatie over de tegels (ook onderdelen) op het dash board.  De __meta gegevens__ eigenschap is mogelijk voor toekomstige functies.
+Het object Properties bevat twee eigenschappen, __lenzen__ en __meta gegevens__. De eigenschap __lenzen__ bevat informatie over de tegels op het dash board.  De __meta gegevens__ eigenschap is mogelijk voor toekomstige functies.
 
 ### <a name="the-lenses-property"></a>De eigenschap lenzen
 De eigenschap __lenzen__ bevat het dash board. Houd er rekening mee dat het object lenzen in dit voor beeld een enkele eigenschap met de naam ' 0 ' bevat. Lenzen zijn een groeperings concept dat momenteel niet is geïmplementeerd in dash boards. Nu hebben al uw Dash boards deze enkele eigenschap in het object lens, met de naam "0".
 
 ### <a name="the-lens-object"></a>Het lens object
-Het object onder de ' 0 ' bevat twee eigenschappen, een __volg orde__ en __delen__.  In de huidige versie van Dash boards is __order__ altijd 0. De eigenschap __Parts__ bevat een object dat de afzonderlijke onderdelen definieert (ook tegels) op het dash board.
+Het object onder de ' 0 ' bevat twee eigenschappen, een __volg orde__ en __delen__.  In de huidige versie van Dash boards is __order__ altijd 0. De eigenschap __Parts__ bevat een object dat de afzonderlijke onderdelen (ook wel tegels genoemd) in het dash board definieert.
 
 Het object __Parts__ bevat een eigenschap voor elk onderdeel, waarbij de naam van de eigenschap een getal is. Dit getal is niet significant. 
 
@@ -344,7 +344,7 @@ Elk onderdeel heeft een eigenschap meta data, een object heeft slechts één ver
 Elk type onderdeel heeft een eigen configuratie. De mogelijke configuratie-eigenschappen worden __input__, __Settings__en __Asset__genoemd. 
 
 ### <a name="the-inputs-object"></a>Het inputs-object
-Het object invoer bevat meestal informatie die een tegel verbindt met een resource-exemplaar.  Het onderdeel van de virtuele machine in het dash board voor beeld bevat één invoer die gebruikmaakt van de Azure-resource-id om de binding uit te drukken.  Deze indeling van de resource-id is consistent voor alle Azure-resources.
+Het object invoer bevat meestal informatie die een tegel verbindt met een resource-exemplaar.  Het onderdeel van de virtuele machine in het dash board voor beeld bevat één invoer die gebruikmaakt van de Azure-Resource-ID om de binding uit te drukken.  Deze indeling van de resource-ID is consistent voor alle Azure-resources.
 
 ```json
 "inputs":

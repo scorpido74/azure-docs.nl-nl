@@ -1,25 +1,16 @@
 ---
 title: Voor beelden van Azure Service Fabric container toepassings manifest
 description: Meer informatie over het configureren van de toepassings-en service manifest instellingen voor een toepassing met meerdere containers Service Fabric.
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: xml
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: 2d79f7dbf492b9473bcff147891df308674a8cf0
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e4050dedeb48b19b6848a95fc904f7f37fb5b04a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013248"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349398"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Voorbeelden van toepassings- en servicemanifesten voor toepassingen met meerdere containers
 Hier volgen enkele voor beelden van de toepassings-en service manifesten voor een Service Fabric toepassing met meerdere containers. Het doel van deze voor beelden is om te laten zien welke instellingen beschikbaar zijn en hoe u deze kunt gebruiken. Deze toepassings-en service manifesten zijn gebaseerd op de voorbeeld manifesten van de [Windows Server 2016-container](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) .

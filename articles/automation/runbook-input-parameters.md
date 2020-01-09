@@ -2,19 +2,15 @@
 title: Invoerparameters van runbooks
 description: Invoer parameters voor Runbook verg Roten de flexibiliteit van runbooks doordat u gegevens kunt door geven aan een runbook wanneer dit wordt gestart. In dit artikel worden verschillende scenario's beschreven waarbij invoer parameters worden gebruikt in runbooks.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 02/14/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: be7d244f5aa422b2083d35fc56a52318a4379b79
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b16219c34ea30b4229195c8f019dfa8e1f147d8b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850224"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417592"
 ---
 # <a name="runbook-input-parameters"></a>Invoerparameters van runbooks
 

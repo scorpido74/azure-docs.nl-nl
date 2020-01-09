@@ -1,6 +1,6 @@
 ---
-title: Een virtuele machine van Azure-routeringsprobleem vaststellen | Microsoft Docs
-description: Leer hoe u een VM-routeringsprobleem vaststellen door de effectieve routes voor een virtuele machine weer te geven.
+title: Een probleem met de route ring van een virtuele machine van Azure oplossen | Microsoft Docs
+description: Meer informatie over het oplossen van problemen met route ring van virtuele machines door de efficiënte routes voor een virtuele machine weer te geven.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -15,61 +15,57 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
-ms.openlocfilehash: 465d44ea823c99afbb4f25541d64770c114ba7e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 13d74fbb4a7c133ca2365fd2cbfce4b3d2bea72e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64730504"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350614"
 ---
-# <a name="diagnose-a-virtual-machine-routing-problem"></a>Een VM-routeringsprobleem vaststellen
+# <a name="diagnose-a-virtual-machine-routing-problem"></a>Een routerings probleem van een virtuele machine vaststellen
 
-In dit artikel leert u hoe u een routeringsprobleem vaststellen door de routes die voor een netwerkinterface in een virtuele machine (VM gelden) weer te geven. Azure maakt verschillende standaardroutes voor elk subnet van het virtuele netwerk. U kunt de standaardroutes van Azure overschrijven door het definiëren van routes in een routetabel, en vervolgens koppelt u de routetabel aan een subnet. De combinatie van routes die u maakt, standaardroutes van Azure en alle routes doorgegeven van uw on-premises netwerk via een Azure VPN-gateway (als het virtuele netwerk is verbonden met uw on-premises netwerk) via het border gateway protocol (BGP), zijn de effectieve routes voor alle netwerkinterfaces in een subnet. Als u niet bekend met virtuele netwerken, netwerk-interface of Routering van concepten bent, Zie [overzicht van Virtual network](virtual-networks-overview.md), [netwerkinterface](virtual-network-network-interface.md), en [routeringoverzicht](virtual-networks-udr-overview.md).
+In dit artikel leert u hoe u een routerings probleem kunt vaststellen door de routes weer te geven die van kracht zijn voor een netwerk interface in een virtuele machine (VM). Azure maakt verschillende standaard routes voor elk subnet van een virtueel netwerk. U kunt de standaard routes van Azure onderdrukken door routes in een route tabel te definiëren en vervolgens de route tabel aan een subnet te koppelen. De combi natie van routes die u maakt, de standaard routes van Azure en alle routes die zijn door gegeven vanaf uw on-premises netwerk via een Azure VPN-gateway (als uw virtuele netwerk is verbonden met uw on-premises netwerk) via het Border Gateway Protocol (BGP), zijn de efficiënte routes voor alle netwerk interfaces in een subnet. Zie overzicht van [virtueel netwerk](virtual-networks-overview.md), [netwerk interface](virtual-network-network-interface.md)en [route ring](virtual-networks-udr-overview.md)als u niet bekend bent met de concepten van het virtuele netwerk, de netwerk interface of de route ring.
 
 ## <a name="scenario"></a>Scenario
 
-U probeert verbinding maken met een virtuele machine, maar de verbinding is verbroken. Om te bepalen waarom u geen verbinding maken met de virtuele machine, kunt u de effectieve routes voor een netwerkinterface met behulp van Azure weergeven [portal](#diagnose-using-azure-portal), [PowerShell](#diagnose-using-powershell), of de [Azure CLI](#diagnose-using-azure-cli).
+U probeert verbinding te maken met een virtuele machine, maar de verbinding is mislukt. Als u wilt bepalen waarom u geen verbinding kunt maken met de virtuele machine, kunt u de efficiënte routes voor een netwerk interface weer geven met behulp van de Azure- [Portal](#diagnose-using-azure-portal), [Power shell](#diagnose-using-powershell)of de [Azure cli](#diagnose-using-azure-cli).
 
-De volgende stappen wordt ervan uitgegaan dat u hebt een bestaande virtuele machine om de effectieve routes voor weer te geven. Als u een bestaande virtuele machine hebt, implementeert eerst een [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuele machine om de taken in dit artikel. De voorbeelden in dit artikel zijn van een virtuele machine met de naam *myVM* met een netwerkinterface met de naam *myVMVMNic*. De virtuele machine en een netwerkinterface zich in een resourcegroep met de naam *myResourceGroup*, en zijn de *VS-Oost* regio. Wijzig de waarden in de stappen zo nodig voor de virtuele machine die u bij het vaststellen van het probleem voor.
+In de volgende stappen wordt ervan uitgegaan dat u een bestaande virtuele machine hebt om de juiste routes voor te bekijken. Als u geen bestaande VM hebt, implementeert u eerst een [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -of [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -VM om de taken in dit artikel uit te voeren met. De voor beelden in dit artikel zijn voor een virtuele machine met de naam *myVM* met een netwerk interface met de naam *myVMNic1*. De virtuele machine en netwerk interface bevinden zich in een resource groep met de naam *myResourceGroup*en bevinden zich in de regio *VS-Oost* . Wijzig de waarden in de stappen, indien van toepassing, voor de virtuele machine waarvoor u het probleem wilt vaststellen.
 
-## <a name="diagnose-using-azure-portal"></a>Vaststellen met behulp van Azure portal
+## <a name="diagnose-using-azure-portal"></a>Problemen vaststellen met behulp van Azure Portal
 
-1. Meld u aan bij de Azure [portal](https://portal.azure.com) met een Azure-account waarvoor de [benodigde machtigingen](virtual-network-network-interface.md#permissions).
-2. Aan de bovenkant van de Azure-portal, voer de naam van een virtuele machine die in de status running doorbrengt, in het zoekvak in. Wanneer de naam van de virtuele machine wordt weergegeven in de lijst met zoekresultaten, selecteert u deze.
-3. Selecteer **vaststellen en oplossen van problemen met**, en klik vervolgens onder **aanbevolen stappen**, selecteer **effectieve routes** item in 7, zoals wordt weergegeven in de volgende afbeelding:
+1. Meld u aan bij Azure [Portal](https://portal.azure.com) met een Azure-account dat over de [benodigde machtigingen](virtual-network-network-interface.md#permissions)beschikt.
+2. Voer boven aan de Azure Portal de naam in van een virtuele machine die de status wordt uitgevoerd in het zoekvak. Wanneer de naam van de virtuele machine wordt weer gegeven in de zoek resultaten, selecteert u deze.
+3. Onder **instellingen** aan de linkerkant selecteert u **netwerken**en navigeert u naar de netwerk interface bron door de naam ervan te selecteren.
+     netwerk interfaces ![weer geven](./media/diagnose-network-routing-problem/view-nics.png)
+4. Selecteer aan de linkerkant de optie **efficiënte routes**. De actieve routes voor een netwerk interface met de naam **myVMNic1** worden weer gegeven in de volgende afbeelding: ![weer gave van efficiënte routes](./media/diagnose-network-routing-problem/view-effective-routes.png)
 
-    ![Effectieve routes weergeven](./media/diagnose-network-routing-problem/view-effective-routes.png)
+    Als er meerdere netwerk interfaces aan de virtuele machine zijn gekoppeld, kunt u de werkelijke routes voor elke netwerk interface weer geven door deze te selecteren. Aangezien elke netwerk interface zich in een ander subnet kan bevinden, kan elke netwerk interface verschillende efficiënte routes hebben.
 
-4. De effectieve routes voor een netwerkinterface met de naam **myVMVMNic** worden weergegeven in de volgende afbeelding:
+    In het voor beeld dat in de vorige afbeelding wordt weer gegeven, zijn de vermelde routes standaard routes die Azure voor elk subnet maakt. De lijst bevat ten minste deze routes, maar kan extra routes bevatten, afhankelijk van de mogelijkheden die u hebt ingeschakeld voor uw virtuele netwerk, zoals het peeren met een ander virtueel netwerk of een verbinding met uw on-premises netwerk via een Azure VPN-gateway. Zie [virtueel netwerk verkeer routeren](virtual-networks-udr-overview.md)voor meer informatie over elk van de routes en andere routes die u kunt zien voor uw netwerk interface. Als uw lijst een groot aantal routes bevat, is het wellicht eenvoudiger om **downloaden**te selecteren, een. CSV-bestand te downloaden met de lijst met routes.
 
-     ![Effectieve routes weergeven](./media/diagnose-network-routing-problem/effective-routes.png)
+Hoewel bij de vorige stappen daad werkelijke routes werden bekeken via de VM, kunt u ook efficiënte routes weer geven via een:
+- **Afzonderlijke netwerk interface**: meer informatie over het [weer geven van een netwerk interface](virtual-network-network-interface.md#view-network-interface-settings).
+- **Afzonderlijke route tabel**: informatie over het [weer geven van een route tabel](manage-route-table.md#view-details-of-a-route-table).
 
-    Als er meerdere netwerkinterfaces die zijn gekoppeld aan de virtuele machine, kunt u de effectieve routes voor elke netwerkinterface weergeven door deze te selecteren. Omdat elke netwerkinterface kan zich in een ander subnet, kan elke netwerkinterface verschillende effectieve routes hebben.
-
-    In het voorbeeld in de vorige afbeelding wordt weergegeven, zijn de routes in de lijst standaardroutes die Azure voor elk subnet maakt. De lijst met kan ten minste deze routes heeft, maar aanvullende routes, afhankelijk van de mogelijkheden die u mogelijk hebt ingeschakeld voor het virtuele netwerk, zoals deze wordt gekoppeld aan een ander virtueel netwerk of verbonden met uw on-premises netwerk via een Azure VPN-gateway. Zie voor meer informatie over elk van de routes en andere routes u voor de netwerkinterface ziet mogelijk, [routering van verkeer van virtuele netwerken](virtual-networks-udr-overview.md). Als uw lijst een groot aantal routes bevat, wellicht vindt u het eenvoudiger om te selecteren **downloaden**om te downloaden van een CSV-bestand met de lijst van routes.
-
-Hoewel de effectieve routes via de virtuele machine in de vorige stappen zijn bekeken, kunt u ook effectieve routes via weergeven een:
-- **Afzonderlijke netwerkinterfaces**: Meer informatie over het [weergeven van een netwerkinterface](virtual-network-network-interface.md#view-network-interface-settings).
-- **Afzonderlijke routetabel**: Meer informatie over het [weergeven van een routetabel](manage-route-table.md#view-details-of-a-route-table).
-
-## <a name="diagnose-using-powershell"></a>Vaststellen met behulp van PowerShell
+## <a name="diagnose-using-powershell"></a>Problemen vaststellen met Power shell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-U kunt de opdrachten die volgen in uitvoeren de [Azure Cloud Shell](https://shell.azure.com/powershell), of door te voeren PowerShell vanaf uw computer. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u PowerShell vanaf uw computer uitvoeren, moet u de Azure PowerShell-module, versie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az` op uw computer, de geïnstalleerde versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u PowerShell lokaal uitvoert, moet u ook om uit te voeren `Connect-AzAccount` aan te melden bij Azure met een account met de [benodigde machtigingen](virtual-network-network-interface.md#permissions).
+U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/powershell), of door Power shell uit te voeren vanaf uw computer. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u Power shell vanaf uw computer uitvoert, hebt u de Azure PowerShell module versie 1.0.0 of hoger nodig. Voer `Get-Module -ListAvailable Az` op uw computer uit om de geïnstalleerde versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u Power shell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om u aan te melden bij Azure met een account dat over de [benodigde machtigingen](virtual-network-network-interface.md#permissions)beschikt.
 
-De effectieve routes ophalen voor een netwerkinterface met [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable). Het volgende voorbeeld wordt de effectieve routes voor een netwerkinterface met de naam *myVMVMNic*, dat wil zeggen in een resourcegroep met de naam *myResourceGroup*:
+Haal de efficiënte routes op voor een netwerk interface met [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable). In het volgende voor beeld worden de efficiënte routes opgehaald voor een netwerk interface met de naam *myVMNic1*, die zich in een resource groep met de naam *myResourceGroup*bevindt:
 
 ```azurepowershell-interactive
 Get-AzEffectiveRouteTable `
-  -NetworkInterfaceName myVMVMNic `
+  -NetworkInterfaceName myVMNic1 `
   -ResourceGroupName myResourceGroup `
   | Format-Table
 ```
 
-Zie voor meer informatie over de informatie die in de uitvoer is geretourneerd, [routeringoverzicht](virtual-networks-udr-overview.md). Uitvoer wordt alleen geretourneerd als de virtuele machine in de status running doorbrengt is. Als er meerdere netwerkinterfaces die zijn gekoppeld aan de virtuele machine, kunt u de effectieve routes voor elke netwerkinterface kunt bekijken. Omdat elke netwerkinterface kan zich in een ander subnet, kan elke netwerkinterface verschillende effectieve routes hebben. Als u steeds een communicatieprobleem ondervindt nog, raadpleegt u [extra diagnose](#additional-diagnosis) en [overwegingen met betrekking tot](#considerations).
+Zie [route ring Overview](virtual-networks-udr-overview.md)voor meer informatie over de gegevens die in de uitvoer worden geretourneerd. De uitvoer wordt alleen geretourneerd als de virtuele machine de status actief heeft. Als er meerdere netwerk interfaces aan de virtuele machine zijn gekoppeld, kunt u de werkelijke routes voor elke netwerk interface controleren. Aangezien elke netwerk interface zich in een ander subnet kan bevinden, kan elke netwerk interface verschillende efficiënte routes hebben. Als u nog steeds een communicatie probleem hebt, raadpleegt u [aanvullende diagnose](#additional-diagnosis) en [overwegingen](#considerations).
 
-Als u de naam van een netwerkinterface niet weet, maar de naam van de virtuele machine de netwerkinterface is gekoppeld aan, retourneren de volgende opdrachten de id's van alle netwerkinterfaces die zijn gekoppeld aan een virtuele machine:
+Als u de naam van een netwerk interface niet kent, maar wel de naam weet van de VM waaraan de netwerk interface is gekoppeld, retour neren de volgende opdrachten de Id's van alle netwerk interfaces die zijn gekoppeld aan een virtuele machine:
 
 ```azurepowershell-interactive
 $VM = Get-AzVM -Name myVM `
@@ -77,31 +73,31 @@ $VM = Get-AzVM -Name myVM `
 $VM.NetworkProfile
 ```
 
-Ontvangt u uitvoer die vergelijkbaar is met het volgende voorbeeld:
+U ontvangt uitvoer die er ongeveer zo uitziet als in het volgende voor beeld:
 
 ```powershell
 NetworkInterfaces
 -----------------
-{/subscriptions/<ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic
+{/subscriptions/<ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMNic1
 ```
 
-In de uitvoer van de vorige naam van de netwerk-interface is *myVMVMNic*.
+In de vorige uitvoer is de naam van de netwerk interface *myVMNic1*.
 
-## <a name="diagnose-using-azure-cli"></a>Vaststellen met behulp van Azure CLI
+## <a name="diagnose-using-azure-cli"></a>Diagnoses uitvoeren met Azure CLI
 
-U kunt de opdrachten die volgen in uitvoeren de [Azure Cloud Shell](https://shell.azure.com/bash), of door het uitvoeren van de CLI van de computer. In dit artikel gebruikmaken van Azure CLI versie 2.0.32 of hoger. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Als u de Azure CLI lokaal uitvoert, moet u ook om uit te voeren `az login` en meld u aan bij Azure met een account met de [benodigde machtigingen](virtual-network-network-interface.md#permissions).
+U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/bash), of door de CLI vanaf uw computer uit te voeren. Voor dit artikel is de Azure CLI-versie 2.0.32 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Als u de Azure CLI lokaal uitvoert, moet u ook `az login` uitvoeren en u aanmelden bij Azure met een account dat over de [benodigde machtigingen](virtual-network-network-interface.md#permissions)beschikt.
 
-De effectieve routes ophalen voor een netwerkinterface met [az network nic show-effectief-route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table). Het volgende voorbeeld wordt de effectieve routes voor een netwerkinterface met de naam *myVMVMNic* die zich in een resourcegroep met de naam *myResourceGroup*:
+Haal de meest efficiënte routes op voor een netwerk interface met [AZ Network NIC show-ingangsdatum-route tabel](/cli/azure/network/nic#az-network-nic-show-effective-route-table). In het volgende voor beeld worden de efficiënte routes opgehaald voor een netwerk interface met de naam *myVMNic1* die zich in een resource groep met de naam *myResourceGroup*bevindt:
 
 ```azurecli-interactive
 az network nic show-effective-route-table \
-  --name myVMVMNic \
+  --name myVMNic1 \
   --resource-group myResourceGroup
 ```
 
-Zie voor meer informatie over de informatie die in de uitvoer is geretourneerd, [routeringoverzicht](virtual-networks-udr-overview.md). Uitvoer wordt alleen geretourneerd als de virtuele machine in de status running doorbrengt is. Als er meerdere netwerkinterfaces die zijn gekoppeld aan de virtuele machine, kunt u de effectieve routes voor elke netwerkinterface kunt bekijken. Omdat elke netwerkinterface kan zich in een ander subnet, kan elke netwerkinterface verschillende effectieve routes hebben. Als u steeds een communicatieprobleem ondervindt nog, raadpleegt u [extra diagnose](#additional-diagnosis) en [overwegingen met betrekking tot](#considerations).
+Zie [route ring Overview](virtual-networks-udr-overview.md)voor meer informatie over de gegevens die in de uitvoer worden geretourneerd. De uitvoer wordt alleen geretourneerd als de virtuele machine de status actief heeft. Als er meerdere netwerk interfaces aan de virtuele machine zijn gekoppeld, kunt u de werkelijke routes voor elke netwerk interface controleren. Aangezien elke netwerk interface zich in een ander subnet kan bevinden, kan elke netwerk interface verschillende efficiënte routes hebben. Als u nog steeds een communicatie probleem hebt, raadpleegt u [aanvullende diagnose](#additional-diagnosis) en [overwegingen](#considerations).
 
-Als u de naam van een netwerkinterface niet weet, maar de naam van de virtuele machine de netwerkinterface is gekoppeld aan, retourneren de volgende opdrachten de id's van alle netwerkinterfaces die zijn gekoppeld aan een virtuele machine:
+Als u de naam van een netwerk interface niet kent, maar wel de naam weet van de VM waaraan de netwerk interface is gekoppeld, retour neren de volgende opdrachten de Id's van alle netwerk interfaces die zijn gekoppeld aan een virtuele machine:
 
 ```azurecli-interactive
 az vm show \
@@ -109,39 +105,39 @@ az vm show \
   --resource-group myResourceGroup
 ```
 
-## <a name="resolve-a-problem"></a>Problemen op te lossen
+## <a name="resolve-a-problem"></a>Een probleem oplossen
 
-Het oplossen van problemen met de routering doorgaans bestaat uit:
+Het oplossen van routerings problemen bestaat doorgaans uit:
 
-- Toevoegen van een aangepaste route voor het overschrijven van een van de standaardroutes van Azure. Meer informatie over het [toevoegen van een aangepaste route](manage-route-table.md#create-a-route).
-- Wijzig of verwijder de aangepaste route dat kan leiden tot routering met een ongewenst locatie. Meer informatie over het [wijzigen](manage-route-table.md#change-a-route) of [verwijderen](manage-route-table.md#delete-a-route) een aangepaste route.
-- Ervoor te zorgen dat de routetabel waarin eventuele aangepaste routes bevat die u hebt gedefinieerd is gekoppeld aan het subnet dat de netwerkinterface zich bevindt. Meer informatie over het [een routetabel aan een subnet koppelen](manage-route-table.md#associate-a-route-table-to-a-subnet).
-- Zorg ervoor dat apparaten, zoals Azure VPN-gateway of netwerk virtuele apparaten die u hebt geïmplementeerd bediend worden. Gebruik de [diagnostische gegevens van VPN](../network-watcher/diagnose-communication-problem-between-networks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) mogelijkheden van Network Watcher om eventuele problemen met een Azure VPN-gateway te bepalen.
+- Er wordt een aangepaste route toegevoegd voor het overschrijven van een van de standaard routes van Azure. Meer informatie over het [toevoegen van een aangepaste route](manage-route-table.md#create-a-route).
+- Een aangepaste route wijzigen of verwijderen waardoor route ring naar een ongewenste locatie kan leiden. Meer informatie over het [wijzigen](manage-route-table.md#change-a-route) of [verwijderen](manage-route-table.md#delete-a-route) van een aangepaste route.
+- Zorg ervoor dat de route tabel die aangepaste routes bevat die u hebt gedefinieerd, is gekoppeld aan het subnet waarin de netwerk interface zich bevindt. Meer informatie over het [koppelen van een route tabel aan een subnet](manage-route-table.md#associate-a-route-table-to-a-subnet).
+- Ervoor zorgen dat apparaten zoals Azure VPN-gateway of virtuele netwerk apparaten die u hebt geïmplementeerd, kunnen worden gebruikt. Gebruik de functie voor [Diagnostische gegevens van VPN](../network-watcher/diagnose-communication-problem-between-networks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) van Network Watcher om problemen met een Azure VPN-gateway te bepalen.
 
-Als u nog steeds communicatieproblemen ondervindt, raadpleegt u [overwegingen met betrekking tot](#considerations) en aanvullende diagnose.
+Als u nog steeds communicatie problemen ondervindt, raadpleegt u [overwegingen](#considerations) en aanvullende diagnose.
 
 ## <a name="considerations"></a>Overwegingen
 
-Houd rekening met de volgende punten bij het oplossen van communicatieproblemen met:
+Houd rekening met de volgende punten bij het oplossen van communicatie problemen:
 
-- Routering is gebaseerd op de langste voorvoegselovereenkomst (LPM longest prefix) tussen de routes die u hebt gedefinieerd, border gateway protocol (BGP) en system routes. Als er meer dan één route met dezelfde overeenkomende LPM is, wordt een route geselecteerd op basis van de oorsprong in de volgorde [routeringoverzicht](virtual-networks-udr-overview.md#how-azure-selects-a-route). Met effectieve routes, kunt u effectieve routes die een overeenkomende LPM, op basis van de beschikbare routes worden alleen zien. Zien hoe de routes voor een netwerkinterface worden geëvalueerd, maakt het veel eenvoudiger om op te lossen specifieke routes die mogelijk van invloed op communicatie van de virtuele machine.
-- Als u aangepaste routes naar een virtueel netwerkapparaat (NVA) hebt gedefinieerd met *virtueel apparaat* als het volgende hoptype, zorg ervoor dat doorsturen via IP is ingeschakeld op de NVA die het verkeer ontvangen, of worden pakketten verwijderd. Meer informatie over [doorsturen via IP in voor een netwerkinterface](virtual-network-network-interface.md#enable-or-disable-ip-forwarding). Het besturingssysteem of toepassing in de NVA ook moet bovendien kunnen netwerkverkeer doorsturen en worden geconfigureerd om dit te doen.
-- Als u een route naar 0.0.0.0/0 hebt gemaakt, wordt al het uitgaande internetverkeer wordt doorgestuurd naar de volgende hop die u hebt opgegeven, bijvoorbeeld bij een NVA- of VPN-gateway. Het maken van een route wordt vaak aangeduid als geforceerde tunneling. Externe verbindingen met behulp van de protocollen RDP of SSH van internet met uw virtuele machine werkt mogelijk niet met deze route, afhankelijk van hoe de volgende hop het verkeer verwerkt. Geforceerde tunneling kan worden ingeschakeld:
-    - Bij het gebruik van site-naar-site VPN, door het maken van een route met een volgend hoptype van *VPN-Gateway*. Meer informatie over [configureren van geforceerde tunneling](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - Als een 0.0.0.0/0 (standaardroute) via de gateway van een virtueel netwerk via BGP wordt aangekondigd bij het gebruik van een site-naar-site-VPN of ExpressRoute-circuit. Meer informatie over het gebruik van BGP met een [site-naar-site VPN](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#ip-addresses-used-for-azure-private-peering).
-- Voor peering verkeer in virtuele netwerken correct te laten werken, een systeemroute met een volgend hoptype van *VNet-Peering* voor het gekoppelde virtuele netwerk voorvoegsel bereik moet bestaan. Als deze een route bestaat niet en het virtuele netwerk-peeringkoppeling is **verbonden**:
-    - Wacht een paar seconden en probeer het opnieuw. Als het een nieuw tot stand gebrachte peeringkoppeling, duurt soms het langer te propageren van routes op alle netwerkinterfaces in een subnet. Zie voor meer informatie over virtueel-netwerkpeering [overzicht van Virtual network-peering](virtual-network-peering-overview.md) en [peering in virtuele netwerken beheren](virtual-network-manage-peering.md).
-    - Regels voor netwerkbeveiligingsgroepen kunnen van invloed zijn op communicatie. Zie voor meer informatie, [een probleem VM-netwerk-verkeersfilter vaststellen](diagnose-network-traffic-filter-problem.md).
-- Hoewel Azure wijst standaardroutes toe aan elke interface Azure-netwerk, hebt u meerdere netwerkinterfaces die zijn gekoppeld aan de virtuele machine, worden alleen de primaire netwerkinterface wordt toegewezen een standaardroute (0.0.0.0/0) of een gateway in het besturingssysteem van de virtuele machine. Informatie over het maken van een standaardroute voor secundaire netwerkinterfaces die zijn gekoppeld aan een [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) of [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) VM. Meer informatie over [primaire en secundaire netwerkinterfaces](virtual-network-network-interface-vm.md#constraints).
+- Route ring is gebaseerd op het langste voor voegsel (LPM) tussen de routes die u hebt gedefinieerd, het Border Gateway Protocol (BGP) en de systeem routes. Als er meer dan één route met dezelfde LPM overeenkomt, wordt een route geselecteerd op basis van de oorsprong in de volg orde die wordt vermeld in [route ring-overzicht](virtual-networks-udr-overview.md#how-azure-selects-a-route). Met behulp van efficiënte routes kunt u alleen efficiënte routes weer geven die overeenkomen met de waarde van LPM, op basis van alle beschik bare routes. Wanneer u ziet hoe de routes worden geëvalueerd voor een netwerk interface, is het veel eenvoudiger om specifieke routes op te lossen die van invloed kunnen zijn op de communicatie van uw VM.
+- Als u aangepaste routes hebt gedefinieerd voor een virtueel netwerk apparaat (NVA), met *virtueel apparaat* als het volgende hop-type, moet u ervoor zorgen dat door sturen via IP is ingeschakeld op de NVA die het verkeer ontvangt, of pakketten worden verwijderd. Meer informatie over [het inschakelen van door sturen via IP voor een netwerk interface](virtual-network-network-interface.md#enable-or-disable-ip-forwarding). Daarnaast moet het besturings systeem of de toepassing binnen de NVA ook netwerk verkeer kunnen door sturen en zo worden geconfigureerd.
+- Als u een route naar 0.0.0.0/0 hebt gemaakt, wordt al het uitgaande Internet verkeer doorgestuurd naar de volgende hop die u hebt opgegeven, bijvoorbeeld naar een NVA of VPN-gateway. Het maken van een dergelijke route wordt vaak geforceerde tunneling genoemd. Externe verbindingen met de RDP-of SSH-protocollen van het internet naar uw virtuele machine werken mogelijk niet met deze route, afhankelijk van de manier waarop de volgende hop het verkeer afhandelt. Geforceerde tunneling kan worden ingeschakeld:
+    - Wanneer u site-naar-site-VPN gebruikt, maakt u een route met het type van de volgende hop van *VPN gateway*. Meer informatie over het [configureren van geforceerde tunneling](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - Als een 0.0.0.0/0 (standaard route) via BGP wordt geadverteerd via een virtuele netwerk gateway wanneer u een site-naar-site VPN-of ExpressRoute-circuit gebruikt. Meer informatie over het gebruik van BGP met een [site-naar-site VPN-](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#ip-addresses-used-for-azure-private-peering).
+- Om het peering-verkeer van virtuele netwerken correct te laten werken, moet er een systeem route met het type van de volgende hop van *VNet-peering* bestaan voor het voor voegsel van het gekoppelde virtuele netwerk. Als een dergelijke route niet bestaat, is de koppeling van de peering van het virtuele netwerk **verbonden**:
+    - Wacht een paar seconden en probeer het opnieuw. Als het een nieuw vastgelegde peering-koppeling is, duurt het af en toe langer om routes door te geven aan alle netwerk interfaces in een subnet. Zie [overzicht van virtuele netwerk peering](virtual-network-peering-overview.md) en [beheer van peering](virtual-network-manage-peering.md)op het virtuele netwerk voor meer informatie over peering in virtuele netwerken.
+    - De regels voor de netwerk beveiligings groep kunnen invloed hebben op de communicatie. Zie [een probleem met het netwerk verkeer van een virtuele machine vaststellen](diagnose-network-traffic-filter-problem.md)voor meer informatie.
+- Azure wijst standaard routes toe aan elke Azure-netwerk interface, als er meerdere netwerk interfaces zijn gekoppeld aan de virtuele machine, wordt alleen aan de primaire netwerk interface een standaard route (0.0.0.0/0) of gateway in het besturings systeem van de virtuele machine toegewezen. Meer informatie over het maken van een standaard route voor secundaire netwerk interfaces die zijn gekoppeld aan een [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) -of [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) -VM. Meer informatie over de [primaire en secundaire netwerk interfaces](virtual-network-network-interface-vm.md#constraints).
 
 ## <a name="additional-diagnosis"></a>Aanvullende diagnose
 
-* Om uit te voeren kort te testen om te bepalen van het type van de volgende hop voor verkeer dat bestemd is voor een locatie, gebruikt u de [volgende hop](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) mogelijkheden van Azure Network Watcher. Volgende hop ziet u het volgende hoptype is bedoeld voor verkeer dat bestemd is voor een opgegeven locatie.
-* Als er geen routes van een virtuele machine de netwerkcommunicatie mislukken veroorzaakt, kan het probleem worden veroorzaakt door firewallsoftware die wordt uitgevoerd in het besturingssysteem van de virtuele machine
-* Als u [geforceerde tunneling](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) verkeer naar een on-premises apparaat via een VPN-gateway of NVA, u wellicht geen verbinding maken met een virtuele machine vanaf het internet, afhankelijk van hoe u routering voor de apparaten hebt geconfigureerd. Bevestig dat de omleiding die u hebt geconfigureerd voor het apparaat verkeer naar ofwel een openbaar of privé IP-adres voor de virtuele machine routeert.
-* Gebruik de [probleemoplossing voor verbindingen](../network-watcher/network-watcher-connectivity-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) mogelijkheden van Network Watcher om te bepalen van de routering, filteren en in-OS oorzaken van problemen met uitgaande communicatie.
+* Als u een snelle test wilt uitvoeren om het type van de volgende hop te bepalen voor verkeer dat is bestemd voor een locatie, gebruikt u de [volgende hop](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -mogelijkheid van Azure Network Watcher. De volgende hop vertelt u wat het type van de volgende hop is voor verkeer dat is bestemd voor een opgegeven locatie.
+* Als er geen routes zijn die de netwerk communicatie van een virtuele machine laten mislukken, kan het probleem worden veroorzaakt door Firewall software die wordt uitgevoerd in het besturings systeem van de virtuele machine.
+* Als u het verkeer naar een on-premises apparaat [afdwingt](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) via een VPN-gateway of NVA, is het mogelijk dat u geen verbinding kunt maken met een virtuele machine via internet, afhankelijk van hoe u route ring voor de apparaten hebt geconfigureerd. Controleer of de route ring die u voor het apparaat hebt geconfigureerd, verkeer routeert naar een openbaar of particulier IP-adres voor de virtuele machine.
+* Gebruik de [verbindings](../network-watcher/network-watcher-connectivity-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) functie voor het oplossen van problemen met de mogelijkheden van Network Watcher om route ring, filters en in-OS oorzaken van uitgaande communicatie problemen vast te stellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over alle taken, eigenschappen en instellingen voor een [tabel en routes routeren](manage-route-table.md).
-- Meer informatie over alle [typen, systeemroutes en hoe Azure een route selecteert van volgende hop](virtual-networks-udr-overview.md).
+- Meer informatie over alle taken, eigenschappen en instellingen voor een [route tabel en routes](manage-route-table.md).
+- Meer informatie over alle typen van de [volgende hop, systeem routes en hoe Azure een route selecteert](virtual-networks-udr-overview.md).

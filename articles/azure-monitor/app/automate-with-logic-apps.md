@@ -1,5 +1,5 @@
 ---
-title: Azure-toepassing Insights-processen automatiseren met behulp van Logic Apps.
+title: Azure-toepassing Insights-processen automatiseren met behulp van Logic Apps
 description: Meer informatie over hoe u Herhaal bare processen snel kunt automatiseren door de Application Insights-connector toe te voegen aan uw logische app.
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 03/11/2019
-ms.openlocfilehash: 8211598071d0835a32f9e25cfcf4e34576702770
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 95a3577d352b6bc4b56d36b5b79658571a6be1ff
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72677605"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407519"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Application Insights processen automatiseren met behulp van Logic Apps
 
@@ -27,7 +27,7 @@ U kunt ook extra acties toevoegen. De functie Logic Apps van Azure App Service m
 In deze zelf studie leert u hoe u een logische app maakt die gebruikmaakt van het algoritme van de analyse van de analytische methode voor het groeperen van kenmerken in de gegevens voor een webtoepassing. De stroom verzendt de resultaten automatisch per e-mail, maar één voor beeld van hoe u Application Insights Analytics en Logic Apps samen kunt gebruiken. 
 
 ### <a name="step-1-create-a-logic-app"></a>Stap 1: een logische app maken
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Klik op **een resource maken**, selecteer **Web en mobiel**en selecteer vervolgens **logische app**.
 
     ![Venster nieuwe logische app](./media/automate-with-logic-apps/1createlogicapp.png)
@@ -119,7 +119,7 @@ Wanneer u uw eigen query's maakt, controleert u of ze correct werken in Analytic
       ![Configuratie scherm voor Office 365-e-mail](./media/automate-with-logic-apps/12emailattachment.png)
 
 ### <a name="step-7-save-and-test-your-logic-app"></a>Stap 7: uw logische app opslaan en testen
-* Klik op **Opslaan** om uw wijzigingen op te slaan.
+* Klik op **opslaan** uw wijzigingen op te slaan.
 
 U kunt wachten tot de trigger de logische app uitvoert, of u kunt de logische app direct uitvoeren door **uitvoeren**te selecteren.
 

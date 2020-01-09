@@ -1,5 +1,5 @@
 ---
-title: Service Fabric CLI-voorbeeldscript - bijwerken van een toepassing op een cluster
+title: Een toepassing bijwerken in een cluster in sfctl
 description: Service Fabric CLI-voorbeeldscript - bijwerken van een toepassing met een nieuwe versie. Dit voorbeeld voert ook een upgrade van een geïmplementeerde toepassing uit met de nieuwe bits.
 services: service-fabric
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.date: 12/06/2017
 ms.author: atsenthi
 ms.custom: ''
-ms.openlocfilehash: e925f4f7b4a3da2d298413feccc94ea742e47f6b
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: 34f2ae6f3a2ff3adc35794d6e7dfd682640c646b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69034701"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614720"
 ---
-# <a name="add-an-application-certificate-to-a-service-fabric-cluster"></a>Een toepassingscertificaat toevoegen aan een Service Fabric-cluster
+# <a name="update-an-application-using-the-service-fabric-cli"></a>Een toepassing bijwerken met behulp van de Service Fabric CLI
 
 Met dit voorbeeldscript wordt een nieuwe versie van een bestaande toepassing geüpload, en wordt vervolgens een geïmplementeerde toepassing bijgewerkt met de nieuwe bits.
 

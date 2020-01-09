@@ -18,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 7e7a01b7fdc1a508fa19397900f8fd4f52d49c53
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: be4a47d26bcfc407734956a3d9bf8778c5afcfb4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73164000"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350299"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Zelfstudie: Netwerkverkeer routeren met een routetabel met behulp van Azure Portal
 
@@ -44,7 +44,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com).
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-route-table"></a>Een routetabel maken
 
@@ -54,11 +54,11 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Naam | Voer *myRouteTablePublic* in. |
+    | Name | Voer *myRouteTablePublic* in. |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer *OK*. |
     | Locatie | Laat de standaardwaarde **US - oost** staan.
-    | Doorgifte van BGP-route | Laat de standaardwaarde **Ingeschakeld** staan. |
+    | Doorgifte van Virtual Network gateway route | Laat de standaardwaarde **Ingeschakeld** staan. |
 
 1. Selecteer **Maken**.
 
@@ -95,12 +95,12 @@ Voordat u een routetabel aan een subnet kunt koppelen, moet u een virtueel netwe
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Naam | Voer *myVirtualNetwork* in. |
+    | Name | Voer *myVirtualNetwork* in. |
     | Adresruimte | Voer *10.0.0.0/16* in. |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer ***Bestaande selecteren*** > **myResourceGroup**. |
     | Locatie | Laat de standaardwaarde **US - oost** staan. |
-    | Subnet - naam | Voer *Openbaar* in. |
+    | Subnet - Naam | Voer *Openbaar* in. |
     | Subnet - adresbereik | Voer *10.0.0.0/24* in. |
 
 1. Laat de overige standaardwaarden staan en selecteer **Maken**.
@@ -119,7 +119,7 @@ Voordat u een routetabel aan een subnet kunt koppelen, moet u een virtueel netwe
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Naam | Voer *Privé* in. |
+    | Name | Voer *Privé* in. |
     | Adresruimte | Voer *10.0.1.0/24* in. |
 
 1. Laat de overige standaardwaarden staan en selecteer **OK**.
@@ -128,7 +128,7 @@ Voordat u een routetabel aan een subnet kunt koppelen, moet u een virtueel netwe
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Naam | Voer *DMZ* in. |
+    | Name | Voer *DMZ* in. |
     | Adresruimte | Voer *10.0.2.0/24* in. |
 
 1. Laat net zoals de vorige keer de standaardwaarden staan en selecteer **OK**.
@@ -147,7 +147,7 @@ Voordat u een routetabel aan een subnet kunt koppelen, moet u een virtueel netwe
 
 NVA’s zijn VM’s die helpen met netwerkfuncties zoals routering en firewalloptimalisatie. Als u wilt, kunt u een ander besturingssysteem selecteren. In deze zelfstudie wordt ervan uitgegaan dat u **Windows Server 2016 Datacenter** gebruikt.
 
-1. Selecteer **Een resource maken** > **Compute** > **Windows Server 2016 Datacenter** linksboven in het scherm.
+1. Selecteer in de linkerbovenhoek van het scherm **Een resource maken** > **Compute** > **Windows Server 2016 Datacenter**.
 
 1. Typ of selecteer in **Een virtuele machine maken - Basisprincipes** de volgende gegevens:
 
@@ -156,7 +156,7 @@ NVA’s zijn VM’s die helpen met netwerkfuncties zoals routering en firewallop
     | **PROJECTGEGEVENS** | |
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **myResourceGroup**. |
-    | **INSTANTIEDETAILS** |  |
+    | **EXEMPLAARDETAILS** |  |
     | Naam van de virtuele machine | Voer *myVmNva* in. |
     | Regio | Selecteer **US - oost**. |
     | Beschikbaarheidsopties | Laat de standaardwaarde **Geen infrastructuurredundantie vereist** staan. |
@@ -193,7 +193,7 @@ NVA’s zijn VM’s die helpen met netwerkfuncties zoals routering en firewallop
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Naam | Voer *mynvastorageaccount* in. |
+    | Name | Voer *mynvastorageaccount* in. |
     | Soort account | Laat de standaardwaarde **Storage (algemeen gebruik v1)** staan. |
     | Prestaties | Laat de standaardwaarde **Standard** staan. |
     | Replicatie | Laat de standaardwaarde **Lokaal redundante opslag (LRS)** staan.
@@ -202,7 +202,7 @@ NVA’s zijn VM’s die helpen met netwerkfuncties zoals routering en firewallop
 
 1. Selecteer **Controleren + maken**. De pagina **Beoordelen en maken** wordt weergegeven en de configuratie wordt gevalideerd in Azure.
 
-1. Wanneer u de tekst **Validatie voltooid** ziet, selecteert u **Maken**.
+1. Wanneer u de tekst **De validatie is geslaagd** ziet, selecteert u **Maken**.
 
     Het maken van de virtuele machine duurt een paar minuten. Ga pas verder als het maken van de VM in Azure is voltooid. Op de pagina **Uw implementatie wordt uitgevoerd** worden de details van de implementatie weergegeven.
 
@@ -265,7 +265,7 @@ U kunt de VM *myVmPrivate* maken terwijl Azure de VM *myVmPublic* maakt. Ga pas 
 
 1. Selecteer **Verbinding maken** om een extern bureaubladverbinding te maken met de VM *myVmPrivate*.
 
-1. Selecteer in **Verbinding maken met virtuele machine** de optie **RDP-bestand downloaden**. Azure maakt een Remote Desktop Protocol-bestand ( *.rdp*) en downloadt het bestand naar uw computer.
+1. Selecteer in **Verbinding maken met virtuele machine** de optie **RDP-bestand downloaden**. In Azure wordt een *RDP*-bestand (Remote Desktop Protocol) gemaakt en het bestand wordt gedownload naar de computer.
 
 1. Open het gedownloade *RDP*-bestand.
 

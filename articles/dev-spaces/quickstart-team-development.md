@@ -3,15 +3,15 @@ title: Team ontwikkeling op Kubernetes
 services: azure-dev-spaces
 ms.date: 04/25/2019
 ms.topic: quickstart
-description: Ontwikkeling van team Kubernetes met containers en micro Services op Azure
+description: In deze Quick start ziet u hoe u team Kubernetes kunt ontwikkelen met containers en micro Services met Azure dev Spaces
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 2f3ed0f2a9635488aea509e7816fbe84e1589d14
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
-ms.translationtype: MT
+ms.openlocfilehash: 396358be63f93fde2ba5ec5f00545708dbfa19d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484032"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438218"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>Snelstartgids: team ontwikkeling op Kubernetes-Azure dev Spaces
 
@@ -25,7 +25,7 @@ In deze handleiding leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+- Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 - [Azure CLI geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
 - [Helm 2,13-2,16 geïnstalleerd][helm-installed].
 

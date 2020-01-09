@@ -1,6 +1,6 @@
 ---
-title: Ontwerp schaalbare en performante tabellen in Azure-tabelopslag. | Microsoft Docs
-description: Ontwerp schaalbare en performante tabellen in Azure-tabelopslag.
+title: Ontwerp schaal bare en uitvoerende tabellen in azure Table Storage. | Microsoft Docs
+description: Ontwerp schaal bare en uitvoerende tabellen in azure Table Storage.
 services: storage
 author: SnehaGunda
 ms.service: storage
@@ -8,26 +8,26 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 8387e41d57edfa0e54ac930c9462714aca571f2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 95272956da4567ec21e1c4603b88472e45373a39
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60848279"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75351191"
 ---
-# <a name="design-scalable-and-performant-tables"></a>Schaalbare en beter bruikbare tabellen ontwerpen
+# <a name="design-scalable-and-performant-tables"></a>Schaalbare en performante tabellen ontwerpen
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-tip-include.md)]
 
-Ontwerp schaalbare en performante tabellen, moet u rekening houden met factoren zoals prestaties, schaalbaarheid en kosten. Als u eerder schema's voor relationele databases hebt ontworpen, deze overwegingen bekend bent, maar er zijn enkele overeenkomsten tussen de Azure Table storage servicemodel en relationele modellen, maar er zijn ook belangrijke verschillen. Deze verschillen leidt doorgaans tot verschillende ontwerpen. deze kunnen erg intuïtief of verkeerd aan iemand kent relationele databases, maar zinvol zijn als u voor een NoSQL-sleutel/waarde-archief, zoals de Azure Table-service ontwerpt. Veel van de verschillen in het ontwerp overeenstemming met het feit dat de Table-service is ontworpen ter ondersteuning van-toepassingen op cloudschaal met miljarden entiteiten (of rijen in de relationele database-terminologie) van de gegevens of voor gegevenssets die ondersteuning voor hoge transactie bieden moet volumes. Daarom moet u denkt dat anders over hoe u uw gegevens opslaat en te begrijpen hoe de Table-service werkt. Een goed ontworpen NoSQL-gegevensarchief kunt uw oplossing voor het schalen van veel verder en tegen lagere kosten dan een oplossing die gebruikmaakt van een relationele database inschakelen. Deze handleiding helpt u bij deze onderwerpen.  
+Als u schaal bare en uitvoerende tabellen wilt ontwerpen, moet u rekening houden met factoren zoals prestaties, schaal baarheid en kosten. Als u eerder schema's hebt ontworpen voor relationele data bases, zijn deze overwegingen bekend, maar hoewel er wat overeenkomsten zijn tussen het Azure Table service-opslag model en relationele modellen, zijn er ook belang rijke verschillen. Deze verschillen leiden doorgaans tot verschillende ontwerpen waarvan het prestatie meter item intuïtief of onjuist kan zijn voor iemand die vertrouwd is met relationele data bases, maar duidelijk is als u ontwerpt voor een NoSQL sleutel/waarde-archief zoals Azure Table service. Veel van uw ontwerp verschillen geven aan dat de Table service is ontworpen ter ondersteuning van Cloud toepassingen die miljarden entiteiten (of rijen in relationele data base terminologie) van gegevens bevatten of voor gegevens sets die hoge trans acties moeten ondersteunen omvang. Daarom moet u nadenken over de manier waarop u uw gegevens opslaat en begrijpt hoe de Table service werkt. Met een goed ontworpen NoSQL-gegevens archief kan uw oplossing veel verder worden geschaald en tegen lagere kosten dan een oplossing die gebruikmaakt van een relationele data base. Deze handleiding helpt u bij deze onderwerpen.  
 
 ## <a name="about-the-azure-table-service"></a>Over de Azure Table-service
-Deze sectie worden enkele van de belangrijkste functies van de Table-service die vooral relevant zijn voor het ontwerpen voor prestaties en schaalbaarheid. Als u geen ervaring met Azure Storage en de tabelservice, eerst lezen [Inleiding tot Microsoft Azure Storage](../../storage/common/storage-introduction.md) en [aan de slag met Azure Table Storage met .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) voordat de rest van dit artikel lezen . Hoewel de focus van deze handleiding in de tabelservice is, bevat deze bespreking van de Azure-wachtrij en Blob-services en hoe u ze kunt gebruiken met de Table-service.  
+Deze sectie worden enkele van de belangrijkste functies van de Table-service die vooral relevant zijn voor het ontwerpen voor prestaties en schaalbaarheid. Als u geen ervaring hebt met Azure Storage en de Table service, lees dan eerst [Inleiding tot Microsoft Azure Storage](../../storage/common/storage-introduction.md) en aan de [slag met Azure Table Storage met .net voordat u](../../cosmos-db/table-storage-how-to-use-dotnet.md) de rest van dit artikel leest. Hoewel de focus van deze hand leiding zich op het Table service bevindt, bevat het een bespreking van de Azure-wachtrij en BLOB-Services, en hoe u deze kunt gebruiken met de Table service.  
 
-Wat is de Table-service? Als u van de naam verwacht, de tabelservice tabelvorm gebruikt voor het opslaan van gegevens. Staat elke rij van de tabel voor een entiteit in de standard-terminologie en de kolommen opslaan van de verschillende eigenschappen van die entiteit. Elke entiteit heeft een combinatie van sleutel voor het aanduiden van, en een timestamp-kolom die de tabel-service gebruikt om bij te houden wanneer de entiteit voor het laatst is bijgewerkt. De tijdstempel wordt automatisch toegepast en u kunt handmatig de tijdstempel niet overschrijven met een willekeurige waarde. De Table-service maakt gebruik van deze timestamp laatst gewijzigd (LMT) voor het beheren van optimistische gelijktijdigheid.  
+Wat is de Table-service? Als u van de naam verwacht, de tabelservice tabelvorm gebruikt voor het opslaan van gegevens. Staat elke rij van de tabel voor een entiteit in de standard-terminologie en de kolommen opslaan van de verschillende eigenschappen van die entiteit. Elke entiteit heeft een paar sleutels om deze uniek te identificeren en een time stamp-kolom die de Table service gebruikt om bij te houden wanneer de entiteit voor het laatst is bijgewerkt. De tijds tempel wordt automatisch toegepast en u kunt de tijds tempel niet hand matig overschrijven met een wille keurige waarde. De Table-service maakt gebruik van deze timestamp laatst gewijzigd (LMT) voor het beheren van optimistische gelijktijdigheid.  
 
 > [!NOTE]
-> De tabel-service REST API-bewerkingen retourneren ook een **ETag** waarde die deze is afgeleid van de LMT. Dit document maakt gebruik van de voorwaarden ETag en LMT door elkaar omdat ze naar dezelfde onderliggende gegevens verwijzen.  
+> De Table service-REST API bewerkingen retour neren ook een **ETAG** -waarde die is afgeleid van de LMT. In dit document worden de termen ETag en LMT door elkaar gebruikt omdat ze naar dezelfde onderliggende gegevens verwijzen.  
 > 
 > 
 
@@ -50,7 +50,7 @@ Het volgende voorbeeld ziet het ontwerp van een eenvoudige tabel om op te slaan 
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Don</td>
@@ -70,7 +70,7 @@ Het volgende voorbeeld ziet het ontwerp van een eenvoudige tabel om op te slaan 
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>jun</td>
@@ -87,7 +87,7 @@ Het volgende voorbeeld ziet het ontwerp van een eenvoudige tabel om op te slaan 
 <td>
 <table>
 <tr>
-<th>Naam van de afdeling</th>
+<th>DepartmentName</th>
 <th>EmployeeCount</th>
 </tr>
 <tr>
@@ -98,7 +98,7 @@ Het volgende voorbeeld ziet het ontwerp van een eenvoudige tabel om op te slaan 
 </td>
 </tr>
 <tr>
-<td>Verkoop</td>
+<td>Sales</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>
@@ -107,7 +107,7 @@ Het volgende voorbeeld ziet het ontwerp van een eenvoudige tabel om op te slaan 
 <th>FirstName</th>
 <th>LastName</th>
 <th>Leeftijd</th>
-<th>Email</th>
+<th>E-mail</th>
 </tr>
 <tr>
 <td>Ken</td>
@@ -121,26 +121,26 @@ Het volgende voorbeeld ziet het ontwerp van een eenvoudige tabel om op te slaan 
 </table>
 
 
-Tot nu toe, deze gegevens worden weergegeven die vergelijkbaar is met een tabel in een relationele database met de belangrijkste verschillen, wordt de verplichte kolommen en de mogelijkheid voor het opslaan van meerdere Entiteitstypen in dezelfde tabel. Bovendien elk van de gebruiker gedefinieerde eigenschappen zoals **FirstName** of **leeftijd** heeft een gegevenstype, zoals geheel getal of tekenreeks, net zoals een kolom in een relationele database. Hoewel in tegenstelling tot in een relationele database, de zonder schema aard van de Table-service betekent dat een eigenschap niet hetzelfde gegevenstype voor elke entiteit moet hebben. Voor het opslaan van complexe gegevenstypen in één eigenschap, moet u een geserialiseerde indeling zoals JSON of XML. Zie voor meer informatie over de tabel-service, zoals ondersteunde gegevenstypen, ondersteunde datumbereiken, naamgevingsregels en beperkingen [inzicht in het Table Service Data Model](https://msdn.microsoft.com/library/azure/dd179338.aspx).
+Tot nu toe worden deze gegevens weer gegeven zoals in een tabel in een relationele data base, met de belangrijkste verschillen tussen de verplichte kolommen en de mogelijkheid om meerdere entiteits typen op te slaan in dezelfde tabel. Daarnaast heeft elk van de door de gebruiker gedefinieerde eigenschappen, zoals **FirstName** of **Age** , een gegevens type, zoals geheel getal of teken reeks, net als een kolom in een relationele data base. Hoewel in tegenstelling tot in een relationele database, de zonder schema aard van de Table-service betekent dat een eigenschap niet hetzelfde gegevenstype voor elke entiteit moet hebben. Voor het opslaan van complexe gegevenstypen in één eigenschap, moet u een geserialiseerde indeling zoals JSON of XML. Zie voor meer informatie over de tabel-service, zoals ondersteunde gegevenstypen, ondersteunde datumbereiken, naamgevingsregels en beperkingen [inzicht in het Table Service Data Model](https://msdn.microsoft.com/library/azure/dd179338.aspx).
 
-Uw eigen keuze aan **PartitionKey** en **RowKey** is fundamenteel voor een goede tabelontwerp. Elke entiteit die zijn opgeslagen in een tabel moet een unieke combinatie van **PartitionKey** en **RowKey**. Net als bij de sleutels in een relationele database-tabel de **PartitionKey** en **RowKey** waarden worden geïndexeerd voor het maken van een geclusterde index om in te schakelen snel op te zoeken. Echter, de Table-service maakt geen secundaire indexen, dus **PartitionKey** en **RowKey** zijn de enige geïndexeerde eigenschappen. Sommige van de patronen die worden beschreven in [tabel ontwerppatronen](table-storage-design-patterns.md) laten zien hoe u deze zichtbaar beperking kunt omzeilen.  
+Uw keuze van **PartitionKey** en **RowKey** is fundamenteel voor een goed ontwerp van een tabel. Elke entiteit die zijn opgeslagen in een tabel moet een unieke combinatie van **PartitionKey** en **RowKey**. Net als bij sleutels in een relationele-database tabel worden de waarden **PartitionKey** en **RowKey** geïndexeerd voor het maken van een geclusterde index voor het inschakelen van snelle vormgeving. De Table service maakt echter geen secundaire indexen, dus **PartitionKey** en **RowKey** zijn de enige geïndexeerde eigenschappen. Sommige van de patronen die in [tabel ontwerp patronen](table-storage-design-patterns.md) worden beschreven, illustreren hoe u deze zicht bare beperking kunt omzeilen.  
 
-Een tabel bestaat uit een of meer partities en zijn veel van de ontwerpbeslissingen die u ervoor kiezen een geschikt **PartitionKey** en **RowKey** het optimaliseren van uw oplossing. Een oplossing kan bestaan uit één tabel met de entiteiten die zijn onderverdeeld in partities, maar een oplossing heeft doorgaans meerdere tabellen. Tabellen kunt u logisch ordenen van uw entiteiten, helpen bij het beheren van toegang tot de gegevens met behulp van toegangsbeheerlijsten en u kunt een hele tabel met behulp van een enkele opslagbewerking neerzetten.  
+Een tabel bestaat uit een of meer partities, en veel van de ontwerp beslissingen die u aanbrengt, zijn een geschikte **PartitionKey** en **RowKey** om uw oplossing te optimaliseren. Een oplossing kan bestaan uit één tabel die al uw entiteiten bevat, ingedeeld in partities, maar een oplossing heeft meestal meerdere tabellen. Tabellen kunt u logisch ordenen van uw entiteiten, helpen bij het beheren van toegang tot de gegevens met behulp van toegangsbeheerlijsten en u kunt een hele tabel met behulp van een enkele opslagbewerking neerzetten.  
 
 ## <a name="table-partitions"></a>Tabelpartities
-De accountnaam, de tabelnaam, en **PartitionKey** samen bepalen de partitie in de storage-service waar de entiteit in de table-service worden opgeslagen. Als u deelneemt aan het adresschema gebruiken voor entiteiten, partities een bereik voor transacties definiëren (Zie [entiteit-groepstransacties](#entity-group-transactions) hieronder), en vormen de basis van hoe de table-service kan worden geschaald. Zie voor meer informatie over partities [Azure Storage Scalability and Performance Targets](../../storage/common/storage-scalability-targets.md).  
+De accountnaam, de tabelnaam, en **PartitionKey** samen bepalen de partitie in de storage-service waar de entiteit in de table-service worden opgeslagen. Als u deelneemt aan het adresschema gebruiken voor entiteiten, partities een bereik voor transacties definiëren (Zie [entiteit-groepstransacties](#entity-group-transactions) hieronder), en vormen de basis van hoe de table-service kan worden geschaald. Zie voor meer informatie over partities de [controle lijst voor prestaties en schaal baarheid voor tabel opslag](storage-performance-checklist.md).  
 
-Een knooppunt van de afzonderlijke services in de tabel-service een of meer partities en de service schalen voltooien door dynamische taakverdeling partities over knooppunten. Als een knooppunt belast wordt, de table-service kunt *splitsen* het bereik van partities afgehandeld door dat knooppunt aan andere knooppunten; wanneer netwerkverkeer afneemt, de service kunt *samenvoegen* de partitie kan variëren van stille knooppunten terug op een enkel knooppunt.  
+In de Table service, een afzonderlijk knoop punt Services een of meer volledige partities en de service wordt geschaald door dynamische Load Balancing-partities tussen knoop punten. Als een knooppunt belast wordt, de table-service kunt *splitsen* het bereik van partities afgehandeld door dat knooppunt aan andere knooppunten; wanneer netwerkverkeer afneemt, de service kunt *samenvoegen* de partitie kan variëren van stille knooppunten terug op een enkel knooppunt.  
 
-Raadpleeg het artikel voor meer informatie over de interne details van de Table-service, en met name hoe partities worden beheerd door de service, [Microsoft Azure Storage: Een maximaal beschikbare Cloudopslagservice met sterke consistentie](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+Raadpleeg het artikel voor meer informatie over de interne details van de Table-service, en met name hoe partities worden beheerd door de service, [Microsoft Azure Storage: een maximaal beschikbare Cloudopslagservice met sterke consistentie](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
 
 ## <a name="entity-group-transactions"></a>Entiteit-groepstransacties
-Entiteit-groepstransacties (EGTs) zijn in de tabel-service, het enige ingebouwde mechanisme voor het uitvoeren van atomic updates voor meerdere entiteiten. EGTs worden soms ook aangeduid als *batch transacties*. EGTs kan alleen worden uitgevoerd op entiteiten die zijn opgeslagen in dezelfde partitie (dat wil zeggen, delen dezelfde partitiesleutel in een bepaalde tabel). Dus telkens wanneer u atomische transactionele gedrag voor meerdere entiteiten vereist, u ervoor zorgen moet dat deze entiteiten in dezelfde partitie zijn. Dit is vaak een reden voor het bewaren van meerdere Entiteitstypen in dezelfde tabel (en de partitie) en meerdere tabellen voor verschillende Entiteitstypen niet gebruiken. Een enkele EGT kan worden uitgevoerd op maximaal 100 entiteiten.  Als u meerdere gelijktijdige EGTs voor verwerking indient, is het belangrijk om ervoor te zorgen dat die EGTs worden niet uitgevoerd op entiteiten die betrekking hebben op EGTs; anders wordt de verwerking kan worden uitgesteld.
+Entiteit-groepstransacties (EGTs) zijn in de tabel-service, het enige ingebouwde mechanisme voor het uitvoeren van atomic updates voor meerdere entiteiten. EGTs worden soms ook wel batch- *trans acties*genoemd. EGTs kan alleen worden gebruikt voor entiteiten die zijn opgeslagen in dezelfde partitie (dat wil zeggen, delen dezelfde partitie sleutel in een bepaalde tabel). U moet er dus altijd voor zorgen dat deze entiteiten zich in dezelfde partitie bevinden, zodat u een Atomic-transactioneel gedrag voor meerdere entiteiten nodig hebt. Dit is vaak een reden voor het bewaren van meerdere Entiteitstypen in dezelfde tabel (en de partitie) en meerdere tabellen voor verschillende Entiteitstypen niet gebruiken. Een enkele EGT kan worden uitgevoerd op maximaal 100 entiteiten.  Als u meerdere gelijktijdige EGTs voor verwerking verzendt, is het belang rijk om ervoor te zorgen dat deze EGTs niet worden uitgevoerd op entiteiten die gemeen schappelijk zijn voor EGTs; anders kan de verwerking worden vertraagd.
 
-EGTs introduceert ook een mogelijke compromis voor u om te evalueren in uw ontwerp. Dat wil zeggen, verhoogt met behulp van meer partities de schaalbaarheid van uw toepassing, omdat Azure heeft meer mogelijkheden om aanvragen te verdelen over meerdere knooppunten. Maar het vermogen van uw toepassing atomische transacties uitvoeren en onderhouden van sterke consistentie voor uw gegevens met behulp van meer partities mogelijk beperken. Er zijn bovendien specifieke schaalbaarheidsdoelen op het niveau van een partitie die de doorvoer van transacties die u voor een enkel knooppunt verwachten kunt mogelijk beperken. Zie voor meer informatie over de schaalbaarheidsdoelen voor Azure storage-accounts en de tabelservice [Azure Storage Scalability and Performance Targets](../../storage/common/storage-scalability-targets.md).   
+Met EGTs kunt u ook een mogelijke trans actie in uw ontwerp introduceren. Dat wil zeggen dat het gebruik van meer partities de schaal baarheid van uw toepassing verg root, omdat Azure meer mogelijkheden heeft voor taak verdeling van aanvragen op verschillende knoop punten. Maar het gebruik van meer partities kan de mogelijkheid van uw toepassing beperken tot het uitvoeren van atomische trans acties en het behouden van sterke consistentie voor uw gegevens. Daarnaast zijn er specifieke schaalbaarheids doelen op het niveau van een partitie die de door Voer van trans acties die u voor één knoop punt kan verwachten, kunnen beperken. Zie [schaalbaarheids doelen voor standaard opslag accounts](../common/scalability-targets-standard-account.md)voor meer informatie over de schaalbaarheids doelen voor Azure Standard-opslag accounts. Zie [schaalbaarheids-en prestatie doelen voor Table Storage](scalability-targets.md)voor meer informatie over de schaalbaarheids doelen voor de Table service.
 
 ## <a name="capacity-considerations"></a>Overwegingen voor capaciteit
-De volgende tabel worden enkele van de sleutelwaarden rekening mee moet houden bij het ontwerpen van een tabel-service-oplossing beschreven:  
+In de volgende tabel worden enkele belang rijke waarden beschreven waarmee u rekening moet houden bij het ontwerpen van een Table service oplossing:  
 
 | Totale capaciteit van een Azure storage-account | 500 TB |
 | --- | --- |
@@ -155,12 +155,12 @@ De volgende tabel worden enkele van de sleutelwaarden rekening mee moet houden b
 Zie [Het gegevensmodel van de tabelservice](https://msdn.microsoft.com/library/azure/dd179338.aspx) voor meer informatie.  
 
 ## <a name="cost-considerations"></a>Kostenoverwegingen
-Tabelopslag is relatief goedkope, maar u moet de geraamde kosten voor zowel het capaciteitsgebruik van en het aantal transacties opnemen als onderdeel van de evaluatie van een tabel-service-oplossing. In veel scenario's is gedenormaliseerde of dubbele gegevens opslaan om te verbeteren de prestaties of de schaalbaarheid van uw oplossing echter een geldig benadering. Zie voor meer informatie over prijzen [prijzen voor Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
+Table Storage is relatief goed koop, maar u moet kosten ramingen voor zowel het capaciteits gebruik als het aantal trans acties opnemen als onderdeel van de evaluatie van een Table service oplossing. In veel gevallen is het opslaan van gedenormaliseerde of dubbele gegevens voor het verbeteren van de prestaties of schaal baarheid van uw oplossing een geldige benadering. Zie voor meer informatie over prijzen [prijzen voor Azure Storage](https://azure.microsoft.com/pricing/details/storage/).  
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Ontwerppatronen voor tabel](table-storage-design-patterns.md)
-- [Waardoor relaties worden gemaakt](table-storage-design-modeling.md)
-- [Ontwerp voor het uitvoeren van query 's](table-storage-design-for-query.md)
-- [Versleutelen van gegevens in een tabel](table-storage-design-encrypt-data.md)
-- [Ontwerp voor wijziging van gegevens](table-storage-design-for-modification.md)
+- [Tabel ontwerp patronen](table-storage-design-patterns.md)
+- [Model relaties](table-storage-design-modeling.md)
+- [Ontwerpen voor het uitvoeren van query's](table-storage-design-for-query.md)
+- [Tabel gegevens versleutelen](table-storage-design-encrypt-data.md)
+- [Ontwerp voor gegevens aanpassing](table-storage-design-for-modification.md)

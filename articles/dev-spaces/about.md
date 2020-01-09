@@ -3,15 +3,15 @@ title: Inleiding tot Azure dev Spaces
 services: azure-dev-spaces
 ms.date: 05/07/2019
 ms.topic: overview
-description: Inleiding tot Azure dev Spaces
+description: Meer informatie over hoe Azure dev Spaces een snelle, iteratieve Kubernetes ontwikkelings ervaring biedt voor teams in azure Kubernetes-Service clusters
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 08214e4be866da592e4852ef718ee82fa2a27d08
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
-ms.translationtype: MT
+ms.openlocfilehash: 5026c2c45b0c5920c096bab6f9eb1ed851abd2a2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325795"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438586"
 ---
 # <a name="introduction-to-azure-dev-spaces"></a>Inleiding tot Azure dev Spaces
 

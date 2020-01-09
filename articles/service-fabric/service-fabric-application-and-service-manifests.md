@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric-apps en-services beschrijven | Microsoft Docs
+title: Azure Service Fabric-apps en-services beschrijven
 description: Beschrijft hoe manifesten worden gebruikt voor het beschrijven van Service Fabric toepassingen en-services.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: mani-ramaswamy
-ms.assetid: 17a99380-5ed8-4ed9-b884-e9b827431b02
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/12/2019
-ms.author: atsenthi
-ms.openlocfilehash: a5e452bf3dc9f35c345a5f27af829904b4839ece
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 6014ef6a9b6ec810aafd5e5be96223b8ed92d576
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68977114"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75349969"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Toepassings-en service manifesten Service Fabric
 In dit artikel wordt beschreven hoe Service Fabric toepassingen en-services worden gedefinieerd en geversiond met behulp van de bestanden ApplicationManifest. XML en ServiceManifest. XML.  Zie voor beelden van toepassings- [en service manifesten](service-fabric-manifest-examples.md)voor meer gedetailleerde voor beelden.  Het XML-schema voor deze manifest bestanden wordt beschreven in de [documentatie bij ServiceFabricServiceModel. XSD-schema](service-fabric-service-model-schema.md).
@@ -81,7 +70,7 @@ Typische scenario's voor het gebruik van **SetupEntryPoint** zijn wanneer u een 
 
 Zie voor meer informatie over het configureren van de SetupEntryPoint [het beleid configureren voor een toegangs punt voor een service-instelling](service-fabric-application-runas-security.md)
 
-**Omgevings variabelen** (niet ingesteld in het voor gaande voor beeld) bevat een lijst met omgevings variabelen die zijn ingesteld voor dit code pakket. Omgevings variabelen kunnen worden overschreven in `ApplicationManifest.xml` de om verschillende waarden te bieden voor verschillende service-exemplaren. 
+**Omgevings variabelen** (niet ingesteld in het voor gaande voor beeld) bevat een lijst met omgevings variabelen die zijn ingesteld voor dit code pakket. Omgevings variabelen kunnen worden overschreven in de `ApplicationManifest.xml` om verschillende waarden voor verschillende service-exemplaren op te geven. 
 
 **Sectie gegevens pakket** (niet ingesteld in het voor gaande voor beeld) declareert een map, met de **naam** kenmerk, die wille keurige statische gegevens bevat die tijdens de uitvoering door het proces moeten worden gebruikt.
 
@@ -162,7 +151,7 @@ Evenals service manifesten zijn **versie** -kenmerken ongestructureerde teken re
 
 **Para meters** definieert de para meters die worden gebruikt in het toepassings manifest. De waarden van deze para meters kunnen worden opgegeven wanneer de toepassing wordt geïnstantieerd en de configuratie-instellingen van de toepassing of service kunnen worden overschreven.  De standaard parameter waarde wordt gebruikt als de waarde niet wordt gewijzigd tijdens het instantiëren van de toepassing. Zie [toepassings parameters voor meerdere omgevingen beheren](service-fabric-manage-multiple-environment-app-configuration.md)voor meer informatie over het onderhouden van verschillende toepassings-en service parameters voor afzonderlijke omgevingen.
 
-**ServiceManifestImport** bevat verwijzingen naar service manifesten die dit toepassings type vormen. Een toepassings manifest kan meerdere service manifest-import bewerkingen bevatten, die elk afzonderlijk kunnen worden geversied. Geïmporteerde service manifesten bepalen welke service typen geldig zijn binnen dit toepassings type. Binnen de ServiceManifestImport overschrijft u de configuratie waarden in Settings. XML en omgevings variabelen in ServiceManifest. XML-bestanden. **Beleids regels** (niet ingesteld in het voor gaande voor beeld) voor end-point binding, beveiliging en toegang en het delen van pakketten kunnen worden ingesteld voor geïmporteerde service manifesten.  Zie [beveiligings beleid voor uw toepassing configureren](service-fabric-application-runas-security.md)voor meer informatie.
+**ServiceManifestImport** bevat verwijzingen naar service manifesten die dit toepassings type vormen. Een toepassings manifest kan meerdere service manifest-import bewerkingen bevatten, die elk afzonderlijk kunnen worden geversied. Geïmporteerde service manifesten bepalen welke service typen geldig zijn binnen dit toepassings type. Binnen de ServiceManifestImport overschrijft u de configuratie waarden in Settings. XML en omgevings variabelen in ServiceManifest. XML-bestanden. **Beleids regels** (die niet in het voor gaande voor beeld zijn ingesteld) voor binding van eind punten, beveiliging en toegang en het delen van pakketten kunnen worden ingesteld voor geïmporteerde service manifesten.  Zie [beveiligings beleid voor uw toepassing configureren](service-fabric-application-runas-security.md)voor meer informatie.
 
 **DefaultServices** declareert service-exemplaren die automatisch worden gemaakt wanneer een toepassing wordt geïnstantieerd voor dit toepassings type. Standaard services zijn slechts een gemak en gedragen zich als normale Services in elk opzicht nadat ze zijn gemaakt. Ze worden samen met andere services in het toepassings exemplaar bijgewerkt en kunnen ook worden verwijderd. Een toepassings manifest kan meerdere standaard services bevatten.
 
@@ -170,13 +159,13 @@ Evenals service manifesten zijn **versie** -kenmerken ongestructureerde teken re
 
 **Plaatsings beperkingen** zijn de instructies die bepalen waar services moeten worden uitgevoerd. Deze instructies zijn gekoppeld aan afzonderlijke services die u voor een of meer knooppunt eigenschappen selecteert. Zie [plaatsing van beperkingen en syntaxis van knooppunt eigenschappen](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-cluster-description#placement-constraints-and-node-property-syntax) voor meer informatie.
 
-**Beleids regels** (niet ingesteld in het voor gaande voor beeld) hierin worden de logboek verzameling, het standaard beleid voor [uitvoeren als](service-fabric-application-runas-security.md), de [status](service-fabric-health-introduction.md#health-policies)en [beveiligings toegang](service-fabric-application-runas-security.md) beschreven die op toepassings niveau moeten worden ingesteld, inclusief of de service (s) toegang heeft tot de service Fabric runtime.
+**Beleids regels** (niet ingesteld in het voor gaande voor beeld) hierin worden de logboek verzameling, het standaard beleid voor [uitvoeren als](service-fabric-application-runas-security.md), de [status](service-fabric-health-introduction.md#health-policies)en [beveiligings toegang](service-fabric-application-runas-security.md) beschreven die op toepassings niveau moeten worden ingesteld, inclusief of de service (s) toegang hebben tot de service Fabric runtime.
 
 > [!NOTE] 
 > Service Fabric-toepassingen hebben standaard toegang tot de Service Fabric runtime, in de vorm van een eind punt dat toepassingsspecifieke aanvragen accepteert, en omgevings variabelen die verwijzen naar bestands paden op de host die Fabric-en toepassingsspecifieke bestanden bevatten . U kunt deze toegang uitschakelen wanneer de toepassing niet-vertrouwde code host (dat wil zeggen code waarvan de herkomst onbekend is, of die de eigenaar van de toepassing weet dat deze niet veilig kan worden uitgevoerd). Zie [Aanbevolen procedures voor beveiliging in service Fabric](service-fabric-best-practices-security.md#platform-isolation)voor meer informatie. 
 >
 
-**Principals** (niet ingesteld in het voor gaande voor beeld) Beschrijf de beveiligings-principals (gebruikers of groepen) die zijn vereist voor het [uitvoeren van services en het beveiligen van service bronnen](service-fabric-application-runas-security.md).  Er wordt verwezen naar principals in de secties van het **beleid** .
+**Principals** (niet ingesteld in het voor gaande voor beeld) beschrijven de beveiligings-principals (gebruikers of groepen) die zijn vereist voor het [uitvoeren van services en het beveiligen van service bronnen](service-fabric-application-runas-security.md).  Er wordt verwezen naar principals in de secties van het **beleid** .
 
 
 

@@ -7,7 +7,7 @@ ms.date: 09/05/2018
 ms.author: alkarche
 ms.openlocfilehash: 358f26af8d990d29f226978387fdf8093d2b8644
 ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/02/2020
 ms.locfileid: "75612969"

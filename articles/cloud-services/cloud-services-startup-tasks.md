@@ -2,17 +2,17 @@
 title: Opstart taken uitvoeren in azure Cloud Services | Microsoft Docs
 description: Met opstart taken kunt u uw Cloud service omgeving voorbereiden voor uw app. Zo leert u hoe opstart taken werken en hoe u deze kunt maken
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: cea28aba4c57f69a030d05ac192f9578967cbc3f
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359474"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360307"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Opstart taken voor een Cloud service configureren en uitvoeren
 U kunt opstart taken gebruiken om bewerkingen uit te voeren voordat een rol wordt gestart. Bewerkingen die u mogelijk wilt uitvoeren, zijn onder andere het installeren van een onderdeel, het registreren van COM-onderdelen, het instellen van register sleutels of het starten van een langlopend proces.
@@ -23,11 +23,11 @@ U kunt opstart taken gebruiken om bewerkingen uit te voeren voordat een rol word
 > 
 
 ## <a name="how-startup-tasks-work"></a>Hoe opstart taken werken
-Opstart taken zijn acties die worden uitgevoerd voordat de rollen beginnen en worden gedefinieerd in het bestand [ServiceDefinition.csdef] met behulp van het element [Taak] in het [Opstarten] element. Veelvoorkomende opstart taken zijn batch-bestanden, maar ze kunnen ook console toepassingen zijn of batch bestanden die Power shell-scripts starten.
+Opstart taken zijn acties die worden uitgevoerd voordat de rollen beginnen en worden gedefinieerd in het bestand [ServiceDefinition.csdef] met behulp van het element [Taak] in het [Start-ups] element. Veelvoorkomende opstart taken zijn batch-bestanden, maar ze kunnen ook console toepassingen zijn of batch bestanden die Power shell-scripts starten.
 
 Omgevings variabelen geven informatie door aan een opstart taak en lokale opslag kan worden gebruikt om gegevens uit een opstart taak door te geven. Een omgevings variabele kan bijvoorbeeld het pad opgeven naar een programma dat u wilt installeren, en bestanden kunnen worden geschreven naar lokale opslag die vervolgens later door uw rollen kan worden gelezen.
 
-De opstart taak kan informatie en fouten registreren in de map die is opgegeven door de omgevings variabele **temp** . Tijdens de opstart taak wordt de omgevings variabele **temp** omgezet in de *map C\\:\\resources\\Temp [GUID]. [ \\rolnaam] RoleTemp* map wanneer deze wordt uitgevoerd in de Cloud.
+De opstart taak kan informatie en fouten registreren in de map die is opgegeven door de omgevings variabele **temp** . Tijdens de opstart taak wordt de omgevings variabele **temp** omgezet in de *Resources C:\\\\tijdelijke\\[GUID]. [ Rolnaam]\\Directory RoleTemp* wanneer deze wordt uitgevoerd in de Cloud.
 
 Opstarttaken kunnen ook verschillende keren worden uitgevoerd tussen het opnieuw opstarten. De opstarttaak wordt bijvoorbeeld uitgevoerd telkens wanneer de rol opnieuw wordt gebruikt, en bij het opnieuw gebruiken van rollen wordt niet altijd opnieuw opgestart. Opstart taken moeten zodanig worden geschreven dat ze meerdere keren zonder problemen kunnen worden uitgevoerd.
 
@@ -68,7 +68,7 @@ In dit voor beeld wordt een omgevings variabele, **MyVersionNumber**, gemaakt vo
 </Startup>
 ```
 
-In het volgende voor beeld schrijft het batch bestand **Startup. cmd** de regel ' de huidige versie is 1.0.0.0 ' naar het StartupLog. txt-bestand in de map die is opgegeven door de omgevings variabele TEMP. De `EXIT /B 0` regel zorgt ervoor dat de opstart taak eindigt met een **Error level** van nul.
+In het volgende voor beeld schrijft het batch bestand **Startup. cmd** de regel ' de huidige versie is 1.0.0.0 ' naar het StartupLog. txt-bestand in de map die is opgegeven door de omgevings variabele TEMP. De `EXIT /B 0` regel zorgt ervoor dat de opstart taak eindigt met een waarde voor **Error level** nul.
 
 ```cmd
 ECHO The current version is %MyVersionNumber% >> "%TEMP%\StartupLog.txt" 2>&1
@@ -76,7 +76,7 @@ EXIT /B 0
 ```
 
 > [!NOTE]
-> In Visual Studio moet de eigenschap **kopiëren naar uitvoermap** voor het batch bestand voor opstarten altijd worden ingesteld op **kopiëren** om ervoor te zorgen dat uw opstart batch bestand correct is geïmplementeerd in uw project op Azure (**AppRoot\\bin** voor Internet rollen en **AppRoot** voor werk rollen).
+> In Visual Studio moet de eigenschap **kopiëren naar uitvoermap** voor het batch bestand voor opstarten altijd worden ingesteld op **kopiëren** om ervoor te zorgen dat uw opstart batch bestand juist is geïmplementeerd in uw project op Azure (**AppRoot\\bin** voor webrollen en **AppRoot** voor werk rollen).
 > 
 > 
 
@@ -112,7 +112,7 @@ Hieronder worden de kenmerken van het element **Task** in het bestand [ServiceDe
   > 
   > 
   
-    Om ervoor te zorgen dat uw batch bestand eindigt met een **Error level** van nul, `EXIT /B 0` voert u de opdracht uit aan het einde van het batch-bestand proces.
+    Om ervoor te zorgen dat uw batch bestand eindigt met een **Error level** van nul, voert u de opdracht `EXIT /B 0` aan het einde van het proces van uw batch-bestand uit.
 * **background**  
   Taken worden asynchroon uitgevoerd, parallel met het opstarten van de rol.
 * **vormen**  
@@ -123,7 +123,7 @@ Omgevings variabelen zijn een manier om informatie door te geven aan een opstart
 
 Er zijn twee soorten omgevings variabelen voor opstart taken. statische omgevings variabelen en omgevings variabelen op basis van leden van de klasse [RoleEnvironment] . Beide bevinden zich in het gedeelte [omgeving] van het bestand [ServiceDefinition.csdef] en gebruiken beide het kenmerk [Variabeletype] en **name** .
 
-Statische omgevings variabelen maakt gebruik van het kenmerk **Value** van het element [Variabeletype] . In het bovenstaande voor beeld wordt de omgevings variabele **MyVersionNumber** met de statische waarde "**1.0.0.0**" gemaakt. Een ander voor beeld is het maken van een **StagingOrProduction** -omgevings variabele die u hand matig kunt instellen op de waarden "**staging**" of "**productie**" om verschillende opstart acties uit te voeren op basis van de waarde van de **StagingOrProduction** omgevings variabele.
+Statische omgevings variabelen maakt gebruik van het kenmerk **Value** van het element [Variabeletype] . In het bovenstaande voor beeld wordt de omgevings variabele **MyVersionNumber** met de statische waarde "**1.0.0.0**" gemaakt. Een ander voor beeld is het maken van een **StagingOrProduction** -omgevings variabele die u hand matig kunt instellen op de waarden "**staging**" of "**productie**" om verschillende opstart acties uit te voeren op basis van de waarde van de omgevings variabele **StagingOrProduction** .
 
 Omgevings variabelen op basis van de leden van de klasse RoleEnvironment gebruiken niet het kenmerk **Value** van het element [Variabeletype] . In plaats daarvan wordt het onderliggende [RoleInstanceValue] -element, met de juiste **XPath** -kenmerk waarde, gebruikt om een omgevings variabele te maken op basis van een specifiek lid van de klasse [RoleEnvironment] . De waarden voor het **XPath** -kenmerk voor toegang tot verschillende [RoleEnvironment] -waarden kunt u [hier](cloud-services-role-config-xpath.md)vinden.
 
@@ -155,9 +155,12 @@ Meer informatie over het uitvoeren van enkele [veelvoorkomende opstart taken](cl
 
 [ServiceDefinition.csdef]: cloud-services-model-and-package.md#csdef
 [Taak]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
-[Opstarten]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
+[Start-ups]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Gezamenlijke]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
 [Omgeving]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [Variabeletype]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
+
+
+

@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: ac2aabe12697336377df808e02e283dde0e4da16
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 00fae22b91b2ad68392a21a29df3c2aec6bf5c5e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927229"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406746"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: controleren & diagnose met een latentie van 1 seconde
 
@@ -35,7 +35,7 @@ Live metrics worden momenteel ondersteund voor ASP.NET-, ASP.NET Core-, Azure Fu
 
 ## <a name="get-started"></a>Aan de slag
 
-1. Als u Application Insights nog niet hebt [geïnstalleerd](../../azure-monitor/azure-monitor-app-hub.md) in uw web-app, doet u dat nu.
+1. Als u Application Insights nog niet hebt [geïnstalleerd](../../azure-monitor/azure-monitor-app-hub.yml) in uw web-app, doet u dat nu.
 2. Naast de Standard Application Insights-pakketten [micro soft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/) is vereist voor het inschakelen van Live Metrics stream.
 3. **Update naar de nieuwste versie** van het Application Insights-pakket. Klik in Visual Studio met de rechter muisknop op het project en kies **Nuget-pakketten beheren**. Open het tabblad **updates** en selecteer alle micro soft. ApplicationInsights. *-pakketten.
 
@@ -157,7 +157,7 @@ Voor Azure function-apps (v2) kunt u het kanaal beveiligen met een API-sleutel d
 
 Maak een API-sleutel vanuit uw Application Insights-resource en ga naar **Toepassings instellingen** voor uw functie-app. Selecteer **nieuwe instelling toevoegen** en voer een naam in voor `APPINSIGHTS_QUICKPULSEAUTHAPIKEY` en een waarde die overeenkomt met uw API-sleutel.
 
-### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-beta-or-greater"></a>ASP.NET Core (vereist Application Insights ASP.NET Core SDK 2.3.0-bèta of hoger)
+### <a name="aspnet-core-requires-application-insights-aspnet-core-sdk-230-or-greater"></a>ASP.NET Core (vereist Application Insights ASP.NET Core SDK 2.3.0 of hoger)
 
 Wijzig uw startup.cs-bestand als volgt:
 

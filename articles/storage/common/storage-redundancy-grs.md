@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c44c13f268a561e3094ae76757504a86627e1f58
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6bb93c3fb6599a05978e11ef5fbc179ccfaa9ec2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895227"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614887"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Geografisch redundante opslag (GRS): cross-regionale replicatie voor Azure Storage
 
@@ -31,7 +31,7 @@ Er zijn enkele overwegingen waarmee u rekening moet houden bij het gebruik van R
 
 - Uw toepassing moet beheren met welk eind punt de interactie wordt gebruikt bij het gebruik van RA-GRS.
 - Omdat asynchrone replicatie een vertraging vergt, kunnen wijzigingen die nog niet zijn gerepliceerd naar de secundaire regio verloren gaan als gegevens niet kunnen worden hersteld vanuit de primaire regio.
-- U kunt de laatste synchronisatie tijd van uw opslag account controleren. Tijd van laatste synchronisatie is een GMT-datum/-tijd waarde. Alle primaire schrijf bewerkingen vóór de laatste synchronisatie tijd zijn naar de secundaire locatie geschreven, wat betekent dat ze kunnen worden gelezen vanaf de secundaire locatie. Primaire schrijf bewerkingen na het tijdstip van de laatste synchronisatie zijn mogelijk nog niet beschikbaar voor lees bewerkingen. U kunt deze waarde opvragen met behulp van de [Azure Portal](https://portal.azure.com/), [Azure PowerShell](storage-powershell-guide-full.md)of van een van de Azure Storage-client bibliotheken.
+- U kunt de eigenschap van de **laatste synchronisatie tijd** voor uw opslag account controleren. **Tijd van laatste synchronisatie** is een GMT-datum/-tijd waarde. Alle primaire schrijf bewerkingen die zijn gemaakt vóór de **laatste synchronisatie tijd** zijn naar de secundaire locatie geschreven, wat betekent dat ze kunnen worden gelezen vanaf de secundaire locatie. Primaire schrijf bewerkingen na het tijdstip van de **laatste synchronisatie** zijn mogelijk nog niet beschikbaar voor lees bewerkingen. U kunt deze waarde opvragen met behulp van Power shell, Azure CLI of een van de Azure Storage-client bibliotheken. Zie voor meer informatie **de laatste synchronisatie tijd ophalen** bij het [ontwerpen van Maxi maal beschik bare toepassingen met geografisch redundante opslag met lees toegang](storage-designing-ha-apps-with-ragrs.md#getting-the-last-sync-time).
 - Als u een failover van een account (preview) van een GRS-of RA-GRS-account naar de secundaire regio initieert, wordt de schrijf toegang voor dat account hersteld nadat de failover is voltooid. Zie [nood herstel en failover van het opslag account (preview)](storage-disaster-recovery-guidance.md)voor meer informatie.
 - RA-GRS is bedoeld voor gebruik met hoge Beschik baarheid. Raadpleeg de [controle lijst voor prestaties](storage-performance-checklist.md)voor richt lijnen voor schaal baarheid.
 - Zie voor meer informatie over het ontwerpen voor hoge Beschik baarheid met RA-GRS [ontwerpen van Maxi maal beschik bare toepassingen met Ra-GRS-opslag](storage-designing-ha-apps-with-ragrs.md).

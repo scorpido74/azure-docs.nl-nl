@@ -15,12 +15,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 28f00db3b604534be5ff9cee79c0aacc41f066b5
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 1fdf776570b6f10a363fb98dfe343387d86219d6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464144"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75350922"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Een virtuele machine met Windows SQL Server inrichten in de Azure Portal
 
@@ -64,10 +64,10 @@ Geef op het tabblad **basis beginselen** de volgende informatie op:
 * Controleer onder **Project Details**of het juiste abonnement is geselecteerd. 
 *  In de sectie **resource groep** selecteert u een bestaande resource groep in de lijst of kiest u **nieuwe maken** om een nieuwe resource groep te maken. Een resourcegroep is een verzameling verwante resources in Azure (virtuele machines, opslagaccounts, virtuele netwerken enz.). 
 
-    ![Subscription](media/quickstart-sql-vm-create-portal/basics-project-details.png)
+    ![Abonnement](media/quickstart-sql-vm-create-portal/basics-project-details.png)
 
   > [!NOTE]
-  > Het is een goed idee om een nieuwe resourcegroep te maken als u het gebruik van SQL Server in Azure alleen wilt testen of hier meer over te weten wilt komen. Als u klaar bent met testen, verwijdert u gewoon de resourcegroep. De virtuele machine en alle resources die aan de resourcegroep zijn gekoppeld, worden dan automatisch verwijderd. Zie voor meer informatie over resourcegroepen [Overzicht van Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md).
+  > Het is een goed idee om een nieuwe resourcegroep te maken als u het gebruik van SQL Server in Azure alleen wilt testen of hier meer over te weten wilt komen. Als u klaar bent met testen, verwijdert u gewoon de resourcegroep. De virtuele machine en alle resources die aan de resourcegroep zijn gekoppeld, worden dan automatisch verwijderd. Zie voor meer informatie over resourcegroepen [Overzicht van Azure Resource Manager](../../../azure-resource-manager/management/overview.md).
 
 
 * Onder **Details van exemplaar**:
@@ -77,7 +77,7 @@ Geef op het tabblad **basis beginselen** de volgende informatie op:
     1. Selecteer in de lijst met **installatie kopieën** _gratis SQL Server licentie: SQL Server 2017 Developer op Windows Server 2016_.  
     1. Kies voor het wijzigen van de **grootte** voor de **grootte** van de virtuele machine en selecteer de **a2 Basic** -aanbieding. Zorg ervoor dat u uw resources opschoont nadat u klaar bent met deze om te voor komen dat er onverwachte kosten in rekening worden gebracht. Zie [Performance best practices for SQL Server in Azure Virtual Machines (Best practices voor optimale prestaties van SQL Server in Azure Virtual Machines)](virtual-machines-windows-sql-performance.md) voor de aanbevolen machinegrootten en configuratie voor productieworkloads.
 
-    ![Exemplaar Details](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
+    ![Exemplaardetails](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
 
 > [!IMPORTANT]
 > De geschatte maandelijkse kosten die worden weergegeven in het venster **Grootte kiezen**, zijn niet inclusief de kosten voor SQL Server-licentieverlening. Deze schatting is alleen de kosten van de virtuele machine. Voor de Express-en Developer-edities van SQL Server is deze schatting de totale geschatte kosten. Zie de [pagina met prijzen voor virtuele Windows-machines](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) en selecteer de gewenste editie van SQL server. Zie ook de [richt lijnen voor prijzen voor SQL Server Azure-vm's](virtual-machines-windows-sql-server-pricing-guidance.md) en- [grootten voor virtuele machines](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -106,7 +106,7 @@ Configureer uw schijf opties op het tabblad **schijven** .
 ![SQL-VM-schijf instellingen](media/virtual-machines-windows-portal-sql-server-provision/azure-sqlvm-disks.png)
   
   
-### <a name="networking"></a>Netwerken
+### <a name="networking"></a>Networking
 
 Configureer uw netwerk opties op het tabblad **netwerk** . 
 
@@ -135,7 +135,7 @@ Configureer op het tabblad **SQL Server instellingen** specifieke instellingen e
 | Instelling |
 | --- |
 | [Connectiviteit](#connectivity) |
-| [Authenticatie](#authentication) |
+| [Verificatie](#authentication) |
 | [Integratie van Azure Key Vault](#azure-key-vault-integration) |
 | [Opslagconfiguratie](#storage-configuration) |
 | [Automatisch patch toepassen](#automated-patching) |
@@ -192,7 +192,7 @@ De volgende tabel bevat de vereiste parameters voor het configureren van de Azur
 | **Principal-geheim** |Principal-geheim voor de Azure Active Directory-service. Dit geheim wordt ook wel aangeduid als het Clientgeheim. |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
 | **Referentienaam** |**Referentienaam**: de Azure Sleutelkluis-integratie maakt een referentie in SQL Server, zodat de virtuele machine toegang heeft tot de sleutelkluis. Kies een naam voor deze referentie. |mycred1 |
 
-Zie voor meer informatie [Integratie van Azure Key Vault configureren voor SQL Server op Azure-VM's](virtual-machines-windows-ps-sql-keyvault.md).
+Zie voor meer informatie [Integratie van Azure Sleutelkluis configureren voor SQL Server op Azure-VM's](virtual-machines-windows-ps-sql-keyvault.md).
 
 ### <a name="storage-configuration"></a>Opslagconfiguratie
 

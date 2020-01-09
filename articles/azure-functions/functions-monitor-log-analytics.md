@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: aelnably
-ms.openlocfilehash: 9aac6662304395b1bce5dfc21770d296f6a4f2ab
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: MT
+ms.openlocfilehash: 4ebf6ecea0b08f416bd1bd11382116dda2107ecf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226856"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75409658"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Functions controleren met Azure Monitor-logboeken
 
@@ -37,35 +37,38 @@ Kies op de pagina instellingen de optie **verzenden naar log Analytics**en selec
 
 Als u aangepaste logboeken wilt genereren, kunt u de specifieke registratie-instructie gebruiken, afhankelijk van uw taal. Hier volgen enkele voor beelden van code fragmenten:
 
-**JavaScript**
 
-```javascript
-    context.log('My app logs here.');
-```
-
-**Python**
-
-```python
-    logging.info('My app logs here.')
-```
-
-**.NET**
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
-    log.LogInformation("My app logs here.");
+log.LogInformation("My app logs here.");
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```java
-    context.getLogger().info("My app logs here.");
+context.getLogger().info("My app logs here.");
 ```
 
-**PowerShell**
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+context.log('My app logs here.');
+```
+
+# <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
 ```powershell
-    Write-Host "My app logs here."
+Write-Host "My app logs here."
 ```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+```python
+logging.info('My app logs here.')
+```
+
+---
 
 ## <a name="querying-the-logs"></a>Query's uitvoeren op de logboeken
 

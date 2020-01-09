@@ -1,6 +1,6 @@
 ---
-title: Desired state Configuration gebruiken met Virtual Machine Scale Sets | Microsoft Docs
-description: Virtual Machine Scale Sets gebruiken met de Azure DSC-uitbrei ding
+title: Desired state Configuration gebruiken met Virtual Machine Scale Sets
+description: Met behulp van Virtual Machine Scale Sets met de Azure desired state Configuration-extensie voor het configureren van virtuele machines.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: zjalexander
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 04/05/2017
 ms.author: zachal
-ms.openlocfilehash: f3da1ed5eabd3a35fe382471314084258b20213b
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d3d064bc1d9c0a72b10ca27515d8325e7ca7fef9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166163"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359295"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>Virtual Machine Scale Sets gebruiken met de Azure DSC-uitbrei ding
 [Virtual Machine Scale sets](virtual-machine-scale-sets-overview.md) kan worden gebruikt met de extensie [-handler Azure desired state Configuration (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) . Virtuele-machine schaal sets bieden een manier om grote aantallen virtuele machines te implementeren en te beheren, en kunnen in-en uitgroeien in antwoord op belasting. DSC wordt gebruikt voor het configureren van de virtuele machines zodra deze online zijn, zodat ze de productie software uitvoeren.

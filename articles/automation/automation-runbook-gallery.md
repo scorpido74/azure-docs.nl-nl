@@ -2,19 +2,15 @@
 title: Runbook-en module galerieën voor Azure Automation
 description: Runbooks en modules van micro soft en de community kunnen worden geïnstalleerd en gebruikt in uw Azure Automation omgeving.  In dit artikel wordt beschreven hoe u toegang krijgt tot deze bronnen en hoe u uw runbooks bijdraagt aan de galerie.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/20/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 94910d0f42ad6b208cac54dd2826cbd2d917504b
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 52a0ab0a31600c1548283c7d899b17e497811b5a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850717"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421486"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Runbook-en module galerieën voor Azure Automation
 

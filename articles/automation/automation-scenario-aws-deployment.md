@@ -2,19 +2,15 @@
 title: Implementatie van een virtuele machine in Amazon Web Services automatiseren
 description: In dit artikel wordt beschreven hoe u Azure Automation kunt gebruiken om het maken van een Amazon Web Service-VM te automatiseren
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: d2a58d3e79301f277143d8c4b6e810a377a211b9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b149a21ef60b22c2e549c91007265ce99babdbe4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849629"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75420928"
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Azure Automation scenario: richt een virtuele AWS-machine in
 In dit artikel leert u hoe u Azure Automation kunt gebruiken om een virtuele machine in te richten in uw Amazon Web Service (AWS)-abonnement en om die VM een specifieke naam te geven, waarnaar AWS verwijst als ' tagging ' van de VM.

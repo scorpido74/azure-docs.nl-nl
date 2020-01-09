@@ -2,19 +2,15 @@
 title: Updates voor meerdere virtuele machines in Azure beheren
 description: In dit artikel wordt beschreven hoe u updates beheert voor Azure-en niet-Azure-machines.
 services: automation
-ms.service: automation
 ms.subservice: update-management
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/20/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 16e79043db80b69d2a2ca7d0a90e6d4921c15b22
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: e9a5a4330a90bd376114f836250e290944f03860
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74806504"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75417831"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Updates voor meerdere machines beheren
 
@@ -104,7 +100,7 @@ De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door de
 | Windows-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Windows-agents en start vervolgens de installatie van de vereiste updates. |
 | Linux-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Linux-agents en start vervolgens de installatie van de vereiste updates op ondersteunde distributies. |
 | Beheergroep Operations Manager |Ja |Updatebeheer verzamelt informatie over systeem updates van agents in een verbonden beheer groep. |
-| Azure-opslagaccount |Nee |Azure Storage bevat geen informatie over systeem updates. |
+| Azure Storage-account |Nee |Azure Storage bevat geen informatie over systeem updates. |
 
 ### <a name="collection-frequency"></a>Verzamelingsfrequentie
 

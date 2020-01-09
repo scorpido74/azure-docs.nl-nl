@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 07/10/2019
-ms.openlocfilehash: 4ef9256404b0d0d4d6379e4f5a76c0d41a38c7cd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8749f7dee2ceeb09e37cc97d4e5bfe76c52e2da6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499330"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438741"
 ---
 # <a name="tutorial-share-data-using-azure-data-share"></a>Zelf studie: gegevens delen met Azure data share  
 
@@ -41,13 +41,15 @@ In deze zelfstudie leert u het volgende:
 * Machtiging voor de gegevens share om toegang te krijgen tot het Data Warehouse. U kunt dit doen door de volgende stappen uit te voeren: 
     1. Stel uzelf in als de Azure Active Directory beheerder voor de-server.
     1. Maak verbinding met de Azure SQL Database/data warehouse met behulp van Azure Active Directory.
-    1. Gebruik de query-editor (preview) om het volgende script uit te voeren om de gegevens share MSI toe te voegen als db_owner. U moet verbinding maken met behulp van Active Directory en niet SQL Server-verificatie. 
+    1. Gebruik de query-editor (preview) om het volgende script uit te voeren om de gegevens share-MSI als db_owner toe te voegen. U moet verbinding maken met behulp van Active Directory en niet SQL Server-verificatie. 
     
 ```sql
     create user <share_acct_name> from external provider;     
     exec sp_addrolemember db_owner, <share_acct_name>; 
 ```                   
 Houd er rekening mee dat de *< share_acc_name >* de naam is van uw gegevens share-account. Als u nog geen gegevens share-account hebt gemaakt, kunt u later terugkeren naar deze vereiste.  
+
+* Een [Azure SQL database gebruiker met `db_owner` toegang](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins#non-administrator-users) om te navigeren en de tabellen en/of weer gaven te selecteren die u wilt delen. 
 
 * Client-IP SQL Server toegang tot Firewall: dit kunt u doen door de volgende stappen uit te voeren: 1. Navigeer naar *firewalls en virtuele netwerken* 1. Klik op de **aan/uit** om toegang tot Azure-Services toe te staan. 
 
@@ -69,7 +71,7 @@ Een Azure-gegevens share bron maken in een Azure-resource groep.
 
      **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
     |---|---|---|
-    | Naam | *datashareacount* | Geef een naam op voor uw gegevens share-account. |
+    | Name | *datashareacount* | Geef een naam op voor uw gegevens share-account. |
     | Abonnement | Uw abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw gegevens share-account.|
     | Resourcegroep | *test-resource-group* | Gebruik een bestaande resourcegroep of maak een nieuwe. |
     | Locatie | *VS-Oost 2* | Selecteer een regio voor uw gegevens share-account.
@@ -99,7 +101,7 @@ Een Azure-gegevens share bron maken in een Azure-resource groep.
 
     ![Gegevenssets](./media/datasets.png "Gegevenssets")
 
-1. Selecteer het type gegevensset dat u wilt toevoegen. 
+1. Selecteer het type gegevensset dat u wilt toevoegen. Als u gegevens deelt vanuit een Azure SQL Database of Azure SQL Data Warehouse, wordt u gevraagd om een aantal SQL-referenties op te vragen. Verificatie met behulp van de gebruiker die u hebt gemaakt als onderdeel van de vereisten.
 
     ![AddDatasets](./media/add-datasets.png "Gegevens sets toevoegen")    
 

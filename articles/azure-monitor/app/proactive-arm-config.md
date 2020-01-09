@@ -8,16 +8,16 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 74014a91684749eec7c4086a88785f2024694677
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: MT
+ms.openlocfilehash: aadf3a18d41d8dfe878439893c9d1ed25172fa2b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929077"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75406483"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Application Insights Slimme detectie regels beheren met Azure Resource Manager sjablonen
 
-Slimme detectie regels in Application Insights kunnen worden beheerd en geconfigureerd met behulp van [Azure Resource Manager sjablonen](../../azure-resource-manager/resource-group-authoring-templates.md).
+Slimme detectie regels in Application Insights kunnen worden beheerd en geconfigureerd met behulp van [Azure Resource Manager sjablonen](../../azure-resource-manager/templates/template-syntax.md).
 Deze methode kan worden gebruikt bij het implementeren van nieuwe Application Insights resources met Azure Resource Manager Automation of voor het wijzigen van de instellingen van bestaande resources.
 
 ## <a name="smart-detection-rule-configuration"></a>Configuratie van de detectie regel voor Smart
