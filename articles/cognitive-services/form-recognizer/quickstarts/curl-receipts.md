@@ -1,32 +1,36 @@
 ---
 title: 'Snelstartgids: ontvangst gegevens ophalen met behulp van krul-Recognizer'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start gebruikt u de formulier Recognizer REST API met krul om gegevens te extra heren uit installatie kopieën van verkoop ontvangsten.
+description: In deze Quick Start gebruikt u de formulier Recognizer REST API met krul om gegevens te extra heren uit installatie kopieën van Amerikaanse verkoop kwitanties.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 07/01/2019
+ms.date: 10/03/2019
 ms.author: pafarley
-ms.openlocfilehash: c533949cf0ce69ddc5237dd893dd75e43447c4a9
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0c064f86bf417cf653f2404da2458d240e5e8211
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931586"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379368"
 ---
 # <a name="quickstart-extract-receipt-data-using-the-form-recognizer-rest-api-with-curl"></a>Snelstartgids: ontvangst gegevens ophalen met behulp van de formulier Recognizer REST API met krul
 
-In deze Quick Start gebruikt u de Azure Form Recognizer REST API met krul om relevante informatie in verkoop ontvangsten te extra heren en te identificeren.
+In deze Quick Start gebruikt u de Azure Form Recognizer REST API met krul om relevante informatie in Amerikaanse verkoop ontvangsten te extra heren en te identificeren.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
+> [!IMPORTANT]
+> Deze Snelstartgids maakt gebruik van de API voor formulier herkenning v 2.0. Als uw abonnement zich niet in de `West US 2` of `West Europe` regio bevindt, moet u de v 1.0 API gebruiken. Volg in plaats daarvan de [Snelstartgids voor v 1.0](./curl-train-extract-v1.md) .
+
 ## <a name="prerequisites"></a>Vereisten
+
 Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 - Toegang tot de preview-versie van beperkte toegang van de formulier herkenning. Als u toegang wilt krijgen tot de preview, vult u het formulier voor de [toegangs aanvraag voor de formulier herkenning](https://aka.ms/FormRecognizerRequestAccess) in en verzendt u dit.
 - [krul](https://curl.haxx.se/windows/) geïnstalleerd.
-- Een URL voor een afbeelding van een ontvangst. U kunt een [voorbeeld afbeelding](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-receipt.png?raw=true) gebruiken voor deze Quick Start.
+- Een URL voor een afbeelding van een ontvangst. U kunt een [voorbeeld afbeelding](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/contoso-allinone.jpg?raw=true) gebruiken voor deze Quick Start.
 
 ## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
 
@@ -34,149 +38,366 @@ Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 
 ## <a name="analyze-a-receipt"></a>Een kwitantie analyseren
 
-Als u wilt beginnen met het analyseren van een ontvangst, roept u de API voor het **analyseren** van de ontvangst aan met behulp van de onderstaande krul opdracht. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
+Als u wilt beginnen met het analyseren van een ontvangst, roept u de API voor het **[analyseren](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)** van de ontvangst aan met behulp van de onderstaande krul opdracht. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
 
 1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met het formulier Recognizer-abonnement.
 1. Vervang `<your receipt URL>` door het URL-adres van een kwitantie-installatie kopie.
 1. Vervang `<subscription key>` door de abonnements sleutel die u uit de vorige stap hebt gekopieerd.
 
 ```bash
-curl -i -X POST "https://<Endpoint>/formrecognizer/v1.0-preview/prebuilt/receipt/asyncBatchAnalyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"url\": \"<your receipt URL>\"}"
+curl -i -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/prebuilt/receipt/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{ \"url\": \"<your receipt URL>\"}"
 ```
 
-U ontvangt een `202 (Success)` antwoord met een **bewerkings locatie** header. De waarde van deze header bevat een bewerkings-ID die u kunt gebruiken om de status van de bewerking op te vragen en de resultaten op te halen. In het volgende voor beeld is de teken reeks na `operations/` de bewerkings-ID.
+U ontvangt een `202 (Success)` antwoord met de kopregel ' **bewerkings locatie** '. De waarde van deze header bevat een bewerkings-ID die u kunt gebruiken om de status van de asynchrone bewerking op te vragen en de resultaten op te halen. In het volgende voor beeld is de teken reeks na `operations/` de bewerkings-ID.
 
 ```console
-https://cognitiveservice/formrecognizer/v1.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.0-preview/prebuilt/receipt/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```
 
 ## <a name="get-the-receipt-results"></a>De ontvangst resultaten ophalen
 
-Nadat u de trans actie voor het analyseren van de **kwitantie** hebt aangeroepen, roept u de **Get-ontvangst resultaat** -API op om de status van de bewerking en de geëxtraheerde gegevens op te halen.
+Nadat u de API voor het analyseren van de **kwitantie** hebt aangeroepen, roept u de API **[analyse van ontvangst resultaten ophalen](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeReceiptResult)** om de status van de bewerking en de geëxtraheerde gegevens op te halen. Voordat u de opdracht uitvoert, moet u de volgende wijzigingen aanbrengen:
 
+1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen met de abonnements sleutel van uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
 1. Vervang `<operationId>` door de bewerkings-ID uit de vorige stap.
 1. Vervang `<subscription key>` door uw abonnementssleutel.
 
 ```bash
-curl -X GET "https://<Endpoint>/formrecognizer/v1.0-preview/prebuilt/receipt/operations/<operationId>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+curl -X GET "https://<Endpoint>/formrecognizer/v2.0-preview/prebuilt/receipt/analyzeResults/<operationId>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
 ```
 
 ### <a name="examine-the-response"></a>Het antwoord bekijken
 
-U ontvangt een `200 (Success)` antwoord met JSON-uitvoer. Het eerste veld, `"status"`, geeft de status van de bewerking aan. Als de bewerking is voltooid, bevat het veld `"recognitionResults"` elke regel tekst die is geëxtraheerd uit de ontvangst, en het veld `"understandingResults"` bevat sleutel/waarde-informatie voor de meest relevante onderdelen van de ontvangst. Als de bewerking niet is voltooid, wordt de waarde van `"status"` `"Running"` of `"NotStarted"`. u moet de API opnieuw aanroepen, hetzij hand matig of via een script. We raden u aan een interval van één seconde of meer tussen aanroepen aan te bevelen.
+U ontvangt een `200 (Success)` antwoord met JSON-uitvoer. Het eerste veld, `"status"`, geeft de status van de bewerking aan. Als de bewerking is voltooid, bevat het veld `"recognitionResults"` elke regel tekst die is geëxtraheerd uit de ontvangst, en het veld `"understandingResults"` bevat sleutel/waarde-informatie voor de meest relevante onderdelen van de ontvangst. Als de bewerking niet is voltooid, wordt de waarde van `"status"` `"running"` of `"notStarted"`. u moet de API opnieuw aanroepen, hetzij hand matig of via een script. We raden u aan een interval van één seconde of meer tussen aanroepen aan te bevelen.
 
 Bekijk de volgende ontvangstbewijs afbeelding en de bijbehorende JSON-uitvoer. De uitvoer is inge kort voor de Lees baarheid.
 
-![Een ontvangst bewijs van Contoso Store](../media/contoso-receipt.png)
+![Een ontvangst bewijs van Contoso Store](../media/contoso-allinone.jpg)
+
+Het knoop punt `"recognitionResults"` bevat alle herkende tekst. De tekst wordt geordend op pagina, vervolgens per regel en vervolgens op afzonderlijke woorden. Het knoop punt `"understandingResults"` bevat de ontvangstbewijs waarden die het model heeft gedetecteerd. Hier vindt u nuttige sleutel/waarde-paren zoals de belasting, het totaal, het bedrijfs adres, enzovoort.
 
 ```json
-{
-  "status": "Succeeded",
-  "recognitionResults": [{
-    "page": 1,
-    "clockwiseOrientation": 0.36,
-    "width": 1688,
-    "height": 3000,
-    "unit": "pixel",
-    "lines": [{
-      "boundingBox": [616, 291, 1050, 278, 1053, 384, 620, 397],
-      "text": "Contoso",
-      "words": [{
-        "boundingBox": [619, 292, 1051, 284, 1052, 382, 620, 398],
-        "text": "Contoso"
-      }]
-    }, {
-      "boundingBox": [322, 588, 501, 600, 497, 655, 318, 643],
-      "text": "Contoso",
-      "words": [{
-        "boundingBox": [330, 590, 501, 602, 499, 654, 326, 644],
-        "text": "Contoso"
-      }]
-    },
-    ...
-    ]
-  }],
-  "understandingResults": [{
-    "pages": [1],
-    "fields": {
-      "Subtotal": {
-        "valueType": "numberValue",
-        "value": 1098.99,
-        "text": "1098.99",
-        "elements": [{
-          "$ref": "#/recognitionResults/0/lines/14/words/1"
-        }]
-      },
-      "Total": {
-        "valueType": "numberValue",
-        "value": 1203.39,
-        "text": "1203.39",
-        "elements": [{
-          "$ref": "#/recognitionResults/0/lines/18/words/1"
-        }]
-      },
-      "Tax": {
-        "valueType": "numberValue",
-        "value": 104.4,
-        "text": "$104.40",
-        "elements": [{
-          "$ref": "#/recognitionResults/0/lines/16/words/0"
-        }, {
-          "$ref": "#/recognitionResults/0/lines/16/words/1"
-        }]
-      },
-      "MerchantAddress": {
-        "valueType": "stringValue",
-        "value": "123 Main Street Redmond, WA 98052",
-        "text": "123 Main Street Redmond, WA 98052",
-        "elements": [{
-          "$ref": "#/recognitionResults/0/lines/2/words/0"
-        }, {
-          "$ref": "#/recognitionResults/0/lines/2/words/1"
-        }, {
-          "$ref": "#/recognitionResults/0/lines/2/words/2"
-        }, {
-          "$ref": "#/recognitionResults/0/lines/3/words/0"
-        }, {
-          "$ref": "#/recognitionResults/0/lines/3/words/1"
-        }, {
-          "$ref": "#/recognitionResults/0/lines/3/words/2"
-        }]
-      },
-      "MerchantName": {
-        "valueType": "stringValue",
-        "value": "Contoso",
-        "text": "Contoso",
-        "elements": [{
-          "$ref": "#/recognitionResults/0/lines/1/words/0"
-        }]
-      },
-      "MerchantPhoneNumber": {
-        "valueType": "stringValue",
-        "value": null,
-        "text": "123-456-7890",
-        "elements": [{
-          "$ref": "#/recognitionResults/0/lines/4/words/0"
-        }]
-      },
-      "TransactionDate": {
-        "valueType": "stringValue",
-        "value": "2019-06-10",
-        "text": "6/10/2019",
-        "elements": [{
-          "$ref": "#/recognitionResults/0/lines/5/words/0"
-        }]
-      },
-      "TransactionTime": {
-        "valueType": "stringValue",
-        "value": "13:59:00",
-        "text": "13:59",
-        "elements": [{
-          "$ref": "#/recognitionResults/0/lines/5/words/1"
-        }]
+{ 
+  "status":"succeeded",
+  "createdDateTime":"2019-12-17T04:11:24Z",
+  "lastUpdatedDateTime":"2019-12-17T04:11:32Z",
+  "analyzeResult":{ 
+    "version":"2.0.0",
+    "readResults":[ 
+      { 
+        "page":1,
+        "angle":0.6893,
+        "width":1688,
+        "height":3000,
+        "unit":"pixel",
+        "language":"en",
+        "lines":[ 
+          { 
+            "text":"Contoso",
+            "boundingBox":[ 
+              635,
+              510,
+              1086,
+              461,
+              1098,
+              558,
+              643,
+              604
+            ],
+            "words":[ 
+              { 
+                "text":"Contoso",
+                "boundingBox":[ 
+                  639,
+                  510,
+                  1087,
+                  461,
+                  1098,
+                  551,
+                  646,
+                  604
+                ],
+                "confidence":0.955
+              }
+            ]
+          },
+          ...
+        ]
       }
-    }
-  }]
+    ],
+    "documentResults":[ 
+      { 
+        "docType":"prebuilt:receipt",
+        "pageRange":[ 
+          1,
+          1
+        ],
+        "fields":{ 
+          "ReceiptType":{ 
+            "type":"string",
+            "valueString":"Itemized",
+            "confidence":0.692
+          },
+          "MerchantName":{ 
+            "type":"string",
+            "valueString":"Contoso Contoso",
+            "text":"Contoso Contoso",
+            "boundingBox":[ 
+              378.2,
+              292.4,
+              1117.7,
+              468.3,
+              1035.7,
+              812.7,
+              296.3,
+              636.8
+            ],
+            "page":1,
+            "confidence":0.613,
+            "elements":[ 
+              "#/readResults/0/lines/0/words/0",
+              "#/readResults/0/lines/1/words/0"
+            ]
+          },
+          "MerchantAddress":{ 
+            "type":"string",
+            "valueString":"123 Main Street Redmond, WA 98052",
+            "text":"123 Main Street Redmond, WA 98052",
+            "boundingBox":[ 
+              302,
+              675.8,
+              848.1,
+              793.7,
+              809.9,
+              970.4,
+              263.9,
+              852.5
+            ],
+            "page":1,
+            "confidence":0.99,
+            "elements":[ 
+              "#/readResults/0/lines/2/words/0",
+              "#/readResults/0/lines/2/words/1",
+              "#/readResults/0/lines/2/words/2",
+              "#/readResults/0/lines/3/words/0",
+              "#/readResults/0/lines/3/words/1",
+              "#/readResults/0/lines/3/words/2"
+            ]
+          },
+          "MerchantPhoneNumber":{ 
+            "type":"phoneNumber",
+            "valuePhoneNumber":"+19876543210",
+            "text":"987-654-3210",
+            "boundingBox":[ 
+              278,
+              1004,
+              656.3,
+              1054.7,
+              646.8,
+              1125.3,
+              268.5,
+              1074.7
+            ],
+            "page":1,
+            "confidence":0.99,
+            "elements":[ 
+              "#/readResults/0/lines/4/words/0"
+            ]
+          },
+          "TransactionDate":{ 
+            "type":"date",
+            "valueDate":"2019-06-10",
+            "text":"6/10/2019",
+            "boundingBox":[ 
+              265.1,
+              1228.4,
+              525,
+              1247,
+              518.9,
+              1332.1,
+              259,
+              1313.5
+            ],
+            "page":1,
+            "confidence":0.99,
+            "elements":[ 
+              "#/readResults/0/lines/5/words/0"
+            ]
+          },
+          "TransactionTime":{ 
+            "type":"time",
+            "valueTime":"13:59:00",
+            "text":"13:59",
+            "boundingBox":[ 
+              541,
+              1248,
+              677.3,
+              1261.5,
+              668.9,
+              1346.5,
+              532.6,
+              1333
+            ],
+            "page":1,
+            "confidence":0.977,
+            "elements":[ 
+              "#/readResults/0/lines/5/words/1"
+            ]
+          },
+          "Items":{ 
+            "type":"array",
+            "valueArray":[ 
+              { 
+                "type":"object",
+                "valueObject":{ 
+                  "Quantity":{ 
+                    "type":"number",
+                    "text":"1",
+                    "boundingBox":[ 
+                      245.1,
+                      1581.5,
+                      300.9,
+                      1585.1,
+                      295,
+                      1676,
+                      239.2,
+                      1672.4
+                    ],
+                    "page":1,
+                    "confidence":0.92,
+                    "elements":[ 
+                      "#/readResults/0/lines/7/words/0"
+                    ]
+                  },
+                  "Name":{ 
+                    "type":"string",
+                    "valueString":"Cappuccino",
+                    "text":"Cappuccino",
+                    "boundingBox":[ 
+                      322,
+                      1586,
+                      654.2,
+                      1601.1,
+                      650,
+                      1693,
+                      317.8,
+                      1678
+                    ],
+                    "page":1,
+                    "confidence":0.923,
+                    "elements":[ 
+                      "#/readResults/0/lines/7/words/1"
+                    ]
+                  },
+                  "TotalPrice":{ 
+                    "type":"number",
+                    "valueNumber":2.2,
+                    "text":"$2.20",
+                    "boundingBox":[ 
+                      1107.7,
+                      1584,
+                      1263,
+                      1574,
+                      1268.3,
+                      1656,
+                      1113,
+                      1666
+                    ],
+                    "page":1,
+                    "confidence":0.918,
+                    "elements":[ 
+                      "#/readResults/0/lines/8/words/0"
+                    ]
+                  }
+                }
+              },
+              ...
+            ]
+          },
+          "Subtotal":{ 
+            "type":"number",
+            "valueNumber":11.7,
+            "text":"11.70",
+            "boundingBox":[ 
+              1146,
+              2221,
+              1297.3,
+              2223,
+              1296,
+              2319,
+              1144.7,
+              2317
+            ],
+            "page":1,
+            "confidence":0.955,
+            "elements":[ 
+              "#/readResults/0/lines/13/words/1"
+            ]
+          },
+          "Tax":{ 
+            "type":"number",
+            "valueNumber":1.17,
+            "text":"1.17",
+            "boundingBox":[ 
+              1190,
+              2359,
+              1304,
+              2359,
+              1304,
+              2456,
+              1190,
+              2456
+            ],
+            "page":1,
+            "confidence":0.979,
+            "elements":[ 
+              "#/readResults/0/lines/15/words/1"
+            ]
+          },
+          "Tip":{ 
+            "type":"number",
+            "valueNumber":1.63,
+            "text":"1.63",
+            "boundingBox":[ 
+              1094,
+              2479,
+              1267.7,
+              2485,
+              1264,
+              2591,
+              1090.3,
+              2585
+            ],
+            "page":1,
+            "confidence":0.941,
+            "elements":[ 
+              "#/readResults/0/lines/17/words/1"
+            ]
+          },
+          "Total":{ 
+            "type":"number",
+            "valueNumber":14.5,
+            "text":"$14.50",
+            "boundingBox":[ 
+              1034.2,
+              2617,
+              1387.5,
+              2638.2,
+              1380,
+              2763,
+              1026.7,
+              2741.8
+            ],
+            "page":1,
+            "confidence":0.985,
+            "elements":[ 
+              "#/readResults/0/lines/19/words/0"
+            ]
+          }
+        }
+      }
+    ]
+  }
 }
 ```
 
@@ -185,4 +406,4 @@ Bekijk de volgende ontvangstbewijs afbeelding en de bijbehorende JSON-uitvoer. D
 In deze Quick Start hebt u de formulier Recognizer REST API met krul gebruikt om de inhoud van een verkoop ontvangst te extra heren. Raadpleeg vervolgens de referentie documentatie om de API voor het formulier Recognizer te verkennen.
 
 > [!div class="nextstepaction"]
-> [Documentatie over REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api/operations/AnalyzeReceipt)
+> [Documentatie over REST API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeReceiptAsync)

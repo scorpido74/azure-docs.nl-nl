@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell script-Azure Cosmos DB lijst en Get-bewerkingen voor MongoDB-API
+title: Power shell-script voor het weer geven en ophalen van bewerkingen in de API van Azure Cosmos DB voor MongoDB
 description: Azure PowerShell script-Azure Cosmos DB lijst en Get-bewerkingen voor MongoDB-API
 author: markjbrown
 ms.service: cosmos-db
@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: sample
 ms.date: 05/18/2019
 ms.author: mjbrown
-ms.openlocfilehash: 47d2f6a14fadfa75e5db28eb44b7ca3410e6503c
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 4b5934e82c14f50ef1884a6c5618f4f98d663e1f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71178881"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441418"
 ---
 # <a name="list-and-get-databases-and-graphs-for-azure-cosmos-db---mongodb-api"></a>Data bases en grafieken voor Azure Cosmos DB-MongoDB-API weer geven en ophalen
 
@@ -34,7 +34,7 @@ Remove-AzResourceGroup -ResourceGroupName "myResourceGroup"
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

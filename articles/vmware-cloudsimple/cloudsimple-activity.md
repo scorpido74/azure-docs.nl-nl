@@ -1,5 +1,6 @@
 ---
-title: Azure VMware-oplossing door CloudSimple-CloudSimple-activiteiten beheer
+title: Beheer van CloudSimple-activiteiten
+titleSuffix: Azure VMware Solution by CloudSimple
 description: Hierin worden de activiteiten concepten van de VMware-oplossing beschreven door CloudSimple
 author: sharaths-cs
 ms.author: dikamath
@@ -8,18 +9,18 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ad7905244ca190badf73c9a812a8f72282cbcdf3
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 985fcc0aa99723fde5e0c11babe3777c31cbd4c3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563189"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430262"
 ---
 # <a name="activity-management-overview"></a>Overzicht activiteiten beheer
 
 CloudSimple houdt alle activiteiten bij die van invloed kunnen zijn op de werking van uw Privécloud. Activiteiten zijn waarschuwingen, gebeurtenissen, taken en controle activiteiten. Op de [activiteiten pagina's](monitor-activity.md) wordt een overzicht gegeven van alle huidige activiteiten en kunt u inzoomen op aanvullende informatie.
 
-## <a name="events"></a>Events
+## <a name="events"></a>Evenements
 
 Gebeurtenissen volgen gebruikers-en systeem activiteiten in de CloudSimple-Portal. Gebeurtenissen tonen de activiteit die is gekoppeld aan een specifieke resource en de ernst van de impact.  U kunt de gebeurtenissen in de CloudSimple-Portal bekijken.
 

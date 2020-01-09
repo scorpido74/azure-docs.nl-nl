@@ -1,5 +1,6 @@
 ---
-title: Problemen met de verbinding en het netwerk voor Microsoft Azure Cloud Services Veelgestelde vragen | Microsoft Docs
+title: Verbindings-en netwerkproblemen
+titleSuffix: Azure Cloud Services
 description: In dit artikel vindt u de veelgestelde vragen over connectiviteit en netwerken voor Microsoft Azure Cloud Services.
 services: cloud-services
 documentationcenter: ''
@@ -14,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: c6d470b9c14f53558d09e6876701cb25ddc15183
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: e41c2424e970c9493d612da99b64b8c2d649002f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71154877"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386745"
 ---
-# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemen met de verbinding en het netwerk voor Azure Cloud Services: Veelgestelde vragen (FAQ)
+# <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problemen met de verbinding en het netwerk voor Azure Cloud Services: veelgestelde vragen (FAQ)
 
 In dit artikel vindt u veelgestelde vragen over verbindings-en netwerk problemen voor [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Zie de [pagina Cloud Services VM-grootte](cloud-services-sizes-specs.md)voor informatie over de grootte.
 
@@ -64,14 +65,14 @@ Het gebruikte distributie algoritme is een hash van 5-tuple (bron-IP, bron poort
 
 ## <a name="how-can-i-redirect-incoming-traffic-to-the-default-url-of-my-cloud-service-to-a-custom-url"></a>Hoe kan ik binnenkomend verkeer naar de standaard-URL van mijn Cloud service omleiden naar een aangepaste URL?
 
-De module voor het herschrijven van url's van IIS kan worden gebruikt om verkeer dat wordt omgeleid naar de standaard-URL voor de Cloud \*service (bijvoorbeeld. cloudapp.net), om te leiden naar een aangepaste naam/URL. Omdat de module voor het herschrijven van URL'S standaard is ingeschakeld op webrollen en de bijbehorende regels worden geconfigureerd in de web. config van de toepassing, is deze altijd beschikbaar op de virtuele machine, ongeacht het opnieuw opstarten of terugzetten van de installatie kopieën. Zie voor meer informatie:
+De module voor het herschrijven van URL'S van IIS kan worden gebruikt om verkeer dat wordt omgeleid naar de standaard-URL voor de Cloud service (bijvoorbeeld \*. cloudapp.net), om te leiden naar een aangepaste naam/URL. Omdat de module voor het herschrijven van URL'S standaard is ingeschakeld op webrollen en de bijbehorende regels worden geconfigureerd in de web. config van de toepassing, is deze altijd beschikbaar op de virtuele machine, ongeacht het opnieuw opstarten of terugzetten van de installatie kopieën. Zie voor meer informatie:
 
 - [Herschrijf regels maken voor de module voor het herschrijven van URL'S](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
 - [Een standaard koppeling verwijderen](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
 
 ## <a name="how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Hoe kan ik binnenkomend verkeer naar de standaard-URL van mijn Cloud service blok keren/uitschakelen?
 
-U kunt voor komen dat binnenkomend verkeer naar de standaard-URL/naam van uw Cloud \*service (bijvoorbeeld. cloudapp.net). Stel de host-header in op een aangepaste DNS-naam (bijvoorbeeld\.www-MyCloudService.com) onder configuratie van site binding in het bestand met de Cloud service definition (*. csdef), zoals aangegeven:
+U kunt voor komen dat binnenkomend verkeer naar de standaard-URL/naam van uw Cloud service (bijvoorbeeld \*. cloudapp.net). Stel de host-header in op een aangepaste DNS-naam (bijvoorbeeld www\.MyCloudService.com) onder site bindings configuratie in het bestand met de Cloud service definition (*. csdef), zoals aangegeven:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -109,7 +110,7 @@ Dit bestand bevat de IP-adresbereiken (met inbegrip van compute-, SQL-en opslag 
 
 ## <a name="how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services"></a>Hoe kan ik Azure Resource Manager virtuele netwerken met Cloud Services gebruiken?
 
-Cloud Services kunnen niet in Azure Resource Manager virtuele netwerken worden geplaatst. Virtuele netwerken van Resource Manager en klassieke implementatie kunnen worden verbonden via peering. Zie peering van [virtuele netwerken](../virtual-network/virtual-network-peering-overview.md)voor meer informatie.
+Cloud Services kunnen niet in Azure Resource Manager virtuele netwerken worden geplaatst. Virtuele netwerken van Resource Manager en klassieke implementatie kunnen worden verbonden via peering. Zie [peering van virtuele netwerken](../virtual-network/virtual-network-peering-overview.md)voor meer informatie.
 
 
 ## <a name="how-can-i-get-the-list-of-public-ips-used-by-my-cloud-services"></a>Hoe krijg ik de lijst met open bare IP-adressen die worden gebruikt door mijn Cloud Services?

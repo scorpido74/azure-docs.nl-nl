@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 12/05/2019
-ms.openlocfilehash: 108d251ec6aadb4881f500edfa3483f137a09a68
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: e8625b1d81db5b3ec90a177f426d05bd84bd10dd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900439"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426959"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Snelstartgids: Azure-Sentinel op de trein
 
@@ -41,12 +41,14 @@ Nadat u verbinding hebt gemaakt met uw gegevens bronnen, kiest u uit een galerie
  
 ## Azure Sentinel inschakelen<a name="enable"></a>
 
-1. Ga naar het Azure Portal.
-2. Zorg ervoor dat het abonnement waarin Azure Sentinel is gemaakt, is geselecteerd. 
-3. Zoeken naar de Azure-Sentinel. 
-   ![Zoek](./media/quickstart-onboard/search-product.png)
+1. Meld u aan bij Azure Portal. Zorg ervoor dat het abonnement waarin Azure Sentinel is gemaakt, is geselecteerd.
 
-1. Klik op **+ toevoegen**.
+1. Zoek en selecteer **Azure Sentinel**.
+
+   ![zoeken](./media/quickstart-onboard/search-product.png)
+
+1. Selecteer **Toevoegen**.
+
 1. Selecteer de werk ruimte die u wilt gebruiken of maak een nieuwe. U kunt Azure Sentinel uitvoeren op meer dan één werk ruimte, maar de gegevens worden geïsoleerd voor één werk ruimte.
 
    ![zoeken](./media/quickstart-onboard/choose-workspace.png)
@@ -55,7 +57,7 @@ Nadat u verbinding hebt gemaakt met uw gegevens bronnen, kiest u uit een galerie
    > - Standaardwerk ruimten die zijn gemaakt door Azure Security Center worden niet weer gegeven in de lijst. u kunt geen Azure-Sentinel installeren.
    > - Azure Sentinel kan worden uitgevoerd op werk ruimten in een [Ga-gebied van log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) , met uitzonde ring van China, duitsland en Azure Government regio's. Gegevens die worden gegenereerd door Azure Sentinel (zoals incidenten, blad wijzers en waarschuwings regels, die mogelijk bepaalde klant gegevens bron van deze werk ruimten bevatten), worden opgeslagen in Europa-west (voor werk ruimten in Europa) of VS-Oost (voor alle Amerikaanse werk ruimten, evenals elke andere regio behalve Europa).
 
-6. Klik op **Azure-Sentinel toevoegen**.
+1. Selecteer **Azure-Sentinel toevoegen**.
   
 
 ## <a name="connect-data-sources"></a>Verbinding maken met gegevensbronnen

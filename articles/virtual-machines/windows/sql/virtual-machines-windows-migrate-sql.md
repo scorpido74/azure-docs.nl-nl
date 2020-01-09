@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 5a8b66c181505a617b002d1a45675d4677588b1c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c8314b04c05e2ecba2715b807171b5c1a2fa988a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102200"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646860"
 ---
-# <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>Migreer een SQL Server-database naar een SQL Server in een virtuele machine van Azure
+# <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>Een SQL Server-database migreren naar SQL Server in een Azure VM
 
 Er zijn een aantal methoden voor het migreren van een on-premises SQL Server-gebruikers database naar SQL Server in een Azure-VM. In dit artikel worden verschillende methoden beschreven en wordt de beste methode aanbevolen voor verschillende scenario's.
 
@@ -41,7 +41,7 @@ De primaire migratie methoden zijn:
 * On-premises fysieke machine converteren naar Hyper-V VHD, uploaden naar Azure Blob Storage en vervolgens implementeren als nieuwe virtuele machine met behulp van geüploade VHD
 * Harde schijf verzenden met Windows import/export-service
 * Als u on-premises een implementatie van AlwaysOn-beschikbaarheids groepen hebt, gebruikt u de [wizard Azure replica toevoegen](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) om een replica in azure te maken en vervolgens failover uit te wijzen naar de Azure data base-instantie
-* SQL Server transactionele [replicatie](https://msdn.microsoft.com/library/ms151176.aspx) gebruiken om het Azure SQL Server-exemplaar te configureren als een abonnee en vervolgens de replicatie uit te scha kelen, gebruikers naar het Azure data base-exemplaar te wijzen
+* SQL Server [transactionele replicatie](https://msdn.microsoft.com/library/ms151176.aspx) gebruiken om het Azure SQL Server-exemplaar te configureren als een abonnee en vervolgens de replicatie uit te scha kelen, gebruikers naar het Azure data base-exemplaar te wijzen
 
 > [!TIP]
 > U kunt ook dezelfde technieken gebruiken om data bases te verplaatsen tussen SQL Server Vm's in Azure. Er is bijvoorbeeld geen ondersteunde manier om een upgrade uit te kunnen zetten van een SQL Server galerie-image-VM van de ene versie naar een andere. In dit geval moet u een nieuwe SQL Server VM maken met de nieuwe versie/editie en vervolgens een van de migratie technieken in dit artikel gebruiken om uw data bases te verplaatsen. 
@@ -60,15 +60,15 @@ De volgende tabel bevat een overzicht van de primaire migratie methoden en komt 
 
 | Methode | Versie van de bron database | Versie van de doel database | Beperking van de back-upgrootte van de bron database | Opmerkingen |
 | --- | --- | --- | --- | --- |
-| [On-premises back-ups uitvoeren met compressie en het back-upbestand hand matig kopiëren naar de virtuele machine van Azure](#backup-and-restore) |SQL Server 2005 of hoger |SQL Server 2005 of hoger |[Opslag limiet voor Azure VM](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) | Dit is een zeer eenvoudige en goed geteste techniek voor het verplaatsen van data bases op verschillende computers. |
+| [On-premises back-ups uitvoeren met compressie en het back-upbestand hand matig kopiëren naar de virtuele machine van Azure](#backup-and-restore) |SQL Server 2005 of hoger |SQL Server 2005 of hoger |[Opslag limiet voor Azure VM](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) | Dit is een zeer eenvoudige en goed geteste techniek voor het verplaatsen van data bases op verschillende computers. |
 | [Maak een back-up naar de URL en herstel de virtuele Azure-machine vanuit de URL](#backup-to-url-and-restore) |SQL Server 2012 SP1 CU2 of hoger |SQL Server 2012 SP1 CU2 of hoger |< 12,8 TB voor SQL Server 2016, anders < 1 TB | Deze methode is een andere manier om het back-upbestand naar de virtuele machine te verplaatsen met behulp van Azure Storage. |
-| [Ontkoppel en kopieer vervolgens de gegevens-en logboek bestanden naar Azure Blob-opslag en koppel deze vervolgens aan SQL Server in azure virtual machine van URL](#detach-and-attach-from-url) |SQL Server 2005 of hoger |SQL Server 2014 of hoger |[Opslag limiet voor Azure VM](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Gebruik deze methode wanneer u van plan bent om [deze bestanden op te slaan met behulp van de Azure Blob Storage-service](https://msdn.microsoft.com/library/dn385720.aspx) en deze te koppelen aan SQL Server die worden uitgevoerd in een Azure-VM, met name met zeer grote data bases |
-| [De on-premises machine converteren naar Hyper-V-Vhd's, uploaden naar Azure Blob Storage en vervolgens een nieuwe virtuele machine implementeren met geüploade VHD](#convert-to-vm-and-upload-to-url-and-deploy-as-new-vm) |SQL Server 2005 of hoger |SQL Server 2005 of hoger |[Opslag limiet voor Azure VM](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Gebruiken wanneer u [uw eigen SQL Server-licentie](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)meebrengt bij het migreren van een Data Base die u uitvoert op een oudere versie van SQL Server, of bij het migreren van systeem-en gebruikers databases samen als onderdeel van de migratie van data base afhankelijk van andere gebruikers databases en/of systeem databases. |
-| [Harde schijf verzenden met Windows import/export-service](#ship-hard-drive) |SQL Server 2005 of hoger |SQL Server 2005 of hoger |[Opslag limiet voor Azure VM](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Gebruik de [Windows import/export-service](../../../storage/common/storage-import-export-service.md) als de methode voor hand matig kopiëren te langzaam is, zoals bij zeer grote data bases |
-| [De wizard Azure replica toevoegen gebruiken](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) |SQL Server 2012 of hoger |SQL Server 2012 of hoger |[Opslag limiet voor Azure VM](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Minimaliseert downtime, gebruik wanneer u een on-premises implementatie hebt |
-| [SQL Server transactionele replicatie gebruiken](https://msdn.microsoft.com/library/ms151176.aspx) |SQL Server 2005 of hoger |SQL Server 2005 of hoger |[Opslag limiet voor Azure VM](https://azure.microsoft.com/documentation/articles/azure-subscription-service-limits/) |Gebruiken wanneer u de downtime wilt minimaliseren en niet over een on-premises implementatie beschikt |
+| [Ontkoppel en kopieer vervolgens de gegevens-en logboek bestanden naar Azure Blob-opslag en koppel deze vervolgens aan SQL Server in azure virtual machine van URL](#detach-and-attach-from-url) |SQL Server 2005 of hoger |SQL Server 2014 of hoger |[Opslag limiet voor Azure VM](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |Gebruik deze methode wanneer u van plan bent om [deze bestanden op te slaan met behulp van de Azure Blob Storage-service](https://msdn.microsoft.com/library/dn385720.aspx) en deze te koppelen aan SQL Server die worden uitgevoerd in een Azure-VM, met name met zeer grote data bases |
+| [De on-premises machine converteren naar Hyper-V-Vhd's, uploaden naar Azure Blob Storage en vervolgens een nieuwe virtuele machine implementeren met geüploade VHD](#convert-to-vm-and-upload-to-url-and-deploy-as-new-vm) |SQL Server 2005 of hoger |SQL Server 2005 of hoger |[Opslag limiet voor Azure VM](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |Gebruiken wanneer u [uw eigen SQL Server-licentie](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)meebrengt bij het migreren van een Data Base die u uitvoert op een oudere versie van SQL Server, of bij het migreren van systeem-en gebruikers databases samen als onderdeel van de migratie van data base afhankelijk van andere gebruikers databases en/of systeem databases. |
+| [Harde schijf verzenden met Windows import/export-service](#ship-hard-drive) |SQL Server 2005 of hoger |SQL Server 2005 of hoger |[Opslag limiet voor Azure VM](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |Gebruik de [Windows import/export-service](../../../storage/common/storage-import-export-service.md) als de methode voor hand matig kopiëren te langzaam is, zoals bij zeer grote data bases |
+| [De wizard Azure replica toevoegen gebruiken](../sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) |SQL Server 2012 of hoger |SQL Server 2012 of hoger |[Opslag limiet voor Azure VM](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |Minimaliseert downtime, gebruik wanneer u een on-premises implementatie hebt |
+| [SQL Server transactionele replicatie gebruiken](https://msdn.microsoft.com/library/ms151176.aspx) |SQL Server 2005 of hoger |SQL Server 2005 of hoger |[Opslag limiet voor Azure VM](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |Gebruiken wanneer u de downtime wilt minimaliseren en niet over een on-premises implementatie beschikt |
 
-## <a name="backup-and-restore"></a>Back-ups en herstellen
+## <a name="backup-and-restore"></a>Back-up maken en terugzetten
 Maak een back-up van uw data base met compressie, kopieer de back-up naar de virtuele machine en herstel de data base. Als uw back-upbestand groter is dan 1 TB, moet u dit verwijderen omdat de maximale grootte van een VM-schijf 1 TB is. Gebruik de volgende algemene stappen voor het migreren van een gebruikers database met deze hand matige methode:
 
 1. Voer een volledige back-up van de data base uit naar een on-premises locatie.

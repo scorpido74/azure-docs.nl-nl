@@ -2,17 +2,17 @@
 title: Een Cloud service bijwerken | Microsoft Docs
 description: Meer informatie over het bijwerken van Cloud Services in Azure. Meer informatie over hoe een update in een Cloud service wordt uitgevoerd om de beschik baarheid te garanderen.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: ae9d124391a1b17187ca98964874f681352498da
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.author: tagore
+ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945341"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360341"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Een Cloud service bijwerken
 
@@ -47,7 +47,7 @@ In de volgende tabel ziet u de wijzigingen die zijn toegestaan voor een service 
 
 | Wijzigingen die zijn toegestaan voor hosting, services en rollen | In-place update | Gefaseerd (VIP swap) | Verwijderen en opnieuw implementeren |
 | --- | --- | --- | --- |
-| Versie van het besturingssysteem |Ja |Ja |Ja |
+| Besturingssysteem |Ja |Ja |Ja |
 | .NET-vertrouwens niveau |Ja |Ja |Ja |
 | Grootte van virtuele machine<sup>1</sup> |Ja<sup>2</sup> |Ja |Ja |
 | Instellingen voor lokale opslag |Meer dan<sup>2</sup> |Ja |Ja |
@@ -124,17 +124,17 @@ Azure biedt flexibiliteit bij het beheer van services tijdens een update door u 
 Het terugdraaien van een update die in voortgang is, heeft de volgende gevolgen voor de implementatie:
 
 * Alle rolinstanties die nog niet zijn bijgewerkt of bijgewerkt naar de nieuwe versie, worden niet bijgewerkt of bijgewerkt, omdat deze instanties al de doel versie van de service uitvoeren.
-* Alle rolinstanties die al zijn bijgewerkt of bijgewerkt naar de nieuwe versie van het bestand met het service pakket\*(. cspkg) of het service configuratie bestand\*(. cscfg) (of beide bestanden), worden teruggezet naar de pre-upgrade versie van deze bestanden.
+* Alle rolinstanties die al zijn bijgewerkt of bijgewerkt naar de nieuwe versie van het bestand met het service pakket (\*. cspkg) of het bestand met de service configuratie (\*. cscfg) (of beide bestanden), worden teruggezet naar de pre-upgrade versie van deze bestanden.
 
 Deze functie wordt uitgevoerd met de volgende functies:
 
-* De [terugdraai update-of upgrade](/previous-versions/azure/reference/hh403977(v=azure.100)) bewerking, die kan worden aangeroepen in een configuratie-update (geactiveerd door het aanroepen van de [implementatie configuratie](/previous-versions/azure/reference/ee460809(v=azure.100))van de wijziging) of een upgrade (geactiveerd door het aanroepen van de [upgrade-implementatie](/previous-versions/azure/reference/ee460793(v=azure.100))), zolang er ten minste één exemplaar in de service die nog niet is bijgewerkt naar de nieuwe versie.
+* De [terugdraai bewerking update of upgrade](/previous-versions/azure/reference/hh403977(v=azure.100)) , die kan worden aangeroepen in een configuratie-update (geactiveerd door het aanroepen van de [implementatie configuratie](/previous-versions/azure/reference/ee460809(v=azure.100))van de wijziging) of een upgrade (geactiveerd door het aanroepen van de [upgrade-implementatie](/previous-versions/azure/reference/ee460793(v=azure.100))), zolang er ten minste één instantie in de service is die nog niet is bijgewerkt naar de nieuwe versie.
 * Het vergrendelde element en het RollbackAllowed-element, dat wordt geretourneerd als onderdeel van de antwoord tekst van de bewerking [implementatie ophalen](/previous-versions/azure/reference/ee460804(v=azure.100)) en [Eigenschappen van Cloud service ophalen](/previous-versions/azure/reference/ee460806(v=azure.100)) :
 
   1. Met het vergrendelde element kunt u detecteren wanneer een muteren-bewerking kan worden aangeroepen voor een bepaalde implementatie.
   2. Met het RollbackAllowed-element kunt u detecteren wanneer de [terugdraai update-of upgrade](/previous-versions/azure/reference/hh403977(v=azure.100)) bewerking kan worden aangeroepen voor een bepaalde implementatie.
 
-  Als u een terugdraai actie wilt uitvoeren, hoeft u niet zowel de vergrendelde als de RollbackAllowed-elementen te controleren. Het is voldoende om te bevestigen dat RollbackAllowed is ingesteld op True. Deze elementen worden alleen geretourneerd als deze methoden worden aangeroepen met behulp van de aanvraag header ingesteld op x-MS-version: 2011-10-01 ' of een latere versie. Zie [Service Management versie beheer](/previous-versions/azure/gg592580(v=azure.100))voor meer informatie over het versie gebruik van headers.
+  Als u een terugdraai actie wilt uitvoeren, hoeft u niet zowel de vergrendelde als de RollbackAllowed-elementen te controleren. Het is voldoende om te bevestigen dat RollbackAllowed is ingesteld op True. Deze elementen worden alleen geretourneerd als deze methoden worden aangeroepen met behulp van de aanvraag header ingesteld op x-MS-version: 2011-10-01 of een latere versie. Zie [Service Management versie beheer](/previous-versions/azure/gg592580(v=azure.100))voor meer informatie over het versie gebruik van headers.
 
 Er zijn situaties waarin het terugdraaien van een update of upgrade niet wordt ondersteund. Dit zijn de volgende:
 
@@ -142,9 +142,9 @@ Er zijn situaties waarin het terugdraaien van een update of upgrade niet wordt o
 * Quotum beperkingen: als de update een bewerking voor het omlaag schalen was, hebt u mogelijk niet langer voldoende reken quotum om de terugdraai bewerking te volt ooien. Aan elk Azure-abonnement is een quotum gekoppeld waarmee het maximum aantal kernen wordt opgegeven dat kan worden gebruikt door alle gehoste services die deel uitmaken van het abonnement. Als bij het terugdraaien van een bepaalde update het quotum wordt overschreden, wordt het terugdraaien niet ingeschakeld.
 * Race condition: als de eerste update is voltooid, is een terugdraai bewerking niet mogelijk.
 
-Een voor beeld van wanneer het terugdraaien van een update handig is, is als u de [upgrade-implementatie](/previous-versions/azure/reference/ee460793(v=azure.100)) bewerking in hand matige modus gebruikt om de snelheid te bepalen waarmee een primaire in-place upgrade naar uw door Azure gehoste service wordt uitgevoerd.
+Een voor beeld van wanneer het terugdraaien van een update handig is, is als u de [implementatie](/previous-versions/azure/reference/ee460793(v=azure.100)) bewerking voor bijwerken in de hand matige modus gebruikt om de snelheid te bepalen waarmee een primaire in-place upgrade aan uw door Azure gehoste service wordt uitgerold.
 
-Tijdens de implementatie van de upgrade roept u de [upgrade-implementatie](/previous-versions/azure/reference/ee460793(v=azure.100)) aan in de hand matige modus en begint u met het uitvoeren van upgrade domeinen. Als u op een bepaald moment de upgrade bewaakt, noteert u sommige rolinstanties in de eerste upgrade-domeinen die u onderzoekt niet meer reageert, kunt u de [terugdraai update of upgrade](/previous-versions/azure/reference/hh403977(v=azure.100)) -bewerking aanroepen voor de implementatie, waardoor het ongewijzigd blijft. exemplaren die nog niet zijn bijgewerkt en terugdraaiden instanties die zijn bijgewerkt naar het vorige service pakket en de configuratie.
+Tijdens de implementatie van de upgrade roept u de [upgrade-implementatie](/previous-versions/azure/reference/ee460793(v=azure.100)) aan in de hand matige modus en begint u met het uitvoeren van upgrade domeinen. Als u op een bepaald moment de upgrade bewaakt, noteert u sommige rolinstanties in de eerste upgrade-domeinen die u onderzoekt niet meer reageert, kunt u de [terugdraai update-of upgrade](/previous-versions/azure/reference/hh403977(v=azure.100)) bewerking aanroepen voor de implementatie, waardoor de instanties die nog niet zijn bijgewerkt en terugdraaien van instanties die zijn bijgewerkt naar het vorige service pakket en de configuratie, ongewijzigd blijven.
 
 <a name="multiplemutatingoperations"></a>
 
@@ -155,11 +155,11 @@ Zodra de eerste aanvraag voor het bijwerken of upgraden van de service is ontvan
 
 Het starten van een tweede update bewerking tijdens het uitvoeren van de eerste update zal hetzelfde doen als de terugdraai bewerking. Als de tweede update zich in de automatische modus bevindt, wordt het eerste upgrade domein onmiddellijk bijgewerkt, waardoor het mogelijk is dat meerdere upgrade domeinen offline zijn op hetzelfde moment.
 
-De muteren bewerkingen zijn als volgt: [Implementatie configuratie wijzigen](/previous-versions/azure/reference/ee460809(v=azure.100)), [implementatie upgraden](/previous-versions/azure/reference/ee460793(v=azure.100)), [Implementatie status bijwerken](/previous-versions/azure/reference/ee460808(v=azure.100)), [implementatie verwijderen](/previous-versions/azure/reference/ee460815(v=azure.100))en [Update of upgrade terugdraaien](/previous-versions/azure/reference/hh403977(v=azure.100)).
+De muteren bewerkingen zijn als volgt: [implementatie configuratie wijzigen](/previous-versions/azure/reference/ee460809(v=azure.100)), [implementatie bijwerken](/previous-versions/azure/reference/ee460793(v=azure.100)), implementatie [status bijwerken](/previous-versions/azure/reference/ee460808(v=azure.100)), [implementatie verwijderen](/previous-versions/azure/reference/ee460815(v=azure.100))en [Update of upgrade terugdraaien](/previous-versions/azure/reference/hh403977(v=azure.100)).
 
 Twee bewerkingen, de [implementatie ophalen](/previous-versions/azure/reference/ee460804(v=azure.100)) en eigenschappen van de [Cloud service ophalen](/previous-versions/azure/reference/ee460806(v=azure.100)), retour neren de vergrendelde vlag die kan worden onderzocht om te bepalen of een muteren-bewerking kan worden aangeroepen voor een bepaalde implementatie.
 
-Als u de versie van deze methoden die de vergrendelde vlag retourneert, wilt aanroepen, moet u de aanvraag header instellen op x-MS-version: 2011-10-01 ' of hoger. Zie [Service Management versie beheer](/previous-versions/azure/gg592580(v=azure.100))voor meer informatie over het versie gebruik van headers.
+Als u de versie van deze methoden die de vergrendelde vlag retourneert, wilt aanroepen, moet u de aanvraag header instellen op x-MS-version: 2011-10-01 of hoger. Zie [Service Management versie beheer](/previous-versions/azure/gg592580(v=azure.100))voor meer informatie over het versie gebruik van headers.
 
 <a name="distributiondfroles"></a>
 
@@ -183,3 +183,6 @@ In het volgende diagram ziet u hoe een service dan twee rollen bevat, wanneer de
 [Cloud Services beheren](cloud-services-how-to-manage-portal.md)  
 [Cloud Services bewaken](cloud-services-how-to-monitor.md)  
 [Cloud Services configureren](cloud-services-how-to-configure-portal.md)  
+
+
+

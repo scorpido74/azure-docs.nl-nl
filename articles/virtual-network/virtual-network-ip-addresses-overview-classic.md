@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: 207e728d25df9192f8a600b13d86330af8311700
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 7b197e1acf696c2ae6e919ee2eddacfb82ac3802
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058927"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646775"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>IP-adres typen en toewijzings methoden (klassiek) in azure
 U kunt IP-adressen toewijzen aan Azure-resources om te communiceren met andere Azure-resources, uw on-premises netwerk en internet. Er zijn twee soorten IP-adressen die u in azure kunt gebruiken: openbaar en privé.
@@ -28,14 +28,14 @@ Open bare IP-adressen worden gebruikt voor communicatie met internet, met inbegr
 Privé-IP-adressen worden gebruikt voor communicatie binnen een virtueel Azure-netwerk (VNet), een Cloud service en uw on-premises netwerk wanneer u een VPN-gateway of ExpressRoute-circuit gebruikt om uw netwerk uit te breiden naar Azure.
 
 > [!IMPORTANT]
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources:  [Resource Manager en het klassieke model](../resource-manager-deployment-model.md).  Dit artikel gaat over het gebruik van het klassieke implementatiemodel. Micro soft raadt aan de meeste nieuwe implementaties Resource Manager te gebruiken. Lees het artikel [IP-adressen](virtual-network-ip-addresses-overview-arm.md) in Resource Manager voor meer informatie over IP-adressen.
+> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../resource-manager-deployment-model.md).  Dit artikel gaat over het gebruik van het klassieke implementatiemodel. Micro soft raadt aan de meeste nieuwe implementaties Resource Manager te gebruiken. Lees het artikel [IP-adressen](virtual-network-ip-addresses-overview-arm.md) in Resource Manager voor meer informatie over IP-adressen.
 
 ## <a name="public-ip-addresses"></a>Openbare IP-adressen
 Met open bare IP-adressen kunnen Azure-resources communiceren met internet en open bare Azure-Services zoals [Azure cache voor redis](https://azure.microsoft.com/services/cache/), [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/), [SQL-data bases](../sql-database/sql-database-technical-overview.md)en [Azure Storage](../storage/common/storage-introduction.md).
 
 Een openbaar IP-adres wordt gekoppeld aan de volgende bron typen:
 
-* Cloud services
+* Cloudservices
 * IaaS-Virtual Machines (Vm's)
 * PaaS
 * VPN-gateways
@@ -52,7 +52,7 @@ Wanneer een openbaar IP-adres moet worden toegewezen aan een Azure-resource, wor
 ### <a name="dns-hostname-resolution"></a>DNS-hostnaamomzetting
 Wanneer u een Cloud service of een IaaS-VM maakt, moet u een DNS-naam van de Cloud service opgeven die uniek is voor alle resources in Azure. Hiermee maakt u een toewijzing in de door Azure beheerde DNS-servers voor *dnsname*. cloudapp.net naar het open bare IP-adres van de resource. Wanneer u bijvoorbeeld een Cloud service maakt met de DNS-naam van de Cloud service van **Contoso**, wordt de Fully QUALIFIED domain name (FQDN) **contoso.cloudapp.net** omgezet in een openbaar IP-adres (VIP) van de Cloud service. U kunt deze FDQN gebruiken voor het maken van een aangepaste domein-CNAME-record die verwijst naar het openbare IP-adres in Azure.
 
-### <a name="cloud-services"></a>Cloud services
+### <a name="cloud-services"></a>Cloudservices
 Een Cloud service heeft altijd een openbaar IP-adres waarnaar wordt verwezen als een virtueel IP-adres (VIP). U kunt eind punten maken in een Cloud service om verschillende poorten in het VIP te koppelen aan interne poorten op virtuele machines en rolinstanties in de Cloud service. 
 
 Een Cloud service kan meerdere IaaS Vm's of PaaS-rolinstanties bevatten, allemaal beschikbaar via dezelfde Cloud service-VIP. U kunt ook [meerdere vip's toewijzen aan een Cloud service](../load-balancer/load-balancer-multivip.md), waarmee multi-VIP-scenario's zoals multi-tenant omgevingen met op SSL gebaseerde websites mogelijk zijn.
@@ -85,10 +85,10 @@ Een [VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) kan worden ge
 ### <a name="application-gateways"></a>Toepassingsgateways
 Een Azure [Application Gateway](../application-gateway/application-gateway-introduction.md) kan worden gebruikt voor Layer7-taak verdeling om netwerk verkeer te routeren op basis van http. Aan de toepassings gateway wordt *dynamisch*een openbaar IP-adres toegewezen, dat FUNGEERT als VIP met gelijke taak verdeling.
 
-### <a name="at-a-glance"></a>In een oogopslag
+### <a name="at-a-glance"></a>Een overzicht
 In de volgende tabel wordt elk resource type weer gegeven met de mogelijke toewijzings methoden (dynamisch/statisch) en de mogelijkheid om meerdere open bare IP-adressen toe te wijzen.
 
-| Resource | Dynamisch | Statisch | Meerdere IP-adressen |
+| Bron | Dynamisch | Statisch | Meerdere IP-adressen |
 | --- | --- | --- | --- |
 | Cloudservice |Ja |Ja |Ja |
 | IaaS VM of PaaS-rolinstantie |Ja |Nee |Nee |
@@ -135,27 +135,27 @@ In het geval van een *zelfstandige* Cloud service kunt u hostnamen van alle virt
 ### <a name="internal-load-balancers-ilb--application-gateways"></a>Interne load balancers (ILB) en toepassingsgateways
 U kunt een privé-IP-adres toewijzen aan de **front-end**-configuratie van een [interne Azure Load Balancer](../load-balancer/load-balancer-internal-overview.md) (ILB) of een [Azure Application Gateway](../application-gateway/application-gateway-introduction.md). Dit privé-IP-adres fungeert als een intern eindpunt dat alleen toegankelijk is voor de resources binnen het virtuele netwerk (VNet) en de externe netwerken die met het VNet zijn verbonden. U kunt een dynamisch of statisch privé-IP-adres toewijzen aan de front-end-configuratie. U kunt ook meerdere privé-IP-adressen toewijzen om multi-VIP-scenario's mogelijk te maken.
 
-### <a name="at-a-glance"></a>In een oogopslag
+### <a name="at-a-glance"></a>Een overzicht
 In de volgende tabel wordt elk resource type weer gegeven met de mogelijke toewijzings methoden (dynamisch/statisch) en de mogelijkheid om meerdere privé IP-adressen toe te wijzen.
 
-| Resource | Dynamisch | Statisch | Meerdere IP-adressen |
+| Bron | Dynamisch | Statisch | Meerdere IP-adressen |
 | --- | --- | --- | --- |
 | VM (in een *zelfstandige* Cloud service of VNet) |Ja |Ja |Ja |
 | PaaS (in een *zelfstandige* Cloud service of VNet) |Ja |Nee |Nee |
 | Interne load balancer front-end |Ja |Ja |Ja |
 | Front-end van Application Gateway |Ja |Ja |Ja |
 
-## <a name="limits"></a>Limieten
+## <a name="limits"></a>Beperkingen
 In de onderstaande tabel ziet u de limieten die zijn opgelegd voor IP-adres Sering in azure per abonnement. U kunt [contact opnemen met ondersteuning](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) als u op basis van uw bedrijfsbehoeften de standaardlimieten wilt verhogen tot de maximumlimieten.
 
 |  | Standaardlimiet | Maximumaantal |
 | --- | --- | --- |
-| Openbare IP-adressen (dynamisch) |5 |Contact opnemen met ondersteuning |
-| Gereserveerde openbare IP-adressen |20 |Contact opnemen met ondersteuning |
-| Open bare VIP per implementatie (Cloud service) |5 |Contact opnemen met ondersteuning |
+| Openbare IP-adressen (dynamisch) |5 |contact met ondersteuning |
+| Gereserveerde openbare IP-adressen |20 |contact met ondersteuning |
+| Open bare VIP per implementatie (Cloud service) |5 |contact met ondersteuning |
 | Privé-VIP (ILB) per implementatie (Cloud service) |1 |1 |
 
-Lees de volledige set [limieten voor netwerken](../azure-subscription-service-limits.md#networking-limits) in Azure.
+Lees de volledige set [limieten voor netwerken](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) in Azure.
 
 ## <a name="pricing"></a>Prijzen
 In de meeste gevallen zijn open bare IP-adressen gratis. Er is een nominale belasting voor het gebruik van extra en/of statische open bare IP-adressen. Zorg ervoor dat u de [prijs structuur voor open bare ip's](https://azure.microsoft.com/pricing/details/ip-addresses/)begrijpt.
@@ -163,7 +163,7 @@ In de meeste gevallen zijn open bare IP-adressen gratis. Er is een nominale bela
 ## <a name="differences-between-resource-manager-and-classic-deployments"></a>Verschillen tussen Resource Manager en klassieke implementaties
 Hieronder vindt u een vergelijking van de functies voor IP-adres Sering in Resource Manager en het klassieke implementatie model.
 
-|  | Resource | Klassiek | Resource Manager |
+|  | Bron | Klassiek | Resource Manager |
 | --- | --- | --- | --- |
 | **Openbaar IP-adres** |***VM*** |Wordt een ILPIP genoemd (alleen dynamisch) |Wordt aangeduid als een openbaar IP-adres (dynamisch of statisch) |
 |  ||Toegewezen aan een IaaS-VM of een PaaS-rolinstantie |Gekoppeld aan de NIC van de virtuele machine |

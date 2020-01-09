@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 5fae340ae933b8165a2ea9bb9f6337189fd576d6
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ef7e29351717daf91981f844f1d911a404cf9402
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457039"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646877"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Virtual Network
 
@@ -51,7 +51,7 @@ U kunt de volgende hulpprogram ma's gebruiken om een VNet te maken of configurer
 
 * Azure Portal
 * PowerShell
-* Azure CLI
+* Azure-CLI
 * Een netwerk configuratie bestand (netcfg-alleen voor klassieke VNets). Zie het artikel [een VNet configureren met behulp van een netwerk configuratie bestand](virtual-networks-using-network-configuration-file.md) .
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Welke adresbereiken kan ik gebruiken in mijn VNets?
@@ -66,7 +66,7 @@ Elk IP-adres bereik dat is gedefinieerd in [RFC 1918](https://tools.ietf.org/htm
 Ja. Zie [een virtueel netwerk maken](manage-virtual-network.md#create-a-virtual-network)voor meer informatie over open bare IP-adresbereiken. Openbare IP-adressen zijn niet rechtstreeks toegankelijk via internet.
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Geldt er een limiet voor het aantal subnetten in mijn VNet?
-Ja. Zie [Azure-limieten](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) voor meer informatie. De adres ruimten van het subnet mogen elkaar niet overlappen.
+Ja. Zie [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) voor meer informatie. De adres ruimten van het subnet mogen elkaar niet overlappen.
 
 ### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets"></a>Zijn er beperkingen voor het gebruik van IP-adressen in deze subnetten?
 Ja. In Azure worden vijf IP-adressen gereserveerd in elk subnet. Dit zijn x. x. x. 0-x. x. x. 3 en het laatste adres van het subnet. x. x. x. 1-x. x. x. 3 is gereserveerd in elk subnet voor Azure-Services.   
@@ -100,7 +100,7 @@ Nee.
 Ja. Subnetten kunnen op elk gewenst moment worden toegevoegd aan VNets, zolang het adres bereik van het subnet geen deel uitmaakt van een ander subnet en er ruimte beschikbaar is in het adres bereik van het virtuele netwerk.
 
 ### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it"></a>Kan ik de grootte van mijn subnet wijzigen nadat ik het heb gemaakt?
-Ja. U kunt een subnet toevoegen, verwijderen, uitbreiden of verkleinen als er geen Vm's of services in zijn geïmplementeerd.
+Ja. U kunt een subnet toevoegen, verwijderen, uitbreiden of verkleinen als hierin geen VM's of services zijn geïmplementeerd.
 
 ### <a name="can-i-modify-subnets-after-i-created-them"></a>Kan ik de subnetten wijzigen nadat ik deze heb gemaakt?
 Ja. U kunt de CIDR-blokken die door een VNet worden gebruikt, toevoegen, verwijderen en wijzigen.
@@ -128,7 +128,7 @@ Gebruik de tabel beslissing op de pagina [naam omzetting voor vm's en rolinstant
 Ja. U kunt IP-adressen van de DNS-server opgeven in de VNet-instellingen. De instelling wordt toegepast als de standaard DNS-server (s) voor alle virtuele machines in het VNet.
 
 ### <a name="how-many-dns-servers-can-i-specify"></a>Hoeveel DNS-servers kan ik opgeven?
-Referentie [Azure-limieten](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
+Referentie [Azure-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
 
 ### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network"></a>Kan ik mijn DNS-servers wijzigen nadat ik het netwerk heb gemaakt?
 Ja. U kunt de DNS-server lijst voor uw VNet op elk gewenst moment wijzigen. Als u de lijst met DNS-servers wijzigt, moet u een DHCP-lease vernieuwing uitvoeren op alle betrokken Vm's in het VNet, zodat de nieuwe DNS-instellingen van kracht worden. Voor virtuele machines met Windows OS kunt u dit doen door `ipconfig /renew` rechtstreeks op de virtuele machine te typen. Raadpleeg de documentatie over het verlengen van DHCP-leases voor het specifieke type besturings systeem voor andere typen besturings systemen. 
@@ -167,7 +167,7 @@ Dat hangt ervan af. Als de virtuele machine is geïmplementeerd via Resource Man
 Ja, maar dit wordt niet aanbevolen, tenzij nodig, zoals bij het toewijzen van meerdere IP-adressen aan een virtuele machine. Zie [meerdere IP-adressen toevoegen aan een virtuele machine](virtual-network-multiple-ip-addresses-portal.md#os-config)voor meer informatie. Als het IP-adres dat is toegewezen aan een Azure-NIC dat is gekoppeld aan een VM wordt gewijzigd en het IP-adres in het VM-besturings systeem verschilt, verliest u de verbinding met de virtuele machine.
 
 ### <a name="if-i-stop-a-cloud-service-deployment-slot-or-shutdown-a-vm-from-within-the-operating-system-what-happens-to-my-ip-addresses"></a>Wat gebeurt er met mijn IP-adressen als ik een implementatie site voor de Cloud service stop of een virtuele machine afsluit vanuit het besturings systeem?
-Nul. De IP-adressen (openbaar VIP, openbaar en privé) blijven toegewezen aan de implementatie site van de Cloud service of virtuele machine.
+Niets. De IP-adressen (openbaar VIP, openbaar en privé) blijven toegewezen aan de implementatie site van de Cloud service of virtuele machine.
 
 ### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-redeploying"></a>Kan ik Vm's van het ene subnet verplaatsen naar een ander subnet in een VNet zonder opnieuw te implementeren?
 Ja. Meer informatie kunt u vinden in het artikel [een VM of rolinstantie verplaatsen naar een ander subnet](virtual-networks-move-vm-role-to-subnet.md) .
@@ -247,7 +247,7 @@ De volgende resources kunnen Basic load balancers gebruiken. Dit betekent dat u 
 - Schaal sets voor virtuele machines met Basic load balancers 
 - Redis-cache 
 - Application Gateway (v1) SKU
-- Infrastructuur van service
+- Service Fabric
 - SQL MI
 - API Management
 - Active Directory-domein-service (toevoegen)

@@ -14,18 +14,26 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/20/2019
 ms.author: tarcher
-ms.openlocfilehash: efba440448ac912b7656eeab017eef947ab25e95
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 02b6ddf723e47e4608e631aef96f8a12d5f68698
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034690"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75368995"
 ---
 # <a name="install-and-configure-terraform-to-provision-azure-resources"></a>Terraform installeren en configureren om Azure-resources in te richten
  
 Terraform biedt een eenvoudige manier om Cloud infrastructuur te definiëren, te bekijken en te implementeren met behulp van een [eenvoudige sjabloon-taal](https://www.terraform.io/docs/configuration/syntax.html). In dit artikel worden de stappen beschreven die nodig zijn om terraform te gebruiken om resources in te richten in Azure.
 
 Ga naar de [terraform-hub](/azure/terraform)voor meer informatie over het gebruik van terraform met Azure.
+> [!NOTE]
+> Neem voor terraform specifieke ondersteuning contact op met terraform met behulp van een van hun community-kanalen:
+>
+>   • De [sectie terraform](https://discuss.hashicorp.com/c/terraform-core) van de portal van de Community bevat vragen, use cases en handige patronen.
+>
+>   • Voor vragen over de provider gaat u naar de sectie [terraform providers](https://discuss.hashicorp.com/c/terraform-providers) van de portal van de community.
+
+
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

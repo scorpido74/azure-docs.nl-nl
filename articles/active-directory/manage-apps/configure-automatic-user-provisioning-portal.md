@@ -11,20 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67b92c32d511300a0645b707f2a263b463937d1b
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.openlocfilehash: b8dc442720a6c2876990e5012732b363b43ec0cc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558580"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430182"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Het inrichten van gebruikers accounts voor zakelijke apps beheren in de Azure Portal
 
-In dit artikel wordt beschreven hoe u de [Azure Portal](https://portal.azure.com) gebruikt voor het beheren van automatische toewijzing van gebruikers accounts en het ongedaan maken van de inrichting voor toepassingen die deze ondersteunen. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](user-provisioning.md)voor meer informatie over automatische toewijzing van gebruikers accounts en hoe deze werkt.
+In dit artikel worden de algemene stappen beschreven voor het beheren van het automatisch inrichten van gebruikers accounts en het ongedaan maken van de inrichting voor toepassingen die deze ondersteunen. Het inrichten van een *gebruikers account* is het maken, bijwerken en/of uitschakelen van gebruikers account records in het lokale gebruikers profiel archief van een toepassing. De meeste Cloud-en SaaS-toepassingen slaan de rollen en machtigingen van de gebruiker op in het eigen lokale gebruikers profiel archief en de aanwezigheid van een dergelijke gebruikers record in het lokale archief van de gebruiker is *vereist* voor eenmalige aanmelding en toegang tot het werk. Voor meer informatie over automatische toewijzing van gebruikers accounts raadpleegt [u het automatiseren van gebruikers inrichten en het ongedaan maken van de inrichting van SaaS-toepassingen met Azure Active Directory](user-provisioning.md).
+
+> [!IMPORTANT]
+> Azure Active Directory (Azure AD) bevat een galerie met duizenden vooraf geïntegreerde toepassingen die zijn ingeschakeld voor automatische inrichting met Azure AD. U moet beginnen met het vinden van de zelf studie voor het inrichten van de inrichting die specifiek is voor uw toepassing in de [lijst met zelf studies over het integreren van SaaS-apps met Azure Active Directory](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/). U vindt waarschijnlijk stapsgewijze richt lijnen voor het configureren van zowel de app als Azure AD om de inrichtings verbinding te maken.
 
 ## <a name="finding-your-apps-in-the-portal"></a>Uw apps zoeken in de portal
 

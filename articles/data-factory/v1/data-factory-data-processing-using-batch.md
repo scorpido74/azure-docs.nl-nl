@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 611c2a36cac5a589ecd6f9063f5f1bc325860ef6
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 699aab617e56ab87eb0bd6d6c4ceabf9aac4c4fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682668"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438888"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Grootschalige gegevens sets verwerken met behulp van Data Factory en batch
 > [!NOTE]
@@ -44,7 +44,7 @@ Met de Batch-service definieert u Azure-rekenresources om uw toepassingen parall
 Zie ook [de batch-documentatie](https://docs.microsoft.com/azure/batch/)voor meer informatie over batch.
 
 ## <a name="why-azure-data-factory"></a>Waarom Azure Data Factory?
-Een Data Factory is een cloudgebaseerde gegevensintegratieservice waarmee de verplaatsing en transformatie van gegevens wordt beheerd en geautomatiseerd. U kunt Data Factory gebruiken om beheerde gegevens pijplijnen te maken waarmee gegevens worden verplaatst van on-premises en gegevens opslag in de Cloud naar een gecentraliseerd gegevens archief. Een voor beeld is Azure Blob-opslag. U kunt Data Factory gebruiken om gegevens te verwerken/transformeren met behulp van services zoals Azure HDInsight en Azure Machine Learning. U kunt ook gegevens pijplijnen zodanig plannen dat deze op een geplande manier worden uitgevoerd (bijvoorbeeld elk uur, dagelijks en wekelijks). U kunt de pijp lijnen in één oogopslag bewaken en beheren om problemen te identificeren en actie te ondernemen.
+Data Factory is een cloudgebaseerde service voor gegevensintegratie waarmee de verplaatsing en transformatie van gegevens wordt gestroomlijnd en geautomatiseerd. U kunt Data Factory gebruiken om beheerde gegevens pijplijnen te maken waarmee gegevens worden verplaatst van on-premises en gegevens opslag in de Cloud naar een gecentraliseerd gegevens archief. Een voor beeld is Azure Blob-opslag. U kunt Data Factory gebruiken om gegevens te verwerken/transformeren met behulp van services zoals Azure HDInsight en Azure Machine Learning. U kunt ook gegevens pijplijnen zodanig plannen dat deze op een geplande manier worden uitgevoerd (bijvoorbeeld elk uur, dagelijks en wekelijks). U kunt de pijp lijnen in één oogopslag bewaken en beheren om problemen te identificeren en actie te ondernemen.
 
   Als u niet bekend bent met Data Factory, kunt u de volgende artikelen gebruiken om inzicht te krijgen in de architectuur/implementatie van de oplossing die in dit artikel wordt beschreven:  
 
@@ -121,7 +121,7 @@ Maak een batch-pool met ten minste twee reken knooppunten.
 
    f. Selecteer **OK** om de groep te maken.
 
-#### <a name="azure-storage-explorer"></a>Azure Opslagverkenner
+#### <a name="azure-storage-explorer"></a>Azure Storage-verkenner
 U gebruikt [Azure Storage Explorer 6](https://azurestorageexplorer.codeplex.com/) of [CloudXplorer](https://clumsyleaf.com/products/cloudxplorer) (van ClumsyLeaf-software) om de gegevens in uw opslag projecten te controleren en te wijzigen. U kunt ook de gegevens in de logboeken van uw in de Cloud gehoste toepassingen controleren en wijzigen.
 
 1. Maak een container met de naam **mycontainer** met persoonlijke toegang (geen anonieme toegang).
@@ -192,7 +192,7 @@ De-methode heeft enkele belang rijke onderdelen die u moet begrijpen:
 
    g. Selecteer **OK** om het project te maken.
 
-1. Selecteer **Hulpprogram ma's** > **NuGet package manager** > **Package Manager-console**.
+1. Selecteer **Extra** > **NuGet-pakketbeheer** > **Package Manager Console**.
 
 1. Voer in de Package Manager-console de volgende opdracht uit om micro soft. Azure. Management. DataFactories te importeren:
 
@@ -556,7 +556,7 @@ Met gekoppelde services worden gegevens archieven of COMPUTE-Services gekoppeld 
 
    ![Nieuwe gegevens opslag](./media/data-factory-data-processing-using-batch/image7.png)
 
-1. Vervang de **accountnaam** door de naam van uw opslagaccount. Vervang de **accountsleutel** met de toegangssleutel van uw opslagaccount. Zie [toegangs sleutels voor opslag weer geven, kopiëren en opnieuw genereren](../../storage/common/storage-account-manage.md#access-keys)voor meer informatie over het verkrijgen van uw toegangs sleutel voor opslag.
+1. Vervang de **accountnaam** door de naam van uw opslagaccount. Vervang de **accountsleutel** met de toegangssleutel van uw opslagaccount. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md)voor meer informatie over het verkrijgen van uw toegangs sleutel voor opslag.
 
 1. Selecteer in de opdrachtbalk **Implementeren** om de gekoppelde service te implementeren.
 
@@ -667,21 +667,21 @@ In deze stap maakt u gegevens sets om invoer-en uitvoer gegevens weer te geven.
 
     | **Gereedschap** | **Begintijd**          |
     |-----------|-------------------------|
-    | 1         | 2015-11-16T**00**: 00:00 |
-    | 2         | 2015-11-16T**01**: 00:00 |
-    | 3         | 2015-11-16T**02**: 00:00 |
-    | 4         | 2015-11-16T**03**: 00:00 |
-    | 5         | 2015-11-16T**04**: 00:00 |
+    | 1         | 2015-11-16T**00**:00:00 |
+    | 2         | 2015-11-16T**01**:00:00 |
+    | 3         | 2015-11-16T**02**:00:00 |
+    | 4         | 2015-11-16T**03**:00:00 |
+    | 5         | 2015-11-16T**04**:00:00 |
 
     De **FolderPath** wordt berekend met behulp van het jaar, de maand, de dag en het uur gedeelte van de begin tijd van het segment (**slice start**). Hier ziet u hoe een uitvoermap wordt toegewezen aan een segment.
 
     | **Gereedschap** | **Begintijd**          | **Invoer map**  |
     |-----------|-------------------------|-------------------|
-    | 1         | 2015-11-16T**00**: 00:00 | 2015-11-16-**00** |
-    | 2         | 2015-11-16T**01**: 00:00 | 2015-11-16-**01** |
-    | 3         | 2015-11-16T**02**: 00:00 | 2015-11-16-**02** |
-    | 4         | 2015-11-16T**03**: 00:00 | 2015-11-16-**03** |
-    | 5         | 2015-11-16T**04**: 00:00 | 2015-11-16-**04** |
+    | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00** |
+    | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01** |
+    | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02** |
+    | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03** |
+    | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04** |
 
 1. Selecteer **implementeren** op de werk balk om de tabel **input dataset** te maken en te implementeren.
 
@@ -724,11 +724,11 @@ In deze stap maakt u een andere gegevensset van het type AzureBlob om de uitvoer
 
     | **Gereedschap** | **Begintijd**          | **Uitvoer bestand**       |
     |-----------|-------------------------|-----------------------|
-    | 1         | 2015-11-16T**00**: 00:00 | 2015-11-16-**00. txt** |
-    | 2         | 2015-11-16T**01**: 00:00 | 2015-11-16-**01. txt** |
-    | 3         | 2015-11-16T**02**: 00:00 | 2015-11-16-**02. txt** |
-    | 4         | 2015-11-16T**03**: 00:00 | 2015-11-16-**03. txt** |
-    | 5         | 2015-11-16T**04**: 00:00 | 2015-11-16-**04. txt** |
+    | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00.txt** |
+    | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01.txt** |
+    | 3         | 2015-11-16T**02**:00:00 | 2015-11-16-**02.txt** |
+    | 4         | 2015-11-16T**03**:00:00 | 2015-11-16-**03.txt** |
+    | 5         | 2015-11-16T**04**:00:00 | 2015-11-16-**04.txt** |
 
     Houd er rekening mee dat alle bestanden in een map voor invoer (bijvoorbeeld 2015-11-16-00) deel uitmaken van een segment met de begin tijd 2015-11-16-00. Wanneer dit segment wordt verwerkt, scant de aangepaste activiteit elk bestand en produceert een regel in het uitvoer bestand met het aantal exemplaren van de zoek term micro soft. Als er drie bestanden in de map 2015-11-16-00 staan, zijn er drie regels in het uitvoer bestand 2015-11-16 -00. txt.
 
@@ -847,7 +847,7 @@ In deze stap test u de pijp lijn door bestanden in de invoer mappen neer te zett
 
 1. Klik op de Blade **output dataset** met de rechter muisknop op het segment met de **begin tijd** van het segment ingesteld op **11/16/2015 01:00:00 uur**. Selecteer **uitvoeren** om het segment opnieuw op te starten of opnieuw te verwerken. Het segment heeft nu vijf bestanden in plaats van één bestand.
 
-    ![Voer](./media/data-factory-data-processing-using-batch/image17.png)
+    ![Uitvoeren](./media/data-factory-data-processing-using-batch/image17.png)
 
 1. Nadat het segment is uitgevoerd en de status **gereed**is, controleert u de inhoud van het uitvoer bestand voor dit segment (**2015-11-16 -01. txt**). Het uitvoer bestand wordt weer gegeven onder `mycontainer` in `outputfolder` in uw Blob-opslag. Er moet een regel voor elk bestand van het segment zijn.
 
@@ -913,7 +913,7 @@ Fout opsporing bestaat uit een aantal basis technieken.
 
    ![Lijst met aangepaste post bestanden](./media/data-factory-data-processing-using-batch/image20.png)
 
-1. Zorg ervoor dat **assemblyname** (MyDotNetActivity. dll), **Entry Point** (MyDotNetActivityNS. MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity. zip) en **packageLinkedService** (moet verwijzen naar de Blob-opslag die het zip-bestand bevat) is ingesteld op de juiste waarden.
+1. Zorg ervoor dat **assemblyname** (MyDotNetActivity. dll), **Entry Point** (MyDotNetActivityNS. MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity. zip) en **packageLinkedService** (moet verwijzen naar de Blob-opslag met het zip-bestand) zijn ingesteld op de juiste waarden.
 
 1. Als u een fout hebt opgelost en het segment opnieuw wilt verwerken, klikt u met de rechter muisknop op het segment op de Blade **output dataset** en selecteert u **uitvoeren**.
 
@@ -964,7 +964,7 @@ Nadat u gegevens hebt verwerkt, kunt u deze gebruiken met online hulpprogram ma'
 * [Gegevens vernieuwen in Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure en Power BI: basis overzicht](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Naslaginformatie
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [Inleiding tot de Data Factory-Service](data-factory-introduction.md)

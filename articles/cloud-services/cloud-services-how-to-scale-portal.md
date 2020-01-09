@@ -2,17 +2,17 @@
 title: Een Cloud service in de portal automatisch schalen | Microsoft Docs
 description: Meer informatie over het gebruik van de portal voor het configureren van regels voor automatisch schalen voor een web-of werk rollen van de Cloud service in Azure.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 7e106dbd237be79be924afadbe893669c4f3daf8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 5880544137855a2ea5bcd6d6e4bada46563564ad
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359620"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360834"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>Automatisch schalen configureren voor een Cloud service in de portal
 
@@ -26,7 +26,7 @@ U moet rekening houden met de volgende informatie voordat u schaling voor uw toe
 
 * Schalen wordt beïnvloed door het gebruik van kernen.
 
-    Grotere rolinstanties gebruiken meer kernen. U kunt een toepassing alleen schalen binnen de limiet van kernen voor uw abonnement. Stel bijvoorbeeld dat uw abonnement een limiet heeft van 20 kernen. Als u een toepassing uitvoert met twee middel grote Cloud Services (in totaal 4 kernen), kunt u alleen andere Cloud service-implementaties in uw abonnement opschalen door de resterende 16 kernen. Zie grootten van [Cloud Services](cloud-services-sizes-specs.md)voor meer informatie over grootten.
+    Grotere rolinstanties gebruiken meer kernen. U kunt een toepassing alleen schalen binnen de limiet van kernen voor uw abonnement. Stel bijvoorbeeld dat uw abonnement een limiet heeft van 20 kernen. Als u een toepassing uitvoert met twee middel grote Cloud Services (in totaal 4 kernen), kunt u alleen andere Cloud service-implementaties in uw abonnement opschalen door de resterende 16 kernen. Zie [grootten van Cloud Services](cloud-services-sizes-specs.md)voor meer informatie over grootten.
 
 * U kunt schalen op basis van een drempel waarde voor een wachtrij bericht. Zie [How to use the Queue Storage service](../storage/queues/storage-dotnet-how-to-use-queues.md)(Engelstalig) voor meer informatie over het gebruik van wacht rijen.
 
@@ -41,7 +41,7 @@ U moet rekening houden met de volgende informatie voordat u schaling voor uw toe
 Nadat u uw Cloud service hebt geselecteerd, moet de Blade Cloud service zichtbaar zijn.
 
 1. Selecteer op de Blade Cloud service, op de tegel **rollen en instanties** , de naam van de Cloud service.   
-   **BELANGRIJK**: Zorg ervoor dat u op de Cloud service functie klikt, niet de rolinstantie die zich onder de rol bevindt.
+   **Belang rijk**: Zorg ervoor dat u op de Cloud service functie klikt, niet de rolinstantie die zich onder de rol bevindt.
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. Selecteer de tegel **schalen** .
@@ -105,3 +105,6 @@ Met deze instelling wordt automatisch schalen van de rol verwijderd en kunt u he
 3. De exemplaren van de rol waarop moet worden geschaald.
 
 Nadat u de schaal instellingen hebt geconfigureerd, selecteert u het pictogram **Opslaan** bovenaan.
+
+
+

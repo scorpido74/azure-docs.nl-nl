@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a346b264afc23e21ccf3e6d5dbf7a8f5d96518d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 93b8387d4453a3d83bcce55c739548d914545f2f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842251"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430071"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Expressies schrijven voor kenmerktoewijzingen in Azure Active Directory
 Bij het configureren van inrichting tot een SaaS-toepassing, is een van de typen kenmerktoewijzingen die u kunt opgeven een expressie-toewijzing. Voor deze, moet u een script-achtige-expressie waarmee u uw gebruikers om gegevens te transformeren naar indelingen die meer geschikt is voor de SaaS-toepassing kunt schrijven.
@@ -38,7 +38,7 @@ De syntaxis voor expressies voor kenmerktoewijzingen is doet denken aan van Visu
 * Voor tekenreeksconstanten, als u een backslash (\) of een aanhalingsteken (") in de tekenreeks, moet moet deze worden voorafgegaan door het symbool backslash (\). Bijvoorbeeld: "bedrijfs naam: \\" Contoso\\""
 
 ## <a name="list-of-functions"></a>Lijst met functies
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [deel](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [niet](#not) &nbsp;&nbsp;&nbsp;&nbsp; [vervangen](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [splitsen](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [toupper](#toupper)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [BitAnd](#bitand) &nbsp;&nbsp;&nbsp;&nbsp; [CBool](#cbool) &nbsp;&nbsp;&nbsp;&nbsp; [Coalesce](#coalesce) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToBase64](#converttobase64) &nbsp;&nbsp;&nbsp;&nbsp; [ConvertToUTF8Hex](#converttoutf8hex) &nbsp;&nbsp;&nbsp;&nbsp; [Count](#count) &nbsp;&nbsp;&nbsp;&nbsp; [CStr](#cstr) &nbsp;&nbsp;&nbsp;&nbsp; [DateFromNum](#datefromnum) &nbsp;[FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Guid](#guid) &nbsp;&nbsp;&nbsp;&nbsp; [InStr](#instr) &nbsp;&nbsp;&nbsp;&nbsp; [IsNull](#isnull) &nbsp;&nbsp;&nbsp;&nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp;&nbsp;&nbsp;&nbsp; [IsPresent](#ispresent) &nbsp;&nbsp;&nbsp;&nbsp; [IsString](#isstring) &nbsp;&nbsp;&nbsp;&nbsp; [Item](#item) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Left](#left) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [RemoveDuplicates](#removeduplicates) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)&nbsp;&nbsp;&nbsp;&nbsp; [Word](#word)
 
 ---
 ### <a name="append"></a>Toevoegen
@@ -48,10 +48,138 @@ De syntaxis voor expressies voor kenmerktoewijzingen is doet denken aan van Visu
 
 **Parameters:**<br> 
 
-| Naam | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **Bron** |Verplicht |Tekenreeks |Doorgaans de naam van het kenmerk van het bronobject. |
 | **suffix** |Verplicht |Tekenreeks |De tekenreeks die u wilt toevoegen aan het einde van de bronwaarde. |
+
+---
+### <a name="bitand"></a>BitAnd
+**Functie:**<br> BitAnd (waarde1, waarde2)
+
+**Beschrijving:**<br> Deze functie converteert beide para meters naar de binaire weer gave en stelt een bit in op:
+
+0: als een of beide van de corresponderende bits in waarde1 en Value2 0 zijn                                                  
+1: als beide corresponderende bits 1 zijn.                                    
+
+Met andere woorden: het retourneert 0 in alle gevallen, behalve wanneer de overeenkomstige bits van beide para meters 1 zijn.
+
+**Parameters:**<br> 
+
+| Name | Vereiste / herhalende | Type | Opmerkingen |
+| --- | --- | --- | --- |
+| **Value1** |Verplicht |num |Numerieke waarde die moet worden AND'ed met Value2|
+| **enzovoort** |Verplicht |num |Numerieke waarde die moet worden AND'ed met waarde1|
+
+**Voorbeeld:**<br>
+BitAnd (& HF, & HF7)                                                                                
+11110111 en 00000111 = 00000111 so BitAnd retourneert 7, de binaire waarde van 00000111
+
+---
+### <a name="cbool"></a>CBool
+**Functie:**<br> CBool (expr)
+
+**Beschrijving:**<br> CBool retourneert een Booleaanse waarde op basis van de geëvalueerde expressie. Als de expressie resulteert in een waarde die niet gelijk is aan nul, retourneert CBool True, anders wordt false geretourneerd.
+
+**Parameters:**<br> 
+
+| Name | Vereiste / herhalende | Type | Opmerkingen |
+| --- | --- | --- | --- |
+| **expressie** |Verplicht | expression | Een geldige expressie |
+
+**Voorbeeld:**<br>
+CBool ([attribute1] = [attribute2])                                                                    
+Retourneert waar als beide kenmerken dezelfde waarde hebben.
+
+---
+### <a name="coalesce"></a>Coalesce
+**Functie:**<br> Coalesce (source1, source2,..., defaultValue)
+
+**Beschrijving:**<br> Retourneert de eerste bron waarde die niet NULL is. Als alle argumenten NULL zijn en defaultValue aanwezig is, wordt de defaultValue geretourneerd. Als alle argumenten NULL zijn en defaultValue niet aanwezig is, retourneert Coalesce NULL.
+
+**Parameters:**<br> 
+
+| Name | Vereiste / herhalende | Type | Opmerkingen |
+| --- | --- | --- | --- |
+| **bron1... bronN** | Verplicht | Tekenreeks |Vereist, variabele-aantal keren. Doorgaans de naam van het kenmerk van het bronobject. |
+| **defaultValue** | Optioneel | Tekenreeks | De standaard waarde die moet worden gebruikt wanneer alle bron waarden NULL zijn. Lege tekenreeks ("").
+
+---
+### <a name="converttobase64"></a>ConvertToBase64
+**Functie:**<br> ConvertToBase64 (bron)
+
+**Beschrijving:**<br> De functie ConvertToBase64 converteert een teken reeks naar een Unicode base64-teken reeks.
+
+**Parameters:**<br> 
+
+| Name | Vereiste / herhalende | Type | Opmerkingen |
+| --- | --- | --- | --- |
+| **Bron** |Verplicht |Tekenreeks |De teken reeks die moet worden geconverteerd naar basis 64|
+
+**Voorbeeld:**<br>
+ConvertToBase64 ("Hallo wereld!")                                                                                                        
+Retourneert "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
+
+---
+### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
+**Functie:**<br> ConvertToUTF8Hex (bron)
+
+**Beschrijving:**<br> De functie ConvertToUTF8Hex converteert een teken reeks naar een UTF8 hexadecimale waarde.
+
+**Parameters:**<br> 
+
+| Name | Vereiste / herhalende | Type | Opmerkingen |
+| --- | --- | --- | --- |
+| **Bron** |Verplicht |Tekenreeks |Teken reeks die moet worden geconverteerd naar UTF8 hex|
+
+**Voorbeeld:**<br>
+ConvertToUTF8Hex ("Hallo wereld!")                                                                                                         
+Retourneert 48656C6C6F20776F726C6421
+
+---
+### <a name="count"></a>Aantal
+**Functie:**<br> Count (kenmerk)
+
+**Beschrijving:**<br> De functie Count retourneert het aantal elementen in een kenmerk met meerdere waarden
+
+**Parameters:**<br> 
+
+| Name | Vereiste / herhalende | Type | Opmerkingen |
+| --- | --- | --- | --- |
+| **geschreven** |Verplicht |-kenmerk |Kenmerk met meerdere waarden waarvoor elementen worden geteld|
+
+---
+### <a name="cstr"></a>CStr
+**Functie:**<br> CStr (waarde)
+
+**Beschrijving:**<br> De functie CStr zet een waarde om in een teken reeks gegevens type.
+
+**Parameters:**<br> 
+
+| Name | Vereiste / herhalende | Type | Opmerkingen |
+| --- | --- | --- | --- |
+| **value** |Verplicht | Numeriek, verwijzing of Booleaanse waarde | Dit kan een numerieke waarde, een referentie kenmerk of een Boolean zijn. |
+
+**Voorbeeld:**<br>
+CStr ([DN])                                                            
+Retourneert "CN = Joe, DC = contoso, DC = com"
+
+---
+### <a name="datefromnum"></a>DateFromNum
+**Functie:**<br> DateFromNum (waarde)
+
+**Beschrijving:**<br> Met de functie DateFromNum wordt een waarde in de datum notatie van AD geconverteerd naar een DateTime-type.
+
+**Parameters:**<br> 
+
+| Name | Vereiste / herhalende | Type | Opmerkingen |
+| --- | --- | --- | --- |
+| **value** |Verplicht | Datum | De AD-datum die moet worden geconverteerd naar een DateTime-type |
+
+**Voorbeeld:**<br>
+DateFromNum([lastLogonTimestamp])                                                                                                   
+DateFromNum(129699324000000000)                                                            
+Retourneert een datum/tijd die 2012-01-01 23:00:00 vertegenwoordigt
 
 ---
 ### <a name="formatdatetime"></a>formatDateTime
@@ -61,11 +189,115 @@ De syntaxis voor expressies voor kenmerktoewijzingen is doet denken aan van Visu
 
 **Parameters:**<br> 
 
-| Naam | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **Bron** |Verplicht |Tekenreeks |Doorgaans de naam van het kenmerk van het bronobject. |
 | **inputFormat** |Verplicht |Tekenreeks |De verwachte notatie van de bronwaarde. Zie voor ondersteunde indelingen [ https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx ](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
 | **Uitvoerindeling** |Verplicht |Tekenreeks |Indeling van de uitvoerdatum. |
+
+---
+### <a name="guid"></a>GUID
+**Functie:**<br> GUID ()
+
+**Beschrijving:**<br> De functie-GUID genereert een nieuwe wille keurige GUID
+
+---
+### <a name="instr"></a>InStr
+**Functie:**<br> InStr (waarde1, waarde2, begin, compareType)
+
+**Beschrijving:**<br> De functie InStr zoekt het eerste exemplaar van een subtekenreeks in een teken reeks
+
+**Parameters:**<br> 
+
+| Name | Vereiste / herhalende | Type | Opmerkingen |
+| --- | --- | --- | --- |
+| **Value1** |Verplicht |Tekenreeks |Teken reeks die moet worden doorzocht |
+| **enzovoort** |Verplicht |Tekenreeks |Teken reeks die moet worden gevonden |
+| **start** |Optioneel |Geheel getal |Begin positie om de subtekenreeks te vinden|
+| **compareType** |Optioneel |Enum |Kan vbTextCompare of vbBinaryCompare zijn |
+
+**Voorbeeld:**<br>
+InStr ("Quick Brown Fox", "snel")                                                                             
+Evalues tot 5
+
+InStr (' herhaald ', ' e ', 3, vbBinaryCompare)                                                                                  
+Evalueert tot 7
+
+---
+### <a name="isnull"></a>IsNull
+**Functie:**<br> IsNull (expressie)
+
+**Beschrijving:**<br> Als de expressie resulteert in null, retourneert de functie IsNull de waarde True. Voor een kenmerk wordt een null-waarde uitgedrukt door het ontbreken van het kenmerk.
+
+**Parameters:**<br> 
+
+| Name | Vereiste / herhalende | Type | Opmerkingen |
+| --- | --- | --- | --- |
+| **expressie** |Verplicht |expression |Expressie die moet worden geëvalueerd |
+
+**Voorbeeld:**<br>
+IsNull ([displayName])                                                                                                
+Retourneert waar als het kenmerk niet aanwezig is
+
+---
+### <a name="isnullorempty"></a>IsNullorEmpty
+**Functie:**<br> IsNullOrEmpty (expr)
+
+**Beschrijving:**<br> Als de expressie Null of een lege teken reeks is, retourneert de functie IsNullOrEmpty ' True '. Voor een-kenmerk resulteert dit in waar als het kenmerk ontbreekt of aanwezig is, maar een lege teken reeks is.
+De inverse van deze functie heeft de naam IsPresent.
+
+**Parameters:**<br> 
+
+| Name | Vereiste / herhalende | Type | Opmerkingen |
+| --- | --- | --- | --- |
+| **expressie** |Verplicht |expression |Expressie die moet worden geëvalueerd |
+
+**Voorbeeld:**<br>
+IsNullOrEmpty ([displayName])                                               
+Retourneert waar als het kenmerk niet aanwezig is of een lege teken reeks is
+
+---
+### <a name="ispresent"></a>IsPresent
+**Functie:**<br> IsNullOrEmpty (expr)
+
+**Beschrijving:**<br> Als de expressie resulteert in een teken reeks die niet null en niet leeg is, retourneert de functie IsPresent de waarde True. De inverse van deze functie heeft de naam IsNullOrEmpty.
+
+**Parameters:**<br> 
+
+| Name | Vereiste / herhalende | Type | Opmerkingen |
+| --- | --- | --- | --- |
+| **expressie** |Verplicht |expression |Expressie die moet worden geëvalueerd |
+
+**Voorbeeld:**<br>
+Switch (IsPresent ([directManager]), [directManager], IsPresent ([skiplevelManager]), [skiplevelManager], IsPresent ([Director]), [Director])
+
+---
+### <a name="isstring"></a>IsString
+**Functie:**<br> IsString (expr)
+
+**Beschrijving:**<br> Als de expressie kan worden geëvalueerd als een teken reeks type, wordt de functie IsString geëvalueerd als True.
+
+**Parameters:**<br> 
+
+| Name | Vereiste / herhalende | Type | Opmerkingen |
+| --- | --- | --- | --- |
+| **expressie** |Verplicht |expression |Expressie die moet worden geëvalueerd |
+
+---
+### <a name="item"></a>Item
+**Functie:**<br> Item (kenmerk, index)
+
+**Beschrijving:**<br> De functie item retourneert één item uit een teken reeks/kenmerk met meerdere waarden.
+
+**Parameters:**<br> 
+
+| Name | Vereiste / herhalende | Type | Opmerkingen |
+| --- | --- | --- | --- |
+| **geschreven** |Verplicht |Kenmerk |Kenmerk met meerdere waarden dat moet worden doorzocht |
+| **index** |Verplicht |Geheel getal | Index naar een item in de teken reeks met meerdere waarden|
+
+**Voorbeeld:**<br>
+Item ([proxyAddresses], 1)
 
 ---
 ### <a name="join"></a>Koppelen
@@ -77,10 +309,30 @@ Als een van de bron waarden een kenmerk met meerdere waarden is, wordt elke waar
 
 **Parameters:**<br> 
 
-| Naam | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **separator** |Verplicht |Tekenreeks |De tekenreeks die wordt gebruikt om de bronwaarden scheiden wanneer ze worden samengevoegd tot één tekenreeks. Kan ' ' als er geen scheidingsteken vereist is. |
 | **bron1... bronN** |Vereist, variabele-aantal keren |Tekenreeks |De tekenreeks die waarden die moeten worden samengevoegd. |
+
+---
+### <a name="left"></a>Links
+**Functie:**<br> Left (teken reeks, NumChars)
+
+**Beschrijving:**<br> De functie Left retourneert een opgegeven aantal tekens vanaf de linkerkant van een teken reeks. Als numChars = 0, retourneert u een lege teken reeks.
+Als numChars < 0, wordt de invoer teken reeks geretourneerd.
+Als teken reeks null is, retourneert een lege teken reeks.
+Als teken reeks minder tekens bevat dan het getal dat is opgegeven in numChars, wordt een teken reeks geretourneerd die identiek is aan de teken reeks (dat wil zeggen, met alle tekens in para meter 1).
+
+**Parameters:**<br> 
+
+| Name | Vereiste / herhalende | Type | Opmerkingen |
+| --- | --- | --- | --- |
+| **String** |Verplicht |Kenmerk | De teken reeks waaruit tekens moeten worden opgehaald |
+| **NumChars** |Verplicht |Geheel getal | Een getal waarmee het aantal tekens wordt aangegeven dat moet worden geretourneerd vanaf het begin (links) van de teken reeks|
+
+**Voorbeeld:**<br>
+Left ("John splinter", 3)                                                            
+Retourneert "Joh"
 
 ---
 ### <a name="mid"></a>Mid
@@ -90,7 +342,7 @@ Als een van de bron waarden een kenmerk met meerdere waarden is, wordt elke waar
 
 **Parameters:**<br> 
 
-| Naam | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **Bron** |Verplicht |Tekenreeks |Doorgaans de naam van het kenmerk. |
 | **start** |Verplicht |geheel getal |Indexeren de **bron** tekenreeks waar de subtekenreeks moet beginnen. Het eerste teken in de tekenreeks index 1 hebben, tweede teken wordt index 2 hebben, enzovoort. |
@@ -104,7 +356,7 @@ Als een van de bron waarden een kenmerk met meerdere waarden is, wordt elke waar
 
 **Parameters:**<br> 
 
-| Naam | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **Bron** |Verplicht |Tekenreeks | Meestal een voor naam-of achternaam-kenmerk. |
 
@@ -116,9 +368,25 @@ Als een van de bron waarden een kenmerk met meerdere waarden is, wordt elke waar
 
 **Parameters:**<br> 
 
-| Naam | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **Bron** |Verplicht |Booleaanse tekenreeks |Verwachte **bron** waarden zijn ' True ' of ' false '. |
+
+---
+### <a name="removeduplicates"></a>RemoveDuplicates
+**Functie:**<br> RemoveDuplicates (kenmerk)
+
+**Beschrijving:**<br> De functie RemoveDuplicates gebruikt een teken reeks met meerdere waarden en zorg ervoor dat elke waarde uniek is.
+
+**Parameters:**<br> 
+
+| Name | Vereiste / herhalende | Type | Opmerkingen |
+| --- | --- | --- | --- |
+| **geschreven** |Verplicht |Kenmerk met meerdere waarden |Kenmerk met meerdere waarden waarvoor duplicaten worden verwijderd|
+
+**Voorbeeld:**<br>
+RemoveDuplicates ([proxyAddresses])                                                                                                       
+Retourneert een gezuiverd proxyAddress attribuut-kenmerk waarbij alle dubbele waarden zijn verwijderd
 
 ---
 ### <a name="replace"></a>Vervangen
@@ -146,7 +414,7 @@ Vervangt waarden binnen een tekenreeks. Het werkt anders, afhankelijk van de opg
 
 **Parameters:**<br> 
 
-| Naam | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **Bron** |Verplicht |Tekenreeks |Doorgaans naam van het kenmerk van het **bron** object. |
 | **oldValue** |Optioneel |Tekenreeks |Waarde die moet worden vervangen **bron** of **sjabloon**. |
@@ -171,7 +439,7 @@ Vervangt waarden binnen een tekenreeks. Het werkt anders, afhankelijk van de opg
 
 **Parameters:**<br> 
 
-| Naam | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **uniqueValueRule1... uniqueValueRuleN** |Ten minste zijn 2 afhankelijk van de vereiste, geen hoofdletters |Tekenreeks | Lijst met regels voor het genereren van unieke waarden om te evalueren. |
 
@@ -184,7 +452,7 @@ Vervangt waarden binnen een tekenreeks. Het werkt anders, afhankelijk van de opg
 
 **Parameters:**<br> 
 
-| Naam | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **[appRoleAssignments]** |Verplicht |Tekenreeks |**[appRoleAssignments]**  object. |
 
@@ -196,7 +464,7 @@ Vervangt waarden binnen een tekenreeks. Het werkt anders, afhankelijk van de opg
 
 **Parameters:**<br> 
 
-| Naam | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **Bron** |Verplicht |Tekenreeks |**bron** waarde om bij te werken. |
 | **delimiter** |Verplicht |Tekenreeks |Hiermee geeft u het teken op dat wordt gebruikt om de teken reeks te splitsen (bijvoorbeeld: ",") |
@@ -209,7 +477,7 @@ Vervangt waarden binnen een tekenreeks. Het werkt anders, afhankelijk van de opg
 
 **Parameters:**<br> 
 
-| Naam | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **Bron** |Verplicht |Tekenreeks |**bron** waarde om bij te werken. |
 
@@ -221,7 +489,7 @@ Vervangt waarden binnen een tekenreeks. Het werkt anders, afhankelijk van de opg
 
 **Parameters:**<br> 
 
-| Naam | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **Bron** |Verplicht |Tekenreeks |**bron** waarde om bij te werken. |
 | **defaultValue** |Optioneel |Tekenreeks |De standaardwaarde moet worden gebruikt wanneer de bron komt niet overeen met alle sleutels. Lege tekenreeks (""). |
@@ -236,7 +504,7 @@ Vervangt waarden binnen een tekenreeks. Het werkt anders, afhankelijk van de opg
 
 **Parameters:**<br> 
 
-| Naam | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **Bron** |Verplicht |Tekenreeks |Doorgaans de naam van het kenmerk van het bronobject |
 | **culturele** |Optioneel |Tekenreeks |De notatie voor de cultuur naam op basis van RFC 4646 is *languagecode2-Country/regioncode2*, waarbij *languagecode2* de taal code van twee letters is en *land/regioncode2* de subcultuurcode van twee letters is. Voor beelden zijn ja-JP voor Japans (Japan) en en-US voor Engels (Verenigde Staten). In gevallen waarin een taal code van twee letters niet beschikbaar is, wordt er een code van drie letters gebruikt die is afgeleid van ISO 639-2.|
@@ -249,10 +517,37 @@ Vervangt waarden binnen een tekenreeks. Het werkt anders, afhankelijk van de opg
 
 **Parameters:**<br> 
 
-| Naam | Vereiste / herhalende | Type | Opmerkingen |
+| Name | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **Bron** |Verplicht |Tekenreeks |Doorgaans de naam van het kenmerk van het bronobject. |
 | **culturele** |Optioneel |Tekenreeks |De notatie voor de cultuur naam op basis van RFC 4646 is *languagecode2-Country/regioncode2*, waarbij *languagecode2* de taal code van twee letters is en *land/regioncode2* de subcultuurcode van twee letters is. Voor beelden zijn ja-JP voor Japans (Japan) en en-US voor Engels (Verenigde Staten). In gevallen waarin een taal code van twee letters niet beschikbaar is, wordt er een code van drie letters gebruikt die is afgeleid van ISO 639-2.|
+
+---
+### <a name="word"></a>Word
+**Functie:**<br> Woord (teken reeks, WordNumber, scheidings tekens)
+
+**Beschrijving:**<br> De functie Word retourneert een woord dat deel uitmaakt van een teken reeks, op basis van para meters die de scheidings tekens beschrijven die moeten worden gebruikt en het woord nummer dat moet worden geretourneerd. Elke teken reeks in een teken reeks gescheiden door de tekens van de spaties wordt aangeduid als woorden:
+
+Als getal < 1 retourneert een lege teken reeks.
+Als de teken reeks null is, wordt een lege teken reeks geretourneerd.
+Als teken reeks minder dan cijfer woorden bevat, of teken reeks geen woorden die zijn geïdentificeerd door scheidings tekens, wordt een lege teken reeks geretourneerd.
+
+**Parameters:**<br> 
+
+| Name | Vereiste / herhalende | Type | Opmerkingen |
+| --- | --- | --- | --- |
+| **String** |Verplicht |Kenmerk met meerdere waarden |De teken reeks waarmee een woord moet worden geretourneerd.|
+| **WordNumber** |Verplicht | Geheel getal | Nummer waarmee het woord nummer moet worden geretourneerd|
+| **scheidings tekens** |Verplicht |Tekenreeks| Een teken reeks die de scheidings tekens vertegenwoordigt die moeten worden gebruikt voor het identificeren van woorden|
+
+**Voorbeeld:**<br>
+Word ("Quick Brown Fox", 3, "")                                                                                       
+Retourneert ' bruin '
+
+Word ("This, string! heeft & veel scheidings tekens", 3, ",! & #")                                                                       
+Retourneert "has"
+
+---
 
 ## <a name="examples"></a>Voorbeelden
 ### <a name="strip-known-domain-name"></a>Bekende domeinnaam van strook/lijn
@@ -379,6 +674,18 @@ Gebaseerd op van de gebruiker voornaam, de tweede voornaam en achternaam, moet u
 * **UITVOER**: "John.Smith@contoso.com' als UPN-waarde van John.Smith@contoso.com nog niet bestaat in de map
 * **UITVOER**: "J.Smith@contoso.com' als UPN-waarde van John.Smith@contoso.com al bestaat in de map
 * **UITVOER**: "Jo.Smith@contoso.com' als de bovenstaande twee UPN-waarden al in de map bestaat
+
+### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>Stroom-mail waarde indien niet NULL, anders flow userPrincipalName
+U wilt het kenmerk mail stroomren als het aanwezig is. Als dat niet het geval is, wilt u in plaats daarvan de waarde van userPrincipalName door lopen.
+
+**Expressie:** <br>
+`Coalesce([mail],[userPrincipalName])`
+
+**Voorbeeld van invoer/uitvoer:** <br>
+
+* **Invoer** (mail): null
+* **Invoer** (userPrincipalName): "John.Doe@contoso.com"
+* **UITVOER**: "John.Doe@contoso.com"
 
 ## <a name="related-articles"></a>Gerelateerde artikelen
 * [Gebruiker inrichting/ongedaan maken van inrichting voor SaaS-toepassingen automatiseren](user-provisioning.md)

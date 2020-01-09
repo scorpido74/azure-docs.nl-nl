@@ -3,17 +3,17 @@ title: SSL configureren voor een Cloud service | Microsoft Docs
 description: Meer informatie over het opgeven van een HTTPS-eind punt voor een webrole en het uploaden van een SSL-certificaat om uw toepassing te beveiligen. In deze voor beelden wordt gebruikgemaakt van de Azure Portal.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/26/2017
-ms.author: gwallace
-ms.openlocfilehash: cc5b142558a21d1364254e555f3cf8f64bba0e58
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.author: tagore
+ms.openlocfilehash: 6ddb7001f770a9d8aea38d1a4698e15c167aeaa4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469018"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386762"
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>SSL configureren voor een toepassing in azure
 
@@ -176,3 +176,6 @@ Nu uw implementatie in azure wordt uitgevoerd, kunt u er verbinding mee maken me
 * Meer informatie over het [implementeren van een Cloud service](cloud-services-how-to-create-deploy-portal.md).
 * Een [aangepaste domein naam](cloud-services-custom-domain-name-portal.md)configureren.
 * [Uw Cloud service beheren](cloud-services-how-to-manage-portal.md).
+
+
+

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: 462c873221a4bdc622a9b118b6699a9719a5f88d
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: a951bc07c4a8ed42b1c116332d13674656bbaafd
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71961206"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646792"
 ---
 # <a name="what-is-a-private-azure-dns-zone"></a>Wat is een privé Azure DNS zone
 
@@ -23,9 +23,9 @@ De records in een privé-DNS-zone kunnen niet van het Internet worden omgezet. D
 U kunt een privé-DNS-zone koppelen aan een of meer virtuele netwerken door koppelingen naar het [virtuele netwerk](./private-dns-virtual-network-links.md)te maken.
 U kunt ook de functie voor [automatische registratie](./private-dns-autoregistration.md) inschakelen voor het automatisch beheren van de levens cyclus van de DNS-records voor de virtuele machines die zijn geïmplementeerd in een virtueel netwerk.
 
-## <a name="limits"></a>Limieten
+## <a name="limits"></a>Beperkingen
 
-Zie [Azure DNS limieten](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits) voor meer informatie over het aantal privé-DNS-zones dat u kunt maken in een abonnement en hoeveel record sets worden ondersteund in een privé-DNS-zone
+Zie [Azure DNS limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits) voor meer informatie over het aantal privé-DNS-zones dat u kunt maken in een abonnement en hoeveel record sets worden ondersteund in een privé-DNS-zone
 
 ## <a name="restrictions"></a>Beperkingen
 

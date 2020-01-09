@@ -7,13 +7,13 @@ manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/05/2019
-ms.openlocfilehash: b9b0ba85aed4d63fe6bb939c9ed3b99d3e789397
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 12/11/2019
+ms.openlocfilehash: 53fd02856a805f8bb5d7261cc9e6e32861b2b4fd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932565"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426991"
 ---
 # <a name="implement-search-traffic-analytics-in-azure-cognitive-search"></a>Zoek Traffic Analytics in azure Cognitive Search implementeren
 
@@ -167,9 +167,7 @@ Telkens wanneer een gebruiker op een document klikt, is dit een signaal dat moet
 
 ## <a name="3---analyze-in-power-bi"></a>3-in Power BI analyseren
 
-Nadat u uw app hebt geinstrumenteerd en hebt gecontroleerd of uw toepassing correct is verbonden met Application Insights, kunt u een vooraf gedefinieerde sjabloon gebruiken die door Azure Cognitive Search is gemaakt voor Power BI bureau blad. 
-
-Azure cognitieve Zoek opdrachten bieden een bewaking [Power bi inhouds pakket](https://app.powerbi.com/getdata/services/azure-search) , zodat u logboek gegevens kunt analyseren. Het inhouds pakket voegt vooraf gedefinieerde grafieken en tabellen toe die nuttig zijn voor het analyseren van de aanvullende gegevens die zijn vastgelegd voor de analyse van het zoek verkeer. Zie voor meer informatie de [help-pagina](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-search/). 
+Nadat u uw app hebt geinstrumenteerd en hebt gecontroleerd of uw toepassing correct is verbonden met Application Insights, downloadt u een vooraf gedefinieerde rapport sjabloon om gegevens te analyseren in Power BI bureau blad. Het rapport bevat vooraf gedefinieerde grafieken en tabellen die nuttig zijn voor het analyseren van de aanvullende gegevens die zijn vastgelegd voor analyse van het zoek verkeer. 
 
 1. Klik in het linkerdeel venster van het dash board van Azure Cognitive Search onder **instellingen**op **verkeer analyse zoeken**.
 
@@ -179,7 +177,7 @@ Azure cognitieve Zoek opdrachten bieden een bewaking [Power bi inhouds pakket](h
 
 2. Klik op dezelfde pagina op **Power bi rapport downloaden**.
 
-3. Het rapport wordt geopend in Power BI Desktop en u wordt gevraagd verbinding te maken met Application Insights. U kunt deze informatie vinden op de Azure Portal pagina's voor uw Application Insights resource.
+3. Het rapport wordt geopend in Power BI Desktop en u wordt gevraagd verbinding te maken met Application Insights en referenties op te geven. U kunt verbindings informatie vinden op de Azure Portal pagina's voor uw Application Insights resource. Geef voor referenties dezelfde gebruikers naam en hetzelfde wacht woord op die u gebruikt voor de aanmelding bij de portal.
 
    ![Verbinding maken met Application Insights](./media/search-traffic-analytics/connect-to-app-insights.png "Verbinding maken met Application Insights")
 
@@ -189,11 +187,8 @@ Het rapport bevat grafieken en tabellen waarmee u meer onderbouwde beslissingen 
 
 Metrische gegevens zijn opgenomen in de volgende items:
 
-* Klik op tarieven (afdeling): de verhouding van gebruikers die op een specifiek document klikken en het totaal aantal Zoek opdrachten.
+* Zoek het volume en de populairste term-document paren: de termen die tot hetzelfde document hebben geklikt, gesorteerd door te klikken.
 * Zoek opdrachten zonder klikken: voor waarden voor top query's die geen klikken registreren
-* Meest geklikte documenten: de meeste geklikte documenten op ID in de afgelopen 24 uur, 7 dagen en 30 dagen.
-* Populaire term-document paren: voor waarden die tot hetzelfde document hebben geklikt, gesorteerd door te klikken.
-* Tijd om te klikken: klikken op tijdstip sinds de zoek query
 
 De volgende scherm afbeelding toont de ingebouwde rapporten en grafieken voor het analyseren van analyse van zoek verkeer.
 

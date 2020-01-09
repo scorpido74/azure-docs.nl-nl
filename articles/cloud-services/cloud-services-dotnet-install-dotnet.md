@@ -3,19 +3,19 @@ title: .NET installeren op Azure Cloud Services-rollen | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de .NET Framework hand matig installeert op de web-en werk rollen van uw Cloud service
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/22/2018
-ms.author: gwallace
-ms.openlocfilehash: 25151f154b9806646406639df3efd7616e53f6bf
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: c950fbedde19e3b7708d3640487d413fcac7787f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359631"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360987"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>.NET installeren op Azure Cloud Services-rollen
 In dit artikel wordt beschreven hoe u versies van .NET Framework installeert die niet worden meegeleverd met het Azure-gast besturingssysteem. U kunt .NET gebruiken op het gast besturingssysteem om uw web-en werk rollen van de Cloud service te configureren.
@@ -35,11 +35,11 @@ Als u het web-installatie programma voor de .NET Framework wilt downloaden, kies
 * [.NET 4.6.2 Web-installatie programma](https://www.microsoft.com/download/details.aspx?id=53345)
 
 Het installatie programma voor een *webrol toevoegen* :
-  1. Klik in **Solution Explorer**onder **rollen** in uw Cloud service project met de rechter muisknop op uw *webfunctie en* Selecteer**nieuwe map** **toevoegen** > . Maak een map met de naam **bin**.
-  2. Klik met de rechter muisknop op de map bin en selecteer**bestaand item** **toevoegen** > . Selecteer .NET Installer en voeg deze toe aan de bin-map.
+  1. Klik **in Solution Explorer**onder **rollen** *in uw Cloud* service project met de rechter muisknop op uw webfunctie en selecteer > **nieuwe map** **toevoegen** . Maak een map met de naam **bin**.
+  2. Klik met de rechter muisknop op de map bin en selecteer > **bestaand item** **toevoegen** . Selecteer .NET Installer en voeg deze toe aan de bin-map.
   
 Het installatie programma voor een *werk* rollen toevoegen:
-* Klik *met de rechter* muisknop op uw werknemersrol en selecteer**bestaand item** **toevoegen** > . Selecteer .NET Installer en voeg deze toe aan de rol. 
+* Klik *met de rechter* muisknop op uw werknemersrol en selecteer > **bestaand item** **toevoegen** . Selecteer .NET Installer en voeg deze toe aan de rol. 
 
 Wanneer bestanden op deze manier aan de map rol inhoud worden toegevoegd, worden ze automatisch toegevoegd aan uw Cloud service pakket. De bestanden worden vervolgens geïmplementeerd op een consistente locatie op de virtuele machine. Herhaal dit proces voor elke web-en werk functie in uw Cloud service, zodat alle rollen een kopie van het installatie programma hebben.
 
@@ -53,7 +53,7 @@ Wanneer bestanden op deze manier aan de map rol inhoud worden toegevoegd, worden
 ## <a name="define-startup-tasks-for-your-roles"></a>Opstart taken voor uw rollen definiëren
 U kunt opstart taken gebruiken om bewerkingen uit te voeren voordat een rol wordt gestart. Als u de .NET Framework als onderdeel van de opstart taak installeert, zorgt u ervoor dat het Framework wordt geïnstalleerd voordat een toepassings code wordt uitgevoerd. Zie [opstart taken uitvoeren in azure](cloud-services-startup-tasks.md)voor meer informatie over opstart taken. 
 
-1. Voeg de volgende inhoud toe aan het bestand ServiceDefinition. csdef onder  het knoop punt webrole of **WorkerRole** voor alle rollen:
+1. Voeg de volgende inhoud toe aan het bestand ServiceDefinition. csdef onder het knoop punt **webrole** of **WorkerRole** voor alle rollen:
    
     ```xml
     <LocalResources>
@@ -73,7 +73,7 @@ U kunt opstart taken gebruiken om bewerkingen uit te voeren voordat een rol word
     </Startup>
     ```
    
-    De voor gaande configuratie voert de console `install.cmd` opdracht uit met beheerders bevoegdheden om de .NET Framework te installeren. De configuratie maakt ook een **LocalStorage** -element met de naam **NETFXInstall**. Met het opstart script wordt de map Temp ingesteld voor het gebruik van deze lokale opslag resource. 
+    De voor gaande configuratie voert de console opdracht `install.cmd` met beheerders bevoegdheden uit om de .NET Framework te installeren. De configuratie maakt ook een **LocalStorage** -element met de naam **NETFXInstall**. Met het opstart script wordt de map Temp ingesteld voor het gebruik van deze lokale opslag resource. 
     
     > [!IMPORTANT]
     > Om ervoor te zorgen dat het Framework correct wordt geïnstalleerd, stelt u de grootte van deze resource in op ten minste 1.024 MB.
@@ -197,7 +197,7 @@ U kunt opstart taken gebruiken om bewerkingen uit te voeren voordat een rol word
    EXIT /B 0
    ```
 
-3. Voeg het bestand install. cmd aan elke rol toe met behulp van**bestaand item** **toevoegen** > in **Solution Explorer** zoals eerder in dit onderwerp wordt beschreven. 
+3. Voeg het bestand install. cmd toe aan elke rol met behulp van > **bestaand item** **toevoegen** in **Solution Explorer** zoals eerder in dit onderwerp is beschreven. 
 
     Nadat deze stap is voltooid, moeten alle rollen het .NET-installatie bestand en het bestand install. cmd hebben.
 
@@ -222,7 +222,7 @@ Met deze XML worden diagnostische gegevens geconfigureerd voor het overdragen va
 ## <a name="deploy-your-cloud-service"></a>Uw Cloud service implementeren
 Wanneer u uw Cloud service implementeert, installeren de opstart taken de .NET Framework als deze nog niet is geïnstalleerd. De Cloud service rollen zijn in de status *bezet* terwijl het Framework wordt geïnstalleerd. Als de Framework-installatie opnieuw moet worden gestart, kunnen de service rollen ook opnieuw worden gestart. 
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 * [De .NET Framework installeren][Installing the .NET Framework]
 * [Bepalen welke .NET Framework versies worden geïnstalleerd][How to: Determine Which .NET Framework Versions Are Installed]
 * [Problemen met .NET Framework-installaties oplossen][Troubleshooting .NET Framework Installations]
@@ -234,3 +234,6 @@ Wanneer u uw Cloud service implementeert, installeren de opstart taken de .NET F
 <!--Image references-->
 [1]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithinstallerfiles.png
 [2]: ./media/cloud-services-dotnet-install-dotnet/rolecontentwithallfiles.png
+
+
+

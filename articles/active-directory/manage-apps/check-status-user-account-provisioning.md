@@ -15,12 +15,12 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1eea9cc738897c6de86c2fd73a0967e39b8afd4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e6a6714a1a9e7a2724d07584dd7b548ada2f201b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275064"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430230"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Zelf studie: rapportage over automatische toewijzing van gebruikers accounts
 
@@ -55,8 +55,8 @@ Hier kunt u toegang krijgen tot de voortgangs balk voor het inrichten en de inri
 De [voortgangs balk](application-provisioning-when-will-provisioning-finish-specific-user.md#view-the-provisioning-progress-bar) voor het inrichten wordt weer gegeven op het tabblad **inrichten** voor de opgegeven toepassing. Deze bevindt zich in de **huidige status** sectie onder **instellingen**en toont de status van de huidige initiële of incrementele cyclus. In deze sectie ziet u ook:
 
 * Het totale aantal gebruikers en/of groepen dat is gesynchroniseerd en zich momenteel in het bereik bevindt voor de inrichting van het bron systeem en het doel systeem.
-* De laatste keer dat de synchronisatie is uitgevoerd. Synchronisaties worden meestal om de 20-40 minuten uitgevoerd nadat een [eerste cyclus](user-provisioning.md#what-happens-during-provisioning) is voltooid.
-* Hiermee wordt aangegeven of een [eerste cyclus](user-provisioning.md#what-happens-during-provisioning) is voltooid.
+* De laatste keer dat de synchronisatie is uitgevoerd. Synchronisaties worden meestal om de 20-40 minuten uitgevoerd nadat een [eerste cyclus](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) is voltooid.
+* Hiermee wordt aangegeven of een [eerste cyclus](how-provisioning-works.md#provisioning-cycles-initial-and-incremental) is voltooid.
 * Of het inrichtings proces al dan niet in quarantaine is geplaatst en wat de reden voor de quarantaine status is (bijvoorbeeld fout bij het communiceren met het doel systeem als gevolg van ongeldige beheerders referenties).
 
 De **huidige status** moet de eerste locatie beheerders zijn om de operationele status van de inrichtings taak te controleren.

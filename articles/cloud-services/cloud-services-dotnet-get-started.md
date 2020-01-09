@@ -3,19 +3,19 @@ title: Aan de slag met Azure Cloud Services en ASP.NET | Microsoft Docs
 description: Informatie over het maken van een app met meerdere lagen met ASP.NET MVC en Azure. De app wordt uitgevoerd in een cloudservice, met een webrol en een werkrol. De app maakt gebruik van Entity Framework, SQL Database, en wachtrijen en blobs van Azure Storage.
 services: cloud-services, storage
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 manager: carmonm
 ms.service: cloud-services
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: gwallace
-ms.openlocfilehash: 3f2c60be29d679d0b0d30b6bf471f083c66ba93f
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.author: tagore
+ms.openlocfilehash: f5ebb8874b7e277d15ef89aa419c4d26560a6e76
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68827669"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75386728"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Aan de slag met Azure Cloud Services en ASP.NET
 
@@ -31,7 +31,7 @@ De toepassing is een bulletinboard voor advertenties. Gebruikers maken een adver
 
 De toepassing maakt gebruik van het [wachtrijgerichte werkpatroon](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) om de CPU te ontlasten bij het maken van miniatuurweergaven voor een back-endproces (een CPU-intensieve bewerking).
 
-## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternatieve architectuur: App Service en WebJobs
+## <a name="alternative-architecture-app-service-and-webjobs"></a>Alternatieve architectuur: App Service en webjobs
 Deze zelfstudie laat zien hoe u de front-end en back-end uitvoert in een cloudservice van Azure. Het is ook mogelijk om de front-end uit te voeren in [Azure App Service](/azure/app-service/) en de functie [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) te gebruiken voor de back-end. Zie [Aan de slag met de Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) voor een zelfstudie waarin gebruik wordt gemaakt van WebJobs. Zie [Vergelijking van Azure App Service, Virtual Machines, Service Fabric en Cloud Services](/azure/architecture/guide/technology-choices/compute-decision-tree) voor meer informatie over het kiezen van de services die het meest geschikt zijn voor uw scenario.
 
 ## <a name="what-youll-learn"></a>Wat u leert
@@ -124,7 +124,7 @@ Een Azure-cloudservice is de omgeving waarin de toepassing wordt uitgevoerd.
 5. Kies de regio waarin u de toepassing wilt implementeren.
 
     Dit veld geeft aan in welk datacenter uw cloudservice zal worden gehost. Voor een productietoepassing kiest u de regio die het dichtst bij uw klanten ligt. Voor deze zelfstudie kiest u de regio die het dichtst bij u ligt.
-5. Klik op **Create**.
+5. Klik op **Maken**.
 
     Op de volgende afbeelding ziet u een cloudservice met de URL CSvccontosoads.cloudapp.net.
 
@@ -134,14 +134,14 @@ Een Azure-cloudservice is de omgeving waarin de toepassing wordt uitgevoerd.
 Wanneer de app wordt uitgevoerd in de cloud, gebruikt deze een cloudgebaseerde database.
 
 1. Klik in [Azure Portal](https://portal.azure.com) op **Een resource maken > Databases > SQL Database**.
-2. Voer in het vak **Databasenaam** *contosoads* in.
+2. Voer in het vak **Databasenaam***contosoads* in.
 3. Klik in de **Resourcegroep** op **Bestaande gebruiken** en selecteer de resourcegroep die voor de cloudservice wordt gebruikt.
 4. Klik in de volgende afbeelding op **Server - vereiste instellingen configureren** en **Een nieuwe server maken**.
 
     ![Tunnel naar databaseserver](./media/cloud-services-dotnet-get-started/newdb.png)
 
     Als uw abonnement al over een server beschikt, kunt u in de vervolgkeuzelijst ook die server selecteren.
-5. Voer in het vak **Servernaam** *csvccontosodbserver* in.
+5. Voer in het vak **Servernaam***csvccontosodbserver* in.
 
 6. Geef een **Aanmeldingsnaam** en een **Wachtwoord** op voor de beheerder.
 
@@ -153,7 +153,7 @@ Wanneer de app wordt uitgevoerd in de cloud, gebruikt deze een cloudgebaseerde d
 9. Klik op **Selecteren** voor de nieuwe server.
 
     ![Nieuwe SQL Database-server](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Klik op **Create**.
+10. Klik op **Maken**.
 
 ### <a name="create-an-azure-storage-account"></a>Een Azure-opslagaccount maken
 Een Azure-opslagaccount biedt resources voor het opslaan van wachtrij- en blobgegevens in de cloud.
@@ -176,7 +176,7 @@ In een echte toepassing maakt u meestal afzonderlijke accounts voor toepassingsg
     Wanneer de cloudservice en het opslagaccount zich in verschillende datacenters (verschillende regio's) bevinden, neemt de latentie toe en wordt de bandbreedte buiten het datacenter aan u in rekening gebracht. Bandbreedte binnen een datacenter is gratis.
 
     Azure-affiniteitsgroepen bieden een mechanisme om de afstand tussen resources in een datacenter te minimaliseren, waardoor ze de latentie kunnen verminderen. In deze zelfstudie worden geen affiniteitsgroepen gebruikt. Zie [Een affiniteitsgroep maken in Azure](/previous-versions/azure/reference/gg715317(v=azure.100)) voor meer informatie.
-7. Klik op **Create**.
+7. Klik op **Maken**.
 
     ![Nieuw opslagaccount](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -229,7 +229,7 @@ Azure-opslagaccountverbindingsreeksen voor het webrolroject en het werkrolprojec
 1. Klik in **Solution Explorer** met de rechtermuisknop op **ContosoAdsWeb** (onder **Roles** in het **ContosoAdsCloudService**-project) en klik vervolgens op **Properties**.
 
     ![Roleigenschappen](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. Klik op het tabblad **Settings**. Kies in de vervolgkeuzelijst **Service Configuration** de optie **Cloud**.
+2. Klik op het tabblad **instellingen** . Kies **Cloud**in de vervolg keuzelijst **Service configuratie** .
 
     ![Cloudconfiguratie](./media/cloud-services-dotnet-get-started/sccloud.png)
 3. Selecteer de vermelding **StorageConnectionString**. Aan de rechterkant van de regel ziet u nu een knop met weglatingstekens ( **...** ). Klik op deze knop om het dialoogvenster **Create Storage Account Connection String** te openen.
@@ -280,7 +280,7 @@ De `<Instances>`-instelling geeft het aantal virtuele machines aan waarop de wer
 ### <a name="deploy-the-project-to-azure"></a>Het project implementeren in Azure
 1. Klik in **Solution Explorer** met de rechtermuisknop op het **ContosoAdsCloudService**-cloudproject en selecteer vervolgens **Publish**.
 
-   ![Het menu Publish](./media/cloud-services-dotnet-get-started/pubmenu.png)
+   ![Het menu Publiceren](./media/cloud-services-dotnet-get-started/pubmenu.png)
 2. Klik tijdens de stap **Sign in** van de wizard **Publish Azure Application** op **Next**.
 
     ![Aanmeldingsstap](./media/cloud-services-dotnet-get-started/pubsignin.png)
@@ -387,9 +387,9 @@ In deze sectie configureert u Azure Storage- en SQL-verbindingsreeksen om lokaal
 7. Volg dezelfde procedure om een verbindingsreeks voor opslag toe te voegen aan de eigenschappen van de ContosoAdsWorker-rol.
 8. Terwijl u zich nog in het eigenschappenvenster **ContosoAdsWorker [rol]** bevindt, voegt u nog een verbindingsreeks toe:
 
-   * Naam: ContosoAdsDbConnectionString
-   * Type: Tekenreeks
-   * Waarde: plak hier dezelfde verbindingsreeks die u voor het webrolproject hebt gebruikt. (Het volgende voorbeeld is voor Visual Studio 2013. Als u Visual Studio 2015 of hoger gebruikt en dit voorbeeld kopieert, vergeet dan niet om de gegevensbron te wijzigen.)
+   * Name: ContosoAdsDbConnectionString
+   * Type: String
+   * Value: plak hier dezelfde verbindingsreeks die u voor het webrolproject hebt gebruikt. (Het volgende voorbeeld is voor Visual Studio 2013. Als u Visual Studio 2015 of hoger gebruikt en dit voorbeeld kopieert, vergeet dan niet om de gegevensbron te wijzigen.)
 
        ```
        Data Source=(localdb)\v11.0; Initial Catalog=ContosoAds; Integrated Security=True; MultipleActiveResultSets=True;
@@ -772,7 +772,10 @@ Zie [Microsoft Azure Storage - nieuwe functies, aanbevolen procedures en patrone
 
 Zie de volgende bronnen voor meer informatie:
 
-* [Azure Cloud Services Part 1: Inleiding](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
+* [Deel 1 Azure Cloud Services: Inleiding](https://justazure.com/microsoft-azure-cloud-services-part-1-introduction/)
 * [Cloud Services beheren](cloud-services-how-to-manage-portal.md)
 * [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [Een cloudserviceprovider kiezen](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
+
+
+

@@ -3,20 +3,26 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 06/18/2019
-ms.openlocfilehash: 16ee9ae9a4eec6b38c57b984b3acb75479b437e6
-ms.sourcegitcommit: a52d48238d00161be5d1ed5d04132db4de43e076
+ms.date: 12/17/2019
+ms.openlocfilehash: 7aa478c764ea1d9720d91068fa04d353e6a4db02
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67277200"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75379489"
 ---
-U hebt een [account voor Cognitive Services-API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) met toegang tot de Bing Search-API's nodig. Voordat u doorgaat, moet u de toegangssleutel die is opgegeven na het starten van een abonnement op de prijs-S9-laag, zoals wordt weergegeven in [Cognitive Services-prijsinformatie: Bing zoeken-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/). 
+## <a name="create-an-azure-resource"></a>Een Azure-resource maken
 
-Zo start u een abonnement in de Azure-portal:
-1. Typ 'BingSearchV7' in het tekstvak bovenin de Azure-portal waar `Search resources, services, and docs` wordt weergegeven.  
-2. Selecteer `Bing Search v7` in de vervolgkeuzelijst onder Marketplace.
-3. Voer `Name` in voor de nieuwe resource.
-4. Selecteer `Pay-As-You-Go`-abonnement.
-5. Selecteer prijscategorie `S9`.
-6. Klik op `Enable` om het abonnement te starten.
+Begin met het gebruik van de Bing Visual Search-API door een van de onderstaande Azure-resources te maken.
+
+* [Een proef resource maken](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
+    * Er is geen Azure-abonnement nodig.
+    * Gratis geldig voor zeven dagen. Nadat u zich hebt aangemeld, is een proef sleutel en een eind punt beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).
+
+* [Een Bing Search V7-resource maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7):
+    * Beschikbaar via de Azure Portal totdat u de resource verwijdert.
+    * Selecteer de `S9` prijs categorie.
+
+* [Een resource met meerdere services maken](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
+    * Beschikbaar via de Azure Portal totdat u de resource verwijdert.  
+    * Gebruik dezelfde sleutel en hetzelfde eind punt voor uw toepassingen, op meerdere Cognitive Services.

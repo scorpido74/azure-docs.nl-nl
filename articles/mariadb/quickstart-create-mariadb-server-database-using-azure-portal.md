@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 12/02/2019
-ms.openlocfilehash: 240329ba3dc50cef249716f951595fea0cdc67eb
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9ba02f53ba5765d90e8bba80e4d99922d7eb7c46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769979"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432036"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Een Azure Database for MariaDB-server maken met behulp van Azure Portal
 
@@ -26,7 +26,7 @@ Ga in uw webbrowser naar de [Azure-portal](https://portal.azure.com/). Voer uw r
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>Een Azure Database for MariaDB-server maken
 
-U maakt een Azure Database for MariaDB-server met een gedefinieerde set [reken- en opslagresources](concepts-pricing-tiers.md). De server wordt gemaakt binnen een [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md).
+U maakt een Azure Database for MariaDB-server met een gedefinieerde set [reken- en opslagresources](concepts-pricing-tiers.md). De server wordt gemaakt binnen een [Azure-resourcegroep](../azure-resource-manager/management/overview.md).
 
 Een Azure Database for MariaDB-server maken:
 
@@ -50,7 +50,7 @@ Een Azure Database for MariaDB-server maken:
     Wachtwoord | *uw keuze* | Voer een nieuw wachtwoord in voor het beheerdersaccount voor de server. Dit wachtwoord moet tussen 8 en 128 tekens bevatten. Uw wachtwoord moet tekens bevatten uit drie van de volgende categorieën: Nederlandse hoofdletters, Nederlandse kleine letters, cijfers (0-9) en niet-alfanumerieke tekens (!, $, #, %, enzovoort).
     Wachtwoord bevestigen | *uw keuze*| Bevestig het wachtwoord voor het beheerdersaccount.
     Locatie | *de regio het dichtst bij uw gebruikers*| Kies de locatie die zich het dichtst bij uw gebruikers of uw andere Azure-toepassingen bevindt.
-    Version | *de nieuwste versie*| De nieuwste versie (tenzij u specifieke vereisten hebt voor het gebruik van een andere versie).
+    Versie | *de nieuwste versie*| De nieuwste versie (tenzij u specifieke vereisten hebt voor het gebruik van een andere versie).
     Prijscategorie | Zie de beschrijving. | De reken-, opslag- en back-upconfiguraties voor de nieuwe server. Selecteer **Prijscategorie** > **Algemeen gebruik**. Behoud de standaardwaarden voor de volgende instellingen:<br><ul><li>**Bewerking voor compute** (Gen 5)</li><li>**vCore** (4 vCores)</li><li>**Opslag** (100 GB)</li><li>**Bewaarperiode voor back-ups** (7 dagen)</li></ul><br>Als u serverback-ups in geografisch redundante opslag wilt inschakelen, selecteert u **Geografisch redundant** in het gedeelte **Redundantieopties voor back-up**. <br><br>Selecteer **OK** om deze geselecteerde prijscategorie op te slaan. Deze selecties worden afgebeeld in de volgende schermopname.
   
    > [!NOTE]
@@ -199,7 +199,7 @@ Verbinding maken met de server met MySQL Workbench:
     |Instelling |Voorgestelde waarde|Beschrijving van veld|
     |---|---|---|
      Verbindingsnaam | **Demoverbinding** | Een label voor deze verbinding. |
-    Verbindingsmethode | **Standaard (TCP/IP)** | Standard (TCP/IP) is voldoende. |
+    Verbindingsmethode | **Standard (TCP/IP)** | Standard (TCP/IP) is voldoende. |
     Hostnaam | *servernaam* | De servernaamwaarde die u hebt gebruikt bij het maken van de Azure Database for MariaDB-server. De server in ons voorbeeld is **mydemoserver.mariadb.database.azure.com**. Gebruik de FQDN (Fully Qualified Domain Name) ( **\*.mariadb.database.azure.com**) zoals weergegeven in het voorbeeld. Als u de servernaam niet meer weet, volgt u de eerder beschreven stappen in dit artikel om de verbindingsgegevens op te halen.|
      Port | 3306 | De poort die u gebruikt om verbinding te maken met uw Azure Database for MariaDB-server. |
     Gebruikersnaam |  *aanmeldnaam van serverbeheerder* | De aanmeldingsgegevens van de serverbeheerder die u hebt gebruikt bij het maken van de Azure Database for MariaDB-server. De gebruikers naam van ons voor beeld is **myadmin\@mydemoserver**. Als u de gebruikersnaam niet meer weet, volgt u de eerder beschreven stappen in dit artikel om de verbindingsgegevens op te halen. De indeling is *username\@servername*.
@@ -213,7 +213,7 @@ Verbinding maken met de server met MySQL Workbench:
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-De resources die u hebt gemaakt in de snelstart kunt u op twee manieren opschonen. U kunt de [Azure-resourcegroep](../azure-resource-manager/resource-group-overview.md) verwijderen. Met deze optie verwijdert u alle resources in de resourcegroep. Als u de andere resources intact wilt houden, verwijdert u alleen de ene server-resource.
+De resources die u hebt gemaakt in de snelstart kunt u op twee manieren opschonen. U kunt de [Azure-resourcegroep](../azure-resource-manager/management/overview.md) verwijderen. Met deze optie verwijdert u alle resources in de resourcegroep. Als u de andere resources intact wilt houden, verwijdert u alleen de ene server-resource.
 
 > [!TIP]
 > Andere snelstarts in deze verzameling zijn op deze snelstart gebaseerd. Als u van plan bent om ook andere Azure Database for MariaDB-snelstarts te volgen, moet u geen resources opschonen die u in deze snelstart hebt gemaakt. Als u niet wilt doorgaan, gebruikt u de volgende stappen om alle resources te verwijderen die tijdens deze snelstart zijn gemaakt.

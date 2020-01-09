@@ -1,7 +1,7 @@
 ---
-title: Ontwerpoverwegingen voor Azure Virtual Machine Scale Sets | Microsoft Docs
-description: Meer informatie over overwegingen bij het ontwerp voor uw Azure Virtual Machine Scale Sets
-keywords: virtuele Linux-machine, virtuele-machineschaalsets
+title: Ontwerp overwegingen voor Azure Virtual Machine Scale Sets
+description: Meer informatie over de ontwerp overwegingen voor uw Azure-Virtual Machine Scale Sets. Functies van schaal sets vergelijken met VM-functies.
+keywords: virtuele Linux-machine, schaal sets voor virtuele machines
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mayanknayar
@@ -16,62 +16,62 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
-ms.openlocfilehash: 67bbad7e73f33d73d4c3f1d4f7e5599d2ef914e3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4238e96465a1fd7ad3e73c62134437cd819fba8a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618469"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359440"
 ---
-# <a name="design-considerations-for-scale-sets"></a>Ontwerpoverwegingen voor Schaalsets
-Dit artikel worden besproken ontwerpoverwegingen voor Schaalsets voor virtuele machines. Raadpleeg voor informatie over wat er in Virtual Machine Scale Sets zijn [Virtual Machine Scale Sets overzicht](virtual-machine-scale-sets-overview.md).
+# <a name="design-considerations-for-scale-sets"></a>Ontwerp overwegingen voor schaal sets
+In dit artikel worden ontwerp overwegingen voor Virtual Machine Scale Sets beschreven. Raadpleeg [Virtual Machine Scale sets Overview](virtual-machine-scale-sets-overview.md)voor meer informatie over wat virtual machine Scale sets zijn.
 
-## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>Wanneer u scale Hiermee stelt u in plaats van virtuele machines?
-Over het algemeen zijn schaalsets nuttig voor het implementeren van maximaal beschikbare infrastructuur waarin een set van machines vergelijkbare configuratie heeft. Sommige functies zijn echter alleen beschikbaar in schaalsets terwijl andere functies alleen beschikbaar in virtuele machines zijn. Als u wilt maken van een gefundeerde beslissing nemen over het gebruik van elke technologie, moet u eerst een overzicht van enkele van de meest gebruikte functies die beschikbaar in schaalsets, maar geen virtuele machines zijn uitvoeren:
+## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>Wanneer moet u schaal sets gebruiken in plaats van virtuele machines?
+In het algemeen zijn schaal sets handig voor het implementeren van een infra structuur met hoge Beschik baarheid, waarbij een set computers vergelijk bare configuratie heeft. Sommige functies zijn echter alleen beschikbaar in schaal sets, terwijl andere functies alleen beschikbaar zijn in Vm's. Als u een weloverwogen beslissing wilt nemen over het gebruik van elke technologie, moet u eerst een aantal veelgebruikte functies bekijken die beschikbaar zijn in schaal sets, maar niet op Vm's:
 
-### <a name="scale-set-specific-features"></a>Scale set-specifieke functies
+### <a name="scale-set-specific-features"></a>Schaal sets-specifieke functies
 
-- Als u opgeeft in de configuratie van de schaalset, kunt u bijwerken de *capaciteit* eigenschap meer virtuele machines parallel te implementeren. Dit proces is het beter dan het schrijven van een script voor de organisatie van veel afzonderlijke virtuele machines tegelijkertijd implementeren.
-- U kunt [voor automatisch schalen van Azure gebruiken voor het automatisch schalen van een schaalset](./virtual-machine-scale-sets-autoscale-overview.md) , maar niet voor afzonderlijke VM's.
-- U kunt [terugzetten van een installatiekopie schaalset-VM's](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage) maar [niet voor afzonderlijke VM's](https://docs.microsoft.com/rest/api/compute/virtualmachines).
-- U kunt [overprovision](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning) schaalset-VM's voor hogere mate van betrouwbaarheid en snellere implementatietijden. U kunt geen afzonderlijke virtuele machines overprovision, tenzij u aangepaste code schrijven voor deze actie uitvoeren.
-- Kunt u een [Upgradebeleid](./virtual-machine-scale-sets-upgrade-scale-set.md) om gemakkelijk upgrades voor virtuele machines in de schaalset worden uitgerold. Met afzonderlijke virtuele machines, moet u uzelf updates indeelt.
+- Wanneer u de configuratie van de schaalset hebt opgegeven, kunt u de *capaciteits* eigenschap bijwerken om meer vm's parallel te implementeren. Dit proces is beter dan het schrijven van een script om de implementatie van veel afzonderlijke Vm's parallel te organiseren.
+- U kunt [Azure automatisch schalen gebruiken om een schaalset te schalen](./virtual-machine-scale-sets-autoscale-overview.md) , maar niet de afzonderlijke vm's.
+- U kunt de [schaalset-vm's](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage) , maar [niet de afzonderlijke vm's](https://docs.microsoft.com/rest/api/compute/virtualmachines), opnieuw instellen.
+- U kunt virtuele machines met schaal sets [overinrichten](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning) voor meer betrouw baarheid en snellere implementatie tijden. U kunt afzonderlijke Vm's niet overzetten, tenzij u aangepaste code schrijft om deze actie uit te voeren.
+- U kunt een [upgrade beleid](./virtual-machine-scale-sets-upgrade-scale-set.md) opgeven zodat upgrades op virtuele machines in uw schaalset eenvoudig kunnen worden geïmplementeerd. Met afzonderlijke Vm's moet u zelf updates organiseren.
 
 ### <a name="vm-specific-features"></a>VM-specifieke functies
 
-Sommige functies zijn momenteel alleen beschikbaar in virtuele machines:
+Sommige functies zijn momenteel alleen beschikbaar in Vm's:
 
-- U kunt een installatiekopie maken van een afzonderlijke virtuele machine, maar niet vanaf een virtuele machine in een schaalset.
-- U kunt een afzonderlijke virtuele machine van systeemeigen schijven migreren naar managed disks, maar u kunt VM-exemplaren in een schaalset niet migreren.
-- U kunt openbare IPv6-adressen toewijzen aan afzonderlijke VM virtuele netwerkinterfacekaarten (NIC's), maar niet voor VM-exemplaren in een schaalset. U kunt openbare IPv6-adressen aan load balancers in het zicht van een afzonderlijke virtuele machines of Virtual Machine scale sets virtuele machines.
+- U kunt een installatie kopie van een afzonderlijke virtuele machine vastleggen, maar niet van een virtuele machine in een schaalset.
+- U kunt een afzonderlijke VM migreren van systeem eigen schijven naar Managed disks, maar u kunt geen VM-exemplaren in een schaalset migreren.
+- U kunt open bare IPv6-IP-adressen toewijzen aan afzonderlijke virtuele netwerk interface kaarten (Nic's), maar kunnen dit niet doen voor VM-exemplaren in een schaalset. U kunt open bare IPv6-IP-adressen toewijzen aan load balancers vóór afzonderlijke Vm's of schaal sets Vm's.
 
-## <a name="storage"></a>Opslag
+## <a name="storage"></a>Storage
 
-### <a name="scale-sets-with-azure-managed-disks"></a>Schaalsets met Azure Managed Disks
-Schaalsets kunnen worden gemaakt met [Azure Managed Disks](../virtual-machines/windows/managed-disks-overview.md) in plaats van traditionele Azure storage-accounts. Beheerde schijven bieden de volgende voordelen:
-- U hoeft niet vooraf een set met Azure storage-accounts maken voor virtuele machines met schaalsets.
-- U kunt definiëren [gekoppelde gegevensschijven](virtual-machine-scale-sets-attached-disks.md) instellen voor de virtuele machines in uw schaalset.
-- Schaalsets kunnen worden geconfigureerd om te [ondersteuning voor maximaal 1000 virtuele machines in een set](virtual-machine-scale-sets-placement-groups.md). 
+### <a name="scale-sets-with-azure-managed-disks"></a>Schaal sets met Azure Managed Disks
+Schaal sets kunnen worden gemaakt met [Azure Managed disks](../virtual-machines/windows/managed-disks-overview.md) in plaats van traditionele Azure-opslag accounts. Managed Disks bieden de volgende voor delen:
+- U hoeft geen set van Azure Storage-accounts vooraf te maken voor de virtuele machines met schaal sets.
+- U kunt [gekoppelde gegevens schijven](virtual-machine-scale-sets-attached-disks.md) definiëren voor de virtuele machines in uw schaalset.
+- Schaal sets kunnen worden geconfigureerd voor [ondersteuning van Maxi maal 1.000 vm's in een set](virtual-machine-scale-sets-placement-groups.md). 
 
-Als u een bestaande sjabloon hebt, kunt u ook [bijwerken van de sjabloon voor het gebruik van Managed Disks](virtual-machine-scale-sets-convert-template-to-md.md).
+Als u een bestaande sjabloon hebt, kunt u [de sjabloon ook bijwerken om Managed disks te gebruiken](virtual-machine-scale-sets-convert-template-to-md.md).
 
-### <a name="user-managed-storage"></a>Gebruiker beheerde opslag
-Een schaalset die niet met Azure Managed Disks is gedefinieerd, is afhankelijk van gebruikers gecreëerde storage-accounts voor het opslaan van de OS-schijven van de virtuele machines in de set. Een ratio van 20 VM's per opslagaccount of minder wordt aanbevolen om bereiken van maximale i/o en ook profiteren van _piekmomenten_ (Zie hieronder). Het is ook raadzaam dat u het begin van de namen van opslagaccounts verdeeld over het alfabet. Hierdoor helpt belasting verdelen over verschillende interne systemen. 
+### <a name="user-managed-storage"></a>Door de gebruiker beheerde opslag
+Een schaalset die niet is gedefinieerd met Azure Managed Disks, is afhankelijk van door de gebruiker gemaakte opslag accounts voor het opslaan van de besturingssysteem schijven van de virtuele machines in de set. Een verhouding van 20 Vm's per opslag account of minder wordt aanbevolen om maximale IO te halen en ook te profiteren van _overinrichting_ (zie hieronder). Het is ook raadzaam om de begin tekens van de namen van opslag accounts over het alfabet te verdelen. Dit helpt bij het verdelen van de belasting over verschillende interne systemen. 
 
 
-## <a name="overprovisioning"></a>Overprovisioning
-Schaalsets die momenteel standaard ingesteld op 'piekmomenten' virtuele machines. Overprovisioning is ingeschakeld, de schaal daadwerkelijk fabriceert van meer virtuele machines bevat dan u gevraagd om instellen en vervolgens de extra virtuele machines worden verwijderd zodra het aangevraagde aantal virtuele machines zijn ingericht. Overmatige inrichting succespercentages verbetert en minder implementatietijd. U niet worden in rekening gebracht voor de extra virtuele machines, en ze niet meetellen voor de grenzen van uw quotum.
+## <a name="overprovisioning"></a>Overmatige inrichting
+Schaal sets worden op dit moment standaard ingesteld op het ' overinrichten ' van Vm's. Wanneer overprovisioning is ingeschakeld, draait de schaalset feitelijk meer virtuele machines uit dan u hebt gevraagd. vervolgens worden de extra Vm's verwijderd zodra het aangevraagde aantal Vm's is ingericht. Bij een overinrichting worden de succes percentages van de inrichting verbeterd en wordt de implementatie tijd verminderd. Er worden geen kosten in rekening gebracht voor de extra Vm's en ze tellen niet mee voor uw quotum limieten.
 
-Tijdens piekmomenten inrichting succespercentages verbeteren, kan dit leiden tot verwarring gedrag voor een toepassing die niet is ontworpen voor het afhandelen van extra virtuele machines die wordt weergegeven en vervolgens verdwijnen. Als u wilt inschakelen op piekmomenten uitschakelen, zorg ervoor dat u hebt de volgende tekenreeks in de sjabloon: `"overprovision": "false"`. Meer informatie vindt u de [schaal ingesteld REST API-documentatie](/rest/api/virtualmachinescalesets/create-or-update-a-set).
+Bij het overinrichten worden de succes percentages van het inrichten verbeterd, kan dit leiden tot verwarrende gedragingen voor een toepassing die niet is ontworpen voor het afhandelen van extra Vm's die worden weer gegeven en die vervolgens weer geven. Als u het overinrichten wilt uitschakelen, moet u ervoor zorgen dat u de volgende teken reeks in uw sjabloon hebt: `"overprovision": "false"`. Meer informatie vindt u in de [rest API documentatie van de schaalset](/rest/api/virtualmachinescalesets/create-or-update-a-set).
 
-Als uw schaalset maakt gebruik van gebruikers beheerde opslag, en u overmatige inrichting uitschakelen, kunt u meer dan 20 VM's per opslagaccount hebt, maar het wordt afgeraden om door te gaan boven de 40 voor i/o-prestaties. 
+Als uw schaalset gebruikmaakt van door de gebruiker beheerde opslag en u het overinrichten uitschakelt, kunt u meer dan 20 Vm's per opslag account hebben, maar dit wordt niet aanbevolen om te beginnen met 40 om de oorzaak van de IO-prestaties. 
 
-## <a name="limits"></a>Limits
-Een schaalset die is gebouwd op een Marketplace-installatiekopie (ook wel bekend als een platforminstallatiekopie) en geconfigureerd voor het gebruik van Azure Managed Disks biedt ondersteuning voor een capaciteit van maximaal 1000 virtuele machines. Als u uw schaalset ter ondersteuning van meer dan 100 virtuele machines configureert, wordt er niet in alle scenario's werken hetzelfde (voor een voorbeeld van de load balancing). Zie voor meer informatie, [werken met grote virtuele-machineschaalsets](virtual-machine-scale-sets-placement-groups.md). 
+## <a name="limits"></a>Beperkingen
+Een schaalset die is gebouwd op een Marketplace-installatie kopie (ook wel een platform installatie kopie genoemd) en die is geconfigureerd voor het gebruik van Azure Managed Disks ondersteunt een capaciteit van Maxi maal 1.000 Vm's. Als u uw schaalset configureert voor ondersteuning van meer dan 100 Vm's, werken niet alle scenario's hetzelfde (bijvoorbeeld taak verdeling). Zie [werken met grote schaal sets voor virtuele machines](virtual-machine-scale-sets-placement-groups.md)voor meer informatie. 
 
-Een schaalset die is geconfigureerd met de gebruiker beheerde opslagaccounts is momenteel beperkt tot 100 virtuele machines (en 5 opslagaccounts worden aanbevolen voor deze).
+Een schaalset die is geconfigureerd met door de gebruiker beheerde opslag accounts, is momenteel beperkt tot 100 Vm's (en 5 opslag accounts worden aanbevolen voor deze schaal).
 
-Een schaalset die is gebouwd op een aangepaste installatiekopie (één die door u zijn gebouwd) hebben een capaciteit van maximaal 600 virtuele machines wanneer geconfigureerd met Azure Managed disks. Als de schaalset is geconfigureerd met de opslagaccounts die door de gebruiker wordt beheerd, moet deze alle OS VHD's met gegevensschijven binnen een opslagaccount maken. Als gevolg hiervan het maximale aantal virtuele machines in een schaalset die is gebouwd op een aangepaste installatiekopie aanbevolen en de gebruiker beheerde opslag is 20. Als u overmatige inrichting uitschakelt, kunt u maximaal 40 gaan.
+Een schaalset die is gebouwd op een aangepaste installatie kopie (één door u gebouwd), kan een capaciteit hebben van Maxi maal 600 Vm's wanneer deze is geconfigureerd met Azure Managed disks. Als de schaalset is geconfigureerd met door de gebruiker beheerde opslag accounts, moet de virtuele harde schijf van het besturings systeem in één opslag account worden gemaakt. Als gevolg hiervan is het Maxi maal aanbevolen aantal Vm's in een schaalset die is gebouwd op een aangepaste installatie kopie en door de gebruiker beheerde opslag, 20. Als u het overinrichten uitschakelt, kunt u Maxi maal 40 gaan.
 
-Voor meer virtuele machines dan deze limieten, toestaan, moet u meerdere schaalsets implementeren zoals wordt weergegeven in [deze sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale).
+Voor meer Vm's dan deze limieten toestaan, moet u meerdere schaal sets implementeren, zoals in [deze sjabloon](https://github.com/Azure/azure-quickstart-templates/tree/master/301-custom-images-at-scale)wordt weer gegeven.
 

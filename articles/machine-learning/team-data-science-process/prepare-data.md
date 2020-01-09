@@ -11,21 +11,21 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d0754f7ac85976b5ef307bf1266d26a9380ab1c6
-ms.sourcegitcommit: 6e42ce0ca0a7ac572398e9d024fcf69906670d74
+ms.openlocfilehash: d17ca5d4bd709ec2529a771008e47ce6f1b68daf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74936034"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75432138"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Taken om gegevens voor te bereiden voor verbeterde Machine Learning
 Vooraf verwerken en opschonen van gegevens zijn belangrijke taken die normaal gesproken moeten worden uitgevoerd voordat de gegevensset effectief kan worden gebruikt voor machine learning. Onbewerkte gegevens is vaak veel ruis veroorzaken en onbetrouwbare en mogelijk ontbreken waarden. Met behulp van dergelijke gegevens voor modellen kan misleidend resultaten opleveren. Deze taken maken deel uit van het Team Data Science Process (TDSP) en een eerste onderzoek van een gegevensset die wordt gebruikt om te detecteren en plannen van het vooraf verwerken vereist doorgaans als volgt. Zie voor meer instructies voor de TDSP-proces gedetailleerde, de stappen die worden beschreven de [Team Data Science Process](overview.md).
 
-Het vooraf verwerken en opschonen van taken, zoals de gegevens verkennen-taak kunnen worden uitgevoerd in een groot aantal omgevingen, zoals SQL of Hive of Azure Machine Learning Studio, en met verschillende hulpprogramma's en talen, zoals R of Python, afhankelijk van waar uw gegevens worden opgeslagen en hoe dit wordt geformatteerd. Aangezien TDSP iteratieve van aard is, kunnen deze taken plaatsvinden op verschillende stappen in de werkstroom van het proces.
+Taken voorafgaand aan verwerking en opschoning, zoals de taak voor het verkennen van gegevens, kunnen worden uitgevoerd in een breed scala aan omgevingen, zoals SQL of Hive of Azure Machine Learning Studio (klassiek), en met verschillende hulpprogram ma's en talen, zoals R of python, afhankelijk van waar uw gegevens wordt opgeslagen en hoe deze wordt geformatteerd. Aangezien TDSP iteratieve van aard is, kunnen deze taken plaatsvinden op verschillende stappen in de werkstroom van het proces.
 
-In dit artikel worden verschillende concepten en taken voor gegevens verwerking geïntroduceerd die kunnen worden uitgevoerd vóór of na het opnemen van gegevens in azure ML Studio (klassiek).
+In dit artikel worden verschillende concepten en taken voor gegevens verwerking geïntroduceerd die kunnen worden uitgevoerd vóór of na het opnemen van gegevens in Azure Machine Learning Studio (klassiek).
 
-Voor een voor beeld van het verkennen van gegevens en vooraf verwerkingen in azure ML Studio (klassiek). Zie de video [preprocessing-gegevens](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) .
+Voor een voor beeld van het verkennen van gegevens en vooraf verwerkingen binnen Azure Machine Learning Studio (klassiek). Zie de video [preprocessing-gegevens](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) .
 
 ## <a name="why-pre-process-and-clean-data"></a>Waarom voorverwerken en opschonen van gegevens?
 Werkelijk bestaande gegevens uit diverse bronnen worden verzameld en processen en onregelmatigheden of beschadigde gegevens in gevaar brengt de kwaliteit van de gegevensset kunnen bevatten. De gebruikelijke data quality-problemen die zich voordoen zijn:
@@ -51,7 +51,7 @@ We kunt de algemene kwaliteit van de gegevens controleren door te controleren:
 
 Als u problemen met gegevens, **verwerkingsstappen** nodig die vaak omvat het opschonen van de ontbrekende waarden, gegevens normaliseren, onderscheidende, verwerking van de tekst te verwijderen en/of vervang ingesloten tekens die mogelijk van invloed op gegevens uitlijning, gemengde gegevenstypen in algemene velden en anderen.
 
-**Azure Machine Learning verbruikt opgemaakte tabelgegevens**.  Als de gegevens zich al in tabel vorm bevinden, kunt u de voor verwerking van gegevens rechtstreeks uitvoeren met Azure ML Studio (klassiek) in de Machine Learning.  Als gegevens niet in tabelvorm, zeg dat deel uitmaakt van XML-parsering mogelijk zijn vereist om te kunnen omzetten van de gegevens in tabelvorm.  
+**Azure Machine Learning verbruikt opgemaakte tabelgegevens**.  Als de gegevens zich al in tabel vorm bevinden, kunnen gegevens vooraf worden verwerkt met Azure Machine Learning Studio (klassiek) in de Machine Learning.  Als gegevens niet in tabelvorm, zeg dat deel uitmaakt van XML-parsering mogelijk zijn vereist om te kunnen omzetten van de gegevens in tabelvorm.  
 
 ## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>Wat zijn enkele van de belangrijkste taken in vooraf verwerken van gegevens?
 * **Het opschonen van gegevens**: vul of ontbrekende waarden, detecteren en verwijderen van de ruis gegevens en de uitschieters.

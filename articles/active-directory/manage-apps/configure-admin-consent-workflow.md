@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: mimart
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9e1af654f0e82017bab4db5eb529b7d65b44714
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 83b3f0d97daf0b4ac17f74981119b380d1776d97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786432"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75430202"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>De beheerder toestemming werk stroom configureren (preview-versie)
 
@@ -153,8 +153,10 @@ Als u zich zorgen maakt over het verlenen van beheerders toestemming en het toes
 
 Zie [Azure Active Directory instemming-Framework](../develop/consent-framework.md)voor meer informatie over het inzenden van toepassingen.
 
-[Apps goed keuren en integreren met AzureAD](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)
+[Configureren hoe eind gebruikers toestemming geven voor toepassingen](configure-user-consent.md)
 
-[Toestemming en machtiging voor AzureAD v 2.0 geconvergeerde apps](../develop/active-directory-v2-scopes.md)
+[Toestemming van de beheerder voor de hele Tenant verlenen aan een toepassing](grant-admin-consent.md)
 
-[AzureAD stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[Machtigingen en toestemming in het micro soft Identity-platform](../develop/active-directory-v2-scopes.md)
+
+[Azure AD op stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

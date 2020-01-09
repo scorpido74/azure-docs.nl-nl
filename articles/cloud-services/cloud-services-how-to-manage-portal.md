@@ -3,17 +3,17 @@ title: Algemene beheer taken voor Cloud Services | Microsoft Docs
 description: Meer informatie over het beheren van Cloud Services in de Azure Portal. In deze voor beelden wordt gebruikgemaakt van de Azure Portal.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: gwallace
-ms.openlocfilehash: 8ec7784fb51d0fa4de2563f76444b0b5e5f34902
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 185bb9d03bec042a5c8e9223616b40eba6629e36
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359611"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360902"
 ---
 # <a name="manage-cloud-services-in-the-azure-portal"></a>Cloud Services beheren in de Azure Portal
 In het gedeelte **Cloud Services** van de Azure Portal kunt u het volgende doen:
@@ -124,3 +124,6 @@ De Blade **overzicht** bevat bovenaan een status balk. Wanneer u de balk selecte
 * Meer informatie over het [implementeren van een Cloud service](cloud-services-how-to-create-deploy-portal.md).
 * Een [aangepaste domein naam](cloud-services-custom-domain-name-portal.md)configureren.
 * [SSL-certificaten](cloud-services-configure-ssl-certificate-portal.md)configureren.
+
+
+

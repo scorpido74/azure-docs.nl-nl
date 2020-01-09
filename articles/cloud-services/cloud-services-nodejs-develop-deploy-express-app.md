@@ -1,20 +1,21 @@
 ---
 title: Een node. js Express-app bouwen en implementeren in azure Cloud Services
+titleSuffix: Azure Cloud Services
 description: Een Express. js-toepassing in node. js maken en implementeren in azure Cloud Services
 services: cloud-services
 documentationcenter: nodejs
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
-ms.author: gwallace
-ms.openlocfilehash: 080ec61df2042a4cf2eac9d5175c4681f98fd9df
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.author: tagore
+ms.openlocfilehash: 79a998930a384420b22add8825ee4b2269eb4539
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306776"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360749"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Een node. js-webtoepassing bouwen en implementeren met behulp van Express op een Azure-Cloud Services
 
@@ -119,5 +120,8 @@ Zie het [Node.js Developer Center](https://docs.microsoft.com/azure/javascript/)
 [Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
 [Express]: https://expressjs.com/
 [http://jade-lang.com]: http://jade-lang.com
+
+
+
 
 

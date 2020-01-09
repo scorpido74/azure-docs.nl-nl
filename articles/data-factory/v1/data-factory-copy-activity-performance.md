@@ -12,17 +12,17 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 88094e7ade688505bb971dd85505ddfacb1d8859
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ca44b1917cfaed5d01c31f8f06d98e5e4b611a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926789"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438922"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Kopiëren en afstemmingshandleiding van activiteit
 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-copy-activity-performance.md)
+> * [Versie 1:](data-factory-copy-activity-performance.md)
 > * [Versie 2 (huidige versie)](../copy-activity-performance.md)
 
 > [!NOTE]
@@ -416,7 +416,8 @@ In dit geval kan bzip2 gegevenscompressie worden vertraagd de hele pijplijn. Ove
 ## <a name="reference"></a>Referentie
 Hier volgen de prestaties en het afstemmen van verwijzingen voor een aantal ondersteunde gegevens archieven:
 
-* Azure Storage (inclusief Blob storage en Table storage): [schaalbaarheidsdoelen van Azure Storage](../../storage/common/storage-scalability-targets.md) en [controlelijst voor de prestaties en schaalbaarheid van Azure Storage](../../storage/common/storage-performance-checklist.md)
+* Azure Blob-opslag: [schaal baarheid en prestatie doelen voor Blob Storage](../../storage/blobs/scalability-targets.md) en de [controle lijst voor prestaties en schaal baarheid voor Blob Storage](../../storage/blobs/storage-performance-checklist.md).
+* Azure-tabel opslag: [schaal baarheid en prestatie doelen voor](../../storage/tables/scalability-targets.md) de [controle lijst voor tabel opslag en prestaties en schaal baarheid voor tabel opslag](../../storage/tables/storage-performance-checklist.md).
 * Azure SQL Database: U kunt [bewaken van de prestaties](../../sql-database/sql-database-single-database-monitor.md) en controleert u het percentage van database transaction unit (DTU)
 * Azure SQL datawarehouse: De mogelijkheid wordt gemeten in datawarehouse units (dwu's); Zie [beheren rekenkracht in Azure SQL Data Warehouse (overzicht)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Azure Cosmos DB: [prestatieniveaus in Azure Cosmos DB](../../cosmos-db/performance-levels.md)
