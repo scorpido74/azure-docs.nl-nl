@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/09/2019
 ms.author: sagonzal
 ms.custom: aaddev, scenarios:getting-started, languages:Java
-ms.openlocfilehash: 1a5401ee76f60c9b9c2a75561cad8f6571d3b308
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7534d425a9a7e00c4e57c0d9faea0750d311dcaf
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74920698"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75549938"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-java-web-app"></a>Snelstartgids: aanmelden toevoegen met micro soft aan een Java-Web-app
 
@@ -36,7 +36,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 - Een Azure Active Directory-Tenant (Azure AD). Zie [een Azure AD-Tenant verkrijgen](https://azure.microsoft.com/documentation/articles/active-directory-howto-tenant/)voor meer informatie over het verkrijgen van een Azure AD-Tenant.
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-your-quickstart-app"></a>De quickstart-app registreren en downloaden
+> ## <a name="register-and-download-your-quickstart-app"></a>De snelstart-app registreren en downloaden
 > U hebt twee opties om uw Quick Start-toepassing te starten: Express (optie 1) of hand matig (optie 2)
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>Optie 1: de app registreren en automatisch configureren, en vervolgens de voorbeeldcode downloaden
@@ -45,7 +45,7 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 > 1. Voer een naam in voor de toepassing en selecteer **Registreren**.
 > 1. Volg de instructies om uw nieuwe toepassing te downloaden en automatisch te configureren.
 >
-> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: de toepassing en voorbeeldcode registreren en handmatig configureren
+> ### <a name="option-2-register-and-manually-configure-your-application-and-code-sample"></a>Optie 2: registreer de toepassing en configureer handmatig de toepassing en het codevoorbeeld
 >
 > #### <a name="step-1-register-your-application"></a>Stap 1: Uw toepassing registreren
 >
@@ -57,11 +57,11 @@ Als u dit voor beeld wilt uitvoeren, hebt u het volgende nodig:
 > 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](/azure/active-directory/develop/) .
 > 1. Selecteer **nieuwe registratie**.
 > 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
->    - Voer in de sectie **Naam** een beschrijvende toepassingsnaam. Deze wordt zichtbaar voor gebruikers van de app. Bijvoorbeeld: `java-webapp`.
+>    - Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die zichtbaar is voor gebruikers van de app. Bijvoorbeeld: `java-webapp`.
 >    - Laat de **omleidings-URI** nu leeg en selecteer **registreren**.
 > 1. Zoek op de pagina **overzicht** de **client-id** van de toepassing en de id van de **Directory (Tenant)** van de toepassing. Kopieer deze waarden voor later.
 > 1. Selecteer de **verificatie** in het menu en voeg de volgende gegevens toe:
->    - In **omleidings-uri's**voegt u `http://localhost:8080/msal4jsamples/secure/aad` en `http://localhost:8080/msal4jsamples/graph/me`toe.
+>    - In **omleidings-uri's**voegt u `http://localhost:8080/msal4jsample/secure/aad` en `http://localhost:8080/msal4jsample/graph/me`toe.
 >    - Selecteer **Opslaan**.
 > 1. Selecteer de **certificaten & geheimen** in het menu en klik in de sectie **client geheimen** op **Nieuw client geheim**:
 >
@@ -121,7 +121,7 @@ Als u de webtoepassing vanuit een IDE uitvoert, klikt u op uitvoeren en navigeer
 
 1. Op de voor pagina selecteert u de knop **Aanmelden** om om te leiden naar Azure Active Directory en vraagt u de gebruiker om referenties.
 
-1. Nadat de gebruiker is geverifieerd, worden ze omgeleid naar *http://localhost:8080/msal4jsamples/secure/aad* . Ze zijn nu aangemeld en op de pagina wordt informatie over het aangemelde account weer gegeven. De voor beeld-UI heeft de volgende knoppen:
+1. Nadat de gebruiker is geverifieerd, worden ze omgeleid naar *http://localhost:8080/msal4jsample/secure/aad* . Ze zijn nu aangemeld en op de pagina wordt informatie over het aangemelde account weer gegeven. De voor beeld-UI heeft de volgende knoppen:
     - *Afmelden*: meldt de huidige gebruiker uit de toepassing en leidt deze om naar de start pagina.
     - *Gebruikers gegevens weer geven*: verkrijgt een token voor Microsoft Graph en roept Microsoft Graph aan met een aanvraag met het token, waarmee basis informatie over de aangemelde gebruiker wordt geretourneerd.
 

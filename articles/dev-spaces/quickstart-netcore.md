@@ -3,15 +3,15 @@ title: 'Fouten opsporen en herhalen op Kubernetes: Visual Studio code & .NET cor
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
+description: In deze Quick Start leert u hoe u Azure dev Spaces en Visual Studio code kunt gebruiken om fouten op te sporen en snel een .NET core-toepassing te herhalen in azure Kubernetes service
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 278ec0683a7ddb3c41f724e06e8ca291d18e3bad
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
-ms.translationtype: MT
+ms.openlocfilehash: a9a750e239dd47ce85b6075c65c644258134ba52
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325585"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438227"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Quick Start: fouten opsporen en herhalen op Kubernetes: Visual Studio code en .NET core-Azure dev Spaces
 

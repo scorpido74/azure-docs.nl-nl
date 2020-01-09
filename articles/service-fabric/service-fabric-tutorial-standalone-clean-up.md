@@ -1,28 +1,19 @@
 ---
-title: 'Zelfstudie: Zelfstandig Service Fabric-cluster opschonen - Azure Service Fabric | Microsoft Docs'
-description: In deze zelf studie leert u hoe u uw zelfstandige cluster opschoont
-services: service-fabric
-documentationcenter: .net
+title: Een zelfstandig cluster opschonen
+description: In deze zelf studie leert u hoe u AWS of Azure-resources opschoont in uw zelfstandige Service Fabric cluster.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bebe3a2dc83b651e713ee80d7b11068b13096e04
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385156"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639017"
 ---
-# <a name="tutorial-clean-up-your-standalone-cluster"></a>Zelfstudie: Uw zelfstandige cluster opschonen
+# <a name="tutorial-clean-up-your-standalone-cluster"></a>Zelfstudie: Zelfstandig cluster opschonen
 
 Zelfstandige Service Fabric-clusters bieden u de mogelijkheid om uw eigen omgeving te kiezen en een cluster te maken als onderdeel van de benadering "Elk besturingssysteem, elke cloud" die we in Service Fabric hanteren. In deze zelfstudie reeks maakt u een zelfstandig cluster dat wordt gehost op AWS of Azure en hoe u een toepassing kunt installeren.
 
@@ -45,7 +36,7 @@ In deel vier van de serie leert u het volgende:
   .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
   ```
 
-5. `Y` Wanneer u hierom wordt gevraagd, ziet de uitvoer er als volgt uit, met uw eigen IP-adressen die worden vervangen in:
+5. Voer `Y` als u daarom wordt gevraagd of de uitvoer is geslaagd, met uw eigen IP-adressen die worden vervangen in:
 
   ```powershell
   Best Practices Analyzer completed successfully.
@@ -63,7 +54,7 @@ In deel vier van de serie leert u het volgende:
 1. Meld u aan bij uw AWS-account.
 2. Ga naar de EC2-console.
 3. Selecteer de drie knooppunten die u hebt gemaakt in deel een van de zelfstudie.
-4. Klik op **actie** > -**exemplaar status** > **beëindigen**.
+4. Klik op **acties** > **exemplaar status** > **beëindigen**.
 
 ## <a name="clean-up-azure-resources"></a>Azure-resources opschonen
 

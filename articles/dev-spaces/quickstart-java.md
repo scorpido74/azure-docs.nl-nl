@@ -3,15 +3,15 @@ title: 'Fouten opsporen en herhalen op Kubernetes: Visual Studio code & Java'
 services: azure-dev-spaces
 ms.date: 07/08/2019
 ms.topic: quickstart
-description: Snelle Kubernetes ontwikkeling met containers, micro Services en Java op Azure
+description: In deze Quick start ziet u hoe u Azure dev Spaces en Visual Studio code kunt gebruiken om fouten op te sporen en snel een Java-toepassing te herhalen in azure Kubernetes service
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, Java, helm, Service-Mesh, Service-Mesh-route ring, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 5f0f9991ae8718b60221c3f291b6169f677b59c5
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
-ms.translationtype: MT
+ms.openlocfilehash: 8050e7793146456894ce86ab89e1563c6282b8df
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325632"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438273"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-java---azure-dev-spaces"></a>Quick Start: fouten opsporen en herhalen op Kubernetes met Visual Studio code en Java-Azure dev Spaces
 

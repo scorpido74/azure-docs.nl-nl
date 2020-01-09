@@ -6,13 +6,13 @@ ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 12/04/2019
-ms.openlocfilehash: 86a94cfdbd2c1755907bc13aa698fba92f5ce649
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 12/11/2019
+ms.openlocfilehash: 62a66f180fd6e89329fe17a96115ecc4ca914107
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850071"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75407238"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Azure App Service-prestaties bewaken
 
@@ -77,9 +77,9 @@ Er zijn twee manieren om toepassings bewaking in te scha kelen voor door Azure-a
 
 # <a name="net-coretabnetcore"></a>[.NET Core](#tab/netcore)
 
-De volgende versies van .NET core worden ondersteund: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2
+De volgende versies van .NET core worden ondersteund: ASP.NET Core 2,0, ASP.NET Core 2,1, ASP.NET Core 2,2, ASP.NET Core 3,0
 
-Het is niet mogelijk om het volledige Framework te richten op basis van .NET core, een zelf-opgenomen implementatie en ASP.NET Core 3,0 worden momenteel **niet ondersteund** met bewaking via agent/extensie. ([Hand matige instrumentatie](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) via code werkt in alle eerdere scenario's.)
+Het is **niet mogelijk** om het volledige Framework te richten op basis van .net core, op zichzelf gebaseerde implementatie en op Linux gebaseerde toepassingen die op agent/op extensie gebaseerde bewaking niet worden ondersteund. ([Hand matige instrumentatie](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) via code werkt in alle eerdere scenario's.)
 
 1. **Selecteer Application Insights** in het deel venster Azure van het configuratie scherm voor uw app service.
 
@@ -92,7 +92,7 @@ Het is niet mogelijk om het volledige Framework te richten op basis van .NET cor
 
      ![Uw web-app instrumenteren](./media/azure-web-apps/create-resource-01.png)
 
-2. Nadat u hebt opgegeven welke resource moet worden gebruikt, kunt u kiezen hoe Application Insights gegevens per platform wilt verzamelen voor uw toepassing. .NET core biedt **Aanbevolen verzameling** of **uitgeschakeld** voor .net Core 2,0, 2,1 en 2,2.
+2. Nadat u hebt opgegeven welke resource moet worden gebruikt, kunt u kiezen hoe Application Insights gegevens per platform wilt verzamelen voor uw toepassing. .NET core biedt **Aanbevolen verzameling** of **uitgeschakeld** voor .net Core 2,0, 2,1, 2,2 en 3,0.
 
     ![Opties per platform kiezen](./media/azure-web-apps/choose-options-new-net-core.png)
 

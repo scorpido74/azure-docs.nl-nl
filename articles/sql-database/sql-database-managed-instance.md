@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 11/27/2019
-ms.openlocfilehash: 1a9c24846606c53fefa1ffc1de59f358524020c4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
-ms.translationtype: HT
+ms.openlocfilehash: d5b3733947876958b4d72da4cb7bb0f10a3a9165
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707632"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614950"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Wat is Azure SQL Database beheerde instantie?
 
@@ -29,7 +29,7 @@ Het volgende diagram geeft een overzicht van de belangrijkste functies van behee
 
 ![belangrijkste functies](./media/sql-database-managed-instance/key-features.png)
 
-Het implementatie model voor Managed instances is ontworpen voor klanten die een groot aantal apps willen migreren van on-premises of IaaS, zelfgebouwde of ISV geleverde omgeving tot volledig beheerde PaaS-cloud omgeving, met zo weinig mogelijk migratie inspanningen. Met behulp van de volledig geautomatiseerde [gegevens migratie service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) in azure kunnen klanten hun on-premises SQL Server optillen en naar een beheerd exemplaar verplaatsen dat compatibiliteit biedt met SQL Server on-premises en volledige isolatie van klant instanties met systeem eigen VNet-ondersteuning.  Met Software Assurance kunt u hun bestaande licenties uitwisselen voor kortings tarieven voor een beheerd exemplaar met behulp [van de Azure Hybrid Benefit voor SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).  Een beheerd exemplaar is de beste migratie bestemming in de Cloud voor SQL Server instanties waarvoor een hoge beveiliging en een uitgebreid programmeerbaar Opper vlak zijn vereist.
+Het implementatie model voor Managed instances is ontworpen voor klanten die een groot aantal apps willen migreren van on-premises of IaaS, zelfgebouwde of ISV geleverde omgeving tot volledig beheerde PaaS-cloud omgeving, met zo weinig mogelijk migratie inspanningen. Met behulp van de volledig geautomatiseerde [gegevens migratie service (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) in azure kunnen klanten hun on-premises SQL Server optillen en naar een beheerd exemplaar verplaatsen dat compatibiliteit biedt met SQL Server on-premises en volledige isolatie van klant instanties met systeem eigen VNet-ondersteuning.  Met Software Assurance kunt u uw bestaande licenties uitwisselen voor kortings tarieven voor een beheerd exemplaar met behulp [van de Azure Hybrid Benefit voor SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).  Een beheerd exemplaar is de beste migratie bestemming in de Cloud voor SQL Server instanties waarvoor een hoge beveiliging en een uitgebreid programmeerbaar Opper vlak zijn vereist.
 
 De implementatie optie Managed instance is van toepassing op 100% surface area compatibiliteit met de meest recente on-premises SQL Server versie via een gefaseerde release plan.
 
@@ -154,13 +154,13 @@ De volgende tabel bevat een overzicht van de bewerkingen en typische totale duur
 |Implementatie |Eerste instantie maken van 4 vCores, in een leeg of niet-leeg subnet|Virtueel cluster maken * *|90% van de bewerkingen zijn voltooid in 4 uur|
 |Implementatie |Het maken van de volgende instantie binnen het niet-lege subnet (2e, 3e, enz.)|Verg Roten/verkleinen van virtueel cluster|90% van de bewerkingen zijn voltooid in 2,5 uur|
 |**Update** |Wijziging van instantie-eigenschap (beheerders wachtwoord, AAD-aanmelding, Azure Hybrid Benefit vlag)|N/A|Maxi maal 1 minuut|
-|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Algemeen servicelaag)|-Verg Roten/verkleinen van virtueel cluster<br>-Database bestanden koppelen|90% van de bewerkingen zijn voltooid in 2,5 uur|
-|Bijwerken |Opslag van exemplaren omhoog/omlaag schalen (Bedrijfskritiek servicelaag)|-Verg Roten/verkleinen van virtueel cluster<br>-Always on-beschikbaarheids groep seeding|90% van de bewerkingen zijn voltooid in 2,5 uur + tijd voor het seeden van alle data bases (220 GB/uur)|
-|Bijwerken |VCores (instance Compute) omhoog en omlaag schalen (Algemeen)|-Verg Roten/verkleinen van virtueel cluster<br>-Database bestanden koppelen|90% van de bewerkingen zijn voltooid in 2,5 uur|
-|Bijwerken |VCores (instance Compute) omhoog en omlaag schalen (Bedrijfskritiek)|-Verg Roten/verkleinen van virtueel cluster<br>-Always on-beschikbaarheids groep seeding|90% van de bewerkingen zijn voltooid in 2,5 uur + tijd voor het seeden van alle data bases (220 GB/uur)|
-|Bijwerken |Exemplaar wordt omlaag geschaald naar 4 vCores (Algemeen)|-Het wijzigen van het formaat van het virtuele cluster (als dit voor de eerste keer wordt uitgevoerd, kan het maken van een virtueel cluster vereist zijn * *)<br>-Database bestanden koppelen|90% van de bewerkingen zijn voltooid in 4 uur 5 min * *|
-|Bijwerken |Exemplaar wordt omlaag geschaald naar 4 vCores (Algemeen)|-Het wijzigen van het formaat van het virtuele cluster (als dit voor de eerste keer wordt uitgevoerd, kan het maken van een virtueel cluster vereist zijn * *)<br>-Always on-beschikbaarheids groep seeding|90% van de bewerkingen zijn voltooid in 4 uur + tijd voor het seeden van alle data bases (220 GB/uur)|
-|Bijwerken |Wijziging van de instantie-servicelaag (Algemeen Bedrijfskritiek en omgekeerd)|-Verg Roten/verkleinen van virtueel cluster<br>-Always on-beschikbaarheids groep seeding|90% van de bewerkingen zijn voltooid in 2,5 uur + tijd voor het seeden van alle data bases (220 GB/uur)|
+|Update |Opslag van exemplaren omhoog/omlaag schalen (Algemeen servicelaag)|Database bestanden koppelen|90% van de bewerkingen zijn voltooid over vijf minuten|
+|Update |Opslag van exemplaren omhoog/omlaag schalen (Bedrijfskritiek servicelaag)|-Verg Roten/verkleinen van virtueel cluster<br>-Always on-beschikbaarheids groep seeding|90% van de bewerkingen zijn voltooid in 2,5 uur + tijd voor het seeden van alle data bases (220 GB/uur)|
+|Update |VCores (instance Compute) omhoog en omlaag schalen (Algemeen)|-Verg Roten/verkleinen van virtueel cluster<br>-Database bestanden koppelen|90% van de bewerkingen zijn voltooid in 2,5 uur|
+|Update |VCores (instance Compute) omhoog en omlaag schalen (Bedrijfskritiek)|-Verg Roten/verkleinen van virtueel cluster<br>-Always on-beschikbaarheids groep seeding|90% van de bewerkingen zijn voltooid in 2,5 uur + tijd voor het seeden van alle data bases (220 GB/uur)|
+|Update |Exemplaar wordt omlaag geschaald naar 4 vCores (Algemeen)|-Het wijzigen van het formaat van het virtuele cluster (als dit voor de eerste keer wordt uitgevoerd, kan het maken van een virtueel cluster vereist zijn * *)<br>-Database bestanden koppelen|90% van de bewerkingen zijn voltooid in 4 uur 5 min * *|
+|Update |Exemplaar wordt omlaag geschaald naar 4 vCores (Bedrijfskritiek)|-Het wijzigen van het formaat van het virtuele cluster (als dit voor de eerste keer wordt uitgevoerd, kan het maken van een virtueel cluster vereist zijn * *)<br>-Always on-beschikbaarheids groep seeding|90% van de bewerkingen zijn voltooid in 4 uur + tijd voor het seeden van alle data bases (220 GB/uur)|
+|Update |Wijziging van de instantie-servicelaag (Algemeen Bedrijfskritiek en omgekeerd)|-Verg Roten/verkleinen van virtueel cluster<br>-Always on-beschikbaarheids groep seeding|90% van de bewerkingen zijn voltooid in 2,5 uur + tijd voor het seeden van alle data bases (220 GB/uur)|
 |**Bedoeld**|Verwijdering van exemplaar|Back-ups van staart vastleggen voor alle data bases|90% bewerkingen zijn Maxi maal 1 minuut voltooid.<br>Opmerking: als het laatste exemplaar van het subnet wordt verwijderd, wordt het verwijderen van het virtuele cluster na 12 uur door deze bewerking gepland.|
 |Verwijdering|Virtueel cluster verwijderen (als door de gebruiker geïnitieerde bewerking)|Virtueel cluster verwijderen|90% van de bewerkingen zijn Maxi maal 1,5 uur voltooid|
 
@@ -174,14 +174,45 @@ De volgende tabel bevat een overzicht van de bewerkingen en typische totale duur
 
 Beheerde exemplaren zijn niet beschikbaar voor client toepassingen tijdens implementatie-en verwijderings bewerkingen.
 
-Er zijn beheerde exemplaren beschikbaar tijdens update bewerkingen, maar er is een korte downtime die wordt veroorzaakt door de failover die aan het einde van updates die doorgaans Maxi maal tien seconden duren.
+Er zijn beheerde exemplaren beschikbaar tijdens update bewerkingen, maar er is een korte downtime die wordt veroorzaakt door de failover die aan het einde van updates die doorgaans Maxi maal tien seconden duren. De uitzonde ring hierop is het bijwerken van de gereserveerde opslag ruimte in Algemeen servicelaag die geen failover voormaakt of die de beschik baarheid van het exemplaar beïnvloedt.
 
 > [!IMPORTANT]
 > De duur van een failover kan aanzienlijk verschillen in het geval van langlopende trans acties die plaatsvinden op de data bases vanwege een [langdurige herstel tijd](sql-database-accelerated-database-recovery.md#the-current-database-recovery-process). Daarom is het niet raadzaam om reken kracht of opslag van Azure SQL Database beheerde instantie te schalen of tegelijkertijd een service tier te wijzigen met de langlopende trans acties (gegevens importeren, gegevens verwerkings taken, index Rebuild, enzovoort). De data base-failover die aan het einde van de bewerking wordt uitgevoerd, annuleert lopende trans acties en resulteert in langdurige herstel tijd.
 
+> [!TIP]
+> Het bijwerken van de gereserveerde opslag ruimte in Algemeen servicelaag maakt geen failover of heeft geen invloed op de beschik baarheid van instanties.
+
 [Versneld database herstel](sql-database-accelerated-database-recovery.md) is momenteel niet beschikbaar voor Azure SQL database Managed instances. Wanneer deze functie is ingeschakeld, wordt de variabiliteit van de failover-tijd aanzienlijk verminderd, zelfs in het geval van langlopende trans acties.
 
+### <a name="canceling-management-operations"></a>Beheer bewerkingen annuleren
 
+De volgende tabel bevat een overzicht van de mogelijkheid om specifieke beheer bewerkingen en typische totale duur te annuleren:
+
+Category  |Bewerking  |Geannuleerd  |Geschatte annulerings duur  |
+|---------|---------|---------|---------|
+|Implementatie |Instantie maken |Nee |  |
+|Update |Opslag van exemplaren omhoog/omlaag schalen (Algemeen) |Nee |  |
+|Update |Opslag van exemplaren omhoog/omlaag schalen (Bedrijfskritiek) |Ja |90% van de bewerkingen zijn voltooid over vijf minuten |
+|Update |VCores (instance Compute) omhoog en omlaag schalen (Algemeen) |Ja |90% van de bewerkingen zijn voltooid over vijf minuten |
+|Update |VCores (instance Compute) omhoog en omlaag schalen (Bedrijfskritiek) |Ja |90% van de bewerkingen zijn voltooid over vijf minuten |
+|Update |Wijziging van de instantie-servicelaag (Algemeen Bedrijfskritiek en omgekeerd) |Ja |90% van de bewerkingen zijn voltooid over vijf minuten |
+|Verwijderen |Verwijdering van exemplaar |Nee |  |
+|Verwijderen |Virtueel cluster verwijderen (als door de gebruiker geïnitieerde bewerking) |Nee |  |
+
+Als u de beheer bewerking wilt annuleren, gaat u naar de Blade overzicht en klikt u op meldingen venster van doorlopende bewerking. Aan de rechter kant verschijnt een scherm met een doorlopende bewerking en er wordt een knop weer gegeven voor het annuleren van de bewerking. Nadat u eerst hebt geklikt, wordt u gevraagd opnieuw te klikken en bevestigen dat u de bewerking wilt annuleren.
+
+[![](./media/sql-database-managed-instance/canceling-operation.png)](./media/sql-database-managed-instance/canceling-operation.png#lightbox)
+
+Nadat de annulerings aanvraag is verzonden en verwerkt, ontvangt u een melding als annuleren is geslaagd of niet. 
+
+Als het annuleren is voltooid, wordt de beheer bewerking geannuleerd in enkele minuten, wat resulteert in een fout.
+
+![het resultaat van de bewerking wordt geannuleerd](./media/sql-database-managed-instance/canceling-operation-result.png)
+
+Als annulerings aanvraag mislukt of knop Annuleren niet actief is, betekent dit dat de beheer bewerking de status niet geannuleerd heeft en dat deze in een paar minuten wordt voltooid. De beheer bewerking wordt voortgezet totdat deze is voltooid.
+
+> [!IMPORTANT]
+> Het annuleren van de bewerking wordt momenteel alleen ondersteund in de portal.
 
 ## <a name="advanced-security-and-compliance"></a>Geavanceerde beveiliging en naleving van voorschriften
 
@@ -268,7 +299,7 @@ De implementatie optie Managed instance ondersteunt achterwaartse compatibilitei
   
 Het volgende diagram geeft een overzicht van surface area compatibiliteit in het beheerde exemplaar:  
 
-![virtuelemachinemigratie](./media/sql-database-managed-instance/migration.png)
+![migratie](./media/sql-database-managed-instance/migration.png)
 
 ### <a name="key-differences-between-sql-server-on-premises-and-in-a-managed-instance"></a>De belangrijkste verschillen tussen SQL Server on-premises en in een beheerd exemplaar
 
@@ -297,7 +328,7 @@ De volgende tabel bevat verschillende eigenschappen, toegankelijk via Transact S
 |`@@VERSION`|Micro soft SQL Azure (RTM)-12.0.2000.8 2018-03-07 copyright (C) 2018 micro soft Corporation.|Deze waarde is hetzelfde als in SQL Database.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Deze waarde is hetzelfde als in SQL Database.|
 |`SERVERPROPERTY('EngineEdition')`|8|Deze waarde is een unieke aanduiding voor een beheerd exemplaar.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|De volledige DNS-naam van het exemplaar in de volgende indeling:`<instanceName>``<dnsPrefix>`. database.windows.net, waarbij `<instanceName>` de naam is van de klant, terwijl `<dnsPrefix>` automatisch wordt gegenereerd deel van de naam die de uniekheid van de globale DNS-naam garandeert (bijvoorbeeld ' wcus17662feb9ce98 ')|Voor beeld: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Volledige DNS-exemplaarnaam in de volgende indeling:`<instanceName>`.`<dnsPrefix>`.database.Windows.NET, waar `<instanceName>` is geleverd door de klant, terwijl `<dnsPrefix>` automatisch gegenereerde deel uitmaakt van de naam van de globale DNS-naam uniekheid garanderen ('wcus17662feb9ce98', bijvoorbeeld)|Voor beeld: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Volgende stappen
 

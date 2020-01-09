@@ -3,14 +3,14 @@ title: 'Meerdere afhankelijke services uitvoeren: Java & Visual Studio code'
 services: azure-dev-spaces
 ms.date: 11/21/2018
 ms.topic: tutorial
-description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
+description: Deze zelf studie laat zien hoe u Azure dev Spaces en Visual Studio code kunt gebruiken om fouten op te sporen in een multi-service Java-toepassing op de Azure Kubernetes-service
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: 3fe19997ab54f02b6a5f029abbdb69d5ea6532f7
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: beab91964cab9938a5d63584089326bb408f6efc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325715"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438332"
 ---
 # <a name="running-multiple-dependent-services-java-and-visual-studio-code-with-azure-dev-spaces"></a>Meerdere afhankelijke services uitvoeren: Java en Visual Studio code met Azure dev Spaces
 

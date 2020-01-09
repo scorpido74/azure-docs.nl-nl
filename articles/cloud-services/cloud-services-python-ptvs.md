@@ -1,20 +1,20 @@
 ---
 title: Aan de slag met Python en Azure Cloud Services | Microsoft Docs
-description: Overzicht van het gebruik van Python-tools voor Visual Studio voor het maken van Azure Cloud Services, met inbegrip van webrollen en werkrollen.
+description: Overzicht van het gebruik van Python Tools for Visual Studio om Azure-cloudservices te maken, inclusief webrollen en werkrollen.
 services: cloud-services
 documentationcenter: python
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 981b1cc4a7adb98ba68ebf3a7673b7116479e704
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.author: tagore
+ms.openlocfilehash: b832831a2483b11a7a3c1942dd79065e8be65bf9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68359568"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75360715"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python-web- en -werkrollen met Python-tools voor Visual Studio
 
@@ -31,7 +31,7 @@ Dit artikel biedt een overzicht van het gebruik van Python-web- en -werkrollen m
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Wat zijn Python-web- en -werkrollen?
-Azure biedt drie rekenmodellen voor het uitvoeren van toepassingen: [Web apps-functie in azure app service][execution model-web sites], [Azure Virtual Machines][execution model-vms]en [Azure Cloud Services][execution model-cloud services]. Alle drie modellen ondersteunen Python. Cloud Services, die web- en werkrollen bevatten, bieden *Platform as a Service (PaaS)* . Binnen een cloudservice biedt een webrol een speciale IIS-webserver (Internet Information Services) voor het hosten van front-end webtoepassingen. Een werkrol kan asynchrone langlopende of permanente taken uitvoeren onafhankelijk van de interactie of invoer van de gebruiker.
+Azure biedt drie reken modellen voor het uitvoeren van toepassingen: [Web apps functie in azure app service][execution model-web sites], [Azure Virtual Machines][execution model-vms]en [Azure Cloud Services][execution model-cloud services]. Alle drie modellen ondersteunen Python. Cloud Services, die web- en werkrollen bevatten, bieden *Platform as a Service (PaaS)* . Binnen een cloudservice biedt een webrol een speciale IIS-webserver (Internet Information Services) voor het hosten van front-end webtoepassingen. Een werkrol kan asynchrone langlopende of permanente taken uitvoeren onafhankelijk van de interactie of invoer van de gebruiker.
 
 Zie [Wat is een cloudservice?] voor meer informatie.
 
@@ -334,7 +334,7 @@ Zie de volgende artikelen voor meer informatie over het gebruik van Azure-servic
 
 * [Blob-service][Blob Service]
 * [Tabelservice][Table Service]
-* [Queue-service][Queue Service]
+* [Wachtrijservice][Queue Service]
 * [Service Bus-wachtrijen][Service Bus Queues]
 * [Service Bus-onderwerpen][Service Bus Topics]
 
@@ -363,3 +363,6 @@ Zie de volgende artikelen voor meer informatie over het gebruik van Azure-servic
 [Azure SDK Tools for VS 2017]: https://go.microsoft.com/fwlink/?LinkId=746483
 [Python 2.7 32-bit]: https://www.python.org/downloads/
 [Python 3.5 32-bit]: https://www.python.org/downloads/
+
+
+

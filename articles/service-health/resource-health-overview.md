@@ -1,17 +1,14 @@
 ---
-title: Overzicht van Azure Resource Health | Microsoft Docs
+title: Overzicht van Azure Resource Health
 description: Overzicht van Azure Resource Health
-author: stephbaron
-ms.author: stbaron
 ms.topic: conceptual
-ms.service: service-health
 ms.date: 05/10/2019
-ms.openlocfilehash: 9c2096f94f38d13288c6ce3742252bc6d576835a
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 5609c7f09dc81a54a941dea391c0d717ad4bb06a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854231"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75356795"
 ---
 # <a name="resource-health-overview"></a>Overzicht van Resource Health
  
@@ -25,7 +22,7 @@ Een *resource* is een specifiek exemplaar van een Azure-service, zoals een virtu
 
 Zie de lijst met resource typen en status controles op [Azure resource Health](resource-health-checks-resource-types.md)voor meer informatie over de beoordeling van de status.
 
-## <a name="health-status"></a>Integriteits status
+## <a name="health-status"></a>Algemene status
 
 De status van een resource wordt weer gegeven als een van de volgende statussen.
 
@@ -63,9 +60,9 @@ Als u problemen ondervindt met de resource, kan de *onbekende* status ervan bete
 
 ![Status van * Unknown * voor een virtuele machine](./media/resource-health-overview/Unknown.png)
 
-### <a name="degraded"></a>Verminderd
+### <a name="degraded"></a>Verminderd beschikbaar
 
-Gedegradeerd betekent dat uw resource een verlies van prestaties heeft gedetecteerd, hoewel het nog steeds beschikbaar is voor gebruik.
+*Gedegradeerd* betekent dat uw resource een verlies van prestaties heeft gedetecteerd, hoewel het nog steeds beschikbaar is voor gebruik.
 
 Verschillende resources hebben hun eigen criteria voor wanneer ze rapporteren dat ze worden gedegradeerd.
 

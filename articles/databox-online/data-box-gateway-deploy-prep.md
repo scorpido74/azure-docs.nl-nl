@@ -8,14 +8,14 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 428b42e62f44d182de109740359544135561e54b
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: fdb4b7c370d5edadf3e0e5bc0d1ae548da6bcaa9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67441498"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438647"
 ---
-# <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Zelfstudie: Voorbereidingen voor het implementeren van Azure Data Box-Gateway
+# <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Zelf studie: de implementatie van Azure Data Box Gateway voorbereiden
 
 
 Dit is de eerste zelfstudie in de reeks zelfstudies voor implementatie, die noodzakelijk zijn voor het voltooien van de implementatie van uw Azure Data Box Gateway. In deze zelfstudie wordt beschreven hoe u Azure Portal voorbereidt voor de implementatie van de Data Box Gateway-resource. 
@@ -50,12 +50,12 @@ Hier vindt u de configuratievereisten voor uw Data Box Gateway-resource, uw Data
 
 Zorg voordat u begint voor het volgende:
 
-- Uw Microsoft Azure-abonnement moet worden ondersteund voor gegevens in het Gateway-resource. Betalen per gebruik-abonnementen worden ook ondersteund.
-- Hebt u eigenaar of bijdrager niveau van de resourcegroep voor de Data Box Edge/de Data Box Gateway, IoT-Hub en Azure Storage-resources te gebruiken.
+- Uw Microsoft Azure-abonnement moet worden ondersteund voor Data Box Gateway resource. Betalen per gebruik-abonnementen worden ook ondersteund.
+- U hebt toegang tot de eigenaar of de Inzender op het niveau van de resource groep voor de resources Data Box Edge/Data Box Gateway, IoT Hub en Azure Storage.
 
-    - Maken van een Data Box-Edge / Data Box-Gateway-resource, u hebt machtigingen als Inzender (of hoger) binnen het bereik op het niveau van resources. U moet ook om ervoor te zorgen dat de `Microsoft.DataBoxEdge` provider is geregistreerd. Voor informatie over het registreren, gaat u naar [registerbronprovider](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers).
-    - Voor het maken van de resource van een Opslagaccount, opnieuw moet u bijdrager of hoger toegang binnen het bereik op het niveau van de resource. Azure Storage is standaard een geregistreerde resourceprovider.
-- U hebt de beheerder of gebruiker toegang tot Azure Active Directory Graph API. Zie voor meer informatie, [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-).
+    - Als u een Data Box Edge/Data Box Gateway resource wilt maken, moet u machtigingen hebben als Inzender (of hoger) op het niveau van de resource groep. U moet er ook voor zorgen dat de `Microsoft.DataBoxEdge` provider is geregistreerd. Voor informatie over het registreren gaat u naar [registreren resource provider](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers).
+    - Als u een opslag account resource wilt maken, moet u op het niveau van de resource groep opnieuw een Inzender of een hogere toegangs scope hebben. Azure Storage is standaard een geregistreerde resource provider.
+- U hebt beheerder-of gebruikers toegang tot Azure Active Directory Graph API. Zie [Azure Active Directory Graph API](https://docs.microsoft.com/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#default-access-for-administrators-users-and-guest-users-)voor meer informatie.
 - U hebt een Microsoft Azure Storage-account met toegangsreferenties.
 
 ### <a name="for-the-data-box-gateway-device"></a>Voor het Data Box Gateway-apparaat
@@ -65,7 +65,7 @@ Voordat u een virtueel apparaat implementeert, controleert u of:
 - U toegang hebt tot een hostsysteem met Hyper-V in Windows Server 2012 R2 of hoger, of VMware (ESXi 6.0, 6.5 of 6.7) dat kan worden gebruikt voor het inrichten van een apparaat.
 - Het hostsysteem kan de volgende resources volledig toewijzen aan het inrichten van uw virtuele Data Box-apparaat:
   
-  - Een minimum van 4 virtuele processors.
+  - Mini maal 4 virtuele processors.
   - Ten minste 8 GB RAM-geheugen.
   - Eén netwerkinterface.
   - Een besturingssysteemschijf van 250 GB.
@@ -75,85 +75,85 @@ Voordat u een virtueel apparaat implementeert, controleert u of:
 
 Zorg voordat u begint voor het volgende:
 
-- Het netwerk in uw datacenter is geconfigureerd volgens de netwerkvereisten voor uw Data Box Gateway-apparaat. Zie voor meer informatie de [Data Box Gateway systeemvereisten](data-box-gateway-system-requirements.md).
+- Het netwerk in uw datacenter is geconfigureerd volgens de netwerkvereisten voor uw Data Box Gateway-apparaat. Zie de [Data Box gateway systeem vereisten](data-box-gateway-system-requirements.md)voor meer informatie.
 
-- Voor normale operationele voorwaarden van uw Data Box-Gateway, moet u beschikt over een:
+- Voor normale bedrijfs omstandigheden van uw Data Box Gateway hebt u het volgende nodig:
 
-    - Minimaal 10 Mbps bandbreedte om te controleren of het apparaat blijft bijgewerkte downloaden.
-    - Een minimum van 20-Mbps toegewezen uploaden en downloaden van bandbreedte om over te dragen van bestanden.
+    - Mini maal 10 Mbps down load bandbreedte om ervoor te zorgen dat het apparaat bijgewerkt blijft.
+    - Mini maal 20 Mbps toegewezen upload-en download bandbreedte voor het overdragen van bestanden.
 
 ## <a name="create-a-new-resource"></a>Een nieuwe resource maken
 
 Als u al een Data Box Gateway-resource hebt voor het beheer van uw virtuele apparaten, kunt u deze stap overslaan en verdergaan met [Activeringscode ophalen](#get-the-activation-key).
 
-Voor het maken van een resource in het gegevensgateway, moet u de volgende stappen uitvoeren in Azure portal.
+Als u een Data Box Gateway resource wilt maken, voert u de volgende stappen uit in de Azure Portal.
 
-1. Gebruik uw Microsoft Azure-referenties aanmelden bij:
+1. Gebruik uw Microsoft Azure referenties om u aan te melden bij:
 
-    - De Azure-portal op de volgende URL: [ https://portal.azure.com ](https://portal.azure.com).
-    - Of, in de Azure Government-portal op de volgende URL: [ https://portal.azure.us ](https://portal.azure.us). Voor meer informatie gaat u naar [verbinding maken met Azure Government met behulp van de portal](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
+    - De Azure Portal op deze URL: [https://portal.azure.com](https://portal.azure.com).
+    - Of de Azure Government Portal op deze URL: [https://portal.azure.us](https://portal.azure.us). Ga voor meer informatie naar [verbinding maken met Azure Government met behulp van de portal](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
 
-2. Selecteer in het linkerdeelvenster **+ een resource maken**. Zoeken naar **Data Box Edge / Data Box Gateway**. Data Box rand selecteren / Data Box-Gateway. Selecteer **Maken**.
-3. Kies het abonnement dat u wilt gebruiken voor gegevens in het Gateway-apparaat. Selecteer de regio waar u wilt de gegevens in het Gateway-resources implementeren. VS-Oost, Zuidoost-Azië en West-Europa zijn beschikbaar voor deze release. Kies een locatie die het dichtst bij de geografische regio ligt waar u uw apparaat wilt implementeren. In de **Data Box Gateway** optie, selecteer **maken**.
+2. Selecteer in het linkerdeel venster **+ een resource maken**. Zoeken naar **Data Box EDGE/Data Box gateway**. Selecteer Data Box Edge/Data Box Gateway. Selecteer **Maken**.
+3. Kies het abonnement dat u wilt gebruiken voor Data Box Gateway apparaat. Selecteer de regio waar u de Data Box Gateway resource wilt implementeren. Voor deze release zijn VS-Oost, Zuid-Azië-oost en Europa-west beschikbaar. Kies een locatie die het dichtst bij de geografische regio ligt waar u uw apparaat wilt implementeren. Selecteer in de optie **Data Box gateway** **maken**.
 
     ![Data Box Gateway-service zoeken](media/data-box-gateway-deploy-prep/data-box-gateway-edge-sku.png)
 
-4. Op de **basisbeginselen** tabblad Typ of Selecteer de volgende **projectdetails**.
+4. Voer op het tabblad **basis beginselen** de volgende **Project gegevens**in of Selecteer deze.
     
-    |Instelling  |Value  |
+    |Instelling  |Waarde  |
     |---------|---------|
     |Abonnement    |Dit wordt automatisch ingevuld op basis van de eerdere selectie. Abonnement is gekoppeld aan uw factureringsrekening. |
-    |Resourcegroep  |Maak een nieuwe groep of selecteer een bestaande groep.<br>Meer informatie over [Azure-resourcegroepen](../azure-resource-manager/resource-group-overview.md).     |
+    |Resourcegroep  |Maak een nieuwe groep of selecteer een bestaande groep.<br>Meer informatie over [Azure-resourcegroepen](../azure-resource-manager/management/overview.md).     |
 
-5. Typ of Selecteer de volgende **exemplaar details**.
+5. Voer de volgende **exemplaar gegevens**in of Selecteer deze.
 
     |Instelling  |Waarde  |
     |---------|---------|
     |Name   | Een beschrijvende naam om de resource aan te duiden.<br>De naam is tussen 2 en 50 tekens lang en kan letters, cijfers en afbreekstreepjes bevatten.<br> De naam begint en eindigt met een letter of cijfer.        |   
-    |Regio     |Voor deze release zijn de VS-Oost, Zuidoost-Azië en West-Europa zijn beschikbaar voor het implementeren van uw resource. Voor de Azure Government, alle government-regio's die worden vermeld in de [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/) beschikbaar zijn. <br> Kies een locatie die het dichtst bij de geografische regio ligt waar u uw apparaat wilt implementeren.|
+    |Regio     |Voor deze release zijn VS-Oost, Zuid-Azië-oost en Europa-west beschikbaar voor het implementeren van uw resource. Alle overheids regio's die zijn opgenomen in de [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/) zijn beschikbaar voor de Azure Government. <br> Kies een locatie die het dichtst bij de geografische regio ligt waar u uw apparaat wilt implementeren.|
     
     ![Data Box Gateway-resource maken](media/data-box-gateway-deploy-prep/data-box-gateway-resource.png)
     
 6. Selecteer **Controleren + maken**.
  
-7. Op de **bekijken + maken** tabblad de **prijsinformatie**, **gebruiksvoorwaarden**, en de details voor uw resource. Selecteer **Maken**.
+7. Controleer op het tabblad **controleren en maken** de **prijs informatie**, de **Gebruiksvoorwaarden**en de details van uw resource. Selecteer **Maken**.
 
-    ![Data Box Gateway Resourcedetails bekijken](media/data-box-gateway-deploy-prep/data-box-gateway-resource1.png)
+    ![Details van Data Box Gateway resource bekijken](media/data-box-gateway-deploy-prep/data-box-gateway-resource1.png)
 
-Het maken van de resource duurt enkele minuten. Nadat de resource is gemaakt en geïmplementeerd, krijgt u een melding. Selecteer **Ga naar resource**.
+Het maken van de resource duurt enkele minuten. Nadat de resource is gemaakt en geïmplementeerd, wordt u hiervan op de hoogte gebracht. Selecteer **Ga naar resource**.
 
-![Data Box Gateway Resourcedetails bekijken](media/data-box-gateway-deploy-prep/data-box-gateway-resource2.png)
+![Details van Data Box Gateway resource bekijken](media/data-box-gateway-deploy-prep/data-box-gateway-resource2.png)
 
 ## <a name="download-the-virtual-device-image"></a>De installatiekopie voor het virtuele apparaat downloaden
 
-Nadat u de Data Box Gateway-resource hebt gemaakt, downloadt u de juiste installatiekopie voor het virtuele apparaat om een virtueel apparaat in te richten op uw hostsysteem. De installatiekopieën van het virtuele apparaat zijn specifiek voor een besturingssysteem.
+Nadat u de Data Box Gateway-resource hebt gemaakt, downloadt u de juiste installatiekopie voor het virtuele apparaat om een virtueel apparaat in te richten op uw hostsysteem. De installatie kopieën van het virtuele apparaat zijn specifiek voor een besturings systeem.
 
 > [!IMPORTANT]
 > De software die wordt uitgevoerd op de Data Box Gateway kan alleen worden gebruikt met de Data Box Gateway-resource.
 
-Volg deze stappen in de [Azure-portal](https://portal.azure.com/) voor het downloaden van een installatiekopie van het virtuele apparaat.
+Volg deze stappen in de [Azure Portal](https://portal.azure.com/) om een installatie kopie van een virtueel apparaat te downloaden.
 
-1. In de resource die u hebt gemaakt en selecteer vervolgens **overzicht**. Als u een bestaande Azure Data Box-Gateway-resource hebt, selecteert u de resource en Ga naar **overzicht**. Selecteer **Apparaatinstelling**.
+1. In de resource die u hebt gemaakt en selecteer vervolgens **overzicht**. Als u een bestaande Azure Data Box Gateway resource hebt, selecteert u de resource en gaat u naar **overzicht**. Selecteer **apparaat instellen**.
 
     ![Nieuwe Data Box Gateway-resource](media/data-box-gateway-deploy-prep/data-box-gateway-resource-created.png)
 
-2. Op de **downloaden installatiekopie** tegel, selecteert u de installatiekopie van het virtuele apparaat overeenkomt met het besturingssysteem op de hostserver die wordt gebruikt voor het inrichten van de virtuele machine. De installatiekopie van ongeveer 5,6 GB zijn.
+2. Selecteer op de tegel **afbeelding downloaden** de installatie kopie van het virtuele apparaat die overeenkomt met het besturings systeem op de hostserver die is gebruikt om de virtuele machine in te richten. De afbeeldings bestanden zijn ongeveer 5,6 GB.
    
    * [VHDX voor Hyper-V in Windows Server 2012 R2 en hoger](https://aka.ms/dbe-vhdx-2012).
    * [VMDK voor VMWare ESXi 6.0, 6.5 of 6.7](https://aka.ms/dbe-vmdk).
 
-    ![Installatiekopie van het virtuele apparaat Data Box-Gateway downloaden](media/data-box-gateway-deploy-prep/data-box-gateway-download-image.png)
+    ![Installatie kopie van Data Box Gateway virtueel apparaat downloaden](media/data-box-gateway-deploy-prep/data-box-gateway-download-image.png)
 
 5. Download het bestand en pak het uit op een lokale schijf, en onthoud waar het zipbestand is uitgepakt.
 
 
 ## <a name="get-the-activation-key"></a>De activeringssleutel ophalen
 
-Nadat de gegevens in het Gateway-resource actief en werkend is, hebt u de activeringscode. Deze sleutel wordt gebruikt om uw Data Box Gateway-apparaat te activeren en te verbinden met de resource. U kunt deze sleutel nu ophalen, terwijl u Azure Portal geopend hebt.
+Nadat de Data Box Gateway resource actief is, moet u de activerings sleutel ophalen. Deze sleutel wordt gebruikt om uw Data Box Gateway-apparaat te activeren en te verbinden met de resource. U kunt deze sleutel nu ophalen, terwijl u Azure Portal geopend hebt.
 
-1. Selecteer de resource die u hebt gemaakt en selecteer vervolgens **Overzicht**. In de **Apparaatinstelling**, gaat u naar de **configureren en te activeren** tegel.
+1. Selecteer de resource die u hebt gemaakt en selecteer vervolgens **Overzicht**. Ga in de installatie van het **apparaat**naar de tegel **configureren en activeren** .
 
-    ![Configureren en activeren van tegel](media/data-box-gateway-deploy-prep/data-box-gateway-configure-activate.png)
+    ![Tegel configureren en activeren](media/data-box-gateway-deploy-prep/data-box-gateway-configure-activate.png)
 
 2. Selecteer **Sleutel genereren** om een activeringssleutel te maken. Selecteer het kopieerpictogram om de sleutel te kopiëren en op te slaan voor later gebruik.
 

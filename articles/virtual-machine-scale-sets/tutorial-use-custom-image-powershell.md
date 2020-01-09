@@ -1,5 +1,5 @@
 ---
-title: Zelfstudie - Een aangepaste VM-installatiekopie gebruiken in een schaalset met Azure PowerShell | Microsoft Docs
+title: Zelf studie-een aangepaste VM-installatie kopie gebruiken in een schaalset met Azure PowerShell
 description: Informatie over het gebruik van Azure PowerShell voor het maken van een aangepaste VM-installatiekopie die u kunt gebruiken voor het implementeren van een virtuele-machineschaalset
 services: virtual-machine-scale-sets
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bd605ac3a4dd3f878dd3d5b861374816243f3467
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 4f47c4118db9d5fc799193f4abeea142c74ec691
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66728558"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551570"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Zelfstudie: Een aangepaste installatiekopie voor virtuele-machineschaalsets maken en gebruiken met Azure PowerShell
 
@@ -113,6 +113,18 @@ $image = New-AzImageConfig -Location "EastUS" -SourceVirtualMachineId $vm.ID
 New-AzImage -Image $image -ImageName "myImage" -ResourceGroupName "myResourceGroup"
 ```
 
+## <a name="configure-the-network-security-group-rules"></a>De regels voor de netwerk beveiligings groep configureren
+Voordat u de Schaalset maakt, moet u de regels voor het koppelen van netwerk beveiligings groepen configureren om toegang tot HTTP, RDP en externe communicatie toe te staan 
+
+```azurepowershell-interactive
+$rule1 = New-AzNetworkSecurityRuleConfig -Name web-rule -Description "Allow HTTP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80
+
+$rule2 = New-AzNetworkSecurityRuleConfig -Name rdp-rule -Description "Allow RDP" -Access Allow -Protocol Tcp -Direction Inbound -Priority 110 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389
+
+$rule3 = New-AzNetworkSecurityRuleConfig -Name remoting-rule -Description "Allow PS Remoting" -Access Allow -Protocol Tcp -Direction Inbound -Priority 120 -SourceAddressPrefix Internet -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 5985
+
+New-AzNetworkSecurityGroup -Name "myNSG" -ResourceGroupName "myResourceGroup" -Location "EastUS" -SecurityRules $rule1,$rule2,$rule3
+```
 
 ## <a name="create-a-scale-set-from-the-custom-vm-image"></a>Een schaalset maken op basis van de aangepaste VM-installatiekopie
 Maak nu een schaalset met [New-AzVmss](/powershell/module/az.compute/new-azvmss) die gebruikmaakt van de parameter `-ImageName` voor het definiëren van de aangepaste VM-installatiekopie die in de vorige stap is gemaakt. Om het verkeer te distribueren naar de verschillende VM-exemplaren, wordt er ook een load balancer gemaakt. De load balancer bevat regels voor het distribueren van verkeer op TCP-poort 80, en voor het toestaan van verkeer van Extern bureaublad op TCP-poort 3389 en externe toegang via PowerShell op TCP-poort 5985. Geef desgevraagd uw eigen beheerdersreferenties op voor de VM-exemplaren in de schaalset:
@@ -124,6 +136,7 @@ New-AzVmss `
   -VMScaleSetName "myScaleSet" `
   -VirtualNetworkName "myVnet" `
   -SubnetName "mySubnet" `
+  -SecurityGroupName "myNSG"
   -PublicIpAddressName "myPublicIPAddress" `
   -LoadBalancerName "myLoadBalancer" `
   -UpgradePolicyMode "Automatic" `

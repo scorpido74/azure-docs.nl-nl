@@ -5,15 +5,15 @@ author: stepro
 ms.author: stephpr
 ms.date: 08/01/2018
 ms.topic: tutorial
-description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
+description: In deze zelf studie leert u hoe u Azure dev Spaces en Visual Studio code kunt gebruiken om team ontwikkeling te doen op een Java-toepassing in de Azure Kubernetes-service
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
 manager: gwallace
-ms.openlocfilehash: 400aec21d028011523fc5b441ed8ba77a1a46074
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: d81b0227a627593b16bd07f4cfcf4c1b6d61f84b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325529"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438156"
 ---
 # <a name="team-development-using-java-and-visual-studio-code-with-azure-dev-spaces"></a>Team ontwikkeling met behulp van Java en Visual Studio code met Azure dev Spaces
 

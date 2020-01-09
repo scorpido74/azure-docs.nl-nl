@@ -1,6 +1,6 @@
 ---
-title: Sneltoetsen voor Azure portal | Microsoft Docs
-description: Meer informatie over de sneltoetsen die in Azure portal werken.
+title: Azure Portal toetsenbord snel toetsen | Microsoft Docs
+description: De Azure Portal ondersteunt wereld wijde sneltoetsen waarmee u acties kunt uitvoeren, navigeren en naar locaties in de Azure Portal kunt gaan.
 services: azure-portal
 documentationcenter: ''
 author: adamabmsft
@@ -12,46 +12,46 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/08/2019
-ms.author: kfollis
+ms.date: 12/20/2019
+ms.author: mblythe
 ms.custom: accessibility
-ms.openlocfilehash: fb0b347228fe82725d5246ae9eacdab8dff01257
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e42dfc82fa0db028894dd77225621e867d79dac6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60551427"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75641330"
 ---
-# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Sneltoetsen gebruiken in Azure portal
+# <a name="keyboard-shortcuts-in-the-azure-portal"></a>Sneltoetsen in de Azure Portal
 
-In dit artikel geeft een lijst van de sneltoetsen die overal in Azure portal werken. Afzonderlijke services kunnen hun eigen sneltoetsen hebben.
+In dit artikel vindt u een overzicht van de sneltoetsen die overal in het Azure Portal werken. Afzonderlijke services hebben mogelijk hun eigen sneltoetsen.
 
 ## <a name="actions"></a>Acties
 
-|Voor deze actie uitvoeren |Druk op |
+|Uit te voeren actie |Druk op |
 | --- | --- |
 |Een resource maken|G+N|
-|Open **alle services**|G+B|
-|Resources, services en documenten zoeken|G+/|
-|Resource menu-zoekitems|CTRL +/ |
-|Het geselecteerde linkerzijbalk item omhoog |ALT + Shift + pijl-omhoog|
-|Het geselecteerde linkerzijbalk item omlaag verplaatsen |ALT + Shift + pijl-omlaag|
+|**Alle services** openen|G+B|
+|Resources, services en documenten zoeken|G +/|
+|Items in het resource menu zoeken|CTRL +/ |
+|Het geselecteerde linkerdeel punt omhoog verplaatsen |ALT + SHIFT + pijl-omhoog|
+|Het geselecteerde linkerdeel punt item omlaag verplaatsen |ALT + SHIFT + pijl-omlaag|
 
 ## <a name="navigation"></a>Navigatie
 
-|Deze navigatie doen |Druk op |
+|Om deze navigatie uit te voeren |Druk op |
 | --- | --- |
-|De focus naar opdrachtbalk verplaatsen |G+, |
-|De focus schakelen tussen koptekst en linkerzijbalk | G +. |
+|Focus verplaatsen naar opdracht balk |G +, |
+|Scha kelen tussen koptekst en linker zijbalk | G +. |
 
 ## <a name="go-to"></a>Ga naar
 
-|Naar deze locatie |Druk op |
+|Naar deze locatie gaan |Druk op |
 | --- | --- |
-|Ga naar **Dashboard** |G+D |
-|Ga naar **alle resources**|G+A |
-|Ga naar **resourcegroepen**|G + R |
-|Open de linkerzijbalk-item op deze positie |G + nummer|
+|Naar het **dash board** gaan |G+D |
+|Ga naar **alle resources**|G + A |
+|Ga naar **resource groepen**|G + R |
+|Open het item Sidebar links op deze positie |G + nummer|
 
 ## <a name="next-steps"></a>Volgende stappen
 

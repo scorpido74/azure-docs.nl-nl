@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2126415c3ae7ecb14a47c79dacd67aee656cd745
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
-ms.translationtype: MT
+ms.openlocfilehash: f1baffb60234a154df544552dba3c34ced25b518
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894309"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75436418"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -374,9 +374,9 @@ Het gebruik van _sjabloon functies_ in **waarde** biedt veel complexe geneste fu
 }
 ```
 
-De voorbeeld beleidsregel hierboven maakt gebruik van [subtekenreeks ()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) om de eerste drie tekens van de **naam** te vergelijken met **ABC**. Als de **naam** korter is dan drie tekens, resulteert de functie `substring()` in een fout. Als gevolg van deze fout wordt het beleid **geweigerd** .
+De voorbeeld beleidsregel hierboven maakt gebruik van [subtekenreeks ()](../../../azure-resource-manager/templates/template-functions-string.md#substring) om de eerste drie tekens van de **naam** te vergelijken met **ABC**. Als de **naam** korter is dan drie tekens, resulteert de functie `substring()` in een fout. Als gevolg van deze fout wordt het beleid **geweigerd** .
 
-Gebruik in plaats daarvan de functie [als ()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) om te controleren of de eerste drie tekens van de **naam** gelijk zijn aan **ABC** zonder dat een **naam** die korter is dan drie tekens, een fout veroorzaakt:
+Gebruik in plaats daarvan de functie [als ()](../../../azure-resource-manager/templates/template-functions-logical.md#if) om te controleren of de eerste drie tekens van de **naam** gelijk zijn aan **ABC** zonder dat een **naam** die korter is dan drie tekens, een fout veroorzaakt:
 
 ```json
 {
@@ -635,7 +635,7 @@ De lijst met aliassen groeien blijft. Als wilt weten welke aliassen worden momen
   (Get-AzPolicyAlias -NamespaceMatch 'compute').Aliases
   ```
 
-- Azure CLI
+- Azure-CLI
 
   ```azurecli-interactive
   # Login first with az login if not using Cloud Shell

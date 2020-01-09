@@ -1,26 +1,15 @@
 ---
-title: Een Service Fabric cluster met Windows maken in azure | Microsoft Docs
+title: Een Service Fabric cluster met Windows maken in azure
 description: In deze zelf studie leert u hoe u een Windows Service Fabric-cluster kunt implementeren in een virtueel Azure-netwerk en een netwerk beveiligings groep met behulp van Power shell.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 28571584fbd82b245e85e2ebe5b1d282ab5ae979
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 086379e788966b300f988e06ec42c94b880b8281
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177983"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551706"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Zelf studie: een Service Fabric cluster met Windows implementeren in een virtueel Azure-netwerk
 
@@ -112,6 +101,7 @@ De volgende regels voor binnenkomend verkeer worden ingeschakeld in de resource 
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
+* SMB: 445
 * Internodecommunication: 1025, 1026, 1027
 * Tijdelijk poort bereik: 49152 tot 65534 (mini maal 256 poorten nodig).
 * Poorten voor toepassingsgebruik: 80 en 443
@@ -153,7 +143,7 @@ Het [Windows Defender anti virus-programma](/windows/security/threat-protection/
 
 Het bestand [azuredeploy. para meters. json][parameters] -para meters declareert veel waarden die worden gebruikt voor het implementeren van het cluster en de bijbehorende resources. Hier volgen de para meters die u kunt wijzigen voor uw implementatie:
 
-**Bepaalde** | **Voorbeeld waarde** | **Opmerkingen** 
+**Parameter** | **Voorbeeldwaarde** | **Opmerkingen** 
 |---|---|---|
 |adminUserName|vmadmin| De gebruikersnaam van de beheerder van de cluster-VM's. De [gebruikers naam is vereist voor de VM](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-username-requirements-when-creating-a-vm). |
 |adminPassword|Password#1234| Het wachtwoord van de beheerder van de cluster-VM's. [Wachtwoord vereisten voor de virtuele machine](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm).|
@@ -177,7 +167,7 @@ Een Service Fabric-cluster biedt verschillende toegangspunten bij de management-
 
 In dit artikel wordt ervan uitgegaan dat u al een Tenant hebt gemaakt. Als dat niet het geval is, lees dan eerst [hoe u een Azure Active Directory Tenant kunt ophalen](../active-directory/develop/quickstart-create-new-tenant.md).
 
-We hebben een set Windows Power shell-scripts gemaakt om de stappen voor het configureren van Azure AD met een Service Fabric-cluster te vereenvoudigen. [Download de scripts](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) op uw computer.
+We hebben een set Windows Power shell-scripts gemaakt om de stappen voor het configureren van Azure AD met een Service Fabric-cluster te vereenvoudigen. [Download de scripts](https://github.com/Azure-Samples/service-fabric-aad-helpers) op uw computer.
 
 ### <a name="create-azure-ad-applications-and-assign-users-to-roles"></a>Azure Active Directory-toepassingen maken en gebruikers toewijzen aan rollen
 Maak twee Azure Active Directory-toepassingen voor het beheren van toegang tot het cluster: een webtoepassing en een systeemeigen toepassing. Nadat u de toepassingen hebt gemaakt om uw cluster te vertegenwoordigen, wijst u uw gebruikers toe aan de rollen die worden [ondersteund door service Fabric](service-fabric-cluster-security-roles.md): alleen-lezen en beheerder.
@@ -443,7 +433,7 @@ Als u de Event Store-service in uw cluster wilt inschakelen, voegt u het volgend
 
 Azure Monitor-Logboeken is onze aanbeveling om gebeurtenissen op cluster niveau te bewaken. Als u Azure Monitor logboeken wilt instellen om uw cluster te bewaken, moet u [Diagnostische gegevens inschakelen om gebeurtenissen op cluster niveau weer te geven](#configure-diagnostics-collection-on-the-cluster).  
 
-De werk ruimte moet zijn verbonden met de diagnostische gegevens die afkomstig zijn uit uw cluster.  Deze logboek gegevens worden opgeslagen in het *applicationDiagnosticsStorageAccountName* -opslag account in de tabellen WADServiceFabric * EventTable, WADWindowsEventLogsTable en WADETWEventTable.
+De werkruimte moet worden verbonden met de diagnostische gegevens die afkomstig zijn van uw cluster.  Deze logboek gegevens worden opgeslagen in het *applicationDiagnosticsStorageAccountName* -opslag account in de tabellen WADServiceFabric * EventTable, WADWindowsEventLogsTable en WADETWEventTable.
 
 Voeg de Azure Log Analytics-werk ruimte toe en voeg de oplossing toe aan de werk ruimte:
 

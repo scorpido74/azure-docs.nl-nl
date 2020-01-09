@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.openlocfilehash: dba64d432231873676c49a1f4f2fac579c3f4be9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c840cf452f047177c1244caedf09d976f0514961
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279267"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435538"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Apache Hadoop clusters maken in HDInsight met behulp van Resource Manager-sjablonen
 
@@ -40,18 +40,18 @@ U kunt voor beelden van HDInsight-sjablonen vinden in [Azure Quick](https://azur
 
 Voor meer informatie over Resource Manager-sjablonen raadpleegt u de volgende artikelen en voor beelden:
 
-* [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/templates/template-syntax.md)
 * [Een toepassing implementeren met Azure Resource Manager sjablonen](../azure-resource-manager/resource-group-template-deploy.md)
 * Referentie voor sjablonen voor [micro soft. HDInsight/clusters](/azure/templates/microsoft.hdinsight/allversions)
 * [Sjablonen voor Azure Quick Start](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
 
 ## <a name="generate-templates"></a>Sjablonen genereren
 
-Met Resource Manager kunt u een resource manager-sjabloon uit bestaande resources in uw abonnement exporteren met behulp van verschillende hulpprogram ma's. Deze gegenereerde sjabloon kunt u vervolgens gebruiken om meer te weten te komen over de sjabloonsyntaxis of om desgewenst het hergebruik van uw oplossing te automatiseren. Zie [sjablonen exporteren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)voor meer informatie.
+Met Resource Manager kunt u een resource manager-sjabloon uit bestaande resources in uw abonnement exporteren met behulp van verschillende hulpprogram ma's. Deze gegenereerde sjabloon kunt u vervolgens gebruiken om meer te weten te komen over de sjabloonsyntaxis of om desgewenst het hergebruik van uw oplossing te automatiseren. Zie [sjablonen exporteren](../azure-resource-manager/templates/export-template-portal.md)voor meer informatie.
 
 ## <a name="deploy-using-the-portal"></a>Implementeren met behulp van de portal
 
-U kunt een resource manager-sjabloon implementeren met behulp van de Azure Portal. Zie [resources implementeren vanuit een aangepaste sjabloon](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)voor meer informatie.
+U kunt een resource manager-sjabloon implementeren met behulp van de Azure Portal. Zie [resources implementeren vanuit een aangepaste sjabloon](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template)voor meer informatie.
 
 ## <a name="deploy-using-powershell"></a>Implementeren met PowerShell
 
@@ -83,5 +83,5 @@ In dit artikel hebt u verschillende manieren geleerd om een HDInsight-cluster te
 * Zie [resources implementeren met behulp van .net-bibliotheken en een sjabloon](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)voor een voor beeld van het implementeren van resources via de .net-client bibliotheek.
 * Zie voor een uitgebreid voor beeld van de implementatie van een toepassing micro [services zoals verwacht inrichten en implementeren in azure](../app-service/deploy-complex-application-predictably.md).
 * Zie voor instructies over het implementeren van uw oplossing in verschillende omgevingen [Ontwikkeling en testomgevingen in Microsoft Azure](../solution-dev-test-environments.md).
-* Zie [ontwerp sjablonen](../azure-resource-manager/resource-group-authoring-templates.md)voor meer informatie over de secties van de sjabloon Azure Resource Manager.
+* Zie [ontwerp sjablonen](../azure-resource-manager/templates/template-syntax.md)voor meer informatie over de secties van de sjabloon Azure Resource Manager.
 * Zie [sjabloon functies](../azure-resource-manager/resource-group-template-functions.md)voor een overzicht van de functies die u kunt gebruiken in een Azure Resource Manager sjabloon.

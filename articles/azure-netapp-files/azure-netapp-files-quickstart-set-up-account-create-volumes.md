@@ -1,25 +1,18 @@
 ---
-title: 'Quick Start: Azure NetApp Files instellen en een NFS-volume maken | Microsoft Docs'
+title: 'Snelstartgids: Azure NetApp Files-en NFS-volume instellen'
 description: 'Quick Start: hier wordt beschreven hoe u Azure NetApp Files snel instelt en een volume maakt.'
-services: azure-netapp-files
-documentationcenter: ''
 author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
+ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 12/01/2019
-ms.author: b-juche
-ms.openlocfilehash: 912fd6bde4d00cca304a1506465a524cda947a07
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: fc7f13fb7ffe1667aaeaa4a3cc1916c6049a98c1
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769843"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75551638"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Snelstartgids: Azure NetApp Files instellen en een NFS-volume maken 
 
@@ -69,7 +62,7 @@ Voor dit procedure-artikel is de Azure PowerShell AZ versie 2.6.0 of hoger verei
     Register-AzResourceProvider -ProviderNamespace Microsoft.NetApp
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 [!INCLUDE [azure-netapp-files-cloudshell-include](../../includes/azure-netapp-files-azure-cloud-shell-window.md)]
 
@@ -126,7 +119,7 @@ Voor dit procedure-artikel is de Azure PowerShell AZ versie 2.6.0 of hoger verei
     New-AzNetAppFilesAccount -ResourceGroupName $resourceGroup -Location $location -Name $anfAccountName
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 1. Definieer enkele variabelen zodat we deze in de rest van de voor beelden kunnen raadplegen:
 
@@ -198,7 +191,7 @@ Voor dit procedure-artikel is de Azure PowerShell AZ versie 2.6.0 of hoger verei
     New-AzNetAppFilesPool -ResourceGroupName $resourceGroup -Location $location -AccountName $anfAccountName -Name $poolName -PoolSize $poolSizeBytes -ServiceLevel $serviceLevel
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 1. Enkele nieuwe variabelen definiëren voor toekomstige referentie
 
@@ -228,7 +221,7 @@ Voor dit procedure-artikel is de Azure PowerShell AZ versie 2.6.0 of hoger verei
 
 1. Klik op **volumes**op de blade Azure NetApp files beheer van uw NetApp-account.
 
-    ![Klik op volumes](../media/azure-netapp-files/azure-netapp-files-click-volumes.png)  
+    ![Klik op Volumes](../media/azure-netapp-files/azure-netapp-files-click-volumes.png)  
 
 2. Klik op **Volume toevoegen**.
 
@@ -306,7 +299,7 @@ Voor dit procedure-artikel is de Azure PowerShell AZ versie 2.6.0 of hoger verei
         -ProtocolType NFSv3
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 1. Een aantal variabelen definiëren voor later gebruik.
     
@@ -400,7 +393,7 @@ Wanneer u klaar bent en u wilt, kunt u de resource groep verwijderen. De actie v
     Remove-AzResourceGroup -Name $resourceGroup
     ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Wanneer u klaar bent en u wilt, kunt u de resource groep verwijderen. De actie voor het verwijderen van een resource groep is onomkeerbaar.  
 

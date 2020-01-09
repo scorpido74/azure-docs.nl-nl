@@ -1,28 +1,17 @@
 ---
-title: Toegangsbeleid toewijzen aan Azure Service Fabric service-eindpunten | Microsoft Docs
-description: Informatie over het toewijzen van beveiliging toegangsbeleid met HTTP of HTTPS-eindpunten in uw Service Fabric-service.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Toegangs beleid toewijzen aan service-eind punten
+description: Meer informatie over het toewijzen van beveiligings beleid voor HTTP-of HTTPS-eind punten in uw Service Fabric-service.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/21/2018
-ms.author: atsenthi
-ms.openlocfilehash: 3e892e443f5e3309add48f939f26ba14eaf5a51b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c7d30e85848f045b5724bb8bdc6e5c810102c044
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60614189"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614652"
 ---
-# <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Toewijzen van een beveiligingsbeleid voor toegang voor HTTP en HTTPS-eindpunten
-Als u een run as-beleid toepassen en het servicemanifest HTTP-eindpunt resources verklaart, moet u een **SecurityAccessPolicy**.  **SecurityAccessPolicy** zorgt ervoor dat de poorten die zijn toegewezen aan deze eindpunten correct zijn beperkt tot het gebruikersaccount dat de service wordt uitgevoerd als. Anders **http.sys** geen toegang tot de service, en u fouten met aanroepen van de client. Het volgende voorbeeld wordt de Customer1-account naar een eindpunt met de naam **EndpointName**, waardoor het volledige toegangsrechten.
+# <a name="assign-a-security-access-policy-for-http-and-https-endpoints"></a>Een beleid voor beveiligings toegang toewijzen voor HTTP-en HTTPS-eind punten
+Als u een uitvoeren als-beleid toepast en het service manifest HTTP-eindpunt bronnen declareert, moet u een **SecurityAccessPolicy**opgeven.  **SecurityAccessPolicy** zorgt ervoor dat de poorten die zijn toegewezen aan deze eind punten, correct worden beperkt tot het gebruikers account waarmee de service wordt uitgevoerd. Anders heeft **http. sys** geen toegang tot de service en worden er problemen met aanroepen van de client weer geven. In het volgende voor beeld wordt het Customer1-account toegepast op een eind punt met de naam **endpointnaam**, waardoor het volledige toegangs rechten biedt.
 
 ```xml
 <Policies>
@@ -32,7 +21,7 @@ Als u een run as-beleid toepassen en het servicemanifest HTTP-eindpunt resources
 </Policies>
 ```
 
-Voor een HTTPS-eindpunt, moet u ook de naam van het certificaat om terug te keren naar de client aangeven. U verwijst naar het certificaat met behulp van **EndpointBindingPolicy**.  Het certificaat is gedefinieerd in de **certificaten** gedeelte van het toepassingsmanifest.
+Voor een HTTPS-eind punt duidt u ook de naam van het certificaat aan dat moet worden geretourneerd naar de client. U verwijst naar het certificaat met behulp van **EndpointBindingPolicy**.  Het certificaat wordt gedefinieerd in de sectie **certificaten** van het toepassings manifest.
 
 ```xml
 <Policies>
@@ -45,13 +34,13 @@ Voor een HTTPS-eindpunt, moet u ook de naam van het certificaat om terug te kere
 ```
 
 > [!WARNING] 
-> Wanneer u HTTPS gebruikt, gebruik niet de dezelfde poort en het certificaat dat voor andere service-exemplaren (onafhankelijk van de toepassing) is geïmplementeerd op hetzelfde knooppunt. Upgraden van twee verschillende services met behulp van dezelfde poort in verschillende toepassingsinstanties resulteert in een upgrade mislukt. Zie voor meer informatie, [bijwerken van meerdere toepassingen met HTTPS-eindpunten ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints).
+> Wanneer u HTTPS gebruikt, moet u niet dezelfde poort en hetzelfde certificaat gebruiken voor verschillende service-exemplaren (onafhankelijk van de toepassing) die op hetzelfde knoop punt zijn geïmplementeerd. Wanneer u twee verschillende services met dezelfde poort in verschillende toepassings exemplaren bijwerkt, resulteert dit in een upgrade fout. Zie [upgrades uitvoeren voor meerdere toepassingen met https-eind punten ](service-fabric-application-upgrade.md#upgrading-multiple-applications-with-https-endpoints)voor meer informatie.
 > 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 Lees de volgende artikelen voor de volgende stappen:
-* [Inzicht krijgen in het toepassingsmodel](service-fabric-application-model.md)
-* [Resources specificeren in een servicemanifest](service-fabric-service-manifest-resources.md)
+* [Inzicht in het toepassings model](service-fabric-application-model.md)
+* [Resources opgeven in een service manifest](service-fabric-service-manifest-resources.md)
 * [Een app implementeren](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

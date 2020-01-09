@@ -1,25 +1,14 @@
 ---
-title: Betrouw bare serialisatie van verzamelings objecten in azure Service Fabric | Microsoft Docs
-description: Serialisatie van Azure Service Fabric reliable Collections-objecten
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: masnider,rajak
-ms.assetid: 9d35374c-2d75-4856-b776-e59284641956
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Betrouw bare verzameling van object-serialisatie
+description: Meer informatie over de serialisatie van Azure Service Fabric reliable Collections-objecten, met inbegrip van de standaard strategie en het definiëren van aangepaste serialisatie.
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 5/8/2017
-ms.author: atsenthi
-ms.openlocfilehash: d5e7dfb84f6e8a8fbd029ccc0b15c17f68216c33
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 666e1bb45a9c75ee143f15a0d871d6ae1408eca9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599303"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639544"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Betrouw bare serialisatie van verzamelings objecten in azure Service Fabric
 Betrouw bare verzamelingen repliceren en blijven hun items om ervoor te zorgen dat ze duurzaam zijn in de machine storingen en stroom uitval.
@@ -34,9 +23,9 @@ Betrouw bare status Manager bevat een ingebouwde serialisatiefunctie voor een aa
 Ingebouwde serialisatiefuncties zijn efficiënter omdat ze weten dat hun typen niet kunnen worden gewijzigd en ze hoeven geen informatie over het type op te nemen zoals de type naam ervan.
 
 Betrouw bare status Manager heeft ingebouwde serialisatiefunctie voor de volgende typen: 
-- Guid
+- GUID
 - bool
-- byte
+- DBCS
 - sbyte
 - byte[]
 - char
@@ -55,7 +44,7 @@ Betrouw bare status Manager heeft ingebouwde serialisatiefunctie voor de volgend
 
 Aangepaste serialisatiefunctie worden vaak gebruikt om de prestaties te verbeteren of om de gegevens te versleutelen via de kabel en op schijf. Aangepaste serialisatiefunctieen zijn over het algemeen efficiënter dan generieke serialisatiefunctie, omdat ze geen informatie over het type hoeven te serialiseren. 
 
-[IReliableStateManager. TryAddStateSerializer\<T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) wordt gebruikt voor het registreren van een aangepaste serialisatiefunctie voor het opgegeven type T. Deze registratie moet plaatsvinden in de bouw van de StatefulServiceBase om ervoor te zorgen dat voordat het herstel wordt gestart, alle betrouw bare verzamelingen toegang hebben tot de relevante serialisatiefunctie om hun persistente gegevens te lezen.
+[IReliableStateManager. TryAddStateSerializer\<t >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.ireliablestatemanager.tryaddstateserializer) wordt gebruikt voor het registreren van een aangepaste serialisatiefunctie voor het opgegeven type t. Deze registratie moet plaatsvinden in de bouw van de StatefulServiceBase om ervoor te zorgen dat voordat het herstel wordt gestart, alle betrouw bare verzamelingen toegang hebben tot de relevante serialisatiefunctie om hun persistente gegevens te lezen.
 
 ```csharp
 public StatefulBackendService(StatefulServiceContext context)
@@ -73,7 +62,7 @@ public StatefulBackendService(StatefulServiceContext context)
 
 ### <a name="how-to-implement-a-custom-serializer"></a>Een aangepaste serialisatiefunctie implementeren
 
-Voor een aangepaste serialisatiefunctie moet de [\<IStateSerializer T >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) -interface worden geïmplementeerd.
+Een aangepaste serialisatiefunctie moet de IStateSerializer-interface van de [\<t >](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.data.istateserializer-1) implementeren.
 
 > [!NOTE]
 > IStateSerializer\<T > bevat een overbelasting voor schrijven en lezen die een extra T wordt genoemd. Deze API is voor differentiële serialisatie. Momenteel wordt de functie voor differentiële serialisatie niet weer gegeven. Deze twee Overloads worden daarom pas aangeroepen als differentiële serialisatie wordt weer gegeven en ingeschakeld.
@@ -96,7 +85,7 @@ public class OrderKey : IComparable<OrderKey>, IEquatable<OrderKey>
 }
 ```
 
-Hier volgt een voor beeld van de\<implementatie van IStateSerializer OrderKey >.
+Hier volgt een voor beeld van de implementatie van IStateSerializer\<OrderKey >.
 Houd er rekening mee dat de overbelasting van lees-en schrijf bewerkingen die in baseValue worden uitgevoerd, hun respectieve overbelasting aanroept voor voorwaartse compatibiliteit.
 
 ```csharp

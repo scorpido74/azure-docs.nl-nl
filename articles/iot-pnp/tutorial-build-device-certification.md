@@ -3,18 +3,18 @@ title: Een IoT Plug en Play preview-apparaat bouwen dat klaar is voor certificer
 description: Als ontwikkelaar van een apparaat leert u hoe u een IoT Plug en Play preview-apparaat kunt bouwen dat klaar is voor certificering.
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 06/28/2019
+ms.date: 12/28/2019
 ms.topic: tutorial
 ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: e4dd5215812f0fd1a43afe0923601417bc8e6916
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 43fc928b1274159839dc0df395e86d065f84b4c7
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569645"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75550263"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Een IoT Plug en Play preview-apparaat bouwen dat gereed is voor certificering
 
@@ -35,7 +35,7 @@ Voor deze zelfstudie hebt u het volgende nodig:
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [Azure IOT-Hulpprogram ma's voor VS code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) -uitbreidings pakket
 
-U hebt ook het IoT Plug en Play-apparaat nodig dat u in de Quick Start maakt [: gebruik een mogelijkheidsprofiel om een apparaat te maken](quickstart-create-pnp-device.md).
+U hebt ook het IoT Plug en Play-apparaat nodig dat u in de Quick Start maakt [: gebruik een mogelijkheidsprofiel om een apparaat te maken](quickstart-create-pnp-device-windows.md).
 
 ## <a name="store-a-capability-model-and-interfaces"></a>Een mogelijkheidsprofiel en interfaces opslaan
 
@@ -58,7 +58,7 @@ Als u het certificerings proces wilt door geven, moet u de **apparaatgegevens** 
 ```
 
 > [!NOTE]
-> Als u de Snelstartgids hebt voltooid [: een Mogelijkheidsprofiel gebruiken om een apparaat te maken](quickstart-create-pnp-device.md), hebt u de **apparaatgegevens** interface al opgenomen in uw model.
+> Als u de Snelstartgids hebt voltooid [: een Mogelijkheidsprofiel gebruiken om een apparaat te maken](quickstart-create-pnp-device-windows.md), hebt u de **apparaatgegevens** interface al opgenomen in uw model.
 
 Als u de **apparaatgegevens** interface wilt toevoegen aan het model van uw apparaat, voegt u de interface-id toe aan de eigenschap `implements` van het mogelijkheidsprofiel:
 

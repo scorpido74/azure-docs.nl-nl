@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: akjosh
-ms.openlocfilehash: 2215136c02d9cf967e0184af7588ce8d48362009
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 02180af0b388a8f10e0689bc4ea176ee60974666
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072942"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75359005"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>De Azure Linux-agent op een virtuele machine bijwerken
 
@@ -349,7 +349,7 @@ sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 sudo systemctl restart waagent.service
 ```
 
-## <a name="oracle-6-and-7"></a>Oracle 6 en 7
+## <a name="oracle-linux-6-and-oracle-linux-7"></a>Oracle Linux 6 en Oracle Linux 7
 
 Zorg ervoor dat de `Addons` opslagplaats is ingeschakeld voor Oracle Linux. Kies voor het bewerken van het bestand `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) of `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux) en wijzig de regel `enabled=0` in `enabled=1` onder **[ol6_addons]** of **[ol7_addons]** in dit bestand.
 

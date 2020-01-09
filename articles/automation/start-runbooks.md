@@ -2,19 +2,15 @@
 title: Een runbook starten in Azure Automation
 description: Hierin wordt een overzicht gegeven van de verschillende methoden die kunnen worden gebruikt om een runbook te starten in Azure Automation en vindt u informatie over het gebruik van zowel de Azure Portal als Windows Power shell.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: a6ef8d81e8a2845e62bf25d0bba4d6967cca65a4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 71dd83db02537ed12dc2e711127e32d90603af6f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849408"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75416939"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Een runbook starten in Azure Automation
 
@@ -22,7 +18,7 @@ De volgende tabel helpt u bij het bepalen van de methode voor het starten van ee
 
 | **Methode** | **Ervan** |
 | --- | --- |
-| [Azure-portal](#start-a-runbook-with-the-azure-portal) |<li>Eenvoudigste methode met interactieve gebruikers interface.<br> <li>Formulier om eenvoudige parameter waarden op te geven.<br> <li>De taak status eenvoudig bijhouden.<br> <li>Toegang is geverifieerd met Azure-aanmelding. |
+| [Azure Portal](#start-a-runbook-with-the-azure-portal) |<li>Eenvoudigste methode met interactieve gebruikers interface.<br> <li>Formulier om eenvoudige parameter waarden op te geven.<br> <li>De taak status eenvoudig bijhouden.<br> <li>Toegang is geverifieerd met Azure-aanmelding. |
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Aanroepen vanaf de opdracht regel met Windows Power shell-cmdlets.<br> <li>Kan worden opgenomen in een geautomatiseerde oplossing met meerdere stappen.<br> <li>De aanvraag is geverifieerd met het certificaat of de OAuth User Principal/Service-Principal.<br> <li>Eenvoudige en complexe parameter waarden opgeven.<br> <li>De taak status bijhouden.<br> <li>De client is vereist voor de ondersteuning van Power shell-cmdlets. |
 | [Azure Automation API](/rest/api/automation/) |<li>De meest flexibele methode, maar ook het meest complexe.<br> <li>Roep een aangepaste code aan die HTTP-aanvragen kan maken.<br> <li>Aanvraag is geverifieerd met certificaat, of OAuth User Principal/Service Principal.<br> <li>Eenvoudige en complexe parameter waarden opgeven. *Als u een python-runbook aanroept met behulp van de API, moet de JSON-nettolading worden geserialiseerd.*<br> <li>De taak status bijhouden. |
 | [Webhooks](automation-webhooks.md) |<li>Het runbook starten vanuit een enkele HTTP-aanvraag.<br> <li>Is geverifieerd met een beveiligings token in een URL.<br> <li>De client kan de parameter waarden die zijn opgegeven tijdens het maken van de webhook niet overschrijven. Met Runbook kan één para meter worden gedefinieerd die wordt gevuld met de details van de HTTP-aanvraag.<br> <li>Het is niet mogelijk om de taak status via de webhook-URL bij te houden. |

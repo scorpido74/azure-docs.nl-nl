@@ -1,26 +1,15 @@
 ---
-title: Een Service Fabric-cluster schalen in Azure | Microsoft Docs
-description: In deze zelf studie leert u hoe u een Service Fabric cluster in azure kunt schalen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
+title: Een Service Fabric-cluster schalen in Azure
+description: In deze zelf studie leert u hoe u een Service Fabric cluster kunt schalen in azure out and in en hoe u overgebleven resources opschoont.
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 6270237e2319c42ed30fc347b7ab9c1c2a008314
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 9f3049f5a46918d9e70e27fe862372de2cf577ae
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177745"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75639034"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Zelfstudie: Een Service Fabric-cluster schalen
 
@@ -91,7 +80,7 @@ Als u het aantal knoop punten in het cluster wilt schalen of horizon taal wilt s
 
 ### <a name="update-the-template"></a>De sjabloon bijwerken
 
-[Exporteer een sjabloon en parameter bestand](#export-the-template-for-the-resource-group) uit de resource groep voor de meest recente implementatie.  Open het bestand *para meters. json* .  Als u het cluster in deze zelf studie hebt geïmplementeerd met behulp van de [voorbeeld sjabloon][template] , zijn er drie knooppunt typen in het cluster en drie para meters die het aantal knoop punten voor elk knooppunt type instellen: *nt0InstanceCount*, *nt1InstanceCount*en  *nt2InstanceCount*.  De para meter *nt1InstanceCount* stelt bijvoorbeeld het aantal exemplaren voor het tweede knooppunt type in en stelt het aantal virtuele machines in de gekoppelde schaalset voor virtuele machines in.
+[Exporteer een sjabloon en parameter bestand](#export-the-template-for-the-resource-group) uit de resource groep voor de meest recente implementatie.  Open het bestand *para meters. json* .  Als u het cluster in deze zelf studie hebt geïmplementeerd met behulp van de [voorbeeld sjabloon][template] , zijn er drie knooppunt typen in het cluster en drie para meters die het aantal knoop punten voor elk knooppunt type instellen: *nt0InstanceCount*, *nt1InstanceCount*en *nt2InstanceCount*.  De para meter *nt1InstanceCount* stelt bijvoorbeeld het aantal exemplaren voor het tweede knooppunt type in en stelt het aantal virtuele machines in de gekoppelde schaalset voor virtuele machines in.
 
 Dus door de waarde van de *nt1InstanceCount* te wijzigen, wijzigt u het aantal knoop punten in het tweede knooppunt type.  Houd er rekening mee dat u een knooppunt type niet naar meer dan 100 knoop punten kunt schalen.  Niet-primaire knooppunt typen waarvoor stateful productie workloads worden uitgevoerd, moeten altijd vijf of meer knoop punten hebben. Niet-primaire knooppunt typen waarvoor stateless productie werkbelastingen worden uitgevoerd, moeten altijd twee of meer knoop punten hebben.
 
@@ -116,7 +105,7 @@ Elk knooppunt type dat is gedefinieerd in een Service Fabric cluster dat in azur
 
 [Exporteer een sjabloon en parameter bestand](#export-the-template-for-the-resource-group) uit de resource groep voor de meest recente implementatie.  Open het bestand *para meters. json* .  Als u het cluster hebt geïmplementeerd met behulp van de [voorbeeld sjabloon][template] in deze zelf studie, zijn er drie knooppunt typen in het cluster.  In deze sectie voegt u een vierde knooppunt type toe door een resource manager-sjabloon bij te werken en te implementeren. 
 
-Naast het nieuwe knooppunt type, voegt u ook de gekoppelde virtuele-machine schaalset (die wordt uitgevoerd in een afzonderlijk subnet van het virtuele netwerk) en de netwerk beveiligings groep toe.  U kunt ervoor kiezen om een nieuw of bestaand openbaar IP-adres en Azure load balancer-resources toe te voegen voor de nieuwe schaalset.  Het nieuwe knooppunt type heeft een [duurzaamheids niveau][durability] van zilver en grootte van ' Standard_D2_V2 '.
+Naast het nieuwe knooppunt type, voegt u ook de gekoppelde virtuele-machine schaalset (die wordt uitgevoerd in een afzonderlijk subnet van het virtuele netwerk) en de netwerk beveiligings groep toe.  U kunt ervoor kiezen om een nieuw of bestaand openbaar IP-adres en Azure load balancer-resources toe te voegen voor de nieuwe schaalset.  Het nieuwe knooppunt type heeft een [duurzaamheids niveau][durability] van zilver en grootte van "Standard_D2_V2".
 
 Voeg in het bestand *Template. json* de volgende nieuwe para meters toe:
 ```json
@@ -387,6 +376,20 @@ Voeg in het bestand *Template. json* een nieuwe netwerk beveiligings groep en re
     },
     "properties": {
         "securityRules": [
+            {
+                "name": "allowSvcFabSMB",
+                "properties": {
+                    "access": "Allow",
+                    "destinationAddressPrefix": "*",
+                    "destinationPortRange": "445",
+                    "direction": "Inbound",
+                    "priority": 3950,
+                    "protocol": "*",
+                    "sourceAddressPrefix": "VirtualNetwork",
+                    "sourcePortRange": "*",
+                    "description": "allow SMB traffic within the net, used by fabric to move packages around"
+                }
+            },
             {
                 "name": "allowSvcFabCluser",
                 "properties": {
@@ -842,7 +845,7 @@ Nadat u een Service Fabric cluster hebt gemaakt, kunt u het type van een cluster
 
 [Exporteer een sjabloon en parameter bestand](#export-the-template-for-the-resource-group) uit de resource groep voor de meest recente implementatie.  Open het bestand *para meters. json* .  Als u het cluster hebt geïmplementeerd met behulp van de [voorbeeld sjabloon][template] in deze zelf studie, zijn er drie knooppunt typen in het cluster.  
 
-De grootte van de virtuele machines in het tweede knooppunt type wordt ingesteld in de para meter *vmNodeType1Size* .  Wijzig de waarde van de para meter *vmNodeType1Size* van Standard_D2_V2 in [Standard_D3_V2](/azure/virtual-machines/windows/sizes-general#dv2-series), waarmee de resources van elk VM-exemplaar worden verdubbeld.
+De grootte van de virtuele machines in het tweede knooppunt type wordt ingesteld in de para meter *vmNodeType1Size* .  Wijzig de waarde van de para meter *vmNodeType1Size* van Standard_D2_V2 naar [Standard_D3_V2](/azure/virtual-machines/windows/sizes-general#dv2-series), waarmee de resources van elk VM-exemplaar worden verdubbeld.
 
 De VM-SKU voor alle drie de knooppunt typen wordt ingesteld in de para meter *vmImageSku* .  Het wijzigen van de VM-SKU van een knooppunt type moet voorzichtig zijn en wordt niet aanbevolen voor het primaire knooppunt type.
 

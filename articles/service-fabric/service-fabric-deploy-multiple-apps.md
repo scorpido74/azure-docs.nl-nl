@@ -1,42 +1,33 @@
 ---
-title: Een Node.js-toepassing die gebruikmaakt van MongoDB naar Azure Service Fabric implementeren | Microsoft Docs
-description: Overzicht van hoe u meerdere gastbestanden pakket implementeren op een Azure Service Fabric-cluster
-services: service-fabric
-documentationcenter: .net
+title: Een node. js-toepassing implementeren die gebruikmaakt van MongoDB
+description: Overzicht van het inpakken van meerdere gast uitvoer bare bestanden om te implementeren in een Azure Service Fabric-cluster
 author: mikkelhegn
-manager: chackdan
-editor: ''
-ms.assetid: b76bb756-c1ba-49f9-9666-e9807cf8f92f
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: 677a9d02493bf5fac1bfcbe8c40ce9efe2040be9
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 4538efc8a2426fc20dd20d1a85edaf6f76bfc649
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537706"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614465"
 ---
-# <a name="deploy-multiple-guest-executables"></a>Meerdere toepassingen implementeren die door gasten kunnen worden uitgevoerd
-In dit artikel laat zien hoe verpakken en implementeren van meerdere gastbestanden Azure Service fabric. Lees hoe voor het bouwen en implementeren van een enkele Service Fabric-pakket naar [een door gasten uitvoerbare bestanden implementeren naar Service Fabric](service-fabric-deploy-existing-app.md).
+# <a name="deploy-multiple-guest-executables"></a>Meerdere bestanden implementeren die door gasten kunnen worden uitgevoerd
+In dit artikel wordt beschreven hoe u meerdere uitvoer bare gast bestanden verpakken en implementeert naar Azure Service Fabric. Voor het bouwen en implementeren van een enkel Service Fabric-pakket leest u hoe u [een uitvoerbaar gast bestand implementeert in service Fabric](service-fabric-deploy-existing-app.md).
 
-Tijdens deze procedure ziet hoe u een toepassing implementeren met een Node.js-front-end die MongoDB als gegevensopslag gebruikt, kunt u de stappen toepassen op alle toepassingen die afhankelijk van een andere toepassing is.   
+In dit scenario ziet u hoe u een toepassing implementeert met een node. js-front-end die gebruikmaakt van MongoDB als gegevens opslag, kunt u de stappen Toep assen op elke toepassing die afhankelijkheden voor een andere toepassing bevat.   
 
-U kunt Visual Studio gebruiken voor het produceren van het toepassingspakket met meerdere gastbestanden. Zie [met behulp van Visual Studio op een bestaande toepassing verpakken](service-fabric-deploy-existing-app.md). Nadat u de eerste Gast kan worden uitgevoerd hebt toegevoegd, klik met de rechtermuisknop op het toepassingsproject en selecteer de **Add -> Nieuw Service Fabric-service** het tweede Gast uitvoerbare project toevoegen aan de oplossing. Opmerking: Als u ervoor kiest om te koppelen van de bron in het Visual Studio-project, het bouwen van de Visual Studio-oplossing, zorgt u ervoor dat het toepassingspakket bijgewerkt met wijzigingen in de bron is. 
+U kunt Visual Studio gebruiken om het toepassings pakket te maken dat meerdere uitvoer bare bestanden voor gasten bevat. Zie [Visual Studio gebruiken voor het inpakken van een bestaande toepassing](service-fabric-deploy-existing-app.md). Nadat u het eerste uitvoer bare gast bestand hebt toegevoegd, klikt u met de rechter muisknop op het toepassings project en selecteert u de **> nieuwe service Fabric-service** om het tweede uitvoer bare gast project toe te voegen aan de oplossing. Opmerking: als u ervoor kiest om de bron te koppelen in het Visual Studio-project en de Visual Studio-oplossing te bouwen, zorgt u ervoor dat uw toepassings pakket up-to-date is met de wijzigingen in de bron. 
 
 ## <a name="samples"></a>Voorbeelden
-* [Voorbeeld voor het verpakken en implementeren van een Gast kan worden uitgevoerd](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Voorbeeld van twee Gast uitvoerbare bestanden (C# en nodejs) communiceren via de Naming-service met behulp van REST](https://github.com/Azure-Samples/service-fabric-containers)
+* [Voor beeld voor het verpakken en implementeren van een uitvoerbaar gast bestand](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Voor beeld van twee gast uitvoerC# bare bestanden (en nodejs) die communiceren via de naamgevings service met rest](https://github.com/Azure-Samples/service-fabric-containers)
 
-## <a name="manually-package-the-multiple-guest-executable-application"></a>Handmatig de meerdere door Gast uitvoerbare toepassing verpakken
-U kunt ook handmatig de Gast uitvoerbare verpakken. Zie voor meer informatie, [handmatig verpakken en implementeren van een bestaand uitvoerbaar bestand](service-fabric-deploy-existing-app.md#manually-package-and-deploy-an-existing-executable).
+## <a name="manually-package-the-multiple-guest-executable-application"></a>De uitvoer bare toepassing met meerdere Gasts hand matig inpakken
+U kunt het uitvoer bare gast bestand ook hand matig inpakken. Zie [hand matig een bestaand uitvoerbaar pakket en implementeren](service-fabric-deploy-existing-app.md#manually-package-and-deploy-an-existing-executable)voor meer informatie.
 
-### <a name="packaging-the-nodejs-application"></a>De Node.js-toepassing Inpakken
-In dit artikel wordt ervan uitgegaan dat Node.js niet is geïnstalleerd op de knooppunten in het Service Fabric-cluster. Als gevolg hiervan moet u Node.exe naar de hoofdmap van uw knooppunttoepassing voorafgaand aan pakketten toevoegen. De mapstructuur van de Node.js-toepassing (met behulp van de Express-webstructuur en Jade sjabloon-engine) ziet er ongeveer zo uit:
+### <a name="packaging-the-nodejs-application"></a>De node. js-toepassing inpakken
+In dit artikel wordt ervan uitgegaan dat node. js niet is geïnstalleerd op de knoop punten in het Service Fabric cluster. Als gevolg hiervan moet u node. exe toevoegen aan de hoofdmap van uw knooppunt toepassing vóór de verpakking. De mapstructuur van de node. js-toepassing (met behulp van Express web framework en Jade-sjabloon Engine) moet er ongeveer als volgt uitzien:
 
 ```
 |-- NodeApplication
@@ -61,22 +52,22 @@ In dit artikel wordt ervan uitgegaan dat Node.js niet is geïnstalleerd op de kn
     |-- node.exe
 ```
 
-Als de volgende stap maakt u een toepassingspakket voor de Node.js-toepassing. De code hieronder maakt u een Service Fabric-toepassingspakket met de Node.js-toepassing.
+Als volgende stap maakt u een toepassings pakket voor de node. js-toepassing. Met de code hieronder maakt u een Service Fabric toepassings pakket met de node. js-toepassing.
 
 ```
 .\ServiceFabricAppPackageUtil.exe /source:'[yourdirectory]\MyNodeApplication' /target:'[yourtargetdirectory] /appname:NodeService /exe:'node.exe' /ma:'bin/www' /AppType:NodeAppType
 ```
 
-Hieronder volgt een beschrijving van de parameters die worden gebruikt:
+Hieronder volgt een beschrijving van de para meters die worden gebruikt:
 
-* **/ source** verwijst naar de map van de toepassing die moet worden verpakt.
-* **/ doel** definieert de map waarin het pakket moet worden gemaakt. Deze map moet afwijken van de bronmap.
-* **/ AppName** definieert de naam van de toepassing van de bestaande toepassing. Het is belangrijk om te begrijpen dat dit wordt omgezet naar de naam van de service in het manifest, en niet naar de naam van de Service Fabric-toepassing.
-* **exe** definieert het uitvoerbare bestand dat Service Fabric om te starten in dit geval `node.exe`.
-* **/ma** definieert het argument dat wordt gebruikt voor het starten van het uitvoerbare bestand. Als u Node.js niet is geïnstalleerd, Service Fabric moet de Node.js-web-server starten door het uitvoeren van `node.exe bin/www`.  `/ma:'bin/www'` Geeft het hulpprogramma verpakking gebruiken `bin/www` als het argument voor node.exe.
-* **/ AppType** definieert de naam van het Service Fabric-toepassing.
+* **/Source** verwijst naar de map van de toepassing die moet worden verpakt.
+* **/target** definieert de directory waarin het pakket moet worden gemaakt. Deze map moet afwijken van de bronmap.
+* **/AppName** definieert de toepassings naam van de bestaande toepassing. Het is belang rijk om te begrijpen dat dit wordt omgezet in de naam van de service in het manifest en niet op de naam van de Service Fabric toepassing.
+* **/exe** definieert het uitvoer bare bestand dat service Fabric moet starten, in dit geval `node.exe`.
+* **/ma** definieert het argument dat wordt gebruikt om het uitvoer bare bestand te starten. Als node. js niet is geïnstalleerd, moet Service Fabric de node. js-webserver starten door `node.exe bin/www`uit te voeren.  `/ma:'bin/www'` vertelt het verpakkings programma `bin/www` wordt gebruikt als argument voor node. exe.
+* **/AppType** definieert de naam van het toepassings type service Fabric.
 
-Als u naar de map die is opgegeven in de parameter/target bladert, ziet u dat het hulpprogramma een volledig functionerende Service Fabric-pakket heeft gemaakt, zoals hieronder weergegeven:
+Als u bladert naar de map die is opgegeven in de para meter/target, ziet u dat het hulp programma een volledig functionerend Service Fabric-pakket heeft gemaakt, zoals hieronder wordt weer gegeven:
 
 ```
 |--[yourtargetdirectory]
@@ -96,7 +87,7 @@ Als u naar de map die is opgegeven in de parameter/target bladert, ziet u dat he
         |-- ServiceManifest.xml
     |-- ApplicationManifest.xml
 ```
-De gegenereerde ServiceManifest.xml heeft nu een sectie waarin wordt beschreven hoe de Node.js-web-server moet worden gestart, zoals wordt weergegeven in het onderstaande codefragment:
+De gegenereerde ServiceManifest. XML bevat nu een sectie waarin wordt beschreven hoe de node. js-webserver moet worden gestart, zoals wordt weer gegeven in het volgende code fragment:
 
 ```xml
 <CodePackage Name="C" Version="1.0">
@@ -109,7 +100,7 @@ De gegenereerde ServiceManifest.xml heeft nu een sectie waarin wordt beschreven 
     </EntryPoint>
 </CodePackage>
 ```
-In dit voorbeeld luistert de Node.js-web-server op poort 3000, dus u bijwerken van de informatie over het eindpunt in het bestand ServiceManifest.xml moet zoals hieronder wordt weergegeven.   
+In dit voor beeld luistert de node. js-webserver naar poort 3000, dus moet u de eindpunt gegevens bijwerken in het bestand ServiceManifest. XML, zoals hieronder wordt weer gegeven.   
 
 ```xml
 <Resources>
@@ -118,10 +109,10 @@ In dit voorbeeld luistert de Node.js-web-server op poort 3000, dus u bijwerken v
       </Endpoints>
 </Resources>
 ```
-### <a name="packaging-the-mongodb-application"></a>Verpakking van de MongoDB-toepassing
-Nu dat u de Node.js-toepassing verpakt hebt, kunt u direct verder gaan en MongoDB pakket. Zoals al eerder vermeld, zijn de stappen die u hebt nu doorlopen niet specifiek zijn voor Node.js en MongoDB. In feite ze van toepassing op alle toepassingen die zijn bedoeld om te samen zijn verpakt als een Service Fabric-toepassing.  
+### <a name="packaging-the-mongodb-application"></a>De MongoDB-toepassing inpakken
+Nu u de node. js-toepassing hebt ingepakt, kunt u door gaan en pakket MongoDB. Zoals eerder vermeld, zijn de stappen die u nu doorloopt niet specifiek voor node. js en MongoDB. Ze zijn in feite van toepassing op alle toepassingen die als een Service Fabric toepassing moeten worden verpakt.  
 
-Voor het pakket MongoDB, die u wilt controleren of dat u een pakket Mongod.exe en Mongo.exe. Beide binaire bestanden bevinden zich in de `bin` map van uw MongoDB-installatiemap. De mapstructuur lijkt op hieronder wordt weergegeven.
+Als u de MongoDB wilt verpakken, moet u ervoor zorgen dat u Mongod. exe en Mongo. exe inpakt. Beide binaire bestanden bevinden zich in de map `bin` van uw MongoDB-installatiemap. De mapstructuur ziet er ongeveer als volgt uit.
 
 ```
 |-- MongoDB
@@ -130,25 +121,25 @@ Voor het pakket MongoDB, die u wilt controleren of dat u een pakket Mongod.exe e
         |-- mongo.exe
         |-- anybinary.exe
 ```
-Service Fabric moet MongoDB beginnen met een vergelijkbaar met de opdracht hieronder, dus u moet gebruiken de `/ma` parameter bij het verpakken van MongoDB.
+Service Fabric moet MongoDB starten met een opdracht zoals hieronder, dus u moet de `/ma`-para meter gebruiken wanneer MongoDB wordt ingepakt.
 
 ```
 mongod.exe --dbpath [path to data]
 ```
 > [!NOTE]
-> De gegevens is niet in het geval van storing op een knooppunt wordt behouden als u de map van de MongoDB-gegevens op de lokale map van het knooppunt plaatst. U moet gebruiken duurzame opslag of implementeren van een MongoDB-replica instellen om te voorkomen dat gegevens verloren gaan.  
+> De gegevens blijven niet behouden in het geval van een storing in een knoop punt als u de MongoDB-gegevens map in de lokale map van het knoop punt plaatst. U moet een duurzame opslag gebruiken of een MongoDB replicaset implementeren om gegevens verlies te voor komen.  
 >
 >
 
-In PowerShell of de opdrachtshell we de verpakking-hulpprogramma's uitvoeren met de volgende parameters:
+In Power shell of de opdracht shell voeren we het pakket met de volgende para meters uit:
 
 ```
 .\ServiceFabricAppPackageUtil.exe /source: [yourdirectory]\MongoDB' /target:'[yourtargetdirectory]' /appname:MongoDB /exe:'bin\mongod.exe' /ma:'--dbpath [path to data]' /AppType:NodeAppType
 ```
 
-Als u wilt toevoegen van MongoDB naar uw Service Fabric-toepassingspakket, moet u om ervoor te zorgen dat de punten van de parameter/target naar dezelfde map dat al de toepassing bevat het manifest, samen met de Node.js-toepassing. U moet ook om ervoor te zorgen dat u van dezelfde ApplicationType naam gebruikmaakt.
+Als u MongoDB wilt toevoegen aan uw Service Fabric toepassings pakket, moet u ervoor zorgen dat de/target-para meter verwijst naar dezelfde map die al het toepassings manifest bevat, samen met de node. js-toepassing. U moet er ook voor zorgen dat u dezelfde Application type-naam gebruikt.
 
-We gaan bladeren naar de map en bekijk wat het hulpprogramma heeft gemaakt.
+Ga naar de map en controleer wat het hulp programma heeft gemaakt.
 
 ```
 |--[yourtargetdirectory]
@@ -164,7 +155,7 @@ We gaan bladeren naar de map en bekijk wat het hulpprogramma heeft gemaakt.
         |-- ServiceManifest.xml
     |-- ApplicationManifest.xml
 ```
-Zoals u ziet, wordt er door het hulpprogramma een nieuwe map, MongoDB, toegevoegd aan de map waarin de binaire bestanden voor MongoDB. Als u opent de `ApplicationManifest.xml` -bestand, kunt u zien dat het pakket nu de Node.js-toepassing en de MongoDB bevat. De onderstaande code toont de inhoud van het toepassingsmanifest.
+Zoals u ziet, voegt het hulp programma een nieuwe map, MongoDB, toe aan de map die de binaire bestanden van MongoDB bevat. Als u het `ApplicationManifest.xml` bestand opent, ziet u dat het pakket nu zowel de node. js-toepassing als de MongoDB bevat. De volgende code toont de inhoud van het toepassings manifest.
 
 ```xml
 <ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyNodeApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -190,7 +181,7 @@ Zoals u ziet, wordt er door het hulpprogramma een nieuwe map, MongoDB, toegevoeg
 ```
 
 ### <a name="publishing-the-application"></a>De toepassing publiceren
-De laatste stap is het publiceren van de toepassing naar de lokale Service Fabric-cluster met behulp van de onderstaande PowerShell-scripts:
+De laatste stap bestaat uit het publiceren van de toepassing naar het lokale Service Fabric-cluster met behulp van de onderstaande Power shell-scripts:
 
 ```
 Connect-ServiceFabricCluster localhost:19000
@@ -204,17 +195,17 @@ Register-ServiceFabricApplicationType -ApplicationPathInImageStore 'NodeAppType'
 New-ServiceFabricApplication -ApplicationName 'fabric:/NodeApp' -ApplicationTypeName 'NodeAppType' -ApplicationTypeVersion 1.0  
 ```
 
-Zodra de toepassing is op het lokale cluster wordt gepubliceerd, kunt u toegang tot de Node.js-toepassing op de poort die we hebben ingevoerd in het servicemanifest van de Node.js-toepassing bijvoorbeeld http:\//localhost:3000.
+Zodra de toepassing is gepubliceerd naar het lokale cluster, hebt u toegang tot de node. js-toepassing op de poort die u hebt ingevoerd in het service manifest van de node. js-toepassing, bijvoorbeeld http:\//localhost: 3000.
 
-In deze zelfstudie hebt u gezien hoe u gemakkelijk pakket twee bestaande toepassingen als een Service Fabric-toepassing. U hebt ook geleerd hoe u in Service Fabric implementeert, zodat deze van enkele van de Service Fabric-functies, zoals hoge beschikbaarheid en de gezondheid van systeemintegratie profiteren kan.
+In deze zelf studie hebt u gezien hoe u eenvoudig twee bestaande toepassingen kunt inpakken als een Service Fabric-toepassing. U hebt ook geleerd hoe u deze kunt implementeren op Service Fabric zodat het kan profiteren van sommige van de Service Fabric functies, zoals hoge Beschik baarheid en status systeem integratie.
 
-## <a name="adding-more-guest-executables-to-an-existing-application-using-yeoman-on-linux"></a>Meer gasten uitvoerbare bestanden toe te voegen aan een bestaande toepassing in Linux met behulp van Yeoman
+## <a name="adding-more-guest-executables-to-an-existing-application-using-yeoman-on-linux"></a>Meer uitvoer bare bestanden voor gasten toevoegen aan een bestaande toepassing met behulp van Yeoman in Linux
 
 Voer de volgende stappen uit als u nog een service wilt toevoegen aan een toepassing die al is gemaakt met `yo`: 
 1. Stel de directory in op de hoofdmap van de bestaande toepassing.  Bijvoorbeeld `cd ~/YeomanSamples/MyApplication` als `MyApplication` de toepassing is die is gemaakt door Yeoman.
-2. Voer `yo azuresfguest:AddService` en geef de details op die nodig zijn.
+2. Voer `yo azuresfguest:AddService` uit en geef de benodigde details op.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het implementeren van containers met [overzicht van Service Fabric en containers](service-fabric-containers-overview.md)
-* [Voorbeeld voor het verpakken en implementeren van een Gast kan worden uitgevoerd](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Voorbeeld van twee Gast uitvoerbare bestanden (C# en nodejs) communiceren via de Naming-service met behulp van REST](https://github.com/Azure-Samples/service-fabric-containers)
+* Meer informatie over het implementeren van containers met [service Fabric en containers-overzicht](service-fabric-containers-overview.md)
+* [Voor beeld voor het verpakken en implementeren van een uitvoerbaar gast bestand](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Voor beeld van twee gast uitvoerC# bare bestanden (en nodejs) die communiceren via de naamgevings service met rest](https://github.com/Azure-Samples/service-fabric-containers)

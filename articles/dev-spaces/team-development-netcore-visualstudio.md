@@ -7,14 +7,14 @@ author: DrEsteban
 ms.author: stevenry
 ms.date: 12/09/2018
 ms.topic: tutorial
-description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
+description: Deze zelf studie laat zien hoe u Azure dev Spaces en Visual Studio kunt gebruiken om team ontwikkeling te doen op een .NET core-toepassing in azure Kubernetes service
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
-ms.openlocfilehash: 895d2edbb268eab9944909ecda7193ce945bbf39
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: f88a0b146a53a5b14ab17ae0d959e9b8a5567302
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325539"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438178"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Team ontwikkeling met behulp van .NET core en Visual Studio met Azure dev Spaces
 
@@ -122,7 +122,7 @@ Hier ziet u een diagram waarin u de werking van de verschillende ruimtes kunt zi
 Deze ingebouwde mogelijkheid van Azure Dev Spaces stelt u in staat om code end-to-end te testen in een gedeelde omgeving zonder dat ontwikkelaars de volledige groep services in hun ruimte opnieuw hoeven te maken. Voor deze routering moeten doorgifteheaders worden doorgestuurd in uw app-code, zoals uitgelegd in de vorige stap van deze handleiding.
 
 ### <a name="test-code-running-in-the-_devscott_-space"></a>Code testen die wordt uitgevoerd in de _dev/scott_-ruimte
-Als u de nieuwe versie van *mywebapi* wilt testen samen met *webfrontend*, opent u de URL van het openbare toegangspunt voor *webfrontend* in de browser (bijvoorbeeld http://dev.webfrontend.123456abcdef.eus.azds.io)) en gaat u naar de pagina About. Als het goed is, ziet u nu het oorspronkelijke bericht: Hello from webfrontend and Hello from mywebapi.
+Als u de nieuwe versie van *mywebapi* wilt testen samen met *webfrontend*, opent u de URL van het openbare toegangspunt voor *webfrontend* in de browser (bijvoorbeeld http://dev.webfrontend.123456abcdef.eus.azds.io) ) en gaat u naar de pagina About. Als het goed is, ziet u nu het oorspronkelijke bericht: Hello from webfrontend and Hello from mywebapi.
 
 Voeg nu het gedeelte scott.s. toe onderdeel van de URL, zodat er iets zoals http\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io wordt gelezen en de browser vernieuwen. Het onderbrekingspunt dat u hebt ingesteld in het *mywebapi*-project wordt nu gevonden. Klik op F5 om door te gaan. In de browser ziet u nu het nieuwe bericht: Hello from webfrontend and mywebapi now says something new. Dit komt omdat het pad naar de bijgewerkte code in *mywebapi* wordt uitgevoerd in de _dev/scott_-ruimte.
 
