@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ed91396dd747bb800d88bc3cd083439a5648624
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: fa19425de41b182db8c0a8c3b1a7940dbdf5701f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786364"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429499"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fout codes voor aanmeldings activiteiten rapport 
 
@@ -36,9 +36,13 @@ Wanneer een aanmelding mislukt, wordt een fout code weer geven die overeenkomt m
 
 ## <a name="how-can-i-display-failed-sign-ins"></a>Hoe kan ik mislukte aanmeldingen weergeven? 
 
-Navigeer naar het [rapport aanmeldingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns) in de [Azure Portal](https://portal.azure.com).
+Selecteer in het menu [Azure Portal](https://portal.azure.com) **Azure Active Directory**of zoek en selecteer **Azure Active Directory** op een wille keurige pagina.
 
-![Aanmeldings activiteit](./media/reference-sign-ins-error-codes/61.png "Aanmeldingsactiviteit")
+![Azure Active Directory selecteren](./media/reference-sign-ins-error-codes/select-azure-active-directory.png "Azure Active Directory")
+
+Onder **bewaking**selecteert u **aanmeldingen** om het [rapport aanmeldingen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/SignIns)te openen.
+
+![Aanmeldings activiteit](./media/reference-sign-ins-error-codes/monitoring-sign-ins-in-azure-active-directory.png "Aanmeldingsactiviteit")
 
 Filter het rapport om alle mislukte aanmeldingen weer te geven door het selectie vakje **fout** te selecteren in de vervolg keuzelijst voor de **aanmeldings status** .
 
@@ -179,7 +183,7 @@ U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp
 |90010|De aanvraag kan om verschillende redenen niet worden ondersteund. De aanvraag wordt bijvoorbeeld gemaakt met behulp van een niet-ondersteunde aanvraag methode (alleen POST-methode wordt ondersteund) of het token handtekening algoritme dat is aangevraagd, wordt niet ondersteund. Neem contact op met de ontwikkelaar van de toepassing.|
 |90014| Er ontbreekt een vereist veld voor een protocol bericht. Neem contact op met de eigenaar van de toepassing. Als u de eigenaar van de toepassing bent, moet u ervoor zorgen dat u alle benodigde para meters voor de aanmeldings aanvraag hebt. |
 |90051| Ongeldig delegerings token. Er is een ongeldige nationale Cloud-ID ({cloudId}) opgegeven.|
-|90072| Het account moet eerst worden toegevoegd als een externe gebruiker in de Tenant. Meld u af en meld u opnieuw aan met een ander Azure AD-account.|
+|90072| Het account moet eerst worden toegevoegd als externe gebruiker in de tenant. Meld u af en meld u opnieuw aan met een ander Azure AD-account.|
 |90094| De toekenning vereist beheerders machtigingen. Vraag uw Tenant beheerder om toestemming te geven voor deze toepassing.|
 |500011| De resource-principal met de naam <site address> is niet gevonden in de Tenant met de naam <tenant ID>. Dit kan gebeuren als de toepassing niet is geïnstalleerd door de beheerder van de Tenant of is gezonden door een gebruiker in de Tenant. Mogelijk hebt u de verificatieaanvraag naar de verkeerde tenant verzonden.|
 |500021| De Tenant wordt beperkt door de bedrijfs proxy. De toegang tot de bron wordt geweigerd.|

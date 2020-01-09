@@ -12,12 +12,12 @@ ms.date: 10/7/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3414bc21afb88d2683261ea1ce1398a0b1bfeece
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3b03833a3e1dd5ee9a3268e19166891243df1b98
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922291"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422346"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: release geschiedenis van versie
 Het Azure Active Directory (Azure AD)-team werkt Azure AD Connect regel matig bij met nieuwe functies en functionaliteit. Niet alle toevoegingen zijn van toepassing op alle doel groepen.
@@ -31,16 +31,27 @@ Onderwerp |  Details
 --------- | --------- |
 Stappen om een upgrade uit te voeren van Azure AD Connect | Verschillende methoden voor [het uitvoeren van een upgrade van een eerdere versie naar de nieuwste](how-to-upgrade-previous-version.md) Azure AD Connect versie.
 Vereiste machtigingen | Zie [accounts en machtigingen](reference-connect-accounts-permissions.md#upgrade)voor machtigingen die vereist zijn om een update toe te passen.
-Downloaden| [Down load Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
+Download| [Down load Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771).
 
 >[!NOTE]
 >Het uitgeven van een nieuwe versie van Azure AD Connect is een proces waarbij verschillende kwaliteitscontrole stappen nodig zijn om de werking van de service te waarborgen, terwijl we dit proces door lopen, het versie nummer van een nieuwe release en de release status wordt bijgewerkt om de meest recente status weer te geven.
 Hoewel we dit proces door lopen, wordt het versie nummer van de release weer gegeven met een ' X ' in de positie van het kleine release nummer, zoals in ' 1.3. X. 0 '. Dit betekent dat de release opmerkingen in dit document geldig zijn voor alle versies die beginnen met ' 1,3 '. Zodra het release proces is voltooid, wordt het versie nummer van de release bijgewerkt naar de meest recente versie en wordt de release status bijgewerkt naar ' vrijgegeven voor downloaden en automatische upgrade '.
 Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatische upgrade. De release status geeft aan of een release beschikbaar moet worden gesteld voor automatische upgrade of alleen voor down loads. Als automatische upgrade is ingeschakeld op uw Azure AD Connect server, wordt die server automatisch bijgewerkt naar de meest recente versie van Azure AD Connect die is uitgebracht voor automatische upgrade. Houd er rekening mee dat niet alle Azure AD Connect configuraties in aanmerking komen voor automatische upgrade. Volg deze link voor meer informatie over [automatische upgrade](how-to-connect-install-automatic-upgrade.md)
 
+>[!IMPORTANT]
+> Vanaf 1 november 2020 zullen we een afschaffing proces gaan implementeren waarbij versies van Azure AD Connect die meer dan 18 maanden geleden zijn uitgebracht, worden afgeschaft. Op dat moment gaan we dit proces beginnen door alle versies van Azure AD Connect uit te voeren met versie 1.1.751.0 (die is uitgebracht op 4/12/2018) en ouder, waarna we de afschaffing van oudere versies van Azure AD Connect kunnen evalueren wanneer een nieuwe versie wordt vrijgegeven.
+>
+> U moet ervoor zorgen dat u een recente versie van Azure AD Connect gebruikt om een optimale ondersteunings ervaring te krijgen. 
+>
+>Als u een afgeschafte versie van Azure AD Connect hebt, hebt u mogelijk niet de nieuwste beveiligingsfixes, prestatie verbeteringen, probleem oplossing en diagnostische hulpprogram ma's en service verbeteringen, en als u ondersteuning nodig hebt, kunnen we u mogelijk niet het niveau bieden van service die uw organisatie nodig heeft.
+>
+>Als u Azure AD Connect voor synchronisatie hebt ingeschakeld, kunt u binnenkort automatisch status meldingen ontvangen die u waarschuwen over toekomstige afschaffing wanneer u een van de oudere versies uitvoert.
+>
+>Raadpleeg [dit artikel](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) voor meer informatie over het upgraden van Azure AD Connect naar de nieuwste versie.
+
 ## <a name="14380"></a>1.4.38.0
-### <a name="release-status"></a>Release status
-12/6/2019: vrijgeven voor downloaden. Niet beschikbaar via automatische upgrade.
+### <a name="release-status"></a>Status van de release
+12/9/2019: vrijgeven voor downloaden. Niet beschikbaar via automatische upgrade.
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
 - De wachtwoord hash-synchronisatie voor Azure AD Domain Services is bijgewerkt naar een juiste account voor opvulling in Kerberos-hashes.  Dit biedt een prestatie verbetering tijdens wachtwoord synchronisatie van AAD naar Azure AD Domain Services.
 - Er is ondersteuning toegevoegd voor betrouw bare sessies tussen de verificatie agent en service bus.
@@ -49,11 +60,11 @@ Niet alle versies van Azure AD Connect worden beschikbaar gesteld voor automatis
 - We hebben de mogelijkheid toegevoegd om specifieke agents te richten vanuit de cloud om te testen op agent connectiviteit.
 
 ### <a name="fixed-issues"></a>Problemen opgelost
-- Release 1.4.18.0 had een bug waarbij de Power shell-cmdlet voor DSSO de aanmeld Windows-referenties gebruikt in plaats van de referenties van de beheerder die zijn verschaft tijdens het uitvoeren van PS. Als gevolg hiervan is het niet mogelijk om DSSO in meerdere forests in te scha kelen via de AADConnect-gebruikers interface. 
+- De release-1.4.18.0 heeft een bug waarbij de Power shell-cmdlet voor DSSO de aanmeld Windows-referenties gebruikt in plaats van de beheerders referenties die tijdens het uitvoeren van PS zijn ingevoerd. Als gevolg hiervan is het niet mogelijk om DSSO in meerdere forests in te scha kelen via de AADConnect-gebruikers interface. 
 - Er is een oplossing uitgevoerd om DSSO tegelijkertijd in alle forests in te scha kelen via de AADConnect-gebruikers interface
 
 ## <a name="14320"></a>1.4.32.0
-### <a name="release-status"></a>Release status
+### <a name="release-status"></a>Status van de release
 11/08/2019: uitgebracht voor downloaden. Niet beschikbaar via automatische upgrade.
 
 >[!IMPORTANT]
@@ -65,7 +76,7 @@ Houd er rekening mee dat deze regel wijziging ertoe kan leiden dat er verouderde
 
 ## <a name="14250"></a>1.4.25.0
 
-### <a name="release-status"></a>Release status
+### <a name="release-status"></a>Status van de release
 9/28/2019: vrijgegeven voor automatische upgrade om tenants te selecteren. Niet beschikbaar voor downloaden.
 
 Deze versie corrigeert een bug waarbij sommige servers die automatisch zijn bijgewerkt van een eerdere versie naar 1.4.18.0 en problemen ondervonden met selfservice voor wachtwoord herstel (SSPR) en het terugschrijven van wacht woorden.
@@ -83,7 +94,7 @@ Onder bepaalde omstandigheden werden servers die automatisch zijn bijgewerkt naa
 >Met deze versie van Azure AD Connect kunnen sommige klanten sommige of alle Windows-apparaten zien, verdwijnen van Azure AD. Dit is geen oorzaak van bezorgdheid, omdat deze apparaat-id's niet worden gebruikt door Azure AD tijdens de autorisatie van voorwaardelijke toegang. Zie [Wat is Azure AD Connect 1.4. xx. x-apparaat disappearnce](reference-connect-device-disappearance.md) voor meer informatie.
 
 
-### <a name="release-status"></a>Release status
+### <a name="release-status"></a>Status van de release
 9/25/2019: alleen uitgegeven voor automatische upgrades.
 
 ### <a name="new-features-and-improvements"></a>Nieuwe functies en verbeteringen
@@ -132,7 +143,7 @@ Onder bepaalde omstandigheden werden servers die automatisch zijn bijgewerkt naa
 >2. Voer `Import-Module "ADSync"` uit.
 >3. Voer `Set-ADSyncDirSyncConfiguration -AnchorAttribute ""` uit.
  
-### <a name="release-status"></a>Release status 
+### <a name="release-status"></a>Status van de release 
 
 05/14/2019: uitgebracht voor downloaden
 
@@ -142,7 +153,7 @@ Onder bepaalde omstandigheden werden servers die automatisch zijn bijgewerkt naa
 
 ## <a name="13200"></a>1.3.20.0 
 
-### <a name="release-status"></a>Release status 
+### <a name="release-status"></a>Status van de release 
 
 04/24/2019: uitgebracht voor downloaden
 
@@ -189,7 +200,7 @@ Onder bepaalde omstandigheden werden servers die automatisch zijn bijgewerkt naa
 
 ## <a name="12700"></a>1.2.70.0
 
-### <a name="release-status"></a>Release status
+### <a name="release-status"></a>Status van de release
 
 12/18/2018: uitgebracht voor downloaden
 
@@ -200,7 +211,7 @@ Met deze build worden de niet-standaard connectors (bijvoorbeeld generieke LDAP-
 
 ## <a name="12690"></a>1.2.69.0
 
-### <a name="release-status"></a>Release status
+### <a name="release-status"></a>Status van de release
 12/11/2018: uitgebracht voor downloaden
 
 ### <a name="fixed-issues"></a>Problemen opgelost
@@ -212,7 +223,7 @@ Als een build met de bijgewerkte functionaliteit voor de opties voor apparaten i
 
 ## <a name="12680"></a>1.2.68.0
 
-### <a name="release-status"></a>Release status 
+### <a name="release-status"></a>Status van de release 
 
 11/30/2018: uitgebracht voor downloaden
 
@@ -224,7 +235,7 @@ Met deze hotfix-build wordt een conflict opgelost waarbij een verificatie fout k
 
 ## <a name="12670"></a>1.2.67.0
 
-### <a name="release-status"></a>Release status 
+### <a name="release-status"></a>Status van de release 
 
 11/19/2018: uitgebracht voor downloaden
 
@@ -234,7 +245,7 @@ Met deze hotfix-build wordt een regressie in de vorige build opgelost waarbij he
 
 ## <a name="12650"></a>1.2.65.0 
 
-### <a name="release-status"></a>Release status 
+### <a name="release-status"></a>Status van de release 
 
 10/25/2018: uitgebracht voor downloaden
 
@@ -274,7 +285,7 @@ Azure AD Connect upgrade mislukt als SQL AlwaysOn-Beschik baarheid is geconfigur
 
 ## <a name="118800"></a>1.1.880.0
 
-### <a name="release-status"></a>Release status
+### <a name="release-status"></a>Status van de release
 
 8/21/2018: uitgebracht voor down loads en automatische upgrades. 
 
@@ -313,7 +324,7 @@ Azure AD Connect upgrade mislukt als SQL AlwaysOn-Beschik baarheid is geconfigur
 
 ## <a name="118190"></a>1.1.819.0
 
-### <a name="release-status"></a>Release status
+### <a name="release-status"></a>Status van de release
 
 5/14/2018: uitgebracht voor automatische upgrade en downloaden.
 
@@ -483,7 +494,7 @@ Vergrendel de toegang tot het AD DS-account door de volgende machtigings wijzigi
 *   Verwijder alle Ace's van het specifieke object, met uitzonde ring van Ace's die specifiek voor zichzelf zijn. We willen de standaard machtigingen intact houden wanneer het gaat om zelf.
 *   Wijs deze specifieke machtigingen toe:
 
-Type     | Naam                          | Access               | Is van toepassing op
+Type     | Name                          | Toegang               | Is van toepassing op
 ---------|-------------------------------|----------------------|--------------|
 Toestaan    | SYSTEEM                        | Volledig beheer         | Dit object  |
 Toestaan    | Ondernemingsadministrators             | Volledig beheer         | Dit object  |
@@ -823,7 +834,7 @@ CBool(
     |CertSubject|CertIssuer|CertKeyAlgorithm|
     |CertSubjectNameDN|CertIssuerOid|CertNameInfo|
     |CertSubjectNameOid|CertIssuerDN|IsCert|
-    |CertFriendlyName|CertThumbprint|CertExtensionOids|
+    |CertFriendlyName|certThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
     |CertVersion|CertSignatureAlgorithmOid|Selecteer|

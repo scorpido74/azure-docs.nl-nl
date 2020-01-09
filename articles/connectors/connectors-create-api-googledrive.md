@@ -1,20 +1,20 @@
 ---
 title: Verbinding maken met Google Drive
-description: Bestanden maken en beheren met REST Api's en Azure Logic Apps van Google Drive
+description: Werk stromen automatiseren waarmee bestanden voor Google Drive worden gemaakt en beheerd met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 11/07/2016
 tags: connectors
-ms.openlocfilehash: 6310c3b7e5b84915fa336708bc702e94317ad04c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 155a579438747ca7de67eba6449b8a0191e86e2c
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789721"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75666836"
 ---
-# <a name="get-started-with-the-google-drive-connector"></a>Aan de slag met de connector van Google Drive
+# <a name="create-and-manage-files-for-google-drive-by-using-azure-logic-apps"></a>Bestanden voor Google Drive maken en beheren met behulp van Azure Logic Apps
 
 Maak verbinding met Google Drive om bestanden te maken, rijen op te halen en meer. Met Google Drive kunt u het volgende doen: 
 
@@ -33,8 +33,8 @@ Nadat u de verbinding hebt gemaakt, voert u de eigenschappen van het Google-stat
 
 ## <a name="connector-specific-details"></a>Connector-specifieke Details
 
-Bekijk de triggers en acties die zijn gedefinieerd in Swagger en Zie ook eventuele limieten in de details van de [connector](/connectors/googledrive/).
+Raadpleeg de [referentie pagina van de connector](/connectors/googledrive/)voor technische informatie over triggers, acties en limieten die worden beschreven door de Swagger-beschrijving van de connector.
 
-## <a name="more-connectors"></a>Meer connectors
+## <a name="next-steps"></a>Volgende stappen
 
-Ga terug naar de [lijst met api's](apis-list.md).
+* Meer informatie over andere [Logic apps-connectors](apis-list.md)

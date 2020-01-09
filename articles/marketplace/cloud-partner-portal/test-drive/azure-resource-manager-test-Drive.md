@@ -9,12 +9,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 610673c548294f875ca70edb8ab26b1fdeb41cb6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8b2a24b6f2d7df92f1c8ea1b22432471aa432011
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838081"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644899"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Test Drive voor Azure Resource Manager
 
@@ -85,10 +85,10 @@ Het is ook belangrijk om te weten dat **alle parameters zijn optioneel**, dus al
 
 | Metagegevenstype   | Parametertype  | Beschrijving     | Voorbeeldwaarde    |
 |---|---|---|---|
-| **BaseUri**     | tekenreeks          | Basis-URI van het implementatiepakket| https:\//\<\..\>.blob.core.windows.net/\<\..\> |
-| **gebruikersnaam**    | tekenreeks          | Nieuwe willekeurige gebruikersnaam.| admin68876      |
+| **BaseUri**     | string          | Basis-URI van het implementatiepakket| https:\//\<\..\>.blob.core.windows.net/\<\..\> |
+| **gebruikersnaam**    | string          | Nieuwe willekeurige gebruikersnaam.| admin68876      |
 | **Wachtwoord**    | beveiligde tekenreeks    | Nieuwe willekeurig wachtwoord | LP! ACS\^2kh     |
-| **Sessie-id**   | tekenreeks          | Unieke Test Drive-sessie-ID (GUID)    | b8c8693e-5673-449c-bAdd-257a405a6dee |
+| **Sessie-id**   | string          | Unieke Test Drive-sessie-ID (GUID)    | b8c8693e-5673-449c-bAdd-257a405a6dee |
 
 #### <a name="username"></a>gebruikersnaam
 
@@ -289,7 +289,7 @@ Voorbeeld:
 
 Nog iets wat u in aanmerking moet nemen is-abonnement en Servicelimieten. Bijvoorbeeld, als u implementeren van maximaal tien virtuele machines van de 4-core wilt, moet u om te controleren of het abonnement dat u voor uw testomgeving kunt u gebruikmaken van 40 kernen.
 
-U vindt meer informatie over Azure-abonnement en Servicelimieten in [in dit artikel](https://docs.microsoft.com/azure/azure-subscription-service-limits). Controleer of uw abonnement kan worden verwerkt als meerdere Test Drives kunnen worden uitgevoerd op hetzelfde moment, de \# kernen vermenigvuldigd met het totale aantal gelijktijdige Test Drives die kunnen worden uitgevoerd.
+U vindt meer informatie over Azure-abonnement en Servicelimieten in [in dit artikel](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits). Controleer of uw abonnement kan worden verwerkt als meerdere Test Drives kunnen worden uitgevoerd op hetzelfde moment, de \# kernen vermenigvuldigd met het totale aantal gelijktijdige Test Drives die kunnen worden uitgevoerd.
 
 ### <a name="what-to-upload"></a>Wat u wilt uploaden
 

@@ -8,12 +8,12 @@ ms.author: pmorgan
 ms.date: 07/05/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0d63f2df17804d5cc171f94a34ebc5831be384fb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e1abb759c80e770f1e650c232b6b2e21232b7e6f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276908"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457717"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-hololens-unity-app-using-azure-spatial-anchors"></a>Zelf studie: stapsgewijze instructies voor het maken van een nieuwe app voor het definiëren van een HoloLens-eenheid met behulp van Azure spatiale ankers
 
@@ -141,17 +141,27 @@ We gaan nu de lus update () gebruiken om te controleren of er een actie in de wa
 
 ## <a name="get-the-azure-spatial-anchors-sdk"></a>De Azure spatiale-ankers SDK ophalen
 
-De Azure spatiale-ankers SDK worden nu gedownload. Ga naar de [pagina met github-releases van Azure spatiale ankers](https://github.com/Azure/azure-spatial-anchors-samples/releases). Onder assets, down load het bestand **AzureSpatialAnchors. unitypackage** .
+## <a name="via-unity-packagetabunitypackage"></a>[Via Unity package](#tab/UnityPackage)
 
-Ga in eenheid naar **assets**en klik op **pakket importeren** > **aangepast pakket...** . Navigeer naar het pakket en selecteer **openen**.
+De Azure spatiale-ankers SDK worden nu gedownload. Ga naar de [pagina met github-releases van Azure spatiale ankers](https://github.com/Azure/azure-spatial-anchors-samples/releases). Onder assets, down load de **AzureSpatialAnchors. unitypackage**. Ga in eenheid naar **assets**en klik op **pakket importeren** > **aangepast pakket...** . Navigeer naar het pakket en selecteer **openen**.
 
-Selecteer in het venster nieuw **eenheids pakket importeren** dat **verschijnt helemaal linksonder** . Selecteer vervolgens onder **AzureSpatialAnchorsPlugin** > - **invoeg toepassingen**de optie **common**, **Editor**en **HoloLens**. Klik in de rechter benedenhoek op **importeren** .
+Schakel in het venster nieuwe **eenheid import unit** de optie **plugins** uit en klik in de rechter benedenhoek op **importeren** .
 
 We moeten nu Nuget-pakketten herstellen om de Azure spatiale ankers SDK te verkrijgen. Bouw van **Unity** en open en bouw de resulterende **Visual Studio** -oplossing opnieuw, zoals beschreven in het [uitproberen](#trying-it-out).
 
+## <a name="via-nugetforunitytabnugetforunity"></a>[Via NuGetForUnity](#tab/NuGetForUnity)
+
+Eerst moet u NuGetForUnity installeren. Ga naar de [pagina met NuGetForUnity github-releases](https://github.com/GlitchEnzo/NuGetForUnity/releases). Onder assets, down load de laatste **NuGetForUnity. unitypackage**. Ga in eenheid naar **assets**en klik op **pakket importeren** > **aangepast pakket...** . Navigeer naar het pakket en selecteer **openen**. Unit-eenheid zal nu NugetForUnity installeren. Als u geen nieuwe **NuGet** -vervolg keuzelijst in unit ziet, moet u mogelijk met de rechter muisknop op **projecten** > **assets**klikken. Selecteer vervolgens **alles opnieuw importeren**.
+
+Nadat u NuGetForUnity hebt geïnstalleerd, selecteert u **NuGet** > **NuGet-pakketten te beheren**. Zoek vervolgens naar micro soft. Azure. SpatialAnchors. Unity en selecteer **installeren**.
+
+We moeten nu bouwen om de daad werkelijke Azure spatiale-ankers SDK te verkrijgen, omdat het NuGet-pakket dat we zojuist hebben gedownload, alleen nog hulp scripts bevat. Bouw van **Unity** en open en bouw de resulterende **Visual Studio** -oplossing opnieuw, zoals beschreven in het [uitproberen](#trying-it-out).
+
+---
+
 Voeg in uw **Visual Studio** -oplossing de volgende import bewerking toe aan uw `<ProjectName>\Assets\Scripts\AzureSpatialAnchorsScript.cs`:
 
-[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=23-26&highlight=1)]
+[!code-csharp[AzureSpatialAnchorsScript](../../../includes/spatial-anchors-new-unity-hololens-app-finished.md?range=18-21&highlight=1)]
 
 Voeg vervolgens de volgende lidvariabelen toe aan uw `AzureSpatialAnchorsScript` klasse:
 

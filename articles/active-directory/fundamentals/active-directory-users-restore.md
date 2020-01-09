@@ -1,5 +1,5 @@
 ---
-title: Herstellen of permanent verwijderen van een onlangs verwijderde gebruiker - Azure Active Directory | Microsoft Docs
+title: Onlangs verwijderde gebruiker herstellen of permanent verwijderen-Azure AD
 description: Informatie over het weergeven van gebruikers die kunnen worden hersteld, een verwijderde gebruiker herstellen of permanent verwijderen van een gebruiker met Azure Active Directory.
 services: active-directory
 author: msaburnley
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9864634020ad115a48bdb70a6736733919d0f0d3
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 573269da1ca6b9ee09b493f4e758e78121d6c2f2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561676"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422864"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Herstellen of verwijderen van een onlangs verwijderde gebruiker met behulp van Azure Active Directory
 Nadat u een gebruiker verwijdert, wordt het account de status onderbroken blijft gedurende 30 dagen. Tijdens deze periode 30-daagse kan account van de gebruiker worden hersteld, samen met de eigenschappen ervan. Als dit venster 30 dagen is verstreken, de gebruiker wordt automatisch en definitief verwijderd.
@@ -37,7 +37,7 @@ U moet een van de volgende rollen te herstellen en gebruikers permanent verwijde
 
 - Laag2-ondersteuning voor partner
 
-- Gebruikersbeheerder
+- Gebruikers beheerder
 
 ## <a name="view-your-restorable-users"></a>Uw die kunnen worden hersteld gebruikers weergeven
 Hier ziet u alle gebruikers die minder dan 30 dagen geleden zijn verwijderd. Deze gebruikers kunnen worden hersteld.

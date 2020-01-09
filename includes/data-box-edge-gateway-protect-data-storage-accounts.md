@@ -4,19 +4,19 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 653c175a559f5c0b7dc551b396e91276332df20a
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8840e6649058837207c75dbdf7baa5c0b11ef387
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176679"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75466731"
 ---
-Uw apparaat is gekoppeld aan een opslagaccount dat wordt gebruikt als een doel voor uw gegevens in Azure. Toegang tot het opslagaccount dat wordt bepaald door het abonnement en twee 512-bits opslag toegang tot sleutels die zijn gekoppeld aan dit account.
+Uw apparaat is gekoppeld aan een opslag account dat wordt gebruikt als een bestemming voor uw gegevens in Azure. De toegang tot het opslag account wordt bepaald door het abonnement en de 2 512-bits opslag toegangs sleutels die aan dat opslag account zijn gekoppeld.
 
-Een van de sleutels wordt gebruikt voor verificatie wanneer de gegevens in het Edge-apparaat toegang heeft tot het opslagaccount. De andere sleutel is ondergebracht in reserveren, zodat u kunt de sleutels periodiek draaien.
+Een van de sleutels wordt gebruikt voor verificatie wanneer het Data Box Edge-apparaat toegang heeft tot het opslag account. De andere sleutel wordt in de reserve ring bewaard, zodat u de sleutels periodiek kunt draaien.
 
-Uit veiligheidsoverwegingen vereisen veel datacenters rouleren van de sleutel. U wordt aangeraden dat u deze aanbevolen procedures voor sleutelroulatie volgt:
+Uit veiligheids overwegingen vereist veel data centers voor het draaien van sleutels. U wordt aangeraden deze aanbevolen procedures te volgen voor het draaien van sleutels:
 
-- De sleutel van uw opslagaccount is vergelijkbaar met het hoofdwachtwoord voor uw opslagaccount. Uw accountsleutel zorgvuldig te beschermen. Niet distribueren van het wachtwoord aan andere gebruikers, hard foutcode of sla deze ergens in tekst zonder opmaak die toegankelijk is voor anderen.
-- [Accountsleutel](../articles/storage/common/storage-account-manage.md#regenerate-access-keys) via de Azure portal als u denkt deze dat kan worden aangetast.
-- Uw Azure-beheerder moet periodiek wijzigen of de primaire of secundaire sleutel opnieuw genereren met behulp van de sectie voor opslag van Azure portal rechtstreeks toegang hebben tot het opslagaccount.
+- De sleutel van uw opslagaccount is vergelijkbaar met het hoofdwachtwoord voor uw opslagaccount. Beveilig uw account sleutel zorgvuldig. Distribueer het wacht woord niet naar andere gebruikers, stuur het niet vast of sla het op een wille keurige plaats in de tekst zonder opmaak op die voor anderen toegankelijk is.
+- Genereer uw account sleutel opnieuw via de Azure Portal als u denkt dat deze kan worden aangetast. Zie [toegangs sleutels voor opslag accounts beheren](../articles/storage/common/storage-account-keys-manage.md)voor meer informatie.
+- Uw Azure-beheerder moet de primaire of secundaire sleutel regel matig wijzigen of opnieuw genereren met behulp van de sectie opslag van de Azure Portal om rechtstreeks toegang te krijgen tot het opslag account.

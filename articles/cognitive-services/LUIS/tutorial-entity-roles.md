@@ -9,22 +9,20 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/05/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 29e43692c1eb543768934a961a2bb8ae5a023b1d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: cd646ef061a0be06a9b1a56b72a4f35d9796aa63
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894611"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447913"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Zelf studie: contextuele gerelateerde gegevens uit een utterance ophalen
 
 In deze zelfstudie zoekt u gerelateerde gegevens op basis van context. Denk bijvoorbeeld aan de locaties van oorsprong en bestemming voor een overplaatsing tussen vestigingen. Hiervoor zijn mogelijk beide gegevenselementen vereist en ze zijn aan elkaar gerelateerd.
 
 Een rol kan worden gebruikt met een vooraf samengesteld of aangepast entiteits type en wordt gebruikt in beide voor beelden van uitingen en patronen.
-
-[!INCLUDE [Only valid with current portal](includes/old-portal-only.md)]
 
 **In deze zelfstudie leert u het volgende:**
 
@@ -51,7 +49,11 @@ Er moet een rol worden gebruikt wanneer de entiteits gegevens die moeten worden 
 
 ## <a name="create-a-new-app"></a>Een nieuwe app maken
 
-[!INCLUDE [Follow these steps to create a new LUIS app](../../../includes/cognitive-services-luis-create-new-app-steps.md)]
+1. Meld u aan bij de preview-LUIS Portal met de URL van [https://preview.luis.ai](https://preview.luis.ai).
+
+1. Selecteer **nieuwe app maken**, voer de naam `HumanResources` in en behoud de standaard cultuur, **Engels**. Laat de beschrijving leeg.
+
+1. Selecteer **Done**.
 
 ## <a name="create-an-intent-to-move-employees-between-cities"></a>Een intentie maken om werknemers te verplaatsen tussen steden
 
@@ -61,7 +63,8 @@ Er moet een rol worden gebruikt wanneer de entiteits gegevens die moeten worden 
 
 1. Voer in het pop-updialoogvenster `MoveEmployeeToCity` in en selecteer vervolgens **Done**.
 
-    ![Schermopname van het pop-updialoogvenster voor het maken van een nieuwe intentie met](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
+    > [!div class="mx-imgBorder"]
+    > ![scherm opname van het dialoog venster nieuwe intentie maken met](./media/tutorial-entity-roles/create-new-intent-move-employee-to-city.png)
 
 1. Voeg voorbeelden van utterances toe aan de intentie.
 
@@ -77,7 +80,8 @@ Er moet een rol worden gebruikt wanneer de entiteits gegevens die moeten worden 
     |Transfer Steve Standish from San Diego toward Bellevue |
     |lift Tanner Thompson from Kansas city and shift to Chicago|
 
-    [![Schermopname van LUIS met nieuwe uitingen in de intentie MoveEmployee](./media/tutorial-entity-roles/hr-enter-utterances.png)](./media/tutorial-entity-roles/hr-enter-utterances.png#lightbox)
+    > [!div class="mx-imgBorder"]
+    > ![scherm opname van LUIS met nieuwe uitingen in MoveEmployee intentie](./media/tutorial-entity-roles/hr-enter-utterances.png)
 
 ## <a name="add-prebuilt-entity-geographyv2"></a>Vooraf samengestelde entiteit geographyV2 toevoegen
 
@@ -87,16 +91,30 @@ De vooraf samengestelde entiteit, geographyV2, extraheert locatie-informatie, in
 
 1. Selecteer vooraf **samengestelde entiteit toevoegen**en selecteer vervolgens `geo` op de zoek balk om de vooraf gemaakte entiteiten te filteren.
 
-    ![Een vooraf gemaakte geographyV2-entiteit toevoegen aan de app](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+    > [!div class="mx-imgBorder"]
+    > ![geographyV2 vooraf gebouwde entiteit toevoegen aan app](media/tutorial-entity-roles/add-geographyV2-prebuilt-entity.png)
+
 1. Schakel het selectie vakje in en selecteer **gereed**.
 1. Selecteer in de lijst **entiteiten** de **geographyV2** om de nieuwe entiteit te openen.
 1. Voeg twee rollen, `Origin`en `Destination`toe.
 
-    ![Rollen toevoegen aan vooraf samengestelde entiteit](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
-1. Selecteer **intenties** in de navigatie aan de linkerkant en selecteer vervolgens de **MoveEmployeeToCity** intentie. U ziet dat de namen van steden worden aangeduid met de vooraf samengestelde entiteit **geographyV2**.
-1. Selecteer de oorspronkelijke locatie in de eerste utterance van de lijst. Er wordt een vervolg keuzelijst weer gegeven. Selecteer **geographyV2** in de lijst en volg vervolgens het menu om de **oorsprong**te selecteren.
-1. Gebruik de methode uit de vorige stap om alle rollen van locaties in alle uitingen te markeren.
+    > [!div class="mx-imgBorder"]
+    > ![functies toevoegen aan vooraf samengestelde entiteit](media/tutorial-entity-roles/add-roles-to-prebuilt-entity.png)
 
+1. Selecteer **intenties** in de navigatie aan de linkerkant en selecteer vervolgens de **MoveEmployeeToCity** intentie. U ziet dat de namen van steden worden aangeduid met de vooraf samengestelde entiteit **geographyV2**.
+1. Selecteer in de context werkbalk het **entiteits palet**.
+
+    > [!div class="mx-imgBorder"]
+    > ![het palet entiteit selecteren op de werk balk inhoud](media/tutorial-entity-roles/intent-detail-context-toolbar-select-entity-palette.png)
+
+1. Selecteer de vooraf samengestelde entiteit **geographyV2**en selecteer vervolgens de **entiteits controle**.
+1. Selecteer in de **entiteits controle**één rol, **doel**. Hiermee wijzigt u de muis aanwijzer. Gebruik de cursor om de tekst in alle uitingen te labelen die de doel locatie is.
+
+    > [!div class="mx-imgBorder"]
+    > ![Selecteer rol in het entiteits palet](media/tutorial-entity-roles/entity-palette-select-entity-role.png)
+
+
+1. Ga terug naar de **entiteits controle**, wijzig de rol in **Origin**. Gebruik de cursor om de tekst in alle uitingen te labelen die de oorspronkelijke locatie is.
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Voorbeelduitingen toevoegen aan de intentie None
 

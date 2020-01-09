@@ -1,65 +1,56 @@
 ---
-title: Herconfiguratie in Azure Service Fabric | Microsoft Docs
-description: Herconfiguratie van partities in Service Fabric begrijpen
-services: service-fabric
-documentationcenter: .net
+title: Opnieuw configureren in azure Service Fabric
+description: Meer informatie over configuraties voor stateful service replica's en het proces van herconfiguratie Service Fabric gebruikt om consistentie en beschik baarheid te behouden tijdens de wijziging.
 author: appi101
-manager: anuragg
-editor: ''
-ms.assetid: d5ab75ff-98b9-4573-a2e5-7f5ab288157a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
-ms.openlocfilehash: a24aa6aa1695a3d1166816b7960bdd7b551e1a37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd46a7776495624affef77a44fcf68334750ba17
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60882194"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609992"
 ---
-# <a name="reconfiguration-in-azure-service-fabric"></a>Herconfiguratie in Azure Service Fabric
+# <a name="reconfiguration-in-azure-service-fabric"></a>Opnieuw configureren in azure Service Fabric
 Een *configuratie* wordt gedefinieerd als de replica's en hun rollen voor een partitie van een stateful service.
 
-Een *herconfiguratie* is het proces van het verplaatsen van één configuratie naar een andere configuratie. Wordt een wijziging aan de replicaset voor een partitie van een stateful service verzonden. De oude configuratie heet de *vorige configuratie (PC)* , en de nieuwe configuratie heet de *huidige configuratie (CC)* . Het protocol herconfiguratie in Azure Service Fabric behoudt consistentie en beschikbaarheid tijdens alle wijzigingen aan de replicaset onderhoudt.
+Een nieuwe *configuratie* is het proces van het verplaatsen van een configuratie naar een andere configuratie. Er wordt een wijziging aangebracht in de replicaset voor een partitie van een stateful service. De oude configuratie wordt de *vorige configuratie (PC)* genoemd en de nieuwe configuratie wordt de *huidige configuratie (CC)* genoemd. Het herconfiguratie-protocol in azure Service Fabric behoudt de consistentie en houdt de beschik baarheid bij van alle wijzigingen in de replicaset.
 
-Failover Manager initieert wanneer in reactie op verschillende gebeurtenissen in het systeem. Bijvoorbeeld, als de primaire vervolgens een nieuwe configuratie mislukt wordt gestart als u wilt promoveren van een actieve secundaire aan een primaire. Een ander voorbeeld is in reactie op upgrades van toepassingen kan het nodig zijn om te verplaatsen van de primaire naar een ander knooppunt om bij te werken van het knooppunt zijn.
+Failover Manager initieert herconfiguraties in reactie op verschillende gebeurtenissen in het systeem. Als de primaire fout bijvoorbeeld mislukt, wordt een herconfiguratie geïnitieerd om een actief secundair te promo veren naar een primaire. Een ander voor beeld is in reactie op toepassings upgrades wanneer dit nodig kan zijn om de primaire naar een ander knoop punt te verplaatsen om het knoop punt bij te werken.
 
-## <a name="reconfiguration-types"></a>Herconfiguratie van typen
-Wanneer kunnen worden ingedeeld in twee typen:
+## <a name="reconfiguration-types"></a>Typen opnieuw configureren
+Herconfiguraties kunnen worden onderverdeeld in twee typen:
 
-- Wanneer waar de primaire wordt gewijzigd:
-    - **Failover**: Failovers zijn wanneer in reactie op het mislukken van een primaire die wordt uitgevoerd.
-    - **SwapPrimary**: Swaps zijn wanneer waar Service Fabric moeten zijn om te verplaatsen van een actief primaire van het ene knooppunt naar een andere, gewoonlijk in reactie op de taakverdeling of een upgrade.
+- Herconfiguraties waarvan de primaire wordt gewijzigd:
+    - **Failover**: failovers zijn herconfiguraties als reactie op het mislukken van een actieve primaire.
+    - **SwapPrimary**: swaps zijn herconfiguraties waarbij service Fabric een actieve primaire van het ene naar het andere knoop punt moet verplaatsen, meestal als reactie op taak verdeling of een upgrade.
 
-- Wanneer waar wordt de primaire niet is gewijzigd.
+- Herconfiguraties waarbij de primaire niet wordt gewijzigd.
 
-## <a name="reconfiguration-phases"></a>Herconfiguratie fasen
-Een nieuwe configuratie wordt uitgevoerd in verschillende fasen:
+## <a name="reconfiguration-phases"></a>Fasen opnieuw configureren
+Een herconfiguratie verloopt in verschillende fasen:
 
-- **Phase0**: Deze fase gebeurt in swap-primaire wanneer, waar de huidige primaire de status naar de nieuwe primaire en de overgang naar het actieve secundaire overgebracht.
+- **Phase0**: deze fase treedt op in swap-primaire herconfiguratie, waarbij de huidige primaire status wordt overgezet naar de nieuwe primaire en overgangen naar Active secondary.
 
-- **Phase1**: Deze fase er gebeurt tijdens het rekening gebracht wanneer de primaire wordt gewijzigd. Tijdens deze fase identificeert de Service Fabric de juiste primaire tussen de huidige replica's. Deze fase is niet tijdens het wisselen van primaire wanneer nodig, omdat de nieuwe primaire al is gekozen. 
+- **Phase1**: deze fase treedt op wanneer de primaire configuratie wordt gewijzigd. Tijdens deze fase geeft Service Fabric de juiste primaire replica op onder de huidige replica's. Deze fase is niet nodig tijdens swap-primaire herconfiguraties omdat de nieuwe primaire keer al is gekozen. 
 
-- **Phase2**: Tijdens deze fase, Service Fabric zorgt ervoor dat alle gegevens beschikbaar zijn in een meerderheid van de replica's van de huidige configuratie.
+- **Phase2**: tijdens deze fase zorgt service Fabric ervoor dat alle gegevens beschikbaar zijn in een meerderheid van de replica's van de huidige configuratie.
 
-Er zijn verschillende andere fasen die alleen voor intern gebruik.
+Er zijn verschillende andere fasen die alleen voor intern gebruik zijn.
 
-## <a name="stuck-reconfigurations"></a>Vastgelopen wanneer
-Wanneer krijg *vastgelopen* voor tal van redenen. Enkele van de veelvoorkomende oorzaken zijn:
+## <a name="stuck-reconfigurations"></a>Vastgelopen herconfiguraties
+Het opnieuw configureren van de configuratie kan om verschillende redenen *vastzitten* . Enkele veelvoorkomende redenen zijn onder andere:
 
-- **Replica's omlaag**: Sommige fasen herconfiguratie vereisen een meerderheid van de replica's in de configuratie uit.
-- **Problemen met netwerk of communicatie**: Wanneer de netwerkverbinding tussen de verschillende knooppunten nodig hebt.
-- **API-fouten**: Het protocol herconfiguratie is vereist dat de service-implementaties bepaalde API's voltooien. Bijvoorbeeld, niet naleven van de annulering token in een betrouwbare service zorgt ervoor dat wanneer SwapPrimary te zitten.
+- **Down-replica's**: voor sommige herconfiguratie fasen is een meerderheid van de replica's in de configuratie vereist.
+- **Netwerk-of communicatie problemen**: opnieuw configureren vereist een netwerk verbinding tussen verschillende knoop punten.
+- **API-fouten**: het protocol voor opnieuw configureren vereist dat service-implementaties bepaalde api's volt ooien. Als u het annulerings token in een betrouw bare service bijvoorbeeld niet verhelpt, worden SwapPrimary opnieuw geconfigureerd om vastgelopen te krijgen.
 
-Statusrapporten betrekking op systeemonderdelen gebruiken, zoals System.FM, System.RA en System.RAP, als u wilt vaststellen waar een herconfiguratie is vastgelopen. De [system health rapportpagina](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) beschrijft deze health-rapporten.
+Gebruik status rapporten van systeem onderdelen, zoals System.FM, System. RA en System. RAP, om te achterhalen waar een herconfiguratie is vastgelopen. Op de [pagina systeem status rapport](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) worden deze status rapporten beschreven.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie de volgende artikelen voor meer informatie over Service Fabric-concepten:
+Raadpleeg de volgende artikelen voor meer informatie over Service Fabric concepten:
 
 - [Levenscyclus van Reliable Services - C#](service-fabric-reliable-services-lifecycle.md)
-- [Systeemstatusrapporten](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
+- [Systeem status rapporten](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 - [Replica's en exemplaren](service-fabric-concepts-replica-lifecycle.md)

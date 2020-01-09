@@ -8,30 +8,30 @@ ms.topic: include
 ms.date: 08/15/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 45168c23964c735a4bd51ba11c2340d4ff95fed4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 31a9da0678f602afcc117e5b2f7927af379da668
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012426"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467331"
 ---
 Azure Managed disks biedt momenteel vier schijf typen, elk type is gericht op specifieke klant scenario's.
 
 ## <a name="disk-comparison"></a>Vergelijking van schijven
 
-De volgende tabel bevat een vergelijking van ultra schijven, Premium-schijven (Solid-State-Drive), Standard SSD en Standard harde schijven (HDD) voor beheerde schijven om u te helpen bepalen wat u wilt gebruiken.
+De volgende tabel bevat een vergelijking van ultra disks, Premium-schijven (Solid-state drives), standaard SSD en standaard harde schijven (HDD) voor beheerde schijven om u te helpen bepalen wat u wilt gebruiken.
 
-|   | Ultra Disk   | Premium SSD   | Standard - SSD   | Standard HDD   |
+|   | Ultraschijven   | Premium SSD   | Standard - SSD   | Standard HDD   |
 |---------|---------|---------|---------|---------|
 |Schijftype   |SSD   |SSD   |SSD   |HDD   |
-|Scenario   |I/o-intensieve workloads, zoals [SAP Hana](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), data bases in de bovenste laag (bijvoorbeeld SQL, Oracle) en andere trans acties met een zware werk belasting.   |Productie- en prestatiegevoelige workloads   |Webservers, lichte gebruikte zakelijke toepassingen en dev/test   |Back-ups, niet-kritiek, niet-regel matige toegang   |
-|Maximale schijf grootte   |65.536 gibibyte (GiB)    |32,767 GiB    |32,767 GiB   |32,767 GiB   |
-|Maximale door Voer   |2\.000-MiB/s    |900-MiB/s   |750 MiB/s   |500-MiB/s   |
-|Maximum aantal IOPS   |160.000    |20,000   |6,000   |2,000   |
+|Scenario   |I/o-intensieve workloads, zoals [SAP Hana](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), data bases in de bovenste laag (bijvoorbeeld SQL, Oracle) en andere trans acties met een zware werk belasting.   |Productie- en prestatiegevoelige workloads   |Webservers, bedrijfstoepassingen die weinig wordt gebruikt en dev/test   |Back-up, niet-kritiek, incidentele toegang   |
+|Maximale schijfgrootte   |65.536 gibibyte (GiB)    |32,767 GiB    |32,767 GiB   |32,767 GiB   |
+|Maximale doorvoer   |2000 MiB/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
+|Max. IOPS   |160.000    |20,000   |6,000   |2,000   |
 
-## <a name="ultra-disk"></a>Ultra Disk
+## <a name="ultra-disk"></a>Ultraschijven
 
-Azure Ultra disks bieden hoge door Voer, hoge IOPS en een consistente schijf opslag met lage latentie voor Azure IaaS-Vm's. Enkele extra voor delen van ultra schijven zijn de mogelijkheid om de prestaties van de schijf en uw workloads dynamisch te wijzigen zonder dat u uw virtuele machines (VM) opnieuw hoeft op te starten. Ultra disks zijn geschikt voor gegevensintensieve workloads, zoals SAP HANA, data bases in de bovenste laag en transactie zware werk belastingen. Ultra schijven kunnen alleen worden gebruikt als gegevens schijven. U wordt aangeraden Premium Ssd's als besturingssysteem schijven te gebruiken.
+Azure-ultraschijven leveren een hoge doorvoer, hoge IOPS en een consistente schijfopslag met lage latentie voor Azure IaaS-VM's. Enkele extra voor delen van ultra schijven zijn de mogelijkheid om de prestaties van de schijf en uw workloads dynamisch te wijzigen zonder dat u uw virtuele machines (VM) opnieuw hoeft op te starten. Ultraschijven zijn geschikt voor gegevensintensieve workloads, zoals SAP HANA, databases in de bovenste laag en workloads met veel transacties. Ultraschijven kunnen uitsluitend als gegevensschijven worden gebruikt. U wordt aangeraden Premium SSD-schijven als besturingssysteemschijven te gebruiken.
 
 ### <a name="performance"></a>Prestaties
 
@@ -51,7 +51,7 @@ Enkele belang rijke mogelijkheden van ultra disk zijn:
 |4     |1,200         |300         |
 |8     |2,400         |600         |
 |16     |4,800         |1,200         |
-|32     |9\.600         |2,000         |
+|32     |9600         |2,000         |
 |64     |19.200         |2,000         |
 |128     |38.400         |2,000         |
 |256     |76.800         |2,000         |

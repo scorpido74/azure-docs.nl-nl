@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: geëxporteerde gegevens maken en beheren vanuit Azure Cost Management'
+title: 'Zelf studie: gegevens exporteren uit Azure Cost Management'
 description: Dit artikel laat u zien hoe u geëxporteerde Azure Cost Management gegevens kunt maken en beheren, zodat u deze kunt gebruiken in externe systemen.
 services: cost-management
 keywords: ''
@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management-billing
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a462b3d165a596673049abbbb8b5b8d346f5fc9d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d5f6bc4620d60d3eb776a6229450e02035b8290
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229832"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441008"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Zelfstudie: Gegevensexports instellen en beheren
 
@@ -32,7 +32,7 @@ In deze zelfstudie leert u het volgende:
 > * Controleren of de gegevens zijn geëxporteerd
 
 ## <a name="prerequisites"></a>Vereisten
-Exporteren van gegevens is beschikbaar voor verschillende typen Azure-accounts, met inbegrip van [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)-klanten. Zie voor de volledige lijst met ondersteunde accounttypen [Gegevens van Azure Cost Management begrijpen](understand-cost-mgt-data.md). De volgende Azure-machtigingen of-bereiken worden ondersteund per abonnement voor het exporteren van gegevens per gebruiker en groep. Zie voor meer informatie over bereiken [begrijpen en werken met scopes](understand-work-scopes.md).
+Exporteren van gegevens is beschikbaar voor verschillende typen Azure-accounts, met inbegrip van [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)-klanten. Zie [Gegevens van kostenbeheer begrijpen](understand-cost-mgt-data.md) voor de volledige lijst met ondersteunde accounttypen. De volgende Azure-machtigingen of-bereiken worden ondersteund per abonnement voor het exporteren van gegevens per gebruiker en groep. Zie voor meer informatie over bereiken [begrijpen en werken met scopes](understand-work-scopes.md).
 
 - Eigenaar: eigenaren kunnen geplande exports voor een abonnement instellen, wijzigen en verwijderen.
 - Inzender: inzenders kunnen hun eigen geplande exports instellen, wijzigen en verwijderen. Zij kunnen bovendien de naam wijzigen van geplande exports die door anderen zijn ingesteld.
@@ -50,7 +50,7 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 Als u een gegevens export wilt maken of weer geven of een export wilt plannen, opent u het gewenste bereik in de Azure Portal en selecteert u **kosten analyse** in het menu. Ga bijvoorbeeld naar **abonnementen**, selecteer een abonnement in de lijst en selecteer vervolgens **kosten analyse** in het menu. Klik boven aan de pagina kosten analyse op **exporteren** en kies vervolgens een export optie. Klik bijvoorbeeld op **planning exporteren**.  
 
 > [!NOTE]
-> - Naast abonnementen kunt u exports maken voor resource groepen, accounts, afdelingen en registraties. Zie voor meer informatie over bereiken [begrijpen en werken met scopes](understand-work-scopes.md).
+> - U kunt exports maken voor abonnementen, maar ook voor resourcegroepen, accounts, afdelingen en inschrijvingen. Zie voor meer informatie over bereiken [begrijpen en werken met scopes](understand-work-scopes.md).
 >- Wanneer u bent aangemeld als een partner op het bereik van de facturerings account of op de Tenant van een klant, kunt u gegevens exporteren naar een Azure Storage-account dat is gekoppeld aan uw partner-opslag account. U moet echter een actief abonnement hebben in uw CSP-Tenant.
 >
 
@@ -83,7 +83,7 @@ Er zijn drie soorten exportopties:
 
 **Aangepast**: hiermee kunt u wekelijkse en maandelijkse exports plannen met week-tot-datum- en maand-tot-heden-opties. *De eerste uitvoer wordt onmiddellijk uitgevoerd.*
 
-Als u een abonnement op basis van betalen per gebruik, MSDN of Visual Studio hebt, kan de facturerings periode van uw factuur niet worden uitgelijnd op de kalender maand. Voor deze typen abonnementen en resource groepen kunt u een export maken die is afgestemd op uw factuur periode of voor kalender maanden. Als u een export wilt maken die is afgestemd op uw factuur maand, gaat u naar **aangepast**en selecteert u **facturering-periode-tot-datum**.  Als u een export wilt maken die is afgestemd op de kalender maand, selecteert u **maand tot heden**.
+Als u een abonnement op basis van betalen per gebruik, een MSDN- of Visual Studio-abonnement hebt, komt de factureringsperiode van uw factuur mogelijk niet overeen met de kalendermaand. Voor deze typen abonnementen en resourcegroepen kunt u een export maken die is afgestemd op uw factuurperiode of de kalendermaanden. Als u een export wilt maken die is afgestemd op uw factuur maand, gaat u naar **aangepast**en selecteert u **facturering-periode-tot-datum**.  Als u een export wilt maken die is afgestemd op de kalender maand, selecteert u **maand tot heden**.
 >
 >
 
@@ -112,7 +112,7 @@ Het exporteren van Cost Management-gegevens heeft vaak als doel om deze gegevens
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een dagelijkse export uitvoeren

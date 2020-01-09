@@ -1,20 +1,14 @@
 ---
-title: Azure Advisor waarschuwingen maken voor nieuwe aanbevelingen | Microsoft Docs
+title: Azure Advisor waarschuwingen maken voor nieuwe aanbevelingen
 description: Azure Advisor waarschuwingen voor nieuwe aanbeveling maken
-services: advisor
-author: sagupt
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/09/2019
-ms.author: sagupt
-ms.openlocfilehash: d641008a7caf4a006344d886aec945a6e8da2568
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 07cbc57ef718b6cac104d2b5238ff4e3196f197a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326621"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443157"
 ---
 # <a name="create-azure-advisor-alerts-on-new-recommendations"></a>Azure Advisor-waarschuwingen maken voor nieuwe aanbevelingen 
 
@@ -24,8 +18,8 @@ Wanneer Azure Advisor een nieuwe aanbeveling voor een van uw resources detecteer
 
 U kunt ook de typen aanbevelingen vaststellen met behulp van de volgende eigenschappen:
 
-* Category
-* Impactniveau
+* Categorie
+* Impact niveau
 * Type aanbeveling
 
 U kunt ook de actie configureren die wordt uitgevoerd wanneer een waarschuwing wordt geactiveerd door:  
@@ -274,7 +268,7 @@ Als u het algemene schema niet gebruikt, ziet uw nettolading er als volgt uit:
 }
 ```
 
-In een van beide schema's kunt u aanbevelingen voor Advisor identificeren door te kijken naar `Recommendation` **Event source** is `Microsoft.Advisor/recommendations/available/action`en **operationname** .
+In beide schema's kunt u aanbevelingen voor Advisor identificeren door te zoeken naar **Event source** is `Recommendation` en **operationname** `Microsoft.Advisor/recommendations/available/action`.
 
 Enkele van de andere belang rijke velden die u wilt gebruiken, zijn: 
 

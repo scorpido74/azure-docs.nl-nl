@@ -1,21 +1,21 @@
 ---
 title: 'Quick Start: spraak vertalen naar meerdere talen C# , (.NET Framework Windows)-spraak service'
 titleSuffix: Azure Cognitive Services
-description: Nader te bepalen
+description: TBD
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 12/09/2019
 ms.author: erhopf
-ms.openlocfilehash: 5fb4b30e9a9a7bd7ff7bb0dcda7ec1bd4b702c8d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b285492fd32e39a577c37a45c76ac08145ffda81
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980452"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469487"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -107,7 +107,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Vervang in hetzelfde bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](~/articles/cognitive-services/Speech-Service/regions.md) die gekoppeld is aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
 1. Kies in de menu balk de optie **bestand** > alles op te **slaan**.
 

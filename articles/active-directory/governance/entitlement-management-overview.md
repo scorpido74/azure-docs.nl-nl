@@ -1,5 +1,5 @@
 ---
-title: Wat is Azure AD-rechtenbeheer? -Azure Active Directory
+title: Wat is rechtenbeheer? -Azure AD
 description: Bekijk een overzicht van Azure Active Directory rechten beheer en hoe u dit kunt gebruiken voor het beheren van de toegang tot groepen, toepassingen en share point online-sites voor interne en externe gebruikers.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/24/2019
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fd72bba6e8c01644adebaa333c8fe588c35b8c7
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: b0a99b9089e568351cf736310e778ba477441407
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927319"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422575"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Wat is Azure AD-rechtenbeheer?
 
@@ -119,7 +119,7 @@ Als u meer inzicht wilt krijgen in het rechten beheer en de bijbehorende documen
 | toegangs pakket | Een bundel van resources die een team of project nodig heeft en die wordt beheerd door beleid. Een toegangs pakket bevindt zich altijd in een catalogus. U maakt een nieuw toegangs pakket voor een scenario waarin gebruikers toegang moeten aanvragen.  |
 | toegangs aanvraag | Een aanvraag voor toegang tot de resources in een toegangs pakket. Een aanvraag loopt doorgaans via een goedkeurings werk stroom.  Als deze is goedgekeurd, ontvangt de gebruiker die de aanvraag heeft ingediend een toegangs pakket toewijzing. |
 | toewijzingen | Een toewijzing van een toegangs pakket aan een gebruiker zorgt ervoor dat de gebruiker alle resource rollen van dat toegangs pakket heeft.  Toegangs pakket toewijzingen hebben doorgaans een tijds limiet voordat ze verlopen. |
-| catalogus | Een container met gerelateerde resources en toegangs pakketten.  Catalogi worden gebruikt voor delegering, zodat niet-beheerders hun eigen toegangs pakketten kunnen maken. Catalog-eigen aren kunnen resources toevoegen die eigendom zijn van een catalogus. |
+| catalog | Een container met gerelateerde resources en toegangs pakketten.  Catalogi worden gebruikt voor delegering, zodat niet-beheerders hun eigen toegangs pakketten kunnen maken. Catalog-eigen aren kunnen resources toevoegen die eigendom zijn van een catalogus. |
 | Maker van catalogus | Een verzameling gebruikers die gemachtigd zijn om nieuwe catalogussen te maken.  Wanneer een niet-beheerders gebruiker die gemachtigd is om een catalogus Maker te maken, een nieuwe catalogus maakt, wordt deze automatisch de eigenaar van die catalogus. |
 | verbonden organisatie | Een externe Azure AD-Directory of-domein waarmee u een relatie hebt. De gebruikers van een verbonden organisatie kunnen worden opgegeven in een beleid als toestemming om toegang aan te vragen. |
 | policy | Een set regels die de toegangs levenscyclus definieert, bijvoorbeeld hoe gebruikers toegang krijgen, wie kan goed keuren en hoelang gebruikers toegang hebben via een toewijzing. Een beleid is gekoppeld aan een toegangs pakket. Een toegangs pakket kan bijvoorbeeld twee beleids regels bevatten: een voor werk nemers om toegang aan te vragen en een tweede voor externe gebruikers om toegang aan te vragen. |

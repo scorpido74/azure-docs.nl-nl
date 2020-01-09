@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: a206b63b03bcb3bb17e201487f0e00bcb3926151
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a5625341e3dd279d93a59c57cd3325245351723e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582227"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646724"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Gegevens verplaatsen naar Azure Blob-opslag
 
@@ -21,7 +21,7 @@ In dit artikel worden de beste manieren beschreven om gegevens te verplaatsen na
 
 Houd u aan de volgende feiten:
 
-* Azure HPC cache maakt gebruik van een speciale opslag indeling voor het organiseren van gegevens in Blob Storage. Daarom moet een Blob Storage-doel een nieuwe, lege container of een BLOB-container zijn die eerder werd gebruikt voor de gegevens in de Azure HPC-cache. ([Avere vFXT voor Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) gebruikt ook dit Cloud bestands systeem.)
+* Azure HPC cache maakt gebruik van een speciale opslag indeling voor het organiseren van gegevens in Blob Storage. Daarom moet een Blob Storage-doel een nieuwe, lege container of een BLOB-container zijn die eerder werd gebruikt voor de gegevens in de Azure HPC-cache. <!--([Avere vFXT for Azure](https://azure.microsoft.com/services/storage/avere-vfxt/) also uses this cloud file system.)-->
 
 * Het kopiëren van gegevens via de Azure HPC-cache naar een back-end-opslag doel is efficiënter wanneer u meerdere clients en parallelle bewerkingen gebruikt. Met een eenvoudige Kopieer opdracht van één client worden gegevens langzaam verplaatst.
 
@@ -31,7 +31,7 @@ Als u het laad hulpprogramma niet wilt gebruiken of als u inhoud wilt toevoegen 
 
 ## <a name="pre-load-data-in-blob-storage-with-clfsload"></a>Gegevens vooraf laden in Blob Storage met CLFSLoad
 
-U kunt met behulp van de <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> AVERE CLFSLoad-hulp programma voor het kopiëren van gegevens naar een nieuwe Blob Storage-container voordat u deze toevoegt als een opslag doel. Dit hulp programma wordt uitgevoerd op één Linux-systeem en schrijft gegevens in de eigen indeling die nodig is voor de Azure HPC-cache. CLFSLoad is de meest efficiënte manier om een BLOB storage-container te vullen voor gebruik met de cache.
+Kunt u de parameters <!--[Avere CLFSLoad](https://aka.ms/avere-clfsload)--> AVERE CLFSLoad-hulp programma voor het kopiëren van gegevens naar een nieuwe Blob Storage-container voordat u deze toevoegt als een opslag doel. Dit hulp programma wordt uitgevoerd op één Linux-systeem en schrijft gegevens in de eigen indeling die nodig is voor de Azure HPC-cache. CLFSLoad is de meest efficiënte manier om een BLOB storage-container te vullen voor gebruik met de cache.
 
 Het avere CLFSLoad-hulp programma is beschikbaar op verzoek van uw Azure HPC-cache team. Vraag uw team contact op te nemen of open een [ondersteunings ticket](hpc-cache-support-ticket.md) om hulp aan te vragen.
 
@@ -64,7 +64,7 @@ De opdrachten ``cp`` of ``copy`` die u doorgaans gebruikt voor het overdragen va
 
 In deze sectie worden strategieën uitgelegd voor het maken van een multi-client, multi-threaded bestand voor het kopiëren van gegevens naar Blob Storage met Azure HPC-cache. Hierin worden de concepten van bestands overdracht en beslissings punten uitgelegd die kunnen worden gebruikt voor het efficiënt kopiëren van gegevens met meerdere clients en eenvoudige Kopieer opdrachten.
 
-Er wordt ook een aantal hulpprogram ma's beschreven die kunnen helpen. Het ``msrsync``-hulp programma kan worden gebruikt om het proces voor het delen van een gegevensset in buckets gedeeltelijk te automatiseren en rsync-opdrachten te gebruiken. Het ``parallelcp`` script is een ander hulp programma waarmee de bron directory wordt gelezen en automatisch Kopieer opdrachten worden gekopieerd.
+Er wordt ook een aantal hulpprogram ma's beschreven die kunnen helpen. Het hulp programma ``msrsync`` kan worden gebruikt om het proces voor het delen van een gegevensset in buckets gedeeltelijk te automatiseren en rsync-opdrachten te gebruiken. Het ``parallelcp`` script is een ander hulp programma waarmee de bron directory wordt gelezen en automatisch Kopieer opdrachten worden gekopieerd.
 
 ### <a name="strategic-planning"></a>Strategische planning
 

@@ -17,17 +17,24 @@ ms.date: 07/12/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f962cd9bc8c975ccaef90f61f20eea4cf1e4935e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 2192c472e00d123780ec6bc5574e7b9fe326258b
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014342"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495305"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Azure AD PowerShell-cmdlets voor rapportage
 
 > [!NOTE] 
 > Deze Power shell-cmdlets werken momenteel alleen met de [Azure ad-preview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview#directory_auditing) -module. Houd er rekening mee dat de preview-module niet wordt voorgesteld voor productie gebruik. 
+
+Gebruik het volgende om de open bare preview-versie te installeren. 
+
+```powershell
+Install-module AzureADPreview
+```
+Raadpleeg het artikel [Azure AD Power shell voor Graph](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0)voor meer informatie over het maken van een verbinding met Azure AD met behulp van Power shell.  
 
 Met Azure Active Directory-rapporten (Azure AD) kunt u Details opvragen over activiteiten rond alle schrijf bewerkingen in uw richting (audit Logboeken) en verificatie gegevens (aanmeld Logboeken). Hoewel de informatie beschikbaar is via de MS Graph API, kunt u nu dezelfde gegevens ophalen met behulp van de Azure AD Power shell-cmdlets voor rapportage.
 
@@ -45,7 +52,7 @@ U krijgt toegang tot de audit logboeken met behulp van de cmdlet Get-AzureADAudi
 | Weergave naam van toepassing      | Get-AzureADAuditDirectoryLogs: filter "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "" |
 | Categorie                      | Get-AzureADAuditDirectoryLogs-filter "categorie EQ" toepassings beheer "" |
 | Datum en tijd van activiteit            | Get-AzureADAuditDirectoryLogs-filter "activityDateTime gt 2019-04-18" |
-| Alle bovenstaande              | Get-AzureADAuditDirectoryLogs: filter "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "en categorie EQ" toepassings beheer "en activityDateTime gt 2019-04-18"|
+| Alle bovenstaande opties              | Get-AzureADAuditDirectoryLogs: filter "initiatedBy/app/displayName EQ" Azure AD Cloud Sync "en categorie EQ" toepassings beheer "en activityDateTime gt 2019-04-18"|
 
 
 In de volgende afbeelding ziet u een voor beeld van deze opdracht. 
@@ -67,7 +74,7 @@ U krijgt toegang tot de aanmeld logboeken met behulp van de cmdlet Get-AzureADAu
 | Datum en tijd maken              | Get-AzureADAuditSignInLogs-filter "createdDateTime gt 2019-04-18T17:30:00.0 Z" (alles sinds 5:30 uur op 4/18) |
 | Status                        | Get-AzureADAuditSignInLogs-filter "status/error code EQ 50105" |
 | Weergave naam van toepassing      | Get-AzureADAuditSignInLogs-filter "appDisplayName EQ" StoreFrontStudio [wsfed ingeschakeld] "" |
-| Alle bovenstaande              | Get-AzureADAuditSignInLogs-filter "userDisplayName EQ ' Timothy Perkins ' en status/error code ne 0 en appDisplayName EQ ' StoreFrontStudio [wsfed enabled] '" |
+| Alle bovenstaande opties              | Get-AzureADAuditSignInLogs-filter "userDisplayName EQ ' Timothy Perkins ' en status/error code ne 0 en appDisplayName EQ ' StoreFrontStudio [wsfed enabled] '" |
 
 
 In de volgende afbeelding ziet u een voor beeld van deze opdracht. 

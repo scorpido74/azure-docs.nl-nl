@@ -1,24 +1,16 @@
 ---
-title: Diagnostische gegevens van Azure Service Fabric reverse-proxy | Microsoft Docs
-description: Meer informatie over het bewaken en diagnosticeren van aanvraag verwerking bij de omgekeerde proxy.
-services: service-fabric
-documentationcenter: .net
+title: Diagnostische gegevens van Azure Service Fabric reverse-proxy
+description: Meer informatie over het bewaken en diagnosticeren van aanvraag verwerking bij de omgekeerde proxy voor een Azure Service Fabric-toepassing.
 author: kavyako
-manager: vipulm
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
-ms.openlocfilehash: 6074b799e992371d41de050f68690e450f008789
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: bbc1fe5a76ecb5720bc49e0a082d5e9151b403d8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933973"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645460"
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>Verwerking van aanvragen bewaken en diagnoses uitvoeren bij de omgekeerde proxy
 
@@ -33,7 +25,7 @@ Hier volgen enkele voor beelden van het interpreteren van de veelvoorkomende fou
 
     Een reden kan zijn dat de service niet reageert binnen de time-outperiode van de aanvraag.
    De eerste gebeurtenis hieronder registreert de details van de aanvraag die bij de omgekeerde proxy is ontvangen. 
-   De tweede gebeurtenis geeft aan dat de aanvraag is mislukt tijdens het door sturen naar de service vanwege een interne fout = ERROR_WINHTTP_TIMEOUT 
+   De tweede gebeurtenis geeft aan dat de aanvraag is mislukt tijdens het door sturen naar de service vanwege "interne fout = ERROR_WINHTTP_TIMEOUT" 
 
     De payload omvat:
 
@@ -104,7 +96,7 @@ Hier volgen enkele voor beelden van het interpreteren van de veelvoorkomende fou
      }
      }
      ```
-     Een ander voor beeld waarbij omgekeerde proxy 404 niet kan worden gevonden is: ApplicationGateway\Http Configuration para meter **SecureOnlyMode** is ingesteld op True met de reverse proxy luistert op **https**, maar niet alle replica-eind punten zijn onveilig ( Luis teren op HTTP).
+     Een ander voor beeld waarbij omgekeerde proxy 404 niet kan worden gevonden is: ApplicationGateway\Http Configuration para meter **SecureOnlyMode** is ingesteld op True met de reverse proxy luistert op **https**, maar niet alle replica-eind punten zijn onveilig (Luis teren op http).
      Omgekeerde proxy retourneert 404 omdat er geen eind punt luistert op HTTPS om de aanvraag door te sturen. Het analyseren van de para meters in de gebeurtenis lading helpt het probleem te verfijnen:
     
      ```
@@ -183,7 +175,7 @@ Hier volgen enkele voor beelden van het interpreteren van de veelvoorkomende fou
     ```
 5. Reverse proxy retourneert 404 FABRIC_E_SERVICE_DOES_NOT_EXIST
 
-    Er wordt een FABRIC_E_SERVICE_DOES_NOT_EXIST-fout geretourneerd als het URI-schema niet is opgegeven voor het service-eind punt in het service manifest.
+    FABRIC_E_SERVICE_DOES_NOT_EXIST fout wordt geretourneerd als het URI-schema niet is opgegeven voor het service-eind punt in het service manifest.
 
     ```
     <Endpoint Name="ServiceEndpointHttp" Port="80" Protocol="http" Type="Input"/>

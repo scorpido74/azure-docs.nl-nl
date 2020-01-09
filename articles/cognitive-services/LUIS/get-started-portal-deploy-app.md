@@ -8,18 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 65af2caa2272549b5ad562ff3c38b90e3ea43fd5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a67852d333a86c5acf20e8bf69004aa9131e1f9f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278549"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448071"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Snelstartgids: een app implementeren in de LUIS-Portal
-
-[!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
 Wanneer uw LUIS-app gereed is om utterance voor spellingen te retour neren naar een client toepassing (bijvoorbeeld een chat-bot), moet u de app implementeren in het Voorspellings eindpunt.
 
@@ -41,7 +39,7 @@ U maakt de Voorspellings eindpunt resource in de Azure Portal. Deze bron mag all
 
    |Instelling|Waarde|Doel|
    |--|--|--|
-   |Naam|`my-luis-resource`|De naam van de Azure-resource. U hebt deze naam nodig wanneer u de resource aan de app toewijst in de LUIS-Portal.|
+   |Name|`my-luis-resource`|De naam van de Azure-resource. U hebt deze naam nodig wanneer u de resource aan de app toewijst in de LUIS-Portal.|
    |Abonnement|Uw abonnement|Selecteer een van de abonnementen die zijn gekoppeld aan uw account.|
    |Resourcegroep|`my-resource-group`|Maak een nieuwe resource groep voor al uw cognitieve service bronnen. Wanneer u klaar bent met de resources, kunt u de resource groep verwijderen om uw abonnement op te schonen. |
    |Locatie van ontwerpen|**US - west**|De Azure-regio voor het ontwerpen.|
@@ -61,7 +59,7 @@ U maakt de Voorspellings eindpunt resource in de Azure Portal. Deze bron mag all
 
 Telkens wanneer u een nieuwe resource voor LUIS maakt, moet u de resource toewijzen aan de LUIS-app. Nadat deze is toegewezen, hoeft u deze stap niet opnieuw uit te voeren tenzij u een nieuwe resource maakt. U kunt een nieuwe resource maken om de regio's van uw app uit te breiden of om een hoger aantal Voorspellings query's te ondersteunen.
 
-1. Meld u aan bij de [Luis-Portal](https://preview.luis.ai) en kies de **myEnglishApp** -app in de lijst met apps.
+1. Meld u aan bij de [Preview-Luis-Portal](https://preview.luis.ai) en kies de **myEnglishApp** -app in de lijst met apps.
 
 1. Selecteer **beheren** in het menu in de rechter bovenhoek en selecteer vervolgens **Azure-resources**.
 

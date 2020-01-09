@@ -1,56 +1,47 @@
 ---
-title: De versie van een zelfstandig Azure Service Fabric cluster bijwerken | Microsoft Docs
-description: Werk de Azure Service Fabric-code die wordt uitgevoerd een zelfstandige Service Fabric-cluster.
-services: service-fabric
-documentationcenter: .net
+title: De versie van een zelfstandig cluster bijwerken
+description: Voer een upgrade uit voor de Azure Service Fabric-code die een zelfstandig Service Fabric cluster uitvoert.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 29d034be5999d0bc3f0a244cfa7a5658a4ecce32
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f8c146d1a82fd745e6641ac2aea91aa34539d6f0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711365"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610026"
 ---
-# <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>De Service Fabric-versie die wordt uitgevoerd op uw cluster bijwerken 
+# <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>Een upgrade uitvoeren van de Service Fabric versie die wordt uitgevoerd op uw cluster 
 
-Voor elk modern systeem is de mogelijkheid om te upgraden essentieel voor het succes op lange termijn van het product. Een Azure Service Fabric-cluster is een resource waarvan u eigenaar bent. In dit artikel wordt beschreven hoe u de versie van Service Fabric die worden uitgevoerd op uw zelfstandige cluster bijwerkt.
+Voor elk modern systeem is de mogelijkheid om een upgrade uit te kunnen zetten van de lange termijn voor het succes van uw product. Een Azure Service Fabric-cluster is een bron waarvan u eigenaar bent. In dit artikel wordt beschreven hoe u een upgrade uitvoert van de versie van Service Fabric die op uw zelfstandige cluster wordt uitgevoerd.
 
 > [!NOTE]
-> Zorg ervoor dat uw cluster altijd wordt uitgevoerd een ondersteunde versie van Service Fabric. Wanneer Microsoft de release van een nieuwe versie van Service Fabric kondigt, betekent dit dat de vorige versie zich na een minimum van 60 dagen vanaf de datum van de aankondiging is gemarkeerd voor einde van ondersteuning. Nieuwe releases worden aangekondigd [op de blog van het Service Fabric-team](https://blogs.msdn.microsoft.com/azureservicefabric/). De nieuwe versie is beschikbaar om te kiezen op dat moment.
+> Zorg ervoor dat uw cluster altijd een ondersteunde Service Fabric versie uitvoert. Wanneer micro soft de release van een nieuwe versie van Service Fabric aankondigt, wordt de vorige versie gemarkeerd voor het einde van de ondersteuning na mini maal 60 dagen na de datum van de aankondiging. Nieuwe releases worden aangekondigd [op het service Fabric team blog](https://blogs.msdn.microsoft.com/azureservicefabric/). De nieuwe versie kan op dat moment worden gekozen.
 >
 >
 
-U kunt uw cluster upgraden naar de nieuwe versie, alleen als u een productie-achtige knooppuntconfiguratie, waarbij elke Service Fabric-knooppunt op een afzonderlijke fysieke of virtuele machine is toegewezen. Hebt u een ontwikkelingscluster, waarbij meer dan één Service Fabric-knooppunt op een enkele fysieke of virtuele machine is, moet u het cluster met de nieuwe versie opnieuw maken.
+U kunt uw cluster alleen upgraden naar de nieuwe versie als u een configuratie van een knoop punt voor productie stijl gebruikt, waarbij elk Service Fabric knoop punt wordt toegewezen op een afzonderlijke fysieke of virtuele machine. Als u een ontwikkel cluster hebt, waarbij meer dan één Service Fabric knoop punt zich op één fysieke of virtuele machine bevindt, moet u het cluster opnieuw maken met de nieuwe versie.
 
-Twee afzonderlijke werkstromen kunnen u uw cluster bijwerken naar de meest recente versie of een ondersteunde versie van de Service Fabric. Er is een werkstroom voor clusters die verbonden zijn met de nieuwste versie automatisch downloaden. De andere werkstroom is voor clusters die niet verbonden zijn met het downloaden van de meest recente versie van Service Fabric.
+Met twee afzonderlijke werk stromen kan uw cluster worden bijgewerkt naar de nieuwste versie of een ondersteunde Service Fabric versie. Een werk stroom is voor clusters die verbinding hebben om de nieuwste versie automatisch te downloaden. De andere werk stroom is voor clusters die geen verbinding hebben om de nieuwste Service Fabric-versie te downloaden.
 
-## <a name="enable-auto-upgrade-of-the-service-fabric-version-of-your-cluster"></a>Auto-upgrade van de Service Fabric-versie van het cluster inschakelen
-Om in te stellen uw cluster om updates te downloaden van Service Fabric wanneer Microsoft een nieuwe versie brengt, de `fabricClusterAutoupgradeEnabled` clusterconfiguratie naar *waar*. Instellen om handmatig een ondersteunde versie van Service Fabric, waarmee u uw cluster op wilt selecteren, de `fabricClusterAutoupgradeEnabled` clusterconfiguratie naar *false*.
+## <a name="enable-auto-upgrade-of-the-service-fabric-version-of-your-cluster"></a>Automatisch bijwerken inschakelen van de Service Fabric versie van uw cluster
+Als u uw cluster wilt instellen op het downloaden van updates van Service Fabric wanneer micro soft een nieuwe versie uitgeeft, stelt u de `fabricClusterAutoupgradeEnabled` cluster configuratie in op *waar*. Als u hand matig een ondersteunde versie van Service Fabric wilt selecteren waarvan u het cluster wilt maken, stelt u de `fabricClusterAutoupgradeEnabled` cluster configuratie in op *Onwaar*.
 
-## <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>Bijwerken van clusters die verbonden zijn met het downloaden van de meest recente code en configuratie
-Volg deze stappen om uw cluster naar een ondersteunde versie upgraden als de clusterknooppunten over een internetverbinding beschikt op de [Microsoft Download Center](https://download.microsoft.com).
+## <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>Clusters bijwerken die verbinding hebben om de nieuwste code en configuratie te downloaden
+Gebruik deze stappen om uw cluster bij te werken naar een ondersteunde versie als uw cluster knooppunten een Internet verbinding met het [micro soft Download centrum](https://download.microsoft.com)hebben.
 
-Voor clusters die verbonden met zijn de [Microsoft Download Center](https://download.microsoft.com), Microsoft controleert periodiek op de beschikbaarheid van de nieuwe Service Fabric-versies.
+Voor clusters met een verbinding met het [micro soft Download centrum](https://download.microsoft.com)controleert micro soft regel matig of er nieuwe service Fabric versies beschikbaar zijn.
 
-Wanneer een nieuwe Service Fabric-versie beschikbaar is, wordt het pakket gedownload naar het cluster en ingericht voor de upgrade. Daarnaast bevat het systeem om te informeren over de klant van deze nieuwe versie, een expliciete cluster status waarschuwing die vergelijkbaar is met het volgende:
+Wanneer een nieuwe Service Fabric-versie beschikbaar is, wordt het pakket lokaal gedownload naar het cluster en ingericht voor de upgrade. Om de klant van deze nieuwe versie hiervan op de hoogte te brengen, toont het systeem een expliciete cluster status waarschuwing die er ongeveer als volgt uitziet:
 
-"De huidige clusterversie [versie #] [datum] ondersteuning wordt beëindigd."
+De ondersteuning voor de huidige cluster versie [Version #] eindigt [date]. "
 
-Nadat het cluster de meest recente versie wordt uitgevoerd, verdwijnt de waarschuwing.
+Nadat het cluster de nieuwste versie heeft uitgevoerd, verdwijnt de waarschuwing.
 
-Wanneer u het cluster: waarschuwing ziet, moet u het cluster upgraden:
+Wanneer u de cluster status waarschuwing ziet, werkt u het cluster bij:
 
-1. Verbinding maken met het cluster van elke computer die de beheerderstoegang heeft tot alle machines die worden weergegeven als knooppunten in het cluster. De machine die met dit script wordt uitgevoerd op beschikt niet over moet deel uitmaken van het cluster.
+1. Maak verbinding met het cluster vanaf elke computer met beheerders toegang tot alle computers die worden vermeld als knoop punten in het cluster. De computer waarop dit script wordt uitgevoerd, hoeft geen deel uit te maken van het cluster.
 
     ```powershell
     ###### connect to the secure cluster using certs
@@ -65,17 +56,17 @@ Wanneer u het cluster: waarschuwing ziet, moet u het cluster upgraden:
         -StoreName My
     ```
 
-2. De lijst met Service Fabric-versies die u naar upgraden kunt ophalen.
+2. Haal de lijst met Service Fabric-versies op waarnaar u een upgrade kunt uitvoeren.
 
     ```powershell
     ###### Get the list of available Service Fabric versions
     Get-ServiceFabricRegisteredClusterCodeVersion
     ```
 
-    U moet een uitvoer die vergelijkbaar is met dit krijgen:
+    U ziet een uitvoer die er ongeveer als volgt uitziet:
 
-    ![Service Fabric-versies ophalen][getfabversions]
-3. Start de clusterupgrade van een naar een beschikbare versie met behulp van de [Start ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade) Windows PowerShell-opdracht.
+    ![Service Fabric versies ophalen][getfabversions]
+3. Start een cluster upgrade naar een beschik bare versie met behulp van de [Start-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade) Windows Power shell-opdracht.
 
     ```powershell
     Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <codeversion#> -Monitored -FailureAction Rollback
@@ -84,53 +75,53 @@ Wanneer u het cluster: waarschuwing ziet, moet u het cluster upgraden:
 
     Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion 5.3.301.9590 -Monitored -FailureAction Rollback
     ```
-   U kunt voor het controleren van de voortgang van de upgrade, Service Fabric Explorer gebruiken of Voer de volgende PowerShell-opdracht:
+   Als u de voortgang van de upgrade wilt bewaken, kunt u Service Fabric Explorer gebruiken of de volgende Power shell-opdracht uitvoeren:
 
     ```powershell
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Als de cluster-statusbeleid niet worden voldaan, is de upgrade teruggedraaid. Zie de documentatie voor opgeven van aangepaste statusbeleid voor de opdracht Start-ServiceFabricClusterUpgrade [Start ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade).
+    Als niet aan het status beleid van het cluster wordt voldaan, wordt de upgrade teruggedraaid. Zie de documentatie voor [Start-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade)voor het opgeven van aangepaste status beleidsregels voor de start-ServiceFabricClusterUpgrade-opdracht.
 
-    Nadat u de betreffende leidde tot het terugdraaien van de problemen hebt opgelost, start u de upgrade opnieuw met de volgende dezelfde stappen als eerder beschreven.
+    Nadat u de problemen hebt opgelost die tot het terugdraaien hebben geleid, start u de upgrade opnieuw door dezelfde stappen te volgen als hierboven beschreven.
 
-## <a name="upgrade-clusters-that-have-no-connectivity-to-download-the-latest-code-and-configuration"></a>Bijwerken van clusters met *afwezig* voor het downloaden van de meest recente code en configuratie
-Volg deze stappen om uw cluster naar een ondersteunde versie upgraden als de clusterknooppunten geen internetverbinding met de [Microsoft Download Center](https://download.microsoft.com).
+## <a name="upgrade-clusters-that-have-no-connectivity-to-download-the-latest-code-and-configuration"></a>Clusters bijwerken die *geen verbinding* hebben om de nieuwste code en configuratie te downloaden
+Gebruik deze stappen om uw cluster bij te werken naar een ondersteunde versie als uw cluster knooppunten geen Internet verbinding met het [micro soft Download centrum](https://download.microsoft.com)hebben.
 
 > [!NOTE]
-> Als u een cluster dat is niet met internet verbonden uitvoert, hebt u voor het bewaken van de [Service Fabric-teamblog](https://blogs.msdn.microsoft.com/azureservicefabric/) voor meer informatie over nieuwe releases. Het systeem kan een cluster: waarschuwing u nieuwe releases wordt niet weergegeven.  
+> Als u een cluster gebruikt dat niet is verbonden met internet, moet u de [service Fabric team blog](https://blogs.msdn.microsoft.com/azureservicefabric/) bewaken om meer te weten te komen over nieuwe releases. Er wordt in het systeem geen cluster status waarschuwing weer gegeven om u te waarschuwen over nieuwe releases.  
 >
 >
 
-### <a name="auto-provisioning-vs-manual-provisioning"></a>Automatische inrichting versus handmatige inrichting
-Instellen om in te schakelen automatisch downloaden en de registratie voor de meest recente codeversie, de Service Fabric-Update-Service. Zie voor instructies *Tools\ServiceFabricUpdateService.zip\Readme_InstructionsAndHowTos.txt* in de [zelfstandige pakket](service-fabric-cluster-standalone-package-contents.md).
+### <a name="auto-provisioning-vs-manual-provisioning"></a>Automatisch inrichten versus hand matige inrichting
+Als u automatisch downloaden en registreren voor de nieuwste code versie wilt inschakelen, stelt u de Service Fabric Update service in. Zie *tools\servicefabricupdateservice.zip\ Readme_InstructionsAndHowTos. txt* in het [zelfstandige pakket](service-fabric-cluster-standalone-package-contents.md)voor instructies.
 
-Volg deze instructies voor het handmatige proces.
+Volg deze instructies voor het hand matige proces.
 
-Wijzigen van de configuratie van het cluster de volgende eigenschap wilt instellen op *false* voordat u een upgrade van een configuratie:
+Wijzig de cluster configuratie om de volgende eigenschap in te stellen op *False* voordat u een configuratie-upgrade start:
 
 ```json
 "fabricClusterAutoupgradeEnabled": false,
 ```
 
-Zie voor informatie over het gebruik, de [Start ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) PowerShell-opdracht. Zorg ervoor dat u 'clusterConfigurationVersion' in het JSON bijwerken voordat u de configuratie-upgrade start.
+Zie de Power shell-opdracht [Start-ServiceFabricClusterConfigurationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) voor meer informatie over het gebruik. Zorg ervoor dat u ' clusterConfigurationVersion ' in uw JSON bijwerkt voordat u de configuratie-upgrade start.
 
 ```powershell
     Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
 ```
 
-### <a name="cluster-upgrade-workflow"></a>Upgradewerkstroom voor cluster
+### <a name="cluster-upgrade-workflow"></a>Upgrade werk stroom voor cluster
 
-1. Voer [Get-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterupgrade) uit een van de knooppunten in het cluster en de opmerking de *TargetCodeVersion*.
+1. Voer [Get-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclusterupgrade) uit vanaf een van de knoop punten in het cluster en noteer de *TargetCodeVersion*.
 
-2. Voer de volgende van een machine internetverbinding lijst met alle versies van de upgrade-compatibel is met de huidige versie en de bijbehorende downloaden via de downloadkoppelingen gekoppeld:
+2. Voer de volgende stappen uit vanaf een computer met een Internet verbinding om alle versie-compatibele versies met de huidige versie weer te geven en down load het bijbehorende pakket van de bijbehorende Download koppelingen:
 
     ```powershell
     ###### Get list of all upgrade compatible packages  
     Get-ServiceFabricRuntimeUpgradeVersion -BaseVersion <TargetCodeVersion as noted in Step 1> 
     ```
 
-3. Verbinding maken met het cluster van elke computer die de beheerderstoegang heeft tot alle machines die worden weergegeven als knooppunten in het cluster. De machine die met dit script wordt uitgevoerd op beschikt niet over moet deel uitmaken van het cluster.
+3. Maak verbinding met het cluster vanaf elke computer met beheerders toegang tot alle computers die worden vermeld als knoop punten in het cluster. De computer waarop dit script wordt uitgevoerd, hoeft geen deel uit te maken van het cluster.
 
     ```powershell
     ###### Get the list of available Service Fabric versions
@@ -139,9 +130,9 @@ Zie voor informatie over het gebruik, de [Start ServiceFabricClusterConfiguratio
     ###### Here is a filled-out example
     Copy-ServiceFabricClusterPackage -Code -CodePackagePath .\MicrosoftAzureServiceFabric.5.3.301.9590.cab -ImageStoreConnectionString "fabric:ImageStore"
     ```
-4. Kopieer het gedownloade pakket naar de installatiekopieopslag van het cluster.
+4. Kopieer het gedownloade pakket naar het cluster installatie kopie archief.
 
-5. Registreer de gekopieerde pakket.
+5. Registreer het gekopieerde pakket.
 
     ```powershell
     ###### Get the list of available Service Fabric versions
@@ -150,7 +141,7 @@ Zie voor informatie over het gebruik, de [Start ServiceFabricClusterConfiguratio
     ###### Here is a filled-out example
     Register-ServiceFabricClusterPackage -Code -CodePackagePath .\MicrosoftAzureServiceFabric.5.3.301.9590.cab
     ```
-6. Start de clusterupgrade van een naar een beschikbare versie.
+6. Een upgrade van een cluster naar een beschik bare versie starten.
 
     ```powershell
     Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <codeversion#> -Monitored -FailureAction Rollback
@@ -158,20 +149,20 @@ Zie voor informatie over het gebruik, de [Start ServiceFabricClusterConfiguratio
     ###### Here is a filled-out example
     Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion 5.3.301.9590 -Monitored -FailureAction Rollback
     ```
-    U kunt de voortgang van de upgrade van Service Fabric Explorer of u kunt de volgende PowerShell-opdracht uitvoeren:
+    U kunt de voortgang van de upgrade op Service Fabric Explorer controleren of u kunt de volgende Power shell-opdracht uitvoeren:
 
     ```powershell
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Als de cluster-statusbeleid niet worden voldaan, is de upgrade teruggedraaid. Zie de documentatie voor opgeven van aangepaste statusbeleid voor de opdracht Start-ServiceFabricClusterUpgrade [Start ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade).
+    Als niet aan het status beleid van het cluster wordt voldaan, wordt de upgrade teruggedraaid. Zie de documentatie voor [Start-ServiceFabricClusterUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricclusterupgrade)voor het opgeven van aangepaste status beleidsregels voor de start-ServiceFabricClusterUpgrade-opdracht.
 
-    Nadat u de betreffende leidde tot het terugdraaien van de problemen hebt opgelost, start u de upgrade opnieuw met de volgende dezelfde stappen als eerder beschreven.
+    Nadat u de problemen hebt opgelost die tot het terugdraaien hebben geleid, start u de upgrade opnieuw door dezelfde stappen te volgen als hierboven beschreven.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [De configuratie van een zelfstandige cluster upgraden](service-fabric-cluster-config-upgrade-windows-server.md)
-* Sommige aanpassen [instellingen voor Service Fabric-cluster](service-fabric-cluster-fabric-settings.md).
-* [Uw cluster inschalen en uitschalen](service-fabric-cluster-scale-up-down.md).
+* [De configuratie van een zelfstandig cluster bijwerken](service-fabric-cluster-config-upgrade-windows-server.md)
+* Pas enkele [service Fabric cluster instellingen](service-fabric-cluster-fabric-settings.md)aan.
+* [Schaal uw cluster in en uit](service-fabric-cluster-scale-up-down.md).
 
 <!--Image references-->
 [getfabversions]: ./media/service-fabric-cluster-upgrade-windows-server/getfabversions.PNG

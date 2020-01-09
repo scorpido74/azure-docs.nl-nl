@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: b6e66bea6dd86409866db1fee3564d21236ecbce
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 05a05c46a49c0262bd5db33390bb995ebe849fd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286185"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75364115"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Metrische gegevens van het gast besturingssysteem naar het Azure Monitor metrische archief verzenden met een resource manager-sjabloon voor een virtuele Windows-machine
 
@@ -25,7 +25,7 @@ In dit artikel wordt het proces beschreven voor het verzenden van de prestaties 
 
 Door ze op deze locatie op te slaan, hebt u toegang tot dezelfde acties voor platform metrieken. Acties omvatten bijna realtime waarschuwingen, grafieken, route ring en toegang vanaf een REST API en meer. In het verleden schreef de diagnostische uitbrei ding naar Azure Storage, maar niet naar de Azure Monitor gegevens opslag.
 
-Als u niet bekend bent met Resource Manager-sjablonen, kunt u meer te weten komen over [sjabloon implementaties](../../azure-resource-manager/resource-group-overview.md) en de bijbehorende structuur en syntaxis.
+Als u niet bekend bent met Resource Manager-sjablonen, kunt u meer te weten komen over [sjabloon implementaties](../../azure-resource-manager/management/overview.md) en de bijbehorende structuur en syntaxis.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -240,7 +240,7 @@ Sla beide bestanden op en sluit deze.
 
 We maken gebruik van Azure PowerShell om de Resource Manager-sjabloon te implementeren.
 
-1. Start Power shell.
+1. Start PowerShell.
 1. Meld u aan bij Azure met `Login-AzAccount`.
 1. U kunt uw lijst met abonnementen ophalen met behulp van `Get-AzSubscription`.
 1. Stel het abonnement in dat u gebruikt om de virtuele machine te maken of bij te werken in:

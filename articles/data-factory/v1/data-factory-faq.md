@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 7c0b5cbfe77a39cbc8ac660178a1c573d1fe8f7d
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 1b042c0279e458cf83bd5c81147f4b1f25d7687d
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139822"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645137"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Veelgestelde vragen over Azure Data Factory
 > [!NOTE]
@@ -44,7 +44,7 @@ Zie de [pagina met prijs informatie voor Data Factory][adf-pricing-details] voor
 Data Factory is beschikbaar in **VS West** en **Europa-Noord**. De compute-en opslag services die door de gegevens fabrieken worden gebruikt, kunnen zich in andere regio's bevindt. Zie [ondersteunde regio's](data-factory-introduction.md#supported-regions).
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Wat zijn de limieten voor het aantal gegevens fabrieken/pijp lijnen/activiteiten/gegevens sets?
-Zie de sectie **Azure Data Factory limieten** van het artikel [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-subscription-service-limits.md#data-factory-limits) .
+Zie de sectie **Azure Data Factory limieten** van het artikel [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) .
 
 ### <a name="what-is-the-authoringdeveloper-experience-with-azure-data-factory-service"></a>Wat is de ontwerp-en ontwikkelaars ervaring met Azure Data Factory Service?
 Met een van de volgende hulpprogram ma's/Sdk's kunt u gegevens fabrieken ontwerpen/maken:

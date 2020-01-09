@@ -1,5 +1,5 @@
 ---
-title: Planning voor de migratie van IaaS-resources van klassiek naar Azure Resource Manager
+title: Planning voor de migratie van klassiek naar Azure Resource Manager
 description: Planning voor de migratie van IaaS-resources van klassiek naar Azure Resource Manager
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 2c0f4924c41b36c306d4e6b9286105662744c4da
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bebfcedcd2944e2c6b05c3203e67df7658dd751a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033226"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460049"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planning voor de migratie van IaaS-resources van klassiek naar Azure Resource Manager
 Hoewel Azure Resource Manager veel fantastische functies biedt, is het van essentieel belang om uw migratie traject te plannen om ervoor te zorgen dat alles goed gaat. Bij het plannen van de tijd zorgt u ervoor dat er geen problemen optreden tijdens het uitvoeren van migratie activiteiten.
@@ -31,7 +31,7 @@ Er zijn vier algemene fasen van de migratie traject:<br>
 
 ![Migratie fasen](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-## <a name="plan"></a>Plannen
+## <a name="plan"></a>Plan
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Technische overwegingen en-afwegingen
 
@@ -113,7 +113,7 @@ De volgende problemen zijn in veel van de grotere migraties ontdekt. Dit is geen
 
 - **Beschikbaarheids sets** : voor een virtueel netwerk (vNet) dat naar Azure Resource Manager moet worden gemigreerd, moet de klassieke implementatie (d.w.z. Cloud service) virtuele machines in één beschikbaarheidsset zijn, anders moeten de virtuele machines zich in een beschikbaarheidsset bevinden. Als er meer dan één beschikbaarheidsset in de Cloud service is ingesteld, is deze niet compatibel met Azure Resource Manager en stopt de migratie.  Daarnaast kunnen er geen virtuele machines in een beschikbaarheidsset worden opgegeven, en sommige Vm's niet in een beschikbaarheidsset. Om dit op te lossen, moet u uw Cloud service herstellen of anders in een andere volg orde zetten.  Plan dienovereenkomstig, omdat dit mogelijk tijdrovend is.
 
-- **Implementaties van web-en werk rollen** -Cloud Services die web-en werk rollen bevatten, kunnen niet worden gemigreerd naar Azure Resource Manager. Als u de inhoud van uw web-en werk rollen wilt migreren, moet u de code zelf migreren naar de nieuwere PaaS-App Services (deze discussie valt buiten het bereik van dit document). Als u de web-of werk rollen wilt verlaten, maar de klassieke Vm's wilt migreren naar het Resource Manager-implementatie model, moeten de web-en werk rollen eerst worden verwijderd uit het virtuele netwerk voordat de migratie kan worden gestart.  Een typische oplossing is het verplaatsen van de web-of worker-instanties naar een afzonderlijk klassiek virtueel netwerk dat ook is gekoppeld aan een ExpressRoute-circuit. Maak in de eerste aanvraag voor opnieuw implementeren een nieuw klassiek virtueel netwerk, verplaats/Implementeer de web-en werk rollen naar dat nieuwe virtuele netwerk en verwijder vervolgens de implementaties van het virtuele netwerk dat wordt verplaatst. Er zijn geen code wijzigingen vereist. De nieuwe [Virtual Network peering](../../virtual-network/virtual-network-peering-overview.md) -mogelijkheid kan worden gebruikt voor het samen voegen van het klassieke virtuele netwerk met de web-en werk rollen en andere virtuele netwerken in dezelfde Azure-regio, zoals het virtuele netwerk dat wordt gemigreerd (**na het virtuele netwerk de migratie is voltooid omdat gepeerde virtuele netwerken niet kunnen worden gemigreerd**. Daarom bieden dezelfde mogelijkheden zonder verlies van prestaties en geen latentie/bandbreedte boetes. Gezien de toevoeging van [Virtual Network peering](../../virtual-network/virtual-network-peering-overview.md), implementaties van web-en werk rollen kan nu eenvoudig worden verholpen en wordt de migratie naar Azure Resource Manager niet geblokkeerd.
+- **Implementaties van web-en werk rollen** -Cloud Services die web-en werk rollen bevatten, kunnen niet worden gemigreerd naar Azure Resource Manager. Als u de inhoud van uw web-en werk rollen wilt migreren, moet u de code zelf migreren naar de nieuwere PaaS-App Services (deze discussie valt buiten het bereik van dit document). Als u de web-of werk rollen wilt verlaten, maar de klassieke Vm's wilt migreren naar het Resource Manager-implementatie model, moeten de web-en werk rollen eerst worden verwijderd uit het virtuele netwerk voordat de migratie kan worden gestart.  Een typische oplossing is het verplaatsen van de web-of worker-instanties naar een afzonderlijk klassiek virtueel netwerk dat ook is gekoppeld aan een ExpressRoute-circuit. Maak in de eerste aanvraag voor opnieuw implementeren een nieuw klassiek virtueel netwerk, verplaats/Implementeer de web-en werk rollen naar dat nieuwe virtuele netwerk en verwijder vervolgens de implementaties van het virtuele netwerk dat wordt verplaatst. Er zijn geen code wijzigingen vereist. De nieuwe [Virtual Network peering](../../virtual-network/virtual-network-peering-overview.md) -mogelijkheid kan worden gebruikt voor het samen voegen van het klassieke virtuele netwerk met de web-en werk rollen en andere virtuele netwerken in dezelfde Azure-regio, zoals het virtuele netwerk dat wordt gemigreerd (nadat de migratie van het virtuele**netwerk is voltooid als gekoppelde virtuele netwerken niet kunnen worden gemigreerd**) Gezien de toevoeging van [Virtual Network peering](../../virtual-network/virtual-network-peering-overview.md), implementaties van web-en werk rollen kan nu eenvoudig worden verholpen en wordt de migratie naar Azure Resource Manager niet geblokkeerd.
 
 - **Azure Resource Manager quota's** : Azure-regio's hebben afzonderlijke quota's/limieten voor zowel klassieke als Azure Resource Manager. Hoewel er in een migratie scenario nieuwe hardware niet wordt gebruikt *(we wisselen bestaande vm's uit van klassieke naar Azure Resource Manager)* , moeten Azure Resource Manager quota's nog steeds aanwezig zijn met voldoende capaciteit voordat de migratie kan worden gestart. Hieronder ziet u de belangrijkste limieten die we hebben gezien problemen veroorzaken.  Een quotum ondersteunings ticket openen om de limieten te verhogen.
 
@@ -122,10 +122,10 @@ De volgende problemen zijn in veel van de grotere migraties ontdekt. Dit is geen
     >
 
   - Netwerkinterfaces
-  - Load balancers
+  - Load Balancers
   - Openbare IP-adressen
   - Statische open bare Ip's
-  - Kerngeheugens
+  - Cores
   - Netwerkbeveiligingsgroepen
   - Routetabellen
 
@@ -190,7 +190,7 @@ Het niet volledig testen kan leiden tot problemen en vertraging tijdens de migra
 
 ### <a name="technical-considerations-and-tradeoffs"></a>Technische overwegingen en-afwegingen
 
-Nu u zich in Azure Resource Manager bevindt, maximaliseert u het platform.  Lees het [overzicht van Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) voor meer informatie over aanvullende voor delen.
+Nu u zich in Azure Resource Manager bevindt, maximaliseert u het platform.  Lees het [overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md) voor meer informatie over aanvullende voor delen.
 
 Aandachtspunten:
 

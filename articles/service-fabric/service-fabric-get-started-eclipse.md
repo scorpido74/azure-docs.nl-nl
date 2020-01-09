@@ -1,25 +1,16 @@
 ---
-title: Azure-Service Fabric-invoegtoepassing voor Eclipse | Microsoft Docs
-description: Aan de slag met de Service Fabric- invoegtoepassing voor Eclipse.
-services: service-fabric
-documentationcenter: java
+title: Azure Service Fabric-invoeg toepassing voor eclips
+description: Meer informatie over het aan de slag gaan met Azure Service Fabric in Java met behulp van eclips en de Service Fabric meegeleverde invoeg toepassing.
 author: rapatchi
-manager: chackdan
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: c15ca6d68512bc79ce4e5a27f5ce4f7ea6bc3080
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.openlocfilehash: b779873488f1fff754d4105249b28f545738c11b
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035433"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645698"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Service Fabric-invoegtoepassing voor de ontwikkeling van Eclipse Java-toepassingen
 Eclipse is een van de meest gebruikte Integrated Development Environments (IDE's) voor Java-ontwikkelaars. In dit artikel wordt beschreven hoe u een Eclipse-ontwikkelomgeving instelt voor gebruik met Azure Service Fabric. Ontdek hoe u de Service Fabric-invoegtoepassing installeert en een Service Fabric-toepassing implementeert in een lokaal of extern Service Fabric-cluster in Eclipse. 
@@ -40,12 +31,12 @@ U kunt een Service Fabric-invoegtoepassing in Eclipse installeren. De invoegtoep
 
 Installeer Eclipse Neon of hoger vanaf de [Eclipse-site](https://www.eclipse.org).  Installeer ook versie 2.2.1 of hoger van Buildship (de Service Fabric-invoegtoepassing is niet compatibel met oudere versies van Buildship):
 -   U kunt de versies van geïnstalleerde onderdelen controleren door in Eclipse **Help** > **About Eclipse** > **Installation Details** te kiezen.
--   Zie [voor het bijwerken van de bouw van eclips: Eclips-invoeg toepassingen voor Gradle][buildship-update].
+-   Zie voor het bijwerken van de bouw [eclips: eclips-invoeg toepassingen voor Gradle][buildship-update].
 -   Als u updates voor Eclipse wilt zoeken en installeren, gaat u naar **Help** > **Check for Updates**.
 
 Als u de Service Fabric-invoegtoepassing wilt installeren, gaat u in Eclipse naar **Help** > **Install New Software**.
-1. Voer in het vak **werken met** https:\//DL.Microsoft.com/eclipse in.
-2. Klik op **Toevoegen**.
+1. Voer in het vak **werken met** https In:\/-DL.Microsoft.com/Eclipse.
+2. Klik op **Add**.
 
    ![De Service Fabric-invoegtoepassing voor Eclipse][sf-eclipse-plugin-install]
 3. Selecteer de Fabric Service-invoegtoepassing en klik op **Next**.
@@ -57,7 +48,7 @@ Als u de Service Fabric-invoegtoepassing al hebt geïnstalleerd, zorgt u ervoor 
 3. Als u de Service Fabric-invoegtoepassing bijwerkt, moet u ook het Gradle-project vernieuwen.  Klik met de rechtermuisknop op **build.gradle** en selecteer vervolgens **Vernieuwen**.
 
 > [!NOTE]
-> Als de installatie of update van de Service Fabric-invoegtoepassing traag verloopt, kan dit het gevolg zijn van een instelling in Eclipse. Eclipse verzamelt metagegevens over alle wijzigingen in updatesites die zijn geregistreerd bij uw exemplaar van Eclipse. Als u het proces voor het controleren op en installeren van updates van Service Fabric-invoegtoepassingen wilt versnellen, gaat u naar **Available Software Sites**. Schakel de selectie vakjes uit voor alle sites, behalve voor de site die verwijst naar de locatie van de service Fabric-\/invoeg toepassing (https:/dl.Microsoft.com/Eclipse/Azure/servicefabric).
+> Als de installatie of update van de Service Fabric-invoegtoepassing traag verloopt, kan dit het gevolg zijn van een instelling in Eclipse. Eclipse verzamelt metagegevens over alle wijzigingen in updatesites die zijn geregistreerd bij uw exemplaar van Eclipse. Als u het proces voor het controleren op en installeren van updates van Service Fabric-invoegtoepassingen wilt versnellen, gaat u naar **Available Software Sites**. Schakel de selectie vakjes uit voor alle sites, behalve voor de site die verwijst naar de locatie van de Service Fabric-invoeg toepassing (https:\//dl.microsoft.com/eclipse/azure/servicefabric).
 
 > [!NOTE]
 >Als Eclipse op uw Mac niet werkt zoals u verwacht of als u het moet uitvoeren als supergebruiker), gaat u naar de map **ECLIPSE_INSTALLATION_PATH** en vervolgens naar de submap **Eclipse.app/Contents/MacOS**. Start Eclipse door `./eclipse` uit te voeren.
@@ -111,7 +102,7 @@ Nadat u uw Service Fabric-toepassing hebt gemaakt, volgt u deze stappen om deze 
 
 3.  Klik in het context menu op **toepassing implementeren**.
 4.  U kunt de voortgang van de implementatie bewerking volgen in het console venster.
-5.  Als u wilt controleren of uw toepassing wordt uitgevoerd, opent u Service Fabric Explorer op uw lokale cluster in [http://localhost:19080/Explorer](http://localhost:19080/Explorer)een browser venster. Vouw het knoop punt **toepassingen** uit en controleer of uw toepassing wordt uitgevoerd. 
+5.  Als u wilt controleren of uw toepassing wordt uitgevoerd, opent u Service Fabric Explorer op uw lokale cluster in een browser venster [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Vouw het knoop punt **toepassingen** uit en controleer of uw toepassing wordt uitgevoerd. 
 
 Zie [fouten opsporen in een Java-service in eclips](./service-fabric-debugging-your-application-java.md)voor meer informatie over het opsporen van fouten in uw toepassing in een eclips met behulp van het lokale cluster.
 
@@ -135,14 +126,14 @@ Voer de volgende stappen uit om uw toepassing te publiceren in de Cloud:
     openssl pkcs12 -in your-cert-file.pfx -out your-cert-file.pem -nodes -passin pass:your-pfx-password
     ```
 
-   Als het pfx-bestand niet is beveiligd met een `--passin pass:` wacht woord, gebruikt u voor de laatste para meter.
+   Als het PFX-bestand niet is beveiligd met een wacht woord, gebruikt u `--passin pass:` voor de laatste para meter.
 
 2. Open het bestand **Cloud. json** in de **PublishProfiles** -map. U moet het cluster eindpunt en de beveiligings referenties op de juiste wijze configureren voor uw cluster.
 
-   - Het `ConnectionIPOrURL` veld bevat het IP-adres of de URL van uw cluster. Houd er rekening mee dat de waarde het URL-schema`https://`() niet bevat.
-   - Het `ConnectionPort` veld moet standaard zijn `19080`, tenzij u deze poort expliciet hebt gewijzigd voor uw cluster.
-   - Het `ClientKey` veld moet verwijzen naar een PEM. pem-of. key-bestand op uw lokale computer dat de persoonlijke sleutel voor uw client of cluster certificaat bevat.
-   - Het `ClientCert` veld moet verwijzen naar een PEM. pem-of. crt-bestand op uw lokale computer dat de certificaat gegevens voor uw client of cluster bevat. certificaat. 
+   - Het `ConnectionIPOrURL` veld bevat het IP-adres of de URL van uw cluster. Houd er rekening mee dat de waarde het URL-schema (`https://`) niet bevat.
+   - Het `ConnectionPort` veld moet standaard `19080`zijn, tenzij u deze poort expliciet hebt gewijzigd voor uw cluster.
+   - Het veld `ClientKey` moet verwijzen naar een PEM. pem-of. key-bestand op uw lokale computer dat de persoonlijke sleutel voor uw client of cluster certificaat bevat.
+   - Het veld `ClientCert` moet verwijzen naar een PEM. pem-of. crt-bestand op uw lokale computer dat de certificaat gegevens voor uw client of cluster bevat. certificaat. 
 
      ```bash
      {
@@ -168,13 +159,13 @@ Voer de volgende stappen uit om uw toepassing te publiceren in de Cloud:
 
 Als uw toepassing Reliable Services services bevat voor beveiligde Linux-clusters, moet u ook een certificaat configureren dat door uw services kan worden gebruikt om Service Fabric runtime-Api's aan te roepen. Zie [een reliable Services-app configureren voor het uitvoeren van Linux-clusters](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters)voor meer informatie.
 
-Zie [Quick start voor een snelle procedure voor het implementeren van een service Fabric reliable Services toepassing die is geschreven in Java naar een beveiligd Linux-cluster: Implementeer een Java Reliable Services-](./service-fabric-quickstart-java-reliable-services.md)toepassing.
+Zie [Quick Start: een Java reliable Services-toepassing implementeren](./service-fabric-quickstart-java-reliable-services.md)voor een snelle procedure voor het implementeren van een service Fabric reliable Services toepassing die is geschreven in Java naar een beveiligd Linux-cluster.
 
 ## <a name="deploy-a-service-fabric-application-by-using-eclipse-run-configurations"></a>Een Service Fabric-toepassing implementeren met behulp van de uitvoering van eclips-configuraties
 
 U kunt de Service Fabric-toepassing ook implementeren met behulp van Eclipse-uitvoerconfiguraties.
 
-1. Ga in eclips naar **Run** > **Run-configuraties**.
+1. Ga in eclips naar **uitvoeren** > **uitvoeren van configuraties**.
 2. Selecteer onder **Gradle Project** de uitvoerconfiguratie **ServiceFabricDeployer**.
 3. Controleer in het rechterdeel venster op het tabblad **argumenten** of de para meters **IP**, **Port**, **clientCert**en **clientKey** op de juiste wijze zijn ingesteld voor uw implementatie. Standaard worden de para meters zo ingesteld dat deze op het lokale cluster worden geïmplementeerd, zoals in de volgende scherm afbeelding. Als u uw app wilt publiceren in azure, kunt u de para meters wijzigen zodat deze de eindpunt gegevens en beveiligings referenties voor uw Azure-cluster bevatten. Zie de vorige sectie, [uw service Fabric-toepassing publiceren in azure met eclips](#publish-your-service-fabric-application-to-azure-with-eclipse)voor meer informatie.
 
@@ -233,7 +224,7 @@ We hebben onlangs de bibliotheken van Java Service Fabric verplaatst van de Serv
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Voor snelle stappen voor het bouwen van een Java-betrouw bare service toepassing en het lokaal [en naar Azure implementeren, raadpleegt u Quick Start: Implementeer een Java Reliable Services-](./service-fabric-quickstart-java-reliable-services.md)toepassing.
+- Zie [Quick Start: een java reliable Services-toepassing implementeren](./service-fabric-quickstart-java-reliable-services.md)voor snelle stappen voor het bouwen van een Java-betrouw bare service toepassing en het lokaal en naar Azure implementeren.
 - Zie [fouten opsporen in een Java-service in eclips](./service-fabric-debugging-your-application-java.md)voor meer informatie over het opsporen van fouten in een Java-toepassing op uw lokale cluster.
 - Zie [Services in een installatie van een lokale machine controleren en diagnosticeren](./service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)voor meer informatie over het bewaken en diagnosticeren van service Fabric toepassingen.
 

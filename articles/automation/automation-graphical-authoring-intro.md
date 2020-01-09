@@ -2,19 +2,15 @@
 title: Grafisch ontwerpen in Azure Automation
 description: Met grafische ontwerpen kunt u runbooks maken voor Azure Automation zonder dat u code hoeft te gebruiken. Dit artikel bevat een inleiding tot het ontwerpen van afbeeldingen en alle informatie die nodig is om te beginnen met het maken van een grafisch runbook.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 03/16/2018
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 82a06510bd9d1e0de2b38260773cb4848156bf12
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8c1b864eb83a9ffb69c0cb532dc2061636010c60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850292"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75450748"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Grafisch ontwerpen in Azure Automation
 
@@ -93,7 +89,7 @@ U hebt ook de mogelijkheid om terug te keren naar de gepubliceerde versie van ee
 
 Activiteiten zijn de bouw stenen van een runbook. Een activiteit kan een Power shell-cmdlet, een onderliggend runbook of een werk stroom activiteit zijn. U voegt een activiteit aan het runbook toe door er met de rechter muisknop op te klikken in het besturings element bibliotheek en vervolgens **toevoegen aan canvas**te selecteren. Vervolgens klikt u op de activiteit en sleept u deze naar een wille keurige plek op het canvas dat u wilt. De locatie van de activiteit op het canvas heeft geen invloed op de werking van het runbook. U kunt uw runbook indelen, maar u vindt het het meest geschikt om de werking ervan te visualiseren.
 
-![toevoegen aan canvas](media/automation-graphical-authoring-intro/add-to-canvas-revised20165.png)
+![Toevoegen aan canvas](media/automation-graphical-authoring-intro/add-to-canvas-revised20165.png)
 
 Selecteer de activiteit op het canvas om de eigenschappen en para meters te configureren op de Blade configuratie. U kunt het **Label** van de activiteit wijzigen in iets wat een beschrijving voor u is. De oorspronkelijke cmdlet wordt nog uitgevoerd. u hoeft alleen de weergave naam te wijzigen die wordt gebruikt in de grafische editor. Het label moet uniek zijn binnen het runbook.
 
@@ -324,7 +320,7 @@ Elke invoer parameter wordt gedefinieerd door de eigenschappen in de volgende ta
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| Naam |De unieke naam van de para meter. Dit mag alleen alfanumerieke tekens bevatten en mag geen spatie bevatten. |
+| Name |De unieke naam van de para meter. Dit mag alleen alfanumerieke tekens bevatten en mag geen spatie bevatten. |
 | Beschrijving |Een optionele beschrijving voor de invoer parameter. |
 | Type |Er wordt een gegevens type verwacht voor de parameter waarde. De Azure Portal biedt een geschikt besturings element voor het gegevens type voor elke para meter bij het vragen om invoer. |
 | Verplicht |Hiermee geeft u op of er een waarde moet worden opgegeven voor de para meter. Het runbook kan niet worden gestart als u geen waarde opgeeft voor elke verplichte para meter waarvoor geen standaard waarde is gedefinieerd. |

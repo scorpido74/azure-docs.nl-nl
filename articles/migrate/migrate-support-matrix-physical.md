@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: b5b5da6282b1df6c70fd58dcf8c417250de81b73
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9e749297d831aeae7d785a9a9a29bea1f8c6d5e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196338"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454619"
 ---
 # <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Ondersteuningsmatrix voor evaluatie en migratie van fysieke servers
 
@@ -40,10 +40,10 @@ De tabel bevat een overzicht van de ondersteunde scenario's voor fysieke servers
 
   **Geografie** | **Opslag locatie van meta gegevens**
   --- | ---
-  Azure Government | VS (overheid) - Virginia
-  Azië en Stille Oceaan | Azië Azië-oost of Zuidoost
+  Azure Government | US Gov - Virginia
+  Azië-Pacific | Azië Azië-oost of Zuidoost
   Australië | Australië-oost of Australië-zuidoost
-  Brazilië | Brazilië - zuid
+  Brazilië | Brazilië - Zuid
   Canada | Canada-centraal of Canada-oost
   Europa | Europa - noord of Europa - west
   Frankrijk | Frankrijk - centraal
@@ -73,7 +73,7 @@ Voor evaluatie voert Azure Migrate een licht gewicht in voor het detecteren van 
 
 | **Ondersteuning**                | **Details**               
 | :-------------------       | :------------------- |
-| **Implementatie van het apparaat**   |  U implementeert het apparaat op een fysieke server of een virtuele machine.<br/>  Op de hostcomputer moet Windows Server 2012 R2 of later worden uitgevoerd.<br/> De host moet voldoende ruimte hebben om 16 GB RAM-geheugen, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte toe te wijzen en een externe switch voor de apparaat-VM.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en Internet toegang.
+| **Implementatie van het apparaat**   |  Het toestel installatie script kan worden gedownload van de portal (in een gezipte map). <br/> U kunt de map uitpakken en het Power shell-script (AzureMigrateInstaller. ps1) uitvoeren op een toegewezen fysieke server of een virtuele machine om het apparaat in te stellen.<br/>  Op de computer die u hebt gekozen om het apparaat te installeren, moet Windows Server 2016 worden uitgevoerd.<br/> De machine moet voldoende ruimte hebben om 16 GB RAM-geheugen, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte toe te wijzen en een externe switch voor de apparaat-VM.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en Internet toegang.
 | **Azure Migrate project**  |  Een apparaat kan worden gekoppeld aan een enkel project.<br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> U kunt Maxi maal 35.000 computers in een project evalueren.
 | **Detectie**              | Eén apparaat kan Maxi maal 250 servers detecteren.
 | **Beoordelings groep**       | U kunt Maxi maal 35.000 computers in één groep toevoegen.
@@ -92,7 +92,7 @@ Voor het beoordelen van Vm's heeft het Azure Migrate-apparaat Internet verbindin
 **URL** | **Details**  
 --- | ---
 *.portal.azure.com | Navigeren naar de Azure Portal
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Meld u aan bij uw Azure-abonnement
+*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *. live.com  | Meld u aan bij uw Azure-abonnement
 *.microsoftonline.com <br/> *.microsoftonline-p.com | Het maken van Azure Active Directory-toepassingen voor het apparaat aan service communicatie.
 management.azure.com | Het maken van Azure Active Directory-toepassingen voor het apparaat aan service communicatie.
 dc.services.visualstudio.com | Logboekregistratie en bewaking
@@ -106,10 +106,10 @@ https://download.microsoft.com/download/* | Down loads van de micro soft-downloa
 
 De volgende tabel bevat een overzicht van de poort vereisten voor evaluatie.
 
-**Apparaatconfiguratie** | **Verbinding**
+**Apparaat** | **Verbinding**
 --- | ---
 **Apparaat** | Binnenkomende verbindingen op TCP-poort 3389 om extern bureau blad-verbindingen met het apparaat toe te staan.<br/> Binnenkomende verbindingen op poort 44368 voor externe toegang tot de app voor het beheren van apparaten met behulp van de URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Uitgaande verbindingen op de poorten 443, 5671 en 5672 voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
-**Fysieke servers** | **Windows:** Binnenkomende verbindingen op poort 443, 5989 voor het ophalen van meta gegevens van de configuratie en prestaties van Windows-servers. <br/> **Linux:**  Binnenkomende verbindingen op poort 22 (UDP) voor het ophalen van meta gegevens van de configuratie en prestaties van Linux-servers. |
+**Fysieke servers** | **Windows:** Binnenkomende verbindingen op poort 443, WinRM-poorten 5985 (HTTP) en 5986 (HTTPS) voor het ophalen van meta gegevens van de configuratie en prestaties van Windows-servers. <br/> **Linux:**  Binnenkomende verbindingen op poort 22 (UDP) voor het ophalen van meta gegevens van de configuratie en prestaties van Linux-servers. |
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75d4c4e38069cb192917f275245d87bb4c63d502
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ff01bd0d6586cf75dcfdb7277c34120c6ec22894
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078155"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647489"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Een multi-SID-configuratie van SAP net-Weaver maken
 
@@ -33,7 +33,7 @@ ms.locfileid: "70078155"
 [sap-ha-guide-figure-6004]:./media/virtual-machines-shared-sap-high-availability-guide/6004-sap-multi-sid-dns.png
 [sap-ha-guide-figure-6005]:./media/virtual-machines-shared-sap-high-availability-guide/6005-sap-multi-sid-azure-portal.png
 [sap-ha-guide-figure-6006]:./media/virtual-machines-shared-sap-high-availability-guide/6006-sap-multi-sid-sios-replication.png
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
 [sap-ha-guide-9.1.1]:sap-high-availability-guide.md#a97ad604-9094-44fe-a364-f89cb39bf097 
 [sap-ha-guide-8.8]:sap-high-availability-guide.md#f19bd997-154d-4583-a46e-7f5a69d0153c
 [sap-ha-guide-8.12.3.3]:sap-high-availability-guide.md#d9c1fc8e-8710-4dff-bec2-1f535db7b006 
@@ -72,7 +72,7 @@ Het doel is om meerdere SAP ABAP ASCS of SAP Java SCS geclusterde instanties in 
 >Het maximum aantal SAP-ASCS/SCS-exemplaren in één WSFC-cluster is gelijk aan het maximum aantal privé-front-end Ip's voor elke interne Azure-load balancer.
 >
 
-Voor meer informatie over limieten voor load balancers raadpleegt u ' persoonlijk IP-adres voor front [-end per Load Balancer ' in netwerk limieten: Azure Resource Manager][networking-limits-azure-resource-manager].
+Zie ' persoonlijk IP-adres voor front-end per load balancer ' in [netwerk limieten: Azure Resource Manager][networking-limits-azure-resource-manager]voor meer informatie over limieten voor load balancers.
 
 De volledige liggende periode met twee SAP-systemen met hoge Beschik baarheid ziet er als volgt uit:
 
@@ -88,7 +88,7 @@ De volledige liggende periode met twee SAP-systemen met hoge Beschik baarheid zi
 ## <a name="prepare-the-infrastructure"></a>De infrastructuur voorbereiden
 Als u uw infra structuur wilt voorbereiden, kunt u een extra SAP ASCS/SCS-exemplaar installeren met de volgende para meters:
 
-| Parameternaam | Value |
+| Parameternaam | Waarde |
 | --- | --- |
 | SAP ASCS/SCS SID |pr1-lb-ascs |
 | SAP DBMS interne load balancer | PR5 |
@@ -104,7 +104,7 @@ Als u uw infra structuur wilt voorbereiden, kunt u een extra SAP ASCS/SCS-exempl
 
 U kunt extra SAP ASCS/SCS-exemplaren in het bestaande WSFC-cluster met twee knoop punten installeren:
 
-| Virtuele-machine functie | Hostnaam van virtuele machine | Vast IP-adres |
+| Virtuele-machine functie | Hostnaam van virtuele machine | Statisch IP-adres |
 | --- | --- | --- |
 | 1e cluster knooppunt voor ASCS/SCS-instantie |pr1-ascs-0 |10.0.0.10 |
 | 2e cluster knooppunt voor ASCS/SCS-instantie |pr1-ascs-1 |10.0.0.9 |

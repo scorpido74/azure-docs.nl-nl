@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: d1e836e0f463d1d2ce2b71d689ed590239cfb607
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 11/26/2019
+ms.openlocfilehash: dec792dfd3a2640fa08ebccd9077c081ba9737bb
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406595"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563289"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Verbinding maken met een kennis archief met Power BI
 
@@ -24,17 +24,18 @@ In dit artikel leert u hoe u verbinding kunt maken met een kennis archief en hoe
 
 + Volg de stappen in [een kennis archief maken in de Azure Portal](knowledge-store-create-portal.md) of [maak een Azure Cognitive Search Knowledge Store door rest te gebruiken](knowledge-store-create-rest.md) om het voor beeld van het kennis archief te maken dat wordt gebruikt in dit overzicht. U hebt ook de naam nodig van het Azure Storage-account dat u hebt gebruikt om het kennis archief te maken, samen met de toegangs sleutel van de Azure Portal.
 
-+ [Power BI Desktop installeren](https://powerbi.microsoft.com/downloads/)
++ [Installer Power BI Desktop](https://powerbi.microsoft.com/downloads/)
 
 ## <a name="sample-power-bi-template---azure-portal-only"></a>Voor beeld-Power BI sjabloon-alleen Azure Portal
 
-Als u [uw kennis archief hebt gemaakt met behulp van de Azure Portal](knowledge-store-create-portal.md), kunt u het voor beeld van de [Azure Cognitive Search Power bi-sjabloon](https://github.com/Azure-Samples/cognitive-search-templates) gebruiken om Power bi visualisaties weer te geven en te experimenteren. Deze sjabloon kan ook worden gedownload wanneer u de wizard **gegevens importeren** stapsgewijs doorloopt.
+Wanneer u een [kennis archief maakt met behulp van de Azure Portal](knowledge-store-create-portal.md), kunt u een [Power bi sjabloon](https://github.com/Azure-Samples/cognitive-search-templates) downloaden op de tweede pagina van de wizard **gegevens importeren** . Met deze sjabloon krijgt u verschillende visualisaties, zoals WordCloud en Network Navigator, voor inhoud op basis van tekst. 
 
-De voorbeeld sjabloon voert automatisch de installatie stappen uit die in de rest van dit artikel worden beschreven. Als u echter de REST API hebt gebruikt om uw kennis archief te maken, kunt u de sjabloon overs Laan en de resterende secties in dit artikel gebruiken om uw kennis archief te koppelen aan Power BI. Begin met [verbinden met Power bi](#connect-with-power-bi).
-
-De voorbeeld sjabloon bevat verschillende visualisaties, zoals WordCloud en Network Navigator. Voor sommige visualisaties in de sjabloon, zoals het kaarten overzicht en de entiteit-Graph-viewer, worden geen gegevens weer gegeven voor het voor beeld van het kennis archief dat is gemaakt in [een kennis archief maken in de Azure Portal](knowledge-store-create-portal.md). Dit komt omdat er in de wizard **gegevens importeren** slechts een subset van de AI-verrijkingen beschikbaar is.
+Klik op **Power bi sjabloon ophalen** op de pagina **cognitieve vaardig heden toevoegen** om de sjabloon op te halen en te downloaden van de open bare github locatie. De wizard wijzigt de sjabloon om de vorm van uw gegevens aan te passen, zoals vastgelegd in de Knowledge Store-projecties die zijn opgegeven in de wizard. Daarom is de sjabloon die u downloadt, afhankelijk van elke keer dat u de wizard uitvoert, ervan uitgaande dat er verschillende gegevens invoer en vaardigheids selecties zijn.
 
 ![Voor beeld van Azure Cognitive Search Power BI sjabloon](media/knowledge-store-connect-power-bi/powerbi-sample-template-portal-only.png "Voor beeld Power BI sjabloon")
+
+> [!NOTE]
+> Hoewel de sjabloon wordt gedownload terwijl de wizard halverwege de vlucht is, moet u wachten totdat het kennis archief daad werkelijk is gemaakt in azure Table Storage voordat u het kunt gebruiken.
 
 ## <a name="connect-with-power-bi"></a>Verbinden met Power BI
 
@@ -42,22 +43,25 @@ De voorbeeld sjabloon bevat verschillende visualisaties, zoals WordCloud en Netw
 
 1. Selecteer in het venster **gegevens ophalen** de optie **Azure**en selecteer vervolgens **Azure Table Storage**.
 
-1. Klik op **Verbinding maken**.
+1. Klik op **Connect** (Verbinden).
 
 1. Voer bij **account naam of-URL**de naam in van uw Azure Storage account (de volledige URL wordt voor u gemaakt).
 
 1. Als u hierom wordt gevraagd, voert u de sleutel voor het opslag account in.
 
-1. Selecteer de tabellen *hotelReviewsSsDocument*, *hotelReviewsSsKeyPhrases*en *hotelReviewsSsPages* . Deze tabellen zijn Azure Table-projecties van het Hotel bekijkt voorbeeld gegevens en bevatten de AI-verrijkingen die zijn geselecteerd toen het kennis archief werd gemaakt.
+1. Selecteer de tabellen die het Hotel bevatten beoordelingen gegevens die zijn gemaakt door de vorige scenario's. 
 
-1. Klik op **laden**.
+   + Voor de portal-walkthrough zijn tabel namen *hotelReviewsSsDocument*, *hotelReviewsSsEntities*, *hotelReviewsSsKeyPhrases*en *hotelReviewsSsPages*. 
+   
+   + Voor de REST-instructies zijn tabel namen *hotelReviewsDocument*, *hotelReviewsPages*, *hotelReviewsKeyPhrases*en *hotelReviewsSentiment*.
+
+1. Klik op **Load**.
 
 1. Klik op het bovenste lint op **Query's bewerken** om de **Power query editor**te openen.
 
    ![Power Query openen](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Power Query openen")
 
 1. Selecteer *hotelReviewsSsDocument*en verwijder vervolgens de kolommen *PartitionKey*, *RowKey*en *Time Stamp* . 
-
    ![Tabellen bewerken](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Tabellen bewerken")
 
 1. Klik op het pictogram met tegengestelde pijlen aan de rechter kant van de tabel om de *inhoud*uit te vouwen. Wanneer de lijst met kolommen wordt weer gegeven, selecteert u alle kolommen en vervolgens selecteert u de kolommen die beginnen met ' meta data '. Klik op **OK** om de geselecteerde kolommen weer te geven.
@@ -83,6 +87,8 @@ De voorbeeld sjabloon bevat verschillende visualisaties, zoals WordCloud en Netw
 
 1. Dubbel klik op elke relatie en zorg ervoor dat de **Kruis filter richting** is ingesteld op **beide**.  Hierdoor kunnen uw visuals worden vernieuwd wanneer een filter wordt toegepast.
 
+1. Klik op de tegel rapport in het navigatie deel venster aan de linkerkant om gegevens te verkennen met behulp van visualisaties. Voor tekst velden zijn tabellen en kaarten nuttige visualisaties. U kunt de velden in elk van de drie tabellen kiezen om de tabel of de kaart op te vullen. 
+
 <!-- ## Try with larger data sets
 
 We purposely kept the data set small to avoid charges for a demo walkthrough. For a more realistic experience, you can create and then attach a billable Cognitive Services resource to enable a larger number of transactions against the sentiment analyzer, keyphrase extraction, and language detector skills.
@@ -102,7 +108,7 @@ In the enrichment step of the wizard, attach a billable [Cognitive Services](htt
 
 ## <a name="clean-up"></a>Opruimen
 
-Wanneer u in uw eigen abonnement werkt, is het een goed idee aan het einde van een project om te bepalen of u nog steeds de resources nodig hebt die u hebt gemaakt. Resources die actief zijn, kunnen kosten in rekening worden. U kunt resources afzonderlijk verwijderen of de resource groep verwijderen om de volledige set resources te verwijderen.
+Wanneer u in uw eigen abonnement werkt, is het een goed idee om aan het einde van een project te bepalen of u de gemaakte resources nog nodig hebt. Resources die actief blijven, kunnen u geld kosten. U kunt afzonderlijke resources verwijderen, maar ook de hele resourcegroep. Hiermee verwijdert u de volledige set met resources.
 
 U kunt resources vinden en beheren in de portal met behulp van de koppeling **alle resources** of **resource groepen** in het navigatie deel venster aan de linkerkant.
 
@@ -114,8 +120,3 @@ Zie het volgende artikel voor meer informatie over het verkennen van dit kennis 
 
 > [!div class="nextstepaction"]
 > [Weer geven met Storage Explorer](knowledge-store-view-storage-explorer.md)
-
-Zie het volgende artikel voor meer informatie over het maken van een kennis archief met behulp van de REST-Api's en postman.  
-
-> [!div class="nextstepaction"]
-> [Een kennis archief maken in REST](knowledge-store-howto.md)

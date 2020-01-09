@@ -2,19 +2,15 @@
 title: Onboarding van oplossingen voor updates en het bijhouden van wijzigingen voor Azure Automation
 description: Meer informatie over oplossingen voor het vrijgeven van updates en het bijhouden van wijzigingen voor Azure Automation.
 services: automation
-ms.service: automation
-author: eamonoreilly
-ms.author: eamono
-manager: carmonm
 ms.topic: tutorial
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: cacd9206eb0213d410a11ee3a2dcf5c0e28989c6
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d0024b8c43e76e3dd26b4b73c4ae0e09890b3b46
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72372818"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75421846"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Onboarding van oplossingen voor updates en het bijhouden van wijzigingen voor Azure Automation
 
@@ -37,7 +33,7 @@ Hieronder wordt aangegeven wat de vereisten zijn om deze zelfstudie te voltooien
 
 ## <a name="onboard-an-azure-vm"></a>Onboarding van een Azure-VM uitvoeren
 
-Er zijn meerdere manieren om onboarding van computers uit te voeren. U kunt onboarding van de oplossing uitvoeren [vanaf een virtuele machine](automation-onboard-solutions-from-vm.md), [door meerdere computers te doorzoeken](automation-onboard-solutions-from-browse.md), [via uw Automation-account](automation-onboard-solutions-from-automation-account.md) of via een runbook. Deze zelfstudie begeleidt u bij het inschakelen van Updatebeheer via een runbook. Voor het uitvoeren van onboarding van Azure-VM's op grote schaal moet onboarding van een bestaande VM worden uitgevoerd met de oplossing Wijzigingen bijhouden of Updatebeheer. In deze stap voert u onboarding van een virtuele machine met Updatebeheer en Wijzigingen bijhouden uit.
+Er zijn meerdere manieren om computers vrij te maken, u kunt de oplossing [van een virtuele machine](automation-onboard-solutions-from-vm.md)onboarden, [van het surfen op meerdere computers](automation-onboard-solutions-from-browse.md) [vanuit uw Automation-account](automation-onboard-solutions-from-automation-account.md)of per runbook. Deze zelfstudie begeleidt u bij het inschakelen van Updatebeheer via een runbook. Voor het uitvoeren van onboarding van Azure-VM's op grote schaal moet onboarding van een bestaande VM worden uitgevoerd met de oplossing Wijzigingen bijhouden of Updatebeheer. In deze stap voert u onboarding van een virtuele machine met Updatebeheer en Wijzigingen bijhouden uit.
 
 ### <a name="enable-change-tracking-and-inventory"></a>Wijzigingen bijhouden en Inventaris inschakelen
 

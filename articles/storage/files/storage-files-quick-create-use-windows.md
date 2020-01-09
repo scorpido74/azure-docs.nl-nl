@@ -1,5 +1,5 @@
 ---
-title: Azure-quickstart - Een Azure-bestandsshare maken en gebruiken op virtuele Windows-machines | Microsoft Docs
+title: Een Azure Files share maken en gebruiken op Windows-Vm's
 description: In deze quickstart stelt u in de Azure-portal een Azure-bestandsshare instellen in en koppelt u deze aan een virtuele Windows-machine. U maakt verbinding met de bestandsshare en uploadt een bestand naar de bestandsshare. Dan maakt u een momentopname van de bestandsshare, wijzigt u het bestand in de bestandsshare en zet u een eerdere momentopname van de bestandsshare terug.
 author: roygara
 ms.service: storage
@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 22c2f3b91b650bcdbf8eb7368023e068a397323f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 6bbab0ee2eefe6e86c150d5bddab4f8e91a7c92d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74305828"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463905"
 ---
 # <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Snelstartgids: Azure Files share maken en beheren met virtuele Windows-machines
 
@@ -22,7 +22,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Uw omgeving voorbereiden
 
@@ -31,7 +31,7 @@ In deze quickstart stelt u de volgende items in:
 - Een Azure-opslagaccount
 - Een VM met Windows Server 2016 Datacenter
 
-### <a name="create-a-storage-account"></a>Een opslagaccount maken
+### <a name="create-a-storage-account"></a>Maak een opslagaccount
 
 Voordat u kunt gaan werken met een Azure-bestandsshare moet u een Azure-opslagaccount maken. Een v2-opslagaccount voor algemeen gebruik biedt toegang tot alle services van Azure Storage: blobs, bestanden, wachtrijen en tabellen. Met deze quickstart maakt u een v2-opslagaccount voor algemeen gebruik, maar de stappen voor het maken van elk type opslagaccount zijn vergelijkbaar. Een opslagaccount kan een onbeperkt aantal shares bevatten. Een share kan een onbeperkt aantal bestanden opslaan, tot de capaciteitslimiet van het opslagaccount.
 
@@ -70,7 +70,7 @@ U hebt nu een Azure-opslagaccount gemaakt en een bestandsshare met één bestand
 
 1. Geef onder **exemplaar details** de naam *qsVM* op voor de VM.
 1. Behoud de standaardinstellingen voor **Regio**, **Beschikbaarheidsopties**, **Installatiekopie** en **Grootte**.
-1. Voeg onder **Administrator-account** *VMadmin* toe als de **gebruikersnaam** en voer een **wachtwoord** in voor de VM.
+1. Voeg onder **Administrator-account***VMadmin* toe als de **gebruikersnaam** en voer een **wachtwoord** in voor de VM.
 1. Onder **Regels voor binnenkomende poort** kiest u **​​Geselecteerde poorten toestaan** en selecteert u **RDP (3389)** en **HTTP** in de vervolgkeuzelijst.
 1. Selecteer **Controleren + maken**.
 1. Selecteer **Maken**. Het duurt enkele minuten voordat de nieuwe VM is voltooid.
@@ -85,7 +85,7 @@ U hebt nu een nieuwe virtuele machine gemaakt en een gegevensschijf gekoppeld. U
 
    ![Verbinding maken met een Azure VM vanaf de portal](./media/storage-files-quick-create-use-windows/connect-vm.png)
 
-1. Laat op de pagina **Verbinding maken met virtuele machine** de standaardopties staan om via **IP-adres** verbinding te maken via **poortnummer** *3389* en selecteer **RDP-bestand downloaden**.
+1. Behoud op de pagina **verbinding maken met virtuele machine** de standaard opties om verbinding te maken met een **IP-adres** via **poort nummer** *3389* en selecteer **RDP-bestand downloaden**.
 1. Open het gedownloade RDP-bestand en selecteer **Verbinden** wanneer dit wordt gevraagd.
 1. Selecteer in het venster **Windows-beveiliging** **Meer opties** en vervolgens **Een ander account gebruiken**. Typ de gebruikersnaam als *localhost\gebruikersnaam*, waarbij u &lt;gebruikersnaam&gt; vervangt door de gebruikersnaam van de VM-beheerder die u voor de virtuele machine hebt gemaakt. Voer het wachtwoord in dat u hebt gemaakt voor de virtuele machine en selecteer vervolgens **OK**.
 
@@ -107,7 +107,7 @@ U hebt nu een nieuwe virtuele machine gemaakt en een gegevensschijf gekoppeld. U
 
    ![Een schermafbeelding van het dialoogvenster 'Netwerkverbinding maken'](./media/storage-files-quick-create-use-windows/mountonwindows10.png)
 
-1. Selecteer **Voltooien**.
+1. Selecteer **Finish**.
 1. Ga als volgt te werk in het dialoogvenster **Windows-beveiliging**:
 
    - Kopieer vanuit Kladblok de naam van het opslagaccount voorafgegaan door AZURE\ en plak deze in het dialoogvenster **Windows-beveiliging** als de gebruikersnaam. Als u de suggesties voor naamgeving in deze quickstart hebt gevolgd, kopieert u *AZURE\qsstorageacct*.
@@ -159,7 +159,7 @@ Net als met on-premises VSS-momentopnamen kunt u de momentopnamen van de gekoppe
 
    ![Gekoppelde share in Windows Verkenner](./media/storage-files-quick-create-use-windows/snapshot-windows-mount.png)
 
-1. Selecteer *qsTestFile.txt*, klik met de rechtermuisknop op het bestand en selecteer **Eigenschappen** in het menu.
+1. Selecteer **qsTestFile.txt**, klik met de rechtermuisknop op het bestand en selecteer *Eigenschappen* in het menu.
 
    ![Snelmenu voor een geselecteerde map](./media/storage-files-quick-create-use-windows/snapshot-windows-previous-versions.png)
 

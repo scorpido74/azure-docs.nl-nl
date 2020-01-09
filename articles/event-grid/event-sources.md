@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 8c9258f099587ba4dbdfe3a7e46f72cd7a825024
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 63cd7cea65515488649507cb7d3c52877211ca04
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603825"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531442"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Gebeurtenis bronnen in Azure Event Grid
 
@@ -177,10 +177,10 @@ Abonneer u op Azure Machine Learning werkruimte gebeurtenissen om te reageren op
 
 | Titel | Beschrijving |
 | ----- | ----- |
-| [Azure Machine Learning gebeurtenissen gebruiken](../machine-learning/service/concept-event-grid-integration.md) | Overzicht van het integreren van Azure Machine Learning met Event Grid. |
+| [Azure Machine Learning gebeurtenissen gebruiken](../machine-learning/concept-event-grid-integration.md) | Overzicht van het integreren van Azure Machine Learning met Event Grid. |
 | [Azure Event Grid-gebeurtenis schema voor Azure Machine Learning](event-schema-machine-learning.md) | Hiermee worden velden in de Azure Machine Learning gebeurtenissen weer gegeven. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [Een inleiding tot Event Grid](overview.md) voor een inleiding tot Event Grid.
-* Zie [aangepaste gebeurtenissen maken en routeren met Azure Event grid](custom-event-quickstart.md)om snel aan de slag te gaan met Event grid.
+* Als u wilt snel aan de slag met Event Grid, Zie [aangepaste gebeurtenissen maken en routeren met Azure Event Grid](custom-event-quickstart.md).

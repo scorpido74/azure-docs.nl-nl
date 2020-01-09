@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 5fa8d3984c758d0bf95372864f3bffeb6f302c83
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d099d0b8f8e31bf77f5ddfad320ac792c5c01e5
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497784"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529606"
 ---
 # <a name="import-data-module"></a>Gegevens module importeren
 
@@ -23,14 +23,14 @@ In dit artikel wordt een module in Azure Machine Learning Designer (preview) bes
 Gebruik deze module om gegevens te laden in een machine learning pijp lijn vanuit bestaande Cloud Data Services. 
 
 > [!Note]
-> Alle functionaliteit van deze module kan worden uitgevoerd door **gegevens opslag** en **gegevens sets** op de werk ruimte-landings pagina. U wordt aangeraden om data **Store** en **DataSet** te gebruiken. Dit omvat aanvullende functies zoals gegevens bewaking. Zie voor meer informatie [hoe u toegang krijgt tot gegevens](../service/how-to-access-data.md) en het artikel gegevens [sets registreren](../service/how-to-create-register-datasets.md) .
+> Alle functionaliteit van deze module kan worden uitgevoerd door **gegevens opslag** en **gegevens sets** op de werk ruimte-landings pagina. U wordt aangeraden om data **Store** en **DataSet** te gebruiken. Dit omvat aanvullende functies zoals gegevens bewaking. Zie voor meer informatie [hoe u toegang krijgt tot gegevens](../how-to-access-data.md) en het artikel gegevens [sets registreren](../how-to-create-register-datasets.md) .
 > Nadat u een gegevensset hebt geregistreerd, kunt u deze vinden in de categorie **gegevens sets** -> **mijn gegevens sets** in de ontwerp interface. Deze module is gereserveerd voor Studio-gebruikers (klassiek) voor een vertrouwde ervaring. 
 >
 
 Kies eerst de bron waarvan u een lees bewerking hebt uitgevoerd en voltooi de aanvullende instellingen. De module **gegevens importeren** ondersteunt het lezen van gegevens uit de volgende bronnen:
 
 - URL via HTTP
-- Azure-Cloud opslag via [**data stores**](../service/how-to-access-data.md))
+- Azure-Cloud opslag via [**data stores**](../how-to-access-data.md))
     - Azure Blob-container
     - Azure-bestandsshare
     - Azure Data Lake
@@ -38,7 +38,7 @@ Kies eerst de bron waarvan u een lees bewerking hebt uitgevoerd en voltooi de aa
     - Azure SQL Database
     - Azure-PostgreSQL    
 
-Voordat u Cloud opslag gebruikt, moet u eerst een gegevens opslag registreren in uw Azure Machine Learning-werk ruimte. Zie [toegang tot gegevens](../service/how-to-access-data.md)voor meer informatie. 
+Voordat u Cloud opslag gebruikt, moet u eerst een gegevens opslag registreren in uw Azure Machine Learning-werk ruimte. Zie [toegang tot gegevens](../how-to-access-data.md)voor meer informatie. 
 
 Nadat u de gewenste gegevens hebt gedefinieerd en verbinding wilt maken met de bron, wordt het gegevens type van elke kolom afgeleid op basis van de waarden die erin worden **[weer gegeven en](./import-data.md)** worden de gegevens in uw ontwerp pijplijn geladen. De uitvoer van **import gegevens** is een gegevensset die kan worden gebruikt met een wille keurige ontwerp pijplijn.
 

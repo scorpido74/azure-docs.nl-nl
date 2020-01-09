@@ -1,21 +1,21 @@
 ---
 title: Apache Storm topologieën implementeren en beheren in azure HDInsight
 description: Meer informatie over het implementeren, bewaken en beheren van Apache Storm topologieën met behulp van het Storm-dash board op HDInsight op basis van Linux. Gebruik Hadoop-hulpprogram ma's voor Visual Studio.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: hdinsightactive
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: 82c5db4f75f131ebdc2434955108e7d50237d9ba
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.custom: hdinsightactive
+ms.date: 12/18/2019
+ms.openlocfilehash: e890289230b3215bd102d8c5a78dca4f1b7b90f8
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228931"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494965"
 ---
-# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Apache Storm topologieën implementeren en beheren in azure HDInsight 
+# <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>Apache Storm topologieën implementeren en beheren in azure HDInsight
 
 In dit document leert u de basis beginselen van het beheren en bewaken van [Apache Storm](https://storm.apache.org/) topologieën die worden uitgevoerd op Storm op HDInsight-clusters.
 
@@ -34,42 +34,40 @@ U kunt de Data Lake-Hulpprogram Ma's voor Visual Studio gebruiken C# voor het ve
 1. Als u de nieuwste versie van de Data Lake-hulpprogram ma's voor Visual Studio nog niet hebt geïnstalleerd, raadpleegt u [Data Lake-Hulpprogram ma's voor Visual Studio gebruiken](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
 
     > [!NOTE]  
-    > De Data Lake-Hulpprogram Ma's voor Visual Studio werden voorheen de HDInsight-Hulpprogram Ma's voor Visual Studio genoemd.
+    > De Hulpprogram Ma's Azure Data Lake en Stream Analytics werden voorheen de HDInsight-Hulpprogram Ma's voor Visual Studio genoemd.
     >
-    > Data Lake-Hulpprogram Ma's voor Visual Studio zijn opgenomen in de **Azure-workload** voor visual studio 2019.
+    > Azure Data Lake-en Stream Analytics-Hulpprogram Ma's voor Visual Studio zijn opgenomen in de **Azure Development** -werk belasting voor visual studio 2019.
 
-2. Open Visual Studio.
+1. Start Visual Studio.
 
-3. Selecteer in het **Start** venster **een nieuw project maken**.
+1. Selecteer in het **Start** venster **een nieuw project maken**.
 
-4. Schakel in het venster **een nieuw project maken** het zoekvak in en voer *Storm*in. Kies vervolgens **Storm** -voor beeld in de lijst met resultaten en selecteer **volgende**.
+1. Selecteer in het venster **een nieuw project maken** het zoekvak en voer `Storm`in. Kies vervolgens **Storm** -voor beeld in de lijst met resultaten en selecteer **volgende**.
 
-5. Voer in het venster **uw nieuwe project configureren** een **project naam**in en ga naar of maak een **locatie** om het nieuwe project in op te slaan. Selecteer vervolgens **Maken**.
+1. Voer in het venster **uw nieuwe project configureren** een **project naam**in en ga naar of maak een **locatie** om het nieuwe project in op te slaan. Selecteer vervolgens **Maken**.
 
     ![Het nieuwe project venster configureren, Visual Studio](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-sample1.png)
 
-6. Klik in **Solution Explorer**met de rechter muisknop op het project en kies **verzenden naar Storm op HDInsight**.
+1. Klik vanuit **Server Explorer**met de rechter muisknop op **Azure** en selecteer **verbinding maken met Microsoft Azure abonnement...** en voltooi het aanmeldings proces.
+
+1. Klik vanuit **Solution Explorer**met de rechter muisknop op het project en kies **verzenden naar Storm op HDInsight**.
 
     > [!NOTE]  
     > Voer de aanmeldings referenties voor uw Azure-abonnement in als u hierom wordt gevraagd. Als u meer dan één abonnement hebt, meldt u zich aan bij de versie met uw Storm op HDInsight-cluster.
 
-7. Kies in het dialoog venster **topologie indienen** in de vervolg keuzelijst **Storm-cluster** het Storm-cluster op HDInsight en selecteer vervolgens **verzenden**. U kunt controleren of de verzen ding is geslaagd door het deel venster **uitvoer** weer te geven.
+1. Kies in het dialoog venster **topologie indienen** in de vervolg keuzelijst **Storm-cluster** het Storm-cluster op HDInsight en selecteer vervolgens **verzenden**. U kunt controleren of de verzen ding is geslaagd door het deel venster **uitvoer** weer te geven.
 
 ## <a name="submit-a-topology-using-ssh-and-the-storm-command"></a>Een topologie verzenden met SSH en de Storm-opdracht
 
-Een topologie voor Storm verzenden met SSH:
+1. Gebruik de [SSH-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
 
-1. Gebruik SSH om verbinding te maken met het HDInsight-cluster. Vervang `USERNAME` door de naam van uw SSH-gebruikers naam (zoals *sshuser*). Vervang `CLUSTERNAME` door de naam van uw HDInsight-cluster.
-
-    ```shell
-    ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-    Zie [verbinding maken met HDInsight (Apache Hadoop) met SSH](../hdinsight-hadoop-linux-use-ssh-unix.md)voor meer informatie over het gebruik van SSH om verbinding te maken met uw HDInsight-cluster.
+1. Gebruik vanuit uw SSH-sessie de volgende opdracht om de **WordCount** -voorbeeld topologie te starten:
 
-2. Gebruik de volgende opdracht om de *WordCount* -voorbeeld topologie te starten:
-
-    ```ssh
+    ```bash
     storm jar /usr/hdp/current/storm-client/contrib/storm-starter/storm-starter-topologies-*.jar org.apache.storm.starter.WordCountTopology WordCount
     ```
 
@@ -176,15 +174,15 @@ De hoofd pagina van de Storm-gebruikers interface bevat de volgende informatie:
 
 | Sectie | Beschrijving |
 | --- | --- |
-| **Cluster overzicht** | Basis informatie over het Storm-cluster. |
-| **Nimbus-samen vatting** | Een lijst met basis informatie over Nimbus. |
-| **Topologie samenvatting** | Een lijst met actieve topologieën. Als u meer informatie over een specifieke topologie wilt weer geven, selecteert u de koppeling in de kolom **naam** . |
-| **Overzicht Super Visor** | Informatie over de Storm-Super Visor. Als u de werk resources wilt zien die zijn gekoppeld aan een specifieke supervisor, selecteert u de koppeling in de kolom **host** of **id** . |
-| **Nimbus-configuratie** | Nimbus-configuratie voor het cluster. |
+| Clusteroverzicht| Basis informatie over het Storm-cluster. |
+| Nimbus-samen vatting | Een lijst met basis informatie over Nimbus. |
+| Topologie samenvatting | Een lijst met actieve topologieën. Als u meer informatie over een specifieke topologie wilt weer geven, selecteert u de koppeling in de kolom **naam** . |
+| Overzicht Super Visor | Informatie over de Storm-Super Visor. Als u de werk resources wilt zien die zijn gekoppeld aan een specifieke supervisor, selecteert u de koppeling in de kolom **host** of **id** . |
+| Nimbus-configuratie | Nimbus-configuratie voor het cluster. |
 
 De hoofd pagina van de Storm-gebruikers interface ziet er ongeveer als volgt uit:
 
-![Hoofd pagina, Storm-gebruikers interface, Apache Storm topologieën, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
+![Hoofd pagina, Storm-gebruikers interface, Apache Storm topologieën, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-main-page.png)
 
 #### <a name="topology-summary"></a>Topologie samenvatting
 
@@ -192,30 +190,30 @@ Als u een koppeling selecteert in het gedeelte **topologie overzicht** , wordt d
 
 | Sectie | Beschrijving |
 | --- | --- |
-| **Topologie samenvatting** | Basis informatie over de topologie. |
-| **Topologie acties** | Beheer acties die u kunt uitvoeren voor de topologie. De beschik bare acties worden verderop in deze sectie beschreven. |
-| **Topologie statistieken** | Statistieken over de topologie. Als u het tijds bestek voor een item in deze sectie wilt instellen, selecteert u de bijbehorende koppeling in de kolom **venster** . |
-| **Spouts** *(tijds periode)* | De spouts die wordt gebruikt door de topologie. Als u meer informatie over een specifieke Spout wilt weer geven, selecteert u de koppeling in de kolom **id** . |
-| **Bouten** *(tijds bestek)* | De schichten die door de topologie worden gebruikt. Als u meer informatie over een specifieke Schicht wilt weer geven, selecteert u de koppeling in de kolom **id** . |
-| **Werknemers resources** | Een lijst met werknemers resources. Als u meer informatie over een specifieke worker-resource wilt weer geven, selecteert u de koppeling in de kolom **host** . |
-| **Visualisatie van topologie** | Een **visualisatie knop weer geven** waarmee een visualisatie van de topologie wordt weer gegeven. |
-| **Topologie configuratie** | De configuratie van de geselecteerde topologie. |
+| Topologie samenvatting | Basis informatie over de topologie. |
+| Topologie acties| Beheer acties die u kunt uitvoeren voor de topologie. De beschik bare acties worden verderop in deze sectie beschreven. |
+| Topologie statistieken | Statistieken over de topologie. Als u het tijds bestek voor een item in deze sectie wilt instellen, selecteert u de bijbehorende koppeling in de kolom **venster** . |
+| Spouts *(tijds periode)* | De spouts die wordt gebruikt door de topologie. Als u meer informatie over een specifieke Spout wilt weer geven, selecteert u de koppeling in de kolom **id** . |
+| Bouten *(tijds bestek)* | De schichten die door de topologie worden gebruikt. Als u meer informatie over een specifieke Schicht wilt weer geven, selecteert u de koppeling in de kolom **id** . |
+| Werknemers resources | Een lijst met werknemers resources. Als u meer informatie over een specifieke worker-resource wilt weer geven, selecteert u de koppeling in de kolom **host** . |
+| Visualisatie van topologie | Een **visualisatie knop weer geven** waarmee een visualisatie van de topologie wordt weer gegeven. |
+| Topologie configuratie | De configuratie van de geselecteerde topologie. |
 
 De pagina overzicht van Storm-topologie ziet er ongeveer als volgt uit:
 
-![Pagina topologie overzicht, Storm-gebruikers interface, Apache Storm, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
+![Pagina topologie overzicht, Storm-gebruikers interface, Apache Storm, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-topology-summary.png)
 
 In het gedeelte **topologie acties** kunt u de volgende knoppen selecteren om een actie uit te voeren:
 
 | Knop | Beschrijving |
 | --- | --- |
-| **Activeren** | Hervat de verwerking van een gedeactiveerde topologie. |
-| **Deactiveren** | Hiermee wordt een actieve topologie onderbroken. |
-| **Opnieuw verdelen** | Hiermee past u de parallellisme van de topologie aan. U moet actieve topologieën opnieuw verdelen nadat u het aantal knoop punten in het cluster hebt gewijzigd. Met deze bewerking kan de topologie de parallellisme aanpassen om het extra of gereduceerde aantal knoop punten in het cluster te compenseren.<br/><br/>Zie <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">informatie over de parallellisme van een Apache Storm topologie</a>voor meer informatie.
-| **Verwijderen** | Hiermee wordt een storm-topologie beëindigd na de opgegeven time-out. |
-| **Foutopsporing** | Hiermee wordt een foutopsporingssessie gestart voor de actieve topologie. |
-| **Fout opsporing stoppen** | Hiermee wordt de foutopsporingssessie voor de actieve topologie beëindigd. |
-| **Logboek niveau wijzigen** | Hiermee wijzigt u het logboek niveau voor fout opsporing. |
+| Activeren | Hervat de verwerking van een gedeactiveerde topologie. |
+| Deactiveren | Hiermee wordt een actieve topologie onderbroken. |
+| Opnieuw verdelen | Hiermee past u de parallellisme van de topologie aan. U moet actieve topologieën opnieuw verdelen nadat u het aantal knoop punten in het cluster hebt gewijzigd. Met deze bewerking kan de topologie de parallellisme aanpassen om het extra of gereduceerde aantal knoop punten in het cluster te compenseren.<br/><br/>Zie <a href="https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html" target="_blank">informatie over de parallellisme van een Apache Storm topologie</a>voor meer informatie.
+| verwijderen | Hiermee wordt een storm-topologie beëindigd na de opgegeven time-out. |
+| Foutopsporing | Hiermee wordt een foutopsporingssessie gestart voor de actieve topologie. |
+| Fout opsporing stoppen | Hiermee wordt de foutopsporingssessie voor de actieve topologie beëindigd. |
+| Logboek niveau wijzigen | Hiermee wijzigt u het logboek niveau voor fout opsporing. |
 
 ##### <a name="spout-and-bolt-summary"></a>Samen vatting van Spout en Schicht
 
@@ -223,18 +221,18 @@ Als u een Spout selecteert in de secties **Spouts** of **Bouts** , wordt de volg
 
 | Sectie | Beschrijving |
 | --- | --- |
-| **Onderdeel overzicht** | Basis informatie over de Spout of bout. |
-| **Onderdeel acties** | **Debug** -en **Stop** -knoppen voor fout opsporing. |
-| **Spout statistieken** of **flits statistieken** | Statistieken over de Spout of bout. Als u het tijds bestek voor een item in deze sectie wilt instellen, selecteert u de bijbehorende koppeling in de kolom **venster** . |
-| (Alleen voor de flits)<br/>**Invoer statistieken** *(tijds periode)* | Informatie over de invoer stromen die door de schicht worden gebruikt. |
-| **Uitvoer statistieken** *(tijds periode)* | Informatie over de stromen die worden verzonden door de Spout of bout. |
-| **Profilering en fout opsporing** | Besturings elementen voor het profileren en opsporen van fouten in de onderdelen op deze pagina. U kunt de waarde **status/time-out (minuten)** instellen en u kunt knoppen selecteren voor **JStack**, de **werk nemer**en de **heap**opnieuw opstarten. |
-| **Uitvoerendeers** *(tijd frame)* | Informatie over de instanties van de Spout of bout. Als u een logboek van diagnostische gegevens wilt weer geven die voor deze instantie zijn geproduceerd, selecteert u de poort vermelding voor een specifieke **uitvoerder** . U kunt ook de worker-resources zien die zijn gekoppeld aan een specifieke uitvoerder door de bijbehorende koppeling in de kolom **host** te selecteren. |
-| **Bufferoverschrijdingsfouten** | Eventuele fout gegevens voor de Spout of bout. |
+| Onderdeel overzicht | Basis informatie over de Spout of bout. |
+| Onderdeel acties | **Debug** -en **Stop** -knoppen voor fout opsporing. |
+| Spout statistieken of flits statistieken | Statistieken over de Spout of bout. Als u het tijds bestek voor een item in deze sectie wilt instellen, selecteert u de bijbehorende koppeling in de kolom **venster** . |
+| (Alleen voor de flits)<br/>Invoer statistieken *(tijds periode)* | Informatie over de invoer stromen die door de schicht worden gebruikt. |
+| Uitvoer statistieken *(tijds periode)* | Informatie over de stromen die worden verzonden door de Spout of bout. |
+| Profilering en fout opsporing | Besturings elementen voor het profileren en opsporen van fouten in de onderdelen op deze pagina. U kunt de waarde **status/time-out (minuten)** instellen en u kunt knoppen selecteren voor **JStack**, de **werk nemer**en de **heap**opnieuw opstarten. |
+| Uitvoerendeers *(tijd frame)* | Informatie over de instanties van de Spout of bout. Als u een logboek van diagnostische gegevens wilt weer geven die voor deze instantie zijn geproduceerd, selecteert u de poort vermelding voor een specifieke **uitvoerder** . U kunt ook de worker-resources zien die zijn gekoppeld aan een specifieke uitvoerder door de bijbehorende koppeling in de kolom **host** te selecteren. |
+| Fouten | Eventuele fout gegevens voor de Spout of bout. |
 
 De overzichts pagina Storm-flits ziet er ongeveer als volgt uit:
 
-![Pagina samen vatting van bout, Storm-gebruikers interface, Apache Storm, Azure Insight](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
+![Pagina samen vatting van bout, Storm-gebruikers interface, Apache Storm, Azure](./media/apache-storm-deploy-monitor-topology-linux/apache-storm-web-ui-bolt-summary.png)
 
 ## <a name="monitor-and-manage-the-topology-using-the-rest-api"></a>De topologie bewaken en beheren met de REST API
 
@@ -257,14 +255,14 @@ U kunt de Fully Qualified Domain Name (FQDN) voor het hoofd knooppunt van het cl
 | Ambari-Web | Selecteer op de webpagina Ambari-cluster (`https://CLUSTERNAME.azurehdinsight.net`) **Services** boven aan de pagina en selecteer vervolgens **Storm**. Selecteer op het tabblad **samen vatting** de optie **Storm-gebruikers interface Server**. De FQDN van het knoop punt dat als host fungeert voor de Storm-gebruikers interface en REST API wordt boven aan de pagina weer gegeven. |
 | Ambari REST API | Gebruik de opdracht `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` om informatie op te halen over het knoop punt waarop de Storm-gebruikers interface en de REST API worden uitgevoerd. Vervang de twee exemplaren van *clustername* door de naam van het cluster. Wanneer u hierom wordt gevraagd, voert u het wacht woord voor het gebruikers account (beheer) in. In het antwoord bevat de vermelding ' host_name ' van de JSON-uitvoer de FQDN-naam van het knoop punt. |
 
-### <a name="authentication"></a>Verificatie
+### <a name="authentication"></a>Authentication
 
 Aanvragen voor de REST API moeten *basis verificatie*gebruiken, dus u moet de naam en het wacht woord van de beheerder voor het HDInsight-cluster gebruiken.
 
 > [!NOTE]  
 > Omdat basis verificatie wordt verzonden met behulp van Lees bare tekst, moet u *altijd* https gebruiken om de communicatie met het cluster te beveiligen.
 
-### <a name="return-values"></a>Retour waarden
+### <a name="return-values"></a>Retourwaarden
 
 Informatie die wordt geretourneerd door de REST API, kan alleen worden gebruikt vanuit het cluster. Zo is de Fully Qualified Domain Name (FQDN) die voor [Apache ZooKeeper](https://zookeeper.apache.org/) servers wordt geretourneerd, niet toegankelijk via internet.
 

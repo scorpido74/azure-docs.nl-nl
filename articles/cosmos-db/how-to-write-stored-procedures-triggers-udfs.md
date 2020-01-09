@@ -1,17 +1,17 @@
 ---
-title: Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies schrijven in Azure Cosmos DB
+title: Opgeslagen procedures, triggers en Udf's in Azure Cosmos DB schrijven
 description: Meer informatie over het definiëren van opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies in Azure Cosmos DB
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: mjbrown
-ms.openlocfilehash: ffe002e4dced5b5020eb1436ca6d7d577402b077
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 4dee017323bda5fc08598a9b24cadd11516807cf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533168"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441735"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Opgeslagen procedures, triggers en door de gebruiker gedefinieerde functies schrijven in Azure Cosmos DB
 
@@ -242,7 +242,7 @@ Pre-triggers kunnen geen invoerparameters hebben. Het aanvraagobject in de trigg
 
 Wanneer triggers zijn geregistreerd, kunt u de bewerkingen opgeven waarmee deze kan worden uitgevoerd. Deze trigger moet worden gemaakt met een waarde `TriggerOperation` van `TriggerOperation.Create`, wat betekent dat het gebruik van de trigger in een vervangingsbewerking zoals wordt weergegeven in de volgende code niet is toegestaan.
 
-Zie de artikelen [Pre-triggers](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) en [Post-triggers](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) voor voorbeelden van het registreren en aanroepen van een pre-trigger. 
+Zie artikelen [Pre-triggers](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) en [Post-triggers](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) voor voorbeelden van het registreren en aanroepen van een pre-trigger. 
 
 ### <a id="post-triggers"></a>Post-triggers
 
@@ -284,7 +284,7 @@ function updateMetadataCallback(err, items, responseOptions) {
 
 Eén ding dat belangrijk is om te weten is de transactionele uitvoering van triggers in Azure Cosmos DB. De post-trigger wordt uitgevoerd als onderdeel van dezelfde trans actie voor het onderliggende item zelf. Als er een uitzonde ring optreedt tijdens de uitvoering na trigger, mislukt de hele trans actie. Alle doorgevoerde items worden teruggedraaid en er wordt een uitzonde ring geretourneerd.
 
-Zie de artikelen [Pre-triggers](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) en [Post-triggers](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) voor voorbeelden van het registreren en aanroepen van een pre-trigger. 
+Zie artikelen [Pre-triggers](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) en [Post-triggers](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) voor voorbeelden van het registreren en aanroepen van een pre-trigger. 
 
 ## <a id="udfs"></a>Door de gebruiker gedefinieerde functies schrijven
 

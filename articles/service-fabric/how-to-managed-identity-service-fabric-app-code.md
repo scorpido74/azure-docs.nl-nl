@@ -1,19 +1,14 @@
 ---
-title: Azure Service Fabric-beheerde identiteit gebruiken met Service Fabric toepassingen | Microsoft Docs
-description: Beheerde identiteiten gebruiken vanuit Service Fabric toepassings code
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Beheerde identiteit gebruiken met een toepassing
+description: Beheerde identiteiten gebruiken in azure Service Fabric toepassings code voor toegang tot Azure-Services. Deze functie is beschikbaar voor openbare preview.
 ms.topic: article
-ms.date: 7/25/2019
-ms.author: atsenthi
-ms.openlocfilehash: 6a3d33954bda0605e752555922914a9fd432d8c1
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.date: 10/09/2019
+ms.openlocfilehash: 59680ec7911f55c3dc49d8834b410a039aa435dc
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70968220"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610315"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services-preview"></a>De beheerde identiteit van een Service Fabric-toepassing gebruiken voor toegang tot Azure-Services (preview)
 
@@ -41,7 +36,7 @@ Met name de omgeving van een Service Fabric service met beheerde identiteiten wo
 Voor het verkrijgen van een token voert de client de volgende stappen uit:
 - een URI vormt door het samen voegen van het beheerde identiteits eindpunt (MSI_ENDPOINT waarde) met de API-versie en de bron (doel groep) die vereist is voor het token
 - Hiermee maakt u een GET HTTP-aanvraag voor de opgegeven URI
-- Hiermee wordt de verificatie code (MSI_SECRET-waarde) als koptekst aan de aanvraag toegevoegd
+- Hiermee wordt de verificatie code (MSI_SECRET waarde) als koptekst aan de aanvraag toegevoegd
 - Hiermee wordt de aanvraag verzonden
 
 Een geslaagde reactie bevat een JSON-Payload die het resulterende toegangs token en meta gegevens beschrijft. Een mislukte reactie omvat ook een uitleg van de fout. Zie hieronder voor meer informatie over het afhandelen van fouten.
@@ -49,19 +44,19 @@ Een geslaagde reactie bevat een JSON-Payload die het resulterende toegangs token
 Toegangs tokens worden in de cache opgeslagen door Service Fabric op verschillende niveaus (knoop punt, cluster, resource Provider service), waardoor een geslaagde reactie niet noodzakelijkerwijs impliceert dat het token rechtstreeks is uitgegeven als reactie op de aanvraag van de gebruikers toepassing. Tokens worden voor minder dan hun levens duur in de cache opgeslagen, zodat een toepassing gegarandeerd een geldig token kan ontvangen. Het is raadzaam dat de toepassings code zichzelf bewaart alle toegangs tokens die worden opgehaald. de cache sleutel moet (een afleiding van) de doel groep bevatten. 
 
 
-Voorbeeld aanvraag:
+Voorbeeldaanvraag:
 ```http
 GET 'http://localhost:2377/metadata/identity/oauth2/token?api-version=2019-07-01-preview&resource=https://keyvault.azure.com/' HTTP/1.1 Secret: 912e4af7-77ba-4fa5-a737-56c8e3ace132
 ```
-Positie
+Hierbij
 
-| Element | Description |
+| Element | Beschrijving |
 | ------- | ----------- |
 | `GET` | De HTTP-term waarmee wordt aangegeven dat u gegevens wilt ophalen uit het eind punt. In dit geval een OAuth-toegangs token. | 
-| `http://localhost:2377/metadata/identity/oauth2/token` | Het beheerde identiteits eindpunt voor Service Fabric toepassingen, dat wordt gegeven via de omgevings variabele MSI_ENDPOINT. |
-| `api-version` | Een query reeks parameter, waarmee de API-versie van de beheerde identiteits token service wordt opgegeven. Momenteel is `2019-07-01-preview`de enige geaccepteerde waarde en deze kan worden gewijzigd. |
-| `resource` | Een query teken reeks parameter, waarmee de App-ID-URI van de doel resource wordt aangegeven. Dit wordt weer gegeven als de `aud` claim (publiek) van het uitgegeven token. In dit voor beeld wordt een token aangevraagd voor toegang tot Azure Key Vault, waarvan de URI van\/de App-ID https:/keyvault.Azure.com/is. |
-| `Secret` | Een veld voor de HTTP-aanvraag header, dat wordt vereist door de Service Fabric Managed Identity token service voor Service Fabric Services om de oproepende functie te verifiëren. Deze waarde wordt gegeven door de omgevings variabele SF runtime via MSI_SECRET. |
+| `http://localhost:2377/metadata/identity/oauth2/token` | Het beheerde identiteits eindpunt voor Service Fabric toepassingen, dat wordt gegeven via de MSI_ENDPOINT omgevings variabele. |
+| `api-version` | Een query reeks parameter, waarmee de API-versie van de beheerde identiteits token service wordt opgegeven. Momenteel is de enige geaccepteerde waarde `2019-07-01-preview`en kan deze worden gewijzigd. |
+| `resource` | Een query teken reeks parameter, waarmee de App-ID-URI van de doel resource wordt aangegeven. Dit wordt weer gegeven als de claim van de `aud` (doel groep) van het gepubliceerde token. In dit voor beeld wordt een token aangevraagd om toegang te krijgen tot Azure Key Vault, waarvan de URI van de App-ID https is:\//keyvault.azure.com/. |
+| `Secret` | Een veld voor de HTTP-aanvraag header, dat wordt vereist door de Service Fabric Managed Identity token service voor Service Fabric Services om de oproepende functie te verifiëren. Deze waarde wordt verschaft door de SF runtime via MSI_SECRET omgevings variabele. |
 
 
 Voorbeeld antwoord:
@@ -75,14 +70,14 @@ Content-Type: application/json
     "resource":  "https://keyvault.azure.com/"
 }
 ```
-Positie
+Hierbij
 
-| Element | Description |
+| Element | Beschrijving |
 | ------- | ----------- |
 | `token_type` | Het type token; in dit geval is het toegangs token ' Bearer ', wat betekent dat de presentator (' Bearer ') van dit token het beoogde onderwerp van het token is. |
-| `access_token` | Het aangevraagde toegangs token. Wanneer u een beveiligd rest API aanroept, wordt het token in `Authorization` het veld aanvraag header Inge sloten als een Bearer-token, waardoor de API de aanroeper kan verifiëren. | 
+| `access_token` | Het aangevraagde toegangs token. Wanneer u een beveiligd REST API aanroept, wordt het token Inge sloten in het veld `Authorization` aanvraag header als een Bearer-token, waardoor de API de aanroeper kan verifiëren. | 
 | `expires_on` | De tijds tempel van de verval datum van het toegangs token; wordt weer gegeven als het aantal seconden van "1970-01-01T0:0: 0Z UTC" en komt overeen met de `exp` claim van het token. In dit geval verloopt het token op 2019-08-08T06:10:11 + 00:00 (in RFC 3339)|
-| `resource` | De resource waarvoor het toegangs token is uitgegeven, opgegeven via de `resource` query teken reeks parameter van de aanvraag, komt overeen met de claim ' AUD ' van de token. |
+| `resource` | De resource waarvoor het toegangs token is uitgegeven, opgegeven via de `resource` query teken reeks parameter van de aanvraag; komt overeen met de claim ' AUD ' van het token. |
 
 
 ## <a name="acquiring-an-access-token-using-c"></a>Een toegangs token verkrijgen metC#
@@ -326,9 +321,9 @@ Het veld status code van de HTTP-antwoord header geeft de status van het succes 
 
 Als er een fout optreedt, bevat de bijbehorende HTTP-antwoord tekst een JSON-object met de fout Details:
 
-| Element | Description |
+| Element | Beschrijving |
 | ------- | ----------- |
-| code | Fout code. |
+| code | Foutcode. |
 | correlationId | Een correlatie-ID die kan worden gebruikt voor fout opsporing. |
 | message | Uitgebreide beschrijving van de fout. **Fout beschrijvingen kunnen op elk gewenst moment worden gewijzigd. Niet afhankelijk van het fout bericht zelf.**|
 
@@ -339,7 +334,7 @@ Voorbeeld fout:
 
 Hier volgt een lijst met typische Service Fabric fouten die specifiek zijn voor beheerde identiteiten:
 
-| Code | Message | Description | 
+| Coderen | Bericht | Beschrijving | 
 | ----------- | ----- | ----------------- |
 | SecretHeaderNotFound | Het geheim is niet gevonden in de aanvraag headers. | De verificatie code is niet in de aanvraag opgenomen. | 
 | ManagedIdentityNotFound | Beheerde identiteit niet gevonden voor de opgegeven toepassingshost. | De toepassing heeft geen identiteit, of de verificatie code is onbekend. |
@@ -351,7 +346,7 @@ Hier volgt een lijst met typische Service Fabric fouten die specifiek zijn voor 
 
 Normaal gesp roken is de fout code alleen opnieuw proberen 429 (te veel aanvragen). interne server fouten/5xx-fout codes kunnen opnieuw worden geprobeerd, hoewel de oorzaak mogelijk permanent is. 
 
-Beperkings limieten zijn van toepassing op het aantal aanroepen van het subsysteem Managed Identity, met name de upstream-afhankelijkheden (de beheerde identiteit Azure-service of de Secure Token-Service). Service Fabric tokens op verschillende niveaus in de pijp lijn op te slaan in de cache, maar gezien de gedistribueerde aard van de betrokken onderdelen, kan de aanroeper mogelijk inconsistente beperkings reacties ondervinden (dat wil zeggen, de beperking wordt beperkt op één knoop punt of exemplaar van een toepassing, maar niet op een een ander knoop punt tijdens het aanvragen van een token voor dezelfde identiteit.) Wanneer de beperkings voorwaarde is ingesteld, kunnen volgende aanvragen van dezelfde toepassing mislukken met de HTTP-status code 429 (te veel aanvragen) totdat de voor waarde is gewist.  
+Beperkings limieten zijn van toepassing op het aantal aanroepen van het subsysteem Managed Identity, met name de upstream-afhankelijkheden (de beheerde identiteit Azure-service of de Secure Token-Service). Service Fabric tokens op verschillende niveaus in de pijp lijn op te slaan in de cache, maar gezien de gedistribueerde aard van de betrokken onderdelen, kan de aanroeper mogelijk inconsistente beperkings reacties ondervinden (dat wil zeggen: er wordt beperkt op één knoop punt/exemplaar van een toepassing, maar niet op een ander knoop punt tijdens het aanvragen van een token voor dezelfde identiteit.) Wanneer de beperkings voorwaarde is ingesteld, kunnen volgende aanvragen van dezelfde toepassing mislukken met de HTTP-status code 429 (te veel aanvragen) totdat de voor waarde is gewist.  
 
 Het wordt aanbevolen dat aanvragen die zijn mislukt door beperking, als volgt opnieuw worden geprobeerd met een exponentiële uitstel: 
 

@@ -4,15 +4,15 @@ description: In dit artikel wordt beschreven hoe u Windows-computers Azure Monit
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: 42183ca7b02ba75b241ee1a83b5a0dc936a8c1c8
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 8918c18c9356c583b9ea23138f0d0a0fb4dcd845
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420412"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689981"
 ---
 # <a name="connect-windows-computers-to-azure-monitor"></a>Windows-computers verbinden met Azure Monitor
 
@@ -20,9 +20,9 @@ Als u virtuele machines of fysieke computers in uw lokale Data Center of een and
 
 Op een bewaakte Windows-computer wordt de agent vermeld als de micro soft Monitoring Agent-service. De service micro soft monitoring agent verzamelt gebeurtenissen van logboek bestanden en Windows-gebeurtenis logboeken, prestatie gegevens en andere telemetrie. Zelfs wanneer de agent niet kan communiceren met Azure Monitor it-rapporteert, blijft de agent actief en worden de verzamelde gegevens op de schijf van de bewaakte computer in de wachtrij geplaatst. Wanneer de verbinding wordt hersteld, verzendt de service micro soft Monitoring Agent verzamelde gegevens naar de service.
 
-De agent kan worden geïnstalleerd met behulp van een van de volgende methoden. De meeste installaties gebruiken een combi natie van deze methoden om verschillende sets computers te installeren, indien van toepassing.  Verderop in dit artikel vindt u meer informatie over het gebruik van elke methode.
+De agent kan worden geïnstalleerd met behulp van een van de volgende methoden. De meeste installaties maken zo nodig gebruik van een combinatie van deze methoden voor het installeren van verschillende sets computers.  Verderop in dit artikel vindt u meer informatie over het gebruik van elke methode.
 
-* Hand matige installatie. Setup wordt hand matig uitgevoerd op de computer met behulp van de installatie wizard, vanaf de opdracht regel of wordt geïmplementeerd met een bestaand hulp programma voor software distributie.
+* Handmatige installatie. Setup wordt hand matig uitgevoerd op de computer met behulp van de installatie wizard, vanaf de opdracht regel of wordt geïmplementeerd met een bestaand hulp programma voor software distributie.
 * Azure Automation Desired State Configuration (DSC). DSC gebruiken in Azure Automation met een script voor Windows-computers die al in uw omgeving zijn geïmplementeerd.  
 * Power shell-script.
 * Resource Manager-sjabloon voor virtuele machines waarop Windows on-premises wordt uitgevoerd in Azure Stack. 
@@ -38,7 +38,7 @@ Als u meer wilt weten over de ondersteunde configuratie, kunt u de informatie ov
 ## <a name="obtain-workspace-id-and-key"></a>Werkruimte-ID en -sleutel ophalen
 Voordat u de Log Analytics-agent voor Windows installeert, hebt u de werk ruimte-ID en-sleutel voor uw Log Analytics-werk ruimte nodig.  Deze informatie is vereist tijdens de installatie van elke installatie methode om de agent correct te configureren en ervoor te zorgen dat deze kan communiceren met Azure Monitor in azure commerciële en Amerikaanse overheids Cloud. 
 
-1. Klik in Azure Portal op **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Log Analytics**.
+1. Zoek in het Azure Portal naar en selecteer **log Analytics-werk ruimten**.
 2. Selecteer in de lijst met Log Analytics-werk ruimten de werk ruimte die u wilt configureren voor het rapporteren van de agent.
 3. Selecteer **Geavanceerde instellingen**.<br><br> ![Geavanceerde instellingen van Log Analytics](media/agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
 4. Selecteer **Verbonden bronnen** en selecteer vervolgens **Windows-servers**.   
@@ -95,7 +95,7 @@ De volgende tabel bevat de specifieke para meters die worden ondersteund door de
 
 |MMA-specifieke opties                   |Opmerkingen         |
 |---------------------------------------|--------------|
-| NOAPM=1                               | Optionele para meter. Hiermee wordt de agent geïnstalleerd zonder bewaking van .NET-toepassings prestaties.|   
+| NOAPM=1                               | Optionele parameter. Hiermee wordt de agent geïnstalleerd zonder bewaking van .NET-toepassings prestaties.|   
 |ADD_OPINSIGHTS_WORKSPACE               | 1 = de agent configureren om te rapporteren aan een werk ruimte                |
 |OPINSIGHTS_WORKSPACE_ID                | Werk ruimte-ID (GUID) voor de toe te voegen werk ruimte                    |
 |OPINSIGHTS_WORKSPACE_KEY               | Werkruimte sleutel die in eerste instantie wordt gebruikt voor verificatie met de werk ruimte |
@@ -188,9 +188,9 @@ Ga in de computer naar **Configuratiescherm** en zoek het item **Microsoft Monit
 
 U kunt ook een eenvoudige logboek query uitvoeren in de Azure Portal.  
 
-1. Klik in Azure Portal op **Alle services**. Typ **Azure monitor**in de lijst met resources. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **Azure monitor**.  
-2. Selecteer **Logboeken** in het menu. 
-2. In het deel venster Logboeken in het query veld Type:  
+1. Zoek in het Azure Portal naar en selecteer **monitor**.
+1. Selecteer **Logboeken** in het menu.
+1. In het deel venster **Logboeken** in het query veld Type:  
 
     ```
     Heartbeat 

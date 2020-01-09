@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: fb66fa2d4a6a03841fa057c4d1982b7bf4c6976d
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 4e95cc6a724c17402ed1ed0cda83377492787a3a
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68565337"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644916"
 ---
 # <a name="azure-devtest-labs-faq"></a>Veelgestelde vragen over Azure DevTest Labs
 Krijg antwoorden op enkele van de meest voorkomende vragen over Azure DevTest Labs.
 
-## <a name="blog-post"></a>Blogpost
+## <a name="blog-post"></a>Blog bericht
 Onze DevTest Labs-team blog is vanaf 20 maart 2019 buiten gebruik gesteld. 
 
 ### <a name="where-can-i-track-feature-updates-from-now-on"></a>Waar kan ik de onderdelen updates nu volgen?
@@ -40,7 +40,7 @@ We werken momenteel aan het migreren van bestaande blog berichten (met uitzonde 
 Er worden nu uitval updates geboekt via onze Twitter-handle. Volg ons op Twitter om de nieuwste updates te ontvangen op storingen en bekende bugs.
 
 ### <a name="twitter"></a>Twitter
-Onze Twitter-ingang:[@azlabservices](https://twitter.com/azlabservices)
+Onze Twitter-ingang: [@azlabservices](https://twitter.com/azlabservices)
 
 ## <a name="general"></a>Algemeen
 ### <a name="what-if-my-question-isnt-answered-here"></a>Wat gebeurt er als mijn vraag hier niet wordt beantwoord?
@@ -81,14 +81,14 @@ DevTest Labs is een gratis service. Het maken van Labs en het configureren van b
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Wat zijn de verschillende beveiligings niveaus in DevTest Labs?
 De toegang tot de beveiliging wordt bepaald door Access Control op basis van rollen (RBAC). Meer informatie over de werking van Access vindt u in de verschillen tussen een machtiging, een rol en een bereik, zoals gedefinieerd door RBAC.
 
-- **Machtiging**: Een machtiging is een gedefinieerde toegang tot een specifieke actie. Een machtiging kan bijvoorbeeld lees toegang zijn tot alle virtuele machines.
-- **Rol**: Een rol is een set machtigingen die kan worden gegroepeerd en toegewezen aan een gebruiker. Een gebruiker met de rol eigenaar van abonnement heeft bijvoorbeeld toegang tot alle resources in een abonnement.
-- **Bereik**: Een bereik is een niveau in de hiërarchie van een Azure-resource. Een bereik kan bijvoorbeeld een resource groep, één Lab of het hele abonnement zijn.
+- **Machtiging**: een machtiging is een gedefinieerde toegang tot een specifieke actie. Een machtiging kan bijvoorbeeld lees toegang zijn tot alle virtuele machines.
+- **Rol**: een rol is een set machtigingen die kan worden gegroepeerd en toegewezen aan een gebruiker. Een gebruiker met de rol eigenaar van abonnement heeft bijvoorbeeld toegang tot alle resources in een abonnement.
+- **Bereik**: een bereik is een niveau binnen de hiërarchie van een Azure-resource. Een bereik kan bijvoorbeeld een resource groep, één Lab of het hele abonnement zijn.
 
 Binnen het bereik van DevTest Labs zijn er twee soorten rollen die gebruikers machtigingen definiëren:
 
-- **Eigenaar**van het Lab: Een Lab-eigenaar heeft toegang tot alle resources in het lab. Een Lab-eigenaar kan beleid wijzigen, lezen en schrijven naar Vm's, het virtuele netwerk wijzigen, enzovoort.
-- **Test gebruiker**: Een Lab-gebruiker kan alle Lab-bronnen weer geven, zoals Vm's, beleids regels en virtuele netwerken. Een test gebruiker kan echter geen beleids regels of Vm's wijzigen die door andere gebruikers zijn gemaakt.
+- **Lab-eigenaar**: een Lab-eigenaar heeft toegang tot alle resources in het lab. Een Lab-eigenaar kan beleid wijzigen, lezen en schrijven naar Vm's, het virtuele netwerk wijzigen, enzovoort.
+- **Lab-gebruiker**: een Lab-gebruiker kan alle Lab-resources weer geven, zoals vm's, beleids regels en virtuele netwerken. Een test gebruiker kan echter geen beleids regels of Vm's wijzigen die door andere gebruikers zijn gemaakt.
 
 U kunt ook aangepaste rollen maken in DevTest Labs. Zie [gebruikers machtigingen verlenen aan specifieke Lab-beleids regels](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)voor meer informatie over het maken van aangepaste rollen in DevTest Labs.
 
@@ -105,7 +105,7 @@ De DevTest Labs-resource moet eigendom zijn van eigen aren die dicht bij het pro
 
 De leden van het project/het toepassings team moeten worden toegevoegd aan de rol **DevTest Labs-gebruikers** . Deze gebruikers kunnen virtuele machines maken (op basis van de beleids regels Lab en abonnement op abonnements niveau). Ze kunnen ook hun eigen virtuele machines beheren. Ze kunnen geen virtuele machines beheren die deel uitmaken van andere gebruikers.
 
-Zie voor meer informatie [Azure Enter prise-steigers-documentatie over](/azure/architecture/cloud-adoption/appendix/azure-scaffold)het beheer van voorgeschreven abonnementen.
+Zie voor meer informatie [Azure Enter prise-steigers-documentatie over het beheer van voorgeschreven abonnementen](/azure/architecture/cloud-adoption/appendix/azure-scaffold).
 
 
 ### <a name="how-do-i-create-a-role-to-allow-users-to-do-a-specific-task"></a>Hoe kan ik een rol maken om gebruikers toe te staan een specifieke taak uit te voeren?
@@ -162,11 +162,11 @@ Scenario voor een gemeen schappelijke resource groep:
 U kunt de huidige ondernemings naamgevings conventies uitbreiden naar Azure-bewerkingen en ze consistent maken in de DevTest Labs-omgeving. Wanneer u DevTest Labs implementeert, is het raadzaam om specifiek start beleid te gebruiken. U implementeert dit beleid door een centraal script en JSON-sjabloon om consistentie af te dwingen. Naamgevings beleid kan worden geïmplementeerd via Azure-beleid dat wordt toegepast op het abonnements niveau. Zie Azure Policy-voor [beelden](../governance/policy/samples/index.md)voor json-voor beelden voor Azure Policy.
 
 ### <a name="how-many-labs-can-i-create-under-the-same-subscription"></a>Hoeveel Labs kan ik onder hetzelfde abonnement maken?
-Er is geen specifieke limiet voor het aantal Labs dat per abonnement kan worden gemaakt. De hoeveelheid resources die per abonnement wordt gebruikt, is echter beperkt. Meer informatie over de [limieten en quota voor Azure-abonnementen](../azure-subscription-service-limits.md) en [hoe u deze limieten kunt verhogen](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
+Er is geen specifieke limiet voor het aantal Labs dat per abonnement kan worden gemaakt. De hoeveelheid resources die per abonnement wordt gebruikt, is echter beperkt. Meer informatie over de [limieten en quota voor Azure-abonnementen](../azure-resource-manager/management/azure-subscription-service-limits.md) en [hoe u deze limieten kunt verhogen](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
 
 
 ### <a name="how-many-vms-can-i-create-per-lab"></a>Hoeveel Vm's kan ik per Lab maken?
-Er is geen specifieke limiet voor het aantal Vm's dat per Lab kan worden gemaakt. De bronnen (VM-kernen, open bare IP-adressen, enzovoort) die worden gebruikt, zijn echter beperkt per abonnement. Meer informatie over de [limieten en quota voor Azure-abonnementen](../azure-subscription-service-limits.md) en [hoe u deze limieten kunt verhogen](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
+Er is geen specifieke limiet voor het aantal Vm's dat per Lab kan worden gemaakt. De bronnen (VM-kernen, open bare IP-adressen, enzovoort) die worden gebruikt, zijn echter beperkt per abonnement. Meer informatie over de [limieten en quota voor Azure-abonnementen](../azure-resource-manager/management/azure-subscription-service-limits.md) en [hoe u deze limieten kunt verhogen](https://azure.microsoft.com/blog/azure-limits-quotas-increase-requests).
 
 ### <a name="how-do-i-determine-the-ratio-of-users-per-lab-and-the-overall-number-of-labs-that-are-needed-across-an-organization"></a>Hoe kan ik de verhouding van gebruikers per Lab en het totale aantal Labs dat nodig is voor een hele organisatie bepalen?
 We raden u aan om de bedrijfs units en ontwikkelings groepen die zijn gekoppeld aan hetzelfde ontwikkel project te koppelen aan hetzelfde lab. U kunt dezelfde typen beleids regels, installatie kopieën en afsluit beleid Toep assen op beide groepen.
@@ -176,7 +176,7 @@ Mogelijk moet u ook geografische grenzen overwegen. Ontwikkel aars in het Noordo
 U kunt ook een Lab voor een specifiek project in Azure DevOps Projects gebruiken. Vervolgens past u beveiliging toe via een opgegeven Azure Active Directory groep, waarmee u toegang kunt krijgen tot beide sets resources. Het virtuele netwerk dat aan het lab is toegewezen, kan een andere grens zijn om gebruikers te consolideren.
 
 ### <a name="how-can-we-prevent-the-deletion-of-resources-within-a-lab"></a>Hoe kan ik voor komen dat resources binnen een Lab worden verwijderd?
-We raden u aan om de juiste machtigingen op het lab-niveau in te stellen, zodat alleen geautoriseerde gebruikers resources kunnen verwijderen of het lab-beleid wijzigen. Ontwikkel aars moeten worden geplaatst in de **DevTest Labs-gebruikers** groep. De lead ontwikkelaar of de lead van de infra structuur moet de eigenaar van de **DevTest Labs**zijn. We raden u aan slechts twee Lab-eigen aars te hebben. Dit beleid strekt zich naar de code opslagplaats om beschadiging te voor komen. Lab-gebruikers hebben rechten om resources te gebruiken, maar kunnen geen Lab-beleids regels bijwerken. Raadpleeg het volgende artikel waarin de rollen en rechten worden vermeld die elke ingebouwde groep binnen een Lab heeft: [Eigen aren en gebruikers toevoegen in azure DevTest Labs](devtest-lab-add-devtest-user.md).
+We raden u aan om de juiste machtigingen op het lab-niveau in te stellen, zodat alleen geautoriseerde gebruikers resources kunnen verwijderen of het lab-beleid wijzigen. Ontwikkel aars moeten worden geplaatst in de **DevTest Labs-gebruikers** groep. De lead ontwikkelaar of de lead van de infra structuur moet de eigenaar van de **DevTest Labs**zijn. We raden u aan slechts twee Lab-eigen aars te hebben. Dit beleid strekt zich naar de code opslagplaats om beschadiging te voor komen. Lab-gebruikers hebben rechten om resources te gebruiken, maar kunnen geen Lab-beleids regels bijwerken. Raadpleeg het volgende artikel waarin de rollen en rechten worden vermeld die elke ingebouwde groep binnen een Lab heeft: [eigen aren en gebruikers toevoegen in azure DevTest Labs](devtest-lab-add-devtest-user.md).
 
 ### <a name="how-do-i-share-a-direct-link-to-my-lab"></a>Hoe kan ik een directe koppeling naar mijn lab delen?
 
@@ -214,7 +214,7 @@ Ja, u kunt meerdere schijven koppelen aan uw Vm's.
 Voer een van de volgende stappen uit om Windows-client installatie kopieën (Windows 7 of een hogere versie) te gebruiken voor het ontwikkelen of testen in Azure:
 
 - [Koop een MSDN-abonnement](https://www.visualstudio.com/products/how-to-buy-vs).
-- Als u een Enterprise Agreement hebt, maakt u een Azure-abonnement met de [Enter prise dev/test-aanbieding](https://azure.microsoft.com/offers/ms-azr-0148p).
+- Als u een Enterprise Agreement hebt, maakt u een Azure-abonnement met de [Enterprise dev/test aanbieding](https://azure.microsoft.com/offers/ms-azr-0148p).
 
 Voor meer informatie over de Azure-tegoeden voor elke MSDN-aanbieding raadpleegt u het [maandelijkse Azure-tegoed voor Visual Studio-abonnees](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/).
 
@@ -285,7 +285,7 @@ Als u het uploaden van VHD-bestanden voor het maken van aangepaste installatie k
 
 Zoeken naar het doel-opslag account dat is gekoppeld aan uw Lab:
 
-1.  Meld u aan bij [Azure Portal](https://portal.azure.com).
+1.  Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2.  Selecteer **resource groepen**in het menu links.
 3.  Zoek en selecteer de resource groep die is gekoppeld aan uw Lab.
 4.  Selecteer een van de opslag accounts onder **overzicht**.
@@ -304,7 +304,7 @@ Azure Marketplace moet standaard worden gebruikt, tenzij u specifieke problemen 
 - Nalevings-of regelgeving (bijvoorbeeld beveiligings beleid) die voor alle machines aanwezig moet zijn.
 - Het gebruik van aangepaste installatie kopieën mag niet lichter worden beschouwd. Ze introduceren extra complexiteit, omdat u nu VHD-bestanden moet beheren voor de onderliggende basis installatie kopieën. U moet deze basis installatie kopieën ook regel matig patchen met software-updates. Deze updates omvatten nieuwe besturings systemen (OS)-updates en eventuele updates of configuratie wijzigingen die nodig zijn voor het software pakket zelf.
 
-## <a name="artifacts"></a>Artefacten
+## <a name="artifacts"></a>Artifacts
 
 ### <a name="what-are-artifacts"></a>Wat zijn artefacten?
 Artefacten zijn aanpas bare elementen die u kunt gebruiken om uw nieuwste bits te implementeren of uw ontwikkel hulpprogramma's te implementeren op een VM. Koppel artefacten aan uw virtuele machine wanneer u de virtuele machine maakt. Nadat de virtuele machine is ingericht, worden de artefacten geïmplementeerd en geconfigureerd voor uw VM. Verschillende bestaande artefacten zijn beschikbaar in onze [open bare github-opslag plaats](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts). U kunt ook [uw eigen artefacten ontwerpen](devtest-lab-artifact-author.md).
@@ -324,14 +324,14 @@ De [opslag plaats voor open bare artefacten](https://github.com/Azure/azure-devt
 Als onderdeel van de algehele beheer-en configuratie strategie van uw organisatie wordt u aangeraden een gecentraliseerde opslag plaats te gebruiken. Wanneer u meerdere opslag plaatsen gebruikt, kunnen ze gedurende de periode een silo van onbeheerde software worden. Met een centrale opslag plaats kunnen meerdere teams artefacten uit deze opslag plaats gebruiken voor hun projecten. Het dwingt de standaardisatie af, de beveiliging, het gemak van het beheer en elimineert het dupliceren van inspanningen. Als onderdeel van de gecentraliseerde zijn de volgende acties aanbevolen procedures voor het beheer en duurzaamheid op lange termijn:
 
 - Koppel de Azure-opslag plaatsen aan dezelfde Azure Active Directory-Tenant die door het Azure-abonnement wordt gebruikt voor verificatie en autorisatie.
-- Maak een groep met `All DevTest Labs Developers` de naam in azure Active Directory die centraal wordt beheerd. Ontwikkel aars die bijdraagt aan het ontwikkelen van artefacten, moeten in deze groep worden geplaatst.
+- Maak een groep met de naam `All DevTest Labs Developers` in Azure Active Directory die centraal wordt beheerd. Ontwikkel aars die bijdraagt aan het ontwikkelen van artefacten, moeten in deze groep worden geplaatst.
 - Dezelfde Azure Active Directory groep kan worden gebruikt om toegang te bieden tot de Azure opslag plaatsen-opslag plaats en het lab.
 - In azure opslag plaatsen moet vertakkingen of forking worden gebruikt voor het scheiden van een opslag plaats in ontwikkeling van de primaire productie opslagplaats. Inhoud wordt alleen toegevoegd aan de hoofd vertakking met een pull-aanvraag nadat de juiste code is gecontroleerd. Zodra de code revisor de wijziging heeft goedgekeurd, wordt een lead ontwikkelaar, die verantwoordelijk is voor het onderhoud van de hoofd vertakking, samengevoegd met de bijgewerkte code.
 
 ## <a name="cicd-integration"></a>CI/CD-integratie
 
 ### <a name="does-devtest-labs-integrate-with-my-cicd-toolchain"></a>Is DevTest Labs geïntegreerd met mijn CI/CD-hulpprogramma keten?
-Als u Azure DevOps gebruikt, kunt u een uitbrei [ding van DevTest Labs-taken](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) gebruiken om uw release pijplijn in DevTest Labs te automatiseren. Enkele van de taken die u met deze extensie kunt uitvoeren, zijn onder andere:
+Als u Azure DevOps gebruikt, kunt u een [uitbrei ding van DevTest Labs-taken](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks) gebruiken om uw release pijplijn in DevTest Labs te automatiseren. Enkele van de taken die u met deze extensie kunt uitvoeren, zijn onder andere:
 
 - Maak en implementeer automatisch een virtuele machine. U kunt de virtuele machine ook configureren met de nieuwste versie met behulp van Azure file copy of Power shell Azure DevOps Services-taken.
 - Automatisch de status van een virtuele machine vastleggen na het testen om een fout op dezelfde VM te reproduceren voor verder onderzoek.
@@ -343,16 +343,16 @@ De volgende blog berichten bieden richt lijnen en informatie over het gebruik va
 - [Een nieuwe virtuele machine implementeren in een bestaand DevTest Labs Lab van Azure DevOps Services](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 - [Release beheer van Azure DevOps Services gebruiken voor continue implementaties naar DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-Voor de/Continuous Delivery (CD) toolchains van andere doorlopende integratie (CI), kunt u dezelfde scenario's gebruiken door [Azure Resource Manager sjablonen](https://azure.microsoft.com/resources/templates/) te implementeren met behulp van [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) -cmdlets en [.net sdk's](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). U kunt ook [rest-api's gebruiken voor DevTest Labs](https://aka.ms/dtlrestapis) om te integreren met uw hulpprogramma keten.
+Voor de/Continuous Delivery (CD) toolchains van andere doorlopende integratie (CI), kunt u dezelfde scenario's gebruiken door [Azure Resource Manager sjablonen](https://azure.microsoft.com/resources/templates/) te implementeren met behulp van [Azure PowerShell-cmdlets](../azure-resource-manager/resource-group-template-deploy.md) en [.net sdk's](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). U kunt ook [rest-api's gebruiken voor DevTest Labs](https://aka.ms/dtlrestapis) om te integreren met uw hulpprogramma keten.
 
-## <a name="networking"></a>Netwerken
+## <a name="networking"></a>Networking
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Wanneer moet ik een nieuw virtueel netwerk maken voor mijn DevTest Labs-omgeving versus een bestaand virtueel netwerk gebruiken?
 Als uw Vm's moeten communiceren met de bestaande infra structuur, kunt u overwegen om een bestaand virtueel netwerk in uw DevTest Labs-omgeving te gebruiken. Als u ExpressRoute gebruikt, is het raadzaam om de hoeveelheid VNets/subnetten zo klein mogelijk te maken dat u de IP-adres ruimte die wordt toegewezen voor gebruik in de abonnementen niet hoeft te fragmenteren. 
 
 Denk ook aan het gebruik van het VNet-peering-patroon ([hub-spoke model](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)). Deze aanpak maakt vnet/subnet-communicatie mogelijk tussen abonnementen. Anders kan elke DevTest Labs-omgeving een eigen virtueel netwerk hebben. 
 
-Er zijn [limieten](../azure-subscription-service-limits.md) voor het aantal virtuele netwerken per abonnement. De standaard waarde is 50, maar deze limiet kan worden verhoogd naar 100.
+Er zijn [limieten](../azure-resource-manager/management/azure-subscription-service-limits.md) voor het aantal virtuele netwerken per abonnement. De standaard waarde is 50, maar deze limiet kan worden verhoogd naar 100.
 
 ### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>Wanneer moet ik een gedeeld IP-adres versus een openbaar IP-adres versus particulier IP-adres gebruiken?
  

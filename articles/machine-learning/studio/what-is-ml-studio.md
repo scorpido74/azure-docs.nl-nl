@@ -11,50 +11,50 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: 325278ee0222070ce7c02c1d72961f0431284677
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: c0dcd8f8f5ecd2d333e610c96ea89a44f8f4c547
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73670551"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75528348"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Wat is Machine Learning Studio (klassiek)?
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
 
-Microsoft Azure Machine Learning Studio (klassiek) is een hulp programma voor het slepen en neerzetten dat u kunt gebruiken voor het bouwen, testen en implementeren van predictive analytics oplossingen voor uw gegevens.  De klassieke versie van Machine Learning Studio publiceert modellen als webservices die eenvoudig kunnen worden gebruikt door aangepaste apps of BI-hulpprogram ma's zoals Excel.
+Microsoft Azure Machine Learning Studio (klassiek) is een hulp programma voor het slepen en neerzetten dat u kunt gebruiken voor het bouwen, testen en implementeren van predictive analytics oplossingen voor uw gegevens. Azure Machine Learning Studio (klassiek) publiceert modellen als webservices die eenvoudig kunnen worden gebruikt door aangepaste apps of BI-hulpprogram ma's zoals Excel.
 
 Machine Learning Studio (klassiek) is waar data Science, predictive analytics, cloud resources en uw gegevens aan voldoen.
 
 ## <a name="the-machine-learning-studio-classic--interactive-workspace"></a>De interactieve werk ruimte Machine Learning Studio (klassiek)
 Voor het ontwikkelen van een voorspellend analyse model gebruikt u doorgaans gegevens uit een of meer bronnen, transformeert en analyseert u die gegevens via verschillende gegevens manipulatie en statistische functies en genereert u een set resultaten. Het ontwikkelen van een model als dit is een iteratief proces. Terwijl u de verschillende functies en de bijbehorende parameters aanpast, worden de resultaten geconvergeerd tot u een afdoende getraind en doeltreffend model hebt.
 
-De klassieke versie van Azure Machine Learning Studio biedt u een interactieve, visuele werk ruimte waarmee u eenvoudig een voorspellend analyse model kunt bouwen, testen en herhalen. U sleept ***gegevens sets*** en analyse ***modules*** naar een interactief canvas en verbindt deze met elkaar om een ***experiment***te vormen, dat u in machine learning Studio (klassiek) uitvoert. Als u het modelontwerp wilt herhalen, kunt u het experiment bewerken, desgewenst een kopie ervan opslaan en het opnieuw uitvoeren. Wanneer u klaar bent, kunt u het ***trainingsexperiment*** converteren naar een ***voorspellend experiment*** en dit vervolgens ***publiceren*** als webservice, zodat het model ook voor anderen toegankelijk is.
+Azure Machine Learning Studio (klassiek) biedt een interactieve, visuele werk ruimte om eenvoudig een voorspellend analyse model te bouwen, te testen en te herhalen. U sleept ***gegevens sets*** en analyse ***modules*** naar een interactief canvas en verbindt deze met elkaar om een ***experiment***te vormen, dat u in machine learning Studio (klassiek) uitvoert. Als u het modelontwerp wilt herhalen, kunt u het experiment bewerken, desgewenst een kopie ervan opslaan en het opnieuw uitvoeren. Wanneer u klaar bent, kunt u het ***trainingsexperiment*** converteren naar een ***voorspellend experiment*** en dit vervolgens ***publiceren*** als webservice, zodat het model ook voor anderen toegankelijk is.
 
 Er is geen programmering vereist. u kunt gegevens sets en modules visueel verbinden om uw voorspellende analyse model samen te stellen.
 
-![Azure Machine Learning Studio diagram: experimenten maken, gegevens lezen voor veel bronnen, gescoorde gegevens schrijven, modellen schrijven.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
+![Diagram van Azure Machine Learning Studio (klassiek): experimenten maken, gegevens lezen voor veel bronnen, gescoorde gegevens schrijven, modellen schrijven.](./media/what-is-ml-studio/azure-ml-studio-diagram.jpg)
 
 <a name="compare"></a>
 ## <a name="how-does-machine-learning-studio-classic-differ-from-azure-machine-learning"></a>Wat is het verschil tussen Machine Learning Studio (klassiek) en Azure Machine Learning?
 
-[Azure machine learning](../service/overview-what-is-azure-ml.md) biedt **zowel sdk's als** de Azure machine learning Designer (preview) om snel gegevens te kunnen prepen, machine learning modellen te trainen en te implementeren. De Designer biedt een vergelijk bare functionaliteit voor slepen en neerzetten naar Studio (klassiek). Maar in tegens telling tot het eigen reken platform van Studio (klassiek) maakt de ontwerper gebruik van uw eigen reken resources en is deze volledig geïntegreerd in Azure Machine Learning.
+[Azure machine learning](../overview-what-is-azure-ml.md) biedt **zowel sdk's als** de Azure machine learning Designer (preview) om snel gegevens te kunnen prepen, machine learning modellen te trainen en te implementeren. De Designer biedt een vergelijk bare functionaliteit voor slepen en neerzetten naar Studio (klassiek). Maar in tegens telling tot het eigen reken platform van Studio (klassiek) maakt de ontwerper gebruik van uw eigen reken resources en is deze volledig geïntegreerd in Azure Machine Learning.
 
 Hier volgt een snelle vergelijking:
 
 || Machine Learning Studio (klassiek) | Azure Machine Learning |
 |---| --- | --- |
-| Interface slepen en neerzetten | Ja | Ja, [Azure machine learning Designer (preview-versie)](../service/concept-designer.md) |
+| Interface slepen en neerzetten | Ja | Ja, [Azure machine learning Designer (preview-versie)](../concept-designer.md) |
 | Experiment | Schaalbaar (10-GB training-gegevens limiet) | Schalen met Compute target |
 | Modules voor de interface voor slepen en neerzetten | Allerlei | Initiële set populaire [modules](../algorithm-module-reference/module-reference.md)|
-|Doelen van de trainings compute| Eigen reken doel, alleen CPU-ondersteuning| Ondersteunt Azure Machine Learning Compute (GPU of CPU) en virtuele notebook-Vm's.<br/>([Andere reken processen die worden ondersteund in SDK](../service/concept-compute-target.md#train))|
-|Berekenings doelen afstellen| De indeling van de oorspronkelijke webservice, niet aanpasbaar |  Azure Kubernetes-service en AML-compute <br/>([Andere reken processen die worden ondersteund in SDK](../service/how-to-deploy-and-where.md)) |
-| ML-pijp lijn | Niet ondersteund | Ondersteunde [pijp lijnen](../service/concept-ml-pipelines.md) |
+|Doelen van de trainings compute| Eigen reken doel, alleen CPU-ondersteuning| Ondersteunt Azure Machine Learning Compute (GPU of CPU) en virtuele notebook-Vm's.<br/>([Andere reken processen die worden ondersteund in SDK](../concept-compute-target.md#train))|
+|Berekenings doelen afstellen| De indeling van de oorspronkelijke webservice, niet aanpasbaar |  Azure Kubernetes-service en AML-compute <br/>([Andere reken processen die worden ondersteund in SDK](../how-to-deploy-and-where.md)) |
+| ML-pijp lijn | Niet ondersteund | Ondersteunde [pijp lijnen](../concept-ml-pipelines.md) |
 | MLOps | Basis model beheer en-implementatie | Configureer bare implementatie-model-en pijplijn versie beheer en tracering |
-| Model indeling | Eigen indeling, alleen Studio | Standaard indeling, afhankelijk van het type trainings taak |
-|Automatische model training en afstemming tuning | Nee | Nog niet in de ontwerp functie <br/> ([Ondersteund op de pagina voor het land van de SDK en de werk ruimte](../service/concept-automated-ml.md)) | 
+| Model indeling | Alleen een eigen indeling, Studio (klassiek) | Standaard indeling, afhankelijk van het type trainings taak |
+|Automatische model training en afstemming tuning | Nee | Nog niet in de ontwerp functie <br/> ([Ondersteund op de pagina voor het land van de SDK en de werk ruimte](../concept-automated-ml.md)) | 
 
-Probeer de ontwerp functie uit met [de zelf studie: prijs van auto Mobile voors pellen met de ontwerper](../service/tutorial-designer-automobile-price-train-score.md)
+Probeer de ontwerp functie uit met [de zelf studie: prijs van auto Mobile voors pellen met de ontwerper](../tutorial-designer-automobile-price-train-score.md)
 
 > [!NOTE]
 > Modellen die zijn gemaakt in Studio (klassiek), kunnen niet worden geïmplementeerd of beheerd door Azure Machine Learning. Modellen die in de ontwerp functie zijn gemaakt en geïmplementeerd, kunnen echter worden beheerd via de werk ruimte Azure Machine Learning.
@@ -93,7 +93,7 @@ Wanneer u een experiment bouwt, kunt u kiezen uit de lijst met gegevens sets die
 Zie voor een lijst met voor beelden van gegevens sets die zijn opgenomen in Machine Learning Studio (klassiek) [de voorbeeld gegevenssets gebruiken in azure machine learning Studio (klassiek)](use-sample-datasets.md).
 
 ### <a name="modules"></a>Modules
-Een module is een algoritme dat u met uw gegevens kunt uitvoeren.  De klassieke versie van Machine Learning Studio heeft een aantal modules, variërend van functies voor het inkomen van gegevens tot trainings-, Score-en validatie processen. Hier volgen enkele voorbeelden van opgenomen modules:
+Een module is een algoritme dat u met uw gegevens kunt uitvoeren. Azure Machine Learning Studio (klassiek) heeft een aantal modules die variëren van de functies voor het inkomen van gegevens tot trainings-, Score-en validatie processen. Hier volgen enkele voorbeelden van opgenomen modules:
 
 * [Converteren naar ARFF][convert-to-arff] : converteert een door .net geserialiseerde gegevensset naar kenmerk-relation File Format (ARFF).
 * [Berekende elementaire statistieken][elementary-statistics] : berekent elementaire statistieken, zoals het gemiddelde, de standaard afwijking, enzovoort.

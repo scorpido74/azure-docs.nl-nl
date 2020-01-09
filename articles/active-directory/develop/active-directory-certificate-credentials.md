@@ -1,7 +1,7 @@
 ---
-title: Certificaat referenties voor Azure AD
+title: Certificaat referenties voor micro soft-identiteits platform
 titleSuffix: Microsoft identity platform
-description: In dit artikel worden de registratie en het gebruik van certificaat referenties voor toepassings verificatie beschreven
+description: In dit artikel worden de registratie en het gebruik van certificaat referenties voor toepassings verificatie beschreven.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -10,27 +10,26 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 12/18/2019
 ms.author: ryanwi
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d37b390e39d2b991ea01468feffbe39c9578af54
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7a44d89e19a1efc54e2c3c49053ec9badc91ba97
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963865"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424707"
 ---
-# <a name="azure-ad-application-authentication-certificate-credentials"></a>Referenties voor Azure AD-toepassings verificatie certificaat
+# <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Referenties voor verificatie certificaat voor micro soft-identiteits platform
 
-Met Azure Active Directory (Azure AD) kan een toepassing eigen referenties gebruiken voor verificatie, bijvoorbeeld in de OAuth 2,0-client referenties toekenning stroom ([v 1.0](v1-oauth2-client-creds-grant-flow.md), [v 2.0](v2-oauth2-client-creds-grant-flow.md)) en de namens-stroom ([v 1.0](v1-oauth2-on-behalf-of-flow.md), [v 2.0](v2-oauth2-on-behalf-of-flow.md)).
+Met micro soft Identity platform kan een toepassing eigen referenties voor authenticatie gebruiken, bijvoorbeeld in de [OAuth 2,0-client referenties Grant flowv 2.0](v2-oauth2-client-creds-grant-flow.md) en de namens [-stroom](v2-oauth2-on-behalf-of-flow.md).
 
 Een van de referenties die een toepassing voor verificatie kan gebruiken is een JSON Web Token (JWT)-verklaring die is ondertekend met een certificaat waarvan de toepassing eigenaar is.
 
 ## <a name="assertion-format"></a>Bevestigings indeling
-
-Als u de bewering wilt berekenen, kunt u een van de vele [JSON Web token](https://jwt.ms/) bibliotheken gebruiken in de taal van uw keuze. De gegevens die door het token worden uitgevoerd, zijn als volgt:
+Micro soft Identity platform om de bewering te berekenen, kunt u een van de vele [JSON Web token](https://jwt.ms/) bibliotheken gebruiken in de taal van uw keuze. De gegevens die door het token worden uitgevoerd, zijn als volgt:
 
 ### <a name="header"></a>Header
 
@@ -89,9 +88,9 @@ De volgende teken reeks is een voor beeld van een gecodeerde bevestiging. Als u 
 Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
-## <a name="register-your-certificate-with-azure-ad"></a>Uw certificaat registreren bij Azure AD
+## <a name="register-your-certificate-with-microsoft-identity-platform"></a>Uw certificaat registreren bij micro soft Identity platform
 
-U kunt de certificaat referentie koppelen aan de client toepassing in azure AD via de Azure Portal een van de volgende methoden gebruiken:
+U kunt de certificaat referentie koppelen aan de client toepassing in het micro soft Identity-platform via de Azure Portal een van de volgende methoden gebruiken:
 
 ### <a name="uploading-the-certificate-file"></a>Het certificaat bestand uploaden
 
@@ -125,7 +124,7 @@ In de registratie van de Azure-app voor de client toepassing:
        }
    ]
    ```
-3. Sla de wijzigingen op in het manifest van de toepassing en upload het manifest vervolgens naar Azure AD. 
+3. Sla de wijzigingen op in het manifest van de toepassing en upload het manifest naar het micro soft Identity-platform. 
 
    De eigenschap `keyCredentials` heeft meerdere waarden, dus u kunt meerdere certificaten uploaden voor uitgebreid sleutel beheer.
    
@@ -134,4 +133,4 @@ In de registratie van de Azure-app voor de client toepassing:
 > [!NOTE]
 > U moet de X5T-header berekenen door de hash van het certificaat te gebruiken en deze te converteren naar een base64-teken reeks. C# Dit ziet er ongeveer als volgt uit: `System.Convert.ToBase64String(cert.GetCertHash());`
 
-Het code voorbeeld voor het [verifiëren van Azure AD in daemon-apps met certificaten](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) laat zien hoe een toepassing eigen referenties voor verificatie gebruikt. Ook wordt uitgelegd hoe u [een zelfondertekend certificaat kunt maken](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) met behulp van de `New-SelfSignedCertificate` Power shell-opdracht. U kunt ook gebruikmaken van de scripts voor het maken van de [app](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) voor het maken van de certificaten, het berekenen van de vinger afdruk, enzovoort.
+Het code voorbeeld voor het [verifiëren van micro soft Identity platform in daemon-apps met certificaten](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential) laat zien hoe een toepassing eigen referenties voor verificatie gebruikt. Ook wordt uitgelegd hoe u [een zelfondertekend certificaat kunt maken](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential#create-a-self-signed-certificate) met behulp van de `New-SelfSignedCertificate` Power shell-opdracht. U kunt ook gebruikmaken van de scripts voor het maken van de [app](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential/blob/master/AppCreationScripts/AppCreationScripts.md) voor het maken van de certificaten, het berekenen van de vinger afdruk, enzovoort.

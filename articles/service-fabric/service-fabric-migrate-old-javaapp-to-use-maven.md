@@ -1,25 +1,16 @@
 ---
-title: Migratie van Java SDK naar Maven - Oude Azure Service Fabric Java-toepassingen bijwerken voor gebruik van Maven | Microsoft Docs
+title: Migreren van Java SDK naar maven
 description: U moet de oudere Java-toepassingen die de Service Fabric Java SDK gebruikten, bijwerken om Service Fabric Java-afhankelijkheden op te halen van Maven. Als u de stappen in dit artikel hebt uitgevoerd, moeten de oudere Java-toepassingen zonder problemen kunnen worden gebouwd.
-services: service-fabric
-documentationcenter: java
 author: rapatchi
-manager: chackdan
-editor: ''
-ms.assetid: bf84458f-4b87-4de1-9844-19909e368deb
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: dbd85b3647a60ce873c1a55b851bd47ece103282
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b5e126ebdf3b89470472391c59d378c7a6d39b86
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60718391"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609805"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Bestaande Java Service Fabric-toepassingen bijwerken voor het ophalen van Java-bibliotheken van Maven
 We hebben onlangs de binaire bestanden van Java Service Fabric verplaatst van de Service Fabric Java SDK naar Maven-hosting. U kunt nu **mavencentral** gebruiken om de meest recente Service Fabric Java-afhankelijkheden op te halen. Deze Quick Start helpt u om uw bestaande Java-toepassingen bij te werken, zodat deze compatibel zijn met de op Maven gebaseerde build. Deze toepassingen werden eerder gemaakt voor gebruik met Service Fabric Java SDK, met behulp van een Yeoman-sjabloon of Eclipse.
@@ -88,7 +79,7 @@ Betrouwbare ondersteuning voor stateless services in Service Fabric voor uw toep
   }
   ```
 
-### <a name="others"></a>Andere
+### <a name="others"></a>Overige
 #### <a name="transport"></a>Transport
 
 Ondersteuning van transportlaag voor Service Fabric Java-toepassing. U hoeft deze afhankelijkheid niet expliciet toe te voegen aan uw Reliable Actor- of Service-toepassingen, tenzij u programmeert op de transportlaag.
@@ -167,7 +158,7 @@ task copyDeps <<{
     }
 }
 ```
-Om nu afhankelijkheden op te halen van Maven, moet het **bijgewerkte** bestand ``build.gradle`` de volgende onderdelen bevatten:
+Om de afhankelijkheden van Maven op te halen, worden de ``build.gradle`` **bijgewerkte** onderdelen nu als volgt:
 ```
 repositories {
         mavenCentral()
@@ -241,7 +232,7 @@ dependencies {
 .
 .
 ```
-Om nu afhankelijkheden op te halen van Maven, moet het **bijgewerkte** bestand ``build.gradle`` de volgende onderdelen bevatten:
+Om de afhankelijkheden van Maven op te halen, worden de ``build.gradle`` **bijgewerkte** onderdelen nu als volgt:
 ```
 repositories {
     mavenCentral()
@@ -313,7 +304,7 @@ task copyDeps<< {
     }
 }
 ```
-Om nu afhankelijkheden op te halen van Maven, moet het **bijgewerkte** bestand ``build.gradle`` de volgende onderdelen bevatten:
+Om de afhankelijkheden van Maven op te halen, worden de ``build.gradle`` **bijgewerkte** onderdelen nu als volgt:
 ```
 repositories {
     mavenCentral()
@@ -413,7 +404,7 @@ task copyDeps<< {
         }
 }
 ```
-Om nu afhankelijkheden op te halen van Maven, moet het **bijgewerkte** bestand ``build.gradle`` de volgende onderdelen bevatten:
+Om de afhankelijkheden van Maven op te halen, worden de ``build.gradle`` **bijgewerkte** onderdelen nu als volgt:
 ```
 repositories {
     mavenCentral()

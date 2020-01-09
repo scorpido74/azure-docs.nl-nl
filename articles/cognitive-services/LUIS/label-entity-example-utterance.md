@@ -8,33 +8,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.author: diberry
-ms.openlocfilehash: 58e813d30273db4e011039aa43cd59c61507895e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: f7d6e98205afad2ed2c4aea30e635254f79acaa1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74383707"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448094"
 ---
 # <a name="label-machine-learned-entity-in-an-example-utterance"></a>Door de machine geleerde entiteit in een voor beeld-utterance
 
-Het labelen van een entiteit in een voor beeld utterance geeft LUIS een voor beeld van wat de entiteit is en waar de entiteit kan worden weer gegeven in de utterance. 
+Het labelen van een entiteit in een voor beeld utterance geeft LUIS een voor beeld van wat de entiteit is en waar de entiteit kan worden weer gegeven in de utterance.
 
 ## <a name="labeling-machine-learned-entity"></a>Door de machine geleerde entiteit labelen
 
-Bekijk de zin `hi, please I want a cheese pizza in 20 minutes`. 
+Bekijk de zin `hi, please I want a cheese pizza in 20 minutes`.
 
 1. Selecteer de meest linkse tekst en selecteer vervolgens de juiste tekst van de entiteit en kies vervolgens de entiteit waaraan u een label wilt toe. in dit geval is de volg orde voltooid. De _volledige order_ is gelabeld in de volgende afbeelding.
 
     > [!div class="mx-imgBorder"]
     > ![label volledige, door de machine geleerde entiteit](media/label-utterances/example-1-label-machine-learned-entity-complete-order.png)
 
-1. Selecteer de entiteit in het pop-upvenster. De entiteit volledige pizza order bevat alle woorden (van links naar rechts in het Engels) die een label hebben. 
+1. Selecteer de entiteit in het pop-upvenster. De entiteit volledige pizza order bevat alle woorden (van links naar rechts in het Engels) die een label hebben.
 
 ## <a name="review-labeled-text"></a>Gelabelde tekst controleren
 
-Bekijk na het labelen het voor beeld utterance en zorg ervoor dat de geselecteerde hoeveelheid tekst is onderstreept met de gekozen entiteit. De ononderbroken lijn geeft aan dat de tekst is gelabeld. 
+Bekijk na het labelen het voor beeld utterance en zorg ervoor dat de geselecteerde hoeveelheid tekst is onderstreept met de gekozen entiteit. De ononderbroken lijn geeft aan dat de tekst is gelabeld.
 
 > [!div class="mx-imgBorder"]
 > ![gelabelde volledige, door de machine geleerde entiteit](media/label-utterances/example-1-label-machine-learned-entity-complete-order-labeled.png)
@@ -55,12 +55,12 @@ U kunt ook de naam van de entiteit selecteren boven de tekst en vervolgens voor 
 
 Het entiteits palet biedt een alternatief voor de vorige label ervaring. Hiermee kunt u tekst vervormen om deze direct te labelen met een entiteit.
 
-1. Open het deel venster entiteit door in de rechter bovenhoek van de tabel utterance op het pictogram markeer stift te klikken. 
+1. Open het deel venster entiteit door in de rechter bovenhoek van de tabel utterance op het pictogram markeer stift te klikken.
 
     > [!div class="mx-imgBorder"]
     > het kleuren palet ![voor door de computer geleerde entiteit](media/label-utterances/example-1-label-machine-learned-entity-palette.png)
 
-2. Selecteer het onderdeel entiteit. Deze actie wordt visueel aangeduid met een nieuwe cursor. De cursor volgt de muis tijdens het verplaatsen van de portal. 
+2. Selecteer het onderdeel entiteit. Deze actie wordt visueel aangeduid met een nieuwe cursor. De cursor volgt de muis tijdens het verplaatsen van de portal.
 
     > [!div class="mx-imgBorder"]
     > het kleuren palet ![voor door de computer geleerde entiteit](media/label-utterances/example-1-label-machine-learned-entity-palette-menu.png)
@@ -77,11 +77,20 @@ Subonderdelen in entiteiten hebben hetzelfde label als entiteiten op het hoogste
 > [!div class="mx-imgBorder"]
 > het kleuren palet ![voor door de computer geleerde entiteit](media/label-utterances/example-1-label-machine-learned-entity-subcomponent.png)
 
-Subonderdelen kunnen alleen worden gelabeld als het bovenliggende item ook een label heeft. 
+Subonderdelen kunnen alleen worden gelabeld als het bovenliggende item ook een label heeft.
+
+## <a name="labeling-entity-roles"></a>Entiteits rollen labelen
+
+Entiteits rollen worden aangeduid met het palet entity.
+
+1. Selecteer op de detail pagina Details het **entiteits palet** in de context werkbalk.
+1. Nadat het entiteits palet wordt geopend, selecteert u de entiteit in de lijst met entiteiten.
+1. Ga naar de **entiteits controle**en selecteer een bestaande rol of maak een nieuwe rol.
+1. In het voor beeld utterance tekst labelt u de tekst met de rol van entiteit. 
 
 ## <a name="unlabel-entities"></a>Entiteiten onlabelen
 
-Als u het label van een entiteit ongewijzigd wilt laten, selecteert u de naam van de entiteit onder de tekst en selecteert u **Label**opheffen. Als de entiteit waarvoor u een label wilt maken een label subonderdelen heeft, moeten de subonderdelen eerst worden ontlabeld. 
+Als u het label van een entiteit ongewijzigd wilt laten, selecteert u de naam van de entiteit onder de tekst en selecteert u **Label**opheffen. Als de entiteit waarvoor u een label wilt maken een label subonderdelen heeft, moeten de subonderdelen eerst worden ontlabeld.
 
 ## <a name="editing-labels-using-the-entity-palette"></a>Labels bewerken met het entiteits palet
 
@@ -98,7 +107,6 @@ Bijvoorbeeld:
 
     > [!div class="mx-imgBorder"]
     > het kleuren palet ![voor door de computer geleerde entiteit](media/label-utterances/edit-label-with-palette-2.png)
-
 
 ## <a name="labels-for-matching-text-entities"></a>Labels voor overeenkomende-tekst entiteiten
 

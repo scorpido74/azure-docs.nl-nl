@@ -1,18 +1,14 @@
 ---
-title: Azure Service Fabric-toepassing implementeren met een door de gebruiker toegewezen beheerde identiteit | Microsoft Docs
+title: Een app implementeren met een door de gebruiker toegewezen beheerde identiteit
 description: In dit artikel wordt beschreven hoe u Service Fabric-toepassing implementeert met een door de gebruiker toegewezen beheerde identiteit
-services: service-fabric
-author: athinanthny
-ms.service: service-fabric
 ms.topic: article
-ms.date: 08/09/2019
-ms.author: atsenthi
-ms.openlocfilehash: 0cc1e51a4d5f9ad54866066a4247e1588da381a6
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.date: 12/09/2019
+ms.openlocfilehash: a5eeaf0d6420fa36c0a78f7553ddfd82197d8ec4
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037492"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610332"
 ---
 # <a name="deploy-service-fabric-application-with-a-user-assigned-managed-identity-preview"></a>Service Fabric toepassing implementeren met een door de gebruiker toegewezen beheerde identiteit (preview)
 
@@ -22,7 +18,7 @@ Als u een Service Fabric toepassing wilt implementeren met beheerde identiteit, 
 > 
 > Toepassingen die niet zijn geïmplementeerd als een Azure-resource, **kunnen** geen beheerde identiteiten hebben. 
 >
-> Service Fabric toepassings implementatie met een beheerde identiteit wordt ondersteund met API `"2019-06-01-preview"`-versie. U kunt ook dezelfde API-versie gebruiken voor het toepassings type, de versie van het toepassings type en service bronnen.
+> Service Fabric toepassings implementatie met beheerde identiteit wordt ondersteund met API-versie `"2019-06-01-preview"`. U kunt ook dezelfde API-versie gebruiken voor het toepassings type, de versie van het toepassings type en service bronnen.
 >
 
 ## <a name="user-assigned-identity"></a>Door gebruiker toegewezen identiteit
@@ -31,7 +27,7 @@ Als u een toepassing met een door de gebruiker toegewezen identiteit wilt inscha
 
 ### <a name="application-template"></a>Toepassingsjabloon
 
-Als u de toepassing met de door de gebruiker toegewezen identiteit wilt inschakelen, moet u eerst de eigenschap **Identity** toevoegen aan de toepassings resource met het type **userAssigned** en de door de gebruiker toegewezen identiteiten, en vervolgens een **managedIdentities** -object toevoegen in dede sectie eigenschappen die een lijst met beschrijvende namen bevat voor principalId toewijzing voor elk van de door de gebruiker toegewezen identiteiten.
+Als u de toepassing met de door de gebruiker toegewezen identiteit wilt inschakelen, voegt u eerst de eigenschap **Identity** toe aan de toepassings resource met het type **userAssigned** en de door de gebruiker toegewezen identiteiten en voegt u vervolgens een **managedIdentities** -object toe aan de sectie **Eigenschappen** die een lijst met beschrijvende namen bevat waarmee de door de gebruiker toegewezen identiteiten worden principalId.
 
     {
       "apiVersion": "2019-06-01-preview",
@@ -66,7 +62,7 @@ In het bovenstaande voor beeld wordt de resource naam van de door de gebruiker t
 
 ### <a name="application-package"></a>Toepassingspakket
 
-1. Voor elke identiteit die is gedefinieerd `managedIdentities` in de sectie van de Azure Resource Manager sjabloon, `<ManagedIdentity>` voegt u een tag toe in het manifest van de toepassing, in de sectie **principals** . Het `Name` kenmerk moet overeenkomen met `name` de eigenschap die in `managedIdentities` de sectie is gedefinieerd.
+1. Voeg voor elke identiteit die is gedefinieerd in de sectie `managedIdentities` van de sjabloon Azure Resource Manager een `<ManagedIdentity>`-tag toe in het manifest van de toepassing, in de sectie **principals** . Het `Name` kenmerk moet overeenkomen met de eigenschap `name` die is gedefinieerd in de sectie `managedIdentities`.
 
     **ApplicationManifest. XML**
 
@@ -90,7 +86,7 @@ In het bovenstaande voor beeld wordt de resource naam van de door de gebruiker t
       </ServiceManifestImport>
     ```
 
-3. Werk het service manifest bij om een **ManagedIdentity** toe te voegen aan de sectie **resources** met `ServiceIdentityRef` de naam `IdentityBindingPolicy` die overeenkomt met de in het manifest van de toepassing:
+3. Werk het service manifest bij om een **ManagedIdentity** toe te voegen aan de sectie **resources** met de naam die overeenkomt met de `ServiceIdentityRef` in de `IdentityBindingPolicy` van het toepassings manifest:
 
     **ServiceManifest. XML**
 

@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
-ms.openlocfilehash: c5675dea2676122d96276b7cdb90b4c3c5340c7a
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 9181ef93dfedbc28b297bef48a0bc37ba6d69798
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71961217"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646758"
 ---
 # <a name="what-is-a-virtual-network-link"></a>Wat is een virtuele netwerk koppeling?
 
@@ -31,9 +31,9 @@ Eén privé-DNS-zone kan meerdere virtuele registratie-netwerken hebben, maar aa
 Wanneer u een koppeling met een virtueel netwerk maakt in een persoonlijke DNS-zone en ervoor kiest om de registratie van de DNS-record niet in te scha kelen, wordt het virtuele netwerk beschouwd als een virtueel netwerk met alleen een oplossing. DNS-records voor virtuele machines die in dergelijke netwerken worden geïmplementeerd, worden niet automatisch in de gekoppelde persoonlijke DNS-zone gemaakt. De virtuele machines die in een dergelijk netwerk zijn geïmplementeerd, kunnen echter wel een query uitvoeren op de DNS-records van de privé-DNS-zone. Deze records kunnen hand matig worden gemaakt door u of kunnen worden gevuld met andere virtuele netwerken die zijn gekoppeld als registratie netwerken met de privé-DNS-zone.
 Eén privé-DNS-zone kan meerdere virtuele omzettings netwerken hebben en er kunnen meerdere oplossings zones aan een virtueel netwerk zijn gekoppeld.
 
-## <a name="limits"></a>Limieten
+## <a name="limits"></a>Beperkingen
 
-Als u wilt weten hoeveel registratie-en oplossings netwerken u kunt koppelen aan privé-DNS-zones, raadpleegt u [Azure DNS limieten](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits)
+Als u wilt weten hoeveel registratie-en oplossings netwerken u kunt koppelen aan privé-DNS-zones, raadpleegt u [Azure DNS limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-dns-limits)
 
 ## <a name="other-considerations"></a>Andere overwegingen
 

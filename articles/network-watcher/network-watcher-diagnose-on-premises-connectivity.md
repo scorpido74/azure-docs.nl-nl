@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: c3300338ab37d502646c55411d658ad30581019f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 528684031404dbd907205e69f3565155fa1856b0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531832"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75454299"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnose van on-premises connectiviteit via VPN-gateways
 
-Met Azure VPN Gateway kunt u hybride oplossingen maken die de nood zaak voor een beveiligde verbinding tussen uw on-premises netwerk en uw virtuele Azure-netwerk. Als uw vereisten uniek zijn, is dit de keuze uit een on-premises VPN-apparaat. Azure ondersteunt momenteel [meerdere VPN-apparaten](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) die voortdurend worden gevalideerd in samen werking met de leveranciers van het apparaat. Controleer de apparaatspecifieke configuratie-instellingen voordat u uw on-premises VPN-apparaat configureert. Op dezelfde manier wordt Azure VPN Gateway geconfigureerd met een set [ondersteunde IPsec-para meters](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) die worden gebruikt voor het tot stand brengen van verbindingen. Het is momenteel niet mogelijk om een specifieke combi natie van IPsec-para meters op te geven of te selecteren in de Azure-VPN Gateway. Voor het tot stand brengen van een verbinding tussen on-premises en Azure, moeten de instellingen voor het on-premises VPN-apparaat in overeenstemming zijn met de IPsec-para meters die zijn voorgeschreven door Azure VPN Gateway. Als de instellingen correct zijn, is er sprake van een verlies van de verbinding en tot het oplossen van deze problemen was niet mogelijk en werden er meestal uur geduurd om het probleem te identificeren en op te lossen.
+Met Azure VPN Gateway kunt u hybride oplossingen maken die de nood zaak voor een beveiligde verbinding tussen uw on-premises netwerk en uw virtuele Azure-netwerk. Als uw vereisten uniek zijn, is dit de keuze uit een on-premises VPN-apparaat. Azure ondersteunt momenteel [meerdere VPN-apparaten](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable) die voortdurend worden gevalideerd in samen werking met de leveranciers van het apparaat. Controleer de apparaatspecifieke configuratie-instellingen voordat u uw on-premises VPN-apparaat configureert. Op dezelfde manier wordt Azure VPN Gateway geconfigureerd met een set [ondersteunde IPsec-para meters](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec) die worden gebruikt voor het tot stand brengen van verbindingen. Het is momenteel niet mogelijk om een specifieke combi natie van IPsec-para meters op te geven of te selecteren in de Azure-VPN Gateway. Voor het tot stand brengen van een verbinding tussen on-premises en Azure, moeten de instellingen voor het on-premises VPN-apparaat in overeenstemming zijn met de IPsec-para meters die zijn voorgeschreven door Azure VPN Gateway. Als de instellingen onjuist zijn, is er sprake van een verlies van de verbinding en tot het oplossen van deze problemen was niet lastig en duurde het meestal uur om het probleem te identificeren en op te lossen.
 
 Met de functie voor het oplossen van problemen met Azure Network Watcher kunt u problemen met uw gateway en verbindingen vaststellen en binnen enkele minuten voldoende informatie hebben om een weloverwogen beslissing te nemen om het probleem te verhelpen.
 
@@ -82,11 +82,11 @@ Met de functie voor het oplossen van problemen met Azure Network Watcher kunt u 
 
 ### <a name="gateway"></a>Gateway
 
-| Fout type | Reden | Logboek|
+| Fouttype | Reden | Logboek|
 |---|---|---|
-| Fout | Als er geen fout wordt gedetecteerd. |Ja|
+| NoFault | Als er geen fout is gedetecteerd. |Ja|
 | GatewayNotFound | De gateway of gateway is niet gevonden. |Nee|
-| PlannedMaintenance |  Het gateway-exemplaar is onderhouds werkzaamheden.  |Nee|
+| PlannedMaintenance |  Er worden onderhoudswerkzaamheden uitgevoerd op het gatewayexemplaar.  |Nee|
 | UserDrivenUpdate | Wanneer een gebruikers update wordt uitgevoerd. Dit kan een bewerking voor het wijzigen van de grootte zijn. | Nee |
 | VipUnResponsive | Kan het primaire exemplaar van de gateway niet bereiken. Dit gebeurt wanneer de status test mislukt. | Nee |
 | PlatformInActive | Er is een probleem met het platform. | Nee|
@@ -97,21 +97,21 @@ Met de functie voor het oplossen van problemen met Azure Network Watcher kunt u 
 
 ### <a name="connection"></a>Verbinding
 
-| Fout type | Reden | Logboek|
+| Fouttype | Reden | Logboek|
 |---|---|---|
-| Fout | Als er geen fout wordt gedetecteerd. |Ja|
+| NoFault | Als er geen fout is gedetecteerd. |Ja|
 | GatewayNotFound | De gateway of gateway is niet gevonden. |Nee|
-| PlannedMaintenance | Het gateway-exemplaar is onderhouds werkzaamheden.  |Nee|
+| PlannedMaintenance | Er worden onderhoudswerkzaamheden uitgevoerd op het gatewayexemplaar.  |Nee|
 | UserDrivenUpdate | Wanneer een gebruikers update wordt uitgevoerd. Dit kan een bewerking voor het wijzigen van de grootte zijn.  | Nee |
 | VipUnResponsive | Kan het primaire exemplaar van de gateway niet bereiken. Deze fout treedt op wanneer de status test mislukt. | Nee |
 | ConnectionEntityNotFound | De configuratie van de verbinding ontbreekt. | Nee |
 | ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' losgekoppeld '. |Nee|
 | ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Ja |
 | ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Ja|
-| Verificatie | De vooraf gedeelde sleutel komt niet overeen. | Ja|
+| Authentication | De vooraf gedeelde sleutel komt niet overeen. | Ja|
 | PeerReachability | De peer gateway is niet bereikbaar. | Ja|
 | IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Ja|
-| WfpParse-fout | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Ja|
+| WfpParse Error | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Ja|
 
 ## <a name="next-steps"></a>Volgende stappen
 

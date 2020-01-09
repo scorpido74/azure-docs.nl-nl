@@ -1,20 +1,16 @@
 ---
 title: Beveiligings controles voor Azure Service Fabric
-description: Een controle lijst met beveiligings controles voor het evalueren van Azure Service Fabric
-services: service-fabric
-documentationcenter: ''
+description: Meer informatie over beveiligings controles voor Azure Service Fabric. Bevat een controle lijst met ingebouwde beveiligings controles.
 author: msmbaldwin
-manager: rkarlin
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d62c7848588c494c8190f0d429ce2d6641928b52
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a8bb49e20ec5812a4882966c6918cf2bd59f36a0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886718"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645426"
 ---
 # <a name="security-controls-for-azure-service-fabric"></a>Beveiligings controles voor Azure Service Fabric
 
@@ -39,18 +35,18 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 | Logboek registratie en controle op het vlak van controle en beheer| Ja | Alle bewerkingen van het besturings vlak worden uitgevoerd via processen voor controle en goed keuringen. |
 | Logboek registratie en controle van het gegevens vlak| N/A | De klant is eigenaar van het cluster.  |
 
-## <a name="identity"></a>Identiteit
+## <a name="identity"></a>Identity
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
 | Authentication| Ja | Verificatie is via Azure Active Directory. |
-| Authorization| Ja | Identiteits-en toegangs beheer (IAM) voor aanroepen via SFRP. Aanroepen rechtstreeks naar het cluster eindpunt ondersteunen twee rollen: Gebruiker en beheerder. De klant kan de Api's toewijzen aan een van beide rollen. |
+| Autorisatie| Ja | Identiteits-en toegangs beheer (IAM) voor aanroepen via SFRP. Aanroepen rechtstreeks naar het eind punt van het cluster ondersteunen twee rollen: gebruiker en beheerder. De klant kan de Api's toewijzen aan een van beide rollen. |
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Databeveiliging
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Versleuteling aan server zijde bij rest: Door micro soft beheerde sleutels | Ja | De klant is eigenaar van het cluster en de schaalset voor virtuele machines waarop het cluster is gebouwd. Azure Disk Encryption kan worden ingeschakeld voor de schaalset van de virtuele machine. |
+| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | De klant is eigenaar van het cluster en de schaalset voor virtuele machines waarop het cluster is gebouwd. Azure Disk Encryption kan worden ingeschakeld voor de schaalset van de virtuele machine. |
 | Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Ja | De klant is eigenaar van het cluster en de schaalset voor virtuele machines waarop het cluster is gebouwd. Azure Disk Encryption kan worden ingeschakeld voor de schaalset van de virtuele machine. |
 | Versleuteling op kolom niveau (Azure Data Services)| N/A |  |
 | Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja |  |

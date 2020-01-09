@@ -1,27 +1,21 @@
 ---
-title: Gegevens bijhouden tijdens de jacht in azure Sentinel met behulp van jacht-Blades | Microsoft Docs
+title: Jacht-blad wijzers gebruiken voor gegevens onderzoek in azure Sentinel
 description: In dit artikel wordt beschreven hoe u de Azure Sentinel jacht-blad wijzers gebruikt om gegevens bij te houden.
-services: sentinel
-documentationcenter: na
 author: cabailey
+ms.author: cabailey
 manager: rkarlin
-editor: ''
 ms.assetid: 320ccdad-8767-41f3-b083-0bc48f1eeb37
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/24/2019
-ms.author: cabailey
-ms.openlocfilehash: f4714dd09ada01f1adaa9081819e836601599a53
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 457898e257aa7a347ff99d0987c5ad594637b5f4
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935255"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563731"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Gegevens bijhouden tijdens de jacht met Azure Sentinel
 
@@ -40,7 +34,7 @@ Als er momenteel een preview-versie beschikbaar is, kunt u, als u iets vindt dat
 
 U kunt ook in de preview-versie uw bladwijzer gegevens visualiseren door te klikken op **onderzoeken** in de bladwijzer gegevens. Hiermee wordt de onderzoek ervaring gestart waarbij u uw bevindingen kunt bekijken, onderzoeken en visueel kunnen communiceren met behulp van een interactief diagram en tijd lijn van een interactieve entiteit.
 
-## <a name="add-a-bookmark"></a>Een blad wijzer toevoegen
+## <a name="add-a-bookmark"></a>Een bladwijzer toevoegen
 
 1. Ga in de Azure Portal naar **Sentinel** > **Threat Management** > **jacht** om query's uit te voeren voor verdacht en afwijkend gedrag.
 
@@ -124,7 +118,7 @@ Voor instructies voor het gebruik van de onderzoek grafiek raadpleegt u [de onde
 De blad wijzer binnen het incident bekijken: Navigeer naar **Sentinel** > **Threat Management** > **incidenten** en selecteer het incident met uw blad wijzer. Selecteer **volledige details weer geven**en selecteer vervolgens het tabblad **blad wijzers** .
 
 > [!TIP]
-> Als alternatief voor de optie **incident acties (preview)** op de opdracht balk kunt u het context menu ( **...** ) gebruiken voor een of meer blad wijzers om opties te selecteren om een **nieuw incident te maken**, **toe te voegen aan een bestaand incident en te** **verwijderen uit incident**. 
+> Als alternatief voor de optie **incident acties (preview)** op de opdracht balk kunt u het context menu ( **...** ) gebruiken voor een of meer blad wijzers om opties te selecteren voor het maken van een **nieuw incident**, **het toevoegen van een bestaand incident en het** **verwijderen van incidenten**. 
 
 ## <a name="view-bookmarked-data-in-logs"></a>Blade gegevens in logboeken weer geven
 

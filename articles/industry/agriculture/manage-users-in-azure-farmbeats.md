@@ -1,0 +1,87 @@
+---
+title: Gebruikers beheren in azure FarmBeats
+description: In dit artikel wordt beschreven hoe u gebruikers beheert in azure FarmBeats.
+author: uhabiba04
+ms.topic: article
+ms.date: 12/02/2019
+ms.author: v-umha
+ms.openlocfilehash: 208a302a0702a5c4de4d194c9e72f562aaf758c4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75482294"
+---
+# <a name="manage-users"></a>Gebruikers beheren
+
+Azure FarmBeats bevat gebruikers beheer voor personen die deel uitmaken van uw Azure Active Directory-exemplaar (Azure AD). U kunt gebruikers toevoegen aan uw Azure FarmBeats-exemplaar om toegang te krijgen tot de Api's, de gegenereerde kaarten bekijken en telemetrie van de sensor openen vanuit de farm.
+
+## <a name="prerequisites"></a>Vereisten
+
+- Er is een installatie van Azure FarmBeats vereist. Zie [Azure FarmBeats installeren](install-azure-farmbeats.md)voor meer informatie.
+- De e-mail-Id's van de gebruikers die u wilt toevoegen aan of verwijderen uit uw Azure FarmBeats-exemplaar.
+
+## <a name="manage-azure-farmbeats-users"></a>Azure FarmBeats-gebruikers beheren
+
+Azure FarmBeats maakt gebruik van Azure AD voor verificatie, Toegangs beheer en rollen. U kunt gebruikers toevoegen aan de Azure AD-Tenant als gebruikers in azure FarmBeats.
+
+> [!NOTE]
+> Als een gebruiker die u wilt toevoegen als een Azure FarmBeats-gebruiker niet aanwezig is in de Azure AD-Tenant, voltooit u de installatie door de instructies in de sectie ' Azure AD-gebruikers toevoegen ' te volgen.
+
+Azure FarmBeats ondersteunt twee typen gebruikers rollen:
+
+ - **Beheerder**: volledige toegang tot Azure FarmBeats Datahub-api's. Gebruikers met deze rol kunnen alle Azure FarmBeats Datahub-objecten opvragen en alle bewerkingen van de FarmBeats-Accelerator uitvoeren.
+ - **Alleen-lezen**: alleen-lezen toegang tot FarmBeats Datahub-api's. Gebruikers kunnen de Datahub-Api's, de Accelerator dashboards en de Maps weer geven. Gebruikers met alleen-lezen toegang kunnen geen bewerkingen uitvoeren zoals het genereren van Maps, het koppelen van apparaten of het maken van farms.
+
+## <a name="add-users-to-azure-farmbeats"></a>Gebruikers toevoegen aan Azure FarmBeats
+
+Gebruikers toevoegen aan Azure FarmBeats:
+
+1. Meld u aan bij Accelerator en selecteer vervolgens het pictogram **instellingen** .
+2. Selecteer **Access Control**.
+
+    ![Het deel venster instellingen van Farm](./media/create-farms-in-azure-farmbeats/settings-users-1.png)
+
+3. Voer de e-mail-ID in van de gebruiker aan wie u toegang wilt verlenen.
+4. Selecteer de gewenste rol, **beheerder** of **alleen-lezen**.
+5. Selecteer **rol toevoegen**.
+
+De toegevoegde gebruiker heeft nu toegang tot Azure FarmBeats (zowel Datahub als Accelerator).
+
+## <a name="delete-users-from-azure-farmbeats"></a>Gebruikers verwijderen uit Azure FarmBeats
+
+Gebruikers verwijderen uit het Azure FarmBeats-systeem:
+
+1. Meld u aan bij Accelerator en selecteer vervolgens het pictogram **instellingen** .
+2. Selecteer **Access Control**.
+3. Selecteer **Verwijderen**.
+
+   De gebruiker wordt verwijderd uit het systeem. Het volgende bevestigings bericht wordt weer gegeven:
+
+   ![Azure FarmBeats-bevestigings bericht](./media/create-farms-in-azure-farmbeats/manage-users-2.png)
+
+## <a name="add-azure-ad-users"></a>Azure AD-gebruikers toevoegen
+
+> [!NOTE]
+> Azure FarmBeats-gebruikers moeten zich in de Azure AD-Tenant bevinden voordat u ze aan toepassingen en rollen kunt toewijzen. Als een gebruiker die u wilt toevoegen aan Azure FarmBeats nog niet bestaat in de Azure AD-Tenant, volgt u de instructies in deze sectie. Als de gebruiker zich in de Azure AD-Tenant bevindt, kunt u deze instructies overs Laan.
+
+Ga als volgt te werk om gebruikers toe te voegen aan Azure AD:
+
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+2. Selecteer rechtsboven uw account en schakel vervolgens over naar de Azure AD-Tenant die is gekoppeld aan FarmBeats.
+3. Selecteer **Azure Active Directory** > **gebruikers**.
+
+    Er wordt een lijst met Azure AD-gebruikers weer gegeven.
+
+4. Selecteer **nieuwe gebruiker**om een gebruiker toe te voegen aan de Directory. Als u een externe gebruiker wilt toevoegen, selecteert u **nieuwe gast gebruiker**.
+
+    ![Het deel venster alle gebruikers](./media/create-farms-in-azure-farmbeats/manage-users-3.png)
+
+5. Selecteer de naam van de nieuwe gebruiker en vul vervolgens de vereiste velden voor die gebruiker in.
+6. Selecteer **Maken**.
+
+Zie [gebruikers toevoegen of verwijderen in azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory/)voor meer informatie over het beheren van Azure AD-gebruikers.
+
+## <a name="next-steps"></a>Volgende stappen
+
+U hebt gebruikers toegevoegd aan uw Azure FarmBeats-exemplaar. Nu leert u hoe u [Farms kunt maken en beheren](manage-farms-in-azure-farmbeats.md#create-farms).

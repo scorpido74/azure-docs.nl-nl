@@ -1,20 +1,19 @@
 ---
 title: Meerdere HDInsight-clusters & een Azure Data Lake Storage account
 description: Meer informatie over het gebruik van meer dan één HDInsight-cluster met één Data Lake Storage account
-keywords: hdinsight-opslag, hdfs, gestructureerde gegevens, niet-gestructureerde gegevens, data Lake Store
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/21/2018
-ms.author: hrasheed
-ms.openlocfilehash: ba0c26d87f2161af514c9430eae5c9949ef92b15
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.custom: hdinsightactive
+ms.date: 12/18/2019
+ms.openlocfilehash: cc67acca11e7e0f24dc0597dcd19672a38a7bf28
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498188"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495756"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Meerdere HDInsight-clusters gebruiken met een Azure Data Lake Storage-account
 
@@ -23,22 +22,21 @@ Data Lake Storage ondersteunt onbeperkte opslag, waardoor het niet alleen ideaal
 
 In dit artikel worden aanbevelingen gedaan voor de Data Lake Storage beheerder voor het instellen van een enkele en gedeelde Data Lake Storage account die kan worden gebruikt in meerdere **actieve** HDInsight-clusters. Deze aanbevelingen zijn van toepassing op het hosten van meerdere beveiligings-en niet-beveiligde Apache Hadoop clusters op een gedeeld Data Lake Storage-account.
 
-
 ## <a name="data-lake-storage-file-and-folder-level-acls"></a>Acl's voor bestanden en mapniveau Data Lake Storage
 
 In de rest van dit artikel wordt ervan uitgegaan dat u een goede kennis hebt van Acl's op het niveau van bestanden en mappen op het Azure Data Lake Storage, dat in detail wordt beschreven in [Access Control in azure data Lake Storage](../data-lake-store/data-lake-store-access-control.md).
 
 ## <a name="data-lake-storage-setup-for-multiple-hdinsight-clusters"></a>Data Lake Storage-installatie voor meerdere HDInsight-clusters
+
 Laat ons een maphiërarchie op twee niveaus nemen om de aanbevelingen voor het gebruik van meerdere HDInsight-clusters met een Data Lake Storage-account te verklaren. Stel dat u een Data Lake Storage-account hebt met de mappen structuur **/clusters/Finance**. Met deze structuur kunnen alle door de financiële organisatie vereiste clusters gebruikmaken van/clusters/Finance als opslag locatie. Als een andere organisatie in de toekomst een HDInsight-cluster wil maken met behulp van hetzelfde Data Lake Storage account, kunnen ze/clusters/marketing. maken We gebruiken nu alleen **/clusters/Finance**.
 
-Om ervoor te zorgen dat deze mapstructuur effectief kan worden gebruikt door HDInsight-clusters, moet de Data Lake Storage-beheerder de juiste machtigingen toewijzen, zoals beschreven in de tabel. De machtigingen die in de tabel worden weer gegeven, komen overeen met Access-Acl's en niet standaard-Acl's. 
-
+Om ervoor te zorgen dat deze mapstructuur effectief kan worden gebruikt door HDInsight-clusters, moet de Data Lake Storage-beheerder de juiste machtigingen toewijzen, zoals beschreven in de tabel. De machtigingen die in de tabel worden weer gegeven, komen overeen met Access-Acl's en niet standaard-Acl's.
 
 |Map  |Machtigingen  |Gebruiker die eigenaar is  |Groep die eigenaar is  | Benoemde gebruiker | Benoemde gebruikers machtigingen | Benoemde groep | Benoemde groeps machtigingen |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |Beheerder |Beheerder  |Service-Principal |--x  |FINGRP   |r-x         |
-|/clusters | rwxr-x--x |Beheerder |Beheerder |Service-Principal |--x  |FINGRP |r-x         |
-|/clusters/finance | rwxr-x--t |Beheerder |FINGRP  |Service-Principal |LSU  |-  |-     |
+|/ | rwxr-x--x  |beheerder |beheerder  |Service-principal |--x  |FINGRP   |r-x         |
+|/clusters | rwxr-x--x |beheerder |beheerder |Service-principal |--x  |FINGRP |r-x         |
+|/clusters/finance | rwxr-x--t |beheerder |FINGRP  |Service-principal |LSU  |-  |-     |
 
 In de tabel,
 
@@ -57,9 +55,7 @@ Enkele belang rijke punten om rekening mee te houden.
 
     |Map  |Machtigingen  |Gebruiker die eigenaar is  |Groep die eigenaar is  | Benoemde gebruiker | Benoemde gebruikers machtigingen | Benoemde groep | Benoemde groeps machtigingen |
     |---------|---------|---------|---------|---------|---------|---------|---------|
-    |/clusters/finanace/ fincluster01 | rwxr-x---  |Service-principal |FINGRP  |- |-  |-   |-  | 
-   
-
+    |/clusters/finanace/ fincluster01 | rwxr-x---  |Service-principal |FINGRP  |- |-  |-   |-  |
 
 ## <a name="recommendations-for-job-input-and-output-data"></a>Aanbevelingen voor de invoer-en uitvoer gegevens van de taak
 
@@ -88,9 +84,10 @@ Deze instellingen zijn bekend als invloed op één specifieke HDInsight-use-case
 Zoals vermeld in de GARENs die eerder zijn gekoppeld, terwijl open bare bronnen worden gelokaliseerd, valideert de localizer dat alle aangevraagde bronnen inderdaad openbaar zijn door hun machtigingen op het externe bestands systeem te controleren. LocalResource die niet aan deze voor waarde voldoen, worden voor lokalisatie afgewezen. De controle op machtigingen, bevat Lees toegang tot het bestand voor "anderen". Dit scenario werkt niet out-of-the-box bij het hosten van HDInsight-clusters op Azure Data Lake, omdat Azure Data Lake geen toegang meer heeft tot ' anderen ' op het niveau van de hoofdmap.
 
 #### <a name="workaround"></a>Tijdelijke oplossing
+
 Stel machtigingen voor lezen en uitvoeren voor **anderen** in via de hiërarchie, bijvoorbeeld op **/** , **/clusters** en **/clusters/Finance** , zoals weer gegeven in de bovenstaande tabel.
 
 ## <a name="see-also"></a>Zie ook
 
-* [Snelstartgids: Clusters instellen in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
-* [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+- [Snelstartgids: Clusters instellen in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
+- [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](hdinsight-hadoop-use-data-lake-storage-gen2.md)

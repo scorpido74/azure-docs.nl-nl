@@ -12,24 +12,35 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 11/12/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f663f7daad19e77dcc1cc95a6a324e881d92b28
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 05e69bad41391be5153eca0fb1930ffc59da453b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847133"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75429895"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Aanvragen voor Azure AD-rollen in Privileged Identity Management goed keuren of weigeren
 
 Met Azure Active Directory (Azure AD) Privileged Identity Management (PIM) kunt u rollen configureren voor het vereisen van goed keuring voor activering en een of meer gebruikers of groepen kiezen als gedelegeerde goed keurders. Gedelegeerde goed keurders hebben 24 uur nodig om aanvragen goed te keuren. Als een aanvraag niet binnen 24 uur wordt goedgekeurd, moet de in aanmerking komende gebruiker een nieuwe aanvraag opnieuw indienen. Het venster goedkeurings tijd 24 uur kan niet worden geconfigureerd.
 
+## <a name="determine-your-version-of-pim"></a>Uw versie van PIM bepalen
+
+Vanaf november 2019 wordt het gedeelte van de Azure AD-functies van Privileged Identity Management bijgewerkt naar een nieuwe versie die overeenkomt met de ervaringen van Azure-resource rollen. Hiermee maakt u aanvullende functies en [wijzigingen in de bestaande API](azure-ad-roles-features.md#api-changes). Terwijl de nieuwe versie wordt geïmplementeerd, zijn de procedures die u in dit artikel volgt, afhankelijk van de versie van Privileged Identity Management die u momenteel hebt. Volg de stappen in deze sectie om te bepalen welke versie van Privileged Identity Management u hebt. Nadat u uw versie van Privileged Identity Management weet, kunt u de procedures in dit artikel selecteren die overeenkomen met die versie.
+
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met een gebruiker die zich in de beheerdersrol met [geprivilegieerde rol](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator) bevindt.
+1. Open **Azure AD privileged Identity Management**. Als u een banner aan de bovenkant van de overzichts pagina hebt, volgt u de instructies op het tabblad **nieuwe versie** van dit artikel. Als dat niet het geval is, volgt u de instructies op het tabblad **vorige versie** .
+
+    ![Nieuwe versie van Azure AD-rollen](./media/pim-how-to-add-role-to-user/pim-new-version.png)
+
 Volg de stappen in dit artikel voor het goed keuren of weigeren van aanvragen voor Azure AD-rollen.
 
-## <a name="view-pending-requests"></a>In behandeling zijnde aanvragen weer geven
+# <a name="previous-versiontabprevious"></a>[Vorige versie](#tab/previous)
+
+## <a name="view-pending-requests"></a>Aanvragen in behandeling weergeven
 
 Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure AD-toepassingsrol in afwachting is van uw goed keuring. U kunt deze aanvragen in behandeling bekijken in Privileged Identity Management.
 
@@ -41,7 +52,7 @@ Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure AD-toe
 
 1. Klik op **aanvragen goed keuren**.
 
-    ![Azure AD-rollen: aanvragen goed keuren](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
+    ![Azure AD-rollen: aanvragen goed keuren](./media/azure-ad-pim-approval-workflow/approve-requests.png)
 
     U ziet een lijst met aanvragen die in afwachting zijn van uw goed keuring.
 
@@ -55,7 +66,7 @@ Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure AD-toe
 
     ![Deel venster geselecteerde aanvragen goed keuren met een goedkeurings reden](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
-1. Klik op **goed keuren**.
+1. Klik op **Goedkeuren**.
 
     Het status symbool wordt bijgewerkt met uw goed keuring.
 
@@ -74,6 +85,58 @@ Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure AD-toe
 1. Klik op **weigeren**.
 
     Het status symbool wordt bijgewerkt met de weigering.
+
+# <a name="new-versiontabnew"></a>[Nieuwe versie](#tab/new)
+
+## <a name="view-pending-requests"></a>Aanvragen in behandeling weergeven
+
+Als gedelegeerde fiatteur ontvangt u een e-mail melding wanneer een Azure resource Role-aanvraag in afwachting is van uw goed keuring. U kunt deze aanvragen in behandeling bekijken in Privileged Identity Management.
+
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+
+1. Open **Azure AD privileged Identity Management**.
+
+1. Selecteer **aanvragen goed keuren**.
+
+    ![Aanvragen goed keuren-Azure-bronnen pagina waarin de aanvraag voor beoordeling wordt weer gegeven](./media/pim-resource-roles-approval-workflow/resources-approve-requests.png)
+
+    In de sectie **aanvragen voor functie activeringen** ziet u een lijst met aanvragen die wachten op uw goed keuring.
+
+## <a name="approve-requests"></a>Aanvragen goedkeuren
+
+1. Zoek en selecteer de aanvraag die u wilt goed keuren. Er wordt een pagina goed keuren of weigeren weer gegeven.
+
+    ![Verzoeken goed keuren: deel venster goed keuren of weigeren met details en motivering](./media/azure-ad-pim-approval-workflow/resources-approve-pane.png)
+
+1. Voer in het vak **motivering** de zakelijke rechtvaardiging in.
+
+1. Selecteer **Goedkeuren**. U ontvangt een Azure-melding van uw goed keuring.
+
+    ![Melding goed keuren met een aanvraag is goedgekeurd](./media/pim-resource-roles-approval-workflow/resources-approve-notification.png)
+
+## <a name="deny-requests"></a>Aanvragen weigeren
+
+1. Zoek en selecteer de aanvraag die u wilt weigeren. Er wordt een pagina goed keuren of weigeren weer gegeven.
+
+    ![Verzoeken goed keuren: deel venster goed keuren of weigeren met details en motivering](./media/pim-resource-roles-approval-workflow/resources-approve-pane.png)
+
+1. Voer in het vak **motivering** de zakelijke rechtvaardiging in.
+
+1. Selecteer **weigeren**. Er wordt een melding weer gegeven met uw weigering.
+
+## <a name="workflow-notifications"></a>Workflowmeldingen
+
+Hier vindt u informatie over werk stroom meldingen:
+
+- Goed keurders worden per e-mail op de hoogte gesteld wanneer een aanvraag voor een rol in afwachting is van de beoordeling. E-mail meldingen bevatten een rechtstreekse koppeling naar de aanvraag, waarbij de goed keurder kan goed keuren of weigeren.
+- Aanvragen worden omgezet door de eerste fiatteur die het goed keurt of weigert.
+- Wanneer een goed keurder reageert op de aanvraag, worden alle goed keurders hiervan op de hoogte gesteld van de actie.
+- Resource beheerders worden gewaarschuwd wanneer een goedgekeurde gebruiker actief wordt in hun rol.
+
+>[!NOTE]
+>Een resource beheerder die meent dat een goedgekeurde gebruiker niet actief mag zijn, kan de toewijzing van de actieve rol in Privileged Identity Management verwijderen. Hoewel resource beheerders geen meldingen ontvangen over aanvragen in behandeling, tenzij ze een goed keurder zijn, kunnen ze openstaande aanvragen voor alle gebruikers weer geven en annuleren door in behandeling zijnde aanvragen in Privileged Identity Management weer te geven.
+
+---
 
 ## <a name="next-steps"></a>Volgende stappen
 

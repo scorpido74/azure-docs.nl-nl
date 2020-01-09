@@ -16,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: e6ff3e6798fadca89455790efa28891c02e9e459
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 45470733c9cfed104e39786be48a6edae20ad489
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996970"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645205"
 ---
 # <a name="what-is-azure-network-watcher"></a>Wat is Azure Network Watcher?
 
-Azure Network Watcher biedt hulpprogramma's voor het controleren, diagnosticeren en weergeven van metrische gegevens en het in- of uitschakelen van logboekregistratie voor resources in een virtueel Azure-netwerk. Network Watcher is ontworpen om de netwerk status van IaaS-producten (Infrastructure-as-a-Service) te controleren en te herstellen, waaronder Virtual Machines, virtuele netwerken, toepassings gateways, load balancers, enzovoort. Opmerking: Het is niet bedoeld voor en werkt niet voor PaaS-bewaking of Web Analytics. 
+Azure Network Watcher biedt hulpprogramma's voor het bewaken, diagnosticeren en weergeven van metrische gegevens en het in- of uitschakelen van logboekregistratie voor resources in een virtueel Azure-netwerk. Network Watcher is ontworpen om de netwerk status van IaaS-producten (Infrastructure-as-a-Service) te controleren en te herstellen, waaronder Virtual Machines, virtuele netwerken, toepassings gateways, load balancers, enzovoort. Opmerking: het is niet bedoeld voor en werkt niet voor PaaS-bewaking of Web Analytics. 
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
 ### <a name = "connection-monitor"></a>De communicatie tussen een virtuele machine en een eindpunt bewaken
 
@@ -47,7 +47,7 @@ Wanneer resources worden toegevoegd aan een virtueel netwerk, kan het moeilijker
 
 U kunt een bewerkbare versie van de afbeelding in SVG-indeling downloaden. Meer informatie over [topologieweergave](view-network-topology.md).
 
-## <a name="diagnostics"></a>Diagnostiek
+## <a name="diagnostics"></a>Diagnostics
 
 ### <a name="diagnose-network-traffic-filtering-problems-to-or-from-a-vm"></a>Problemen diagnosticeren met het filteren van netwerkverkeer naar of vanaf een VM
 
@@ -79,7 +79,7 @@ De effectieve beveiligingsregels voor een netwerkinterface zijn een combinatie v
 
 ## <a name="metrics"></a>Metrische gegevens
 
-Er gelden [limieten](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits) voor het aantal netwerkresources dat u binnen een Azure-abonnement en -regio kunt maken. Als u deze limieten bereikt, kunt u geen resources meer maken binnen het Azure-abonnement of de Azure-regio. De *Abonnementslimiet voor netwerk* laat zien hoeveel van elke netwerkresource u hebt geïmplementeerd in een abonnement en regio en wat de limiet voor de resource is. In de volgende afbeelding ziet u de gedeeltelijke uitvoer voor netwerkbronnen die zijn geïmplementeerd in de regio US - oost voor een voorbeeldabonnement:
+Er gelden [limieten](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#azure-resource-manager-virtual-networking-limits) voor het aantal netwerkresources dat u binnen een Azure-abonnement en -regio kunt maken. Als u deze limieten bereikt, kunt u geen resources meer maken binnen het Azure-abonnement of de Azure-regio. De *Abonnementslimiet voor netwerk* laat zien hoeveel van elke netwerkresource u hebt geïmplementeerd in een abonnement en regio en wat de limiet voor de resource is. In de volgende afbeelding ziet u de gedeeltelijke uitvoer voor netwerkbronnen die zijn geïmplementeerd in de regio US - oost voor een voorbeeldabonnement:
 
 ![Abonnementslimieten](./media/network-watcher-monitoring-overview/subscription-limit.png)
 

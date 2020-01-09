@@ -1,28 +1,19 @@
 ---
-title: 'Zelfstudie: Een app implementeren in Azure Service Fabric Mesh | Microsoft Docs'
+title: 'Zelf studie: een app implementeren in azure Service Fabric mesh'
 description: In deze zelfstudie leert u hoe u een toepassing kunt implementeren in Service Fabric Mesh met behulp van een sjabloon.
-services: service-fabric-mesh
-documentationcenter: .net
 author: dkkapur
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/11/2019
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ce063d8a256cbf2507e19d459aafe13150eccce7
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.openlocfilehash: 1ff1407400843fdb0f0ff997e2e0a3c1b7e67c7d
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66306955"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75494938"
 ---
-# <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Zelfstudie: Een toepassing in Service Fabric Mesh implementeren met behulp van een sjabloon
+# <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Zelfstudie: Een toepassing implementeren in Service Fabric Mesh met behulp van een sjabloon
 
 Deze zelfstudie is deel één van een serie. U leert hou een Azure Service Fabric Mesh-toepassing kunt implementeren met behulp van een sjabloon.  De toepassing bestaat uit een ASP.NET-web-front-endservice en een ASP.NET Core Web API-back-endservice. Deze zijn te vinden in Docker Hub.  U haalt de twee containerinstallatiekopieën uit Docker Hub en pusht ze vervolgens naar uw eigen persoonlijke register. Vervolgens maakt u een Azure RM-sjabloon voor de toepassing en implementeert u de toepassing vanuit uw containerregister naar Service Fabric Mesh. Als u klaar bent, hebt u een eenvoudige takenlijsttoepassing die in Service Fabric Mesh wordt uitgevoerd.
 
@@ -139,7 +130,7 @@ docker tag seabreeze/azure-mesh-todo-webfrontend:1.0-nanoserver-1709 mycontainer
 docker tag seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709 mycontainerregistry.azurecr.io/seabreeze/azure-mesh-todo-service:1.0-nanoserver-1709
 ```
 
-Aanmelden bij Azure Container Registry.
+Meld u aan bij de Azure Container Registry.
 
 ```azurecli
 az acr login -n myContainerRegistry
@@ -264,7 +255,7 @@ Services worden in de sjabloon gespecificeerd als eigenschappen van de toepassin
                   "endpoints": [
                     {
                       "name": "ServiceAListener",
-                      "port": 20001
+                      "port": 80
                     }
                   ],
                   "resources": {
@@ -345,7 +336,7 @@ Maak de toepassing en gerelateerde resources met behulp van de volgende opdracht
 
 Werk in het parameterbestand de volgende parameterwaarden bij:
 
-|Parameter|Value|
+|Parameter|Waarde|
 |---|---|
 |location|De regio waarin de toepassing moet worden geïmplementeerd.  Bijvoorbeeld: ‘eastus’.|
 |registryPassword|Het wachtwoord dat u eerder hebt opgehaald in [Referenties voor het register ophalen](#retrieve-credentials-for-the-registry). Deze parameter in de sjabloon is een beveiligde tekenreeks en zal niet in de implementatiestatus of `az mesh service show`-opdrachten worden weergegeven.|

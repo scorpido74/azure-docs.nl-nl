@@ -1,18 +1,17 @@
 ---
 title: Geoomheining en georuimtelijke aggregatie met Azure Stream Analytics
 description: In dit artikel wordt beschreven hoe u Azure Stream Analytics gebruikt voor geoomheining en georuimtelijke aggregatie.
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/02/2019
-ms.openlocfilehash: d44b2fae677554594f0cc280c1129bbd6effddf2
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 5a3aa3786469c3df37b53cb82bdd396871689297
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935077"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443645"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Geoomheining en georuimtelijke aggregatie scenario's met Azure Stream Analytics
 
@@ -46,7 +45,7 @@ De volgende tabel is een voor beeld van geofence-referentie gegevens die kunnen 
 
 Apparaten kunnen hun ID en locatie elke minuut verzenden via een stroom met de naam `DeviceStreamInput`. De volgende tabel is een stroom van invoer.
 
-|DeviceID|Geopositie|
+|DeviceID|GeoPosition|
 |--------|-----------|
 |Één|"PUNT (-122.13292341559497 47.636318374032726)"|
 |B|"PUNT (-122.13338475554553 47.63743531308874)"|
@@ -99,12 +98,12 @@ Deze veelhoeken zijn alleen ter referentie en vertegenwoordigen geen werkelijke 
 
 De volgende tabel bevat streaming-gegevens van ' onderdrukkingen '.
 
-|Naam|FromLocation|ToLocation|TripRequestedTime|
+|Gebruikers-id|FromLocation|ToLocation|TripRequestedTime|
 |------|------------|----------|-----------------|
-|Één|"PUNT (-74.00726861389182 40.71610611981975)"|"PUNT (-73.98615095917779 40.703107386025835)"|"2019-03-12T07:00:00Z"|
-|B|"PUNT (-74.00249841021645 40.723827238895666)"|"PUNT (-74.01160699942085 40.71378884930115)"|"2019-03-12T07:01:00Z"|
-|G|"PUNT (-73.99680120565864 40.716439898624024)"|"PUNT (-73.98289663412544 40.72582343969828)"|"2019-03-12T07:02:00Z"|
-|!|"PUNT (-74.00741090068288 40.71615626755086)"|"PUNT (-73.97999843120539 40.73477895807408)"|"2019-03-12T07:03:00Z"|
+|Één|"POINT(-74.00726861389182 40.71610611981975)"|"POINT(-73.98615095917779 40.703107386025835)"|"2019-03-12T07:00:00Z"|
+|B|"POINT(-74.00249841021645 40.723827238895666)"|"PUNT (-74.01160699942085 40.71378884930115)"|"2019-03-12T07:01:00Z"|
+|G|"POINT(-73.99680120565864 40.716439898624024)"|"POINT(-73.98289663412544 40.72582343969828)"|"2019-03-12T07:02:00Z"|
+|!|"PUNT (-74.00741090068288 40.71615626755086)"|"POINT(-73.97999843120539 40.73477895807408)"|"2019-03-12T07:03:00Z"|
 
 Met de volgende query wordt de stroom van het apparaat toegevoegd aan de geofence-referentie gegevens en wordt het aantal aanvragen per regio in een tijd venster van 15 minuten elke minuut berekend.
 

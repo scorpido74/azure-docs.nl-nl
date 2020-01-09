@@ -7,7 +7,7 @@ author: bobbytreed
 manager: carmonm
 editor: ''
 tags: azure-resource-manager
-keywords: DSC
+keywords: dsc
 ms.assetid: bbacbc93-1e7b-4611-a3ec-e3320641f9ba
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 7e309237589dfaf037114401172fc8f928a30077
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 8f243527461a95d963854d8d018602dd81115482
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176652"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497277"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Inleiding tot de uitbrei ding van de desired state Configuration-handler van Azure
 
@@ -115,7 +115,7 @@ Belang rijke informatie over cmdlets voor Resource Manager DSC-extensies:
 
 De Azure DSC-extensie kan gebruikmaken van DSC-configuratie documenten om Azure-Vm's direct te configureren tijdens de implementatie. Met deze stap wordt het knoop punt niet geregistreerd voor Automation. Het knoop punt wordt *niet* centraal beheerd.
 
-In het volgende voor beeld ziet u een eenvoudig voor beeld van een configuratie. Sla de configuratie lokaal op als IisInstall. ps1.
+In het volgende voor beeld ziet u een eenvoudig voor beeld van een configuratie. Sla de configuratie lokaal op als iisInstall. ps1.
 
 ```powershell
 configuration IISInstall
@@ -131,7 +131,7 @@ configuration IISInstall
 }
 ```
 
-De volgende opdrachten plaatsen het script IisInstall. ps1 op de opgegeven virtuele machine. De opdrachten voeren ook de configuratie uit en melden vervolgens weer aan de status.
+De volgende opdrachten plaatsen het script iisInstall. ps1 op de opgegeven virtuele machine. De opdrachten voeren ook de configuratie uit en melden vervolgens weer aan de status.
 
 ```powershell
 $resourceGroup = 'dscVmDemo'
@@ -143,7 +143,7 @@ Publish-AzVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupN
 Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate -ConfigurationName 'IISInstall'
 ```
 
-## <a name="azure-cli-deployment"></a>Implementatie van Azure CLI
+## <a name="azure-cli-deployment"></a>Azure CLI-implementatie
 
 De Azure CLI kan worden gebruikt om de DSC-extensie te implementeren op een bestaande virtuele machine.
 
@@ -184,7 +184,7 @@ De portal verzamelt de volgende invoer:
 
 - **Configuratie modules of script**: dit veld is verplicht (het formulier is niet bijgewerkt voor het [standaard configuratie script](#default-configuration-script)). Configuratie modules en-scripts vereisen een. ps1-bestand met een configuratie script of een zip-bestand met een. ps1-configuratie script in de hoofdmap. Als u een zip-bestand gebruikt, moeten alle afhankelijke resources zijn opgenomen in module mappen in de. zip. U kunt het zip-bestand maken met behulp van de cmdlet **Publish-AzureVMDscConfiguration-OutputArchivePath** die is opgenomen in de Azure PowerShell SDK. Het zip-bestand wordt geüpload naar de Blob-opslag van uw gebruiker en beveiligd met een SAS-token.
 
-- **Module-gekwalificeerde naam van de configuratie**: u kunt meerdere configuratie functies in een. ps1-bestand toevoegen. Voer de naam in van de configuratie. ps1-script gevolgd door \\ en de naam van de configuratie functie. Als uw. ps1-script bijvoorbeeld de naam configuratie. ps1 heeft en de configuratie **IisInstall**is, voert u **configuratie. ps1\IisInstall**in.
+- **Module-gekwalificeerde naam van de configuratie**: u kunt meerdere configuratie functies in een. ps1-bestand toevoegen. Voer de naam van de configuratie. ps1-script gevolgd door \\ en de naam van de configuratie functie in. Als uw. ps1-script bijvoorbeeld de naam configuratie. ps1 heeft en de configuratie **IisInstall**is, voert u **configuratie. ps1\IisInstall**in.
 
 - **Configuratie argumenten**: als de configuratie functie argumenten accepteert, voert u deze hier in de notatie **argumentName1 = waarde1, argumentName2 = waarde2**. Deze indeling is een andere indeling waarin configuratie argumenten worden geaccepteerd in Power shell-cmdlets of Resource Manager-sjablonen.
 

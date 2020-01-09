@@ -1,25 +1,16 @@
 ---
-title: Meer informatie over de configuratie van periodieke back-ups in azure Service Fabric | Microsoft Docs
+title: Inzicht in periodieke back-upconfiguratie
 description: Gebruik de periodieke back-up-en herstel functie van Service Fabric voor het inschakelen van periodieke gegevens back-ups van uw toepassings gegevens.
-services: service-fabric
-documentationcenter: .net
 author: hrushib
-manager: chackdan
-editor: hrushib
-ms.assetid: FAA45B4A-0258-4CB3-A825-7E8F70F28401
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 2/01/2019
 ms.author: hrushib
-ms.openlocfilehash: e0c40c005c27130d422e0dacaae29461b65b7df7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 34c6495e094a1160f6ac75b9f098934d5cbce967
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232497"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610145"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Informatie over periodieke back-upconfiguratie in azure Service Fabric
 
@@ -142,7 +133,7 @@ Een back-upbeleid bestaat uit de volgende configuraties:
 Nadat u het back-upbeleid hebt gedefinieerd om te voldoen aan de vereisten voor gegevens back-ups, moet het back-upbeleid op de juiste manier zijn gekoppeld aan een _toepassing_, of _service_of een _partitie_.
 
 ### <a name="hierarchical-propagation-of-backup-policy"></a>Hiërarchische doorgifte van het back-upbeleid
-In Service Fabric is de relatie tussen de toepassing, de service en de partities hiërarchisch zoals uitgelegd in het [toepassings model](./service-fabric-application-model.md). Het back-upbeleid kan worden gekoppeld aan een _toepassing_, _service_of een _partitie_ in de hiërarchie. Het back-upbeleid wordt hiërarchisch door gegeven aan het volgende niveau. Ervan uitgaande dat er slechts één back-upbeleid is gemaakt en gekoppeld aan een _toepassing_, worden alle stateful partities die deel uitmaken van alle _betrouw bare stateful Services_ en _reliable actors_ van de _toepassing_ worden opgeslagen met de back-upbeleid. Of als het back-upbeleid is gekoppeld aan een _betrouw bare stateful service_, wordt er een back-up van alle partities gemaakt met behulp van het back-upbeleid.
+In Service Fabric is de relatie tussen de toepassing, de service en de partities hiërarchisch zoals uitgelegd in het [toepassings model](./service-fabric-application-model.md). Het back-upbeleid kan worden gekoppeld aan een _toepassing_, _service_of een _partitie_ in de hiërarchie. Het back-upbeleid wordt hiërarchisch door gegeven aan het volgende niveau. Ervan uitgaande dat er slechts één back-upbeleid is gemaakt en gekoppeld aan een _toepassing_, worden alle stateful partities die deel uitmaken van alle _betrouw bare stateful Services_ en _reliable actors_ van de _toepassing_ , met behulp van het back-upbeleid, gemaakt. Of als het back-upbeleid is gekoppeld aan een _betrouw bare stateful service_, wordt er een back-up van alle partities gemaakt met behulp van het back-upbeleid.
 
 ### <a name="overriding-backup-policy"></a>Back-upbeleid overschrijven
 Er is mogelijk een scenario waarbij gegevens back-up met hetzelfde back-upschema is vereist voor alle services van de toepassing, met uitzonde ring van specifieke services waarbij gegevens back-ups moeten worden gemaakt met een hogere frequentie planning of als back-up naar een ander opslag account of bestands share. Om dergelijke scenario's te verhelpen, biedt back Restore service de mogelijkheid om het door gegeven beleid te overschrijven op service-en partitie bereik. Wanneer het back-upbeleid is gekoppeld aan _service_ of _partitie_, overschrijft het het door gegeven back-upbeleid, indien aanwezig.
@@ -183,7 +174,7 @@ In het volgende diagram ziet u expliciet ingeschakeld back-upbeleid en door gege
 ![Toepassings hiërarchie Service Fabric][0]
 
 ## <a name="disable-backup"></a>Back-up uitschakelen
-Back-upbeleid kan worden uitgeschakeld wanneer er geen back-up van gegevens nodig is. Back-upbeleid dat op een _toepassing_ is ingeschakeld kan alleen worden uitgeschakeld op dezelfde _toepassing_ met behulp van de API voor het uitschakelen van de [back-up](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) van de toepassing. het back-upbeleid voor een _service_ kan worden uitgeschakeld op dezelfde _service_ met [uitschakelen Back-](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) upapi voor service en back-upbeleid ingeschakeld op een _partitie_ kunnen worden uitgeschakeld op dezelfde _partitie_ met behulp van de back-upapi voor [partitioneren](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) .
+Back-upbeleid kan worden uitgeschakeld wanneer er geen back-up van gegevens nodig is. Back-upbeleid dat op een _toepassing_ is ingeschakeld kan alleen worden uitgeschakeld op dezelfde _toepassing_ met behulp van de API voor het uitschakelen van de [back-up](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) van de toepassing. het back-upbeleid dat op een _service_ is ingeschakeld kan worden uitgeschakeld _op dezelfde_ _service_ met behulp van de API voor het uitschakelen van back [-UPS](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) en het [back-](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) upbeleid dat op een _partitie_ wordt ingeschakeld, kan
 
 * Het uitschakelen van het back-upbeleid voor een _toepassing_ stopt alle periodieke gegevens back-ups als gevolg van het door geven van het back-upbeleid tot betrouw bare stateful service partities of betrouw bare actor-partities.
 

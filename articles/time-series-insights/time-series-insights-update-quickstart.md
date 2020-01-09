@@ -1,6 +1,6 @@
 ---
 title: 'Snelstartgids: Verken de preview-demo omgeving-Azure Time Series Insights | Microsoft Docs'
-description: Meer informatie over Azure Time Series Insights preview-demo omgevingen met behulp van een voor beeld van Quick Start.
+description: Bekijk de belangrijkste functies van de demo omgeving van Azure Time Series Insights preview.
 ms.service: time-series-insights
 services: time-series-insights
 author: deepakpalled
@@ -9,13 +9,13 @@ manager: cshankar
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 10/24/2019
-ms.openlocfilehash: 61d13831ff0d8810cfdce35f86a0402cb1679ad1
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 12/20/2019
+ms.openlocfilehash: b97c8c51bc63fb0c1ff0070714e7393d11ea0dbf
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014757"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497421"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Snelstartgids: Verken de Azure Time Series Insights preview-demo omgeving
 
@@ -30,7 +30,7 @@ In deze Quick Start leert u hoe u Time Series Insights kunt gebruiken om inzicht
 
 ## <a name="explore-the-time-series-insights-explorer-in-a-demo-environment"></a>Verkenner van Time Series Insights nader bekeken in een demo-omgeving
 
-In de Time Series Insights preview Explorer worden historische gegevens en analyse van de hoofd oorzaak gedemonstreerd. Aan de slag:
+In de Time Series Insights preview Explorer worden historische gegevens en analyse van de hoofd oorzaak gedemonstreerd. Aan de slag gaan:
 
 1. Ga naar de [Contoso wikkeling-Farm demo](https://insights.timeseries.azure.com/preview/samples) omgeving.  
 
@@ -43,33 +43,33 @@ In de Time Series Insights preview Explorer worden historische gegevens en analy
    1. Wijzig het weergave bereik in **1/1/17 20:00:00.00 tot 3/10/17 20:00:00.00 (UTC)** .
    1. Als u een sensor wilt selecteren, selecteert u **Contoso plant 1** > **W7** > **Generator systeem** > **GeneratorSpeed**. Controleer vervolgens de waarden die worden weer gegeven.
 
-      [![W7 in contoso plant 1](media/v2-update-quickstart/quickstart-one.png)](media/v2-update-quickstart/quickstart-one.png#lightbox)
+      [![W7 in contoso plant 1](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
 
 1. Onlangs heeft Contoso brand geconstateerd in windturbine **W7**. De mening is afhankelijk van wat het vuur heeft veroorzaakt. In Time Series Insights ziet u dat de brand waarschuwings sensor tijdens de brand is geactiveerd.
 
    1. Wijzig het weergave bereik in **3/9/17 20:00:00.00 tot 3/10/17 20:00:00.00 (UTC)** .
    1. Selecteer **veiligheids systeem** > **FireAlert**.
 
-      [![contoso een vuur in de wind turbine W7 heeft gevonden](media/v2-update-quickstart/quickstart-two.png)](media/v2-update-quickstart/quickstart-two.png#lightbox)
+      [![contoso een vuur in de wind turbine W7 heeft gevonden](media/v2-update-quickstart/quick-start-fire-alert.png)](media/v2-update-quickstart/quick-start-fire-alert.png#lightbox)
 
 1. Bekijk andere gebeurtenissen rond het tijdstip van de brand om te begrijpen wat er is gebeurd. De olie druk en actieve waarschuwingen worden net vóór de brand weer gegeven.
 
    1. Selecteer **systeem** > **HydraulicOilPressure**.
    1. Selecteer **systeem** > **ActiveWarning**.
 
-      [![andere gebeurtenissen rond hetzelfde tijdstip controleren](media/v2-update-quickstart/quickstart-three.png)](media/v2-update-quickstart/quickstart-three.png#lightbox)
+      [![andere gebeurtenissen rond hetzelfde tijdstip controleren](media/v2-update-quickstart/quick-start-active-warning.png)](media/v2-update-quickstart/quick-start-active-warning.png#lightbox)
 
 1. De olie druk en actieve waarschuwings sensors zijn direct vóór de brand opgetreden. Vouw de weer gegeven tijd reeks uit om andere tekens weer te geven die duidelijk zijn voor de brand. Beide Sens oren schommelen consistent in de loop van de tijd. De schommelingen geven een persistent en Worrisome patroon aan.
 
     * Wijzig het weergave bereik in **2/24/17 20:00:00.00 tot 3/10/17 20:00:00.00 (UTC)** .
 
-      [![olie druk en actieve waarschuwings sensors zijn ook gepiekd](media/v2-update-quickstart/quickstart-four.png)](media/v2-update-quickstart/quickstart-four.png#lightbox)
+      [![olie druk en actieve waarschuwings sensors zijn ook gepiekd](media/v2-update-quickstart/quick-start-view-range.png)](media/v2-update-quickstart/quick-start-view-range.png#lightbox)
 
 1. Wanneer er twee jaar historische gegevens worden onderzocht, wordt een andere brand gebeurtenis met dezelfde sensor schommelingen onthuld.
 
     * Wijzig het weergave bereik in **1/1/16 tot 12/31/17** (alle gegevens).
 
-      [historische patronen ![zoeken](media/v2-update-quickstart/quickstart-five.png)](media/v2-update-quickstart/quickstart-five.png#lightbox)
+      [historische patronen ![zoeken](media/v2-update-quickstart/quick-start-expand-view-range.png)](media/v2-update-quickstart/quick-start-expand-view-range.png#lightbox)
 
 Door gebruik te maken van Time Series Insights en de telemetrie van de sensor, hebben we een lange termijn trend in de historische gegevens gedetecteerd. Met deze nieuwe inzichten kunnen we het volgende doen:
 
@@ -84,7 +84,7 @@ Door gebruik te maken van Time Series Insights en de telemetrie van de sensor, h
     1. Wijzig het weergave bereik in **6/1/17 20:00:00.00 tot 7/1/17 20:00:00.00 (UTC)** .
     1. Selecteer **Contoso plant 1** > **W6** > **veiligheids systeem** > **VoltageActuatorSwitchWarning**.
 
-       [![het weergave bereik te wijzigen en W6 te selecteren](media/v2-update-quickstart/quickstart-six.png)](media/v2-update-quickstart/quickstart-six.png#lightbox)
+       [![het weergave bereik te wijzigen en W6 te selecteren](media/v2-update-quickstart/quick-start-voltage-switch-warning.png)](media/v2-update-quickstart/quick-start-voltage-switch-warning.png#lightbox)
 
 1. De waarschuwing duidt op een probleem met de spanning van de generator. De algemene energie-uitvoer van de Generator bevindt zich binnen de normale para meters in het huidige interval. Door ons interval te verg Roten, zien we een ander patroon. Een vervolg keuzelijst is duidelijk.
 
@@ -92,20 +92,20 @@ Door gebruik te maken van Time Series Insights en de telemetrie van de sensor, h
     1. Selecteer het **Generator systeem** > **ActivePower**.
     1. Wijzig het interval in **3D**.
 
-       [het interval ![wijzigen in 3D](media/v2-update-quickstart/quickstart-seven.png)](media/v2-update-quickstart/quickstart-seven.png#lightbox)
+       [het interval ![wijzigen in 3D](media/v2-update-quickstart/quick-start-interval-change.png)](media/v2-update-quickstart/quick-start-interval-change.png#lightbox)
 
 1. Door het tijds bereik uit te breiden, kunnen we bepalen of het probleem is gestopt of of het wordt voortgezet.
 
     * Verleng de tijds Panne tot 60 dagen.
 
-      [de tijds Panne ![verlengen tot 60 dagen](media/v2-update-quickstart/quickstart-eight.png)](media/v2-update-quickstart/quickstart-eight.png#lightbox)
+      [de tijds Panne ![verlengen tot 60 dagen](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
 1. Andere sensor gegevens punten kunnen worden toegevoegd om meer context te bieden. Hoe meer Sens oren er worden weer gegeven, het uitgebreidere inzicht van het probleem is. We verwijderen een markering om de werkelijke waarden te bekijken. 
 
     1. Selecteer **Generator systeem**en selecteer vervolgens drie Sens oren: **GridVoltagePhase1**, **GridVoltagePhase2**en **GridVoltagePhase3**.
     1. Verwijder een markering van het laatste gegevenspunt in het zichtbare gedeelte.
 
-       [een markering ![verwijderen](media/v2-update-quickstart/quickstart-nine.png)](media/v2-update-quickstart/quickstart-nine.png#lightbox)
+       [een markering ![verwijderen](media/v2-update-quickstart/quick-start-drop-marker.png)](media/v2-update-quickstart/quick-start-drop-marker.png#lightbox)
 
     Twee van de spannings sensors zijn comparably en binnen de normale para meters. Het lijkt alsof de **GridVoltagePhase3** -sensor de culprit is.
 
@@ -113,7 +113,7 @@ Door gebruik te maken van Time Series Insights en de telemetrie van de sensor, h
 
     * Wijzig de weer gave om alle **Generator systeem** sensoren op dezelfde grafiek schaal te bedekken.
 
-      [![Wijzig de weer gave zodat deze alles bevat](media/v2-update-quickstart/quickstart-ten.png)](media/v2-update-quickstart/quickstart-ten.png#lightbox)
+      [![Wijzig de weer gave zodat deze alles bevat](media/v2-update-quickstart/quick-start-generator-system.png)](media/v2-update-quickstart/quick-start-generator-system.png#lightbox)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

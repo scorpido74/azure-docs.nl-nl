@@ -5,17 +5,18 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 06/20/2019
+ms.date: 12/12/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 53ccd439429dc7df311e086d79f7234e26fd8b0e
-ms.sourcegitcommit: 82efacfaffbb051ab6dc73d9fe78c74f96f549c2
+ms.openlocfilehash: 95639caddfa627290f4e7153d50f9f7799a1f320
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/20/2019
-ms.locfileid: "67302322"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460553"
 ---
-> [!IMPORTANT]
-> De sleutel van uw opslagaccount is vergelijkbaar met het hoofdwachtwoord voor uw opslagaccount. Zorg dat de sleutel van uw account altijd is beveiligd. Let erop dat u deze aan andere gebruikers doorgeeft, codeert of in leesbare vorm opslaat op een plek waartoe anderen ook toegang hebben. Genereer uw accountsleutel opnieuw met Azure Portal als u vermoedt dat de sleutel is uitgelekt.
->
-> SAS (Shared Access Signature)-tokens zijn essentieel voor het beveiligen net als de toegangssleutels van account. Tijdens het opgeven van granulariteit SAS clients verleent toegang tot de resources in uw storage-account en niet openbaar mag worden gedeeld. Wanneer delen vereist voor het oplossen van is redenen Overweeg het gebruik van een geredigeerde versie van de logboekbestanden of de SAS-tokens (indien aanwezig) verwijderen uit de logboekbestanden en zorg ervoor dat de schermafbeeldingen ofwel de SAS-informatie niet bevatten.
+## <a name="protect-your-access-keys"></a>Uw toegangs sleutels beveiligen
+
+De toegangs sleutels voor uw opslag account zijn vergelijkbaar met een basis wachtwoord voor uw opslag account. Zorg ervoor dat u altijd uw toegangs sleutels beveiligt. Gebruik Azure Key Vault om uw sleutels veilig te beheren en te draaien. Vermijd het distribueren van toegangs sleutels naar andere gebruikers, het afwijzen van de code of het opslaan van berichten naar een wille keurige locatie in tekst zonder opmaak die voor anderen toegankelijk is. Roteer uw sleutels als u denkt dat ze mogelijk zijn aangetast.
+
+Gebruik, indien mogelijk, Azure Active Directory (Azure AD) voor het machtigen van aanvragen voor Blob-en wachtrij opslag in plaats van een gedeelde sleutel. Azure AD biedt een superieure beveiliging en gebruiks vriendelijk gebruik over gedeelde sleutels. Zie [toegang tot Azure-blobs en-wacht rijen toestaan met Azure Active Directory](../articles/storage/common/storage-auth-aad.md)voor meer informatie over het machtigen van toegang tot gegevens met Azure AD.

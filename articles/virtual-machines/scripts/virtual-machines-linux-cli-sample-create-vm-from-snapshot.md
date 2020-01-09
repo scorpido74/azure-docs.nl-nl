@@ -1,5 +1,5 @@
 ---
-title: Voorbeeld van Azure CLI-script - Een virtuele machine maken van een momentopname
+title: Een virtuele machine maken op basis van een moment opname-CLI-voor beeld
 description: Voorbeeld van Azure CLI-script - Een virtuele machine maken van een momentopname
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 92f56ef06583bbd59509337352e1509b35b449a6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ffc1a735f743796b73c2b58353638dba7ed60985
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032602"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458448"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-cli"></a>Een virtuele machine maken van een momentopname met CLI
 
@@ -45,7 +45,7 @@ az group delete --name myResourceGroup
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt voor het maken van een beheerde schijf, een virtuele machine en alle gerelateerde resources. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt voor het maken van een beheerde schijf, een virtuele machine en alle gerelateerde resources. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

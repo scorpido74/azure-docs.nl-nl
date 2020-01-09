@@ -1,25 +1,14 @@
 ---
-title: Overzicht van Service Fabric en containers | Microsoft Docs
+title: Overzicht van Service Fabric en containers
 description: Een overzicht van Service Fabric en het gebruik van containers voor het implementeren van micro service-toepassingen. Dit artikel bevat een overzicht van de manier waarop containers kunnen worden gebruikt en de beschik bare mogelijkheden in Service Fabric.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/8/2018
-ms.author: atsenthi
-ms.openlocfilehash: 2ed3a9d4b1ec219d22a9e01e7acec5d7e950289b
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 884cefa3d6a60f55269afac73c40b9f6b21518f6
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68599758"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458218"
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric en containers
 
@@ -35,8 +24,8 @@ Standaard worden deze services door Service Fabric geïmplementeerd en geactivee
 
 Als u wilt beginnen met het zoeken naar en uitchecken van containers op Service Fabric, kunt u een Snelstartgids, zelf studie of voor beeld proberen:  
 
-[Snelstart: Een Linux-container toepassing implementeren in Service Fabric](service-fabric-quickstart-containers-linux.md)  
-[Snelstart: Een Windows-container toepassing implementeren op Service Fabric](service-fabric-quickstart-containers.md)  
+[Snelstartgids: een Linux-container toepassing implementeren in Service Fabric](service-fabric-quickstart-containers-linux.md)  
+[Snelstartgids: een Windows-container toepassing implementeren op Service Fabric](service-fabric-quickstart-containers.md)  
 [Een bestaande .NET-app container plaatsen](service-fabric-host-app-in-a-container.md)  
 [Voorbeelden van Service Fabric-containers](https://azure.microsoft.com/resources/samples/service-fabric-containers/)  
 
@@ -48,10 +37,10 @@ Containers worden direct op de kernel uitgevoerd en hebben een geïsoleerde weer
 
 In vergelijking met virtuele machines hebben containers de volgende voor delen:
 
-* **Klein**: Containers gebruiken één opslag ruimte en laag versies en updates om de efficiëntie te verbeteren.
-* **Snel**: Containers hoeven niet een volledig besturings systeem op te starten, zodat ze veel sneller kunnen beginnen, meestal in seconden.
-* **Portabiliteit**: Een container toepassings installatie kopie kan worden geporteerd om te worden uitgevoerd in de Cloud, on-premises, in virtuele machines of rechtstreeks op fysieke machines.
-* **Resource**beheer: Een container kan de fysieke bronnen beperken die kunnen worden gebruikt op de host.
+* **Klein**: containers gebruiken één opslag ruimte en laag versies en updates om de efficiëntie te verbeteren.
+* **Snel**: containers hoeven niet een volledig besturings systeem op te starten, zodat ze veel sneller kunnen beginnen, meestal in seconden.
+* **Portabiliteit**: een gecontainerde toepassings installatie kopie kan worden geporteerd om te worden uitgevoerd in de Cloud, on-premises, in virtuele machines of rechtstreeks op fysieke machines.
+* **Resource governance**: een container kan de fysieke bronnen beperken die deze kan gebruiken op de host.
 
 ### <a name="container-types-and-supported-environments"></a>Container typen en ondersteunde omgevingen
 
@@ -76,17 +65,17 @@ In de volgende afbeelding ziet u de verschillende soorten virtualisatie-en isola
 
 Hier volgen enkele typische voor beelden waarin een container een goede keuze is:
 
-* **IIS lift en Shift**: U kunt een bestaande [ASP.NET MVC](https://www.asp.net/mvc) -app in een container plaatsen in plaats van deze te migreren naar ASP.net core. Deze ASP.NET MVC-apps zijn afhankelijk van Internet Information Services (IIS). U kunt deze toepassingen inpakken in container installatie kopieën van de voorgemaakte IIS-installatie kopie en implementeren met Service Fabric. Zie [container installatie kopieën op Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) voor meer informatie over Windows-containers.
+* **IIS lift en Shift**: u kunt een bestaande [ASP.NET MVC](https://www.asp.net/mvc) -app in een container plaatsen in plaats van deze te migreren naar ASP.net core. Deze ASP.NET MVC-apps zijn afhankelijk van Internet Information Services (IIS). U kunt deze toepassingen inpakken in container installatie kopieën van de voorgemaakte IIS-installatie kopie en implementeren met Service Fabric. Zie [container installatie kopieën op Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) voor meer informatie over Windows-containers.
 
-* **Containers en service Fabric micro Services combi neren**: Gebruik een bestaande container installatie kopie voor een deel van uw toepassing. U kunt bijvoorbeeld de [NGINX-container](https://hub.docker.com/_/nginx/) voor de web-front-end van uw toepassing en stateful Services gebruiken voor een meer intensieve berekening van de back-end.
+* **Containers en service Fabric micro Services combi neren**: gebruik een bestaande container installatie kopie voor een deel van uw toepassing. U kunt bijvoorbeeld de [NGINX-container](https://hub.docker.com/_/nginx/) voor de web-front-end van uw toepassing en stateful Services gebruiken voor een meer intensieve berekening van de back-end.
 
-* De **impact van ' ruislijke neighbors-Services verlagen**: U kunt de resource governance-capaciteit van containers gebruiken om de resources te beperken die een service op een host gebruikt. Als Services veel bronnen kunnen verbruiken en invloed hebben op de prestaties van anderen (zoals een langlopende, query-achtige bewerking), overweeg dan om deze services te plaatsen in containers met resource beheer.
+* De **impact van ' ruislijke neighbors ' verminderen**: u kunt de resource governance-capaciteit van containers gebruiken om de resources te beperken die door een service op een host worden gebruikt. Als Services veel bronnen kunnen verbruiken en invloed hebben op de prestaties van anderen (zoals een langlopende, query-achtige bewerking), overweeg dan om deze services te plaatsen in containers met resource beheer.
 
 ## <a name="service-fabric-support-for-containers"></a>Ondersteuning voor containers Service Fabric
 
 Service Fabric ondersteunt de implementatie van docker-containers op Linux en Windows Server-containers in Windows Server 2016, samen met ondersteuning voor de isolatie modus van Hyper-V. 
 
-Service Fabric biedt een [toepassings model](service-fabric-application-model.md) waarin een container een toepassingshost vertegenwoordigt waarin meerdere service replica's worden geplaatst. Service Fabric biedt ook ondersteuning voor een uitvoerbaar [gast scenario](service-fabric-guest-executables-introduction.md) waarin u geen gebruik maakt van de ingebouwde service Fabric programmeer modellen, maar in plaats daarvan een bestaande toepassing verpakken, geschreven met behulp van een wille keurige taal of elk Framework, binnen een container. Dit scenario is gebruikelijk voor containers.
+Service Fabric biedt een [toepassings model](service-fabric-application-model.md) waarin een container een toepassingshost vertegenwoordigt waarin meerdere service replica's worden geplaatst. Service Fabric biedt ook ondersteuning voor een [uitvoerbaar gast scenario](service-fabric-guest-executables-introduction.md) waarin u geen gebruik maakt van de ingebouwde service Fabric programmeer modellen, maar in plaats daarvan een bestaande toepassing verpakken, geschreven met behulp van een wille keurige taal of elk Framework, binnen een container. Dit scenario is gebruikelijk voor containers.
 
 U kunt ook [service Fabric Services in een container](service-fabric-services-inside-containers.md)uitvoeren. Ondersteuning voor het uitvoeren van Service Fabric services binnen containers is momenteel beperkt.
 

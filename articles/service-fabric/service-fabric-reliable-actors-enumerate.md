@@ -1,28 +1,19 @@
 ---
-title: Het inventariseren van actoren op Azure Service Fabric | Microsoft Docs
-description: Informatie over het inventariseren van Reliable Actors en de bijbehorende metagegevens.
-services: service-fabric
-documentationcenter: .net
+title: Actors op Azure Service Fabric opsommen
+description: Meer informatie over de inventarisatie van Reliable Actors en de meta gegevens in een Azure Service Fabric-toepassing met voor beelden.
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 04e2c32b18e6897d6443fea68587aba9ae294be5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1516c9005a7c4dd0adcb279e9954e5f882c575c1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60729134"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645596"
 ---
-# <a name="enumerate-service-fabric-reliable-actors"></a>Service Fabric-betrouwbare actoren opsommen
-De Reliable Actors-service kan een client voor het inventariseren van metagegevens over de actoren waarop de service wordt gehost. Omdat de actorservice een gepartitioneerde stateful service is, wordt de opsomming per partitie uitgevoerd. Omdat elke partitie veel actoren bevatten kan, worden de opsomming wordt geretourneerd als een set pagina's met zoekresultaten. De pagina's worden via herhaald totdat alle pagina's worden gelezen. Het volgende voorbeeld ziet u hoe u een lijst met alle actieve actoren in een partitie van een actor-service maakt:
+# <a name="enumerate-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors opsommen
+Met de Reliable Actors-service kan een client meta gegevens over de actors opsommen waarvoor de service wordt gehost. Omdat de actor-service een gepartitioneerde stateful service is, wordt er een inventarisatie uitgevoerd per partitie. Omdat elke partitie veel actors kan bevatten, wordt de inventarisatie geretourneerd als een set met pagina resultaten. De pagina's worden herhaald totdat alle pagina's zijn gelezen. In het volgende voor beeld ziet u hoe u een lijst met alle actieve actors maakt in één partitie van een actor service:
 
 ```csharp
 IActorService actorServiceProxy = ActorServiceProxy.Create(
@@ -68,11 +59,11 @@ while (continuationToken != null);
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Statusbeheer actor](service-fabric-reliable-actors-state-management.md)
-* [Actor-levenscyclus en garbagecollection verzameling](service-fabric-reliable-actors-lifecycle.md)
-* [Actoren API-referentiedocumentatie](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [.NET-voorbeeldcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java-voorbeeldcode](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+* [Beheer van actor status](service-fabric-reliable-actors-state-management.md)
+* [Actor-levens cyclus en garbagecollection](service-fabric-reliable-actors-lifecycle.md)
+* [Naslag documentatie voor actors-API](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [.NET-voorbeeld code](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Java-voorbeeld code](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-platform/actor-service.png

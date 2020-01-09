@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5bf93980a8be86c77240ab981eb812a738a96204
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 02297a45c9560f867e97d7024862ea0de5d3f7b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74828976"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75469773"
 ---
 U hebt door deze stappen te volgen een VNet gemaakt met behulp van het Resource Manager-implementatiemodel en de Azure-portal. Zie [Overzicht van virtuele netwerken](../articles/virtual-network/virtual-networks-overview.md) voor meer informatie over virtuele netwerken.
 
@@ -22,7 +22,7 @@ U hebt door deze stappen te volgen een VNet gemaakt met behulp van het Resource 
 >
 >
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).  Klik in het menu Azure Portal of op de **Start** pagina en selecteer **een resource maken**. De pagina **Nieuw** wordt geopend.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).  Klik in het menu Azure Portal of op de **Start** pagina en selecteer **een resource maken**. De pagina **Nieuw** wordt geopend.
 
 2. In **de Marketplace zoeken**voert u het *virtuele netwerk* in en selecteert u **Virtual Network** in de resultaten.
 
@@ -42,7 +42,7 @@ U hebt door deze stappen te volgen een VNet gemaakt met behulp van het Resource 
 
    - **Abonnement**: controleer of het weergegeven abonnement het juiste is. U kunt abonnementen wijzigen met behulp van de vervolgkeuzelijst.
 
-   - **Resource groep**: Selecteer een bestaande resource groep of maak een nieuwe door een naam in te voeren voor de nieuwe resource groep. Geef de resourcegroep een naam die aansluit bij de geplande configuratiewaarden als u een nieuwe groep aanmaakt. Zie [Overzicht van Azure Resource Manager](../articles/azure-resource-manager/resource-group-overview.md#resource-groups) voor meer informatie over resourcegroepen.
+   - **Resource groep**: Selecteer een bestaande resource groep of maak een nieuwe door een naam in te voeren voor de nieuwe resource groep. Geef de resourcegroep een naam die aansluit bij de geplande configuratiewaarden als u een nieuwe groep aanmaakt. Zie [Overzicht van Azure Resource Manager](../articles/azure-resource-manager/management/overview.md#resource-groups) voor meer informatie over resourcegroepen.
 
    - **Locatie**: selecteer de locatie voor uw VNet. De locatie bepaalt waar de resources die u naar dit VNet implementeert, zich bevinden.
 

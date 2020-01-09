@@ -1,25 +1,16 @@
 ---
-title: Het zelfstandige Azure Service Fabric-cluster configureren | Microsoft Docs
+title: Het zelfstandige Azure Service Fabric-cluster configureren
 description: Meer informatie over het configureren van uw zelfstandige of on-premises Azure Service Fabric-cluster.
-services: service-fabric
-documentationcenter: .net
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 0c5ec720-8f70-40bd-9f86-cd07b84a219d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
 ms.author: dekapur
-ms.openlocfilehash: ca04539049766e1f053d74b3a8536f154c3fd830
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 0f9b625dfbe9c39bea7771dcc5fd58805ce19811
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72383572"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75458372"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Configuratie-instellingen voor een zelfstandig Windows-cluster
 In dit artikel worden de configuratie-instellingen van een zelfstandige Azure Service Fabric-cluster beschreven die kunnen worden ingesteld in het bestand *ClusterConfig. json* . U gebruikt dit bestand om informatie op te geven over de knoop punten van het cluster, beveiligings configuraties en de netwerk topologie in termen van fout-en upgrade domeinen.  Nadat u configuratie-instellingen hebt gewijzigd of toegevoegd, kunt u [een zelfstandig cluster maken](service-fabric-cluster-creation-for-windows-server.md) of [de configuratie van een zelfstandig cluster bijwerken](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -74,10 +65,10 @@ Een Service Fabric-cluster moet ten minste drie knoop punten bevatten. U kunt op
 | **Knooppunt configuratie** | **Beschrijving** |
 | --- | --- |
 | nodeName |U kunt het knoop punt een beschrijvende naam geven. |
-| IPAdres |Zoek het IP-adres van het knoop punt door een opdracht venster te openen en `ipconfig` te typen. Noteer het IPV4-adres en wijs dit toe aan de variabele iPAddress. |
+| iPAddress |Zoek het IP-adres van het knoop punt door een opdracht venster te openen en `ipconfig`te typen. Noteer het IPV4-adres en wijs dit toe aan de variabele iPAddress. |
 | nodeTypeRef |Aan elk knoop punt kan een ander type knoop punt worden toegewezen. De [knooppunt typen](#node-types) worden gedefinieerd in de volgende sectie. |
 | faultDomain |Met fout domeinen kunnen cluster beheerders de fysieke knoop punten definiëren die mogelijk op hetzelfde moment mislukken vanwege gedeelde fysieke afhankelijkheden. |
-| Upgrade Domain |Met upgrade domeinen worden sets van knoop punten beschreven die op ongeveer hetzelfde moment worden afgesloten voor Service Fabric upgrades. U kunt kiezen welke knoop punten moeten worden toegewezen aan de upgrade domeinen, omdat deze niet zijn beperkt door fysieke vereisten. |
+| upgradeDomain |Met upgrade domeinen worden sets van knoop punten beschreven die op ongeveer hetzelfde moment worden afgesloten voor Service Fabric upgrades. U kunt kiezen welke knoop punten moeten worden toegewezen aan de upgrade domeinen, omdat deze niet zijn beperkt door fysieke vereisten. |
 
 ## <a name="cluster-properties"></a>Cluster eigenschappen
 De sectie eigenschappen in ClusterConfig. json wordt gebruikt om het cluster te configureren zoals wordt weer gegeven:
@@ -156,7 +147,7 @@ De naam is de beschrijvende naam voor dit specifieke knooppunt type. Als u een k
 * leaseDriverEndpointPort is de poort die wordt gebruikt door het cluster lease stuur programma om erachter te komen of de knoop punten nog actief zijn. 
 * serviceConnectionEndpointPort is de poort die wordt gebruikt door de toepassingen en services die zijn geïmplementeerd op een knoop punt om te communiceren met de Service Fabric-client op het desbetreffende knoop punt.
 * httpGatewayEndpointPort is de poort die wordt gebruikt door Service Fabric Explorer om verbinding te maken met het cluster.
-* ephemeralPorts overschrijven de [dynamische poorten die door het besturings systeem worden gebruikt](https://support.microsoft.com/kb/929851). Service Fabric gebruikt een deel van deze poorten als toepassings poorten en het resterende onderdeel is beschikbaar voor het besturings systeem. Dit bereik wordt ook toegewezen aan het bestaande bereik in het besturings systeem, zodat u voor alle doel einden de bereiken kunt gebruiken die zijn opgegeven in de voor beeld-JSON-bestanden. Zorg ervoor dat het verschil tussen de begin-en eind poort ten minste 255 is. U kunt conflicten ondertreden als dit verschil te laag is, omdat dit bereik wordt gedeeld met het besturings systeem. Voer `netsh int ipv4 show dynamicport tcp` uit om het geconfigureerde dynamische poort bereik weer te geven.
+* ephemeralPorts overschrijven de [dynamische poorten die door het besturings systeem worden gebruikt](https://support.microsoft.com/kb/929851). Service Fabric gebruikt een deel van deze poorten als toepassings poorten en het resterende onderdeel is beschikbaar voor het besturings systeem. Dit bereik wordt ook toegewezen aan het bestaande bereik in het besturings systeem, zodat u voor alle doel einden de bereiken kunt gebruiken die zijn opgegeven in de voor beeld-JSON-bestanden. Zorg ervoor dat het verschil tussen de begin-en eind poort ten minste 255 is. U kunt conflicten ondertreden als dit verschil te laag is, omdat dit bereik wordt gedeeld met het besturings systeem. Voer `netsh int ipv4 show dynamicport tcp`uit om het geconfigureerde dynamische poort bereik weer te geven.
 * applicationPorts zijn de poorten die worden gebruikt door de Service Fabric-toepassingen. Het bereik van de toepassings poort moet groot genoeg zijn om de eindpunt vereiste van uw toepassingen te kunnen voorzien. Dit bereik moet exclusief zijn van het dynamische poort bereik op de computer, dat wil zeggen, het ephemeralPorts-bereik dat is ingesteld in de configuratie. Service Fabric gebruikt deze poorten wanneer er nieuwe poorten zijn vereist en de firewall voor deze poorten wordt geopend. 
 * reverseProxyEndpointPort is een optioneel reverse-proxy-eind punt. Zie [service Fabric reverse proxy](service-fabric-reverseproxy.md)voor meer informatie. 
 

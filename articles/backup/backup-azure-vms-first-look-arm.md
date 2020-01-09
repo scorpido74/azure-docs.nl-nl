@@ -3,12 +3,12 @@ title: Een back-up van een Azure VM maken op basis van de VM-instellingen
 description: In dit artikel vindt u informatie over het maken van een back-up van een enkelvoudige Azure-VM of meerdere virtuele Azure-machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 06/13/2019
-ms.openlocfilehash: 02cdab727adc29be99f52b262cb94de4fc4fe8f8
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1895f27370e6f928ce2183798dd892a2ff7225c3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172517"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75391436"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>Een back-up van een Azure VM maken op basis van de VM-instellingen
 
@@ -61,10 +61,6 @@ Azure Backup installeert een uitbrei ding op de VM-agent die op de computer word
 10. Na het inschakelen van back-up wordt een eerste back-up uitgevoerd. U kunt de eerste back-up onmiddellijk starten of wachten totdat deze begint volgens het back-upschema.
     - Totdat de eerste back-up is voltooid, wordt de **laatste back-upstatus** weer gegeven als **waarschuwing (eerste back-up in behandeling)** .
     - Klik op de naam van het back-upbeleid om te zien wanneer de volgende geplande back-up wordt uitgevoerd.
-
-> [!NOTE]
-> Azure Backup service maakt een afzonderlijke resource groep (met uitzonde ring van de resource groep van de VM) voor het opslaan van de moment opname, met de naamgevings indeling **AzureBackupRG_geography_number** (voor beeld: AzureBackupRG_northeurope_1). De gegevens in deze resource groep worden bewaard voor de duur in dagen zoals opgegeven in de sectie ' moment opname van onmiddellijke herstel bewerking bewaren ' van het back-upbeleid van Azure virtual machine. Het Toep assen van een vergren deling op deze resource groep kan leiden tot back-upfouten.<br>
-Deze resource groep moet ook worden uitgesloten van de beperkingen van namen/Tags als een beperkings beleid het maken van resource punt verzamelingen in dat geval voor back-upfouten blokkeert.
 
 ## <a name="run-a-backup-immediately"></a>Direct een back-up uitvoeren
 

@@ -1,30 +1,19 @@
 ---
-title: Een Azure Service Fabric-service uitvoeren onder systeem en lokale beveiligings accounts | Microsoft Docs
+title: Een service uitvoeren onder systeem-en lokale beveiligings accounts
 description: Meer informatie over het uitvoeren van een Service Fabric-toepassing onder systeem-en lokale beveiligings accounts.  Maak beveiligings-principals en pas het run as-beleid toe om uw services veilig uit te voeren.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/29/2018
-ms.author: atsenthi
-ms.openlocfilehash: 8b0ddc619a7e840b0379a790bd21e7beae812109
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 53212f8636602705899834b6db1d3f0d80b5fe4f
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600046"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610115"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Een service uitvoeren als een lokaal gebruikers account of lokaal systeem account
 Door Azure Service Fabric te gebruiken, kunt u toepassingen die in het cluster worden uitgevoerd, beveiligen onder verschillende gebruikers accounts. Service Fabric toepassingen worden standaard uitgevoerd onder het account waaronder het Fabric. exe-proces wordt uitgevoerd. Service Fabric biedt ook de mogelijkheid om toepassingen uit te voeren onder een lokale gebruiker of systeem account. Ondersteunde typen lokale systeem accounts zijn **lokalegebruiker**, **Network Service**, **LocalService**en **LocalSystem**.  Als u Service Fabric uitvoert op een zelfstandige Windows-cluster, kunt u een service uitvoeren onder [Active Directory domein accounts](service-fabric-run-service-as-ad-user-or-group.md) of door de [groep beheerde service accounts](service-fabric-run-service-as-gmsa.md).
 
-In het manifest van de toepassing definieert u de gebruikers accounts die vereist zijn voor het uitvoeren van services of het beveiligen van resources in de sectie principals. U kunt ook gebruikers groepen definiëren en maken, zodat een of meer gebruikers samen kunnen worden beheerd. Dit is handig wanneer er meerdere gebruikers zijn voor verschillende service toegangs punten en er algemene bevoegdheden nodig zijn op het groeps niveau.  Er wordt naar de gebruikers verwezen in een runas-beleid dat wordt toegepast op een specifieke service of voor alle services in de toepassing. 
+In het manifest van de toepassing definieert u de gebruikers accounts die vereist zijn voor het uitvoeren van services of het beveiligen van resources in de sectie **principals** . U kunt ook gebruikers groepen definiëren en maken, zodat een of meer gebruikers samen kunnen worden beheerd. Dit is handig wanneer er meerdere gebruikers zijn voor verschillende service toegangs punten en er algemene bevoegdheden nodig zijn op het groeps niveau.  Er wordt naar de gebruikers verwezen in een runas-beleid dat wordt toegepast op een specifieke service of voor alle services in de toepassing. 
 
 Standaard wordt het runas-beleid toegepast op het hoofd toegangs punt.  U kunt ook een runas-beleid Toep assen op het installatie toegangs punt als u [bepaalde instellingen voor het instellen van hoge bevoegdheden wilt uitvoeren onder een systeem account](service-fabric-run-script-at-service-startup.md)of voor de hoofd-en Setup-toegangs punten.  
 

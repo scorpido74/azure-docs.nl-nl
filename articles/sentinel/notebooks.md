@@ -1,27 +1,21 @@
 ---
-title: Jacht-mogelijkheden met behulp van notitie blokken in azure Sentinel | Microsoft Docs
+title: Notebooks gebruiken met Azure Sentinel voor beveiligings jacht
 description: In dit artikel wordt beschreven hoe u notebooks gebruikt met de Azure Sentinel-jacht-mogelijkheden.
 services: sentinel
-documentationcenter: na
 author: rkarlin
-manager: rkarlin
-editor: ''
+ms.author: rkarlin
 ms.assetid: 1721d0da-c91e-4c96-82de-5c7458df566b
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/25/2019
-ms.author: rkarlin
-ms.openlocfilehash: 1b78f6f0773e114a4dda536213e2684d8fbd706d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 44a37fb8d06040b0d872f15ab25bdd2c7ff685b8
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483276"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563697"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Jupyter-notebooks gebruiken om te zoeken naar beveiligings Risico's
 

@@ -1,63 +1,54 @@
 ---
-title: Beheren van toepassingen voor meerdere omgevingen in Azure Service Fabric | Microsoft Docs
-description: Azure Service Fabric-toepassingen kunnen worden uitgevoerd op clusters die variëren in grootte van een machine naar duizenden machines. In sommige gevallen wilt u uw toepassing configureren voor deze verschillende omgevingen verschillend. In dit artikel wordt uitgelegd hoe u parameters voor verschillende toepassingen per omgeving definiëren.
-services: service-fabric
-documentationcenter: .net
+title: Apps voor meerdere omgevingen beheren
+description: Azure Service Fabric-toepassingen kunnen worden uitgevoerd op clusters die omvangen van één computer tot duizenden computers. In sommige gevallen moet u uw toepassing anders configureren voor deze uiteenlopende omgevingen. In dit artikel wordt beschreven hoe u verschillende toepassings parameters per omgeving definieert.
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.assetid: f406eac9-7271-4c37-a0d3-0a2957b60537
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: dac96ef6fce38a0557444e181fa6eccb649cfb9a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 33dfc91381b23bf1ac33bef5274e1098df411f4a
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60719223"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609839"
 ---
 # <a name="manage-applications-for-multiple-environments"></a>Toepassingen voor meerdere omgevingen beheren
 
-Azure Service Fabric-clusters kunnen u het maken van clusters met behulp van een willekeurige plaats van één tot vele duizenden machines. In de meeste gevallen u merkt dat uw toepassing in meerdere configuraties van clusters te implementeren: het lokale ontwikkelingscluster wijzigen, een gedeelde ontwikkelingscluster wijzigen en uw productiecluster. Al deze clusters worden beschouwd als verschillende omgevingen in die uw code is om in te voeren. Binaire waarden van toepassingen via deze breed spectrum zonder aanpassingen kunnen uitvoeren, maar vaak wilt u de toepassing anders te configureren.
+Met Azure Service Fabric-clusters kunt u clusters maken met behulp van een tot veel duizenden computers. In de meeste gevallen kunt u uw toepassing ook implementeren in meerdere cluster configuraties: uw lokale ontwikkel cluster, een gedeeld ontwikkelings cluster en uw productie cluster. Al deze clusters worden beschouwd als verschillende omgevingen waarvoor uw code moet worden uitgevoerd. Binaire toepassings bestanden kunnen zonder aanpassing worden uitgevoerd voor dit brede spectrum, maar u wilt de toepassing meestal op een andere manier configureren.
 
-Houd rekening met twee eenvoudige voorbeelden:
-  - uw service op een gedefinieerde poort luistert, maar moet u die poort moeten verschillen in de omgevingen
-  - u moet verschillende binding-referenties opgeven voor een database in de omgevingen
+Overweeg twee eenvoudige voor beelden:
+  - uw service luistert op een gedefinieerde poort, maar u hebt die poort nodig om in de omgevingen te verschillen
+  - u moet verschillende bindings referenties opgeven voor een data base in de omgevingen
 
-## <a name="specifying-configuration"></a>Configuratie op te geven
+## <a name="specifying-configuration"></a>Configuratie opgeven
 
 De configuratie die u opgeeft, kan worden onderverdeeld in twee categorieën:
 
-- Configuratie van die van toepassing is op hoe uw services worden uitgevoerd
-  - Bijvoorbeeld: het poortnummer voor een eindpunt of het aantal exemplaren van een service
-  - Deze configuratie is opgegeven in de toepassing of service manifest-bestand
-- Configuratie van die van toepassing op uw toepassingscode is
-  - Bijvoorbeeld informatie over de binding voor een database
-  - Deze configuratie kan worden opgegeven via-configuratiebestanden of omgevingsvariabelen
+- Configuratie die van toepassing is op hoe uw services worden uitgevoerd
+  - Bijvoorbeeld het poort nummer voor een eind punt of het aantal exemplaren van een service
+  - Deze configuratie is opgegeven in het manifest bestand van de toepassing of service
+- Configuratie die van toepassing is op uw toepassings code
+  - Bijvoorbeeld bindings gegevens voor een Data Base
+  - Deze configuratie kan worden gegeven via configuratie bestanden of omgevings variabelen
 
 > [!NOTE]
-> Niet alle kenmerken in de toepassing en service manifest Bestandsparameters voor ondersteuning.
-> In deze gevallen moet u afhankelijk zijn van de tekenreeksen vervangen als onderdeel van de implementatiewerkstroom van uw. In Azure DevOps kunt u een extensie, zoals Tokens vervangen: https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens of in Jenkins kan u een taak script ter vervanging van de waarden uit te voeren.
+> Niet alle kenmerken in de toepassing en het service manifest bestand ondersteunen para meters.
+> In die gevallen moet u vertrouwen op het vervangen van teken reeksen als onderdeel van de implementatie werk stroom. In azure DevOps kunt u een uitbrei ding gebruiken zoals vervangen tokens: https://marketplace.visualstudio.com/items?itemName=qetza.replacetokens of in Jenkins kunt u een script taak uitvoeren om de waarden te vervangen.
 >
 
-## <a name="specifying-parameters-during-application-creation"></a>Parameters op te geven tijdens het maken van de toepassing
+## <a name="specifying-parameters-during-application-creation"></a>Para meters opgeven tijdens het maken van een toepassing
 
-Bij het maken van een benoemde exemplaren in Service Fabric, hebt u de mogelijkheid om door te geven in de parameters. De manier waarop u dit doen, is afhankelijk van hoe u een exemplaar van de toepassing maken.
+Wanneer u een benoemde instantie van een toepassing maakt in Service Fabric, kunt u de para meters door geven. Hoe u dit doet, hangt af van de manier waarop u het toepassings exemplaar maakt.
 
-  - In PowerShell, de [ `New-ServiceFabricApplication` ](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet gebruikt de parameters voor de toepassing als een hash-tabel.
-  - Sfctl, met de [ `sfctl application create` ](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) opdracht parameters zijn vereist als een JSON-tekenreeks. Het script install.sh sfctl gebruikt.
-  - Visual Studio biedt een reeks van parameterbestanden in de map Parameters in het toepassingsproject. Deze parameterbestanden worden gebruikt bij het publiceren vanuit Visual Studio, met behulp van Azure DevOps-Services of Team Foundation Server. De parameterbestanden in Visual Studio zijn die wordt doorgegeven aan het script Deploy-FabricApplication.ps1.
+  - In Power shell neemt de [`New-ServiceFabricApplication`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricapplication?view=azureservicefabricps) cmdlet de toepassings parameters op als hash-tabel.
+  - Met behulp van sfctl krijgt de [`sfctl application create`](https://docs.microsoft.com/azure/service-fabric/service-fabric-sfctl-application#sfctl-application-create) -opdracht para meters als een JSON-teken reeks. Het install.sh-script maakt gebruik van sfctl.
+  - Visual Studio biedt een set parameter bestanden in de map para meters in het toepassings project. Deze parameter bestanden worden gebruikt bij het publiceren vanuit Visual Studio met behulp van Azure DevOps Services of Team Foundation Server. In Visual Studio worden de parameter bestanden door gegeven aan het script Deploy-FabricApplication. ps1.
 
 ## <a name="next-steps"></a>Volgende stappen
-De volgende artikelen laten zien hoe u enkele van de concepten beschreven hier gebruiken:
+In de volgende artikelen ziet u hoe u een aantal van de concepten kunt gebruiken die hier worden beschreven:
 
-- [Het opgeven van omgevingsvariabelen voor services in Service Fabric](service-fabric-how-to-specify-environment-variables.md)
-- [Het opgeven van het poortnummer van een service met behulp van parameters in Service Fabric](service-fabric-how-to-specify-port-number-using-parameters.md)
-- [Hoe om te voorzien van configuratiebestanden](service-fabric-how-to-parameterize-configuration-files.md)
+- [Omgevings variabelen opgeven voor services in Service Fabric](service-fabric-how-to-specify-environment-variables.md)
+- [Het poort nummer van een service opgeven met behulp van para meters in Service Fabric](service-fabric-how-to-specify-port-number-using-parameters.md)
+- [Configuratie bestanden para meters](service-fabric-how-to-parameterize-configuration-files.md)
 
-- [Verwijzing naar een omgeving variabele](service-fabric-environment-variables-reference.md)
+- [Naslag informatie over omgevings variabelen](service-fabric-environment-variables-reference.md)

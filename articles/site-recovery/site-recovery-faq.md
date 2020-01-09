@@ -1,18 +1,14 @@
 ---
 title: Algemene vragen over de Azure Site Recovery-service
 description: In dit artikel worden populaire algemene vragen over Azure Site Recovery beschreven.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: fb88d28ea47495dcbdb0844901a03ee7efa4e4eb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: f64b885e82d2f790d7d146e16bb6ccb44e207465
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74078527"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497532"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Algemene vragen over Azure Site Recovery
 
@@ -158,7 +154,7 @@ Onze partner, Riverbed, biedt gedetailleerde richt lijnen voor het werken met Az
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>Kan ik ExpressRoute gebruiken om virtuele machines te repliceren naar Azure?
 Ja, [ExpressRoute kan worden gebruikt](concepts-expressroute-with-site-recovery.md) om on-premises virtuele machines te repliceren naar Azure.
 
-- Azure Site Recovery repliceert gegevens naar een Azure Storage over een openbaar eind punt. U moet [micro soft-peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) instellen of een bestaande [open bare peering](../expressroute/expressroute-circuit-peerings.md#publicpeering) (afgeschaft voor nieuwe circuits) gebruiken om ExpressRoute te gebruiken voor de replicatie van site Recovery.
+- Azure Site Recovery repliceert gegevens naar een Azure Storage over een openbaar eind punt. U moet [micro soft-peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) instellen of een bestaande [open bare peering](../expressroute/about-public-peering.md) (afgeschaft voor nieuwe circuits) gebruiken om ExpressRoute te gebruiken voor de replicatie van site Recovery.
 - Micro soft-peering is het aanbevolen routerings domein voor replicatie.
 - Replicatie wordt niet ondersteund voor persoonlijke peering.
 - Als u VMware-machines of fysieke machines beveiligt, moet u ervoor zorgen dat ook aan de [netwerk vereisten](vmware-azure-configuration-server-requirements.md#network-requirements) voor de configuratie server wordt voldaan. De configuratie server voor de indeling van Site Recovery replicatie vereist dat er verbinding wordt met specifieke Url's. ExpressRoute kan niet worden gebruikt voor deze verbinding.
@@ -219,7 +215,7 @@ Als u wilt automatiseren, kunt u de on-premises Orchestrator of Operations Manag
 Ja, u kunt het herstel van de alternatieve locatie gebruiken om naar een andere host van Azure te failback.
 
 * [Voor virtuele VMware-machines](concepts-types-of-failback.md#alternate-location-recovery-alr)
-* [Voor virtuele Hyper-V-machines](hyper-v-azure-failback.md#perform-failback)
+* [Voor virtuele Hyper-V-machines](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
 
 ## <a name="automation"></a>Automation
 

@@ -1,17 +1,17 @@
 ---
-title: Gegevens model leren en partitioneren op Azure Cosmos DB met behulp van een echt voor beeld
+title: Gegevens model leren en partitioneren op Azure Cosmos DB met behulp van een Real-World-voor beeld
 description: Meer informatie over het model leren en partitioneren van een echt voor beeld met behulp van de Azure Cosmos DB core-API
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: thweiss
-ms.openlocfilehash: 55290b88fedabe59417ea49f1cd3c3bc9961678d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 10f8ffd90215a21ca03e112aea463d444c623d06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093417"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75445377"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Gegevens model leren en partitioneren op Azure Cosmos DB met behulp van een echt voor beeld
 
@@ -21,7 +21,7 @@ Als u meestal met relationele data bases werkt, hebt u waarschijnlijk gewoonten 
 
 ## <a name="the-scenario"></a>Het scenario
 
-Voor deze oefening gaan we het domein van een blog platform overwegen waar *gebruikers* *berichten*kunnen maken. Gebruikers kunnen ook *notities* toevoegen aan deze berichten.
+Voor deze oefening gaan we het domein van een blog platform overwegen waar *gebruikers* *berichten*kunnen maken. Gebruikers *kunnen ook* *notities* toevoegen aan deze berichten.
 
 > [!TIP]
 > Er zijn enkele woorden *cursief*gemarkeerd. deze woorden identificeren het soort ' dingen ' die ons model moet manipuleren.
@@ -38,7 +38,7 @@ Meer vereisten aan onze specificatie toevoegen:
 
 We geven een deel van onze oorspronkelijke specificatie door de toegangs patronen van onze oplossing te identificeren. Bij het ontwerpen van een gegevens model voor Azure Cosmos DB, is het belang rijk om te begrijpen welke aanvragen ons model moet gebruiken om ervoor te zorgen dat het model deze aanvragen efficiënt zal verwerken.
 
-Om het algehele proces gemakkelijker te kunnen volgen, categoriseren we die verschillende aanvragen als opdrachten of query's, waarbij een woorden lijst wordt uitgeleend van [CQRS](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation#Command_query_responsibility_segregation) waarbij opdrachten schrijf aanvragen zijn (dat wil zeggen, intenties om het systeem bij te werken) en de query's alleen-lezen zijn aanvragen.
+Om het algehele proces gemakkelijker te kunnen volgen, categoriseren we die verschillende aanvragen als opdrachten of query's, waarbij een woorden lijst wordt uitgeleend van [CQRS](https://en.wikipedia.org/wiki/Command%E2%80%93query_separation#Command_query_responsibility_segregation) waarbij opdrachten schrijf aanvragen zijn (dat wil zeggen, intenties om het systeem bij te werken) en query's alleen-lezen aanvragen zijn.
 
 Hier volgt een lijst met aanvragen die ons platform moet openbaren:
 
@@ -57,7 +57,7 @@ In deze fase hebben we geen aandacht meer bedacht op de details van wat elke ent
 
 De belangrijkste reden waarom het belang rijk is om de toegangs patronen te identificeren vanaf het begin, is omdat deze lijst met aanvragen wordt door ons test pakket. Elke keer dat we ons gegevens model herhalen, gaan we elk van de aanvragen door en controleren ze de prestaties en schaal baarheid.
 
-## <a name="v1-a-first-version"></a>RIP Een eerste versie
+## <a name="v1-a-first-version"></a>V1: een eerste versie
 
 We beginnen met twee containers: `users` en `posts`.
 
@@ -70,7 +70,7 @@ Met deze container worden alleen gebruikers items opgeslagen:
       "username": "<username>"
     }
 
-Deze container wordt gepartitioneerd door `id`. Dit betekent dat elke logische partitie in die container slechts één item bevat.
+Deze container wordt door `id`gepartitioneerd, wat betekent dat elke logische partitie in die container slechts één item bevat.
 
 ### <a name="posts-container"></a>Berichten container
 
@@ -103,9 +103,9 @@ Deze container fungeert als host voor berichten, opmerkingen en leuk:
       "creationDate": "<like-creation-date>"
     }
 
-Deze container wordt gepartitioneerd door `postId`. Dit betekent dat elke logische partitie in die container één post bevat, alle opmerkingen voor dat bericht en alle voor die post.
+Deze container wordt door `postId`gepartitioneerd, wat betekent dat elke logische partitie in die container één post bevat, alle opmerkingen voor dat bericht en alle voor dat bericht.
 
-Houd er rekening mee dat we `type` een eigenschap hebben geïntroduceerd in de items die in deze container zijn opgeslagen om onderscheid te maken tussen de drie typen entiteiten die door deze container worden gehost.
+Houd er rekening mee dat we een `type` eigenschap hebben geïntroduceerd in de items die in deze container zijn opgeslagen om onderscheid te maken tussen de drie typen entiteiten die door deze container worden gehost.
 
 Daarnaast hebben we gekozen om te verwijzen naar gerelateerde gegevens in plaats van deze in te sluiten (Raadpleeg [deze sectie](modeling-data.md) voor meer informatie over deze concepten). de reden hiervoor is:
 
@@ -120,13 +120,13 @@ Het is nu tijd om de prestaties en schaal baarheid van onze eerste versie te beo
 
 ### <a name="c1-createedit-a-user"></a>C1 Een gebruiker maken/bewerken
 
-Deze aanvraag is eenvoudig te implementeren omdat er alleen een item in de `users` container wordt gemaakt of bijgewerkt. De aanvragen worden goed verspreid over alle partities dankzij de `id` partitie sleutel.
+Deze aanvraag is eenvoudig te implementeren omdat u een item in de `users` container maakt of bijwerkt. De aanvragen worden goed verspreid over alle partities dankzij de `id` partitie sleutel.
 
 ![Eén item naar de container gebruikers schrijven](./media/how-to-model-partition-example/V1-C1.png)
 
 | **Latentie** | **RU-kosten** | **Prestaties** |
 | --- | --- | --- |
-| 7 MS | 5,71 RU | ✅ |
+| 7 ms | 5,71 RU | ✅ |
 
 ### <a name="q1-retrieve-a-user"></a>Eerste Een gebruiker ophalen
 
@@ -140,17 +140,17 @@ Het ophalen van een gebruiker wordt uitgevoerd door het bijbehorende item uit de
 
 ### <a name="c2-createedit-a-post"></a>Vind Een bericht maken/bewerken
 
-Net als bij **[C1]** hoeven we alleen maar naar de `posts` container te schrijven.
+Net als bij **[C1]** hoeven we alleen maar naar de `posts`-container te schrijven.
 
 ![Een enkel item schrijven naar de container Posts](./media/how-to-model-partition-example/V1-C2.png)
 
 | **Latentie** | **RU-kosten** | **Prestaties** |
 | --- | --- | --- |
-| 9 MS | 8,76 RU | ✅ |
+| 9 ms | 8,76 RU | ✅ |
 
 ### <a name="q2-retrieve-a-post"></a>Inclusief Een bericht ophalen
 
-We beginnen met het ophalen van het bijbehorende document uit `posts` de container. Maar dat is niet voldoende, conform onze specificatie, moeten we de gebruikers naam van de auteur van het bericht en het aantal opmerkingen en het aantal reacties en de aantallen van de informatie in dit bericht, opgeven, waarvoor drie extra SQL-query's moeten worden uitgegeven.
+We beginnen met het ophalen van het bijbehorende document uit de `posts`-container. Maar dat is niet voldoende, conform onze specificatie, moeten we de gebruikers naam van de auteur van het bericht en het aantal opmerkingen en het aantal reacties en de aantallen van de informatie in dit bericht, opgeven, waarvoor drie extra SQL-query's moeten worden uitgegeven.
 
 ![Een bericht ophalen en aanvullende gegevens samen voegen](./media/how-to-model-partition-example/V1-Q2.png)
 
@@ -158,7 +158,7 @@ Elk van de extra query's filtert op de partitie sleutel van de betreffende conta
 
 | **Latentie** | **RU-kosten** | **Prestaties** |
 | --- | --- | --- |
-| 9 MS | 19,54 RU | ⚠ |
+| 9 ms | 19,54 RU | ⚠ |
 
 ### <a name="q3-list-a-users-posts-in-short-form"></a>K3 De berichten van een gebruiker in een korte vorm weer geven
 
@@ -169,7 +169,7 @@ Eerst moeten we de gewenste berichten ophalen met een SQL-query waarmee de beric
 Deze implementatie geeft veel nadelen:
 
 - de query's voor het samen voegen van het aantal opmerkingen en van zichzelf moeten worden uitgegeven voor elk bericht dat door de eerste query wordt geretourneerd.
-- de hoofd query filtert niet op de partitie sleutel van de `posts` container, waardoor er een uitwaaiering wordt uitgevoerd en een partitie scan in de container.
+- met de hoofd query wordt niet gefilterd op de partitie sleutel van de `posts`-container, waardoor er een uitwaaiering en een partitie scan over de container wordt uitgevoerd.
 
 | **Latentie** | **RU-kosten** | **Prestaties** |
 | --- | --- | --- |
@@ -177,13 +177,13 @@ Deze implementatie geeft veel nadelen:
 
 ### <a name="c3-create-a-comment"></a>Stand Een opmerking maken
 
-Er wordt een opmerking gemaakt door het bijbehorende item in de `posts` container te schrijven.
+Er wordt een opmerking gemaakt door het bijbehorende item te schrijven in de `posts`-container.
 
 ![Een enkel item schrijven naar de container Posts](./media/how-to-model-partition-example/V1-C2.png)
 
 | **Latentie** | **RU-kosten** | **Prestaties** |
 | --- | --- | --- |
-| 7 MS | 8,57 RU | ✅ |
+| 7 ms | 8,57 RU | ✅ |
 
 ### <a name="q4-list-a-posts-comments"></a>Taal Opmerkingen bij een bericht weer geven
 
@@ -199,7 +199,7 @@ Hoewel de hoofd query filtert op de partitie sleutel van de container, is het sa
 
 ### <a name="c4-like-a-post"></a>C4 Als een post
 
-Net als bij **[C3]** maken we het bijbehorende item in de `posts` container.
+Net als bij **[C3]** maken we het bijbehorende item in de `posts`-container.
 
 ![Een enkel item schrijven naar de container Posts](./media/how-to-model-partition-example/V1-C2.png)
 
@@ -219,11 +219,11 @@ Net als **[Q4]** zoeken we de zoek opdracht naar het bericht en voegen ze vervol
 
 ### <a name="q6-list-the-x-most-recent-posts-created-in-short-form-feed"></a>[Q6] De x meest recente Posts weer geven die zijn gemaakt in korte vorm (feed)
 
-De meest recente berichten worden opgehaald door de `posts` container te doorzoeken op aflopende aanmaak datum, vervolgens de gebruikers namen en het aantal opmerkingen en de aantallen voor elk van de berichten te verzamelen.
+De meest recente berichten worden opgehaald door de `posts`-container te doorzoeken op aflopende aanmaak datum en vervolgens de gebruikers namen en het aantal opmerkingen en de aantallen voor elk van de berichten te verzamelen.
 
 ![Ophalen van de meest recente posts en het samen voegen van de aanvullende gegevens](./media/how-to-model-partition-example/V1-Q6.png)
 
-Daarna wordt de eerste query niet gefilterd op de partitie sleutel van `posts` de container, waardoor er een dure ventilator wordt geactiveerd. Dit is nog erger omdat we een veel grotere resultatenset richten en de resultaten sorteren met een `ORDER BY` component, waardoor het duurder is voor de aanvraag eenheden.
+Daarna wordt de eerste query niet gefilterd op de partitie sleutel van de `posts`-container, waardoor er een dure ventilator wordt geactiveerd. Dit is nog erger naarmate we een veel grotere resultatenset richten en de resultaten sorteren met een `ORDER BY`-component, waardoor het duurder is voor de aanvraag eenheden.
 
 | **Latentie** | **RU-kosten** | **Prestaties** |
 | --- | --- | --- |
@@ -280,9 +280,9 @@ We wijzigen ook opmerkingen en soort gelijke items om de gebruikers naam toe te 
 
 ### <a name="denormalizing-comment-and-like-counts"></a>Het denormaliseren van opmerkingen en soort gelijke tellingen
 
-Wat we willen doen, is dat elke keer dat we een opmerking of als soort toevoegen, we ook de `commentCount` of de `likeCount` in de bijbehorende post verhogen. Als de `postId`container is gepartitioneerd door, wordt het nieuwe item (opmerking of leuk) en het bijbehorende bericht in dezelfde logische partitie geplaatst. `posts` Als gevolg hiervan kunnen we een [opgeslagen procedure](stored-procedures-triggers-udfs.md) gebruiken om die bewerking uit te voeren.
+Wat we willen doen, is dat elke keer dat we een opmerking of een soort toevoegen, we ook de `commentCount` of de `likeCount` in het bijbehorende bericht verhogen. De `posts`-container wordt gepartitioneerd door `postId`, het nieuwe item (opmerking of leuk) en het bijbehorende bericht bevinden zich in dezelfde logische partitie. Als gevolg hiervan kunnen we een [opgeslagen procedure](stored-procedures-triggers-udfs.md) gebruiken om die bewerking uit te voeren.
 
-Wanneer u nu een opmerking maakt ( **[C3]** ) in plaats van een nieuw item toe te voegen aan de `posts` container, noemen we de volgende opgeslagen procedure in die container:
+Wanneer u nu een opmerking maakt ( **[C3]** ) in plaats van een nieuw item toe te voegen in de `posts`-container, wordt de volgende opgeslagen procedure in die container aangeroepen:
 
 ```javascript
 function createComment(postId, comment) {
@@ -314,19 +314,19 @@ function createComment(postId, comment) {
 In deze opgeslagen procedure worden de ID van het bericht en de hoofd tekst van de nieuwe opmerking als para meters gebruikt, waarna:
 
 - Hiermee wordt het bericht opgehaald
-- verhoogt de`commentCount`
+- verhoogt de `commentCount`
 - vervangt het bericht
 - voegt de nieuwe opmerking toe
 
-Als opgeslagen procedures worden uitgevoerd als atomische trans acties, wordt gegarandeerd dat de waarde `commentCount` van en het werkelijke aantal opmerkingen altijd synchroon blijft.
+Als opgeslagen procedures worden uitgevoerd als atomische trans acties, wordt gegarandeerd dat de waarde van `commentCount` en het werkelijke aantal opmerkingen altijd synchroon blijft.
 
-We gaan natuurlijk een soort gelijke opgeslagen procedure aanroepen bij het `likeCount`toevoegen van nieuwe leuks.
+We gaan natuurlijk een soort gelijke opgeslagen procedure aanroepen bij het toevoegen van nieuwe handelingen om de `likeCount`te verhogen.
 
 ### <a name="denormalizing-usernames"></a>Gebruikers namen denormaliseren
 
 Gebruikers namen moeten een andere benadering hebben wanneer gebruikers niet alleen in andere partities zitten, maar in een andere container. Wanneer we gegevens over partities en containers moeten denormaliseren, kunnen we de [feed voor wijzigingen](change-feed.md)van de bron container gebruiken.
 
-In ons voor beeld gebruiken we de wijzigings feed van `users` de container om te reageren wanneer gebruikers hun gebruikers namen bijwerken. Als dat gebeurt, wordt de wijziging door gegeven door een andere opgeslagen procedure aan te `posts` roepen op de container:
+In ons voor beeld gebruiken we de wijzigings feed van de `users`-container om te reageren wanneer gebruikers hun gebruikers namen bijwerken. Als dat gebeurt, wordt de wijziging door gegeven door een andere opgeslagen procedure aan te roepen voor de `posts` container:
 
 ![De gebruikers namen worden genormaliseerd in de container Posts](./media/how-to-model-partition-example/denormalization-1.png)
 
@@ -354,13 +354,13 @@ function updateUsernames(userId, username) {
 
 In deze opgeslagen procedure worden de ID van de gebruiker en de nieuwe gebruikers naam van de gebruiker gebruikt als para meters, vervolgens:
 
-- Hiermee worden alle items opgehaald die `userId` overeenkomen met de (die berichten, opmerkingen of leuk kunnen zijn)
+- Hiermee worden alle items opgehaald die overeenkomen met de `userId` (dat wil zeggen berichten, opmerkingen of leuk)
 - voor elk van deze items
-  - vervangt de`userUsername`
+  - vervangt de `userUsername`
   - Hiermee wordt het item vervangen
 
 > [!IMPORTANT]
-> Deze bewerking is kostbaar omdat deze opgeslagen procedure moet worden uitgevoerd op elke partitie van de `posts` container. We gaan ervan uit dat de meeste gebruikers tijdens het aanmelden een geschikte gebruikers naam kiezen en niet ooit wijzigen, zodat deze update zeer zelden wordt uitgevoerd.
+> Deze bewerking is kostbaar omdat deze opgeslagen procedure moet worden uitgevoerd op elke partitie van de `posts`-container. We gaan ervan uit dat de meeste gebruikers tijdens het aanmelden een geschikte gebruikers naam kiezen en niet ooit wijzigen, zodat deze update zeer zelden wordt uitgevoerd.
 
 ## <a name="what-are-the-performance-gains-of-v2"></a>Wat zijn de prestatie verbeteringen van v2?
 
@@ -394,7 +394,7 @@ Precies dezelfde situatie wanneer u het leuk vindt.
 | --- | --- | --- |
 | 4 MS | 8,92 RU | ✅ |
 
-## <a name="v3-making-sure-all-requests-are-scalable"></a>V3: Controleren of alle aanvragen schaalbaar zijn
+## <a name="v3-making-sure-all-requests-are-scalable"></a>V3: controleren of alle aanvragen schaalbaar zijn
 
 Bekijk onze algemene prestatie verbeteringen, maar er zijn nog twee aanvragen die niet volledig zijn geoptimaliseerd: **[Q3]** en **[Q6]** . Dit zijn de aanvragen met betrekking tot query's die niet worden gefilterd op de partitie sleutel van de containers waarop ze zijn gericht.
 
@@ -404,16 +404,16 @@ Deze aanvraag is al voor delen van de verbeteringen die zijn geïntroduceerd in 
 
 ![Alle berichten voor een gebruiker ophalen](./media/how-to-model-partition-example/V2-Q3.png)
 
-Maar de resterende query wordt nog steeds niet gefilterd op de partitie `posts` sleutel van de container.
+Maar de resterende query wordt nog steeds niet gefilterd op de partitie sleutel van de `posts`-container.
 
 De manier waarop u rekening moet houden met deze situatie is eigenlijk eenvoudig:
 
-1. Deze aanvraag moet worden gefilterd `userId` op de omdat we alle Posts voor een bepaalde gebruiker willen ophalen
-1. De app wordt niet goed uitgevoerd omdat deze wordt uitgevoerd `posts` op de container, die niet is gepartitioneerd door`userId`
-1. Wat het duidelijkst is, wij zullen ons prestatie probleem oplossen door deze aanvraag uit te voeren op een container die *is* gepartitioneerd door`userId`
-1. Het maakt niet uit of een dergelijke container al is: de `users` container!
+1. Deze aanvraag *moet* worden gefilterd op de `userId` omdat we alle Posts voor een bepaalde gebruiker willen ophalen
+1. De app wordt niet goed uitgevoerd omdat deze wordt uitgevoerd op basis van de `posts` container, die niet is gepartitioneerd door `userId`
+1. Om het probleem op te lossen, zullen we ons prestatie problemen oplossen door deze aanvraag uit te voeren op een container die *is* gepartitioneerd door `userId`
+1. Het maakt niet uit of deze container al een van de volgende containers bevat: de `users`-container.
 
-We introduceren dus een tweede niveau van denormalisatie door volledige berichten naar de `users` container te dupliceren. Op die manier krijgen we een kopie van onze berichten, alleen gepartitioneerd langs een andere dimensie, waardoor ze efficiënter zijn `userId`om ze op te halen.
+We introduceren dus een tweede niveau van denormalisatie door de hele berichten naar de `users` container te dupliceren. Op die manier krijgt u een kopie van onze berichten, alleen gepartitioneerd langs een andere dimensie, waardoor ze efficiënter zijn om op te halen door hun `userId`.
 
 De `users` container bevat nu twee soorten items:
 
@@ -437,16 +437,16 @@ De `users` container bevat nu twee soorten items:
       "creationDate": "<post-creation-date>"
     }
 
-Houd rekening met het volgende:
+Opmerking:
 
 - We hebben een `type` veld in het gebruikers item geïntroduceerd om gebruikers te onderscheiden van berichten,
-- Er is `userId` ook een veld toegevoegd aan het gebruikers item, dat overbodig is met het `id` veld, maar is vereist omdat de `users` container nu is gepartitioneerd door `userId` ( `id` en niet als voorheen)
+- Er is ook een `userId` veld toegevoegd aan het gebruikers item, dat overbodig is met het veld `id`, maar is vereist omdat de `users` container nu is gepartitioneerd door `userId` (en niet `id` zoals eerder)
 
-Om dat te doen, gebruiken we de wijzigings feed opnieuw. Deze keer reageren we op de wijzigings feed van de `posts` container om een nieuwe of bijgewerkte post naar de `users` container te verzenden. En omdat het weer geven van berichten geen volledige inhoud hoeft te retour neren, kunnen ze in het proces worden afgekapt.
+Om dat te doen, gebruiken we de wijzigings feed opnieuw. Deze keer reageren we op de wijzigings feed van de `posts`-container om een nieuwe of bijgewerkte post naar de `users`-container te verzenden. En omdat het weer geven van berichten geen volledige inhoud hoeft te retour neren, kunnen ze in het proces worden afgekapt.
 
 ![De berichten in de container gebruikers worden genormaliseerd](./media/how-to-model-partition-example/denormalization-2.png)
 
-We kunnen onze query nu naar de `users` container routeren, filteren op de partitie sleutel van de container.
+We kunnen onze query nu naar de `users`-container routeren, filteren op de partitie sleutel van de container.
 
 ![Alle berichten voor een gebruiker ophalen](./media/how-to-model-partition-example/V3-Q3.png)
 
@@ -462,7 +462,7 @@ We moeten hier een vergelijk bare situatie behandelen: zelfs na het afwijzen van
 
 Volgens dezelfde benadering moet de prestaties en schaal baarheid van deze aanvraag worden gemaximaliseerd, maar is er slechts één partitie. Dit kan worden bedacht omdat er slechts een beperkt aantal items moet worden geretourneerd. Als u de start pagina van ons blog platform wilt vullen, moeten we de 100 meest recente Posts ophalen, zonder dat u de hele gegevensset hoeft te pagineren.
 
-Om deze laatste aanvraag te optimaliseren, introduceren we een derde container aan ons ontwerp, die volledig is toegewezen aan deze aanvraag. We kunnen onze berichten naar deze nieuwe `feed` container denormaliseren:
+Om deze laatste aanvraag te optimaliseren, introduceren we een derde container aan ons ontwerp, die volledig is toegewezen aan deze aanvraag. We normaliseren onze berichten naar die nieuwe `feed`-container:
 
     {
       "id": "<post-id>",
@@ -477,7 +477,7 @@ Om deze laatste aanvraag te optimaliseren, introduceren we een derde container a
       "creationDate": "<post-creation-date>"
     }
 
-Deze container is gepartitioneerd `type`door, die zich `post` altijd in onze items bevindt. Dit zorgt ervoor dat alle items in deze container zich in dezelfde partitie bevinden.
+Deze container is gepartitioneerd door `type`, die altijd in onze items wordt `post`. Dit zorgt ervoor dat alle items in deze container zich in dezelfde partitie bevinden.
 
 Ter verkrijging van de denormalie moeten we de wijzigings pijplijn die we eerder hebben geïntroduceerd voor het verzenden van de berichten naar die nieuwe container, aansluiten op de pijp lijn voor veranderingen in de feed. Een belang rijk voor deel is dat u er zeker van moet zijn dat we alleen de 100 meest recente berichten opslaan. anders kan de inhoud van de container groter worden dan de maximale grootte van een partitie. Dit wordt gedaan door het aanroepen van een [post-trigger](stored-procedures-triggers-udfs.md#triggers) wanneer een document wordt toegevoegd aan de container:
 
@@ -530,13 +530,13 @@ function truncateFeed() {
 }
 ```
 
-De laatste stap bestaat uit het omleiden van onze query naar `feed` onze nieuwe container:
+De laatste stap bestaat uit het omleiden van onze query naar onze nieuwe `feed`-container:
 
 ![De meest recente posts worden opgehaald](./media/how-to-model-partition-example/V3-Q6.png)
 
 | **Latentie** | **RU-kosten** | **Prestaties** |
 | --- | --- | --- |
-| 9 MS | 16,97 RU | ✅ |
+| 9 ms | 16,97 RU | ✅ |
 
 ## <a name="conclusion"></a>Conclusie
 

@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 6b9f9e3cfc198610cf1f5f76b267ea52c551716a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: e5ff88b9a677fa53a70a28dbefc5d84cae2d1041
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838634"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427497"
 ---
 # <a name="create-azure-machine-learning-studio-classic-experiments-from-working-examples-in-azure-ai-gallery"></a>Azure Machine Learning Studio (klassieke) experimenten maken op basis van de voor beelden in Azure AI Gallery
 
@@ -36,7 +36,7 @@ Op deze pagina ziet u **onlangs toegevoegde** experimenten, of scroll omlaag om 
 ### <a name="look-for-an-experiment-that-meets-specific-requirements"></a>Naar een experiment zoeken dat aan specifieke vereisten voldoet
 Door alle experimenten bladeren:
 
-1. Klik op **Alles bekijken** boven aan de pagina.
+1. Klik boven aan de pagina op **Browse all**.
 2. Selecteer aan de linkerkant onder **Refine by**, in het gedeelte **Categories**, de optie **Experiment** om alle experimenten in de galerie weer te geven.
 3. U kunt op verschillende manieren experimenten vinden die aan uw vereisten voldoen:
    * **Selecteer filters aan de linkerkant.** Als u bijvoorbeeld door experimenten wilt bladeren die gebruikmaken van een PCA-algoritme voor de detectie van afwijkingen, klikt u onder **Categories** op **Experiment**. Klik vervolgens onder **Algorithms Used** op **Show All** en kies in het dialoogvenster de optie **PCA-Based Anomaly Detection**. Misschien moet u scrollen om de optie te zien.<br></br>
@@ -44,12 +44,12 @@ Door alle experimenten bladeren:
    * **Het zoekvak gebruiken.** Als u bijvoorbeeld experimenten wilt vinden die door Microsoft zijn aangedragen en die betrekking hebben op cijferherkenning waarbij gebruik wordt gemaakt van een algoritme van twee klassen voor ondersteuningsvectormachines, voert u 'digit recognition' (cijferherkenning) in het zoekvak in. Selecteer vervolgens de filters **Experiment**, **Microsoft content only** en **Two-Class Support Vector Machine**:<br></br>
      ![Het zoekvak gebruiken](./media/sample-experiments/search-for-experiments.png)
 4. Klik op een experiment voor meer informatie.
-5. Als u het experiment wilt uitvoeren of wijzigen, klikt u op **Openen in Studio** op de pagina van het experiment. <br></br>
+5. Als u het experiment wilt uitvoeren of wijzigen, klikt u op **Open in Studio** op de pagina van het experiment. <br></br>
 
     ![Voorbeeldexperiment](./media/sample-experiments/example-experiment.png)
 
 ## <a name="create-a-new-experiment-using-an-example-as-a-template"></a>Een nieuw experiment maken op basis van een sjabloon
-U kunt ook een nieuw experiment maken in de klassieke versie van Machine Learning Studio met behulp van een galerie voorbeeld als een sjabloon.
+U kunt ook een nieuw experiment in Machine Learning Studio (klassiek) maken met behulp van een galerie voorbeeld als een sjabloon.
 
 1. Meld u bij [Studio](https://studio.azureml.net) aan met uw Microsoft-accountreferenties en klik vervolgens op **New** om een nieuw experiment te maken.
 2. Blader door de voorbeelden en klik op een van de voorbeelden.

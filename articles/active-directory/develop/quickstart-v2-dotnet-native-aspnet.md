@@ -1,6 +1,6 @@
 ---
-title: Azure AD beveiligde ASP.NET-Web-API aanroepen-micro soft Identity-platform
-description: In deze Quick Start leert u hoe u een ASP.NET-Web-API aanroept die wordt beveiligd door Azure Active Directory van een Windows Desktop-toepassing (WPF). De WPF-client verifieert een gebruiker, vraagt een toegangs token aan en roept de Web-API aan.
+title: Een ASP.NET-Web-API aanroepen die wordt beveiligd door micro soft Identity platform
+description: In deze Quick Start leert u hoe u een ASP.NET-Web-API aanroept die wordt beveiligd door micro soft Identity platform van een Windows Desktop-toepassing (WPF). De WPF-client verifieert een gebruiker, vraagt een toegangs token aan en roept de Web-API aan.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 10/30/2019
+ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe3301c3c91343277997be1ee554ced76884274a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1c6c51b0a7ae7255391fd35d234b5ee47b7a9525
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74963304"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424041"
 ---
-# <a name="quickstart-call-an-aspnet-web-api-protected-by-azure-ad"></a>Quick Start: een ASP.NET-Web-API aanroepen die wordt beveiligd door Azure AD
+# <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Quick Start: een ASP.NET-Web-API aanroepen die wordt beveiligd door micro soft Identity platform
 
-In deze Quick Start maakt u een web-API beschikbaar en kunt u deze beveiligen zodat alleen geverifieerde gebruikers er toegang toe hebben. Dit voor beeld laat zien hoe u een ASP.NET-Web-API beschikbaar maakt, zodat deze tokens kan accepteren die worden uitgegeven door persoonlijke accounts (inclusief outlook.com, live.com en anderen), evenals werk-en school accounts van elk bedrijf of organisatie dat is geïntegreerd met Azure Active Directory.
+In deze Quick Start maakt u een web-API beschikbaar en kunt u deze beveiligen zodat alleen geverifieerde gebruikers er toegang toe hebben. Dit voor beeld laat zien hoe u een ASP.NET-Web-API beschikbaar maakt, zodat deze tokens kan accepteren die worden uitgegeven door persoonlijke accounts (inclusief outlook.com, live.com en anderen), evenals werk-en school accounts van elk bedrijf of organisatie dat is geïntegreerd met micro soft Identity onafhankelijk.
 
 Het voor beeld omvat ook een WPF-client (Windows Desktop Application) die laat zien hoe u een toegangs token kunt aanvragen om toegang te krijgen tot een web-API.
 
@@ -58,7 +58,7 @@ Als u uw apps hand matig wilt registreren, moet u eerst het volgende doen:
 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) .
 1. Selecteer **nieuwe registratie**.
 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
-   - Voer in de sectie **Naam** een beschrijvende toepassingsnaam. Deze wordt zichtbaar voor gebruikers van de app. Bijvoorbeeld: `AppModelv2-NativeClient-DotNet-TodoListService`.
+   - Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die zichtbaar is voor gebruikers van de app. Bijvoorbeeld: `AppModelv2-NativeClient-DotNet-TodoListService`.
    - Wijzig **ondersteunde account typen** **in accounts in elke organisatie Directory**.
    - Selecteer **Registreren** om de toepassing te maken.
 
@@ -76,7 +76,7 @@ Als u uw apps hand matig wilt registreren, moet u eerst het volgende doen:
      - **Status** als **ingeschakeld** blijven
      - **Bereik toevoegen** selecteren
 
-### <a name="configure-the-service-and-client-projects-to-match-the-registered-web-api"></a>De service-en client projecten configureren zodat deze overeenkomen met de geregistreerde Web-API 
+### <a name="configure-the-service-project-to-match-the-registered-web-api"></a>Het service project configureren zodat dit overeenkomt met de geregistreerde Web-API 
 
 1. Open de oplossing in Visual Studio en open vervolgens het bestand **Web. config** in de hoofdmap van **TodoListService** -project.
 1. Vervang de waarde van `ida:ClientId` para meter door de **client-id (toepassings-id)** van de toepassing die u zojuist hebt geregistreerd in de portal voor toepassings registratie.
@@ -100,11 +100,11 @@ In deze stap configureert u uw *TodoListClient* -project door een nieuwe toepass
 1. Navigeer naar de pagina micro soft-identiteits platform voor ontwikkel aars [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) .
 1. Selecteer **nieuwe registratie**.
 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in:
-   - Voer in de sectie **Naam** een beschrijvende toepassingsnaam. Deze wordt zichtbaar voor gebruikers van de app. Bijvoorbeeld: `NativeClient-DotNet-TodoListClient`.
+   - Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die zichtbaar is voor gebruikers van de app. Bijvoorbeeld: `NativeClient-DotNet-TodoListClient`.
    - Wijzig **ondersteunde account typen** **in accounts in elke organisatie Directory**.
    - Selecteer **Registreren** om de toepassing te maken.
 1. Selecteer de sectie **verificatie** op de pagina overzicht van de app.
-   - Controleer in de sectie **url's omleiden** | **voorgestelde omleidings-url's voor open bare clients (Mobile, Desktop)** het gedeelte **urn: IETF: WG: OAuth: 2.0: OOB**
+   - Controleer in de sectie **omleidings-uri's** | **voorgestelde omleidings-uri's voor open bare clients (Mobile, Desktop)** **https://login.microsoftonline.com/common/oauth2/nativeclient**
    - Selecteer **Opslaan**.
 1. De sectie **API-machtigingen** selecteren
    - Klik op de knop **een machtiging toevoegen** en vervolgens op

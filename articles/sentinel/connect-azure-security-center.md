@@ -1,26 +1,20 @@
 ---
-title: Azure Security Center gegevens verbinden met Azure Sentinel | Microsoft Docs
+title: Azure Security Center gegevens verbinden met Azure Sentinel
 description: Meer informatie over het verbinden van Azure Security Center gegevens met Azure Sentinel.
-services: sentinel
-documentationcenter: na
 author: rkarlin
 manager: rkarlin
-editor: ''
 ms.assetid: d28c2264-2dce-42e1-b096-b5a234ff858a
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: a9c210531f2c4cab1c3c023eab795023c3ad9f0c
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 8d8f960d8cf1310ec0a380e75bdaa714408e2cac
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240225"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563663"
 ---
 # <a name="connect-data-from-azure-security-center"></a>Verbinding maken met gegevens van Azure Security Center
 
@@ -47,7 +41,7 @@ Met Azure Sentinel kunt u waarschuwingen van [Azure Security Center](../security
 
 1. U kunt selecteren of u wilt dat de waarschuwingen van Azure Security Center automatisch incidenten in azure-Sentinel automatisch genereren. Selecteer **inschakelen** onder **incidenten maken** om de standaard analyse regel in te scha kelen waarmee incidenten automatisch worden gemaakt op basis van waarschuwingen die zijn gegenereerd in de verbonden beveiligings service. U kunt deze regel vervolgens bewerken onder **analyse** en vervolgens op **actieve regels**.
 
-3. Klik op**Verbinden**.
+3. Klik op **Connect** (Verbinden).
 
 4. Als u het relevante schema in Log Analytics voor de Azure Security Center waarschuwingen wilt gebruiken, zoekt u naar **SecurityAlert**.
 

@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 1408faf09ef8950fb0d86f8a036269da2963e3d4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b6a8b0664cb205a7c3cbdb72f41433b145b02d00
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072844"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448775"
 ---
 # <a name="tutorial-get-search-suggestions-on-a-web-page"></a>Zelf studie: Zoek suggesties op een webpagina ophalen
 
 In deze zelfstudie bouwen we een webpagina waarmee gebruikers aanvragen kunnen versturen naar de Automatische suggestie-API voor Bing.
 
-In deze handleiding ontdekt u hoe u:
+In deze zelfstudie ontdekt u hoe u:
 
 > [!div class="checklist"]
 > - Een eenvoudige query verstuurt naar de Automatische suggestie-API voor Bing
@@ -184,7 +184,7 @@ De functie accepteert twee parameters: de inhoud van het HTML-formulierveld en d
 function bingAutosuggest(query, key) {
 ```
 
-Geef het eindpunt voor de Automatische suggestie-API voor Bing op en declareer een XMLHttpRequest-object, dat nodig is voor het verzenden van aanvragen naar het eindpunt.
+Geef het Automatische suggestie-API voor Bing-eind punt op en Declareer een XMLHttpRequest-object dat wordt gebruikt om aanvragen te verzenden. U kunt het volgende globale eind punt gebruiken of het [aangepaste subdomein](../../../cognitive-services/cognitive-services-custom-subdomains.md) -eind punt dat wordt weer gegeven in de Azure portal voor uw resource.
 
 ```html
     var endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/Suggestions";

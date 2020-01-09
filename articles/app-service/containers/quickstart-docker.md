@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.date: 08/28/2019
 ms.topic: quickstart
-ms.openlocfilehash: 14ea5444d3d8827919405a4d5aa8a176746c2e72
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 62e6b007e89fc6be726d3d971ca838770db9cb6e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688952"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422151"
 ---
 # <a name="deploy-a-custom-linux-container-to-azure-app-service"></a>Een aangepaste Linux-container implementeren op Azure App Service
 
@@ -24,9 +24,9 @@ App Service op Linux biedt vooraf gedefinieerde toepassings stacks op Linux met 
 * De [uitbrei ding van de Azure app service voor VS code](vscode:extension/ms-azuretools.vscode-azureappservice). U kunt deze extensie gebruiken voor het maken, beheren en implementeren van Linux-Web Apps op het Azure-Platform as a Service (PaaS).
 * De [docker-extensie voor VS code](vscode:extension/ms-azuretools.vscode-docker). U kunt deze uitbrei ding gebruiken om het beheer te vereenvoudigen van lokale docker-installatie kopieën en-opdrachten en om installatie kopieën van gebouwde apps te implementeren in Azure.
 
-## <a name="create-an-image"></a>Een installatie kopie maken
+## <a name="create-an-image"></a>Een installatiekopie maken
 
-Voor het volt ooien van deze Snelstartgids hebt u een geschikte installatie kopie van de web-app die is opgeslagen in een [Azure container Registry](/azure/container-registry). Volg de instructies in [Quick Start: Maak een persoonlijk container register met behulp van de Azure Portal](/azure/container-registry/container-registry-get-started-portal), maar gebruik de `mcr.microsoft.com/azuredocs/go` installatie kopie in plaats van de `hello-world` installatie kopie.
+Voor het volt ooien van deze Snelstartgids hebt u een geschikte installatie kopie van de web-app die is opgeslagen in een [Azure container Registry](/azure/container-registry). Volg de instructies in [Quick Start: Maak een persoonlijk container register met behulp van de Azure Portal](/azure/container-registry/container-registry-get-started-portal), maar gebruik de `mcr.microsoft.com/azuredocs/go` installatie kopie in plaats van de `hello-world` installatie kopie. Ter referentie is de voor [beeld-Dockerfile te vinden in azure samples opslag plaats](https://github.com/Azure-Samples/go-docs-hello-world).
 
 > [!IMPORTANT]
 > Zorg ervoor dat u de optie **gebruikers beheerder** instelt om in te **scha kelen** wanneer u het container register maakt. U kunt deze ook instellen via de sectie **toegangs sleutels** van uw register pagina in de Azure Portal. Deze instelling is vereist voor toegang tot App Service.

@@ -1,25 +1,18 @@
 ---
 title: Azure CLI-voor beelden-Azure-app configuratie | Microsoft Docs
 description: Bevat informatie over de beschikbare voorbeeldscripts voor Azure-app-configuratie
-services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: balans
-editor: ''
-ms.service: azure-app-configuration
-ms.devlang: na
-ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: azure-app-configuration
-ms.date: 02/24/2019
 ms.author: yegu
+ms.service: azure-app-configuration
+ms.topic: sample
+ms.date: 02/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 9b9d4c6447b8030c2ae5f7dc22857f77b57f91ea
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: c4cfd8e8d6e3f37d59165dff30d0c142f27bac90
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185311"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495292"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI-voorbeelden
 

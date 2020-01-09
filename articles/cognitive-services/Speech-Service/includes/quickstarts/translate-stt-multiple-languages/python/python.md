@@ -1,21 +1,21 @@
 ---
 title: 'Quick Start: spraak herkennen, python-Speech-Service'
 titleSuffix: Azure Cognitive Services
-description: Nader te bepalen
+description: TBD
 services: cognitive-services
 author: chlandsi
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
+ms.topic: include
 ms.date: 12/09/2019
 ms.author: chlandsi
-ms.openlocfilehash: 6e661b7a54666d511c4203326001406a68775344
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: db435c29737c5861fc28f3f90606bf662784eada
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74981247"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75467034"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -79,7 +79,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 
 1. Vervang in hetzelfde bestand de tekenreeks `YourSubscriptionKey` door uw abonnementssleutel.
 
-1. Vervang de tekenreeks `YourServiceRegion` door de [regio](../../../../regions.md) die aan uw abonnement is gekoppeld (bijvoorbeeld `westus` voor het gratis proefabonnement).
+1. Vervang de tekenreeks `YourServiceRegion` door de [regio](../../../../regions.md) die gekoppeld is aan uw abonnement (bijvoorbeeld `westus` voor het gratis proefabonnement).
 
 1. Sla de wijzigingen op die u hebt aangebracht in `quickstart.py`.
 

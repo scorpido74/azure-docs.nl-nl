@@ -3,7 +3,7 @@ title: Xamarin Android-overwegingen (MSAL.NET) | Azure
 titleSuffix: Microsoft identity platform
 description: Meer informatie over specifieke overwegingen bij het gebruik van Xamarin Android met de micro soft Authentication Library voor .NET (MSAL.NET).
 services: active-directory
-author: TylerMSFT
+author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cb28b8465bf74351c5c6efe9d80dcc01137be5d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 678b581e09fe1eac49e4f2bf07eabbbc944c8d4e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74915516"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424152"
 ---
 # <a name="xamarin-android-specific-considerations-with-msalnet"></a>Xamarin Android-specifieke overwegingen met MSAL.NET
 In dit artikel worden specifieke overwegingen beschreven voor het gebruik van Xamarin Android met de micro soft Authentication Library voor .NET (MSAL.NET).
@@ -35,7 +35,7 @@ var authResult = AcquireTokenInteractive(scopes)
 ```
 U kunt dit ook instellen op het PublicClientApplication niveau (in MSAL 4.2 +) via een call back.
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -45,7 +45,7 @@ var pca = PublicClientApplicationBuilder
 
 Een aanbeveling is om [hier](https://github.com/jamesmontemagno/CurrentActivityPlugin)de CurrentActivityPlugin te gebruiken.  De PublicClientApplication Builder-code ziet er als volgt uit:
 
-```CSharp
+```csharp
 // Requires MSAL.NET 4.2 or above
 var pca = PublicClientApplicationBuilder
   .Create("<your-client-id-here>")
@@ -82,6 +82,23 @@ De `AndroidManifest.xml` moet de volgende waarden bevatten:
          </intent-filter>
 </activity>
 ```
+
+U kunt ook [de activiteit in code maken](https://docs.microsoft.com/xamarin/android/platform/android-manifest#the-basics) en niet hand matig bewerken `AndroidManifest.xml`. Hiervoor moet u een klasse met het kenmerk `Activity` en `IntentFilter` maken. Een klasse die dezelfde waarden van de bovenstaande XML vertegenwoordigt, is als volgt:
+
+```csharp
+  [Activity]
+  [IntentFilter(new[] { Intent.ActionView },
+        Categories = new[] { Intent.CategoryBrowsable, Intent.CategoryDefault },
+        DataHost = "auth",
+        DataScheme = "msal{client_id}")]
+  public class MsalActivity : BrowserTabActivity
+  {
+  }
+```
+
+### <a name="xamarinforms-43x-manifest"></a>XamarinForms 4.3. X-manifest
+
+De code die door XamarinForms 4.3. x wordt gegenereerd, stelt het `package` kenmerk in op `com.companyname.{appName}` in de `AndroidManifest.xml`. Als u de `DataScheme` als `msal{client_id}`gebruikt, is het raadzaam om de waarde te wijzigen zodat deze hetzelfde is als de `MainActivity.cs` naam ruimte.
 
 ## <a name="use-the-embedded-web-view-optional"></a>De Inge sloten webweergave gebruiken (optioneel)
 

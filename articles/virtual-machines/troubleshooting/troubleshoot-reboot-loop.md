@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: d8a1d64ac8e65fd52730ee1750c0b0b1949b3512
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 3fd0a8bf6bacfec5e2be6dfa52ca51e46c7025f7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088473"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443583"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Windows-lus voor opnieuw opstarten op een virtuele machine van Azure
 In dit artikel wordt de herstart-lus beschreven die kan optreden op een virtuele Windows-machine (VM) in Microsoft Azure.
@@ -62,11 +62,11 @@ Om dit probleem op te lossen, maakt u een [back-up van de besturingssysteem schi
 
 4. Open de Windows REGI ster-editor (regedit) op de virtuele machine voor herstel.
 
-5. Selecteer de sleutel **HKEY_LOCAL_MACHINE** en selecteer vervolgens component **bestand** > **laden** in het menu.
+5. Selecteer de sleutel **HKEY_LOCAL_MACHINE** en selecteer vervolgens **bestand** > **Component laden** in het menu.
 
 6. Blader naar het systeem bestand in de map **\Windows\System32\Config** .
 
-7. Selecteer **openen**, typ **BROKENSYSTEM** voor de naam, vouw de sleutel **HKEY_LOCAL_MACHINE** uit en raadpleeg vervolgens een extra sleutel met de naam **BROKENSYSTEM**.
+7. Selecteer **openen**, typ **BROKENSYSTEM** voor de naam, vouw de **HKEY_LOCAL_MACHINE** sleutel uit en raadpleeg vervolgens een extra sleutel met de naam **BROKENSYSTEM**.
 
 8. Controleer op welke Beheerset de computer wordt opgestart. Het sleutel nummer wordt weer geven in de volgende register sleutel.
 
@@ -86,7 +86,7 @@ Om dit probleem op te lossen, maakt u een [back-up van de besturingssysteem schi
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupInquirySvc\ErrorControl`
     - `HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Services\AzureWLBackupPluginSvc\ErrorControl`
 
-13. Selecteer de sleutel **BROKENSYSTEM** en selecteer vervolgens component **bestand** > **laden** in het menu.
+13. Selecteer de sleutel **BROKENSYSTEM** en selecteer vervolgens **bestand** > **component verwijderen** in het menu.
 
 14. Ontkoppel de besturingssysteem schijf van de virtuele machine voor probleem oplossing.
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: erhopf
-ms.openlocfilehash: ed00a9df46660cc6bfb4ec5fd9a93c80f5d6653e
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: ff8cdf78d923394caf36610534eb5dcc7de571a4
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815329"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562541"
 ---
 # <a name="long-audio-api-preview"></a>Lange audio-API (preview-versie)
 
@@ -42,15 +42,24 @@ Dit diagram bevat een overzicht op hoog niveau van de werk stroom.
 Wanneer u het tekst bestand voorbereidt, moet u het volgende controleren:
 
 * Is tekst zonder opmaak (. txt) of SSML tekst (. txt)
-  * Voor tekst zonder opmaak wordt elke alinea gescheiden door op **Enter/Return** - [invoer voor beeld tekst zonder opmaak](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) weer te geven
-  * Voor SSML tekst wordt elk SSML-stuk beschouwd als een alinea. SSML stuks moeten worden gescheiden door verschillende alinea's: [SSML tekst invoer voorbeeld](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)weer geven. Zie voor taal code [spraak synthese Markup Language (SSML) (Engelstalig)](speech-synthesis-markup.md)
 * Is gecodeerd als [UTF-8 met een byte order Mark (bom)](https://www.w3.org/International/questions/qa-utf8-bom.en#bom)
-* Bevat meer dan 10.000 tekens of meer dan 50 alinea's
 * Is één bestand, geen zip
+* Bevat meer dan 400 tekens voor onbewerkte tekst of 400 [factureer bare tekens](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech#pricing-note) voor SSML tekst en minder dan 10.000 alinea's
+  * Voor tekst zonder opmaak wordt elke alinea gescheiden door op **Enter/Return** - [invoer voor beeld tekst zonder opmaak](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) weer te geven
+  * Voor SSML tekst wordt elk SSML-stuk beschouwd als een alinea. SSML stuks moeten worden gescheiden door verschillende alinea's- [voor beeld van SSML-tekst invoer](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt) weer geven
+> [!NOTE]
+> Voor Chinees (vasteland), Chinees (Hongkong), Chinees (Taiwan), Japans en Koreaans wordt één woord als twee tekens beschouwd. 
+
+## <a name="submit-synthesis-requests"></a>Synthese aanvragen verzenden
+
+Nadat u de invoer inhoud hebt voor bereid, volgt u de Quick Start van de [Audio synthese voor lange vorm](https://aka.ms/long-audio-python) om de aanvraag in te dienen. Als u meer dan één invoer bestand hebt, moet u meerdere aanvragen indienen. Er zijn enkele beperkingen waar u rekening mee moet houden: 
+* De client mag Maxi maal 5 aanvragen voor de server per seconde indienen voor elk account van een Azure-abonnement. Als deze de beperking overschrijdt, krijgt de client een fout code van 429 (te veel aanvragen). Verminder de aanvraag hoeveelheid per seconde
+* De server mag Maxi maal 120 aanvragen voor elk account van een Azure-abonnement uitvoeren en in de wachtrij plaatsen. Als de limiet wordt overschreden, retourneert de server een fout code van 429 (te veel aanvragen). Een ogen blik geduld en het verzenden van een nieuwe aanvraag voor komen totdat sommige aanvragen zijn voltooid
+* Server bewaart Maxi maal 20.000 aanvragen voor elk account van een Azure-abonnement. Als deze de beperking overschrijdt, moet u enkele aanvragen verwijderen alvorens nieuwe te verzenden
 
 ## <a name="audio-output-formats"></a>Indelingen audio-uitvoer
 
-De volgende indelingen voor audio-uitvoer worden ondersteund door de lange audio-API:
+Flexibele indelingen voor audio-uitvoer worden ondersteund. U kunt audio-uitvoer per alinea genereren of de audio in één uitvoer samen voegen door de para meter ' concatenateResult ' in te stellen. De volgende indelingen voor audio-uitvoer worden ondersteund door de lange audio-API:
 
 > [!NOTE]
 > De standaard audio-indeling is RIFF-16khz-16-mono-PCM.

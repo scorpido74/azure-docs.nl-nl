@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/24/2019
-ms.openlocfilehash: 1b1b02e310c98a78006d258333c0ec10e89e3b31
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 28d0da369083d75bc175111d808828e186a366fc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927455"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444137"
 ---
 # <a name="copy-activity-performance-and-scalability-guide"></a>Gids voor de prestaties en schaal baarheid van de Kopieer activiteit
 
 > [!div class="op_single_selector" title1="Selecteer de versie van Azure Data Factory die u gebruikt:"]
-> * [Versie 1](v1/data-factory-copy-activity-performance.md)
+> * [Versie 1:](v1/data-factory-copy-activity-performance.md)
 > * [Huidige versie](copy-activity-performance.md)
 
 Of u nu een grootschalige gegevens migratie wilt uitvoeren van data Lake of ENTER prise Data Warehouse (EDW) naar Azure, of dat u gegevens wilt opnemen op schaal uit verschillende bronnen in azure voor big data Analytics, het is essentieel om optimale prestaties te verwezenlijken en schaal baarheid.  Azure Data Factory biedt een krachtige, robuuste en kosteneffectieve methode voor het opnemen van gegevens op schaal, waardoor het handig is voor gegevens technici die zeer krachtige en schaal bare gegevens opname pijplijnen willen bouwen.
@@ -293,7 +293,8 @@ Er worden kosten in rekening gebracht op basis van twee stappen: de duur en het 
 
 Hier volgen de prestaties en het afstemmen van verwijzingen voor een aantal ondersteunde gegevens archieven:
 
-* Azure Storage, waaronder Blob Storage en Table Storage: [Azure Storage schaalbaarheids doelen](../storage/common/storage-scalability-targets.md) en [Azure Storage controle lijst voor prestaties en schaal baarheid](../storage/common/storage-performance-checklist.md).
+* Azure Blob-opslag: [schaal baarheid en prestatie doelen voor Blob Storage](../storage/blobs/scalability-targets.md) en de [controle lijst voor prestaties en schaal baarheid voor Blob Storage](../storage/blobs/storage-performance-checklist.md).
+* Azure-tabel opslag: [schaal baarheid en prestatie doelen voor](../storage/tables/scalability-targets.md) de [controle lijst voor tabel opslag en prestaties en schaal baarheid voor tabel opslag](../storage/tables/storage-performance-checklist.md).
 * Azure SQL Database: u kunt [de prestaties bewaken](../sql-database/sql-database-single-database-monitor.md) en het DTU-percentage (data base Trans Action Unit) controleren.
 * Azure SQL Data Warehouse: de mogelijkheid ervan wordt gemeten in data warehouse units (Dwu's). Zie [reken kracht beheren in Azure SQL Data Warehouse (overzicht)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [prestatie niveaus in azure Cosmos DB](../cosmos-db/performance-levels.md).

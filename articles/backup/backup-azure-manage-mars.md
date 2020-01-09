@@ -4,73 +4,16 @@ description: Meer informatie over het beheren en bewaken van back-ups van agents
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: f299bdeebab4f42721255d462101f0065a640fab
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: b7e947e7fd473ec787d49ffe82532ffd5b6a98d1
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665590"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75497004"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Back-ups van de agent voor Microsoft Azure Recovery Services (MARS) beheren met behulp van de Azure Backup-Service
 
 In dit artikel wordt beschreven hoe u bestanden en mappen beheert waarvan een back-up is gemaakt met de Microsoft Azure Recovery Services-agent.
-
-## <a name="create-a-backup-policy"></a>Maak een back-upbeleid
-
-Het back-upbeleid geeft aan wanneer moment opnamen van de gegevens moeten worden gemaakt om herstel punten te maken en hoe lang herstel punten moeten worden bewaard. U configureert het back-upbeleid met behulp van de MARS-agent.
-
-Maak als volgt een beleid:
-
-1. Nadat u de MARS-agent hebt gedownload en geregistreerd, start u de agent console. U vindt deze door te zoeken naar **Microsoft Azure Backup** op uw machine.  
-2. Klik in **acties**op **back-up plannen**.
-
-    ![Een back-up van de Windows Server plannen](./media/backup-configure-vault/schedule-first-backup.png)
-3. Klik op **volgende**in de wizard Back-up plannen > **aan**de slag te gaan.
-4. In **items selecteren waarvan u een back-up wilt maken**, klikt u op **items toevoegen**.
-
-    ![Items selecteren waarvan u een back-up wilt maken](./media/backup-azure-manage-mars/select-item-to-backup.png)
-
-5. Selecteer bij **items selecteren**de waarde waarvan u een back-up wilt maken en klik op **OK**.
-
-    ![Geselecteerde items waarvan een back-up moet worden gemaakt](./media/backup-azure-manage-mars/selected-items-to-backup.png)
-
-6. Klik op de pagina **items selecteren waarvan u een back-up wilt maken** op **volgende**.
-7. Geef op de pagina **back-upschema opgeven** op wanneer u dagelijks of wekelijks back-ups wilt maken. Klik op **Volgende**.
-
-    - Wanneer er een back-up wordt gemaakt, wordt er een herstel punt aangemaakt.
-    - Het aantal herstel punten dat in uw omgeving is gemaakt, is afhankelijk van het back-upschema.
-
-8. U kunt dagelijks back-ups plannen, Maxi maal drie keer per dag. De scherm opname bevat bijvoorbeeld twee dagelijkse back-ups, een om middernacht en één om 6:00 uur.
-
-    ![Dagelijks schema](./media/backup-configure-vault/day-schedule.png)
-
-9. U kunt ook wekelijkse back-ups uitvoeren. De scherm afbeelding toont bijvoorbeeld de back-ups die zijn gemaakt op elke tweede zondag & woensdag om 9:30 uur en 1:00 uur.
-
-    ![Wekelijks schema](./media/backup-configure-vault/week-schedule.png)
-
-10. Geef op de pagina **retentie beleid selecteren** op hoe u historische kopieën van uw gegevens opslaat. Klik op **Volgende**.
-
-    - De Bewaar instellingen geven op welke herstel punten moeten worden opgeslagen en hoelang ze moeten worden opgeslagen.
-    - Wanneer u bijvoorbeeld een dagelijkse Bewaar instelling instelt, geeft u aan dat op het tijdstip dat is opgegeven voor de dagelijkse retentie, het laatste herstel punt wordt bewaard gedurende het opgegeven aantal dagen. U kunt ook een maandelijks Bewaar beleid opgeven om aan te geven dat het herstel punt dat op de 30e van elke maand wordt gemaakt, 12 maanden moet worden bewaard.
-    - Dagelijks en wekelijks Bewaar periode van het herstel punt vallen doorgaans samen met het back-upschema. Als de back-up wordt geactiveerd volgens schema, wordt het herstel punt dat is gemaakt door de back-up opgeslagen voor de duur die is aangegeven in het dagelijkse of wekelijkse Bewaar beleid.
-    - Een voor beeld:-dagelijkse back-ups op middernacht en 6:00 uur worden gedurende zeven dagen bewaard.
-            -Back-ups die zijn gemaakt op zaterdag om middernacht en 6:00 uur, worden vier weken bewaard.
-            -Back-ups die zijn gemaakt op zaterdag in de afgelopen week van de maand om middernacht en 6:00 uur, worden twaalf maanden bewaard.
-            -Back-ups die zijn gemaakt op een zaterdag in de afgelopen week van maart worden tien jaar bewaard.
-
-    ![Voor beeld van Bewaar periode](./media/backup-configure-vault/retention-example.png)
-
-11. In **eerste back-uptype kiezen** beslist u of u de eerste back-up via het netwerk wilt maken of offline back-ups wilt gebruiken (zie dit [artikel](backup-azure-backup-import-export.md)voor meer informatie over offline back-up). Als u de eerste back-up via het netwerk wilt maken, selecteert u **automatisch via het netwerk** en klikt u op **volgende**.
-
-    ![eerste back-uptype](./media/backup-azure-manage-mars/choose-initial-backup-type.png)
-
-12. Lees de informatie in **bevestiging**en klik vervolgens op **volt ooien**.
-    ![het type back-up bevestigen](./media/backup-azure-manage-mars/confirm-backup-type.png)
-
-13. Nadat u de wizard voor het maken van een back-upschema hebt doorlopen, klikt u op **Sluiten**.
-  ![Bevestig het wijzigen van het back-upproces](./media/backup-azure-manage-mars/confirm-modify-backup-process.png)
-
-U moet een beleid maken op elke computer waarop de agent is geïnstalleerd.
 
 ## <a name="modify-a-backup-policy"></a>Een back-upbeleid wijzigen
 
@@ -83,7 +26,7 @@ Wanneer u het back-upbeleid wijzigt, kunt u nieuwe items toevoegen, bestaande it
   - Als u deze items opnieuw selecteert, worden er geen back-ups gemaakt van de eerste back-up en nieuwe beleids wijzigingen.
   - Als u de selectie van het hele volume uitschakelt, blijft de vorige back-up zonder enige bereik voor het wijzigen van het Bewaar beleid.
 - **Instellingen voor uitsluiting** gebruik deze optie om specifieke items uit te sluiten waarvan u een back-up wilt maken.
-  
+
 ### <a name="add-new-items-to-existing-policy"></a>Nieuwe items toevoegen aan het bestaande beleid
 
 1. Klik in **acties**op **back-up plannen**.
@@ -158,12 +101,17 @@ Er zijn twee manieren om het maken van back-ups van bestanden en mappen te stopp
 ### <a name="stop-protection-and-retain-backup-data"></a>Beveiliging stoppen en back-upgegevens behouden
 
 1. Open de MARS-beheer console, ga naar het **deel venster acties**en **Selecteer back-up plannen**.
-    een geplande back-up ![wijzigen of stoppen.](./media/backup-azure-manage-mars/mars-actions.png)
+
+    ![Een geplande back-up wijzigen of stoppen.](./media/backup-azure-manage-mars/mars-actions.png)
 1. Selecteer op de pagina **beleids item selecteren** **de optie een back-upschema voor uw bestanden en mappen wijzigen** en klik op **volgende**.
-    een geplande back-up ![wijzigen of stoppen.](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
-1. Op de pagina **een geplande back-up wijzigen of stoppen** selecteert **u stoppen met het gebruik van dit back-upschema, maar behoud de opgeslagen back-ups totdat een schema opnieuw wordt geactiveerd**. Selecteer vervolgens **Volgende**.  
-    een geplande back-up ![wijzigen of stoppen.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
-1. Bekijk de informatie in de **geplande back-up onderbreken** en klik op **volt ooien** ![een geplande back-up te wijzigen of te stoppen.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
+
+    ![Een geplande back-up wijzigen of stoppen.](./media/backup-azure-manage-mars/select-policy-item-retain-data.png)
+1. Op de pagina **een geplande back-up wijzigen of stoppen** selecteert **u stoppen met het gebruik van dit back-upschema, maar behoud de opgeslagen back-ups totdat een schema opnieuw wordt geactiveerd**. Selecteer vervolgens **Volgende**.
+
+    ![Een geplande back-up wijzigen of stoppen.](./media/backup-azure-manage-mars/stop-schedule-backup.png)
+1. Bekijk de informatie in de **geplande back-up onderbreken** en klik op **volt ooien**.
+
+    ![Een geplande back-up wijzigen of stoppen.](./media/backup-azure-manage-mars/pause-schedule-backup.png)
 1. Controleer in **back-upproces wijzigen** of de back-up voor het plannen van uw planning de status geslaagd heeft en klik op **sluiten** om te volt ooien.
 
 ### <a name="stop-protection-and-delete-backup-data"></a>Beveiliging stoppen en back-upgegevens verwijderen
@@ -194,15 +142,34 @@ Nadat u de on-premises back-upitems hebt verwijderd, voert u de volgende stappen
 Als u de beveiliging hebt gestopt terwijl u de gegevens behoudt en hebt besloten om de beveiliging te hervatten, kunt u het back-upschema opnieuw inschakelen met behulp van het back-upbeleid wijzigen.
 
 1. Selecteer bij **acties** de optie **back-up plannen**.
-1. Selecteer **back-upschema opnieuw inschakelen. U kunt ook back-upitems of tijden wijzigen** en op **volgende**klikken.
-    de back-upinfrastructuur ![verwijderen.](./media/backup-azure-manage-mars/re-enable-policy-next.png)
+1. Selecteer **back-upschema opnieuw inschakelen. U kunt ook back-upitems of tijden wijzigen** en op **volgende**klikken.<br>
+
+    ![Verwijder de back-upinfrastructuur.](./media/backup-azure-manage-mars/re-enable-policy-next.png)
 1. Klik in **items selecteren om een back-up te maken**op **volgende**.
-    de back-upinfrastructuur ![verwijderen.](./media/backup-azure-manage-mars/re-enable-next.png)
+
+    ![Verwijder de back-upinfrastructuur.](./media/backup-azure-manage-mars/re-enable-next.png)
 1. In **back-upschema opgeven**geeft u het back-upschema op en klikt u op **volgende**.
 1. Geef in **Bewaar beleid selecteren**de Bewaar duur op en klik op **volgende**.
-1. Controleer ten slotte op het scherm voor **conformiteit** de details van het beleid en klik op **volt ooien**.
+1. Controleer ten slotte de details van het beleid in het **bevestigings** scherm en klik op **volt ooien**.
+
+## <a name="re-generate-passphrase"></a>Wachtwoordzin opnieuw genereren
+
+Een wachtwoordzin wordt gebruikt voor het versleutelen en ontsleutelen van gegevens tijdens het maken van een back-up of het herstellen van uw on-premises of lokale computer met de MARS-agent naar of van Azure. Als u de wachtwoordzin kwijtraakt of verg eten bent, kunt u de wachtwoordzin opnieuw genereren (mits uw computer nog steeds is geregistreerd bij de Recovery Services kluis en de back-up is geconfigureerd) door de volgende stappen te volgen:
+
+- Ga in de MARS-agent console naar het **deel venster acties** > **Eigenschappen > wijzigen** . Ga vervolgens naar het **tabblad versleuteling**.<br>
+- Selecteer selectie vakje **wachtwoordzin wijzigen** .<br>
+- Voer een nieuwe wachtwoordzin in of klik op **wachtwoordzin genereren**.
+- Klik op **Bladeren** om de nieuwe wachtwoordzin op te slaan.
+
+    ![Wachtwoordzin genereren.](./media/backup-azure-manage-mars/passphrase.png)
+- Klik op **OK** om de wijzigingen toe te passen.  Als de [beveiligings functie](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#enable-security-features) is ingeschakeld op de Azure portal voor de Recovery Services kluis, wordt u gevraagd om de beveiligings pincode in te voeren. Volg de stappen in dit [artikel](https://docs.microsoft.com/azure/backup/backup-azure-security-feature#authentication-to-perform-critical-operations)om de pincode te ontvangen.<br>
+- Plak de beveiligings pincode uit de portal en klik op **OK** om de wijzigingen toe te passen.<br>
+
+    ![Wachtwoordzin genereren.](./media/backup-azure-manage-mars/passphrase2.png)
+- Zorg ervoor dat de wachtwoordzin veilig wordt opgeslagen op een andere locatie (anders dan de bron machine), bij voor keur in het Azure Key Vault. Houd alle wachtwoordzin bij als er een back-up van meerdere machines met de MARS-agents wordt gemaakt.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Raadpleeg de [ondersteunings matrix voor Mars](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)voor meer informatie over ondersteunde scenario's en beperkingen.
+- Raadpleeg de [ondersteunings matrix voor de Mars-agent](https://docs.microsoft.com/azure/backup/backup-support-matrix-mars-agent)voor meer informatie over ondersteunde scenario's en beperkingen.
 - Meer informatie over het [Bewaar gedrag van back-upbeleid op aanvraag](backup-configure-vault.md#on-demand-backup-policy-retention-behavior).

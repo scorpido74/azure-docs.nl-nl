@@ -1,25 +1,16 @@
 ---
-title: Diagnostische gegevens en bewaking voor Azure ServiceFabric | Microsoft Docs
+title: Diagnostische gegevens en controle van Azure ServiceFabric
 description: In dit artikel worden de functies voor prestatie bewaking van de Service Fabric reliable ServiceRemoting-runtime beschreven, zoals de prestatie meter items die door de server worden gegenereerd.
-services: service-fabric
-documentationcenter: .net
 author: suchiagicha
-manager: chackdan
-editor: suchiagicha
-ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2017
 ms.author: pepogors
-ms.openlocfilehash: a7c5ec023eb03d7d68a43ffecdc74aa4e505a0ce
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 31095a619fc4d756fa4ef9c29691d1d511d59ece
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170481"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426705"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnose en prestatie bewaking voor betrouw bare service voor externe communicatie
 De betrouw bare ServiceRemoting-runtime verzendt [prestatie meter items](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx). Deze bieden inzicht in de manier waarop de ServiceRemoting werkt en helpt bij het oplossen van problemen en het controleren van de prestaties.
@@ -83,7 +74,7 @@ In het vorige voor beeld is `ivoicemailboxservice.leavemessageasync` de naam van
 
 De betrouw bare service-runtime publiceert de volgende prestatie meter items die betrekking hebben op de uitvoering van service methoden.
 
-| Categorie naam | Naam van het prestatiemeteritem | Beschrijving |
+| Category name | Naam van het prestatiemeteritem | Beschrijving |
 | --- | --- | --- |
 | Service Fabric service methode |Aanroepen per seconde |Aantal keren dat de service methode per seconde wordt aangeroepen |
 | Service Fabric service methode |Gemiddeld aantal milliseconden per aanroep |Gebruikte tijd in milliseconden voor het uitvoeren van de service methode |
@@ -92,7 +83,7 @@ De betrouw bare service-runtime publiceert de volgende prestatie meter items die
 ### <a name="service-request-processing-performance-counters"></a>Prestatie meter items voor verwerking van service aanvragen
 Wanneer een client een methode aanroept via een Service proxy-object, resulteert dit in een aanvraag bericht dat via het netwerk naar de externe service wordt verzonden. De service verwerkt het aanvraag bericht en stuurt een antwoord terug naar de client. De betrouw bare ServiceRemoting-runtime publiceert de volgende prestatie meter items die betrekking hebben op de verwerking van service aanvragen.
 
-| Categorie naam | Naam van het prestatiemeteritem | Beschrijving |
+| Category name | Naam van het prestatiemeteritem | Beschrijving |
 | --- | --- | --- |
 | Service Fabric-service |aantal openstaande aanvragen |Aantal aanvragen dat wordt verwerkt in de service |
 | Service Fabric-service |Gemiddeld aantal milliseconden per aanvraag |Gebruikte tijd (in milliseconden) van de service voor het verwerken van een aanvraag |

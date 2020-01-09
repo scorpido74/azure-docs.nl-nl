@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: 3347cfee8b54efa9c52b23deff8c44387195fd63
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: f503377984a347d85af04d85728c53eaad0c4c74
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851176"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451370"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integratie van virtuele bureau blad-partners van Windows
 
@@ -38,7 +38,6 @@ Als goedgekeurde provider worden de voor delen van Windows virtueel bureau blad 
 
 - [Meld u aan voor de Tech Preview van Horizon-Cloud op Microsoft Azure](https://www.vmware.com/learn/323526_TECH_PREVIEW_REG.html).
 - [Ga naar de website van de partner](https://www.vmware.com/products/horizon-cloud-virtual-desktops.html).
-
 
 ## <a name="cloudhouse"></a>Cloudhouse
 
@@ -82,6 +81,16 @@ deviceTRUST breidt de waarde van Windows virtueel bureau blad uit met hun contex
 
 - [Ga naar de website van de partner](https://devicetrust.com/wvd).
 
+## <a name="hp"></a>HP
+
+![HP-logo](./media/partners/hp.png)
+
+HP thin client is een goedgekeurde en geverifieerde partner van de Azure-en Windows Virtual Desktop-Services van micro soft. HP thin clients met Windows 10 IoT Enter prise bieden out-of-box-ondersteuning voor Azure-workloads en gehoste Bureau bladen in Windows Virtual Desktop. De hardware en het besturings systeem zijn geoptimaliseerd om een eersteklas ervaring te bieden die op effectieve wijze externe workloads levert, terwijl de systeem capaciteit, de hardware en de onderhouds kosten worden verminderd.
+
+Omdat HP heeft gekeken naar trends in de branche, klant uitdagingen en de oplossingen die tijdens het ontwikkelings proces worden aangeboden, zijn ze geïnspireerd op het ideale Cloud-eind punt met een 4-pijler toegevoegde waarde: ontwerp, beheer baarheid, beveiliging en veelzijdigheid. Elke HP thin client is ontworpen met het oog op IT-besluit vormers. HP thin clients zijn langdurig, veilig, eenvoudig te implementeren en te beheren, en krachtig zodat u moeiteloos kunt overstappen op VDI of Cloud Computing. De veelzijdige Port Folio van HP biedt u de vrijheid om de moderne eindpunt oplossing te kiezen die geschikt is voor u.
+
+- [Ga naar de website van de partner](https://hp.com/go/thin).
+
 ## <a name="igel"></a>IGEL
 
 ![IGEL-logo](./media/partners/igel.png)
@@ -90,7 +99,7 @@ IGEL is een goedgekeurde en geverifieerde partner van Microsoft Azure en virtuel
  
 IGEL-besturings systeem ondersteunt alle populaire virtuele apps, Bureau bladen en Cloud werkruimte client protocollen van Citrix, micro soft en VMware. Het bevat geïntegreerde technologieën van 85 Peripheral-, Interface-en protocol partners om organisaties in staat te stellen om snel virtuele bureau blad-services van Windows in hun eigen, unieke gebruikers omgevingen aan te nemen. Het besturings systeem IGEL is een alleen-lezen, Modulair eindpunt besturingssysteem, waardoor het niet kan worden geknoeid. Het bevat nu ook een volledige vertrouwens keten die de integriteit verifieert van alle belang rijke processen die op het eind punt worden uitgevoerd, van de eindpunt-hardware (sommige geselecteerde modellen) of het UEFI-proces helemaal naar de Azure-Cloud en virtuele bureau blad-services van Windows. Met het IGEL-besturings systeem kunnen bedrijven zich abonneren op virtuele Windows-Bureau bladen vanuit de Azure-Cloud met volledig vertrouwen in de integriteit, beveiliging en beheer baarheid van de eindpunt apparaten van hun gebruikers.
 
-- [Ga naar de website van de partner.](https://www.igel.com/igel-os-universal-desktop-operating-system/)
+- [Ga naar de website van de partner](https://www.igel.com/igel-os-universal-desktop-operating-system/).
 
 ## <a name="ivanti"></a>Ivanti
 

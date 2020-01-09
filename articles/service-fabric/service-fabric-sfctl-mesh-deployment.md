@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI-implementatie van sfctl-net | Microsoft Docs
-description: Hierin worden de implementatie-opdrachten voor de Service Fabric CLI sfctl-net beschreven.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI-implementatie van sfctl-net
+description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het maken van Service Fabric netresources.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: dbecf8e96c6cb5d0d6d873309d848304fe33eaaa
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 6512cce075906fc8708a39fa0747ec27be33e961
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901256"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645358"
 ---
 # <a name="sfctl-mesh-deployment"></a>sfctl mesh deployment
 Service Fabric netresources maken.
@@ -38,13 +29,13 @@ Hiermee maakt u een implementatie van Service Fabric netresources.
 |Argument|Beschrijving|
 | --- | --- |
 | --input-YAML-files [required] | Door komma's gescheiden relatieve/absolute bestands paden van alle YAML-bestanden of relatief/absoluut pad van de directory (recursieve) die YAML-bestanden bevatten. |
-| --para meters | Een relatief/absoluut pad naar het yaml-bestand of een JSON-object dat de para meters bevat die moeten worden overschreven. |
+| --parameters | Een relatief/absoluut pad naar het yaml-bestand of een JSON-object dat de para meters bevat die moeten worden overschreven. |
 
 ### <a name="global-arguments"></a>Algemene argumenten
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |

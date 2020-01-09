@@ -3,23 +3,23 @@ title: Azure IoT Explorer installeren en gebruiken | Microsoft Docs
 description: Installeer het hulp programma Azure IoT Explorer en gebruik dit om te communiceren met de IoT-Plug en Play preview-apparaten die zijn verbonden met mijn IoT hub.
 author: miagdp
 ms.author: miag
-ms.date: 07/02/2019
+ms.date: 12/27/2019
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 3b5e9a70f9eecbf187a6748073de009653061dc0
-ms.sourcegitcommit: d37991ce965b3ee3c4c7f685871f8bae5b56adfa
+ms.openlocfilehash: fd180404ca18b5ea84c745a543ae7e87bf16c27d
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72679858"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529623"
 ---
 # <a name="install-and-use-azure-iot-explorer"></a>Azure IoT Explorer installeren en gebruiken
 
 Azure IoT Explorer is een grafisch hulp programma voor interactie met en het testen van uw IoT Plug en Play preview-apparaten. Nadat u het hulp programma hebt geïnstalleerd op uw lokale computer, kunt u het gebruiken om verbinding te maken met een apparaat. U kunt het hulp programma gebruiken om de telemetrie weer te geven die het apparaat verzendt, te werken met apparaateigenschappen en opdrachten aan te roepen.
 
-In dit artikel wordt beschreven hoe u:
+In dit artikel leest u informatie over:
 
 - Installeer en configureer het Azure IoT Explorer-hulp programma.
 - Gebruik het hulp programma om te communiceren met en uw apparaten te testen.

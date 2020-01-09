@@ -1,95 +1,86 @@
 ---
-title: Azure Service Fabric-app laden met metrische gegevens beheren | Microsoft Docs
-description: Meer informatie over het configureren en gebruiken van metrische gegevens in Service Fabric voor het beheren van service resourceverbruik.
-services: service-fabric
-documentationcenter: .net
+title: Het laden van Azure Service Fabric-apps beheren met metrische gegevens
+description: Meer informatie over het configureren en gebruiken van metrische gegevens in Service Fabric voor het beheren van het gebruik van service bronnen.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 0d622ea6-a7c7-4bef-886b-06e6b85a97fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 1a61de6b0b6f73e112dd69108272ded3a67497e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ea21502cdab35b261e20af7f23b7b522f77c6667
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60516697"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451998"
 ---
-# <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Beheren van resourceverbruik en laden in Service Fabric met metrische gegevens
-*Metrische gegevens* zijn de resources die uw care services over en die worden geleverd door de knooppunten in het cluster. Een metrische waarde is alles wat u wilt beheren om te verbeteren of de prestaties van uw services controleren. U kunt bijvoorbeeld geheugenverbruik als u wilt weten als uw service is overbelast bekijken. Een andere toepassing is om te achterhalen of de service elders waar geheugen dat minder beperkt is om betere prestaties kan verplaatsen.
+# <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Resource gebruik beheren en laden in Service Fabric met metrische gegevens
+*Metrische gegevens* zijn de resources die door uw services worden aangehouden en die worden geboden door de knoop punten in het cluster. Een metriek is alles wat u wilt beheren om de prestaties van uw services te verbeteren of te controleren. U kunt bijvoorbeeld het geheugen verbruik bekijken om te weten of uw service overbelast is. Een ander gebruik is om te bepalen of de service elders kan worden verplaatst, waarbij geheugen minder beperkt is om betere prestaties te krijgen.
 
-Items zoals geheugen, schijf en de CPU-gebruik zijn voorbeelden van metrische gegevens. Deze metrische gegevens zijn fysieke metrische gegevens en resources die overeenkomen met de fysieke resources op het knooppunt dat moet worden beheerd. Metrische gegevens kan ook worden (en vaak zijn) logische metrische gegevens. Logische metrische gegevens zijn dingen als 'MyWorkQueueDepth' of 'MessagesToProcess' of 'TotalRecords'. Logische metrische gegevens worden door de toepassing worden gedefinieerd en indirect komen overeen met het gebruik van bepaalde fysieke resources. Logische metrische gegevens zijn algemene omdat het kan moeilijk te meten en het rapport verbruik van fysieke resources op basis van de per-service. De complexiteit van het meten en rapporteren van uw eigen fysieke metrische gegevens is ook waarom Service Fabric biedt enkele standaard metrische gegevens.
+Dingen zoals geheugen, schijf en CPU-gebruik zijn voor beelden van metrische gegevens. Deze metrische gegevens zijn fysieke metrische gegevens, resources die overeenkomen met fysieke resources op het knoop punt dat moet worden beheerd. Metrische gegevens kunnen ook worden (en meestal) logische metrische gegevens. Logische metrische gegevens zijn dingen zoals "MyWorkQueueDepth" of "MessagesToProcess" of "TotalRecords". Logische metrische gegevens worden door de toepassing gedefinieerd en komen indirect overeen met een fysiek Resource verbruik. Logische metrische gegevens zijn gebruikelijk omdat het lastig is om het verbruik van fysieke resources per service te meten en te rapporteren. De complexiteit van het meten en rapporteren van uw eigen fysieke metrische gegevens is ook waarom Service Fabric een aantal standaard metrische gegevens biedt.
 
 ## <a name="default-metrics"></a>Standaard metrische gegevens
-Stel dat u wilt aan de slag schrijven en implementeren van uw service. Op dit moment weet niet welke fysieke of logische resources verbruikt. Dat is prima! De Service Fabric Cluster Resource Manager maakt gebruik van bepaalde standaard metrische gegevens wanneer er geen andere metrische gegevens zijn opgegeven. Dit zijn:
+Stel dat u aan de slag wilt gaan met het schrijven en implementeren van uw service. Op dit moment weet u niet welke fysieke of logische resources er worden gebruikt. Dat is prima. De Service Fabric cluster resource manager maakt gebruik van enkele standaard waarden wanneer er geen andere metrieken zijn opgegeven. Dit zijn:
 
-  - PrimaryCount - telling van de primaire replica's op het knooppunt 
-  - ReplicaCount - telling van de totale stateful replica's op het knooppunt
-  - Aantal - telling van alle service-objecten (staatloze en stateful) op het knooppunt
+  - PrimaryCount: aantal primaire replica's op het knoop punt 
+  - ReplicaCount-telling van de totale stateful replica's op het knoop punt
+  - Aantal-aantal service objecten (stateless en stateful) op het knoop punt
 
-| Gegevens | Stateless exemplaar laden | Stateful secundaire laden | Stateful primaire laden | Gewicht |
+| Gegevens | Stateless instantie laden | Stateful secundaire belasting | Stateful primaire belasting | Gewicht |
 | --- | --- | --- | --- | --- |
 | PrimaryCount |0 |0 |1 |Hoog |
-| ReplicaCount |0 |1 |1 |Gemiddeld |
-| Count |1 |1 |1 |Laag |
+| ReplicaCount |0 |1 |1 |Middelgroot |
+| Aantal |1 |1 |1 |Laag |
 
 
-Voor algemene werkbelastingen bieden de standaard metrische gegevens over een goede verdeling van het werk in het cluster. In het volgende voorbeeld, moet u gaan we kijken wat er gebeurt wanneer we twee services en zijn afhankelijk van de standaard metrische gegevens voor taakverdeling. De eerste service is een stateful service met drie partities en een doel replicaset grootte van drie. De tweede service is een staatloze service met één partitie en een aantal exemplaren van drie.
+Voor basis werkbelastingen bieden de standaard metrische gegevens een goede verdeling van het werk in het cluster. In het volgende voor beeld zien we wat er gebeurt wanneer we twee services maken en afhankelijk zijn van de standaard waarden voor de taak verdeling. De eerste service is een stateful service met drie partities en de grootte van de doel replica is ingesteld op drie. De tweede service is een stateless service met één partitie en een aantal exemplaren van drie.
 
-Dit is wat u krijgt:
+Dit zijn de onderdelen:
 
 <center>
 
-![Cluster-indeling met standaard metrische gegevens][Image1]
+![cluster indeling met standaard metrische gegevens][Image1]
 </center>
 
-Dingen om te weten:
-  - Primaire replica's voor de stateful service worden verdeeld over meerdere knooppunten
-  - Replica's voor dezelfde partitie worden op verschillende knooppunten
-  - Het totale aantal primaire en secundaire replica's wordt gedistribueerd in het cluster
-  - Het totale aantal service-objecten zijn gelijkmatig verdeeld op elk knooppunt
+Let op het volgende:
+  - Primaire replica's voor de stateful service worden gedistribueerd over meerdere knoop punten
+  - Replica's voor dezelfde partitie bevinden zich op verschillende knoop punten
+  - Het totale aantal Primaries en de secundaire zones wordt gedistribueerd in het cluster
+  - Het totale aantal service objecten is gelijkmatig toegewezen op elk knoop punt
 
-Goede!
+Groot!
 
-De standaard metrische gegevens werkt uitstekend als een begin. Echter, de standaard metrische gegevens alleen hebben u tot nu toe. Bijvoorbeeld: Wat is de kans dat het partitioneren van u-schema opgenomen resultaten in perfect zelfs-gebruik door alle partities? Wat is de kans dat de belasting voor een bepaalde service constant na verloop van tijd is, of zelfs dezelfde over meerdere partities nu?
+De standaard waarden werken prima als een start. De standaard gegevens worden echter tot nu toe getransporteerd. Bijvoorbeeld: wat is de kans dat het gekozen partitie schema resulteert in perfect zelfs gebruik door alle partities? Wat is de kans dat de belasting voor een bepaalde service constant is, of zelfs op dezelfde manier als in meerdere partities?
 
-U kunt uitvoeren met alleen de standaard metrische gegevens. Echter meestal doen betekent dat uw clustergebruik lager en meer ongelijke dan u wilt. Dit is omdat de standaard metrische gegevens worden niet adaptieve en wordt ervan uitgegaan dat alles is gelijk. Bijvoorbeeld, bijdragen een primaire die bezig is en één die niet beide "1" in de metriek PrimaryCount. In het ergste geval, met behulp van alleen de standaard metrische gegevens kan ook leiden tot overscheduled knooppunten leidt tot prestatieproblemen. Als u geïnteresseerd bent in het cluster optimaal te benutten en prestatieproblemen voorkomen, moet u het gebruik van aangepaste metrische gegevens en dynamische werkbelastingsrapportage.
+U kunt uitvoeren met alleen de standaard waarden. Dit betekent echter meestal dat uw cluster gebruik lager en groter is dan u wilt. Dit komt doordat de standaard waarden niet adaptief zijn en alles vermoeden dat alles gelijk is. Bijvoorbeeld een primair die bezet is en een die niet beide bijdragen aan de PrimaryCount-metriek. In het ergste geval kan het gebruik van alleen de standaard metrieken ook leiden tot overbelasting van knoop punten die prestatie problemen veroorzaken. Als u geïnteresseerd bent in het meest uit uw cluster halen en prestatie problemen wilt voor komen, moet u aangepaste metrische gegevens en dynamische belasting rapportage gebruiken.
 
 ## <a name="custom-metrics"></a>Aangepaste metrische gegevens
-Metrische gegevens zijn geconfigureerd op basis van de per-met de naam-service-exemplaar, wanneer u de service maakt.
+Metrische gegevens worden geconfigureerd op basis van de service-instance bij het maken van de service.
 
-Elke meetwaarde heeft enkele eigenschappen die het beschrijven: een naam, een gewicht en een standaard-belasting.
+Elke metriek heeft enkele eigenschappen die deze beschrijven: een naam, een gewicht en een standaard belasting.
 
-* Naam van de metrische gegevens: De naam van de metrische gegevens. De naam van de meetwaarde is een unieke id voor de metrische gegevens in het cluster op basis van de Resource Manager-perspectief.
-* Gewicht: Gewicht van de metrische definieert hoe belangrijk met deze metriek is ten opzichte van de andere metrische gegevens voor deze service.
-* Werklast (standaard): De standaard-belasting is anders, afhankelijk van de service stateless of stateful weergegeven.
-  * Voor stateless services heeft alle gegevens één eigenschap met de naam DefaultLoad
-  * U definieert voor stateful services:
-    * PrimaryDefaultLoad: De standaardinstelling van deze metrische gegevens van deze service verbruikt wanneer het een primaire
-    * SecondaryDefaultLoad: De standaardinstelling van deze metrische gegevens van deze service verbruikt wanneer deze een secundair
+* Metrische naam: de naam van de metriek. De naam van de metriek is een unieke id voor de metriek in het cluster van het perspectief van de Resource Manager.
+* Gewicht: metrisch gewicht bepaalt hoe belang rijk deze metriek is ten opzichte van de andere metrische gegevens voor deze service.
+* Standaard belasting: de standaard belasting wordt anders weer gegeven, afhankelijk van het feit of de service stateless of stateful is.
+  * Voor stateless Services heeft elke metriek een enkele eigenschap met de naam DefaultLoad
+  * Voor stateful services die u definieert:
+    * PrimaryDefaultLoad: de standaard waarde van deze metrische gegevens verbruikt deze service wanneer het een primaire
+    * SecondaryDefaultLoad: de standaard waarde van deze metrische gegevens verbruikt deze service wanneer het een secundaire
 
 > [!NOTE]
-> Als u aangepaste metrische gegevens definieert en u wilt _ook_ gebruiken de standaard metrische gegevens, moet u _expliciet_ de standaard metrische gegevens back-ups maken en gewicht en -waarden definiëren voor deze toevoegen. Dit komt doordat moet u de relatie tussen de standaard metrische gegevens en uw aangepaste metrische gegevens definiëren. Bijvoorbeeld, wellicht u het belangrijkst ConnectionCount of WorkQueueDepth meer dan primaire distributie. Standaard is het gewicht van de metriek PrimaryCount hoog, zodat u beperken op Gemiddeld wilt, wanneer u uw andere metrische gegevens om te controleren of dat ze voorrang toevoegt.
+> Als u aangepaste metrische gegevens definieert en u _ook_ de standaard metrieken wilt gebruiken, moet u de standaard metrieken _expliciet_ toevoegen en gewichten en waarden voor hen definiëren. Dit komt doordat u de relatie tussen de standaard metrische gegevens en uw aangepaste metrische gegevens moet definiëren. Misschien bent u bijvoorbeeld ConnectionCount of WorkQueueDepth meer dan primaire distributie. Het gewicht van de PrimaryCount-meet waarde is standaard hoog, dus u wilt het gemiddelde verminderen wanneer u uw andere metrische gegevens toevoegt om ervoor te zorgen dat ze voor rang hebben.
 >
 
-### <a name="defining-metrics-for-your-service---an-example"></a>Metrische gegevens voor uw service, een voorbeeld definiëren
-Stel dat u wilt dat de volgende configuratie:
+### <a name="defining-metrics-for-your-service---an-example"></a>Metrische gegevens voor uw service definiëren: een voor beeld
+Stel dat u de volgende configuratie wilt:
 
-  - Uw service rapporteert een metrische waarde met de naam "ConnectionCount"
-  - Wilt u ook de standaard metrische gegevens gebruiken 
-  - U enkele metingen hebben gedaan en u weet dat normaal gesproken een primaire replica van de betreffende service maximaal 20 eenheden van "ConnectionCount duurt"
-  - Secundaire replica's gebruiken "ConnectionCount" 5-eenheden
-  - U weet dat 'ConnectionCount' is de belangrijkste metrische gegevens in termen van de prestaties van deze bepaalde service beheren
-  - U wordt nog steeds primaire replica's met gelijke taakverdeling. Taakverdeling van de primaire replica's is doorgaans een goed idee, ongeacht wat. Dit helpt te voorkomen dat het verlies van een domein-knooppunt of fouten die invloed hebben op een meerderheid van de primaire replica's samen met het. 
-  - Anders wordt zijn de standaard metrische gegevens prima
+  - Uw service rapporteert een metriek met de naam ' ConnectionCount '
+  - U wilt ook de standaard metrische gegevens gebruiken 
+  - U hebt enkele metingen uitgevoerd en weet dat normaal gesp roken een primaire replica van de service 20 eenheden van ' ConnectionCount ' in beslag neemt.
+  - Secundaire zones gebruiken 5 eenheden van ' ConnectionCount '
+  - U weet dat "ConnectionCount" de belangrijkste meet waarde is voor het beheren van de prestaties van deze specifieke service
+  - U wilt nog steeds primaire replica's in evenwicht houden. De verdeling van primaire replica's is doorgaans een goed idee. Dit helpt voor komen dat een bepaald knoop punt of fout domein van invloed is op een meerderheid van de primaire replica's. 
+  - Anders zijn de standaard waarden nauw keurig
 
-Dit is de code die u schrijft om te maken van een service met deze configuratie:
+Hier ziet u de code die u zou schrijven om een service met die metrische configuratie te maken:
 
 Code:
 
@@ -134,47 +125,47 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ```
 
 > [!NOTE]
-> De bovenstaande voorbeelden en de rest van dit document wordt beschreven beheren metrische gegevens op basis van de per-met de naam-service. Het is ook mogelijk om te definiëren van metrische gegevens voor uw services van de service _type_ niveau. Dit wordt bereikt door ze in de servicemanifesten op te geven. Het definiëren van metingen op het niveau van type wordt niet aanbevolen om verschillende redenen. De eerste reden is dat metrische namen vaak omgevingsspecifieke zijn. Tenzij er een contract vast aanwezig is, kan u ervoor dat de metriek "Kernen" in een omgeving 'MiliCores' of "Kernen" niet in andere niet. Als uw metrische gegevens zijn gedefinieerd in uw manifest die u wilt maken van nieuwe manifesten per omgeving. Dit leidt meestal tot een toename van verschillende manifesten met alleen kleine verschillen, wat tot problemen bij het beheer leiden kunnen.  
+> De bovenstaande voor beelden en de rest van dit document beschrijven het beheer van metrische gegevens op basis van een service. Het is ook mogelijk om metrische gegevens te definiëren voor uw services op het niveau van het service _type_ . Dit wordt bereikt door deze op te geven in uw service manifesten. Het definiëren van metrische gegevens op type niveau wordt niet aanbevolen om verschillende redenen. De eerste reden is dat metrische namen vaak specifiek voor een specifieke omgeving zijn. Tenzij er een vast contract aanwezig is, kunt u niet zeker weten dat de metrische gegevens "kernen" in de ene omgeving niet "MiliCores" of "kernen" in andere omgevingen zijn. Als uw metrische gegevens in het manifest zijn gedefinieerd, moet u nieuwe manifesten per omgeving maken. Dit leidt doorgaans tot een verspreiding van verschillende manifesten met alleen kleine verschillen, wat kan leiden tot beheer problemen.  
 >
-> Metrische gegevens geladen zijn vaak toegewezen op basis van de per-met de naam-service-exemplaar. Stel dat u één exemplaar van de service voor CustomerA die alleen licht gebruik wil maken. Ook Stel dat u nog een voor CustomerB die een grotere werkbelasting heeft maakt. In dit geval wilt u waarschijnlijk de belasting voor de standaardwaarde voor deze services aanpassen. Als u metrische gegevens en belasting gedefinieerd via manifesten en u wilt ondersteunen in dit scenario, is er andere toepassing en servicetypen voor elke klant vereist. De waarden die worden gedefinieerd tijdens de aanmaak van de service overschrijven die zijn gedefinieerd in het manifest, zodat u die gebruiken kunt om in te stellen van de specifieke standaardwaarden. Echter, dat zorgt ervoor dat de waarden in de manifesten die niet overeenkomt met die de service daadwerkelijk wordt uitgevoerd met gedeclareerd. Dit kan leiden tot verwarring. 
+> Metrische belasting wordt doorgaans toegewezen op basis van een service-exemplaar. Stel bijvoorbeeld dat u één exemplaar van de service maakt voor KlantA die deze alleen maar lichter wil gebruiken. U kunt ook een andere maken voor CustomerB die een grotere werk belasting hebben. In dit geval wilt u waarschijnlijk de standaard belasting voor die services aanpassen. Als u metrische gegevens en belasting hebt gedefinieerd via manifesten en u dit scenario wilt ondersteunen, zijn voor elke klant verschillende toepassings-en service typen vereist. De waarden die zijn gedefinieerd bij het maken van de service, overschrijven die in het manifest, zodat u deze kunt gebruiken om de specifieke standaard waarden in te stellen. Dit leidt er echter toe dat de waarden die in de manifesten worden gedeclareerd, niet overeenkomen met die waarmee de service daad werkelijk wordt uitgevoerd. Dit kan leiden tot Verwar ring. 
 >
 
-Als een herinnering: als u alleen gebruiken de standaard metrische gegevens wilt, moet u niet de metrische gegevens verzameling helemaal touch of niets te doen bij het maken van uw service. De standaard metrische gegevens ophalen automatisch gebruikt wanneer er geen andere zijn gedefinieerd. 
+Als herinnering: als u alleen de standaard metrische gegevens wilt gebruiken, hoeft u de verzameling metrische gegevens niet te aanraken of iets speciaal te doen bij het maken van uw service. De standaard metrische gegevens worden automatisch gebruikt wanneer er geen andere worden gedefinieerd. 
 
-Nu we gaan door elk van deze instellingen in meer detail en praten over het gedrag op dat dit van invloed op.
+Nu gaan we elk van deze instellingen uitvoeriger bekijken en praten over het gedrag dat het beïnvloedt.
 
 ## <a name="load"></a>Laden
-Het hele punt van het definiëren van metrische gegevens is voor sommige laden. *Load* welk deel van een bepaalde waarde wordt gebruikt door sommige service-exemplaar of de replica op een bepaald knooppunt is. Belasting kan worden geconfigureerd op bijna elk gewenst moment. Bijvoorbeeld:
+Het hele punt voor het definiëren van metrische gegevens is dat sommige werk belasting aangeeft. *Laden* is het gedeelte van een bepaalde metriek dat door een service-exemplaar of replica op een bepaald knoop punt wordt verbruikt. De belasting kan op bijna elk gewenst moment worden geconfigureerd. Bijvoorbeeld:
 
-  - Belasting kan worden gedefinieerd als een service wordt gemaakt. Dit heet _standaard load_.
-  - De metrische gegevens, met inbegrip van de standaard is geladen voor een service kan worden bijgewerkt nadat de service is gemaakt. Dit heet _bijwerken van een service_. 
-  - De belasting voor een bepaalde partitie kunnen opnieuw worden ingesteld op de standaardwaarden voor de service. Dit heet _opnieuw instellen van partitiebelasting_.
-  - Laden kan worden gerapporteerd op een per service-object gefactureerd dynamisch tijdens runtime. Dit heet _reporting load_. 
+  - De belasting kan worden gedefinieerd wanneer een service wordt gemaakt. Dit wordt _standaard laden_genoemd.
+  - De metrische gegevens, met inbegrip van de standaard belasting, voor een service kunnen worden bijgewerkt nadat de service is gemaakt. Dit wordt het _bijwerken van een service_genoemd. 
+  - De belasting voor een bepaalde partitie kan opnieuw worden ingesteld op de standaard waarden voor die service. Dit wordt het _opnieuw instellen van de partitie belasting_genoemd.
+  - De belasting kan tijdens runtime dynamisch worden gerapporteerd voor een per service object. Dit wordt _rapportage belasting_genoemd. 
   
-Al deze strategieën kan worden gebruikt binnen dezelfde service tijdens hun levensduur. 
+Al deze strategieën kunnen gedurende de levens duur worden gebruikt binnen dezelfde service. 
 
-## <a name="default-load"></a>Standaardwaarde laden
-*Standaard load* is hoeveel van de metrische gegevens die elke serviceobject (exemplaar stateless of stateful replica's) van deze service worden verbruikt. Cluster Resource Manager gebruikt dit nummer voor de belasting van het serviceobject totdat het andere informatie, zoals een rapport van de dynamische belasting ontvangt. Voor eenvoudiger services is de standaard-belasting een statische definitie. De standaard-belasting nooit is bijgewerkt en wordt gebruikt voor de levensduur van de service. Standaard wordt geladen werkt goed voor eenvoudige scenario's waarbij bepaalde hoeveelheden van resources zijn toegewezen aan verschillende werkbelastingen en niet wijzigen voor capaciteitsplanning.
+## <a name="default-load"></a>Standaard belasting
+*Standaard belasting* is de mate waarin elk Service object (stateless exemplaar of stateful replica) van deze service wordt gebruikt. Het cluster resource manager gebruikt dit nummer voor de belasting van het Service object totdat het andere informatie ontvangt, zoals een dynamisch laad rapport. Voor eenvoudigere Services is de standaard belasting een statische definitie. De standaard belasting wordt nooit bijgewerkt en wordt gebruikt voor de levens duur van de service. Standaard belastingen zijn geschikt voor scenario's met eenvoudige capaciteits planning waarbij bepaalde hoeveel heden resources zijn toegewezen aan verschillende werk belastingen en niet worden gewijzigd.
 
 > [!NOTE]
-> Zie voor meer informatie over het capaciteitsbeheer van de en het definiëren van capaciteit voor de knooppunten in uw cluster, [in dit artikel](service-fabric-cluster-resource-manager-cluster-description.md#capacity).
+> Raadpleeg [dit artikel](service-fabric-cluster-resource-manager-cluster-description.md#capacity)voor meer informatie over capaciteits beheer en het definiëren van capaciteit voor de knoop punten in uw cluster.
 > 
 
-Cluster Resource Manager kunnen stateful services om op te geven van een andere standaard belasting voor de primaire en secundaire replica's. Stateless services kunnen alleen een waarde opgeven die van toepassing op alle exemplaren. Voor stateful services, het laden van de standaard voor primaire en secundaire verschillen replica's meestal omdat de replica's kunnen verschillende soorten werk in elke rol. Bijvoorbeeld, primaire meestal fungeren zowel lees- en schrijfbewerkingen en de meeste van de rekenkundige belasting te verwerken en secundaire replica's niet. Meestal is de standaard-belasting voor een primaire replica hoger dan de standaard-belasting voor secundaire replica's. De reële getallen moet afhankelijk van uw eigen metingen.
+Met cluster resource manager kunnen stateful Services een andere standaard belasting opgeven voor hun Primaries en secundaire zones. Stateless Services kunnen slechts één waarde opgeven die van toepassing is op alle exemplaren. Voor stateful Services zijn de standaard belasting voor primaire en secundaire replica's meestal anders, omdat replica's verschillende soorten werk in elke rol doen. Zo fungeren Primaries doorgaans zowel lees-als schrijf bewerkingen, en verwerken ze de meeste reken kracht, terwijl de secundaire zones niet. Normaal gesp roken is de standaard belasting voor een primaire replica hoger dan de standaard belasting voor secundaire replica's. De reële getallen moeten afhankelijk zijn van uw eigen metingen.
 
 ## <a name="dynamic-load"></a>Dynamische belasting
-Stel dat u uw service een tijdje hebt uitgevoerd. Met enige controle u hebt al opgemerkt dat:
+Stel dat u uw service al enige tijd hebt uitgevoerd. Bij sommige bewaking hebt u het volgende gezien:
 
-1. Sommige partities of verschillende exemplaren van een bepaalde service meer bronnen dan andere gebruiken
-2. Sommige services hebben belasting gedurende een periode varieert.
+1. Voor sommige partities of exemplaren van een bepaalde service worden meer resources gebruikt dan andere.
+2. Sommige services hebben belasting die gedurende een bepaalde periode varieert.
 
-Er zijn talloze dingen die deze typen load fluctuaties kunnen veroorzaken. Bijvoorbeeld, zijn verschillende services of partities gekoppeld aan verschillende klanten met verschillende vereisten. Belasting kan ook wijzigen, omdat in de loop van de dag is afhankelijk van de hoeveelheid werk die de service beschikt. Ongeacht de reden is het doorgaans geen enkel getal dat u voor de standaardwaarde gebruiken kunt. Dit geldt met name als u wilt ophalen van het gebruik van de meeste buiten het cluster. Een waarde die u voor de werklast (standaard kiest) is onjuist deel van de tijd. Onjuiste standaard geladen resultaat in het Cluster Resource Manager boven of onder het toewijzen van resources. Als gevolg hiervan hebt u knooppunten die boven of onder benut worden ondanks dat de Cluster Resource Manager als dat het cluster is verdeeld. Standaard geladen zijn nog steeds prima geschikt omdat deze bepaalde informatie voor de eerste plaatsing opgeven, maar ze niet een volledige verhaal voor echte workloads zijn. Om vast te leggen nauwkeurig veranderende resourcevereisten, kunnen met Cluster Resource Manager elk serviceobject om bij te werken van een eigen laden tijdens runtime. Dit heet dynamische werkbelastingsrapportage.
+Er zijn veel dingen die deze typen belasting schommelingen kunnen veroorzaken. Verschillende services of partities worden bijvoorbeeld gekoppeld aan verschillende klanten met verschillende vereisten. Loading kan ook worden gewijzigd omdat de hoeveelheid werk die de service in de loop van de dag in beslag neemt, varieert. Ongeacht de reden is er meestal geen enkel nummer dat u voor standaard kunt gebruiken. Dit geldt met name als u het meeste gebruik wilt maken van het cluster. Elke waarde die u kiest voor de standaard belasting is een deel van de tijd. Onjuiste standaard belasting resulteert in de cluster resource manager over of onder het toewijzen van resources. Als gevolg hiervan hebt u knoop punten die zich boven of onder gebruik bevinden, zelfs als de cluster resource manager denkt dat het cluster in evenwicht is. Standaard loads zijn nog steeds goed, omdat ze informatie geven over de eerste plaatsing, maar ze geen volledig verhaal hebben op echte workloads. Voor een nauw keurige vastleg ging van resource vereisten, kan de cluster resource manager voor elk Service object zijn eigen belasting bijwerken tijdens runtime. Dit wordt dynamische belasting rapportage genoemd.
 
-Dynamische rapporten kunnen replica's of instanties om aan te passen van hun toewijzing/gerapporteerd laden van metrische gegevens gedurende hun levensduur. Meestal rapporteren dat is het gebruik van lage hoeveelheden een metriek een service-replica of het exemplaar dat is koude en niet doen. Een bezet doelreplica of rapporteren dat ze meer gebruiken.
+Met dynamische laad rapporten kunnen replica's of instanties hun toewijzing/gemelde belasting van metrische gegevens gedurende hun levens duur aanpassen. Normaal gesp roken rapporteert een service replica of-exemplaar dat koud is en geen werk heeft, meestal dat er een lage hoeveelheid van een bepaalde metriek werd gebruikt. Een bezette replica of instantie zou rapporteren dat ze meer gebruiken.
 
-Belasting per doelreplica of Reporting kunt met Cluster Resource Manager opnieuw indelen van de afzonderlijke serviceobjecten in het cluster. Opnieuw indelen van de services, kunt ervoor zorgen dat ze de resources die ze nodig hebben. Bezet services ophalen effectief "vrij" resources uit andere replica's of exemplaren die momenteel koude of minder werk te maken.
+Met de rapportage belasting per replica of exemplaar kan cluster bron beheer de afzonderlijke service objecten in het cluster opnieuw indelen. Door de services opnieuw in te delen, kunt u ervoor zorgen dat ze de resources ophalen die ze nodig hebben. Services die bezet zijn, komen in feite het ' vrijmaken ' van resources van andere replica's of instanties die momenteel koud zijn of minder werk doen.
 
-In Reliable Services is de code voor het rapporteren over de belasting dynamisch ziet er als volgt:
+Binnen Reliable Services ziet de code voor het dynamisch rapporteren van de belasting er als volgt uit:
 
 Code:
 
@@ -182,28 +173,28 @@ Code:
 this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("CurrentConnectionCount", 1234), new LoadMetric("metric1", 42) });
 ```
 
-Een service kan rapporteren dat op een van de metrische gegevens voor deze gedefinieerd tijdens het maken. Als een service-rapporten laden voor metrische gegevens die niet is geconfigureerd voor gebruik, negeert Service Fabric dat rapport. Als er andere metrische gegevens gerapporteerd op hetzelfde moment die geldig zijn, worden deze rapporten worden geaccepteerd. Service-code kunt meten en rapporteren van alle metrische gegevens die deze handleidingen, en operators kunnen geeft u de configuratie van de metrische gegevens gebruiken zonder dat de servicecode te wijzigen. 
+Een service kan rapporteren over de metrische gegevens die tijdens de aanmaak zijn gedefinieerd. Als een service rapporten laadt voor een metriek die niet is geconfigureerd voor gebruik, Service Fabric dat rapport negeren. Als er andere metrische gegevens worden gerapporteerd op hetzelfde moment dat geldig is, worden deze rapporten geaccepteerd. Met Service code kunnen alle metrische gegevens worden gemeten en gerapporteerd, en kunnen Opera tors de metrische configuratie opgeven die moet worden gebruikt zonder dat de service code hoeft te worden gewijzigd. 
 
-### <a name="updating-a-services-metric-configuration"></a>Configuratie van een service bijwerken
-De lijst met metrische gegevens die zijn gekoppeld aan de service en de eigenschappen van deze metrische gegevens kunnen dynamisch worden bijgewerkt terwijl de service actief is. Hiermee om te experimenteren en flexibiliteit. Enkele voorbeelden van wanneer dit handig is zijn:
+### <a name="updating-a-services-metric-configuration"></a>De metrische configuratie van een service bijwerken
+De lijst met metrische gegevens die aan de service zijn gekoppeld en de eigenschappen van deze metrische gegevens kunnen dynamisch worden bijgewerkt terwijl de service actief is. Dit maakt experimenteren en flexibiliteit mogelijk. Enkele voor beelden van wanneer dit nuttig is:
 
-  - een metrische waarde met een buggy rapport voor een bepaalde service uitschakelen
-  - het gewicht van de metrische gegevens op basis van het gewenste gedrag opnieuw configureren
-  - een nieuwe metrische gegevens inschakelen nadat de code al is geïmplementeerd en geverifieerd via andere methoden
-  - wijzigen van de belasting van de standaardwaarde voor een service op basis van waargenomen gedrag en verbruik
+  - een metriek uitschakelen met een rapport met fout opsporing voor een bepaalde service
+  - het gewicht van metrische gegevens opnieuw configureren op basis van het gewenste gedrag
+  - het inschakelen van een nieuwe metriek pas nadat de code al is geïmplementeerd en gevalideerd via andere mechanismen
+  - de standaard belasting voor een service wijzigen op basis van waargenomen gedrag en verbruik
 
-De belangrijkste API's voor het wijzigen van de configuratie zijn `FabricClient.ServiceManagementClient.UpdateServiceAsync` in C# en `Update-ServiceFabricService` in PowerShell. De informatie die u met deze API's opgeeft vervangt de bestaande metrische gegevens voor de service onmiddellijk. 
+De belangrijkste Api's voor het wijzigen van de metrische configuratie C# zijn `FabricClient.ServiceManagementClient.UpdateServiceAsync` in en `Update-ServiceFabricService` in Power shell. Welke gegevens u met deze Api's opgeeft, vervangt de bestaande metrische gegevens voor de service onmiddellijk. 
 
-## <a name="mixing-default-load-values-and-dynamic-load-reports"></a>Met een combinatie van standaardwaarden laden en dynamische rapporten
-Standaard laden en dynamische belasting kunnen worden gebruikt voor dezelfde service. Wanneer een service maakt gebruik van zowel standaard laden en dynamische rapporten, wordt standaard load fungeert als een schatting totdat u dynamische rapporten weergegeven. Standaard load is goed, omdat het Cluster Resource Manager iets om te werken biedt met. De standaard-belasting kan met Cluster Resource Manager de serviceobjecten in goede locaties plaatsen wanneer ze worden gemaakt. Als er geen standaard-informatie laden is opgegeven, wordt een effectief willekeurige plaatsing van services. Bij het laden rapporten later ontvangen van de plaatsing van de eerste willekeurige is vaak verkeerde en met Cluster Resource Manager heeft diensten verplaatsen.
+## <a name="mixing-default-load-values-and-dynamic-load-reports"></a>Standaard waarden voor laden en dynamische laad rapporten mengen
+Standaard belasting en dynamische belasting kunnen voor dezelfde service worden gebruikt. Wanneer een service zowel standaard loads als dynamische laad rapporten gebruikt, fungeert standaard load als een schatting totdat dynamische rapporten worden weer gegeven. De standaard belasting is goed, omdat het cluster resource manager er iets mee moet doen om mee te werken. Met de standaard belasting kan cluster bron beheer de service objecten op goede locaties plaatsen wanneer ze worden gemaakt. Als er geen standaard laad informatie wordt verstrekt, wordt de plaatsing van services in feite wille keurig. Wanneer het laden van rapporten later afneemt, is de eerste wille keurige plaatsing vaak onjuist en de cluster resource manager moet Services verplaatsen.
 
-Laten we het vorige voorbeeld nemen en kijken wat er gebeurt wanneer we enkele aangepaste metrische gegevens en dynamische werkbelastingsrapportage toevoegt. In dit voorbeeld gebruiken we 'MemoryInMb' als een voorbeeld van de metrische gegevens.
+We gaan het vorige voor beeld bekijken en zien wat er gebeurt wanneer we aangepaste metrische gegevens en dynamische belasting rapportage toevoegen. In dit voor beeld gebruiken we ' MemoryInMb ' als voorbeeld metriek.
 
 > [!NOTE]
-> Geheugen is een van de-metrische systeemmeetgegevens die Service Fabric kan [resource beheren](service-fabric-resource-governance.md), en zelf reporting is doorgaans moeilijk. Er niet daadwerkelijk wordt verwacht dat u voor het rapporteren van geheugenverbruik; Geheugen wordt gebruikt als hulpmiddel om te leren over de mogelijkheden van het Cluster Resource Manager.
+> Geheugen is een van de systeem gegevens die Service Fabric resources kan [beheren](service-fabric-resource-governance.md)en die zelf moeilijk te rapporteren is. We verwachten niet dat u rapporteert over het geheugen verbruik; Geheugen wordt hier gebruikt als hulp middel bij het leren over de mogelijkheden van cluster resource manager.
 >
 
-We gaan ervan uit dat we de stateful service oorspronkelijk is gemaakt met de volgende opdracht:
+We gaan ervan uit dat we de stateful service voor het eerst hebben gemaakt met de volgende opdracht:
 
 PowerShell:
 
@@ -211,68 +202,68 @@ PowerShell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("MemoryInMb,High,21,11”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
 ```
 
-Deze syntaxis is als een herinnering ("MetricName, MetricWeight, PrimaryDefaultLoad, SecondaryDefaultLoad').
+Als herinnering is deze syntaxis ("metrische, MetricWeight, PrimaryDefaultLoad, SecondaryDefaultLoad").
 
-We gaan nu kijken welke een mogelijke cluster indeling kan er als volgt uitzien:
-
-<center>
-
-![Cluster Gebalanceerd met zowel standaard als aangepaste metrische gegevens][Image2]
-</center>
-
-Dingen die vermelden waard zijn:
-
-* Secundaire replica's binnen een partitie kunnen hebben elk hun eigen laden
-* De metrische gegevens zoeken algemene met gelijke taakverdeling. Voor geheugen, is de verhouding tussen de maximale en minimale belasting 1,75 (het knooppunt met de meeste load N3, is het minst is N2 en 28/16 = 1,75).
-
-Er zijn enkele dingen die we nog steeds nodig hebben om uit te leggen:
-
-* Wat bepaald of een ratio van 1,75 redelijke of niet is? Hoe weet met Cluster Resource Manager als die goed genoeg is, of als er meer werk te doen?
-* Wanneer wordt balancing uitgevoerd?
-* Wat betekent dat geheugen 'Hoog' werd gewogen?
-
-## <a name="metric-weights"></a>Gewicht van metrische gegevens
-Dezelfde metrische gegevens bijhouden over verschillende services is belangrijk. Globale weergave is wat de Cluster Resource Manager bijhouden van gebruik door in het cluster en ervoor te zorgen dat knooppunten niet via capaciteit lopen gebruik op alle knooppunten in balans is toegestaan. Services hebben echter verschillende weergaven over het belang van de dezelfde metrische gegevens. Ook in een cluster met veel metrische gegevens en veel services perfect met gelijke taakverdeling oplossingen bestaat mogelijk niet voor alle metrische gegevens. Hoe moet deze situaties verwerken met Cluster Resource Manager?
-
-Gewicht van metrische gegevens kunnen met Cluster Resource Manager om te bepalen hoe het cluster in balans brengen wanneer er geen perfecte antwoord. Gewicht van metrische gegevens kunnen ook met Cluster Resource Manager anders afwegen van specifieke services. Metrische gegevens kunt laten vier verschillende gewicht niveaus: Nul, laag, gemiddeld en hoog. Een metrische waarde met een gewicht van nul bijdraagt niets wanneer u overweegt of dingen worden verdeeld, of niet. De belasting echter nog steeds dragen bij aan capaciteit management. Metrische gegevens met nul gewicht zijn nog steeds nuttig en worden vaak gebruikt als onderdeel van service-gedrag en de bewaking van toepassingsprestaties. [In dit artikel](service-fabric-diagnostics-event-generation-infra.md) vindt u meer informatie over het gebruik van metrische gegevens voor bewaking en diagnostische gegevens van uw services. 
-
-De werkelijke invloed van verschillende metrische gewichten in het cluster is dat de Cluster Resource Manager verschillende oplossingen genereert. Metrische waarden geven met Cluster Resource Manager dat bepaalde metrische gegevens belangrijker dan andere zijn. Wanneer er geen perfecte oplossing is met Cluster Resource Manager kunt geven de voorkeur oplossingen die de hogere gewogen metrische gegevens beter in balans brengen. Als een service als dat een bepaalde meetwaarde is niet belangrijk is, dat kan deze het gebruik van deze metrische gegevens van imbalanced vinden. Dit kan een andere service een gelijkmatige verdeling van sommige metrische gegevens die belangrijk is voor het ophalen.
-
-We bekijken een voorbeeld van sommige rapporten laden en hoe verschillende metrische gegevens gewicht resultaten in andere toewijzingen in het cluster. In dit voorbeeld ziet u dat het relatieve gewicht van de metrische gegevens over te schakelen met Cluster Resource Manager te maken van verschillende structuren van services veroorzaakt.
+Laten we eens kijken wat een mogelijke cluster indeling zou kunnen zien:
 
 <center>
 
-![Gewicht van de metrische voorbeeld en de invloed ervan op taakverdelingsoplossingen][Image3]
+![cluster wordt uitgebalanceerd met zowel standaard als aangepaste metrische gegevens][Image2]
 </center>
 
-In dit voorbeeld zijn er vier verschillende services, alle reporting verschillende waarden voor twee verschillende metrische gegevens, MetricA en MetricB. Voor alle services definiëren MetricA is de belangrijkste (gewicht = hoog) en MetricB als onbelangrijk (gewicht = laag). Als gevolg hiervan, ziet u dat de Cluster Resource Manager de services plaatst, zodat MetricA beter dan MetricB wordt verdeeld. 'Beter met gelijke taakverdeling' betekent dat MetricA een lagere heeft heeft een lagere standaarddeviatie dan MetricB. In het tweede geval omkeren we de metrische waarden. Als gevolg hiervan is met Cluster Resource Manager worden verwisseld services A en B te komen met een toewijzing waarbij MetricB is beter dan MetricA met gelijke taakverdeling.
+Een aantal dingen die u waardeert:
+
+* Secundaire replica's binnen een partitie kunnen elk hun eigen belasting hebben
+* In totaal worden de metrische gegevens evenwichtig weer gegeven. Voor geheugen is de verhouding tussen de maximale en minimale belasting 1,75 (het knoop punt met de meeste belasting is N3, de minst N2 en 28/16 = 1,75).
+
+Er zijn enkele dingen die we nog moeten uitleggen:
+
+* Wat is bepaald of een ratio van 1,75 redelijk is of niet? Hoe weet het cluster resource manager of het goed genoeg is of dat er meer werk is om te doen?
+* Wanneer gebeurt de taak verdeling?
+* Wat betekent het dat geheugen ' hoog ' is?
+
+## <a name="metric-weights"></a>Metrische gewichten
+Het volgen van dezelfde metrische gegevens in verschillende services is belang rijk. In deze globale weer gave is het mogelijk om het gebruik van cluster resource manager te traceren in het cluster, het verbruik tussen knoop punten te verdelen en ervoor te zorgen dat knoop punten niet over capaciteit beschikken. Services kunnen echter verschillende weer gaven hebben die het belang van dezelfde metriek hebben. In een cluster met veel metrische gegevens en veel services kunnen er mogelijk niet-gebalanceerde oplossingen bestaan voor alle metrische gegevens. Hoe moet de cluster resource manager deze situaties afhandelen?
+
+Met metrische gewichten kan cluster resource manager bepalen hoe het cluster moet worden gebalanceerd als er geen perfecte antwoord is. Met metrische gewichten kan cluster resource manager ook specifieke services op een andere manier op elkaar afstemmen. Metrische gegevens kunnen vier verschillende gewichts niveaus hebben: nul, laag, gemiddeld en hoog. Een metriek met een gewicht van nul draagt niets toe wanneer wordt overwogen of dingen evenwichtig zijn of niet. De belasting blijft echter wel bijdragen aan het capaciteits beheer. Metrische gegevens met een gewicht van nul zijn nog steeds nuttig en worden vaak gebruikt als onderdeel van service gedrag en prestatie bewaking. In [dit artikel](service-fabric-diagnostics-event-generation-infra.md) vindt u meer informatie over het gebruik van metrische gegevens voor het bewaken en diagnosticeren van uw services. 
+
+De werkelijke impact van verschillende metrische gewichten in het cluster is dat cluster resource manager verschillende oplossingen genereert. Met metrische gewichten wordt de cluster resource manager verteld dat bepaalde metrische gegevens belang rijker zijn dan andere. Als er geen perfecte oplossing is, kan cluster resource manager de voor keur geven aan oplossingen die de hogere gewogen metrische gegevens beter in balans brengen. Als een service denkt dat een bepaalde metriek niet belang rijk is, kan het gebruik van de metrische gegevens onevenwichtig worden. Hierdoor kan een andere service een gelijkmatige verdeling krijgen van een belang rijk deel van de metriek.
+
+We kijken naar een voor beeld van sommige laad rapporten en hoe verschillende metrische meet waarden resulteren in verschillende toewijzingen in het cluster. In dit voor beeld ziet u dat door het overschakelen van het relatieve gewicht van de metrische gegevens de cluster resource manager verschillende services-eenheden maakt.
+
+<center>
+
+![voor beeld van metrieke gewicht en de invloed op Balancing-oplossingen][Image3]
+</center>
+
+In dit voor beeld zijn er vier verschillende services, waarbij alle verschillende waarden worden gerapporteerd voor twee verschillende metrische gegevens, metrische gegevens en MetricB. In één geval is het belang rijk dat alle services metrische gegevens definiëren (gewicht = hoog) en MetricB als niet belang rijk (gewicht = laag). Als gevolg hiervan zien we dat de cluster resource manager de Services plaatst, zodat Metrica beter is gebalanceerd dan MetricB. "Beter evenwichtig" betekent dat metrische gegevens een lagere standaard afwijking hebben dan MetricB. In het tweede geval worden de metrische gewichten omgedraaid. Als gevolg hiervan wisselen de cluster resource manager Services A en B uit om een toewijzing te maken waarbij MetricB beter is evenwichtig dan Metrieka.
 
 > [!NOTE]
-> Metrische waarden te bepalen hoe met Cluster Resource Manager moet in evenwicht zijn, maar niet wanneer taakverdeling moet gebeuren. Bekijk voor meer informatie over Netwerktaakverdeling, [in dit artikel](service-fabric-cluster-resource-manager-balancing.md)
+> Metrische gewichten bepalen hoe cluster resource manager moet worden gebalanceerd, maar niet wanneer de taak verdeling moet plaatsvinden. Raadpleeg [dit artikel](service-fabric-cluster-resource-manager-balancing.md) voor meer informatie over de taak verdeling
 >
 
-### <a name="global-metric-weights"></a>Algemene metrische gewicht
-Stel ServiceA definieert MetricA als hoge gewicht en XPb stelt het gewicht voor MetricA op laag of nul. Wat is het werkelijke gewicht die eindigt ophalen gebruikt?
+### <a name="global-metric-weights"></a>Global metrisch gewichten
+Stel dat Servicea metrische gegevens definieert als gewicht hoog en ServiceB het gewicht voor metrische gegevens instelt op laag of nul. Wat is het werkelijke gewicht dat wordt gebruikt om te gebruiken?
 
-Er zijn meerdere gewichten die worden voor elke metrische gegevens bijgehouden. Het eerste gewicht is gedefinieerd voor de metrische gegevens wanneer de service is gemaakt. Het gewicht van andere is een algemene gewicht, die automatisch wordt berekend. Cluster Resource Manager gebruikt deze beide gewichten wanneer scoring-oplossingen. Het is belangrijk rekening houdend met beide gewicht. Hiermee wordt de Cluster Resource Manager voor elke service op basis van een eigen prioriteiten in balans brengen en ook voor zorgen dat het cluster als geheel correct is toegewezen.
+Er zijn meerdere gewichten die worden bijgehouden voor elke metriek. Het eerste gewicht is de waarde die is gedefinieerd voor de metriek wanneer de service wordt gemaakt. Het andere gewicht is een globaal gewicht dat automatisch wordt berekend. Cluster resource manager maakt gebruik van beide gewichten bij het scoren van oplossingen. Het maken van beide gewichten is belang rijk. Hierdoor kan cluster resource manager elke service verdelen op basis van eigen prioriteiten, en moet u er ook voor zorgen dat het cluster als geheel correct wordt toegewezen.
 
-Wat er zou gebeuren als met Cluster Resource Manager is niet het belangrijkst globale en lokale saldo? Goed, is het eenvoudig om oplossingen die wereldwijd worden verdeeld, maar die leiden tot slechte resourceverdeling voor afzonderlijke services samen te stellen. In het volgende voorbeeld gaan we kijken naar een service die is geconfigureerd met alleen de standaard metrische gegevens en kijken wat er gebeurt wanneer alleen globale taakverdeling wordt beschouwd als:
+Wat gebeurt er als het cluster bron beheer niet heeft gewaakt over het globale en lokale saldo? Daarnaast is het eenvoudig om oplossingen te bouwen die wereld wijd zijn verdeeld, maar wat resulteert in een slecht resource saldo voor afzonderlijke services. In het volgende voor beeld bekijken we een service die is geconfigureerd met alleen de standaard metrische gegevens en ziet u wat er gebeurt als er alleen een globaal saldo wordt overwogen:
 
 <center>
 
-![De Impact van een globale oplossing voor alleen][Image4]
+![de impact van een alleen wereld wijde oplossing][Image4]
 </center>
 
-In het bovenste voorbeeld alleen op basis van algemene saldo, wordt het cluster als geheel inderdaad verdeeld. Alle knooppunten hebben de dezelfde aantal primaire en de hetzelfde aantal totaal aantal replica's. Als u de werkelijke impact van deze toewijzing bekijkt het is echter niet zo goed waren: het verlies van gegevens van een willekeurig knooppunt van invloed is op een bepaalde belasting, omdat het duurt u alle van de voorverkiezingen uit te brengen voordat. Bijvoorbeeld, als het eerste knooppunt, de drie primaire voor de drie verschillende partities van de cirkel service mislukt zou alle verloren. De driehoek en zeshoek services hebben echter hun partities verloren gaan van een replica. Dit zorgt ervoor dat er geen onderbreking, behalve de omlaag replica herstellen.
+In het bovenste voor beeld op basis van het algemene saldo is het cluster als geheel gebalanceerd. Alle knoop punten hebben hetzelfde aantal Primaries en hetzelfde aantal replica's. Als u echter de werkelijke impact van deze toewijzing bekijkt, is dit niet zo goed mogelijk: het verlies van een knoop punt heeft gevolgen voor een bepaalde werk belasting, omdat het alle Primaries ervan afneemt. Als het eerste knoop punt bijvoorbeeld niet voldoet aan de drie Primaries voor de drie verschillende partities van de Circle-service, gaan allemaal verloren. Daarentegen hebben de drie hoek-en zeshoeken-Services een replica verloren. Dit veroorzaakt geen onderbreking, anders dan het herstellen van de replica omlaag.
 
-Cluster Resource Manager heeft in het voorbeeld onder de replica's op basis van het saldo global en per-service worden gedistribueerd. Bij het berekenen van de score van de oplossing geeft het gewicht de meeste tot het globale oplossing en een gedeelte (configureerbaar) tot afzonderlijke services. Globale saldo voor een metrische waarde wordt berekend op basis van het gemiddelde van de metrische waarden van elke service. Elke service is met gelijke taakverdeling op basis van een eigen gedefinieerde metrische gewicht. Dit zorgt ervoor dat de services worden verdeeld in zelf op basis van hun eigen behoeften. Als gevolg hiervan als de fout is het eerste knooppunt mislukt wordt verdeeld over alle partities van alle services. De impact op elk is hetzelfde.
+In het onderste voor beeld heeft cluster resource manager de replica's gedistribueerd op basis van het algemene en het service-saldo. Bij het berekenen van de Score van de oplossing geeft het grootste deel van het gewicht aan de globale oplossing en een (configureerbaar) gedeelte van afzonderlijke services. Het globale saldo voor een metriek wordt berekend op basis van het gemiddelde van de metrische gewichten van elke service. Voor elke service wordt uitgebalanceerd volgens het eigen gedefinieerde metrische gewicht. Dit zorgt ervoor dat de services binnen hun eigen behoeften worden gesaldeerd. Als het resultaat van hetzelfde eerste knoop punt mislukt, wordt de fout gedistribueerd over alle partities van alle services. De impact op elk is hetzelfde.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Voor meer informatie over het configureren van services, [informatie over het configureren van Services](service-fabric-cluster-resource-manager-configure-services.md)(service-fabric-cluster-resource-manager-configure-services.md)
-- Defragmentatie metrische gegevens definiëren is één manier om te laden op knooppunten in plaats van deze uitspreiden consolideren. Raadpleeg voor informatie over het configureren van de defragmentatie, [in dit artikel](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
-- Als u wilt weten over hoe met Cluster Resource Manager beheert en verdeelt de taken in het cluster, Zie het artikel op [taakverdeling](service-fabric-cluster-resource-manager-balancing.md)
-- Vanaf het begin starten en [een inleiding tot de Service Fabric Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md)
-- Kosten voor gegevensverplaatsing is één manier om naar de Cluster Resource Manager-signalering dat bepaalde services zijn duurder dan de andere verplaatsen. Raadpleeg voor meer informatie over de kosten voor gegevensverplaatsing, [in dit artikel](service-fabric-cluster-resource-manager-movement-cost.md)
+- Meer informatie over het configureren van Services vindt u in het [onderwerp over het configureren van services](service-fabric-cluster-resource-manager-configure-services.md)(Service-Fabric-cluster-resource-manager-Configure-Services.MD)
+- Het definiëren van metrische gegevens over defragmentatie is een manier om de belasting op knoop punten te consolideren in plaats van deze te spreiden. Raadpleeg [dit artikel](service-fabric-cluster-resource-manager-defragmentation-metrics.md) voor meer informatie over het configureren van defragmentatie.
+- Raadpleeg het artikel over het [verdelen](service-fabric-cluster-resource-manager-balancing.md) van de taken in het cluster voor meer informatie over hoe de cluster resource manager de belasting beheert en balanceert.
+- Begin vanaf het begin en [krijg een inleiding tot de service Fabric cluster resource manager](service-fabric-cluster-resource-manager-introduction.md)
+- De verplaatsings kosten zijn één manier om aan te geven dat de cluster resource manager bepaalde services duurder kan verplaatsen dan andere. Raadpleeg [dit artikel](service-fabric-cluster-resource-manager-movement-cost.md) voor meer informatie over de verplaatsings kosten
 
 [Image1]:./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-cluster-layout-with-default-metrics.png
 [Image2]:./media/service-fabric-cluster-resource-manager-metrics/Service-Fabric-Resource-Manager-Dynamic-Load-Reports.png

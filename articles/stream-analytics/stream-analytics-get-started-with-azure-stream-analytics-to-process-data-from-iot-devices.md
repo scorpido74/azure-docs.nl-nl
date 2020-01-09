@@ -1,19 +1,18 @@
 ---
 title: Real-time IoT-gegevens stromen verwerken met Azure Stream Analytics
 description: IoT-sensortags en -gegevensstromen met Stream Analytics en realtime-gegevensverwerking
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 11/26/2019
-ms.openlocfilehash: 1cc9c6dbb700664e732a67245563e9a211456767
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 0755131f7d8071e37eadc1339ebc5e122725fa71
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74559887"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426249"
 ---
 # <a name="process-real-time-iot-data-streams-with-azure-stream-analytics"></a>Real-time IoT-gegevens stromen verwerken met Azure Stream Analytics
 
@@ -63,7 +62,7 @@ Down load de [hallowereldasa-InputStream. json](https://github.com/Azure/azure-s
 
 Selecteer **query** onder **taak topologie** in het menu links. Selecteer vervolgens **voorbeeld invoer uploaden**. Upload het `HelloWorldASA-InputStream.json`-bestand en selecteer **OK**.
 
-![Tegel Stream Analytics dashboard query](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
+![Stream Analytics query dashboardtegel](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-05.png)
 
 U ziet dat een voor beeld van de gegevens automatisch wordt ingevuld in de **voorbeeld tabel voor invoer** .
 
@@ -84,11 +83,11 @@ FROM
 
 Selecteer **test query** en Bekijk de resultaten in de tabel **test resultaten** .
 
-![Test resultaten voor Stream Analytics query](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
+![Resultaten van belastingstests voor Stream Analytics-query](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-07.png)
 
 ### <a name="query-filter-the-data-based-on-a-condition"></a>Query: gegevens filteren op basis van een voorwaarde
 
-We proberen de resultaten te filteren op basis van een voor waarde. We willen alleen resultaten weer geven voor de gebeurtenissen die afkomstig zijn van sensora.
+We proberen de resultaten te filteren op basis van een voor waarde. We willen graag resultaten weergeven voor de gebeurtenissen die afkomstig zijn van "sensorA."
 
 ```sql
 SELECT 

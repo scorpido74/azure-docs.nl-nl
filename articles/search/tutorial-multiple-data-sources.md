@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: fbe3b9ada556f26bd559f040bf2ba5b22367abd0
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 12/23/2019
+ms.openlocfilehash: aac5dc300009ec682ef1599ad654415f5c4ad190
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112225"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495003"
 ---
 # <a name="c-tutorial-combine-data-from-multiple-data-sources-in-one-azure-cognitive-search-index"></a>C#Zelf studie: gegevens uit meerdere gegevens bronnen in één Azure Cognitive Search-index combi neren
 
@@ -38,15 +38,15 @@ De volgende services, hulpprogram ma's en gegevens worden gebruikt in deze Quick
 
 - [Maak een Azure Cosmos DB account](https://docs.microsoft.com/azure/cosmos-db/create-cosmosdb-resources-portal) voor het opslaan van de gegevens van het voorbeeld Hotel.
 
-- [Maak een Azure-opslag account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) voor het opslaan van de voorbeeld gegevens van JSON-blobs.
+- [Maak een Azure-opslag account](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account) voor het opslaan van de voorbeeld kamer gegevens.
 
-- [Installeer Visual Studio](https://visualstudio.microsoft.com/) om te gebruiken als IDE.
+- [Installeer Visual Studio 2019](https://visualstudio.microsoft.com/) om te gebruiken als IDE.
 
 ### <a name="install-the-project-from-github"></a>Het project installeren vanuit GitHub
 
 1. Ga naar de voorbeeld opslagplaats op GitHub: [Azure-Search-DotNet-samples](https://github.com/Azure-Samples/azure-search-dotnet-samples).
 1. Selecteer **klonen of downloaden** en maak uw persoonlijke lokale kopie van de opslag plaats.
-1. Open Visual Studio en installeer het Microsoft Azure Cognitive Search NuGet-pakket, als dit nog niet is geïnstalleerd. Selecteer in het menu **extra** de optie **NuGet package manager** en klik vervolgens **op NuGet-pakketten beheren voor oplossing...** . Zoek en Installeer **micro soft. Azure. Search** (versie 9.0.1 of hoger) op het tabblad **Bladeren** . U moet door de extra dialoog vensters klikken om de installatie te volt ooien.
+1. Open Visual Studio 2019 en installeer het Microsoft Azure Cognitive Search NuGet-pakket, als dit nog niet is geïnstalleerd. Selecteer in het menu **extra** de optie **NuGet package manager** en klik vervolgens **op NuGet-pakketten beheren voor oplossing...** . Zoek en Installeer **micro soft. Azure. Search** (versie 9.0.1 of hoger) op het tabblad **Bladeren** . U moet door de extra dialoog vensters klikken om de installatie te volt ooien.
 
     ![NuGet gebruiken om Azure-bibliotheken toe te voegen](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
 
@@ -56,7 +56,7 @@ De volgende services, hulpprogram ma's en gegevens worden gebruikt in deze Quick
 
 Als u met uw Azure Cognitive Search-service wilt communiceren, hebt u de service-URL en een toegangs sleutel nodig. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
 
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
 1. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
@@ -68,35 +68,35 @@ Voor alle aanvragen is een API-sleutel vereist voor elke aanvraag die naar uw se
 
 In dit voor beeld worden twee kleine sets gegevens gebruikt waarin zeven fictieve hotels worden beschreven. In één set worden de hotels zelf beschreven en worden deze in een Azure Cosmos DB-Data Base geladen. De andere set bevat details over de hotel kamer en is beschikbaar als zeven afzonderlijke JSON-bestanden die moeten worden geüpload naar Azure Blob Storage.
 
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com)en navigeer vervolgens naar de overzichts pagina van uw Azure Cosmos DB-account.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en navigeer vervolgens naar de overzichts pagina van uw Azure Cosmos DB-account.
 
-1. Klik in de menu balk op container toevoegen. Geef ' nieuwe data base maken ' op en gebruik de naam **Hotel-ruimtes-DB**. Voer **Hotels** in voor de naam van de verzameling en **/HotelId** voor de partitie sleutel. Klik op **OK** om de data base en de container te maken.
+1. Selecteer **Data Explorer** en selecteer vervolgens **nieuwe data base**.
 
-   ![Azure Cosmos DB container toevoegen](media/tutorial-multiple-data-sources/cosmos-add-container.png "Een Azure Cosmos DB-container toevoegen")
+   ![Een nieuwe data base maken](media/tutorial-multiple-data-sources/cosmos-newdb.png "Een nieuwe database maken")
 
-1. Ga naar de Cosmos DB-Data Explorer en selecteer het **item items** onder de container **Hotels** in de **Hotel-kamers-DB** -data base. Klik vervolgens op **item uploaden** op de opdracht balk.
+1. Voer de naam in **Hotel-kamers-DB**. Accepteer de standaard waarden voor de overige instellingen.
+
+   ![Data base configureren](media/tutorial-multiple-data-sources/cosmos-dbname.png "Data base configureren")
+
+1. Maak een nieuwe container. Gebruik de bestaande data base die u zojuist hebt gemaakt. Voer **Hotels** in als container naam en gebruik **/HotelId** voor de partitie sleutel.
+
+   ![Container toevoegen](media/tutorial-multiple-data-sources/cosmos-add-container.png "Container toevoegen")
+
+1. Selecteer **items** onder **Hotels**en klik vervolgens op **item uploaden** op de opdracht balk. Ga naar en selecteer het bestand **cosmosdb/HotelsDataSubset_CosmosDb. json** in de projectmap.
 
    ![Uploaden naar Azure Cosmos DB verzameling](media/tutorial-multiple-data-sources/cosmos-upload.png "Uploaden naar Cosmos DB verzameling")
-
-1. Klik in het deel venster uploaden op de knop map en navigeer vervolgens naar het bestand **cosmosdb/HotelsDataSubset_CosmosDb. json** in de projectmap. Klik op **OK** om het uploaden te starten.
-
-   ![Selecteer het bestand dat u wilt uploaden](media/tutorial-multiple-data-sources/cosmos-upload2.png "Selecteer het bestand dat u wilt uploaden")
 
 1. Gebruik de knop Vernieuwen om de weer gave van de items in de hotels-verzameling te vernieuwen. Er moeten zeven nieuwe database documenten worden weer gegeven.
 
 ## <a name="prepare-sample-blob-data"></a>Voor beeld van BLOB-gegevens voorbereiden
 
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com), navigeer naar uw Azure Storage-account, klik op **blobs**en klik vervolgens op **+ container**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com), navigeer naar uw Azure Storage-account, klik op **blobs**en klik vervolgens op **+ container**.
 
 1. [Maak een BLOB-container](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal) met de naam **Hotel-kamers** voor het opslaan van de voor beeld-json-bestanden van de hotel kamer. U kunt het niveau van open bare toegang instellen op een van de geldige waarden.
 
    ![Een BLOB-container maken](media/tutorial-multiple-data-sources/blob-add-container.png "Een blob-container maken")
 
-1. Nadat de container is gemaakt, opent u deze en selecteert u **uploaden** op de opdracht balk.
-
-   ![Uploaden op de opdracht balk](media/search-semi-structured-data/upload-command-bar.png "Uploaden op de opdracht balk")
-
-1. Navigeer naar de map met de voorbeeld bestanden. Selecteer alles en klik vervolgens op **uploaden**.
+1. Nadat de container is gemaakt, opent u deze en selecteert u **uploaden** op de opdracht balk. Navigeer naar de map met de voorbeeld bestanden. Selecteer alles en klik vervolgens op **uploaden**.
 
    ![Bestanden uploaden](media/tutorial-multiple-data-sources/blob-upload.png "Bestanden uploaden")
 
@@ -129,11 +129,11 @@ De volgende vermeldingen geven account namen en connection string informatie op 
 
 In azure Cognitive Search is het sleutel veld een unieke identificatie voor elk document in de index. Elke zoek index moet precies één sleutel veld van het type `Edm.String`hebben. Het sleutel veld moet aanwezig zijn voor elk document in een gegevens bron dat wordt toegevoegd aan de index. (In feite is dit het enige vereiste veld.)
 
-Wanneer u gegevens uit meerdere gegevens bronnen indexeert, moet elke waarde van de gegevens bron sleutel worden toegewezen aan hetzelfde sleutel veld in de gecombineerde index. Er is vaak een planning vooraf van tevoren vereist om een zinvolle document sleutel voor uw index te identificeren en ervoor te zorgen dat deze zich in elke gegevens bron bevindt.
+Wanneer u gegevens uit meerdere gegevens bronnen indexeert, gebruikt u een algemene document sleutel om gegevens van twee fysiek afzonderlijke bron documenten samen te voegen in een nieuw Zoek document in de gecombineerde index. Er is vaak een planning vooraf van tevoren vereist om een duidelijke document sleutel voor uw index te identificeren en ervoor te zorgen dat deze bestaat in beide gegevens bronnen. In deze demo is de sleutel HotelId voor elk Hotel in Cosmos DB ook aanwezig in de JSON-blobs van de ruimten in Blob Storage.
 
 Azure Cognitive Search Indexeer functies kunnen veld toewijzingen gebruiken om de gegevens velden tijdens het indexerings proces een andere naam te geven en te Format teren, zodat de bron gegevens naar het juiste index veld kunnen worden omgeleid.
 
-In het voor beeld Azure Cosmos DB gegevens wordt de Hotel-id bijvoorbeeld **HotelId**genoemd. Maar in de JSON-BLOB-bestanden voor de hotel kamers heet de Hotel-id de naam **id**. Dit wordt door het programma verwerkt door het veld **id** van de blobs te koppelen aan het sleutel veld **HotelId** in de index.
+In het voor beeld Azure Cosmos DB gegevens wordt de Hotel-id bijvoorbeeld **`HotelId`** genoemd. Maar in de JSON-BLOB-bestanden voor de hotel kamers heet de Hotel-id **`Id`** . Dit wordt door het programma verwerkt door het **`Id`** veld van de blobs te koppelen aan het **`HotelId`** sleutel veld in de index.
 
 > [!NOTE]
 > In de meeste gevallen automatisch gegenereerde document sleutels, zoals die standaard door bepaalde Indexeer functies gemaakt, maken geen goede document sleutels voor gecombineerde indexen. Over het algemeen wilt u een betekenis volle, unieke sleutel waarde gebruiken die al bestaat in, of eenvoudig kan worden toegevoegd aan uw gegevens bronnen.
@@ -143,11 +143,11 @@ In het voor beeld Azure Cosmos DB gegevens wordt de Hotel-id bijvoorbeeld **Hote
 Zodra de gegevens en configuratie-instellingen zijn geïmplementeerd, moet het voorbeeld programma in **AzureSearchMultipleDataSources. SLN** klaar zijn om te worden gemaakt en uitgevoerd.
 
 Deze eenvoudige C#/.net-ontwikkeling.-console-app voert de volgende taken uit:
-* Hiermee maakt u een nieuwe Azure Cognitive Search-index op basis van de C# gegevens structuur van de klasse hotel (die ook verwijst naar de adres-en room-klassen).
-* Hiermee maakt u een Azure Cosmos DB gegevens bron en een Indexeer functie waarmee Azure Cosmos DB gegevens worden toegewezen aan index velden.
-* Hiermee wordt de Azure Cosmos DB Indexeer functie uitgevoerd om Hotel gegevens te laden.
-* Hiermee maakt u een Azure Blob Storage-gegevens bron en een Indexeer functie waarmee JSON BLOB-gegevens worden toegewezen aan index velden.
-* Hiermee wordt de Azure Blob Storage-indexer uitgevoerd om ruimten-gegevens te laden.
+* Hiermee maakt u een nieuwe index op basis van de gegevens C# structuur van de klasse hotel (die ook verwijst naar de adres-en room-klassen).
+* Hiermee maakt u een nieuwe gegevens bron en een Indexeer functie waarmee Azure Cosmos DB gegevens worden toegewezen aan index velden. Dit zijn beide objecten in azure Cognitive Search.
+* De Indexeer functie wordt uitgevoerd om Hotel gegevens van Cosmos DB te laden.
+* Hiermee maakt u een tweede gegevens bron en een Indexeer functie waarmee JSON BLOB-gegevens worden toegewezen aan index velden.
+* Voert de tweede Indexeer functie uit om opslag ruimten uit de Blobopslag te laden.
 
  Voordat u het programma uitvoert, moet u een paar minuten duren om de code en de definities van de index en de Indexeer functie voor dit voor beeld te bestuderen. De relevante code staat in twee bestanden:
 
@@ -300,7 +300,7 @@ Nadat de gegevens bron is gemaakt, wordt in het programma een BLOB-Indexeer func
     await searchService.Indexers.CreateOrUpdateAsync(blobIndexer);
 ```
 
-De JSON-blobs bevatten een sleutel veld met de naam **id** in plaats van **HotelId**. De code gebruikt de `FieldMapping`-klasse om de Indexeer functie de waarde van het veld id te laten verwijzen naar de **HotelId** **-** document sleutel in de index.
+De JSON-blobs bevatten een sleutel veld met de naam **`Id`** in plaats van **`HotelId`** . De code gebruikt de `FieldMapping`-klasse om de Indexeer functie de **`Id`** veld waarde te laten verwijzen naar de **`HotelId`** document sleutel in de index.
 
 Indexeer functies voor Blob-opslag kunnen para meters gebruiken die de te gebruiken parsing-modus identificeren. De parserings modus verschilt voor blobs die één document of meerdere documenten binnen dezelfde BLOB vertegenwoordigen. In dit voor beeld vertegenwoordigt elke Blob een enkel index document, zodat de code de para meter `IndexingParameters.ParseJson()` gebruikt.
 
@@ -350,8 +350,3 @@ Er zijn verschillende benaderingen en meerdere opties voor het indexeren van JSO
 
 > [!div class="nextstepaction"]
 > [JSON-blobs indexeren met Azure Cognitive Search BLOB-Indexer](search-howto-index-json-blobs.md)
-
-U kunt gestructureerde index gegevens uit een gegevens bron uitbreiden met cognitieve verrijkte gegevens van ongestructureerde blobs of volledige-tekst inhoud. In de volgende zelf studie ziet u hoe u Cognitive Services in combi natie met Azure Cognitive Search kunt gebruiken met behulp van de .NET SDK.
-
-> [!div class="nextstepaction"]
-> [Cognitive Services-API's aanroepen in een Azure Cognitive Search Indexing-pijp lijn](cognitive-search-tutorial-blob-dotnet.md)

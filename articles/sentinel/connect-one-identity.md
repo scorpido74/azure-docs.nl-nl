@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 12/30/2019
 ms.author: cabailey
-ms.openlocfilehash: 06c1415b07b1ed9ce4d0b4900510465496b9dbd9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7e33580c253c98279644e10305557a7e60701c90
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514106"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610502"
 ---
 # <a name="connect-one-identity-safeguard"></a>Verbinding maken met één identiteits beveiliging
 De gegevens connector met één identiteits beveiliging verbetert de standaard CEF-connector (common Event Format) met beveiliging voor op privileges gebaseerde Dash boards. Gebruik deze connector om eenvoudig te beginnen met het gebruik van de gebeurtenissen die door uw apparaat worden gegenereerd voor visualisaties, waarschuwingen, onderzoeken en meer.
@@ -42,4 +42,6 @@ De gegevens connector met één identiteits beveiliging verbetert de standaard C
 In dit document hebt u geleerd hoe u één identiteits beveiliging verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
 - Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
 - Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
+- [Gebruik werkmappen](tutorial-monitor-your-data.md) om uw gegevens te bewaken.
+
 

@@ -1,5 +1,5 @@
 ---
-title: Maak een nieuw toegangs pakket in het beheer van rechten van Azure AD-Azure Active Directory
+title: Een nieuw toegangs pakket maken in het recht beheer-Azure AD
 description: Meer informatie over het maken van een nieuw toegangs pakket met resources die u wilt delen in Azure Active Directory rechten beheer.
 services: active-directory
 documentationCenter: ''
@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71aa999809ba3d3e32d38162dfaba869d9716031
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 68d34046a16787ca1c6790880592fb30667ff2dc
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602710"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422696"
 ---
 # <a name="create-a-new-access-package-in-azure-ad-entitlement-management"></a>Een nieuw toegangs pakket maken in het beheer van rechten van Azure AD
 
@@ -119,7 +119,7 @@ Afhankelijk van wie u dit toegangs pakket wilt kunnen aanvragen, voert u de stap
 
 [!INCLUDE [Entitlement management lifecycle policy](../../../includes/active-directory-entitlement-management-lifecycle-policy.md)]
 
-## <a name="review--create"></a>Controleren en maken
+## <a name="review--create"></a>Beoordelen en maken
 
 Op het tabblad **controleren en maken** kunt u uw instellingen controleren en controleren of er validatie fouten zijn.
 

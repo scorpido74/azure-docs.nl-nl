@@ -1,20 +1,18 @@
 ---
-title: Herstel na nood gevallen en geo-distributie in Durable Functions-Azure
+title: Herstel na nood gevallen en Azure Durable Functions voor geografische distributie
 description: Meer informatie over herstel na nood gevallen en geo-distributie in Durable Functions.
 author: MS-Santi
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ba459d2d2f3aaf595c1d834e2b29a231e3b2bb12
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7951f216143bef0d48a6b751beff3f8f4316b9bd
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232945"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433337"
 ---
-# <a name="disaster-recovery-and-geo-distribution"></a>Herstel bij noodgeval en geodistributie
-
-## <a name="overview"></a>Overzicht
+# <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Herstel na nood gevallen en geo-distributie in azure Durable Functions
 
 In Durable Functions wordt alle status persistent gemaakt in Azure Storage. Een [Task hub](durable-functions-task-hubs.md) is een logische container voor Azure storage resources die worden gebruikt voor Orchestrations. Orchestrator-en activiteit functies kunnen alleen communiceren wanneer ze tot dezelfde taak hub behoren.
 In de beschreven scenario's worden implementatie opties Voorst Ellen om de beschik baarheid te verhogen en uitval tijd te minimaliseren tijdens nood herstel activiteiten.

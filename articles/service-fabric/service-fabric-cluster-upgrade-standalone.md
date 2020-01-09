@@ -1,25 +1,14 @@
 ---
-title: Een upgrade uitvoeren voor een zelfstandige Azure Service Fabric-cluster | Microsoft Docs
-description: Meer informatie over het bijwerken van de versie of configuratie van een zelfstandige Azure Service Fabric-cluster.  D
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Een zelfstandige Azure Service Fabric-cluster upgraden
+description: Meer informatie over het bijwerken van de versie of configuratie van een zelfstandige Azure Service Fabric-cluster.  T
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/12/2018
-ms.author: atsenthi
-ms.openlocfilehash: bf99d5d59354745508d8ca88abfc4b42fe608025
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599797"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451826"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Een Service Fabric zelfstandige cluster bijwerken en bijwerken
 
@@ -49,7 +38,7 @@ De patch Orchestration Application (POA) is een Service Fabric-toepassing waarme
 
 ## <a name="next-steps"></a>Volgende stappen
 * Meer informatie over het aanpassen van een aantal van de [service Fabric-cluster infrastructuur instellingen](service-fabric-cluster-fabric-settings.md)
-* Meer informatie over hoe u [uw cluster in-en](service-fabric-cluster-scale-up-down.md) uitschaalt
+* Meer informatie over hoe u [uw cluster in-en uitschaalt](service-fabric-cluster-scale-up-down.md)
 * Meer informatie over [toepassings upgrades](service-fabric-application-upgrade.md)
 
 <!--Image references-->

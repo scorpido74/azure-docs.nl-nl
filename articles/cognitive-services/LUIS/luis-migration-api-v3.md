@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: bb2255a9a68a499ff3e77c1fbd35081a2474cf1d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8756d8e60e7612c1610e07b0567465e3a0ea8884
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961940"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75531493"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Wijzigingen in het Voorspellings eindpunt voor v3
 
@@ -88,7 +88,7 @@ Als u wilt zoeken op versie, moet u eerst [via API publiceren](https://westus.de
 |V3|GET|https://<b>{Region}</b>. API.Cognitive.Microsoft.com/Luis/-voor<b>Spelling</b>/<b>v 3.0</b>/apps/<b>{App-ID}</b>/slots/<b>{naam sleuf}</b>/predict? query =<b>{query}</b>|
 |V3|POST|https://<b>{Region}</b>. API.Cognitive.Microsoft.com/Luis/-voor<b>Spelling</b>/<b>v 3.0</b>/apps/<b>{App-ID}</b>/slots/<b>{naam sleuf}</b>/predict|
 |V2|GET|https://<b>{Region}</b>. API.Cognitive.Microsoft.com/Luis/-voor<b>Spelling</b>/<b>v 3.0</b>/apps/<b>{App-ID}</b>/versions/<b>{Version-id}</b>/predict? query =<b>{query}</b>|
-|V2|POST|https://<b>{Region}</b>. API.Cognitive.Microsoft.com/Luis/-<b>Voorspellings</b><b>v 3.0</b>/apps/<b>{App-ID}</b>/versions/<b>{Version-id}</b>/predict|
+|V2|POST|https://<b>{Region}</b>. API.Cognitive.Microsoft.com/Luis/-voor<b>Spelling</b>/<b>v 3.0</b>/apps/<b>{App-ID}</b>/versions/<b>{Version-id}</b>/predict|
 
 |Geldige waarden voor `SLOT-NAME`|
 |--|
@@ -104,11 +104,11 @@ De V3 API heeft verschillende query reeks parameters.
 |Parameter naam|Type|Versie|Standaard|Doel|
 |--|--|--|--|--|
 |`log`|booleaans|V2 & v3|false|Sla de query op in het logboek bestand. De standaard waarde is False.| 
-|`query`|tekenreeks|Alleen v3|Geen standaard-dit is vereist in de GET-aanvraag|**In v2**bevindt de utterance die moet worden voor speld in de para meter `q`. <br><br>**In v3**wordt de functionaliteit door gegeven in de para meter `query`.|
+|`query`|string|Alleen v3|Geen standaard-dit is vereist in de GET-aanvraag|**In v2**bevindt de utterance die moet worden voor speld in de para meter `q`. <br><br>**In v3**wordt de functionaliteit door gegeven in de para meter `query`.|
 |`show-all-intents`|booleaans|Alleen v3|false|Alle intenties retour neren met de bijbehorende Score in het object voor **spellingen** . Intenties worden geretourneerd als objecten in een bovenliggend `intents`-object. Zo kunt u programmatisch toegang krijgen zonder dat u de bedoeling in een matrix hoeft te vinden: `prediction.intents.give`. In v2 zijn deze geretourneerd in een matrix. |
 |`verbose`|booleaans|V2 & v3|false|**In v2**zijn alle voorspelde intenten geretourneerd als deze zijn ingesteld op True. Als u alle voorspelde intenties nodig hebt, gebruikt u de V3-para meter van `show-all-intents`.<br><br>**In v3**biedt deze para meter alleen details van entiteits-meta gegevens van de voor spelling van de entiteit.  |
-|`timezoneOffset`|tekenreeks|V2|-|De tijd zone die wordt toegepast op datetimeV2-entiteiten.|
-|`datetimeReference`|tekenreeks|V3|-|De [tijd zone](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) die wordt toegepast op datetimeV2-entiteiten. Vervangt `timezoneOffset` van v2.|
+|`timezoneOffset`|string|V2|-|De tijd zone die wordt toegepast op datetimeV2-entiteiten.|
+|`datetimeReference`|string|V3|-|De [tijd zone](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) die wordt toegepast op datetimeV2-entiteiten. Vervangt `timezoneOffset` van v2.|
 
 
 ### <a name="v3-post-body"></a>V3 POST-hoofd tekst
@@ -129,9 +129,9 @@ De V3 API heeft verschillende query reeks parameters.
 |--|--|--|--|--|
 |`dynamicLists`|matrix|Alleen v3|Niet vereist.|Met [dynamische lijsten](#dynamic-lists-passed-in-at-prediction-time) kunt u een bestaande getrainde en gepubliceerde lijst entiteit uitbreiden, al in de Luis-app.|
 |`externalEntities`|matrix|Alleen v3|Niet vereist.|[Externe entiteiten](#external-entities-passed-in-at-prediction-time) bieden uw Luis-app de mogelijkheid om entiteiten tijdens runtime te identificeren en te labelen, die kunnen worden gebruikt als functies voor bestaande entiteiten. |
-|`options.datetimeReference`|tekenreeks|Alleen v3|Geen standaard waarde|Wordt gebruikt om de [datetimeV2-offset](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)te bepalen. De indeling voor de datetimeReference is [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
+|`options.datetimeReference`|string|Alleen v3|Geen standaard waarde|Wordt gebruikt om de [datetimeV2-offset](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)te bepalen. De indeling voor de datetimeReference is [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
 |`options.preferExternalEntities`|booleaans|Alleen v3|false|Hiermee wordt aangegeven of de externe entiteit van de gebruiker [(met dezelfde naam als bestaande entiteit)](#override-existing-model-predictions) wordt gebruikt of dat de bestaande entiteit in het model wordt gebruikt voor de voor spelling. |
-|`query`|tekenreeks|Alleen v3|Vereist.|**In v2**bevindt de utterance die moet worden voor speld in de para meter `q`. <br><br>**In v3**wordt de functionaliteit door gegeven in de para meter `query`.|
+|`query`|string|Alleen v3|Vereist.|**In v2**bevindt de utterance die moet worden voor speld in de para meter `q`. <br><br>**In v3**wordt de functionaliteit door gegeven in de para meter `query`.|
 
 
 
@@ -232,7 +232,7 @@ In v2 retourneert de `entities`-matrix alle voorspelde entiteiten met de naam va
 
 In het volgende voor beeld: overweeg een utterance die de tekst bevat `Yellow Bird Lane`. Deze tekst wordt voor speld als aangepaste `Location` de rol van `Destination`van de entiteit.
 
-|Utterance tekst|De naam van de entiteit|Rolnaam|
+|Utterance tekst|Naam van de entiteit|Rolnaam|
 |--|--|--|
 |`Yellow Bird Lane`|`Location`|`Destination`|
 
@@ -408,7 +408,7 @@ Als de `preferExternalEntities` is ingesteld op `true`, retourneert LUIS een ant
 
 
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 De _optionele_ eigenschap `resolution` wordt geretourneerd in de Voorspellings reactie, zodat u de meta gegevens kunt door geven die aan de externe entiteit zijn gekoppeld. Vervolgens ontvangt u deze terug in het antwoord. 
 

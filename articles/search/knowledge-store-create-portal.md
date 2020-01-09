@@ -7,13 +7,13 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 11/04/2019
-ms.openlocfilehash: a8cc368b2949d9a65034ee4f989b8603dfa01027
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.date: 12/30/2019
+ms.openlocfilehash: cffd94459e3a18567f2ff2f6b8fca35598cb5eed
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533944"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563450"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-knowledge-store-in-the-azure-portal"></a>Snelstartgids: een Azure Cognitive Search-kennis archief maken in de Azure Portal
 
@@ -22,9 +22,9 @@ ms.locfileid: "74533944"
 
 Het kennis archief is een functie van Azure Cognitive Search die de uitvoer van een cognitieve vaardig heden-pijp lijn voor volgende analyses of downstream-verwerking persistent maakt. 
 
-Een pijp lijn accepteert installatie kopieën en ongestructureerde tekst als onbewerkte inhoud, past AI toe op Cognitive Services (zoals afbeeldingen en natuurlijke taal verwerking) en maakt verrijkte inhoud (nieuwe structuren en informatie) als uitvoer. Een van de fysieke artefacten die zijn gemaakt door een pijp lijn is een [kennis archief](knowledge-store-concept-intro.md)dat u kunt openen via hulpprogram ma's voor het analyseren en verkennen van inhoud.
+Een pijp lijn accepteert ongestructureerde tekst en afbeeldingen als onbewerkte inhoud, past AI toe op Cognitive Services (zoals OCR, afbeeldings analyse en verwerking van natuurlijke taal), extraheert informatie en voert nieuwe structuren en informatie uit. Een van de fysieke artefacten die zijn gemaakt door een pijp lijn is een [kennis archief](knowledge-store-concept-intro.md)dat u kunt openen via hulpprogram ma's voor het analyseren en verkennen van inhoud.
 
-In deze Quick Start combineert u services en gegevens in de Azure-Cloud om een kennis archief te maken. Zodra alles aanwezig is, voert u de wizard **gegevens importeren** in de portal uit om het allemaal samen te halen. Het eind resultaat is oorspronkelijke en AI-gegenereerde inhoud die u kunt weer geven in de portal ([Storage Explorer](knowledge-store-view-storage-explorer.md)).
+In deze Quick Start combineert u services en gegevens in de Azure-Cloud om een kennis archief te maken. Zodra alles aanwezig is, voert u de wizard **gegevens importeren** in de portal uit om het allemaal samen te halen. Het eind resultaat is oorspronkelijke tekst inhoud plus door AI gegenereerde inhoud die u kunt weer geven in de portal ([Storage Explorer](knowledge-store-view-storage-explorer.md)).
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -38,13 +38,9 @@ Omdat de werk belasting zo klein is, wordt Cognitive Services achter de schermen
 
 1. [Een Azure Storage-account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) of [een bestaand account vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) onder uw huidige abonnement. U gebruikt Azure Storage voor zowel de onbewerkte inhoud die u wilt importeren als het kennis archief dat het eind resultaat heeft.
 
-   Er zijn twee vereisten voor dit account:
+   Kies het account type **StorageV2 (algemeen gebruik v2)** .
 
-   + Kies dezelfde regio als Azure Cognitive Search. 
-   
-   + Kies het account type StorageV2 (algemeen gebruik v2). 
-
-1. Open de pagina's van de BLOB Services en maak een container.  
+1. Open de pagina's van de BLOB Services en maak een container met de naam *Hotel-Recensies*.
 
 1. Klik op **Uploaden**.
 
@@ -54,9 +50,9 @@ Omdat de werk belasting zo klein is, wordt Cognitive Services achter de schermen
 
     ![De Azure Blob-container maken](media/knowledge-store-create-portal/hotel-reviews-blob-container.png "De Azure Blob-container maken")
 
-<!-- 1. You are almost done with this resource, but before you leave these pages, use a link on the left navigation pane to open the **Access Keys** page. Get a connection string to retrieve data from Blob storage. A connection string looks similar to the following example: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net` -->
+1. U bent bijna klaar met deze resource, maar voordat u deze pagina's verlaat, gebruikt u een koppeling in het navigatie deel venster aan de linkerkant om de pagina **toegangs sleutels** te openen. Een connection string ophalen om gegevens op te halen uit de Blob-opslag. Een connection string ziet er ongeveer uit zoals in het volgende voor beeld: `DefaultEndpointsProtocol=https;AccountName=<YOUR-ACCOUNT-NAME>;AccountKey=<YOUR-ACCOUNT-KEY>;EndpointSuffix=core.windows.net`
 
-1. [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service zoeken](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). U kunt een gratis service voor deze Quick Start gebruiken.
+1. Ga nog in de portal naar Azure Cognitive Search. [Een nieuwe service maken](search-create-service-portal.md) of [een bestaande service zoeken](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). U kunt een gratis service voor deze Quick Start gebruiken.
 
 U bent nu klaar om door te gaan met de wizard gegevens importeren.
 
@@ -71,17 +67,18 @@ Klik op de pagina overzicht van de zoek service op **gegevens importeren** op de
 1. In **Verbinden met uw gegevens** kiest u **Azure Blob Storage** en selecteert u het account dat en de container die u hebt gemaakt. 
 1. Voer `hotel-reviews-ds`in voor de **naam**.
 1. Voor de **modus voor parseren**selecteert u **tekst met scheidings tekens**en selecteert u vervolgens de **eerste regel bevat selectie vakje voor koptekst** . Controleer of het **scheidings teken** een komma (,) is.
-1. Voer de **verbindings reeks** voor de opslag service in die u in een vorige stap hebt opgeslagen.
-1. Voer `hotel-reviews`in bij **container naam**.
-1. Klik op **volgende: AI-verrijking toevoegen (optioneel)** .
+1. Plak in **verbindings reeks**de Connection String die u hebt gekopieerd van de pagina **toegangs sleutels** in azure Storage.
+1. In **containers**voert u de naam in van de BLOB-container waarin de gegevens zijn ondergebracht.
 
-      ![Een gegevens bron object maken](media/knowledge-store-create-portal/hotel-reviews-ds.png "Een gegevens bron object maken")
+    De pagina moet er ongeveer uitzien als in de volgende scherm afbeelding.
+
+    ![Een gegevens bron object maken](media/knowledge-store-create-portal/hotel-reviews-ds.png "Een gegevens bron object maken")
 
 1. Ga door naar de volgende pagina.
 
 ### <a name="step-2-add-cognitive-skills"></a>Stap 2: cognitieve vaardigheden toevoegen
 
-In deze wizardstap maakt u een vaardig heden met cognitieve vaardigheids verrijkingen. Met de vaardig heden die in dit voor beeld worden gebruikt, worden sleutel zinnen geëxtraheerd en worden de taal-en sentiment gedetecteerd. In een latere stap worden deze verrijkingen "geprojecteerd" in een kennis archief als Azure-tabellen.
+In deze wizardstap maakt u een vaardig heden met cognitieve vaardigheids verrijkingen. De bron gegevens bestaan uit beoordelingen van klanten in verschillende talen. De vaardig heden die relevant zijn voor deze gegevensset zijn het ophalen van belang rijke zinsdelen, het opsporen van sentiment en het omzetten van tekst. In een latere stap worden deze verrijkingen "geprojecteerd" in een kennis archief als Azure-tabellen.
 
 1. Vouw **Cognitive Services toevoegen**uit. **Gratis (beperkte verrijkingen)** is standaard geselecteerd. U kunt deze resource gebruiken omdat het aantal records in HotelReviews-Free. CSV 19 is en deze gratis resource Maxi maal 20 trans acties per dag toestaat.
 1. Vouw **cognitieve vaardig heden toevoegen**uit.
@@ -90,7 +87,7 @@ In deze wizardstap maakt u een vaardig heden met cognitieve vaardigheids verrijk
 1. Selecteer voor uitgebreid **granulatie niveau**de optie **pagina's (segmenten van 5000 tekens)**
 1. Selecteer deze cognitieve vaardig heden:
     + **Sleuteltermen extraheren**
-    + **Taal detecteren**
+    + **Tekst vertalen**
     + **Sentiment detecteren**
 
       ![Een vaardig heden maken](media/knowledge-store-create-portal/hotel-reviews-ss.png "Een set vaardigheden maken")
@@ -104,6 +101,8 @@ In deze wizardstap maakt u een vaardig heden met cognitieve vaardigheids verrijk
 
     ![Kennis archief configureren](media/knowledge-store-create-portal/hotel-reviews-ks.png "Kennis archief configureren")
 
+1. U kunt desgewenst een Power BI sjabloon downloaden. Wanneer u de sjabloon opent vanuit de wizard, wordt het lokale. pbit-bestand aangepast aan de vorm van uw gegevens.
+
 1. Ga door naar de volgende pagina.
 
 ### <a name="step-3-configure-the-index"></a>Stap 3: de index configureren
@@ -111,10 +110,7 @@ In deze wizardstap maakt u een vaardig heden met cognitieve vaardigheids verrijk
 In deze wizardstap gaat u een index configureren voor optionele Zoek opdrachten in volledige tekst. De wizard maakt een voor beeld van de gegevens bron voor het afleiden van velden en gegevens typen. U hoeft alleen de kenmerken voor het gewenste gedrag te selecteren. Als u bijvoorbeeld het kenmerk **ophalenable** krijgt, kan de zoek service een veld waarde Retour neren terwijl **Zoeken in** volledige tekst in het veld wordt ingeschakeld.
 
 1. Voer `hotel-reviews-idx`in bij **index naam**.
-1. Voor kenmerken selecteert u de volgende opties:
-    + Selecteer **ophalen** mogelijk voor alle velden.
-    + Selecteer **filterbaar** en **facetable** voor deze velden: *sentiment*, *taal*, *woordgroepen*
-    + Selecteer **Doorzoek** bare waarden voor deze velden: *plaats*, *naam*, *reviews_text*, *taal*, *woordgroepen*
+1. Voor kenmerken accepteert u de standaard selecties: **ophalen** en **doorzoekbaar** voor de nieuwe velden die de pijp lijn maakt.
 
     De index moet er ongeveer uitzien als de volgende afbeelding. Omdat de lijst lang is, zijn niet alle velden zichtbaar in de afbeelding.
 

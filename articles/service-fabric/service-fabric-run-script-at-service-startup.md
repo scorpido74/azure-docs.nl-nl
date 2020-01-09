@@ -1,33 +1,24 @@
 ---
-title: Een script uitvoeren wanneer een Azure Service Fabric-service wordt gestart | Microsoft Docs
-description: Leer hoe u een beleid voor een toegangspunt voor Service Fabric service-instellingen configureren en een script uitvoeren bij het opstarten service tijd.
-services: service-fabric
-documentationcenter: .net
+title: Een script uitvoeren wanneer een Azure Service Fabric-service wordt gestart
+description: Meer informatie over het configureren van een beleid voor een invoer punt voor een Service Fabric service-installatie en het uitvoeren van een script bij het starten van de service.
 author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/21/2018
 ms.author: atsenthi
-ms.openlocfilehash: 76be814e0dd4c054fc3a873716dbfe395eeeb2dc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a25f16f08ab8ae9564363f179d19d4b30c5315fa
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837778"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464284"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Het opstartscript van een service uitvoeren als lokale gebruiker of systeemaccount
-Voordat een uitvoerbaar bestand Service Fabric-service wordt gestart is het mogelijk nodig is om uit te voeren werk configuratie of configuratie nodig.  Bijvoorbeeld: configureren van omgevingsvariabelen. U kunt opgeven dat een script uit te voeren voordat de uitvoerbare-service wordt gestart in het servicemanifest voor de service. Het uitvoerbare installatieprogramma uitgevoerd door het configureren van een RunAs-beleid voor het service-instelling toegangspunt dat u kunt wijzigen welk account onder.  Het beginpunt van een afzonderlijke installatie kunt u verhoogde configuratie voor een korte periode, zodat de ServiceHost uitvoerbare niet wilt uitvoeren met hoge bevoegdheden voor langere tijd worden uitgevoerd.
+Voordat een uitvoer bare Service Fabric-service wordt gestart, kan het nodig zijn om een configuratie of installatie uit te voeren.  Zo kunt u omgevings variabelen configureren. U kunt opgeven dat een script moet worden uitgevoerd voordat het uitvoer bare bestand van de service wordt gestart in het service manifest voor de service. Door een runas-beleid voor het toegangs punt voor de service-instelling te configureren, kunt u het account wijzigen waarmee het uitvoer bare installatie programma wordt uitgevoerd.  Met een afzonderlijk installatie-ingangs punt kunt u een configuratie met hoge bevoegdheden uitvoeren voor een korte periode, zodat het uitvoer bare bestand van de servicehost niet langer hoeft te worden uitgevoerd met hoge bevoegdheden voor langere Peri Oden.
 
-Het setup-toegangspunt (**SetupEntryPoint** in de [servicemanifest](service-fabric-application-and-service-manifests.md)) is een privileged ingangspunt gebruikt dat standaard wordt uitgevoerd met dezelfde referenties als Service Fabric (meestal de  *NetworkService* account) voordat u een ander toegangspunt. Het uitvoerbare bestand dat is opgegeven door **EntryPoint** is doorgaans de ServiceHost langlopende. De **EntryPoint** uitvoerbaar bestand wordt uitgevoerd na de **SetupEntryPoint** uitvoerbaar bestand is afgesloten. Het resulterende proces wordt bewaakt en opnieuw opgestart, en wordt opnieuw gestart met **SetupEntryPoint** als dit ooit wordt beëindigd of vastloopt. 
+Het installatie toegangs punt (**SetupEntryPoint** in het [service manifest](service-fabric-application-and-service-manifests.md)) is een geprivilegieerd toegangs punt dat standaard wordt uitgevoerd met dezelfde referenties als service Fabric (meestal het *netwerk service* account) vóór een ander toegangs punt. Het uitvoer bare bestand dat is opgegeven met **Entry Point** is doorgaans de langlopende servicehost. Het uitvoer bare bestand **Entry Point** wordt uitgevoerd nadat het uitvoer bare bestand van **SetupEntryPoint** is afgesloten. Het resulterende proces wordt gecontroleerd en opnieuw gestart, en begint opnieuw met **SetupEntryPoint** als het ooit wordt beëindigd of is vastgelopen. 
 
 ## <a name="configure-the-service-setup-entry-point"></a>Het toegangspunt voor service-instellingen configureren
-Hier volgt een eenvoudige service manifest voorbeeld voor een stateless service die Hiermee geeft u een installatiescript *MySetup.bat* in de service **SetupEntryPoint**.  **Argumenten** wordt gebruikt voor het argumenten doorgeven aan het script als deze wordt uitgevoerd.
+Hier volgt een voor beeld van een eenvoudig service manifest voor een stateless service dat een Setup-script *MySetup. bat* specificeert in de service **SetupEntryPoint**.  **Argumenten** worden gebruikt om argumenten door te geven aan het script wanneer het wordt uitgevoerd.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -66,11 +57,11 @@ Hier volgt een eenvoudige service manifest voorbeeld voor een stateless service 
   </Resources>
 </ServiceManifest>
 ```
-## <a name="configure-the-policy-for-a-service-setup-entry-point"></a>Het beleid voor een toegangspunt voor service-instellingen configureren
-Het uitvoerbare bestand van service-instelling vermelding punt wordt standaard uitgevoerd onder dezelfde referenties als Service Fabric (meestal de *NetworkService* account).  In het toepassingsmanifest, kunt u de beveiligingsmachtigingen voor het uitvoeren van het opstartscript onder een lokale systeemaccount of een administrator-account wijzigen.
+## <a name="configure-the-policy-for-a-service-setup-entry-point"></a>Het beleid voor een toegangs punt voor een service-instelling configureren
+Het uitvoer bare bestand van het service-installatie programma wordt standaard uitgevoerd onder dezelfde referenties als Service Fabric (meestal het *netwerk service* account).  In het toepassings manifest kunt u de beveiligings machtigingen wijzigen om het opstart script uit te voeren onder een lokaal systeem account of een beheerders account.
 
-### <a name="configure-the-policy-by-using-a-local-system-account"></a>Het beleid configureren met behulp van een lokale systeemaccount
-De volgende application manifest voorbeeld ziet u hoe het configureren van het toegangspunt voor service-instelling moet worden uitgevoerd in de gebruiker administrator-account (SetupAdminUser).
+### <a name="configure-the-policy-by-using-a-local-system-account"></a>Het beleid configureren met behulp van een lokaal systeem account
+In het volgende voor beeld van een toepassings manifest ziet u hoe u het toegangs punt voor de service-instelling configureert om te worden uitgevoerd onder het beheerders account van de gebruiker (SetupAdminUser).
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -104,12 +95,12 @@ De volgende application manifest voorbeeld ziet u hoe het configureren van het t
 </ApplicationManifest>
 ```
 
-Maak eerst een **Principals** sectie met een gebruikersnaam, zoals SetupAdminUser. Het gebruikersaccount SetupAdminUser is lid van de groep Administrators-systeem.
+Maak eerst een sectie **principals** met een gebruikers naam, zoals SetupAdminUser. Het SetupAdminUser-gebruikers account is lid van de systeem groep Administrators.
 
-Vervolgens onder de **ServiceManifestImport** sectie, configureer een beleid voor het toepassen van deze principal **SetupEntryPoint**. Dit beleid laat Service Fabric wordt de **MySetup.bat** -bestand wordt uitgevoerd het moet worden uitgevoerd als SetupAdminUser (met beheerdersbevoegdheden). Nadat u hebt *niet* een beleid toegepast op de belangrijkste toegangspunt, de code in **MyServiceHost.exe** wordt uitgevoerd onder het systeem **NetworkService** account. Dit is het standaardaccount dat alle service-toegangspunten worden uitgevoerd.
+Configureer vervolgens onder de sectie **ServiceManifestImport** een beleid om deze principal toe te passen op **SetupEntryPoint**. Dit beleid vertelt Service Fabric dat wanneer het **MySetup. bat** -bestand wordt uitgevoerd, moet worden uitgevoerd als SetupAdminUser (met beheerders bevoegdheden). Omdat u *geen* beleid hebt toegepast op het hoofd toegangs punt, wordt de code in **MyServiceHost. exe** uitgevoerd onder het systeem **netwerk service** account. Dit is het standaard account dat alle service-invoer punten worden uitgevoerd als.
 
-### <a name="configure-the-policy-by-using-local-system-accounts"></a>Het beleid configureren met behulp van de lokale systeemaccount
-Vaak is het beter om uit te voeren van het opstartscript met behulp van een lokale systeemaccount in plaats van een administrator-account. Het RunAs-beleid doorgaans uitgevoerd als een lid van de groep Administrators werkt niet goed omdat computers User Access Control (UAC) is standaard ingeschakeld. In dergelijke gevallen is de aanbeveling de SetupEntryPoint uitgevoerd als LocalSystem, in plaats van als een lokale gebruiker toegevoegd aan de groep Administrators. Het volgende voorbeeld ziet u de SetupEntryPoint uitgevoerd als LocalSystem instellen:
+### <a name="configure-the-policy-by-using-local-system-accounts"></a>Het beleid configureren met behulp van lokale systeem accounts
+Vaak is het raadzaam om het opstart script uit te voeren met een lokaal systeem account in plaats van een beheerders account. Het uitvoeren van het runas-beleid als lid van de groep Administrators werkt normaal gesp roken niet goed, omdat voor computers standaard gebruikers Access Control (UAC) zijn ingeschakeld. In dergelijke gevallen is het de aanbeveling om de SetupEntryPoint uit te voeren als LocalSystem, in plaats van een lokale gebruiker die is toegevoegd aan de groep Administrators. In het volgende voor beeld ziet u hoe de SetupEntryPoint moet worden uitgevoerd als LocalSystem:
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -140,18 +131,18 @@ Vaak is het beter om uit te voeren van het opstartscript met behulp van een loka
 ```
 
 > [!NOTE]
-> Voor Linux-clusters, een service of de installatie uit te voeren ingangspunt als **hoofdmap**, kunt u de **AccountType** als **LocalSystem**.
+> Voor Linux-clusters kunt u een service of het toegangs punt voor Setup als **root**uitvoeren door het **account** type op te geven als **LocalSystem**.
 
-## <a name="run-a-script-from-the-setup-entry-point"></a>Een script uitvoeren vanaf het beginpunt van setup
-Nu een begin script toevoegen aan het project moet worden uitgevoerd in de administrator-bevoegdheden. 
+## <a name="run-a-script-from-the-setup-entry-point"></a>Een script uitvoeren vanuit het installatie toegangs punt
+Voeg nu een opstart script toe aan het project om uit te voeren onder Administrator bevoegdheden. 
 
-In Visual Studio met de rechtermuisknop op het service-project en voeg een nieuw bestand met de naam *MySetup.bat*.
+Klik in Visual Studio met de rechter muisknop op het service project en voeg een nieuw bestand toe met de naam *MySetup. bat*.
 
-Vervolgens, zorg ervoor dat de *MySetup.bat* bestand is opgenomen in het servicepakket. Standaard is deze niet. Selecteer het bestand, klik met de rechtermuisknop om het contextmenu en kies **eigenschappen**. Zorg ervoor dat in het dialoogvenster Eigenschappen **naar uitvoermap kopiëren** is ingesteld op **kopiëren indien nieuwer**. Zie de volgende schermafbeelding.
+Controleer vervolgens of het bestand *MySetup. bat* is opgenomen in het service pakket. Dit is standaard niet. Selecteer het bestand, klik met de rechter muisknop om het context menu weer te geven en kies **Eigenschappen**. Zorg er in het dialoog venster Eigenschappen voor dat **kopiëren naar uitvoermap** is ingesteld op **kopiëren indien nieuwer**. Zie de volgende schermafbeelding.
 
-![Visual Studio CopyToOutput voor SetupEntryPoint batch-bestand][image1]
+![Visual Studio CopyToOutput voor SetupEntryPoint-batch bestand][image1]
 
-Nu bewerken de *MySetup.bat* -bestand en voeg de volgende opdrachten een systeemomgevingsvariabele instellen en een tekstbestand uitvoer:
+Bewerk nu het *MySetup. bat* -bestand en voeg de volgende opdrachten toe: Stel een systeem omgevings variabele in en uitvoer een tekst bestand.
 
 ```
 REM Set a system environment variable. This requires administrator privilege
@@ -163,29 +154,29 @@ REM To delete this system variable us
 REM REG delete "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment" /v TestVariable /f
 ```
 
-Vervolgens bouwen en implementeren van de oplossing op een lokaal ontwikkelcluster. Nadat de service is gestart, zoals wordt weergegeven in [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), kunt u zien dat het bestand MySetup.bat geslaagd in een op twee manieren. Open een PowerShell-opdrachtprompt en typ:
+Vervolgens bouwt en implementeert u de oplossing in een lokaal ontwikkelings cluster. Nadat de service is gestart, zoals wordt weer gegeven in [service Fabric Explorer](service-fabric-visualizing-your-cluster.md), kunt u zien dat het bestand MySetup. bat op twee manieren is geslaagd. Open een Power shell-opdracht prompt en typ het volgende:
 
 ```
 PS C:\ [Environment]::GetEnvironmentVariable("TestVariable","Machine")
 MyValue
 ```
 
-Noteer de naam van het knooppunt waar de service is geïmplementeerd en aan de slag [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md). Bijvoorbeeld, knooppunt 2. Vervolgens gaat u naar de map application exemplaar werk te zoeken naar de out.txt-bestand waarin de waarde van **TestVariable**. Bijvoorbeeld, als deze service is geïmplementeerd op knooppunt 2, klikt u vervolgens kunt gaat u naar dit pad voor de **MyApplicationType**:
+Noteer vervolgens de naam van het knoop punt waarop de service is geïmplementeerd en start in [service Fabric Explorer](service-fabric-visualizing-your-cluster.md). Bijvoorbeeld, knoop punt 2. Ga vervolgens naar de map werk van het toepassings exemplaar om het bestand out. txt te vinden waarin de waarde van **TestVariable**wordt weer gegeven. Als deze service bijvoorbeeld is geïmplementeerd op knoop punt 2, kunt u naar dit pad gaan voor de **MyApplicationType**:
 
 ```
 C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
 ```
 
-## <a name="run-powershell-commands-from-a-setup-entry-point"></a>PowerShell-opdrachten uitvoeren vanaf een setup-toegangspunt
-PowerShell wilt uitvoeren vanaf de **SetupEntryPoint** punt, die u kunt uitvoeren **PowerShell.exe** in een batch-bestand die naar een PowerShell-bestand verwijst. Eerst een PowerShell-bestand bijvoorbeeld aan het service-project toevoegen **MySetup.ps1**. Houd er rekening mee om in te stellen de *kopiëren indien nieuwer* eigenschap zodat het bestand ook in het servicepakket opgenomen is. Het volgende voorbeeld toont een voorbeeld van batch-bestand dat een PowerShell-bestand met de naam MySetup.ps1 die Hiermee stelt u de omgevingsvariabele van een systeem met de naam begint **TestVariable**.
+## <a name="run-powershell-commands-from-a-setup-entry-point"></a>Power shell-opdrachten uitvoeren vanaf een invoer punt voor Setup
+Als u Power shell wilt uitvoeren vanaf het **SetupEntryPoint** -punt, kunt u **Power shell. exe** uitvoeren in een batch-bestand dat verwijst naar een Power shell-bestand. Voeg eerst een Power shell-bestand toe aan het service project, bijvoorbeeld **MySetup. ps1**. Vergeet niet om de eigenschap *copy als nieuwer* in te stellen, zodat het bestand ook in het service pakket is opgenomen. In het volgende voor beeld ziet u een batch-voorbeeld bestand dat een Power shell-bestand met de naam MySetup. ps1 start, waarmee een systeem omgevings variabele met de naam **TestVariable**wordt ingesteld.
 
-MySetup.bat om te beginnen een PowerShell-bestand:
+MySetup. bat om een Power shell-bestand te starten:
 
 ```
 powershell.exe -ExecutionPolicy Bypass -Command ".\MySetup.ps1"
 ```
 
-Voeg het volgende om in te stellen van een omgevingsvariabele van het systeem in het PowerShell-bestand:
+Voeg in het Power shell-bestand het volgende toe om een systeem omgevings variabele in te stellen:
 
 ```
 [Environment]::SetEnvironmentVariable("TestVariable", "MyValue", "Machine")
@@ -193,7 +184,7 @@ Voeg het volgende om in te stellen van een omgevingsvariabele van het systeem in
 ```
 
 > [!NOTE]
-> Standaard, wanneer het batchbestand wordt uitgevoerd, gekeken naar de map met de naam **werken** voor bestanden. In dit geval wanneer MySetup.bat wordt uitgevoerd, willen we het bestand MySetup.ps1 niet vinden in dezelfde map, dit de toepassing is met deze **codepakket** map. Als u wilt deze map wijzigen, stelt u de werkmap:
+> Wanneer het batch bestand wordt uitgevoerd, wordt standaard de toepassingsmap met de naam **werk** voor bestanden weer gegeven. In dit geval willen we, wanneer MySetup. bat wordt uitgevoerd, het bestand MySetup. ps1 vinden in dezelfde map, de map van het toepassings **code pakket** . Als u deze map wilt wijzigen, stelt u de werkmap in:
 > 
 > 
 
@@ -206,15 +197,15 @@ Voeg het volgende om in te stellen van een omgevingsvariabele van het systeem in
 </SetupEntryPoint>
 ```
 
-## <a name="debug-a-startup-script-locally-using-console-redirection"></a>Fouten opsporen in een opstartscript lokaal via console-omleiding
-Soms is het handig voor foutopsporing worden gebruikt om te zien van de console-uitvoer van een setup-script is uitgevoerd. U kunt een beleid voor console-omleiding instellen op het setup-toegangspunt in het servicemanifest, die de uitvoer wordt geschreven naar een bestand. De uitvoer in een bestand wordt geschreven naar de map met de naam **log** op het clusterknooppunt waarop de toepassing wordt geïmplementeerd en uitgevoerd. 
+## <a name="debug-a-startup-script-locally-using-console-redirection"></a>Een opstart script lokaal oplossen met console omleiding
+In sommige gevallen is het handig voor fout opsporing om de console-uitvoer te zien van het uitvoeren van een installatie script. U kunt een beleid voor het omleiden van console instellen op het installatie punt in het service manifest, waarmee de uitvoer naar een bestand wordt geschreven. De bestands uitvoer wordt geschreven naar de toepassingsmap **logboek** op het cluster knooppunt waar de toepassing wordt geïmplementeerd en uitgevoerd. 
 
 > [!WARNING]
-> Gebruik nooit het beleid voor console-omleiding in een toepassing die is geïmplementeerd in een productieomgeving omdat dit kan invloed hebben op de failover van de toepassing. *Alleen* Gebruik deze optie voor lokale ontwikkeling en foutopsporing.  
+> Gebruik nooit het beleid voor omleiding van console in een toepassing die in productie is geïmplementeerd, omdat dit van invloed kan zijn op de failover van de toepassing. Gebruik dit *alleen* voor lokale ontwikkeling en fout opsporing.  
 > 
 > 
 
-Het volgende voorbeeld van de service-manifest ziet u de console-omleiding met een waarde FileRetentionCount instellen:
+In het volgende service manifest voorbeeld ziet u hoe u de console omleiding instelt met een FileRetentionCount-waarde:
 
 ```xml
 <SetupEntryPoint>
@@ -226,22 +217,22 @@ Het volgende voorbeeld van de service-manifest ziet u de console-omleiding met e
 </SetupEntryPoint>
 ```
 
-Als u nu het bestand MySetup.ps1 schrijven wijzigt een **Echo** opdracht, dit wordt geschreven naar het uitvoerbestand voor foutopsporing:
+Als u het bestand MySetup. ps1 nu wijzigt om een **echo** opdracht te schrijven, wordt er naar het uitvoer bestand geschreven voor fout opsporing:
 
 ```
 Echo "Test console redirection which writes to the application log folder on the node that the application is deployed to"
 ```
 
 > [!WARNING]
-> Nadat u uw script opsporen, onmiddellijk het beleid voor deze console-omleiding te verwijderen.
+> Nadat u het script hebt opgespoord, verwijdert u dit beleid voor omleiding van de console direct.
 
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Volgende stappen
-* [Meer informatie over de toepassing en Servicebeveiliging](service-fabric-application-and-service-security.md)
-* [Inzicht krijgen in het toepassingsmodel](service-fabric-application-model.md)
-* [Resources specificeren in een servicemanifest](service-fabric-service-manifest-resources.md)
+* [Meer informatie over de beveiliging van toepassingen en services](service-fabric-application-and-service-security.md)
+* [Inzicht in het toepassings model](service-fabric-application-model.md)
+* [Resources opgeven in een service manifest](service-fabric-service-manifest-resources.md)
 * [Een app implementeren](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png

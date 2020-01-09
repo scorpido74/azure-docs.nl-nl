@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: dac941b621c8df6b5c242bb5d0e0d5cdd1f864a9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 9eb7a80599966345d90cc4a079b586e743ca37d4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057952"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75451211"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Een interne fout treedt op wanneer u probeert verbinding maken met een Azure-VM via Extern bureaublad
 
@@ -54,7 +54,7 @@ Om dit probleem wilt oplossen, gebruikt u de seriële Console of [herstel de vir
 Verbinding maken met [seriële Console en open PowerShell exemplaar](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Als de seriële Console niet is ingeschakeld op de virtuele machine, gaat u naar de [herstel de virtuele machine offline](#repair-the-vm-offline) sectie.
 
-#### <a name="step-1-check-the-rdp-port"></a>Wizardstap 1 Controleer de RDP-poort
+#### <a name="step-1-check-the-rdp-port"></a>Stap: 1 Controleer de RDP-poort
 
 1. In een PowerShell-sessie, gebruikt u de [NETSTAT](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
 ) om te controleren of poort 8080 wordt gebruikt door andere toepassingen:
@@ -86,7 +86,7 @@ Verbinding maken met [seriële Console en open PowerShell exemplaar](./serial-co
 
     3. [Bijwerken van de netwerkbeveiligingsgroep voor de nieuwe poort](../../virtual-network/security-overview.md) in de Azure portal RDP-poort.
 
-#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Stap 2: Juiste machtigingen instellen voor het zelf-ondertekende RDP-certificaat
+#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Stap 2: Juiste machtigingen instellen voor de RDP-zelf-ondertekend certificaat
 
 1.  Voer de volgende opdrachten één voor één om de zelf-ondertekend RDP-certificaat te vernieuwen in een PowerShell-exemplaar:
 
@@ -135,7 +135,7 @@ Verbinding maken met [seriële Console en open PowerShell exemplaar](./serial-co
 
 4. Start de VM opnieuw op en probeer het vervolgens Start een extern-bureaubladverbinding met de virtuele machine. Als de fout zich blijft voordoen, gaat u naar de volgende stap.
 
-Stap 3: Inschakelen van alle ondersteunde TLS-versies
+#### <a name="step-3-enable-all-supported-tls-versions"></a>Stap 3: Alle ondersteunde TLS-versies inschakelen
 
 De RDP-client maakt gebruik van TLS 1.0 als het standaard-protocol. Dit kan echter worden gewijzigd in TLS 1.1, waarvan de nieuwe standaard is geworden. Als TLS 1.1 op de virtuele machine is uitgeschakeld, mislukt de verbinding.
 1.  In een CMD-instantie, schakelt u het TLS-protocol:
@@ -197,7 +197,7 @@ Om in te schakelen dump logboek- en seriële Console, voer het volgende script.
 #### <a name="reset-the-permission-for-machinekeys-folder"></a>De machtigingen voor map MachineKeys opnieuw instellen
 
 1. Open een opdrachtprompt met verhoogde bevoegdheid-sessie (**als administrator uitvoeren**).
-2. Voer het volgende script. In dit script, we gaan ervan uit dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteemschijf F. vervangen deze stationsletter door de juiste waarde voor uw virtuele machine.
+2. Voer het volgende script uit. In dit script, we gaan ervan uit dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteemschijf F. vervangen deze stationsletter door de juiste waarde voor uw virtuele machine.
 
         Md F:\temp
 

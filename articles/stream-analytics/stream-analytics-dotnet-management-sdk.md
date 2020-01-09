@@ -1,20 +1,19 @@
 ---
 title: Management .NET-SDK voor Azure Stream Analytics
 description: Aan de slag met Stream Analytics Management .NET SDK. Informatie over het instellen en analytics-taken uitvoeren. Maak een project, invoer, uitvoer en transformaties.
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73b1392adb2beee9e60d078d865257889b3205f8
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 20be2c56635faa4f77ae8e8e6afc3c1ece6d4942
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612716"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75426260"
 ---
 # <a name="management-net-sdk-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>Management .NET SDK: Instellen en uitvoeren van analysetaken met behulp van de Azure Stream Analytics-API voor .NET
 Informatie over het instellen en uitvoeren van analysetaken met behulp van de Stream Analytics-API voor .NET met behulp van de Management .NET-SDK. Instellen van een project, invoer en uitvoer bronnen, transformaties en start maken en taken stoppen. Voor de analytics-taken, kunt u gegevens uit Blob storage of van een event hub streamen.
@@ -27,11 +26,11 @@ Azure Stream Analytics is een volledig beheerde service met lage latentie, maxim
 > We hebben de voorbeeldcode in dit artikel bijgewerkt met Azure Stream Analytics Management .NET SDK v2.x versie. Zie voor voorbeelden van code met behulp van de gebruikt lagecy (1.x) SDK-versie kunt [de v1.x Management .NET SDK gebruiken voor Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-dotnet-management-sdk-v1).
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u dit artikel, hebt u de volgende vereisten:
+Voordat u aan dit artikel begint, moet u aan de volgende vereisten voldoen:
 
 * Installeer Visual Studio 2019 of 2015.
 * Download en installeer [Azure .NET SDK](https://azure.microsoft.com/downloads/).
-* Maak een Azure-resourcegroep in uw abonnement. Het volgende voorbeeld wordt een voorbeeld van Azure PowerShell-script. Zie voor meer informatie voor Azure PowerShell, [installeren en configureren van Azure PowerShell](/powershell/azure/overview);  
+* Maak een Azure-resourcegroep in uw abonnement. Het volgende voor beeld is een voor beeld-Azure PowerShell script. Zie voor meer informatie voor Azure PowerShell, [installeren en configureren van Azure PowerShell](/powershell/azure/overview);  
 
    ```powershell
    # Log in to your Azure account
@@ -50,7 +49,7 @@ Voordat u dit artikel, hebt u de volgende vereisten:
 * Instellen van een invoer bron en bestemming voor uitvoer voor de taak verbinding maken met.
 
 ## <a name="set-up-a-project"></a>Een project instellen
-Voor het maken van een analytics-taak gebruikt u de Stream Analytics-API voor .NET, eerst instellen van uw project.
+Als u een analyse taak wilt maken, gebruikt u de Stream Analytics-API voor .NET, moet u uw project eerst instellen.
 
 1. Maak een Visual Studio C# .NET-consoletoepassing.
 2. Voer de volgende opdrachten om de NuGet-pakketten te installeren in de Package Manager-Console. De eerste is de Azure Stream Analytics Management .NET SDK. De tweede waarde is voor verificatie van Azure.
@@ -211,7 +210,7 @@ De **TestConnection** methode wordt gecontroleerd of de Stream Analytics-taak is
    ```
 
 ## <a name="create-a-stream-analytics-output-target"></a>Maak het doel van een Stream Analytics-uitvoer
-Het maken van een bestemming voor uitvoer is vergelijkbaar met het maken van een Stream Analytics-invoerbron. Uitvoer doelen zijn, zoals invoerbronnen gekoppeld aan een specifieke taak. U moet voor het gebruik van de dezelfde bestemming voor uitvoer voor verschillende taken, roept u de methode opnieuw en geef een andere taaknaam.
+Het maken van een uitvoer doel is vergelijkbaar met het maken van een Stream Analytics invoer bron. Uitvoer doelen zijn, zoals invoerbronnen gekoppeld aan een specifieke taak. U moet voor het gebruik van de dezelfde bestemming voor uitvoer voor verschillende taken, roept u de methode opnieuw en geef een andere taaknaam.
 
 De volgende code maakt een bestemming voor uitvoer (Azure SQL database). U kunt het gegevenstype van het uitvoerdoel en/of dit serialisatietype aanpassen.
 
@@ -285,11 +284,11 @@ De **verwijderen** methode de taak, evenals de onderliggende onderliggende resou
    streamAnalyticsManagementClient.StreamingJobs.Delete(resourceGroupName, streamingJobName);
    ```
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="get-support"></a>Krijg ondersteuning
 Voor verdere ondersteuning kunt u proberen onze [Azure Stream Analytics-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics).
 
 ## <a name="next-steps"></a>Volgende stappen
-De basisbeginselen van het gebruik van een .NET-SDK maken en uitvoeren van analysetaken, hebt u geleerd. Zie de volgende artikelen voor meer informatie:
+De basisbeginselen van het gebruik van een .NET-SDK maken en uitvoeren van analysetaken, hebt u geleerd. Raadpleeg de volgende artikelen voor meer informatie:
 
 * [Inleiding tot Azure Stream Analytics](stream-analytics-introduction.md)
 * [Aan de slag met Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)

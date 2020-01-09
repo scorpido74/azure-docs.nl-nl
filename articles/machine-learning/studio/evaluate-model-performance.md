@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: b37844ff93ed1cfb631c2d8da12d0729f61f44ed
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2b9293e3c1ce280117ea40c43715f4dcd98de66d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837661"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427646"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Model prestaties in Azure Machine Learning Studio evalueren (klassiek)
 
@@ -41,10 +41,10 @@ U kunt ook Kruis validatie gebruiken om een aantal verwerkings bewerkingen (10 v
 In de volgende secties bouwen we eenvoudige regressie-en classificatie modellen en evalueren ze hun prestaties met behulp van zowel het [beoordelings model][evaluate-model] als de [Kruis validatie model][cross-validate-model] modules.
 
 ## <a name="evaluating-a-regression-model"></a>Een regressie model evalueren
-Stel dat we de prijs van een auto willen voors pellen met behulp van functies zoals afmetingen, paarden kracht, Engine specificaties, enzovoort. Dit is een typisch regressie probleem, waarbij de doel variabele (*prijs*) een doorlopende numerieke waarde is. We kunnen een lineair regressie model passend maken dat, op basis van de functie waarden van een bepaalde auto, de prijs van die auto kan voors pellen. Dit regressie model kan worden gebruikt om te scoren op dezelfde gegevensset die we hebben opgeleid. Zodra we de gedicteerde auto prijzen hebben, kunnen we de prestaties van het model evalueren door te kijken hoeveel de voor spellingen afwijken van de werkelijke prijzen op gemiddeld. Om dit te illustreren, gebruiken we de beschik bare *gegevens over auto Mobile price data (RAW)* in het gedeelte **opgeslagen gegevens sets** in ml Studio (klassiek).
+Stel dat we de prijs van een auto willen voors pellen met behulp van functies zoals afmetingen, paarden kracht, Engine specificaties, enzovoort. Dit is een typisch regressie probleem, waarbij de doel variabele (*prijs*) een doorlopende numerieke waarde is. We kunnen een lineair regressie model passend maken dat, op basis van de functie waarden van een bepaalde auto, de prijs van die auto kan voors pellen. Dit regressie model kan worden gebruikt om te scoren op dezelfde gegevensset die we hebben opgeleid. Zodra we de gedicteerde auto prijzen hebben, kunnen we de prestaties van het model evalueren door te kijken hoeveel de voor spellingen afwijken van de werkelijke prijzen op gemiddeld. Om dit te illustreren, gebruiken we de beschik bare *gegevens over auto Mobile price data (RAW)* in het gedeelte **opgeslagen gegevens sets** in machine learning Studio (klassiek).
 
 ### <a name="creating-the-experiment"></a>Het experiment maken
-Voeg de volgende modules toe aan uw werk ruimte in de klassieke versie van Azure Machine Learning Studio:
+Voeg de volgende modules toe aan uw werk ruimte in Azure Machine Learning Studio (klassiek):
 
 * Prijs gegevens auto Mobile (onbewerkt)
 * [Lineaire regressie][linear-regression]
@@ -83,10 +83,10 @@ Nadat u het experiment hebt uitgevoerd, kunt u de resultaten van de evaluatie co
 Afbeelding 4. Kruis validatie resultaten van een regressie model.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Een binair classificatie model evalueren
-In een scenario met een binaire indeling heeft de doel variabele slechts twee mogelijke resultaten, bijvoorbeeld: {0, 1} of {False, True}, {Negative, positief}. Stel dat u een gegevensset hebt gekregen van volwassen mede werkers met enkele demografische en werkgelegenheids variabelen en dat u wordt gevraagd om het inkomens niveau te voors pellen, een binaire variabele met de waarden {"< = 50 K", "> 50 K"}. Met andere woorden, de klasse Negative vertegenwoordigt de werk nemers die kleiner zijn dan of gelijk zijn aan 50 K per jaar, en de positieve klasse vertegenwoordigt alle andere werk nemers. Net als bij het regressie scenario zullen we een model trainen, bepaalde gegevens beoordelen en de resultaten evalueren. Het belangrijkste verschil is hier de keuze van metrische gegevens voor de klassieke versie van Azure Machine Learning Studio berekeningen en uitvoer. Om het scenario voor Voorspellings niveau te illustreren, gebruiken we de [volwassene](https://archive.ics.uci.edu/ml/datasets/Adult) gegevensset voor het maken van een studio-experiment (klassiek) en evalueren we de prestaties van een logistiek regressie model met twee klassen, een veelgebruikte binaire classificatie.
+In een scenario met een binaire indeling heeft de doel variabele slechts twee mogelijke resultaten, bijvoorbeeld: {0, 1} of {False, True}, {Negative, positief}. Stel dat u een gegevensset hebt gekregen van volwassen mede werkers met enkele demografische en werkgelegenheids variabelen en dat u wordt gevraagd om het inkomens niveau te voors pellen, een binaire variabele met de waarden {"< = 50 K", "> 50 K"}. Met andere woorden, de klasse Negative vertegenwoordigt de werk nemers die kleiner zijn dan of gelijk zijn aan 50 K per jaar, en de positieve klasse vertegenwoordigt alle andere werk nemers. Net als bij het regressie scenario zullen we een model trainen, bepaalde gegevens beoordelen en de resultaten evalueren. Het belangrijkste verschil is hier de keuze van metrische gegevens Azure Machine Learning Studio (klassiek) berekeningen en uitvoer. Om het scenario voor Voorspellings niveau te illustreren, gebruiken we de [volwassene](https://archive.ics.uci.edu/ml/datasets/Adult) gegevensset voor het maken van een studio-experiment (klassiek) en evalueren we de prestaties van een logistiek regressie model met twee klassen, een veelgebruikte binaire classificatie.
 
 ### <a name="creating-the-experiment"></a>Het experiment maken
-Voeg de volgende modules toe aan uw werk ruimte in de klassieke versie van Azure Machine Learning Studio:
+Voeg de volgende modules toe aan uw werk ruimte in Azure Machine Learning Studio (klassiek):
 
 * Gegevensset opbrengst binaire classificatie volwassene
 * [Logistiek regressie met twee klassen][two-class-logistic-regression]
@@ -105,7 +105,7 @@ Nadat u het experiment hebt uitgevoerd, kunt u op de uitvoer poort van de module
 
 Nauw keurigheid is gewoon het aandeel van de juiste geclassificeerde instanties. Doorgaans is dit de eerste metriek die u bekijkt bij het evalueren van een classificatie. Wanneer de test gegevens echter niet in balans zijn (waarbij de meeste instanties tot een van de klassen behoren), of als u geïnteresseerd bent in de prestaties van een van de klassen, legt de nauw keurigheid niet echt de effectiviteit van een classificatie vast. In het scenario voor de classificatie van het inkomens niveau wordt ervan uitgegaan dat u op sommige gegevens test, waarbij 99% van de instanties de mensen vertegenwoordigen die minder dan of gelijk zijn aan 50.000 per jaar. Het is mogelijk om een 0,99 nauw keurigheid te krijgen door de klasse ' < = 50.000 ' voor alle exemplaren te voors pellen. De classificatie in dit geval lijkt een goede taak te zijn, maar in werkelijkheid is het niet mogelijk om een van de hoge inkomsten van personen (de 1%) te classificeren. correct.
 
-Daarom is het handig om extra metrische gegevens te berekenen waarmee meer specifieke aspecten van de evaluatie worden vastgelegd. Voordat u de details van deze metrische gegevens overgaat, is het belang rijk dat u de Verwar ring-matrix van een binaire classificatie-evaluatie begrijpt. De klassen labels in de Trainingsset kunnen alleen worden uitgevoerd op twee mogelijke waarden, die meestal positief of negatief zijn. De positieve en negatieve instanties die een classificatie voorspeld op de juiste wijze worden gedicteerd, worden respectievelijk True-positieven (TP) en True Negative (TN) genoemd. Op dezelfde manier worden de onjuist geclassificeerde instanties ' fout-positieven (FP) en ' onwaar ' negatieven (FN) genoemd. De Verwar ring matrix is een tabel waarin het aantal exemplaren wordt weer gegeven dat onder elk van deze vier categorieën valt. De klassieke versie van Azure Machine Learning Studio bepaalt automatisch welke van de twee klassen in de gegevensset de positieve klasse is. Als de klassen labels Booleaans of geheel getal zijn, krijgen de labels ' True ' en ' 1 ' instanties de positieve klasse toegewezen. Als de labels teken reeksen zijn, zoals met de gegevensset baten, worden de labels alfabetisch gesorteerd en wordt het eerste niveau als een negatieve klasse gekozen, terwijl het tweede niveau de positieve klasse is.
+Daarom is het handig om extra metrische gegevens te berekenen waarmee meer specifieke aspecten van de evaluatie worden vastgelegd. Voordat u de details van deze metrische gegevens overgaat, is het belang rijk dat u de Verwar ring-matrix van een binaire classificatie-evaluatie begrijpt. De klassen labels in de Trainingsset kunnen alleen worden uitgevoerd op twee mogelijke waarden, die meestal positief of negatief zijn. De positieve en negatieve instanties die een classificatie voorspeld op de juiste wijze worden gedicteerd, worden respectievelijk True-positieven (TP) en True Negative (TN) genoemd. Op dezelfde manier worden de onjuist geclassificeerde instanties ' fout-positieven (FP) en ' onwaar ' negatieven (FN) genoemd. De Verwar ring matrix is een tabel waarin het aantal exemplaren wordt weer gegeven dat onder elk van deze vier categorieën valt. Azure Machine Learning Studio (klassiek) beslist automatisch welke van de twee klassen in de gegevensset de positieve klasse zijn. Als de klassen labels Booleaans of geheel getal zijn, krijgen de labels ' True ' en ' 1 ' instanties de positieve klasse toegewezen. Als de labels teken reeksen zijn, zoals met de gegevensset baten, worden de labels alfabetisch gesorteerd en wordt het eerste niveau als een negatieve klasse gekozen, terwijl het tweede niveau de positieve klasse is.
 
 ![Verwar ring matrix voor binaire classificatie](./media/evaluate-model-performance/6a.png)
 
@@ -136,7 +136,7 @@ Afbeelding 9. Kruis validatie resultaten van een binaire classificatie.
 In dit experiment gebruiken we de populaire [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") -gegevensset, die exemplaren van drie verschillende typen (klassen) van de Iris plant bevat. Er zijn vier onderdeel waarden (SEPA-lengte/breedte en grootte/breedte van het bloem) voor elk exemplaar. In de vorige experimenten hebben we de modellen getraind en getest met dezelfde gegevens sets. Hier gebruiken we de module voor het [splitsen van gegevens][split] om twee subsets van de gegevens te maken, te trainen op het eerste en de score en evalueren voor de tweede. De Iris-gegevensset is openbaar beschikbaar op de [icb machine learning-opslag plaats](https://archive.ics.uci.edu/ml/index.html)en kan worden gedownload met behulp van een module voor [gegevens import][import-data] .
 
 ### <a name="creating-the-experiment"></a>Het experiment maken
-Voeg de volgende modules toe aan uw werk ruimte in de klassieke versie van Azure Machine Learning Studio:
+Voeg de volgende modules toe aan uw werk ruimte in Azure Machine Learning Studio (klassiek):
 
 * [Gegevens importeren][import-data]
 * [Multi Class-besluitvormings forest][multiclass-decision-forest]

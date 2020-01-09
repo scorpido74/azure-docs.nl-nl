@@ -3,19 +3,19 @@ title: Wat is inkt herkenning? -API voor inkt herkenning
 titleSuffix: Azure Cognitive Services
 description: Integreer de inkt herkenning in uw toepassingen, websites, hulpprogram ma's en andere oplossingen zodat inkt lijn gegevens kunnen worden geïdentificeerd en gebruikt als invoer.
 services: cognitive-services
-author: erhopf
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: ink-recognizer
 ms.topic: overview
-ms.date: 07/24/2019
-ms.author: erhopf
-ms.openlocfilehash: c90d656539a2ed64b416dc9b8e7e11e205b98ee6
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.date: 12/17/2019
+ms.author: aahi
+ms.openlocfilehash: 2d00a489af35f5960aaeb1dda7add5337d48d57d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478381"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75448156"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Wat is de Ink Recognizer-API?
 
@@ -28,11 +28,11 @@ De cognitieve service voor inkt herkenning biedt een REST API in de Cloud voor h
 
 Met de API voor inkt herkenning kunt u eenvoudig handgeschreven inhoud in uw toepassingen herkennen. 
 
-|Functie  |Description  |
+|Functie  |Beschrijving  |
 |---------|---------|
 | Handschriftherkenning | Handgeschreven inhoud in 63 kern [talen en land instellingen](language-support.md)herkennen. | 
 | Indelings herkenning | Structuur informatie over de inhoud van de digitale inkt ophalen. De inhoud opsplitsen in schrijf gebieden, alinea's, lijnen, woorden, lijsten met opsommings tekens. Uw toepassingen kunnen vervolgens de lay-outinformatie gebruiken om aanvullende functies, zoals automatische lijst opmaak en uitlijning van shapes, te maken. |
-| Vorm herkenning | De meest gebruikte geometrische [vormen](concepts/send-ink-data.md#shapes-recognized-by-the-ink-recognizer-api) herkennen bij het maken van notities. |
+| Vorm herkenning | De meest gebruikte [geometrische vormen](concepts/send-ink-data.md#shapes-recognized-by-the-ink-recognizer-api) herkennen bij het maken van notities. |
 | Gecombineerde vormen en tekst herkenning | U kunt herkennen welke inkt streken bij vormen of handgeschreven inhoud horen en ze afzonderlijk classificeren.|
 
 ## <a name="workflow"></a>Werkstroom
@@ -52,7 +52,7 @@ Nadat u zich hebt aangemeld:
 Voer een Snelstartgids uit in de volgende talen om te beginnen met het maken van aanroepen naar de API voor inkt herkenning.
 * [C#](quickstarts/csharp.md)
 * [Java](quickstarts/java.md)
-* [JavaScript](quickstarts/csharp.md)
+* [JavaScript](quickstarts/javascript.md)
 
 Bekijk de volgende voorbeeld toepassingen op GitHub voor meer informatie over de werking van de API voor inkt herkenning in een digitale hand schrift-app:
 * [C# en Universal Windows Platform (UWP)](https://go.microsoft.com/fwlink/?linkid=2089803)  

@@ -8,12 +8,12 @@ ms.topic: include
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/18/2019
-ms.openlocfilehash: 08833f869a7838fe893b8e941072078f89033c2b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e3cb977871af2e6cd7a59dd48505090dd29e8a76
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517850"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75541801"
 ---
 1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com).
 
@@ -38,5 +38,5 @@ ms.locfileid: "73517850"
 
 - **Gegevens importeren** of **gegevens modules exporteren**
         
-    Als u in het experiment een module **gegevens importeren** of **gegevens exporteren** hebt, moet u de gegevens bron bijwerken om een Data Store te gebruiken. Zie [toegang tot gegevens in azure Storage-services](../articles/machine-learning/service/how-to-access-data.md)voor meer informatie over het maken van een gegevens opslag. De gegevens van uw Cloud-opslag account zijn toegevoegd aan de opmerkingen van de module **gegevens importeren** of **gegevens exporteren** voor uw gemak. 
+    Als u in het experiment een module **gegevens importeren** of **gegevens exporteren** hebt, moet u de gegevens bron bijwerken om een Data Store te gebruiken. Zie [toegang tot gegevens in azure Storage-services](../articles/machine-learning/how-to-access-data.md)voor meer informatie over het maken van een gegevens opslag. De gegevens van uw Cloud-opslag account zijn toegevoegd aan de opmerkingen van de module **gegevens importeren** of **gegevens exporteren** voor uw gemak. 
       

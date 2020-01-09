@@ -1,24 +1,16 @@
 ---
-title: Voor beelden van Azure Service Fabric reliable Services-toepassings manifest
+title: Voor beelden van betrouw bare Services app-manifesten
 description: Meer informatie over het configureren van de toepassings-en service manifest instellingen voor een betrouw bare Services Service Fabric toepassing.
-services: service-fabric
-documentationcenter: na
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: pepogors
-ms.openlocfilehash: 9cc79610b6dc9f9d2869a41e0b483168087368cc
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: d5a03629a134a0b2c7d6ee95dba9ea3ad06e99ba
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013228"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75609822"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Voorbeelden van toepassings- en servicemanifesten voor betrouwbare services
 Hier volgen enkele voor beelden van de toepassings-en service manifesten voor een Service Fabric toepassing met een ASP.NET Core web-front-end en een stateful back-end. Het doel van deze voor beelden is om te laten zien welke instellingen beschikbaar zijn en hoe u deze kunt gebruiken. Deze toepassings-en service manifesten zijn gebaseerd op de [service Fabric .net Quick](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) start-manifesten.

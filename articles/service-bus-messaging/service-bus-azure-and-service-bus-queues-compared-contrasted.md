@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 09/04/2019
 ms.author: aschhab
-ms.openlocfilehash: a1e75416db34514425436bc3ceae9f27b156b557
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8379b7f48e7e494370f3fdba81676d34821d7b6f
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792688"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563374"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Opslag wachtrijen en Service Bus wacht rijen-vergeleken en daarentegen
 In dit artikel worden de verschillen en overeenkomsten geanalyseerd tussen de twee typen wacht rijen die momenteel worden aangeboden door Microsoft Azure: opslag wachtrijen en Service Bus wacht rijen. U kunt deze informatie gebruiken om de verschillende technologieën te vergelijken en tegen elkaar af te zetten zodat u een weloverwogen beslissing kunt nemen en de oplossing kiest die beste voldoet aan uw behoeften.
@@ -55,11 +55,11 @@ Als oplossings architect/ontwikkelaar **kunt u overwegen service bus-wacht rijen
 * U hebt een vereiste voor het leveren van een op rollen gebaseerd toegangs model voor de wacht rijen en andere rechten/machtigingen voor afzenders en ontvangers. Raadpleeg voor meer informatie de volgende artikelen:
     - [Verifiëren met beheerde identiteiten](service-bus-managed-service-identity.md)
     - [Verifiëren vanuit een toepassing](authenticate-application.md)
-* De grootte van de wachtrij kan niet groter zijn dan 80 GB.
+* Uw wachtrijgrootte niet groter wordt dan 80 GB.
 * U wilt het AMQP 1,0-standaard berichten protocol gebruiken. Zie [Service Bus overzicht van AMQP](service-bus-amqp-overview.md)voor meer informatie over AMQP.
 * U kunt een mogelijke migratie van punt-naar-punt-communicatie op basis van een wachtrij voors telling tot een uitwisselings patroon van berichten dat een naadloze integratie van extra ontvangers (abonnees) mogelijk maakt, waarbij elk een onafhankelijke kopie van ofwel een of alle wordt ontvangen. berichten die naar de wachtrij worden verzonden. De laatste verwijst naar de functie voor publiceren/abonneren, die standaard wordt verschaft door Service Bus.
 * Uw Messa ging-oplossing moet ondersteuning bieden voor de ' at-ly-Once '-leverings garantie zonder dat u de extra infrastructuur onderdelen hoeft te bouwen.
-* U wilt batches van berichten kunnen publiceren en gebruiken.
+* U graag de mogelijkheid wilt hebben om batches van berichten te publiceren en gebruiken.
 
 ## <a name="comparing-storage-queues-and-service-bus-queues"></a>Opslag wachtrijen en wacht rijen voor Service Bus vergelijken
 De tabellen in de volgende secties bieden een logische groepering van wachtrij functies en u kunt in één oogopslag de beschik bare mogelijkheden in zowel Azure Storage wachtrijen als Service Bus wacht rijen vergelijken.
@@ -107,8 +107,8 @@ In deze sectie worden de geavanceerde mogelijkheden van opslag wachtrijen en Ser
 | Ondersteuning voor verontreinigd bericht |**Ja** |**Ja** |
 | In-place update |**Ja** |**Ja** |
 | Transactie logboek aan de server zijde |**Ja** |**Nee** |
-| Metrische opslag gegevens |**Ja**<br/><br/>**Minuut metrieken**: voorziet in realtime metrische gegevens voor beschik BAARHEID, TPS, API-oproep aantallen, fout aantallen en meer, in realtime (geaggregeerd per minuut en gerapporteerd binnen een paar minuten vanaf wat zojuist in de productie is opgetreden. Zie [informatie over Opslaganalyse metrische](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics)gegevens voor meer informatie. |**Ja**<br/><br/>(bulk query's door het aanroepen van [GetQueues](/dotnet/api/microsoft.servicebus.namespacemanager.getqueues#Microsoft_ServiceBus_NamespaceManager_GetQueues)) |
-| Statusbeheer |**Nee** |**Ja**<br/><br/>[Micro soft. ServiceBus. Messa ging. EntityStatus. Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [micro soft. ServiceBus. Messa ging. EntityStatus. disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [micro soft. ServiceBus. Messa ging. EntityStatus. SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [ Micro soft. ServiceBus. Messa ging. EntityStatus. ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
+| Metrische gegevens over opslag |**Ja**<br/><br/>**Minuut metrieken**: voorziet in realtime metrische gegevens voor beschik BAARHEID, TPS, API-oproep aantallen, fout aantallen en meer, in realtime (geaggregeerd per minuut en gerapporteerd binnen een paar minuten vanaf wat zojuist in de productie is opgetreden. Zie [informatie over Opslaganalyse metrische](/rest/api/storageservices/fileservices/About-Storage-Analytics-Metrics)gegevens voor meer informatie. |**Ja**<br/><br/>(bulk query's door het aanroepen van [GetQueues](/dotnet/api/microsoft.servicebus.namespacemanager.getqueues#Microsoft_ServiceBus_NamespaceManager_GetQueues)) |
+| Statusbeheer |**Nee** |**Ja**<br/><br/>[Micro soft. ServiceBus. Messa ging. EntityStatus. Active](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [micro soft. ServiceBus. Messa ging. EntityStatus. disabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [micro soft. ServiceBus. Messa ging. EntityStatus. SendDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus), [micro soft. ServiceBus. Messa ging. EntityStatus. ReceiveDisabled](/dotnet/api/microsoft.servicebus.messaging.entitystatus) |
 | Bericht automatisch door sturen |**Nee** |**Ja** |
 | Wachtrij functie leegmaken |**Ja** |**Nee** |
 | Bericht groepen |**Nee** |**Ja**<br/><br/>(door het gebruik van Messa ging-sessies) |
@@ -121,7 +121,7 @@ In deze sectie worden de geavanceerde mogelijkheden van opslag wachtrijen en Ser
 * Beide Queuing-technologieën zorgen ervoor dat een bericht op een later tijdstip kan worden gepland.
 * Door de wachtrij automatisch door te sturen, kunnen duizenden wacht rijen hun berichten automatisch door sturen naar een enkele wachtrij, waaruit de ontvangende toepassing het bericht verbruikt. U kunt dit mechanisme gebruiken voor de beveiliging, controle stroom en het isoleren van opslag tussen elke uitgever van berichten.
 * Opslag wachtrijen bieden ondersteuning voor het bijwerken van bericht inhoud. U kunt deze functie gebruiken voor het persistent maken van status informatie en incrementele voortgangs updates in het bericht, zodat deze kunnen worden verwerkt vanaf het laatste bekende controle punt, in plaats van helemaal vanaf het begin te beginnen. Met Service Bus wachtrijen kunt u hetzelfde scenario inschakelen via het gebruik van bericht sessies. Met sessies kunt u de verwerkings status van de toepassing opslaan en ophalen (met behulp van [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) en [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState)).
-* [Onbestelbare](service-bus-dead-letter-queues.md)berichten, die alleen door service bus wachtrijen worden ondersteund, kunnen nuttig zijn voor het isoleren van een bericht dat niet kan worden verwerkt door de ontvangende toepassing of wanneer berichten hun bestemming niet kunnen bereiken vanwege een verlopen time-to-Live (TTL) eigenschap. De TTL-waarde geeft aan hoe lang een bericht in de wachtrij blijft. Met Service Bus wordt het bericht verplaatst naar een speciale wachtrij met de naam $DeadLetterQueue wanneer de TTL-periode verloopt.
+* [Onbestelbare](service-bus-dead-letter-queues.md)berichten, die alleen door service bus wacht rijen worden ondersteund, kunnen nuttig zijn voor het isoleren van een bericht dat niet kan worden verwerkt door de ontvangende toepassing of wanneer berichten hun bestemming niet kunnen bereiken vanwege een verlopen time-to-Live (TTL)-eigenschap. De TTL-waarde geeft aan hoe lang een bericht in de wachtrij blijft. Met Service Bus wordt het bericht verplaatst naar een speciale wachtrij met de naam $DeadLetterQueue wanneer de TTL-periode verloopt.
 * Als u ' Poison ' berichten in de opslag wachtrijen wilt vinden, controleert de toepassing de eigenschap [DequeueCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage.dequeuecount) van het bericht wanneer een bericht wordt overgezet. Als **DequeueCount** groter is dan een bepaalde drempel waarde, verplaatst de toepassing het bericht naar een door de toepassing gedefinieerde wachtrij voor onbestelbare berichten.
 * Met opslag wachtrijen kunt u een gedetailleerd logboek ophalen van alle trans acties die worden uitgevoerd op de wachtrij, evenals geaggregeerde metrische gegevens. Beide opties zijn handig voor het opsporen van fouten en het gebruik van de opslag wachtrijen in uw toepassing. Ze zijn ook handig voor het afstemmen van de prestaties van uw toepassing en het verminderen van de kosten voor het gebruik van wacht rijen.
 * Met het concept van ' bericht sessies ' die door Service Bus worden ondersteund, kunnen berichten die deel uitmaken van een bepaalde logische groep worden gekoppeld aan een bepaalde ontvanger, die op zijn beurt een sessie lijkt te maken op de affiniteit tussen berichten en hun respectieve ontvangers. U kunt deze geavanceerde functionaliteit in Service Bus inschakelen door de eigenschap [SessionID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId) van een bericht in te stellen. Ontvangers kunnen vervolgens Luis teren naar een specifieke sessie-ID en berichten ontvangen die de opgegeven sessie-id delen.
@@ -134,8 +134,8 @@ In deze sectie worden opslag wachtrijen en Service Bus wachtrijen vergeleken met
 | --- | --- | --- |
 | Maximale wachtrij grootte |**500 TB**<br/><br/>(beperkt tot een [capaciteit van één opslag account](../storage/common/storage-introduction.md#queue-storage)) |**1 GB tot 80 GB**<br/><br/>(gedefinieerd bij het maken van een wachtrij en het [inschakelen van partitionering](service-bus-partitioning.md) – Zie de sectie ' aanvullende informatie ') |
 | Maximale bericht grootte |**64 kB**<br/><br/>(48 KB wanneer **Base64** -code ring wordt gebruikt)<br/><br/>Azure ondersteunt grote berichten door wacht rijen en blobs te combi neren. op die wijze kunt u Maxi maal 200 GB voor één item in de wachtrij plaatsen. |**256 KB** of **1 MB**<br/><br/>(inclusief header en hoofd tekst, maximale header grootte: 64 KB).<br/><br/>Is afhankelijk [van de servicelaag](service-bus-premium-messaging.md). |
-| Maximale bericht-TTL |**Oneindig** (vanaf API-versie 2017-07-27) |**Time span. Max** |
-| Maximum aantal wacht rijen |**Onbeperkt** |**10.000**<br/><br/>(per service naam ruimte) |
+| Maximale bericht-TTL |**Oneindig** (vanaf API-versie 2017-07-27) |**TimeSpan.Max** |
+| Maximum aantal wacht rijen |**Onbeperkt** |**10,000**<br/><br/>(per service naam ruimte) |
 | Maximum aantal gelijktijdige clients |**Onbeperkt** |**Onbeperkt**<br/><br/>(100 gelijktijdige verbindings limiet geldt alleen voor communicatie op basis van TCP-protocol) |
 
 ### <a name="additional-information"></a>Aanvullende informatie
@@ -175,8 +175,8 @@ In deze sectie worden de verificatie-en autorisatie functies beschreven die word
 
 | Vergelijkings criteria | Opslag wachtrijen | Service Bus-wachtrijen |
 | --- | --- | --- |
-| Verificatie |**Symmetrische sleutel** |**Symmetrische sleutel** |
-| Beveiligingsmodel |Gedelegeerde toegang via SAS-tokens. |GEBASEERD |
+| Authentication |**Symmetrische sleutel** |**Symmetrische sleutel** |
+| Beveiligingsmodel |Gedelegeerde toegang via SAS-tokens. |SAS |
 | Federatie van ID-provider |**Nee** |**Ja** |
 
 ### <a name="additional-information"></a>Aanvullende informatie
@@ -186,7 +186,7 @@ In deze sectie worden de verificatie-en autorisatie functies beschreven die word
 ## <a name="conclusion"></a>Conclusie
 Door een beter inzicht te krijgen in de twee technologieën, kunt u een meer weloverwogen beslissing nemen over de wachtrij technologie die moet worden gebruikt en wanneer. De beslissing over het gebruik van opslag wachtrijen of Service Bus wacht rijen is duidelijk afhankelijk van een aantal factoren. Deze factoren kunnen afhankelijk zijn van de individuele behoeften van uw toepassing en de bijbehorende architectuur. Als uw toepassing al gebruikmaakt van de kern mogelijkheden van Microsoft Azure, kunt u de voor keur geven aan opslag wachtrijen, met name als u basis communicatie en Messa ging tussen services nodig hebt of als u wacht rijen nodig hebt die groter kunnen zijn dan 80 GB.
 
-Omdat Service Bus-wacht rijen een aantal geavanceerde functies bieden, zoals sessies, trans acties, duplicaten detectie, automatische onbestelbare berichten en duurzame functies voor publiceren/abonneren, zijn ze mogelijk een voorkeurs keuze als u een hybride maakt toepassing of als uw toepassing anders deze functies nodig heeft.
+Omdat Service Bus wacht rijen een aantal geavanceerde functies bieden, zoals sessies, trans acties, duplicaten detectie, automatische onbestelbare berichten en duurzame functies voor publiceren/abonneren, kunnen ze een voorkeurs keuze zijn als u een hybride toepassing bouwt of als uw toepassing anders deze functies vereist.
 
 ## <a name="next-steps"></a>Volgende stappen
 De volgende artikelen bevatten meer richt lijnen en informatie over het gebruik van opslag wachtrijen of Service Bus wacht rijen.
@@ -194,7 +194,7 @@ De volgende artikelen bevatten meer richt lijnen en informatie over het gebruik 
 * [Aan de slag met Service Bus-wachtrijen](service-bus-dotnet-get-started-with-queues.md)
 * [De Queue Storage-service gebruiken](../storage/queues/storage-dotnet-how-to-use-queues.md)
 * [Aanbevolen procedures voor prestatie verbeteringen met behulp van Service Bus Brokered Messaging](service-bus-performance-improvements.md)
-* [Inleiding tot wacht rijen en onderwerpen in Azure Service Bus (blog bericht)](https://www.code-magazine.com/article.aspx?quickid=1112041)
+* [Inleiding tot wacht rijen en onderwerpen in Azure Service Bus (blog bericht)](https://www.serverless360.com/blog/azure-service-bus-queues-vs-topics)
 * [De hand leiding voor ontwikkel aars voor het Service Bus](http://www.cloudcasts.net/devguide/Default.aspx?id=11030)
 * [De Queuing-service in azure gebruiken](https://www.developerfusion.com/article/120197/using-the-queuing-service-in-windows-azure/)
 

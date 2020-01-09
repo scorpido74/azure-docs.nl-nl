@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/04/2018
-ms.openlocfilehash: 5a3b6852563955bfac940073bdda7d0afa02e77f
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 82ad197a1f64040dfb91aa73d7a6dfd4210f99a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900251"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75365271"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Tekst gegevens parseren in Azure Monitor logboeken
 Sommige logboek gegevens die worden verzameld door Azure Monitor, bevatten meerdere stukjes informatie in één eigenschap. Het parseren van deze gegevens in meerdere eigenschappen maakt het gemakkelijker om in query's te gebruiken. Een veelvoorkomend voor beeld is een [aangepast logboek](../../log-analytics/log-analytics-data-sources-custom-logs.md) dat een volledige logboek vermelding met meerdere waarden in één eigenschap verzamelt. Door afzonderlijke eigenschappen voor de verschillende waarden te maken, kunt u zoeken en samen voegen.
@@ -138,8 +138,8 @@ MyCustomCSVLog_CL
 Als uw gegevens zijn ingedeeld in een bekende structuur, kunt u een van de functies in de [Kusto-query taal](/azure/kusto/query/) gebruiken voor het parseren van vooraf gedefinieerde structuren:
 
 - [JSON](/azure/kusto/query/parsejsonfunction)
-- [INDELING](/azure/kusto/query/parse-xmlfunction)
-- [IPv6](/azure/kusto/query/parse-ipv4function)
+- [XML](/azure/kusto/query/parse-xmlfunction)
+- [IPv4](/azure/kusto/query/parse-ipv4function)
 - [URL](/azure/kusto/query/parseurlfunction)
 - [URL-query](/azure/kusto/query/parseurlqueryfunction)
 - [Bestandspad](/azure/kusto/query/parsepathfunction)
@@ -189,4 +189,4 @@ MyCustomCSVLog
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [logboek query's](log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen.
+* Meer informatie over [query's bijgehouden](log-query-overview.md) om de gegevens die worden verzameld van gegevensbronnen en oplossingen te analyseren.

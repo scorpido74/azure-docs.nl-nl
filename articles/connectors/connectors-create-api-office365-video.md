@@ -1,20 +1,20 @@
 ---
 title: Verbinding maken met Office 365-video
-description: Video's beheren met Office 365 video REST Api's en Azure Logic Apps
+description: Taken en werk stromen automatiseren waarmee u Video's in Office 365 video beheert met behulp van Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 05/18/2016
 tags: connectors
-ms.openlocfilehash: bf3c7c4faac3fcd4dd0c3f368fbe18a224ed591b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 8ac6b7b411e7f42dd076c5b16e7b500a819c617f
+ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74789478"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75665782"
 ---
-# <a name="get-started-with-the-office365-video-connector"></a>Aan de slag met de Office365-video connector
+# <a name="manage-videos-in-office365-video-by-using-azure-logic-apps"></a>Video's in Office365 video beheren met Azure Logic Apps
 
 Maak verbinding met Office 365-video om informatie over een Office 365-video op te halen, een lijst met Video's en meer te verkrijgen. Met Office 365 video kunt u het volgende doen:
 
@@ -26,7 +26,7 @@ U kunt bijvoorbeeld de Bing Search-connector gebruiken om te zoeken naar Office 
 
 U kunt nu aan de slag met het maken van een logische app, Zie [een logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-a-connection-to-office365-video-connector"></a>Een verbinding met de Office365-video connector maken
+## <a name="connect-to-office365-video"></a>Verbinding maken met Office365-video
 
 Wanneer u deze connector toevoegt aan uw Logic apps, moet u zich aanmelden bij uw Office 365-Video account en logische apps toestaan om verbinding te maken met uw account.
 

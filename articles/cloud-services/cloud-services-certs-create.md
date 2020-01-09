@@ -3,22 +3,22 @@ title: Cloud Services-en beheer certificaten | Microsoft Docs
 description: Meer informatie over het maken en gebruiken van certificaten met Microsoft Azure
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: 3c84c6832856986a45be7d275fb94a6c5fc066f0
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 783343dd8877bdf18e783494960c3052c293cc7c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359196"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75361344"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Overzicht van certificaten voor Azure Cloud Services
 Certificaten worden gebruikt in azure voor Cloud Services ([service certificaten](#what-are-service-certificates)) en voor de verificatie met behulp van de beheer-API ([beheer certificaten](#what-are-management-certificates)). In dit onderwerp vindt u een algemeen overzicht van beide certificaat typen, hoe u deze kunt [maken](#create) en implementeren in Azure.
 
-Certificaten die worden gebruikt in azure, zijn x. 509 v3-certificaten en kunnen worden ondertekend door een ander vertrouwd certificaat of ze kunnen zelf worden ondertekend. Een zelfondertekend certificaat is ondertekend door een eigen Maker, daarom wordt het niet standaard vertrouwd. De meeste browsers kunnen dit probleem negeren. Gebruik zelfondertekende certificaten alleen bij het ontwikkelen en testen van uw Cloud Services. 
+Certificaten die worden gebruikt in azure, zijn x. 509 v3-certificaten en kunnen worden ondertekend door een ander vertrouwd certificaat of ze kunnen zelf worden ondertekend. Een zelfondertekend certificaat is ondertekend door een eigen Maker, daarom wordt het niet standaard vertrouwd. In de meeste browsers kan dit probleem worden genegeerd. Gebruik zelfondertekende certificaten alleen bij het ontwikkelen en testen van uw Cloud Services. 
 
 Certificaten die worden gebruikt door Azure kunnen een persoonlijke of een open bare sleutel bevatten. Certificaten hebben een vinger afdruk waarmee ze op een ondubbelzinnige manier kunnen worden geïdentificeerd. Deze vinger afdruk wordt in het Azure- [configuratie bestand](cloud-services-configure-ssl-certificate-portal.md) gebruikt om te bepalen welk certificaat een Cloud service moet gebruiken. 
 
@@ -26,17 +26,17 @@ Certificaten die worden gebruikt door Azure kunnen een persoonlijke of een open 
 >Azure Cloud Services accepteert geen versleuteld AES256-SHA256-certificaat.
 
 ## <a name="what-are-service-certificates"></a>Wat zijn service certificaten?
-Service certificaten zijn gekoppeld aan Cloud Services en bieden beveiligde communicatie van en naar de service. Als u bijvoorbeeld een webrole hebt geïmplementeerd, wilt u een certificaat opgeven dat een weer gegeven HTTPS-eind punt kan verifiëren. Service certificaten die zijn gedefinieerd in uw service definitie, worden automatisch geïmplementeerd op de virtuele machine waarop een exemplaar van uw rol wordt uitgevoerd. 
+Servicecertificaten zijn gekoppeld aan cloudservices en bieden beveiligde communicatie van en naar de service. Als u bijvoorbeeld een webrole hebt geïmplementeerd, wilt u een certificaat opgeven dat een weer gegeven HTTPS-eind punt kan verifiëren. Service certificaten die zijn gedefinieerd in uw service definitie, worden automatisch geïmplementeerd op de virtuele machine waarop een exemplaar van uw rol wordt uitgevoerd. 
 
-U kunt Service certificaten uploaden naar Azure met behulp van de Azure Portal of door gebruik te maken van het klassieke implementatie model. Service certificaten zijn gekoppeld aan een specifieke Cloud service. Ze worden toegewezen aan een implementatie in het service definitie bestand.
+U kunt servicecertificaten uploaden naar Azure met behulp van Azure Portal of het klassieke implementatiemodel. Servicecertificaten zijn gekoppeld aan een specifieke cloudservice. De certificaten worden in het servicedefinitiebestand toegewezen aan een implementatie.
 
-Service certificaten kunnen afzonderlijk van uw services worden beheerd en kunnen door verschillende personen worden beheerd. Een ontwikkelaar kan bijvoorbeeld een service pakket uploaden dat verwijst naar een certificaat dat een IT-beheerder eerder naar Azure heeft geüpload. Een IT-beheerder kan dat certificaat beheren en vernieuwen (de configuratie van de service wijzigen) zonder dat er een nieuw service pakket hoeft te worden geüpload. Het bijwerken zonder een nieuw service pakket is mogelijk omdat de logische naam, de archief naam en de locatie van het certificaat zich in het service definitie bestand bevindt en terwijl de vinger afdruk van het certificaat in het service configuratie bestand is opgegeven. Als u het certificaat wilt bijwerken, is het alleen nodig om een nieuw certificaat te uploaden en de vingerafdruk waarde in het service configuratie bestand te wijzigen.
+Service certificaten kunnen afzonderlijk van uw services worden beheerd en kunnen door verschillende personen worden beheerd. Een ontwikkelaar kan bijvoorbeeld een service pakket uploaden dat verwijst naar een certificaat dat een IT-beheerder eerder naar Azure heeft geüpload. Een IT-beheerder kan dat certificaat beheren en vernieuwen (de configuratie van de service wijzigen) zonder dat er een nieuw servicepakket hoeft te worden geüpload. Het bijwerken zonder een nieuw service pakket is mogelijk omdat de logische naam, de archief naam en de locatie van het certificaat zich in het service definitie bestand bevindt en terwijl de vinger afdruk van het certificaat in het service configuratie bestand is opgegeven. Als u het certificaat wilt bijwerken, hoeft u alleen een nieuw certificaat te uploaden en de waarde voor de vingerafdruk te wijzigen in het serviceconfiguratiebestand.
 
 >[!Note]
 >Het artikel [Veelgestelde vragen over Cloud Services-configuratie en beheer](cloud-services-configuration-and-management-faq.md) bevat een aantal nuttige informatie over certificaten.
 
 ## <a name="what-are-management-certificates"></a>Wat zijn beheer certificaten?
-Met beheer certificaten kunt u verifiëren met het klassieke implementatie model. Veel Program ma's en hulpprogram ma's (zoals Visual Studio of de Azure SDK) gebruiken deze certificaten om de configuratie en implementatie van verschillende Azure-Services te automatiseren. Deze zijn niet echt gerelateerd aan Cloud Services. 
+Met beheercertificaten kunt u het klassieke implementatiemodel gebruiken voor verificatie. Voor veel programma's en hulpprogramma's (zoals Visual Studio of de Azure SDK) worden deze certificaten gebruikt om de configuratie en implementatie van verschillende Azure-services te automatiseren. Deze zijn niet echt gerelateerd aan Cloud Services. 
 
 > [!WARNING]
 > Wees voorzichtig! Met deze typen certificaten kunnen gebruikers die met hen worden geverifieerd, het abonnement beheren waaraan ze zijn gekoppeld. 
@@ -58,9 +58,9 @@ U kunt elk hulp programma dat beschikbaar is voor het maken van een zelfondertek
     > U kunt geen SSL-certificaat verkrijgen voor het cloudapp.net (of voor een Azure-gerelateerd) domein. de onderwerpnaam van het certificaat moet overeenkomen met de aangepaste domein naam die wordt gebruikt voor toegang tot uw toepassing. Bijvoorbeeld **contoso.net**, niet **contoso.cloudapp.net**.
 
 * Mini maal 2048 bits versleuteling.
-* **Alleen service certificaat**: Het certificaat aan de client zijde moet zich in het *persoonlijke* certificaat archief bevinden.
+* **Alleen service certificaat**: certificaat aan client zijde moet zich in het *persoonlijke* certificaat archief bevinden.
 
-Er zijn twee eenvoudige manieren om een certificaat te maken in Windows, met `makecert.exe` het hulp programma of IIS.
+Er zijn twee eenvoudige manieren om een certificaat te maken in Windows, met het hulp programma `makecert.exe` of IIS.
 
 ### <a name="makecertexe"></a>Makecert.exe
 Dit hulp programma is afgeschaft en wordt hier niet meer gedocumenteerd. Zie [dit MSDN-artikel](/windows/desktop/SecCrypto/makecert)voor meer informatie.
@@ -92,4 +92,7 @@ In [Dit](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual
 [Upload uw service certificaat naar de Azure Portal](cloud-services-configure-ssl-certificate-portal.md).
 
 Upload een [API-certificaat voor beheer](../azure-api-management-certs.md) naar het Azure Portal.
+
+
+
 

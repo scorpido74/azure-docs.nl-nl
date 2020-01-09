@@ -1,17 +1,17 @@
 ---
-title: Overzicht van Azure Active Directory verificatie via SMB voor Azure Files-Azure Storage
+title: Overzicht-Azure AD Domain Services autorisatie-Azure Files
 description: Azure Files ondersteunt verificatie op basis van identiteiten via SMB (Server Message Block) via Azure Active Directory (Azure AD) Domain Services. Uw virtuele Windows-machines (Vm's) die lid zijn van een domein, kunnen vervolgens toegang krijgen tot Azure-bestands shares met Azure AD-referenties.
 author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 08/07/2019
 ms.author: rogarana
-ms.openlocfilehash: 6cdee8f1ad59962822e9e0394547c395c13e4bd8
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 93db726a2cac14109e542972ce851943b290962f
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69611774"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460297"
 ---
 # <a name="overview-of-azure-files-azure-active-directory-domain-service-azure-ad-ds-authentication-support-for-smb-access"></a>Overzicht van de verificatie ondersteuning voor Azure Files Azure Active Directory Domain Service (Azure AD DS) voor SMB-toegang
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -32,7 +32,7 @@ Het is handig om enkele belang rijke termen te begrijpen met betrekking tot Azur
 
 -   **Kerberos-verificatie**
 
-    Kerberos is een authenticatie protocol dat wordt gebruikt om de identiteit van een gebruiker of host te controleren. Zie [overzicht van Kerberos-verificatie](https://docs.microsoft.com/windows-server/security/kerberos/kerberos-authentication-overview)voor meer informatie over Kerberos.
+    Kerberos is een authenticatieprotocol dat wordt gebruikt om de identiteit van een gebruiker of host te controleren. Zie [overzicht van Kerberos-verificatie](https://docs.microsoft.com/windows-server/security/kerberos/kerberos-authentication-overview)voor meer informatie over Kerberos.
 
 -  **SMB-protocol (Server Message Block)**  
     SMB is een standaard protocol voor het delen van netwerk bestanden. SMB is ook bekend als common Internet File System of CIFS. Zie het [overzicht van micro soft SMB-protocol en CIFS-protocol](https://docs.microsoft.com/windows/desktop/FileIO/microsoft-smb-protocol-and-cifs-protocol-overview)voor meer informatie over SMB.
@@ -49,7 +49,7 @@ Azure AD domain service-verificatie voor Azure Files biedt verschillende voor de
 -   **Back-ups maken van Acl's samen met uw gegevens**  
     U kunt Azure Files gebruiken om een back-up te maken van uw bestaande on-premises bestands shares. Azure Files behoudt uw Acl's samen met uw gegevens wanneer u een back-up maakt van een bestands share naar Azure Files over SMB.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Het werkt als volgt
 Azure Files gebruikt Azure AD Domain Services om Kerberos-verificatie te ondersteunen met Azure AD-referenties van Vm's die lid zijn van een domein. Voordat u Azure AD met Azure Files kunt gebruiken, moet u eerst Azure AD Domain Services inschakelen en lid worden van de virtuele machines van waaruit u toegang wilt krijgen tot bestands gegevens. De VM van het domein moet zich in hetzelfde virtuele netwerk (VNET) bevinden als Azure AD Domain Services. 
 
 Wanneer een identiteit die is gekoppeld aan een toepassing die op een virtuele machine wordt uitgevoerd, probeert toegang te krijgen tot gegevens in Azure Files, wordt de aanvraag verzonden naar Azure AD Domain Services om de identiteit te verifiëren. Als de verificatie is geslaagd, retourneert Azure AD Domain Services een Kerberos-token. De toepassing verzendt een aanvraag die het Kerberos-token bevat, en Azure Files gebruikt dat token om de aanvraag te autoriseren. Azure Files ontvangt alleen het token en de Azure AD-referenties blijven niet behouden.

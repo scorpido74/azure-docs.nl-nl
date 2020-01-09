@@ -7,12 +7,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 10/04/2019
 ms.author: victorh
-ms.openlocfilehash: 0ac37378797c59d79af5d026200b68154836c5ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 323f01e08007260d4fb6d651b20937c5d5d5e357
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585399"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645086"
 ---
 # <a name="custom-rules-for-web-application-firewall-v2-on-azure-application-gateway"></a>Aangepaste regels voor Web Application firewall v2 op Azure-toepassing gateway
 
@@ -29,7 +29,7 @@ Verschillende overeenkomende voor waarden binnen dezelfde regel worden altijd sa
 Als u **of** twee verschillende voor waarden wilt, moeten de twee voor waarden in verschillende regels zijn. Bijvoorbeeld verkeer blok keren van een specifiek IP-adres of verkeer blok keren als ze een specifieke browser gebruiken.
 
 > [!NOTE]
-> Het maximum aantal aangepaste WAF-regels is 100. Zie [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-subscription-service-limits.md#application-gateway-limits)voor meer informatie over Application Gateway limieten.
+> Het maximum aantal aangepaste WAF-regels is 100. Zie [Azure-abonnement en service limieten, quota's en beperkingen](../../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits)voor meer informatie over Application Gateway limieten.
 
 Reguliere expressies worden ook ondersteund in aangepaste regels, net als in de CRS-rules. Voor voor beelden van deze, zie voor beelden 3 en 5 in [aangepaste Web Application firewall regels maken en gebruiken](create-custom-waf-rules.md).
 
@@ -133,7 +133,7 @@ Dit moet een van de volgende Opera tors zijn:
 - GreaterThanOrEqual
 - BeginsWith
 - EndsWith
-- reguliere
+- Reguliere
 - Geoovereenkomst (preview-versie)
 
 ### <a name="negate-condition-optional"></a>Voor waarde voor negatie [Optioneel]
@@ -145,7 +145,7 @@ De huidige voor waarde wordt genegeerd.
 Een lijst met teken reeksen met namen van trans formaties voordat de overeenkomst wordt geprobeerd. Dit kunnen de volgende trans formaties zijn:
 
 - Kleine letters
-- Interne
+- Trim
 - UrlDecode
 - UrlEncode 
 - RemoveNulls
@@ -200,7 +200,7 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 | BS | Bahama's|
 | BT | Bhutan|
 | BW | Botswana|
-| BY | Belarus|
+| BY | Wit-Rusland|
 | BZ | Belize|
 | CA | Canada|
 | CD | Congo (DRC)|
@@ -238,7 +238,7 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 | GR | Griekenland|
 | GT | Guatemala|
 | GY | Guyana|
-| HK | Hong Kong SAR|
+| HK | Hongkong SAR|
 | HN | Honduras|
 | HR | Kroatië|
 | HT | Haiti|
@@ -290,7 +290,7 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 | MX | Mexico|
 | MY | Maleisië|
 | MZ | Mozambique|
-| N.v.t. | Namibië|
+| N.V.T. | Namibië|
 | NE | Niger|
 | NG | Nigeria|
 | NI | Nicaragua|
@@ -302,7 +302,7 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 | OM | Oman|
 | PA | Panama|
 | PE | Peru|
-| PH | Filipijnen|
+| PH | Filippijnen|
 | PK | Pakistan|
 | PL | Polen|
 | PR | Puerto Rico|
@@ -326,7 +326,7 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 | SR | Suriname|
 | SS | Zuid-Soedan|
 | SV | El Salvador|
-| SY | Arabische Republiek Syrië|
+| SY | Syrië|
 | SZ | Swaziland|
 | TC | Turks- en Caicoseilanden|
 | TG | Togo|
@@ -337,7 +337,7 @@ Als u de operator geomatch gebruikt, kunnen de selecters een van de volgende lan
 | TW | Taiwan|
 | TZ | Tanzania, Verenigde Republiek|
 | UA | Oekraïne|
-| UG | Oeganda|
+| UG | Uganda|
 | VS | Verenigde Staten|
 | UY | Uruguay|
 | UZ | Oezbekistan|

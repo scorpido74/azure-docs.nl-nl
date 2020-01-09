@@ -7,14 +7,14 @@ ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
+manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 4a583f77aac036028fd75d3c05af805031f08ebd
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 56d9a9a629e64430c97cf392ee4381e1ad7ca906
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480565"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433035"
 ---
 # <a name="clustering-point-data"></a>Clustering Point-gegevens
 
@@ -88,12 +88,12 @@ Zie het overzicht van de <a href='https://codepen.io/azuremaps/pen/VRJrgO/'>gewo
 
 Wanneer er muis gebeurtenissen optreden op een laag die geclusterde gegevens punten bevat, wordt het geclusterde gegevens punt geretourneerd naar de gebeurtenis als een functie object van een geojson-punt. Deze punt functie heeft de volgende eigenschappen:
 
-| Naam van eigenschap | Type | Beschrijving |
-|---------------|------|-------------|
-| cluster | booleaans | Hiermee wordt aangegeven of de functie een cluster vertegenwoordigt. |
-| cluster_id | tekenreeks | Een unieke ID voor het cluster die kan worden gebruikt met de methoden data source `getClusterExpansionZoom`, `getClusterChildren`en `getClusterLeaves`. |
-| point_count | getal | Het aantal punten dat het cluster bevat. |
-| point_count_abbreviated | tekenreeks | Een teken reeks die de `point_count` waarde verkort als deze lang is. (4.000 wordt bijvoorbeeld 4.000) |
+| Naam van eigenschap             | Type    | Beschrijving   |
+|---------------------------|---------|---------------|
+| `cluster`                 | booleaans | Hiermee wordt aangegeven of de functie een cluster vertegenwoordigt. |
+| `cluster_id`              | string  | Een unieke ID voor het cluster die kan worden gebruikt met de methoden data source `getClusterExpansionZoom`, `getClusterChildren`en `getClusterLeaves`. |
+| `point_count`             | getal  | Het aantal punten dat het cluster bevat.  |
+| `point_count_abbreviated` | string  | Een teken reeks die de `point_count` waarde verkort als deze lang is. (4.000 wordt bijvoorbeeld 4.000)  |
 
 In dit voor beeld wordt een Bubble laag gebruikt waarmee cluster punten worden gerenderd en een Click-gebeurtenis wordt toegevoegd waarmee de toewijzing wordt geactiveerd, berekend en ingezoomd op het volgende zoom niveau waarbij het cluster wordt gesplitst met behulp van de `getClusterExpansionZoom` methode van de `DataSource` klasse en de `cluster_id` eigenschap van het geklikte geclusterde gegevens punt. 
 

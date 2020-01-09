@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric CLI-sfctl-instellingen telemetrie | Microsoft Docs
-description: Hierin worden de telemetrie-opdrachten voor de Service Fabric CLI sfctl-instellingen beschreven.
-services: service-fabric
-documentationcenter: na
+title: Azure Service Fabric CLI-sfctl-instellingen telemetrie
+description: Meer informatie over sfctl, de Azure Service Fabric-opdracht regel interface. Bevat een lijst met opdrachten voor het configureren van sfctl-telemetrie.
 author: jeffj6123
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: cli
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 9/17/2019
 ms.author: jejarry
-ms.openlocfilehash: d926c71ae8fd9e196b86c14c7fb96cc65b587b65
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: cdb4a44c8f19b31c164e2ba3ea5e16b7a09e743e
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900981"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645273"
 ---
 # <a name="sfctl-settings-telemetry"></a>sfctl settings telemetry
 Telemetrie-instellingen configureren die lokaal zijn voor dit exemplaar van sfctl.
@@ -46,7 +37,7 @@ Telemetrie in-of uitschakelen.
 
 |Argument|Beschrijving|
 | --- | --- |
-| --fouten opsporen | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
+| --debug | Verg root logboek registratie uitgebreid om alle logboeken voor fout opsporing weer te geven. |
 | --Help-h | Dit Help-bericht weer geven en afsluiten. |
 | --uitvoer-o | Uitvoer indeling.  Toegestane waarden\: JSON, jsonc, Table, TSV.  Standaard\: JSON. |
 | --query | JMESPath-query reeks. Zie http\://jmespath.org/voor meer informatie en voor beelden. |

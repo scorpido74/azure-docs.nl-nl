@@ -1,23 +1,18 @@
 ---
-title: Point-in-time-snapshot voor Azure-appconfiguratie | Microsoft Docs
+title: Azure-app configuratie punt-in-time moment opname
 description: Een overzicht van hoe point-in-time-snapshot werkt in Azure-appconfiguratie
 services: azure-app-configuration
-documentationcenter: ''
 author: yegu-ms
-manager: balans
-editor: ''
-ms.service: azure-app-configuration
-ms.devlang: na
-ms.topic: overview
-ms.workload: tbd
-ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: fdbe4846700c690261dbc734063f4420478666a8
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.service: azure-app-configuration
+ms.topic: conceptual
+ms.date: 02/24/2019
+ms.openlocfilehash: 4db52ce1897aa5a2b809cb7044b9764baffd0767
+ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185203"
+ms.lasthandoff: 12/26/2019
+ms.locfileid: "75495257"
 ---
 # <a name="point-in-time-snapshot"></a>Momentopname van een bepaald tijdstip
 
@@ -27,8 +22,10 @@ Azure-app configuratie houdt records van de precieze tijden bij het maken van ee
 
 Als u de vorige sleutel waarden wilt ophalen, geeft u een tijd op waarop de sleutel waarden moment opname in de HTTP-header van een REST API aanroep. Bijvoorbeeld:
 
-        GET /kv HTTP/1.1
-        Accept-Datetime: Sat, 1 Jan 2019 02:10:00 GMT
+```rest
+GET /kv HTTP/1.1
+Accept-Datetime: Sat, 1 Jan 2019 02:10:00 GMT
+```
 
 Op dit moment behouden app-configuratie zeven dagen aan wijzigings geschiedenis.
 

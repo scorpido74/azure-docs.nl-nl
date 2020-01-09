@@ -1,24 +1,15 @@
 ---
-title: Reverse proxy instellen in azure Service Fabric | Microsoft Docs
-description: Meer informatie over het instellen en configureren van de reverse proxy van Service Fabric.
-services: service-fabric
-documentationcenter: na
-author: jimacoMS2
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
+title: Reverse proxy voor Azure Service Fabric instellen
+description: Meer informatie over het instellen en configureren van de reverse proxy service voor een Azure Service Fabric-toepassing.
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 11/13/2018
 ms.author: pepogors
-ms.openlocfilehash: a80eb1ba341a1b15da7ad59203a1d25284d03fd0
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 131440036896d323cbf821d7a220328456e1db36
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933901"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645443"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Een omgekeerde proxy instellen en configureren in azure Service Fabric
 Omgekeerde proxy is een optionele Azure Service Fabric-service die micro services die worden uitgevoerd in een Service Fabric cluster kan detecteren en communiceren met andere services met http-eind punten. Zie [reverse proxy in Azure service Fabric](service-fabric-reverseproxy.md)voor meer informatie. In dit artikel wordt beschreven hoe u een omgekeerde proxy in uw cluster instelt en configureert. 
@@ -50,7 +41,7 @@ Voor een bestaand cluster kunt u de Resource Manager-sjabloon voor de resource g
 
 Nadat u een resource manager-sjabloon hebt, kunt u de reverse proxy inschakelen met de volgende stappen:
 
-1. Definieer een poort voor de omgekeerde proxy in het [gedeelte para meters](../azure-resource-manager/resource-group-authoring-templates.md) van de sjabloon.
+1. Definieer een poort voor de omgekeerde proxy in het [gedeelte para meters](../azure-resource-manager/templates/template-syntax.md) van de sjabloon.
 
     ```json
     "SFReverseProxyPort": {
@@ -61,7 +52,7 @@ Nadat u een resource manager-sjabloon hebt, kunt u de reverse proxy inschakelen 
         }
     },
     ```
-2. Geef de poort voor elk van de NodeType-objecten op in de [sectie resource type](../azure-resource-manager/resource-group-authoring-templates.md) [**micro soft. ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) .
+2. Geef de poort voor elk van de NodeType-objecten op in de [sectie resource type](../azure-resource-manager/templates/template-syntax.md) [**micro soft. ServiceFabric/clusters**](https://docs.microsoft.com/azure/templates/microsoft.servicefabric/clusters) .
 
     De poort wordt aangeduid met de parameter naam reverseProxyEndpointPort.
 

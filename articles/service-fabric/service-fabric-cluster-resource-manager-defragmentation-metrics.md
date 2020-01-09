@@ -1,73 +1,64 @@
 ---
-title: Defragmentatie van metrische gegevens in Azure Service Fabric | Microsoft Docs
-description: Een overzicht van de defragmentatie gebruiken of als een strategie voor metrische gegevens in Service Fabric verpakken
-services: service-fabric
-documentationcenter: .net
+title: Het defragmenteren van metrische gegevens in azure Service Fabric
+description: Meer informatie over het gebruik van defragmentatie, of verpakken, als een strategie voor metrische gegevens in Service Fabric. Deze techniek is handig voor zeer grote Services.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: e5ebfae5-c8f7-4d6c-9173-3e22a9730552
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 6e041e41372c72c6792c1fb4a1fbdc3bbe475b21
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bba459be4408f4a4bc438bb33b0570a91e84f2cd
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60844391"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75563357"
 ---
-# <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentatie van metrische gegevens en belasting in Service Fabric
-Service Fabric Cluster Resource Manager van standaardstrategie voor het beheren van metrische gegevens laden in het cluster bestaat uit het verdelen van de belasting. Ervoor te zorgen dat knooppunten gelijkmatig worden benut voorkomt hot en cold punten die tot conflicten zowel verspilde resources leiden. Distributie van workloads in het cluster is ook de veiligste in termen van functionerende fouten omdat Hiermee zorgt u ervoor dat er een fout niet u een groot percentage van een bepaalde workload neemt. 
+# <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Gegevens defragmenteren en laden in Service Fabric
+De standaard strategie voor het Service Fabric cluster resource manager voor het beheren van metrische gegevens voor belasting in het cluster is om de belasting te verdelen. Ervoor zorgen dat knoop punten gelijkmatig worden gebruikt voor komen van warme en koude vlekken die leiden tot zowel de verwerkings capaciteit als de hoeveelheid verspilde resources. Het distribueren van werk belastingen in het cluster is ook de veiligste op het gebied van verouderde storingen omdat het ervoor zorgt dat een storing een groot percentage van een bepaalde werk belasting niet in beslag neemt. 
 
-De Service Fabric Cluster Resource Manager biedt ondersteuning voor een andere strategie voor het beheren van de werkbelasting, dit is de defragmentatie. Defragmentatie betekent dat in plaats van voor de distributie van het gebruik van metrische gegevens over het cluster, het is samengevoegd. Consolidatie is slechts een omkering van de standaard strategie – in plaats van het minimaliseren van de gemiddelde standaardafwijking van metrische load balancing, met Cluster Resource Manager probeert te verhogen.
+De Service Fabric cluster resource manager ondersteunt een andere strategie voor het beheren van de belasting, die wordt gedefragmenteerd. Defragmenteren betekent dat in plaats van het gebruik van een metriek over het cluster te verdelen, het wordt geconsolideerd. Consolidatie is slechts een inversie van de standaard taakverdelings strategie. in plaats van de gemiddelde standaard afwijking van metrische belasting te minimaliseren, probeert cluster resource manager deze te verg Roten.
 
-## <a name="when-to-use-defragmentation"></a>Wanneer u Defragmentatie
-Distribueren van laden in het cluster, verbruikt enkele van de bronnen op elk knooppunt. Sommige werkbelastingen maken van services die uitzonderlijk groot zijn en de meeste of alle van een knooppunt in beslag nemen. In dergelijke gevallen is het mogelijk dat wanneer er grote workloads die worden gemaakt die er is onvoldoende ruimte op een willekeurig knooppunt om ze te voeren. Grote werkbelastingen worden niet een probleem in Service Fabric; in dergelijke gevallen met Cluster Resource Manager bepaalt dat het moet opnieuw indelen van het cluster om ruimte voor deze grote workload te maken. In de tussentijd heeft die werkbelasting echter moet worden gewacht voordat in het cluster worden gepland.
+## <a name="when-to-use-defragmentation"></a>Wanneer gebruikt u Defragmentatie?
+Bij het distribueren van de belasting in het cluster worden een aantal resources op elk knoop punt gebruikt. Sommige werk belastingen maken services die uitzonderlijk groot zijn en de meeste of alle knoop punten gebruiken. In dergelijke gevallen is het mogelijk dat wanneer er grote werk belastingen worden gemaakt, er op geen enkel knoop punt voldoende ruimte is om deze uit te voeren. Grote werk belastingen zijn geen probleem in Service Fabric. in deze gevallen bepaalt het cluster resource manager of het cluster opnieuw moet worden ingedeeld om ruimte te maken voor deze grote werk belasting. In de tussen tijd moet de werk belasting echter wachten om te worden gepland in het cluster.
 
-Als er veel services en de status om te verplaatsen, kan klikt u vervolgens het lang duren voor de grote workload in het cluster worden geplaatst. Dit is waarschijnlijk als andere werkbelastingen in het cluster ook groot zijn en dus het langer duren voordat opnieuw indelen. De Service Fabric-team gemeten maken tijden in simulaties van dit scenario. Er is aangetroffen dat grote services maken veel langer duurden zodra clustergebruik boven tussen 30 en 50 is %. Voor het afhandelen van dit scenario hebben we defragmentatie geïntroduceerd als een strategie voor taakverdeling. Wij vinden dat voor grote workloads, met name die waar Aanmaaktijd belangrijk is, defragmentatie echt geholpen bij deze nieuwe werkbelastingen ophalen gepland in het cluster.
+Als er veel services en status zijn om door te gaan, kan het lang duren voordat de grote werk belasting in het cluster is geplaatst. Dit is waarschijnlijker als andere workloads in het cluster ook groot zijn, waardoor het langer duurt om het opnieuw in te delen. De gemeten duur van het Service Fabric team in simulaties van dit scenario. We hebben geconstateerd dat het maken van grote Services veel langer duurde zodra het gebruik van clusters hoger is dan 30% en 50%. Om dit scenario te verwerken, hebben we defragmentatie geïntroduceerd als een evenwichtige strategie. We hebben vastgesteld dat voor grote werk belastingen, in het bijzonder wanneer de aanmaak tijd belang rijk was, de defragmentatie werkelijk heeft bijgedragen dat nieuwe workloads in het cluster worden gepland.
 
-U kunt metrische gegevens defragmentatie als u wilt dat de Cluster Resource Manager om proactief te verkleinen van de belasting van de services in minder knooppunten kunt configureren. Dit zorgt ervoor dat er bijna altijd ruimte voor grote services is zonder opnieuw indelen van het cluster. Omdat niet hoeft te ordenen van het cluster, kunt snel grote werkbelastingen maken.
+U kunt metrische gegevens voor defragmentatie configureren zodat de cluster resource manager proactief de belasting van de services in minder knoop punten kan proberen te verbreden. Dit helpt ervoor te zorgen dat er bijna altijd ruimte is voor grote Services zonder het cluster opnieuw te organiseren. U hoeft het cluster niet opnieuw in te delen, zodat u snel grote werk belastingen kunt maken.
 
-De meeste mensen hoeft niet defragmenteren. Services zijn meestal worden kleine, dus het is niet moeilijk te vinden van ruimte voor deze in het cluster. Bij het opnieuw rangschikken mogelijk is, gaat snel, opnieuw omdat de meeste services klein zijn en snel en parallel kunnen worden verplaatst. Echter, als u grote services en ze snel gemaakt vervolgens de defragmentatie-strategie nodig is voor u. We bespreken de nadelen van het gebruik van defragmentatie vervolgens. 
+De meeste mensen hebben geen defragmentatie nodig. Services zijn meestal klein, dus het is niet moeilijk om ruimte te vinden in het cluster. Als er een andere organisatie kan worden uitgevoerd, wordt deze snel weer, omdat de meeste services klein zijn en snel en parallel kunnen worden verplaatst. Als u echter over grote Services beschikt en deze snel moet worden gemaakt, is de strategie voor defragmentatie voor u. We bespreken de compromissen van het gebruik van defragmentatie volgende. 
 
-## <a name="defragmentation-tradeoffs"></a>Defragmentatie compromissen
-Defragmentatie kunt impactfulness van fouten, verhogen omdat meer services worden uitgevoerd op knooppunten die fungeren als. Defragmentatie kunt ook kosten, vergroten, omdat de resources in het cluster moeten worden ondergebracht in reserve, wachten op het maken van grote werkbelastingen.
+## <a name="defragmentation-tradeoffs"></a>Compromissen van defragmentatie
+Met defragmentatie kunnen impactfulness fouten toenemen, omdat er meer services worden uitgevoerd op knoop punten die niet werken. Defragmentatie kan ook kosten verhogen, omdat resources in het cluster moeten worden bewaard in de reserve ring, zodat grote werk belastingen kunnen worden gemaakt.
 
-Het volgende diagram biedt een visuele representatie van twee clusters, één dat wordt gedefragmenteerd en één die niet. 
+Het volgende diagram geeft een visuele weer gave van twee clusters, een die is gedefragmenteerd en een die niet. 
 
 <center>
 
-![Vergelijken met gelijke taakverdeling en defragmenteren van Clusters][Image1]
+![het vergelijken van evenwichtige en gedefragmenteerde clusters][Image1]
 </center>
 
-In het geval is met gelijke taakverdeling, kunt u het aantal verplaatsingen van het type die noodzakelijk zijn om een van de grootste serviceobjecten plaatsen. In het cluster gedefragmenteerde, kan de grote werkbelasting worden geplaatst op knooppunten vier of vijf zonder te wachten op andere services te verplaatsen.
+In het gebalanceerde geval moet u rekening houden met het aantal verplaatsingen dat nodig zou zijn om een van de grootste service objecten te plaatsen. In het gedefragmenteerde cluster kan de grote werk belasting op knoop punten vier of vijf worden geplaatst zonder te hoeven wachten tot andere services zijn verplaatst.
 
-## <a name="defragmentation-pros-and-cons"></a>Defragmentatie voor- en nadelen
-Dus wat zijn de conceptuele compromissen? Hier volgt een snelle tabel dingen om na te denken over:
+## <a name="defragmentation-pros-and-cons"></a>Voor delen en nadelen van defragmentatie
+Wat zijn de andere conceptuele afwegingen? Hieronder vindt u een tabel met tips voor het volgende:
 
-| Defragmentatie-professionals | Defragmentatie nadelen |
+| Defragmentatie-professionals | Nadelen van defragmentatie |
 | --- | --- |
-| Hiermee kunnen sneller worden gemaakt van grote services |Concentraten op minder knooppunten, verhogen conflicten laden |
-| Hiermee lagere verplaatsing van gegevens tijdens het maken van |Fouten kunnen invloed hebben op meer services en ervoor zorgen dat meer verloop |
-| Uitgebreide beschrijving van vereisten en het vrijmaken van ruimte |Complexere algehele Resource Management-configuratie |
+| Maakt het sneller om grote services te maken |Concentreert de belasting op minder knoop punten, waardoor de conflicten worden verkleind |
+| Maakt lagere gegevens verplaatsing mogelijk tijdens het maken |Storingen kunnen van invloed zijn op meer services en leiden tot meer verloop |
+| Biedt uitgebreide beschrijving van vereisten en het vrijmaken van ruimte |Complexere algemene configuratie van bron beheer |
 
-U kunt combineren gedefragmenteerde en normale metrische gegevens in hetzelfde cluster. Cluster Resource Manager probeert de defragmentatie metrische gegevens zo veel mogelijk tijdens het spreiden van de andere consolideren. De resultaten van een combinatie van defragmentatie en strategieën voor taakverdeling, is afhankelijk van verschillende factoren, waaronder:
-  - het aantal metrische gegevens vergeleken met het aantal defragmentatie metrische gegevens over taakverdeling
-  - Elke service die u gebruikt of beide typen metrische gegevens 
-  - de metrische waarden
-  - huidige metrische gegevens worden geladen
+U kunt gefragmenteerde en normale metrische gegevens in hetzelfde cluster combi neren. De cluster resource manager probeert de gegevens over de defragmentatie zo veel mogelijk samen te voegen tijdens het uitspreiden van de andere. De resultaten van het combi neren van defragmentatie en onderverdelings strategieën zijn afhankelijk van verschillende factoren, waaronder:
+  - het aantal metrische gegevens over de verdeling versus het aantal metrische gegevens over de defragmentatie
+  - Of een service beide soorten metrische gegevens gebruikt 
+  - het metrische gewicht
+  - huidige metrische belasting
   
-Experimenten is vereist om te bepalen van de exacte configuratie die nodig zijn. Uitgebreide meting van uw workloads wordt aangeraden voordat u Defragmentatie metrische gegevens in de productieomgeving inschakelen. Dit is vooral van toepassing wanneer een combinatie van defragmentatie en met gelijke taakverdeling metrische gegevens binnen dezelfde service. 
+Experimenteren is vereist om de exacte configuratie te bepalen die nodig is. We raden u aan om uw workloads grondig te meten voordat u metrische gegevens voor defragmentatie in productie inschakelt. Dit geldt met name bij het combi neren van defragmentatie en evenwichtige metrische gegevens binnen dezelfde service. 
 
-## <a name="configuring-defragmentation-metrics"></a>Configureren van defragmentatie metrische gegevens
-Configureren van defragmentatie metrische gegevens is een algemene beslissing in het cluster en afzonderlijke metrische gegevens voor defragmentatie kan worden geselecteerd. De volgende configuratie-codefragmenten laten zien hoe het configureren van metrische gegevens voor defragmentatie. In dit geval worden 'Metric1' is geconfigureerd als een metriek defragmentatie terwijl 'Metric2' blijft normaal gesproken worden verdeeld. 
+## <a name="configuring-defragmentation-metrics"></a>Metrische gegevens voor defragmentatie configureren
+Het configureren van metrische gegevens voor defragmentatie is een wereld wijd besluit in het cluster en afzonderlijke meet waarden kunnen worden geselecteerd voor defragmentatie. De volgende configuratie fragmenten laten zien hoe u metrische gegevens voor defragmentatie kunt configureren. In dit geval wordt "Metric1" geconfigureerd als een gegevensverdelings metriek, terwijl "Metric2" normaal gesp roken blijft. 
 
-ClusterManifest.xml:
+ClusterManifest. XML:
 
 ```xml
 <Section Name="DefragmentationMetrics">
@@ -76,7 +67,7 @@ ClusterManifest.xml:
 </Section>
 ```
 
-via ClusterConfig.json voor implementaties met zelfstandige of Template.json voor Azure die worden gehost clusters:
+via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters:
 
 ```json
 "fabricSettings": [
@@ -98,7 +89,7 @@ via ClusterConfig.json voor implementaties met zelfstandige of Template.json voo
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Cluster Resource Manager beschikt over man-opties voor het beschrijven van het cluster. Meer informatie over deze, Bekijk dit artikel op [met een beschrijving van een Service Fabric-cluster](service-fabric-cluster-resource-manager-cluster-description.md)
-- Metrische gegevens zijn hoe gebruiks- en capaciteit in het cluster worden beheerd door de Service Fabric-Cluster Resource Manager. Bekijk voor meer informatie over metrische gegevens en hoe u ze configureert, [in dit artikel](service-fabric-cluster-resource-manager-metrics.md)
+- Cluster resource manager heeft man-opties voor het beschrijven van het cluster. Lees dit artikel over [het beschrijven van een service Fabric cluster](service-fabric-cluster-resource-manager-cluster-description.md) voor meer informatie.
+- Metrische gegevens zijn de manier waarop de Service Fabric cluster resource manager het verbruik en de capaciteit in het cluster beheert. Raadpleeg [dit artikel](service-fabric-cluster-resource-manager-metrics.md) voor meer informatie over metrische gegevens en hoe u deze kunt configureren.
 
 [Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png

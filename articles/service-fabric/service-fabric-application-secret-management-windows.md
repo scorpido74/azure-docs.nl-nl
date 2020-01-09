@@ -1,58 +1,49 @@
 ---
-title: Instellen van een versleutelingscertificaat en geheimen in Azure Service Fabric Windows-clusters versleutelen | Microsoft Docs
-description: Informatie over het instellen van een versleutelingscertificaat en geheimen op Windows-clusters te coderen.
-services: service-fabric
-documentationcenter: .net
+title: Een versleutelings certificaat instellen op Windows-clusters
+description: Meer informatie over het instellen van een versleutelings certificaat en het versleutelen van geheimen op Windows-clusters.
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 94a67e45-7094-4fbd-9c88-51f4fc3c523a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/04/2019
 ms.author: vturecek
-ms.openlocfilehash: 3d324c54d10433520a73f2bd836c26bd79f1b3bb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d9413a37be221adc375836719dc1f467a5571fa0
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60615258"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610179"
 ---
-# <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Instellen van een versleutelingscertificaat en geheimen op Windows-clusters te coderen
-In dit artikel laat zien hoe een versleutelingscertificaat instellen en deze gebruiken voor het versleutelen van geheimen op Windows-clusters. Zie voor Linux-clusters, [instellen van een versleutelingscertificaat en geheimen op Linux-clusters te versleutelen.][secret-management-linux-specific-link]
+# <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-windows-clusters"></a>Een versleutelings certificaat instellen en geheimen op Windows-clusters versleutelen
+In dit artikel wordt beschreven hoe u een versleutelings certificaat instelt en hoe u deze gebruikt om geheimen te versleutelen op Windows-clusters. Voor Linux-clusters raadpleegt [u een versleutelings certificaat instellen en geheimen op Linux-clusters versleutelen.][secret-management-linux-specific-link]
 
-[Azure Key Vault] [ key-vault-get-started] wordt hier gebruikt als een locatie voor de veilige opslag voor certificaten en als een manier om certificaten zijn geïnstalleerd op de Service Fabric-clusters in Azure. Als u niet naar Azure implementeert, hoeft u geen Key Vault gebruikt om geheimen in Service Fabric-toepassingen te beheren. Echter, *met behulp van* geheimen in een toepassing is cloud platform-agnostische om toe te staan van toepassingen op een cluster die overal gehost kunnen worden geïmplementeerd. 
+[Azure Key Vault][key-vault-get-started] wordt hier gebruikt als een veilige opslag locatie voor certificaten en als manier om certificaten te verkrijgen die zijn geïnstalleerd op service Fabric clusters in Azure. Als u niet in azure implementeert, hoeft u Key Vault niet te gebruiken om geheimen in Service Fabric toepassingen te beheren. Het *gebruik* van geheimen in een toepassing is echter het Cloud platform-neutraal zodat toepassingen kunnen worden geïmplementeerd in een cluster dat overal wordt gehost. 
 
-## <a name="obtain-a-data-encipherment-certificate"></a>Een versleutelingscertificaat gegevens ophalen
-Een versleutelingscertificaat gegevens wordt alleen gebruikt voor versleuteling en ontsleuteling van [parameters] [ parameters-link] in van een service Settings.xml en [omgevingsvariabelen] [ environment-variables-link] in ServiceManifest.xml van een service. Het is niet wordt gebruikt voor verificatie of het ondertekenen van gecodeerde tekst. Het certificaat moet voldoen aan de volgende vereisten:
+## <a name="obtain-a-data-encipherment-certificate"></a>Een certificaat voor gegevens codering verkrijgen
+Een gegevens versleuteling certificaat wordt uitsluitend gebruikt voor het versleutelen en ontsleutelen van [para meters][parameters-link] in de instellingen van een service. XML en [omgevings variabelen][environment-variables-link] in de ServiceManifest. XML van een service. Het wordt niet gebruikt voor verificatie of ondertekening van versleutelings tekst. Het certificaat moet voldoen aan de volgende vereisten:
 
 * Het certificaat moet een persoonlijke sleutel bevatten.
-* Het certificaat moet worden gemaakt voor sleuteluitwisseling, exporteerbaar naar een Personal Information Exchange (PFX)-bestand.
-* De certificaat-sleutelgebruik gegevenscodering (10) moet bevatten en mag geen Server-verificatie of clientverificatie. 
+* Het certificaat moet worden gemaakt voor sleutel uitwisseling, exporteerbaar naar een pfx-bestand (Personal Information Exchange).
+* Het gebruik van de certificaat sleutel moet gegevens codering (10) bevatten en mag geen server verificatie of client verificatie omvatten. 
   
-  Bijvoorbeeld, bij het maken van een zelfondertekend certificaat met behulp van PowerShell, de `KeyUsage` markering moet worden ingesteld op `DataEncipherment`:
+  Wanneer u bijvoorbeeld een zelfondertekend certificaat maakt met behulp van Power shell, moet de `KeyUsage` vlag worden ingesteld op `DataEncipherment`:
   
   ```powershell
   New-SelfSignedCertificate -Type DocumentEncryptionCert -KeyUsage DataEncipherment -Subject mydataenciphermentcert -Provider 'Microsoft Enhanced Cryptographic Provider v1.0'
   ```
 
-## <a name="install-the-certificate-in-your-cluster"></a>Het certificaat installeren in uw cluster
-Dit certificaat moet worden geïnstalleerd op elk knooppunt in het cluster. Zie [over het maken van een cluster met behulp van Azure Resource Manager] [ service-fabric-cluster-creation-via-arm] voor installatie-instructies. 
+## <a name="install-the-certificate-in-your-cluster"></a>Het certificaat in uw cluster installeren
+Dit certificaat moet worden geïnstalleerd op elk knoop punt in het cluster. Zie [een cluster maken met Azure Resource Manager][service-fabric-cluster-creation-via-arm] voor installatie-instructies. 
 
-## <a name="encrypt-application-secrets"></a>Toepassingsgeheimen versleutelen
-De volgende PowerShell-opdracht wordt gebruikt voor het versleutelen van een geheim. Met deze opdracht alleen de waarde; gecodeerd Dit gebeurt **niet** Meld u aan de gecodeerde tekst. U moet de dezelfde versleutelingscertificaat dat is geïnstalleerd in uw cluster voor het produceren van gecodeerde tekst voor de geheime waarden gebruiken:
+## <a name="encrypt-application-secrets"></a>Toepassings geheimen versleutelen
+De volgende Power shell-opdracht wordt gebruikt voor het versleutelen van een geheim. Met deze opdracht wordt alleen de waarde versleuteld. de versleutelings tekst wordt **niet** ondertekend. U moet hetzelfde versleuteling certificaat gebruiken dat is geïnstalleerd in uw cluster voor het maken van gecodeerde tekst voor geheime waarden:
 
 ```powershell
 Invoke-ServiceFabricEncryptText -CertStore -CertThumbprint "<thumbprint>" -Text "mysecret" -StoreLocation CurrentUser -StoreName My
 ```
 
-De resulterende tekenreeks met base 64-codering bevat zowel de geheime gecodeerde tekst, evenals informatie over het certificaat dat is gebruikt om ze te versleutelen.
+De resulterende teken reeks met base-64 bevat zowel de geheime code ring als informatie over het certificaat dat is gebruikt om het te versleutelen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het [versleutelde geheimen in een toepassing opgeven.][secret-management-specify-encrypted-secrets-link]
+Meer informatie over het [opgeven van versleutelde geheimen in een toepassing.][secret-management-specify-encrypted-secrets-link]
 
 <!-- Links -->
 [key-vault-get-started]:../key-vault/key-vault-overview.md

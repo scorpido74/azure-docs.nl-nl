@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/23/2019
-ms.openlocfilehash: 8f6959eb6f9d17a368e7df7b95ecc511d0396f87
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 6771cdb206920c8e3b746e28573de1742543b4c8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621441"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75646690"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Uitgaand netwerk verkeer voor Azure HDInsight-clusters configureren met behulp van Firewall
 
@@ -35,7 +35,7 @@ Een samen vatting van de stappen voor het vergren delen van uitgaand verkeer van
 1. Maak een firewall.
 1. Toepassings regels toevoegen aan de firewall
 1. Voeg netwerk regels toe aan de firewall.
-1. Een routerings tabel maken.
+1. Maak een routeringstabel.
 
 ### <a name="create-new-subnet"></a>Nieuw subnet maken
 
@@ -61,23 +61,23 @@ Maak een toepassings regel verzameling waarmee het cluster belang rijke communic
 
     | Eigenschap|  Waarde|
     |---|---|
-    |Naam| FwAppRule|
+    |Name| FwAppRule|
     |Prioriteit|200|
-    |Bewerking|Toestaan|
+    |Actie|Toestaan|
 
     **Sectie FQDN-Tags**
 
-    | Naam | Bron adres | FQDN-label | Opmerkingen |
+    | Name | Bron adres | FQDN-label | Opmerkingen |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate en HDInsight | Vereist voor HDI-Services |
 
     **Sectie FQDN-doel items**
 
-    | Naam | Bron adressen | Protocol: poort | Doel-FQDN-naam | Opmerkingen |
+    | Name | Bron adressen | Protocol: poort | Doel-FQDN-naam | Opmerkingen |
     | --- | --- | --- | --- | --- |
-    | Rule_2 | * | https: 443 | login.windows.net | Windows-aanmeldings activiteit toestaan |
-    | Rule_3 | * | https: 443 | login.microsoftonline.com | Windows-aanmeldings activiteit toestaan |
-    | Rule_4 | * | https: 443, http: 80 | storage_account_name. blob. core. Windows. net | Vervang `storage_account_name` door de werkelijke naam van het opslag account. Als uw cluster wordt ondersteund door WASB, voegt u een regel toe voor WASB. Als u alleen HTTPS-verbindingen wilt gebruiken, moet u ervoor zorgen dat ["beveiligde overdracht vereist"](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) is ingeschakeld op het opslag account. |
+    | Rule_2 | * | https:443 | login.windows.net | Windows-aanmeldings activiteit toestaan |
+    | Rule_3 | * | https:443 | login.microsoftonline.com | Windows-aanmeldings activiteit toestaan |
+    | Rule_4 | * | https:443,http:80 | storage_account_name. blob. core. Windows. net | Vervang `storage_account_name` door de werkelijke naam van het opslag account. Als uw cluster wordt ondersteund door WASB, voegt u een regel toe voor WASB. Als u alleen HTTPS-verbindingen wilt gebruiken, moet u ervoor zorgen dat ["beveiligde overdracht vereist"](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) is ingeschakeld op het opslag account. |
 
    ![Titel: Details van toepassings regel verzameling invoeren](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
@@ -95,22 +95,22 @@ Maak de netwerk regels om uw HDInsight-cluster correct te configureren.
 
     | Eigenschap|  Waarde|
     |---|---|
-    |Naam| FwNetRule|
+    |Name| FwNetRule|
     |Prioriteit|200|
-    |Bewerking|Toestaan|
+    |Actie|Toestaan|
 
     **Sectie IP-adressen**
 
-    | Naam | Protocol | Bron adressen | Doel adressen | Doelpoorten | Opmerkingen |
+    | Name | Protocol | Bron adressen | Doel adressen | Doelpoorten | Opmerkingen |
     | --- | --- | --- | --- | --- | --- |
-    | Rule_1 | EDP | * | * | 123 | Time-service |
+    | Rule_1 | UDP | * | * | 123 | Time-service |
     | Rule_2 | Alle | * | DC_IP_Address_1, DC_IP_Address_2 | * | Als u Enterprise Security Package (ESP) gebruikt, voegt u een netwerk regel toe aan de sectie IP-adressen die communicatie met AAD-DS voor ESP-clusters mogelijk maakt. U kunt de IP-adressen van de domein controllers vinden in de sectie AAD-DS in de portal |
     | Rule_3 | TCP | * | IP-adres van uw Data Lake Storage-account | * | Als u Azure Data Lake Storage gebruikt, kunt u een netwerk regel toevoegen in de sectie IP-adressen om een SNI-probleem op te lossen met ADLS Gen1 en Gen2. Met deze optie wordt het verkeer naar de firewall gerouteerd. Dit kan leiden tot hogere kosten voor grote gegevens belasting, maar het verkeer wordt vastgelegd en gecontroleerd in Firewall Logboeken. Bepaal het IP-adres voor uw Data Lake Storage-account. U kunt een Power shell-opdracht zoals `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` gebruiken om de FQDN om te zetten in een IP-adres.|
     | Rule_4 | TCP | * | * | 12000 | Beschrijving Als u Log Analytics gebruikt, maakt u een netwerk regel in de sectie IP-adressen om communicatie met uw Log Analytics-werk ruimte in te scha kelen. |
 
     **Sectie Service Tags**
 
-    | Naam | Protocol | Bron adressen | Service Tags | Doel poorten | Opmerkingen |
+    | Name | Protocol | Bron adressen | Servicetags | Doel poorten | Opmerkingen |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | Configureer een netwerk regel in het gedeelte service tags voor SQL waarmee u het SQL-verkeer kunt registreren en controleren, tenzij u service-eind punten voor SQL Server op het HDInsight-subnet hebt geconfigureerd, waardoor de firewall wordt omzeild. |
 
@@ -138,12 +138,12 @@ Gebruik bijvoorbeeld de volgende stappen om de route tabel te configureren voor 
 
 | Routenaam | Adresvoorvoegsel | Volgend hoptype | Adres van de volgende hop |
 |---|---|---|---|
-| 168.61.49.99 | 168.61.49.99/32 | Internet | N.v.t. |
-| 23.99.5.239 | 23.99.5.239/32 | Internet | N.v.t. |
-| 168.61.48.131 | 168.61.48.131/32 | Internet | N.v.t. |
-| 138.91.141.162 | 138.91.141.162/32 | Internet | N.v.t. |
-| 13.82.225.233 | 13.82.225.233/32 | Internet | N.v.t. |
-| 40.71.175.99 | 40.71.175.99/32 | Internet | N.v.t. |
+| 168.61.49.99 | 168.61.49.99/32 | Internet | N.V.T. |
+| 23.99.5.239 | 23.99.5.239/32 | Internet | N.V.T. |
+| 168.61.48.131 | 168.61.48.131/32 | Internet | N.V.T. |
+| 138.91.141.162 | 138.91.141.162/32 | Internet | N.V.T. |
+| 13.82.225.233 | 13.82.225.233/32 | Internet | N.V.T. |
+| 40.71.175.99 | 40.71.175.99/32 | Internet | N.V.T. |
 | 0.0.0.0 | 0.0.0.0/0 | Virtueel apparaat | 10.0.2.4 |
 
 De configuratie van de route tabel volt ooien:
@@ -178,7 +178,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 Het integreren van uw Azure Firewall met Azure Monitor-Logboeken is handig wanneer u voor het eerst van een toepassing werkt wanneer u niet op de hoogte bent van alle toepassings afhankelijkheden. U kunt meer informatie over Azure Monitor logboeken van het [analyseren van logboek gegevens in azure monitor](../azure-monitor/log-query/log-query-overview.md)
 
-Zie [Dit](../azure-subscription-service-limits.md#azure-firewall-limits) document of Raadpleeg de [Veelgestelde vragen](../firewall/firewall-faq.md)voor meer informatie over de schaal limieten van Azure firewall en het aanvragen van verg Roten.
+Zie [Dit](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) document of Raadpleeg de [Veelgestelde vragen](../firewall/firewall-faq.md)voor meer informatie over de schaal limieten van Azure firewall en het aanvragen van verg Roten.
 
 ## <a name="access-to-the-cluster"></a>Toegang tot het cluster
 
@@ -201,7 +201,7 @@ Met de vorige instructies kunt u Azure Firewall configureren voor het beperken v
 
 ### <a name="service-endpoint-capable-dependencies"></a>Afhankelijkheden voor service-eind punten
 
-| **Endpoints** |
+| **Endpoint** |
 |---|
 | Azure SQL |
 | Azure Storage |
@@ -209,9 +209,9 @@ Met de vorige instructies kunt u Azure Firewall configureren voor het beperken v
 
 #### <a name="ip-address-dependencies"></a>Afhankelijkheden van IP-adressen
 
-| **Endpoints** | **Details** |
+| **Endpoint** | **Details** |
 |---|---|
-| \*: 123 | NTP-klok controle. Verkeer wordt gecontroleerd op meerdere eind punten op poort 123 |
+| \*:123 | NTP-klok controle. Verkeer wordt gecontroleerd op meerdere eind punten op poort 123 |
 | [Hier](hdinsight-management-ip-addresses.md) gepubliceerde ip's | Dit zijn de HDInsight-service |
 | Privé-IP-adressen van AAD-DS voor ESP-clusters |
 | \*: 16800 voor KMS Windows-activering |
@@ -222,7 +222,7 @@ Met de vorige instructies kunt u Azure Firewall configureren voor het beperken v
 > [!Important]
 > De onderstaande lijst bevat alleen enkele van de belangrijkste FQDN-namen. U kunt de volledige lijst met FQDN-namen ophalen voor het configureren van uw NVA [in dit bestand](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json).
 
-| **Endpoints**                                                          |
+| **Endpoint**                                                          |
 |---|
 | azure.archive.ubuntu.com:80                                           |
 | security.ubuntu.com:80                                                |

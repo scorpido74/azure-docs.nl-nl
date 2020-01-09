@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: a8654f6c9c6c6d020872d2c89e0dd141db4e0451
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 109ac20d8a3d3dc87b4a83165c0e6c24808c1340
+ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215587"
+ms.lasthandoff: 12/28/2019
+ms.locfileid: "75529640"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Een Python-omgeving veilig beheren in Azure HDInsight met scriptactie
 
@@ -51,7 +51,7 @@ HDInsight Spark-cluster wordt gemaakt met Anaconda-installatie. Er zijn twee pyt
 
 | |Python 2.7|Python 3,5|
 |----|----|----|
-|`Path`|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
+|Pad|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
 |Spark|Standaard ingesteld op 2,7|N/A|
 |Livy|Standaard ingesteld op 2,7|N/A|
 |Jupyter|PySpark-kernel|PySpark3-kernel|
@@ -81,7 +81,7 @@ HDInsight-cluster is afhankelijk van de ingebouwde python-omgeving, zowel python
     sudo /usr/bin/anaconda/bin/conda install seaborn -n py35new --yes
     ```
 
-    Als u de naam van de virtuele omgeving niet weet, kunt u SSHen naar het knoop punt header van het cluster en `/usr/bin/anaconda/bin/conda info -e` uitvoeren om alle virtuele omgevingen weer te geven.
+    Als u de naam van de virtuele omgeving niet weet, kunt u SSHen naar het hoofd knooppunt van het cluster en `/usr/bin/anaconda/bin/conda info -e` uitvoeren om alle virtuele omgevingen weer te geven.
 
 3. Wijzig Spark-en livy-configuraties en ga naar de gemaakte virtuele omgeving.
 

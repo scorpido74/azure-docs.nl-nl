@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.openlocfilehash: 85fb67248a69a2726fef99ebe4749d61807631e4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 12/30/2019
+ms.openlocfilehash: cafec321e7c40e27d8de731feda1103451271507
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74010088"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562592"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Meer informatie over Digital Apparaatdubbels-object modellen en ruimtelijke Intelligence-grafiek
 
@@ -58,7 +58,7 @@ Andere categorieën objecten zijn:
 
 Ruimtelijke grafiek is het hiërarchische diagram van ruimten, apparaten en personen die in het object model Digital Apparaatdubbels zijn gedefinieerd. De ruimtelijke grafiek ondersteunt overname, filteren, door lopen, schalen en uitbreiden. U kunt uw ruimtelijke grafiek beheren en gebruiken met een verzameling REST-Api's.
 
-Als u een Digital Apparaatdubbels-service in uw abonnement implementeert, wordt u de globale beheerder van het hoofd knooppunt. Vervolgens krijgt u automatisch volledige toegang tot de volledige structuur. Ruimten in de grafiek inrichten met behulp van de Space-API. Services inrichten met behulp van de API en Sens oren van het apparaat met behulp van de sensor-API. [Open-source-hulpprogram ma's](https://github.com/Azure-Samples/digital-twins-samples-csharp) zijn ook beschikbaar om de grafiek in bulk in te richten.
+Als u een Digital Apparaatdubbels-service in uw abonnement implementeert, wordt u de globale beheerder van het hoofd knooppunt. Vervolgens krijgt u automatisch volledige toegang tot de volledige structuur. Ruimten in de grafiek inrichten met behulp van de Space-API. Services inrichten met behulp van de API en Sens oren van het apparaat met behulp van de sensor-API. Er zijn ook [open source-hulpprogram ma's](https://github.com/Azure-Samples/digital-twins-samples-csharp) beschikbaar om de grafiek in bulk in te richten.
 
 De **grafiek overname**. Overname is van toepassing op de machtigingen en eigenschappen die aflopend van een bovenliggend knoop punt naar alle onderliggende knoop punten. Wanneer een rol bijvoorbeeld wordt toegewezen aan een gebruiker op een bepaald knoop punt, heeft de gebruiker die rol machtigingen voor het opgegeven knoop punt en elk knoop punt daaronder. Elke eigenschaps sleutel en een uitgebreid type die voor een bepaald knoop punt zijn gedefinieerd, worden overgenomen door alle knoop punten onder dat knoop punt.
 
@@ -78,7 +78,7 @@ Nadat u Digital Apparaatdubbels hebt geïmplementeerd vanuit de [Azure Portal](h
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Naam | Vervangen door |
+| Name | Vervangen door |
 | --- | --- |
 | YOUR_INSTANCE_NAME | De naam van uw Digital Twins-exemplaar |
 | YOUR_LOCATION | De serverregio waarin het exemplaar wordt gehost |

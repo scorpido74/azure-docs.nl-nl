@@ -1,30 +1,21 @@
 ---
-title: Azure Service Fabric-actoren verwijderen | Microsoft Docs
-description: Leer hoe u Service Fabric Reliable Actors en hun status handmatig verwijderen.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric-actors verwijderen
+description: Meer informatie over het hand matig en volledig verwijderen van Reliable Actors en hun status in een Azure Service Fabric-toepassing.
 author: amanbha
-manager: chackdan
-editor: vturecek
-ms.assetid: b91384cc-804c-49d6-a6cb-f3f3d7d65a8e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: amanbha
-ms.openlocfilehash: e297a6f42774f29e2eca4a410b695d5bbb636300
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b90c5a10c64e273f1c8f48c7bf5713859796db65
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726601"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645613"
 ---
-# <a name="delete-reliable-actors-and-their-state"></a>Betrouwbare actoren en hun status verwijderen
-Garbagecollection van gedeactiveerde actoren alleen opschonen van de actorobject, maar deze gegevens die zijn opgeslagen in van een actor status Manager worden niet verwijderd. Wanneer een actor opnieuw wordt geactiveerd, wordt de gegevens opnieuw beschikbaar gesteld aan via de status Manager. In gevallen waar actoren gegevens opslaan in de status Manager en zijn gedeactiveerd maar nooit geactiveerd, is het mogelijk dat het nodig zijn om hun gegevens op te schonen.
+# <a name="delete-reliable-actors-and-their-state"></a>Reliable Actors en hun status verwijderen
+Garbagecollection van gedeactiveerde actors reinigt alleen het actor-object, maar verwijdert geen gegevens die zijn opgeslagen in de status Manager van een actor. Wanneer een actor opnieuw wordt geactiveerd, worden de bijbehorende gegevens opnieuw beschikbaar gemaakt via de status Manager. In gevallen waarin actors gegevens opslaan in de status Manager en worden gedeactiveerd, maar nooit opnieuw worden geactiveerd, kan het nodig zijn om de gegevens op te schonen.
 
-De [Actorservice](service-fabric-reliable-actors-platform.md) biedt een functie voor het verwijderen van actoren vanaf een externe aanroeper:
+De [actor-service](service-fabric-reliable-actors-platform.md) biedt een functie voor het verwijderen van actors van een externe beller:
 
 ```csharp
 ActorId actorToDelete = new ActorId(id);
@@ -43,24 +34,24 @@ ActorService myActorServiceProxy = ActorServiceProxy.create(
 myActorServiceProxy.deleteActorAsync(actorToDelete);
 ```
 
-Verwijderen van een actor heeft de volgende gevolgen, afhankelijk van of de actor momenteel actief is:
+Het verwijderen van een actor heeft de volgende gevolgen, afhankelijk van het feit of de actor momenteel actief is:
 
-* **Actieve Actor**
-  * Actor wordt verwijderd uit de lijst met actieve actoren en is gedeactiveerd.
-  * De status wordt permanent verwijderd.
-* **Inactieve Actor**
-  * De status wordt permanent verwijderd.
+* **Actieve actor**
+  * Actor is verwijderd uit de lijst met actieve actors en wordt gedeactiveerd.
+  * De status wordt definitief verwijderd.
+* **Inactieve actor**
+  * De status wordt definitief verwijderd.
 
-Een actor kan niet worden aangeroepen op zichzelf uit een van de actor-methoden niet verwijderen omdat de actor kan niet worden verwijderd tijdens het uitvoeren van binnen een actor aanroepcontext, waarbij de runtime een vergrendeling rond de actor-aanroep om af te dwingen single-threaded toegang heeft verkregen.
+Een actor kan geen verwijdering op zichzelf aanroepen vanuit een van de actor-methoden omdat de actor niet kan worden verwijderd tijdens het uitvoeren van een actor-aanroep context, waarbij de runtime een vergren deling heeft behaald rond de actor-aanroep om toegang met één thread af te dwingen.
 
-Voor meer informatie over Reliable Actors, lees het volgende:
-* [Actor-timers en herinneringen](service-fabric-reliable-actors-timers-reminders.md)
-* [Actor-gebeurtenissen](service-fabric-reliable-actors-events.md)
-* [Herbetreedbaarheid actor](service-fabric-reliable-actors-reentrancy.md)
-* [Actor-diagnose en bewaking van toepassingsprestaties](service-fabric-reliable-actors-diagnostics.md)
-* [Actor-API-referentiedocumentatie](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [Voorbeeld van C#-code](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [Java-voorbeeldcode](https://github.com/Azure-Samples/service-fabric-java-getting-started)
+Lees het volgende voor meer informatie over Reliable Actors:
+* [Actor timers en herinneringen](service-fabric-reliable-actors-timers-reminders.md)
+* [Actor gebeurtenissen](service-fabric-reliable-actors-events.md)
+* [Actor herbetreedbaarheid](service-fabric-reliable-actors-reentrancy.md)
+* [De functie voor het controleren van actor en prestaties](service-fabric-reliable-actors-diagnostics.md)
+* [Referentie documentatie voor actor-API](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [C#Voorbeeld code](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
+* [Java-voorbeeld code](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->
 [1]: ./media/service-fabric-reliable-actors-lifecycle/garbage-collection.png

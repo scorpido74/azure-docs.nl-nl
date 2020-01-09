@@ -3,12 +3,12 @@ title: Gebruik para meters voor het maken van dynamische blauw drukken
 description: Meer informatie over statische en dynamische para meters en hoe u deze kunt gebruiken om veilig en dynamisch blauw drukken te maken.
 ms.date: 03/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: 31fff8fddd8e1969ef0d33047ae070f6302c9c83
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 68987b3e0f418721986003dc796f00ac1dd6dda1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128930"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644967"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Dynamische blauw drukken via para meters maken
 
@@ -40,7 +40,7 @@ Als de blauw druk toewijzing gebruikmaakt van een door het **systeem toegewezen 
 Als de blauw druk toewijzing gebruikmaakt van een door de **gebruiker toegewezen beheerde identiteit**, _kan_ de Key Vault waarnaar wordt verwezen, bestaan in een gecentraliseerd abonnement. Voor de beheerde identiteit moeten de juiste rechten worden verleend op de Key Vault voorafgaande aan de toewijzing van de blauw druk.
 
 > [!IMPORTANT]
-> In beide gevallen moet de Key Vault **toegang inschakelen tot Azure Resource Manager voor sjabloon implementatie die** is geconfigureerd op de pagina **toegangs beleid** . Zie [Key Vault-sjabloon implementatie inschakelen](../../../managed-applications/key-vault-access.md#enable-template-deployment)voor instructies over het inschakelen van deze functie.
+> In beide gevallen moet de Key Vault **toegang inschakelen tot Azure Resource Manager voor sjabloon implementatie die** is geconfigureerd op de pagina **toegangs beleid** . Zie [Key Vault-sjabloon implementatie inschakelen](../../../azure-resource-manager/managed-applications/key-vault-access.md#enable-template-deployment)voor instructies over het inschakelen van deze functie.
 
 Zie [Key Vault Overview](../../../key-vault/key-vault-overview.md)voor meer informatie over Azure Key Vault.
 

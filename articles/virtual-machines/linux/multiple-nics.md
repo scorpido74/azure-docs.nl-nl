@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: b4ab46a59bd83bf2d1c08e3a238df3c59797f3e7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3fed0d14908dff346fa6134a91096c757c6d9fab
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035610"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75463824"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Een virtuele Linux-machine in azure maken met meerdere netwerk interface kaarten
 
@@ -164,7 +164,7 @@ az vm start --resource-group myResourceGroup --name myVM
 
 
 ## <a name="create-multiple-nics-using-resource-manager-templates"></a>Meerdere Nic's maken met behulp van Resource Manager-sjablonen
-Azure Resource Manager sjablonen gebruiken declaratieve JSON-bestanden om uw omgeving te definiëren. U kunt een [overzicht van Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)lezen. Resource Manager-sjablonen bieden een manier om meerdere exemplaren van een resource te maken tijdens de implementatie, zoals het maken van meerdere Nic's. U gebruikt *kopiëren* om het aantal te maken exemplaren op te geven:
+Azure Resource Manager sjablonen gebruiken declaratieve JSON-bestanden om uw omgeving te definiëren. U kunt een [overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md)lezen. Resource Manager-sjablonen bieden een manier om meerdere exemplaren van een resource te maken tijdens de implementatie, zoals het maken van meerdere Nic's. U gebruikt *kopiëren* om het aantal te maken exemplaren op te geven:
 
 ```json
 "copy": {

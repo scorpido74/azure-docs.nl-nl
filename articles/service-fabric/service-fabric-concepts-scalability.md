@@ -1,25 +1,16 @@
 ---
-title: Schaal baarheid van Service Fabric Services | Microsoft Docs
-description: Hierin wordt beschreven hoe u Service Fabric Services schaalt
-services: service-fabric
-documentationcenter: .net
+title: Schaal baarheid van Service Fabric Services
+description: Meer informatie over schalen in azure Service Fabric en de verschillende technieken die worden gebruikt om toepassingen te schalen.
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: ed324f23-242f-47b7-af1a-e55c839e7d5d
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/26/2019
 ms.author: masnider
-ms.openlocfilehash: f44a44c0923374b2f6024903213305f1defb3b94
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 17827342b67d37d9fbeb56654824e004367823ef
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035927"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610009"
 ---
 # <a name="scaling-in-service-fabric"></a>Schalen in Service Fabric
 Azure Service Fabric maakt het eenvoudig om schaal bare toepassingen te bouwen door de services, partities en replica's op de knoop punten van een cluster te beheren. Door veel werk belastingen op dezelfde hardware uit te voeren, is het mogelijk om Maxi maal het resource gebruik te maken, maar biedt ook flexibiliteit voor het schalen van uw workloads. In deze Channel 9-video wordt beschreven hoe u schaal bare micro Services-toepassingen kunt bouwen:
@@ -36,7 +27,7 @@ Het schalen van Service Fabric wordt op verschillende manieren uitgevoerd:
 6. Schalen met behulp van de metrische gegevens van cluster resource manager
 
 ## <a name="scaling-by-creating-or-removing-stateless-service-instances"></a>Schalen door stateless service instanties te maken of te verwijderen
-Een van de eenvoudigste manieren om te schalen binnen Service Fabric werkt met stateless Services. Wanneer u een stateless service maakt, krijgt u de mogelijkheid om een `InstanceCount`te definiëren. `InstanceCount`Hiermee definieert u hoeveel exemplaren van de code van de service worden gemaakt wanneer de service wordt gestart. Stel bijvoorbeeld dat er 100-knoop punten in het cluster zijn. U kunt er ook voor zorgen dat een service wordt gemaakt `InstanceCount` met een van de 10. Tijdens runtime kunnen deze 10 uitgevoerde exemplaren van de code bezet raken (of er is niet genoeg bezet). Een manier om de werk belasting te schalen, is om het aantal exemplaren te wijzigen. Een voor beeld: sommige bewakings-of beheer code kunnen het bestaande aantal exemplaren wijzigen in 50 of op 5, afhankelijk van of de werk belasting moet worden in-of uitgeschaald op basis van de belasting. 
+Een van de eenvoudigste manieren om te schalen binnen Service Fabric werkt met stateless Services. Wanneer u een stateless service maakt, krijgt u de mogelijkheid om een `InstanceCount`te definiëren. `InstanceCount` definieert het aantal actieve kopieën van de code van de service dat wordt gemaakt wanneer de service wordt gestart. Stel bijvoorbeeld dat er 100-knoop punten in het cluster zijn. U kunt er ook voor zorgen dat een service wordt gemaakt met een `InstanceCount` van 10. Tijdens runtime kunnen deze 10 uitgevoerde exemplaren van de code bezet raken (of er is niet genoeg bezet). Een manier om de werk belasting te schalen, is om het aantal exemplaren te wijzigen. Een voor beeld: sommige bewakings-of beheer code kunnen het bestaande aantal exemplaren wijzigen in 50 of op 5, afhankelijk van of de werk belasting moet worden in-of uitgeschaald op basis van de belasting. 
 
 C#:
 
@@ -46,7 +37,7 @@ updateDescription.InstanceCount = 50;
 await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/app/service"), updateDescription);
 ```
 
-Zo
+PowerShell:
 
 ```posh
 Update-ServiceFabricService -Stateless -ServiceName $serviceName -InstanceCount 50
@@ -63,7 +54,7 @@ serviceDescription.InstanceCount = -1;
 await fc.ServiceManager.CreateServiceAsync(serviceDescription);
 ```
 
-Zo
+PowerShell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName -Stateless -PartitionSchemeSingleton -InstanceCount "-1"
@@ -72,7 +63,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="scaling-by-creating-or-removing-new-named-services"></a>Schalen door nieuwe benoemde services te maken of te verwijderen
 Een benoemd service-exemplaar is een specifiek exemplaar van een service type (Zie [service Fabric levens cyclus](service-fabric-application-lifecycle.md)van de toepassing) binnen een benoemd toepassings exemplaar in het cluster. 
 
-Nieuwe benoemde service-exemplaren kunnen worden gemaakt (of verwijderd) omdat services meer of minder bezet worden. Hierdoor kunnen aanvragen worden gespreid over meer service-exemplaren, waardoor het mogelijk is dat de belasting van bestaande services afneemt. Wanneer u Services maakt, plaatst de Service Fabric cluster resource manager de services in het cluster op gedistribueerde wijze. De exacte beslissingen gelden voor de [metrische gegevens](service-fabric-cluster-resource-manager-metrics.md) in het cluster en andere plaatsings regels. Services kunnen op verschillende manieren worden gemaakt, maar het meest voorkomende is door beheer acties zoals iemand die u [`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)aanroept of door middel [`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet)van het aanroepen van code. `CreateServiceAsync`kan zelfs worden aangeroepen binnen andere services die in het cluster worden uitgevoerd.
+Nieuwe benoemde service-exemplaren kunnen worden gemaakt (of verwijderd) omdat services meer of minder bezet worden. Hierdoor kunnen aanvragen worden gespreid over meer service-exemplaren, waardoor het mogelijk is dat de belasting van bestaande services afneemt. Wanneer u Services maakt, plaatst de Service Fabric cluster resource manager de services in het cluster op gedistribueerde wijze. De exacte beslissingen gelden voor de [metrische gegevens](service-fabric-cluster-resource-manager-metrics.md) in het cluster en andere plaatsings regels. Services kunnen op verschillende manieren worden gemaakt, maar het meest voorkomende is door beheer acties zoals iemand die [`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)aanroept, of door middel van het aanroepen van [`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet). `CreateServiceAsync` kan zelfs worden aangeroepen binnen andere services die in het cluster worden uitgevoerd.
 
 Het dynamisch maken van Services kan worden gebruikt in allerlei scenario's en is een gemeen schappelijk patroon. Denk bijvoorbeeld aan een stateful service die een bepaalde werk stroom vertegenwoordigt. Oproepen die werk vertegenwoordigen, worden weer gegeven aan deze service. deze service gaat door met het uitvoeren van de stappen voor die werk stroom en bij het registreren van de voortgang. 
 
@@ -97,20 +88,20 @@ Wanneer moet er een nieuw benoemd toepassings exemplaar worden gebruikt in plaat
     * In Service Fabric is [toepassings capaciteit](service-fabric-cluster-resource-manager-application-groups.md) een concept dat u kunt gebruiken om de hoeveelheid beschik bare resources voor bepaalde toepassings exemplaren te bepalen. U kunt bijvoorbeeld besluiten dat voor een bepaalde service een ander exemplaar moet worden gemaakt om te kunnen schalen. Dit toepassings exemplaar heeft echter niet de capaciteit voor een bepaalde metriek. Als aan deze bepaalde klant of werk belasting nog steeds meer resources moeten worden verleend, kunt u de bestaande capaciteit voor die toepassing verg Roten of een nieuwe toepassing maken. 
 
 ## <a name="scaling-at-the-partition-level"></a>Schalen op partitie niveau
-Service Fabric ondersteunt partitioneren. Partitioneren van een service in meerdere logische en fysieke secties, die elk onafhankelijk van elkaar functioneren. Dit is nuttig bij stateful Services, omdat er geen enkele set replica's is om alle aanroepen te verwerken en alle statussen tegelijk te bewerken. In het [overzicht](service-fabric-concepts-partitioning.md) voor partitionering vindt u informatie over de typen partitie schema's die worden ondersteund. De replica's van elke partitie worden verdeeld over de knoop punten in een cluster, waardoor de belasting van de service wordt verdeeld en ervoor gezorgd dat noch de service als geheel of op een andere partitie een Single Point of Failure heeft. 
+Service Fabric ondersteunt partitioneren. Partitioneren van een service in meerdere logische en fysieke secties, die elk onafhankelijk van elkaar functioneren. Dit is nuttig bij stateful Services, omdat er geen enkele set replica's is om alle aanroepen te verwerken en alle statussen tegelijk te bewerken. In het [overzicht voor partitionering](service-fabric-concepts-partitioning.md) vindt u informatie over de typen partitie schema's die worden ondersteund. De replica's van elke partitie worden verdeeld over de knoop punten in een cluster, waardoor de belasting van de service wordt verdeeld en ervoor gezorgd dat noch de service als geheel of op een andere partitie een Single Point of Failure heeft. 
 
 Overweeg een service die gebruikmaakt van een gepartitioneerd partitie schema met een lage sleutel van 0, een hoge sleutel van 99 en een aantal partities van 4. In een cluster met drie knoop punten kan de service worden ingedeeld met vier replica's die de resources op elk knoop punt delen, zoals hier wordt weer gegeven:
 
 <center>
 
-![Partitie-indeling met drie knoop punten](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
+Partitie-indeling ![met drie knoop punten](./media/service-fabric-concepts-scalability/layout-three-nodes.png)
 </center>
 
 Als u het aantal knoop punten verhoogt, worden er door Service Fabric een aantal van de bestaande replica's verplaatst. Stel bijvoorbeeld dat het aantal knoop punten toeneemt op vier en dat de replica's opnieuw worden gedistribueerd. De service heeft nu nu drie replica's die worden uitgevoerd op elk knoop punt, die elk deel uitmaken van verschillende partities. Hierdoor is het gebruik van resources beter omdat het nieuwe knoop punt niet koud is. Normaal gesp roken worden de prestaties verbeterd naarmate er meer resources beschikbaar zijn voor elke service.
 
 <center>
 
-![Partitie-indeling met vier knoop punten](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
+![partitie-indeling met vier knoop punten](./media/service-fabric-concepts-scalability/layout-four-nodes.png)
 </center>
 
 ## <a name="scaling-by-using-the-service-fabric-cluster-resource-manager-and-metrics"></a>Schalen met behulp van de Service Fabric cluster resource manager en metrische gegevens
@@ -129,7 +120,7 @@ Als gevolg van de implementatie verschillen tussen besturings systemen, kunt u h
 ## <a name="putting-it-all-together"></a>Alles samenvoegen
 We gaan nu alle ideeën volgen die hier zijn besproken en praten met een voor beeld. Houd rekening met de volgende service: u probeert een service te maken die als een adres boek fungeert, waarbij u aan namen en contact gegevens houdt. 
 
-Rechts op de rechter kant hebt u meer vragen over schalen: Hoeveel gebruikers zijn er? Hoeveel contact personen wordt elke gebruiker opgeslagen? Er wordt geprobeerd om deze alles uit te zetten wanneer u de service voor de eerste keer uitkomt. Stel dat u met één statische service met een specifiek aantal partities gaat gaan. De gevolgen van het verzamelen van het verkeerde aantal partities kunnen ertoe leiden dat u later schaal problemen ondervindt. Ook als u het juiste aantal kiest, hebt u mogelijk niet alle informatie die u nodig hebt. U moet bijvoorbeeld ook de grootte van het cluster vooraf bepalen, zowel in termen van het aantal knoop punten en hun grootte. Het is doorgaans moeilijk te voors pellen hoeveel resources een service gedurende de levens duur gaat gebruiken. Het kan ook lastig zijn om te weten hoe lang het verkeers patroon is dat de service werkelijk ziet. Het is bijvoorbeeld mogelijk dat mensen hun contact personen eerst op de morgen toevoegen en verwijderen, of dat ze gelijkmatig over de loop van de dag worden gedistribueerd. Op basis van dit moet u mogelijk dynamisch uitschalen en op dynamische wijze door gaan. Misschien kunt u leren om te voors pellen wanneer u wilt uitschalen en in, maar hoe waarschijnlijk het is om te reageren op het wijzigen van het resource gebruik door uw service. Dit kan betekenen dat de grootte van het cluster kan worden gewijzigd, zodat er meer resources beschikbaar zijn wanneer het gebruik van bestaande resources niet voldoende is. 
+Aan de rechter kant hebt u meer vragen over schalen: hoeveel gebruikers hebt u nodig? Hoeveel contact personen wordt elke gebruiker opgeslagen? Er wordt geprobeerd om deze alles uit te zetten wanneer u de service voor de eerste keer uitkomt. Stel dat u met één statische service met een specifiek aantal partities gaat gaan. De gevolgen van het verzamelen van het verkeerde aantal partities kunnen ertoe leiden dat u later schaal problemen ondervindt. Ook als u het juiste aantal kiest, hebt u mogelijk niet alle informatie die u nodig hebt. U moet bijvoorbeeld ook de grootte van het cluster vooraf bepalen, zowel in termen van het aantal knoop punten en hun grootte. Het is doorgaans moeilijk te voors pellen hoeveel resources een service gedurende de levens duur gaat gebruiken. Het kan ook lastig zijn om te weten hoe lang het verkeers patroon is dat de service werkelijk ziet. Het is bijvoorbeeld mogelijk dat mensen hun contact personen eerst op de morgen toevoegen en verwijderen, of dat ze gelijkmatig over de loop van de dag worden gedistribueerd. Op basis van dit moet u mogelijk dynamisch uitschalen en op dynamische wijze door gaan. Misschien kunt u leren om te voors pellen wanneer u wilt uitschalen en in, maar hoe waarschijnlijk het is om te reageren op het wijzigen van het resource gebruik door uw service. Dit kan betekenen dat de grootte van het cluster kan worden gewijzigd, zodat er meer resources beschikbaar zijn wanneer het gebruik van bestaande resources niet voldoende is. 
 
 Maar u kunt zelfs proberen om één partitie schema voor alle gebruikers te kiezen? Waarom beperkt u de ene service en één statisch cluster? De werkelijke situatie is doorgaans dynamischer. 
 

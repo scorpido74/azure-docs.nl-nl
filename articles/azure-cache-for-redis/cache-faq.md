@@ -2,16 +2,16 @@
 title: Veelgestelde vragen over Azure Cache voor Redis
 description: Meer informatie over de antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure cache voor redis
 author: yegu-ms
+ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/29/2019
-ms.author: yegu
-ms.openlocfilehash: e497a5c54a80dbed2ea94f8251d198c1c8bc5043
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: ddf7999153e9d9722e627d148b116750fe3aaecf
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122795"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433453"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Veelgestelde vragen over Azure Cache voor Redis
 Meer informatie over de antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure cache voor redis.
@@ -125,7 +125,7 @@ In deze tabel kunnen we de volgende conclusies tekenen:
 * Met redis clustering neemt de door Voer lineair toe als u het aantal Shards (knoop punten) in het cluster verhoogt. Als u bijvoorbeeld een P4-cluster van 10 Shards maakt, is de beschik bare door Voer 400.000 * 10 = 4.000.000 RPS.
 * De door Voer voor grotere sleutel grootten is hoger in de Premium-laag, vergeleken met de Standard-laag.
 
-| Prijscategorie | Grootte | CPU-kernen | Beschik bare band breedte | 1-grootte van KB-waarde | 1-grootte van KB-waarde |
+| Prijscategorie | Grootte | Cpu-cores | Beschik bare band breedte | 1-grootte van KB-waarde | 1-grootte van KB-waarde |
 | --- | --- | --- | --- | --- | --- |
 | **Standaard cache grootten** | | |**Megabits per seconde (MB/s)/mega bytes per seconde (MB/s)** |**Aantal aanvragen per seconde (RPS) niet-SSL** |**SSL-aanvragen per seconde (RPS)** |
 | C0 | 250 MB | Gedeeld | 100 / 12.5  |  15.000 |   7\.500 |
@@ -307,7 +307,7 @@ Voor instructies over het downloaden van de redis-hulpprogram ma's, zie de secti
 * Houd rekening met de prestatie kosten die zijn gekoppeld aan de verschillende bewerkingen die u uitvoert. Zo is de `KEYS` opdracht een O (n)-bewerking en moet worden vermeden. De [redis.io-site](https://redis.io/commands/) bevat details over de tijd complexiteit voor elke bewerking die wordt ondersteund. Klik op elke opdracht om de complexiteit van elke bewerking weer te geven.
 
 #### <a name="configuration-and-concepts"></a>Configuratie en concepten
-* Gebruik de standaard-of Premium-laag voor productie systemen. De laag basis is een systeem met één knoop punt zonder gegevens replicatie en geen SLA. Gebruik ook ten minste een C1-cache. C0-caches worden doorgaans gebruikt voor eenvoudige ontwikkel-en test scenario's.
+* Gebruik de standaard-of Premium-laag voor productie systemen. De laag Basic is een systeem met één knooppunt zonder gegevensreplicatie en zonder SLA. Gebruik minimaal een C1-cache. C0-caches worden doorgaans gebruikt voor eenvoudige ontwikkel-en test scenario's.
 * Houd er rekening mee dat redis een **in-Memory-** gegevens archief is. Lees [dit artikel](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md) zodat u op de hoogte bent van scenario's waarin gegevens verlies zich kan voordoen.
 * Ontwikkel uw systeem zodat het verbinding problemen kan verwerken [vanwege patches en failover](https://gist.github.com/JonCole/317fe03805d5802e31cfa37e646e419d#file-azureredis-patchingexplained-md).
 
@@ -471,7 +471,7 @@ In tegens telling tot traditionele caches die alleen omgaan met sleutel-waardepa
 
 Een ander belang rijk aspect voor redis succes is het gezonde, levendige open source-ecosysteem dat erop is gebouwd. Dit wordt weer gegeven in de verschillende set redis-clients die beschikbaar zijn in meerdere talen. Met dit ecosysteem en een breed scala aan clients kan Azure cache voor redis worden gebruikt door bijna elke werk belasting die u in azure zou bouwen.
 
-Voor meer informatie over het aan de slag gaan met Azure cache voor redis raadpleegt u [Azure cache gebruiken voor redis](cache-dotnet-how-to-use-azure-redis-cache.md) en [Azure cache voor redis-documentatie](index.md).
+Voor meer informatie over het aan de slag gaan met Azure cache voor redis raadpleegt u [Azure cache gebruiken voor redis](cache-dotnet-how-to-use-azure-redis-cache.md) en [Azure cache voor redis-documentatie](index.yml).
 
 ### <a name="managed-cache-service"></a>Managed cache service
 [Managed cache service is buiten gebruik gesteld op 30 november 2016.](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)

@@ -1,5 +1,5 @@
 ---
-title: Migreren van Enterprise Agreement naar Api's voor micro soft-gebruikers overeenkomsten-Azure | Microsoft Docs
+title: EA migreren naar micro soft-gebruikers overeenkomst Api's-Azure
 description: Dit artikel helpt u inzicht te krijgen in de gevolgen van het migreren van een micro soft Enterprise Agreement (EA) naar een micro soft-klant overeenkomst.
 services: cost-management
 keywords: ''
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 20d83c48fb4ad60b091dc87b224a053690251a48
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 7fef417a7b19d463a98d32b7cf3cce515d1137a1
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481709"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75441005"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migreren van Enterprise Agreement naar Api's voor micro soft-gebruikers overeenkomsten
 
@@ -53,14 +53,14 @@ EA-Api's gebruiken een API-sleutel voor verificatie en autorisatie. MCA Api's ge
 | Doel | EA-API | MCA API |
 | --- | --- | --- |
 | Saldo en tegoed | [/balancesummary](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) | Microsoft.Billing/billingAccounts/billingProfiles/availableBalanceussae |
-| Gebruik (JSON) | [/usagedetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)[/usagedetailsbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format) | [Micro soft. verbruik/usageDetails](/rest/api/consumption/usagedetails)<sup>1</sup> |
-| Gebruik (CSV) | [/usagedetails/Download](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)[/usagedetails/Submit](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format) | [Micro soft. verbruik/usageDetails/downloaden](/rest/api/consumption/usagedetails)<sup>1</sup> |
-| Marketplace-gebruik (CSV) | [/marketplacecharges](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)[/marketplacechargesbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) | [Micro soft. verbruik/usageDetails/downloaden](/rest/api/consumption/usagedetails)<sup>1</sup> |
+| Gebruik (JSON) | [/usagedetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)[/usagedetailsbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format) | [Microsoft.Consumption/usageDetails](/rest/api/consumption/usagedetails)<sup>1</sup> |
+| Gebruik (CSV) | [/usagedetails/Download](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format)[/usagedetails/Submit](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#csv-format) | [Microsoft.Consumption/usageDetails/download](/rest/api/consumption/usagedetails)<sup>1</sup> |
+| Marketplace-gebruik (CSV) | [/marketplacecharges](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge)[/marketplacechargesbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-marketplace-storecharge) | [Microsoft.Consumption/usageDetails/download](/rest/api/consumption/usagedetails)<sup>1</sup> |
 | Facturerings perioden | [/billingperiods](/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) | Microsoft.Billing/billingAccounts/billingProfiles/invoices |
 | Prijzenoverzicht | [/pricesheet](/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) | Micro soft. Bill/billingAccounts/billingProfiles/prijzen overzicht/default/load format = json|csv Microsoft.Billing/billingAccounts/…/billingProfiles/…/invoices/… /pricesheet/default/Download-indeling = JSON|csv Microsoft.Billing/billingAccounts/../billingProfiles/../providers/Microsoft.Consumption/pricesheets/download  |
 | Reserveringsaankopen | [/reservationcharges](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-charges) | Microsoft.Billing/billingAccounts/billingProfiles/transactions |
 | Aanbevelingen voor reserve ring | [/SharedReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-shared-reserved-instance-recommendations) [/](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) [SingleReservationRecommendations](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation#request-for-single-reserved-instance-recommendations) | [Micro soft. verbruik/reservationRecommendations](/rest/api/consumption/reservationrecommendations/list) |
-| Reserverings gebruik | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)[/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Micro soft. verbruik/reservationDetails](/rest/api/consumption/reservationsdetails)[micro soft. verbruik/reservationSummaries](/rest/api/consumption/reservationssummaries) |
+| Reserverings gebruik | [/reservationdetails](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage#request-for-reserved-instance-usage-details)[/reservationsummaries](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-usage) | [Microsoft.Consumption/reservationDetails](/rest/api/consumption/reservationsdetails)[Microsoft.Consumption/reservationSummaries](/rest/api/consumption/reservationssummaries) |
 
 <sup>1</sup> Azure-service en het gebruik van Marketplace van derden zijn beschikbaar met de [gebruiks Details-API](/rest/api/consumption/usagedetails).
 
@@ -80,7 +80,7 @@ Als u bestaande EA-Api's gebruikt, moet u deze bijwerken voor ondersteuning van 
 
 | Doel | Oude aanbieding | Nieuwe aanbieding |
 | --- | --- | --- |
-| Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Kostenbeheer van Azure](https://azure.microsoft.com/services/cost-management/) |
+| Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) |
 | Power BI | [Micro soft consumptie Insights](/power-bi/desktop-connect-azure-consumption-insights) -inhouds pakket en-connector | [Microsoft Azure Consumption Insights Power bi app](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) en [Azure consumption Insights connector](/power-bi/desktop-connect-azure-consumption-insights) |
 
 ## <a name="apis-to-get-balance-and-credits"></a>Api's om saldo en tegoeden te verkrijgen
@@ -170,34 +170,34 @@ Nieuwe antwoord tekst:
 
 De naam van de eigenschap met de matrix met gebruiks records is gewijzigd van gegevens in _waarden_. Elke record die wordt gebruikt om een lijst met gedetailleerde eigenschappen te gebruiken. Elke record bevat nu echter alle details in een geneste eigenschap met de naam _Eigenschappen_, met uitzonde ring van tags. De nieuwe structuur is consistent met andere Azure-Api's. Sommige eigenschapnamen zijn gewijzigd. In de volgende tabel worden de bijbehorende eigenschappen weer gegeven.
 
-| Eigenschap Old | Nieuwe eigenschap | Opmerkingen |
+| Oude eigenschap | Nieuwe eigenschap | Opmerkingen |
 | --- | --- | --- |
-| AccountId | N.v.t. | De maker van het abonnement wordt niet bijgehouden. Gebruik invoiceSectionId (zelfde als departmentId). |
-| AccountNameAccountOwnerId en AccountOwnerEmail | N.v.t. | De maker van het abonnement wordt niet bijgehouden. Gebruik invoiceSectionName (hetzelfde als afdelings). |
+| AccountId | N/A | De maker van het abonnement wordt niet bijgehouden. Gebruik invoiceSectionId (zelfde als departmentId). |
+| AccountNameAccountOwnerId en AccountOwnerEmail | N/A | De maker van het abonnement wordt niet bijgehouden. Gebruik invoiceSectionName (hetzelfde als afdelings). |
 | AdditionalInfo | additionalInfo | &nbsp;  |
 | ChargesBilledSeparately | isAzureCreditEligible | Houd er rekening mee dat deze eigenschappen tegenovergesteld zijn. Als isAzureCreditEnabled is ingesteld op True, is ChargesBilledSeparately false. |
 | ConsumedQuantity | quantity | &nbsp; |
 | ConsumedService | consumedService | De exacte teken reeks waarden kunnen verschillen. |
-| ConsumedServiceId | None | &nbsp; |
+| ConsumedServiceId | Geen | &nbsp; |
 | CostCenter | costCenter | &nbsp; |
 | Datum en usageStartDate | date | &nbsp;  |
-| Dag | None | De datum van de dag wordt geparseerd. |
+| Dag | Geen | De datum van de dag wordt geparseerd. |
 | DepartmentId | invoiceSectionId | De exacte waarden verschillen. |
 | DepartmentName | invoiceSectionName | De exacte teken reeks waarden kunnen verschillen. Zo nodig kunt u factuur secties configureren zodat deze overeenkomen met afdelingen. |
 | ExtendedCost en kosten | costInBillingCurrency | &nbsp;  |
 | InstanceId | resourceId | &nbsp;  |
-| Is terugkerende kosten | None | &nbsp;  |
-| Locatie | locatie | &nbsp;  |
+| Is terugkerende kosten | Geen | &nbsp;  |
+| Locatie | location | &nbsp;  |
 | MeterCategory | meterCategory | De exacte teken reeks waarden kunnen verschillen. |
 | MeterId | meterId | De exacte teken reeks waarden verschillen. |
 | MeterName | meterName | De exacte teken reeks waarden kunnen verschillen. |
 | MeterRegion | meterRegion | De exacte teken reeks waarden kunnen verschillen. |
 | MeterSubCategory | meterSubCategory | De exacte teken reeks waarden kunnen verschillen. |
-| Maand | None | De datum van de maand wordt geparseerd. |
-| Naam van aanbieding | None | Gebruik publishernaam en productOrderName. |
-| OfferId | None | &nbsp;  |
-| Bestelnummer | None | &nbsp;  |
-| partNumber | None | Gebruik meterId en productOrderName om prijzen uniek te identificeren. |
+| Month | Geen | De datum van de maand wordt geparseerd. |
+| Naam van aanbieding: | Geen | Gebruik publishernaam en productOrderName. |
+| OfferID | Geen | &nbsp;  |
+| Bestelnummer | Geen | &nbsp;  |
+| PartNumber | Geen | Gebruik meterId en productOrderName om prijzen uniek te identificeren. |
 | Naam van het plan | productOrderName | &nbsp;  |
 | Product | Product |   |
 | ProductId | productId | De exacte teken reeks waarden verschillen. |
@@ -205,30 +205,30 @@ De naam van de eigenschap met de matrix met gebruiks records is gewijzigd van ge
 | ResourceGroup | resourceGroupName | &nbsp;  |
 | GUID | meterId | De exacte teken reeks waarden verschillen. |
 | ResourceLocation | resourceLocation | &nbsp;  |
-| ResourceLocationId | None | &nbsp;  |
+| ResourceLocationId | Geen | &nbsp;  |
 | ResourceRate | effectivePrice | &nbsp;  |
-| ServiceAdministratorId | N.v.t. | &nbsp;  |
+| ServiceAdministratorId | N/A | &nbsp;  |
 | ServiceInfo1 | serviceInfo1 | &nbsp;  |
 | ServiceInfo2 | serviceInfo2 | &nbsp;  |
 | ServiceName | meterCategory | De exacte teken reeks waarden kunnen verschillen. |
 | ServiceTier | meterSubCategory | De exacte teken reeks waarden kunnen verschillen. |
-| StoreServiceIdentifier | N.v.t. | &nbsp;  |
+| StoreServiceIdentifier | N/A | &nbsp;  |
 | SubscriptionGuid | subscriptionId | &nbsp;  |
 | SubscriptionId | subscriptionId | &nbsp;  |
 | SubscriptionName | subscriptionName | &nbsp;  |
 | Tags | tags | De eigenschap Tags is van toepassing op het hoofd object, niet op de eigenschap geneste eigenschappen. |
 | UnitOfMeasure | unitOfMeasure | De exacte teken reeks waarden verschillen. |
 | usageEndDate | date | &nbsp;  |
-| Jaar | None | De datum van het jaar wordt geparseerd. |
-| ander | billingCurrency | De valuta die wordt gebruikt voor de kosten. |
-| ander | billingProfileId | De unieke ID voor het facturerings Profiel (hetzelfde als inschrijving). |
-| ander | billingProfileName | De naam van het facturerings Profiel (hetzelfde als inschrijving). |
-| ander | chargeType | Gebruiken om onderscheid te maken tussen Azure-service gebruik, Marketplace-gebruik en aankopen. |
-| ander | InvoiceId | De unieke ID voor de factuur. Leeg voor de huidige, open maand. |
-| ander | publisherType | Het type Uitgever voor aankopen. Leeg voor gebruik. |
-| ander | serviceFamily | Het type aankoop. Leeg voor gebruik. |
-| ander | servicePeriodEndDate | Eind datum voor de aangeschafte service. |
-| ander | servicePeriodStartDate | Begin datum voor de aangeschafte service. |
+| Jaar | Geen | De datum van het jaar wordt geparseerd. |
+| (nieuw) | billingCurrency | De valuta die wordt gebruikt voor de kosten. |
+| (nieuw) | billingProfileId | De unieke ID voor het facturerings Profiel (hetzelfde als inschrijving). |
+| (nieuw) | billingProfileName | De naam van het facturerings Profiel (hetzelfde als inschrijving). |
+| (nieuw) | chargeType | Gebruiken om onderscheid te maken tussen Azure-service gebruik, Marketplace-gebruik en aankopen. |
+| (nieuw) | InvoiceId | De unieke ID voor de factuur. Leeg voor de huidige, open maand. |
+| (nieuw) | publisherType | Het type Uitgever voor aankopen. Leeg voor gebruik. |
+| (nieuw) | serviceFamily | Het type aankoop. Leeg voor gebruik. |
+| (nieuw) | servicePeriodEndDate | Eind datum voor de aangeschafte service. |
+| (nieuw) | servicePeriodStartDate | Begin datum voor de aangeschafte service. |
 
 ## <a name="billing-periods-api-replaced-by-invoices-api"></a>API voor facturerings periodes vervangen door facturen API
 
@@ -271,7 +271,7 @@ Gebruik de prijs lijst-API voor het weer geven van alle prijzen lijst gegevens v
 | --- | --- |
 | POST | `https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/pricesheet/default/download?api-version=2018-11-01-preview&startDate=2019-01-01&endDate=2019-01-31&format=json` |
 
-Met de API wordt het prijs overzicht voor het hele account geretourneerd. U kunt echter ook een verkorte versie van het prijzen overzicht in PDF-indeling krijgen. Het overzicht bevat Azure-verbruik en services voor het gebruik van Marketplace die voor een specifieke factuur worden gefactureerd. De factuur wordt geïdentificeerd door {invoiceId}. Dit is hetzelfde als het **factuur nummer** dat wordt weer gegeven in de PDF-bestanden met factuur overzichten. Hier volgt een voor beeld.
+Met de API wordt het prijs overzicht voor het hele account geretourneerd. U kunt echter ook een verkorte versie van het prijzen overzicht in PDF-indeling krijgen. Het overzicht bevat Azure-verbruik en services voor het gebruik van Marketplace die voor een specifieke factuur worden gefactureerd. De factuur wordt geïdentificeerd door {invoiceId}. Dit is hetzelfde als het **factuur nummer** dat wordt weer gegeven in de PDF-bestanden met factuur overzichten. Hier volgt een voorbeeld.
 
 ![Voorbeeld afbeelding met het factuur nummer dat overeenkomt met de InvoiceId](./media/migrate-cost-management-api/invoicesummary.png)
 
@@ -367,16 +367,16 @@ De client kan ook een GET-aanroep voor de `Azure-AsyncOperation`maken. Het eind 
 
 De volgende tabel bevat velden in de oudere onderneming prijs lijst-API ophalen. Het bevat overeenkomende velden in het nieuwe prijzen overzicht voor micro soft-klant overeenkomsten:
 
-| Eigenschap Old | Nieuwe eigenschap | Opmerkingen |
+| Oude eigenschap | Nieuwe eigenschap | Opmerkingen |
 | --- | --- | --- |
 | billingPeriodId  | _Niet van toepassing_ | Niet van toepassing. Voor klanten overeenkomsten van micro soft is het concept van billingPeriodId vervangen door de factuur en het bijbehorende prijs overzicht. |
 | meterId  | meterId | &nbsp;  |
 | unitOfMeasure  | unitOfMeasure | De exacte teken reeks waarden kunnen verschillen. |
 | includedQuantity  | includedQuantity | Niet van toepassing op Services in micro soft-klant overeenkomsten. |
-| partNumber  | _Niet van toepassing_ | Gebruik in plaats daarvan een combi natie van productOrderName (hetzelfde als offerId) en meterid. |
+| partNumber  | _Niet van toepassing_ | Gebruik in plaats daarvan een combi natie van productOrderName (hetzelfde als offerID) en meterID. |
 | unitPrice  | unitPrice | Eenheids prijs is van toepassing op Services die worden gebruikt in micro soft-klant overeenkomsten. |
 | currencyCode  | pricingCurrency | Micro soft-klant overeenkomsten hebben prijs representaties in de prijs-en facturerings valuta. De currencyCode komt overeen met de pricingCurrency in micro soft-klant overeenkomsten. |
-| offerId | productOrderName | In plaats van OfferId kunt u productOrderName gebruiken, maar dit is niet hetzelfde als OfferId. ProductOrderName en meter bepalen prijzen in micro soft-klanten overeenkomsten met betrekking tot meterId en Offerid in verouderde inschrijvingen. |
+| offerID | productOrderName | In plaats van OfferID kunt u productOrderName gebruiken, maar dit is niet hetzelfde als OfferID. ProductOrderName en meter bepalen prijzen in micro soft-klanten overeenkomsten met betrekking tot meterId en OfferID in verouderde inschrijvingen. |
 
 ## <a name="consumption-price-sheet-api-operations"></a>API-bewerkingen voor verbruik prijzen overzicht
 
@@ -430,24 +430,24 @@ De oudere eigenschappen voor [Azure Resource Manager prijs lijst-api's](/rest/ap
 
 | Verouderde Azure Resource Manager prijs lijst API-eigenschap  | Nieuwe micro soft-gebruikers overeenkomst prijs lijst API-eigenschap   | Beschrijving |
 | --- | --- | --- |
-| Id van de meter | _meterId_ | Unieke identificatie voor de meter. Hetzelfde als meterId. |
+| Id van de meter | _meterId_ | Unieke identificatie voor de meter. Hetzelfde als meterID. |
 | Meter naam | meterName | Naam van de meter. Meter vertegenwoordigt de resource die kan worden geïmplementeerd voor de Azure-service. |
 | Meter categorie  | service | Naam van de classificatiecategorie voor de meter. Hetzelfde als de service in het prijzen overzicht van de micro soft-klanten overeenkomst. De exacte teken reeks waarden verschillen. |
 | Subcategorie van de meter | meterSubCategory | De naam van de subclassificatiecategorie voor de meter. Op basis van de classificatie van de functie set-differentiatie op hoog niveau in de service. Bijvoorbeeld Basic SQL DB versus Standard SQL DB. |
 | Meter regio | meterRegion | &nbsp;  |
 | Eenheid | _Niet van toepassing_ | Kan worden geparseerd vanuit unitOfMeasure. |
 | Meeteenheid | unitOfMeasure | &nbsp;  |
-| Onderdeel nummer | _Niet van toepassing_ | Gebruik in plaats van partNumber productOrderName en MeterId om de prijs van een facturerings profiel uniek te identificeren. Velden worden weer gegeven op de MCA-factuur in plaats van de partNumber in MCA-facturen. |
+| Onderdeel nummer | _Niet van toepassing_ | Gebruik in plaats van een deel nummer productOrderName en MeterID om de prijs van een facturerings profiel uniek te identificeren. Velden worden weer gegeven op de MCA-factuur in plaats van het onderdeel nummer in MCA-facturen. |
 | Eenheidsprijs | unitPrice | Eenheids prijs van de klant overeenkomst van micro soft. |
 | Valuta code | pricingCurrency | Micro soft-klanten overeenkomsten vertegenwoordigen prijzen in de prijs-en facturerings valuta. De valuta code is hetzelfde als de pricingCurrency in micro soft-klant overeenkomsten. |
 | Inbegrepen hoeveelheid | includedQuantity | Niet van toepassing op Services in micro soft-klant overeenkomsten. Weer geven met waarden van nul. |
-|  Aanbiedings-id  | productOrderName | Gebruik productOrderName in plaats van OfferId. Niet hetzelfde als OfferId, maar de productOrderName en meter bepalen prijzen in micro soft-klant overeenkomsten. Gerelateerd aan meterId en Offerid bij verouderde inschrijvingen. |
+|  Aanbiedings-ID  | productOrderName | Gebruik productOrderName in plaats van OfferID. Niet hetzelfde als OfferID, maar de productOrderName en meter bepalen prijzen in micro soft-klant overeenkomsten. Gerelateerd aan meterId en OfferID bij verouderde inschrijvingen. |
 
-De prijs voor klant overeenkomsten van micro soft is anders gedefinieerd dan Enter prise Agreements. De prijs voor services in de Enter prise-inschrijving is uniek voor product, PartNumber, meter en aanbieding. De PartNumber wordt niet gebruikt in micro soft-klant overeenkomsten.
+De prijs voor klant overeenkomsten van micro soft is anders gedefinieerd dan Enter prise Agreements. De prijs voor services in de Enter prise-inschrijving is uniek voor het product, het onderdeel nummer, de meter en de aanbieding. Het onderdeel nummer wordt niet gebruikt in micro soft-klant overeenkomsten.
 
-De prijs van de Azure-verbruiks service die deel uitmaakt van een micro soft-klant overeenkomst is uniek voor productOrderName en meterId. Ze vertegenwoordigen de service meter en het product plan.
+De prijs van de Azure-verbruiks service die deel uitmaakt van een micro soft-klant overeenkomst is uniek voor productOrderName en meterID. Ze vertegenwoordigen de service meter en het product plan.
 
-Als u wilt afstemmen tussen het prijs overzicht en het gebruik in de API gebruiks Details, kunt u de productOrderName en meterId gebruiken.
+Als u wilt afstemmen tussen het prijs overzicht en het gebruik in de API gebruiks Details, kunt u de productOrderName en meterID gebruiken.
 
 Gebruikers met de rechten van de facturerings profiel eigenaar, Inzender, lezer en factuur Manager kunnen het prijzen overzicht downloaden.
 
@@ -460,12 +460,12 @@ De volgende velden zijn niet beschikbaar in de micro soft-tarieven voor prijzen 
 |Buiten gebruik gesteld veld| Beschrijving|
 |---|---|
 | billingPeriodId | Niet van toepassing. Komt overeen met InvoiceId voor MCA. |
-| offerId | Niet van toepassing. Komt overeen met productOrderName in MCA. |
+| offerID | Niet van toepassing. Komt overeen met productOrderName in MCA. |
 | meterCategory  | Niet van toepassing. Komt overeen met de service in MCA. |
-| teleenheid | Niet van toepassing. Kan worden geparseerd vanuit unitOfMeasure. |
+| eenheid | Niet van toepassing. Kan worden geparseerd vanuit unitOfMeasure. |
 | currencyCode | Hetzelfde als de pricingCurrency in MCA. |
 | meterLocation | Hetzelfde als de meterRegion in MCA. |
-| partNumber partnumber | Niet van toepassing omdat het onderdeel nummer niet wordt vermeld in MCA-facturen. Gebruik in plaats van partnumber de combi natie van meterId en productOrderName om prijzen uniek te identificeren. |
+| partNumber partnumber | Niet van toepassing omdat het onderdeel nummer niet wordt vermeld in MCA-facturen. Gebruik in plaats van een deel nummer de combi natie van meterId en productOrderName om prijzen uniek te identificeren. |
 | totalIncludedQuantity | Niet van toepassing. |
 | pretaxStandardRate  | Niet van toepassing. |
 
@@ -523,10 +523,10 @@ Reserverings overzichten ophalen met de API reserverings overzichten:
 
 Organisaties die [Cloudyn](https://cloudyn.com) gebruiken, moeten gebruikmaken van [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) voor kosten beheer behoeften. Cost Management is beschikbaar in het Azure Portal zonder onboarding en een latentie van acht uur. Zie de [Cost Management-documentatie](index.yml)voor meer informatie.
 
-Met Azure Cost Management kunt u het volgende doen:
+Met Azure Cost Management kunt u:
 
-- Kosten gedurende een periode op basis van een vooraf gedefinieerd budget weer geven. Analyseer dagelijkse kosten patronen om afwijkingen van de uitgave te identificeren en te stoppen. Onderbreek de kosten per label, resource groep, service en locatie.
-- Maak budgetten om limieten in te stellen voor het gebruik en de kosten en ontvang een melding wanneer er belang rijke drempel waarden worden bereikt. Stel Automation in met actie groepen om aangepaste gebeurtenissen te activeren en vaste limieten op uw voor waarden af te dwingen.
+- Kosten gedurende een periode op basis van een vooraf gedefinieerd budget weer geven. Dagelijkse kostenpatronen analyseren om afwijkende uitgaven te identificeren en te stoppen. Onderbreek de kosten per label, resource groep, service en locatie.
+- Maak budgetten om limieten in te stellen voor het gebruik en de kosten en ontvang een melding wanneer er belang rijke drempel waarden worden bereikt. Automatisering instellen voor actiegroepen om aangepaste gebeurtenissen te activeren en definitieve limieten af te dwingen volgens uw eigen regels.
 - Optimaliseer kosten en gebruik met aanbevelingen van Azure Advisor. Analyseer aankoop optimalisaties met reserve ringen, krimpen-ondergebruikte virtuele machines en Verwijder ongebruikte resources om binnen budgetten te blijven.
 - Plan een kosten-en gebruiks gegevens export om dagelijks een CSV-bestand naar uw opslag account te publiceren. Automatiseer de integratie met externe systemen om facturerings gegevens synchroon en up-to-date te houden.
 

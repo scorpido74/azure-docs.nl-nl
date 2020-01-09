@@ -6,21 +6,27 @@ author: linda33wj
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 8/26/2019
+ms.date: 12/10/2019
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 386372b73940c4917305d89f2e4d16759797bb87
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 7b01e9936189a40fcf1400d3e6ee948032786d3a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73680467"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75444179"
 ---
 # <a name="azure-data-factory-connector-overview"></a>Overzicht van Azure Data Factory-connector
 
-Azure Data Factory ondersteunen de volgende gegevens archieven via Kopieer activiteit, gegevens stroom, opzoek activiteit, ophalen van meta gegevens activiteit en delete-activiteit. Klik op elk gegevens Archief voor informatie over de ondersteunde mogelijkheden in details en de bijbehorende configuraties.
+Azure Data Factory ondersteunen de volgende gegevens archieven en-indelingen via kopiëren, gegevens stroom, zoeken, meta gegevens ophalen en activiteiten verwijderen. Klik op elk gegevens Archief voor meer informatie over de ondersteunde mogelijkheden en de bijbehorende configuraties.
+
+## <a name="supported-data-stores"></a>Ondersteunde gegevensarchieven
 
 [!INCLUDE [Connector overview](../../includes/data-factory-v2-connector-overview.md)]
+
+## <a name="supported-file-formats"></a>Ondersteunde bestandsindelingen
+
+[!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

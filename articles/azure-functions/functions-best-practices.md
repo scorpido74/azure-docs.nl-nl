@@ -3,14 +3,14 @@ title: Aanbevolen procedures voor Azure Functions
 description: Lees de aanbevolen procedures en patronen voor Azure Functions.
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
-ms.date: 10/16/2017
+ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fa85f636233a067713d127938d674b359bd03696
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 19674cb024bd9b9c9ea9f510080e30614fad8b60
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227370"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75433302"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimaliseer de prestaties en betrouw baarheid van Azure Functions
 
@@ -70,7 +70,11 @@ Er zijn een aantal factoren die van invloed zijn op de schaal van exemplaren van
 
 ### <a name="share-and-manage-connections"></a>Verbindingen delen en beheren
 
-Gebruik waar mogelijk verbindingen met externe resources.  Zie [verbindingen beheren in azure functions](./manage-connections.md).
+Gebruik waar mogelijk verbindingen met externe resources. Zie [verbindingen beheren in azure functions](./manage-connections.md).
+
+### <a name="avoid-sharing-storage-accounts"></a>Vermijd het delen van opslag accounts
+
+Wanneer u een functie-app maakt, moet u deze koppelen aan een opslag account. De verbinding van het opslag account wordt onderhouden in de [toepassings instelling AzureWebJobsStorage](./functions-app-settings.md#azurewebjobsstorage). Gebruik een afzonderlijk opslag account voor elke functie-app om de prestaties te maximaliseren. Dit is vooral belang rijk wanneer u Durable Functions of event hub geactiveerde functies hebt, waarbij beide een groot aantal opslag transacties genereren. Wanneer uw toepassings logica communiceert met Azure Storage, direct (met behulp van de opslag-SDK) of via een van de opslag bindingen, moet u een speciaal opslag account gebruiken. Als u bijvoorbeeld een event hub-functie hebt geactiveerd om bepaalde gegevens te schrijven naar Blob Storage, gebruikt u twee opslag accounts&mdash;een voor de functie-app en een andere voor de blobs die door de functie worden opgeslagen.
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Test-en productie code niet combi neren in dezelfde functie-app
 
@@ -84,9 +88,17 @@ Gebruik geen uitgebreide logboek registratie in productie code, die een negatiev
 
 ### <a name="use-async-code-but-avoid-blocking-calls"></a>Gebruik async code, maar voorkom het blok keren van aanroepen
 
-Asynchrone programmering is een aanbevolen best practice. Vermijd echter altijd het verwijzen naar de `Result` eigenschap of het aanroepen van `Wait` methode op een `Task`-exemplaar. Deze benadering kan leiden tot uitputting van de thread.
+Asynchrone programmering is een aanbevolen best practice, met name bij het blok keren van I/O-bewerkingen.
+
+Vermijd C#in altijd het verwijzen naar de `Result` eigenschap of het aanroepen van `Wait` methode op een `Task`-exemplaar. Deze benadering kan leiden tot uitputting van de thread.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
+
+### <a name="use-multiple-worker-processes"></a>Meerdere werk processen gebruiken
+
+Elk exemplaar van een host voor functions maakt standaard gebruik van één werk proces. Om de prestaties te verbeteren, met name met single-threaded Runtimes zoals python, gebruikt u de [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) om het aantal werk processen per host (Maxi maal 10) te verhogen. Azure Functions probeert vervolgens gelijktijdige functie aanroepen voor deze werk nemers gelijkmatig te verdelen. 
+
+De FUNCTIONS_WORKER_PROCESS_COUNT is van toepassing op elke host die functies maakt wanneer uw toepassing wordt geschaald om aan de vraag te voldoen. 
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Indien mogelijk berichten in batch ontvangen
 

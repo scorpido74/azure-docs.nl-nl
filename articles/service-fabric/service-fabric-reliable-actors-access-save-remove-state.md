@@ -1,43 +1,34 @@
 ---
-title: Azure Service Fabric-status beheren | Microsoft Docs
-description: Leer hoe u toegang tot, het opslaan en het verwijderen van Service Fabric Reliable Actors-status.
-services: service-fabric
-documentationcenter: .net
+title: Azure Service Fabric-status beheren
+description: Meer informatie over het openen, opslaan en verwijderen van de status van een Azure Service Fabric reliable actor en overwegingen bij het ontwerpen van een toepassing.
 author: vturecek
-manager: chackdan
-editor: ''
-ms.assetid: 37cf466a-5293-44c0-a4e0-037e5d292214
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
-ms.openlocfilehash: 7c10d00916ef65767c98616c7337bfa444c339a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 788c337a37ec66c5aa1521c5cd9f2816ed7a8bf9
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725394"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645630"
 ---
-# <a name="access-save-and-remove-reliable-actors-state"></a>Toegang tot, opslaan en Reliable Actors-status verwijderen
-[Reliable Actors](service-fabric-reliable-actors-introduction.md) zijn single-threaded objecten die kunnen inkapselen van zowel de logica en de status en status op betrouwbare wijze beheren. Elke actor-exemplaar heeft een eigen [status manager](service-fabric-reliable-actors-state-management.md): een woordenlijst-achtige gegevensstructuur waarmee op betrouwbare wijze worden opgeslagen sleutel/waarde-paren. De status manager is een wrapper rond een state-provider. U kunt deze gebruiken voor het opslaan van gegevens, ongeacht welke [persistentie instelling](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) wordt gebruikt.
+# <a name="access-save-and-remove-reliable-actors-state"></a>Reliable Actors status openen, opslaan en verwijderen
+[Reliable actors](service-fabric-reliable-actors-introduction.md) zijn objecten met één thread die zowel de logica als de status kunnen inkapselen, en de status betrouwbaar kan onderhouden. Elk actor-exemplaar heeft een eigen [status Manager](service-fabric-reliable-actors-state-management.md): een gegevens structuur op basis van een woorden lijst die op betrouw bare wijze sleutel/waarde-paren opslaat. De status Manager is een wrapper rond een State-provider. U kunt deze gebruiken om gegevens op te slaan, ongeacht welke [persistentie-instelling](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) wordt gebruikt.
 
-Status manager sleutels moeten tekenreeksen zijn. Waarden zijn algemeen en kan elk type zijn, met inbegrip van aangepaste typen. Waarden die zijn opgeslagen in de status manager moet serializable-gegevenscontract omdat ze tijdens de replicatie via het netwerk naar andere knooppunten kunnen worden verzonden en kunnen worden geschreven naar de schijf, afhankelijk van de instelling van persistentie van een actor.
+State Manager-sleutels moeten teken reeksen zijn. Waarden zijn Gene riek en kunnen elk type zijn, inclusief aangepaste typen. Waarden die zijn opgeslagen in de status Manager moeten gegevens contract serialiseerbaar zijn omdat ze via het netwerk kunnen worden verzonden naar andere knoop punten tijdens de replicatie en kunnen worden geschreven naar de schijf, afhankelijk van de instelling van de status persistentie van een actor.
 
-De status manager bevat algemene woordenlijst methoden voor het beheren van de status, vergelijkbaar met die in een betrouwbare Dictionary gevonden.
+De status Manager stelt algemene woordenboek methoden beschikbaar voor het beheren van de status, vergelijkbaar met die in de betrouw bare woorden lijst.
 
-Zie voor meer informatie, [aanbevolen procedures bij het beheren van de actorstatus](service-fabric-reliable-actors-state-management.md#best-practices).
+Zie [Aanbevolen procedures voor het beheren van de actor status](service-fabric-reliable-actors-state-management.md#best-practices)voor meer informatie.
 
-## <a name="access-state"></a>Toegangsstatus
-Status toegankelijk is via het statusbeheerherstel dat door de sleutel. Status manager methoden zijn alle asynchrone omdat ze mogelijk schijf-i/o wanneer actoren hebt opgeslagen status. Na de eerste keer opent, worden de status van objecten in het cachegeheugen opgeslagen. Herhaal de toegang tot operations toegang-objecten rechtstreeks uit het geheugen en synchroon retourneren waarbij extra kosten voor schijf-i/o- of asynchrone context wisselt overhead. Een statusobject is verwijderd uit de cache in de volgende gevallen:
+## <a name="access-state"></a>Toegangs status
+De status is toegankelijk via de status Manager per sleutel. Status Manager-methoden zijn allemaal asynchroon, omdat deze mogelijk schijf-I/O vereisen wanneer actors de status persistent hebben. Bij eerste toegang worden status objecten in het geheugen opgeslagen in de cache. Herhaal Access-toegangs objecten rechtstreeks vanuit het geheugen en retour neer synchroon zonder schijf-I/O of asynchrone overhead voor context schakeling. In de volgende gevallen wordt een status object uit de cache verwijderd:
 
-* Nadat het ophalen van een object van de status manager, genereert de actormethode van een een onverwerkte uitzondering.
-* Een actor opnieuw wordt geactiveerd, na wordt gedeactiveerd of na een storing.
-* De state-provider-pagina's staat op schijf. Dit gedrag is afhankelijk van de implementatie van de provider staat. De standaard state-provider voor de `Persisted` instelling, heeft dit probleem.
+* Een actor-methode genereert een onverwerkte uitzonde ring nadat een object is opgehaald uit de status Manager.
+* Een actor wordt opnieuw geactiveerd, hetzij na het deactiveren of na de fout.
+* Status van de status provider pagina's op schijf. Dit gedrag is afhankelijk van de implementatie van de State-provider. De standaard status provider voor de `Persisted` instelling heeft dit gedrag.
 
-U kunt de status ophalen met behulp van een standaard *ophalen* bewerking die genereert `KeyNotFoundException`(C#) of `NoSuchElementException`(Java) als er een vermelding bestaat voor de sleutel:
+U kunt de status ophalen met behulp van een standaard *Get* -bewerking dieC#`KeyNotFoundException`() of `NoSuchElementException`(Java) genereert als er geen vermelding voor de sleutel bestaat:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -70,7 +61,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-U kunt ook de status ophalen met behulp van een *TryGet* methode die wordt als een vermelding niet voor een sleutel bestaat genereren:
+U kunt de status ook ophalen met behulp van een *TryGet* -methode die niet genereert als er geen vermelding voor een sleutel bestaat:
 
 ```csharp
 class MyActor : Actor, IMyActor
@@ -113,9 +104,9 @@ class MyActorImpl extends FabricActor implements  MyActor
 ```
 
 ## <a name="save-state"></a>Status opslaan
-De methoden voor het ophalen van status manager retourneert een verwijzing naar een object in het lokale geheugen. Wijzigen van dit object in het lokale geheugen alleen leidt niet tot deze blijvend worden opgeslagen. Wanneer een object is opgehaald uit de status manager en gewijzigd, moet u deze opnieuw in de status manager blijvend worden opgeslagen.
+De methode voor het ophalen van status Manager retourneert een verwijzing naar een object in het lokale geheugen. Als u dit object in alleen lokaal geheugen wijzigt, wordt het niet blijvend opgeslagen. Wanneer een object wordt opgehaald uit de status Manager en gewijzigd, moet het worden geplaatst in de status Manager om blijvend te kunnen opslaan.
 
-U kunt de status invoegen met behulp van een onvoorwaardelijk *ingesteld*, het equivalent van de `dictionary["key"] = value` syntaxis:
+U kunt de status invoegen met behulp van een onvoorwaardelijke *set*, die overeenkomt met de `dictionary["key"] = value` syntaxis:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -148,7 +139,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-U kunt de status toevoegen met behulp van een *toevoegen* methode. Deze methode genereert `InvalidOperationException`(C#) of `IllegalStateException`(Java) als er wordt geprobeerd om toe te voegen een sleutel die al bestaat.
+U kunt een status toevoegen met behulp van een *add* -methode. Met deze methode wordt `InvalidOperationException`(C#) of `IllegalStateException`(Java) gegenereerd wanneer wordt geprobeerd een sleutel toe te voegen die al bestaat.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -181,7 +172,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-U kunt ook de status toevoegen met behulp van een *TryAdd* methode. Deze methode wordt niet genereren als er wordt geprobeerd om toe te voegen een sleutel die al bestaat.
+U kunt ook een status toevoegen met behulp van een *TryAdd* -methode. Deze methode wordt niet gegenereerd wanneer er wordt geprobeerd een sleutel toe te voegen die al bestaat.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -224,9 +215,9 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-Aan het einde van een actormethode slaat de status manager automatisch alle waarden die zijn toegevoegd of gewijzigd door een bewerking voor invoegen of bijwerken. Een 'opslaan' kunt opnemen met het persistent maken op schijf en replicatie, afhankelijk van de instellingen die worden gebruikt. Waarden die niet zijn gewijzigd, zijn niet opgeslagen of gerepliceerd. Als er geen waarden zijn gewijzigd, het opslaan bewerking doet niets. Als mislukt opslaat, wordt de gewijzigde status verwijderd en wordt de oorspronkelijke status opnieuw is geladen.
+Aan het einde van een actor-methode slaat de status Manager automatisch waarden op die zijn toegevoegd of gewijzigd door een INSERT-of update-bewerking. Een ' Save ' kan bestaan uit persistentie op schijf en replicatie, afhankelijk van de gebruikte instellingen. Waarden die niet zijn gewijzigd, blijven niet behouden of worden gerepliceerd. Als er geen waarden zijn gewijzigd, gebeurt er niets. Als het opslaan mislukt, wordt de gewijzigde status verwijderd en wordt de oorspronkelijke status opnieuw geladen.
 
-U kunt de status ook handmatig opslaan door het aanroepen van de `SaveStateAsync` methode voor de actor-base:
+U kunt de status ook hand matig opslaan door de `SaveStateAsync`-methode aan te roepen op de actor-basis:
 
 ```csharp
 async Task IMyActor.SetCountAsync(int count)
@@ -248,7 +239,7 @@ interface MyActor {
 ```
 
 ## <a name="remove-state"></a>Status verwijderen
-U kunt de status permanent verwijderen uit van een actor status manager door het aanroepen van de *verwijderen* methode. Deze methode genereert `KeyNotFoundException`(C#) of `NoSuchElementException`(Java) als er wordt geprobeerd om te verwijderen van een sleutel die niet bestaat.
+U kunt de status permanent verwijderen uit de status Manager van een actor door de methode *Remove* aan te roepen. Met deze methode wordt `KeyNotFoundException`(C#) of `NoSuchElementException`(Java) gegenereerd wanneer wordt geprobeerd een sleutel te verwijderen die niet bestaat.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -281,7 +272,7 @@ class MyActorImpl extends FabricActor implements  MyActor
 }
 ```
 
-U kunt ook de status permanent verwijderen met behulp van de *TryRemove* methode. Deze methode wordt niet genereren als er wordt geprobeerd om te verwijderen van een sleutel die niet bestaat.
+U kunt de status ook permanent verwijderen met de methode *TryRemove* . Deze methode wordt niet gegenereerd wanneer wordt geprobeerd een sleutel te verwijderen die niet bestaat.
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -326,6 +317,6 @@ class MyActorImpl extends FabricActor implements  MyActor
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Status die opgeslagen in Reliable Actors moet achtereenvolgens worden uitgevoerd voordat de naar schijf worden geschreven en gerepliceerd voor hoge beschikbaarheid. Meer informatie over [Actor typeserialisatie](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
+De status die is opgeslagen in Reliable Actors moet worden geserialiseerd voordat deze naar de schijf wordt geschreven en kan worden gerepliceerd voor hoge Beschik baarheid. Meer informatie over het [serialiseren van het type actor](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 
-Vervolgens meer informatie over [Actor diagnostische gegevens en bewaking van toepassingsprestaties](service-fabric-reliable-actors-diagnostics.md).
+Klik vervolgens op meer informatie over [actor Diagnostics en prestatie bewaking](service-fabric-reliable-actors-diagnostics.md).

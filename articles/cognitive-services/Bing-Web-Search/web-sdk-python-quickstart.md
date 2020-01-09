@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 12/09/2019
 ms.author: aahi
-ms.openlocfilehash: 0f6dceac3e46f8e36d2da52c15c0b0696e026a0e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 64ef052478bed627c896cd0e0b5301961a8b6f21
+ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977213"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75562864"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-python"></a>Snelstartgids: de Bing Web Search SDK voor Python gebruiken
 
@@ -63,6 +63,12 @@ Maak een virtuele omgeving met `venv` voor Python 3.x:
 
 ```console
 python -m venv mytestenv
+```
+
+Uw omgeving activeren:
+
+```console
+mytestenv\Scripts\activate.bat
 ```
 
 Installeer Bing Web Search SDK-afhankelijkheden:
@@ -261,7 +267,7 @@ In dit voorbeeld worden de parameters `response_filter` en `freshness` gebruikt 
 
 1. Voer het programma uit.
 
-### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Gebruik de parameters voor veilig zoeken, aantal antwoorden en de filter voor het promoten van zoekresultaten
+### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Gebruik de parameters voor veilig zoeken, aantal antwoorden en het filter voor het promoten van zoekresultaten
 
 In dit voorbeeld worden de parameters `answer_count`, `promote` en `safe_search` gebruikt om de zoekresultaten te filteren met de [`search`-methode](https://docs.microsoft.com/python/api/azure-cognitiveservices-search-websearch/azure.cognitiveservices.search.websearch.operations.weboperations?view=azure-python) van de SDK. De `name` en `url` voor het eerste resultaat worden weergegeven.
 

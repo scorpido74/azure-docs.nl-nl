@@ -1,25 +1,16 @@
 ---
-title: Azure Service Fabric configureren Reliable Services | Microsoft Docs
-description: Meer informatie over het configureren van stateful-Reliable Services in azure Service Fabric.
-services: Service-Fabric
-documentationcenter: .net
+title: Azure Service Fabric Reliable Services configureren
+description: Meer informatie over het configureren van stateful-Reliable Services in een Azure Service Fabric-toepassing wereld wijd en voor één service.
 author: sumukhs
-manager: chackdan
-editor: vturecek
-ms.assetid: 9f72373d-31dd-41e3-8504-6e0320a11f0e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: 60a4669e20aa8aaf80ae174c88631f3dc572656d
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 9743213394b59af701b25b8be9dd48cf4310b499
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242888"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645511"
 ---
 # <a name="configure-stateful-reliable-services"></a>Stateful reliable Services configureren
 Er zijn twee sets configuratie-instellingen voor betrouw bare Services. Eén set is globaal voor alle betrouw bare Services in het cluster, terwijl de andere set specifiek is voor een bepaalde betrouw bare service.
@@ -28,11 +19,11 @@ Er zijn twee sets configuratie-instellingen voor betrouw bare Services. Eén set
 De algemene betrouw bare service configuratie is opgegeven in het cluster manifest voor het cluster in het gedeelte KtlLogger. Hiermee kunt u de locatie en grootte van het gedeelde logboek configureren, plus de globale geheugen limieten die door de logboeken worden gebruikt. Het cluster manifest is een enkel XML-bestand met instellingen en configuraties die van toepassing zijn op alle knoop punten en services in het cluster. Het bestand heet doorgaans ClusterManifest. XML. U kunt het cluster manifest voor uw cluster zien met behulp van de Power shell-opdracht Get-ServiceFabricClusterManifest.
 
 ### <a name="configuration-names"></a>Configuratie namen
-| Naam | Eenheid | Standaardwaarde | Opmerkingen |
+| Name | Eenheid | Standaardwaarde | Opmerkingen |
 | --- | --- | --- | --- |
-| WriteBufferMemoryPoolMinimumInKB |Kilo bytes |8388608 |Minimum aantal KB dat moet worden toegewezen in de kernelmodus voor de geheugen groep schrijf buffer voor logboek registratie. Deze geheugen groep wordt gebruikt voor het opslaan van de status informatie voordat naar de schijf wordt geschreven. |
-| WriteBufferMemoryPoolMaximumInKB |Kilo bytes |Geen limiet |Maximale grootte van de geheugen groep voor schrijf buffer voor logboek registratie kan worden uitgebreid. |
-| SharedLogId |GPT |"" |Hiermee geeft u een unieke GUID op die moet worden gebruikt voor het identificeren van het standaard gedeelde logboek bestand dat wordt gebruikt door alle betrouw bare Services op alle knoop punten in het cluster die de SharedLogId niet opgeven in hun servicespecifieke configuratie. Als SharedLogId is opgegeven, moet SharedLogPath ook worden opgegeven. |
+| WriteBufferMemoryPoolMinimumInKB |Kilobytes |8388608 |Minimum aantal KB dat moet worden toegewezen in de kernelmodus voor de geheugen groep schrijf buffer voor logboek registratie. Deze geheugen groep wordt gebruikt voor het opslaan van de status informatie voordat naar de schijf wordt geschreven. |
+| WriteBufferMemoryPoolMaximumInKB |Kilobytes |Geen limiet |Maximale grootte van de geheugen groep voor schrijf buffer voor logboek registratie kan worden uitgebreid. |
+| SharedLogId |GUID |"" |Hiermee geeft u een unieke GUID op die moet worden gebruikt voor het identificeren van het standaard gedeelde logboek bestand dat wordt gebruikt door alle betrouw bare Services op alle knoop punten in het cluster die de SharedLogId niet opgeven in hun servicespecifieke configuratie. Als SharedLogId is opgegeven, moet SharedLogPath ook worden opgegeven. |
 | SharedLogPath |Fully Qualified Path name |"" |Hiermee geeft u het volledige pad op waar het gedeelde logboek bestand wordt gebruikt door alle betrouw bare Services op alle knoop punten in het cluster die de SharedLogPath niet opgeven in hun servicespecifieke configuratie. Als SharedLogPath echter is opgegeven, moet SharedLogId ook worden opgegeven. |
 | SharedLogSizeInMB |Mega bytes |8192 |Hiermee geeft u het aantal MB schijf ruimte op dat statisch moet worden toegewezen aan het gedeelde logboek. De waarde moet 2048 of groter zijn. |
 
@@ -109,19 +100,19 @@ ReplicatorConfig
 > 
 
 ### <a name="configuration-names"></a>Configuratie namen
-| Naam | Eenheid | Standaardwaarde | Opmerkingen |
+| Name | Eenheid | Standaardwaarde | Opmerkingen |
 | --- | --- | --- | --- |
-| BatchAcknowledgementInterval |Seconden |0,015 |De periode gedurende welke de Replicator op het secundaire wacht na ontvangst van een bewerking voordat een bevestiging wordt verzonden naar de primaire. Alle andere bevestigingen die moeten worden verzonden voor bewerkingen die binnen dit interval worden verwerkt, worden als één antwoord verzonden. |
+| BatchAcknowledgementInterval |Seconden |0.015 |De periode gedurende welke de Replicator op het secundaire wacht na ontvangst van een bewerking voordat een bevestiging wordt verzonden naar de primaire. Alle andere bevestigingen die moeten worden verzonden voor bewerkingen die binnen dit interval worden verwerkt, worden als één antwoord verzonden. |
 | ReplicatorEndpoint |N/A |Geen standaard-vereiste para meter |Het IP-adres en de poort die door de primaire/secundaire Replicator worden gebruikt om te communiceren met andere replicatie Programma's in de replicaset. Dit moet verwijzen naar een TCP-bron eindpunt in het service manifest. Raadpleeg de [service manifest bronnen](service-fabric-service-manifest-resources.md) voor meer informatie over het definiëren van eindpunt resources in een service manifest. |
 | MaxPrimaryReplicationQueueSize |Aantal bewerkingen |8192 |Maximum aantal bewerkingen in de primaire wachtrij. Er wordt een bewerking vrijgemaakt nadat de primaire Replicator een bevestiging van alle secundaire replicaties heeft ontvangen. Deze waarde moet groter zijn dan 64 en een macht van 2 zijn. |
 | MaxSecondaryReplicationQueueSize |Aantal bewerkingen |16384 |Maximum aantal bewerkingen in de secundaire wachtrij. Een bewerking wordt vrijgegeven nadat de status Maxi maal beschikbaar is via persistentie. Deze waarde moet groter zijn dan 64 en een macht van 2 zijn. |
 | CheckpointThresholdInMB |MB |50 |De hoeveelheid logboek bestands ruimte waarna de status van een controle punt wordt gemaakt. |
 | MaxRecordSizeInKB |KB |1024 |Grootste record grootte die door de Replicator kan worden geschreven in het logboek. Deze waarde moet een meervoud van 4 en groter dan 16 zijn. |
 | MinLogSizeInMB |MB |0 (door systeem vastgesteld) |Minimale grootte van het transactionele logboek. Het logboek mag niet worden afgekapt op een grootte onder deze instelling. 0 geeft aan dat de Replicator de minimale logboek grootte bepaalt. Als u deze waarde verhoogt, verhoogt u de kans op gedeeltelijke kopieën en incrementele back-ups omdat de kans dat relevante logboek records worden afgekapt wordt verlaagd. |
-| TruncationThresholdFactor |Rekening |2 |Bepaalt op welke grootte het logboek moet worden afgekapt. De drempel waarde voor afkap ping wordt bepaald door MinLogSizeInMB vermenigvuldigd met TruncationThresholdFactor. TruncationThresholdFactor moet groter zijn dan 1. MinLogSizeInMB * TruncationThresholdFactor moet kleiner zijn dan MaxStreamSizeInMB. |
-| ThrottlingThresholdFactor |Rekening |4 |Bepaalt op welke grootte van het logboek de replica wordt gestart. Drempel waarde voor bandbreedte beperking (in MB) wordt bepaald door Max ((MinLogSizeInMB * ThrottlingThresholdFactor), (CheckpointThresholdInMB * ThrottlingThresholdFactor)). Drempel waarde voor bandbreedte beperking (in MB) moet groter zijn dan Afbrekings drempel (in MB). De drempel waarde voor afkap ping (in MB) moet kleiner zijn dan MaxStreamSizeInMB. |
+| TruncationThresholdFactor |Multi-factor Authentication |2 |Bepaalt op welke grootte het logboek moet worden afgekapt. De drempel waarde voor afkap ping wordt bepaald door MinLogSizeInMB vermenigvuldigd met TruncationThresholdFactor. TruncationThresholdFactor moet groter zijn dan 1. MinLogSizeInMB * TruncationThresholdFactor moet kleiner zijn dan MaxStreamSizeInMB. |
+| ThrottlingThresholdFactor |Multi-factor Authentication |4 |Bepaalt op welke grootte van het logboek de replica wordt gestart. Drempel waarde voor bandbreedte beperking (in MB) wordt bepaald door Max ((MinLogSizeInMB * ThrottlingThresholdFactor), (CheckpointThresholdInMB * ThrottlingThresholdFactor)). Drempel waarde voor bandbreedte beperking (in MB) moet groter zijn dan Afbrekings drempel (in MB). De drempel waarde voor afkap ping (in MB) moet kleiner zijn dan MaxStreamSizeInMB. |
 | MaxAccumulatedBackupLogSizeInMB |MB |800 |De maximale gecumuleerde grootte (in MB) van back-uplogboeken in een bepaalde back-uplogboek keten. Een incrementele back-up mislukt als met de incrementele back-up een back-uplogboek wordt gegenereerd dat de geaccumuleerde back-uplogboeken zou kunnen veroorzaken omdat de relevante volledige back-up groter is dan deze grootte. In dergelijke gevallen is de gebruiker verplicht een volledige back-up te maken. |
-| SharedLogId |GPT |"" |Hiermee geeft u een unieke GUID op die moet worden gebruikt voor het identificeren van het gedeelde logboek bestand dat wordt gebruikt met deze replica. Normaal gesp roken moeten services deze instelling niet gebruiken. Als SharedLogId echter is opgegeven, moet SharedLogPath ook worden opgegeven. |
+| SharedLogId |GUID |"" |Hiermee geeft u een unieke GUID op die moet worden gebruikt voor het identificeren van het gedeelde logboek bestand dat wordt gebruikt met deze replica. Normaal gesp roken moeten services deze instelling niet gebruiken. Als SharedLogId echter is opgegeven, moet SharedLogPath ook worden opgegeven. |
 | SharedLogPath |Fully Qualified Path name |"" |Hiermee geeft u het volledige pad op waar het gedeelde logboek bestand voor deze replica wordt gemaakt. Normaal gesp roken moeten services deze instelling niet gebruiken. Als SharedLogPath echter is opgegeven, moet SharedLogId ook worden opgegeven. |
 | SlowApiMonitoringDuration |Seconden |300 |Hiermee stelt u het bewakings interval voor beheerde API-aanroepen. Voor beeld: door de gebruiker geleverde Terugbel functie voor back-up. Nadat het interval is verstreken, wordt een waarschuwings status rapport verzonden naar de Health Manager. |
 | LogTruncationIntervalSeconds |Seconden |0 |Configureerbaar interval waarmee de afkap ping van het logboek op elke replica wordt gestart. Het wordt gebruikt om ervoor te zorgen dat Logboeken ook worden afgekapt op basis van tijd in plaats van alleen logboek grootte. Deze instelling dwingt ook het leegmaken van verwijderde vermeldingen in een betrouw bare woorden lijst af. Dit kan daarom worden gebruikt om ervoor te zorgen dat verwijderde items tijdig worden opgeschoond. |

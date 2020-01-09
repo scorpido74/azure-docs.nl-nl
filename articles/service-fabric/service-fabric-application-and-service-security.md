@@ -1,25 +1,14 @@
 ---
-title: Meer informatie over de beveiliging van Azure Service Fabric-toepassingen | Microsoft Docs
+title: Meer informatie over de beveiliging van Azure Service Fabric-toepassingen
 description: Een overzicht van hoe u op een veilige manier micro Services-toepassingen kunt uitvoeren op Service Fabric. Meer informatie over het uitvoeren van services en opstart scripts onder verschillende beveiligings accounts, het verifiëren en autoriseren van gebruikers, het beheren van toepassings geheimen, het beveiligen van service communicatie, het gebruiken van een API-gateway en het beveiligen van toepassings gegevens in rust.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/16/2018
-ms.author: atsenthi
-ms.openlocfilehash: 75a82a0915414d24ab9c58ea15d3fdc9c1922c63
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 6c40bf66d1068310790d1440174eeb5b2a571154
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600073"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452256"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Beveiliging van toepassingen en Services Service Fabric
 Een micro service architectuur kan [veel voor delen](service-fabric-overview-microservices.md)bieden. Het beheren van de beveiliging van micro Services is echter een uitdaging en wijkt af van het beheer van traditionele monolithische-toepassingen. 
@@ -32,13 +21,13 @@ Dit artikel is geen hand leiding voor micro Services-beveiliging. er zijn veel v
 Het is vaak nodig dat bronnen en Api's die door een service worden weer gegeven, beperkt blijven tot bepaalde vertrouwde gebruikers of clients. Verificatie is het proces van het betrouwbaar vaststellen van de identiteit van een gebruiker.  Autorisatie is het proces dat Api's of services beschikbaar maakt voor sommige geverifieerde gebruikers, maar niet voor anderen.
 
 ### <a name="authentication"></a>Authentication
-De eerste stap voor het maken van vertrouwens beslissingen op API-niveau is verificatie. Verificatie is het proces van het betrouwbaar vaststellen van de identiteit van een gebruiker.  In micro service-scenario's wordt de verificatie doorgaans centraal afgehandeld. Als u een API-gateway gebruikt, kunt u de [verificatie](/azure/architecture/patterns/gateway-offloading) naar de gateway offloaden. Als u deze methode gebruikt, moet u ervoor zorgen dat de afzonderlijke services niet rechtstreeks kunnen worden bereikt (zonder de API-gateway), tenzij er extra beveiliging aanwezig is om berichten te verifiëren, ongeacht of ze afkomstig zijn van de gateway of niet.
+De eerste stap voor het maken van vertrouwens beslissingen op API-niveau is verificatie. Verificatie is het proces van het betrouwbaar vaststellen van de identiteit van een gebruiker.  In micro service-scenario's wordt de verificatie doorgaans centraal afgehandeld. Als u een API-gateway gebruikt, kunt u de verificatie naar de gateway [offloaden](/azure/architecture/patterns/gateway-offloading) . Als u deze methode gebruikt, moet u ervoor zorgen dat de afzonderlijke services niet rechtstreeks kunnen worden bereikt (zonder de API-gateway), tenzij er extra beveiliging aanwezig is om berichten te verifiëren, ongeacht of ze afkomstig zijn van de gateway of niet.
 
 Als services rechtstreeks toegankelijk zijn, kan een verificatie service, zoals Azure Active Directory of een speciale verificatie-micro service die fungeert als een beveiligings token service (STS) worden gebruikt om gebruikers te verifiëren. Vertrouwens beslissingen worden gedeeld tussen services met beveiligings tokens of cookies. 
 
 Voor ASP.NET Core is het primaire mechanisme voor het [verifiëren van gebruikers](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/) het ASP.net core identiteits lidmaatschaps systeem. Met ASP.NET Core identiteit worden gebruikers gegevens (inclusief aanmeldings gegevens, rollen en claims) opgeslagen in een gegevens archief dat door de ontwikkelaar is geconfigureerd. ASP.NET Core identiteit ondersteunt twee ledige verificatie.  Externe verificatie providers worden ook ondersteund, zodat gebruikers zich kunnen aanmelden met behulp van bestaande verificatie processen van providers zoals micro soft, Google, Facebook of Twitter.
 
-### <a name="authorization"></a>Authorization
+### <a name="authorization"></a>Autorisatie
 Na verificatie moeten Services gebruikers toegang verlenen of bepalen wat een gebruiker kan doen. Met dit proces kan een service Api's beschikbaar maken voor sommige geverifieerde gebruikers, maar niet op alle. Autorisatie is een orthogonale en onafhankelijk van verificatie. Dit is het proces van het vaststellen van de gebruikers. Verificatie kan een of meer identiteiten maken voor de huidige gebruiker.
 
 [ASP.net core autorisatie](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications) kan worden uitgevoerd op basis van rollen van gebruikers of op basis van aangepast beleid, zoals het inspecteren van claims of andere heuristiek.
@@ -96,7 +85,7 @@ U kunt een beveiligde verbinding tot stand brengen tussen de omgekeerde proxy en
 Het Reliable Services-toepassings raamwerk bevat enkele vooraf ontwikkelde communicatie stacks en hulpprogram ma's die u kunt gebruiken om de beveiliging te verbeteren. Meer informatie over het verbeteren van de beveiliging wanneer u service Remoting (in [C#](service-fabric-reliable-services-secure-communication.md) of [Java](service-fabric-reliable-services-secure-communication-java.md)) of [WCF](service-fabric-reliable-services-secure-communication-wcf.md)gebruikt.
 
 ## <a name="encrypt-application-data-at-rest"></a>Toepassings gegevens in rust versleutelen
-Elk [knooppunt type](service-fabric-cluster-nodetypes.md) in een service Fabric cluster dat in azure wordt uitgevoerd, wordt ondersteund door een schaalset voor [virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). U kunt met behulp van een Azure Resource Manager-sjabloon gegevensschijven koppelen aan de schaalsets die gezamenlijk het Service Fabric-cluster vormen.  Als uw Services gegevens opslaan op een gekoppelde gegevens schijf, kunt u [deze gegevens schijven](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) versleutelen om uw toepassings gegevens te beveiligen.
+Elk [knooppunt type](service-fabric-cluster-nodetypes.md) in een service Fabric cluster dat in azure wordt uitgevoerd, wordt ondersteund door een [schaalset voor virtuele machines](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). U kunt met behulp van een Azure Resource Manager-sjabloon gegevensschijven koppelen aan de schaalsets die gezamenlijk het Service Fabric-cluster vormen.  Als uw Services gegevens opslaan op een gekoppelde gegevens schijf, kunt u [deze gegevens schijven versleutelen](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) om uw toepassings gegevens te beveiligen.
 
 <!--TO DO: Enable BitLocker on Windows standalone clusters?
 TO DO: Encrypt disks on Linux clusters?-->

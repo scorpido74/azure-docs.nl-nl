@@ -1,33 +1,24 @@
 ---
-title: Herbetreedbaarheid in Azure Service Fabric-actoren | Microsoft Docs
-description: Inleiding tot herbetreedbaarheid voor Service Fabric Reliable Actors.
-services: service-fabric
-documentationcenter: .net
+title: Herbetreedbaarheid in azure Service Fabric Actors
+description: Inleiding tot herbetreedbaarheid voor Service Fabric Reliable Actors, een manier om blok kering op basis van de aanroep context te voor komen.
 author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: be23464a-0eea-4eca-ae5a-2e1b650d365e
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 46682787bac2d60d188384a4078ca2fa1f46ae7a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46ce91e607341e2fbdc0b6a3018e74cb24e76839
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60725411"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75645528"
 ---
-# <a name="reliable-actors-reentrancy"></a>Herbetreedbaarheid van betrouwbare actoren
-De runtime Reliable Actors kan standaard logische aanroep op basis van een context herbetreedbaarheid van. Hierdoor via actoren op inspringende als ze zich in dezelfde aanroep context keten. Bijvoorbeeld, verzendt een Actor een bericht naar Actor B, die een bericht naar Actor C. verzendt Als onderdeel van de berichtverwerking als Actor C Actor A aanroept, het bericht is inspringende, zodat deze kunnen worden. Andere berichten die deel van een andere context uitmaken wordt op een van de Actor wordt geblokkeerd totdat het verwerken is voltooid.
+# <a name="reliable-actors-reentrancy"></a>Reliable Actors herbetreedbaarheid
+Met de Reliable Actors runtime kunt u standaard herbetreedbaarheid op basis van logische oproepen. Hiermee kunnen actors worden ingetrokken als ze zich in dezelfde aanroep context keten bevinden. Actor A verzendt bijvoorbeeld een bericht naar actor B, die een bericht naar actor C verzendt. Als onderdeel van de bericht verwerking, als actor C actor A aanroept, wordt het bericht weer gegeven, zodat het is toegestaan. Andere berichten die deel uitmaken van een andere aanroep context, worden geblokkeerd op actor A tot de verwerking is voltooid.
 
-Er zijn twee opties beschikbaar voor de actor herbetreedbaarheid gedefinieerd in de `ActorReentrancyMode` enum:
+Er zijn twee opties beschikbaar voor actor herbetreedbaarheid die zijn gedefinieerd in de `ActorReentrancyMode` Enum:
 
-* `LogicalCallContext` (standaardinstelling)
-* `Disallowed` -schakelt herbetreedbaarheid
+* `LogicalCallContext` (standaard gedrag)
+* `Disallowed`-schakelt herbetreedbaarheid uit
 
 ```csharp
 public enum ActorReentrancyMode
@@ -43,9 +34,9 @@ public enum ActorReentrancyMode
     Disallowed(2)
 }
 ```
-Herbetreedbaarheid van kan worden geconfigureerd een `ActorService`van instellingen tijdens de registratie. De instelling is van toepassing op alle actorexemplaren in de actor-service hebt gemaakt.
+Herbetreedbaarheid kunnen tijdens de registratie worden geconfigureerd in de instellingen van een `ActorService`. De instelling is van toepassing op alle actor-exemplaren die zijn gemaakt in de actor-service.
 
-Het volgende voorbeeld ziet u een actorservice die de herbetreedbaarheid modus instellen op `ActorReentrancyMode.Disallowed`. In dit geval, als een actor verzendt een inspringende bericht naar een andere actor, een uitzondering van het type `FabricException` gegenereerd.
+In het volgende voor beeld ziet u een actor-service waarmee de herbetreedbaarheid-modus wordt ingesteld op `ActorReentrancyMode.Disallowed`. Als een actor een bericht naar een andere actor verzendt, wordt in dit geval een uitzonde ring van het type `FabricException` gegenereerd.
 
 ```csharp
 static class Program
@@ -111,4 +102,4 @@ static class Program
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over herbetreedbaarheid in de [Actor-API-referentiedocumentatie](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* Meer informatie over herbetreedbaarheid in de [ACTOR API-referentie documentatie](https://msdn.microsoft.com/library/azure/dn971626.aspx)

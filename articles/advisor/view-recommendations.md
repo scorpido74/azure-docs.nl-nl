@@ -1,95 +1,91 @@
 ---
-title: Azure Advisor-aanbevelingen voor weergeven die voor u belangrijk
-description: Weergeven en filteren Azure Advisor-aanbevelingen om ruis te verminderen.
-services: advisor
-author: kasparks
-ms.service: advisor
+title: Azure Advisor aanbevelingen bekijken die voor u belang rijk zijn
+description: Azure Advisor aanbevelingen weer geven en filteren om ruis te verminderen.
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: kasparks
-ms.openlocfilehash: 9f599a63fd5f52420f1b79e769d4f7bca9683b32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 10d7b16864f8e449dc51e870c5ff9f20d8c0dc87
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60467845"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422373"
 ---
-# <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>Azure Advisor-aanbevelingen voor weergeven die voor u belangrijk
+# <a name="view-azure-advisor-recommendations-that-matter-to-you"></a>Azure Advisor aanbevelingen bekijken die voor u belang rijk zijn
 
-Azure Advisor biedt aanbevelingen om u te helpen uw Azure-implementaties te optimaliseren. Binnen Advisor hebt u toegang tot een aantal functies die u helpen bij het verfijnen van uw aanbevelingen tot alleen degenen die het belangrijkst voor u.
+Azure Advisor biedt aanbevelingen om u te helpen uw Azure-implementaties te optimaliseren. Binnen Advisor hebt u toegang tot een aantal functies waarmee u uw aanbevelingen kunt beperken tot alleen die zaken die voor u van belang zijn.
 
-## <a name="configure-subscriptions-and-resource-groups"></a>Abonnementen en resourcegroepen configureren
+## <a name="configure-subscriptions-and-resource-groups"></a>Abonnementen en resource groepen configureren
 
-Advisor biedt u de mogelijkheid om abonnementen en resourcegroepen die het belangrijkst voor u en uw organisatie te selecteren. U ziet alleen de aanbevelingen voor de abonnementen en resourcegroepen die u selecteert. Standaard zijn alle geselecteerd. Configuratie-instellingen van toepassing op het abonnement of de resource-groep, zodat de dezelfde instellingen gelden voor iedereen die toegang tot die groep abonnement of resourcegroep heeft. Configuratie-instellingen kunnen worden gewijzigd in Azure portal of via een programma.
+Advisor biedt u de mogelijkheid om abonnementen en resource groepen te selecteren die voor u en uw organisatie van belang zijn. U ziet alleen aanbevelingen voor de abonnementen en resource groepen die u selecteert. Standaard zijn alle ingeschakeld. Configuratie-instellingen zijn van toepassing op het abonnement of de resource groep, zodat dezelfde instellingen van toepassing zijn op iedereen die toegang heeft tot dat abonnement of deze resource groep. Configuratie-instellingen kunnen worden gewijzigd in de Azure Portal of via een programma.
 
-Wijzigingen aanbrengen in de Azure-portal:
+Wijzigingen aanbrengen in de Azure Portal:
 
-1. Open [Azure Advisor](https://aka.ms/azureadvisordashboard) in Azure portal.
+1. Open [Azure Advisor](https://aka.ms/azureadvisordashboard) in het Azure Portal.
 
 1. Selecteer **configuratie** in het menu.
 
-   ![Menu voor Advisor-configuratie](./media/view-recommendations/configuration.png)
+   ![Menu configuratie van Advisor](./media/view-recommendations/configuration.png)
 
-1. Schakel het selectievakje de **opnemen** kolom voor alle abonnementen en resourcegroepen voor het ontvangen van aanbevelingen van Advisor. Als het selectievakje is uitgeschakeld, kan u niet gemachtigd om een configuratiewijziging hebt doorgevoerd in die groep abonnement of resourcegroep. Meer informatie over [machtigingen in Azure Advisor](permissions.md).
+1. Schakel het selectie vakje in de kolom **insluiting** voor abonnementen of resource groepen in om Advisor-aanbevelingen te ontvangen. Als het selectie vakje is uitgeschakeld, bent u mogelijk niet gemachtigd om een configuratie wijziging aan te brengen voor dat abonnement of deze resource groep. Meer informatie over [machtigingen in azure Advisor](permissions.md).
 
-1. Klik op **toepassen** onder nadat u een wijziging aanbrengt.
+1. Klik op **Toep assen** aan de onderkant nadat u een wijziging hebt aangebracht.
 
-## <a name="filtering-your-view-in-the-azure-portal"></a>Filteren van de weergave in de Azure-portal
+## <a name="filtering-your-view-in-the-azure-portal"></a>Uw weer gave filteren in de Azure Portal
 
-Configuratie-instellingen blijven actief totdat gewijzigd. Als u wilt om de weergave van de aanbevelingen voor een enkele weergave te beperken, kunt u de vervolgkeuzelijsten die aan de bovenkant van het paneel Advisor. De deelvensters overzicht, hoge beschikbaarheid, beveiliging, prestaties, kosten en alle aanbevelingen kunt u de abonnementen, resourcetypen en de status van de aanbeveling die u wilt zien selecteren.
+Configuratie-instellingen blijven actief totdat ze worden gewijzigd. Als u de weer gave van aanbevelingen wilt beperken voor één weergave, kunt u de vervolg keuzelijsten boven aan het deel venster Advisor gebruiken. Vanuit de deel Vensters overzicht, hoge Beschik baarheid, beveiliging, prestaties, kosten en alle aanbevelingen kunt u de abonnementen, resource typen en aanbevelings status selecteren die u wilt zien.
 
-   ![Advisor filteren menu](./media/view-recommendations/filtering.png)
+   ![Menu voor Advisor filteren](./media/view-recommendations/filtering.png)
 
-## <a name="dismissing-and-postponing-recommendations"></a>Negeren en aanbevelingen uitstellen
+## <a name="dismissing-and-postponing-recommendations"></a>De aanbevelingen voor negeren en uitstellen
 
-Azure Advisor kunt u negeren of uitstellen, aanbevelingen voor één resource. Als u een aanbeveling negeren, ziet niet u deze opnieuw, tenzij u deze handmatig activeren. Een aanbeveling uitstellen kunt u echter om op te geven van een duur waarna de aanbeveling wordt automatisch opnieuw worden geactiveerd. Uitstellen kan worden gedaan in Azure portal of via een programma.
+Met Azure Advisor kunt u aanbevelingen op één resource negeren of uitstellen. Als u een aanbeveling negeert, wordt deze niet meer weer geven, tenzij u deze hand matig activeert. Door een aanbeveling uit te stellen, kunt u echter een duur opgeven waarna de aanbeveling automatisch opnieuw wordt geactiveerd. Uitstellen kan worden uitgevoerd in de Azure Portal of via een programma.
 
-### <a name="postpone-a-single-recommendation-in-the-azure-portal"></a>Een enkele aanbeveling in de Azure-portal uitstellen 
+### <a name="postpone-a-single-recommendation-in-the-azure-portal"></a>Een enkele aanbeveling uitstellen in de Azure Portal 
 
-1. Open [Azure Advisor](https://aka.ms/azureadvisordashboard) in Azure portal.
-1. Selecteer een categorie aanbeveling om uw aanbevelingen weer te geven
+1. Open [Azure Advisor](https://aka.ms/azureadvisordashboard) in het Azure Portal.
+1. Selecteer een aanbevelings categorie om uw aanbevelingen weer te geven
 1. Selecteer een aanbeveling in de lijst met aanbevelingen
-1. Selecteer uitstellen of verwijderen voor de aanbeveling die u wilt stellen of te verwijderen
+1. Selecteer uitstellen of verwijderen voor de aanbeveling die u wilt uitstellen of verwijderen
 
-     ![Advisor filteren menu](./media/view-recommendations/postpone-dismiss.png)
+     ![Menu voor Advisor filteren](./media/view-recommendations/postpone-dismiss.png)
 
-### <a name="postpone-or-dismiss-a-multiple-recommendations-in-the-azure-portal"></a>Uitstellen of te verwijderen van een meerdere aanbevelingen in Azure portal
+### <a name="postpone-or-dismiss-a-multiple-recommendations-in-the-azure-portal"></a>Een aantal aanbevelingen uitstellen of verwijderen in de Azure Portal
 
-1. Open [Azure Advisor](https://aka.ms/azureadvisordashboard) in Azure portal.
-1. Selecteer een categorie aanbeveling om uw aanbevelingen weer te geven.
+1. Open [Azure Advisor](https://aka.ms/azureadvisordashboard) in het Azure Portal.
+1. Selecteer een aanbevelings categorie om uw aanbevelingen weer te geven.
 1. Selecteer een aanbeveling in de lijst met aanbevelingen.
-1. Schakel het selectievakje aan de linkerkant van de rij voor alle resources die u wilt uitstellen of de aanbeveling negeren.
-1. Selecteer **uitstellen** of **sluiten** op linksboven in de tabel.
+1. Schakel het selectie vakje links van de rij in voor alle resources die u wilt uitstellen of de aanbeveling wilt negeren.
+1. Selecteer **uitstellen** of **verwijderen** in de linkerbovenhoek van de tabel.
 
-     ![Advisor filteren menu](./media/view-recommendations/postpone-dismiss-multiple.png)
-
-> [!NOTE]
-> U moet machtiging Inzender of eigenaar te verwijderen of een aanbeveling uitstellen. Meer informatie over de machtigingen in Azure Advisor.
+     ![Menu voor Advisor filteren](./media/view-recommendations/postpone-dismiss-multiple.png)
 
 > [!NOTE]
-> Als de selectievakjes zijn uitgeschakeld, kunnen nog steeds aanbevelingen worden geladen. Wacht tot alle aanbevelingen laden voordat u probeert te stellen of te verwijderen.
+> U hebt de machtiging Inzender of eigenaar nodig om een aanbeveling te negeren of uit te stellen. Meer informatie over machtigingen in Azure Advisor.
 
-### <a name="reactivate-a-postponed-or-dismissed-recommendation"></a>Activeren van een aanbeveling uitgestelde of gesloten
+> [!NOTE]
+> Als de selectie vakjes zijn uitgeschakeld, kunnen er nog steeds aanbevelingen worden geladen. Wacht tot alle aanbevelingen zijn geladen voordat u probeert af te stellen of te verwijderen.
 
-U kunt een aanbeveling dat is uitgesteld of gesloten activeren. Deze actie kan worden gedaan in Azure portal of via een programma. In Azure Portal:
+### <a name="reactivate-a-postponed-or-dismissed-recommendation"></a>Een uitgestelde of genegeerde aanbeveling opnieuw activeren
 
-1. Open [Azure Advisor](https://aka.ms/azureadvisordashboard) in Azure portal.
+U kunt een aanbeveling activeren die is uitgesteld of genegeerd. Deze actie kan worden uitgevoerd in de Azure Portal of via een programma. In Azure Portal:
 
-1. Het filter in het deelvenster Overzicht om te wijzigen **uitgesteld**. Advisor geeft aanbevelingen voor uitgestelde of gesloten.
+1. Open [Azure Advisor](https://aka.ms/azureadvisordashboard) in het Azure Portal.
 
-    ![Advisor filteren menu](./media/view-recommendations/activate-postponed.png)
+1. Wijzig het filter in het deel venster Overzicht in **uitgesteld**. In Advisor worden vervolgens uitgestelde of genegeerde aanbevelingen weer gegeven.
 
-1. Selecteer een categorie om te zien **uitgesteld** en **genegeerd** aanbevelingen.
+    ![Menu voor Advisor filteren](./media/view-recommendations/activate-postponed.png)
 
-1. Selecteer een aanbeveling in de lijst met aanbevelingen. Hiermee opent u aanbevelingen met de **uitgesteld & gesloten** tabblad is al geselecteerd om weer te geven van de bronnen waarvoor deze aanbeveling is uitgesteld of gesloten.
+1. Selecteer een categorie om **uitgestelde** en **Genegeerde** aanbevelingen weer te geven.
 
-1. Klik op **activeren** aan het einde van de rij. Nadat u hebt geklikt, wordt de aanbeveling is actief voor die bron en dus worden verwijderd uit deze tabel. De aanbeveling is nu zichtbaar in de **Active** tabblad.
+1. Selecteer een aanbeveling in de lijst met aanbevelingen. Hiermee worden aanbevelingen voor het weer geven van de **Uitgestelde &** uitgeschakeld tabblad al geselecteerd om de resources te tonen waarvoor deze aanbeveling is uitgesteld of genegeerd.
+
+1. Klik op **Activate** aan het einde van de rij. Wanneer u eenmaal hebt geklikt, is de aanbeveling actief voor die resource en dus uit deze tabel verwijderd. De aanbeveling is nu zichtbaar op het **actieve** tabblad.
  
-     ![Advisor filteren menu](./media/view-recommendations/activate-postponed-2.png)
+     ![Menu voor Advisor filteren](./media/view-recommendations/activate-postponed-2.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel wordt uitgelegd hoe u de aanbevelingen die voor u belangrijk in Azure Advisor kunt weergeven. Zie voor meer informatie over Advisor: 
+In dit artikel wordt uitgelegd hoe u in Azure Advisor aanbevelingen kunt bekijken. Zie voor meer informatie over Advisor: 
 
 - [Wat is Azure Advisor?](advisor-overview.md)
 - [Aan de slag met Advisor](advisor-get-started.md)

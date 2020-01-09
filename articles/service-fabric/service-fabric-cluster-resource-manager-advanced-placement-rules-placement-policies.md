@@ -1,51 +1,42 @@
 ---
-title: Service Fabric Cluster Resource Manager - beleid voor Serviceplaatsing | Microsoft Docs
-description: Overzicht van de van extra plaatsingsbeleid en regels voor het Service Fabric-Services
-services: service-fabric
-documentationcenter: .net
+title: Cluster resource Manager Service Fabric-plaatsings beleid
+description: Overzicht van extra plaatsings beleid en regels voor Service Fabric Services
 author: masnider
-manager: chackdan
-editor: ''
-ms.assetid: 5c2d19c6-dd40-4c4b-abd3-5c5ec0abed38
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: d5aea441f15cbf7a2a444439c06cd5f74a559d3f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f9861faeaf4ab4049de7404a9e6f8b59a9445fe5
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60386426"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75452189"
 ---
-# <a name="placement-policies-for-service-fabric-services"></a>Beleid voor serviceplaatsing voor service fabric-services
-Beleid voor serviceplaatsing zijn extra regels die kunnen worden gebruikt om te bepalen van de plaatsing van services in sommige scenario's voor specifieke, minder gebruikte. Enkele voorbeelden van deze scenario's zijn:
+# <a name="placement-policies-for-service-fabric-services"></a>Plaatsings beleid voor service Fabric-Services
+Plaatsings beleid is extra regels die kunnen worden gebruikt voor het bepalen van de service plaatsing in enkele specifieke, minder algemene scenario's. Enkele voor beelden van deze scenario's zijn:
 
-- Uw Service Fabric-cluster omvat geografische afstand, zoals meerdere on-premises datacenters of Azure-regio 's
-- Uw omgeving omvat meerdere gebieden van geopolitieke of een juridische of enige andere gevallen waarin u werkt met beleid grenzen die u nodig hebt om af te dwingen
-- Er zijn communicatie prestaties of de latentie-overwegingen vanwege de grote afstand of het gebruik van langzamer of minder betrouwbaar netwerkkoppelingen
-- U wilt houden van bepaalde werkbelastingen geplaatst als een best-effort, met andere werkbelastingen of in de buurt voor klanten
+- Uw Service Fabric-cluster bevat geografische afstanden, zoals meerdere on-premises data centers of over Azure-regio's
+- Uw omgeving bevat meerdere gebieden van geopolitieke of juridische controle, of een andere situatie waarbij u beleids grenzen hebt die u moet afdwingen
+- Er zijn communicatie prestaties of latentie overwegingen door grote afstanden of het gebruik van tragere of minder betrouw bare netwerk koppelingen
+- U moet bepaalde werk belastingen co als Best effort, hetzij met andere workloads of nabijheid van klanten
 
-De meeste van deze vereisten uitgelijnd met de fysieke indeling van het cluster, weergegeven als de domeinen met fouten van het cluster. 
+De meeste van deze vereisten worden uitgelijnd met de fysieke indeling van het cluster, weer gegeven als de fout domeinen van het cluster. 
 
-De plaatsing van Geavanceerde beleidsregels die helpen bij de volgende scenario's:
+De geavanceerde beleids regels voor plaatsing die helpen bij het oplossen van deze scenario's zijn:
 
 1. Ongeldige domeinen
 2. Vereiste domeinen
-3. Voorkeur domeinen
-4. Replica packing verbieden
+3. Voorkeurs domeinen
+4. Replica pakketing niet toestaan
 
-De meeste van de volgende besturingselementen kan worden geconfigureerd via de eigenschappen van het knooppunt en plaatsingsbeperkingen, maar sommige ingewikkelder zijn. De Service Fabric Cluster Resource Manager biedt eenvoudiger dingen, deze extra plaatsingsbeleid. Beleid voor serviceplaatsing zijn geconfigureerd op basis van per-met de naam van service-exemplaar. Ze kunnen ook dynamisch worden bijgewerkt.
+De meeste van de volgende besturings elementen kunnen worden geconfigureerd via knooppunt eigenschappen en plaatsings beperkingen, maar sommige gecompliceerdere. Om het eenvoudiger te maken, biedt de Service Fabric cluster resource manager de volgende extra plaatsings beleidsregels. Plaatsings beleid wordt geconfigureerd op basis van een service-exemplaar per naam. Ze kunnen ook dynamisch worden bijgewerkt.
 
-## <a name="specifying-invalid-domains"></a>Ongeldige domeinen op te geven
-De **InvalidDomain** plaatsing beleid kunt u opgeven dat een bepaalde Foutdomein ongeldig voor een specifieke service is. Dit beleid zorgt ervoor dat een bepaalde service nooit wordt uitgevoerd in een bepaald gebied, bijvoorbeeld voor voor geopolitieke of zakelijke beleidsredenen. Meerdere ongeldige domeinen kunnen worden opgegeven via afzonderlijke beleidsregels.
+## <a name="specifying-invalid-domains"></a>Ongeldige domeinen opgeven
+Met het **InvalidDomain** -plaatsings beleid kunt u opgeven dat een bepaald fout domein ongeldig is voor een specifieke service. Dit beleid zorgt ervoor dat een bepaalde service nooit wordt uitgevoerd in een bepaald gebied, bijvoorbeeld om redenen van geopolitieke of bedrijfs beleid. Meerdere ongeldige domeinen kunnen worden opgegeven via afzonderlijke beleids regels.
 
 <center>
 
-![Voorbeeld van een domein is ongeldig][Image1]
+![ongeldig domein-voor beeld][Image1]
 </center>
 
 Code:
@@ -61,12 +52,12 @@ PowerShell:
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("InvalidDomain,fd:/DCEast”)
 ```
-## <a name="specifying-required-domains"></a>Vereiste domeinen op te geven
-Het beleid van de plaatsing vereist domein is vereist dat de service aanwezig alleen in het opgegeven domein is. Meerdere vereiste domeinen kunnen worden opgegeven via afzonderlijke beleidsregels.
+## <a name="specifying-required-domains"></a>Vereiste domeinen opgeven
+Voor het vereiste domein plaatsings beleid moet de service alleen aanwezig zijn in het opgegeven domein. Meerdere vereiste domeinen kunnen worden opgegeven via afzonderlijke beleids regels.
 
 <center>
 
-![Voorbeeld van de vereiste domein][Image2]
+Voor beeld van ![vereist domein][Image2]
 </center>
 
 Code:
@@ -83,12 +74,12 @@ PowerShell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomain,fd:/DC01/RK03/BL2")
 ```
 
-## <a name="specifying-a-preferred-domain-for-the-primary-replicas-of-a-stateful-service"></a>Een voorkeur voor de primaire replica's van een stateful service-domein op te geven
-Het primaire domein met de voorkeur geeft aan dat het foutdomein voor het plaatsen van de primaire in. De primaire eindigt om in dit domein wanneer alles in orde is. Als het domein of de primaire replica mislukt of wordt afgesloten, wordt de primaire verplaatst naar een andere locatie in het ideale geval in hetzelfde domein. Als deze nieuwe locatie zich niet in de gewenste domein, met Cluster Resource Manager worden verplaatst deze terug naar het gewenste domein zo snel mogelijk. Deze instelling maakt op een natuurlijke manier alleen geschikt zijn voor stateful services. Dit beleid is vooral nuttig zijn in de clusters die zijn liep Azure-regio's of meerdere datacenters, maar zijn services die liever plaatsing op een bepaalde locatie. Primaire houden dicht bij hun gebruikers- of andere services bieden helpt lagere latentie met name voor lezen, die standaard worden verwerkt door voorverkiezingen uit te brengen.
+## <a name="specifying-a-preferred-domain-for-the-primary-replicas-of-a-stateful-service"></a>Een voorkeurs domein opgeven voor de primaire replica's van een stateful service
+Het primaire domein dat als voorkeurs is, geeft het fout domein op waarin de primaire in moet worden geplaatst. De primaire fout eindigt in dit domein wanneer alles in orde is. Als het domein of de primaire replica mislukt of wordt afgesloten, wordt het primaire naar een andere locatie verplaatst, in het ideale geval in hetzelfde domein. Als deze nieuwe locatie zich niet in het voorkeurs domein bevindt, wordt deze zo snel mogelijk teruggezet naar het voorkeurs domein. Natuurlijk is deze instelling alleen zinvol voor stateful Services. Dit beleid is vooral nuttig in clusters die zijn verdeeld over Azure-regio's of meerdere data centers, maar die services hebben die de voor keur geven aan plaatsing op een bepaalde locatie. Als u Primaries dicht bij hun gebruikers of andere services houdt, kunt u een lagere latentie opgeven, met name voor lees bewerkingen, die standaard worden verwerkt door Primaries.
 
 <center>
 
-![Voorkeur primaire domeinen en Failover][Image3]
+![voorkeurs primaire domeinen en failover-][Image3]
 </center>
 
 ```csharp
@@ -103,18 +94,18 @@ PowerShell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("PreferredPrimaryDomain,fd:/EastUS")
 ```
 
-## <a name="requiring-replica-distribution-and-disallowing-packing"></a>Replica distributie vereisen en verpakking verbieden
-Replica's _normaal_ verdeeld over fout- en upgradedomeinen als het cluster in orde is. Er zijn echter gevallen waar meer dan één replica voor een bepaalde partitie er uiteindelijk tijdelijk verpakt in een enkel domein. Bijvoorbeeld, laten we zeggen dat het cluster negen knooppunten, in drie foutdomeinen, fd: / 0, fd: / 1 en fd: / 2. Stel dat uw service drie replica's heeft. Laten we zeggen dat de knooppunten die zijn gebruikt voor deze replica's in fd: / 1 en fd: / 2 werd afgesloten. Normaal gesproken liever met Cluster Resource Manager de andere knooppunten in de dezelfde domeinen met fouten. In dit geval, stel vanwege capaciteitsproblemen dat geen van de andere knooppunten in de domeinen zijn geldig. Als de Cluster Resource Manager gebaseerd vervangingen voor deze replica's, moeten deze zou knooppunten kiezen in fd: / 0. Echter, doen _die_ maakt u een situatie waarbij het Foutdomein-beperking is geschonden. Replica's verhoogt kan de kans dat het hele replicaset uitvallen of verloren. 
+## <a name="requiring-replica-distribution-and-disallowing-packing"></a>Het is niet toegestaan om de replica te distribueren en het pakket niet toe te staan
+Replica's worden _normaal gesp roken_ gedistribueerd over fout-en upgrade domeinen wanneer het cluster in orde is. Er zijn echter gevallen waarin meer dan één replica voor een bepaalde partitie tijdelijk kan worden ingepakt in één domein. Stel bijvoorbeeld dat het cluster negen knoop punten heeft in drie fout domeinen, FD:/0, FD:/1 en FD:/2. U kunt er ook voor zorgen dat uw service drie replica's heeft. Stel dat de knoop punten die werden gebruikt voor deze replica's in FD:/1 en FD:/2 omlaag zijn gegaan. Normaal gesp roken zou cluster resource manager de voor keur geven aan andere knoop punten in hetzelfde fout domein. In dit geval is de oorzaak van capaciteits problemen geen van de andere knoop punten in die domeinen geldig. Als in cluster resource manager vervangingen voor die replica's zijn gebouwd, moet u knoop punten in FD:/0 kiezen. _Dit maakt echter_ een situatie waarin de beperking van het fout domein wordt geschonden. Het verpakken van replica's verg root de kans dat de hele replicaset kan worden uitgeschakeld of verloren gaat. 
 
 > [!NOTE]
-> Voor meer informatie over de beperkingen en beperking in het algemeen, bekijk van prioriteiten [in dit onderwerp](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities).
+> Zie [dit onderwerp](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities)voor meer informatie over de prioriteiten en beperkingen van de beperkingen in het algemeen.
 >
 
-Als u ooit een bericht hebt gezien status, zoals '`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain`', en vervolgens deze voorwaarde of er iets is bereikt. Meestal slechts één of twee replica's worden bij elkaar verpakt tijdelijk. Zo lang er zijn minder dan een quorum van replica's in een bepaald domein, u kunt veilig. Verpakking is zeldzaam, maar dit kan gebeuren en deze situaties zijn meestal tijdelijke omdat de knooppunten keert u terug. Als de knooppunten naar beneden blijven en met Cluster Resource Manager moet vervangingen bouwen, zijn meestal er andere knooppunten beschikbaar in het ideale foutdomeinen.
+Als u ooit een status bericht zoals '`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain`' hebt gezien, hebt u deze voor waarde bereikt of iets zoals het. Meestal worden slechts één of twee replica's samen verpakt. Zolang er minder dan een quorum van replica's in een bepaald domein is, bent u veilig. Het verpakken is zeldzaam, maar het kan gebeuren en meestal zijn deze situaties tijdelijk omdat de knoop punten weer worden teruggestuurd. Als de knoop punten blijven bestaan en de cluster bron beheerder vervangingen moet maken, meestal zijn er andere knoop punten beschikbaar in het ideale fout domein.
 
-Sommige werkbelastingen liever altijd met het doelgetal van replica's, zelfs als ze zijn verpakt in minder domeinen. Deze werkbelastingen worden verwacht tegen storingen in totaal aantal gelijktijdige permanent domein en lokale staat gewoonlijk kunnen herstellen. Andere werkbelastingen rekening in plaats daarvan de downtime ouder is dan het risico op juistheid of het verlies van gegevens. De meeste productieworkloads uitvoeren met meer dan drie replica's, meer dan drie foutdomeinen en veel geldig knooppunten per domein met fouten. Als gevolg hiervan kan het standaardgedrag domein packing standaard. Het standaardgedrag kunt normale taakverdeling en failover voor het afhandelen van dergelijke uitzonderlijke gevallen, zelfs als dit betekent dat tijdelijke domein verpakken.
+Sommige werk belastingen hebben als voor keur altijd het doel aantal replica's, zelfs als ze in minder domeinen zijn verpakt. Deze werk belastingen zijn verwacht tegen het totale aantal gelijktijdige permanente domein storingen en kunnen de lokale status meestal herstellen. Andere werk belastingen zouden in plaats daarvan de uitval tijd in beslag nemen dan de juistheid van het risico of gegevens verlies. De meeste productie werkbelastingen worden uitgevoerd met meer dan drie replica's, meer dan drie fout domeinen en veel geldige knoop punten per fout domein. Als gevolg hiervan is het standaard gedrag van domein pakket standaard toegestaan. Met het standaard gedrag kunnen normale verdeling en failover deze extreme gevallen afhandelen, zelfs als dit betekent dat het tijdelijk domein wordt verpakt.
 
-Als u uitschakelen van dergelijke verpakking voor een bepaalde workload wilt, kunt u opgeven de `RequireDomainDistribution` beleid op de service. Wanneer dit beleid is ingesteld, met Cluster Resource Manager zorgt ervoor dat er geen twee replica's van dezelfde partitie worden uitgevoerd in hetzelfde domein bevinden of upgrade van de fout.
+Als u dit pakket wilt uitschakelen voor een bepaalde workload, kunt u het `RequireDomainDistribution`-beleid opgeven voor de service. Wanneer dit beleid is ingesteld, zorgt het cluster resource beheer ervoor dat er geen twee replica's van dezelfde partitie worden uitgevoerd in hetzelfde fout-of upgrade domein.
 
 Code:
 
@@ -129,10 +120,10 @@ PowerShell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomainDistribution")
 ```
 
-Nu, zou het niet mogelijk met gebruik van deze configuraties voor services in een cluster dat is niet geografisch omspannen? U kunt de onderstaande, maar er is een goede reden te. De domeinconfiguraties vereist, ongeldig en voorkeur moeten worden vermeden, tenzij de moeten de gebruiker de scenario's. Het logisch niet om te proberen om af te dwingen een bepaalde workload om uit te voeren in een enkele rack of sommige segment van uw lokale cluster liever via een andere. Configuraties van andere hardware moeten worden verdeeld over foutdomeinen en verwerkt via normale plaatsingsbeperkingen en eigenschappen van het knooppunt.
+Het is nu mogelijk om deze configuraties te gebruiken voor services in een cluster dat niet geografisch is verspreid? Dat kan, maar er is ook geen goede reden. De vereiste, ongeldige en voorkeurs domein configuraties moeten worden vermeden tenzij de scenario's deze vereisen. Het is niet verstandig om een bepaalde workload af te dwingen om in één rek te worden uitgevoerd, of om de voor keur te geven aan een segment van uw lokale cluster ten opzichte van een andere. Verschillende hardwareconfiguraties moeten worden verdeeld over fout domeinen en worden afgehandeld via normale plaatsings beperkingen en eigenschappen van knoop punten.
 
 ## <a name="next-steps"></a>Volgende stappen
-- Voor meer informatie over het configureren van services, [meer informatie over het configureren van Services](service-fabric-cluster-resource-manager-configure-services.md)
+- Meer informatie over het configureren van Services vindt u op het [configureren van services](service-fabric-cluster-resource-manager-configure-services.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png
 [Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-required-placement-domain.png

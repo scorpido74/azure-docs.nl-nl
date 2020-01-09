@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 84ac2b43c9ec2e46bcd2967cf411f1bb1f60f42a
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: c2700c8241905f6e219b566a10e3378dd6c7251d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839411"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75427428"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio-classic"></a>De voorbeeld gegevens sets gebruiken in Azure Machine Learning Studio (klassiek)
 [top]: #machine-learning-sample-datasets
@@ -169,7 +169,7 @@ Een verzameling gesimuleerde energie profielen, op basis van 12 verschillende vo
   <td>
 On-time prestatie gegevens van reizigers vlucht die zijn gemaakt op basis van de TranStats-gegevens verzameling van het Amerikaanse ministerie van Trans Port (<a href="https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time">op tijd</a>).
 <p></p>
-De gegevensset heeft betrekking op de periode van april tot en met 2013. Voordat u uploadt naar de klassieke versie van Azure Machine Learning Studio, is de gegevensset als volgt verwerkt:
+De gegevensset heeft betrekking op de periode van april tot en met 2013. Voordat u uploadt naar Azure Machine Learning Studio (klassiek), is de gegevensset als volgt verwerkt:
 <ul>
   <li>De gegevensset is gefilterd op alleen de 70 drukste lucht havens in het continentale VS</li>
   <li>Geannuleerde vluchten zijn gelabeld met meer dan 15 minuten.</li>
@@ -259,7 +259,7 @@ Een subset van gegevens uit de data base van het National Institute of diabetes 
 </tr>
 
 <tr>
-  <td>Klant gegevens van restaurant</td>
+  <td>Gegevens van klanten van restaurants</td>
   <td>
 Een set meta gegevens over klanten, met inbegrip van demografische informatie en voor keuren.
 <p></p>
@@ -270,7 +270,7 @@ Een set meta gegevens over klanten, met inbegrip van demografische informatie en
 </tr>
 
 <tr>
-  <td>Gegevens van het restaurant onderdeel</td>
+  <td>Gegevens van functies van restaurant</td>
   <td>
 Een set meta gegevens over restaurants en hun functies, zoals voedsel type, restauratie stijl en locatie.
 <p></p>
@@ -281,7 +281,7 @@ Een set meta gegevens over restaurants en hun functies, zoals voedsel type, rest
 </tr>
 
 <tr>
-  <td>Restaurant beoordelingen</td>
+  <td>Beoordelingen van restaurants</td>
   <td>
 Bevat beoordelingen van gebruikers aan restaurants op een schaal van 0 tot 2.
 <p></p>
@@ -329,7 +329,7 @@ Houd er ook rekening mee dat het aantal achtergrond gebeurtenissen (h, voor hadr
   <td>
 Op land gebaseerde weers waarnemingen van NOAA (<a href="https://az754797.vo.msecnd.net/data/WeatherDataset.csv">samengevoegde gegevens van 201304 tot 201310</a>).
 <p></p>
-De weer gegevens zijn van toepassing op waarnemingen die zijn gemaakt van de weers stations van de lucht haven, voor de periode van april tot en met 2013. Voordat u uploadt naar de klassieke versie van Azure Machine Learning Studio, is de gegevensset als volgt verwerkt:
+De weer gegevens zijn van toepassing op waarnemingen die zijn gemaakt van de weers stations van de lucht haven, voor de periode van april tot en met 2013. Voordat u uploadt naar Azure Machine Learning Studio (klassiek), is de gegevensset als volgt verwerkt:
 <ul>
   <li>Er zijn weer station-Id's toegewezen aan de bijbehorende luchthaven-Id's</li>
   <li>Weer berichten die niet zijn gekoppeld aan de 70 drukste lucht havens zijn uitgefilterd</li>
@@ -344,7 +344,7 @@ De weer gegevens zijn van toepassing op waarnemingen die zijn gemaakt van de wee
   <td>
 Gegevens worden afgeleid van Wikipedia (<a href="https://www.wikipedia.org/">https://www.wikipedia.org/</a>) op basis van artikelen van elke S & P 500-bedrijf, opgeslagen als XML-gegevens.
 <p></p>
-Voordat u uploadt naar de klassieke versie van Azure Machine Learning Studio, is de gegevensset als volgt verwerkt:
+Voordat u uploadt naar Azure Machine Learning Studio (klassiek), is de gegevensset als volgt verwerkt:
 <ul>
   <li>Tekst inhoud voor elk specifiek bedrijf extra heren</li>
   <li>Wiki-opmaak verwijderen</li>

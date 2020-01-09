@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2019
+ms.date: 12/19/2019
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a986c2032fc41bbd34230c5b0ead745f88b000f
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: e8e1fd51e0190e0f8889112b17b58680ed9329e3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199824"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75443451"
 ---
 # <a name="create-workspaces-on-the-my-apps-preview-portal"></a>Werk ruimten maken in de portal mijn apps (preview-versie)
 
@@ -45,7 +45,7 @@ Uw gebruikers kunnen de portal mijn apps (preview) gebruiken voor het weer geven
    ![Preview-functies voor gebruikers](media/access-panel-workspaces/user-preview-features.png)
 
 > [!NOTE]
-> Voor het openen van de portal mijn apps kunnen gebruikers de koppeling `https://myapps.microsoft.com` gebruiken, of de aangepaste koppeling voor uw organisatie, zoals `https://myapps.microsoft.com/contoso.com`. Als gebruikers niet worden omgeleid naar de preview-versie van mijn apps, moeten gebruikers `https://myapplications.microsoft.com` of `https://myapplications.microsoft.com/contoso.com`proberen.
+> Voor het openen van de portal mijn apps kunnen gebruikers de koppeling `https://myapps.microsoft.com` gebruiken, of de aangepaste koppeling voor uw organisatie, zoals `https://myapps.microsoft.com/contoso.com`. Nadat u de nieuwe ervaring voor mijn apps hebt ingeschakeld, wordt de banner **update mijn toepassingen is beschikbaar** weer gegeven aan de bovenkant van de pagina mijn apps en kunnen gebruikers **proberen** de nieuwe ervaring weer te geven. Gebruikers kunnen de nieuwe ervaring niet meer gebruiken door **Ja** te selecteren in het vaandel nieuwe ervaring aan de bovenkant van de pagina te **laten staan** .
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
@@ -59,7 +59,7 @@ Als u een werk ruimte wilt maken, moet u een Azure AD Premium P1 of P2-licentie 
 
 4. Selecteer **nieuwe werk ruimte**. Voer op de pagina **nieuwe werk ruimte** een **naam** in voor de werk ruimte (we raden u aan om ' Workspace ' niet te gebruiken in de naam. Voer vervolgens een **Beschrijving**in.
 
-   ![Een nieuwe werk ruimte maken](media/access-panel-workspaces/new-workspace.png)
+   ![Een nieuwe werkruimte maken](media/access-panel-workspaces/new-workspace.png)
 
 5. Selecteer **Controleren + maken**. De eigenschappen van de nieuwe werk ruimte worden weer gegeven.
 
@@ -88,8 +88,8 @@ Als u een werk ruimte wilt maken, moet u een Azure AD Premium P1 of P2-licentie 
 In de controle logboeken worden de bewerkingen voor werk ruimten van mijn apps vastgelegd, inclusief acties voor het maken van eind gebruikers van de werk ruimte. De volgende gebeurtenissen worden gegenereerd vanuit mijn apps:
 
 * Werkruimte maken
-* Werk ruimte bewerken
-* Werk ruimte verwijderen
+* Werkruimte bewerken
+* Werkruimte verwijderen
 * Een toepassing starten (eind gebruiker)
 * Self-service toepassing toevoegen (eind gebruiker)
 * Self-service toepassing verwijderen (eind gebruiker)
@@ -98,6 +98,15 @@ U kunt de controle Logboeken openen in de [Azure Portal](https://portal.azure.co
 
    ![Rollen toewijzen aan gebruikers en groepen](media/access-panel-workspaces/audit-log-myapps.png)
 
+## <a name="get-support-for-my-account-pages"></a>Ondersteuning voor mijn account pagina's ophalen
+
+Op de pagina mijn apps kan een gebruiker **mijn** account selecteren > **Mijn account weer te geven** om de account instellingen te openen. Op de pagina Azure AD- **Mijn account** kunnen gebruikers hun beveiligings gegevens, apparaten, wacht woorden en meer beheren. Ze hebben ook toegang tot hun Office-account instellingen.
+
+Als u een ondersteunings aanvraag wilt indienen voor een probleem met de pagina Azure AD-account of de pagina Office-account, voert u de volgende stappen uit zodat uw aanvraag correct wordt gerouteerd: 
+
+* Open een ondersteunings aanvraag in het Azure Portal voor problemen met de pagina **Mijn account van Azure AD** . Ga naar **Azure Portal** > **Azure Active Directory** > **nieuwe ondersteunings aanvraag**.
+
+* Voor problemen met de pagina **Mijn account in Office** opent u een ondersteunings aanvraag vanuit het Microsoft 365-beheer centrum. Ga naar **Microsoft 365 beheer centrum** > **ondersteuning**. 
 
 ## <a name="next-steps"></a>Volgende stappen
 [Ervaringen van eind gebruikers voor toepassingen in Azure Active Directory](end-user-experiences.md)

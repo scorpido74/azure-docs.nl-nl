@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 11/26/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 25342cfbb8ac7ad5538b1f009c75f1d101bfc047
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 14641e9096fa9366334e9f7460ae55cda0e6c2e8
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560650"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644883"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Governance van Azure DevTest Labs-infra structuur-toepassings migratie en-integratie
 Als uw ontwikkel-en test omgeving eenmaal tot stand is gebracht, moet u rekening houden met de volgende vragen:
@@ -93,7 +93,7 @@ Wanneer moet ik een nieuw virtueel netwerk maken voor mijn DevTest Labs-omgeving
 ### <a name="answer"></a>Antwoord
 Als uw Vm's moeten communiceren met de bestaande infra structuur, kunt u overwegen om een bestaand virtueel netwerk in uw DevTest Labs-omgeving te gebruiken. Als u ExpressRoute gebruikt, kunt u bovendien de hoeveelheid VNets/subnetten minimaliseren, zodat u de IP-adres ruimte die wordt toegewezen voor gebruik in de abonnementen niet hoeft te fragmenteren. U moet ook rekening houden met het VNet-peering-patroon (hub-spoke model). Deze aanpak maakt vnet/subnet-communicatie mogelijk tussen abonnementen binnen een bepaalde regio hoewel peering tussen regio's een up-to-me-functie in azure-netwerken is.
 
-Anders kan elke DevTest Labs-omgeving een eigen virtueel netwerk hebben. Houd er echter rekening mee dat er [limieten](../azure-subscription-service-limits.md) gelden voor het aantal virtuele netwerken per abonnement. De standaard waarde is 50, maar deze limiet kan worden verhoogd naar 100.
+Anders kan elke DevTest Labs-omgeving een eigen virtueel netwerk hebben. Houd er echter rekening mee dat er [limieten](../azure-resource-manager/management/azure-subscription-service-limits.md) gelden voor het aantal virtuele netwerken per abonnement. De standaard waarde is 50, maar deze limiet kan worden verhoogd naar 100.
 
 ## <a name="shared-public-or-private-ip"></a>Gedeeld, openbaar of privé IP-adres
 
@@ -117,7 +117,7 @@ Is er een regel voor het aantal virtuele machines dat ik per gebruiker of per La
 Bij het overwegen van het aantal virtuele machines per gebruiker of per Lab zijn er drie belang rijke problemen:
 
 - De **totale kosten** die het team kan best Eden aan resources in het lab. Het is eenvoudig om meerdere machines op te zetten. Om de kosten te beheren, is het één mechanisme om het aantal Vm's per gebruiker en/of per Lab te beperken
-- Het totale aantal virtuele machines in een lab wordt beïnvloed door de beschik bare [abonnements niveau quota's](../azure-subscription-service-limits.md) . Een van de hoogste limieten is 800 resource groepen per abonnement. DevTest Labs maakt momenteel een nieuwe resource groep voor elke VM (tenzij gedeelde open bare Ip's worden gebruikt). Als er 10 Labs in een abonnement is, zouden Labs ongeveer 79 virtuele machines in elk lab passen (800 hoogste limiet – 10 resource groepen voor de 10 Labs zelf) = 79 virtuele machines per Lab.
+- Het totale aantal virtuele machines in een lab wordt beïnvloed door de beschik bare [abonnements niveau quota's](../azure-resource-manager/management/azure-subscription-service-limits.md) . Een van de hoogste limieten is 800 resource groepen per abonnement. DevTest Labs maakt momenteel een nieuwe resource groep voor elke VM (tenzij gedeelde open bare Ip's worden gebruikt). Als er 10 Labs in een abonnement is, zouden Labs ongeveer 79 virtuele machines in elk lab passen (800 hoogste limiet – 10 resource groepen voor de 10 Labs zelf) = 79 virtuele machines per Lab.
 - Als het lab is verbonden met on-premises via een Express route (bijvoorbeeld), zijn er **gedefinieerde IP-adres ruimten beschikbaar** voor het VNet/subnet. Om ervoor te zorgen dat de virtuele machines in het lab niet worden gemaakt (fout: kan IP-adres niet ophalen), kunnen Lab-eigen aars de maximale Vm's per Lab opgeven, uitgelijnd met de beschik bare IP-adres ruimte.
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager-sjablonen gebruiken

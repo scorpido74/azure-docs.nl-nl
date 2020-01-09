@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: bd158eaf22025a64d7464c632d3f0fa510a4b5a3
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.date: 12/17/2019
+ms.openlocfilehash: b4b6c57b08de07cae431f015c8d8f53cdf3a50a4
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793765"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75460738"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Grote gegevens sets indexeren in azure Cognitive Search
 
@@ -34,7 +34,7 @@ Batch indexering wordt geïmplementeerd voor afzonderlijke aanvragen met behulp 
 
 ## <a name="option-2-add-resources"></a>Optie 2: resources toevoegen
 
-Services die zijn ingericht in een van de [standaard prijs categorieën](search-sku-tier.md) , hebben vaak weinig gebruikte capaciteit voor zowel opslag als werk belastingen (query's of indexeringen), waardoor [het verhogen van de partitie en replica](search-capacity-planning.md) een duidelijke oplossing voor grotere gegevens sets. Voor de beste resultaten moet u beide bronnen gebruiken: partities voor opslag en replica's voor de gegevens opname.
+Services die zijn ingericht in een van de [standaard prijs categorieën](search-sku-tier.md) , hebben vaak weinig gebruikte capaciteit voor zowel opslag als werk belastingen (query's of indexeringen), waardoor [het verhogen van de partitie en replica](search-capacity-planning.md) een duidelijke oplossing telt voor grotere gegevens sets. Voor de beste resultaten moet u beide bronnen gebruiken: partities voor opslag en replica's voor de gegevens opname.
 
 Het verg Roten van replica's en partities zijn factureer bare gebeurtenissen waarmee uw kosten worden verhoogd, maar tenzij u continu wilt indexeren onder maximale belasting, kunt u een schaal voor de duur van het indexerings proces toevoegen en vervolgens de resource niveaus na het indexeren weer lager instellen. geïnstalleerd.
 
@@ -74,7 +74,7 @@ Parallelle verwerking heeft de volgende elementen:
 + Plannen dat alle Indexeer functies op hetzelfde moment worden uitgevoerd.
 
 > [!NOTE]
-> Azure Cognitive Search biedt geen ondersteuning voor het reserveren van replica's of partities aan specifieke werk belastingen. Het risico van zware gelijktijdige indexering is een overbelasting van uw systeem tot nadelige gevolgen voor de prestaties van query's. Als u een test omgeving hebt, implementeert u eerst parallelle indexeringen om de voor afwegingen te begrijpen.
+> In azure Cognitive Search kunt u geen afzonderlijke replica's of partities toewijzen aan indexering of query verwerking. Het systeem bepaalt hoe bronnen worden gebruikt. Als u wilt weten wat het effect is op de prestaties van query's, kunt u parallelle indexering uitproberen in een test omgeving voordat u deze naar productie rolt.  
 
 ### <a name="how-to-configure-parallel-indexing"></a>Parallelle indexering configureren
 

@@ -4,15 +4,15 @@ description: Prestatie meter items worden verzameld door Azure Monitor om de pre
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
-author: MGoedtel
-ms.author: magoedte
+author: bwren
+ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: d007d3dab1625d58a561d35bb111923fbdeb3482
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 624996c86423bf486111fde8743117ea888862e7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932446"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75363826"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows-en Linux-prestatie gegevens bronnen in Azure Monitor
 Prestatie meter items in Windows en Linux bieden inzicht in de prestaties van hardwareonderdelen, besturings systemen en toepassingen.  Azure Monitor kunt prestatie meter items op regel matige intervallen verzamelen voor analyse van bijna realtime (NRT), naast het samen voegen van prestatie gegevens voor langere termijn analyse en rapportage.
@@ -46,16 +46,16 @@ Volg deze procedure om een nieuw Windows-prestatie meter item toe te voegen om t
 3. Wanneer u een teller toevoegt, wordt de standaard waarde van 10 seconden gebruikt voor het **steekproef interval**.  U kunt dit wijzigen in een hogere waarde van Maxi maal 1800 seconden (30 minuten) als u de opslag vereisten van de verzamelde prestatie gegevens wilt reduceren.
 4. Wanneer u klaar bent met het toevoegen van items, klikt u op de knop **Opslaan** boven aan het scherm om de configuratie op te slaan.
 
-### <a name="linux-performance-counters"></a>Linux-prestatie meter items
+### <a name="linux-performance-counters"></a>Linux-prestatiemeteritems
 
 ![Linux-prestatie meter items configureren](media/data-sources-performance-counters/configure-linux.png)
 
 Volg deze procedure om een nieuw Linux-prestatie meter item toe te voegen om te verzamelen.
 
-1. Standaard worden alle configuratie wijzigingen automatisch naar alle agents gepusht.  Voor Linux-agents wordt een configuratie bestand verzonden naar de gefluente gegevens verzamelaar.  Als u dit bestand hand matig op elke Linux-agent wilt wijzigen, schakelt u het selectie vakje de *onderstaande configuratie Toep assen op mijn Linux-machines* uit en volgt u de onderstaande instructies.
+1. Standaard worden alle wijzigingen in de configuratie automatisch doorgegeven naar alle agents.  Voor Linux-agents wordt een configuratie bestand verzonden naar de gefluente gegevens verzamelaar.  Als u dit bestand hand matig op elke Linux-agent wilt wijzigen, schakelt u het selectie vakje de *onderstaande configuratie Toep assen op mijn Linux-machines* uit en volgt u de onderstaande instructies.
 2. Typ de naam van de teller in het tekstvak in de indeling *object (instantie) \counter*.  Wanneer u begint te typen, wordt er een overeenkomende lijst met algemene prestatie meter items weer gegeven.  U kunt een item in de lijst selecteren of een van uw eigen items typen.  
 3. Klik op **+** of druk op **Enter** om de teller toe te voegen aan de lijst met andere tellers voor het object.
-4. Alle tellers voor een object gebruiken hetzelfde **steekproef interval**.  De standaard waarde is 10 seconden.  U kunt dit wijzigen in een hogere waarde van Maxi maal 1800 seconden (30 minuten) als u de opslag vereisten van de verzamelde prestatie gegevens wilt reduceren.
+4. Alle tellers voor een object gebruiken hetzelfde **steekproef interval**.  De standaardinstelling is 10 seconden.  U kunt dit wijzigen in een hogere waarde van Maxi maal 1800 seconden (30 minuten) als u de opslag vereisten van de verzamelde prestatie gegevens wilt reduceren.
 5. Wanneer u klaar bent met het toevoegen van items, klikt u op de knop **Opslaan** boven aan het scherm om de configuratie op te slaan.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Linux-prestatie meter items configureren in het configuratie bestand
@@ -77,39 +77,39 @@ De para meters in dit element worden in de volgende tabel beschreven.
 | Parameters | Beschrijving |
 |:--|:--|
 | naam van object\_ | Object naam voor de verzameling. |
-| \_regex van exemplaar |  Een *reguliere expressie* die definieert welke exemplaren moeten worden verzameld. De waarde: `.*` alle exemplaren. Als u metrische gegevens voor de processor wilt verzamelen voor alleen het \_totale exemplaar, kunt u `_Total`opgeven. Als u proces metrische gegevens alleen voor de crond-of sshd-instanties wilt verzamelen, kunt u het volgende opgeven: `(crond\|sshd)`. |
+| instance\_regex |  Een *reguliere expressie* die definieert welke exemplaren moeten worden verzameld. De waarde: `.*` alle exemplaren. Als u metrische gegevens voor de processor wilt verzamelen voor alleen het \_totale exemplaar, kunt u `_Total`opgeven. Als u proces metrische gegevens alleen voor de crond-of sshd-instanties wilt verzamelen, kunt u het volgende opgeven: `(crond\|sshd)`. |
 | \_naam van het item\_regex | Een *reguliere expressie* waarmee wordt gedefinieerd welke items (voor het object) moeten worden verzameld. Als u alle tellers voor het object wilt verzamelen, geeft u het volgende op: `.*`. Als u alleen tellers voor wissel ruimte voor het object memory wilt verzamelen, kunt u bijvoorbeeld het volgende opgeven: `.+Swap.+` |
 | interval | De frequentie waarmee de tellers van het object worden verzameld. |
 
 
 De volgende tabel bevat de objecten en prestatie meter items die u in het configuratie bestand kunt opgeven.  Er zijn extra tellers beschikbaar voor bepaalde toepassingen, zoals wordt beschreven in [prestatie meter items verzamelen voor Linux-toepassingen in azure monitor](data-sources-linux-applications.md).
 
-| Object naam | Tellernaam |
+| Objectnaam | Tellernaam |
 |:--|:--|
 | Logische schijf | % Vrije inodes |
-| Logische schijf | Percentage beschik bare ruimte |
+| Logische schijf | Percentage vrije ruimte |
 | Logische schijf | % Gebruikte inodes |
 | Logische schijf | Percentage gebruikte ruimte |
-| Logische schijf | Gelezen bytes per seconde |
-| Logische schijf | Lees bewerkingen per seconde |
-| Logische schijf | Schijf overdrachten per seconde |
-| Logische schijf | Geschreven bytes per seconde |
-| Logische schijf | Schrijf bewerkingen per seconde |
-| Logische schijf | Beschik bare mega bytes |
-| Logische schijf | Bytes van logische schijf per seconde |
+| Logische schijf | Bytes gelezen op schijf/sec |
+| Logische schijf | Schijf lezen per seconde |
+| Logische schijf | Schijfoverdrachten per seconde |
+| Logische schijf | Bytes geschreven naar schijf/sec |
+| Logische schijf | Schijf schrijven per seconde |
+| Logische schijf | Beschikbare Megabytes |
+| Logische schijf | Logische schijf Bytes per seconde |
 | Geheugen | Percentage beschikbaar geheugen |
 | Geheugen | Percentage beschik bare wissel ruimte |
 | Geheugen | Percentage gebruikt geheugen |
 | Geheugen | Percentage gebruikte wissel ruimte |
-| Geheugen | Beschikbaar geheugen in mega bytes |
+| Geheugen | Beschikbaar geheugen in megabytes |
 | Geheugen | Beschik bare mega bytes wisselen |
-| Geheugen | Gelezen pagina's per seconde |
-| Geheugen | Geschreven pagina's per seconde |
-| Geheugen | Pagina's per seconde |
+| Geheugen | paginaleesbewerkingen per seconde |
+| Geheugen | paginaschrijfbewerkingen per seconde |
+| Geheugen | pagina's per seconde |
 | Geheugen | Gebruikte MB wissel ruimte |
 | Geheugen | Gebruikt geheugen Mbytes |
-| Netwerk | Totaal aantal verzonden bytes |
-| Netwerk | Totaal aantal ontvangen bytes |
+| Netwerk | Totaal aantal verzonden Bytes |
+| Netwerk | Totaal aantal ontvangen Bytes |
 | Netwerk | Totaal aantal bytes |
 | Netwerk | Totaal aantal verzonden pakketten |
 | Netwerk | Totaal aantal ontvangen pakketten |
@@ -130,14 +130,14 @@ De volgende tabel bevat de objecten en prestatie meter items die u in het config
 | Processor | % I/o-wacht tijd |
 | Processor | Percentage tijd in Nice |
 | Processor | Percentage tijd in beschermde modus |
-| Processor | Percentage processor tijd |
+| Processor | % Processortijd |
 | Processor | Percentage gebruikers tijd |
 | Systeem | Vrij fysiek geheugen |
 | Systeem | Vrije ruimte in wissel geheugen bestanden |
 | Systeem | Vrij virtueel geheugen |
 | Systeem | Processen |
 | Systeem | Grootte opgeslagen in Wissel bestanden |
-| Systeem | Systeem |
+| Systeem | Actieve tijdsduur |
 | Systeem | Gebruikers |
 
 
@@ -183,7 +183,7 @@ Prestatie records hebben het type **perf** en hebben de eigenschappen in de volg
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| Computer |Computer waarop de gebeurtenis is verzameld. |
+| Computer |De computer waarop de gebeurtenis is verzameld. |
 | CounterName |Naam van het prestatie meter item |
 | CounterPath |Volledig pad van het prestatie meter item in het formulier \\\\\<computer >\\object (instantie)\\teller. |
 | CounterValue |Numerieke waarde van het prestatie meter item. |
@@ -202,16 +202,16 @@ De volgende tabel bevat verschillende voor beelden van logboek query's waarmee p
 
 | Query | Beschrijving |
 |:--- |:--- |
-| Prestatie |Alle prestatie gegevens |
+| Prestaties |Alle prestatie gegevens |
 | Perf &#124; waarbij computer = "bemijnen" |Alle prestatie gegevens van een bepaalde computer |
 | Perf &#124; waarbij CounterName = = "huidige wachtrij lengte voor schijf" |Alle prestatie gegevens voor een bepaald prestatie meter item |
-| Perf &#124; waarbij ObjectName = = "processor" en CounterName = = "% processor tijd" en INSTANCENAME = = "_Totaal" &#124; samenvat AVGCPU = AVG (CounterValue) by computer |Gemiddeld CPU-gebruik op alle computers |
+| Perf &#124; waarbij ObjectName = = "processor" en CounterName = = "% processor tijd" en INSTANCENAME = = "_Total" &#124; samenvat AVGCPU = AVG (CounterValue) by computer |Gemiddeld CPU-gebruik op alle computers |
 | Perf &#124; waarbij CounterName = = "% processor tijd" &#124; een samen vatting van AggregatedValue = Max (CounterValue) door computer |Maxi maal CPU-gebruik op alle computers |
 | Perf &#124; waarbij ObjectName = = "logische schijf" en CounterName = = "huidige wachtrij lengte voor de computer" and computers = = "MyComputerName &#124; " samenvatte AggregatedValue = AVG (CounterValue) door INSTANCENAME |De gemiddelde wachtrij lengte van de huidige schijf voor alle exemplaren van een bepaalde computer |
 | Perf &#124; waarbij CounterName = = "schijf overdrachten per seconde" &#124; samenvatten AggregatedValue = percentiel (CounterValue, 95) per computer |95e percentiel van schijf overdrachten per seconde op alle computers |
-| Perf &#124; waarbij CounterName = = "% processor tijd" en INSTANCENAME = = "_Totaal" &#124; samenvatten AggregatedValue = AVG (CounterValue) by bin (TimeGenerated, 1U), computer |Gemiddeld uur CPU-gebruik op alle computers |
-| Perf &#124; waarbij computer = "startswith_cs" en CounterName '% "en INSTANCENAME = =" _Totaal " &#124; samenvatten AggregatedValue = percentiel (CounterValue, 70) by bin (TimeGenerated, 1U), CounterName | 70 percentiel van elk% procent item voor een bepaalde computer |
-| Perf &#124; waarbij CounterName = = "% processor tijd" en INSTANCENAME = = "_Totaal" and computer = "mijn werk" &#124; samen vatting ["min (CounterValue)"] = min (CounterValue), ["AVG (CounterValue)"] = AVG (CounterValue), ["percentile75 (CounterValue)"] = percentiel (CounterValue, 75), ["Max (CounterValue)"] = Max (CounterValue) per bak (TimeGenerated, 1U), computer |Gemiddeld uur, minimum, maximum en 75-percentiel CPU-gebruik voor een specifieke computer |
+| Perf &#124; waarbij CounterName = = "% processor tijd" en INSTANCENAME = = "_Total" &#124; samenvat AggregatedValue = AVG (CounterValue) by bin (TimeGenerated, 1U), computer |Gemiddeld uur CPU-gebruik op alle computers |
+| Perf &#124; waarbij computer = "mijn systeem" en CounterName startswith_cs "%" en INSTANCENAME = = "_Total" &#124; samenvatten AggregatedValue = percentiel (CounterValue, 70) per bak (TimeGenerated, 1U), CounterName | 70 percentiel van elk% procent item voor een bepaalde computer |
+| Perf &#124; waarbij CounterName = = "% processor tijd" en INSTANCENAME = = "_Total" and computer = "mijn systeem" &#124; samen vatting ["min (CounterValue)"] = min (CounterValue), ["AVG (CounterValue)"] = AVG (CounterValue), ["percentile75 (CounterValue)"] = percentiel (CounterValue, 75), ["Max (CounterValue)"] = Max (CounterValue) per bak (TimeGenerated, 1U), computer |Gemiddeld uur, minimum, maximum en 75-percentiel CPU-gebruik voor een specifieke computer |
 | Perf &#124; waarbij ObjectName = = "MSSQL $ INST2: data bases" en INSTANCENAME = = "Master" | Alle prestatie gegevens van het prestatie object Data Base voor de hoofd database van de benoemde SQL Server instantie INST2.  
 
 
@@ -219,5 +219,5 @@ De volgende tabel bevat verschillende voor beelden van logboek query's waarmee p
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Verzamelen van prestatie meter items van Linux-toepassingen](data-sources-linux-applications.md) , waaronder de MySQL-en Apache HTTP-server.
-* Meer informatie over [logboek query's](../log-query/log-query-overview.md) voor het analyseren van de gegevens die zijn verzameld uit gegevens bronnen en oplossingen.  
+* Meer informatie over [query's bijgehouden](../log-query/log-query-overview.md) om de gegevens die worden verzameld van gegevensbronnen en oplossingen te analyseren.  
 * Verzamelde gegevens exporteren naar [Power bi](powerbi.md) voor extra visualisaties en analyse.

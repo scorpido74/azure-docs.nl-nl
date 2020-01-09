@@ -1,24 +1,14 @@
 ---
-title: Een Azure Service Fabric-cluster bijwerken om de algemene naam van het certificaat te gebruiken | Microsoft Docs
+title: Een cluster bijwerken voor het gebruik van de algemene naam van het certificaat
 description: Meer informatie over het overschakelen van een Service Fabric cluster met behulp van certificaat vingerafdrukten naar het gebruik van de algemene naam van het certificaat.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/06/2019
-ms.author: atsenthi
-ms.openlocfilehash: a9e2a2c20a8de4bed3876f431566b293cbfa4ef5
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 66c49ccb7b7633d0eff392b676bb381118eb64a2
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109657"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75610196"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Wijzig het cluster van de vinger afdruk van het certificaat in de algemene naam
 Er kunnen niet twee certificaten dezelfde vinger afdruk hebben, waardoor de rollover van het cluster certificaat of het beheer lastig wordt. Meerdere certificaten kunnen echter dezelfde algemene naam of hetzelfde onderwerp hebben.  Schakelen tussen een geïmplementeerd cluster vanuit vingerafdrukken voor certificaten naar het gebruik van gewone namen voor certificaten maakt het beheer van certificaten veel eenvoudiger. In dit artikel wordt beschreven hoe u een actief Service Fabric cluster bijwerkt om de algemene naam van het certificaat te gebruiken in plaats van de vinger afdruk van het certificaat.

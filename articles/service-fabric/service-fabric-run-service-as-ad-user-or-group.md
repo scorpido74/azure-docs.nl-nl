@@ -1,34 +1,25 @@
 ---
-title: Een Azure Service Fabric-service uitvoeren als een AD-gebruiker of groep | Microsoft Docs
-description: Leer hoe u een service uitvoeren als een Active Directory-gebruiker of groep op een zelfstandige Service Fabric Windows cluster.
-services: service-fabric
-documentationcenter: .net
+title: Een Azure Service Fabric-service uitvoeren als een AD-gebruiker of-groep
+description: Meer informatie over het uitvoeren van een service als een Active Directory gebruiker of groep op een zelfstandige Windows-cluster Service Fabric.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 4242a1eb-a237-459b-afbf-1e06cfa72732
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/29/2018
 ms.author: dekapur
-ms.openlocfilehash: 3e0bb62609f13430bd2beab2332a31983874eb8e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d440aadb66562e32331c9725a9367c12440a315d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60837722"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75464243"
 ---
-# <a name="run-a-service-as-an-active-directory-user-or-group"></a>Een service uitvoeren als een Active Directory-gebruiker of groep
-U kunt op een zelfstandige cluster van Windows Server, een service uitvoeren als een Active Directory-gebruiker of groep met behulp van een RunAs-beleid.  Standaard wordt Service Fabric-toepassingen uitvoeren onder het account dat de Fabric.exe-proces wordt uitgevoerd onder. Uitvoeren van toepassingen onder verschillende accounts, zelfs in een gedeelde omgeving, zorgt ervoor dat ze beter te beveiligen van elkaar. Houd er rekening mee dat dit maakt gebruik van on-premises Active Directory in uw domein en niet Azure Active Directory (Azure AD).  U kunt ook uitvoeren met een service als een [beheerd serviceaccount (gMSA)](service-fabric-run-service-as-gmsa.md).
+# <a name="run-a-service-as-an-active-directory-user-or-group"></a>Een service uitvoeren als een Active Directory gebruiker of groep
+Op een zelfstandige Windows Server-cluster kunt u een service uitvoeren als een Active Directory gebruiker of groep met behulp van een runas-beleid.  Service Fabric toepassingen worden standaard uitgevoerd onder het account waaronder het Fabric. exe-proces wordt uitgevoerd. Door toepassingen onder verschillende accounts uit te voeren, zelfs in een gedeelde gehoste omgeving, zijn ze beter te beveiligen tegen elkaar. Houd er rekening mee dat dit Active Directory on-premises binnen uw domein gebruikt en niet Azure Active Directory (Azure AD).  U kunt ook een service uitvoeren als een [beheerd service account voor een groep (gMSA)](service-fabric-run-service-as-gmsa.md).
 
-Met behulp van een domeingebruiker of groep, kunt u vervolgens toegang tot andere resources in het domein (bijvoorbeeld-bestandsshares) die machtigingen hebben gekregen.
+Door een domein gebruiker of-groep te gebruiken, kunt u toegang krijgen tot andere bronnen in het domein (bijvoorbeeld bestands shares) waaraan machtigingen zijn verleend.
 
-Het volgende voorbeeld ziet u een Active Directory-gebruiker met de naam *TestUser* met hun domein wachtwoord versleuteld met behulp van een certificaat met de naam *MyCert*. U kunt de `Invoke-ServiceFabricEncryptText` PowerShell-opdracht voor het maken van de geheime gecodeerde tekst. Zie [geheimen in Service Fabric-toepassingen beheren](service-fabric-application-secret-management.md) voor meer informatie.
+In het volgende voor beeld ziet u een Active Directory gebruiker met de naam *test* User met het domein wachtwoord versleuteld met behulp van een certificaat met de naam *MyCert*. U kunt de `Invoke-ServiceFabricEncryptText` Power shell-opdracht gebruiken om de tekst van de geheime code te maken. Zie [geheimen beheren in service Fabric-toepassingen](service-fabric-application-secret-management.md) voor meer informatie.
 
-U moet de persoonlijke sleutel van het certificaat voor het ontsleutelen van het wachtwoord voor de lokale computer met behulp van een out-of-band-methode implementeren (dit is in Azure, via Azure Resource Manager). Vervolgens, wanneer Service Fabric het servicepakket naar de machine is geïmplementeerd, is het kunnen het geheim te ontsleutelen en te verifiëren met Active Directory om uit te voeren onder deze referenties (samen met de naam van de gebruiker).
+U moet de persoonlijke sleutel van het certificaat implementeren om het wacht woord te ontsleutelen naar de lokale computer met behulp van een out-of-band-methode (in Azure is dit via Azure Resource Manager). Wanneer Service Fabric vervolgens het service pakket implementeert op de machine, kan het geheim ontsleutelen en (samen met de gebruikers naam) verificatie verifiëren met Active Directory om onder deze referenties te worden uitgevoerd.
 
 ```xml
 <Principals>
@@ -46,13 +37,13 @@ U moet de persoonlijke sleutel van het certificaat voor het ontsleutelen van het
 ```
 
 > [!NOTE] 
-> Als u een Run as-beleid op een service toepassen en het servicemanifest eindpunt resources met de HTTP-protocol verklaart, moet u ook opgeven een **SecurityAccessPolicy**.  Zie voor meer informatie, [toewijzen van een beveiligingsbeleid voor toegang voor HTTP en HTTPS-eindpunten](service-fabric-assign-policy-to-endpoint.md). 
+> Als u een runas-beleid toepast op een service en het service manifest declareert eindpunt resources met het HTTP-protocol, moet u ook een **SecurityAccessPolicy**opgeven.  Zie [beleid voor beveiligings toegang toewijzen voor HTTP-en HTTPS-eind punten](service-fabric-assign-policy-to-endpoint.md)voor meer informatie. 
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-Lees de volgende stap, de volgende artikelen:
-* [Inzicht krijgen in het toepassingsmodel](service-fabric-application-model.md)
-* [Resources specificeren in een servicemanifest](service-fabric-service-manifest-resources.md)
+Lees de volgende artikelen als volgende stap:
+* [Inzicht in het toepassings model](service-fabric-application-model.md)
+* [Resources opgeven in een service manifest](service-fabric-service-manifest-resources.md)
 * [Een app implementeren](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png
