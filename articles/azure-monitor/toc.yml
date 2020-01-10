@@ -91,6 +91,8 @@
       items:
         - name: Logboekgegevens
           href: platform/data-security.md
+        - name: Door klant beheerde sleutels
+          href: platform/customer-managed-keys.md
         - name: Verwerking van persoonlijke logboekgegevens
           href: platform/personal-data-mgmt.md
         - name: 'Verzameling, retentie en opslag van toepassingsgegevens'

@@ -113,6 +113,8 @@
       items:
         - name: Beveiligingsoverzicht
           href: search-security-overview.md
+        - name: Een privé-eindpunt maken
+          href: service-create-private-endpoint.md
         - name: Beheer van servicesleutels
           href: search-security-api-keys.md
         - name: Op rollen gebaseerde beheerderstoegang
@@ -333,7 +335,7 @@
       items:
         - name: API-versie 2019-05-06-preview
           href: search-api-preview.md
-        - name: ResetSkills-API
+        - name: Skills-API opnieuw instellen
           href: preview-api-resetskills.md
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.search/searchservices
