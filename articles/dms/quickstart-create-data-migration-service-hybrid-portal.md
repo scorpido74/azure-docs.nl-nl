@@ -1,6 +1,7 @@
 ---
-title: 'Snelstartgids: een Azure Database Migration Service hybride modus-exemplaar maken met behulp van de Azure Portal | Microsoft Docs'
-description: De Azure Portal gebruiken om een instantie van Azure Database Migration Service in de hybride modus te maken
+title: 'Snelstartgids: een hybride modus-instantie met Azure Portal maken'
+titleSuffix: Azure Database Migration Service
+description: Gebruik de Azure Portal om een instantie van Azure Database Migration Service in de hybride modus te maken.
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -8,21 +9,32 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc
+ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 12/06/2019
-ms.openlocfilehash: a124c33f15318f1b9b22a750a1de15601823afa3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.date: 12/17/2019
+ms.openlocfilehash: 64d4998e287f9981c666dee54fc3b67886791bbf
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74890688"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708288"
 ---
-# <a name="quickstart-create-an-instance-of-azure-database-migration-service-in-hybrid-mode-using-the-azure-portal-preview"></a>Snelstartgids: een exemplaar van Azure Database Migration Service in de hybride modus maken met behulp van de Azure Portal (preview-versie)
+# <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Quick Start: een hybride modus-exemplaar maken met Azure Portal & Azure Database Migration Service
 
 Azure Database Migration Service hybride modus beheert database migraties met behulp van een migratie medewerker die on-premises wordt gehost, samen met een exemplaar van Azure Database Migration Service dat in de Cloud wordt uitgevoerd. De hybride modus is vooral nuttig voor scenario's waarin een gebrek aan site-naar-site-connectiviteit tussen het on-premises netwerk en Azure of een beperkte band breedte voor site-naar-site-verbinding is.
 
+>[!NOTE]
+>Op dit moment worden Azure Database Migration Service die worden uitgevoerd in de hybride modus SQL Server-migraties ondersteund:
+>
+>- Azure SQL Database beheerde instantie met bijna geen downtime (online).
+>- Azure SQL Database afzonderlijke Data Base met enkele downtime (offline).
+>- MongoDb met Azure CosmosDB met bijna geen downtime (online).
+>- MongoDb naar Azure CosmosDB met enige downtime (offline).
+
 In deze Quick Start gebruikt u de Azure Portal om een instantie van Azure Database Migration Service in de hybride modus te maken. Daarna kunt u de Hybrid worker in uw on-premises netwerk downloaden, installeren en instellen. Tijdens de preview kunt u Azure Database Migration Service hybride modus gebruiken om gegevens van een on-premises exemplaar van SQL Server naar Azure SQL Database te migreren.
+
+> [!NOTE]
+> Het installatie programma van Azure Database Migration Service hybride wordt uitgevoerd op micro soft Windows Server 2012 R2, Windows Server 2016, Windows Server 2019, en de functie 10.
 
 > [!IMPORTANT]
 > Voor het hybride installatie programma van Azure Database Migration Service is .NET 4.7.2 of hoger vereist. Zie de pagina [down load .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework) voor de nieuwste versies van .net.
@@ -51,7 +63,7 @@ Registreer de resource provider micro soft. DataMigration voordat u uw eerste ex
 
 1. Selecteer +**een resource maken** om een exemplaar van Azure database Migration service te maken.
 
-2. Zoek in de marketplace naar 'migration', selecteer **Azure Database Migration Service** en selecteer vervolgens in het scherm **Azure Database Migration Service**  de optie **Maken**.
+2. Zoek op de Marketplace naar ' migratie ', selecteer **Azure database Migration service**en selecteer vervolgens **maken**op het scherm **Azure database Migration service** .
 
 3. Ga in het scherm **Migratieservice maken** als volgt te werk:
 
@@ -59,13 +71,9 @@ Registreer de resource provider micro soft. DataMigration voordat u uw eerste ex
     - Selecteer het Azure-**abonnement** waarin u het exemplaar wilt maken.
     - Selecteer een bestaande **Resourcegroep** of maak een nieuwe.
     - Kies de **locatie** die zich het dichtst bij uw bron- of doelserver bevindt.
-
-    > [!IMPORTANT]
-    > Tijdens de preview-fase wordt de hybride modus alleen ondersteund in de regio VS-Oost. Omdat de Hybrid Worker is geïnstalleerd in uw on-premises netwerk, is er weinig of geen invloed op de prestaties, zelfs als u migreert naar een doel in een andere regio.
-
     - Voor **Service modus**selecteert u **hybride (preview-versie)** .
 
-      ![Migratie service maken-basis beginselen](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
+           ![Create migration service - basics](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
 4. Selecteer **Controleren + maken**.
 
@@ -120,7 +128,7 @@ U moet een Azure-app registratie-ID maken die de on-premises Hybrid Worker kan g
 4. Zoek en open het bestand **dmsSettings. json** in de installatiemap, geef de **ApplicationId** en **resourceId**op en sla het bestand op.
 
     ![Instellingen voor Hybrid worker Azure Database Migration Service](media/quickstart-create-data-migration-service-hybrid-portal/dms-settings.png)
- 
+
 5. Genereer een certificaat dat Azure Database Migration Service kan gebruiken om de communicatie van de Hybrid worker te verifiëren met behulp van de volgende opdracht.
 
     ```
@@ -141,6 +149,12 @@ U moet een Azure-app registratie-ID maken die de on-premises Hybrid Worker kan g
     <drive>:\<folder>\Install>DMSWorkerBootstrap.exe -a Install -IAcceptDMSLicenseTerms
     ```
 
+    > [!NOTE]
+    > Wanneer u de installatie opdracht uitvoert, kunt u ook de volgende para meters gebruiken:
+    >
+    > - **-TelemetryOptOut** : de werk nemer stopt met het verzenden van telemetrie, maar blijft lokaal in het logboek registreren.  Het installatie programma verzendt nog steeds telemetrie.
+    > - **-p {InstallLocation}** . Hiermee schakelt u het wijzigen van het installatiepad in, standaard is C:\Program Files\DatabaseMigrationServiceHybrid.
+
 8. Als het installatie programma zonder fouten wordt uitgevoerd, wordt in de service een online status weer gegeven in Azure Database Migration Service en bent u klaar om uw data bases te migreren.
 
     ![Online Azure Database Migration Service](media/quickstart-create-data-migration-service-hybrid-portal/dms-instance-hybrid-mode-online.png)
@@ -152,6 +166,27 @@ Het verwijderen van Azure Database Migration Service hybride modus wordt momente
 ```
 <drive>:\<folder>\Install>DMSWorkerBootstrap.exe -a uninstall
 ```
+
+> [!NOTE]
+> Bij het uitvoeren van de uninstall-opdracht kunt u ook de para meter-ReuseCert gebruiken, waarmee het AdApp-certificaat wordt behouden dat door de generateCert-werk stroom is gegenereerd.  Hiermee maakt u gebruik van hetzelfde certificaat dat eerder is gegenereerd en geüpload.
+
+## <a name="set-up-the-azure-database-migration-service-hybrid-worker-using-powershell"></a>De Azure Database Migration Service Hybrid worker instellen met behulp van Power shell
+
+Naast de installatie van de Azure Database Migration Service Hybrid worker via de Azure Portal bieden we een [Power shell-script](https://techcommunity.microsoft.com/gxcuf89792/attachments/gxcuf89792/MicrosoftDataMigration/119/1/DMS_Hybrid_Script.zip) dat u kunt gebruiken om de installatie stappen voor de werk nemers te automatiseren nadat u een nieuw exemplaar van Azure database Migration service in de hybride modus hebt gemaakt. Het script:
+
+1. Hiermee maakt u een nieuwe AdApp.
+2. Down load het installatie programma.
+3. De generateCert-werk stroom wordt uitgevoerd.
+4. Hiermee uploadt u het certificaat.
+5. Hiermee wordt de AdApp als inzender toegevoegd aan uw Azure Database Migration Service-exemplaar.
+6. Voert de installatie werk stroom uit.
+
+Dit script is bedoeld voor snelle prototypen wanneer de gebruiker al over de benodigde machtigingen beschikt in de omgeving. Houd er rekening mee dat de AdApp en het certificaat in uw productie omgeving verschillende vereisten kunnen hebben, zodat het script kan mislukken.
+
+> [!IMPORTANT]
+> In dit script wordt ervan uitgegaan dat er een bestaand exemplaar van Azure Database Migration Service in de hybride modus en dat het gebruikte Azure-account machtigingen heeft voor het maken van AdApps in de Tenant en voor het wijzigen van RBAC op het abonnement.
+
+Vul de para meters boven aan het script in en voer het script uit vanuit een Power shell-instantie voor beheerders.
 
 ## <a name="next-steps"></a>Volgende stappen
 

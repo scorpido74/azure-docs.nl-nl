@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 61436b4317e85b67387a75e87c31a1c6cd13d84f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 26b53e897d70e596bcd770e99d2d29ac16c52755
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895399"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707075"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Snelstartgids: een Azure lente-Cloud-app starten met de Maven-invoeg toepassing
 
@@ -33,7 +33,7 @@ In deze Quick Start leert u het volgende:
 >[!TIP]
 > Azure Cloud Shell is een gratis interactieve shell die u kunt gebruiken om de opdrachten in dit artikel uit te voeren. Het heeft algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd, met inbegrip van de nieuwste versies van Git, de Java Development Kit (JDK), maven en de Azure CLI. Als u bent aangemeld bij uw Azure-abonnement, start u [Azure Cloud shell](https://shell.azure.com). Zie [overzicht van Azure Cloud shell](../cloud-shell/overview.md)voor meer informatie.
 
-Dit zijn de vereisten voor het voltooien van deze snelstartgids:
+Dit zijn de vereisten voor het voltooien van deze snelstart:
 
 1. [Installeer Git](https://git-scm.com/).
 2. [Installeer jdk 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
@@ -57,6 +57,9 @@ Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
 Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd. Nadat de service is geïmplementeerd, selecteert **u Ga naar resource** en de pagina **overzicht** voor het service-exemplaar wordt weer gegeven.
 
+> [!div class="nextstepaction"]
+> [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=provision)
+
 ## <a name="set-up-your-configuration-server"></a>De configuratie server instellen
 
 1. Selecteer op de pagina service **overzicht** de optie **Configuratie server**.
@@ -64,6 +67,9 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd. Nadat
 
     > [!div class="mx-imgBorder"]
     > configuratie-instellingen ![definiëren en Toep assen](media/maven-qs-apply-config.jpg)
+
+> [!div class="nextstepaction"]
+> [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=config-server)
 
 ## <a name="clone-and-build-the-sample-application-repository"></a>De voor beeld-toepassings opslagplaats klonen en bouwen
 
@@ -105,6 +111,9 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd. Nadat
    ```
 
 1. Nadat de implementatie is voltooid, kunt u toegang krijgen tot PiggyMetrics met behulp van de URL die wordt vermeld in de uitvoer van de voor gaande opdracht.
+
+> [!div class="nextstepaction"]
+> [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=asc-maven-quickstart&step=deploy)
 
 ## <a name="next-steps"></a>Volgende stappen
 

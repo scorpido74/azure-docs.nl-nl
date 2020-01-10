@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 10/30/2019
 ms.author: jeconnoc
-ms.openlocfilehash: ca78a9d7eeeeccb71fea75f6ab429e76f2344bbe
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 37af0ee99e48bfeddf4be81241b75318d1afda40
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895457"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707881"
 ---
 # <a name="quickstart-launch-your-spring-cloud-application-from-source-code"></a>Snelstartgids: uw lente-Cloud toepassing vanuit de bron code starten
 
@@ -77,6 +77,9 @@ az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
 ```
 
+> [!div class="nextstepaction"]
+> [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=provision)
+
 ## <a name="create-the-spring-cloud-application"></a>De lente-Cloud toepassing maken
 
 Met de volgende opdracht maakt u een lente-Cloud toepassing in uw abonnement.  Hiermee maakt u een lege lente-Cloud service waarnaar we onze toepassing kunnen uploaden.
@@ -137,6 +140,9 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 > [!NOTE]
 > In de kpack-Logboeken wordt alleen de meest recente implementatie weer gegeven als die implementatie is gemaakt op basis van de bron met behulp van kpack.
 
+> [!div class="nextstepaction"]
+> [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=deploy)
+
 ## <a name="assign-a-public-endpoint-to-gateway"></a>Een openbaar eind punt toewijzen aan de gateway
 
 1. Open de pagina **toepassings dashboard** .
@@ -144,9 +150,12 @@ az spring-cloud app show-deploy-log -n <app-name> [-d <deployment-name>]
 3. Selecteer **domein toewijzen** om een openbaar eind punt toe te wijzen aan de gateway. Dit kan een paar minuten duren. 
 4. Voer het toegewezen open bare IP-adres in uw browser in om de actieve toepassing weer te geven.
 
+> [!div class="nextstepaction"]
+> [Ik heb een probleem ondertreden](https://www.research.net/r/javae2e?tutorial=asc-source-quickstart&step=public-endpoint)
+
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstart hebt u de volgende zaken geleerd:
+In deze snelstartgids hebt u de volgende zaken geleerd:
 
 > [!div class="checklist"]
 > * Een service-exemplaar inrichten

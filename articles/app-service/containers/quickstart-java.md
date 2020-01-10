@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 64d70390b3563e17bbe0c70ed426dcda81b50198
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 0f9378b80b4985ad542d6f602ba361f59737fc9d
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872737"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707911"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Quick Start: een Java-app maken op Azure App Service in Linux
 
@@ -21,7 +21,7 @@ ms.locfileid: "74872737"
 
 > [!NOTE]
 >
-> Dit kan ook worden gedaan met populaire Ide's zoals IntelliJ en eclips. Bekijk onze vergelijk bare documenten op [Azure-Toolkit voor IntelliJ Quick](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app) start of [Azure-Toolkit voor eclipse Quick](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app)start.
+> Dit kan ook worden gedaan met populaire Ide's zoals IntelliJ, eclips en VS code. Bekijk onze gelijkaardige documenten op [Azure-Toolkit voor IntelliJ Quick](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)start, [Azure-Toolkit voor eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse-create-hello-world-web-app) Quick Start of de [VS code Quick](https://code.visualstudio.com/docs/java/java-webapp)start.
 >
 ![Voor beeld-app die wordt uitgevoerd in Azure App Service](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
@@ -35,6 +35,11 @@ Voer de volgende Maven opdracht uit in de Cloud Shell-prompt om een ​​nieuwe
 
 ```bash
 mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
+```
+Wijzig vervolgens uw werkmap in de projectmap:
+
+```bash
+cd helloworld
 ```
 
 ## <a name="configure-the-maven-plugin"></a>De Maven-invoegtoepassing configureren
@@ -91,13 +96,13 @@ Confirm (Y/N)? : Y
 
 Ga opnieuw naar `pom.xml` om te zien of de configuratie van de invoeg toepassing is bijgewerkt, kunt u indien nodig ook andere configuraties voor App Service rechtstreeks in uw pom-bestand wijzigen:
 
- Eigenschap | Verplicht | Beschrijving | Version
+ Eigenschap | Verplicht | Beschrijving | Versie
 ---|---|---|---
-`<schemaVersion>` | onwaar | Geef de versie van het configuratie schema op. Ondersteunde waarden zijn: `v1`, `v2`. | 1.5.2
+`<schemaVersion>` | false | Geef de versie van het configuratie schema op. Ondersteunde waarden zijn: `v1`, `v2`. | 1.5.2
 `<resourceGroup>` | waar | Azure-resource groep voor uw web-app. | 0.1.0+
 `<appName>` | waar | De naam van uw web-app. | 0.1.0+
 [`<region>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) | waar | Hiermee geeft u de regio waar uw web-app wordt gehost. de standaard waarde is **Europa West**. Alle geldige regio's in de sectie [ondersteunde regio's](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#region) . | 0.1.0+
-[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | onwaar | De prijs categorie voor uw web-app. De standaard waarde is **P1V2**.| 0.1.0+
+[`<pricingTier>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme##pricingtier) | false | De prijs categorie voor uw web-app. De standaard waarde is **P1V2**.| 0.1.0+
 [`<runtime>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting) | waar | De configuratie van de runtime-omgeving, u kunt [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#runtimesetting)de details zien. | 0.1.0+
 [`<deployment>`](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting) | waar | De implementatie configuratie, kunt u [hier](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme#deploymentsetting)de details zien. | 0.1.0+
 
