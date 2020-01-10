@@ -3,16 +3,16 @@ title: gegevens uit Event Hub opnemen in Azure Data Explorer
 description: In dit artikel leert u hoe u gegevens kunt opnemen in azure Data Explorer vanuit Event hub.
 author: orspod
 ms.author: orspodek
-ms.reviewer: mblythe
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 07/17/2019
-ms.openlocfilehash: 13c0bf8d0829debaa4ae41c724aafdaf5891ce4d
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.date: 01/08/2020
+ms.openlocfilehash: a65f0918d04f77bc3076449347bb20046f73e92a
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667440"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779945"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>gegevens uit Event Hub opnemen in Azure Data Explorer
 
@@ -33,7 +33,7 @@ Azure Data Explorer is een snelle en zeer schaalbare service voor gegevensverken
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-event-hub"></a>Een Event Hub maken
 
@@ -51,7 +51,7 @@ In dit artikel genereert u voorbeeld gegevens en stuurt u deze naar een Event Hu
 
     ![Een resourcegroep maken](media/ingest-data-event-hub/create-resource-group.png)
 
-1. Vul het formulier in met de volgende gegevens.
+1. Vul in het formulier de volgende gegevens in.
 
     ![Implementatieformulier](media/ingest-data-event-hub/deployment-form.png)
 
@@ -109,7 +109,7 @@ Nu kunt u vanuit Azure Data Explorer verbinding maken met de event hub. Wanneer 
 
     ![Event Hub-verbinding](media/ingest-data-event-hub/event-hub-connection.png)
 
-    Gegevensbron:
+    **Gegevens Bron:**
 
     **Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**
     |---|---|---|
@@ -120,7 +120,7 @@ Nu kunt u vanuit Azure Data Explorer verbinding maken met de event hub. Wanneer 
     | Eigenschappen van gebeurtenis systeem | Relevante eigenschappen selecteren | De [Event hub-systeem eigenschappen](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations). Als er meerdere records per gebeurtenis bericht zijn, worden de systeem eigenschappen aan de eerste toegevoegd. Bij het toevoegen van systeem eigenschappen, het [maken](/azure/kusto/management/tables#create-table) of [bijwerken](/azure/kusto/management/tables#alter-table-and-alter-merge-table) van het tabel schema en de [toewijzing](/azure/kusto/management/mappings) om de geselecteerde eigenschappen op te laten bevatten. |
     | | |
 
-    Doeltabel:
+    **Doel tabel:**
 
     Er zijn twee opties voor het routeren van de opgenomen gegevens: *statisch* en *dynamisch*. 
     Voor dit artikel gebruikt u statische route ring, waar u de tabel naam, gegevens indeling en toewijzing opgeeft. Laat **Mijn gegevens omvatten routeringsgegevens** daarom uitgeschakeld.
@@ -137,6 +137,8 @@ Nu kunt u vanuit Azure Data Explorer verbinding maken met de event hub. Wanneer 
     > * Alleen gebeurtenissen in de wachtrij na het maken van de gegevens verbinding worden opgenomen.
     > * Schakel GZip-compressie in voor statische route ring door een [ondersteunings aanvraag te openen in de Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Schakel GZip-compressie voor dynamische route ring in, zoals wordt weer gegeven in de voor [beeld-app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest). 
     > * De Avro-indeling en eigenschappen van het gebeurtenis systeem worden niet ondersteund voor compressie payload.
+
+[!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 
 ## <a name="copy-the-connection-string"></a>De verbindingsreeks kopiëren
 
@@ -204,7 +206,7 @@ Als u niet van plan bent de Event Hub opnieuw te gebruiken, wist u de **test-hub
 
 1. Selecteer in Azure Portal **Resourcegroepen** aan de linkerkant en selecteer vervolgens de resourcegroep die u hebt gemaakt.  
 
-    Als het menu links is samengevouwen, selecteert u ![Knop Uitvouwen](media/ingest-data-event-hub/expand.png) om het menu uit te vouwen.
+    Wanneer het menu links is samengevouwen, klikt u op ![Knop Uitvouwen](media/ingest-data-event-hub/expand.png) om het menu uit te vouwen.
 
    ![Resourcegroep selecteren die moet worden verwijderd](media/ingest-data-event-hub/delete-resources-select.png)
 

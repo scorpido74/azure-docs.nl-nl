@@ -6,16 +6,16 @@ author: alexkarcher-msft
 ms.topic: quickstart
 ms.date: 02/22/2019
 ms.author: alkarche
-ms.openlocfilehash: 5c0228feb88296e0c82efa52648ce38d70e5b921
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d20f56e0fba3af5885043fa344e7c6aa4e13d1b2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409886"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769231"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Een functie maken met behulp van Azure for students starter
 
-In deze zelf studie maakt u een Hello World-functie in een Azure for students starter-abonnement. Er wordt ook uitgelegd wat er beschikbaar is in Azure Functions in dit type abonnement.
+In deze zelf studie maakt u een ' Hallo wereld ' HTTP-functie in een Azure for students starter-abonnement. Er wordt ook uitgelegd wat er beschikbaar is in Azure Functions in dit type abonnement.
 
 Met micro soft *Azure for students starter* kunt u aan de slag met de Azure-producten die u nodig hebt om gratis te ontwikkelen in de Cloud. [Meer informatie over deze aanbieding vindt u hier.](https://azure.microsoft.com/offers/ms-azr-0144p/)
 
@@ -33,9 +33,9 @@ Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com>.
 
 ## <a name="create-a-function-app"></a>Een functie-app maken
 
-U moet een functie-app hebben die als host fungeert voor de uitvoering van uw functies. Met een functie-app kunt u functies groeperen in een logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren en delen. 
+U moet een functie-app hebben die als host fungeert voor de uitvoering van uw functies. Met een functie-app kunt u functies groeperen als een logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren, schalen en delen.
 
-1. Selecteer de knop **Nieuw** in de linkerbovenhoek van Azure Portal. Selecteer vervolgens **Compute** > **Functie-app**.
+1. Selecteer de knop **een resource maken** in de linkerbovenhoek van de Azure Portal. Selecteer vervolgens **compute** > **functie-app**.
 
     ![Een functie-app maken in Azure Portal](./media/functions-create-student-starter/function-app-create-flow.png)
 
@@ -110,7 +110,7 @@ U kunt de nieuwe functie nu uitvoeren door een HTTP-aanvraag te verzenden.
 
 ## <a name="supported-features-in-azure-for-students-starter"></a>Ondersteunde functies in azure for students starter
 
-In azure for student starter hebt u toegang tot de meeste functies van de Azure Functions runtime, met de volgende sleutel beperkingen:
+In azure for students starter hebt u toegang tot de meeste functies van de Azure Functions runtime, met de volgende sleutel beperkingen:
 
 * De HTTP-trigger is het enige type trigger dat wordt ondersteund.
     * Alle invoer-en uitvoer bindingen worden ondersteund. [Bekijk hier de volledige lijst.](functions-triggers-bindings.md)

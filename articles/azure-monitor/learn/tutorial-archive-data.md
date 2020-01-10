@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 2bb275b1ca129d2381fb89fcbe0111c573d4a8e7
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 86f042a451583759aa15e886b3261700335a5285
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893345"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748548"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Metrische gegevens en logboekgegevens van Azure archiveren met behulp van Azure Storage
 
@@ -38,7 +38,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Maak een opslagaccount
 
@@ -46,7 +46,7 @@ U moet eerst een opslagaccount instellen waarin de bewakingsgegevens worden gear
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>Abonnementlogboeken naar het opslagaccount doorsturen
 
-U bent nu klaar om uw Azure-omgeving in te stellen zodat bewakingsgegevens worden doorgestuurd naar een opslagaccount. We gaan eerst gegevens op abonnementsniveau (in het Azure-activiteitenlogboek) configureren om deze door te sturen naar het opslagaccount. Het [ **Azure-activiteitenlogboek** ](../../azure-monitor/platform/activity-logs-overview.md) bevat een geschiedenis van gebeurtenissen op abonnementsniveau in Azure. U kunt ernaar zoeken in Azure Portal om te bepalen *wie* *welke* resources heeft gemaakt, bijgewerkt of verwijderd en *wanneer* dat is gebeurd.
+U bent nu klaar om uw Azure-omgeving in te stellen zodat bewakingsgegevens worden doorgestuurd naar een opslagaccount. We gaan eerst gegevens op abonnementsniveau (in het Azure-activiteitenlogboek) configureren om deze door te sturen naar het opslagaccount. Het [**Azure-activiteitenlogboek**](../../azure-monitor/platform/platform-logs-overview.md) bevat een geschiedenis van gebeurtenissen op abonnementsniveau in Azure. U kunt ernaar zoeken in Azure Portal om te bepalen *wie* *welke* resources heeft gemaakt, bijgewerkt of verwijderd en *wanneer* dat is gebeurd.
 
 1. Klik op de knop **Controle** in de linkernavigatielijst en klik op **Activiteitenlogboek**.
 

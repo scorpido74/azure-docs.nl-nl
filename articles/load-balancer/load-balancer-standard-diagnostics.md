@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: ff42c6e9bd3c25721d2b77e49c2dd98a3eebdb43
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: f5fa39e07eba6bdf24d96e72c9229e215ff6730b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048731"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772037"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Diagnose van Standard Load Balancer met metrische gegevens, meldingen en status van resources
 
 Azure Standard Load Balancer maakt de volgende diagnostische mogelijkheden beschikbaar:
 
-* **Multi-dimensionale metrische gegevens en waarschuwingen**: voorziet in nieuwe multi-dimensionale diagnostische mogelijkheden via [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) voor standaard Load Balancer configuraties. U kunt uw standaard load balancer-resources bewaken, beheren en problemen oplossen.
+* **Multi-dimensionale metrische gegevens en waarschuwingen**: biedt multi-dimensionale diagnostische mogelijkheden via [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) voor standaard Load Balancer configuraties. U kunt uw standaard load balancer-resources bewaken, beheren en problemen oplossen.
 
 * **Resource status**: de Load Balancer pagina in de Azure Portal en de resource Health pagina (onder monitor) geven de sectie Resource Health voor Standard Load Balancer zichtbaar. 
 
@@ -31,7 +31,7 @@ Dit artikel bevat een korte rond leiding door deze mogelijkheden en biedt manier
 
 ## <a name = "MultiDimensionalMetrics"></a>Multi-dimensionale metrische gegevens
 
-Azure Load Balancer voorziet in nieuwe multidimensionale metrische gegevens via de nieuwe metrische gegevens van Azure in de Azure Portal en helpt u bij het gebruik van real-time diagnose inzichten in uw load balancer-resources. 
+Azure Load Balancer biedt multidimensionale metrische gegevens via de metrische gegevens van Azure in de Azure Portal en helpt u bij het in realtime diagnosticiseren van diagnostische gegevens in uw load balancer-resources. 
 
 De verschillende Standard Load Balancer configuraties bieden de volgende metrische gegevens:
 

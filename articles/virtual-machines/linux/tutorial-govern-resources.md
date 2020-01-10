@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: virtuele Azure-machines beheren met Azure CLI'
-description: In deze zelfstudie leert u hoe u de Azure CLI gebruikt voor het beheren van virtuele Azure-machines door RBAC, beleid, vergrendelingen en tags toe te passen
+title: Zelf studie-virtuele machines beheren met de CLI
+description: In deze zelf studie leert u hoe u de Azure CLI gebruikt voor het beheren van virtuele Azure-machines door RBAC, policies, vergren delingen en tags toe te passen.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: e9475f4226a65ad06d45170e0ab802c6cdb79d8f
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 97003699f8dbaa028ff7d4739a4f0576a8790716
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034528"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749918"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>Zelfstudie: Meer informatie over het beheren van virtuele Linux-machines met Azure CLI
+# <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Zelf studie: meer informatie over het beheer van virtuele Linux-machines met Azure CLI
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
@@ -42,7 +42,7 @@ az group create --name myResourceGroup --location "East US"
 
 De resourcegroep is momenteel leeg.
 
-## <a name="role-based-access-control"></a>Op rollen gebaseerd toegangsbeheer
+## <a name="role-based-access-control"></a>Toegangsbeheer op basis van rollen
 
 U wilt er zeker van zijn dat gebruikers in uw organisatie het juiste toegangsniveau tot deze resources hebben. U wilt gebruikers geen onbeperkte toegang verlenen, maar u moet er ook voor zorgen dat ze hun werk kunnen doen. Met [toegangsbeheer op basis van rollen](../../role-based-access-control/overview.md) kunt u beheren welke gebruikers gemachtigd zijn specifieke acties binnen een bepaald bereik uit te voeren.
 
@@ -138,7 +138,7 @@ az vm create --resource-group myResourceGroup --name myVM --image UbuntuLTS --ge
 
 Nadat de implementatie is voltooid, kunt u meer beheerinstellingen toepassen op de oplossing.
 
-## <a name="lock-resources"></a>Resources vergrendelen
+## <a name="lock-resources"></a>Bronnen vergrendelen
 
 Met [resourcevergrendelingen](../../azure-resource-manager/resource-group-lock-resources.md) voorkomt u dat gebruikers in uw organisatie per ongeluk kritieke bronnen wijzigen of verwijderen. In tegenstelling tot toegangsbeheer op basis van rollen wordt met resourcevergrendelingen een beperking toegepast op alle gebruikers en rollen. U kunt de vergrendeling instellen op *CanNotDelete* of *ReadOnly*.
 

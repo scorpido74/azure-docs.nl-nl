@@ -1,6 +1,6 @@
 ---
 title: Fouten met Azure Automation Runbooks oplossen
-description: Meer informatie over het oplossen van problemen met Azure Automation runbooks
+description: Meer informatie over het oplossen van problemen die kunnen optreden met Azure Automation runbooks.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 84a17cb4468f60abf2463e6aa3ca331466aad247
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 10152087b45a4048f30f382b237017efbbb63787
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850139"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769877"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Fouten met runbooks oplossen
 
@@ -270,9 +270,9 @@ The job was tried three times but it failed
 
 Deze fout treedt op als gevolg van een van de volgende problemen:
 
-* Geheugen limiet. De gedocumenteerde limieten voor de hoeveelheid geheugen die aan een sandbox wordt toegewezen, vindt u op de [automatiserings service limieten](../../azure-subscription-service-limits.md#automation-limits). Een taak kan mislukken als er meer dan 400 MB aan geheugen wordt gebruikt.
+* Geheugen limiet. De gedocumenteerde limieten voor de hoeveelheid geheugen die aan een sandbox wordt toegewezen, vindt u op de [automatiserings service limieten](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits). Een taak kan mislukken als er meer dan 400 MB aan geheugen wordt gebruikt.
 
-* Netwerk sockets. Azure-sandboxes zijn beperkt tot 1000 gelijktijdige netwerk sockets, zoals wordt beschreven in [limieten voor Automation-Service](../../azure-subscription-service-limits.md#automation-limits).
+* Netwerk sockets. Azure-sandboxes zijn beperkt tot 1000 gelijktijdige netwerk sockets, zoals wordt beschreven in [limieten voor Automation-Service](../../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits).
 
 * Module is niet compatibel. Deze fout kan optreden als module-afhankelijkheden niet juist zijn en als ze niet het geval zijn, retourneert uw runbook meestal het bericht ' opdracht niet gevonden ' of ' kan para meter niet binden '.
 

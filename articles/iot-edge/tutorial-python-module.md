@@ -10,16 +10,16 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c37d778fe9ad7d21943ed92452fae34b4b8771e7
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: e353a65544e86e702bd216db5c8b5f81f033c46a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560933"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772241"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Zelf studie: een python IoT Edge-module ontwikkelen en implementeren voor Linux-apparaten
 
-Gebruik Visual Studio code om C-code te ontwikkelen en te implementeren op een Linux-apparaat met Azure IoT Edge. 
+Gebruik Visual Studio code voor het ontwikkelen van python-code en implementeer deze op een Linux-apparaat met Azure IoT Edge. 
 
 U kunt Azure IoT Edge-modules gebruiken voor het implementeren van code die uw bedrijfslogica rechtstreeks op uw IoT Edge-apparaten implementeert. In deze zelf studie wordt u begeleid bij het maken en implementeren van een IoT Edge module waarmee sensor gegevens worden gefilterd op het IoT Edge apparaat dat u in de Quick Start hebt ingesteld. In deze zelfstudie leert u het volgende:    
 
@@ -34,9 +34,6 @@ De IoT Edge-module die u maakt in deze zelfstudie filtert de temperatuurgegevens
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-> [!NOTE]
-> De volgende hand leiding is voor de V1 python SDK, die sindsdien is afgeschaft. We werken momenteel aan het maken van deze hand leiding v2 compatibel. Bekijk deze ruimte op updates.
-
 ## <a name="solution-scope"></a>Oplossings bereik
 
 In deze zelf studie wordt gedemonstreerd hoe u een module in **python** kunt ontwikkelen met **Visual Studio code**en hoe u deze implementeert op een **Linux-apparaat**. IoT Edge ondersteunt geen python-modules voor Windows-apparaten. 
@@ -46,7 +43,7 @@ Gebruik de volgende tabel om inzicht te krijgen in uw opties voor het ontwikkele
 | Python | Visual Studio Code | Visual Studio 2017/2019 | 
 | - | ------------------ | ------------------ |
 | **Linux AMD64** | ![VS-code gebruiken voor python-modules op Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
-| **Linux-ARM32** | ![VS-code gebruiken voor python-modules op Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
+| **Linux ARM32** | ![VS-code gebruiken voor python-modules op Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -103,7 +100,7 @@ In het omgevingsbestand worden de referenties voor de containeropslagplaats opge
 
 ### <a name="select-your-target-architecture"></a>Selecteer uw doel architectuur
 
-Visual Studio code kan momenteel C-modules ontwikkelen voor Linux AMD64-en Linux ARM32v7-apparaten. U moet selecteren welke architectuur u wilt richten op elke oplossing, omdat de container is gebouwd en anders wordt uitgevoerd voor elk type architectuur. De standaard waarde is Linux AMD64. 
+Op dit moment kan Visual Studio code python-modules ontwikkelen voor Linux AMD64-en Linux ARM32v7-apparaten. U moet selecteren welke architectuur u wilt richten op elke oplossing, omdat de container is gebouwd en anders wordt uitgevoerd voor elk type architectuur. De standaard waarde is Linux AMD64. 
 
 1. Open het opdracht palet en zoek naar **Azure IOT Edge: Stel het standaard doel platform voor de rand oplossing**in of selecteer het snelkoppelings pictogram in de zijbalk aan de onderkant van het venster. 
 
@@ -276,5 +273,5 @@ U kunt door gaan met de volgende zelf studies om te leren hoe Azure IoT Edge u k
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)
 > [Stream Analytics](tutorial-deploy-stream-analytics.md)
-> [machine learning](tutorial-deploy-machine-learning.md) [
-> Custom Vision service](tutorial-deploy-custom-vision.md)
+> [Machine Learning](tutorial-deploy-machine-learning.md)
+> [Custom Vision Service](tutorial-deploy-custom-vision.md)

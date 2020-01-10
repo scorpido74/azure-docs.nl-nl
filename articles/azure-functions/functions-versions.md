@@ -3,12 +3,12 @@ title: Overzicht van Azure Functions runtime versies
 description: Azure Functions ondersteunt meerdere versies van de runtime. Leer over de verschillen tussen deze versies en hoe de juiste te kiezen.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 874d2e657c2c9d7cba7874ff9815c61f9bbe8ef7
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 1172f1cba3dfc10fe08863626db0aa8e7a4bf173
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74941695"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769112"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Overzicht van Azure Functions runtime versies
 
@@ -72,19 +72,19 @@ In versie 2.x zijn de volgende wijzigingen  aangebracht:
 
 * HTTP-concurrency-vertragingen zijn standaard ingesteld voor functies in een verbruiksplan, met een standaardwaarde van 100 gelijktijdige aanvragen per instantie. U kunt dit wijzigen via de [ `maxConcurrentRequests` ](functions-host-json.md#http) instelling in het bestand host.json.
 
-* Vanwege [.NET core beperkingen](https://github.com/Azure/azure-functions-host/issues/3414) is ondersteuning voor functies in F#-script (.fsx) verwijderd. Gecompileerde F#-functies (.fs) worden nog steeds ondersteund.
+* Vanwege [.net core-beperkingen](https://github.com/Azure/azure-functions-host/issues/3414)is de ondersteuning F# voor script-functies (. FSX) verwijderd. Gecompileerde F#-functies (.fs) worden nog steeds ondersteund.
 
 * De URL-indeling van de webhooks van Event Grid trigger is gewijzigd in `https://{app}/runtime/webhooks/{triggerName}`.
 
 ## <a name="migrating-from-2x-to-3x"></a>Migreren van 2. x naar 3. x
 
-Azure Functions versie 3. x is een uiterst achterwaarts compatibel met versie 2. x.  Veel apps moeten veilig kunnen worden bijgewerkt naar 3. x zonder code wijzigingen.  Bij het overstappen op 3. x wordt aanbevolen uitgebreide tests uit te voeren voordat u de primaire versie wijzigt in productie-apps.
+Azure Functions versie 3. x is uiterst achterwaarts compatibel met versie 2. x.  Veel apps moeten veilig kunnen worden bijgewerkt naar 3. x zonder code wijzigingen.  Bij het overstappen op 3. x wordt aanbevolen uitgebreide tests uit te voeren voordat u de primaire versie wijzigt in productie-apps.
 
 ### <a name="breaking-changes-between-2x-and-3x"></a>De wijzigingen tussen 2. x en 3. x verbreken
 
 Hieronder vindt u de wijzigingen die u moet kennen voordat u een upgrade uitvoert van een 2. x-app naar 3. x.
 
-#### <a name="javascript"></a>Javascript
+#### <a name="javascript"></a>JavaScript
 
 * Uitvoer bindingen die via `context.done` of retour waarden zijn toegewezen, gedragen zich nu hetzelfde als de instelling in `context.bindings`.
 
@@ -115,11 +115,11 @@ De versie van de functions-runtime die wordt gebruikt door gepubliceerde apps in
 
 ### <a name="locally-developed-application-versions"></a>Lokaal ontwikkelde toepassings versies
 
-U kunt de volgende updates functie-apps lokaal wijzigen doel versies.
+U kunt de volgende updates gebruiken om apps te laten werken om de doel versies lokaal te wijzigen.
 
 #### <a name="visual-studio-runtime-versions"></a>Visual Studio runtime-versies
 
-In Visual Studio selecteert u de runtime versie wanneer u een project maakt. Azure Functions-hulpprogramma's voor Visual Studio bieden ondersteuning voor beide grote runtime-versies. De juiste versie wordt gebruikt voor foutopsporing en publicatie op basis van de instellingen voor het project. De versie-instellingen worden gedefinieerd in het `.csproj` bestand in de volgende eigenschappen:
+In Visual Studio selecteert u de runtime versie wanneer u een project maakt. Azure Functions-hulpprogram ma's voor Visual Studio ondersteunt de drie belang rijke runtime versies. De juiste versie wordt gebruikt voor foutopsporing en publicatie op basis van de instellingen voor het project. De versie-instellingen worden gedefinieerd in het `.csproj` bestand in de volgende eigenschappen:
 
 ##### <a name="version-1x"></a>Versie 1. x
 
@@ -147,10 +147,10 @@ In Visual Studio selecteert u de runtime versie wanneer u een project maakt. Azu
 
 ###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>2\. x-apps bijwerken naar 3. x in Visual Studio
 
-U kunt een bestaande functie die is gericht op 2. x, openen en naar 3. x verplaatsen door het `.csproj` bestand te bewerken en de bovenstaande waarden bij te werken.  Visual Studio beheert runtime versies automatisch voor u op basis van meta gegevens van het project.  Het is echter mogelijk dat u nooit een 3. x-app hebt gemaakt voordat Visual Studio nog niet beschikt over de sjablonen en runtime voor 3. x op de computer.  Dit kan zichzelf opleveren met een fout zoals ' er is geen functions runtime beschikbaar die overeenkomt met de versie die is opgegeven in het project. '  Als u de meest recente sjablonen en runtime wilt ophalen, gaat u door de ervaring met het maken van een nieuw functie project.  Wanneer u het scherm versie en sjabloon selecteren selecteert, wacht u tot Visual Studio de meest recente sjablonen heeft opgehaald.  Zodra de laatste .NET Core 3-sjablonen beschikbaar zijn en worden weer gegeven, moet u alle projecten die zijn geconfigureerd voor versie 3. x, kunnen uitvoeren en fouten opsporen.
+U kunt een bestaande functie die is gericht op 2. x, openen en naar 3. x verplaatsen door het `.csproj` bestand te bewerken en de bovenstaande waarden bij te werken.  Visual Studio beheert runtime versies automatisch voor u op basis van meta gegevens van het project.  Het is echter mogelijk dat u nog nooit een 3. x-app hebt gemaakt voordat dat Visual Studio de sjablonen en runtime voor 3. x op uw computer heeft.  Dit kan zichzelf opleveren met een fout zoals ' er is geen functions runtime beschikbaar die overeenkomt met de versie die is opgegeven in het project. '  Als u de meest recente sjablonen en runtime wilt ophalen, gaat u door de ervaring met het maken van een nieuw functie project.  Wanneer u het scherm versie en sjabloon selecteren selecteert, wacht u tot Visual Studio de meest recente sjablonen heeft opgehaald.  Zodra de laatste .NET Core 3-sjablonen beschikbaar zijn en worden weer gegeven, moet u alle projecten die zijn geconfigureerd voor versie 3. x, kunnen uitvoeren en fouten opsporen.
 
 > [!IMPORTANT]
-> De functies van versie 3. x kunnen alleen worden ontwikkeld in Visual Studio als u versie 16,4 of hoger gebruikt.
+> De functies van versie 3. x kunnen alleen worden ontwikkeld in Visual Studio als u Visual Studio versie 16,4 of hoger gebruikt.
 
 #### <a name="vs-code-and-azure-functions-core-tools"></a>VS code en Azure Functions Core Tools
 

@@ -1,25 +1,14 @@
 ---
-title: Azure Service Fabric resource governance voor containers en services | Microsoft Docs
+title: Resourcebeheer voor containers en services
 description: Met Azure Service Fabric kunt u resource limieten opgeven voor services die binnen of buiten de containers worden uitgevoerd.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 8/9/2017
-ms.author: atsenthi
-ms.openlocfilehash: 44abb297b9ce0eafadd3af9539d5b12751360319
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 85520876d7f0c89450b572d28dee6cb66ed2231d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242920"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772377"
 ---
 # <a name="resource-governance"></a>Resourcebeheer
 
@@ -76,7 +65,7 @@ Hier volgt een voor beeld van het instrueren van Service Fabric om 50% van de be
 </Section>
 ```
 
-Als u volledige hand matige configuratie van knooppunt capaciteit nodig hebt, kunt u het normale mechanisme gebruiken voor het beschrijven van de knoop punten in het cluster. Hier volgt een voor beeld van het instellen van het knoop punt met vier kernen en 2 GB aan geheugen:
+Voor de meeste klanten en scenario's is automatische detectie van knooppunt capaciteit voor de CPU en het geheugen de aanbevolen configuratie (automatische detectie is standaard ingeschakeld). Als u echter volledige hand matige configuratie van knooppunt capaciteit nodig hebt, kunt u dit type per knoop punt configureren met behulp van het mechanisme voor het beschrijven van de knoop punten in het cluster. Hier volgt een voor beeld van het instellen van het knooppunt type met vier kernen en 2 GB aan geheugen:
 
 ```xml
     <NodeType Name="MyNodeType">
@@ -217,7 +206,7 @@ Om te voor komen dat deze situaties zich voordoen, kunt u met Service Fabric *d
 Aanvullende opmerkingen:
 
 * Het afdwingen van resource limieten is alleen van toepassing op de metrische gegevens voor de `servicefabric:/_CpuCores` en `servicefabric:/_MemoryInMB` resources
-* Het afdwingen van resources werkt alleen als de capaciteit van knoop punten voor de metrische gegevens van de resource beschikbaar is voor Service Fabric, hetzij via een mechanisme voor automatische detectie, hetzij via gebruikers hand matig de knooppunt capaciteit opgeven (zoals wordt uitgelegd in de [cluster installatie voor inschakelen sectie resource](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) beheer). Als de knooppunt capaciteit niet is geconfigureerd, kan de functie voor het afdwingen van resources niet worden gebruikt omdat Service Fabric niet weet hoeveel bronnen er moeten worden gereserveerd voor gebruikers services. Service Fabric geeft een status waarschuwing als ' EnforceUserServiceMetricCapacities ' waar ' is, maar de knooppunt capaciteit niet is geconfigureerd.
+* Het afdwingen van resources werkt alleen als de capaciteit van knoop punten voor de metrische gegevens van de resource beschikbaar is voor Service Fabric, hetzij via een mechanisme voor automatische detectie, hetzij via gebruikers hand matig de knooppunt capaciteit opgeven (zoals wordt uitgelegd in de sectie [cluster installatie voor het inschakelen van resource governance](service-fabric-resource-governance.md#cluster-setup-for-enabling-resource-governance) ). Als de knooppunt capaciteit niet is geconfigureerd, kan de functie voor het afdwingen van resources niet worden gebruikt omdat Service Fabric niet weet hoeveel bronnen er moeten worden gereserveerd voor gebruikers services. Service Fabric geeft een status waarschuwing als ' EnforceUserServiceMetricCapacities ' waar ' is, maar de knooppunt capaciteit niet is geconfigureerd.
 
 ## <a name="other-resources-for-containers"></a>Andere resources voor containers
 

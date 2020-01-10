@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b409824c2adb544560dfa17b4871ba23760d35c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81f776428303ad5e6486ba52c1acdf70d051563e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443857"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835021"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>Veelgestelde vragen over SQL Database beheerde exemplaren
 
@@ -105,7 +105,7 @@ Als beide generaties niet in dezelfde regio worden ondersteund, is het wijzigen 
 
 ## <a name="tune-performance"></a>Prestaties afstemmen
 
-\* * Hoe kan ik het afstemmen van de prestaties van mijn beheerde exemplaar? **
+**De prestaties van mijn beheerde exemplaar Hoe kan ik afstemmen?**
 
 Algemeen beheerde instantie gebruikt externe opslag, omdat de grootte van de gegevens en logboek bestanden op de prestaties van belang is. Zie [impact van de grootte van het logboek bestand op algemeen prestaties van het beheerde exemplaar](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e)voor meer informatie.
 
@@ -180,8 +180,8 @@ Om een beter inzicht te krijgen in de voor delen, kosten en risico's die zijn ge
 
 ## <a name="dns-refresh"></a>DNS vernieuwen 
 
-\* * Kan ik DNS vernieuwen? **
-  
+**Kan ik DNS vernieuwen?**
+
 Momenteel bieden we geen functie voor het vernieuwen van de DNS-server configuratie voor een beheerd exemplaar.
 
 De DNS-configuratie wordt uiteindelijk vernieuwd:

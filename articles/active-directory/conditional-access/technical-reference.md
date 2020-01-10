@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a3518dfcad3678dc298ba8529e731d48ec1d195
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 78f148f435edee16805cc8b0ae78652a17826727
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72893461"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768145"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Verwijzing naar de Azure Active Directory-instellingen voor voorwaardelijke toegang
 
@@ -29,8 +29,6 @@ In dit artikel vindt u ondersteunings informatie voor de volgende configuratie o
 - Voor waarde client toepassingen
 - Vereiste voor client toepassing goedgekeurd
 
-Als dit niet de informatie is die u zoekt, laat u een opmerking aan het einde van dit artikel.
-
 ## <a name="cloud-apps-assignments"></a>Cloud-apps toewijzen
 
 Met beleid voor voorwaardelijke toegang kunt u bepalen hoe uw gebruikers toegang hebben tot uw [Cloud-apps](conditions.md#cloud-apps-and-actions). Wanneer u een beleid voor voorwaardelijke toegang configureert, moet u ten minste één Cloud-app selecteren. 
@@ -41,6 +39,7 @@ Met beleid voor voorwaardelijke toegang kunt u bepalen hoe uw gebruikers toegang
 
 U kunt een beleid voor voorwaardelijke toegang toewijzen aan de volgende Cloud-apps van micro soft:
 
+- Office 365 (preview-versie)
 - Azure Analysis Services
 - Azure DevOps
 - Azure SQL Database en data warehouse: meer [informatie](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
@@ -55,7 +54,7 @@ U kunt een beleid voor voorwaardelijke toegang toewijzen aan de volgende Cloud-a
 - Microsoft Flow
 - Microsoft Forms
 - Microsoft Intune
-- Inschrijving Microsoft Intune
+- Microsoft Intune-inschrijving
 - Microsoft Planner
 - Microsoft PowerApps
 - Micro soft Search in Bing
@@ -73,6 +72,22 @@ U kunt een beleid voor voorwaardelijke toegang toewijzen aan de volgende Cloud-a
 - Skype voor Bedrijven Online
 - Virtueel particulier netwerk (VPN)
 - Windows Defender ATP
+
+### <a name="office-365-preview"></a>Office 365 (preview-versie)
+
+Office 365 biedt productiviteits-en samenwerkings Services op basis van de Cloud, zoals Exchange, share point en micro soft teams. Office 365 Cloud Services zijn diep geïntegreerd om soepele en samen werkende ervaringen te garanderen. De Office 365-app (preview) maakt het mogelijk om deze services in één keer te richten. We raden u aan de nieuwe app Office 365 (preview) te gebruiken, in plaats van afzonderlijke Cloud-apps, zoals Office 365 Exchange Online en Office 365 share point online, om problemen te voor komen die zich kunnen voordoen als gevolg van inconsistent beleid en service afhankelijkheden.
+
+Belangrijkste toepassingen die zijn opgenomen in de client-app voor Office 365 (preview):
+
+- Office 365 Exchange Online
+- Office 365 share point online
+- Microsoft Teams
+- Office 365 Yammer
+- Office-portal
+- Microsoft Forms
+- Micro soft power Automatiseer
+- Microsoft Planner
+- Microsoft PowerApps
 
 ### <a name="other-applications"></a>Andere toepassingen
 
@@ -115,7 +130,7 @@ In het beleid voor voorwaardelijke toegang kunt u **browsers** als client-app se
 
 Deze instelling werkt met alle browsers. Om echter te voldoen aan het beleid van een apparaat, zoals een vereiste apparaat vereist, worden de volgende besturings systemen en browsers ondersteund:
 
-| Besturingssysteem                     | Overzichten                                        |
+| Besturingssysteem                     | Browsers                                        |
 | :--                    | :--                                             |
 | Windows 10             | Micro soft Edge, Internet Explorer, Chrome       |
 | Windows 8/8,1        | Internet Explorer, Chrome                       |
@@ -143,7 +158,7 @@ Als u deze uitbrei ding automatisch wilt implementeren in Chrome-browsers, maakt
 |    |    |
 | --- | --- |
 | Pad | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| Naam | 1 |
+| Name | 1 |
 | Type | REG_SZ (teken reeks) |
 | Gegevens | ppnbnpeolgkicgegkbkbjmhlideopiji; https\://clients2.google.com/service/update2/crx |
 
@@ -152,9 +167,9 @@ Voor Chrome-ondersteuning in **Windows 8,1 en 7**maakt u de volgende register sl
 |    |    |
 | --- | --- |
 | Pad | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| Naam | 1 |
+| Name | 1 |
 | Type | REG_SZ (teken reeks) |
-| Gegevens | {"patroon": "https://device.login.microsoftonline.com", "filter": {"uitgever": {"CN": "MS-Organization-Access"}}}} |
+| Gegevens | {"patroon": "https://device.login.microsoftonline.com", "filter": {"uitgever": {"CN": "MS-organisatie-Access"}}} |
 
 Deze browsers ondersteunen de verificatie van apparaten, zodat het apparaat kan worden geïdentificeerd en gevalideerd op basis van een beleid. De controle van het apparaat mislukt als de browser wordt uitgevoerd in de privé modus.
 
@@ -172,7 +187,7 @@ Deze instelling heeft gevolgen voor toegangs pogingen van de volgende mobiele ap
 | E-mail/agenda/personen-app, Outlook 2016, Outlook 2013 (met moderne verificatie)| Office 365 Exchange Online | Windows 10 |
 | MFA en locatie beleid voor apps. Beleids regels op basis van apparaten worden niet ondersteund.| Alle apps app service| Android en iOS |
 | Micro soft teams-Services: Hiermee beheert u alle services die micro soft-teams en alle client-apps ondersteunen-Windows Desktop, iOS, Android, WP en web client | Microsoft Teams | Windows 10, Windows 8,1, Windows 7, iOS, Android en macOS |
-| Office 2016-apps, Office 2013 (met moderne verificatie), OneDrive Sync-Client (Zie [opmerkingen](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)) | Office 365 share point online | Windows 8,1, Windows 7 |
+| Office 2016-apps, Office 2013 (met moderne verificatie), OneDrive Sync-Client (Zie [opmerkingen](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)) | Office 365 share point online | Windows 8.1, Windows 7 |
 | Office 2016-apps, universele Office-apps, Office 2013 (met moderne verificatie), OneDrive Sync-Client (Zie [opmerkingen](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)), ondersteuning van Office-groepen is gepland voor de toekomst. ondersteuning voor share point-apps is gepland voor de toekomst | Office 365 share point online | Windows 10 |
 | Office 2016 (alleen Word, Excel, Power Point, OneNote). Ondersteuning voor OneDrive voor bedrijven is gepland voor de toekomst| Office 365 share point online| macOS|
 | Office 2019| Office 365 share point online | Windows 10, macOS |
@@ -180,9 +195,9 @@ Deze instelling heeft gevolgen voor toegangs pogingen van de volgende mobiele ap
 | Office Yammer-app | Office 365 Yammer | Windows 10, iOS, Android |
 | Outlook 2019 | Office 365 share point online | Windows 10, macOS |
 | Outlook 2016 (Office voor macOS) | Office 365 Exchange Online | macOS |
-| Outlook 2016, Outlook 2013 (met moderne verificatie), Skype voor bedrijven (met moderne verificatie) | Office 365 Exchange Online | Windows 8,1, Windows 7 |
+| Outlook 2016, Outlook 2013 (met moderne verificatie), Skype voor bedrijven (met moderne verificatie) | Office 365 Exchange Online | Windows 8.1, Windows 7 |
 | Mobiele Outlook-app | Office 365 Exchange Online | Android, iOS |
-| App Power BI | Power BI-service | Windows 10, Windows 8,1, Windows 7, Android en iOS |
+| Power BI-app | Power BI-service | Windows 10, Windows 8,1, Windows 7, Android en iOS |
 | Skype voor Bedrijven | Office 365 Exchange Online| Android, IOS |
 | App Visual Studio Team Services | Visual Studio Team Services | Windows 10, Windows 8,1, Windows 7, iOS en Android |
 
@@ -213,7 +228,7 @@ Deze instelling is van toepassing op de volgende client-apps:
 - Microsoft Invoicing
 - Microsoft Kaizala
 - Microsoft Launcher
-- Micro soft OneDrive
+- Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
 - Microsoft Planner
@@ -235,6 +250,7 @@ Deze instelling is van toepassing op de volgende client-apps:
 - De goedgekeurde client-apps ondersteunen de functie intune-Mobile Application Management.
 - De vereiste **goedgekeurde client-app vereisen** :
    - Biedt alleen ondersteuning voor de voor waarde iOS en Android voor [device platform](#device-platform-condition).
+- Voorwaardelijke toegang kan niet worden beschouwd als micro soft Edge in de InPrivate-modus van een goedgekeurde client-app.
 
 ## <a name="app-protection-policy-requirement"></a>Vereiste voor app-beveiligings beleid 
 
@@ -245,7 +261,7 @@ In het beleid voor voorwaardelijke toegang kunt u vereisen dat er een app-beveil
 Deze instelling is van toepassing op de volgende client-apps:
 
 - Micro soft Cortana
-- Micro soft OneDrive
+- Microsoft OneDrive
 - Microsoft Outlook
 - Microsoft Planner
 

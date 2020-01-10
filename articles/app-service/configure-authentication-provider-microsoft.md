@@ -5,12 +5,12 @@ ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9158a4094b7d2ec148c2cae85decb3ad959b7c3
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 12e16cc7e17ae217a334fe25d71672ab2cafa5a8
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671926"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768432"
 ---
 # <a name="configure-your-app-service-app-to-use-microsoft-account-login"></a>Uw App Service-app configureren voor het gebruik van aanmelding met een micro soft-account
 
@@ -22,7 +22,7 @@ In dit onderwerp wordt beschreven hoe u Azure App Service kunt configureren voor
 
 1. Ga naar [**app-registraties**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) in het Azure Portal. Meld u indien nodig aan met uw Microsoft-account.
 1. Selecteer **nieuwe registratie**en voer vervolgens een toepassings naam in.
-1. Selecteer in de **omleidings-Uri's** **Web**en voer vervolgens `https://<app-domain-name>/.auth/login/microsoftaccount/callback supply the endpoint for your application`in. Vervang *\<app-domain name >* door de domein naam van uw app.  Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. Zorg ervoor dat u het HTTPS-schema in de URL gebruikt.
+1. Selecteer in de **omleidings-Uri's** **Web**en voer vervolgens `https://<app-domain-name>/.auth/login/microsoftaccount/callback`in. Vervang *\<app-domain name >* door de domein naam van uw app.  Bijvoorbeeld `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`. Zorg ervoor dat u het HTTPS-schema in de URL gebruikt.
 
 1. Selecteer **Registreren**.
 1. Kopieer de **toepassings-id (client)** . U hebt deze later nodig.
@@ -30,11 +30,11 @@ In dit onderwerp wordt beschreven hoe u Azure App Service kunt configureren voor
 1. Kopieer de waarde die wordt weer gegeven op de pagina **certificaten & geheimen** . Nadat u de pagina verlaat, wordt deze niet meer weer gegeven.
 
     > [!IMPORTANT]
-    > Het wacht woord is een belang rijke beveiligings referentie. Deel het wacht woord niet met iemand of distribueer het in een client toepassing.
+    > De waarde van het client geheim (wacht woord) is een belang rijke beveiligings referentie. Deel het wacht woord niet met iemand of distribueer het in een client toepassing.
 
 ## <a name="secrets"> </a>Micro soft-account gegevens toevoegen aan uw app service-toepassing
 
-1. Ga naar uw toepassing in de [Azure-portal].
+1. Ga naar uw toepassing in de [Azure Portal].
 1. Selecteer **instellingen** > **verificatie/autorisatie**en controleer of app service- **verificatie** is **ingeschakeld**.
 1. Selecteer onder **verificatie providers**de optie **micro soft-account**. Plak de client-ID en het client geheim die u eerder hebt verkregen. Schakel de scopes in die nodig zijn voor uw toepassing.
 1. Selecteer **OK**.
@@ -57,4 +57,4 @@ U bent nu klaar om micro soft-account te gebruiken voor verificatie in uw app.
 <!-- URLs. -->
 
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure-portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

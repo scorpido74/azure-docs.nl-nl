@@ -10,12 +10,12 @@ keywords: Azure Automation, DSC, Power shell, desired state Configuration, updat
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.topic: quickstart
-ms.openlocfilehash: e7a527fc290433390436eac3d4c291f2a32bf2b3
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 814be233c80213f84fb81a62caf152536ef4811f
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951442"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834084"
 ---
 # <a name="quickstart-connect-machines-to-azure-using-azure-arc-for-servers---powershell"></a>Snelstartgids: computers verbinden met Azure met behulp van Azure Arc voor servers-Power shell
 
@@ -35,6 +35,9 @@ Een Service-Principal is een speciale beperkt beheer identiteit die alleen de mi
 ### <a name="steps-to-create-the-service-principal"></a>Stappen voor het maken van de Service-Principal
 
 In dit voor beeld gebruiken we [Azure PowerShell](/powershell/azure/install-az-ps) om een SPN-naam (Service Principal Name) te maken. U kunt ook de stappen volgen die worden vermeld onder [een service-principal maken met behulp van de Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md) voor deze taak.
+
+> [!NOTE]
+> Wanneer u de Service-Principal maakt, moet u een eigenaar of beheerder van de gebruikers toegang zijn voor het abonnement dat u wilt gebruiken voor onboarding. Als u niet over de juiste machtigingen beschikt om roltoewijzingen te maken, wordt de Service-Principal mogelijk gemaakt, maar kan de machine niet op de onboarding worden uitgevoerd.
 
 De rol `Azure Connected Machine Onboarding` bevat alleen de machtigingen die nodig zijn voor het onboarden. U kunt de machtiging van een SPN definiëren om het bereik van een resource groep of een abonnement toe te staan.
 
@@ -142,7 +145,7 @@ Open in Windows Power shell als Administrator op een doel knooppunt en voer het 
   --service-principal-secret "{your-spn-password}" `
   --resource-group "{your-resource-group-name}" `
   --tenant-id "{your-tenant-id}" `
-  --location "{location-of-your-resource-group}" `
+  --location "{desired-location}" `
   --subscription-id "{your-subscription-id}"
 ```
 
@@ -164,7 +167,7 @@ Parameters:
 * `tenant-id`: de GUID van de Tenant. U kunt deze in Azure Portal vinden door **Azure Active Directory** - -> **Eigenschappen** -> **Directory-id**te selecteren.
 * `subscription-id`: de GUID van het abonnement, in azure, waar u de computer wilt verbinden.
 * `resource-group`: de resource groep waar u de computer met verbinding wilt.
-* `location`: Zie [Azure-regio's en-locaties](https://azure.microsoft.com/global-infrastructure/regions/). Deze locatie kan hetzelfde zijn als de locatie van de resource groep. Voor de open bare Preview wordt de service ondersteund in **WestUS2** en **Europa-West**.
+* `location`: Zie [Azure-regio's en-locaties](https://azure.microsoft.com/global-infrastructure/regions/). Deze locatie kan hetzelfde zijn als de locatie van de resource groep. Voor de open bare Preview wordt de service ondersteund in **WestUS2**, **Zuidoost-Azië**en **Europa-West**.
 * `resource-name`: (*optioneel*) gebruikt voor de Azure resource-representatie van uw on-premises machine. Als u deze waarde niet opgeeft, wordt de hostnaam van de computer gebruikt.
 
 U vindt meer informatie over het hulp programma ' azcmagent ' in [Azcmagent Reference](azcmagent-reference.md).

@@ -1,10 +1,10 @@
 ---
 title: Een veilige Azure AD-webtoepassing ontwikkelen | Microsoft Docs
 description: Deze eenvoudige voor beeld-app implementeert aanbevolen beveiligings procedures voor het verbeteren van uw toepassing en de beveiligings postuur van uw organisatie bij het ontwikkelen op Azure.
-keywords: na
+keywords: n.v.t.
 services: security
 documentationcenter: na
-author: fehase
+author: TerryLanfear
 manager: alclabo
 editor: ''
 ms.assetid: cd906856-f4f9-4ddc-9249-c998386f4085
@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2019
-ms.author: v-fehase
-ms.openlocfilehash: 88ef0874d760fb87700eac83c0d615be5887ddee
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.author: terrylan
+ms.openlocfilehash: a936fb4a0a6eadc2840fc6d642428091a6b0fe9e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159849"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771271"
 ---
 # <a name="develop-secure-app-for-an-azure-ad-app"></a>Een beveiligde App ontwikkelen voor een Azure AD-app
 ## <a name="overview"></a>Overzicht
@@ -362,7 +362,7 @@ De volgende technologieën bieden mogelijkheden voor het beheren van toegang tot
 - Met Azure Active Directory Privileged Identity Management kunnen klanten het aantal gebruikers dat toegang heeft tot bepaalde gegevens, zoals gegevens van de kaart houder, minimaliseren. Beheerders kunnen Azure Active Directory Privileged Identity Management gebruiken om bevoegde identiteiten en hun toegang tot bronnen te detecteren, beperken en controleren. Deze functie kan ook worden gebruikt voor het afdwingen van alleen-in-time-beheer toegang op aanvraag als dat nodig is.
 - Azure Active Directory Identity Protection detecteert potentiële beveiligings problemen die van invloed zijn op de identiteit van een organisatie, configureert automatische antwoorden op gedetecteerde verdachte acties die betrekking hebben op de identiteit van een organisatie en onderzoekt verdachte incidenten om de juiste actie te ondernemen om ze op te lossen.
 ### <a name="secrets-management"></a>Geheimen beheren
-De oplossing maakt gebruik van Azure Key Vault voor het beheer van sleutels en geheimen. Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Met de volgende Azure Key Vault mogelijkheden kunnen klanten dergelijke gegevens beveiligen en gebruiken
+De oplossing maakt gebruik van Azure Key Vault voor het beheer van sleutels en geheimen. Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Met de volgende Azure Key Vault mogelijkheden kunnen klanten dergelijke gegevens beveiligen en gebruiken
    - Geavanceerd toegangs beleid wordt geconfigureerd op basis van behoefte.
    - Key Vault toegangs beleid wordt gedefinieerd met mini maal vereiste machtigingen voor sleutels en geheimen.
    - Alle sleutels en geheimen in Key Vault hebben verloop datums.
@@ -412,7 +412,7 @@ Azure-Services registreren systeem-en gebruikers activiteiten uitvoerig, evenals
    - Toegangs sleutel voor gegevens opslag
    - Verbindingsreeks
    - Naam gegevens tabel
-   - Gebruikers referenties
+   - Gebruikersreferenties
    - Geavanceerd toegangs beleid wordt op basis van behoefte geconfigureerd
    - Key Vault toegangs beleid is gedefinieerd met mini maal vereiste machtigingen voor sleutels en geheimen
    - Alle sleutels en geheimen in Key Vault verloop datums hebben
@@ -465,7 +465,7 @@ MFA inschakelen voor beheerders aanmeldingen
    1. Ga naar het tabblad **Azure Active Directory** in het Azure Portal
    2. Onder de categorie beveiliging selecteert u voorwaardelijke toegang. Dit scherm wordt weer gegeven
 
-       ![Voorwaardelijke toegang-beleids regels](./media/secure-aad-app/ad-mfa-conditional-add.png)
+       ![Beleid voor voorwaardelijke toegang - Beleid](./media/secure-aad-app/ad-mfa-conditional-add.png)
 
 Als u geen nieuw beleid kunt maken
 
@@ -512,13 +512,13 @@ Deze werk ruimte maken
    *Zoeken naar Log Analytics-werk ruimten*
 
    2. Selecteer op de volgende pagina **toevoegen** en geef vervolgens een naam, resource groep en locatie op voor de werk ruimte.
-   ![een Log Analytics werkruimte maken](./media/secure-aad-app/sentinel-log-analytics-create.png)
+   ![Een Log Analytics-werkruimte maken](./media/secure-aad-app/sentinel-log-analytics-create.png)
 
-   *Een Log Analytics-werk ruimte maken*
+   *Een Log Analytics-werkruimte maken*
 
    3. Gebruik het zoekvak om te zoeken naar **Azure Sentinel**.
 
-   ![Zoeken naar Sentinel van Azure](./media/secure-aad-app/sentinel-add.png)
+   ![Zoeken naar Azure Sentinel](./media/secure-aad-app/sentinel-add.png)
 
    *Zoeken naar Sentinel van Azure*
 
@@ -537,7 +537,7 @@ Deze werk ruimte maken
    Als u bijvoorbeeld verbinding wilt maken met de toepassings gateway, voert u de volgende stappen uit:
 
    1. Open de Blade Azure-toepassing gateway-exemplaar.
-   2. Onder **bewaking**selecteert u **Diagnostische instellingen**.
+   2. Onder **bewaking**, selecteer **diagnostische instellingen**.
    3. Selecteer **Diagnostische instelling toevoegen**.
 
    ![Application Gateway diagnostische gegevens toevoegen](./media/secure-aad-app/sentinel-gateway-connector.png)
@@ -558,6 +558,6 @@ Deze werk ruimte maken
 ## <a name="next-steps"></a>Volgende stappen
    De volgende artikelen kunnen u helpen bij het ontwerpen, ontwikkelen en implementeren van beveiligde toepassingen.
 
-- [Aangepast](secure-design.md)
+- [Ontwerpen](secure-design.md)
 - [Ontwikkelen](secure-develop.md)
 - [Implementeren](secure-deploy.md)

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
-ms.date: 12/11/2019
-ms.openlocfilehash: 1c419e0550561e99694d9256c9c9111a2549b82e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: HT
+ms.date: 01/09/2020
+ms.openlocfilehash: f6b7797fbebd3d1df3da3405926543d716e584f4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647863"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75835102"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Resource limieten voor elastische Pools met behulp van het vCore-aankoop model
 
@@ -52,8 +52,8 @@ U kunt de servicelaag, de reken grootte en de opslag hoeveelheid instellen met b
 |Maximale gegevens grootte TempDB (GB)|32|64|96|128|160|192|
 |Opslagtype|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
-|Max. gegevensiops *|400|800|1200|1600|2000|2400|
-|Maximale logboek frequentie (MBps)|4.7|9.4|14,1|18,8|23,4|28,1|
+|Max. aantal gegevens IOPS per pool *|400|800|1200|1600|2000|2400|
+|Maximale logboek frequentie per pool (MBps)|4.7|9.4|14,1|18,8|23,4|28,1|
 |Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) * * |210|420|630|840|1050|1260|
 |Maxi maal aantal gelijktijdige aanmeldingen per groep * * |210|420|630|840|1050|1260|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -82,8 +82,8 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maximale gegevens grootte TempDB (GB)|224|256|288|320|512|768|
 |Opslagtype|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
-|Max. gegevensiops *|2800|3200|3600|4000|6400|9600|
-|Maximale logboek frequentie (MBps)|32,8|37,5|37,5|37,5|37,5|37,5|
+|Max. aantal gegevens IOPS per pool *|2800|3200|3600|4000|6400|9600|
+|Maximale logboek frequentie per pool (MBps)|32,8|37,5|37,5|37,5|37,5|37,5|
 |Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) *|1470|1680|1890|2100|3360|5040|
 |Maximum aantal gelijktijdige aanmeldings groepen (aanvragen) *|1470|1680|1890|2100|3360|5040|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -112,8 +112,8 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maximale gegevens grootte TempDB (GB)|64|128|192|256|320|384|448|
 |Opslagtype|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
-|Max. gegevensiops *|800|1600|2400|3200|4000|4800|5600|
-|Maximale logboek frequentie (MBps)|9.4|18,8|28,1|37,5|37,5|37,5|37,5|
+|Max. aantal gegevens IOPS per pool *|800|1600|2400|3200|4000|4800|5600|
+|Maximale logboek frequentie per pool (MBps)|9.4|18,8|28,1|37,5|37,5|37,5|37,5|
 |Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) * *|210|420|630|840|1050|1260|1470|
 |Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) * *|210|420|630|840|1050|1260|1470|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -142,8 +142,8 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maximale gegevens grootte TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Opslagtype|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|Premium-opslag (extern)|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
-|Max. gegevensiops * |6,400|7\.200|8,000|9600|12,800|16,000|32,000|
-|Maximale logboek frequentie (MBps)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
+|Max. aantal gegevens IOPS per pool * |6,400|7\.200|8,000|9600|12,800|16,000|32,000|
+|Maximale logboek frequentie per pool (MBps)|37,5|37,5|37,5|37,5|37,5|37,5|37,5|
 |Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) * *|1680|1890|2100|2520|3360|4200|8400|
 |Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) * *|1680|1890|2100|2520|3360|4200|8400|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -174,10 +174,10 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maximale gegevens grootte TempDB (GB)|333|
 |Opslagtype|Premium-opslag (extern)|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
-|Max. gegevensiops *|28.800|
-|Maximale logboek frequentie (MBps)|37,5|
-|Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) * *|1680|
-|Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) * *|1680|
+|Max. aantal gegevens IOPS per pool *|16,000|
+|Maximale logboek frequentie per pool (MBps)|37,5|
+|Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) * *|3780|
+|Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) * *|3780|
 |Maximaal aantal gelijktijdige sessies|30,000|
 |Min/max vCore keuzen voor elastische pool per data base|0-72|
 |Aantal replica's|1|
@@ -209,8 +209,8 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maximale logboek grootte (GB)|307|307|307|307|307|
 |Maximale gegevens grootte TempDB (GB)|64|96|128|160|192|
 |I/o-latentie (bij benadering)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|
-|Max. gegevensiops *|9000|13.500|18.000|22.500|27.000|
-|Maximale logboek frequentie (MBps)|20|30|40|50|60|
+|Max. aantal gegevens IOPS per pool *|9000|13.500|18.000|22.500|27.000|
+|Maximale logboek frequentie per pool (MBps)|20|30|40|50|60|
 |Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) * *|420|630|840|1050|1260|
 |Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) * *|420|630|840|1050|1260|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|
@@ -239,8 +239,8 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maximale logboek grootte (GB)|307|307|307|307|307|307|
 |Maximale gegevens grootte TempDB (GB)|224|256|288|320|512|768|
 |I/o-latentie (bij benadering)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|
-|Max. gegevensiops *|31.500|36.000|40.500|45,000|72.000|90,000|
-|Maximale logboek frequentie (MBps)|70|80|80|80|80|80|
+|Max. aantal gegevens IOPS per pool *|31.500|36.000|40.500|45,000|72.000|96.000|
+|Maximale logboek frequentie per pool (MBps)|70|80|80|80|80|80|
 |Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) * *|1470|1680|1890|2100|3360|5040|
 |Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) * *|1470|1680|1890|2100|3360|5040|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -271,8 +271,8 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maximale gegevens grootte TempDB (GB)|128|192|256|320|384|448|
 |Opslagtype|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |I/o-latentie (bij benadering)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|
-|Max. gegevensiops *|18.000|27.000|36.000|45,000|54,000|63.000|
-|Maximale logboek frequentie (MBps)|60|90|120|120|120|120|
+|Max. aantal gegevens IOPS per pool *|18.000|27.000|36.000|45,000|54,000|63.000|
+|Maximale logboek frequentie per pool (MBps)|60|90|120|120|120|120|
 |Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) * *|420|630|840|1050|1260|1470|
 |Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) * *|420|630|840|1050|1260|1470|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -301,8 +301,8 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 |Maximale gegevens grootte TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Opslagtype|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |I/o-latentie (bij benadering)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|1-2 ms (schrijven)<br>1-2 ms (lezen)|
-|Max. gegevensiops *|72.000|81.000|90,000|108.000|144.000|180,000|256.000|
-|Maximale logboek frequentie (MBps)|120|120|120|120|120|120|120|
+|Max. aantal gegevens IOPS per pool *|72.000|81.000|90,000|108.000|144.000|180,000|256.000|
+|Maximale logboek frequentie per pool (MBps)|120|120|120|120|120|120|120|
 |Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) * *|1680|1890|2100|2520|3360|4200|8400|
 |Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) * *|1680|1890|2100|2520|3360|4200|8400|
 |Maximaal aantal gelijktijdige sessies|30,000|30,000|30,000|30,000|30,000|30,000|30,000|
@@ -320,23 +320,23 @@ Zie de [resource limieten voor één data](sql-database-vcore-resource-limits-si
 
 ### <a name="m-series-compute-generation-preview"></a>Generatie van d-Series Compute (preview-versie)
 
-|Reken grootte|GP_M_128|
+|Reken grootte|BC_M_128|
 |:--- | --: |
 |Compute genereren|M-serie|
 |vCores|128|
-|Geheugen (GB)|3767|
+|Geheugen (GB)|3767,1|
 |Maximumaantal databases per pool|100|
 |Column Store-ondersteuning|Ja|
-|OLTP-opslag in het geheugen (GB)|481|
+|OLTP-opslag in het geheugen (GB)|1768|
 |Maximale gegevens grootte (GB)|4096|
 |Maximale logboek grootte (GB)|2048|
 |Maximale gegevens grootte TempDB (GB)|4096|
 |Opslagtype|Lokale SSD|
 |I/o-latentie (bij benadering)|1-2 ms (schrijven)<br>1-2 ms (lezen)|
-|Max. gegevensiops *|40,000|
-|Maximale logboek frequentie (MBps)|120|
-|Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) *|1680|
-|Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) *|1680|
+|Max. aantal gegevens IOPS per pool *|200.000|
+|Maximale logboek frequentie per pool (MBps)|333|
+|Maxi maal aantal gelijktijdige werk nemers per pool (aanvragen) *|13.440|
+|Maxi maal aantal gelijktijdige aanmeldingen per groep (aanvragen) *|13.440|
 |Maximaal aantal gelijktijdige sessies|30,000|
 |Min/max vCore keuzen voor elastische pool per data base|0-128|
 |Aantal replica's|4|

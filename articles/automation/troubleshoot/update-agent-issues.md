@@ -1,6 +1,6 @@
 ---
-title: Meer informatie over de Windows-Hybrid Runbook Worker status in azure Updatebeheer
-description: Meer informatie over het oplossen van problemen met de Hybrid Runbook Worker in Windows die ondersteuning bieden voor Updatebeheer.
+title: Diagnose van Windows Hybrid Runbook Worker-Azure Updatebeheer
+description: Meer informatie over het oplossen van problemen met de Azure Automation Hybrid Runbook Worker in Windows die Updatebeheer ondersteunt.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 284376759e9e2da1f42bd04eea6e564c9690d4a9
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: bfc2c4a660afa4341a676fc79ab447c8cb86d5e1
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850122"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769809"
 ---
-# <a name="understand-the-windows-hybrid-runbook-worker-health-in-update-management"></a>Inzicht in de status van de Windows-Hybrid Runbook Worker in Updatebeheer
+# <a name="understand-and-resolve-windows-hybrid-runbook-worker-health-in-update-management"></a>Windows-Hybrid Runbook Worker status in Updatebeheer begrijpen en oplossen
 
 Er kunnen veel redenen zijn waarom uw computer niet **gereed** is in updatebeheer. In Updatebeheer kunt u de status van een Hybrid Runbook Worker agent controleren om het onderliggende probleem te bepalen. In dit artikel wordt beschreven hoe u de probleem oplosser voor Azure-machines uitvoert vanaf de Azure Portal-en niet-Azure-machines in het [offline scenario](#troubleshoot-offline).
 

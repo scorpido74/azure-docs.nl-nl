@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 01/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 77d2daf3fa17632d8a1c633c23815e0035e45481
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: f2e70a7b900ad918cda05ce34204e2de1e6e67ef
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931262"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830187"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Tekst indeling met scheidings tekens in Azure Data Factory
 
@@ -85,7 +85,7 @@ Ondersteunde **instellingen voor het lezen van tekst met scheidings tekens** ond
 
 | Eigenschap      | Beschrijving                                                  | Verplicht |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Het type formatSettings moet zijn ingesteld op **DelimitedTextReadSetting**. | Ja      |
+| type          | Het type formatSettings moet zijn ingesteld op **DelimitedTextReadSettings**. | Ja      |
 | skipLineCount | Geeft het aantal **niet-lege** rijen dat moet worden overgeslagen bij het lezen van gegevens in invoerbestanden. <br>Als zowel skipLineCount als firstRowAsHeader is opgegeven, worden de regels eerst overgeslagen en wordt de headerinformatie gelezen uit het invoerbestand. | Nee       |
 
 ### <a name="delimited-text-as-sink"></a>Tekst met scheidings tekens als Sink
@@ -102,8 +102,8 @@ Ondersteunde **instellingen voor het schrijven van tekst met scheidings tekens**
 
 | Eigenschap      | Beschrijving                                                  | Verplicht                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| type          | Het type formatSettings moet zijn ingesteld op **DelimitedTextWriteSetting**. | Ja                                                   |
-| File Extension | De bestands extensie die wordt gebruikt voor het benoemen van de uitvoer bestanden, bijvoorbeeld `.csv`, `.txt`. De waarde moet worden opgegeven als de `fileName` niet is opgegeven in de DelimitedText-gegevensset. | Ja als er geen bestands naam is opgegeven in de uitvoer gegevensset |
+| type          | Het type formatSettings moet zijn ingesteld op **DelimitedTextWriteSettings**. | Ja                                                   |
+| File Extension | De bestands extensie die wordt gebruikt voor het benoemen van de uitvoer bestanden, bijvoorbeeld `.csv`, `.txt`. De waarde moet worden opgegeven als de `fileName` niet is opgegeven in de DelimitedText-gegevensset. Als de bestands naam in de uitvoer gegevensset is geconfigureerd, wordt deze gebruikt als de naam van het sink-bestand en de instelling voor de bestands extensie wordt genegeerd.  | Ja als er geen bestands naam is opgegeven in de uitvoer gegevensset |
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschappen van gegevens stroom toewijzen
 

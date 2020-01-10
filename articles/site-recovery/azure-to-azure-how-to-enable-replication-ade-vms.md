@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 2b6c6f2882701515d868e96ae10af85890004587
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 3a59f137240eff2a3a68fa5547be8c6c25d3e5fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954688"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772224"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Virtuele machines die met Azure Disk Encryption zijn ingeschakeld repliceren naar een andere Azure-regio
 
 In dit artikel wordt beschreven hoe u virtuele Azure-machines repliceert Azure Disk Encryption met behulp van de ene Azure-regio naar de andere.
 
 >[!NOTE]
-> Site Recovery biedt momenteel ondersteuning voor ADE, met en zonder Azure Active Directory (AAD) voor virtuele machines waarop Windows wordt uitgevoerd.  Voor computers met ADE 1,1 (zonder AAD) moeten de Windows-Vm's beheerde schijven gebruiken. Vm's met niet-beheerde schijven worden niet ondersteund. Als u overschakelt van ADE 0,1 (met AAD) naar 1,1, moet u replicatie uitschakelen en replicatie inschakelen voor een VM na het inschakelen van 1,1.
+> Site Recovery biedt momenteel ondersteuning voor ADE, met en zonder Azure Active Directory (AAD) voor Vm's met Windows-en Linux-besturings systemen.  Voor computers met ADE 1,1 (zonder AAD) moeten de virtuele machines beheerde schijven gebruiken. Vm's met niet-beheerde schijven worden niet ondersteund. Als u overschakelt van ADE 0,1 (met AAD) naar 1,1, moet u replicatie uitschakelen en replicatie inschakelen voor een VM na het inschakelen van 1,1.
 
 
 ## <a id="required-user-permissions"></a>Vereiste gebruikers machtigingen
@@ -35,7 +35,7 @@ De gebruiker heeft de volgende machtigingen nodig voor de **bron-en doel regio**
         - Ophalen, lijst en instellen
     
 - Sleutel kluis sleutel machtigingen (alleen vereist als de virtuele machines de sleutel versleutelings sleutel gebruiken voor het versleutelen van schijf versleutelings sleutels)
-    - Bewerkingen voor sleutel beheer
+    - Sleutelbeheerbewerkingen
         - Ophalen, vermelden en maken
     - Cryptografische bewerkingen
         - Ontsleutelen en versleutelen

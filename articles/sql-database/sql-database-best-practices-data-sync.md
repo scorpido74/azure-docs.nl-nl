@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 75fe07dc9847ae32248688bc20fac01e74c7b26a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ee929fa227cb105b73bc929c13a768aabef37ce3
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821858"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771680"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>Aanbevolen procedures voor SQL Data Sync 
 
@@ -116,7 +116,7 @@ Als u de latentie wilt minimaliseren, houdt u de hub-data base dicht bij de groo
 
 Pas de voor gaande richt lijnen toe op complexe synchronisatie groepen, zoals de configuraties die bestaan uit een combi natie van ondernemings-naar-Cloud-en Cloud-naar-Cloud-scenario's.
 
-## <a name="sync"></a>Sync
+## <a name="sync"></a>Synchroniseren
 
 ### <a name="avoid-a-slow-and-costly-initial-synchronization"></a>Vermijd langzame en dure initiële synchronisatie
 
@@ -217,6 +217,14 @@ Probeer geen data base uit een synchronisatie groep te verwijderen en bewerk ver
 In plaats daarvan verwijdert u eerst een Data Base uit een synchronisatie groep. Implementeer vervolgens de wijziging en wacht totdat het ongedaan maken van de inrichting is voltooid. Wanneer het ongedaan maken van de inrichting is voltooid, kunt u de synchronisatie groep bewerken en de wijzigingen implementeren.
 
 Als u probeert een Data Base te verwijderen en vervolgens een synchronisatie groep te bewerken zonder eerst een van de wijzigingen te implementeren, mislukt één of de andere bewerking. De portal interface kan inconsistent worden. Als dit het geval is, vernieuwt u de pagina om de juiste status te herstellen.
+
+### <a name="avoid-schema-refresh-timeout"></a>Time-out voor het vernieuwen van het schema vermijden
+
+Als u een complex schema hebt om te synchroniseren, kunt u een time-out voor de bewerking tegen komen tijdens het vernieuwen van een schema als de meta gegevens database voor synchronisatie een lagere SKU heeft (bijvoorbeeld: Basic). 
+
+#### <a name="solution"></a>Oplossing
+
+Als u dit probleem wilt verhelpen, schaalt u de data base met gesynchroniseerde meta gegevens zodanig dat deze een hogere SKU heeft, zoals S3. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Voor meer informatie over SQL Data Sync raadpleegt u:

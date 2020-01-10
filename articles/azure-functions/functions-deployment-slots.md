@@ -5,16 +5,16 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 08/12/2019
 ms.author: cshoe
-ms.openlocfilehash: a59b62e19ac1e470dcdaaf0281dde9904a70b583
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0e8c93ea6d5c2b525ccbea2af900f100afcc3d93
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230676"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769214"
 ---
 # <a name="azure-functions-deployment-slots"></a>Implementatie sleuven Azure Functions
 
-Met Azure Functions implementatie sleuven kan uw functie-app verschillende instanties met de naam ' sleuven ' uitvoeren. Sleuven zijn verschillende omgevingen die worden weer gegeven via een openbaar beschikbaar eind punt. Een app-exemplaar wordt altijd toegewezen aan de productie sleuf en u kunt instanties die zijn toegewezen aan een sleuf op aanvraag, vervangen. Functie-apps die onder het service plan apps worden uitgevoerd, hebben mogelijk meerdere sleuven, terwijl er slechts één sleuf is toegestaan.
+Met Azure Functions implementatie sleuven kan uw functie-app verschillende instanties met de naam ' sleuven ' uitvoeren. Sleuven zijn verschillende omgevingen die worden weer gegeven via een openbaar beschikbaar eind punt. Een app-exemplaar wordt altijd toegewezen aan de productie sleuf en u kunt instanties die zijn toegewezen aan een sleuf op aanvraag, vervangen. Functie-apps die onder het service plan apps worden uitgevoerd, kunnen meerdere sleuven hebben, terwijl het verbruiks abonnement slechts één sleuf is toegestaan.
 
 Hieronder ziet u hoe de functies worden beïnvloed door de wisselende sleuven:
 
@@ -88,7 +88,7 @@ Alle sleuven worden geschaald naar hetzelfde aantal werk rollen als de productie
 - Voor verbruiks abonnementen wordt de sleuf geschaald als de functie-app wordt geschaald.
 - Voor App Service plannen wordt de app geschaald naar een vast aantal werk rollen. Sleuven worden uitgevoerd op hetzelfde aantal werk rollen als het app-plan.
 
-## <a name="add-a-slot"></a>Een sleuf toevoegen
+## <a name="add-a-slot"></a>Site toevoegen
 
 U kunt een sleuf toevoegen via de [cli](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-create) of via de portal. De volgende stappen laten zien hoe u een nieuwe sleuf maakt in de portal:
 
@@ -135,14 +135,14 @@ Met de [Azure cli](https://docs.microsoft.com/cli/azure/functionapp/deployment/s
 - [ruil](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-swap)
 - [automatisch wisselen](https://docs.microsoft.com/cli/azure/functionapp/deployment/slot?view=azure-cli-latest#az-functionapp-deployment-slot-auto-swap)
 
-## <a name="change-app-service-plan"></a>App service-abonnement wijzigen
+## <a name="change-app-service-plan"></a>App Service-plan wijzigen
 
-Met een functie-app die wordt uitgevoerd onder een App Service-abonnement, hebt u de mogelijkheid om het onderliggende app service-plan voor een sleuf te wijzigen.
+Met een functie-app die wordt uitgevoerd onder een App Service-abonnement, hebt u de mogelijkheid om het onderliggende App Service plan voor een sleuf te wijzigen.
 
 > [!NOTE]
 > U kunt het App Service plan van een sleuf onder het verbruiks abonnement niet wijzigen.
 
-Gebruik de volgende stappen om het app service-plan van een sleuf te wijzigen:
+Gebruik de volgende stappen om het App Service plan van een sleuf te wijzigen:
 
 1. Naar een sleuf navigeren
 

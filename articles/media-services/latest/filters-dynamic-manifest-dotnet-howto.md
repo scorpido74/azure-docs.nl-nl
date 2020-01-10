@@ -1,5 +1,5 @@
 ---
-title: Filters maken met Azure Media Services .NET SDK
+title: Filters maken met Azure Media Services v3 .NET SDK
 description: In dit onderwerp wordt beschreven hoe u filters maken, zodat de client voor het specifieke secties van de stroom van een stroom gebruiken kunt. Media Services wordt gemaakt dynamische manifesten voor het bereiken van deze selectief streaming.
 services: media-services
 documentationcenter: ''
@@ -13,36 +13,36 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/03/2019
 ms.author: juliako
-ms.openlocfilehash: 2bcb8762b94347f4409507fb89a18cb6c9d0dacd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ef04b1b7b5030189482e89e26e4565397cbdd7c8
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66494297"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779243"
 ---
 # <a name="create-filters-with-media-services-net-sdk"></a>Filters maken met Media Services .NET SDK
 
 Wanneer uw inhoud levert aan klanten (streaming Live gebeurtenissen of Video on Demand) is de client mogelijk meer flexibiliteit dan wat wordt beschreven in het manifestbestand van de standaard-asset. Azure Media Services kunt u accountfilters en filters actief voor uw inhoud definiëren. 
 
-Zie voor gedetailleerde beschrijving van deze functie en de scenario's waarin deze wordt gebruikt, [dynamische manifesten](filters-dynamic-manifest-overview.md) en [Filters](filters-concept.md).
+Zie [dynamische manifesten](filters-dynamic-manifest-overview.md) en [filters](filters-concept.md)voor een gedetailleerde beschrijving van deze functie en scenario's waarin deze wordt gebruikt.
 
-In dit onderwerp wordt beschreven hoe Media Services .NET SDK gebruiken om te definiëren van een filter voor een Video op aanvraag asset en maak [Accountfilters](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) en [Asset Filters](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet). 
+In dit onderwerp wordt beschreven hoe u Media Services .NET SDK gebruikt om een filter te definiëren voor een video op aanvraag-Asset en om [account filters](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.accountfilter?view=azure-dotnet) en- [activa filters](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.assetfilter?view=azure-dotnet)te maken. 
 
 > [!NOTE]
-> Controleer [presentationTimeRange](filters-concept.md#presentationtimerange).
+> Zorg ervoor dat u de [presentationTimeRange](filters-concept.md#presentationtimerange)controleert.
 
 ## <a name="prerequisites"></a>Vereisten 
 
 - Beoordeling [Filters en dynamische manifesten](filters-dynamic-manifest-overview.md).
 - [Een Azure Media Services-account maken](create-account-cli-how-to.md). Zorg ervoor dat u de naam van de resourcegroep en de naam van de Media Services-account. 
-- Informatie die nodig zijn voor [toegang tot API's](access-api-cli-how-to.md)
-- Beoordeling [uploaden, coderen en streamen met Azure Media Services](stream-files-tutorial-with-api.md) om te zien hoe u [start met behulp van .NET SDK](stream-files-tutorial-with-api.md#start_using_dotnet)
+- Gegevens ophalen die nodig zijn voor [toegang tot api's](access-api-cli-how-to.md)
+- Bekijk het [uploaden, coderen en streamen met behulp van Azure Media Services](stream-files-tutorial-with-api.md) om te zien hoe u [.NET SDK kunt gaan gebruiken](stream-files-tutorial-with-api.md#start_using_dotnet)
 
 ## <a name="define-a-filter"></a>Definieer een filter  
 
-In .NET, configureert u de track selecties met [FilterTrackSelection](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) en [FilterTrackPropertyCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) klassen. 
+In .NET configureert u het bijhouden van selecties met de klassen [FilterTrackSelection](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackselection?view=azure-dotnet) en [FilterTrackPropertyCondition](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.filtertrackpropertycondition?view=azure-dotnet) . 
 
-De volgende code wordt een filter met alle audionummers die EG-3 en de video nummers die bitrate in de 0-1000000 hebben gedefinieerd bereik.
+Met de volgende code wordt een filter gedefinieerd dat audio nummers bevat die zijn opgenomen in EC-3 en video tracks met bitsnelheid in het 0-1000000-bereik.
 
 ```csharp
 var audioConditions = new List<FilterTrackPropertyCondition>()
@@ -66,7 +66,7 @@ List<FilterTrackSelection> includedTracks = new List<FilterTrackSelection>()
 
 ## <a name="create-account-filters"></a>Accountfilters maken
 
-De volgende code laat zien hoe u .NET gebruikt om te maken van een account-filter dat u alle bijhouden selecties bevat [hierboven gedefinieerde](#define-a-filter). 
+De volgende code laat zien hoe u .NET gebruikt om een account filter te maken dat alle [hierboven gedefinieerde](#define-a-filter)track selecties bevat. 
 
 ```csharp
 AccountFilter accountFilterParams = new AccountFilter(tracks: includedTracks);
@@ -75,18 +75,18 @@ client.AccountFilters.CreateOrUpdate(config.ResourceGroup, config.AccountName, "
 
 ## <a name="create-asset-filters"></a>Asset-filters maken
 
-De volgende code laat zien hoe u .NET gebruikt om te maken van een asset-filter dat u alle bijhouden selecties bevat [hierboven gedefinieerde](#define-a-filter). 
+De volgende code laat zien hoe u .NET gebruikt voor het maken van een activa filter dat alle [hierboven gedefinieerde](#define-a-filter)track selecties omvat. 
 
 ```csharp
 AssetFilter assetFilterParams = new AssetFilter(tracks: includedTracks);
 client.AssetFilters.CreateOrUpdate(config.ResourceGroup, config.AccountName, encodedOutputAsset.Name, "assetFilterName1", assetFilterParams);
 ```
 
-## <a name="associate-filters-with-streaming-locator"></a>Filters met Streaming-Locator gemaakt koppelen
+## <a name="associate-filters-with-streaming-locator"></a>Filters koppelen aan streaming-Locator
 
-U kunt een lijst met activa of account filters, die voor uw Streaming-Locator gemaakt gelden. De [dynamische Packager (Streaming-eindpunt)](dynamic-packaging-overview.md) deze lijst met filters samen met die de client Hiermee geeft u in de URL van toepassing is. Deze combinatie genereert een [dynamische Manifest](filters-dynamic-manifest-overview.md), die is gebaseerd op filters in de URL en filters die u op Streaming-Locator gemaakt opgeeft. U wordt aangeraden dat u deze functie gebruiken als u filters wilt toepassen, maar niet wilt weergeven van de filterfunctie namen in de URL.
+U kunt een lijst opgeven met activa of account filters die van toepassing zijn op uw streaming-Locator. Met de [dynamische pakket (streaming-eind punt)](dynamic-packaging-overview.md) wordt deze lijst met filters toegepast, samen met de gegevens die door uw client zijn opgegeven in de URL. Deze combi natie genereert een [dynamisch manifest](filters-dynamic-manifest-overview.md)dat is gebaseerd op filters in de URL + filters die u opgeeft in de streaming-Locator. U wordt aangeraden deze functie te gebruiken als u filters wilt Toep assen, maar niet de filter namen in de URL wilt weer geven.
 
-De volgende C# code laat zien hoe u een Streaming-Locator te maken en geef `StreamingLocator.Filters`. Dit is een optionele eigenschap waarmee een `IList<string>` van filterfunctie namen.
+De volgende C# code laat zien hoe u een streaming-Locator maakt en `StreamingLocator.Filters`opgeeft. Dit is een optionele eigenschap die een `IList<string>` met filter namen.
 
 ```csharp
 IList<string> filters = new List<string>();
@@ -104,11 +104,11 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
     });
 ```
       
-## <a name="stream-using-filters"></a>Stream met behulp van filters
+## <a name="stream-using-filters"></a>Streamen met filters
 
-Als u filters definiëren, kunnen uw clients deze gebruiken in de streaming-URL. Filters kunnen worden toegepast op adaptieve bitrate streamingprotocollen: Apple HTTP Live Streaming (HLS), MPEG-DASH en Smooth Streaming.
+Zodra u filters hebt gedefinieerd, kunnen uw clients deze gebruiken in de streaming-URL. Filters kunnen worden toegepast op Adaptive Bitrate Streaming protocollen: Apple HTTP Live Streaming (HLS), MPEG-DASH en Smooth Streaming.
 
-De volgende tabel ziet u enkele voorbeelden van URL's met filters:
+In de volgende tabel ziet u enkele voor beelden van Url's met filters:
 
 |Protocol|Voorbeeld|
 |---|---|

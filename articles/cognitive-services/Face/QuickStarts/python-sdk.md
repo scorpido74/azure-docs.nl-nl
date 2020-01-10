@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: Face client-bibliotheek voor python | Microsoft Docs'
-description: Dit artikel helpt u aan de slag te gaan met de face-client bibliotheek voor python om te detecteren, vergelijk bare, identificeren, controleren en meer te vinden.
+title: 'Snelstartgids: Face client-bibliotheek voor python'
+description: Deze Snelstartgids helpt u om aan de slag te gaan met de face-client bibliotheek voor python om te detecteren, vergelijk bare, identificeren, controleren en meer te vinden.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: cd797567b381fb89c568b06dc8b056648e5c734a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: badfec71ad44fd9eebc748f716301ad6731883cf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977808"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770353"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Snelstartgids: Face client-bibliotheek voor python
 
@@ -72,7 +72,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 De volgende klassen en interfaces verwerken enkele van de belangrijkste functies van de face python SDK.
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | Deze klasse vertegenwoordigt uw autorisatie voor het gebruik van de face-service en u hebt deze nodig voor alle gezichts functionaliteit. U maakt de app met uw abonnements gegevens en gebruikt deze om instanties van andere klassen te maken. |
 |[FaceOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Deze klasse verwerkt de basis taken voor detectie en herkenning die u met menselijke gezichten kunt uitvoeren. |
@@ -153,7 +153,7 @@ Nadat u uw installatie kopieën hebt ingesteld, definieert u een label boven aan
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroupvars)]
 
-Voeg vervolgens de volgende code toe aan de onderkant van het script. Deze code maakt een **PersongGroup** -en drie **persoons** -objecten.
+Voeg vervolgens de volgende code toe aan de onderkant van het script. Deze code maakt een **PersonGroup** -en drie **persoons** -objecten.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_create)]
 
@@ -273,7 +273,7 @@ python quickstart-file.py
 Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
 
 * [Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#clean-up-resources)
-* [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources)
+* [Azure-CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources)
 
 Als u in deze Quick Start een **PersonGroup** hebt gemaakt en u deze wilt verwijderen, voert u de volgende code in uw script uit:
 
@@ -291,4 +291,4 @@ In deze Quick Start hebt u geleerd hoe u de face-bibliotheek voor python kunt ge
 > [Face-API verwijzing (python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)
 
 * [Wat is de Face-API?](../overview.md)
-* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py).
+* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py).

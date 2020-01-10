@@ -2,38 +2,32 @@
 title: Met de CLI toegewezen Azure-hosts implementeren
 description: Implementeer Vm's op toegewezen hosts met behulp van de Azure CLI.
 services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 07/29/2019
+ms.date: 01/09/2020
 ms.author: cynthn
-ms.openlocfilehash: ece9967321cfca44b102d78722f0df3d8f980bdb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b301012425e0a2590fa5ac22985abe9c96fbd419
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036406"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834928"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Voor beeld: Vm's implementeren op toegewezen hosts met behulp van de Azure CLI
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-cli"></a>Vm's implementeren op toegewezen hosts met behulp van de Azure CLI
  
 
 Dit artikel begeleidt u bij het maken van een toegewezen Azure- [host](dedicated-hosts.md) voor het hosten van uw virtuele machines (vm's). 
 
 Zorg ervoor dat u Azure CLI-versie 2.0.70 of hoger hebt geïnstalleerd en u hebt aangemeld bij een Azure-account met behulp van `az login`. 
 
-> [!IMPORTANT]
-> Exclusieve Azure-hosts bevindt zich momenteel in de open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
->
-> **Bekende preview-beperkingen**
-> - Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
-> - De eerste release van de preview-versie ondersteunt de volgende VM-reeksen: DSv3 en ESv3. 
+
+## <a name="limitations"></a>Beperkingen
+
+- Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
+- De eerste versie ondersteunt de volgende VM-reeksen: DSv3 en ESv3. 
  
 
 ## <a name="create-resource-group"></a>Een resourcegroep maken 
@@ -43,7 +37,7 @@ Een Azure-resourcegroep is een logische container waarin Azure-resources worden 
 az group create --name myDHResourceGroup --location eastus 
 ```
  
-## <a name="create-a-host-group"></a>Een hostgroep maken 
+## <a name="create-a-host-group"></a>Een hostgroep aanmaken 
 
 Een **hostgroep** is een resource die een verzameling toegewezen hosts vertegenwoordigt. U maakt een hostgroep in een regio en een beschikbaarheids zone en voegt hierop hosts toe. Bij het plannen van hoge Beschik baarheid zijn er extra opties. U kunt een of beide van de volgende opties gebruiken met uw toegewezen hosts: 
 - Beschik over meerdere beschikbaarheids zones. In dit geval moet u een hostgroep hebben in elk van de zones die u wilt gebruiken.
@@ -63,7 +57,7 @@ az vm host group create \
    --platform-fault-domain-count 2 
 ``` 
 
-### <a name="other-examples"></a>Andere voor beelden
+### <a name="other-examples"></a>Andere voorbeelden
 
 U kunt ook [AZ VM host Group Create](/cli/azure/vm/host/group#az-vm-host-group-create) gebruiken om een hostgroep te maken in beschikbaarheids zone 1 (en geen fout domeinen).
 
@@ -86,8 +80,7 @@ az vm host group create \
  
 ## <a name="create-a-host"></a>Een host maken 
 
-We gaan nu een toegewezen host maken in de hostgroep. Naast een naam voor de host, moet u de SKU voor de host opgeven. Host SKU legt de ondersteunde VM-serie en de generatie van de hardware voor uw specifieke host vast.  Tijdens de preview worden de volgende SKU-waarden voor de host ondersteund: DSv3_Type1 en ESv3_Type1.
-
+We gaan nu een toegewezen host maken in de hostgroep. Naast een naam voor de host, moet u de SKU voor de host opgeven. Host SKU legt de ondersteunde VM-serie en de generatie van de hardware voor uw specifieke host vast.  De volgende SKU-waarden worden ondersteund: DSv3_Type1 en ESv3_Type1.
 
 Zie voor meer informatie over de Sku's en prijzen van de host de [Azure dedicated host prijzen](https://aka.ms/ADHPricing).
 

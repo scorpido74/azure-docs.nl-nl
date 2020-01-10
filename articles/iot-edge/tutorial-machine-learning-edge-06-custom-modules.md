@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d9890a393d9b2955c1eb0c9894d454a774af68ef
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 3cba7781ac80ae567b2bfd54c4131429ed94b90f
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701833"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772360"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Zelf studie: aangepaste IoT Edge-modules maken en implementeren
 
@@ -22,7 +22,7 @@ ms.locfileid: "74701833"
 
 In dit artikel maken we drie IoT Edge modules die berichten van Leaf-apparaten ontvangen, de gegevens via uw machine learning model uitvoeren en inzichten vervolgens naar IoT Hub door sturen.
 
-IoT Edge hub vereenvoudigt module naar module communicatie. Als u de IoT Edge hub als Message Broker gebruikt, blijven de modules onafhankelijk van elkaar. Modules hoeven alleen de invoer op te geven waarop de berichten worden geaccepteerd en de uitvoer waarnaar ze berichten schrijven.
+IoT Edge hub vereenvoudigt module naar module communicatie. Als u de IoT Edge hub als Message Broker gebruikt, blijven de modules onafhankelijk van elkaar. Modules hoeft alleen te geven van de invoer waarop ze berichten en de uitvoer waaraan ze berichten schrijven accepteren.
 
 We willen dat het IoT Edge-apparaat vier dingen doet voor ons:
 
@@ -39,13 +39,13 @@ We gebruiken drie aangepaste modules om deze taken uit te voeren:
 
 * **Router module:** De router module ontvangt berichten van downstream Leaf-apparaten, vervolgens worden de berichten opgemaakt en verzonden naar de classificatie. De module ontvangt vervolgens de berichten van de classificatie en stuurt het bericht door naar de Avro Writer-module. Ten slotte verzendt de module alleen de resterende levens duur-voor spelling naar de IoT Hub.
 
-  * Invoer
+  * Inputs:
     * **deviceInput**: ontvangt berichten van Leaf-apparaten
     * **rulInput:** ontvangt berichten van de "amlOutput"
 
-  * Uitvoer
+  * Outputs:
     * **classificeren:** berichten verzenden naar ' amlInput '
-    * **writeAvro:** stuurt berichten ' avroModuleInput '
+    * **writeAvro:** stuurt berichten naar ' avroModuleInput '
     * **toIotHub:** stuurt berichten naar $upstream, waarmee de berichten worden doorgestuurd naar de verbonden IOT hub
 
 In het onderstaande diagram ziet u de modules, invoer, uitvoer en de IoT Edge hub-routes voor de volledige oplossing:
@@ -828,7 +828,7 @@ In dit artikel hebben we een IoT Edge oplossing gemaakt in Visual Studio code me
 Meer informatie vindt u op de volgende pagina's:
 
 * [Meer informatie over het implementeren van modules en het vaststellen van routes naar IoT Edge](module-composition.md)
-* [Query syntaxis voor het routeren van berichten IoT Hub](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
+* [Querysyntaxis voor IoT Hub-berichtroutering](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
 * [IoT Hub bericht routering: nu met route ring op bericht tekst](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
 * [Bestanden uploaden met IoT Hub](../iot-hub/iot-hub-devguide-file-upload.md)
 * [Bestanden van uw apparaat uploaden naar de Cloud met IoT Hub](../iot-hub/iot-hub-python-python-file-upload.md)

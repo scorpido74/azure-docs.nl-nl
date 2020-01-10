@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3024d77c02f623f8b8dc1a8956e692c208c8c9e5
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 6a107936d290609fec73d46a93a277c3bdcce354
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72799396"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832919"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Over sleutels, geheimen en certificaten
 
@@ -44,7 +44,7 @@ De specificaties van de JavaScript Object Notation (JSON) en het Java Script-obj
 
 Raadpleeg de JOSE-specificaties voor relevante gegevens typen voor sleutels, versleuteling en ondertekening.  
 
--   **algoritme** : een ondersteund algoritme voor een sleutel bewerking, bijvoorbeeld RSA1_5  
+-   **algoritme** : een ondersteunde algoritme voor een sleutel bewerking, bijvoorbeeld RSA1_5  
 -   **gecodeerde** tekst-gecodeerde octetten, gecodeerd met Base64URL  
 -   **Digest-value** : de uitvoer van een hash-algoritme, gecodeerd met Base64URL  
 -   **sleutel-type** : een van de ondersteunde sleutel typen, bijvoorbeeld RSA (Rivest-Shamir-Adleman).  
@@ -85,7 +85,7 @@ Waar:
 Cryptografische sleutels in Key Vault worden weer gegeven als JSON Web Key [JWK]-objecten. De basis-JWK/JWA-specificaties worden ook uitgebreid om sleutel typen die uniek zijn voor de Key Vault-implementatie in te scha kelen. Voor beelden van het importeren van sleutels met een HSM die specifiek is voor een leverancier, maakt het beveiligen van sleutels mogelijk die alleen kunnen worden gebruikt in Key Vault Hsm's.  
 
 - **"Zachte" sleutels**: een sleutel die in software wordt verwerkt door Key Vault, maar is versleuteld met een systeem sleutel die zich in een HSM bevindt. Clients kunnen een bestaande RSA-of EC-sleutel (elliptische curve) importeren of een aanvraag indienen om er een te Key Vault genereren.
-- **"Hard" sleutels**: een sleutel die is verwerkt in een HSM (Hardware Security module). Deze sleutels zijn beveiligd in een van de Key Vault HSM-beveiligings werelden (er is één beveiligings wereld per Geografie om isolatie te behouden). Clients kunnen een RSA-of EC-sleutel importeren in een zacht formulier of door vanaf een compatibel HSM-apparaat te exporteren. Clients kunnen ook Key Vault aanvragen om een sleutel te genereren. Met dit sleutel type voegt u het kenmerk key_hsm toe aan de JWK om het HSM-sleutel materiaal te kunnen dragen.
+- **"Hard" sleutels**: een sleutel die is verwerkt in een HSM (Hardware Security module). Deze sleutels zijn beveiligd in een van de Key Vault HSM-beveiligings werelden (er is één beveiligings wereld per Geografie om isolatie te behouden). Clients kunnen een RSA-of EC-sleutel importeren in een zacht formulier of door vanaf een compatibel HSM-apparaat te exporteren. Clients kunnen ook Key Vault aanvragen om een sleutel te genereren. Met dit sleutel type voegt u het key_hsm kenmerk toe aan de JWK om het HSM-sleutel materiaal te kunnen dragen.
 
      Zie het [vertrouwens centrum van Microsoft Azure](https://azure.microsoft.com/support/trust-center/privacy/) voor meer informatie over geografische grenzen  
 
@@ -124,7 +124,7 @@ De cryptografische modules die Key Vault gebruikt, of HSM of software, FIPS (Fed
 
 #### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/SLEUTEL UITPAKKEN, VERSLEUTELEN/ONTSLEUTELEN
 
--   **RSA1_5** -RSAES-PKCS1-V1_5 [RFC3447] sleutel versleuteling  
+-   **RSA1_5** - RSAES-PKCS1-V1_5 [RFC3447] key encryption  
 -   **RSA-OAEP** -RSAES met behulp van optimale geocoderings opvulling (OAEP) [RFC3447], waarbij de standaard parameters worden opgegeven door RFC 3447 in sectie A. 2.1. Deze standaard parameters maken gebruik van een hash-functie van SHA-1 en een masker functie voor het genereren van MGF1 met SHA-1.  
 
 #### <a name="signverify"></a>ONDERTEKENEN/CONTROLEREN
@@ -160,13 +160,13 @@ Hoewel WRAPKEY/sleutel uitpakken met behulp van asymmetrische sleutels wellicht 
 
 Key Vault biedt geen ondersteuning voor EXPORT bewerkingen. Zodra een sleutel is ingericht in het systeem, kan deze niet worden geëxtraheerd of het sleutel materiaal is gewijzigd. Gebruikers van Key Vault kunnen echter hun sleutel voor andere gebruiks voorbeelden vereisen, bijvoorbeeld nadat deze is verwijderd. In dit geval kunnen ze gebruikmaken van de back-up-en herstel bewerkingen voor het exporteren/importeren van de sleutel in een beveiligd formulier. Sleutels die zijn gemaakt met de back-upbewerking, kunnen niet buiten Key Vault worden gebruikt. De IMPORT bewerking kan ook worden gebruikt voor meerdere Key Vault exemplaren.  
 
-Gebruikers kunnen de cryptografische bewerkingen die Key Vault ondersteunt per sleutel beperken met behulp van de eigenschap key_ops van het JWK-object.  
+Gebruikers kunnen de cryptografische bewerkingen die Key Vault ondersteunt per sleutel beperken met behulp van de eigenschap key_ops van het object JWK.  
 
 Zie [JSON Web Key (JWK) (Engelstalig)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key-41)voor meer informatie over JWK-objecten.  
 
 ###  <a name="key-attributes"></a>Sleutel kenmerken
 
-Naast het sleutel materiaal kunnen de volgende kenmerken worden opgegeven. In een JSON-aanvraag zijn de kenmerken tref woord en accolades, {}} vereist, zelfs als er geen kenmerken zijn opgegeven.  
+Naast de instellingen voor sleutels kunnen de volgende kenmerken worden opgegeven. In een JSON-aanvraag zijn de kenmerken tref woord en accolades, {}} vereist, zelfs als er geen kenmerken zijn opgegeven.  
 
 - *ingeschakeld*: Boole, optioneel, standaard waarde is **True**. Hiermee geeft u op of de sleutel is ingeschakeld en bruikbaar is voor cryptografische bewerkingen. Het kenmerk *enabled* wordt gebruikt in combi natie met *NBF* en *exp*. Wanneer een bewerking plaatsvindt tussen *NBF* en *exp*, wordt deze alleen toegestaan als *ingeschakeld* is ingesteld op **waar**. Bewerkingen buiten het venster *nbf* / *exp* worden automatisch niet toegestaan, met uitzonde ring van bepaalde bewerkings typen onder [bepaalde voor waarden](#date-time-controlled-operations).
 - *NBF*: IntDate, optioneel, standaard is nu. Het kenmerk *NBF* (niet voor) geeft aan hoe lang de sleutel niet moet worden gebruikt voor cryptografische bewerkingen, met uitzonde ring van bepaalde typen bewerkingen onder [bepaalde voor waarden](#date-time-controlled-operations). Voor de verwerking van het *NBF* -kenmerk moet de huidige datum/tijd na of gelijk zijn aan de niet-voor-datum/-tijd die wordt vermeld in het *NBF* -kenmerk. Key Vault kan worden geboden voor sommige kleine Leeway, normaal gesp roken niet meer dan een paar minuten, om rekening te trekken met Clock scheefheid. De waarde moet een getal zijn dat een IntDate-waarde bevat.  
@@ -230,7 +230,7 @@ Voor meer informatie over het werken met sleutels raadpleegt u [belang rijke bew
 
 Vanuit het oogpunt van een ontwikkelaar Key Vault Api's accepteren en geheime waarden retour neren als teken reeksen. Intern worden geheimen door Key Vault opgeslagen en beheerd als reeksen van octetten (8-bits bytes), met een maximale grootte van 25k bytes. De Key Vault-service biedt geen semantiek voor geheimen. Alleen de gegevens worden geaccepteerd, versleuteld, opgeslagen en een geheime id (' id ') wordt geretourneerd. De id kan worden gebruikt om het geheim op een later tijdstip op te halen.  
 
-Voor zeer gevoelige gegevens moeten clients extra beveiligings lagen voor gegevens overwegen. Het versleutelen van gegevens met behulp van een afzonderlijke beveiligings sleutel vóór opslag in Key Vault is een voor beeld.  
+In het geval van zeer gevoelige gegevens is het raadzaam dat klanten extra beveiligingslagen overwegen. Dit kan bijvoorbeeld door het versleutelen van gegevens met behulp van een afzonderlijke beveiligingssleutel vóór de opslag in Key Vault.  
 
 Key Vault biedt ook ondersteuning voor een veld Content type voor geheimen. Clients kunnen het inhouds type van een geheim opgeven om te helpen bij het interpreteren van de geheime gegevens wanneer deze worden opgehaald. De maximale lengte van dit veld is 255 tekens. Er zijn geen vooraf gedefinieerde waarden. Het voorgestelde gebruik is als hint voor het interpreteren van de geheime gegevens. Een implementatie kan bijvoorbeeld beide wacht woorden en certificaten opslaan als geheimen en vervolgens dit veld gebruiken om onderscheid te maken. Er zijn geen vooraf gedefinieerde waarden.  
 
@@ -372,11 +372,11 @@ De volgende tabel geeft de toewijzing van het beleid voor x509-sleutel gebruik a
 |Authentic|ondertekenen, controleren| N/A |
 |crlsign|ondertekenen, controleren| N/A |
 
-### <a name="certificate-issuer"></a>Certificaat verlener
+### <a name="certificate-issuer"></a>Certificaatverlener
 
 Een Key Vault certificaat object bevat een configuratie die wordt gebruikt om te communiceren met een geselecteerde certificaat verlener-provider om x509-certificaten te best Ellen.  
 
--   Key Vault partners met de volgende certificaat verleners voor SSL-certificaten
+-   Key Vault partners met de volgende certificaat verleners voor TLS/SSL-certificaten
 
 |**Provider naam**|**Locaties**|
 |----------|--------|
@@ -389,7 +389,7 @@ Voordat een certificaat uitgever kan worden gemaakt in een Key Vault, moeten de 
 
     -   Een beheerder van de organisatie moet het bedrijf (bijvoorbeeld Contoso) met ten minste één CA-provider.  
 
-2. Beheerder maakt referenties voor de aanvrager van Key Vault om SSL-certificaten in te schrijven (en te vernieuwen)  
+2. Beheerder maakt referenties voor de aanvrager van Key Vault om TLS/SSL-certificaten in te schrijven (en te vernieuwen)  
 
     -   Biedt de configuratie die moet worden gebruikt voor het maken van een uitgevers object van de provider in de sleutel kluis  
 

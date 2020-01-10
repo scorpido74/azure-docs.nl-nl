@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b65cf26bcea628f784eb086d1b9c88febade25f6
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 0101573675d96694ee94c45288342dad8183e7fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74828831"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75773044"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Wat is het verschil tussen een virtuele Azure-netwerk gateway (VPN Gateway) en een virtueel WAN VPN-gateway van Azure?
 
@@ -22,6 +22,9 @@ Virtual WAN biedt grootschalige site-naar-site-connectiviteit en is ontworpen me
 ### <a name="how-is-virtual-wan-different-from-an-azure-virtual-network-gateway"></a>Hoe verschilt virtuele WAN van een gateway van een virtueel netwerk in azure?
 
 Een virtuele netwerk gateway VPN is beperkt tot 30 tunnels. U moet Virtual WAN gebruiken voor grootschalige VPN-verbindingen. U kunt tot 1.000 vertakkings verbindingen per regio (virtuele hub) verbinden met een samen stelling van 20 Gbps per hub. Een verbinding is een actief-actief-tunnel van het on-premises VPN-apparaat naar de virtuele hub. U kunt één hub per regio hebben, wat betekent dat u meer dan 1.000 vertakkingen in hubs kunt verbinden.
+
+### <a name="what-is-a-virtual-wan-gateway-scale-unit"></a>Wat is een virtuele WAN-gateway-schaal eenheid
+Een schaal eenheid is een eenheid die is gedefinieerd voor het kiezen van een geaggregeerde door Voer van een gateway in een virtuele hub. 1 schaal eenheid VPN = 500 Mbps. 1 schaal eenheid van ExpressRoute = 2 Gbps. Voor beeld: 10 schaal eenheid van VPN betekent 500 Mbps * 10 = 5 Gbps
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported"></a>Welke providers van apparaten (virtuele WAN-partners) worden ondersteund?
 
@@ -111,9 +114,11 @@ Een eenvoudige configuratie van één virtueel WAN met één hub en één vpnsit
 
 U kunt een VNet verbinden in een andere regio dan uw virtuele WAN.
 
-### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other"></a>Kunnen VNets op knooppunten die zijn verbonden met een virtuele hub met elkaar communiceren?
+### <a name="can-spoke-vnets-connected-to-a-virtual-hub-communicate-with-each-other-v2v-transit"></a>Kan spoke VNets die is verbonden met een virtuele hub communiceren met elkaar (V2V Transit)?
 
-Ja. Standaard virtuele WAN ondersteunt Vnet naar transitieve Vnet-connectiviteit via de virtuele WAN-hub waarmee de Vnets zijn verbonden. In Virtual WAN-terminologie verwijzen we naar deze paden als ' lokale virtuele WAN VNet transit ' voor VNets die zijn verbonden met een virtuele WAN-hub binnen één regio en ' globaal virtueel WAN-VNet door Voer ' voor VNets die zijn verbonden via meerdere virtuele WAN-hubs over twee of meer secties. VNet-Transit ondersteunt Maxi maal 3 Gbps aan door Voer tijdens open bare preview. De door Voer wordt uitgebreid wanneer wereld wijd door Voer gaat.   
+Ja. Standaard virtuele WAN ondersteunt Vnet naar transitieve Vnet-connectiviteit via de virtuele WAN-hub waarmee de Vnets zijn verbonden. In Virtual WAN-terminologie verwijzen we naar deze paden als ' lokale virtuele WAN VNet transit ' voor VNets die zijn verbonden met een virtuele WAN-hub binnen één regio en ' globaal virtueel WAN-VNet door Voer ' voor VNets die zijn verbonden via meerdere virtuele WAN-hubs over twee of meer secties. VNet-Transit ondersteunt Maxi maal 3 Gbps aan door Voer tijdens open bare preview. De door Voer wordt uitgebreid wanneer wereld wijd door Voer gaat.
+
+Opmerking: voor V2V Transit Preview moet een VPN-GW in een virtuele hub worden geïmplementeerd om de routerings elementen te activeren die moeten worden gestart. Dit VPN-GW wordt niet gebruikt voor het V2V-Transit traject. Dit is een bekende beperking en wordt verwijderd op het moment van V2V GA. U kunt de VPN Gateway in de hub (s) verwijderen nadat deze volledig is gestart, omdat deze niet nodig is voor de V2V door voer. 
 
 Voor sommige scenario's kan spoke Vnets ook rechtstreeks worden gekoppeld met behulp van [Virtual Network peering](../articles/virtual-network/virtual-network-peering-overview.md) naast lokale of globale virtuele WAN-trans missie. In dit geval heeft Vnet-peering voor rang op de transitieve verbinding via de virtuele WAN-hub. 
 

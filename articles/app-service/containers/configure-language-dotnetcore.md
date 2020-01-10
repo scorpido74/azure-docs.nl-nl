@@ -4,12 +4,12 @@ description: Meer informatie over het configureren van een vooraf gemaakte ASP.N
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/13/2019
-ms.openlocfilehash: d26c490ad37b25785ff1347cccf1e2be21bba277
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: cab99b9d20ce8a3190eb9aa59650dab32fca324d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670455"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768415"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>Een Linux ASP.NET Core-app configureren voor Azure App Service
 
@@ -44,7 +44,7 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 In App Service kunt u de [app-instellingen](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) buiten uw app-code instellen. Vervolgens kunt u ze in een wille keurige klasse openen met behulp van het standaard ASP.NET Core afhankelijkheids injectie patroon:
 
 ```csharp
-include Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace SomeNamespace 
 {
@@ -72,7 +72,7 @@ Als u een app-instelling met dezelfde naam in App Service en in *appSettings. js
 
 ## <a name="get-detailed-exceptions-page"></a>Pagina gedetailleerde uitzonde ringen ophalen
 
-Wanneer uw ASP.NET-app een uitzonde ring genereert in het Visual Studio-fout opsporingsprogramma, wordt een gedetailleerde uitzonderings pagina weer gegeven in de browser, maar in App Service die pagina wordt vervangen door een algemene **HTTP 500-** fout of er is **een fout opgetreden tijdens het verwerken van uw aanvraag.** Bericht. Als u de gedetailleerde uitzonderings pagina in App Service wilt weer geven, voegt u de instelling van de app `ASPNETCORE_ENVIRONMENT` toe aan uw app door de volgende opdracht uit te voeren in de <a target="_blank" href="https://shell.azure.com" >Cloud shell</a>.
+Wanneer uw ASP.NET-app een uitzonde ring genereert in het Visual Studio-fout opsporingsprogramma, wordt een gedetailleerde uitzonderings pagina weer gegeven in de browser, maar in App Service die pagina wordt vervangen door een algemene **HTTP 500-** fout of er is **een fout opgetreden tijdens het verwerken van uw aanvraag.** weergegeven. Als u de gedetailleerde uitzonderings pagina in App Service wilt weer geven, voegt u de instelling van de app `ASPNETCORE_ENVIRONMENT` toe aan uw app door de volgende opdracht uit te voeren in de <a target="_blank" href="https://shell.azure.com" >Cloud shell</a>.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings ASPNETCORE_ENVIRONMENT="Development"

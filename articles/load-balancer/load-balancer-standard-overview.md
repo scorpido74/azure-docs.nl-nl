@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: ce60062a49f08bb3409c8445e0aaf79c0d361865
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
-ms.translationtype: HT
+ms.openlocfilehash: 5a4240065039bd6e0633a19c8aad00604970c216
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552811"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834680"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Overzicht van Azure Standard Load Balancer
 
@@ -195,18 +195,18 @@ Sku's zijn niet onveranderbaar. Volg de stappen in deze sectie om van de ene res
 
 ## <a name="region-availability"></a>Regionale beschikbaarheid
 
-Standard Load Balancer is momenteel beschikbaar in alle open bare Cloud regio's.
+Standard Load Balancer is momenteel beschikbaar in alle Azure-regio's.
 
-## <a name="sla"></a>SLA
+## <a name="sla"></a>SLA 
 
-Standaard load balancers zijn beschikbaar met een SLA van 99,99%.  Raadpleeg de [Standard Load Balancer-Sla](https://aka.ms/lbsla) voor meer informatie.
+Standaard load balancers zijn beschikbaar met een SLA van 99,99%.  Raadpleeg de [Standard Load Balancer-Sla](https://aka.ms/lbsla) voor meer informatie. 
 
-## <a name="pricing"></a>Prijzen
+## <a name="pricing"></a>Prijzen 
 
-Gebruik van Standard Load Balancer wordt in rekening gebracht.
+Gebruik van Standard Load Balancer wordt in rekening gebracht. 
 
-- Aantal geconfigureerde load-balancing- en uitgaande regels (inkomende NAT-regels worden niet meegeteld in het totale aantal regels)
-- Hoeveelheid verwerkte inkomende en uitgaande gegevens, ongeacht de regel. 
+- Aantal geconfigureerde load-balancing- en uitgaande regels (inkomende NAT-regels worden niet meegeteld in het totale aantal regels) 
+- Hoeveelheid verwerkte inkomende en uitgaande gegevens, ongeacht de regel.
 
 Ga naar de pagina [Prijs van Load Balancer](https://azure.microsoft.com/pricing/details/load-balancer/) voor informatie over de prijs van Standard Load Balancer.
 
@@ -216,15 +216,15 @@ Ga naar de pagina [Prijs van Load Balancer](https://azure.microsoft.com/pricing/
 - Een zelfstandige resource voor de virtuele machine, de resource van de beschikbaarheidsset of de virtuele-machine schaalset kan verwijzen naar één SKU, nooit beide.
 - Een Load Balancer regel kan niet twee virtuele netwerken omvatten.  Front-end en hun bijbehorende back-end-instanties moeten zich in hetzelfde virtuele netwerk bevinden.  
 - Het [verplaatsen van abonnements bewerkingen](../azure-resource-manager/resource-group-move-resources.md) wordt niet ondersteund voor Standard SKU lb-en PIP-resources.
-- Rollen van webwerkers zonder VNet en andere micro soft-platform Services kunnen toegankelijk zijn wanneer alleen een interne Standard Load Balancer wordt gebruikt als gevolg van een neven effect van de manier waarop de voor bereide en andere functie van de platform services functioneren. U moet er niet op vertrouwen dat u deze kunt gebruiken als de respectieve service zelf of het onderliggende platform kan zonder kennisgeving worden gewijzigd. U moet altijd aannemen dat u een [uitgaande connectiviteit](load-balancer-outbound-connections.md) expliciet moet maken als u alleen een interne Standard Load Balancer wilt gebruiken.
+- Rollen voor webwerkers zonder VNet en andere micro soft-platform Services kunnen toegankelijk zijn vanaf exemplaren achter alleen een intern Standard Load Balancer als gevolg van een neven effect van de werking van de functies prevnet-Services en andere platform Services. U moet er niet op vertrouwen dat u deze kunt gebruiken als de respectieve service zelf of het onderliggende platform kan zonder kennisgeving worden gewijzigd. U moet altijd aannemen dat u een [uitgaande connectiviteit](load-balancer-outbound-connections.md) expliciet moet maken als u alleen een interne Standard Load Balancer wilt gebruiken.
 - Load Balancer is een TCP- of UDP-product voor taakverdeling en Port Forwarding voor deze specifieke IP-protocollen.  Taakverdelingsregels en inkomende NAT-regels worden ondersteund voor TCP en UDP en worden niet ondersteund voor andere IP-protocollen, met inbegrip van ICMP. Load Balancer beëindigt de nettolading van een UDP- of TCP-stroom niet, reageert er niet op of communiceert er op geen enkele andere ander manier mee. Het is geen proxy. De validatie van de connectiviteit met een front-end moet in-band worden uitgevoerd met hetzelfde protocol dat wordt gebruikt in een taak verdeling of een binnenkomende NAT-regel (TCP of UDP) _en_ ten minste één van de virtuele machines moet een reactie genereren voor een client om een reactie van een front-end te zien.  Er wordt geen in-band-antwoord ontvangen van de Load Balancer front-end geeft aan dat er geen virtuele machines kunnen reageren.  Het is niet mogelijk om te communiceren met een Load Balancer front-end zonder dat er een virtuele machine kan reageren.  Dit geldt ook voor uitgaande verbindingen waar [poortmaskering SNAT](load-balancer-outbound-connections.md#snat) alleen wordt ondersteund voor TCP en UDP; andere IP-protocollen, waaronder ICMP, werken ook niet.  Wijs een openbaar IP-adres op instantieniveau toe om dit op te lossen.
 - In tegens telling tot open bare load balancers die [uitgaande verbindingen](load-balancer-outbound-connections.md) bieden bij het overstappen van privé-IP-adressen in het virtuele netwerk naar open bare IP-adressen, worden met interne load balancers geen uitgaande verlopende verbindingen omgezet naar de front-end van een interne Load Balancer als beide zich in particuliere IP-adres ruimte bevinden.  Zo voor komt u dat er geen SNAT-uitputting binnen de unieke interne IP-adres ruimte is, waarbij omzetting niet vereist is.  Het gevolg is dat als een uitgaande stroom van een virtuele machine in de back-end-pool een stroom probeert te maken van een front-end van de interne Load Balancer waarin de groep zich bevindt _en_ aan zichzelf wordt toegewezen, beide zijden van de stroom niet overeenkomen en de stroom niet kan worden uitgevoerd.  Als de stroom niet opnieuw is toegewezen aan dezelfde virtuele machine in de back-end-pool, waardoor de stroom naar de front-end is gemaakt, slaagt de stroom.   Wanneer de stroom wordt teruggeleid naar zichzelf, lijkt de uitgaande stroom van de virtuele machine naar de front-end en de bijbehorende binnenkomende stroom lijkt afkomstig van de virtuele machine naar zichzelf. Vanuit het oogpunt van het gastbesturingssysteem gezien, komen de inkomende en uitgaande delen van dezelfde flow in de virtuele machine niet overeen. De TCP-stack herkent deze niet als twee helften van dezelfde stroom, omdat de bron en de bestemming niet overeenkomen.  Wanneer de stroom wordt toegewezen aan een andere virtuele machine in de back-end-pool, worden de helften van de stroom vergeleken en kan de virtuele machine reageren op de stroom.  Het symptoom voor dit scenario is periodieke verbindingstime-outs. Er zijn verschillende veelvoorkomende oplossingen voor het op een betrouw bare manier bereiken van dit scenario (die afkomstig zijn van een back-end-pool naar de back-end-Pools die respectievelijk intern zijn Load Balancer front-end), waaronder het invoegen van een proxy van een derde partij achter de interne Load Balancer of het gebruik van de [DSR-stijl regels](load-balancer-multivip-overview.md).  Als oplossing hiervoor zou u een openbare Load Balancer kunnen gebruiken, maar het scenario dat daar het resultaat van is, is gevoelig voor [SNAT-uitputting](load-balancer-outbound-connections.md#snat) en moet worden vermeden, tenzij dit nauwkeurig wordt beheerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
+- Meer informatie over [Azure Load Balancer](load-balancer-overview.md).
 - Meer informatie over het gebruik van [Standard Load Balancer en Beschikbaarheidszones](load-balancer-standard-availability-zones.md).
 - Meer informatie over [status controles](load-balancer-custom-probe-overview.md).
-- Meer informatie over [Beschikbaarheidszones](../availability-zones/az-overview.md).
 - Meer informatie over [Standard Load Balancer diagnostische gegevens](load-balancer-standard-diagnostics.md).
 - Meer informatie over [ondersteunde multi-dimensionale metrische gegevens](../azure-monitor/platform/metrics-supported.md#microsoftnetworkloadbalancers) voor diagnostische gegevens in [Azure monitor](../monitoring-and-diagnostics/monitoring-overview.md).
 - Meer informatie over het gebruik van [Load Balancer voor uitgaande verbindingen](load-balancer-outbound-connections.md).
@@ -232,8 +232,4 @@ Ga naar de pagina [Prijs van Load Balancer](https://azure.microsoft.com/pricing/
 - Meer informatie over [TCP Reset bij niet-actief](load-balancer-tcp-reset.md).
 - Meer informatie over Standard Load Balancer met de taakverdelings [regels van ha-poorten](load-balancer-ha-ports-overview.md).
 - Meer informatie over het gebruik van [Load Balancer met meerdere frontends](load-balancer-multivip-overview.md).
-- Meer informatie over [virtuele netwerken](../virtual-network/virtual-networks-overview.md).
 - Meer informatie over [netwerk beveiligings groepen](../virtual-network/security-overview.md).
-- Meer informatie over [VNet-service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md).
-- Meer informatie over een aantal van de andere belang rijke [netwerk mogelijkheden](../networking/networking-overview.md) van Azure.
-- Meer informatie over [Load Balancer](load-balancer-overview.md).

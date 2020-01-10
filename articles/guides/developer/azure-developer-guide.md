@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 92ff08d460e9bf11b49700570a156a101811a533
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 0df55f4ce790d6ea38f44ce0ca6dab43085c3455
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436005"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770914"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Aan de slag-handleiding voor Azure-ontwikkelaars
 
@@ -133,7 +133,7 @@ In de meeste toepassingen moeten gegevens worden opgeslagen. u kunt uw toepassin
   > **Aan de slag**: [een SQL database binnen een paar minuten maken met behulp van de Azure Portal](../../sql-database/sql-database-get-started.md).
 
 
-U kunt [Azure Data Factory](../../data-factory/introduction.md) gebruiken om bestaande on-premises gegevens naar Azure te verplaatsen. Als u geen gegevens naar de cloud kunt verplaatsen, kunt u met [hybride verbindingen](../../biztalk-services/integration-hybrid-connection-overview.md) in BizTalk Services uw app service gehoste app verbinden met on-premises resources. U kunt ook verbinding maken met Azure-gegevens-en-opslag Services vanuit uw on-premises toepassingen.
+U kunt [Azure Data Factory](../../data-factory/introduction.md) gebruiken om bestaande on-premises gegevens naar Azure te verplaatsen. Als u geen gegevens naar de cloud kunt verplaatsen, kunt u met [hybride verbindingen](../../app-service/app-service-hybrid-connections.md) in Azure App Service uw app service gehoste app verbinden met on-premises resources. U kunt ook verbinding maken met Azure-gegevens-en-opslag Services vanuit uw on-premises toepassingen.
 
 #### <a name="docker-support"></a>Docker-ondersteuning
 
@@ -147,11 +147,11 @@ Azure biedt verschillende manieren om containers in uw toepassingen te gebruiken
   > 
   > **Aan de slag**: [een docker-omgeving maken in azure met behulp van de docker VM-extensie](../../virtual-machines/virtual-machines-linux-dockerextension.md).
 
-- **Azure container service**: Hiermee kunt u een cluster van virtuele machines maken, configureren en beheren die vooraf zijn geconfigureerd voor het uitvoeren van toepassingen met containers. Zie [Azure container service Introduction](../../container-service/container-service-intro.md)(Engelstalig) voor meer informatie over de container service.
+- **Azure Kubernetes service**: Hiermee kunt u een cluster van virtuele machines maken, configureren en beheren die vooraf zijn geconfigureerd voor het uitvoeren van toepassingen met containers. Zie [Azure Kubernetes service Introduction](../../aks/intro-kubernetes.md)(Engelstalig) voor meer informatie over de Azure Kubernetes-service.
 
   > **Wanneer u wilt gebruiken**: wanneer u schaal bare omgevingen wilt bouwen die geschikt zijn voor de planning en het beheer, of wanneer u een docker Swarm-cluster implementeert.
   > 
-  > **Aan de slag**: [een container service-cluster implementeren](../../container-service/dcos-swarm/container-service-deployment.md).
+  > **Aan de slag**: [Implementeer een Kubernetes-service cluster](../../aks/tutorial-kubernetes-deploy-cluster.md).
 
 - **Docker machine**: Hiermee kunt u een docker-engine op virtuele hosts installeren en beheren met behulp van docker-machine-opdrachten.
 
@@ -163,7 +163,7 @@ Azure biedt verschillende manieren om containers in uw toepassingen te gebruiken
   > 
   > **Aan de slag**: [gebruik een aangepaste docker-installatie kopie voor app service op Linux](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Verificatie
+### <a name="authentication"></a>Authentication
 
 Het is essentieel dat u niet alleen weet wie uw toepassingen gebruikt, maar ook om onbevoegde toegang tot uw resources te voor komen. Azure biedt verschillende manieren om uw app-clients te verifiëren.
 
@@ -185,7 +185,7 @@ Zie [Aanbevolen procedures en patronen voor Azure-beveiliging](../../security/fu
 
 Als uw toepassing in azure actief is, moet u de prestaties bewaken, kijken of er problemen zijn en zien hoe klanten uw app gebruiken. Azure biedt verschillende controle opties.
 
--   **Visual studio Application Insights**: een door Azure gehoste uitbreid bare analyse service die kan worden geïntegreerd met Visual Studio om uw Live webtoepassingen te controleren. Het biedt u de gegevens die u nodig hebt om de prestaties en bruikbaarheid van uw apps continu te verbeteren. Deze verbetering doet zich voor of u uw toepassingen host op Azure of niet.
+-   **Application Insights**: een door Azure gehoste uitbreid bare analyse service die met Visual Studio kan worden geïntegreerd om uw Live webtoepassingen te controleren. Het biedt u de gegevens die u nodig hebt om de prestaties en bruikbaarheid van uw apps continu te verbeteren. Deze verbetering doet zich voor of u uw toepassingen host op Azure of niet.
 
     >**Aan de slag**: volg de [Application Insights zelf studie](../../azure-monitor/app/app-insights-overview.md).
 

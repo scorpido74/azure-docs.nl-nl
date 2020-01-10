@@ -6,12 +6,12 @@ ms.date: 10/22/2019
 ms.custom: seo-python-october2019
 experimental: false
 experiment_id: 1e304dc9-5add-4b
-ms.openlocfilehash: 67fbffbe96bc32b6ec38fa75c1e754c7f11d38d6
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 266f6e37584807e139e80a581d16f404c6636f6e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687473"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768398"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Snelstartgids: een python-app maken in Azure App Service in Linux
 
@@ -24,7 +24,7 @@ Als u liever apps implementeert via een IDE, raadpleegt u [python-Apps implement
 - Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - <a href="https://www.python.org/downloads/" target="_blank">Python 3,7</a> (python 3,6 wordt ook ondersteund)
 - <a href="https://git-scm.com/downloads" target="_blank">Git</a>
-- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure CLI</a>
+- <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Azure-CLI</a>
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
@@ -52,7 +52,7 @@ Gebruik in een Terminal venster de onderstaande opdrachten (afhankelijk van uw b
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-FLASK_APP=application.py
+export FLASK_APP=application.py
 flask run
 ```
 
@@ -94,11 +94,11 @@ Als u Azure-opdrachten in de Azure CLI wilt uitvoeren, moet u zich eerst aanmeld
 az login
 ```
 
-## <a name="deploy-the-sample"></a>Het voor beeld implementeren
+## <a name="deploy-the-sample"></a>Het voorbeeld implementeren
 
 Met de [`az webapp up`](/cli/azure/webapp#az-webapp-up) opdracht maakt u de web-app op app service en implementeert u de code.
 
-Voer de volgende opdracht uit in de map *python-docs-Hello-World* met de voorbeeld code `az webapp up`. Vervang `<app-name>` door een wereld wijd unieke app-naam (*geldige tekens zijn `a-z`, `0-9`en `-`* ). Vervang ook `<location-name>` door een Azure-regio zoals **centralus**, **EastAsia**, **Europa West**, **koreasouth**, **brazilsouth**, **centralindia**, enzovoort. (U kunt een lijst met toegestane regio's voor uw Azure-account ophalen door de [`az account locations-list`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) opdracht uit te voeren.)
+Voer de volgende opdracht uit in de map *python-docs-Hello-World* met de voorbeeld code `az webapp up`. Vervang `<app-name>` door een wereld wijd unieke app-naam (*geldige tekens zijn `a-z`, `0-9`en `-`* ). Vervang ook `<location-name>` door een Azure-regio zoals **centralus**, **EastAsia**, **Europa West**, **koreasouth**, **brazilsouth**, **centralindia**, enzovoort. (U kunt een lijst met toegestane regio's voor uw Azure-account ophalen door de [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) opdracht uit te voeren.)
 
 
 ```terminal

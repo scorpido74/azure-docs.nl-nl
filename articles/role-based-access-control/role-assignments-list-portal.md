@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/25/2019
+ms.date: 01/08/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 25e11ae1311df9d0392340b32e0691298f78ee1c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9582881626f58ebbbae5648fe5d4b46e14fd5850
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74710423"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763318"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Roltoewijzingen weer geven met behulp van Azure RBAC en de Azure Portal
 
@@ -40,6 +40,22 @@ De eenvoudigste manier om de rollen weer te geven die zijn toegewezen aan een ge
     ![Roltoewijzingen voor een gebruiker](./media/role-assignments-list-portal/azure-resources-user.png)    
 
 1. Als u het abonnement wilt wijzigen, klikt u op de lijst **abonnementen** .
+
+## <a name="list-owners-of-a-subscription"></a>Eigen aren van een abonnement weer geven
+
+Gebruikers aan wie de rol van [eigenaar](built-in-roles.md#owner) voor een abonnement is toegewezen, kunnen alles in het abonnement beheren. Volg deze stappen om de eigen aars van een abonnement weer te geven.
+
+1. Klik in de Azure-portal op de optie **Alle services** en vervolgens op **Abonnementen**.
+
+1. Klik op het abonnement waarvan u de eigen aren wilt vermelden.
+
+1. Klik op **Toegangsbeheer (IAM)** .
+
+1. Klik op het tabblad **Roltoewijzingen** om alle roltoewijzingen voor dit abonnement weer te geven.
+
+1. Ga naar de sectie **eigen aren** om alle gebruikers weer te geven aan wie de rol van eigenaar voor dit abonnement is toegewezen.
+
+   ![Toegangs beheer voor abonnementen-tabblad roltoewijzingen](./media/role-assignments-list-portal/access-control-role-assignments-subscription.png)
 
 ## <a name="list-role-assignments-at-a-scope"></a>Roltoewijzingen in een bereik weer geven
 
@@ -80,6 +96,32 @@ Als u de toegang wilt weer geven voor een gebruiker, groep, Service-Principal of
     ![Deelvenster Toewijzingen](./media/role-assignments-list-portal/check-access-assignments.png)
 
     In dit deelvenster ziet u de rollen die zijn toegewezen aan de geselecteerde beveiligings-principal en het bereik. Als er een in dit bereik toewijzingen zijn geweigerd of zijn overgenomen, worden deze weergegeven.
+
+## <a name="list-role-assignments-for-a-system-assigned-managed-identity"></a>Roltoewijzingen weer geven voor een door het systeem toegewezen beheerde identiteit
+
+1. Open een door het systeem toegewezen beheerde identiteit in het Azure Portal.
+
+1. Klik in het linkermenu op **identiteit**.
+
+    ![Door het systeem toegewezen beheerde identiteit](./media/role-assignments-list-portal/identity-system-assigned.png)
+
+1. Klik **onder roltoewijzingen**op **de Azure RBAC-rollen weer geven die zijn toegewezen aan deze beheerde identiteit**.
+
+    U ziet een lijst met rollen die zijn toegewezen aan de geselecteerde door het systeem toegewezen beheerde identiteit in verschillende bereiken, zoals beheer groep, abonnement, resource groep of resource. Deze lijst bevat alle roltoewijzingen waarvoor u lees machtigingen hebt.
+
+    ![Roltoewijzingen voor een door het systeem toegewezen beheerde identiteit](./media/role-assignments-list-portal/azure-resources-system-assigned.png)
+
+## <a name="list-role-assignments-for-a-user-assigned-managed-identity"></a>Roltoewijzingen weer geven voor een door de gebruiker toegewezen beheerde identiteit
+
+1. Open een door het systeem toegewezen beheerde identiteit in het Azure Portal.
+
+1. Klik op **Azure-resources**.
+
+    U ziet een lijst met rollen die zijn toegewezen aan de geselecteerde door de gebruiker toegewezen beheerde identiteit in verschillende bereiken, zoals beheer groep, abonnement, resource groep of resource. Deze lijst bevat alle roltoewijzingen waarvoor u lees machtigingen hebt.
+
+    ![Roltoewijzingen voor een door het systeem toegewezen beheerde identiteit](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
+
+1. Als u het abonnement wilt wijzigen, klikt u op de lijst **abonnementen** .
 
 ## <a name="next-steps"></a>Volgende stappen
 

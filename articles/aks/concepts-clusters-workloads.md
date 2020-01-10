@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: mlearned
-ms.openlocfilehash: 78fb06c7ecd20d8ed2af40bcc294f2fb1b166d96
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 349d7d8206cc4139de020234ee063e85f9a8f9ef
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120611"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768636"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes core-concepten voor Azure Kubernetes service (AKS)
 
@@ -95,22 +95,22 @@ Als u de prestaties en functionaliteit van knoop punten wilt behouden, worden de
 |---|---|---|---|---|---|---|---|
 |Uitvoeren-gereserveerd (millicores)|60|100|140|180|260|420|740|
 
-- **Geheugen-gereserveerd** geheugen bevat de som van twee waarden
+- **Geheugen** : het geheugen dat door aks wordt gebruikt, omvat de som van twee waarden.
 
-1. De kubelet-daemon wordt geïnstalleerd op alle knoop punten van de Kubernetes-agent om het maken en beëindigen van containers te beheren. Deze daemon bevat standaard de volgende verwijderings regel: memory. available < 750Mi, wat betekent dat een knoop punt altijd ten minste 750 mi te allen tijde kan hebben.  Wanneer een host lager is dan de drempel waarde van het beschik bare geheugen, wordt een van de kubelet beëindigd om geheugen vrij te maken op de hostcomputer en te beveiligen.
+1. De kubelet-daemon wordt geïnstalleerd op alle knoop punten van de Kubernetes-agent om het maken en beëindigen van containers te beheren. Deze daemon bevat standaard de volgende verwijderings regel: *Memory. available < 750Mi*, wat betekent dat een knoop punt altijd ten minste 750 mi te allen tijde kan hebben.  Wanneer een host lager is dan de drempel waarde van het beschik bare geheugen, wordt een van de kubelet beëindigd om geheugen vrij te maken op de hostcomputer en te beveiligen. Dit is een reactief optreden zodra het beschik bare geheugen groter wordt dan de drempel waarde voor 750Mi.
 
-2. De tweede waarde is een progressieve hoeveelheid geheugen die is gereserveerd voor de kubelet-daemon goed te laten functioneren (uitvoeren-gereserveerd).
+2. De tweede waarde is een progressief aantal geheugen reserveringen waarmee de kubelet-daemon goed kan functioneren (uitvoeren-gereserveerde).
     - 25% van de eerste 4 GB geheugen
     - 20% van de volgende 4 GB geheugen (Maxi maal 8 GB)
     - 10% van de volgende 8 GB geheugen (Maxi maal 16 GB)
     - 6% van de volgende 112 GB geheugen (Maxi maal 128 GB)
     - 2% van de geheugens boven 128 GB
 
-Als gevolg van deze twee gedefinieerde regels die zijn opgelegd om Kubernetes en agent knooppunten in orde te blijven, wordt de hoeveelheid toewijs bare CPU en het geheugen kleiner weer gegeven dan het knoop punt zelf zou kunnen aanbieden. De resource reserveringen die hierboven zijn gedefinieerd, kunnen niet worden gewijzigd.
+De bovenstaande regels voor geheugen-en CPU-toewijzing worden gebruikt om agent knooppunten in orde te blijven, wat een hostsysteem van cruciaal belang is voor de cluster status. Deze toewijzings regels zorgen er ook voor dat het knoop punt minder toegewezen geheugen en CPU rapporteert dan wanneer het geen deel uitmaakt van een Kubernetes-cluster. De bovenstaande resource reserveringen kunnen niet worden gewijzigd.
 
-Als een knoop punt bijvoorbeeld 7 GB biedt, zal het 34% van het geheugen niet worden verplaatst:
+Als een knoop punt bijvoorbeeld 7 GB biedt, zal het 34% van het geheugen dat niet kan worden overschreven boven op de drempel waarde voor 750Mi hard verwijderen.
 
-`750Mi + (0.25*4) + (0.20*3) = 0.786GB + 1 GB + 0.6GB = 2.386GB / 7GB = 34% reserved`
+`(0.25*4) + (0.20*3) = + 1 GB + 0.6GB = 1.6GB / 7GB = 22.86% reserved`
 
 Naast reserve ringen voor Kubernetes, reserveert het onderliggende knooppunt besturingssysteem ook een hoeveelheid CPU-en geheugen bronnen om besturings systemen te onderhouden.
 
@@ -152,7 +152,7 @@ Zie [Aanbevolen procedures voor geavanceerde functies van scheduler in AKS][oper
 
 Kubernetes maakt gebruik van *peul* om een exemplaar van uw toepassing uit te voeren. Een pod vertegenwoordigt één exemplaar van uw toepassing. In het algemeen is er sprake van een 1:1-toewijzing met een container, hoewel er geavanceerde scenario's zijn waarbij een pod mogelijk meerdere containers bevat. Deze meerdere containers worden op hetzelfde knoop punt gepland en kunnen containers gerelateerde resources delen.
 
-Wanneer u een pod maakt, kunt u *resource limieten* definiëren om een bepaalde hoeveelheid CPU-of geheugen bronnen aan te vragen. De Kubernetes scheduler probeert het peul te plannen dat wordt uitgevoerd op een knoop punt met beschik bare bronnen om te voldoen aan de aanvraag. U kunt ook maximale resource limieten opgeven waarmee wordt voor komen dat een bepaalde pod te veel Compute-resources van het onderliggende knoop punt verbruikt. Een best practice bestaat uit het opneemen van resource limieten voor alle peulen om de Kubernetes te helpen begrijpen welke resources nodig zijn en zijn toegestaan.
+Wanneer u een pod maakt, kunt u *resource aanvragen* definiëren om een bepaalde hoeveelheid CPU-of geheugen bronnen aan te vragen. De Kubernetes scheduler probeert het peul te plannen dat wordt uitgevoerd op een knoop punt met beschik bare bronnen om te voldoen aan de aanvraag. U kunt ook maximale resource limieten opgeven waarmee wordt voor komen dat een bepaalde pod te veel Compute-resources van het onderliggende knoop punt verbruikt. Een best practice bestaat uit het opneemen van resource limieten voor alle peulen om de Kubernetes te helpen begrijpen welke resources nodig zijn en zijn toegestaan.
 
 Zie [Kubernetes peul][kubernetes-pods] en [Kubernetes pod Lifecycle][kubernetes-pod-lifecycle]voor meer informatie.
 

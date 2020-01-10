@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e43eae8b7308f71886d855bbc53f341bd674e6c5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfe51558cf96e77288186c2ed2b4a2773cbc5cf2
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433819"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829864"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten configureren met Azure Active Directory (Azure AD)
 
@@ -62,15 +62,16 @@ Houd er rekening mee dat u niet zowel gebruikers als groepen of alle hieronder w
 | Azure Active Directory-gebruiker | "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
 | IsSoftDeleted |actief |
+|department|urn: IETF: params: scim: schemas: extension: Enter prise: 2.0: gebruiker: Department|
 | displayName |displayName |
+|employeeId|urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: employeeNumber|
 | Facsimile-TelephoneNumber |phoneNumbers [type eq "fax"] .value |
 | givenName |name.givenName |
 | Functie |titel |
 | mail |e-mailberichten [type eq 'werk'] .value |
 | mailNickname |externalId |
-| beheerder |beheerder |
+| beheerder |urn: IETF: params: scim: schemas: extensie: Enter prise: 2.0: gebruiker: Manager |
 | mobiele |phoneNumbers [type eq 'mobiel'] .value |
-| object-id |Id |
 | Postcode |adressen type eq 'werk'.postalCode |
 | proxy-adressen |e-mailberichten [Typ eq 'ander']. Waarde |
 | physical-Delivery-OfficeName |adressen [Typ eq 'ander']. Indeling |
@@ -79,15 +80,16 @@ Houd er rekening mee dat u niet zowel gebruikers als groepen of alle hieronder w
 | Telefoonnummer |phoneNumbers [type eq 'werk'] .value |
 | user-PrincipalName |userName |
 
+
 ### <a name="table-2-default-group-attribute-mapping"></a>Tabel 2: Standaard groep kenmerktoewijzing
 
 | Azure Active Directory-groep | urn: IETF: params: scim: schemas: kern: 2.0: groep |
 | --- | --- |
-| displayName |externalId |
+| displayName |displayName |
 | mail |e-mailberichten [type eq 'werk'] .value |
 | mailNickname |displayName |
 | leden |leden |
-| object-id |Id |
+| object-id |externalId |
 | proxyAddresses |e-mailberichten [Typ eq 'ander']. Waarde |
 
 ## <a name="step-2-understand-the-azure-ad-scim-implementation"></a>Stap 2: inzicht in de implementatie van Azure AD SCIM

@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
-ms.reviewer: ''
-ms.date: 12/11/2019
-ms.openlocfilehash: 4455181ddf69613ba07bcaeedb26273a4bb5a74d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: HT
+ms.reviewer: carlrab
+ms.date: 01/09/2020
+ms.openlocfilehash: 27868f062cd628347e38b5fdb9f243347dea3e23
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647846"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834973"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Resource limieten voor afzonderlijke data bases met behulp van het vCore-aankoop model
 
@@ -322,9 +322,10 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 |Maximale gegevens grootte TempDB (GB)|333|
 |Opslagtype|Externe SSD|
 |I/o-latentie (bij benadering)|5-7 MS (schrijven)<br>5-10 MS (lezen)|
-|Max. gegevensiops *|23.040|
+|Max. gegevensiops *|12,800|
 |Maximale logboek frequentie (MBps)|30|
 |Maxi maal aantal gelijktijdige werk nemers (aanvragen)|3600|
+|Maximum aantal gelijktijdige aanmeldingen|3600|
 |Maximaal aantal gelijktijdige sessies|30,000|
 |Aantal replica's|1|
 |Multi-AZ|N/A|
@@ -448,21 +449,22 @@ De [Compute-laag zonder server](sql-database-serverless.md) is momenteel alleen 
 
 ### <a name="m-series-compute-generation-preview"></a>Generatie van d-Series Compute (preview-versie)
 
-|Reken grootte|GP_M_128|
+|Reken grootte|BC_M_128|
 |:--- | --: |
 |Compute genereren|M-serie|
 |vCores|128|
-|Geheugen (GB)|3767|
+|Geheugen (GB)|3767,1|
 |Column Store-ondersteuning|Ja|
-|OLTP-opslag in het geheugen (GB)|481|
+|OLTP-opslag in het geheugen (GB)|1768|
 |Maximale gegevens grootte (GB)|4096|
 |Maximale logboek grootte (GB)|2048|
 |Maximale gegevens grootte TempDB (GB)|4096|
 |Opslagtype|Lokale SSD|
 |I/o-latentie (bij benadering)|1-2 ms (schrijven)<br>1-2 ms (lezen)|
-|Max. gegevensiops *|204.800|
-|Maximale logboek frequentie (MBps)|192|
-|Maxi maal aantal gelijktijdige werk nemers (aanvragen)|12800|
+|Max. gegevensiops *|160.000|
+|Maximale logboek frequentie (MBps)|264|
+|Maxi maal aantal gelijktijdige werk nemers (aanvragen)|12,800|
+|Maximum aantal gelijktijdige aanmeldingen|12,800|
 |Maximaal aantal gelijktijdige sessies|30.000|
 |Aantal replica's|4|
 |Multi-AZ|Ja|

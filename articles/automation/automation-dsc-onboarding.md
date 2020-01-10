@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.topic: conceptual
 ms.date: 12/10/2019
 manager: carmonm
-ms.openlocfilehash: 9ebe38b54c042a0c945200bc3d88076b16c2e6f9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c5876dd293a97414ff4f48dbb8645e64226a6ba8
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366376"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834112"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboarding van machines voor beheer door Azure Automation status configuratie
 
@@ -31,8 +31,7 @@ Azure Automation status configuratie kan worden gebruikt voor het beheren van ve
 
 - Virtuele machines van Azure
 - Azure virtual machines (klassiek)
-- Amazon Web Services (AWS) EC2-instanties
-- Fysieke/virtuele Windows-machines on-premises of in een andere Cloud dan Azure/AWS
+- Fysieke/virtuele Windows-machines on-premises of in een andere Cloud dan Azure (met inbegrip van AWS EC2-instanties)
 - Fysieke/virtuele Linux-machines on-premises, in azure of in een andere Cloud dan Azure
 
 Als u de computer configuratie niet kunt beheren vanuit de Cloud, kan de configuratie van Azure Automation-status ook worden gebruikt als een eind punt voor alleen een rapport.
@@ -82,11 +81,7 @@ De beste manier om virtuele machines van andere Azure-abonnementen te registrere
 Voor beelden vindt u in de [desired state Configuration extension met Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-template).
 Als u de registratie sleutel en registratie-URL wilt vinden die u wilt gebruiken als para meters in de sjabloon, raadpleegt u de sectie de volgende [**veilige registratie**](#secure-registration) .
 
-## <a name="amazon-web-services-aws-virtual-machines"></a>Amazon Web Services (AWS) virtuele machines
-
-Met de AWS DSC Toolkit kunt u eenvoudig Amazon Web Services virtuele machines voorbereiden voor configuratie beheer door Azure Automation status configuratie. Meer informatie over de Toolkit vindt u [hier](https://blogs.msdn.microsoft.com/powershell/2016/04/20/aws-dsc-toolkit/).
-
-## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws"></a>Fysieke/virtuele Windows-machines on-premises of in een andere Cloud dan Azure/AWS
+## <a name="physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances"></a>Fysieke/virtuele Windows-machines on-premises of in een andere Cloud dan Azure (met inbegrip van AWS EC2-instanties)
 
 Windows-servers die on-premises of in andere Cloud omgevingen worden uitgevoerd, kunnen ook worden gewaakd naar Azure Automation status configuratie, zolang ze [uitgaande toegang hebben tot Azure](automation-dsc-overview.md#network-planning):
 

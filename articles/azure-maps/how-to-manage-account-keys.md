@@ -1,6 +1,6 @@
 ---
-title: Uw Azure-kaarten-account beheren | Microsoft Docs
-description: U kunt de Azure-portal gebruiken voor het beheren van uw Azure kaarten-account.
+title: Uw Azure Maps-account beheren | Microsoft Docs
+description: U kunt de Azure Portal gebruiken om uw Azure Maps-account te beheren.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/14/2019
@@ -8,49 +8,49 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2871a4a0efaa40d20148ede7f0402a0dd874126c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5697989696d0d375e52baeb9f7332e7013d16bf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65957308"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768840"
 ---
-# <a name="manage-your-azure-maps-account"></a>Uw Azure-kaarten-account beheren
+# <a name="manage-your-azure-maps-account"></a>Uw Azure Maps-account beheren
 
-U kunt uw Azure kaarten-account via Azure portal beheren. Nadat u een account hebt, kunt u de API's implementeren in uw website of mobiele toepassing.
+U kunt uw Azure Maps-account beheren via de Azure Portal. Nadat u een account hebt, kunt u de Api's implementeren in uw website of mobiele toepassing.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="create-a-new-account"></a>Een nieuw account maken
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-2. Selecteer **een resource maken** in de linkerbovenhoek van Azure portal.
+2. Selecteer **Een resource maken** in de linkerbovenhoek van Azure Portal.
 
-3. Zoek en selecteer **Maps**. Selecteer vervolgens **Maken**.
+3. Zoek en selecteer **kaarten**. Selecteer vervolgens **Maken**.
 
-4. Voer de gegevens voor uw nieuwe account.
+4. Voer de gegevens voor uw nieuwe account in.
 
-![Voer de accountgegevens in de portal](./media/how-to-manage-account-keys/new-account-portal.png)
+![Account gegevens invoeren in de portal](./media/how-to-manage-account-keys/new-account-portal.png)
 
 ## <a name="delete-an-account"></a>Een account verwijderen
 
-U kunt een account verwijderen uit de Azure-portal. Navigeer naar de overzichtspagina van account en selecteer **verwijderen**.
+U kunt een account verwijderen uit de Azure Portal. Navigeer naar de pagina account overzicht en selecteer **verwijderen**.
 
-![Uw account in de portal verwijderen](./media/how-to-manage-account-keys/account-delete-portal.png)
+![Uw account verwijderen in de portal](./media/how-to-manage-account-keys/account-delete-portal.png)
 
-Vervolgens ziet u een bevestigingspagina. U kunt het verwijderen van uw account controleren door de naam te typen.
+Vervolgens wordt er een bevestigings pagina weer geven. U kunt het verwijderen van uw account bevestigen door de naam ervan te typen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Verificatie met Azure Maps instellen:
+Stel verificatie met Azure Maps in en lees hoe u een Azure Maps-abonnements sleutel kunt verkrijgen:
 > [!div class="nextstepaction"]
 > [Verificatie beheren](how-to-manage-authentication.md)
 
-Informatie over het beheren van een prijscategorie Azure kaarten-account:
+Meer informatie over het beheren van een prijs categorie voor een Azure Maps account:
 > [!div class="nextstepaction"] 
-> [Een prijscategorie beheren](how-to-manage-pricing-tier.md)
+> [Een prijs categorie beheren](how-to-manage-pricing-tier.md)
 
-Meer informatie over om te zien van de metrische gegevens over gebruik API voor uw Azure kaarten-account:
+Meer informatie over het weer geven van metrische gegevens over het API-gebruik voor uw Azure Maps-account:
 > [!div class="nextstepaction"] 
-> [Metrische gegevens weergeven](how-to-view-api-usage.md)
+> [Metrische gegevens over gebruik weer geven](how-to-view-api-usage.md)

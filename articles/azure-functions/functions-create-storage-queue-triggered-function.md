@@ -5,12 +5,12 @@ ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 3f4e9f8a607856e3de92a4824a4221071f3c02a4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3d4cfc40f1849ecd2745b1d662973c7f64a0a60c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227144"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769248"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Een door Azure Queue Storage geactiveerde functie maken
 
@@ -42,11 +42,11 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 1. Kies **Meer sjablonen** en vervolgens **Voltooien en sjablonen weergeven**.
 
-    ![De Quick Start-pagina 'Meer sjablonen kiezen' van Functions](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
+    ![De Quick Start-pagina ‘Meer sjablonen kiezen’ van Functions](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
 
 1. Typ `queue` in het zoekveld en kies vervolgens de sjabloon **Wachtrijtrigger**.
 
-1. Als u hierom wordt gevraagd, selecteert u **Installeren** om de Azure Storage-extensie en alle eventuele afhankelijkheden in de functie-app te installeren. Wanneer de installatie is voltooid, selecteert u **Doorgaan**.
+1. Als hierom wordt gevraagd, selecteert u **installeren** om de Azure Storage extensie en eventuele afhankelijkheden in de functie-app te installeren. Wanneer de installatie is voltooid, selecteert u **Doorgaan**.
 
     ![Binding-extensies installeren](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
 
@@ -58,7 +58,7 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
     |---|---|---|
     | **Naam** | Uniek in uw functie-app | Naam van deze door een wachtrij geactiveerde functie. |
     | **Wachtrijnaam**   | myqueue-items    | De naam van de wachtrij waarmee u verbinding moet maken in uw opslagaccount. |
-    | **Opslagaccountverbinding** | AzureWebJobStorage | U kunt de opslagaccountverbinding gebruiken die al door de functie-app wordt gebruikt of u kunt een nieuwe maken.  |    
+    | **Opslagaccountverbinding** | AzureWebJobsStorage | U kunt de opslagaccountverbinding gebruiken die al door de functie-app wordt gebruikt of u kunt een nieuwe maken.  |    
 
 1. Klik op **Maken** om de functie te maken.
 
@@ -88,7 +88,7 @@ Nu u een opslagwachtrij hebt, kunt u de functie testen door een bericht toe te v
 
 1. Blader in Azure Portal naar de functie, vouw de **Logboeken** onder aan de pagina uit en controleer of logboekstreaming niet is onderbroken.
 
-1. Vouw in Storage Explorer uw opslagaccount, **Wachtrijen** en **myqueue-items** uit en klik vervolgens op **Bericht toevoegen**.
+1. Vouw in Storage Explorer uw opslag account, **wacht rijen**en **myqueue-items**uit en klik vervolgens op **bericht toevoegen**.
 
     ![Voeg een bericht toe aan de wachtrij.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-add-message.png)
 

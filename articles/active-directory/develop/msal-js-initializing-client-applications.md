@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b041d8777f81f1796a2e2f7926f324e3b601bd93
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7c5022533cf0db57779bc36bd74cfb38932f10d6
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74916499"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777833"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Client toepassingen initialiseren met MSAL. js
 In dit artikel wordt beschreven hoe u de micro soft-verificatie bibliotheek voor Java script (MSAL. js) initialiseert met een exemplaar van een toepassing van een gebruikers agent. De toepassing van de gebruikers agent is een vorm van een open bare client toepassing waarin de client code wordt uitgevoerd in een gebruikers agent, zoals een webbrowser. Deze clients slaan geen geheimen op omdat de browser context geopend is. Lees het [overzicht](msal-client-applications.md)voor meer informatie over de client toepassings typen en configuratie opties voor toepassingen.
@@ -116,7 +116,7 @@ Hieronder ziet u de totale set Configureer bare opties die momenteel worden onde
         * `https://login.microsoftonline.com/common`: wordt gebruikt voor het aanmelden van gebruikers met werk-en school accounts of een persoonlijk micro soft-account.
         * `https://login.microsoftonline.com/organizations/`: wordt gebruikt voor het aanmelden van gebruikers met werk-en school accounts.
         * `https://login.microsoftonline.com/consumers/`: wordt gebruikt voor het aanmelden van gebruikers met alleen persoonlijke Microsoft-account (Live).
-    * In Azure AD B2C heeft het formulier `https://<instance>/tfp/<tenant>/<policyName>/`, waarbij instance het Azure AD B2C domein is, Tenant de naam van de Azure AD B2C Tenant is, is de naam van het B2C-beleid dat moet worden toegepast.
+    * In Azure AD B2C heeft het de vorm `https://<instance>/tfp/<tenant>/<policyName>/`, waarbij instance het Azure AD B2C domein is, d.w.z. {uw-Tenant naam}. b2clogin. com. de Tenant is de naam van de Azure AD B2C Tenant, d.w.z. {uw-Tenant naam}. onmicrosoft. com, beleidsregel is de naam van het B2C-beleid dat moet worden toegepast.
 
 
 - **validateAuthority**: optioneel.  Valideer de verlener van tokens. De standaardwaarde is `true`. Voor B2C-toepassingen, omdat de waarde van de autoriteit bekend is en per beleid kan verschillen, werkt de verificatie van de certificerings instantie niet en moet deze worden ingesteld op `false`.

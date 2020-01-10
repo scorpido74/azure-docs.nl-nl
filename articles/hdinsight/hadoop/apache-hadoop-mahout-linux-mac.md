@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/24/2019
-ms.openlocfilehash: 3923abd10fc3a64773d561b1f375f9e2f00a7e56
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.custom: hdinsightactive
+ms.date: 01/03/2020
+ms.openlocfilehash: 33110e9f1d45fcd11e5f4cad1b589ab929a9472d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044568"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767633"
 ---
 # <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>Tips voor het genereren van films met Apache mahout met Apache Hadoop in HDInsight (SSH)
 
@@ -25,15 +25,13 @@ Mahout is een [machine learning](https://en.wikipedia.org/wiki/Machine_learning)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Apache Hadoop cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
-
-* Een SSH-client. Zie voor meer informatie [Verbinding maken met HDInsight (Apache Hadoop) via SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
+Een Apache Hadoop cluster in HDInsight. Zie aan de [slag met HDInsight op Linux](./apache-hadoop-linux-tutorial-get-started.md).
 
 ## <a name="apache-mahout-versioning"></a>Versie beheer van Apache mahout
 
 Zie [hdinsight-versies en Apache Hadoop onderdelen](../hdinsight-component-versioning.md)voor meer informatie over de versie van mahout in hdinsight.
 
-## <a name="recommendations"></a>Uitleg over aanbevelingen
+## <a name="understanding-recommendations"></a>Uitleg over aanbevelingen
 
 Een van de functies die door mahout wordt gegeven, is een aanbevelings engine. Deze engine accepteert gegevens in de indeling van `userID`, `itemId`en `prefValue` (de voor keur voor het item). Mahout kan vervolgens analyse van co-exemplaren uitvoeren om te bepalen: *gebruikers die een voor keur voor een item hebben, hebben ook een voor keur voor deze andere items*. Mahout bepaalt vervolgens gebruikers met voor keuren zoals-item, die kunnen worden gebruikt om aanbevelingen te doen.
 
@@ -43,7 +41,7 @@ De volgende werk stroom is een vereenvoudigd voor beeld waarin film gegevens wor
 
 * **Co-voorval**: Bob en Alice vinden ook *het fantoom Menace*, de *aanval van de klonen*en *de Sith*. Mahout bepaalt dat gebruikers die de vorige drie films leuk vinden, ook als deze drie films.
 
-* **Aanbeveling voor soort gelijke**voor delen: omdat Joe de eerste drie films leuk vindt, kijkt mahout naar films die anderen met vergelijk bare voor keuren leuk vinden, maar heeft Joe niet bekeken (leuk/beoordeeld). In dit geval raadt mahout aan *het fantoom Menace*, de *aanval van de klonen*en *het re van de Sith*.
+* **Aanbeveling voor soort gelijke**voor delen: omdat Joe de eerste drie films leuk vindt, kijkt mahout naar films die anderen met vergelijk bare voor keuren leuk vinden, maar is Jan niet bekeken (leuk/geclassificeerd). In dit geval raadt mahout aan *het fantoom Menace*, de *aanval van de klonen*en *het re van de Sith*.
 
 ### <a name="understanding-the-data"></a>Informatie over de gegevens
 
@@ -51,7 +49,7 @@ De volgende werk stroom is een vereenvoudigd voor beeld waarin film gegevens wor
 
 Er zijn twee bestanden: `moviedb.txt` en `user-ratings.txt`. Het `user-ratings.txt` bestand wordt gebruikt tijdens de analyse. De `moviedb.txt` wordt gebruikt om gebruikers vriendelijke tekst informatie te bieden bij het weer geven van de resultaten.
 
-De gegevens in User-ratings. txt hebben een structuur van `userID`, `movieID`, `userRating`en `timestamp`, waarmee wordt aangegeven hoe hoog elke gebruiker een film heeft geclassificeerd. Hier volgt een voor beeld van de gegevens:
+De gegevens in `user-ratings.txt` hebben een structuur van `userID`, `movieID`, `userRating`en `timestamp`, waarmee wordt aangegeven hoe hoog elke gebruiker een film heeft geclassificeerd. Hier volgt een voor beeld van de gegevens:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -61,11 +59,17 @@ De gegevens in User-ratings. txt hebben een structuur van `userID`, `movieID`, `
 
 ## <a name="run-the-analysis"></a>De analyse uitvoeren
 
-Gebruik vanuit een SSH-verbinding met het cluster de volgende opdracht om de aanbevelings taak uit te voeren:
+1. Gebruik de [SSH-opdracht](../hdinsight-hadoop-linux-use-ssh-unix.md) om verbinding te maken met uw cluster. Bewerk de onderstaande opdracht door CLUSTERNAME te vervangen door de naam van uw cluster en voer vervolgens de volgende opdracht in:
 
-```bash
-mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/MahoutMovieData/user-ratings.txt -o /example/data/mahoutout --tempDir /temp/mahouttemp
-```
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
+
+1. Gebruik de volgende opdracht om de aanbevelings taak uit te voeren:
+
+    ```bash
+    mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/MahoutMovieData/user-ratings.txt -o /example/data/mahoutout --tempDir /temp/mahouttemp
+    ```
 
 > [!NOTE]  
 > Het kan enkele minuten duren voordat de taak is voltooid en er kunnen meerdere MapReduce-taken worden uitgevoerd.
@@ -80,10 +84,12 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
     De uitvoer ziet er als volgt uit:
 
-        1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
-        2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
-        3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
-        4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
+    ```output
+    1    [234:5.0,347:5.0,237:5.0,47:5.0,282:5.0,275:5.0,88:5.0,515:5.0,514:5.0,121:5.0]
+    2    [282:5.0,210:5.0,237:5.0,234:5.0,347:5.0,121:5.0,258:5.0,515:5.0,462:5.0,79:5.0]
+    3    [284:5.0,285:4.828125,508:4.7543354,845:4.75,319:4.705128,124:4.7045455,150:4.6938777,311:4.6769233,248:4.65625,272:4.649266]
+    4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
+    ```
 
     De eerste kolom is de `userID`. De waarden in [en] zijn `movieId`:`recommendationScore`.
 
@@ -174,7 +180,17 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
      De uitvoer van deze opdracht is vergelijkbaar met de volgende tekst:
 
-       Zeven jaar in Tibet (1997), score = 5.0 Indiana Jansen en de laatste Crusade (1989), score = 5.0 Jaws (1975), score = 5.0 Sense en Sensibility (1995), score = 5,0 Onafhankelijkheidsdag (ID4) (1996), score = 5.0 mijn beste vriend (1997), score = 5.0 Jerry Maguire (1996), Score = 5.0 Scream 2 (1997), score = 5.0 tijd om af te breken, A (1996), score = 5.0
+        ```output
+        Seven Years in Tibet (1997), score=5.0
+        Indiana Jones and the Last Crusade (1989), score=5.0
+        Jaws (1975), score=5.0
+        Sense and Sensibility (1995), score=5.0
+        Independence Day (ID4) (1996), score=5.0
+        My Best Friend's Wedding (1997), score=5.0
+        Jerry Maguire (1996), score=5.0
+        Scream 2 (1997), score=5.0
+        Time to Kill, A (1996), score=5.0
+        ```
 
 ## <a name="delete-temporary-data"></a>Tijdelijke gegevens verwijderen
 
@@ -189,11 +205,9 @@ hdfs dfs -rm -f -r /temp/mahouttemp
 >
 > `hdfs dfs -rm -f -r /example/data/mahoutout`
 
-
 ## <a name="next-steps"></a>Volgende stappen
 
 Nu u hebt geleerd hoe u mahout kunt gebruiken, kunt u andere manieren ontdekken voor het werken met gegevens op HDInsight:
 
 * [Apache Hive met HDInsight](hdinsight-use-hive.md)
-* [Apache-Pig met HDInsight](hdinsight-use-pig.md)
 * [MapReduce met HDInsight](hdinsight-use-mapreduce.md)

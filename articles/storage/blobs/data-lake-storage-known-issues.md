@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 099dc723db44ba71fc4672c382d24ac93ffe742f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 951d707c898ad0efa1f21480c12f0c733f5218ee
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689131"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834951"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
 
@@ -66,7 +66,7 @@ De volgende tabel bevat alle andere functies en hulpprogram ma's die nog niet wo
 |--------|-----------|
 | **Account-failover** |Nog niet ondersteund|
 | **AzCopy** | Versie-specifieke ondersteuning <br><br>Gebruik alleen de meest recente versie van AzCopy ([AzCopy V10 toevoegen](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Eerdere versies van AzCopy, zoals AzCopy v 8.1, worden niet ondersteund.|
-| **Beheer beleid voor Azure Blob Storage levenscyclus** | Levenscyclus beheer beleid wordt ondersteund (preview-versie).  Alle toegangs lagen worden ondersteund. De Access-laag voor het archief is momenteel beschikbaar als preview-versie. Het verwijderen van BLOB-moment opnamen wordt nog niet ondersteund. <br><br> Er zijn momenteel een aantal fouten die het levenscyclus beheer beleid en de Access-laag voor archieven beïnvloeden.  Meld u aan voor de preview van levenscyclus beheer-beleid en Archive Access [-laag.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)   |
+| **Beheer beleid voor Azure Blob Storage levenscyclus** | Levenscyclus beheer beleid wordt ondersteund (preview-versie).  Meld u aan voor de preview van levenscyclus beheer-beleid en Archive Access [-laag.](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)   <br><br>Alle toegangs lagen worden ondersteund. De Access-laag voor het archief is momenteel beschikbaar als preview-versie. Het verwijderen van BLOB-moment opnamen wordt nog niet ondersteund.  Er zijn momenteel een aantal fouten die het levenscyclus beheer beleid en de Access-laag voor archieven beïnvloeden.  |
 | **Azure Content Delivery Network (CDN)** | Nog niet ondersteund|
 | **Azure Search** |Ondersteund (preview-versie)|
 | **Azure-opslagverkenner** | Versie-specifieke ondersteuning. <br><br>Gebruik alleen versies `1.6.0` of hoger. <br> Er is momenteel een opslag fout die van invloed is op de versie `1.11.0` die kan leiden tot verificatie fouten in bepaalde scenario's. Er wordt een oplossing voor de opslag fout geïmplementeerd, maar als tijdelijke oplossing wordt u aangeraden versie `1.10.x` te gebruiken die beschikbaar is als [gratis down load](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). `1.10.x` wordt niet beïnvloed door de opslag fout.|
@@ -74,7 +74,7 @@ De volgende tabel bevat alle andere functies en hulpprogram ma's die nog niet wo
 | **Blobfuse** |Nog niet ondersteund|
 | **Aangepaste domeinen** |Nog niet ondersteund|
 | **Storage Explorer in de Azure Portal** | Beperkte ondersteuning. Acl's worden nog niet ondersteund. |
-| **Registratie in diagnoselogboek** |Diagnostische logboeken worden ondersteund (preview).<br><br>Het inschakelen van Logboeken in het Azure Portal wordt momenteel niet ondersteund. Hier volgt een voor beeld van het inschakelen van de logboeken met behulp van Power shell. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Zorg ervoor dat u `Blob` opgeeft als de waarde van de para meter `-ServiceType`, zoals wordt weer gegeven in dit voor beeld. <br><br>Momenteel kan Azure Storage Explorer niet worden gebruikt voor het weer geven van Diagnostische logboeken. Als u logboeken wilt weer geven, gebruikt u AzCopy of Sdk's.
+| **Registratie in diagnoselogboek** |Diagnostische logboeken worden ondersteund (preview). <br><br>Azure Storage Explorer 1,10. x kan niet worden gebruikt voor het weer geven van Diagnostische logboeken. Als u logboeken wilt weer geven, gebruikt u AzCopy of Sdk's.
 | **Onveranderbare opslag** |Nog niet ondersteund <br><br>Onveranderbare opslag biedt de mogelijkheid om gegevens op te slaan in een [worm (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) .|
 | **Lagen op object niveau** |De lagen cool en Archive worden ondersteund. De Archive-laag is beschikbaar als preview-versie. Alle andere toegangs lagen worden nog niet ondersteund. <br><br> Er zijn momenteel enkele fouten die van invloed zijn op de toegangs laag voor het archief.  Meld u aan voor de preview-versie van de Access [-laag voor](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VURjFLTDRGS0Q4VVZCRFY5MUVaTVJDTkROMi4u)het archief.|
 | **Statische websites** |Nog niet ondersteund <br><br>Met name de mogelijkheid om bestanden te leveren aan [statische websites](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|

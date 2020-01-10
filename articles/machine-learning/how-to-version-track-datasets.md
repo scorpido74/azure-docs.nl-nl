@@ -11,12 +11,12 @@ author: sihhu
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
 ms.custom: ''
-ms.openlocfilehash: f70c826d839be1de82f3f21cf615f261a2193358
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4c8f3e7e47f9c8f924faf513d984d5474c105038
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536432"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834800"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Versie gegevens sets in experimenten bijhouden
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -169,9 +169,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-U kunt ook de `input_datasets` van experimenten vinden met behulp van [Azure machine learning Studio (klassiek)](https://ml.azure.com/). 
+U kunt ook de `input_datasets` van experimenten vinden met behulp van [Azure machine learning Studio](https://ml.azure.com/). 
 
-De volgende afbeelding laat zien waar u de invoer gegevensset van een experiment op Azure Machine Learning Studio (klassiek) kunt vinden. Voor dit voor beeld gaat u naar het deel venster **experimenten** en opent u het tabblad **Eigenschappen** voor een specifieke uitvoering van uw experiment, `keras-mnist`.
+De volgende afbeelding laat zien waar u de invoer gegevensset van een experiment op Azure Machine Learning Studio kunt vinden. Voor dit voor beeld gaat u naar het deel venster **experimenten** en opent u het tabblad **Eigenschappen** voor een specifieke uitvoering van uw experiment, `keras-mnist`.
 
 ![Invoer gegevens sets](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -183,7 +183,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Na de registratie ziet u de lijst met modellen die zijn geregistreerd bij de gegevensset met behulp van python of [Azure machine learning Studio (klassiek)](https://ml.azure.com/). De volgende weer gave is afkomstig uit het deel venster **gegevens sets** onder **assets**. Selecteer de gegevensset en selecteer vervolgens het tabblad **modellen** voor een lijst van de modellen die zijn geregistreerd bij de gegevensset. 
+Na de registratie kunt u de lijst met modellen die zijn geregistreerd bij de gegevensset bekijken met behulp van python of [Azure machine learning Studio](https://ml.azure.com/). De volgende weer gave is afkomstig uit het deel venster **gegevens sets** onder **assets**. Selecteer de gegevensset en selecteer vervolgens het tabblad **modellen** voor een lijst van de modellen die zijn geregistreerd bij de gegevensset. 
 
 ![Modellen van invoer gegevens sets](./media/how-to-version-track-datasets/dataset-models.png)
 

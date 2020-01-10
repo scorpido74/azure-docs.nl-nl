@@ -3,12 +3,12 @@ title: Naslaginformatie over App-instellingen voor Azure Functions
 description: Referentiedocumentatie voor de Azure Functions-app-instellingen of omgevingsvariabelen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 1c7f5f9f8f6f198c5fe74baa613306732fa9b55b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 4de6f093e43bbb8b3e258c3dd2a71f728beb7287
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977264"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769537"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Naslaginformatie over App-instellingen voor Azure Functions
 
@@ -109,6 +109,19 @@ De versie van de Functions-runtime voor gebruik in deze functie-app. Een tilde m
 |---|------------|
 |FUNCTIES\_EXTENSIE\_VERSIE|~ 2|
 
+## <a name="functions_v2_compatibility_mode"></a>FUNCTIES\_v2\_compatibiliteit\_modus
+
+Met deze instelling kan de functie-app worden uitgevoerd in een modus die compatibel is met versie 2. x in de runtime van versie 3. x. Gebruik deze instelling alleen als er problemen optreden bij [het upgraden van de functie-app van versie 2. x naar 3. x van de runtime](functions-versions.md#migrating-from-2x-to-3x). 
+
+>[!IMPORTANT]
+> Deze instelling is alleen bedoeld als tijdelijke oplossing wanneer u uw app bijwerkt zodat deze correct wordt uitgevoerd op versie 3. x. Deze instelling wordt ondersteund zolang de [runtime 2. x wordt ondersteund](functions-versions.md). Als u problemen ondervindt waardoor uw app niet kan worden uitgevoerd op versie 3. x zonder deze instelling te gebruiken, meldt u [uw probleem](https://github.com/Azure/azure-functions-host/issues/new?template=Bug_report.md).
+
+Hiervoor is vereist dat [functions\_EXTENSION\_versie](functions-app-settings.md#functions_extension_version) worden ingesteld op `~3`.
+
+|Sleutel|Voorbeeldwaarde|
+|---|------------|
+|FUNCTIES\_v2\_compatibiliteit\_modus|waar|
+
 ## <a name="functions_worker_process_count"></a>FUNCTIES\_werk\_proces\_aantal
 
 Hiermee geeft u het maximum aantal taal werk processen op, met een standaard waarde van `1`. De toegestane maximum waarde is `10`. Functie aanroepen worden gelijkmatig verdeeld over werk processen van de taal. Werk processen in de taal worden elke tien seconden uitgevoerd tot het aantal dat is ingesteld door FUNCTIONs\_WORKer\_proces\_aantal is bereikt. Het gebruik van werk processen in meerdere talen is niet hetzelfde als het [schalen](functions-scale.md). U kunt deze instelling gebruiken als uw werk belasting een combi natie van aan CPU gebonden en I/O-gebonden aanroepen heeft. Deze instelling is van toepassing op alle non-.NET talen.
@@ -179,7 +192,7 @@ Standaard wordt Functions-proxy's gebruikmaken van een snelkoppeling naar de API
 |Sleutel|Waarde|Beschrijving|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|waar|Aanroepen met een back-end-URL die verwijst naar een functie in de lokale functie-app worden niet meer rechtstreeks naar de functie verzonden en worden in plaats daarvan teruggestuurd naar de HTTP-front-end voor de functie-app|
-|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|onwaar|Dit is de standaardwaarde. Aanroepen met een back-end-url die verwijst naar een functie van de lokale functie-App wordt rechtstreeks naar deze functie worden doorgestuurd|
+|AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL|false|Dit is de standaardwaarde. Aanroepen met een back-end-URL die verwijst naar een functie in de lokale functie-app worden rechtstreeks naar die functie doorgestuurd|
 
 
 ## <a name="azure_function_proxy_backend_url_decode_slashes"></a>AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES
@@ -189,7 +202,7 @@ Deze instelling wordt bepaald of % 2F is gedecodeerd als slashes in de Routepara
 |Sleutel|Waarde|Beschrijving|
 |-|-|-|
 |AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|waar|Parameters voor route met gecodeerde slashes hebben ze ontsleuteld. `example.com/api%2ftest` wordt `example.com/api/test`|
-|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|onwaar|Dit is de standaardinstelling. Alle route parameters worden doorgegeven ongewijzigd|
+|AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES|false|Dit is de standaardinstelling. Alle route parameters worden doorgegeven ongewijzigd|
 
 ### <a name="example"></a>Voorbeeld
 
@@ -211,7 +224,7 @@ Hier volgt een voorbeeld van de proxies.json in een functie-app op de URL-myfunc
 |URL-decodering|Invoer|Uitvoer|
 |-|-|-|
 |waar|myFunction.com/test%2fapi|example.com/test/API
-|onwaar|myFunction.com/test%2fapi|example.com/test%2fapi|
+|false|myFunction.com/test%2fapi|example.com/test%2fapi|
 
 
 ## <a name="next-steps"></a>Volgende stappen

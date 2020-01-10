@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
-ms.openlocfilehash: c93198848058bad8c9af6903cc68253e71e2d668
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 14fe8780bb7919d942da186698275d5199f4586e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74996648"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770081"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -122,7 +122,7 @@ Gebruik Traffic Manager om verkeer te verdelen over meerdere toepassings gateway
 
 Ja, de SKU van Application Gateway v2 ondersteunt automatisch schalen. Zie voor meer informatie automatisch [schalen en zone-redundante Application Gateway](application-gateway-autoscaling-zone-redundant.md).
 
-### <a name="does-manual-scale-up-or-scale-down-cause-downtime"></a>Leidt hand matig omhoog of omlaag schalen tot uitval tijd?
+### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>Leidt hand matig of automatisch omhoog of omlaag schalen tot uitval tijd?
 
 Nee. Instanties worden gedistribueerd over upgrade domeinen en fout domeinen.
 
@@ -158,7 +158,7 @@ Zie door [de gebruiker gedefinieerde routes die worden ondersteund in het Applic
 
 ### <a name="what-are-the-limits-on-application-gateway-can-i-increase-these-limits"></a>Wat zijn de limieten voor Application Gateway? Kan ik deze limieten verhogen?
 
-Zie [Application Gateway limieten](../azure-subscription-service-limits.md#application-gateway-limits).
+Zie [Application Gateway limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#application-gateway-limits).
 
 ### <a name="can-i-simultaneously-use-application-gateway-for-both-external-and-internal-traffic"></a>Kan ik Application Gateway gelijktijdig gebruiken voor zowel extern als intern verkeer?
 
@@ -200,6 +200,9 @@ Nee.
 
 Ja. Voor meer informatie raadpleegt u [Azure-toepassing gateway en Web Application firewall van v1 naar v2](migrate-v1-v2.md).
 
+### <a name="does-application-gateway-support-ipv6"></a>Ondersteunt Application Gateway IPv6?
+
+Application Gateway v2 biedt momenteel geen ondersteuning voor IPv6. Het kan worden gebruikt in een dual stack VNet met alleen IPv4, maar het gateway-subnet moet alleen IPv4 zijn. Application Gateway v1 biedt geen ondersteuning voor dual stack-VNets. 
 
 ## <a name="configuration---ssl"></a>Configuratie-SSL
 
@@ -380,6 +383,30 @@ Ja. Als uw configuratie overeenkomt met het volgende scenario, ziet u geen toege
 - U hebt Application Gateway v2 geïmplementeerd
 - U hebt een NSG op het toepassings gateway-subnet
 - U hebt NSG-stroom logboeken ingeschakeld op die NSG
+
+### <a name="how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address"></a>Application Gateway v2 met alleen het persoonlijke frontend-IP-adres Hoe kan ik gebruiken?
+
+Application Gateway v2 biedt momenteel geen ondersteuning voor de modus Private IP. Het ondersteunt de volgende combi Naties
+* Privé-IP en open bare IP
+* Alleen openbaar IP
+
+Maar als u Application Gateway v2 wilt gebruiken met alleen particulier IP-adres, kunt u het onderstaande proces volgen:
+1. Een Application Gateway maken met zowel het open bare als het persoonlijke frontend-IP-adres
+2. Maak geen listeners voor het open bare frontend-IP-adres. Application Gateway luistert niet naar verkeer op het open bare IP-adres als er geen listeners worden gemaakt.
+3. Maak en koppel een [netwerk beveiligings groep](https://docs.microsoft.com/azure/virtual-network/security-overview) voor het subnet Application Gateway met de volgende configuratie in volg orde van prioriteit:
+    
+    a. Sta verkeer toe van de bron als **GatewayManager** -service label en-bestemming als **een** doel poort van **65200-65535**. Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door verificatie via certificaat. Externe entiteiten, met inbegrip van de gebruikers beheerders van de gateway, kunnen geen wijzigingen op deze eind punten initiëren zonder dat de juiste certificaten aanwezig zijn
+    
+    b. Verkeer toestaan van bron als **AzureLoadBalancer** -service label en bestemming en doel poort
+    
+    c. Alle binnenkomend verkeer van de bron als de code van de **Internet** -service en de doel-en doel poort als **elk**te weigeren. Geef deze regel de *minste prioriteit* in de regels voor binnenkomende verbindingen
+    
+    d. Behoud de standaard regels zoals het toestaan van VirtualNetwork inkomend zodat de toegang op privé-IP-adres niet wordt geblokkeerd
+    
+    e. De uitgaande Internet verbinding kan niet worden geblokkeerd. Anders worden er problemen met logboek registratie, metrische gegevens, enzovoort.
+
+Voor beeld van NSG-configuratie voor alleen particuliere IP-toegang: ![Application Gateway v2 NSG configuratie alleen voor persoonlijke IP-toegang](./media/application-gateway-faq/appgw-privip-nsg.png)
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

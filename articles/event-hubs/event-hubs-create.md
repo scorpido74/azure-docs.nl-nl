@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/02/2019
 ms.author: shvija
-ms.openlocfilehash: a94e67af927365eda2b8b98240285e7cd3079a95
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 8b6a9978d6db1a8978f993abf16d7cfbfb2f44a9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688156"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771016"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Snelstart: Een event hub maken met behulp van Azure Portal
 Azure Event Hubs is een big data-platform voor het streamen van gegevens en een gebeurtenisopneemservice die miljoenen gebeurtenissen per seconde kan opnemen en verwerken. Event Hubs kan gebeurtenissen, gegevens of telemetrie die wordt geproduceerd door gedistribueerde software en apparaten, verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden getransformeerd en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie [Overzicht van Event Hubs](event-hubs-about.md) en [Functies van Event Hubs](event-hubs-features.md) voor een gedetailleerd overzicht van Event Hubs.
@@ -25,15 +25,15 @@ In deze snelstart maakt u een Event Hub met behulp van de [Azure-portal](https:/
 
 Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 
-- Azure-abonnement. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+- Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 - [Visual Studio 2019)](https://www.visualstudio.com/vs) of hoger.
-- [.NET Standard SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of hoger.
+- [.NET Standard SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of later.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
 Een resourcegroep is een logische verzameling Azure-resources. Alle resources worden geïmplementeerd en beheerd in een resourcegroep. Een resourcegroep maken:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Kik in het linkernavigatievenster op **Resourcegroepen**. Klik vervolgens op **Toevoegen**.
 
    ![Resourcegroepen - Knop Toevoegen](./media/event-hubs-quickstart-portal/resource-groups1.png)
@@ -60,7 +60,7 @@ Een Event Hubs-naamruimte biedt een unieke scopingcontainer, waarnaar wordt verw
 4. Voer op de pagina **Naamruimte maken** de volgende stappen uit:
     1. Voer een **naam** in voor de naam ruimte. In het systeem wordt onmiddellijk gecontroleerd of de naam beschikbaar is.
     2. Kies de **prijs categorie** (Basic of Standard).
-    3. U ziet dat de optie **Kafka inschakelen** automatisch is ingeschakeld. Azure Event Hubs biedt u een Kafka-eind punt. Met dit eind punt kan uw Event Hubs naam ruimte systeem eigen inzicht krijgen in [Apache Kafka](https://kafka.apache.org/intro) bericht protocol en api's. Met deze mogelijkheid kunt u met uw event hubs communiceren zoals u zou doen met Kafka-onderwerpen zonder uw protocol-clients te wijzigen of uw eigen clusters uit te voeren. Event Hubs ondersteunt [Apache Kafka versie 1,0](https://kafka.apache.org/10/documentation.html) en hoger.
+    3. U ziet dat de optie **Kafka inschakelen** automatisch is ingeschakeld. Azure Event Hubs biedt u een Kafka-eindpunt. Dit eindpunt kunt u uw Event Hubs-naamruimte te begrijpen systeemeigen [Apache Kafka](https://kafka.apache.org/intro) message protocol en API's. Met deze functie kunt u communiceren met uw eventhubs als u met Kafka-onderwerpen zonder te wijzigen van uw clients protocol of uitvoeren van uw eigen clusters. Biedt ondersteuning voor Eventhubs [Apache Kafka-versies 1.0](https://kafka.apache.org/10/documentation.html) en hoger.
     4. Selecteer het **abonnement** waarin u de naamruimte wilt maken.
     5. Selecteer een bestaande **resource groep** of maak een nieuwe resource groep. 
     4. Selecteer een **locatie** voor de naamruimte.
@@ -89,7 +89,7 @@ Ga als volgt te werk om een Event Hub in de naamruimte te maken:
 
     ![Event Hub gemaakt](./media/event-hubs-quickstart-portal/event-hub-created.png)
 
-Gefeliciteerd! U hebt de portal gebruikt om een ​​Event Hubs-naamruimte en een Event Hub binnen die naamruimte te maken. 
+Gefeliciteerd. U hebt de portal gebruikt om een ​​Event Hubs-naamruimte en een Event Hub binnen die naamruimte te maken. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -102,7 +102,7 @@ In dit artikel hebt u een resourcegroep, een Event Hubs-naamruimte en een Event 
 - [Node.js](event-hubs-node-get-started-send.md)
 - [Go](event-hubs-go-get-started-send.md)
 - [C (alleen verzenden)](event-hubs-c-getstarted-send.md)
-- [Apache Storm (alleen reecive)](event-hubs-storm-getstarted-receive.md)
+- [Apache Storm (alleen ontvangen)](event-hubs-storm-getstarted-receive.md)
 
 
 [Azure portal]: https://portal.azure.com/

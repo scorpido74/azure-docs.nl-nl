@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 10/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 16837ff53d7a87f6d6ac86643c7c8d16721e9470
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: b95c5511b2f64414fcf165a4346dbb06b1f02435
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660372"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833862"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-curl"></a>Snelstartgids: een model voor een formulier herkenning trainen en formulier gegevens extra heren met behulp van de REST API met krul
 
@@ -30,7 +30,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 Voor het volt ooien van deze Snelstartgids hebt u het volgende nodig:
 - Toegang tot de preview-versie van beperkte toegang van de formulier herkenning. Als u toegang wilt krijgen tot de preview, vult u het formulier voor de [toegangs aanvraag voor de formulier herkenning](https://aka.ms/FormRecognizerRequestAccess) in en verzendt u dit.
 - [krul](https://curl.haxx.se/windows/) geïnstalleerd.
-- Een set van ten minste vijf vormen van hetzelfde type. U gebruikt deze gegevens om het model te trainen. Uw formulieren kunnen uit verschillende bestands typen bestaan, maar moeten van hetzelfde type zijn als het document. U kunt een voor [beeld](https://go.microsoft.com/fwlink/?linkid=2090451) van een gegevensset voor deze Quick Start gebruiken. Upload de trainings bestanden naar de hoofdmap van een BLOB storage-container in een Azure Storage-account.
+- Een set van ten minste zes soorten van hetzelfde type. U gebruikt vijf van deze om het model te trainen en vervolgens test u het met het zesde formulier. Uw formulieren kunnen uit verschillende bestands typen bestaan, maar moeten van hetzelfde type zijn als het document. U kunt een voor [beeld](https://go.microsoft.com/fwlink/?linkid=2090451) van een gegevensset voor deze Quick Start gebruiken. Upload de trainings bestanden naar de hoofdmap van een BLOB storage-container in een Azure Storage-account. U kunt de test bestanden in een afzonderlijke map plaatsen.
 
 ## <a name="create-a-form-recognizer-resource"></a>Een resource voor een formulier herkenning maken
 
@@ -143,15 +143,14 @@ Vervolgens gebruikt u uw pas getrainde model voor het analyseren van een documen
 
 1. Vervang `<Endpoint>` door het eind punt dat u hebt verkregen op basis van de abonnements sleutel van uw formulier herkenning. U vindt deze op het tabblad **overzicht** van resource Recognizer.
 1. Vervang `<model ID>` door de model-ID die u in de vorige sectie hebt ontvangen.
-1. Vervang `<path to your form>` door het bestandspad van uw formulier (bijvoorbeeld C:\temp\file.PDF). Dit kan ook een URL naar een extern bestand zijn. Voor deze Quick Start kunt u de bestanden in de map **test** van de [set met voorbeeld gegevens](https://go.microsoft.com/fwlink/?linkid=2090451)gebruiken.
-1. Vervang `<file type>` door het bestands type. Ondersteunde typen: `application/pdf`, `image/jpeg`, `image/png`, `image/tiff`.
+1. Vervang `<SAS URL>` door een SAS-URL naar uw bestand in azure Storage. Volg de stappen in de sectie training, maar in plaats van een SAS-URL voor de hele BLOB-container op te halen, haalt u er een op voor het specifieke bestand dat u wilt analyseren.
 1. Vervang `<subscription key>` door uw abonnementssleutel.
 
 ```bash
-curl -X POST "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyze" -H "Content-Type: multipart/form-data" -F "form=@\"<path to your form>\";type=<file type>" -H "Ocp-Apim-Subscription-Key: <subscription key>"
+curl -v "https://<Endpoint>/formrecognizer/v2.0-preview/custom/models/<model ID>/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" -d "{ \"source\": \""<SAS URL>"\" } "
 ```
 
-U ontvangt een `202 (Success)` antwoord met een **bewerkings locatie-** header. De waarde van deze header is een ID die u gebruikt om de resultaten van de analyse bewerking bij te houden. Sla deze ID op voor de volgende stap.
+U ontvangt een `202 (Success)` antwoord met een **bewerkings locatie-** header. De waarde van deze header bevat een resultaten-ID die u gebruikt om de resultaten van de analyse bewerking bij te houden. Sla deze resultaat-ID op voor de volgende stap.
 
 ## <a name="get-the-analyze-results"></a>De resultaten analyseren
 

@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: d783751137510febf9fb2e31d9d44728a049d88d
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: d8f0f6c63c584cacfa5c996bd541ce4dfc4bd289
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75611813"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75763926"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>Een bestaand model gebruiken met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Als u een machine learning model hebt dat is getraind buiten Azure Machine Learn
 >
 > Zie [machine learning modellen beheren, implementeren en controleren](concept-model-management-and-deployment.md)voor meer informatie over de concepten en termen die hier worden gebruikt.
 >
-> Zie [modellen implementeren met Azure machine learning](service/how-to-deploy-and-where.md)voor algemene informatie over het implementatie proces.
+> Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor algemene informatie over het implementatie proces.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -138,7 +138,7 @@ dependencies:
     - keras
 ```
 
-Zie [modellen implementeren met Azure machine learning](service/how-to-deploy-and-where.md)voor meer informatie over het afnemen van de configuratie.
+Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over het afnemen van de configuratie.
 
 ### <a name="entry-script"></a>Invoer script
 
@@ -223,7 +223,7 @@ def predict(text, include_neutral=True):
        "elapsed_time": time.time()-start_at}  
 ```
 
-Zie [modellen implementeren met Azure machine learning](service/how-to-deploy-and-where.md)voor meer informatie over invoer scripts.
+Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over invoer scripts.
 
 ## <a name="define-deployment"></a>Implementatie definiëren
 
@@ -250,7 +250,7 @@ De CLI laadt de implementatie configuratie van een YAML-bestand:
 }
 ```
 
-Implementatie op een ander reken doel, zoals de Azure Kubernetes-service in de Azure-Cloud, is net zo eenvoudig als het wijzigen van de implementatie configuratie. Zie [hoe en waar modellen worden geïmplementeerd](service/how-to-deploy-and-where.md)voor meer informatie.
+Implementatie op een ander reken doel, zoals de Azure Kubernetes-service in de Azure-Cloud, is net zo eenvoudig als het wijzigen van de implementatie configuratie. Zie [hoe en waar modellen worden geïmplementeerd](how-to-deploy-and-where.md)voor meer informatie.
 
 ## <a name="deploy-the-model"></a>Het model implementeren
 
@@ -277,7 +277,7 @@ az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc de
 
 Zie voor meer informatie de referentie [AZ ml model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) .
 
-Zie [hoe en wanneer u modellen implementeert](service/how-to-deploy-and-where.md)voor meer informatie over de implementatie.
+Zie [hoe en wanneer u modellen implementeert](how-to-deploy-and-where.md)voor meer informatie over de implementatie.
 
 ## <a name="request-response-consumption"></a>Aanvraag-antwoord verbruik
 
@@ -304,5 +304,5 @@ Zie [een client maken](how-to-consume-web-service.md)voor meer informatie over h
 
 * [Uw Azure Machine Learning modellen bewaken met Application Insights](how-to-enable-app-insights.md)
 * [Gegevens verzamelen voor modellen in productie](how-to-enable-data-collection.md)
-* [Hoe en waar modellen moeten worden geïmplementeerd](service/how-to-deploy-and-where.md)
+* [Hoe en waar modellen moeten worden geïmplementeerd](how-to-deploy-and-where.md)
 * [Een client voor een geïmplementeerd model maken](how-to-consume-web-service.md)

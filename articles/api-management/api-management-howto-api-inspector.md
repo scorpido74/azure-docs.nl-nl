@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: b646c64b0ec45a11f99350ff5bd81a89418b2ecd
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: fc5e8c7a7aa0d4693d96c3405ec0e180a6d13f8e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70072514"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768521"
 ---
 # <a name="debug-your-apis-using-request-tracing"></a>Fouten opsporen in uw API's met behulp van de tracering van aanvragen
 
@@ -33,9 +33,9 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Informatie over de [terminologie van Azure API Management](api-management-terminology.md).
-+ Voltooi de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
-+ Voltooi ook de volgende zelfstudie: [Uw eerste API importeren en publiceren](import-and-publish.md).
++ Leer de [terminologie van Azure API Management](api-management-terminology.md).
++ Lees de volgende snelstartgids: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md).
++ Voltooi tevens de volgende zelfstudie: [Uw eerste API importeren en publiceren](import-and-publish.md).
 
 ## <a name="trace-a-call"></a>Een aanroep traceren
 
@@ -47,10 +47,12 @@ In deze zelfstudie leert u het volgende:
 4. Selecteer de bewerking **GetSpeakers**.
 5. Zorg ervoor dat u een HTTP-header opneemt met de naam **Ocp-Apim-Trace** met de waarde ingesteld op **true**.
 
-    > [!NOTE]
-    > Als de Ocp-Apim-Subscription-Key niet automatisch wordt ingevuld, kunt u deze ophalen door naar het Ontwikkelaarsportal te gaan en de sleutels op de profielpagina weer te geven.
+   > [!NOTE]
+   > * Als de Ocp-Apim-Subscription-Key niet automatisch wordt ingevuld, kunt u deze ophalen door naar het Ontwikkelaarsportal te gaan en de sleutels op de profielpagina weer te geven.
+   > * Als u een tracering wilt ophalen wanneer de APIM-traceer-HTTP-header wordt gebruikt, moet de instelling **tracering toestaan** voor de abonnements sleutel worden ingeschakeld. Als u de instelling **tracering toestaan** wilt configureren, selecteert u onder **API Management** in het linkermenu **abonnementen**.
+   >   ![tracering toestaan in het deel venster API Management abonnementen](media/api-management-howto-api-inspector/allowtracing.png)
 
-6. Klik op **Verzenden** om een API-aanroep te maken. 
+6. Klik op **verzenden** om een API-aanroep te maken. 
 7. Wacht totdat de aanroep voltooid is. 
 8. Ga naar het tabblad **Traceren** in de **API-console**. U kunt klikken op een van de volgende koppelingen naar gedetailleerde traceringsinformatie: **inkomende**, **back-end**, **uitgaande**.
 
@@ -65,7 +67,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een aanroep traceren

@@ -1,18 +1,18 @@
 ---
 title: Gegevens opnemen van IoT Hub in azure Data Explorer
 description: In dit artikel leert u hoe u gegevens kunt opnemen in azure Data Explorer van IoT Hub.
-author: oflipman
-ms.author: oflipman
-ms.reviewer: orspodek
+author: orspod
+ms.author: orspodek
+ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 08/27/2019
-ms.openlocfilehash: cbad0e5409dfaa25eda040e3c7409b49728a4169
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.date: 01/08/2020
+ms.openlocfilehash: 1052ef799949550ddaf492b8aa5b77ab9526d092
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667412"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780280"
 ---
 # <a name="ingest-data-from-iot-hub-into-azure-data-explorer-preview"></a>Gegevens opnemen van IoT Hub in azure Data Explorer (preview-versie)
 
@@ -104,6 +104,8 @@ U kunt nu verbinding maken met de IoT Hub vanuit Azure Data Explorer. Wanneer de
     > * Selecteer **mijn gegevens bevat routerings informatie** voor het gebruik van dynamische route ring, waarbij uw gegevens de benodigde routerings informatie bevatten, zoals wordt weer gegeven in de opmerkingen van de voor [beeld-app](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) . Als zowel statische als dynamische eigenschappen zijn ingesteld, worden de dynamische eigenschappen overschreven. 
     > * Alleen gebeurtenissen in de wachtrij na het maken van de gegevens verbinding worden opgenomen.
 
+[!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
+
 ## <a name="generate-sample-data-for-testing"></a>Voorbeeld gegevens voor testen genereren
 
 De toepassing voor het gesimuleerde apparaat maakt verbinding met een apparaatspecifiek eindpunt op uw IoT-hub en verstuurt gesimuleerde telemetrie over temperatuur en luchtvochtigheid.
@@ -167,7 +169,7 @@ Als u niet van plan bent om uw IoT Hub opnieuw te gebruiken, schoont u **test-hu
 
 1. Selecteer in Azure Portal **Resourcegroepen** aan de linkerkant en selecteer vervolgens de resourcegroep die u hebt gemaakt.  
 
-    Als het menu links is samengevouwen, selecteert u ![Knop Uitvouwen](media/ingest-data-event-hub/expand.png) om het menu uit te vouwen.
+    Wanneer het menu links is samengevouwen, klikt u op ![Knop Uitvouwen](media/ingest-data-event-hub/expand.png) om het menu uit te vouwen.
 
    ![Resourcegroep selecteren die moet worden verwijderd](media/ingest-data-event-hub/delete-resources-select.png)
 

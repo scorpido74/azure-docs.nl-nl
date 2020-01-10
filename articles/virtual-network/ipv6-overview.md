@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 12/19/2019
 ms.author: kumud
-ms.openlocfilehash: a44f99b5a7f25a7350e6a63cf85c6b2287647162
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 9214886f468a4a052328a99289845361a059b650
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75373244"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780076"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network-preview"></a>Wat is IPv6 voor Azure Virtual Network? (Preview)
 
@@ -75,7 +75,7 @@ IPv6 voor Azure VNET is een basis functieset waarmee klanten dual stack-toepassi
 ## <a name="limitations"></a>Beperkingen
 De huidige virtuele netwerk versie van IPv6 voor Azure heeft de volgende beperkingen:
 - IPv6 voor het virtuele netwerk van Azure (preview) is beschikbaar in alle wereld wijde Azure-regio's, maar alleen in het wereld wijde Azure-nog niet in overheids Clouds.
-- Express route-en VPN-gateways kunnen niet worden gebruikt in een VNET waarbij IPv6 is ingeschakeld, hetzij rechtstreeks of gelijkwaardig met ' UseRemoteGateway '. 
+- ExpressRoute en VPN-gateways kunnen niet worden gebruikt in een VNET waarbij IPv6 is ingeschakeld, hetzij rechtstreeks of gelijkwaardig met ' UseRemoteGateway '. 
 - Het Azure-platform (AKS, enzovoort) biedt geen ondersteuning voor IPv6-communicatie voor containers.  
 
 ## <a name="pricing"></a>Prijzen

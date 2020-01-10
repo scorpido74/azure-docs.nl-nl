@@ -1,5 +1,5 @@
 ---
-title: Dynamische verpakking in Media Services
+title: Dynamische verpakking in Azure Media Services v3
 titleSuffix: Azure Media Services
 description: Dit artikel geeft een overzicht van dynamische pakketten in Azure Media Services.
 author: Juliako
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/17/2019
 ms.author: juliako
-ms.openlocfilehash: c12ebe307eb370e07b785b4379f82a4274964492
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 05a515d5f74569ff8d0fa8aec68eb681dc79d2fc
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977757"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779600"
 ---
-# <a name="dynamic-packaging-in-media-services"></a>Dynamische verpakking in Media Services
+# <a name="dynamic-packaging-in-media-services-v3"></a>Dynamische verpakking in Media Services v3
 
 Microsoft Azure Media Services kunnen worden gebruikt voor het coderen van veel media bron bestands indelingen. Deze service wordt geleverd via verschillende streaming protocollen, met of zonder inhouds beveiliging, om alle grote apparaten te bereiken (zoals iOS-en Android-apparaten). Deze clients begrijpen verschillende protocollen. IOS vereist bijvoorbeeld dat stromen worden geleverd in HTTP Live Streaming-indeling (HLS) en Android-apparaten ondersteuning bieden voor HLS en MPEG DASH.
 

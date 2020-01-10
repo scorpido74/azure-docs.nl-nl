@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: e77bf5226a216c04beae86a23f1c08303d56db94
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f10de425bf83720b06f3ea7772343edfefc8d952
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536549"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834831"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Train met gegevens sets in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -188,11 +188,12 @@ y_test = load_data(y_test, True).reshape(-1)
 
 ## <a name="notebook-examples"></a>Voor beelden van notebooks
 
-De [notitie blokken](https://aka.ms/dataset-tutorial) van de gegevensset tonen en uitvouwen op concepten in dit artikel. 
+De [notitie blokken](https://aka.ms/dataset-tutorial) van de gegevensset tonen en uitvouwen op concepten in dit artikel.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Machine learning modellen automatisch trainen](how-to-auto-train-remote.md) met TabularDatasets.
+* [Machine learning modellen automatisch trainen](how-to-auto-train-remote.md) met TabularDatasets
 
-* [Train afbeeldings classificatie modellen](https://aka.ms/filedataset-samplenotebook) met FileDatasets.
+* [Classificatie modellen voor installatie kopieën trainen](https://aka.ms/filedataset-samplenotebook) met FileDatasets
 
+* [Omgevingen maken en beheren voor training en implementatie](how-to-use-environments.md)

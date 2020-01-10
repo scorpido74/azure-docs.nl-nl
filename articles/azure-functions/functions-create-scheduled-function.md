@@ -5,12 +5,12 @@ ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 8e89c3923daab15793707ff99dbbed6deeb6a0b0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 808f0f81f937da688a8873e5f6ee959976e9d6aa
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227175"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769282"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Maak een functie in Azure die wordt geactiveerd door een timer
 
@@ -20,7 +20,7 @@ Meer informatie over het gebruik van Azure Functions om een functie zonder [Serv
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Vereisten om deze zelfstudie te voltooien:
 
 + Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -42,7 +42,7 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 2. Kies **Meer sjablonen** en vervolgens **Voltooien en sjablonen weergeven**.
 
-    ![De Quick Start-pagina 'Meer sjablonen kiezen' van Functions](./media/functions-create-scheduled-function/add-first-function.png)
+    ![De Quick Start-pagina ‘Meer sjablonen kiezen’ van Functions](./media/functions-create-scheduled-function/add-first-function.png)
 
 3. Typ `timer` in het zoekveld en configureer de nieuwe trigger met de instellingen zoals opgegeven in de tabel onder de afbeelding.
 
@@ -53,7 +53,7 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
     | **Naam** | Standaard | Bepaalt de naam van de door de timer geactiveerde functie. |
     | **Planning** | 0 \*/1 \* \* \* \* | Een [CRON-expressie](functions-bindings-timer.md#ncrontab-expressions) met zes velden aan de hand waarvan uw functie elke minuut wordt uitgevoerd. |
 
-4. Klik op **Maken**. Er wordt een functie gemaakt in uw gekozen taal en deze wordt elke minuut uitgevoerd.
+4. Klik op **Maken**. Er wordt een functie gemaakt in de taal die elke minuut wordt uitgevoerd, op de minuut.
 
 5. Controleer of dit correct wordt uitgevoerd door de traceringsinformatie die naar logboeken wordt geschreven te bekijken.
 
@@ -69,7 +69,7 @@ U kunt het schema van de functie nu wijzigen zodat deze één keer per uur wordt
 
 ![Het timerschema voor het bijwerken van functies in Azure Portal.](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
 
-U hebt nu een functie die één keer per uur wordt uitgevoerd. 
+U hebt nu een functie die één keer per uur wordt uitgevoerd, op het uur.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

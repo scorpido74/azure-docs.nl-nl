@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a0697e151c50b9722fef908eeb2c7498503b8c0
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 09012d93a1f9fd24427cb8b3937b3a36cf75d9e4
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027375"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834172"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Een niet-beheerde Directory als beheerder overnemen in Azure Active Directory
 
@@ -56,7 +56,7 @@ Wanneer u de voor gaande stappen hebt voltooid, bent u nu de globale beheerder v
 
 ### <a name="adding-the-domain-name-to-a-managed-tenant-in-azure-ad"></a>De domein naam toevoegen aan een beheerde Tenant in azure AD
 
-1. Open het [Microsoft 365-beheer centrum](https://admin.microsoft.com).
+1. Open het [Microsoft 365-beheercentrum](https://admin.microsoft.com).
 2. Selecteer **gebruikers** tabblad en maak een nieuw gebruikers account met een naam als *gebruiker\@fourthcoffeexyz.onmicrosoft.com* die geen gebruik maakt van de aangepaste domein naam. 
 3. Zorg ervoor dat het nieuwe gebruikers account globale beheerders rechten heeft voor de Azure AD-Tenant.
 4. Open het tabblad **domeinen** in het Microsoft 365-beheer centrum, selecteer de domein naam en selecteer **verwijderen**. 
@@ -130,40 +130,40 @@ cmdlet | Gebruik
 
 1. Maak verbinding met Azure AD met behulp van de referenties die zijn gebruikt om te reageren op de self-service aanbieding:
    ```powershell
-    Install-Module -Name MSOnline
-    $msolcred = get-credential
+   Install-Module -Name MSOnline
+   $msolcred = get-credential
     
-    connect-msolservice -credential $msolcred
+   connect-msolservice -credential $msolcred
    ```
 2. Een lijst met domeinen ophalen:
   
    ```powershell
-    Get-MsolDomain
+   Get-MsolDomain
    ```
 3. Voer de cmdlet Get-MsolDomainVerificationDns uit om een uitdaging te maken:
    ```powershell
-    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
-  
-    For example:
-  
-    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
+   Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
+   ```
+    Bijvoorbeeld:
+   ```
+   Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
 4. Kopieer de waarde (de uitdaging) die wordt geretourneerd met deze opdracht. Bijvoorbeeld:
    ```powershell
-    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
+   MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
 5. Maak in uw open bare DNS-naam ruimte een DNS TXT-record die de waarde bevat die u in de vorige stap hebt gekopieerd. De naam voor deze record is de naam van het bovenliggende domein, dus als u deze bron record maakt met behulp van de DNS-functie van Windows Server, laat u de record naam leeg en plakt u alleen de waarde in het tekstvak.
 6. Voer de cmdlet confirm-MsolDomain uit om de uitdaging te controleren:
   
    ```powershell
-    Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
+   Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
    Bijvoorbeeld:
   
    ```powershell
-    Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
+   Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force
    ```
 
 Bij een geslaagde poging keert u terug naar de prompt zonder fout.

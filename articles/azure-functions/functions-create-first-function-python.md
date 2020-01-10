@@ -4,12 +4,12 @@ description: Informatie over hoe u met de Azure Functions Core Tools en de Azure
 ms.date: 11/07/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 18ae1ed000ffe61ce1ea9ff5c18aae98a0ffae65
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3de8c42c59455cc326fa909bc520a94daac68706
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227193"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769333"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Quick Start: een HTTP-geactiveerde python-functie maken in azure
 
@@ -122,7 +122,7 @@ Voordat u uw app kunt implementeren, moet u enkele Azure-resources maken.
 
 ## <a name="create-a-function-app-in-azure"></a>Een functie-app maken in azure
 
-Een functie-app biedt een omgeving voor het uitvoeren van de functie code. U kunt er functies mee groeperen in een logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren en delen. 
+Een functie-app biedt een omgeving voor het uitvoeren van de functie code. Hiermee kunt u functies groeperen als logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren, schalen en delen.
 
 Voer de volgende opdracht uit. Vervang `<APP_NAME>` door een unieke naam voor de functie-app. Vervang `<STORAGE_NAME>` door de naam van het opslag account. De `<APP_NAME>` is ook het standaard DNS-domein voor de functie-app. Deze naam moet uniek zijn in alle apps in Azure.
 
@@ -144,10 +144,10 @@ U bent nu klaar om uw lokale functions-project te publiceren naar de functie-app
 Nadat u de functie-app in azure hebt gemaakt, kunt u de opdracht [func Azure functionapp Publish](functions-run-local.md#project-file-deployment) core tools gebruiken om uw project code te implementeren in Azure. Vervang `<APP_NAME>` in dit voor beeld door de naam van uw app.
 
 ```console
-func azure functionapp publish <APP_NAME> --build remote
+func azure functionapp publish <APP_NAME>
 ```
 
-Met de optie `--build remote` bouwt u uw python-project op afstand in azure van de bestanden in het implementatie pakket, dat wordt aanbevolen. 
+Uw python-project is op afstand in azure gebouwd op basis van de bestanden in het implementatie pakket. 
 
 U ziet uitvoer die vergelijkbaar is met het volgende bericht. Het is hier afgekapt, zodat u het kunt lezen:
 

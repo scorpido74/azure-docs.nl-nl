@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: f4410d9cab5677327d2950dfdc1a093140f31708
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 4855451136edfe86baaace48e2582fc7080a9b12
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71102282"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770370"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>Video's in bijna realtime analyseren
 
@@ -144,7 +144,7 @@ while (true)
 
 Om ervoor te zorgen dat uw app zo snel mogelijk op de juiste wijze kan worden uitgevoerd, is het systeem geïmplementeerd dat wordt beschreven in de vorige sectie. Het is bedoeld om flexibel genoeg te zijn om te voldoen aan veel scenario's, terwijl u ze eenvoudig kunt gebruiken. Als u toegang wilt krijgen tot de code, gaat u naar de voorbeeld pagina van de [analyse van video frames](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) op github.
 
-De bibliotheek bevat de `FrameGrabber` klasse, waarmee het eerder besproken productie systeem van de consument wordt geïmplementeerd om video frames van een webcam te verwerken. Gebruikers kunnen de exacte vorm van de API-aanroep opgeven en de klasse gebruikt gebeurtenissen om de aanroepende code te laten weten wanneer er een nieuw frame wordt verkregen of wanneer er een nieuw resultaat van de analyse beschikbaar is.
+De bibliotheek bevat de `FrameGrabber`-klasse, waarmee het eerder besproken productie systeem van de consument wordt geïmplementeerd om video frames van een webcam te verwerken. Gebruikers kunnen de exacte vorm van de API-aanroep opgeven en de klasse gebruikt gebeurtenissen om de aanroepende code te laten weten wanneer er een nieuw frame wordt verkregen of wanneer er een nieuw resultaat van de analyse beschikbaar is.
 
 Om enkele van de mogelijkheden te illustreren, hebben we twee voor beelden gegeven van apps die gebruikmaken van de-bibliotheek. 
 
@@ -164,7 +164,7 @@ namespace BasicConsoleSample
         const string ApiKey = "<your API key>";
         const string Endpoint = "https://<your API region>.api.cognitive.microsoft.com";
 
-        private static void Main(string[] args)
+        private static async Task Main(string[] args)
         {
             // Create grabber.
             FrameGrabber<DetectedFace[]> grabber = new FrameGrabber<DetectedFace[]>();
@@ -205,14 +205,14 @@ namespace BasicConsoleSample
             grabber.TriggerAnalysisOnInterval(TimeSpan.FromMilliseconds(3000));
 
             // Start running in the background.
-            grabber.StartProcessingCameraAsync().Wait();
+            await grabber.StartProcessingCameraAsync();
 
             // Wait for key press to stop.
             Console.WriteLine("Press any key to stop...");
             Console.ReadKey();
 
             // Stop, blocking until done.
-            grabber.StopProcessingAsync().Wait();
+            await grabber.StopProcessingAsync();
         }
     }
 }

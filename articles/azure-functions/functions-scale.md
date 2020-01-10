@@ -5,24 +5,24 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6b8f5708aa14b4cc7cffa62da055f92f8d99dee5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 2eba0c7ae546b5f5ab7525cc8c84e6b6de431085
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409108"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768913"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions schalen en hosten
 
-Wanneer u een functie-app in azure maakt, moet u een hosting abonnement kiezen voor uw app. Er zijn drie hosting plannen beschikbaar voor Azure Functions: [verbruiks abonnement](#consumption-plan), [Premium-abonnement](#premium-plan)en [app service plan](#app-service-plan).
+Wanneer u een functie-app in azure maakt, moet u een hosting abonnement kiezen voor uw app. Er zijn drie hosting plannen beschikbaar voor Azure Functions: [verbruiks abonnement](#consumption-plan), [Premium plan](#premium-plan)en [toegewezen (app service)-abonnement](#app-service-plan).
 
 Het hosting abonnement dat u kiest, bepaalt het volgende gedrag:
 
 * Hoe de functie-app wordt geschaald.
 * De bronnen die beschikbaar zijn voor elk exemplaar van de functie-app.
-* Ondersteuning voor geavanceerde functies, zoals VNET-connectiviteit.
+* Ondersteuning voor geavanceerde functies, zoals Azure Virtual Network-connectiviteit.
 
-Zowel verbruik als Premium-abonnementen voegen automatisch reken kracht toe wanneer uw code wordt uitgevoerd. Uw app wordt uitgeschaald wanneer deze nodig is voor het verwerken van de belasting en wordt omlaag geschaald wanneer de uitvoering van de code wordt gestopt. Voor het verbruiks abonnement hoeft u ook niet vooraf te betalen voor niet-actieve Vm's of reserve ring van capaciteit.  
+Zowel verbruik als Premium-abonnementen voegen automatisch reken kracht toe wanneer uw code wordt uitgevoerd. Uw app wordt uitgeschaald wanneer dit nodig is om de belasting te verwerken, en geschaald wanneer de uitvoering van de code wordt gestopt. Voor het verbruiks abonnement hoeft u ook niet vooraf te betalen voor niet-actieve Vm's of reserve ring van capaciteit.  
 
 Premium-abonnement biedt extra functies, zoals Premium Compute-instanties, waarmee instanties voor onbepaalde tijd en VNet-connectiviteit kunnen worden bewaard.
 
@@ -33,7 +33,7 @@ Met App Service plan kunt u profiteren van de toegewezen infra structuur, die u 
 Functie ondersteuning valt in de volgende twee categorieën:
 
 * _Algemeen beschikbaar (ga)_ : volledig ondersteund en goedgekeurd voor productie gebruik.
-* _Preview_: nog niet volledig ondersteund en goedgekeurd voor productie gebruik.
+* _Preview_: nog niet volledig ondersteund of goedgekeurd voor productie gebruik.
 
 In de volgende tabel wordt het huidige ondersteunings niveau voor de drie hosting plannen aangegeven, wanneer dit wordt uitgevoerd op Windows of Linux:
 
@@ -78,7 +78,7 @@ Bekijk het Azure Functions Premium-abonnement in de volgende situaties:
 * U hebt een groot aantal kleine uitvoeringen en beschikt over een hoog uitvoerings bedrag, maar een laag van minder dan een tweede factuur in het verbruiks abonnement.
 * U hebt meer CPU-of geheugen opties nodig dan in het verbruiks abonnement is opgenomen.
 * De code moet langer worden uitgevoerd dan de [Maxi maal toegestane uitvoerings tijd](#timeout) voor het verbruiks abonnement.
-* U hebt functies nodig die alleen beschikbaar zijn in een Premium-abonnement, zoals VNET/VPN-verbindingen.
+* U hebt functies nodig die alleen beschikbaar zijn in een Premium-abonnement, zoals verbinding met het virtuele netwerk.
 
 Wanneer u Java script-functies uitvoert op een Premium-abonnement, kiest u een instantie met minder Vcpu's. Zie voor meer informatie het [kiezen van single-core Premium-abonnementen](functions-reference-node.md#considerations-for-javascript-functions).  
 

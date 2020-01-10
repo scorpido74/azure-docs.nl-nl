@@ -11,12 +11,12 @@ ms.date: 08/22/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 8aedb57f6fee68c4d11a123033d34bb58314eb8f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 355bd75f865e821fa19fba0715cf5eca90a9a2d3
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367617"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75829558"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webaanmelding met OpenID Connect Connect in Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ OpenID Connect Connect is een verificatie protocol dat is gebouwd op OAuth 2,0 e
 
 [OpenID Connect Connect](https://openid.net/specs/openid-connect-core-1_0.html) breidt het OAuth 2,0- *autorisatie* protocol uit voor gebruik als *verificatie* protocol. Met dit verificatie protocol kunt u eenmalige aanmelding uitvoeren. Hierin wordt het concept van een *id-token*geïntroduceerd, waarmee de client de identiteit van de gebruiker kan verifiëren en basis profiel informatie over de gebruiker kan verkrijgen.
 
-Omdat het OAuth 2,0 uitbreidt, kunnen toepassingen ook veilig *toegangs tokens*verkrijgen. U kunt toegangs tokens gebruiken om toegang te krijgen tot bronnen die worden beveiligd door een [autorisatie server](active-directory-b2c-reference-protocols.md). OpenID Connect Connect wordt aanbevolen als u een webtoepassing bouwt die wordt gehost op een server en toegankelijk is via een browser. Als u identiteits beheer wilt toevoegen aan uw mobiele of desktop toepassingen met behulp van Azure AD B2C, moet u [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) gebruiken in plaats van OpenID Connect Connect. Zie het [overzicht van tokens in azure Active Directory B2C](active-directory-b2c-reference-tokens.md) voor meer informatie over tokens.
+Omdat het OAuth 2,0 uitbreidt, kunnen toepassingen ook veilig *toegangs tokens*verkrijgen. U kunt toegangs tokens gebruiken om toegang te krijgen tot bronnen die worden beveiligd door een [autorisatie server](active-directory-b2c-reference-protocols.md). OpenID Connect Connect wordt aanbevolen als u een webtoepassing bouwt die wordt gehost op een server en toegankelijk is via een browser. Zie het [overzicht van tokens in azure Active Directory B2C](active-directory-b2c-reference-tokens.md) voor meer informatie over tokens.
 
 Azure AD B2C breidt het Standard OpenID Connect Connect-protocol uit voor meer dan eenvoudige verificatie en autorisatie. Hiermee wordt de [para meter User flow](active-directory-b2c-reference-policies.md)geïntroduceerd, waarmee u OpenID Connect Connect kunt gebruiken om gebruikers ervaringen toe te voegen aan uw toepassing, zoals aanmelden, aanmelden en Profiel beheer.
 

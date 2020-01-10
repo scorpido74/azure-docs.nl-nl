@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/22/2019
-ms.openlocfilehash: 4ec542609d8984d1d03c326854590c834840b33f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/09/2020
+ms.openlocfilehash: 9ba4fe318db86760e0dbc326730d03ad09203a88
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75363367"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834208"
 ---
 # <a name="manage-log-analytics-workspace-using-azure-resource-manager-templates"></a>Log Analytics-werk ruimte beheren met Azure Resource Manager sjablonen
 
@@ -20,7 +20,7 @@ ms.locfileid: "75363367"
 
 U kunt [Azure Resource Manager sjablonen](../../azure-resource-manager/templates/template-syntax.md) gebruiken om log Analytics-werk ruimten in azure monitor te maken en te configureren. Voor beelden van de taken die u kunt uitvoeren met sjablonen zijn:
 
-* Een werk ruimte maken, inclusief het instellen van de prijs categorie 
+* Een werk ruimte maken, inclusief het instellen van de prijs categorie en capaciteits reservering
 * Een oplossing toevoegen
 * Opgeslagen Zoek opdrachten maken
 * Een computergroep maken
@@ -47,7 +47,19 @@ De volgende tabel geeft een overzicht van de API-versie voor de resources die in
 
 ## <a name="create-a-log-analytics-workspace"></a>Een Log Analytics-werkruimte maken
 
-In het volgende voor beeld wordt een werk ruimte gemaakt op basis van een sjabloon van uw lokale computer. De JSON-sjabloon is zo geconfigureerd dat alleen de naam en locatie van de nieuwe werk ruimte (met behulp van de standaard waarden voor de andere werkruimte parameters, zoals de prijs categorie en de retentie), zijn vereist.  
+In het volgende voor beeld wordt een werk ruimte gemaakt op basis van een sjabloon van uw lokale computer. De JSON-sjabloon is zo geconfigureerd dat alleen de naam en locatie van de nieuwe werk ruimte zijn vereist. Het gebruikt waarden die zijn opgegeven voor andere werkruimte parameters, zoals de [toegangs beheer modus](design-logs-deployment.md#access-control-mode), de prijs categorie, de retentie en het capaciteits reserverings niveau.
+
+Voor de capaciteits reservering definieert u een geselecteerde capaciteits reservering voor het opnemen van gegevens door het SKU-`CapacityReservation` op te geven en een waarde in GB voor de eigenschap `capacityReservationLevel`. De volgende lijst bevat de ondersteunde waarden en het gedrag bij het configureren ervan.
+
+- Zodra u de reserverings limiet hebt ingesteld, kunt u niet binnen 31 dagen overschakelen op een andere SKU.
+
+- Zodra u de reserverings waarde hebt ingesteld, kunt u deze alleen binnen 31 dagen verg Roten.
+
+- U kunt de waarde van `capacityReservationLevel` alleen instellen in veelvouden van 100, met een maximum waarde van 50000.
+
+- Als u het reserverings niveau verhoogt, wordt de timer opnieuw ingesteld en kunt u deze niet meer 31 dagen uit deze update wijzigen.  
+
+- Als u een andere eigenschap voor de werk ruimte wijzigt, maar de reserverings limiet op hetzelfde niveau behoudt, wordt de timer niet opnieuw ingesteld. 
 
 ### <a name="create-and-deploy-template"></a>Sjabloon maken en implementeren
 
@@ -64,6 +76,21 @@ In het volgende voor beeld wordt een werk ruimte gemaakt op basis van een sjablo
               "description": "Specifies the name of the workspace."
             }
         },
+      "pricingTier": {
+      "type": "string",
+      "allowedValues": [
+        "pergb2018",
+        "Free",
+        "Standalone",
+        "PerNode",
+        "Standard",
+        "Premium"
+      ],
+      "defaultValue": "pergb2018",
+      "metadata": {
+        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+           }
+       },
         "location": {
             "type": "String",
             "allowedValues": [
@@ -101,11 +128,18 @@ In het volgende voor beeld wordt een werk ruimte gemaakt op basis van een sjablo
         {
             "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2017-03-15-preview",
             "location": "[parameters('location')]",
             "properties": {
+                "sku": { 
+                    "name": "CapacityReservation",
+                    "capacityReservationLevel": 100
+                },
+                "retentionInDays": 120,
                 "features": {
-                    "searchVersion": 1
+                    "searchVersion": 1,
+                    "legacy": 0,
+                    "enableLogAccessUsingOnlyResourcePermissions": true
                 }
             }
           }
@@ -168,9 +202,9 @@ In het volgende sjabloon voorbeeld ziet u hoe u:
         "Standard",
         "Premium"
       ],
-      "defaultValue": "PerGB2018",
+      "defaultValue": "pergb2018",
       "metadata": {
-        "description": "Pricing tier: PerGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+        "description": "Pricing tier: pergb2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
       }
     },
     "dataRetention": {
@@ -257,7 +291,7 @@ In het volgende sjabloon voorbeeld ziet u hoe u:
   },
   "resources": [
     {
-      "apiVersion": "2015-11-01-preview",
+      "apiVersion": "2017-03-15-preview",
       "type": "Microsoft.OperationalInsights/workspaces",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
@@ -267,7 +301,9 @@ In het volgende sjabloon voorbeeld ziet u hoe u:
           "immediatePurgeDataOn30Days": "[parameters('immediatePurgeDataOn30Days')]"
         },
         "sku": {
-          "name": "[parameters('pricingTier')]"
+          "name": "[parameters('pricingTier')]",
+          "name": "CapacityReservation",
+          "capacityReservationLevel": 100
         }
       },
       "resources": [

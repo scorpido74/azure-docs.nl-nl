@@ -1,63 +1,59 @@
 ---
-title: MapReduce en PowerShell gebruiken met Apache Hadoop - Azure HDInsight
-description: Informatie over het gebruik van PowerShell op afstand MapReduce-taken uitvoeren met Apache Hadoop op HDInsight.
+title: MapReduce en Power shell gebruiken met Apache Hadoop-Azure HDInsight
+description: Meer informatie over hoe u Power shell kunt gebruiken om MapReduce-taken op afstand uit te voeren met Apache Hadoop op HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/09/2018
-ms.author: hrasheed
-ms.openlocfilehash: 2ba8ab07edc4fd036b82c97f0ae3fb565d5eed72
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: hdinsightactive
+ms.date: 01/08/2020
+ms.openlocfilehash: b3c1abb7bff54e3e2d294b073b867c6c0e06f482
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67078398"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830068"
 ---
-# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>MapReduce-taken uitvoeren met Apache Hadoop op HDInsight met behulp van PowerShell
+# <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>MapReduce-taken uitvoeren met Apache Hadoop op HDInsight met behulp van Power shell
 
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
 
-Dit document bevat een voorbeeld van het gebruik van Azure PowerShell een MapReduce-taak uitvoeren in een Hadoop op HDInsight-cluster.
+Dit document bevat een voor beeld van het gebruik van Azure PowerShell om een MapReduce-taak uit te voeren in een Hadoop in HDInsight-cluster.
 
-## <a id="prereq"></a>Vereisten
+## <a name="prerequisites"></a>Vereisten
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+* Een Apache Hadoop cluster in HDInsight. Zie [Apache Hadoop clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md).
 
-* **Een Azure HDInsight (Hadoop op HDInsight)-cluster**
+* De Power shell [AZ-module](https://docs.microsoft.com/powershell/azure/overview) is geïnstalleerd.
 
-* **Een werkstation met Azure PowerShell**.
+## <a name="run-a-mapreduce-job"></a>Een MapReduce-taak uitvoeren
 
-## <a id="powershell"></a>Voer een MapReduce-taak
+Azure PowerShell biedt *cmdlets* waarmee u op afstand MapReduce-taken kunt uitvoeren op HDInsight. Intern maakt Power shell REST-aanroepen naar [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (voorheen Templeton) die worden uitgevoerd op het HDInsight-cluster.
 
-Azure PowerShell biedt *cmdlets* waarmee u op afstand MapReduce-taken uitvoeren op HDInsight. Intern, kunt u PowerShell REST-aanroepen naar [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) (voorheen Templeton) uitgevoerd op het HDInsight-cluster.
+De volgende cmdlets worden gebruikt voor het uitvoeren van MapReduce-taken in een extern HDInsight-cluster.
 
-De volgende cmdlets worden gebruikt bij het uitvoeren van MapReduce-taken in een extern HDInsight-cluster.
+|Cmdlet | Beschrijving |
+|---|---|
+|Connect-AzAccount|Verifieert Azure PowerShell aan uw Azure-abonnement.|
+|New-AzHDInsightMapReduceJobDefinition|Hiermee wordt een nieuwe *taak definitie* gemaakt met behulp van de opgegeven MapReduce-gegevens.|
+|Start-AzHDInsightJob|De taak definitie wordt verzonden naar HDInsight en de taak wordt gestart. Er wordt een *taak* object geretourneerd.|
+|Wait-AzHDInsightJob|Gebruikt het taak object om de status van de taak te controleren. Er wordt gewacht tot de taak is voltooid of de wacht tijd is overschreden.|
+|Get-AzHDInsightJobOutput|Wordt gebruikt om de uitvoer van de taak op te halen.|
 
-* **Connect-AzAccount**: Azure PowerShell geverifieerd bij uw Azure-abonnement.
+De volgende stappen laten zien hoe u deze cmdlets kunt gebruiken om een taak uit te voeren in uw HDInsight-cluster.
 
-* **New-AzHDInsightMapReduceJobDefinition**: Maakt u een nieuwe *taak definitie* met behulp van de opgegeven MapReduce-informatie.
-
-* **Start-AzHDInsightJob**: De taakdefinitie verzendt naar HDInsight en wordt de taak wordt gestart. Een *taak* object wordt geretourneerd.
-
-* **Wait-AzHDInsightJob**: Maakt gebruik van het taakobject om de status van de taak te controleren. Wacht totdat de taak is voltooid of de wachttijd is overschreden.
-
-* **Get-AzHDInsightJobOutput**: Gebruikt voor het ophalen van de uitvoer van de taak.
-
-De volgende stappen laten zien hoe u deze cmdlets gebruikt voor het uitvoeren van een taak in uw HDInsight-cluster.
-
-1. Met behulp van een editor, slaat u de volgende code als **mapreducejob.ps1**.
+1. Gebruik een editor om de volgende code op te slaan als **mapreducejob. ps1**.
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-mapreduce/use-mapreduce.ps1?range=5-69)]
 
-2. Open een nieuw **Azure PowerShell** opdrachtprompt. Wijzig de mappen in de locatie van de **mapreducejob.ps1** bestand en gebruik vervolgens de volgende opdracht uit het script uit te voeren:
+2. Open een nieuwe **Azure PowerShell** opdracht prompt. Wijzig de mappen in de locatie van het bestand **mapreducejob. ps1** en gebruik vervolgens de volgende opdracht om het script uit te voeren:
 
         .\mapreducejob.ps1
 
-    Wanneer u het script uitvoert, wordt u gevraagd om de naam van het HDInsight-cluster en de aanmelding bij cluster. U kunt ook gevraagd om te verifiëren bij uw Azure-abonnement.
+    Wanneer u het script uitvoert, wordt u gevraagd de naam van het HDInsight-cluster en de cluster aanmelding op te vragen. U wordt mogelijk ook gevraagd om u aan te melden bij uw Azure-abonnement.
 
-3. Wanneer de taak is voltooid, ontvangt u uitvoer die vergelijkbaar is met de volgende tekst:
+3. Wanneer de taak is voltooid, ontvangt u uitvoer die er ongeveer als volgt uitziet:
 
         Cluster         : CLUSTERNAME
         ExitCode        : 0
@@ -72,20 +68,20 @@ De volgende stappen laten zien hoe u deze cmdlets gebruikt voor het uitvoeren va
     Deze uitvoer geeft aan dat de taak is voltooid.
 
     > [!NOTE]  
-    > Als de **ExitCode** is een waarde dan 0, Zie [probleemoplossing](#troubleshooting).
+    > Zie [probleem oplossing](#troubleshooting)als de **ExitCode** een andere waarde dan 0 heeft.
 
-    In dit voorbeeld slaat ook de gedownloade bestanden naar een **uitvoer.txt** bestand in de map met het script uit.
+    In dit voor beeld worden de gedownloade bestanden ook opgeslagen in een **uitvoer. txt** -bestand in de map waarin u het script uitvoert.
 
-### <a name="view-output"></a>Uitvoer weergeven
+### <a name="view-output"></a>Uitvoer weer geven
 
-Als u wilt zien van de woorden en aantallen die worden geproduceerd door de taak, opent u de **uitvoer.txt** bestand in een teksteditor.
+Als u de woorden en aantallen wilt zien die door de taak worden geproduceerd, opent u het bestand **output. txt** in een tekst editor.
 
 > [!NOTE]  
-> De uitvoerbestanden van een MapReduce-taak zijn onveranderd. Dus als u dit voorbeeld opnieuw uitvoeren, moet u de naam van het uitvoerbestand te wijzigen.
+> De uitvoer bestanden van een MapReduce-taak zijn onveranderbaar. Dus als u dit voor beeld opnieuw uitvoert, moet u de naam van het uitvoer bestand wijzigen.
 
-## <a id="troubleshooting"></a>Problemen oplossen
+## <a name="troubleshooting"></a>Problemen oplossen
 
-Als er geen gegevens worden geretourneerd als de taak is voltooid, kunt u fouten voor de taak weergeven. Toevoegen als foutinformatie voor deze taak, de volgende opdracht aan het einde van de **mapreducejob.ps1** bestand, opslaan en voer het vervolgens opnieuw uit.
+Als er geen informatie wordt geretourneerd wanneer de taak is voltooid, kunt u de fouten voor de taak weer geven. U kunt de fout gegevens voor deze taak weer geven door de volgende opdracht toe te voegen aan het einde van het bestand **mapreducejob. ps1** . Sla het bestand op en voer het script opnieuw uit.
 
 ```powershell
 # Print the output of the WordCount job.
@@ -97,19 +93,11 @@ Get-AzHDInsightJobOutput `
         -DisplayOutputType StandardError
 ```
 
-Deze cmdlet retourneert de informatie die is geschreven naar STDERR terwijl de taak wordt uitgevoerd.
+Met deze cmdlet wordt de informatie geretourneerd die naar STDERR is geschreven terwijl de taak wordt uitgevoerd.
 
-## <a id="summary"></a>Samenvatting
+## <a name="next-steps"></a>Volgende stappen
 
-Zoals u ziet, biedt Azure PowerShell een eenvoudige manier MapReduce-taken uitvoeren op een HDInsight-cluster, het bewaken van de taak de status en het ophalen van de uitvoer.
+Zoals u kunt zien, biedt Azure PowerShell een eenvoudige manier om MapReduce-taken uit te voeren op een HDInsight-cluster, de taak status te controleren en de uitvoer op te halen. Voor informatie over andere manieren om met Hadoop in HDInsight te werken:
 
-## <a id="nextsteps"></a>Volgende stappen
-
-Voor algemene informatie over MapReduce-taken in HDInsight:
-
-* [MapReduce gebruiken met HDInsight Hadoop](hdinsight-use-mapreduce.md)
-
-Voor meer informatie over andere manieren kunt u werken met Hadoop op HDInsight:
-
+* [MapReduce gebruiken in HDInsight Hadoop](hdinsight-use-mapreduce.md)
 * [Apache Hive gebruiken met Apache Hadoop op HDInsight](hdinsight-use-hive.md)
-* [Apache Pig gebruiken met Apache Hadoop op HDInsight](hdinsight-use-pig.md)

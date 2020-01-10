@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: diberry
-ms.openlocfilehash: 4ab1dcf4f3554c941107ec653f717b3680543da2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d20f81bf7db2e098f2bca674c5540bc067577f30
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490740"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833910"
 ---
 # <a name="configure-personalizer"></a>Personalizer configureren
 
@@ -23,9 +23,9 @@ Service configuratie bevat de manier waarop de service beloningen behandelt, hoe
 
 ## <a name="create-personalizer-resource"></a>Een persoonlijke resource maken
 
-Maak een persoonlijke resource voor elke feedback-lus. 
+Maak een persoonlijke resource voor elke feedback-lus.
 
-1. Meld u aan bij de [Azure-portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Met de vorige koppeling gaat u naar de pagina **maken** voor de personaler-service. 
+1. Meld u aan bij de [Azure-portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer). Met de vorige koppeling gaat u naar de pagina **maken** voor de personaler-service.
 1. Voer uw service naam in, selecteer een abonnement, locatie, prijs categorie en resource groep.
 1. Selecteer de bevestiging en selecteer **maken**.
 
@@ -34,7 +34,7 @@ Maak een persoonlijke resource voor elke feedback-lus.
 ## <a name="configure-service-in-the-azure-portal"></a>De service in de Azure Portal configureren
 
 1. Meld u aan bij de [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesPersonalizer).
-1. Zoek uw persoonlijke resource. 
+1. Zoek uw persoonlijke resource.
 1. Selecteer in de sectie **resource management** de optie **configuratie**.
 
     Kopieer voordat u de Azure Portal verlaat een van de bron sleutels van de pagina **sleutels** . U hebt dit nodig om de [personaler SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.personalizer)te gebruiken.
@@ -49,15 +49,15 @@ Configureer de service voor het gebruik van beloningen voor uw feedback-lus. Als
 
 |Waarde|Doel|
 |--|--|
-|wacht tijd op beloning|Hiermee stelt u de periode in waarin Personaler belonings waarden voor een classificatie oproep verzamelt, vanaf het moment dat de classificatie oproep plaatsvindt. Deze waarde wordt ingesteld door te vragen: ' hoe lang moet Personaler wachten op de aanroepen van beloningen? ' Elke beloning die wordt binnengekomen nadat dit venster wordt geregistreerd, wordt vastgelegd, maar niet voor Learning.|
+|Wacht tijd op beloning|Hiermee stelt u de periode in waarin Personaler belonings waarden voor een classificatie oproep verzamelt, vanaf het moment dat de classificatie oproep plaatsvindt. Deze waarde wordt ingesteld door te vragen: ' hoe lang moet Personaler wachten op de aanroepen van beloningen? ' Elke beloning die wordt binnengekomen nadat dit venster wordt geregistreerd, wordt vastgelegd, maar niet voor Learning.|
 |Standaard beloning|Als er geen belonings oproep wordt ontvangen door Personaler tijdens het venster belonings wachttijd dat is gekoppeld aan een rang nummer, zal Personaler de standaard beloning toewijzen. In de meeste scenario's is de standaard beloning standaard nul.|
 |Belonings aggregatie|Als er meerdere beloningen worden ontvangen voor dezelfde positie-API-aanroep, wordt deze samenvoegings methode gebruikt: **Sum** of **oudste**. De eerste keer kiest de eerste ontvangen Score en wordt de rest verwijderd. Dit is handig als u een unieke beloning wilt hebben tussen mogelijk dubbele aanroepen. |
 
 Nadat u deze waarden hebt gewijzigd, moet u **Opslaan**selecteren.
 
-### <a name="configure-exploration"></a>Verkennen configureren 
+### <a name="configure-exploration"></a>Verkennen configureren
 
-Personalisatie kan nieuwe patronen ontdekken en de wijzigingen van gebruikers gedrag in de loop van de tijd aanpassen door alternatieven te verkennen. De waarde voor **verkennen** bepaalt welk percentage van de positie aanroepen wordt beantwoord met verkennen. 
+Personalisatie kan nieuwe patronen ontdekken en de wijzigingen van gebruikers gedrag in de loop van de tijd aanpassen door alternatieven te verkennen. De waarde voor **verkennen** bepaalt welk percentage van de positie aanroepen wordt beantwoord met verkennen.
 
 Als u deze waarde wijzigt, wordt het huidige personalisatie model opnieuw ingesteld en wordt het opnieuw getraind met de laatste 2 dagen aan gegevens.
 
@@ -67,7 +67,7 @@ Nadat u deze waarde hebt gewijzigd, moet u **Opslaan**selecteren.
 
 ### <a name="model-update-frequency"></a>Frequentie van model updates
 
-Het meest recente model, dat is getraind vanuit belonings-API-aanroepen van elke actieve gebeurtenis, wordt niet automatisch gebruikt door de rang orde van Personaler. Met de frequentie van de **model updates** wordt ingesteld hoe vaak het model dat wordt gebruikt door de classificatie oproep up-to-date wordt bijgewerkt. 
+Het meest recente model, dat is getraind vanuit belonings-API-aanroepen van elke actieve gebeurtenis, wordt niet automatisch gebruikt door de rang orde van Personaler. Met de frequentie van de **model updates** wordt ingesteld hoe vaak het model dat wordt gebruikt door de classificatie oproep up-to-date wordt bijgewerkt.
 
 High model-update frequenties zijn nuttig voor situaties waarin u de wijzigingen in het gedrag van gebruikers nauw keurig wilt bijhouden. Voor beelden zijn onder andere sites die worden uitgevoerd op Live nieuws, virale inhoud of Live-product biedingen. In deze scenario's kunt u een frequentie van 15 minuten gebruiken. Voor de meeste gebruiks voorbeelden is een lagere update frequentie van kracht. Update frequenties van één minuut zijn handig bij het opsporen van fouten in de code van een toepassing met behulp van Personaler, het uitvoeren van demo's of het interactief testen van machine learning aspecten.
 
@@ -75,7 +75,7 @@ High model-update frequenties zijn nuttig voor situaties waarin u de wijzigingen
 
 Nadat u deze waarde hebt gewijzigd, moet u **Opslaan**selecteren.
 
-### <a name="data-retention"></a>Bewaartijd van gegevens
+### <a name="data-retention"></a>Gegevens bewaren
 
 **Gegevens retentie periode** instellen hoeveel dagen persoonlijke gegevens logboeken worden bewaard. Eerdere gegevens logboeken zijn vereist voor het uitvoeren van [offline-evaluaties](concepts-offline-evaluation.md), die worden gebruikt om de effectiviteit van personaler te meten en het trainings beleid te optimaliseren.
 
@@ -83,14 +83,9 @@ Nadat u deze waarde hebt gewijzigd, moet u **Opslaan**selecteren.
 
 ## <a name="export-the-personalizer-model"></a>Het Personalr model exporteren
 
-Bekijk in het gedeelte resource beheer voor **model-en leer instellingen**het maken van het model en de datum van de laatste update en exporteer het huidige model. U kunt de Azure Portal of de Personaler-Api's gebruiken voor het exporteren van een model bestand voor archiverings doeleinden. 
+Bekijk in het gedeelte resource beheer voor **model-en leer instellingen**het maken van het model en de datum van de laatste update en exporteer het huidige model. U kunt de Azure Portal of de Personaler-Api's gebruiken voor het exporteren van een model bestand voor archiverings doeleinden.
 
 ![Huidig Personal model exporteren](media/settings/export-current-personalizer-model.png)
-
-## <a name="import-and-export-learning-policy"></a>Leer beleid importeren en exporteren
-
-Importeer in het gedeelte resource beheer voor **model-en leer instellingen**een nieuw trainings beleid of Exporteer het huidige leer beleid.
-U kunt Learning-beleids bestanden van eerdere export aanvragen of de geoptimaliseerde beleids regels downloaden die zijn gedetecteerd tijdens offline-evaluaties. Het maken van hand matige wijzigingen in deze bestanden is van invloed op machine learning prestaties en nauw keurigheid van offline-evaluaties, en micro soft kan niet op de nauw keurigheid van machine learning en evaluaties of service-uitzonde ringen die het gevolg zijn van hand matig bewerkings beleid
 
 ## <a name="clear-data-for-your-learning-loop"></a>Gegevens voor uw leer proces wissen
 
@@ -105,9 +100,8 @@ U kunt Learning-beleids bestanden van eerdere export aanvragen of de geoptimalis
     |Stel het persoonlijke model opnieuw in.|Dit model wordt bij elke retraining gewijzigd. Deze frequentie van training is opgegeven bij **Upload model frequentie** op de **configuratie** pagina. |
     |Stel het trainings beleid in op standaard.|Als u het trainings beleid hebt gewijzigd als onderdeel van een offline-evaluatie, wordt dit opnieuw ingesteld op het oorspronkelijke leer beleid.|
 
-1. Selecteer **geselecteerde gegevens wissen** om het wissen te starten. De status wordt gerapporteerd in azure-meldingen in de rechter navigatie. 
+1. Selecteer **geselecteerde gegevens wissen** om het wissen te starten. De status wordt gerapporteerd in azure-meldingen in de rechter navigatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-
-[Meer informatie over de beschik baarheid van regio's](https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services)
+[Meer informatie over het beheren van een leer beleid](how-to-learning-policy.md)

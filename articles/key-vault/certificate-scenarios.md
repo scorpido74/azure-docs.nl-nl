@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 338619a13ec3f5fcd0d4fd62cf387f955c556a7c
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: b6a44bc31e21a63b12a0d06c537cc026ed77e386
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70879303"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832859"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Aan de slag met Key Vault-certificaten
 De volgende scenario's schetsen verschillende van de primaire gebruiks mogelijkheden van de certificaat beheer service van Key Vault, met inbegrip van de extra stappen voor het maken van uw eerste certificaat in uw sleutel kluis.
@@ -38,10 +38,10 @@ Certificaten bestaan uit drie gerelateerde resources die aan elkaar zijn gekoppe
 **Stap 1** -providers van certificerings instanties  
 -   Als IT-beheerder, PKI-beheerder of iedereen die accounts beheert met Ca's, voor een bepaald bedrijf (bijvoorbeeld Contoso) is een vereiste voor het gebruik van Key Vault-certificaten.  
     De volgende certificerings instanties zijn de huidige partner providers met Key Vault:  
-    -   DigiCert-Key Vault biedt OV SSL-certificaten met DigiCert.  
-    -   GlobalSign-Key Vault biedt OV SSL-certificaten met GlobalSign.  
+    -   DigiCert-Key Vault biedt OV TLS/SSL-certificaten met DigiCert.  
+    -   GlobalSign-Key Vault biedt OV TLS/SSL-certificaten met GlobalSign.  
 
-**Stap 2** : een account beheerder voor een CA-provider maakt referenties die moeten worden gebruikt door Key Vault om SSL-certificaten in te schrijven, te verlengen en te gebruiken via Key Vault.
+**Stap 2** : een account beheerder voor een CA-provider maakt referenties die moeten worden gebruikt door Key Vault om TLS/SSL-certificaten via Key Vault in te schrijven, te verlengen en te gebruiken.
 
 **Stap 3** : een Contoso-beheerder, samen met een contoso-werk nemer (Key Vault gebruiker) die eigenaar is van certificaten, kan, afhankelijk van de CA, een certificaat van de beheerder verkrijgen of rechtstreeks vanuit het account bij de ca.  
 
@@ -62,9 +62,9 @@ Opmerking: dit proces, tot en met stap 3,1, is een eenmalige-bewerking.
 
 **Stap 4** : de volgende beschrijvingen komen overeen met de stappen voor groen genummerd in het voor gaande diagram.  
   (1): in het bovenstaande diagram maakt uw toepassing een certificaat dat intern begint door een sleutel te maken in uw sleutel kluis.  
-  (2)-Key Vault een SSL-certificaat aanvraag naar de CA verzenden.  
-  (3): uw toepassings polls, in een lus en wacht proces, voor uw Key Vault voor het volt ooien van het certificaat. Het maken van het certificaat is voltooid wanneer Key Vault de reactie van de certificerings instantie met x509-certificaat ontvangt.  
-  (4): de CA reageert op de SSL-certificaat aanvraag van Key Vault met een x509 SSL-certificaat.  
+  (2)-Key Vault een TLS/SSL-certificaat aanvraag naar de CA verzendt.  
+  (3): uw toepassings polls, in een lus en wacht proces, voor uw Key Vault voor het volt ooien van het certificaat. Het maken van het certificaat is voltooid wanneer Key Vault de reactie van de certificeringsinstantie met x509-certificaat ontvangt.  
+  (4): de CA reageert op de TLS/SSL-certificaat aanvraag van Key Vault met een x509 TLS/SSL-certificaat.  
   (5): het maken van het nieuwe certificaat is voltooid met de fusie van het x509-certificaat voor de CA.  
 
   Key Vault gebruiker: maakt een certificaat door een beleid op te geven

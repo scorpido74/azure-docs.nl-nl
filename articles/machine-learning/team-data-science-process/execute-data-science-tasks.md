@@ -1,6 +1,6 @@
 ---
-title: Data science tasks uitvoeren-team data Science process
-description: Hoe een Data wetenschapper een Data Science-project kan uitvoeren in een trackable, gecontroleerde versie en op samenwerkings wijze.
+title: Uitvoeren van datatechnologietaken - Team Data Science Process
+description: Hoe een gegevenswetenschapper een data science-project kunt uitvoeren in een herleidbare versie beheerd en gezamenlijke manier.
 author: marktab
 manager: cgronlun
 editor: cgronlun
@@ -10,106 +10,106 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a6b463c4a1d0e640cc6c2a380ee978fcafa2877e
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 16fb47879daae6bfbf0929e842a3a6227d1524a9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73670344"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772275"
 ---
-# <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Data science tasks uitvoeren: verkennen, model leren en implementeren
+# <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Datatechnologietaken uitvoeren: gegevensonderzoek, modelleren en implementatie
 
-Typische data science tasks omvatten het verkennen, model leren en implementeren van gegevens. In dit artikel wordt uitgelegd hoe u de **AMAR-** hulpprogram ma's voor het **verkennen, analyseren en rapporteren van interactieve gegevens** kunt gebruiken voor het uitvoeren van verschillende algemene gegevens Science-taken, zoals het verkennen van interactieve gegevens, gegevens analyse, rapportage en het maken van modellen. Het bevat ook een overzicht van de opties voor het implementeren van een model in een productie omgeving met behulp van diverse tool kits en gegevens platforms, zoals de volgende:
+Datatechnologietaken doorgaans bevatten gegevens gegevensonderzoek, modelleren en implementatie. In dit artikel ziet u hoe u de **interactieve Gegevensverkenning, analyse en rapportage (IDEAR)** en **geautomatiseerde modelleren en rapportage (AMAR)** hulpprogramma's voor verschillende algemene datatechnologietaken uitvoeren zoals interactieve gegevensverkenning, gegevensanalyse, rapportage en model maken. Ook biedt opties voor het implementeren van een model in een productieomgeving met behulp van een aantal gegevens en toolkits platformen, zoals het volgende:
 
 - [Azure Machine Learning](../index.yml)
-- [SQL-Server met ML-Services](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
+- [SQL-Server met ML-services](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
 
 ## 1. <a name='DataQualityReportUtility-1'></a> verkennen 
 
-Een gegevens wetenschapper kan op verschillende manieren onderzoek en rapportage uitvoeren: door gebruik te maken van bibliotheken en pakketten die beschikbaar zijn voor python (matplotlib bijvoorbeeld) of met R (ggplot of raster bijvoorbeeld). Gegevens wetenschappers kunnen dergelijke code aanpassen aan de behoeften van het verkennen van gegevens voor specifieke scenario's. De behoeften voor het verwerken van gestructureerde gegevens zijn anders dan voor ongestructureerde gegevens, zoals tekst of afbeeldingen. 
+Een gegevenswetenschapper kunt verkennen en rapportage in tal van manieren uitvoeren: met behulp van bibliotheken en pakketten beschikbaar voor Python (matplotlib bijvoorbeeld) of met R (ggplot of andere voorbeeld). Gegevenswetenschappers kunnen aanpassen van dergelijke code aan de behoeften van de gegevens verkennen voor specifieke scenario's aan. De behoeften voor het omgaan met gestructureerde gegevens zijn verschillend voor ongestructureerde gegevens zoals tekst of afbeeldingen. 
 
-Producten zoals Azure Machine Learning bieden ook [geavanceerde gegevens voorbereiding](../service/how-to-transform-data.md) voor het wrangling en verkennen van gegevens, inclusief het maken van functies. De gebruiker moet beslissen over de hulpprogram ma's, Bibliotheken en pakketten die het beste aan hun behoeften voldoen. 
+Producten zoals Azure Machine Learning bieden ook [geavanceerde gegevens voorbereiding](../how-to-create-register-datasets.md) voor het wrangling en verkennen van gegevens, inclusief het maken van functies. De gebruiker beslissen over de hulpprogramma's, bibliotheken en pakketten die het best suite hun behoeften. 
 
-Het product aan het einde van deze fase is een rapport voor gegevens onderzoek. Het rapport moet een redelijk uitgebreid overzicht geven van de gegevens die moeten worden gebruikt voor model lering en een evaluatie van de vraag of de gegevens geschikt zijn om door te gaan naar de model stap. De TDSP-hulpprogram ma's (team data Science process) die in de volgende secties worden besproken voor semi-Automated verkennen, model leren en rapporteren, bieden ook gestandaardiseerde rapporten voor gegevens exploratie en-modellering. 
+Het product aan het einde van deze fase is een rapport verkennen. Het rapport moet bieden een redelijk uitgebreide weergave van de gegevens moet worden gebruikt voor het maken van modellering en een evaluatie van of de gegevens zijn geschikt om door te gaan naar de stap modelleren. Het Team Data Science Process (TDSP) hulpprogramma's beschreven in de volgende secties voor de semi-automatische verkennen, modelleren en rapportage bieden ook gestandaardiseerde gegevens verkennen en modelleren van rapporten. 
 
-### <a name="interactive-data-exploration-analysis-and-reporting-using-the-idear-utility"></a>Interactief verkennen, analyseren en rapporteren met behulp van het hulp programma voor idee
+### <a name="interactive-data-exploration-analysis-and-reporting-using-the-idear-utility"></a>Interactieve gegevensverkenning, analyse en rapportage met het hulpprogramma IDEAR
 
-Dit hulp programma voor op prijs verlaging of python gebaseerd op een notebook biedt een flexibel en interactief hulp programma voor het evalueren en verkennen van gegevens sets. Gebruikers kunnen snel rapporten genereren op basis van de gegevensset met minimale code ring. Gebruikers kunnen klikken op knoppen om de resultaten van het onderzoek in het interactieve hulp programma naar een eind rapport te exporteren. Dit kan worden geleverd aan clients of worden gebruikt om beslissingen te nemen over de variabelen die in de volgende model stap moeten worden opgenomen.
+Deze markdown op basis van R of Python-notebook-hulpprogramma biedt een flexibele en interactieve hulpprogramma om te evalueren en gegevenssets te verkennen. Gebruikers kunnen snel rapporten genereren van de gegevensset met minimale code schrijven. Gebruikers kunnen klikken op knoppen waarmee u kunt de resultaten verkennen in de interactieve hulpprogramma exporteren naar een uiteindelijke rapport, die kan worden bezorgd bij clients of gebruikt om beslissingen over welke variabelen om op te nemen in de modellering van de volgende stap.
 
-Op dit moment werkt het hulp programma alleen op Data-frames in het geheugen. Er is een YAML-bestand nodig om de para meters op te geven van de gegevensset die moet worden verkend. Zie voor meer informatie [ideeën in TDSP data Science-Hulpprogram ma's](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils).
+Op dit moment werkt het hulpprogramma alleen op gegevensframes in het geheugen. Een YAML-bestand is nodig om op te geven van de parameters van de gegevensset worden onderzocht. Zie voor meer informatie, [IDEAR in TDSP Data Science-hulpprogramma's](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils).
 
 
 ## 2. <a name='ModelingUtility-2'></a> model lering
 
-Er zijn talloze tool kits en pakketten voor trainings modellen in diverse talen. Gegevens wetenschappers kunnen gemoeds rust gebruik te maken van de ooit die ze kunnen gebruiken, zolang de prestatie overwegingen met betrekking tot nauw keurigheid en latentie voldoen aan de relevante zakelijke gebruiks situaties en productie scenario's.
+Er zijn talrijke toolkits en -pakketten voor modellen voor training in diverse talen. Gegevenswetenschappers moeten gerust gebruiken die uitgevoerde die ze vertrouwd met, bent zolang de prestatie-overwegingen met betrekking tot de nauwkeurigheid en latentie is voldaan voor de desbetreffende bedrijven use cases en productiescenario's.
 
-In de volgende sectie ziet u hoe u een R-gebaseerd TDSP-hulp programma gebruikt voor semi-geautomatiseerd model leren. Dit AMAR-hulp programma kan worden gebruikt voor het snel genereren van basis lijn modellen en de para meters die moeten worden afgestemd om een beter model voor het uitvoeren van modellen te bieden.
-In de volgende sectie voor model beheer ziet u hoe u een systeem hebt voor het registreren en beheren van meerdere modellen.
+De volgende sectie ziet u hoe u een TDSP op basis van R-hulpprogramma voor de semi-automatische modelleren. Dit hulpprogramma AMAR kan worden gebruikt om de basislijn modellen snel, evenals de parameters die worden afgestemd moeten voor een beter uitvoeren model genereren.
+De volgende sectie van de model-management laat zien hoe een systeem voor het registreren en beheren van meerdere modellen.
 
 
-### <a name="model-training-modeling-and-reporting-using-the-amar-utility"></a>Model training: modellen en rapporten met behulp van het hulp programma AMAR
+### <a name="model-training-modeling-and-reporting-using-the-amar-utility"></a>Model voor training: gegevensmodellering en -rapportage met het hulpprogramma AMAR
 
-Het [hulp programma voor geautomatiseerd model leren en rapporteren (AMAR)](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling) biedt een aanpasbaar, semi-geautomatiseerd hulp programma voor het maken van modellen met Hyper-para meters sweep en om de nauw keurigheid van deze modellen te vergelijken. 
+De [geautomatiseerde modelleren en hulpprogramma voor rapportage (AMAR)](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling) voorziet in een aanpasbare, semi-automatische hulpprogramma voor het uitvoeren van model maken met hyper-parameter sweeping en vergelijken van de nauwkeurigheid van deze modellen. 
 
-Het hulp programma voor het maken van modellen is een R-bestand voor korting dat kan worden uitgevoerd voor het produceren van zelf-opgenomen HTML-uitvoer met een inhouds opgave voor eenvoudige navigatie door de verschillende secties. Er worden drie algoritmen uitgevoerd wanneer het afkortings bestand wordt uitgevoerd (Knit): er is een reguliere regressie met het glmnet-pakket, een wille keurig forest met het randomForest-pakket en het verhogen van structuren met het xgboost-pakket). Met elk van deze algoritmen wordt een getraind model gegenereerd. De nauw keurigheid van deze modellen wordt vervolgens vergeleken en de belangrijkste waarnemings punten van de functie worden gerapporteerd. Er zijn momenteel twee hulpprogram ma's: een is voor een binaire classificatie taak en één is voor een regressie taak. De belangrijkste verschillen ertussen zijn de manier waarop controle parameters en nauw keurigheid meet waarden worden opgegeven voor deze trainings taken. 
+Het model maken van het hulpprogramma is een R Markdown-bestand dat kan worden uitgevoerd om ingesloten HTML-uitvoer met een tabel met inhoud voor eenvoudige navigatie door de verschillende secties produceren. Drie algoritmen worden uitgevoerd wanneer het Markdown-bestand (knit) wordt uitgevoerd: overgegaan regression uit met behulp van de glmnet inpakken, willekeurige forest met behulp van het pakket randomForest en structuren met behulp van het pakket xgboost versterking). Elk van deze algoritmen produceert een getraind model. De nauwkeurigheid van deze modellen wordt vervolgens vergeleken en de functie voor relatieve belang grafieken worden gerapporteerd. Er zijn momenteel twee hulpprogramma's: één voor een taak binaire classificatie en één voor een taak regressie. De belangrijkste verschillen tussen deze is de parameters voor de manier en nauwkeurigheid metrische gegevens voor deze taken zijn opgegeven. 
 
-Er wordt een YAML-bestand gebruikt om het volgende op te geven:
+Een YAML-bestand wordt gebruikt om op te geven:
 
-- de gegevens invoer (een SQL-bron of een R-gegevens bestand) 
-- welk gedeelte van de gegevens wordt gebruikt voor training en welk gedeelte voor testen
-- welke algoritmen moeten worden uitgevoerd 
-- de keuze van besturings parameters voor model optimalisatie:
-    - Kruis validatie 
-    - oftewel opnieuw opstarten
-    - vouwen van kruis validatie
-- de Hyper-parameters sets voor elk algoritme. 
+- de gegevensinvoer (een SQL-bron of een R-bestand) 
+- welk gedeelte van de gegevens wordt gebruikt voor training en welk gedeelte voor het testen
+- welke algoritmen om uit te voeren 
+- de keuze van de parameters voor voor de optimalisatie van het model:
+    - kruisvalidatie 
+    - uitvoeren van de bootstrap
+    - vouwen van kruisvalidatie
+- Hiermee stelt u de hyper-parameter voor elk algoritme. 
 
-Het aantal algoritmen, het aantal vouwen voor optimalisatie, de Hyper-para meters en het aantal Hyper-para meter sets voor het opruimen van items kunnen ook worden gewijzigd in het yaml-bestand om de modellen snel uit te voeren. Ze kunnen bijvoorbeeld worden uitgevoerd met een lager aantal AVK vouwen, een lager aantal parameter sets. Als deze is gerechtvaardigd, kunnen ze ook uitgebreider worden uitgevoerd met een hoger aantal AVK vouwen of een groter aantal para meters.
+Het nummer van algoritmen, het aantal vouwen voor optimalisatie, de hyper-parameters en het aantal hyper-parameter opgegeven voor zwaaihoek via kan ook worden aangepast in het Yaml-bestand in de modellen snel worden uitgevoerd. Ze kunnen bijvoorbeeld worden uitgevoerd met een kleiner aantal vouwen CV, een kleiner aantal parametersets. Als het gerechtvaardigd is, kunnen ze ook worden uitgevoerd meer uitvoerig met een hoger aantal vouwen CV of een groter aantal parametersets.
 
-Zie het [hulp programma voor geautomatiseerd model leren en rapporteren in TDSP data Science-Hulpprogram ma's](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling)voor meer informatie.
+Zie voor meer informatie, [geautomatiseerde modelleren en hulpprogramma voor rapportage in TDSP Data Science-hulpprogramma's](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/Modeling).
 
 ### <a name="model-management"></a>Modelbeheer
-Nadat er meerdere modellen zijn gebouwd, hebt u doorgaans een systeem nodig voor het registreren en beheren van de modellen. Normaal gesp roken hebt u een combi natie van scripts of Api's en een back-end-data base of versie systeem nodig. Hier volgen enkele opties die u kunt overwegen voor deze beheer taken:
+Nadat u meerdere modellen zijn gebouwd, moet u doorgaans een systeem voor het registreren en beheren van de modellen. Normaal gesproken moet u een combinatie van scripts of API's en een back-end-database of het versiebeheer systeem. Er zijn een aantal opties die u voor deze beheertaken overwegen kunt:
 
-1. [Azure Machine Learning-model beheer service](../index.yml)
+1. [Azure Machine Learning - Modelbeheer-service](../index.yml)
 2. [ModelDB van MIT](https://mitdbg.github.io/modeldb/) 
-3. [SQL-Server als model beheersysteem](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
+3. [SQL-server als een model management-systeem](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 ## 3. <a name='Deployment-3'></a> implementatie
 
-Bij de productie-implementatie kan een model een actieve rol spelen in een bedrijf. Voor spellingen van een geïmplementeerd model kunnen worden gebruikt voor zakelijke beslissingen.
+Productie-implementatie kunt een model voor het een actieve rol spelen in een bedrijf. Voorspellingen op basis van een geïmplementeerd model kunnen worden gebruikt voor zakelijke beslissingen te nemen.
 
-### <a name="production-platforms"></a>Productie platforms
-Er zijn verschillende benaderingen en platformen om modellen in productie te brengen. Hier volgen enkele opties:
+### <a name="production-platforms"></a>Productieplatforms
+Er zijn verschillende benaderingen en platforms modellen in productie te plaatsen. Hier zijn enkele opties:
 
 
-- [Model implementatie in Azure Machine Learning](../service/how-to-deploy-and-where.md)
-- [Implementatie van een model in SQL-Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
+- [Model implementatie in Azure Machine Learning](../how-to-deploy-and-where.md)
+- [Implementatie van een model in SQL-server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
 > [!NOTE]
-> Voorafgaand aan de implementatie moet u er zeker van zijn dat de latentie van de model Score laag genoeg is voor gebruik in de productie omgeving.
+> Voorafgaand aan de implementatie heeft een zorgen dat de latentie van het model scoren laag genoeg is voor gebruik in productie is.
 >
 >
 
-Meer voor beelden zijn beschikbaar in een scenario waarin alle stappen in het proces voor **specifieke scenario's**worden getoond. Ze worden weer gegeven en gekoppeld aan miniatuur beschrijvingen in het artikel [voorbeeld scenario's](walkthroughs.md) . Ze illustreren het combi neren van Cloud, on-premises hulpprogram ma's en services in een werk stroom of pijp lijn om een intelligente toepassing te maken.
+Meer voorbeelden zijn beschikbaar in scenario's die laten zien van alle de stappen in het proces voor het **specifieke scenario's**. Ze worden weergegeven en die is gekoppeld met miniaturen beschrijvingen in de [voorbeeld walkthroughs](walkthroughs.md) artikel. Ze laten zien hoe u naar de cloud, on-premises hulpprogramma's en services combineren in een werkstroom of een pijplijn te maken van een intelligente toepassingen.
 
 > [!NOTE]
-> Zie [Deploy a Azure machine learning web service](../studio/deploy-a-machine-learning-web-service.md)(Engelstalig) voor implementatie met behulp van Azure machine learning Studio.
+> Zie voor een implementatie met behulp van Azure Machine Learning Studio, [een Azure Machine Learning-webservice implementeren](../studio/deploy-a-machine-learning-web-service.md).
 >
 >
 
-### <a name="ab-testing"></a>A/B testen
-Wanneer er meerdere modellen in productie zijn, kan het nuttig zijn om [een/B-test](https://en.wikipedia.org/wiki/A/B_testing) uit te voeren om de prestaties van de modellen te vergelijken. 
+### <a name="ab-testing"></a>A/B-testen
+Als meerdere modellen in productie, kan het nuttig zijn om uit te voeren [A / B-tests](https://en.wikipedia.org/wiki/A/B_testing) kunnen de prestaties van de modellen. 
 
  
 ## <a name="next-steps"></a>Volgende stappen
 
-[Houd de voortgang bij van data Science-projecten](track-progress.md) om te zien hoe een gegevens wetenschapper de voortgang van een Data Science-project kan volgen.
+[Voortgang van de data science-projecten volgen](track-progress.md) laat zien hoe een gegevenswetenschapper de voortgang van een data science-project kunt volgen.
 
-[Model bewerking en CI/cd](ci-cd-flask.md) laat zien hoe CI/cd kan worden uitgevoerd met ontwikkelde modellen.
+[Model voor bewerking en CI/CD](ci-cd-flask.md) laat zien hoe CI/CD met ontwikkelde modellen kunnen worden uitgevoerd.
 
 

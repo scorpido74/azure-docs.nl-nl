@@ -1,21 +1,21 @@
 ---
-title: Resource logboeken voor container groepen
+title: Resource logboeken verzamelen & analyseren
 description: Meer informatie over het verzenden van resource logboeken en gebeurtenis gegevens van container groepen in Azure Container Instances naar Azure Monitor-logboeken
 ms.topic: article
-ms.date: 09/02/2019
+ms.date: 01/08/2020
 ms.author: danlep
-ms.openlocfilehash: 02f950917f43b514f83bd7e10078c79634c6c751
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 304e98fff386911b878877d2f03d489d0eef5dd7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533724"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770540"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Logboek registratie van container groepen en instanties met Azure Monitor-logboeken
 
-Log Analytics-werk ruimten bieden een centrale locatie voor het opslaan en opvragen van logboek gegevens van niet alleen Azure-resources, maar ook on-premises resources en resources in andere Clouds. Azure Container Instances bevat ingebouwde ondersteuning voor het verzenden van Logboeken en gebeurtenis gegevens naar Azure Monitor-Logboeken.
+Log Analytics-werk ruimten bieden een centrale locatie voor het opslaan en opvragen van logboek gegevens die niet alleen van Azure-resources zijn, maar ook on-premises resources en resources in andere Clouds. Azure Container Instances bevat ingebouwde ondersteuning voor het verzenden van Logboeken en gebeurtenis gegevens naar Azure Monitor-Logboeken.
 
-Als u logboek-en gebeurtenis gegevens van container groep wilt verzenden naar Azure Monitor-logboeken, moet u een Log Analytics werk ruimte-ID en werkruimte sleutel opgeven bij het maken van een container groep. In de volgende secties wordt beschreven hoe u een containergroep kunt maken die geschikt is voor logboekregistratie en hoe u query's op logboeken kunt uitvoeren.
+Als u logboek-en gebeurtenis gegevens van container groep wilt verzenden naar Azure Monitor-logboeken, geeft u een bestaande Log Analytics werk ruimte-ID en werkruimte sleutel op bij het maken van een container groep. In de volgende secties wordt beschreven hoe u een container groep met ingeschakelde logboek registratie maakt en hoe u een query uitvoert op Logboeken.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -46,7 +46,7 @@ De Log Analytics-werkruimte-id en de primaire sleutel verkrijgt u als volgt:
 
 Nu dat u de Log Analytics-werkruimte-id en de primaire sleutel hebt, kunt u een containergroep maken die geschikt is voor logboekregistratie.
 
-In de volgende voor beelden ziet u twee manieren om een container groep te maken met één [gefluente][fluentd] container: Azure CLI en Azure CLI met een yaml-sjabloon. In de standaardconfiguratie genereert de Fluentd-container verschillende regels met uitvoer. Omdat deze uitvoer naar de Log Analytics-werkruimte wordt verzonden, is deze heel geschikt is om te illustreren hoe logboeken kunnen worden weergegeven en hoe er query's op kunnen worden uitgevoerd.
+In de volgende voor beelden ziet u twee manieren om een container groep te maken die bestaat uit één [gefluenteerde][fluentd] container: Azure CLI en Azure CLI met een yaml-sjabloon. De Fluent-container produceert verschillende uitvoer regels in de standaard configuratie. Omdat deze uitvoer naar de Log Analytics-werkruimte wordt verzonden, is deze heel geschikt is om te illustreren hoe logboeken kunnen worden weergegeven en hoe er query's op kunnen worden uitgevoerd.
 
 ### <a name="deploy-with-azure-cli"></a>Implementeren met Azure CLI
 

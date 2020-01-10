@@ -4,15 +4,15 @@ description: Azure Diagnostics met Event Hubs end-to-end configureren, met inbeg
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
 ms.topic: conceptual
-author: rboucher
-ms.author: robb
+author: bwren
+ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 2b24618e4d7c12366db5e72226c6f94924d4d3a5
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 433d53e09fce6d3f6b2010956da91c4b7cf91d49
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555528"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770166"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Azure Diagnostics gegevens in het warme pad streamen met behulp van Event Hubs
 Azure Diagnostics biedt flexibele manieren voor het verzamelen van metrische gegevens en logboeken van virtuele machines van Cloud Services (Vm's) en het overdragen van resultaten naar Azure Storage. Vanaf het tijds bestek van maart 2016 (SDK 2,9) kunt u Diagnostische gegevens verzenden naar aangepaste gegevens bronnen en dynamische padgegevens in seconden overdragen met behulp van [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/).
@@ -21,8 +21,7 @@ Ondersteunde gegevens typen zijn:
 
 * ETW-gebeurtenissen (Event Tracing for Windows)
 * Prestatiemeteritems
-* Windows-gebeurtenislogboeken
-* Toepassings logboeken
+* Windows-gebeurtenis logboeken, inclusief toepassings Logboeken in het Windows-gebeurtenis logboek
 * Logboeken van Azure Diagnostics-infrastructuur
 
 In dit artikel wordt beschreven hoe u Azure Diagnostics kunt configureren met Event Hubs van end-to-end. Er worden ook richt lijnen gegeven voor de volgende algemene scenario's:
@@ -43,7 +42,7 @@ Event Hubs het ontvangen van gegevens van Azure Diagnostics wordt ondersteund in
 * Event Hubs naam ruimte die is ingericht per artikel, aan de [slag met Event hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)
 
 ## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Azure Diagnostics verbinden met Event Hubs Sink
-Standaard worden door Azure Diagnostics altijd logboeken en metrische gegevens naar een Azure Storage-account verzonden. Een toepassing kan ook gegevens naar Event Hubs verzenden door een nieuwe sectie **sinks** toe te voegen onder het element **PublicConfig**  / **WadCfg** van het bestand *. wadcfgx* . In Visual Studio wordt het *. wadcfgx* -bestand opgeslagen in het volgende pad: **Cloud Service Project**  > **Roles**  >  **(rolnaam)**  >  bestand**Diagnostics. wadcfgx** .
+Standaard worden door Azure Diagnostics altijd logboeken en metrische gegevens naar een Azure Storage-account verzonden. Een toepassing kan ook gegevens naar Event Hubs verzenden door een nieuwe sectie **sinks** toe te voegen onder het element **PublicConfig** / **WadCfg** van het bestand *. wadcfgx* . In Visual Studio wordt het *. wadcfgx* -bestand opgeslagen in het volgende pad: **Cloud Service Project** > **Roles** >  **(rolnaam)**  > bestand **Diagnostics. wadcfgx** .
 
 ```xml
 <SinksConfig>
@@ -200,7 +199,7 @@ In het volgende voor beeld ziet u hoe een ontwikkelaar de hoeveelheid verzonden 
 In dit voor beeld wordt de Sink toegepast op Logboeken en wordt deze alleen gefilterd op fout niveau tracering.
 
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Een Cloud Services toepassing en diagnose configuratie implementeren en bijwerken
-Visual Studio biedt het eenvoudigste pad voor het implementeren van de toepassing en de configuratie van Event Hubs sink. Als u het bestand wilt bekijken en bewerken, opent u het *. wadcfgx* -bestand in Visual Studio, bewerkt u het en slaat u het op. Het pad is een **Cloud Service Project**  > **rollen**  >  **(rolnaam)**  > **Diagnostische gegevens. wadcfgx**.  
+Visual Studio biedt het eenvoudigste pad voor het implementeren van de toepassing en de configuratie van Event Hubs sink. Als u het bestand wilt bekijken en bewerken, opent u het *. wadcfgx* -bestand in Visual Studio, bewerkt u het en slaat u het op. Het pad is een **Cloud Service Project** > **rollen** >  **(rolnaam)**  > **Diagnostische gegevens. wadcfgx**.  
 
 Op dit punt worden alle Update acties voor implementatie en implementatie in Visual Studio, Visual Studio Team System en alle opdrachten of scripts die zijn gebaseerd op MSBuild en met de **/t: Publish** doel, de *. wadcfgx* in het verpakkings proces gebruikt. Daarnaast implementeren implementaties en updates het bestand in azure met behulp van de juiste Azure Diagnostics agent-extensie op uw Vm's.
 

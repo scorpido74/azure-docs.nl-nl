@@ -7,12 +7,12 @@ author: hedidin
 ms.reviewer: klam, estfan, logicappspm
 ms.topic: article
 ms.date: 07/29/2016
-ms.openlocfilehash: 99141787c5133b578c943f0e11e5ab15171a2e3d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 03ed4731e59280a3879d77ca3fb82f0158313aeb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792988"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771560"
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Scenario: afhandeling van uitzonde ringen en fouten logboek registratie voor Logic apps
 
@@ -25,7 +25,7 @@ In dit scenario wordt beschreven hoe u een logische app kunt uitbreiden om de ve
 
 Dit is het verhaal van het gebruik voor dit scenario: 
 
-Een bekende organisatie in de gezondheids zorg waarmee we een Azure-oplossing ontwikkelen die een patiënt Portal maakt met behulp van micro soft Dynamics CRM Online. Ze moeten afspraak records verzenden tussen de Dynamics CRM Online patiënten-Portal en Sales Force. We hebben u gevraagd om de [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) -standaard voor alle patiënten-records te gebruiken.
+Een bekende organisatie in de gezondheids zorg waarmee we een Azure-oplossing ontwikkelen die een patiënt Portal maakt met behulp van micro soft Dynamics CRM Online. Ze moeten afspraak records verzenden tussen de Dynamics CRM Online patiënten-Portal en Sales Force. We hebben u gevraagd om de [HL7 FHIR](https://www.hl7.org/implement/standards/fhir/) -standaard voor alle patiënten-records te gebruiken.
 
 Het project heeft twee belang rijke vereisten:  
 
@@ -122,7 +122,7 @@ We moeten de bron (aanvraag) van de patiënt record in de online portal van Dyna
 
 In het volgende code voorbeeld van de logische app ziet u hoe u logboek registratie kunt afhandelen.
 
-#### <a name="log-entry"></a>Logboek vermelding
+#### <a name="log-entry"></a>Logboekvermelding
 
 Hier volgt de logische app-bron code voor het invoegen van een logboek vermelding.
 

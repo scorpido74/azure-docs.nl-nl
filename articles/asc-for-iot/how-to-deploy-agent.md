@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 18031400155b92f243877ae8c8d7a56e1d5295a0
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: d70f2f3ec87c8673013bcf7b6f70ebcbb8d06f08
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70933650"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770013"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>Een beveiligings agent op uw IoT-apparaat selecteren en implementeren
 
@@ -48,7 +48,7 @@ De op C gebaseerde beveiligings agent heeft een lagere geheugen capaciteit en is
 | Ondersteunde Windows-platforms? | Nee | Ja |
 | Windows-vereisten | --- | [WMI](https://docs.microsoft.com/windows/desktop/wmisdk/) |
 | Ondersteunde Linux-platforms? | Ja, x64 en x86 | Ja, alleen x64 |
-| Vereisten voor Linux | libunwind8, libcurl3, uuid-runtime, gecontroleerde, audispd-invoeg toepassingen | libunwind8, libcurl3, uuid-runtime, gecontroleerde, audispd-plugins, sudo, netstat, iptables |
+| Linux-vereisten | libunwind8, libcurl3, uuid-runtime, gecontroleerde, audispd-invoeg toepassingen | libunwind8, libcurl3, uuid-runtime, gecontroleerde, audispd-plugins, sudo, netstat, iptables |
 | Schijf ruimte | 10,5 MB | 90 MB |
 | Geheugen capaciteit (gemiddeld) | 5,5 MB | 33 MB |
 | [Verificatie](concept-security-agent-authentication-methods.md) voor IOT hub | Ja | Ja |
@@ -59,9 +59,9 @@ De op C gebaseerde beveiligings agent heeft een lagere geheugen capaciteit en is
 
 ## <a name="security-agent-installation-guidelines"></a>Richt lijnen voor installatie van beveiligings agent
 
-Voor **Windows**: Het script install SecurityAgent. ps1 moet worden uitgevoerd vanuit een Power shell-venster van de beheerder. 
+Voor **Windows**: het script install SecurityAgent. ps1 moet worden uitgevoerd vanuit een Power shell-venster van de beheerder. 
 
-Voor **Linux**: De InstallSecurityAgent.sh moet worden uitgevoerd als super gebruiker. U wordt aangeraden de installatie opdracht voor te stellen met ' sudo '.
+Voor **Linux**: de InstallSecurityAgent.sh moet worden uitgevoerd als super gebruiker. U wordt aangeraden de installatie opdracht voor te stellen met ' sudo '.
 
 
 ## <a name="choose-an-agent-flavor"></a>Een agent selecteren 
@@ -91,10 +91,10 @@ De volgende lijst bevat alle momenteel ondersteunde platforms.
 |Azure Security Center voor IoT-agent |Besturingssysteem |Architectuur |
 |--------------|------------|--------------|
 |C|Ubuntu 16.04 |   x64|
-|C|Ubuntu 18.04 |   x64|
+|C|Ubuntu 18.04 |   x64, ARMv7|
 |C|Debian 9 |   x64, x86|
 |C#|Ubuntu 16.04    |x64|
-|C#|Ubuntu 18.04    |x64|
+|C#|Ubuntu 18.04    |x64, ARMv7|
 |C#|Debian 9    |x64|
 |C#|Windows Server 2016|    X64|
 |C#|Windows 10 IoT core, build 17763    |x64|

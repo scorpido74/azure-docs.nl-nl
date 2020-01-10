@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: f688f0ddfb62e988ddebada1f612aa842afa5181
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d9daefaec33c435ae9f8eceec370c83de4535f8b
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644593"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830374"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: veelgestelde vragen
 
@@ -84,23 +84,9 @@ Ja. Als u extra onderdelen wilt installeren of cluster configuratie wilt aanpass
 
 - Scripts tijdens of na het maken. Scripts worden aangeroepen via [script actie](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux), een configuratie optie die u kunt gebruiken vanuit de Azure Portal, Hdinsight Windows Power shell-cmdlets of de HDINSIGHT .NET SDK. Deze configuratie optie kan worden gebruikt vanuit de Azure Portal, HDInsight Windows Power shell-cmdlets of de HDInsight .NET SDK.
 
-- `sudo` of andere methoden nadat u het cluster hebt ingericht.
-  
 - [HDInsight-toepassings platform](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) voor het installeren van ecosysteem toepassingen.
 
-Microsoft Ondersteuning teams kunnen echter alleen ondersteuning bieden voor de volgende situaties:
-
-- Problemen of fouten die optreden tijdens het laden van het script. Eventuele fouten die optreden tijdens het uitvoeren van aangepaste scripts, vallen buiten het bereik van een ondersteuningsticket.
-
-- Aanvullende toepassingen die deel uitmaken van het proces dat door het cluster wordt gemaakt. 
-
 Zie [Wat zijn de Apache Hadoop onderdelen en versies die beschikbaar zijn in HDInsight?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#apache-hadoop-components-available-with-different-hdinsight-versions) voor een lijst met ondersteunde onderdelen?
-
-De ondersteuning voor afzonderlijke onderdelen kan ook variëren per clustertype. Spark wordt bijvoorbeeld niet ondersteund in een Kafka-cluster en vice versa.
-
-Neem voor toepassingen en services buiten het proces voor het maken van het cluster contact op met de leverancier of service provider voor ondersteuning. U kunt ook veel Community-ondersteunings sites gebruiken. Voor beelden zijn het [MSDN-forum voor HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) en [stack overflow](https://stackoverflow.com/). Apache-projecten hebben ook project sites op de [Apache-website](https://apache.org/). Een voor beeld is [Hadoop](https://hadoop.apache.org/). 
-
-Zie de [Veelgestelde vragen over ondersteuning voor Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over ondersteuning voor Azure.
 
 ### <a name="can-i-upgrade-the-individual-components-that-are-pre-installed-on-the-cluster"></a>Kan ik een upgrade uitvoeren voor de afzonderlijke onderdelen die vooraf zijn geïnstalleerd op het cluster?
 

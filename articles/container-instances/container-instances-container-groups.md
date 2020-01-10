@@ -4,12 +4,12 @@ description: Meer informatie over container groepen in Azure Container Instances
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: c4d5217fe96ca2669397bb7f2a94c6394c002534
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 19fa50f83a2593b8914931e25fa99cb2e4896227
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896585"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770268"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Container groepen in Azure Container Instances
 
@@ -44,21 +44,19 @@ Als u de configuratie van een container groep wilt behouden, kunt u de configura
 
 ## <a name="resource-allocation"></a>Resource toewijzing
 
-Azure Container Instances wijst resources, zoals Cpu's, geheugen en optioneel [gpu's][gpus] (preview), toe aan een container groep door de [resource-aanvragen][resource-requests] van de instanties in de groep toe te voegen. Het maken van CPU-resources als voor beeld als u een container groep maakt met twee exemplaren, die elk één CPU aanvragen, wordt twee Cpu's toegewezen aan de container groep.
+Azure Container Instances wijst resources, zoals Cpu's, geheugen en optioneel [gpu's][gpus] (preview), toe aan een groep met meerdere containers door de [resource aanvragen][resource-requests] van de instanties in de groep toe te voegen. Het maken van CPU-resources als voor beeld als u een container groep maakt met twee exemplaren, die elk één CPU aanvragen, wordt twee Cpu's toegewezen aan de container groep.
 
 ### <a name="resource-usage-by-instances"></a>Resource gebruik per instantie
 
-Aan elk container exemplaar zijn de resources toegewezen die zijn opgegeven in de resource-aanvraag. Het resource gebruik door een container instantie in een groep is echter afhankelijk van de configuratie van de optionele [resource limiet][resource-limits] eigenschap. De resource limiet moet kleiner zijn dan de verplichte eigenschap van de [resource aanvraag][resource-requests] .
+Elke container instantie in een groep wordt toegewezen aan de resources die zijn opgegeven in de resource-aanvraag. De maximum bronnen die worden gebruikt door een instantie in een groep kunnen echter verschillen als u de optionele [resource limiet][resource-limits] eigenschap configureert. De resource limiet van een exemplaar moet groter zijn dan of gelijk zijn aan de verplichte eigenschap van de [resource aanvraag][resource-requests] .
 
 * Als u geen resource limiet opgeeft, is het maximale resource gebruik van het exemplaar hetzelfde als de resource aanvraag.
 
-* Als u een resource limiet opgeeft voor een exemplaar, kunt u het resource gebruik van het exemplaar aanpassen voor de werk belasting, ofwel het gebruik beperken of verhogen ten opzichte van de resource aanvraag. De maximale resource limiet die u kunt instellen is het totale aantal resources dat aan de groep is toegewezen.
+* Als u een limiet voor een exemplaar opgeeft, kan het maximum gebruik van het exemplaar hoger zijn dan de aanvraag, tot de limiet die u hebt ingesteld. Het resource gebruik door andere instanties in de groep kan echter afnemen. De maximale resource limiet die u voor een exemplaar kunt instellen, is het totale aantal resources dat aan de groep is toegewezen.
     
-In een groep met twee instanties die 1 CPU aanvragen, kan een van uw containers bijvoorbeeld een werk belasting uitvoeren waarvoor meer Cpu's moeten worden uitgevoerd dan de andere.
+In een groep met twee exemplaren die elk één CPU aanvragen, kan een van uw containers bijvoorbeeld een werk belasting uitvoeren waarvoor meer Cpu's moeten worden uitgevoerd dan de andere.
 
-In dit scenario kunt u een resource limiet van 0,5 CPU instellen voor één exemplaar en een limiet van 2 Cpu's voor de tweede. Met deze configuratie wordt het resource gebruik van de eerste container beperkt tot 0,5 CPU, waardoor de tweede container Maxi maal twee Cpu's kan gebruiken, indien beschikbaar.
-
-Zie de eigenschap [ResourceRequirements][resource-requirements] in de container groepen rest API voor meer informatie.
+In dit scenario kunt u een resource limiet van twee Cpu's instellen voor het exemplaar. Met deze configuratie kan de container Maxi maal de Maxi maal twee Cpu's gebruiken, indien beschikbaar.
 
 ### <a name="minimum-and-maximum-allocation"></a>Minimale en maximale toewijzing
 
@@ -68,7 +66,7 @@ Zie de eigenschap [ResourceRequirements][resource-requirements] in de container 
 
 ## <a name="networking"></a>Networking
 
-Container groepen kunnen een extern IP-adres en een poort naam ruimte delen op dat IP-adres. Om externe clients in staat te stellen een container binnen de groep te bereiken, moet u de poort op het IP-adres en uit de container zichtbaar maken. Omdat containers binnen de groep een poort naam ruimte delen, wordt poort toewijzing niet ondersteund. 
+Container groepen kunnen een extern IP-adres delen, een of meer poorten op dat IP-adres en een DNS-label met een Fully Qualified Domain Name (FQDN). Om externe clients in staat te stellen een container binnen de groep te bereiken, moet u de poort op het IP-adres en uit de container zichtbaar maken. Omdat containers binnen de groep een poort naam ruimte delen, wordt poort toewijzing niet ondersteund. Het IP-adres en de FQDN van een container groep worden vrijgegeven wanneer de container groep wordt verwijderd. 
 
 Binnen een container groep kunnen containers instanties elkaar via localhost bereiken op elke poort, zelfs als deze poorten niet extern worden weer gegeven op het IP-adres van de groep of in de container.
 
@@ -76,7 +74,13 @@ Implementeer eventueel container groepen in een [virtueel Azure-netwerk][virtual
 
 ## <a name="storage"></a>Storage
 
-U kunt externe volumes opgeven om te koppelen binnen een container groep. U kunt deze volumes toewijzen aan specifieke paden binnen de afzonderlijke containers in een groep.
+U kunt externe volumes opgeven om te koppelen binnen een container groep. Ondersteunde volumes zijn:
+* [Azure-bestandsshare][azure-files]
+* [Geheim][secret]
+* [Lege map][empty-directory]
+* [Gekloonde Git-opslag plaats][volume-gitrepo]
+
+U kunt deze volumes toewijzen aan specifieke paden binnen de afzonderlijke containers in een groep. 
 
 ## <a name="common-scenarios"></a>Algemene scenario's
 
@@ -112,5 +116,8 @@ Meer informatie over het implementeren van een container groep met meerdere cont
 [resource-requirements]: /rest/api/container-instances/containergroups/createorupdate#resourcerequirements
 [azure-files]: container-instances-volume-azure-files.md
 [virtual-network]: container-instances-vnet.md
+[secret]: container-instances-volume-secret.md
+[volume-gitrepo]: container-instances-volume-gitrepo.md
 [gpus]: container-instances-gpu.md
+[empty-directory]: container-instances-volume-emptydir.md
 [az-container-export]: /cli/azure/container#az-container-export

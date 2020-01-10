@@ -10,20 +10,20 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0cd6cbf21a392f68db707b9c0184320316d45ffe
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 97df5c309a3bdbf5055d67f893e33ab1a0c3232a
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851023"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832764"
 ---
-# <a name="what-is-azure-key-vault"></a>Wat is Azure Sleutelkluis?
+# <a name="what-is-azure-key-vault"></a>Wat is Azure Key Vault?
 
 Met Azure Key Vault kunt u de volgende problemen oplossen:
 
 - **Geheimenbeheer** - Met Azure Key Vault kunt u veilig de toegang tot tokens, wachtwoorden, certificaten, API-sleutels en andere geheimen opslaan en strikt beheren
 - **Sleutelbeheer** - U kunt Azure Key Vault ook gebruiken als een oplossing voor sleutelbeheer. Met Azure Key Vault kunt u eenvoudig de versleutelingssleutels maken en beheren waarmee uw gegevens worden versleuteld. 
-- **Certificaatbeheer** - Azure Key Vault is ook een service waarmee u eenvoudig openbare en persoonlijke SSL/TLS-certificaten (Secure Sockets Layer/Transport Layer Security) kunt inrichten, beheren en implementeren voor gebruik met Azure en uw interne verbonden bronnen. 
+- **Certificaat beheer** -Azure Key Vault is ook een service waarmee u eenvoudig open bare en persoonlijke Transport Layer Security/Secure Sockets Layer (TLS/SSL)-certificaten kunt inrichten, beheren en implementeren voor gebruik met Azure en uw interne verbonden resources. 
 - **Sla geheimen op die worden ondersteund door Hardware Security-modules** : de geheimen en sleutels kunnen worden beveiligd door software of het FIPS 140-2 level 2-gevalideerde hsm's
 
 ## <a name="why-use-azure-key-vault"></a>Waarom zou ik Azure Key Vault gebruiken?

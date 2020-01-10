@@ -5,18 +5,18 @@ author: alexkarcher-msft
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 358f26af8d990d29f226978387fdf8093d2b8644
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
-ms.translationtype: HT
+ms.openlocfilehash: 40037252ddf8e505ae7fe734813d598e7de96336
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612969"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834236"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Problemen oplossen met functions runtime is onbereikbaar
 
 
 ## <a name="error-text"></a>Fout tekst
-Dit document is bedoeld om de volgende fout op te lossen wanneer het wordt weer gegeven in de functions-Portal.
+Dit artikel is bedoeld om de volgende fout op te lossen wanneer het wordt weer gegeven in de functions-Portal.
 
 `Error: Azure Functions Runtime is unreachable. Click here for details on storage configuration`
 
@@ -40,13 +40,13 @@ Voor elke functie-app moet een opslag account worden gebruikt. Als dat account w
 
 ### <a name="how-to-find-your-storage-account"></a>Uw opslag account zoeken
 
-Zoek eerst de naam van uw opslag account op in de instellingen van uw toepassing. `AzureWebJobsStorage` of `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` bevat de naam van uw opslag account in een connection string. Lees hier meer details over het [instellen van de toepassings instelling](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage)
+Zoek eerst de naam van uw opslag account op in de instellingen van uw toepassing. `AzureWebJobsStorage` of `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` bevat de naam van uw opslag account in een connection string. Lees hier meer details over het [instellen van de toepassings instelling](https://docs.microsoft.com/azure/azure-functions/functions-app-settings#azurewebjobsstorage).
 
 Zoek uw opslag account in de Azure Portal om te zien of het nog bestaat. Als deze is verwijderd, moet u een opslag account opnieuw maken en de verbindings reeksen voor de opslag vervangen. De functie code gaat verloren en moet opnieuw worden geïmplementeerd.
 
 ## <a name="storage-account-application-settings-deleted"></a>De toepassings instellingen voor het opslag account zijn verwijderd
 
-Als u in de vorige stap geen opslag account hebt connection string, zijn deze waarschijnlijk verwijderd of overschreven. Het verwijderen van app-instellingen wordt meestal uitgevoerd wanneer u implementatie sleuven of Azure Resource Manager scripts gebruikt om toepassings instellingen in te stellen.
+Als u in de vorige stap geen opslag account hebt connection string is het waarschijnlijk verwijderd of overschreven. Het verwijderen van app-instellingen wordt meestal uitgevoerd wanneer u implementatie sleuven of Azure Resource Manager scripts gebruikt om toepassings instellingen in te stellen.
 
 ### <a name="required-application-settings"></a>Vereiste toepassings instellingen
 
@@ -56,7 +56,7 @@ Als u in de vorige stap geen opslag account hebt connection string, zijn deze wa
     * [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
     * [`WEBSITE_CONTENTSHARE`](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
 
-[Lees hier meer over deze toepassings instellingen](https://docs.microsoft.com/azure/azure-functions/functions-app-settings)
+[Lees hier meer over deze toepassings instellingen](https://docs.microsoft.com/azure/azure-functions/functions-app-settings).
 
 ### <a name="guidance"></a>Hulp
 
@@ -66,7 +66,7 @@ Als u in de vorige stap geen opslag account hebt connection string, zijn deze wa
 
 ## <a name="storage-account-credentials-invalid"></a>De referenties van het opslag account zijn ongeldig
 
-De bovenstaande verbindings reeksen voor het opslag account moeten worden bijgewerkt als u opslag sleutels opnieuw genereert. [Lees hier meer over opslag sleutel beheer](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
+De bovenstaande verbindings reeksen voor het opslag account moeten worden bijgewerkt als u opslag sleutels opnieuw genereert. [Lees hier meer over opslag sleutel beheer](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account).
 
 ## <a name="storage-account-inaccessible"></a>Het opslag account is niet toegankelijk
 
@@ -79,15 +79,15 @@ Uw functie-app moet toegang hebben tot het opslag account. Veelvoorkomende probl
 
 Als u een dagelijks uitvoerings quotum hebt geconfigureerd, wordt uw functie-app tijdelijk uitgeschakeld en zijn veel van de besturings elementen van de portal niet meer beschikbaar. 
 
-* Als u dit wilt controleren, controleert u de open platform functies > functie-app instellingen in de portal. Het volgende bericht wordt weer gegeven als u het quotum overschrijdt
+* Als u dit wilt controleren, opent u platform functies > functie-app instellingen in de portal. Het volgende bericht wordt weer gegeven als u het quotum overschrijdt:
     * `The Function App has reached daily usage quota and has been stopped until the next 24 hours time frame.`
 * Verwijder het quotum en start de app opnieuw om het probleem op te lossen.
 
 ## <a name="app-is-behind-a-firewall"></a>App bevindt zich achter een firewall
 
-De runtime van de functie is onbereikbaar als uw functie-app wordt gehost in een [app service Environment met interne taak verdeling](../app-service/environment/create-ilb-ase.md) en is geconfigureerd om inkomend Internet verkeer te blok keren of waarvoor [binnenkomende IP-beperkingen](functions-networking-options.md#inbound-ip-restrictions) zijn geconfigureerd om Internet toegang te blok keren. De Azure Portal maakt rechtstreeks aan de actieve app aanroepen om de lijst met functies op te halen en maakt ook http-aanroepen naar KUDU-eind punt. Instellingen op platform niveau onder het tabblad `Platform Features` zijn nog steeds beschikbaar.
+De runtime van de functie is onbereikbaar als uw functie-app wordt gehost in een [app service Environment met interne taak verdeling](../app-service/environment/create-ilb-ase.md) en is geconfigureerd om inkomend Internet verkeer te blok keren of waarvoor [binnenkomende IP-beperkingen](functions-networking-options.md#inbound-ip-restrictions) zijn geconfigureerd om Internet toegang te blok keren. De Azure Portal maakt rechtstreeks aan de actieve app aanroepen om de lijst met functies op te halen en maakt ook HTTP-aanroepen naar het KUDU-eind punt. Instellingen op platform niveau onder het tabblad `Platform Features` zijn nog steeds beschikbaar.
 
-* Als u de ASE-configuratie wilt controleren, gaat u naar NSG van het subnet waar ASE zich bevindt en valideert u de regels voor binnenkomende verbindingen zodat verkeer afkomstig is van het open bare IP-adres van de computer waarop u de toepassing opent. U kunt de portal ook gebruiken vanaf een computer die is verbonden met het virtuele netwerk waarop uw app wordt uitgevoerd of een virtuele machine die wordt uitgevoerd in uw virtuele netwerk. [Lees hier meer over de configuratie van de inkomende regel](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)
+* Als u de ASE-configuratie wilt controleren, gaat u naar de NSG van het subnet waar ASE zich bevindt en valideert u regels voor binnenkomende verbindingen zodat verkeer afkomstig is van het open bare IP-adres van de computer waarop u de toepassing opent. U kunt de portal ook gebruiken vanaf een computer die is verbonden met het virtuele netwerk waarop uw app wordt uitgevoerd of een virtuele machine die wordt uitgevoerd in uw virtuele netwerk. [Lees hier meer over de configuratie van de inkomende regel](https://docs.microsoft.com/azure/app-service/environment/network-info#network-security-groups)
 
 ## <a name="next-steps"></a>Volgende stappen
 

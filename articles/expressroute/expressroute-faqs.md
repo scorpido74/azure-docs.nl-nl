@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: jaredro
-ms.openlocfilehash: 734bb48d1ddb50af7c28e948c8267b4cd88fcdf7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f2b106df531dfdf26c2c83b765e3f7270a63df5
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437033"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770982"
 ---
 # <a name="expressroute-faq"></a>Veelgestelde vragen over ExpressRoute
 
@@ -48,6 +48,14 @@ Ja. ExpressRoute-circuits zijn geconfigureerd, zodat u om uit te breiden tot twe
 
 Ja. Een ExpressRoute-circuit, nadat deze is ingesteld, kunt u tegelijkertijd toegang krijgen tot de services binnen een virtueel netwerk en andere Azure-services. U verbinding maken met virtuele netwerken via het pad voor persoonlijke peering en andere services via het pad van de Microsoft-peering.
 
+### <a name="how-are-vnets-advertised-on-expressroute-private-peering"></a>Hoe worden VNets geadverteerd op ExpressRoute-privé-peering?
+
+De ExpressRoute-gateway adverteert de *adres ruimte* van het Azure VNet, u kunt niet opnemen/uitsluiten op het niveau van het subnet. Het is altijd de VNet-adres ruimte die wordt geadverteerd. Als VNet-peering wordt gebruikt en de peered VNet is ingeschakeld, wordt ook de adres ruimte van het gekoppelde VNet geadverteerd.
+
+### <a name="can-i-filter-routes-coming-from-my-on-premises-network"></a>Kan ik routes filteren die afkomstig zijn van mijn on-premises netwerk?
+
+De enige manier voor het filteren/insluiten van routes bevindt zich op de on-premises edge-router. Door de gebruiker gedefinieerde routes kunnen in het VNet worden toegevoegd om de specifieke route ring te beïnvloeden, maar dit is statisch en maakt geen deel uit van de BGP-advertisement.
+
 ### <a name="does-expressroute-offer-a-service-level-agreement-sla"></a>Biedt ExpressRoute een Service Level Agreement (SLA)?
 
 Zie voor meer informatie, de [ExpressRoute SLA](https://azure.microsoft.com/support/legal/sla/) pagina.
@@ -73,7 +81,8 @@ Als uw ExpressRoute-circuit is ingeschakeld voor Azure micro soft-peering, kunt 
 * Azure Active Directory
 * [Virtueel bureau blad van Windows](https://azure.microsoft.com/services/virtual-desktop/)
 * [Azure DevOps](https://blogs.msdn.microsoft.com/devops/2018/10/23/expressroute-for-azure-devops/) (Global Services van Azure-community)
-* De meeste van de Azure-services worden ondersteund. Controleer of rechtstreeks met de service die u wilt gebruiken om te controleren of de ondersteuning.
+* Open bare IP-adressen van Azure voor IaaS (Virtual Machines, Virtual Network gateways, load balancers, enzovoort)  
+* De meeste andere Azure-Services worden ook ondersteund. Controleer of rechtstreeks met de service die u wilt gebruiken om te controleren of de ondersteuning.
 
 **Niet ondersteund:**
 

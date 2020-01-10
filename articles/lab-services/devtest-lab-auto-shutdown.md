@@ -1,6 +1,6 @@
 ---
-title: Beheren van autoshutdown beleid in Azure DevTest Labs | Microsoft Docs
-description: Leer hoe u autoshutdown beleid voor een testomgeving instellen zodat virtuele machines automatisch worden afgesloten wanneer ze zich niet in gebruik.
+title: Beleid voor automatisch afsluiten beheren in Azure DevTest Labs | Microsoft Docs
+description: Meer informatie over het instellen van het beleid voor automatisch afsluiten voor een lab, zodat virtuele machines worden afgesloten wanneer ze niet worden gebruikt.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -14,102 +14,105 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 9adf8dd4a5a3c469ed130b29308a0d828aee40bf
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1c13414bb252da1192f82675da5b134bf43a40f0
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65873988"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772632"
 ---
-# <a name="manage-autoshutdown-policies-for-a-lab-in-azure-devtest-labs"></a>Autoshutdown beleidsregels beheren voor een lab in Azure DevTest Labs
-Azure DevTest Labs kunt u kosten beheren en minimale verspilling in uw labs door het beheer van beleid (instellingen) voor elk lab. Dit artikel leest u hoe autoshutdown beleid voor een lab-account te configureren en autoshutdown-instellingen voor een lab configureren in het lab-account. Als u wilt bekijken over het instellen van elk lab-beleid, Zie [definiëren van beleid voor lab maken in Azure DevTest Labs](devtest-lab-set-lab-policy.md).  
+# <a name="manage-autoshutdown-policies-for-a-lab-in-azure-devtest-labs"></a>Beleid voor automatisch afsluiten beheren voor een lab in Azure DevTest Labs
+Met Azure DevTest Labs kunt u kosten besparen en verspiling in uw Labs minimaliseren door beleid (instellingen) voor elk lab te beheren. In dit artikel leest u hoe u het beleid voor automatisch afsluiten configureert voor een Lab-account en instellingen voor automatisch afsluiten configureert voor een lab in het lab-account. Zie [Lab-beleid in azure DevTest Labs definiëren](devtest-lab-set-lab-policy.md)voor meer informatie over het instellen van elk lab-beleid.  
 
-## <a name="set-auto-shutdown-policy-for-a-lab"></a>Beleid voor automatisch afsluiten voor een testomgeving instellen
-Als de eigenaar van een lab, kunt u een planning afsluiten configureren voor alle virtuele machines in uw testomgeving. Op deze manier kunt u kosten kunt besparen van het uitvoeren van virtuele machines die niet worden gebruikt (niet-actief). U kunt afdwingen dat een beleid voor afsluiten op al uw lab-virtuele machines centraal, maar ook opslaan uw labgebruikers de moeite van het instellen van een schema voor de afzonderlijke computers. Deze functie kunt u het beleid op uw lab-schema biedt geen controle op volledig beheer voor uw labgebruikers vanaf instellen. Als de eigenaar van een lab, kunt u dit beleid configureren door de volgende stappen uit:
+## <a name="set-auto-shutdown-policy-for-a-lab"></a>Beleid voor automatisch afsluiten instellen voor een Lab
+Als eigenaar van het lab kunt u een afsluit schema configureren voor alle virtuele machines in uw Lab. Op die manier kunt u kosten besparen van het uitvoeren van machines die niet worden gebruikt (niet-actief). U kunt een afsluit beleid afdwingen op al uw virtuele lab-Vm's, maar ook uw Lab-gebruikers de moeite hebben om een planning in te stellen voor de afzonderlijke machines. Met deze functie kunt u het beleid op uw test schema instellen, te beginnen met het beheer van volledig beheer aan uw Lab-gebruikers. Als eigenaar van het lab kunt u dit beleid configureren door de volgende stappen uit te voeren:
 
-1. Selecteer op de startpagina van uw lab, **configuratie en het beleid**.
-2. Selecteer **automatisch afsluiten beleid** in de **planningen** gedeelte van het menu links.
-3. Selecteer een van de opties. De volgende secties bevatten meer informatie over deze opties: De set-beleid van toepassing alleen op nieuwe virtuele machines die zijn gemaakt in de testomgeving en niet op de al bestaande VM's. 
+1. Op de start pagina van uw Lab selecteert u **configuratie en beleid**.
+2. Selecteer **beleid voor automatisch afsluiten** in de sectie **schema's** van het menu links.
+3. Selecteer een van de opties. In de volgende secties vindt u meer informatie over deze opties: het set-beleid is alleen van toepassing op nieuwe virtuele machines die zijn gemaakt in het lab en niet op de bestaande virtuele machines. 
 
-    ![Automatisch opties voor afsluiten](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
+    ![Opties voor automatisch afsluiten van beleid](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 
-## <a name="configure-auto-shutdown-settings"></a>Configureren van instellingen voor automatisch afsluiten
-Het beleid autoshutdown helpt bij het lab verspilling minimaliseren met de mogelijkheid om op te geven van de tijd die VM's van deze testomgeving afgesloten.
+## <a name="configure-auto-shutdown-settings"></a>Instellingen voor automatisch afsluiten configureren
+Het beleid voor automatisch afsluiten helpt Lab-afval te minimaliseren door de tijd op te geven waarop de Vm's van deze Lab worden afgesloten.
 
-Als u wilt weergeven (en wijzigen) op het beleid voor een testomgeving, de volgende stappen uit:
+Voer de volgende stappen uit om de beleids regels voor een Lab weer te geven (en te wijzigen):
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer **alle services**, en selecteer vervolgens **DevTest Labs** in de lijst.
-3. Selecteer de gewenste lab in de lijst met labs.   
-4. Selecteer **configuratie en het beleid**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+2. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
+3. Selecteer in de lijst met Labs het gewenste Lab.   
+4. Selecteer **configuratie en beleid**.
 
-    ![Deelvenster instellingen met beleid](./media/devtest-lab-set-lab-policy/policies-menu.png)
-5. Op van het lab **configuratie en het beleid** venster **Auto-shutdown** onder **planningen**.
+    ![Deel venster beleids instellingen](./media/devtest-lab-set-lab-policy/policies-menu.png)
+5. Selecteer in het deel venster **configuratie en beleid** van de test **automatisch afsluiten** onder **planningen**.
    
-    ![Autoshutdown](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
-6. Selecteer **op** aan dit beleid inschakelt, en **uit** uitschakelen.
-7. Als u dit beleid inschakelt, geeft u de tijd (en tijdzone) om alle virtuele machines in de huidige testomgeving af te sluiten.
-8. Geef **Ja** of **geen** voor de optie voor het verzenden van een melding voorafgaand aan het moment van de opgegeven autoshutdown de 15 minuten. Als u ervoor kiest **Ja**voert u een webhook-URL-eindpunt of een e-mailadres op te geven waar u de melding om te worden geplaatst of worden verzonden. De gebruiker melding ontvangt en de optie voor het uitstellen van het afsluiten is opgegeven. Zie voor meer informatie de [meldingen](#notifications) sectie. 
+    ![Automatisch afsluiten](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
+6. Selecteer aan om dit beleid **in te scha** kelen en **uit** te scha kelen.
+7. Als u dit beleid inschakelt, geeft u de tijd (en tijd zone) op om alle virtuele machines in het huidige Lab af te sluiten.
+8. Geef **Ja** of **Nee** op voor de optie om een melding te verzenden 30 minuten vóór de opgegeven tijd voor automatisch afsluiten. Als u **Ja**kiest, voert u het eind punt van de webhook-URL of het e-mail adres in waarmee u wilt dat de melding wordt gepost of verzonden. De gebruiker ontvangt een melding en krijgt de mogelijkheid om het afsluiten te vertragen. Zie de sectie [meldingen](#notifications) voor meer informatie. 
 9. Selecteer **Opslaan**.
 
-    Standaard eenmaal is ingeschakeld, dit beleid is van toepassing op alle virtuele machines in de huidige testomgeving. Als deze instelling uit een specifieke virtuele machine verwijderen, open deelvenster van de VM-management en wijzig de **Autoshutdown** instelling.
+    Wanneer dit beleid is ingeschakeld, wordt standaard toegepast op alle virtuele machines in het huidige lab. Als u deze instelling van een specifieke virtuele machine wilt verwijderen, opent u het deel venster beheer van de virtuele machine en wijzigt u de instelling voor automatisch **Afsluiten** .
+    
+> [!NOTE]
+> Als u de planning voor automatisch afsluiten voor uw Lab of een specifieke virtuele machine van het lab bijwerkt binnen 30 minuten van de huidige geplande tijd, wordt de bijgewerkte afsluit tijd van toepassing op de planning van de volgende dag. 
 
-### <a name="user-sets-a-schedule-and-can-opt-out"></a>Gebruikers-Hiermee stelt u een planning en zich kunt afmelden
-Als u uw testomgeving aan dit beleid instelt, wordt het labgebruikers kunnen overschrijven, of afmelden voor het lab-schema. Deze optie geeft labgebruikers volledige controle over de planning voor automatische afsluiting van hun virtuele machines. Labgebruikers zien geen wijziging in hun planningspagina VM automatisch afsluiten.
+### <a name="user-sets-a-schedule-and-can-opt-out"></a>Gebruiker stelt een schema in en kan zich afmelden
+Als u uw Lab instelt op dit beleid, kunnen de Lab-gebruikers het lab-schema overschrijven of afmelden. Met deze optie krijgen gebruikers van het lab volledig beheer over het automatische afsluit schema van hun Vm's. Lab-gebruikers zien geen wijziging op de pagina planning voor automatisch afsluiten van de VM.
 
-![Automatisch afsluiten beleidsoptie - 1](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-1.png)
+![Optie voor automatisch afsluiten van beleid-1](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-1.png)
 
-### <a name="user-sets-a-schedule-and-cannot-opt-out"></a>Gebruikers-Hiermee stelt u een planning en kan niet opt-out
-Als u uw testomgeving aan dit beleid instelt, kunnen labgebruikers het lab-schema negeren. Echter afnemen ze naar beleid voor automatisch afsluiten. Deze optie zorgt ervoor dat elke computer in uw testomgeving onder een planning voor automatische afsluiting is. Labgebruikers kunnen planning voor automatische afsluiting van hun virtuele machines bijwerken en afsluiten meldingen instellen.
+### <a name="user-sets-a-schedule-and-cannot-opt-out"></a>Gebruiker stelt een schema in en kan niet afmelden
+Als u uw Lab instelt op dit beleid, kunnen gebruikers met een lab het lab-schema overschrijven. Het beleid voor automatisch afsluiten kan echter niet worden afgemeld. Deze optie zorgt ervoor dat elke machine in uw Lab een schema voor automatisch afsluiten heeft. Gebruikers met een Lab kunnen het schema voor automatisch afsluiten van hun Vm's bijwerken en meldingen voor afsluiten instellen.
 
-![Automatisch afsluiten beleidsoptie - 2](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-2.png)
+![Optie voor automatisch afsluiten van beleid-2](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-2.png)
 
-### <a name="user-has-no-control-over-the-schedule-set-by-lab-admin"></a>Gebruiker heeft geen controle over de planning die door de beheerder lab instellen
-Als u uw testomgeving aan dit beleid instelt, kunnen de labgebruikers overschrijven of afmelden voor het lab-schema. Deze optie biedt lab-beheerder de volledige controle over de planning voor elke computer in het lab. Labgebruikers kunnen alleen automatisch afsluiten meldingen instellen voor hun VM's.
+### <a name="user-has-no-control-over-the-schedule-set-by-lab-admin"></a>De gebruiker heeft geen controle over de planning die is ingesteld door de Lab-beheerder
+Als u uw Lab instelt op dit beleid, kunnen Lab-gebruikers het lab-schema niet overschrijven of afmelden. Deze optie biedt Lab-beheerder de volledige controle over de planning voor elke machine in het lab. Gebruikers met een Lab kunnen alleen meldingen voor automatisch afsluiten instellen voor hun virtuele machines.
 
-![Automatisch afsluiten beleidsoptie - 3](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
+![Optie voor automatisch afsluiten van beleid-3](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
 
 ## <a name="notifications"></a>Meldingen
-Zodra autoshutdown instellen door de eigenaar van het lab, meldingen worden verzonden naar de labgebruikers 15 minuten voordat de autoshutdown geactiveerd als een van hun VM's wordt beïnvloed. Met deze optie geeft labgebruikers een kans om op te slaan hun werk op voordat u het afsluiten. De melding bevat ook koppelingen voor elke virtuele machine voor de volgende acties:
+Zodra automatisch afsluiten is ingesteld door de eigenaar van het lab, worden er 30 minuten meldingen verzonden naar de Lab-gebruikers als een van de Vm's wordt geactiveerd. Met deze optie kunnen gebruikers van het lab hun werk opslaan voordat ze worden afgesloten. De melding bevat ook koppelingen voor elke VM voor de volgende acties:
 
-- Deze tijd de autoshutdown overslaan
-- Uitstellen gedurende een uur of twee uur, de autoshutdown zodat ze op de virtuele machine kunnen blijven werken.
+- Automatisch afsluiten voor deze tijd overs Laan
+- Het automatisch afsluiten gedurende een uur of 2 uur uitstellen, zodat ze op de VM kunnen blijven werken.
 
-Melding wordt verzonden via het geconfigureerde web hook-eindpunt of een e-mailadres opgegeven door de eigenaren van een lab in de instellingen voor autoshutdown. Webhooks kunt u bouwen of integraties gebruikt die zich op bepaalde gebeurtenissen abonneren instellen. Wanneer een van de gebeurtenissen die wordt geactiveerd, wordt een HTTP POST-nettolading in DevTest Labs verzenden naar geconfigureerde van de webhook-URL. Zie voor meer informatie over webhooks [maken van een webhook of API Azure Function](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+Er wordt een melding verzonden via het geconfigureerde webhook-eind punt of een e-mail adres dat is opgegeven door de Lab-eigen aren in de instellingen voor automatisch afsluiten. Met webhooks kunt u integraties maken of instellen voor het abonneren op bepaalde gebeurtenissen. Wanneer een van deze gebeurtenissen wordt geactiveerd, stuurt DevTest Labs een HTTP POST-Payload naar de geconfigureerde URL van de webhook. Zie [een webhook of API Azure function maken](../azure-functions/functions-create-a-web-hook-or-api-function.md)voor meer informatie over webhooks. 
 
-We raden u aan het gebruik van webhooks, omdat ze zijn uitgebreid ondersteund door verschillende apps (bijvoorbeeld, Slack, Azure Logic Apps en enz.) en u kunnen voor het implementeren van uw eigen manier om meldingen te verzenden. Bijvoorbeeld: in dit artikel leert u hoe u notification autoshutdown ophalen uit de e-mailberichten met behulp van Azure Logic Apps. Eerst gaan we snel gaan door de basisstappen om in te schakelen autoshutdown melding in uw testomgeving.   
+We raden u aan om webhooks te gebruiken, omdat deze uitgebreid worden ondersteund door verschillende apps (bijvoorbeeld toegestane vertraging, Azure Logic Apps enzovoort) en u uw eigen manier voor het verzenden van meldingen kunt implementeren. In dit artikel wordt bijvoorbeeld uitgelegd hoe u automatisch afsluiten van e-mail berichten kunt ontvangen met behulp van Azure Logic Apps. Eerst gaan we snel de basis stappen door lopen om automatisch afsluiten in uw Lab in te scha kelen.   
 
-## <a name="create-a-logic-app-that-receives-email-notifications"></a>Een logische app die u e-mailmeldingen ontvangt maken
-[Met Azure Logic Apps](../logic-apps/logic-apps-overview.md) biedt vele out-of-the-box-connectors kunt u eenvoudig een service integreren met andere clients, zoals Office 365 en twitter. Op het hoogste niveau, kunnen de stappen voor het instellen van een logische App voor e-mailmeldingen worden onderverdeeld in vier fasen: 
+## <a name="create-a-logic-app-that-receives-email-notifications"></a>Een logische app maken die e-mail meldingen ontvangt
+[Azure Logic apps](../logic-apps/logic-apps-overview.md) biedt veel kant-en-klare connectors waarmee u eenvoudig een service kunt integreren met andere clients, zoals Office 365 en Twitter. Op hoog niveau kunnen de stappen voor het instellen van een logische app voor e-mail meldingen worden onderverdeeld in vier fasen: 
 
-- Een logische app maken. 
-- De ingebouwde sjabloon configureren.
+- Maak een logische app. 
+- Configureer de ingebouwde sjabloon.
 - Integreren met uw e-mailclient
-- De Webhook-URL ophalen.
+- Haal de webhook-URL op.
 
 ### <a name="create-a-logic-app"></a>Een logische app maken
-Als u wilt beginnen, moet u een logische app maken in uw Azure-abonnement met behulp van de volgende stappen uit:
+Als u aan de slag wilt gaan, maakt u een logische app in uw Azure-abonnement met behulp van de volgende stappen:
 
-1. Selecteer **+ een resource maken** in het menu links, selecteer **integratie**, en selecteer **logische App**. 
+1. Selecteer **+ een resource maken** in het menu links, selecteer **integratie**en selecteer **logische app**. 
 
-    ![Nieuw menu van de logische app](./media/devtest-lab-auto-shutdown/new-logic-app.png)
-2. Op de **logische App - maken** pagina, als volgt te werk: 
-    1. Voer een **naam** voor de logische app.
+    ![Menu nieuwe logische app](./media/devtest-lab-auto-shutdown/new-logic-app.png)
+2. Voer de volgende stappen uit op de pagina **logische app-maken** : 
+    1. Voer een **naam** in voor de logische app.
     2. Selecteer uw Azure-**abonnement**.
     3. Maak een nieuwe **resourcegroep** of Selecteer een bestaande resourcegroep. 
     4. Selecteer een **locatie** voor de logische app. 
 
-        ![Nieuwe logische app - instellingen](./media/devtest-lab-auto-shutdown/new-logic-app-page.png)
-3. In de **meldingen**, selecteer **naar de resource gaan** op de melding. 
+        ![Nieuwe logische app-instellingen](./media/devtest-lab-auto-shutdown/new-logic-app-page.png)
+3. Selecteer in de **meldingen** **Ga naar resource** in het bericht. 
 
     ![Ga naar resource](./media/devtest-lab-auto-shutdown/go-to-resource.png)
-4. Selecteer **Logic app designer** onder **implementatiehulpprogramma's** categorie.
+4. Selecteer **Logic app Designer** onder **implementatie hulpprogramma's** categorie.
 
-    ![Selecteer HTTP-aanvraag/antwoord](./media/devtest-lab-auto-shutdown/select-http-request-response-option.png)
-5. Op de **HTTP-Aanvraagantwoord** weergeeft, schakelt **Gebruik deze sjabloon**. 
+    ![HTTP-aanvraag/antwoord selecteren](./media/devtest-lab-auto-shutdown/select-http-request-response-option.png)
+5. Selecteer op de pagina **HTTP-aanvraag-antwoord** de optie **deze sjabloon gebruiken**. 
 
-    ![Selecteer deze optie sjabloon gebruiken](./media/devtest-lab-auto-shutdown/select-use-this-template.png)
-6. Kopieer de volgende JSON naar de **hoofdtekst van de JSON-Schema aanvragen** sectie: 
+    ![Selecteer deze sjabloon optie gebruiken](./media/devtest-lab-auto-shutdown/select-use-this-template.png)
+6. Kopieer de volgende JSON in de sectie **JSON-schema van aanvraag tekst** : 
 
     ```json
     {
@@ -166,21 +169,21 @@ Als u wilt beginnen, moet u een logische app maken in uw Azure-abonnement met be
     }
     ```
     
-    ![Hoofdtekst van de JSON-Schema aanvragen](./media/devtest-lab-auto-shutdown/request-json.png)
-7. Selecteer **+ nieuwe stap** in de ontwerpfunctie voor, en als volgt te werk:
-    1. Zoeken naar **Office 365 Outlook - een e-mail verzenden**. 
-    2. Selecteer **een e-mailbericht verzenden** van **acties**. 
+    ![Hoofdtekst van aanvraag voor JSON-schema](./media/devtest-lab-auto-shutdown/request-json.png)
+7. Selecteer **+ nieuwe stap** in de ontwerp functie en voer de volgende stappen uit:
+    1. Zoeken naar **Office 365 Outlook-een E-mail verzenden**. 
+    2. Selecteer **een E-mail verzenden** van **acties**. 
     
-        ![Optie voor e-mailbericht verzenden](./media/devtest-lab-auto-shutdown/select-send-email.png)
-    3. Selecteer **aanmelden** aan te melden bij uw e-mailaccount. 
-    4. Selecteer **aan** veld en kiest u de eigenaar.
-    5. Selecteer **onderwerp**, en voert u een onderwerp van het e-mailbericht. Bijvoorbeeld: "Afsluiten van de machine vmName voor testomgeving: labName."
-    6. Selecteer **hoofdtekst**, en de hoofdtekst voor e-mailmelding te definiëren. Bijvoorbeeld: 'vmName is gepland om binnen 15 minuten af te sluiten. Dit afsluiten door te klikken op Overslaan: URL. Afsluiten een uur vertraging: delayUrl60. Afsluiten gedurende 2 uur vertraging: delayUrl120. "
+        ![E-mail optie verzenden](./media/devtest-lab-auto-shutdown/select-send-email.png)
+    3. Selecteer **Aanmelden** om u aan te melden bij uw e-mail account. 
+    4. Selecteer **aan** veld en kies eigenaar.
+    5. Selecteer **onderwerp**en voer een onderwerp in voor de e-mail melding. Bijvoorbeeld: "shutdown van de machine vmName voor Lab: labName."
+    6. Selecteer **hoofd tekst**en definieer de inhoud van de hoofd tekst voor e-mail meldingen. Bijvoorbeeld: "vmName is gepland om in 15 minuten af te sluiten. Sla deze afsluiting over door te klikken op: URL. Afsluiten uitstellen gedurende een uur: delayUrl60. Afsluiten uitstellen gedurende 2 uur: delayUrl120. "
 
-        ![Hoofdtekst van de JSON-Schema aanvragen](./media/devtest-lab-auto-shutdown/email-options.png)
-1. Selecteer **Opslaan** op de werkbalk. Nu kunt u de **URL voor HTTP POST**. Selecteer de knop kopiëren aan de URL naar het Klembord kopiëren. 
+        ![Hoofdtekst van aanvraag voor JSON-schema](./media/devtest-lab-auto-shutdown/email-options.png)
+1. Selecteer **Opslaan** op de werkbalk. Nu kunt u de URL voor **http post**kopiëren. Selecteer de knop kopiëren om de URL naar het klem bord te kopiëren. 
 
     ![WebHook URL](./media/devtest-lab-auto-shutdown/webhook-url.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor meer informatie over het instellen van alle beleidsregels, [definiëren van beleid voor lab maken in Azure DevTest Labs](devtest-lab-set-lab-policy.md).
+Zie [Lab-beleid in azure DevTest Labs definiëren](devtest-lab-set-lab-policy.md)voor meer informatie over het instellen van alle beleids regels.

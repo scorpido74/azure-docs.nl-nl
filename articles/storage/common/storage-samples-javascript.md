@@ -7,20 +7,23 @@ ms.date: 09/26/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 363739bbab67b92e78e0cdb56cf98cdb8e1446eb
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 44fe68b8b04a1192c928e04c7d2a9d147f400130
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71409101"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748286"
 ---
 # <a name="azure-storage-samples-using-javascript"></a>Azure Storage voor beelden met behulp van Java script
 
 In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag plaatsen en de scenario's die in elk voor beeld worden behandeld. Klik op de koppelingen om de bijbehorende voorbeeld code in GitHub weer te geven.
 
-## <a name="blob-samples"></a>BLOB-voor beelden
+> [!NOTE]
+> In deze voor beelden wordt de Azure Storage java script V10 toevoegen-bibliotheek gebruikt. Zie voor [beelden](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob/samples) in de GitHub-opslag plaats voor V12-code.
 
-| **Scenario** | **Voorbeeld code** |
+## <a name="blob-samples-v10"></a>Voor beelden van blobs (v10 toevoegen)
+
+| **Scenario** | **Voorbeeldcode** |
 |--------------|-----------------|
 | Blok-blob | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L43) |
 | Clientversleuteling | [Sleutels voor opslag accounts beheren in een Azure-sleutel waarde met Java script](https://github.com/Azure-Samples/key-vault-node-storage-accounts) |
@@ -34,18 +37,18 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 | Meta gegevens van container | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L409) |
 | Container eigenschappen | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L377) |
 | Paginabereiken ophalen | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L170) |
-| Lease-BLOB | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L216) |
+| Lease Blob | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L216) |
 | Lease-container | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L185) |
 | BLOB/container weer geven | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L134) |
-| Pagina-blob | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L129) |
-| GEBASEERD | [Shared Access Signature in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L257) |
+| Pagina-BLOB | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L129) |
+| SAS | [Shared Access Signature in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L257) |
 | Service-eigenschappen | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L308) |
 | Cors-regels instellen | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/advanced.js#L152) |
 | Moment opname-BLOB | [Aan de slag met Azure Blob service in Java script](https://github.com/Azure-Samples/storage-blob-node-getting-started/blob/master/basic.js#L79) |
 
-## <a name="file-samples"></a>Bestands voorbeelden
+## <a name="file-samples-v10"></a>Bestands voorbeelden (v10 toevoegen)
 
-| **Scenario** | **Voorbeeld code** |
+| **Scenario** | **Voorbeeldcode** |
 |--------------|-----------------|
 | Shares/Directory's/bestanden maken | [Aan de slag met Azure File Service in Java script](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L97) |
 | Shares/mappen/bestanden verwijderen | [Aan de slag met Azure File Service in Java script](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L135) |
@@ -53,9 +56,9 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 | Mappen en bestanden weer geven | [Aan de slag met Azure File Service in Java script](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L115) |
 | Shares weer geven | [Aan de slag met Azure File Service in Java script](https://github.com/Azure-Samples/storage-file-node-getting-started/blob/master/fileSample.js#L187) |
 
-## <a name="queue-samples"></a>Wachtrij voorbeelden
+## <a name="queue-samples-v10"></a>Voor beelden van wachtrij (v10 toevoegen)
 
-| **Scenario** | **Voorbeeld code** |
+| **Scenario** | **Voorbeeldcode** |
 |--------------|-----------------|
 | Bericht toevoegen | [Aan de slag met Azure Queue service in Java script](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/basic.js#L142) |
 | Clientversleuteling | [Sleutels voor opslag accounts beheren in Azure Key Vault met Java script](https://github.com/Azure-Samples/key-vault-node-storage-accounts) |
@@ -71,9 +74,9 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 | Wachtrij statistieken | [Aan de slag met Azure Queue service in Java script](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/advanced.js#L149) |
 | Bericht bijwerken | [Aan de slag met Azure Queue service in Java script](https://github.com/Azure-Samples/storage-queue-node-getting-started/blob/master/basic.js#L176) |
 
-## <a name="table-samples"></a>Tabel voorbeelden
+## <a name="table-samples-v10"></a>Tabel voorbeelden (v10 toevoegen)
 
-| **Scenario** | **Voorbeeld code** |
+| **Scenario** | **Voorbeeldcode** |
 |--------------|-----------------|
 | Batch-entiteiten | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L87) |
 | Tabel maken | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L41) |
@@ -83,7 +86,7 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 | Entiteiten opvragen | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L59) |
 | Query tabellen | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L140) |
 | Bereik query | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/basic.js#L102) |
-| GEBASEERD | [Shared Access Signature in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L87) |
+| SAS | [Shared Access Signature in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L87) |
 | Tabel-ACL | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L255) |
 | Cors-regels voor tabel | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L149) |
 | Tabel eigenschappen | [Aan de slag met Azure Table service in Java script](https://github.com/Azure-Samples/storage-table-node-getting-started/blob/master/advanced.js#L188) |
@@ -108,7 +111,7 @@ Bekijk de volgende hand leidingen als u op zoek bent naar instructies voor het i
 
 Voor informatie over voor beelden voor andere talen:
 
-* .NET: [Azure Storage-voorbeelden met behulp van .NET](storage-samples-dotnet.md)
-* Java: [Azure Storage-voorbeelden met behulp van Java](storage-samples-java.md)
+* .NET: voor [beelden Azure Storage met .net](storage-samples-dotnet.md)
+* Java: [Azure Storage voor beelden met behulp van Java](storage-samples-java.md)
 * Python: [Azure Storage voor beelden met behulp van python](storage-samples-python.md)
-* Alle andere talen: [Azure Storage-voor beelden](storage-samples.md)
+* Alle andere talen: [Azure Storage](storage-samples.md) -voor beelden

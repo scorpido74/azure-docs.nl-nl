@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: mlearned
-ms.openlocfilehash: 8af0f998df2a92e51078a2e23806cca07ff08ca3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6152becb8debd0700ddab6190284514c6d6cf69d
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480084"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830051"
 ---
 # <a name="public-preview---private-azure-kubernetes-service-cluster"></a>Open bare preview-privé Azure Kubernetes service-cluster
 
@@ -81,16 +81,16 @@ Waar--Enable-Private-cluster is een verplichte vlag voor een persoonlijk cluster
 #### <a name="advanced-networking"></a>Geavanceerde netwerken  
 
 ```azurecli-interactive
-az aks create \ 
-    --resource-group <private-cluster-resource-group>\ 
-    --name <private-cluster-name> \ 
-    --load-balancer-sku standard
-    --enable-private-cluster 
-    --network-plugin azure \ 
-    --vnet-subnet-id <subnet-id> \ 
-    --docker-bridge-address 172.17.0.1/16 \ 
-    --dns-service-ip 10.2.0.10 \ 
-    --service-cidr 10.2.0.0/24 \ 
+az aks create \
+    --resource-group <private-cluster-resource-group> \
+    --name <private-cluster-name> \
+    --load-balancer-sku standard \
+    --enable-private-cluster \
+    --network-plugin azure \
+    --vnet-subnet-id <subnet-id> \
+    --docker-bridge-address 172.17.0.1/16 \
+    --dns-service-ip 10.2.0.10 \
+    --service-cidr 10.2.0.0/24 
 ```
 Waar--Enable-Private-cluster is een verplichte vlag voor een persoonlijk cluster 
 
@@ -108,6 +108,11 @@ Het eind punt van de API-server heeft geen openbaar IP-adres. Als gevolg hiervan
     * Klik op de zone Privé-DNS 
     * Virtuele netwerk koppeling in het linkerdeel venster selecteren
     * Maak een nieuwe koppeling om het VNET van de virtuele machine toe te voegen aan de Privé-DNS zone *(het duurt enkele minuten voordat de koppeling van de DNS-zone beschikbaar is)*
+    * Ga terug naar de resource groep MC_ * in de portal
+    * Selecteer het virtuele netwerk in het rechterdeel venster. De naam van het virtuele netwerk heeft de indeling AKS-vnet-*.
+    * Selecteer peerings in het linkerdeel venster
+    * Klik op toevoegen en voeg het virtuele netwerk van de VM toe en maak de peering.
+    * Ga naar het Vnet waar u de virtuele machine hebt, klik op Peerings en selecteer het virtuele netwerk AKS en maak de peering. Als de adresbereiken in het virtuele netwerk van AKS en het virtuele netwerk van de VM conflicteren, mislukt de peering. Raadpleeg dit [document][virtual-network-peering] voor meer informatie over peering van virtuele netwerken.
 * SSH naar de virtuele machine
 * Kubectl-hulp programma installeren en Kubectl-opdrachten uitvoeren
 
@@ -132,3 +137,5 @@ Het eind punt van de API-server heeft geen openbaar IP-adres. Als gevolg hiervan
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [private-link-service]: https://docs.microsoft.com/azure/private-link/private-link-service-overview
+[virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
+

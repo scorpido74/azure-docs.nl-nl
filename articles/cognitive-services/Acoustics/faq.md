@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: noelc
 ROBOTS: NOINDEX
-ms.openlocfilehash: f0484fc9fc2af5514ba0f5b61277146a51757057
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: fa4b6499260219b0eb8ea4df4b4ccfd5263b57bb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855034"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770200"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>Veelgestelde vragen over project akoestische
 
@@ -28,7 +28,7 @@ Het project akoestische pakket met invoeg toepassingen is een akoestisch systeem
 
 U kunt de invoeg [toepassing project akoestische unit-eenheid](https://www.microsoft.com/download/details.aspx?id=57346) of de [project akoestische Unreal-invoeg toepassing](https://www.microsoft.com/download/details.aspx?id=58090)downloaden.
 
-## <a name="does-project-acoustics-support-ltxgt-platform"></a>Ondersteunt &lt;project akoestische het x&gt; -platform?
+## <a name="does-project-acoustics-support-ltxgt-platform"></a>Ondersteunt project akoestische &lt;x&gt;-platform?
 
 De ondersteuning voor het ontwikkelings platform van het project is gebaseerd op de behoeften van de klant. Neem contact met ons op op het [Forum project akoestische geluids problemen](https://github.com/microsoft/ProjectAcoustics/issues) voor meer informatie over ondersteuning voor extra platforms.
 
@@ -75,6 +75,10 @@ Project akoestische biedt nauw keurige en betrouw bare akoestische para meters, 
 ## <a name="what-exactly-happens-during-baking"></a>Wat gebeurt er precies tijdens "Baking"?
 
 Een maken bestaat uit akoestische Golf simulaties van cuboid simulatie regio's die zijn gecentreerd op elke listener-test.
+
+## <a name="is-my-source-content-secure"></a>Is mijn bron inhoud beveiligd?
+
+De geometrie van de bron scène wordt niet geüpload naar de Cloud. In plaats daarvan werkt simulatie op een voxelization van uw scène, die wordt gecombineerd met test locatie gegevens en opgeslagen in een eigen indeling.     
 
 ## <a name="next-steps"></a>Volgende stappen
 * Probeer de voorbeeld inhoud of [Unreal-voorbeeld inhoud](unreal-quickstart.md) van de [project akoestische-eenheid](unity-quickstart.md)

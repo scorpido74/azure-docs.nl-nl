@@ -1,5 +1,5 @@
 ---
-title: Bestanden uploaden naar een Azure Media Services-account met behulp van REST | Microsoft Docs
+title: Bestanden uploaden naar een Azure Media Services v3-account met behulp van REST | Microsoft Docs
 description: Meer informatie over het verkrijgen van media-inhoud in Media Services door het maken en uploaden van assets.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 78c07330558241c889f284bcaf7302ce1327b5b8
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: a9fd38b857f513ff67ae2fbe4ccd0c6c9540967e
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70389807"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779158"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Bestanden uploaden naar een Media Services-account met behulp van REST
 
@@ -39,7 +39,7 @@ Als u wilt de in dit onderwerp beschreven stappen hebt voltooid, hebt u naar:
 
 In deze sectie wordt beschreven hoe u een nieuwe Asset maakt.
 
-1. Activa -> selecteren om**activa te maken of bij te werken**.
+1. Selecteer **activa** -> **een Asset te maken of bij te werken**.
 2. Druk op **Verzenden**.
 
     ![Een Asset maken](./media/upload-files/postman-create-asset.png)
@@ -50,10 +50,10 @@ U ziet het **antwoord** met de informatie over nieuw gemaakte activa.
 
 In deze sectie wordt uitgelegd hoe u een SAS-URL kunt ophalen die is gegenereerd voor de gemaakte Asset. De SAS-URL is gemaakt met lees-en schrijf machtigingen en kan worden gebruikt voor het uploaden van digitale bestanden in de Asset-container.
 
-1. **Activa** -> selecteren**lijst van de Asset-url's**.
+1. Selecteer **activa** -> **de Asset-Url's weer te geven**.
 2. Druk op **Verzenden**.
 
-    ![Een bestand uploaden](./media/upload-files/postman-create-sas-locator.png)
+    ![Bestand uploaden](./media/upload-files/postman-create-sas-locator.png)
 
 U ziet het **antwoord** met de informatie over de url's van de Asset. Kopieer de eerste URL en gebruik deze om uw bestand te uploaden.
 
@@ -63,4 +63,4 @@ Gebruik de Azure Storage Api's of Sdk's (bijvoorbeeld de [opslag rest API](../..
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Zelfstudie: Extern bestand coderen op basis van URL en video streamen - REST](stream-files-tutorial-with-rest.md)
+[Zelf studie: een extern bestand coderen op basis van URL en de video-REST streamen](stream-files-tutorial-with-rest.md)

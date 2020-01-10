@@ -1,28 +1,28 @@
 ---
-title: Doel-Updates met behulp van SCCM-verzamelingen in Azure Automation - updatebeheer
-description: Dit artikel is bedoeld om u te helpen bij het configureren van System Center Configuration Manager met deze oplossing voor het beheren van updates van met SCCM beheerde computers.
+title: Azure Updatebeheer gebruiken met Configuration Manager-clients
+description: Dit artikel is bedoeld om u te helpen bij het configureren van micro soft endpoint Configuration Manager met deze oplossing voor het implementeren van software-updates op ConfigMgr-clients.
 services: automation
 ms.subservice: update-management
 ms.date: 03/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: b52db95b6a6ce21a5e5b68342ac123526d11ca62
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 9df401ec9c6d11bfef5d1d60833c855029f8ca01
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75417626"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769945"
 ---
-# <a name="integrate-system-center-configuration-manager-with-update-management"></a>System Center Configuration Manager integreren met updatebeheer
+# <a name="deploy-updates-to-microsoft-endpoint-configuration-manager-clients-with-update-management"></a>Updates implementeren voor micro soft endpoint Configuration Manager-clients met Updatebeheer
 
-Klanten die hebben geïnvesteerd in System Center Configuration Manager voor het beheren van pc's, servers en mobiele apparaten, rekenen ook op zijn kracht en volwassenheid bij het beheren van software-updates als onderdeel van hun software-updatebeheercyclus.
+Klanten die hebben geïnvesteerd in micro soft endpoint Configuration Manager om Pc's, servers en mobiele apparaten te beheren, zijn ook afhankelijk van de kracht en de verval datum van het beheer van software-updates als onderdeel van hun software-update beheer cyclus.
 
-U kunt rapporteren en beheerde Windows-servers bijwerken door te maken en vooraf staging-software-update-implementaties in Configuration Manager en gedetailleerde status van de voltooide update-implementaties met behulp van de [updatebeheer-oplossing](automation-update-management.md). Als u Configuration Manager gebruikt voor rapportage over updatenaleving, maar niet voor het beheren van update-implementaties met uw Windows-servers, kunt u blijven rapporteren aan Configuration Manager terwijl beveiligingsupdates worden beheerd met de updatebeheer-oplossing.
+U kunt rapporteren en beheerde Windows-servers bijwerken door te maken en vooraf staging-software-update-implementaties in Configuration Manager en gedetailleerde status van de voltooide update-implementaties met behulp van de [updatebeheer-oplossing](automation-update-management.md). Als u Configuration Manager gebruikt voor het rapporteren van de naleving van updates, maar niet voor het beheren van update-implementaties met uw Windows-servers, kunt u door gaan met de rapportage aan Configuration Manager terwijl beveiligings updates worden beheerd met de Updatebeheer oplossing.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Hebt u de [oplossing Update Management](automation-update-management.md) toegevoegd aan uw Automation-account.
-* Windows-servers die worden beheerd door uw System Center Configuration Manager-omgeving moeten ook rapporteren aan de Log Analytics-werkruimte waar ook de Updatebeheer-oplossing is ingeschakeld.
-* Deze functie is ingeschakeld in System Center Configuration Manager current branch versie 1606 en hoger. Als u uw Configuration Manager centrale beheer site of een zelfstandige primaire site wilt integreren met Azure Monitor logboeken en verzamelingen importeren, controleert [u Configuration Manager verbinding maken met Azure monitor logboeken](../azure-monitor/platform/collect-sccm.md).  
+* Windows-servers die momenteel worden beheerd door uw Configuration Manager omgeving moeten ook rapporteren aan de Log Analytics-werk ruimte waarop ook de Updatebeheer oplossing is ingeschakeld.
+* Deze functie is ingeschakeld in Configuration Manager huidige branch versie 1606 en hoger. Als u uw Configuration Manager centrale beheer site of een zelfstandige primaire site wilt integreren met Azure Monitor logboeken en verzamelingen importeren, controleert [u Configuration Manager verbinding maken met Azure monitor logboeken](../azure-monitor/platform/collect-sccm.md).  
 * Windows-agents moeten worden geconfigureerd om te communiceren met een WSUS-server (Windows Server Update Services of toegang hebben tot Microsoft Update als ze geen beveiligingsupdates krijgen van Configuration Manager.   
 
 Hoe u clients die worden gehost in Azure IaaS met uw bestaande Configuration Manager-omgeving beheert, hangt hoofdzakelijk af van de verbinding die u hebt tussen Azure-datacenters en uw infrastructuur. Deze verbinding is van invloed op de ontwerpwijzigingen die u mogelijk moet aanbrengen in uw Configuration Manager-infrastructuur en de daarmee samenhangende kosten voor de ondersteuning van de benodigde wijzigingen. Om te begrijpen welke overwegingen u wilt evalueren voordat u doorgaat, leest u [Configuration Manager on Azure - Frequently Asked Questions](/sccm/core/understand/configuration-manager-on-azure#networking) (veelgestelde vragen).

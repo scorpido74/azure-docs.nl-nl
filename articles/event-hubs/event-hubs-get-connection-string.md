@@ -10,20 +10,20 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 02/19/2019
 ms.author: spelluru
-ms.openlocfilehash: edd197fb6d578df064c67a422767e3e70a0c8142
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 744151a1ce8cde630e26c17ccf06569ebd0efb61
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66158934"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770999"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Een Event Hubs-verbindingsreeks ophalen
 
-Voor het gebruik van Event Hubs, moet u een Event Hubs-naamruimte maken. Een naamruimte is een scoping container voor meerdere eventhubs of Kafka-onderwerpen. Deze naamruimte biedt u een unieke [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Zodra een naamruimte is gemaakt, kunt u de verbindingsreeks die nodig zijn voor communicatie met Event Hubs kunt verkrijgen.
+Voor het gebruik van Event Hubs, moet u een Event Hubs-naamruimte maken. Een naam ruimte is een container voor het bereik van meerdere Event hubs of Kafka-onderwerpen. Deze naamruimte biedt u een unieke [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Zodra een naamruimte is gemaakt, kunt u de verbindingsreeks die nodig zijn voor communicatie met Event Hubs kunt verkrijgen.
 
 De verbindingsreeks voor Azure Event Hubs bevat de volgende onderdelen die zijn ingesloten in het
 
-* FQDN-naam = de FQDN-naam van de Event hubs-naamruimte die u hebt gemaakt (deze bevat de naam van de Event hubs-naamruimte gevolgd door servicebus.windows.net)
+* FQDN = de FQDN van de Event hubs-naam ruimte die u hebt gemaakt (deze bevat de naam van de Event hubs-naam ruimte gevolgd door servicebus.windows.net)
 * SharedAccessKeyName = de naam die u hebt gekozen voor de SAS-sleutels van uw toepassing
 * SharedAccessKey = de gegenereerde waarde van de sleutel.
 
@@ -38,24 +38,24 @@ In dit artikel leidt u door de verschillende manieren voor het verkrijgen van de
 
 ## <a name="get-connection-string-from-the-portal"></a>Verbindingsreeks ophalen uit de portal
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
-2. Selecteer **alle services** in het linkermenu van de navigatie. 
-3. Selecteer **Event Hubs** in de **Analytics** sectie. 
-4. Selecteer in de lijst van eventhubs, de event hub.
-6. Op de **Event Hubs Namespace** weergeeft, schakelt **gedeeld toegangsbeleid** in het menu links.
+2. Selecteer **alle services** in het navigatie menu links. 
+3. Selecteer **Event hubs** in het gedeelte **Analytics** . 
+4. Selecteer uw Event Hub in de lijst met Event hubs.
+6. Selecteer op de pagina **Event hubs naam ruimte** de optie **beleid voor gedeelde toegang** in het menu links.
 
-    ![Gedeeld toegangsbeleid menu-item](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
-7. Selecteer een **gedeeld toegangsbeleid** in de lijst met beleidsregels. De standaard één met de naam: **RootManageSharedAccessPolicy**. U kunt een beleid met de juiste machtigingen (lezen, schrijven) toevoegen, en dat beleid. 
+    ![Menu-item voor Shared Access policies](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
+7. Selecteer een **gedeeld toegangs beleid** in de lijst met beleids regels. De standaard naam is: **RootManageSharedAccessPolicy**. U kunt een beleid met de juiste machtigingen toevoegen (lezen, schrijven) en dat beleid gebruiken. 
 
-    ![Eventhubs gedeelde toegangsbeleid](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
-8. Selecteer de **kopie** naast de **verbindingsreeks-primaire sleutel** veld. 
+    ![Beleid voor gedeelde toegang Event Hubs](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
+8. Selecteer de knop **kopiëren** naast het veld **verbindings reeks-primaire sleutel** . 
 
-    ![Eventhubs - ophalen verbindingsreeks](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
+    ![Event Hubs-connection string ophalen](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
 
 ## <a name="getting-the-connection-string-with-azure-powershell"></a>De verbindingsreeks met Azure PowerShell ophalen
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-U kunt de [Get-AzEventHubNamespaceKey](/powershell/module/az.eventhub/get-azeventhubkey) om op te halen van de verbindingsreeks voor de naam van de specifieke beleidsregel, zoals hieronder wordt weergegeven:
+U kunt de [Get-AzEventHubNamespaceKey](/powershell/module/az.eventhub/get-azeventhubkey) gebruiken om de Connection String op te halen voor de naam van het specifieke beleid/de regel, zoals hieronder wordt weer gegeven:
 
 ```azurepowershell-interactive
 Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
@@ -68,7 +68,13 @@ U kunt het volgende gebruiken om op te halen van de verbindingsreeks voor de naa
 az eventhubs namespace authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --name RootManageSharedAccessKey
 ```
 
-Zie voor meer informatie over Azure CLI-opdrachten voor Event Hubs, [Azure CLI voor Event Hubs](/cli/azure/eventhubs).
+U kunt ook het volgende gebruiken om de connection string voor een EventHub-entiteit op te halen:
+
+```azurecli-interactive
+az eventhubs eventhub authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --eventhub-name dummyeventhub --name RootManageSharedAccessKey
+```
+
+Zie voor meer informatie over Azure CLI-opdrachten voor Event Hubs [Azure CLI voor Event hubs](/cli/azure/eventhubs).
 
 ## <a name="next-steps"></a>Volgende stappen
 

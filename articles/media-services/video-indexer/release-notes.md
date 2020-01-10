@@ -10,24 +10,73 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 10/27/2019
+ms.date: 01/07/2020
 ms.author: juliako
-ms.openlocfilehash: 0583c0093d240026e3ebcdad7b14494f07986ec2
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 88effd58e807d39e5915aa41425ecf2e8ca8e3cc
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968717"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832316"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Release opmerkingen bij Azure Media Services Video Indexer
 
-Dit artikel bevat informatie over het volgende om up-to-date te blijven met de meest recente ontwikkelingen:
+>Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren en te plakken: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` in uw RSS feed-lezer.
 
-* De nieuwste releases
+Als u wilt bijhouden met de meest recente ontwikkelingen, vindt in dit artikel u informatie over:
+
+* De meest recente versies
 * Bekende problemen
 * Opgeloste fouten
-* Afgeschafte functionaliteit
+* Afgeschafte functies
 
+## <a name="december-2019"></a>December 2019
+
+### <a name="update-transcript-with-the-new-api"></a>Transcript bijwerken met de nieuwe API
+
+Werk een specifieke sectie in het transcript bij met de API [Update-video-index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?&pattern=update) .
+
+### <a name="fix-account-configuration-from-the-video-indexer-portal"></a>De account configuratie van de Video Indexer Portal herstellen
+
+U kunt nu Media Services configuratie van de verbinding bijwerken om zelf hulp te krijgen met problemen als: 
+
+* onjuiste Azure Media Services resource
+* wachtwoord wijzigingen
+* Media Services resources zijn verplaatst tussen abonnementen  
+
+Als u de account configuratie wilt herstellen, gaat u in het Video Indexer Portal naar instellingen > Account tabblad (als eigenaar).
+
+### <a name="configure-the-custom-vision-account"></a>Het aangepaste gezichts account configureren
+
+Configureer het aangepaste gezichts account op betaalde accounts met behulp van de Video Indexer-Portal (voorheen werd dit alleen ondersteund door de API). Als u dit wilt doen, meldt u zich aan bij de Video Indexer-Portal en kiest u model aanpassing > animatie tekens > configureren. 
+
+### <a name="scenes-shots-and-keyframes--now-in-one-insight-pane"></a>Scènes, afbeeldingen en keyframes: nu in één inzicht deel venster
+
+Scènes, afbeeldingen en keyframes zijn nu samengevoegd in één inzicht voor eenvoudiger gebruik en navigatie. Wanneer u de gewenste scène selecteert, kunt u zien welke opnamen en keyframes het bevat. 
+
+### <a name="notification-about-a-long-video-name"></a>Melding over een lange video naam
+
+Wanneer een video naam langer is dan 80 tekens, bevat Video Indexer een beschrijvende fout bij het uploaden.
+
+### <a name="streaming-endpoint-is-disabled-notification"></a>Melding van streaming-eind punt is uitgeschakeld
+
+Wanneer streaming-eind punt is uitgeschakeld, wordt in Video Indexer een beschrijvende fout weer gegeven op de pagina van de speler.
+
+### <a name="error-handling-improvement"></a>Verbetering van fout afhandeling
+
+De status code 409 wordt nu geretourneerd door de [video opnieuw te indexeren](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video? https://api-portal.videoindexer.ai/docs/services/Operations/operations/Re-Index-Video?) en [video-index](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Update-Video-Index?) api's bij te werken voor het geval een video actief wordt geïndexeerd, om te voor komen dat de huidige herindex wijzigingen per ongeluk worden overschreven.
+
+## <a name="november-2019"></a>November 2019
+ 
+* Ondersteuning voor Koreaanse aangepaste taal modellen
+
+    Video indexer ondersteunt nu aangepaste taal modellen in het Koreaans (`ko-KR`) in zowel de API als de portal. 
+* Nieuwe talen die worden ondersteund voor spraak naar tekst (STT)
+
+    Video Indexer-Api's bieden nu ondersteuning voor STT in Arabische Levantine (AR-SY), Engels UK dialect (en-GB) en Engels Australisch dialect (en-AU).
+    
+    Als u video wilt uploaden, worden de HANS naar zh-CN vervangen, maar worden beide ondersteund, maar wordt zh-CN aanbevolen en nauw keuriger.
+    
 ## <a name="october-2019"></a>Oktober 2019
  
 * Zoeken naar tekst met animatie in de galerie

@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: 5f260ab1df5341a981a388533b06cbcda400e4da
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: feaecbf3b9a39d77f6a60593c8e5f57f14c24ad7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74941828"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768976"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -26,8 +26,8 @@ Het ontwikkelen van functies op uw lokale computer en het publiceren van deze na
 > * [Registreer trigger-en binding-extensies.](#register-extensions)
 > * [Geef opslag en andere verbindingen op.](#local-settings-file)
 > * [Een functie maken op basis van een trigger en een taalspecifieke sjabloon.](#create-func)
-> * [De functie lokaal uitvoeren](#start)
-> * [Het project publiceren naar Azure](#publish)
+> * [Voer de functie lokaal uit.](#start)
+> * [Publiceer het project naar Azure.](#publish)
 
 ## <a name="core-tools-versions"></a>Versies van Core Tools
 
@@ -56,7 +56,7 @@ In de volgende stappen wordt NPM gebruikt om de belangrijkste Hulpprogram Ma's i
 
 1. Installeer [Node.js], dat NPM omvat.
     - Voor versie 2. x van de hulpprogram ma's worden alleen node. js 8,5 en latere versies ondersteund.
-    - Voor versie 3. x van de hulpprogram ma's worden alleen node 10 en latere versies ondersteund.
+    - Voor versie 3. x van de hulpprogram ma's worden alleen node. js 10 en latere versies ondersteund.
 
 1. Installeer het pakket met kern Hulpprogramma's:
 
@@ -127,9 +127,8 @@ De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulppro
 
 1. Controleer het `/etc/apt/sources.list.d/dotnetdev.list`-bestand voor een van de juiste Linux-versie teken reeksen die hieronder worden weer gegeven:
 
-    | Linux-distributie | Version |
+    | Linux-distributie | Versie |
     | --------------- | ----------- |
-    | Debian 10 | `buster` |
     | Debian 9 | `stretch` |
     | Debian 8 | `jessie` |
     | Ubuntu 18,10    | `cosmic`    |
@@ -149,13 +148,13 @@ De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulppro
     sudo apt-get install azure-functions-core-tools
     ```
 
-1. Als u niet van plan bent om [uitbreidings bundels]te gebruiken, installeert u [.net Core 2. x SDK voor Linux](https://www.microsoft.com/net/download/linux).
+1. Als u geen [uitbreidings bundels]wilt gebruiken, installeert u [.net Core 2. x SDK voor Linux](https://www.microsoft.com/net/download/linux).
 
 ## <a name="create-a-local-functions-project"></a>Een lokaal Functions-project maken
 
 Een project directory functions bevat de bestanden [host. json](functions-host-json.md) en [Local. settings. json](#local-settings-file), samen met submappen die de code voor afzonderlijke functies bevatten. Deze map is het equivalent van een functie-app in Azure. Zie de [hand leiding voor de Azure functions-ontwikkel aars](functions-reference.md#folder-structure)voor meer informatie over de mapstructuur van de functies.
 
-Versie 2. x vereist dat u een standaard taal voor het project selecteert wanneer deze wordt geïnitialiseerd en alle functies worden toegevoegd standaard taal sjablonen gebruiken. In versie 1. x geeft u de taal op telkens wanneer u een functie maakt.
+Versie 2. x vereist dat u een standaard taal voor uw project selecteert wanneer deze wordt geïnitialiseerd. In versie 2. x worden alle functies toegevoegd standaard taal sjablonen gebruiken. In versie 1. x geeft u de taal op telkens wanneer u een functie maakt.
 
 Voer in het Terminal venster of vanaf een opdracht prompt de volgende opdracht uit om het project en de lokale Git-opslag plaats te maken:
 
@@ -227,15 +226,15 @@ Als er geen geldige opslag connection string is ingesteld voor [`AzureWebJobsSto
 
 ### <a name="get-your-storage-connection-strings"></a>Uw opslag verbindings reeksen ophalen
 
-Zelfs wanneer u de opslag emulator gebruikt voor ontwikkeling, wilt u wellicht testen met een echte opslag verbinding. Ervan uitgaande dat u al [een opslag account hebt gemaakt](../storage/common/storage-create-storage-account.md), kunt u op een van de volgende manieren een geldig opslag Connection String krijgen:
+Zelfs wanneer u de Microsoft Azure-opslagemulator voor ontwikkeling gebruikt, wilt u wellicht testen met een echte opslag verbinding. Ervan uitgaande dat u al [een opslag account hebt gemaakt](../storage/common/storage-create-storage-account.md), kunt u op een van de volgende manieren een geldig opslag Connection String krijgen:
 
-- Zoek en selecteer **opslag accounts**vanuit het [Azure-portal]. 
+- Zoek en selecteer **opslag accounts**vanuit het [Azure Portal]. 
   ![opslag accounts selecteren van Azure Portal](./media/functions-run-local/select-storage-accounts.png)
   
   Selecteer uw opslag account, selecteer **toegangs sleutels** in **instellingen**en kopieer een van de **verbindings reeks** waarden.
   connection string ![kopiëren van Azure Portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
-- Gebruik [Azure Storage Explorer](https://storageexplorer.com/) om verbinding te maken met uw Azure-account. Vouw in de **Explorer**uw abonnement uit, selecteer uw opslag account en kopieer de primaire of secundaire Connection String.
+- Gebruik [Azure Storage Explorer](https://storageexplorer.com/) om verbinding te maken met uw Azure-account. In de **Explorer**breidt u uw abonnement uit, vouwt u **opslag accounts**uit, selecteert u uw opslag account en kopieert u de primaire of secundaire Connection String.
 
   ![connection string kopiëren van Storage Explorer](./media/functions-run-local/storage-explorer.png)
 
@@ -323,7 +322,7 @@ In versie 2. x van de runtime varieert de start opdracht, afhankelijk van de taa
 func start --build
 ```
 
-#### <a name="javascript"></a>Javascript
+#### <a name="javascript"></a>JavaScript
 
 ```command
 func start
@@ -352,8 +351,8 @@ func host start
 | **`--cert`** | Het pad naar een pfx-bestand dat een persoonlijke sleutel bevat. Wordt alleen gebruikt met `--useHttps`. Alleen versie 2. x. |
 | **`--cors-credentials`** | Alleen-lezen geverifieerde aanvragen (cookies en de verificatie header) versie 2. x toestaan. |
 | **`--cors`** | Een door komma's gescheiden lijst met CORS-oorsprong, zonder spaties. |
-| **`--language-worker`** | Argumenten voor het configureren van de taal medewerker. Alleen versie 2. x. |
-| **`--nodeDebugPort -n`** | De poort voor het fout opsporingsprogramma van het knoop punt dat moet worden gebruikt. Standaard: een waarde van Launch. json of 5858. Alleen versie 1. x. |
+| **`--language-worker`** | Argument voor het configureren van de taal medewerker. U kunt bijvoorbeeld fout opsporing voor taal werk nemer inschakelen door [poort voor fout opsporing en andere vereiste argumenten](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)op te geven. Alleen versie 2. x. |
+| **`--nodeDebugPort -n`** | De poort voor de node. js-fout opsporing die moet worden gebruikt. Standaard: een waarde van Launch. json of 5858. Alleen versie 1. x. |
 | **`--password`** | Ofwel het wacht woord of een bestand dat het wacht woord voor een pfx-bestand bevat. Wordt alleen gebruikt met `--cert`. Alleen versie 2. x. |
 | **`--port -p`** | De lokale poort waarop moet worden geluisterd. Standaard waarde: 7071. |
 | **`--pause-on-error`** | Wacht op extra invoer voordat het proces wordt afgesloten. Wordt alleen gebruikt bij het starten van kern Hulpprogramma's van een Integrated Development Environment (IDE).|
@@ -372,7 +371,7 @@ Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
 >[!IMPORTANT]
->Bij lokaal uitvoeren wordt verificatie niet afgedwongen voor HTTP-eind punten. Dit betekent dat alle lokale HTTP-aanvragen worden verwerkt als `authLevel = "anonymous"`. Zie het artikel over de [http-binding](functions-bindings-http-webhook.md#authorization-keys)voor meer informatie.
+>Bij lokaal uitvoeren wordt de autorisatie niet afgedwongen voor HTTP-eind punten. Dit betekent dat alle lokale HTTP-aanvragen worden verwerkt als `authLevel = "anonymous"`. Zie het artikel over de [http-binding](functions-bindings-http-webhook.md#authorization-keys)voor meer informatie.
 
 ### <a name="passing-test-data-to-a-function"></a>Test gegevens door geven aan een functie
 
@@ -474,7 +473,7 @@ De volgende publicatie opties zijn van toepassing voor beide versies, 1. x en 2.
 
 | Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
-| **`--publish-local-settings -i`** |  Publiceer instellingen in Local. settings. json naar Azure en vraag om te worden overschreven als de instelling al bestaat. Als u de opslag emulator gebruikt, wijzigt u eerst de app-instelling in een [echte opslag verbinding](#get-your-storage-connection-strings). |
+| **`--publish-local-settings -i`** |  Publiceer instellingen in Local. settings. json naar Azure en vraag om te worden overschreven als de instelling al bestaat. Als u de Microsoft Azure-opslagemulator gebruikt, wijzigt u eerst de app-instelling in een [echte opslag verbinding](#get-your-storage-connection-strings). |
 | **`--overwrite-settings -y`** | De vraag om app-instellingen te overschrijven onderdrukken wanneer `--publish-local-settings -i` wordt gebruikt.|
 
 De volgende publicatie opties worden alleen ondersteund in versie 2. x:
@@ -516,9 +515,9 @@ De volgende opties voor de implementatie van de aangepaste container zijn beschi
 
 De aanbevolen manier om de uitvoering van uw functies te controleren is door te integreren met Azure-toepassing Insights. U kunt ook uitvoerings logboeken streamen naar uw lokale computer. Zie [Azure functions bewaken](functions-monitoring.md)voor meer informatie.
 
-### <a name="enable-application-insights-integration"></a>Integratie van Application Insights inschakelen
+### <a name="application-insights-integration"></a>Application Insights-integratie
 
-Wanneer u een functie-app maakt in de Azure Portal, wordt de Application Insights-integratie standaard voor u uitgevoerd. Wanneer u echter uw functie-app maakt met behulp van Azure CLI, wordt de integratie in uw functie-app in azure niet uitgevoerd.
+Application Insights integratie moet worden ingeschakeld wanneer u de functie-app in azure maakt. Als uw functie-app om een bepaalde reden niet is verbonden met een Application Insights-exemplaar, is het eenvoudig om deze integratie uit te voeren in de Azure Portal. 
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
@@ -530,7 +529,7 @@ U kunt een stroom weer geven van de logboek bestanden die worden gegenereerd doo
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
-Voor dit type streaming-logboeken moet u [Application Insights-integratie inschakelen](#enable-application-insights-integration) voor uw functie-app.   
+Voor dit type streaming-logboeken moet Application Insights integratie zijn ingeschakeld voor uw functie-app.   
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -541,7 +540,7 @@ Meer informatie over het ontwikkelen, testen en publiceren van Azure Functions m
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure-portal]: https://portal.azure.com 
+[Azure Portal]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows
 [`FUNCTIONS_WORKER_RUNTIME`]: functions-app-settings.md#functions_worker_runtime
 [`AzureWebJobsStorage`]: functions-app-settings.md#azurewebjobsstorage

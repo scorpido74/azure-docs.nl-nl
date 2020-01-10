@@ -1,31 +1,28 @@
 ---
-title: Data flow koppelen nieuwe vertakkings transformatie
-description: Nieuwe vertakkings transformatie Azure Data Factory toewijzings gegevens stroom
+title: Meerdere vertakkingen in toewijzing van gegevens stroom
+description: Gegevens stromen repliceren in toewijzing van gegevens stroom met meerdere vertakkingen
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/12/2019
-ms.openlocfilehash: b4617689fe1ab14856bde9a4e8134b12aa6d815b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.date: 01/08/2020
+ms.openlocfilehash: 71fb9f1ba9952be0e6b3910dd1079aa6d3c0482d
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930302"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834505"
 ---
-# <a name="azure-data-factory-mapping-data-flow-new-branch-transformation"></a>Nieuwe vertakkings transformatie Azure Data Factory toewijzings gegevens stroom
+# <a name="creating-a-new-branch-in-mapping-data-flow"></a>Een nieuwe vertakking maken in de stroom voor het toewijzen van gegevens
 
-![Vertakkings opties](media/data-flow/menu.png "Menuknop")
+Voeg een nieuwe vertakking toe om meerdere bewerkingen en trans formaties voor dezelfde gegevens stroom uit te voeren. Het toevoegen van een nieuwe vertakking is handig als u dezelfde bron wilt gebruiken voor meerdere sinks of voor het samen voegen van gegevens.
 
-Vertakkingen nemen de huidige gegevens stroom in uw gegevens stroom en repliceert deze naar een andere stroom. Gebruik nieuwe vertakking om meerdere sets bewerkingen en trans formaties uit te voeren op dezelfde gegevens stroom.
+Een nieuwe vertakking kan vanuit de transformatie lijst worden toegevoegd, vergelijkbaar met andere trans formaties. **Nieuwe vertakkingen** zijn alleen beschikbaar als actie wanneer er een trans formatie is die volgt op de trans formatie die u wilt vertakkingen.
 
-Voor beeld: uw gegevens stroom heeft een bron transformatie met een geselecteerde set kolommen en gegevens type conversies. Vervolgens plaatst u onmiddellijk na die bron een afgeleide kolom. In de afgeleide kolom maakt u een nieuw veld waarin de voor naam en achternaam worden gecombineerd om een nieuw veld "volledige naam" te maken.
+![Een nieuwe vertakking toevoegen](media/data-flow/new-branch2.png "Een nieuwe vertakking toevoegen")
 
-U kunt deze nieuwe stroom behandelen met een reeks trans formaties en een Sink op één rij en nieuwe vertakking gebruiken om een kopie van die stroom te maken, waar u dezelfde gegevens kunt transformeren met een andere set trans formaties. Door het transformeren van de gekopieerde gegevens in een afzonderlijke vertakking kunt u die gegevens vervolgens op een andere locatie ontsleutelen.
+In het onderstaande voor beeld lezen de gegevens stroom de taxi reis gegevens. Uitvoer geaggregeerd per dag en leverancier is vereist. In plaats van twee afzonderlijke gegevens stromen te maken die van dezelfde bron worden gelezen, kan een nieuwe vertakking worden toegevoegd. Op deze manier kunnen beide aggregaties worden uitgevoerd als onderdeel van dezelfde gegevens stroom. 
 
-> [!NOTE]
-> ' Nieuwe vertakking ' wordt alleen weer gegeven als een actie in het menu + trans formatie wanneer er een volgende trans formatie wordt gevolgd door de huidige locatie waar u een vertakking wilt maken. Dit betekent dat de optie ' nieuwe vertakking ' aan het einde niet wordt weer gegeven, totdat u een andere trans formatie hebt toegevoegd na de selectie
-
-![Branche](media/data-flow/branch2.png "Vertakking 2")
+![Een nieuwe vertakking toevoegen](media/data-flow/new-branch.png "Een nieuwe vertakking toevoegen")

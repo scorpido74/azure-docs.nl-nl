@@ -4,12 +4,12 @@ description: Problemen met de installatie, registratie van Azure Backup Server e
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
-ms.openlocfilehash: bf641c4ef27ce561c005709e6de94f40855b9a5f
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 7fc27a2624fc38883135bdb6d2767625ab02a5a5
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665334"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830204"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Problemen met Azure Backup Server oplossen
 
@@ -46,11 +46,11 @@ U wordt aangeraden de onderstaande validatie uit te voeren voordat u begint met 
 | --- | --- | --- |
 | Back-up | Online herstel punt maken mislukt | **Fout bericht**: er kan geen moment opname van het geselecteerde volume worden gemaakt met de Windows Azure backup-agent. <br> **Tijdelijke oplossing**: Probeer de ruimte in het replica-en herstel punt volume te verg Roten.<br> <br> **Fout bericht**: de Windows Azure backup-agent kan geen verbinding maken met de OBEngine-service <br> **Tijdelijke oplossing**: Controleer of de OBEngine bestaat in de lijst met actieve services op de computer. Als de OBEngine-service niet wordt uitgevoerd, gebruikt u de opdracht ' net start OBEngine ' om de OBEngine-service te starten. <br> <br> **Fout bericht**: de wachtwoordzin voor versleuteling voor deze server is niet ingesteld. Configureer een wachtwoordzin voor versleuteling. <br> **Tijdelijke oplossing**: Probeer een coderings wachtwoord code te configureren. Als dit mislukt, voert u de volgende stappen uit: <br> <ol><li>Controleer of de Scratch locatie bestaat. Dit is de locatie die wordt vermeld in het REGI ster **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config**, met de naam **ScratchLocation** moet bestaan.</li><li> Als de Scratch locatie bestaat, kunt u opnieuw registreren met de oude wachtwoordzin. *Wanneer u een wachtwoordzin voor versleuteling configureert, kunt u deze op een veilige locatie opslaan.*</li><ol>|
 
-## <a name="the-vault-credentials-provided-are-different-from-the-vault-the-server-is-registered"></a>De beschik bare kluis referenties verschillen van de kluis waarop de server is geregistreerd
+## <a name="the-original-and-external-dpm-servers-must-be-registered-to-the-same-vault"></a>De oorspronkelijke en externe DPM-servers moeten worden geregistreerd bij dezelfde kluis
 
 | Bewerking | Foutdetails | Tijdelijke oplossing |
 | --- | --- | --- |
-| Herstellen | **Fout code**: CBPServerRegisteredVaultDontMatchWithCurrent/kluis referentie fout: 100110 <br/> <br/>**Fout bericht**: de beschik bare kluis referenties verschillen van de kluis waarop de server is geregistreerd | **Oorzaak**: dit probleem treedt op wanneer u bestanden probeert te herstellen op de alternatieve server van de oorspronkelijke server met behulp van een externe DPM-herstel optie en als de server die wordt hersteld en de oorspronkelijke server van waaruit de gegevens worden opgeslagen, niet zijn gekoppeld aan dezelfde Recovery service-kluis.<br/> <br/>**Tijdelijke oplossing** Om dit probleem op te lossen, moet u ervoor zorgen dat de oorspronkelijke en alternatieve server zijn geregistreerd bij dezelfde kluis.|
+| Herstellen | **Fout code**: CBPServerRegisteredVaultDontMatchWithCurrent/kluis referentie fout: 100110 <br/> <br/>**Fout bericht**: de oorspronkelijke en externe DPM-servers moeten zijn geregistreerd bij dezelfde kluis | **Oorzaak**: dit probleem treedt op wanneer u bestanden probeert te herstellen op de alternatieve server van de oorspronkelijke server met behulp van een externe DPM-herstel optie en als de server die wordt hersteld en de oorspronkelijke server van waaruit de gegevens worden opgeslagen, niet zijn gekoppeld aan dezelfde Recovery service-kluis.<br/> <br/>**Tijdelijke oplossing** Om dit probleem op te lossen, moet u ervoor zorgen dat de oorspronkelijke en alternatieve server zijn geregistreerd bij dezelfde kluis.|
 
 ## <a name="online-recovery-point-creation-jobs-for-vmware-vm-fail"></a>Taken voor het maken van online herstel punten voor VMware VM mislukken
 

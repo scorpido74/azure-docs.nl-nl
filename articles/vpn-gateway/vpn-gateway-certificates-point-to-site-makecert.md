@@ -1,88 +1,87 @@
 ---
-title: 'Genereren en exporteren van certificaten voor punt-naar-Site: MakeCert: Azure | Microsoft Docs'
-description: Een zelfondertekend basiscertificaat maken, de openbare sleutel exporteren en clientcertificaten genereren via MakeCert.
+title: 'Azure VPN Gateway: &-export certificaten genereren voor P2S: MakeCert'
+description: Maak een zelfondertekend basis certificaat, Exporteer de open bare sleutel en Genereer client certificaten met behulp van MakeCert.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: 973c0aa3bd187e963f15adbe34955d6bc9fa612d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad2ab31e6771efc54238d5747863fa2a9bb2f356
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60768103"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833975"
 ---
-# <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Genereren en exporteren van certificaten voor punt-naar-Site-verbindingen met MakeCert
+# <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>Certificaten voor punt-naar-site-verbindingen genereren en exporteren met MakeCert
 
-Punt-naar-Site-verbindingen gebruiken certificaten om te verifiëren. Dit artikel leest u hoe te maken van een zelfondertekend basiscertificaat met MakeCert clientcertificaten genereren. Als u naar ander certificaat-instructies zoekt, Zie [certificaten - PowerShell](vpn-gateway-certificates-point-to-site.md) of [certificaten - Linux](vpn-gateway-certificates-point-to-site-linux.md).
+Punt-naar-site-verbindingen gebruiken certificaten voor verificatie. In dit artikel wordt beschreven hoe u een zelfondertekend basis certificaat maakt en client certificaten genereert met behulp van MakeCert. Zie [certificaten-Power shell](vpn-gateway-certificates-point-to-site.md) of [certificaten-Linux](vpn-gateway-certificates-point-to-site-linux.md)als u andere certificaat instructies zoekt.
 
-Terwijl het wordt aangeraden de [Windows 10 PowerShell stappen](vpn-gateway-certificates-point-to-site.md) voor het maken van uw certificaten, bieden we deze MakeCert-instructies als optionele methode. De certificaten die u genereert met behulp van een van beide methoden kunnen worden geïnstalleerd op [een ondersteunde client-besturingssysteem](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq). MakeCert heeft echter de volgende beperkingen:
+We raden u aan om de [Windows 10 Power shell-stappen](vpn-gateway-certificates-point-to-site.md) te gebruiken om uw certificaten te maken, maar we bieden deze makecert-instructies als een optionele methode. De certificaten die u met een van beide methoden genereert, kunnen worden geïnstalleerd op [elk ondersteund client besturingssysteem](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq). MakeCert heeft echter de volgende beperking:
 
-* MakeCert is afgeschaft. Dit betekent dat dit hulpprogramma op elk gewenst moment kan worden verwijderd. Alle certificaten die u al met MakeCert gegenereerd, worden niet beïnvloed wanneer MakeCert niet meer beschikbaar is. MakeCert wordt alleen gebruikt voor het genereren van de certificaten niet als een mechanisme voor het valideren.
+* MakeCert is afgeschaft. Dit betekent dat dit hulp programma op elk gewenst moment kan worden verwijderd. Alle certificaten die u al met MakeCert hebt gegenereerd, worden niet beïnvloed wanneer MakeCert niet meer beschikbaar is. MakeCert wordt alleen gebruikt om de certificaten te genereren, niet als een validatie mechanisme.
 
-## <a name="rootcert"></a>Een zelfondertekend basiscertificaat maken
+## <a name="rootcert"></a>Een zelfondertekend basis certificaat maken
 
-De volgende stappen laten zien hoe u een zelfondertekend certificaat met MakeCert maken. Deze stappen zijn niet specifiek implementatiemodel. Ze zijn geldig voor zowel klassieke als Resource Manager.
+De volgende stappen laten zien hoe u een zelfondertekend certificaat maakt met behulp van MakeCert. Deze stappen zijn niet specifiek voor het implementatie model. Ze zijn geldig voor Resource Manager en klassiek.
 
-1. Download en installeer [MakeCert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx).
-2. Na de installatie, kunt u het hulpprogramma makecert.exe onder dit pad doorgaans vinden: 'C:\Program Files (x86)\Windows Kits\10\bin\<arch>'. Hoewel het is mogelijk dat deze is geïnstalleerd op een andere locatie. Open een opdrachtprompt als beheerder en navigeer naar de locatie van het hulpprogramma MakeCert. U kunt het volgende voorbeeld gebruiken aanpassen voor de juiste locatie:
+1. Down load en Installeer [makecert](https://msdn.microsoft.com/library/windows/desktop/aa386968(v=vs.85).aspx).
+2. Na de installatie kunt u het hulp programma Makecert. exe onder dit pad vinden: C:\Program Files (x86) \Windows Kits\10\bin\<Arch >. Het is echter wel mogelijk dat het is geïnstalleerd op een andere locatie. Open een opdracht prompt als beheerder en navigeer naar de locatie van het hulp programma MakeCert. U kunt het volgende voor beeld gebruiken om de juiste locatie aan te passen:
 
    ```cmd
    cd C:\Program Files (x86)\Windows Kits\10\bin\x64
    ```
-3. Maak en installeer een certificaat in het persoonlijke certificaatarchief op uw computer. Het volgende voorbeeld wordt een bijbehorende *.cer* -bestand dat u naar Azure uploadt bij het configureren van P2S. Vervang 'P2SRootCert' en 'P2SRootCert.cer' met de naam die u wilt gebruiken voor het certificaat. Het certificaat bevindt zich in uw 'Certificaten - Huidige gebruiker\Persoonlijk\Certificaten'.
+3. Een certificaat maken en installeren in het persoonlijke certificaat archief op uw computer. In het volgende voor beeld wordt een overeenkomstig *. CER* -bestand gemaakt dat u uploadt naar Azure bij het configureren van P2S. Vervang ' P2SRootCert ' en ' P2SRootCert. CER ' door de naam die u wilt gebruiken voor het certificaat. Het certificaat bevindt zich in de certificaten-huidige Gebruiker\persoonlijk\certificaten.
 
    ```cmd
    makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
    ```
 
-## <a name="cer"></a>Exporteer de openbare sleutel (.cer)
+## <a name="cer"></a>De open bare sleutel (. CER) exporteren
 
 [!INCLUDE [Export public key](../../includes/vpn-gateway-certificates-export-public-key-include.md)]
 
-Het bestand exported.cer moet worden geüpload naar Azure. Zie voor instructies [een punt-naar-Site-verbinding configureren](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile). Als u wilt een extra vertrouwd basiscertificaat toevoegen, Zie [in deze sectie](vpn-gateway-howto-point-to-site-resource-manager-portal.md#add) van het artikel.
+Het geëxporteerde CER-bestand moet naar Azure worden geüpload. Zie [een punt-naar-site-verbinding configureren](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)voor instructies. Zie [Dit gedeelte](vpn-gateway-howto-point-to-site-resource-manager-portal.md#add) van het artikel om een extra vertrouwd basis certificaat toe te voegen.
 
-### <a name="export-the-self-signed-certificate-and-private-key-to-store-it-optional"></a>Exporteer de zelf-ondertekend certificaat en de persoonlijke sleutel voor het opslaan van het (optioneel)
+### <a name="export-the-self-signed-certificate-and-private-key-to-store-it-optional"></a>Het zelfondertekende certificaat en de persoonlijke sleutel exporteren om deze op te slaan (optioneel)
 
-U kunt het zelfondertekende basiscertificaat exporteren en API veilig opslaat. Indien nodig zijn, u kunt later installeren op een andere computer en meer clientcertificaten genereren of een andere cer-bestand exporteren. Als u wilt het zelfondertekend basiscertificaat exporteren als een pfx-bestand, selecteer het basiscertificaat en gebruik dezelfde stappen zoals beschreven in [een clientcertificaat exporteren](#clientexport).
+Mogelijk wilt u het zelfondertekende basis certificaat exporteren en veilig opslaan. Als dat het geval is, kunt u dit later op een andere computer installeren en meer client certificaten genereren of een ander CER-bestand exporteren. Als u het zelfondertekende basis certificaat wilt exporteren als. pfx, selecteert u het basis certificaat en gebruikt u dezelfde stappen zoals beschreven in [een client certificaat exporteren](#clientexport).
 
-## <a name="create-and-install-client-certificates"></a>Maken en clientcertificaten te installeren
+## <a name="create-and-install-client-certificates"></a>Client certificaten maken en installeren
 
-U kunt het zelfondertekende certificaat niet installeren rechtstreeks op de clientcomputer. U moet een clientcertificaat genereren uit het zelfondertekende certificaat. U vervolgens exporteren en het clientcertificaat installeren op de clientcomputer. De volgende stappen zijn niet specifiek implementatiemodel. Ze zijn geldig voor zowel klassieke als Resource Manager.
+U installeert zelf het zelfondertekende certificaat niet rechtstreeks op de client computer. U moet een client certificaat genereren op basis van het zelfondertekende certificaat. Vervolgens exporteert en installeert u het client certificaat op de client computer. De volgende stappen zijn niet specifiek voor het implementatie model. Ze zijn geldig voor Resource Manager en klassiek.
 
 ### <a name="clientcert"></a>Een clientcertificaat genereren
 
-Op elke clientcomputer die via punt-naar-site verbinding maakt met een VNet, moet een clientcertificaat zijn geïnstalleerd. U een clientcertificaat genereren uit het zelfondertekende basiscertificaat, en vervolgens exporteren en het clientcertificaat installeren. Als het clientcertificaat niet is geïnstalleerd, mislukt de verificatie. 
+Op elke clientcomputer die via punt-naar-site verbinding maakt met een VNet, moet een clientcertificaat zijn geïnstalleerd. U genereert een client certificaat op basis van het zelfondertekende basis certificaat en exporteert en installeert vervolgens het client certificaat. Als het client certificaat niet is geïnstalleerd, mislukt de verificatie. 
 
-De volgende stappen helpen u bij het genereren van een certificaat van een zelfondertekend basiscertificaat. U kunt meerdere clientcertificaten genereren uit het hetzelfde basiscertificaat. Wanneer u met behulp van de onderstaande stappen clientcertificaten genereert, wordt het certificaat wordt automatisch geïnstalleerd op de computer die u gebruikt voor het genereren van het certificaat. Als u een clientcertificaat installeren op een andere clientcomputer wilt, kunt u het certificaat exporteren.
+De volgende stappen helpen u bij het genereren van een client certificaat van een zelfondertekend basis certificaat. U kunt meerdere client certificaten genereren uit hetzelfde basis certificaat. Wanneer u client certificaten genereert met behulp van de onderstaande stappen, wordt het client certificaat automatisch geïnstalleerd op de computer die u hebt gebruikt voor het genereren van het certificaat. Als u een client certificaat op een andere client computer wilt installeren, kunt u het certificaat exporteren.
  
-1. Open een opdrachtprompt als beheerder op dezelfde computer die u gebruikt voor het maken van de zelf-ondertekend certificaat.
-2. Wijzig en voer het voorbeeld om een clientcertificaat genereren uit.
-   * Wijziging *'P2SRootCert'* op de naam van het zelfondertekend basiscertificaat dat u het clientcertificaat van genereert. Zorg ervoor dat u de naam van het basiscertificaat dat alles wat is de ' CN =' de waarde is die u hebt opgegeven tijdens het maken van het zelfondertekend basiscertificaat.
-   * Wijziging *P2SChildCert* op de naam die u een clientcertificaat wilt te genereren.
+1. Open een opdracht prompt als beheerder op de computer die u hebt gebruikt om het zelfondertekend certificaat te maken.
+2. Wijzig en voer het voor beeld uit om een client certificaat te genereren.
+   * Wijzig *"P2SRootCert"* in de naam van het zelfondertekende toegangs punt waarvan u het client certificaat wilt genereren. Zorg ervoor dat u de naam van het basis certificaat gebruikt. Dit is de waarde ' CN = ' die u hebt opgegeven tijdens het maken van het zelfondertekende toegangs punt.
+   * Wijzig *P2SChildCert* in de naam waarvan u een client certificaat wilt genereren.
 
-   Als u het volgende voorbeeld uitvoert zonder het te wijzigen, is het resultaat een clientcertificaat met de naam P2SChildcert in het persoonlijke certificaatarchief bevinden die is gegenereerd op basis van basiscertificaat P2SRootCert.
+   Als u het volgende voor beeld uitvoert zonder het te wijzigen, is het resultaat een client certificaat met de naam P2SChildcert in uw persoonlijke certificaat archief dat is gegenereerd op basis van P2SRootCert.
 
    ```cmd
    makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
    ```
 
-### <a name="clientexport"></a>Een clientcertificaat exporteren
+### <a name="clientexport"></a>Een client certificaat exporteren
 
 [!INCLUDE [Export client certificate](../../includes/vpn-gateway-certificates-export-client-cert-include.md)]
 
 ### <a name="install"></a>Een geëxporteerde certificaat installeren
 
-Voor het installeren van een clientcertificaat, Zie [een clientcertificaat installeren](point-to-site-how-to-vpn-client-install-azure-cert.md).
+Zie [een client certificaat installeren](point-to-site-how-to-vpn-client-install-azure-cert.md)als u een client certificaat wilt installeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga door met de punt-naar-Site-configuratie. 
+Ga door met uw punt-naar-site-configuratie. 
 
-* Voor **Resource Manager** implementatiestappen voor model, Zie [P2S configureren met behulp van systeemeigen Azure certificaatverificatie](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
-* Voor **klassieke** implementatiestappen voor model, Zie [configureren van een punt-naar-Site VPN-verbinding met een VNet (klassiek)](vpn-gateway-howto-point-to-site-classic-azure-portal.md).
+* Zie [P2S configureren met behulp van systeem eigen Azure-certificaat verificatie](vpn-gateway-howto-point-to-site-resource-manager-portal.md)voor de stappen van het **Resource Manager** -implementatie model.
+* Zie [een punt-naar-site-VPN-verbinding naar een VNet (klassiek) configureren](vpn-gateway-howto-point-to-site-classic-azure-portal.md)voor de stappen van het **klassieke** implementatie model.
 
 Voor informatie over probleemoplossing voor P2S bekijkt u [Troubleshooting Azure point-to-site connections](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md) (Problemen met punt-naar-site-verbindingen in Azure oplossen).

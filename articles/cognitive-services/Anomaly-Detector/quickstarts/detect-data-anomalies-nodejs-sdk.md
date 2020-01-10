@@ -1,7 +1,7 @@
 ---
 title: 'Snelstartgids: gegevens afwijkingen detecteren met behulp van de Anomaliey detector-client bibliotheek voor python'
 titleSuffix: Azure Cognitive Services
-description: Gebruik de anomalie detectie-API om afwijkingen in uw gegevens reeksen op te sporen als een batch of gegevens stromen.
+description: Gebruik de anomalie detectie-API om afwijkingen in uw gegevens reeksen op te sporen als een batch of gegevens stromen met deze Snelstartgids.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 11/19/2019
 ms.author: aahi
-ms.openlocfilehash: 084ef1b81f7db5bd4a2d371e0c322211c0f0e142
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 17ca1a7671718b5b96df0add7775fb82d4d97303
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483507"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770438"
 ---
 # <a name="quickstart-anomaly-detector-client-library-for-nodejs"></a>Snelstartgids: anomalie detectie client bibliotheek voor node. js
 
@@ -67,7 +67,7 @@ Maak variabelen van het Azure-eind punt en de-sleutel van uw resource. Als u de 
 Installeer de `ms-rest-azure`-en `azure-cognitiveservices-anomalydetector` NPM-pakketten. De CSV-parser-bibliotheek wordt ook gebruikt in deze Quick Start:
 
 ```console
-npm install  @azure/cognitiveservices-anomalydetector ms-rest-azure csv-parse
+npm install  @azure/cognitiveservices-anomalydetector @azure/ms-rest-js csv-parse
 ```
 
 Het `package.json`-bestand van uw app wordt bijgewerkt met de afhankelijkheden.
@@ -80,7 +80,7 @@ Time Series-gegevens worden verzonden als reeks [punten](https://docs.microsoft.
 
 De afwijkende detector respons is een [LastDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/lastdetectresponse?view=azure-node-latest) -of [EntireDetectResponse](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-anomalydetector/entiredetectresponse?view=azure-node-latest) -object, afhankelijk van de gebruikte methode. 
 
-## <a name="code-examples"></a>Code voorbeelden 
+## <a name="code-examples"></a>Codevoorbeelden 
 
 Deze code fragmenten laten zien hoe u het volgende kunt doen met de afwijkende detector-client bibliotheek voor node. js:
 

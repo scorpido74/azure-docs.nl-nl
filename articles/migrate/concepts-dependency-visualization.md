@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: hamusa
-ms.openlocfilehash: 17ba06d6ac09f220b4343092292275a1cc315377
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 75b2120b9fef904114d532e83d571c08e1a1034d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73489204"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772309"
 ---
 # <a name="dependency-visualization"></a>Visualisatie van afhankelijkheden
 
@@ -32,7 +32,7 @@ De visualisatie van afhankelijkheden helpt u bij het begrijpen van afhankelijkhe
 
 Er zijn twee opties voor het implementeren van afhankelijkheids visualisatie:
 
-- **Visualisatie van afhankelijkheid zonder agent**: deze optie is momenteel beschikbaar als preview-versie. U hoeft geen agents op computers te installeren. 
+- **Visualisatie van afhankelijkheid van agents**: deze optie is momenteel beschikbaar als preview-versie en is alleen verkrijgbaar voor virtuele VMware-machines. U hoeft geen agents op computers te installeren. 
     - Het werkt door de TCP-verbindings gegevens vast te leggen van de computers waarvoor deze is ingeschakeld. [Meer informatie](how-to-create-group-machine-dependencies-agentless.md).
 Nadat de detectie van afhankelijkheden is gestart, verzamelt het apparaat gegevens van machines met een polling-interval van vijf minuten.
     - De volgende gegevens worden verzameld:
@@ -93,6 +93,6 @@ Meer informatie over prijzen voor Azure Migrate vindt u [hier](https://azure.mic
 
 ## <a name="next-steps"></a>Volgende stappen
 - [Machines groeperen met behulp van machine afhankelijkheden](how-to-create-group-machine-dependencies.md)
-- Meer [informatie](https://docs.microsoft.com/azure/migrate/resources-faq#what-is-dependency-visualization) over de veelgestelde vragen over de visualisatie van afhankelijkheden.
+- Meer [informatie](common-questions-discovery-assessment.md#what-is-dependency-visualization) over de veelgestelde vragen over de visualisatie van afhankelijkheden.
 
 

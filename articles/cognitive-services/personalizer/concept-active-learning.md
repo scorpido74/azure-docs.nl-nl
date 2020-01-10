@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 05/30/2019
+ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 1641a1020193395d7d2ddb9c4893bd7bc89cdcd0
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 90658e030c907a9fd99dd8fb9a6e90698d72b1f0
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681862"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834462"
 ---
 # <a name="active-and-inactive-events"></a>Actieve en inactieve gebeurtenissen
 
@@ -25,10 +25,11 @@ In sommige scenario's moet de toepassing mogelijk worden opgeroepen voordat deze
 
 Deze scenario's worden meestal uitgevoerd wanneer:
 
-* U prerendert de gebruikers interface die de gebruiker mogelijk niet kan zien. 
-* Uw toepassing doet voorspellende personalisatie waarbij rang gesprekken worden gedaan met weinig realtime context en de toepassing kan de uitvoer mogelijk niet gebruiken. 
+* U prerendert de gebruikers interface die de gebruiker mogelijk niet kan zien.
+* Uw toepassing doet voorspellende personalisatie waarbij rang gesprekken worden gedaan met weinig realtime context en de toepassing kan de uitvoer mogelijk niet gebruiken.
 
-In dergelijke gevallen gebruikt u persoonlijke instellingen om de positie aan te roepen en vraagt u de gebeurtenis _inactief_te zijn. Personaler verwacht geen beloning voor deze gebeurtenis en past geen standaard beloning toe. Als de toepassing de informatie van de classificatie oproep gebruikt, wordt de gebeurtenis later in de bedrijfs logica _geactiveerd_ . Zodra de gebeurtenis actief is, verwacht de Personaler een gebeurtenis beloning. Als er geen expliciete aanroep wordt gedaan naar de belonings-API, past Personaler een standaard beloning toe.
+In dergelijke gevallen gebruikt u persoonlijke instellingen om de positie aan te roepen en vraagt u de gebeurtenis _inactief_te zijn. Personaler verwacht geen beloning voor deze gebeurtenis en past geen standaard beloning toe.
+Als de toepassing de informatie van de classificatie oproep gebruikt, wordt de gebeurtenis later in de bedrijfs logica _geactiveerd_ . Zodra de gebeurtenis actief is, verwacht de Personaler een gebeurtenis beloning. Als er geen expliciete aanroep wordt gedaan naar de belonings-API, past Personaler een standaard beloning toe.
 
 ## <a name="inactive-events"></a>Inactieve gebeurtenissen
 
@@ -42,15 +43,28 @@ Leer instellingen bepalen de *Hyper parameters* van de model training. Twee mode
 
 U kunt leer beleids bestanden importeren en exporteren vanuit het Azure Portal. Gebruik deze methode om bestaande beleids regels op te slaan, te testen, te vervangen en te archiveren in uw broncode beheer als artefacten voor toekomstige Naslag informatie en controle.
 
+Meer informatie [over het](how-to-learning-policy.md) importeren en exporteren van een leer beleid.
+
 ### <a name="understand-learning-policy-settings"></a>Informatie over de instellingen van het leer beleid
 
 De instellingen in het trainings beleid zijn niet bedoeld om te worden gewijzigd. Wijzig de instellingen alleen als u begrijpt hoe deze van invloed zijn op persoonlijkere. U kunt zonder deze kennis problemen veroorzaken, waaronder het ongeldig maken van Personaler-modellen.
+
+Personaler gebruikt [vowpalwabbit](https://github.com/VowpalWabbit) om de gebeurtenissen te trainen en te beoordelen. Raadpleeg de [vowpalwabbit-documentatie](https://github.com/VowpalWabbit/vowpal_wabbit/wiki/Command-line-arguments) voor informatie over het bewerken van de leer instellingen met behulp van vowpalwabbit. Zodra u de juiste opdracht regel argumenten hebt, slaat u de opdracht op in een bestand met de volgende indeling (Vervang de waarde van de eigenschap arguments door de gewenste opdracht) en uploadt u het bestand om de leer instellingen te importeren in het deel venster **model-en leer instellingen** in het Azure portal voor uw persoonlijke resource.
+
+De volgende `.json` is een voor beeld van een leer beleid.
+
+```json
+{
+  "name": "new learning settings",
+  "arguments": " --cb_explore_adf --epsilon 0.2 --power_t 0 -l 0.001 --cb_type mtr -q ::"
+}
+```
 
 ### <a name="compare-learning-policies"></a>Leer beleid vergelijken
 
 U kunt vergelijken hoe verschillende leer beleidsregels worden uitgevoerd op eerdere gegevens in persoonlijke logboeken door [offline-evaluaties](concepts-offline-evaluation.md)uit te voeren.
 
-[Upload uw eigen trainings beleid](how-to-offline-evaluation.md) om ze te vergelijken met het huidige leer beleid.
+[Upload uw eigen trainings beleid](how-to-learning-policy.md) om ze te vergelijken met het huidige leer beleid.
 
 ### <a name="optimize-learning-policies"></a>Leer beleid optimaliseren
 

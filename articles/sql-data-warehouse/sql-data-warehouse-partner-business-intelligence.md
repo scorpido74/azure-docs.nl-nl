@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 882067f25030c6594526914fb8d111639b205949
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 32e7251c7c47e7ccc03e313b939c917557a31417
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685627"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772207"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>business intelligence partners SQL Data Warehouse
 Als u uw end-to-end Data Warehouse-oplossing wilt maken, kiest u uit een groot aantal toonaangevende hulpprogram ma's.  In dit artikel worden micro soft-partner bedrijven beschreven met officiële oplossingen voor business intelligence (BI) die Azure SQL Data Warehouse ondersteunen.
@@ -31,7 +31,7 @@ Als u uw end-to-end Data Warehouse-oplossing wilt maken, kiest u uit een groot a
 | ![Informatie opbouwers][13] |**Informatie bouwers (webfocus)**<br>Met de webfocus business intelligence kunnen bedrijven gegevens strategischer in en buiten de onderneming gebruiken. Hiermee kunnen gebruikers en beheerders snel Dash boards maken die inhoud uit meerdere gegevens bronnen en-indelingen combi neren en robuuste beveiliging en uitgebreid beheer bieden die naadloze, veilige diverly en delen van BI en analyse mogelijk maakt. Inhoudbeheer|[Product pagina][informationbuilders_website]<br> |
 ![Jinfonet][5] |**Jinfonet JReport**<br>JReport is een Inge sloten BI-oplossing voor de onderneming. De oplossing biedt gebruikers de mogelijkheid om rapporten, Dash boards en gegevens analyse te maken op Cloud-, big data-en transactionele gegevens bronnen. Door gegevens te visualiseren, kunt u uw eigen rapportage en gegevens detectie uitvoeren voor flexibele besluit vorming. |[Product pagina][jinfonet_website]<br> |
 | ![LogiAnalytics][6] |**Logi-analyse**<br>Met Logi Analytics en Azure SQL Data Warehouse kan uw organisatie de grootste en meest uiteenlopende gegevens sets wereld wijd verzamelen, analyseren en direct gebruiken. |[Product pagina][logianalytics_website]<br>|
-| ![Looker][7] |**Zoeker BI**<br>Met Beschik baarheid krijgt iedereen in uw bedrijf de mogelijkheid om de gegevens te verkennen en te begrijpen die uw bedrijf bestuurt. Het is ook mogelijk dat de gegevens analist een flexibele en herbruikbare modelleer laag krijgt om die gegevens te beheren en te behandelen.  Bedrijven hebben fundamenteel hun cultuur getransformeerd met behulp van de zoeker als katalysator.|[Product pagina][looker_website]<br> [Azure Marketplace][looker_marketplace]<br> |
+| ![Looker][7] |**Looker BI**<br>Met Beschik baarheid krijgt iedereen in uw bedrijf de mogelijkheid om de gegevens te verkennen en te begrijpen die uw bedrijf bestuurt. Het is ook mogelijk dat de gegevens analist een flexibele en herbruikbare modelleer laag krijgt om die gegevens te beheren en te behandelen.  Bedrijven hebben fundamenteel hun cultuur getransformeerd met behulp van de zoeker als katalysator.|[Product pagina][looker_website]<br> [Azure Marketplace][looker_marketplace]<br> |
 | ![Microstrategie][14] |**Microstrategie**<br>Het microstrategie-platform biedt een volledige set business intelligence-en analyse mogelijkheden waarmee organisaties de waarde van hun bedrijfs gegevens kunnen ophalen. De krachtige analyse-engine van micro strategie, een uitgebreid sluit, een verscheidenheid aan gegevens connectors en schaal bare, open architectuur zorgt ervoor dat u alles hebt wat u nodig hebt om de toegang tot de analyse te uitbreiden voor elke team en zakelijke functie |[Product pagina][microstrategy_website]<br> [Azure Marketplace][microstrategy_marketplace]<br> |
 | ![Qlik][8] |**Qlik Sense Enter prise**<br>Vind inzicht in de detectie van schijven met de app voor gegevens visualisatie die door iedereen kan worden gebruikt. Met Qlik Sense kunnen iedereen in uw organisatie eenvoudig flexibele, interactieve visualisaties maken en zinvolle beslissingen nemen. |[Product pagina][qlik_website]<br> |
 | ![SiSense][9] |**SiSense**<br>SiSense is een full-stack software voor bedrijfs informatie die wordt geleverd met hulp middelen die een bedrijf nodig heeft om gegevens te analyseren en visualiseren: een hoogwaardige analytische data base, de mogelijkheid om meerdere bronnen, gegevens extractie (ETL) en webgebaseerde gegevens te koppelen visualisatie. Begin met het analyseren en visualiseren van grote gegevens sets met SiSense BI en Analytics vandaag. |[Product pagina][sisense_website]<br> |
@@ -87,7 +87,7 @@ Zie [partners voor gegevens integratie][di_partners] en [Gegevensbeheer partners
 
 [birst_marketplace]:https://azure.microsoft.com/marketplace/partners/birst/birst/
 [dundas_bi_marketplace]:https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/ 
-[looker_marketplace]:https://azure.microsoft.com/marketplace/partners/looker/looker-analytics-platform-326/
+[looker_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/looker.looker-analytics-platform-6_20
 [qlik_marketplace]:https://azure.microsoft.com/marketplace/partners/qliktech-international-ab/qlikview/
 [tableau_marketplace]:https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/
 [targit_marketplace]:https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/ 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: 5a8e641c8a1b29d657fe8b0eabf7657ab5973516
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 45804bd3e81e7363010979b7a6e028356b3a5080
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666032"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780059"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatisch schalen van Azure HDInsight-clusters
 
@@ -26,12 +26,14 @@ Met de functie voor automatisch schalen van Azure HDInsight wordt het aantal wor
 
 In de volgende tabel worden de cluster typen en versies beschreven die compatibel zijn met de functie voor automatisch schalen.
 
-| Version | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
+| Versie | Spark | Hive | LLAP | HBase | Kafka | Storm | ML |
 |---|---|---|---|---|---|---|---|
-| HDInsight 3,6 zonder ESP | Alleen Ja 2,3| Ja | Nee | Nee | Nee | Nee | Nee |
-| HDInsight 4,0 zonder ESP | Ja | Ja | Nee | Nee | Nee | Nee | Nee |
-| HDInsight 3,6 met ESP | Alleen Ja 2,3 | Ja | Nee | Nee | Nee | Nee | Nee |
-| HDInsight 4,0 met ESP | Ja | Ja | Nee | Nee | Nee | Nee | Nee |
+| HDInsight 3,6 zonder ESP | Ja | Ja | Ja | Ja* | Nee | Nee | Nee |
+| HDInsight 4,0 zonder ESP | Ja | Ja | Ja | Ja* | Nee | Nee | Nee |
+| HDInsight 3,6 met ESP | Ja | Ja | Ja | Ja* | Nee | Nee | Nee |
+| HDInsight 4,0 met ESP | Ja | Ja | Ja | Ja* | Nee | Nee | Nee |
+
+\* HBase-clusters kunnen alleen worden geconfigureerd voor schalen op basis van een planning, niet op basis van de belasting.
 
 ## <a name="how-it-works"></a>Het werkt als volgt
 
@@ -246,7 +248,7 @@ Alle cluster status berichten die u mogelijk ziet, worden beschreven in de onder
 | De clusterstatus | Uitleg |
 |---|---|
 | In uitvoering | Het cluster werkt normaal. Alle vorige activiteiten voor automatisch schalen zijn voltooid. |
-| Dating  | De configuratie van het automatisch schalen van clusters wordt bijgewerkt.  |
+| Bijwerken  | De configuratie van het automatisch schalen van clusters wordt bijgewerkt.  |
 | HDInsight-configuratie  | Een cluster omhoog of omlaag schalen wordt uitgevoerd.  |
 | Fout bij het bijwerken  | HDInsight heeft problemen aangetroffen tijdens het automatisch schalen van de configuratie. Klanten kunnen ervoor kiezen om de update opnieuw uit te voeren of automatisch schalen uit te scha kelen.  |
 | Fout  | Er is iets mis met het cluster en het is niet bruikbaar. Verwijder dit cluster en maak een nieuwe.  |

@@ -5,12 +5,12 @@ ms.date: 07/24/2019
 ms.topic: conceptual
 description: Meer informatie over het installeren van Azure dev Spaces in een AKS-cluster en het installeren van het programma aan de client zijde.
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: 2649b36c96313d4a7d878a1c72c3b175ad0f4d30
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 0fd4cce9d25922bea50963c4e87e110759673bbc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325786"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770625"
 ---
 # <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>Azure dev Spaces installeren op AKS en het hulp programma aan de client zijde
 
@@ -58,7 +58,7 @@ Voordat u ontwikkel ruimten kunt installeren met behulp van de Azure Portal, heb
 * [Een AKS-cluster][create-aks-portal] in een [ondersteunde regio][supported-regions].
 
 Azure dev Spaces installeren met behulp van de Azure Portal:
-1. Meld u aan bij [Azure Portal][az-portal].
+1. Meld u aan bij de [Azure Portal][az-portal].
 1. Navigeer naar uw AKS-cluster.
 1. Klik op *dev Spaces*.
 1. Wijzig *dev-ruimten* in *Ja* en klik op *Opslaan*.
@@ -86,7 +86,7 @@ Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te 
 [create-aks-cli]: ../../aks/kubernetes-walkthrough.md#create-a-resource-group
 [create-aks-portal]: ../../aks/kubernetes-walkthrough-portal.md#create-an-aks-cluster
 [install-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
-[supported-regions]: ../about.md#supported-regions-and-configurations
+[supported-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service
 [team-development-qs]: ../quickstart-team-development.md
 
 [az-portal]: https://portal.azure.com

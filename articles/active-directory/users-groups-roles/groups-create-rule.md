@@ -1,6 +1,6 @@
 ---
-title: Een dynamische groep maken en de status controleren-Azure AD | Microsoft Docs
-description: Een regel voor groepslid maatschap maken in de Azure Portal, status controleren.
+title: Een dynamische groep maken of bewerken en de status ophalen-Azure AD | Microsoft Docs
+description: Het maken of bijwerken van een regel voor groepslid maatschap in het Azure Portal en de verwerkings status controleren.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,19 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 01/07/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e8ce4f2fbdffc46d18a5f94496e9433c01a65fb
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: d2ed7f27e2145f666f38eec5ddc6c985a4d32138
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900938"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768759"
 ---
-# <a name="create-a-dynamic-group-and-check-status"></a>Een dynamische groep maken en de status controleren
+# <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Een dynamische groep in Azure Active Directory maken of bijwerken
 
 In Azure Active Directory (Azure AD) kunt u regels gebruiken om het groepslid maatschap te bepalen op basis van eigenschappen van gebruikers of apparaten. In dit artikel leest u hoe u een regel instelt voor een dynamische groep in de Azure Portal.
 Dynamische lidmaatschappen worden ondersteund voor beveiligings groepen of Office 365-groepen. Wanneer een regel voor groepslid maatschap wordt toegepast, worden de kenmerken van gebruikers en apparaten geëvalueerd voor overeenkomsten met de lidmaatschaps regel. Wanneer een kenmerk wordt gewijzigd voor een gebruiker of apparaat, worden alle regels voor de dynamische groep in de organisatie verwerkt voor wijzigingen in het lidmaatschap. Gebruikers en apparaten worden toegevoegd of verwijderd als ze voldoen aan de voor waarden voor een groep. Beveiligings groepen kunnen worden gebruikt voor apparaten of gebruikers, maar de Office 365-groepen kunnen alleen gebruikers groepen zijn.
@@ -40,7 +40,7 @@ Hier volgen enkele voor beelden van geavanceerde regels of syntaxis voor het mak
 > [!NOTE]
 > De opbouw functie voor regels kan mogelijk geen regels weer geven die zijn gemaakt in het tekstvak. Mogelijk wordt er een bericht weer gegeven wanneer de regel functie de regel niet kan weer geven. De opbouw functie voor regels wijzigt niet de ondersteunde syntaxis, validatie of verwerking van dynamische groeps regels op enigerlei wijze.
 
-![Lidmaatschaps regel voor een dynamische groep toevoegen](./media/groups-update-rule/update-dynamic-group-rule.png)
+![Lidmaatschaps regel voor een dynamische groep toevoegen](./media/groups-create-rule/update-dynamic-group-rule.png)
 
 Zie voor voor beelden van de syntaxis, ondersteunde eigenschappen, Opera tors en waarden voor een lidmaatschaps regel, [dynamische lidmaatschaps regels voor groepen in azure Active Directory](groups-dynamic-membership.md).
 
@@ -63,6 +63,20 @@ Zie voor voor beelden van de syntaxis, ondersteunde eigenschappen, Opera tors en
 1. Selecteer **maken** op de pagina **nieuwe groep** om de groep te maken.
 
 Als de regel die u hebt ingevoerd niet geldig is, wordt uitgelegd waarom de regel niet kan worden verwerkt, wordt weer gegeven in een Azure-melding in de portal. Lees het zorgvuldig om te begrijpen hoe u de regel kunt herstellen.
+
+## <a name="to-update-an-existing-rule"></a>Een bestaande regel bijwerken
+
+1. Meld u aan bij het [Azure AD-beheer centrum](https://aad.portal.azure.com) met een account in de rol globale beheerder, groeps beheerder, intune-beheerder of gebruikers beheerder in de Tenant.
+1. Selecteer **groepen** > **alle groepen**.
+1. Selecteer een groep om het profiel ervan te openen.
+1. Selecteer op de profiel pagina voor de groep **dynamische lidmaatschaps regels**. De opbouw functie voor regels ondersteunt Maxi maal vijf expressies. Als u meer dan vijf expressies wilt toevoegen, moet u het tekstvak gebruiken.
+
+   ![Lidmaatschaps regel voor een dynamische groep toevoegen](./media/groups-create-rule/update-dynamic-group-rule.png)
+
+1. Voor een overzicht van de aangepaste extensie-eigenschappen die beschikbaar zijn voor uw lidmaatschaps regel:
+   1. **Eigenschappen van aangepaste uitbrei ding ophalen** selecteren
+   1. Voer de toepassings-ID in en selecteer vervolgens **Eigenschappen vernieuwen**.
+1. Nadat u de regel hebt bijgewerkt, selecteert u **Opslaan**.
 
 ## <a name="turn-on-or-off-welcome-email"></a>Welkomst bericht in-of uitschakelen
 

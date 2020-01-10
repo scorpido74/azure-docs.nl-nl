@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 12ecacf1266c0d8211f5928a933cfd4acf8c49f0
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 8d75dbe5d4ab819e5bbe64e20ad84eb1c26a87a3
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551383"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75777815"
 ---
 # <a name="metrics-for-application-gateway"></a>Metrische gegevens voor Application Gateway
 
@@ -36,7 +36,7 @@ De volgende metrische gegevens met betrekking tot de timing van de aanvraag en h
 
   De gemiddelde tijd die nodig is voor het verwerken van een aanvraag en het antwoord op verzen ding. Dit wordt berekend als gemiddelde van het interval van de tijd dat Application Gateway de eerste byte van een HTTP-aanvraag ontvangt naar het tijdstip waarop de bewerking voor het verzenden van het antwoord is voltooid. Het is belang rijk te weten dat dit doorgaans de verwerkings tijd van Application Gateway, de tijd dat de aanvraag-en antwoord pakketten op het netwerk onderweg zijn en het tijdstip waarop de back-end-server heeft gereageerd.
   
-Als de *RTT* van de client veel meer is dan de *totale tijd van de toepassings gateway*, kan deze worden afgeleid dat de door de client waargenomen latentie wordt veroorzaakt door de netwerk verbinding tussen de client en Application Gateway. Als beide latenties vergelijkbaar zijn, kan de hoge latentie worden veroorzaakt door een van de volgende: Application Gateway, het netwerk tussen de Application Gateway en de back-end-toepassing, of de back-end-toepassings prestaties.
+Als de RTT van de *client* veel meer is gefilterd op basis van de *totale tijds duur van de toepassings gateway*, kan deze worden afgeleid van de latentie van de client door de netwerk verbinding tussen de client en de Application Gateway. Als beide latenties vergelijkbaar zijn, kan de hoge latentie worden veroorzaakt door een van de volgende: Application Gateway, het netwerk tussen de Application Gateway en de back-end-toepassing, of de back-end-toepassings prestaties.
 
 - **Reactie tijd eerste byte van back-end**
 

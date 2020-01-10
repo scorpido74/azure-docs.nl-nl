@@ -3,12 +3,12 @@ title: Naslag informatie voor Java-Ontwikkel aars voor Azure Functions
 description: Meer informatie over het ontwikkelen van functies met Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 50fc4dc278e274109725ff60ea8d438310ce464d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4af2a860657f6066112146e1f88d81861d9430ea
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230405"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769027"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java-ontwikkelaars handleiding
 
@@ -160,7 +160,7 @@ U kunt aanvullende argumenten opgeven in een app-instelling met de naam `JAVA_OP
 
 Gebruik in het [Azure Portal](https://portal.azure.com)het [tabblad toepassings instellingen](functions-how-to-use-azure-function-app-settings.md#settings) om de instelling `JAVA_OPTS` toe te voegen.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 U kunt de opdracht [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings) gebruiken om `JAVA_OPTS`in te stellen, zoals in het volgende voor beeld:
 

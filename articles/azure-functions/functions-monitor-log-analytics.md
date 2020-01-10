@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: aelnably
-ms.openlocfilehash: 4ebf6ecea0b08f416bd1bd11382116dda2107ecf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: f4af646569edc8a9274af752e7e4f2a36585ae4d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409658"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769095"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Functions controleren met Azure Monitor-logboeken
 
@@ -25,11 +25,11 @@ Azure Monitor gebruikt een versie van de [Kusto-query taal](/azure/kusto/query/)
 
 ## <a name="setting-up"></a>Instellen
 
-Selecteer **Diagnostische instellingen** in het gedeelte bewaking en klik vervolgens op **toevoegen**.
+Selecteer **Diagnostische instellingen** in het gedeelte **bewaking** en klik vervolgens op **Diagnostische instelling toevoegen**.
 
 ![Een diagnostische instelling toevoegen](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
 
-Kies op de pagina instellingen de optie **verzenden naar log Analytics**en selecteer in **logboek** **FunctionAppLogs**de gewenste Logboeken.
+Kies op de pagina **Diagnostische instellingen** de optie **verzenden naar log Analytics**en selecteer vervolgens uw log Analytics-werk ruimte. Onder **logboek** kiest u **FunctionAppLogs**. deze tabel bevat de gewenste Logboeken.
 
 ![Een diagnostische instelling toevoegen](media/functions-monitor-log-analytics/choose-table.png)
 
@@ -72,7 +72,7 @@ logging.info('My app logs here.')
 
 ## <a name="querying-the-logs"></a>Query's uitvoeren op de logboeken
 
-Als u de gegenereerde logboeken wilt doorzoeken, gaat u naar de log Analytics-werk ruimte en klikt u op **Logboeken**.
+Als u de gegenereerde logboeken wilt doorzoeken, gaat u naar de Log Analytics-werk ruimte die u hebt geconfigureerd om de functie Logboeken te verzenden naar en klikt u op **Logboeken**.
 
 ![Query venster in de werk ruimte van LA](media/functions-monitor-log-analytics/querying.png)
 

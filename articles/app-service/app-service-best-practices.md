@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
-ms.openlocfilehash: 328e0c882ea2fb3860663e04b88488bd54339c75
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: ded812d5d7a0440466e7284b56c90965ea00406e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671498"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768483"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Best practices voor Azure App Service
 Dit artikel bevat een overzicht van de aanbevolen procedures voor het gebruik van [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714). 
@@ -65,3 +65,13 @@ Wanneer er back-upfouten optreden, kunt u de meest recente resultaten bekijken o
 ## <a name="nodejs"></a>Als nieuwe node. js-apps worden geïmplementeerd in Azure App Service
 Azure App Service standaard configuratie voor node. js-apps is bedoeld om het beste te voldoen aan de behoeften van de meest voorkomende apps. Als de configuratie voor uw node. js-app zou kunnen profiteren van persoonlijke afstemming om prestaties te verbeteren of het resource gebruik te optimaliseren voor CPU/geheugen/netwerk bronnen, raadpleegt u [Aanbevolen procedures en richt lijnen voor probleem oplossing voor knooppunt toepassingen op Azure app service](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md). In dit artikel worden de iisnode-instellingen beschreven die u mogelijk moet configureren voor uw node. js-app, worden de verschillende scenario's of problemen beschreven die aan uw app zijn gericht en wordt uitgelegd hoe u deze problemen kunt oplossen.
 
+
+## <a name="next-steps"></a>Volgende stappen
+Voor meer informatie over best practices gaat u naar [app service diagnostische gegevens](https://docs.microsoft.com/azure/app-service/overview-diagnostics) om te bepalen welke best practices u kunt gebruiken voor uw resource.
+
+- Navigeer naar uw web-app in het [Azure Portal](https://portal.azure.com).
+- Klik op **problemen vaststellen en oplossen** in het navigatie venster aan de linkerkant, waarmee app service diagnostische gegevens worden geopend.
+- Kies de tegel start pagina voor **Best practices** .
+- Klik op **Aanbevolen procedures voor Beschik baarheid & prestaties** of **Aanbevolen procedures voor optimale configuratie** om de huidige status van uw app te bekijken met betrekking tot deze aanbevolen procedures.
+
+U kunt deze koppeling ook gebruiken om direct App Service diagnostische gegevens voor uw resource te openen: `https://ms.portal.azure.com/?websitesextension_ext=asd.featurePath%3Ddetectors%2FParentAvailabilityAndPerformance#@microsoft.onmicrosoft.com/resource/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/sites/{siteName}/troubleshoot`.

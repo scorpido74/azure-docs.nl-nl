@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: lahugh
-ms.openlocfilehash: 1c990c864f9daa98460832166b31f43fece1ed15
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d687f3f9039ca39440abab218d75e1d5c5db6df9
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093846"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770115"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Een virtueel bestands systeem koppelen aan een batch-pool
 
@@ -39,17 +39,17 @@ Overweeg een scenario met meerdere taken waarvoor toegang tot een gemeen schappe
 
 Als u een virtueel bestands systeem op een groep koppelt, wordt het bestands systeem beschikbaar voor elk reken knooppunt in de pool. Het bestands systeem wordt geconfigureerd wanneer een reken knooppunt wordt toegevoegd aan een groep of wanneer het knoop punt opnieuw wordt opgestart of de installatie kopie wordt gerecycled.
 
-Als u een bestands systeem in een groep wilt koppelen, `MountConfiguration` maakt u een-object. Kies het object dat bij uw virtuele bestands systeem past `AzureBlobFileSystemConfiguration`: `AzureFileShareConfiguration` `NfsMountConfiguration`,,, `CifsMountConfiguration`of.
+Als u een bestands systeem in een groep wilt koppelen, maakt u een `MountConfiguration`-object. Kies het object dat past bij uw virtuele bestands systeem: `AzureBlobFileSystemConfiguration`, `AzureFileShareConfiguration`, `NfsMountConfiguration`of `CifsMountConfiguration`.
 
 Voor alle koppel configuratie objecten zijn de volgende basis parameters vereist. Sommige koppel configuraties hebben specifieke para meters voor het bestands systeem dat wordt gebruikt. dit wordt in meer detail beschreven in de code voorbeelden.
 
-- **Account naam of-bron**: Als u een virtuele bestands share wilt koppelen, hebt u de naam van het opslag account of de bron nodig.
-- **Relatief pad of bron van koppeling**: De locatie van het bestands systeem dat is gekoppeld aan het reken knooppunt, ten `fsmounts` opzichte van de standaard `AZ_BATCH_NODE_MOUNTS_DIR`Directory die toegankelijk is via het knoop punt. De exacte locatie varieert, afhankelijk van het besturings systeem dat op het knoop punt wordt gebruikt. Bijvoorbeeld, de fysieke locatie op een Ubuntu-knoop punt wordt toegewezen `mnt\batch\tasks\fsmounts`aan en op een CentOS-knoop punt waaraan deze `mnt\resources\batch\tasks\fsmounts`is toegewezen.
-- Opties voor **koppelen of blobfuse**: Deze opties beschrijven specifieke para meters voor het koppelen van een bestands systeem.
+- **Account naam of-bron**: voor het koppelen van een virtuele bestands share hebt u de naam van het opslag account of de bron nodig.
+- **Relatief koppel pad of bron**: de locatie van het bestands systeem dat is gekoppeld aan het reken knooppunt, ten opzichte van de standaard `fsmounts` Directory die via `AZ_BATCH_NODE_MOUNTS_DIR`toegankelijk is op het knoop punt. De exacte locatie varieert, afhankelijk van het besturings systeem dat op het knoop punt wordt gebruikt. Bijvoorbeeld, de fysieke locatie op een Ubuntu-knoop punt wordt toegewezen aan `mnt\batch\tasks\fsmounts`, en op een CentOS-knoop punt wordt deze toegewezen aan `mnt\resources\batch\tasks\fsmounts`.
+- Opties voor **koppelen of blobfuse**: deze opties beschrijven specifieke para meters voor het koppelen van een bestands systeem.
 
-Wanneer het `MountConfiguration` object is gemaakt, moet u het object toewijzen `MountConfigurationList` aan de eigenschap wanneer u de groep maakt. Het bestands systeem wordt gekoppeld wanneer een knoop punt wordt toegevoegd aan een pool of wanneer het knoop punt opnieuw wordt opgestart of een installatie kopie wordt gemaakt.
+Zodra het `MountConfiguration`-object is gemaakt, moet u het object toewijzen aan de eigenschap `MountConfigurationList` wanneer u de groep maakt. Het bestands systeem wordt gekoppeld wanneer een knoop punt wordt toegevoegd aan een pool of wanneer het knoop punt opnieuw wordt opgestart of een installatie kopie wordt gemaakt.
 
-Wanneer het bestands systeem is gekoppeld, wordt er een `AZ_BATCH_NODE_MOUNTS_DIR` omgevings variabele gemaakt die verwijst naar de locatie van de gekoppelde bestands systemen en de logboek bestanden, die handig zijn voor het oplossen van problemen en fout opsporing. Logboek bestanden worden uitgebreid beschreven in het gedeelte fout bij het vaststellen van de [koppeling](#diagnose-mount-errors) .  
+Wanneer het bestands systeem is gekoppeld, wordt er een omgevings variabele `AZ_BATCH_NODE_MOUNTS_DIR` gemaakt die verwijst naar de locatie van de gekoppelde bestands systemen en de logboek bestanden, die handig zijn voor het oplossen van problemen en fout opsporing. Logboek bestanden worden uitgebreid beschreven in het gedeelte fout bij het vaststellen van de [koppeling](#diagnose-mount-errors) .  
 
 > [!IMPORTANT]
 > Het maximum aantal gekoppelde bestands systemen in een groep is 10. Zie [quota's en limieten](batch-quota-limit.md#other-limits) voor de batch-service voor meer informatie en andere beperkingen.
@@ -85,7 +85,7 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>Azure Blob-bestands systeem
 
-Een andere optie is het gebruik van Azure Blob Storage via [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Voor het koppelen van een BLOB- `AccountKey` bestands `SasKey` systeem is een or vereist voor uw opslag account. Zie [account sleutels weer geven](../storage/common/storage-account-manage.md#view-account-keys-and-connection-string)of [Shared Access signatures (SAS) gebruiken](../storage/common/storage-dotnet-shared-access-signature-part-1.md)voor meer informatie over het ophalen van deze sleutels. Zie de blobfuse [Troubleshooting FAQ (Engelstalig](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)) voor meer informatie over het gebruik van blobfuse. Als u standaard toegang wilt krijgen tot de gekoppelde blobfuse Directory, voert u de taak uit als **beheerder**. Blobfuse koppelt de directory aan de gebruikers ruimte en bij het maken van de groep wordt deze als root gekoppeld. In Linux zijn alle **beheerders** taken hoofdmap. Alle opties voor de ZEKERing-module worden beschreven op de [pagina zekerheid](http://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
+Een andere optie is het gebruik van Azure Blob Storage via [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Voor het koppelen van een BLOB-bestands systeem is een `AccountKey` of `SasKey` vereist voor uw opslag account. Zie [toegangs sleutels voor opslag accounts beheren](../storage/common/storage-account-keys-manage.md)of [hand tekeningen voor gedeelde toegang gebruiken (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md)voor meer informatie over het ophalen van deze sleutels. Zie de blobfuse [Troubleshooting FAQ (Engelstalig](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ)) voor meer informatie over het gebruik van blobfuse. Als u standaard toegang wilt krijgen tot de gekoppelde blobfuse Directory, voert u de taak uit als **beheerder**. Blobfuse koppelt de directory aan de gebruikers ruimte en bij het maken van de groep wordt deze als root gekoppeld. In Linux zijn alle **beheerders** taken hoofdmap. Alle opties voor de ZEKERing-module worden beschreven op de [pagina zekerheid](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
 
 Naast de hand leiding voor het oplossen van problemen, zijn GitHub problemen in de blobfuse-opslag plaats een handige manier om te controleren of er problemen zijn met blobfuse en oplossingen. Zie [blobfuse issues](https://github.com/Azure/azure-storage-fuse/issues)(Engelstalig) voor meer informatie.
 
@@ -116,7 +116,7 @@ new PoolAddParameter
 
 ### <a name="network-file-system"></a>Netwerk bestandssysteem
 
-Network File System (NFS) kan ook worden gekoppeld aan groeps knooppunten, zodat traditionele bestands systemen eenvoudig kunnen worden benaderd door Azure Batch knooppunten. Dit kan een enkele NFS-server zijn die is geïmplementeerd in de Cloud, of een on-premises NFS-server die toegankelijk is via een virtueel netwerk. U kunt ook profiteren van de [avere vFXT](../avere-vfxt/avere-vfxt-overview.md) gedistribueerde in-memory-cache oplossing, waarmee naadloze connectiviteit mogelijk is met on-premises opslag, het lezen van gegevens op aanvraag in de cache en het bieden van hoge prestaties en schaal baarheid tot Cloud compute punt.
+Network File System (NFS) kan ook worden gekoppeld aan groeps knooppunten, zodat traditionele bestands systemen eenvoudig kunnen worden benaderd door Azure Batch knooppunten. Dit kan een enkele NFS-server zijn die is geïmplementeerd in de Cloud, of een on-premises NFS-server die toegankelijk is via een virtueel netwerk. U kunt ook profiteren van de [avere vFXT](../avere-vfxt/avere-vfxt-overview.md) gedistribueerde in-memory-cache oplossing, waarmee naadloze connectiviteit wordt geboden met on-premises opslag, het lezen van gegevens op aanvraag in de cache en het leveren van hoge prestaties en schaal baarheid tot Cloud Compute-knoop punten.
 
 ```csharp
 new PoolAddParameter
@@ -164,25 +164,25 @@ new PoolAddParameter
 
 ## <a name="diagnose-mount-errors"></a>Fouten bij koppelen vaststellen
 
-Als een koppelings configuratie mislukt, mislukt het reken knooppunt in de groep en wordt de status van het knoop punt onbruikbaar. Als u een fout bij het koppelen van een configuratie [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) wilt vaststellen, inspecteert u de eigenschap voor meer informatie over de fout.
+Als een koppelings configuratie mislukt, mislukt het reken knooppunt in de groep en wordt de status van het knoop punt onbruikbaar. Als u een fout bij het koppelen van een koppeling wilt vaststellen, inspecteert u de eigenschap [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) voor meer informatie over de fout.
 
-Als u de logboek bestanden voor fout opsporing wilt [](batch-task-output-files.md) ophalen, gebruikt u `*.log` OutputFiles om de bestanden te uploaden. De `*.log` bestanden bevatten informatie over de bestandssysteem koppeling op de `AZ_BATCH_NODE_MOUNTS_DIR` locatie. Het koppelen van logboek bestanden heeft de `<type>-<mountDirOrDrive>.log` volgende indeling: voor elke koppeling. Een `cifs` koppeling op een koppelings Directory met de naam `test` heeft bijvoorbeeld een koppel logboek bestand met de `cifs-test.log`naam:.
+Als u de logboek bestanden voor fout opsporing wilt ophalen, gebruikt u [OutputFiles](batch-task-output-files.md) om de `*.log` bestanden te uploaden. De `*.log`-bestanden bevatten informatie over het bestands systeem dat wordt gekoppeld aan de `AZ_BATCH_NODE_MOUNTS_DIR` locatie. Het koppelen van logboek bestanden heeft de volgende indeling: `<type>-<mountDirOrDrive>.log` voor elke koppeling. Een `cifs` koppelen aan een koppelpuntmap met de naam `test` heeft bijvoorbeeld een koppel logboek bestand met de naam: `cifs-test.log`.
 
 ## <a name="supported-skus"></a>Ondersteunde Sku's
 
 | Uitgever | Aanbieding | SKU | Azure Files share | Blobfuse | NFS-koppeling | CIFS koppelen |
 |---|---|---|---|---|---|---|
-| batch | rendering-centos73 | aanwijzer | :heavy_check_mark: <br>Opmerking: Compatibel met CentOS 7,7</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| batch | rendering-centos73 | aanwijzer | :heavy_check_mark: <br>Opmerking: compatibel met CentOS 7,7</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Canonical | UbuntuServer | 16,04-LTS, 18,04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | credativ | Debian | 8, 9 | :heavy_check_mark: | BxDxH | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>Opmerking: Compatibel met CentOS 7,4. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | CentOS-container | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| microsoft-azure-batch | CentOS-container-RDMA | 7.4 | :heavy_check_mark: <br>Opmerking: Ondersteunt A_8-of 9-opslag</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>Opmerking: compatibel met CentOS 7,4. </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-azure-batch | CentOS-container | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| microsoft-azure-batch | CentOS-container-RDMA | 7.4 | :heavy_check_mark: <br>Opmerking: ondersteunt A_8 of 9 opslag</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | Ubuntu-Server-container | 16.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-dsvm | linux-data-science-vm-ubuntu | linuxdsvmubuntu | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| OpenLogic | CentOS | 7,6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| OpenLogic | CentOS | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | OpenLogic | CentOS-HPC | 7,4, 7,3, 7,1 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Oracle | Oracle-Linux | 7,6 | BxDxH | BxDxH | BxDxH | BxDxH |
+| Oracle | Oracle-Linux | 7.6 | BxDxH | BxDxH | BxDxH | BxDxH |
 | Windows | WindowsServer | 2012, 2016, 2019 | :heavy_check_mark: | BxDxH | BxDxH | BxDxH |
 
 ## <a name="next-steps"></a>Volgende stappen

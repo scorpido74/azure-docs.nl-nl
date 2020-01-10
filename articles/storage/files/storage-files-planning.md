@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: fdfa01a45c0dd35da65b2ad7ce8b0d291148af1a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a51bb91a63f032f87da59fe95f5e3282cbaa0bea
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931107"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771612"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planning voor de implementatie van Azure Files
 
@@ -24,7 +24,7 @@ ms.locfileid: "74931107"
 
 ![Bestandsstructuur](./media/storage-files-introduction/files-concepts.png)
 
-* **Opslagaccount**: alle toegang tot Azure Storage vindt plaats via een opslagaccount. Zie [Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) (Schaalbaarheids- en prestatiedoelen in Azure Storage) voor meer informatie over opslagaccountcapaciteit.
+* **Opslagaccount**: alle toegang tot Azure Storage vindt plaats via een opslagaccount. Zie [schaalbaarheids-en prestatie doelen voor standaard opslag accounts](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) voor meer informatie over de capaciteit van het opslag account.
 
 * **Share**: een File Storage-share is een SMB-bestandsshare in Azure. Alle mappen en bestanden moeten worden gemaakt in een bovenliggende share. Een account kan een onbeperkt aantal shares bevatten en een share kan een onbeperkt aantal bestanden opslaan, tot aan de totale capaciteit van de bestands share. De totale capaciteit voor Premium-en standaard bestands shares is 100 TiB.
 
@@ -172,7 +172,7 @@ In de volgende secties worden de verschillen tussen de verschillende redundantie
 ### <a name="geo-redundant-storage"></a>Geografisch redundante opslag
 
 > [!Warning]  
-> Als u uw Azure-bestands share als een Cloud-eind punt in een GRS-opslag account gebruikt, mag u de failover van het opslag account niet starten. Als u dat wel doet, werkt de synchronisatie niet meer en kan dit leiden tot onverwachte gegevens verlies in het geval van nieuwe gelaagde bestanden. In het geval van een verlies van een Azure-regio, zal micro soft de failover van het opslag account activeren op een manier die compatibel is met Azure File Sync.
+> Als u uw Azure-bestands share als een Cloud-eind punt in een GRS-opslag account gebruikt, mag u de failover van het opslag account niet starten. Als u dat wel doet, werkt de synchronisatie niet meer en kan dit leiden tot onverwacht gegevensverlies van bestanden in cloudlagen. In het geval van een verlies van een Azure-regio, zal micro soft de failover van het opslag account activeren op een manier die compatibel is met Azure File Sync.
 
 Geografisch redundante opslag (GRS) is ontworpen om ten minste 99.99999999999999% (16 9) duurzaamheid van objecten over een bepaald jaar te bieden door uw gegevens te repliceren naar een secundaire regio die honderden kilo meters van de primaire regio is. Als voor uw opslag account GRS is ingeschakeld, zijn uw gegevens duurzaam, zelfs in het geval van een volledige regionale onderbreking of een ramp waarbij de primaire regio niet kan worden hersteld.
 
@@ -205,24 +205,40 @@ Standaard bestands shares zijn beschikbaar in alle regio's tot 5 TiB. In bepaald
 
 |Regio |Ondersteunde redundantie |
 |-------|---------|
+|Australië - centraal    |LRS     |
+|Australië - centraal 2    |LRS     |
 |Australië Oost |LRS     |
 |Australië Zuidoost|LRS |
+|Brazilië - Zuid    |LRS     |
 |Canada-Midden  |LRS     |
 |Canada-Oost     |LRS     |
 |India - centraal  |LRS     |
-|VS-Centraal *   |LRS     |
+|VS-Centraal *   |LRS, ZRS    |
 |Azië - oost      |LRS     |
-|VS-Oost *        |LRS     |
-|VS-Oost 2 *      |LRS     |
+|VS-Oost *        |LRS, ZRS|
+|VS-Oost 2 *      |LRS, ZRS     |
 |Frankrijk - centraal |LRS, ZRS|
 |Frankrijk - zuid   |LRS     |
-|VS - noord-centraal |LRS     |
+|Japan - Oost     |LRS     |
+|Japan - West     |LRS     |
+|Korea - centraal  |LRS     |
+|Korea (Zuid)    |LRS     |
+|VS - noord-centraal |LRS   |
 |Europa - noord   |LRS     |
 |India - zuid    |LRS     |
+|VS - zuid-centraal |LRS     |
 |Azië - zuidoost |LRS, ZRS|
+|Zwitserland - noord    |LRS     |
+|Zwitserland - west    |LRS     |
+|VAE - centraal    |LRS     |
+|VAE - noord    |LRS     |
+|VK, noord   |LRS, ZRS    |
+|VK - zuid    |LRS     |
+|VK - west    |LRS     |
 |VS - west-centraal|LRS     |
 |Europa-west *    |LRS, ZRS|
-|VS-West *        |LRS     |
+|India - west   |LRS     |
+|VS - west        |LRS     |
 |VS - west 2      |LRS, ZRS|
 
 \* ondersteund voor nieuwe accounts, niet alle bestaande accounts hebben het upgrade proces voltooid. U kunt controleren of uw bestaande opslag accounts het upgrade proces hebben voltooid door te proberen [grote bestands shares in te scha kelen](storage-files-how-to-create-large-file-share.md).
@@ -243,7 +259,7 @@ Het is mogelijk om meerdere Azure-bestands shares te synchroniseren met één Wi
 
 Er zijn veel gemakkelijke opties voor het bulksgewijs overdragen van gegevens van een bestaande bestands share, zoals een on-premises bestands share, naar Azure Files. Enkele populaire items zijn (niet-limitatieve lijst):
 
-* **Azure file sync**: als onderdeel van een eerste synchronisatie tussen een Azure-bestands share (een ' Cloud-eind punt ') en een Windows-directory naam ruimte (een ' server-eind punt ') Azure file sync, worden alle gegevens van de bestaande bestands share gerepliceerd naar Azure files.
+* **[Azure file sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning)** : als onderdeel van een eerste synchronisatie tussen een Azure-bestands share (een ' Cloud-eind punt ') en een Windows-directory naam ruimte (een ' server-eind punt ') Azure file sync, worden alle gegevens van de bestaande bestands share gerepliceerd naar Azure files.
 * **[Azure import/export](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : met de Azure import/export-service kunt u veilig grote hoeveel heden gegevens overdragen naar een Azure-bestands share door harde schijven naar een Azure-Data Center te verzenden. 
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)** : Robocopy is een bekende kopieer hulp programma dat wordt geleverd bij Windows en Windows Server. Robocopy kan worden gebruikt om gegevens over te brengen naar Azure Files door de bestands share lokaal te koppelen en vervolgens de gekoppelde locatie als bestemming in de Robocopy-opdracht te gebruiken.
 * **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)** : AzCopy is een opdracht regel programma dat is ontworpen voor het kopiëren van gegevens van en naar Azure files, evenals Azure Blob-opslag, met behulp van eenvoudige opdrachten met optimale prestaties.

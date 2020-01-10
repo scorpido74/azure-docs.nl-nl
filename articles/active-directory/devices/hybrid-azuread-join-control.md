@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d67a73ca47811e7275a6f2177573e10a09b230df
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 18da289f9d364fa79023809324d59b89b8ac898c
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073614"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768109"
 ---
 # <a name="controlled-validation-of-hybrid-azure-ad-join"></a>Gecontroleerde validatie van hybride Azure AD-deelname
 
@@ -79,7 +79,7 @@ Gebruik het volgende voor beeld om een groepsbeleid-object (GPO) te maken om een
 
 ### <a name="configure-ad-fs-settings"></a>AD FS-instellingen configureren
 
-Als u AD FS gebruikt, moet u eerst SCP aan de client zijde configureren met behulp van de bovenstaande instructies, maar het groeps beleidsobject koppelen aan uw AD FS-servers. Het SCP-object definieert de bron van de autoriteit voor object apparaatobject. Het kan on-premises of Azure AD zijn. Wanneer dit is geconfigureerd voor AD FS, wordt de bron voor object apparaten ingesteld als Azure AD.
+Als u AD FS gebruikt, moet u eerst SCP aan de client zijde configureren met behulp van de bovenstaande instructies door het groeps beleidsobject te koppelen aan uw AD FS-servers. Het SCP-object definieert de bron van de autoriteit voor object apparaatobject. Het kan on-premises of Azure AD zijn. Wanneer SCP aan de client zijde is geconfigureerd voor AD FS, wordt de bron voor object-objecten ingesteld als Azure AD.
 
 > [!NOTE]
 > Als u SCP aan client zijde op uw AD FS-servers niet configureert, wordt de bron voor apparaat-id's als on-premises beschouwd. ADFS begint vervolgens met het verwijderen van de apparaten uit de on-premises map na de opgegeven periode die is gedefinieerd in het kenmerk ' MaximumInactiveDays ' van de ADFS-apparaatregistratie. AD FS-apparaatregistratie kunnen worden gevonden met behulp van de [cmdlet Get-AdfsDeviceRegistration](https://docs.microsoft.com/powershell/module/adfs/get-adfsdeviceregistration?view=win10-ps).

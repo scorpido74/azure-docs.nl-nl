@@ -5,16 +5,16 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: b17bec5663cc8e9d199ad79bb5282b052b8c0182
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 74b0f83500903170616034d9d18d8ad31fa7065c
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670394"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834321"
 ---
 # <a name="configure-a-linux-ruby-app-for-azure-app-service"></a>Een Linux ruby-app voor Azure App Service configureren
 
-In dit artikel wordt beschreven hoe [Azure app service](app-service-linux-intro.md) ruby-apps uitvoert en hoe u het gedrag van app service kunt aanpassen wanneer dit nodig is. Ruby-apps moeten worden geïmplementeerd met alle vereiste [PIP](https://pypi.org/project/pip/) -modules.
+In dit artikel wordt beschreven hoe [Azure app service](app-service-linux-intro.md) ruby-apps uitvoert en hoe u het gedrag van app service kunt aanpassen wanneer dit nodig is. Ruby-apps moeten met alle vereiste [edelstenen](https://rubygems.org/gems)worden geïmplementeerd.
 
 Deze hand leiding bevat belang rijke concepten en instructies voor ruby-ontwikkel aars die een ingebouwde Linux-container gebruiken in App Service. Als u Azure App Service nog nooit hebt gebruikt, moet u eerst de [ruby-Snelstartgids](quickstart-ruby.md) en [ruby met postgresql zelf studie](tutorial-ruby-postgres-app.md) volgen.
 

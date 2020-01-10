@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 04/25/2019
 ms.author: pabutler
-ms.openlocfilehash: 9bc3c375c5111c144b6b137ca547875225aba58f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 283274986c753fc8ad05b9b7b0dd87aea956bcce
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824453"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75762889"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Het tabblad Marketplace voor virtuele machines
 
@@ -30,14 +30,14 @@ In de volgende tabel worden het doel en de inhoud van deze velden beschreven. Ve
 |  **Veld**                |     **Beschrijving**                                                          |
 |  ---------                |     ---------------                                                          |
 | **Titel\***                 | Titel van de aanbieding, vaak de lange, formele naam. Deze titel wordt prominent weer gegeven in de Marketplace.  Maximale lengte van 50 tekens. |
-| **Overzicht\***               | Kort doel of functie van de oplossing.  Maximale lengte van 100 tekens. |
+| **Samenvatting\***               | Kort doel of functie van de oplossing.  Maximale lengte van 100 tekens. |
 | **\* van lange samen vatting**          | Doel of functie van de oplossing.  Maximale lengte van 256 tekens. |
 | **Beschrijving\***           | Beschrijving van de oplossing.  De maximale lengte van 3000 tekens biedt ondersteuning voor eenvoudige HTML-opmaak. |
 | **Micro soft CSP-reseller Channel\*** | Opt-in voor Cloud Solution Providers (CSP)-partner kanaal is nu beschikbaar.  Raadpleeg [Cloud Solution Providers](../../cloud-solution-providers.md) voor meer informatie over het marketing gebruik van uw aanbieding via de micro soft CSP-partner kanalen. |
 | **Marketing-id\***  | Een unieke URL om aan deze aanbieding te koppelen, bevat doorgaans de naam van uw organisatie en de oplossing, maximale lengte van 50 tekens.  Bijvoorbeeld: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **Preview-abonnement-Id's\*** | Voeg een id toe aan 100-abonnement-id's van Previewers. Deze op wit vermelde abonnementen hebben toegang tot de aanbieding nadat deze is gepubliceerd, voordat ze live gaan. |
 | **Nuttige koppelingen**          | Voeg Url's toe aan de documenties, opmerkingen bij de release, veelgestelde vragen, enzovoort. |
-| **Voorgestelde categorieën (Maxi maal 5)\*** | U kunt kiezen uit meerdere zakelijke en technische categorieën die het beste kunnen worden gekoppeld aan.  Maxi maal vijf toegestaan.  |
+| **Aanbevolen categorieën\*** | Selecteer Maxi maal twee (2) categorieën, inclusief een primaire en secundaire categorie (optioneel). Selecteer Maxi maal twee (2) subcategorieën voor elke primaire en/of secundaire categorie. Als er geen subcategorie is geselecteerd, kunt u nog steeds alleen de geselecteerde categorie detecteerbaar maken. |
 |  |  |
 
 

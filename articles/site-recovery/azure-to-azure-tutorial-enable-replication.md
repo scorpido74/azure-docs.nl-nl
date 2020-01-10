@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/28/2019
+ms.date: 1/8/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8a99bdb1d181142b456c00f696d0271805f1567a
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: a7d25dfad20d8eff25020070d0bb32d5777fdb62
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561487"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754589"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Herstel na nood geval instellen voor virtuele Azure-machines
 
@@ -32,7 +32,7 @@ In deze zelf studie leert u hoe u herstel na nood gevallen instelt voor Azure-Vm
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Vereisten om deze zelfstudie te voltooien:
 
 - De [architectuur en onderdelen voor dit scenario](concepts-azure-to-azure-architecture.md) doornemen.
 - Controleer de [ondersteunings vereisten](site-recovery-support-matrix-azure-to-azure.md) voordat u begint.
@@ -42,7 +42,7 @@ Vereisten voor het voltooien van deze zelfstudie:
 Maak de kluis in elke gewenste regio, met uitzondering van de bronregio.
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) > **Recovery Services**.
-2. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**. Selecteer vervolgens **beheer hulpprogramma's** > **back-up en site Recovery**.
+2. Selecteer in het menu van Azure Portal of op de **Startpagina** de optie **Een resource maken**. Selecteer vervolgens **beheer hulpprogramma's** > **back-up en site Recovery**.
 3. Geef in **Naam** een beschrijvende naam op om de kluis mee aan te duiden. Als u meer dan één abonnement hebt, selecteert u het gewenste abonnement.
 4. Maak een resourcegroep of selecteer een bestaande resourcegroep. Geef een Azure-regio op. Zie Geografische beschikbaarheid in [Prijsinformatie voor Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) om na te gaan welke regio's er worden ondersteund.
 5. Als u de kluis snel wilt kunnen openen via het dashboard, klikt u op **Vastmaken aan dashboard** en vervolgens op **Maken**.
@@ -77,15 +77,18 @@ Als u een URL-firewallproxy gebruikt om de uitgaande connectiviteit te beheren, 
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Uitgaande connectiviteit voor IP-adresbereiken
 
-Als u de uitgaande connectiviteit wilt beheren met behulp van IP-adressen in plaats van URL’s, staat u deze adressen toe voor firewall-, proxy- of NSG-regels op basis van een IP-adres.
+Als u NSG gebruikt, maakt u NSG-regels op basis van service tags voor toegang tot Azure Storage, Azure Active Directory Site Recovery service en Site Recovery bewaking. [Meer informatie](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
+
+Als u de uitgaande connectiviteit met IP-adressen in plaats van NSG-regels wilt beheren, moet u deze adressen toestaan voor op IP gebaseerde firewalls, proxy-of NSG-regels.
+
+>[!NOTE]
+>Het is raadzaam om altijd NSG-regels met Service Tags voor uitgaande toegang te configureren.
 
   - [Microsoft Azure Datacenter IP-bereiken](https://www.microsoft.com/download/details.aspx?id=41653)
   - [Windows Azure Datacenter IP-bereiken in Duitsland](https://www.microsoft.com/download/details.aspx?id=54770)
   - [Windows Azure Datacenter IP-bereiken in China](https://www.microsoft.com/download/details.aspx?id=42064)
   - [Office 365 URLs and IP address ranges (URL's en IP-adresbereiken voor Office 365)](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2#bkmk_identity)
   - [Site Recovery-service-eindpunt-IP-adressen](https://aka.ms/site-recovery-public-ips)
-
-Als u NSG gebruikt, kunt u een NSG-regel voor het opslag service label maken voor de bron regio. [Meer informatie](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges).
 
 ## <a name="verify-azure-vm-certificates"></a>Azure VM-certificaten controleren
 

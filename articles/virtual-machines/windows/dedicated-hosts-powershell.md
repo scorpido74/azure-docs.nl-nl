@@ -12,41 +12,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/01/2019
 ms.author: cynthn
-ms.openlocfilehash: 92dca6f4f41ff426aebcb8e580653afaa71afff8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ae7c6f2d5f05b3d4ed3744be57112a62606cf622
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033356"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833842"
 ---
-# <a name="preview-deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Voor beeld: Vm's implementeren op toegewezen hosts met behulp van de Azure PowerShell
+# <a name="deploy-vms-to-dedicated-hosts-using-the-azure-powershell"></a>Vm's implementeren op toegewezen hosts met behulp van de Azure PowerShell
 
 Dit artikel begeleidt u bij het maken van een toegewezen Azure- [host](dedicated-hosts.md) voor het hosten van uw virtuele machines (vm's). 
 
-Zorg ervoor dat u Azure PowerShell versie 2.4.2 of hoger hebt geïnstalleerd en u bent aangemeld bij een Azure-account in met `Connect-AzAccount`. Als u versie 2.4.2 wilt installeren, opent u een Power shell-prompt en typt u:
+Zorg ervoor dat u Azure PowerShell versie 2.8.0 of hoger hebt geïnstalleerd en u bent aangemeld bij een Azure-account in met `Connect-AzAccount`. 
 
-```powershell
-Install-Module -Name Az.Compute -Repository PSGallery -RequiredVersion 2.4.2-preview -AllowPrerelease
-```
+## <a name="limitations"></a>Beperkingen
 
-U hebt ten minste versie 1.6.0 van de PowerShellGet-module nodig om de functionaliteit van de preview-module in Power shell in te scha kelen. De nieuwste versies van Power shell core hebben dit automatisch ingebouwd, maar voor oudere versies van Power shell kunt u de volgende opdracht uitvoeren om naar de nieuwste versie bij te werken:
+- Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
+- De volgende VM-serie worden ondersteund: DSv3 en ESv3. 
 
-```powershell
-Install-Module -Name PowerShellGet -Repository PSGallery -Force
-```
-
-
-> [!IMPORTANT]
-> Exclusieve Azure-hosts bevindt zich momenteel in de open bare preview.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
->
-> **Bekende preview-beperkingen**
-> - Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
-> - De eerste release van de preview-versie ondersteunt de volgende VM-reeksen: DSv3 en ESv3. 
-
-
-
-## <a name="create-a-host-group"></a>Een hostgroep maken
+## <a name="create-a-host-group"></a>Een hostgroep aanmaken
 
 Een **hostgroep** is een resource die een verzameling toegewezen hosts vertegenwoordigt. U maakt een hostgroep in een regio en een beschikbaarheids zone en voegt hierop hosts toe. Bij het plannen van hoge Beschik baarheid zijn er extra opties. U kunt een of beide van de volgende opties gebruiken met uw toegewezen hosts: 
 - Beschik over meerdere beschikbaarheids zones. In dit geval moet u een hostgroep hebben in elk van de zones die u wilt gebruiken.
@@ -90,7 +74,7 @@ $dHost = New-AzHost `
    -PlatformFaultDomain 1
 ```
 
-## <a name="create-a-vm"></a>Een virtuele machine maken
+## <a name="create-a-vm"></a>Een VM maken
 
 Maak een virtuele machine op de toegewezen host. 
 

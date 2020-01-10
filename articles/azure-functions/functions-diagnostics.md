@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
-ms.openlocfilehash: 29f90508bf0bdd77f02d78cbcba8fdfe7009f0d2
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 41acc5703f6b6e5cdeedf2afd0dc61b23bc579c6
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562048"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834039"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Overzicht van Azure Functions diagnostische gegevens
 
@@ -42,9 +42,9 @@ Nadat u een tegel hebt geselecteerd, ziet u een lijst met onderwerpen die betrek
 
 Nadat u een onderwerp hebt gekozen, kunt u een diagnostisch rapport bekijken dat specifiek is voor uw functie-app. Diagnostische rapporten gebruiken status pictogrammen om aan te geven of er specifieke problemen zijn met uw app. U ziet een gedetailleerde beschrijving van het probleem, aanbevolen acties, gerelateerde metrische gegevens en nuttige docs. Aangepaste diagnostische rapporten worden gegenereerd op basis van een reeks controles die worden uitgevoerd in uw functie-app. Diagnostische rapporten kunnen een nuttig hulp middel zijn voor het lokaliseren van problemen in de functie-app en het verhelpen van het probleem.
 
-## <a name="find-the-problem-code"></a>De probleem code zoeken 
+## <a name="find-the-problem-code"></a>De probleem code zoeken
 
-Voor functies op basis van een script kunt u **functie-uitvoering** en **fouten** onder **functie-app omlaag of fouten rapporteren** om te beperken op de regel code die uitzonde ringen of fouten veroorzaakt. Deze functie kan een nuttig hulp middel zijn voor het verkrijgen van de hoofd oorzaak en het oplossen van problemen met een specifieke regel code. Deze optie is niet beschikbaar voor vooraf C# gecompileerde en Java-functies.
+Voor functies op basis van een script kunt u **functie-uitvoering en fouten** onder **functie-app omlaag of fouten rapporteren** om te beperken op de regel code die uitzonde ringen of fouten veroorzaakt. Deze functie kan een nuttig hulp middel zijn voor het verkrijgen van de hoofd oorzaak en het oplossen van problemen met een specifieke regel code. Deze optie is niet beschikbaar voor vooraf C# gecompileerde en Java-functies.
 
 ![Diagnostisch rapport over fouten bij de uitvoering van functies](./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png)
 

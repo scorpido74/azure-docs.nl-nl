@@ -8,13 +8,18 @@ ms.topic: include
 ms.date: 07/26/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 31fdd85fdcc40b38738d33e2c0c13797db7b1d42
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 207f5180db8a589ed4a68741ac18180370d21788
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390550"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75833869"
 ---
+## <a name="limitations"></a>Beperkingen
+
+- Virtuele-machine schaal sets worden momenteel niet ondersteund op toegewezen hosts.
+- De volgende VM-serie worden ondersteund: DSv3 en ESv3. 
+
 ## <a name="benefits"></a>Voordelen 
 
 Het reserveren van de hele host biedt de volgende voor delen:
@@ -22,7 +27,6 @@ Het reserveren van de hele host biedt de volgende voor delen:
 -   Hardwarematige isolatie op het niveau van de fysieke server. Er worden geen andere Vm's op uw hosts geplaatst. Toegewezen hosts worden in dezelfde data centers geïmplementeerd en delen hetzelfde netwerk en onderliggende opslag infrastructuur als andere, niet-geïsoleerde hosts.
 -   Controle over onderhouds gebeurtenissen geïnitieerd door het Azure-platform. Hoewel het meren deel van de onderhouds gebeurtenissen weinig gevolgen heeft voor uw virtuele machines, zijn er enkele gevoelige werk belastingen waarbij elke seconde van de onderbreking een impact kan hebben. Met toegewezen hosts kunt u zich aanmelden bij een onderhouds venster om de gevolgen voor uw service te verminderen.
 -   Met Azure Hybrid voordelen kunt u uw eigen licenties voor Windows en SQL naar Azure brengen. Het gebruik van de hybride voor delen biedt extra voor delen. Zie [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)voor meer informatie.
-
 
 
 ## <a name="groups-hosts-and-vms"></a>Groepen, hosts en Vm's  
@@ -62,7 +66,7 @@ U kunt beide mogelijkheden samen gebruiken om nog meer fouten te isoleren. In di
 
 De Resource Manager-voorbeeld sjabloon die [hier](https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-dedicated-hosts/README.md) wordt aangetroffen, maakt gebruik van zones en fout domeinen om hosts te verspreiden voor maximale tolerantie in een regio.
 
-## <a name="maintenance-control"></a>Onderhouds beheer
+## <a name="maintenance-control"></a>Onderhoudsbeheer
 
 De infra structuur die uw virtuele machines ondersteunt, kan af en toe worden bijgewerkt om de betrouw baarheid, prestaties en beveiliging te verbeteren en om nieuwe functies te kunnen starten. Het Azure-platform probeert de impact van platform onderhoud zoveel mogelijk te minimaliseren, maar klanten met *onderhoud gevoelige* workloads kunnen zelfs enkele seconden niet verdragen dat de virtuele machine moet worden bevroren of ontkoppeld voor onderhoud.
 
@@ -71,7 +75,7 @@ De infra structuur die uw virtuele machines ondersteunt, kan af en toe worden bi
 > [!NOTE]
 >  Onderhouds beheer bevindt zich momenteel in een beperkte preview-fase en vereist een voorbereidings proces. Gelden voor deze preview door een [inspectie enquête](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR6lJf7DwiQxNmz51ksQvxV9UNUM3UllWUjBMTFZQUFhHUDI0VTBPQlJFNS4u)in te dienen.
 
-## <a name="capacity-considerations"></a>Capaciteits overwegingen
+## <a name="capacity-considerations"></a>Overwegingen voor capaciteit
 
 Zodra een toegewezen host is ingericht, wijst Azure deze toe aan de fysieke server. Hiermee wordt de beschik baarheid van de capaciteit gegarandeerd wanneer u uw virtuele machine moet inrichten. Azure gebruikt de volledige capaciteit in de regio (of zone) om een fysieke server voor uw host te kiezen. Het betekent ook dat klanten kunnen verwachten dat ze hun toegewezen host footprint kunnen verg Roten zonder dat er bijna geen ruimte meer is in het cluster.
 
@@ -103,7 +107,7 @@ Verschillende `types` voor dezelfde VM-serie zijn van verschillende CPU-leveranc
 
 Raadpleeg de pagina met [prijzen](https://aka.ms/ADHPricing) voor de host voor meer informatie.
 
-Tijdens de preview-periode ondersteunen we de volgende SKU\types: DSv3_Type1 en ESv3_Type1
+Toegewezen hosts ondersteunen de volgende SKU\types: DSv3_Type1 en ESv3_Type1
 
  
 ## <a name="host-life-cycle"></a>Levens cyclus van host

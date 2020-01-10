@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 703e750c0d2515484cd9f1d2cb046096dfd1800d
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 2b80e09f086cfaa90174dc9abc5a5cd06294036e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794965"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770421"
 ---
 # <a name="what-is-computer-vision"></a>Wat is Computer Vision?
 
@@ -32,7 +32,7 @@ Computer Vision kunt veel software voor het beheer van digitale activa (moeder) 
 
 U kunt afbeeldingen analyseren om inzicht te krijgen in de visuele kenmerken en eigenschappen van die afbeeldingen. Alle functies in de onderstaande tabel worden geleverd door de [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API.
 
-| Bewerking | Beschrijving |
+| Actie | Beschrijving |
 | ------ | ----------- |
 |**[Visuele kenmerken taggen](concept-tagging-images.md)**|Identificeer en tag visuele kenmerken in een afbeelding op basis van een set met duizenden herkenbare objecten, levende wezens, landschappen en acties. Wanneer de Tags ambigu of niet algemeen bekend zijn, biedt de API-reactie hints om de context van de tag te verduidelijken. U kunt tagging niet alleen gebruiken voor het hoofdonderwerp, zoals een persoon op de voorgrond, maar ook voor de omgeving (binnen of buiten), meubels, gereedschap, planten, dieren, accessoires, gadgets en enzovoort.|
 |**[Objecten detecteren](concept-object-detection.md)**| Objectdetectie is vergelijkbaar met het gebruik van tags, maar de API retourneert de coördinaten van de omsluitende box voor elke tag die wordt toegepast. Als een afbeelding bijvoorbeeld een hond, kat en persoon bevat, zal de detectiebewerking deze objecten vermelden, samen met hun coördinaten in de afbeelding. U kunt deze functie gebruiken om verdere relaties tussen de objecten in een afbeelding te verwerken. Ook weet u daardoor wanneer er meerdere exemplaren van dezelfde tag in een afbeelding voorkomen.|
@@ -48,7 +48,7 @@ U kunt afbeeldingen analyseren om inzicht te krijgen in de visuele kenmerken en 
 
 ## <a name="extract-text-from-images"></a>Extraheren van tekst uit afbeeldingen
 
-U kunt Computer Vision [Lees-API](concept-recognizing-text.md#read-api) gebruiken om gedrukte en handgeschreven tekst uit afbeeldingen te extra heren in een door een machine Lees bare teken stroom. De Lees-API maakt gebruik van onze nieuwste modellen en werkt met tekst op verschillende Opper vlakken en achtergronden, zoals bevestigingen, posters, visite kaartjes, brieven en White boards. Engels is momenteel de enige ondersteunde taal.
+U kunt Computer Vision [Lees](concept-recognizing-text.md#read-api) -API gebruiken om gedrukte en handgeschreven tekst uit afbeeldingen te extra heren in een door een machine Lees bare teken stroom. De Lees-API maakt gebruik van onze nieuwste modellen en werkt met tekst op verschillende Opper vlakken en achtergronden, zoals bevestigingen, posters, visite kaartjes, brieven en White boards. Engels is momenteel de enige ondersteunde taal.
 
 U kunt ook de [OCR-API (Optical Character Recognition)](concept-recognizing-text.md#ocr-optical-character-recognition-api) gebruiken om gedrukte tekst in verschillende talen te extra heren. Via OCR wordt zo nodig de draaiing van de herkende tekst gecorrigeerd en worden de framecoördinaten van elk woord weergegeven. OCR ondersteunt 25 talen en detecteert automatisch de taal van de herkende tekst.
 

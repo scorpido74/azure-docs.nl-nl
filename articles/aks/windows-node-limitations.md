@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 3a57fbb010f8a04352d09d4b6d57cf465e3e6988
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 3dd7399b68388d92d38b0f64c6e816cb94b3f295
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279162"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768568"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Huidige beperkingen voor Windows Server-knooppunt groepen en toepassings werkbelastingen in azure Kubernetes service (AKS)
 
@@ -65,6 +65,10 @@ Windows Server-knoop punten in AKS moeten worden *bijgewerkt* om de meest recent
 > [!NOTE]
 > De bijgewerkte installatie kopie van Windows Server wordt alleen gebruikt als er een upgrade van een cluster is uitgevoerd voordat de knooppunt groep werd geüpgraded
 >
+
+## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Hoe kan ik de service-principal voor mijn Windows-knooppunt groep draaien?
+
+Tijdens de preview-periode bieden Windows-knooppunt groepen geen ondersteuning voor de Service-Principal-rotatie als een preview-beperking. Als u de Service-Principal wilt bijwerken, maakt u een nieuwe Windows-knooppunt groep en migreert u uw Peul van de oudere groep naar het nieuwe. Wanneer dit is voltooid, verwijdert u de oude knooppunt groep.
 
 ## <a name="how-many-node-pools-can-i-create"></a>Hoeveel knooppunt groepen kan ik maken?
 

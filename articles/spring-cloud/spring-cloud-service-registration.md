@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 72327e116e498ce0f6881a5c585a08e56c8bf8c2
-ms.sourcegitcommit: d773b5743cb54b8cbcfa5c5e4d21d5b45a58b081
+ms.openlocfilehash: 1a45e744db36be651e770f7b5c7cc6df530f887d
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72038741"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772054"
 ---
 # <a name="discover-and-register-your-spring-cloud-services"></a>Uw lente-Cloud Services ontdekken en registreren
 
@@ -20,24 +20,7 @@ Service detectie is een belang rijke vereiste voor een architectuur op basis van
 ## <a name="register-your-application-using-spring-cloud-service-registry"></a>Uw toepassing registreren met een lente-Cloud service register
 
 Voordat uw toepassing service registratie en detectie kan beheren met een lente-Cloud service register, moeten er verschillende afhankelijkheden zijn opgenomen in het *pom. XML-* bestand van de toepassing.
-
-Als u wilt beginnen, voegt u een opslag plaats voor moment opnamen toe aan de sectie *opslag plaats* van uw *pom. XML*
-
-```xml
-    <repositories>
-        <repository>
-            <id>nexus-snapshots</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-```
-
-## <a name="include-dependencies"></a>Afhankelijkheden toevoegen
-
-Vervolgens bevatten we afhankelijkheden voor de *lente-Cloud-starter-Netflix-Eureka-client* en *lente-Cloud-starter-Azure-lente-cloud-client* naar uw *pom. XML*
+Afhankelijkheden voor *veer-Cloud-starter-Netflix-Eureka-client* en *lente-Cloud-starter-Azure-lente-cloud-client* naar uw *pom. XML-bestand* toevoegen
 
 ```xml
     <dependency>
@@ -47,7 +30,7 @@ Vervolgens bevatten we afhankelijkheden voor de *lente-Cloud-starter-Netflix-Eur
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-spring-cloud-client</artifactId>
-        <version>2.1.0-SNAPSHOT</version>
+        <version>2.1.0</version>
     </dependency>
 ```
 

@@ -10,18 +10,18 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 11/04/2019
-ms.openlocfilehash: 1a82b6592782973920f4381129e9659eaebca033
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/09/2020
+ms.openlocfilehash: cd9cada24ba5e7d2a2001d4ef0efef2a157b0fd6
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75537186"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834730"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Trainings uitvoeringen in python starten, controleren en annuleren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) en [machine learning cli](reference-azure-machine-learning-cli.md) bieden verschillende methoden voor het bewaken, ordenen en beheren van uw uitvoeringen voor training en experimenten.
+De [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py), [Machine Learning cli](reference-azure-machine-learning-cli.md)en [Azure machine learning Studio](https://ml.azure.com) bieden verschillende methoden om uw uitvoeringen te controleren, te organiseren en te beheren voor training en experimenten.
 
 In dit artikel vindt u voor beelden van de volgende taken:
 
@@ -105,6 +105,16 @@ Gebruik de volgende stappen om een uitvoering van uw experiment te starten:
 
     Zie [AZ ml run-script uitvoeren](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script)voor meer informatie.
 
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio gebruiken
+
+Gebruik de volgende stappen om een pijplijn uitvoering te starten in de ontwerp functie (preview):
+
+1. Stel een standaard computie doel in voor de pijp lijn.
+
+1. Selecteer **uitvoeren** boven aan het pijp lijn-canvas.
+
+1. Selecteer een experiment om de pijplijn uitvoeringen te groeperen.
+
 ## <a name="monitor-the-status-of-a-run"></a>De status van een uitvoering controleren
 
 ### <a name="using-the-sdk"></a>De SDK gebruiken
@@ -160,6 +170,22 @@ print(notebook_run.get_status())
 
     Zie voor meer informatie [AZ ml run show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
 
+
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio gebruiken
+
+Om het aantal actieve uitvoeringen voor uw experiment in de Studio weer te geven.
+
+1. Navigeer naar het gedeelte **experimenten** .. 
+
+1. Selecteer een experiment.
+
+    Op de pagina experiment ziet u het aantal actieve Compute-doelen en de duur van elke uitvoering. 
+
+1. Selecteer een specifiek uitvoerings nummer.
+
+1. Op het tabblad **Logboeken** vindt u diagnostische en fout logboeken voor de pijplijn uitvoering.
+
+
 ## <a name="cancel-or-fail-runs"></a>Annuleren of mislukken wordt uitgevoerd
 
 Als u een fout melding krijgt of als de uitvoering te lang duurt om te volt ooien, kunt u de uitvoering annuleren.
@@ -194,6 +220,17 @@ az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
 Zie voor meer informatie [AZ ml run Cancel](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
+
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio gebruiken
+
+Als u een uitvoering in de Studio wilt annuleren, gebruikt u de volgende stappen:
+
+1. Ga naar de actieve pijp lijn in de sectie **experimenten** of **pijp lijnen** . 
+
+1. Selecteer het nummer van de pijplijn uitvoering dat u wilt annuleren.
+
+1. Selecteer op de werk balk **Annuleren**
+
 
 ## <a name="create-child-runs"></a>Onderliggende uitvoeringen maken
 
@@ -331,6 +368,12 @@ az ml run list --experiment-name experiment [?properties.author=='azureml-user' 
 ```
 
 Zie voor meer informatie over het uitvoeren van query's in azure CLI-resultaten query uitvoeren op [uitvoer van Azure cli-opdracht](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest).
+
+### <a name="using-azure-machine-learning-studio"></a>Azure Machine Learning Studio gebruiken
+
+1. Navigeer naar het gedeelte **pijp lijnen** .
+
+1. Gebruik de zoek balk om pijp lijnen te filteren met behulp van tags, beschrijvingen, namen van experimenten en naam indiener.
 
 ## <a name="example-notebooks"></a>Voorbeeld-laptops
 
