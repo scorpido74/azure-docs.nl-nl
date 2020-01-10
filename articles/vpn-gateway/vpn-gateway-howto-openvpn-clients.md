@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 06/14/2019
+ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3366f3470e01e455acacf8748830f2b15c826f49
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: f78f416aaeedb2905cd77e94589121050757a202
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997153"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75425687"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway"></a>OpenVPN-clients configureren voor Azure VPN Gateway
 
@@ -63,7 +63,7 @@ Controleer of u de stappen hebt voltooid voor het configureren van OpenVPN voor 
 
 1. Down load en installeer een OpenVPN-Client, zoals [TunnelBlick](https://tunnelblick.net/downloads.html). 
 2. Download het VPN-profiel voor de gateway. U kunt dit doen via het tabblad punt-naar-site-configuratie in de Azure Portal, of door ' New-AzVpnClientConfiguration ' te gebruiken in Power shell.
-3. Pak het profiel uit. Open het configuratie bestand vpnconfig. ovpn in de map OpenVPN in Klad blok.
+3. Pak het profiel uit. Open het configuratie bestand vpnconfig. ovpn in de map OpenVPN in een tekst editor.
 4. Vul het gedeelte P2S client certificate met de openbare P2S-clientcertificatcode in base64. In een certificaat met PEM-indeling kunt u gewoon het .cer-bestand openen en de base64-code tussen de headers van het certificaat kopiëren. Zie [de open bare sleutel exporteren](vpn-gateway-certificates-point-to-site.md#cer) voor informatie over het exporteren van een certificaat om de gecodeerde open bare sleutel op te halen.
 5. Vul in het gedeelte voor de persoonlijke sleutel de persoonlijke P2S-clientcertificaatsleutel in Base64 in. Zie [uw persoonlijke sleutel exporteren](https://openvpn.net/community-resources/how-to/#pki) voor meer informatie over het extra heren van een persoonlijke sleutel.
 6. Wijzig geen andere velden. Gebruik de ingevulde configuratie in de clientinvoer om verbinding te maken met de VPN.
@@ -74,6 +74,39 @@ Controleer of u de stappen hebt voltooid voor het configureren van OpenVPN voor 
 > [!IMPORTANT]
 >Alleen iOS 11,0 en hoger en MacOS 10,13 en hoger worden ondersteund met het OpenVPN-protocol.
 >
+## <a name="iOS"></a>iOS-clients
+
+1. Installeer de OpenVPN-Client (versie 2,4 of hoger) uit de App Store.
+2. Download het VPN-profiel voor de gateway. U kunt dit doen via het tabblad punt-naar-site-configuratie in de Azure Portal, of door ' New-AzVpnClientConfiguration ' te gebruiken in Power shell.
+3. Pak het profiel uit. Open het configuratie bestand vpnconfig. ovpn in de map OpenVPN in een tekst editor.
+4. Vul het gedeelte P2S client certificate met de openbare P2S-clientcertificatcode in base64. In een certificaat met PEM-indeling kunt u gewoon het .cer-bestand openen en de base64-code tussen de headers van het certificaat kopiëren. Zie [de open bare sleutel exporteren](vpn-gateway-certificates-point-to-site.md#cer) voor informatie over het exporteren van een certificaat om de gecodeerde open bare sleutel op te halen.
+5. Vul in het gedeelte voor de persoonlijke sleutel de persoonlijke P2S-clientcertificaatsleutel in Base64 in. Zie [uw persoonlijke sleutel exporteren](https://openvpn.net/community-resources/how-to/#pki) voor meer informatie over het extra heren van een persoonlijke sleutel.
+6. Wijzig geen andere velden.
+7. Stuur het profiel bestand (. ovpn) naar uw e-mail account dat is geconfigureerd in de e-mail-app op uw iPhone. 
+8. Open het e-mail bericht in de e-mail-app op de iPhone en tik op het bijgevoegde bestand
+
+    ![E-mail openen](./media/vpn-gateway-howto-openvpn-clients/ios2.png)
+
+9. Tik op **meer** als u de optie **kopiëren naar openvpn** niet ziet
+
+    ![Kopiëren naar OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios3.png)
+
+10. Tik op **kopiëren naar openvpn** 
+
+    ![Kopiëren naar OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios4.png)
+
+11. Tik op **toevoegen** op de pagina **profiel importeren**
+
+    ![Kopiëren naar OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios5.png)
+
+12. Tik op **toevoegen** op de pagina voor het **geïmporteerde profiel**
+
+    ![Kopiëren naar OpenVPN](./media/vpn-gateway-howto-openvpn-clients/ios6.png)
+
+13. Start de OpenVPN-app en schuif de switch op de **profiel** pagina rechts om verbinding te maken
+
+    ![Verbinding maken](./media/vpn-gateway-howto-openvpn-clients/ios8.png)
+
 
 ## <a name="linux"></a>Linux-clients
 
@@ -129,7 +162,7 @@ Controleer of u de stappen hebt voltooid voor het configureren van OpenVPN voor 
 15. Blader naar het profiel bestand en dubbel klik of kies **openen**.
 16. Klik op **toevoegen** in het venster **VPN toevoegen** .
   
-    ![Importeer vanuit een bestand](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
+    ![Importeren uit bestand](./media/vpn-gateway-howto-openvpn-clients/importfromfile.png)
 17. U kunt verbinding maken door **de VPN in** te scha kelen op de pagina **netwerk instellingen** of door onder het netwerk pictogram in het systeemvak te klikken.
 
 ## <a name="next-steps"></a>Volgende stappen

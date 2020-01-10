@@ -2,31 +2,31 @@
 title: Spark Structured streaming in azure HDInsight
 description: Het gebruik van Spark Structured streaming-toepassingen in HDInsight Spark-clusters.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 02/05/2018
-ms.author: hrasheed
-ms.openlocfilehash: 0aaca127fec82d35da0ba943e97221834c2e42ed
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.custom: hdinsightactive
+ms.date: 12/24/2019
+ms.openlocfilehash: 19cfd5d8ed4100048c270fb41e5e54a920c61516
+ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441912"
+ms.lasthandoff: 12/31/2019
+ms.locfileid: "75548833"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Overzicht van Apache Spark Structured streaming
 
 [Apache Spark](https://spark.apache.org/) Met Structured streaming kunt u schaal bare en fout tolerante toepassingen implementeren voor het verwerken van gegevens stromen. Structured streaming is gebaseerd op de Spark SQL-engine en verbetert de constructies van Spark SQL-gegevens frames en gegevens sets, zodat u streaming query's op dezelfde manier kunt schrijven als batch-query's.  
 
-Structured streaming-toepassingen worden uitgevoerd op HDInsight Spark-clusters en kunnen verbinding maken met streaminggegevens van [Apache Kafka](https://kafka.apache.org/), een TCP-socket (voor fout opsporing), Azure Storage of Azure data Lake Storage. De laatste twee opties, die afhankelijk zijn van externe opslag Services, bieden u de mogelijkheid om nieuwe bestanden die worden toegevoegd aan de opslag te bekijken en de inhoud ervan te verwerken alsof ze zijn gestreamd. 
+Structured streaming-toepassingen worden uitgevoerd op HDInsight Spark-clusters en kunnen verbinding maken met streaminggegevens van [Apache Kafka](https://kafka.apache.org/), een TCP-socket (voor fout opsporing), Azure Storage of Azure data Lake Storage. De laatste twee opties, die afhankelijk zijn van externe opslag Services, bieden u de mogelijkheid om nieuwe bestanden die worden toegevoegd aan de opslag te bekijken en de inhoud ervan te verwerken alsof ze zijn gestreamd.
 
-Structured streaming maakt een langlopende query waarbij u bewerkingen toepast op de invoer gegevens, zoals selectie, projectie, aggregatie, venster en het streamen van data frame met referentie DataFrames. Vervolgens voert u de resultaten uit naar bestands opslag (Azure Storage blobs of Data Lake Storage) of naar een Data Store met behulp van aangepaste code (zoals SQL Database of Power BI). Structured streaming biedt ook uitvoer naar de console voor het lokaal opsporen van fouten en naar een in-Memory tabel zodat u de gegevens kunt zien die zijn gegenereerd voor fout opsporing in HDInsight. 
+Structured streaming maakt een langlopende query waarbij u bewerkingen toepast op de invoer gegevens, zoals selectie, projectie, aggregatie, venster en het streamen van data frame met referentie DataFrames. Vervolgens voert u de resultaten uit naar bestands opslag (Azure Storage blobs of Data Lake Storage) of naar een Data Store met behulp van aangepaste code (zoals SQL Database of Power BI). Structured streaming biedt ook uitvoer naar de console voor het lokaal opsporen van fouten en naar een in-Memory tabel zodat u de gegevens kunt zien die zijn gegenereerd voor fout opsporing in HDInsight.
 
 ![Stroom verwerking met HDInsight-en Spark Structured streaming](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
 
 > [!NOTE]  
-> Spark Structured streaming vervangt Spark-streaming (DStreams). Door te gaan, krijgen gestructureerde streaming meer verbeteringen en onderhoud, terwijl DStreams alleen in de onderhouds modus wordt uitgevoerd. Structured streaming is momenteel niet de functie-complete als DStreams voor de bronnen en sinks die het ondersteunt, dus Evalueer uw vereisten om de juiste optie voor de verwerking van Spark-stream te kiezen. 
+> Spark Structured streaming vervangt Spark-streaming (DStreams). Door te gaan, krijgen gestructureerde streaming meer verbeteringen en onderhoud, terwijl DStreams alleen in de onderhouds modus wordt uitgevoerd. Structured streaming is momenteel niet de functie-complete als DStreams voor de bronnen en sinks die het ondersteunt, dus Evalueer uw vereisten om de juiste optie voor de verwerking van Spark-stream te kiezen.
 
 ## <a name="streams-as-tables"></a>Stromen als tabellen
 
@@ -34,15 +34,15 @@ Met Spark Structured streaming wordt een gegevens stroom aangeduid als een tabel
 
 ![Concept van Structured streaming](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-concept.png)
 
-In structured streaming worden gegevens in het systeem bezorgd en onmiddellijk opgenomen in een invoer tabel. U schrijft query's (met behulp van de data frame-en DataSet-Api's) die bewerkingen uitvoeren op deze invoer tabel. De uitvoer van de query levert een andere tabel, de *resultaten tabel*. De resultaten tabel bevat de resultaten van de query waaruit u gegevens voor een extern gegevens archief, zoals een relationele data base, tekent. Het tijdstip waarop de gegevens worden verwerkt vanuit de invoer tabel, wordt bepaald door het *trigger interval*. Standaard is het trigger interval nul, zodat gestructureerde streaming probeert de gegevens te verwerken zodra deze binnenkomen. In de praktijk betekent dit dat zodra Structured streaming de uitvoering van de vorige query heeft verwerkt, een andere verwerkings uitvoering wordt gestart op basis van recent ontvangen gegevens. U kunt de trigger zo configureren dat deze wordt uitgevoerd met een interval, zodat de streaminggegevens worden verwerkt in op tijd gebaseerde batches. 
+In structured streaming worden gegevens in het systeem bezorgd en onmiddellijk opgenomen in een invoer tabel. U schrijft query's (met behulp van de data frame-en DataSet-Api's) die bewerkingen uitvoeren op deze invoer tabel. De uitvoer van de query levert een andere tabel, de *resultaten tabel*. De resultaten tabel bevat de resultaten van de query waaruit u gegevens voor een extern gegevens archief, zoals een relationele data base, tekent. Het tijdstip waarop de gegevens worden verwerkt vanuit de invoer tabel, wordt bepaald door het *trigger interval*. Standaard is het trigger interval nul, zodat gestructureerde streaming probeert de gegevens te verwerken zodra deze binnenkomen. In de praktijk betekent dit dat zodra Structured streaming de uitvoering van de vorige query heeft verwerkt, een andere verwerkings uitvoering wordt gestart op basis van recent ontvangen gegevens. U kunt de trigger zo configureren dat deze wordt uitgevoerd met een interval, zodat de streaminggegevens worden verwerkt in op tijd gebaseerde batches.
 
-De gegevens in de resultaten tabellen bevatten mogelijk alleen de gegevens die nieuw zijn sinds de laatste keer dat de query is verwerkt (*toevoeg modus*), of de tabel kan elke keer dat er nieuwe gegevens worden vernieuwd, worden bijgewerkt, zodat de tabel alle uitvoer gegevens bevat sinds de streaming q uery begon (*volledige modus*).
+De gegevens in de resultaten tabellen kunnen alleen de gegevens bevatten die nieuw zijn sinds de laatste keer dat de query is verwerkt (*toevoeg modus*), of de tabel kan worden vernieuwd telkens wanneer er nieuwe gegevens zijn, zodat de tabel alle uitvoer gegevens bevat, omdat de streaming-query is gestart (*modus volt ooien*).
 
-### <a name="append-mode"></a>Toevoegmodus
+### <a name="append-mode"></a>Toevoeg modus
 
-In de toevoeg modus worden alleen de rijen die zijn toegevoegd aan de tabel met resultaten sinds de laatste query-uitvoering, aanwezig in de resultaten tabel en geschreven naar externe opslag. Zo kopieert de eenvoudigste query alleen alle gegevens uit de invoer tabel naar de tabel met resultaten. Telkens wanneer een trigger interval is verstreken, worden de nieuwe gegevens verwerkt en worden de rijen die de nieuwe gegevens vertegenwoordigen weer gegeven in de tabel met resultaten. 
+In de toevoeg modus worden alleen de rijen die zijn toegevoegd aan de tabel met resultaten sinds de laatste query-uitvoering, aanwezig in de resultaten tabel en geschreven naar externe opslag. Zo kopieert de eenvoudigste query alleen alle gegevens uit de invoer tabel naar de tabel met resultaten. Telkens wanneer een trigger interval is verstreken, worden de nieuwe gegevens verwerkt en worden de rijen die de nieuwe gegevens vertegenwoordigen weer gegeven in de tabel met resultaten.
 
-Denk na over een scenario waarin u telemetrie verwerkt van temperatuur Sens oren, zoals een thermo staat. Stel dat de eerste trigger één gebeurtenis op tijdstip 00:01 voor apparaat 1 met een temperatuur meting van 95 graden heeft verwerkt. In de eerste trigger van de query wordt alleen de rij met tijd 00:01 weer gegeven in de tabel met resultaten. Op tijdstip 00:02 wanneer een andere gebeurtenis arriveert, is de enige nieuwe rij de rij met tijd 00:02. de resultaten tabel zou dus slechts één rij bevatten.
+Overweeg een scenario waarin u telemetrie van temperatuur Sens oren, zoals een thermo staat, verwerkt. Stel dat de eerste trigger één gebeurtenis op tijdstip 00:01 voor apparaat 1 met een temperatuur meting van 95 graden heeft verwerkt. In de eerste trigger van de query wordt alleen de rij met tijd 00:01 weer gegeven in de tabel met resultaten. Op tijdstip 00:02 wanneer een andere gebeurtenis arriveert, is de enige nieuwe rij de rij met tijd 00:02. de resultaten tabel zou dus slechts één rij bevatten.
 
 ![Toevoeg modus voor gestructureerde streaming](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-append-mode.png)
 
@@ -50,13 +50,13 @@ Wanneer u de toevoeg modus gebruikt, wordt er gebruikgemaakt van de gegevens (he
 
 ### <a name="complete-mode"></a>Volledige modus
 
-U kunt hetzelfde scenario gebruiken. Dit is de tijd met de volledige modus. In de modus volledig wordt de hele uitvoer tabel vernieuwd op elke trigger zodat de tabel gegevens bevat die niet alleen uit de meest recente trigger worden uitgevoerd, maar van alle uitvoeringen. U kunt de modus volledig gebruiken om de niet-gewijzigde gegevens te kopiëren van de invoer tabel naar de resultaten tabel. Bij elke geactiveerde uitvoering worden de rijen met nieuwe resultaten samen met alle vorige rijen weer gegeven. De uitvoer resultaten tabel bevat alle gegevens die zijn verzameld sinds de query is gestart, en u hebt uiteindelijk te weinig geheugen. De modus volt ooien is bedoeld voor gebruik met statistische query's waarmee de inkomende gegevens op een of andere manier worden samengevat, en dat elke trigger de resultaten tabel wordt bijgewerkt met een nieuwe samen vatting. 
+U kunt hetzelfde scenario gebruiken. Dit is de tijd met de volledige modus. In de modus volledig wordt de hele uitvoer tabel vernieuwd op elke trigger zodat de tabel gegevens bevat die niet alleen uit de meest recente trigger worden uitgevoerd, maar van alle uitvoeringen. U kunt de modus volledig gebruiken om de niet-gewijzigde gegevens te kopiëren van de invoer tabel naar de resultaten tabel. Bij elke geactiveerde uitvoering worden de rijen met nieuwe resultaten samen met alle vorige rijen weer gegeven. De uitvoer resultaten tabel bevat alle gegevens die zijn verzameld sinds de query is gestart, en u hebt uiteindelijk te weinig geheugen. De modus volt ooien is bedoeld voor gebruik met statistische query's waarmee de inkomende gegevens op een bepaalde manier worden samengevat, zodat de resultaten tabel op elke trigger wordt bijgewerkt met een nieuwe samen vatting.
 
-Er wordt van uitgegaan dat er vijf seconden aan gegevens zijn verwerkt en dat de gegevens voor de zesde seconde moeten worden verwerkt. De invoer tabel bevat gebeurtenissen voor tijd 00:01 en tijd 00:03. Het doel van deze voorbeeld query is om de gemiddelde Tempe ratuur van het apparaat om de vijf seconden te geven. De implementatie van deze query is van toepassing op een aggregatie waarbij alle waarden die binnen elk 5-Second venster vallen, het gemiddelde van de Tempe ratuur en een rij voor de gemiddelde Tempe ratuur van dat interval. Aan het einde van het eerste venster van 5 seconden zijn er twee Tuples: (00:01, 1, 95) en (00:03, 1, 98). Voor het venster 00:00-00:05 levert de aggregatie een tuple op met de gemiddelde Tempe ratuur van 96,5 graden. In het volgende 5-tweede venster bevindt zich slechts één gegevens punt op tijdstip 00:06, dus de resulterende gemiddelde Tempe ratuur is 98 graden. Op tijdstip 00:10, met behulp van de volledige modus, bevat de tabel met resultaten de rijen voor zowel Windows 00:00-00:05 als 00:05-00:10, omdat de query alle geaggregeerde rijen, niet alleen de nieuwe, oplevert. Daarom blijft de resultaten tabel groeien naarmate er nieuwe vensters worden toegevoegd.    
+Er wordt van uitgegaan dat er vijf seconden aan gegevens zijn verwerkt en dat de gegevens voor de zesde seconde moeten worden verwerkt. De invoer tabel bevat gebeurtenissen voor tijd 00:01 en tijd 00:03. Het doel van deze voorbeeld query is om de gemiddelde Tempe ratuur van het apparaat om de vijf seconden te geven. De implementatie van deze query is van toepassing op een aggregatie waarbij alle waarden die binnen elk 5-Second venster vallen, het gemiddelde van de Tempe ratuur en een rij voor de gemiddelde Tempe ratuur van dat interval. Aan het einde van het eerste venster van 5 seconden zijn er twee Tuples: (00:01, 1, 95) en (00:03, 1, 98). Voor het venster 00:00-00:05 levert de aggregatie een tuple op met de gemiddelde Tempe ratuur van 96,5 graden. In het volgende 5-tweede venster is er slechts één gegevens punt op het moment 00:06, dus de resulterende gemiddelde Tempe ratuur is 98 graden. Op tijdstip 00:10, met behulp van de volledige modus, bevat de tabel met resultaten de rijen voor zowel Windows 00:00-00:05 als 00:05-00:10, omdat de query alle geaggregeerde rijen, niet alleen de nieuwe, oplevert. Daarom blijft de resultaten tabel groeien naarmate er nieuwe vensters worden toegevoegd.
 
 ![Volledige modus voor gestructureerde streaming](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming-complete-mode.png)
 
-Niet alle query's die gebruikmaken van de volledige modus, zorgen ervoor dat de tabel zonder grenzen groeit.  Bekijk in het vorige voor beeld dat in plaats van het gemiddelde van de Tempe ratuur per tijd venster het gemiddelde wordt berekend op basis van de apparaat-ID. De resultaat tabel bevat een vast aantal rijen (één per apparaat) met de gemiddelde Tempe ratuur voor het apparaat op alle gegevens punten die van dat apparaat zijn ontvangen. Wanneer er nieuwe temperaturen worden ontvangen, wordt de tabel met resultaten bijgewerkt zodat de gemiddelden in de tabel altijd actueel zijn. 
+Niet alle query's die gebruikmaken van de volledige modus, zorgen ervoor dat de tabel zonder grenzen groeit.  Bekijk in het vorige voor beeld dat in plaats van het gemiddelde van de Tempe ratuur per tijd venster het gemiddelde wordt berekend op basis van de apparaat-ID. De resultaat tabel bevat een vast aantal rijen (één per apparaat) met de gemiddelde Tempe ratuur voor het apparaat op alle gegevens punten die van dat apparaat zijn ontvangen. Wanneer er nieuwe temperaturen worden ontvangen, wordt de tabel met resultaten bijgewerkt zodat de gemiddelden in de tabel altijd actueel zijn.
 
 ## <a name="components-of-a-spark-structured-streaming-application"></a>Onderdelen van een Spark Structured streaming-toepassing
 
@@ -68,7 +68,7 @@ Met een eenvoudige voorbeeld query kunt u de Tempe ratuur-aflezingen per uur-lan
     {"time":1469501219,"temp":"95"}
     {"time":1469501225,"temp":"95"}
 
-Deze json-bestanden worden opgeslagen in `temps` de submap onder de container van het HDInsight-cluster. 
+Deze JSON-bestanden worden opgeslagen in de submap `temps` onder de container van het HDInsight-cluster.
 
 ### <a name="define-the-input-source"></a>De invoer bron definiëren
 
@@ -94,24 +94,23 @@ Pas vervolgens een query toe die de gewenste bewerkingen voor de streaming data 
 
 ### <a name="define-the-output-sink"></a>De uitvoer-Sink definiëren
 
-Definieer vervolgens de bestemming voor de rijen die worden toegevoegd aan de resultaten tabel binnen elk trigger interval. In dit voor beeld worden alleen alle rijen uitgevoerd naar een in- `temps` Memory tabel die u later kunt opvragen met SparkSQL. Volledige uitvoer modus zorgt ervoor dat alle rijen voor alle vensters elke keer worden uitgevoerd.
+Definieer vervolgens de bestemming voor de rijen die worden toegevoegd aan de resultaten tabel binnen elk trigger interval. In dit voor beeld worden alleen alle rijen in een in-Memory tabel uitgevoerd `temps` die u later kunt opvragen met SparkSQL. Volledige uitvoer modus zorgt ervoor dat alle rijen voor alle vensters elke keer worden uitgevoerd.
 
     val streamingOutDF = streamingAggDF.writeStream.format("memory").queryName("temps").outputMode("complete") 
 
 ### <a name="start-the-query"></a>De query starten
 
-Start de streaming-query en voer uit totdat een beëindigings signaal wordt ontvangen. 
+Start de streaming-query en voer uit totdat een beëindigings signaal wordt ontvangen.
 
     val query = streamingOutDF.start()  
 
 ### <a name="view-the-results"></a>De resultaten bekijken
 
-Terwijl de query wordt uitgevoerd, kunt u in dezelfde SparkSession een SparkSQL-query uitvoeren op de `temps` tabel waarin de query resultaten worden opgeslagen. 
+Terwijl de query wordt uitgevoerd, kunt u in dezelfde SparkSession een SparkSQL-query uitvoeren op de `temps` tabel waarin de query resultaten worden opgeslagen.
 
     select * from temps
 
 Deze query levert resultaten op die vergelijkbaar zijn met de volgende:
-
 
 | openen |  min (tijdelijk) | Gem (tijdelijk) | Max (tijdelijk) |
 | --- | --- | --- | --- |
@@ -127,7 +126,7 @@ Zie [Apache Spark Structured streaming Programming Guide (Engelstalig](https://s
 
 ## <a name="checkpointing-and-write-ahead-logs"></a>Controle punten en write-Ahead logboeken
 
-Voor het leveren van tolerantie en fout tolerantie is gestructureerde streaming afhankelijk van de *controle punten* om ervoor te zorgen dat de stroom verwerking zonder onderbrekingen kan worden voortgezet, zelfs als er knooppunt fouten optreden. In HDInsight maakt Spark controle punten aan duurzame opslag, hetzij Azure Storage als Data Lake Storage. Deze controle punten slaan de voortgangs informatie over de streaming-query op. Daarnaast maakt Structured streaming gebruik van een *Write-Ahead logboek* (Wal). De WAL legt opgenomen gegevens vast die zijn ontvangen, maar nog niet zijn verwerkt door een query. Als er een fout optreedt en de verwerking opnieuw wordt gestart vanuit de WAL, gaan alle gebeurtenissen die zijn ontvangen van de bron verloren.
+Voor het leveren van tolerantie en fout tolerantie is gestructureerde streaming afhankelijk van de *controle punten* om ervoor te zorgen dat de stroom verwerking zonder onderbrekingen kan worden voortgezet, zelfs als er knooppunt fouten optreden. In HDInsight maakt Spark controle punten aan duurzame opslag, hetzij Azure Storage als Data Lake Storage. Deze controle punten slaan de voortgangs informatie over de streaming-query op. Daarnaast maakt Structured streaming gebruik van een *Write-Ahead logboek* (Wal). De WAL legt opgenomen gegevens vast die zijn ontvangen, maar nog niet zijn verwerkt door een query. Als er een fout optreedt en de verwerking opnieuw wordt gestart vanuit de WAL, gaan alle gebeurtenissen die van de bron worden ontvangen, verloren.
 
 ## <a name="deploying-spark-streaming-applications"></a>Toepassingen voor Spark-Streaming implementeren
 

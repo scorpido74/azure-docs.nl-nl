@@ -11,14 +11,14 @@ ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/05/2017
+ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: a91098d06f481afaae75eb497d5a076c3eb42c07
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 231c8cb8e66d658ad49e02fd585f6c8a1593cb2d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72896956"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75373985"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Opslag configuratie voor SQL Server Vm's
 
@@ -40,7 +40,7 @@ Als u de configuratie-instellingen voor automatische opslag wilt gebruiken, zijn
 
 In de volgende secties wordt beschreven hoe u opslag configureert voor nieuwe SQL Server virtuele machines.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 Bij het inrichten van een Azure-VM met behulp van een SQL Server galerie-afbeelding, selecteert u **configuratie wijzigen** op het tabblad **SQL Server instellingen** om de configuratie pagina geoptimaliseerd voor prestaties te openen. U kunt de waarden standaard laten staan of het type schijf configuratie aanpassen dat het beste bij uw behoeften past, op basis van uw werk belasting. 
 
@@ -83,7 +83,7 @@ Als u de volgende Resource Manager-sjablonen gebruikt, worden standaard twee Pre
 * [Een VM maken met geautomatiseerde patching](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autopatching)
 * [Een virtuele machine maken met Azure-integratie](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-keyvault)
 
-### <a name="quickstart-template"></a>Snelstartsjabloon
+### <a name="quickstart-template"></a>Quickstartsjabloon
 
 U kunt de volgende Snelstartgids-sjabloon gebruiken om een SQL Server virtuele machine te implementeren met behulp van opslag optimalisatie. 
 
@@ -110,7 +110,6 @@ U kunt de schijf instellingen wijzigen voor de stations die zijn geconfigureerd 
 ![Opslag configureren voor bestaande SQL Server VM](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-drive.png)
 
 
-
 ## <a name="storage-configuration"></a>Opslagconfiguratie
 
 Deze sectie bevat een Naslag informatie over de opslag configuratie wijzigingen die Azure automatisch uitvoert tijdens het inrichten of configureren van een SQL-VM in de Azure Portal.
@@ -127,7 +126,7 @@ Azure gebruikt de volgende instellingen voor het maken van de opslag groep op SQ
 | Instelling | Waarde |
 | --- | --- |
 | Stripe-grootte |256 KB (data warehousing); 64 KB (transactioneel) |
-| Schijfformaten |1 TB elk |
+| Schijf grootten |1 TB elk |
 | Cache |Lezen |
 | Toewijzings grootte |64 KB NTFS Allocation Unit Size |
 | Herstel | Eenvoudig herstel (geen tolerantie) |
@@ -143,7 +142,7 @@ In de volgende tabel worden de drie beschik bare opties voor werkbelasting typen
 
 | Type werk belasting | Beschrijving | Optimalisaties |
 | --- | --- | --- |
-| **Algemeen** |Standaard instelling die de meeste werk belastingen ondersteunt |Geen |
+| **Algemeen** |Standaard instelling die de meeste werk belastingen ondersteunt |None |
 | **Transactionele verwerking** |Optimaliseert de opslag voor traditionele OLTP-workloads van data bases |Tracerings vlag 1117<br/>Tracerings vlag 1118 |
 | **Gegevens opslag** |Optimaliseert de opslag voor analyse-en rapportage werk belastingen |Tracerings vlag 610<br/>Tracerings vlag 1117 |
 

@@ -3,12 +3,12 @@ title: Zip-push implementatie voor Azure Functions
 description: Gebruik de implementatie faciliteiten van het zip-bestand van de kudu-implementatie service om uw Azure Functions te publiceren.
 ms.topic: conceptual
 ms.date: 08/12/2018
-ms.openlocfilehash: 88455e85607c608757067cea9d54b60e30cacb50
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6bda0859ca4741fe74f572b204e40130c56c46fc
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233062"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769661"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Zip-implementatie voor Azure Functions
 
@@ -16,7 +16,7 @@ In dit artikel wordt beschreven hoe u Project bestanden van uw functie-app imple
 
 Azure Functions heeft het volledige aanbod van continue implementatie-en integratie opties die worden verstrekt door Azure App Service. Zie [continue implementatie voor Azure functions](functions-continuous-deployment.md)voor meer informatie.
 
-U kunt de ontwikkeling versnellen door de project bestanden van uw functie-app gemakkelijker rechtstreeks vanuit een zip-bestand te implementeren. De API. zip-implementatie neemt de inhoud van een zip-bestand en extraheert de inhoud naar de map `wwwroot` van uw functie-app. Deze zip-bestands implementatie maakt gebruik van dezelfde kudu-service die voorziet in doorlopende implementaties op basis van integratie, waaronder:
+Om de ontwikkeling te versnellen, is het wellicht eenvoudiger om uw functie-app-project bestanden rechtstreeks vanuit een zip-bestand te implementeren. De API. zip-implementatie neemt de inhoud van een zip-bestand en extraheert de inhoud naar de map `wwwroot` van uw functie-app. Deze zip-bestands implementatie maakt gebruik van dezelfde kudu-service die voorziet in doorlopende implementaties op basis van integratie, waaronder:
 
 + Verwijderen van bestanden die overgebleven waren in eerdere implementaties.
 + Aanpassing van de implementatie, waaronder het uitvoeren van implementatie scripts.
@@ -66,10 +66,10 @@ U kunt ook een zip-bestand downloaden uit een GitHub-opslag plaats. Wanneer u ee
 
 U kunt Azure CLI gebruiken om een push-implementatie te activeren. Push implementeren van een zip-bestand naar uw functie-app met behulp van de opdracht [AZ functionapp Deployment source config-zip](/cli/azure/functionapp/deployment/source#az-functionapp-deployment-source-config-zip) . Als u deze opdracht wilt gebruiken, moet u Azure CLI versie 2.0.21 of hoger gebruiken. Als u wilt zien welke Azure CLI-versie u gebruikt, gebruikt u de opdracht `az --version`.
 
-Vervang in de volgende opdracht de tijdelijke aanduiding `<zip_file_path>` door het pad naar de locatie van uw zip-bestand. Vervang ook `<app_name>` door de unieke naam van uw functie-app. 
+Vervang in de volgende opdracht de tijdelijke aanduiding `<zip_file_path>` door het pad naar de locatie van uw zip-bestand. Vervang ook `<app_name>` door de unieke naam van de functie-app en vervang `<resource_group>` door de naam van uw resource groep.
 
 ```azurecli-interactive
-az functionapp deployment source config-zip  -g myResourceGroup -n \
+az functionapp deployment source config-zip -g <resource_group> -n \
 <app_name> --src <zip_file_path>
 ```
 

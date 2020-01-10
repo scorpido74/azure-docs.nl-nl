@@ -4,12 +4,12 @@ description: Meer informatie over het installeren van de Durable Functions exten
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: azfuncdf
-ms.openlocfilehash: eaa241eff6e1c359045a0ea3d8871fde6c60a059
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0060088acb100036c094406e01d0d736a4af88eb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231485"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769639"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Durable Functions maken met behulp van de Azure Portal
 
@@ -22,7 +22,7 @@ De uitbrei ding voor de [Durable functions](durable-functions-overview.md) voor 
 
 ## <a name="create-a-function-app"></a>Een functie-app maken
 
-U moet een functie-app hebben om de uitvoering van een functie te hosten. Met een functie-app kunt u uw functies groeperen als een logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren en delen. U kunt een .NET-of Java script-app maken.
+U moet een functie-app hebben om de uitvoering van een functie te hosten. Met een functie-app kunt u uw functies groeperen als logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren, schalen en delen. U kunt een .NET-of Java script-app maken.
 
 [!INCLUDE [Create function app Azure portal](../../../includes/functions-create-function-app-portal.md)]
 
@@ -68,7 +68,7 @@ Als u Java script-Durable Functions maakt, moet u het [`durable-functions` NPM-p
 
 1. Typ `durable` in het zoek veld en kies vervolgens de **Durable functions HTTP-starter-** sjabloon.
 
-1. Wanneer u hierom wordt gevraagd, selecteert u **installeren** om de Azure DurableTask-extensie voor alle afhankelijkheden in de functie-app te installeren. U hoeft de extensie slechts één keer te installeren voor een functie-app geven. Wanneer de installatie is voltooid, selecteert u **Doorgaan**.
+1. Wanneer u hierom wordt gevraagd, selecteert u **installeren** om de Azure DurableTask-extensie en eventuele afhankelijkheden in de functie-app te installeren. U hoeft de extensie slechts één keer te installeren voor een functie-app geven. Wanneer de installatie is voltooid, selecteert u **Doorgaan**.
 
     ![Binding-extensies installeren](./media/durable-functions-create-portal/install-durabletask-extension.png)
 

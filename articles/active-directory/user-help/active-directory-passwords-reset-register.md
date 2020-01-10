@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9748c0d04f958648f7919b7ac29dc58d5a137ac
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a6dddd13f31366e5a99d6c68ab82b048de4064b2
+ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279058"
+ms.lasthandoff: 01/06/2020
+ms.locfileid: "75681358"
 ---
 # <a name="register-your-verification-method-info-to-reset-your-own-password"></a>Uw informatie over de verificatie methode registreren om uw eigen wacht woord opnieuw in te stellen
 
@@ -29,7 +29,7 @@ Als eind gebruiker kunt u uw wacht woord opnieuw instellen of uw account ontgren
 
 ## <a name="register-or-confirm-authentication-data-with-sspr"></a>Verificatiegegevens registreren of bevestigen met SSPR
 
-1. Open de webbrowser op het apparaat en ga naar de [registratie pagina voor het opnieuw instellen van het wacht woord](https://aka.ms/ssprsetup).
+1. Open de webbrowser op het apparaat en ga naar de [registratie pagina voor het opnieuw instellen van het wacht woord](https://account.activedirectory.windowsazure.com/PasswordReset/Register.aspx?regref=ssprsetup).
 2. Voer uw gebruikers naam en het wacht woord in dat door de beheerder is opgegeven.
 3. Afhankelijk van de manier waarop uw IT-personeel dingen heeft geconfigureerd, zijn een of meer van de volgende opties beschikbaar voor u configureren en verifiëren. Als uw beheerder toestemming heeft om uw gegevens te gebruiken, kunnen ze een deel van de gegevens voor u invullen.
     * **Office Phone**: alleen de beheerder kan deze optie instellen.
