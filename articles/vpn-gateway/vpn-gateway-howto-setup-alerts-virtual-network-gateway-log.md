@@ -1,5 +1,5 @@
 ---
-title: Waarschuwingen instellen voor diagnostische logboek gebeurtenissen vanuit Azure VPN Gateway
+title: 'Azure VPN Gateway: waarschuwingen voor diagnostische logboek gebeurtenissen configureren'
 description: Stappen voor het configureren van waarschuwingen voor gebeurtenissen van VPN Gateway Diagnostische logboeken
 services: vpn-gateway
 author: anzaman
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: d914c020553bace7ea5ab8898ac4093fea30e6c9
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: e2d0227f7481f75c1b0a4e3fe9d0fa3134a7261c
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306995"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778597"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Waarschuwingen instellen voor diagnostische logboek gebeurtenissen van VPN Gateway
 
@@ -20,7 +20,7 @@ Dit artikel helpt u bij het instellen van waarschuwingen op basis van diagnostis
 
 De volgende logboeken zijn beschikbaar in Azure:
 
-|***Name*** | ***Beschrijving*** |
+|***Naam*** | ***Beschrijving*** |
 |---        | ---               |
 |GatewayDiagnosticLog | Bevat Diagnostische logboeken voor configuratie gebeurtenissen van de gateway, primaire wijzigingen en onderhouds gebeurtenissen |
 |TunnelDiagnosticLog | Bevat status wijzigings gebeurtenissen voor de tunnel. Tunnel Connect/Disconnect-gebeurtenissen hebben een samenvattings reden voor de status wijziging, indien van toepassing |
@@ -35,17 +35,17 @@ Met de volgende voorbeeld stappen wordt een waarschuwing gemaakt voor een verbin
 
 1. Zoek in het Azure Portal naar **log Analytics** onder **alle services** en selecteer **log Analytics werk ruimten**.
 
-   ![Selecties voor het naar log Analytics werk ruimten gaan](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "Maken")
+   ![Selecties voor het naar Log Analytics werk ruimten gaan](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert0.png "Create")
 
 2. Selecteer **maken** op de pagina **log Analytics** .
 
-   ![Pagina log Analytics met de knop maken](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "Selecteer")
+   ![Pagina Log Analytics met de knop maken](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert1.png  "Selecteer")
 
 3. Selecteer **nieuwe maken** en vul de details in.
 
-   ![Details voor het maken van een log Analytics-werk ruimte](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Selecteer")
+   ![Details voor het maken van een Log Analytics-werk ruimte](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert2.png  "Selecteer")
 
-4. Zoek uw VPN-gateway op de Blade**Diagnostische instellingen** **controleren** > .
+4. Zoek uw VPN-gateway op de Blade **bewaking** > **Diagnostische instellingen** .
 
    ![Selecties voor het zoeken naar de VPN-gateway in Diagnostische instellingen](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert3.png  "Selecteer")
 

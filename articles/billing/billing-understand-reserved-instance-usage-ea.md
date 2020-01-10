@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/01/2019
+ms.date: 06/30/2019
 ms.author: banders
-ms.openlocfilehash: 07f8d897d55868923ecca03797cf18a5346d667c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 20eacdb1ab8f7ebdf118646cd548d7b60b2d2ebc
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225797"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644342"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Reserveringskosten en gebruiksgegevens voor Enterprise Agreement opvragen
 
@@ -65,9 +65,9 @@ U kunt de gegevens opvragen met behulp van de API of door ze te downloaden uit d
 
 Als u nieuwe gegevens wilt opvragen, roept u de [API voor gebruiksgegevens](/rest/api/consumption/usagedetails/list) aan. Zie de [gebruiksvoorwaarden](billing-understand-your-usage.md)voor meer informatie over de gebruikte terminologie. De persoon die de aanroep verstuurt, moet een ondernemingsbeheerder zijn voor de Enterprise Agreement en hiervoor moet de [EA-portal](https://ea.azure.com) worden gebruikt. Ondernemingsbeheerders met de bevoegdheid Alleen-lezen kunnen de gegevens ook opvragen.
 
-De gegevens zijn niet beschikbaar in [Reporting APIs for Enterprise customers - Usage Details](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) (Rapportage-API's voor Enterprise-klanten - Gebruiksgegevens).
+Let op: deze gegevens zijn niet beschikbaar in [Rapportage-API's voor Enterprise-klanten - Gebruiksgegevens](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail).
 
-Hier ziet u een voorbeeld van een aanroep naar de API:
+Hier ziet u een voorbeeld van een aanroep naar de API voor gebruiksgegevens:
 
 ```
 https://management.azure.com/providers/Microsoft.Billing/billingAccounts/{enrollmentId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodId}/providers/Microsoft.Consumption/usagedetails?metric={metric}&amp;api-version=2019-05-01&amp;$filter={filter}
@@ -89,7 +89,7 @@ De informatie in de onderstaande tabel over metrische gegevens en filters kan he
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>CSV-bestand met nieuwe gebruiksgegevens downloaden
 
-Als u een EA-beheerder bent, kunt u vanuit de Azure-portal het CSV-bestand downloaden dat nieuwe gebruiksgegevens bevat. Deze gegevens zijn niet beschikbaar vanuit de [EA-portal](https://ea.azure.com).
+Als u een EA-beheerder bent, kunt u vanuit de Azure-portal het CSV-bestand downloaden dat nieuwe gebruiksgegevens bevat. Deze gegevens zijn niet beschikbaar vanuit de EA Portal (ea.azure.com). U moet het gebruiksbestand downloaden via de Azure-portal (portal.azure.com) om de nieuwe gegevens te zien.
 
 Ga in de Azure-portal naar [Kostenbeheer en facturering](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts).
 
@@ -148,7 +148,7 @@ Reserveringskosten zijn beschikbaar in [Kostenanalyse](https://aka.ms/costanalys
 
 ![Voorbeeld waarin wordt aangegeven waar u afgeschreven kosten kunt selecteren in Kostenanalyse](./media/billing-understand-reserved-instance-usage-ea/portal-cost-analysis-amortized-view.png)
 
-Groepeer op kostensoort om een uitsplitsing te zien naar gebruik, aankopen en restituties. Groepeer op reservering voor een uitsplitsing van de kosten voor reserveringen en on-demand. Vergeet niet dat als u naar de werkelijke kosten kijkt, alleen de reserveringskosten voor aankopen worden weergegeven. De kosten worden echter wel toegerekend aan de afzonderlijke resources die het voordeel hebben gebruikt als u naar de afgeschreven kosten kijkt. U ziet ook een nieuwe kostensoort **UnusedReservation** wanneer u de afgeschreven kosten bekijkt.
+Groepeer op kostensoort om een uitsplitsing te zien naar gebruik, aankopen en restituties. Groepeer op reservering voor een uitsplitsing van de kosten voor reserveringen en on-demand. Vergeet niet dat als u naar de werkelijke kosten kijkt, alleen de reserveringskosten voor aankopen worden weergegeven. De kosten worden echter wel toegerekend aan de afzonderlijke resources die het voordeel hebben gebruikt, als u naar de afgeschreven kosten kijkt. U ziet ook een nieuwe kostensoort **UnusedReservation** wanneer u de afgeschreven kosten bekijkt.
 
 ## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
 

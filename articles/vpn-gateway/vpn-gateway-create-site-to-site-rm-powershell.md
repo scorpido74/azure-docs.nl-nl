@@ -1,25 +1,26 @@
 ---
-title: 'Verbind uw on-premises netwerk met een virtueel Azure-netwerk: Site-naar-site-VPN: Power shell | Microsoft Docs'
+title: 'Uw on-premises netwerk verbinden met een virtueel Azure-netwerk: site-naar-site-VPN: Power shell'
 description: Stappen voor het maken van een IPSec-verbinding van uw on-premises netwerk met een virtueel Azure-netwerk via het openbare internet. Deze stappen helpen u een cross-premises site-naar-site-VPN-gatewayverbinding te maken met PowerShell.
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: cherylmc
-ms.openlocfilehash: 69cdf248e299ce4fdf08540836d44958438a2665
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 85ea3855b13350901d85701e9bca8d87ff6632c3
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699904"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778801"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Een VNet met een site-naar-site-VPN-verbinding maken met PowerShell
 
 In dit artikel leest u hoe u PowerShell gebruikt om een site-naar-site-VPN-gatewayverbinding te maken vanaf uw lokale netwerk naar het VNet. De stappen in dit artikel zijn van toepassing op het Resource Manager-implementatiemodel. U kunt deze configuratie ook maken met een ander implementatiehulpprogramma of een ander implementatiemodel door in de volgende lijst een andere optie te selecteren:
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure Portal (klassiek)](vpn-gateway-howto-site-to-site-classic-portal.md)
@@ -76,7 +77,7 @@ ConnectionName          = VNet1toSite1
 
 ```
 
-## <a name="VNet"></a>1. Een virtueel netwerk en een gatewaysubnet maken
+## <a name="VNet"></a>1. een virtueel netwerk en een gateway-subnet maken
 
 Als u nog geen virtueel netwerk hebt, maakt u er een. Controleer bij het maken van een virtueel netwerk of de adresruimten die u opgeeft, niet overlappen met adresruimten in uw on-premises netwerk. 
 
@@ -136,7 +137,7 @@ Gebruik de stappen in deze sectie als u al een virtueel netwerk hebt, maar een g
    Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
 
-## 2. <a name="localnet"></a>De lokale netwerkgateway maken
+## 2. <a name="localnet"> </a>de lokale netwerk gateway maken
 
 De lokale netwerk gateway (LNG) verwijst doorgaans naar uw on-premises locatie. Dit is niet hetzelfde als een virtuele netwerk gateway. U geeft de site een naam waarmee Azure hiernaar kan verwijzen en geeft vervolgens het IP-adres op van het on-premises VPN-apparaat waarmee u verbinding maakt. U geeft ook de IP-adresvoorvoegsels op die via de VPN-gateway worden doorgestuurd naar het VPN-apparaat. De adresvoorvoegsels die u opgeeft, zijn de voorvoegsels die zich in uw on-premises netwerk bevinden. Als uw on-premises netwerk verandert, kunt u de voorvoegsels eenvoudig bijwerken.
 
@@ -163,7 +164,7 @@ IP-adresvoorvoegsels wijzigen voor uw lokale netwerkgateway:
 
 Soms veranderen de voorvoegsels voor uw lokale netwerkgateway. De stappen waarmee u de IP-adresvoorvoegsels moet wijzigen, zijn afhankelijk van het feit of u een VPN-gatewayverbinding hebt gemaakt. Raadpleeg de sectie [Adresvoorvoegsels voor een lokale netwerkgateway wijzigen](#modify) van dit artikel.
 
-## <a name="PublicIP"></a>3. Een openbaar IP-adres aanvragen
+## <a name="PublicIP"></a>3. een openbaar IP-adres aanvragen
 
 Een VPN Gateway moet een openbaar IP-adres hebben. U vraagt eerst de resource van het IP-adres aan en verwijst hier vervolgens naar bij het maken van uw virtuele netwerkgateway. Het IP-adres wordt dynamisch aan de resource toegewezen wanneer de VPN Gateway wordt gemaakt. 
 
@@ -175,7 +176,7 @@ Vraag een openbaar IP-adres aan dat wordt toegewezen aan de VPN Gateway van uw v
 $gwpip= New-AzPublicIpAddress -Name VNet1GWPIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
-## <a name="GatewayIPConfig"></a>4. De IP-adresseringsconfiguratie voor de gateway maken
+## <a name="GatewayIPConfig"></a>4. de gateway-IP-adres configuratie maken
 
 De gateway configuratie definieert het subnet (het ' GatewaySubnet ') en het open bare IP-adres dat moet worden gebruikt. Gebruik het volgende voorbeeld om de gatewayconfiguratie te maken:
 
@@ -185,7 +186,7 @@ $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork
 $gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 ```
 
-## <a name="CreateGateway"></a>5. De VPN-gateway maken
+## <a name="CreateGateway"></a>5. de VPN-gateway maken
 
 Maak de VPN-gateway van het virtuele netwerk.
 
@@ -203,7 +204,7 @@ New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 
 Nadat u deze opdracht hebt uitgevoerd, duurt het maximaal 45 minuten voordat de gatewayconfiguratie is voltooid.
 
-## <a name="ConfigureVPNDevice"></a>6. Uw VPN-apparaat configureren
+## <a name="ConfigureVPNDevice"></a>6. uw VPN-apparaat configureren
 
 Voor site-naar-site-verbindingen met een on-premises netwerk is een VPN-apparaat vereist. In deze stap configureert u het VPN-apparaat. Bij het configureren van uw VPN-apparaat, moet u de volgende items:
 
@@ -217,7 +218,7 @@ Voor site-naar-site-verbindingen met een on-premises netwerk is een VPN-apparaat
 [!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
 
 
-## <a name="CreateConnection"></a>7. De VPN-verbinding maken
+## <a name="CreateConnection"></a>7. de VPN-verbinding maken
 
 Maak vervolgens de site-naar-site-VPN-verbinding tussen de gateway van uw virtuele netwerk en het VPN-apparaat. Zorg dat u de waarden vervangt door die van uzelf. De gedeelde sleutel moet overeenkomen met de waarde die u hebt gebruikt voor de configuratie van uw VPN-apparaat. Het '-ConnectionType' voor site-naar-site is **IPsec**.
 
@@ -236,7 +237,7 @@ Maak vervolgens de site-naar-site-VPN-verbinding tussen de gateway van uw virtue
 
 Na een korte tijd wordt de verbinding tot stand gebracht.
 
-## <a name="toverify"></a>8. De VPN-verbinding controleren
+## <a name="toverify"></a>8. Controleer de VPN-verbinding
 
 Er zijn een aantal verschillende manieren om uw VPN-verbinding te controleren.
 

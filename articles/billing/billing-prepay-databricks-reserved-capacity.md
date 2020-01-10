@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 0165da8adbb28b97d524f1a07c725716b69277d4
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8f3b38b3455b171701ff78345a3ee667c2c45071
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223640"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449330"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>De kosten voor Azure Databricks optimaliseren door hiervoor vooraf te betalen
 
@@ -41,8 +41,8 @@ Bereken voordat u tot aanschaf overgaat, het totale aantal DBU's dat voor versch
 
 U kunt Databricks-abonnementen kopen in de [Azure-portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D). Voor de aanschaf van gereserveerde capaciteit moet u de rol van eigenaar hebben voor ten minste één Enterprise Agreement.
 
-- Momenteel is aanschaf vooraf alleen beschikbaar voor klanten met een Enterprise Agreement.
-- U moet de rol van eigenaar hebben voor ten minste één Enterprise Agreement.
+- U moet beschikken over de rol Eigenaar voor minstens één Enterprise Agreement (aanbiedingsnummers: MS-AZR-0017P of MS-AZR-0148P), of Microsoft-klantovereenkomst of afzonderlijk abonnement met betalen-naar-gebruik-tarieven (aanbiedingsnummers: MS-AZR-0003P of MS-AZR-0023P).
+- Voor EA-abonnementen moet de optie Gereserveerde instanties toevoegen zijn ingeschakeld in de EA Portal. Of, als deze instelling is uitgeschakeld, moet u een EA-beheerder van het abonnement zijn.
 - Voor Enterprise Agreements moet de optie **Gereserveerde instanties toevoegen** zijn ingeschakeld in de [EA Portal](https://ea.azure.com/). Als die instelling is uitgeschakeld, moet u een EA-beheerder van het abonnement zijn.
 
 **Ga als volgt te werk om gereserveerde capaciteit te kopen:**
@@ -71,7 +71,7 @@ U kunt de vooraf gekochte pool Databricks-doorvoereenheden niet splitsen of same
 
 Vooraf gekochte Databricks-capaciteit kan niet worden geannuleerd of omgewisseld. Alle aankopen zijn definitief.
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 

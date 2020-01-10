@@ -10,37 +10,40 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: d11239aa49a53a90a38f2b5336d36cea6c97e9df
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7c25455e28e57ff40664a69718a2e406b52b7632
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824164"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834299"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Benoemde waarden gebruiken in azure API Management-beleid
 
 API Management-beleid is een krachtige mogelijkheid van het systeem waarmee de Azure Portal het gedrag van de API via configuratie kan wijzigen. Beleidsregels zijn een verzameling instructies die sequentieel worden uitgevoerd op de aanvraag of het antwoord van een API. Beleids instructies kunnen worden samengesteld met behulp van letterlijke tekst waarden, beleids expressies en benoemde waarden.
 
-Elk API Management service-exemplaar heeft een eigenschappen verzameling van sleutel/waarde-paren, die een benoemde waarde wordt genoemd en die globaal zijn voor het service-exemplaar. Er is geen limiet ingesteld voor het aantal items in de verzameling. Benoemde waarden kunnen worden gebruikt voor het beheren van constante teken reeks waarden voor alle API-configuraties en-beleid. Elke benoemde waarde kan de volgende kenmerken hebben:
+Elk API Management service-exemplaar heeft een verzameling sleutel-waardeparen, die een benoemde waarde wordt genoemd en die globaal zijn voor het service-exemplaar. Er is geen limiet ingesteld voor het aantal items in de verzameling. Benoemde waarden kunnen worden gebruikt voor het beheren van constante teken reeks waarden voor alle API-configuraties en-beleid. Elke benoemde waarde kan de volgende kenmerken hebben:
 
-| Kenmerk      | Type            | Beschrijving                                                                                                                         |
-| -------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `Display name` | tekenreeks          | Gebruikt voor het verwijzen naar de benoemde waarde in beleids regels. Een teken reeks van 1 tot 256 tekens. Alleen letters, cijfers, punten en streepjes zijn toegestaan. |
-| `Value`        | tekenreeks          | Werkelijke waarde. Mag niet leeg zijn of alleen uit spaties bestaan. Maxi maal 4096 tekens lang.                                     |
-| `Secret`       | booleaans         | Hiermee wordt bepaald of de waarde een geheim is en moet worden versleuteld of niet.                                                            |
+| Kenmerk      | Type            | Beschrijving                                                                                                                            |
+| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| `Display name` | string          | Gebruikt voor het verwijzen naar de benoemde waarde in beleids regels. Een teken reeks van 1 tot 256 tekens. Alleen letters, cijfers, punten en streepjes zijn toegestaan. |
+| `Value`        | string          | Werkelijke waarde. Mag niet leeg zijn of alleen uit spaties bestaan. Maxi maal 4096 tekens lang.                                        |
+| `Secret`       | booleaans         | Hiermee wordt bepaald of de waarde een geheim is en moet worden versleuteld of niet.                                                               |
 | `Tags`         | tekenreeksmatrix | Hiermee wordt de lijst met benoemde waarden gefilterd. Maxi maal 32 tags.                                                                                    |
 
 ![Benoemde waarden](./media/api-management-howto-properties/named-values.png)
 
 Benoemde waarden kunnen letterlijke teken reeksen en [beleids expressies](/azure/api-management/api-management-policy-expressions)bevatten. De waarde van `Expression` is bijvoorbeeld een beleids expressie die een teken reeks retourneert met de huidige datum en tijd. De benoemde waarde `Credential` is gemarkeerd als geheim, waardoor de waarde ervan niet standaard wordt weer gegeven.
 
-| Naam       | Waarde                      | Geheim | Tags          |
+| Name       | Waarde                      | Geheim | Tags          |
 | ---------- | -------------------------- | ------ | ------------- |
-| Waarde      | 42                         | False  | cruciale cijfers |
-| Referentie | ••••••••••••••••••••••     | True   | security      |
-| Expressie | @ (DateTime. Now. ToString ()) | False  |               |
+| Waarde      | 42                         | Onwaar  | cruciale cijfers |
+| Referentie | ••••••••••••••••••••••     | Waar   | beveiliging      |
+| Expressie | @(DateTime.Now.ToString()) | Onwaar  |               |
+
+> [!NOTE]
+> In plaats van benoemde waarden die zijn opgeslagen in een API Management-service, kunt u waarden gebruiken die zijn opgeslagen in de [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) -service, zoals wordt geïllustreerd door dit [voor beeld](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml).
 
 ## <a name="to-add-and-edit-a-named-value"></a>Een benoemde waarde toevoegen en bewerken
 
@@ -50,9 +53,9 @@ Benoemde waarden kunnen letterlijke teken reeksen en [beleids expressies](/azure
 2. Selecteer **benoemde waarden**.
 3. Druk op **+ toevoegen**.
 
-    Naam en waarde zijn vereiste waarden. Als de waarde een geheim is, schakelt u het selectie vakje *Dit is een geheim* in. Voer een of meer optionele Tags in om u te helpen bij het ordenen van uw benoemde waarden en klik op opslaan.
+    Naam en waarde zijn vereiste waarden. Als de waarde een geheim is, schakelt u het selectie vakje _Dit is een geheim_ in. Voer een of meer optionele Tags in om u te helpen bij het ordenen van uw benoemde waarden en klik op opslaan.
 
-4. Klik op **Create**.
+4. Klik op **Maken**.
 
 Zodra de benoemde waarde is gemaakt, kunt u deze bewerken door erop te klikken. Als u de naam van de benoemde waarde wijzigt, worden alle beleids regels die verwijzen naar deze benoemde waarde, automatisch bijgewerkt voor gebruik van de nieuwe naam.
 
@@ -101,7 +104,7 @@ U kunt dit testen in de ontwikkelaars portal door een bewerking aan te roepen di
 
 ![ontwikkelaarsportal][api-management-send-results]
 
-Als u de [API Inspector-tracering](api-management-howto-api-inspector.md) bekijkt voor een aanroep met de twee voor gaande voorbeeld beleidsregels met benoemde waarden, ziet u de twee `set-header`-beleids regels met de benoemde waarden ingevoegd en de evaluatie van de beleids expressie voor de naam waarde die bevat de beleids expressie.
+Als u de [API Inspector-tracering](api-management-howto-api-inspector.md) bekijkt voor een aanroep met de twee voor gaande voorbeeld beleidsregels met benoemde waarden, ziet u de twee `set-header`-beleids regels met de benoemde waarden ingevoegd en de evaluatie van de beleids expressie voor de naam waarde die de beleids expressie bevat.
 
 ![API Inspector-tracering][api-management-api-inspector-trace]
 

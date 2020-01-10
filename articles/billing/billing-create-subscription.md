@@ -1,5 +1,5 @@
 ---
-title: Een extra Azure-abonnement maken | Microsoft Docs
+title: 'Een extra Azure-abonnement maken:'
 description: Lees hier meer over het toevoegen van een nieuw Azure-abonnement in de Azure-portal.
 services: billing
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: banders
-ms.openlocfilehash: bd561f616c9e120a38f1c6b125e349684f82942e
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 0f4df548313e02a9e8eb857bf2c1d798d5ccdcc3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665607"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449620"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Een extra Azure-abonnement maken:
 
@@ -40,7 +40,7 @@ U hebt de volgende machtigingen nodig voor het maken van abonnementen:
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Een abonnement maken in de Azure-portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Zoek naar **Abonnementen**.
 
    ![Schermopname van zoekopdracht in portal naar abonnementen](./media/billing-create-subscription/billing-search-subscription-portal.png)

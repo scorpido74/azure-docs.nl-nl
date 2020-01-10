@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met uw factureringsaccount voor Microsoft-klantovereenkomst - Azure
+title: Aan de slag met facturering voor Microsoft-klantovereenkomst - Azure
 description: Uw factureringsaccount voor Microsoft-klantovereenkomst begrijpen
 author: bandersmsft
 manager: amberbhargava
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/10/2019
 ms.author: banders
-ms.openlocfilehash: e27d2116cf58c64fca7fb0273c852d6223f00c6e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 46918810648deb15ce0ae0dd13824702dcfb7073
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226125"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75389227"
 ---
 # <a name="get-started-with-your-microsoft-customer-agreement-billing-account"></a>Aan de slag met uw factureringsaccount voor Microsoft-klantovereenkomst
 

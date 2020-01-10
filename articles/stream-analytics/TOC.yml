@@ -61,6 +61,16 @@
           href: stream-analytics-sql-output-perf.md
         - name: Aangepaste Blob-padpatronen
           href: stream-analytics-custom-path-patterns-blob-storage-output.md
+    - name: Uw Stream Analytics-taak optimaliseren
+      items:
+        - name: Streaming-eenheden begrijpen en aanpassen
+          href: stream-analytics-streaming-unit-consumption.md
+        - name: Queryprestaties verbeteren
+          href: stream-analytics-parallelization.md
+        - name: Uw invoer opnieuw partitioneren
+          href: repartition.md
+        - name: Doorvoer van uw taak vergroten
+          href: stream-analytics-scale-jobs.md
     - name: Status van een taak
       href: job-states.md
     - name: Vensterfuncties
@@ -148,20 +158,6 @@
           href: stream-analytics-monitor-jobs.md
         - name: Taken bewaken - Visual Studio
           href: stream-analytics-monitor-jobs-use-vs.md
-    - name: Schalen
-      items:
-        - name: Schaal aanpassen met streaming-eenheden
-          href: stream-analytics-streaming-unit-consumption.md
-        - name: Schaal aanpassen met parallellisatie
-          items:
-            - name: Query-parallellisatie
-              href: stream-analytics-parallelization.md
-            - name: Doorvoer vergroten
-              href: stream-analytics-scale-jobs.md
-        - name: Schaal aanpassen met ML-functies
-          href: stream-analytics-scale-with-machine-learning-functions.md
-        - name: Schaal aanpassen door opnieuw te partitioneren
-          href: repartition.md
     - name: Automatiseren
       items:
         - name: .NET SDK gebruiken
@@ -218,6 +214,8 @@
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
     - name: Fouten opsporen met behulp van een taakdiagram
       href: stream-analytics-job-diagram-with-metrics.md
+    - name: Schaal aanpassen met ML-functies
+      href: stream-analytics-scale-with-machine-learning-functions.md
 - name: Querytaal voor Stream Analytics
   items:
     - name: Ingebouwde functies

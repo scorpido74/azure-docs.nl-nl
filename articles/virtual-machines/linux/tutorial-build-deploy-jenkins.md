@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 734b0a516d4a9fe882545dd5cde5a57d8af719cb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1265861a872b01d558646ea2adb6cba27fa3ebd4
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034573"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75778410"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Zelfstudie: Uw app implementeren voor Linux Virtual Machines in Azure met Jenkins en Azure DevOps Services
 
@@ -182,9 +182,11 @@ In deze zelfstudie hebt u de implementatie van een app in Azure geautomatiseerd 
 > * Uw app maakt in Jenkins.
 > * Jenkins configureren voor de integratie met Azure DevOps Services.
 > * Een implementatiegroep maakt voor de virtuele Azure-machines.
-> * Een release-pijplijn maakt waarmee u de virtuele machines configureert en de app wordt geïmplementeerd.
+> * Maak een Azure-pijp lijn waarmee de Vm's worden geconfigureerd en de app wordt geïmplementeerd.
 
-Ga naar de volgende zelfstudie voor meer informatie over het implementeren van een LAMP-stack (Linux, Apache, MySQL en PHP).
+Raadpleeg voor meer informatie over het gebruik van Azure-pijp lijnen voor zowel de build-als [de](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/deploy-linuxvm-deploygroups)release-procedure.
+
+Ga verder met de volgende zelf studie voor meer informatie over het maken van een YAML CI/CD-pijp lijn om te implementeren op Vm's.
 
 > [!div class="nextstepaction"]
-> [LAMP-stack implementeren](tutorial-lamp-stack.md)
+> [CI/CD met behulp van Azure-pijp lijnen](tutorial-build-deploy-azure-pipelines.md)

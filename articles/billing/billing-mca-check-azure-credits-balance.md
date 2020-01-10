@@ -11,48 +11,63 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: bbd456f82e333ab8e096e5695a55be43c2084c6d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 48f7e0b3d1289d8e9c620f931f9bc85570b90042
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223793"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449540"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>Saldo van Azure-tegoed voor Microsoft-klantovereenkomst bijhouden
 
-U kunt het saldo van het Azure-tegoed voor uw type factureringsrekening voor een Microsoft-klantovereenkomst bijhouden in de Azure-portal. 
+U kunt het saldo van het Azure-tegoed voor uw type factureringsaccount voor een Microsoft-klantovereenkomst bijhouden in de Azure-portal of via REST API’s.
 
-U kunt het tegoed gebruiken om te betalen voor kosten die daarvoor in aanmerking komen. Er worden gebruikskosten in rekening gebracht wanneer u producten gebruikt die niet in aanmerking komen voor betaling met een tegoed of als u het saldo van uw tegoed overschrijdt. Zie [Producten die niet onder Azure-tegoed vallen](#products-that-arent-covered-by-azure-credits) voor meer informatie.
-
-In de factureringsrekening voor een Microsoft-klantovereenkomst wordt een tegoed toegewezen aan een factureringsprofiel. Elk factureringsprofiel heeft zijn eigen tegoed. U moet beschikken over de rol van eigenaar van het factureringsprofiel, inzender, lezer of factuurbeheerder voor het factureringsprofiel of de rol van eigenaar, inzender of lezer voor de factureringsrekening om het Azure-tegoed voor een factureringsprofiel te kunnen bekijken. Zie [Informatie over beheerdersrollen voor Microsoft-klantovereenkomsten in Azure](billing-understand-mca-roles.md) voor meer informatie over de rollen.
+In de factureringsrekening voor een Microsoft-klantovereenkomst wordt een tegoed toegewezen aan een factureringsprofiel. Elk factureringsprofiel heeft zijn eigen tegoed dat automatisch wordt toegepast op de kosten voor de bijbehorende factuur. U moet beschikken over de rol van eigenaar van het factureringsprofiel, inzender, lezer of factuurbeheerder voor het factureringsprofiel of de rol van eigenaar, inzender of lezer voor de factureringsrekening om het Azure-tegoed voor een factureringsprofiel te kunnen bekijken. Zie [Informatie over beheerdersrollen voor Microsoft-klantovereenkomsten in Azure](billing-understand-mca-roles.md) voor meer informatie over de rollen.
 
 Dit artikel is van toepassing op een factureringsaccount voor een Microsoft-klantovereenkomst. [Controleer of u toegang hebt tot een Microsoft-klantovereenkomst](#check-access-to-a-microsoft-customer-agreement).
 
-## <a name="check-your-credit-balance-in-the-azure-portal"></a>Het saldo van uw tegoed controleren in de Azure-portal
+## <a name="check-your-credit-balance"></a>Het saldo van uw tegoed controleren
 
-1. Meld u aan bij [Azure Portal]( https://portal.azure.com).
+### <a name="azure-portaltabportal"></a>[Azure-portal](#tab/portal)
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Zoek naar **Kostenbeheer en facturering**.
 
     ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in de Azure-portal](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3.  Selecteer **Azure-tegoed** aan de linkerkant. Afhankelijk van uw toegang moet u mogelijk eerst een factureringsrekening of factureringsprofiel selecteren en vervolgens **Azure-tegoed** selecteren.
+3. Selecteer op de pagina met factureringsbereiken het factureringsaccount waarvoor u het tegoedsaldo wilt bijhouden. Het factureringsaccount moet van het type **Microsoft-klantovereenkomst** zijn.
 
-4. Op de pagina Azure-tegoed wordt de volgende informatie weergegeven:
+    ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in de Azure-portal](./media/billing-mca-check-azure-credits-balance/list-of-scopes.png)
 
-   ![Schermopname van tegoedsaldo en transacties voor een factureringsprofiel](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-overview.png)
+    > [!NOTE]
+    >
+    > In de Azure-portal wordt het meest recente factureringsbereik dat u hebt geopend, onthouden. Dit bereik wordt weergegeven wanneer u de pagina Kostenbeheer en facturering de volgende keer opent. U ziet de pagina met factureringsbereiken niet als u Kostenbeheer en facturering eerder hebt bezocht. Als dit het geval is, controleert u of u zich in het [juiste bereik bevindt](#check-access-to-a-microsoft-customer-agreement). Zo niet, dan kunt u [Schakelen tussen bereiken](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal) om het factureringsaccount voor een Microsoft-klantovereenkomst te selecteren.
+
+3. Selecteer aan de linkerkant **Betalingswijzen** en selecteer vervolgens **Azure-tegoed**.
+
+   ![Schermopname van tegoedsaldo voor een factureringsprofiel](./media/billing-mca-check-azure-credits-balance/mca-payment-methods.png)
+
+4. De pagina Azure-tegoed bevat de volgende secties:
+    
+   #### <a name="balance"></a>Saldo
+   
+   In de sectie Saldo wordt de samenvatting van uw Azure-tegoedsaldo weergegeven.
+
+   ![Schermopname van tegoedsaldo voor een factureringsprofiel](./media/billing-mca-check-azure-credits-balance/mca-credit-balance.png)
 
    | Termijn               | Definitie                           |
    |--------------------|--------------------------------------------------------|
    | Geschat saldo  | Het geschatte resterende tegoed nadat alle gefactureerde en in behandeling zijnde transacties zijn voltooid |
    | Huidig saldo    | Het tegoed sinds uw laatste factuur. Hierbij is nog geen rekening gehouden met transacties die in behandeling zijn |
-   | Transacties       | Factureringstransacties die van invloed waren op het saldo van uw Azure-tegoed |
 
    Wanneer uw geschatte saldo tot 0 daalt, worden er kosten in rekening gebracht voor al uw gebruik, met inbegrip van producten die in aanmerking komen voor betaling met een tegoed.
 
-6. Selecteer **Lijst met tegoeden** om een lijst met tegoeden voor het factureringsprofiel weer te geven. De lijst met tegoeden bevat de volgende informatie:
+   #### <a name="credits-list"></a>Lijst met tegoeden
+   
+   In de sectie Lijst met tegoeden wordt de lijst met Azure-tegoed weergegeven.
 
-   ![Schermopname van lijst met tegoeden voor een factureringsprofiel](./media/billing-mca-check-azure-credits-balance/billing-mca-credits-list.png)
+   ![Schermopname van lijst met tegoeden voor een factureringsprofiel](./media/billing-mca-check-azure-credits-balance/mca-credits-list.png)
 
    | Termijn | Definitie |
    |---|---|
@@ -63,7 +78,28 @@ Dit artikel is van toepassing op een factureringsaccount voor een Microsoft-klan
    | Oorspronkelijk bedrag | Het oorspronkelijke bedrag van het tegoed |
    | Status | De huidige status van het tegoed. De status kan actief, gebruikt, vervallen of bijna vervallen zijn |
 
-## <a name="check-your-credit-balance-programmatically"></a>Uw tegoedsaldo programmatisch controleren
+   #### <a name="transactions"></a>Transacties
+
+   In de sectie Transacties worden alle transacties weergegeven die uw tegoed hebben beïnvloed.
+
+   ![Schermopname van tegoedtransacties voor een factureringsprofiel](./media/billing-mca-check-azure-credits-balance/mca-credits-transactions.png)
+    
+   | Termijn | Definitie |
+   |---|---|
+   | Transactiedatum | De datum waarop de transactie plaatsvond |
+   | Beschrijving | Een beschrijving van de transactie |
+   | Aantal| Het aantal transacties |
+   | Saldo | Het saldo na de transactie |
+
+    > [!NOTE]
+    >
+    > Als u geen Azure-tegoed ziet op de pagina met betalingswijzen, hebt u geen tegoed of hebt u niet het juiste bereik geselecteerd. Selecteer het factureringsaccount dat tegoed bevat of een van de bijbehorende factureringsprofielen. Raadpleeg [Schakelen tussen bereiken in de Azure-portal](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal)voor meer informatie over het wijzigen van bereiken.
+
+5. Als u Azure-tegoed in het factureringsaccountbereik bekijkt en het factureringsaccount meerdere factureringsprofielen bevat, wordt op de pagina Azure-tegoed een tabel weergegeven met een overzicht van het Azure-tegoed voor elk factureringsprofiel. Selecteer een factureringsprofiel in de lijst, selecteer betalingswijzen en vervolgens Azure-tegoed om de details voor een factureringsprofiel weer te geven.
+
+    ![Schermopname van tegoedlijst voor een factureringsaccount](./media/billing-mca-check-azure-credits-balance/mca-account-credit-list.png)
+
+### <a name="rest-apitabrest"></a>[REST API](#tab/rest)
 
 U kunt de [Azure Billing](https://docs.microsoft.com/rest/api/billing/)- en [Consumption](https://docs.microsoft.com/rest/api/consumption/)-API's gebruiken om het tegoedsaldo voor uw factureringsrekening programmatisch op te halen.
 
@@ -118,7 +154,7 @@ Via de API wordt een lijst met factureringsrekeningen en de bijbehorende facture
 }
 ```
 
-Kies het factureringsprofiel waarvoor u het tegoedsaldo wilt controleren met behulp van de eigenschap `displayName` van het factureringsprofiel. Kopieer de `id` van het factureringsprofiel. Als u bijvoorbeeld het tegoedsaldo van het factureringsprofiel **Development** (Ontwikkeling) wilt controleren, kopieert u ```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```. Plak deze waarde ergens zodat u deze kunt gebruiken tijdens de volgende stap.
+Kies het factureringsprofiel waarvoor u het tegoedsaldo wilt controleren, met behulp van de eigenschap `displayName` van het factureringsprofiel. Kopieer de `id` van het factureringsprofiel. Als u bijvoorbeeld het tegoedsaldo van het factureringsprofiel **Development** (Ontwikkeling) wilt controleren, kopieert u ```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-xxxx-xxx-xxx```. Plak deze waarde ergens zodat u deze kunt gebruiken tijdens de volgende stap.
 
 ### <a name="get-azure-credit-balance"></a>Saldo van Azure-tegoed ophalen 
 
@@ -324,6 +360,8 @@ Via de API worden alle transacties geretourneerd die van invloed waren op het te
 | `closedBalance`  | Het saldo na de transactie.   |
 | `eventType`  | Het transactietype.   |
 | `invoiceNumber`  | Het factuurnummer van de factuur waarop de transactie wordt gefactureerd. Dit is leeg voor een transactie in behandeling.   |
+
+---
 
 ## <a name="how-credits-are-used"></a>Hoe tegoeden worden gebruikt
 

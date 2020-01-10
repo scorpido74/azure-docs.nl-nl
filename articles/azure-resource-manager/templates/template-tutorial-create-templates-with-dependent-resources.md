@@ -5,12 +5,12 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 15c707b5424e84e99e0b1942bb623e6d3845213a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f73a35b9c04b8b520be4f0adeb8ddb4142499075
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472665"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834366"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Zelfstudie: Azure Resource Manager-sjablonen met afhankelijke resources maken
 
@@ -18,7 +18,7 @@ Meer informatie over het maken van een Azure Resource Manager sjabloon voor het 
 
 In deze zelfstudie hebt u een opslagaccount, een virtuele machine, een virtueel netwerk en enkele andere afhankelijke resources gemaakt. Sommige resources kunnen niet worden geïmplementeerd totdat er een andere resource bestaat. U kunt bijvoorbeeld niet een virtuele machine maken totdat het bijbehorende opslagaccount en de bijbehorende netwerkinterface bestaan. U definieert deze relatie door een resource afhankelijk van de andere resources te maken. Resource Manager evalueert de afhankelijkheden tussen resources en implementeert ze in de volgorde van afhankelijkheid. Als resources niet van elkaar afhankelijk zijn, worden deze door Resource Manager parallel geïmplementeerd. Zie [Define the order for deploying resources in Azure Resource Manager Templates](./define-resource-dependency.md) (De volgorde voor het implementeren van resources definiëren in Azure Resource Manager-sjablonen) voor meer informatie.
 
-![volgorde diagram voor de implementatie van resources van Resource Manager-sjabloon](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-dependent-resources-diagram.png)
+![Volgorde diagram voor de implementatie van resources van Resource Manager-sjabloon](./media/template-tutorial-create-templates-with-dependent-resources/resource-manager-template-dependent-resources-diagram.png)
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -117,7 +117,7 @@ Er bestaan meerdere methoden voor het implementeren van sjablonen.  In deze zelf
     ![Bestand uploaden in Cloud Shell in Azure Portal](./media/template-tutorial-create-templates-with-dependent-resources/azure-portal-cloud-shell-upload-file.png)
 1. Selecteer de sjabloon die u eerder in de zelfstudie hebt opgeslagen. De standaardnaam is **azuredeploy.json**.  Als u een bestand met dezelfde bestandsnaam hebt, wordt het oude bestand zonder melding overschreven.
 
-    U kunt eventueel de opdracht **ls $HOME** en de opdracht **cat $HOME/azuredeploy.json** uitvoeren om te controleren of de bestanden zijn geüpload.
+    U kunt eventueel de **ls $Home** -opdracht en de **Cat $Home/azuredeploy.json** -opdracht gebruiken om te controleren of de bestanden zijn geüpload.
 
 1. Voer vanuit Cloud Shell de volgende PowerShell-opdrachten uit. Voor een verbeterde beveiliging gebruikt u een gegenereerd wachtwoord voor het beheerdersaccount van de virtuele machine. Zie [Vereisten](#prerequisites).
 
@@ -161,7 +161,7 @@ Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een sjabloon ontwikkeld en geïmplementeerd voor het maken van een virtuele machine, een virtueel netwerk en de afhankelijke resources. Informatie over het implementeren van Azure-resources op basis van voorwaarden vindt u in:
+In deze zelfstudie hebt u een sjabloon ontwikkeld en geïmplementeerd voor het maken van een virtuele machine, een virtueel netwerk en de afhankelijke resources. Zie voor meer informatie over het gebruik van implementatie scripts voor het uitvoeren van pre/na de implementatie-bewerkingen:
 
 > [!div class="nextstepaction"]
-> [Voorwaarden gebruiken](./template-tutorial-use-conditions.md)
+> [Implementatie script gebruiken](./template-tutorial-deployment-script.md)

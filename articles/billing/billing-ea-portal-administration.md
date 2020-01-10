@@ -4,16 +4,16 @@ description: In dit artikel worden de algemene taken beschreven die een beheerde
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: c53a051df0a0100d9209530490d910612be2f30d
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 4db710dc93b0a1fc3c85d24e9d79fb2e2d552cd1
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849918"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644542"
 ---
 # <a name="azure-ea-portal-administration"></a>Beheer van Azure EA Portal
 
@@ -117,6 +117,8 @@ De Dev/Test-aanbieding is op dit moment niet van toepassing op Azure Gov-klanten
 
 ## <a name="transfer-an-enterprise-account-to-a-new-enrollment"></a>Een ondernemingsaccount overdragen naar een nieuwe inschrijving
 
+Bij een accountoverdracht wordt een accounteigenaar verplaatst van de ene inschrijving naar een andere. Alle verwante abonnementen onder de accounteigenaar worden verplaatst naar de doelinschrijving. Dit wordt uitgevoerd wanneer u meerdere actieve inschrijvingen hebt en alleen de geselecteerde accounteigenaren wilt verplaatsen.
+
 Houd rekening met de volgende punten wanneer u een Enterprise-account overdraagt naar een nieuwe inschrijving:
 
 - Alleen de accounts in de aanvraag worden overgedragen. Als alle accounts worden gekozen, worden ze allemaal overgedragen.
@@ -124,44 +126,37 @@ Houd rekening met de volgende punten wanneer u een Enterprise-account overdraagt
 
 ### <a name="effective-transfer-date"></a>Werkelijke overdrachtsdatum
 
-De werkelijke overdrachtsdatum kan een datum zijn op of na de start van de inschrijving waarnaar u wilt overdragen. De inschrijving waarnaar u overdraagt, is de _doelinschrijving_. Na de accountoverdracht blijven de gebruiksgegevens die al aanwezig waren vóór de overdrachtsdatum, beschikbaar in de inschrijving van waaruit u de overdracht uitvoert. De inschrijving van waaruit u overdraagt, is de _broninschrijving_.  Het gebruik van de broninschrijving wordt verrekend met de financiële toezegging of in rekening gebracht als overschrijding. Gebruik dat plaatsvindt na de werkelijke overdrachtsdatum, wordt overgedragen naar de nieuwe inschrijving en dienovereenkomstig in rekening gebracht.
-
-U kunt een inschrijvingsoverdracht antedateren tot de begindatum van de doelinschrijving. Of zo ver terug als de feitelijk begindatum van de broninschrijving.
-
-### <a name="monetary-commitment"></a>Financiële toezegging
-
-De financiële toezegging is niet overdraagbaar tussen inschrijvingen. De financiële toezeggingssaldi zijn contractueel gebonden aan de inschrijving waar ze zijn besteld. De financiële toezegging is niet overdraagbaar als onderdeel van het overdrachtsproces voor het account of de inschrijving.
-
-### <a name="services-affected"></a>Betrokken services
-
-Er is geen downtime tijdens de accountoverdracht. Indien alle vereiste gegevens worden verstrekt, kan de overdracht nog op de dag van uw aanvraag worden voltooid.
+U kunt een accountoverdracht antedateren tot de begindatum van de doelinschrijving, of de begindatum van het account, afhankelijk van welke begindatum de latere is. Na de accountoverdracht blijven de gebruiksgegevens die al aanwezig waren vóór de overdrachtsdatum, beschikbaar in de inschrijving van waaruit u de overdracht uitvoert. De gebruiksgegevens worden na de overdrachtsdatum verplaatst naar de doelinschrijving.
 
 ### <a name="prerequisites"></a>Vereisten
 
 Wanneer u een accountoverdracht aanvraagt, verstrekt u de volgende gegevens:
 
-
-- Accountnaam en eigenaar-id van het account dat moet worden overgedragen
+- Het nummer van de doelinschrijving, de accountnaam, en het e-mailadres van de accounteigenaar voor het account dat moet worden overgedragen
 - Voor de broninschrijving het inschrijvingsnummer en het account dat moet worden overgedragen
-- Voor de doelinschrijving het inschrijvingsnummer waarnaar moet worden overgedragen
-- De werkelijke datum van de accountoverdracht kan een datum op of na de begindatum van de doelinschrijving zijn
+- De werkelijke datum van de accountoverdracht kunt u antedateren tot de begindatum van de doelinschrijving, of de begindatum van het account, afhankelijk van welke begindatum de latere is
 
 Andere punten waarmee u rekening moet houden voordat u een account overdraagt:
 
 - Goedkeuring van een EA-beheerder is vereist voor de doel- en broninschrijving
 - Als een accountoverdracht niet aan uw vereisten voldoet, kunt u een inschrijvingsoverdracht overwegen.
 - De accountoverdracht draagt alle services en abonnementen over die betrekking hebben op de specifieke accounts.
-- Nadat de overdracht is voltooid, verschijnt het overgedragen account als inactief onder de broninschrijving.
-- De datum van een accountoverdracht kan worden geantedateerd naar een willekeurige datum binnen de begindatum van de doelinschrijving.
+- Nadat de overdracht is voltooid, verschijnt het overgedragen account als inactief onder de broninschrijving en als actief onder de doelinschrijving.
 - In het account wordt de einddatum getoond die correspondeert met de effectieve overdrachtsdatum op de broninschrijving en als een begindatum op de doelinschrijving.
 - Elk gebruik dat met het account is uitgevoerd vóór de effectieve overgangsdatum, blijft onder de broninschrijving bestaan.
 
 
 ## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>Enterprise-inschrijving overdragen naar een nieuwe inschrijving
 
+Een inschrijvingsoverdracht wordt overwogen wanneer:
+
+- De toezeggingstermijn van een huidige inschrijving tot een einde is gekomen.
+- Een inschrijving de status verlopen/uitgebreid heeft en er wordt onderhandeld over een nieuwe overeenkomst.
+- U meerdere inschrijvingen hebt en alle accounts en facturering wilt samenvoegen onder één inschrijving.
+
 Wanneer u de overdracht van een volledige Enterprise-inschrijving naar een inschrijving aanvraagt, worden de volgende acties uitgevoerd:
 
-- Alle Azure-services, -abonnementen, -accounts, -afdelingen en de volledige inschrijvingsstructuur, inclusief alle EA-afdelingsbeheerders, worden overgedragen.
+- Alle services, abonnementen, accounts en afdelingen van Azure, en de volledige inschrijvingsstructuur, inclusief alle EA-afdelingsbeheerders, worden overgedragen naar een nieuwe doelinschrijving.
 - De inschrijvingsstatus wordt ingesteld op _Overgedragen_. De overgedragen inschrijving is alleen beschikbaar voor rapportage van het historische gebruik.
 - U kunt geen rollen of abonnementen toevoegen aan een overgedragen inschrijving. De status Overgedragen voorkomt aanvullend gebruik van de inschrijving.
 - Het saldo van de resterende financiële toezegging in de overeenkomst gaat verloren, met inbegrip van toekomstige voorwaarden.
@@ -171,36 +166,33 @@ Wanneer u de overdracht van een volledige Enterprise-inschrijving naar een insch
 
 ### <a name="effective-transfer-date"></a>Werkelijke overdrachtsdatum
 
-De werkelijke overdrachtsdatum kan een datum zijn op of na de start van de inschrijving die u wilt overdragen naar de doelinschrijving.
+De werkelijke overdrachtsdatum kan zijn op of na de startdatum van de doelinschrijving.
 
 Het gebruik van de broninschrijving wordt verrekend met de financiële toezegging of in rekening gebracht als overschrijding. Gebruik dat plaatsvindt na de werkelijke overdrachtsdatum, wordt overgedragen naar de nieuwe inschrijving en dienovereenkomstig in rekening gebracht.
 
-### <a name="effective-transfer-date-in-the-past"></a>Werkelijke overdrachtsdatum in het verleden
-
-U kunt een accountoverdracht antedateren tot de begindatum van de doelinschrijving. Of zo ver terug als de feitelijk begindatum van de broninschrijving.
-
-### <a name="monetary-commitment"></a>Financiële toezegging
-
-De financiële toezegging is niet overdraagbaar tussen inschrijvingen. De financiële toezeggingssaldi zijn contractueel gebonden aan de inschrijving waar ze zijn besteld. De financiële toezegging is niet overdraagbaar als onderdeel van het overdrachtsproces voor het account of de inschrijving.
-
-### <a name="services-affected"></a>Betrokken services
-
-Er is geen downtime tijdens de accountoverdracht. Indien alle vereiste gegevens worden verstrekt, kan de overdracht nog op de dag van uw aanvraag worden voltooid.
+U kunt de overdracht antedateren tot aan de begindatum van de doelinschrijving. Dat wil zeggen: mits de gekozen overdrachtsdatum geen invloed heeft op het gebruik voor een overschrijdingsfactuur die al is uitgegeven.
 
 ### <a name="prerequisites"></a>Vereisten
 
 Wanneer u een inschrijvingsoverdracht aanvraagt, verstrekt u de volgende gegevens:
 
-- Voor de broninschrijving het inschrijvingsnummer en het account dat moet worden overgedragen.
+- Voor de broninschrijving is dit het inschrijvingsnummer.
 - Voor de doelinschrijving het inschrijvingsnummer waarnaar moet worden overgedragen.
 - De werkelijke datum van de inschrijvingsoverdracht kan een datum op of na de begindatum van de doelinschrijving zijn. De gekozen datum is niet van invloed op het gebruik voor een overschrijdingsfactuur die al is uitgegeven.
 
 Andere punten waarmee u rekening moet houden voordat u een inschrijving overdraagt:
 
-- Goedkeuring van een EA-beheerder is vereist voor de doel- en broninschrijving.
+- Goedkeuring van een EA-beheerder is vereist voor zowel de doel- als broninschrijving.
 - Als een inschrijvingsoverdracht niet aan uw vereisten voldoet, kunt u een accountoverdracht overwegen.
-- Alleen de accounts die u opgeeft, worden overgebracht. U kunt aanvragen om al uw accounts over te dragen.
-- De status van de broninschrijving blijft actief/uitgebreid. U kunt de inschrijving blijven gebruiken totdat deze verloopt.
+- De status van de broninschrijving wordt bijgewerkt naar overgedragen, en is alleen beschikbaar voor rapportagedoeleinden over historisch gebruik.
+
+### <a name="monetary-commitment"></a>Financiële toezegging
+
+De financiële toezegging is niet overdraagbaar tussen inschrijvingen. De financiële toezeggingssaldi zijn contractueel gebonden aan de inschrijving waar ze zijn besteld. De financiële toezegging is niet overdraagbaar als onderdeel van het overdrachtsproces voor het account of de inschrijving.
+
+### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>Er worden geen services beïnvloed voor de overdracht van accounts en inschrijvingen
+
+Er is geen downtime tijdens de overdracht van accounts en inschrijvingen. Indien alle vereiste gegevens worden verstrekt, kan de overdracht nog op de dag van uw aanvraag worden voltooid.
 
 ## <a name="change-account-owner"></a>Accounteigenaar wijzigen
 
@@ -224,7 +216,7 @@ Als het abonnement wordt overgedragen naar een account in een andere Azure AD-te
 
 Als ontvangers de toegang tot hun Azure-resources willen beperken, moeten ze overwegen om de geheimen bij te werken die zijn gekoppeld aan de service. De meeste resources kunnen worden bijgewerkt door de volgende stappen uit te voeren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 2. Selecteer in het Hub-menu **Alle resources**.
 3. Selecteer de resource.
 4. Klik op de resourcepagina op **Instellingen** om bestaande geheimen weer te geven en bij te werken.

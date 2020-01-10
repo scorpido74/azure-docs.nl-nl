@@ -1,10 +1,10 @@
-- name: Azure Security-benchmark
+- name: Azure Security-benchmarks
   href: index.yml
 - name: Inleiding
   href: introduction.md
 - name: Beveiligingsmaatregelen
   items:
-    - name: Overzicht
+    - name: Overzicht van het Azure Beveiligingscentrum
       href: overview.md
     - name: Netwerkbeveiliging
       href: security-control-network-security.md

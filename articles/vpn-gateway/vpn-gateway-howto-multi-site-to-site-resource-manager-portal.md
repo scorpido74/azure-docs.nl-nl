@@ -1,24 +1,25 @@
 ---
-title: 'Meerdere VPN-gateway site-to-site-verbindingen toevoegen aan een VNet: Azure portal: Resource Manager | Microsoft Docs'
+title: 'Meerdere VPN-gateway site-to-site-verbindingen toevoegen aan een VNet: Azure Portal'
 description: Multi-site S2S-verbindingen toevoegen aan een VPN-gateway die een bestaande verbinding heeft
 services: vpn-gateway
+titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/09/2019
 ms.author: cherylmc
-ms.openlocfilehash: d2c32fd35bbc6de1f010013c40a06af69052d3f5
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 7b438f2b966dc43d41b91a138b39193d230d5546
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244626"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779685"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Een site-naar-site-verbinding met een VNet toevoegen met een bestaande VPN-gateway verbinding
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 > * [PowerShell (klassiek)](vpn-gateway-multi-site.md)
 >
 > 
@@ -49,24 +50,24 @@ Controleer de volgende items:
 2. Klik op **alle resources** en zoek de gateway van uw **virtuele netwerk** in de lijst met resources en klik erop.
 3. Klik op de pagina **virtuele netwerk gateway** op **verbindingen**.
    
-    ![Pagina Verbindingen](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "Pagina Verbindingen")<br>
+    ![Pagina verbindingen](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "Pagina verbindingen")<br>
 4. Klik op de pagina **verbindingen** op **+ toevoegen**.
    
-    Knop ![verbinding toevoegen]op de knop(./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "verbinding") toevoegen<br>
+    ![Knop verbinding toevoegen](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "Knop verbinding toevoegen")<br>
 5. Vul de volgende velden in op de pagina **verbinding toevoegen** :
    
    * **Naam:** De naam die u wilt toekennen aan de site waarmee u de verbinding maakt.
    * **Verbindings type:** Selecteer **site-naar-site (IPSec)** .
      
-     ![Verbindings](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "") pagina toevoegen pagina toevoegen<br>
+     ![Verbindings pagina toevoegen](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Verbindings pagina toevoegen")<br>
 
 ## <a name="part2"></a>Deel 2: een lokale netwerk gateway toevoegen
 1. Klik op **lokale netwerk gateway** ***Kies een lokale netwerk gateway***. Hiermee opent u de pagina **lokale netwerk gateway kiezen** .
    
-    ![Lokale netwerk gateway kiezen](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "lokale netwerk gateway kiezen")<br>
+    ![Lokale netwerk gateway kiezen](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Lokale netwerk gateway kiezen")<br>
 2. Klik op **nieuwe maken** om de pagina **lokale netwerk gateway maken** te openen.
    
-    ![Pagina lokale netwerk gateway maken](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "lokale netwerk gateway maken")<br>
+    ![Pagina lokale netwerk gateway maken](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "Lokale netwerk gateway maken")<br>
 3. Vul op de pagina **lokale netwerk gateway maken** de volgende velden in:
    
    * **Naam:** De naam die u aan de lokale netwerk gateway resource wilt geven.

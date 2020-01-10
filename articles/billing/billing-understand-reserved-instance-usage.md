@@ -1,5 +1,5 @@
 ---
-title: Gebruik van Azure-reservering voor een afzonderlijk abonnement met betalen-naar-gebruik-tarieven
+title: Gebruik van Azure-reservering voor een afzonderlijk abonnement
 description: Lees hoe u uw gebruik kunt lezen om te begrijpen hoe de Azure-reservering voor uw afzonderlijke abonnement met tarieven voor betalen-naar-gebruik wordt toegepast.
 author: bandersmsft
 manager: yashr
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 0b578436a118539517d2d515717f2bdd97612d6e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 991afd5a91ef5f5586acd624c03babc38b5c1960
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225774"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449135"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Meer informatie over het gebruik van Azure-reserveringen voor uw afzonderlijke abonnement met tarieven op basis van betalen-naar-gebruik
 
@@ -90,7 +90,7 @@ Filter op **Extra gegevens** en typ uw **Reserverings-id**. De volgende schermop
 2. **ConsumptionMeter** is de meter-id voor de SQL Database-resource.
 3. **Meter-id** is de meter-id voor de reservering. De kosten van deze meter zijn $ 0. Voor alle SQL Database-resources die in aanmerking komen voor de reserveringskorting, wordt deze meter-id in het CSV-bestand weergegeven.
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 

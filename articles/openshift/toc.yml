@@ -22,7 +22,7 @@
           href: cluster-administration-cluster-admin-role.md
         - name: 2 - Beperkingen in beveiligingscontext beheren
           href: cluster-administration-security-context-constraints.md
-- name: Handleidingen
+- name: Instructiegidsen
   expanded: true
   items:
     - name: Een Azure Red Hat OpenShift-ontwikkelaarsomgeving instellen
@@ -37,6 +37,16 @@
       href: howto-deploy-prometheus.md
     - name: Projecten beheren in een Azure Red Hat OpenShift-cluster
       href: howto-manage-projects.md
+    - name: Bewaking en registratie
+      items:
+        - name: Azure Monitor voor containers (preview)
+          items:
+            - name: Azure Monitor voor containers configureren
+              href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+              maintainContext: true
+            - name: Azure Monitor voor containers uitschakelen
+              href: ../azure-monitor/insights/container-insights-optout-openshift.md
+              maintainContext: true
 - name: Naslaginformatie
   items:
     - name: CLI voor Azure Red Hat OpenShift

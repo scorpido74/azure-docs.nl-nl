@@ -66,6 +66,8 @@
     - name: Personalizer maken en configureren
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
+    - name: Uw leerbeleid beheren
+      href: how-to-learning-policy.md
     - name: Analyseren
       items:
         - name: Offline-evaluatie

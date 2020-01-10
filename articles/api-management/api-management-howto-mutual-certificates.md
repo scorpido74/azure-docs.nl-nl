@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 01/08/2020
 ms.author: apimpm
-ms.openlocfilehash: 70c1e22fc7f1fb1cda3fd4af1c2d3aa2cd257201
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39a1e224173dc021cf49b535957eb4b49f4c91ee
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442611"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834337"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Back-end-services beveiligen met verificatie op basis van client certificaten in azure API Management
 
@@ -30,9 +30,12 @@ Voor informatie over het beheren van certificaten met behulp van de API Manageme
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-In deze hand leiding wordt beschreven hoe u uw API Management service-exemplaar configureert voor het gebruik van verificatie van client certificaten voor toegang tot de back-end-service voor een API. Voordat u de stappen in dit artikel uitvoert, moet uw back-end-service zijn geconfigureerd voor verificatie van client certificaten ([voor het configureren van certificaat verificatie in azure WebSites raadpleegt u dit artikel][to configure certificate authentication in Azure WebSites refer to this article]). U hebt toegang tot het certificaat en het wacht woord voor het uploaden naar de API Management-service nodig.
+In deze hand leiding wordt beschreven hoe u uw API Management service-exemplaar configureert voor het gebruik van verificatie van client certificaten voor toegang tot de back-end-service voor een API. Voordat u de stappen in dit artikel volgt, moet uw back-end-service zijn geconfigureerd voor verificatie van client certificaten ([voor het configureren van certificaat verificatie in de Azure app service raadpleegt u dit artikel][to configure certificate authentication in Azure WebSites refer to this article]). U hebt toegang tot het certificaat en het wacht woord voor het uploaden naar de API Management-service nodig.
 
 ## <a name="step1"> </a>Een certificaat uploaden
+
+> [!NOTE]
+> U kunt in plaats van een geüpload certificaat een certificaat gebruiken dat is opgeslagen in de [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) -service, zoals wordt weer gegeven in dit [voor beeld](https://github.com/galiniliev/api-management-policy-snippets/blob/galin/AkvCert/examples/Look%20up%20Key%20Vault%20certificate%20using%20Managed%20Service%20Identity%20and%20call%20backend.policy.xml).
 
 ![Client certificaten toevoegen](media/api-management-howto-mutual-certificates/apim-client-cert-new.png)
 
@@ -40,9 +43,9 @@ Volg de onderstaande stappen om een nieuw client certificaat te uploaden. Als u 
 
 1. Navigeer naar uw Azure API Management service-exemplaar in de Azure Portal.
 2. Selecteer **certificaten** in het menu.
-3. Klik op de knop **+ Toevoegen**.  
-    client certificaten ![toevoegen](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)  
-4. Blader naar het certificaat en geef de ID en het wacht woord op.  
+3. Klik op de knop **+ Toevoegen**.
+    client certificaten ![toevoegen](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
+4. Blader naar het certificaat en geef de ID en het wacht woord op.
 5. Klik op **Maken**.
 
 > [!NOTE]
@@ -65,14 +68,14 @@ Als het certificaat wordt gebruikt door een API, wordt er een waarschuwings sche
 
 ## <a name="step2"> </a>Een API configureren voor het gebruik van een client certificaat voor gateway verificatie
 
-1. Klik op **api's** in het menu **API Management** aan de linkerkant en navigeer naar de API.  
+1. Klik op **api's** in het menu **API Management** aan de linkerkant en navigeer naar de API.
     client certificaten ![inschakelen](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)
 
-2. Klik op het tabblad **ontwerp** op een potlood pictogram van de **back-end** -sectie. 
-3. Wijzig de **Gateway referenties** in het **client certificaat** en selecteer uw certificaat in de vervolg keuzelijst.  
+2. Klik op het tabblad **ontwerp** op een potlood pictogram van de **back-end** -sectie.
+3. Wijzig de **Gateway referenties** in het **client certificaat** en selecteer uw certificaat in de vervolg keuzelijst.
     client certificaten ![inschakelen](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
-4. Klik op **Opslaan**. 
+4. Klik op **Opslaan**.
 
 > [!WARNING]
 > Deze wijziging is onmiddellijk van kracht en aanroepen naar bewerkingen van die API gebruiken het certificaat om te verifiëren op de back-endserver.

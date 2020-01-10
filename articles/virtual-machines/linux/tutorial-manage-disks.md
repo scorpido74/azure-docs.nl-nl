@@ -16,12 +16,12 @@ ms.date: 11/14/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 9042bece9b9a4c914941d65d615045cf365b67b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: dc987fa1a3476b81b198726350d56333b53c795f
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034388"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780297"
 ---
 # <a name="tutorial---manage-azure-disks-with-the-azure-cli"></a>Zelfstudie: Azure-schijven beheren met de Azure CLI
 
@@ -47,7 +47,7 @@ Wanneer een virtuele Azure-machine wordt gemaakt, worden automatisch twee schijv
 
 ## <a name="azure-data-disks"></a>Azure-gegevensschijven
 
-Voor de installatie van toepassingen en de opslag van gegevens kunnen extra gegevensschijven worden toegevoegd. Gegevensschijven moeten worden gebruikt in situaties waarin duurzame en responsieve gegevensopslag gewenst is. De grootte van de virtuele machine bepaalt hoeveel gegevensschijven aan een virtuele machine kunnen worden gekoppeld. Voor elke VM-vCPU kunnen vier schijven worden gekoppeld.
+Voor de installatie van toepassingen en de opslag van gegevens kunnen extra gegevensschijven worden toegevoegd. Gegevensschijven moeten worden gebruikt in situaties waarin duurzame en responsieve gegevensopslag gewenst is. De grootte van de virtuele machine bepaalt hoeveel gegevensschijven aan een virtuele machine kunnen worden gekoppeld.
 
 ## <a name="vm-disk-types"></a>Typen VM-schijven
 

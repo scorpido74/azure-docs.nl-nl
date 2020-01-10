@@ -1,5 +1,5 @@
 ---
-title: Informatie over korting op Red Hat-reserveringsabonnement en gebruik - Azure | Microsoft Docs
+title: Abonnementskortingen voor Red Hat-reserveringen - Azure
 description: Meer informatie over hoe Red Hat-abonnementskortingen worden toegepast op Red Hat-software op virtuele machines.
 services: billing
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/30/2019
 ms.author: cwatson
-ms.openlocfilehash: 0ac7425ed695d7ceac134e29b20cd12b01545239
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7af9f6ae0c274f38798d96dd9228a68ce709686c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74225765"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388445"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>Meer informatie over hoe de abonnementskorting voor Red Hat Linux Enterprise-softwarereservering wordt toegepast voor Azure
 
@@ -165,6 +165,6 @@ Raadpleeg voor meer informatie over reserveringen de volgende artikelen:
 - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](billing-understand-reserved-instance-usage.md)
 - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](billing-understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Contact opnemen
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).

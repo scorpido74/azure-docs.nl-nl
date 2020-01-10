@@ -83,7 +83,9 @@
       href: tutorial-connectivity.md
 - name: Concepten
   items:
-    - name: TLS 1.2 afdwingen
+    - name: TLS-ondersteuning
+      href: iot-hub-tls.md
+    - name: Afschaffing van TLS 1.0 en 1.1
       href: tls-1.2-everywhere.md
     - name: Overzicht van berichtverrijkingen
       href: iot-hub-message-enrichments-overview.md

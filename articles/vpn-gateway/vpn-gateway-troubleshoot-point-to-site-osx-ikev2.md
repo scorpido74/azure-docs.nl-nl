@@ -1,26 +1,18 @@
 ---
-title: Problemen oplossen met Azure Point-to-Site VPN-verbindingen van clients voor Mac OS X | Microsoft Docs
+title: 'Azure VPN Gateway: problemen met Point-to-site-verbindingen oplossen: Mac OS X-clients'
 description: Stappen voor het oplossen van P2S Mac OS X-VPN-clientverbindingen
 services: vpn-gateway
-documentationcenter: na
 author: anzaman
-manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: alzam
-ms.openlocfilehash: 0c058cb6547d67469d3138dc331b6181c07e6e65
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f76fd7bce539ebcf79216aabb5bf868b2d18107a
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60457033"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780178"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>Problemen met punt-naar-Site VPN-verbindingen van Mac OS X-VPN-clients oplossen
 

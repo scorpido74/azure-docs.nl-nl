@@ -5,34 +5,51 @@ services: azure-portal
 keywords: ''
 author: mblythe
 ms.author: mblythe
-ms.date: 01/25/2019
+ms.date: 01/08/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 3d2e6d2d0bde76a35a18373fabf64ce36c6c320e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 17d86b7c89ea5fb24c2adea22c5047c3e1ac3b6f
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640139"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832705"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Een tegel met korting op Azure-Dash boards gebruiken om aangepaste inhoud weer te geven
 
-U kunt een tegel met korting toevoegen aan uw Azure-Dash boards om aangepaste statische inhoud weer te geven. U kunt bijvoorbeeld basis instructies, een afbeelding of een set met Hyper links weer geven met een tegel prijs verlaging.
+U kunt een tegel met korting toevoegen aan uw Azure-Dash boards om aangepaste statische inhoud weer te geven. U kunt bijvoorbeeld basis instructies, een afbeelding of een set hyper links weer geven op een tegel met korting.
 
 ## <a name="add-a-markdown-tile-to-your-dashboard"></a>Een tegel met korting toevoegen aan uw dash board
 
-1. Selecteer **dash board** in de Azure Portal zijbalk. Als u aangepaste Dash boards hebt gemaakt, gebruikt u in de dashboard weergave de vervolg keuzelijst om het dash board te selecteren waar de tegel aangepaste prijs opgave moet worden weer gegeven. Selecteer het bewerkings pictogram om de **tegel galerie**te openen.
+1. Selecteer **dash board** in de Azure Portal zijbalk.
+
+   ![Scherm opname van portal zijbalk](./media/azure-portal-markdown-tile/azure-portal-nav.png)
+
+1. Als u aangepaste Dash boards hebt gemaakt, gebruikt u in de dashboard weergave de vervolg keuzelijst om het dash board te selecteren waar de tegel aangepaste prijs opgave moet worden weer gegeven. Selecteer het bewerkings pictogram om de **tegel galerie**te openen.
 
    ![Scherm opname van weer gave dash board bewerken](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
-2. Zoek in de **tegel galerie**de tegel met de naam **prijs** opgave en klik op **toevoegen**. De tegel wordt toegevoegd aan het dash board en het deel venster **verlaging bewerken** wordt geopend.
+1. Zoek in de **tegel galerie**de tegel met de naam **prijs** opgave en selecteer **toevoegen**. De tegel wordt toegevoegd aan het dash board en het deel venster **verlaging bewerken** wordt geopend.
 
-1. Bewerk de velden **titel**, **subtitel**en **inhoud** om de tegel aan te passen. In het voor beeld dat hier wordt weer gegeven, is de tegel prijs opgave bewerkt om aangepaste Help Desk-informatie weer te geven.
+1. Voer waarden in voor **titel** en **ondertitel**, die op de tegel worden weer gegeven nadat u naar een ander veld hebt verplaatst.
 
-   ![Scherm opname van de tegel bewerkings weergave korting weer geven](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
+   ![Scherm opname van de resultaten van het invoeren van de titel en subtitel](./media/azure-portal-markdown-tile/azure-portal-dashboard-enter-title.png)
 
-4. Selecteer **gereed** om het deel venster **prijs verlaging bewerken** te sluiten. Uw inhoud wordt weer gegeven op de tegel prijs opgave, die vervolgens kan worden aangepast door de greep in de rechter benedenhoek te slepen.
+1. Selecteer een van de opties voor het opnemen van de inhoud van de prijs opgave: **inline bewerken** of **Voeg inhoud in met behulp**van een URL.
+
+   - Selecteer **inline bewerken** als u de korting rechtstreeks wilt invoeren.
+
+      ![Scherm opname van het invoeren van inline-inhoud](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-inline-content.png)
+
+   - Selecteer **inhoud met behulp van URL invoegen** als u bestaande inhoud voor prijs verlaging wilt gebruiken die online wordt gehost.
+
+      ![Scherm opname van invoeren van URL](./media/azure-portal-markdown-tile/azure-portal-dashboard-markdown-url.png)
+
+      > [!NOTE]
+      > Voor extra beveiliging kunt u een afkortings bestand maken en dit opslaan in een [Azure Storage-account-BLOB waarvoor versleuteling is ingeschakeld](../storage/common/storage-service-encryption.md). vervolgens wijst u het bestand met de URL-optie aan. De inhoud van de prijs verlaging wordt versleuteld via de versleutelings opties van het opslag account. Alleen gebruikers met machtigingen voor het bestand kunnen de inhoud van de korting op het dash board zien.
+
+1. Selecteer **gereed** om het deel venster **prijs verlaging bewerken** te sluiten. Uw inhoud wordt weer gegeven op de tegel prijs verlaging, die u kunt verg Roten of verkleinen door de greep in de rechter benedenhoek te slepen.
 
    ![Scherm opname van tegel met aangepaste prijs verlaging](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
 

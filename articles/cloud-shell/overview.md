@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/03/2019
 ms.author: damaerte
-ms.openlocfilehash: 2edb50910614b47aca5a4d8f7f02c2e3bc69b643
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 513c3da8031774f5f111ee357b5a3c43e1d09d95
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449010"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832477"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Overzicht van Azure Cloud Shell
 Azure Cloud Shell is een interactieve, geverifieerde shell die toegankelijk is voor browsers voor het beheer van Azure-resources.
@@ -40,11 +40,14 @@ Cloud Shell biedt toegang tot een op een browser gebaseerde opdracht regel ervar
 Maak gebruik van Cloud Shell om niet-vastmaken aan de hand van een lokale machine te werken op een manier die alleen in de cloud kan worden verstrekt.
 
 ### <a name="choice-of-preferred-shell-experience"></a>Keuze van de voorkeurs shell-ervaring
-Gebruikers kunnen kiezen tussen bash of Power shell in de vervolg keuzelijst van de shell.
+Gebruikers kunnen kiezen tussen bash of Power shell.
+1. Selecteer **Cloud shell**.
 
-![Bash in Cloud Shell](media/overview/overview-bash-pic.png)
+    ![Cloud Shell pictogram](media/overview/overview-cloudshell-icon.png)
 
-![PowerShell in Cloud Shell](media/overview/overview-ps-pic.png)
+2. Selecteer **bash** of **Power shell**.
+
+    ![Kies bash of Power shell](media/overview/overview-choices.png)
 
 ### <a name="authenticated-and-configured-azure-workstation"></a>Geverifieerd en geconfigureerd Azure-werk station
 Cloud Shell wordt beheerd door micro soft, zodat het beschikt over populaire opdracht regel Programma's en taal ondersteuning. Cloud Shell wordt ook automatisch geauthenticeerd voor directe toegang tot uw resources via de Azure CLI-of Azure PowerShell-cmdlets.

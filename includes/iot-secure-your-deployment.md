@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: e696db3ad452152f6478701876b7760d7fed355b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ea57f8cdf5e1b2460f396445c67cfcab28f07525
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793089"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75840689"
 ---
 Dit artikel bevat het volgende detail niveau voor het beveiligen van de IoT-infra structuur (Azure IoT-based Internet of Things). Het bevat koppelingen naar details over het implementatie niveau voor het configureren en implementeren van elk onderdeel. Het biedt ook vergelijkingen en keuzes tussen verschillende concurrerende methoden.
 
@@ -77,11 +77,11 @@ Tijdens het tot stand brengen van een beveiligde TLS-verbinding met IoT Hub, ver
 
 ## <a name="securing-the-connection"></a>De verbinding beveiligen
 
-Internet verbinding tussen het IoT-apparaat en het IoT Hub wordt beveiligd met de standaard Transport Layer Security (TLS). Azure IoT ondersteunt [tls 1,2](https://tools.ietf.org/html/rfc5246), TLS 1,1 en TLS 1,0, in deze volg orde. Ondersteuning voor TLS 1,0 wordt alleen geboden voor compatibiliteit met eerdere versies. Gebruik, indien mogelijk, TLS 1,2, omdat deze de meeste beveiliging biedt.
+Internet verbinding tussen het IoT-apparaat en het IoT Hub wordt beveiligd met de standaard Transport Layer Security (TLS). Azure IoT ondersteunt [tls 1,2](https://tools.ietf.org/html/rfc5246), TLS 1,1 en TLS 1,0, in deze volg orde. Ondersteuning voor TLS 1,0 wordt alleen geboden voor compatibiliteit met eerdere versies. Configureer, indien mogelijk, [uw hub](../articles/iot-hub/iot-hub-tls.md) voor het gebruik van TLS 1,2, omdat deze de meeste beveiliging biedt.
 
 ## <a name="securing-the-cloud"></a>De Cloud beveiligen
 
-Azure IoT Hub maakt definitie van [beleid voor toegangs beheer](../articles/iot-hub/iot-hub-devguide-security.md) voor elke beveiligings sleutel mogelijk. Hierbij wordt gebruikgemaakt van de volgende set machtigingen om toegang te verlenen aan elk van de eind punten van de IoT Hub. Machtigingen beperken de toegang tot een IoT Hub op basis van de functionaliteit.
+Azure IoT Hub maakt definitie van [beleid voor toegangs beheer](../articles/iot-hub/iot-hub-devguide-security.md) voor elke beveiligings sleutel mogelijk. Hierbij wordt gebruikgemaakt van de volgende set machtigingen om toegang te verlenen aan elk van de eind punten van de IoT Hub. Met behulp van bevoegdheden kunt u toegang tot een IoT Hub beperken op basis van de functionaliteit.
 
 * **RegistryRead**. Hiermee wordt lees toegang verleend aan het identiteits register. Zie [identiteits register](../articles/iot-hub/iot-hub-devguide-identity-registry.md)voor meer informatie.
 

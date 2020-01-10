@@ -1,5 +1,5 @@
 ---
-title: Beveiligde Azure VPN-gateway RADIUS-verificatie met NPS-server voor multi-factor Authentication | Microsoft-Docs
+title: NPS integreren met VPN Gateway RADIUS-verificatie voor MFA
 description: Beschrijving van Azure-gateway RADIUS-verificatie integreren met NPS-server voor multi-factor Authentication.
 services: vpn-gateway
 documentationcenter: na
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: ab152cca1d809d92803a3e50ea83da1cbcd8243c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 941b6ac86941824351f83592998e8735e3eb8ee5
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174614"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75780365"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Azure VPN-gateway RADIUS-verificatie integreren met NPS-server voor multi-factor Authentication 
 
 Het artikel wordt beschreven hoe u Network Policy Server (NPS) integreren met Azure VPN-gateway RADIUS-verificatie om te leveren van multi-factor Authentication (MFA) voor punt-naar-site VPN-verbindingen. 
 
-## <a name="prerequisite"></a>Vereiste
+## <a name="prerequisite"></a>Vereisten
 
 U MFA inschakelt, moet de gebruikers in Azure Active Directory (Azure AD), die moeten worden gesynchroniseerd vanuit de on-premises of in de cloud van de omgeving. Ook moet de gebruiker al hebt voltooid het proces van automatische inschrijving voor MFA.  Zie voor meer informatie, [Mijn account voor verificatie in twee stappen instellen](../active-directory/user-help/multi-factor-authentication-end-user-first-time.md)
 

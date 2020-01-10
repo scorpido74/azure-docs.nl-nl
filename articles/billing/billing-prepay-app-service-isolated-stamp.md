@@ -1,5 +1,5 @@
 ---
-title: Bespaar op zegelkosten voor Azure App Service Isolated met gereserveerde capaciteit
+title: Opslaan voor Azure App Service met gereserveerde capaciteit
 description: Lees meer informatie over besparen op zegelkosten voor Azure App Service Isolated met gereserveerde capaciteit.
 services: billing
 author: yashesvi
@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
-ms.openlocfilehash: 5aafc2288b9e6b7ef217ec386211af7c3739c08b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5e2ae705b271f55f8c8888f464c9e73863002c06
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223657"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75389125"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Bespaar op zegelkosten voor Azure App Service Isolated met gereserveerde capaciteit
 

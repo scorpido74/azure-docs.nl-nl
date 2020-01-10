@@ -4,16 +4,16 @@ description: In dit artikel wordt uitgelegd hoe u uw Azure Enterprise-factuur ku
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 15c2e84742ff0f552c688ccf1ba795f742e288ca
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: d6faf56554d666ce29b68ba90bb920b4e6c56c30
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849884"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644559"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Enterprise Enrollment-facturen
 
@@ -22,8 +22,6 @@ In dit artikel wordt uitgelegd hoe u uw Azure Enterprise-factuur kunt beheren en
 ## <a name="change-a-po-number-for-an-overage-invoice"></a>Een inkoopordernummer wijzigen voor een overschrijdingfactuur
 
 In Azure EA Portal wordt automatisch een standaardnummer voor een inkooporder (PO) gegenereerd, tenzij de EA-beheerder er een instelt vóór de factuurdatum. Een EA-beheerder kan het inkoopordernummer bijwerken tot zeven dagen na ontvangst van een automatische factuurmelding per e-mail.
-
-Er kan ook een inkoopordernummer worden ingevoerd voor een specifiek account of abonnement. Rapporten worden standaard ingesteld op het laagste niveau van de inkooporder nummerset in de hiërarchie. Dit betekent dat als er geen abonnementnummer voor het abonnement wordt ingevoerd, het inkoopordernummer van het account wordt gebruikt. Als dat nummer niet wordt ingevoerd, wordt de inkooporder van de afdeling gebruikt.
 
 ### <a name="to-update-the-azure-services-purchase-order-number"></a>Het inkoopordernummer van de Azure-services bijwerken:
 
@@ -372,7 +370,7 @@ Ter referentie: wanneer u Excel gebruikt voor het modelleren van de regels over 
 | Prijzen afronden (2 decimalen) | = MROUND ({_source_}, 0,02) |
 | Prijzen afronden (0 decimalen) | =MROUND({_source_}, 2) |
 
-**Tabel**  **2** **– conversie van de Cloud-service en de uren van de virtuele machine**
+**Tabel**  **2**  **– conversie van de Cloud-service en de uren van de virtuele machine**
 
 ### <a name="conversion-between-download-usage-file-and-usage-summary-portal-view"></a>Omzetting tussen Gebruiksbestand downloaden en Portal-weergave gebruiksoverzicht
 
@@ -559,7 +557,7 @@ Raadpleeg de volgende extra bronnen voor meer informatie. Deze bestanden worden 
 | [**Beschrijvende servicenamen**](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Geeft een lijst van alle actieve services met de servicecategorie, de beschrijvende servicenaam, de naam van de toezegging, het onderdeelnummer, de verbruiksnaam, het onderdeelnummer, de maateenheden en de conversiefactoren tussen het gemelde gebruik en weergegeven gebruik van de Enterprise Portal. | Friendly\_Service\_Names.xlsx |
 | [**Service Download Fields**](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | Dit werk blad bevat een lijst met alle mogelijke combinaties van de velden die aan de service zijn gerelateerd in het rapport voor het downloaden van het gebruik. | Service\_Download\_Fields.xlsx |
 
-**Tabel** **5** **- Extra informatiebronnen**
+**Tabel**  **5**  **– Extra informatiebronnen**
 
 ## <a name="power-bi-reporting"></a>Power BI-rapportage
 

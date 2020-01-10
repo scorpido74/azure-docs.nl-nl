@@ -1,26 +1,19 @@
 ---
-title: 'Een virtueel netwerk verbinden met een ander VNet met behulp van een VNet-naar-VNet-verbinding: Azure CLI | Microsoft Docs'
+title: 'Een VNet verbinden met een VNet met behulp van een VNet-naar-VNet-verbinding: Azure CLI'
 description: Virtuele netwerken met elkaar verbinden met behulp van een VNet-naar-VNet-verbinding en Azure CLI.
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 0683c664-9c03-40a4-b198-a6529bf1ce8b
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: e18f37b31b7f0a49717e174d8a20d56388ad4808
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a354f8031c26ca86876dc6f3a2092610226cc84b
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60411787"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834579"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Een VPN-gatewayverbinding tussen VNets configureren met behulp van Azure CLI
 
@@ -74,11 +67,11 @@ In dit artikel ziet u twee verschillende reeksen stappen voor een VNet-naar-VNet
 
 Voor deze oefening kunt u configuraties combineren of alleen de configuratie kiezen waarmee u wilt werken. Alle configuraties maken gebruik van het verbindingstype VNet-naar-VNet. Netwerkverkeer verloopt tussen de VNet's die rechtstreeks met elkaar zijn verbonden. In deze oefening wordt verkeer van TestVNet4 niet gerouteerd naar TestVNet5.
 
-* [VNets die tot hetzelfde abonnement behoren:](#samesub) De stappen voor deze configuratie maken gebruik van TestVNet1 en TestVNet4.
+* [VNet's die onderdeel uitmaken van hetzelfde abonnement:](#samesub) in de stappen voor deze configuratie wordt gebruikgemaakt van TestVNet1 en TestVNet4.
 
   ![v2v-diagram](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
-* [VNets die tot verschillende abonnementen behoren:](#difsub) De stappen voor deze configuratie maken gebruik van TestVNet1 en TestVNet5.
+* [VNet's die onderdeel uitmaken van verschillende abonnementen:](#difsub) in de stappen voor deze configuratie wordt gebruikgemaakt van TestVNet1 en TestVNet5.
 
   ![v2v-diagram](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
 
@@ -97,22 +90,22 @@ In de voorbeelden worden de volgende waarden gebruikt:
 
 **Waarden voor TestVNet1:**
 
-* VNET-naam: TestVNet1
+* VNet-naam: TestVNet1
 * Resourcegroep: TestRG1
 * Locatie: US - oost
-* TestVNet1: 10.11.0.0/16 & 10.12.0.0/16
+* TestVNet1: 10.11.0.0/16 en 10.12.0.0/16
 * FrontEnd: 10.11.0.0/24
 * BackEnd: 10.12.0.0/24
 * GatewaySubnet: 10.12.255.0/27
 * GatewayName: VNet1GW
 * Openbare IP: VNet1GWIP
-* VPNType: RouteBased
+* VPNType: op route gebaseerd
 * Connection(1to4): VNet1toVNet4
 * Connection(1to5): VNet1toVNet5 (voor VNets in verschillende abonnementen)
 
 **Waarden voor TestVNet4:**
 
-* VNET-naam: TestVNet4
+* VNet-naam: TestVNet4
 * TestVNet2: 10.41.0.0/16 & 10.42.0.0/16
 * FrontEnd: 10.41.0.0/24
 * BackEnd: 10.42.0.0/24
@@ -121,7 +114,7 @@ In de voorbeelden worden de volgende waarden gebruikt:
 * Locatie: US - west
 * GatewayName: VNet4GW
 * Openbare IP: VNet4GWIP
-* VPNType: RouteBased
+* VPNType: op route gebaseerd
 * Verbinding: VNet4toVNet1
 
 ### <a name="Connect"></a>Stap 1: verbinding maken met uw abonnement
@@ -284,7 +277,7 @@ Als u extra verbindingen maakt, is het belangrijk dat u controleert of de IP-adr
 
 **Waarden voor TestVNet5:**
 
-* VNET-naam: TestVNet5
+* VNet-naam: TestVNet5
 * Resourcegroep: TestRG5
 * Locatie: Japan - oost
 * TestVNet5: 10.51.0.0/16 & 10.52.0.0/16
@@ -293,13 +286,13 @@ Als u extra verbindingen maakt, is het belangrijk dat u controleert of de IP-adr
 * GatewaySubnet: 10.52.255.0.0/27
 * GatewayName: VNet5GW
 * Openbare IP: VNet5GWIP
-* VPNType: RouteBased
+* VPNType: op route gebaseerd
 * Verbinding: VNet5toVNet1
-* ConnectionType: Vnet2Vnet
+* ConnectionType: VNet2VNet
 
 ### <a name="TestVNet5"></a>Stap 7: TestVNet5 maken en configureren
 
-Deze stap moet worden uitgevoerd in de context van het nieuwe abonnement, abonnement 5. Dit deel kan worden uitgevoerd door de beheerder in een andere organisatie die eigenaar is van het abonnement. Om over te schakelen tussen abonnementen, gebruikt `az account list --all` als u de abonnementen die beschikbaar zijn voor uw account, klikt u vervolgens gebruiken `az account set --subscription <subscriptionID>` overschakelen naar het abonnement dat u wilt gebruiken.
+Deze stap moet worden uitgevoerd in de context van het nieuwe abonnement, abonnement 5. Dit deel kan worden uitgevoerd door de beheerder in een andere organisatie die eigenaar is van het abonnement. Als u wilt scha kelen tussen abonnementen, gebruikt u `az account list --all` om de abonnementen weer te geven die beschikbaar zijn voor uw account en gebruikt u vervolgens `az account set --subscription <subscriptionID>` om over te scha kelen naar het abonnement dat u wilt gebruiken.
 
 1. Zorg ervoor dat u bent verbonden met abonnement 5 en maak vervolgens een resourcegroep.
 
@@ -338,7 +331,7 @@ Deze stap moet worden uitgevoerd in de context van het nieuwe abonnement, abonne
 
 ### <a name="connections5"></a>Stap 8: de verbindingen maken
 
-Deze stap is opgesplitst in twee CLI-sessies, aangeduid als **[Abonnement 1]** en **[Abonnement 5]** omdat de gateways onderdeel uitmaken van verschillende abonnementen. Om over te schakelen tussen abonnementen, gebruikt `az account list --all` als u de abonnementen die beschikbaar zijn voor uw account, klikt u vervolgens gebruiken `az account set --subscription <subscriptionID>` overschakelen naar het abonnement dat u wilt gebruiken.
+Deze stap is opgesplitst in twee CLI-sessies, aangeduid als **[Abonnement 1]** en **[Abonnement 5]** omdat de gateways onderdeel uitmaken van verschillende abonnementen. Als u wilt scha kelen tussen abonnementen, gebruikt u `az account list --all` om de abonnementen weer te geven die beschikbaar zijn voor uw account en gebruikt u vervolgens `az account set --subscription <subscriptionID>` om over te scha kelen naar het abonnement dat u wilt gebruiken.
 
 1. **[Abonnement 1]** Meld u aan bij en maak verbinding met Abonnement 1. Voer de volgende opdracht uit om de naam en id van de gateway op te halen in de uitvoer:
 
@@ -362,7 +355,7 @@ Deze stap is opgesplitst in twee CLI-sessies, aangeduid als **[Abonnement 1]** e
 
    Kopieer de uitvoer voor "id:". Verstuur de id en naam van de VNet-gateway (VNet5GW) via e-mail of een andere methode naar de beheerder van abonnement 1.
 
-3. **[Abonnement 1]** In deze stap maakt u de verbinding van TestVNet1 naar TestVNet5. U kunt uw eigen waarden voor de gedeelde sleutel gebruiken, maar de gedeelde sleutel moet voor beide verbindingen hetzelfde zijn. Het kan even duren voordat de verbinding is gemaakt. Zorg dat u verbinding maakt met Abonnement 1.
+3. **[Abonnement 1]** In deze stap maakt u de verbinding van TestVNet1 naar TestVNet5. U kunt uw eigen waarden voor de gedeelde sleutel gebruiken, maar de gedeelde sleutel moet voor beide verbindingen hetzelfde zijn. Het kan even duren voordat de verbinding is gemaakt. Zorg ervoor dat u verbinding maakt met abonnement 1.
 
    ```azurecli
    az network vpn-connection create -n VNet1ToVNet5 -g TestRG1 --vnet-gateway1 /subscriptions/d6ff83d6-713d-41f6-a025-5eb76334fda9/resourceGroups/TestRG1/providers/Microsoft.Network/virtualNetworkGateways/VNet1GW -l eastus --shared-key "eeffgg" --vnet-gateway2 /subscriptions/e7e33b39-fe28-4822-b65c-a4db8bbff7cb/resourceGroups/TestRG5/providers/Microsoft.Network/virtualNetworkGateways/VNet5GW

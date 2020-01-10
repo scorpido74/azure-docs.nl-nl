@@ -1,32 +1,32 @@
 ---
-title: Versleuteling-at-rest met door de klant beheerde sleutels (preview-versie)
+title: 'Versleuteling: op rust met door de klant beheerde sleutels'
 titleSuffix: Azure Cognitive Search
-description: Aanvulling op server-side encryptie over indexen en synoniemen in azure Cognitive Search via sleutels die u in Azure Key Vault maakt en beheert. Deze functie is momenteel beschikbaar als openbare preview-versie.
+description: Aanvulling op server-side encryptie over indexen en synoniemen in azure Cognitive Search met behulp van sleutels die u in Azure Key Vault maakt en beheert.
 manager: nitinme
 author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/02/2019
-ms.openlocfilehash: 4f78b4b7b38c6e67aa8aebf04e3a8ef0fdbd000f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.date: 01/08/2020
+ms.openlocfilehash: 2663e6c37819acf7cb781779107673b8ee3aec53
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112937"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75832247"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Versleuteling: op rest van inhoud in azure Cognitive Search met door de klant beheerde sleutels in Azure Key Vault
 
-> [!IMPORTANT] 
-> Ondersteuning voor versleuteling-at-rest is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) en [.net SDK versie 8,0-Preview](search-dotnet-sdk-migration-version-9.md) biedt deze functie. Er is momenteel geen ondersteuning voor de portal.
-
-Standaard versleutelt Azure Cognitive Search gebruikers inhoud op rest met door [service beheerde sleutels](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models). U kunt standaard versleuteling aanvullen met een extra versleutelings laag met behulp van sleutels die u in Azure Key Vault maakt en beheert. Dit artikel begeleidt u stapsgewijs door de stappen.
+Standaard versleutelt Azure Cognitive Search geïndexeerde inhoud op rest met door [service beheerde sleutels](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest#data-encryption-models). U kunt standaard versleuteling aanvullen met een extra versleutelings laag met behulp van sleutels die u in Azure Key Vault maakt en beheert. Dit artikel begeleidt u stapsgewijs door de stappen.
 
 Versleuteling aan de server zijde wordt ondersteund via integratie met [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview). U kunt uw eigen versleutelings sleutels maken en deze opslaan in een sleutel kluis, of u kunt de Api's van Azure Key Vault gebruiken om versleutelings sleutels te genereren. Met Azure Key Vault kunt u ook het sleutel gebruik controleren. 
 
 Versleuteling met door de klant beheerde sleutels wordt geconfigureerd op het kaart niveau index of synoniem wanneer deze objecten worden gemaakt en niet op het niveau van de zoek service. U kunt geen inhoud versleutelen die al bestaat. 
 
-U kunt verschillende sleutels uit verschillende sleutel kluizen gebruiken. Dit betekent dat één zoek service meerdere versleutelde indexes\synonym-kaarten kan hosten, die elk zijn versleuteld met behulp van een andere door de klant beheerde sleutel, naast indexes\synonym-kaarten die niet zijn versleuteld met door de klant beheerde sleutels. 
+Sleutels hoeven niet allemaal in hetzelfde Key Vault te zijn. Eén zoek service kan fungeren als host voor meerdere versleutelde indexen of synoniemen die zijn versleuteld met hun eigen door de klant beheerde versleutelings sleutels die zijn opgeslagen in verschillende sleutel kluizen.  U kunt ook indexen en synoniemen toewijzen in dezelfde service die niet zijn versleuteld met door de klant beheerde sleutels. 
+
+> [!IMPORTANT] 
+> Deze functie is beschikbaar in de [rest API versie 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) en [.net SDK versie 8,0-Preview](search-dotnet-sdk-migration-version-9.md). Er is momenteel geen ondersteuning voor het configureren van door de klant beheerde versleutelings sleutels in de Azure Portal.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -38,11 +38,14 @@ In dit voor beeld worden de volgende services gebruikt.
 
 + [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) of [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) wordt gebruikt voor configuratie taken.
 
-+ [Postman](search-get-started-postman.md), [Azure PowerShell](search-create-index-rest-api.md) en [Azure Cognitive Search SDK](https://aka.ms/search-sdk-preview) kunnen worden gebruikt om de preview-rest API aan te roepen. Er is op dit moment geen portal-of .NET SDK-ondersteuning voor door de klant beheerde versleuteling.
++ [Postman](search-get-started-postman.md), [Azure PowerShell](search-create-index-rest-api.md) en [Azure Cognitive Search SDK](https://aka.ms/search-sdk-preview) kunnen worden gebruikt om de rest API aan te roepen. Er is op dit moment geen portal ondersteuning voor door de klant beheerde versleuteling.
+
+>[!Note]
+> Vanwege de aard van de versleuteling met de functie door de klant beheerde sleutels, kunnen Azure Cognitive Search uw gegevens niet ophalen als uw Azure Key kluis-sleutel is verwijderd. Als u gegevens verlies wilt voor komen dat wordt veroorzaakt door onKey Vault opzettelijke verwijderingen van sleutels, **moet** u voorlopig verwijderen en beveiliging opschonen in Key Vault inschakelen voordat het kan worden gebruikt. Zie [Azure Key Vault voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)voor meer informatie.   
 
 ## <a name="1---enable-key-recovery"></a>1-sleutel herstel inschakelen
 
-Deze stap is optioneel, maar wordt nadrukkelijk aanbevolen. Nadat u de Azure Key Vault resource hebt gemaakt, schakelt u de optie **voorlopig verwijderen** en **beveiliging opschonen** in de geselecteerde sleutel kluis in door de volgende Power shell-of Azure cli-opdrachten uit te voeren:   
+Nadat u de Azure Key Vault resource hebt gemaakt, schakelt u de optie **voorlopig verwijderen** en **beveiliging opschonen** in de geselecteerde sleutel kluis in door de volgende Power shell-of Azure cli-opdrachten uit te voeren:   
 
 ```powershell
 $resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "<vault_name>").ResourceId
@@ -57,9 +60,6 @@ Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 ```azurecli-interactive
 az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
 ```
-
->[!Note]
-> Vanwege de aard van de versleuteling met de functie door de klant beheerde sleutels, kunnen Azure Cognitive Search uw gegevens niet ophalen als uw Azure Key kluis-sleutel is verwijderd. Om gegevens verlies te voor komen dat wordt veroorzaakt door onKey Vault opzettelijke verwijderingen van sleutels, wordt het ten zeerste aangeraden om de beveiliging van de geselecteerde sleutel kluis te verwijderen en op te schonen. Zie [Azure Key Vault voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)voor meer informatie.   
 
 ## <a name="2---create-a-new-key"></a>2-een nieuwe sleutel maken
 
@@ -85,7 +85,7 @@ Als u een identiteit toewijst aan uw zoek service, kunt u Key Vault toegangs mac
 
 Azure Cognitive Search ondersteunt twee manieren voor het toewijzen van identiteit: een beheerde identiteit of een extern beheerde Azure Active Directory-toepassing. 
 
-Gebruik, indien mogelijk, een beheerde identiteit. Het is de eenvoudigste manier om een identiteit aan uw zoek service toe te wijzen en in de meeste scenario's te gebruiken. Als u meerdere sleutels gebruikt voor indices en synoniemen, of als uw oplossing zich in een gedistribueerde architectuur bevindt die op identiteit gebaseerde verificatie niet in aanmerking komt, gebruikt u de geavanceerde [extern beheerde Azure Active Directory methode](#aad-app) die aan het einde wordt beschreven van dit artikel.
+Gebruik, indien mogelijk, een beheerde identiteit. Het is de eenvoudigste manier om een identiteit aan uw zoek service toe te wijzen en in de meeste scenario's te gebruiken. Als u meerdere sleutels gebruikt voor indexen en synoniemen, of als uw oplossing zich in een gedistribueerde architectuur bevindt die op identiteit gebaseerde verificatie niet kent, gebruikt u de geavanceerde [extern beheerde Azure Active Directory benadering](#aad-app) die aan het einde van dit artikel wordt beschreven.
 
  In het algemeen kan met een beheerde identiteit uw zoek service worden geverifieerd bij Azure Key Vault zonder dat er referenties worden opgeslagen in de code. De levens cyclus van dit type beheerde identiteit is gekoppeld aan de levens cyclus van uw zoek service, maar kan slechts één beheerde identiteit hebben. Meer [informatie over beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
@@ -228,7 +228,7 @@ Een AAD-toepassing maken in de portal:
 
 >[!Important]
 > Als u besluit om een AAD-verificatie toepassing te gebruiken in plaats van een beheerde identiteit, moet u rekening houden met het feit dat Azure Cognitive Search niet is gemachtigd om uw AAD-toepassing te beheren namens u en is het uw AAD-toepassing te beheren, zoals periodiek rotatie van de verificatie sleutel voor de toepassing.
-> Wanneer u een AAD-toepassing of de verificatie sleutel wijzigt, moet de toewijzing van een Azure Cognitive Search-index of synoniem die gebruikmaakt van die toepassing, eerst worden bijgewerkt voor gebruik van de nieuwe toepassing ID\key **voordat** u de vorige toepassing of de autorisatie verwijdert en voordat u de Key Vault toegang tot de sleutel intrekt.
+> Wanneer u een AAD-toepassing of de verificatie sleutel wijzigt, moeten alle Azure-Cognitive Search indexen of synoniemen toewijzingen die gebruikmaken van die toepassing, eerst worden bijgewerkt om gebruik te maken van de nieuwe toepassing ID\key **voordat** u de vorige toepassing of de autorisatie sleutel verwijdert, en voordat u de Key Vault toegang tot de app intrekt.
 > Als u dit niet doet, wordt de toewijzing van de index of het synoniem onbruikbaar, omdat het niet mogelijk is om de inhoud te ontsleutelen wanneer de sleutel toegang verloren is gegaan.   
 
 ## <a name="next-steps"></a>Volgende stappen

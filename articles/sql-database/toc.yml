@@ -504,6 +504,8 @@
           href: sql-database-security-tutorial.md
         - name: Gegevens streamen met Stream Analytics
           href: sql-database-stream-analytics.md
+        - name: Een SQLite-database migreren naar een serverloze Azure SQL-database
+          href: tutorial-sqlite-db-to-azure-sql-serverless-offline.md
     - name: Concepten
       items:
         - name: Resources voor individuele databases

@@ -1,20 +1,20 @@
 ---
 title: Verificatie met Azure Maps | Microsoft Docs
-description: Verificatie voor het gebruik van Azure Maps-services.
+description: Azure Active Directory (Azure AD) of gedeelde sleutel verificatie voor het gebruik van Microsoft Azure Maps Services. Meer informatie over het verkrijgen van Azure Maps-abonnements sleutel.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/24/2019
+ms.date: 12/30/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 84af496a92bd3c7b30062e965335782f7661aa4a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a58436063009b732a15e74c8a3fc3f95b8df29cf
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575655"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834205"
 ---
 # <a name="authentication-with-azure-maps"></a>Verificatie met Azure Maps
 
@@ -22,12 +22,14 @@ Azure Maps ondersteunt twee manieren om aanvragen te verifiëren: gedeelde sleut
 
 ## <a name="shared-key-authentication"></a>Gedeelde sleutel verificatie
 
-Met gedeelde sleutel verificatie worden sleutels door een Azure Maps-account gegenereerd waarbij elke aanvraag wordt Azure Maps.  Wanneer uw Azure Maps-account wordt gemaakt, worden er twee sleutels gegenereerd. Voor elke aanvraag voor het Azure Maps van services moet de abonnements sleutel worden toegevoegd als een para meter voor de URL.
+Met gedeelde sleutel verificatie worden sleutels door een Azure Maps-account gegenereerd waarbij elke aanvraag wordt Azure Maps. Voor elke aanvraag voor het Azure Maps van services moet de *abonnements sleutel* worden toegevoegd als een para meter voor de URL. Primaire en secundaire sleutels worden gegenereerd nadat het Azure Maps-account is gemaakt. U wordt aangeraden om de primaire sleutel als abonnements sleutel te gebruiken wanneer u Azure Maps aanroept met behulp van gedeelde sleutel verificatie. De secundaire sleutel kan worden gebruikt in scenario's zoals wijzigingen in de Rolling sleutel.  
+
+Zie [verificatie beheren](https://aka.ms/amauthdetails)voor meer informatie over het weer geven van uw sleutels in de Azure Portal.
 
 > [!Tip]
 > U wordt aangeraden de sleutels regelmatig opnieuw te genereren. U hebt twee sleutels, zodat u verbindingen met één sleutel kunt onderhouden tijdens het opnieuw genereren van de andere. Wanneer u de sleutels opnieuw genereert, moet u alle toepassingen bijwerken die toegang hebben tot het account om de nieuwe sleutels te gebruiken.
 
-Zie [verificatie details weer geven](https://aka.ms/amauthdetails)voor meer informatie over het weer geven van uw sleutels.
+
 
 ## <a name="authentication-with-azure-active-directory-preview"></a>Verificatie met Azure Active Directory (preview-versie)
 
@@ -45,7 +47,7 @@ Azure Maps genereert een *unieke id (client-id)* voor elk Azure Maps-account. Wa
 
 | Azure-omgeving   | Azure AD-token eindpunt |
 | --------------------|-------------------------|
-| Open bare Azure        | https://login.microsoftonline.com |
+| Openbare Azure-peering        | https://login.microsoftonline.com |
 | Azure Government    | https://login.microsoftonline.us |
 
 

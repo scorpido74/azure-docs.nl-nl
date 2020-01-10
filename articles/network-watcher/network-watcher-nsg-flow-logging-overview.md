@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 2530c9b2f366bd64013c7125b4d7984ca2a69248
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 509545443bc08e8613d5f7a9ba7f33d2a90684b8
+ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454275"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75830510"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Inleiding tot stroom logboek registratie voor netwerk beveiligings groepen
 
@@ -90,10 +90,8 @@ De volgende tekst is een voor beeld van een stroom logboek. Zoals u ziet, zijn e
 
 **Overwegingen voor het opslag account**: 
 
-1. Locatie: het gebruikte opslag account moet zich in dezelfde regio bevinden als de NSG.
-2. Geen firewall: NSG-stroom logboeken worden niet voorbereid als [vertrouwde micro soft-service voor Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services). Zie [Hoe kan ik de firewall op mijn opslag account uitschakelen?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-disable-the--firewall-on-my-storage-account) om de firewall uit te scha kelen. 
-3. Geen service-eind punten: vanwege een huidige beperking kunnen Logboeken alleen rechtstreeks worden verzonden naar opslag accounts en niet via service-eind punten. Zie [Hoe kan ik NSG-stroom Logboeken gebruiken met Service-eind punten?](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#how-do-i-use-nsg-flow-logs-with-service-endpoints) voor hulp bij het verwijderen van bestaande service-eind punten.
-4. Zelfs wisseling van sleutels: als u de toegangs sleutels wijzigt/roteert naar uw opslag account, werken NSG-stroom logboeken niet meer. U kunt dit probleem oplossen door de NSG-stroom Logboeken uit te scha kelen en opnieuw in te scha kelen.
+- Locatie: het gebruikte opslag account moet zich in dezelfde regio bevinden als de NSG.
+- Zelfs wisseling van sleutels: als u de toegangs sleutels wijzigt/roteert naar uw opslag account, werken NSG-stroom logboeken niet meer. U kunt dit probleem oplossen door de NSG-stroom Logboeken uit te scha kelen en opnieuw in te scha kelen.
 
 **Schakel logboek registratie van de NSG-stroom in op alle nsg's die zijn gekoppeld aan een resource**: stroom logboek registratie in Azure is geconfigureerd op de NSG-resource. Een stroom wordt alleen gekoppeld aan één NSG-regel. In scenario's waarin meerdere Nsg's worden gebruikt, raden wij aan dat logboek registratie voor NSG-flow is ingeschakeld op alle Nsg's het subnet of de netwerk interface van een resource heeft toegepast om ervoor te zorgen dat alle verkeer wordt geregistreerd. Zie [hoe verkeer wordt geëvalueerd](../virtual-network/security-overview.md#how-traffic-is-evaluated) in netwerk beveiligings groepen voor meer informatie.
 

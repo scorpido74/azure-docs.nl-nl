@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2019
 ms.author: banders
-ms.openlocfilehash: 2ac2d552aed5b11eaf5a8e4708b2cabc33ba1bb3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d12e3b91dad2b7e7d28c6bd50fd62623e07e580b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223812"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449472"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-accounts"></a>Eigendom van facturering van Azure-abonnementen van andere accounts krijgen
 
@@ -33,46 +33,71 @@ Als u het eigendom van facturering wilt aanvragen, moet u **eigenaar van de fact
 
 2. Zoek naar **Kostenbeheer en facturering**.
 
-   ![Schermopname van de zoekopdracht in Azure Portal naar kostenbeheer en facturering](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
+    ![Schermopname van zoekopdracht in de Azure-portal naar kostenbeheer en facturering](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. Selecteer **Factuursecties** aan de linkerkant. Afhankelijk van uw toegang moet u mogelijk een factureringsaccount of factureringsprofiel selecteren. Selecteer **Factuursecties** in het factureringsaccount of -profiel.
+3. Selecteer op de pagina met factureringsbereiken het factureringsaccount dat zou worden gebruikt om het gebruik van de abonnementen te betalen. Het factureringsaccount moet van het type **Microsoft-klantovereenkomst** zijn.
+
+    ![Schermopname van de zoekopdracht naar kostenbeheer en facturering in de Azure-portal](./media/billing-mca-check-azure-credits-balance/list-of-scopes.png)
+
+    > [!NOTE]
+    >
+    > In de Azure-portal wordt het meest recente factureringsbereik dat u hebt geopend, onthouden. Dit bereik wordt weergegeven wanneer u de pagina Kostenbeheer en facturering de volgende keer opent. U ziet de pagina met factureringsbereiken niet als u Kostenbeheer en facturering eerder hebt bezocht. Als dit het geval is, controleert u of u zich in het [juiste bereik bevindt](#check-for-access). Zo niet, dan kunt u [Schakelen tussen bereiken](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal) om het factureringsaccount voor een Microsoft-klantovereenkomst te selecteren.
+
+4. Selecteer aan de linkerkant de optie **Factureringsprofielen**.
    
-   ![Schermopname van de selectie van factuursecties](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)        
+    ![Schermopname van het selecteren van factureringsprofielen](./media/billing-mca-request-billing-ownership/mca-select-profiles.png)     
 
-4. Selecteer een factuursectie in de lijst. Zodra u het eigendom van de abonnementen overneemt, worden deze in rekening gebracht bij deze factuursectie.
+    > [!Note]
+    >
+    > Als u geen factureringsprofielen ziet, bevindt u zich niet in het juiste factureringsbereik. U moet een factureringsaccount voor een Microsoft-klantovereenkomst selecteren en vervolgens Factureringsprofielen selecteren. Raadpleeg [Schakelen tussen bereiken in de Azure-portal](billing-view-all-accounts.md#switch-billing-scope-in-the-azure-portal)voor meer informatie over het wijzigen van bereiken.
 
-5. Selecteer **Overdrachtsaanvragen** aan de linkerkant en selecteer vervolgens **Toevoegen**.
+5. Selecteer een **Factureringsprofiel** in de lijst. Zodra u het eigendom van de abonnementen hebt overgenomen, wordt het gebruik ervan in rekening gebracht bij dit factureringsprofiel.
+
+6. Selecteer **Factuursecties** aan de linkerkant. 
+
+    ![Schermopname van de selectie van factuursecties](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)   
+
+7. Selecteer een factuursectie in de lijst. Zodra u het eigendom van de abonnementen hebt overgenomen, wordt het gebruik ervan toegewezen aan deze sectie van de factuur voor het factureringsprofiel.
+
+8. Selecteer **Overdrachtsaanvragen** aan de linkerkant en selecteer vervolgens **Een nieuwe aanvraag toevoegen**.
  
-   ![Schermopname van de selectie van overdrachtsaanvragen](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests.png)
+    ![Schermopname van de selectie van overdrachtsaanvragen](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests.png)
 
-6. Voer het e-mailadres in van de gebruiker van wie u het eigendom van facturering wilt aanvragen. De gebruiker moet een accountbeheerder zijn op een Microsoft Online Serviceprogramma-factureringsaccount of een accounteigenaar op een Enterprise Agreement. Zie [Uw factureringsaccounts weergeven in Azure Portal](billing-view-all-accounts.md) voor meer informatie. Selecteer **Overdrachtsaanvraag verzenden**.
+9. Voer het e-mailadres in van de gebruiker van wie u het eigendom van facturering wilt aanvragen. De gebruiker moet een accountbeheerder zijn op een Microsoft Online Serviceprogramma-factureringsaccount of een accounteigenaar op een Enterprise Agreement. Zie [Uw factureringsaccounts weergeven in Azure Portal](billing-view-all-accounts.md) voor meer informatie. Selecteer **Overdrachtsaanvraag verzenden**.
 
-   ![Schermopname van de verzending van een overdrachtsaanvraag](./media/billing-mca-request-billing-ownership/mca-send-transfer-requests.png)
+    ![Schermopname van de verzending van een overdrachtsaanvraag](./media/billing-mca-request-billing-ownership/mca-send-transfer-requests.png)
 
-7. De gebruiker ontvangt een e-mail met instructies voor het beoordelen van uw overdrachtsaanvraag.
+10. De gebruiker ontvangt een e-mail met instructies voor het beoordelen van uw overdrachtsaanvraag.
 
-   ![Schermopname van de e-mail over de beoordeling van een overdrachtsaanvraag](./media/billing-mca-request-billing-ownership/mca-review-transfer-request-email.png)
+    ![Schermopname van de e-mail over de beoordeling van een overdrachtsaanvraag](./media/billing-mca-request-billing-ownership/mca-review-transfer-request-email.png)
 
-8. De gebruiker kan de overdrachtsaanvraag goedkeuren door de koppeling in de e-mail te selecteren en de instructies te volgen.
+11. De gebruiker kan de overdrachtsaanvraag goedkeuren door de koppeling in de e-mail te selecteren en de instructies te volgen.
 
     ![Schermopname van de e-mail over de beoordeling van een overdrachtsaanvraag](./media/billing-mca-request-billing-ownership/mca-review-transfer-request.png)
 
 ## <a name="check-the-transfer-request-status"></a>De status van de overdrachtsaanvraag controleren
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Zoek naar **Kostenbeheer en facturering**.
 
-   ![Schermopname van de zoekopdracht in Azure Portal naar kostenbeheer en facturering](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
+    ![Schermopname van zoekopdracht in de Azure-portal naar kostenbeheer en facturering](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
+3. Selecteer op de pagina met factureringsbereiken het factureringsaccount waarvoor de overdrachtsaanvraag is verzonden.
 
-3. Selecteer **Factuursecties** aan de linkerkant. Afhankelijk van uw toegang moet u mogelijk een factureringsaccount of factureringsprofiel selecteren. Selecteer **Factuursecties** in het factureringsaccount of -profiel.
+4. Selecteer aan de linkerkant de optie **Factureringsprofielen**.
    
-   ![Schermopname van de selectie van factuursecties](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)        
+    ![Schermopname van het selecteren van factureringsprofielen](./media/billing-mca-request-billing-ownership/mca-select-profiles.png)     
 
-4. Selecteer de factuursectie in de lijst waarvoor u de overdrachtsaanvraag hebt verzonden.
+5. Selecteer het **Factureringsprofiel** waarvoor de overdrachtsaanvraag is verzonden.
 
-5. Selecteer **Overdrachtsaanvragen** aan de linkerkant. Op de pagina Overdrachtsaanvragen wordt de volgende informatie weergegeven:
+6. Selecteer **Factuursecties** aan de linkerkant. 
+
+    ![Schermopname van de selectie van factuursecties](./media/billing-mca-request-billing-ownership/mca-select-invoice-sections.png)   
+
+7. Selecteer de factuursectie in de lijst waarvoor de overdrachtsaanvraag is verzonden.
+
+8. Selecteer **Overdrachtsaanvragen** aan de linkerkant. Op de pagina Overdrachtsaanvragen wordt de volgende informatie weergegeven:
 
     ![Schermopname van de lijst met overdrachtsaanvragen](./media/billing-mca-request-billing-ownership/mca-select-transfer-requests-for-status.png)
 
@@ -95,9 +120,9 @@ Als u het eigendom van facturering wilt aanvragen, moet u **eigenaar van de fact
    |Geannuleerd|Iemand met toegang tot de overdrachtsaanvraag heeft de aanvraag geannuleerd|
    |Geweigerd|De gebruiker heeft de overdrachtsaanvraag geweigerd|
 
-7. Selecteer een overdrachtsaanvraag om details weer te geven. Op de pagina met overdrachtsdetails wordt de volgende informatie weergegeven:
+9. Selecteer een overdrachtsaanvraag om details weer te geven. Op de pagina met overdrachtsdetails wordt de volgende informatie weergegeven:
    
-   ![Schermopname van de lijst van overgedragen abonnementen](./media/billing-mca-request-billing-ownership/mca-transfer-completed.png)
+    ![Schermopname van de lijst van overgedragen abonnementen](./media/billing-mca-request-billing-ownership/mca-transfer-completed.png)
     
    |Kolom  |Definitie|
    |---------|---------|

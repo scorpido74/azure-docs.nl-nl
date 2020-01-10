@@ -9,15 +9,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/01/2019
+ms.date: 09/30/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: b32c1be93e2fb16da9ce9ebb65b664017e70cac6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 60e366466e399bbde78b026e0b401cd6bd1edbee
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223941"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644389"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Azure-prijzen voor uw organisatie bekijken en downloaden
 
@@ -25,7 +25,7 @@ Azure-klanten met een Azure Enterprise Agreement (EA), Microsoft-klantovereenkom
 
 ## <a name="download-pricing-for-an-enterprise-agreement"></a>Prijzen voor een Enterprise Agreement downloaden
 
-Afhankelijk van beleid dat door de ondernemingsbeheerder is ingesteld voor uw organisatie, bieden alleen bepaalde beheerdersrollen toegang tot de EA-prijsgegevens van uw organisatie. Zie [Inzicht in Azure Enterprise Agreement-beheerdersrollen in Azure](billing-understand-ea-roles.md) voor meer informatie.
+Afhankelijk van beleid dat door de ondernemingsbeheerder is ingesteld voor uw organisatie, bieden alleen bepaalde beheerdersrollen toegang tot de EA-prijsgegevens van uw organisatie. Zie [Inzicht in Azure Enterprise Overeenkomst-beheerdersrollen in Azure](billing-understand-ea-roles.md) voor meer informatie.
 
 1. Meld u als ondernemingsbeheerder aan bij de [Azure-portal.](https://portal.azure.com/)
 1. Zoek naar *Kostenbeheer en facturering*.
@@ -36,7 +36,7 @@ Afhankelijk van beleid dat door de ondernemingsbeheerder is ingesteld voor uw or
 
    ![Schermopname van het gebruik en de kosten onder Facturering](./media/billing-ea-pricing/ea-pricing-usage-charges-nav.png)
 
-1. Selecteer ![Schermopname van de zoekopdracht in de Azure-portal](./media/billing-ea-pricing/download-icon.png) **Downloaden** voor de maand.
+1. Selecteer ![Schermopname van de zoekopdracht in de Azure-portal](./media/billing-ea-pricing/download-icon.png)**Downloaden** voor de maand.
 
 1. Selecteer onder **Prijzenoverzicht** de optie **CSV-bestand downloaden**.
 
@@ -53,7 +53,7 @@ Als u een MCA hebt, moet u een eigenaar van het factureringsprofiel, inzender, l
 1. Selecteer een factureringsprofiel. Afhankelijk van uw toegang moet u mogelijk eerst een factureringsrekening selecteren.
 1. Selecteer **Facturen**.
 1. Ga in het factuurraster naar de rij van de factuur die overeenkomt met het prijzenoverzicht dat u wilt downloaden.
-1. Klik op het weglatingsteken (`...`) aan het einde van de rij.
+1. Klik op het beletselteken (`...`) aan het einde van de rij.
 ![Schermopname met het geselecteerde weglatingsteken](./media/billing-ea-pricing/billingprofile-invoicegrid.png)
 
 1. Als u de prijzen voor de services in de geselecteerde factuur wilt bekijken, selecteert u **Prijzenoverzicht voor facturering**.
@@ -96,14 +96,14 @@ U kunt ook de prijzen van uw organisatie gebruiken om de kosten te schatten met 
 Als u een EA-klant bent, raadpleegt u:
 
 - [Toegang tot uw EA-factureringsgegevens voor Azure beheren](billing-manage-access.md)
-- [Uw Microsoft Azure-factuur bekijken en downloaden](billing-download-azure-invoice.md)
-- [Uw Microsoft Azure-gebruik en -kosten bekijken en downloaden](billing-download-azure-daily-usage.md)
+- [Uw Microsoft Azure-factuur weergeven en downloaden](billing-download-azure-invoice.md)
+- [Uw Microsoft Azure-gebruik en -kosten weergeven en downloaden](billing-download-azure-daily-usage.md)
 - [Inzicht in de factuur voor Enterprise Agreement-klanten](billing-understand-your-bill-ea.md)
 
 Als u een Microsoft-klantovereenkomst hebt, raadpleegt u:
 
 - [Inzicht in de voorwaarden in uw prijzenoverzicht voor een Microsoft-klantovereenkomst](billing-mca-understand-pricesheet.md)
-- [Uw Microsoft Azure-factuur bekijken en downloaden](billing-download-azure-invoice.md)
+- [Uw Microsoft Azure-factuur weergeven en downloaden](billing-download-azure-invoice.md)
 - [Uw Microsoft Azure-gebruik en -kosten bekijken en downloaden](billing-download-azure-daily-usage.md)
 - [Belastingdocumenten voor uw factureringsprofiel bekijken en downloaden](billing-mca-download-tax-document.md)
 - [Inzicht in de kosten voor de factuur van uw factureringsprofiel](billing-mca-understand-your-bill.md)

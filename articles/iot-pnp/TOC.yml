@@ -71,14 +71,18 @@
       href: howto-develop-solution.md
 - name: Naslaginformatie
   items:
-    - name: Digital Twin
-      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/digitaltwin'
-    - name: Digital Twin-service
-      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/service'
-    - name: Digital Twin-modelopslagplaats
-      href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
-    - name: Een REST-beveiligingstoken genereren
-      href: howto-generate-sas-token.md
+    - name: Bibliotheken en SDK's
+      href: libraries-sdks.md
+    - name: REST-API
+      items:
+        - name: Digital Twin
+          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/digitaltwin'
+        - name: Digital Twin-service
+          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodel/service'
+        - name: Digital Twin-modelopslagplaats
+          href: 'https://docs.microsoft.com/rest/api/iothub/digitaltwinmodelrepositoryservice/createorupdatemodel'
+        - name: Een REST-beveiligingstoken genereren
+          href: howto-generate-sas-token.md
 - name: Verwant
   items:
     - name: Oplossingen

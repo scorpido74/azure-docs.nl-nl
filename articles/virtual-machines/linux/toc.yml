@@ -41,11 +41,11 @@
       href: tutorial-monitor.md
     - name: 13 - VM-beveiliging beheren
       href: tutorial-azure-security.md
-    - name: 14 - Jenkins implementeren
+    - name: 14a - Bouwen met Jenkins
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 15a - Implementeren met Azure Pipelines
+    - name: 14b - Implementeren met Azure Pipelines(klassiek)
       href: tutorial-build-deploy-jenkins.md
-    - name: 15b - CI/CD met Azure Pipelines
+    - name: 15 - CI/CD met Azure Pipelines(YAML)
       href: tutorial-build-deploy-azure-pipelines.md
     - name: 16a - Een LAMP-stack maken
       href: tutorial-lamp-stack.md

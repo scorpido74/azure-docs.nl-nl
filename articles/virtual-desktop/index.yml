@@ -5,7 +5,7 @@ metadata:
   title: Documentatie over Windows Virtual Desktop | Microsoft Docs
   description: Windows Virtual Desktop voor Azure is een Windows 10 Enterprise-ervaring voor meerdere gebruikers in de cloud.
   author: Heidilohr
-  manager: daveba
+  manager: lizross
   ms.service: virtual-desktop
   services: virtual-desktop
   ms.topic: landing-page

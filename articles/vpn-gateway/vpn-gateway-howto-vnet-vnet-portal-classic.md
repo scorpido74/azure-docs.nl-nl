@@ -1,32 +1,25 @@
 ---
-title: 'Maak een verbinding tussen VNets: klassiek: Azure-portal | Microsoft Docs'
-description: Verbinding maken met Azure-netwerken samen met behulp van PowerShell en Azure portal.
+title: 'Een verbinding maken tussen VNets: klassiek: Azure Portal'
+description: Verbinding maken met virtuele Azure-netwerken met behulp van Power shell en het Azure Portal.
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-service-management
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 48377f981e4d2c9ab480a1a734e6207a0246712a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 8ebfe1bc2e578fa85f209f4dd67a00535e619c7e
+ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60407908"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75834616"
 ---
-# <a name="configure-a-vnet-to-vnet-connection-classic"></a>Configureren van een VNet-naar-VNet-verbinding (klassiek)
+# <a name="configure-a-vnet-to-vnet-connection-classic"></a>Een VNet-naar-VNet-verbinding configureren (klassiek)
 
 [!INCLUDE [deployment models](../../includes/vpn-gateway-classic-deployment-model-include.md)]
 
-Dit artikel helpt u bij het maken van een VPN-gatewayverbinding tussen virtuele netwerken. De virtuele netwerken kunnen zich in dezelfde of verschillende regio's bevinden en tot dezelfde of verschillende abonnementen behoren. De stappen in dit artikel zijn van toepassing op het klassieke implementatiemodel en Azure portal. U kunt deze configuratie ook maken met een ander implementatiehulpprogramma of een ander implementatiemodel door in de volgende lijst een andere optie te selecteren:
+Dit artikel helpt u bij het maken van een VPN-gateway verbinding tussen virtuele netwerken. De virtuele netwerken kunnen zich in dezelfde of verschillende regio's bevinden en tot dezelfde of verschillende abonnementen behoren. De stappen in dit artikel zijn van toepassing op het klassieke implementatie model en de Azure Portal. U kunt deze configuratie ook maken met een ander implementatiehulpprogramma of een ander implementatiemodel door in de volgende lijst een andere optie te selecteren:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -38,15 +31,15 @@ Dit artikel helpt u bij het maken van een VPN-gatewayverbinding tussen virtuele 
 >
 >
 
-![VNet-naar-VNet-connectiviteit-Diagram](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
+![Diagram van VNet-naar-VNet-connectiviteit](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="about-vnet-to-vnet-connections"></a>Over VNet-naar-VNet-verbindingen
 
-Een virtueel netwerk verbinden met een ander virtueel netwerk (VNet-naar-VNet) in het klassieke implementatiemodel met behulp van een VPN-gateway is vergelijkbaar met een virtueel netwerk verbinden met een on-premises locatie. Voor beide connectiviteitstypen wordt een VPN-gateway gebruikt om een beveiligde tunnel met IPsec/IKE te bieden.
+Het verbinden van een virtueel netwerk met een ander virtueel netwerk (VNet-naar-VNet) in het klassieke implementatie model met behulp van een VPN-gateway is vergelijkbaar met het verbinden van een virtueel netwerk met een on-premises site locatie. Voor beide connectiviteitstypen wordt een VPN-gateway gebruikt om een beveiligde tunnel met IPsec/IKE te bieden.
 
-De VNets die u verbindt, kunnen zich in verschillende abonnementen en verschillende regio's. U kunt VNet naar VNet-communicatie met multi-site-configuraties combineren. Zo kunt u netwerktopologieën maken waarin cross-premises connectiviteit is gecombineerd met connectiviteit tussen virtuele netwerken.
+De VNets die u verbindt, kunnen zich in verschillende abonnementen en verschillende regio's bevindt. U kunt VNet combi neren met VNet-communicatie met configuraties met meerdere locaties. Zo kunt u netwerktopologieën maken waarin cross-premises connectiviteit is gecombineerd met connectiviteit tussen virtuele netwerken.
 
 ![VNet-naar-VNet-verbindingen](./media/vpn-gateway-howto-vnet-vnet-portal-classic/aboutconnections.png)
 
@@ -57,136 +50,136 @@ U wilt virtuele netwerken wellicht koppelen om de volgende redenen:
 * **Geografische redundantie en aanwezigheid tussen regio's**
 
   * U kunt uw eigen geo-replicatie of synchronisatie met beveiligde connectiviteit instellen zonder gebruik te maken van internetgerichte eindpunten.
-  * Met Azure Load Balancer en Microsoft of derden clustering technologie, kunt u maximaal beschikbare werkbelasting met geografische redundantie over meerdere Azure-regio's instellen. Een belangrijk voorbeeld hiervan is het instellen van SQL Always On met beschikbaarheidsgroepen verspreid over meerdere Azure-regio's.
-* **Regionale toepassingen met meerdere lagen met sterke isolatiegrens**
+  * Met Azure Load Balancer en de clustering technologie van micro soft of derden kunt u een werk belasting met hoge Beschik baarheid instellen met georedundantie over meerdere Azure-regio's. Een belangrijk voorbeeld hiervan is het instellen van SQL Always On met beschikbaarheidsgroepen verspreid over meerdere Azure-regio's.
+* **Regionale toepassingen met meerdere lagen met een sterke isolatie grens**
 
-  * Binnen dezelfde regio, kunt u toepassingen met meerdere lagen instellen met meerdere VNets die zijn verbonden, samen met een sterke isolatie en beveiligde tussen laag-communicatie.
-* **Cross-abonnement, de communicatie tussen organisatie in Azure**
+  * Binnen dezelfde regio kunt u multi-tier-toepassingen met meerdere VNets die zijn verbonden met een sterke isolatie en beveiligde communicatie tussen lagen instellen.
+* **Cross-abonnement, communicatie tussen organisaties in azure**
 
-  * Als u meerdere Azure-abonnementen hebt, kunt u workloads uit verschillende abonnementen samen veilig tussen virtuele netwerken.
-  * U kunt binnen de organisatie-communicatie met beveiligde VPN-technologie in Azure inschakelen voor ondernemingen of serviceproviders.
+  * Als u meerdere Azure-abonnementen hebt, kunt u werk belastingen van verschillende abonnementen samen met een beveiligde verbinding tussen virtuele netwerken verbinden.
+  * Voor ondernemingen of service providers kunt u communicatie tussen organisaties met beveiligde VPN-technologie in azure inschakelen.
 
 Zie voor meer informatie over verbindingen tussen VNets de [Aandachtspunten bij VNet-naar-VNet](#faq) aan het einde van dit artikel.
 
 ### <a name="before-you-begin"></a>Voordat u begint
 
-Voordat u deze oefening begint, download en installeer de nieuwste versie van de Azure SM (Service Management) PowerShell-cmdlets. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie. We gebruiken de portal voor het merendeel van de stappen, maar u moet PowerShell gebruiken om de verbindingen tussen de VNets te maken. U kunt geen verbindingen met Azure portal maken.
+Down load en installeer de meest recente versie van de Power shell-cmdlets voor Azure Service Management (SM) voordat u begint met deze oefening. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie. We gebruiken de portal voor de meeste stappen, maar u moet Power shell gebruiken om de verbindingen tussen de VNets te maken. U kunt de verbindingen niet maken met behulp van de Azure Portal.
 
 ## <a name="plan"></a>Stap 1: De IP-adresbereiken plannen
 
-Het is belangrijk om te bepalen van de bereiken die u gebruiken gaat om uw virtuele netwerken te configureren. Voor deze configuratie, moet u ervoor zorgen dat geen van de VNet-adresbereiken overlappen met elkaar of met een van de lokale netwerken waarmee ze verbinding maken.
+Het is belang rijk om te bepalen welke bereiken u gaat gebruiken voor het configureren van uw virtuele netwerken. Voor deze configuratie moet u ervoor zorgen dat geen van uw VNet-bereiken met elkaar overlappen, of met een van de lokale netwerken waarmee ze verbinding maken.
 
-De volgende tabel ziet u een voorbeeld van hoe u uw vnet's definiëren. Gebruik de bereiken als richtlijn alleen. Noteer de bereiken voor uw virtuele netwerken. U hebt deze informatie nodig voor de latere fasen.
+In de volgende tabel ziet u een voor beeld van hoe u uw VNets definieert. Gebruik de bereiken alleen als richt lijn. Noteer de bereiken voor uw virtuele netwerken. U hebt deze informatie nodig voor latere stappen.
 
 **Voorbeeld**
 
-| Virtueel netwerk | Adresruimte | Regio | Maakt verbinding met lokale netwerksite |
+| Virtual Network | Adresruimte | Regio | Maakt verbinding met de lokale netwerk site |
 |:--- |:--- |:--- |:--- |
-| TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |US - oost |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
-| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |US - west |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
+| TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |VS - oost |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
+| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |VS - west |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
 ## <a name="vnetvalues"></a>Stap 2: de virtuele netwerken maken
 
-Maakt u twee virtuele netwerken in de [Azure-portal](https://portal.azure.com). Zie voor de stappen voor het maken van klassieke virtuele netwerken, [maken van een klassiek virtueel netwerk](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). 
+Maak twee virtuele netwerken in de [Azure Portal](https://portal.azure.com). Zie [een klassiek virtueel netwerk maken](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)voor de stappen voor het maken van klassieke virtuele netwerken. 
 
-Wanneer een klassiek virtueel netwerk maken met de portal, moet u navigeren naar de pagina virtueel netwerk met behulp van de volgende stappen uit, anders wordt de optie voor het maken van een klassiek virtueel netwerk niet wordt weergegeven:
+Wanneer u de portal gebruikt om een klassiek virtueel netwerk te maken, moet u naar de pagina virtueel netwerk gaan door de volgende stappen uit te voeren. anders wordt de optie voor het maken van een klassiek virtueel netwerk niet weer gegeven:
 
-1. Klik op '+' op de pagina 'Nieuw' openen.
-2. Typ in het veld 'Zoek in marketplace', 'Virtueelnetwerk'. Als u in plaats daarvan selecteert netwerk -> Virtueelnetwerk, krijgt u niet de optie voor het maken van een klassiek VNet.
-3. Zoek 'Virtueelnetwerk' in de geretourneerde lijst en klikt u erop om de pagina Virtueelnetwerk te openen. 
-4. Selecteer op de pagina virtueel netwerk 'Classic' te maken van een klassiek VNet. 
+1. Klik op ' + ' om de pagina ' nieuw ' te openen.
+2. Typ ' Virtual Network ' in het veld Marketplace doorzoeken. Als u in plaats daarvan netwerk-> Virtual Network selecteert, krijgt u niet de mogelijkheid om een klassiek VNet te maken.
+3. Zoek naar ' Virtual Network ' in de lijst met resultaten en klik erop om de pagina Virtual Network te openen. 
+4. Selecteer op de pagina virtueel netwerk de optie klassiek om een klassiek VNet te maken. 
 
-Als u van dit artikel bij wijze van oefening gebruikmaakt, kunt u de volgende voorbeeldwaarden gebruiken:
+Als u dit artikel gebruikt als oefening, kunt u de volgende voorbeeld waarden gebruiken:
 
 **Waarden voor TestVNet1**
 
 Naam: TestVNet1<br>
-Adresruimte: 10.11.0.0/16, 10.12.0.0/16 (optioneel)<br>
+Adres ruimte: 10.11.0.0/16, 10.12.0.0/16 (optioneel)<br>
 Subnetnaam: standaard<br>
-Subnetadresbereik: 10.11.0.1/24<br>
-Resourcegroep: ClassicRG<br>
+Adres bereik van subnet: 10.11.0.1/24<br>
+Resource groep: ClassicRG<br>
 Locatie: US - oost<br>
 GatewaySubnet: 10.11.1.0/27
 
 **Waarden voor TestVNet4**
 
 Naam: TestVNet4<br>
-Adresruimte: 10.41.0.0/16, 10.42.0.0/16 (optioneel)<br>
+Adres ruimte: 10.41.0.0/16, 10.42.0.0/16 (optioneel)<br>
 Subnetnaam: standaard<br>
-Subnetadresbereik: 10.41.0.1/24<br>
-Resourcegroep: ClassicRG<br>
+Adres bereik van subnet: 10.41.0.1/24<br>
+Resource groep: ClassicRG<br>
 Locatie: US - west<br>
 GatewaySubnet: 10.41.1.0/27
 
-**Bij het maken van uw vnet's, houd rekening met de volgende instellingen:**
+**Houd bij het maken van uw VNets de volgende instellingen in acht:**
 
-* **Virtual Network-adresruimten** : op de pagina adresruimten voor virtueel netwerk, geef het adresbereik dat u wilt gebruiken voor het virtuele netwerk. Dit zijn de dynamische IP-adressen die worden toegewezen aan de virtuele machines en andere rolinstanties die u op dit virtuele netwerk implementeert.<br>De adresruimten die u selecteert mogen niet overlappen met de adresruimten voor het gebruik van de andere VNets of on-premises locaties die dit VNet verbinding wordt gemaakt.
+* **Virtual Network adres ruimten** : Geef op de pagina adres ruimten Virtual Network het adres bereik op dat u wilt gebruiken voor het virtuele netwerk. Dit zijn de dynamische IP-adressen die worden toegewezen aan de Vm's en andere rolinstanties die u op dit virtuele netwerk implementeert.<br>De adres ruimten die u selecteert, mogen niet overlappen met de adres ruimten voor een van de andere VNets of on-premises locaties waarmee dit VNet verbinding maakt.
 
-* **Locatie** – wanneer u een virtueel netwerk, maakt u deze koppelen aan een Azure-locatie (regio). Bijvoorbeeld, als u wilt dat uw virtuele machines die zijn geïmplementeerd met het virtuele netwerk zich fysiek bevinden in VS-West, selecteert u die locatie. U kunt de locatie die is gekoppeld aan het virtuele netwerk nadat u dit hebt gemaakt niet wijzigen.
+* **Locatie** : wanneer u een virtueel netwerk maakt, koppelt u dit aan een Azure-locatie (regio). Als u bijvoorbeeld wilt dat uw virtuele machines die worden geïmplementeerd in uw virtueel netwerk zich fysiek in VS West bevinden, selecteert u die locatie. U kunt de locatie die is gekoppeld aan het virtuele netwerk niet wijzigen nadat u het hebt gemaakt.
 
-**Na het maken van uw VNets, kunt u de volgende instellingen toevoegen:**
+**Nadat u uw VNets hebt gemaakt, kunt u de volgende instellingen toevoegen:**
 
-* **Adresruimte** : extra adresruimte is niet vereist voor deze configuratie, maar u kunt extra adresruimte toevoegen na het maken van het VNet.
+* **Adres ruimte** : er is geen extra adres ruimte vereist voor deze configuratie, maar u kunt extra adres ruimte toevoegen nadat u het VNet hebt gemaakt.
 
-* **Subnetten** : extra subnetten zijn niet vereist voor deze configuratie, maar u mogelijk wilt u uw virtuele machines in een subnet dat is gescheiden van uw andere rolinstanties.
+* **Subnetten** : extra subnetten zijn niet vereist voor deze configuratie, maar mogelijk wilt u uw virtuele machines in een subnet hebben dat gescheiden is van uw andere rolinstanties.
 
-* **DNS-servers** – Geef de naam van de DNS-server en het IP-adres. Met deze instelling wordt geen DNS-server gemaakt. U kunt hiermee de DNS-servers opgeven die u wilt gebruiken voor de naamomzetting voor dit virtuele netwerk.
+* **DNS-servers** : Voer de naam en het IP-adres van de DNS-server in. Met deze instelling wordt geen DNS-server gemaakt. U kunt hiermee de DNS-servers opgeven die u wilt gebruiken voor naamomzetting voor dit virtuele netwerk.
 
-In deze sectie maakt u het verbindingstype, de lokale site configureren en maken van de gateway.
+In deze sectie configureert u het verbindings type, de lokale site, en maakt u de gateway.
 
 ## <a name="localsite"></a>Stap 3: de lokale site configureren
 
-Azure maakt gebruik van de instellingen die zijn opgegeven in de lokale netwerksite om te bepalen hoe het routeren van verkeer tussen de VNets. Elk VNet moet verwijzen naar de respectieve lokale netwerk die u wilt routeren van verkeer naar. U bepalen de naam die u wilt gebruiken om te verwijzen naar de lokale netwerksite. Het is raadzaam een beschrijvende gebruikt.
+Azure gebruikt de instellingen die zijn opgegeven op elke lokale netwerk site om te bepalen hoe verkeer tussen de VNets moet worden gerouteerd. Elk VNet moet verwijzen naar het respectieve lokale netwerk waarnaar u verkeer wilt door sturen. U bepaalt de naam die u wilt gebruiken om naar elke lokale netwerk site te verwijzen. Het is raadzaam om een beschrijvende naam te gebruiken.
 
-Bijvoorbeeld, TestVNet1 verbinding maakt met de site van een lokale netwerk die u maakt met de naam 'VNet4Local'. De instellingen voor VNet4Local bevatten de adresvoorvoegsels voor TestVNet4.
+TestVNet1 maakt bijvoorbeeld verbinding met een lokale netwerk site die u maakt met de naam ' VNet4Local '. De instellingen voor VNet4Local bevatten de adres voorvoegsels voor TestVNet4.
 
-De lokale site voor elke VNet is het andere VNet. De volgende voorbeelden van waarden worden gebruikt voor de configuratie:
+De lokale site voor elk VNet is het andere VNet. De volgende voorbeeld waarden worden gebruikt voor de configuratie:
 
-| Virtueel netwerk | Adresruimte | Regio | Maakt verbinding met lokale netwerksite |
+| Virtual Network | Adresruimte | Regio | Maakt verbinding met de lokale netwerk site |
 |:--- |:--- |:--- |:--- |
-| TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |US - oost |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
-| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |US - west |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
+| TestVNet1 |TestVNet1<br>(10.11.0.0/16)<br>(10.12.0.0/16) |VS - oost |VNet4Local<br>(10.41.0.0/16)<br>(10.42.0.0/16) |
+| TestVNet4 |TestVNet4<br>(10.41.0.0/16)<br>(10.42.0.0/16) |VS - west |VNet1Local<br>(10.11.0.0/16)<br>(10.12.0.0/16) |
 
-1. Ga naar TestVNet1 in Azure portal. In de **VPN-verbindingen** sectie van de pagina, klikt u op **Gateway**.
+1. Zoek TestVNet1 in de Azure Portal. Klik in de sectie **VPN-verbindingen** van de pagina op **Gateway**.
 
-    ![Er is geen gateway](./media/vpn-gateway-howto-vnet-vnet-portal-classic/nogateway.png)
-2. Op de **nieuwe VPN-verbinding** weergeeft, schakelt **Site-naar-Site**.
-3. Klik op **lokale site** open de pagina van de lokale site en de instellingen configureren.
-4. Op de **lokale site** pagina en de naam van uw lokale site. In ons voorbeeld naam we de lokale site 'VNet4Local'.
-5. Voor **IP-adres van VPN-gateway**, u kunt IP-adressen die u wilt gebruiken, zolang het is een geldige indeling hebben. Normaal gesproken gebruikt u het externe IP-adres voor een VPN-apparaat. Maar voor een klassieke VNet-naar-VNet-configuratie, u het openbare IP-adres dat is toegewezen aan de gateway voor uw VNet. Gezien het feit dat u de virtuele netwerkgateway is nog niet hebt gemaakt, kunt u een geldig openbaar IP-adres opgeven als een tijdelijke aanduiding.<br>Geen laat dit veld leeg: het is niet optioneel voor deze configuratie. In een latere stap, gaat u terug naar deze instellingen en ze met de bijbehorende IP-adressen van een virtueel netwerk-gateway configureren wanneer Azure dit genereert.
-6. Voor **Clientadresruimte**, gebruikt u de adresruimte van het andere VNet. Raadpleeg uw planning voorbeeld. Klik op **OK** aan uw instellingen opslaan en terug te keren naar de **nieuwe VPN-verbinding** pagina.
+    ![Geen gateway](./media/vpn-gateway-howto-vnet-vnet-portal-classic/nogateway.png)
+2. Selecteer op de pagina **nieuwe VPN-verbinding** de optie **site-naar-site**.
+3. Klik op **lokale site** om de pagina lokale site te openen en de instellingen te configureren.
+4. Geef op de pagina **lokale site** uw lokale site een naam. In ons voor beeld noemen we de lokale site ' VNet4Local '.
+5. Voor het IP-adres van de **VPN-gateway**kunt u elk gewenst IP-adres gebruiken, mits dit een geldige indeling heeft. Normaal gesp roken gebruikt u het daad werkelijke externe IP-adres voor een VPN-apparaat. Voor een klassieke VNet-naar-VNet-configuratie gebruikt u echter het open bare IP-adres dat is toegewezen aan de gateway voor uw VNet. Gezien dat u de gateway van het virtuele netwerk nog niet hebt gemaakt, geeft u een geldig openbaar IP-adres op als tijdelijke aanduiding.<br>Laat dit veld niet leeg. het is niet optioneel voor deze configuratie. In een latere stap gaat u terug naar deze instellingen en configureert u deze met de bijbehorende IP-adressen van de virtuele netwerk gateway zodra deze door Azure worden gegenereerd.
+6. Gebruik de adres ruimte van het andere VNet voor de **adres ruimte**van de client. Raadpleeg uw plannings voorbeeld. Klik op **OK** om uw instellingen op te slaan en terug te keren naar de pagina **nieuwe VPN-verbinding** .
 
     ![lokale site](./media/vpn-gateway-howto-vnet-vnet-portal-classic/localsite.png)
 
-## <a name="gw"></a>Stap 4: de gateway van virtueel netwerk maken
+## <a name="gw"></a>Stap 4: de gateway van het virtuele netwerk maken
 
-Elk virtueel netwerk moet een virtuele netwerkgateway hebben. De virtuele netwerkgateway routes en verkeer wordt versleuteld.
+Elk virtueel netwerk moet een virtuele netwerk gateway hebben. De gateway van het virtuele netwerk routeert en versleutelt verkeer.
 
 1. Schakel op de pagina **Nieuwe VPN-verbinding** het selectievakje **Gateway onmiddellijk maken** in.
-2. Klik op **Subnet, grootte en routingtype**. Op de **gatewayconfiguratie** pagina, klikt u op **Subnet**.
-3. De naam van het gateway-subnet wordt automatisch ingevuld met de vereiste naam 'GatewaySubnet'. De **adresbereik** bevat de IP-adressen die zijn toegewezen aan de VPN-gateway-services. Sommige configuraties een gatewaysubnet van /29 toestaan, maar het is raadzaam een/28 of/27 te gebruiken voor toekomstige configuraties waarvoor meer IP-adressen voor de gateway-services. In onze voorbeeldinstellingen gebruiken we 10.11.1.0/27. De adresruimte aanpassen en klik vervolgens op **OK**.
-4. Configureer de **grootte van de Gateway**. Deze instelling verwijst naar de [Gateway-SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
-5. Configureer de **Routeringstype**. Voor deze configuratie moet de routering Typ **dynamische**. U kunt het routeringstype dat later niet wijzigen, tenzij u de gateway verbreken en een nieuwe maken.
+2. Klik op **subnet, grootte en routerings type**. Klik op het tabblad **Gateway configuratie** op **subnet**.
+3. De naam van het gateway-subnet wordt automatisch ingevuld met de vereiste naam ' GatewaySubnet '. Het **adres bereik** bevat de IP-adressen die zijn toegewezen aan de VPN-gateway services. Sommige configuraties bieden een gateway-subnet van/29, maar het is het beste om een/28 of/27 te gebruiken voor toekomstige configuraties waarvoor meer IP-adressen voor de Gateway Services nodig zijn. In onze voorbeeld instellingen gebruiken we 10.11.1.0/27. Pas de adres ruimte aan en klik vervolgens op **OK**.
+4. De **Gateway grootte**configureren. Deze instelling verwijst naar de [Gateway-SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
+5. Configureer het **routerings type**. Het routerings type voor deze configuratie moet **dynamisch**zijn. U kunt het routerings type later pas wijzigen als u de gateway hebt afgebroken en een nieuwe hebt gemaakt.
 6. Klik op **OK**.
-7. Op de **nieuwe VPN-verbinding** pagina, klikt u op **OK** om te beginnen met het maken van de virtuele netwerkgateway. Het maken van een gateway duurt vaak 45 minuten of langer, afhankelijk van de geselecteerde gateway-SKU.
+7. Klik op de pagina **nieuwe VPN-verbinding** op **OK** om te beginnen met het maken van de gateway van het virtuele netwerk. Het maken van een gateway duurt vaak 45 minuten of langer, afhankelijk van de geselecteerde gateway-SKU.
 
 ## <a name="vnet4settings"></a>Stap 5: TestVNet4-instellingen configureren
 
-Herhaal de stappen voor het [maken van een lokale site](#localsite) en [maken van de virtuele netwerkgateway](#gw) TestVNet4, vervangen door de waarden wanneer dat nodig configureren. Als u dit bij wijze van oefening doet, gebruikt u de [voorbeeldwaarden](#vnetvalues).
+Herhaal de stappen voor het [maken van een lokale site](#localsite) en [het maken van de gateway van het virtuele netwerk](#gw) om TestVNet4 te configureren, waarbij u de waarden vervangt wanneer dat nodig is. Als u dit doet als oefening, gebruikt u de [voorbeeld waarden](#vnetvalues).
 
 ## <a name="updatelocal"></a>Stap 6: de lokale sites bijwerken
 
-Nadat de virtuele netwerkgateways voor beide vnet's zijn gemaakt, moet u de lokale sites aanpassen **IP-adres van VPN-gateway** waarden.
+Nadat de gateways voor het virtuele netwerk zijn gemaakt voor beide VNets, moet u de **IP-adres** waarden van de lokale sites van de VPN-gateway aanpassen.
 
-|VNet-naam|Verbonden site|IP-adres van gateway|
+|VNet-naam|Verbonden site|IP-adres van de gateway|
 |:--- |:--- |:--- |
-|TestVNet1|VNet4Local|IP-adres van VPN-gateway voor TestVNet4|
-|TestVNet4|VNet1Local|IP-adres van VPN-gateway voor TestVNet1|
+|TestVNet1|VNet4Local|IP-adres van de VPN-gateway voor TestVNet4|
+|TestVNet4|VNet1Local|IP-adres van de VPN-gateway voor TestVNet1|
 
-### <a name="part-1---get-the-virtual-network-gateway-public-ip-address"></a>Deel 1: het virtuele netwerk openbare IP-adres ophalen
+### <a name="part-1---get-the-virtual-network-gateway-public-ip-address"></a>Deel 1: het open bare IP-adres van de gateway van het virtuele netwerk ophalen
 
-1. Zoek het virtuele netwerk in Azure portal.
-2. Klik hier om het VNet **overzicht** pagina. Klik op de pagina in **VPN-verbindingen**, kunt u het IP-adres voor uw virtuele netwerkgateway weergeven.
+1. Zoek het virtuele netwerk in de Azure Portal.
+2. Klik hier om de pagina VNet- **overzicht** te openen. Op de pagina, in **VPN-verbindingen**, kunt u het IP-adres voor de gateway van uw virtuele netwerk weer geven.
 
    ![Openbare IP](./media/vpn-gateway-howto-vnet-vnet-portal-classic/publicIP.png)
 3. Kopieer het IP-adres. U gebruikt deze in de volgende sectie.
@@ -194,29 +187,29 @@ Nadat de virtuele netwerkgateways voor beide vnet's zijn gemaakt, moet u de loka
 
 ### <a name="part-2---modify-the-local-sites"></a>Deel 2: de lokale sites wijzigen
 
-1. Zoek het virtuele netwerk in Azure portal.
-2. Op het VNet **overzicht** pagina, klikt u op de lokale site.
+1. Zoek het virtuele netwerk in de Azure Portal.
+2. Klik op de pagina VNet **Overview** op de lokale site.
 
-   ![Lokale site die is gemaakt](./media/vpn-gateway-howto-vnet-vnet-portal-classic/local.png)
-3. Op de **Site-naar-Site VPN-verbindingen** pagina, klikt u op de naam van de lokale site die u wilt wijzigen.
+   ![Lokale site gemaakt](./media/vpn-gateway-howto-vnet-vnet-portal-classic/local.png)
+3. Klik op de pagina **site-naar-site-VPN-verbindingen** op de naam van de lokale site die u wilt wijzigen.
 
-   ![Lokale site openen](./media/vpn-gateway-howto-vnet-vnet-portal-classic/openlocal.png)
+   ![Open lokale site](./media/vpn-gateway-howto-vnet-vnet-portal-classic/openlocal.png)
 4. Klik op de **lokale site** die u wilt wijzigen.
 
    ![site wijzigen](./media/vpn-gateway-howto-vnet-vnet-portal-classic/connections.png)
-5. Update de **IP-adres van VPN-gateway** en klikt u op **OK** de instellingen op te slaan.
+5. Werk het **IP-adres van de VPN-gateway** bij en klik op **OK** om de instellingen op te slaan.
 
-   ![Gateway IP](./media/vpn-gateway-howto-vnet-vnet-portal-classic/gwupdate.png)
+   ![Gateway-IP](./media/vpn-gateway-howto-vnet-vnet-portal-classic/gwupdate.png)
 6. Sluit de andere pagina's.
 7. Herhaal deze stappen voor TestVNet4.
 
-## <a name="getvalues"></a>Stap 7: de waarden ophalen uit het netwerkconfiguratiebestand
+## <a name="getvalues"></a>Stap 7: waarden uit het netwerk configuratie bestand ophalen
 
-Wanneer u klassieke VNets in Azure portal maakt, is de naam die u niet de volledige naam die u voor PowerShell gebruikt. Bijvoorbeeld: een VNet dat wordt weergegeven op de naam **TestVNet1** in de portal voor een veel langere naam kunnen hebben in het configuratiebestand van het netwerk. De naam kan als volgt uitzien: **Groep ClassicRG TestVNet1**. Wanneer u uw verbindingen maakt, is het belangrijk dat u de waarden die u ziet in het configuratiebestand van het netwerk.
+Wanneer u een klassiek VNets maakt in de Azure Portal, is de naam die u wilt weer geven niet de volledige naam die u gebruikt voor Power shell. Zo kan een VNet dat **TestVNet1** in de portal heet, een veel langere naam hebben in het netwerk configuratie bestand. De naam kan er ongeveer als volgt uitzien: **Group ClassicRG TestVNet1**. Wanneer u uw verbindingen maakt, is het belang rijk dat u de waarden gebruikt die u in het netwerk configuratie bestand ziet.
 
-In de volgende stappen maakt u verbinding maken met uw Azure-account en downloaden en het netwerkconfiguratiebestand om op te halen van de waarden die vereist voor uw verbindingen zijn weergeven.
+In de volgende stappen maakt u verbinding met uw Azure-account en downloadt en bekijkt u het netwerk configuratie bestand om de vereiste waarden voor uw verbindingen te verkrijgen.
 
-1. Download en installeer de nieuwste versie van de Azure SM (Service Management) PowerShell-cmdlets. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie.
+1. Down load en installeer de meest recente versie van de Power shell-cmdlets voor Azure Service Management (SM). Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie.
 
 2. Open de PowerShell-console met verhoogde rechten en maak verbinding met uw account. Gebruik het volgende voorbeeld als hulp bij het maken van de verbinding:
 
@@ -241,18 +234,18 @@ In de volgende stappen maakt u verbinding maken met uw Azure-account en download
    ```powershell
    Add-AzureAccount
    ```
-3. Exporteren en het netwerkconfiguratiebestand weergeven. Maak een map op de computer en exporteer vervolgens het netwerkconfiguratiebestand naar de map. In dit voorbeeld wordt het netwerkconfiguratiebestand geëxporteerd naar **C:\AzureNet**.
+3. Het netwerk configuratie bestand exporteren en weer geven. Maak een map op de computer en exporteer vervolgens het netwerkconfiguratiebestand naar de map. In dit voor beeld wordt het netwerk configuratie bestand geëxporteerd naar **C:\AzureNet**.
 
    ```powershell
    Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
    ```
-4. Open het bestand met een teksteditor en de namen voor uw vnet's en sites weergeven. Dit zijn de naam die u gebruikt wanneer u uw verbindingen gemaakt.<br>VNet-namen worden weergegeven als **VirtualNetworkSite name =**<br>Sitenamen worden weergegeven als **LocalNetworkSiteRef naam =**
+4. Open het bestand met een tekst editor en Bekijk de namen voor uw VNets en sites. Dit is de naam die u gebruikt wanneer u uw verbindingen maakt.<br>VNet-namen worden vermeld als **VirtualNetworkSite name =**<br>Site namen worden vermeld als **LocalNetworkSiteRef name =**
 
-## <a name="createconnections"></a>Stap 8: de VPN-gateway-verbindingen maken
+## <a name="createconnections"></a>Stap 8: de VPN-gateway verbindingen maken
 
-Wanneer de vorige stappen zijn voltooid, kunt u de vooraf gedeelde IPsec/IKE-sleutels en maak de verbinding. Deze reeks stappen wordt PowerShell gebruikt. VNet-naar-VNet-verbindingen voor het klassieke implementatiemodel kunnen niet worden geconfigureerd in Azure portal.
+Wanneer alle vorige stappen zijn voltooid, kunt u de vooraf gedeelde IPsec/IKE-sleutels instellen en de verbinding maken. Deze reeks stappen maakt gebruik van Power shell. VNet-naar-VNet-verbindingen voor het klassieke implementatie model kunnen niet worden geconfigureerd in de Azure Portal.
 
-In de voorbeelden ziet u de gedeelde sleutel is precies hetzelfde. De gedeelde sleutel moet altijd overeenkomen. Zorg ervoor dat de waarden in deze voorbeelden vervangt door de exacte namen voor uw vnet's en lokale netwerksites.
+In de voor beelden ziet u dat de gedeelde sleutel precies hetzelfde is. De gedeelde sleutel moet altijd overeenkomen. Zorg ervoor dat u de waarden in deze voor beelden vervangt door de exacte namen voor uw VNets en lokale netwerk sites.
 
 1. Maak de verbinding tussen TestVNet1 en TestVNet4.
 
@@ -266,7 +259,7 @@ In de voorbeelden ziet u de gedeelde sleutel is precies hetzelfde. De gedeelde s
    Set-AzureVNetGatewayKey -VNetName 'Group ClassicRG TestVNet4' `
    -LocalNetworkSiteName 'F7F7BFC7_VNet1Local' -SharedKey A1b2C3D4
    ```
-3. Wacht tot de verbindingen worden geïnitialiseerd. Zodra de gateway is geïnitialiseerd, is de Status 'Geslaagd'.
+3. Wacht totdat de verbindingen zijn geïnitialiseerd. Zodra de gateway is geïnitialiseerd, is de status geslaagd.
 
    ```
    Error          :
@@ -277,18 +270,18 @@ In de voorbeelden ziet u de gedeelde sleutel is precies hetzelfde. De gedeelde s
    StatusCode     : OK
    ```
 
-## <a name="faq"></a>VNet-naar-VNet-overwegingen voor het klassieke vnet 's
-* De virtuele netwerken kunnen zich in de dezelfde of verschillende abonnementen behoren.
+## <a name="faq"></a>Overwegingen voor VNet-naar-VNet voor klassieke VNets
+* De virtuele netwerken kunnen zich in dezelfde of verschillende abonnementen bevindt.
 * De virtuele netwerken kunnen zich in dezelfde of verschillende Azure-regio's (locaties) bevinden.
 * Een cloudservice of een taakverdelingseindpunt kan geen virtuele netwerken overbruggen, zelfs niet als ze met elkaar zijn verbonden.
-* Met elkaar verbinden van meerdere virtuele netwerken zijn vereist om een VPN-apparaten.
-* VNet-naar-VNet ondersteunt het verbinden virtuele Azure-netwerken. Het ondersteunt niet verbinden van virtuele machines of cloudservices die niet zijn geïmplementeerd met een virtueel netwerk.
-* VNet-naar-VNet-vereist gateways met dynamische routering. Azure gateways met statische routering worden niet ondersteund.
-* U kunt virtuele-netwerkverbindingen tegelijk gebruiken met multi-site-VPN’s. Er is een maximum van 10 VPN-tunnels voor een VPN-gateway van het virtuele netwerk verbinding maken met andere virtuele netwerken of on-premises-sites.
-* De adresruimten van de virtuele netwerken en on-premises lokale netwerksites mogen elkaar niet overlappen. Overlappende adresruimten zorgt ervoor dat het maken van virtuele netwerken of uploaden netcfg-configuratiebestanden mislukken.
+* Voor het verbinden van meerdere virtuele netwerken hoeven geen VPN-apparaten te worden gebruikt.
+* VNet-naar-VNet biedt ondersteuning voor het verbinden van virtuele netwerken van Azure. Het biedt geen ondersteuning voor het verbinden van virtuele machines of Cloud Services die niet zijn geïmplementeerd in een virtueel netwerk.
+* VNet-naar-VNet vereist dynamische routerings gateways. Azure static-routerings gateways worden niet ondersteund.
+* U kunt virtuele-netwerkverbindingen tegelijk gebruiken met multi-site-VPN’s. Er zijn Maxi maal 10 VPN-tunnels voor een VPN-gateway van een virtueel netwerk die verbinding maakt met andere virtuele netwerken of on-premises sites.
+* De adresruimten van de virtuele netwerken en on-premises lokale netwerksites mogen elkaar niet overlappen. Door overlappende adres ruimten wordt het maken van virtuele netwerken of het uploaden van netcfg-configuratie bestanden mislukt.
 * Redundante tunnels tussen een paar virtuele netwerken worden niet ondersteund.
-* Alle VPN-tunnels voor het VNet, met inbegrip van P2S VPN's, delen de beschikbare bandbreedte voor de VPN-gateway en de dezelfde VPN-gateway een SLA voor uptime in Azure.
-* VNet-naar-VNet-verkeer via de Azure-backbone wordt verzonden.
+* Alle VPN-tunnels voor het VNet, met inbegrip van P2S Vpn's, delen de beschik bare band breedte voor de VPN-gateway en dezelfde SLA voor de VPN-gateway in Azure.
+* VNet-naar-VNet-verkeer wordt verplaatst over de Azure-backbone.
 
 ## <a name="next-steps"></a>Volgende stappen
-Controleer uw verbindingen. Zie [een VPN-gatewayverbinding verifiëren](vpn-gateway-verify-connection-resource-manager.md).
+Controleer uw verbindingen. Zie [een VPN gateway verbinding controleren](vpn-gateway-verify-connection-resource-manager.md).

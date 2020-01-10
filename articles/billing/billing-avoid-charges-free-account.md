@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: 9f75b630dd26e2cdef009771ad5e09cc3d230449
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1b7d08ba25a02334152e661501acf826d6c9bdf7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226441"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75449641"
 ---
 # <a name="avoid-charges-with-your-azure-free-account"></a>Vermijd kosten met uw gratis Azure-account
 
@@ -26,7 +26,7 @@ Laten we eens kijken naar enkele redenen waarom er kosten in rekening worden geb
 
 ## <a name="your-credit-runs-out-or-is-expired"></a>Uw tegoed is bijna op of is verlopen
 
-Als uw tegoed aan het einde van 30 dagen bijna op of verlopen is, worden uw abonnement en services uitgeschakeld. Als u gebruik wilt blijven maken van Azure-services, moet u uw account upgraden. Zie [Uw gratis Azure-account upgraden](billing-upgrade-azure-subscription.md) voor meer informatie. Nadat u de upgrade hebt uitgevoerd, hebt u nog steeds toegang tot gratis services voor 12 maanden en worden er alleen kosten in rekening gebracht voor gebruik buiten de gratis services en hoeveelheden om.
+Als uw tegoed aan het einde van 30 dagen bijna op of verlopen is, worden uw abonnement en services uitgeschakeld. Als u gebruik wilt blijven maken van Azure-services, moet u uw account upgraden. Zie [Uw gratis Azure-account upgraden](billing-upgrade-azure-subscription.md) voor meer informatie. Nadat u de upgrade hebt uitgevoerd, hebt u nog 12 maanden toegang tot gratis services. Er worden alleen kosten in rekening gebracht voor gebruik buiten de gratis services en hoeveelheden om.
 
 
 ## <a name="usage-exceeds-the-limits-of-free-services"></a>Het gebruik overschrijdt de limieten van gratis services
@@ -41,7 +41,7 @@ Na de upgrade van uw account krijgt u betalen-naar-gebruik-tarieven voor het geb
 
 Uw gratis services en hoeveelheden verlopen na van 12 maanden. U kunt nagaan wanneer uw gratis services verlopen in de Azure-portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Selecteer in het navigatiegebied links **Alle services**.
 
@@ -56,7 +56,7 @@ Uw gratis services en hoeveelheden verlopen na van 12 maanden. U kunt nagaan wan
 
 Zodra uw gratis services en hoeveelheden zijn verlopen, worden er betalen-per-gebruik-tarieven in rekening gebracht voor alle services die u gebruikt. U kunt de Azure-portal gebruiken om de resources te verwijderen voor de services die u niet gebruikt. Als u geen Azure-service wilt gebruiken, kunt u [uw abonnement annuleren](billing-how-to-cancel-azure-subscription.md).
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 

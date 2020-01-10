@@ -4,16 +4,16 @@ description: In dit artikel wordt uitgelegd hoe Azure EA-klanten Azure EA Portal
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2019
+ms.date: 01/03/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 2f7c4f0d4d8bd7e5209f666dbfca34eaffc8ebc7
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 92581cfcace6ec566428c9cb54d205f108399b1f
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841367"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75660661"
 ---
 # <a name="get-started-with-the-azure-ea-portal"></a>Aan de slag met de Azure EA Portal
 
@@ -48,12 +48,13 @@ In het volgende diagram ziet u eenvoudige Azure EA-hiërarchieën.
 
 ## <a name="enterprise-user-roles"></a>Enterprise-gebruikersrollen
 
-Voor het beheren van de Azure-services in uw inschrijving zijn er vier verschillende gebruikersrollen met beheerdersrechten voor ondernemingen:
+Er zijn vijf verschillende gebruikersrollen met beheerdersrechten voor ondernemingen voor het beheren van de Azure-services in uw inschrijving:
 
 - Ondernemingsbeheerder
 - Afdelingsbeheerder
 - Accounteigenaar
 - Servicebeheerder
+- Contactpersoon voor meldingen
 
 Rollen worden gebruikt om in twee verschillende Microsoft Azure-portals taken te voltooien. U kunt Azure EA Portal (https://ea.azure.com) gebruiken om uw facturering en kosten te beheren. Azure Portal (https://portal.azure.com) wordt gebruikt voor het beheren van Azure-services.
 
@@ -101,9 +102,15 @@ Voor elk account is een uniek werk-, school-of Microsoft-account vereist. Zie [A
 
 De servicebeheerder heeft machtigingen om services te beheren in Azure Portal en gebruikers toe te wijzen aan de rol co-beheerder.
 
+### <a name="notification-contact"></a>Contactpersoon voor meldingen
+
+De contactpersoon voor meldingen ontvangt gebruiksmeldingen met betrekking tot de inschrijving.
+
 ## <a name="activate-your-enrollment"></a>Uw inschrijving activeren
 
-Als u uw service wilt activeren, opent de oorspronkelijke ondernemingsbeheerder Azure EA Portal op [ https://ea.azure.com ](https://ea.azure.com) en meldt deze zich aan met het e-mailadres in de uitnodigingsmail.
+Als u uw service wilt activeren, opent de oorspronkelijke ondernemingsbeheerder Azure EA Portal op [https://ea.azure.com](https://ea.azure.com) en meldt deze zich aan met het e-mailadres in de uitnodigingsmail.
+
+Als u zeker weet dat u bent ingesteld als de EA-beheerder, hoeft u niet te wachten tot u de activerings-e-mail hebt ontvangen om u aan te melden bij Azure EA Portal. U kunt doorgaan met [https://ea.azure.com](https://ea.azure.com) en u aanmelden met uw e-mailadres (werk, school of Live ID) en wachtwoord.
 
 Als u meerdere inschrijvingen heeft, kiest u de inschrijving die u wilt activeren. Standaard worden alleen actieve inschrijvingen weergegeven. Als u de inschrijvingsgeschiedenis wilt weergeven, wist u de optie **Actief** in de rechterbovenhoek van Azure EA Portal.
 

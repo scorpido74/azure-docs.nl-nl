@@ -1,0 +1,86 @@
+- name: Documentatie over internetpeering
+  href: index.yml
+- name: Overzicht
+  items:
+    - name: Over internetpeering
+      href: overview.md
+    - name: Internetpeering vs. Peering Service
+      href: overview-peering-service.md
+- name: Concepten
+  items:
+    - name: Peeringbeleid
+      href: policy.md
+- name: Instructiegidsen
+  items:
+    - name: Vereisten om peering in te stellen met Microsoft
+      href: prerequisites.md
+    - name: Overzicht van Direct peering
+      href: walkthrough-direct-all.md
+    - name: Overzicht van Exchange-peering
+      href: walkthrough-exchange-all.md
+    - name: Overzicht van Peering Service-partners
+      href: walkthrough-peering-service-all.md
+    - name: Peer-ASN koppelen aan Azure-abonnement
+      items:
+        - name: Portal
+          href: howto-subscription-association-portal.md
+        - name: Azure PowerShell
+          href: howto-subscription-association-powershell.md
+    - name: Peering Service inschakelen op Direct peering
+      items:
+        - name: Portal
+          href: howto-peering-service-portal.md
+        - name: Azure PowerShell
+          href: howto-peering-service-powershell.md
+    - name: Direct-peering maken of bewerken
+      items:
+        - name: Portal
+          href: howto-direct-portal.md
+        - name: Azure PowerShell
+          href: howto-direct-powershell.md
+    - name: Een verouderde Direct-peering converteren in een Azure-resource
+      items:
+        - name: Portal
+          href: howto-legacy-direct-portal.md
+        - name: Azure PowerShell
+          href: howto-legacy-direct-powershell.md
+    - name: Exchange-peering maken of bewerken
+      items:
+        - name: Portal
+          href: howto-exchange-portal.md
+        - name: Azure PowerShell
+          href: howto-exchange-powershell.md
+    - name: Een verouderde Exchange-peering converteren in een Azure-resource
+      items:
+        - name: Portal
+          href: howto-legacy-exchange-portal.md
+        - name: Azure PowerShell
+          href: howto-legacy-exchange-powershell.md
+- name: Naslaginformatie
+  items:
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/network'
+    - name: Azure PowerShell
+      href: 'https://docs.microsoft.com/powershell/module/az.network'
+    - name: Java
+      href: 'https://docs.microsoft.com/java/api/'
+    - name: Node.js
+      href: 'https://docs.microsoft.com/javascript/azure#azure-sdk'
+    - name: Python
+      href: 'https://azure.microsoft.com/develop/python/'
+    - name: Resource Manager-sjabloon
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.network/allversions'
+- name: Resources
+  items:
+    - name: Uw vaardigheden ontwikkelen met Microsoft Learn
+      href: 'https://docs.microsoft.com/learn/browse/'
+    - name: Azure-roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=networking'
+    - name: Netwerkblog
+      href: 'https://azure.microsoft.com/blog/topics/networking'
+    - name: Netwerkfeedback
+      href: 'https://feedback.azure.com/forums/217313-networking?category_id=77469'
+    - name: Veelgestelde vragen over internetpeering
+      href: faqs.md
+    - name: Veelgestelde vragen over Peering Service
+      href: service-faqs.md

@@ -49,6 +49,8 @@
       href: manage-consortium-powershell.md
     - name: Logic Apps gebruiken
       href: ethereum-logic-app.md
+    - name: Azure Blockchain Service bewaken
+      href: monitor-azure-blockchain-service.md
 - name: Blockchain Data Manager
   items:
     - name: Overzicht van Data Manager
@@ -69,7 +71,7 @@
       href: 'https://github.com/Azure-Samples/blockchain'
     - name: Blog
       href: 'https://azure.microsoft.com/blog/topics/blockchain/'
-    - name: 'MSDN-ondersteuningsforum:'
+    - name: MSDN-ondersteuningsforum
       href: 'https://aka.ms/workbenchforum'
     - name: Ondersteuning voor community
       href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'

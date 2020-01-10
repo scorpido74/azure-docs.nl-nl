@@ -8,20 +8,28 @@
       href: load-balancer-standard-overview.md
 - name: Snelstartgids
   items:
-    - name: Een load balancer van het type Standard maken - Portal
-      href: quickstart-load-balancer-standard-public-portal.md
-    - name: Een load balancer van het type Standard maken - Azure CLI
-      href: quickstart-load-balancer-standard-public-cli.md
-    - name: Een load balancer van het type Standard maken - Azure PowerShell
-      href: quickstart-create-standard-load-balancer-powershell.md
-    - name: Een load balancer van het type Standard maken - sjabloon
-      href: quickstart-load-balancer-standard-public-template.md
-    - name: Een load balancer van het type Basic maken - Portal
-      href: quickstart-create-basic-load-balancer-portal.md
-    - name: Een load balancer van het type Basic maken - Azure CLI
-      href: quickstart-create-basic-load-balancer-cli.md
-    - name: Een load balancer van het type Basic maken - Azure PowerShell
-      href: quickstart-create-basic-load-balancer-powershell.md
+    - name: Een Standard Load Balancer maken
+      items:
+        - name: Portal
+          href: quickstart-load-balancer-standard-public-portal.md
+        - name: Azure CLI
+          href: quickstart-load-balancer-standard-public-cli.md
+        - name: Azure PowerShell
+          href: quickstart-create-standard-load-balancer-powershell.md
+        - name: Template
+          href: quickstart-load-balancer-standard-public-template.md
+    - name: Load balancer van het type Basic maken
+      items:
+        - name: Portal
+          href: quickstart-create-basic-load-balancer-portal.md
+        - name: Azure CLI
+          href: quickstart-create-basic-load-balancer-cli.md
+        - name: Azure PowerShell
+          href: quickstart-create-basic-load-balancer-powershell.md
+        - name: Template
+          href: load-balancer-get-started-internet-arm-template.md
+        - name: REST-API
+          href: create-load-balancer-rest-api.md
 - name: Zelfstudies
   items:
     - name: Internetverkeer gelijkmatig verdelen over VM's
@@ -42,8 +50,16 @@
       href: powershell-samples.md
 - name: Concepten
   items:
-    - name: Statuscontroles
-      href: load-balancer-custom-probe-overview.md
+    - name: Statuscontrole
+      items:
+        - name: Statuscontroles
+          href: load-balancer-custom-probe-overview.md
+        - name: Metrische en diagnostische gegevens voor een load balancer van het type Standard
+          href: load-balancer-standard-diagnostics.md
+        - name: Azure Monitor-logboeken voor Basic Azure Load Balancer
+          href: load-balancer-monitor-log.md
+        - name: Metrische gegevens over load balancer ophalen met REST
+          href: load-balancer-query-metrics-rest-api.md
     - name: Poorten met hoge beschikbaarheid
       href: load-balancer-ha-ports-overview.md
     - name: IPv6-ondersteuning
@@ -58,72 +74,63 @@
       href: load-balancer-tcp-reset.md
     - name: Load Balancer van het type Standard en beschikbaarheidszones
       href: load-balancer-standard-availability-zones.md
-    - name: Metrische en diagnostische gegevens voor een load balancer van het type Standard
-      href: load-balancer-standard-diagnostics.md
     - name: Ingebouwde beveiligingsmaatregelen
       href: load-balancer-security-controls.md
 - name: Procedures
   items:
     - name: Een zoneredundante openbare load balancer van het type Standard maken
-      href: load-balancer-get-started-internet-az-portal.md
       items:
-        - name: Een zoneredundante openbare load balancer van het type Standard maken (PowerShell)
-          href: load-balancer-get-started-internet-az-powershell.md
-        - name: Een zoneredundante openbare load balancer van het type Standard maken (CLI)
+        - name: Portal
+          href: load-balancer-get-started-internet-az-portal.md
+        - name: Azure CLI
           href: load-balancer-get-started-internet-az-cli.md
+        - name: Azure PowerShell
+          href: load-balancer-get-started-internet-az-powershell.md
     - name: Een zonegebonden openbare load balancer van het type Standard maken
-      href: load-balancer-get-started-internet-availability-zones-zonal-portal.md
       items:
-        - name: Een zonegebonden openbare load balancer van het type Standard maken (PowerShell)
-          href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
-        - name: Een zonegebonden openbare load balancer van het type Standard maken (CLI)
+        - name: Portal
+          href: load-balancer-get-started-internet-availability-zones-zonal-portal.md
+        - name: Azure CLI
           href: load-balancer-get-started-internet-availability-zones-zonal-cli.md
+        - name: Azure PowerShell
+          href: load-balancer-get-started-internet-availability-zones-zonal-powershell.md
     - name: Taken over VM's in meerdere beschikbaarheidszones verdelen (CLI)
       href: load-balancer-standard-public-zone-redundant-cli.md
     - name: Taken over VM's binnen een zone verdelen (CLI)
       href: load-balancer-standard-public-zonal-cli.md
     - name: Regels voor uitgaand verkeer configureren
       items:
-        - name: Regels voor uitgaand verkeer configureren - CLI
+        - name: Azure CLI
           href: configure-load-balancer-outbound-cli.md
-        - name: Regels voor uitgaand verkeer configureren - PowerShell
+        - name: Azure PowerShell
           href: configure-load-balancer-outbound-powershell.md
-    - name: Een Azure-load balancer maken met behulp van de REST API
-      href: create-load-balancer-rest-api.md
-    - name: Een load balancer van het type Basic maken (sjabloon)
-      href: load-balancer-get-started-internet-arm-template.md
     - name: Een openbare load balancer maken met IPv6
-      href: load-balancer-ipv6-internet-ps.md
       items:
-        - name: Een openbare load balancer maken met IPv6 (CLI)
+        - name: Azure CLI
           href: load-balancer-ipv6-internet-cli.md
-        - name: Een openbare load balancer maken met IPv6 (sjabloon)
+        - name: Azure PowerShell
+          href: load-balancer-ipv6-internet-ps.md
+        - name: Template
           href: load-balancer-ipv6-internet-template.md
     - name: Een interne load balancer configureren
       items:
-        - name: Een interne load balancer configureren (PowerShell)
-          href: load-balancer-get-started-ilb-arm-ps.md
-        - name: Een interne load balancer configureren (CLI)
+        - name: Azure CLI
           href: load-balancer-get-started-ilb-arm-cli.md
-        - name: Een interne load balancer configureren (sjabloon)
+        - name: Azure PowerShell
+          href: load-balancer-get-started-ilb-arm-ps.md
+        - name: Template
           href: load-balancer-get-started-ilb-arm-template.md
     - name: Time-out voor TCP-inactiviteit configureren voor load balancer
       href: load-balancer-tcp-idle-timeout.md
     - name: Distributiemodus configureren voor load balancer
       href: load-balancer-distribution-mode.md
-    - name: Taakverdelingsservices combineren
-      href: ../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fload-balancer%2ftoc.json
     - name: Meerdere IP-configuraties gebruiken
       href: load-balancer-multiple-ip.md
       items:
-        - name: Meerdere IP-configuraties gebruiken (CLI)
+        - name: Azure CLI
           href: load-balancer-multiple-ip-cli.md
-        - name: Meerdere IP-configuraties gebruiken (PowerShell)
+        - name: Azure PowerShell
           href: load-balancer-multiple-ip-powershell.md
-    - name: Azure Monitor-logboeken voor Azure Load Balancer
-      href: load-balancer-monitor-log.md
-    - name: Metrische gegevens over load balancer ophalen met REST
-      href: load-balancer-query-metrics-rest-api.md
     - name: Poorten voor hoge beschikbaarheid configureren voor de interne Load Balancer
       href: load-balancer-configure-ha-ports.md
     - name: Verplaatsen tussen regio's
@@ -160,22 +167,6 @@
       href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations'
     - name: REST
       href: 'https://msdn.microsoft.com/library/azure/mt163651.aspx'
-- name: Verwant
-  items:
-    - name: Application Gateway
-      href: /azure/application-gateway/
-    - name: ExpressRoute
-      href: /azure/expressroute/
-    - name: Virtual Network
-      href: /azure/virtual-network/
-    - name: VPN Gateway
-      href: /azure/vpn-gateway/
-    - name: Virtuele machine
-      href: /azure/virtual-machines/
-    - name: Traffic Manager
-      href: /azure/traffic-manager/
-    - name: DNS
-      href: /azure/dns/
 - name: Resources
   items:
     - name: Uw vaardigheden ontwikkelen met Microsoft Learn
@@ -188,5 +179,5 @@
       href: 'https://azure.microsoft.com/pricing/details/load-balancer/'
     - name: Prijscalculator
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Service-updates
+    - name: Productupdates
       href: 'https://azure.microsoft.com/updates/?product=load-balancer'

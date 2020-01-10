@@ -1,5 +1,5 @@
 ---
-title: Eigendom van de facturering van het Azure-abonnement overdragen aan een ander account | Microsoft Docs
+title: Eigendom van facturering voor een Azure-abonnement overdragen
 description: Dit artikel bevat informatie over hoe u het eigendom van een Azure-abonnement overdraagt aan een ander account en enkele veelgestelde vragen over het proces
 keywords: transfer azure subscription, azure transfer subscription, move azure subscription to another account,azure change subscription owner, transfer azure subscription to another account, azure transfer billing
 author: bandersmsft
@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a858ef9918135bfb660c059d80f4c7c49e1e3364
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 721c8a1381ad90a68cfeb628ad00e39aadbb1db7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223569"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388938"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Eigendom van de facturering van een Azure-abonnement overdragen aan een ander account
 
@@ -190,7 +190,7 @@ Zelfs als de [RBAC-toewijzingen (op rollen gebaseerd toegangsbeheer)](../role-ba
 
 Als ontvangers de toegang tot hun resources willen beperken, moeten ze overwegen om de geheimen bij te werken die zijn gekoppeld aan de service. De meeste resources kunnen worden bijgewerkt door de volgende stappen uit te voeren:
 
-  1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+  1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
   2. Selecteer in het Hub-menu **Alle resources**.
   3. Selecteer de resource.
   4. Klik op de resourcepagina op **Instellingen**. Hier kunt u bestaande geheimen weergeven en bijwerken.
@@ -222,7 +222,7 @@ Niet alle typen abonnementen bieden ondersteuning voor de overdracht van het eig
 Deze fout wordt weergegeven wanneer u een Microsoft Azure Plan-abonnement probeert over te dragen en u niet over de benodigde machtigingen beschikt. Als u een Microsoft Azure Plan-abonnement wilt overdragen, moet u een eigenaar of bijdrager zijn in de factuursectie waarnaar het abonnement wordt gefactureerd. Zie [Abonnementen beheren voor de factuursectie](billing-understand-mca-roles.md#manage-subscriptions-for-invoice-section) voor meer informatie.
 
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Neem contact met ons op.
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 

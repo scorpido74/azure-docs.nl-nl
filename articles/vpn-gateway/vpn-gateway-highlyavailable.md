@@ -1,31 +1,23 @@
 ---
-title: Overzicht van maximaal beschikbare configuraties met Azure VPN-Gateways | Microsoft Docs
+title: 'Azure VPN Gateway: overzicht-configuraties met Maxi maal beschik bare gateways'
 description: Dit artikel bevat een overzicht van maximaal beschikbare configuratieopties met Azure VPN-gateways.
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
-manager: rossort
-editor: ''
-tags: ''
-ms.assetid: a8bfc955-de49-4172-95ac-5257e262d7ea
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/24/2016
 ms.author: yushwang
-ms.openlocfilehash: 623ed10e155012780f039bf7b9148be34143454d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 91fb0896238881130bd02916f8fd579eee9bd16b
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60760280"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779617"
 ---
 # <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Maximaal beschikbare cross-premises en VNet-naar-VNet-connectiviteit
 Dit artikel bevat een overzicht van maximaal beschikbare configuratieopties voor uw cross-premises en VNet-naar-VNet-connectiviteit met Azure VPN-gateways.
 
-## <a name = "activestandby"></a>Over Azure VPN-gatewayredundantie
+## <a name = "activestandby"></a>Over de redundantie van Azure VPN gateway
 Elke Azure VPN-gateway bestaat uit twee instanties in een actieve stand-byconfiguratie. Bij gepland onderhoud of niet-geplande onderbrekingen die met het actieve exemplaar plaatsvinden, neemt de stand-byinstantie de activiteiten automatisch over (failover) en worden de S2S VPN- of VNet-naar-VNet-verbindingen hervat. De omschakeling veroorzaakt een korte onderbreking. Bij gepland onderhoud moet de connectiviteit binnen 10 tot 15 seconden worden hersteld. Bij niet-geplande problemen duurt het herstellen van de verbinding langer, in het ergste geval tot 1,5 minuut. Bij P2S VPN-clientverbindingen met de gateway worden de P2S-verbindingen verbroken en moeten de gebruikers opnieuw verbinding maken vanaf de clientcomputers.
 
 ![Actieve stand-by](./media/vpn-gateway-highlyavailable/active-standby.png)
@@ -44,12 +36,12 @@ U kunt meerdere VPN-apparaten van uw on-premises netwerk gebruiken om verbinding
 
 Deze configuratie biedt meerdere actieve tunnels van dezelfde Azure VPN-gateway op on-premises apparaten op dezelfde locatie. Er zijn enkele vereisten en beperkingen:
 
-1. U moet meerdere S2S VPN-verbindingen maken van uw VPN-apparaten naar Azure. Als u meerdere VPN-apparaten verbinding van de dezelfde on-premises netwerk naar Azure, moet u een lokale netwerkgateway voor elke VPN-apparaat en één verbinding van uw Azure VPN-gateway met elke lokale netwerkgateway maken.
+1. U moet meerdere S2S VPN-verbindingen maken van uw VPN-apparaten naar Azure. Wanneer u meerdere VPN-apparaten van hetzelfde on-premises netwerk verbindt met Azure, moet u één lokale netwerk gateway maken voor elk VPN-apparaat en één verbinding van uw Azure VPN-gateway naar elke lokale netwerk gateway.
 2. De lokale netwerkgateways die overeenkomen met uw VPN-apparaten moeten unieke openbare IP-adressen hebben in de eigenschap 'GatewayIpAddress'.
 3. BGP is vereist voor deze configuratie. Elke lokale netwerkgateway voor een VPN-apparaat moet een uniek IP-adres voor BGP-peering hebben in de eigenschap 'BgpPeerIpAddress'.
 4. Het veld van de eigenschap AddressPrefix in elke lokale netwerkgateway mag niet overlappen. U moet 'BgpPeerIpAddress' in /32 CIDR-indeling opgeven in het veld AddressPrefix, bijvoorbeeld 10.200.200.254/32.
 5. Gebruik BGP om dezelfde voorvoegsels van dezelfde on-premises netwerkvoorvoegsels te adverteren naar uw Azure VPN-gateway. Het verkeer wordt tegelijkertijd doorgestuurd via deze tunnels.
-6. U moet gelijke kosten Multipath routering (ECMP).
+6. U moet een gelijke-kosten multi-path routing (ECMP) gebruiken.
 7. Elke verbinding wordt geteld tegen het maximale aantal tunnels voor uw Azure VPN-gateway, 10 voor de Basic en Standaard SKU's en 30 voor de HighPerformance SKU. 
 
 In deze configuratie bevindt de Azure VPN-gateway zich nog steeds in de actieve stand-bymodus, dus hetzelfde failovergedrag en de korte onderbreking die [hierboven](#activestandby) worden beschreven, zullen optreden. Deze installatie beschermt echter tegen storingen of onderbrekingen op uw on-premises netwerk en VPN-apparaten.

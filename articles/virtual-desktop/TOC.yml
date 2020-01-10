@@ -130,6 +130,10 @@
       href: /rest/api/virtual-desktop/
     - name: Ondersteunde RDP-bestandsinstellingen
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
+    - name: Netwerkrichtlijnen
+      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/network-guidance?context=/azure/virtual-desktop/context/context'
+    - name: Richtlijnen voor de grootte van virtuele machines
+      href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context'
 - name: Resources
   items:
     - name: Schatting van de ervaring

@@ -1,5 +1,5 @@
 ---
-title: Secties maken op uw factuur om uw kosten te organiseren - Azure
+title: Factuursecties maken om de kosten te organiseren - Azure
 description: Meer informatie over kosten ordenen met factuursecties.
 author: amberbhargava
 manager: amberb
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: d70460f5a492c9699a6110d5ba164283934c584b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ff8b2da353d623cd9f05c8d0b0317587d7093ce3
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226137"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75389278"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>Secties maken op uw factuur om uw kosten te organiseren
 
@@ -27,11 +27,11 @@ Dit artikel is van toepassing op een factureringsaccount voor een Microsoft-klan
 
 Als u een factuursectie wilt maken, moet u een **factureringsprofiel-eigenaar** of een **factureringsprofiel-inzender** zijn. Voor meer informatie, zie [Factuursecties beheren voor het factureringsprofiel](billing-understand-mca-roles.md#manage-invoice-sections-for-billing-profile).
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Zoek naar **Kostenbeheer en facturering**.
 
-   ![Schermopname van zoekopdracht in de Azure-portal](./media/billing-mca-section-invoice/billing-search-cost-management-billing.png)
+   ![Schermopname van de zoekopdracht in de Azure-portal](./media/billing-mca-section-invoice/billing-search-cost-management-billing.png)
 
 3. Selecteer **Factuursecties** in het linkerdeelvenster. Afhankelijk van uw toegang moet u mogelijk een factureringsprofiel of een -account selecteren en vervolgens **Factuursecties**.
 
@@ -39,7 +39,7 @@ Als u een factuursectie wilt maken, moet u een **factureringsprofiel-eigenaar** 
 
 4. Selecteer **Toevoegen** bovenaan de pagina.
 
-5. Voer een naam in voor de factuursectie en selecteer een factureringsprofiel. U ziet de factuursectie van dit factureringsprofiel, die het gebruik weergeeft van elk abonnement en elke aankoop die u aan deze sectie hebt toegewezen. 
+5. Voer een naam in voor de factuursectie en selecteer een factureringsprofiel. U ziet de factuursectie van dit factureringsprofiel, die het gebruik weergeeft van elk abonnement en elke aankoop die u aan deze sectie hebt toegewezen.
 
    ![Schermopname van pagina voor factuursecties maken](./media/billing-mca-section-invoice/mca-create-invoice-section.png)
 
@@ -48,7 +48,7 @@ Als u een factuursectie wilt maken, moet u een **factureringsprofiel-eigenaar** 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Hulp nodig? Contact opnemen met ondersteuning
+## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
 
 Als u hulp nodig hebt, kunt u [contact opnemen met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
 

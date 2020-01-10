@@ -93,7 +93,7 @@
       href: knowledge-store-concept-intro.md
     - name: Projecties
       href: knowledge-store-projection-overview.md
-    - name: Incrementele indexering
+    - name: Incrementele verrijking
       href: cognitive-search-incremental-indexing-conceptual.md
 - name: Instructiegidsen
   items:
@@ -237,9 +237,9 @@
               href: cognitive-search-concept-annotations-syntax.md
             - name: Toewijzen aan indexvelden
               href: cognitive-search-output-field-mapping.md
-            - name: Informatie uit installatiekopieën verwerken en extraheren
+            - name: Informatie uit installatiekopieën extraheren
               href: cognitive-search-concept-image-scenarios.md
-            - name: Incrementele indexering instellen
+            - name: Incrementele verrijking cachen
               href: search-howto-incremental-index.md
         - name: Aangepaste vaardigheden
           items:
@@ -330,7 +330,11 @@
     - name: REST (beheer)
       href: /rest/api/searchmanagement
     - name: REST (preview)
-      href: search-api-preview.md
+      items:
+        - name: API-versie 2019-05-06-preview
+          href: search-api-preview.md
+        - name: ResetSkills-API
+          href: preview-api-resetskills.md
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.search/searchservices
     - name: Naslaginformatie over de OData-taal

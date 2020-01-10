@@ -1,0 +1,74 @@
+### YamlMime:Landing
+title: Documentatie over internetpeering
+summary: Informatie over internetpeering met Microsoft.
+metadata:
+  title: Documentatie over internetpeering
+  titleSuffix: Azure
+  description: Informatie over peering met Microsoft.
+  services: internet-peering
+  ms.service: internet-peering
+  ms.topic: landing-page
+  author: prmitiki
+  ms.author: prmitiki
+  ms.date: 11/27/2019
+  ms.openlocfilehash: 83549a56b3fb81c66827d1e9f87718467fb1098a
+  ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 01/09/2020
+  ms.locfileid: "75773516"
+landingContent:
+- title: Over internetpeering
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Over internetpeering
+      url: overview.md
+    - text: Internetpeering vs. Peering Service
+      url: overview-peering-service.md
+  - linkListType: concept
+    links:
+    - text: Peeringbeleid
+      url: policy.md
+    - text: Vereisten om peering in te stellen met Microsoft
+      url: prerequisites.md
+    - text: Veelgestelde vragen over internetpeering
+      url: faqs.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Peer-ASN koppelen aan Azure-abonnement met de portal
+      url: howto-subscription-association-portal.md
+- title: Exchange-peering
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Overzicht van Exchange-peering
+      url: walkthrough-exchange-all.md
+    - text: Exchange-peering maken of bewerken met de portal
+      url: howto-exchange-portal.md
+    - text: Een verouderde Exchange-peering converteren in een Azure-resource met de portal
+      url: howto-legacy-exchange-portal.md
+- title: Direct peering
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Overzicht van Direct peering
+      url: walkthrough-direct-all.md
+    - text: Direct-peering maken of bewerken met de portal
+      url: howto-direct-portal.md
+    - text: Een verouderde Direct-peering converteren in een Azure-resource met de portal
+      url: howto-legacy-direct-portal.md
+- title: Peering Service
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Veelgestelde vragen over Peering Service
+      url: service-faqs.md
+  - linkListType: how-to-guide
+    links:
+    - text: Overzicht van Peering Service-partners
+      url: walkthrough-peering-service-all.md
+    - text: Peering Service inschakelen op Direct peering met de portal
+      url: howto-peering-service-portal.md

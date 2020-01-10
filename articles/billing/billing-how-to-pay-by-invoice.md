@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/23/2019
 ms.author: banders
-ms.openlocfilehash: a17ffab72163768a59da182204bb207003f5f774
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: faf65075179b595b1f841bffceab3959b69614a9
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223863"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75389701"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Per factuur betalen voor uw Azure-abonnement
 
@@ -29,15 +29,19 @@ Als u wilt overstappen op betalen via factuur, dient u uw factuur per cheque/dir
 
 ## <a name="request-to-pay-by-invoice"></a>Verzoeken om te betalen via factuur
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/). Selecteer **Help + ondersteuning** > **Nieuwe ondersteuningsaanvraag**.
+1. Ga naar de [Azure-portal](https://portal.azure.com) om een ondersteuningsaanvraag in te dienen. Zoek en selecteer **Help en ondersteuning**.
 
-    ![Koppeling naar Help en ondersteuning](./media/billing-how-to-pay-by-invoice/help-and-support.png)
+    ![Zoek naar Help en ondersteuning, Microsoft Azure-portal](./media/billing-how-to-pay-by-invoice/search-for-help-and-support.png)
+
+2. Selecteer **Nieuwe ondersteuningsaanvraag**.
+
+    ![Nieuwe koppeling voor ondersteuningsaanvraag, Help- en ondersteuningsscherm, Microsoft Azure-portal](./media/billing-how-to-pay-by-invoice/help-and-support.png)
 
 2. Selecteer **Facturering** als het **Type probleem**. Het *Type probleem* is de categorie van de ondersteuningsaanvraag. Selecteer het abonnement waarvoor u per factuur wilt betalen, selecteer een ondersteuningsplan en selecteer ten slotte **Volgende**.
 
 3. Selecteer **Betaling** als het **Type probleem**. Het *Type probleem* is de subcategorie van de ondersteuningsaanvraag.
 
-4. Selecteer **Overstappen op betalen via factuur** als het **Subtype van het probleem**
+4. Selecteer **Overstappen op betalen via factuur** als het **Subtype van het probleem**.
 
 5. Voer de volgende gegevens in het vak **Details** in en selecteer **Volgende**.
 
@@ -58,7 +62,7 @@ Als u wilt overstappen op betalen via factuur, dient u uw factuur per cheque/dir
          Contact Email:
          Justification on why you prefer Invoice option over credit card:
 
-        For cores increase, provide the following additional information:
+         For cores increase, provide the following additional information:
 
          (Old quota) Existing Cores:
          (New quota) Requested cores:
@@ -67,7 +71,7 @@ Als u wilt overstappen op betalen via factuur, dient u uw factuur per cheque/dir
     - De **Bedrijfsnaam** en het **Bedrijfsadres** moeten overeenkomen met de informatie die u hebt opgegeven voor het Azure-account. Als u de informatie wilt weergeven of bijwerken, raadpleegt u [Profielgegevens van uw Azure-account wijzigen](billing-how-to-change-azure-account-profile.md).
     - Voeg de gegevens over de contactpersoon voor facturering toe aan Azure Portal voordat de kredietlimiet kan worden goedgekeurd. De contactgegevens moeten zijn gerelateerd aan de afdelingen Crediteuren of Financiën van het bedrijf. Als u de gegevens van de contactpersoon voor facturering wilt bijwerken, gaat u naar het [Azure-accountcentrum](https://account.azure.com/Profile).
 
-6. Controleer uw contactgegevens en de voorkeurscontactmethode en klik vervolgens op **Maken**.
+6. Controleer uw contactgegevens en de voorkeurscontactmethode, en selecteer vervolgens **Maken**.
 
 Als we een kredietcontrole moeten uitvoeren vanwege de hoeveelheid tegoed die u nodig hebt, sturen we u een aanvraag voor een kredietcontrole.
 
@@ -79,37 +83,35 @@ Als u een account voor het Microsoft Online Services-programma hebt, kunt u uw A
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Azure-abonnement overzetten op cheque/directe overboeking
 
-Volg de onderstaande stappen om uw Azure-abonnement te wijzigen in betalen via factuur (cheque/directe overboeking). **Wanneer u overstapt op betalen via factuur (cheque/directe overboeking), kunt u niet terug naar betalen met creditcard**.
+Volg de onderstaande stappen om uw Azure-abonnement te wijzigen in betalen via factuur (cheque/directe overboeking). *Wanneer u overstapt op betalen via factuur (cheque/directe overboeking), kunt u niet terug naar betalen met creditcard*.
 
-1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
-1. Zoek naar **Kostenbeheer en facturering**.
+1. Ga naar de [Azure-portal](https://portal.azure.com) om u aan te melden als de accountbeheerder. Zoek en selecteer **Kostenbeheer en facturering**.
 
-    ![Schermopname van de zoekopdracht](./media/billing-how-to-pay-by-invoice/search.png)
+    ![Zoeken naar Kostenbeheer en facturering, Microsoft Azure-portal](./media/billing-how-to-pay-by-invoice/search.png)
 
 1. Selecteer het abonnement dat u wilt overzetten naar betalen via factuur.
 1. Selecteer **Betalingswijzen**.
-1. Klik in de opdrachtbalk op de knop**Betalen via factuur**.
+1. Selecteer in de opdrachtbalk de knop **Betalen via factuur**.
 
-    ![Schermopname van de factuurknop](./media/billing-how-to-pay-by-invoice/pay-by-invoice.png)
+    ![De knop Betalen via factuur, betalingswijzen, Microsoft Azure-portal](./media/billing-how-to-pay-by-invoice/pay-by-invoice.png)
 
 ### <a name="switch-billing-profile-to-checkwire-transfer"></a>Factureringsprofiel overzetten op cheque/directe overboeking
 
 Volg de onderstaande stappen om een factureringsprofiel over te zetten op cheque/directe overboeking. Alleen de persoon die zich heeft aangemeld voor Azure, kan de standaardbetalingswijze van een factureringsprofiel wijzigen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Zoek naar **kostenbeheer en facturering**.
-1. Klik in het menu aan de linkerkant op **Factureringsprofielen**.
+1. Ga naar de [Azure-portal](https://portal.azure.com) om uw factureringsgegevens te bekijken. Zoek en selecteer **Kostenbeheer en facturering**.
+1. Kies in het menu de optie **Factureringsprofielen**.
 
-    ![schermopname van het factureringsprofiel in het menu](./media/billing-how-to-pay-by-invoice/billing-profile.png)
+    ![Menu-item Factureringsprofielen, Kostenbeheer en facturering, Microsoft Azure-portal](./media/billing-how-to-pay-by-invoice/billing-profile.png)
 
 1. Selecteer een factureringsprofiel.
-1. Selecteer in het menu aan de linkerkant de optie **Betalingsmethoden**.
+1. Selecteer in het menu **Factureringsprofiel** de optie **Betalingswijzen**.
 
-   ![Schermopname van de betalingsmethoden in het menu](./media/billing-how-to-pay-by-invoice/billing-profile-payment-methods.png)
+   ![Menu-item Betalingswijzen, Factureringsprofielen, Kostenbeheer, Microsoft Azure-portal](./media/billing-how-to-pay-by-invoice/billing-profile-payment-methods.png)
 
-1. Klik op de blauwe banner waarin staat dat u in aanmerking komt voor betaling per cheque/directe overboeking.
+1. Selecteer de banner waarin staat dat u in aanmerking komt voor betaling per cheque/directe overboeking.
 
-    ![Schermopname van blauwe banner om over te stappen op cheque/directe overboeking](./media/billing-how-to-pay-by-invoice/customer-led-switch-to-invoice.png)
+    ![Banner om over te schakelen naar cheque/directe overboeking, betalingswijzen, Microsoft Azure-portal](./media/billing-how-to-pay-by-invoice/customer-led-switch-to-invoice.png)
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]

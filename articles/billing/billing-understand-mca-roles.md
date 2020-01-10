@@ -1,5 +1,5 @@
 ---
-title: Informatie over het beheren van factureringsrollen voor Microsoft-klantovereenkomsten - Azure
+title: Factureringsrollen voor Microsoft-klantovereenkomsten - Azure
 description: Meer informatie over factureringsrollen voor factureringsrekeningen in Azure voor Microsoft-klantovereenkomsten.
 author: amberbhargava
 manager: amberbhargava
@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2019
 ms.author: banders
-ms.openlocfilehash: f143297ce3a3e41174cbd6cf59ca3df29f8ebc63
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3949d2a70d29f2bfa33596ef2c47f45e1c87c2d2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74223514"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75388149"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Informatie over beheerdersrollen voor Microsoft-klantovereenkomsten in Azure
 
@@ -180,7 +180,7 @@ In de volgende tabel ziet u welke rol u nodig hebt om taken uit te voeren in de 
 
 ## <a name="manage-billing-roles-in-the-azure-portal"></a>Factureringsrollen beheren in de Azure-portal
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 2. Zoek naar **Kostenbeheer en facturering**.
 
@@ -203,7 +203,7 @@ In de volgende tabel ziet u welke rol u nodig hebt om taken uit te voeren in de 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>Toegang tot een Microsoft-klantovereenkomst controleren
 [!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
 
-## <a name="need-help-contact-support"></a>Hulp nodig? Contact opnemen met ondersteuning
+## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
 Als u hulp nodig hebt, kunt u [contact opnemen met ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.
 
 ## <a name="next-steps"></a>Volgende stappen

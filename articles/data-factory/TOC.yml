@@ -29,84 +29,98 @@
       href: data-flow-create.md
 - name: Zelfstudies
   items:
-    - name: Gegevens in de cloud kopiëren
+    - name: Gegevens kopiëren en opnemen
       items:
-        - name: Hulpprogramma voor het kopiëren van gegevens
-          href: tutorial-copy-data-tool.md
-        - name: Gebruikersinterface (UI)
-          href: tutorial-copy-data-portal.md
-        - name: .NET
-          href: tutorial-copy-data-dot-net.md
-    - name: On-premises gegevens naar de cloud kopiëren
-      items:
-        - name: Hulpprogramma voor het kopiëren van gegevens
-          href: tutorial-hybrid-copy-data-tool.md
-        - name: Gebruikersinterface (UI)
-          href: tutorial-hybrid-copy-portal.md
-        - name: Azure PowerShell
-          href: tutorial-hybrid-copy-powershell.md
-    - name: Gegevens bulksgewijs kopiëren
-      items:
-        - name: Gebruikersinterface (UI)
-          href: tutorial-bulk-copy-portal.md
-        - name: Azure PowerShell
-          href: tutorial-bulk-copy.md
-    - name: Gegevens incrementeel kopiëren
-      href: tutorial-incremental-copy-overview.md
-      items:
-        - name: 1 - Van een tabel kopiëren
-          items:
-            - name: Gebruikersinterface (UI)
-              href: tutorial-incremental-copy-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-powershell.md
-        - name: 2 - Van meerdere tabellen kopiëren
-          items:
-            - name: Gebruikersinterface (UI)
-              href: tutorial-incremental-copy-multiple-tables-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-multiple-tables-powershell.md
-        - name: 3 - Functie voor bijhouden van wijzigingen gebruiken
-          items:
-            - name: Gebruikersinterface (UI)
-              href: tutorial-incremental-copy-change-tracking-feature-portal.md
-            - name: Azure PowerShell
-              href: tutorial-incremental-copy-change-tracking-feature-powershell.md
-        - name: 4 - Nieuwe bestanden kopiëren op basis van lastmodifieddate
+        - name: Van Azure Blob Storage naar Azure SQL Database
           items:
             - name: Hulpprogramma voor het kopiëren van gegevens
+              href: tutorial-copy-data-tool.md
+            - name: Gebruikersinterface (UI)
+              href: tutorial-copy-data-portal.md
+            - name: .NET
+              href: tutorial-copy-data-dot-net.md
+        - name: Van een on-premises SQL Server-database naar Azure Blob Storage
+          items:
+            - name: Hulpprogramma voor het kopiëren van gegevens
+              href: tutorial-hybrid-copy-data-tool.md
+            - name: Gebruikersinterface (UI)
+              href: tutorial-hybrid-copy-portal.md
+            - name: Azure PowerShell
+              href: tutorial-hybrid-copy-powershell.md
+        - name: Van Amazon Web Services S3 naar Azure Data Lake Storage
+          items:
+            - name: Azure Data Lake Storage Gen2
+              href: load-azure-data-lake-storage-gen2.md
+            - name: Azure Data Lake Storage Gen1
+              href: load-azure-data-lake-store.md
+        - name: Van Azure Data Lake Storage Gen1 naar Azure Data Lake Storage Gen2
+          href: load-azure-data-lake-storage-gen2-from-gen1.md
+        - name: Van Azure SQL Database naar Azure Synapse Analytics
+          href: load-azure-sql-data-warehouse.md
+        - name: Van SAP BW naar Azure Data Lake Storage Gen2
+          href: load-sap-bw-data.md
+        - name: Van Office 365 naar Azure Blob-opslag
+          href: load-office-365-data.md
+        - name: Meerdere tabellen in bulk
+          items:
+            - name: Gebruikersinterface (UI)
+              href: tutorial-bulk-copy-portal.md
+            - name: Azure PowerShell
+              href: tutorial-bulk-copy.md
+        - name: Stapsgewijs gegevens laden
+          href: tutorial-incremental-copy-overview.md
+          items:
+            - name: Van een Azure SQL Database-tabel
+              items:
+                - name: Gebruikersinterface (UI)
+                  href: tutorial-incremental-copy-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-powershell.md
+            - name: Van meerdere on-premises SQL Server-tabellen
+              items:
+                - name: Gebruikersinterface (UI)
+                  href: tutorial-incremental-copy-multiple-tables-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-multiple-tables-powershell.md
+            - name: Informatie over wijzigingen bijhouden gebruiken in SQL Server
+              items:
+                - name: Gebruikersinterface (UI)
+                  href: tutorial-incremental-copy-change-tracking-feature-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+            - name: Nieuwe bestanden op laatst bewerkte gegevens
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
-        - name: 5 - Nieuwe bestanden kopiëren aan de hand van de op tijdsbasis gepartitioneerde bestandsnaam
-          items:
-            - name: Hulpprogramma voor het kopiëren van gegevens
+            - name: Nieuwe bestanden op laatst gepartitioneerde bestandsnaam
               href: tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md
-    - name: Gegevens transformeren en voorbereiden met gegevensstromen
+    - name: Gegevens transformeren
       items:
-        - name: Gegevens transformeren met een toewijzingsgegevensstroom
-          href: tutorial-data-flow.md
-        - name: Videozelfstudies om gegevens toe te wijzen
-          href: data-flow-tutorials.md
-        - name: Gegevens voorbereiden met een wrangling-gegevensstroom
+        - name: Gegevens transformeren met toewijzingsgegevensstromen
+          items:
+            - name: Gegevens transformeren met toewijzingsgegevensstromen
+              href: tutorial-data-flow.md
+            - name: Videozelfstudies om gegevens toe te wijzen
+              href: data-flow-tutorials.md
+        - name: Gegevens voorbereiden met wrangling-gegevensstromen
           href: wrangling-data-flow-tutorial.md
-    - name: Externe transformaties
-      items:
-        - name: HDInsight Spark
+        - name: Externe services gebruiken
           items:
-            - name: Gebruikersinterface (UI)
-              href: tutorial-transform-data-spark-portal.md
-            - name: Azure PowerShell
-              href: tutorial-transform-data-spark-powershell.md
-        - name: Databricks Notebook
-          items:
-            - name: Gebruikersinterface (UI)
-              href: transform-data-using-databricks-notebook.md
-    - name: Hive-transformatie in virtueel netwerk
-      items:
-        - name: Gebruikersinterface (UI)
-          href: tutorial-transform-data-hive-virtual-network-portal.md
-        - name: Azure PowerShell
-          href: tutorial-transform-data-hive-virtual-network.md
-    - name: Een vertakking en keten toevoegen
+            - name: HDInsight Spark
+              items:
+                - name: Gebruikersinterface (UI)
+                  href: tutorial-transform-data-spark-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-transform-data-spark-powershell.md
+            - name: Databricks Notebook
+              items:
+                - name: Gebruikersinterface (UI)
+                  href: transform-data-using-databricks-notebook.md
+            - name: Hive-transformatie in virtueel netwerk
+              items:
+                - name: Gebruikersinterface (UI)
+                  href: tutorial-transform-data-hive-virtual-network-portal.md
+                - name: Azure PowerShell
+                  href: tutorial-transform-data-hive-virtual-network.md
+    - name: Controlestroom
       items:
         - name: Gebruikersinterface (UI)
           href: tutorial-control-flow-portal.md
@@ -118,19 +132,6 @@
           href: tutorial-deploy-ssis-packages-azure.md
         - name: Azure PowerShell
           href: tutorial-deploy-ssis-packages-azure-powershell.md
-    - name: Data Lake Storage Gen2 laden
-      href: load-azure-data-lake-storage-gen2.md
-      items:
-        - name: Kopiëren vanuit Data Lake Storage Gen1
-          href: load-azure-data-lake-storage-gen2-from-gen1.md
-    - name: Synapse Analytics (voorheen Azure SQL Data Warehouse) laden
-      href: load-azure-sql-data-warehouse.md
-    - name: Data Lake Storage Gen1 laden
-      href: load-azure-data-lake-store.md
-    - name: SAP BW-gegevens laden
-      href: load-sap-bw-data.md
-    - name: Office 365-gegevens laden
-      href: load-office-365-data.md
 - name: Voorbeelden
   items:
     - name: Codevoorbeelden
@@ -518,12 +519,14 @@
           href: control-flow-expression-language-functions.md
         - name: Systeemvariabelen
           href: control-flow-system-variables.md
-        - name: Gegevensstroomparameters
+        - name: Toewijzingsgegevensstromen parameteriseren
           href: parameters-data-flow.md
     - name: Beveiliging
       items:
         - name: Beveiligingsoverwegingen bij het verplaatsen van gegevens
           href: data-movement-security-considerations.md
+        - name: IP-adressen van Azure Integration Runtime
+          href: azure-integration-runtime-ip-addresses.md
         - name: Referenties opslaan in Azure Key Vault
           href: store-credentials-in-key-vault.md
         - name: Azure Key Vault-geheimen gebruiken in pijplijnactiviteiten
@@ -616,20 +619,20 @@
           href: solution-template-move-files.md
         - name: Gegevens transformeren met Databricks
           href: solution-template-databricks-notebook.md
-    - name: Handleiding voor het oplossen van problemen
+    - name: Handleidingen voor probleemoplossing
       items:
-        - name: Problemen met activiteiten oplossen
+        - name: Activiteiten
           href: data-factory-troubleshoot-guide.md
-        - name: Problemen met connector oplossen
+        - name: Connectors
           href: connector-troubleshoot-guide.md
-        - name: Problemen met Azure-SSIS IR-beheer oplossen
-          href: ssis-integration-runtime-management-troubleshoot.md
-        - name: Problemen met zelf-hostende IR oplossen
-          href: self-hosted-integration-runtime-troubleshoot-guide.md
-        - name: Problemen met het uitvoeren van pakketten in Azure-SSIS IR oplossen
-          href: ssis-integration-runtime-ssis-activity-faq.md
-        - name: Problemen met gegevensstromen oplossen
+        - name: Gegevensstromen
           href: data-flow-troubleshoot-guide.md
+        - name: Zelf-hostende Integration Runtimes
+          href: self-hosted-integration-runtime-troubleshoot-guide.md
+        - name: Azure-SSIS Integration Runtime
+          href: ssis-integration-runtime-management-troubleshoot.md
+        - name: Pakketten uitvoeren in Azure-SSIS IR
+          href: ssis-integration-runtime-ssis-activity-faq.md
 - name: Scenario's
   items:
     - name: Gegevensmigratie voor data lake en EDW
