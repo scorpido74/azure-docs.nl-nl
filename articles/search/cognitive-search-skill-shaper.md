@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e9ba540ee0eda2be50c88a89a139032d8d99752d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 384b79037bb30656934c5e4b596dac2b776593b0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791878"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754113"
 ---
 # <a name="shaper-cognitive-skill"></a>Shaper cognitieve vaardigheid
 
@@ -27,7 +27,7 @@ De uitvoer naam is altijd "uitvoer". Intern kan de pijp lijn een andere naam toe
 > De **shaper** -vaardigheid is niet gebonden aan een COGNITIVE Services-API en er worden geen kosten in rekening gebracht voor het gebruik ervan. U moet nog steeds [een Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md)om de optie **gratis** resource te overschrijven, waardoor u een klein aantal dagelijkse verrijkingen per dag beperkt.
 
 ## <a name="odatatype"></a>@odata.type  
-Micro soft. skills. util. ShaperSkill
+Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="scenario-1-complex-types"></a>Scenario 1: complexe typen
 
@@ -252,4 +252,4 @@ In dit geval maakt de **shaper** een complex type. Deze structuur bevindt zich i
 + [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
 + [Complexe typen gebruiken](search-howto-complex-data-types.md)
 + [Kennis archief (preview-versie)](knowledge-store-concept-intro.md)
-+ [Aan de slag met kennis archief](knowledge-store-howto.md)
++ [Een kennis archief maken in REST](knowledge-store-create-rest.md)

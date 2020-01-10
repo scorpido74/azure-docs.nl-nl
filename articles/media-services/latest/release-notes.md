@@ -9,16 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 10/07/2019
+ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: 50c28f86a1ba36ac44a25e047800d14fe314f9bf
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 0f2eabf0167865333131e0f8e5b0c4ccb409e40e
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420034"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771237"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
+
+>Ontvang een melding over wanneer u deze pagina voor updates opnieuw moet bezoeken door deze URL te kopiëren en te plakken: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` in uw RSS feed-lezer.
 
 Als u wilt bijhouden met de meest recente ontwikkelingen, vindt in dit artikel u informatie over:
 
@@ -33,6 +35,40 @@ Als u wilt bijhouden met de meest recente ontwikkelingen, vindt in dit artikel u
 > U kunt momenteel geen gebruik maken van de Azure-portal om v3-resources te beheren. Gebruik de [rest API](https://aka.ms/ams-v3-rest-sdk), CLI of een van de ondersteunde sdk's.
 
 Zie voor meer informatie [migratie richtlijnen voor het overstappen van Media Services versie 2 tot v3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="november-2019"></a>November 2019
+
+### <a name="live-transcription-preview"></a>Live transcriptie preview
+
+Live transcriptie is nu beschikbaar in de open bare preview-versie en kan worden gebruikt in de regio vs-West 2.
+
+Live transcriptie is ontworpen om samen te werken met Live-gebeurtenissen als een invoeg toepassing.  Het wordt ondersteund op zowel Pass-through-als standaard-of Premium-code ring van Live-gebeurtenissen.  Als deze functie is ingeschakeld, gebruikt de service de functie voor [spraak-naar-tekst](../../cognitive-services/speech-service/speech-to-text.md) van Cognitive Services om de gesp roken woorden in de binnenkomende audio naar tekst te transcriberen. Deze tekst wordt vervolgens beschikbaar gesteld voor levering en video en audio in MPEG-DASH-en HLS-protocollen. De facturering is gebaseerd op een nieuwe add-on meter die extra kosten voor de live-gebeurtenis is wanneer de status wordt uitgevoerd.  Zie [Live transcriptie](live-transcription.md) voor meer informatie over Live transcriptie en facturering
+
+> [!NOTE]
+> Live transcriptie is momenteel alleen beschikbaar als preview-functie in de regio vs-West 2. Het biedt alleen ondersteuning voor transcriptie van gesp roken woorden in het Engels (en-US).
+
+### <a name="content-protection"></a>Content Protection
+
+De functie voor het voor *komen van tokens* voor het opnieuw afspelen in een beperkt aantal regio's in september is nu beschikbaar in alle regio's.
+Media Services klanten kunnen nu een limiet instellen voor het aantal keren dat hetzelfde token kan worden gebruikt om een sleutel of licentie aan te vragen. Zie [token replay voor komen](content-protection-overview.md#token-replay-prevention)voor meer informatie.
+
+### <a name="new-recommended-live-encoder-partners"></a>Nieuwe aanbevolen partners voor Live encoders
+
+Er is ondersteuning toegevoegd voor de volgende nieuwe aanbevolen partner encoders voor RTMP live streamen:
+
+- [Cambria Live 4,3](https://www.capellasystems.net/products/cambria-live/)
+- [GoPro Hero7/8 en Max. actie camera's](https://gopro.com/help/articles/block/getting-started-with-live-streaming)
+- [Restream.io](https://restream.io/)
+
+### <a name="file-encoding-enhancements"></a>Verbeteringen voor bestands codering
+- Er is nu een nieuwe voor instelling voor het coderen van inhoud beschikbaar. Er wordt een set GOP terug-uitgelijnde Mp4's gemaakt met behulp van inhoud-bewuste code ring. Op basis van de invoer inhoud voert de service een eerste licht gewicht analyse van de invoer inhoud uit. Deze resultaten worden gebruikt om het optimale aantal lagen, de juiste bitsnelheid en resolutie-instellingen voor levering door adaptieve streaming te bepalen. Deze standaard instelling is met name van toepassing op Video's met een lage complexiteit en middel grote complexiteit, waarbij de uitvoer bestanden een lagere bitsnelheid hebben, maar met een kwaliteit die nog steeds een goede ervaring voor kijkers biedt. De uitvoer bevat MP4-bestanden met Interleaved video-en audio-indeling. Zie de [open API-specificaties](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)voor meer informatie.
+- Verbeterde prestaties en meerdere threads voor de nieuwe grootte van Media Encoder Standard. Onder specifieke voor waarden moet de klant een prestatie verbetering van 5-40% VOD-code ring zien. Inhoud met weinig complexiteit die is gecodeerd in meerdere bitsnelheden, ziet de hoogste prestatie verhoging. 
+- Standaard codering onderhoudt nu een reguliere GOP terug-uitgebracht voor de VFR-inhoud (variable frame rate) tijdens VOD-code ring wanneer u de GOP terug-instelling op basis van tijd gebruikt.  Dit betekent dat de klant de prijs informatie voor gemengde frames indient die varieert tussen 15-30 fps, bijvoorbeeld de normale GOP terug-afstanden die worden berekend voor de uitvoer naar Adaptive Bitrate Streaming MP4-bestanden. Dit verbetert de mogelijkheid om naadloos tussen sporen te scha kelen bij het leveren van HLS of een streepje. 
+-  Verbeterde AV-synchronisatie voor variabele frame frequentie (VFR)-bron inhoud
+
+### <a name="video-indexer-video-analytics"></a>Video Indexer, video analyse
+
+- Keyframes die zijn geëxtraheerd met behulp van de VideoAnalyzer-voor instelling zijn nu in de oorspronkelijke resolutie van de video in plaats van het formaat te wijzigen. Met de High-Solution-extractie van keyframes beschikt u over originele installatie kopieën en kunt u gebruikmaken van de op installatie kopieën gebaseerde kunst matige intelligentie modellen die worden verstrekt door de micro soft-Computer Vision en Custom Vision-Services om nog meer inzicht te krijgen in uw video.
 
 ## <a name="september-2019"></a>September 2019
 
@@ -70,11 +106,11 @@ Zie [WAME migreren naar Media Encoder Standard](https://go.microsoft.com/fwlink/
  
 ## <a name="july-2019"></a>Juli 2019
 
-### <a name="content-protection"></a>Inhoudsbeveiliging
+### <a name="content-protection"></a>Content Protection
 
 Wanneer inhoud die wordt beveiligd met token beperking wordt gestreamd, moeten eind gebruikers een token verkrijgen dat wordt verzonden als onderdeel van de aanvraag voor de sleutel levering. Met de functie voor het voor *komen van tokens* kunnen Media Services klanten een limiet instellen voor het aantal keren dat hetzelfde token kan worden gebruikt om een sleutel of licentie aan te vragen. Zie [token replay voor komen](content-protection-overview.md#token-replay-prevention)voor meer informatie.
 
-Deze functie is momenteel beschikbaar in VS Centraal en VS-West-centraal.
+Vanaf juli was de preview-functie alleen beschikbaar in VS Centraal en VS-West-centraal.
 
 ## <a name="june-2019"></a>Juni 2019
 
@@ -160,13 +196,13 @@ De CLI 2,0-module is nu beschikbaar voor [Azure Media Services v3 ga](https://do
 ### <a name="new-commands"></a>Nieuwe opdrachten
 
 - [AZ AMS account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
-- [AZ AMS account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
 - [AZ AMS Asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
-- [AZ AMS Asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [AZ AMS content-Key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [AZ AMS job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
-- [AZ AMS Live-Event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
-- [AZ AMS live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
+- [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [az ams content-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [az ams job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+- [az ams live-event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
+- [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
 - [AZ AMS streaming-Endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
 - [AZ AMS streaming-Locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
 - [AZ AMS account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) -Hiermee kunt u gereserveerde media-eenheden beheren. Zie [gereserveerde media-eenheden schalen](media-reserved-units-cli-how-to.md)voor meer informatie.

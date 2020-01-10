@@ -7,26 +7,26 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
-ms.openlocfilehash: d4bcb8475f822675d39ca8e542155779384eacf1
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 0b4975984abf4a36f7d61b42f365eeb1b2902abf
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087837"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750022"
 ---
-# <a name="scenario-apache-ambari-ui-502-error-in-azure-hdinsight"></a>Scenario: Fout in Ambari UI 502 van Apache in azure HDInsight
+# <a name="scenario-apache-ambari-ui-502-error-in-azure-hdinsight"></a>Scenario: Apache Ambari UI 502-fout in azure HDInsight
 
 In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
 
 ## <a name="issue"></a>Probleem
 
-Wanneer u probeert toegang te krijgen tot de Apache Ambari-gebruikers interface voor uw HDInsight-cluster, krijgt u een bericht dat er ongeveer als volgt uitziet: "502-webserver heeft een ongeldig antwoord ontvangen terwijl deze fungeert als gateway of proxy server."
+Wanneer u probeert toegang te krijgen tot de Apache Ambari-gebruikers interface voor uw HDInsight-cluster, krijgt u een bericht vergelijkbaar met de volgende tekst: "502-webserver heeft een ongeldig antwoord ontvangen terwijl deze als gateway of proxy server fungeert."
 
 ## <a name="cause"></a>Oorzaak
 
 Over het algemeen betekent de HTTP 502-status code dat Ambari-server niet correct wordt uitgevoerd op de actieve hoofd knooppunt. Er zijn enkele mogelijke hoofd oorzaken.
 
-## <a name="resolution"></a>Oplossing
+## <a name="resolution"></a>Resolutie
 
 In de meeste gevallen kunt u de actieve hoofd knooppunt opnieuw starten om het probleem te verhelpen. Of kies een grotere VM-grootte voor uw hoofd knooppunt.
 
@@ -49,10 +49,10 @@ service ambari-server start
 
 ### <a name="ambari-server-killed-by-oom-killer"></a>Ambari-server afgebroken door oom-Killer
 
-In sommige gevallen wordt uw hoofd knooppunt te weinig geheugen en de Linux oom-Killer begint met het kiezen van processen om af te breken. U kunt deze situatie controleren door te zoeken in de AmbariServer-proces-ID, die niet kan worden gevonden. Kijk vervolgens naar uw `/var/log/syslog`en zoek naar een van de volgende opties:
+In sommige gevallen wordt uw hoofd knooppunt te weinig geheugen en de Linux oom-Killer begint met het kiezen van processen om af te breken. U kunt deze situatie controleren door te zoeken in de AmbariServer-proces-ID, die niet kan worden gevonden. Kijk vervolgens naar uw `/var/log/syslog`en zoek er ongeveer als volgt uit:
 
 ```
-Jul 27 15:29:30 hn0-xxxxxx kernel: [874192.703153] java invoked oom-killer: gfp_mask=0x23201ca, order=0, oom_score_adj=0
+Jul 27 15:29:30 xxx-xxxxxx kernel: [874192.703153] java invoked oom-killer: gfp_mask=0x23201ca, order=0, oom_score_adj=0
 ```
 
 Vervolgens kunt u vaststellen welke processen herinneringen nemen en de hoofd oorzaak proberen.
@@ -71,6 +71,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 
 * Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

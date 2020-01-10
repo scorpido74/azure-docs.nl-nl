@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 07/10/2019
+ms.date: 01/08/2020
 ms.author: helohr
-ms.openlocfilehash: b53bf80774a0715c7a02d837975284e985958635
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: b2209e2ada2d825714d08b6ac3237583df28272a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607438"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749362"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Tenants en hostpools maken
 
@@ -59,7 +59,7 @@ Voor beeld van onbewerkte fout:
 
 ## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Vm's voor virtuele Windows-bureau blad-sessies maken
 
-Vm's voor sessie-hosts kunnen op verschillende manieren worden gemaakt, maar Extern bureaublad-services/bureau blad-teams ondersteunen alleen VM-inrichtings problemen die betrekking hebben op de Azure Resource Manager sjabloon. De Azure Resource Manager-sjabloon is beschikbaar in [Azure Marketplace](https://azuremarketplace.microsoft.com/) en [github](https://github.com/).
+Vm's voor sessie-hosts kunnen op verschillende manieren worden gemaakt, maar het virtueel bureau blad-team van Windows ondersteunt alleen VM-inrichtings problemen die betrekking hebben op de [Azure Marketplace](https://azuremarketplace.microsoft.com/) -aanbieding. Zie voor meer informatie [problemen met Windows virtueel bureau blad: een hostgroep voor Azure Marketplace-aanbieding inrichten](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering).
 
 ## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>Problemen met het gebruik van Windows virtueel bureau blad – een hostgroep aanbieden voor Azure Marketplace
 
@@ -87,6 +87,27 @@ Het virtuele bureau blad van Windows – inrichten van een sjabloon voor een hos
     #create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%
     2FRDS-Templates%2Fmaster%2Fwvd-templates%2FCreate%20and%20provision%20WVD%20host%20pool%2FmainTemplate.json
     ```
+
+### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>Fout: de fout ' de implementatie van de sjabloon is niet geldig ' wordt weer gegeven
+
+![Scherm opname van sjabloon implementatie... is niet geldig ' fout](media/troubleshooting-marketplace-validation-error-generic.png)
+
+Voordat u een specifieke actie onderneemt, moet u het activiteiten logboek controleren om de gedetailleerde fout voor de mislukte implementatie validatie te bekijken.
+
+De fout in het activiteiten logboek weer geven:
+
+1. Sluit de huidige Azure Marketplace-implementatie aanbieding.
+2. Zoek in de bovenste zoek balk naar en selecteer het **activiteiten logboek**.
+3. Zoek een activiteit met de naam **Validate implementation** die de status **failed** heeft en selecteer de activiteit.
+   ![scherm opname van afzonderlijke * * activiteit voor het valideren van de implementatie * * met een mislukte * *-status](media/troubleshooting-marketplace-validation-error-activity-summary.png)
+
+4. Selecteer JSON en schuif omlaag naar de onderkant van het scherm totdat u het veld ' statusMessage ' ziet.
+   ![scherm opname van mislukte activiteiten, met een rood vak rond de eigenschap statusMessage van de JSON-tekst.](media/troubleshooting-marketplace-validation-error-json-boxed.png)
+
+Als uw bewerkings sjabloon de quotum limiet overschrijdt, kunt u een van de volgende dingen doen om dit op te lossen:
+
+ - Voer de Azure Marketplace uit met de para meters die u de eerste keer hebt gebruikt, maar deze keer minder Vm's en VM-kernen gebruiken.
+ - Open de koppeling die u ziet in het veld **statusMessage** in een browser om een aanvraag in te dienen voor het verhogen van het quotum voor uw Azure-abonnement voor de opgegeven VM-SKU.
 
 ## <a name="azure-resource-manager-template-and-powershell-desired-state-configuration-dsc-errors"></a>Azure Resource Manager sjabloon en DSC-fouten (desired state Configuration) van Power shell
 
@@ -117,8 +138,16 @@ Voor beeld van onbewerkte fout:
 
 **Oorzaak 2:** De domein naam wordt niet omgezet.
 
-**Oplossing 2:** Zie de fout ' de domein naam wordt niet opgelost ' voor virtuele machines die geen deel uitmaken van het domein in de [host-VM-configuratie](troubleshoot-vm-configuration.md).
+**Oplossing 2:** Zie [fout: domein naam wordt niet omgezet](troubleshoot-vm-configuration.md#error-domain-name-doesnt-resolve) in de [host-VM-configuratie](troubleshoot-vm-configuration.md).
 
+**Oorzaak 3:** De DNS-configuratie van uw virtuele netwerk (VNET) is ingesteld op **standaard**.
+
+Ga als volgt te werk om dit probleem op te lossen:
+
+1. Open Azure Portal en ga naar de Blade **virtuele netwerken** .
+2. Zoek uw VNET en selecteer vervolgens **DNS-servers**.
+3. Het menu DNS-servers moet aan de rechter kant van het scherm worden weer gegeven. Selecteer **aangepast**in dat menu.
+4. Zorg ervoor dat de DNS-servers die worden vermeld onder aangepast overeenkomen met uw domein controller of Active Directory domein. Als uw DNS-server niet wordt weer geven, kunt u deze toevoegen door de waarde ervan in te voeren in het veld **DNS-server toevoegen** .
 
 ### <a name="error-your-deployment-failedunauthorized"></a>Fout: de implementatie is mislukt. ..\Unauthorized
 
@@ -138,7 +167,7 @@ Voor beeld van onbewerkte fout:
 
 **Oorzaak 2:** Tijdelijke fout met de verbinding.
 
-**Oplossen:** Bevestig dat Windows Virtual Desktop Environment in orde is door u aan te melden met Power shell. Voltooi de VM-registratie hand matig in [een hostgroep maken met Power shell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell).
+**Oplossen:** Bevestig dat Windows Virtual Desktop Environment in orde is door u aan te melden met Power shell. Voltooi de VM-registratie hand matig in [een hostgroep maken met Power shell](create-host-pools-powershell.md).
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Fout: de opgegeven gebruikers naam voor de beheerder is niet toegestaan
 
@@ -326,7 +355,7 @@ Voor beeld van onbewerkte fout:
 
 **Oorzaak:** De opgegeven Tenant beheerder voor Windows Virtual Desktop vereist Azure Multi-Factor Authentication (MFA) om u aan te melden.
 
-**Oplossen:** Maak een Service-Principal en wijs hieraan een rol toe voor uw Windows Virtual Desktop-Tenant door de stappen in de [zelf studie te volgen: Service-principals en roltoewijzingen maken met Power shell](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell). Nadat u hebt gecontroleerd of u zich kunt aanmelden bij het virtuele bureau blad van Windows met de Service-Principal, voert u de Azure Marketplace-aanbieding of de GitHub Azure Resource Manager-sjabloon uit, afhankelijk van de methode die u gebruikt. Volg de onderstaande instructies om de juiste para meters voor uw methode op te geven.
+**Oplossen:** Maak een Service-Principal en wijs hieraan een rol toe voor uw Windows Virtual Desktop-Tenant door de stappen in de [zelf studie te volgen: Service-principals en roltoewijzingen maken met Power shell](create-service-principal-role-powershell.md). Nadat u hebt gecontroleerd of u zich kunt aanmelden bij het virtuele bureau blad van Windows met de Service-Principal, voert u de Azure Marketplace-aanbieding of de GitHub Azure Resource Manager-sjabloon uit, afhankelijk van de methode die u gebruikt. Volg de onderstaande instructies om de juiste para meters voor uw methode op te geven.
 
 Als u de Azure Marketplace-aanbieding uitvoert, geeft u waarden op voor de volgende para meters voor het correct verifiëren van het virtuele bureau blad van Windows:
 
@@ -339,16 +368,17 @@ Als u de GitHub-Azure Resource Manager sjabloon uitvoert, geeft u waarden op voo
 
 - Tenant beheerder user principal name (UPN) of toepassings-ID: de toepassings-id van de nieuwe service-principal die u hebt gemaakt
 - Wacht woord voor Tenant beheerder: het wachtwoord geheim dat u hebt gegenereerd voor de Service-Principal
-- IsServicePrincipal: **True**
+- IsServicePrincipal: **true**
 - AadTenantId: de Azure AD-Tenant-ID van de service-principal die u hebt gemaakt
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [probleemoplossings overzicht, feedback en ondersteuning](troubleshoot-set-up-overview.md)voor een overzicht van het oplossen van problemen met het virtuele bureau blad van Windows en de escalatie trajecten.
 - Zie voor het oplossen van problemen bij het configureren van een virtuele machine (VM) in Windows virtueel bureau blad de [virtuele machine configuratie](troubleshoot-vm-configuration.md)van de host.
-- Zie [extern bureaublad-client verbindingen](troubleshoot-client-connection.md)voor het oplossen van problemen met Windows-client verbindingen met virtueel bureau blad.
+- Zie [Windows Virtual Desktop Service Connections](troubleshoot-service-connection.md)(Engelstalig) voor het oplossen van problemen met Windows Virtual Desktop-Client verbindingen.
+- Zie [problemen met de Extern bureaublad-client oplossen](troubleshoot-client.md) om problemen met extern bureaublad-clients op te lossen
 - Zie [Windows Virtual Desktop Power shell](troubleshoot-powershell.md)(Engelstalig) voor informatie over het oplossen van problemen met het gebruik van Power shell met Windows virtueel bureau blad.
-- Zie [Windows Virtual Desktop Environment](https://docs.microsoft.com/azure/virtual-desktop/environment-setup)(Engelstalig) voor meer informatie over de service.
-- Zie [zelf studie: problemen met implementaties van Resource Manager-sjablonen oplossen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)om de zelf studie voor problemen oplossen op te lossen.
-- Zie [bewerkingen controleren met Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)voor meer informatie over controle acties.
-- Zie [implementatie bewerkingen weer geven](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-operations)voor meer informatie over acties om de fouten te bepalen tijdens de implementatie.
+- Zie [Windows Virtual Desktop Environment](environment-setup.md)(Engelstalig) voor meer informatie over de service.
+- Zie [zelf studie: problemen met implementaties van Resource Manager-sjablonen oplossen](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md)om de zelf studie voor problemen oplossen op te lossen.
+- Zie [bewerkingen controleren met Resource Manager](../azure-resource-manager/resource-group-audit.md)voor meer informatie over controle acties.
+- Zie [implementatie bewerkingen weer geven](../azure-resource-manager/resource-manager-deployment-operations.md)voor meer informatie over acties om de fouten te bepalen tijdens de implementatie.

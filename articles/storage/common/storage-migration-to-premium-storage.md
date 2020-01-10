@@ -9,12 +9,12 @@ ms.date: 06/27/2017
 ms.author: rogarana
 ms.reviewer: yuemlu
 ms.subservice: common
-ms.openlocfilehash: b8b3679676cf019a48c55211d81bee0523764db5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 7cb5a335af7093bc217578d57340b03b8b9c08b3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351244"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748344"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migreren naar Azure Premium Storage (niet-beheerde schijven)
 
@@ -64,7 +64,8 @@ Er zijn vijf soorten schijven die kunnen worden gebruikt met uw virtuele machine
 Bepaal, afhankelijk van uw workload, of er extra gegevens schijven voor uw virtuele machine nodig zijn. U kunt verschillende permanente gegevens schijven aan uw virtuele machine koppelen. U kunt, indien nodig, over de schijven strepen om de capaciteit en prestaties van het volume te verg Roten. (Zie wat is schijf striping [?)](../../virtual-machines/windows/premium-storage-performance.md#disk-striping) Als u Premium Storage gegevens schijven met [opslag ruimten][4]wilt verwijderen, moet u deze configureren met één kolom voor elke gebruikte schijf. Anders is het mogelijk dat de algehele prestaties van het striped volume lager zijn dan verwacht als gevolg van een ongelijke distributie van verkeer over de schijven. Voor virtuele Linux-machines kunt u het *mdadm* -hulp programma gebruiken om hetzelfde te krijgen. Zie het artikel [Software RAID op Linux configureren](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) voor meer informatie.
 
 #### <a name="storage-account-scalability-targets"></a>Schaalbaarheids doelen voor het opslag account
-Premium Storage accounts hebben naast de [Azure Storage schaal baarheid en prestatie doelen](storage-scalability-targets.md)de volgende schaalbaarheids doelen. Als uw toepassings vereisten de schaalbaarheids doelen van één opslag account overschrijden, bouwt u uw toepassing voor het gebruik van meerdere opslag accounts en partitioneert u uw gegevens in deze opslag accounts.
+
+Premium Storage accounts hebben de volgende schaalbaarheids doelen. Als uw toepassings vereisten de schaalbaarheids doelen van één opslag account overschrijden, bouwt u uw toepassing voor het gebruik van meerdere opslag accounts en partitioneert u uw gegevens in deze opslag accounts.
 
 | Totale account capaciteit | Totale band breedte voor een lokaal redundante opslag account |
 |:--- |:--- |
@@ -162,7 +163,8 @@ Voor gegevens schijven kunt u ervoor kiezen om sommige gegevens schijven te bewa
 U moet het pad naar de container en de sleutel van het opslag account zoeken om een van deze twee opties te kunnen verwerken. Het pad en de sleutel van het opslag account kunt u vinden in **Azure Portal** > **Storage**. De container-URL is als ' https:\//myaccount.blob.core.windows.net/mycontainer/'.
 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>Optie 1: een VHD kopiëren met AzCopy (asynchroon kopiëren)
-Met AzCopy kunt u eenvoudig de VHD uploaden via internet. Afhankelijk van de grootte van de Vhd's kan dit enige tijd duren. Controleer de limieten voor het inkomen/uitvallen van opslag accounts wanneer u deze optie gebruikt. Zie [Azure Storage schaal baarheid en prestatie doelen](storage-scalability-targets.md) voor meer informatie.
+
+Met AzCopy kunt u eenvoudig de VHD uploaden via internet. Afhankelijk van de grootte van de Vhd's kan dit enige tijd duren. Controleer de limieten voor het inkomen/uitvallen van opslag accounts wanneer u deze optie gebruikt. Zie [schaalbaarheids-en prestatie doelen voor standaard opslag accounts](scalability-targets-standard-account.md) voor meer informatie.
 
 1. Down load en installeer AzCopy: [nieuwste versie van AzCopy](https://aka.ms/downloadazcopy)
 2. Open Azure PowerShell en ga naar de map waarin AzCopy is geïnstalleerd.
@@ -259,7 +261,8 @@ Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 Een voor beeld \<URI > kan **_'https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd '_** zijn. Een voor beeld \<file info > is **_' C:\path\to\upload.VHD '_** .
 
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>Optie 2: het. VHD-bestand uploaden met behulp van AzCopy
-Met AzCopy kunt u eenvoudig de VHD uploaden via internet. Afhankelijk van de grootte van de Vhd's kan dit enige tijd duren. Controleer de limieten voor het inkomen/uitvallen van opslag accounts wanneer u deze optie gebruikt. Zie [Azure Storage schaal baarheid en prestatie doelen](storage-scalability-targets.md) voor meer informatie.
+
+Met AzCopy kunt u eenvoudig de VHD uploaden via internet. Afhankelijk van de grootte van de Vhd's kan dit enige tijd duren. Controleer de limieten voor het inkomen/uitvallen van opslag accounts wanneer u deze optie gebruikt. Zie [schaalbaarheids-en prestatie doelen voor standaard opslag accounts](scalability-targets-standard-account.md) voor meer informatie.
 
 1. Down load en installeer AzCopy: [nieuwste versie van AzCopy](https://aka.ms/downloadazcopy)
 2. Open Azure PowerShell en ga naar de map waarin AzCopy is geïnstalleerd.

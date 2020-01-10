@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: 8198ff6579aff839ff9aacb729e2f3f8d3472fae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ce7b8590e4718585fe841921466e049dc204928
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230477"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769129"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Handmatig een niet door HTTP geactiveerde functie uitvoeren
 
@@ -22,7 +22,7 @@ In het volgende voorbeeld wordt [Postman](https://www.getpostman.com/) gebruikt,
 
 ## <a name="define-the-request-location"></a>Aanvraaglocatie definiëren
 
-Als u een niet door HTTP geactiveerde functie wilt uitvoeren, moet u een manier hebben om een aanvraag naar Azure te verzenden om de functie uit te voeren. De URL om deze aanvraag te doen, heeft een specifieke vorm.
+Als u een niet met HTTP geactiveerde functie wilt uitvoeren, moet u een manier om een aanvraag naar Azure te verzenden om de functie uit te voeren. De URL om deze aanvraag te doen, heeft een specifieke vorm.
 
 ![De aanvraaglocatie definiëren: hostnaam + mappad + functienaam](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 
@@ -37,7 +37,7 @@ Gebruik de aanvraaglocatie in Postman in combinatie met de hoofdsleutel van de f
 
 ## <a name="get-the-functions-master-key"></a>De hoofdsleutel van de functie ophalen
 
-Ga naar de functie in de Azure-portal en klik op **Beheren** en zoek de sectie **Hostsleutels**. Klik in de rij **_master** op de knop *Kopiëren* om de hoofdsleutel naar het klembord te kopiëren.
+Ga naar de functie in de Azure-portal en klik op **Beheren** en zoek de sectie **Hostsleutels**. Klik in de rij *_master* op de knop **Kopiëren** om de hoofdsleutel naar het klembord te kopiëren.
 
 ![Hoofdsleutel vanaf scherm Functiebeheer kopiëren](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
 

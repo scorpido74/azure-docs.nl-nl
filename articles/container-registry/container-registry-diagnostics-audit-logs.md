@@ -2,17 +2,17 @@
 title: Resource logboeken verzamelen & analyseren
 description: Registreer en analyseer bron logboek gebeurtenissen voor Azure Container Registry zoals verificatie, installatie kopie push en installatie kopie ophalen.
 ms.topic: article
-ms.date: 10/30/2019
-ms.openlocfilehash: ada8502724c1779b9bdab2e8ac7e8ea61c256e44
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/03/2020
+ms.openlocfilehash: 72d03149cd24636ba2086dfaaff0dbba16d30f1e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456432"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747998"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry logboeken voor diagnostische evaluatie en controle
 
-In dit artikel wordt uitgelegd hoe u logboek gegevens kunt verzamelen voor een Azure container Registry met behulp van de functies van [Azure monitor](../azure-monitor/overview.md). Azure Monitor verzamelt [bron logboeken](../azure-monitor/platform/resource-logs-overview.md) (voorheen *Diagnostische logboeken*genoemd) voor door gebruikers gestuurde gebeurtenissen in het REGI ster. Verzamelen en gebruiken van deze gegevens om te voldoen aan de behoeften, zoals:
+In dit artikel wordt uitgelegd hoe u logboek gegevens kunt verzamelen voor een Azure container Registry met behulp van de functies van [Azure monitor](../azure-monitor/overview.md). Azure Monitor verzamelt [bron logboeken](../azure-monitor/platform/platform-logs-overview.md) (voorheen *Diagnostische logboeken*genoemd) voor door gebruikers gestuurde gebeurtenissen in het REGI ster. Verzamelen en gebruiken van deze gegevens om te voldoen aan de behoeften, zoals:
 
 * Register verificatie gebeurtenissen controleren om te zorgen voor beveiliging en naleving 
 
@@ -22,13 +22,18 @@ Het verzamelen van bron logboek gegevens met behulp van Azure Monitor kan extra 
 
 
 > [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-versie en er zijn enkele [beperkingen](#preview-limitations) van toepassing. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
+> Deze functie is momenteel beschikbaar als preview-versie en er zijn enkele [beperkingen](#preview-limitations) van toepassing. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
 
 ## <a name="preview-limitations"></a>Preview-beperkingen
 
-Logboek registratie van gebeurtenissen op opslagplaats niveau bevat momenteel geen Delete-of tag-gebeurtenissen. Alleen de volgende opslagplaats gebeurtenissen worden vastgelegd:
-* **Push gebeurtenissen** voor installatie kopieën en andere artefacten
-* **Pull-gebeurtenissen** voor installatie kopieën en andere artefacten
+De volgende gebeurtenissen op opslagplaats niveau voor installatie kopieën en andere artefacten worden momenteel geregistreerd:
+
+* **Push gebeurtenissen**
+* **Pull-gebeurtenissen**
+* **Tag-gebeurtenissen**
+* **Gebeurtenissen verwijderen** (waaronder gebeurtenissen voor het verwijderen van de opslag plaats)
+
+Gebeurtenissen op opslagplaats niveau die momenteel niet zijn geregistreerd: gebeurtenissen opschonen.
 
 ## <a name="registry-resource-logs"></a>Register bron logboeken
 
@@ -42,7 +47,7 @@ Voor bewerkingen zijn logboek gegevens inclusief:
   * Status geslaagd of mislukt
   * Begin-en eind tijd tempels
 
-Naast resource Logboeken biedt Azure een [activiteiten logboek](../azure-monitor/platform/activity-logs-overview.md), een record met Azure-beheer gebeurtenissen op abonnements niveau, zoals het maken of verwijderen van een container register.
+Naast resource Logboeken biedt Azure een [activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md), een record met Azure-beheer gebeurtenissen op abonnements niveau, zoals het maken of verwijderen van een container register.
 
 ## <a name="enable-collection-of-resource-logs"></a>Verzamelen van resource logboeken inschakelen
 

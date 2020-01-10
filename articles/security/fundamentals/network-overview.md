@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: e70144bc71c182a6ec1668ee81f458a236289331
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 2293618b0685fe71ae553a95797fe8bfe1fe968c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384199"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749950"
 ---
 # <a name="azure-network-security-overview"></a>Overzicht van Azure-netwerk beveiliging
 
@@ -29,7 +29,7 @@ Netwerk beveiliging kan worden gedefinieerd als het proces van het beveiligen va
 In dit artikel worden enkele van de opties beschreven die Azure biedt op het gebied van netwerk beveiliging. U vindt meer informatie over:
 
 * Azure-netwerken
-* Netwerk toegangs beheer
+* Netwerktoegangsbeheer
 * Azure Firewall
 * Beveiligde externe toegang en cross-premises connectiviteit
 * Beschikbaarheid
@@ -48,7 +48,7 @@ Meer informatie:
 
 * [Overzicht van virtueel netwerk](../../virtual-network/virtual-networks-overview.md)
 
-## <a name="network-access-control"></a>Netwerk toegangs beheer
+## <a name="network-access-control"></a>Netwerktoegangsbeheer
 
 Netwerk toegangs beheer is de handeling van het beperken van de connectiviteit met en van specifieke apparaten of subnetten binnen een virtueel netwerk. Het doel van netwerk toegangs beheer is om de toegang tot uw virtuele machines en services te beperken tot goedgekeurde gebruikers en apparaten. Toegangs beheer is gebaseerd op beslissingen over het toestaan of weigeren van verbindingen van uw virtuele machine of service.
 
@@ -369,7 +369,7 @@ Zie [overzicht van Azure Network Watcher-bewaking](../../network-watcher/network
 > [!NOTE]
 > Controleer de [pagina Azure updates](https://azure.microsoft.com/updates/?product=network-watcher)voor de meest recente meldingen over de beschik baarheid en de status van deze service.
 
-### <a name="azure-security-center"></a>Azure Security Center
+### <a name="azure-security-center"></a>Azure Beveiligingscentrum
 
 Azure Security Center helpt u bedreigingen te voor komen, te detecteren en erop te reageren, en biedt u meer inzicht in en controle over de beveiliging van uw Azure-resources. Het biedt geïntegreerde beveiligings bewaking en beleids beheer voor uw Azure-abonnementen, helpt bedreigingen te detecteren die anders niet kunnen worden opgemerkt en die werkt met een grote reeks beveiligings oplossingen.
 
@@ -395,7 +395,7 @@ Meer informatie:
 
 Logboek registratie op netwerk niveau is een belang rijke functie voor elk netwerk beveiligings scenario. In azure kunt u logboek gegevens ophalen die zijn verkregen voor Nsg's om logboek registratie gegevens op netwerk niveau op te halen. Met NSG-logboek registratie krijgt u informatie over:
 
-* [Activiteiten logboeken](../../azure-monitor/platform/activity-logs-overview.md). Gebruik deze logboeken om alle bewerkingen weer te geven die zijn verzonden naar uw Azure-abonnementen. Deze logboeken zijn standaard ingeschakeld en kunnen worden gebruikt binnen het Azure Portal. Voorheen bekend als audit of operationele Logboeken.
+* [Activiteiten logboeken](../../azure-monitor/platform/platform-logs-overview.md). Gebruik deze logboeken om alle bewerkingen weer te geven die zijn verzonden naar uw Azure-abonnementen. Deze logboeken zijn standaard ingeschakeld en kunnen worden gebruikt binnen het Azure Portal. Voorheen bekend als audit of operationele Logboeken.
 * Gebeurtenis Logboeken. Deze logboeken bevatten informatie over welke NSG-regels zijn toegepast.
 * Item Logboeken. In deze logboeken kunt u zien hoe vaak elke NSG regel is toegepast om verkeer te weigeren of toe te staan.
 

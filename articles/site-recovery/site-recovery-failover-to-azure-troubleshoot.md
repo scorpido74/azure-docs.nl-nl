@@ -1,70 +1,70 @@
 ---
-title: Problemen met failover naar Azure fouten oplossen | Microsoft Docs
-description: In dit artikel worden manieren voor het oplossen van veelvoorkomende fouten in de failover wordt uitgevoerd naar Azure beschreven.
+title: Problemen oplossen met failover naar Azure-fouten | Microsoft Docs
+description: In dit artikel worden manieren beschreven om veelvoorkomende fouten bij het uitvoeren van een failover naar Azure op te lossen
 author: ponatara
 manager: abhemraj
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 03/04/2019
+ms.date: 01/08/2020
 ms.author: mayg
-ms.openlocfilehash: 2156ee6cf27ecfa32b19ad5bbef7549e99c3f7ef
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6de37daa0b9e0ebc711a5dacbdce352e3675a3db
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61280623"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754420"
 ---
-# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Fouten bij het uitvoeren van een failover VM met VMware of fysieke machine naar Azure oplossen
+# <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>Problemen oplossen bij het mislukken van een virtuele VMware-machine of fysieke machine naar Azure
 
-Mogelijk ontvangt u een van de volgende fouten tijdens de failover van een virtuele machine naar Azure. Om op te lossen, gebruikt u de stappen beschreven voor elke fout.
+Mogelijk wordt een van de volgende fouten weer gegeven tijdens het uitvoeren van een failover van een virtuele machine naar Azure. Als u problemen wilt oplossen, gebruikt u de beschreven stappen voor elke fout voorwaarde.
 
 ## <a name="failover-failed-with-error-id-28031"></a>Failover is mislukt met fout-ID 28031
 
-Site Recovery kan niet een mislukte maken via de virtuele machine in Azure. Dit kan gebeuren vanwege een van de volgende redenen:
+Site Recovery kan geen virtuele machine met een failover in azure maken. Dit kan een van de volgende oorzaken hebben:
 
-* Er is niet voldoende quotum beschikbaar voor het maken van de virtuele machine: U kunt het beschikbare quotum controleren door te gaan naar de abonnement -> Gebruik + quota. U kunt openen een [nieuwe ondersteuningsaanvraag](https://aka.ms/getazuresupport) om het quotum te verhogen.
+* Er is onvoldoende quotum beschikbaar voor het maken van de virtuele machine: u kunt het beschik bare quotum controleren door naar abonnement te gaan > gebruik en quota's. U kunt een [nieuwe ondersteunings aanvraag](https://aka.ms/getazuresupport) openen om het quotum te verhogen.
 
-* U probeert te failover-virtuele machines van de van verschillende groottefamilies in dezelfde beschikbaarheidsset. Zorg ervoor dat u dezelfde serie met grootten voor alle virtuele machines in dezelfde beschikbaarheidsset kiezen. Grootte wijzigen door naar reken- en netwerkinstellingen van de virtuele machine te gaan en voer vervolgens de failover opnieuw uit.
+* U probeert een failover uit te voeren voor virtuele machines van verschillende grootte families in dezelfde beschikbaarheidsset. Zorg ervoor dat u dezelfde grootte familie kiest voor alle virtuele machines in dezelfde beschikbaarheidsset. Wijzig grootte door naar reken-en netwerk instellingen van de virtuele machine te gaan en voer de failover vervolgens opnieuw uit.
 
-* Er is een beleid voor het abonnement dat wordt voorkomen het maken van een virtuele machine dat. Wijzig het beleid voor het maken van een virtuele machine toestaan en voer vervolgens de failover opnieuw uit.
+* Er is een beleid op het abonnement waarmee wordt voor komen dat een virtuele machine wordt gemaakt. Wijzig het beleid om het maken van een virtuele machine toe te staan en voer de failover vervolgens opnieuw uit.
 
 ## <a name="failover-failed-with-error-id-28092"></a>Failover is mislukt met fout-ID 28092
 
-Site Recovery kan niet een netwerkinterface voor de mislukte maken via de virtuele machine. Zorg ervoor dat u beschikt over voldoende quotum beschikbaar voor het maken van netwerkinterfaces in het abonnement. U kunt het beschikbare quotum controleren door te gaan naar de abonnement -> Gebruik + quota. U kunt openen een [nieuwe ondersteuningsaanvraag](https://aka.ms/getazuresupport) om het quotum te verhogen. Als u beschikt over voldoende quotum, wordt dit wordt mogelijk een onregelmatige uitgeven, probeer het opnieuw. Als het probleem zich blijft, zelfs na nieuwe pogingen voordoen, laat u een opmerking aan het einde van dit document.  
+Site Recovery kan geen netwerk interface maken voor de virtuele machine waarvoor een failover is uitgevoerd. Zorg ervoor dat er voldoende quota beschikbaar zijn voor het maken van netwerk interfaces in het abonnement. U kunt het beschik bare quotum controleren door te gaan naar abonnement-> gebruik en quota's. U kunt een [nieuwe ondersteunings aanvraag](https://aka.ms/getazuresupport) openen om het quotum te verhogen. Als u voldoende quota hebt, kan dit een onregelmatig probleem zijn. Probeer de bewerking opnieuw uit te voeren. Als het probleem zich blijft voordoen, zelfs na nieuwe pogingen, verlaat u een opmerking aan het einde van dit document.  
 
 ## <a name="failover-failed-with-error-id-70038"></a>Failover is mislukt met fout-ID 70038
 
-Site Recovery kan niet een mislukte maken via de klassieke virtuele machine in Azure. Dit kan gebeuren omdat:
+Site Recovery kan geen klassieke virtuele machine in azure maken. Dit kan gebeuren omdat:
 
-* Een van de resources, zoals een virtueel netwerk dat is vereist voor de virtuele machine moet worden gemaakt, bestaat niet. Het virtuele netwerk zoals bepaald in de instellingen berekening en netwerk van de virtuele machine maken of wijzigen van de instelling voor een virtueel netwerk dat al bestaat en voer vervolgens de failover opnieuw uit.
+* Een van de bronnen, zoals een virtueel netwerk dat vereist is voor de virtuele machine die moet worden gemaakt, bestaat niet. Maak het virtuele netwerk zoals wordt beschreven in de reken-en netwerk instellingen van de virtuele machine of wijzig de instelling in een virtueel netwerk dat al bestaat en voer de failover vervolgens opnieuw uit.
 
 ## <a name="failover-failed-with-error-id-170010"></a>Failover is mislukt met fout-ID 170010
 
-Site Recovery kan niet een mislukte maken via de virtuele machine in Azure. Dit kan gebeuren omdat een interne activiteiten van de hydration is mislukt voor de on-premises virtuele machine.
+Site Recovery kan geen virtuele machine met een failover in azure maken. Dit kan gebeuren omdat een interne activiteit van Hydration is mislukt voor de on-premises virtuele machine.
 
-Als wilt maken van een machine in Azure, is de Azure-omgeving vereist enkele van de stuurprogramma's in opstarten start status en -services zoals DHCP moet in staat automatisch starten. Dus hydration activiteit, op het moment van failover, converteert het opstarttype van **atapi, intelide, storflt, storvsc en vmbus stuurprogramma's** opstarten Start. Ook wordt het opstarttype van enkele services, zoals DHCP geconverteerd naar automatisch starten. Deze activiteit kan mislukken vanwege problemen met de specifieke. 
+Voor het beschikbaar maken van elke machine in azure, moeten sommige Stuur Programma's in de Azure-omgeving worden opgestart en moeten de services, zoals DHCP, actief zijn in de modus automatisch starten. Daarom converteert Hydration-activiteit, op het moment van de failover, het opstart type van **ATAPI-, Intelide-, storflt-, vmbus-en storvsc-Stuur Programma's** om de opstart procedure te starten. Ook wordt het opstart type van een paar Services, zoals DHCP, geconverteerd naar automatisch starten. Deze activiteit kan mislukken vanwege specifieke omgevings problemen. 
 
-Handmatig wijzigen het opstarttype van de stuurprogramma's voor **Windows Guest OS**, volgt u de onderstaande stappen te volgen:
+Volg de onderstaande stappen om het opstart type van Stuur Programma's voor **Windows-gast besturingssystemen**hand matig te wijzigen:
 
-1. [Download](https://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) Nee-hydratie script en voer als volgt. Met dit script controleert als virtuele machine is vereist dat hydration.
+1. [Down load](https://download.microsoft.com/download/5/D/6/5D60E67C-2B4F-4C51-B291-A97732F92369/Script-no-hydration.ps1) het script no-Hydration en voer dit als volgt uit. Met dit script wordt gecontroleerd of Hydration vereist is voor de VM.
 
     `.\Script-no-hydration.ps1`
 
-    Het biedt het volgende resultaat als hydration vereist is:
+    Dit resulteert in het volgende resultaat als Hydration vereist is:
 
         REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0
 
         This system doesn't meet no-hydration requirement.
 
-    Als de virtuele machine voldoet aan de vereiste Nee-hydratie, krijgt het script het resultaat 'dit systeem voldoet aan niet-hydratie vereiste'. In dit geval alle stuurprogramma's en services zijn in de status zoals vereist door Azure en hydration op de virtuele machine is niet vereist.
+    Als de virtuele machine voldoet aan de niet-Hydration vereiste, geeft het script het resultaat ' dit systeem voldoet aan no-Hydration-vereiste '. In dit geval zijn alle Stuur Programma's en services in de status die is vereist door Azure en Hydration op de VM is niet vereist.
 
-2. Voer het script niet-hydratie-set als volgt uit als de virtuele machine voldoet niet aan de vereiste geen hydration.
+2. Voer het script no-Hydration-set als volgt uit als de virtuele machine niet voldoet aan een niet-Hydration vereiste.
 
     `.\Script-no-hydration.ps1 -set`
     
-    Hiermee converteert het opstarttype van de stuurprogramma's en geeft het resultaat zoals hieronder:
+    Hiermee wordt het opstart type van Stuur Programma's geconverteerd en wordt het resultaat als hieronder weer gegeven:
     
         REGISTRY::HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\services\storvsc           start =  3 expected value =  0 
 
@@ -72,93 +72,105 @@ Handmatig wijzigen het opstarttype van de stuurprogramma's voor **Windows Guest 
 
         This system is now no-hydration compatible. 
 
-## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Kan geen verbinding maken/RDP/SSH met de mislukte grijs via virtuele machine vanwege de knop verbinding maken op de virtuele machine
+## <a name="unable-to-connectrdpssh-to-the-failed-over-virtual-machine-due-to-grayed-out-connect-button-on-the-virtual-machine"></a>Kan geen verbinding maken/RDP/SSH met de virtuele machine waarvoor een failover is uitgevoerd omdat de knop verbinding maken op de virtuele machine grijs wordt weer gegeven
 
-Als de **Connect** knop op de failover-VM in Azure is uitgeschakeld en u bent niet verbonden met Azure via een Express Route of Site-naar-Site VPN-verbinding, vervolgens
+Als de knop **verbinden** op de virtuele machine waarvoor een failover is uitgevoerd in azure grijs is en u niet met Azure bent verbonden via een snelle route of een site-naar-site-VPN-verbinding, dan,
 
-1. Ga naar **virtuele machine** > **netwerken**, klik op de naam van de netwerkinterface vereist.  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
-2. Navigeer naar **Ip-configuraties**, klikt u op het naamveld van de vereiste IP-configuratie. ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
-3. Om in te schakelen openbaar IP-adres, klikt u op **inschakelen**. ![IP inschakelen](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
-4. Klik op **vereiste instellingen configureren** > **nieuw**. ![Maak een nieuwe](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
-5. Voer de naam van het openbare adres, kiest u de standaardopties voor **SKU** en **toewijzing**, klikt u vervolgens op **OK**.
-6. Nu, om de wijzigingen hebt opgeslagen, klikt u op **opslaan**.
-7. De deelvensters sluiten en vervolgens naar **overzicht** sectie van de virtuele machine verbinding maken/RDP.
+1. Ga naar **virtuele machine** > **netwerk**, klik op de naam van de vereiste netwerk interface.  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+2. Navigeer naar **IP-configuraties**en klik vervolgens op het veld naam van de vereiste IP-configuratie. ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
+3. Als u openbaar IP-adres wilt inschakelen, klikt u op **inschakelen**. IP-](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png) ![inschakelen
+4. Klik op **vereiste instellingen configureren** > **nieuwe maken**. ![nieuwe](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png) maken
+5. Voer de naam van het open bare adres in, kies de standaard opties voor **SKU** en **toewijzing**en klik vervolgens op **OK**.
+6. Klik nu op **Opslaan**om de gemaakte wijzigingen op te slaan.
+7. Sluit de deel Vensters en navigeer naar **overzicht** sectie van de virtuele machine om verbinding te maken/RDP.
 
-## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Kan geen verbinding maken/RDP/SSH - VM Connect-knop beschikbaar
+## <a name="unable-to-connectrdpssh---vm-connect-button-available"></a>Kan geen verbinding maken/RDP/SSH: er is een VM-verbinding beschikbaar
 
-Als de **Connect** knop op de failover-VM in Azure beschikbaar is (niet lichter gekleurd) en schakel de **diagnostische gegevens over opstarten** op uw virtuele Machine en Controleer op fouten, zoals vermeld in [in dit artikel](../virtual-machines/windows/boot-diagnostics.md).
+Als de knop **verbinden** op de virtuele machine waarvoor een failover is uitgevoerd in azure beschikbaar is (niet grijs), controleert u de **Diagnostische gegevens over opstarten** op de VM en controleert u op fouten zoals vermeld in [dit artikel](../virtual-machines/windows/boot-diagnostics.md).
 
-1. Als de virtuele machine niet is gestart, probeert Failover-overschakeling uitvoeren naar een ouder herstelpunt.
-2. Als de toepassing in de virtuele machine niet actief, probeer failover wordt uitgevoerd naar een app-consistente herstelpunt is.
-3. Als de virtuele machine toegevoegd aan een domein is, zorg ervoor dat domeincontroller correct werkt. Dit kan worden gedaan door het volgende op de hieronder opgegeven stappen:
+1. Als de virtuele machine niet is gestart, kunt u een failover uitvoeren naar een ouder herstel punt.
+2. Als de toepassing in de virtuele machine niet actief is, kunt u een failover uitvoeren naar een toepassings consistent herstel punt.
+3. Als de virtuele machine lid is van een domein, zorgt u ervoor dat de domein controller nauw keurig werkt. U kunt dit doen door de onderstaande stappen te volgen:
 
     a. Maak een nieuwe virtuele machine in hetzelfde netwerk.
 
-    b.  Zorg ervoor dat deze kan worden toegevoegd aan hetzelfde domein waarop de mislukte via virtuele machine wordt verwacht.
+    b.  Zorg ervoor dat deze kan deel nemen aan hetzelfde domein waarop de virtuele machine waarvoor een failover is uitgevoerd, naar verwachting kan worden uitgevoerd.
 
-    c. Als de domeincontroller **niet** werking nauwkeurig, probeer bent aangemeld bij de mislukte via virtuele machine met behulp van een lokale administrator-account.
-4. Als u van een aangepaste DNS-server gebruikmaakt en vervolgens te controleren of deze bereikbaar is. Dit kan worden gedaan door het volgende op de hieronder opgegeven stappen:
+    c. Als de domein controller **niet** nauw keurig werkt, probeert u zich aan te melden bij de virtuele machine waarvoor een failover is uitgevoerd met behulp van een lokaal beheerders account.
+4. Als u een aangepaste DNS-server gebruikt, moet u ervoor zorgen dat deze bereikbaar is. U kunt dit doen door de onderstaande stappen te volgen:
 
     a. Maak een nieuwe virtuele machine in hetzelfde netwerk en
 
-    b. Controleer of de virtuele machine kunnen naamomzetting met behulp van de aangepaste DNS-Server
+    b. Controleren of de virtuele machine naam omzetting kan uitvoeren met de aangepaste DNS-server
 
 >[!Note]
->Azure VM-Agent moet worden geïnstalleerd op de virtuele machine voordat de failover wordt uitgevoerd vereist elke andere instelling dan diagnostische gegevens over opstarten
+>Als een andere instelling dan de diagnostische gegevens over opstarten is ingeschakeld, moet de Azure VM-agent op de virtuele machine zijn geïnstalleerd voordat de failover
 
-## <a name="unexpected-shutdown-message-event-id-6008"></a>Onverwachte afsluiting bericht (gebeurtenis-ID 6008)
+## <a name="unable-to-open-serial-console-after-failover-of-a-uefi-based-machine-into-azure"></a>Kan seriële console niet openen na een failover van een UEFI-computer naar Azure
 
-Bij het opstarten van een Windows VM na failover, als u een bericht is onverwacht afgesloten op de herstelde virtuele machine ontvangt, betekent dit dat de status van een virtuele machine afsluiten niet is opgenomen in het herstelpunt dat wordt gebruikt voor de failover. Dit gebeurt wanneer u naar een beheerpunt herstellen wanneer de virtuele machine is niet volledig afgesloten.
+Als u verbinding kunt maken met de computer met behulp van RDP, maar u kunt geen seriële console openen, volgt u de onderstaande stappen:
 
-Dit is normaal gesproken geen aanleiding en kan meestal worden genegeerd voor niet-geplande failovers. Als de failover is gepland, zorg ervoor dat de virtuele machine correct wordt afgesloten voordat u een failover en geef voldoende tijd voor in behandeling zijnde replicatie gegevens on-premises naar Azure worden verzonden. Gebruik vervolgens de **nieuwste** kiezen op de [Failover scherm](site-recovery-failover.md#run-a-failover) zodat alle in behandeling gegevens in Azure worden verwerkt in een herstelpunt, die vervolgens wordt gebruikt voor VM-failover.
+* Als het besturings systeem van de machine Red Hat of Oracle Linux 7. */8.0 is, voert u de volgende opdracht uit op de failover Azure-VM met hoofd machtigingen. Start de VM opnieuw op na de opdracht.
 
-## <a name="unable-to-select-the-datastore"></a>Kan de gegevensopslag selecteren
+        grub2-mkconfig -o /boot/efi/EFI/redhat/grub.cfg
 
-Dit probleem wordt aangegeven wanneer u zich niet zien de gegevensopslag in Azure wanneer wordt geprobeerd om opnieuw te beveiligen van de virtuele machine die een failover is opgetreden in de portal. Dit komt doordat de Master target wordt niet herkend als een virtuele machine onder vCenters toegevoegd aan Azure Site Recovery.
+* Als het besturings systeem van de machine CentOS 7. * is, voert u de volgende opdracht uit op de failover Azure VM met hoofd machtigingen. Start de VM opnieuw op na de opdracht.
 
-Zie voor meer informatie over het opnieuw beveiligen van een virtuele machine, [opnieuw beveiligen en mislukt de back-machines naar een on-premises site na een failover naar Azure](vmware-azure-reprotect.md).
+        grub2-mkconfig -o /boot/efi/EFI/centos/grub.cfg
 
-Het probleem kunt oplossen:
+## <a name="unexpected-shutdown-message-event-id-6008"></a>Onverwacht afsluit bericht (gebeurtenis-ID 6008)
 
-Handmatig maken van de Master-doel in het vCenter waarmee de bronmachine wordt beheerd. Het gegevensarchief worden beschikbaar na de volgende vCenter-detectie en vernieuw fabric bewerkingen.
+Als er een onverwacht afsluit bericht wordt weer gegeven op de herstelde virtuele machine, geeft dit aan dat er geen VM-afsluit status is vastgelegd in het herstel punt dat wordt gebruikt voor failover. Dit gebeurt wanneer u herstelt naar een punt wanneer de virtuele machine niet volledig is afgesloten.
+
+Dit is doorgaans geen oorzaak van bezorgdheid en kan meestal worden genegeerd voor niet-geplande failovers. Als de failover is gepland, moet u ervoor zorgen dat de virtuele machine correct wordt afgesloten voordat de failover wordt uitgevoerd en voldoende tijd hebben om on-premises replicatie gegevens naar Azure te verzenden. Gebruik vervolgens de **laatste** optie op het [failover-scherm](site-recovery-failover.md#run-a-failover) zodat alle in behandeling zijnde gegevens in Azure worden verwerkt in een herstel punt, dat vervolgens wordt gebruikt voor VM-failover.
+
+## <a name="unable-to-select-the-datastore"></a>Kan de gegevens opslag niet selecteren
+
+Dit probleem wordt aangegeven wanneer het gegevens archief in azure niet kan worden weer gegeven bij het opnieuw beveiligen van de virtuele machine die een failover heeft ondergaan. Dit komt doordat het hoofd doel niet wordt herkend als een virtuele machine onder vCenter toegevoegd aan Azure Site Recovery.
+
+Zie voor meer informatie over het opnieuw beveiligen van een virtueel-machine [opnieuw beveiligen en failback naar een on-premises site na een failover naar Azure](vmware-azure-reprotect.md).
+
+Om het probleem op te lossen:
+
+Maak het hoofd doel hand matig in de vCenter die uw bron machine beheert. De gegevens opslag is beschikbaar na de volgende vCenter-bewerkingen voor het maken en vernieuwen van infrastructuur resources.
 
 > [!Note]
 > 
-> De detectie en vernieuw fabric bewerkingen kunnen tot 30 minuten duren. 
+> Het volt ooien van de detectie-en vernieuwings infrastructuur bewerkingen kan tot wel 30 minuten duren. 
 
-## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>Linux-hoofddoel registratie bij CS is mislukt met een SSL-fout 35 
+## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>Het registreren van Linux-Master doelen met CS mislukt met een SSL-fout 35 
 
-De Azure Site Recovery-Masterdoel registratie bij de configuratieserver is mislukt vanwege de geverifieerde Proxy wordt ingeschakeld op de Hoofddoelserver. 
+De Azure Site Recovery-hoofddoel registratie bij de configuratie server mislukt omdat de geverifieerde proxy is ingeschakeld op het hoofd doel. 
  
-Deze fout wordt aangegeven door de volgende tekenreeksen in het installatielogboek: 
+Deze fout wordt aangegeven door de volgende teken reeksen in het installatie logboek: 
 
 ```
 RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] CurlWrapper Post failed : server : 10.38.229.221, port : 443, phpUrl : request_handler.php, secure : true, ignoreCurlPartialError : false with error: [at curlwrapperlib/curlwrapper.cpp:processCurlResponse:231]   failed to post request: (35) - SSL connect error. 
 ```
 
-Het probleem kunt oplossen:
+Om het probleem op te lossen:
  
-1. Open een opdrachtprompt op de configuratieserver virtuele machine en controleer of de proxy-instellingen met de volgende opdrachten:
+1. Open een opdracht prompt op de configuratie Server-VM en controleer de proxy-instellingen met behulp van de volgende opdrachten:
 
-    CAT /etc/environment echo $gebruikt $https_proxy echo 
+    kat/etc/Environment ECHO $http _proxy ECHO $https _proxy 
 
-2. Als de uitvoer van de vorige opdrachten ziet u dat de gebruikt of https_proxy instellingen zijn gedefinieerd, kunt u een van de volgende methoden om de blokkering van de Masterdoelserver-communicatie met de configuratieserver te gebruiken:
+2. Als de uitvoer van de vorige opdrachten laat zien dat de instellingen http_proxy of https_proxy zijn gedefinieerd, gebruikt u een van de volgende methoden om de hoofd doel communicatie met de configuratie server te deblokkeren:
    
-   - Download de [PsExec-hulpprogramma](https://aka.ms/PsExec).
-   - Het hulpprogramma gebruiken voor toegang tot de systeemcontext van de gebruiker en bepalen of de proxy-adres is geconfigureerd. 
-   - Als de proxy is geconfigureerd, opent u Internet Explorer in de context van een systeem-gebruiker met het PsExec-hulpprogramma.
+   - Down load het [PsExec-hulp programma](https://aka.ms/PsExec).
+   - Gebruik het hulp programma om toegang te krijgen tot de context van het systeem gebruikers en te bepalen of het proxy adres is geconfigureerd. 
+   - Als de proxy is geconfigureerd, opent u Internet Explorer in een systeem gebruikers context met behulp van het hulp programma PsExec.
   
      **psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"**
 
-   - Om ervoor te zorgen dat de hoofddoelserver met de configuratieserver communiceren kan:
+   - Om ervoor te zorgen dat de hoofddoel server kan communiceren met de configuratie server:
   
-     - Wijzig de proxy-instellingen in Internet Explorer het hoofddoel IP-adres van de server via de proxy overslaan.   
-     of
-     - Schakel de proxy op de hoofddoelserver. 
+     - Wijzig de proxy-instellingen in Internet Explorer om het IP-adres van de hoofddoel server via de proxy over te slaan.   
+     Of
+     - Schakel de proxy op de hoofddoel server uit. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Problemen oplossen [RDP-verbinding met Windows-VM](../virtual-machines/windows/troubleshoot-rdp-connection.md)
-- Problemen oplossen [SSH-verbinding met Linux-VM](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md)
+- Problemen met de [RDP-verbinding met de Windows VM](../virtual-machines/windows/troubleshoot-rdp-connection.md) oplossen
+- Problemen met [SSH-verbinding met Linux VM](../virtual-machines/linux/detailed-troubleshoot-ssh-connection.md) oplossen
 
-Als u meer hulp nodig hebt, klikt u vervolgens boek uw query op [Site Recovery-forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) of een opmerking toevoegen aan het einde van dit document. Er is een actieve community die zou het mogelijk om u te helpen.
+Als u meer hulp nodig hebt, plaatst u uw query op [site Recovery forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr) of verlaat u een opmerking aan het einde van dit document. We hebben een actieve community die u kan helpen.

@@ -7,25 +7,25 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: af47195a336739d604f0eb40ce6c5c54e15547cb
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: e744cdde298054de3631adb96b56bbc808f36a38
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894076"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750952"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Ondersteunde services, schema's en categorieën voor Azure-resource logboeken
 
 > [!NOTE]
 > Bron logboeken zijn voorheen bekend als Diagnostische logboeken.
 
-[Azure monitor bron logboeken](../../azure-monitor/platform/resource-logs-overview.md) worden logboeken gegenereerd door Azure-Services waarmee de werking van deze services of bronnen wordt beschreven. Alle bron logboeken die beschikbaar zijn via Azure Monitor, delen een gemeen schappelijk schema op het hoogste niveau, met flexibiliteit voor elke service om unieke eigenschappen voor hun eigen gebeurtenissen te verzenden.
+[Azure monitor bron logboeken](../../azure-monitor/platform/platform-logs-overview.md) worden logboeken gegenereerd door Azure-Services waarmee de werking van deze services of bronnen wordt beschreven. Alle bron logboeken die beschikbaar zijn via Azure Monitor, delen een gemeen schappelijk schema op het hoogste niveau, met flexibiliteit voor elke service om unieke eigenschappen voor hun eigen gebeurtenissen te verzenden.
 
 Een combi natie van het resource type (beschikbaar in de eigenschap `resourceId`) en de `category` unieke identificatie van een schema. In dit artikel wordt het schema op het hoogste niveau voor resource logboeken en koppelingen naar de schema's voor elke service beschreven.
 
 ## <a name="top-level-resource-logs-schema"></a>Schema voor resource logboeken op het hoogste niveau
 
-| Naam | Vereist/optioneel | Beschrijving |
+| Name | Vereist/optioneel | Beschrijving |
 |---|---|---|
 | tijd | Verplicht | De tijds tempel (UTC) van de gebeurtenis. |
 | resourceId | Verplicht | De resource-ID van de resource die de gebeurtenis heeft verzonden. Voor Tenant Services is dit de vorm/tenants/Tenant-id/providers/provider-name. |
@@ -71,7 +71,7 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 | IoT Hub | [IoT Hub bewerkingen](../../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Logboekregistratie van Azure Key Vault](../../key-vault/key-vault-logging.md) |
 | Kubernetes Service |[Logboek registratie voor Azure Kubernetes](../../aks/view-master-logs.md#log-event-schema) |
-| Load balancer |[Logboekanalyse voor Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
+| Load Balancer |[Logboekanalyse voor Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
 | Logische apps |[Aangepast Logic Apps B2B-volgschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Netwerkbeveiligingsgroepen |[Logboekanalyses voor netwerkbeveiligingsgroepen (NSG's)](../../virtual-network/virtual-network-nsg-manage-log.md) |
 | DDoS Protection | [Azure DDoS Protection Standard beheren](../../virtual-network/manage-ddos-protection.md) |
@@ -86,7 +86,7 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 | Virtuele-netwerkgateways | Het schema is niet beschikbaar. |
 
 ## <a name="supported-log-categories-per-resource-type"></a>Ondersteunde logboek categorieën per resource type
-|Resourcetype|Category|Weergave naam categorie|
+|Resourcetype|Categorie|Weergave naam categorie|
 |---|---|---|
 |Micro soft. AAD/domainServices|SystemSecurity|SystemSecurity|
 |Micro soft. AAD/domainServices|AccountManagement|AccountManagement|
@@ -195,7 +195,7 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 |Microsoft.EventHub/namespaces|KafkaUserErrorLogs|Fout logboeken van Kafka-gebruikers|
 |Microsoft.EventHub/namespaces|EventHubVNetConnectionEvent|Logboeken voor VNet/IP-filtering verbindingen|
 |Microsoft.EventHub/namespaces|CustomerManagedKeyUserLogs|Door de klant beheerde sleutel logboeken|
-|Micro soft. HealthcareApis/Services|Audit logs bevat|Auditlogboeken|
+|Micro soft. HealthcareApis/Services|AuditLogs|Auditlogboeken|
 |Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|Evaluaties automatisch schalen|
 |Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|Schaal acties automatisch schalen|
 |Microsoft.IoTSpaces/Graph|Tracering|Tracering|
@@ -313,7 +313,7 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over bron logboeken](../../azure-monitor/platform/resource-logs-overview.md)
+* [Meer informatie over bron logboeken](../../azure-monitor/platform/platform-logs-overview.md)
 * [Resource bron logboeken streamen naar **Event hubs**](../../azure-monitor/platform/resource-logs-stream-event-hubs.md)
 * [Diagnostische instellingen voor bron logboek wijzigen met behulp van de Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 * [Logboeken van Azure storage met Log Analytics analyseren](../../azure-monitor/platform/collect-azure-metrics-logs.md)

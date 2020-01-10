@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 053a209829f30ea92d76b29f24d028d77ca732e7
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: ee2fb3757b0e3a7015a98f4e04084fd9c6a4850d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058907"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747545"
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Gedetailleerde stappen voor probleem oplossing voor problemen met verbinding met extern bureau blad met virtuele Windows-machines in azure
 In dit artikel vindt u gedetailleerde stappen voor het oplossen van problemen bij het vaststellen en oplossen van complexe Extern bureaublad fouten voor Azure virtual machines op basis van Windows.
@@ -30,7 +30,6 @@ In dit artikel vindt u gedetailleerde stappen voor het oplossen van problemen bi
 
 Er kan een Extern bureaublad fout bericht worden weer gegeven dat niet overeenkomt met een van de specifieke fout berichten die worden behandeld in [de basis handleiding voor extern bureaublad probleem oplossing](troubleshoot-rdp-connection.md). Volg deze stappen om te bepalen waarom de Extern bureaublad (RDP)-client geen verbinding kan maken met de RDP-service op de virtuele Azure-machine.
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN Azure en de stack overflow-forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en klik op **ondersteuning ophalen**. Lees de [Veelgestelde vragen over ondersteuning voor Microsoft Azure](https://azure.microsoft.com/support/faq/)voor meer informatie over het gebruik van Azure-ondersteuning.
 
@@ -63,7 +62,7 @@ De Extern bureaublad-client kan de Extern bureaublad-service mogelijk niet berei
 * [Netwerkbeveiligingsgroepen](#source-4-network-security-groups)
 * [Azure VM op basis van Windows](#source-5-windows-based-azure-vm)
 
-## <a name="source-1-remote-desktop-client-computer"></a>Bron 1: Client computer Extern bureaublad
+## <a name="source-1-remote-desktop-client-computer"></a>Bron 1: client computer Extern bureaublad
 Controleer of de computer Extern bureaublad verbindingen kan maken met een andere on-premises, Windows-computer.
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_1.png)
@@ -77,7 +76,7 @@ Als dat niet het geval is, controleert u op de volgende instellingen op uw compu
 
 In al deze gevallen schakelt u de software tijdelijk uit en probeert u verbinding te maken met een on-premises computer via Extern bureaublad. Als u de werkelijke oorzaak op deze manier kunt achterhalen, gebruikt u uw netwerk beheerder om de software-instellingen te corrigeren om Extern bureaublad verbindingen toe te staan.
 
-## <a name="source-2-organization-intranet-edge-device"></a>Bron 2: Intranet edge-apparaat
+## <a name="source-2-organization-intranet-edge-device"></a>Bron 2: intranet edge-apparaat van organisatie
 Controleer of een computer die rechtstreeks is verbonden met het Internet, Extern bureaublad verbindingen kan maken met uw virtuele Azure-machine.
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_2.png)
@@ -92,24 +91,24 @@ Als u een Extern bureaublad verbinding kunt maken met een computer die rechtstre
 
 Werk samen met uw netwerk beheerder om de instellingen van het intranet edge-apparaat van uw organisatie te corrigeren om Extern bureaublad verbindingen op basis van HTTPS op Internet toe te staan.
 
-## <a name="source-3-cloud-service-endpoint-and-acl"></a>Bron 3: Cloud service-eind punt en ACL
+## <a name="source-3-cloud-service-endpoint-and-acl"></a>Bron 3: eind punt van Cloud service en ACL
 Voor virtuele machines die zijn gemaakt met behulp van het klassieke implementatie model, controleert u of een andere virtuele machine van Azure die zich in dezelfde Cloud service of een virtueel netwerk bevindt, Extern bureaublad verbindingen met uw virtuele Azure-machine kan maken.
 
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_3.png)
 
 > [!NOTE]
-> Ga naar [bron 4 voor virtuele machines die zijn gemaakt in Resource Manager: Netwerk beveiligings groepen](#source-4-network-security-groups).
+> Ga naar [bron 4: netwerk beveiligings groepen](#source-4-network-security-groups)voor virtuele machines die zijn gemaakt in Resource Manager.
 
 Als u nog geen virtuele machine in dezelfde Cloud service of een virtueel netwerk hebt, maakt u er een. Volg de stappen in [een virtuele machine met Windows maken in azure](../virtual-machines-windows-hero-tutorial.md). Verwijder de virtuele test machine nadat de test is voltooid.
 
 Als u verbinding kunt maken via Extern bureaublad naar een virtuele machine in dezelfde Cloud service of een virtueel netwerk, controleert u de volgende instellingen:
 
-* De eindpunt configuratie voor het Extern bureaublad verkeer op de doel-VM: De particuliere TCP-poort van het eind punt moet overeenkomen met de TCP-poort waarop de Extern bureaublad-service van de virtuele machine luistert (de standaard waarde is 3389).
-* De ACL voor het eind punt van Extern bureaublad verkeer op de doel-VM: Met Acl's kunt u het toegestane of geweigerde binnenkomende verkeer van Internet opgeven op basis van het bron-IP-adres. Onjuist geconfigureerde Acl's kunnen binnenkomende Extern bureaublad verkeer naar het eind punt verhinderen. Controleer uw Acl's om ervoor te zorgen dat binnenkomend verkeer van uw open bare IP-adressen van uw proxy of een andere rand server wordt toegestaan. Zie [Wat is een Network Access Control List (ACL)?](../../virtual-network/virtual-networks-acl.md) voor meer informatie.
+* De eindpunt configuratie voor Extern bureaublad verkeer op de doel-VM: de particuliere TCP-poort van het eind punt moet overeenkomen met de TCP-poort waarop de Extern bureaublad-service van de virtuele machine luistert (de standaard waarde is 3389).
+* De ACL voor het eind punt van Extern bureaublad verkeer op de doel-VM: met Acl's kunt u het toegestane of geweigerde binnenkomende verkeer van Internet opgeven op basis van het bron-IP-adres. Onjuist geconfigureerde Acl's kunnen binnenkomende Extern bureaublad verkeer naar het eind punt verhinderen. Controleer uw Acl's om ervoor te zorgen dat binnenkomend verkeer van uw open bare IP-adressen van uw proxy of een andere rand server wordt toegestaan. Zie [Wat is een Network Access Control List (ACL)?](../../virtual-network/virtual-networks-acl.md) voor meer informatie.
 
 Als u wilt controleren of het eind punt de oorzaak van het probleem is, verwijdert u het huidige eind punt en maakt u een nieuwe, en kiest u een wille keurige poort in het bereik 49152 – 65535 voor het externe poort nummer. Zie [eind punten instellen voor een virtuele machine](../windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)voor meer informatie.
 
-## <a name="source-4-network-security-groups"></a>Bron 4: Netwerkbeveiligingsgroepen
+## <a name="source-4-network-security-groups"></a>Bron 4: netwerk beveiligings groepen
 Met netwerk beveiligings groepen kunt u meer nauw keurige controle van toegestaan binnenkomend en uitgaand verkeer. U kunt regels maken die subnetten en Cloud Services bespannen in een virtueel Azure-netwerk.
 
 Gebruik [IP-stroom controleren](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md) om te bevestigen of verkeer naar of van een virtuele machine wordt geblokkeerd door een regel in een netwerkbeveiligingsgroep. U kunt ook de juiste regels voor beveiligings groepen controleren om ervoor te zorgen dat inkomende NSG regel bestaat en de prioriteit van de RDP-poort (standaard 3389) wordt weer gegeven. Zie [using effectief security rules to Troubleshooting VM Traffic Flow](../../virtual-network/diagnose-network-traffic-filter-problem.md)voor meer informatie.
@@ -191,7 +190,7 @@ Exit-PSSession
 
 Controleer of het Extern bureaublad-eind punt voor de virtuele machine van Azure ook TCP-poort 3398 als interne poort gebruikt. Start de Azure-VM opnieuw op en probeer opnieuw verbinding te Extern bureaublad.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 [Het opnieuw instellen van een wacht woord of de Extern bureaublad-service voor virtuele Windows-machines](../windows/reset-rdp.md)
 
 [Azure PowerShell installeren en configureren](/powershell/azure/overview)

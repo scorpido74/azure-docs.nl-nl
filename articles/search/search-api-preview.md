@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 24e16942410c72640628bd4120d05a85e68de993
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.date: 01/04/2020
+ms.openlocfilehash: ee8e11670d5b3e0f0edd57e3f87566faa60d4bc4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720025"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754412"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>REST API voor Azure Cognitive Search Service-versie 2019-05-06-preview
 
@@ -25,11 +25,11 @@ In dit artikel wordt de `api-version=2019-05-06-Preview` versie van de zoek serv
 
 ## <a name="new-in-2019-05-06-preview"></a>Nieuw in 2019-05-06-preview
 
-+ [Incrementeel indexeren](cognitive-search-incremental-indexing-conceptual.md) is een nieuwe modus voor het indexeren waarmee de status en de cache worden toegevoegd aan een vaardig heden, zodat u de bestaande uitvoer opnieuw kunt gebruiken als de bron gegevens, de indexer en de definities van vaardig heden ongewijzigd blijven. Deze functie is alleen van toepassing op verrijkingen die een cognitieve vaardigheidset hebben gedefinieerd.
++ [Incrementele verrijking (preview)](cognitive-search-incremental-indexing-conceptual.md) voegt caching toe aan een verrijkings pijplijn, zodat u de bestaande uitvoer opnieuw kunt gebruiken als een gerichte wijziging, zoals een update van een vakkennisset of een ander object, de inhoud niet wijzigt. Caching is alleen van toepassing op verrijkte documenten die worden geproduceerd door een vaardig heden.
 
-+ [Cosmos DB Indexeer functie](search-howto-index-cosmosdb.md) ondersteunt MongoDb API, Gremlin api en Cassandra-API.
++ [Cosmos DB Indexeer functie](search-howto-index-cosmosdb.md) ondersteunt MongoDb API (preview), GREMLIN-API (preview) en Cassandra-API (preview).
 
-+ [Azure data Lake Storage Gen2 Indexeer functie](search-howto-index-azure-data-lake-storage.md) kan inhoud en meta gegevens indexeren vanuit data Lake Storage Gen2.
++ [Azure data Lake Storage Gen2 Indexeer functie (preview)](search-howto-index-azure-data-lake-storage.md) kan inhoud en meta gegevens indexeren vanuit data Lake Storage Gen2.
 
 + [Document extractie (preview)](cognitive-search-skill-document-extraction.md) is een cognitieve vaardigheid die wordt gebruikt tijdens het indexeren, waarmee u de inhoud van een bestand kunt extra heren uit een vakkennisset. Het kraken van documenten is eerder voorgekomen voordat de vaardig heden werden uitgevoerd. Als u deze vaardigheid hebt toegevoegd, kunt u deze bewerking ook uitvoeren binnen de vaardig heden-uitvoering.
 

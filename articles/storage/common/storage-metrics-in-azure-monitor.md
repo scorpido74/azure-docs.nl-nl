@@ -8,12 +8,12 @@ ms.date: 09/05/2017
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: c2f6847a286a9c106fc094e9f0aa315d6b1f337d
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 62e2e3f1a80cef04dc778d5a1950cca97d79dcb0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257089"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748374"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metrische gegevens van Azure Storage in Azure Monitor
 
@@ -25,7 +25,7 @@ Azure Monitor biedt uniforme gebruikers interfaces voor bewaking in verschillend
 
 Azure Monitor biedt meerdere manieren voor toegang tot metrische gegevens. U kunt ze openen via de [Azure Portal](https://portal.azure.com), de Azure monitor-API'S (rest en .net) en analyse oplossingen zoals Event hubs. Zie [Azure monitor metrische](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)gegevens voor meer informatie.
 
-Metrieken zijn standaard ingeschakeld en u hebt toegang tot de afgelopen 93 dagen aan gegevens. Als u behouden van gegevens voor een langere periode wilt, kunt u metrische gegevens om een Azure Storage-account te archiveren. Dit is geconfigureerd in [diagnostische instellingen](../../azure-monitor/platform/resource-logs-overview.md) in Azure Monitor.
+Metrieken zijn standaard ingeschakeld en u hebt toegang tot de afgelopen 93 dagen aan gegevens. Als u behouden van gegevens voor een langere periode wilt, kunt u metrische gegevens om een Azure Storage-account te archiveren. Dit is geconfigureerd in [diagnostische instellingen](../../azure-monitor/platform/platform-logs-overview.md) in Azure Monitor.
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Toegang tot metrische gegevens in de Azure Portal
 
@@ -136,7 +136,7 @@ Het volgende antwoord bevat metrische waarden in JSON-indeling:
 
 ### <a name="access-metrics-with-the-net-sdk"></a>Toegang tot metrische gegevens met de .NET SDK
 
-Azure Monitor biedt [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) de definitie en waarden van metrische gegevens kunnen lezen. De [voorbeeld code](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) laat zien hoe u de SDK met verschillende para meters kunt gebruiken. U moet een hogere `0.18.0-preview` versie gebruiken voor metrische opslag gegevens. Resource-ID wordt gebruikt in .NET SDK. Meer informatie vindt u in de informatie over de resource-ID voor services in Storage.
+Azure Monitor biedt [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) de definitie en waarden van metrische gegevens kunnen lezen. De [voorbeeld code](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) laat zien hoe u de SDK met verschillende para meters kunt gebruiken. U moet `0.18.0-preview` of een hogere versie gebruiken voor metrische gegevens over de opslag. Resource-ID wordt gebruikt in .NET SDK. Meer informatie vindt u in de informatie over de resource-ID voor services in Storage.
 
 In het volgende voor beeld ziet u hoe u Azure Monitor .NET SDK gebruikt om metrische gegevens over de opslag te lezen.
 
@@ -179,7 +179,7 @@ Als u de metrische definities voor blob, tabel, bestand of wachtrij wilt weer ge
 
 #### <a name="read-metric-values-with-the-net-sdk"></a>Metrische waarden lezen met de .NET SDK
 
-In het volgende voor beeld ziet u `UsedCapacity` hoe u gegevens kunt lezen op account niveau:
+In het volgende voor beeld ziet u hoe `UsedCapacity` gegevens worden gelezen op account niveau:
 
 ```csharp
     public static async Task ReadStorageMetricValue()
@@ -302,19 +302,19 @@ Hieronder ziet u de indeling voor het opgeven van de resource-ID voor een opslag
 
 Hieronder ziet u de indeling voor het opgeven van de resource-ID voor elk van de opslag Services.
 
-* Resource-id van Blob service
+* Resource-ID Blob service
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default
 ```
-* Resource-id van Table service
+* Resource-ID Table service
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/tableServices/default
 ```
-* Resource-id van Queue-service
+* Resource-ID Queue-service
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 ```
-* Resource-id van bestandsservice
+* Resource-ID van bestands service
 ```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
 ```
@@ -334,70 +334,70 @@ Azure Storage biedt de volgende metrische gegevens over capaciteit in Azure Moni
 
 ### <a name="account-level"></a>Account niveau
 
-| Naam van meetwaarde | Description |
+| Naam van meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-| UsedCapacity | De hoeveelheid opslag die wordt gebruikt door het opslag account. Voor standaardopslagaccounts is dit de som van de capaciteit die wordt gebruikt door blob, table, file en queue. Voor premium-opslagaccounts en blob-opslagaccounts is dit hetzelfde als BlobCapacity. <br/><br/> Teleenheid Bytes <br/> Aggregatie type: Average <br/> Waarde-voor beeld: 1024 |
+| UsedCapacity | De hoeveelheid opslag die wordt gebruikt door het opslag account. Voor standaardopslagaccounts is dit de som van de capaciteit die wordt gebruikt door blob, table, file en queue. Voor premium-opslagaccounts en blob-opslagaccounts is dit hetzelfde als BlobCapacity. <br/><br/> Eenheid: Bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 
-### <a name="blob-storage"></a>Blob Storage
+### <a name="blob-storage"></a>Blob-opslag
 
-| Naam van meetwaarde | Description |
+| Naam van meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-| BlobCapacity | Het totaal van de Blob-opslag die in het opslag account wordt gebruikt. <br/><br/> Teleenheid Bytes <br/> Aggregatie type: Average <br/> Waarde-voor beeld: 1024 <br/> Afmetingen: **BlobType**en **BlobTier** ([definitie](#metrics-dimensions)) |
-| BlobCount    | Het aantal BLOB-objecten dat is opgeslagen in het opslag account. <br/><br/> Teleenheid Count <br/> Aggregatie type: Average <br/> Waarde-voor beeld: 1024 <br/> Afmetingen: **BlobType**en **BlobTier** ([definitie](#metrics-dimensions)) |
-| ContainerCount    | Het aantal containers in het opslag account. <br/><br/> Teleenheid Count <br/> Aggregatie type: Average <br/> Waarde-voor beeld: 1024 |
-| IndexCapacity     | De hoeveelheid opslag die wordt gebruikt door ADLS Gen2 hiërarchische index <br/><br/> Teleenheid Bytes <br/> Aggregatie type: Average <br/> Waarde-voor beeld: 1024 |
+| BlobCapacity | Het totaal van de Blob-opslag die in het opslag account wordt gebruikt. <br/><br/> Eenheid: Bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 <br/> Dimensies: **BlobType**en **BlobTier** ([definitie](#metrics-dimensions)) |
+| BlobCount    | Het aantal BLOB-objecten dat is opgeslagen in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 <br/> Dimensies: **BlobType**en **BlobTier** ([definitie](#metrics-dimensions)) |
+| ContainerCount    | Het aantal containers in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
+| IndexCapacity     | De hoeveelheid opslag die wordt gebruikt door ADLS Gen2 hiërarchische index <br/><br/> Eenheid: Bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 
 ### <a name="table-storage"></a>Tabelopslag
 
-| Naam van meetwaarde | Description |
+| Naam van meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-| TableCapacity | De hoeveelheid tabel opslag die door het opslag account wordt gebruikt. <br/><br/> Teleenheid Bytes <br/> Aggregatie type: Average <br/> Waarde-voor beeld: 1024 |
-| TableCount   | Het aantal tabellen in het opslag account. <br/><br/> Teleenheid Count <br/> Aggregatie type: Average <br/> Waarde-voor beeld: 1024 |
-| TableEntityCount | Het aantal tabel entiteiten in het opslag account. <br/><br/> Teleenheid Count <br/> Aggregatie type: Average <br/> Waarde-voor beeld: 1024 |
+| TableCapacity | De hoeveelheid tabel opslag die door het opslag account wordt gebruikt. <br/><br/> Eenheid: Bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
+| TableCount   | Het aantal tabellen in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
+| TableEntityCount | Het aantal tabel entiteiten in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 
 ### <a name="queue-storage"></a>Queue Storage
 
-| Naam van meetwaarde | Description |
+| Naam van meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-| QueueCapacity | De hoeveelheid wachtrij opslag die door het opslag account wordt gebruikt. <br/><br/> Teleenheid Bytes <br/> Aggregatie type: Average <br/> Waarde-voor beeld: 1024 |
-| QueueCount   | Het aantal wacht rijen in het opslag account. <br/><br/> Teleenheid Count <br/> Aggregatie type: Average <br/> Waarde-voor beeld: 1024 |
-| QueueMessageCount | Het aantal niet-verlopen wachtrij berichten in het opslag account. <br/><br/>Teleenheid Count <br/> Aggregatie type: Average <br/> Waarde-voor beeld: 1024 |
+| QueueCapacity | De hoeveelheid wachtrij opslag die door het opslag account wordt gebruikt. <br/><br/> Eenheid: Bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
+| QueueCount   | Het aantal wacht rijen in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
+| QueueMessageCount | Het aantal niet-verlopen wachtrij berichten in het opslag account. <br/><br/>Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 
-### <a name="file-storage"></a>File Storage
+### <a name="file-storage"></a>Bestandsopslag
 
-| Naam van meetwaarde | Description |
+| Naam van meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-| FileCapacity | De hoeveelheid bestands opslag die door het opslag account wordt gebruikt. <br/><br/> Teleenheid Bytes <br/> Aggregatie type: Average <br/> Waarde-voor beeld: 1024 |
-| FileCount   | Het aantal bestanden in het opslag account. <br/><br/> Teleenheid Count <br/> Aggregatie type: Average <br/> Waarde-voor beeld: 1024 |
-| FileShareCount | Het aantal bestands shares in het opslag account. <br/><br/> Teleenheid Count <br/> Aggregatie type: Average <br/> Waarde-voor beeld: 1024 |
+| FileCapacity | De hoeveelheid bestands opslag die door het opslag account wordt gebruikt. <br/><br/> Eenheid: Bytes <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
+| FileCount   | Het aantal bestanden in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
+| FileShareCount | Het aantal bestands shares in het opslag account. <br/><br/> Eenheid: aantal <br/> Aggregatie type: gemiddeld <br/> Waarde-voor beeld: 1024 |
 
-## <a name="transaction-metrics"></a>Metrische gegevens van trans actie
+## <a name="transaction-metrics"></a>Metrische gegevens voor transacties
 
 Metrische gegevens over trans acties worden verzonden voor elke aanvraag naar een opslag account van Azure Storage naar Azure Monitor. In het geval van geen activiteit in uw opslag account, worden er geen gegevens in de periode weer gegeven. Alle metrische gegevens over trans acties zijn beschikbaar op zowel account-als service niveau (Blob-opslag, tabel opslag, Azure Files en wachtrij opslag). De tijd korrel definieert het tijds interval dat metrische waarden worden weer gegeven. De ondersteunde tijd korrels voor alle metrische gegevens van de trans actie zijn PT1H en PT1M.
 
 Azure Storage levert de volgende metrische gegevens over trans acties in Azure Monitor.
 
-| Naam van meetwaarde | Description |
+| Naam van meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-| Transacties | Het aantal aanvragen voor een opslagservice of de opgegeven API-bewerking. Dit is inclusief geslaagde en mislukte aanvragen, evenals aanvragen waarbij fouten zijn opgetreden. <br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Toepasselijke dimensies: ResponseType, geotype, ApiName en verificatie ([definitie](#metrics-dimensions))<br/> Waarde-voor beeld: 1024 |
-| Inkomend verkeer | De hoeveelheid inkomende gegevens. Hieronder vallen de inkomende gegevens van een externe client in Azure Storage evenals de inkomende gegevens binnen Azure. <br/><br/> Teleenheid Bytes <br/> Aggregatie type: Totaal <br/> Toepasselijke dimensies: Geotype, ApiName en verificatie ([definitie](#metrics-dimensions)) <br/> Waarde-voor beeld: 1024 |
-| Uitgaand verkeer | De hoeveelheid uitgaande gegevens. Hieronder vallen de uitgaande gegevens van een externe client in Azure Storage evenals de uitgaande gegevens binnen Azure. Daarom geeft deze hoeveelheid niet de factureerbare uitgaande gegevens weer. <br/><br/> Teleenheid Bytes <br/> Aggregatie type: Totaal <br/> Toepasselijke dimensies: Geotype, ApiName en verificatie ([definitie](#metrics-dimensions)) <br/> Waarde-voor beeld: 1024 |
-| SuccessServerLatency | De gemiddelde tijd die nodig is om een aanvraag door Azure Storage te verwerken. Deze waarde bevat niet de netwerklatentie die is opgegeven in SuccessE2ELatency. <br/><br/> Teleenheid Milliseconden <br/> Aggregatie type: Average <br/> Toepasselijke dimensies: Geotype, ApiName en verificatie ([definitie](#metrics-dimensions)) <br/> Waarde-voor beeld: 1024 |
-| SuccessE2ELatency | De gemiddelde end-to-end-latentie van geslaagde aanvragen aan een opslagservice of de opgegeven API-bewerking. Deze waarde bevat de vereiste verwerkingstijd in Azure Storage die nodig is om de aanvraag te lezen, het antwoord te verzenden en bevestiging van het antwoord te ontvangen. <br/><br/> Teleenheid Milliseconden <br/> Aggregatie type: Average <br/> Toepasselijke dimensies: Geotype, ApiName en verificatie ([definitie](#metrics-dimensions)) <br/> Waarde-voor beeld: 1024 |
-| Beschikbaarheid | Het percentage van de beschikbaarheid van de opslagservice of de opgegeven API-bewerking. De beschikbaarheid wordt berekend door de waarde voor het totale aantal factureerbare aanvragen te delen door het aantal van toepassing zijnde aanvragen, inclusief de aanvragen die onverwachte fouten produceren. Alle onverwachte fouten leiden tot verminderde beschikbaarheid voor de opslagservice of de opgegeven API-bewerking. <br/><br/> Teleenheid Percent <br/> Aggregatie type: Average <br/> Toepasselijke dimensies: Geotype, ApiName en verificatie ([definitie](#metrics-dimensions)) <br/> Waarde-voor beeld: 99,99 |
+| Transacties | Het aantal aanvragen voor een opslagservice of de opgegeven API-bewerking. Dit is inclusief geslaagde en mislukte aanvragen, evenals aanvragen waarbij fouten zijn opgetreden. <br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Toepasselijke dimensies: ResponseType, geotype, ApiName en Authentication ([definitie](#metrics-dimensions))<br/> Waarde-voor beeld: 1024 |
+| Binnenkomend | De hoeveelheid inkomende gegevens. Hieronder vallen de inkomende gegevens van een externe client in Azure Storage evenals de inkomende gegevens binnen Azure. <br/><br/> Eenheid: Bytes <br/> Aggregatietype: totaal <br/> Toepasselijke dimensies: geotype, ApiName en verificatie ([definitie](#metrics-dimensions)) <br/> Waarde-voor beeld: 1024 |
+| Uitgaand verkeer | De hoeveelheid uitgaande gegevens. Hieronder vallen de uitgaande gegevens van een externe client in Azure Storage evenals de uitgaande gegevens binnen Azure. Daarom geeft deze hoeveelheid niet de factureerbare uitgaande gegevens weer. <br/><br/> Eenheid: Bytes <br/> Aggregatietype: totaal <br/> Toepasselijke dimensies: geotype, ApiName en verificatie ([definitie](#metrics-dimensions)) <br/> Waarde-voor beeld: 1024 |
+| SuccessServerLatency | De gemiddelde tijd die nodig is om een aanvraag door Azure Storage te verwerken. Deze waarde bevat niet de netwerklatentie die is opgegeven in SuccessE2ELatency. <br/><br/> Eenheid: milliseconden <br/> Aggregatie type: gemiddeld <br/> Toepasselijke dimensies: geotype, ApiName en verificatie ([definitie](#metrics-dimensions)) <br/> Waarde-voor beeld: 1024 |
+| SuccessE2ELatency | De gemiddelde end-to-end-latentie van geslaagde aanvragen aan een opslagservice of de opgegeven API-bewerking. Deze waarde bevat de vereiste verwerkingstijd in Azure Storage die nodig is om de aanvraag te lezen, het antwoord te verzenden en bevestiging van het antwoord te ontvangen. <br/><br/> Eenheid: milliseconden <br/> Aggregatie type: gemiddeld <br/> Toepasselijke dimensies: geotype, ApiName en verificatie ([definitie](#metrics-dimensions)) <br/> Waarde-voor beeld: 1024 |
+| Beschikbaarheid | Het percentage van de beschikbaarheid van de opslagservice of de opgegeven API-bewerking. De beschikbaarheid wordt berekend door de waarde voor het totale aantal factureerbare aanvragen te delen door het aantal van toepassing zijnde aanvragen, inclusief de aanvragen die onverwachte fouten produceren. Alle onverwachte fouten leiden tot een afgenomen beschikbaarheid voor de opslagservice of de opgegeven API-bewerking. <br/><br/> Eenheid: percentage <br/> Aggregatie type: gemiddeld <br/> Toepasselijke dimensies: geotype, ApiName en verificatie ([definitie](#metrics-dimensions)) <br/> Waarde-voor beeld: 99,99 |
 
 ## <a name="metrics-dimensions"></a>Metrische gegevens over dimensies
 
 Azure Storage ondersteunt de volgende dimensies voor metrische gegevens in Azure Monitor.
 
-| Dimensienaam | Description |
+| Dimensie naam | Beschrijving |
 | ------------------- | ----------------- |
 | **BlobType** | Het type BLOB voor alleen metrische gegevens van blobs. De ondersteunde waarden zijn **BlockBlob**, **PageBlob**en **Azure data Lake Storage**. Toevoeg-blob is opgenomen in BlockBlob. |
-| **BlobTier** | Azure Storage biedt verschillende toegangs lagen, waarmee u gegevens van blob-objecten op de meest rendabele manier kunt opslaan. Meer weer geven in [Azure Storage BLOB-laag](../blobs/storage-blob-storage-tiers.md). De ondersteunde waarden zijn onder andere: <br/> <li>**Warm**: Warme laag</li> <li>**Cool**: Cool-laag</li> <li>**Archief**: Laag van archief</li> <li>**Premium**: Premium-laag voor blok-BLOB</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: Laag typen voor Premium-pagina-BLOB</li> <li>**Standaard**: Laag type voor de standaard pagina-BLOB</li> <li>**Ongelaagd**: Laag type voor v1-opslag account voor algemeen gebruik</li> |
+| **BlobTier** | Azure Storage biedt verschillende toegangs lagen, waarmee u gegevens van blob-objecten op de meest rendabele manier kunt opslaan. Meer weer geven in [Azure Storage BLOB-laag](../blobs/storage-blob-storage-tiers.md). De ondersteunde waarden zijn onder andere: <br/> <li>**Warm**: warme laag</li> <li>**Cool**: cool-laag</li> <li>**Archief**: laag van archief</li> <li>**Premium**: Premium-laag voor blok-BLOB</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: laag typen voor Premium-pagina-BLOB</li> <li>**Standaard**: laag type voor de standaard pagina-BLOB</li> <li>**Ongetierd**: laag type voor algemeen gebruik v1-opslag account</li> |
 | **GeoType** | Trans actie van het primaire of secundaire cluster. De beschik bare waarden zijn onder andere **primaire** en **secundaire**. Dit is van toepassing op lees toegang geografisch redundante opslag (RA-GRS) bij het lezen van objecten van een secundaire Tenant. |
-| **ResponseType** | Antwoord type voor de trans actie. De beschikbare waarden zijn onder meer: <br/><br/> <li>**ServerOtherError**: alle overige serverfouten, behalve diegene die zijn beschreven </li> <li>**ServerBusyError**: geverifieerde aanvraag waardoor een HTTP 503-statuscode is geretourneerd. </li> <li>**ServerTimeoutError**: geverifieerde aanvraag met time-out waardoor een HTTP 500-statuscode is geretourneerd. De time-out is opgetreden vanwege een serverfout. </li> <li>**AuthorizationError**: geverifieerde aanvraag die is mislukt vanwege niet-geautoriseerde toegang tot gegevens of een autorisatiefout. </li> <li>**NetworkError**: geverifieerde aanvraag die is mislukt vanwege netwerkfouten. Treedt meestal op als dooreen client voortijdig een verbinding wordt verbroken voordat de time-out voorbij is. </li> <li>**ClientThrottlingError**: Beperkingsfout aan de client-zijde. </li> <li>**ClientTimeoutError**: geverifieerde aanvraag met time-out waardoor een HTTP 500-statuscode is geretourneerd. Als de time-out van het clientnetwerk of van de aanvraag is ingesteld op een lagere waarde dan door de opslagservice wordt verwacht, is er sprake van een verwachte time-out. Anders wordt deze als ServerTimeoutError gerapporteerd. </li> <li>**ClientOtherError**: alle overige fouten aan de clientzijde, behalve diegene die zijn beschreven. </li> <li>**Geslaagd**: Succesvolle aanvraag</li> <li> **SuccessWithThrottling**: De aanvraag is voltooid wanneer een SMB-client wordt beperkt tijdens de eerste poging (en), maar na nieuwe pogingen slaagt.</li> |
+| **ResponseType** | Antwoord type voor de trans actie. De beschikbare waarden zijn onder meer: <br/><br/> <li>**ServerOtherError**: alle andere fouten aan de server zijde behalve beschreven </li> <li>**ServerBusyError**: een geverifieerde aanvraag die een HTTP 503-status code heeft geretourneerd. </li> <li>**ServerTimeoutError**: er is een time-out voor geverifieerde aanvraag ontvangen die een HTTP 500-status code heeft geretourneerd. De time-out is opgetreden vanwege een serverfout. </li> <li>**AuthorizationError**: een geverifieerde aanvraag die is mislukt vanwege ongeoorloofde toegang tot gegevens of een autorisatie fout. </li> <li>**NetworkError**: geverifieerde aanvraag die is mislukt vanwege netwerk fouten. Treedt meestal op als dooreen client voortijdig een verbinding wordt verbroken voordat de time-out voorbij is. </li> <li>**ClientThrottlingError**: fout met beperking aan client zijde. </li> <li>**ClientTimeoutError**: er is een time-out voor geverifieerde aanvraag ontvangen die een HTTP 500-status code heeft geretourneerd. Als de time-out van het clientnetwerk of van de aanvraag is ingesteld op een lagere waarde dan door de opslagservice wordt verwacht, is er sprake van een verwachte time-out. Anders wordt deze als ServerTimeoutError gerapporteerd. </li> <li>**ClientOtherError**: alle andere fouten aan de client zijde behalve de beschreven. </li> <li>**Geslaagd**: aanvraag geslaagd</li> <li> **SuccessWithThrottling**: de aanvraag is voltooid wanneer een SMB-client wordt beperkt tijdens de eerste poging (en), maar na nieuwe pogingen slaagt.</li> |
 | **ApiName** | De naam van de bewerking. Bijvoorbeeld: <br/> <li>**CreateContainer**</li> <li>**DeleteBlob**</li> <li>**GetBlob**</li> Zie [document](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)voor alle bewerkings namen. |
-| **Verificatie** | Het verificatie type dat wordt gebruikt in trans acties. De beschikbare waarden zijn onder meer: <br/> <li>**AccountKey**: De trans actie is geverifieerd met de sleutel van het opslag account.</li> <li>**SAS**: De trans actie wordt geverifieerd met hand tekeningen voor gedeelde toegang.</li> <li>**OAuth**: De trans actie wordt geverifieerd met OAuth-toegangs tokens.</li> <li>**Anoniem**: De trans actie is anoniem aangevraagd. Het bevat geen Preflight-aanvragen.</li> <li>**AnonymousPreflight**: De trans actie is een Preflight-aanvraag.</li> |
+| **Verificatie** | Het verificatie type dat wordt gebruikt in trans acties. De beschikbare waarden zijn onder meer: <br/> <li>**AccountKey**: de trans actie is geverifieerd met de sleutel van het opslag account.</li> <li>**SAS**: de trans actie wordt geverifieerd met hand tekeningen voor gedeelde toegang.</li> <li>**OAuth**: de trans actie wordt geverifieerd met OAuth-toegangs tokens.</li> <li>**Anoniem**: de trans actie is anoniem aangevraagd. Het bevat geen Preflight-aanvragen.</li> <li>**AnonymousPreflight**: de trans actie is een Preflight-aanvraag.</li> |
 
 Voor de metrische gegevens die maat staven ondersteunen, moet u de dimensie waarde opgeven om de bijbehorende metrische waarden weer te geven. Als u bijvoorbeeld de **transactie** waarde voor geslaagde reacties bekijkt, moet u de **ResponseType** -dimensie filteren op **geslaagd**. Of als u de **BlobCount** -waarde voor blok-BLOB bekijkt, moet u de dimensie **BlobType** filteren met **BlockBlob**.
 

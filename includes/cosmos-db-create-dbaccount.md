@@ -2,18 +2,18 @@
 title: bestand opnemen
 description: bestand opnemen
 services: cosmos-db
-author: rimman
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.topic: include
 ms.date: 04/08/2019
-ms.author: rimman
 ms.custom: include file
-ms.openlocfilehash: 93652273dda16e93bdcf9123d7d4a9b3fc956fe9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8f8b8384b0c570e2b4925b0e84480b19a632187e
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466167"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75751680"
 ---
 1. Ga naar de [Azure Portal](https://portal.azure.com/) om een Azure Cosmos DB-account te maken. Zoek en selecteer **Azure Cosmos DB**.
 
@@ -24,9 +24,9 @@ ms.locfileid: "73466167"
 
     |Instelling|Waarde|Beschrijving |
     |---|---|---|
-    |Abonnement|Abonnements naam|Selecteer het Azure-abonnement dat u wilt gebruiken voor dit Azure Cosmos-account. |
+    |Abonnement|Abonnementsnaam|Selecteer het Azure-abonnement dat u wilt gebruiken voor dit Azure Cosmos-account. |
     |Resourcegroep|Naam van de resourcegroep|Selecteer een resource groep of selecteer **nieuwe maken**en voer vervolgens een unieke naam in voor de nieuwe resource groep. |
-    |Accountnaam|Een unieke naam|Voer een naam in om uw Azure Cosmos-account aan te duiden. Gebruik een unieke id omdat *documents.azure.com* is toegevoegd aan de id die u hebt opgegeven om uw URI te maken.<br><br>De id mag alleen kleine letters, cijfers en het koppelteken (-) bevatten. De waarde moet tussen de 3-31 tekens lang zijn.|
+    |Accountnaam|Een unieke naam|Voer een naam in om uw Azure Cosmos-account aan te duiden. Omdat *Documents.Azure.com* wordt toegevoegd aan de naam die u opgeeft om uw URI te maken, gebruikt u een unieke naam.<br><br>De naam mag alleen kleine letters, cijfers en het koppel teken (-) bevatten. De waarde moet tussen de 3-31 tekens lang zijn.|
     |API|Het type account dat moet worden gemaakt|Selecteer **kern (SQL)** om een document database en-query te maken met behulp van de SQL-syntaxis. <br><br>De API bepaalt het type te maken account. Azure Cosmos DB biedt vijf Api's: core (SQL) en MongoDB voor document gegevens, Gremlin voor grafiek gegevens, Azure Table en Cassandra. Op dit moment moet u voor elke API een afzonderlijk account maken. <br><br>[Meer informatie over de SQL-API](../articles/cosmos-db/documentdb-introduction.md).|
     |Locatie|De regio het dichtst bij uw gebruikers|Selecteer een geografische locatie waar u het Azure Cosmos DB-account wilt hosten. Gebruik de locatie die zich het dichtst bij uw gebruikers bevindt om hen de snelste toegang tot de gegevens te geven.|
 

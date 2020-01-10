@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/22/2019
+ms.date: 1/8/2020
 ms.author: sutalasi
-ms.openlocfilehash: 09cd814ade25be438a17b83fb73e74b89c14e22f
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 9fe3b4c0b7acc9c1e980d5885043d30503c211c4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954199"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754493"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Over netwerken in nood herstel voor Azure VM
 
@@ -55,18 +55,19 @@ login.microsoftonline.com | Vereist voor autorisatie en verificatie voor de Url'
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>Uitgaande connectiviteit voor IP-adresbereiken
 
-Als u een op IP gebaseerde firewall proxy gebruikt of NSG regels voor het beheren van uitgaande connectiviteit, moeten deze IP-bereiken zijn toegestaan.
+Als u een op IP gebaseerde firewall proxy gebruikt, of NSG om de uitgaande connectiviteit te beheren, moeten deze IP-bereiken zijn toegestaan.
 
 - Alle IP-adresbereiken die overeenkomen met de opslag accounts in de bron regio
     - Maak een NSG-regel op basis van een [opslag service label](../virtual-network/security-overview.md#service-tags) voor de bron regio.
     - Sta deze adressen toe zodat gegevens kunnen worden geschreven naar het cache-opslag account van de VM.
 - Maak een [Azure Active Directory (AAD)-servicetag](../virtual-network/security-overview.md#service-tags) op basis van NSG-regel voor het toestaan van toegang tot alle IP-adressen die overeenkomen met AAD
     - Als er nieuwe adressen worden toegevoegd aan de Azure Active Directory (AAD) in de toekomst, moet u nieuwe NSG-regels maken.
-- Site Recovery IP-adressen van service-eind punten: beschikbaar in een [XML-bestand](https://aka.ms/site-recovery-public-ips) en zijn afhankelijk van de doel locatie. 
+- Maak een EventsHub op basis van een NSG-regel voor de doel regio, waarmee toegang tot Site Recovery bewaking kan worden uitgevoerd.
+- Maak een AzureSiteRecovery op basis van een NSG-regel voor het toestaan van toegang tot Site Recovery service in een wille keurige regio.
 - We raden u aan de vereiste NSG-regels te maken op een test-NSG en te controleren of er geen problemen zijn voordat u de regels op een productie NSG maakt.
 
 
-Site Recovery IP-adresbereiken zijn als volgt:
+Als u de voor keur geeft aan het gebruik van Site Recovery IP-adresbereiken (niet aanbevolen), raadpleegt u de onderstaande tabel:
 
    **Doel** | **Site Recovery IP-adres** |  **IP-Site Recovery bewaking**
    --- | --- | ---
@@ -74,44 +75,44 @@ Site Recovery IP-adresbereiken zijn als volgt:
    Azië - zuidoost | 52.187.58.193 | 13.76.179.223
    India - centraal | 52.172.187.37 | 104.211.98.185
    India - zuid | 52.172.46.220 | 104.211.224.190
-   US - noord-centraal | 23.96.195.247 | 168.62.249.226
+   VS - noord-centraal | 23.96.195.247 | 168.62.249.226
    Europa - noord | 40.69.212.238 | 52.169.18.8
-   Europa -west | 52.166.13.64 | 40.68.93.145
-   US - oost | 13.82.88.226 | 104.45.147.24
-   US - west | 40.83.179.48 | 104.40.26.199
-   US - zuid-centraal | 13.84.148.14 | 104.210.146.250
-   US - centraal | 40.69.144.231 | 52.165.34.144
-   US - oost 2 | 52.184.158.163 | 40.79.44.59
-   Japan - oost | 52.185.150.140 | 138.91.1.105
-   Japan - west | 52.175.146.69 | 138.91.17.38
-   Brazilië - zuid | 191.234.185.172 | 23.97.97.36
-   Australië - oost | 104.210.113.114 | 191.239.64.144
-   Australië - zuidoost | 13.70.159.158 | 191.239.160.45
-   Canada - midden | 52.228.36.192 | 40.85.226.62
-   Canada - oost | 52.229.125.98 | 40.86.225.142
-   US - west-centraal | 52.161.20.168 | 13.78.149.209
-   US - west 2 | 52.183.45.166 | 13.66.228.204
-   Verenigd Koninkrijk West | 51.141.3.203 | 51.141.14.113
-   Verenigd Koninkrijk Zuid | 51.140.43.158 | 51.140.189.52
-   UK - zuid 2 | 13.87.37.4| 13.87.34.139
-   UK - noord | 51.142.209.167 | 13.87.102.68
+   Europa - west | 52.166.13.64 | 40.68.93.145
+   VS - oost | 13.82.88.226 | 104.45.147.24
+   VS - west | 40.83.179.48 | 104.40.26.199
+   VS - zuid-centraal | 13.84.148.14 | 104.210.146.250
+   VS - centraal | 40.69.144.231 | 52.165.34.144
+   VS - oost 2 | 52.184.158.163 | 40.79.44.59
+   Japan - Oost | 52.185.150.140 | 138.91.1.105
+   Japan - West | 52.175.146.69 | 138.91.17.38
+   Brazilië - Zuid | 191.234.185.172 | 23.97.97.36
+   Australië Oost | 104.210.113.114 | 191.239.64.144
+   Australië Zuidoost | 13.70.159.158 | 191.239.160.45
+   Canada-Midden | 52.228.36.192 | 40.85.226.62
+   Canada-Oost | 52.229.125.98 | 40.86.225.142
+   VS - west-centraal | 52.161.20.168 | 13.78.149.209
+   VS - west 2 | 52.183.45.166 | 13.66.228.204
+   VK - west | 51.141.3.203 | 51.141.14.113
+   VK - zuid | 51.140.43.158 | 51.140.189.52
+   VK, zuid 2 | 13.87.37.4| 13.87.34.139
+   VK, noord | 51.142.209.167 | 13.87.102.68
    Korea - centraal | 52.231.28.253 | 52.231.32.85
-   Korea - zuid | 52.231.198.185 | 52.231.200.144
+   Korea (Zuid) | 52.231.198.185 | 52.231.200.144
    Frankrijk - centraal | 52.143.138.106 | 52.143.136.55
    Frankrijk - zuid | 52.136.139.227 |52.136.136.62
    Australië-centraal| 20.36.34.70 | 20.36.46.142
    Australië - centraal 2| 20.36.69.62 | 20.36.74.130
    Zuid-Afrika - west | 102.133.72.51 | 102.133.26.128
    Zuid-Afrika - noord | 102.133.160.44 | 102.133.154.128
-   VS (overheid) - Virginia | 52.227.178.114 | 23.97.0.197
+   US Gov - Virginia | 52.227.178.114 | 23.97.0.197
    US Gov - Iowa | 13.72.184.23 | 23.97.16.186
-   VS (overheid) - Arizona | 52.244.205.45 | 52.244.48.85
-   VS (overheid) - Texas | 52.238.119.218 | 52.238.116.60
+   US Gov - Arizona | 52.244.205.45 | 52.244.48.85
+   US Gov - Texas | 52.238.119.218 | 52.238.116.60
    US DoD - oost | 52.181.164.103 | 52.181.162.129
    US DoD - centraal | 52.182.95.237 | 52.182.90.133
    China - noord | 40.125.202.254 | 42.159.4.151
    China - noord 2 | 40.73.35.193 | 40.73.33.230
-   China East | 42.159.205.45 | 42.159.132.40
+   China - oost | 42.159.205.45 | 42.159.132.40
    China - oost 2 | 40.73.118.52| 40.73.100.125
    Duitsland - noord| 51.116.208.58| 51.116.58.128
    Duitsland - west-centraal | 51.116.156.176 | 51.116.154.192
@@ -137,11 +138,9 @@ In dit voor beeld ziet u hoe u NSG-regels configureert voor replicatie van een v
 
       ![Aad-tag](./media/azure-to-azure-about-networking/aad-tag.png)
 
-3. Maak regels voor uitgaande HTTPS (443) voor de Site Recovery IP-adressen die overeenkomen met de doel locatie:
+3. Net als hierboven, maakt u een uitgaande HTTPS (443) beveiligings regel voor ' EventHub. Centralus ' op de NSG die overeenkomt met de doel locatie. Hiermee krijgt u toegang tot Site Recovery bewaking.
 
-   **Locatie** | **Site Recovery IP-adres** |  **IP-adres van Site Recovery bewaking**
-    --- | --- | ---
-   US - centraal | 40.69.144.231 | 52.165.34.144
+4. Maak een uitgaande HTTPS (443) beveiligings regel voor ' AzureSiteRecovery ' op de NSG. Hiermee krijgt u toegang tot Site Recovery-service in elke regio.
 
 ### <a name="nsg-rules---central-us"></a>NSG-regels-VS-Centraal
 
@@ -151,12 +150,9 @@ Deze regels zijn vereist zodat replicatie kan worden ingeschakeld vanuit de doel
 
 2. Maak een uitgaande HTTPS (443) beveiligings regel voor ' AzureActiveDirectory ' op de NSG.
 
-3. Maak regels voor uitgaande HTTPS (443) voor de Site Recovery IP-adressen die overeenkomen met de bron locatie:
+3. Net als hierboven, maakt u een uitgaande HTTPS (443) beveiligings regel voor ' EventHub. Eastus ' op de NSG die overeenkomt met de bron locatie. Hiermee krijgt u toegang tot Site Recovery bewaking.
 
-   **Locatie** | **Site Recovery IP-adres** |  **IP-adres van Site Recovery bewaking**
-    --- | --- | ---
-   US - oost | 13.82.88.226 | 104.45.147.24
-
+4. Maak een uitgaande HTTPS (443) beveiligings regel voor ' AzureSiteRecovery ' op de NSG. Hiermee krijgt u toegang tot Site Recovery-service in elke regio.
 
 ## <a name="network-virtual-appliance-configuration"></a>Configuratie van virtueel netwerk apparaat
 

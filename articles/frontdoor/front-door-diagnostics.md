@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 229706ff91b776363d3e9de080e02cee5edf9c77
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e379e67fb733c968a755afd245d079239f559c89
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677897"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751396"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>Metrische gegevens en logboeken bewaken in de Azure front-deur-service
 
@@ -29,16 +29,16 @@ Met behulp van de Azure front-deur service kunt u bronnen op de volgende maniere
 
 Metrische gegevens zijn een functie voor bepaalde Azure-resources waarmee u prestatie meter items in de portal kunt weer geven. Hieronder vindt u de beschik bare metrische gegevens voor de voor deur:
 
-| Gegevens | De naam van de metrische gegevens weergeven | Eenheid | Dimensies | Description |
+| Gegevens | De naam van de metrische gegevens weergeven | Eenheid | Dimensies | Beschrijving |
 | --- | --- | --- | --- | --- |
-| RequestCount | Aantal aanvragen | Count | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Het aantal client aanvragen dat door de voor deur wordt geleverd.  |
+| RequestCount | Aantal aanvragen | Aantal | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Het aantal client aanvragen dat door de voor deur wordt geleverd.  |
 | RequestSize | Aanvraag grootte | Bytes | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Het aantal bytes dat is verzonden als aanvragen van clients naar de voor deur. |
 | ResponseSize | Grootte van antwoord | Bytes | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Het aantal bytes dat is verzonden als reacties van de voor deur naar clients. |
 | TotalLatency | Totale latentie | Milliseconden | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | De tijd die wordt berekend op basis van de aanvraag van de client die wordt ontvangen door de voor deur totdat de client de laatste reactie van de voor deur heeft bevestigd. |
-| BackendRequestCount | Aantal back-aanvragen | Count | HttpStatus</br>HttpStatusGroup</br>Back-end | Het aantal aanvragen dat van de voor deur naar de back-end wordt verzonden. |
+| BackendRequestCount | Aantal back-aanvragen | Aantal | HttpStatus</br>HttpStatusGroup</br>Back-end | Het aantal aanvragen dat van de voor deur naar de back-end wordt verzonden. |
 | BackendRequestLatency | Latentie van back-upaanvraag | Milliseconden | Back-end | De tijd die wordt berekend vanaf het moment dat de aanvraag door de voor deur naar de back-end is verzonden tot de voor deur de laatste reactie byte van de back-end heeft ontvangen. |
-| BackendHealthPercentage | Back-status percentage | Percent | Back-end</br>BackendPool | Het percentage geslaagde status tests van front-deur naar back-end. |
-| WebApplicationFirewallRequestCount | Aantal aanvragen voor Web Application firewall | Count | policyName</br>RuleName</br>Action | Het aantal client aanvragen dat is verwerkt door de beveiligingslaag van de toepassingslaag. |
+| BackendHealthPercentage | Back-status percentage | Procent | Back-end</br>BackendPool | Het percentage geslaagde status tests van front-deur naar back-end. |
+| WebApplicationFirewallRequestCount | Aantal aanvragen voor Web Application firewall | Aantal | PolicyName</br>RuleName</br>Actie | Het aantal client aanvragen dat is verwerkt door de beveiligingslaag van de toepassingslaag. |
 
 ## <a name="activity-log"></a>Activiteiten logboeken
 
@@ -59,7 +59,7 @@ U krijgt toegang tot activiteiten Logboeken in uw front-deur service of alle log
 ## <a name="diagnostic-logging"></a>Diagnostische logboeken
 Diagnostische logboeken bieden uitgebreide informatie over bewerkingen en fouten die belang rijk zijn voor controle en probleem oplossing. Diagnostische logboeken verschillen van activiteiten Logboeken.
 
-Activiteiten logboeken bieden inzicht in de bewerkingen die worden uitgevoerd op Azure-resources. Diagnostische logboeken bieden inzicht in bewerkingen die door uw resource worden uitgevoerd. Zie [Azure monitor Diagnostische logboeken](../azure-monitor/platform/resource-logs-overview.md)voor meer informatie.
+Activiteiten logboeken bieden inzicht in de bewerkingen die worden uitgevoerd op Azure-resources. Diagnostische logboeken bieden inzicht in bewerkingen die door uw resource worden uitgevoerd. Zie [Azure monitor Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie.
 
 ![Diagnostische logboeken](./media/front-door-diagnostics/diagnostic-log.png)
 
@@ -73,14 +73,14 @@ Diagnostische logboeken configureren voor de voor deur-service:
 
 De voor deur-service biedt momenteel Diagnostische logboeken (batched per uur). Diagnostische logboeken bieden afzonderlijke API-aanvragen voor elke vermelding met het volgende schema:
 
-| Eigenschap  | Description |
+| Eigenschap  | Beschrijving |
 | ------------- | ------------- |
 | ClientIp | Het IP-adres van de client die de aanvraag heeft ingediend. |
 | ClientPort | De IP-poort van de client die de aanvraag heeft ingediend. |
-| httpMethod | De HTTP-methode die door de aanvraag wordt gebruikt. |
+| HttpMethod | De HTTP-methode die door de aanvraag wordt gebruikt. |
 | Http status code | De HTTP-status code die is geretourneerd door de proxy. |
 | HttpStatusDetails | De resulterende status van de aanvraag. De betekenis van deze teken reeks waarde is te vinden in een status verwijzings tabel. |
-| httpVersion | Het type van de aanvraag of verbinding. |
+| HttpVersion | Het type van de aanvraag of verbinding. |
 | RequestBytes | De grootte van het HTTP-aanvraag bericht in bytes, met inbegrip van de aanvraag headers en de hoofd tekst van de aanvraag. |
 | RequestUri | De URI van de ontvangen aanvraag. |
 | ResponseBytes | Bytes dat als reactie door de back-endserver wordt verzonden.  |

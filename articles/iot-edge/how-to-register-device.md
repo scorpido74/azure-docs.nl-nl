@@ -4,17 +4,17 @@ description: De IoT-extensie voor Azure CLI gebruiken om te registreren van een 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/12/2019
+ms.date: 01/08/2020
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5ab9c778adef29a8e531158e062e9d35d4e80ae4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32121681b14989f23e29c3701826b4494988c263
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434138"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772428"
 ---
 # <a name="register-an-azure-iot-edge-device"></a>Een Azure IoT Edge-apparaat registreren
 
@@ -22,9 +22,9 @@ Voordat u uw IoT-apparaten met Azure IoT Edge kunt gebruiken, moet u ze registre
 
 U kunt kiezen uit een van de volgende hulpprogram ma's:
 
-* [Azure Portal](https://portal.azure.com) biedt een graphical user interface om Azure-resources te maken, weer te geven en te beheren.
-* [Visual Studio code](https://code.visualstudio.com/) is een bron code-editor. Met Azure IoT-uitbrei dingen kunt u eenvoudig IoT-resources beheren met hetzelfde hulp programma voor het ontwikkelen van IoT-oplossingen.
-* [Azure cli](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) is een opdracht regel programma voor het beheer van Azure-resources. De herbruikbare opdrachten zijn handig voor het automatiseren van taken.
+* [Registreer een apparaat in de Azure Portal](#register-in-the-azure-portal) als u de voor keur geeft aan een graphical user interface om Azure-resources te maken, weer te geven en te beheren.
+* [Registreer een apparaat met Visual Studio code](#register-with-visual-studio-code) als u liever Azure IOT-resources wilt beheren op dezelfde locatie waar u uw IOT-oplossingen ontwikkelt.
+* [Registreer een apparaat met de Azure cli](#register-with-the-azure-cli) als u de voor keur geeft aan opdracht regel Programma's voor het beheren van Azure-resources of als u taken wilt automatiseren.
 
 ## <a name="register-in-the-azure-portal"></a>Registreren in de Azure Portal
 

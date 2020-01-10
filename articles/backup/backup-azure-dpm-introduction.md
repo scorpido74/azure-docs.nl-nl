@@ -3,12 +3,12 @@ title: De DPM-server voorbereiden op het maken van back-ups van workloads
 description: In dit artikel wordt beschreven hoe u back-ups van System Center-Data Protection Manager (DPM) kunt voorbereiden op Azure met behulp van de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: c7b662c07caecb7871ec9f8be89ffc76b8f7f5fb
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 2119d46ca6102286ca879777058a49938b501ad6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173138"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75753943"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Voorbereiden op back-ups van workloads naar Azure met System Center DPM
 
@@ -44,8 +44,8 @@ DPM op een Hyper-V-VM | System Center 2012 SP1 of hoger; System Center 2012 R2.
 DPM op een virtuele VMware-machine | System Center 2012 R2 met update pakket 5 of hoger.
 Onderdelen | Op de DPM-server moet Windows Power shell en .NET Framework 4,5 zijn geïnstalleerd.
 Ondersteunde apps | [Ontdek](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix) waar DPM een back-up van kan maken.
-Ondersteunde bestands typen | Er kan een back-up van deze bestands typen worden gemaakt met Azure Backup: versleuteld (alleen volledige back-ups); Gecomprimeerd (incrementele back-ups worden ondersteund); Sparse (incrementele back-ups worden ondersteund); Gecomprimeerd en verspreid (behandeld als sparse).
-Niet-ondersteunde bestands typen | Servers op hoofdletter gevoelige bestands systemen; vaste koppelingen (overgeslagen); reparsepunten (overgeslagen); versleuteld en gecomprimeerd (overgeslagen); versleuteld en verspreid (overgeslagen); Gecomprimeerde stroom; de stroom wordt geparseerd.
+Ondersteunde bestandstypen | Er kan een back-up van deze bestands typen worden gemaakt met Azure Backup: versleuteld (alleen volledige back-ups); Gecomprimeerd (incrementele back-ups worden ondersteund); Sparse (incrementele back-ups worden ondersteund); Gecomprimeerd en verspreid (behandeld als sparse).
+Niet-ondersteunde bestandstypen | Servers op hoofdletter gevoelige bestands systemen; vaste koppelingen (overgeslagen); reparsepunten (overgeslagen); versleuteld en gecomprimeerd (overgeslagen); versleuteld en verspreid (overgeslagen); Gecomprimeerde stroom; de stroom wordt geparseerd.
 Lokale opslag | Elke machine waarvan u een back-up wilt maken, moet over lokale vrije opslag beschikken die ten minste 5% van de grootte van de gegevens waarvan een back-up wordt gemaakt. Voor het maken van een back-up van 100 GB aan gegevens is bijvoorbeeld mini maal 5 GB beschik bare ruimte op de Scratch locatie vereist.
 Kluis opslag | Er is geen limiet voor de hoeveelheid gegevens waarvan u een back-up kunt maken naar een Azure Backup kluis, maar de grootte van een gegevens bron (bijvoorbeeld een virtuele machine of data base) mag niet groter zijn dan 54.400 GB.
 ExpressRoute van Azure | Als Azure ExpressRoute is geconfigureerd met persoonlijke of micro soft-peering, kan het niet worden gebruikt voor het maken van een back-up van de gegevens in Azure.<br/><br/> Als Azure ExpressRoute is geconfigureerd met open bare peering, kan dit worden gebruikt om een back-up te maken van de gegevens in Azure.<br/><br/> **Opmerking:** Open bare peering is afgeschaft voor nieuwe circuits.
@@ -134,7 +134,7 @@ Op elke machine waarvan een back-up wordt gemaakt door Azure Backup moet de back
 1. Klik in de DPM Administrator-console > **beheer**op **online**. Selecteer **Registreren**. De wizard Server registreren wordt geopend.
 2. Geef in **proxy configuratie**de proxy-instellingen op zoals vereist.
 
-    ![Proxy configuratie](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Proxy.png)
+    ![Proxyconfiguratie](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Proxy.png)
 3. In **back-upkluis**, bladert u naar het kluis referentie bestand dat u hebt gedownload en selecteert u dit.
 
     ![Kluis referenties](../../includes/media/backup-install-agent/DPM_SetupOnlineBackup_Credentials.jpg)
@@ -165,7 +165,7 @@ Op elke machine waarvan een back-up wordt gemaakt door Azure Backup moet de back
 
 7. Klik op **registreren** om de DPM-server te registreren bij de kluis.
 
-Nadat de server is geregistreerd bij de kluis en u bent nu klaar om te beginnen met een back-up van Microsoft Azure.
+Nadat de server is geregistreerd bij de kluis en u bent nu klaar om te beginnen met een back-up van Microsoft Azure. U moet de beveiligings groep in de DPM-console configureren om de werk belasting van een back-up te maken naar Azure. [Meer informatie over het](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-2019) implementeren van beveiligings groepen.
 
 ## <a name="troubleshoot-vault-credentials"></a>Problemen met kluis referenties oplossen
 

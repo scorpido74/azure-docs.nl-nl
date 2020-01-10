@@ -16,19 +16,19 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: ff6466ddc6b64dfe85ebfb190205859aeb39ad17
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 12a20abb4014712f26e5827bcd1d3c822e8b25a1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260841"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750724"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Diagnostische logboeken voor een Azure event hub instellen
 
 U kunt twee typen logboeken voor Azure Event Hubs bekijken:
 
-* **[Activiteiten logboeken](../azure-monitor/platform/activity-logs-overview.md)** : Deze logboeken bevatten informatie over de bewerkingen die worden uitgevoerd op een taak. De logboeken zijn altijd ingeschakeld.
-* **[Diagnostische logboeken](../azure-monitor/platform/resource-logs-overview.md)** : U kunt Diagnostische logboeken configureren voor een uitgebreidere weer gave van alles wat er gebeurt met een taak. Diagnostische logboeken voor activiteiten vanaf het moment dat de taak is gemaakt totdat de taak wordt verwijderd, met inbegrip van updates en activiteiten die plaatsvinden terwijl de taak wordt uitgevoerd.
+* **[Activiteitenlogboeken](../azure-monitor/platform/platform-logs-overview.md)** : deze logboeken zijn informatie over de bewerkingen die worden uitgevoerd op een andere taak. De logboeken zijn altijd ingeschakeld.
+* **[Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md)** : U kunt diagnostische logboeken voor een uitgebreidere weergave van alles wat er gebeurt met een taak configureren. Diagnostische logboeken voor activiteiten vanaf het moment dat de taak is gemaakt totdat de taak wordt verwijderd, met inbegrip van updates en activiteiten die plaatsvinden terwijl de taak wordt uitgevoerd.
 
 ## <a name="enable-diagnostic-logs"></a>Diagnostische logboeken inschakelen
 
@@ -54,7 +54,7 @@ Diagnostische logboeken zijn standaard uitgeschakeld. Volg deze stappen zodat lo
 
 Nieuwe instellingen van kracht in ongeveer 10 minuten. Hierna logboeken worden weergegeven in de geconfigureerde archivering doel, in de **diagnoselogboeken** deelvenster.
 
-Zie voor meer informatie over het configureren van diagnostische gegevens over de [overzicht van diagnostische logboeken in Azure](../azure-monitor/platform/resource-logs-overview.md).
+Zie voor meer informatie over het configureren van diagnostische gegevens over de [overzicht van diagnostische logboeken in Azure](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="diagnostic-logs-categories"></a>Categorieën van diagnostische logboeken
 
@@ -71,7 +71,7 @@ Alle logboeken worden opgeslagen in JavaScript Object Notation (JSON)-indeling. 
 
 Archief log JSON-tekenreeksen zijn onder andere elementen die worden vermeld in de volgende tabel:
 
-Name | Description
+Name | Beschrijving
 ------- | -------
 Taaknaam | Beschrijving van de taak die is mislukt.
 ActivityId | Interne ID, die wordt gebruikt voor het bijhouden.
@@ -109,7 +109,7 @@ De volgende code is een voorbeeld van een logboek archiveren JSON-tekenreeks:
 
 Operationeel logboek van JSON-tekenreeksen zijn onder andere elementen die worden vermeld in de volgende tabel:
 
-Name | Description
+Name | Beschrijving
 ------- | -------
 ActivityId | Interne ID gebruikt voor het bijhouden van gebruik.
 EventName | Naam van de bewerking.  

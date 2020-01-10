@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: e00da689820778a8cc7c5ce95184d4d8c79c70f2
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: bf83c87c71c8e05dc74d7754c82c76489de1bd85
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977706"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750891"
 ---
 # <a name="monitor-media-services-diagnostic-logs"></a>Diagnostische logboeken van Media Services controleren
 
@@ -181,8 +181,8 @@ Wellicht moet u vijf minuten wachten voordat de gebeurtenis in het opslagaccount
 ## <a name="see-also"></a>Zie ook
 
 * [Azure Monitor metrische gegevens](../../azure-monitor/platform/data-platform.md)
-* [Diagnostische logboeken Azure Monitor](../../azure-monitor/platform/resource-logs-overview.md)
-* [Logboek gegevens van uw Azure-resources verzamelen en gebruiken](../../azure-monitor/platform/resource-logs-overview.md)
+* [Diagnostische logboeken Azure Monitor](../../azure-monitor/platform/platform-logs-overview.md)
+* [Logboek gegevens van uw Azure-resources verzamelen en gebruiken](../../azure-monitor/platform/platform-logs-overview.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

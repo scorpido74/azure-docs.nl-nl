@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 807a5ede3feee115b1a8dc51fe14966731fc7784
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 4c451c62a16a70d85d75ee00c3e08758e27425f6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240775"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749969"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Gegevens verbinden vanuit Azure-activiteiten logboek
 
 
 
-U kunt Logboeken van [Azure-activiteiten logboek](../azure-monitor/platform/activity-logs-overview.md) streamen naar Azure Sentinel met één klik. Het activiteiten logboek is een abonnements logboek dat inzicht biedt in gebeurtenissen op abonnements niveau die zich hebben voorgedaan in Azure. Dit omvat een reeks gegevens, van Azure Resource Manager operationele gegevens naar updates op Service Health-gebeurtenissen. Met het activiteiten logboek kunt u de ' wat, wie en wanneer ' bepalen voor elke schrijf bewerking (PUT, POST, DELETE) die is gemaakt op de resources in uw abonnement. U kunt ook de status van de bewerking en andere relevante eigenschappen begrijpen. Het activiteiten logboek bevat geen lees bewerkingen (GET) of bewerkingen voor resources die gebruikmaken van het klassieke/' RDFE-model '. 
+U kunt Logboeken van [Azure-activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md) streamen naar Azure Sentinel met één klik. Het activiteiten logboek is een abonnements logboek dat inzicht biedt in gebeurtenissen op abonnements niveau die zich hebben voorgedaan in Azure. Het gaat hier om allerlei gegevens, van operationele gegevens van Azure Resource Manager tot updates van Service Health-gebeurtenissen. Met het activiteiten logboek kunt u de ' wat, wie en wanneer ' bepalen voor elke schrijf bewerking (PUT, POST, DELETE) die is gemaakt op de resources in uw abonnement. U kunt ook de status van de bewerking en andere relevante eigenschappen begrijpen. Het activiteiten logboek bevat geen lees bewerkingen (GET) of bewerkingen voor resources die gebruikmaken van het klassieke/' RDFE-model '. 
 
 
 ## <a name="prerequisites"></a>Vereisten
@@ -40,7 +40,7 @@ U kunt Logboeken van [Azure-activiteiten logboek](../azure-monitor/platform/acti
 
 2. Selecteer in het deel venster activiteiten logboek van Azure de abonnementen die u wilt streamen naar Azure Sentinel. 
 
-3. Klik op**Verbinden**.
+3. Klik op **Connect** (Verbinden).
 
 4. Als u het relevante schema in Log Analytics voor de Azure-activiteiten waarschuwingen wilt gebruiken, zoekt u naar **AzureActivity**.
 

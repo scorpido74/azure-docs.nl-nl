@@ -1,25 +1,21 @@
 ---
-title: 'Quickstart: leren werken met Azure App Configuration | Microsoft Docs'
+title: Quick start voor informatie over het gebruik van Azure-app configuratie
 description: Een quickstart voor het gebruik van Azure App Configuration met Java Spring-apps.
 services: azure-app-configuration
 documentationcenter: ''
-author: yidon
-manager: jeffya
+author: lisaguthrie
+manager: maiye
 editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.devlang: java
 ms.topic: quickstart
-ms.tgt_pltfrm: Spring
-ms.workload: tbd
-ms.date: 01/08/2019
-ms.author: yidon
-ms.openlocfilehash: e8f6f9ca610c515deca6ed1bdbee54f40cacf427
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 12/17/2019
+ms.author: lcozzens
+ms.openlocfilehash: 172fe646b294ca511a22128094c56172c4268018
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184941"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750275"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Snelstartgids: een Java-lente-app maken met Azure-app configuratie
 
@@ -39,13 +35,13 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een Java lente-app om
 
     | Sleutel | Waarde |
     |---|---|
-    | /application/config.message | Hello |
+    | /application/config.message | Hallo! |
 
     Laat het **Label** en het **inhouds type** nu leeg.
 
 ## <a name="create-a-spring-boot-app"></a>Een Spring Boot-app maken
 
-U gebruikt de [lente initialisatie functie](https://start.spring.io/) om een nieuw Spring boot-project te maken.
+Gebruik de [lente initialisatie functie](https://start.spring.io/) om een nieuw Spring boot-project te maken.
 
 1. Blader naar <https://start.spring.io/>.
 
@@ -54,7 +50,7 @@ U gebruikt de [lente initialisatie functie](https://start.spring.io/) om een nie
    * Genereer een **Maven**-project met **Java**.
    * Geef een **Spring boot** -versie op die gelijk is aan of groter is dan 2,0.
    * Geef de namen voor **Groep** en **Artefact** voor uw toepassing op.
-   * Voeg de afhankelijkheid **Web** toe.
+   * Voeg de **lente** webafhankelijkheid toe.
 
 3. Nadat u de vorige opties hebt opgegeven, selecteert u **project genereren**. Wanneer u hierom wordt gevraagd, downloadt u het project naar een pad op uw lokale computer.
 
@@ -68,13 +64,17 @@ U gebruikt de [lente initialisatie functie](https://start.spring.io/) om een nie
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M5</version>
+        <version>1.1.0</version>
     </dependency>
     ```
 
 3. Maak een nieuw Java-bestand met de naam *MessageProperties.java* in de pakketmap van uw app. Voeg de volgende regels toe:
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.context.properties.ConfigurationProperties;
+
     @ConfigurationProperties(prefix = "config")
     public class MessageProperties {
         private String message;
@@ -92,6 +92,11 @@ U gebruikt de [lente initialisatie functie](https://start.spring.io/) om een nie
 4. Maak een nieuw Java-bestand met de naam *HelloController.java* in de pakketmap van uw app. Voeg de volgende regels toe:
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.web.bind.annotation.GetMapping;
+    import org.springframework.web.bind.annotation.RestController;
+
     @RestController
     public class HelloController {
         private final MessageProperties properties;
@@ -110,34 +115,38 @@ U gebruikt de [lente initialisatie functie](https://start.spring.io/) om een nie
 5. Open het Java-bestand van de hoofdtoepassing en voeg `@EnableConfigurationProperties` toe om deze functie in te schakelen.
 
     ```java
+    import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
-    public class AzureConfigApplication {
+    public class DemoApplication {
         public static void main(String[] args) {
-            SpringApplication.run(AzureConfigApplication.class, args);
+            SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
 
 6. Maak een nieuw bestand met de naam `bootstrap.properties` in de map resources van uw app en voeg de volgende regels toe aan het bestand. Vervang de voorbeeld waarden door de juiste eigenschappen voor de app-configuratie opslag.
 
-    ```properties
+    ```CLI
     spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
     ```
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
 
 1. Maak een Spring boot-toepassing met maven en voer deze uit, bijvoorbeeld:
 
-    ```shell
+    ```CLI
     mvn clean package
     mvn spring-boot:run
     ```
+
 2. Nadat uw toepassing is uitgevoerd, gebruikt u *krul* om uw toepassing te testen, bijvoorbeeld:
 
-      ```shell
+      ```CLI
       curl -X GET http://localhost:8080/
       ```
+
     U ziet het bericht dat u hebt ingevoerd in de app-configuratie opslag.
 
 ## <a name="clean-up-resources"></a>Resources opschonen

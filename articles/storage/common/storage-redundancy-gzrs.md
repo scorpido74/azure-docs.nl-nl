@@ -8,18 +8,18 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e749dc48b1834aedbfea048c49c1f9090e5b5bb8
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: e1789122079d5cbc6f5914a6fd6a69a38df04e45
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534314"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748257"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Bouw Maxi maal beschik bare Azure Storage toepassingen met geo-zone-redundante opslag (GZRS) (preview)
 
 Geo-zone-redundante opslag (GZRS) (preview) trouwt de hoge Beschik baarheid van [zone-redundante opslag (ZRS)](storage-redundancy-zrs.md) met beveiliging van regionale storingen zoals bepaald door [geo-redundante opslag (GRS)](storage-redundancy-grs.md). Gegevens in een GZRS-opslag account worden gerepliceerd over drie [Azure-beschikbaarheids zones](../../availability-zones/az-overview.md) in de primaire regio en worden ook gerepliceerd naar een secundaire geografische regio voor beveiliging tegen regionale rampen. Elke Azure-regio is gekoppeld aan een andere regio binnen dezelfde geografie, waarbij een regionale koppeling wordt gemaakt. Raadpleeg de [documentatie](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)voor meer informatie en uitzonde ringen.
 
-Met een GZRS-opslag account kunt u door gaan met het lezen en schrijven van gegevens als een beschikbaarheids zone niet meer beschikbaar is of niet kan worden hersteld. Daarnaast zijn uw gegevens ook duurzaam in het geval van een volledige regionale onderbreking of een nood situatie waarin de primaire regio niet kan worden hersteld. GZRS is ontworpen om ten minste 99.99999999999999% (16 9) duurzaamheid van objecten in een bepaald jaar te bieden. GZRS biedt ook dezelfde [schaalbaarheids doelen](storage-scalability-targets.md) als LRS, ZRS, GRS of Ra-GRS. U kunt optioneel Lees toegang inschakelen voor gegevens in de secundaire regio met een geografisch redundante opslag met lees toegang (RA-GZRS) als uw toepassingen gegevens moeten kunnen lezen in het geval van een ramp in de primaire regio.
+Met een GZRS-opslag account kunt u door gaan met het lezen en schrijven van gegevens als een beschikbaarheids zone niet meer beschikbaar is of niet kan worden hersteld. Daarnaast zijn uw gegevens ook duurzaam in het geval van een volledige regionale onderbreking of een nood situatie waarin de primaire regio niet kan worden hersteld. GZRS is ontworpen om ten minste 99.99999999999999% (16 9) duurzaamheid van objecten in een bepaald jaar te bieden. GZRS biedt ook dezelfde schaalbaarheids doelen als LRS, ZRS, GRS of RA-GRS. U kunt optioneel Lees toegang inschakelen voor gegevens in de secundaire regio met een geografisch redundante opslag met lees toegang (RA-GZRS) als uw toepassingen gegevens moeten kunnen lezen in het geval van een ramp in de primaire regio.
 
 Micro soft raadt aan om GZRS te gebruiken voor toepassingen die consistentie, duurzaamheid, hoge Beschik baarheid, uitstekende prestaties en flexibiliteit voor herstel na nood gevallen vereisen. Voor de extra beveiliging van lees toegang tot de secundaire regio in het geval van een regionale ramp, schakelt u RA-GZRS in voor uw opslag account.
 
@@ -160,3 +160,4 @@ Een ondersteunings medewerker neemt contact met u op om hulp te bieden.
 - [Azure Storage-replicatie](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 - [Lokaal redundante opslag (LRS): lage kosten voor gegevens redundantie voor Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy-lrs)
 - [Zone-redundante opslag (ZRS): Maxi maal beschik bare Azure Storage toepassingen](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) 
+- [Schaalbaarheids-en prestatie doelen voor standaard opslag accounts](scalability-targets-standard-account.md)

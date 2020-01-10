@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 10da1c8e1a4516e3346e5a93cb9fffdac12e23ae
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
-ms.translationtype: HT
+ms.openlocfilehash: 87cdd3d18fe0e6a3655c8bbc940cdc00fa211e74
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638626"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750588"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Een virtueel netwerk maken, wijzigen of verwijderen
 
@@ -88,7 +88,7 @@ Voer de volgende taken uit voordat u de stappen in een van de secties van dit ar
    - **Eigenschappen**: geeft instellingen weer over het virtuele netwerk, met inbegrip van de resource-id van het virtuele netwerk en het Azure-abonnement waarin deze zich bevindt.
    - **Diagram**: het diagram biedt een visuele weer gave van alle apparaten die zijn verbonden met het virtuele netwerk. Het diagram bevat enkele belang rijke informatie over de apparaten. Als u een apparaat in deze weer gave wilt beheren, selecteert u het apparaat in het diagram.
    - **Algemene Azure-instellingen**: voor meer informatie over algemene Azure-instellingen raadpleegt u de volgende informatie:
-     - [Activiteitenlogboek](../azure-monitor/platform/activity-logs-overview.md)
+     - [Activiteitenlogboek](../azure-monitor/platform/platform-logs-overview.md)
      - [Toegangs beheer (IAM)](../role-based-access-control/overview.md)
      - [Tags](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Vergren delingen](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

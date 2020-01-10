@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d70e87a9a0c7fb9b28f2a025db15ce4ba666255
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 43e50f8787516b1877f7867419b6edfd819ad158
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379599"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746043"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Procedure: uw Azure AD-koppelings implementatie plannen
 
@@ -75,7 +75,7 @@ Wanneer u AD FS gebruikt, moet u de volgende WS-Trust-eind punten inschakelen: `
  `/adfs/services/trust/2005/certificatemixed`
  `/adfs/services/trust/13/certificatemixed`
 
-Als uw ID-provider deze protocollen niet ondersteunt, werkt Azure AD-deelname niet systeem eigen. Vanaf Windows 10 1809 kunnen uw gebruikers zich aanmelden bij een aan Azure AD gekoppeld apparaat met een id-provider op basis van SAML via de [webaanmelding in Windows 10](https://docs.microsoft.com/windows/whats-new/whats-new-windows-10-version-1809#web-sign-in-to-windows-10). Op dit moment is webaanmelding een preview-functie en wordt niet aanbevolen voor productie-implementaties.
+Als uw ID-provider deze protocollen niet ondersteunt, werkt Azure AD-deelname niet systeem eigen. 
 
 >[!NOTE]
 > Azure AD join's werkt momenteel niet met [AD FS 2019, geconfigureerd met externe verificatie providers als de primaire verificatie methode](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/additional-authentication-methods-ad-fs#enable-external-authentication-methods-as-primary). Azure AD-koppeling wordt standaard ingesteld op wachtwoord verificatie als primaire methode, wat resulteert in verificatie fouten in dit scenario
@@ -87,7 +87,7 @@ U kunt geen smart cards of verificatie op basis van certificaten gebruiken om ap
 
 **Aanbeveling:** Implementeer Windows hello voor bedrijven voor sterke, wacht woord-less verificatie voor Windows 10-apparaten.
 
-### <a name="user-configuration"></a>Gebruikers configuratie
+### <a name="user-configuration"></a>Gebruikersconfiguratie
 
 Als u gebruikers maakt in uw:
 
@@ -169,7 +169,7 @@ Gebruikers ontvangen SSO van apparaten die lid zijn van Azure AD als het apparaa
 
 Uw gebruikers hebben SSO van aan Azure AD gekoppelde apparaten wanneer een apparaat toegang heeft tot een on-premises domein controller.
 
-### <a name="printers"></a>Faxprinter
+### <a name="printers"></a>Printers
 
 Voor printers moet u [hybride Cloud afdrukken](https://docs.microsoft.com/windows-server/administration/hybrid-cloud-print/hybrid-cloud-print-deploy) implementeren voor het detecteren van printers op apparaten die zijn toegevoegd aan Azure AD. 
 
@@ -181,7 +181,7 @@ Apparaten die zijn toegevoegd aan Azure AD, bieden geen ondersteuning voor on-pr
 
 **Aanbeveling:** Overweeg deze toepassingen buiten gebruik te stellen en te verplaatsen naar hun moderne alternatieven.
 
-### <a name="remote-desktop-services"></a>Externe bureaubladservices
+### <a name="remote-desktop-services"></a>Extern bureaublad-services
 
 Voor verbinding met extern bureau blad met een aan Azure AD gekoppelde apparaten moet de hostcomputer lid zijn van Azure AD of lid zijn van een hybride Azure AD. Extern bureau blad vanaf een niet-samengevoegd of niet-Windows-apparaat wordt niet ondersteund. Zie [verbinding maken met een externe Azure AD-computer](https://docs.microsoft.com/windows/client-management/connect-to-remote-aadj-pc) voor meer informatie.
 
@@ -195,12 +195,12 @@ U kunt Azure AD-deelname inrichten met behulp van de volgende methoden:
  
 Hier volgt een vergelijking van deze drie benaderingen 
  
-|   | Self-service instellen | Windows auto pilot | Bulk inschrijving |
+|   | Self-service instellen | Windows Autopilot | Bulkinschrijving |
 | --- | --- | --- | --- |
 | Gebruikers interactie vereist voor het instellen van | Ja | Ja | Nee |
 | IT-inspanningen vereisen | Nee | Ja | Ja |
 | Toepasselijke stromen | OOBE-&-instellingen | Alleen OOBE | Alleen OOBE |
-| Lokale beheerders rechten voor primaire gebruiker | Standaard ja, | Configureer bare | Nee |
+| Lokale beheerders rechten voor primaire gebruiker | Standaard ja, | Configureerbaar | Nee |
 | OEM-ondersteuning van apparaat vereisen | Nee | Ja | Nee |
 | Ondersteunde versies | 1511+ | 1709+ | 1703+ |
  
@@ -266,7 +266,7 @@ Op basis van uw bereik gebeurt een van de volgende situaties:
 
 Er zijn drie Url's die betrekking hebben op uw MDM-configuratie:
 
-- URL voor MDM-gebruiks voorwaarden
+- URL voor MDM-gebruiksvoorwaarden
 - URL voor MDM-detectie 
 - URL voor MDM-naleving
 

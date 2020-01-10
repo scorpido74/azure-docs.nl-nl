@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 571d4cd395cd0cec0982fedf267a88143fd73872
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 9c95772c8f10d7170a06d1d6793545a60fc8dd7c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805736"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750735"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Een Linux java-app voor Azure App Service configureren
 
@@ -238,24 +238,37 @@ Als u deze geheimen wilt injecteren in het configuratie bestand voor de lente of
 
 ### <a name="using-the-java-key-store"></a>Het Java-sleutel archief gebruiken
 
-Standaard worden alle open bare of persoonlijke certificaten [die zijn geüpload naar app service Linux](../configure-ssl-certificate.md) geladen in het Java-sleutel archief wanneer de container wordt gestart. Dit betekent dat uw geüploade certificaten beschikbaar zijn in de verbindings context bij het maken van uitgaande TLS-verbindingen. Nadat u het certificaat hebt geüpload, moet u de App Service opnieuw opstarten zodat het in het Java-sleutel archief wordt geladen.
+Standaard worden alle open bare of persoonlijke certificaten [die zijn geüpload naar app service Linux](../configure-ssl-certificate.md) geladen in de respectieve Java-sleutel archieven wanneer de container wordt gestart. Nadat u het certificaat hebt geüpload, moet u de App Service opnieuw opstarten zodat het in het Java-sleutel archief wordt geladen. Open bare certificaten worden geladen in de sleutel opslagplaats op `$JAVA_HOME/jre/lib/security/cacerts`en persoonlijke certificaten worden opgeslagen in `$JAVA_HOME/lib/security/client.jks`.
 
-U kunt het Java-sleutel programma interactief gebruiken of fouten opsporen door [een SSH-verbinding](app-service-linux-ssh-support.md) met uw app service te openen en de opdracht `keytool`uit te voeren. Raadpleeg de [documentatie van het belang rijk hulp programma](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) voor een lijst met opdrachten. De certificaten worden opgeslagen in de standaard bestands locatie voor de opslag van een archief `$JAVA_HOME/jre/lib/security/cacerts`.
-
-Er is mogelijk aanvullende configuratie nodig voor het versleutelen van uw JDBC-verbinding. Raadpleeg de documentatie voor het gekozen JDBC-stuur programma.
+Er is mogelijk extra configuratie nodig voor het versleutelen van uw JDBC-verbinding met certificaten in het Java-sleutel archief. Raadpleeg de documentatie voor het gekozen JDBC-stuur programma.
 
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 - [MongoDB](https://mongodb.github.io/mongo-java-driver/3.4/driver/tutorials/ssl/)
-- [Cassandra](https://docs.datastax.com/developer/java-driver/4.3/)
+- [Cassandra](https://docs.datastax.com/en/developer/java-driver/4.3/)
 
+#### <a name="initializing-the-java-key-store"></a>Het Java-sleutel archief initialiseren
 
-#### <a name="manually-initialize-and-load-the-key-store"></a>De sleutel opslag hand matig initialiseren en laden
+Als u het `import java.security.KeyStore`-object wilt initialiseren, laadt u het bestand met de opslag plaats met het wacht woord. Het standaard wachtwoord voor beide sleutel archieven is "changeit".
 
-U kunt de sleutel opslag initialiseren en certificaten hand matig toevoegen. Maak een app-instelling `SKIP_JAVA_KEYSTORE_LOAD`, met de waarde `1` om App Service uit te scha kelen voor het automatisch laden van de certificaten in de sleutel opslag. Alle open bare certificaten die zijn geüpload naar App Service via de Azure Portal worden opgeslagen onder `/var/ssl/certs/`. Persoonlijke certificaten worden opgeslagen onder `/var/ssl/private/`.
+```java
+KeyStore keyStore = KeyStore.getInstance("jks");
+keyStore.load(
+    new FileInputStream(System.getenv("JAVA_HOME")+"/lib/security/cacets"),
+    "changeit".toCharArray());
 
-Raadpleeg [de officiële documentatie](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html)voor meer informatie over de API voor de-opslag.
+KeyStore keyStore = KeyStore.getInstance("pkcs12");
+keyStore.load(
+    new FileInputStream(System.getenv("JAVA_HOME")+"/lib/security/client.jks"),
+    "changeit".toCharArray());
+```
+
+#### <a name="manually-load-the-key-store"></a>Het sleutel archief hand matig laden
+
+U kunt certificaten hand matig laden naar de sleutel opslag. Maak een app-instelling `SKIP_JAVA_KEYSTORE_LOAD`, met de waarde `1` om App Service uit te scha kelen voor het automatisch laden van de certificaten in de sleutel opslag. Alle open bare certificaten die zijn geüpload naar App Service via de Azure Portal worden opgeslagen onder `/var/ssl/certs/`. Persoonlijke certificaten worden opgeslagen onder `/var/ssl/private/`.
+
+U kunt het Java-sleutel programma interactief gebruiken of fouten opsporen door [een SSH-verbinding](app-service-linux-ssh-support.md) met uw app service te openen en de opdracht `keytool`uit te voeren. Raadpleeg de [documentatie van het belang rijk hulp programma](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) voor een lijst met opdrachten. Raadpleeg [de officiële documentatie](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html)voor meer informatie over de API voor de-opslag.
 
 ## <a name="configure-apm-platforms"></a>APM-platforms configureren
 
@@ -373,7 +386,7 @@ Met het opstart script maakt u een [XSL-trans formatie](https://www.w3schools.co
 apk add --update libxslt
 
 # Usage: xsltproc --output output.xml style.xsl input.xml
-xsltproc --output /usr/local/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /home/tomcat/conf/server.xml
+xsltproc --output /home/tomcat/conf/server.xml /home/tomcat/conf/transform.xsl /usr/local/tomcat/conf/server.xml
 ```
 
 Hieronder vindt u een voor beeld van een XSL-bestand. Het XSL-voorbeeld bestand voegt een nieuw connector knooppunt toe aan de Tomcat-server. XML.

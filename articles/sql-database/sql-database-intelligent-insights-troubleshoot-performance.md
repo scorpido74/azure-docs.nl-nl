@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 01/25/2019
-ms.openlocfilehash: b6ec1952d730b6515032572def65806a1ccbc0b2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 386c44cbf7a86e1a1dc92b918d87d0d8c1e60dd2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810372"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744698"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Problemen met de Azure SQL Database prestaties oplossen met Intelligent Insights
 
@@ -35,7 +35,7 @@ Intelligent Insights detecteert automatisch prestatie problemen met de SQL Datab
 | [Bron limieten bereiken](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Het verbruik van beschik bare resources (Dtu's), data base worker-threads of data base-aanmeldings sessies die beschikbaar zijn op het bewaakte abonnement, heeft limieten bereikt. Dit is van invloed op de SQL Database prestaties. | Het verbruik van CPU-Resources bereikt de limieten voor beheerde exemplaren. Dit is van invloed op de prestaties van de data base. |
 | [Toename van de workload](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | Er is een verhoging of continue accumulatie van de werk belasting voor de data base gedetecteerd. Dit is van invloed op de SQL Database prestaties. | Er is een toename van de werk belasting gedetecteerd. Dit is van invloed op de prestaties van de data base. |
 | [Geheugen druk](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Werk nemers die aangevraagde geheugen subsidies, moeten wachten op geheugen toewijzingen voor statistisch significante hoeveel heden tijd. Of een grotere accumulatie van werk nemers die geheugen subsidies hebben aangevraagd. Dit is van invloed op de SQL Database prestaties. | Werk nemers die geheugen subsidies hebben aangevraagd, wachten op een statistisch significante hoeveelheid tijd op geheugen toewijzingen. Dit is van invloed op de prestaties van de data base. |
-| [Vergren delen](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Er is een buitensporige database vergrendeling gedetecteerd die van invloed is op de SQL Database prestaties. | Er is een buitensporige database vergrendeling gedetecteerd die invloed heeft op de prestaties van de data base. |
+| [Vergrendelen](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Er is een buitensporige database vergrendeling gedetecteerd die van invloed is op de SQL Database prestaties. | Er is een buitensporige database vergrendeling gedetecteerd die invloed heeft op de prestaties van de data base. |
 | [Verhoogde MAXDOP](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | De maximale mate van parallellisme (MAXDOP) is gewijzigd, wat van invloed is op de efficiëntie van de query-uitvoering. Dit is van invloed op de SQL Database prestaties. | De maximale mate van parallellisme (MAXDOP) is gewijzigd, wat van invloed is op de efficiëntie van de query-uitvoering. Dit is van invloed op de prestaties van de data base. |
 | [Pagelatch-conflicten](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Meerdere threads proberen gelijktijdig toegang te krijgen tot dezelfde gegevens buffer pagina's in het geheugen, wat resulteert in verhoogde wacht tijden en pagelatch-conflicten veroorzaakt. Dit is van invloed op de SQL database de prestaties. | Meerdere threads proberen gelijktijdig toegang te krijgen tot dezelfde gegevens buffer pagina's in het geheugen, wat resulteert in verhoogde wacht tijden en pagelatch-conflicten veroorzaakt. Dit is van invloed op de Data Base op de prestaties. |
 | [Ontbrekende index](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Ontbrekende index gevonden die van invloed is op de prestaties van de SQL database. | Ontbrekende index gevonden die van invloed is op de database prestaties. |
@@ -110,7 +110,7 @@ U kunt de werk belasting ook verminderen door deze te optimaliseren of te verdel
 
 Zie [geheugen subsidies Meditation: de verwarrende SQL Server Memory Consumer met veel namen](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/)voor aanvullende suggesties voor probleem oplossing.
 
-## <a name="locking"></a>Vergren delen
+## <a name="locking"></a>Vergrendelen
 
 ### <a name="what-is-happening"></a>Wat gebeurt er
 
@@ -331,4 +331,4 @@ Intelligent Insights is doorgaans één uur tijd nodig voor het uitvoeren van de
 - Leer [intelligent Insights](sql-database-intelligent-insights.md) -concepten.
 - Gebruik het [Intelligent Insights Azure SQL database prestatie logboek voor diagnostische gegevens](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Bewaak [Azure SQL database met behulp van Azure SQL-analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
-- Meer informatie over [het verzamelen en gebruiken van logboek gegevens van uw Azure-resources](../azure-monitor/platform/resource-logs-overview.md).
+- Meer informatie over [het verzamelen en gebruiken van logboek gegevens van uw Azure-resources](../azure-monitor/platform/platform-logs-overview.md).

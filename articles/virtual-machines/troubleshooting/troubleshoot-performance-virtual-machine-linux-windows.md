@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 50c0a670eb492aef01c3499bc2c8605917f4c7b8
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 176b0634fe2c7ee2f47162e439c4ea16bde77a8a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965475"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772615"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Problemen met prestaties van virtuele Azure-machines in Linux of Windows oplossen
 
@@ -26,11 +26,11 @@ In dit artikel worden algemene problemen met de prestaties van virtuele machines
 
 In dit artikel wordt beschreven hoe u bewaking gebruikt om prestatie knelpunten te diagnosticeren.
 
-## <a name="enabling-monitoring"></a>Bewaking inschakelen
+## <a name="enabling-monitoring"></a>-Bewaking inschakelen
 
 ### <a name="azure-iaas-virtual-machine-monitoring"></a>Azure IAAS-bewaking van virtuele machines
 
-Als u de gast-VM wilt controleren, gebruikt u de Azure VM-bewaking. Hiermee wordt u gewaarschuwd voor bepaalde resource voorwaarden op hoog niveau. Zie [overzicht van Azure-resource logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview#collecting-resource-logs)om te controleren of u de diagnostische gegevens van de virtuele machine hebt ingeschakeld. Als u het volgende ziet, hebt u waarschijnlijk niet de diagnostische gegevens ingeschakeld:
+Als u de gast-VM wilt controleren, gebruikt u de Azure VM-bewaking. Hiermee wordt u gewaarschuwd voor bepaalde resource voorwaarden op hoog niveau. Zie [overzicht van Azure-resource logboeken](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-resource-logs)om te controleren of u de diagnostische gegevens van de virtuele machine hebt ingeschakeld. Als u het volgende ziet, hebt u waarschijnlijk niet de diagnostische gegevens ingeschakeld:
 
 ![Bewaking is niet ingeschakeld](media/troubleshoot-performance-virtual-machine-linux-windows/1-virtual-machines-monitoring-not-enabled.png)
  
@@ -61,7 +61,7 @@ Opslag is een belang rijke laag wanneer we de IO-prestaties voor een virtuele ma
    1. Klik op overzicht voor het opslag account dat u hebt gevonden met de bovenstaande stap.
    2. Standaard waarden worden weer gegeven. 
 
-    ![Standaard waarden](media/troubleshoot-performance-virtual-machine-linux-windows/5-default-metrics.png)
+    ![Standaard metrische gegevens](media/troubleshoot-performance-virtual-machine-linux-windows/5-default-metrics.png)
 
 3. Klik op een van de metrische gegevens. hier wordt een andere Blade weer gegeven met meer opties voor het configureren en toevoegen van metrische gegevens.
 
@@ -137,9 +137,9 @@ In het geheugen gebruik ziet u hoeveel geheugen wordt verbruikt met de virtuele 
 
 Doorlopend en constant/constant continu gebruik: hoog geheugen gebruik is mogelijk niet de oorzaak van slechte prestaties, omdat sommige toepassingen, zoals relationele data base-engines, een grote hoeveelheid geheugen toewijzen en dit gebruik mogelijk niet significant is. Als er echter meerdere toepassingen met veel geheugen zijn, is het mogelijk dat er slechte prestaties van de geheugen conflicten ontstaan waardoor de schijf wordt verkleind en gewisseld of gewisseld. Deze slechte prestaties zijn vaak een merk bare oorzaak van de prestaties van de toepassing.
 
-Het verbruik wordt gestaag verhoogd, een mogelijke opwarming van de toepassing. dit verbruik is gebruikelijk bij het opstarten van data base-engines. Het kan echter ook worden ondertekend door een geheugenlek in een toepassing. Identificeer de toepassing en begrijp of het probleem wordt verwacht.
+Het verbruik wordt gestaag verhoogd, een mogelijke opwarming van de toepassing. dit verbruik is gebruikelijk bij het opstarten van data base-engines. Het kan echter ook duiden op een geheugenlek in een toepassing. Identificeer de toepassing en begrijp of het probleem wordt verwacht.
 
-Gebruik van pagina of wissel bestand: Controleer of u het Windows-wissel bestand (dat zich op D: \)-of Linux-wissel bestand bevindt (op `/dev/sdb`) gebruikt, intensief wordt gebruikt. Als u niets hebt met deze volumes, behalve deze bestanden, controleert u op deze schijven op hoog lezen/schrijven. Dit probleem duidt op weinig geheugen.
+Gebruik van pagina of wissel bestand: Controleer of u het Windows-wissel bestand (dat zich op D:\) of Linux-wissel bestand (op `/dev/sdb`) bevindt, intensief gebruikt. Als u niets hebt met deze volumes, behalve deze bestanden, controleert u op deze schijven op hoog lezen/schrijven. Dit probleem duidt op weinig geheugen.
 
 ### <a name="high-memory-utilization-remediation"></a>Herstel met hoog geheugen gebruik
 
@@ -187,7 +187,7 @@ Als er een drop in Beschik baarheid wordt weer geven, is er mogelijk een problee
 * ClientTimeOutError
 * ServerTimeOutError
 * AverageE2ELatency
-* Averageserverlatency aan
+* AverageServerLatency
 * TotalRequests
 
 Waarden in de * TimeOutError metrische gegevens geven aan dat een i/o-bewerking te lang duurde en time-out heeft. Door de volgende stappen te door lopen, kunt u mogelijke oorzaken identificeren.
@@ -212,11 +212,11 @@ Met nieuwe schijf aanbiedingen onder standaard opslag kunnen de limieten voor IO
 
 #### <a name="references"></a>Naslaginformatie
 
-* [Schaalbaarheids doelen voor schijven van virtuele machines](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-virtual-machine-disks)
+* [Schaalbaarheids-en prestatie doelen voor Premium-pagina-Blob Storage-accounts](../../storage/blobs/scalability-targets-premium-page-blobs.md)
 
 De band breedte van het opslag account wordt gemeten door de metrische gegevens van het opslag account: TotalIngress en TotalEgress. U hebt verschillende drempel waarden voor band breedte, afhankelijk van het type redundantie en regio's.
 
-* [Schaalbaarheids doelen voor blobs, wacht rijen, tabellen en bestanden](https://azure.microsoft.com/documentation/articles/storage-scalability-targets/#scalability-targets-for-blobs-queues-tables-and-files)
+* [Schaalbaarheids-en prestatie doelen voor standaard opslag accounts](../../storage/common/scalability-targets-standard-account.md)
 
 Controleer de TotalIngress en de TotalEgress op basis van de limieten voor inkomend en uitgaand verkeer voor het type en de regio van het opslag account.
 

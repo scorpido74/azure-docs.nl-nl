@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 3577c97b55baebe08ca4020b0c570160d551dfd3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 547ca9c98d77b2aaa6d3630bff4b2ec10dcc5be0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033076"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754168"
 ---
 # <a name="how-to-open-ports-and-endpoints-to-a-vm-in-azure-using-powershell"></a>Poorten en eind punten openen voor een virtuele machine in azure met behulp van Power shell
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -95,7 +95,7 @@ Voor Maxi maal beschik bare webtoepassingen moet u uw virtuele machines achter e
 ## <a name="next-steps"></a>Volgende stappen
 In dit voor beeld hebt u een eenvoudige regel gemaakt om HTTP-verkeer toe te staan. In de volgende artikelen vindt u informatie over het maken van meer gedetailleerde omgevingen:
 
-* [Overzicht van Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md)
+* [Overzicht van Azure Resource Manager](../../azure-resource-manager/management/overview.md)
 * [Wat is een netwerk beveiligings groep?](../../virtual-network/security-overview.md)
-* [Azure Resource Manager overzicht voor load balancers](../../load-balancer/load-balancer-arm.md)
+* [Overzicht van Azure Load Balancer](../../load-balancer/load-balancer-overview.md)
 

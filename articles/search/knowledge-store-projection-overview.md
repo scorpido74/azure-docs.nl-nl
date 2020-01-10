@@ -1,5 +1,5 @@
 ---
-title: Werken met projecties in een kennis archief (preview-versie)
+title: Prognoses in een kennis archief (preview-versie)
 titleSuffix: Azure Cognitive Search
 description: Sla uw verrijkte gegevens op in een Data Base van de AI-verrijkings pijp lijn naar een kennis Archief voor gebruik in andere scenario's dan zoeken in volledige tekst. Het kennis archief is momenteel beschikbaar als open bare preview.
 manager: nitinme
@@ -7,20 +7,20 @@ author: vkurpad
 ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 47c63118888bc0eaf7a025cd95e2a4c43d6a6cfb
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/08/2020
+ms.openlocfilehash: d8302b69f1e868536eb954a650a62f41e4006b82
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790000"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754522"
 ---
-# <a name="working-with-projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Werken met projecties in een Knowledge Store in azure Cognitive Search
+# <a name="projections-in-a-knowledge-store-in-azure-cognitive-search"></a>Prognoses in een kennis archief in azure Cognitive Search
 
 > [!IMPORTANT] 
 > Het kennis archief is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel beperkte ondersteuning voor portals en geen .NET SDK-ondersteuning.
 
-Azure Cognitive Search maakt inhouds verrijking mogelijk via ingebouwde cognitieve vaardig heden en aangepaste vaardig heden als onderdeel van het indexeren. Verrijkingen voegen structuur toe aan uw documenten en maakt effectiever zoeken. In veel gevallen zijn de verrijkte documenten handig voor andere scenario's dan zoeken, zoals voor kennis analyse.
+Azure Cognitive Search maakt inhouds verrijking mogelijk via ingebouwde cognitieve vaardig heden en aangepaste vaardig heden als onderdeel van het indexeren. Verrijkingen maken nieuwe informatie, waar ze nog niet aanwezig waren: het extra heren van informatie uit installatie kopieën, het detecteren van sentiment, sleutel zinnen en entiteiten uit tekst, om een paar te noemen. Verrijkingen voegen ook structuur toe aan niet-gedifferentieerde tekst. Al deze processen resulteren in documenten die het zoeken naar volledige tekst effectiever maken. In veel gevallen zijn verrijkte documenten handig voor andere scenario's dan zoeken, zoals voor kennis analyse.
 
 Projecties, een onderdeel van het [kennis archief](knowledge-store-concept-intro.md), zijn weer gaven van verrijkte documenten die kunnen worden opgeslagen in fysieke opslag voor kennis analyse. Met een projectie kunt u uw gegevens projecteren in een vorm die wordt afgestemd op uw behoeften, waardoor de relaties behouden blijven, zodat de hulpprogram ma's zoals Power BI de gegevens kunnen lezen zonder extra inspanning.
 
@@ -34,7 +34,7 @@ Het kennis archief ondersteunt drie soorten projecties:
 
 + **Bestanden**: wanneer u de afbeeldingen die zijn geëxtraheerd uit de documenten wilt opslaan, kunt u met bestands projectes de genormaliseerde installatie kopieën opslaan in Blob Storage.
 
-Als u de prognoses wilt weer geven die in de context zijn gedefinieerd, kunt u stapsgewijs aan de [slag met kennis opslag](knowledge-store-howto.md).
+Als u de prognoses wilt zien die in de context zijn gedefinieerd, kunt u stapsgewijs [een kennis archief maken in rest](knowledge-store-create-rest.md).
 
 ## <a name="projection-groups"></a>Projectie groepen
 
@@ -114,12 +114,6 @@ Hier volgt een voor beeld van tabel prognoses.
 
 Zoals gedemonstreerd in dit voor beeld, worden de sleutel zinnen en entiteiten gemodelleerd in verschillende tabellen en bevatten ze een verwijzing naar het bovenliggende item (MainTable) voor elke rij.
 
-<!---
-The following illustration is a reference to the Case-law exercise in [How to get started with knowledge store](knowledge-store-howto.md). In a scenario where a case has multiple opinions, and each opinion is enriched by identifying entities contained within it, you could model the projections as shown here.
-
-![Entities and relationships in tables](media/knowledge-store-projection-overview/TableRelationships.png "Modeling relationships in table projections")
---->
-
 ## <a name="object-projections"></a>Object projecties
 
 Object projecties zijn JSON-representaties van de verrijkings structuur die vanuit elk knoop punt kan worden gebrond. In veel gevallen kan dezelfde **shaper** -vaardigheid die een tabel projectie maakt, worden gebruikt voor het genereren van een object projectie. 
@@ -143,10 +137,8 @@ Object projecties zijn JSON-representaties van de verrijkings structuur die vanu
         {
           "objects": [
             {
-              "storageContainer": "Reviews", 
-              "format": "json", 
-              "source": "/document/Review", 
-              "key": "/document/Review/Id" 
+              "storageContainer": "hotelreviews", 
+              "source": "/document/hotel"
             }
           ]
         },
@@ -160,9 +152,8 @@ Object projecties zijn JSON-representaties van de verrijkings structuur die vanu
 
 Voor het genereren van een object projectie zijn enkele object-specifieke kenmerken vereist:
 
-+ storageContainer: de container waar de objecten worden opgeslagen
++ storageContainer: de BLOB-container waar de objecten worden opgeslagen
 + Bron: het pad naar het knoop punt van de verrijkings structuur die de basis vormt van de projectie
-+ sleutel: een pad dat een unieke sleutel vertegenwoordigt voor het object dat moet worden opgeslagen. Het wordt gebruikt om de naam van de BLOB in de container te maken.
 
 ## <a name="file-projection"></a>Bestands projectie
 
@@ -219,4 +210,4 @@ Ten slotte, als u uw gegevens uit het kennis archief moet exporteren, Azure Data
 Als volgende stap maakt u uw eerste kennis archief met behulp van voorbeeld gegevens en instructies.
 
 > [!div class="nextstepaction"]
-> [Een kennis archief maken](knowledge-store-howto.md).
+> [Maak een Knowledge Store in rest](knowledge-store-create-rest.md).

@@ -1,28 +1,21 @@
 ---
-title: Service Fabric Azure Files-volume stuur programma (GA) | Microsoft Docs
+title: Azure Files volume stuur programma voor Service Fabric
 description: Service Fabric ondersteunt het gebruik van Azure Files voor het maken van back-upvolumes in de container.
-services: service-fabric
-author: athinanthny
-manager: chackdan
-ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
-ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 6/10/2018
-ms.author: atsenthi
-ms.openlocfilehash: 1287df567c60b7ad851c94a8ba787270255d0f35
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 514a0cb12359d58e38ebc30ae12cdb277757f2b2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422781"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750036"
 ---
-# <a name="service-fabric-azure-files-volume-driver"></a>Service Fabric Azure Files-volume stuur programma
-De Azure Files volume-invoeg toepassing, een [docker volume-invoeg toepassing](https://docs.docker.com/engine/extend/plugins_volume/) die op [Azure files](/azure/storage/files/storage-files-introduction) gebaseerde volumes biedt voor docker-containers is nu **beschikbaar (algemeen verkrijgbaar)** .
+# <a name="azure-files-volume-driver-for-service-fabric"></a>Azure Files volume stuur programma voor Service Fabric
 
-Deze volume-invoegtoepassing voor Docker is verpakt als een Service Fabric-toepassing die kan worden geïmplementeerd in Service Fabric-clusters. Het doel van de invoegtoepassing is om volumes op basis van Azure Files te leveren aan andere Service Fabric-containertoepassingen die in het cluster zijn geïmplementeerd.
+Het Azure Files-volume stuur programma is een [docker volume-invoeg toepassing](https://docs.docker.com/engine/extend/plugins_volume/) die op [Azure files](/azure/storage/files/storage-files-introduction) gebaseerde volumes biedt voor docker-containers. Het is verpakt als een Service Fabric toepassing die kan worden geïmplementeerd in een Service Fabric cluster om volumes te bieden voor andere Service Fabric container toepassingen in het cluster.
 
 > [!NOTE]
-> Versie 6.5.661.9590 van de invoeg toepassing volume van Azure Files is een GA (algemeen beschikbaar) release. 
+> Versie 6.5.661.9590 van de invoeg toepassing voor het Azure Files-volume is uitgebracht voor algemene Beschik baarheid.
 >
 
 ## <a name="prerequisites"></a>Vereisten
@@ -61,7 +54,6 @@ In de sectie fabricSettings in uw Azure Resource Manager-sjabloon (voor Azure-im
   }
 ]
 ```
-
 
 ## <a name="deploy-a-sample-application-using-service-fabric-azure-files-volume-driver"></a>Een voorbeeld toepassing implementeren met behulp van Service Fabric Azure Files volume stuur programma
 

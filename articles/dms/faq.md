@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 07/10/2019
-ms.openlocfilehash: 11aec9c62c388155f8d90b7a89171937f22dd9d8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.date: 01/08/2020
+ms.openlocfilehash: fc0bac99aa70d7028412c68563a3024720fa49d9
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438003"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745409"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Veelgestelde vragen over het gebruik van Azure Database Migration Service
 
@@ -37,7 +37,7 @@ De service biedt momenteel ondersteuning voor verschillende bron-en doel paren o
 Andere migratie scenario's zijn beschikbaar als preview-versie en vereisen het indienen van een benoeming via de DMS-preview-site. Voor een volledig overzicht van de scenario's in de preview-versie en om u aan te melden om deel te nemen aan een van deze aanbiedingen, raadpleegt u de [DMS preview-site](https://aka.ms/dms-preview/).
 
 **V. welke versies van SQL Server ondersteunen Azure Database Migration Service als bron?**
-Bij de migratie van SQL Server worden ondersteunde bronnen voor Azure Database Migration Service SQL Server 2005 tot en met SQL Server 2017.
+Bij de migratie van SQL Server worden ondersteunde bronnen voor Azure Database Migration Service SQL Server 2005 tot en met SQL Server 2019.
 
 **V Azure Database Migration Service: wat is het verschil tussen een offline-en online migratie?**
 U kunt Azure Database Migration Service gebruiken om offline-en online migraties uit te voeren. Bij een *offline* migratie wordt de uitval tijd van toepassingen gestart wanneer de migratie wordt gestart. Bij een *online* migratie is downtime beperkt tot de tijd die aan het einde van de migratie moet worden afgekapt. We raden u aan eerst een offlinemigratie te testen om te bepalen of de downtime aanvaardbaar is. Zo niet, voer dan een onlinemigratie uit.
@@ -58,14 +58,14 @@ Er zijn verschillende vereisten vereist om ervoor te zorgen dat Azure Database M
 
 Azure Database Migration Service vereisten die gemeen schappelijk zijn voor alle ondersteunde migratie scenario's zijn onder andere het volgende:
 
-* Maak een VNet voor Azure Database Migration Service met behulp van het Azure Resource Manager-implementatie model, dat een site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-* Zorg ervoor dat de regels voor de netwerk beveiligings groep van uw Azure Virtual Network (VNet) niet de volgende communicatie poorten 443, 53, 9354, 445, 12000 blok keren. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)voor meer informatie over het filteren van NSG-verkeer van Azure VNet.
+* Maak een Microsoft Azure Virtual Network voor Azure Database Migration Service met behulp van het Azure Resource Manager implementatie model, dat site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+* Zorg ervoor dat de regels voor de netwerk beveiligings groep van uw virtuele netwerk niet de volgende communicatie poorten 443, 53, 9354, 445, 12000 blok keren. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)voor meer informatie over het filteren van NSG verkeer van virtuele netwerken.
 * Wanneer u een firewall apparaat voor uw bron database (s) gebruikt, moet u mogelijk firewall regels toevoegen om Azure Database Migration Service toegang te geven tot de bron database (s) voor de migratie.
 
 Zie de gerelateerde zelf studies in de Azure Database Migration Service [documentatie](https://docs.microsoft.com/azure/dms/dms-overview) op docs.Microsoft.com voor een lijst met alle vereisten die vereist zijn voor het concurreren van specifieke migratie scenario's met behulp van Azure database Migration service.
 
 **V. Hoe kan ik het IP-adres voor Azure Database Migration Service vinden zodat ik een acceptatie lijst kan maken voor de firewall regels die worden gebruikt voor toegang tot mijn bron database voor migratie?**
-Mogelijk moet u firewall regels toevoegen om Azure Database Migration Service toegang te geven tot uw bron database voor migratie. Het IP-adres voor de service is dynamisch, maar als u Express route gebruikt, wordt dit adres privé toegewezen door uw bedrijfs netwerk. De eenvoudigste manier om het juiste IP-adres te identificeren, is om de bijbehorende netwerk interface te zoeken in dezelfde resource groep als uw ingerichte Azure Database Migration Service bron. Normaal gesp roken begint de naam van de netwerk interface bron met het voor voegsel van de NIC en gevolgd door een unieke teken-en nummer reeks, bijvoorbeeld NIC-jj6tnztnmarpsskr82rbndyp. Als u deze netwerk interface bron selecteert, ziet u het IP-adres dat moet worden opgenomen in de acceptatie lijst op de pagina Resource overzicht Azure Portal.
+Mogelijk moet u firewall regels toevoegen om Azure Database Migration Service toegang te geven tot uw bron database voor migratie. Het IP-adres voor de service is dynamisch, maar als u ExpressRoute gebruikt, wordt dit adres privé toegewezen door uw bedrijfs netwerk. De eenvoudigste manier om het juiste IP-adres te identificeren, is om de bijbehorende netwerk interface te zoeken in dezelfde resource groep als uw ingerichte Azure Database Migration Service bron. Normaal gesp roken begint de naam van de netwerk interface bron met het voor voegsel van de NIC en gevolgd door een unieke teken-en nummer reeks, bijvoorbeeld NIC-jj6tnztnmarpsskr82rbndyp. Als u deze netwerk interface bron selecteert, ziet u het IP-adres dat moet worden opgenomen in de acceptatie lijst op de pagina Resource overzicht Azure Portal.
 
 Mogelijk moet u ook de poort bron opnemen die SQL Server luistert op de acceptatie lijst. Standaard is dit poort 1433, maar de bron SQL Server kan worden geconfigureerd voor het Luis teren op andere poorten. In dit geval moet u ook deze poorten opnemen in de acceptatie lijst. U kunt bepalen op welke poort SQL Server wordt geluisterd met behulp van een query voor dynamische beheer weergave:
 
@@ -85,8 +85,8 @@ U kunt ook bepalen welke poort SQL Server luistert door het SQL Server fouten lo
     GO
 ```
 
-**V. Hoe kan ik een Azure Virtual Network in te stellen?**
-Hoewel u meerdere micro soft-zelf studies hebt waarmee u het proces voor het instellen van een Azure VNET kunt door lopen, wordt de officiële documentatie weer gegeven in het artikel [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+**V. Hoe kan ik een Microsoft Azure Virtual Network in te stellen?**
+Hoewel u meerdere micro soft-zelf studies hebt waarmee u het proces voor het instellen van een virtueel netwerk kunt door lopen, wordt de officiële documentatie weer gegeven in het artikel [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
 
 ## <a name="usage"></a>Gebruik
 
@@ -106,7 +106,7 @@ Tijdens een typische, eenvoudige database migratie:
 ## <a name="troubleshooting-and-optimization"></a>Problemen oplossen en optimaliseren
 
 **V. Ik stel een migratie project in in DMS en ik ondervind problemen bij het maken van verbinding met mijn bron database. Wat moet ik doen?**
-Als u problemen hebt met het maken van verbinding met uw bron database systeem tijdens het werken met de migratie, maakt u een virtuele machine in het VNet waarmee u uw DMS-exemplaar hebt ingesteld. In de virtuele machine moet u een verbindings test kunnen uitvoeren, zoals het gebruik van een UDL-bestand om een verbinding met SQL Server te testen of om Robo 3T gebruiken te downloaden om MongoDB-verbindingen te testen. Als de verbindings test is geslaagd, hebt u geen probleem met het maken van verbinding met de bron database. Als de verbindings test niet slaagt, neemt u contact op met uw netwerk beheerder.
+Als u problemen ondervindt bij het maken van verbinding met uw bron database systeem tijdens het werken met de migratie, maakt u een virtuele machine in het virtuele netwerk waarmee u uw DMS-exemplaar hebt ingesteld. In de virtuele machine moet u een verbindings test kunnen uitvoeren, zoals het gebruik van een UDL-bestand om een verbinding met SQL Server te testen of om Robo 3T gebruiken te downloaden om MongoDB-verbindingen te testen. Als de verbindings test is geslaagd, hebt u geen probleem met het maken van verbinding met de bron database. Als de verbindings test niet slaagt, neemt u contact op met uw netwerk beheerder.
 
 **V. Waarom is mijn Azure Database Migration Service niet beschikbaar of gestopt?**
 Als de gebruiker de Azure Database Migration Service (DMS) expliciet stopt of als de service gedurende een periode van 24 uur inactief is, wordt de status van de service gestopt of automatisch onderbroken. In elk geval is de service niet beschikbaar en is de status gestopt.  Als u actieve migraties wilt hervatten, start u de service opnieuw.

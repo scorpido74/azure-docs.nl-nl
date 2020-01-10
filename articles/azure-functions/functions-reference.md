@@ -4,12 +4,12 @@ description: Meer informatie over de Azure Functions-concepten en-technieken die
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.openlocfilehash: 3ccfc28dc332d2ff90ec09256a43a9143e37c03b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7dd7ef3c4833fb9ffa3781f06faba4f40cd40cfb
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974220"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768995"
 ---
 # <a name="azure-functions-developers-guide"></a>Hand leiding Azure Functions ontwikkel aars
 In Azure Functions delen specifieke functies enkele kern technische concepten en onderdelen, ongeacht de taal of binding die u gebruikt. Lees de informatie in dit overzicht die van toepassing is op alle voor waarden, voordat u naar een bepaalde taal of binding gaat gaan.
@@ -102,4 +102,4 @@ Zie de volgende bronnen voor meer informatie:
 * [Azure-functies lokaal programmeren en testen](./functions-develop-local.md)
 * [Aanbevolen procedures voor Azure Functions](functions-best-practices.md)
 * [Naslag C# informatie voor Azure functions ontwikkel aars](functions-dotnet-class-library.md)
-* [Naslag informatie voor Azure Functions NodeJS-ontwikkel aars](functions-reference-node.md)
+* [Naslag informatie over Azure Functions node. js-ontwikkel aars](functions-reference-node.md)

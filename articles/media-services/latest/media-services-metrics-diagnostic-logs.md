@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 38fcda40a208da3f3f5aef5b13778ca38092d8f8
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 16897ad095afcacff04d53b0956a972c36a25893
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186120"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750814"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Media Services metrische gegevens en Diagnostische logboeken via Azure Monitor bewaken
 
 Met [Azure monitor](../../azure-monitor/overview.md) kunt u metrische gegevens en Diagnostische logboeken bewaken die u helpen begrijpen hoe uw apps worden uitgevoerd. Alle gegevens die worden verzameld door Azure Monitor, komen in een van de volgende twee fundamentele typen voor: metrieken en Logboeken. U kunt Media Services Diagnostische logboeken bewaken en waarschuwingen en meldingen maken voor de verzamelde metrische gegevens en Logboeken. U kunt de metrische gegevens visualiseren en analyseren met behulp van [Metrics Explorer](../../azure-monitor/platform/metrics-getting-started.md). U kunt logboeken naar [Azure Storage](https://azure.microsoft.com/services/storage/)verzenden, ze streamen naar [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/), ze exporteren naar [log Analytics](https://azure.microsoft.com/services/log-analytics/)of services van derden gebruiken.
 
-Zie [Azure monitor metrische gegevens](../../azure-monitor/platform/data-platform.md) en [Azure monitor Diagnostische logboeken](../../azure-monitor/platform/resource-logs-overview.md)voor een gedetailleerd overzicht.
+Zie [Azure monitor metrische gegevens](../../azure-monitor/platform/data-platform.md) en [Azure monitor Diagnostische logboeken](../../azure-monitor/platform/platform-logs-overview.md)voor een gedetailleerd overzicht.
 
 In dit onderwerp worden ondersteunde [Media Services metrische gegevens](#media-services-metrics) en [Media Services Diagnostische logboeken](#media-services-diagnostic-logs)beschreven.
 
@@ -42,7 +42,7 @@ Media Services biedt ondersteuning voor het bewaken van metrische gegevens voor 
 
 U kunt de metrische gegevens van het volgende account bewaken.
 
-|Metrische naam|Weergavenaam|Beschrijving|
+|Naam van metrische waarde|Weergavenaam|Beschrijving|
 |---|---|---|
 |AssetCount|Aantal assets|Assets in uw account.|
 |AssetQuota|Activa quotum|Activa quota in uw account.|
@@ -60,7 +60,7 @@ U moet ook [rekening quota's en beperkingen](limits-quotas-constraints.md)bekijk
 
 De volgende Media Services gegevens [stromen voor streaming-eind punten](https://docs.microsoft.com/rest/api/media/streamingendpoints) worden ondersteund:
 
-|Metrische naam|Weergavenaam|Beschrijving|
+|Naam van metrische waarde|Weergavenaam|Beschrijving|
 |---|---|---|
 |Aanvragen|Aanvragen|Geeft het totale aantal HTTP-aanvragen dat door het streaming-eind punt wordt geleverd.|
 |Uitgaand verkeer|Uitgaand verkeer|Het totale aantal uitgaande bytes. Bijvoorbeeld bytes die worden gestreamd door het streaming-eind punt.|
@@ -84,7 +84,7 @@ Zie [Media Services metrische gegevens bewaken](media-services-metrics-howto.md)
 
 ## <a name="media-services-diagnostic-logs"></a>Diagnostische logboeken Media Services
 
-Diagnostische logboeken bieden uitgebreide en frequente gegevens over de werking van een Azure-resource. Zie [logboek gegevens van uw Azure-resources verzamelen en gebruiken](../../azure-monitor/platform/resource-logs-overview.md)voor meer informatie.
+Diagnostische logboeken bieden uitgebreide en frequente gegevens over de werking van een Azure-resource. Zie [logboek gegevens van uw Azure-resources verzamelen en gebruiken](../../azure-monitor/platform/platform-logs-overview.md)voor meer informatie.
 
 Media Services ondersteunt de volgende Diagnostische logboeken:
 
@@ -92,7 +92,7 @@ Media Services ondersteunt de volgende Diagnostische logboeken:
 
 ### <a name="key-delivery"></a>Levering van sleutels
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |Aanvraag voor key delivery service|Logboeken die de informatie over de sleutel leverings service aanvragen weer geven. Zie [schema's](media-services-diagnostic-logs-schema.md)voor meer informatie.|
 
@@ -111,7 +111,7 @@ Zie [Diagnostische logboeken van media service bewaken](media-services-diagnosti
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Logboek gegevens van uw Azure-resources verzamelen en gebruiken](../../azure-monitor/platform/resource-logs-overview.md)
+* [Logboek gegevens van uw Azure-resources verzamelen en gebruiken](../../azure-monitor/platform/platform-logs-overview.md)
 * [Metrische waarschuwing maken, bekijken en beheren met Azure Monitor](../../azure-monitor/platform/alerts-metric.md)
 * [Media Services metrische gegevens controleren](media-services-metrics-howto.md)
 * [Diagnostische logboeken van Media Services bewaken](media-services-diagnostic-logs-howto.md)

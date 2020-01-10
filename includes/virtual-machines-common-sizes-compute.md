@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 21b982389b186e949b21352f4b11bd6b4aa06dcb
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dd94f29317e703a68ba1b4a78639f635034d4492
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279164"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75752059"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -31,7 +31,7 @@ Premium Storage: ondersteund
 
 Premium Storage caching: ondersteund
 
-| Grootte             | Vcpu's | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximaal aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
+| Grootte             | vCPUs | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | Maximaal aantal gegevensschijven | Maximale doorvoer voor schijven met caching en tijdelijke opslag: IOPS / MBps (cachegrootte in GiB) | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximum aantal Nic's/verwachte netwerk bandbreedte (Mbps) |
 |------------------|--------|-------------|----------------|----------------|--------------------------|--------------------------|-------------------------|
 | Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000/31 (32)           | 3200/47                | 2 / 875                 |
 | Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000/63 (64)           | 6400/95                | 2 / 1750               |
@@ -44,6 +44,15 @@ Premium Storage caching: ondersteund
 
 <sup>1</sup> virtuele machines uit de Fsv2-serie bieden een Intel® Hyper-Threading-technologie.
 
-<sup>2</sup> voor het gebruik van meer dan 64 vCPU is een van deze ondersteunde gast besturingssystemen vereist: Windows Server 2016, Ubuntu 16,04 LTS, SLES 12 SP2 en Red Hat Enterprise Linux, CentOS 7,3 of Oracle Linux 7,3 met Lis 4.2.1.
+<sup>2</sup> voor het gebruik van meer dan 64 vCPU is een van de volgende ondersteunde gast besturingssystemen vereist:
+- Windows Server 2016 of hoger
+- Ubuntu 16,04 LTS of hoger, met door Azure afgestemde kernel (4,15 kernel of hoger)
+- SLES 12 SP2 of hoger
+- RHEL of CentOS versie 6,7 tot en met 6,10, met het door micro soft meegeleverde LIS-pakket 4.3.1 (of hoger)
+- RHEL of CentOS versie 7,3, met het door micro soft meegeleverde LIS-pakket 4.2.1 (of hoger) geïnstalleerd
+- RHEL of CentOS versie 7,6 of hoger
+- Oracle Linux met UEK4 of hoger
+- Debian 9 met de backports-kernel, Debian 10 of hoger
+- CoreOS met een 4,14-kernel of hoger
 
 <sup>3</sup> exemplaar is geïsoleerd voor hardware die is toegewezen aan één klant.

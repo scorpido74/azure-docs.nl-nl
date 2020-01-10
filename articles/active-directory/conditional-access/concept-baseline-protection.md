@@ -5,28 +5,31 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: calebb, rogoya
+ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9bb384045c8b2e0a5743fdc301a829792639b7e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 55de5a5c604273225a85e49ca682980f83a951d2
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420556"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75767565"
 ---
 # <a name="what-are-baseline-policies"></a>Wat zijn basislijn beleidsregels?
 
-Basislijn beleid is een set vooraf gedefinieerde beleids regels waarmee organisaties worden beschermd tegen veel voorkomende aanvallen. Deze veelvoorkomende aanvallen kunnen wacht woord-spray, herhaling en phishing bevatten. Basislijn beleid is beschikbaar in alle versies van Azure AD. Micro soft maakt deze basis beveiligings beleidsregels voor iedereen beschikbaar, omdat aanvallen op basis van de identiteit in de afgelopen jaren zijn ontstaan. Het doel van deze vier beleids regels is om ervoor te zorgen dat alle organisaties een basis niveau van beveiliging hebben ingeschakeld zonder extra kosten.  
+Basislijn beleid is een set vooraf gedefinieerde beleids regels waarmee organisaties worden beschermd tegen veel voorkomende aanvallen. Deze veelvoorkomende aanvallen kunnen wacht woord-spray, herhaling en phishing bevatten. Basislijn beleid is beschikbaar in alle versies van Azure AD. Micro soft maakt deze basis beveiligings beleidsregels voor iedereen beschikbaar, omdat aanvallen op basis van de identiteit in de afgelopen jaren zijn ontstaan. Het doel van deze vier beleids regels is om ervoor te zorgen dat alle organisaties een basis niveau van beveiliging hebben ingeschakeld zonder extra kosten.
 
 Voor het beheren van het aangepaste beleid voor voorwaardelijke toegang is een Azure AD Premium-licentie vereist.
 
+> [!IMPORTANT]
+> Basislijn beleidsregels worden afgeschaft. [Wat is er nieuw in azure Active Directory?](../fundamentals/whats-new.md#replacement-of-baseline-policies-with-security-defaults) voor meer informatie.
+
 ## <a name="baseline-policies"></a>Basislijnbeleid
 
-![Basis beleid voor voorwaardelijke toegang in de Azure Portal](./media/concept-baseline-protection/conditional-access-policies.png)
+![Basis beleid voor voorwaardelijke toegang in de Azure Portal](./media/concept-baseline-protection/conditional-access-baseline-policies.png)
 
 Er zijn vier beleids regels voor de basis lijn:
 
@@ -36,6 +39,10 @@ Er zijn vier beleids regels voor de basis lijn:
 * MFA vereisen voor Service beheer (preview-versie)
 
 Deze vier van deze beleids regels zijn van invloed op oudere verificatie stromen, zoals POP-, IMAP-en oudere bureau blad-clients.
+
+### <a name="exclusions"></a>Uitzonderingen
+
+Wanneer basislijn beleidsregels in hun oorspronkelijke open bare preview worden opgenomen, is er een optie om gebruikers uit het beleid uit te sluiten. Deze functie wordt ontwikkeld door de preview-versie en is verwijderd in juli 2019. Organisaties die al uitsluitingen hadden gemaakt, konden hun nieuwe gebruikers blijven blijven gebruiken om uitsluitingen toe te voegen aan het beleid.
 
 ### <a name="require-mfa-for-admins-preview"></a>MFA vereisen voor beheerders (preview-versie)
 
@@ -60,8 +67,8 @@ Beheerders met een hoge bevoegdheid zijn niet de enige die zijn gericht op aanva
 
 **Beveiliging van eind gebruikers (preview)** is een basislijn beleid waarmee alle gebruikers in een directory worden beveiligd. Als u dit beleid inschakelt, moeten alle gebruikers binnen 14 dagen worden geregistreerd voor Azure Multi-Factor Authentication. Zodra de registratie is geregistreerd, worden gebruikers alleen om MFA gevraagd tijdens het aanmelden met een Risk ante poging. Gebruikers accounts die zijn aangetast, worden geblokkeerd tot het opnieuw instellen van het wacht woord en het risico zijn afgebroken. 
 
-[!NOTE]
-Gebruikers die eerder zijn gemarkeerd voor risico, worden geblokkeerd tot het opnieuw instellen van het wacht woord en het risico op beleids activering.
+> [!NOTE]
+> Gebruikers die eerder zijn gemarkeerd voor risico, worden geblokkeerd tot het opnieuw instellen van het wacht woord en het risico op beleids activering.
 
 ### <a name="block-legacy-authentication-preview"></a>Verouderde verificatie blok keren (preview-versie)
 
@@ -75,7 +82,7 @@ Het basis beleid **voor het blok keren van verouderde verificatie (preview)** bl
 
 Organisaties gebruiken verschillende Azure-Services en beheren ze via Azure Resource Manager op basis van hulpprogram ma's zoals:
 
-* Azure-portal
+* Azure Portal
 * Azure PowerShell
 * Azure-CLI
 
@@ -85,8 +92,8 @@ Voor het beveiligen van geprivilegieerde acties moet voor het beleid **MFA voor 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga voor meer informatie naar:
+Zie voor meer informatie:
 
+* [Standaard instellingen voor beveiliging inschakelen](../fundamentals/concept-fundamentals-security-defaults.md)
 * [Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
 * [Vijf stappen om uw identiteitsinfrastructuur te beveiligen](../../security/fundamentals/steps-secure-identity.md)
-* [Wat is voorwaardelijke toegang in Azure Active Directory?](overview.md)

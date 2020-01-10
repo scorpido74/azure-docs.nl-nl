@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: 2d2e929335f6af2ee24a81e719d9d0d899f7b8ef
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 114f710c9d0e85ecde4ab163401c714c5e28a708
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241840"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771595"
 ---
 # <a name="nativeazurefilesystemrequestbodytoolarge-appear-in-apache-spark-streaming-app-log-in-hdinsight"></a>"NativeAzureFileSystem... RequestBodyTooLarge ' worden weer gegeven in Apache Spark streaming-app-logboek in HDInsight
 
@@ -26,7 +26,7 @@ De fout: `NativeAzureFileSystem ... RequestBodyTooLarge` wordt weer gegeven in h
 
 Het Spark-gebeurtenis logboek bestand heeft waarschijnlijk de maximale bestands lengte voor WASB.
 
-In Spark 2,3 genereert elke Spark-app één Spark-gebeurtenis logboek bestand. Het Spark-gebeurtenis logboek bestand voor een Spark-streaming-app blijft groeien terwijl de app wordt uitgevoerd. Een bestand op WASB heeft nu een limiet van 50000 MB en de standaard blok grootte is 4 Mega bytes. In de standaard configuratie is de maximale bestands grootte 195 GB. Azure Storage heeft de maximale blok grootte echter verhoogd tot 100 MB, waardoor de limiet voor één bestand in feite tot 4,75 TB wordt teruggebracht. Zie [Azure Storage schaal baarheid en prestatie doelen](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets)voor meer informatie.
+In Spark 2,3 genereert elke Spark-app één Spark-gebeurtenis logboek bestand. Het Spark-gebeurtenis logboek bestand voor een Spark-streaming-app blijft groeien terwijl de app wordt uitgevoerd. Een bestand op WASB heeft nu een limiet van 50000 MB en de standaard blok grootte is 4 Mega bytes. In de standaard configuratie is de maximale bestands grootte 195 GB. Azure Storage heeft de maximale blok grootte echter verhoogd tot 100 MB, waardoor de limiet voor de afzonderlijke bestanden effectief wordt ingesteld op 4,75 TB. Zie [schaalbaarheids-en prestatie doelen voor Blob Storage](../../storage/blobs/scalability-targets.md)voor meer informatie.
 
 ## <a name="resolution"></a>Resolutie
 

@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: ed376a3f500f6d6af3d0eab7f98b68e856513600
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 66be29b6d16e422eebd381cddb83ce94adf9f76e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74547127"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745461"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Bewaking in azure Digital Apparaatdubbels configureren
 
@@ -26,7 +26,7 @@ Dit artikel bevat een overzicht van de opties voor logboek registratie en contro
 
 ## <a name="review-activity-logs"></a>Activiteiten logboeken controleren
 
-Azure- [activiteiten logboeken](../azure-monitor/platform/activity-logs-overview.md) bieden snelle inzichten in gebeurtenis-en bewerkings geschiedenis voor elk Azure-service-exemplaar.
+Azure- [activiteiten logboeken](../azure-monitor/platform/platform-logs-overview.md) bieden snelle inzichten in gebeurtenis-en bewerkings geschiedenis voor elk Azure-service-exemplaar.
 
 Gebeurtenissen op abonnements niveau zijn onder andere:
 
@@ -57,7 +57,7 @@ Voor geavanceerde activiteiten logboek registratie:
 
 ## <a name="enable-customer-diagnostic-logs"></a>Diagnostische logboeken van klanten inschakelen
 
-De [Diagnostische instellingen](../azure-monitor/platform/resource-logs-overview.md) van Azure kunnen voor elke Azure-instantie worden ingesteld op een aanvullende activiteiten logboek registratie. Hoewel activiteiten logboeken betrekking hebben op gebeurtenissen op abonnements niveau, biedt diagnostische logboek registratie inzicht in de operationele geschiedenis van de resources zelf.
+De [Diagnostische instellingen](../azure-monitor/platform/platform-logs-overview.md) van Azure kunnen voor elke Azure-instantie worden ingesteld op een aanvullende activiteiten logboek registratie. Hoewel activiteiten logboeken betrekking hebben op gebeurtenissen op abonnements niveau, biedt diagnostische logboek registratie inzicht in de operationele geschiedenis van de resources zelf.
 
 Voor beelden van diagnostische logboek registratie zijn:
 
@@ -127,8 +127,8 @@ Azure Digital Apparaatdubbels biedt ook ondersteuning voor toepassingsspecifieke
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over Azure- [activiteiten logboeken](../azure-monitor/platform/activity-logs-overview.md).
+- Meer informatie over Azure- [activiteiten logboeken](../azure-monitor/platform/platform-logs-overview.md).
 
-- Bedieping van de diagnostische instellingen van Azure door een [overzicht van Diagnostische logboeken](../azure-monitor/platform/resource-logs-overview.md)te lezen.
+- Bedieping van de diagnostische instellingen van Azure door een [overzicht van Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md)te lezen.
 
 - Lees meer over [Azure monitor-logboeken](../azure-monitor/log-query/get-started-portal.md).

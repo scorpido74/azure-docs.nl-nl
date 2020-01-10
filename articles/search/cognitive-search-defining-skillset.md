@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e9fd4602d661dd4223c8caa2ec02eaf56284735a
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 43251783cbcd6501562913b7b9cafb4f9f7cb3f1
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114554"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754561"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Een vakkennisset maken in een AI-pijp lijn in azure Cognitive Search 
 
@@ -249,7 +249,7 @@ Tot nu toe is deze structuur alleen intern, alleen geheugen en alleen gebruikt i
 
 [Knowledge Store](knowledge-store-concept-intro.md) is een preview-functie in azure Cognitive Search om uw verrijkte document op te slaan. Een kennis archief dat u maakt, ondersteund door een Azure Storage-account, is de opslag plaats waar uw verrijkte gegevens worden gelandd. 
 
-Een definitie van een kennis archief wordt toegevoegd aan een vaardig heden. Zie [How to start with Knowledge Store](knowledge-store-howto.md)(Engelstalig) voor een overzicht van het gehele proces.
+Een definitie van een kennis archief wordt toegevoegd aan een vaardig heden. Zie voor een overzicht van het hele proces [een kennis archief maken in rest](knowledge-store-create-rest.md).
 
 ```json
 "knowledgeStore": {

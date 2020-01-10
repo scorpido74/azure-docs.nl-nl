@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/04/2019
-ms.openlocfilehash: 92fe564b849c728952dd549757be42b8b5131b25
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 2ef7f273d6838b1bc051c70539ef7d9da59d7148
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791028"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754578"
 ---
 # <a name="introduction-to-ai-in-azure-cognitive-search"></a>Inleiding tot AI in azure Cognitive Search
 
@@ -105,19 +105,19 @@ Indexen worden gegenereerd op basis van een index schema waarmee de velden, kenm
 
 | Concept | Beschrijving| Koppelingen |
 |---------|------------|-------|
-| vaardig heden | Een resource op het hoogste niveau met een verzameling van vaardig heden. Een vakkennisset is de verrijkings pijplijn. De functie wordt aangeroepen tijdens het indexeren door een Indexeer functie. | Zie [een vaardig heden definiëren](cognitive-search-defining-skillset.md) |
+| Vaardig heden | Een resource op het hoogste niveau met een verzameling van vaardig heden. Een vakkennisset is de verrijkings pijplijn. De functie wordt aangeroepen tijdens het indexeren door een Indexeer functie. | Zie [een vaardig heden definiëren](cognitive-search-defining-skillset.md) |
 | Cognitieve vaardigheid | Een Atomic-trans formatie in een verrijkings pijplijn. Vaak is het een onderdeel dat de structuur extraheert of afleidt, en waarmee u uw inzichten in de invoer gegevens kunt verbeteren. Bijna altijd is de uitvoer op tekst gebaseerd en de verwerking is natuurlijke taal verwerking of afbeeldings verwerking, die tekst uit de afbeeldings invoer extraheert of genereert. Uitvoer van een vaardigheid kan worden toegewezen aan een veld in een index of worden gebruikt als invoer voor een downstream-verrijking. Een vaardigheid is vooraf gedefinieerd en wordt verzorgd door micro soft, of aangepast: gemaakt en geïmplementeerd door u. | [Ingebouwde cognitieve vaardig heden](cognitive-search-predefined-skills.md) |
-| Gegevens extractie | Geldt voor een breed scala aan verwerkings processen, maar met name voor AI-verrijking wordt de kwalificatie voor entiteits herkenning meestal gebruikt voor het extra heren van gegevens (een entiteit) van een bron die deze informatie niet zelf verstrekt. | Zie vaardigheid van [entiteits herkenning](cognitive-search-skill-entity-recognition.md) en [kwalificatie van document extractie (preview-versie)](cognitive-search-skill-document-extraction.md)| 
+| Ophalen van gegevens | Geldt voor een breed scala aan verwerkings processen, maar met name voor AI-verrijking wordt de kwalificatie voor entiteits herkenning meestal gebruikt voor het extra heren van gegevens (een entiteit) van een bron die deze informatie niet zelf verstrekt. | Zie vaardigheid van [entiteits herkenning](cognitive-search-skill-entity-recognition.md) en [kwalificatie van document extractie (preview-versie)](cognitive-search-skill-document-extraction.md)| 
 | Verwerking van installatiekopieën | Hiermee wordt tekst afgeleid van een afbeelding, zoals de mogelijkheid om een oriëntatie punt te herkennen of tekst uit een afbeelding uit te pakken. Veelvoorkomende voor beelden zijn onder andere OCR voor het opheffen van tekens uit een gescand document bestand (JPEG) of het herkennen van een straat naam in een foto met een straat teken. | Zie [afbeeldings vaardigheid vaardig heden](cognitive-search-skill-image-analysis.md) of [OCR-vaardigheid](cognitive-search-skill-ocr.md)
 | Natuurlijke taalverwerking | Tekst verwerking voor inzichten en informatie over tekst invoer. Taal detectie, sentiment analyse en extractie van sleutel zinnen zijn vaardig heden die onder de natuurlijke taal verwerking vallen.  | Zie [Sleuteltermextractie vaardig heden](cognitive-search-skill-keyphrases.md), [taaldetectie vaardigheid](cognitive-search-skill-language-detection.md), [vaardigheid van tekst vertalingen (preview)](cognitive-search-skill-text-translation.md), [sentimentanalyse vaardigheid](cognitive-search-skill-sentiment.md) |
-| Document kraken | Het proces waarbij tekst inhoud wordt geëxtraheerd of gemaakt op basis van niet-tekst bronnen tijdens het indexeren. Optische teken herkenning (OCR) is een voor beeld, maar dit is in het algemeen de functionaliteit van de Indexeer functie, omdat de indexer inhoud uit toepassings bestanden haalt. De gegevens bron die de bron bestands locatie levert en de definitie van de Indexeer functie die veld Toewijzingen levert, zijn beide belangrijkste factoren in het kraken van documenten. | Zie [overzicht van Indexeer functies](search-indexer-overview.md) |
+| Kraken van document | Het proces waarbij tekst inhoud wordt geëxtraheerd of gemaakt op basis van niet-tekst bronnen tijdens het indexeren. Optische teken herkenning (OCR) is een voor beeld, maar dit is in het algemeen de functionaliteit van de Indexeer functie, omdat de indexer inhoud uit toepassings bestanden haalt. De gegevens bron die de bron bestands locatie levert en de definitie van de Indexeer functie die veld Toewijzingen levert, zijn beide belangrijkste factoren in het kraken van documenten. | Zie [overzicht van Indexeer functies](search-indexer-overview.md) |
 | Vorm geven | Consolideer tekst fragmenten in een grotere structuur, of splits grotere tekst segmenten in een beheersbaar formaat voor verdere downstream-verwerking. | Zie [shaper-vaardigheid](cognitive-search-skill-shaper.md), [vaardigheid van tekst fusie](cognitive-search-skill-textmerger.md), [vaardigheid tekst splitsen](cognitive-search-skill-textsplit.md) |
 | Verrijkte documenten | Een interne tijdelijke structuur die tijdens de verwerking wordt gegenereerd, waarbij de uiteindelijke uitvoer wordt weer gegeven in een zoek index. Een vaardig heden bepaalt welke verrijkingen worden uitgevoerd. Veld Toewijzingen bepalen welke gegevens elementen aan de index worden toegevoegd. U kunt desgewenst een kennis archief maken om verrijkte documenten op te slaan en te verkennen met behulp van hulpprogram ma's als Storage Explorer, Power BI of een ander hulp programma dat verbinding maakt met Azure Blob Storage. | Zie [kennis archief (preview-versie)](knowledge-store-concept-intro.md) |
-| Indexer |  Een crawler die Doorzoek bare gegevens en meta gegevens ophaalt uit een externe gegevens bron en een index vult op basis van veld-naar-veld Toewijzingen tussen de index en uw gegevens bron voor het kraken van documenten. Voor AI-verrijkingen roept de Indexeer functie een vaardig heden aan en bevat de veld toewijzingen die de verrijkings uitvoer koppelen aan doel velden in de index. De definitie van de Indexeer functie bevat alle instructies en verwijzingen voor pijplijn bewerkingen en de pijp lijn wordt geactiveerd wanneer u de Indexeer functie uitvoert. Met aanvullende configuratie kunt u bestaande verwerking opnieuw gebruiken en alleen de stappen en vaardig heden uitvoeren die zijn gewijzigd. | Zie [Indexeer functies](search-indexer-overview.md) en [incrementele indexering (preview-versie)](cognitive-search-incremental-indexing-conceptual.md). |
-| Gegevens bron  | Een object dat door een Indexeer functie wordt gebruikt om verbinding te maken met een externe gegevens bron van ondersteunde typen in Azure. | Zie [overzicht van Indexeer functies](search-indexer-overview.md) |
+| Indexer |  Een crawler die Doorzoek bare gegevens en meta gegevens ophaalt uit een externe gegevens bron en een index vult op basis van veld-naar-veld Toewijzingen tussen de index en uw gegevens bron voor het kraken van documenten. Voor AI-verrijkingen roept de Indexeer functie een vaardig heden aan en bevat de veld toewijzingen die de verrijkings uitvoer koppelen aan doel velden in de index. De definitie van de Indexeer functie bevat alle instructies en verwijzingen voor pijplijn bewerkingen en de pijp lijn wordt geactiveerd wanneer u de Indexeer functie uitvoert. Met aanvullende configuratie kunt u bestaande verwerkte inhoud opnieuw gebruiken en alleen de stappen en vaardig heden uitvoeren die zijn gewijzigd. | Zie [Indexeer functies](search-indexer-overview.md) en [incrementele verrijking (preview-versie)](cognitive-search-incremental-indexing-conceptual.md). |
+| Gegevensbron  | Een object dat door een Indexeer functie wordt gebruikt om verbinding te maken met een externe gegevens bron van ondersteunde typen in Azure. | Zie [overzicht van Indexeer functies](search-indexer-overview.md) |
 | Index | Een persistente zoek index in azure Cognitive Search, gebouwd op basis van een index schema waarmee de veld structuur en het gebruik worden gedefinieerd. | Zie [een basis index maken](search-what-is-an-index.md) | 
 | Knowledge Store | Een opslag account waar de verrijkte documenten kunnen worden gevormd en worden geprojecteerd naast de zoek index | Zie [Inleiding tot het kennis archief](knowledge-store-concept-intro.md) | 
-| Indexeer functie cache | Een vaardigheids uitvoer van een opslag account wordt in de cache opgeslagen door de Indexeer functie. Met de cache kan de Indexeer de kosten voor het opnieuw verwerken van een groot aantal documenten beperken wanneer een vakkennisset wordt bewerkt. | Zie [incrementele indexering](cognitive-search-incremental-indexing-conceptual.md) | 
+| Cache | Een opslag account dat uitvoer in de cache bevat die is gemaakt door een verrijkings pijplijn. Als u de cache inschakelt, blijft bestaande uitvoer behouden die niet wordt beïnvloed door wijzigingen in een vaardig heden of andere onderdelen van de verrijkings pijplijn. | Zie [incrementele verrijking](cognitive-search-incremental-indexing-conceptual.md) | 
 
 <a name="where-do-i-start"></a>
 
@@ -139,7 +139,7 @@ U kunt REST-`api-version=2019-05-06` op aanvragen of de .NET SDK gebruiken. Als 
 
 In deze stap wordt gebruikgemaakt van de REST-Api's voor het bouwen van een AI-verrijkings oplossing. Er zijn slechts twee Api's toegevoegd of uitgebreid voor AI-verrijking. Andere Api's hebben dezelfde syntaxis als de algemeen beschik bare versies.
 
-| REST-API | Beschrijving |
+| REST API | Beschrijving |
 |-----|-------------|
 | [Gegevensbron maken](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Een bron voor het identificeren van een externe gegevens bron die bron gegevens levert die worden gebruikt voor het maken van verrijkte documenten.  |
 | [Vaardig heden maken (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Deze API is specifiek voor AI-verrijking. Het is een resource die het gebruik van [ingebouwde vaardig heden](cognitive-search-predefined-skills.md) en [aangepaste cognitieve vaardig heden](cognitive-search-custom-skill-interface.md) die in een verrijkings pijplijn worden gebruikt, coördineert tijdens het indexeren. |
@@ -174,4 +174,4 @@ Zie [probleemoplossings tips](cognitive-search-concept-troubleshooting.md)voor m
 + [Quick Start: AI-verrijking in een portal-overzicht](cognitive-search-quickstart-blob.md)
 + [Zelf studie: meer informatie over de AI-verrijkings Api's](cognitive-search-tutorial-blob.md)
 + [Kennis archief (preview-versie)](knowledge-store-concept-intro.md)
-+ [Overzicht van kennis winkels](knowledge-store-howto.md)
++ [Een kennis archief maken in REST](knowledge-store-create-rest.md)

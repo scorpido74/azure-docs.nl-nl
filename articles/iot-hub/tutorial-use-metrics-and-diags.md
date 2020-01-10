@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 88101aacab8b4745ce6bc9180521e66500086edd
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e0094add11755ecb0c303adf874abe5a4a8f5811
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084366"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746200"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Zelf studie: metrische gegevens en Diagnostische logboeken instellen en gebruiken met een IoT-hub
 
@@ -50,7 +50,7 @@ Voor deze zelfstudie hebt u een IoT-hub, een opslagaccount en een gesimuleerd Io
 
 Dit zijn de vereiste stappen.
 
-1. Maak een [resourcegroep](../azure-resource-manager/resource-group-overview.md). 
+1. Maak een [resourcegroep](../azure-resource-manager/management/overview.md). 
 
 2. Maak een IoT-hub.
 
@@ -125,7 +125,7 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ## <a name="enable-the-diagnostic-logs"></a>De diagnostische logboeken inschakelen 
 
-[Diagnostische logboeken](../azure-monitor/platform/resource-logs-overview.md) zijn standaard uitgeschakeld wanneer u een nieuwe IoT-hub maakt. Schakel in deze sectie de diagnostische logboeken voor uw hub in.
+[Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md) zijn standaard uitgeschakeld wanneer u een nieuwe IoT-hub maakt. Schakel in deze sectie de diagnostische logboeken voor uw hub in.
 
 1. Als u nog niet op uw hub in de portal bent, klikt u eerst op **Resourcegroepen** en vervolgens op de resourcegroep Contoso-Resources. Selecteer de hub in de lijst met weergegeven resources. 
 

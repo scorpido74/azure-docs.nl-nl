@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 5e416087df6c27eff42db487e90ff908d7d49df8
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 37baed076ca074c1d558af36649e90959a0034c9
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977689"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750871"
 ---
 # <a name="diagnostic-logs-schemas"></a>Schema's van diagnostische logboeken
 
 Met [Azure monitor](../../azure-monitor/overview.md) kunt u metrische gegevens en Diagnostische logboeken bewaken die u helpen begrijpen hoe uw toepassingen worden uitgevoerd. U kunt Media Services Diagnostische logboeken bewaken en waarschuwingen en meldingen maken voor de verzamelde metrische gegevens en Logboeken. U kunt logboeken naar [Azure Storage](https://azure.microsoft.com/services/storage/)verzenden, ze streamen naar [Azure Event hubs](https://azure.microsoft.com/services/event-hubs/)en exporteren naar [log Analytics](https://azure.microsoft.com/services/log-analytics/)of services van derden gebruiken.
 
-Zie [Azure monitor metrische](../../azure-monitor/platform/data-platform.md) gegevens en [Azure monitor Diagnostische logboeken](../../azure-monitor/platform/resource-logs-overview.md)voor meer informatie.
+Zie [Azure monitor metrische](../../azure-monitor/platform/data-platform.md) gegevens en [Azure monitor Diagnostische logboeken](../../azure-monitor/platform/platform-logs-overview.md)voor meer informatie.
 
 In dit artikel worden Media Services schema's voor diagnostische Logboeken beschreven.
 
@@ -38,7 +38,7 @@ Zie [ondersteunde services, schema's en categorieën voor Diagnostische logboeke
 
 Deze eigenschappen zijn specifiek voor het schema van het sleutel leverings logboek.
 
-|Naam|Beschrijving|
+|Name|Beschrijving|
 |---|---|
 |keyId|De ID van de aangevraagde sleutel.|
 |keyType|Dit kan een van de volgende waarden zijn: ' Clear ' (geen versleuteling), ' FairPlay ', ' PlayReady ' of ' Widevine '.|

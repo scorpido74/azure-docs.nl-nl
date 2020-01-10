@@ -17,12 +17,12 @@ ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98157009b5a005d1d1f9efbe2f59bac1302cdb01
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 5525f2f8ab4ef83ba9c3aeeff945bc9d875600d5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014320"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748659"
 ---
 # <a name="interpret-the-azure-ad-sign-in-logs-schema-in-azure-monitor"></a>Het schema voor logboek registraties van Azure AD interpreteren in Azure Monitor
 
@@ -145,7 +145,7 @@ In dit artikel wordt het Azure Active Directory (Azure AD)-aanmeldings logboek s
 
 | Veldnaam | Beschrijving |
 |------------|-------------|
-| Time | De datum en tijd, in UTC. |
+| Tijd | De datum en tijd, in UTC. |
 | ResourceId | Deze waarde is niet-toegewezen en u kunt dit veld veilig negeren.  |
 | OperationName | Voor aanmeldingen is deze waarde altijd *aanmeldings activiteit*. |
 | OperationVersion | De REST API versie die door de client is aangevraagd. |
@@ -162,7 +162,7 @@ In dit artikel wordt het Azure Active Directory (Azure AD)-aanmeldings logboek s
 | DurationMs |  Deze waarde is niet-toegewezen en u kunt dit veld veilig negeren. |
 | CallerIpAddress | Het IP-adres van de client die de aanvraag heeft ingediend. | 
 | CorrelationId | De optionele GUID die door de client wordt door gegeven. Deze waarde kan bijdragen aan de activiteiten aan de client zijde met bewerkingen aan de server zijde en is handig wanneer u Logboeken traceert die services omvatten. |
-| Identiteit | De identiteit van het token dat is gepresenteerd tijdens het maken van de aanvraag. Dit kan een gebruikers account, systeem account of Service-Principal zijn. |
+| Identity | De identiteit van het token dat is gepresenteerd tijdens het maken van de aanvraag. Dit kan een gebruikers account, systeem account of Service-Principal zijn. |
 | Niveau | Geeft het type bericht. Voor audit is het altijd *informatief*. |
 | Locatie | Hiermee wordt de locatie van de aanmeldings activiteit verstrekt. |
 | Eigenschappen | Een lijst met alle eigenschappen die aan aanmeldingen zijn gekoppeld. Zie [Microsoft Graph API-verwijzing](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin)voor meer informatie. In dit schema worden dezelfde kenmerk namen gebruikt als voor de aanmeldings resource, voor de Lees baarheid.
@@ -170,4 +170,4 @@ In dit artikel wordt het Azure Active Directory (Azure AD)-aanmeldings logboek s
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Interpret audit logs schema in Azure Monitor](reference-azure-monitor-audit-log-schema.md) (Auditlogboekenschema interpreteren in Azure Monitor)
-* [Meer informatie over Diagnostische logboeken van Azure](../../azure-monitor/platform/resource-logs-overview.md)
+* [Meer informatie over Diagnostische logboeken van Azure](../../azure-monitor/platform/platform-logs-overview.md)

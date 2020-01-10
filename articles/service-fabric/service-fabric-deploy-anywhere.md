@@ -1,51 +1,46 @@
 ---
-title: Overzicht van Azure als zelfstandige Service Fabric-clusters | Microsoft Docs
-description: U kunt Service Fabric-clusters maken op VM's of computers waarop Windows Server of Linux wordt uitgevoerd. Dit betekent dat u zich kunt implementeren en uitvoeren van Service Fabric-toepassingen in een omgeving waarin u werkt met een set van Windows Server of Linux-computers die verbonden on-premises, Microsoft Azure zijn, of met elke andere cloudprovider.
-services: service-fabric
-documentationcenter: .net
+title: Overzicht van Azure en zelfstandige Service Fabric clusters
+description: U kunt Service Fabric clusters maken op alle Vm's of computers met Windows Server of Linux. Dit betekent dat u Service Fabric-toepassingen kunt implementeren en uitvoeren in elke omgeving waar u een set Windows Server-of Linux-computers hebt die met elkaar zijn verbonden, Microsoft Azure of met een Cloud provider.
 author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: 19ca51e8-69b9-4952-b4b5-4bf04cded217
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 02/01/2019
+ms.date: 01/07/2020
 ms.author: dekapur
-ms.openlocfilehash: 6d5169d8ea4480e95e09228f9eb02bd78fdd0be8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: sfrev
+ms.openlocfilehash: a3627effe10039ded5007f9dd060bf1865929040
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393500"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751154"
 ---
-# <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Vergelijking van Azure en zelfstandige Service Fabric-clusters in Windows Server en Linux
-Een Service Fabric-cluster is een netwerk verbonden reeks virtuele of fysieke machines waarop uw microservices worden geïmplementeerd en beheerd. Een machine of virtuele machine die deel uitmaakt van een cluster wordt een clusterknooppunt genoemd. Clusters kunnen worden geschaald naar duizenden knooppunten. Als u nieuwe knooppunten aan het cluster toevoegt, rebalances Service Fabric de partitiereplica's service en de exemplaren in het grotere aantal knooppunten. Algemene verbetert de prestaties van toepassingen en conflicten voor toegang tot het geheugen vermindert. Als de knooppunten in het cluster niet efficiënt worden gebruikt, kunt u het aantal knooppunten in het cluster verminderen. Service Fabric rebalances opnieuw de partitiereplica's en exemplaren voor het kleinere aantal knooppunten om beter gebruik van de hardware op elk knooppunt.
+# <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Azure en zelfstandige Service Fabric clusters in Windows Server en Linux vergelijken
 
-Service Fabric kunt u het maken van Service Fabric-clusters op alle virtuele machines of computers waarop Windows Server of Linux wordt uitgevoerd. Dit betekent dat u kunt implementeren en uitvoeren van Service Fabric-toepassingen in een omgeving waar u een set van Windows Server of Linux-computers onderling hebt, on-premises, Microsoft Azure, worden, of met elke andere cloudprovider.
+Een Service Fabric cluster is een met het netwerk verbonden reeks virtuele of fysieke machines waarop uw micro services worden geïmplementeerd en beheerd. Een computer of virtuele machine die deel uitmaakt van een cluster, wordt een cluster knooppunt genoemd. Clusters kunnen worden geschaald naar duizenden knoop punten. Als u nieuwe knoop punten aan het cluster toevoegt, worden in Service Fabric de service partitie replica's en instanties over het verhoogde aantal knoop punten gebalanceerd. De algehele prestaties van toepassingen verbeteren en conflicten voor toegang tot het geheugen neemt af. Als de knoop punten in het cluster niet efficiënt worden gebruikt, kunt u het aantal knoop punten in het cluster verlagen. Service Fabric opnieuw, worden de partitie replica's en instanties over het aantal knoop punten verkleind om beter gebruik te maken van de hardware op elk knoop punt.
 
-## <a name="benefits-of-clusters-on-azure"></a>Voordelen van clusters op Azure
-In Azure bieden we integratie met andere Azure-functies en services, waarmee bewerkingen en het beheer van het cluster eenvoudiger en betrouwbaarder.
+Met Service Fabric kunt u Service Fabric-clusters maken op alle Vm's of computers met Windows Server of Linux. Dit betekent dat u Service Fabric-toepassingen kunt implementeren en uitvoeren in elke omgeving waar u een set Windows Server-of Linux-computers hebt die onderling zijn verbonden, deze on-premises, Microsoft Azure of met een Cloud provider.
 
-* **Azure-portal:** Azure-portal kunt eenvoudig maken en beheren van clusters.
-* **Azure Resource Manager:** Gebruik van Azure Resource Manager kunt eenvoudig beheer van alle resources die door het cluster worden gebruikt als een eenheid en kosten bijhouden en facturering vereenvoudigt.
-* **Service Fabric-Cluster als een Azure-Resource** A Service Fabric-cluster is een Azure-resource, dus u kunt het model, zoals u ook andere resources in Azure.
-* **Integratie met Azure-infrastructuur** coördineert de Service Fabric met de onderliggende Azure-infrastructuur voor OS-, netwerk en andere upgrades worden uitgevoerd voor betere beschikbaarheid en betrouwbaarheid van uw toepassingen.  
-* **Diagnostische gegevens:** We bieden integratie met Azure diagnostics in Azure, en logboeken van Azure Monitor.
-* **Automatisch schalen:** Voor clusters op Azure bieden we ingebouwde functionaliteit voor automatisch schalen vanwege een virtuele-machineschaalsets. In on-premises en andere cloudomgevingen hebt u uw eigen automatisch schalen functie of schaal handmatig met behulp van de API's die Service Fabric beschikbaar maakt voor het schalen van clusters.
+## <a name="benefits-of-clusters-on-azure"></a>Voor delen van clusters op Azure
 
-## <a name="benefits-of-standalone-clusters"></a>Voordelen van zelfstandige clusters
-* U staat op vrije keuze van alle cloudproviders voor het hosten van uw cluster.
-* Service Fabric-toepassingen, één keer worden geschreven, kunnen worden uitgevoerd in omgevingen met meerdere hosting met minimale geen wijzigingen.
-* Kennis van het bouwen van Service Fabric-toepassingen die zijn doorgevoerd in van de ene host-omgeving naar een andere.
-* Operationele ervaring uitvoeren en beheren van Service Fabric clusters uitvoert via van de ene omgeving naar een andere.
-* Brede klant bereik is het niet-gebonden hostingbeperkingen omgeving.
-* Er bestaat een extra laag voor betrouwbaarheid en de bescherming tegen storingen wijdverbreid omdat u de services verplaatsen kunt via naar een andere implementatieomgeving als een gegevensprovider center of in de cloud een onleesbaar heeft.
+In azure bieden we integratie met andere Azure-functies en-services, waardoor bewerkingen en beheer van het cluster eenvoudiger en betrouwbaarder kunnen zijn.
+
+* **Azure portal:** Azure Portal maakt het eenvoudig om clusters te maken en te beheren.
+* **Azure Resource Manager:** Gebruik van Azure Resource Manager maakt eenvoudig beheer mogelijk van alle resources die door het cluster als eenheid worden gebruikt en vereenvoudigt het bijhouden en factureren van kosten.
+* **Service Fabric cluster als een Azure-resource** Een Service Fabric cluster is een Azure-resource, zodat u het kunt model leren als andere resources in Azure.
+* **Integratie met Azure-infra structuur** Service Fabric coördineert met de onderliggende Azure-infra structuur voor het besturings systeem, het netwerk en andere upgrades om de beschik baarheid en betrouw baarheid van uw toepassingen te verbeteren.  
+* **Diagnostische gegevens:** In azure bieden we integratie met Azure Diagnostics en Azure Monitor logs.
+* **Automatisch schalen:** Voor clusters op Azure bieden we ingebouwde functionaliteit voor automatisch schalen vanwege schaal sets van virtuele machines. In on-premises en andere Cloud omgevingen moet u uw eigen functie voor automatisch schalen bouwen of hand matig schalen met behulp van de Api's die Service Fabric voor het schalen van clusters beschikbaar stelt.
+
+## <a name="benefits-of-standalone-clusters"></a>Voor delen van zelfstandige clusters
+
+* U kunt kiezen voor een Cloud provider om uw cluster te hosten.
+* Service Fabric toepassingen, zodra ze zijn geschreven, kunnen worden uitgevoerd in meerdere hosting omgevingen met minimale tot geen wijzigingen.
+* Kennis van het bouwen van Service Fabric toepassingen van een hostomgeving naar een andere omgeving.
+* Operationele ervaring van het uitvoeren en beheren van Service Fabric clusters is van de ene omgeving naar de andere.
+* Breed bereik van de klant is onbegrensd door de beperkingen van de hosting omgeving.
+* Er bestaat een extra laag van betrouw baarheid en beveiliging tegen wijde uitval, omdat u de Services kunt verplaatsen naar een andere implementatie omgeving als een Data Center of Cloud provider een stand-by heeft.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees het overzicht van [Service Fabric-clusters op Azure](service-fabric-azure-clusters-overview.md)
-* Lees het overzicht van [Service Fabric zelfstandige clusters](service-fabric-standalone-clusters-overview.md)
+* Lees het overzicht van [service Fabric clusters op Azure](service-fabric-azure-clusters-overview.md)
+* Lees het overzicht van [service Fabric zelfstandige clusters](service-fabric-standalone-clusters-overview.md)
 * Meer informatie over [ondersteuningsopties voor Service Fabric](service-fabric-support.md)

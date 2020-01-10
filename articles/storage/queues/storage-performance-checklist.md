@@ -8,24 +8,24 @@ ms.topic: overview
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: 8ab4cb6b06f0f023a8f6368dac633a97afe29fd4
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: eb1821537e6e25b05dfdca3107729eecf4c6e1bf
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390030"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750508"
 ---
 # <a name="performance-and-scalability-checklist-for-queue-storage"></a>Controle lijst voor prestaties en schaal baarheid voor wachtrij opslag
 
 Micro soft heeft een aantal bewezen procedures ontwikkeld voor het ontwikkelen van toepassingen met hoge prestaties met wachtrij opslag. Deze controle lijst bevat de belangrijkste procedures die ontwikkel aars kunnen volgen om de prestaties te optimaliseren. Houd bij het ontwerpen van uw toepassing en tijdens het proces de volgende procedures in acht.
 
-Azure Storage heeft schaal baarheid en prestatie doelen voor capaciteit, transactie snelheid en band breedte. Zie [Azure Storage schaal baarheid en prestatie doelen voor opslag accounts](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)voor meer informatie over Azure Storage schaalbaarheids doelen.
+Azure Storage heeft schaal baarheid en prestatie doelen voor capaciteit, transactie snelheid en band breedte. Zie [schaalbaarheids-en prestatie doelen voor standaard opslag accounts](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) en [schaal baarheid en prestatie doelen voor wachtrij opslag](scalability-targets.md)voor meer informatie over Azure Storage schaalbaarheids doelen.
 
 ## <a name="checklist"></a>Controlelijst
 
 In dit artikel worden bewezen procedures voor het uitvoeren van prestaties in een controle lijst georganiseerd die u kunt volgen tijdens het ontwikkelen van uw wachtrij opslag toepassing.
 
-| Klaar | Category | Ontwerp overweging |
+| Klaar | Categorie | Ontwerpoverwegingen |
 | --- | --- | --- |
 | &nbsp; |Schaalbaarheids doelen |[Kunt u uw toepassing zo ontwerpen dat deze niet meer dan het maximale aantal opslag accounts gebruikt?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Schaalbaarheids doelen |[Vermijdt u benadering van capaciteits-en transactie limieten?](#capacity-and-transaction-targets) |
@@ -51,7 +51,7 @@ In dit artikel worden bewezen procedures voor het uitvoeren van prestaties in ee
 
 Als uw toepassing een van de schaalbaarheids doelen benadert of overschrijdt, kunnen er meer trans acties of beperkingen optreden. Wanneer Azure Storage uw toepassing beperkt, begint de service met het retour neren van 503 (server bezet) of 500 (time-out voor bewerking). Als u deze fouten vermijdt door binnen de grenzen van de schaalbaarheids doelen te blijven, is een belang rijk onderdeel van het verbeteren van de prestaties van uw toepassing.
 
-Zie [Azure Storage schaal baarheid en prestatie doelen](/azure/storage/common/storage-scalability-targets?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#azure-queue-storage-scale-targets)voor meer informatie over de schaalbaarheids doelen voor de Queue-service.
+Zie [Azure Storage schaal baarheid en prestatie doelen](/azure/storage/queues/scalability-targets#scale-targets-for-queue-storage)voor meer informatie over de schaalbaarheids doelen voor de Queue-service.
 
 ### <a name="maximum-number-of-storage-accounts"></a>Maximum aantal opslag accounts
 
@@ -194,5 +194,6 @@ Gebruik wacht rijen om uw toepassings architectuur schaalbaar te maken. Hieronde
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Storage schaalbaarheids-en prestatie doelen voor opslag accounts](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
+- [Schaalbaarheids-en prestatie doelen voor wachtrij opslag](scalability-targets.md)
+- [Schaalbaarheids-en prestatie doelen voor standaard opslag accounts](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 - [Status en fout codes](/rest/api/storageservices/Status-and-Error-Codes2)

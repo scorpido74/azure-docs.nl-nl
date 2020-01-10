@@ -14,19 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: f6d521c7003583228990c80a90c1454821f584d3
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: bbfad994de663881e3aa03292fc0d0611a0d0933
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035270"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747796"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>PostgreSQL installeren en configureren op Azure
 PostgreSQL is een geavanceerde open source-data base, vergelijkbaar met Oracle en DB2. Het bevat bedrijfs klare functies, zoals volwaardige naleving, betrouw bare transactionele verwerking en gelijktijdigheids beheer met meerdere versies. Het biedt ook ondersteuning voor standaarden zoals ANSI SQL en SQL/MED (waaronder Foreign data-wrappers voor Oracle, MySQL, MongoDB en vele andere). Het is zeer uitbreidbaar met ondersteuning voor meer dan 12 procedurele talen, EGINNEN-en concept indexen, ondersteuning voor ruimtelijke gegevens en meerdere NoSQL functies voor JSON of op sleutel waarde gebaseerde toepassingen.
 
 In dit artikel wordt beschreven hoe u PostgreSQL kunt installeren en configureren op een virtuele Azure-machine waarop Linux wordt uitgevoerd.
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="install-postgresql"></a>PostgreSQL installeren
 > [!NOTE]
@@ -64,7 +63,7 @@ Maak verbinding met de virtuele Linux-machine die u hebt gemaakt via PuTTy. Als 
         # cd postgresql-9.3.5
    
         # ./configure --prefix=/opt/postgresql-9.3.5
-5. Als u alles wilt bouwen dat kan worden gemaakt, met inbegrip van de documentatie (HTML-en man-pagina's) en aanvullende modules (contrib), voert u de volgende opdracht uit:
+5. Als u alles wilt bouwen dat kan worden gemaakt, met inbegrip van de documentatie (HTML-en man-pagina's) en aanvullende modules (`contrib`), voert u de volgende opdracht uit:
    
         # gmake install-world
    
@@ -200,7 +199,7 @@ Voeg eerst gegevens in een rij in:
 
     INSERT INTO potluck (name, food, confirmed, signup_date) VALUES('John', 'Casserole', 'Y', '2012-04-11');
 
-U ziet deze uitvoer:
+Deze uitvoer ziet er ongeveer als volgt uit:
 
 ![installatiekopie](./media/postgresql-install/no6.png)
 
@@ -217,7 +216,7 @@ Gebruik de volgende opdracht om een tabel weer te geven:
 
     select * from potluck;
 
-De uitvoer is:
+Dit is de uitvoer:
 
 ![installatiekopie](./media/postgresql-install/no7.png)
 
@@ -226,7 +225,7 @@ Gebruik de volgende opdracht om gegevens in een tabel te verwijderen:
 
     delete from potluck where name=’John’;
 
-Hiermee verwijdert u alle gegevens in de rij ' Johan '. De uitvoer is:
+Hiermee verwijdert u alle gegevens in de rij ' Johan '. Dit is de uitvoer:
 
 ![installatiekopie](./media/postgresql-install/no8.png)
 

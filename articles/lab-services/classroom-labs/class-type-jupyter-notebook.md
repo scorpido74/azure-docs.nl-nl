@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: enewman
-ms.openlocfilehash: b69abf098ba7646ebc98d126c7c0d949205d6275
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 5bf54b6975475810650aeaee4b477e60255757bf
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383975"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75530677"
 ---
 # <a name="set-up-a-lab-to-teach-data-science-with-python-and-jupyter-notebooks"></a>Stel een lab in om data Science te leren met python-en Jupyter-notebooks
 
@@ -46,13 +46,13 @@ Gebruik de instellingen in de onderstaande tabel bij het instellen van een leslo
 | Lab-instellingen | Waarde/instructies |
 | ------------ | ------------------ |
 |Grootte van virtuele machine| Kleine GPU (Compute). Deze grootte is het meest geschikt voor computerintensieve en netwerkintensieve toepassingen, zoals kunst matige intelligentie en diep gaande lessen. |
-|Installatie kopie van virtuele machine| SQL Server 2019-standaard op Windows Server 2019|
+|Installatie kopie van virtuele machine| Virtuele machine voor datatechnologie - Windows 2016|
 
 ## <a name="template-machine"></a>Sjabloon machine
 
 De [Data Science virtual machine-](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) installatie kopie van Windows 2016 biedt de nodige diepe leer raamwerken en hulp middelen die vereist zijn voor dit type klasse.  De afbeelding bevat Jupyter-notebooks en Visual Studio code.  [Jupyter-notebooks](http://jupyter-notebook.readthedocs.io) is een webtoepassing waarmee gegevens wetenschappers onbewerkte gegevens kunnen maken, berekeningen kunnen uitvoeren en de resultaten in dezelfde omgeving worden weer gegeven.  Voor onze sjabloon machine wordt de webtoepassing lokaal uitgevoerd.  [Visual Studio code](https://code.visualstudio.com/) is een IDE die een rijke interactieve ervaring biedt bij het schrijven en testen van een notitie blok.  Zie [werken met Jupyter-notebooks in Visual Studio code](https://code.visualstudio.com/docs/python/jupyter-support)voor meer informatie.
 
-De resterende taak voor het instellen van de klasse is het leveren van lokale notitie blokken.  Zie [How to Configure an environment with Jupyter notebooks](../../machine-learning/service/how-to-configure-environment.md#jupyter)voor instructies over het gebruik van de Azure machine learning-voor beelden.  U kunt ook uw eigen notitie blokken op de sjabloon machine opgeven.  De notitie blokken worden gekopieerd naar alle studenten machines wanneer de sjabloon wordt gepubliceerd.
+De resterende taak voor het instellen van de klasse is het leveren van lokale notitie blokken.  Zie [How to Configure an environment with Jupyter notebooks](../../machine-learning/how-to-configure-environment.md#jupyter)voor instructies over het gebruik van de Azure machine learning-voor beelden.  U kunt ook uw eigen notitie blokken op de sjabloon machine opgeven.  De notitie blokken worden gekopieerd naar alle studenten machines wanneer de sjabloon wordt gepubliceerd.
 
 ## <a name="cost-estimate"></a>Kostenschatting
 

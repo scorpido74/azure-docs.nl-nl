@@ -1,124 +1,141 @@
 ---
-title: Steun limiet | Microsoft Docs
-description: Spot quotum aanvragen
+title: Het quotum van de virtuele machine naar de locatie | Microsoft Docs
+description: Verhoog de quotum limieten door punten te quotum aanvragen
 author: sowmyavenkat86
 ms.author: svenkat
 ms.date: 11/19/2019
 ms.topic: article
 ms.service: azure
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 09c9d7940314b691e6351353e6a0076510fdcb13
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b087315e02a61886fa6f4ef083c75ed6b5b60cf9
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850564"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750319"
 ---
-# <a name="spot-quota-limit-increase-for-all-vm-series"></a>Spot quotum: toename beperken voor alle VM-reeksen
+# <a name="spot-quota-increase-limits-for-all-vm-series"></a>Spot quotum: limieten voor alle VM-reeksen verhogen
 
-Spot Vm's bieden een ander model voor Azure-gebruik en verlaagt Azure een lagere kosten voor het verwijderen van een virtuele machine als nodig voor betalen per gebruik of gereserveerde implementaties van VM-exemplaren. Meer informatie over spot Vm's [vindt u hier](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot).
+Spot virtuele machines (Vm's) bieden een ander model voor Azure-gebruik. Ze laten u uitgaan van lagere kosten in Exchange, zodat Azure virtuele machines kan verwijderen als nodig is voor betalen per gebruik of gereserveerde implementaties van VM-exemplaren. Zie [Azure spot vm's voor virtuele-machine schaal sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/use-spot)voor meer informatie over spot vm's.
 
-Resource Manager ondersteunt twee typen vCPU-quota's voor virtuele machines. Voor de **vm's voor betalen per gebruik en gereserveerde VM-instanties** wordt standaard quotum gebruikt. **Spot-vm's** gebruiken steun quota. 
+Azure Resource Manager ondersteunt twee typen vCPU-quota's voor virtuele machines:
+* Voor *vm's met betalen per gebruik* en *gereserveerde VM-instanties* gelden een *standaard vCPU-quotum*.
+* Voor de *Spot-vm's* geldt een *vCPU-quotum*. 
 
-Voor het type **Spot quotum** worden vCPU-quota van Resource Manager afgedwongen voor alle beschik bare VM-reeksen als één regionale limiet.
+Voor het *quota type spot vCPU* worden vCPU-quota van Resource Manager afgedwongen voor alle beschik bare VM-reeksen als één regionale limiet.
 
-Telkens wanneer er een nieuwe spot-VM moet worden geïmplementeerd, mag de som van het nieuwe en bestaande Vcpu's-gebruik voor alle exemplaren van de virtuele machine van de VM niet groter zijn dan de goedgekeurde plaatsings vCPU quotum limiet. Als het steun quotum wordt overschreden, is de implementatie van de locatie-VM niet toegestaan. U kunt een toename van de Vcpu's quotum limiet van Azure Portal aanvragen. 
+Wanneer u een nieuwe spot-VM implementeert, mag het totale nieuwe en bestaande vCPU-gebruik voor alle exemplaren van de virtuele machine van de VM de goedgekeurde plaatsings vCPU-quotum limiet niet overschrijden. Als het steun quotum wordt overschreden, is de implementatie van de VM met steun niet toegestaan. 
 
-Meer informatie over Standard vCPU-quota's op de pagina vCPU quota voor virtuele machines en Azure-abonnement en service limieten. Meer informatie over het verhogen van de regionale vCPU limiet voor standaard quotum op deze [pagina](https://docs.microsoft.com/azure/azure-supportability/regional-quota-requests).
+In dit artikel wordt beschreven hoe u een toename van de vCPU-quotum limiet aanvraagt met behulp van de Azure Portal. 
 
-U kunt nu een toename van de **steun limieten voor alle VM-reeksen** aanvragen via de Blade **Help en ondersteuning** of de Blade **gebruik + quotum** in de portal.
+Zie vCPU voor [virtuele machines](https://docs.microsoft.com/azure/virtual-machines/windows/quotas) en Azure-abonnementen en- [service limieten](https://aka.ms/quotalimits)voor meer informatie over standaard-quota quota's. 
 
-## <a name="request-spot-quota-limit-increase-for-all-vm-series-per-subscription-using-the-help--support-blade"></a>Toename van de limiet voor het aantal van de VM-serie per abonnement verhogen met behulp van de Blade Help en ondersteuning
+Zie voor meer informatie over het verhogen van de limiet voor vCPU per regio [standaard quotum: regionale vCPU-limiet verhoging](https://docs.microsoft.com/azure/azure-supportability/regional-quota-requests).
 
-Volg de onderstaande instructies om een ondersteunings aanvraag te maken via de Blade Help en ondersteuning van Azure die beschikbaar zijn in de Azure Portal.
+## <a name="request-a-quota-limit-increase-from-the-help--support-pane"></a>Een verhoging van de quotum limiet aanvragen van het deel venster "Help + ondersteuning" 
 
-U kunt ook een **quotum aanvragen voor meerdere regio's** via één ondersteunings aanvraag. Raadpleeg stap 10 hieronder voor meer informatie. 
+Ga als volgt te werk om een verhoging van de limiet voor het aantal toegestane quota voor alle VM-Series in het deel venster **Help en ondersteuning** op te vragen:
 
+> [!NOTE]
+> U kunt ook een toename van de quotum limiet voor meerdere regio's aanvragen via één ondersteunings aanvraag. Zie voor meer informatie stap 8. 
 
-1. Selecteer in https://portal.azure.com**Help + ondersteuning**.
+1. Selecteer **Help en ondersteuning**in het linkerdeel venster van de [Azure Portal](https://portal.azure.com).
 
-   ![Help en ondersteuning](./media/resource-manager-core-quotas-request/helpsupport.png)
+   ![De koppeling Help + ondersteuning](./media/resource-manager-core-quotas-request/helpsupport.png)
  
-2.  Selecteer **Nieuwe ondersteuningsaanvraag**. 
+1. Selecteer in het deel venster **Help + ondersteuning** de optie **nieuwe ondersteunings aanvraag**. 
 
-     ![Nieuw ondersteuningsverzoek](./media/resource-manager-core-quotas-request/newsupportrequest.png)
+    ![Nieuw ondersteuningsverzoek](./media/resource-manager-core-quotas-request/newsupportrequest.png)
 
-3. Kies in de vervolg keuzelijst probleem type de optie **service-en abonnements limieten (quota's)** .
+1. Selecteer in de vervolg keuzelijst **probleem type** de optie **service-en abonnements limieten (quota's)** .
 
-   ![Vervolg keuzelijst probleem type](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
+   ![De vervolg keuzelijst probleem type](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
 
-4. Selecteer het abonnement waarvoor het quotum moet worden verhoogd.
+1. Selecteer in de vervolg keuzelijst **abonnement** het abonnement waarvan u het quotum wilt verhogen.
 
-   ![Abonnement-Nieuwsset selecteren](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
+   ![De vervolg keuzelijst abonnement](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
    
-5. Selecteer **Compute-VM (kernen-vcpu's) de limiet voor het abonnement** voor het **quotum type** in vervolg keuzelijst. 
+1. Selecteer in de vervolg keuzelijst **quotum type** **Compute-VM (kernen-vcpu's) de limiet voor abonnementen**. 
 
-   ![Quotum type selecteren](./media/resource-manager-core-quotas-request/select-quota-type.png)
+   ![De vervolg keuzelijst quotum type](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-6. Geef bij Details van het **probleem**aanvullende informatie op voor het verwerken van uw aanvraag door te klikken op **Details opgeven**.
+1. Selecteer het tabblad **Details** en klik onder Details van **probleem**op **Details opgeven**en voer aanvullende informatie in om uw aanvraag te verwerken.
 
-   ![Details opgeven](./media/resource-manager-core-quotas-request/provide-details.png)
+   ![De koppeling Details opgeven](./media/resource-manager-core-quotas-request/provide-details.png)
    
-7.  In het deel venster **quotum Details*** selecteert u **implementatie model** en selecteert u een **locatie**.
+1. Ga als volgt te werk in het deel venster **quotum Details** rechtsboven:
 
-![Details opgeven](./media/resource-manager-core-quotas-request/3-7.png)
+   ![Het deel venster quotum Details](./media/resource-manager-core-quotas-request/3-7.png)
 
-8. Selecteer voor de geselecteerde locatie waarde **type** als **' spot '** . U kunt de standaard-en steun quotum typen van één ondersteunings aanvraag aanvragen via ondersteuning voor meerdere selecties in het veld **type** . Meer informatie over het verhogen van het **standaard quotum per VM-serie** op deze [pagina](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+   a. Selecteer in de vervolg keuzelijst **implementatie model** het juiste model.
 
-![Details opgeven](./media/resource-manager-core-quotas-request/3-8.png)
+   b. Selecteer een locatie in de vervolg keuzelijst **locaties** . Voer voor de geselecteerde locatie onder **typen**in het vak **Selecteer een type** **plaats**in. 
+   
+   ![Het tabblad Details van de nieuwe ondersteunings aanvraag](./media/resource-manager-core-quotas-request/3-8.png)
 
-9.  Voer de nieuwe limiet in voor het abonnement. 
+    Onder **typen**kunt u zowel de standaard-als steun quotum typen van één ondersteunings aanvraag aanvragen via ondersteuning voor meerdere selecties. 
+    
+    Zie voor meer informatie [standaard quotum: de limiet voor het aantal VCPU per VM-serie wordt verhoogd](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+
+   c. Voer de nieuwe quotum limiet in die u voor dit abonnement wilt. 
  
- ![Details opgeven](./media/resource-manager-core-quotas-request/3-9.png)
+   ![Het tekstvak ' nieuwe vCPU-limiet '](./media/resource-manager-core-quotas-request/3-9.png)
 
-10. Als u een quotum wilt aanvragen voor meer dan één locatie, kunt u op een andere locatie controleren in de vervolg keuzelijst en selecteert u het juiste VM-type. U kunt vervolgens de nieuwe limieten invoeren die u wilt.
+1. Als u een quotum verhoging voor meer dan één locatie wilt aanvragen, selecteert u een extra locatie in de vervolg keuzelijst en selecteert u vervolgens een geschikt VM-type. U kunt vervolgens een limiet invoeren die van toepassing is op de extra locatie.
 
-![Details opgeven](./media/resource-manager-core-quotas-request/3-10.png)
+   ![Aanvullende locaties in het deel venster quotum Details](./media/resource-manager-core-quotas-request/3-10.png)
 
-11. Nadat u het gewenste quotum hebt ingevoerd, klikt u op **opslaan en door gaan** in het paneel quotum Details om door te gaan met het maken van de ondersteunings aanvraag.
+1. Selecteer **opslaan en door gaan** om door te gaan met het maken van het ondersteunings verzoek.
 
-## <a name="request-spot-quota-limit-increase-for-all-vm-series-per-subscription-using-usages--quota-blade"></a>Toename van de limiet voor het aantal van alle VM-reeksen per abonnement verhogen met behulp van de Blade gebruik + quotum
+## <a name="request-a-quota-limit-increase-from-the-subscriptions-pane"></a>Een verhoging van de quotum limiet aanvragen van het deel venster abonnementen
 
-Volg de onderstaande instructies voor het maken van een ondersteunings aanvraag via de Blade gebruik en quotum van Azure die beschikbaar is in de Azure Portal.
+Ga als volgt te werk om een verhoging van de limiet voor het aantal vm's voor alle VM-reeksen in het deel venster **abonnementen** aan te vragen:
 
-U kunt ook een **quotum aanvragen voor meerdere regio's** via één ondersteunings aanvraag. Raadpleeg stap 9 hieronder voor meer informatie. 
+> [!NOTE]
+> U kunt ook een toename van de quotum limiet voor meerdere regio's aanvragen via één ondersteunings aanvraag. Zie stap 7 voor meer informatie. 
 
-1.  Selecteer in https://portal.azure.com**abonnementen**.
+1. Selecteer in het linkerdeel venster van de [Azure Portal](https://portal.azure.com) **abonnementen**.
 
- ![Abonnementen](./media/resource-manager-core-quotas-request/subscriptions.png)
+   ![De koppeling abonnementen](./media/resource-manager-core-quotas-request/subscriptions.png)
 
-2.  Selecteer het abonnement waarvoor het quotum moet worden verhoogd.
+1. Selecteer het abonnement waarvan u het quotum wilt verhogen.
 
- ![Abonnement selecteren](./media/resource-manager-core-quotas-request/select-subscription.png)
+   ![Het deel venster abonnementen](./media/resource-manager-core-quotas-request/select-subscription.png)
 
-3.  Selecteer **gebruik en quota's**.
+1. Selecteer in het linkerdeel venster van de naam van uw **\<-abonnement >** pagina de optie **gebruik en quota's**.
 
- ![Gebruik en quota's selecteren](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
+   ![De koppeling gebruik en quota's](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
 
-4.  Selecteer in de rechter bovenhoek **aanvraag verhoging.**
+1. Selecteer in de rechter bovenhoek de optie **aanvraag verg Roten**.
 
    ![Toename aanvragen](./media/resource-manager-core-quotas-request/request-increase.png)
 
-5.  Selecteer **Compute-VM (kernen-vcpu's) de limiet** voor het offerte type wordt verhoogd.
+1. Selecteer in de vervolg keuzelijst **quotum type** **Compute-VM (kernen-vcpu's) de limiet voor abonnementen**.
 
-  ![Formulier invullen](./media/resource-manager-core-quotas-request/select-quota-type.png)
+   ![De vervolg keuzelijst quotum type](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-6.  Selecteer in het deel venster **quotum Details** het implementatie model en selecteer een locatie.
+1. Ga als volgt te werk in het deel venster **quotum Details** rechtsboven:
 
-  ![Formulier invullen](./media/resource-manager-core-quotas-request/3-2-6.png)
+   ![Het deel venster quotum Details](./media/resource-manager-core-quotas-request/3-2-6.png)
  
-7.  Selecteer voor de geselecteerde locatie waarde **type** als **' spot '.** U kunt de standaard-en steun quotum typen van één ondersteunings aanvraag aanvragen via ondersteuning voor meerdere selecties in het veld **type** . Meer informatie over het verhogen van het **standaard quotum per VM-serie** op deze [pagina](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+   a. Selecteer in de vervolg keuzelijst **implementatie model** het juiste model.
 
-  ![Formulier invullen](./media/resource-manager-core-quotas-request/3-2-7.png)
- 
-8.  Voer de nieuwe limiet in voor het abonnement.
+   b. Selecteer een locatie in de vervolg keuzelijst **locaties** . 
+   
+   c. Voer voor de geselecteerde locatie onder **typen**in het vak **Selecteer een type** **plaats**in.
 
-  ![Formulier invullen](./media/resource-manager-core-quotas-request/3-2-8.png)
- 
-9.  Als u een quotum wilt aanvragen voor meer dan één locatie, kunt u op een andere **locatie** controleren in de vervolg keuzelijst en selecteert u het juiste VM-type. U kunt vervolgens de nieuwe limieten invoeren die u wilt.
+   ![Het deel venster quotum Details](./media/resource-manager-core-quotas-request/3-2-7.png)
 
-  ![Formulier invullen](./media/resource-manager-core-quotas-request/3-2-9.png)
+   Zie voor meer informatie [standaard quotum: de limiet voor het aantal VCPU per VM-serie wordt verhoogd](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+
+   d. Voer de nieuwe quotum limiet in die u voor dit abonnement wilt.
+
+   ![Het tekstvak ' nieuwe vCPU-limiet '](./media/resource-manager-core-quotas-request/3-2-8.png)
  
-10. Nadat u het gewenste quotum hebt ingevoerd, klikt u op **opslaan en door gaan** in het paneel quotum Details om door te gaan met het maken van de ondersteunings aanvraag.
+1. Als u een quotum verhoging voor meer dan één locatie wilt aanvragen, selecteert u een extra locatie in de vervolg keuzelijst en selecteert u vervolgens een geschikt VM-type. U kunt vervolgens een limiet invoeren die van toepassing is op de extra locatie.
+
+   ![Aanvullende locaties in het deel venster quotum Details](./media/resource-manager-core-quotas-request/3-2-9.png)
+ 
+1. Selecteer **opslaan en door gaan** om door te gaan met het maken van het ondersteunings verzoek.
 
 

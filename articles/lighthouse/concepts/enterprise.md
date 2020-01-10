@@ -3,12 +3,12 @@ title: Azure Lighthouse in zakelijke scenario's
 description: De mogelijkheden van Azure Lighthouse kunnen worden gebruikt voor het vereenvoudigen van cross-Tenant beheer binnen een onderneming die gebruikmaakt van meerdere Azure AD-tenants.
 ms.date: 09/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: f610f943ed7faa0d2ad64ff2f1554cdd41d76ee8
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 91089a6fb1a965191489e87027ef508c7ebe2aa2
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463915"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749204"
 ---
 # <a name="azure-lighthouse-in-enterprise-scenarios"></a>Azure Lighthouse in zakelijke scenario's
 
@@ -38,7 +38,7 @@ In beide gevallen moet u [het principe van minimale bevoegdheid volgen om te def
 
 Azure Lighthouse en Azure delegated resource management bieden alleen logische koppelingen tussen een beheer Tenant en beheerde tenants, in plaats van fysiek gegevens of bronnen te verplaatsen. Bovendien gaat de Access altijd in slechts één richting, van de Tenant beheren naar de beheerde tenants.  Gebruikers en groepen in de Tenant beheren moeten multi-factor Authentication blijven gebruiken bij het uitvoeren van beheer bewerkingen op beheerde Tenant bronnen.
 
-Ondernemingen met interne of externe governance-en nalevings Guardrails kunnen [Azure-activiteiten logboeken](https://docs.microsoft.com/azure/azure-monitor/platform/activity-logs-overview) gebruiken om te voldoen aan hun transparantie vereisten. Wanneer ondernemings tenants beheer-en beheerde Tenant relaties hebben ingesteld, kunnen gebruikers in elke Tenant de acties die door de gebruikers in de andere Tenant worden uitgevoerd, bewaken en inzicht krijgen door de geregistreerde activiteit te bekijken.
+Ondernemingen met interne of externe governance-en nalevings Guardrails kunnen [Azure-activiteiten logboeken](../../azure-monitor/platform/platform-logs-overview.md) gebruiken om te voldoen aan hun transparantie vereisten. Wanneer ondernemings tenants beheer-en beheerde Tenant relaties hebben ingesteld, kunnen gebruikers in elke Tenant de acties die door de gebruikers in de andere Tenant worden uitgevoerd, bewaken en inzicht krijgen door de geregistreerde activiteit te bekijken.
 
 ## <a name="onboarding-process-considerations"></a>Overwegingen voor het onboarding-proces
 

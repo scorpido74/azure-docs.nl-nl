@@ -7,75 +7,54 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/18/2018
-ms.reviewer: yossiy
-ms.openlocfilehash: f8b8318a16b36593d2fbaf08bcbc19156dc96006
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.reviewer: yalavi
+ms.openlocfilehash: 1eebb41c83071f34cf367826a21c4bfbf0189394
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72820584"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748966"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Slimme detectie-fout afwijkingen
-[Application Insights](../../azure-monitor/app/app-insights-overview.md) waarschuwt u automatisch in bijna realtime als uw web-app een abnormale toename in de frequentie van mislukte aanvragen ondervindt. Er wordt een ongebruikelijke toename gedetecteerd met het aantal HTTP-aanvragen of afhankelijkheids aanroepen dat als mislukt wordt gerapporteerd. Voor aanvragen zijn mislukte aanvragen meestal die met antwoord codes van 400 of hoger. Om u te helpen het probleem te sorteren en te diagnosticeren, wordt een analyse van de kenmerken van de storingen en gerelateerde telemetrie in de melding gegeven. Er zijn ook koppelingen naar de Application Insights portal voor verdere diagnose. De functie heeft geen instellingen of configuratie nodig, omdat deze machine learning algoritmen gebruikt om het normale fout aantal te voors pellen.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) waarschuwt u automatisch in bijna realtime als uw web-app een abnormale toename in de frequentie van mislukte aanvragen ondervindt. Er wordt een ongebruikelijke toename gedetecteerd met het aantal HTTP-aanvragen of afhankelijkheids aanroepen dat als mislukt wordt gerapporteerd. Voor aanvragen bevat mislukte aanvragen meestal antwoord codes van 400 of hoger. Om u te helpen het probleem te sorteren en te diagnosticeren, wordt een analyse van de kenmerken van de fouten en gerelateerde toepassings gegevens weer gegeven in de waarschuwings Details. Er zijn ook koppelingen naar de Application Insights portal voor verdere diagnose. De functie heeft geen instellingen of configuratie nodig, omdat deze machine learning algoritmen gebruikt om het normale fout aantal te voors pellen.
 
-Deze functie werkt voor elke web-app, die wordt gehost in de Cloud of op uw eigen servers, die een aanvraag-of afhankelijkheids-telemetrie genereert, bijvoorbeeld als u een werk rollen hebt die [TrackRequest ()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) of [TrackDependency ()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)aanroept.
+Deze functie werkt voor elke web-app, die wordt gehost in de Cloud of op uw eigen servers, waarmee toepassings aanvragen of afhankelijkheids gegevens worden gegenereerd. Als u bijvoorbeeld een werknemersrol hebt die [TrackRequest ()](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) of [TrackDependency ()](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)aanroept.
 
-Nadat u Application Insights hebt ingesteld [voor uw project](../../azure-monitor/app/app-insights-overview.md)en uw app een bepaalde minimale hoeveelheid telemetrie heeft gegenereerd, duurt een slimme detectie van fout afwijkingen 24 uur om het normale gedrag van uw app te ontdekken, voordat deze wordt ingeschakeld en kan worden verzonden berichten.
+Na het instellen van [Application Insights voor uw project](../../azure-monitor/app/app-insights-overview.md), en als uw app een bepaalde minimale hoeveelheid gegevens genereert, neemt Slimme detectie van fout afwijkingen 24 uur in beslag om het normale gedrag van uw app te achterhalen, voordat deze wordt ingeschakeld en waarschuwingen kan verzenden.
 
-Hier volgt een voor beeld van een waarschuwing.
+Hier volgt een voor beeld van een waarschuwing:
 
-![Voor beeld van een Smart-detectie waarschuwing met een cluster analyse rondom fouten](./media/proactive-failure-diagnostics/013.png)
+[![](./media/proactive-failure-diagnostics/013.png "Sample smart detection alert showing cluster analysis around failure")](./media/proactive-failure-diagnostics/013.png#lightbox)
 
-> [!NOTE]
-> Standaard krijgt u een korter e-mail adres dan dit voor beeld. U kunt echter [overschakelen naar deze gedetailleerde indeling](#configure-alerts).
->
->
-
-U ziet dat u:
+In de details van de waarschuwing ziet u het volgende:
 
 * De fout frequentie vergeleken met het gedrag van de normale app.
 * Het aantal gebruikers waarop dit van toepassing is, zodat u weet hoeveel u zich kunt voordoen.
-* Een karakteristiek patroon dat is gekoppeld aan de fouten. In dit voor beeld is er een bepaalde antwoord code, aanvraag naam (Operation) en App-versie. Zo weet u meteen waar u moet beginnen met het zoeken naar uw code. Andere mogelijkheden zijn mogelijk een specifieke browser of client besturingssysteem.
+* Een karakteristiek patroon dat is gekoppeld aan de fouten. In dit voor beeld is er een bepaalde antwoord code, aanvraag naam (Operation) en toepassings versie. Zo weet u meteen waar u moet beginnen met het zoeken naar uw code. Andere mogelijkheden zijn mogelijk een specifieke browser of client besturingssysteem.
 * De uitzonde ring, logboek traceringen en afhankelijkheids fout (data bases of andere externe onderdelen) die moeten worden gekoppeld aan de getekende fouten.
-* Hiermee worden rechtstreeks koppelingen naar relevante Zoek opdrachten op de telemetrie in Application Insights.
-
-## <a name="failure-anomalies-v2"></a>Fout afwijkingen v2
-Er is nu een nieuwe versie van de waarschuwings regel voor afwijkingen van de fout beschikbaar. Deze nieuwe versie wordt uitgevoerd op het nieuwe Azure Alerting platform en introduceert een aantal verbeteringen ten opzichte van de bestaande versie.
-
-### <a name="whats-new-in-this-version"></a>Wat is er nieuw in deze versie?
-- Snellere detectie van problemen
-- Een rijkere set acties: de waarschuwings regel wordt gemaakt met een gekoppelde [actie groep](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) met de naam ' Application Insights Slimme detectie ' die e-mail en webhook-acties bevat, en kan worden uitgebreid om aanvullende acties te activeren wanneer de waarschuwing wordt geactiveerd.
-- Meer gerichte meldingen: e-mail meldingen die vanuit deze waarschuwings regel worden verzonden, worden nu standaard verzonden naar gebruikers die zijn gekoppeld aan de bewakings-en bewakings functies van het abonnement. Hier vindt u meer informatie over dit [onderwerp](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification).
-- Eenvoudige configuratie via ARM-sjablonen: Zie [hier](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)voor beeld.
-- Algemene ondersteuning voor waarschuwings schema's: meldingen die vanuit deze waarschuwings regel worden verzonden, volgen het [algemene waarschuwings schema](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema).
-- Unified Email-sjabloon: e-mail meldingen van deze waarschuwings regel hebben een consistent uiterlijk & met andere waarschuwings typen. Met deze wijziging is de optie om fout afwijkingen op te halen met gedetailleerde diagnostische gegevens niet meer beschikbaar.
-
-### <a name="how-do-i-get-the-new-version"></a>Hoe kan ik de nieuwe versie ophalen?
-- Nieuw gemaakte Application Insights resources worden nu ingericht met de nieuwe versie van de waarschuwings regel voor afwijkingen van de fout.
-- Bestaande Application Insights resources met de klassieke versie van de waarschuwings regel voor fout afwijkingen krijgen de nieuwe versie zodra hun host-abonnement is gemigreerd naar het nieuwe waarschuwings platform als onderdeel van het [buitenste proces voor klassieke waarschuwingen](https://docs.microsoft.com/azure/azure-monitor/platform/monitoring-classic-retirement).
-
-> [!NOTE]
-> De nieuwe versie van de waarschuwings regel voor fout afwijkingen blijft vrij. Daarnaast zijn er gratis e-mail-en webhook-acties geactiveerd door de gekoppelde actie groep voor detectie van Application Insights.
-> 
-> 
+* Hiermee worden rechtstreeks koppelingen naar relevante Zoek opdrachten op de gegevens in Application Insights.
 
 ## <a name="benefits-of-smart-detection"></a>Voor delen van Slimme detectie
-Normale [metrische waarschuwingen](../../azure-monitor/app/alerts.md) geven aan dat er mogelijk een probleem is. Maar slimme detectie start het diagnostische werk voor u, waarbij veel van de analyse wordt uitgevoerd die u anders zou moeten uitvoeren. U krijgt de resultaten die u netjes kunt bundelen, zodat u snel aan de slag kunt met het probleem.
+Normale [metrische waarschuwingen](../../azure-monitor/app/alerts.md) geven aan dat er mogelijk een probleem is. Met Slimme detectie wordt het diagnostische werk voor u gestart, waarbij veel van de analyse wordt uitgevoerd die u anders zou moeten uitvoeren. U krijgt de resultaten die u netjes kunt bundelen, zodat u snel aan de slag kunt met het probleem.
 
 ## <a name="how-it-works"></a>Het werkt als volgt
-Slimme detectie bewaakt de telemetriegegevens die zijn ontvangen van uw app, met name de fout tarieven. Deze regel telt het aantal aanvragen waarvoor de eigenschap `Successful request` False is en het aantal afhankelijkheids aanroepen waarvoor de eigenschap `Successful call` False is. Voor aanvragen wordt standaard `Successful request == (resultCode < 400)` (tenzij u een aangepaste code hebt geschreven om uw eigen [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) -aanroepen te [filteren](../../azure-monitor/app/api-filtering-sampling.md#filtering) of te genereren). 
+Slimme detectie bewaakt de gegevens die van uw app zijn ontvangen, met name de uitval snelheid. Deze regel telt het aantal aanvragen waarvoor de eigenschap `Successful request` False is en het aantal afhankelijkheids aanroepen waarvoor de eigenschap `Successful call` False is. Voor aanvragen wordt standaard `Successful request == (resultCode < 400)` (tenzij u een aangepaste code hebt geschreven om uw eigen [TrackRequest](../../azure-monitor/app/api-custom-events-metrics.md#trackrequest) -aanroepen te [filteren](../../azure-monitor/app/api-filtering-sampling.md#filtering) of te genereren). 
 
 De prestaties van uw app hebben een typisch patroon van het gedrag. Sommige aanvragen of afhankelijkheids aanroepen zijn gevoelig voor fouten dan andere. en het totale aantal fouten kan optreden naarmate de belasting toeneemt. Slimme detectie maakt gebruik van machine learning om deze afwijkingen te vinden.
 
-Wanneer telemetrie in Application Insights van uw web-app komt, vergelijkt Slimme detectie het huidige gedrag met de patronen die in de afgelopen paar dagen worden weer gegeven. Als een abnormale toename van het aantal fouten wordt waargenomen door vergelijking met de vorige prestaties, wordt een analyse geactiveerd.
+Wanneer gegevens worden geleverd in Application Insights van uw web-app, vergelijkt Slimme detectie het huidige gedrag met de patronen die in de afgelopen paar dagen zijn waargenomen. Als een abnormale toename van het aantal fouten wordt waargenomen door vergelijking met de vorige prestaties, wordt een analyse geactiveerd.
 
-Wanneer een analyse wordt geactiveerd, voert de service een cluster analyse uit op de mislukte aanvraag, om te proberen een patroon van waarden te identificeren dat de fouten kenmerkt. In het bovenstaande voor beeld heeft de analyse ontdekt dat de meeste fouten betrekking hebben op een specifieke resultaat code, aanvraag naam, server-URL-host en rolinstantie. De analyse heeft daarentegen gedetecteerd dat de eigenschap van het besturings systeem van de client wordt gedistribueerd over meerdere waarden, zodat deze niet wordt weer gegeven.
+Wanneer een analyse wordt geactiveerd, voert de service een cluster analyse uit op de mislukte aanvraag, om te proberen een patroon van waarden te identificeren dat de fouten kenmerkt. 
 
-Als uw service wordt gebruikt met deze telemetrie-aanroepen, zoekt de Analyzer naar een uitzonde ring en een afhankelijkheids fout die is gekoppeld aan aanvragen in het cluster dat is geïdentificeerd, samen met een voor beeld van traceer logboeken die zijn gekoppeld aan deze aanvragen.
+In het bovenstaande voor beeld heeft de analyse ontdekt dat de meeste fouten betrekking hebben op een specifieke resultaat code, aanvraag naam, server-URL-host en rolinstantie. 
+
+De analyse heeft daarentegen gedetecteerd dat de eigenschap van het besturings systeem van de client wordt gedistribueerd over meerdere waarden, zodat deze niet wordt weer gegeven.
+
+Als uw service wordt gebruikt met deze aanroepen, zoekt de Analyzer naar een uitzonde ring en een afhankelijkheids fout die is gekoppeld aan aanvragen in het cluster dat is geïdentificeerd, samen met een voor beeld van traceer logboeken die zijn gekoppeld aan deze aanvragen.
 
 De resulterende analyse wordt naar u verzonden als waarschuwing, tenzij u deze hebt geconfigureerd.
 
-Net als de [waarschuwingen die u hand matig hebt ingesteld](../../azure-monitor/app/alerts.md), kunt u de status van de waarschuwing inspecteren en configureren op de Blade waarschuwingen van uw Application Insights-resource. Maar in tegens telling tot andere waarschuwingen hoeft u geen slimme detectie in te stellen of te configureren. Als u wilt, kunt u deze uitschakelen of de e-mail adressen van het doel wijzigen.
+Net als de [waarschuwingen die u hand matig hebt ingesteld](../../azure-monitor/app/alerts.md), kunt u de status van de waarschuwing inspecteren en configureren op de pagina waarschuwingen van uw Application Insights-resource. Maar in tegens telling tot andere waarschuwingen hoeft u geen slimme detectie in te stellen of te configureren. Als u wilt, kunt u deze uitschakelen of de e-mail adressen van het doel wijzigen.
 
 ### <a name="alert-logic-details"></a>Details van waarschuwings logica
 
@@ -86,71 +65,283 @@ De waarschuwingen worden geactiveerd door onze eigen machine learning-algoritme,
 * Het gebruik van een adaptieve limiet voor het minimale uitval percentage, dat varieert op basis van het volume van de aanvragen/afhankelijkheden van de app.
 
 ## <a name="configure-alerts"></a>Waarschuwingen configureren
-U kunt slimme detectie uitschakelen, de ontvangers van het e-mail bericht wijzigen, een webhook maken of kiezen voor meer gedetailleerde waarschuwings berichten.
 
-Open de pagina waarschuwingen. Fout afwijkingen zijn opgenomen in combi natie met waarschuwingen die u hand matig hebt ingesteld en u kunt zien of deze zich momenteel in de status van de waarschuwing bevindt.
+U kunt de waarschuwings regel voor slimme detectie uitschakelen vanuit de portal of met behulp van Azure Resource Manager ([Zie voor beeld van sjabloon](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config)).
 
-![Klik op de pagina overzicht op waarschuwingen tegel. U kunt ook op de knop waarschuwingen klikken op de pagina met metrische gegevens.](./media/proactive-failure-diagnostics/021.png)
+Deze waarschuwings regel wordt gemaakt met een bijbehorende [actie groep](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups) met de naam ' Application Insights Slimme detectie ' die e-mail en webhook-acties bevat, en kan worden uitgebreid om aanvullende acties te activeren wanneer de waarschuwing wordt geactiveerd.
+
+> [!NOTE]
+> E-mail meldingen die vanuit deze waarschuwings regel worden verzonden, worden nu standaard verzonden naar gebruikers die zijn gekoppeld aan de bewakings-en bewakings functies van het abonnement. Hier vindt u meer informatie over dit [onderwerp](https://docs.microsoft.com/azure/azure-monitor/app/proactive-email-notification).
+> Meldingen die vanuit deze waarschuwings regel worden verzonden, volgen het [algemene waarschuwings schema](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-common-schema).
+>
+
+Open de pagina waarschuwingen. Waarschuwings regels voor fout afwijkingen zijn opgenomen in alle waarschuwingen die u hand matig hebt ingesteld en u kunt zien of deze zich momenteel in de status van de waarschuwing bevindt.
+
+[![](./media/proactive-failure-diagnostics/021.png "On the Application Insights resource page, click 'Alerts' tile, then 'Manage alert rules'")](./media/proactive-failure-diagnostics/021.png#lightbox)
 
 Klik op de waarschuwing om deze te configureren.
 
-![Configuratie](./media/proactive-failure-diagnostics/032.png)
+[![](./media/proactive-failure-diagnostics/032.png "Rule configuration screen")](./media/proactive-failure-diagnostics/032.png#lightbox)
 
 U kunt slimme detectie uitschakelen, maar niet verwijderen (of een andere maken).
 
-#### <a name="detailed-alerts"></a>Gedetailleerde waarschuwingen
-Als u ' meer gedetailleerde diagnostische gegevens ophalen ' selecteert, bevat het e-mail bericht meer diagnostische informatie. Soms kunt u het probleem alleen vaststellen op basis van de gegevens in het e-mail bericht.
+## <a name="example-of-failure-anomalies-alert-webhook-payload"></a>Voor beeld van fout afwijkingen waarschuwing webhook Payload
 
-Er is een klein risico dat de gedetailleerde waarschuwing gevoelige informatie kan bevatten, omdat deze uitzonderings-en tracerings berichten bevat. Dit gebeurt echter alleen als uw code gevoelige informatie in deze berichten zou kunnen toestaan.
+```json
+{
+    "properties": {
+        "essentials": {
+            "severity": "Sev3",
+            "signalType": "Log",
+            "alertState": "New",
+            "monitorCondition": "Resolved",
+            "monitorService": "Smart Detector",
+            "targetResource": "/subscriptions/4f9b81be-fa32-4f96-aeb3-fc5c3f678df9/resourcegroups/test-group/providers/microsoft.insights/components/test-rule",
+            "targetResourceName": "test-rule",
+            "targetResourceGroup": "test-group",
+            "targetResourceType": "microsoft.insights/components",
+            "sourceCreatedId": "1a0a5b6436a9b2a13377f5c89a3477855276f8208982e0f167697a2b45fcbb3e",
+            "alertRule": "/subscriptions/4f9b81be-fa32-4f96-aeb3-fc5c3f678df9/resourcegroups/test-group/providers/microsoft.alertsmanagement/smartdetectoralertrules/failure anomalies - test-rule",
+            "startDateTime": "2019-10-30T17:52:32.5802978Z",
+            "lastModifiedDateTime": "2019-10-30T18:25:23.1072443Z",
+            "monitorConditionResolvedDateTime": "2019-10-30T18:25:26.4440603Z",
+            "lastModifiedUserName": "System",
+            "actionStatus": {
+                "isSuppressed": false
+            },
+            "description": "Failure Anomalies notifies you of an unusual rise in the rate of failed HTTP requests or dependency calls."
+        },
+        "context": {
+            "DetectionSummary": "An abnormal rise in failed request rate",
+            "FormattedOccurenceTime": "2019-10-30T17:50:00Z",
+            "DetectedFailureRate": "50.0% (200/400 requests)",
+            "NormalFailureRate": "0.0% (over the last 30 minutes)",
+            "FailureRateChart": [["2019-10-30T05:20:00Z",
+            0],
+            ["2019-10-30T05:40:00Z",
+            100],
+            ["2019-10-30T06:00:00Z",
+            0],
+            ["2019-10-30T06:20:00Z",
+            0],
+            ["2019-10-30T06:40:00Z",
+            100],
+            ["2019-10-30T07:00:00Z",
+            0],
+            ["2019-10-30T07:20:00Z",
+            0],
+            ["2019-10-30T07:40:00Z",
+            100],
+            ["2019-10-30T08:00:00Z",
+            0],
+            ["2019-10-30T08:20:00Z",
+            0],
+            ["2019-10-30T08:40:00Z",
+            100],
+            ["2019-10-30T17:00:00Z",
+            0],
+            ["2019-10-30T17:20:00Z",
+            0],
+            ["2019-10-30T09:00:00Z",
+            0],
+            ["2019-10-30T09:20:00Z",
+            0],
+            ["2019-10-30T09:40:00Z",
+            100],
+            ["2019-10-30T10:00:00Z",
+            0],
+            ["2019-10-30T10:20:00Z",
+            0],
+            ["2019-10-30T10:40:00Z",
+            100],
+            ["2019-10-30T11:00:00Z",
+            0],
+            ["2019-10-30T11:20:00Z",
+            0],
+            ["2019-10-30T11:40:00Z",
+            100],
+            ["2019-10-30T12:00:00Z",
+            0],
+            ["2019-10-30T12:20:00Z",
+            0],
+            ["2019-10-30T12:40:00Z",
+            100],
+            ["2019-10-30T13:00:00Z",
+            0],
+            ["2019-10-30T13:20:00Z",
+            0],
+            ["2019-10-30T13:40:00Z",
+            100],
+            ["2019-10-30T14:00:00Z",
+            0],
+            ["2019-10-30T14:20:00Z",
+            0],
+            ["2019-10-30T14:40:00Z",
+            100],
+            ["2019-10-30T15:00:00Z",
+            0],
+            ["2019-10-30T15:20:00Z",
+            0],
+            ["2019-10-30T15:40:00Z",
+            100],
+            ["2019-10-30T16:00:00Z",
+            0],
+            ["2019-10-30T16:20:00Z",
+            0],
+            ["2019-10-30T16:40:00Z",
+            100],
+            ["2019-10-30T17:30:00Z",
+            50]],
+            "ArmSystemEventsRequest": "/subscriptions/4f9b81be-fa32-4f96-aeb3-fc5c3f678df9/resourceGroups/test-group/providers/microsoft.insights/components/test-rule/query?query=%0d%0a++++++++++++++++systemEvents%0d%0a++++++++++++++++%7c+where+timestamp+%3e%3d+datetime(%272019-10-30T17%3a20%3a00.0000000Z%27)+%0d%0a++++++++++++++++%7c+where+itemType+%3d%3d+%27systemEvent%27+and+name+%3d%3d+%27ProactiveDetectionInsight%27+%0d%0a++++++++++++++++%7c+where+dimensions.InsightType+in+(%275%27%2c+%277%27)+%0d%0a++++++++++++++++%7c+where+dimensions.InsightDocumentId+%3d%3d+%27718fb0c3-425b-4185-be33-4311dfb4deeb%27+%0d%0a++++++++++++++++%7c+project+dimensions.InsightOneClassTable%2c+%0d%0a++++++++++++++++++++++++++dimensions.InsightExceptionCorrelationTable%2c+%0d%0a++++++++++++++++++++++++++dimensions.InsightDependencyCorrelationTable%2c+%0d%0a++++++++++++++++++++++++++dimensions.InsightRequestCorrelationTable%2c+%0d%0a++++++++++++++++++++++++++dimensions.InsightTraceCorrelationTable%0d%0a++++++++++++&api-version=2018-04-20",
+            "LinksTable": [{
+                "Link": "<a href=\"https://portal.azure.com/#blade/AppInsightsExtension/ProactiveDetectionFeedBlade/ComponentId/{\"SubscriptionId\":\"4f9b81be-fa32-4f96-aeb3-fc5c3f678df9\",\"ResourceGroup\":\"test-group\",\"Name\":\"test-rule\"}/SelectedItemGroup/718fb0c3-425b-4185-be33-4311dfb4deeb/SelectedItemTime/2019-10-30T17:50:00Z/InsightType/5\" target=\"_blank\">View full details in Application Insights</a>"
+            }],
+            "SmartDetectorId": "FailureAnomaliesDetector",
+            "SmartDetectorName": "Failure Anomalies",
+            "AnalysisTimestamp": "2019-10-30T17:52:32.5802978Z"
+        },
+        "egressConfig": {
+            "displayConfig": [{
+                "rootJsonNode": null,
+                "sectionName": null,
+                "displayControls": [{
+                    "property": "DetectionSummary",
+                    "displayName": "What was detected?",
+                    "type": "Text",
+                    "isOptional": false,
+                    "isPropertySerialized": false
+                },
+                {
+                    "property": "FormattedOccurenceTime",
+                    "displayName": "When did this occur?",
+                    "type": "Text",
+                    "isOptional": false,
+                    "isPropertySerialized": false
+                },
+                {
+                    "property": "DetectedFailureRate",
+                    "displayName": "Detected failure rate",
+                    "type": "Text",
+                    "isOptional": false,
+                    "isPropertySerialized": false
+                },
+                {
+                    "property": "NormalFailureRate",
+                    "displayName": "Normal failure rate",
+                    "type": "Text",
+                    "isOptional": false,
+                    "isPropertySerialized": false
+                },
+                {
+                    "chartType": "Line",
+                    "xAxisType": "Date",
+                    "yAxisType": "Percentage",
+                    "xAxisName": "",
+                    "yAxisName": "",
+                    "property": "FailureRateChart",
+                    "displayName": "Failure rate over last 12 hours",
+                    "type": "Chart",
+                    "isOptional": false,
+                    "isPropertySerialized": false
+                },
+                {
+                    "defaultLoad": true,
+                    "displayConfig": [{
+                        "rootJsonNode": null,
+                        "sectionName": null,
+                        "displayControls": [{
+                            "showHeader": false,
+                            "columns": [{
+                                "property": "Name",
+                                "displayName": "Name"
+                            },
+                            {
+                                "property": "Value",
+                                "displayName": "Value"
+                            }],
+                            "property": "tables[0].rows[0][0]",
+                            "displayName": "All of the failed requests had these characteristics:",
+                            "type": "Table",
+                            "isOptional": false,
+                            "isPropertySerialized": true
+                        }]
+                    }],
+                    "property": "ArmSystemEventsRequest",
+                    "displayName": "",
+                    "type": "ARMRequest",
+                    "isOptional": false,
+                    "isPropertySerialized": false
+                },
+                {
+                    "showHeader": false,
+                    "columns": [{
+                        "property": "Link",
+                        "displayName": "Link"
+                    }],
+                    "property": "LinksTable",
+                    "displayName": "Links",
+                    "type": "Table",
+                    "isOptional": false,
+                    "isPropertySerialized": false
+                }]
+            }]
+        }
+    },
+    "id": "/subscriptions/4f9b81be-fa32-4f96-aeb3-fc5c3f678df9/resourcegroups/test-group/providers/microsoft.insights/components/test-rule/providers/Microsoft.AlertsManagement/alerts/7daf8739-ca8a-4562-b69a-ff28db4ba0a5",
+    "type": "Microsoft.AlertsManagement/alerts",
+    "name": "Failure Anomalies - test-rule"
+}
+```
 
-## <a name="triaging-and-diagnosing-an-alert"></a>Een waarschuwing uitsorteren en diagnosticeren
+## <a name="triage-and-diagnose-an-alert"></a>Een waarschuwing sorteren en vaststellen
+
 Een waarschuwing geeft aan dat een abnormale toename van het aantal mislukte aanvragen is gedetecteerd. Waarschijnlijk is er sprake van een probleem met uw app of van de omgeving.
 
-Op basis van het percentage aanvragen en het aantal betrokken gebruikers kunt u bepalen hoe urgent het probleem is. In het bovenstaande voor beeld wordt het uitval percentage van 22,5% vergeleken met een normaal percentage van 1%, wat erop wijst dat er iets mis gaat. Aan de andere kant werden slechts 11 gebruikers beïnvloed. Als het uw app is, kunt u beoordelen hoe ernstig dat is.
+Als u verder wilt onderzoeken, klikt u op ' volledige details weer geven in Application Insights ' op de koppelingen op deze pagina gaat u rechtstreeks naar een [Zoek pagina](../../azure-monitor/app/diagnostic-search.md) die wordt gefilterd op de relevante aanvragen, uitzonde ringen, afhankelijkheid of traceringen. 
 
-In veel gevallen kunt u het probleem snel vaststellen op basis van de gegevens van de aanvraag naam, uitzonde ring, fout bij het openen van een afhankelijkheid.
+U kunt ook de [Azure Portal](https://portal.azure.com)openen, naar de Application Insights resource voor uw app gaan en de pagina fouten openen.
 
-Er zijn enkele andere aanwijzingen. Zo is de fout frequentie afhankelijkheid in dit voor beeld hetzelfde als het uitzonderings percentage (89,3%). Dit geeft aan dat de uitzonde ring zich rechtstreeks bij de afhankelijkheids fout voordoet, waardoor u een duidelijk beeld krijgt van waar u uw code kunt zoeken.
+Als u op fouten opsporen klikt, krijgt u meer informatie en kunt u het probleem oplossen.
 
-Om verder te onderzoeken, worden de koppelingen in elke sectie direct naar een [Zoek pagina](../../azure-monitor/app/diagnostic-search.md) gefilterd op de relevante aanvragen, uitzonde ringen, afhankelijkheid of traceringen. U kunt ook de [Azure Portal](https://portal.azure.com)openen, naar de Application Insights resource voor uw app gaan en de Blade fouten openen.
+[![](./media/proactive-failure-diagnostics/051.png "Diagnostic search")](./media/proactive-failure-diagnostics/051.png#lightbox)
 
-In dit voor beeld wordt op de koppeling ' Details van afhankelijkheids fouten weer geven ' de Blade Application Insights zoeken geopend. Hierin wordt de SQL-instructie weer gegeven die een voor beeld van de hoofd oorzaak heeft: NULL-waarden zijn opgegeven bij verplichte velden en de validatie is niet geslaagd tijdens het opslaan.
+Op basis van het percentage aanvragen en het aantal betrokken gebruikers kunt u bepalen hoe urgent het probleem is. In het bovenstaande voor beeld wordt het uitval percentage van 78,5% vergeleken met een normaal percentage van 2,2%, wat erop wijst dat er iets mis gaat. Aan de andere kant werden slechts 46 gebruikers beïnvloed. Als dit uw app is, kunt u beoordelen hoe ernstig het is.
 
-![Diagnostische gegevens doorzoeken](./media/proactive-failure-diagnostics/051.png)
+In veel gevallen kunt u het probleem snel vaststellen op basis van de gegevens van de aanvraag naam, uitzonde ring, fout bij het openen van een afhankelijkheid en traceer gegeven.
+
+In dit voor beeld is er een uitzonde ring van SQL database omdat de aanvraag limiet is bereikt.
+
+[![](./media/proactive-failure-diagnostics/052.png "Failed request details")](./media/proactive-failure-diagnostics/052.png#lightbox)
 
 ## <a name="review-recent-alerts"></a>Recente waarschuwingen controleren
 
-Klik op **Slimme detectie** om naar de meest recente waarschuwing te gaan:
+Klik op **waarschuwingen** op de pagina Application Insights resource om de meest recente geactiveerde waarschuwingen weer te geven:
 
-![Overzicht van waarschuwingen](./media/proactive-failure-diagnostics/070.png)
-
+[![](./media/proactive-failure-diagnostics/070.png "Alerts summary")](./media/proactive-failure-diagnostics/070.png#lightbox)
 
 ## <a name="whats-the-difference-"></a>Wat is het verschil...
 Slimme detectie van fout afwijkingen is een aanvulling op andere vergelijk bare functies van Application Insights.
 
-* [Metrische waarschuwingen](../../azure-monitor/app/alerts.md) worden door u ingesteld en kunnen een breed scala aan metrische gegevens bewaken, zoals CPU-bezetting, aanvraag tarieven, pagina laad tijden, enzovoort. U kunt deze gebruiken om u te waarschuwen als u bijvoorbeeld meer resources wilt toevoegen. Slimme detectie van fout afwijkingen is daarentegen van toepassing op een beperkt aantal kritieke metrische gegevens (momenteel alleen mislukte aanvragen), ontworpen om u op de bijna realtime te informeren wanneer de frequentie van de mislukte aanvragen van uw web-app sterk toeneemt in vergelijking met de normaal gedrag.
+* [Metrische waarschuwingen](../../azure-monitor/app/alerts.md) worden door u ingesteld en kunnen een breed scala aan metrische gegevens bewaken, zoals CPU-bezetting, aanvraag tarieven, pagina laad tijden, enzovoort. U kunt deze gebruiken om u te waarschuwen als u bijvoorbeeld meer resources wilt toevoegen. Slimme detectie van fout afwijkingen is daarentegen van toepassing op een klein aantal kritische metrische gegevens (momenteel alleen mislukte aanvragen), ontworpen om u vrijwel realtime te informeren wanneer de frequentie van de mislukte aanvragen van de web-app toeneemt in vergelijking met het normale gedrag van de web-app. In tegens telling tot metrische waarschuwingen worden door slimme detectie automatisch drempel waarden ingesteld en bijgewerkt als reactie wijzigingen in het gedrag optreden. Slimme detectie start ook het diagnostische werk voor u en bespaart u tijd bij het oplossen van problemen.
 
-    Slimme detectie past de drempel waarde automatisch aan als reactie op de geldende voor waarden.
-
-    Slimme detectie start het diagnostische werk voor u.
-* [Slimme detectie van prestatie afwijkingen](proactive-performance-diagnostics.md) maakt ook gebruik van machine Intelligence om ongebruikelijke patronen in uw metrische gegevens te ontdekken. u hoeft hiervoor geen configuratie op te nemen. Maar in tegens telling tot Slimme detectie van fout afwijkingen, is het doel van de detectie van de prestatie afwijkingen te bepalen van de segmenten van uw gebruiks fragmenten die mogelijk niet goed worden aangeboden, bijvoorbeeld door specifieke pagina's van een specifiek type browser. De analyse wordt dagelijks uitgevoerd en als er een resultaat wordt gevonden, is het waarschijnlijk veel minder urgent dan een waarschuwing. Daarentegen wordt de analyse voor fout afwijkingen doorlopend uitgevoerd op inkomende telemetrie en wordt u binnen enkele minuten gewaarschuwd als de snelheid van de server fouten groter is dan verwacht.
+* [Slimme detectie van prestatie afwijkingen](proactive-performance-diagnostics.md) maakt ook gebruik van machine Intelligence om ongebruikelijke patronen in uw metrische gegevens te ontdekken. u hoeft hiervoor geen configuratie op te nemen. Maar in tegens telling tot Slimme detectie van fout afwijkingen, is het doel van de detectie van de prestatie afwijkingen te bepalen van de segmenten van uw gebruiks fragmenten die mogelijk niet goed worden aangeboden, bijvoorbeeld door specifieke pagina's van een specifiek type browser. De analyse wordt dagelijks uitgevoerd en als er een resultaat wordt gevonden, is het waarschijnlijk veel minder urgent dan een waarschuwing. Daarentegen wordt de analyse voor fout afwijkingen doorlopend uitgevoerd op binnenkomende toepassings gegevens en wordt u binnen enkele minuten gewaarschuwd als de snelheid van de server fouten groter is dan verwacht.
 
 ## <a name="if-you-receive-a-smart-detection-alert"></a>Als u een Smart detection-waarschuwing ontvangt
 *Waarom heb ik deze waarschuwing ontvangen?*
 
-* Er is een abnormale toename in de frequentie van mislukte aanvragen gedetecteerd vergeleken met de normale basis lijn van de voor gaande periode. Na de analyse van de fouten en de bijbehorende telemetrie, denken we dat er een probleem is waarin u moet letten.
+* Er is een abnormale toename in de frequentie van mislukte aanvragen gedetecteerd vergeleken met de normale basis lijn van de voor gaande periode. Na de analyse van de fouten en de bijbehorende toepassings gegevens, denken we dat er een probleem is waarin u moet letten.
 
 *Is er een probleem met de melding?*
 
 * We proberen een waarschuwing te ontvangen over het onderbreken of degraderen van apps, maar alleen u kunt de semantiek en de impact van de app of gebruikers volledig begrijpen.
 
-*Dus guys u mijn gegevens bekijken?*
+*En nu gaat u naar mijn toepassings gegevens?*
 
 * Nee. De service is volledig automatisch. Alleen de meldingen worden weer geven. Uw gegevens zijn [privé](../../azure-monitor/app/data-retention-privacy.md).
 
 *Moet ik zich abonneren op deze waarschuwing?*
 
-* Nee. Elke toepassing die telemetrie van aanvragen verzendt, heeft de waarschuwings regel voor slimme detectie.
+* Nee. Elke toepassing die aanvraag gegevens verzendt, heeft de regel waarschuwing voor slimme detectie.
 
 *Kan ik uw abonnement opzeggen of meldingen ontvangen die naar mijn collega's worden verzonden?*
 
@@ -162,16 +353,16 @@ Slimme detectie van fout afwijkingen is een aanvulling op andere vergelijk bare 
 
 *Sommige waarschuwingen zijn te vinden op bekende problemen en ik wil ze niet ontvangen.*
 
-* We hebben een waarschuwing over de achterstand.
+* U kunt de functie voor het onderdrukken van [waarschuwings regels](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) gebruiken.
 
 ## <a name="next-steps"></a>Volgende stappen
-Met deze diagnostische hulpprogram ma's kunt u de telemetrie van uw app inspecteren:
+Deze diagnostische hulpprogram ma's helpen u bij het controleren van de gegevens in uw app:
 
 * [Metrische Explorer](../../azure-monitor/app/metrics-explorer.md)
 * [Zoek Verkenner](../../azure-monitor/app/diagnostic-search.md)
 * [Analyse-krachtige query taal](../../azure-monitor/log-query/get-started-portal.md)
 
-Slimme detecties zijn volledig automatisch. Maar misschien wilt u nog meer waarschuwingen instellen?
+Slimme detecties zijn automatisch. Maar misschien wilt u nog meer waarschuwingen instellen?
 
 * [Hand matig geconfigureerde metrische waarschuwingen](../../azure-monitor/app/alerts.md)
 * [Webtests voor Beschik baarheid](../../azure-monitor/app/monitor-web-app-availability.md)

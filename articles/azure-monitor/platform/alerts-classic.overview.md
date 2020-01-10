@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 05/19/2018
-ms.openlocfilehash: 177c110ce9679f3d564918dfac50b3e3f66f84ce
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2d150006fb4638d3efb15111013d17e43c8b125e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893583"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747021"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Wat zijn klassieke waarschuwingen in Microsoft Azure?
 
@@ -81,7 +81,7 @@ De oudere metrische waarschuwingen gebruiken echter geen actie groepen. In plaat
 
 Webhooks maken automatisering en herstel mogelijk, bijvoorbeeld met:
 - Azure Automation Runbook
-- Azure-functie
+- Azure Functions
 - Azure Logic Apps
 - een service van derden
 
@@ -93,7 +93,7 @@ Informatie over waarschuwings regels ophalen en deze configureren met behulp van
 * [Klassieke waarschuwingen voor metrische gegevens](alerts-classic-portal.md) configureren
 * [Klassieke metrische waarschuwingen configureren opdracht regel interface (CLI)](alerts-classic-portal.md)
 * [Klassieke waarschuwingen voor metrische gegevens Azure Monitor rest API](https://msdn.microsoft.com/library/azure/dn931945.aspx) configureren
-* Meer informatie over [activiteiten logboek](activity-logs-overview.md)
+* Meer informatie over [activiteiten logboek](platform-logs-overview.md)
 * [Waarschuwingen voor activiteiten logboek configureren via Azure Portal](activity-log-alerts.md)
 * [Waarschuwingen voor activiteiten logboek configureren via Resource Manager](alerts-activity-log.md)
 * Het [webhook-schema voor waarschuwingen in het activiteiten logboek](activity-log-alerts-webhook.md) bekijken

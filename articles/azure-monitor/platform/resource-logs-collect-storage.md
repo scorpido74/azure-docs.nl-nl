@@ -5,18 +5,18 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 306f6cb0b50b7befcbf51e6164a5da887d35616e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b6a687fc7ddf5eeacdfe3480a252598c6f9e773e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74030878"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750383"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Azure-resource logboeken archiveren in een opslag account
-[Resource logboeken](resource-logs-overview.md) in azure bieden uitgebreide, frequente gegevens over de interne werking van een Azure-resource. In dit artikel wordt beschreven hoe u bron logboeken verzamelt naar een Azure-opslag account om gegevens te bewaren voor archivering.
+[Platform logboeken](platform-logs-overview.md) in azure, inclusief Azure-activiteiten logboek en resource logboeken, bieden gedetailleerde informatie over diagnostische gegevens en controle voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn.  In dit artikel wordt het verzamelen van platform Logboeken beschreven in een Azure-opslag account om gegevens te bewaren voor archivering.
 
 ## <a name="prerequisites"></a>Vereisten
 U moet [een Azure Storage-account maken](../../storage/common/storage-quickstart-create-account.md) als u er nog geen hebt. Het opslag account hoeft zich niet in hetzelfde abonnement te betreden als de resource waarmee logboeken worden verzonden zolang de gebruiker die de instelling configureert de juiste RBAC-toegang heeft tot beide abonnementen.
@@ -26,19 +26,17 @@ U moet [een Azure Storage-account maken](../../storage/common/storage-quickstart
 > Azure Data Lake Storage Gen2-accounts worden momenteel niet ondersteund als doel voor Diagnostische instellingen, zelfs als ze kunnen worden weer gegeven als een geldige optie in de Azure Portal.
 
 
-Gebruik geen bestaand opslag account met andere, niet-bewakings gegevens die erin zijn opgeslagen, zodat u de toegang tot bewakings gegevens beter kunt beheren. Als u ook het [activiteiten logboek](activity-logs-overview.md) archiveert naar een opslag account, kunt u ervoor kiezen om hetzelfde opslag account te gebruiken om alle bewakings gegevens op een centrale locatie te bewaren.
+Gebruik geen bestaand opslag account met andere, niet-bewakings gegevens die erin zijn opgeslagen, zodat u de toegang tot de gegevens beter kunt beheren. Als u het activiteiten logboek en de resource logboeken Samen archiveert, kunt u ervoor kiezen om hetzelfde opslag account te gebruiken om alle bewakings gegevens op een centrale locatie te bewaren.
 
 ## <a name="create-a-diagnostic-setting"></a>Een diagnostische instelling maken
-Bron logboeken worden niet standaard verzameld. U kunt ze in een Azure-opslag account en andere bestemmingen verzamelen door een diagnostische instelling voor een Azure-resource te maken. Zie [Diagnostische instelling maken voor het verzamelen van Logboeken en metrische gegevens in azure](diagnostic-settings.md) voor meer informatie.
+Verzend platform logboeken naar opslag en andere bestemmingen door een diagnostische instelling voor een Azure-resource te maken. Zie [Diagnostische instelling maken voor het verzamelen van Logboeken en metrische gegevens in azure](diagnostic-settings.md) voor meer informatie.
 
 
-## <a name="data-retention"></a>Bewaartijd van gegevens
-Het Bewaar beleid definieert het aantal dagen dat de gegevens moeten worden bewaard van elke logboek categorie en metrische gegevens die zijn opgeslagen in een opslag account. Een Bewaar beleid kan een wille keurig aantal dagen zijn tussen 0 en 365. Een Bewaar beleid van 0 geeft aan dat de gebeurtenissen voor die logboek categorie voor onbepaalde tijd worden opgeslagen.
-
-Bewaar beleid wordt per dag toegepast, dus aan het einde van de dag (UTC) worden logboeken van de dag die nu voorbij het Bewaar beleid vallen, verwijderd. Bijvoorbeeld, als u een beleid voor het bewaren van één dag had, worden aan het begin van de dag vandaag nog de logboeken van de dag voor gisteren vernietigd. De verwijderbewerking begint bij middernacht UTC, maar houd er rekening mee dat het kan tot 24 uur duren voor de logboeken worden verwijderd uit uw storage-account. 
+## <a name="collect-data-from-compute-resources"></a>Gegevens verzamelen van Compute-resources
+Met Diagnostische instellingen worden bron logboeken verzameld voor Azure-reken resources, zoals elke andere resource, maar niet het gast besturingssysteem of de werk belastingen. Als u deze gegevens wilt verzamelen, moet u de [Windows Azure Diagnostics-agent](diagnostics-extension-overview.md)installeren. Zie [Diagnostische gegevens opslaan en weer geven in azure Storage](diagnostics-extension-to-storage.md) voor meer informatie.
 
 
-## <a name="schema-of-resource-logs-in-storage-account"></a>Schema van bron Logboeken in het opslag account
+## <a name="schema-of-platform-logs-in-storage-account"></a>Schema van platform Logboeken in het opslag account
 
 Zodra u de diagnostische instelling hebt gemaakt, wordt er een opslag container gemaakt in het opslag account zodra er een gebeurtenis optreedt in een van de ingeschakelde logboek categorieën. De blobs in de container gebruiken de volgende naam Conventie:
 
@@ -54,7 +52,7 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/xxxxxxxx
 
 Elke PT1H.json-blob bevat een JSON-blob van gebeurtenissen die hebben plaatsgevonden binnen het uur dat is opgegeven in de blob-URL (bijvoorbeeld, h=12). Tijdens het huidige uur worden gebeurtenissen toegevoegd aan het bestand PT1H.json wanneer deze zich voordoen. De minuut waarde (m = 00) is altijd 00, omdat de bron logboek gebeurtenissen worden opgesplitst in afzonderlijke blobs per uur.
 
-In het bestand PT1H. json wordt elke gebeurtenis opgeslagen met de volgende indeling. Dit maakt gebruik van een algemeen schema op het hoogste niveau, maar is uniek voor elke Azure-Services, zoals beschreven in het [schema voor bron logboeken](resource-logs-overview.md#resource-logs-schema).
+In het bestand PT1H. json wordt elke gebeurtenis opgeslagen met de volgende indeling. Dit maakt gebruik van een algemeen schema op het hoogste niveau, maar dit is uniek voor elke Azure-service, zoals beschreven in het [schema voor bron logboeken](diagnostic-logs-schema.md) en het [schema voor activiteiten logboeken](activity-log-schema.md).
 
 ``` JSON
 {"time": "2016-07-01T00:00:37.2040000Z","systemId": "46cdbb41-cb9c-4f3d-a5b4-1d458d827ff1","category": "NetworkSecurityGroupRuleCounter","resourceId": "/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/TESTNSG","operationName": "NetworkSecurityGroupCounters","properties": {"vnetResourceGuid": "{12345678-9012-3456-7890-123456789012}","subnetPrefix": "10.3.0.0/24","macAddress": "000123456789","ruleName": "/subscriptions/ s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg/securityRules/default-allow-rdp","direction": "In","type": "allow","matchedConnections": 1988}}
@@ -65,7 +63,7 @@ In het bestand PT1H. json wordt elke gebeurtenis opgeslagen met de volgende inde
 
 ## <a name="next-steps"></a>Volgende stappen
 
+* [Meer informatie over resource logboeken](platform-logs-overview.md).
+* [Maak een diagnostische instelling voor het verzamelen van Logboeken en metrische gegevens in azure](diagnostic-settings.md).
 * [Down load blobs voor analyse](../../storage/blobs/storage-quickstart-blobs-dotnet.md).
 * [Archiveer Azure Active Directory logboeken met Azure monitor](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md).
-* [Meer informatie over resource logboeken](../../azure-monitor/platform/resource-logs-overview.md).
-

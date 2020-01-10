@@ -11,15 +11,16 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 04/29/2019
-ms.openlocfilehash: 227ef72b53b7334cffcb485e23c3e4227613b344
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.date: 01/08/2020
+ms.openlocfilehash: 3b434bc8a495f47f7fb2de8429069283821cf397
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437921"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746628"
 ---
 # <a name="migrate-sql-server-to-sql-database-managed-instance-with-powershell--azure-database-migration-service"></a>SQL Server migreren naar SQL Database beheerde instantie met Power shell & Azure Database Migration Service
+
 In dit artikel migreert u de **Adventureworks2016** -data base die is hersteld naar een on-premises exemplaar van SQL Server 2005 of hoger naar een Azure SQL database beheerd exemplaar met behulp van Microsoft Azure PowerShell. U kunt data bases van een on-premises SQL Server-exemplaar migreren naar een Azure SQL Database beheerd exemplaar met behulp van de `Az.DataMigration` module in Microsoft Azure PowerShell.
 
 In dit artikel leert u het volgende:
@@ -45,14 +46,14 @@ Als u deze stappen wilt uitvoeren, hebt u het volgende nodig:
 * Een Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 * Een door Azure SQL Database beheerd exemplaar. U kunt een beheerde instantie van Azure SQL Database maken door de details in het artikel [een Azure SQL database beheerd exemplaar maken](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started)te volgen.
 * Om [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 of nieuwer te downloaden en te installeren.
-* Een Azure Virtual Network (VNet) dat is gemaakt met behulp van het Azure Resource Manager-implementatie model, dat de Azure Database Migration Service met site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+* Een Microsoft Azure Virtual Network gemaakt met behulp van het Azure Resource Manager-implementatie model, waarmee u de Azure Database Migration Service met site-naar-site-verbinding met uw on-premises bron servers kunt maken met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 * Een voltooide evaluatie van uw on-premises data base en schema migratie met behulp van Data Migration Assistant, zoals beschreven in het artikel [een SQL Server migratie-evaluatie uitvoeren](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem).
 * Als u de `Az.DataMigration`-module (versie 0.7.2 of hoger) wilt downloaden en installeren via de PowerShell Gallery met behulp van de [Power shell-cmdlet voor installatie-module](https://docs.microsoft.com/powershell/module/powershellget/Install-Module?view=powershell-5.1).
 * Om ervoor te zorgen dat de referenties die worden gebruikt om verbinding te maken met de bron SQL Server, de [controle server](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) machtiging hebben.
 * Om ervoor te zorgen dat de referenties die worden gebruikt om verbinding te maken met het beheerde exemplaar van Azure SQL Database, beschikken over de machtiging beheer DATABASE voor de doel-Azure SQL Database beheerde exemplaar databases.
 
     > [!IMPORTANT]
-    > Voor online migraties moet u uw Azure Active Directory referenties hebben ingesteld. Zie voor meer informatie het artikel [de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+    > Voor online migraties moet u uw Azure Active Directory referenties al hebben ingesteld. Zie voor meer informatie het artikel [de portal gebruiken om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Meld u aan bij uw Microsoft Azure-abonnement
 

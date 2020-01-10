@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: cb7091cf61efab8e5bd7e9321911980a1f681476
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9ef8d6a8d97b2f2c2cff62c629219efb43077c77
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929288"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754132"
 ---
 # <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Gegevens kopiëren van HubSpot met Azure Data Factory (Preview)
 
@@ -50,9 +50,9 @@ De volgende eigenschappen worden ondersteund voor HubSpot gekoppelde service:
 | Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
 | type | De eigenschap type moet worden ingesteld op: **Hubspot** | Ja |
-| clientId | De client-ID die is gekoppeld aan uw toepassing Hubspot.  | Ja |
-| clientSecret | Het clientgeheim die zijn gekoppeld aan uw toepassing Hubspot. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
-| accessToken | Het toegangstoken verkregen bij het verifiëren van uw OAuth-integratie in eerste instantie. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| clientId | De client-ID die is gekoppeld aan uw HubSpot-toepassing. Meer informatie over het maken van een app in [HubSpot.](https://developers.hubspot.com/docs/faq/how-do-i-create-an-app-in-hubspot) | Ja |
+| clientSecret | Het client geheim dat is gekoppeld aan uw HubSpot-toepassing. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| accessToken | Het toegangstoken verkregen bij het verifiëren van uw OAuth-integratie in eerste instantie. Meer informatie over het verkrijgen van een toegangs token met uw client-ID en [geheim.](https://developers.hubspot.com/docs/methods/oauth2/get-access-and-refresh-tokens) Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | refreshToken | Het vernieuwingstoken dat is verkregen bij het verifiëren van uw OAuth-integratie in eerste instantie. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
 | useEncryptedEndpoints | Hiermee geeft u op of de eindpunten van de gegevensbron zijn versleuteld met behulp van HTTPS. De standaardwaarde is true.  | Nee |
 | useHostVerification | Hiermee geeft u op of de hostnaam van de in het certificaat van de server zodat deze overeenkomen met de hostnaam van de server wanneer u verbinding maakt via SSL vereist. De standaardwaarde is true.  | Nee |
@@ -62,7 +62,7 @@ De volgende eigenschappen worden ondersteund voor HubSpot gekoppelde service:
 
 ```json
 {
-    "name": "HubspotLinkedService",
+    "name": "HubSpotLinkedService",
     "properties": {
         "type": "Hubspot",
         "typeProperties": {
@@ -99,13 +99,13 @@ Om gegevens te kopiëren van HubSpot, stel de eigenschap type van de gegevensset
 
 ```json
 {
-    "name": "HubspotDataset",
+    "name": "HubSpotDataset",
     "properties": {
         "type": "HubspotObject",
         "typeProperties": {},
         "schema": [],        
         "linkedServiceName": {
-            "referenceName": "<Hubspot linked service name>",
+            "referenceName": "<HubSpot linked service name>",
             "type": "LinkedServiceReference"
         }
     }
@@ -134,7 +134,7 @@ Om gegevens te kopiëren van HubSpot, stelt u het brontype in de kopieeractivite
         "type": "Copy",
         "inputs": [
             {
-                "referenceName": "<Hubspot input dataset name>",
+                "referenceName": "<HubSpot input dataset name>",
                 "type": "DatasetReference"
             }
         ],

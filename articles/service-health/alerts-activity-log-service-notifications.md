@@ -1,25 +1,21 @@
 ---
 title: Waarschuwingen voor activiteiten logboeken ontvangen op Azure-service meldingen
 description: Ontvang een melding via SMS, e-mail of webhook wanneer de Azure-service wordt uitgevoerd.
-author: stephbaron
-ms.author: stbaron
-services: monitoring
-ms.service: service-health
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 40ffe0b377a5cbb21f07c479097958d7c15a2879
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: d318adc76959ac24f4be9946167965a83053f632
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383150"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749321"
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>Waarschuwingen voor activiteiten logboek maken voor service meldingen
 ## <a name="overview"></a>Overzicht
 
 In dit artikel wordt beschreven hoe u waarschuwingen voor activiteiten logboeken instelt voor service status meldingen met behulp van de Azure Portal.  
 
-Service status meldingen worden opgeslagen in het [Azure-activiteiten logboek](../azure-monitor/platform/activity-logs-overview.md) , gezien de mogelijk grote hoeveelheid informatie die is opgeslagen in het activiteiten logboek, is er een afzonderlijke gebruikers interface waarmee u waarschuwingen voor service status meldingen gemakkelijker kunt weer geven en instellen. 
+Service status meldingen worden opgeslagen in het [Azure-activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md) , gezien de mogelijk grote hoeveelheid informatie die is opgeslagen in het activiteiten logboek, is er een afzonderlijke gebruikers interface waarmee u waarschuwingen voor service status meldingen gemakkelijker kunt weer geven en instellen. 
 
 U kunt een waarschuwing ontvangen wanneer Azure service status meldingen verzendt naar uw Azure-abonnement. U kunt de waarschuwing configureren op basis van:
 
@@ -64,7 +60,7 @@ Zie [Resource Manager-sjablonen](../azure-monitor/platform/alerts-activity-log.m
     > [!NOTE]
     > Dit abonnement wordt gebruikt om de waarschuwing voor activiteiten logboek op te slaan. De resource van de waarschuwing wordt geïmplementeerd voor dit abonnement en controleert gebeurtenissen in het activiteiten logboek.
 
-1. Kies de **gebeurtenis typen** waarvoor u een waarschuwing wilt ontvangen: *Service probleem*, *gepland onderhoud*en *status adviezen* 
+1. Kies de **gebeurtenis typen** waarvoor u een waarschuwing wilt ontvangen: *service probleem*, *gepland onderhoud*en *status adviezen* 
 
 1. Definieer uw waarschuwings Details door een naam en **Beschrijving**voor de **waarschuwings regel** in te voeren.
 

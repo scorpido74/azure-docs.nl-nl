@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/31/2017
-ms.openlocfilehash: a79bf07c91ef80509355a10c1401d1ab94cc5118
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: eb43db7a67063622f6a6125178267573cd209471
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552754"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748800"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhooks voor Azure-activiteiten logboek waarschuwingen
 Als onderdeel van de definitie van een actie groep kunt u webhook-eind punten configureren voor het ontvangen van waarschuwings meldingen voor activiteiten Logboeken. Met webhooks kunt u deze meldingen naar andere systemen sturen voor nabewerkingen of aangepaste acties. In dit artikel ziet u hoe de payload voor het HTTP POST-bericht naar een webhook eruit ziet.
@@ -257,7 +257,7 @@ Zie [service Health Notifications](../../azure-monitor/platform/service-notifica
 }
 ```
 
-| Element naam | Beschrijving |
+| Elementnaam | Beschrijving |
 | --- | --- |
 | status |Wordt gebruikt voor metrische waarschuwingen. Altijd ingesteld op geactiveerd voor waarschuwingen voor activiteiten Logboeken. |
 | context |De context van de gebeurtenis. |
@@ -271,8 +271,8 @@ Zie [service Health Notifications](../../azure-monitor/platform/service-notifica
 | resourceId |De resource-ID van de betrokken resource. |
 | resourceGroupName |De naam van de resource groep voor de betrokken resource. |
 | properties |Set `<Key, Value>` paren (`Dictionary<String, String>`) die informatie over de gebeurtenis bevatten. |
-| gebeurtenislog |Element dat meta gegevens bevat over de gebeurtenis. |
-| autorisatie |De op rollen gebaseerde Access Control eigenschappen van de gebeurtenis. Deze eigenschappen omvatten doorgaans de actie, de rol en het bereik. |
+| gebeurtenis |Element dat meta gegevens bevat over de gebeurtenis. |
+| authorization |De op rollen gebaseerde Access Control eigenschappen van de gebeurtenis. Deze eigenschappen omvatten doorgaans de actie, de rol en het bereik. |
 | category |De categorie van de gebeurtenis. Ondersteunde waarden zijn onder andere: beheer, waarschuwing, beveiliging, ServiceHealth en aanbeveling. |
 | aanroeper |Het e-mail adres van de gebruiker die de bewerking, UPN-claim of SPN-claim heeft uitgevoerd op basis van Beschik baarheid. Kan null zijn voor bepaalde systeem aanroepen. |
 | correlationId |Meestal een GUID in een teken reeks indeling. Gebeurtenissen met correlationId horen bij dezelfde grotere actie en delen meestal een correlationId. |
@@ -280,17 +280,17 @@ Zie [service Health Notifications](../../azure-monitor/platform/service-notifica
 | eventDataId |De unieke id voor de gebeurtenis. |
 | Source |De naam van de Azure-service of-infra structuur die de gebeurtenis heeft gegenereerd. |
 | httpRequest |De aanvraag omvat meestal de clientRequestId-, clientIpAddress-en HTTP-methode (bijvoorbeeld PUT). |
-| Afvlakking |Een van de volgende waarden: kritiek, fout, waarschuwing en informatief. |
+| level |Een van de volgende waarden: kritiek, fout, waarschuwing en informatief. |
 | operationId |Meestal een GUID die wordt gedeeld tussen de gebeurtenissen die overeenkomen met één bewerking. |
-| operationName |De naam van de bewerking. |
+| operationName |Naam van de bewerking. |
 | properties |De eigenschappen van de gebeurtenis. |
-| status |tekenreeksexpressie. De status van de bewerking. Veelvoorkomende waarden zijn gestart, in uitvoering, geslaagd, mislukt, actief en opgelost. |
+| status |Tekenreeks. Status van de bewerking. Veelvoorkomende waarden zijn gestart, in uitvoering, geslaagd, mislukt, actief en opgelost. |
 | subStatus |Bevat meestal de HTTP-status code van de bijbehorende REST-aanroep. Het kan ook andere teken reeksen bevatten die een substatus beschrijven. Algemene Substatussen zijn onder andere OK (HTTP-status code: 200), gemaakt (HTTP-status code: 201), geaccepteerd (HTTP-status code: 202), geen inhoud (HTTP-status code: 204), ongeldige aanvraag (HTTP-status code: 400), niet gevonden (HTTP-status code: 404), conflict (HTTP-status code: 409 ), Interne server fout (HTTP-status code: 500), service niet beschikbaar (HTTP-status code: 503) en time-out voor gateway (HTTP-status code: 504). |
 
-Zie [overzicht van het Azure-activiteiten logboek](../../azure-monitor/platform/activity-logs-overview.md)voor specifieke schema Details over alle andere waarschuwingen voor activiteiten Logboeken.
+Zie [overzicht van het Azure-activiteiten logboek](../../azure-monitor/platform/platform-logs-overview.md)voor specifieke schema Details over alle andere waarschuwingen voor activiteiten Logboeken.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer [informatie over het activiteiten logboek](../../azure-monitor/platform/activity-logs-overview.md).
+* Meer [informatie over het activiteiten logboek](../../azure-monitor/platform/platform-logs-overview.md).
 * [Voer Azure Automation-scripts (Runbooks) uit in azure-waarschuwingen](https://go.microsoft.com/fwlink/?LinkId=627081).
 * [Gebruik een logische app voor het verzenden van een SMS via Twilio vanuit een Azure-waarschuwing](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app). Dit voor beeld is voor metrische waarschuwingen, maar kan worden gewijzigd om te werken met een waarschuwing voor een activiteiten logboek.
 * [Gebruik een logische app voor het verzenden van een bericht met een toegestane vertraging van een Azure-waarschuwing](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app). Dit voor beeld is voor metrische waarschuwingen, maar kan worden gewijzigd om te werken met een waarschuwing voor een activiteiten logboek.

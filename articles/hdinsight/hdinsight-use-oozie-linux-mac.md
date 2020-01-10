@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 89364a3ee948abbe5d233052878abe92bc7663a7
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: ece6fdb743035069bc6c666d6e90c76860f63e82
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241688"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744907"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Apache Oozie met Apache Hadoop gebruiken om een werk stroom te definiëren en uit te voeren op Azure HDInsight op basis van Linux
 
@@ -296,11 +296,11 @@ De taak definitie beschrijft waar u de werk stroom. XML kunt vinden. Ook wordt b
 
 2. Bewerk de XML hieronder als volgt:
 
-    |Waarde van tijdelijke aanduiding| Waarde vervangen|
+    |Waarde van tijdelijke aanduiding| Vervangen waarde|
     |---|---|
     |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| Waarde ontvangen van stap 1.|
-    |Beheerder| Uw aanmeldings naam voor het HDInsight-cluster als u geen beheerder bent.|
-    |serverName| Naam van Azure SQL database-server.|
+    |beheerder| Uw aanmeldings naam voor het HDInsight-cluster als u geen beheerder bent.|
+    |Servernaam| Naam van Azure SQL database-server.|
     |sqlLogin| Aanmelding bij Azure SQL database server.|
     |sqlPassword| Aanmeldings wachtwoord voor de Azure SQL database-server.|
 
@@ -394,10 +394,10 @@ De volgende stappen gebruiken de Oozie-opdracht voor het indienen en beheren van
 
     ```xml
     <name>oozie.base.url</name>
-    <value>http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie</value>
+    <value>http://ACTIVE-HEADNODE-NAME.UNIQUEID.cx.internal.cloudapp.net:11000/oozie</value>
     ```
 
-    Het gedeelte `http://hn0-CLUSTERNAME.randomcharacters.cx.internal.cloudapp.net:11000/oozie` is de URL die moet worden gebruikt met de opdracht Oozie.
+    Het gedeelte `http://ACTIVE-HEADNODE-NAME.UNIQUEID.cx.internal.cloudapp.net:11000/oozie` is de URL die moet worden gebruikt met de opdracht Oozie.
 
 2. Bewerk de code om de URL te vervangen door de naam die u eerder hebt ontvangen. Als u een omgevings variabele voor de URL wilt maken, gebruikt u het volgende, zodat u deze niet voor elke opdracht hoeft in te voeren:
 
@@ -492,7 +492,7 @@ Zie [Apache Oozie Web Services API](https://oozie.apache.org/docs/4.1.0/WebServi
 
 De Oozie-webgebruikersinterface biedt een webgebaseerde weer gave van de status van Oozie-taken in het cluster. Met de Web-UI kunt u de volgende informatie bekijken:
 
-   * Taak status
+   * De status van taak
    * Jobdefinitie
    * Configuratie
    * Een grafiek van de acties in de taak

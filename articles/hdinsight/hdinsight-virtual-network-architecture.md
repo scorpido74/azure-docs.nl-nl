@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/31/2019
-ms.openlocfilehash: 0a1139f7bf1711a5f6d980e67a8a9027bfd3af52
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b3f622b360f565ef5b16d5376cb1aa2498655017
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665328"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744743"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight Virtual Network-architectuur
 
@@ -31,6 +31,16 @@ Azure HDInsight-clusters hebben verschillende typen virtuele machines of knoop p
 | Regio knooppunt | Voor het HBase-cluster type voert het regio-knoop punt (ook wel een gegevens knooppunt genoemd) de regio server uit. Regio servers fungeren en beheren een deel van de gegevens die worden beheerd door HBase. Regio knooppunten kunnen worden toegevoegd aan of verwijderd uit het cluster om de capaciteit van de computer te schalen en de kosten te beheren.|
 | Nimbus-knoop punt | Voor het Storm-cluster type biedt het Nimbus-knoop punt vergelijk bare functionaliteit als het hoofd knooppunt. Het Nimbus-knoop punt wijst taken toe aan andere knoop punten in een cluster via Zookeeper, die de uitvoering van Storm-topologieën coördineert. |
 | Supervisor knooppunt | Voor het Storm-cluster type voert het knoop punt Super Visor de instructies uit die zijn verschaft door het Nimbus-knoop punt om de gewenste verwerking uit te voeren. |
+
+## <a name="resource-naming-conventions"></a>Resource naamgevings conventies
+
+Gebruik FQDN-namen (FULLy Qualified Domain names) bij het adresseren van knoop punten in uw cluster. U kunt de FQDN-namen voor verschillende knooppunt typen in uw cluster ophalen met behulp van de [Ambari-API](hdinsight-hadoop-manage-ambari-rest-api.md). 
+
+Deze FQDN-namen hebben de vorm `<node-type-prefix><instance-number>-<abbreviated-clustername>.<unique-identifier>.cx.internal.cloudapp.net`.
+
+Het `<node-type-prefix>` wordt *HN* voor hoofd knooppunten, *wn* voor worker-knoop punten en *Zn* voor Zookeeper-knoop punten.
+
+Als u alleen de hostnaam nodig hebt, gebruikt u alleen het eerste deel van de FQDN-naam: `<node-type-prefix><instance-number>-<abbreviated-clustername>`
 
 ## <a name="basic-virtual-network-resources"></a>Basis bronnen voor virtueel netwerk
 
@@ -53,7 +63,7 @@ De volgende netwerk bronnen worden automatisch gemaakt in het virtuele netwerk d
 
 | Netwerk bron | Nummer aanwezig | Details |
 | --- | --- | --- |
-|Load balancer | drie | |
+|Load Balancer | drie | |
 |Netwerkinterfaces | negen | Deze waarde is gebaseerd op een normaal cluster, waarbij elk knoop punt een eigen netwerk interface heeft. De negen interfaces zijn voor de twee hoofd knooppunten, drie Zookeeper-knoop punten, twee worker-knoop punten en twee gateway knooppunten die in de voor gaande tabel worden vermeld. |
 |Openbare IP-adressen | twee |    |
 

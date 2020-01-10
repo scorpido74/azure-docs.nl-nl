@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: f17c588d28d0904041970eee8e9aa2201f905836
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: b576510749e691b6255c849f14275db221c54460
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151429"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745122"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights met behulp van AI om database prestaties te bewaken en op te lossen
 
@@ -164,7 +164,7 @@ Het model voor buitensporige wacht tijden bewaakt afzonderlijke database query's
 - Resource limieten voor elastische Pools bereiken
 - Buitensporig aantal werk-of sessie-threads
 - Buitensporige database vergrendeling
-- Geheugen druk
+- Geheugendruk
 - Andere wacht statistieken
 
 Het bereiken van resource limieten of bronnen limieten voor elastische Pools duidt op het verbruik van beschik bare resources voor een abonnement of in de elastische groep met absolute drempel waarden. Deze statistieken wijzen op de prestaties van de werk belasting. Een buitensporig aantal werk-of sessie-threads geeft een toestand aan waarin het aantal werkthreads of sessies gepaard absolute drempel waarden heeft gepasseerd. Deze statistieken wijzen op de prestaties van de werk belasting.
@@ -190,4 +190,4 @@ Als een van de bewaakte kritieke uitzonde ringen de absolute drempel waarden ove
 - Meer informatie over het [oplossen van problemen met de prestaties van SQL database met intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
 - Gebruik het [Intelligent Insights SQL database prestatie logboek voor diagnostische gegevens](sql-database-intelligent-insights-use-diagnostics-log.md).
 - Meer informatie over het [bewaken van SQL database met behulp van SQL Analytics](../azure-monitor/insights/azure-sql.md).
-- Meer informatie over het [verzamelen en gebruiken van logboek gegevens van uw Azure-resources](../azure-monitor/platform/resource-logs-overview.md).
+- Meer informatie over het [verzamelen en gebruiken van logboek gegevens van uw Azure-resources](../azure-monitor/platform/platform-logs-overview.md).

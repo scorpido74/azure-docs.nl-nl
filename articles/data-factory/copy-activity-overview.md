@@ -9,19 +9,19 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 01/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 40bddaab6db5e7ed777ec55ca469a9e2d1c35c98
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0e138e954501df3cf3c3c8819d0198ad9a9288f0
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927547"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754456"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieer activiteit in Azure Data Factory
 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory die u gebruikt:"]
-> * [Versie 1](v1/data-factory-data-movement-activities.md)
+> * [Versie 1:](v1/data-factory-data-movement-activities.md)
 > * [Huidige versie](copy-activity-overview.md)
 
 In Azure Data Factory kunt u de Kopieer activiteit gebruiken om gegevens te kopiëren tussen gegevens archieven die zich lokaal en in de cloud bevinden. Nadat u de gegevens hebt gekopieerd, kunt u andere activiteiten gebruiken om deze verder te transformeren en te analyseren. U kunt ook de Kopieer activiteit gebruiken om trans formatie-en analyse resultaten te publiceren voor business intelligence (BI) en het gebruik van toepassingen.
@@ -49,15 +49,13 @@ Als u gegevens wilt kopiëren van een bron naar een sink, voert de service die d
 
 ### <a name="supported-file-formats"></a>Ondersteunde bestandsindelingen
 
-U kunt de Kopieer activiteit gebruiken om bestanden te kopiëren als tussen twee op bestanden gebaseerde gegevens archieven. In dit geval worden de gegevens efficiënt gekopieerd zonder serialisatie of deserialisatie.
-
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
-U kunt bijvoorbeeld de volgende Kopieer activiteiten uitvoeren:
+U kunt de Kopieer activiteit gebruiken om bestanden te kopiëren tussen twee op bestanden gebaseerde gegevens archieven. in dat geval worden de gegevens efficiënt gekopieerd zonder serialisatie of deserialisatie. Daarnaast kunt u ook bestanden van een bepaalde indeling parseren of genereren. u kunt bijvoorbeeld het volgende doen:
 
-* Gegevens kopiëren van een on-premises SQL Server Data Base en de gegevens schrijven naar Azure Data Lake Storage Gen2 in de Parquet-indeling.
+* Gegevens kopiëren van een on-premises SQL Server Data Base en schrijven naar Azure Data Lake Storage Gen2 in de Parquet-indeling.
 * Kopieer bestanden in de tekst indeling (CSV) van een on-premises bestands systeem en schrijf naar Azure Blob-opslag in de Avro-indeling.
-* Kopieer gezipte bestanden van een on-premises bestands systeem, Decomprimeer ze en schrijf ze naar Azure Data Lake Storage Gen2.
+* Kopieer gezipte bestanden van een on-premises bestands systeem, Decomprimeer ze op de vlucht en schrijf uitgepakte bestanden naar Azure Data Lake Storage Gen2.
 * Kopieer gegevens in de indeling van de tekst in het type gzip (gecomprimeerd) in de vorm van Azure Blob-opslag en schrijf deze naar Azure SQL Database.
 * Veel meer activiteiten waarvoor serialisatie/deserialisatie of compressie/decompressie nodig is.
 
@@ -131,13 +129,14 @@ De volgende sjabloon van een Kopieer activiteit bevat een volledige lijst met on
 | inputs | Geef de gegevensset op die u hebt gemaakt die verwijst naar de bron gegevens. De Kopieer activiteit ondersteunt slechts één invoer. | Ja |
 | outputs | Geef de gegevensset op die u hebt gemaakt die verwijst naar de Sink-gegevens. De Kopieer activiteit ondersteunt slechts één uitvoer. | Ja |
 | typeProperties | Geef eigenschappen op voor het configureren van de Kopieer activiteit. | Ja |
-| source | Geef het type Kopieer bron en de bijbehorende eigenschappen op om gegevens op te halen.<br/><br/>Zie voor meer informatie de sectie ' eigenschappen van de Kopieer activiteit ' in het connector artikel dat wordt vermeld in [ondersteunde gegevens archieven en-indelingen](#supported-data-stores-and-formats). | Ja |
-| sink | Geef het sink-type voor het kopiëren en de bijbehorende eigenschappen op voor het schrijven van gegevens.<br/><br/>Zie voor meer informatie de sectie ' eigenschappen van de Kopieer activiteit ' in het connector artikel dat wordt vermeld in [ondersteunde gegevens archieven en-indelingen](#supported-data-stores-and-formats). | Ja |
-| translator | Geef expliciete kolomtoewijzingen van bron naar een sink. Deze eigenschap is van toepassing wanneer het standaard gedrag voor kopiëren niet aan uw behoeften voldoet.<br/><br/>Zie [schema toewijzing in de Kopieer activiteit](copy-activity-schema-and-type-mapping.md)voor meer informatie. | Nee |
-| dataIntegrationUnits | Geef een meting op die staat voor de hoeveelheid kracht die de [Azure Integration runtime](concepts-integration-runtime.md) gebruikt voor het kopiëren van gegevens. Deze eenheden waren voorheen bekend als DMU (Cloud data units). <br/><br/>Zie [gegevens integratie-eenheden](copy-activity-performance.md#data-integration-units)voor meer informatie. | Nee |
-| parallelCopies | Geef de parallelle factor op die de Kopieer activiteit moet gebruiken bij het lezen van gegevens van de bron en het schrijven van gegevens naar de sink.<br/><br/>Zie [parallelle kopie](copy-activity-performance.md#parallel-copy)voor meer informatie. | Nee |
-| enableStaging<br/>stagingSettings | Geef op of de tussenliggende gegevens in Blob Storage moeten worden gestage in plaats van gegevens rechtstreeks van bron naar sink te kopiëren.<br/><br/>Zie voor meer informatie over nuttige scenario's en configuratie Details [gefaseerde kopie](copy-activity-performance.md#staged-copy). | Nee |
-| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Kies hoe u incompatibele rijen wilt verwerken wanneer u gegevens kopieert van bron naar sink.<br/><br/>Zie [fout tolerantie](copy-activity-fault-tolerance.md)voor meer informatie. | Nee |
+| source | Geef het type Kopieer bron en de bijbehorende eigenschappen op om gegevens op te halen.<br/>Zie voor meer informatie de sectie ' eigenschappen van de Kopieer activiteit ' in het connector artikel dat wordt vermeld in [ondersteunde gegevens archieven en-indelingen](#supported-data-stores-and-formats). | Ja |
+| sink | Geef het sink-type voor het kopiëren en de bijbehorende eigenschappen op voor het schrijven van gegevens.<br/>Zie voor meer informatie de sectie ' eigenschappen van de Kopieer activiteit ' in het connector artikel dat wordt vermeld in [ondersteunde gegevens archieven en-indelingen](#supported-data-stores-and-formats). | Ja |
+| translator | Geef expliciete kolomtoewijzingen van bron naar een sink. Deze eigenschap is van toepassing wanneer het standaard gedrag voor kopiëren niet aan uw behoeften voldoet.<br/>Zie [schema toewijzing in de Kopieer activiteit](copy-activity-schema-and-type-mapping.md)voor meer informatie. | Nee |
+| dataIntegrationUnits | Geef een meting op die staat voor de hoeveelheid kracht die de [Azure Integration runtime](concepts-integration-runtime.md) gebruikt voor het kopiëren van gegevens. Deze eenheden waren voorheen bekend als DMU (Cloud data units). <br/>Zie [gegevens integratie-eenheden](copy-activity-performance.md#data-integration-units)voor meer informatie. | Nee |
+| parallelCopies | Geef de parallelle factor op die de Kopieer activiteit moet gebruiken bij het lezen van gegevens van de bron en het schrijven van gegevens naar de sink.<br/>Zie [parallelle kopie](copy-activity-performance.md#parallel-copy)voor meer informatie. | Nee |
+| doordat | Opgeven of meta gegevens/Acl's tijdens het kopiëren van de gegevens moeten worden bewaard. <br/>Zie [meta gegevens behouden](copy-activity-preserve-metadata.md)voor meer informatie. |Nee |
+| enableStaging<br/>stagingSettings | Geef op of de tussenliggende gegevens in Blob Storage moeten worden gestage in plaats van gegevens rechtstreeks van bron naar sink te kopiëren.<br/>Zie voor meer informatie over nuttige scenario's en configuratie Details [gefaseerde kopie](copy-activity-performance.md#staged-copy). | Nee |
+| enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Kies hoe u incompatibele rijen wilt verwerken wanneer u gegevens kopieert van bron naar sink.<br/>Zie [fout tolerantie](copy-activity-fault-tolerance.md)voor meer informatie. | Nee |
 
 ## <a name="monitoring"></a>Controleren
 
@@ -238,13 +237,9 @@ De details van de Kopieer activiteit en prestatie kenmerken worden ook weer gege
 }
 ```
 
-## <a name="schema-and-data-type-mapping"></a>Schema en de toewijzing van het type gegevens
+## <a name="incremental-copy"></a>Incrementele kopie
 
-Zie [schema en gegevens type toewijzing](copy-activity-schema-and-type-mapping.md) voor informatie over hoe de Kopieer activiteit uw bron gegevens aan uw Sink koppelt.
-
-## <a name="fault-tolerance"></a>Fouttolerantie
-
-Standaard stopt de Kopieer activiteit met het kopiëren van gegevens en wordt een fout geretourneerd wanneer brongegevens rijen niet compatibel zijn met Sink-gegevens rijen. Als u de kopie wilt laten slagen, kunt u de Kopieer activiteit configureren om de niet-compatibele rijen over te slaan en te registreren en alleen de compatibele gegevens te kopiëren. Zie [fout tolerantie voor kopieer activiteiten](copy-activity-fault-tolerance.md) voor meer informatie.
+Data Factory kunt u de Delta gegevens van een brongegevens archief stapsgewijs naar een Sink-gegevens archief kopiëren. Zie [zelf studie: gegevens stapsgewijs kopiëren](tutorial-incremental-copy-overview.md)voor meer informatie.
 
 ## <a name="performance-and-tuning"></a>Prestaties en afstemmen
 
@@ -258,8 +253,36 @@ In dit voor beeld houdt Data Factory tijdens het uitvoeren van een kopie een hoo
 
 ![Bewaking met tips voor het afstemmen van prestaties kopiëren](./media/copy-activity-overview/copy-monitoring-with-performance-tuning-tips.png)
 
-## <a name="incremental-copy"></a>Incrementele kopie
-Data Factory kunt u de Delta gegevens van een brongegevens archief stapsgewijs naar een Sink-gegevens archief kopiëren. Zie [zelf studie: gegevens stapsgewijs kopiëren](tutorial-incremental-copy-overview.md)voor meer informatie.
+## <a name="resume-from-last-failed-run"></a>Hervatten vanuit de laatste uitvoering is mislukt
+
+De Kopieer activiteit ondersteunt de laatste mislukte uitvoering wanneer u grote hoeveel heden bestanden kopieert, met een binaire indeling tussen archieven op basis van bestanden en ervoor kiest om de map/bestands hiërarchie te bewaren van bron naar sink, bijvoorbeeld om gegevens te migreren van Amazon S3 naar Azure Data Lake Storage Gen2. Dit is van toepassing op de volgende op bestanden gebaseerde connectors: [Amazon S3](connector-amazon-simple-storage-service.md), [Azure Blob](connector-azure-blob-storage.md), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md), [Azure data Lake Storage Gen2](connector-azure-data-lake-storage.md), [Azure File Storage](connector-azure-file-storage.md), [Bestands systeem](connector-file-system.md), [FTP](connector-ftp.md), [Google Cloud Storage](connector-google-cloud-storage.md), [HDFS](connector-hdfs.md)en [SFTP](connector-sftp.md).
+
+U kunt op de volgende twee manieren gebruikmaken van de bewerking voor het hervatten van de Kopieer activiteit:
+
+- **Nieuwe poging op activiteit niveau:** U kunt het aantal pogingen voor de Kopieer activiteit instellen. Als het uitvoeren van de uitvoering van de pijp lijn mislukt, wordt de volgende automatische nieuwe poging gestart vanaf het fout punt van de laatste proef versie.
+- **Opnieuw uitvoeren vanaf mislukte activiteit:** Nadat de uitvoering van de pijp lijn is voltooid, kunt u ook een opnieuw uitvoeren starten vanuit de mislukte activiteit in de weer gave van de ADF-gebruikers interface of via een programma. Als de mislukte activiteit een Kopieer activiteit is, wordt de pijp lijn niet alleen opnieuw op basis van deze activiteit uitgevoerd, maar wordt ook hervat vanaf het fout punt van de vorige uitvoering.
+
+    ![Kopiëren hervatten](media/copy-activity-overview/resume-copy.png)
+
+Enkele punten om te noteren:
+
+- Hervatten vindt plaats op bestands niveau. Als de Kopieer activiteit mislukt bij het kopiëren van een bestand, wordt dit specifieke bestand opnieuw gekopieerd.
+- Als u wilt door gaan met werken, wijzigt u de instellingen voor de Kopieer activiteit niet tussen de herstarts.
+- Wanneer u gegevens van Amazon S3, Azure Blob, Azure Data Lake Storage Gen2 en Google Cloud Storage kopieert, kan de Kopieer activiteit uit een wille keurig aantal gekopieerde bestanden worden hervat. Hoewel de rest van op bestanden gebaseerde connectors als bron is, ondersteunt de huidige Kopieer activiteit het hervatten van een beperkt aantal bestanden, meestal ten opzichte van tien duizenden en varieert afhankelijk van de lengte van de bestands paden. bestanden die groter zijn dan dit aantal, worden opnieuw gekopieerd tijdens het opnieuw uitvoeren.
+
+Voor andere scenario's dan het kopiëren van een binair bestand begint de Kopieer activiteit opnieuw vanaf het begin.
+
+## <a name="preserve-metadata-along-with-data"></a>Meta gegevens in combi natie met gegevens behouden
+
+Bij het kopiëren van gegevens van bron naar sink, in scenario's zoals data Lake Migration, kunt u ook ervoor kiezen de meta gegevens en Acl's samen met gegevens te behouden met Kopieer activiteit. Zie [meta gegevens behouden](copy-activity-preserve-metadata.md) voor meer informatie.
+
+## <a name="schema-and-data-type-mapping"></a>Schema en de toewijzing van het type gegevens
+
+Zie [schema en gegevens type toewijzing](copy-activity-schema-and-type-mapping.md) voor informatie over hoe de Kopieer activiteit uw bron gegevens aan uw Sink koppelt.
+
+## <a name="fault-tolerance"></a>Fouttolerantie
+
+Standaard stopt de Kopieer activiteit met het kopiëren van gegevens en wordt een fout geretourneerd wanneer brongegevens rijen niet compatibel zijn met Sink-gegevens rijen. Als u de kopie wilt laten slagen, kunt u de Kopieer activiteit configureren om de niet-compatibele rijen over te slaan en te registreren en alleen de compatibele gegevens te kopiëren. Zie [fout tolerantie voor kopieer activiteiten](copy-activity-fault-tolerance.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende snelstartgidsen, zelfstudies en voorbeelden:

@@ -3,7 +3,7 @@ title: LVM configureren op een virtuele machine met Linux
 description: Meer informatie over het configureren van LVM op Linux in Azure.
 services: virtual-machines-linux
 documentationcenter: na
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tag: azure-service-management,azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/27/2018
-ms.author: szark
+ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: f2774f0037d2655071b605c0cbcdf8122e66f6e7
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 38e460138fde1de6d8fd57dcab5a88238f0981fe
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036672"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751023"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>LVM configureren op een virtuele Linux-machine in azure
 In dit document wordt beschreven hoe u Logical Volume Manager (LVM) configureert in uw virtuele Azure-machine. LVM kan worden gebruikt op de besturingssysteem schijf of gegevens schijven in azure-Vm's, maar in de meeste Cloud installatie kopieën is LVM niet geconfigureerd op de besturingssysteem schijf. Met de volgende stappen wordt de nadruk gelegd op het configureren van LVM voor uw gegevens schijven.
@@ -102,7 +102,7 @@ In deze hand leiding wordt ervan uitgegaan dat u drie gegevens schijven hebt aan
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>Het nieuwe bestands systeem toevoegen aan bestand/etc/fstab
 > [!IMPORTANT]
-> Het onjuist bewerken van het `/etc/fstab` bestand kan resulteren in een systeem dat niet kan worden opgestart. Als dat niet het geval is, raadpleegt u de documentatie van de distributie voor informatie over het correct bewerken van dit bestand. U wordt ook aangeraden een back-up van het `/etc/fstab`-bestand te maken voordat u het bewerkt.
+> Als u het bestand `/etc/fstab` onjuist bewerkt, kan dat erin resulteren dat het systeem niet meer kan worden opgestart. Als u niet zeker weet wat u moet doen, raadpleegt u de documentatie van de distributie over het bewerken van dit bestand. U wordt ook aangeraden een back-up van het `/etc/fstab`-bestand te maken voordat u het bewerkt.
 
 1. Maak het gewenste koppel punt voor het nieuwe bestands systeem, bijvoorbeeld:
 

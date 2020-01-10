@@ -6,19 +6,19 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 11/19/2019
+ms.date: 01/08/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 7b44597b24adce05498eed273c9494cae3360ed6
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 271a4f116b8b929e17c3a0379bef91d6b80e1490
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168804"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754448"
 ---
 # <a name="what-is-azure-firewall"></a>Wat is Azure Firewall?
 
-Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-resources beschermt. Het is een volledig stateful firewall als een service met ingebouwde hoge Beschik baarheid en een onbeperkte schaal baarheid van de Cloud.
+Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-resources beschermt. Het is een volledige stateful firewall als een service met ingebouwde hoge beschikbaarheid en onbeperkte cloudschaalbaarheid.
 
 ![Firewalloverzicht](media/overview/firewall-threat.png)
 
@@ -94,7 +94,7 @@ Alle gebeurtenissen zijn geïntegreerd met Azure Monitor, zodat u logboeken kunt
 
 Azure Firewall zijn betaal kaart Industry (PCI), service organisatie Controls (SOC) en International Organization for Standardization (ISO)-compatibel. Het biedt momenteel ondersteuning voor SOC 1 type 2, SOC 2, SOC 3, PCI DSS en ISO 27001, 27018, 20000-1, 22301, 9001, 27017.
 
-Zie de [Microsoft Compliance Guide](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide) voor meer informatie.
+Zie de [micro soft compliance Guide (Engelstalig](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide)) voor meer informatie.
 
 ## <a name="known-issues"></a>Bekende problemen
 
@@ -106,7 +106,6 @@ Netwerkfilterregels voor niet-TCP/UDP-protocollen (bijvoorbeeld ICMP) werken nie
 |Ontbrekende PowerShell- en CLI-ondersteuning voor ICMP|Azure PowerShell en CLI bieden geen ondersteuning voor ICMP als een geldig protocol in netwerkregels.|Het is nog steeds mogelijk om ICMP als protocol te gebruiken via de portal en de REST API. We werken binnenkort met het toevoegen van ICMP in Power shell en CLI.|
 |FQDN-tags vereisen instelling van een protocol: poort|Voor toepassings regels met FQDN-Tags is poort: protocol definitie vereist.|U kunt **https** gebruiken als de waarde voor poort:protocol. We werken samen om dit veld optioneel te maken wanneer FQDN-labels worden gebruikt.|
 |Het verplaatsen van een firewall naar een andere resource groep of een ander abonnement wordt niet ondersteund|Het is niet mogelijk om een firewall te verplaatsen naar een andere resource groep of een ander abonnement.|Ondersteuning van deze functionaliteit staat op de planning. Om een firewall naar een andere resourcegroep of ander abonnement verplaatsen, moet u het huidige exemplaar verwijderen en deze vervolgens opnieuw maken in de nieuwe resourcegroep of het nieuwe abonnement.|
-|Poortbereik in netwerk- en toepassingsregels|Het aantal poorten is beperkt tot 64.000 omdat hoge poorten zijn gereserveerd voor beheer en statustests. |We werken eraan om deze beperking te versoepelen.|
 |Waarschuwingen over Threat Intelligence kunnen gemaskerd worden|Netwerk regels met het doel 80/443 voor uitgaande filtering maskes Threat Intelligence-waarschuwingen wanneer deze zijn geconfigureerd voor de modus alleen-waarschuwingen.|Maak uitgaande filtering voor 80/443 met behulp van toepassings regels. Of wijzig de Threat Intelligence-modus in **waarschuwing en weigeren**.|
 |Azure Firewall gebruikt alleen Azure DNS voor naam omzetting|Azure Firewall herstelt FQDN alleen met behulp van Azure DNS. Een aangepaste DNS-server wordt niet ondersteund. Er is geen invloed op de DNS-omzetting op andere subnetten.|We werken eraan om deze beperking te versoepelen.|
 |Azure Firewall SNAT/DNAT werkt niet voor particuliere IP-doelen|Azure Firewall-ondersteuning voor SNAT/DNAT is beperkt tot uitstaand Internet/inkomend verkeer. SNAT/DNAT werkt momenteel niet voor particuliere IP-doelen. Bijvoorbeeld: spoke to spoke.|Dit is een huidige beperking.|

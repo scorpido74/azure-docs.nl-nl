@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: d75f12953c0ec767dba8a49b3ed76c176223b30c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
-ms.translationtype: HT
+ms.openlocfilehash: e4103f8360f6fa80470b0f8002a61f8ac903bd8b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613887"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749233"
 ---
 # <a name="performance-and-scalability-checklist-for-blob-storage"></a>Controle lijst voor prestaties en schaal baarheid voor Blob Storage
 
 Micro soft heeft een aantal bewezen prak tijken ontwikkeld voor het ontwikkelen van toepassingen met hoge prestaties met Blob Storage. Deze controle lijst bevat de belangrijkste procedures die ontwikkel aars kunnen volgen om de prestaties te optimaliseren. Houd bij het ontwerpen van uw toepassing en tijdens het proces de volgende procedures in acht.
 
-Azure Storage heeft schaal baarheid en prestatie doelen voor capaciteit, transactie snelheid en band breedte. Zie [Azure Storage schaal baarheid en prestatie doelen voor opslag accounts](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie over Azure Storage schaalbaarheids doelen.
+Azure Storage heeft schaal baarheid en prestatie doelen voor capaciteit, transactie snelheid en band breedte. Zie [schaalbaarheids-en prestatie doelen voor standaard opslag accounts](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) en [schaal baarheid en prestatie doelen voor Blob Storage](scalability-targets.md)voor meer informatie over Azure Storage schaalbaarheids doelen.
 
 ## <a name="checklist"></a>Controlelijst
 
 In dit artikel worden bewezen procedures voor het uitvoeren van prestaties in een controle lijst georganiseerd die u kunt volgen tijdens het ontwikkelen van uw Blob Storage-toepassing.
 
-| Klaar | Category | Ontwerpoverwegingen |
+| Klaar | Categorie | Ontwerpoverwegingen |
 | --- | --- | --- |
 | &nbsp; |Schaalbaarheids doelen |[Kunt u uw toepassing zo ontwerpen dat deze niet meer dan het maximale aantal opslag accounts gebruikt?](#maximum-number-of-storage-accounts) |
 | &nbsp; |Schaalbaarheids doelen |[Vermijdt u benadering van capaciteits-en transactie limieten?](#capacity-and-transaction-targets) |
@@ -285,5 +285,6 @@ Pagina-blobs zijn geschikt als de toepassing wille keurige schrijf bewerkingen o
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Schaalbaarheid en de prestatiedoelen van Azure Storage voor opslagaccounts](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Schaalbaarheids-en prestatie doelen voor Blob Storage](scalability-targets.md)
+- [Schaalbaarheids-en prestatie doelen voor standaard opslag accounts](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [Status en fout codes](/rest/api/storageservices/Status-and-Error-Codes2)

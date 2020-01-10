@@ -1,22 +1,24 @@
 ---
 title: Gebeurtenis schema voor Azure-activiteiten logboek
 description: Beschrijft het gebeurtenis schema voor elke categorie in het Azure-activiteiten logboek.
-author: johnkemnetz
+author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 1/16/2019
-ms.author: dukek
+ms.date: 12/04/2019
+ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 73f6de80348b7d933e45a8145f6bdb8fe22b5954
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 272b71fe5fddea9299e5d660484fcbb3eb367d58
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893600"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749462"
 ---
 # <a name="azure-activity-log-event-schema"></a>Gebeurtenis schema voor Azure-activiteiten logboek
-Het **Azure-activiteiten logboek** is een logboek dat inzicht biedt in alle gebeurtenissen op abonnements niveau die zich in azure hebben voorgedaan. In dit artikel wordt het gebeurtenis schema per gegevens categorie beschreven. Het schema van de gegevens verschilt, afhankelijk van of u de gegevens in de portal, Power shell, CLI of rechtstreeks via de REST API leest en [de gegevens naar opslag of event hubs met behulp van een logboek profiel](activity-log-export.md). In de onderstaande voor beelden wordt het schema weer gegeven dat beschikbaar is via de portal, Power shell, CLI en REST API. Aan het einde van het artikel wordt een toewijzing van deze eigenschappen aan het [Azure logs schema](diagnostic-logs-schema.md) gegeven.
+Het [Azure-activiteiten logboek](platform-logs-overview.md) biedt inzicht in alle gebeurtenissen op abonnements niveau die zich in azure hebben voorgedaan. In dit artikel wordt het gebeurtenis schema voor elke categorie beschreven. 
+
+In de onderstaande voor beelden wordt het schema weer gegeven wanneer u het activiteiten logboek opent vanuit de portal, Power shell, CLI en REST API. Het schema is anders wanneer u [het activiteiten logboek streamt naar Storage of event hubs](resource-logs-stream-event-hubs.md). Aan het einde van het artikel wordt een toewijzing van de eigenschappen aan het [schema van bron logboeken](diagnostic-logs-schema.md) gegeven.
 
 ## <a name="administrative"></a>Administratief
 Deze categorie bevat de record van alle bewerkingen voor maken, bijwerken, verwijderen en acties die zijn uitgevoerd via Resource Manager. Voor beelden van de typen gebeurtenissen die in deze categorie worden weer gegeven zijn onder andere "virtuele machine maken" en "netwerk beveiligings groep verwijderen" elke actie die door een gebruiker of toepassing wordt uitgevoerd met behulp van Resource Manager is gemodelleerd als een bewerking voor een bepaald bron type. Als het bewerkings type schrijven, verwijderen of actie is, worden de records van zowel het begin als het slagen of mislukken van die bewerking vastgelegd in de beheer categorie. De beheer categorie bevat ook eventuele wijzigingen in op rollen gebaseerd toegangs beheer in een abonnement.
@@ -558,7 +560,7 @@ Deze categorie bevat alle waarschuwingen die door Azure Security Center worden g
 | eventDataId |De unieke id van de beveiligings gebeurtenis. |
 | eventName |Beschrijvende naam van de beveiligings gebeurtenis. |
 | category | Altijd ' Beveiliging ' |
-| id |De unieke resource-id van de beveiligings gebeurtenis. |
+| Id |De unieke resource-id van de beveiligings gebeurtenis. |
 | level |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" of "informatief" |
 | resourceGroupName |De naam van de resource groep voor de resource. |
 | resourceProviderName |De naam van de resource provider voor Azure Security Center. Altijd ' micro soft. Security '. |
@@ -638,7 +640,7 @@ Deze categorie bevat de record met nieuwe aanbevelingen die voor uw services wor
 | description |Statische tekst beschrijving van de gebeurtenis recommender |
 | eventDataId | De unieke id van de aanbevelings gebeurtenis. |
 | category | Altijd ' aanbeveling ' |
-| id |De unieke resource-id van de aanbevelings gebeurtenis. |
+| Id |De unieke resource-id van de aanbevelings gebeurtenis. |
 | level |Het niveau van de gebeurtenis. Een van de volgende waarden: "kritiek", "fout", "waarschuwing" of "informatief" |
 | operationName |Naam van de bewerking.  Altijd ' micro soft. Advisor/generateRecommendations/Action '|
 | resourceGroupName |De naam van de resource groep voor de resource. |
@@ -753,7 +755,7 @@ Deze categorie bevat records van alle bewerkingen voor effect acties die worden 
 | eventName | ' BeginRequest ' of ' EndRequest '. "BeginRequest" wordt gebruikt voor uitgestelde auditIfNotExists-en deployIfNotExists-evaluaties en wanneer een deployIfNotExists effect een sjabloon implementatie start. Alle andere bewerkingen retour neren ' EndRequest '. |
 | category | Declareert de gebeurtenis in het activiteiten logboek als onderdeel van het beleid. |
 | eventTimestamp | Tijds tempel wanneer de gebeurtenis is gegenereerd door de Azure-service die de aanvraag verwerkt die overeenkomt met de gebeurtenis. |
-| id | De unieke id van de gebeurtenis voor de specifieke resource. |
+| Id | De unieke id van de gebeurtenis voor de specifieke resource. |
 | level | Het niveau van de gebeurtenis. Bij controle wordt gebruikgemaakt van "waarschuwing" en weigeren wordt "fout". Een auditIfNotExists-of deployIfNotExists-fout kan "waarschuwing" of "fout" genereren, afhankelijk van de ernst. Alle andere beleids gebeurtenissen gebruiken ' informatief '. |
 | operationId | Een GUID die wordt gedeeld tussen de gebeurtenissen die overeenkomen met één bewerking. |
 | operationName | De naam van de bewerking en is rechtstreeks gerelateerd aan het beleids effect. |
@@ -771,9 +773,13 @@ Deze categorie bevat records van alle bewerkingen voor effect acties die worden 
 | Eigenschappen. beleids regels | Bevat details over de beleids definitie, toewijzing, effect en para meters die door deze beleids evaluatie worden geretourneerd. |
 | relatedEvents | Dit veld is leeg voor beleids gebeurtenissen. |
 
-## <a name="mapping-to-resource-logs-schema"></a>Toewijzing aan het resource logboek schema
 
-Wanneer u het Azure-activiteiten logboek streamt naar een opslag account of Event Hubs naam ruimte, volgen de gegevens het schema van de [Azure-resource logboeken](./diagnostic-logs-schema.md). Hier volgt de toewijzing van eigenschappen van het bovenstaande schema aan het schema voor bron logboeken:
+## <a name="schema-from-storage-account-and-event-hubs"></a>Schema van opslag account en Event hubs
+Wanneer u het Azure-activiteiten logboek streamt naar een opslag account of Event Hub, volgen de gegevens het schema van het [resource logboek](diagnostic-logs-schema.md). De onderstaande tabel bevat een overzicht van eigenschappen van het bovenstaande schema aan het schema voor bron Logboeken.
+
+> [!IMPORTANT]
+> De indeling van activiteiten logboek gegevens die naar een opslag account zijn geschreven, is gewijzigd in JSON-regels op nov. 1, 2018. Zie [voor bereiding voor het wijzigen van de indeling in azure monitor bron logboeken die zijn gearchiveerd in een opslag account](diagnostic-logs-append-blobs.md) voor meer informatie over deze indelings wijziging.
+
 
 | Schema-eigenschap van bron logboeken | REST API schema-eigenschap van activiteiten logboek | Opmerkingen |
 | --- | --- | --- |
@@ -796,8 +802,69 @@ Wanneer u het Azure-activiteiten logboek streamt naar een opslag account of Even
 | properties.operationId | operationId |  |
 | Eigenschappen. eventProperties | properties |  |
 
+Hieronder volgt een voor beeld van een gebeurtenis die gebruikmaakt van dit schema..
+
+``` JSON
+{
+    "records": [
+        {
+            "time": "2015-01-21T22:14:26.9792776Z",
+            "resourceId": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
+            "operationName": "microsoft.support/supporttickets/write",
+            "category": "Write",
+            "resultType": "Success",
+            "resultSignature": "Succeeded.Created",
+            "durationMs": 2826,
+            "callerIpAddress": "111.111.111.11",
+            "correlationId": "c776f9f4-36e5-4e0e-809b-c9b3c3fb62a8",
+            "identity": {
+                "authorization": {
+                    "scope": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
+                    "action": "microsoft.support/supporttickets/write",
+                    "evidence": {
+                        "role": "Subscription Admin"
+                    }
+                },
+                "claims": {
+                    "aud": "https://management.core.windows.net/",
+                    "iss": "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
+                    "iat": "1421876371",
+                    "nbf": "1421876371",
+                    "exp": "1421880271",
+                    "ver": "1.0",
+                    "http://schemas.microsoft.com/identity/claims/tenantid": "1e8d8218-c5e7-4578-9acc-9abbd5d23315 ",
+                    "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
+                    "http://schemas.microsoft.com/identity/claims/objectidentifier": "2468adf0-8211-44e3-95xq-85137af64708",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "admin@contoso.com",
+                    "puid": "20030000801A118C",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "9vckmEGF7zDKk1YzIY8k0t1_EAPaXoeHyPRn6f413zM",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "John",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Smith",
+                    "name": "John Smith",
+                    "groups": "cacfe77c-e058-4712-83qw-f9b08849fd60,7f71d11d-4c41-4b23-99d2-d32ce7aa621c,31522864-0578-4ea0-9gdc-e66cc564d18c",
+                    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": " admin@contoso.com",
+                    "appid": "c44b4083-3bq0-49c1-b47d-974e53cbdf3c",
+                    "appidacr": "2",
+                    "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+                    "http://schemas.microsoft.com/claims/authnclassreference": "1"
+                }
+            },
+            "level": "Information",
+            "location": "global",
+            "properties": {
+                "statusCode": "Created",
+                "serviceRequestId": "50d5cddb-8ca0-47ad-9b80-6cde2207f97c"
+            }
+        }
+    ]
+}
+```
+
+
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Meer informatie over het activiteiten logboek](activity-logs-overview.md)
-* [Exporteer het activiteiten logboek naar Azure Storage of Event Hubs](activity-log-export.md)
+* [Meer informatie over het activiteiten logboek](platform-logs-overview.md)
+* [Een diagnostische instelling maken om het activiteiten logboek te verzenden naar Log Analytics-werk ruimte, Azure-opslag of event hubs](diagnostic-settings.md)
 

@@ -3,7 +3,7 @@ title: Een Oracle Linux VHD maken en uploaden
 description: Meer informatie over het maken en uploaden van een virtuele harde schijf (VHD) van Azure die een Oracle Linux besturings systeem bevat.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-service-management,azure-resource-manager
@@ -12,33 +12,31 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 03/12/2018
-ms.author: szark
-ms.openlocfilehash: 16f3bc9e70f8fac6ab28318e1654742a2c3b76a1
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.date: 12/10/2019
+ms.author: mimckitt
+ms.openlocfilehash: e0250737f1f2934548a16ee42e9ff582f2403c48
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035377"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747740"
 ---
 # <a name="prepare-an-oracle-linux-virtual-machine-for-azure"></a>Een virtuele Oracle Linux-machine voor Azure voorbereiden
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="prerequisites"></a>Vereisten
 In dit artikel wordt ervan uitgegaan dat u al een Oracle Linux besturings systeem hebt geïnstalleerd op een virtuele harde schijf. Er zijn meerdere hulpprogram ma's voor het maken van VHD-bestanden, zoals Hyper-V. Zie [de Hyper-V-functie installeren en een virtuele machine configureren](https://technet.microsoft.com/library/hh846766.aspx)voor instructies.
 
-### <a name="oracle-linux-installation-notes"></a>Installatie notities van Oracle Linux
+## <a name="oracle-linux-installation-notes"></a>Installatie notities van Oracle Linux
 * Zie ook [algemene Linux-installatie notities](create-upload-generic.md#general-linux-installation-notes) voor meer tips over het voorbereiden van Linux voor Azure.
-* De Red Hat-compatibele kernel van Oracle en hun UEK3 (onbreekbare bedrijfs-kernel) worden beide ondersteund op Hyper-V en Azure. Voor de beste resultaten moet u bijwerken naar de nieuwste kernel tijdens het voorbereiden van uw Oracle Linux VHD.
+* Ondersteuning voor Hyper-V en Azure Oracle Linux met de onbreekbare Enter prise kernel (UEK) of met de Red Hat compatibele kernel.
 * Oracle-UEK2 wordt niet ondersteund op Hyper-V en Azure omdat het niet de vereiste Stuur Programma's bevat.
 * De VHDX-indeling wordt niet ondersteund in azure, alleen **vaste VHD**.  U kunt de schijf converteren naar VHD-indeling met behulp van Hyper-V-beheer of de cmdlet Convert-VHD.
 * Bij de installatie van het Linux-systeem wordt aanbevolen om standaard partities te gebruiken in plaats van LVM (vaak de standaard instelling voor veel installaties). Hiermee wordt voor komen dat LVM naam strijdig is met gekloonde Vm's, met name als een besturingssysteem schijf ooit moet worden gekoppeld aan een andere virtuele machine voor het oplossen van problemen. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) of [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) kan worden gebruikt op gegevens schijven als dit de voor keur heeft.
-* NUMA wordt niet ondersteund voor grotere VM-grootten vanwege een fout in de Linux-kernel-versies onder 2.6.37. Dit probleem heeft voornamelijk betrekking op distributies met behulp van de upstream Red Hat 2.6.32 kernel. Door de hand matige installatie van de Azure Linux-agent (waagent) wordt NUMA automatisch uitgeschakeld in de GRUB-configuratie voor de Linux-kernel. Meer informatie hierover vindt u in de volgende stappen.
+* Linux-kernel-versies ouder dan 2.6.37 bieden geen ondersteuning voor NUMA op Hyper-V met grotere VM-grootten. Dit probleem heeft voornamelijk betrekking op oudere distributies met behulp van de upstream Red Hat 2.6.32 kernel en is opgelost in Oracle Linux 6,6 en hoger
 * Configureer geen swap partitie op de besturingssysteem schijf. De Linux-agent kan worden geconfigureerd voor het maken van een wissel bestand op de tijdelijke bron schijf.  Meer informatie hierover vindt u in de volgende stappen.
 * Alle Vhd's op Azure moeten een virtuele grootte hebben die is afgestemd op 1 MB. Wanneer u van een onbewerkte schijf naar VHD converteert, moet u ervoor zorgen dat de onbewerkte schijf grootte een meervoud van 1MB is vóór de conversie. Zie [installatie notities voor Linux](create-upload-generic.md#general-linux-installation-notes) voor meer informatie.
 * Zorg ervoor dat de `Addons` opslagplaats is ingeschakeld. Bewerk het bestand `/etc/yum.repos.d/public-yum-ol6.repo`(Oracle Linux 6) of `/etc/yum.repos.d/public-yum-ol7.repo`(Oracle Linux 7) en wijzig de regel `enabled=0` in `enabled=1` onder **[ol6_addons]** of **[ol7_addons]** in dit bestand.
 
-## <a name="oracle-linux-64"></a>Oracle Linux 6.4 +
+## <a name="oracle-linux-64-and-later"></a>Oracle Linux 6,4 en hoger
 U moet specifieke configuratie stappen in het besturings systeem uitvoeren om de virtuele machine in azure uit te voeren.
 
 1. Selecteer de virtuele machine in het middelste deel venster van Hyper-V-beheer.
@@ -71,11 +69,11 @@ U moet specifieke configuratie stappen in het besturings systeem uitvoeren om de
 8. Installeer python-pyasn1 door de volgende opdracht uit te voeren:
    
         # sudo yum install python-pyasn1
-9. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u dit wilt doen, opent u '/boot/grub/menu.lst ' in een tekst editor en zorgt u ervoor dat de standaard kernel de volgende para meters bevat:
+9. Wijzig de kernel-opstart regel in de grub-configuratie zodat er aanvullende kernel-para meters voor Azure zijn. Als u dit wilt doen, opent u '/boot/grub/menu.lst ' in een tekst editor en zorgt u ervoor dat de kernel de volgende para meters bevat:
    
-        console=ttyS0 earlyprintk=ttyS0 rootdelay=300 numa=off
+        console=ttyS0 earlyprintk=ttyS0 rootdelay=300
    
-   Dit zorgt ervoor dat alle console berichten worden verzonden naar de eerste seriële poort, die ondersteuning voor Azure kan helpen bij het oplossen van problemen. Hierdoor wordt NUMA uitgeschakeld vanwege een fout in de Red Hat-compatibele kernel van Oracle.
+   Dit zorgt ervoor dat alle console berichten worden verzonden naar de eerste seriële poort, die ondersteuning voor Azure kan helpen bij het oplossen van problemen.
    
    Naast het bovenstaande wordt het aanbevolen om de volgende para meters te *verwijderen* :
    
@@ -107,12 +105,12 @@ U moet specifieke configuratie stappen in het besturings systeem uitvoeren om de
 14. Klik op **actie-> afgesloten** in Hyper-V-beheer. Uw Linux-VHD is nu gereed om te worden geüpload naar Azure.
 
 ---
-## <a name="oracle-linux-70"></a>Oracle Linux 7.0 +
+## <a name="oracle-linux-70-and-later"></a>Oracle Linux 7,0 en hoger
 **Wijzigingen in Oracle Linux 7**
 
 Het voorbereiden van een virtuele machine voor Oracle Linux 7 voor Azure lijkt veel op Oracle Linux 6, maar er zijn echter enkele belang rijke verschillen:
 
-* Zowel de Red Hat compatible kernel als de UEK3 van Oracle worden ondersteund in Azure.  De UEK3-kernel wordt aanbevolen.
+* Azure ondersteunt Oracle Linux met een onherstelbare Enter prise kernel (UEK) of met de Red Hat compatibele kernel. Oracle Linux met UEK wordt aanbevolen.
 * Het NetworkManager-pakket is niet meer strijdig met de Azure Linux-agent. Dit pakket wordt standaard geïnstalleerd en wordt aangeraden dat het niet wordt verwijderd.
 * GRUB2 wordt nu gebruikt als de standaard-bootloader, dus de procedure voor het bewerken van kernel-para meters is gewijzigd (zie hieronder).
 * XFS is nu het standaard bestandssysteem. Het ext4-bestands systeem kan nog steeds worden gebruikt, indien gewenst.
@@ -151,7 +149,7 @@ Het voorbereiden van een virtuele machine voor Oracle Linux 7 voor Azure lijkt v
    
         GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
    
-   Dit zorgt ervoor dat alle console berichten worden verzonden naar de eerste seriële poort, die ondersteuning voor Azure kan helpen bij het oplossen van problemen. De nieuwe OEL 7-naamgevings conventies voor Nic's worden ook uitgeschakeld. Naast het bovenstaande wordt het aanbevolen om de volgende para meters te *verwijderen* :
+   Dit zorgt ervoor dat alle console berichten worden verzonden naar de eerste seriële poort, die ondersteuning voor Azure kan helpen bij het oplossen van problemen. Het schakelt ook de naamgevings conventies voor Nic's in Oracle Linux 7 uit met de onbreekbare bedrijfs-kernel. Naast het bovenstaande wordt het aanbevolen om de volgende para meters te *verwijderen* :
    
        rhgb quiet crashkernel=auto
    

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 254cbc995da9380f108970fb981c000fca7dc63f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6a474bdceffa07b18530250a02a9ef94159a8e35
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925812"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750335"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Azure-bewakings gegevens streamen naar een Event Hub
 Azure Monitor biedt een volledige stack bewakings oplossing voor toepassingen en services in azure, in andere Clouds en on-premises. Naast het gebruik van Azure Monitor voor het analyseren van die gegevens en het gebruiken voor verschillende bewakings scenario's, moet u deze mogelijk verzenden naar andere controle hulpprogramma's in uw omgeving. De meest efficiënte methode voor het streamen van bewakings gegevens naar externe hulpprogram ma's is in de meeste gevallen het gebruik van [Azure Event hubs](/azure/event-hubs/). In dit artikel vindt u een korte beschrijving van de manier waarop u bewakings gegevens uit verschillende bronnen kunt streamen naar een Event Hub en koppelingen naar gedetailleerde richt lijnen.
@@ -62,7 +62,7 @@ Door uw bewakings gegevens te routeren naar een Event Hub met Azure Monitor kunt
 
 ## <a name="next-steps"></a>Volgende stappen
 * [Het activiteiten logboek archiveren in een opslag account](../../azure-monitor/platform/archive-activity-log.md)
-* [Lees het overzicht van het Azure-activiteiten logboek](../../azure-monitor/platform/activity-logs-overview.md)
+* [Lees het overzicht van het Azure-activiteiten logboek](../../azure-monitor/platform/platform-logs-overview.md)
 * [Een waarschuwing instellen op basis van een gebeurtenis in een activiteiten logboek](../../azure-monitor/platform/alerts-log-webhook.md)
 
 

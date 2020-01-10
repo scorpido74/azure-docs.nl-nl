@@ -7,22 +7,25 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 9d6e441adeb7025e09b8d73764d2defab439dd90
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 50c5067c3db2f07da225b72d9ba0a8f0bdc44368
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350901"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748140"
 ---
 # <a name="azure-storage-samples-using-net"></a>Voor beelden Azure Storage met .NET
 
 De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen en de scenario's die in elk voor beeld worden behandeld. Klik op de koppelingen om de bijbehorende voorbeeld code in GitHub weer te geven.
 
-## <a name="blob-samples"></a>BLOB-voor beelden
+> [!NOTE]
+> In deze voor beelden wordt de Azure Storage .NET V11-bibliotheek gebruikt. Zie voor [beelden](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs/samples) in de GitHub-opslag plaats voor V12-code.
 
-| **Scenario** | **Voorbeeld code** |
+## <a name="blob-samples-v11"></a>Voor beelden van blobs (V11)
+
+| **Scenario** | **Voorbeeldcode** |
 |--------------|-----------------|
-| Blob toevoegen | [Aan de slag met blobs](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs#L1144) |
+| BLOB toevoegen | [Aan de slag met blobs](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs#L1144) |
 | Blok-blob | [Webtoepassing voor Azure Blob Storage Photo Gallery](https://github.com/Azure-Samples/storage-blobs-dotnet-webapp/blob/master/WebApp-Storage-DotNet/Controllers/HomeController.cs) |
 | Clientversleuteling | [Voor beelden van BLOB-versleuteling](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/BlobGettingStarted/Program.cs) |
 | Blob kopiëren | [Aan de slag met blobs](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
@@ -34,14 +37,14 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 | Paginabereiken ophalen | [Aan de slag met blobs](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
 | BLOB/container lease | [Aan de slag met blobs](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
 | BLOB/container weer geven | [Aan de slag met blobs](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs) |
-| Pagina-blob | [Aan de slag met blobs](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs) |
-| GEBASEERD | [Aan de slag met blobs](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
+| Pagina-BLOB | [Aan de slag met blobs](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/GettingStarted.cs) |
+| SAS | [Aan de slag met blobs](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
 | Service-eigenschappen | [Aan de slag met blobs](https://github.com/Azure-Samples/storage-blob-dotnet-getting-started/blob/master/BlobStorage/Advanced.cs) |
 | Moment opname-BLOB | [Back-ups maken van Azure virtual machine-schijven met incrementele moment opnamen](https://github.com/Azure-Samples/storage-blob-dotnet-back-up-with-incremental-snapshots/blob/master/Program.cs) |
 
-## <a name="file-samples"></a>Bestands voorbeelden
+## <a name="file-samples-v11"></a>Bestands voorbeelden (V11)
 
-| **Scenario** | **Voorbeeld code** |
+| **Scenario** | **Voorbeeldcode** |
 |--------------|-----------------|
 | Shares/Directory's/bestanden maken | [Azure Storage .NET File Storage-voor beeld](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/VisualStudioQuickStarts/DataFileStorage/Program.cs) |
 | Shares/mappen/bestanden verwijderen | [Aan de slag met Azure File Service in .NET](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/master/FileStorage/GettingStarted.cs) |
@@ -53,9 +56,9 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 | Shares weer geven | [Azure Storage .NET File Storage-voor beeld](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
 | Eigenschappen/meta gegevens/statistieken delen | [Azure Storage .NET File Storage-voor beeld](https://github.com/Azure-Samples/storage-file-dotnet-getting-started/blob/9f12304b2f5f5472a1c87c1e21be4af5661ac043/FileStorage/Advanced.cs) |
 
-## <a name="queue-samples"></a>Wachtrij voorbeelden
+## <a name="queue-samples-v11"></a>Voor beelden van wachtrij (V11)
 
-| **Scenario** | **Voorbeeld code** |
+| **Scenario** | **Voorbeeldcode** |
 |--------------|-----------------|
 | Bericht toevoegen | [Aan de slag met Azure Queue service in .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
 | Clientversleuteling | [Versleuteling van de .NET-wachtrij aan client zijde Azure Storage](https://github.com/Azure/azure-storage-net/blob/master/Samples/GettingStarted/EncryptionSamples/QueueGettingStarted/Program.cs) |
@@ -66,9 +69,9 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 | Eigenschappen van Queue-service | [Aan de slag met Azure Queue service in .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/Advanced.cs) |
 | Bericht bijwerken | [Aan de slag met Azure Queue service in .NET](https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs) |
 
-## <a name="table-samples"></a>Tabel voorbeelden
+## <a name="table-samples-v11"></a>Tabel voorbeelden (V11)
 
-| **Scenario** | **Voorbeeld code** |
+| **Scenario** | **Voorbeeldcode** |
 |--------------|-----------------|
 | Tabel maken | [Gelijktijdigheid beheren met Azure Storage-voorbeeld toepassing](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114/sourcecode?fileId=123913&pathId=50196262) |
 | Entiteit/tabel verwijderen | [Aan de slag met Azure Table Storage in .NET](https://github.com/Azure-Samples/storage-table-dotnet-getting-started/blob/master/TableStorage/BasicSamples.cs) |
@@ -97,7 +100,7 @@ Bekijk de volgende hand leidingen als u op zoek bent naar instructies voor het i
 
 Voor informatie over voor beelden voor andere talen:
 
-* Java: [Azure Storage-voorbeelden met behulp van Java](storage-samples-java.md)
+* Java: [Azure Storage voor beelden met behulp van Java](storage-samples-java.md)
 * Java script/node. js: [Azure Storage voor beelden met behulp van Java script](storage-samples-javascript.md)
 * Python: [Azure Storage voor beelden met behulp van python](storage-samples-python.md)
-* Alle andere talen: [Azure Storage-voor beelden](../storage-samples.md)
+* Alle andere talen: [Azure Storage](../storage-samples.md) -voor beelden

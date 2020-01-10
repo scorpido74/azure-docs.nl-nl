@@ -5,12 +5,12 @@ author: ahmedelnably
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 18ba99077592a7d03e19fda86bc61e5839b82b5e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c34847577b7e83228fafad431f541497be9a21ae
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226919"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769146"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Continue levering met behulp van GitHub-actie
 
@@ -46,36 +46,32 @@ In dit voor beeld vervangt u de tijdelijke aanduidingen in de resource door uw a
 
 ## <a name="download-the-publishing-profile"></a>Het publicatie profiel downloaden
 
-U kunt het publicatie Profiel van uw functionapp downloaden door naar de pagina **overzicht** van uw app te gaan en te klikken op **publicatie profiel ophalen**.
+U kunt het publicatie Profiel van uw functie-app downloaden door naar de pagina **overzicht** van uw app te gaan en te klikken op **publicatie profiel ophalen**.
 
-   ![Publicatie profiel downloaden](media/functions-how-to-github-actions/get-publish-profile.png)
+   ![Publicatieprofiel downloaden](media/functions-how-to-github-actions/get-publish-profile.png)
 
 Kopieer de inhoud van het bestand.
 
 ## <a name="configure-the-github-secret"></a>Het GitHub-geheim configureren
 
-1. In [github](https://github.com)gaat u naar uw opslag plaats, selecteert u **instellingen** > **geheimen** > **een nieuw geheim toe te voegen**.
+1. Blader in [github](https://github.com)naar uw opslag plaats, selecteer **instellingen** > **geheimen** > **een nieuw geheim toe te voegen**.
 
    ![Geheim toevoegen](media/functions-how-to-github-actions/add-secret.png)
 
-1. Gebruik `AZURE_CREDENTIALS` voor de **naam** en de gekopieerde uitvoer van de opdracht voor **waarde**. Als u vervolgens **geheim toevoegen**selecteert. Als u een publicatie profiel gebruikt, gebruikt u `SCM_CREDENTIALS` voor de **naam** en de bestands inhoud voor **waarde**.
+1. Voeg een nieuw geheim toe.
+
+   * Als u de Service-Principal gebruikt die u hebt gemaakt met behulp van de Azure CLI, gebruikt u `AZURE_CREDENTIALS` voor de **naam**. Plak vervolgens de gekopieerde JSON-object uitvoer voor **waarde**en selecteer **geheim toevoegen**.
+   * Als u een publicatie profiel gebruikt, gebruikt u `SCM_CREDENTIALS` voor de **naam**. Vervolgens gebruikt u de bestands inhoud van het publicatie profiel voor **waarde**en selecteert u **geheim toevoegen**.
 
 GitHub kan nu worden geverifieerd bij uw functie-app in Azure.
 
 ## <a name="set-up-the-environment"></a>De omgeving instellen 
 
-Het instellen van de omgeving kan worden uitgevoerd met behulp van een van de instellingen voor het publiceren van de publicatie.
+Het instellen van de omgeving wordt uitgevoerd met een taalspecifiek installatie actie voor de publicatie.
 
-|Taal | Installatie actie |
-|---------|---------|
-|**.NET**     | `actions/setup-dotnet` |
-|**Java**    | `actions/setup-java` |
-|**JavaScript**     | `actions/setup-node` |
-|**Python**   | `actions/setup-python` |
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-In de volgende voor beelden ziet u het deel van de werk stroom waarmee de omgeving voor de verschillende ondersteunde talen wordt ingesteld:
-
-**JavaScript**
+In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de `actions/setup-node` actie voor het instellen van de omgeving:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -88,7 +84,9 @@ In de volgende voor beelden ziet u het deel van de werk stroom waarmee de omgevi
         node-version: '10.x'
 ```
 
-**Python**
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de `actions/setup-python` actie voor het instellen van de omgeving:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -101,7 +99,9 @@ In de volgende voor beelden ziet u het deel van de werk stroom waarmee de omgevi
         python-version: 3.6
 ```
 
-**.NET**
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de `actions/setup-dotnet` actie voor het instellen van de omgeving:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -114,7 +114,9 @@ In de volgende voor beelden ziet u het deel van de werk stroom waarmee de omgevi
         dotnet-version: '2.2.300'
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+In het volgende voor beeld ziet u het deel van de werk stroom dat gebruikmaakt van de `actions/setup-java` actie voor het instellen van de omgeving:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -128,14 +130,15 @@ In de volgende voor beelden ziet u het deel van de werk stroom waarmee de omgevi
         # Please change the Java version to match the version in pom.xml <maven.compiler.source>
         java-version: '1.8.x'
 ```
+---
 
 ## <a name="build-the-function-app"></a>De functie-app bouwen
 
 Dit is afhankelijk van de taal en voor talen die door Azure Functions worden ondersteund. dit gedeelte moet de standaard stappen voor het bouwen van elke taal zijn.
 
-In de volgende voor beelden ziet u het deel van de werk stroom waarmee de functie-app wordt gebouwd in de verschillende ondersteunde talen.:
+In het volgende voor beeld ziet u het deel van de werk stroom dat de functie-app bouwt, die specifiek is voor de taal:
 
-**JavaScript**
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```yaml
     - name: 'Run npm'
@@ -150,7 +153,7 @@ In de volgende voor beelden ziet u het deel van de werk stroom waarmee de functi
         popd
 ```
 
-**Python**
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 ```yaml
     - name: 'Run pip'
@@ -164,7 +167,7 @@ In de volgende voor beelden ziet u het deel van de werk stroom waarmee de functi
         popd
 ```
 
-**.NET**
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'
@@ -177,7 +180,7 @@ In de volgende voor beelden ziet u het deel van de werk stroom waarmee de functi
         popd
 ```
 
-**Java**
+# <a name="javatabjava"></a>[Java](#tab/java)
 
 ```yaml
     - name: 'Run mvn'
@@ -190,6 +193,7 @@ In de volgende voor beelden ziet u het deel van de werk stroom waarmee de functi
         mvn azure-functions:package
         popd
 ```
+---
 
 ## <a name="deploy-the-function-app"></a>De functie-app implementeren
 

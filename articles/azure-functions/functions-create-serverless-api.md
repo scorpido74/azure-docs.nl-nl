@@ -6,16 +6,16 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 8bb30da9be5a025f87e5c6d17e0233d0793f3acb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 61b930eec1385b8c4054f9c202547a82e61e55e7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230686"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769265"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>Een HTTP-eind punt in Azure Functions aanpassen
 
-In dit artikel leert u hoe u met Azure Functions uiterst schaal bare Api's kunt bouwen. Azure Functions wordt geleverd met een aantal ingebouwde HTTP-triggers en -bindingen waarmee u gemakkelijk een eindpunt in een groot aantal talen kunt maken, waaronder Node.JS, C# en meer. In dit artikel gaat u een HTTP-trigger aanpassen voor het verwerken van specifieke acties in het API-ontwerp. Ook treft u voorbereidingen voor het uitbreiden van uw API door deze te integreren met Azure Functions-proxy's en mock-API's in te stellen. Dit doet u allemaal in de serverloze Functions-rekenomgeving, zodat u zich geen zorgen hoeft te maken over het schalen van resources: u hoeft zich alleen te richten op uw API-logica.
+In dit artikel leert u hoe u met Azure Functions uiterst schaal bare Api's kunt bouwen. Azure Functions wordt geleverd met een verzameling ingebouwde HTTP-triggers en-bindingen, waarmee u eenvoudig een eind punt kunt ontwerpen in verschillende talen, waaronder node. js, C#en meer. In dit artikel gaat u een HTTP-trigger aanpassen voor het verwerken van specifieke acties in het API-ontwerp. Ook treft u voorbereidingen voor het uitbreiden van uw API door deze te integreren met Azure Functions-proxy's en mock-API's in te stellen. Dit doet u allemaal in de serverloze Functions-rekenomgeving, zodat u zich geen zorgen hoeft te maken over het schalen van resources: u hoeft zich alleen te richten op uw API-logica.
 
 ## <a name="prerequisites"></a>Vereisten 
 
@@ -99,7 +99,7 @@ Herhaal de stappen uit [Een functie-app maken](https://docs.microsoft.com/azure/
 
     | Veld | Voorbeeldwaarde | Beschrijving |
     |---|---|---|
-    | Naam | HelloProxy | Een beschrijvende naam die alleen wordt gebruikt voor beheer |
+    | Name | HelloProxy | Een beschrijvende naam die alleen wordt gebruikt voor beheer |
     | Routesjabloon | /api/remotehello | Hiermee wordt bepaald welke route wordt gebruikt om deze proxy aan te roepen |
     | URL van back-end | https://%HELLO_HOST%/api/hello | Geeft het eindpunt aan waarnaar de aanvraag moet worden geproxied |
     

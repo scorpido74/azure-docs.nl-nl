@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: 4a41e5eda3ca2bd92d78a81d73c1ad4c859e25a3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: c0ce1648d7b5f7c25044ed8f66eafcca7b0009f4
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764556"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747336"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Controle logboek registratie in Azure Database for PostgreSQL-één server
 
@@ -21,7 +21,7 @@ Audit logboek registratie van database activiteiten in Azure Database for Postgr
 > pgAudit is beschikbaar in de preview-versie van Azure Database for PostgreSQL.
 > De uitbrei ding kan alleen worden ingeschakeld op servers met Algemeen en geoptimaliseerd voor geheugen.
 
-Als u Azure-logboeken op resource niveau wilt voor bewerkingen als Compute en opslag schalen, raadpleegt u het [Azure-activiteiten logboek](../azure-monitor/platform/activity-logs-overview.md).
+Als u Azure-logboeken op resource niveau wilt voor bewerkingen als Compute en opslag schalen, raadpleegt u het [Azure-activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="usage-considerations"></a>Gebruiks overwegingen
 Standaard worden pgAudit-logboekinstructies samen met uw reguliere logboeken verzonden met behulp van de standaardfunctie voor logboekregistratie van Postgres. In Azure Database for PostgreSQL kunnen deze .log-bestanden worden gedownload via de Azure-portal of de CLI. De maximale opslag voor het verzamelen van bestanden is 1 GB en elk bestand is Maxi maal zeven dagen beschikbaar (de standaard waarde is drie dagen). Deze service is een korte-termijn opslag optie.

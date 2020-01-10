@@ -4,12 +4,12 @@ description: Meer informatie over het ontwikkelen en testen van Azure Functions 
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 04074579b3eb34175a6d29897bbd38b95ae3a596
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 571519b996948a9fc4ac98e18e510fcee1dbef9b
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230664"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769763"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Azure Functions ontwikkelen met Visual Studio  
 
@@ -42,7 +42,7 @@ Andere resources die u nodig hebt, zoals een Azure Storage account, worden tijde
 
 ### <a name="check-your-tools-version"></a>Controleer de versie van uw hulpprogram ma's in Visual Studio 2017
 
-1. Kies in het menu **extra** de optie **extensies en updates**. Vouw **geïnstalleerde** > - **hulpprogram ma's** uit en kies **Azure functions en hulpprogram ma's voor webjobs**.
+1. Uit de **extra** menu, kiest u **extensies en Updates**. Vouw **geïnstalleerde** > - **hulpprogram ma's** uit en kies **Azure functions en hulpprogram ma's voor webjobs**.
 
     ![De versie van de functie hulpprogramma's controleren](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
 
@@ -63,7 +63,7 @@ Andere resources die u nodig hebt, zoals een Azure Storage account, worden tijde
 1. Nadat de update is voltooid, kiest u **sluiten** en Start Visual Studio opnieuw.
 
 > [!NOTE]  
-In Visual Studio 2019 en hoger wordt de uitbrei ding Azure Functions tools bijgewerkt als onderdeel van Visual Studio.  
+> In Visual Studio 2019 en hoger wordt de uitbrei ding Azure Functions tools bijgewerkt als onderdeel van Visual Studio.  
 
 ## <a name="create-an-azure-functions-project"></a>Een Azure Functions-project maken
 
@@ -104,7 +104,7 @@ Het opslag account connection string instellen:
 
 In C# Class Library-functies worden de bindingen die worden gebruikt door de functie gedefinieerd door het Toep assen van kenmerken in de code. Wanneer u de functie triggers maakt op basis van de beschik bare sjablonen, worden de trigger kenmerken voor u toegepast. 
 
-1. Klik in **Solution Explorer** met de rechtermuisknop op het projectknooppunt en selecteerNieuw item > **Toevoegen**. Selecteer **Azure function**, typ een **naam** voor de klasse en klik op **toevoegen**.
+1. Klik in **Solution Explorer** met de rechtermuisknop op het projectknooppunt en selecteer  > **Nieuw item** **Toevoegen**. Selecteer **Azure function**, typ een **naam** voor de klasse en klik op **toevoegen**.
 
 2. Kies uw trigger, stel de bindings eigenschappen in en klik op **maken**. In het volgende voor beeld ziet u de instellingen bij het maken van een door de wachtrij opslag geactiveerde functie. 
 

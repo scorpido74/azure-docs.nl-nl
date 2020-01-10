@@ -1,6 +1,6 @@
 ---
-title: Relatieve latentie aan Azure-regio's van specifieke locaties bekijken | Microsoft Docs
-description: Informatie over het weergeven van relatieve latentie voor internetproviders aan Azure-regio's vanaf specifieke locaties.
+title: Relatieve wacht tijden voor Azure-regio's op specifieke locaties weer geven | Microsoft Docs
+description: Meer informatie over het weer geven van relatieve wacht tijden over Internet providers naar Azure-regio's vanaf specifieke locaties.
 services: network-watcher
 documentationcenter: ''
 author: KumudD
@@ -16,37 +16,40 @@ ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: b4a50657442422786f49c931aa6c2610d49846b1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: edbc6f9ce4c1434fa27989f053c108914a151320
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64939881"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745776"
 ---
-# <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>De relatieve latentie weergeven op Azure-regio's op specifieke locaties
+# <a name="view-relative-latency-to-azure-regions-from-specific-locations"></a>Relatieve latentie van Azure-regio's op specifieke locaties weer geven
 
-In deze zelfstudie leert u hoe u het gebruik van de Azure [Network Watcher](network-watcher-monitoring-overview.md) service waarmee u kunt bepalen welke Azure-regio naar uw toepassing implementeren of -service in, op basis van uw demografische gebruiker. U kunt deze ook gebruiken om u te helpen bij het evalueren van serviceproviders verbindingen met Azure.  
+> [!WARNING]
+> Deze functie is momenteel beschikbaar als preview-versie en wordt nog steeds getest op stabiliteit.
+
+In deze zelf studie leert u hoe u de Azure [Network Watcher](network-watcher-monitoring-overview.md) -service kunt gebruiken om te bepalen met welke Azure-regio u uw toepassing of service kunt implementeren in, op basis van de demografische gegevens van uw gebruikers. Daarnaast kunt u het gebruiken om de verbindingen van service providers met Azure te evalueren.  
         
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="create-a-network-watcher"></a>Maken van een network watcher
+## <a name="create-a-network-watcher"></a>Een netwerk-Watcher maken
 
-Als u al een network watcher in ten minste één Azure [regio](https://azure.microsoft.com/regions), kunt u de taken in deze sectie overslaan. Maak een resourcegroep voor de netwerk-watcher. In dit voorbeeld wordt de resourcegroep wordt gemaakt in de regio VS-Oost, maar u kunt de resourcegroep in een Azure-regio maken.
+Als u al een Network Watcher in ten minste één Azure- [regio](https://azure.microsoft.com/regions)hebt, kunt u de taken in deze sectie overs Laan. Maak een resource groep voor de Network Watcher. In dit voor beeld wordt de resource groep gemaakt in de regio VS-Oost, maar u kunt de resource groep in een Azure-regio maken.
 
 ```powershell
 New-AzResourceGroup -Name NetworkWatcherRG -Location eastus
 ```
 
-Maak een network watcher. Hebt u een network watcher in ten minste één Azure-regio gemaakt. In dit voorbeeld wordt een network watcher in de oostelijke VS Azure-regio gemaakt.
+Maak een Network Watcher. U moet een Network Watcher hebben gemaakt in ten minste één Azure-regio. In dit voor beeld wordt een Network Watcher gemaakt in de Azure-regio VS Oost.
 
 ```powershell
 New-AzNetworkWatcher -Name NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG -Location eastus
 ```
 
-## <a name="compare-relative-network-latencies-to-a-single-azure-region-from-a-specific-location"></a>Relatieve netwerklatenties vergelijken met één Azure-regio op een bepaalde locatie
+## <a name="compare-relative-network-latencies-to-a-single-azure-region-from-a-specific-location"></a>Relatieve netwerk latentie vergelijken met één Azure-regio vanaf een specifieke locatie
 
-Serviceproviders evalueren of een gebruiker een probleem melden zoals 'de site is traag,' problemen oplossen op een bepaalde locatie naar de azure-regio waarin een service wordt geïmplementeerd. De volgende opdracht retourneert bijvoorbeeld het gemiddelde relatieve Internet serviceprovider latentie tussen de staat Washington in de Verenigde Staten en de regio West US 2 Azure tussen 13-15 December 2017:
+Evalueer service providers of los problemen op met het melden van een probleem, zoals ' de site was traag ', van een specifieke locatie naar de Azure-regio waar een service wordt geïmplementeerd. Met de volgende opdracht wordt bijvoorbeeld de gemiddelde wacht tijd van de Internet service provider geretourneerd tussen de staat Washington in het Verenigde Staten en de Azure-regio vs-West 2 tussen december 13-15, 2017:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityReport `
@@ -60,12 +63,12 @@ Get-AzNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> De regio die u in de vorige opdracht opgeeft hoeft niet dezelfde zijn als de regio die u hebt opgegeven toen u de netwerk-watcher opgehaald. De vorige opdracht is alleen vereist dat u een bestaande netwerk-watcher opgeeft. De netwerk-watcher kan zich in andere regio's. Als u waarden opgeven voor `-Country` en `-State`, deze moet geldig zijn. De waarden zijn hoofdlettergevoelig. Gegevens zijn beschikbaar voor een beperkt aantal landen/regio's, Staten en plaatsen. Voer de opdrachten [weer beschikbaar landen/regio's, provincies, steden en providers](#view-available) om een lijst van landen/regio's beschikbaar, plaatsen en Staten voor gebruik met de vorige opdracht weer te geven. 
+> De regio die u in de vorige opdracht opgeeft, hoeft niet hetzelfde te zijn als de regio die u hebt opgegeven tijdens het ophalen van de Network Watcher. De vorige opdracht vereist alleen dat u een bestaande netwerk-Watcher opgeeft. De netwerk-Watcher kan zich in een wille keurige regio bevinden. Als u waarden opgeeft voor `-Country` en `-State`, moeten deze geldig zijn. De waarden zijn hoofdletter gevoelig. Gegevens zijn beschikbaar voor een beperkt aantal landen/regio's, provincies en steden. Voer de opdrachten in [beschik bare landen/regio's, Staten, steden en providers](#view-available) uit om een lijst met beschik bare landen/regio's, steden en statussen weer te geven die u met de vorige opdracht kunt gebruiken. 
 
 > [!WARNING]
-> Moet u een datum in de afgelopen 30 dagen voor `-StartTime` en `-EndTime`. Opgeven van een eerdere datum, leidt dit er zijn geen gegevens worden geretourneerd.
+> U moet een datum opgeven in de afgelopen 30 dagen voor `-StartTime` en `-EndTime`. Als u een eerdere datum opgeeft, worden er geen gegevens geretourneerd.
 
-De uitvoer van de vorige opdracht met de volgende:
+De uitvoer van de vorige opdracht volgt:
 
 ```powershell
 AggregationLevel   : State
@@ -105,11 +108,11 @@ ReachabilityReport : [
                      ]
 ```
 
-In de resulterende uitvoer, de waarde voor **Score** wordt de relatieve latentie tussen regio's en -providers. Een score van 1 is de slechtste (hoogste) latentie, terwijl 100 de laagste latentie is. De relatieve latenties zijn gemiddeld voor die dag. In het vorige voorbeeld, terwijl deze heeft wissen die de latenties zijn hetzelfde op beide dagen en dat er is een klein verschil tussen de latentie van de twee providers, het is ook wissen die de latenties voor beide providers lage op de schaal van 1-100 zijn. Terwijl deze wordt verwacht, omdat de staat Washington in de Verenigde Staten bevinden zich fysiek dicht bij de West US 2 Azure-regio, soms resultaten zijn niet zoals verwacht. Hoe groter het datumbereik dat u opgeeft, hoe meer u gemiddelde latentie na verloop van tijd.
+In de geretourneerde uitvoer is de waarde voor **Score** de relatieve latentie tussen regio's en providers. Een Score van 1 is de ergste (hoogste) latentie, terwijl 100 de laagste latentie is. De relatieve latenties worden berekend voor de dag. In het vorige voor beeld, terwijl het duidelijk is dat de latenties hetzelfde zijn en dat er een klein verschil is tussen de latentie van de twee providers, is het ook duidelijk dat de latenties voor beide providers weinig zijn op de schaal van 1-100. Hoewel dit wordt verwacht, is de status van Washington in de Verenigde Staten fysiek dicht bij de Azure-regio vs-West 2, soms zijn de resultaten niet zoals verwacht. Hoe groter het datum bereik dat u opgeeft, hoe meer u de gemiddelde latentie tijdens de periode kunt geven.
 
-## <a name="compare-relative-network-latencies-across-azure-regions-from-a-specific-location"></a>Relatieve netwerkvertragingen van Azure-regio's vanaf een specifieke locatie met elkaar vergelijken
+## <a name="compare-relative-network-latencies-across-azure-regions-from-a-specific-location"></a>Relatieve netwerk latentie vergelijken tussen Azure-regio's vanaf een specifieke locatie
 
-Als, in plaats van op te geven de relatieve latentie tussen een specifieke locatie en een specifieke Azure-regio met `-Location`, u wilt bepalen van de relatieve latentie voor alle Azure-regio's op een bepaalde fysieke locatie, kunt u dat te doen. Bijvoorbeeld, de volgende opdracht helpt u te evalueren welke azure-regio voor het implementeren van een service in als uw primaire gebruikers Comcast gebruikers zich in de staat Washington:
+Als u in plaats van de relatieve wacht tijden opgeeft tussen een specifieke locatie en een specifieke Azure-regio met `-Location`, wilt u de relatieve latenties op alle Azure-regio's van een specifieke fysieke locatie bepalen. u kunt dit ook doen. Met de volgende opdracht kunt u bijvoorbeeld evalueren in welke Azure-regio u een service wilt implementeren als uw primaire gebruikers Comcast-gebruikers zijn die zich in de staat Washington bevinden:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityReport `
@@ -123,19 +126,19 @@ Get-AzNetworkWatcherReachabilityReport `
 ```
 
 > [!NOTE]
-> In tegenstelling tot moet wanneer u een enkele locatie opgeeft, als u niet een locatie opgeven, of meerdere locaties, zoals 'West vs2', 'VS-West, u een Internet-provider wanneer u de opdracht uitvoert. 
+> In tegens telling tot wanneer u één locatie opgeeft, of als u geen locatie opgeeft, of meerdere locaties opgeeft, zoals ' West VS2 ', ' vs-West ', moet u een Internet serviceprovider opgeven wanneer u de opdracht uitvoert. 
 
-## <a name="view-available"></a>Landen/regio's beschikbaar, provincies, steden en providers weergeven
+## <a name="view-available"></a>Beschik bare landen/regio's, Staten, steden en providers weer geven
 
-Gegevens zijn beschikbaar voor bepaalde internetproviders, landen/regio's, Staten en plaatsen. Voer de volgende opdracht om een lijst weergeven met alle beschikbare Internet serviceproviders, landen/regio's, Staten en steden, die u kunt gegevens bekijken:
+Gegevens zijn beschikbaar voor specifieke Internet serviceproviders, landen/regio's, provincies en steden. Als u een lijst wilt weer geven met alle beschik bare Internet serviceproviders, landen/regio's, provincies en steden, waarmee u gegevens kunt weer geven, voert u de volgende opdracht in:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityProvidersList -NetworkWatcherName NetworkWatcher_eastus -ResourceGroupName NetworkWatcherRG
 ```
 
-Gegevens is alleen beschikbaar voor de landen/regio's, Staten en plaatsen die zijn geretourneerd door de vorige opdracht. De vorige opdracht moet u om op te geven van een bestaande netwerk-watcher. Het opgegeven voorbeeld de *NetworkWatcher_eastus* network watcher in een resourcegroep met de naam *NetworkWatcherRG*, maar kunt u eventuele bestaande netwerk-watcher. Als u een bestaande netwerk-watcher niet hebt, maakt u er een door het uitvoeren van de taken in [maken van een network watcher](#create-a-network-watcher). 
+Gegevens zijn alleen beschikbaar voor de landen/regio's, provincies en steden die worden geretourneerd door de vorige opdracht. Voor de vorige opdracht moet u een bestaande netwerk-Watcher opgeven. In het voor beeld is de *NetworkWatcher_eastus* Network Watcher opgegeven in een resource groep met de naam *NetworkWatcherRG*, maar u kunt een bestaande netwerk-Watcher opgeven. Als u geen bestaande netwerk-Watcher hebt, maakt u er een door de taken in [een netwerk-Watcher maken](#create-a-network-watcher)uit te voeren. 
 
-Nadat de vorige opdracht is uitgevoerd, kunt u de uitvoer die wordt geretourneerd door het opgeven van geldige waarden voor filteren **land**, **status**, en **plaats**, indien gewenst.  Bijvoorbeeld, als u wilt weergeven van de lijst met internetproviders in Seattle, Washington, beschikbaar in de Verenigde Staten, voer de volgende opdracht:
+Nadat u de vorige opdracht hebt uitgevoerd, kunt u de geretourneerde uitvoer filteren door geldige waarden voor **land**, **provincie**en **plaats**op te geven, indien gewenst.  Als u bijvoorbeeld de lijst met Internet serviceproviders die beschikbaar zijn in Seattle, Washington wilt weer geven, voert u de volgende opdracht in Verenigde Staten in:
 
 ```powershell
 Get-AzNetworkWatcherReachabilityProvidersList `
@@ -147,4 +150,4 @@ Get-AzNetworkWatcherReachabilityProvidersList `
 ```
 
 > [!WARNING]
-> De opgegeven waarde voor **land** moet hoofdletters en kleine letters. De waarden die zijn opgegeven voor **status** en **plaats** moet een kleine letter. De waarden moeten worden vermeld in de uitvoer die wordt geretourneerd na het uitvoeren van de opdracht zonder waarden voor **land**, **status**, en **plaats**. Als u de onjuiste aanvraag opgeven of een waarde opgeven voor **land**, **status**, of **plaats** die zich niet in de uitvoer die wordt geretourneerd na het uitvoeren van de opdracht zonder waarden voor deze Eigenschappen van de resulterende uitvoer is leeg.
+> De waarde die is opgegeven voor het **land** , moet een hoofd letter of kleine letters zijn. De opgegeven waarden voor de **status** en de **plaats** moeten kleine letters zijn. De waarden moeten worden weer gegeven in de uitvoer die wordt geretourneerd na het uitvoeren van de opdracht zonder waarden voor **land**, **provincie**en **plaats**. Als u de onjuiste situatie opgeeft of een waarde opgeeft voor **land**, **provincie**of **plaats** die niet in de uitvoer wordt geretourneerd na het uitvoeren van de opdracht zonder waarden voor deze eigenschappen, is de geretourneerde uitvoer leeg.

@@ -8,12 +8,12 @@ author: harelbr
 ms.author: harelbr
 ms.date: 06/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: aadf3a18d41d8dfe878439893c9d1ed25172fa2b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: bc66a286bee193b377731a549129446bba431cb3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406483"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749036"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Application Insights Slimme detectie regels beheren met Azure Resource Manager sjablonen
 
@@ -133,9 +133,12 @@ Zorg ervoor dat u de naam van de Application Insights resource vervangt en de re
 
 ```
 
-### <a name="failure-anomalies-v2-non-classic-alert-rule"></a>Waarschuwings regel voor fout afwijkingen v2 (niet-klassiek)
+### <a name="failure-anomalies-alert-rule"></a>Waarschuwings regel voor afwijkingen van de fout
 
-Deze Azure Resource Manager sjabloon demonstreert het configureren van een waarschuwings regel voor fout afwijkingen v2 met de ernst 2. Deze nieuwe versie van de waarschuwings regel voor afwijkingen van de fout maakt deel uit van het nieuwe Azure Alerting platform en vervangt de klassieke versie die buiten gebruik wordt gesteld als onderdeel van het buiten gebruik stellen van [klassieke waarschuwingen](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+Deze Azure Resource Manager sjabloon demonstreert het configureren van een waarschuwings regel voor fout afwijkingen met de ernst 2. Deze nieuwe versie van de waarschuwings regel voor afwijkingen van de fout maakt deel uit van het nieuwe Azure Alerting platform en vervangt de klassieke versie die buiten gebruik wordt gesteld als onderdeel van het buiten gebruik stellen van [klassieke waarschuwingen](https://azure.microsoft.com/updates/classic-alerting-monitoring-retirement/).
+
+> [!NOTE]
+> Fout afwijkingen is een globale service, dus de locatie van de regel wordt gemaakt op de globale locatie.
 
 ```json
 {
@@ -166,7 +169,7 @@ Deze Azure Resource Manager sjabloon demonstreert het configureren van een waars
 ```
 
 > [!NOTE]
-> Deze Azure Resource Manager sjabloon is uniek voor de waarschuwings regel voor fout afwijkingen v2 en wijkt af van de andere klassieke regels voor slimme detectie die in dit artikel worden beschreven.   
+> Deze Azure Resource Manager sjabloon is uniek voor de waarschuwings regel voor afwijkingen van de fout en wijkt af van de andere klassieke regels voor slimme detectie die in dit artikel worden beschreven.
 
 ## <a name="smart-detection-rule-names"></a>Namen van Slimme detectie regels
 

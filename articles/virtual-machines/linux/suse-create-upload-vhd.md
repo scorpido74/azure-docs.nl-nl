@@ -3,7 +3,7 @@ title: Een SUSE Linux-VHD maken en uploaden in azure
 description: Meer informatie over het maken en uploaden van een virtuele harde schijf (VHD) van Azure die een SUSE Linux-besturings systeem bevat.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -13,21 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 03/12/2018
-ms.author: szark
-ms.openlocfilehash: d3241229fcf3ef99f71185c452ae615ec2cfc889
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: mimckitt
+ms.openlocfilehash: 5ff28e25bf3da33fcf85a77f850b3b8f5ac8bb6b
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70091210"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745827"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>Een op SLES of openSUSE gebaseerde virtuele machine voor Azure voorbereiden
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="prerequisites"></a>Vereisten
+
 In dit artikel wordt ervan uitgegaan dat u al een SUSE-of openSUSE Linux-besturings systeem hebt geïnstalleerd op een virtuele harde schijf. Er zijn meerdere hulpprogram ma's voor het maken van VHD-bestanden, zoals Hyper-V. Zie [de Hyper-V-functie installeren en een virtuele machine configureren](https://technet.microsoft.com/library/hh846766.aspx)voor instructies.
 
-### <a name="sles--opensuse-installation-notes"></a>SLES/openSUSE-installatie notities
+## <a name="sles--opensuse-installation-notes"></a>SLES/openSUSE-installatie notities
 * Zie ook [algemene Linux-installatie notities](create-upload-generic.md#general-linux-installation-notes) voor meer tips over het voorbereiden van Linux voor Azure.
 * De VHDX-indeling wordt niet ondersteund in azure, alleen **vaste VHD**.  U kunt de schijf converteren naar VHD-indeling met behulp van Hyper-V-beheer of de cmdlet Convert-VHD.
 * Bij de installatie van het Linux-systeem wordt aanbevolen om standaard partities te gebruiken in plaats van LVM (vaak de standaard instelling voor veel installaties). Hiermee wordt voor komen dat LVM naam strijdig is met gekloonde Vm's, met name als een besturingssysteem schijf ooit moet worden gekoppeld aan een andere virtuele machine voor het oplossen van problemen. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) of [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) kan worden gebruikt op gegevens schijven als dit de voor keur heeft.
@@ -79,12 +78,15 @@ Als alternatief voor het maken van uw eigen VHD publiceert SUSE ook BYOS (uw eig
     
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
-11. Het is raadzaam om het bestand '/etc/sysconfig/network/DHCP ' te bewerken en de `DHCLIENT_SET_HOSTNAME` para meter te wijzigen in het volgende:
+11. Het is raadzaam om het bestand '/etc/sysconfig/network/DHCP ' te bewerken en de para meter `DHCLIENT_SET_HOSTNAME` te wijzigen in het volgende:
     
      DHCLIENT_SET_HOSTNAME="no"
 12. In/etc/sudoers kunt u de volgende regels uitchecken of verwijderen als deze bestaan:
     
-     Standaard targetpw # vraag naar het wacht woord van de doel gebruiker, dat wil zeggen alle alle = (alle) alle # waarschuwing! Gebruik deze waarde alleen in combi natie met ' defaults targetpw '!
+    ```
+     Defaults targetpw   # ask for the password of the target user i.e. root
+     ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
+     ```
 13. Zorg ervoor dat de SSH-server is geïnstalleerd en geconfigureerd om te starten bij het opstarten.  Dit is doorgaans de standaard instelling.
 14. Maak geen wissel ruimte op de besturingssysteem schijf.
     
@@ -102,7 +104,7 @@ Als alternatief voor het maken van uw eigen VHD publiceert SUSE ook BYOS (uw eig
 ## <a name="prepare-opensuse-131"></a>OpenSUSE 13.1 + voorbereiden
 1. Selecteer de virtuele machine in het middelste deel venster van Hyper-V-beheer.
 2. Klik op **verbinding maken** om het venster voor de virtuele machine te openen.
-3. Voer op de shell de opdracht`zypper lr`uit. Als met deze opdracht uitvoer wordt geretourneerd die vergelijkbaar is met de volgende, worden de opslag plaatsen op de verwachte manier geconfigureerd--er zijn geen aanpassingen nodig (Houd er rekening mee dat versie nummers kunnen variëren):
+3. Voer op de shell de opdracht '`zypper lr`' uit. Als met deze opdracht uitvoer wordt geretourneerd die vergelijkbaar is met de volgende, worden de opslag plaatsen op de verwachte manier geconfigureerd--er zijn geen aanpassingen nodig (Houd er rekening mee dat versie nummers kunnen variëren):
    
         # | Alias                 | Name                  | Enabled | Refresh
         --+-----------------------+-----------------------+---------+--------
@@ -116,7 +118,7 @@ Als alternatief voor het maken van uw eigen VHD publiceert SUSE ook BYOS (uw eig
         # sudo zypper ar -f https://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
         # sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
    
-    U kunt vervolgens controleren of de opslag plaatsen zijn toegevoegd door de opdracht`zypper lr`opnieuw uit te voeren. Als een van de relevante update opslagplaatsen niet is ingeschakeld, schakelt u deze in met de volgende opdracht:
+    U kunt vervolgens controleren of de opslag plaatsen zijn toegevoegd door de opdracht '`zypper lr`' opnieuw uit te voeren. Als een van de relevante update opslagplaatsen niet is ingeschakeld, schakelt u deze in met de volgende opdracht:
    
         # sudo zypper mr -e [NUMBER OF REPOSITORY]
 4. Werk de kernel bij naar de meest recente beschik bare versie:
@@ -136,12 +138,16 @@ Als alternatief voor het maken van uw eigen VHD publiceert SUSE ook BYOS (uw eig
    Dit zorgt ervoor dat alle console berichten worden verzonden naar de eerste seriële poort, die ondersteuning voor Azure kan helpen bij het oplossen van problemen. Verwijder bovendien de volgende para meters uit de opstart regel voor de kernel als deze bestaan:
    
      libata. atapi_enabled = 0 reserve = 0x1f0, 0x8
-7. Het is raadzaam om het bestand '/etc/sysconfig/network/DHCP ' te bewerken en de `DHCLIENT_SET_HOSTNAME` para meter te wijzigen in het volgende:
+7. Het is raadzaam om het bestand '/etc/sysconfig/network/DHCP ' te bewerken en de para meter `DHCLIENT_SET_HOSTNAME` te wijzigen in het volgende:
    
      DHCLIENT_SET_HOSTNAME="no"
-8. **Belangrijk:** In/etc/sudoers kunt u de volgende regels uitchecken of verwijderen als deze bestaan:
-   
-     Standaard targetpw # vraag naar het wacht woord van de doel gebruiker, dat wil zeggen alle alle = (alle) alle # waarschuwing! Gebruik deze waarde alleen in combi natie met ' defaults targetpw '!
+8. **Belang rijk:** In/etc/sudoers kunt u de volgende regels uitchecken of verwijderen als deze bestaan:
+     
+     ```
+     Defaults targetpw   # ask for the password of the target user i.e. root
+     ALL    ALL=(ALL) ALL   # WARNING! Only use this together with 'Defaults targetpw'!
+     ```
+
 9. Zorg ervoor dat de SSH-server is geïnstalleerd en geconfigureerd om te starten bij het opstarten.  Dit is doorgaans de standaard instelling.
 10. Maak geen wissel ruimte op de besturingssysteem schijf.
     

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6a51d764b8e42419bc331e3d4731ef5c5f511f91
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 88f864abc82ea6ba70559c8db5db2d0fe07383b1
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408722"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75768823"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Aanbevolen procedures voor het gebruik van Azure Maps Search Service
 
@@ -33,7 +33,7 @@ Voor het aanroepen van de Maps service Api's, hebt u een Maps-account en-sleutel
 > Als u een query wilt uitvoeren op de zoek service, kunt u de [app postman](https://www.getpostman.com/apps) gebruiken om rest-aanroepen te bouwen of kunt u elke gewenste API-ontwikkel omgeving gebruiken.
 
 
-## <a name="best-practices-for-geocoding"></a>Aanbevolen procedures voor geocodering
+## <a name="best-practices-for-geocoding-address-search"></a>Aanbevolen procedures voor geocodering (adres zoekopdracht)
 
 Wanneer u een volledig of gedeeltelijk adres zoekt met Azure Maps Search Service, wordt de zoek term opgehaald en worden de lengte-en breedte coördinaten van het adres geretourneerd. Dit proces wordt geocodering genoemd. De mogelijkheid tot Geocode in een land is afhankelijk van de dekking van de weg en de geocoderings nauwkeurigheid van de geocoderings service.
 
@@ -58,10 +58,12 @@ Zie [geocoderings dekking](https://docs.microsoft.com/azure/azure-maps/geocoding
 
 
    **Zoek parameters voor fuzzy**
+   
+   Azure Maps [fuzzy Search-API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) is de aanbevolen service die u kunt gebruiken wanneer u niet weet wat uw gebruikers invoer zijn voor een zoek opdracht. De API combineert POI-Zoek resultaten (Point of interest) en Geocode ring in een canonieke *Zoek opdracht met één regel*. 
 
    1. Met de `minFuzzyLevel` en `maxFuzzyLevel`kunt u relevante overeenkomsten retour neren, zelfs wanneer de query parameters niet precies overeenkomen met de gewenste gegevens. De meeste zoek query's zijn standaard `minFuzzyLevel=1` en `maxFuzzyLevel=2` voor het verkrijgen van prestaties en het verminderen van ongebruikelijke resultaten. Bekijk een voor beeld van een zoek term ' restrant ', die overeenkomt met ' restaurant ' wanneer de `maxFuzzyLevel` is ingesteld op 2. De standaard niveaus voor fuzzy kunnen worden overschreven volgens de behoeften van de aanvraag. 
 
-   2. U kunt ook de exacte set resultaat typen opgeven die moeten worden geretourneerd met behulp van de para meter `idxSet`. Voor dit doel kunt u een lijst met door komma's gescheiden indexen verzenden, maar de volg orde van de items niet van belang is. De volgende indexen worden ondersteund:
+   2. U kunt ook prioriteit geven aan de exacte set resultaat typen die moeten worden geretourneerd met behulp van de para meter `idxSet`. U kunt voor dit doel een door komma's gescheiden lijst met indexen verzenden. de volg orde van de items is niet van belang. De volgende indexen worden ondersteund:
 
        * `Addr` - adresbereiken: voor sommige straten zijn er adres punten die worden geïnterpoleerd vanaf het begin en het einde van de straat. deze punten worden weer gegeven als adresbereiken.
        * `Geo` - **geographs**: gebieden op een kaart die de administratieve divisie van een land vertegenwoordigen, dat wil zeggen land, staat, plaats.
@@ -317,7 +319,10 @@ Met POI-Zoek opdrachten (Points of interest) kunt u POI-resultaten aanvragen op 
 
 Ter verbetering van de relevantie van de resultaten en de informatie in het antwoord, POI-Zoek antwoord (Point of interest) bevat de merk gegevens die verder kunnen worden gebruikt om de reactie te parseren.
 
+U kunt ook een door komma's gescheiden lijst met merk namen verzenden in de aanvraag. U kunt de lijst gebruiken om de resultaten te beperken tot specifieke merken met behulp van de para meter `brandSet`. De volg orde van items is niet van belang. Wanneer er meerdere merken worden opgegeven, worden alleen de resultaten geretourneerd die horen bij (ten minste) een van de opgegeven lijsten.
+
 We gaan een zoek aanvraag voor een [POI categorie](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) maken voor de stations in de buurt van micro soft campus (REDMOND, WA). Als u het antwoord ziet, kunt u de merk gegevens voor elke geretourneerde POI bekijken.
+
 
 **Voorbeeldquery:**
 

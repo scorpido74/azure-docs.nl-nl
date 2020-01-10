@@ -11,12 +11,12 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 ms.date: 11/02/2018
-ms.openlocfilehash: ec625f203e9282d070e6c1b3b3d712be7ab789cf
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c2b889d4013abb60c9ad7bb4bcdc4e6546cfa37c
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810384"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745952"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Waarschuwingen voor Azure SQL Database en Data Warehouse maken met behulp van Azure Portal
 
@@ -48,7 +48,7 @@ U kunt informatie over waarschuwings regels configureren en ophalen met behulp v
 1. Zoek in de [Portal](https://portal.azure.com/)de resource die u wilt bewaken en selecteer deze.
 2. Selecteer **waarschuwingen (klassiek)** in het gedeelte bewaking. De tekst en het pictogram kunnen enigszins verschillen voor verschillende resources.  
    
-     ![Bewaking](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
+     ![Controleren](media/sql-database-insights-alerts-portal/AlertsClassicButton.JPG)
   
    - **Alleen SQL DW**: Klik op de **DWU-gebruiks** grafiek. **Klassieke waarschuwingen weer geven** selecteren
 
@@ -74,7 +74,7 @@ Zodra u een waarschuwing hebt gemaakt, kunt u deze selecteren en:
 
 ## <a name="sql-database-alert-values"></a>SQL Database waarschuwings waarden
 
-| Resourcetype | Metrische naam | Beschrijvende naam | Aggregatie type | Venster minimale waarschuwings tijd|
+| Resourcetype | Naam van meetwaarde | Beschrijvende naam | Aggregatietype | Venster minimale waarschuwings tijd|
 | --- | --- | --- | --- | --- |
 | SQL-database | cpu_percent | CPU-percentage | Average | 5 minuten |
 | SQL-database | physical_data_read_percent | Gegevens-I/O-percentage | Average | 5 minuten |
@@ -84,7 +84,7 @@ Zodra u een waarschuwing hebt gemaakt, kunt u deze selecteren en:
 | SQL-database | connection_successful | Geslaagde verbindingen | Totaal | 10 minuten |
 | SQL-database | connection_failed | Mislukte verbindingen | Totaal | 10 minuten |
 | SQL-database | blocked_by_firewall | Geblokkeerd door de firewall | Totaal | 10 minuten |
-| SQL-database | Constateer | Impassen | Totaal | 10 minuten |
+| SQL-database | constateer | Deadlocks | Totaal | 10 minuten |
 | SQL-database | storage_percent | Databaseomvangpercentage | Maximum | 30 minuten |
 | SQL-database | xtp_storage_percent | Percentage OLTP-opslag in het geheugen (preview-versie) | Average | 5 minuten |
 | SQL-database | workers_percent | Percentage werk nemers | Average | 5 minuten |
@@ -118,5 +118,5 @@ Zodra u een waarschuwing hebt gemaakt, kunt u deze selecteren en:
 ## <a name="next-steps"></a>Volgende stappen
 * [Bekijk een overzicht van Azure-bewaking](../monitoring-and-diagnostics/monitoring-overview.md) , inclusief de typen gegevens die u kunt verzamelen en controleren.
 * Meer informatie over het [configureren van webhooks in waarschuwingen](../azure-monitor/platform/alerts-webhooks.md).
-* Bekijk een [overzicht van Diagnostische logboeken](../azure-monitor/platform/resource-logs-overview.md) en verzamel gedetailleerde metrische gegevens over hoge frequentie voor uw service.
+* Bekijk een [overzicht van Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md) en verzamel gedetailleerde metrische gegevens over hoge frequentie voor uw service.
 * Bekijk een [overzicht van de verzameling metrische gegevens](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) om te controleren of uw service beschikbaar is en reageert.

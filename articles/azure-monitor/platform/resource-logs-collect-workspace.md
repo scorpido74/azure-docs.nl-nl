@@ -5,22 +5,22 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/20/2019
+ms.date: 12/18/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 83b91be52694076373d950e0ad785ef22671ef4f
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b0b8757590876669e00e81378411c010514e3036
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894517"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750360"
 ---
-# <a name="collect-azure-resource-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure-resource logboeken verzamelen in Log Analytics werk ruimte in Azure Monitor
-[Resource logboeken](resource-logs-overview.md) in azure bieden uitgebreide, frequente gegevens over de interne werking van een Azure-resource. In dit artikel wordt beschreven hoe u bron logboeken verzamelt in een Log Analytics-werk ruimte, waarmee u het kunt analyseren met andere bewakings gegevens die zijn verzameld in Azure Monitor logboeken met behulp van krachtige logboek query's en ook om gebruik te maken van andere Azure Monitor functies, zoals waarschuwingen en visualisaties. 
+# <a name="collect-azure-platform-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure-platform logboeken verzamelen in Log Analytics werk ruimte in Azure Monitor
+[Platform logboeken](platform-logs-overview.md) in azure, inclusief Azure-activiteiten logboek en resource logboeken, bieden gedetailleerde informatie over diagnostische gegevens en controle voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. In dit artikel wordt beschreven hoe u bron logboeken verzamelt in een Log Analytics-werk ruimte, waarmee u het kunt analyseren met andere bewakings gegevens die zijn verzameld in Azure Monitor logboeken met behulp van krachtige logboek query's en ook om gebruik te maken van andere Azure Monitor functies, zoals waarschuwingen en visualisaties. 
 
 
-## <a name="what-you-can-do-with-resource-logs-in-a-workspace"></a>Wat u kunt doen met resource Logboeken in een werk ruimte
-Door bron logboeken te verzamelen in een Log Analytics-werk ruimte kunt u de logboeken van al uw Azure-resources samen analyseren en profiteren van alle functies die beschikbaar zijn voor [Azure monitor logboeken](data-platform-logs.md) . Dit omvat het volgende:
+## <a name="what-you-can-do-with-platform-logs-in-a-workspace"></a>Wat u kunt doen met platform Logboeken in een werk ruimte
+Door platform logboeken te verzamelen in een Log Analytics-werk ruimte kunt u de logboeken van al uw Azure-resources samen analyseren en profiteren van alle functies die beschikbaar zijn voor [Azure monitor logboeken](data-platform-logs.md) . Dit omvat het volgende:
 
 * **Logboek query's** : Maak [logboek query's](../log-query/log-query-overview.md) met behulp van een krachtige query taal om snel inzicht te krijgen in uw diagnostische gegevens en deze te analyseren met gegevens die zijn verzameld uit andere bronnen in azure monitor.
 * **Waarschuwing** : Ontvang proactieve meldingen over kritieke voor waarden en patronen die in uw bron logboeken zijn geïdentificeerd met behulp [van logboek waarschuwingen in azure monitor](alerts-log.md).
@@ -30,10 +30,14 @@ Door bron logboeken te verzamelen in een Log Analytics-werk ruimte kunt u de log
 U moet [een nieuwe werk ruimte maken](../learn/quick-create-workspace.md) als u er nog geen hebt. De werk ruimte hoeft zich niet in hetzelfde abonnement te bevinden als de resource waarmee logboeken worden verzonden zolang de gebruiker die de instelling configureert de juiste RBAC-toegang heeft tot beide abonnementen.
 
 ## <a name="create-a-diagnostic-setting"></a>Een diagnostische instelling maken
-Bron logboeken worden niet standaard verzameld. U kunt ze in een Log Analytics-werk ruimte en andere bestemmingen verzamelen door een diagnostische instelling voor een Azure-resource te maken. Zie [Diagnostische instelling maken voor het verzamelen van Logboeken en metrische gegevens in azure](diagnostic-settings.md) voor meer informatie.
+Platform logboeken verzenden naar een Log Analytics-werk ruimte en andere bestemmingen door een diagnostische instelling te maken voor een Azure-resource. Zie [Diagnostische instelling maken voor het verzamelen van Logboeken en metrische gegevens in azure](diagnostic-settings.md) voor meer informatie.
 
-## <a name="collection-mode"></a>Verzamel modus
-Gegevens die in een Log Analytics werk ruimte worden verzameld, worden opgeslagen in tabellen zoals beschreven in de [structuur van Azure monitor logboeken](../log-query/logs-structure.md). De tabellen die door resource logboeken worden gebruikt, zijn afhankelijk van het type verzameling dat de resource gebruikt:
+
+## <a name="activity-log-collection"></a>Activiteiten logboek verzameling
+U kunt het activiteiten logboek vanuit elk abonnement verzenden naar Maxi maal vijf Log Analytics-werk ruimten. Bron logboek gegevens die zijn verzameld in een Log Analytics werk ruimte worden opgeslagen in de tabel **AzureActivity** . 
+
+## <a name="resource-log-collection-mode"></a>Modus bron logboek verzameling
+Bron logboek gegevens die in een Log Analytics-werk ruimte worden verzameld, worden opgeslagen in tabellen zoals beschreven in de [structuur van Azure monitor logboeken](../log-query/logs-structure.md). De tabellen die door resource logboeken worden gebruikt, zijn afhankelijk van het type verzameling dat de resource gebruikt:
 
 - Azure Diagnostics-alle gegevens die zijn geschreven, worden naar de tabel _AzureDiagnostics_ .
 - Resource-specifiek: gegevens worden naar afzonderlijke tabellen geschreven voor elke categorie van de resource.
@@ -51,14 +55,14 @@ Bekijk het volgende voor beeld waarin Diagnostische instellingen worden verzamel
 
 De tabel AzureDiagnostics ziet er als volgt uit:  
 
-| ResourceProvider    | Category     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
+| ResourceProvider    | Categorie     | A  | B  | C  | D  | E  | F  | G  | H  | I  |
 | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- | -- |
-| Micro soft. Service1 | Audit logs bevat    | x1 | y1 | z1 |    |    |    |    |    |    |
+| Micro soft. Service1 | AuditLogs    | x1 | y1 | z1 |    |    |    |    |    |    |
 | Micro soft. Service1 | ErrorLogs    |    |    |    | q1 | W1 | e1 |    |    |    |
-| Micro soft. Service2 | Audit logs bevat    |    |    |    |    |    |    | j1 | k1 | l1 |
+| Micro soft. Service2 | AuditLogs    |    |    |    |    |    |    | j1 | k1 | l1 |
 | Micro soft. Service1 | ErrorLogs    |    |    |    | q2 | w2 | e2 |    |    |    |
-| Micro soft. Service2 | Audit logs bevat    |    |    |    |    |    |    | j3 | k3 | l3 |
-| Micro soft. Service1 | Audit logs bevat    | x5 | y5 | z5 |    |    |    |    |    |    |
+| Micro soft. Service2 | AuditLogs    |    |    |    |    |    |    | j3 | k3 | l3 |
+| Micro soft. Service1 | AuditLogs    | x5 | y5 | z5 |    |    |    |    |    |    |
 | ... |
 
 ### <a name="resource-specific"></a>Resource-specifiek
@@ -68,15 +72,15 @@ Het bovenstaande voor beeld resulteert in het maken van drie tabellen:
  
 - Tabel *Service1AuditLogs* als volgt:
 
-    | Resource provider | Category | A | B | C |
+    | Resource provider | Categorie | A | B | C |
     | -- | -- | -- | -- | -- |
-    | Service1 | Audit logs bevat | x1 | y1 | z1 |
-    | Service1 | Audit logs bevat | x5 | y5 | z5 |
+    | Service1 | AuditLogs | x1 | y1 | z1 |
+    | Service1 | AuditLogs | x5 | y5 | z5 |
     | ... |
 
 - Tabel *Service1ErrorLogs* als volgt:  
 
-    | Resource provider | Category | D | E | F |
+    | Resource provider | Categorie | D | E | F |
     | -- | -- | -- | -- | -- | 
     | Service1 | ErrorLogs |  q1 | W1 | e1 |
     | Service1 | ErrorLogs |  q2 | w2 | e2 |
@@ -84,10 +88,10 @@ Het bovenstaande voor beeld resulteert in het maken van drie tabellen:
 
 - Tabel *Service2AuditLogs* als volgt:  
 
-    | Resource provider | Category | G | H | I |
+    | Resource provider | Categorie | G | H | I |
     | -- | -- | -- | -- | -- |
-    | Service2 | Audit logs bevat | j1 | k1 | l1|
-    | Service2 | Audit logs bevat | j3 | k3 | l3|
+    | Service2 | AuditLogs | j1 | k1 | l1|
+    | Service2 | AuditLogs | j3 | k3 | l3|
     | ... |
 
 
@@ -120,5 +124,5 @@ U moet uw logboeken zo snel mogelijk naar de resource-specifieke modus migreren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [overzicht van Azure-resource logboeken](resource-logs-overview.md)voor meer informatie over Azure-resource Logboeken.
-* Zie [Diagnostische instelling maken voor het verzamelen van Logboeken en metrische gegevens in azure](diagnostic-settings.md)als u een diagnostische instelling wilt maken om bron logboeken te verzamelen in een log Analytics-werk ruimte.
+* [Meer informatie over resource logboeken](platform-logs-overview.md).
+* [Maak een diagnostische instelling voor het verzamelen van Logboeken en metrische gegevens in azure](diagnostic-settings.md).

@@ -8,12 +8,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 3af951d120282767bd71bc569d8c0bfe39dafffe
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a5aa6a2e2578a995e4ef00489557fc02623e2d6a
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705468"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75744819"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>Door de klant beheerde sleutels voor het versleutelen van Azure Event Hubs-gegevens op rest configureren met behulp van de Azure Portal (preview)
 Azure Event Hubs zorgt voor versleuteling van gegevens in rust met Azure Storage-service versleuteling (Azure SSE). Event Hubs is afhankelijk van Azure Storage om de gegevens op te slaan en standaard worden alle gegevens die zijn opgeslagen met Azure Storage versleuteld met door micro soft beheerde sleutels. 
@@ -87,7 +87,7 @@ Zodra de versleutelings sleutel is ingetrokken, wordt de Event Hubs-service op d
 > Als u een bestaande versleutelings sleutel uit de sleutel kluis verwijdert en deze vervangt door een nieuwe sleutel in de naam ruimte Event Hubs, omdat de sleutel delete nog steeds geldig is (omdat deze in de cache wordt opgeslagen) gedurende een uur, worden de oude gegevens (die zijn versleuteld met de oude sleutel) mogelijk nog steeds toegankelijk via  met de nieuwe gegevens, die nu alleen toegankelijk zijn met de nieuwe sleutel. Dit gedrag is inherent aan het ontwerp van de preview-versie van de functie. 
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnostische logboeken instellen 
-Door Diagnostische logboeken in te stellen voor met BYOK ingeschakelde naam ruimten, beschikt u over de vereiste informatie over de bewerkingen wanneer een naam ruimte wordt versleuteld met door de klant beheerde sleutels. Deze logboeken kunnen worden ingeschakeld en later naar een Event Hub worden gestreamd of geanalyseerd via log Analytics of worden gestreamd naar opslag om aangepaste analyses uit te voeren. Zie [overzicht van Diagnostische logboeken van Azure](../azure-monitor/platform/resource-logs-overview.md)voor meer informatie over Diagnostische logboeken.
+Door Diagnostische logboeken in te stellen voor met BYOK ingeschakelde naam ruimten, beschikt u over de vereiste informatie over de bewerkingen wanneer een naam ruimte wordt versleuteld met door de klant beheerde sleutels. Deze logboeken kunnen worden ingeschakeld en later naar een Event Hub worden gestreamd of geanalyseerd via log Analytics of worden gestreamd naar opslag om aangepaste analyses uit te voeren. Zie [overzicht van Diagnostische logboeken van Azure](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie over Diagnostische logboeken.
 
 ## <a name="enable-user-logs"></a>Gebruikers Logboeken inschakelen
 Volg deze stappen om Logboeken in te scha kelen voor door de klant beheerde sleutels.
@@ -104,20 +104,20 @@ Volg deze stappen om Logboeken in te scha kelen voor door de klant beheerde sleu
 
     ![Selecteer door de klant beheerde sleutel gebruikers Logboeken](./media/configure-customer-managed-key/select-customer-managed-key-user-logs.png)
 
-## <a name="log-schema"></a>Logboek schema 
-Alle logboeken worden opgeslagen in de indeling van de JavaScript Object Notation (JSON). Elke vermelding bevat teken reeks velden die gebruikmaken van de indeling die wordt beschreven in de volgende tabel. 
+## <a name="log-schema"></a>Logboek-schema 
+Alle logboeken worden opgeslagen in JavaScript Object Notation (JSON)-indeling. Elke vermelding bevat teken reeks velden die gebruikmaken van de indeling die wordt beschreven in de volgende tabel. 
 
-| Naam | Beschrijving |
+| Name | Beschrijving |
 | ---- | ----------- | 
-| TaskName | Beschrijving van de taak die is mislukt. |
+| Taaknaam | Beschrijving van de taak die is mislukt. |
 | ActivityId | Interne ID die wordt gebruikt voor tracering. |
 | category | Hiermee wordt de classificatie van de taak gedefinieerd. Als de sleutel van uw sleutel kluis bijvoorbeeld wordt uitgeschakeld, zou dit een informatie categorie zijn, of als een sleutel niet kan worden teruggedraaid, kan dit onder een fout vallen. |
 | resourceId | Resource-ID Azure Resource Manager |
 | keyVault | Volledige naam van de sleutel kluis. |
 | sleutel | De naam van de sleutel die wordt gebruikt voor het versleutelen van de Event Hubs naam ruimte. |
 | versie | De versie van de sleutel die wordt gebruikt. |
-| schijf | De bewerking die wordt uitgevoerd op de sleutel in uw sleutel kluis. Schakel bijvoorbeeld de sleutel, de tekst terugloop of de terugloop uit |
-| gecodeerd | De code die aan de bewerking is gekoppeld. Voor beeld: fout code, 404 betekent dat de sleutel niet is gevonden. |
+| operation | De bewerking die wordt uitgevoerd op de sleutel in uw sleutel kluis. Schakel bijvoorbeeld de sleutel, de tekst terugloop of de terugloop uit |
+| code | De code die aan de bewerking is gekoppeld. Voor beeld: fout code, 404 betekent dat de sleutel niet is gevonden. |
 | message | Elk fout bericht dat is gekoppeld aan de bewerking |
 
 Hier volgt een voor beeld van het logboek voor een door de klant beheerde sleutel:
@@ -157,7 +157,7 @@ Schakel als best practice altijd Logboeken in, zoals wordt weer gegeven in de vo
 
 Hieronder vindt u de algemene fout codes die u moet zoeken wanneer BYOK-versleuteling is ingeschakeld.
 
-| Bewerking | Foutcode | Resulterende status van gegevens |
+| Actie | Foutcode | Resulterende status van gegevens |
 | ------ | ---------- | ----------------------- | 
 | De machtiging voor het verpakken/uitpakken van een sleutel kluis verwijderen | 403 |    Niet toegankelijk |
 | Het lidmaatschap van AAD-rollen verwijderen uit een AAD-principal die de machtiging voor terugloop/uitpakken heeft gekregen | 403 |  Niet toegankelijk |

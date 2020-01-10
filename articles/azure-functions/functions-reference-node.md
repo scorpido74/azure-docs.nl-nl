@@ -3,13 +3,13 @@ title: Naslag informatie over Java script-ontwikkel aars voor Azure Functions
 description: Meer informatie over het ontwikkelen van functies met behulp van Java script.
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
-ms.date: 02/24/2019
-ms.openlocfilehash: b6b7db4c5f13a264b76dcab02dba51c464297307
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.date: 12/17/2019
+ms.openlocfilehash: 30d69476c96017319842a424c26de29350ec1ef6
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226709"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769044"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Ontwikkelaars handleiding voor Azure Functions java script
 
@@ -267,10 +267,10 @@ Hiermee kunt u naar de streaming-functie Logboeken schrijven op het standaard tr
 
 | Methode                 | Beschrijving                                |
 | ---------------------- | ------------------------------------------ |
-| **fout (_bericht_)**   | Schrijft naar logboek registratie op fout niveau of lager.   |
-| **Warning (_bericht_)**    | Schrijft naar logboek registratie op waarschuwings niveau of lager. |
-| **info (_bericht_)**    | Schrijft naar logboek registratie op info niveau of lager.    |
-| **uitgebreid (_bericht_)** | Schrijft naar uitgebreide logboek registratie.           |
+| **error(_message_)**   | Schrijft naar logboek registratie op fout niveau of lager.   |
+| **warn(_message_)**    | Schrijft naar logboek registratie op waarschuwings niveau of lager. |
+| **info(_message_)**    | Schrijft naar logboek registratie op info niveau of lager.    |
+| **verbose(_message_)** | Schrijft naar uitgebreide logboek registratie.           |
 
 In het volgende voor beeld wordt een logboek op het tracerings niveau waarschuwing geschreven:
 
@@ -344,12 +344,12 @@ Het `context.req`-object (Request) heeft de volgende eigenschappen:
 
 | Eigenschap      | Beschrijving                                                    |
 | ------------- | -------------------------------------------------------------- |
-| _organen_        | Een object dat de hoofd tekst van de aanvraag bevat.               |
+| _body_        | Een object dat de hoofd tekst van de aanvraag bevat.               |
 | _koppen_     | Een object dat de aanvraag headers bevat.                   |
-| _methode_      | De HTTP-methode van de aanvraag.                                |
+| _method_      | De HTTP-methode van de aanvraag.                                |
 | _originalUrl_ | De URL van de aanvraag.                                        |
 | _params_      | Een object dat de routerings parameters van de aanvraag bevat. |
-| _ophalen_       | Een object dat de query parameters bevat.                  |
+| _query_       | Een object dat de query parameters bevat.                  |
 | _rawBody_     | De hoofd tekst van het bericht als een teken reeks.                           |
 
 
@@ -359,10 +359,10 @@ Het object `context.res` (Response) heeft de volgende eigenschappen:
 
 | Eigenschap  | Beschrijving                                               |
 | --------- | --------------------------------------------------------- |
-| _organen_    | Een object dat de hoofd tekst van het antwoord bevat.         |
+| _body_    | Een object dat de hoofd tekst van het antwoord bevat.         |
 | _koppen_ | Een object dat de antwoord headers bevat.             |
 | _isRaw_   | Hiermee wordt aangegeven dat de opmaak voor het antwoord wordt overgeslagen.    |
-| _hebben_  | De HTTP-status code van het antwoord.                     |
+| _status_  | De HTTP-status code van het antwoord.                     |
 
 ### <a name="accessing-the-request-and-response"></a>De aanvraag en het antwoord openen 
 
@@ -371,9 +371,9 @@ Wanneer u met HTTP-triggers werkt, kunt u op een aantal manieren toegang krijgen
 + **Van `req`-en `res` eigenschappen van het `context`-object.** Op deze manier kunt u het conventionele patroon gebruiken om toegang te krijgen tot HTTP-gegevens van het context object, in plaats van het volledige `context.bindings.name` patroon te gebruiken. In het volgende voor beeld ziet u hoe u toegang krijgt tot de `req`-en `res` objecten op de `context`:
 
     ```javascript
-    // You can access your http request off the context ...
+    // You can access your HTTP request off the context ...
     if(context.req.body.emoji === ':pizza:') context.log('Yay!');
-    // and also set your http response
+    // and also set your HTTP response
     context.res = { status: 202, body: 'You successfully ordered more coffee!' }; 
     ```
 
@@ -405,6 +405,16 @@ Wanneer u met HTTP-triggers werkt, kunt u op een aantal manieren toegang krijgen
     res = { status: 201, body: "Insert succeeded." };
     context.done(null, res);   
     ```  
+
+## <a name="scaling-and-concurrency"></a>Schalen en gelijktijdigheid
+
+Standaard controleert Azure Functions automatisch de belasting van uw toepassing en worden er indien nodig extra exemplaren van de host voor node. js gemaakt. Functies gebruiken ingebouwde (niet door de gebruiker te configureren) drempel waarden voor verschillende trigger typen om te bepalen wanneer instanties moeten worden toegevoegd, zoals de leeftijd van berichten en de grootte van de wachtrij voor Queue trigger. Zie [hoe het verbruik en de Premium-abonnementen werken](functions-scale.md#how-the-consumption-and-premium-plans-work)voor meer informatie.
+
+Dit gedrag van schalen is voldoende voor veel node. js-toepassingen. Voor CPU-gebonden toepassingen kunt u de prestaties verder verbeteren door gebruik te maken van werk processen in meerdere talen.
+
+Elk functions-exemplaar heeft standaard een werk proces met één taal. U kunt het aantal werk processen per host (Maxi maal 10) verhogen met behulp van de [FUNCTIONS_WORKER_PROCESS_COUNT](functions-app-settings.md#functions_worker_process_count) toepassings instelling. Azure Functions probeert vervolgens gelijktijdige functie aanroepen voor deze werk nemers gelijkmatig te verdelen. 
+
+De FUNCTIONS_WORKER_PROCESS_COUNT is van toepassing op elke host die functies maakt wanneer uw toepassing wordt geschaald om aan de vraag te voldoen. 
 
 ## <a name="node-version"></a>Knooppunt versie
 

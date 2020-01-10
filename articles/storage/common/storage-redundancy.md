@@ -9,12 +9,12 @@ ms.date: 09/17/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8025228275afeb3f23268db759eb7659b9887132
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 7517c4d9b3f9b58d9cf745f5001078837e1fbfea
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71670788"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748174"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundantie
 
@@ -38,19 +38,21 @@ De volgende tabel geeft een beknopt overzicht van het bereik van duurzaamheid en
 | Een volledig Data Center (zonegebonden of niet-zonegebonden) is niet meer beschikbaar                                           | Nee                              | Ja                              | Ja                                  | Ja                                  |
 | Een onderbreking in de gehele regio                                                                                     | Nee                              | Nee                               | Ja                                  | Ja                                  |
 | Lees toegang tot uw gegevens (in een externe, geo-gerepliceerde regio) in het geval van regionale niet-beschik baarheid | Nee                              | Nee                               | Ja (met RA-GRS)                                   | Ja (met RA-GZRS)                                 |
-| Ontworpen om duurzaamheid \_ van objecten over een bepaald jaar te bieden \_                                          | ten minste 99,999999999% (11 9) | ten minste 99,9999999999% (12 9) | ten minste 99.99999999999999% (16 9) | ten minste 99.99999999999999% (16 9) |
-| Ondersteunde typen opslag accounts                                                                   | GPv2, GPv1, Blob                | GPv2                             | GPv2, GPv1, Blob                     | GPv2                     |
-| SLA voor Beschik baarheid voor lees aanvragen | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag met coole toegang) voor GRS<br /><br />Ten minste 99,99% (99,9% voor de laag voor cool-toegang) voor RA-GRS | Ten minste 99,9% (99% voor de laag met coole toegang) voor GZRS<br /><br />Ten minste 99,99% (99,9% voor de laag voor cool-toegang) voor RA-GZRS |
-| SLA voor Beschik baarheid voor schrijf aanvragen | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) |
+| Ontworpen om \_\_ duurzaamheid van objecten over een bepaald jaar te bieden<sup>1</sup>                                          | ten minste 99,999999999% (11 9) | ten minste 99,9999999999% (12 9) | ten minste 99.99999999999999% (16 9) | ten minste 99.99999999999999% (16 9) |
+| Ondersteunde typen opslag accounts<sup>2</sup>                                                                   | GPv2, GPv1, BlockBlobStorage, BlobStorage, FileStorage                | GPv2, BlockBlobStorage, FileStorage                             | GPv2, GPv1, BlobStorage                     | GPv2                     |
+| SLA voor Beschik baarheid voor lees aanvragen<sup>1</sup>  | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag met coole toegang) voor GRS<br /><br />Ten minste 99,99% (99,9% voor de laag voor cool-toegang) voor RA-GRS | Ten minste 99,9% (99% voor de laag met coole toegang) voor GZRS<br /><br />Ten minste 99,99% (99,9% voor de laag voor cool-toegang) voor RA-GZRS |
+| SLA voor Beschik baarheid voor schrijf aanvragen<sup>1</sup>  | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) | Ten minste 99,9% (99% voor de laag van de cool-toegang) |
 
-Alle gegevens in uw opslag account worden gerepliceerd, inclusief blok-blobs en toevoeg-blobs, pagina-blobs, wacht rijen, tabellen en bestanden. Alle typen opslag accounts worden gerepliceerd, maar ZRS vereist een v2-opslag account voor algemeen gebruik.
+<sup>1</sup> zie de [Azure Storage Sla](https://azure.microsoft.com/support/legal/sla/storage/)voor informatie over Azure Storage garanties voor duurzaamheid en beschik baarheid.   
 
-Zie [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/)voor prijs informatie voor elke optie voor redundantie. 
+<sup>2</sup> Zie [overzicht van opslag accounts](storage-account-overview.md)voor meer informatie over typen opslag accounts.
 
-Zie de [Azure Storage Sla](https://azure.microsoft.com/support/legal/sla/storage/)voor informatie over Azure Storage garanties voor duurzaamheid en beschik baarheid.
+Alle gegevens voor alle typen opslag accounts worden gerepliceerd, inclusief blok-blobs, toevoeg-blobs, pagina-blobs, wacht rijen, tabellen en bestanden.
+
+Zie [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/)voor prijs informatie voor elke optie voor redundantie.
 
 > [!NOTE]
-> Azure Premium Storage ondersteunt momenteel alleen lokaal redundante opslag (LRS).
+> Azure Premium Disk Storage ondersteunt momenteel alleen lokaal redundante opslag (LRS). Azure Premium Block Blob Storage ondersteunt lokaal redundante opslag (LRS) en zone redundante opslag (ZRS) in bepaalde regio's.
 
 ## <a name="changing-replication-strategy"></a>Replicatie strategie wijzigen
 
@@ -69,11 +71,12 @@ Als u uw opslag account migreert van RA-GRS naar GRS of LRS, wordt dat account g
 
 ## <a name="see-also"></a>Zie ook
 
-- [Lokaal redundante opslag (LRS): Lage kosten voor gegevens redundantie voor Azure Storage](storage-redundancy-lrs.md)
+- [Overzicht van opslag account](storage-account-overview.md)
+- [Lokaal redundante opslag (LRS): lage kosten voor gegevens redundantie voor Azure Storage](storage-redundancy-lrs.md)
 - [Zone-redundante opslag (ZRS): Maxi maal beschik bare Azure Storage toepassingen](storage-redundancy-zrs.md)
-- [Geografisch redundante opslag (GRS): Kruis regionale replicatie voor Azure Storage](storage-redundancy-grs.md)
+- [Geografisch redundante opslag (GRS): cross-regionale replicatie voor Azure Storage](storage-redundancy-grs.md)
 - [Geo-zone-redundante opslag (GZRS) voor hoge Beschik baarheid en maximale duurzaamheid (preview-versie)](storage-redundancy-gzrs.md)
-- [Schaalbaarheids- en prestatiedoelen voor Azure Storage](storage-scalability-targets.md)
+- [Schaalbaarheids-en prestatie doelen voor standaard opslag accounts](scalability-targets-standard-account.md)
 - [Maxi maal beschik bare toepassingen ontwerpen met behulp van RA-GRS-opslag](../storage-designing-ha-apps-with-ragrs.md)
 - [Microsoft Azure Storage redundantie opties en geografisch redundante opslag met lees toegang](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
-- [SOSP Paper Azure Storage: Een Maxi maal beschik bare Cloud opslag service met sterke consistentie](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
+- [SOSP Paper-Azure Storage: een Maxi maal beschik bare Cloud opslag service met sterke consistentie](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

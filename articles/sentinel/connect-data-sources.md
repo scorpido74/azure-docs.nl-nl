@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4b21d6aa95a38df402cf7a2640467c7a060a7f49
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a76f149b8ab9ca8515a7475cd7954b6d4862a92d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496378"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746879"
 ---
 # <a name="connect-data-sources"></a>Verbinding maken met gegevensbronnen
 
@@ -43,7 +43,8 @@ Als u Azure Sentinel wilt inschakelen, moet u eerst verbinding maken met uw gege
 
 De volgende gegevens verbindings methoden worden ondersteund door Azure Sentinel:
 
-- **Micro soft-Services**:<br> Micro soft-Services zijn systeem eigen verbonden, met behulp van de Azure Foundation voor out-of-the-box-integratie, de volgende oplossingen kunnen met een paar klikken worden verbonden:
+- **Integratie van service naar service**:<br> Sommige services zijn systeem eigen verbonden, zoals AWS en micro soft-Services, maar deze services maken gebruik van de Azure Foundation voor out-of-the-box Integration, de volgende oplossingen kunnen met een paar klikken worden verbonden:
+    - [Amazon Web Services-CloudTrail](connect-aws.md)
     - [Office 365](connect-office-365.md)
     - [Azure AD-controle logboeken en-aanmeldingen](connect-azure-active-directory.md)
     - [Azure-activiteit](connect-azure-activity.md)
@@ -95,36 +96,36 @@ U kunt de agent ook hand matig implementeren op een bestaande Azure-VM, op een v
 
 | **Gegevenstype** | **Verbinding maken** | **Data Connector?** | **Opmerkingen** |
 |------|---------|-------------|------|
-| AWSCloudTrail | [Verbinding maken met AWS](connect-aws.md) | Verticale | |
-| AzureActivity | Overzicht van [Azure activiteit](connect-azure-activity.md) en [activiteiten logboeken](../azure-monitor/platform/activity-logs-overview.md) verbinden| Verticale | |
-| Audit logs bevat | [Verbinding maken met Azure AD](connect-azure-active-directory.md)  | Verticale | |
-| SigninLogs | [Verbinding maken met Azure AD](connect-azure-active-directory.md)  | Verticale | |
-| AzureFirewall |[Azure Diagnostics](../firewall/tutorial-diagnostics.md) | Verticale | |
-| InformationProtectionLogs_CL  | [Azure Information Protection rapporten](https://docs.microsoft.com/azure/information-protection/reports-aip)<br>[Azure Information Protection verbinden](connect-azure-information-protection.md)  | Verticale | Dit maakt gewoonlijk gebruik van de functie **InformationProtectionEvents** naast het gegevens type. Zie [de rapporten wijzigen en aangepaste query's maken](https://docs.microsoft.com/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries) voor meer informatie|
+| AWSCloudTrail | [Verbinding maken met AWS](connect-aws.md) | V | |
+| AzureActivity | Overzicht van [Azure activiteit](connect-azure-activity.md) en [activiteiten logboeken](../azure-monitor/platform/platform-logs-overview.md) verbinden| V | |
+| AuditLogs | [Verbinding maken met Azure AD](connect-azure-active-directory.md)  | V | |
+| Aanmeldingslogboeken | [Verbinding maken met Azure AD](connect-azure-active-directory.md)  | V | |
+| AzureFirewall |[Azure Diagnostics](../firewall/tutorial-diagnostics.md) | V | |
+| InformationProtectionLogs_CL  | [Azure Information Protection rapporten](https://docs.microsoft.com/azure/information-protection/reports-aip)<br>[Azure Information Protection verbinden](connect-azure-information-protection.md)  | V | Dit maakt gewoonlijk gebruik van de functie **InformationProtectionEvents** naast het gegevens type. Zie [de rapporten wijzigen en aangepaste query's maken](https://docs.microsoft.com/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries) voor meer informatie|
 | AzureNetworkAnalytics_CL  | Verkeers [analyse](../network-watcher/traffic-analytics.md) van [Traffic analytic-schema](../network-watcher/traffic-analytics.md)  | | |
-| CommonSecurityLog  | [Verbinding maken met CEF](connect-common-event-format.md)  | Verticale | |
-| OfficeActivity | [Verbinding maken met Office 365](connect-office-365.md) | Verticale | |
-| SecurityEvents | [Windows-beveiligings gebeurtenissen verbinden](connect-windows-security-events.md)  | Verticale | Zie voor de werkmappen met Inveilige protocollen [onveilige protocollen werkmap instellen](https://blogs.technet.microsoft.com/jonsh/azure-sentinel-insecure-protocols-dashboard-setup/)  |
-| Syslog | [Syslog verbinden](connect-syslog.md) | Verticale | |
-| Micro soft Web Application firewall (WAF)-(AzureDiagnostics) |[Verbinding maken met micro soft Web Application firewall](connect-microsoft-waf.md) | Verticale | |
-| SymantecICDx_CL | [Symantec verbinden](connect-symantec.md) | Verticale | |
-| ThreatIntelligenceIndicator  | [Bedreigings informatie verbinden](connect-threat-intelligence.md)  | Verticale | |
+| CommonSecurityLog  | [Verbinding maken met CEF](connect-common-event-format.md)  | V | |
+| OfficeActivity | [Verbinding maken met Office 365](connect-office-365.md) | V | |
+| SecurityEvents | [Windows-beveiligings gebeurtenissen verbinden](connect-windows-security-events.md)  | V | Zie voor de werkmappen met Inveilige protocollen [onveilige protocollen werkmap instellen](https://blogs.technet.microsoft.com/jonsh/azure-sentinel-insecure-protocols-dashboard-setup/)  |
+| Syslog | [Syslog verbinden](connect-syslog.md) | V | |
+| Micro soft Web Application firewall (WAF)-(AzureDiagnostics) |[Verbinding maken met micro soft Web Application firewall](connect-microsoft-waf.md) | V | |
+| SymantecICDx_CL | [Symantec verbinden](connect-symantec.md) | V | |
+| ThreatIntelligenceIndicator  | [Bedreigings informatie verbinden](connect-threat-intelligence.md)  | V | |
 | VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Toewijzing van Azure Monitor-service](../azure-monitor/insights/service-map.md)<br>[Voor bereiding op Azure Monitor VM Insights](../azure-monitor/insights/vminsights-onboard.md) <br> [Azure Monitor VM Insights inschakelen](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Eén virtuele machine on-boarding gebruiken](../azure-monitor/insights/vminsights-enable-single-vm.md)<br>  [On-boarding gebruiken via het beleid](../azure-monitor/insights/vminsights-enable-at-scale-policy.md)| X | VM Insights-werkmap  |
-| DnsEvents | [DNS verbinden](connect-dns.md) | Verticale | |
+| DnsEvents | [DNS verbinden](connect-dns.md) | V | |
 | W3CIISLog | [IIS-logboeken verbinden](../azure-monitor/platform/data-sources-iis-logs.md)  | X | |
 | WireData | [Bedradings gegevens verbinden](../azure-monitor/insights/wire-data.md) | X | |
-| WindowsFirewall | [Windows Firewall verbinden](connect-windows-firewall.md) | Verticale | |
-| AADIP SecurityAlert  | [Verbinding maken met Azure AD Identity Protection](connect-azure-ad-identity-protection.md)  | Verticale | |
-| AATP SecurityAlert  | [Verbinding maken met Azure ATP](connect-azure-atp.md) | Verticale | |
-| ASC SecurityAlert  | [Azure Security Center verbinden](connect-azure-security-center.md)  | Verticale | |
-| MCAS SecurityAlert  | [Microsoft Cloud App Security verbinden](connect-cloud-app-security.md)  | Verticale | |
+| WindowsFirewall | [Windows Firewall verbinden](connect-windows-firewall.md) | V | |
+| AADIP SecurityAlert  | [Verbinding maken met Azure AD Identity Protection](connect-azure-ad-identity-protection.md)  | V | |
+| AATP SecurityAlert  | [Verbinding maken met Azure ATP](connect-azure-atp.md) | V | |
+| ASC SecurityAlert  | [Azure Security Center verbinden](connect-azure-security-center.md)  | V | |
+| MCAS SecurityAlert  | [Microsoft Cloud App Security verbinden](connect-cloud-app-security.md)  | V | |
 | SecurityAlert | | | |
 | Voor-en naactiviteit (gebeurtenis) | [Verbinding maken](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Windows-gebeurtenissen verbinden](../azure-monitor/platform/data-sources-windows-events.md) <br> [De ophaal-parser ophalen](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/SysmonParser.txt)| X | De garbagecollection-verzameling wordt niet standaard op virtuele machines geïnstalleerd. [Zie voor](https://docs.microsoft.com/sysinternals/downloads/sysmon)meer informatie over het installeren van de opschoon agent. |
 | ConfigurationData  | [VM-inventarisatie automatiseren](../automation/automation-vm-inventory.md)| X | |
 | ConfigurationChange  | [VM-tracking automatiseren](../automation/change-tracking.md) | X | |
 | F5 BIG-IP | [Verbinding maken F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel.md)  | X | |
 | McasShadowItReporting  |  | X | |
-| Barracuda_CL | [Verbinding maken met Barracuda](connect-barracuda.md) | Verticale | |
+| Barracuda_CL | [Verbinding maken met Barracuda](connect-barracuda.md) | V | |
 
 
 ## <a name="next-steps"></a>Volgende stappen

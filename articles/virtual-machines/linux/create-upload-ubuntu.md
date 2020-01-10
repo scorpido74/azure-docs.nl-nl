@@ -3,29 +3,24 @@ title: Een Ubuntu Linux VHD maken en uploaden in azure
 description: Meer informatie over het maken en uploaden van een virtuele harde schijf (VHD) van Azure die een Ubuntu Linux besturings systeem bevat.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager,azure-service-management
-ms.assetid: 3e097959-84fc-4f6a-8cc8-35e087fd1542
+author: MicahMcKittrick-MSFT
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 06/24/2019
-ms.author: szark
-ms.openlocfilehash: cdf2c6c0d5621223655fc4571affcdde4563ac97
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.author: mimckitt
+ms.openlocfilehash: e8226322ad1aa9a1079834cc26b4ff8a1b40a204
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258267"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750161"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Een virtuele Ubuntu-machine voor Azure voorbereiden
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="official-ubuntu-cloud-images"></a>Officiële Ubuntu-Cloud installatie kopieën
-Ubuntu publiceert nu officiële Azure-Vhd's voor down [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/)loads op. Als u uw eigen gespecialiseerde Ubuntu-installatie kopie voor Azure moet bouwen, in plaats van de hand matige procedure hieronder te gebruiken, wordt u aangeraden te beginnen met deze bekende werk schijven en zo nodig aan te passen. U kunt de nieuwste afbeeldings releases altijd vinden op de volgende locaties:
+
+Ubuntu publiceert nu officiële Azure-Vhd's om te downloaden op [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/). Als u uw eigen gespecialiseerde Ubuntu-installatie kopie voor Azure moet bouwen, in plaats van de hand matige procedure hieronder te gebruiken, wordt u aangeraden te beginnen met deze bekende werk schijven en zo nodig aan te passen. U kunt de nieuwste afbeeldings releases altijd vinden op de volgende locaties:
 
 * Ubuntu 12.04/nauw keurig: [Ubuntu-12,04-server-cloudimg-amd64-Disk1. VHD. zip](https://cloud-images.ubuntu.com/precise/current/precise-server-cloudimg-amd64-disk1.vhd.zip)
 * Ubuntu 14.04/Trusty: [Ubuntu-14,04-server-cloudimg-amd64-Disk1. VHD. zip](https://cloud-images.ubuntu.com/releases/trusty/release/ubuntu-14.04-server-cloudimg-amd64-disk1.vhd.zip)
@@ -46,7 +41,7 @@ In dit artikel wordt ervan uitgegaan dat u al een Ubuntu Linux besturings systee
 
 ## <a name="manual-steps"></a>Hand matige stappen
 > [!NOTE]
-> Voordat u probeert uw eigen aangepaste Ubuntu-installatie kopie voor Azure te maken, kunt u [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) in plaats daarvan de vooraf gemaakte en geteste installatie kopieën gebruiken.
+> Voordat u probeert uw eigen aangepaste Ubuntu-installatie kopie voor Azure te maken, kunt u in plaats daarvan de vooraf gemaakte en geteste installatie kopieën van [https://cloud-images.ubuntu.com/](https://cloud-images.ubuntu.com/) gebruiken.
 > 
 > 
 
@@ -54,9 +49,9 @@ In dit artikel wordt ervan uitgegaan dat u al een Ubuntu Linux besturings systee
 
 2. Klik op **verbinding maken** om het venster voor de virtuele machine te openen.
 
-3. Vervang de huidige opslag plaatsen in de installatie kopie om de Azure-opslag plaatsen van Ubuntu te gebruiken. De stappen kunnen enigszins verschillen, afhankelijk van de Ubuntu-versie.
+3. Vervang de huidige opslag plaatsen in de installatie kopie om de Azure-opslag plaats van Ubuntu te gebruiken. De stappen kunnen enigszins verschillen, afhankelijk van de Ubuntu-versie.
    
-    Voor het `/etc/apt/sources.list`bewerken wordt het aanbevolen een back-up te maken:
+    Voordat u `/etc/apt/sources.list`bewerkt, wordt het aanbevolen om een back-up te maken:
    
         # sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
@@ -108,11 +103,11 @@ In dit artikel wordt ervan uitgegaan dat u al een Ubuntu Linux besturings systee
     - [https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack](https://wiki.ubuntu.com/Kernel/RollingLTSEnablementStack)
 
 
-5. Wijzig de kernel-opstart regel voor grub zodat er aanvullende kernel-para meters voor Azure worden toegevoegd. Als u dit wilt `/etc/default/grub` openen in een tekst editor, zoekt u de `GRUB_CMDLINE_LINUX_DEFAULT` variabele met de naam (of voegt u deze toe, indien nodig) en bewerkt u deze met de volgende para meters:
+5. Wijzig de kernel-opstart regel voor grub zodat er aanvullende kernel-para meters voor Azure worden toegevoegd. Als u dit wilt doen `/etc/default/grub` in een tekst editor, zoekt u de variabele met de naam `GRUB_CMDLINE_LINUX_DEFAULT` (of voegt u deze toe, indien nodig) en bewerkt u deze zodat de volgende para meters worden toegevoegd:
    
         GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"
 
-    Sla het bestand op en sluit dit en voer `sudo update-grub`het vervolgens uit. Dit zorgt ervoor dat alle console berichten worden verzonden naar de eerste seriële poort, die ondersteuning biedt voor technische ondersteuning van Azure bij problemen met de fout opsporing.
+    Sla het bestand op en sluit dit en voer `sudo update-grub`uit. Dit zorgt ervoor dat alle console berichten worden verzonden naar de eerste seriële poort, die ondersteuning biedt voor technische ondersteuning van Azure bij problemen met de fout opsporing.
 
 6. Zorg ervoor dat de SSH-server is geïnstalleerd en geconfigureerd om te starten bij het opstarten.  Dit is doorgaans de standaard instelling.
 
@@ -122,7 +117,7 @@ In dit artikel wordt ervan uitgegaan dat u al een Ubuntu Linux besturings systee
         # sudo apt-get install walinuxagent
 
    > [!Note]
-   >  Het `walinuxagent` pakket kan de `NetworkManager` pakketten en `NetworkManager-gnome` verwijderen als deze zijn geïnstalleerd.
+   >  Het `walinuxagent`-pakket kan de `NetworkManager` en `NetworkManager-gnome` pakketten verwijderen als deze zijn geïnstalleerd.
 
 
 1. Voer de volgende opdrachten uit om de inrichting van de virtuele machine ongedaan te maken en deze voor te bereiden voor de inrichting van Azure:
@@ -133,7 +128,7 @@ In dit artikel wordt ervan uitgegaan dat u al een Ubuntu Linux besturings systee
 
 1. Klik op **actie-> afgesloten** in Hyper-V-beheer. Uw Linux-VHD is nu gereed om te worden geüpload naar Azure.
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Naslaginformatie
 [HWE-kernel (Ubuntu hardware-activering)](https://wiki.ubuntu.com/Kernel/LTSEnablementStack)
 
 ## <a name="next-steps"></a>Volgende stappen

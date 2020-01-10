@@ -12,32 +12,31 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: ef44931cc3b36bcab64a2de840d9264c1b8fdedb
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 2c5b0556554d280e57b2df51875e1b057b5fb4a8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058021"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749891"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>Niet van RDP-verbinding naar Azure Virtual Machines, omdat de DHCP Client-service is uitgeschakeld
 
 In dit artikel beschrijft een probleem waarbij u kunt geen extern bureaublad naar Azure Windows Virtual Machines (VM's) nadat de DHCP Client-service is uitgeschakeld in de virtuele machine.
 
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="symptoms"></a>Symptomen
 U maken niet een RDP-verbinding een virtuele machine in Azure omdat de DHCP Client-service is uitgeschakeld in de virtuele machine. Wanneer u de schermafbeelding controleren in de [diagnostische gegevens over opstarten](../troubleshooting/boot-diagnostics.md) in Azure portal, ziet u de virtuele machine normaal worden opgestart en wacht tot de referenties in het aanmeldingsscherm. U weergeven op afstand de gebeurtenislogboeken op de virtuele machine met behulp van Logboeken. U ziet dat de DHCP Client-Service is niet gestart of niet kan worden gestart. De volgende logboek voor een voorbeeld:
 
-**Logboek naam**: Systeem </br>
-**Bron**: Service besturings beheer </br>
-**Datum**: 12/16/2015 11:19:36 UUR </br>
-**Gebeurtenis-id**: 7022 </br>
-**Taak categorie**: Geen </br>
-**Niveau**: Fout </br>
-**Tref woorden**: Klassiek</br>
-**Gebruiker**: N/A </br>
+**Meld u de naam**: systeem </br>
+**Bron**: Service Control Manager </br>
+**Datum**: 16-12-2015 11:19:36 uur </br>
+**Gebeurtenis-ID**: 7022 </br>
+**Taak categorie**: geen </br>
+**Niveau**: fout </br>
+**Trefwoorden**: klassieke</br>
+**Gebruiker**: N.V.T. </br>
 **Computer**: myvm.cosotos.com</br>
-**Beschrijving**: De DHCP client-service is bij het starten vastgelopen.</br>
+**Beschrijving**: de DHCP Client-service bij het starten vastgelopen.</br>
 
 Voor Resource Manager-VM's, kunt u toegang tot de seriële Console-functie aan query gebruiken voor de gebeurtenis-logboeken 7022 met de volgende opdracht:
 
@@ -183,7 +182,7 @@ U lost dit probleem, kunt u seriële besturingselement gebruiken om DHCP of [opn
 
 1. [De besturingssysteemschijf koppelen aan een virtuele machine voor herstel](../windows/troubleshoot-recovery-disks-portal.md).
 2. Start een externe bureaubladverbinding met de virtuele machine voor herstel. Zorg ervoor dat de gekoppelde schijf is gemarkeerd als **Online** in de Schijfbeheer-console. Houd er rekening mee de stationsletter die toegewezen aan de gekoppelde besturingssysteemschijf.
-3.  Open een opdrachtprompt met verhoogde bevoegdheid-exemplaar (**als administrator uitvoeren**). Voer het volgende script. Met dit script wordt ervan uitgegaan dat de stationsletter die toegewezen aan de gekoppelde besturingssysteemschijf **F**. De stationsletter vervangen door de waarde in uw virtuele machine.
+3.  Open een opdrachtprompt met verhoogde bevoegdheid-exemplaar (**als administrator uitvoeren**). Voer het volgende script. In dit script wordt ervan uitgegaan dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf **F**is. Vervang de letter naar wens door de waarde in uw VM.
 
     ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM

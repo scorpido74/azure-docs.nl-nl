@@ -3,7 +3,7 @@ title: Een virtuele Linux-VHD maken en uploaden in azure
 description: Meer informatie over het maken en uploaden van een virtuele harde schijf (VHD) van Azure die een Linux-besturings systeem bevat.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -13,16 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/08/2018
-ms.author: szark
-ms.openlocfilehash: eb6ef87edd2ff16750573c6b8c719fa4b81d3a4c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: mimckitt
+ms.openlocfilehash: 02e49bf5b85da441353f72823c27048bb8e92d83
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70083587"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750186"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informatie over niet-goedgekeurde distributies
-[!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 De SLA van het Azure-platform is alleen van toepassing op virtuele machines waarop het Linux-besturings systeem wordt uitgevoerd wanneer een van de [goedgekeurde distributies](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) wordt gebruikt. Voor deze geplaatste distributies zijn vooraf geconfigureerde Linux-installatie kopieën opgenomen in de Azure Marketplace.
 
@@ -48,14 +47,14 @@ Dit artikel richt zich op algemene richt lijnen voor het uitvoeren van uw Linux-
 * De maximale grootte die is toegestaan voor de VHD is 1.023 GB.
 * Bij de installatie van het Linux-systeem raden we u aan om standaard partities te gebruiken in plaats van Logical Volume Manager (LVM). Dit is de standaard instelling voor veel installaties. Het gebruik van standaard partities voor komt dat LVM naam strijdig is met gekloonde Vm's, met name als een besturingssysteem schijf ooit is gekoppeld aan een andere identieke virtuele machine voor het oplossen van problemen. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) of [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) kan worden gebruikt op gegevens schijven.
 * Kernel-ondersteuning voor het koppelen van UDF-bestands systemen is nood zakelijk. Bij de eerste keer opstarten in azure wordt de inrichtings configuratie door gegeven aan de Linux-VM met behulp van UDF-geformatteerde media die aan de gast zijn gekoppeld. De Azure Linux-agent moet het UDF-bestands systeem koppelen om de configuratie te lezen en de virtuele machine in te richten.
-* Linux-kernel-versies ouder dan 2.6.37 bieden geen ondersteuning voor NUMA op Hyper-V met grotere VM-grootten. Dit probleem heeft voornamelijk betrekking op oudere distributies met behulp van de upstream Red Hat 2.6.32 kernel en is opgelost in Red Hat Enterprise Linux (RHEL) 6,6 (kernel-2.6.32-504). Systemen met aangepaste kernels die ouder zijn dan 2.6.37 of op RHEL gebaseerde kernels die ouder zijn dan 2.6.32-504, moeten `numa=off` de opstart parameter instellen op de kernel-opdracht regel in grub. conf. Zie [Red Hat KB 436883](https://access.redhat.com/solutions/436883)voor meer informatie.
+* Linux-kernel-versies ouder dan 2.6.37 bieden geen ondersteuning voor NUMA op Hyper-V met grotere VM-grootten. Dit probleem heeft voornamelijk betrekking op oudere distributies met behulp van de upstream Red Hat 2.6.32 kernel en is opgelost in Red Hat Enterprise Linux (RHEL) 6,6 (kernel-2.6.32-504). Systemen met aangepaste kernels die ouder zijn dan 2.6.37 of op RHEL gebaseerde kernels die ouder zijn dan 2.6.32-504, moeten de opstart parameter `numa=off` instellen op de kernel-opdracht regel in grub. conf. Zie [Red Hat KB 436883](https://access.redhat.com/solutions/436883)voor meer informatie.
 * Configureer geen swap partitie op de besturingssysteem schijf. De Linux-agent kan worden geconfigureerd voor het maken van een wissel bestand op de tijdelijke bron schijf, zoals wordt beschreven in de volgende stappen.
 * Alle Vhd's op Azure moeten een virtuele grootte hebben die is afgestemd op 1 MB. Wanneer u van een onbewerkte schijf naar VHD converteert, moet u ervoor zorgen dat de onbewerkte schijf grootte een meervoud van 1 MB vóór de conversie is, zoals wordt beschreven in de volgende stappen.
 
 ### <a name="installing-kernel-modules-without-hyper-v"></a>Kernel-modules installeren zonder Hyper-V
-Azure wordt uitgevoerd op de Hyper-V-Hyper Visor, daarom vereist Linux bepaalde kernel-modules om uit te voeren in Azure. Als u een virtuele machine hebt die buiten Hyper-V is gemaakt, bevatten de Linux-installatie Programma's mogelijk niet de drivers voor Hyper-V in de oorspronkelijke ramdisk (initrd of initramfs), tenzij de virtuele machine detecteert dat deze wordt uitgevoerd op een Hyper-V-omgeving. Wanneer u een ander virtualisatie systeem (zoals VirtualBox, KVM, enzovoort) gebruikt om de Linux-installatie kopie voor te bereiden, moet u mogelijk de initrd opnieuw bouwen zodat ten minste de kernel-modules hv_vmbus en hv_storvsc beschikbaar zijn op de eerste ramdisk.  Dit bekende probleem doet zich voor op systemen die zijn gebaseerd op de upstream-implementatie van Red Hat en mogelijk andere.
+Azure wordt uitgevoerd op de Hyper-V-Hyper Visor, daarom vereist Linux bepaalde kernel-modules om uit te voeren in Azure. Als u een virtuele machine hebt die buiten Hyper-V is gemaakt, bevatten de Linux-installatie Programma's mogelijk niet de drivers voor Hyper-V in de oorspronkelijke ramdisk (initrd of initramfs), tenzij de virtuele machine detecteert dat deze wordt uitgevoerd op een Hyper-V-omgeving. Wanneer u een ander virtualisatie systeem (zoals VirtualBox, KVM, enzovoort) gebruikt om de Linux-installatie kopie voor te bereiden, moet u mogelijk de initrd opnieuw bouwen zodat ten minste de hv_vmbus en hv_storvsc kernel-modules beschikbaar zijn op de eerste ramdisk.  Dit bekende probleem doet zich voor op systemen die zijn gebaseerd op de upstream-implementatie van Red Hat en mogelijk andere.
 
-Het mechanisme voor het opnieuw samen stellen van de initrd-of initramfs-installatie kopie kan variëren, afhankelijk van de verdeling. Raadpleeg de documentatie of ondersteuning van uw distributie voor de juiste procedure.  Hier volgt een voor beeld voor het opnieuw samen stellen van de `mkinitrd` initrd met het hulp programma:
+Het mechanisme voor het opnieuw samen stellen van de initrd-of initramfs-installatie kopie kan variëren, afhankelijk van de verdeling. Raadpleeg de documentatie of ondersteuning van uw distributie voor de juiste procedure.  Hier volgt een voor beeld voor het opnieuw samen stellen van de initrd met behulp van het `mkinitrd`-hulp programma:
 
 1. Maak een back-up van de bestaande initrd-installatie kopie:
 
@@ -64,7 +63,7 @@ Het mechanisme voor het opnieuw samen stellen van de initrd-of initramfs-install
     sudo cp initrd-`uname -r`.img  initrd-`uname -r`.img.bak
     ```
 
-2. Bouw de initrd opnieuw met de hv_vmbus-en hv_storvsc-kernel-modules:
+2. Bouw de initrd opnieuw met de hv_vmbus en hv_storvsc kernel-modules:
 
     ```
     sudo mkinitrd --preload=hv_storvsc --preload=hv_vmbus -v -f initrd-`uname -r`.img `uname -r`
@@ -75,19 +74,19 @@ VHD-installatie kopieën in azure moeten een virtuele grootte hebben die is afge
 
 * De VHD http:\//\<mystorageaccount >. blob. core. Windows. net/vhd's/MyLinuxVM. VHD heeft een niet-ondersteunde virtuele grootte van 21475270656 bytes. De grootte moet een geheel getal zijn (in MB).
 
-In dit geval kunt u de grootte van de virtuele machine wijzigen met de Hyper-V-beheer console of met de Power shell [-cmdlet resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) .  Als u niet in een Windows-omgeving wordt uitgevoerd, raden `qemu-img` we u aan om (indien nodig) te converteren en de grootte van de VHD te wijzigen.
+In dit geval kunt u de grootte van de virtuele machine wijzigen met de Hyper-V-beheer console of met de Power shell [-cmdlet resize-VHD](https://technet.microsoft.com/library/hh848535.aspx) .  Als u niet in een Windows-omgeving wordt uitgevoerd, raden we u aan `qemu-img` te converteren (indien nodig) en de grootte van de VHD te wijzigen.
 
 > [!NOTE]
-> Er is een [bekende fout in qemu-img-](https://bugs.launchpad.net/qemu/+bug/1490611) versies > = 2.2.1 dat resulteert in een VHD met een onjuiste indeling. Het probleem is opgelost in QEMU 2,6. We raden u aan `qemu-img` om 2.2.0 of lager of 2,6 of hoger te gebruiken.
+> Er is een [bekende fout in qemu-img-](https://bugs.launchpad.net/qemu/+bug/1490611) versies > = 2.2.1 dat resulteert in een VHD met een onjuiste indeling. Het probleem is opgelost in QEMU 2,6. We raden u aan om `qemu-img` 2.2.0 of lager of 2,6 of hoger te gebruiken.
 > 
 
-1. Het formaat van de VHD rechtstreeks wijzigen met behulp `vbox-manage` van hulpprogram ma's zoals `qemu-img` of kan leiden tot een niet-opstartbaar VHD.  U wordt aangeraden eerst de VHD te converteren naar een onbewerkte schijf installatie kopie.  Als de VM-installatie kopie is gemaakt als een onbewerkte schijf installatie kopie (de standaard instelling voor sommige Hyper visors zoals KVM), kunt u deze stap overs Laan.
+1. Als u de grootte van de VHD rechtstreeks wijzigt met hulpprogram ma's als `qemu-img` of `vbox-manage` kan dit leiden tot een VHD die niet kan worden opgestart.  U wordt aangeraden eerst de VHD te converteren naar een onbewerkte schijf installatie kopie.  Als de VM-installatie kopie is gemaakt als een onbewerkte schijf installatie kopie (de standaard instelling voor sommige Hyper visors zoals KVM), kunt u deze stap overs Laan.
  
     ```
     qemu-img convert -f vpc -O raw MyLinuxVM.vhd MyLinuxVM.raw
     ```
 
-1. Bereken de vereiste grootte van de schijf installatie kopie zodat de virtuele grootte wordt uitgelijnd op 1 MB.  Het volgende bash-shell script `qemu-img info` gebruikt om de virtuele grootte van de schijf installatie kopie te bepalen, waarna de grootte wordt berekend op de volgende 1 MB.
+1. Bereken de vereiste grootte van de schijf installatie kopie zodat de virtuele grootte wordt uitgelijnd op 1 MB.  Het volgende bash shell-script maakt gebruik van `qemu-img info` om de virtuele grootte van de schijf installatie kopie te bepalen en berekent de grootte vervolgens naar de volgende 1 MB.
 
     ```bash
     rawdisk="MyLinuxVM.raw"
@@ -102,7 +101,7 @@ In dit geval kunt u de grootte van de virtuele machine wijzigen met de Hyper-V-b
     echo "Rounded Size = $rounded_size"
     ```
 
-3. Wijzig de grootte van de `$rounded_size` onbewerkte schijf met de bovenstaande set.
+3. Wijzig de grootte van de onbewerkte schijf met `$rounded_size` zoals hierboven is ingesteld.
 
     ```bash
     qemu-img resize MyLinuxVM.raw $rounded_size
@@ -114,7 +113,7 @@ In dit geval kunt u de grootte van de virtuele machine wijzigen met de Hyper-V-b
     qemu-img convert -f raw -o subformat=fixed -O vpc MyLinuxVM.raw MyLinuxVM.vhd
     ```
 
-   Of, met qemu versie 2.6 +, ook de `force_size` optie.
+   Of, met qemu versie 2.6 +, ook de optie `force_size`.
 
     ```bash
     qemu-img convert -f raw -o subformat=fixed,force_size -O vpc MyLinuxVM.raw MyLinuxVM.vhd
@@ -126,7 +125,7 @@ De LIS-Stuur programma's (Linux Integration Services) voor Hyper-V en Azure zijn
 
 Als u een variant van Red Hat Enterprise Linux versie 6,0 tot 6,3 uitvoert, moet u de [meest recente Lis-Stuur Programma's voor Hyper-V](https://go.microsoft.com/fwlink/p/?LinkID=254263&clcid=0x409)installeren. Vanaf RHEL 6.4 + (en derivaten) zijn de LIS-Stuur Programma's al opgenomen in de kernel en zijn er geen aanvullende installatie pakketten nodig.
 
-Als een aangepaste kernel vereist is, raden we u aan een recente kernel-versie (zoals 3.8 +) te vinden. Voor distributies of leveranciers die hun eigen kernel onderhouden, moet u regel matig de LIS-Stuur Programma's van de upstream-kernel naar uw aangepaste kernel backport.  Zelfs als u al een relatief recente kernel-versie uitvoert, raden wij u ten zeerste aan om eventuele upstream-oplossingen in de LIS-Stuur Programma's bij te houden en ze zo nodig te backport. De locaties van de bron bestanden van het LIS-stuur programma [](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS) zijn opgegeven in het bestand maintainers in de bron structuur van de Linux-kernel:
+Als een aangepaste kernel vereist is, raden we u aan een recente kernel-versie (zoals 3.8 +) te vinden. Voor distributies of leveranciers die hun eigen kernel onderhouden, moet u regel matig de LIS-Stuur Programma's van de upstream-kernel naar uw aangepaste kernel backport.  Zelfs als u al een relatief recente kernel-versie uitvoert, raden wij u ten zeerste aan om eventuele upstream-oplossingen in de LIS-Stuur Programma's bij te houden en ze zo nodig te backport. De locaties van de bron bestanden van het LIS-stuur programma zijn opgegeven in het bestand [Maintainers](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/MAINTAINERS) in de bron structuur van de Linux-kernel:
 ```
     F:    arch/x86/include/asm/mshyperv.h
     F:    arch/x86/include/uapi/asm/hyperv.h
@@ -142,16 +141,16 @@ Als een aangepaste kernel vereist is, raden we u aan een recente kernel-versie (
 ```
 De volgende patches moeten zijn opgenomen in de kernel. Deze lijst kan niet worden voltooid voor alle distributies.
 
-* [ata_piix: standaard schijven uitstellen naar de Hyper-V-Stuur Programma's](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/ata/ata_piix.c?id=cd006086fa5d91414d8ff9ff2b78fbb593878e3c)
-* [storvsc Account voor in-transit pakketten in het pad opnieuw instellen](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
+* [ata_piix: schijven standaard uitstellen naar de Hyper-V-Stuur Programma's](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/ata/ata_piix.c?id=cd006086fa5d91414d8ff9ff2b78fbb593878e3c)
+* [storvsc: account voor in-transit pakketten in het pad opnieuw instellen](https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/drivers/scsi/storvsc_drv.c?id=5c1b10ab7f93d24f29b5630286e323d1c5802d5c)
 * [storvsc: Vermijd het gebruik van WRITE_SAME](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=3e8f4f4065901c8dfc51407e1984495e1748c090)
-* [storvsc Schrijf bewerkingen ook uitschakelen voor RAID-en Virtual Host-adapter Stuur Programma's](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
-* [storvsc Verwijzing naar NULL-pointer](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
+* [storvsc: WRITE zelfde uitschakelen voor RAID-en Virtual Host-adapter Stuur Programma's](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=54b2b50c20a61b51199bedb6e5d2f8ec2568fb43)
+* [storvsc: NULL-verwijzings oplossing voor pointer](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=b12bb60d6c350b348a4e1460cd68f97ccae9822e)
 * [storvsc: storingen in ring buffers kunnen resulteren in I/O-blok kering](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/storvsc_drv.c?id=e86fb5e8ab95f10ec5f2e9430119d5d35020c951)
 * [scsi_sysfs: beveiligen tegen dubbele uitvoering van __scsi_remove_device](https://git.kernel.org/cgit/linux/kernel/git/next/linux-next.git/commit/drivers/scsi/scsi_sysfs.c?id=be821fd8e62765de43cc4f0e2db363d0e30a7e9b)
 
 ## <a name="the-azure-linux-agent"></a>De Azure Linux-agent
-De [Azure Linux-agent](../extensions/agent-linux.md) `waagent` richt zich op een virtuele Linux-machine in Azure. U kunt de meest recente versie, bestands problemen of pull-aanvragen indienen via de [Linux-agent github opslag plaats](https://github.com/Azure/WALinuxAgent).
+De [Azure Linux Agent](../extensions/agent-linux.md) `waagent` richt zich op een virtuele Linux-machine in Azure. U kunt de meest recente versie, bestands problemen of pull-aanvragen indienen via de [Linux-agent github opslag plaats](https://github.com/Azure/WALinuxAgent).
 
 * De Linux-agent wordt uitgebracht onder de Apache 2,0-licentie. Veel distributies leveren al RPM-of deb-pakketten voor de agent, en deze pakketten kunnen eenvoudig worden geïnstalleerd en bijgewerkt.
 * De Azure Linux-agent vereist python v 2.6 +.
@@ -169,7 +168,7 @@ De [Azure Linux-agent](../extensions/agent-linux.md) `waagent` richt zich op een
     ```  
     rhgb quiet crashkernel=auto
     ```
-    Grafisch en stil opstarten zijn niet nuttig in een cloud omgeving, waar we alle logboeken willen verzenden naar de seriële poort. De `crashkernel` optie kan indien nodig worden geconfigureerd, maar houd er rekening mee dat deze para meter de hoeveelheid beschikbaar geheugen in de virtuele machine met ten minste 128 MB reduceert. Dit kan problemen opleveren voor kleinere VM-grootten.
+    Grafisch en stil opstarten zijn niet nuttig in een cloud omgeving, waar we alle logboeken willen verzenden naar de seriële poort. De optie `crashkernel` kan zo nodig worden geconfigureerd, maar houd er rekening mee dat deze para meter de hoeveelheid beschikbaar geheugen in de virtuele machine met ten minste 128 MB reduceert. Dit kan problemen opleveren voor kleinere VM-grootten.
 
 1. Installeer de Azure Linux-agent.
   
@@ -195,7 +194,7 @@ De [Azure Linux-agent](../extensions/agent-linux.md) `waagent` richt zich op een
      logout
      ```  
    > [!NOTE]
-   > Op VirtualBox ziet u mogelijk de volgende fout na het `waagent -force -deprovision` uitvoeren van `[Errno 5] Input/output error`de tekst. Dit fout bericht is niet kritiek en kan worden genegeerd.
+   > Op VirtualBox ziet u mogelijk de volgende fout na het uitvoeren van `waagent -force -deprovision` met de tekst `[Errno 5] Input/output error`. Dit fout bericht is niet kritiek en kan worden genegeerd.
 
 * Sluit de virtuele machine af en upload de VHD naar Azure.
 

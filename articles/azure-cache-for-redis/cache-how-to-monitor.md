@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 73e1e3bfbc84e6264897d571fca1bf31061d7ab6
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 9e829c7d3756599cc80f35187bd743ce798cecda
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122750"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750053"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Azure-cache bewaken voor redis
 Azure cache voor redis maakt gebruik van [Azure monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) om verschillende opties te bieden voor het bewaken van uw cache-exemplaren. U kunt metrische gegevens weer geven, metrische grafieken vastmaken aan het start Board, het datum-en tijds bereik van bewakings grafieken aanpassen, metrische gegevens aan de grafieken toevoegen en verwijderen, en waarschuwingen instellen wanneer aan bepaalde voor waarden wordt voldaan. Met deze hulpprogram ma's kunt u de status van uw Azure-cache bewaken voor redis-instanties en helpt u bij het beheren van uw cache toepassingen.
@@ -103,7 +103,7 @@ Elke metriek bevat twee versies. Eén meet waarde meet de prestaties voor de vol
 | Methode |Het aantal Get-bewerkingen uit de cache tijdens het opgegeven rapportage-interval. Deze waarde is de som van de volgende waarden in de redis INFO-opdracht: `cmdstat_get`, `cmdstat_hget`, `cmdstat_hgetall`, `cmdstat_hmget`, `cmdstat_mget`, `cmdstat_getbit`en `cmdstat_getrange`, en is gelijk aan de som van cache treffers en missers tijdens het rapportage-interval. |
 | Bewerkingen per seconde | Het totale aantal opdrachten dat per seconde door de cache server is verwerkt tijdens het opgegeven rapportage-interval.  Deze waarde wordt toegewezen aan instantaneous_ops_per_sec van de opdracht redis INFO. |
 | Redis-server belasting |Het percentage cycli waarin de redis-server bezig is met verwerken en niet in afwachting van berichten die niet actief zijn. Als dit item 100 is, betekent dit dat de redis-server een prestatie plafond heeft bereikt en de CPU niet sneller kan werken. Als u hoge redis-server belasting ziet, ziet u time-outuitzonderingen in de client. In dit geval moet u overwegen om uw gegevens naar meerdere caches te schalen of te partitioneren. |
-| Groepen |Het aantal ingestelde bewerkingen voor de cache tijdens het opgegeven rapportage-interval. Deze waarde is de som van de volgende waarden in de redis INFO-opdracht: `cmdstat_set`, `cmdstat_hset`, `cmdstat_hmset`, `cmdstat_hsetnx`, `cmdstat_lset`, `cmdstat_mset`, `cmdstat_msetnx`, `cmdstat_setbit`, `cmdstat_setex`, `cmdstat_setrange`en `cmdstat_setnx`. |
+| Sets |Het aantal ingestelde bewerkingen voor de cache tijdens het opgegeven rapportage-interval. Deze waarde is de som van de volgende waarden in de redis INFO-opdracht: `cmdstat_set`, `cmdstat_hset`, `cmdstat_hmset`, `cmdstat_hsetnx`, `cmdstat_lset`, `cmdstat_mset`, `cmdstat_msetnx`, `cmdstat_setbit`, `cmdstat_setex`, `cmdstat_setrange`en `cmdstat_setnx`. |
 | Totaal aantal sleutels  | Het maximum aantal sleutels in de cache gedurende de laatste rapportage periode. Hiermee wordt toegewezen aan `keyspace` uit de opdracht redis INFO. Als gevolg van een beperking van het onderliggende systeem voor metrische gegevens, voor caches waarvoor Clustering is ingeschakeld, retourneert Total Keys het maximum aantal sleutels van de Shard dat het maximum aantal sleutels tijdens het rapportage-interval heeft.  |
 | Totaal aantal bewerkingen |Het totale aantal opdrachten dat door de cache server is verwerkt tijdens het opgegeven rapportage-interval. Deze waarde wordt toegewezen aan `total_commands_processed` uit de opdracht redis INFO. Houd er rekening mee dat wanneer Azure cache voor redis alleen wordt gebruikt voor pub/sub, er geen metrische gegevens zijn voor `Cache Hits`, `Cache Misses`, `Gets`of `Sets`, maar er zijn `Total Operations` metrische gegevens die het cache gebruik voor pub/sub-bewerkingen weer spie gelen. |
 | Gebruikt geheugen |De hoeveelheid cache geheugen die wordt gebruikt voor sleutel/waarde-paren in de cache in MB tijdens het opgegeven rapportage-interval. Deze waarde wordt toegewezen aan `used_memory` uit de opdracht redis INFO. Dit omvat geen meta gegevens of fragmentatie. |
@@ -134,7 +134,7 @@ Activiteiten logboeken bieden inzicht in de bewerkingen die zijn uitgevoerd op u
 
 Als u activiteiten logboeken voor uw cache wilt weer geven, klikt u op **activiteiten logboeken** in het **menu resource**.
 
-Zie [overzicht van het Azure-activiteiten logboek](../azure-monitor/platform/activity-logs-overview.md)voor meer informatie over activiteiten Logboeken.
+Zie [overzicht van het Azure-activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie over activiteiten Logboeken.
 
 
 

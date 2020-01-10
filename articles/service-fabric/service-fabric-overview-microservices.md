@@ -1,209 +1,199 @@
 ---
-title: Inleiding tot microservices in Azure | Microsoft Docs
-description: Een overzicht van waarom het bouwen van cloudtoepassingen met een microservices-benadering is belangrijk voor het ontwikkelen van moderne toepassing en hoe Azure Service Fabric biedt een platform om dit te bereiken.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: fae2be85-0ab4-4cd3-9d1f-e0d95fe1959b
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Inleiding tot micro Services op Azure
+description: Een overzicht van het bouwen van Cloud toepassingen met een micro Services-benadering is belang rijk voor het ontwikkelen van moderne toepassingen en hoe Azure Service Fabric een platform biedt om dit te bereiken.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 06/18/2019
-ms.author: atsenthi
-ms.openlocfilehash: 5bcb52165c7cae18b807eff03c80b51eae8e2717
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.date: 01/07/2020
+ms.custom: sfrev
+ms.openlocfilehash: af18a6cb45808c0af5ec2782a3fd2100e3b7bf99
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67204796"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75750629"
 ---
-# <a name="why-use-a-microservices-approach-to-building-applications"></a>Waarom een microservices-benadering voor het bouwen van toepassingen gebruiken?
+# <a name="why-use-a-microservices-approach-to-building-applications"></a>Waarom een micro Services-benadering gebruiken voor het ontwikkelen van toepassingen
 
-Voor software-ontwikkelaars is waarbij u rekening houdt een toepassing in onderdelen niets nieuwe. Normaal gesproken een gelaagde benadering wordt gebruikt, met een back-end-store, bedrijfslogica middelste laag en een front-end-gebruikersinterface (UI). Wat *heeft* gewijzigd in de afgelopen jaren is dat ontwikkelaars zijn worden gebruikt voor het bouwen van gedistribueerde toepassingen voor de cloud.
+Voor software ontwikkelaars is het samen stellen van een toepassing in onderdeel onderdelen niets nieuw. Normaal gesp roken wordt een gelaagde benadering gebruikt, met een back-end-opslag, bedrijfs logica op middelste laag en een front-end gebruikers interface (UI). Wat in de afgelopen *jaren is gewijzigd* , is dat ontwikkel aars gedistribueerde toepassingen bouwen voor de Cloud.
 
-Hier volgen enkele wisselende bedrijfsbehoeften van uw:
+Hier volgen enkele veranderende bedrijfs behoeften:
 
-* Een service die is gebouwd op schaal om klanten in nieuwe geografische regio's te bereiken.
-* Snellere levering van functies en mogelijkheden om te reageren op verzoeken van klanten op flexibele wijze inzetten.
-* Verbeterde Resourcegebruik om kosten te verlagen.
+* Een service die op schaal wordt gebouwd en bediend om klanten in nieuwe geografische regio's te bereiken.
+* Een snellere levering van functies en mogelijkheden om op een flexibele manier op de vraag van klanten te reageren.
+* Verbeterd resource gebruik om de kosten te verlagen.
 
-Deze behoeften van uw bedrijf van invloed zijn op *hoe* we bij het bouwen van toepassingen.
+Deze zakelijke behoeften zijn van invloed op de *manier waarop* we toepassingen bouwen.
 
-Zie voor meer informatie over de Azure-benadering tot microservices [Microservices: Een toepassing revolution mogelijk gemaakt door de cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/).
+Zie micro [Services: een Application revolutie die wordt ondersteund door de Cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)voor meer informatie over de Azure-benadering van micro Services.
 
-## <a name="monolithic-vs-microservices-design-approach"></a>Monolithische versus benadering van microservices ontwerpen
+## <a name="monolithic-vs-microservices-design-approach"></a>Monolithische versus ontwerp benadering van micro Services
 
-Toepassingen loop der tijd veranderen. Succesvolle toepassingen veranderen door handig voor gebruikers. Mislukte toepassingen niet veranderen en uiteindelijk zijn afgeschaft. De vraag als volgt: hoeveel wist u dat u over de vereisten voor vandaag en wat ze zijn in de toekomst? Stel dat u het bouwen van een reporting-toepassing voor een afdeling in uw bedrijf. U kunt ervoor dat de toepassing is van toepassing alleen binnen het bereik van uw bedrijf en dat de rapporten lang wordt niet bijgehouden. Uw benadering die afwijkt van, zeg, video-inhoud bouwen van een service die voorziet in tientallen miljoenen klanten.
+Toepassingen ontwikkelen in de loop van de tijd. Succes volle toepassingen ontwikkelen door nuttig te zijn voor mensen. Niet-geslaagde toepassingen worden niet verder ontwikkeld en zijn uiteindelijk afgeschaft. Dit is de vraag: hoeveel weet u vandaag nog over uw vereisten en wat ze in de toekomst zullen blijven? Stel bijvoorbeeld dat u een rapportage toepassing bouwt voor een afdeling in uw bedrijf. U zeker weet dat de toepassing alleen van toepassing is binnen het bereik van uw bedrijf en dat de rapporten niet lang worden bewaard. Uw aanpak wijkt af van het maken van een service die video-inhoud levert aan tien tallen miljoenen klanten.
 
-Iets uit de deur aan als een bewijs van concept is soms de sparen factor. U weet dat de aanvraag later opnieuw kan worden ontworpen. Er is weinig punt in iets te veel engineering die nooit wordt gebruikt. Wanneer bedrijven voor de cloud bouwt, is de verwachting dat aan de andere kant groei en het gebruik. Groei en de schaal zijn onvoorspelbaar. We willen prototype snel terwijl u ook weten dat de bewerking op een pad dat toekomstig succes kan verwerken. Dit is de methode lean opstarten: bouwen, meten, leren en herhalen.
+Soms is het verkrijgen van iets uit de deur als een test van het concept de aandrijf factor. U weet dat de toepassing later opnieuw kan worden ontworpen. Er is een beetje meer punten in over-engineering iets dat nooit wordt gebruikt. Aan de andere kant, wanneer bedrijven voor de Cloud bouwen, is de verwachte groei en het gebruik. Groei en schaal zijn onvoorspelbaar. We willen snel prototypen bouwen en weten dat we een pad hebben dat toekomstige succes kan afhandelen. Dit is de Lean Startup-benadering: bouwen, meten, leren en herhalen.
 
-Tijdens het tijdperk client/server doorgaans we richten op het gelaagde toepassingen bouwen met behulp van specifieke technologieën in elke laag. De term *monolithische* toepassing geworden om te beschrijven van deze methoden. De interfaces uitbreiden moet tussen de lagen en ontwerp voor een meer nauw gekoppelde tussen onderdelen binnen elke laag is gebruikt. Ontwikkelaars die zijn ontworpen en rekening gehouden met klassen die zijn gecompileerd in bibliotheken en aan elkaar gekoppeld in een paar uitvoerbare bestanden en .dll-bestanden.
+Tijdens de client-en server vormgeving zullen we zich richten op het bouwen van gelaagde toepassingen door gebruik te maken van specifieke technologieën in elke laag. De term *monolithische* toepassing is opgetreden om deze benaderingen te beschrijven. De interfaces bevinden zich tussen de lagen en een nauw keurig gekoppeld ontwerp tussen onderdelen van elke laag wordt gebruikt. Ontwikkel aars die zijn ontworpen en gefactord klassen die in bibliotheken zijn gecompileerd en samen met een paar uitvoer bare bestanden en Dll's zijn gekoppeld.
 
-Er zijn voordelen van een monolithisch ontwerp-benadering. Monolithische toepassingen zijn vaak eenvoudiger te ontwerpen en aanroepen tussen onderdelen zijn sneller, omdat deze aanroepen vaak via interprocess communication (IPC zijn). Bovendien iedereen één enkel product, doorgaans een efficiënter gebruik van human resources worden gecontroleerd. Het nadeel is dat er een hechte koppeling tussen de lagen van gelaagde, en u afzonderlijke componenten niet schalen. Als u wilt de fixes of upgrades worden uitgevoerd, moet u wachten op anderen tests voltooid. Het is moeilijker flexibel zijn.
+Er zijn voor delen voor een monolithische-ontwerp benadering. Monolithische-toepassingen zijn vaak eenvoudiger te ontwerpen en aanroepen tussen onderdelen zijn sneller omdat deze aanroepen vaak via de communicatie tussen interprocess (IPC) zijn. Daarnaast test iedereen één product, dat een efficiëntere manier is om human resources te gebruiken. Het nadeel is dat er sprake is van een nauwe koppeling tussen gelaagde lagen en u geen afzonderlijke onderdelen kunt schalen. Als u oplossingen of upgrades wilt uitvoeren, moet u wachten tot anderen hun tests hebben voltooid. Het is moeilijker om flexibel te zijn.
 
-Microservices los deze aantal nadelen en meer nauw zijn afgestemd op de voorgaande zakelijke vereisten. Maar ze kunnen zowel de voordelen en de verplichtingen. De voordelen van microservices zijn dat elke doorgaans ingekapseld eenvoudiger bedrijfsfunctionaliteit, die u kunt omhoog of omlaag schalen, testen, implementeren en afzonderlijk beheren. Een belangrijk voordeel van een microservices-benadering is dat teams meer bedrijfsscenario's dan worden aangestuurd door de technologie. Kleinere teams ontwikkelen van een microservice op basis van een klant-scenario en gebruik van een technologie die ze willen gebruiken.
+Micro Services is gericht op deze nauw keurigheid en is beter in overeenstemming met de voor gaande zakelijke vereisten. Maar ze hebben ook beide voor delen en passiva. De voor delen van micro Services zijn dat elk van beide doorgaans eenvoudiger bedrijfs functionaliteit inkapselt, die u kunt omhoog of omlaag schalen, testen, implementeren en beheren. Een belang rijk voor deel van een micro Services-benadering is dat teams meer worden aangedreven door bedrijfs scenario's dan met technologie. Kleinere teams ontwikkelen een micro service op basis van een klant scenario en gebruiken alle technologieën die ze willen gebruiken.
 
-Met andere woorden, hoeft de organisatie te standaardiseren tech om bij te houden van microservice-toepassingen. Afzonderlijke teams die eigen services doen kunnen wat zinvol voor hen op basis van team kennis of wat is het meest geschikt is om het probleem te verhelpen. In de praktijk moet een set van aanbevolen-technologieën, zoals een bepaald NoSQL-archief of framework voor webtoepassingen, is het beter.
+Met andere woorden, de organisatie hoeft geen technische voor het onderhoud van micro service-toepassingen te standaardiseren. Individuele teams die eigen services kunnen doen, zijn afhankelijk van de team expertise of wat het meest geschikt is om het probleem op te lossen. In de praktijk verdient een aantal aanbevolen technologieën, zoals een bepaald NoSQL-archief of Web Application Framework, de voor keur.
 
-Het nadeel van microservices is dat u moet meer afzonderlijke entiteiten beheren en omgaan met complexere implementaties en versiebeheer. Netwerkverkeer tussen de microservices toeneemt, net als de bijbehorende netwerklatenties. Veel van intensieve, gespecialiseerde services kunnen leiden tot een nachtmerrie prestaties. Zonder hulpmiddelen waarmee u kunt de afhankelijkheden bekijken, is het moeilijk te zien van het gehele systeem.
+Het nadeel van micro Services is dat u meer afzonderlijke entiteiten moet beheren en met complexere implementaties en versie beheer kunt werken. Netwerk verkeer tussen de micro Services neemt toe, evenals de bijbehorende netwerk latentie. Veel intensieve, granulaire Services kunnen leiden tot een prestatie Nightmare. Zonder hulp middelen die u helpen bij het weer geven van deze afhankelijkheden, is het moeilijk om het hele systeem te zien.
 
-Standaarden maken de microservices-benadering werken door te geven hoe om te communiceren en tolerating alleen de dingen die u een service moet in plaats van Star contracten. Het is belangrijk voor het definiëren van deze opdrachten een in het ontwerp omdat services onafhankelijk van elkaar werken. Een andere beschrijving lang geleden bedacht voor het ontwerpen met een microservices-benadering is "fijnmazig service oriented architecture (SOA)."
+Standaarden zorgen ervoor dat de micro Services aanpakt door op te geven hoe alleen de dingen die u nodig hebt van een service te communiceren en te verdragen, in plaats van in stijve contracten. Het is belang rijk dat u deze contracten vooraf in het ontwerp definieert omdat de services onafhankelijk van elkaar worden bijgewerkt. Een andere beschrijving die is gemunt voor het ontwerpen van een micro Services-benadering is ' verfijnde ' service-georiënteerde architectuur (SOA) '.
 
-***De eenvoudigste, wordt de microservices ontwerpen-aanpak is over een losgekoppelde federation Services met onafhankelijke wijzigingen aan elk en overeengekomen standaarden voor communicatie.***
+***De methode voor het ontwerpen van het micro Services-ontwerp is in het eenvoudigst gebaseerd op een losgekoppelde Federatie van services, met onafhankelijke wijzigingen aan elke en overeengekomen standaarden voor communicatie.***
 
-Als meer cloudtoepassingen worden geproduceerd, hebben mensen gedetecteerd dat deze ontleding van de algemene toepassing in onafhankelijke, zeer sterk gericht op scenario services een beter op de lange termijn benadering is.
+Naarmate er meer Cloud toepassingen worden geproduceerd, hebben mensen ontdekt dat deze ontleding van de algehele toepassing in onafhankelijke, op scenario's gerichte Services, een betere lange termijn benadering is.
 
-## <a name="comparison-between-application-development-approaches"></a>Vergelijking van de ontwikkeling van toepassingen nadert
+## <a name="comparison-between-application-development-approaches"></a>Vergelijking tussen methoden voor het ontwikkelen van toepassingen
 
-![Toepassingsontwikkeling voor service Fabric-platform][Image1]
+![Ontwikkeling van platform toepassingen Service Fabric][Image1]
 
-1) Een monolithische toepassing bevat domeinspecifieke functionaliteit en normaal gesproken is onderverdeeld in functionele lagen, zoals web-, bedrijfs- en gegevens.
+1) Een monolithische-toepassing bevat domein-specifieke functionaliteit en is doorgaans onderverdeeld in functionele lagen zoals web, Business en data.
 
-2) U een monolithische toepassing schalen door deze te klonen op meerdere servers/virtuele machines/containers.
+2) U kunt een monolithische-toepassing schalen door deze te klonen op meerdere servers/virtuele machines/containers.
 
-3) Een microservice-toepassingen gescheiden functionaliteit in afzonderlijke, kleinere services.
+3) Een micro service-toepassing scheidt functionaliteit in afzonderlijke, kleinere Services.
 
-4) De microservices-benadering schalen uit door het implementeren van elke service onafhankelijk van elkaar, exemplaren van deze services te maken over servers/virtuele machines/containers.
+4) De micro Services-benadering wordt uitgeschaald door elke service afzonderlijk te implementeren, waarbij instanties van deze services worden gemaakt op servers/virtuele machines/containers.
 
-Ontwerpen met een microservices benadering is geschikt voor alle projecten, maar deze beter aansluiten uitgelijnd met de zakelijke doelstellingen die eerder zijn beschreven. Beginnen met een monolithische aanpak kan zinvol zijn als u weet dat u hebt de mogelijkheid om de code later bijwerken naar een microservice-ontwerp. Meer over het algemeen u beginnen met een monolithische toepassing en langzaam splits deze in fasen, beginnen met het functionele aspecten die moeten worden schaalbare of meer flexibele.
+Ontwerpen met een micro Services-benadering is niet geschikt voor alle projecten, maar wordt nauw keuriger uitgelijnd met de bedrijfs doelstellingen die eerder zijn beschreven. Beginnen met een monolithische-benadering kan zinvol zijn als u weet dat u de mogelijkheid hebt om de code later te bewerken in een micro Services-ontwerp. U begint meestal met een monolithische-toepassing en verbreekt deze langzaam in fasen, beginnend met de functionele gebieden die meer schaalbaar of flexibel moeten zijn.
 
-Wanneer u een microservices-benadering gebruikt, kunt u uw toepassing van veel kleine services samenstellen. Services in containers die zijn geïmplementeerd in een computercluster worden uitgevoerd. Kleinere teams ontwikkelen van een service die is gericht op een scenario en onafhankelijk van elkaar, versie testen, implementeren en schalen van elke service, zodat de gehele toepassing kunt ontwikkelen.
+Wanneer u gebruikmaakt van een micro Services-benadering, stelt u uw toepassing van veel kleine Services samen. Deze services worden uitgevoerd in containers die worden geïmplementeerd op een cluster van machines. Kleinere teams ontwikkelen een service die gericht is op een scenario en onafhankelijk test, versie, implementatie en schaal van elke service, zodat de gehele toepassing kan worden ontwikkeld.
 
 ## <a name="what-is-a-microservice"></a>Wat is een microservice?
 
-Er zijn verschillende definities van microservices. Maar de meeste van deze kenmerken van microservices breed worden geaccepteerd:
+Er zijn verschillende definities van micro Services. Maar de meeste van deze kenmerken van micro Services zijn algemeen geaccepteerd:
 
-* Een klant of scenario bevatten. Wat is er aan de probleemoplossing?
-* Ontwikkeld door een kleine IT-team.
-* Geschreven in elke programmeertaal, met een willekeurig framework.
-* Bestaan uit code, en (optioneel) de status, die beide onafhankelijke versies zijn, geïmplementeerd en geschaald.
-* Communiceren met andere microservices via goed gedefinieerde interfaces en protocollen.
-* Unieke namen hebben (URL's) die worden gebruikt voor het omzetten van hun locatie.
-* Consistente en geval van problemen beschikbaar blijven.
+* Een klant-of bedrijfs scenario inkapselen. Welk probleem verhelpt u?
+* Ontwikkeld door een klein technisch team.
+* Geschreven in elke programmeer taal, met behulp van een Framework.
+* Bestaan uit code en optioneel, waarbij beide afzonderlijk zijn versie, geïmplementeerd en geschaald.
+* Communiceer met andere micro Services via goed gedefinieerde interfaces en protocollen.
+* Hebben unieke namen (Url's) die worden gebruikt om de locatie op te lossen.
+* Blijf consistent en beschikbaar in de aanwezigheid van fouten.
 
-Te totaliseren die:
+U kunt als volgt een som berekenen:
 
-***Microservice-toepassingen worden samengesteld uit kleine, onafhankelijke versies en schaalbare klantgerichte services die met elkaar via standaardprotocollen met goed gedefinieerde interfaces communiceren.***
+***Micro service-toepassingen bestaan uit kleine, onafhankelijke versie gerichte en schaal bare Services op basis van klanten die met elkaar communiceren via standaard protocollen met goed gedefinieerde interfaces.***
 
-### <a name="written-in-any-programming-language-using-any-framework"></a>Die zijn geschreven in elke programmeertaal, met een willekeurig framework
+### <a name="written-in-any-programming-language-using-any-framework"></a>Geschreven in elke programmeer taal, met behulp van een Framework
 
-Ontwikkelaars willen we kiezen een andere taal of framework, afhankelijk van de vaardigheden en wat de behoeften van de service die wordt gemaakt. Voor sommige services kunt u de prestatievoordelen van waarde C++ hierboven iets anders. Voor andere, de gebruiksvriendelijke manier van beheerde ontwikkelen die u via C# of Java mogelijk belangrijker. In sommige gevallen moet u mogelijk gebruik van een specifieke partner-bibliotheek, een technologie voor gegevensopslag of een methode voor de weergave van de service aan clients.
+Als ontwikkel aars willen we gratis een taal of Framework kiezen, afhankelijk van onze vaardig heden en de behoeften van de service die we maken. Voor sommige services kunt u de prestatie voordelen van C++ boven iets anders opwaarderen. Voor anderen is het eenvoudiger om beheerde ontwikkeling te maken die u C# van of Java kunt krijgen. In sommige gevallen moet u mogelijk een specifieke partner bibliotheek, een technologie voor gegevens opslag of een methode gebruiken voor het weer geven van de service aan clients.
 
-Nadat u ervoor een technologie kiest, moet u Houd rekening met de operationele database of de levenscyclus van management en schalen van de service.
+Nadat u een technologie hebt gekozen, moet u rekening houden met het beheer van de operationele of de levens cyclus en het schalen van de service.
 
-### <a name="allows-code-and-state-to-be-independently-versioned-deployed-and-scaled"></a>Kan code en de status onafhankelijke versies, geïmplementeerd en geschaald
+### <a name="allows-code-and-state-to-be-independently-versioned-deployed-and-scaled"></a>Code en status kunnen onafhankelijk van versie worden uitgevoerd, worden geïmplementeerd en geschaald
 
-Ongeacht hoe u uw microservices, de code en (optioneel) de status schrijft, moet onafhankelijk van elkaar implementeren, bijwerken en schalen. Dit probleem is het moeilijk om op te lossen omdat het gaat naar beneden om uw eigen keuze aan technologieën. Voor vergroten/verkleinen, inzicht in hoe u partitie (of shard) zowel de code en de status van de uitdagingen met zich mee. Wanneer de code en de status van verschillende technologieën, dit komt veel voor vandaag, moeten de implementatiescripts voor uw microservices worden ze allebei schalen. Dankzij deze scheiding is ook over de wendbaarheid en flexibiliteit, zodat u enkele van de microservices bijwerken kunt zonder dat ze allemaal in één keer te upgraden.
+Hoe u ook uw micro Services, de code en optioneel de status schrijft, moeten onafhankelijk worden geïmplementeerd, geüpgraded en geschaald. Dit probleem is moeilijk op te lossen, omdat het beschikbaar is voor uw keuze van technologieën. Voor schalen moet u weten hoe u de code partitioneert (of Shard) en dat de status lastig is. Wanneer de code en status gebruikmaken van verschillende technologieën, die tegenwoordig gebruikelijk zijn, moeten de implementatie scripts voor uw micro service beide kunnen worden geschaald. Deze schei ding gaat ook over flexibiliteit en flexibiliteit, zodat u een upgrade kunt uitvoeren van een aantal micro Services zonder dat u deze tegelijk hoeft bij te werken.
 
-We gaan terug naar onze vergelijking van de benaderingen monolithische en microservices voor even de tijd. In dit diagram ziet u de verschillen tussen de methoden voor het opslaan van status:
+We gaan terug naar onze vergelijking van de monolithische-en micro Services-benaderingen. Dit diagram toont de verschillen in de methoden voor het opslaan van de status:
 
-#### <a name="state-storage-for-the-two-approaches"></a>Status van de opslag voor de twee benaderingen
+#### <a name="state-storage-for-the-two-approaches"></a>Status opslag voor de twee benaderingen
 
-![Service Fabric-platform status opslag][Image2]
+![Status opslag van Service Fabric platform][Image2]
 
-***Aan de linkerkant, heeft een individuele database en lagen van specifieke technologieën de monolithische aanpak.***
+***De monolithische-benadering, aan de linkerkant, heeft één data base en lagen van specifieke technologieën.***
 
-***De microservices-benadering en heeft aan de rechterkant, een grafiek met elkaar verbonden microservices waarin staat doorgaans is afgestemd op de microservices en verschillende technologieën worden gebruikt.***
+***De micro Services-aanpak aan de rechter kant heeft een grafiek van onderling verbonden micro services waarbij de status doorgaans van toepassing is op de micro service en verschillende technologieën worden gebruikt.***
 
-De toepassing in een monolithische aanpak gebruikt doorgaans een individuele database. Het voordeel van het gebruik van één database is dat deze zich op één locatie, waardoor het eenvoudig te implementeren. Elk onderdeel kan één tabel voor het opslaan van de status hebben. Teams moeten strikt scheiden staat, die een hele uitdaging. Iemand zijn onvermijdelijk geneigd een kolom toevoegen aan een bestaande klantentabel, een koppeling tussen tabellen en afhankelijkheden maken in de storage-laag. Als dit gebeurt, kunt u afzonderlijke onderdelen kan niet schalen.
+In een monolithische-benadering gebruikt de toepassing meestal een enkele data base. Het voor deel van het gebruik van één data base is dat deze zich op één locatie bevindt. Dit maakt het eenvoudig om te implementeren. Elk onderdeel kan één tabel hebben om de status op te slaan. Teams moeten de status strikt onderscheiden, wat een uitdaging is. Het onvermijdelijk is dat iemand een kolom aan een bestaande klanten tabel toevoegt, een koppeling tussen tabellen doet en afhankelijkheden maakt op de opslaglaag. Als dit gebeurt, kunt u de afzonderlijke onderdelen niet schalen.
 
-In de microservices-benadering, elke service beheert en slaat de eigen staat. Elke service is verantwoordelijk voor het schalen van zowel de code en de status samen om te voldoen aan de eisen van de service. Een nadeel is dat wanneer u nodig hebt om te maken van weergaven of query's van gegevens van uw toepassing, moet u query's uitvoeren voor meerdere archieven van de status. Dit probleem wordt meestal opgelost door een afzonderlijke microservice dat een weergave in een verzameling van microservices. Als u meerdere ad hoc-query's uitvoeren op de gegevens wilt, moet u rekening houden met gegevens van elke microservice schrijven naar een service voor gegevensopslag voor offline analyse.
+In de micro Services-benadering beheert en opslaat elke service zijn eigen status. Elke service is verantwoordelijk voor het schalen van zowel code als status, zodat deze voldoet aan de vereisten van de service. Een nadeel is dat wanneer u weer gaven of query's moet maken van de gegevens van uw toepassing, u een query moet uitvoeren in meerdere status archieven. Dit probleem wordt doorgaans opgelost door een afzonderlijke micro service die een weer gave bouwt over een verzameling micro Services. Als u meerdere niet-geplande query's moet uitvoeren op de gegevens, kunt u overwegen om de gegevens van elke micro service naar een Data Warehouse-service te schrijven voor offline analyse.
 
-Microservices zijn samengesteld. Het is mogelijk voor verschillende versies van een microservice om uit te voeren naast elkaar. Een nieuwere versie van een microservice kan mislukken tijdens een upgrade en moet worden teruggezet naar een eerdere versie. Versiebeheer is ook nuttig voor A / B-tests, waarbij verschillende gebruikers verschillende versies van de service ondervindt. Het is bijvoorbeeld gebruikelijk om te upgraden van een microservice voor een bepaalde set klanten naar de nieuwe functionaliteit testen voordat u veel meer rolling.
+Micro Services hebben een versie nummer. Het is mogelijk dat verschillende versies van een micro service naast elkaar worden uitgevoerd. Een nieuwere versie van een micro service kan mislukken tijdens een upgrade en moet worden teruggedraaid naar een eerdere versie. Versie beheer is ook handig voor het testen van A/B, waarbij verschillende gebruikers verschillende versies van de service ervaren. Het is bijvoorbeeld gebruikelijk om een micro service voor een specifieke set klanten bij te werken om nieuwe functies te testen voordat u deze uitgebreid uitbreidt.
 
-### <a name="interacts-with-other-microservices-over-well-defined-interfaces-and-protocols"></a>Communiceert met andere microservices via goed gedefinieerde interfaces en protocollen
+### <a name="interacts-with-other-microservices-over-well-defined-interfaces-and-protocols"></a>Communiceert met andere micro Services via goed gedefinieerde interfaces en protocollen
 
-In de afgelopen 10 jaar is uitgebreide informatie gepubliceerd met een beschrijving van communicatiepatronen in servicegeoriënteerde architecturen. Over het algemeen servicecommunicatie een REST-benadering met HTTP- en TCP-protocollen en XML of JSON gebruikt als de serialisatie-indeling. Vanuit het perspectief van een interface wordt een web-ontwerp benadering. Maar niets moet voorkomen dat u met behulp van de binaire protocollen of de opmaak van uw eigen gegevens. Alleen er rekening mee dat personen een moeilijker tijdstip met behulp van uw microservices hebben als deze protocollen en indelingen niet openlijk beschikbaar zijn.
+In de afgelopen tien jaar is uitgebreide informatie gepubliceerd met een beschrijving van de communicatie patronen in service georiënteerde architecturen. Over het algemeen gebruikt service communicatie een REST-benadering met HTTP-en TCP-protocollen en XML of JSON als de serialisatie-indeling. In het perspectief van de interface is het een manier om een webontwerp te maken. Maar het is niet meer mogelijk om binaire protocollen of uw eigen gegevens indelingen te gebruiken. Houd er rekening mee dat mensen over een lastigere tijd gebruik kunnen maken met uw micro Services als deze protocollen en indelingen niet open beschikbaar zijn.
 
-### <a name="has-a-unique-name-url-used-to-resolve-its-location"></a>Heeft een unieke naam (URL) gebruikt voor het omzetten van de locatie
+### <a name="has-a-unique-name-url-used-to-resolve-its-location"></a>Heeft een unieke naam (URL) die wordt gebruikt om de locatie op te lossen
 
-Uw microservice moet worden gebruikt wanneer deze wordt uitgevoerd. Als u erover over virtuele machines denkt en welke een bepaalde microservice wordt uitgevoerd, kunnen iets snel ongeldige gaat.
+Uw micro service moet adresseerbaar zijn waar deze wordt uitgevoerd. Als u op de hoogte bent van computers en er een bepaalde micro service wordt uitgevoerd, kunnen de dingen snel worden beschadigd.
 
-Uw microservice moet een unieke naam op dezelfde manier dat er een bepaalde URL op DNS wordt omgezet naar een bepaalde machine, zodat de huidige locatie kan worden gedetecteerd. Microservices moet adresseerbare namen die onafhankelijk van de infrastructuur die ze zijn op worden uitgevoerd. Dit betekent dat er een interactie tussen hoe de service is geïmplementeerd en hoe deze wordt gedetecteerd, is omdat er moet een service-register. Wanneer een virtuele machine is mislukt, moet de registry-service om aan te geven waarnaar de service is verplaatst.
+Op dezelfde manier als een bepaalde URL door DNS naar een bepaalde computer wordt omgezet, moet uw micro service een unieke naam hebben zodat de huidige locatie kan worden gedetecteerd. Micro Services heeft adresseer bare namen nodig die onafhankelijk zijn van de infra structuur waarop ze worden uitgevoerd. Dit betekent dat er een interactie is tussen hoe uw service wordt geïmplementeerd en hoe deze wordt gedetecteerd, omdat er een service register moet zijn. Wanneer een machine uitvalt, moet de register service aangeven waar de service naartoe is verplaatst.
 
-### <a name="remains-consistent-and-available-in-the-presence-of-failures"></a>Consistente en geval van problemen beschikbaar blijft
+### <a name="remains-consistent-and-available-in-the-presence-of-failures"></a>Blijft consistent en beschikbaar in de aanwezigheid van fouten
 
-Omgaan met onverwachte fouten is een van de moeilijkst problemen op te lossen, met name in een gedistribueerd systeem. Veel van de code die we als ontwikkelaars schrijven is voor het afhandelen van uitzonderingen. Tijdens het testen besteden we ook de meeste tijd aan de afhandeling van uitzonderingen. Het proces is meer betrokken dan het schrijven van code voor het afhandelen van fouten. Wat gebeurt er wanneer de computer waarop de microservice wordt uitgevoerd mislukt? U moet voor het detecteren van de fout, dit een probleem met een vaste op een eigen is. Maar u moet ook opnieuw starten van uw microservice.
+Het afhandelen van onverwachte fouten is een van de moeilijk te verhelpen problemen, met name in een gedistribueerd systeem. Veel van de code die we als ontwikkel aars schrijven, is voor het verwerken van uitzonde ringen. Tijdens het testen best Eden we ook de meeste tijd aan het verwerken van uitzonde ringen. Het proces is meer betrokken dan het schrijven van code voor het afhandelen van fouten. Wat gebeurt er wanneer de computer waarop de micro service wordt uitgevoerd, mislukt? U moet de fout ontdekken. Dit is een hard probleem. Maar u moet ook uw micro service opnieuw starten.
 
-Voor de beschikbaarheid van moet een microservice tegen uitvallen en opnieuw te starten op een andere computer. Naast deze vereisten voor flexibiliteit, mogen geen gegevens verloren gaan en gegevens nodig om consistent te blijven.
+Voor Beschik baarheid moet een micro service tot fouten leiden en op een andere computer opnieuw worden opgestart. Naast deze tolerantie vereisten is het niet nodig om gegevens te verliezen en moeten de gegevens consistent blijven.
 
-Flexibiliteit is moeilijk te bereiken als er fouten optreden tijdens de upgrade van een toepassing. De microservice, werken met het implementatiesysteem hoeft niet te herstellen. Nodig om te bepalen of u kunt doorgaan om te gaan naar de nieuwste versie of terugkeren naar een eerdere versie voor het onderhouden van een consistente status. U moet rekening houden met een aantal vragen, zoals of voldoende machines zijn beschikbaar zijn voor houden naar voren verplaatsen en het herstellen van eerdere versies van de microservices. Als u wilt deze beslissingen te nemen, moet u de microservice om te verzenden van gegevens over de servicestatus.
+Tolerantie is moeilijk te realiseren wanneer er fouten optreden tijdens een toepassings upgrade. De micro service, die werkt met het implementatie systeem, hoeft niet te worden hersteld. De IT-afdeling moet bepalen of deze kan blijven door gaan naar de nieuwere versie of terugdraait naar een eerdere versie om een consistente status te behouden. U moet rekening houden met een aantal vragen, zoals of er voldoende computers beschikbaar zijn om door te gaan en om eerdere versies van de micro service te herstellen. Als u deze beslissingen wilt nemen, hebt u de micro service nodig om status informatie te verzenden.
 
-### <a name="reports-health-and-diagnostics"></a>Rapporten status en diagnose
+### <a name="reports-health-and-diagnostics"></a>Rapporteert de status en diagnostische gegevens
 
-Kan het lijken alsof duidelijk, en dit wordt vaak vergeten, maar een microservice moet de status en diagnostische gegevens rapporteren. Anders hebt u weinig inzicht in de status van een operations-perspectief. Correleren van diagnostische gebeurtenissen in een set onafhankelijke services en omgaan met machine tijdsverschillen te zinvol in de volgorde van de gebeurtenissen, is het lastig om. Op dezelfde manier dat u met een microservice via overeengekomen protocollen en opmaak van gegevens communiceren, moet u standaardiseren hoe u zich aanmeldt status en diagnostische gebeurtenissen die uiteindelijk wordt terechtkomen in een gebeurtenissenarchief voor het uitvoeren van query's en weergeven. Met een microservices-benadering moeten verschillende teams eens zijn over een één-indeling. Er moet een consistent benadering voor het bekijken van diagnostische gebeurtenissen in de toepassing als geheel.
+Het lijkt misschien duidelijk en het is vaak te zien, maar een micro service moet zijn status en diagnostische gegevens rapporteren. Anders hebt u weinig inzicht in de status van een bewerkings perspectief. Het correleren van diagnostische gebeurtenissen in een reeks onafhankelijke services, en het afstemmen van de computer klok scheefheden maken van de gebeurtenis volgorde, is lastig. Op dezelfde manier als u communiceert met een micro service via overeengekomen protocollen en gegevens indelingen, moet u de manier van vastleggen van de status-en diagnostische gebeurtenissen voor het uitvoeren van query's in een gebeurtenis archief in een logboek voor het zoeken en weer geven. Met een micro Services-benadering moeten verschillende teams akkoord gaan met één indeling voor logboek registratie. Er moet een consistente aanpak zijn voor het weer geven van diagnostische gebeurtenissen in de toepassing als geheel.
 
-Status wijkt af van diagnostische gegevens. De status is over de microservices rapportage van de huidige status juiste acties te ondernemen. Een goed voorbeeld werkt samen met de upgrade en implementatie mechanismen om beschikbaarheid te houden. Als een service kan worden momenteel niet in orde vanwege het vastlopen van een proces of opnieuw opstarten van de computer, de service mogelijk nog steeds operationeel zijn. Het laatste wat dat u nodig is om de situatie nog erger door een upgrade wordt gestart. De aanbevolen aanpak is het eerste onderzoeken of wacht totdat de microservice om te herstellen. Statusgebeurtenissen van een microservice help ons gefundeerde beslissingen te nemen en van kracht te maken van de zelf-herstellende services.
+De status wijkt af van de diagnostische gegevens. De status is van toepassing op de huidige status van de micro service om passende maat regelen te nemen. Een goed voor beeld is het werken met upgrade-en implementatie mechanismen voor het onderhouden van Beschik baarheid. Hoewel een service momenteel niet in orde is vanwege een proces storing of het opnieuw opstarten van de computer, kan de service nog steeds operationeel zijn. Het laatste wat u nodig hebt, is om de situatie te verergeren door een upgrade te starten. De beste aanpak is om eerst te onderzoeken of tijd te geven voor de micro service te herstellen. Met status gebeurtenissen van een micro service kunnen wij weloverwogen beslissingen nemen en, in feite, hulp bieden bij het maken van Self-Retoucheer Services.
 
-## <a name="guidance-for-designing-microservices-on-azure"></a>Richtlijnen voor het ontwerpen van microservices op Azure 
-Ga naar het Azure architecture center voor richtlijnen over [ontwerpen en bouwen van microservices op Azure](https://docs.microsoft.com/azure/architecture/microservices/).
+## <a name="guidance-for-designing-microservices-on-azure"></a>Richt lijnen voor het ontwerpen van micro Services op Azure
 
-## <a name="service-fabric-as-a-microservices-platform"></a>Service Fabric als een microservices-platform
+Ga naar het Azure Architecture Center voor meer informatie over het [ontwerpen en bouwen van micro Services in azure](https://docs.microsoft.com/azure/architecture/microservices/).
 
-Azure Service Fabric naar voren gekomen als Microsoft is overgegaan van exemplaar-producten, die doorgaans monolithische leveren aan het leveren van services. De ervaring van het bouwen en gebruiken van grote services, zoals Azure SQL Database en Azure Cosmos DB, vorm van Service Fabric. Het platform zich na verloop van tijd ontwikkeld als meer services genomen. Service Fabric had om uit te voeren in Azure maar in standalone Windows Server-implementaties.
+## <a name="service-fabric-as-a-microservices-platform"></a>Service Fabric als een micro services-platform
 
-***Het doel van Service Fabric is het vaste problemen van het bouwen en uitvoeren van een service op te lossen en het gebruik van beschikken over infrastructurele resources efficiënt, zodat teams zakelijke problemen oplossen kunnen met behulp van een microservices-benadering.***
+Azure Service Fabric opgetreden toen micro soft overstapt van het leveren van producten in de periode, meestal monolithische, om services te leveren. De ervaring van het bouwen en gebruiken van grote Services, zoals Azure SQL Database en Azure Cosmos DB, Shaped Service Fabric. Het platform is na verloop van tijd ontwikkeld naarmate er meer services zijn aangenomen. Service Fabric moest niet alleen worden uitgevoerd in azure, maar ook in zelfstandige implementaties van Windows Server.
 
-Service Fabric kunt u toepassingen die gebruikmaken van een microservices-benadering door te geven:
+***Het doel van Service Fabric is het oplossen van de vaste problemen bij het bouwen en uitvoeren van een service en het efficiënt gebruiken van infrastructuur resources, zodat teams bedrijfs problemen kunnen oplossen met behulp van een micro Services-benadering.***
 
-* Een platform waarmee systeemservices te implementeren, upgraden, detecteren, en start de mislukte services, services detecteren, routeren van berichten, status beheren en status controleren.
-* De mogelijkheid om toepassingen te implementeren een van beide wordt uitgevoerd in containers of processen. Service Fabric is een container en het proces orchestrator.
-* Productieve programming-API's waarmee u toepassingen, zoals microservices: [ASP.NET Core en Reliable Actors, Reliable Services](service-fabric-choose-framework.md). Bijvoorbeeld, krijgt u gegevens over status en diagnostische gegevens, of kunt u profiteren van de ingebouwde hoge beschikbaarheid.
+Service Fabric helpt u bij het bouwen van toepassingen die gebruikmaken van een micro Services-benadering door het volgende te bieden:
 
-***Service Fabric is agnostisch over hoe u uw service ontwikkelen en kunt u elke technologie. Maar biedt ingebouwde programmeertaal API's die het eenvoudiger om te bouwen van microservices.***
+* Een platform dat systeem services biedt voor het implementeren, upgraden, detecteren en opnieuw starten van mislukte services, het detecteren van services, het beheren van de status en de controle status.
+* De mogelijkheid om toepassingen te implementeren die worden uitgevoerd in containers of als processen. Service Fabric is een container en proces-Orchestrator.
+* Productief programmeer-Api's om u te helpen bij het bouwen van toepassingen als micro Services: [ASP.net core, reliable actors en reliable Services](service-fabric-choose-framework.md). U kunt bijvoorbeeld status-en diagnostische gegevens ophalen, maar u kunt ook profiteren van de ingebouwde hoge Beschik baarheid.
 
-### <a name="migrating-existing-applications-to-service-fabric"></a>Migreren van bestaande toepassingen naar Service Fabric
+***Service Fabric is neutraal over hoe u uw service bouwt en u kunt elke technologie gebruiken. Dit biedt echter ingebouwde programmeer-Api's waarmee u eenvoudig micro Services kunt bouwen.***
 
-Service Fabric kunt u bestaande code opnieuw te gebruiken voor het moderniseren met nieuwe microservices. Er zijn vijf fasen modernisering van toepassingen, en u kunt starten en stoppen tijdens elke fase. De fasen zijn:
+### <a name="migrating-existing-applications-to-service-fabric"></a>Bestaande toepassingen migreren naar Service Fabric
 
-1) Beginnen met een traditionele monolithische toepassing.  
-2) Migreren. Containers of uitvoerbare gastbestanden gebruiken voor het hosten van de bestaande code in Service Fabric.  
-3) Moderniseren. Voeg nieuwe microservices samen met bestaande beperkte code.  
-4) Innoveer. De monolithische toepassing opsplitsen in op basis van microservices.  
-5) Toepassingen in microservices transformeren. Bestaande monolithische toepassingen transformeren of nieuwe greenfield-toepassingen te bouwen.
+Met Service Fabric kunt u bestaande code hergebruiken en moderniseren met nieuwe micro Services. Er zijn vijf fasen voor de modernisering van toepassingen, en u kunt elke fase starten en stoppen. De fasen zijn:
 
-![Migratie naar microservices][Image3]
+1) Begin met een traditionele monolithische-toepassing.  
+2) Migrat. Gebruik containers of uitvoer bare gast bestanden om bestaande code in Service Fabric te hosten.  
+3) Moderniseren. Voeg nieuwe micro Services naast bestaande container code toe.  
+4) Innoveer. Splits de toepassing monolithische in micro Services op basis van behoefte.  
+5) Transformeer toepassingen in micro Services. Transformeer bestaande monolithische-toepassingen of bouw nieuwe Ontwikkel-toepassingen.
 
-Denk eraan dat u kunt *starten en stoppen bij elk van deze fasen*. U hoeft niet worden voortgezet op de volgende fase. 
+![Migratie naar micro Services][Image3]
 
-Laten we kijken voorbeelden voor elk van deze fasen.
+Denk eraan dat u *in elk van deze fasen kunt starten en stoppen*. U hoeft niet naar de volgende fase te gaan. 
+
+Laten we eens kijken naar voor beelden voor elk van deze fasen.
 
 **Migreren**  
-Veel bedrijven migreert bestaande monolithische toepassingen in containers om twee redenen:
+Om twee redenen migreren veel bedrijven bestaande monolithische-toepassingen in containers:
 
-* Kosten reduceren vanwege consolidatie en verwijderen van bestaande hardware of vanwege het uitvoeren van toepassingen op de hogere dichtheid.
-* Een consistente implementatie overeenkomst tussen ontwikkel- en bewerkingen.
+* Kosten reductie, hetzij als gevolg van consolidatie en verwijdering van bestaande hardware of vanwege het uitvoeren van toepassingen met een hogere dichtheid.
+* Een consistent implementatie contract tussen ontwikkeling en bewerkingen.
 
-Kosten kortingen zijn simpel. Bij Microsoft, veel bestaande toepassingen zijn die wordt opgenomen in een container, leidt tot miljoenen dollars wordt bespaard. Consistente implementatie is het moeilijker om te evalueren, maar net zo belangrijk. Dit betekent dat ontwikkelaars de technologieën die geschikt is voor ze kunnen kiezen, maar operations slechts één enkele methode accepteert voor het implementeren en beheren van de toepassingen. Deze vermindert bewerkingen niet hoeft te bekommeren om de complexiteit van de ondersteuning van verschillende technologieën zonder ontwikkelaars kiezen alleen bepaalde objecten. In wezen elke toepassing wordt opgenomen in een container in onafhankelijke implementatie-installatiekopieën.
+Kosten reducties zijn eenvoudig. Bij micro soft worden veel bestaande toepassingen gecontainerd, waardoor miljoenen dollars worden bespaard. Een consistente implementatie is moeilijker te evalueren, maar is even belang rijk. Dit betekent dat ontwikkel aars de technologieën kunnen kiezen die hieraan voldoen, maar de bewerkingen accepteren slechts één methode voor het implementeren en beheren van de toepassingen. Het vermindert van de werking van de complexiteit van de ondersteuning van verschillende technologieën zonder dat ontwikkel aars alleen bepaalde onderdelen hoeven te kiezen. In wezen wordt elke toepassing in een container geïmplementeerd in zelfstandige implementatie-installatie kopieën.
 
-Veel organisaties stoppen hier. Ze al de voordelen van containers en Service Fabric biedt de volledige beheerervaring, inclusief de implementatie, upgrades, versiebeheer, terugdraaiacties en statuscontrole.
+Veel organisaties stoppen hier. Ze hebben al de voor delen van containers en Service Fabric biedt de volledige beheer ervaring, inclusief implementatie, upgrades, versie beheer, terugdraai acties en status controle.
 
 **Moderniseren**  
-Modernisering is de toevoeging van nieuwe services samen met bestaande beperkte code. Als u nieuwe code te schrijven, is het raadzaam te Neem kleine stappen in het pad van microservices. Dit kan betekenen dat een nieuwe REST API-eindpunt of nieuwe zakelijke logica toe te voegen. Op deze manier kunt u het proces van de nieuwe microservices bouwen en praktijken ontwikkelen en implementeren van deze starten.
+Modernisering is het toevoegen van nieuwe services naast bestaande container code. Als u nieuwe code wilt schrijven, kunt u het beste kleine stappen uitvoeren in het micro Services-pad. Dit kan betekenen dat er een nieuw REST API-eind punt of nieuwe bedrijfs logica wordt toegevoegd. Op deze manier start u het proces van het bouwen van nieuwe micro Services en het ontwikkelen en implementeren van deze procedures.
 
-**Innoveer**  
-Een microservices-benadering geschikt is voor de wisselende bedrijfsbehoeften van uw. In deze fase moet u beslissen of u de monolithische toepassing in services splitsen of innoveren te starten. Een klassieke in dit voorbeeld is wanneer een database die u als een werkstroom-wachtrij een bottleneck in de verwerking wordt. Als het aantal werkstroom toeneemt aanvragen, moet het werk voor schaal worden gedistribueerd. Die bepaald onderdeel van de toepassing die niet wordt geschaald, of die vaker worden bijgewerkt en deze uit als een microservice opsplitsen en innoveren moet nemen.
+**Innoveren**  
+Een micro Services-benadering is geschikt voor veranderende bedrijfs behoeften. In deze fase moet u beslissen of u de monolithische-toepassing wilt splitsen in Services of innoveren. Een klassiek voor beeld is dit wanneer een Data Base die u als werk stroom wachtrij gebruikt, een verwerkings knelpunt wordt. Naarmate het aantal werk stroom aanvragen toeneemt, moet het werk worden gedistribueerd voor schalen. Neem dat bepaald deel van de toepassing die niet wordt geschaald, of dat deze vaker moet worden bijgewerkt, en splits deze als een micro service en innovatie.
 
-**Toepassingen in microservices transformeren**  
-In deze fase is uw toepassing volledig bestaat uit (of splitsen in) microservices. Als u wilt dit punt bereikt, kunt u het traject microservices hebt aangebracht. Begin hier, maar om dit te doen zonder een microservices-platform om u te helpen vereist een aanzienlijke investering.
+**Toepassingen transformeren in micro Services**  
+In deze fase is uw toepassing volledig samengesteld uit (of onderverdeeld in) micro Services. Om dit punt te bereiken, hebt u de micro Services-reis gemaakt. U kunt hier beginnen, maar dit doen zonder een micro services-platform om u te helpen een belang rijke investering te vereisen.
 
-### <a name="are-microservices-right-for-my-application"></a>Microservices zijn geschikt voor mijn toepassing?
+### <a name="are-microservices-right-for-my-application"></a>Zijn micro Services geschikt voor mijn toepassing?
 
-Misschien. Bij Microsoft, zoals meer teams begonnen op te bouwen voor de cloud voor zakelijke redenen, gerealiseerde veel van deze de voordelen van een microservice-achtige benadering. Bing, bijvoorbeeld, heeft zijn met behulp van microservices jaar. De microservices-benadering is voor andere teams, nieuwe. Teams gevonden die moeilijke problemen op te lossen buiten hun kerngebieden van kracht zijn. Dit is de reden waarom de Service Fabric opgedaan steun die krijgt als de technologie voor het bouwen van services.
+Misschien. Bij micro soft, naarmate er meer teams zijn begonnen met het bouwen van de cloud om zakelijke redenen, hebben veel van hen de voor delen van het gebruik van een micro service-achtige benadering gerealiseerd. Bing heeft bijvoorbeeld micro Services voor jaren gebruikt. Voor andere teams was de micro Services-benadering nieuw. Teams hebben geconstateerd dat er sprake is van harde problemen om te voor komen dat ze worden opgelost buiten hun kern gebied van sterkte. Daarom Service Fabric de tractie als technologie voor het bouwen van services.
 
-Het doel van Service Fabric is het verminderen van de complexiteit van het bouwen van microservice-toepassingen, zodat u niet hoeft te doorlopen zo veel dure redesigns. Begin klein, schalen wanneer dat nodig is, geen meer services, toevoegen van nieuwe oplossingen en ontwikkelen met gebruik van de klant. Ook weten dat er tal van andere problemen nog moet worden opgelost zijn om microservices meer toegankelijk voor de meeste ontwikkelaars. Containers en de actor-programmeermodel zijn voorbeelden van kleine stappen in deze richting. We ervoor dat er meer innovaties ontstaan een microservices-benadering om eenvoudiger te maken.
-
+De doel stelling van Service Fabric is het verminderen van de complexiteit van het bouwen van micro service-toepassingen, zodat u niet zo veel kost bare reontwerps hoeft te door lopen. Begin klein, schaal indien nodig, veraf van services, Voeg nieuwe toe en ontwikkeling met klant gebruik. We weten ook dat er nog vele andere problemen moeten worden opgelost om micro Services voor de meeste ontwikkel aars meer te kunnen benutten. Containers en het actor-programmeer model zijn voor beelden van kleine stappen in die richting. Het is belang rijk dat er meer innovaties worden gebruikt om een micro Services-benadering eenvoudiger te maken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Microservices: Een toepassing revolution mogelijk gemaakt door de cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
-* [Azure Architecture Center: Microservices bouwen in Azure](https://docs.microsoft.com/azure/architecture/microservices/)
-* [Aanbevolen procedures voor Azure Service Fabric-toepassing en cluster](service-fabric-best-practices-overview.md)
-* [Overzicht van service Fabric-terminologie](service-fabric-technical-overview.md)
+* [Micro Services: een toepassings revolutie die wordt aangedreven door de Cloud](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)
+* [Azure Architecture Center: Micro Services op Azure bouwen](https://docs.microsoft.com/azure/architecture/microservices/)
+* [Aanbevolen procedures voor Azure Service Fabric-toepassing en-cluster](service-fabric-best-practices-overview.md)
+* [Overzicht van Service Fabric terminologie](service-fabric-technical-overview.md)
 
 [Image1]: media/service-fabric-overview-microservices/monolithic-vs-micro.png
 [Image2]: media/service-fabric-overview-microservices/statemonolithic-vs-micro.png
