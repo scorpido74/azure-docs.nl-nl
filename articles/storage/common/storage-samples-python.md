@@ -7,22 +7,25 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 3fc18646270bbec3836845bcf317afc2c1d3a6df
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 7f694ee51989023a3e7a72f40700edcbb6a97bae
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71351156"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747984"
 ---
 # <a name="azure-storage-samples-using-python"></a>Azure Storage voor beelden met behulp van python
 
 In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag plaatsen en de scenario's die in elk voor beeld worden behandeld. Klik op de koppelingen om de bijbehorende voorbeeld code in GitHub weer te geven.
 
-## <a name="blob-samples"></a>BLOB-voor beelden
+> [!NOTE]
+> Deze voor beelden gebruiken de Azure Storage python v 2.1-bibliotheek. Zie voor [beelden](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob/samples) in de GitHub-opslag plaats voor V12-code.
 
-| **Scenario** | **Voorbeeld code** |
+## <a name="blob-samples-v21"></a>Voor beelden van blobs (v 2.1)
+
+| **Scenario** | **Voorbeeldcode** |
 |--------------|-----------------|
-| Blob toevoegen | [Aan de slag met Azure Blob service in python](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L166) |
+| BLOB toevoegen | [Aan de slag met Azure Blob service in python](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L166) |
 | Blok-blob | [Aan de slag met Azure Blob service in python](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L77) |
 | Clientversleuteling | [Sleutels voor opslag accounts beheren in een Azure-sleutel waarde met python](https://github.com/Azure-Samples/key-vault-python-storage-accounts) |
 | Blob kopiëren | [Aan de slag met Azure Blob service in python](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L102) |
@@ -34,14 +37,14 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 | Paginabereiken ophalen | [Aan de slag met Azure Blob service in python](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L151) |
 | BLOB/container lease | [Aan de slag met Azure Blob service in python](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L377) |
 | BLOB/container weer geven | [Aan de slag met Azure Blob service in python](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L103) |
-| Pagina-blob | [Aan de slag met Azure Blob service in python](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L124) |
-| GEBASEERD | [Shared Access Signature in python](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L145) |
+| Pagina-BLOB | [Aan de slag met Azure Blob service in python](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L124) |
+| SAS | [Shared Access Signature in python](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L145) |
 | Service-eigenschappen | [Aan de slag met Azure Blob service in python](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_advanced_samples.py#L540) |
 | Moment opname-BLOB | [Aan de slag met Azure Blob service in python](https://github.com/Azure-Samples/storage-blob-python-getting-started/blob/master/blob_basic_samples.py#L214) |
 
-## <a name="file-samples"></a>Bestands voorbeelden
+## <a name="file-samples-v21"></a>Bestands voorbeelden (v 2.1)
 
-| **Scenario** | **Voorbeeld code** |
+| **Scenario** | **Voorbeeldcode** |
 |--------------|-----------------|
 | Shares/Directory's/bestanden maken | [Aan de slag met Azure File Service in python](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_basic_samples.py#L71) |
 | Shares/mappen/bestanden verwijderen | [Aan de slag met Azure File Service in python](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_basic_samples.py#L170) |
@@ -53,9 +56,9 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 | Shares weer geven | [Aan de slag met Azure File Service in python](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_advanced_samples.py#L82) |
 | Eigenschappen/meta gegevens/statistieken delen | [Aan de slag met Azure File Service in python](https://github.com/Azure-Samples/storage-file-python-getting-started/blob/master/file_advanced_samples.py#L144) |
 
-## <a name="queue-samples"></a>Wachtrij voorbeelden
+## <a name="queue-samples-v21"></a>Voor beelden van de wachtrij (v 2.1)
 
-| **Scenario** | **Voorbeeld code** |
+| **Scenario** | **Voorbeeldcode** |
 |--------------|-----------------|
 | Bericht toevoegen | [Aan de slag met Azure Queue service in python](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_basic_samples.py#L94) |
 | Clientversleuteling | [Sleutels voor opslag accounts beheren in Azure Key Vault met python](https://github.com/Azure-Samples/key-vault-python-storage-accounts) |
@@ -66,9 +69,9 @@ In de volgende tabellen vindt u een overzicht van onze voor beelden van opslag p
 | Eigenschappen van Queue-service | [Aan de slag met Azure Queue service in python](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_advanced_samples.py#L128) |
 | Bericht bijwerken | [Aan de slag met Azure Queue service in python](https://github.com/Azure-Samples/storage-queue-python-getting-started/blob/master/queue_basic_samples.py#L120) |
 
-## <a name="table-samples"></a>Tabel voorbeelden
+## <a name="table-samples-v21"></a>Tabel voorbeelden (v 2.1)
 
-| **Scenario** | **Voorbeeld code** |
+| **Scenario** | **Voorbeeldcode** |
 |--------------|-----------------|
 | Tabel maken | [Aan de slag met Azure Table service in python](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L46) |
 | Entiteit/tabel verwijderen | [Aan de slag met Azure Table service in python](https://github.com/Azure-Samples/storage-table-python-getting-started/blob/master/table_basic_samples.py#L79) |
@@ -97,7 +100,7 @@ Bekijk de volgende hand leidingen als u op zoek bent naar instructies voor het i
 
 Voor informatie over voor beelden voor andere talen:
 
-* .NET: [Azure Storage-voorbeelden met behulp van .NET](storage-samples-dotnet.md)
-* Java: [Azure Storage-voorbeelden met behulp van Java](storage-samples-java.md)
+* .NET: voor [beelden Azure Storage met .net](storage-samples-dotnet.md)
+* Java: [Azure Storage voor beelden met behulp van Java](storage-samples-java.md)
 * Java script/node. js: [Azure Storage voor beelden met behulp van Java script](storage-samples-javascript.md)
-* Alle andere talen: [Azure Storage-voor beelden](storage-samples.md)
+* Alle andere talen: [Azure Storage](storage-samples.md) -voor beelden

@@ -8,19 +8,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 5dd698b28a01ed251492cf34e9da2dda4d0c2580
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 180b7c203755553c343e0f7fc65c93092b330124
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241998"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751326"
 ---
 # <a name="set-up-secure-sockets-layer-ssl-encryption-and-authentication-for-apache-kafka-in-azure-hdinsight"></a>Versleuteling en verificatie van Secure Sockets Layer (SSL) instellen voor Apache Kafka in azure HDInsight
 
 In dit artikel wordt beschreven hoe u SSL-versleuteling instelt tussen Apache Kafka-clients en Apache Kafka brokers. U kunt ook zien hoe u verificatie van clients instelt (ook wel SSL (Two-eenrichtings) genoemd).
 
 > [!Important]
-> Er zijn twee clients die u kunt gebruiken voor Kafka-toepassingen: een Java-client en een-console-client. Alleen de Java-client `ProducerConsumer.java` kan SSL gebruiken voor zowel produceren als verbruiken. De console producer-client `console-producer.sh` werkt niet met SSL.
+> Er zijn twee clients die u kunt gebruiken voor Kafka-toepassingen: een Java-client en een-console-client. Alleen de Java-client `ProducerConsumer.java` kunnen SSL gebruiken voor zowel produceren als verbruikt. De console producer client `console-producer.sh` werkt niet met SSL.
 
 ## <a name="apache-kafka-broker-setup"></a>Setup van Apache Kafka Broker
 
@@ -49,7 +49,7 @@ De samen vatting van het installatie proces van de Broker is als volgt:
 Gebruik de volgende gedetailleerde instructies om de Broker-installatie te volt ooien:
 
 > [!Important]
-> In de volgende code fragmenten wnX is een afkorting voor een van de drie worker-knoop punten en moet worden vervangen door `wn0`, `wn1` of `wn2` als dat nodig is. `WorkerNode0_Name` en `HeadNode0_Name` moeten worden vervangen door de namen van de respectieve computers, zoals `wn0-abcxyz` of `hn0-abcxyz`.
+> In de volgende code fragmenten wnX is een afkorting voor een van de drie worker-knoop punten en moet worden vervangen door `wn0`, `wn1` of `wn2`, indien van toepassing. `WorkerNode0_Name` en `HeadNode0_Name` moeten worden vervangen door de namen van de betreffende computers.
 
 1. Voer de eerste installatie uit op het hoofd knooppunt 0, dat voor HDInsight de rol van de certificerings instantie (CA) zal vullen.
 
@@ -157,10 +157,10 @@ Voer de volgende stappen uit om de configuratie wijziging te volt ooien:
 
 Voer de volgende stappen uit om de client installatie te volt ooien:
 
-1. Meld u aan bij de client computer (HN1).
+1. Meld u aan bij de client computer (stand-by-hoofd knooppunt).
 1. Een Java-opslag archief maken en een ondertekend certificaat voor de Broker ophalen. Kopieer vervolgens het certificaat naar de virtuele machine waarop de CA wordt uitgevoerd.
-1. Schakel over naar de CA-computer (hn0) om het client certificaat te ondertekenen.
-1. Ga naar de client machine (HN1) en ga naar de map `~/ssl`. Kopieer het ondertekende certificaat naar de client computer.
+1. Schakel over naar de CA-computer (actief hoofd knooppunt) om het client certificaat te ondertekenen.
+1. Ga naar de client computer (stand-by hoofd knooppunt) en navigeer naar de map `~/ssl`. Kopieer het ondertekende certificaat naar de client computer.
 
 ```bash
 cd ssl
@@ -174,11 +174,11 @@ keytool -keystore kafka.client.keystore.jks -certreq -file client-cert-sign-requ
 # Copy the cert to the CA
 scp client-cert-sign-request3 sshuser@HeadNode0_Name:~/tmp1/client-cert-sign-request
 
-# Switch to the CA machine (hn0) to sign the client certificate.
+# Switch to the CA machine (active head node) to sign the client certificate.
 cd ssl
 openssl x509 -req -CA ca-cert -CAkey ca-key -in /tmp1/client-cert-sign-request -out /tmp1/client-cert-signed -days 365 -CAcreateserial -passin pass:MyServerPassword123
 
-# Return to the client machine (hn1), navigate to ~/ssl folder and copy signed cert from the CA (hn0) to client machine
+# Return to the client machine (standby head node), navigate to ~/ssl folder and copy signed cert from the CA (active head node) to client machine
 scp -i ~/kafka-security.pem sshuser@HeadNode0_Name:/tmp1/client-cert-signed
 
 # Import CA cert to trust store
@@ -206,7 +206,7 @@ ssl.key.password=MyClientPassword123
 
 Als u geen verificatie nodig hebt, zijn de stappen voor het instellen van alleen SSL-versleuteling:
 
-1. Meld u aan bij de client computer (HN1) en navigeer naar de map `~/ssl`
+1. Meld u aan bij de client computer (HN1) en ga naar de map `~/ssl`
 1. Kopieer het ondertekende certificaat naar de client computer vanaf de CA-computer (wn0).
 1. Importeer het CA-certificaat naar de truststore
 1. Het CA-certificaat importeren in de-opslag

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/23/2019
+ms.date: 12/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a0325a7fd3aca3d27b24c193a9f131546a70d80b
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: c5b9c1d294cd984ca3cf062d3b657239995e5908
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74566241"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75752438"
 ---
 Incrementele moment opnamen (preview) zijn punt-in-time-back-ups voor beheerde schijven die, wanneer ze worden gemaakt, alleen van alle wijzigingen bestaan sinds de laatste moment opname. Wanneer u probeert een incrementele moment opname te downloaden of anderszins te gebruiken, wordt de volledige VHD gebruikt. Deze nieuwe mogelijkheid voor moment opnamen van beheerde schijven kan ertoe leiden dat ze rendabeler worden, omdat u niet langer de volledige schijf hoeft op te slaan bij elke afzonderlijke moment opname, tenzij u dat doet. Net als bij gewone moment opnamen kunnen incrementele moment opnamen worden gebruikt voor het maken van een volledige beheerde schijf of, om een gewone moment opname te maken.
 
@@ -21,11 +21,9 @@ Er zijn enkele verschillen tussen een incrementele moment opname en een regulier
 
 Incrementele moment opnamen bieden ook een andere mogelijkheid, die uniek is voor beheerde schijven. Hiermee kunt u de wijzigingen ophalen tussen twee incrementele moment opnamen van dezelfde beheerde schijven, tot aan het blok niveau. U kunt deze mogelijkheid gebruiken om uw gegevensfootprint te verminderen bij het kopiëren van moment opnamen tussen regio's.
 
-Als u zich nog niet hebt geregistreerd voor de preview-versie en u wilt beginnen met het gebruik van incrementele moment opnamen, kunt u ons een e-mail sturen naar AzureDisks@microsoft.com om toegang te krijgen tot de open bare preview.
-
 ## <a name="restrictions"></a>Beperkingen
 
-- Incrementele moment opnamen zijn momenteel alleen beschikbaar in VS-Oost, VS-midden, Canada-centraal, VS-West-Centraal en Europa-noord.
+- Incrementele moment opnamen zijn momenteel alleen beschikbaar in VS-Oost, VS-Oost 2, VS-midden, VS-West-Centraal, Canada-oost, Canada-centraal en Europa-noord.
 - Incrementele moment opnamen kunnen momenteel niet worden gemaakt nadat u de grootte van een schijf hebt gewijzigd.
 - Incrementele moment opnamen kunnen momenteel niet worden verplaatst tussen abonnementen.
 - U kunt momenteel alleen SAS-Uri's van Maxi maal vijf moment opnamen van een bepaalde momentopname familie genereren op een bepaald moment.
@@ -156,8 +154,4 @@ U kunt ook Azure Resource Manager sjablonen gebruiken om een incrementele moment
 
 ## <a name="next-steps"></a>Volgende stappen
 
-1. Als u zich nog niet hebt geregistreerd voor de preview-versie en u wilt beginnen met het gebruik van incrementele moment opnamen, kunt u ons een e-mail sturen naar AzureDisks@microsoft.com om toegang te krijgen tot de open bare preview. 
-
-2. Bekijk de volgende voor beelden voor kruis momentopname kopieën met verschillende regio's met behulp van differentiële mogelijkheden   
-
-    - [Azure .net-Sdk's gebruiken](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)
+Zie [Azure-Managed disks back-ups kopiëren naar een andere regio met differentiële mogelijkheden van incrementele moment opnamen](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)als u voorbeeld code wilt zien met behulp van de differentiële mogelijkheden van incrementele moment opnamen.

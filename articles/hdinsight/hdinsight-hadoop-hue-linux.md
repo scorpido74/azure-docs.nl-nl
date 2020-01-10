@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: ef5bbc00ae0d3c7751bdcd4808c5368b0f5e1523
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 8a644beede4089133f88b824fd8d34dddec3b15e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688246"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751109"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Tint op HDInsight Hadoop-clusters installeren en gebruiken
 
@@ -45,7 +45,7 @@ Gebruik de informatie in de onderstaande tabel voor uw script actie. Zie [HDInsi
 |Eigenschap |Waarde |
 |---|---|
 |Script type:|-Aangepast|
-|Naam|Hue installeren|
+|Name|Hue installeren|
 |Bash-script-URI|`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`|
 |Knooppunt type (n):|Kop|
 
@@ -72,7 +72,7 @@ SSH-Tunneling is de enige manier om toegang te krijgen tot de tint op het cluste
 
     Dit retourneert een naam die er ongeveer als volgt uitziet:
 
-        hn0-myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
+        myhdi-nfebtpfdv1nubcidphpap2eq2b.ex.internal.cloudapp.net
 
     Dit is de hostnaam van de primaire hoofd knooppunt waar de website tint zich bevindt.
 
@@ -107,7 +107,7 @@ SSH-Tunneling is de enige manier om toegang te krijgen tot de tint op het cluste
 > [!NOTE]  
 > De bestands browser tinten kan alleen de inhoud weer geven van de standaard container die is gekoppeld aan het HDInsight-cluster. Alle extra opslag accounts/containers die u aan het cluster hebt gekoppeld, zijn niet toegankelijk via de bestands browser. De extra containers die zijn gekoppeld aan het cluster, zijn echter altijd toegankelijk voor de Hive-taken. Als u bijvoorbeeld de opdracht `dfs -ls wasbs://newcontainer@mystore.blob.core.windows.net` in de Hive-editor invoert, ziet u ook de inhoud van extra containers. In deze opdracht is **newcontainer** niet de standaard container die aan een cluster is gekoppeld.
 
-## <a name="important-considerations"></a>Belang rijke overwegingen
+## <a name="important-considerations"></a>Belangrijke overwegingen
 
 1. Het script dat wordt gebruikt om de kleur Toon te installeren, installeert dit alleen op de primaire hoofd knooppunt van het cluster.
 

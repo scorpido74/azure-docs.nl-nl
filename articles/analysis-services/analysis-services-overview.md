@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: eb69028a3b5ea232fbafe8286c3067a22f06d455
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ee107ffdc677a0feffbdaf1441d77a8ed05f2c94
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572818"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749685"
 ---
 # <a name="what-is-azure-analysis-services"></a>Wat is Azure Analysis Services?
 
@@ -24,7 +24,7 @@ Azure Analysis Services is een volledig beheerd platform als een service (PaaS) 
 
 **Video:** Bekijk [Overzicht van Azure Analysis Services](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4) om te ontdekken hoe Azure Analysis Services past in de algemene BI-mogelijkheden van Microsoft.
 
-## <a name="get-up-and-running-quickly"></a>Snel aan de slag
+## <a name="get-up-and-running-quickly"></a>Ga snel aan de slag
 
 In Azure Portal kunt u binnen enkele minuten [een server maken](analysis-services-create-server.md). En met Azure Resource Manager-[sjablonen](../azure-resource-manager/resource-manager-create-first-template.md) en PowerShell kunt u servers maken met behulp van een declaratieve sjabloon. Met één enkele sjabloon kunt u meerdere serverresources implementeren, samen met andere Azure-onderdelen als opslagaccounts en Azure Functions. 
 
@@ -36,29 +36,29 @@ Azure Analysis Services kan worden geïntegreerd met veel Azure-services, zodat 
 
 Azure Analysis Services is beschikbaar in de servicelagen **Developer**, **Basic** en **Standard**. Binnen elke servicelaag variëren de abonnementskosten afhankelijk van verwerkingskracht, QPU's en geheugen. Wanneer u een server maakt, selecteert u binnen een servicelaag een abonnement. U kunt een abonnement binnen dezelfde servicelaag omhoog of omlaag bijstellen en ook upgraden naar een hogere servicelaag. U kunt echter niet downgraden naar een lagere servicelaag.
 
-### <a name="developer-tier"></a>Developer-laag
+### <a name="developer-tier"></a>Ontwikkelaarslaag
 
 Deze laag wordt aanbevolen voor evaluatie-, ontwikkelings- en testscenario's. Eén abonnement bevat alle functionaliteit van de Standard-laag, maar heeft beperkte verwerkingskracht, QPU's en geheugengrootte. Uitschalen van queryreplica’s *is niet beschikbaar* voor deze laag. Voor deze laag is geen SLA beschikbaar.
 
-|Plannen  |QPU's  |Geheugen (GB)  |
+|Plan  |QPU's  |Geheugen (GB)  |
 |---------|---------|---------|
 |D1    |    20     |    3     |
 
 
-### <a name="basic-tier"></a>Basislaag
+### <a name="basic-tier"></a>Basic-laag
 
 Deze-laag wordt aanbevolen voor productieoplossingen met kleinere tabellarische modellen, een beperkt aantal gelijktijdige gebruikers en eenvoudige vereisten voor gegevensvernieuwing. Uitschalen van queryreplica’s *is niet beschikbaar* voor deze laag. Perspectieven, meerdere partities en functies van het tabellarische DirectQuery-model *worden niet ondersteund* in deze laag.  
 
-|Plannen  |QPU's  |Geheugen (GB)  |
+|Plan  |QPU's  |Geheugen (GB)  |
 |---------|---------|---------|
 |B1    |    40     |    10     |
 |B2    |    80     |    16     |
 
-### <a name="standard-tier"></a>Standaardlaag
+### <a name="standard-tier"></a>Standard-laag
 
 Deze laag is de meest geschikte voor essentiële productietoepassingen waarvoor elastische gebruikersgelijktijdigheid is vereist en waarvan de gegevensmodellen snel groter worden. Deze laag ondersteunt geavanceerde gegevensvernieuwing voor bijna real-time gegevensmodelupdates en ondersteunt alle tabellarische modelleringsfuncties.
 
-|Plannen  |QPU's  |Geheugen (GB)  |
+|Plan  |QPU's  |Geheugen (GB)  |
 |---------|---------|---------|
 |S0    |    40     |    10     |
 |S1    |    100     |    25     |
@@ -79,14 +79,14 @@ Azure Analysis Services wordt ondersteund in regio's in de hele wereld. Onderste
 
 |Regio  | Ondersteunde abonnementen | Queryreplica's (alleen Standard-abonnementen) |
 |---------|---------|:---------:|
-|Brazilië - zuid     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
-|Canada - centraal    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
+|Brazilië - Zuid     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
+|Canada-Midden    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |VS - oost     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
 |VS - oost 2     |     B1, B2, S0, S1, S2, S4, D1   |    7    |
 |VS - oost 2     |     S8, S9, S8v2, S9v2   |    1    |
 |VS - noord-centraal     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
-|US - centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|US - zuid-centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|VS - centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+|VS - zuid-centraal     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |VS - west-centraal   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
 |VS - west     |    B1, B2, S0, S1, S2, S4, D1    |    7   |
 |VS - west     |    S8, S9, S8v2, S9v2   |    2  |
@@ -103,18 +103,18 @@ Azure Analysis Services wordt ondersteund in regio's in de hele wereld. Onderste
 |Europa - west     |    B1, B2, S0, S1, S2, S4, D1   |    7    |
 |Europa - west    |   S8, S9, S8v2, S9v2  |  1  |
 
-### <a name="asia-pacific"></a>Azië en Stille Oceaan 
+### <a name="asia-pacific"></a>Azië-Pacific 
 
 |Regio  | Ondersteunde abonnementen | Queryreplica's (alleen Standard-abonnementen) |
 |---------|---------|:---------:|
-|Australië - oost     |    B1, B2, S0, S1, S2, S4     |    3     |
-|Australië - oost     |    S8, S9, S8v2, S9v2    |    1     |
-|Australië - zuidoost     | B1, B2, S0, S1, S2, S4, D1       |    1     |
+|Australië Oost     |    B1, B2, S0, S1, S2, S4     |    3     |
+|Australië Oost     |    S8, S9, S8v2, S9v2    |    1     |
+|Australië Zuidoost     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japan - Oost     |   B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Azië - zuidoost     |     B1, B2, S0, S1, S2, S4, S8, S9, S8v2, S9v2, D1     |   1      |
 |India - west     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 
-## <a name="scale-to-your-needs"></a>Schalen naar uw behoeften
+## <a name="scale-to-your-needs"></a>Pas uw schaalgrootte aan uw behoeften aan
 
 ### <a name="scale-updown-pause-and-resume"></a>Omhoog/omlaag schalen, onderbreken en hervatten
 
@@ -161,11 +161,11 @@ Op serverniveau biedt Analysis Services firewall, Azure-verificatie, serverbehee
 
 De firewall van Azure Analysis Services blokkeert alle clientverbindingen behalve die met IP-adressen die zijn opgegeven in regels. Firewall-beveiliging is standaard niet ingeschakeld voor nieuwe servers. Het verdient aanbeveling om onmiddellijk nadat de server is gemaakt de firewallbeveiliging in te schakelen en de regels te configureren als onderdeel van een serverinrichtingsscript of in de portal. Configureer regels voor toegestane IP-adressen als individuele client-IP-adressen of als een bereik. Verbindingen van Power BI (service) kunnen ook worden toegestaan of geblokkeerd. Configureer de firewall en regels in de portal of met behulp van PowerShell. Zie [Configure a server firewall](analysis-services-qs-firewall.md) (een serverfirewall configureren) voor meer informatie.
 
-### <a name="authentication"></a>Verificatie
+### <a name="authentication"></a>Authentication
 
 Gebruikersverificatie wordt afgehandeld door [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md). Bij het inloggen gebruiken gebruikers de identiteit van een organisatie-account met op rollen gebaseerde toegang tot de database. Gebruikers-id's moeten lid zijn van de standaard Azure Active Directory voor het abonnement waarin de server is ondergebracht. Raadpleeg voor meer informatie [Verificatie en gebruikersmachtigingen](analysis-services-manage-users.md).
 
-### <a name="data-security"></a>Gegevensbeveiliging
+### <a name="data-security"></a>Databeveiliging
 
 Azure Analysis Services maakt gebruik van Azure Blob-opslag om opslag en metagegevens voor Analysis Services-databases persistent te maken. Gegevensbestanden in Blob worden versleuteld met behulp van [Azure Blob Server Side Encryption (SSE)](../storage/common/storage-service-encryption.md). Wanneer de Direct Query-modus wordt gebruikt, worden alleen metagegevens opgeslagen. De werkelijke gegevens worden op het moment van uitvoering van de query via een versleuteld protocol opgehaald uit de gegevensbron.
 
@@ -189,7 +189,7 @@ Tabellarische modellen op het 1400-compatibiliteitsniveau ondersteunen beveiligi
 
 Service-principals zijn een Azure Active Directory-toepassingsresource die u in uw tenant maakt om onbeheerde bewerkingen op resource- en serviceniveau uit te voeren. Service-principals worden gebruikt met Azure Automation, de onbeheerde PowerShell-modus, aangepaste clienttoepassingen en webapps om veelvoorkomende taken zoals gegevensvernieuwing, omhoog/omlaag schalen en onderbreken/hervatten te automatiseren. Machtigingen worden aan service-principals toegewezen via rollidmaatschappen. Zie [Automatisering met service-principals](analysis-services-service-principal.md) voor meer informatie.
 
-### <a name="azure-governance"></a>Azure-governance
+### <a name="azure-governance"></a>Azure-beheer
 
 Azure Analysis Services is onderhevig aan de [gebruiksvoorwaarden van Microsoft Online Services](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) en de [privacyverklaring van Microsoft](https://privacy.microsoft.com/privacystatement).
 Ga naar het [Microsoft Vertrouwenscentrum](https://www.microsoft.com/trustcenter) voor meer informatie over Azure-beveiliging.
@@ -224,7 +224,7 @@ Moderne hulpprogramma's voor het verkennen en visualiseren van gegevens, zoals P
 
 ## <a name="monitoring-and-diagnostics"></a>Controle en diagnose
 
-Azure Analysis Services is geïntegreerd met metrische gegevens van Azure en biedt een groot aantal resourcespecifieke metrische gegevens waarmee u de prestaties en de status van uw servers kunt volgen. Zie [Monitor server metrics](analysis-services-monitor.md) (Metrische servergegevens bewaken) voor meer informatie. Leg metrische gegevens vast met [diagnostische logboeken van Azure-resources](../azure-monitor/platform/resource-logs-overview.md). Bewaak en verzend logbestanden naar [Azure Storage](https://azure.microsoft.com/services/storage/), stream ze naar [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)en exporteer ze naar [Azure Monitor-logboeken](https://azure.microsoft.com/services/log-analytics/), een service van [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Zie [Registratie in diagnoselogboek instellen](analysis-services-logging.md) voor meer informatie.
+Azure Analysis Services is geïntegreerd met metrische gegevens van Azure en biedt een groot aantal resourcespecifieke metrische gegevens waarmee u de prestaties en de status van uw servers kunt volgen. Zie [Monitor server metrics](analysis-services-monitor.md) (Metrische servergegevens bewaken) voor meer informatie. Leg metrische gegevens vast met [diagnostische logboeken van Azure-resources](../azure-monitor/platform/platform-logs-overview.md). Bewaak en verzend logbestanden naar [Azure Storage](https://azure.microsoft.com/services/storage/), stream ze naar [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)en exporteer ze naar [Azure Monitor-logboeken](https://azure.microsoft.com/services/log-analytics/), een service van [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Zie [Registratie in diagnoselogboek instellen](analysis-services-logging.md) voor meer informatie.
 
 Azure Analysis Services ondersteunt ook het gebruik van [DMV's (dynamische beheerweergaven)](https://docs.microsoft.com/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services). DMV’s zijn gebaseerd op SQL-syntaxis en werken samen met schemarijensets die metagegevens en bewakingsgegevens over serverexemplaren retourneren.
 
@@ -232,7 +232,7 @@ Azure Analysis Services ondersteunt ook het gebruik van [DMV's (dynamische behee
 
 Specifieke documentatie bij Azure Analysis Services is hier opgenomen. Gebruik de inhoudsopgave aan de linkerkant van uw browserscherm om artikelen te zoeken. 
 
-Omdat Azure Analysis Services tabellaire modellen veel hetzelfde zijn als tabellaire modellen in SQL Server Analysis Services, is er een uitgebreide bibliotheek met gedeelde conceptuele, procedures, ontwikkel aars en referentie artikelen in [SQL Server Analysis Services Documentatie](https://docs.microsoft.com/analysis-services/analysis-services-overview). Bij artikelen in de documentatie van SQL Server Analysis Services wordt aangegeven of ze ook van toepassing zijn op Azure Analysis Services door de banner VAN TOEPASSING OP onder de titel.
+Omdat Azure Analysis Services tabellaire modellen veel hetzelfde zijn als tabellaire modellen in SQL Server Analysis Services, is er een uitgebreide bibliotheek met gedeelde conceptuele, procedures, ontwikkel aars en naslag artikelen in [SQL Server Analysis Services documentatie](https://docs.microsoft.com/analysis-services/analysis-services-overview). Bij artikelen in de documentatie van SQL Server Analysis Services wordt aangegeven of ze ook van toepassing zijn op Azure Analysis Services door de banner VAN TOEPASSING OP onder de titel.
 
 ![Gedeelde documentatie](./media/analysis-services-overview/aas-overview-applies-to.png)
 

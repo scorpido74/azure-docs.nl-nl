@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: 17ba808ebfabb68765cf35bbf0799d117bc6383b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: d94daa5fbda4ee60ffc6671f7b50126662416043
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133433"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746545"
 ---
 # <a name="azure-time-series-insights-preview-explorer"></a>Preview Explorer Azure Time Series Insights
 
@@ -58,7 +58,7 @@ De omgeving-paneel geeft alle Time Series Insights-omgevingen die u toegang tot 
 
 ## <a name="2-navigation-bar"></a>2. navigatie balk
 
-  [De navigatie balk ![](media/v2-update-explorer/navigation-bar.png)](media/v2-update-explorer/navigation-bar.png#lightbox)
+  [De navigatie balk ![](media/v2-update-explorer/tsi-preview-navigation-bar.png)](media/v2-update-explorer/tsi-preview-navigation-bar.png#lightbox)
 
 Gebruik de navigatie balk om te kiezen tussen twee weer gaven:
 
@@ -79,9 +79,9 @@ Zie voor meer informatie over de Time Series-Model, [tijden reeks modellen](./ti
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. hiërarchie structuur en zoek paneel
 
-Met de hiërarchie structuur en het zoek venster kunt u eenvoudig uw [Time Series-model](./time-series-insights-update-tsm.md) hiërarchie doorzoeken en ernaar bladeren om de specifieke time series-exemplaren te vinden die u wilt weer geven in de grafiek. Wanneer u uw instanties selecteert, worden deze niet alleen toegevoegd aan de huidige grafiek, maar ook toegevoegd aan de gegevens bron. 
+Met de hiërarchie structuur en het zoek paneel kunt u eenvoudig uw [Time Series-model](./time-series-insights-update-tsm.md) hiërarchie doorzoeken en ernaar bladeren om de specifieke time series-exemplaren te vinden die u wilt weer geven in de grafiek. Wanneer u uw instanties selecteert, worden deze niet alleen toegevoegd aan de huidige grafiek, maar ook toegevoegd aan de gegevens bron. 
 
-[Hiërarchie structuur en zoek paneel ![](media/v2-update-explorer/hierarchy-search.png)](media/v2-update-explorer/hierarchy-search.png#lightbox)
+[Hiërarchie structuur en zoek paneel ![](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png)](media/v2-update-explorer/tsi-preview-explorer-hierarchy-search.png#lightbox)
 
 In het deel venster met zoek resultaten kunt u ook uw resultaten bekijken in een hiërarchie weergave of een lijst weergave, zodat u gemakkelijk de instanties kunt vinden die u wilt weer geven.
  
@@ -89,7 +89,7 @@ In het deel venster met zoek resultaten kunt u ook uw resultaten bekijken in een
 
 Op de juiste weer gave worden exemplaar velden en andere meta gegevens gekoppeld aan geselecteerde Time Series Insights exemplaren. Door de selectie vakjes aan de rechter kant in te scha kelen, kunt u specifieke exemplaren verbergen of weer geven in de huidige grafiek. 
 
-  [De preview-versie ![](media/v2-update-explorer/preview-well.png)](media/v2-update-explorer/preview-well.png#lightbox)
+  [De preview-versie ![](media/v2-update-explorer/tsi-preview-ui-explorer-well.png)](media/v2-update-explorer/tsi-preview-ui-explorer-well.png#lightbox)
 
 U kunt specifieke gegevens elementen uit uw huidige gegevens bron verwijderen door het besturings element rood **verwijderen** (prullenbak kan) aan de linkerkant van het element te selecteren. Daarnaast kunt u zelf bepalen hoe elk element in de grafiek wordt weer gegeven. U kunt ervoor kiezen om min/Maxe scha duwen, gegevens punten toe te voegen, het element in tijd te verschuiven en het exemplaar op een getrapte manier te visualiseren. 
 
@@ -100,13 +100,13 @@ Daarnaast kunt u met het besturings element verkennen eenvoudig tijd verschuivin
 > [!NOTE]
 > Als het volgende bericht wordt weer gegeven, heeft het exemplaar geen gegevens tijdens de geselecteerde tijds periode. Om het probleem op te lossen, verg root u de tijds Panne of bevestigt u dat het exemplaar gegevens pusht.
 >
-> ![Geen gegevens melding](media/v2-update-explorer/no-data-warning.png)
+> ![Geen gegevens melding](media/v2-update-explorer/tsi-preview-no-data-warning.png)
 
 ## <a name="5-chart-panel"></a>5. deel venster grafiek
 
 Met de grafiek kunt u Time Series-exemplaren als regels weer geven. U kunt het deelvenster van de omgeving, gegevensmodel en tijd van span het Configuratiescherm door te klikken op de webbesturingselementen groter maken van de grafiek samenvouwen. 
 
-  [overzicht van ![-voorbeeld grafiek](media/v2-update-explorer/chart-overview.png)](media/v2-update-explorer/chart-overview.png#lightbox)
+  [overzicht van ![-voorbeeld grafiek](media/v2-update-explorer/tsi-preview-chart-overview.png)](media/v2-update-explorer/tsi-preview-chart-overview.png#lightbox)
 
 1. **Grafiek type**: Hiermee bepaalt u welke gegevens elementen beschikbaar zijn voor visualisatie.
 
@@ -122,29 +122,29 @@ Met de grafiek kunt u Time Series-exemplaren als regels weer geven. U kunt het d
 
 1. **Element marker**: het momenteel geselecteerde gegevens element en de bijbehorende details.
 
-U kunt verder inzoomen op een specifiek gegevens segment door met de rechter muisknop op een gegevens punt in de huidige grafiek **te klikken** terwijl u de muis ingedrukt houdt en vervolgens het geselecteerde gebied naar het gewenste eind punt sleept. **Klik** met de rechter muisknop op het grijze, geselecteerde gebied en klik op in- **/uitzoomen** zoals hieronder wordt weer gegeven. U kunt ook de telemetrie-gebeurtenissen in de geselecteerde tijds periode weer geven en downloaden.
+U kunt verder inzoomen op een specifiek gegevens segment door met de rechter muisknop op een gegevens punt in de huidige grafiek **te klikken** terwijl u de muis ingedrukt houdt en vervolgens het geselecteerde gebied naar het gewenste eind punt sleept. **Klik** met de rechter muisknop op het blauwe, geselecteerde gebied en klik op in- **/uitzoomen** zoals hieronder wordt weer gegeven. U kunt ook de telemetrie-gebeurtenissen in de geselecteerde tijds periode weer geven en downloaden.
 
   [Zoom diagram ![voorbeeld grafiek](media/v2-update-explorer/preview-chart-zoom.png)](media/v2-update-explorer/preview-chart-zoom.png#lightbox)
 
 Nadat u de **Zoom** actie hebt uitgevoerd, ziet u de geselecteerde gegevensset. Selecteer het besturings element opmaken om de drie weer gaven van uw Time Series Insights gegevens op de y-as te door lopen.
 
-  [y-as ![voorbeeld grafiek](media/v2-update-explorer/standard-chart.png)](media/v2-update-explorer/standard-chart.png#lightbox)
+  [y-as ![voorbeeld grafiek](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png)](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png#lightbox)
 
 Hier ziet u een voor beeld van een **overlappende grafiek**:
 
-  [optie ![overlappende grafiek](media/v2-update-explorer/overlapping-chart.png)](media/v2-update-explorer/overlapping-chart.png#lightbox)
+  [optie ![overlappende grafiek](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png)](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png#lightbox)
 
-De knop **meer acties** wordt uitgevouwen om het **bestand down load als CSV** weer te geven en **te exporteren naar Power bi** opties.
+De knop **meer acties** wordt uitgebreid om de **down load als CSV**weer te geven, **verbinding te maken met Power bi**, **diagram gegevens weer te geven als een tabel**en opties voor **onbewerkte gebeurtenissen te verkennen** .
 
   [optie ![meer acties](media/v2-update-explorer/more-actions-icon.png)](media/v2-update-explorer/more-actions-icon.png#lightbox)
 
-Meer informatie over de [Time Series Insights systeem eigen Power bi-connector](concepts-power-bi.md).
+Meer informatie over de optie **verbinding maken met Power bi** in [Time Series Insights systeem eigen Power bi-connector](concepts-power-bi.md).
 
 ## <a name="6-time-editor-panel"></a>6. time editor-paneel
 
 Wanneer u met Time Series Insights werkt, selecteert u eerst een tijds Panne. De geselecteerde tijds periode bepaalt de gegevensset die beschikbaar is voor manipulatie met de Time Series Insights widgets voor updates.
 
-  [deel venster ![tijd selecteren](media/v2-update-explorer/timeline-element.png)](media/v2-update-explorer/timeline-element.png#lightbox)
+  [deel venster ![tijd selecteren](media/v2-update-explorer/tsi-preview-explorer-timeline-element.png)](media/v2-update-explorer/tsi-preview-explorer-timeline-element.png#lightbox)
 
 > [!TIP]
 > Een deel van de tijd lijn is gemarkeerd in een oranje of oranje kleur om de hoeveelheid gegevens aan te geven die beschikbaar is in de warme opslag.
@@ -171,15 +171,15 @@ Het navigatie venster Time Series Insights Preview wordt boven aan uw Time Serie
 
 ### <a name="current-session-share-link-control"></a>Huidige bestandsshare koppeling sessiebeheer
 
-  [pictogram ![-share](media/v2-update-explorer/share-icon.png)](media/v2-update-explorer/share-icon.png#lightbox)
+  [pictogram ![-share](media/v2-update-explorer/tsi-preview-explorer-share-icon.png)](media/v2-update-explorer/tsi-preview-explorer-share-icon.png#lightbox)
 
 Selecteer het pictogram nieuwe **share** om een URL-koppeling met uw team te delen.
 
-  [![uw exemplaar-URL delen](media/v2-update-explorer/share-your-view.png)](media/v2-update-explorer/share-your-view.png#lightbox)
+  [![uw exemplaar-URL delen](media/v2-update-explorer/tsi-preview-explorer-share-your-view.png)](media/v2-update-explorer/tsi-preview-explorer-share-your-view.png#lightbox)
 
 ### <a name="tenant-section"></a>Sectie tenant
 
-  [Tenant selectie ![](media/v2-update-explorer/tenant-selection.png)](media/v2-update-explorer/tenant-selection.png#lightbox)
+  [Tenant selectie ![](media/v2-update-explorer/tsi-preview-explorer-tenant-selection.png)](media/v2-update-explorer/tsi-preview-explorer-tenant-selection.png#lightbox)
 
 * Hier worden de gegevens van uw huidige Time Series Insights aanmeldings account weer gegeven.
 * Gebruik deze optie om te scha kelen tussen de beschik bare Time Series Insights-Thema's.
@@ -189,7 +189,7 @@ Selecteer het pictogram nieuwe **share** om een URL-koppeling met uw team te del
 
 Als u een nieuw thema wilt selecteren, selecteert u het profiel pictogram in de rechter bovenhoek. Selecteer vervolgens **thema wijzigen**.
 
-  [selectie van ![thema](media/v2-update-explorer/theme-selection.png)](media/v2-update-explorer/theme-selection.png#lightbox)
+  [selectie van ![thema](media/v2-update-explorer/tsi-preview-theme-selection.png)](media/v2-update-explorer/tsi-preview-theme-selection.png#lightbox)
 
 > [!TIP]
 > Taal selectie is ook beschikbaar door uw profiel pictogram te selecteren.
@@ -199,7 +199,7 @@ Azure Time Series Insights Preview ondersteunt twee thema's:
 * **Licht thema**: het standaard thema dat in dit document wordt weer gegeven.
 * **Donker thema**: Hiermee wordt de Explorer weer gegeven zoals hier:
 
-  [![geselecteerd donker thema](media/v2-update-explorer/dark-theme-selected.png)](media/v2-update-explorer/dark-theme-selected.png#lightbox)
+  [![geselecteerd donker thema](media/v2-update-explorer/tsi-preview-dark-theme-selected.png)](media/v2-update-explorer/tsi-preview-dark-theme-selected.png#lightbox)
 
 ## <a name="s1s2-environment-controls"></a>Besturingselementen voor S1/S2-omgeving
 
@@ -226,7 +226,7 @@ Zie de [Time Series-expressie (TSX)](https://docs.microsoft.com/rest/api/time-se
 
 ### <a name="examples-of-where-clauses"></a>Voor beelden van WHERE-componenten
 
-  [voor beelden van de component WHERE ![](media/v2-update-explorer/example-queries.png)](media/v2-update-explorer/example-queries.png#lightbox)
+  [voor beelden van de component WHERE ![](media/v2-update-explorer/tsi-preview-example-queries.png)](media/v2-update-explorer/tsi-preview-example-queries.png#lightbox)
 
 **Meting**: een vervolg keuzelijst waarin alle numerieke kolommen worden weer gegeven (**dubbels**) die u als elementen voor uw huidige grafiek kunt gebruiken.
 

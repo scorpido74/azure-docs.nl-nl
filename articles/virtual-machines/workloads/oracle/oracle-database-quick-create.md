@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 6d43fa2621aa95bdcf18d5c033d1347e13dc3f67
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 53ffc6dd36dbf8588b5e1eb26b461e22c7445092
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101475"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747677"
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Een Oracle Database maken in een Azure VM
 
@@ -27,9 +27,7 @@ In deze hand leiding vindt u informatie over het gebruik van de Azure CLI om een
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
-
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze snelstartgids de versie Azure CLI 2.0.4 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze Quickstart gebruikmaken van Azure CLI versie 2.0.4 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -73,7 +71,7 @@ Nadat u de virtuele machine hebt gemaakt, toont Azure CLI informatie die lijkt o
 
 ## <a name="connect-to-the-vm"></a>Verbinding maken met de virtuele machine
 
-Gebruik de volgende opdracht om een SSH-sessie met de virtuele machine te maken. Vervang het IP-adres door `publicIpAddress` de waarde voor uw VM.
+Gebruik de volgende opdracht om een SSH-sessie met de virtuele machine te maken. Vervang het IP-adres door de `publicIpAddress` waarde voor uw VM.
 
 ```bash 
 ssh azureuser@<publicIpAddress>
@@ -150,7 +148,7 @@ Voordat u verbinding maakt, moet u twee omgevings variabelen instellen: *ORACLE_
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
-U kunt ook ORACLE_HOME-en ORACLE_SID-variabelen toevoegen aan het. bashrc-bestand. Hierdoor worden de omgevings variabelen opgeslagen voor toekomstige aanmeldingen. Bevestig dat u de volgende instructies aan het bestand `~/.bashrc` hebt toegevoegd met de editor van uw keuze.
+U kunt ook ORACLE_HOME-en ORACLE_SID variabelen toevoegen aan het. bashrc-bestand. Hiermee worden de omgevings variabelen voor toekomstige aanmeldingen opgeslagen. Controleer of de volgende instructies aan het `~/.bashrc` bestand zijn toegevoegd met de editor van uw keuze.
 
 ```bash
 # Add ORACLE_HOME. 
@@ -190,14 +188,14 @@ Voor een GUI-beheer programma dat u kunt gebruiken om de data base te verkennen,
       3           PDB1                      MOUNT
     ```
 
-4. Als de OPEN_MODE voor `PDB1` niet lezen schrijven is, voert u de volgende opdrachten uit om PDB1 te openen:
+4. Als de OPEN_MODE voor `PDB1` niet lezen is, voert u de volgende opdrachten uit om PDB1 te openen:
 
    ```bash
     alter session set container=pdb1;
     alter database open;
    ```
 
-U moet typen `quit` om de sqlplus-sessie te beëindigen en `exit` te typen om de Oracle-gebruiker af te melden.
+U moet `quit` typen om de sqlplus-sessie te beëindigen en `exit` te typen om de Oracle-gebruiker af te melden.
 
 ## <a name="automate-database-startup-and-shutdown"></a>Data bases automatisch opstarten en afsluiten
 
@@ -208,13 +206,13 @@ De Oracle-Data Base wordt standaard niet automatisch gestart wanneer u de virtue
     sudo su -
     ```
 
-2.  Bewerk het bestand `/etc/oratab` met uw favoriete editor en wijzig de standaard instelling `N` in `Y`:
+2.  Bewerk het bestand `/etc/oratab` met uw favoriete editor en wijzig de standaard `N` in `Y`:
 
     ```bash
     cdb1:/u01/app/oracle/product/12.1.0/dbhome_1:Y
     ```
 
-3.  Maak een bestand met `/etc/init.d/dbora` de naam en plak de volgende inhoud:
+3.  Maak een bestand met de naam `/etc/init.d/dbora` en plak de volgende inhoud:
 
     ```
     #!/bin/sh

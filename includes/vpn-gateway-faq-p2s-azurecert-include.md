@@ -8,14 +8,22 @@ ms.topic: include
 ms.date: 08/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 93f6bc8533218af7f0e6dcd1c5f7be6fe8c00e29
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: f322803d3484b4ec2d5449e19d67d75b35d6d92f
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "69520830"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751533"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
+
+### <a name="what-should-i-do-if-im-getting-a-certificate-mismatch-when-connecting-using-certificate-authentication"></a>Wat moet ik doen als ik een certificaat krijg dat niet overeenkomt bij het verbinding maken met behulp van certificaat verificatie?
+
+Schakel het selectie vakje **de identiteit van de server controleren door het certificaat te valideren** uit of **Voeg de server-FQDN samen met het certificaat toe** wanneer u een profiel hand matig maakt. U kunt dit doen door **Rasphone** uit te voeren vanaf een opdracht prompt en het profiel te selecteren in de vervolg keuzelijst.
+
+Het overs laan van de validatie van server identiteiten wordt niet aanbevolen in het algemeen, maar met Azure-certificaat authenticatie wordt hetzelfde certificaat gebruikt voor Server validatie in het VPN-tunnelingprotocol (IKEv2/SSTP) en het EAP-protocol. Omdat het server certificaat en de FQDN al door het protocol VPN-tunneling zijn gevalideerd, is het overbodig om het opnieuw te valideren in EAP.
+
+![punt-naar-site](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Server certificaat")
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-to-generate-certificates-for-point-to-site-connectivity"></a>Kan ik mijn eigen interne PKI-basis certificerings instantie gebruiken voor het genereren van certificaten voor punt-naar-site-connectiviteit?
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/09/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 2596351a0db921276ad74c27e30a8e2af93f2f36
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: cf79911c24998c3d00937937cce5c68bbb564f1e
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980912"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75752352"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Netwerk limieten-Azure Resource Manager de volgende limieten gelden alleen voor netwerk resources die worden beheerd via **Azure Resource Manager** per regio per abonnement. Meer informatie over het [weer geven van uw huidige resource gebruik op basis van uw abonnements limieten](../articles/networking/check-usage-against-limits.md).
 
@@ -58,21 +58,29 @@ ms.locfileid: "74980912"
 #### <a name="load-balancer"></a>Limieten van Load Balancer
 De volgende beperkingen gelden alleen voor netwerkresources die worden beheerd via Azure Resource Manager. De beperkingen gelden per regio en per abonnement. Meer informatie over het [weer geven van uw huidige resource gebruik op basis van uw abonnements limieten](../articles/networking/check-usage-against-limits.md).
 
-| Bron | Standaard/maximum limiet |
-| --- | --- |
-| Load balancers | 1000 | 
-| Regels per resource, basis | 250 |
-| Regels per resource, standaard | 1,500 | 
-| Regels per IP-configuratie | 299 |
-| Regels per NIC | 300 |
-| Front-end-IP-configuraties, basis | 200 |
-| Front-end-IP-configuraties, standaard | 600 |
-| Back-end-pool, Basic | 100, één beschikbaarheidsset |
-| Back-end-pool, standaard | 1\.000, één virtueel netwerk |
-| Back-end-resources per load balancer, standaard<sup>1</sup> | 150 |
-| Poorten met hoge Beschik baarheid, standaard | 1 per interne front-end |
+**Standard Load Balancer**
+
+| Bron                                | Standaard/maximum limiet         |
+|-----------------------------------------|-------------------------------|
+| Load balancers                          | 1000                         |
+| Regels per resource                      | 1,500                         |
+| Regels per NIC (voor alle IP-adressen op een NIC) | 300                           |
+| Front-end-IP-configuraties             | 600                           |
+| Grootte van back-end-pool                          | 1\.000 exemplaren, één virtueel netwerk |
+| Backend-bronnen per load balancer<sup>1<sup>   | 150                 |
+| Poorten met hoge Beschik baarheid                 | 1 per interne frontend      |
 
 <sup>1</sup> De limiet is Maxi maal 150 resources, in een combi natie van zelfstandige virtuele-machine resources, bronnen voor beschikbaarheids sets en het instellen van resources met virtuele-machine schaal sets.
+
+**Basis Load Balancer**
+
+| Bron                                | Standaard/maximum limiet        |
+|-----------------------------------------|------------------------------|
+| Load balancers                          | 1000                        |
+| Regels per resource                      | 250                          |
+| Regels per NIC (voor alle IP-adressen op een NIC) | 300                          |
+| Front-end-IP-configuraties             | 200                          |
+| Grootte van back-end-pool                           | 100 exemplaren, één beschikbaarheidsset |
 
 #### <a name="virtual-networking-limits-classic"></a>De volgende limieten gelden alleen voor netwerk resources die worden beheerd via het **klassieke** implementatie model per abonnement. Meer informatie over het [weer geven van uw huidige resource gebruik op basis van uw abonnements limieten](../articles/networking/check-usage-against-limits.md).
 

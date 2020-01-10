@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 55fc18a718d0c69ba90a86ff6aea00d32a8f465b
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 9829e713f19ab9755e9dc79d676446c8048e09b3
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196735"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751182"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Diagnostische logboek registratie voor een netwerk beveiligings groep
 
@@ -29,13 +29,13 @@ Een netwerk beveiligings groep (NSG) bevat regels voor het toestaan of weigeren 
 
 Diagnostische logboeken zijn alleen beschikbaar voor Nsg's die zijn geïmplementeerd via het Azure Resource Manager-implementatie model. U kunt geen diagnostische logboek registratie inschakelen voor Nsg's die zijn geïmplementeerd via het klassieke implementatie model. Zie [Wat is Azure-implementatie modellen](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)? voor een beter inzicht in de twee modellen.
 
-Diagnostische logboek registratie is afzonderlijk ingeschakeld voor *elk* NSG waarvoor u Diagnostische gegevens wilt verzamelen. Zie Azure [activity logging](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)(Engelstalig) als u geïnteresseerd bent in de logboeken of activiteiten in plaats daarvan.
+Diagnostische logboek registratie is afzonderlijk ingeschakeld voor *elk* NSG waarvoor u Diagnostische gegevens wilt verzamelen. Zie Azure [activity logging](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)(Engelstalig) als u geïnteresseerd bent in de logboeken of activiteiten in plaats daarvan.
 
 ## <a name="enable-logging"></a>Logboekregistratie inschakelen
 
 U kunt de [Azure-Portal](#azure-portal), [Power shell](#powershell)of de [Azure cli](#azure-cli) gebruiken om diagnostische logboek registratie in te scha kelen.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure-portal
 
 1. Meld u aan bij de [portal](https://portal.azure.com).
 2. Selecteer **alle services**en typ vervolgens *netwerk beveiligings groepen*. Wanneer **netwerk beveiligings groepen** worden weer gegeven in de zoek resultaten, selecteert u deze.
@@ -48,7 +48,7 @@ U kunt de [Azure-Portal](#azure-portal), [Power shell](#powershell)of de [Azure 
 
     | Instelling                                                                                     | Waarde                                                          |
     | ---------                                                                                   |---------                                                       |
-    | Naam                                                                                        | Een naam van uw keuze.  Bijvoorbeeld: *myNsgDiagnostics*      |
+    | Name                                                                                        | Een naam van uw keuze.  Bijvoorbeeld: *myNsgDiagnostics*      |
     | **Archiveren naar een opslag account**, **streamen naar een event hub**en **verzenden naar log Analytics** | U kunt zoveel bestemmingen selecteren als u kiest. Zie [logboek doelen](#log-destinations)voor meer informatie over elk van deze.                                                                                                                                           |
     | LOG                                                                                         | Selecteer een van beide of beide logboek categorieën. Zie [logboek categorieën](#log-categories)voor meer informatie over de gegevens die voor elke categorie worden vastgelegd.                                                                                                                                             |
 6. Logboeken weer geven en analyseren. Zie [Logboeken weer geven en analyseren](#view-and-analyze-logs)voor meer informatie.
@@ -92,7 +92,7 @@ Als u alleen gegevens wilt vastleggen voor de ene categorie of de andere, in pla
 
 Logboeken weer geven en analyseren. Zie [Logboeken weer geven en analyseren](#view-and-analyze-logs)voor meer informatie.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 U kunt de opdrachten uitvoeren die volgen in de [Azure Cloud shell](https://shell.azure.com/bash), of door de Azure cli vanaf uw computer uit te voeren. De Azure Cloud Shell is een gratis interactieve shell. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u de CLI vanaf uw computer uitvoert, hebt u versie 2.0.38 of hoger nodig. Voer `az --version` op uw computer uit om de geïnstalleerde versie te vinden. Als u een upgrade wilt uitvoeren, raadpleegt u [Azure cli installeren](/cli/azure/install-azure-cli?view=azure-cli-latest). Als u de CLI lokaal uitvoert, moet u ook `az login` uitvoeren om u aan te melden bij Azure met een account dat over de [benodigde machtigingen](virtual-network-network-interface.md#permissions)beschikt.
 
@@ -198,7 +198,7 @@ Het logboek regel item bevat informatie over elke regel die wordt toegepast op r
 
 ## <a name="view-and-analyze-logs"></a>Logboeken weer geven en analyseren
 
-Zie [overzicht van Azure Diagnostische logboeken](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over het weer geven van diagnostische logboek gegevens. Als u Diagnostische gegevens verzendt naar:
+Zie [overzicht van Azure Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over het weer geven van diagnostische logboek gegevens. Als u Diagnostische gegevens verzendt naar:
 - **Azure monitor logboeken**: u kunt de [analyse oplossing voor netwerk beveiligings groepen](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
 ) gebruiken voor uitgebreid inzicht. De oplossing biedt visualisaties voor NSG-regels waarmee verkeer, per MAC-adres, van de netwerk interface in een virtuele machine wordt toegestaan of geweigerd.
 - **Azure Storage account**: gegevens worden geschreven naar een PT1H. JSON-bestand. U kunt het volgende vinden:
@@ -207,7 +207,7 @@ Zie [overzicht van Azure Diagnostische logboeken](../azure-monitor/platform/reso
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [activiteiten logboek registratie](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), voorheen bekend als audit of operationele Logboeken. Activiteiten logboek registratie is standaard ingeschakeld voor Nsg's die zijn gemaakt via een Azure-implementatie model. Als u wilt bepalen welke bewerkingen zijn voltooid op Nsg's in het activiteiten logboek, zoekt u naar vermeldingen die de volgende resource typen bevatten:
+- Meer informatie over [activiteiten logboek registratie](../azure-monitor/platform/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), voorheen bekend als audit of operationele Logboeken. Activiteiten logboek registratie is standaard ingeschakeld voor Nsg's die zijn gemaakt via een Azure-implementatie model. Als u wilt bepalen welke bewerkingen zijn voltooid op Nsg's in het activiteiten logboek, zoekt u naar vermeldingen die de volgende resource typen bevatten:
   - Microsoft.ClassicNetwork/networkSecurityGroups
   - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft.Network/networkSecurityGroups

@@ -7,13 +7,13 @@ manager: cshankar
 services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 8a464a8a635e0531eba2f9cc6fbceeb9edcea8bb
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.date: 01/07/2020
+ms.openlocfilehash: 1f6b753052b882b75884503f8c05f34b8cead821
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705980"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75749376"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Gegevens visualiseren van Time Series Insights in Power BI
 
@@ -41,8 +41,8 @@ Zorg ervoor dat u zich aanmeldt voor een [gratis Azure-abonnement](https://azure
 
 Voer de volgende stappen uit om uw Time Series Insights-omgeving te verbinden met Power BI:
 
-1. Time Series Insights Explorer openen                      
-1. Gegevens exporteren als een query of als onbewerkte gegevens                       
+1. Time Series Insights Explorer openen
+1. Gegevens exporteren als een query of als onbewerkte gegevens
 1. Power BI Desktop openen
 1. Laden vanuit aangepaste query
 
@@ -51,13 +51,14 @@ Voer de volgende stappen uit om uw Time Series Insights-omgeving te verbinden me
 Aan de slag gaan:
 
 1. Open de Time Series Insights preview Explorer en uw gegevens te openen.
-1. Wanneer u een weer gave hebt gemaakt waarin u tevreden bent, gaat u naar het vervolg keuzemenu **meer acties** en klikt u op **verbinding maken met Power bi**. 
+1. Wanneer u een weer gave hebt gemaakt waarin u tevreden bent, gaat u naar het vervolg keuzemenu **meer acties** en klikt u op **verbinding maken met Power bi**.
 
     [![Time Series Insights preview Verkenner exporteren](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
 1. Stel de para meters in op dit tabblad:
 
-   1. Geef een relatieve periode op die u wilt weer geven. Als u tevreden bent met uw bestaande weer gave, kunt u deze als een **bestaande periode**laten staan. 
+   1. Geef een relatieve periode op die u wilt weer geven. Als u tevreden bent met uw bestaande weer gave, kunt u deze als een **bestaande periode**laten staan.
+   
    1. U kunt kiezen tussen **geaggregeerde** en **onbewerkte gebeurtenissen**. 
    
        > [!NOTE]
@@ -70,7 +71,7 @@ Aan de slag gaan:
 
    1. Als u uw Time Series Insights-exemplaar voor **warme Store**niet hebt geconfigureerd, wordt een waarschuwing weer gegeven.
 
-       [![verbinding maken](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
+       [waarschuwing voor warme Store ![](media/how-to-connect-power-bi/connect-to-power-bi-warning.png)](media/how-to-connect-power-bi/connect-to-power-bi-warning.png#lightbox)
 
        > [!TIP]
        > U kunt uw bestaande exemplaar configureren voor **warme Store** in de Azure Portal.

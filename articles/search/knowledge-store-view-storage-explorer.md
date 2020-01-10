@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: ca2df05cf20ef51b2d5ca866f22bd9450dd6acaf
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.date: 12/30/2019
+ms.openlocfilehash: 167316eca1f85530a040d4543f98ae34a9fb93c6
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406557"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75754061"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Een kennis archief met Storage Explorer weer geven
 
@@ -24,7 +24,7 @@ In dit artikel leert u hoe u verbinding kunt maken met een kennis archief en hoe
 
 ## <a name="prerequisites"></a>Vereisten
 
-+ Volg de stappen in [een kennis archief maken in azure Portal](knowledge-store-create-portal.md) of [maak een Azure Cognitive Search Knowledge Store door rest te gebruiken](knowledge-store-create-rest.md) om het voor beeld van een kennis archief te maken dat wordt gebruikt in dit overzicht.
++ Volg de stappen in [een kennis archief maken in azure Portal](knowledge-store-create-portal.md) om het voor beeld-kennis archief te maken dat wordt gebruikt in dit overzicht.
 
 + U hebt ook de naam nodig van het Azure Storage-account dat u hebt gebruikt om het kennis archief te maken, samen met de toegangs sleutel van de Azure Portal.
 
@@ -36,7 +36,7 @@ In dit artikel leert u hoe u verbinding kunt maken met een kennis archief en hoe
 
 1. Vouw de lijst **tabellen** uit om een lijst met Azure-tabel prognoses weer te geven die zijn gemaakt tijdens het uitvoeren van de wizard **gegevens importeren** in uw hotel voor beeld van de voorbeeld gegevens.
 
-Selecteer een wille keurige tabel om de verrijkte gegevens weer te geven, met inbegrip van belang rijke sentiment-scores, breedte-en breedte graad en meer.
+Selecteer een tabel om de verrijkte gegevens weer te geven, met inbegrip van belang rijke zinsdelen en sentiment-scores.
 
    ![Tabellen in Storage Explorer weer geven](media/knowledge-store-view-storage-explorer/storage-explorer-tables.png "Tabellen in Storage Explorer weer geven")
 
@@ -50,7 +50,7 @@ Als u query's wilt uitvoeren, klikt u op **query** op de opdracht balk en voert 
 
 ## <a name="clean-up"></a>Opruimen
 
-Wanneer u in uw eigen abonnement werkt, is het een goed idee aan het einde van een project om te bepalen of u nog steeds de resources nodig hebt die u hebt gemaakt. Resources die actief zijn, kunnen kosten in rekening worden. U kunt resources afzonderlijk verwijderen of de resource groep verwijderen om de volledige set resources te verwijderen.
+Wanneer u in uw eigen abonnement werkt, is het een goed idee om aan het einde van een project te bepalen of u de gemaakte resources nog nodig hebt. Resources die actief blijven, kunnen u geld kosten. U kunt afzonderlijke resources verwijderen, maar ook de hele resourcegroep. Hiermee verwijdert u de volledige set met resources.
 
 U kunt resources vinden en beheren in de portal met behulp van de koppeling **alle resources** of **resource groepen** in het navigatie deel venster aan de linkerkant.
 
@@ -62,4 +62,4 @@ Verbind dit kennis archief met Power BI voor een diepere analyse of ga door met 
 
 > [!div class="nextstepaction"]
 > [Verbinding maken met Power BI](knowledge-store-connect-power-bi.md)
-> [een Knowledge Store in rest](knowledge-store-howto.md)
+> [een Knowledge Store in rest](knowledge-store-create-rest.md)

@@ -1,5 +1,6 @@
 ---
-title: 'Zelf studie: Azure Database Migration Service gebruiken om een online migratie uit te voeren van SQL Server naar een beheerde instantie van Azure SQL Database | Microsoft Docs'
+title: 'Zelf studie: SQL Server online migreren naar een beheerd exemplaar van SQL'
+titleSuffix: Azure Database Migration Service
 description: Meer informatie over het uitvoeren van een online migratie van SQL Server on-premises naar een Azure SQL Database beheerd exemplaar met behulp van Azure Database Migration Service.
 services: dms
 author: HJToland3
@@ -8,15 +9,15 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 12/04/2019
-ms.openlocfilehash: 53c0601be29c5cac9bddc37158d705f07349323d
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.date: 01/08/2020
+ms.openlocfilehash: 88bc90a50fb9579e29b8b31b4be23052275b2b28
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975020"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75746849"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Zelf studie: SQL Server naar een beheerde instantie van Azure SQL Database migreren met behulp van DMS
 
@@ -42,6 +43,9 @@ In deze zelfstudie leert u het volgende:
 > [!IMPORTANT]
 > Voor een optimale migratie-ervaring raadt micro soft aan om een instantie van Azure Database Migration Service te maken in dezelfde Azure-regio als de doel database. Het verplaatsen van gegevens naar regio's of geografieën kan het migratieproces vertragen en fouten veroorzaken.
 
+> [!IMPORTANT]
+> Het is belang rijk om de duur van het online migratie proces zo veel mogelijk te beperken, om het risico van de onderbreking te minimaliseren die wordt veroorzaakt door herconfiguratie van exemplaren of gepland onderhoud. In het geval van een dergelijke gebeurtenis wordt het migratie proces vanaf het begin gestart. In het geval van gepland onderhoud geldt een respijt periode van 36 uur voordat het migratie proces opnieuw wordt gestart.
+
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
 In dit artikel wordt een online migratie van SQL Server naar een SQL Database beheerd exemplaar beschreven. Zie SQL Server voor een offline migratie [naar een SQL database Managed instance offline migreren met behulp van DMS](tutorial-sql-server-to-managed-instance.md).
@@ -50,10 +54,10 @@ In dit artikel wordt een online migratie van SQL Server naar een SQL Database be
 
 Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
-* Maak een Azure Virtual Network (VNet) voor Azure Database Migration Service met behulp van het Azure Resource Manager implementatie model, dat site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). [Informatie over netwerktopologieën voor het Azure SQL database van beheerde exemplaar migraties met behulp van Azure database Migration service](https://aka.ms/dmsnetworkformi). Voor meer informatie over het maken van een VNet raadpleegt u de [documentatie van Virtual Network](https://docs.microsoft.com/azure/virtual-network/)en met name de Quick Start-artikelen met stapsgewijze Details.
+* Maak een Microsoft Azure Virtual Network voor Azure Database Migration Service met behulp van het Azure Resource Manager implementatie model, dat site-naar-site-verbinding met uw on-premises bron servers biedt met behulp van [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) of [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). [Informatie over netwerktopologieën voor het Azure SQL database van beheerde exemplaar migraties met behulp van Azure database Migration service](https://aka.ms/dmsnetworkformi). Raadpleeg de [documentatie van Virtual Network](https://docs.microsoft.com/azure/virtual-network/)voor meer informatie over het maken van een virtueel netwerk, met name de Quick Start-artikelen met stapsgewijze Details.
 
     > [!NOTE]
-    > Als u tijdens de VNet-installatie gebruikmaakt van ExpressRoute met Network-peering voor micro soft, voegt u de volgende service- [eind punten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) toe aan het subnet waarin de service wordt ingericht:
+    > Als u tijdens de installatie van het virtuele netwerk ExpressRoute gebruikt met Network-peering voor micro soft, voegt u de volgende service- [eind punten](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) toe aan het subnet waarin de service wordt ingericht:
     >
     > * Eind punt van de doel database (bijvoorbeeld SQL-eind punt, Cosmos DB-eind punt, enzovoort)
     > * Opslag eindpunt
@@ -66,9 +70,9 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
     > [!IMPORTANT]
     > Met betrekking tot het opslag account dat wordt gebruikt als onderdeel van de migratie, moet u:
     > * Kies ervoor te zorgen dat alle netwerken toegang hebben tot het opslag account.
-    > * Stel Acl's in voor het VNet. Zie voor meer informatie het artikel [Azure Storage firewalls en virtuele netwerken configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+    > * Stel Acl's in voor het virtuele netwerk. Zie voor meer informatie het artikel [Azure Storage firewalls en virtuele netwerken configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
-* Zorg ervoor dat de regels van uw VNet-netwerk beveiligings groep niet de volgende binnenkomende communicatie poorten blok keren naar Azure Database Migration Service: 443, 53, 9354, 445, 12000. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)voor meer informatie over het filteren van NSG-verkeer van Azure VNet.
+* Zorg ervoor dat de regels voor de netwerk beveiligings groep van uw virtuele netwerk niet de volgende binnenkomende communicatie poorten blok keren tot Azure Database Migration Service: 443, 53, 9354, 445, 12000. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)voor meer informatie over het filteren van NSG verkeer van virtuele netwerken.
 * Configureer uw [Windows-firewall voor toegang tot de engine van de brondatabase](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Open uw Windows Firewall om Azure Database Migration Service toegang te geven tot de bron SQL Server, die standaard TCP-poort 1433 is.
 * Als u meerdere benoemde exemplaren van SQL Server met dynamische poorten uitvoert, kunt u de SQL Browser-service inschakelen en toegang tot UDP-poort 1434 toestaan via uw firewalls zodat Azure Database Migration Service verbinding kan maken met een benoemd exemplaar in uw bron naam.
@@ -77,7 +81,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 * Zorg ervoor dat de aanmeldingsreferenties die worden gebruikt om het bronexemplaar van SQL Server en het doelexemplaar van Managed Instance te verbinden, lid zijn van de serverrol sysadmin.
 * Geef een SMB-netwerk share op met alle back-upbestanden van de data base en volgende back-upbestanden voor transactie logboeken, die Azure Database Migration Service kunnen gebruiken voor database migratie.
 * Zorg ervoor dat het serviceaccount van het bronexemplaar van SQL Server schrijfbevoegdheid heeft voor de netwerkshare die u hebt gemaakt en dat het computeraccount voor de bronserver lees-/schrijftoegang heeft tot de share.
-* Maak een notitie van een Windows-gebruiker (en wachtwoord) die volledig beheer heeft over de netwerkshare die u eerder hebt gemaakt. Azure Database Migration Service imiteert de gebruikers referentie voor het uploaden van de back-upbestanden naar de Azure storage-container voor de herstel bewerking.
+* Maak een notitie van een Windows-gebruiker (en wachtwoord) die volledig beheer heeft over de netwerkshare die u eerder hebt gemaakt. Azure Database Migration Service imiteert de gebruikers referentie voor het uploaden van de back-upbestanden naar Azure Storage container voor de herstel bewerking.
 * Maak een Azure Active Directory-toepassings-ID die de toepassings-ID-sleutel genereert die Azure Database Migration Service kan gebruiken om verbinding te maken met het doel-Azure data base Managed instance en Azure Storage container. Zie het artikel [Portal gebruiken voor het maken van een Azure Active Directory-toepassing en een -service-principal die toegang hebben tot resources](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) voor meer informatie.
 
   > [!NOTE]
@@ -113,11 +117,11 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 4. Selecteer de locatie waarop u het exemplaar van DMS wilt maken.
 
-5. Selecteer een bestaand VNet of maak een.
+5. Selecteer een bestaand virtueel netwerk of maak een.
 
-    Het VNet biedt Azure Database Migration Service toegang tot de bron-SQL Server en het doel SQL Database beheerde exemplaar.
+    Het virtuele netwerk biedt Azure Database Migration Service toegang tot de bron SQL Server en het doel SQL Database beheerde exemplaar.
 
-    Zie het artikel [een virtueel netwerk maken met behulp van de Azure Portal](https://aka.ms/DMSVnet)voor meer informatie over het maken van een VNet in azure Portal.
+    Zie het artikel [een virtueel netwerk maken met behulp van de Azure Portal](https://aka.ms/DMSVnet)voor meer informatie over het maken van een virtueel netwerk in azure Portal.
 
     Zie voor meer informatie het artikel [Network-topologieën voor het Azure SQL database van beheerde-instantie migraties met behulp van Azure database Migration service](https://aka.ms/dmsnetworkformi).
 
@@ -205,7 +209,7 @@ Nadat er een exemplaar van de service is gemaakt, zoekt u het exemplaar in de Az
     | | |
     |--------|---------|
     |**SMB-netwerksharelocatie** | De lokale SMB-netwerk share of de Azure-bestands share met de back-upbestanden van de volledige data base en de back-upbestanden voor transactie logboeken die Azure Database Migration Service voor migratie kunnen gebruiken. Het serviceaccount waarmee het SQL Server-bronexemplaar wordt uitgevoerd, moet lees-\schrijfbevoegdheid op deze netwerkshare hebben. Geef een FQDN-naam of IP-adressen op van de server in de netwerkshare, bijvoorbeeld '\\\servernaam.domeinnaam.com\back-upmap' of '\\\IP-adres\back-upmap'.|
-    |**Gebruikersnaam** | Zorg ervoor dat de Windows-gebruiker volledig beheer heeft over de netwerkshare die u hierboven hebt opgegeven. Azure Database Migration Service imiteert de gebruikers referentie voor het uploaden van de back-upbestanden naar de Azure storage-container voor de herstel bewerking. Als u Azure-bestands share gebruikt, gebruikt u de naam van het opslag account pre-pended met AZURE \ als de gebruikers naam. |
+    |**Gebruikersnaam** | Zorg ervoor dat de Windows-gebruiker volledig beheer heeft over de netwerkshare die u hierboven hebt opgegeven. Azure Database Migration Service imiteert de gebruikers referentie voor het uploaden van de back-upbestanden naar Azure Storage container voor de herstel bewerking. Als u Azure-bestands share gebruikt, gebruikt u de naam van het opslag account pre-pended met AZURE \ als de gebruikers naam. |
     |**Wachtwoord** | Het wachtwoord voor de gebruiker. Als u Azure-bestands share gebruikt, gebruikt u een sleutel voor het opslag account als wacht woord. |
     |**Abonnement van het Azure Storage-account** | Selecteer het abonnement met het Azure Storage-account. |
     |**Azure Storage-account** | Selecteer het Azure Storage-account waarnaar DMS de back-upbestanden kan uploaden vanuit de SMB-netwerkshare en vervolgens kan gebruiken voor migratie van de database.  Het is raadzaam om het Storage-account te selecteren in dezelfde regio als de DMS-service voor optimale prestaties bij het uploaden van de bestanden. |

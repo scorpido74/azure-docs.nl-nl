@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/17/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7dfa3df078ffe8aac3e63f14624a65a47b11a56a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 9b106ea43e6a11d616ed2212636975bbbbf65631
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353591"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75751917"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Hoeveel VPN-clienteindpunten kan mijn punt-naar-site-configuratie hebben?
 
@@ -35,12 +35,6 @@ De volgende clientbesturingssystemen worden ondersteund:
 * iOS
 
 [!INCLUDE [TLS](vpn-gateway-tls-updates.md)]
-
-### <a name="what-should-i-do-if-i-am-getting-a-certificate-mismatch-when-connecting"></a>Wat moet ik doen als ik een certificaat krijg dat niet overeenkomt met het maken van een verbinding?
-
-Schakel de selectie vakjes **de identiteit van de server controleren door het certificaat te valideren** uit of **Voeg de server-FQDN samen met het certificaat toe** wanneer u een profiel hand matig maakt. U kunt dit doen door **Rasphone** uit te voeren vanaf een opdracht prompt en het profiel te selecteren in de vervolg keuzelijst.
-
-![punt-naar-site](./media/vpn-gateway-faq-p2s-all-include/servercert.png "Server certificaat")
 
 ### <a name="can-i-traverse-proxies-and-firewalls-using-point-to-site-capability"></a>Kan ik met punt-naar-site-functionaliteit proxy's en firewalls passeren?
 

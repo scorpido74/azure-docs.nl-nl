@@ -1,19 +1,15 @@
 ---
 title: Problemen oplossen met Azure automatisch schalen
 description: Het bijhouden van problemen met Azure-automatisch schalen die wordt gebruikt in Service Fabric, Virtual Machines, Web Apps en Cloud Services.
-author: rboucher
-services: azure-monitor
-ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 11/4/2019
-ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: 410c182075d0aa288ad05195958c396f1a357ff1
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 9780cf88070110c4efc13c477d65307aa3985fe5
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893566"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751330"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Problemen oplossen met Azure automatisch schalen
  
@@ -101,7 +97,7 @@ In het scherm instelling voor automatisch schalen gaat u naar het tabblad **uitv
 
 ## <a name="autoscale-resource-logs"></a>Resource logboeken automatisch schalen
 
-Net als elke andere Azure-resource biedt de service voor automatisch schalen [resource logboeken](resource-logs-overview.md). Er zijn twee soorten logboeken.
+Net als elke andere Azure-resource biedt de service voor automatisch schalen [resource logboeken](platform-logs-overview.md). Er zijn twee soorten logboeken.
 
 - **Evaluaties automatisch schalen** : de engine voor automatisch schalen legt logboek vermeldingen voor elke evaluatie van één voor waarde vast telkens wanneer er een controle wordt gedaan.  De vermelding bevat details over de waargenomen waarden van de metrische gegevens, de regels die zijn geëvalueerd en als de evaluatie een schaal actie heeft veroorzaakt.
 

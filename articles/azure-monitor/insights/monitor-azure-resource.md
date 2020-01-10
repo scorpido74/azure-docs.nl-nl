@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2019
-ms.openlocfilehash: 5a46de9fa17790cb93ce7d5a2af8008d34d4dc35
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b092b037cc10671e89f18af287b52f8ad1c0060e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888781"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75747305"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Azure-resources bewaken met Azure Monitor
 Wanneer u belang rijke toepassingen en bedrijfs processen hebt die afhankelijk zijn van Azure-resources, wilt u deze resources controleren op hun Beschik baarheid, prestaties en werking. In dit artikel worden de bewakings gegevens beschreven die worden gegenereerd door Azure-resources en hoe u de functies van Azure Monitor kunt gebruiken om deze gegevens te analyseren en te waarschuwen.
@@ -57,8 +57,8 @@ Resources in azure genereren [Logboeken](../platform/data-platform-logs.md) en [
 
 
 - [Platform metrieken](../platform/data-platform-metrics.md) : numerieke waarden die automatisch met regel matige tussen pozen worden verzameld en een zekere hoogte van een resource op een bepaald moment beschrijven. 
-- [Bron logboeken](../platform/resource-logs-overview.md) : bieden inzicht in bewerkingen die zijn uitgevoerd in een Azure-resource (het gegevens vlak), bijvoorbeeld het verkrijgen van een geheim van een Key Vault of het maken van een aanvraag voor een Data Base. De inhoud en structuur van bron logboeken zijn afhankelijk van de Azure-service en het resource type.
-- [Activiteiten logboek](../platform/activity-logs-overview.md) : biedt inzicht in de bewerkingen op elke Azure-resource in het abonnement van buiten (het beheer vlak), bijvoorbeeld het maken van een nieuwe resource of het starten van een virtuele machine. Hier vindt u informatie over de functies wat, wie en wanneer u schrijf bewerkingen (PUT, POST, DELETE) hebt uitgevoerd voor de resources in uw abonnement.
+- [Bron logboeken](../platform/platform-logs-overview.md) : bieden inzicht in bewerkingen die zijn uitgevoerd in een Azure-resource (het gegevens vlak), bijvoorbeeld het verkrijgen van een geheim van een Key Vault of het maken van een aanvraag voor een Data Base. De inhoud en structuur van bron logboeken zijn afhankelijk van de Azure-service en het resource type.
+- [Activiteiten logboek](../platform/platform-logs-overview.md) : biedt inzicht in de bewerkingen op elke Azure-resource in het abonnement van buiten (het beheer vlak), bijvoorbeeld het maken van een nieuwe resource of het starten van een virtuele machine. Hier vindt u informatie over de functies wat, wie en wanneer u schrijf bewerkingen (PUT, POST, DELETE) hebt uitgevoerd voor de resources in uw abonnement.
 
 
 ## <a name="configuration-requirements"></a>Configuratie vereisten
@@ -67,8 +67,8 @@ Resources in azure genereren [Logboeken](../platform/data-platform-logs.md) en [
 Sommige bewakings gegevens worden automatisch verzameld, maar u moet mogelijk een configuratie uitvoeren, afhankelijk van uw vereisten. Zie de onderstaande informatie voor specifieke informatie voor elk type bewakings gegevens.
 
 - [Platform metrieken](../platform/data-platform-metrics.md) : platform metrieken worden automatisch verzameld in [Azure monitor metrieken](../platform/data-platform-metrics.md) zonder configuratie vereist. Maak een diagnostische instelling voor het verzenden van vermeldingen naar Azure Monitor Logboeken of om ze buiten Azure door te sturen.
-- [Resource logboeken](../platform/resource-logs-overview.md) : resource logboeken worden automatisch gegenereerd door Azure-resources, maar niet zonder een diagnostische instelling.  Maak een diagnostische instelling voor het verzenden van vermeldingen naar Azure Monitor Logboeken of om ze buiten Azure door te sturen.
-- [Activiteiten logboek](../platform/activity-logs-overview.md) : het activiteiten logboek wordt automatisch verzameld zonder vereiste configuratie en kan worden weer gegeven in de Azure Portal. Een diagnostische instelling maken om deze te kopiëren naar Azure Monitor Logboeken of om ze buiten Azure door te sturen.
+- [Resource logboeken](../platform/platform-logs-overview.md) : resource logboeken worden automatisch gegenereerd door Azure-resources, maar niet zonder een diagnostische instelling.  Maak een diagnostische instelling voor het verzenden van vermeldingen naar Azure Monitor Logboeken of om ze buiten Azure door te sturen.
+- [Activiteiten logboek](../platform/platform-logs-overview.md) : het activiteiten logboek wordt automatisch verzameld zonder vereiste configuratie en kan worden weer gegeven in de Azure Portal. Een diagnostische instelling maken om deze te kopiëren naar Azure Monitor Logboeken of om ze buiten Azure door te sturen.
 
 ### <a name="log-analytics-workspace"></a>Log Analytics-werkruimte
 Voor het verzamelen van gegevens in Azure Monitor Logboeken is een Log Analytics-werk ruimte vereist. U kunt snel aan de slag met het bewaken van uw service door een nieuwe werk ruimte te maken, maar er kan ook een waarde zijn in het gebruik van een werk ruimte die gegevens uit andere services verzamelt. Zie [een log Analytics-werk ruimte maken in de Azure Portal](../learn/quick-create-workspace.md) voor meer informatie over het maken van een werk ruimte en [het ontwerpen van de implementatie van uw Azure monitor-logboeken](../platform/design-logs-deployment.md) om het beste ontwerp van de werk ruimte voor uw vereisten te bepalen. Als u een bestaande werk ruimte in uw organisatie gebruikt, hebt u de juiste machtigingen nodig, zoals wordt beschreven in [toegang beheren tot logboek gegevens en werk ruimten in azure monitor](../platform/manage-access.md). 
@@ -127,7 +127,7 @@ Met [log Analytics](../log-query/get-started-portal.md) kunt u werken met [logbo
 
 - Zie aan de [slag met logboek query's in azure monitor](../log-query/get-started-queries.md) voor een zelf studie over het gebruik van de query taal die wordt gebruikt om logboek query's te schrijven.
 - Zie [Azure-resource logboeken verzamelen in log Analytics werk ruimte in azure monitor](../platform/resource-logs-collect-workspace.md) voor informatie over hoe bron logboeken worden verzameld in azure monitor logboeken en Details over hoe u ze in een query kunt openen.
-- Zie [Verzamel modus](../platform/resource-logs-collect-workspace.md#collection-mode) voor een uitleg van hoe bron logboek gegevens worden gestructureerd in azure monitor Logboeken.
+- Zie [Verzamel modus](../platform/resource-logs-collect-workspace.md#resource-log-collection-mode) voor een uitleg van hoe bron logboek gegevens worden gestructureerd in azure monitor Logboeken.
 - Raadpleeg de documentatie voor elke Azure-service voor meer informatie over de tabel in Azure Monitor logs.
 
 ![Logboeken](media/monitor-azure-resource/logs.png)

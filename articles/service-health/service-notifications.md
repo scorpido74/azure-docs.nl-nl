@@ -1,42 +1,37 @@
 ---
 title: Servicestatusmeldingen bekijken met de Azure-portal
-description: Servicestatusmeldingen kunnen u berichten van health-service gepubliceerd door Microsoft Azure weergeven.
-author: stephbaron
-ms.author: stbaron
-services: monitoring
-ms.service: service-health
+description: Met service status meldingen kunt u service status berichten weer geven die zijn gepubliceerd door Microsoft Azure.
 ms.topic: conceptual
 ms.date: 6/27/2019
-ms.subservice: ''
-ms.openlocfilehash: d2e18ae28e79590cb04ee0045341ea817be4a3bc
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 21416edc95d345eb183030a9b0cccb7529305d6d
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538352"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748653"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Servicestatusmeldingen bekijken met de Azure-portal
 
-Servicestatusmeldingen zijn gepubliceerd door de Azure-infrastructuur in de [Azure-activiteitenlogboek](../azure-monitor/platform/activity-logs-overview.md).  De meldingen bevatten informatie over de resources in uw abonnement. Gezien de mogelijk grote hoeveelheid gegevens die zijn opgeslagen in het activiteitenlogboek, bestaat een afzonderlijke gebruikersinterface zodat u gemakkelijk weergeven en waarschuwingen voor servicemeldingen status instellen. 
+Service status meldingen worden door de Azure-infra structuur gepubliceerd in het [Azure-activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md).  De meldingen bevatten informatie over de resources in uw abonnement. Gezien het mogelijk grote volume aan gegevens dat in het activiteiten logboek is opgeslagen, is er een afzonderlijke gebruikers interface waarmee u waarschuwingen kunt bekijken en instellen voor service status meldingen. 
 
-Servicestatusmeldingen zijn informatieve en bruikbare, afhankelijk van de klasse.
+Service status meldingen kunnen informatie of actief zijn, afhankelijk van de klasse.
 
-Zie voor meer informatie over de verschillende soorten servicestatusmeldingen [Service-eigenschappen van de gezondheid van meldingen](service-health-notifications-properties.md).
+Zie [Eigenschappen van service status meldingen](service-health-notifications-properties.md)voor meer informatie over de verschillende klassen van service status meldingen.
 
-## <a name="view-your-service-health-notifications-in-the-azure-portal"></a>Uw servicestatusmeldingen bekijken in Azure portal
+## <a name="view-your-service-health-notifications-in-the-azure-portal"></a>Bekijk uw service status meldingen in de Azure Portal
 
-1. In de [Azure-portal](https://portal.azure.com), selecteer **Monitor**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com) **monitor**.
 
-    ![Schermafbeelding van de Azure portal in het menu met Monitor geselecteerd](./media/service-notifications/home-monitor.png)
+    ![Scherm opname van Azure Portal menu, waarbij monitor is geselecteerd](./media/service-notifications/home-monitor.png)
 
-    Azure Monitor combineert alle controle-instellingen en gegevens in één geconsolideerde weergave. Als eerste wordt de sectie **Activiteitenlogboek** geopend.
+    Azure Monitor worden al uw bewakings instellingen en gegevens samen in één geconsolideerde weer gave. Als eerste wordt de sectie **Activiteitenlogboek** geopend.
 
 1. Selecteer **waarschuwingen**.
 
-    ![Schermafbeelding van de Monitor Activity-log, met waarschuwingen die zijn geselecteerd](./media/service-notifications/service-health-summary.png)
+    ![Scherm opname van het activiteiten logboek controleren, met geselecteerde waarschuwingen](./media/service-notifications/service-health-summary.png)
 
-1. Selecteer **+ waarschuwing voor activiteitenlogboek toevoegen**, en een waarschuwing instellen om te controleren of u ontvangt een melding voor toekomstige servicemeldingen. Zie voor meer informatie, [waarschuwingen voor activiteitenlogboek maken voor servicemeldingen](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+1. Selecteer **+ waarschuwing voor activiteiten logboek toevoegen**en stel een waarschuwing in om ervoor te zorgen dat u wordt gewaarschuwd voor toekomstige service meldingen. Zie [waarschuwingen voor activiteiten logboek maken op service meldingen](../azure-monitor/platform/alerts-activity-log-service-notifications.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [waarschuwingen voor activiteitenlogboeken](../azure-monitor/platform/activity-log-alerts.md).
+* Meer informatie over [waarschuwingen voor activiteiten logboeken](../azure-monitor/platform/activity-log-alerts.md).

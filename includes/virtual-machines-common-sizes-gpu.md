@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 82e62b6d0925aa53fc8456addb4732b16e69080b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9b08dd60020dad6f747167f35e8d172fdc24a59e
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74935804"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751682"
 ---
 Geoptimaliseerde VM-grootten zijn gespecialiseerde virtuele machines die beschikbaar zijn met één of meer NVIDIA-Gpu's. Deze grootten zijn ontworpen voor computerintensieve, grafisch intensieve en visualisatie werk belastingen. Dit artikel bevat informatie over het aantal en het type Gpu's, Vcpu's, gegevens schijven en Nic's. Opslag doorvoer en netwerk bandbreedte worden ook voor elke grootte in deze groepering opgenomen.
 
@@ -93,22 +93,34 @@ Virtuele machines uit de NCv3-serie worden aangedreven door [Nvidia Tesla V100](
 
 *RDMA-compatibel
 
-## <a name="ndv2-series-preview"></a>NDv2-serie (preview-versie)
+## <a name="updated-ndv2-series-preview"></a>Bijgewerkte NDv2-serie (preview-versie)
 
 Premium Storage: ondersteund
 
 Premium Storage caching: ondersteund
 
-InfiniBand: niet ondersteund
+InfiniBand: ondersteund
 
-Virtuele machine uit de NDv2-serie is een nieuwe toevoeging aan de GPU-familie, ontworpen voor de behoeften van de HPC-, AI-en machine learning-workloads. Het is mogelijk met 8 NVIDIA Tesla V100 NVLINK interconnected Gpu's en 40 Intel Xeon Platinum 8168 (Skylake)-kernen en 672 GiB van het systeem geheugen. NDv2-exemplaren bieden uitstekende FP32- en FP64-prestaties voor HPC- en AI-workloads met behulp van Cuda, TensorFlow, Pytorch, Caffe en andere frameworks.
+De virtuele machine uit de NDv2-serie is een nieuwe toevoeging aan de GPU-familie, ontworpen voor de behoeften van de meest veeleisende AI-, machine learning-, simulatie-en HPC-workloads van GPU. 
 
-[Meld u aan en krijg tijdens de preview-periode toegang tot deze machines](https://aka.ms/ndv2signup).
+NDv2 wordt aangedreven door 8 NVIDIA Tesla V100 NVLINK-verbonden Gpu's, elk met 32 GB aan GPU-geheugen. Elke NDv2-VM beschikt ook over 40 niet-HyperThreaded Intel Xeon Platinum 8168 (Skylake)-kernen en 672 GiB van het systeem geheugen. 
+
+NDv2-instanties bieden uitstekende prestaties voor HPC-en AI-workloads die gebruikmaken van CUDA GPU-geoptimaliseerde reken kernels en de vele AI-, ML-en analyse hulpprogramma's die ondersteuning bieden voor GPU-versnelling ' out-of-Box ', zoals tensor flow, Pytorch, Caffe, RAPIDS en andere regelingen. 
+
+De NDv2 is in de praktijk opgebouwd voor zowel reken kundige, intense schaling (8 Gpu's per VM) en uitschalen (waarbij meerdere Vm's samen werken). De NDv2-serie biedt nu ondersteuning voor 100 Gigabit InfiniBand EDR-back-end-netwerken, vergelijkbaar met die van de HB-serie HPC-VM, om hoogwaardige clusters mogelijk te maken voor parallelle scenario's, waaronder gedistribueerde trainingen voor AI en ML. Dit back-upnetwerk biedt ondersteuning voor alle belang rijke InfiniBand-protocollen, met inbegrip van die van de NCCL2-bibliotheken van NVIDIA, waardoor het clusteren van Gpu's naadloos kan worden gegroepeerd.
+
+> Als u InfiniBand op de ND40rs_v2 virtuele machine [inschakelt](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/enable-infiniband) , gebruikt u het OFED-stuur programma 4.7-1.0.0.1 Mellanox.
+
+> Vanwege het toegenomen GPU-geheugen vereist de nieuwe ND40rs_v2 VM het gebruik van [virtuele machines van de tweede generatie](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) en Marketplace-installatie kopieën. 
+
+> [Meld u aan om vroegtijdige toegang tot de preview-versie van de virtuele machine NDv2 te vragen.](https://aka.ms/AzureNDrv2Preview)
+
+> Opmerking: de ND40s_v2 met 16 GB per GPU-geheugen is niet meer beschikbaar voor preview en is vervangen door de bijgewerkte ND40rs_v2.
 <br>
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD): GiB | GPU | GPU-geheugen: GiB | Maximaal aantal gegevensschijven | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximale netwerk bandbreedte | Maximale aantal NIC's |
 |---|---|---|---|---|---|---|---|---|---|
-| Standard_ND40s_v2 | 40 | 672 | 2948 | 8 V100 (NVLink) | 16 | 32 | 80000/800 | 24000 Mbps | 8 |
+| Standard_ND40rs_v2 | 40 | 672 | 2948 | 8 V100 32 GB (NVLink) | 16 | 32 | 80000/800 | 24000 Mbps | 8 |
 
 ## <a name="nd-series"></a>ND-serie
 

@@ -7,22 +7,25 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: 2d08180d40233c0ab990bc700f0412d11647d5f1
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: dfdde1ae981dcd2d539dec3667e44e90cef4d1c8
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349964"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75748046"
 ---
 # <a name="azure-storage-samples-using-java"></a>Azure Storage voor beelden met behulp van Java
 
 De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen en de scenario's die in elk voor beeld worden behandeld. Klik op de koppelingen om de bijbehorende voorbeeld code in GitHub weer te geven.
 
-## <a name="blob-samples"></a>BLOB-voor beelden
+> [!NOTE]
+> In deze voor beelden wordt gebruikgemaakt van de Azure Storage Java V11-bibliotheek. Zie voor [beelden](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob) in de GitHub-opslag plaats voor V12-code.
 
-| **Scenario** | **Voorbeeld code** |
+## <a name="blob-samples-v11"></a>Voor beelden van blobs (V11)
+
+| **Scenario** | **Voorbeeldcode** |
 |--------------|-----------------|
-| Blob toevoegen | [Aan de slag met Azure Blob service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+| BLOB toevoegen | [Aan de slag met Azure Blob service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 | Blok-blob | [Aan de slag met Azure Blob service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 | Clientversleuteling | [Aan de slag met de Azure-versleuteling aan de client zijde in Java](https://github.com/Azure-Samples/storage-java-client-side-encryption) |
 | Blob kopiëren | [Aan de slag met Azure Blob service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
@@ -34,14 +37,14 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 | Paginabereiken ophalen | [Aan de slag met Azure Blob service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java#L399) |
 | BLOB/container lease | [Aan de slag met Azure Blob service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 | BLOB/container weer geven | [Aan de slag met Azure Blob service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| Pagina-blob | [Aan de slag met Azure Blob service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
-| GEBASEERD | [Voor beeld van SAS-tests](https://github.com/Azure/azure-storage-java/blob/89540f018f1160ce55619c6fe7b5f5ff57d0ce10/src/test/java/com/microsoft/azure/storage/Samples.java#L513) |
+| Pagina-BLOB | [Aan de slag met Azure Blob service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
+| SAS | [Voor beeld van SAS-tests](https://github.com/Azure/azure-storage-java/blob/89540f018f1160ce55619c6fe7b5f5ff57d0ce10/src/test/java/com/microsoft/azure/storage/Samples.java#L513) |
 | Service-eigenschappen | [Aan de slag met Azure Blob service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobAdvanced.java) |
 | Moment opname-BLOB | [Aan de slag met Azure Blob service in Java](https://github.com/Azure-Samples/storage-blob-java-getting-started/blob/master/src/BlobBasics.java) |
 
-## <a name="file-samples"></a>Bestands voorbeelden
+## <a name="file-samples-v11"></a>Bestands voorbeelden (V11)
 
-| **Scenario** | **Voorbeeld code** |
+| **Scenario** | **Voorbeeldcode** |
 |--------------|-----------------|
 | Shares/Directory's/bestanden maken | [Aan de slag met Azure File Service in Java](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
 | Shares/mappen/bestanden verwijderen | [Aan de slag met Azure File Service in Java](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
@@ -53,9 +56,9 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 | Shares weer geven | [Aan de slag met Azure File Service in Java](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileBasics.java) |
 | Eigenschappen/meta gegevens/statistieken delen | [Aan de slag met Azure File Service in Java](https://github.com/Azure-Samples/storage-file-java-getting-started/blob/master/src/FileAdvanced.java) |
 
-## <a name="queue-samples"></a>Wachtrij voorbeelden
+## <a name="queue-samples-v11"></a>Voor beelden van wachtrij (V11)
 
-| **Scenario** | **Voorbeeld code** |
+| **Scenario** | **Voorbeeldcode** |
 |--------------|-----------------|
 | Bericht toevoegen | [Aan de slag met Azure Queue service in Java](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java#L63) |
 | Clientversleuteling | [Aan de slag met de Azure-versleuteling aan de client zijde in Java](https://github.com/Azure-Samples/storage-java-client-side-encryption/blob/master/src/gettingstarted/KeyVaultGettingStarted.java) |
@@ -66,9 +69,9 @@ De volgende tabel bevat een overzicht van onze voor beelden van opslag plaatsen 
 | Eigenschappen van Queue-service | [Aan de slag met Azure Queue service in Java](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueAdvanced.java) |
 | Bericht bijwerken | [Aan de slag met Azure Queue service in Java](https://github.com/Azure-Samples/storage-queue-java-getting-started/blob/master/src/QueueBasics.java)
 |
-## <a name="table-samples"></a>Tabel voorbeelden
+## <a name="table-samples-v11"></a>Tabel voorbeelden (V11)
 
-| **Scenario** | **Voorbeeld code** |
+| **Scenario** | **Voorbeeldcode** |
 |--------------|-----------------|
 | Tabel maken | [Aan de slag met de Azure-tabelservice in Java](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
 | Entiteit/tabel verwijderen | [Aan de slag met de Azure-tabelservice in Java](https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java) |
@@ -96,7 +99,7 @@ Bekijk de volgende hand leidingen als u op zoek bent naar instructies voor het i
 
 Voor informatie over voor beelden voor andere talen:
 
-* .NET: [Azure Storage-voorbeelden met behulp van .NET](storage-samples-dotnet.md)
+* .NET: voor [beelden Azure Storage met .net](storage-samples-dotnet.md)
 * Java script/node. js: [Azure Storage voor beelden met behulp van Java script](storage-samples-javascript.md)
 * Python: [Azure Storage voor beelden met behulp van python](storage-samples-python.md)
-* Alle andere talen: [Azure Storage-voor beelden](storage-samples.md)
+* Alle andere talen: [Azure Storage](storage-samples.md) -voor beelden

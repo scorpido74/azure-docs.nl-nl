@@ -7,12 +7,12 @@ ms.service: api-management
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: vlvinogr
-ms.openlocfilehash: 7f5fe404c93b7db22444b9dad97a0d3474c33a16
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 670050efe01fb658fab52a43914f193e9798b828
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257072"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75751140"
 ---
 # <a name="security-controls-for-api-management"></a>Beveiligings controles voor API Management
 
@@ -34,22 +34,22 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 | Beveiligings beheer | Ja/Nee | Opmerkingen| Documentatie |
 |---|---|--|--|
 | Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | | |
-| Logboek registratie en controle op het vlak van controle en beheer| Ja | [Azure Monitor activiteiten logboeken](../azure-monitor/platform/activity-logs-overview.md) | |
-| Logboek registratie en controle van het gegevens vlak| Ja | [Azure monitor Diagnostische logboeken](../azure-monitor/platform/resource-logs-overview.md) en (optioneel) [Azure-toepassing Insights](../azure-monitor/app/app-insights-overview.md).  | |
+| Logboek registratie en controle op het vlak van controle en beheer| Ja | [Azure Monitor activiteiten logboeken](../azure-monitor/platform/platform-logs-overview.md) | |
+| Logboek registratie en controle van het gegevens vlak| Ja | [Azure monitor Diagnostische logboeken](../azure-monitor/platform/platform-logs-overview.md) en (optioneel) [Azure-toepassing Insights](../azure-monitor/app/app-insights-overview.md).  | |
 
 
-## <a name="identity"></a>Identiteit
+## <a name="identity"></a>Identity
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen| Documentatie |
 |---|---|--|--|
 | Authentication| Ja | |  |
-| Authorization| Ja | |  |
+| Autorisatie| Ja | |  |
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Databeveiliging
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen | Documentatie |
 |---|---|--|--|
-| Versleuteling aan server zijde bij rest: Door micro soft beheerde sleutels | Ja | Gevoelige gegevens zoals certificaten, sleutels en geheime naam waarden worden versleuteld met Service-beheerde exemplaren per service-exemplaar. |  |
+| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Gevoelige gegevens zoals certificaten, sleutels en geheime naam waarden worden versleuteld met Service-beheerde exemplaren per service-exemplaar. |  |
 | Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Nee | Alle versleutelings sleutels zijn per service-exemplaar en worden beheerd door de service. |  |
 | Versleuteling op kolom niveau (Azure Data Services)| N/A | |  |
 | Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | [Express route](../expressroute/index.yml) en VNet-versleuteling worden door [Azure-netwerken](../virtual-network/index.yml)verschaft. |  |
@@ -66,7 +66,7 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 In deze sectie worden veelvoorkomende beveiligings problemen gedocumenteerd die niet van invloed zijn op Azure API Management.
 
-| Beveiligingsprobleem               | Description                                                                                                                                                                                                                                                                                                               |
+| Beveiligingsprobleem               | Beschrijving                                                                                                                                                                                                                                                                                                               |
 |-----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Ticketbleed (CVE-2016-9244) | Ticketbleed is een beveiligings probleem in de implementatie van de TLS SessionTicket-extensie die is gevonden in sommige F5-producten. Hiermee kan het lekken (' verbloeden ') van Maxi maal 31 bytes aan gegevens van niet-geïnitialiseerd geheugen. Dit wordt veroorzaakt door de TLS-stack opvulling van een sessie-ID, door gegeven van de client, met gegevens om deze 32 bits lang te maken. |
 

@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: d362512ac6d06577a5c46bb0c6dab461f07ae709
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: f963885f60116bf23087fceb6a92d18e71ac7f24
+ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457016"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75745330"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Fout opsporing door door de gebruiker gedefinieerde functies in azure Digital Apparaatdubbels
 
@@ -35,7 +35,7 @@ Azure Digital Apparaatdubbels ondersteunt robuuste logboek registratie, bewaking
 
 * Lees [hoe u bewaking en logboek registratie configureert](./how-to-configure-monitoring.md)voor logboek registratie configuratie die specifiek is voor Azure Digital apparaatdubbels.
 * Raadpleeg het [Azure monitor](../azure-monitor/overview.md) -overzicht voor meer informatie over de krachtige logboek instellingen die via Azure monitor kunnen worden ingeschakeld.
-* Raadpleeg het artikel [gegevens verzamelen en gebruiken van uw Azure-resources](../azure-monitor/platform/resource-logs-overview.md) voor het configureren van instellingen voor Diagnostische logboeken in azure Digital apparaatdubbels via de Azure Portal, Azure CLI of Power shell.
+* Raadpleeg het artikel [gegevens verzamelen en gebruiken van uw Azure-resources](../azure-monitor/platform/platform-logs-overview.md) voor het configureren van instellingen voor Diagnostische logboeken in azure Digital apparaatdubbels via de Azure Portal, Azure CLI of Power shell.
 
 Na de configuratie kunt u alle logboek categorieën, metrische gegevens en krachtige Azure Monitor Log Analytics-werk ruimten gebruiken ter ondersteuning van uw fout opsporing.
 
@@ -216,4 +216,4 @@ Als u Diagnostische instellingen inschakelt, kunnen deze algemene uitzonde ringe
 
 - Meer informatie over het inschakelen van [controle en logboeken](./how-to-configure-monitoring.md) in azure Digital apparaatdubbels.
 
-- Lees het artikel [overzicht van Azure-activiteiten logboek](../azure-monitor/platform/activity-logs-overview.md) voor meer opties voor Azure-logboek registratie.
+- Lees het artikel [overzicht van Azure-activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md) voor meer opties voor Azure-logboek registratie.
