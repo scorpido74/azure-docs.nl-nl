@@ -3,12 +3,12 @@ title: Back-ups maken van bestanden en mappen-Veelgestelde vragen
 description: Behandelt Veelgestelde vragen over het maken van back-ups van bestanden en mappen met Azure Backup.
 ms.topic: conceptual
 ms.date: 07/29/2019
-ms.openlocfilehash: b66eb7bca3c9a57f6b44697aa0340cd852fc3db4
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 45c01a08151060b60b0f3e3b27b2fcc16ec8e60b
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173065"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720358"
 ---
 # <a name="common-questions-about-backing-up-files-and-folders"></a>Veelgestelde vragen over het maken van back-ups van bestanden en mappen
 
@@ -76,7 +76,7 @@ De MARS-agent is afhankelijk van NTFS en maakt gebruik van de lengte specificati
 
 De MARS-agent is afhankelijk van NTFS en ondersteunt [tekens](/windows/desktop/FileIO/naming-a-file#naming-conventions) in bestands namen/paden.
 
-### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>De waarschuwing ' Azure-back-ups zijn niet geconfigureerd voor deze server ' wordt weer gegeven.
+### <a name="the-warning-azure-backups-have-not-been-configured-for-this-server-appears"></a>De waarschuwing ' Azure-back-ups zijn niet geconfigureerd voor deze server ' wordt weer gegeven
 
 Deze waarschuwing kan worden weer gegeven ondanks dat u een back-upbeleid hebt geconfigureerd, wanneer de instellingen voor het back-upschema die zijn opgeslagen op de lokale server niet hetzelfde zijn als de instellingen die zijn opgeslagen in de back-upkluis.
 
@@ -130,9 +130,9 @@ De grootte van de cachemap bepaalt de hoeveelheid gegevens waarvan u een back-up
 
 ### <a name="where-should-the-cache-folder-be-located"></a>Waar moet de cachemap zich bevinden?
 
-De volgende locaties worden niet aanbevolen voor de cachemap:
+De volgende locaties voor de cachemap worden niet aanbevolen:
 
-* Netwerk share/Verwissel bare media: de cachemap moet lokaal zijn voor de server waarvan een back-up moet worden gemaakt met online back-ups. Netwerk locaties of verwissel bare media, zoals USB-stations, worden niet ondersteund
+* Netwerk share/Verwissel bare media: de cachemap moet lokaal zijn voor de server waarvan een back-up moet worden gemaakt met online back-ups. Netwerk locaties of verwissel bare media, zoals USB-stations, worden niet ondersteund.
 * Offline volumes: de cachemap moet online zijn voor de verwachte back-up met Azure Backup Agent
 
 ### <a name="are-there-any-attributes-of-the-cache-folder-that-arent-supported"></a>Zijn er kenmerken van de cachemap die niet worden ondersteund?
@@ -142,10 +142,10 @@ De volgende kenmerken of combinaties van deze kenmerken worden niet ondersteund 
 * Versleuteld
 * Ontdubbeld
 * Gecomprimeerd
-* Sparse
+* Verspreide gegevens
 * Reparsepunt
 
-De cachemap en de metagegevens-VHD hebben beide niet de benodigde kenmerken voor de Azure Backup-agent.
+De cachemap en de meta gegevens-VHD hebben niet de benodigde kenmerken voor de Azure Backup-Agent.
 
 ### <a name="is-there-a-way-to-adjust-the-amount-of-bandwidth-used-for-backup"></a>Is er een manier om de hoeveelheid band breedte die voor de back-up wordt gebruikt, aan te passen?
 
@@ -153,9 +153,45 @@ Ja, u kunt de optie **Eigenschappen wijzigen** in de Mars-agent gebruiken om de 
 
 ## <a name="restore"></a>Herstellen
 
+### <a name="manage"></a>Beheer
+
+**Kan ik herstellen als ik mijn wachtwoordzin ben verg eten?**
+De Azure Backup-Agent vereist een wachtwoordzin (die u hebt ingevoerd tijdens de registratie) om de back-upgegevens tijdens het herstellen te ontsleutelen. Bekijk de onderstaande scenario's om inzicht te krijgen in uw opties voor het afhandelen van een verloren wachtwoordzin:
+
+| Oorspronkelijke computer <br> *(bron machine waar back-ups zijn gemaakt)* | Passphrase | Beschik bare opties |
+| --- | --- | --- |
+| Beschikbaar |Verdwenen |Als uw oorspronkelijke computer (waar back-ups zijn gemaakt) beschikbaar is en nog steeds is geregistreerd met dezelfde Recovery Services kluis, kunt u de wachtwoordzin opnieuw genereren door de volgende [stappen uit te voeren](https://docs.microsoft.com/azure/backup/backup-azure-manage-mars#re-generate-passphrase).  |
+| Verdwenen |Verdwenen |Het is niet mogelijk om de gegevens te herstellen of de gegevens zijn niet beschikbaar |
+
+Houd rekening met de volgende voorwaarden:
+
+* Als u de agent op dezelfde oorspronkelijke machine verwijdert en opnieuw registreert met
+  * *Dezelfde wachtwoordzin*; vervolgens kunt u de back-upgegevens herstellen.
+  * Een *andere wachtwoordzin*, dan kunt u de back-upgegevens niet herstellen.
+* Als u de agent op een *andere computer* installeert met
+  * *Dezelfde wachtwoordzin* (gebruikt in de oorspronkelijke machine), dan kunt u uw back-upgegevens herstellen.
+  * *Verschillende wachtwoordzin*, u kunt uw back-upgegevens niet herstellen.
+* Als de oorspronkelijke machine is beschadigd (voor komt dat u de wachtwoordzin opnieuw genereert via de MARS-console), maar u kunt de oorspronkelijke Scratch-map die wordt gebruikt door de MARS-agent, herstellen of openen, dan kan het zijn dat u kunt herstellen (als u het wacht woord bent verg eten). Neem contact op met de klant ondersteuning voor meer informatie.
+
+**Hoe kan ik herstellen als ik mijn oorspronkelijke machine kwijt ben (waar de back-ups zijn gemaakt)?**
+
+Als u dezelfde wachtwoordzin hebt (die u tijdens de registratie hebt ingesteld) van de oorspronkelijke computer, kunt u de gegevens waarvan een back-up is gemaakt herstellen naar een andere computer. Bekijk de onderstaande scenario's voor meer informatie over de opties voor terugzetten.
+
+| Oorspronkelijke computer | Passphrase | Beschik bare opties |
+| --- | --- | --- |
+| Verdwenen |Beschikbaar |U kunt de MARS-agent op een andere computer installeren en registreren met dezelfde wachtwoordzin die u hebt ingevoerd tijdens de registratie van de oorspronkelijke computer. Kies **herstel optie** > **andere locatie** om uw herstel uit te voeren. Zie [dit artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-windows-server#use-instant-restore-to-restore-data-to-an-alternate-machine) voor meer informatie.
+| Verdwenen |Verdwenen |Het is niet mogelijk om de gegevens te herstellen of de gegevens zijn niet beschikbaar |
+
+
 ### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>Wat gebeurt er als ik een actieve herstel taak Annuleer?
 
 Als een actieve herstel taak wordt geannuleerd, wordt het herstel proces gestopt. Alle bestanden die vóór de annulering worden teruggezet, blijven geconfigureerd op de ingestelde bestemming (oorspronkelijke of alternatieve locatie), zonder terugdraai bewerkingen.
+
+### <a name="does-the-mars-agent-back-up-and-restore-acls-set-on-files-folders-and-volumes"></a>Maakt de MARS-agent een back-up en herstelt u de Acl's die zijn ingesteld voor bestanden, mappen en volumes?
+
+* De MARS-agent maakt een back-up van de Acl's die zijn ingesteld voor bestanden, mappen en volumes
+* Voor de herstel optie voor volume herstel biedt de MARS agent een optie voor het overs laan van het terugzetten van ACL-machtigingen naar het bestand of de map die wordt hersteld
+* Voor de afzonderlijke herstel optie voor bestanden en mappen wordt de MARS-agent teruggezet met ACL-machtigingen (er is geen optie voor het overs laan van het terugzetten van de toegangs beheer lijst).
 
 ## <a name="next-steps"></a>Volgende stappen
 

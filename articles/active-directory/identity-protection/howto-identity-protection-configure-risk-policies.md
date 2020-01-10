@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 01/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37091b2551d68e241c7179949c3eb1db9a381de6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4ffa08f7ebf013d42d6da0589ce0f1ccc97289de
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382179"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707002"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Procedure: risico beleid configureren en inschakelen
 
@@ -46,6 +46,8 @@ Het kiezen van een **hoge** drempel waarde vermindert het aantal keren dat een b
 ## <a name="exclusions"></a>Uitzonderingen
 
 Met alle beleids regels kunt u uitzonde ring van gebruikers, zoals uw [beheerders accounts voor nood toegang of afbreek glazen](../users-groups-roles/directory-emergency-access.md), toestaan. Organisaties kunnen bepalen dat andere accounts moeten worden uitgesloten van specifieke beleids regels op basis van de manier waarop de accounts worden gebruikt. Alle uitsluitingen moeten regel matig worden gecontroleerd om te zien of ze nog steeds van toepassing zijn.
+
+Geconfigureerde vertrouwde [netwerk locaties](../conditional-access/location-condition.md) worden door de identiteits beveiliging in enkele risico detecties gebruikt om fout-positieven te verminderen.
 
 ## <a name="enable-policies"></a>Beleid inschakelen
 

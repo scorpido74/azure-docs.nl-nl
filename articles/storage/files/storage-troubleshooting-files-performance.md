@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: d4269480887dba994559271de7e68b2ba2b460b6
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 00187051eec27ee7b6b2d4927510a2ab9dee442e
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227814"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708254"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Problemen met Azure Files prestaties oplossen
 
@@ -26,7 +26,7 @@ Het standaard quotum voor een Premium-share is 100 GiB. Dit biedt 100 Baseline I
 
 Als u wilt controleren of uw share wordt beperkt, kunt u gebruikmaken van de metrische gegevens van Azure in de portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **alle services** en zoek vervolgens naar **metrische gegevens**.
 
@@ -41,6 +41,9 @@ Als u wilt controleren of uw share wordt beperkt, kunt u gebruikmaken van de met
 1. Voeg een filter toe voor **ResponseType** en controleer of er aanvragen zijn met een antwoord code van **SUCCESSWITHTHROTTLING** (voor SMB) of **ClientThrottlingError** (voor rest).
 
 ![Metrische opties voor Premium-bestands shares](media/storage-troubleshooting-premium-fileshares/metrics.png)
+
+> [!NOTE]
+> Zie [een waarschuwing maken als een bestands share wordt beperkt](#how-to-create-an-alert-if-a-file-share-is-throttled)als u een waarschuwing wilt ontvangen als een bestands share wordt beperkt.
 
 ### <a name="solution"></a>Oplossing
 
@@ -168,3 +171,38 @@ Hoger dan de verwachte latentie die toegang heeft tot Azure Files voor intensiev
 ### <a name="workaround"></a>Tijdelijke oplossing
 
 - Installeer de beschik bare [hotfix](https://support.microsoft.com/help/3114025/slow-performance-when-you-access-azure-files-storage-from-windows-8-1).
+
+## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Een waarschuwing maken als een bestands share wordt beperkt
+
+1. Klik in de [Azure Portal](https://portal.azure.com)op **monitor**. 
+
+2. Klik op **waarschuwingen** en klik vervolgens op **+ nieuwe waarschuwings regel**.
+
+3. Klik op **selecteren** om het **opslag account/** het bron bestand te selecteren dat de bestands share bevat waarop u een waarschuwing wilt ontvangen en klik vervolgens op **gereed**. Als de naam van het opslag account bijvoorbeeld contoso is, selecteert u de resource contoso/file.
+
+4. Klik op **toevoegen** om een voor waarde toe te voegen.
+
+5. U ziet een lijst met signalen die worden ondersteund voor het opslag account. Selecteer de metrische gegevens van de **trans actie** .
+
+6. Ga op de Blade **signaal logica configureren** naar de dimensie **antwoord type** , klik op de vervolg keuzelijst **dimensie waarden** en selecteer **SuccessWithThrottling** (voor SMB) of **ClientThrottlingError** (voor rest). 
+
+  > [!NOTE]
+  > Als de dimensie waarde SuccessWithThrottling of ClientThrottlingError niet wordt weer gegeven, betekent dit dat de resource niet is beperkt.  Als u de dimensie waarde wilt toevoegen, klikt u op de **+** naast de vervolg keuzelijst **dimensie waarden** , typt u **SuccessWithThrottling** of **ClientThrottlingError**, klikt u op **OK** en herhaalt u stap #6.
+
+7. Ga naar de dimensie voor de **Bestands share** , klik op de vervolg keuzelijst **dimensie waarden** en selecteer de bestands shares waarop u een waarschuwing wilt ontvangen. 
+
+  > [!NOTE]
+  > Als de bestands share een standaard bestands share is, zijn de vervolg keuzelijst dimensie waarden leeg, omdat metrische gegevens per deel niet beschikbaar zijn voor standaard bestands shares. Het beperken van waarschuwingen voor standaard bestands shares wordt geactiveerd als een bestands share binnen het opslag account wordt beperkt en de waarschuwing niet kan bepalen welke bestands share is beperkt. Aangezien metrische gegevens per aandeel niet beschikbaar zijn voor standaard bestands shares, is de aanbeveling één bestands share per opslag account. 
+
+8. Definieer de **waarschuwings parameters** (drempel waarde, operator, aggregratie granulatie en frequentie) die worden gebruikt om de metrische waarschuwings regel te evalueren en klik op **gereed**.
+
+  > [!TIP]
+  > Als u een statische drempel waarde gebruikt, kan de metrische grafiek helpen bij het bepalen van een redelijke drempel waarde als de bestands share momenteel wordt beperkt. Als u een dynamische drempel waarde gebruikt, worden in de metrische grafiek de berekende drempel waarden weer gegeven op basis van recente gegevens.
+
+9. Voeg een **actie groep** (E-mail, SMS, enzovoort) toe aan de waarschuwing door een bestaande actie groep te selecteren of een nieuwe actie groep te maken.
+
+10. Vul de details van de **waarschuwing** in, zoals de naam, **Beschrijving** en **Ernst**van de **waarschuwings regel**.
+
+11. Klik op **waarschuwings regel maken** om de waarschuwing te maken.
+
+Zie [overzicht van waarschuwingen in Microsoft Azure]( https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview)voor meer informatie over het configureren van waarschuwingen in azure monitor.

@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: yexu
-ms.openlocfilehash: b874c0dcc1f394866e74b45e6bc335a25ce24499
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 42c637839172dab09a8721a93a67785a748afd2f
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930016"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708899"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Fouttolerantie van kopieeractiviteit in Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-copy-activity-fault-tolerance.md)
+> * [Versie 1:](v1/data-factory-copy-activity-fault-tolerance.md)
 > * [Huidige versie](copy-activity-fault-tolerance.md)
 
 Met de Kopieer activiteit in Azure Data Factory kunt u op twee manieren incompatibele rijen verwerken bij het kopiëren van gegevens tussen de bron-en Sink-gegevens opslag:
@@ -37,7 +37,7 @@ De Kopieer activiteit ondersteunt drie scenario's voor het detecteren, overs Laa
 
 - **Het aantal kolommen tussen de bron en de Sink komt niet overeen**.
 
-    Bijvoorbeeld: gegevens uit een CSV-bestand in Blob Storage kopiëren naar een SQL database met een schema definitie die zes kolommen bevat. De rijen met het CSV-bestand die zes kolommen bevatten, worden naar de Sink-Store gekopieerd. De rijen met het CSV-bestand met meer of minder dan zes kolommen worden gedetecteerd als incompatibel en worden overgeslagen.
+    Bijvoorbeeld: gegevens uit een CSV-bestand in Blob Storage kopiëren naar een SQL database met een schema definitie die zes kolommen bevat. De rijen met het CSV-bestand die zes kolommen bevatten, worden naar de Sink-Store gekopieerd. De rijen met het CSV-bestand met meer dan zes kolommen worden gedetecteerd als incompatibel en worden overgeslagen.
 
 - **Schending van primaire sleutel bij het schrijven naar SQL Server/Azure SQL database/Azure Cosmos DB**.
 

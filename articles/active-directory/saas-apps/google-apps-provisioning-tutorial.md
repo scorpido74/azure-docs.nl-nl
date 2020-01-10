@@ -10,17 +10,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
+ms.date: 01/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c259371ccdb55eff01eb7f0605315b17c33cdd3
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8239b25f5ebf94d7368190f3169d0637d9943df1
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74842727"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720281"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Zelf studie: G Suite configureren voor automatische gebruikers inrichting
 
@@ -65,18 +64,18 @@ Voordat u G suite configureert voor het automatisch inrichten van gebruikers met
 
     ![Selecteer beveiliging.][10]
 
-2. Selecteer op de pagina **beveiliging** **API-verwijzing**.
+1. Selecteer op de pagina **beveiliging** **API-verwijzing**.
 
     ![Selecteer API-verwijzing.][15]
 
-3. Selecteer **API-toegang inschakelen**.
+1. Selecteer **API-toegang inschakelen**.
 
     ![Selecteer API-verwijzing.][16]
 
    > [!IMPORTANT]
    > Voor elke gebruiker die u wilt inrichten voor G suite, **moet** de gebruikers naam in azure AD zijn gekoppeld aan een aangepast domein. Bijvoorbeeld: gebruikers namen die eruitzien als bob@contoso.onmicrosoft.com worden niet geaccepteerd door G suite. bob@contoso.com wordt daarentegen geaccepteerd. U kunt een bestaand gebruikers domein wijzigen door de instructies [hier](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)te volgen.
 
-4.  Nadat u de gewenste aangepaste domeinen hebt toegevoegd en geverifieerd met Azure AD, moet u ze opnieuw controleren met G suite. Raadpleeg de volgende stappen om domeinen in G suite te controleren:
+1. Nadat u de gewenste aangepaste domeinen hebt toegevoegd en geverifieerd met Azure AD, moet u ze opnieuw controleren met G suite. Raadpleeg de volgende stappen om domeinen in G suite te controleren:
 
     a. Selecteer in de [G suite-beheer console](https://admin.google.com/)de optie **domeinen**.
 
@@ -94,11 +93,11 @@ Voordat u G suite configureert voor het automatisch inrichten van gebruikers met
 
     e. Herhaal de voor gaande stappen voor extra domeinen die u wilt toevoegen aan G suite.
 
-5. Bepaal vervolgens welk beheerders account u wilt gebruiken voor het beheren van gebruikers inrichten in G suite. Navigeer naar **beheerders rollen**.
+1. Bepaal vervolgens welk beheerders account u wilt gebruiken voor het beheren van gebruikers inrichten in G suite. Navigeer naar **beheerders rollen**.
 
     ![Google Apps selecteren][26]
-    
-6. Voor de **beheerdersrol** van dat account bewerkt u de **bevoegdheden** voor die rol. Zorg ervoor dat u alle **beheer-API-bevoegdheden** inschakelt, zodat dit account kan worden gebruikt voor het inrichten.
+
+1. Voor de **beheerdersrol** van dat account bewerkt u de **bevoegdheden** voor die rol. Zorg ervoor dat u alle **beheer-API-bevoegdheden** inschakelt, zodat dit account kan worden gebruikt voor het inrichten.
 
     ![Google Apps selecteren][27]
 
@@ -110,15 +109,15 @@ Als u G Suite wilt configureren voor het automatisch inrichten van gebruikers me
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
-2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
+1. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Voer in het zoekvak **g Suite**in, selecteer **g Suite** in het paneel resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+1. Voer in het zoekvak **g Suite**in, selecteer **g Suite** in het paneel resultaten en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
     ![G Suite in de lijst met resultaten](common/search-new-app.png)
 
@@ -134,69 +133,72 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor G suite in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **G suite**.
+1. Selecteer in de lijst toepassingen de optie **G suite**.
 
     ![De koppeling G Suite in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer het tabblad **inrichten** .
+1. Selecteer het tabblad **inrichten** .
 
     ![Tabblad inrichten](common/provisioning.png)
 
-4. Stel de **inrichtings modus** in op **automatisch**.
+1. Stel de **inrichtings modus** in op **automatisch**.
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Selecteer **machtigen**onder de sectie **beheerders referenties** . Er wordt een Google-autorisatie venster geopend in een nieuw browser venster.
+1. Selecteer **machtigen**onder de sectie **beheerders referenties** . Er wordt een Google-autorisatie venster geopend in een nieuw browser venster.
 
     ![G suite autoriseren](media/google-apps-provisioning-tutorial/authorize.png)
 
-6. Bevestig dat u Azure AD-machtigingen wilt verlenen om wijzigingen aan te brengen in uw G suite-Tenant. Selecteer **Accepteren**.
+1. Bevestig dat u Azure AD-machtigingen wilt verlenen om wijzigingen aan te brengen in uw G suite-Tenant. Selecteer **Accepteren**.
 
     ![Bevestig machtigingen.][28]
 
-7. In de Azure Portal selecteert u **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw app. Als de verbinding mislukt, controleert u of uw G suite-account team beheerders machtigingen heeft. Probeer de stap vervolgens opnieuw te **autoriseren** .
+1. In de Azure Portal selecteert u **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw app. Als de verbinding mislukt, controleert u of uw G suite-account team beheerders machtigingen heeft. Probeer de stap vervolgens opnieuw te **autoriseren** .
 
-8. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
+1. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
 
     ![E-mail melding](common/provisioning-notification-email.png)
 
-8. Klik op **Opslaan**.
+1. Klik op **Opslaan**.
 
-9. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met G suite**.
+1. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met G suite**.
 
     ![G Suite-gebruikers toewijzingen](media/google-apps-provisioning-tutorial/usermappings.png)
 
-10. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar G suite in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in G suite voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+1. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar G suite in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in G suite voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
     ![G Suite-gebruikers kenmerken](media/google-apps-provisioning-tutorial/userattributes.png)
 
-11. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met G suite**.
+1. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met G suite**.
 
     ![G suite-groeps toewijzingen](media/google-apps-provisioning-tutorial/groupmappings.png)
 
-12. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar G suite in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt voor het vergelijken van de groepen in G suite voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren. De gebruikers interface geeft de standaard set kenmerk toewijzingen weer tussen Azure AD en G suite. U kunt extra kenmerken toevoegen, zoals organisatie-eenheid door te klikken op nieuwe toewijzing toevoegen. 
+1. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar G suite in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt voor het vergelijken van de groepen in G suite voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren. De gebruikers interface geeft de standaard set kenmerk toewijzingen weer tussen Azure AD en G suite. U kunt extra kenmerken toevoegen, zoals organisatie-eenheid door te klikken op nieuwe toewijzing toevoegen.
 
     ![Kenmerken G suite-groep](media/google-apps-provisioning-tutorial/groupattributes.png)
 
-13. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+1. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
 
-14. Als u de Azure AD-inrichtings service voor G Suite wilt inschakelen, **wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
+1. Als u de Azure AD-inrichtings service voor G Suite wilt inschakelen, **wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
     ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
 
-15. Definieer de gebruikers en/of groepen die u wilt inrichten voor G suite door de gewenste waarden in het **bereik** in het gedeelte **instellingen** te kiezen.
+1. Definieer de gebruikers en/of groepen die u wilt inrichten voor G suite door de gewenste waarden in het **bereik** in het gedeelte **instellingen** te kiezen.
 
     ![Inrichtings bereik](common/provisioning-scope.png)
 
-16. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+1. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
     ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
 Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op G suite.
+
+> [!NOTE]
+> Als de gebruikers al een bestaand persoonlijke/consument-account hebben dat het e-mail adres van de Azure AD-gebruiker heeft, kan dit een probleem veroorzaken dat kan worden opgelost met behulp van het hulp programma Google-overdracht voordat de Directory synchronisatie wordt uitgevoerd.
 
 Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
 
@@ -211,7 +213,6 @@ Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [ra
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)
-
 
 <!--Image references-->
 

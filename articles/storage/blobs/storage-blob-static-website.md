@@ -8,12 +8,12 @@ ms.author: normesta
 ms.reviewer: dineshm
 ms.date: 05/29/2019
 ms.subservice: blobs
-ms.openlocfilehash: 8de36ea9f7bb77443b22e038172ee69bb8435b29
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 8dc5599e681d9aee84f884cd4990163a2481d386
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311217"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708159"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statische website-hosting in Azure Storage
 
@@ -39,7 +39,7 @@ Bestanden in de **$Web** -container zijn hoofdletter gevoelig, worden aangeboden
 U kunt elk van deze hulpprogram ma's gebruiken om inhoud te uploaden naar de container **$Web** :
 
 > [!div class="checklist"]
-> * [Azure CLI](storage-blob-static-website-how-to.md#cli)
+> * [Azure-CLI](storage-blob-static-website-how-to.md#cli)
 > * [Module Azure PowerShell](storage-blob-static-website-how-to.md#powershell)
 > * [AzCopy](../common/storage-use-azcopy-v10.md)
 > * [Azure-opslagverkenner](https://azure.microsoft.com/features/storage-explorer/)
@@ -52,17 +52,20 @@ Gebruikers kunnen site-inhoud vanuit een browser weer geven met behulp van de op
 
 |Hulpprogramma| Hulp |
 |----|----|
-|**Azure-portal** | [De URL van de website zoeken met behulp van de Azure Portal](storage-blob-static-website-how-to.md#portal-find-url) |
-|**Azure CLI** | [De URL van de website zoeken met behulp van de Azure CLI](storage-blob-static-website-how-to.md#cli-find-url) |
+|**Azure Portal** | [De URL van de website zoeken met behulp van de Azure Portal](storage-blob-static-website-how-to.md#portal-find-url) |
+|**Azure-CLI** | [De URL van de website zoeken met behulp van de Azure CLI](storage-blob-static-website-how-to.md#cli-find-url) |
 |**Module Azure PowerShell** | [De URL van de website zoeken met behulp van Power shell](storage-blob-static-website-how-to.md#powershell-find-url) |
 
-De URL van uw site bevat een regionale code. Bijvoorbeeld: de URL `https://contosoblobaccount.z22.web.core.windows.net/` bevat regionale code `z22`.
+De URL van uw site bevat een regionale code. De URL `https://contosoblobaccount.z22.web.core.windows.net/` bijvoorbeeld regionale code `z22`bevat.
 
 Hoewel die code in de URL moet blijven, is deze alleen voor intern gebruik en hoeft u deze code niet op een andere manier te gebruiken.
 
 Het index document dat u opgeeft wanneer u de functie voor het hosten van statische websites inschakelt, wordt weer gegeven wanneer gebruikers de site openen en geen specifiek bestand opgeven (bijvoorbeeld: `https://contosoblobaccount.z22.web.core.windows.net`).  
 
 Als de server een 404-fout retourneert en u geen fout document hebt opgegeven toen u de website inschakelde, wordt een standaard-404-pagina naar de gebruiker geretourneerd.
+
+> [!NOTE]
+> [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) wordt niet ondersteund met een statische website.
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>Gevolgen van het instellen van het open bare toegangs niveau van de webcontainer
 
@@ -74,9 +77,9 @@ De volgende scherm afbeelding toont de instelling voor het niveau van open bare 
 
 Terwijl het eind punt van de primaire statische website niet wordt beïnvloed, heeft een wijziging van het open bare toegangs niveau invloed op het eind punt van de primaire BLOB-service.
 
-Als u bijvoorbeeld het open bare toegangs niveau van de container **$Web** van **privé (geen anonieme toegang)** wijzigt in **BLOB (anonieme lees toegang voor blobs)** , wordt het niveau van de open bare toegang tot het eind punt van de primaire statische website `https://contosoblobaccount.z22.web.core.windows.net/index.html` wordt niet gewijzigd.
+Als u bijvoorbeeld het open bare toegangs niveau van de container **$Web** van **privé (geen anonieme toegang)** wijzigt in **BLOB (anonieme lees toegang alleen voor blobs)** , wordt het niveau van de open bare toegang tot het eind punt van de primaire statische website `https://contosoblobaccount.z22.web.core.windows.net/index.html` niet gewijzigd.
 
-De open bare toegang tot het eind punt van de primaire BLOB-service `https://contosoblobaccount.blob.core.windows.net/$web/index.html` wordt echter gewijzigd van persoonlijk in openbaar. Gebruikers kunnen dit bestand nu openen met behulp van een van deze twee eind punten.
+De open bare toegang tot het eind punt van de primaire BLOB-service `https://contosoblobaccount.blob.core.windows.net/$web/index.html` echter gewijzigd van privé in openbaar. Gebruikers kunnen dit bestand nu openen met behulp van een van deze twee eind punten.
 
 ## <a name="content-delivery-network-cdn-and-secure-socket-layer-ssl-support"></a>Ondersteuning voor Content Delivery Network (CDN) en SSL (Secure Socket Layer)
 

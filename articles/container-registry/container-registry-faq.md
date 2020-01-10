@@ -5,12 +5,12 @@ author: sajayantony
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 1f2c79b47df4cf44b6fa3981bac4a5a3bf61c4df
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 74863823f3e8ef32565e01981d3a742d696a8165
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456387"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708305"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Veelgestelde vragen over Azure Container Registry
 
@@ -32,7 +32,7 @@ Ja. Hier volgt [een sjabloon](https://github.com/Azure/azure-quickstart-template
 
 ### <a name="is-there-security-vulnerability-scanning-for-images-in-acr"></a>Is er een beveiligings probleem met het scannen van installatie kopieën in ACR?
 
-Ja. Zie de documentatie van [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) en [zeeblauw](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
+Ja. Zie de documentatie van [Azure Security Center](https://docs.microsoft.com/azure/security-center/azure-container-registry-integration), [Twistlock](https://www.twistlock.com/2016/11/07/twistlock-supports-azure-container-registry/) en [zeeblauw](https://blog.aquasec.com/image-vulnerability-scanning-in-azure-container-registry).
 
 ### <a name="how-do-i-configure-kubernetes-with-azure-container-registry"></a>Hoe kan ik Kubernetes met Azure Container Registry configureren?
 
@@ -101,7 +101,7 @@ Het duurt enige tijd om firewall regel wijzigingen door te geven. Nadat u de fir
 - [Waarom wordt het gebruik van het register quotum niet verminderd na het verwijderen van installatie kopieën?](#why-does-the-registry-quota-usage-not-reduce-after-deleting-images)
 - [Wijzigingen in opslag quotum Hoe kan ik valideren?](#how-do-i-validate-storage-quota-changes)
 - [Hoe kan ik bij mijn REGI ster verifiëren bij het uitvoeren van de CLI in een container?](#how-do-i-authenticate-with-my-registry-when-running-the-cli-in-a-container)
-- [Biedt Azure Container Registry alleen TLS v 1.2-configuratie en het inschakelen van TLS v 1.2?](#does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12)
+- [Hoe kan ik TLS 1,2 inschakelen?](#how-to-enable-tls-12)
 - [Ondersteunt Azure Container Registry inhoud vertrouwen?](#does-azure-container-registry-support-content-trust)
 - [Hoe kan ik toegang tot pull-of push-installatie kopieën verlenen zonder toestemming om de register bron te beheren?](#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource)
 - [Automatische installatie kopie in quarantaine plaatsen voor een REGI ster Hoe kan ik](#how-do-i-enable-automatic-image-quarantine-for-a-registry)
@@ -181,9 +181,12 @@ Verifieer vervolgens met uw REGI ster:
 az acr login -n MyRegistry
 ```
 
-### <a name="does-azure-container-registry-offer-tls-v12-only-configuration-and-how-to-enable-tls-v12"></a>Biedt Azure Container Registry alleen TLS v 1.2-configuratie en het inschakelen van TLS v 1.2?
+### <a name="how-to-enable-tls-12"></a>Hoe kan ik TLS 1,2 inschakelen?
 
-Ja. Schakel TLS in met behulp van een recente docker-client (versie 18.03.0 en hoger). 
+Schakel TLS 1,2 in met behulp van een recente docker-client (versie 18.03.0 en hoger). 
+
+> [!IMPORTANT]
+> Vanaf 13 januari 2020 moeten voor Azure Container Registry alle beveiligde verbindingen van servers en toepassingen worden gebruikt om TLS 1,2 te gebruiken. Ondersteuning voor TLS 1,0 en 1,1 wordt buiten gebruik gesteld.
 
 ### <a name="does-azure-container-registry-support-content-trust"></a>Biedt Azure Container Registry ondersteuning voor Content Trust?
 
@@ -427,8 +430,8 @@ Neem contact op met uw netwerk beheerder of Controleer de netwerk configuratie e
 
 ### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Waarom mislukt mijn pull-of push aanvraag met niet-toegestane bewerking?
 
-Hier volgen enkele senarios waar bewerkingen mogelijk niet zijn toegestaan:
-* Klassieke registers worden niet meer ondersteund. Voer een upgrade uit naar een ondersteunde [sku's](https://aka.ms/acr/skus) met [AZ ACR update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) of Azure Portal.
+Hier volgen enkele scenario's waarin bewerkingen mogelijk niet zijn toegestaan:
+* Klassieke registers worden niet meer ondersteund. Voer een upgrade uit naar een ondersteunde [sku's](https://aka.ms/acr/skus) met [AZ ACR update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) of de Azure Portal.
 * De installatie kopie of opslag plaats is mogelijk vergrendeld zodat deze niet kan worden verwijderd of bijgewerkt. U kunt de opdracht [AZ ACR show repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) gebruiken om de huidige kenmerken weer te geven.
 * Sommige bewerkingen zijn niet toegestaan als de installatie kopie zich in quarantaine bevindt. Meer informatie over [quarantaine](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
@@ -495,7 +498,7 @@ GitLab wordt momenteel niet ondersteund voor bron triggers.
 
 ## <a name="run-error-message-troubleshooting"></a>Problemen met het uitvoeren van fout berichten oplossen
 
-| Foutbericht | Handleiding voor het oplossen van problemen |
+| Foutbericht | Probleemoplossingsgids |
 |---|---|
 |Er is geen toegang geconfigureerd voor de virtuele machine, dus er zijn geen abonnementen gevonden|Dit kan gebeuren als u `az login --identity` in uw ACR-taak gebruikt. Dit is een tijdelijke fout en treedt op wanneer de roltoewijzing van uw beheerde identiteit niet is door gegeven. Wacht een paar seconden voordat u opnieuw probeert te werken.|
 

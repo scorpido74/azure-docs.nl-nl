@@ -7,16 +7,18 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 8f7cd864d90b8ab17a180a00a7a6d4bb683da9be
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 35efbb8d4d97ab52abb20487d15a80985946c499
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873298"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732600"
 ---
 # <a name="lower-azure-cosmos-db"></a>LOWER (Azure Cosmos DB)
  Retourneert een tekenreeksexpressie na het converteren van tekens in hoofdletters naar kleine letters.  
-  
+
+De lagere systeem functie maakt geen gebruik van de index. Als u van plan bent om niet-hoofdletter gevoelige vergelijkingen te maken, kan de functie lagere systeem een aanzienlijke hoeveelheid van RU verbruiken. Als dit het geval is, kunt u in plaats van het gebruik van de functie lagere systeem gegevens elke keer voor vergelijkingen te normaliseren, de behuizing tijdens het invoegen normaliseren. Vervolgens wordt een query zoals SELECT * FROM c waarbij LOWER (c. name) = ' Bob ' gewoon geselecteerd * van c waarbij c.name = ' Bob '.
+
 ## <a name="syntax"></a>Syntaxis
   
 ```sql

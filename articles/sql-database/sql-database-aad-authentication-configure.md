@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
-ms.date: 11/06/2019
-ms.openlocfilehash: 76ca8a5d781c22279ccad633cc7c5bc98d645df8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.date: 01/07/2020
+ms.openlocfilehash: dc2661bbc443201d6a2da4b5efb7ecdc2caad444
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901397"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732566"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Azure Active Directory verificatie met SQL configureren en beheren
 
@@ -214,7 +214,7 @@ Met de volgende opdracht wordt de Azure AD-beheerder verwijderd voor het beheerd
 Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstanceName01" -Confirm -PassThru
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 U kunt ook een Azure AD-beheerder voor SQL Managed instance inrichten door de volgende CLI-opdrachten aan te roepen:
 
@@ -322,7 +322,7 @@ In het volgende voor beeld wordt een Azure AD-beheerder verwijderd:
 Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 U kunt een Azure AD-beheerder inrichten door de volgende CLI-opdrachten aan te roepen:
 
@@ -345,14 +345,17 @@ Zie [AZ SQL Server](/cli/azure/sql/server)(Engelstalig) voor meer informatie ove
 Op alle client computers, van waaruit uw toepassingen of gebruikers verbinding maken met Azure SQL Database of Azure SQL Data Warehouse met behulp van Azure AD-identiteiten, moet u de volgende software installeren:
 
 - .NET Framework 4,6 of hoger van [https://msdn.microsoft.com/library/5a4x27ek.aspx](https://msdn.microsoft.com/library/5a4x27ek.aspx).
-- Azure Active Directory-verificatie bibliotheek voor SQL Server (*ADALSQL. DLL*) is in meerdere talen (zowel x86 als amd64) beschikbaar in het Download centrum van [micro soft Active Directory Authentication Library voor Microsoft SQL Server](https://www.microsoft.com/download/details.aspx?id=48742).
+- Azure Active Directory-verificatie bibliotheek voor SQL Server (*ADAL. DLL*). Hieronder vindt u de Download koppelingen voor het installeren van de nieuwste SSMS-, ODBC-en OLE DB-Stuur Programma's die de *ADAL bevatten. DLL* -bibliotheek.
+    1. [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
+    1. [ODBC-stuur programma 17 voor SQL Server](https://www.microsoft.com/download/details.aspx?id=56567)
+    1. [OLE DB stuur programma 18 voor SQL Server](https://www.microsoft.com/download/details.aspx?id=56730)
 
 U kunt aan de volgende vereisten voldoen:
 
-- Het installeren van [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) of [SQL Server Data tools voor Visual Studio 2015](https://msdn.microsoft.com/library/mt204009.aspx) voldoet aan de .NET Framework 4,6-vereiste.
-- SSMS installeert de x86-versie van *ADALSQL. DLL*.
-- SSDT installeert de amd64-versie van *ADALSQL. DLL*.
-- De nieuwste Visual Studio- [down loads van Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs) voldoen aan de vereiste van .NET Framework 4,6, maar installeert de vereiste amd64-versie van *ADALSQL niet. DLL*.
+- Het installeren van de nieuwste versie van [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) of [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt) voldoet aan de .NET Framework 4,6-vereiste.
+    - SSMS installeert de x86-versie van *ADAL. DLL*.
+    - SSDT installeert de amd64-versie van *ADAL. DLL*.
+    - De nieuwste Visual Studio- [down loads van Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs) voldoen aan de vereiste van .NET Framework 4,6, maar installeert de vereiste amd64-versie van *ADAL niet. DLL*.
 
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Inge sloten database gebruikers in uw data base maken die zijn toegewezen aan Azure AD-identiteiten
 
@@ -513,9 +516,13 @@ De volgende instructies zijn een verbinding met versie 13,1 van Sqlcmd, die besc
 > `sqlcmd` met de `-G` opdracht werkt niet met systeem identiteiten en vereist een gebruiker-Principal-aanmelding.
 
 ```cmd
-sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net  -G  
+sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -G  
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyAADPassword -G -l 30
 ```
+
+## <a name="troubleshooting-azure-ad-authentication"></a>Problemen met Azure AD-verificatie oplossen
+
+Meer informatie over het oplossen van problemen met Azure AD-verificatie vindt u in de volgende blog: <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ## <a name="next-steps"></a>Volgende stappen
 

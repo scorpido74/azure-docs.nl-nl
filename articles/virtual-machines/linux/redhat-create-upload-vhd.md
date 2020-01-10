@@ -3,7 +3,7 @@ title: Een Red Hat Enterprise Linux VHD maken en uploaden voor gebruik in azure
 description: Meer informatie over het maken en uploaden van een virtuele harde schijf van Azure (VHD) met een Red Hat Linux-besturings systeem.
 services: virtual-machines-linux
 documentationcenter: ''
-author: szarkos
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager,azure-service-management
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/17/2019
-ms.author: szark
-ms.openlocfilehash: 7c03271dc5fda5cee0b210370a965a45a6a7ef42
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.author: mimckitt
+ms.openlocfilehash: 77334e3e807776e9072bb4ad9674bf7ba5a8f915
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035161"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732515"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Een op Red Hat gebaseerde virtuele machine voor Azure voorbereiden
 In dit artikel wordt beschreven hoe u een virtuele Red Hat Enterprise Linux-machine (RHEL) voorbereidt voor gebruik in Azure. De versies van RHEL die in dit artikel worden behandeld, zijn 6,7 + en 7.1 +. De Hyper visors voor voor bereidingen die in dit artikel worden behandeld, zijn Hyper-V, op kernel gebaseerde virtuele machine (KVM) en VMware. Voor meer informatie over de geschiktheids vereisten voor deelname aan het Cloud Access-programma van Red Hat raadpleegt u [de Cloud Access-website van Red Hat](https://www.redhat.com/en/technologies/cloud-computing/cloud-access) en [voert u RHEL uit op Azure](https://access.redhat.com/ecosystem/ccsp/microsoft-azure). Zie de [opbouw functie voor Azure-installatie kopieÃ«n](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)voor manieren om het bouwen van RHEL-installatie kopieÃ«n te automatiseren.
@@ -154,7 +154,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT = ja NM_CONTROLLED = Ja
 
 1. Zorg ervoor dat de netwerk service wordt gestart op het moment van opstarten door de volgende opdracht uit te voeren:
 
@@ -408,7 +408,7 @@ In deze sectie wordt ervan uitgegaan dat u al een ISO-bestand hebt verkregen van
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT = ja NM_CONTROLLED = Ja
 
 1. Zorg ervoor dat de netwerk service wordt gestart op het moment van opstarten door de volgende opdracht uit te voeren:
 
@@ -666,7 +666,7 @@ In deze sectie wordt ervan uitgegaan dat u al een RHEL virtuele machine hebt geÃ
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
+    PERSISTENT_DHCLIENT = ja NM_CONTROLLED = Ja
 
 1. Zorg ervoor dat de netwerk service wordt gestart op het moment van opstarten door de volgende opdracht uit te voeren:
 
@@ -883,8 +883,7 @@ In deze sectie wordt ervan uitgegaan dat u al een RHEL virtuele machine hebt geÃ
         USERCTL=no
         PEERDNS=yes
         IPV6INIT=no
-        NM_CONTROLLED=no
-        EOF
+    PERSISTENT_DHCLIENT = ja NM_CONTROLLED = ja EOF
 
         # Deprovision and prepare for Azure if you are creating a generalized image
         waagent -force -deprovision

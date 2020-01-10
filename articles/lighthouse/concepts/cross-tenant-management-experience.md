@@ -1,14 +1,14 @@
 ---
 title: Beheerervaring in meerdere tenants
 description: Azure delegated Resource Management maakt een cross-Tenant beheer mogelijk.
-ms.date: 11/7/2019
+ms.date: 01/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0f69fc6b606f2f848b9a14d29addbbde11f07a3e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 661ada4e5d620d4977290986f5649b91363202fe
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928006"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75706985"
 ---
 # <a name="cross-tenant-management-experiences"></a>Beheerervaring in meerdere tenants
 
@@ -19,7 +19,7 @@ Als service provider kunt u [Azure delegated resource management](../concepts/az
 
 ## <a name="understanding-customer-tenants"></a>Informatie over de tenants van klanten
 
-Een Azure Active Directory-Tenant (Azure AD) is een representatie van een organisatie. Het is een toegewezen exemplaar van Azure AD dat een organisatie ontvangt wanneer ze een relatie met micro soft maken door zich aan te melden voor Azure, Microsoft 365 of andere services. Elke Azure AD-Tenant is uniek en gescheiden van andere Azure AD-tenants en heeft een eigen Tenant-ID (een GUID). Zie [Wat is Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) voor meer informatie.
+Een Azure Active Directory-Tenant (Azure AD) is een representatie van een organisatie. Het is een toegewezen exemplaar van Azure AD dat een organisatie ontvangt wanneer ze een relatie met micro soft maken door zich aan te melden voor Azure, Microsoft 365 of andere services. Elke Azure AD-Tenant is uniek en gescheiden van andere Azure AD-tenants en heeft een eigen Tenant-ID (een GUID). Zie [Wat is Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md) voor meer informatie.
 
 Om Azure-resources voor een klant te kunnen beheren, moeten service providers zich dus aanmelden bij de Azure Portal met behulp van een account dat is gekoppeld aan de Tenant van die klant, waarbij een beheerder in de Tenant van de klant gebruikers accounts kan maken en beheren voor de service provider.
 
@@ -43,31 +43,31 @@ We bieden ook Api's voor het uitvoeren van Azure gedelegeerde resource beheer ta
 
 De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources in beheerde tenants. Hieronder vindt u enkele van de belangrijkste scenario's waarbij beheer van meerdere tenants effectief kan zijn.
 
-[Azure-Arc voor servers (preview-versie)](https://docs.microsoft.com/azure/azure-arc/servers/overview):
+[Azure-Arc voor servers (preview-versie)](../../azure-arc/servers/overview.md):
 
-- [Windows Server-of Linux-computers buiten Azure verbinden](https://docs.microsoft.com/azure/azure-arc/servers/quickstart-onboard-portal) met gedelegeerde abonnementen en/of resource groepen in azure
+- [Windows Server-of Linux-computers buiten Azure verbinden](../../azure-arc/servers/quickstart-onboard-portal.md) met gedelegeerde abonnementen en/of resource groepen in azure
 - Verbonden computers beheren met Azure-constructs, zoals Azure Policy en tagging
 
-[Azure Automation](https://docs.microsoft.com/azure/automation/):
+[Azure Automation](../../automation/index.yml):
 
 - Automation-accounts gebruiken om toegang te krijgen tot en te werken met gedelegeerde klant resources
 
-[Azure Backup](https://docs.microsoft.com/azure/backup/):
+[Azure Backup](../../backup/index.yml):
 
 - Back-ups maken en herstellen van klant gegevens in de tenants van de klant
 
-[Azure Kubernetes Service (AKS)](https://docs.microsoft.com//azure/aks/):
+[Azure Kubernetes Service (AKS)](../../aks/index.yml):
 
 - Gehoste Kubernetes-omgevingen beheren en toepassingen in containers implementeren en beheren binnen de tenants van de klant
 
-[Azure monitor](https://docs.microsoft.com/azure/azure-monitor/):
+[Azure monitor](../../azure-monitor/index.yml):
 
 - Waarschuwingen voor gedelegeerde abonnementen weer geven, met de mogelijkheid om waarschuwingen voor alle abonnementen weer te geven
 - Details van het activiteiten logboek voor gedelegeerde abonnementen weer geven
 - Log Analytics: gegevens opvragen uit externe werk ruimten van klanten in meerdere tenants
 - Waarschuwingen maken in de tenants van de klant die automatisering activeren, zoals Azure Automation runbooks of Azure Functions, in de Tenant van de service provider via webhooks
 
-[Azure Policy](https://docs.microsoft.com/azure/governance/policy/):
+[Azure Policy](../../governance/policy/index.yml):
 
 - Voor compatibiliteits momentopnamen worden details weer gegeven voor toegewezen beleid in gedelegeerde abonnementen
 - Beleids definities maken en bewerken binnen een gedelegeerd abonnement
@@ -75,11 +75,11 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
 - Klanten zien beleid dat door de service provider is ontworpen naast het beleid dat ze zelf hebben ontworpen
 - Kan [deployIfNotExists herstellen of toewijzingen wijzigen binnen de Tenant van de klant](../how-to/deploy-policy-remediation.md)
 
-[Azure-resource grafiek](https://docs.microsoft.com/azure/governance/resource-graph/):
+[Azure-resource grafiek](../../governance/resource-graph/index.yml):
 
 - Bevat nu de Tenant-ID in geretourneerde query resultaten, zodat u kunt bepalen of een abonnement behoort tot de Tenant van de klanten Tenant of service provider
 
-[Azure Security Center](https://docs.microsoft.com/azure/security-center/):
+[Azure Security Center](../../security-center/index.yml):
 
 - Zicht baarheid van meerdere tenants
   - Naleving van beveiligings beleid controleren en de beveiliging van alle resources van de Tenant garanderen
@@ -96,27 +96,28 @@ De meeste taken en services kunnen worden uitgevoerd op gedelegeerde resources i
   - Zorg ervoor dat servers alleen de toepassingen en processen uitvoeren die ze moeten hebben met adaptieve toepassings besturings elementen
   - Wijzigingen in belang rijke bestanden en register vermeldingen bewaken met FIM (File Integrity Monitoring)
 
-[Azure-Sentinel](https://docs.microsoft.com/azure/sentinel/multiple-tenants-service-providers):
+[Azure-Sentinel](../../sentinel/multiple-tenants-service-providers.md):
 
-- Azure-Sentinel-resources beheren in de tenants van de klant
+- Azure-Sentinel-resources beheren [in de tenants van de klant](../../sentinel/multiple-tenants-service-providers.md)
+- [Aanvallen bijhouden en beveiligings waarschuwingen weer geven voor meerdere tenants van klanten](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
 
-[Azure service Health](https://docs.microsoft.com/azure/service-health/):
+[Azure service Health](../../service-health/index.yml):
 
 - Bewaak de status van klant bronnen met Azure Resource Health
 - De status bijhouden van de Azure-Services die door uw klanten worden gebruikt
 
-[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/):
+[Azure Site Recovery](../../site-recovery/index.yml):
 
 - Opties voor herstel na nood gevallen voor virtuele Azure-machines in de tenants van de klant beheren (u kunt geen runas-accounts gebruiken om VM-extensies te kopiëren)
 
-[Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/):
+[Azure virtual machines](../../virtual-machines/index.yml):
 
 - Virtuele-machine uitbreidingen gebruiken om configuratie-en automatiserings taken na de implementatie op te geven op virtuele machines van Azure in de tenants van de klant
 - Diagnostische gegevens over opstarten gebruiken om problemen met virtuele Azure-machines in klant tenants op te lossen
 - Toegang tot Vm's met een seriële console in de tenants van de klant
 - Houd er rekening mee dat u Azure Active Directory niet kunt gebruiken voor externe aanmelding bij een VM en u kunt geen virtuele machine integreren met een Key Vault voor wacht woorden, geheimen of cryptografische sleutels voor schijf versleuteling
 
-[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/):
+[Azure Virtual Network](../../virtual-network/index.yml):
 
 - Virtuele netwerken en virtuele netwerk interface kaarten (Vnic's) implementeren en beheren binnen de tenants van de klant
 
@@ -128,9 +129,9 @@ Ondersteunings aanvragen:
 Houd bij alle scenario's rekening met de volgende beperkingen:
 
 - Aanvragen die door Azure Resource Manager worden verwerkt, kunnen worden uitgevoerd met behulp van Azure delegated resource management. De bewerkings-Uri's voor deze aanvragen beginnen met `https://management.azure.com`. Aanvragen die worden verwerkt door een exemplaar van een bron type (zoals de toegang tot de sleutel kluis geheimen of toegang tot opslag gegevens), worden echter niet ondersteund met het beheer van de gedelegeerde resources van Azure. De bewerkings-Uri's voor deze aanvragen beginnen meestal met een adres dat uniek is voor uw exemplaar, zoals `https://myaccount.blob.core.windows.net` of `https://mykeyvault.vault.azure.net/`. De laatste is ook gegevens bewerkingen in plaats van beheer bewerkingen. 
-- Roltoewijzingen moeten gebruikmaken [van ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)op basis van op rollen gebaseerd toegangs beheer (RBAC). Alle ingebouwde rollen worden momenteel ondersteund met het beheer van gedelegeerde resources van Azure, met uitzonde ring van eigenaar of ingebouwde rollen met [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) -machtiging. De rol beheerder van gebruikers toegang wordt alleen ondersteund voor beperkt gebruik bij het [toewijzen van rollen aan beheerde identiteiten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Aangepaste rollen en [beheerders rollen voor klassieke abonnementen](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) worden niet ondersteund.
+- Roltoewijzingen moeten gebruikmaken [van ingebouwde rollen](../../role-based-access-control/built-in-roles.md)op basis van op rollen gebaseerd toegangs beheer (RBAC). Alle ingebouwde rollen worden momenteel ondersteund met het beheer van gedelegeerde resources van Azure, met uitzonde ring van eigenaar of ingebouwde rollen met [DataActions](../../role-based-access-control/role-definitions.md#dataactions) -machtiging. De rol beheerder van gebruikers toegang wordt alleen ondersteund voor beperkt gebruik bij het [toewijzen van rollen aan beheerde identiteiten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Aangepaste rollen en [beheerders rollen voor klassieke abonnementen](../../role-based-access-control/classic-administrators.md) worden niet ondersteund.
 - Op dit moment kunt u geen abonnement (of resource groep binnen een abonnement) voor Azure delegated Resource Management gebruiken als het abonnement gebruikmaakt van Azure Databricks. Als een abonnement is geregistreerd voor onboarding met de resource provider **micro soft. ManagedServices** , kunt u op dit moment geen Databricks-werk ruimte maken voor dat abonnement.
-- U kunt abonnementen en resource groepen voor Azure delegated resource management zonder resource vergrendeling voor komen. deze vergren delingen verhinderen niet dat de acties worden uitgevoerd door gebruikers in de Tenant beheren. [Weiger toewijzingen](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments) die door het systeem beheerde bronnen beveiligen, zoals die zijn gemaakt door door Azure beheerde toepassingen of Azure-blauw drukken (door het systeem toegewezen weigerings toewijzingen), voor komen dat gebruikers in de Tenant beheren op deze resources. op dit moment kunnen gebruikers in de Tenant van de klant echter geen eigen weigerings toewijzingen maken (toegewezen weigerings toewijzingen).
+- U kunt abonnementen en resource groepen voor Azure delegated resource management zonder resource vergrendeling voor komen. deze vergren delingen verhinderen niet dat de acties worden uitgevoerd door gebruikers in de Tenant beheren. [Weiger toewijzingen](../../role-based-access-control/deny-assignments.md) die door het systeem beheerde bronnen beveiligen, zoals die zijn gemaakt door door Azure beheerde toepassingen of Azure-blauw drukken (door het systeem toegewezen weigerings toewijzingen), voor komen dat gebruikers in de Tenant beheren op deze resources. op dit moment kunnen gebruikers in de Tenant van de klant echter geen eigen weigerings toewijzingen maken (toegewezen weigerings toewijzingen).
 
 ## <a name="next-steps"></a>Volgende stappen
 

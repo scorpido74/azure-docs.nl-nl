@@ -1,19 +1,15 @@
 ---
 title: Virtuele Hyper-V-machines evalueren voor migratie naar Azure met Azure Migrate | Microsoft Docs
 description: Hierin wordt beschreven hoe u on-premises virtuele Hyper-V-machines kunt beoordelen voor migratie naar Azure met behulp van Azure Migrate.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/18/2019
-ms.author: raynew
+ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: d8a4a6d650684cd5c8c0f22ad683c3952e2f6d08
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: f2a7caad13ad845d5b2aeb3240b7d77fa89faf12
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158385"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720256"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Virtuele Hyper-V-machines beoordelen met Azure Migrate server-evaluatie
 
@@ -43,7 +39,8 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 - [Voltooi](tutorial-prepare-hyper-v.md) de eerste zelf studie in deze serie. Als dat niet het geval is, werken de instructies in deze zelf studie niet.
 - In de eerste zelf studie hebt u het volgende gedaan:
     - [Azure-machtigingen instellen](tutorial-prepare-hyper-v.md#prepare-azure) voor Azure Migrate.
-    - [Bereid Hyper-V-](tutorial-prepare-hyper-v.md#prepare-for-hyper-v-assessment) clusters,-hosts en-vm's voor op evaluatie.
+    - [Bereid Hyper-V-](tutorial-prepare-hyper-v.md#prepare-hyper-v-for-assessment) clusters,-hosts en-vm's voor op evaluatie.
+    - [Bereid u voor op de implementatie](tutorial-prepare-hyper-v.md#prepare-for-appliance-deployment) van het Azure migrate apparaat, dat wordt gebruikt voor de detectie en evaluatie van Hyper-V-vm's.
 
 ## <a name="set-up-an-azure-migrate-project"></a>Een Azure Migrate project instellen
 
@@ -142,7 +139,7 @@ Importeer het gedownloade bestand en maak de virtuele machine.
 3. Laat in **doel kiezen**de standaard instelling ongewijzigd. Klik op **Volgende**.
 4. In **opslag mappen**, behoud de standaard instelling. Klik op **Volgende**.
 5. Geef in **netwerk kiezen**de virtuele switch op die door de VM moet worden gebruikt. De switch heeft Internet connectiviteit nodig om gegevens naar Azure te verzenden.
-6. Controleer de instellingen in **samen vatting**. Klik vervolgens op **volt ooien**.
+6. Controleer de instellingen in **samen vatting**. Klik vervolgens op **Voltooien**.
 7. Start de virtuele machine in Hyper-V-beheer > **virtual machines**.
 
 
@@ -184,7 +181,7 @@ Het apparaat voor de eerste keer instellen.
 
 Als u virtuele harde schijven uitvoert op Smb's, moet u de overdracht van referenties van het apparaat naar de Hyper-V-hosts inschakelen. Hiervoor moet u het volgende doen:
 
-- U schakelt elke host in als gemachtigde voor het apparaat. U moet dit doen in de vorige zelf studie, wanneer u Hyper-V voor de evaluatie en migratie hebt voor bereid. U moet CredSSP [hand matig](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)instellen voor de hosts of door [het configuratie script van de vereisten voor Hyper-V](tutorial-prepare-hyper-v.md#hyper-v-prerequisites-configuration-script)uit te voeren.
+- U schakelt elke host in als gemachtigde voor het apparaat. Als u de zelf studies in volg orde hebt gevolgd, hebt u dit gedaan in de vorige zelf studie, wanneer u Hyper-V voor de evaluatie en migratie hebt voor bereid. U moet CredSSP [hand matig](tutorial-prepare-hyper-v.md#enable-credssp-on-hosts)instellen voor de hosts of door [een script](tutorial-prepare-hyper-v.md#prepare-with-a-script) uit te voeren dat dit doet.
 - Schakel CredSSP-delegering in, zodat het Azure Migrate apparaat kan fungeren als de client, en de referenties voor een host delegeren.
 
 Schakel op het apparaat als volgt in:
@@ -248,7 +245,7 @@ Voer een evaluatie als volgt uit:
 1. Bekijk de [Aanbevolen procedures](best-practices-assessment.md) voor het maken van evaluaties.
 2. Klik in **Servers** > **Azure migrate: Server evaluatie**op **evalueren**.
 
-    ![Evalueren](./media/tutorial-assess-hyper-v/assess.png)
+    ![Beoordelen](./media/tutorial-assess-hyper-v/assess.png)
 
 3. Geef in **servers beoordelen**een naam op voor de evaluatie.
 4. Klik op **Alles weergeven** om de evaluatie-eigenschappen te controleren.

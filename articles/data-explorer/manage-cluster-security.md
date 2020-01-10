@@ -7,22 +7,20 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: c6f7e921886a6acdaa31d0f69f57119c339c0b8b
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 0f935999b68a7283c032d43c42d688b273d5c450
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70172597"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720341"
 ---
-# <a name="secure-your-cluster-in-azure-data-explorer"></a>Uw cluster beveiligen in azure Data Explorer
+# <a name="secure-your-cluster-in-azure-data-explorer---azure-portal"></a>Uw cluster beveiligen in azure Data Explorer-Azure Portal
 
-[Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview) helpt uw gegevens te beschermen en beschermen om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Het biedt volume versleuteling voor het besturings systeem en de gegevens schijven van de virtuele cluster machines. Het kan ook worden geïntegreerd met [Azure Key Vault](/azure/key-vault/) waarmee we de schijf versleutelings sleutels en geheimen kunnen beheren en beheren en ervoor zorgen dat alle gegevens op de VM-schijven op rest worden versleuteld terwijl u in azure Storage. 
-
-Met de beveiligings instellingen van uw cluster kunt u schijf versleuteling inschakelen voor uw cluster.
+[Azure Disk Encryption](/azure/security/azure-security-disk-encryption-overview) helpt uw gegevens te beschermen en beschermen om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Het biedt volume versleuteling voor het besturings systeem en de gegevens schijven van de virtuele cluster machines. Het kan ook worden geïntegreerd met [Azure Key Vault](/azure/key-vault/), waarmee we de schijf versleutelings sleutels en geheimen kunnen beheren en beheren en ervoor zorgen dat alle gegevens op de VM-schijven worden versleuteld. 
   
-## <a name="enable-encryption-at-rest"></a>Versleuteling inschakelen op rest
+## <a name="enable-encryption-at-rest-in-the-azure-portal"></a>Versleuteling inschakelen in de rest van de Azure Portal
   
-Het inschakelen van [versleuteling in rust](/azure/security/fundamentals/encryption-atrest) op uw cluster biedt gegevens beveiliging voor opgeslagen gegevens (op rest). 
+Met de beveiligings instellingen van uw cluster kunt u schijf versleuteling inschakelen voor uw cluster. Het inschakelen van [versleuteling in rust](/azure/security/fundamentals/encryption-atrest) op uw cluster biedt gegevens beveiliging voor opgeslagen gegevens (op rest). 
 
 1. Ga in het Azure Portal naar de cluster bron van Azure Data Explorer. Selecteer in de kop **instellingen** de optie **beveiliging**. 
 

@@ -11,16 +11,16 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 10/14/2019
-ms.openlocfilehash: 86a3fd7c67dc2e544a1510dc910951452c32245d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b560cee23855d1c0e8a7b3c2cb9d82c184a1ebf6
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811351"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732396"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Hoge Beschik baarheid en Azure SQL Database
 
-Het doel van de architectuur met hoge Beschik baarheid in Azure SQL Database is om te garanderen dat uw data base 99,99% van de tijd actief is, zonder dat u zich zorgen hoeft te maken over de gevolgen van onderhouds bewerkingen en storingen. Azure beheert automatisch essentiële onderhouds taken, zoals patches, back-ups, Windows-en SQL-upgrades, en niet-geplande gebeurtenissen, zoals onderliggende hardware, software of netwerk fouten.  Wanneer er een patch wordt uitgevoerd voor het onderliggende SQL-exemplaar of een failover wordt uitgevoerd, is de downtime niet merkbaar als u [probeert logica](sql-database-develop-overview.md#resiliency) in uw app te gebruiken. Azure SQL Database kan snel worden hersteld, zelfs in de meest kritieke omstandigheden, zodat uw gegevens altijd beschikbaar zijn.
+Het doel van de architectuur met hoge Beschik baarheid in Azure SQL Database is om te garanderen dat uw data base ten minste 99,99% van de tijd actief is (Zie voor meer informatie over de specifieke SLA voor de verschillende lagen de [Sla voor Azure SQL database](https://azure.microsoft.com/support/legal/sla/sql-database/)) zonder dat u zich zorgen hoeft te maken over het effect van onderhouds bewerkingen en storingen. Azure beheert automatisch essentiële onderhouds taken, zoals patches, back-ups, Windows-en SQL-upgrades, en niet-geplande gebeurtenissen, zoals onderliggende hardware, software of netwerk fouten.  Wanneer er een patch wordt uitgevoerd voor het onderliggende SQL-exemplaar of een failover wordt uitgevoerd, is de downtime niet merkbaar als u [probeert logica](sql-database-develop-overview.md#resiliency) in uw app te gebruiken. Azure SQL Database kan snel worden hersteld, zelfs in de meest kritieke omstandigheden, zodat uw gegevens altijd beschikbaar zijn.
 
 De oplossing voor hoge Beschik baarheid is zodanig ontworpen dat doorgevoerde gegevens nooit verloren gaan als gevolg van fouten, dat de onderhouds bewerkingen geen invloed hebben op uw werk belasting en dat de data base geen Single Point of Failure is in uw software architectuur. Er zijn geen onderhouds Vensters of downtime die vereisen dat u de werk belasting stopt wanneer de data base wordt bijgewerkt of onderhouden. 
 

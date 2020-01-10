@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: dbc17cff2347cd86db3296f4aa2de76ef0f75460
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 41289110049a7f907b76c8f9a8b2d9dc850f201c
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468073"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707200"
 ---
 # <a name="azure-security-technical-capabilities"></a>Technische mogelijkheden van Azure-beveiliging
 Dit artikel bevat een inleiding tot beveiligings Services in azure waarmee u uw gegevens, resources en toepassingen in de cloud kunt beveiligen en voldoen aan de beveiligings behoeften van uw bedrijf.
@@ -57,7 +57,7 @@ Met de oplossingen voor identiteits-en toegangs beheer van micro soft kunt u de 
 
 Voor delen van de beveiliging van Azure Active Directory (Azure AD) zijn de mogelijkheid om het volgende te doen:
 
-- Maak en beheer één identiteit voor elke gebruiker in uw hybride onderneming, zodat gebruikers, groepen en apparaten synchroon blijven.
+- Maak en beheer één enkele identiteit voor elke gebruiker in uw hybride onderneming, zodat gebruikers, groepen en apparaten gesynchroniseerd blijven.
 
 - Bieden van eenmalige aanmelding toegang tot uw toepassingen, waaronder duizenden vooraf geïntegreerde SaaS-apps.
 
@@ -91,7 +91,7 @@ Hier volgen de belangrijkste mogelijkheden van Azure Identity Management:
 
 Veel organisaties zijn afhankelijk van SaaS-toepassingen (Software as a Service), zoals Office 365, box en Sales Force voor productiviteit van eind gebruikers. In het verleden moesten IT-mede werkers in elke SaaS-toepassing afzonderlijke gebruikers accounts maken en bijwerken, en moeten gebruikers een wacht woord onthouden voor elke SaaS-toepassing.
 
-[Azure AD breidt on-premises Active Directory uit in de Cloud](../../active-directory/manage-apps/what-is-single-sign-on.md), zodat gebruikers hun primaire organisatie-account kunnen gebruiken om zich niet alleen aan te melden bij hun apparaten in het domein en bedrijfs bronnen, maar ook alle web-en SaaS-toepassingen die nodig zijn voor hun taak.
+[Azure AD breidt on-premises Active Directory uit in de Cloud](../../active-directory/manage-apps/what-is-single-sign-on.md), zodat gebruikers hun primaire organisatie-account kunnen gebruiken om zich niet alleen aan te melden bij hun apparaten in het domein en bedrijfs bronnen, maar ook voor alle web-en SaaS-toepassingen die nodig zijn voor hun taak.
 
 Gebruikers hoeven niet alleen meerdere sets met gebruikers namen en wacht woorden te beheren, toepassings toegang kan automatisch worden ingericht of ongedaan gemaakt op basis van organisatie groepen en hun status als werk nemer. [Azure AD introduceert beveiligings-en toegangs beheer functies](../../active-directory/active-directory-enterprise-apps-manage-sso.md) waarmee u de toegang van gebruikers tot de SaaS-toepassingen centraal kunt beheren.
 
@@ -171,7 +171,7 @@ Een van de sleutels voor gegevens beveiliging in de Cloud is een Accounting voor
 
 - Inactief: Dit omvat alle opslag objecten, containers en typen van informatie die statisch op fysieke media aanwezig zijn, op de magnetische of optische schijf.
 
-- Transit: wanneer gegevens worden overgedragen tussen onderdelen, locaties of Program ma's, zoals via het netwerk, via een service bus (van on-premises naar de Cloud en vice versa, waaronder hybride verbindingen zoals ExpressRoute), of tijdens een invoer-en uitvoer proces , wordt het gezien als bewegingen.
+- Transit: wanneer gegevens worden overgebracht tussen onderdelen, locaties of Program ma's, zoals via het netwerk, via een service bus (van on-premises naar de Cloud en vice versa, waaronder hybride verbindingen zoals ExpressRoute), of tijdens een invoer-en uitvoer proces, wordt het gezien als bewegingen.
 
 ### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
 
@@ -256,7 +256,7 @@ Grotere gegevens sets kunnen worden verplaatst via een speciale WAN-verbinding m
 
 Als u werkt met Azure Storage via de Azure-Portal, worden alle trans acties uitgevoerd via HTTPS. [Opslag rest API](https://msdn.microsoft.com/library/azure/dd179355.aspx) via https kan ook worden gebruikt om te communiceren met [Azure Storage](https://azure.microsoft.com/services/storage/) en [Azure SQL database](https://azure.microsoft.com/services/sql-database/).
 
-Organisaties die gegevens in de overdracht niet kunnen beveiligen, zijn gevoeliger voor [man-in-the-middle-aanvallen](https://technet.microsoft.com/library/gg195821.aspx), [afluis teren](https://technet.microsoft.com/library/gg195641.aspx)en het overnemen van sessies. Deze aanvallen kunnen de eerste stap zijn in het verkrijgen van toegang tot vertrouwelijke gegevens.
+Organisaties die gegevens in de overdracht niet kunnen beveiligen, zijn gevoeliger voor [man-in-the-middle-aanvallen](https://technet.microsoft.com/library/gg195821.aspx), [afluis teren](https://technet.microsoft.com/library/gg195641.aspx)en het overnemen van sessies. Deze aanvallen kunnen de eerste stap zijn om toegang te krijgen tot vertrouwelijke gegevens.
 
 Meer informatie over de Azure VPN-optie vindt u in het artikel [planning en ontwerp voor VPN gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md).
 
@@ -281,7 +281,7 @@ Organisaties die een zwakke [gegevens classificatie](https://download.microsoft.
 ## <a name="secure-your-application"></a>Uw toepassing beveiligen
 Hoewel Azure verantwoordelijk is voor de beveiliging van de infra structuur en het platform waarop uw toepassing wordt uitgevoerd, is het uw verantwoordelijkheid om uw toepassing zelf te beveiligen. Met andere woorden, u moet uw toepassings code en-inhoud op een veilige manier ontwikkelen, implementeren en beheren. Als u dit niet doet, kan uw toepassings code of-inhoud nog steeds kwetsbaar zijn voor bedreigingen.
 
-### <a name="web-application-firewall"></a>Web Application Firewall
+### <a name="web-application-firewall"></a>Firewall voor webtoepassingen
 [Web Application firewall (WAF)](../../application-gateway/waf-overview.md) is een functie van [Application Gateway](../../application-gateway/overview.md) waarmee uw webtoepassingen gecentraliseerd worden beschermd tegen veelvoorkomende aanvallen en beveiligings problemen.
 
 Web Application Firewall is gebaseerd op regels uit de [Core Rule Set 3.0 of 2.2.9 van OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Webtoepassingen zijn in toenemende mate het doel van aanvallen die gebruikmaken van veelvoorkomende bekende beveiligingsproblemen. Veelvoorkomende aanvallen zijn hierbij onder andere aanvallen met SQL-injecties en aanvallen via scripting op meerdere sites. Het kan een hele uitdaging zijn om dergelijke aanvallen in toepassingscode te voorkomen en dit kan tevens veel onderhoud, patching en controle vereisen op meerdere lagen van de toepassingstopologie. Een gecentraliseerde firewall voor webtoepassingen maakt het beveiligingsbeheer veel eenvoudiger en biedt toepassingsbeheerders meer veiligheid tegen bedreigingen of aanvallen. Een WAF-oplossing kan ook sneller reageren op een beveiligingsrisico door een patch voor een bekend beveiligingsprobleem toe te passen op een centrale locatie in plaats van elke afzonderlijke webtoepassing te beveiligen. Bestaande toepassingsgateways kunnen eenvoudig worden geconverteerd naar een toepassingsgateway met Web Application Firewall.
@@ -404,13 +404,13 @@ Met Azure Monitor kunt u elk exemplaar in elke Cloud beheren, met inbegrip van o
 
 Met deze methode kunt u gegevens uit verschillende bronnen consolideren, zodat u gegevens uit uw Azure-Services kunt combi neren met uw bestaande on-premises omgeving. De methode maakt ook een duidelijk onderscheid tussen het verzamelen van gegevens en het bewerken hiervan. Zo zijn alle bewerkingen beschikbaar voor alle soorten gegevens.
 
-### <a name="azure-security-center"></a>Azure Security Center
+### <a name="azure-security-center"></a>Azure Beveiligingscentrum
 
 [Azure Security Center](../../security-center/security-center-intro.md) helpt u bij het detecteren, voorkomen van en reageren op bedreigingen dankzij een verhoogde zichtbaarheid van en controle over de beveiliging van uw Azure-resources. Het biedt geïntegreerde beveiligingsbewaking en beleidsbeheer voor uw Azure-abonnementen, helpt bedreigingen te detecteren die anders onopgemerkt zouden blijven, en werkt met een uitgebreid ecosysteem van beveiligingsoplossingen.
 
 Security Center analyseert de beveiligingsstatus van uw Azure-resources om mogelijke beveiligingsproblemen op te sporen. Een lijst met aanbevelingen begeleidt u bij het configureren van benodigde besturingselementen.
 
-Voorbeelden zijn:
+Voorbeelden:
 
 - Inrichting van antimalware om schadelijke software te identificeren en te verwijderen
 
@@ -432,7 +432,7 @@ Security Center verzamelt, analyseert en integreert automatisch logboekgegevens 
 
 - Beveiligingswaarschuwingen van geïntegreerde antimalwareprogramma's en firewalls
 
-### <a name="azure-monitor"></a>Monitor voor Azure
+### <a name="azure-monitor"></a>Azure Monitor
 
 [Azure monitor](../../azure-monitor/overview.md) biedt verwijzingen naar informatie over specifieke typen resources. Het biedt visualisatie, query's, route ring, waarschuwingen, automatisch schalen en automatisering op gegevens van de Azure-infra structuur (activiteiten logboek) en elke afzonderlijke Azure-resource (Diagnostische logboeken).
 
@@ -446,7 +446,7 @@ Het controleren van de netwerk beveiliging is essentieel voor het detecteren van
 
 [Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) is een regionale service waarmee u voor waarden kunt controleren en diagnosticeren op netwerk niveau in, naar en Azure. Met behulp van de hulpprogram ma's voor netwerk diagnose en visualisatie die beschikbaar zijn bij Network Watcher, kunt u uw netwerk in azure begrijpen, vaststellen en er inzicht in krijgen. Deze service omvat pakket opname, volgende hop, IP-stroom controleren, beveiligings groep weer geven, NSG stroom Logboeken. Bewaking op scenario niveau biedt een end-to-end weer gave van netwerk bronnen in tegens telling tot afzonderlijke netwerk bron bewaking.
 
-### <a name="storage-analytics"></a>Opslaganalyse
+### <a name="storage-analytics"></a>Opslaganalyses
 
 [Opslaganalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) kunt metrische gegevens opslaan die geaggregeerde trans actie-statistieken en capaciteitgegevens over aanvragen voor een opslag service bevatten. Trans acties worden gerapporteerd op het niveau van de API-bewerking en op het niveau van de opslag service, en de capaciteit wordt gerapporteerd op het niveau van de opslag service. Metrische gegevens kunnen worden gebruikt voor het analyseren van het gebruik van opslag Services, het diagnosticeren van problemen met aanvragen die zijn gedaan voor de opslag service en voor het verbeteren van de prestaties van toepassingen die gebruikmaken van een service.
 
@@ -476,7 +476,7 @@ Met deze service kunt u het volgende controleren:
 
 - **Aangepaste gebeurtenissen en metrische gegevens** die u zelf schrijft in de client-of server code, voor het bijhouden van zakelijke gebeurtenissen, zoals verkochte items of spellen die zijn gewonnen.
 
-De infrastructuur voor uw toepassing bestaat meestal uit veel onderdelen, zoals een virtuele machine, een opslagaccount en een virtueel netwerk, of een webtoepassing, database, databaseserver en services van derden. Deze onderdelen moet u niet zien als afzonderlijke entiteiten, maar als onderdelen die één entiteit vormen en aan elkaar zijn gerelateerd en afhankelijk zijn van elkaar. U implementeert, beheert en bewaakt deze onderdelen als groep. [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) kunt u met de resources in uw oplossing als groep gebruiken.
+De infrastructuur voor uw toepassing bestaat meestal uit veel onderdelen, zoals een virtuele machine, een opslagaccount en een virtueel netwerk, of een webtoepassing, database, databaseserver en services van derden. Deze onderdelen moet u niet zien als afzonderlijke entiteiten, maar als onderdelen die één entiteit vormen en aan elkaar zijn gerelateerd en afhankelijk zijn van elkaar. U implementeert, beheert en bewaakt deze onderdelen als groep. [Azure Resource Manager](../../azure-resource-manager/management/overview.md) kunt u met de resources in uw oplossing als groep gebruiken.
 
 U kunt alle resources voor uw oplossing implementeren, bijwerken of verwijderen in een enkele, gecoördineerde bewerking. Voor implementatie gebruikt u een sjabloon. Deze sjabloon kan voor verschillende omgevingen worden gebruikt, zoals testen, faseren en productie. Resource Manager biedt beveiliging, controle en tagfuncties die u na de implementatie helpen bij het beheren van uw resources.
 
@@ -507,13 +507,13 @@ Lees meer over beveiliging door enkele van onze diep gaande onderwerpen over bev
 
 - [Controle en logboekregistratie](https://www.microsoft.com/en-us/trustcenter/security/auditingandlogging)
 
-- [Cyber Crime](https://www.microsoft.com/en-us/trustcenter/security/cybercrime)
+- [Cybercrime](https://www.microsoft.com/en-us/trustcenter/security/cybercrime)
 
 - [Ontwerp en operationele beveiliging](https://www.microsoft.com/en-us/trustcenter/security/designopsecurity)
 
 - [Versleuteling](https://www.microsoft.com/en-us/trustcenter/security/encryption)
 
-- [Identiteits-en toegangs beheer](https://www.microsoft.com/en-us/trustcenter/security/identity)
+- [Identiteits- en toegangsbeheer](https://www.microsoft.com/en-us/trustcenter/security/identity)
 
 - [Netwerkbeveiliging](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
 

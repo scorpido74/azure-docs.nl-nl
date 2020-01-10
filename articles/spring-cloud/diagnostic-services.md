@@ -4,24 +4,37 @@ description: Meer informatie over het analyseren van diagnostische gegevens in a
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
-ms.date: 10/06/2019
+ms.date: 01/06/2020
 ms.author: jeconnoc
-ms.openlocfilehash: ebe438bd2dc5b4921ce733001f3c9df19bc592fe
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 347867bc59206a24d32ca01f15bbff35fb73e1d0
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607865"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730039"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Logboeken en metrische gegevens analyseren met Diagnostische instellingen
 
-Door de diagnostische functionaliteit van Azure lente-Cloud te gebruiken, kunt u Logboeken en metrische gegevens analyseren met een van de volgende services:
+Met de diagnostische functionaliteit van Azure lente-Cloud kunt u Logboeken en metrische gegevens analyseren met een van de volgende services:
 
-* Gebruik Azure Log Analytics, waarbij de gegevens onmiddellijk worden geschreven zonder eerst naar de opslag te hoeven schrijven.
-* Sla ze op in een opslag account voor controle of hand matige inspectie. U kunt de Bewaar periode (in dagen) opgeven.
-* U kunt ze streamen naar uw Event Hub voor opname door een service van derden of een aangepaste analyse oplossing.
+* Gebruik Azure Log Analytics, waarbij de gegevens naar Azure Storage worden geschreven. Er is een vertraging bij het exporteren van logboeken naar Log Analytics.
+* Sla logboeken op in een opslag account voor controle of hand matige inspectie. U kunt de Bewaar periode (in dagen) opgeven.
+* Stream-logboeken naar uw Event Hub voor opname door een service van derden of een aangepaste analyse oplossing.
 
-Als u aan de slag wilt gaan, schakelt u een van deze services in om de gegevens te ontvangen. Raadpleeg aan de [slag met log Analytics in azure monitor](../azure-monitor/log-query/get-started-portal.md)voor meer informatie over het configureren van log Analytics. 
+Kies de categorie van het logboek en de metrische gegevens die u wilt bewaken.
+
+## <a name="logs"></a>Logboeken
+
+|Logboek | Beschrijving |
+|----|----|
+| **ApplicationConsole** | Console logboek van alle toepassingen van klanten. | 
+| **SystemLogs** | Op dit moment worden alleen logboeken met [lente-Cloud configuratie servers](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) in deze categorie vastgelegd. |
+
+## <a name="metrics"></a>Metrische gegevens
+
+Voor een volledige lijst met metrische gegevens raadpleegt u [metrische gegevens](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-concept-metrics#user-portal-metrics-options) voor de Cloud
+
+Als u aan de slag wilt gaan, schakelt u een van deze services in om de gegevens te ontvangen. Zie aan de [slag met log Analytics in azure monitor](../azure-monitor/log-query/get-started-portal.md)voor meer informatie over het configureren van log Analytics. 
 
 ## <a name="configure-diagnostics-settings"></a>Diagnostische instellingen configureren
 
@@ -38,17 +51,44 @@ Als u aan de slag wilt gaan, schakelt u een van deze services in om de gegevens 
 > [!NOTE]
 > Er kan een onderbreking van Maxi maal 15 minuten zijn tussen het moment dat Logboeken of metrische gegevens worden verzonden en wanneer ze worden weer gegeven in uw opslag account, uw Event Hub of Log Analytics.
 
-## <a name="view-the-logs"></a>De logboeken weer geven
+## <a name="view-the-logs-and-metrics"></a>De logboeken en metrische gegevens weer geven
+Er zijn verschillende methoden om logboeken en metrische gegevens weer te geven, zoals wordt beschreven in de volgende koppen.
+
+### <a name="use-logs-blade"></a>Blade Logboeken gebruiken
+
+1. Ga in het Azure Portal naar uw Azure veer Cloud-exemplaar.
+1. Selecteer **Logboeken**om het deel venster **Zoeken in Logboeken** te openen.
+1. In het zoekvak **logboek**
+   * Als u logboeken wilt weer geven, voert u een eenvoudige query in, zoals:
+
+    ```sql
+    AppPlatformLogsforSpring
+    | limit 50
+    ```
+   * Als u metrische gegevens wilt weer geven, voert u een eenvoudige query in, zoals:
+
+    ```sql
+    AzureMetrics
+    | limit 50
+    ```
+1. Als u het Zoek resultaat wilt weer geven, selecteert u **uitvoeren**.
 
 ### <a name="use-log-analytics"></a>Log Analytics gebruiken
 
 1. Selecteer **log Analytics**in het linkerdeel venster van de Azure Portal.
 1. Selecteer de Log Analytics werk ruimte die u hebt gekozen toen u de diagnostische instellingen hebt toegevoegd.
 1. Selecteer **Logboeken**om het deel venster **Zoeken in Logboeken** te openen.
-1. Voer in het vak Zoeken in **logboek** een eenvoudige query in, zoals:
+1. In het zoekvak **Logboeken** ,
+   * Als u logboeken wilt weer geven, voert u een eenvoudige query in, zoals:
 
     ```sql
     AppPlatformLogsforSpring
+    | limit 50
+    ```
+    * Als u metrische gegevens wilt weer geven, voert u een eenvoudige query in, zoals:
+
+    ```sql
+    AzureMetrics
     | limit 50
     ```
 
@@ -60,6 +100,8 @@ Als u aan de slag wilt gaan, schakelt u een van deze services in om de gegevens 
     | where ServiceName == "YourServiceName" and AppName == "YourAppName" and InstanceName == "YourInstanceName"
     | limit 50
     ```
+> [!NOTE]  
+> `==` is hoofdletter gevoelig, maar `=~` niet.
 
 Zie [Azure monitor-logboek query's](../azure-monitor/log-query/query-language.md)voor meer informatie over de query taal die wordt gebruikt in log Analytics.
 
@@ -87,9 +129,9 @@ Voor meer informatie over het verzenden van diagnostische gegevens naar een Even
 
 ## <a name="analyze-the-logs"></a>De logboeken analyseren
 
-Azure Log Analytics biedt Kusto, zodat u een query kunt uitvoeren op uw logboeken voor analyse. Raadpleeg de [log Analytics zelf studie](../azure-monitor/log-query/get-started-portal.md)voor een snelle inleiding in het uitvoeren van query's op Logboeken met behulp van Kusto.
+Azure Log Analytics wordt uitgevoerd met een Kusto-engine, zodat u een query kunt uitvoeren op uw logboeken voor analyse. Raadpleeg de [log Analytics zelf studie](../azure-monitor/log-query/get-started-portal.md)voor een snelle inleiding in het uitvoeren van query's op Logboeken met behulp van Kusto.
 
-Toepassings logboeken bieden essentiële informatie over de status, prestaties en meer van de toepassing. In de volgende secties vindt u enkele eenvoudige query's waarmee u inzicht krijgt in de huidige en eerdere status van uw toepassing.
+Toepassings logboeken bieden essentiële informatie en uitgebreide logboeken over de status, prestaties en meer van de toepassing. In de volgende secties vindt u enkele eenvoudige query's waarmee u inzicht krijgt in de huidige en eerdere status van uw toepassing.
 
 ### <a name="show-application-logs-from-azure-spring-cloud"></a>Toepassings logboeken van Azure lente-Cloud weer geven
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ef3edace53cf7367716027811cf3061b617a9a6
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: fb7fed7cf5f38f9f7677126aff92492ccacd6e12
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379206"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75707941"
 ---
 # <a name="troubleshooting-devices-using-the-dsregcmd-command"></a>Problemen met apparaten oplossen met behulp van de dsregcmd-opdracht
 
@@ -28,10 +28,10 @@ In deze sectie vindt u de para meters voor de status van de apparaten. In de vol
 
 | AzureAdJoined | EnterpriseJoined | DomainJoined | Apparaatstatus |
 | ---   | ---   | ---   | ---   |
-| KLIKT | NO | NO | Toegevoegd aan Azure AD |
-| NO | NO | KLIKT | Lid van domein |
-| KLIKT | NO | KLIKT | Lid van hybride AD |
-| NO | KLIKT | KLIKT | On-premises DRS toegevoegd |
+| JA | NO | NO | Toegevoegd aan Azure AD |
+| NO | NO | JA | Lid van domein |
+| JA | NO | JA | Lid van hybride AD |
+| NO | JA | JA | On-premises DRS toegevoegd |
 
 > [!NOTE]
 > De status Workplace Join (geregistreerd bij Azure AD) wordt weer gegeven in de sectie gebruikers status
@@ -54,7 +54,7 @@ In deze sectie vindt u de para meters voor de status van de apparaten. In de vol
 +----------------------------------------------------------------------+
 ```
 
-## <a name="device-details"></a>Details van apparaat
+## <a name="device-details"></a>Apparaatgegevens
 
 Alleen weer gegeven wanneer het apparaat is toegevoegd aan Azure AD of hybride Azure AD (niet geregistreerd voor Azure AD). In deze sectie vindt u informatie over apparaten die zijn opgeslagen in de Cloud.
 
@@ -81,7 +81,7 @@ Alleen weer gegeven wanneer het apparaat is toegevoegd aan Azure AD of hybride A
 +----------------------------------------------------------------------+
 ```
 
-## <a name="tenant-details"></a>Tenant Details
+## <a name="tenant-details"></a>Tenantgegevens
 
 Alleen weer gegeven wanneer het apparaat is toegevoegd aan Azure AD of hybride Azure AD (niet geregistreerd voor Azure AD). In deze sectie vindt u de algemene Tenant Details wanneer een apparaat wordt toegevoegd aan Azure AD.
 
@@ -193,7 +193,7 @@ Deze sectie kan worden genegeerd voor geregistreerde Azure AD-apparaten.
 +----------------------------------------------------------------------+
 ```
 
-## <a name="diagnostic-data"></a>Diagnostische gegevens
+## <a name="diagnostic-data"></a>Diagnostische gegevens in plaats daarvan
 
 ### <a name="pre-join-diagnostics"></a>Diagnostische gegevens vooraf samen voegen
 
@@ -297,10 +297,22 @@ In deze sectie wordt de uitvoer weer gegeven van Sanity controles die zijn uitge
 
 ## <a name="ngc-prerequisite-check"></a>NGC-vereisten controle
 
-In deze sectie worden de Perquisite controles uitgevoerd voor het inrichten van een NGC-sleutel. 
+In deze sectie worden de Perquisite controles uitgevoerd voor het inrichten van Windows hello voor bedrijven (WHFB). 
 
 > [!NOTE]
-> U ziet mogelijk geen details van de NGC-vereisten controle in dsregcmd/status als de gebruiker de NGC-referenties al correct heeft geconfigureerd.
+> U ziet mogelijk geen details van de NGC-vereisten controle in dsregcmd/status als de gebruiker WHFB al correct heeft geconfigureerd.
+
+- **IsDeviceJoined:** -ingesteld op Ja als het apparaat is gekoppeld aan Azure AD.
+- **IsUserAzureAD:** -stel deze waarde in op Ja als de aangemelde gebruiker aanwezig is in azure AD.
+- **PolicyEnabled:** -stel deze waarde in op Ja als het WHFB-beleid is ingeschakeld op het apparaat.
+- **PostLogonEnabled:** -ingesteld op Ja als WHFB-inschrijving systeem eigen wordt geactiveerd door het platform. Als deze is ingesteld op Nee, betekent dit dat de registratie van Windows hello voor bedrijven wordt geactiveerd door een aangepast mechanisme
+- **DeviceEligible:** -stel deze waarde in op Ja als het apparaat voldoet aan de hardwarevereisten voor registratie bij WHFB.
+- **SessionIsNotRemote:** -stel deze waarde in op Ja als de huidige gebruiker rechtstreeks is aangemeld bij het apparaat en niet op afstand.
+- **CertEnrollment:** -specifiek voor WHFB certificaat vertrouwens implementatie, met vermelding van de certificerings instantie voor certificaat inschrijving voor WHFB. Ingesteld op "inschrijvings instantie" als de bron van WHFB-beleid is groepsbeleid, "Mobile Device Management" als de bron MDM is. ' geen ' anders
+- **AdfsRefreshToken:** -specifiek voor WHFB-implementatie van certificaat vertrouwen. Alleen aanwezig als CertEnrollment de registratie-instantie is. Hiermee wordt aangegeven of het apparaat een Enter prise-PRT heeft voor de gebruiker.
+- **AdfsRaIsReady:** -specifiek voor WHFB-implementatie van certificaat vertrouwen.  Alleen aanwezig als CertEnrollment de registratie-instantie is. Ingesteld op Ja als ADFS is aangegeven in de detectie-meta gegevens die door WHFB worden ondersteund *en* als de aanmeldings certificaat sjabloon beschikbaar is.
+- **LogonCertTemplateReady:** -specifiek voor WHFB-implementatie van certificaat vertrouwen. Alleen aanwezig als CertEnrollment de registratie-instantie is. Ingesteld op Ja als de status van de aanmeldings certificaat sjabloon geldig is en u helpt bij het oplossen van problemen met ADFS RA.
+- **PreReqResult:** -levert het resultaat van de evaluatie van de WHFB-vereisten. Ingesteld op ' wordt ingericht ' als de WHFB-inschrijving wordt gestart als een taak na het aanmelden wanneer de gebruiker de volgende keer aanmeldt.
 
 ### <a name="sample-ngc-prerequisite-check-output"></a>Voorbeeld uitvoer van NGC-vereisten controle
 

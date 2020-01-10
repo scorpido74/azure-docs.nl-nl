@@ -4,12 +4,12 @@ description: In dit artikel leert u hoe u Recovery Services kluizen maakt waarin
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 144d8cdb870e12474dfc47784749b5f0e466f8bf
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 6a880f84d5e8626d36ac3f4b440436b479ec5f6d
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74273400"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708507"
 ---
 # <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
@@ -73,12 +73,54 @@ Azure Backup beheert automatisch de opslag voor de kluis. U moet opgeven hoe die
 > [!NOTE]
 > Het wijzigen van het **type opslag replicatie** (lokaal redundante/geo-redundant) voor een Recovery Services-kluis moet worden uitgevoerd voordat u back-ups in de kluis configureert. Zodra u een back-up hebt geconfigureerd, is de optie om te wijzigen uitgeschakeld en kunt u het **type opslag replicatie**niet wijzigen.
 
+## <a name="set-cross-region-restore"></a>Meerdere regio's herstellen instellen
+
+Als een van de opties voor terugzetten met behulp van cross Region Restore (CRR) kunt u virtuele Azure-machines herstellen in een secundaire regio, een [Azure-gekoppelde regio](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Met deze optie kunt u:
+
+- oefeningen uitvoeren als er een controle-of nalevings vereiste is
+- herstel de virtuele machine of de schijf als er sprake is van een nood geval in de primaire regio.
+
+Als u deze functie wilt kiezen, selecteert u **herstel van meerdere regio's inschakelen** op de Blade van de **back-upconfiguratie** .
+
+Voor dit proces gelden de prijs implicaties voor het opslag niveau.
+
+>[!NOTE]
+>Voordat u begint:
+>
+>- Bekijk de [ondersteunings matrix](backup-support-matrix.md#cross-region-restore) voor een lijst met ondersteunde beheerde typen en regio's.
+>- De functie voor het terugzetten van meerdere regio's (CRR) is momenteel alleen beschikbaar in de regio WCUS.
+>- CRR is een opt-in-functie op kluis niveau voor elke GRS-kluis (standaard uitgeschakeld).
+>- Gebruik *' functienaam ': ' CrossRegionRestore '* om uw abonnement op deze functie voor te bereiden.
+>- Als u deze functie tijdens een open bare beperkte preview onbeschikbaar maakt, bevat het e-mail bericht over de goed keuring de prijs informatie.
+>- Na het inbrengen kan het tot 48 uur duren voordat de back-upitems beschikbaar zijn in secundaire regio's.
+>- Momenteel wordt CRR alleen ondersteund voor het type back-upbeheer. ARM Azure VM (klassieke Azure-VM wordt niet ondersteund).  Wanneer extra beheer typen ondersteuning bieden voor CRR, worden ze **automatisch** Inge schreven.
+
+### <a name="configure-cross-region-restore"></a>Herstel van meerdere regio's configureren
+
+Een kluis die is gemaakt met GRS-redundantie bevat de optie voor het configureren van de functie voor het terugzetten van meerdere regio's. Elke GRS-kluis heeft een banner dat een koppeling naar de documentatie bevat. Als u CRR voor de kluis wilt configureren, gaat u naar de Blade back-upconfiguratie. Deze bevat de optie om deze functie in te scha kelen.
+
+ ![Banner back-upconfiguratie](./media/backup-azure-arm-restore-vms/banner.png)
+
+1. Ga in de portal naar Recovery Services kluis > Instellingen > Eigenschappen.
+2. Klik op **Restore voor meerdere regio's inschakelen in deze kluis** om de functionaliteit in te scha kelen.
+
+   ![Voordat u op Restore voor meerdere regio's inschakelen in deze kluis klikt](./media/backup-azure-arm-restore-vms/backup-configuration1.png)
+
+   ![Nadat u op de optie voor het herstellen van meerdere regio's in deze kluis hebt geklikt](./media/backup-azure-arm-restore-vms/backup-configuration2.png)
+
+Meer informatie over het [weer geven van back-upitems in de secundaire regio](backup-azure-arm-restore-vms.md#view-backup-items-in-secondary-region).
+
+Meer informatie over [het herstellen van de secundaire regio](backup-azure-arm-restore-vms.md#restore-in-secondary-region).
+
+Meer informatie over het [bewaken van herstel taken van secundaire regio's](backup-azure-arm-restore-vms.md#monitoring-secondary-region-restore-jobs).
+
 ## <a name="modifying-default-settings"></a>Standaard instellingen wijzigen
 
-We raden u ten zeerste aan de standaard instellingen voor het **type opslag replicatie** en de **beveiligings instellingen** te controleren voordat u back-ups in de kluis configureert. 
-* **Type opslag replicatie** is standaard ingesteld op **geo-redundant**. Zodra u de back-up hebt geconfigureerd, is de optie om te wijzigen uitgeschakeld. Volg deze [stappen](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) om de instellingen te controleren en te wijzigen. 
-* **Voorlopig verwijderen** is standaard **ingeschakeld** op nieuwe kluizen om back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen. Volg deze [stappen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete) om de instellingen te controleren en te wijzigen.
+We raden u ten zeerste aan de standaard instellingen voor het **type opslag replicatie** en de **beveiligings instellingen** te controleren voordat u back-ups in de kluis configureert.
 
+- **Type opslag replicatie** is standaard ingesteld op **geo-redundant**. Zodra u de back-up hebt geconfigureerd, is de optie om te wijzigen uitgeschakeld. Volg deze [stappen](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy) om de instellingen te controleren en te wijzigen.
+
+- **Voorlopig verwijderen** is standaard **ingeschakeld** op nieuwe kluizen om back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen. Volg deze [stappen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#disabling-soft-delete) om de instellingen te controleren en te wijzigen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

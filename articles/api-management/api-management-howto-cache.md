@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 76a87d539e19acc30944a6a896cb0e01f431fa37
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: bf8d8a2c11962467300ae8d65fe5bbbe9a65cf92
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70073567"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708352"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Opslaan in cache toevoegen om de prestaties in Azure API Management te verbeteren
 
@@ -41,12 +41,12 @@ Wat u leert:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Vereisten om deze zelfstudie te voltooien:
 
 + [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
 + [Import and publish an API](import-and-publish.md) (API's importeren en publiceren)
 
-## <a name="caching-policies"> </a>De cachebeleidsregels toevoegen
+## <a name="caching-policies"> </a>De cache beleidsregels toevoegen
 
 Met de cachebeleidsregels in dit voorbeeld wordt met de eerste aanvraag voor de bewerking **GetSpeakers** een antwoord geretourneerd van de back-endservice. Dit antwoord wordt in de cache opgeslagen en voorzien van een sleutel door de opgegeven headers en querytekenreeksparameters. Voor volgende aanroepen voor de bewerking, met overeenkomende parameters, wordt het antwoord geretourneerd dat in de cache is opgeslagen, tot het cacheduurinterval is verlopen.
 
@@ -70,14 +70,14 @@ Met de cachebeleidsregels in dit voorbeeld wordt met de eerste aanvraag voor de 
 
 9. Voeg aan het **uitgaande** element de volgende beleidsregel toe:
 
-        <cache-store caching-mode="cache-on" duration="20" />
+        <cache-store duration="20" />
 
     Met **Duur** wordt het vervalinterval opgegeven van de antwoorden in de cache. In dit voorbeeld bedraagt het interval **20** seconden.
 
 > [!TIP]
 > Als u een externe cache gebruikt, zoals is beschreven in [Een externe Azure Cache voor Redis gebruiken in Azure API Management](api-management-howto-cache-external.md), wilt u misschien het kenmerk `caching-type` van het cachebeleid opgeven. Zie [API Management caching policies](api-management-caching-policies.md) (Cache-beleidsregels van API Management) voor meer informatie.
 
-## <a name="test-operation"> </a>Een bewerking aanroepen en het opslaan in de cache testen
+## <a name="test-operation"> </a>Een bewerking aanroepen en de cache testen
 Als u opslaan in de cache in actie wilt zien, roept u de bewerking aan vanuit de ontwikkelaarsportal.
 
 1. Blader in Azure Portal naar de APIM-instantie.

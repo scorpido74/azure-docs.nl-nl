@@ -1,18 +1,14 @@
 ---
 title: Prestatie waarschuwingen maken voor Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u aangepaste waarschuwingen maakt op basis van logboek query's voor geheugen-en CPU-gebruik van Azure Monitor voor containers.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
-ms.date: 04/26/2019
-ms.openlocfilehash: 66baa3095744c8b486430d587b992ba507d87733
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.date: 01/07/2020
+ms.openlocfilehash: 5d73f4399d10683597fb2a2e8a3a2ab4ba0d1165
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74841622"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730922"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Waarschuwingen instellen voor prestatie problemen in Azure Monitor voor containers
 
@@ -287,14 +283,15 @@ Volg deze stappen om een logboek waarschuwing in Azure Monitor te maken met behu
 >Met de volgende procedure voor het maken van een waarschuwings regel voor container resource gebruik moet u overschakelen naar een nieuwe API voor logboek waarschuwingen, zoals beschreven in de voor [keur voor de switch-API voor logboek waarschuwingen](../platform/alerts-log-api-switch.md).
 >
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer **monitor** in het deel venster aan de linkerkant. Onder **inzichten**selecteert u **containers**.
-3. Selecteer op het tabblad **bewaakte clusters** een cluster in de lijst.
-4. Selecteer **Logboeken** in het deel venster aan de linkerkant onder **bewaking**om de pagina Azure monitor logboeken te openen. U gebruikt deze pagina om Azure Log Analytics-query's te schrijven en uit te voeren.
-5. Selecteer op de pagina **Logboeken** **+ nieuwe waarschuwings regel**.
-6. Selecteer in de sectie **voor waarde** het **tijdstip waarop de aangepaste logboek zoekactie \<logica niet gedefinieerd >** vooraf gedefinieerde aangepaste logboek voorwaarde. Het waarschuwings type voor de **aangepaste zoek opdracht voor logboeken** wordt automatisch geselecteerd omdat er rechtstreeks vanuit de pagina logboeken van Azure monitor een waarschuwing wordt gemaakt.  
-7. Plak een van de [query's](#resource-utilization-log-search-queries) die eerder zijn gegeven in het veld **Zoek query** .
-8. Configureer de waarschuwing als volgt:
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+2. Zoek in het Azure Portal naar en selecteer **log Analytics-werk ruimten**.
+3. Selecteer de werk ruimte die Azure Monitor ondersteunt voor containers in de lijst met Log Analytics-werk ruimten. 
+4. Selecteer in het deel venster aan de linkerkant **Logboeken** om de pagina Azure monitor logboeken te openen. U gebruikt deze pagina om Azure Log Analytics-query's te schrijven en uit te voeren.
+5. Plak op de pagina **Logboeken** een van de eerder genoemde [query's](#resource-utilization-log-search-queries) in het veld **Zoek query** en selecteer vervolgens **uitvoeren** om de resultaten te valideren. Als u deze stap niet uitvoert, is de optie **+ nieuwe waarschuwing** niet beschikbaar om te selecteren.
+6. Selecteer **+ nieuwe waarschuwing** om een logboek waarschuwing te maken.
+7. Selecteer in de sectie **voor waarde** het **tijdstip waarop de aangepaste logboek zoekactie \<logica niet gedefinieerd >** vooraf gedefinieerde aangepaste logboek voorwaarde. Het waarschuwings type voor de **aangepaste zoek opdracht voor logboeken** wordt automatisch geselecteerd omdat er rechtstreeks vanuit de pagina logboeken van Azure monitor een waarschuwing wordt gemaakt.  
+8. Plak een van de [query's](#resource-utilization-log-search-queries) die eerder zijn gegeven in het veld **Zoek query** .
+9. Configureer de waarschuwing als volgt:
 
     1. Selecteer in de vervolgkeuzelijst **Gebaseerd op** de optie **Meting van metrische gegevens**. Een metrische meting maakt een waarschuwing voor elk object in de query met een waarde boven onze opgegeven drempel.
     1. Voor **waarde**, selecteert u **groter dan**en voert u **75** in als een **drempel waarde** voor de aanvankelijke basis lijn voor de waarschuwingen voor de CPU en het geheugen gebruik. Voer **90**in voor de waarschuwing voor weinig schijf ruimte. Of voer een andere waarde in die voldoet aan uw criteria.
@@ -302,11 +299,11 @@ Volg deze stappen om een logboek waarschuwing in Azure Monitor te maken met behu
     1. Als u een waarschuwing voor container-CPU of geheugen gebruik wilt configureren, selecteert u onder **aggregatie op**de optie **containerName**. Selecteer **ClusterId**om te configureren voor een waarschuwing met een lage schijf van het cluster knooppunt.
     1. Stel in de **geëvalueerd op basis van** de sectie de **periode** waarde in op **60 minuten**. De regel wordt elke vijf minuten uitgevoerd en geeft als resultaat records die zijn gemaakt in het afgelopen uur van de huidige tijd. Het instellen van de tijds periode op een Wide Window-accounts voor mogelijke gegevens latentie. Het zorgt er ook voor dat de query gegevens retourneert om een onjuiste negatief te voor komen waarbij de waarschuwing nooit wordt geactiveerd.
 
-9. Selecteer **gereed** om de waarschuwings regel te volt ooien.
-10. Voer een naam in het veld **naam van waarschuwings regel** in. Geef een **Beschrijving** op die informatie over de waarschuwing bevat. En selecteer een passend Ernst niveau in de beschik bare opties.
-11. Als u de waarschuwings regel onmiddellijk wilt activeren, accepteert u de standaard waarde voor het inschakelen van de **regel bij het maken**.
-12. Selecteer een bestaande **actie groep** of maak een nieuwe groep. Deze stap zorgt ervoor dat dezelfde acties worden uitgevoerd telkens wanneer een waarschuwing wordt geactiveerd. Configureren op basis van de manier waarop uw IT-of DevOps Operations-team incidenten beheert.
-13. Selecteer **waarschuwings regel maken** om de waarschuwings regel te volt ooien. Deze wordt onmiddellijk uitgevoerd.
+10. Selecteer **gereed** om de waarschuwings regel te volt ooien.
+11. Voer een naam in het veld **naam van waarschuwings regel** in. Geef een **Beschrijving** op die informatie over de waarschuwing bevat. En selecteer een passend Ernst niveau in de beschik bare opties.
+12. Als u de waarschuwings regel onmiddellijk wilt activeren, accepteert u de standaard waarde voor het inschakelen van de **regel bij het maken**.
+13. Selecteer een bestaande **actie groep** of maak een nieuwe groep. Deze stap zorgt ervoor dat dezelfde acties worden uitgevoerd telkens wanneer een waarschuwing wordt geactiveerd. Configureren op basis van de manier waarop uw IT-of DevOps Operations-team incidenten beheert.
+14. Selecteer **waarschuwings regel maken** om de waarschuwings regel te volt ooien. Deze wordt onmiddellijk uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

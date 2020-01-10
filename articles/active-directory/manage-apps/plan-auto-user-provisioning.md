@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdf4e5dfc48fdeee86526257d6d8c47a464ce113
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: b1e8128066794932abaca4290a5c896354522544
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786415"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732447"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Implementatie van een automatische gebruikersinrichting plannen
 
@@ -67,7 +67,7 @@ In dit artikel worden de volgende termen gebruikt:
 
 ### <a name="training-resources"></a>Trainings bronnen
 
-| Bronnen| Koppeling en beschrijving |
+| Resources| Koppeling en beschrijving |
 | - | - |
 | On-demand webinars| [Uw bedrijfs toepassingen beheren met Azure AD](https://info.microsoft.com/CO-AZUREPLAT-WBNR-FY18-03Mar-06-ManageYourEnterpriseApplicationsOption1-MCW0004438_02OnDemandRegistration-ForminBody.html)<br>Meer informatie over hoe u met Azure AD eenmalige aanmelding kunt verkrijgen voor uw zakelijke SaaS-toepassingen en aanbevolen procedures voor het beheren van de toegang. |
 | Video’s| [Wat is gebruikers inrichten in Active Azure Directory?](https://youtu.be/_ZjARPpI6NI) <br> [Hoe kan ik de gebruikers inrichten in Active Azure Directory implementeren?](https://youtu.be/pKzyts6kfrw) <br> [Sales Force integreren met Azure AD: gebruikers inrichten automatiseren](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
@@ -132,13 +132,13 @@ Bedenk wat uw organisatie nodig heeft om de strategie te bepalen voor het implem
 
 Wanneer technologie projecten mislukken, is dit doorgaans het gevolg van niet-overeenkomende verwachtingen wat betreft impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](https://aka.ms/deploymentplans) en dat de rol van belanghebbenden in het project goed worden begrepen door de belanghebbenden en hun project invoer en accountabilities te documenteren.
 
-### <a name="plan-communications"></a>Communicatie plannen
+### <a name="plan-communications"></a>De communicatie plannen
 
 Communicatie is van cruciaal belang voor het slagen van een nieuwe service. Communiceer proactief met uw gebruikers hoe hun ervaring verandert, wanneer deze wordt gewijzigd, en hoe u ondersteuning krijgt als u problemen ondervindt.
 
 ### <a name="plan-a-pilot"></a>Een pilot plannen
 
-We raden u aan de initiële configuratie van automatische gebruikers inrichting in een test omgeving met een kleine subset van gebruikers te maken voordat u deze naar alle gebruikers in productie kunt schalen.
+We raden u aan de initiële configuratie van automatische gebruikers inrichting in een test omgeving met een kleine subset van gebruikers te maken voordat u deze naar alle gebruikers in productie kunt schalen. Zie [Aanbevolen procedures](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) voor het uitvoeren van een pilot.
 
 #### <a name="best-practices-for-a-pilot"></a>Aanbevolen procedures voor een pilot  
 
@@ -319,7 +319,7 @@ Raadpleeg de volgende koppelingen voor het oplossen van problemen die kunnen opt
 
 * [Azure AD Connect-inrichtings agent: release geschiedenis van versie](https://docs.microsoft.com/azure/active-directory/manage-apps/provisioning-agent-release-version-history)
 
-#### <a name="resources"></a>Bronnen
+#### <a name="resources"></a>Resources
 
 * [Product feedback geven](https://feedback.azure.com/forums/169401-azure-active-directory)
 

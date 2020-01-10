@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor Azure Backup
 description: Bevat een samenvatting van ondersteuningsinstellingen en -beperkingen voor de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: 2c33c71e579cc6fa5d01ba086fb1a9a4fc9c142c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: dc709294b92fd26343e9520e3775b9f079aba94f
+ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172071"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75708477"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Ondersteunings matrix voor Azure Backup
 
@@ -54,7 +54,7 @@ Dit wordt what's ondersteund als u een back-up wilt maken van on-premises machin
 
 **Limiet** | **Details**
 --- | ---
-**Gegevens schijven van virtuele machines van Azure** | Limiet van 16
+**Gegevens schijven van virtuele machines van Azure** | Limiet van 16 <br> Als u zich wilt aanmelden voor de persoonlijke preview-versie van VM's met meer dan 16 schijven (maximaal 32 schijven), stuurt u een bericht naar AskAzureBackupTeam@microsoft.com
 **Grootte van de Azure VM-gegevens schijf** | De afzonderlijke schijf grootte kan Maxi maal 32 TB en Maxi maal 256 TB gecombineerd voor alle schijven in een VM zijn.
 
 ### <a name="azure-vm-backup-options"></a>Azure VM-back-upopties
@@ -104,7 +104,7 @@ Azure Backup ondersteunt versleuteling voor in-transit en op rest-gegevens.
     > [!WARNING]
     > Nadat u de kluis hebt ingesteld, hebt alleen u toegang tot de versleutelingssleutel. Microsoft bewaart nooit een kopie en heeft geen toegang tot de sleutel. Als de sleutel verkeerd wordt geplaatst, kan Microsoft de back-upgegevens niet herstellen.
 
-### <a name="data-security"></a>Gegevensbeveiliging
+### <a name="data-security"></a>Databeveiliging
 
 - Wanneer u een back-up maakt van virtuele Azure-machines, moet u de versleuteling instellen *in* de Virtual Machine.
 - Azure Backup biedt ondersteuning voor Azure Disk Encryption, dat gebruikmaakt van BitLocker op virtuele Windows-machines en **dm-crypt** op virtuele Linux-machines.
@@ -126,8 +126,8 @@ Backup ondersteunt de compressie van het back-upverkeer, zoals wordt beschreven 
 
 **Machine** | **Comprimeren naar MABS/DPM (TCP)** | **Comprimeren naar kluis (HTTPS)**
 --- | --- | ---
-**Directe back-ups van on-premises Windows-computers** | N.v.t. | ![Ja][green]
-**Back-ups van virtuele Azure-machines maken met behulp van VM-extensie** | N.v.t. | N.v.t.
+**Directe back-ups van on-premises Windows-computers** | N.V.T. | ![Ja][green]
+**Back-ups van virtuele Azure-machines maken met behulp van VM-extensie** | N.V.T. | N.V.T.
 **Back-ups op on-premises/Azure-computers met behulp van MABS/DPM** | ![Ja][green] | ![Ja][green]
 
 ## <a name="retention-limits"></a>Bewaarlimieten
@@ -141,6 +141,19 @@ Backup ondersteunt de compressie van het back-upverkeer, zoals wordt beschreven 
 **Bewaar periode van het herstel punt** | Dagelijks, wekelijks, maandelijks, jaarlijks
 **Maximale Bewaar periode** | Afhankelijk van back-upfrequentie
 **Herstel punten op DPM/MABS-schijf** | 64 voor bestands servers; 448 voor app-servers <br/><br/>Onbeperkte tape herstel punten voor on-premises DPM
+
+## <a name="cross-region-restore"></a>Meerdere regio's herstellen
+
+Azure Backup de functie voor het terugzetten van meerdere regio's heeft toegevoegd om de beschik baarheid en tolerantie van gegevens te versterken, waardoor klanten volledig beheer hebben over het herstellen van gegevens naar een secundaire regio. Als u deze functie wilt configureren, gaat u naar [het artikel set cross Region Restore.](backup-create-rs-vault.md#set-cross-region-restore). Deze functie wordt ondersteund voor de volgende beheer typen:
+
+| Type back-upbeheer | Ondersteund                                                    | Ondersteunde regio's |
+| ---------------------- | ------------------------------------------------------------ | ----------------- |
+| Azure VM               | Ja. Open bare beperkte preview ondersteund voor versleutelde Vm's en Vm's met minder dan 4 TB schijven | VS - west-centraal   |
+| MARS-agent/on-premises | Nee                                                           | N/A               |
+| SQL-/SAP HANA          | Nee                                                           | N/A               |
+| AFS                    | Nee                                                           | N/A               |
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

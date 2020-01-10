@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
-ms.date: 11/07/2019
-ms.openlocfilehash: 470e9a9c36b6b4ec2e40db5dfc47ae03fb6b5aa8
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.date: 1/05/2020
+ms.openlocfilehash: 73314cb2d3ac77347e0de720a6a3ab0084181218
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421384"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732413"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
 
@@ -32,8 +32,9 @@ Daarnaast bieden automatische-failover-groepen alleen-lezen-en alleen-lezen list
 Wanneer u groepen voor automatische failover gebruikt met automatische failoverbeleid, resulteert elke storing die van invloed is op data bases in de SQL Database Server of het beheerde exemplaar tot een automatische failover. U kunt de groep voor automatische failover beheren met:
 
 - [Azure Portal](sql-database-implement-geo-distributed-database.md)
+- [Azure CLI: failover-groep](scripts/sql-database-add-single-db-to-failover-group-cli.md)
 - [Power shell: failover-groep](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
-- [Rest API: failovergroep](https://docs.microsoft.com/rest/api/sql/failovergroups).
+- [Rest API: failovergroep](/rest/api/sql/failovergroups).
 
 Zorg er na een failover voor dat de verificatie vereisten voor uw server en Data Base zijn geconfigureerd op de nieuwe primaire. Zie [SQL database Security na nood herstel](sql-database-geo-replication-security-config.md)voor meer informatie.
 
@@ -95,7 +96,7 @@ Voor een echte bedrijfs continuïteit is het toevoegen van database redundantie 
 
 - **Alleen-lezen failoverbeleid**
 
-  De failover van de alleen-lezen listener is standaard uitgeschakeld. Het zorgt ervoor dat de prestaties van de primaire server niet worden beïnvloed wanneer de secundaire offline is. Het betekent echter ook dat de alleen-lezen sessies geen verbinding kunnen maken tot het secundaire bestand is hersteld. Als u uitval tijd niet kunt gebruiken voor de alleen-lezen sessies en u de primaire alleen-lezen-en lees-schrijf bewerkingen wilt uitvoeren tegen onkosten van de mogelijke prestatie vermindering van de primaire, kunt u failover inschakelen voor de alleen-lezen listener door de eigenschap `AllowReadOnlyFailoverToPrimary` te configureren. In dat geval wordt het alleen-lezen verkeer automatisch omgeleid naar de primaire als de secundaire niet beschikbaar is.
+  De failover van de alleen-lezen listener is standaard uitgeschakeld. Het zorgt ervoor dat de prestaties van de primaire server niet worden beïnvloed wanneer de secundaire offline is. Het betekent echter ook dat de alleen-lezen sessies geen verbinding kunnen maken tot het secundaire bestand is hersteld. Als u uitval tijd niet kunt gebruiken voor de alleen-lezen sessies en u de primaire alleen-lezen-en lees-schrijf bewerkingen wilt uitvoeren tegen kosten van de potentiële prestaties van de primaire prestatie, kunt u failover voor de alleen-lezen listener inschakelen door de eigenschap `AllowReadOnlyFailoverToPrimary` te configureren. In dat geval wordt het alleen-lezen verkeer automatisch omgeleid naar de primaire als de secundaire niet beschikbaar is.
 
 - **Geplande failover**
 
@@ -151,34 +152,57 @@ De groep voor automatische failover moet worden geconfigureerd op de primaire SQ
 
 Houd bij het ontwerpen van een service met bedrijfs continuïteit de volgende algemene richt lijnen:
 
-- **Een of meer failover-groepen gebruiken om failover van meerdere data bases te beheren**
+### <a name="using-one-or-several-failover-groups-to-manage-failover-of-multiple-databases"></a>Een of meer failover-groepen gebruiken om failover van meerdere data bases te beheren
 
-  Er kunnen een of meer failover-groepen worden gemaakt tussen twee servers in verschillende regio's (primaire en secundaire servers). Elke groep kan een of meer data bases bevatten die als een eenheid worden hersteld in het geval dat alle of enkele primaire data bases niet beschikbaar zijn vanwege een storing in de primaire regio. De groep failover maakt geo-secundaire data base met dezelfde service doelstelling als de primaire. Als u een bestaande geo-replicatie relatie aan de failovergroep toevoegt, zorg er dan voor dat de geo-Secondary is geconfigureerd met dezelfde servicelaag en reken grootte als de primaire.
+Er kunnen een of meer failover-groepen worden gemaakt tussen twee servers in verschillende regio's (primaire en secundaire servers). Elke groep kan een of meer data bases bevatten die als een eenheid worden hersteld in het geval dat alle of enkele primaire data bases niet beschikbaar zijn vanwege een storing in de primaire regio. De groep failover maakt geo-secundaire data base met dezelfde service doelstelling als de primaire. Als u een bestaande geo-replicatie relatie aan de failovergroep toevoegt, zorg er dan voor dat de geo-Secondary is geconfigureerd met dezelfde servicelaag en reken grootte als de primaire.
   
-  > [!IMPORTANT]
-  > Het maken van failover-groepen tussen twee servers in verschillende abonnementen wordt momenteel niet ondersteund voor afzonderlijke data bases en elastische Pools. Als u de primaire of secundaire server naar een ander abonnement verplaatst nadat de failovergroep is gemaakt, kan dit leiden tot fouten in de failover-aanvragen en andere bewerkingen.
+> [!IMPORTANT]
+> Het maken van failover-groepen tussen twee servers in verschillende abonnementen wordt momenteel niet ondersteund voor afzonderlijke data bases en elastische Pools. Als u de primaire of secundaire server naar een ander abonnement verplaatst nadat de failovergroep is gemaakt, kan dit leiden tot fouten in de failover-aanvragen en andere bewerkingen.
 
-- **Listener voor read-write gebruiken voor OLTP-workload**
+### <a name="using-read-write-listener-for-oltp-workload"></a>Lezen-schrijven-listener gebruiken voor OLTP-workload
 
-  Bij het uitvoeren van OLTP-bewerkingen, gebruikt u `<fog-name>.database.windows.net` als de server-URL en worden de verbindingen automatisch naar de primaire verbinding geleid. Deze URL wordt niet gewijzigd na de failover. Opmerking voor de failover moet de DNS-record worden bijgewerkt, zodat de client verbindingen alleen worden omgeleid naar de nieuwe primaire server nadat de DNS-cache van de client is vernieuwd.
+Bij het uitvoeren van OLTP-bewerkingen, gebruikt u `<fog-name>.database.windows.net` als de server-URL en worden de verbindingen automatisch naar de primaire verbinding geleid. Deze URL wordt niet gewijzigd na de failover. Opmerking voor de failover moet de DNS-record worden bijgewerkt, zodat de client verbindingen alleen worden omgeleid naar de nieuwe primaire server nadat de DNS-cache van de client is vernieuwd.
 
-- **Alleen-lezen-listener gebruiken voor alleen-lezen werk belasting**
+### <a name="using-read-only-listener-for-read-only-workload"></a>Alleen-lezen-listener gebruiken voor alleen-lezen werk belasting
 
-  Als u een logisch geïsoleerde alleen-lezen werk belasting hebt die tolerant is voor bepaalde verouderde gegevens, kunt u de secundaire data base in de toepassing gebruiken. Voor alleen-lezen sessies gebruikt u `<fog-name>.secondary.database.windows.net` als de server-URL en wordt de verbinding automatisch omgeleid naar de secundaire. U wordt ook aangeraden om in connection string Lees intentie op te geven met behulp van `ApplicationIntent=ReadOnly`. Als u er zeker van wilt zijn dat de workload alleen-lezen opnieuw verbinding kan maken na een failover of als de secundaire server offline gaat, moet u de eigenschap `AllowReadOnlyFailoverToPrimary` van het failover-beleid configureren.
+Als u een logisch geïsoleerde alleen-lezen werk belasting hebt die tolerant is voor bepaalde verouderde gegevens, kunt u de secundaire data base in de toepassing gebruiken. Voor alleen-lezen sessies gebruikt u `<fog-name>.secondary.database.windows.net` als de server-URL en wordt de verbinding automatisch omgeleid naar de secundaire. U wordt ook aangeraden om in connection string Lees intentie op te geven met behulp van `ApplicationIntent=ReadOnly`. Als u er zeker van wilt zijn dat de workload alleen-lezen opnieuw verbinding kan maken na een failover of als de secundaire server offline gaat, moet u de eigenschap `AllowReadOnlyFailoverToPrimary` van het failover-beleid configureren.
 
-- **Voor bereidingen voor prestatie vermindering**
+### <a name="preparing-for-performance-degradation"></a>Prestatie vermindering voorbereiden
 
-  De beslissing van SQL-failover is onafhankelijk van de rest van de toepassing of andere services die worden gebruikt. De toepassing kan worden ' Mixed ' met enkele onderdelen in één regio en een deel van een andere. Zorg ervoor dat u de redundante toepassing implementeert in de DR-regio en volg deze [richt lijnen voor netwerk beveiliging](#failover-groups-and-network-security)om de degradatie te voor komen.
+Een typische Azure-toepassing maakt gebruik van meerdere Azure-Services en bestaat uit meerdere onderdelen. De automatische failover van de failovergroep wordt geactiveerd op basis van de status van de Azure SQL-onderdelen. Andere Azure-Services in de primaire regio worden mogelijk niet beïnvloed door de storing en hun onderdelen zijn mogelijk nog steeds beschikbaar in die regio. Zodra de primaire data bases overschakelen naar de DR-regio, kan de latentie tussen de afhankelijke onderdelen toenemen. Om te voor komen dat de gevolgen van een hogere latentie van de prestaties van de toepassing worden beïnvloed, moet u ervoor zorgen dat alle onderdelen van de toepassing in de DR-regio worden redundantie en deze [richt lijnen voor netwerk beveiliging](#failover-groups-and-network-security)volgen.
 
-  > [!NOTE]
-  > De toepassing in de DR-regio hoeft geen andere connection string te gebruiken.  
+### <a name="preparing-for-data-loss"></a>Gegevens verlies voorbereiden
 
-- **Voorbereiden op gegevens verlies**
+Als er een storing wordt gedetecteerd, wacht SQL op de periode die u hebt opgegeven door `GracePeriodWithDataLossHours`. De standaard waarde is 1 uur. Als u geen gegevens verlies kunt veroorloven, moet u `GracePeriodWithDataLossHours` instellen op een voldoende groot getal, zoals 24 uur. Gebruik hand matige failover van de groep om een failback uit te geven van de secundaire naar de primaire.
 
-  Als er een storing wordt gedetecteerd, wacht SQL op de periode die u hebt opgegeven door `GracePeriodWithDataLossHours`. De standaard waarde is 1 uur. Als u geen gegevens verlies kunt veroorloven, moet u `GracePeriodWithDataLossHours` instellen op een voldoende groot getal, zoals 24 uur. Gebruik hand matige failover van de groep om een failback uit te geven van de secundaire naar de primaire.
+> [!IMPORTANT]
+> Elastische Pools met 800 of minder Dtu's en meer dan 250-data bases die gebruikmaken van geo-replicatie, kunnen problemen ondervinden, inclusief langere, geplande failovers en verminderde prestaties.  Deze problemen treden waarschijnlijk vaker op voor het schrijven van intensieve workloads, wanneer geo-replicatie-eind punten op grote schaal worden gescheiden door geografie, of wanneer meerdere secundaire eind punten worden gebruikt voor elke Data Base.  Symptomen van deze problemen worden aangegeven wanneer de geo-replicatie vertraging na verloop van tijd toeneemt.  Deze vertraging kan worden bewaakt met behulp van [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Als deze problemen optreden, zijn de mogelijke oplossingen het verhogen van het aantal groeps Dtu's of het verminderen van het aantal geo-gerepliceerde data bases in dezelfde groep.
 
-  > [!IMPORTANT]
-  > Elastische Pools met 800 of minder Dtu's en meer dan 250-data bases die gebruikmaken van geo-replicatie, kunnen problemen ondervinden, inclusief langere, geplande failovers en verminderde prestaties.  Deze problemen treden waarschijnlijk vaker op voor het schrijven van intensieve workloads, wanneer geo-replicatie-eind punten op grote schaal worden gescheiden door geografie, of wanneer meerdere secundaire eind punten worden gebruikt voor elke Data Base.  Symptomen van deze problemen worden aangegeven wanneer de geo-replicatie vertraging na verloop van tijd toeneemt.  Deze vertraging kan worden bewaakt met behulp van [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Als deze problemen optreden, zijn de mogelijke oplossingen het verhogen van het aantal groeps Dtu's of het verminderen van het aantal geo-gerepliceerde data bases in dezelfde groep.
+### <a name="changing-secondary-region-of-the-failover-group"></a>Secundaire regio van de failovergroep wijzigen
+
+Ter illustratie van de wijzigings volgorde gaan we ervan uit dat Server A de primaire server is, Server B de bestaande secundaire server is en server C de nieuwe tweede in de derde regio is.  Voer de volgende stappen uit om de overgang te maken:
+
+1.  Maak aanvullende secundaire zones van elke Data Base op server A naar server C met behulp van [actieve geo-replicatie](sql-database-active-geo-replication.md). Elke Data Base op server A heeft twee secundaire zones: één op server B en één op server C. Hiermee wordt gegarandeerd dat de primaire data bases beveiligd blijven tijdens de overgang.
+2.  Verwijder de failovergroep. De aanmeldingen worden op dit moment niet uitgevoerd. Dit komt doordat de SQL-aliassen voor de listeners van de failovergroep zijn verwijderd en de gateway de naam van de failover-groep niet herkent.
+3.  Maak de failovergroep opnieuw met dezelfde naam tussen de servers A en C. Op dit moment worden de aanmeldingen niet meer uitgevoerd.
+4.  Voeg alle primaire data bases op server A toe aan de nieuwe failovergroep.
+5.  Haal server B weg. Alle data bases op B worden automatisch verwijderd. 
+
+
+### <a name="changing-primary-region-of-the-failover-group"></a>Primaire regio van de failovergroep wijzigen
+
+Ter illustratie van de wijzigings volgorde gaan we ervan uit dat Server A de primaire server is, Server B de bestaande secundaire server is en server C de nieuwe primair is in de derde regio.  Voer de volgende stappen uit om de overgang te maken:
+
+1.  Voer een geplande failover uit om de primaire server over te scha kelen naar B. server A wordt de nieuwe secundaire server. De failover kan leiden tot enkele minuten uitval tijd. De werkelijke tijd is afhankelijk van de grootte van de failovergroep.
+2.  Maak aanvullende secundaire zones van elke Data Base op server B naar server C met behulp van [actieve geo-replicatie](sql-database-active-geo-replication.md). Elke Data Base op server B heeft twee secundaire gegevens, één op server A en één op server C. Hiermee wordt gegarandeerd dat de primaire data bases beveiligd blijven tijdens de overgang.
+3.  Verwijder de failovergroep. De aanmeldingen worden op dit moment niet uitgevoerd. Dit komt doordat de SQL-aliassen voor de listeners van de failovergroep zijn verwijderd en de gateway de naam van de failover-groep niet herkent.
+4.  Maak de failovergroep opnieuw met dezelfde naam tussen de servers A en C. Op dit moment worden de aanmeldingen niet meer uitgevoerd.
+5.  Voeg alle primaire data bases op B toe aan de nieuwe failovergroep. 
+6.  Voer een geplande failover van de failovergroep uit om tussen B en C te scha kelen. Nu wordt Server C de primaire en B-de secundaire. Alle secundaire data bases op server A worden automatisch gekoppeld aan de Primaries op C. Net als bij stap 1 kan de failover tot enkele minuten uitval tijd tot gevolg hebben.
+6.  Verwijder de server A. Alle data bases op een worden automatisch verwijderd.
+
+> [!IMPORTANT]
+> Wanneer de failovergroep wordt verwijderd, worden ook de DNS-records voor de listener-eind punten verwijderd. Op dat moment is er sprake van een niet-nul-kans van iemand anders die een failovergroep of server alias met dezelfde naam maakt, waardoor u deze niet opnieuw kunt gebruiken. Gebruik geen algemene namen voor failover-groepen om het risico tot een minimum te beperken.
 
 ## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Aanbevolen procedures voor het gebruik van failover-groepen met beheerde exemplaren
 
@@ -193,62 +217,86 @@ Het volgende diagram illustreert een typische configuratie van een geo-redundant
 
 Als uw toepassing gebruikmaakt van een beheerd exemplaar als gegevenslaag, volgt u deze algemene richt lijnen bij het ontwerpen voor bedrijfs continuïteit:
 
-- **Het secundaire exemplaar maken in dezelfde DNS-zone als het primaire exemplaar**
+### <a name="creating-the-secondary-instance"></a>Het secundaire exemplaar maken 
 
-  Om ervoor te zorgen dat een niet-onderbroken connectiviteit met het primaire exemplaar na een failover wordt gegarandeerd, moeten de primaire en secundaire exemplaren zich in dezelfde DNS-zone bevindt. Hiermee wordt gegarandeerd dat hetzelfde multi-Domain (SAN)-certificaat kan worden gebruikt voor het verifiëren van de client verbindingen met een van de twee exemplaren in de failovergroep. Wanneer uw toepassing gereed is voor productie-implementatie, maakt u een secundair exemplaar in een andere regio en zorgt u ervoor dat de DNS-zone wordt gedeeld met het primaire exemplaar. U kunt dit doen door een `DNS Zone Partner` optionele para meter op te geven met behulp van de Azure Portal, Power shell of de REST API.
+Om ervoor te zorgen dat een niet-onderbroken connectiviteit met het primaire exemplaar na een failover wordt gegarandeerd, moeten de primaire en secundaire exemplaren zich in dezelfde DNS-zone bevindt. Hiermee wordt gegarandeerd dat hetzelfde multi-Domain (SAN)-certificaat kan worden gebruikt voor het verifiëren van de client verbindingen met een van de twee exemplaren in de failovergroep. Wanneer uw toepassing gereed is voor productie-implementatie, maakt u een secundair exemplaar in een andere regio en zorgt u ervoor dat de DNS-zone wordt gedeeld met het primaire exemplaar. U kunt dit doen door een `DNS Zone Partner` optionele para meter op te geven met behulp van de Azure Portal, Power shell of de REST API.
 
 > [!IMPORTANT]
 > Het eerste exemplaar dat in het subnet wordt gemaakt, bepaalt de DNS-zone voor alle volgende instanties in hetzelfde subnet. Dit betekent dat twee exemplaren van hetzelfde subnet geen deel kunnen uitmaken van verschillende DNS-zones.
 
-  Zie [een secundaire beheerde instantie maken](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance)voor meer informatie over het maken van het secundaire exemplaar in dezelfde DNS-zone als het primaire exemplaar.
+Zie [een secundaire beheerde instantie maken](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance)voor meer informatie over het maken van het secundaire exemplaar in dezelfde DNS-zone als het primaire exemplaar.
 
-- **Replicatie verkeer tussen twee instanties inschakelen**
+### <a name="enabling-replication-traffic-between-two-instances"></a>Replicatie verkeer tussen twee instanties inschakelen
 
-  Omdat elk exemplaar is geïsoleerd in een eigen VNet, moet twee richtings verkeer tussen deze VNets worden toegestaan. Zie [Azure VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
+Omdat elk exemplaar is geïsoleerd in een eigen VNet, moet twee richtings verkeer tussen deze VNets worden toegestaan. Zie [Azure VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
-- **Een failover-groep maken tussen beheerde instanties in verschillende abonnementen**
+### <a name="creating-a-failover-group-between-managed-instances-in-different-subscriptions"></a>Een failovergroep maken tussen beheerde instanties in verschillende abonnementen
 
-  U kunt in twee verschillende abonnementen een failover-groep maken tussen beheerde exemplaren. Wanneer u Power shell API gebruikt, kunt u dit doen door de para meter `PartnerSubscriptionId` op te geven voor het secundaire exemplaar. Wanneer u REST API gebruikt, kan elke exemplaar-ID die is opgenomen in de para meter `properties.managedInstancePairs` een eigen subscriptionID hebben.
+U kunt in twee verschillende abonnementen een failover-groep maken tussen beheerde exemplaren. Wanneer u Power shell API gebruikt, kunt u dit doen door de para meter `PartnerSubscriptionId` op te geven voor het secundaire exemplaar. Wanneer u REST API gebruikt, kan elke exemplaar-ID die is opgenomen in de para meter `properties.managedInstancePairs` een eigen subscriptionID hebben.
   
-  > [!IMPORTANT]
-  > Azure Portal biedt geen ondersteuning voor failover-groepen in verschillende abonnementen.
+> [!IMPORTANT]
+> Azure Portal biedt geen ondersteuning voor failover-groepen in verschillende abonnementen.
 
-- **Een failovergroep configureren voor het beheren van de failover van het hele exemplaar**
+### <a name="managing-failover-to-secondary-instance"></a>Failover naar een secundair exemplaar beheren
 
-  De failovergroep beheert de failover van alle data bases in het exemplaar. Wanneer een groep wordt gemaakt, wordt elke data base in het exemplaar automatisch geo-gerepliceerd naar het secundaire exemplaar. U kunt geen failover-groepen gebruiken om een gedeeltelijke failover van een subset van de data bases te initiëren.
+De failovergroep beheert de failover van alle data bases in het exemplaar. Wanneer een groep wordt gemaakt, wordt elke data base in het exemplaar automatisch geo-gerepliceerd naar het secundaire exemplaar. U kunt geen failover-groepen gebruiken om een gedeeltelijke failover van een subset van de data bases te initiëren.
 
-  > [!IMPORTANT]
-  > Als een Data Base uit het primaire exemplaar wordt verwijderd, wordt deze ook automatisch neergezet op het secundaire geo-exemplaar.
+> [!IMPORTANT]
+> Als een Data Base uit het primaire exemplaar wordt verwijderd, wordt deze ook automatisch neergezet op het secundaire geo-exemplaar.
 
-- **Listener voor read-write gebruiken voor OLTP-workload**
+### <a name="using-read-write-listener-for-oltp-workload"></a>Lezen-schrijven-listener gebruiken voor OLTP-workload
 
-  Bij het uitvoeren van OLTP-bewerkingen, gebruikt u `<fog-name>.zone_id.database.windows.net` als de server-URL en worden de verbindingen automatisch naar de primaire verbinding geleid. Deze URL wordt niet gewijzigd na de failover. De failover omvat het bijwerken van de DNS-record, zodat de client verbindingen alleen worden omgeleid naar de nieuwe primaire server nadat de DNS-cache van de client is vernieuwd. Omdat het secundaire exemplaar de DNS-zone met de primaire share deelt, kan de client toepassing opnieuw verbinding maken met het certificaat met behulp van dezelfde SAN-certificaten.
+Bij het uitvoeren van OLTP-bewerkingen, gebruikt u `<fog-name>.zone_id.database.windows.net` als de server-URL en worden de verbindingen automatisch naar de primaire verbinding geleid. Deze URL wordt niet gewijzigd na de failover. De failover omvat het bijwerken van de DNS-record, zodat de client verbindingen alleen worden omgeleid naar de nieuwe primaire server nadat de DNS-cache van de client is vernieuwd. Omdat het secundaire exemplaar de DNS-zone met de primaire share deelt, kan de client toepassing opnieuw verbinding maken met het certificaat met behulp van dezelfde SAN-certificaten.
 
-- **Rechtstreeks verbinding maken met geo-gerepliceerd secundair voor alleen-lezen query's**
+### <a name="using-read-only-listener-to-connect-to-the-secondary-instance"></a>Een alleen-lezen listener gebruiken om verbinding te maken met het secundaire exemplaar
 
-  Als u een logisch geïsoleerde alleen-lezen werk belasting hebt die tolerant is voor bepaalde verouderde gegevens, kunt u de secundaire data base in de toepassing gebruiken. Als u rechtstreeks verbinding wilt maken met het secundaire geo-gerepliceerde secundair, gebruikt u `server.secondary.zone_id.database.windows.net` als de server-URL en wordt de verbinding rechtstreeks gemaakt naar het geo-gerepliceerde secundair.
+Als u een logisch geïsoleerde alleen-lezen werk belasting hebt die tolerant is voor bepaalde verouderde gegevens, kunt u de secundaire data base in de toepassing gebruiken. Als u rechtstreeks verbinding wilt maken met het secundaire geo-gerepliceerde secundair, gebruikt u `server.secondary.zone_id.database.windows.net` als de server-URL en wordt de verbinding rechtstreeks gemaakt naar het geo-gerepliceerde secundair.
 
-  > [!NOTE]
-  > In bepaalde service lagen ondersteunt Azure SQL Database het gebruik van [alleen-lezen replica's](sql-database-read-scale-out.md) om werk belastingen voor alleen-lezen query's te verdelen met behulp van de capaciteit van één alleen-lezen replica en met behulp van de `ApplicationIntent=ReadOnly`-para meter in de Connection String. Wanneer u een secundaire geo-replicatie hebt geconfigureerd, kunt u deze mogelijkheid gebruiken om verbinding te maken met een alleen-lezen replica op de primaire locatie of op de geo-gerepliceerde locatie.
-  > - Gebruik `<fog-name>.zone_id.database.windows.net`om verbinding te maken met een alleen-lezen replica op de primaire locatie.
-  > - Gebruik `<fog-name>.secondary.zone_id.database.windows.net`om verbinding te maken met een alleen-lezen replica op de secundaire locatie.
+> [!NOTE]
+> In bepaalde service lagen ondersteunt Azure SQL Database het gebruik van [alleen-lezen replica's](sql-database-read-scale-out.md) om werk belastingen voor alleen-lezen query's te verdelen met behulp van de capaciteit van één alleen-lezen replica en met behulp van de `ApplicationIntent=ReadOnly`-para meter in de Connection String. Wanneer u een secundaire geo-replicatie hebt geconfigureerd, kunt u deze mogelijkheid gebruiken om verbinding te maken met een alleen-lezen replica op de primaire locatie of op de geo-gerepliceerde locatie.
+> - Gebruik `<fog-name>.zone_id.database.windows.net`om verbinding te maken met een alleen-lezen replica op de primaire locatie.
+> - Gebruik `<fog-name>.secondary.zone_id.database.windows.net`om verbinding te maken met een alleen-lezen replica op de secundaire locatie.
 
-- **Voor bereidingen voor prestatie vermindering**
+### <a name="preparing-for-performance-degradation"></a>Prestatie vermindering voorbereiden
 
-  De beslissing van SQL-failover is onafhankelijk van de rest van de toepassing of andere services die worden gebruikt. De toepassing kan worden ' Mixed ' met enkele onderdelen in één regio en een deel van een andere. Zorg ervoor dat u de redundante toepassing implementeert in de DR-regio en volg deze [richt lijnen voor netwerk beveiliging](#failover-groups-and-network-security)om de degradatie te voor komen.
+Een typische Azure-toepassing maakt gebruik van meerdere Azure-Services en bestaat uit meerdere onderdelen. De automatische failover van de failovergroep wordt geactiveerd op basis van de status van de Azure SQL-onderdelen. Andere Azure-Services in de primaire regio worden mogelijk niet beïnvloed door de storing en hun onderdelen zijn mogelijk nog steeds beschikbaar in die regio. Zodra de primaire data bases overschakelen naar de DR-regio, kan de latentie tussen de afhankelijke onderdelen toenemen. Om te voor komen dat de gevolgen van een hogere latentie van de prestaties van de toepassing worden beïnvloed, moet u ervoor zorgen dat alle onderdelen van de toepassing in de DR-regio worden redundantie en deze [richt lijnen voor netwerk beveiliging](#failover-groups-and-network-security)volgen.
 
-- **Voorbereiden op gegevens verlies**
+### <a name="preparing-for-data-loss"></a>Gegevens verlies voorbereiden
 
-  Als er een storing wordt gedetecteerd, wordt door SQL automatisch een failover voor lezen/schrijven geactiveerd als er geen gegevens verloren zijn op het beste van de kennis. Anders wordt gewacht op de periode die u hebt opgegeven door `GracePeriodWithDataLossHours`. Als u `GracePeriodWithDataLossHours`hebt opgegeven, moet u voor bereid zijn op gegevens verlies. Over het algemeen is het voor de beschik baarheid van Azure van belang. Als u geen gegevens verlies kunt veroorloven, moet u toegevoegd instellen op een voldoende groot getal, zoals 24 uur.
+Als er een storing wordt gedetecteerd, wordt door SQL automatisch een failover voor lezen/schrijven geactiveerd als er geen gegevens verloren zijn op het beste van de kennis. Anders wordt gewacht op de periode die u hebt opgegeven door `GracePeriodWithDataLossHours`. Als u `GracePeriodWithDataLossHours`hebt opgegeven, moet u voor bereid zijn op gegevens verlies. Over het algemeen is het voor de beschik baarheid van Azure van belang. Als u geen gegevens verlies kunt veroorloven, moet u toegevoegd instellen op een voldoende groot getal, zoals 24 uur.
 
-  De DNS-update van de listener voor lezen-schrijven gebeurt onmiddellijk nadat de failover is gestart. Deze bewerking resulteert niet in gegevens verlies. Het proces van het wisselen van database rollen kan echter tot vijf minuten duren onder normale omstandigheden. Totdat de data bases in het nieuwe primaire exemplaar zijn voltooid, hebben ze nog steeds het kenmerk alleen-lezen. Als failover wordt gestart met behulp van Power shell, is de gehele bewerking synchroon. Als het wordt gestart met behulp van de Azure Portal, wordt in de gebruikers interface de voltooiings status weer geven. Als deze is gestart met behulp van de REST API, gebruikt u het polling mechanisme van de standaard Azure Resource Manager om te controleren of het is voltooid.
+De DNS-update van de listener voor lezen-schrijven gebeurt onmiddellijk nadat de failover is gestart. Deze bewerking resulteert niet in gegevens verlies. Het proces van het wisselen van database rollen kan echter tot vijf minuten duren onder normale omstandigheden. Totdat de data bases in het nieuwe primaire exemplaar zijn voltooid, hebben ze nog steeds het kenmerk alleen-lezen. Als failover wordt gestart met behulp van Power shell, is de gehele bewerking synchroon. Als het wordt gestart met behulp van de Azure Portal, wordt in de gebruikers interface de voltooiings status weer geven. Als deze is gestart met behulp van de REST API, gebruikt u het polling mechanisme van de standaard Azure Resource Manager om te controleren of het is voltooid.
 
-  > [!IMPORTANT]
-  > Gebruik hand matige failover van groep om Primaries terug te zetten naar de oorspronkelijke locatie. Wanneer de storing die de failover veroorzaakte, wordt verholpen, kunt u de primaire data bases naar de oorspronkelijke locatie verplaatsen. Als u dit wilt doen, moet u de hand matige failover van de groep initiëren.
+> [!IMPORTANT]
+> Gebruik hand matige failover van groep om Primaries terug te zetten naar de oorspronkelijke locatie. Wanneer de storing die de failover veroorzaakte, wordt verholpen, kunt u de primaire data bases naar de oorspronkelijke locatie verplaatsen. Als u dit wilt doen, moet u de hand matige failover van de groep initiëren.
+  
+### <a name="changing-secondary-region-of-the-failover-group"></a>Secundaire regio van de failovergroep wijzigen
 
-- **Bekende beperkingen van failover-groepen erkennen**
+We gaan ervan uit dat exemplaar A het primaire exemplaar is, instantie B is de bestaande secundaire instantie en exemplaar C is de nieuwe secundaire instantie in de derde regio.  Voer de volgende stappen uit om de overgang te maken:
 
-  De naam van een Data Base wordt niet ondersteund voor exemplaren in een failovergroep. U moet een failovergroep tijdelijk verwijderen om de naam van een Data Base te kunnen wijzigen.
+1.  Maak instantie C met dezelfde grootte als en in dezelfde DNS-zone. 
+2.  Verwijder de failovergroep tussen de exemplaren A en B. De aanmeldingen worden op dit moment niet uitgevoerd omdat de SQL-aliassen voor de listeners van de failovergroep zijn verwijderd en de gateway de naam van de failovergroep niet herkent. De secundaire data bases worden losgekoppeld van de Primaries en worden gelezen-write-data bases. 
+3.  Maak een failovergroep met dezelfde naam tussen exemplaar A en C. Volg de instructies in [failover Group with Managed instance zelf studie](sql-database-managed-instance-failover-group-tutorial.md). Dit is een omvang van de gegevens bewerking en wordt voltooid wanneer alle data bases van instantie A worden geseed en gesynchroniseerd.
+4.  Verwijder instance B als dit niet nodig is om onnodige kosten te voor komen.
+
+> [!NOTE]
+> Na stap 2 en totdat stap 3 is voltooid, blijven de data bases in instantie A onbeschermd tegen een onherstelbare fout van instantie A.
+
+### <a name="changing-primary-region-of-the-failover-group"></a>Primaire regio van de failovergroep wijzigen
+
+We gaan ervan uit dat exemplaar A het primaire exemplaar is, instantie B is de bestaande secundaire instantie en exemplaar C is de nieuwe primaire instantie in de derde regio.  Voer de volgende stappen uit om de overgang te maken:
+
+1.  Maak instantie C met dezelfde grootte als B en in dezelfde DNS-zone. 
+2.  Maak verbinding met exemplaar B en hand matige failover om de primaire instantie over te scha kelen naar B. instantie A wordt automatisch het nieuwe secundaire exemplaar.
+3.  Verwijder de failovergroep tussen de exemplaren A en B. De aanmeldingen worden op dit moment niet uitgevoerd omdat de SQL-aliassen voor de listeners van de failovergroep zijn verwijderd en de gateway de naam van de failovergroep niet herkent. De secundaire data bases worden losgekoppeld van de Primaries en worden gelezen-write-data bases. 
+4.  Maak een failovergroep met dezelfde naam tussen exemplaar A en C. Volg de instructies in de [failovergroep with Managed instance zelf studie](sql-database-managed-instance-failover-group-tutorial.md). Dit is een omvang van de gegevens bewerking en wordt voltooid wanneer alle data bases van instantie A worden geseed en gesynchroniseerd.
+5.  Verwijder exemplaar A als dit niet nodig is om onnodige kosten te voor komen.
+
+> [!NOTE] 
+> Na stap 3 en totdat stap 4 is voltooid, blijven de data bases in instantie A onbeschermd tegen een onherstelbare fout van instantie A.
+
+> [!IMPORTANT]
+> Wanneer de failovergroep wordt verwijderd, worden ook de DNS-records voor de listener-eind punten verwijderd. Op dat moment is er sprake van een niet-nul-kans van iemand anders die een failovergroep of server alias met dezelfde naam maakt, waardoor u deze niet opnieuw kunt gebruiken. Gebruik geen algemene namen voor failover-groepen om het risico tot een minimum te beperken.
 
 ## <a name="failover-groups-and-network-security"></a>Failover-groepen en netwerk beveiliging
 
@@ -289,16 +337,16 @@ De bovenstaande configuratie zorgt ervoor dat de automatische failover geen verb
 Wanneer u een failovergroep instelt tussen de primaire en secundaire beheerde instanties in twee verschillende regio's, wordt elk exemplaar geïsoleerd met behulp van een onafhankelijk virtueel netwerk. Als u replicatie verkeer tussen deze VNets wilt toestaan, moet u ervoor zorgen dat aan deze vereisten wordt voldaan:
 
 1. De twee beheerde exemplaren moeten zich in verschillende Azure-regio's bevindt.
-1. De twee beheerde exemplaren moeten dezelfde servicelaag hebben en dezelfde opslag grootte hebben.
-1. Uw secundaire beheerde exemplaar moet leeg zijn (geen gebruikers databases).
-1. De virtuele netwerken die worden gebruikt door de beheerde instanties moeten worden verbonden via een [VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) of Express route. Wanneer twee virtuele netwerken verbinding maken via een on-premises netwerk, zorg er dan voor dat er geen firewall regel is die poorten 5022 en 11000-11999 blokkeert. Globale VNet-peering wordt niet ondersteund.
-1. De twee VNets van het beheerde exemplaar kunnen geen overlappende IP-adressen hebben.
-1. U moet uw netwerk beveiligings groepen (NSG) zodanig instellen dat de poorten 5022 en het bereik 11000 ~ 12000 zijn geopend als inkomend en uitgaand voor verbindingen van het andere beheerde subnet. Dit is om replicatie verkeer tussen de instanties toe te staan
+2. De twee beheerde exemplaren moeten dezelfde servicelaag hebben en dezelfde opslag grootte hebben.
+3. Uw secundaire beheerde exemplaar moet leeg zijn (geen gebruikers databases).
+4. De virtuele netwerken die worden gebruikt door de beheerde instanties moeten worden verbonden via een [VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [Express route](../expressroute/expressroute-howto-circuit-portal-resource-manager.md). Wanneer twee virtuele netwerken verbinding maken via een on-premises netwerk, zorg er dan voor dat er geen firewall regel is die poorten 5022 en 11000-11999 blokkeert. Globale VNet-peering wordt niet ondersteund.
+5. De twee VNets van het beheerde exemplaar kunnen geen overlappende IP-adressen hebben.
+6. U moet uw netwerk beveiligings groepen (NSG) zodanig instellen dat de poorten 5022 en het bereik 11000 ~ 12000 zijn geopend als binnenkomend en uitgaand verkeer voor verbindingen van het subnet van het andere beheerde exemplaar. Dit is om replicatie verkeer tussen de instanties toe te staan.
 
    > [!IMPORTANT]
    > Onjuist geconfigureerde NSG-beveiligings regels leiden tot vastgelopen database Kopieer bewerkingen.
 
-1. Het secundaire exemplaar is geconfigureerd met de juiste DNS-zone-ID. DNS-zone is een eigenschap van een beheerd exemplaar en een virtueel cluster en de bijbehorende ID is opgenomen in het adres van de hostnaam. De zone-ID wordt gegenereerd als een wille keurige teken reeks wanneer het eerste beheerde exemplaar wordt gemaakt in elk VNet en dezelfde ID wordt toegewezen aan alle andere exemplaren in hetzelfde subnet. Zodra het is toegewezen, kan de DNS-zone niet worden gewijzigd. Beheerde instanties die zijn opgenomen in dezelfde failovergroep, moeten de DNS-zone delen. Dit doet u door de zone-ID van het primaire exemplaar door te geven als waarde voor de para meter DnsZonePartner bij het maken van het secundaire exemplaar. 
+7. Het secundaire exemplaar is geconfigureerd met de juiste DNS-zone-ID. DNS-zone is een eigenschap van een beheerd exemplaar en een virtueel cluster en de bijbehorende ID is opgenomen in het adres van de hostnaam. De zone-ID wordt gegenereerd als een wille keurige teken reeks wanneer het eerste beheerde exemplaar wordt gemaakt in elk VNet en dezelfde ID wordt toegewezen aan alle andere exemplaren in hetzelfde subnet. Zodra het is toegewezen, kan de DNS-zone niet worden gewijzigd. Beheerde instanties die zijn opgenomen in dezelfde failovergroep, moeten de DNS-zone delen. Dit doet u door de zone-ID van het primaire exemplaar door te geven als waarde voor de para meter DnsZonePartner bij het maken van het secundaire exemplaar. 
 
    > [!NOTE]
    > Zie [een beheerd exemplaar toevoegen aan een failovergroep](sql-database-managed-instance-failover-group-tutorial.md)voor een gedetailleerde zelf studie over het configureren van failover-groepen met een beheerd exemplaar.
@@ -323,6 +371,14 @@ Vanwege de hoge latentie van Wide Area Networks, gebruikt doorlopende kopieën e
 
 Zie Point-in-time [herstel (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore)voor informatie over het gebruik van herstel naar een bepaald tijdstip met failover-groepen.
 
+## <a name="limitations-of-failover-groups"></a>Beperkingen van failover-groepen
+
+Houd rekening met de volgende beperkingen:
+
+- Failovergroep kan niet worden gemaakt tussen twee servers of exemplaren in dezelfde Azure-regio's.
+- De naam van de failovergroep kan niet worden gewijzigd. U moet de groep verwijderen en opnieuw maken met een andere naam. 
+- De naam van een Data Base wordt niet ondersteund voor exemplaren in een failovergroep. U moet een failovergroep tijdelijk verwijderen om de naam van een Data Base te kunnen wijzigen.
+
 ## <a name="programmatically-managing-failover-groups"></a>Programmatisch beheer van failover-groepen
 
 Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-replicatie ook programmatisch worden beheerd met behulp van Azure PowerShell en de REST API. De volgende tabellen bevatten een beschrijving van de beschik bare opdrachten. Actieve geo-replicatie bevat een set Azure Resource Manager Api's voor beheer, met inbegrip van de [Azure SQL database-rest API](https://docs.microsoft.com/rest/api/sql/) en [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/overview). Deze Api's vereisen het gebruik van resource groepen en bieden beveiliging op basis van rollen (RBAC). Zie [Access Control op basis van rollen](../role-based-access-control/overview.md)voor meer informatie over het implementeren van toegangs rollen.
@@ -334,42 +390,42 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 | Cmdlet | Beschrijving |
 | --- | --- |
 | [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
-| [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Hiermee wordt de failovergroep van de server verwijderd en worden alle secundaire data bases verwijderd die zijn opgenomen in de groep |
-| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Hiermee wordt de configuratie van de failovergroep opgehaald |
-| [Set-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Hiermee wijzigt u de configuratie van de failovergroep |
-| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | De failover van de failovergroep naar de secundaire server wordt geactiveerd |
-| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Voegt een of meer data bases toe aan een Azure SQL Database-failovergroep|
+| [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Hiermee wordt een failovergroep van de server verwijderd |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Hiermee wordt de configuratie van een failovergroep opgehaald |
+| [Set-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Hiermee wijzigt u de configuratie van een failovergroep |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Hiermee wordt een failover van een failovergroep naar de secundaire server geactiveerd |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Voegt een of meer data bases toe aan een failovergroep|
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>SQL database failover-groepen beheren met beheerde exemplaren
 
 | Cmdlet | Beschrijving |
 | --- | --- |
-| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
-| [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Hiermee wijzigt u de configuratie van de failovergroep|
-| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Hiermee wordt de configuratie van de failovergroep opgehaald|
-| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |De failover van de failovergroep naar de secundaire server wordt geactiveerd|
+| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Met deze opdracht maakt u een failovergroep en registreert u deze op zowel primaire als secundaire exemplaren|
+| [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Hiermee wijzigt u de configuratie van een failovergroep|
+| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Hiermee wordt de configuratie van een failovergroep opgehaald|
+| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Hiermee wordt een failover van een failovergroep naar het secundaire exemplaar geactiveerd|
 | [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Hiermee verwijdert u een failovergroep|
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>SQL database failover beheren met afzonderlijke data bases en elastische Pools
 
 | Opdracht | Beschrijving |
 | --- | --- |
 | [AZ SQL failover-Group Create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
-| [AZ SQL failover-Group Delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Hiermee wordt de failovergroep van de server verwijderd en worden alle secundaire data bases verwijderd die zijn opgenomen in de groep |
-| [AZ SQL failover-Group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | Hiermee wordt de configuratie van de failovergroep opgehaald |
-| [AZ SQL failover-Group Update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |Hiermee wijzigt u de configuratie van de failovergroep en/of voegt u een of meer data bases toe aan een Azure SQL Database failover-groep|
-| [AZ SQL failover-groeps Set-Primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | De failover van de failovergroep naar de secundaire server wordt geactiveerd |
+| [AZ SQL failover-Group Delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Hiermee wordt een failovergroep van de server verwijderd |
+| [AZ SQL failover-Group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | Hiermee wordt een configuratie van een failovergroep opgehaald |
+| [AZ SQL failover-Group Update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |Hiermee wordt de configuratie van een failovergroep gewijzigd en/of worden een of meer data bases toegevoegd aan een failovergroep|
+| [AZ SQL failover-groeps Set-Primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Hiermee wordt een failover van een failovergroep naar de secundaire server geactiveerd |
 
 ### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>SQL database failover-groepen beheren met beheerde exemplaren
 
 | Opdracht | Beschrijving |
 | --- | --- |
-| [AZ SQL Instance-failover-groep Create](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
-| [AZ SQL Instance-update van failover-groep](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | Hiermee wijzigt u de configuratie van de failovergroep|
-| [AZ SQL Instance-failover-Group show](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-show) | Hiermee wordt de configuratie van de failovergroep opgehaald|
-| [AZ SQL Instance-failover-groep Set-Primary](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-set-primary) | De failover van de failovergroep naar de secundaire server wordt geactiveerd|
+| [AZ SQL Instance-failover-groep Create](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | Met deze opdracht maakt u een failovergroep en registreert u deze op zowel primaire als secundaire exemplaren |
+| [AZ SQL Instance-update van failover-groep](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | Hiermee wordt de configuratie van een failovergroep gewijzigd|
+| [AZ SQL Instance-failover-Group show](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-show) | Hiermee wordt de configuratie van een failovergroep opgehaald|
+| [AZ SQL Instance-failover-groep Set-Primary](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-set-primary) | Hiermee wordt een failover van een failovergroep naar het secundaire exemplaar geactiveerd|
 | [AZ SQL Instance-failover-groep verwijderen](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-delete) | Hiermee verwijdert u een failovergroep |
 
 * * *
@@ -382,22 +438,22 @@ Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-repl
 | API | Beschrijving |
 | --- | --- |
 | [Failovergroep maken of bijwerken](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Hiermee wordt een failovergroep gemaakt of bijgewerkt |
-| [Failovergroep verwijderen](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Hiermee wordt de failover-groep van de server verwijderd |
-| [Failover (gepland)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Failover van de huidige primaire server naar deze server. |
-| [Forceren van gegevens verlies door failover toestaan](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) |ails van de huidige primaire server naar deze server. Deze bewerking kan leiden tot verlies van gegevens. |
-| [Failovergroep ophalen](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Hiermee wordt een failovergroep opgehaald. |
+| [Failovergroep verwijderen](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Hiermee wordt een failovergroep van de server verwijderd |
+| [Failover (gepland)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | De failover van de huidige primaire server naar de secundaire server met volledige gegevens synchronisatie wordt geactiveerd.|
+| [Forceren van gegevens verlies door failover toestaan](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) | Hiermee wordt een failover van de huidige primaire server naar de secundaire server geactiveerd zonder dat er gegevens worden gesynchroniseerd. Deze bewerking kan leiden tot verlies van gegevens. |
+| [Failovergroep ophalen](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Hiermee wordt de configuratie van een failover-groep opgehaald. |
 | [Failover-groepen weer geven per server](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | Geeft een lijst van de failover-groepen op een server. |
-| [Failovergroep bijwerken](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Hiermee wordt een failovergroep bijgewerkt. |
+| [Failovergroep bijwerken](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Hiermee wordt de configuratie van een failovergroep bijgewerkt. |
 
 ### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API: failover-groepen beheren met beheerde exemplaren
 
 | API | Beschrijving |
 | --- | --- |
-| [Failovergroep maken of bijwerken](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Hiermee wordt een failovergroep gemaakt of bijgewerkt |
-| [Failovergroep verwijderen](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Hiermee wordt de failover-groep van de server verwijderd |
-| [Failover (gepland)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Failover van de huidige primaire server naar deze server. |
-| [Forceren van gegevens verlies door failover toestaan](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |ails van de huidige primaire server naar deze server. Deze bewerking kan leiden tot verlies van gegevens. |
-| [Failovergroep ophalen](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Hiermee wordt een failovergroep opgehaald. |
+| [Failovergroep maken of bijwerken](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Hiermee wordt de configuratie van een failovergroep gemaakt of bijgewerkt |
+| [Failovergroep verwijderen](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Hiermee verwijdert u een failover-groep uit het exemplaar |
+| [Failover (gepland)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Hiermee wordt een failover van het huidige primaire exemplaar naar dit exemplaar geactiveerd met volledige gegevens synchronisatie. |
+| [Forceren van gegevens verlies door failover toestaan](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | Hiermee wordt een failover van het huidige primaire exemplaar naar het secundaire exemplaar geactiveerd zonder dat de gegevens worden gesynchroniseerd. Deze bewerking kan leiden tot verlies van gegevens. |
+| [Failovergroep ophalen](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Hiermee wordt de configuratie van een failover-groep opgehaald. |
 | [Failover-groepen weer geven-lijst per locatie](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Hiermee worden de failover-groepen op een locatie weer gegeven. |
 
 ## <a name="next-steps"></a>Volgende stappen

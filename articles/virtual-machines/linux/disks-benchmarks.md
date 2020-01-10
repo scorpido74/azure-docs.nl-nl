@@ -1,5 +1,5 @@
 ---
-title: Benchmarking van uw toepassing op Azure Disk Storage-beheerde schijven
+title: Benchmarking van uw toepassing op Azure Disk Storage
 description: Meer informatie over het proces van benchmarking van uw toepassing in Azure.
 author: roygara
 ms.author: rogarana
@@ -7,12 +7,12 @@ ms.date: 01/11/2019
 ms.topic: conceptual
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: e5ac60811eb4fb7735feae6a62ee1b20c8983e0e
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.openlocfilehash: 640ec54e9634751d05c2cea90d7c03d02e7a3387
+ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68695847"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75720052"
 ---
 # <a name="benchmarking-a-disk"></a>Een schijf benchmarken
 
@@ -26,7 +26,6 @@ Als u de onderstaande voor beelden wilt volgen, maakt u een standaard DS14-VM en
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga door met het ontwerp van het artikel voor hoge prestaties. Hierin maakt u een controle lijst die vergelijkbaar is met uw bestaande toepassing voor het prototype. Met Bench Mark-hulpprogram ma's kunt u de werk belastingen simuleren en de prestaties meten op de prototype toepassing. Op die manier kunt u bepalen welke schijf aanbieding kan overeenkomen of de prestatie vereisten van uw toepassing overschrijden. Vervolgens kunt u dezelfde richt lijnen voor uw productie toepassing implementeren.
+Ga naar ons artikel over het [ontwerpen voor hoge prestaties](premium-storage-performance.md).
 
-> [!div class="nextstepaction"]
-> Zie het artikel over het [ontwerpen van geavanceerde begin prestaties](premium-storage-performance.md) .
+In dat artikel maakt u een controle lijst die vergelijkbaar is met uw bestaande toepassing voor het prototype. Met Bench Mark-hulpprogram ma's kunt u de werk belastingen simuleren en de prestaties meten op de prototype toepassing. Op die manier kunt u bepalen welke schijf aanbieding kan overeenkomen of de prestatie vereisten van uw toepassing overschrijden. Vervolgens kunt u dezelfde richt lijnen voor uw productie toepassing implementeren.

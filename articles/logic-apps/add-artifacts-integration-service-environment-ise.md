@@ -5,17 +5,17 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
-ms.date: 08/01/2019
-ms.openlocfilehash: 7221619c8d9388a9f6d46ec1dfbb11e467db861a
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/08/2020
+ms.openlocfilehash: c597bc4430e4390f0e29e4fe8ae4014521e1ae74
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793307"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732216"
 ---
 # <a name="add-artifacts-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Artefacten toevoegen aan uw integratie service omgeving (ISE) in Azure Logic Apps
 
-Nadat u een [ISE (Integration service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)hebt gemaakt, voegt u artefacten toe, zoals Logic apps, integratie accounts en connectors, zodat ze toegang hebben tot de resources in uw virtuele Azure-netwerk.
+Nadat u een [ISE (Integration service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)hebt gemaakt, voegt u artefacten toe, zoals Logic apps, integratie accounts en connectors, zodat ze toegang hebben tot de resources in uw virtuele Azure-netwerk. Zo worden beheerde ISE-connectors die beschikbaar zijn nadat u uw ISE hebt gemaakt, niet automatisch weer gegeven in de ontwerp functie voor logische apps. Voordat u deze ISE-connectors kunt gebruiken, moet u [deze connectors hand matig toevoegen en implementeren voor uw ISE](#add-ise-connectors-environment) , zodat ze in de ontwerp functie voor logische apps worden weer gegeven.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -84,17 +84,17 @@ Voer de volgende stappen uit om een integratie account te maken dat gebruikmaakt
 
 ## <a name="add-ise-connectors"></a>ISE-connectors toevoegen
 
-U kunt door micro soft beheerde connectors toevoegen die beschikbaar zijn voor gebruik in uw ISE, maar die niet zijn geïmplementeerd in uw ISE.
+Door micro soft beheerde connectors die beschikbaar worden nadat u uw ISE hebt gemaakt, worden niet automatisch weer gegeven in de connector kiezer van de ontwerp functie voor logische apps. Voordat u deze ISE-connectors kunt gebruiken, moet u deze connectors hand matig toevoegen en implementeren voor uw ISE, zodat ze in de ontwerp functie voor logische apps worden weer gegeven.
 
 1. Selecteer in het menu ISE, onder **instellingen**, **beheerde connectors**. Selecteer **toevoegen**op de werk balk.
 
    ![Beheerde connectors weer geven](./media/add-artifacts-integration-service-environment-ise/ise-view-managed-connectors.png)
 
-1. Open in het deel venster **een nieuwe beheerde connector toevoegen** de lijst **connector zoeken** . Als de gewenste connector beschikbaar is, selecteert u die connector en selecteert u **maken**.
+1. Open in het deel venster **een nieuwe beheerde connector toevoegen** de lijst **connector zoeken** . Selecteer de ISE-connector die u wilt gebruiken, maar die nog niet is geïmplementeerd in uw ISE. Selecteer **Maken**.
 
-   De lijst bevat alleen de connectors die in aanmerking komen, maar die niet zijn geïmplementeerd in uw ISE. Connectors die al in uw ISE zijn geïmplementeerd, kunnen niet worden geselecteerd.
+   ![Selecteer de ISE-connector die u wilt implementeren in uw ISE](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
 
-   ![In aanmerking komende connector selecteren](./media/add-artifacts-integration-service-environment-ise/add-managed-connector.png)
+   Alleen ISE-connectors die in aanmerking komen maar nog niet zijn geïmplementeerd in uw ISE, kunnen worden geselecteerd. Connectors die al in uw ISE zijn geïmplementeerd, kunnen niet worden geselecteerd.
 
 <a name="create-custom-connectors-environment"></a>
 

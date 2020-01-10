@@ -7,16 +7,18 @@ ms.topic: conceptual
 ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 6b0f025948803a23c5b3c8bb6415c0e111b946b2
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 9809a138a5e28eb069d545d39cfda815c915bd78
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71349038"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75728885"
 ---
 # <a name="upper-azure-cosmos-db"></a>UPPER (Azure Cosmos DB)
  Retourneert een tekenreeksexpressie na het converteren van tekens in kleine letters naar hoofdletters.  
-  
+
+De bovenste systeem functie maakt geen gebruik van de index. Als u regel matig niet-hoofdletter gevoelige vergelijkingen wilt maken, kan de functie van het bovenste systeem een aanzienlijke hoeveelheid van RU verbruiken. Als dit het geval is, kunt u, in plaats van de functie voor het bovenste systeem, om gegevens telkens te normaliseren voor vergelijkingen, het hoofdletter gebruik tijdens het invoegen normaliseren. Vervolgens wordt een query zoals SELECT * FROM c waarbij UPPER (c. name) = ' BOB ' gewoon geselecteerd * van c waarbij c.name = ' BOB '.
+
 ## <a name="syntax"></a>Syntaxis
   
 ```sql
@@ -34,7 +36,7 @@ UPPER(<str_expr>)
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld ziet u hoe u `UPPER` in een query kunt gebruiken  
+  In het volgende voor beeld ziet u hoe u `UPPER` gebruikt in een query  
   
 ```sql
 SELECT UPPER("Abc") AS upper  

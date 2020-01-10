@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 529568cf4f667e72b0b4fb7ba83d0b85c4a90341
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fcf7051a631e74f2f6db918c7c861e32295ae9e8
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499996"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732634"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Ondersteuning van talen en regio's voor de Text Analytics-API
 
@@ -31,7 +31,7 @@ Als er inhoud in een minder vaak gebruikte taal wordt weer gegeven, kunt u Taald
 
 ## <a name="sentiment-analysis-key-phrase-extraction-and-named-entity-recognition"></a>Herkenning van Sentimentanalyse, Sleuteltermextractie en benoemde entiteit
 
-Voor sentiment analyse, extractie van sleutel zinnen en entiteits herkenning is de lijst met ondersteunde talen meer selectief naarmate de analyseers worden verfijnd om te voldoen aan de taal kundige regels van andere talen. In benoemde entiteits herkenning v2 is de ondersteuning voor de volledige set [entiteits typen](how-tos/text-analytics-how-to-entity-linking.md#supported-types-for-named-entity-recognition-v2) momenteel beperkt tot de volgende talen: 
+Voor sentiment analyse, extractie van sleutel zinnen en entiteits herkenning is de lijst met ondersteunde talen meer selectief naarmate de analyseers worden verfijnd om te voldoen aan de taal kundige regels van andere talen. In benoemde entiteits herkenning v2 is de ondersteuning voor de volledige set [entiteits typen](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) momenteel beperkt tot de volgende talen: 
 * Nederlands
 * Chinees-vereenvoudigd
 * Frans
@@ -75,7 +75,7 @@ Taal ondersteuning wordt in eerste instantie in de preview-fase geïmplementeerd
 
 \* taal ondersteuning is beschikbaar in de preview-versie
 
-\** ook beschikbaar in de open bare voor beelden van de [sentimentanalyse v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-v3-public-preview) en/of [entity Recognition v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-v3-public-preview) .
+\** ook beschikbaar in de open bare voor beelden van de [sentimentanalyse v3](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis#sentiment-analysis-versions-and-features) en/of [entity Recognition v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) .
 
 ## <a name="see-also"></a>Zie ook
 

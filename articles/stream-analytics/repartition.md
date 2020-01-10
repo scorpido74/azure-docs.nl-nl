@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/19/2019
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: bbea71464e8a1f4e93e510106d372257f155b0c6
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: c70cfb6c1626908a2ba4e707a890f6dc7481c51a
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935052"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75732379"
 ---
 # <a name="use-repartitioning-to-optimize-processing-with-azure-stream-analytics"></a>Opnieuw partitioneren gebruiken om de verwerking met Azure Stream Analytics te optimaliseren
 
@@ -21,11 +21,11 @@ Dit artikel laat u zien hoe u opnieuw partitioneren kunt gebruiken om uw Azure S
 U kunt [parallel Lise ring](stream-analytics-parallelization.md) mogelijk niet gebruiken als:
 
 * U hebt geen controle over de partitie sleutel voor de invoer stroom.
-* De bron ' besproeit ' op meerdere partities die later moeten worden samengevoegd. 
-
-## <a name="how-to-repartition"></a>Opnieuw partitioneren
+* De bron ' besproeit ' op meerdere partities die later moeten worden samengevoegd.
 
 Wanneer u gegevens verwerkt op een stroom die niet Shard is volgens een natuurlijk invoer schema, zoals **PartitionId** voor Event hubs, moet u opnieuw partitioneren of de volg orde opnieuw opgeven. Wanneer u de partitie opnieuw partitioneert, kan elke Shard onafhankelijk worden verwerkt, zodat u de streaming-pijp lijn lineair kunt schalen.
+
+## <a name="how-to-repartition"></a>Opnieuw partitioneren
 
 Als u opnieuw wilt partitioneren, gebruikt u het tref woord **in** na een **partitie op** instructie in uw query. In het volgende voor beeld worden de gegevens door **DeviceID** gepartitioneerd tot een aantal van 10. Hashing van **DeviceID** wordt gebruikt om te bepalen welke partitie moet worden geaccepteerd door welke substream. De gegevens worden onafhankelijk van elke gepartitioneerde stroom leeg gemaakt, ervan uitgaande dat de uitvoer gepartitioneerde schrijf bewerkingen ondersteunt en 10 partities heeft.
 

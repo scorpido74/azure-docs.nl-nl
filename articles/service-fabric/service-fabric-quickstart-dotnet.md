@@ -1,32 +1,23 @@
 ---
 title: Snel een .NET-app maken op Service Fabric in azure
-description: In deze snelstartgids maakt u een .NET-toepassing voor Azure met behulp van de voorbeeldtoepassing van de betrouwbare Service Fabric-services.
-services: service-fabric
-documentationcenter: .net
+description: In deze quickstart maakt u een .NET-toepassing voor Azure met behulp van de voorbeeldtoepassing van de betrouwbare Service Fabric-services.
 author: mikkelhegn
-manager: msfussell
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: azure-vs
 ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: dfc8890d58763bd193f6a0b4137fc972d26beb9f
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e3d984fee75dcdb8d4e14e7b454e74a3f7c629f2
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013221"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75730136"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Snelstart: Een .NET Reliable Services-toepassing maken voor Service Fabric
 
 Azure Service Fabric is een platform voor gedistribueerde systemen waarmee u schaalbare en betrouwbare microservices en containers implementeert en beheert.
 
-Deze snelstartgids laat zien hoe u uw eerste .NET-toepassing in Service Fabric implementeert. Wanneer u klaar bent, hebt u een stemtoepassing met een ASP.NET Core-web-front-end die stemresultaten opslaat in een stateful back-endservice in het cluster.
+Deze Quick Start laat zien hoe u uw eerste .NET-toepassing in Service Fabric implementeert. Wanneer u klaar bent, hebt u een stemtoepassing met een ASP.NET Core-web-front-end die stemresultaten opslaat in een stateful back-endservice in het cluster.
 
 ![Schermafbeelding van de toepassing](./media/service-fabric-quickstart-dotnet/application-screenshot.png)
 
@@ -36,12 +27,12 @@ Met behulp van deze toepassing leert u hoe u:
 * ASP.NET core gebruiken als een Webfront-end
 * Toepassingsgegevens in een stateful service opslaan
 * Lokaal problemen met uw toepassing oplossen
-* De toepassing uitschalen over meerdere knooppunten
+* De toepassing op meerdere knooppunten uitschalen
 * Een rolling upgrade op een toepassingen uitvoeren
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit zijn de vereisten voor het voltooien van deze snelstartgids:
+Dit zijn de vereisten voor het voltooien van deze snelstart:
 
 1. [Installeer Visual Studio 2019](https://www.visualstudio.com/) met de **Azure development** -en **ASP.net-en Web Development** -workloads.
 2. [Git installeren](https://git-scm.com/)
@@ -60,6 +51,8 @@ Als u de runtime, SDK's en hulpprogramma's van Visual Studio Docker hebt geïnst
 > De reden voor het uitvoeren van Docker bij het maken van het cluster is dat het cluster zo wordt gemaakt met de containerfuncties ingeschakeld. Als Docker niet actief is, moet u het cluster opnieuw maken om containerfuncties in te schakelen.
 > Hoewel het niet nodig is voor deze quickstart, zijn de instructies voor het uitvoeren van Docker bij het maken van het cluster opgenomen als best practice.
 > Test of Docker wordt uitgevoerd door een terminalvenster te openen en `docker ps` uit te voeren om te zien of er een fout optreedt. Als er geen fout wordt aangegeven, wordt Docker uitgevoerd en kunt u een cluster gaan bouwen.
+>
+> [Windows 10 of Windows Server voor containers instellen](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client)
 
 1. Open als beheerder een nieuw PowerShell-venster met verhoogde bevoegdheid.
 2. Voer de volgende PowerShell-opdracht uit om een ontwikkelcluster te maken:
@@ -79,7 +72,7 @@ Als u de runtime, SDK's en hulpprogramma's van Visual Studio Docker hebt geïnst
 
 ## <a name="download-the-sample"></a>Het voorbeeld downloaden
 
-Voer in een opdrachtvenster de volgende opdracht uit om de voorbeeld-app-opslagplaats te klonen op de lokale computer.
+Voer in een opdrachtvenster de volgende opdracht uit om de opslagplaats van de voorbeeld-app te klonen op uw lokale computer.
 
 ```git
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
@@ -148,7 +141,7 @@ Als u wilt zien wat er in de code gebeurt, moet u de volgende stappen uitvoeren:
 
    - In de eerste regel in de methode **(1)** wordt door de `StateManager` een betrouwbare woordenlijst met de naam `counts` aangeroepen of toegevoegd.
    - Alle interacties met waarden in een betrouwbare woordenlijst vereisen een transactie, met deze instructie **(2)** wordt die transactie gemaakt.
-   - Werk in de transactie de waarde bij van de relevante sleutel voor de stemoptie en voer de bewerking **(3)** door. Zodra de doorvoermethode resultaten retourneert, worden de gegevens bijgewerkt in de dictionary en gerepliceerd naar andere knooppunten in het cluster. De gegevens worden nu veilig opgeslagen in het cluster en de back-endservice kan een failover-overschakeling uitvoeren naar andere knooppunten, waarbij de gegevens beschikbaar blijven.
+   - Werk in de transactie de waarde bij van de relevante sleutel voor de stemoptie en voer de bewerking **(3)** door. Zodra de doorvoermethode resultaten retourneert, worden de gegevens bijgewerkt in de woordenlijst en gerepliceerd naar andere knooppunten in het cluster. De gegevens worden nu veilig opgeslagen in het cluster en de back-endservice kan een failover-overschakeling uitvoeren naar andere knooppunten, waarbij de gegevens beschikbaar blijven.
 5. Druk op **F5** om door te gaan
 
 Als u de foutopsporingssessie wilt stoppen, drukt u op **Shift+F5**.
@@ -191,7 +184,7 @@ In deze snelstartgids hebt u de volgende zaken geleerd:
 * ASP.NET core gebruiken als een Webfront-end
 * Toepassingsgegevens in een stateful service opslaan
 * Lokaal problemen met uw toepassing oplossen
-* De toepassing uitschalen over meerdere knooppunten
+* De toepassing op meerdere knooppunten uitschalen
 * Een rolling upgrade op een toepassingen uitvoeren
 
 Raadpleeg de volgende zelfstudie voor meer informatie over Service Fabric en .NET:

@@ -1,18 +1,14 @@
 ---
 title: Kubernetes bewaking met Azure Monitor voor containers | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u de prestaties van een Kubernetes-cluster kunt weer geven en analyseren met Azure Monitor voor containers.
-ms.service: azure-monitor
-ms.subservice: ''
 ms.topic: conceptual
-author: mgoedtel
-ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: 1cd0223a16a6308e777e4a0167154e975202df7b
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.date: 01/07/2020
+ms.openlocfilehash: f57f8982b2aa045156e6f48316610137260d6597
+ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872975"
+ms.lasthandoff: 01/08/2020
+ms.locfileid: "75731013"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Uw Kubernetes-cluster prestaties bewaken met Azure Monitor voor containers
 
@@ -24,17 +20,11 @@ Voor informatie over het inschakelen van Azure Monitor voor containers raadpleeg
 
 Azure Monitor biedt een weer gave met meerdere clusters waarin de status van alle bewaakte Kubernetes-clusters met Linux-en Windows Server 2019-implementaties in uw abonnementen worden weer gegeven. Er worden clusters weer gegeven die zijn gedetecteerd in alle omgevingen die niet worden bewaakt door de oplossing. U kunt de cluster status direct begrijpen en u kunt hier inzoomen op de prestaties van het knoop punt en de controller of navigeren om prestatie grafieken voor het cluster weer te geven. Voor AKS-clusters die zijn gedetecteerd en geïdentificeerd als niet-bewaakt, kunt u op elk gewenst moment de bewaking inschakelen. 
 
-De belangrijkste verschillen in het bewaken van een Windows Server-cluster met Azure Monitor voor containers in vergelijking met een Linux-cluster zijn de volgende:
-
-- De metrische gegevens van het geheugen zijn niet beschikbaar voor Windows-knoop punten en-containers.
-- Informatie over capaciteit van schijf opslag is niet beschikbaar voor Windows-knoop punten.
-- Ondersteuning voor Live-Logboeken is beschikbaar met uitzonde ring van Windows-container Logboeken.
-- Alleen pod omgevingen worden bewaakt, niet-docker-omgevingen.
-- Met de preview-versie worden Maxi maal 30 Windows Server-containers ondersteund. Deze beperking is niet van toepassing op Linux-containers. 
+De belangrijkste verschillen in het bewaken van een Windows Server-cluster met Azure Monitor voor containers in vergelijking met een Linux-cluster worden [hier](container-insights-overview.md#what-does-azure-monitor-for-containers-provide) beschreven in het overzichts artikel.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+Meld u aan bij de [Azure Portal](https://portal.azure.com). 
 
 ## <a name="multi-cluster-view-from-azure-monitor"></a>Weergave van meerdere cluster van Azure Monitor
 
@@ -201,7 +191,7 @@ De informatie die wordt weer gegeven wanneer u het tabblad **knoop punten** beki
 
 | Kolom | Beschrijving | 
 |--------|-------------|
-| Naam | De naam van de host. |
+| Name | De naam van de host. |
 | Status | Kubernetes-weergave van de status van het knooppunt. |
 | Min&nbsp;%, Gem&nbsp;%, 50e&nbsp;%, negen tigste&nbsp;%, 95e&nbsp;%, Max&nbsp;%  | Gemiddelde knooppunt percentage is gebaseerd op percentiel tijdens de geselecteerde periode. |
 | Min, Gem, 50e, negen tigste, 95e, Max | De gemiddelde werkelijke waarde van knoop punten op basis van percentiel tijdens de geselecteerde tijds duur. De gemiddelde waarde wordt gemeten vanaf de CPU/geheugen limiet die is ingesteld voor een knoop punt. Voor peulen en containers is het de gemiddelde waarde die wordt gerapporteerd door de host. |
@@ -230,7 +220,7 @@ De informatie die wordt weer gegeven wanneer u controllers bekijkt, wordt beschr
 
 | Kolom | Beschrijving | 
 |--------|-------------|
-| Naam | De naam van de controller.|
+| Name | De naam van de controller.|
 | Status | De rollup-status van de containers nadat deze is uitgevoerd met de status *OK*, *beëindigd*, *mislukt*, *gestopt*of *onderbroken*. Als de container actief is, maar de status niet correct wordt weer gegeven of niet is opgehaald door de agent en al meer dan 30 minuten niet heeft gereageerd, is de status *onbekend*. Meer informatie over het status pictogram vindt u in de volgende tabel.|
 | Min&nbsp;%, Gem&nbsp;%, 50e&nbsp;%, negen tigste&nbsp;%, 95e&nbsp;%, Max&nbsp;%| Updatepakket gemiddelde van het gemiddelde percentage van elke entiteit voor de geselecteerde metrische gegevens en percentiel. |
 | Min, Gem, 50e, negen tigste, 95e, Max  | Totalisering van de gemiddelde CPU millicore of geheugen prestaties van de container voor het geselecteerde percentiel. De gemiddelde waarde wordt van de CPU/geheugen die is ingesteld voor een schil gemeten. |
@@ -267,7 +257,7 @@ De informatie die wordt weer gegeven wanneer u containers bekijkt, wordt beschre
 
 | Kolom | Beschrijving | 
 |--------|-------------|
-| Naam | De naam van de controller.|
+| Name | De naam van de controller.|
 | Status | De status van de containers, indien van toepassing. Meer informatie over het statuspictogram vindt u in de volgende tabel.|
 | Min&nbsp;%, Gem&nbsp;%, 50e&nbsp;%, negen tigste&nbsp;%, 95e&nbsp;%, Max&nbsp;% | Het totaal van het gemiddelde percentage van elke entiteit voor de geselecteerde metrische gegevens en percentiel. |
 | Min, Gem, 50e, negen tigste, 95e, Max | Het totaal van de gemiddelde CPU millicore of geheugen prestaties van de container voor het geselecteerde percentiel. De gemiddelde waarde wordt van de CPU/geheugen die is ingesteld voor een schil gemeten. |
@@ -289,7 +279,7 @@ De pictogrammen in het veld status geven de online statussen aan, zoals wordt be
 
 ## <a name="workbooks"></a>Werkmappen
 
-Werkmappen combi neren tekst, [logboek query's](../log-query/query-language.md), [metrische gegevens](../platform/data-platform-metrics.md)en para meters in uitgebreide interactieve rapporten. Werkmappen kunnen worden bewerkt door andere team leden die toegang hebben tot dezelfde Azure-resources.
+Werkmappen combi neren tekst, [logboek query's](../log-query/query-language.md), [metrische gegevens](../platform/data-platform-metrics.md)en para meters in uitgebreide interactieve rapporten. Werkmappen kunnen worden bewerkt door andere teamleden die toegang hebben tot dezelfde Azure-resources.
 
 Azure Monitor voor containers bevat vier werkmappen om aan de slag te gaan:
 
