@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8931f9b09836d30f95e25cee245932475c3cf64c
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 80bca2dab1d07d9b99e75e283068bff99335fa18
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018398"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894288"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Apache Spark oplossen met behulp van Azure HDInsight
 
@@ -21,11 +21,11 @@ Meer informatie over de belangrijkste problemen en hun oplossingen bij het werke
 
 ## <a name="how-do-i-configure-an-apache-spark-application-by-using-apache-ambari-on-clusters"></a>Hoe configureer ik een Apache Spark-toepassing met behulp van Apache Ambari op clusters?
 
-Spark-configuratie waarden kunnen worden afgestemd om een `OutofMemoryError` Apache Spark toepassings uitzondering te voor komen. In de volgende stappen worden standaard waarden voor Spark-configuratie in azure HDInsight weer gegeven:
+Spark-configuratie waarden kunnen worden afgestemd om te voor komen dat een Apache Spark toepassing `OutofMemoryError` uitzonde ring. In de volgende stappen worden standaard waarden voor Spark-configuratie in azure HDInsight weer gegeven:
 
-1. Meld u aan bij Ambari `https://CLUSTERNAME.azurehdidnsight.net` met uw cluster referenties. In het eerste scherm wordt een overzichts dashboard weer gegeven. Er zijn geringe cosmetische verschillen tussen HDInsight 3,6 en 4,0.
+1. Meld u bij `https://CLUSTERNAME.azurehdidnsight.net` aan bij Ambari met uw cluster referenties. In het eerste scherm wordt een overzichts dashboard weer gegeven. Er zijn geringe cosmetische verschillen tussen HDInsight 3,6 en 4,0.
 
-1. Ga naar **Spark2** > -**configuraties**.
+1. Navigeer naar **Spark2** - > **configs**.
 
     ![Selecteer het tabblad configuraties](./media/apache-troubleshoot-spark/apache-spark-ambari-config2.png)
 
@@ -111,6 +111,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

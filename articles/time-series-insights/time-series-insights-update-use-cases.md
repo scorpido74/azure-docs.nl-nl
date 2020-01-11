@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 01/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 92d738542076b755a26e8cff2e7fb1aa0384cb22
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 85b724a62f778620264ae308aa316e046a0e9f59
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227736"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896080"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights preview-cases gebruiken
 
@@ -66,7 +66,7 @@ Er zijn drie manieren om te communiceren met gegevens die zijn opgeslagen in Tim
 
 Gebruik Time Series Insights om de status, het gebruik en de prestaties van apparatuur op schaal te bewaken. Time Series Insights biedt een eenvoudige manier om de operationele efficiëntie te meten. Time Series Insights helpt bij het beheer van uiteenlopende en onvoorspelbare IoT-workloads, zonder de opname- en queryprestaties te verminderen.
 
-[Overzicht van ![](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
+[![Overzicht](media/v2-update-use-cases/overview.png)](media/v2-update-use-cases/overview.png#lightbox)
 
 Streaming en doorlopende verwerking van gegevens die afkomstig zijn van operationele processen kunnen alle bedrijven omzetten als deze worden gecombineerd met de juiste technologie of oplossing. Vaak zijn deze oplossingen een combi natie van meerdere systemen. Ze maken het mogelijk om gegevens te verkennen en te analyseren die voortdurend worden gewijzigd, met name in de IoT-realm en een gemeen schappelijk patroon delen.
 
@@ -82,7 +82,7 @@ De oplossings architectuur kan op de volgende manier worden bereikt:
 
 Time Series Insights biedt een bijna realtime gegevens onderzoek en inzichten op basis van een activum via historische gegevens. Afhankelijk van de behoeften van uw bedrijf, kunnen MapReduce en Hive-taken worden uitgevoerd op gegevens die zijn opgeslagen in Time Series Insights door Time Series Insights te verbinden met Azure HDInsight. Gegevens die zijn opgeslagen in Time Series Insights, zijn beschikbaar voor Power BI en andere klant toepassingen via de Time Series Insights open bare Surface-query-Api's. Deze gegevens kunnen worden gebruikt voor uitgebreide bedrijfs-en operationele informatie scenario's.
 
-## <a name="advanced-analytics"></a>Geavanceerde analyse
+## <a name="advanced-analytics"></a>Advanced analytics
 
 Integreer met geavanceerde analyse services zoals Machine Learning en Azure Databricks. Time Series Insights ingresses onbewerkte gegevens van miljoenen apparaten. Het voegt contextuele gegevens toe die naadloos kunnen worden gebruikt door een suite van Azure Analytics Services.
 
