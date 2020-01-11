@@ -7,14 +7,14 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: 3f42d50af803713fd498e83880d9ee5d29e8caf3
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: b886f51bcb2bb7308c49c76563dcb70148bbc583
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091656"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887288"
 ---
-# <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>Scenario: Verbindings problemen Apache Phoenix in azure HDInsight
+# <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>Scenario: verbindings problemen Apache Phoenix in azure HDInsight
 
 In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
 
@@ -22,41 +22,41 @@ In dit artikel worden de stappen beschreven voor het oplossen van problemen en m
 
 Kan geen verbinding maken met Apache HBase met Apache Phoenix. Redenen kunnen variëren.
 
-## <a name="cause-incorrect-ip"></a>Oorzaak: Onjuist IP-adres
+## <a name="cause-incorrect-ip"></a>Oorzaak: onjuist IP-adres
 
 Onjuist IP-adres van actief Zookeeper-knoop punt.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
-Het IP-adres van het actieve Zookeeper-knoop punt kan worden geïdentificeerd via de Ambari-gebruikers interface door de koppelingen naar **HBase** > **Quick links** > **ZK (Active)**  > **Zookeeper info**te volgen. Corrigeer het IP-adres als dat nodig is.
+Het IP-adres van het actieve Zookeeper-knoop punt kan worden geïdentificeerd via de Ambari-gebruikers interface door de koppelingen naar **HBase** > **snelle koppelingen** te volgen > **ZK (Active)**  > **Zookeeper info**. Corrigeer het IP-adres als dat nodig is.
 
 ---
 
-## <a name="cause-systemcatalog-table-offline"></a>Oorzaak: Opgehaald. CATALOGUS tabel offline
+## <a name="cause-systemcatalog-table-offline"></a>Oorzaak: systeem. CATALOGUS tabel offline
 
-Bij het uitvoeren van opdrachten `!tables`, zoals, wordt een fout bericht van de volgende strekking weer gegeven:
+Bij het uitvoeren van opdrachten als `!tables`, wordt er een fout bericht met de volgende strekking weer gegeven:
 
 ```output
 Error while connecting to sqlline.py (Hbase - phoenix) Setting property: [isolation, TRANSACTION_READ_COMMITTED] issuing: !connect jdbc:phoenix:10.2.0.7 none none org.apache.phoenix.jdbc.PhoenixDriver Connecting to jdbc:phoenix:10.2.0.7 SLF4J: Class path contains multiple SLF4J bindings.
 ```
 
-Bij het uitvoeren van opdrachten `count 'SYSTEM.CATALOG'`, zoals, wordt een fout bericht van de volgende strekking weer gegeven:
+Bij het uitvoeren van opdrachten als `count 'SYSTEM.CATALOG'`, wordt er een fout bericht met de volgende strekking weer gegeven:
 
 ```output
 ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189)
 ```
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 In de Apache Ambari-gebruikers interface voert u de volgende stappen uit om de HMaster-service opnieuw op alle ZooKeeper-knoop punten te starten:
 
-1. Ga in de sectie **samen vatting** van HBase naar **HBase** > **Active HBase Master**.
+1. Ga in de sectie **samen vatting** van HBase naar **HBase** > **actieve HBase Master**.
 
 1. Start de HBase Master-service opnieuw op in de sectie **onderdelen** .
 
 1. Herhaal deze stappen voor alle resterende **stand-by-HBase Master** Services.
 
-Het kan tot vijf minuten duren voordat de HBase Master service het herstel heeft gestabiliseerd en voltooid. Wanneer de `SYSTEM.CATALOG` tabel weer normaal is, wordt het connectiviteits probleem met Apache Phoenix automatisch opgelost.
+Het kan tot vijf minuten duren voordat de HBase Master service het herstel heeft gestabiliseerd en voltooid. Nadat de `SYSTEM.CATALOG` tabel weer normaal is, wordt het connectiviteits probleem met Apache Phoenix automatisch opgelost.
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -64,6 +64,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

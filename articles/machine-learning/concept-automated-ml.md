@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: c4177e4310be3e03b64c260d88239de71f70c17a
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 778b369e08ff6b0c6e4075c5a8d3d2a234bde70e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720137"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894884"
 ---
 # <a name="what-is-automated-machine-learning"></a>Wat is geautomatiseerde machine learning?
 
@@ -95,7 +95,7 @@ In elk automatisch machine learning experiment worden uw gegevens automatisch ge
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>Geavanceerde voor verwerking: optionele parametrisatie
 
-Er zijn ook aanvullende geavanceerde preverwerkings-en parametrisatie beschikbaar, zoals ontbrekende waarden, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-create-portal-experiments.md#preprocess). Schakel deze instelling in met:
+Er zijn ook aanvullende geavanceerde preverwerkings-en parametrisatie beschikbaar, zoals gegevens Guardrails, code ring en trans formaties. Meer [informatie over wat parametrisatie is inbegrepen](how-to-create-portal-experiments.md#preprocess). Schakel deze instelling in met:
 
 + Azure Machine Learning studio: als u de **parametrisatie-instellingen weer geven** in de sectie **configuratie-uitvoering** wilt selecteren, voert u de [volgende stappen uit](how-to-create-portal-experiments.md).
 
@@ -161,7 +161,7 @@ Meer informatie en een voor beeld bekijken van [automatische machine learning vo
 
 * Kerst detectie en parametrisatie
 * time-series-en DNN-leerers (automatisch ARIMA, Prophet, ForecastTCN)
-* veel model ondersteuning via groepering
+* veel modellen bieden ondersteuning via groepering
 * Cross-Origin-Kruis validatie
 * Configureer bare lags
 * statistische functies van het Rolling venster

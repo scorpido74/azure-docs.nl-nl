@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 3febdbc8f55f6ccd65eba97de984a9a38ddf214e
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: f4164966d1a9662a72d41fefcb7cfbb1b444d614
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129317"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888984"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Veelgestelde vragen over Azure Databricks
 
@@ -92,7 +92,7 @@ Fout bij het starten van de Cloud provider: er is een fout in de Cloud provider 
 
 #### <a name="solution"></a>Oplossing
 
-Databricks-clusters gebruiken één openbaar IP-adres per knooppunt. Als uw abonnement al alle open bare Ip's heeft gebruikt, moet u [aanvragen om het quotum te verhogen](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request). Kies **quotum** als het **probleem type**en **netwerk: arm** als het **quotum type**. Vraag in **Details**een toename van een openbaar IP-adres quotum aan. Als uw limiet bijvoorbeeld 60 is, en u een cluster met een 100-knoop punt wilt maken, moet u een limiet voor 160 aanvragen.
+Databricks-clusters gebruiken één openbaar IP-adres per knooppunt. Als uw abonnement al alle open bare Ip's heeft gebruikt, moet u [aanvragen om het quotum te verhogen](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request). Kies **quotum** als het **probleem type**en **netwerk: arm** als het **quotum type**. Vraag in **Details**een toename van een openbaar IP-adres quotum aan. Als uw limiet bijvoorbeeld 60 is, en u een cluster met een 100-knoop punt wilt maken, moet u een limiet voor 160 aanvragen.
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Probleem: een tweede type fout bij het starten van een Cloud provider tijdens het instellen van het cluster (MissingSubscriptionRegistration)
 

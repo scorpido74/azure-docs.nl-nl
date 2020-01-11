@@ -11,17 +11,17 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/13/2019
-ms.openlocfilehash: 8a5b7bd366c504f0f5f4652728bf265289fb92e8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 418026d5569cd7e4a7c5239f99650833b1b9514d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929674"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892943"
 ---
 # <a name="copy-data-to-an-azure-cognitive-search-index-using-azure-data-factory"></a>Gegevens kopiëren naar een Azure Cognitive Search-index met behulp van Azure Data Factory
 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](v1/data-factory-azure-search-connector.md)
+> * [Versie 1:](v1/data-factory-azure-search-connector.md)
 > * [Huidige versie](connector-azure-search.md)
 
 In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens te kopiëren naar Azure Cognitive Search index. Dit is gebaseerd op de [overzicht kopieeractiviteit](copy-activity-overview.md) artikel met daarin een algemeen overzicht van de kopieeractiviteit.
@@ -181,4 +181,4 @@ In de volgende tabel wordt aangegeven of een Azure Cognitive Search-gegevens typ
 Momenteel worden andere gegevens typen, zoals complex type, niet ondersteund. Zie [ondersteunde gegevens typen (azure Cognitive Search)](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)voor een volledige lijst met ondersteunde gegevens typen van Azure Cognitive Search.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md##supported-data-stores-and-formats).
+Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).

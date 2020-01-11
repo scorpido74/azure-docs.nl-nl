@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/10/2019
+ms.date: 01/10/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d578b5d08fecde733bb7b257057e480fef83c4e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: ad7065ba6378bcb383e67b4a58d7c195e88679ca
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754420"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890670"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Zelf studie: Azure AD-eenmalige aanmelding (SSO) integreren met NetSuite
 
@@ -71,9 +70,8 @@ Azure AD SSO met NetSuite configureren en testen met behulp van een test gebruik
 Als u Azure AD SSO wilt configureren en testen met Netsuite, voltooit u de volgende bouw stenen:
 
 1. [Configureer Azure AD SSO](#configure-azure-ad-sso) zodat uw gebruikers deze functie kunnen gebruiken.
-
-    a. [Maak een Azure AD-test gebruiker om de](#create-an-azure-ad-test-user) eenmalige aanmelding van Azure ad te testen met gebruiker B. Simon.  
-    b. [Wijs de gebruiker van Azure AD-test](#assign-the-azure-ad-test-user) toe om gebruiker B. Simon in te scha kelen voor het gebruik van eenmalige aanmelding voor Azure AD.
+    * [Maak een Azure AD-test gebruiker om de](#create-an-azure-ad-test-user) eenmalige aanmelding van Azure ad te testen met gebruiker B. Simon.  
+    * [Wijs de gebruiker van Azure AD-test](#assign-the-azure-ad-test-user) toe om gebruiker B. Simon in te scha kelen voor het gebruik van eenmalige aanmelding voor Azure AD.
 1. [Configureer de SSO van NetSuite](#configure-netsuite-sso) voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
     * [Maak de gebruiker van de groep voor het testen van de](#create-the-netsuite-test-user) groep gebruiker B. Simon in NetSuite die is gekoppeld aan de Azure AD-representatie van de gebruiker.
 1. [Test SSO](#test-sso) om te controleren of de configuratie werkt.
@@ -90,52 +88,32 @@ Ga als volgt te werk om Azure AD SSO in te scha kelen in de Azure Portal:
 
 1. Typ in de sectie **basis-SAML-configuratie** in het tekstvak antwoord- **URL** een URL in een van de volgende indelingen:
 
-    ```
-    https://<tenant-name>.NetSuite.com/saml2/acs
-    https://<tenant-name>.na1.NetSuite.com/saml2/acs
-    https://<tenant-name>.na2.NetSuite.com/saml2/acs
-    https://<tenant-name>.sandbox.NetSuite.com/saml2/acs
-    https://<tenant-name>.na1.sandbox.NetSuite.com/saml2/acs
-    https://<tenant-name>.na2.sandbox.NetSuite.com/saml2/acs
-    ```
+    ||
+    |-|
+    | `https://<Account ID>.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na1.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na2.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na1.sandbox.NetSuite.com/saml2/acs`|
+    | `https://<Account ID>.na2.sandbox.NetSuite.com/saml2/acs`|
 
     > [!NOTE]
     > De waarden in de voor gaande Url's zijn niet echt. Werk deze bij met de daad werkelijke antwoord-URL. Neem contact op met het [ondersteunings team van de client voor NetSuite](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml)om de waarde op te halen. U kunt ook verwijzen naar de indelingen die worden weer gegeven in de sectie **basis configuratie van SAML** in de Azure Portal.
 
-    De toepassing NetSuite verwacht dat de SAML-bevestigingen in een specifieke notatie worden weer gegeven. U moet aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. 
-    
-1. Als u het deel venster **gebruikers kenmerken** wilt openen, selecteert u het pictogram **bewerken** (potlood). In het deel venster wordt een lijst met standaard kenmerken weer gegeven, zoals wordt weer gegeven in de volgende afbeelding: 
+1. De toepassing NetSuite verwacht de SAML-beweringen in een specifieke indeling, waarvoor u aangepaste kenmerk toewijzingen moet toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![Het deel venster gebruikers kenmerken](common/edit-attribute.png)
+    ![installatiekopie](common/default-attributes.png)
 
-    Naast deze kenmerken, verwacht de NetSuite-toepassing nog enkele kenmerken die in het SAML-antwoord opnieuw worden door gegeven. 
+1. In aanvulling op hierboven verwachtte NetSuite-toepassing nog maar weinig kenmerken om te worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
 
-1. Voer in het deel venster **gebruikers kenmerken** onder **gebruikers claims**de volgende stappen uit om het SAML-token kenmerk toe te voegen dat wordt weer gegeven in de volgende tabel:
-
-    | Naam | Bronkenmerk | 
+    | Name | Bronkenmerk |
     | ---------------| --------------- |
     | account  | `account id` |
 
-    a. Selecteer **nieuwe claim toevoegen** om het deel venster **gebruikers claims beheren** te openen.
+    > [!NOTE]
+    > De waarde van het account kenmerk is niet reëel. U werkt deze waarde bij, zoals verderop in deze zelf studie wordt uitgelegd.
 
-    b. Typ in het vak **naam** de naam van het kenmerk dat voor die rij wordt weer gegeven.
-
-    c. Laat het vak **naam ruimte** leeg.
-
-    d. Selecteer in de vervolg keuzelijst **bron** de optie **kenmerk**.
-
-    e. Voer in de lijst **bron kenmerk** de kenmerk waarde in die voor die rij wordt weer gegeven.
-
-    f. Selecteer **OK**.
-
-    g. Selecteer **Opslaan**.
-
-    >[!NOTE]
-    >De waarde van het account kenmerk is niet reëel. U werkt deze waarde bij, zoals verderop in deze zelf studie wordt uitgelegd.
-
-1. Zoek in het deel venster **eenmalige aanmelding met het SAML** -paneel instellen, in de sectie **SAML-handtekening certificaat** , naar **federatieve meta gegevens XML**.
-
-1. Selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Zoek op de pagina eenmalige aanmelding met SAML instellen, in de sectie SAML-handtekening certificaat, de federatieve meta gegevens-XML en selecteer downloaden om het certificaat te downloaden en op uw computer op te slaan.
 
     ![De koppeling voor het downloaden van certificaten](common/metadataxml.png)
 
@@ -147,7 +125,7 @@ Ga als volgt te werk om Azure AD SSO in te scha kelen in de Azure Portal:
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
-1. Selecteer **Azure Active Directory**  > **gebruikers**  > **alle gebruikers**In het linkerdeel venster van de Azure Portal.
+1. Selecteer **Azure Active Directory** > **gebruikers** > **alle gebruikers**In het linkerdeel venster van de Azure Portal.
 
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 
@@ -183,7 +161,7 @@ In deze sectie schakelt u gebruiker B. Simon in voor het gebruik van eenmalige a
 
 1. Open een nieuw tabblad in uw browser en meld u als beheerder aan bij de bedrijfs site van uw bedrijf.
 
-2. Selecteer in de bovenste navigatie balk de optie **instellen**en selecteer vervolgens **bedrijfs**  > **functies inschakelen**.
+2. Selecteer in de bovenste navigatie balk de optie **instellen**en selecteer vervolgens **bedrijfs** > **functies inschakelen**.
 
     ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-setupsaml.png)
 
@@ -217,7 +195,7 @@ In deze sectie schakelt u gebruiker B. Simon in voor het gebruik van eenmalige a
 
     c. Selecteer **Indienen**.
 
-9. Selecteer in de bovenste navigatie balk van de NetSuite de optie **instellen**en selecteer vervolgens **bedrijfs**  > **Bedrijfs gegevens**.
+9. Selecteer in de bovenste navigatie balk van de NetSuite de optie **instellen**en selecteer vervolgens **bedrijfs** > **Bedrijfs gegevens**.
 
     ![Eenmalige aanmelding configureren](./media/NetSuite-tutorial/ns-com.png)
 
@@ -275,7 +253,7 @@ In deze sectie schakelt u gebruiker B. Simon in voor het gebruik van eenmalige a
 
 In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in Netsuite. NetSuite biedt ondersteuning voor Just-In-Time-inrichting van gebruikers. Deze functie is standaard ingeschakeld. Er is geen actie-item voor u in deze sectie. Als er nog geen gebruiker bestaat in NetSuite, wordt er een nieuwe gemaakt na verificatie.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>SSO testen
 
 In dit gedeelte test u de configuratie voor eenmalige aanmelding van Azure AD met behulp van het toegangsvenster.
 
@@ -287,4 +265,3 @@ Wanneer u de tegel NetSuite selecteert in het toegangs venster, moet u automatis
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [Netsuite proberen met Azure AD](https://aad.portal.azure.com/)
-

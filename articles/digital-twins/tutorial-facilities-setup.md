@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: 68bc6f8c81fb44dc26d2208d33893c21ff9b5b3c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/10/2020
+ms.openlocfilehash: bf07a165b6ea933719eb06b6625a91033030a120
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860976"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895447"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Zelf studie: Azure Digital Apparaatdubbels preview implementeren en een ruimtelijke grafiek configureren
 
@@ -129,7 +129,6 @@ public static async Task<IEnumerable<ProvisionResults.Space>> ProvisionSample(Ht
 
     return results;
 }
-
 ```
 
 Deze functie maakt gebruik van het bestand [provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml) in dezelfde map. Open dit bestand en bekijk de hiërarchie van een kantoorgebouw, bestaande uit: *locatie*, *verdieping*, *gebied* en *ruimten*. Elk van deze fysieke ruimten kan *devices* en *sensors* bevatten. Elk vermelding heeft een vooraf gedefinieerde `type`&mdash;, bijvoorbeeld Verdieping, Ruimte.
@@ -150,7 +149,7 @@ Het bestand **provisionSample.yaml** bevat de volgende knooppunten:
 
 - **devices**: ruimten kunnen `devices` bevatten. Dat zijn fysieke of virtuele entiteiten waarmee een aantal sensoren wordt beheerd. Een apparaat kan bijvoorbeeld het telefoonnummer van een gebruiker zijn of een Raspberry Pi-sensorpod, een gateway, enzovoort. In het denkbeeldige gebouw uit het voorbeeld bevat de ruimte **Focus Room** bijvoorbeeld het apparaat **Raspberry Pi 3 A1**. Elk apparaatknooppunt wordt geïdentificeerd door een unieke `hardwareId`, die is vastgelegd in het voorbeeld. Als u dit voorbeeld wilt configureren in een productieomgeving, moet u deze waarden vervangen door de waarden van uw installatie.  
 
-- **sensoren**: een apparaat kan meerdere `sensors` bevatten. Hiermee kunnen fysieke wijzigingen (bijvoorbeeld in temperatuur, beweging of accuniveau) worden gedetecteerd en vastgelegd. Elk sensor knooppunt wordt uniek geïdentificeerd door een `hardwareId`, dat u hier kunt opgeven. Voor een werkelijke toepassing moet u deze vervangen door de unieke id's van de sensoren in uw installatie. Het bestand provisionSample.yaml bevat twee sensoren: een bewegingssensor (*Motion*) en een CO2-sensor (*CarbonDioxide*). Voeg, onder de regels voor de CO2-sensor, de volgende regels toe om een temperatuursensor (*Temperature*) toe te voegen. Merk op dat deze regels in provisionSample.yaml zijn opgegeven als commentaarregels. U kunt er coderegels van maken door het teken `#` aan het begin van elke regel te verwijderen. 
+- **sensoren**: een apparaat kan meerdere `sensors` bevatten. Hiermee kunnen fysieke wijzigingen (bijvoorbeeld in temperatuur, beweging of accuniveau) worden gedetecteerd en vastgelegd. Elk sensor knooppunt wordt uniek geïdentificeerd door een `hardwareId`, dat u hier kunt opgeven. Voor een werkelijke toepassing moet u deze vervangen door de unieke id's van de sensoren in uw installatie. Het bestand provisionSample.yaml bevat twee sensoren: een bewegingssensor (*Motion*) en een CO2-sensor (*CarbonDioxide*). Voeg, onder de regels voor de CO2-sensor, de volgende regels toe om een temperatuursensor (*Temperature*) toe te voegen. Deze zijn opgenomen in provisionSample. yaml als commentaar-out-lijnen. U kunt er coderegels van maken door het teken `#` aan het begin van elke regel te verwijderen. 
 
     ```yaml
             - dataType: Temperature

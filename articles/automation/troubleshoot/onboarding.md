@@ -8,12 +8,12 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 737b963074a2bec851882bddd78ad0b89f48d1d9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c949556949e0c187d7c23c4dd32436e245bfbb95
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769894"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889334"
 ---
 # <a name="troubleshoot-errors-when-onboarding-update-management-change-tracking-and-inventory"></a>Problemen oplossen bij het voorbereiden van Updatebeheer, Wijzigingen bijhouden en inventaris
 
@@ -156,7 +156,7 @@ Wanneer u de oplossingen hebt verwijderd, kunt u uw werk ruimte ontkoppelen. Het
   * Update-implementaties (Schema's) verwijderen uit uw Automation-account
 * VM's starten/stoppen buiten kantooruren
   * Verwijder alle vergren delingen van oplossings onderdelen in uw Automation-account onder **instellingen** > **sloten**.
-  * Voor aanvullende stappen voor het verwijderen van de VM's buiten bedrijfsuren starten/stoppen oplossing raadpleegt u [de virtuele machine starten/stoppen buiten kantoor uren](../automation-solution-vm-management.md##remove-the-solution).
+  * Voor aanvullende stappen voor het verwijderen van de VM's buiten bedrijfsuren starten/stoppen oplossing raadpleegt u [de virtuele machine starten/stoppen buiten kantoor uren](../automation-solution-vm-management.md#remove-the-solution).
 
 ## <a name="mma-extension-failures"></a>MMA-extensie fouten
 

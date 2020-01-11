@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2017
+ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 106252b7c77f9ee3d6b9bdebafce3441d9c4b090
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 08a5c2c101b934f07ab85082e726cb8e1341e5d0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224231"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888723"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Zelfstudie: een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Key Vault 
 
@@ -39,9 +39,9 @@ Procedures voor:
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Uw virtuele machine toegang verlenen tot een geheim dat is opgeslagen in een sleutelkluis 
+## <a name="grant-access"></a>Toegang verlenen  
  
-Met behulp van beheerde identiteiten voor Azure-resources kan uw code toegangstokens ophalen voor verificatie bij resources die ondersteuning bieden voor Microsoft Azure AD-verificatie.  Niet alle Azure-Services bieden echter ondersteuning voor Azure AD-verificatie. Als u beheerde identiteiten wilt gebruiken voor Azure-resources met die services, slaat u de service referenties op in Azure Key Vault en gebruikt u de beheerde identiteit van de virtuele machine om toegang te krijgen tot Key Vault om de referenties op te halen. 
+In deze sectie wordt beschreven hoe u uw VM toegang verleent tot een geheim dat is opgeslagen in een Key Vault. Met behulp van beheerde identiteiten voor Azure-resources kan uw code toegangstokens ophalen voor verificatie bij resources die ondersteuning bieden voor Microsoft Azure AD-verificatie.  Niet alle Azure-Services bieden echter ondersteuning voor Azure AD-verificatie. Als u beheerde identiteiten wilt gebruiken voor Azure-resources met die services, slaat u de service referenties op in Azure Key Vault en gebruikt u de beheerde identiteit van de virtuele machine om toegang te krijgen tot Key Vault om de referenties op te halen. 
 
 Eerst moeten we een sleutelkluis maken en de door het systeem toegewezen beheerde identiteit van onze VM toegang tot de sleutelkluis verlenen.   
 
@@ -66,9 +66,9 @@ Voeg vervolgens een geheim toe aan de sleutelkluis, zodat u het geheim later kun
 5. Laat de activeringsdatum en vervaldatum leeg en laat **Ingeschakeld** ingesteld staan op **Ja**. 
 6. Klik op **Maken** om het geheim te maken. 
  
-## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>Een toegangstoken ophalen met behulp van de identiteit van de virtuele machine en daarmee het geheim uit de sleutelkluis ophalen  
+## <a name="get-an-access-token"></a>Een toegangstoken opvragen  
 
-Als PowerShell 4.3.1 of hoger niet is geïnstalleerd, moet u [de meest recente versie downloaden en installeren](https://docs.microsoft.com/powershell/azure/overview).
+In deze sectie wordt beschreven hoe u een toegangs token kunt ophalen met behulp van de VM-identiteit en hoe u het kunt ophalen uit de Key Vault. Als PowerShell 4.3.1 of hoger niet is geïnstalleerd, moet u [de meest recente versie downloaden en installeren](https://docs.microsoft.com/powershell/azure/overview).
 
 Eerst gebruiken we de door het systeem toegewezen beheerde identiteit van de VM om een toegangstoken op te halen voor verificatie bij Key Vault:
  

@@ -14,17 +14,17 @@ ms.date: 11/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80b90a22a793c15104bba3eb91e88f851158e13f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 301fe9c213ec6d78d32d6ccde84a689c4659acb3
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106943"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888978"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Aangepaste installatie van Azure AD Connect
 Voor meer opties voor de installatie gaat u naar **Aangepaste instellingen**. Deze instellingen gebruikt u wanneer u meerdere forests hebt of als u optionele functies wilt configureren die niet in de snelle installatie voorkomen. De aangepaste instellingen worden gebruikt in alle gevallen waarin de optie [**snelle installatie**](how-to-connect-install-express.md) niet aan uw implementatie of topologie voldoet.
 
-Zorg voordat u begint met de installatie van Azure AD Connect dat u [Azure AD Connect downloadt](https://go.microsoft.com/fwlink/?LinkId=615771) en de vereiste stappen in [Azure AD Connect: Hardware en vereisten](how-to-connect-install-prerequisites.md) voltooit. Zorg er ook voor dat de benodigde accounts beschikbaar zijn, zoals beschreven in [Azure AD Connect accounts and permissions](reference-connect-accounts-permissions.md).
+Zorg ervoor dat u, voordat u begint met de installatie van Azure AD Connect, [Azure AD Connect downloadt](https://go.microsoft.com/fwlink/?LinkId=615771) en de vereiste stappen in [Azure AD Connect: Hardware and prerequisites](how-to-connect-install-prerequisites.md) voltooit. Zorg er ook voor dat de benodigde accounts beschikbaar zijn, zoals beschreven in [Azure AD Connect accounts and permissions](reference-connect-accounts-permissions.md).
 
 Als aangepaste instellingen niet overeenkomen met uw topologie, bijvoorbeeld om DirSync te upgraden, raadpleegt u verwante documentatie voor andere scenario's.
 
@@ -82,7 +82,7 @@ Nadat u de forestnaam hebt ingevoerd en op **Map toevoegen** hebt geklikt, wordt
 | Optie | Beschrijving |
 | --- | --- |
 | Nieuw account maken | Selecteer deze optie als u wilt dat de Azure AD Connect-wizard het AD DS-account maakt dat Azure AD Connect nodig heeft om verbinding te maken met de AD-forest tijdens directorysynchronisatie. Voer wanneer deze optie is geselecteerd de gebruikersnaam en het wachtwoord in voor een enterprisebeheerdersaccount. Het opgegeven enterprisebeheerdersaccount wordt door de Azure AD Connect-wizard gebruikt om het vereiste AD DS-account te maken. U kunt het domeingedeelte in NetBios- of FQDN-indeling invoeren, dat wil zeggen FABRIKAM\administrator of fabrikam.com\administrator. |
-| Bestaand account gebruiken | Selecteer deze optie als u wilt toestaan dat een bestaand AD DS-account wordt gebruikt door Azure AD Connect om verbinding te maken met de AD-forest tijdens directorysynchronisatie. U kunt het domeingedeelte in NetBios- of FQDN-indeling invoeren, dat wil zeggen FABRIKAM\syncuser of fabrikam.com\syncuser. Dit account mag een normaal gebruikersaccount zijn, omdat alleen de standaard leesmachtigingen nodig zijn. Afhankelijk van uw scenario heeft u echter mogelijk meer machtigingen nodig. Zie [Azure AD Connect Accounts and permissions](reference-connect-accounts-permissions.md##create-the-ad-ds-connector-account) voor meer informatie. |
+| Bestaand account gebruiken | Selecteer deze optie als u wilt toestaan dat een bestaand AD DS-account wordt gebruikt door Azure AD Connect om verbinding te maken met de AD-forest tijdens directorysynchronisatie. U kunt het domeingedeelte in NetBios- of FQDN-indeling invoeren, dat wil zeggen FABRIKAM\syncuser of fabrikam.com\syncuser. Dit account mag een normaal gebruikersaccount zijn, omdat alleen de standaard leesmachtigingen nodig zijn. Afhankelijk van uw scenario heeft u echter mogelijk meer machtigingen nodig. Zie [Azure AD Connect Accounts and permissions](reference-connect-accounts-permissions.md#create-the-ad-ds-connector-account) voor meer informatie. |
 
 ![Verbinding maken met Directory](./media/how-to-connect-install-custom/connectdir02.png)
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/10/2018
+ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0999492f0d9c7d28da3ac896792fb2d7b898fd18
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ee331435cbc7d0cb580b3ad5865030aba6d372ea
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224220"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888461"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Zelf studie: een door de gebruiker toegewezen beheerde identiteit op een Windows-VM gebruiken om toegang te krijgen tot Azure Resource Manager
 
@@ -54,9 +54,9 @@ Procedures voor:
 - Voer `Install-Module -Name PowerShellGet -AllowPrerelease` uit om de voorlopige versie van de `PowerShellGet`-module op te halen (mogelijk moet u met `Exit` de huidige PowerShell-sessie afsluiten nadat u met deze opdracht de `Az.ManagedServiceIdentity`-module hebt geïnstalleerd).
 - Voer `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` uit om de voorlopige versie van de `Az.ManagedServiceIdentity`-module te installeren en de aan de gebruiker toegewezen identiteitsbewerkingen in dit artikel uit te voeren.
 
-## <a name="create-a-user-assigned-identity"></a>Een door de gebruiker toegewezen identiteit maken
+## <a name="create-identity"></a>Identiteit maken
 
-Een door de gebruiker toegewezen identiteit wordt als een zelfstandige Azure-resource gemaakt. Met de [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity) wordt een identiteit gemaakt in uw Azure AD-tenant die kan worden toegewezen aan een of meer Azure-service-exemplaren.
+In deze sectie wordt uitgelegd hoe u een door de gebruiker toegewezen identiteit maakt. Een door de gebruiker toegewezen identiteit wordt als een zelfstandige Azure-resource gemaakt. Met de [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity) wordt een identiteit gemaakt in uw Azure AD-tenant die kan worden toegewezen aan een of meer Azure-service-exemplaren.
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -80,18 +80,18 @@ Type: Microsoft.ManagedIdentity/userAssignedIdentities
 }
 ```
 
-## <a name="assign-the-user-assigned-identity-to-a-windows-vm"></a>De door de gebruiker toegewezen identiteit toewijzen aan een Windows-VM
+## <a name="assign-identity"></a>Identiteit toewijzen
 
-Een door de gebruiker toegewezen identiteit kan worden gebruikt door clients op meerdere Azure-resources. Gebruik de volgende opdrachten om de door de gebruiker toegewezen identiteit toe te wijzen aan één VM. Gebruik de eigenschap `Id` die in de vorige stap is geretourneerd voor de parameter `-IdentityID`.
+In deze sectie wordt beschreven hoe u de door de gebruiker toegewezen identiteit aan een Windows-VM toewijst. Een door de gebruiker toegewezen identiteit kan worden gebruikt door clients op meerdere Azure-resources. Gebruik de volgende opdrachten om de door de gebruiker toegewezen identiteit toe te wijzen aan één VM. Gebruik de eigenschap `Id` die in de vorige stap is geretourneerd voor de parameter `-IdentityID`.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
 Update-AzVM -ResourceGroupName TestRG -VM $vm -IdentityType "UserAssigned" -IdentityID "/subscriptions/<SUBSCRIPTIONID>/resourcegroups/myResourceGroupVM/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ID1"
 ```
 
-## <a name="grant-your-user-assigned-identity-access-to-a-resource-group-in-azure-resource-manager"></a>Uw door de gebruiker toegewezen identiteit toegang verlenen tot een resourcegroep in Azure Resource Manager 
+## <a name="grant-access"></a>Toegang verlenen 
 
-Beheerde identiteiten voor Azure-resources biedt identiteiten die uw code kan gebruiken om toegangstokens aan te vragen voor verificatie bij resource-API's die Azure AD-verificatie ondersteunen. In deze zelfstudie krijgt uw code toegang tot de Azure Resource Manager-API. 
+In deze sectie wordt beschreven hoe u uw door de gebruiker toegewezen identiteit toegang verleent aan een resource groep in Azure Resource Manager. Beheerde identiteiten voor Azure-resources biedt identiteiten die uw code kan gebruiken om toegangstokens aan te vragen voor verificatie bij resource-API's die Azure Active Directory-verificatie ondersteunen. In deze zelfstudie krijgt uw code toegang tot de Azure Resource Manager-API. 
 
 Voordat uw code toegang tot de API kan krijgen, moet u de identiteit toegang geven tot een resource in Azure Resource Manager. In dit geval is dat de resourcegroep waarin de VM zich bevindt. Werk de waarde voor `<SUBSCRIPTION ID>` bij overeenkomstig uw omgeving.
 
@@ -114,7 +114,7 @@ ObjectType: ServicePrincipal
 CanDelegate: False
 ```
 
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-resource-manager"></a>Een toegangstoken ophalen met behulp van de identiteit van de virtuele machine en daarmee Resource Manager aanroepen 
+## <a name="get-an-access-token"></a>Een toegangstoken opvragen 
 
 Voor de rest van de zelfstudie werkt u op de virtuele machine die we eerder hebben gemaakt.
 
@@ -126,7 +126,7 @@ Voor de rest van de zelfstudie werkt u op de virtuele machine die we eerder hebb
 
 4. Nu u een **Verbinding met extern bureaublad** met de virtuele machine hebt gemaakt, opent u **PowerShell** in de externe sessie.
 
-5. Dien met behulp van `Invoke-WebRequest` van Powershell een aanvraag in bij de lokale beheerde identiteiten om een toegangstoken voor Azure Resource Manager op te halen voor het Azure-resources-eindpunt.  De waarde voor `client_id` is de waarde die wordt geretourneerd bij het [maken van de door de gebruiker toegewezen beheerde identiteit](#create-a-user-assigned-identity).
+5. Dien met behulp van `Invoke-WebRequest` van Powershell een aanvraag in bij de lokale beheerde identiteiten om een toegangstoken voor Azure Resource Manager op te halen voor het Azure-resources-eindpunt.  De `client_id` waarde is de waarde die wordt geretourneerd bij het maken van de door de gebruiker toegewezen beheerde identiteit.
 
     ```azurepowershell
     $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=af825a31-b0e0-471f-baea-96de555632f9&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}
@@ -134,7 +134,7 @@ Voor de rest van de zelfstudie werkt u op de virtuele machine die we eerder hebb
     $ArmToken = $content.access_token
     ```
 
-## <a name="read-the-properties-of-a-resource-group"></a>De eigenschappen van een resourcegroep lezen
+## <a name="read-properties"></a>Eigenschappen lezen
 
 Gebruik het in de vorige stap opgehaalde toegangstoken om toegang te krijgen tot Azure Resource Manager en lees de eigenschappen van de resourcegroep waarvoor u uw door de gebruiker toegewezen identiteit toegang hebt verleend. Vervang `<SUBSCRIPTION ID>` door de abonnements-id van uw omgeving.
 

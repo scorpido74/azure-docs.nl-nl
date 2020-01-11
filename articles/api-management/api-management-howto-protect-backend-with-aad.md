@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 82341f29ffda03c5f047d7566ff64884c6698b07
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 36b4b597ae70642fee8726555ea71b5164c13cca
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442517"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889390"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>Een API beveiligen met behulp van OAuth 2,0 met Azure Active Directory en API Management
 
@@ -47,12 +47,12 @@ Hier volgt een kort overzicht van de stappen:
 
 De eerste stap is het registreren van een toepassing in azure AD die de API vertegenwoordigt, om een API te beveiligen met Azure AD. 
 
-1. Ga naar de pagina met de [Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) . 
+1. Ga naar de [Azure Portal](https://portal.azure.com) om uw toepassing te registreren. Zoek en selecteer **API-registraties**.
 
 1. Selecteer **nieuwe registratie**. 
 
 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in: 
-    - Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die zichtbaar is voor gebruikers van de app. Bijvoorbeeld: `backend-app`. 
+    - Voer in de sectie **naam** een zinvolle toepassings naam in die wordt weer gegeven voor gebruikers van de app, zoals *back-end-app*. 
     - Selecteer in de sectie **ondersteunde account typen** een optie die aansluit bij uw scenario. 
 
 1. Laat de sectie **URI omleiden** leeg.
@@ -63,29 +63,29 @@ De eerste stap is het registreren van een toepassing in azure AD die de API vert
 
 1. Selecteer **een API beschikbaar** maken en stel de **URI voor de toepassings-id** in met de standaard waarde. Noteer deze waarde voor later.
 
-1. Maak op de pagina **een bereik toevoegen** een nieuwe scope die wordt ondersteund door de API. (bijvoorbeeld lezen) en klik vervolgens op *bereik toevoegen* om het bereik te maken. Herhaal deze stap om alle scopes toe te voegen die worden ondersteund door uw API.
+1. Selecteer de knop **een bereik toevoegen** om de pagina **een bereik toevoegen** weer te geven. Maak vervolgens een nieuw bereik dat wordt ondersteund door de API (bijvoorbeeld `Files.Read`). Selecteer tot slot de knop **bereik toevoegen** om het bereik te maken. Herhaal deze stap om alle scopes toe te voegen die worden ondersteund door uw API.
 
-1. Wanneer het bereik is gemaakt, noteert u dit voor gebruik in een volgende stap. 
+1. Wanneer de bereiken zijn gemaakt, noteert u deze voor gebruik in een volgende stap. 
 
 ## <a name="register-another-application-in-azure-ad-to-represent-a-client-application"></a>Een andere toepassing registreren in azure AD om een client toepassing aan te duiden
 
 Elke client toepassing die de API aanroept, moet ook worden geregistreerd als een toepassing in azure AD. In dit voor beeld is de client toepassing de ontwikkelaars console in het API Management ontwikkelaars Portal. U kunt als volgt een andere toepassing in azure AD registreren om de ontwikkelaars console aan te duiden.
 
-1. Ga naar de pagina met de [Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) . 
+1. Ga naar de [Azure Portal](https://portal.azure.com) om uw toepassing te registreren. Zoek en selecteer **API-registraties**.
 
 1. Selecteer **nieuwe registratie**.
 
 1. Wanneer de pagina **Een toepassing registreren** verschijnt, voert u de registratiegegevens van de toepassing in: 
-    - Voer in de sectie **Naam** een beschrijvende toepassingsnaam in die zichtbaar is voor gebruikers van de app. Bijvoorbeeld: `client-app`. 
-    - Selecteer in de sectie **ondersteunde account typen** de optie **accounts in elke organisatie Directory**. 
+    - Voer in de sectie **naam** een zinvolle toepassings naam in die wordt weer gegeven voor gebruikers van de app, zoals *client-app*. 
+    - Selecteer in de sectie **ondersteunde account typen** de optie **accounts in elke organisatie Directory (een Azure AD-Directory-multi tenant)** . 
 
-1. Selecteer in de sectie **URI omleiden** `Web` en voer de URL in `https://contoso5.portal.azure-api.net/signin`
+1. Selecteer in de sectie **omleidings-URI** `Web` en voer de URL in `https://contoso5.portal.azure-api.net/signin`.
 
 1. Selecteer **Registreren** om de toepassing te maken. 
 
 1. Zoek op de pagina app- **overzicht** de waarde van de **toepassing (client)** en noteer deze voor later.
 
-Maak nu een client geheim voor deze toepassing, voor gebruik in een volgende stap.
+Maak nu een client geheim voor deze toepassing voor gebruik in een volgende stap.
 
 1. Selecteer in de lijst met pagina's voor uw client-app **certificaten & geheimen**en selecteer **Nieuw client geheim**.
 
@@ -97,17 +97,17 @@ Wanneer het geheim is gemaakt, noteert u de sleutel waarde voor gebruik in een v
 
 Nu u twee toepassingen hebt geregistreerd die de API en de ontwikkelaars console vertegenwoordigen, moet u machtigingen verlenen om de client-app toe te staan de back-end-app aan te roepen.  
 
-1. Navigeer naar **app-registraties**. 
+1. Ga naar de [Azure Portal](https://portal.azure.com) om machtigingen toe te kennen aan uw client toepassing. Zoek en selecteer **API-registraties**.
 
-1. Selecteer `client-app`en ga in de lijst met pagina's voor de app naar **API-machtigingen**.
+1. Kies uw client-app. Selecteer vervolgens in de lijst met pagina's voor de app **API-machtigingen**.
 
 1. Selecteer **een machtiging toevoegen**.
 
-1. Onder **een API selecteren**, zoek en selecteert u `backend-app`.
+1. Selecteer onder **een API selecteren** **de optie mijn api's**, zoek en selecteer vervolgens uw back-end-app.
 
-1. Selecteer onder **gedelegeerde machtigingen**de juiste machtigingen om `backend-app` klik vervolgens op **machtigingen toevoegen**.
+1. Selecteer onder **gedelegeerde machtigingen**de juiste machtigingen voor uw back-end-app en selecteer vervolgens **machtigingen toevoegen**.
 
-1. Klik desgewenst op de pagina **API-machtigingen** op **toestemming geven voor de beheerder voor < uw-Tenant naam >** onder aan de pagina om toestemming te verlenen namens alle gebruikers in deze map. 
+1. Desgewenst selecteert u op de pagina **API-machtigingen** de optie **beheerder toestemming geven voor \<uw-Tenant naam >** om toestemming te verlenen namens alle gebruikers in deze map. 
 
 ## <a name="enable-oauth-20-user-authorization-in-the-developer-console"></a>OAuth 2,0-gebruikers autorisatie inschakelen in de ontwikkelaars console
 

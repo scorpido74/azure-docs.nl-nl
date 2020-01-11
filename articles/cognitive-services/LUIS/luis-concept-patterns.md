@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 32b9b42ee0962353405616e501de95b19e40ea1a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 6c1b548de25369c162b4a08dfa20fce62c17f99f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280856"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890291"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Patronen verbeteren nauwkeurigheid
 Patronen zijn ontworpen voor betere nauwkeurigheid wanneer verschillende uitingen vergelijkbaar zijn.  Met een patroon kunt u een grotere nauwkeurigheid verkrijgen voor een intentie zonder te voorzien in veel meer uitingen. 
@@ -50,7 +50,7 @@ Een patroon is hoofd zakelijk bedoeld om de voor spelling van intenties en rolle
 Het is niet raadzaam om verbeterde entiteits voorspellingen te zien als u meerdere uitingen samenvouwt tot één patroon. Voor eenvoudige entiteiten die moeten worden gestart, moet u uitingen toevoegen of de lijst entiteiten gebruiken. anders wordt uw patroon niet geactiveerd.
 
 ## <a name="patterns-use-entity-roles"></a>Patronen entiteit rollen gebruiken
-Als twee of meer entiteiten in een patroon contextuele gerelateerde zijn, gebruiken patronen entiteits [rollen](luis-concept-roles.md) om contextuele informatie over entiteiten te extra heren.  
+Als twee of meer entiteiten in een patroon contextueel zijn gerelateerd, patronen entiteit gebruiken [rollen](luis-concept-roles.md) contextuele gegevens over entiteiten extraheren.  
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Voorspelling scores met en zonder patronen
 Onvoldoende uitingen voorbeeld gezien, zou LUIS kunnen worden vergroot het vertrouwen van voorspelling geen patronen weergegeven. De betrouwbaarheidsscore verhogen patronen zonder deze op te geven zoveel uitingen.  
@@ -62,7 +62,7 @@ Een patroon wordt op basis van de entiteiten in het patroon eerst detecteren en 
 U kunt een app bouwen met intenties die geen voor beeld uitingen hebben, zolang er voor elke intentie een patroon is. Het patroon mag voor een alleen-patroon app geen door machines geleerde entiteiten bevatten, omdat hiervoor bijvoorbeeld uitingen nodig zijn. 
 
 ## <a name="best-practices"></a>Aanbevolen procedures
-Lees de [Aanbevolen procedures](luis-concept-best-practices.md).
+Informatie over [aanbevolen procedures](luis-concept-best-practices.md).
 
 ## <a name="pattern-syntax"></a>Patroonsyntaxis
 
@@ -73,8 +73,8 @@ Meer informatie over de syntaxis van patronen in de syntaxis van de [patroon ver
 Meer informatie over patronen:
 
 * [Patronen toevoegen](luis-how-to-model-intent-pattern.md)
-* [Een patroon toevoegen. elke entiteit](luis-how-to-add-entities.md##add-a-patternany-entity)
+* [Een patroon toevoegen. elke entiteit](luis-how-to-add-entities.md#add-a-patternany-entity)
 * [Syntaxis van patronen](reference-pattern-syntax.md)
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het implementeren van patronen in deze zelf studie](luis-tutorial-pattern.md)
+> [Meer informatie over het implementeren van patronen in deze zelfstudie](luis-tutorial-pattern.md)

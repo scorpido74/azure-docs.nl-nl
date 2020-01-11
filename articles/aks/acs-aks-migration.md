@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 8070e209910425f9baa0ae81aca349a067c70f76
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 68c50d3455c0ed240fa62532818a0b07b39ec772
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658539"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889523"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migreren naar Azure Kubernetes service (AKS)
 
@@ -87,9 +87,9 @@ Bij het migreren van clusters hebt u mogelijk externe Azure-Services gekoppeld. 
 
 ## <a name="ensure-valid-quotas"></a>Zorg voor geldige quota's
 
-Omdat er tijdens de migratie extra virtuele machines in uw abonnement worden geïmplementeerd, moet u controleren of uw quota en limieten voldoende zijn voor deze resources. Mogelijk moet u een toename van het [vCPU-quotum](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests)aanvragen.
+Omdat er tijdens de migratie extra virtuele machines in uw abonnement worden geïmplementeerd, moet u controleren of uw quota en limieten voldoende zijn voor deze resources. Mogelijk moet u een toename van het [vCPU-quotum](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests)aanvragen.
 
-Mogelijk moet u een verhoging van de [netwerk quota](https://docs.microsoft.com/azure/azure-supportability/networking-quota-requests) aanvragen om ervoor te zorgen dat de IP-adressen niet worden uitgeput. Zie [netwerk-en IP-bereiken voor AKS](https://docs.microsoft.com/azure/aks/configure-kubenet) voor meer informatie.
+Mogelijk moet u een verhoging van de [netwerk quota](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) aanvragen om ervoor te zorgen dat de IP-adressen niet worden uitgeput. Zie [netwerk-en IP-bereiken voor AKS](https://docs.microsoft.com/azure/aks/configure-kubenet) voor meer informatie.
 
 Zie [Azure-abonnement en service limieten](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)voor meer informatie. Als u de huidige quota's wilt controleren, gaat u in het Azure Portal naar de [Blade abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), selecteert u uw abonnement en selecteert u vervolgens **gebruik en quota's**.
 

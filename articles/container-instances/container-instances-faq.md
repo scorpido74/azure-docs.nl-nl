@@ -3,13 +3,13 @@ title: Veelgestelde vragen
 description: Antwoorden op veelgestelde vragen met betrekking tot de Azure Container Instances-service
 author: dkkapur
 ms.topic: article
-ms.date: 4/25/2019
-ms.openlocfilehash: b5888efe210ab0f3794895d350c5647b6f685880
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 01/07/2020
+ms.openlocfilehash: 4a3fb4c1818d86f7fe2913790fd9e573c630cbfd
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484140"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888019"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Veelgestelde vragen over Azure Container Instances
 
@@ -83,7 +83,7 @@ Schalen is momenteel niet beschikbaar voor containers of container groepen. Als 
 
 ### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>Welke functies zijn beschikbaar voor instanties die worden uitgevoerd in een aangepast VNet?
 
-U kunt container groepen implementeren in een virtueel Azure-netwerk van uw keuze, en privé Ip's delegeren aan de container groepen om verkeer tussen uw Azure-resources te routeren binnen het VNet. De implementatie van een container groep in een virtueel netwerk is momenteel beschikbaar als preview-versie en sommige aspecten van deze functie kunnen worden gewijzigd voorafgaand aan de algemene Beschik baarheid (GA). Zie de [Preview-beperkingen](container-instances-vnet.md#preview-limitations) voor bijgewerkte informatie.
+U kunt [container groepen implementeren in een virtueel Azure-netwerk](container-instances-vnet.md) van uw keuze, en privé ip's delegeren aan de container groepen om verkeer tussen uw Azure-resources te routeren binnen het VNet. Implementatie van een container groep in een virtueel netwerk is momenteel beschikbaar voor productie werkbelastingen in een subset van Azure-regio's.
 
 ## <a name="pricing"></a>Prijzen
 

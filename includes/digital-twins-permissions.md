@@ -9,19 +9,19 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 01/06/2020
 ms.custom: include file
-ms.openlocfilehash: 6f8eaa1d13e7a8c4ea69118cdea4286f2dd90860
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: a6adbe095b3ed486be8eb2e2611db5a40162d5dd
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692534"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895512"
 ---
 >[!NOTE]
 >Deze sectie bevat instructies voor de [registratie van Azure AD-apps](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app).
 
 1. Open in de [Azure Portal](https://portal.azure.com) **Azure Active Directory** in het menu uitbreidbaar links en open vervolgens het **app-registraties** deel venster. 
 
-    [het deel venster Azure Active Directory ![selecteren](./media/digital-twins-permissions/select-aad-pane.png)](./media/digital-twins-permissions/select-aad-pane.png#lightbox)
+    [het deel venster Azure Active Directory ![selecteren](./media/digital-twins-permissions/azure-portal-select-aad-pane.png)](./media/digital-twins-permissions/azure-portal-select-aad-pane.png#lightbox)
 
 1. Selecteer de knop **+ nieuwe registratie** .
 
@@ -35,7 +35,7 @@ ms.locfileid: "75692534"
 
     Controleer **toegangs tokens** om de instelling **Oauth2AllowImplicitFlow** in uw manifest. json in te scha kelen.
 
-    [configuratie-instelling ![open bare client](./media/digital-twins-permissions/aad-public-client.png)](./media/digital-twins-permissions/aad-public-client.png#lightbox)
+    [configuratie-instelling ![open bare client](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
 
 1.  Open het deel venster **overzicht** van de geregistreerde app en kopieer de waarden van de volgende entiteiten naar een tijdelijk bestand. U gebruikt deze waarden om uw voorbeeld toepassing te configureren in de volgende secties.
 

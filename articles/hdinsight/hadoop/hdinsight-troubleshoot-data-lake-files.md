@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/13/2019
-ms.openlocfilehash: 7b511ab0c3093747d6e713754c04533e5f25b6ad
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 21269f7d5a9ec832a49a613351702dd24be156af
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087401"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894154"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>Geen toegang tot Data Lake-opslag bestanden in azure HDInsight
 
@@ -30,7 +30,7 @@ LISTSTATUS failed with error 0x83090aa2 (Forbidden. ACL verification failed. Eit
 
 De gebruiker heeft mogelijk machtigingen voor de Service-Principal (SP) ingetrokken voor bestanden/mappen.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 1. Controleer of de SP ' x ' machtigingen heeft om langs het pad te bladeren. Zie [machtigingen](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html)voor meer informatie. Voor beeld van een DFS-opdracht om de toegang tot bestanden/mappen in Data Lake-opslag account te controleren:
 
@@ -42,7 +42,7 @@ De gebruiker heeft mogelijk machtigingen voor de Service-Principal (SP) ingetrok
 
 ---
 
-## <a name="issue-service-principal-certificate-expiry"></a>Probleem: Verval datum van Service-Principal-certificaat
+## <a name="issue-service-principal-certificate-expiry"></a>Probleem: verval datum van Service-Principal-certificaat
 
 Er wordt een fout bericht met de volgende strekking weer gegeven:
 
@@ -66,7 +66,7 @@ Het certificaat dat is gegeven voor toegang tot de Service-Principal is mogelijk
     {"stderr": "-ls: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.cloudapp.net:909/api/oauthtoken}}...
     ```
 
-1. Haal een van de url's van `core-site.xml property`op  -  `fs.azure.datalake.token.provider.service.urls`.
+1. Haal een van de url's op uit `core-site.xml property` - `fs.azure.datalake.token.provider.service.urls`.
 
 1. Voer de volgende krul opdracht uit om het OAuth-token op te halen.
 
@@ -99,7 +99,7 @@ Het certificaat dat is gegeven voor toegang tot de Service-Principal is mogelijk
     Error: java.lang.IllegalArgumentException: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://clustername.hmssomerandomstringc.cx.internal.cloudapp.net:909/api/oauthtoken}
     ```
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 Maak een nieuw certificaat of wijs een bestaand certificaat toe met behulp van het volgende Power shell-script:
 
@@ -171,6 +171,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

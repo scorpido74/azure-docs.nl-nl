@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/28/2017
 ms.author: mlearned
 ms.custom: H1Hack27Feb201
-ms.openlocfilehash: 0165ace1d373d267658c78e020356816fb9cc02f
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 317862b694b93de44422ac3c28575c732ffc5be5
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286478"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887917"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>(AFGESCHAFT) Veelgestelde vragen over Container Service
 
@@ -64,7 +64,7 @@ Als u [Azure CLI-opdrachten](../../container-service/dcos-swarm/container-servic
 U kunt een cluster maken met 1, 3 of 5 hoofdknooppunten. U kunt maximaal 100 agentknooppunten kiezen.
 
 > [!IMPORTANT]
-> Voor grotere clusters en afhankelijk van de grootte van de virtuele machines die u kiest voor uw knooppunten, kan het nodig zijn om het quotum voor kerngeheugens in het abonnement te verhogen. Als u een verhoging van het quotum wilt aanvragen, opent u een [online een ondersteuningsverzoek](../../azure-supportability/how-to-create-azure-support-request.md). Hiervoor worden geen kosten in rekening gebracht. Als u een [gratis account van Azure](https://azure.microsoft.com/free/) gebruikt, kunt u slechts een paar Azure Compute-resources van Azure gebruiken.
+> Voor grotere clusters en afhankelijk van de grootte van de virtuele machines die u kiest voor uw knooppunten, kan het nodig zijn om het quotum voor kerngeheugens in het abonnement te verhogen. Als u een verhoging van het quotum wilt aanvragen, opent u een [online een ondersteuningsverzoek](../../azure-portal/supportability/how-to-create-azure-support-request.md). Hiervoor worden geen kosten in rekening gebracht. Als u een [gratis account van Azure](https://azure.microsoft.com/free/) gebruikt, kunt u slechts een paar Azure Compute-resources van Azure gebruiken.
 > 
 
 ### <a name="how-do-i-increase-the-number-of-masters-after-a-cluster-is-created"></a>Hoe kan ik het aantal masters verhogen nadat een cluster is gemaakt? 

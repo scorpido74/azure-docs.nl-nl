@@ -1,42 +1,48 @@
 ---
 title: Retail oplossingen bouwen met Azure IoT Central | Microsoft Docs
-description: Meer informatie over het bouwen van verbonden logistiek, digitaal distributie centrum, in-Store analyse van voor waarden, afhandeling en Smart Inventory Management, handels oplossingen met Azure IoT Central met behulp van toepassings sjablonen.
-author: KishorIoT
-ms.author: nandab
-ms.date: 10/22/2019
+description: Meer informatie over het gebruik van Azure IoT Central-toepassings sjablonen voor het bouwen van verbonden logistiek, digitaal distributie centrum, in-Store-analyses, controle op de voor waarde, afhandeling, Smart Inventory Management en handels oplossingen.
+author: avneet723
+ms.author: avneets
+ms.date: 01/10/2020
 ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 7f82e2a539c968d0dde44cbc2ed411710054c290
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 8b1861b96f7ed53388d49e226bf3880bfcf657cb
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890693"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895866"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Oplossingen voor de detailhandel bouwen met Azure IoT Central
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-Azure IoT Central is een Internet of Things (IoT) app-platform voor oplossingen bouwers die de uitdagingen van het bouwen van & het beheren van schaal bare toepassingen vereenvoudigt. In dit artikel worden verschillende branchespecifieke toepassings sjablonen in IoT Central gemarkeerd. Ontwikkelers van oplossingen kunnen gepubliceerde sjablonen gebruiken om IoT-oplossingen te bouwen voor het optimaliseren van de toeleverings keten, de in-Store-ervaring voor klanten te verbeteren en de voor Raad efficiënter te volgen.
+Azure IoT Central is een IoT app-platform waarmee de belasting en de kosten voor het ontwikkelen, beheren en onderhouden van IoT-oplossingen op bedrijfs niveau worden verminderd. Als u ervoor kiest om met Azure IoT Central te bouwen, kunt u zich richten op uw tijd, geld en energie over het trans formatie van uw bedrijf met IoT-gegevens, in plaats van alleen maar een complexe en voortdurend veranderende IoT-infra structuur te onderhouden en bij te werken.
+
+In dit artikel worden verschillende branchespecifieke IoT Central toepassings sjablonen beschreven. Als oplossings bouwer kunt u deze sjablonen gebruiken om IoT-oplossingen te bouwen die de toeleverings ketens optimaliseren, de in-Store-ervaring voor klanten te verbeteren en de voor Raad efficiënter te volgen.
 
 > [!div class="mx-imgBorder"]
 > ![Azure IoT Retail Overview](./media/overview-iot-central-retail/retail-app-templates.png)
 
+In de volgende secties worden de mogelijkheden van deze toepassings sjablonen beschreven:
 
-## <a name="what-is-connected-logistics-solution"></a>Wat is verbonden logistiek-oplossing?
-Wereld wijde logistiek bestedingen worden verwacht $10.6 trn in 2020, het grootste BBP van de branche. Het Trans Port van goederen is de meerderheid (70%) van de totale logistiek kosten. Verzend providers zijn onder intensieve concurrentie druk en beperkingen. 3PL-providers omgaan met steeds dalende tijd frames en stijgende compensatie kosten. Logistiek wordt verder beperkt door de Risico's die zijn verbonden aan geopolitieke, extreme klimatologische gebeurtenissen en criminaliteit. 
+## <a name="connected-logistics"></a>Verbonden logistiek
 
-Met de hulp van IoT Sens oren kunnen we de omgevings omstandigheden van & bewaking, dat wil zeggen, de Tempe ratuur, vochtigheid, kantel, schokken, Light en de locatie van de verzen ding via GPS verzamelen in een multi-modale trans formatie, d.w.z. lucht, water, grond. Gegevens die zijn verzameld uit Sens oren, apparaten, weer, &-gebeurtenissen kunnen worden geïntegreerd met bedrijfs informatie systemen in de Cloud. Voor delen van verbonden logistiek-oplossing zijn,
-* Verzendings reserveren met realtime tracering & bijhouden 
-* Leverings integriteit met realtime omgevings omstandigheden bewaking & koude keten
-* Beveiliging tegen dief stal, verlies of schade door verzen ding
-* Geoomheining, route optimalisatie, vloot beheer. Voertuig analyse
-* & Voorspel baarheid voors pellen met het vertrek & aankomsten 
+De kosten voor wereld wijde logistiek worden naar verwachting $10.6 tn in 2020. Het Trans Port van goederen accounts voor het meren deel van deze uitgaven-en verzend providers ligt onder intensieve concurrentie druk en beperkingen.
 
-### <a name="out-of-box-experience"></a>Out-of-Box-ervaring
-Partners kunnen gebruikmaken van de sjabloon voor het ontwikkelen van end-to-end verbonden logistiek-oplossingen & uiteengezette voor delen. Deze gepubliceerde sjabloon is gericht op de connectiviteit van apparaten, configuratie & beheer van apparaten in IoT Central. 
+U kunt IoT Sens oren gebruiken om omgevings voorwaarden te verzamelen en te bewaken, zoals Tempe ratuur, vochtigheid, kanteling, schokken, licht en de locatie van een verzen ding. U kunt telemetrie combi neren die is verzameld van IoT-Sens oren en apparaten met andere gegevens bronnen, zoals weer en verkeers gegevens in business intelligence systemen in de Cloud.
+
+De voor delen van een verbonden logistiek-oplossing zijn:
+
+* Verzendings controle met realtime tracering en tracering. 
+* Leverings integriteit met realtime bewaking van omgevings condities.
+* Beveiliging tegen dief stal, verlies of beschadiging van verzen dingen.
+* Geoomheining, route optimalisatie, vloot beheer en voertuig analyses.
+* Prognoses voor voorspel bare vertrek en ontvangst van zendingen.
+
+In de volgende scherm afbeeldingen ziet u het out-of-the-box-dash board in de toepassings sjabloon. Het dash board is volledig aanpasbaar om te voldoen aan uw specifieke oplossings vereisten:
 
 > [!div class="mx-imgBorder"]
 > ![verbonden logistiek-dash board](./media/overview-iot-central-retail/connected-logistics-dashboard1.png)
@@ -44,110 +50,125 @@ Partners kunnen gebruikmaken van de sjabloon voor het ontwikkelen van end-to-end
 > [!div class="mx-imgBorder"]
 > ![verbonden logistiek-dash board](./media/overview-iot-central-retail/connected-logistics-dashboard2.png)
 
-Het bovenstaande dash board is een voor beeld van de ervaring en u kunt deze toepassing volledig aanpassen zodat deze voldoet aan uw gewenste use-case.
+Zie de zelf studie [een verbonden logistiek-toepassings sjabloon implementeren en door lopen](./tutorial-iot-central-connected-logistics-pnp.md) voor meer informatie.
 
-Aan de slag met [end-to-end zelf studie](./tutorial-iot-central-connected-logistics-pnp.md) waarin wordt uitgelegd hoe u een oplossing kunt bouwen met een van de verbonden logistiek-oplossings sjablonen.
+## <a name="digital-distribution-center"></a>Digitaal distributiecentrum
 
+Naarmate fabrikanten en detail handelaren wereld wijde aanwezigheids vormen, zijn de toeleverings ketens vertakking uit en worden ze complexer. Consumenten verwachten nu dat er grote selecties van producten beschikbaar zijn en dat deze goederen binnen een of twee dagen na aankoop kunnen aankomen. Distributie centra moeten worden aangepast aan deze trends terwijl bestaande inefficiënties worden overtreden. 
 
+Vandaag de dag is afhankelijk van een beroep op hand matige arbeid dat het picken en inpakken van accounts voor 55-65% van de kosten van het distributie centrum. Hand matig orderverzamelen en verpakken zijn meestal trager dan geautomatiseerde systemen, en het snel wisselen van personeels behoeften maakt het zelfs moeilijker om te voldoen aan de verzend volumes. Deze fluctuatie schommelt de omzet van hoge mede werkers en verg root de kans op dure fouten.
 
-## <a name="what-is-digital-distribution-center-solution"></a>Wat is de oplossing Digital Distribution Center?
-Naarmate meer fabrikanten en detail handelaren wereld wijde aanwezigheids vormen, zijn de toeleverings ketens gevertakkingd om ingewik kelder te raken dan ooit tevoren. Distributie centra worden een primaire uitdaging. Het distributie centrum/de magazijnen zijn de voor werpen van de druk van e-commerce. Consumenten verwachten nu dat er grote selecties van producten beschikbaar zijn en dat deze goederen binnen één tot twee dagen na aankoop kunnen aankomen. Distributie centra moeten worden aangepast aan deze trends terwijl bestaande inefficiënties worden overtreden. 
+Oplossingen op basis van IoT ingeschakelde camera's kunnen transformationele-voor delen bieden door een digitale feedback-lus in te scha kelen. Gegevens van in het distributie centrum leiden tot inzicht in inzichten die op hun beurt resulteren in betere gegevens.
 
-Tegenwoordig houdt een overreliance op hand matige arbeid rekening met het verzamelen en inpakken van accounts voor 55-65% van de kosten van het distributie centrum. Hoewel het niet goed is dat hand matige arbeid het distributie centrum vertraagt, kunt u snel aan de slag met de behoeften van uw personeel (vakantie personeel doorloopt op 10X), waardoor het nog moeilijker is om te voldoen aan de verzend volumes. Deze schommeling van seizoensgebonden resultaten leidt tot hoge omzet en de kans op fouten en de nood zaak voor een kost bare herwerkings toename ook.
-Oplossingen op basis van IoT ingeschakelde camera's kunnen transformationele-voor delen bieden door een digitale feedback-lus in te scha kelen. Deze instroom van gegevens uit het distributie centrum leidt tot praktische inzichten die op hun beurt resulteren in betere gegevens.
+De voor delen van een digitaal distributie centrum zijn:
 
-Voor delen zijn, 
-* Camera's bewaken de goederen wanneer ze binnenkomen en via het transport systeem door lopen
-* Defecte goederen identificeren en verzenden voor reparatie
-* Bestellingen efficiënt bijhouden
-* Kosten verlagen, verbeterde productiviteit & optimaal gebruik
+* Camera's bewaken de goederen wanneer ze binnenkomen en door het transport systeem bladeren.
+* Automatische identificatie van defecte goederen.
+* Efficiënte order tracering.
+* Lagere kosten, verbeterde productiviteit en optimaal gebruik.
 
-### <a name="out-of-box-experience"></a>Out-of-Box-ervaring
-Partners kunnen gebruikmaken van deze toepassings sjabloon om digitaal distributie centrum te bouwen om inzicht te krijgen in de voor delen & hoger dan een voor deel in de praktijk. De gepubliceerde sjabloon is gericht op de connectiviteits configuratie van apparaten & beheer van camera-en rand apparaten in IoT Central. 
+In de volgende scherm afbeelding ziet u het out-of-the-box-dash board in de toepassings sjabloon. Het dash board is volledig aanpasbaar om te voldoen aan uw specifieke oplossings vereisten: 
 
 > [!div class="mx-imgBorder"]
 > ![Digital Distribution Center-dash board](./media/overview-iot-central-retail/digital-distribution-center-dashboard.png)
 
-Het bovenstaande dash board is een voor beeld van de ervaring en u kunt deze toepassing volledig aanpassen zodat deze voldoet aan uw gewenste use-case.
+Meer informatie vindt u in de zelf studie [een digitale distributie centrum-toepassings sjabloon implementeren en door lopen](./tutorial-iot-central-digital-distribution-center-pnp.md) .
 
-Aan de slag met [end-to-end zelf studie](./tutorial-iot-central-digital-distribution-center-pnp.md) waarin wordt uitgelegd hoe u een oplossing kunt bouwen met behulp van een van de Digital Distribution Center-sjablonen.
+## <a name="in-store-analytics---condition-monitoring"></a>Bewaking in de Store-voor waarden
 
+Voor veel detail handelaren zijn omgevings voorwaarden in hun winkels een belang rijke onderscheid van hun concurrenten. Detail handelaren willen voor deel van hun klanten onaangename voor waarden in hun winkels onderhouden.  
 
+Als oplossings bouwer kunt u de toepassings sjabloon IoT Central in-Store analyse voorwaarde bewaking gebruiken om een end-to-end oplossing te bouwen. Met de toepassings sjabloon kunt u een winkel omgeving digitaal verbinden met en bewaken met behulp van verschillende sensor apparaten. Deze sensor apparaten genereren telemetrie die u kunt omzetten in Business Insights om de bedrijfs kosten te verlagen en een geweldige ervaring voor hun klanten te creëren.
 
-## <a name="what-is-in-store-analytics-condition-monitoring"></a>Wat is bewaking van de analyse voorwaarde in de Store?
-In de huidige concurrentie-landschap zijn detail handelaren op zoek naar nieuwe manieren om klanten iets uniek of speciaal te bieden om het verkeer via hun fysieke winkels te verzorgen. Veel detail handelaren erkennen het belang van omgevings omstandigheden binnen hun archief als een hulp middel om onderscheid te maken met hun concurrenten. De detail handelaren willen ervoor zorgen dat ze op elk moment in hun winkels onaangename voor waarden onderhouden om hun klanten een comfortabele ervaring te bieden.  
+Gebruik de toepassings sjabloon voor het volgende:
 
-De toepassings sjabloon in de Store Analytics condition-bewaking in IoT Central biedt de oplossings opbouw functie met een canvas dat kan worden gebruikt om een end-to-end-oplossing te bouwen. Met de toepassings sjabloon kunnen ze een Retail Store-omgeving digitaal verbinden en bewaken met behulp van verschillende sensor apparaten. Deze sensor apparaten nemen zinvolle signalen op die kunnen worden omgezet in zakelijke inzichten, waardoor de bedrijfs kosten worden verminderd en ervaringen worden gemaakt die hun klanten leuk hebben.
+* Verbind een aantal IoT-Sens oren met een IoT Central toepassings exemplaar.
+* Bewaak en beheer de status van het sensor netwerk en alle gateway apparaten in de omgeving.
+* Maak aangepaste regels rondom de omgevings voorwaarden in een Store om waarschuwingen voor winkel managers te activeren.
+* Transformeer de omgevings voorwaarden in uw winkel in inzichten die het Retail Store-team kan gebruiken om de gebruikers ervaring te verbeteren.
+* De geaggregeerde inzichten exporteren naar bestaande of nieuwe zakelijke toepassingen om nuttige en tijdige informatie te verstrekken aan retail personeel.
 
-Met de toepassings sjabloon kunt u het volgende doen:
+De toepassings sjabloon wordt geleverd met een set met Apparaatbeheer en maakt gebruik van een set gesimuleerde apparaten om het dash board in te vullen. 
 
-*  Verbind naadloos een aantal IoT-Sens oren met een IoT Central toepassings exemplaar.
-*  Bewaak en beheer de status van het sensor netwerk en de gateway apparaten in de omgeving.
-*  Maak aangepaste regels rondom de omgevings voorwaarden in een archief om de juiste waarschuwingen te activeren.
-*  Transformeer de omgevings voorwaarden in uw winkel in inzichten die kunnen worden gebruikt door het team van de winkel.
-* De geaggregeerde inzichten exporteren naar bestaande of nieuwe zakelijke toepassingen die de leden van de retail medewerker stimuleren.
-
-### <a name="out-of-box-experience"></a>Out-of-Box-ervaring
-De toepassings sjabloon wordt geleverd met een set met Apparaatbeheer en de ervaring van de operator. Het maakt gebruik van een set gesimuleerde apparaten om de dashboard elementen te vullen. Nadat u een IoT Central-toepassing hebt geïmplementeerd met behulp van de app-sjabloon voor de [bewaking van de in-Store-voor waarde](https://aka.ms/conditiontemplate) , gaat u naar het standaard toepassings dashboard, zoals hieronder wordt weer gegeven. 
+In de volgende scherm afbeelding ziet u het out-of-the-box-dash board in de toepassings sjabloon. Het dash board is volledig aanpasbaar om te voldoen aan uw specifieke oplossings vereisten: 
 
 > [!div class="mx-imgBorder"]
 > Bewaking van de ![in de Store-voor waarde](./media/overview-iot-central-retail/in-store-analytics-condition-dashboard.png)
 
-Het bovenstaande dash board is een voor beeld van de ervaring en u kunt deze toepassing volledig aanpassen zodat deze voldoet aan uw gewenste use-case. 
+Zie de zelf studie [een in-Store Analytics-toepassing maken in Azure IOT Central](./tutorial-in-store-analytics-create-app-pnp.md) voor meer informatie.
 
-Aan de slag met [end-to-end zelf studie](./tutorial-in-store-analytics-create-app-pnp.md) waarin wordt uitgelegd hoe u een oplossing kunt bouwen met behulp van een van de in-Store Analytics condition-bewakings sjablonen.
+## <a name="in-store-analytics---checkout"></a>In-Store-analyses-uitchecken
 
+Voor sommige detail handelaren is de uitcheck ervaring binnen hun winkels een belang rijke onderscheid van hun concurrenten. Detail handelaren willen in hun winkels een soepele ervaring voor de afhandeling bieden om klanten te stimuleren om te retour neren.  
 
+Als oplossings bouwer kunt u de IoT Central in-Store Analytics-toepassings sjabloon gebruiken om een oplossing te bouwen die inzicht biedt in de afhandelings zone van een Store naar Retail personeel. Sens oren kunnen bijvoorbeeld informatie geven over de lengte van de wachtrij en gemiddelde wacht tijden voor elke afhandelings baan.
 
-## <a name="what-is-in-store-analytics-checkout"></a>Wat is de afhandeling van in-Store-analyses?
-In het steeds scherper worden, worden moderne detail handelaren voortdurend op toenemende wijze geconfronteerd om een in-Store ervaring te bieden die de verwachtingen van de klant overschrijdt. Hoewel er verschillende detail handelaren zijn begonnen met het implementeren van technologie om aan deze behoefte te voldoen, is een gebied dat grotendeels niet wordt opgemerkt, de ervaring voor de afhandeling.
+Gebruik de toepassings sjabloon voor het volgende:
 
-Met de toepassing in-Store Analytics-uitchecken in IoT Central kunt u bouwers van oplossingen bouwen die de werk nemers op het gebied van het uitchecken van hun winkel ervaring bieden. Er wordt gebruikgemaakt van een set gesimuleerde apparaten om de status van de bezetting te bepalen voor elk van de afhandelings banen in een winkel. Met de Sens oren kunt u het aantal mensen vastleggen, evenals de gemiddelde wacht tijd voor elk van de afhandelings banen.
+* Verbind een aantal IoT-Sens oren met een IoT Central toepassings exemplaar.
+* Bewaak en beheer de status van het sensor netwerk en alle gateway apparaten in de omgeving.
+* Maak aangepaste regels rondom de uitcheck voorwaarde binnen een Store om waarschuwingen voor retail personeel te activeren.
+* Transformeer de afhandelings voorwaarden in de Store in inzichten die het Retail Store-team kan gebruiken om de gebruikers ervaring te verbeteren.
+* De geaggregeerde inzichten exporteren naar bestaande of nieuwe zakelijke toepassingen om nuttige en tijdige informatie te verstrekken aan retail personeel.
 
-De sjabloon helpt de opbouw functie voor oplossingen om hun go-to-Market-plannen te versnellen met een baseline IoT-oplossing waarmee ze het volgende kunnen doen: 
+De toepassings sjabloon wordt geleverd met een set met Apparaatbeheer en maakt gebruik van een set gesimuleerde apparaten voor het vullen van het dash board met Lane-bezettings gegevens. 
 
-* Verbind naadloos een aantal IoT-Sens oren met een IoT Central toepassings exemplaar.
-* Bewaak en beheer de status van het sensor netwerk en de gateway apparaten in de omgeving.
-* Maak aangepaste regels rondom de uitcheck voorwaarde binnen een Store om de juiste waarschuwingen te activeren.
-* Transformeer de afhandelings voorwaarden in uw winkel in inzichten die kunnen worden gebruikt door het team van de winkel.
-* De geaggregeerde inzichten exporteren naar bestaande of nieuwe zakelijke toepassingen die de leden van de retail medewerker stimuleren.
-
-### <a name="out-of-box-experience"></a>Out-of-Box-ervaring
-De toepassings sjabloon wordt geleverd met een set met Apparaatbeheer en de ervaring van de operator. Het maakt gebruik van een set gesimuleerde apparaten om de dashboard elementen te vullen. Zodra u een IoT Central-toepassing hebt geïmplementeerd met behulp van de app [-sjabloon in de Store Analytics](https://aka.ms/checkouttemplate) , gaat u naar het standaard toepassings dashboard, zoals hieronder wordt weer gegeven. 
+In de volgende scherm afbeelding ziet u het out-of-the-box-dash board in de toepassings sjabloon. Het dash board is volledig aanpasbaar om te voldoen aan uw specifieke oplossings vereisten: 
 
 > [!div class="mx-imgBorder"]
 > ![in-Store Analytics-uitchecken](./media/overview-iot-central-retail/In-Store-Analytics-Checkout-Dashboard.png)
 
-Het bovenstaande dash board is een voor beeld van de ervaring en u kunt deze toepassing volledig aanpassen zodat deze voldoet aan uw gewenste use-case. 
+Zie de zelf studie [een in-Store Analytics-toepassing maken in Azure IOT Central](./tutorial-in-store-analytics-create-app-pnp.md) voor meer informatie.
 
+## <a name="smart-inventory-management"></a>Slim voorraadbeheer
 
-Aan de slag met [end-to-end zelf studie](./tutorial-in-store-analytics-create-app-pnp.md) waarin wordt uitgelegd hoe u een oplossing kunt bouwen met behulp van een van de in-Store Analytics-uitcheck sjablonen.
+Inventaris is het aandeel van de goederen die door een winkel worden bewaard. Voorraad beheer is van cruciaal belang om ervoor te zorgen dat het juiste product zich op het juiste moment op de juiste plaats bevindt. Een detail handelaar moet rekening houden met de kosten voor het opslaan van te veel inventaris op basis van de kosten van het niet voldoende voorradige artikelen om aan de vraag te voldoen.
 
+IoT-gegevens die zijn gegenereerd op basis van RFID-tags (Radio-Frequency Identification), bakens en camera's bieden mogelijkheden voor het verbeteren van voorraad beheer processen. U kunt telemetrie combi neren die is verzameld van IoT-Sens oren en apparaten met andere gegevens bronnen, zoals weer en verkeers gegevens in business intelligence systemen in de Cloud.
 
-## <a name="what-is-smart-inventory-management-solution"></a>Wat is Smart Inventory Management-oplossing?
-"Inventarisatie" is het aandeel van goederen dat door een detail handelaar wordt gehouden. Elke leverancier heeft de voor Raad nodig om te zorgen voor leverings-en logistiek doorloop tijd. De inventarisatie is weliswaar de waardevolste resource die elke leverancier moet handelen. In de huidige omnichannel-wereld is voorraad beheer een belang rijke vereiste om ervoor te zorgen dat het juiste product zich op het juiste moment bevindt. Als u te veel of te weinig inventaris opslaat, zou het bedrijf van de detail handelaar kunnen zijn. Jaarlijks verliezen de detail handelaren 8-10% van de opbrengst als gevolg van een gebrek aan inventaris beheer mogelijkheden.
+De voor delen van het beheer van Smart Inventory zijn:
 
-IoT-gegevens die worden ingeschakeld door Radio Frequency Identification (RFID), baken & camera is de kans om deze enorme uitdaging op schaal uit te voeren. De connectiviteit en real-time analyse van IoT-signalen zijn de game-wisselaar voor de inventarisatie-Woes van de detail handelaar geworden.  Gegevens die zijn verzameld uit Sens oren, apparaten, weer, &-gebeurtenissen kunnen worden geïntegreerd met bedrijfs informatie systemen in de Cloud.  
-Voor delen van Smart Inventory Management zijn, 
-* Hiermee wordt de organisatie beschermd tegen aandelen en wordt het gewenste service niveau van de klant gegarandeerd. 
-* Diep gaande analyse & inzicht in de bijna realtime nauw keurigheid van de inventaris
-* Beslissen over het juiste aantal inventarisatie dat voldoet aan de klant orders
+* Het risico van het afnemen van de voor Raad en het gewenste service niveau van de klant te verminderen. 
+* Diep gaande analyse en inzicht in de nauw keurigheid van de inventaris in bijna realtime.
+* Hulp middelen om te helpen beslissen over het juiste aantal inventarisatie dat kan worden afgestemd op klant orders.
 
-### <a name="out-of-box-experience"></a>Out-of-Box-ervaring
-Partners kunnen gebruikmaken van de sjabloon voor het ontwikkelen van end-to-end smart inventory management-oplossingen & uiteengezette voor delen. Deze gepubliceerde sjabloon is gericht op connectiviteit van apparaten, configuratie & beheer van RFID & Bluetooth Low Energy-lezers (teleenergie) in IoT Central. 
+Deze toepassings sjabloon is gericht op de connectiviteit van apparaten en de configuratie en het beheer van RFID-en Bluetooth-lezer (Low Energy).
+
+In de volgende scherm afbeelding ziet u het out-of-the-box-dash board in de toepassings sjabloon. Het dash board is volledig aanpasbaar om te voldoen aan uw specifieke oplossings vereisten:
 
 > [!div class="mx-imgBorder"]
 > ![dash board voor Smart Inventory Management](./media/overview-iot-central-retail/smart-inventory-management-dashboard.png)
 
-Het bovenstaande dash board is een voor beeld van de ervaring en u kunt deze toepassing volledig aanpassen zodat deze voldoet aan uw gewenste use-case. 
+Zie voor meer informatie de zelf studie [een slimme inventarisatie-sjabloon implementeren en door lopen](./tutorial-iot-central-smart-inventory-management-pnp.md) .
 
-Aan de slag met [end-to-end zelf studie](./tutorial-iot-central-smart-inventory-management-pnp.md) waarin wordt uitgelegd hoe u een oplossing kunt bouwen met een van de Smart Inventory Management-sjablonen.
+## <a name="micro-fulfillment-center"></a>Micro fulfillment Center
 
+In de steeds concurrerende detail handel zijn de detail handelaren voortdurend druk om de kloof tussen vraag en uitvoering te dichten. Een nieuwe trend die is opgetreden om de groeiende vraag van de consument te verhelpen, is in de huis inventaris bij de eind klanten en de winkels die ze bezoeken.
+
+Met de IoT Central micro fulfillment Center-toepassings sjabloon kunnen bouwers van oplossingen alle aspecten van hun volledig geautomatiseerde fulfillment-centrums bewaken en beheren. De sjabloon bevat een aantal gesimuleerde Sens oren en geautomatiseerde luchtvaart maatschappijen om het ontwikkelings proces voor oplossingen te versnellen. Deze sensor apparaten nemen zinvolle signalen op die kunnen worden omgezet in zakelijke inzichten, waardoor de bedrijfs kosten worden verminderd en ervaringen voor hun klanten worden gemaakt.
+
+Met de toepassings sjabloon kunt u het volgende doen: 
+
+- Verbind op naadloze manieren een aantal IoT-Sens oren zoals robots of condition bewaking Sens oren aan een IoT Central toepassings exemplaar.
+- Bewaak en beheer de status van het sensor netwerk en alle gateway apparaten in de omgeving.
+- Maak aangepaste regels rondom de omgevings voorwaarden binnen een fulfillment-centrum om de juiste waarschuwingen te activeren.
+- Transformeer de omgevings voorwaarden binnen uw fulfillment Center in inzichten die kunnen worden gebruikt door het retail warehouse-team.
+- Exporteer de geaggregeerde inzichten in bestaande of nieuwe zakelijke toepassingen voor het voor deel van de leden van de retail medewerker.
+
+In de volgende scherm afbeelding ziet u het out-of-the-box-dash board in de toepassings sjabloon. Het dash board is volledig aanpasbaar om te voldoen aan uw specifieke oplossings vereisten:
+
+> [!div class="mx-imgBorder"]
+> ![micro fulfillment Center](./media/overview-iot-central-retail/MFC-Dashboard.png)
+
+Raadpleeg voor meer informatie de zelf studie over [het implementeren en door lopen van de toepassing van de micro-fulfillment Center-toepassings sjabloon](./tutorial-iot-central-smart-inventory-management-pnp.md) .
 
 ## <a name="next-steps"></a>Volgende stappen
+
 Om aan de slag te gaan met het bouwen van een handels oplossing:
-* Ga aan de slag met de [end-to-end-zelf studie](./tutorial-in-store-analytics-create-app-pnp.md) waarin wordt uitgelegd hoe u een oplossing kunt bouwen met behulp van een van de in-Store Analytics-toepassings sjablonen.
-* Meer informatie over het implementeren van een sjabloon voor een [verbonden logistiek-oplossing](./tutorial-iot-central-connected-logistics-pnp.md)
-* Meer informatie over het implementeren van een [Digital Distribution Center-sjabloon](./tutorial-iot-central-digital-distribution-center-pnp.md)
-* Meer informatie over het implementeren van een [Smart Inventory Management-sjabloon](./tutorial-iot-central-smart-inventory-management-pnp.md)
-* Raadpleeg [IOT Central Overview](../preview/overview-iot-central.md) voor meer informatie over IOT Central
+
+* Ga aan de slag met de zelf studie [een in-Store Analytics-toepassing maken in Azure IOT Central](./tutorial-in-store-analytics-create-app-pnp.md) om u stapsgewijs te helpen bij het bouwen van een oplossing met een van de in-Store Analytics-toepassings sjablonen.
+* [Een verbonden logistiek-toepassings sjabloon implementeren en door lopen](./tutorial-iot-central-connected-logistics-pnp.md).
+* [Een Digital Distribution Center-toepassings sjabloon implementeren en door lopen](./tutorial-iot-central-digital-distribution-center-pnp.md).
+* [Een sjabloon voor slimme inventaris beheer toepassing implementeren en door lopen](./tutorial-iot-central-smart-inventory-management-pnp.md).
+* [Implementeer en volg de toepassings sjabloon van het micro uitvoerings centrum](./tutorial-iot-central-smart-inventory-management-pnp.md).
+* Meer informatie over IoT Central vindt u in het [overzicht IOT Central](../preview/overview-iot-central.md).

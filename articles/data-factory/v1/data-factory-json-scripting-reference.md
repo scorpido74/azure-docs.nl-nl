@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: dc79582efd2f009f1715e04b769d030cfd36561f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e85696afde5f0332ff6481bfadabbde5ac2d4800
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972457"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894915"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Naslag informatie voor JSON-script Azure Data Factory
 > [!NOTE]
@@ -288,7 +288,7 @@ In de volgende tabel worden de eigenschappen in de bovenstaande JSON beschreven:
 | type | Het type van de gegevensset. Geef een van de typen op die worden ondersteund door Azure Data Factory (bijvoorbeeld: AzureBlob, AzureSqlTable). Zie de sectie [gegevens archieven](#data-stores) voor alle gegevens archieven en gegevensset typen die door Data Factory worden ondersteund. |
 | structure | Schema van de gegevensset. Het bevat kolommen, hun typen, enzovoort. | Nee |N.V.T. |
 | typeProperties | Eigenschappen die overeenkomen met het geselecteerde type. Zie de sectie [gegevens archieven](#data-stores) voor ondersteunde typen en de bijbehorende eigenschappen. |Ja |N.V.T. |
-| external | Een Booleaanse vlag die aangeeft of een gegevensset expliciet wordt geproduceerd door een data factory pijp lijn of niet. |Nee |onwaar |
+| external | Een Booleaanse vlag die aangeeft of een gegevensset expliciet wordt geproduceerd door een data factory pijp lijn of niet. |Nee |false |
 | availability | Hiermee wordt het verwerkings venster of het segment model gedefinieerd voor de productie van de gegevensset. Zie voor meer informatie over het segmenteren van gegevensset het [plannen en uitvoeren](data-factory-scheduling-and-execution.md) van het artikel. |Ja |N.V.T. |
 | policy |Hiermee worden de criteria gedefinieerd of de voor waarde waaraan de segmenten van de gegevensset moeten voldoen. <br/><br/>Zie het gedeelte gegevensset Policy voor meer informatie. |Nee |N.V.T. |
 
@@ -354,7 +354,7 @@ De **beleids** sectie in de definitie van de gegevensset definieert de criteria 
 
 Tenzij er een gegevensset wordt geproduceerd door Azure Data Factory, moet deze worden gemarkeerd als **extern**. Deze instelling is in het algemeen van toepassing op de invoer van de eerste activiteit in een pijp lijn tenzij activiteit of pijplijn keten wordt gebruikt.
 
-| Naam | Beschrijving | Verplicht | Default Value |
+| Name | Beschrijving | Verplicht | Default Value |
 | --- | --- | --- | --- |
 | dataDelay |Tijd om de controle over de beschik baarheid van de externe gegevens voor het opgegeven segment te vertragen. Als de gegevens bijvoorbeeld elk uur beschikbaar zijn, is de controle om te zien of de externe gegevens beschikbaar zijn en kan het bijbehorende segment worden uitgesteld met behulp van dataDelay.<br/><br/>Is alleen van toepassing op de huidige tijd.  Als het bijvoorbeeld 1:00 PM nu is en deze waarde 10 minuten is, begint de validatie om 1:10 PM.<br/><br/>Deze instelling heeft geen invloed op segmenten in het verleden (segmenten met eind tijd segment + dataDelay < nu) worden zonder vertraging verwerkt.<br/><br/>Er moet een tijd van meer dan 23:59 uur worden opgegeven met de `day.hours:minutes:seconds` indeling. Als u bijvoorbeeld 24 uur wilt opgeven, gebruikt u 24:00:00 niet. gebruik in plaats daarvan 1,00:00:00. Als u 24:00:00 gebruikt, wordt dit beschouwd als 24 dagen (24.00:00:00). Geef voor 1 dag en 4 uur 1:04:00:00 op. |Nee |0 |
 | retryInterval |De wacht tijd tussen een storing en de volgende nieuwe poging. Als een poging mislukt, wordt de volgende poging na retryInterval. <br/><br/>Als deze 1:00 PM nu is, beginnen we met de eerste try. Als de duur voor het volt ooien van de eerste validatie controle 1 minuut is en de bewerking is mislukt, is de volgende nieuwe poging om 1:00 + 1 min (duur) + 1 min (interval voor opnieuw proberen) = 1:02 PM. <br/><br/>Voor segmenten in het verleden is er geen vertraging. De nieuwe poging vindt direct plaats. |Nee |00:01:00 (1 minuut) |
@@ -371,7 +371,7 @@ In het gedeelte [activiteit](#activity) worden beschrijvingen voor json-elemente
 
 Klik op de koppeling voor de winkel waarin u bent geïnteresseerd om de JSON-schema's voor de gekoppelde service, de gegevensset en de bron/Sink voor de Kopieer activiteit te bekijken.
 
-| Category | Gegevensarchief
+| Categorie | Gegevensarchief
 |:--- |:--- |
 | **Azure** |[Azure Blob Storage](#azure-blob-storage) |
 | &nbsp; |Azure Data Lake Store |
@@ -1340,7 +1340,7 @@ Als u gegevens naar een zoek index kopieert, stelt u het **sink-type** van de Ko
 
 | Eigenschap | Beschrijving | Toegestane waarden | Verplicht |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Hiermee geeft u op of u wilt samen voegen of vervangen wanneer een document al aanwezig is in de index. | samen voegen (standaard)<br/>Uploaden| Nee |
+| WriteBehavior | Hiermee geeft u op of u wilt samen voegen of vervangen wanneer een document al aanwezig is in de index. | Samen voegen (standaard)<br/>Uploaden| Nee |
 | WriteBatchSize | Uploadt gegevens in de zoek index wanneer de buffer grootte writeBatchSize bereikt. | 1 tot en met 1.000. De standaard waarde is 1000. | Nee |
 
 #### <a name="example"></a>Voorbeeld
@@ -4107,7 +4107,7 @@ Als u basis verificatie wilt gebruiken, stelt u `authenticationType` in als `Cli
 | Eigenschap | Beschrijving | Verplicht |
 | --- | --- | --- |
 | embeddedCertData | De met base64 gecodeerde inhoud van binaire gegevens van het PFX-bestand (Personal Information Exchange). | Geef het `embeddedCertData` of de `certThumbprint`op. |
-| CertThumbprint | De vinger afdruk van het certificaat dat is geïnstalleerd op het certificaat archief van uw gateway computer. Alleen Toep assen bij het kopiëren van gegevens uit een on-premises HTTP-bron. | Geef het `embeddedCertData` of de `certThumbprint`op. |
+| certThumbprint | De vinger afdruk van het certificaat dat is geïnstalleerd op het certificaat archief van uw gateway computer. Alleen Toep assen bij het kopiëren van gegevens uit een on-premises HTTP-bron. | Geef het `embeddedCertData` of de `certThumbprint`op. |
 | wachtwoord | Het wacht woord dat is gekoppeld aan het certificaat. | Nee |
 
 Als u `certThumbprint` gebruikt voor verificatie en het certificaat is geïnstalleerd in het persoonlijke archief van de lokale computer, moet u de machtiging lezen verlenen aan de Gateway Service:
@@ -4743,7 +4743,7 @@ Als u een web-gegevensset wilt definiëren, stelt u het **type** gegevensset in 
 
 | Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
-| type |Het type van de gegevensset. moet worden ingesteld op **Webtable** |Ja |
+| type |het type van de gegevensset. moet worden ingesteld op **Webtable** |Ja |
 | Pad |Een relatieve URL naar de resource die de tabel bevat. |Nee. Wanneer pad niet is opgegeven, wordt alleen de URL gebruikt die is opgegeven in de definitie van de gekoppelde service. |
 | index |De index van de tabel in de resource. Zie index ophalen van een tabel in een sectie met een HTML-pagina voor de stappen voor het ophalen van index van een tabel in een HTML-pagina. |Ja |
 
@@ -4909,7 +4909,7 @@ De volgende tabel bevat beschrijvingen voor de eigenschappen die worden gebruikt
 | --- | --- | --- |
 | type |De eigenschap type moet worden ingesteld op **AzureBatch**. |Ja |
 | accountName |De naam van het Azure Batch-account. |Ja |
-| accessKey |De toegangs sleutel voor het Azure Batch-account. |Ja |
+| AccessKey |De toegangs sleutel voor het Azure Batch-account. |Ja |
 | poolName |De naam van de pool van virtuele machines. |Ja |
 | linkedServiceName |De naam van de Azure Storage gekoppelde service die is gekoppeld aan deze Azure Batch gekoppelde service. Deze gekoppelde service wordt gebruikt voor tijdelijke bestanden die vereist zijn om de activiteit uit te voeren en de logboeken voor het uitvoeren van activiteiten op te slaan. |Ja |
 
@@ -5552,7 +5552,7 @@ De volgende eigenschappen worden ondersteund in de **typeProperties** -sectie wa
 
 Als u een invoer-gegevensset opgeeft, moet deze beschikbaar zijn (in de status gereed) voor het uitvoeren van de opgeslagen procedure activiteit. De invoer gegevensset kan niet worden gebruikt in de opgeslagen procedure als een para meter. Het wordt alleen gebruikt voor het controleren van de afhankelijkheid voordat de opgeslagen procedure activiteit wordt gestart. U moet een uitvoer gegevensset opgeven voor een opgeslagen procedure-activiteit.
 
-Uitvoer gegevensset Hiermee geeft u de **planning** op voor de opgeslagen procedure activiteit (elk uur, wekelijks, maandelijks, enzovoort). De uitvoer gegevensset moet een **gekoppelde service** gebruiken die verwijst naar een Azure SQL database of een Azure SQL Data Warehouse of een SQL Server-Data Base waarin u de opgeslagen procedure wilt uitvoeren. De uitvoer gegevensset kan worden gebruikt als een manier om het resultaat van de opgeslagen procedure voor verdere verwerking door andere activiteiten (koppelings[activiteiten](data-factory-scheduling-and-execution.md##multiple-activities-in-a-pipeline)) in de pijp lijn door te geven. Data Factory schrijft de uitvoer van een opgeslagen procedure echter niet automatisch naar deze gegevensset. Het is de opgeslagen procedure die naar een SQL-tabel schrijft waarnaar de uitvoer-gegevensset verwijst. In sommige gevallen kan de uitvoer gegevensset een dummy- **gegevensset**zijn, die alleen wordt gebruikt om de planning op te geven voor het uitvoeren van de opgeslagen procedure activiteit.
+Uitvoer gegevensset Hiermee geeft u de **planning** op voor de opgeslagen procedure activiteit (elk uur, wekelijks, maandelijks, enzovoort). De uitvoer gegevensset moet een **gekoppelde service** gebruiken die verwijst naar een Azure SQL database of een Azure SQL Data Warehouse of een SQL Server-Data Base waarin u de opgeslagen procedure wilt uitvoeren. De uitvoer gegevensset kan worden gebruikt als een manier om het resultaat van de opgeslagen procedure voor verdere verwerking door andere activiteiten (koppelings[activiteiten](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) in de pijp lijn door te geven. Data Factory schrijft de uitvoer van een opgeslagen procedure echter niet automatisch naar deze gegevensset. Het is de opgeslagen procedure die naar een SQL-tabel schrijft waarnaar de uitvoer-gegevensset verwijst. In sommige gevallen kan de uitvoer gegevensset een dummy- **gegevensset**zijn, die alleen wordt gebruikt om de planning op te geven voor het uitvoeren van de opgeslagen procedure activiteit.
 
 ### <a name="json-example"></a>JSON-voor beeld
 

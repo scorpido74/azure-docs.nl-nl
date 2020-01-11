@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: overview
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 87bcea5e9ada4f095896c1ebe4cbe1928f158eb0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: d05ce8f94862d737b3514bd1116e431bcba5dedd
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895418"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891700"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Wat is Azure Spring Cloud?
 
@@ -19,7 +19,7 @@ Met Azure lente-Cloud kunt u eenvoudig micro service-toepassingen op basis van e
 
 Als onderdeel van het Azure-ecosysteem kan Azure lente-Cloud eenvoudig worden gebonden aan andere Azure-Services, waaronder opslag, data bases, bewaking en meer.
 
-Azure lente Cloud wordt momenteel aangeboden als een open bare preview. Met open bare preview-aanbiedingen kunnen klanten experimenteren met nieuwe functies vóór hun officiële release.  Open bare preview-functies en-services zijn niet bedoeld voor gebruik in productie omgevingen.  Raadpleeg voor meer informatie over ondersteuning tijdens previews onze [Veelgestelde vragen](https://azure.microsoft.com/support/faq/) of bestand a [ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) voor meer informatie.
+Azure lente Cloud wordt momenteel aangeboden als een open bare preview. Met open bare preview-aanbiedingen kunnen klanten experimenteren met nieuwe functies vóór hun officiële release.  Open bare preview-functies en-services zijn niet bedoeld voor gebruik in productie omgevingen.  Raadpleeg voor meer informatie over ondersteuning tijdens previews onze [Veelgestelde vragen](https://azure.microsoft.com/support/faq/) of bestand a [ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) voor meer informatie.
 
 Om aan de slag te gaan, voltooit u de lente-Cloud Snelstartgids met behulp van de [Azure cli](spring-cloud-quickstart-launch-app-cli.md), het [Azure Portal](spring-cloud-quickstart-launch-app-portal.md)of [maven](spring-cloud-quickstart-launch-app-maven.md).
 

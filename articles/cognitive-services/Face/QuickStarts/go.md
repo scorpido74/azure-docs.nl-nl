@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ed5df90ba4e88e2b6bd20ce2e559c89a552bbe0a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3ebcd7dfb7b1138f52663d7c919d4ce4d8bd088a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977825"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890543"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Snelstart: Gezichten in een afbeelding detecteren met de REST API en Go
 
@@ -311,7 +311,7 @@ Er wordt een JSON-tekenreeks van gedetecteerde gezichtsgegevens weergegeven op d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze quickstart hebt u een Ruby-script geschreven waarmee de Azure Face-API wordt aangeroepen om gezichten in een afbeelding te detecteren en de gezichtskenmerken te retourneren. Lees het naslagmateriaal bij de Face-API voor meer informatie.
+In deze Quick Start hebt u een go-console toepassing geschreven die de Azure-Face-API aanroept om gezichten te detecteren in een installatie kopie en de kenmerken ervan te retour neren. Lees het naslagmateriaal bij de Face-API voor meer informatie.
 
 > [!div class="nextstepaction"]
 > [Face-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

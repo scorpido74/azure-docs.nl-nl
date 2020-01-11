@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: aebd7b58a2107ac109a03d3ce12f27d65ba0ab90
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f34c5d5069a158579864320d0fbf965de8936d9c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769809"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896114"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Toegang tot meerdere protocollen op Azure Data Lake Storage
 
@@ -52,12 +52,12 @@ De items die in deze tabel worden weer gegeven, worden na verloop van tijd gewij
 |BLOB Sdk's |Algemeen beschikbaar|
 |[Power shell (BLOB)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Algemeen beschikbaar|
 |[CLI (BLOB)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Algemeen beschikbaar|
+|[Meldingen via Azure Event Grid](data-lake-storage-events.md)|Algemeen beschikbaar|
 |BLOB-Sdk's met bestandssysteem semantiek ([.net](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-dotnet) &vert; [python](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-python) &vert; [Java](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-java))|Preview|
 |[Power shell met bestandssysteem semantiek](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-powershell)|Preview|
 |[CLI met bestandssysteem semantiek](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-cli)|Preview|
 |[Diagnostische logboeken](../common/storage-analytics-logging.md)| Preview|
 |[Levenscyclus beheer beleid](storage-lifecycle-management-concepts.md)| Preview|
-|[Meldingen via Azure Event Grid](data-lake-storage-events.md)|Preview|
 |[Archieftoegangslaag](storage-blob-storage-tiers.md)| Preview|
 |[blobfuse](storage-how-to-mount-container-linux.md)|Nog niet ondersteund|
 |[Onveranderbare opslag](storage-blob-immutable-storage.md)|Nog niet ondersteund|

@@ -7,18 +7,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 09/11/2019
-ms.openlocfilehash: 9f7d3fb5363a5eb2d79287bc9a9398bfdcbc4aec
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: ae5cfcfcd394aab644b35ac66aafa213dc49dd42
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087826"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895386"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Problemen met Apache Ambari heartbeat in azure HDInsight
 
 In dit artikel worden de stappen beschreven voor het oplossen van problemen en mogelijke oplossingen voor problemen bij het werken met Azure HDInsight-clusters.
 
-## <a name="scenario-high-cpu-utilization"></a>Scenario: Hoog CPU-gebruik
+## <a name="scenario-high-cpu-utilization"></a>Scenario: hoog CPU-gebruik
 
 ### <a name="issue"></a>Probleem
 
@@ -28,7 +28,7 @@ De Ambari-agent heeft een hoog CPU-gebruik, wat leidt tot waarschuwingen van de 
 
 Vanwege verschillende ambari-agent fouten kan uw ambari-agent in zeldzame gevallen een hoog CPU-gebruik hebben (dicht tot 100).
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 1. Proces-ID (PID) van ambari-agent identificeren:
 
@@ -57,7 +57,7 @@ Vanwege verschillende ambari-agent fouten kan uw ambari-agent in zeldzame gevall
 
 ---
 
-## <a name="scenario-ambari-agent-not-started"></a>Scenario: De Ambari-agent is niet gestart
+## <a name="scenario-ambari-agent-not-started"></a>Scenario: Ambari-agent is niet gestart
 
 ### <a name="issue"></a>Probleem
 
@@ -67,7 +67,7 @@ De Ambari-agent is niet gestart, waardoor er waarschuwingen van de Ambari-gebrui
 
 De waarschuwingen worden veroorzaakt door de Ambari-agent die niet wordt uitgevoerd.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 1. Status van ambari-agent bevestigen:
 
@@ -81,7 +81,7 @@ De waarschuwingen worden veroorzaakt door de Ambari-agent die niet wordt uitgevo
     ps -ef | grep failover
     ```
 
-    Als failover controller-Services niet worden uitgevoerd, is er waarschijnlijk een probleem met het voor komen van hdinsight-agent om failover controller te starten. Controleer het logboek van hdinsight- `/var/log/hdinsight-agent/hdinsight-agent.out` agent van het bestand.
+    Als failover controller-Services niet worden uitgevoerd, is er waarschijnlijk een probleem met het voor komen van hdinsight-agent om failover controller te starten. Controleer het logboek van hdinsight-agent van `/var/log/hdinsight-agent/hdinsight-agent.out` bestand.
 
 ---
 
@@ -91,6 +91,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

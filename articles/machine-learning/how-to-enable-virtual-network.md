@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 11/13/2019
-ms.openlocfilehash: 548b74dbaf36fa0a0b5f999d1de61a0c05241c61
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 01/03/2020
+ms.openlocfilehash: 333d7faacfb5965e74eae69f07ff974a8fff8f25
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690824"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894010"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Azure ML-experimenten beveiligen en taken in een Azure-Virtual Network afzorgen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,7 +44,7 @@ Dit artikel bevat ook gedetailleerde informatie over *Geavanceerde beveiligings 
 
 ## <a name="use-a-storage-account-for-your-workspace"></a>Een opslag account voor uw werk ruimte gebruiken
 
-Ga als volgt te werk om een Azure-opslag account te gebruiken voor de werkruimte in een virtueel netwerk:
+Als u een Azure-opslag account wilt gebruiken voor de werk ruimte in een virtueel netwerk, gebruikt u de volgende stappen:
 
 1. Maak een reken resource (bijvoorbeeld een Machine Learning Reken instantie of cluster) achter een virtueel netwerk of koppel een reken resource aan de werk ruimte (bijvoorbeeld een HDInsight-cluster, een virtuele machine of een Azure Kubernetes service-cluster). De reken resource kan zijn voor experimenten of model implementaties.
 
@@ -58,7 +58,7 @@ Ga als volgt te werk om een Azure-opslag account te gebruiken voor de werkruimte
 
    ![Het gebied firewalls en virtuele netwerken op de pagina Azure Storage in het Azure Portal](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks.png)
 
-1. Ga als volgt te werk op de pagina __firewalls en virtuele netwerken__ :
+1. Voer op de pagina __firewalls en virtuele netwerken__ de volgende acties uit:
     - Selecteer __Geselecteerde netwerken__.
     - Selecteer onder __virtuele netwerken__de koppeling __bestaande virtuele netwerk toevoegen__ . Met deze actie wordt het virtuele netwerk waar uw Compute zich bevindt, toegevoegd (zie stap 1).
 
@@ -88,7 +88,8 @@ Het sleutel kluis-exemplaar dat is gekoppeld aan de werk ruimte wordt gebruikt d
 * Wacht woorden voor Azure container repository-instanties
 * Verbindings reeksen naar gegevens archieven
 
-Ga als volgt te werk om Azure Machine Learning experimenten te gebruiken met Azure Key Vault achter een virtueel netwerk:
+Als u Azure Machine Learning experimenten wilt gebruiken met Azure Key Vault achter een virtueel netwerk, gebruikt u de volgende stappen:
+
 1. Ga naar de sleutel kluis die is gekoppeld aan de werk ruimte.
 
    [![de sleutel kluis die is gekoppeld aan de Azure Machine Learning-werk ruimte](./media/how-to-enable-virtual-network/workspace-key-vault.png)](./media/how-to-enable-virtual-network/workspace-key-vault.png#lightbox)
@@ -97,7 +98,7 @@ Ga als volgt te werk om Azure Machine Learning experimenten te gebruiken met Azu
 
    ![De sectie firewalls en virtuele netwerken in het deel venster Key Vault](./media/how-to-enable-virtual-network/key-vault-firewalls-and-virtual-networks.png)
 
-1. Ga als volgt te werk op de pagina __firewalls en virtuele netwerken__ :
+1. Voer op de pagina __firewalls en virtuele netwerken__ de volgende acties uit:
     - Selecteer onder __toegang toestaan vanuit__de optie __geselecteerde netwerken__.
     - Selecteer onder __virtuele netwerken__ __bestaande virtuele netwerken toevoegen__ om het virtuele netwerk toe te voegen waarin uw experimenten worden berekend.
     - Onder __vertrouwde micro soft-Services toestaan deze firewall te omzeilen__, selecteert u __Ja__.
@@ -158,11 +159,11 @@ De NSG-regel configuratie in de Azure Portal wordt weer gegeven in de volgende i
 
 ### <a id="limiting-outbound-from-vnet"></a>Uitgaande connectiviteit vanuit het virtuele netwerk beperken
 
-Als u de standaard regels voor uitgaande verbindingen niet wilt gebruiken en u de uitgaande toegang van uw virtuele netwerk wilt beperken, gaat u als volgt te werk:
+Als u de standaard regels voor uitgaande verbindingen niet wilt gebruiken en u de uitgaande toegang van uw virtuele netwerk wilt beperken, gebruikt u de volgende stappen:
 
 - Uitgaande Internet verbinding weigeren met behulp van de NSG-regels.
 
-- Beperk het uitgaande verkeer tot het volgende:
+- Beperk het uitgaande verkeer tot de volgende items:
    - Azure Storage, met behulp van de __servicetag van__ __Storage. Region_Name__ (bijvoorbeeld Storage. oostelijke)
    - Azure Container Registry, met behulp van de __service-tag__ __AzureContainerRegistry. Region_Name__ (bijvoorbeeld AzureContainerRegistry. oostelijkeus)
    - Azure Machine Learning, met behulp van het __service label__ __AzureMachineLearning__
@@ -223,13 +224,13 @@ Zie [een Azure batch groep maken in een virtueel netwerk](../batch/batch-virtual
 
 ### <a name="create-a-compute-cluster-in-a-virtual-network"></a>Een berekenings cluster maken in een virtueel netwerk
 
-Ga als volgt te werk om een Machine Learning Compute cluster te maken:
+Als u een Machine Learning Compute cluster wilt maken, gebruikt u de volgende stappen:
 
 1. Selecteer uw Azure Machine Learning-werk ruimte in de [Azure Portal](https://portal.azure.com).
 
 1. Selecteer in de sectie __toepassing__ __Compute__en selecteer vervolgens __Compute toevoegen__.
 
-1. Ga als volgt te werk om deze Compute-resource te configureren voor het gebruik van een virtueel netwerk:
+1. Voer de volgende acties uit om deze Compute-resource te configureren voor het gebruik van een virtueel netwerk:
 
     a. Voor __netwerk configuratie__selecteert u __Geavanceerd__.
 
@@ -297,14 +298,14 @@ Zie [deploying Azure Databricks in uw Azure Virtual Network](https://docs.azured
 > [!IMPORTANT]
 > Azure Machine Learning ondersteunt alleen virtuele machines waarop Ubuntu wordt uitgevoerd.
 
-Ga als volgt te werk als u een virtuele machine of een Azure HDInsight-cluster in een virtueel netwerk wilt gebruiken in uw werkruimte:
+Als u een virtuele machine of een Azure HDInsight-cluster in een virtueel netwerk met uw werk ruimte wilt gebruiken, gebruikt u de volgende stappen:
 
 1. Maak een virtuele machine of een HDInsight-cluster met behulp van de Azure Portal of de Azure CLI en plaats het cluster in een virtueel Azure-netwerk. Raadpleeg voor meer informatie de volgende artikelen:
     * [Virtuele Azure-netwerken voor Linux-Vm's maken en beheren](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 
     * [HDInsight uitbreiden met behulp van een virtueel Azure-netwerk](https://docs.microsoft.com/azure/hdinsight/hdinsight-extend-hadoop-virtual-network)
 
-1. Als u Azure Machine Learning wilt toestaan te communiceren met de SSH-poort op de virtuele machine of het cluster, configureert u een bron vermelding voor de netwerk beveiligings groep. De SSH-poort is doorgaans poort 22. Ga als volgt te werk om verkeer van deze bron toe te staan:
+1. Als u Azure Machine Learning wilt toestaan te communiceren met de SSH-poort op de virtuele machine of het cluster, configureert u een bron vermelding voor de netwerk beveiligings groep. De SSH-poort is doorgaans poort 22. Voer de volgende acties uit om verkeer van deze bron toe te staan:
 
     * Selecteer in de vervolg keuzelijst __bron__ de optie __service label__.
 
@@ -332,7 +333,7 @@ Ga als volgt te werk als u een virtuele machine of een Azure HDInsight-cluster i
 
 ## <a name="use-azure-kubernetes-service-aks"></a>Azure Kubernetes service (AKS) gebruiken
 
-Ga als volgt te werk om AKS in een virtueel netwerk toe te voegen aan uw werkruimte:
+Voer de volgende stappen uit om AKS toe te voegen aan uw werk ruimte in een virtueel netwerk:
 
 > [!IMPORTANT]
 > Voordat u aan de volgende procedure begint, volgt u de vereisten in het onderdeel [geavanceerde netwerken configureren in azure Kubernetes service (AKS)](https://docs.microsoft.com/azure/aks/configure-advanced-networking#prerequisites) hoe de IP-adres sering voor uw cluster kan worden gepland.
@@ -347,7 +348,7 @@ Ga als volgt te werk om AKS in een virtueel netwerk toe te voegen aan uw werkrui
 
 1. Selecteer in de sectie __toepassing__ __Compute__en selecteer vervolgens __Compute toevoegen__.
 
-1. Ga als volgt te werk om deze Compute-resource te configureren voor het gebruik van een virtueel netwerk:
+1. Voer de volgende acties uit om deze Compute-resource te configureren voor het gebruik van een virtueel netwerk:
 
     - Voor __netwerk configuratie__selecteert u __Geavanceerd__.
 
@@ -393,6 +394,82 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 Wanneer het maken van het proces is voltooid, kunt u het decoderen of model leren uitvoeren op een AKS-cluster achter een virtueel netwerk. Zie [implementeren op AKS](how-to-deploy-and-where.md)voor meer informatie.
 
+### <a name="use-private-ips-with-azure-kubernetes-service"></a>Privé IPs gebruiken met de Azure Kubernetes-service
+
+Standaard wordt een openbaar IP-adres toegewezen aan AKS-implementaties. Wanneer u AKS in een virtueel netwerk gebruikt, kunt u in plaats daarvan een privé-IP-adres gebruiken. Privé-IP-adressen zijn alleen toegankelijk vanuit het virtuele netwerk of de gekoppelde netwerken.
+
+Een privé-IP-adres wordt ingeschakeld door AKS te configureren voor gebruik van een _interne Load Balancer_. 
+
+> [!IMPORTANT]
+> U kunt geen persoonlijk IP-adres inschakelen bij het maken van het Azure Kubernetes-service cluster. Het moet worden ingeschakeld als een update van een bestaand cluster.
+
+Het volgende code fragment laat zien hoe u **een nieuw AKS-cluster maakt**en het vervolgens bijwerkt voor gebruik van een privé-IP/interne Load Balancer:
+
+```python
+import azureml.core
+from azureml.core.compute.aks import AksUpdateConfiguration
+from azureml.core.compute import AksCompute, ComputeTarget
+
+# Verify that cluster does not exist already
+try:
+    aks_target = AksCompute(workspace=ws, name=aks_cluster_name)
+    print("Found existing aks cluster")
+
+except:
+    print("Creating new aks cluster")
+
+    # Create AKS configuration
+    prov_config = AksCompute.provisioning_configuration(location = "eastus2")
+    # Set info for existing virtual network to create the cluster in
+    prov_config.vnet_resourcegroup_name = "myvnetresourcegroup"
+    prov_config.vnet_name = "myvnetname"
+    prov_config.service_cidr = "10.0.0.0/16"
+    prov_config.dns_service_ip = "10.0.0.10"
+    prov_config.subnet_name = "default"
+    prov_config.docker_bridge_cidr = "172.17.0.1/16"
+
+    # Create compute target
+    aks_target = ComputeTarget.create(workspace = ws, name = “myaks”, provisioning_configuration = prov_config)
+    # Wait for the operation to complete
+    aks_target.wait_for_completion(show_output = True)
+    
+    # Update AKS configuration to use an internal load balancer
+    update_config = AksUpdateConfiguration(None, "InternalLoadBalancer", "default")
+    aks_target.update(update_config)
+    # Wait for the operation to complete
+    aks_target.wait_for_completion(show_output = True)
+```
+
+__Azure-CLI__
+
+```azurecli-interactive
+az rest --method put --uri https://management.azure.com"/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>?api-version=2018-11-19 --body @body.json
+```
+
+De inhoud van het `body.json` bestand waarnaar wordt verwezen door de opdracht, is vergelijkbaar met het volgende JSON-document:
+
+```json
+{ 
+    "location": “<region>”, 
+    "properties": { 
+        "resourceId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>", 
+        "computeType": "AKS", 
+        "provisioningState": "Succeeded", 
+        "properties": { 
+            "loadBalancerType": "InternalLoadBalancer", 
+            "agentCount": <agent-count>, 
+            "agentVmSize": "vm-size", 
+            "clusterFqdn": "<cluster-fqdn>" 
+        } 
+    } 
+} 
+```
+
+> [!NOTE]
+> Op dit moment kunt u de load balancer niet configureren wanneer u een __toevoeg__ bewerking uitvoert op een bestaand cluster. U moet eerst het cluster koppelen en vervolgens een update bewerking uitvoeren om de load balancer te wijzigen.
+
+Zie voor meer informatie over het gebruik van de interne load balancer met AKS [interne Load Balancer gebruiken met de Azure Kubernetes-service](/azure/aks/internal-lb).
+
 ## <a name="use-azure-firewall"></a>Azure Firewall gebruiken
 
 Wanneer u Azure Firewall gebruikt, moet u een netwerk regel configureren om verkeer toe te staan van en naar de volgende adressen:
@@ -414,4 +491,3 @@ Zie [Azure firewall implementeren en configureren](/azure/firewall/tutorial-fire
 * [Trainings omgevingen instellen](how-to-set-up-training-targets.md)
 * [Waar u modellen implementeren](how-to-deploy-and-where.md)
 * [Modellen veilig implementeren met SSL](how-to-secure-web-service.md)
-

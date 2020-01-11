@@ -4,12 +4,12 @@ description: De Azure Container Instances-service is de snelste en eenvoudigste 
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 040f246fa687dfe3ca56877c11c140ddb40247a4
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c871c09e29b64c4f0dcd107361154efdce306481
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552318"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888030"
 ---
 # <a name="what-is-azure-container-instances"></a>Wat is Azure Container Instances?
 
@@ -54,7 +54,7 @@ Sommige functies zijn momenteel beperkt tot Linux-containers:
 * Meerdere containers per containergroep
 * Volume koppeling ([Azure files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [geheim](container-instances-volume-secret.md))
 * [Metrische gegevens over resource gebruik](container-instances-monitor.md) met Azure monitor
-* [Virtuele netwerk implementatie](container-instances-vnet.md) (preview-versie)
+* [Implementatie van virtueel netwerk](container-instances-vnet.md)
 * [GPU-bronnen](container-instances-gpu.md) (preview-versie)
 
 Gebruik installatie kopieën op basis van algemene [Windows-basis installatie kopieën](container-instances-faq.md#what-windows-base-os-images-are-supported)voor implementaties van Windows-containers.
@@ -66,12 +66,9 @@ Gebruik installatie kopieën op basis van algemene [Windows-basis installatie ko
 
 Azure Container Instances biedt ondersteuning voor planning van [meerdere containergroepen](container-instances-container-groups.md) die een hostmachine, lokaal netwerk, opslag en levenscyclus delen. Hierdoor kunt u uw hoofdtoepassingscontainer combineren met andere ondersteunende rolcontainers, zoals het in een logboek vastleggen van sidecars.
 
-## <a name="virtual-network-deployment-preview"></a>Virtueel netwerk implementeren (preview)
+## <a name="virtual-network-deployment"></a>Implementatie van virtueel netwerk
 
-Met deze functie van Azure Container Instances, momenteel in preview, kunt u [containerinstanties in Azure Virtual Network implementeren](container-instances-vnet.md). Als u containerinstanties in een subnet binnen uw virtuele netwerk implementeert, kunnen ze veilig communiceren met andere resources in het virtuele netwerk, met inbegrip van on-premises resources (via [VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [ ExpressRoute](../expressroute/expressroute-introduction.md)).
-
-> [!IMPORTANT]
-> Van bepaalde functies van Azure Container Instances is een previewversie beschikbaar waarvoor een aantal [beperkingen gelden](container-instances-vnet.md#preview-limitations). Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
+Momenteel beschikbaar voor productie werkbelastingen in een subset van Azure-regio's kunt u met deze functie van Azure Container Instances [container instanties implementeren in een virtueel Azure-netwerk](container-instances-vnet.md). Als u containerinstanties in een subnet binnen uw virtuele netwerk implementeert, kunnen ze veilig communiceren met andere resources in het virtuele netwerk, met inbegrip van on-premises resources (via [VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [ ExpressRoute](../expressroute/expressroute-introduction.md)).
 
 ## <a name="next-steps"></a>Volgende stappen
 

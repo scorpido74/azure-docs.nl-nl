@@ -3,12 +3,12 @@ title: De kosten van het verbruiks abonnement in Azure Functions schatten
 description: Meer informatie over hoe u de kosten die u kunt doen bij het uitvoeren van uw functie-app in een verbruiks abonnement in azure, beter kunt schatten.
 ms.date: 9/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 38a3435ddbc6e7cce5d18c99e227d405fdc2e7dd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 6a68069ab9af54c1c8cfaf6c20727181e48ba1ec
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613055"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890320"
 ---
 # <a name="estimating-consumption-plan-costs"></a>Kosten voor verbruiks plan schatten
 
@@ -22,7 +22,7 @@ Er zijn momenteel drie typen hosting plannen voor een app die wordt uitgevoerd i
 
 U hebt het abonnement gekozen dat het beste past bij de prestaties en kosten vereisten van uw functie. Zie [Azure functions schalen en hosten](functions-scale.md)voor meer informatie.
 
-Dit artikel behandelt alleen het verbruiks abonnement, omdat dit plan de variabele kosten als resultaat heeft. 
+Dit artikel behandelt alleen het verbruiks abonnement, omdat dit plan de variabele kosten als resultaat heeft. In dit artikel vervangt u het artikel [Veelgestelde vragen over het gebruik van kosten voor het verbruiks plan](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ) .
 
 Durable Functions kan ook worden uitgevoerd in een verbruiks abonnement. Zie [Durable functions facturering](./durable/durable-functions-billing.md)voor meer informatie over de kosten overwegingen bij het gebruik van Durable functions.
 

@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/13/2019
-ms.openlocfilehash: b988d500ed2a201bb31f0d3a7cbeb7df00af9faf
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/10/2020
+ms.openlocfilehash: 6cf6a8f7de181a81d60028e33ba2631815c8ca04
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860891"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895369"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Zelf studie: uw bouw-en bewakings voorwaarden inrichten met Azure Digital Apparaatdubbels preview
 
@@ -38,7 +38,7 @@ In deze zelfstudie wordt ervan uitgegaan dat u de [Azure Digital Twins-installat
 - [.NET Core SDK-versie 2.1.403 of hoger](https://www.microsoft.com/net/download) op een ontwikkelcomputer om het voorbeeld te bouwen en uit te voeren. Voer `dotnet --version` uit om te controleren of de juiste versie is geïnstalleerd. 
 - [Visual Studio Code](https://code.visualstudio.com/) om de voorbeeldcode mee te verkennen. 
 
-> [!TIP]
+>[!TIP]
 > Gebruik een unieke Digital Apparaatdubbels-exemplaar naam als u een nieuw exemplaar inricht.
 
 ## <a name="define-conditions-to-monitor"></a>Werkomstandigheden definiëren die gecontroleerd moeten worden
@@ -74,7 +74,7 @@ Let ook op de sectie met de naam **roleassignments**. Hiermee wordt de rol van S
 
    Wijzig het JavaScript-bestand zodat op temperatuur en andere omstandigheden kan worden gecontroleerd. Voeg de volgende regels code toe om te zoeken naar omstandigheden waarbij geen beweging wordt gedetecteerd in de kamer, het koolstofdioxideniveau lager is dan 1000 ppm en de temperatuur lager is dan 78 graden Fahrenheit.
 
-   > [!NOTE]
+   >[!NOTE]
    > In deze sectie wordt het bestand *src\actions\userDefinedFunctions\availability.js* gewijzigd, zodat u tot in detail kunt zien hoe u een door de gebruiker gedefinieerde functie kunt schrijven. U kunt er echter ook voor kiezen om het bestand [src\actions\userDefinedFunctions\availabilityForTutorial.js](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) rechtstreeks in uw installatie te gebruiken. Dit bestand bevat alle wijzigingen die u voor deze zelfstudie nodig hebt. Als u dit bestand gebruikt, moet u er wel voor zorgen dat u de juiste bestandsnaam gebruikt voor de **script**-sleutel in [src\actions\provisionSample.yaml](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml).
 
     a. Boven in het bestand moet u onder de opmerking `// Add your sensor type here` de volgende regels voor de temperatuur toevoegen:
@@ -178,7 +178,7 @@ Let ook op de sectie met de naam **roleassignments**. Hiermee wordt de rol van S
     dotnet run ProvisionSample
     ```
 
-   > [!IMPORTANT]
+   >[!IMPORTANT]
    > Om te voorkomen dat onbevoegden toegang hebben tot uw beheer-API van Digital Twins, wordt u door de toepassing **occupancy-quickstart** gedwongen u aan te melden met uw Azure-accountreferenties. Uw referenties blijven een korte periode bewaard, zodat u zich niet steeds hoeft aan te melden als u deze wilt uitvoeren. De eerste keer dat dit programma wordt uitgevoerd, en wanneer uw opgeslagen referenties daarna verlopen, wordt u omgeleid naar een aanmeldingspagina en ontvangt u een sessiespecifieke code die u op die pagina moet invoeren. Volg de aanwijzingen om u aan te melden met uw Azure-account.
 
 1. Nadat uw account is geverifieerd, begint de toepassing met het maken van een ruimtelijke voorbeeld grafiek zoals geconfigureerd in *provisionSample. yaml*. Wacht tot het inrichtingsproces is voltooid. Dit duurt enkele minuten. Vervolgens bekijkt u de berichten in het opdrachtvenster en u kunt zien hoe uw ruimtelijke grafiek wordt gemaakt. Observeer hoe een IoT-hub wordt gemaakt op het hoofdknooppunt of de `Venue`.
@@ -187,7 +187,7 @@ Let ook op de sectie met de naam **roleassignments**. Hiermee wordt de rol van S
 
     [voor beeld van ![inrichten](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
-> [!TIP]
+>[!TIP]
 > Als er tijdens het inrichtingsproces een foutbericht wordt weergegeven dat lijkt op 'De I/O-bewerking is afgebroken vanwege een afgesloten thread of een toepassingsaanvraag', moet u de opdracht opnieuw uitvoeren. Dit kan gebeuren als er een time-out van de HTTP-client heeft plaatsgevonden vanwege een netwerkprobleem.
 
 ## <a name="simulate-sensor-data"></a>Sensorgegevens simuleren
@@ -229,7 +229,7 @@ In deze sectie gebruikt u het project met de naam *device-connectivity* in het v
     dotnet run
     ```
 
-   > [!NOTE]
+   >[!NOTE]
    > Omdat het simulatievoorbeeld niet rechtstreeks met uw instantie van Digital Twins communiceert, hoeft u zich niet te verifiëren.
 
 ## <a name="get-results-of-the-user-defined-function"></a>Resultaten ophalen van een door de gebruiker gedefinieerde functie
@@ -246,7 +246,7 @@ De door de gebruiker gedefinieerde functie wordt telkens uitgevoerd als uw insta
 
 In het uitvoervenster ziet u hoe de door de gebruiker gedefinieerde functie wordt uitgevoerd en gebeurtenissen van de apparaatsimulatie onderschept. 
 
-   [![uitvoer voor de UDF](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
+   [![uitvoer voor de UDF](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png)](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png#lightbox)
 
 Als er aan de gecontroleerd voorwaarde wordt voldaan, stelt de door de gebruiker gedefinieerde functie de waarde van de ruimte in met het betreffende bericht, zoals we [eerder](#create-a-user-defined-function) hebben gezien. De functie `GetAvailableAndFreshSpaces` drukt het bericht op de console af.
 
@@ -256,7 +256,7 @@ Als u Azure Digital Twins niet verder wilt verkennen, kunt u de resources die in
 
 1. Klik in het linkermenu in de [Azure-portal](https://portal.azure.com) op **Alle resources**, selecteer de Digital Twins-resourcegroep en selecteer **Verwijderen**.
 
-    > [!TIP]
+    >[!TIP]
     > Als u problemen hebt bij het verwijderen van uw Digital Twins-exemplaar, is er een service-update met de oplossing hiervoor beschikbaar. Probeer opnieuw of u het exemplaar kunt verwijderen.
 
 2. Verwijder zo nodig de voorbeeldtoepassingen van uw werkcomputer.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/12/2018
 ms.author: genli
-ms.openlocfilehash: 666868d723b5e040b69762cdb39f472f2f8822c9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: bc637976632551eb1afce1894714fc96baabfe03
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057925"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894220"
 ---
 #  <a name="cannot-remote-desktop-to-a-vm-because-the-network-interface-is-disabled"></a>Kan geen extern bureaublad met een virtuele machine omdat de netwerkinterface is uitgeschakeld
 
@@ -34,7 +34,7 @@ U kunt een RDP-verbinding of een ander type verbinding met een andere poort aanb
 
 Voordat u deze stappen hebt uitgevoerd, maakt u een momentopname van de besturingssysteemschijf van de betrokken virtuele machine als een back-up. Zie voor meer informatie, [momentopname maken van een schijf](../windows/snapshot-copy-managed-disk.md).
 
-Seriële besturingselement gebruiken om in te schakelen de interface voor de virtuele machine, of [opnieuw instellen van de netwerkinterface](##reset-network-interface) voor de virtuele machine.
+Seriële besturingselement gebruiken om in te schakelen de interface voor de virtuele machine, of [opnieuw instellen van de netwerkinterface](#reset-network-interface) voor de virtuele machine.
 
 ### <a name="use-serial-control"></a>Seriële besturingselement gebruiken
 

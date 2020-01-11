@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3c9e10df9f2be2a07bc7b7af0e01905d5b278d35
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: c2e2394bbcee5294bfb752a0af2969457ffff0ee
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924870"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894216"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Gegevens verplaatsen van Amazon Redshift met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-amazon-redshift-connector.md)
+> * [Versie 1:](data-factory-amazon-redshift-connector.md)
 > * [Versie 2 (huidige versie)](../connector-amazon-redshift.md)
 
 > [!NOTE]
@@ -146,7 +146,7 @@ Het voor beeld heeft de volgende data factory entiteiten:
 * Een gekoppelde service van het type [opslag](data-factory-azure-blob-connector.md#linked-service-properties).
 * Een invoer- [gegevensset](data-factory-create-datasets.md) van het type [RelationalTable](#dataset-properties)
 * Een uitvoer [gegevensset](data-factory-create-datasets.md) van het type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
-* Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van de eigenschappen [RelationalSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md##copy-activity-properties)
+* Een [pijp lijn](data-factory-create-pipelines.md) met een Kopieer activiteit die gebruikmaakt van de eigenschappen [RelationalSource](#copy-activity-properties) en [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties)
 
 In het voor beeld worden gegevens gekopieerd van een query resultaat in Amazon Redshift naar een Azure-Blob per uur. De JSON-eigenschappen die in het voor beeld worden gebruikt, worden beschreven in de secties die volgen op de entiteits definities.
 

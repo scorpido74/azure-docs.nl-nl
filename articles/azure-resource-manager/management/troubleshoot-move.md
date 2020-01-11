@@ -3,12 +3,12 @@ title: Fouten bij verplaatsen oplossen
 description: Azure Resource Manager gebruiken voor resources verplaatsen naar een nieuwe resourcegroep of abonnement.
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 422ecb92e264d7e728282bbe8ee491a642cf013f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5a65f7daa0f5e3b1c8c6ddfdbecc0ff7d53e5afd
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75478342"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891264"
 ---
 # <a name="troubleshoot-moving-azure-resources-to-new-resource-group-or-subscription"></a>Problemen oplossen met het verplaatsen van Azure-resources naar een nieuwe resource groep of een nieuw abonnement
 
@@ -21,7 +21,7 @@ Als u een upgrade wilt uitvoeren van uw Azure-abonnement (zoals overschakelen va
 * Zie het upgraden van een gratis proefversie [uw gratis proefversie of Azure voor Microsoft Imagine-abonnement upgraden naar betalen per gebruik](../../billing/billing-upgrade-azure-subscription.md).
 * Als u wilt wijzigen in een betalen per gebruik-account, Zie [wijzigen van uw Azure-betalen per gebruik-abonnement naar een andere aanbieding](../../billing/billing-how-to-switch-azure-offer.md).
 
-Als u het abonnement niet kan omzetten [maken van een Azure-ondersteuningsaanvraag](../../azure-supportability/how-to-create-azure-support-request.md). Selecteer **Abonnementsbeheer** voor het probleemtype.
+Als u het abonnement niet kan omzetten [maken van een Azure-ondersteuningsaanvraag](../../azure-portal/supportability/how-to-create-azure-support-request.md). Selecteer **Abonnementsbeheer** voor het probleemtype.
 
 ## <a name="service-limitations"></a>Service beperkingen
 
@@ -44,7 +44,7 @@ Wanneer er een fout bericht wordt weer gegeven dat aangeeft dat een resource nie
 
 Als de bron-of doel resource groep een virtueel netwerk bevat, worden de statussen van alle afhankelijke resources voor het virtuele netwerk gecontroleerd tijdens de verplaatsing. De controle bevat de resources rechtstreeks en indirect afhankelijk van het virtuele netwerk. Als een van deze resources een mislukte status heeft, wordt de verplaatsing geblokkeerd. Als bijvoorbeeld een virtuele machine die gebruikmaakt van het virtuele netwerk is mislukt, wordt de verplaatsing geblokkeerd. De verplaatsing wordt geblokkeerd, zelfs wanneer de virtuele machine niet een van de resources is die worden verplaatst en die zich niet in een van de resource groepen bevindt voor de verplaatsing.
 
-Wanneer deze fout wordt weer gegeven, hebt u twee opties. Verplaats uw resources naar een resource groep die geen virtueel netwerk heeft of [Neem contact op met de ondersteuning](../../azure-supportability/how-to-create-azure-support-request.md).
+Wanneer deze fout wordt weer gegeven, hebt u twee opties. Verplaats uw resources naar een resource groep die geen virtueel netwerk heeft of [Neem contact op met de ondersteuning](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

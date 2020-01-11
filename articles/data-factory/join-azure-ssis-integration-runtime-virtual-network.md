@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: b068eeeada842f2439f6135bfa8567a6c9709d12
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 58bfc35776e83df7754379a12ad4b7afca73e32c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862812"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892349"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Een Azure-SSIS-integratie-runtime toevoegen aan een virtueel netwerk
 
@@ -57,7 +57,7 @@ Onthoud de volgende belang rijke punten wanneer u uw Azure-SSIS IR lid maakt van
 
 - Als er al een klassiek virtueel netwerk is verbonden met uw on-premises netwerk op een andere locatie dan uw Azure-SSIS IR, kunt u een [Azure Resource Manager virtueel netwerk](../virtual-network/quick-create-portal.md#create-a-virtual-network) maken om aan uw Azure-SSIS IR deel te nemen. Configureer vervolgens een [klassieke-naar-Azure Resource Manager virtuele netwerk](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) verbinding. 
  
-- Als er al een Azure Resource Manager virtueel netwerk is verbonden met uw on-premises netwerk op een andere locatie dan uw Azure-SSIS IR, kunt u eerst een [Azure Resource Manager virtueel netwerk](../virtual-network/quick-create-portal.md##create-a-virtual-network) maken om uw Azure-SSIS IR te koppelen. Configureer vervolgens een Azure Resource Manager-to-Azure Resource Manager virtuele netwerk verbinding. 
+- Als er al een Azure Resource Manager virtueel netwerk is verbonden met uw on-premises netwerk op een andere locatie dan uw Azure-SSIS IR, kunt u eerst een [Azure Resource Manager virtueel netwerk](../virtual-network/quick-create-portal.md#create-a-virtual-network) maken om uw Azure-SSIS IR te koppelen. Configureer vervolgens een Azure Resource Manager-to-Azure Resource Manager virtuele netwerk verbinding. 
 
 ## <a name="hosting-the-ssis-catalog-in-sql-database"></a>De SSIS-catalogus in SQL Database hosten
 

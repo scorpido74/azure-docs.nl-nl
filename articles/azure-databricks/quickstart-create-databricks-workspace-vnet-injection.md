@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: 404aa1d345bb1e30a0fe55d033d49d7dd8ba5a1b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b7dd11c3a71c46bbc06b205c6b4300337683305a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893412"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889016"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>Quick Start: een Azure Databricks-werk ruimte maken in uw eigen Virtual Network
 
@@ -25,11 +25,11 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 > [!Note]
 > Deze zelf studie kan niet worden uitgevoerd met een **gratis proef abonnement van Azure**.
-> Als u een gratis account hebt, gaat u naar uw profiel en wijzigt u uw abonnement in **betalen per gebruik**. Zie [Gratis Azure-account](https://azure.microsoft.com/free/) voor meer informatie. Vervolgens [verwijdert u de bestedings limiet](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)en [vraagt u een quotum toename](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) aan voor vcpu's in uw regio. Wanneer u uw Azure Databricks-werk ruimte maakt, kunt u de prijs categorie **Trial (Premium-14-dagen gratis dbu's)** selecteren om de werk ruimte gedurende 14 dagen toegang te geven tot gratis premium Azure Databricks dbu's.
+> Als u een gratis account hebt, gaat u naar uw profiel en wijzigt u uw abonnement in **betalen per gebruik**. Zie [Gratis Azure-account](https://azure.microsoft.com/free/) voor meer informatie. Vervolgens [verwijdert u de bestedings limiet](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)en [vraagt u een quotum toename](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) aan voor vcpu's in uw regio. Wanneer u uw Azure Databricks-werk ruimte maakt, kunt u de prijs categorie **Trial (Premium-14-dagen gratis dbu's)** selecteren om de werk ruimte gedurende 14 dagen toegang te geven tot gratis premium Azure Databricks dbu's.
 
 ## <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
 
@@ -41,7 +41,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
     |Instelling|Voorgestelde waarde|Beschrijving|
     |-------|---------------|-----------|
-    |Naam|databricks-Quick Start|Selecteer een naam voor het virtuele netwerk.|
+    |Name|databricks-Quick Start|Selecteer een naam voor het virtuele netwerk.|
     |Adresruimte|10.1.0.0/16|Het adres bereik van het virtuele netwerk in CIDR-notatie. Het CIDR-bereik moet tussen/16 en/24 zijn|
     |Abonnement|\<Uw abonnement\>|Selecteer het Azure-abonnement dat u wilt gebruiken.|
     |Resourcegroep|databricks-Quick Start|Selecteer **nieuwe maken** en voer een nieuwe resource groeps naam in voor uw account.|
@@ -71,7 +71,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
     |Locatie|\<Selecteer de regio die het dichtst bij uw gebruikers is gelegen\>|Kies dezelfde locatie als het virtuele netwerk.|
     |Prijsniveau|Kies tussen Standard of Premium.|Zie de [pagina met prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/)voor meer informatie over prijs categorieën.|
     |Azure Databricks-werk ruimte in uw Virtual Network (VNet) implementeren|Ja|Met deze instelling kunt u een Azure Databricks-werk ruimte in uw virtuele netwerk implementeren.|
-    |Virtueel netwerk|databricks-Quick Start|Selecteer het virtuele netwerk dat u in de vorige sectie hebt gemaakt.|
+    |Virtual Network|databricks-Quick Start|Selecteer het virtuele netwerk dat u in de vorige sectie hebt gemaakt.|
     |Naam van openbaar subnet|openbaar subnet|Gebruik de standaard naam van het open bare subnet.|
     |CIDR-bereik openbaar subnet|10.179.64.0/18|Gebruik een CIDR-bereik tot en met/26.|
     |Naam van particulier subnet|persoonlijk subnet|De standaard naam van het particuliere subnet gebruiken.|

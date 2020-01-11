@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: apimpm
-ms.openlocfilehash: 4a188a8de4f1cbf9d5bc20f7e514e3f5a2c752dc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 26a353251bd85a30ab26c86f3d6b363b0a84e074
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074631"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889532"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management gebruiken met virtuele netwerken
 Met Azure Virtual Networks (VNETs) kunt u uw Azure-resources in een routeerbaar netwerk (buiten internet) plaatsen waarvan u de toegang beheert. Deze netwerken kunnen vervolgens worden verbonden met uw on-premises netwerken met behulp van verschillende VPN-technologieën. Voor meer informatie over Azure Virtual Networks begint u met de informatie hier: [overzicht van azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -45,44 +45,47 @@ Voor het uitvoeren van de stappen die in dit artikel worden beschreven, hebt u h
 
 ### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>VNET-connectiviteit inschakelen met behulp van de Azure Portal
 
-1. Navigeer naar uw APIM-instantie in de [Azure Portal](https://portal.azure.com/).
-2. Selecteer **Virtual Network**.
-3. Configureer het API Management-exemplaar dat in een virtueel netwerk moet worden geïmplementeerd.
+1. Ga naar de [Azure Portal](https://portal.azure.com) om uw API Management-exemplaar te vinden. Zoek en selecteer **API Management Services**.
+
+2. Kies uw API Management-exemplaar.
+
+3. Selecteer **Virtueel netwerk**.
+4. Configureer het API Management-exemplaar dat in een virtueel netwerk moet worden geïmplementeerd.
 
     ![Het menu virtueel netwerk van API Management][api-management-using-vnet-menu]
-4. Selecteer het gewenste toegangs type:
+5. Selecteer het gewenste toegangs type:
 
-   * **Uit**: dit is de standaard instelling. API Management wordt niet geïmplementeerd in een virtueel netwerk.
+    * **Uit**: dit is de standaard instelling. API Management wordt niet geïmplementeerd in een virtueel netwerk.
 
-   * **Extern**: de API Management Gateway en de ontwikkelaars Portal zijn toegankelijk via het open bare Internet via een extern Load Balancer. De gateway kan toegang krijgen tot bronnen in het virtuele netwerk.
+    * **Extern**: de API Management Gateway en de ontwikkelaars Portal zijn toegankelijk via het open bare Internet via een extern Load Balancer. De gateway kan toegang krijgen tot bronnen in het virtuele netwerk.
 
-     ![Openbare peering][api-management-vnet-public]
+        ![Openbare peering][api-management-vnet-public]
 
-   * **Intern**: de API Management Gateway en de ontwikkelaars Portal zijn alleen toegankelijk vanuit het virtuele netwerk via een interne Load Balancer. De gateway kan toegang krijgen tot bronnen in het virtuele netwerk.
+    * **Intern**: de API Management Gateway en de ontwikkelaars Portal zijn alleen toegankelijk vanuit het virtuele netwerk via een interne Load Balancer. De gateway kan toegang krijgen tot bronnen in het virtuele netwerk.
 
-     ![Persoonlijke peering][api-management-vnet-private]
+        ![Persoonlijke peering][api-management-vnet-private]
 
-     Er wordt nu een lijst weer geven met alle regio's waar uw API Management-service is ingericht. Selecteer een VNET en subnet voor elke regio. De lijst is gevuld met zowel de klassieke als de virtuele netwerken van de resource manager die beschikbaar zijn in uw Azure-abonnementen die zijn ingesteld in de regio die u configureert.
+6. Als u **extern** of **intern**hebt gekozen, ziet u een lijst met alle regio's waar uw API Management-service is ingericht. Kies een **locatie**en kies vervolgens het **virtuele netwerk** en het **subnet**. De lijst met virtuele netwerken wordt gevuld met zowel de klassieke als de virtuele netwerk bronnen van de resource manager die beschikbaar zijn in uw Azure-abonnementen die zijn ingesteld in de regio die u configureert.
 
-     > [!IMPORTANT]
-     > Bij het implementeren van een Azure API Management-exemplaar naar een resource manager VNET, moet de service zich in een toegewijd subnet bevinden dat geen andere resources bevat, met uitzonde ring van Azure API Management-exemplaren. Als er wordt geprobeerd een Azure API Management-exemplaar te implementeren in een resource manager VNET-subnet dat andere resources bevat, mislukt de implementatie.
-     >
+    > [!IMPORTANT]
+    > Bij het implementeren van een Azure API Management-exemplaar naar een resource manager VNET, moet de service zich in een toegewijd subnet bevinden dat geen andere resources bevat, met uitzonde ring van Azure API Management-exemplaren. Als er wordt geprobeerd een Azure API Management-exemplaar te implementeren in een resource manager VNET-subnet dat andere resources bevat, mislukt de implementatie.
 
-     ![VPN selecteren][api-management-setup-vpn-select]
+    Selecteer vervolgens **Toepassen**. De pagina **virtueel netwerk** van uw API Management-exemplaar wordt bijgewerkt met de nieuwe opties voor het virtuele netwerk en het subnet.
 
-5. Klik op **Opslaan** in de bovenste navigatie balk.
-6. Klik op **netwerk configuratie Toep assen** in de bovenste navigatie balk.
+    ![VPN selecteren][api-management-setup-vpn-select]
+
+7. Selecteer in de bovenste navigatie balk de optie **Opslaan**en selecteer vervolgens **netwerk configuratie Toep assen**.
 
 > [!NOTE]
 > Het VIP-adres van het API Management exemplaar wordt gewijzigd telkens VNET wordt ingeschakeld of uitgeschakeld.
-> Het VIP-adres wordt ook gewijzigd wanneer API Management wordt verplaatst van **extern** naar **intern** of vice versa
+> Het VIP-adres wordt ook gewijzigd wanneer API Management wordt verplaatst van **extern** naar **intern**of andersom.
 >
 
 > [!IMPORTANT]
 > Als u API Management uit een VNET verwijdert of als u de implementatie wijzigt in, kan het eerder gebruikte VNET vergrendeld blijven tot zes uur. Tijdens deze periode is het niet mogelijk om het VNET te verwijderen of om een nieuwe resource te implementeren. Dit gedrag geldt voor clients die gebruikmaken van API-versie 2018-01-01 en eerder. Clients die gebruikmaken van API-versie 2019-01-01 en hoger, het VNET wordt vrijgegeven zodra de bijbehorende API Management service wordt verwijderd.
 
 ## <a name="enable-vnet-powershell"> </a>VNET-verbinding inschakelen met Power shell-cmdlets
-U kunt de VNET-connectiviteit ook inschakelen met de Power shell-cmdlets
+U kunt de VNET-connectiviteit ook inschakelen met de Power shell-cmdlets.
 
 * **Een API Management-service maken binnen een vnet**: gebruik de cmdlet [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) om een Azure API Management-service in een VNET te maken.
 
@@ -133,7 +136,7 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
 
     | Azure-omgeving | Eindpunten                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Open bare Azure      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com waarbij `East US 2` eastus2.warm.ingestion.msftcloudes.com is</li></ul> |
+    | Openbare Azure-peering      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com waarbij `East US 2` eastus2.warm.ingestion.msftcloudes.com is</li></ul> |
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
     | Azure China       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
@@ -151,7 +154,7 @@ Hieronder vindt u een lijst met veelvoorkomende fouten die zich kunnen voordoen 
     
      | Azure-omgeving | IP-adressen van beheer                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Open bare Azure      | 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 52.159.16.255/32, 40.82.157.167/32, 51.137.136.0/32, 40.81.185.8/32, 40.81.47.216/32, 51.145.56.125/32, 40.81.89.24/32, 52.224.186.99/32, 51.145.179.78/32, 52.140.238.179/32, 40.66.60.111/32, 52.139.80.117/32, 20.46.144.85/32, 191.233.24.179/32, 40.90.185.46/32, 102.133.130.197/32, 52.139.20.34/32, 40.80.232.185/32, 13.71.49.1/32, 13.64.39.16/32, 20.40.160.107/32 20.37.52.67/32, 20.44.33.246/32, 13.86.102.66/32, 20.40.125.155/32, 51.143.127.203/32, 52.253.225.124/32, 52.253.159.160/32, 20.188.77.119/32, 20.44.72.3/32, 52.142.95.35/32, 52.139.152.27/32, 20.39.80.2/32, 51.107.96.8/32, 20.39.99.81/32, 20.37.81.41/32, 51.107.0.91/32, 102.133.0.79/32, 51.116.96.0/32, 51.116.0.0/32 |
+    | Openbare Azure-peering      | 13.84.189.17/32, 13.85.22.63/32, 23.96.224.175/32, 23.101.166.38/32, 52.162.110.80/32, 104.214.19.224/32, 52.159.16.255/32, 40.82.157.167/32, 51.137.136.0/32, 40.81.185.8/32, 40.81.47.216/32, 51.145.56.125/32, 40.81.89.24/32, 52.224.186.99/32, 51.145.179.78/32, 52.140.238.179/32, 40.66.60.111/32, 52.139.80.117/32, 20.46.144.85/32, 191.233.24.179/32, 40.90.185.46/32, 102.133.130.197/32, 52.139.20.34/32, 40.80.232.185/32, 13.71.49.1/32, 13.64.39.16/32, 20.40.160.107/32 20.37.52.67/32, 20.44.33.246/32, 13.86.102.66/32, 20.40.125.155/32, 51.143.127.203/32, 52.253.225.124/32, 52.253.159.160/32, 20.188.77.119/32, 20.44.72.3/32, 52.142.95.35/32, 52.139.152.27/32, 20.39.80.2/32, 51.107.96.8/32, 20.39.99.81/32, 20.37.81.41/32, 51.107.0.91/32, 102.133.0.79/32, 51.116.96.0/32, 51.116.0.0/32 |
     | Azure Government  | 52.127.42.160/32, 52.127.34.192/32 |
     | Azure China       | 139.217.51.16/32, 139.217.171.176/32 |
 

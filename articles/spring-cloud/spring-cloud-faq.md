@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6835132192040b4b943b156fb78ae1547522be0c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 12786f59db9644fd54e812687d27443c250aec05
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229240"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891840"
 ---
 # <a name="azure-spring-cloud-faq"></a>Veelgestelde vragen over Azure veer Cloud
 
@@ -29,7 +29,7 @@ Azure veer Cloud verbetert de diagnostische ervaring van toepassingen voor ontwi
 
 Azure lente-Cloud biedt een service abonnement tijdens de preview-periode.  Een lente-Cloud implementatie bevat 16 vCPU-kernen en 32 gigabytes (GB) aan geheugen.  De bovengrens voor elk micro service-exemplaar binnen een implementatie is 4 vCPU-kernen met 8 GB geheugen.
 
-Resource | Aantal
+Bron | Bedrag
 ------- | -------
 App-exemplaren per lente toepassing | 20
 Totaal aantal app-exemplaren per Azure veer Cloud service-exemplaar | 500
@@ -63,7 +63,7 @@ Tijdens de preview-versie heeft Azure lente Cloud de volgende bekende beperkinge
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Hoe kan ik feedback geven en problemen melden?
 
-Als u problemen ondervindt met Azure lente Cloud, maakt u een [ondersteunings aanvraag voor Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Als u een functie aanvraag wilt verzenden of feedback wilt geven, gaat u naar [Azure feedback](https://feedback.azure.com/forums/34192--general-feedback).
+Als u problemen ondervindt met Azure lente Cloud, maakt u een [ondersteunings aanvraag voor Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Als u een functie aanvraag wilt verzenden of feedback wilt geven, gaat u naar [Azure feedback](https://feedback.azure.com/forums/34192--general-feedback).
 
 ## <a name="development"></a>Ontwikkeling
 

@@ -6,13 +6,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: asgang
-ms.openlocfilehash: b3c459c0eaac98a1cb704b4346153f77ec974188
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: asgangal
+ms.openlocfilehash: efa05f5769bcd174992a7a91a522c5f30ce6e448
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084930"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895015"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Replicatie fouten van Azure naar Azure-VM oplossen
 
@@ -34,7 +34,7 @@ Als er geen grootte is die de configuratie van de bron-VM ondersteunt, wordt het
 
 ### <a name="fix-the-problem"></a>Het probleem wordt opgelost
 
-Neem contact op met de [ondersteuning voor Azure-facturering](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) om uw abonnement in te scha kelen voor het maken van vm's van de vereiste grootten op de doel locatie. Voer de mislukte bewerking opnieuw uit.
+Neem contact op met de [ondersteuning voor Azure-facturering](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) om uw abonnement in te scha kelen voor het maken van vm's van de vereiste grootten op de doel locatie. Voer de mislukte bewerking opnieuw uit.
 
 Als de doel locatie een capaciteits beperking heeft, schakelt u de replicatie hiervan uit. Schakel vervolgens replicatie naar een andere locatie in waar uw abonnement voldoende quota heeft om Vm's van de vereiste grootten te maken.
 
@@ -80,7 +80,7 @@ Omdat SuSE Linux symbolische koppelingen (of *symlinks*) gebruikt om een certifi
 
 1. Als het certificaat van de Symantec-basis certificerings instantie niet wordt gevonden, voert u de volgende opdracht uit om het bestand te downloaden. Controleer op eventuele fouten en volg de aanbevolen acties voor netwerk fouten.
 
-    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem-O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
+    **# wget https://www.symantec.com/content/dam/symantec/docs/other-resources/verisign-class-3-public-primary-certification-authority-g5-en.pem -O VeriSign_Class_3_Public_Primary_Certification_Authority_G5. pem**
 
 1. Controleer of het Baltimore basis-CA-certificaat aanwezig is:
 
@@ -88,7 +88,7 @@ Omdat SuSE Linux symbolische koppelingen (of *symlinks*) gebruikt om een certifi
 
 1. Als het basis-CA-certificaat van de Baltimore niet wordt gevonden, voert u deze opdracht uit om het certificaat te downloaden:
 
-    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem-O Baltimore_CyberTrust_Root. pem**
+    **# wget https://www.digicert.com/CACerts/BaltimoreCyberTrustRoot.crt.pem -O Baltimore_CyberTrust_Root. pem**
 
 1. Controleer of het DigiCert_Global_Root_CA certificaat aanwezig is:
 
@@ -106,7 +106,7 @@ Omdat SuSE Linux symbolische koppelingen (of *symlinks*) gebruikt om een certifi
 
 1. Voer deze opdrachten uit om te controleren of de onderwerp-hashes als symlinks zijn gemaakt voor de certificaten:
 
-    - Cmd
+    - Opdracht:
 
         **# ls-l | grep-Baltimore**
 
@@ -116,7 +116,7 @@ Omdat SuSE Linux symbolische koppelingen (of *symlinks*) gebruikt om een certifi
 
         `-rw-r--r-- 1 root root 1303 Jun  5  2014 Baltimore_CyberTrust_Root.pem`
 
-    - Cmd
+    - Opdracht:
 
         **# ls-l | grep-VeriSign_Class_3_Public_Primary_Certification_Authority_G5**
 
@@ -126,7 +126,7 @@ Omdat SuSE Linux symbolische koppelingen (of *symlinks*) gebruikt om een certifi
 
         `lrwxrwxrwx 1 root root   62 Jan  8 09:48 facacbc6.0 -> VeriSign_Class_3_Public_Primary_Certification_Authority_G5.pem`
 
-    - Cmd
+    - Opdracht:
 
         **# ls-l | grep-DigiCert_Global_Root**
 
@@ -150,7 +150,7 @@ Omdat SuSE Linux symbolische koppelingen (of *symlinks*) gebruikt om een certifi
 
 1. Controleer of de bestanden aanwezig zijn:
 
-    - Cmd
+    - Opdracht:
 
         **# ls-l 653b494a. 0 b204d74a. 0 3513523f. 0**
 

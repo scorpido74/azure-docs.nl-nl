@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/07/2019
+ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: e8205497262c2c7a500769f32a473d628974220c
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: c2d6e3e42c581c255f207af4a5008e2d09c50a7d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151796"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887118"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server met Azure NetApp Files voor SAP-toepassingen
 
@@ -168,7 +168,7 @@ De SAP NetWeaver-architectuur die in dit artikel wordt gepresenteerd, maakt gebr
    
 In dit voor beeld hebben we Azure NetApp Files voor alle SAP NetWeaver-bestands systemen gebruikt om te laten zien hoe Azure NetApp Files kunnen worden gebruikt. SAP-bestands systemen die niet via NFS moeten worden gekoppeld, kunnen ook worden geïmplementeerd als [Azure-schijf opslag](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd) . In dit voor beeld moet <b>a-e</b> zich bevindt op Azure NetApp files en <b>f-g</b> (dat wil zeggen,/usr/sap/<b>QAS</b>/d<b>02</b>,/usr/sap/<b>QAS</b>/d<b>03</b>) kan worden geïmplementeerd als Azure-schijf opslag. 
 
-### <a name="important-considerations"></a>Belang rijke overwegingen
+### <a name="important-considerations"></a>Belangrijke overwegingen
 
 Houd rekening met de volgende belang rijke overwegingen bij het overwegen van Azure NetApp Files voor de SAP net-Weaver op SUSE-architectuur met hoge Beschik baarheid:
 
@@ -178,13 +178,14 @@ Houd rekening met de volgende belang rijke overwegingen bij het overwegen van Az
 - Het geselecteerde virtuele netwerk moet een subnet hebben, gedelegeerd aan Azure NetApp Files.
 - Azure NetApp Files biedt [export beleid](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): u kunt de toegestane clients, het toegangs type (lezen & schrijven, alleen-lezen, enz.) beheren. 
 - Er is nog geen zone bewust van Azure NetApp Files-functie. Momenteel wordt Azure NetApp Files-functie niet geïmplementeerd in alle beschikbaarheids zones in een Azure-regio. Houd rekening met de mogelijke latentie implicaties in sommige Azure-regio's. 
+- Azure NetApp Files volumes kunnen worden geïmplementeerd als NFSv3-of NFSv 4.1-volumes. Beide protocollen worden ondersteund voor de SAP Application Layer (ASCS/ERS, SAP-toepassings servers). 
 
 ## <a name="deploy-linux-vms-manually-via-azure-portal"></a>Linux-Vm's hand matig implementeren via Azure Portal
 
 Eerst moet u de Azure NetApp Files volumes maken. Implementeer de Vm's. Daarna maakt u een load balancer en gebruikt u de virtuele machines in de back-endservers.
 
 1. Een resourcegroep maken
-1. Een Virtual Network maken
+1. Een virtueel netwerk maken
 1. Een Beschikbaarheidsset maken voor ASCS  
    Maximum aantal update domeinen instellen
 1. Virtuele machine 1 maken  
@@ -201,6 +202,42 @@ Eerst moet u de Azure NetApp Files volumes maken. Implementeer de Vm's. Daarna m
 1. Virtuele machine 4 maken  
    Gebruik ten minste SLES4SAP 12 SP3, in dit voor beeld wordt de installatie kopie van SLES4SAP 12 SP3 gebruikt  
    Beschikbaarheidsset selecteren die eerder is gemaakt voor PAS-AAS  
+
+## <a name="disable-id-mapping-if-using-nfsv41"></a>ID-toewijzing uitschakelen (als u NFSv 4.1 gebruikt)
+
+De instructies in deze sectie zijn alleen van toepassing op het gebruik van Azure NetApp Files volumes met NFSv 4.1-protocol. Voer de configuratie uit op alle Vm's, waarbij Azure NetApp Files NFSv 4.1-volumes worden gekoppeld.  
+
+1. Controleer de instelling van het NFS-domein. Zorg ervoor dat het domein is geconfigureerd als standaard Azure NetApp Files domein, dat wil zeggen **`defaultv4iddomain.com`** en dat de toewijzing is ingesteld op **niemand**.  
+
+    > [!IMPORTANT]
+    > Zorg ervoor dat u het NFS-domein in `/etc/idmapd.conf` op de virtuele machine zo instelt dat deze overeenkomt met de standaard domein configuratie op Azure NetApp Files: **`defaultv4iddomain.com`** . Als er een verschil is tussen de domein configuratie op de NFS-client (de virtuele machine) en de NFS-server, dat wil zeggen de Azure NetApp-configuratie, worden de machtigingen voor bestanden op Azure NetApp-volumes die op de virtuele machines zijn gekoppeld, weer gegeven als `nobody`.  
+
+    <pre><code>
+    sudo cat /etc/idmapd.conf
+    # Example
+    [General]
+    Verbosity = 0
+    Pipefs-Directory = /var/lib/nfs/rpc_pipefs
+    Domain = <b>defaultv4iddomain.com</b>
+    [Mapping]
+    Nobody-User = <b>nobody</b>
+    Nobody-Group = <b>nobody</b>
+    </code></pre>
+
+4. **[A] Controleer de** `nfs4_disable_idmapping`. Deze moet worden ingesteld op **Y**. Als u de mapstructuur wilt maken waar `nfs4_disable_idmapping` zich bevindt, voert u de opdracht Mount uit. U kunt de map niet hand matig maken onder/sys/modules, omdat de toegang is gereserveerd voor de kernel/Stuur Programma's.  
+
+    <pre><code>
+    # Check nfs4_disable_idmapping 
+    cat /sys/module/nfs/parameters/nfs4_disable_idmapping
+    # If you need to set nfs4_disable_idmapping to Y
+    mkdir /mnt/tmp
+    mount 10.1.0.4:/sapmnt/<b>qas</b> /mnt/tmp
+    umount  /mnt/tmp
+    echo "Y" > /sys/module/nfs/parameters/nfs4_disable_idmapping
+    # Make the configuration permanent
+    echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
+    </code></pre>
+
 
 ## <a name="setting-up-ascs"></a>Instellen van (A) SCS
 
@@ -284,17 +321,17 @@ Eerst moet u de Azure NetApp Files volumes maken. Implementeer de Vm's. Daarna m
       1. Aanvullende poorten voor de ASCS ERS
          * Herhaal de bovenstaande stappen onder d voor de poorten 33**01**, 5**01**13, 5**01**14, 5**01**16 en TCP voor de ASCS ers
 
-> [!Note]
-> Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)voor meer informatie over het bezorgen van uitgaande verbindingen.  
+      > [!Note]
+      > Wanneer Vm's zonder open bare IP-adressen in de back-endadresgroep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande Internet verbinding, tenzij er aanvullende configuratie wordt uitgevoerd om route ring naar open bare eind punten toe te staan. Zie [connectiviteit van open bare eind punten voor virtual machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid voor SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-standard-load-balancer-outbound-connections)voor meer informatie over het bezorgen van uitgaande verbindingen.  
 
-> [!IMPORTANT]
-> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie.
+      > [!IMPORTANT]
+      > Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie.
 
 ### <a name="create-pacemaker-cluster"></a>Een pacemaker-cluster maken
 
 Volg de stappen bij het [instellen van pacemaker op SuSE Linux Enterprise Server in azure](high-availability-guide-suse-pacemaker.md) voor het maken van een basis pacemaker-cluster voor deze (a) SCS-server.
 
-### <a name="installation"></a>Installatie
+### <a name="installation"></a>Installeren
 
 De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle knooppunten **[1]** - alleen van toepassing op knooppunt 1 of **[2]** - alleen van toepassing op knooppunt 2.
 
@@ -310,19 +347,19 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
 
    <pre><code>sudo zypper info sap-suse-cluster-connector
    
-      Information for package sap-suse-cluster-connector:
-   ---------------------------------------------------
-   Repository     : SLE-12-SP3-SAP-Updates
-   Name           : sap-suse-cluster-connector
-   Version        : 3.1.0-8.1
-   Arch           : noarch
-   Vendor         : SUSE LLC &lt;https://www.suse.com/&gt;
-   Support Level  : Level 3
-   Installed Size : 45.6 KiB
-   Installed      : Yes
-   Status         : up-to-date
-   Source package : sap-suse-cluster-connector-3.1.0-8.1.src
-   Summary        : SUSE High Availability Setup for SAP Products
+    # Information for package sap-suse-cluster-connector:
+    # ---------------------------------------------------
+    # Repository     : SLE-12-SP3-SAP-Updates
+    # Name           : sap-suse-cluster-connector
+    # Version        : 3.1.0-8.1
+    # Arch           : noarch
+    # Vendor         : SUSE LLC &lt;https://www.suse.com/&gt;
+    # Support Level  : Level 3
+    # Installed Size : 45.6 KiB
+    # Installed      : Yes
+    # Status         : up-to-date
+    # Source package : sap-suse-cluster-connector-3.1.0-8.1.src
+    # Summary        : SUSE High Availability Setup for SAP Products
    </code></pre>
 
 2. **[A]** SAP-Resource agenten bijwerken  
@@ -383,7 +420,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo chattr +i /usr/sap/<b>QAS</b>/ERS<b>01</b>
    </code></pre>
 
-2. **[A]** autofs configureren
+2. **[A]** `autofs` configureren
 
    <pre><code>
    sudo vi /etc/auto.master
@@ -391,7 +428,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    /- /etc/auto.direct
    </code></pre>
 
-   Een bestand maken met
+   Als u NFSv3 gebruikt, maakt u een bestand met:
 
    <pre><code>
    sudo vi /etc/auto.direct
@@ -401,8 +438,18 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    /usr/sap/<b>QAS</b>/SYS -nfsvers=3,nobind,sync 10.1.0.5:/usrsap<b>qas</b>sys
    </code></pre>
    
+   Als u NFSv 4.1 gebruikt, maakt u een bestand met:
+
+   <pre><code>
+   sudo vi /etc/auto.direct
+   # Add the following lines to the file, save and exit
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sync,sec=sys 10.1.0.4:/sapmnt<b>qas</b>
+   /usr/sap/trans -nfsvers=4.1,nobind,sync,sec=sys 10.1.0.4:/trans
+   /usr/sap/<b>QAS</b>/SYS -nfsvers=4.1,nobind,sync,sec=sys 10.1.0.5:/usrsap<b>qas</b>sys
+   </code></pre>
+   
    > [!NOTE]
-   > Zorg ervoor dat u voldoet aan de NFS-protocol versie van de Azure NetApp Files volumes bij het koppelen van de volumes. In dit voor beeld zijn de Azure NetApp Files volumes gemaakt als NFSv3-volumes.  
+   > Zorg ervoor dat u voldoet aan de NFS-protocol versie van de Azure NetApp Files volumes bij het koppelen van de volumes. Als de Azure NetApp Files volumes worden gemaakt als NFSv3-volumes, gebruikt u de bijbehorende NFSv3-configuratie. Als de Azure NetApp Files volumes worden gemaakt als NFSv 4.1-volumes, volgt u de instructies om ID-toewijzing uit te scha kelen en ervoor te zorgen dat u de overeenkomstige configuratie van NFSv 4.1 gebruikt. In dit voor beeld zijn de Azure NetApp Files volumes gemaakt als NFSv3-volumes.  
    
    Start `autofs` opnieuw op om de nieuwe shares te koppelen
     <pre><code>
@@ -429,7 +476,6 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    <pre><code>sudo service waagent restart
    </code></pre>
 
-
 ### <a name="installing-sap-netweaver-ascsers"></a>SAP NetWeaver ASCS/ERS installeren
 
 1. **[1]** Maak een virtuele IP-bron en een status test voor het ASCS-exemplaar
@@ -439,8 +485,14 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    > Voor bestaande pacemaker-clusters is het raadzaam om netcat te vervangen door socat, waarbij u de instructies in [Azure Load-Balancer-detectie beveiliging](https://www.suse.com/support/kb/doc/?id=7024128)kunt volgen. Houd er rekening mee dat voor de wijziging korte uitval tijd nodig is.  
 
    <pre><code>sudo crm node standby <b>anftstsapcl2</b>
-   
+   # If using NFSv3
    sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' \
+     op start timeout=60s interval=0 \
+     op stop timeout=60s interval=0 \
+     op monitor interval=20s timeout=40s
+   
+   # If using NFSv4.1
+   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' options='sec=sys,vers=4.1' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
@@ -494,8 +546,14 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    <pre><code>
    sudo crm node online <b>anftstsapcl2</b>
    sudo crm node standby <b>anftstsapcl1</b>
-   
+   # If using NFSv3
    sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' \
+     op start timeout=60s interval=0 \
+     op stop timeout=60s interval=0 \
+     op monitor interval=20s timeout=40s
+   
+   # If using NFSv4.1
+   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' options='sec=sys,vers=4.1'\
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
@@ -608,7 +666,7 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
    sudo usermod -aG haclient <b>qas</b>adm
    </code></pre>
 
-8. **[1]** Voeg de ASCS-en ers SAP-services toe aan het sapservice-bestand
+8. **[1]** Voeg de ASCS-en ers SAP-services toe aan het `sapservice`-bestand
 
    Voeg de ASCS-service vermelding toe aan het tweede knoop punt en kopieer de vermelding van de ERS-service naar het eerste knoop punt.
 
@@ -759,7 +817,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op zowel de 
    sudo chattr +i /usr/sap/<b>QAS</b>/D<b>03</b>
    </code></pre>
 
-1. **[P]** AUTOFS op pas configureren
+1. **[P]** `autofs` op pas configureren
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -767,7 +825,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op zowel de 
    /- /etc/auto.direct
    </code></pre>
 
-   Maak een nieuw bestand met
+   Als u NFSv3 gebruikt, maakt u een nieuw bestand met:
 
    <pre><code>
    sudo vi /etc/auto.direct
@@ -777,6 +835,16 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op zowel de 
    /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind,sync <b>10.1.0.5</b>:/usrsap<b>qas</b>pas
    </code></pre>
 
+   Als u NFSv 4.1 gebruikt, maakt u een nieuw bestand met:
+
+   <pre><code>
+   sudo vi /etc/auto.direct
+   # Add the following lines to the file, save and exit
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/sapmnt<b>qas</b>
+   /usr/sap/trans -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.5</b>:/usrsap<b>qas</b>pas
+   </code></pre>
+
    Start `autofs` opnieuw op om de nieuwe shares te koppelen
 
    <pre><code>
@@ -784,7 +852,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op zowel de 
    sudo service autofs restart
    </code></pre>
 
-1. **[P]** AUTOFS op aas configureren
+1. **[P]** `autofs` op aas configureren
 
    <pre><code>sudo vi /etc/auto.master
    
@@ -792,7 +860,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op zowel de 
    /- /etc/auto.direct
    </code></pre>
 
-   Maak een nieuw bestand met
+   Als u NFSv3 gebruikt, maakt u een nieuw bestand met:
 
    <pre><code>
    sudo vi /etc/auto.direct
@@ -800,6 +868,16 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op zowel de 
    /sapmnt/<b>QAS</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/sapmnt<b>qas</b>
    /usr/sap/trans -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/trans
    /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind,sync <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
+   </code></pre>
+
+   Als u NFSv 4.1 gebruikt, maakt u een nieuw bestand met:
+
+   <pre><code>
+   sudo vi /etc/auto.direct
+   # Add the following lines to the file, save and exit
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/sapmnt<b>qas</b>
+   /usr/sap/trans -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/trans
+   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=4.1,nobind,sync,sec=sys <b>10.1.0.4</b>:/usrsap<b>qas</b>aas
    </code></pre>
 
    Start `autofs` opnieuw op om de nieuwe shares te koppelen
@@ -829,7 +907,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op zowel de 
    <pre><code>sudo service waagent restart
    </code></pre>
 
-## <a name="install-database"></a>Data base installeren
+## <a name="install-database"></a>Database installeren
 
 In dit voor beeld is SAP NetWeaver geïnstalleerd op SAP HANA. U kunt elke ondersteunde Data Base voor deze installatie gebruiken. Zie voor meer informatie over het installeren van SAP HANA in azure [hoge Beschik baarheid van SAP Hana op Azure virtual machines (vm's)][sap-hana-ha]. Zie [SAP Note 1928533][1928533]voor een lijst met ondersteunde data bases.
 
@@ -1184,7 +1262,7 @@ De volgende tests zijn een kopie van de test cases in de [Best practices-gidsen 
    <pre><code>anftstsapcl2:~ # pgrep ms.sapQAS | xargs kill -9
    </code></pre>
 
-   Als u de berichten server alleen eenmaal beëindigt, wordt deze opnieuw opgestart door sapstart. Als u deze regel matig beëindigt, wordt de ASCS-instantie uiteindelijk door pacemaker naar het andere knoop punt verplaatst. Voer de volgende opdrachten uit als root om de resource status van het ASCS-en ERS-exemplaar na de test op te schonen.
+   Als u de berichten server alleen eenmaal beëindigt, wordt deze opnieuw opgestart door `sapstart`. Als u deze regel matig beëindigt, wordt de ASCS-instantie uiteindelijk door pacemaker naar het andere knoop punt verplaatst. Voer de volgende opdrachten uit als root om de resource status van het ASCS-en ERS-exemplaar na de test op te schonen.
 
    <pre><code>
    anftstsapcl2:~ # crm resource cleanup rsc_sap_QAS_ASCS00

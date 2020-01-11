@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: f39e5ee7126fe381ad4ba77ec9a876db5f0a1ef6
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 60d9c7fb57e079fde54d60df9b90266ccb94acdc
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747259"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895834"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Geplande onderhouds meldingen verwerken
 
@@ -29,7 +29,7 @@ Van tijd tot tijd voert Azure updates uit om de betrouwbaarheid, prestaties en v
 
 Gepland onderhoud waarvoor opnieuw opstarten is vereist, wordt gepland in golven. Elke golf heeft een ander bereik (regio's).
 
-- Een golf begint met een melding aan klanten. Standaard wordt er een melding verzonden naar de eigenaar van het abonnement en mede-eigen aars. U kunt meer ontvangers en bericht opties toevoegen, zoals e-mail, SMS en webhooks, met behulp van [waarschuwingen voor activiteiten logboeken](../azure-monitor/platform/platform-logs-overview.md).  
+- Een golf begint met een melding aan klanten. Standaard wordt er een melding verzonden naar de eigenaar van het abonnement en mede-eigen aars. U kunt meer ontvangers en bericht opties toevoegen, zoals e-mail, SMS en webhooks, met behulp van [waarschuwingen voor activiteiten logboeken](../service-health/alerts-activity-log-service-notifications.md).  
 - Zodra een melding wordt weer gegeven, wordt er een *self-service venster* beschikbaar gemaakt. Tijdens dit venster kunt u een query uitvoeren op de virtuele machines die worden beïnvloed en onderhoud starten op basis van uw eigen plannings behoeften. Het venster voor selfservice Services is doorgaans ongeveer 35 dagen.
 - Na het self-service venster begint een *gepland onderhouds venster* . Op een bepaald moment tijdens dit venster plant Azure en past het vereiste onderhoud toe op uw virtuele machine. 
 

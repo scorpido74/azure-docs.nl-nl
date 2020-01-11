@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: 9169bd9a63666238e9d6b97d86bf1e9e10312c1b
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71076514"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895238"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Problemen met Apache Hive oplossen met behulp van Azure HDInsight
 
@@ -120,17 +120,17 @@ In de code in de oplossings stappen wordt ervan uitgegaan dat de gegevens paden 
    U moet een voorbeeld programma als eerste argument opgeven.
 
    Geldige programma namen zijn:
-    - **ContainerReuseAnalyzer**: Details van de printer container opnieuw gebruiken in een DAG
-    - **CriticalPath**: Het kritieke pad van een DAG zoeken
-    - **LocalityAnalyzer**: Details van de lokale plaats in een DAG afdrukken
-    - **ShuffleTimeAnalyzer**: De details van de wille keurige tijd in een DAG analyseren
-    - **SkewAnalyzer**: De scheefheid Details in een DAG analyseren
-    - **SlowNodeAnalyzer**: Details van het knoop punt in een DAG afdrukken
-    - **SlowTaskIdentifier**: Trage taak Details in een DAG afdrukken
-    - **SlowestVertexAnalyzer**: Langzaam hoekpunt Details in een DAG afdrukken
-    - **SpillAnalyzer**: Details over overloop afdrukken in een DAG
-    - **TaskConcurrencyAnalyzer**: De details van de taak gelijktijdigheid afdrukken in een DAG
-    - **VertexLevelCriticalPathAnalyzer**: Het kritieke pad op het hoek punt op het niveau van een DAG zoeken
+    - **ContainerReuseAnalyzer**: Details van de printer container opnieuw gebruiken in een dag
+    - **CriticalPath**: het kritieke pad van een dag zoeken
+    - **LocalityAnalyzer**: Details van de lokale locatie in een dag afdrukken
+    - **ShuffleTimeAnalyzer**: de details van de wille keurige tijd in een dag analyseren
+    - **SkewAnalyzer**: de hellen-Details in een dag analyseren
+    - **SlowNodeAnalyzer**: Details van knoop punten in een dag afdrukken
+    - **SlowTaskIdentifier**: trage taak Details in een dag afdrukken
+    - **SlowestVertexAnalyzer**: het langzaamst vertex Details in een dag afdrukken
+    - **SpillAnalyzer**: Details over overloop afdrukken in een dag
+    - **TaskConcurrencyAnalyzer**: de details van de taak gelijktijdig in een dag afdrukken
+    - **VertexLevelCriticalPathAnalyzer**: het kritieke pad op het hoek punt in een dag zoeken
 
 ### <a name="additional-reading"></a>Meer lezen
 
@@ -167,6 +167,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 - Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-- Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+- Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-- Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+- Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

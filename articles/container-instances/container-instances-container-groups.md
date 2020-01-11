@@ -4,12 +4,12 @@ description: Meer informatie over container groepen in Azure Container Instances
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 19fa50f83a2593b8914931e25fa99cb2e4896227
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770268"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888053"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Container groepen in Azure Container Instances
 
@@ -32,7 +32,7 @@ Deze voorbeeld container groep:
 * Bevat twee Azure-bestands shares als volume koppels en elke container koppelt een van de shares lokaal.
 
 > [!NOTE]
-> Groepen met meerdere containers ondersteunen momenteel alleen Linux-containers. Voor Windows-containers ondersteunt Azure Container Instances alleen implementatie van één exemplaar. Hoewel we aan de slag gaan met het toevoegen van alle functies aan Windows-containers, kunt u de huidige platform verschillen vinden in het [overzicht](container-instances-overview.md#linux-and-windows-containers)van de service.
+> Groepen met meerdere containers ondersteunen momenteel alleen Linux-containers. Voor Windows-containers ondersteunt Azure Container Instances alleen implementatie van één container exemplaar. Hoewel we aan de slag gaan met het toevoegen van alle functies aan Windows-containers, kunt u de huidige platform verschillen vinden in het [overzicht](container-instances-overview.md#linux-and-windows-containers)van de service.
 
 ## <a name="deployment"></a>Implementatie
 
@@ -44,19 +44,19 @@ Als u de configuratie van een container groep wilt behouden, kunt u de configura
 
 ## <a name="resource-allocation"></a>Resource toewijzing
 
-Azure Container Instances wijst resources, zoals Cpu's, geheugen en optioneel [gpu's][gpus] (preview), toe aan een groep met meerdere containers door de [resource aanvragen][resource-requests] van de instanties in de groep toe te voegen. Het maken van CPU-resources als voor beeld als u een container groep maakt met twee exemplaren, die elk één CPU aanvragen, wordt twee Cpu's toegewezen aan de container groep.
+Azure Container Instances wijst resources, zoals Cpu's, geheugen en optioneel [gpu's][gpus] (preview), toe aan een groep met meerdere containers door de [resource aanvragen][resource-requests] van de instanties in de groep toe te voegen. Het maken van CPU-resources als voor beeld als u een container groep maakt met twee container instanties, die elk één CPU aanvragen, wordt twee Cpu's toegewezen aan de container groep.
 
-### <a name="resource-usage-by-instances"></a>Resource gebruik per instantie
+### <a name="resource-usage-by-container-instances"></a>Resource gebruik per container instanties
 
-Elke container instantie in een groep wordt toegewezen aan de resources die zijn opgegeven in de resource-aanvraag. De maximum bronnen die worden gebruikt door een instantie in een groep kunnen echter verschillen als u de optionele [resource limiet][resource-limits] eigenschap configureert. De resource limiet van een exemplaar moet groter zijn dan of gelijk zijn aan de verplichte eigenschap van de [resource aanvraag][resource-requests] .
+Elke container instantie in een groep wordt toegewezen aan de resources die zijn opgegeven in de resource-aanvraag. Het maximum aantal resources dat wordt gebruikt door een container exemplaar in een groep kan echter verschillen als u de optionele [resource limiet][resource-limits] eigenschap configureert. De resource limiet van een container exemplaar moet groter dan of gelijk aan de verplichte eigenschap van de [bron aanvraag][resource-requests] zijn.
 
-* Als u geen resource limiet opgeeft, is het maximale resource gebruik van het exemplaar hetzelfde als de resource aanvraag.
+* Als u geen resource limiet opgeeft, is het maximale resource gebruik van het container exemplaar hetzelfde als de resource aanvraag.
 
-* Als u een limiet voor een exemplaar opgeeft, kan het maximum gebruik van het exemplaar hoger zijn dan de aanvraag, tot de limiet die u hebt ingesteld. Het resource gebruik door andere instanties in de groep kan echter afnemen. De maximale resource limiet die u voor een exemplaar kunt instellen, is het totale aantal resources dat aan de groep is toegewezen.
+* Als u een limiet voor een container exemplaar opgeeft, kan het maximum gebruik van het exemplaar hoger zijn dan de aanvraag, tot de limiet die u hebt ingesteld. Het resource gebruik door andere container instanties in de groep kan echter afnemen. De maximale resource limiet die u kunt instellen voor een container exemplaar is het totale aantal resources dat aan de groep is toegewezen.
     
-In een groep met twee exemplaren die elk één CPU aanvragen, kan een van uw containers bijvoorbeeld een werk belasting uitvoeren waarvoor meer Cpu's moeten worden uitgevoerd dan de andere.
+In een groep met twee container instanties die elk één CPU aanvragen, kan een van uw containers bijvoorbeeld een werk belasting uitvoeren waarvoor meer Cpu's moeten worden uitgevoerd dan de andere.
 
-In dit scenario kunt u een resource limiet van twee Cpu's instellen voor het exemplaar. Met deze configuratie kan de container Maxi maal de Maxi maal twee Cpu's gebruiken, indien beschikbaar.
+In dit scenario kunt u een resource limiet van twee Cpu's instellen voor het container exemplaar. Met deze configuratie kan het container exemplaar Maxi maal de Maxi maal twee Cpu's gebruiken, indien beschikbaar.
 
 ### <a name="minimum-and-maximum-allocation"></a>Minimale en maximale toewijzing
 
@@ -68,9 +68,9 @@ In dit scenario kunt u een resource limiet van twee Cpu's instellen voor het exe
 
 Container groepen kunnen een extern IP-adres delen, een of meer poorten op dat IP-adres en een DNS-label met een Fully Qualified Domain Name (FQDN). Om externe clients in staat te stellen een container binnen de groep te bereiken, moet u de poort op het IP-adres en uit de container zichtbaar maken. Omdat containers binnen de groep een poort naam ruimte delen, wordt poort toewijzing niet ondersteund. Het IP-adres en de FQDN van een container groep worden vrijgegeven wanneer de container groep wordt verwijderd. 
 
-Binnen een container groep kunnen containers instanties elkaar via localhost bereiken op elke poort, zelfs als deze poorten niet extern worden weer gegeven op het IP-adres van de groep of in de container.
+Binnen een container groep kunnen container instanties elkaar via localhost bereiken op elke poort, zelfs als deze poorten niet extern worden weer gegeven op het IP-adres van de groep of in de container.
 
-Implementeer eventueel container groepen in een [virtueel Azure-netwerk][virtual-network] (preview) zodat containers veilig kunnen communiceren met andere resources in het virtuele netwerk.
+Implementeer eventueel container groepen in een [virtueel Azure-netwerk][virtual-network] , zodat containers veilig kunnen communiceren met andere resources in het virtuele netwerk.
 
 ## <a name="storage"></a>Storage
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: c3da9c6a49fd79946d62b0319bead1bd721f3aa6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: ce85c45d80a776af84a0987cfbc3f496c2bbb72b
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536705"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893963"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Verificatie instellen voor Azure Machine Learning resources en werk stromen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -170,7 +170,8 @@ ws.get_details()
 
 De service-principal die u in de bovenstaande stappen hebt gemaakt, kan ook worden gebruikt voor de verificatie van de Azure Machine Learning [rest API](https://docs.microsoft.com/rest/api/azureml/). U gebruikt de Azure Active Directory [toekennings stroom voor client referenties](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow), waarmee service-to-service-aanroepen kunnen worden uitgevoerd voor headless authenticatie in automatische werk stromen. De voor beelden worden geïmplementeerd met de [ADAL-bibliotheek](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) in Python en node. js, maar u kunt ook een open-source bibliotheek gebruiken die openid connect Connect 1,0 ondersteunt. 
 
-> ! ERAAN MSAL. js is een nieuwe bibliotheek dan ADAL, maar u kunt geen service-to-service-verificatie uitvoeren met behulp van client referenties met MSAL. js, omdat het hoofd zakelijk een bibliotheek aan de client zijde is die is bedoeld voor interactieve/UI-verificatie die is gekoppeld aan een specifieke gebruiker. We raden u aan ADAL te gebruiken zoals hieronder wordt weer gegeven om automatische werk stromen te bouwen met de REST API.
+> [!NOTE]
+> MSAL. js is een nieuwe bibliotheek dan ADAL, maar u kunt geen service-to-service-verificatie uitvoeren met behulp van client referenties met MSAL. js, omdat het hoofd zakelijk een bibliotheek aan de client zijde is die is bedoeld voor interactieve/UI-verificatie die is gekoppeld aan een specifieke gebruiker. We raden u aan ADAL te gebruiken zoals hieronder wordt weer gegeven om automatische werk stromen te bouwen met de REST API.
 
 ### <a name="nodejs"></a>Node.js
 
@@ -268,15 +269,19 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores = 1,
                                                 auth_enable=True)
 ```
 
-Vervolgens kunt u de aangepaste ACI-configuratie in de implementatie gebruiken met behulp van de bovenliggende `WebService` klasse.
+Vervolgens kunt u de aangepaste ACI-configuratie in de implementatie gebruiken met behulp van de `Model`-klasse.
 
 ```python
-from azureml.core.webservice import Webservice
+from azureml.core.model import Model, InferenceConfig
 
-aci_service = Webservice.deploy_from_image(deployment_config=aci_config,
-                                           image=image,
-                                           name="aci_service_sample",
-                                           workspace=ws)
+
+inference_config = InferenceConfig(entry_script="score.py",
+                                   environment=myenv)
+aci_service = Model.deploy(workspace=ws,
+                       name="aci_service_sample",
+                       models=[model],
+                       inference_config=inference_config,
+                       deployment_config=aci_config)
 aci_service.wait_for_deployment(True)
 ```
 

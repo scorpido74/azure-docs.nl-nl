@@ -2,14 +2,14 @@
 title: Container groep implementeren in een virtueel Azure-netwerk
 description: Meer informatie over het implementeren van container groepen in een nieuw of bestaand virtueel Azure-netwerk.
 ms.topic: article
-ms.date: 12/17/2019
+ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 9c9f1d114ea3883a947fb454d5958c1479bd4a4e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 12260dcb43a675414d38cb5067b230832dd2d16b
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442261"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887953"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Container instanties implementeren in een virtueel Azure-netwerk
 
@@ -24,7 +24,7 @@ Met container groepen die zijn geïmplementeerd in een virtueel Azure-netwerk, k
 * Container communicatie met on-premises bronnen via een [VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) of [ExpressRoute](../expressroute/expressroute-introduction.md)
 
 > [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-versie en er [zijn enkele beperkingen van toepassing](#preview-limitations). Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functionaliteit kunnen wijzigen voordat deze functionaliteit algemeen beschikbaar wordt.
+> Implementaties van container groepen naar een virtueel netwerk zijn algemeen alleen beschikbaar voor productie werkbelastingen in de volgende regio's: **VS-Oost, Zuid-Centraal VS en VS-West 2**. In andere regio's waarin de functie beschikbaar is, zijn virtuele netwerk implementaties momenteel in de preview-versie opgenomen, waarbij algemene Beschik baarheid in de nabije toekomst wordt gepland. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. 
 
 
 ## <a name="virtual-network-deployment-limitations"></a>Beperkingen voor de implementatie van virtuele netwerken
@@ -33,11 +33,7 @@ Bepaalde beperkingen zijn van toepassing wanneer u container groepen implementee
 
 * Als u container groepen wilt implementeren in een subnet, mag het subnet geen andere resource typen bevatten. Verwijder alle bestaande resources uit een bestaand subnet voordat u container groepen implementeert, of maak een nieuw subnet.
 * U kunt geen [beheerde identiteit](container-instances-managed-identity.md) gebruiken in een container groep die is geïmplementeerd in een virtueel netwerk.
-* Als gevolg van de betrokken extra netwerk bronnen is het implementeren van een container groep naar een virtueel netwerk meestal trager dan het implementeren van een standaard container exemplaar.
-
-## <a name="preview-limitations"></a>Preview-beperkingen
-
-Hoewel deze functie in preview is, zijn de volgende beperkingen van toepassing bij het implementeren van container groepen in een virtueel netwerk. 
+* Als gevolg van de extra netwerk bronnen die betrokken zijn, is het implementeren van een container groep naar een virtueel netwerk doorgaans langzamer dan het implementeren van een standaard container exemplaar.
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
@@ -46,8 +42,10 @@ Container resource limieten kunnen verschillen van de limieten voor niet-gewerkt
 ### <a name="unsupported-networking-scenarios"></a>Niet-ondersteunde netwerk scenario's 
 
 * **Azure Load Balancer** het plaatsen van een Azure Load Balancer vóór container instanties in een groep met netwerk containers wordt niet ondersteund
-* **Peering van virtuele netwerken** -VNet-peering werkt niet voor ACI als het netwerk waarop de ACI-vnet wordt gekoppeld, gebruikmaakt van een open bare IP-ruimte. Het peered netwerk heeft een persoonlijke IP-adres ruimte van RFC1918 nodig om peering te kunnen gebruiken. Daarnaast kunt u momenteel alleen uw VNet koppelen aan een ander VNet
-* **Route ring van virtueel netwerk verkeer** : klant routes kunnen niet worden ingesteld rond open bare ip's. Routes kunnen worden ingesteld binnen de privé-IP-ruimte van het overgedragen subnet waarin de ACI-bronnen worden geïmplementeerd 
+* **Peering op virtueel netwerk**
+  * VNet-peering werkt niet voor ACI als het netwerk dat door de ACI VNet peering is, gebruikmaakt van een open bare IP-ruimte. Het peered netwerk heeft een privé-IP-adres van RFC 1918 nodig om VNet-peering te kunnen gebruiken. 
+  * U kunt uw VNet alleen koppelen aan een ander VNet
+* **Route ring van virtueel netwerk verkeer** : u kunt geen aangepaste routes instellen rond open bare ip's. Routes kunnen worden ingesteld binnen de privé-IP-ruimte van het overgedragen subnet waarin de ACI-bronnen worden geïmplementeerd 
 * **Netwerk beveiligings groepen** : uitgaande beveiligings regels in nsg's die zijn toegepast op een subnet dat is overgedragen aan Azure container instances, worden momenteel niet afgedwongen 
 * **Openbaar IP-of DNS-label** -container groepen die zijn geïmplementeerd in een virtueel netwerk ondersteunen momenteel geen ondersteuning voor het rechtstreeks weer geven van containers op internet met een openbaar IP-adres of een Fully Qualified Domain name
 * **Interne naam omzetting** : naam omzetting voor Azure-resources in het virtuele netwerk via de interne Azure DNS wordt niet ondersteund
@@ -99,7 +97,7 @@ Wanneer u uw eerste container groep met deze methode hebt geïmplementeerd, kunt
 
 Een container groep implementeren in een bestaand virtueel netwerk:
 
-1. Een subnet maken binnen uw bestaande virtuele netwerk of een bestaand subnet van *alle* andere resources leegmaken
+1. Maak een subnet in uw bestaande virtuele netwerk, gebruik een bestaand subnet waarin een container groep al is geïmplementeerd, of gebruik een bestaand subnet dat *alle* andere resources heeft geleegd
 1. Implementeer een container groep met [AZ container Create][az-container-create] en geef een van de volgende opties op:
    * Naam van het virtuele netwerk en het subnet
    * Bron-ID van het virtuele netwerk en de resource-ID van het subnet, waarmee een virtueel netwerk van een andere resource groep kan worden gebruikt
@@ -115,7 +113,7 @@ In de volgende secties wordt beschreven hoe u container groepen implementeert in
 
 Implementeer eerst een container groep en geef de para meters op voor een nieuw virtueel netwerk en subnet. Wanneer u deze para meters opgeeft, maakt Azure het virtuele netwerk en het subnet, delegeert het subnet naar Azure container instances en maakt ook een netwerk profiel. Zodra deze resources zijn gemaakt, wordt uw container groep geïmplementeerd in het subnet.
 
-Voer de volgende opdracht [AZ container Create][az-container-create] uit om de instellingen voor een nieuw virtueel netwerk en subnet op te duiden. U moet de naam opgeven van een resource groep die is gemaakt in een regio die container groepen in een virtueel netwerk [ondersteunt](#preview-limitations) . Met deze opdracht wordt de open bare container van micro soft [ACI-HelloWorld][aci-helloworld] geïmplementeerd die een kleine node. js-webserver voor een statische webpagina uitvoert. In de volgende sectie implementeert u een tweede container groep naar hetzelfde subnet en test u de communicatie tussen de twee container exemplaren.
+Voer de volgende opdracht [AZ container Create][az-container-create] uit om de instellingen voor een nieuw virtueel netwerk en subnet op te duiden. U moet de naam opgeven van een resource groep die is gemaakt in een regio waarin de implementaties van container groepen in een virtueel netwerk [beschikbaar](#virtual-network-deployment-limitations)zijn. Met deze opdracht wordt de open bare container van micro soft [ACI-HelloWorld][aci-helloworld] geïmplementeerd die een kleine node. js-webserver voor een statische webpagina uitvoert. In de volgende sectie implementeert u een tweede container groep naar hetzelfde subnet en test u de communicatie tussen de twee container exemplaren.
 
 ```azurecli
 az container create \
@@ -180,7 +178,7 @@ De logboek uitvoer geeft aan dat `wget` verbinding kon maken en het index bestan
 
 ### <a name="deploy-to-existing-virtual-network---yaml"></a>Implementeren in een bestaand virtueel netwerk-YAML
 
-U kunt ook een container groep implementeren in een bestaand virtueel netwerk met behulp van een YAML-bestand. Als u wilt implementeren in een subnet in een virtueel netwerk, geeft u verschillende extra eigenschappen op in de YAML:
+U kunt ook een container groep implementeren in een bestaand virtueel netwerk met behulp van een YAML-bestand, een resource manager-sjabloon of een andere programmatische methode, zoals met de python-SDK. Als u wilt implementeren in een subnet in een virtueel netwerk, geeft u verschillende extra eigenschappen op in de YAML:
 
 * `ipAddress`: de IP-adres instellingen voor de container groep.
   * `ports`: de poorten die moeten worden geopend, indien van toepassing.
@@ -225,7 +223,7 @@ properties:
     - protocol: tcp
       port: '80'
   networkProfile:
-    id: /subscriptions/<Subscription ID>/resourceGroups/container/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-subnet
+    id: /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-subnet
   osType: Linux
   restartPolicy: Always
 tags: null
@@ -263,9 +261,9 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 
 > [!NOTE]
-> Als er een fout optreedt tijdens het verwijderen van het netwerk profiel, zijn 2-3 dagen toegestaan voor het platform om het probleem automatisch te verhelpen en de verwijdering opnieuw uit te voeren. Als u nog steeds problemen ondervindt met het verwijderen van het netwerk profiel, [opent u een ondersteunings reqest.](https://azure.microsoft.com/support/create-ticket/)
+> Als er een fout optreedt tijdens het verwijderen van het netwerk profiel, moet u 2-3 dagen voor het platform het probleem automatisch beperken en de verwijdering opnieuw proberen. Als u nog steeds problemen ondervindt met het verwijderen van het netwerk profiel, [opent u een ondersteunings aanvraag](https://azure.microsoft.com/support/create-ticket/).
 
-Voor de eerste preview van deze functie zijn verschillende extra opdrachten nodig om de netwerk resources te verwijderen die u eerder hebt gemaakt. Als u de voorbeeld opdrachten in vorige secties van dit artikel hebt gebruikt om uw virtuele netwerk en subnet te maken, kunt u het volgende script gebruiken om die netwerk resources te verwijderen.
+Voor deze functie zijn momenteel verschillende extra opdrachten vereist voor het verwijderen van de netwerk resources die u eerder hebt gemaakt. Als u de voorbeeld opdrachten in vorige secties van dit artikel hebt gebruikt om uw virtuele netwerk en subnet te maken, kunt u het volgende script gebruiken om die netwerk resources te verwijderen.
 
 Voordat u het script uitvoert, stelt u de `RES_GROUP`-variabele in op de naam van de resource groep met het virtuele netwerk en het subnet dat moet worden verwijderd. Werk de naam van het virtuele netwerk bij als u de naam van de `aci-vnet` eerder hebt voorgesteld. Het script is geformatteerd voor de bash-shell. Als u de voor keur geeft aan een andere shell, zoals Power shell of opdracht prompt, moet u de toewijzings-en toegangs rechten van de variabele dienovereenkomstig aanpassen.
 

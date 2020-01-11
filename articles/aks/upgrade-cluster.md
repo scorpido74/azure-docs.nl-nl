@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: mlearned
-ms.openlocfilehash: 7113fd7f17fd7695e25489931d7a6cbf35e334ec
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e1ef87471c81fbf0d242837bd94fdc17f686387f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442824"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889405"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Een AKS-cluster (Azure Kubernetes service) upgraden
 
@@ -25,7 +25,7 @@ Zie [een knooppunt groep bijwerken in AKS][nodepool-upgrade]voor AKS-clusters di
 Voor dit artikel moet u de Azure CLI-versie 2.0.65 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 > [!WARNING]
-> Een AKS-cluster upgrade activeert een cordon en afvoer van uw knoop punten. Als er een beperkt reken quotum beschikbaar is, kan de upgrade mislukken.  Zie [quota verg Roten](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request?branch=pr-en-us-83289) voor meer informatie.
+> Een AKS-cluster upgrade activeert een cordon en afvoer van uw knoop punten. Als er een beperkt reken quotum beschikbaar is, kan de upgrade mislukken.  Zie [quota verg Roten](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request?branch=pr-en-us-83289) voor meer informatie.
 > Als u uw eigen implementatie van de automatische schaal van het cluster uitvoert, schakelt u deze uit (u kunt deze schalen naar nul replica's) tijdens de upgrade, omdat er sprake is van een kans dat het upgrade proces wordt verstoord. Met Managed automatische schalen wordt dit automatisch afgehandeld. 
 
 ## <a name="check-for-available-aks-cluster-upgrades"></a>Controleren op beschik bare AKS-cluster upgrades

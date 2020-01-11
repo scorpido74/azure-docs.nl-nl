@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 6f0aa8a08b8a502edbd15d3ede157b78a13b8588
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7527cd59ef812c108cc53f84ad19f4d2cff9ec5e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479356"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893568"
 ---
 # <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>AMD GPU-Stuur Programma's installeren op Vm's met N-serie waarop Windows wordt uitgevoerd
 
@@ -37,7 +37,7 @@ Zie [GPU Windows VM-grootten](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwin
 
 1. Verbind door Extern bureaublad naar elke VM van de NVv4-serie.
 
-1. Down load, pak en installeer het ondersteunde stuur programma voor uw Windows-besturings systeem.
+1. Downloa en extraheer de Setup-bestanden voor het stuur programma. Ga naar de map en voer Setup. exe uit om het ondersteunde stuur programma voor uw Windows-besturings systeem te installeren.
 
 ## <a name="verify-driver-installation"></a>Installatie van stuur programma verifiëren
 

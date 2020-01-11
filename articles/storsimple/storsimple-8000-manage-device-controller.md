@@ -1,6 +1,6 @@
 ---
-title: Apparaatcontrollers voor StorSimple 8000-serie beheren | Microsoft Docs
-description: Informatie over het stoppen, starten, afsluiten of opnieuw instellen van uw StorSimple-apparaat-controllers.
+title: StorSimple 8000 Series-controllers beheren | Microsoft Docs
+description: Meer informatie over het stoppen, opnieuw opstarten, afsluiten of opnieuw instellen van uw StorSimple-apparaat.
 services: storsimple
 documentationcenter: ''
 author: alkohli
@@ -14,151 +14,151 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
-ms.openlocfilehash: 5e461f340e1c58f64c6d645a1e47cfd811bc4de5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce49dcaa06288ba9e7a4d232338c727064d59685
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60505964"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894848"
 ---
-# <a name="manage-your-storsimple-device-controllers"></a>Uw StorSimple-apparaat domeincontrollers beheren
+# <a name="manage-your-storsimple-device-controllers"></a>Uw StorSimple-Apparaatbeheer beheren
 
 ## <a name="overview"></a>Overzicht
 
-Deze zelfstudie beschrijft de verschillende bewerkingen die kunnen worden uitgevoerd op uw StorSimple-apparaat-controllers. De domeincontrollers in uw StorSimple-apparaat zijn redundante (peer)-domeincontrollers in een actief-passieve configuratie. Op een bepaald moment slechts één domeincontroller actief is en alle bewerkingen voor de schijf en netwerk wordt verwerkt. De andere controller is in de passieve modus. Als de actieve controller is mislukt, wordt de passieve controller automatisch geactiveerd.
+In deze zelf studie worden de verschillende bewerkingen beschreven die kunnen worden uitgevoerd op uw StorSimple-apparaat. De controllers in uw StorSimple-apparaat zijn redundante (peer) controllers in een actief-passieve configuratie. Op een bepaald moment is slechts één controller actief en worden alle schijf-en netwerk bewerkingen verwerkt. De andere controller bevindt zich in een passieve modus. Als de actieve controller mislukt, wordt de passieve controller automatisch actief.
 
-Deze zelfstudie bevat stapsgewijze instructies voor het beheren van apparaten met behulp van de:
+Deze zelf studie bevat stapsgewijze instructies voor het beheren van de apparaats controllers met behulp van:
 
-* **Domeincontrollers** blade voor uw apparaat in de StorSimple Device Manager-service.
+* De Blade **controllers** voor uw apparaat in de StorSimple-Apparaatbeheer service.
 * Windows PowerShell voor StorSimple.
 
-Het is raadzaam dat u de apparaatcontrollers via de StorSimple Device Manager-service beheren. Als een actie kan alleen worden uitgevoerd met behulp van Windows PowerShell voor StorSimple, wordt in de zelfstudie een notitie van deze.
+U wordt aangeraden de apparaats controllers te beheren via de StorSimple Apparaatbeheer-service. Als een actie alleen kan worden uitgevoerd met behulp van Windows PowerShell voor StorSimple, maakt de zelf studie hiervan een notitie.
 
-Na het lezen van deze zelfstudie, kunt u zich aan:
+Na het lezen van deze zelf studie kunt u het volgende doen:
 
-* Opnieuw opstarten of afsluiten van de controller van een StorSimple-apparaat
-* Een StorSimple-apparaat uitschakelen
-* Uw StorSimple-apparaat opnieuw instellen naar de fabrieksinstellingen
+* Een StorSimple apparaat-controller opnieuw opstarten of afsluiten
+* Een StorSimple-apparaat afsluiten
+* De fabrieks instellingen van uw StorSimple-apparaat herstellen
 
-## <a name="restart-or-shut-down-a-single-controller"></a>Opnieuw opstarten of afsluiten Eén controller
-Een controller opnieuw opstarten of afsluiten is niet vereist als onderdeel van de werking van het normale systeem. Afsluitbewerkingen voor een enkel apparaatcontroller gelden alleen in gevallen waarin een hardware-onderdeel van het apparaat moet worden vervangen. Een controller kan ook worden opgestart in een situatie waarin prestaties wordt beïnvloed door het gebruik van excessief veel geheugen of een niet-functionerende controller. U moet mogelijk ook een controller opnieuw opstarten na een geslaagde controller vervangen, als u wilt schakelen en te testen van de controller vervangen.
+## <a name="restart-or-shut-down-a-single-controller"></a>Een enkele controller opnieuw opstarten of afsluiten
+Het opnieuw opstarten of afsluiten van de controller is niet vereist als onderdeel van de normale systeem bewerking. Afsluit bewerkingen voor één apparaat-controller zijn alleen gebruikelijk in gevallen waarin het hardwareapparaat van een defecte apparaat vervanging vereist. Het kan ook zijn dat het opnieuw opstarten van de controller vereist is in een situatie waarin de prestaties worden beïnvloed door overmatig gebruik van het geheugen of een defecte controller. Mogelijk moet u ook een controller opnieuw opstarten nadat de vervanging van de controller is geslaagd, als u de vervangen controller wilt inschakelen en testen.
 
-Opnieuw starten van een apparaat is niet ontregelen verbonden initiators, ervan uitgaande dat de passieve controller beschikbaar is. Als een passieve controller niet is beschikbaar is of is uitgeschakeld, uitgeschakeld, wordt de actieve controller opnieuw opstarten kan leiden tot de onderbreking van de service en uitvaltijd.
+Het opnieuw starten van een apparaat leidt niet tot uitval voor verbonden initiators, ervan uitgaande dat de passieve controller beschikbaar is. Als een passieve controller niet beschikbaar of uitgeschakeld is, kan het opnieuw opstarten van de actieve controller leiden tot onderbrekingen in de service en tot downtime.
 
 > [!IMPORTANT]
-> * **Een actieve domeincontroller moet nooit fysiek worden verwijderd omdat dit tot verlies van redundantie en een verhoogd risico op uitvaltijd leiden zou.**
-> * De volgende procedure geldt alleen voor de fysieke StorSimple-apparaat. Zie voor meer informatie over het starten, stoppen en opnieuw opstarten van de StorSimple-Cloudapparaat [werken met het cloudapparaat](storsimple-8000-cloud-appliance-u2.md##work-with-the-storsimple-cloud-appliance).
+> * **Een actieve controller mag nooit fysiek worden verwijderd, omdat dit zou leiden tot verlies van redundantie en een verhoogd risico op uitval tijd.**
+> * De volgende procedure is alleen van toepassing op het fysieke StorSimple-apparaat. Zie [werken met het Cloud apparaat](storsimple-8000-cloud-appliance-u2.md#work-with-the-storsimple-cloud-appliance)voor meer informatie over het starten, stoppen en opnieuw opstarten van de StorSimple Cloud Appliance.
 
-U kunt opnieuw opstarten of afsluiten van een controller voor één apparaat via de Azure-portal van de StorSimple Device Manager-service of Windows PowerShell voor StorSimple.
+U kunt één apparaat-controller opnieuw opstarten of afsluiten via de Azure Portal van de StorSimple Apparaatbeheer-service of Windows PowerShell voor StorSimple.
 
-Voor het beheren van uw apparaatcontrollers vanuit Azure portal, moet u de volgende stappen uitvoeren.
+Voer de volgende stappen uit om uw Apparaatbeheer te beheren vanuit de Azure Portal.
 
-#### <a name="to-restart-or-shut-down-a-controller-in-azure-portal"></a>Opnieuw opstarten of afsluiten van een domeincontroller in Azure portal
-1. In uw StorSimple Device Manager-service, gaat u naar **apparaten**. Selecteer uw apparaat uit de lijst met apparaten. 
+#### <a name="to-restart-or-shut-down-a-controller-in-azure-portal"></a>Een controller in Azure Portal opnieuw opstarten of afsluiten
+1. Ga in de StorSimple-Apparaatbeheer service naar **apparaten**. Selecteer uw apparaat in de lijst met apparaten. 
 
     ![Kies een apparaat](./media/storsimple-8000-manage-device-controller/manage-controller1.png)
 
-2. Ga naar **instellingen > Controllers**.
+2. Ga naar **instellingen > controllers**.
    
-    ![Controleer of de StorSimple-apparaatcontrollers in orde zijn](./media/storsimple-8000-manage-device-controller/manage-controller2.png)
-3. In de **Controllers** blade, Controleer of de status van beide controllers op uw apparaat **orde**. Selecteer een domeincontroller, met de rechtermuisknop op en selecteer vervolgens **opnieuw** of **afsluiten**.
+    ![Controleren of StorSimple-apparaten in orde zijn](./media/storsimple-8000-manage-device-controller/manage-controller2.png)
+3. Controleer op de Blade **controllers** of de status van beide controllers op het apparaat in **orde**is. Selecteer een controller, klik met de rechter muisknop en selecteer **opnieuw opstarten** of **Afsluiten**.
 
-    ![Selecteer opnieuw opstarten of afsluiten apparaatcontrollers voor StorSimple](./media/storsimple-8000-manage-device-controller/manage-controller3.png)
+    ![Selecteer opnieuw opstarten of StorSimple-hostcontrollers afsluiten](./media/storsimple-8000-manage-device-controller/manage-controller3.png)
 
-4. Een taak wordt gemaakt voor het opnieuw opstarten of afsluiten van de controller en krijgt u waarschuwingen van toepassing, indien van toepassing. Voor het controleren van het opnieuw opstarten of afsluiten, gaat u naar **Service > activiteitenlogboeken** en filter vervolgens de parameters die specifiek zijn voor uw service. Als een domeincontroller is afgesloten, moet u push-knop om in te schakelen op de controller deze in te schakelen.
+4. Er wordt een taak gemaakt om de controller opnieuw op te starten of af te sluiten en er worden toepasselijke waarschuwingen weer gegeven, indien van toepassing. Als u het opnieuw opstarten of afsluiten wilt controleren, gaat u naar **service logboeken voor activiteiten >** en filtert u op para meters die specifiek zijn voor uw service. Als een controller is afgesloten, moet u de aan/uit-knop pushen om de controller in te scha kelen om deze in te scha kelen.
 
-#### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>Opnieuw opstarten of afsluiten van een domeincontroller in Windows PowerShell voor StorSimple
-Voer de volgende stappen uit als u wilt afsluiten of opnieuw opstarten van een één domeincontroller op uw StorSimple-apparaat uit de Windows PowerShell voor StorSimple.
+#### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>Een controller in Windows PowerShell voor StorSimple opnieuw opstarten of afsluiten
+Voer de volgende stappen uit om een enkele controller op uw StorSimple-apparaat af te sluiten of opnieuw op te starten via de Windows PowerShell voor StorSimple.
 
-1. Toegang tot het apparaat via de seriële console of met een Telnet-sessie vanaf een externe computer. Volg de stappen in voor verbinding met de Controller 0 of 1 van de domeincontroller, [PuTTY gebruiken om verbinding maken met de seriële console van het apparaat](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-2. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang tot de**.
-3. In het bannerbericht aangegeven, maak een notitie van de controller u met (Controller 0 of Controller 1 verbonden bent) en of deze de actieve of de passieve controller (stand-by).
+1. Toegang tot het apparaat via de seriële console of een Telnet-sessie vanaf een externe computer. Als u verbinding wilt maken met controller 0 of controller 1, volgt u de stappen in [putty gebruiken om verbinding te maken met de seriële console van het apparaat](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
+2. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang**.
+3. In het banner bericht noteert u de controller waarmee u verbinding hebt (controller 0 of controller 1) en of dit de actieve of de passieve controller (standby) is.
    
-   * Als u wilt afsluiten Eén controller, bij de opdrachtprompt, typt u:
+   * Als u één controller wilt afsluiten, typt u het volgende bij de prompt:
      
        `Stop-HcsController`
      
-       Hiermee wordt de controller waaraan u met verbonden bent afgesloten. Als u de actieve controller stoppen, klikt u vervolgens failover het apparaat-schakeling naar de passieve controller.
+       Hiermee wordt de controller die u hebt verbonden, afgesloten. Als u de actieve controller stopt, voert het apparaat een failover uit naar de passieve controller.
 
-   * Typ het volgende om een domeincontroller, bij de prompt opnieuw te starten:
+   * Als u een controller opnieuw wilt opstarten, typt u het volgende bij de opdracht prompt:
      
        `Restart-HcsController`
      
-       De controller waaraan u met verbonden bent opnieuw is opgestart. Als u de actieve controller opnieuw start, failover het-schakeling naar de passieve controller voordat opnieuw wordt opgestart.
+       Hiermee wordt de controller waarmee u verbinding hebt gemaakt, opnieuw opgestart. Als u de actieve controller opnieuw opstart, wordt een failover naar de passieve controller uitgevoerd voordat de computer opnieuw wordt opgestart.
 
-## <a name="shut-down-a-storsimple-device"></a>Een StorSimple-apparaat uitschakelen
+## <a name="shut-down-a-storsimple-device"></a>Een StorSimple-apparaat afsluiten
 
-In deze sectie wordt uitgelegd hoe u een actief of een mislukte StorSimple-apparaat vanaf een externe computer afgesloten. Een apparaat is uitgeschakeld nadat de beide apparaatcontrollers worden afgesloten. Het apparaat wordt afgesloten gebeurt wanneer het apparaat fysiek wordt verplaatst of is uitgevoerd buiten gebruik gesteld.
-
-> [!IMPORTANT]
-> Voordat u op het apparaat wordt afgesloten, controleert u de status van onderdelen van het apparaat. Navigeer naar uw apparaat en klik vervolgens op **instellingen > hardwarestatus**. In de **Status en hardwarestatus** blade, Controleer of het LED-status van alle onderdelen van groen. Alleen een gezonde apparaat heeft een groene status. Als uw apparaat wordt afgesloten omlaag naar een niet-functionerende onderdeel vervangen, ziet u een mislukte (rode) of een gedegradeerde status bevindt (geel) voor de betreffende onderdelen.
-
-
-#### <a name="to-shut-down-a-storsimple-device"></a>Om een StorSimple-apparaat af te sluiten
-
-1. Gebruik de [opnieuw opstarten of afsluiten van een domeincontroller](#restart-or-shut-down-a-single-controller) procedure om te bepalen en afsluiten van de passieve controller op uw apparaat. U kunt deze bewerking uitvoeren in Azure portal of in Windows PowerShell voor StorSimple.
-2. Herhaal deze stap om de actieve controller af te sluiten.
-3. U moet er nu uitzien op het vlak van het vorige van het apparaat. Nadat de twee controllers volledig worden afgesloten, moet de status-LED's op beide controllers red knipperende. Als u moet het apparaat volledig uitschakelen op dit moment, spiegelen om de energie-switches op zowel voeding en koeling Modules (PCMs) op de positie OFF. Dit moet het apparaat uitschakelen.
-
-## <a name="reset-the-device-to-factory-default-settings"></a>Het apparaat terugzetten op fabrieksinstellingen
+In deze sectie wordt uitgelegd hoe u een actief of een mislukt StorSimple-apparaat afsluit vanaf een externe computer. Een apparaat wordt uitgeschakeld nadat beide controllers zijn afgesloten. Een apparaat wordt afgesloten wanneer het apparaat fysiek wordt verplaatst of buiten gebruik wordt gemaakt.
 
 > [!IMPORTANT]
-> Als u uw apparaat terugzetten op fabrieksinstellingen moet, neem dan contact op met Microsoft Support. De hieronder beschreven procedure moet worden gebruikt alleen in combinatie met Microsoft Support.
+> Controleer voordat u het apparaat uitschakelt de status van de onderdelen van het apparaat. Navigeer naar uw apparaat en klik vervolgens op **instellingen > hardware-status**. Controleer op de Blade **status en hardware Health** of de LED-status van alle onderdelen groen is. Alleen een goed apparaat heeft een groene status. Als uw apparaat wordt afgesloten om een defect onderdeel te vervangen, ziet u een fout (rood) of een gedegradeerde (gele) status voor de respectievelijke onderdelen.
 
-Deze procedure wordt beschreven hoe u uw Microsoft Azure StorSimple-apparaat opnieuw instelt standaardinstellingen met behulp van Windows PowerShell voor StorSimple.
-Alle gegevens en instellingen verwijdert opnieuw instellen van een apparaat uit het hele cluster standaard.
 
-De volgende stappen uitvoeren om uw Microsoft Azure StorSimple-apparaat opnieuw instelt fabrieksinstellingen:
+#### <a name="to-shut-down-a-storsimple-device"></a>Een StorSimple-apparaat afsluiten
 
-### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>Het apparaat terugzetten naar de standaardinstellingen in Windows PowerShell voor StorSimple
-1. Toegang tot het apparaat via de seriële console. Controleer het bannerbericht aangegeven om ervoor te zorgen dat u met verbonden bent de **Active** controller.
-2. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang tot de**.
-3. Bij de prompt, typ de volgende opdracht in te stellen het hele cluster, alle gegevens, metagegevens en -controller-instellingen worden verwijderd:
+1. Gebruik de procedure voor het [opnieuw opstarten of afsluiten van een controller](#restart-or-shut-down-a-single-controller) om de passieve controller op het apparaat te identificeren en af te sluiten. U kunt deze bewerking uitvoeren in de Azure Portal of in Windows PowerShell voor StorSimple.
+2. Herhaal de bovenstaande stap om de actieve controller af te sluiten.
+3. U moet nu kijken naar het achtergrond vlak van het apparaat. Nadat de twee controllers volledig zijn afgesloten, moeten de status-Led's op beide controllers rood knip peren. Als u het apparaat op dit moment volledig wilt uitschakelen, spiegelt u de voedings switches van zowel de voeding als de koel modules (PCMs) in de stand-by. Hiermee schakelt u het apparaat uit.
+
+## <a name="reset-the-device-to-factory-default-settings"></a>De standaard fabrieks instellingen van het apparaat herstellen
+
+> [!IMPORTANT]
+> Als u de standaard instellingen van uw apparaat wilt herstellen, neemt u contact op met Microsoft Ondersteuning. De hieronder beschreven procedure mag alleen worden gebruikt in combi natie met Microsoft Ondersteuning.
+
+In deze procedure wordt beschreven hoe u uw Microsoft Azure StorSimple apparaat opnieuw instelt op de standaard fabrieks instellingen met behulp van Windows PowerShell voor StorSimple.
+Als u een apparaat opnieuw instelt, worden alle gegevens en instellingen van het hele cluster standaard verwijderd.
+
+Voer de volgende stappen uit om de fabrieks instellingen van uw Microsoft Azure StorSimple apparaat opnieuw in te stellen:
+
+### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>Het apparaat opnieuw instellen op de standaard instellingen in Windows PowerShell voor StorSimple
+1. Toegang tot het apparaat via de seriële console. Controleer het banner bericht om er zeker van te zijn dat u verbonden bent met de **actieve** controller.
+2. Kies in het menu van de seriële console optie 1, **Meld u aan met volledige toegang**.
+3. Typ bij de prompt de volgende opdracht om het hele cluster opnieuw in te stellen, waarbij alle gegevens, meta data en controller instellingen worden verwijderd:
    
     `Reset-HcsFactoryDefault`
    
-    Als u wilt herstellen in plaats daarvan één controller, gebruikt u de [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) cmdlet met de `-scope` parameter.)
+    Als u in plaats daarvan één controller opnieuw wilt instellen, gebruikt u de cmdlet [Reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) met de para meter `-scope`.)
    
-    Het systeem wordt meerdere keren opnieuw. U krijgt bericht wanneer het opnieuw instellen is voltooid. Afhankelijk van het systeemmodel duurt het 45-60 minuten voor een 8100-apparaat en 60-90 minuten voor een 8600 dit proces te voltooien.
+    Het systeem wordt meerdere keren opnieuw opgestart. U ontvangt een melding wanneer de herstel bewerking is voltooid. Afhankelijk van het systeem model kan het 45-60 minuten duren voor een 8100-apparaat en 60-90 minuten voor een 8600 om dit proces te volt ooien.
    
-## <a name="questions-and-answers-about-managing-device-controllers"></a>Vragen en antwoorden over het beheren van apparaatcontrollers
-In deze sectie hebben we samengevat enkele veelgestelde vragen met betrekking tot het beheren van domeincontrollers voor StorSimple-apparaat.
+## <a name="questions-and-answers-about-managing-device-controllers"></a>Vragen en antwoorden over het beheren van Apparaatbeheer
+In deze sectie hebben we enkele van de veelgestelde vragen over het beheer van StorSimple-apparaten samenvatten.
 
-**V:** Wat gebeurt er als beide controllers op mijn apparaat in orde en ingeschakeld zijn op en ik opnieuw opstarten of afsluiten van de actieve controller?
+**V:** Wat gebeurt er als beide controllers op mijn apparaat in orde zijn en zijn ingeschakeld en de actieve controller opnieuw opstarten of afsluiten?
 
-**A:** Als beide controllers op uw apparaat in orde en ingeschakeld, u om bevestiging wordt gevraagd. U kunt kiezen om:
+**A:** Als beide controllers op het apparaat in orde zijn en zijn ingeschakeld, wordt u gevraagd om bevestiging. U kunt kiezen uit:
 
-* **De actieve controller opnieuw** : U krijgt een melding dat het apparaat een failover uitvoeren naar de passieve controller opnieuw starten van een actieve controller veroorzaakt. De controller wordt opnieuw opgestart.
-* **Een actieve controller afsluiten** : U krijgt een melding dat een actieve controller afsluiten tot downtime leidt. U moet ook de / uit-knop op het apparaat om in te schakelen op de controller te pushen.
+* **De actieve controller opnieuw starten** : u wordt gewaarschuwd dat het apparaat een failover naar de passieve controller heeft veroorzaakt door het opnieuw opstarten van een actieve controller. De controller wordt opnieuw opgestart.
+* **Een actieve controller afsluiten** : u wordt gewaarschuwd dat het afsluiten van een actieve controller resulteert in uitval tijd. U moet ook de aan/uit-knop op het apparaat pushen om de controller in te scha kelen.
 
-**V:** Wat gebeurt er als de passieve controller op mijn apparaat niet beschikbaar is of is uitgeschakeld is uitgeschakeld en ik opnieuw opstarten of afsluiten van de actieve controller?
+**V:** Wat gebeurt er als de passieve controller op mijn apparaat niet beschikbaar is of is uitgeschakeld en de actieve controller opnieuw wordt opgestart of afgesloten?
 
-**A:** Als de passieve controller op uw apparaat is niet beschikbaar is of is uitgeschakeld uitgeschakeld en u wilt:
+**A:** Als de passieve controller op het apparaat niet beschikbaar is of is uitgeschakeld, en u ervoor kiest om het volgende te doen:
 
-* **De actieve controller opnieuw** : U krijgt een melding dat u doorgaat met de bewerking in een tijdelijke onderbreking van de service resulteert, en u wordt gevraagd om bevestiging.
-* **Een actieve controller afsluiten** : U krijgt een melding die u doorgaat met de bewerking resulteert in uitvaltijd. U moet ook push-knop op een of beide controllers om in te schakelen op het apparaat. U wordt gevraagd om bevestiging.
+* **De actieve controller opnieuw starten** : u wordt gewaarschuwd dat het voortzetten van de bewerking resulteert in een tijdelijke onderbreking van de service en u wordt gevraagd om bevestiging.
+* **Een actieve controller afsluiten** : u ontvangt een melding dat de bewerking wordt voortgezet en de uitval tijd wordt teruggebracht. U moet ook de aan/uit-knop op een of beide controllers pushen om het apparaat in te scha kelen. U wordt gevraagd om bevestiging.
 
-**V:** Wanneer de controller opnieuw opstarten of afsluiten doet kloktijd mislukt?
+**V:** Wanneer wordt het opnieuw opstarten of afsluiten van de controller niet uitgevoerd?
 
-**A:** Opnieuw opstarten of afsluiten van een domeincontroller kan mislukken als:
+**A:** Het opnieuw opstarten of afsluiten van een controller kan mislukken als:
 
-* Een apparaatupdate wordt uitgevoerd.
-* Een controller opnieuw opstarten wordt al uitgevoerd.
-* Een controller is afgesloten, wordt al uitgevoerd.
+* Er wordt een update van het apparaat uitgevoerd.
+* Het opnieuw opstarten van de controller wordt al uitgevoerd.
+* Er wordt al een speld afgesloten.
 
-**V:** Hoe kunt u achterhalen als een domeincontroller is opnieuw opgestart of afgesloten?
+**V:** Hoe kunt u achterhalen of een controller opnieuw is opgestart of afgesloten?
 
-**A:** U kunt de status van de controller op de blade van de domeincontroller controleren. De status van de controller wordt aangegeven of een domeincontroller wordt momenteel opnieuw opstarten of afsluiten. Bovendien de **waarschuwingen** blade bevatten een informatieve waarschuwing als de controller opnieuw wordt opgestart of afgesloten. De controller opnieuw opstarten en afsluiten bewerkingen zijn ook opgenomen in de activiteitenlogboeken. Voor meer informatie over activiteitenlogboeken, gaat u naar [de activiteitenlogboeken weergeven](storsimple-8000-service-dashboard.md#view-the-activity-logs).
+**A:** U kunt de status van de controller controleren op de Blade Controller. De controller status geeft aan of een controller bezig is met opnieuw opstarten of afsluiten. Daarnaast bevat de Blade **waarschuwingen** een informatieve waarschuwing als de controller opnieuw wordt opgestart of wordt afgesloten. De bewerkingen voor het opnieuw opstarten en afsluiten van de controller worden ook vastgelegd in de activiteiten Logboeken. Ga voor meer informatie over activiteiten logboeken naar [de activiteiten logboeken weer geven](storsimple-8000-service-dashboard.md#view-the-activity-logs).
 
-**V:** Is er gevolgen voor de i/o Als gevolg van een failover van de controller?
+**V:** Zijn er gevolgen voor de I/O als gevolg van een failover van een controller?
 
-**A:** De TCP-verbindingen tussen de initiators en actieve controller opnieuw ingesteld als gevolg van een failover van de controller, maar wordt pas gemaakt wanneer de passieve controller wordt ervan uitgegaan dat de bewerking. Mogelijk zijn er een pauze van tijdelijke (minder dan 30 seconden) in de i/o-activiteit tussen initiators en het apparaat in de loop van deze bewerking.
+**A:** De TCP-verbindingen tussen initia tors en de actieve controller worden opnieuw ingesteld als gevolg van een failover van de controller, maar worden opnieuw ingesteld wanneer de passieve controller de bewerking afneemt. Er is mogelijk een tijdelijke (minder dan 30 seconden) pauze in de I/O-activiteit tussen initia tors en het apparaat tijdens de uitvoering van deze bewerking.
 
-**V:** Hoe kan ik mijn controller voor de service nadat deze is afgesloten en verwijderd retourneren?
+**V:** Hoe kan ik retour neren van mijn controller naar service nadat deze is afgesloten en verwijderd?
 
-**A:** Als u wilt een controller terugkeren naar de service, moet u dit invoegen in het chassis zoals beschreven in [vervangen door een netwerkcontroller module op uw StorSimple-apparaat](storsimple-8000-controller-replacement.md).
+**A:** Als u een controller naar de service wilt retour neren, moet u deze in het chassis invoegen zoals beschreven in [een controller module vervangen op uw StorSimple-apparaat](storsimple-8000-controller-replacement.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-* Als u problemen ondervindt met uw StorSimple-apparaatcontrollers die u niet kunt oplossen met behulp van de procedures in deze zelfstudie [Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md).
-* Voor meer informatie over het gebruik van de StorSimple Device Manager-service, gaat u naar [de StorSimple Device Manager-service gebruiken voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
+* Als u problemen ondervindt met de StorSimple-apparaten die u niet kunt oplossen met behulp van de procedures in deze zelf studie, [neemt u contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md).
+* Ga voor meer informatie over het gebruik van de StorSimple Apparaatbeheer-service naar [de StorSimple Apparaatbeheer-service gebruiken om uw StorSimple-apparaat te beheren](storsimple-8000-manager-service-administration.md).
 

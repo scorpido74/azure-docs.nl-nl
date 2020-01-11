@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/12/2019
-ms.openlocfilehash: 33e4b22bd4455d19fc334c4a3093183a8f9872f0
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 4d7c094904529323b0665d14255d1eb76cb78bd3
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830119"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891910"
 ---
 # <a name="copy-data-from-and-to-sftp-server-using-azure-data-factory"></a>Gegevens kopiëren van en naar een SFTP-server met behulp van Azure Data Factory
 
@@ -442,4 +442,4 @@ Als u meer wilt weten over de eigenschappen, controleert u de [activiteit verwij
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md##supported-data-stores-and-formats).
+Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Azure Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).

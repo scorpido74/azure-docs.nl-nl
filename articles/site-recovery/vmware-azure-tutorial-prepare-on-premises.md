@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: c82f8130340dfc3848159a6f88db0a304a3ab149
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 4969a1f14e53aabf79495e179213f9763d4c8803
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953751"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893635"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>On-premises VMware-servers voorbereiden op herstel naar Azure na een noodgeval
 
@@ -108,7 +108,7 @@ Als u na een failover verbinding wilt maken met Linux-VM’s met behulp van SSH,
 
 
 ## <a name="failback-requirements"></a>Vereisten voor failback
-Als u van plan bent om terug te gaan naar uw on-premises site, zijn er een aantal [vereisten voor failback](vmware-azure-reprotect.md##before-you-begin). U kunt deze nu voorbereiden, maar u hoeft dit niet te doen. U kunt voorbereiden nadat u een failover hebt uitgevoerd naar Azure.
+Als u van plan bent om terug te gaan naar uw on-premises site, zijn er een aantal [vereisten voor failback](vmware-azure-reprotect.md#before-you-begin). U kunt deze nu voorbereiden, maar u hoeft dit niet te doen. U kunt voorbereiden nadat u een failover hebt uitgevoerd naar Azure.
 
 
 

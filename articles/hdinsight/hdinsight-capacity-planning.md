@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 9080a0f327aae50a87b5e69ec157a46181a38a65
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: db7b2787df68e5e9baadddc7e6e6159cfff26097
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640938"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887237"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Capaciteits planning voor HDInsight-clusters
 
@@ -123,7 +123,7 @@ Als u een quota verhoging wilt aanvragen, voert u de volgende stappen uit:
 > [!NOTE]  
 > Als u het HDInsight core-quotum moet verhogen in een privé gebied, [dient u een white list-aanvraag](https://aka.ms/canaryintwhitelist)in.
 
-U kunt [contact opnemen met de ondersteuning om een quotum verhoging aan te vragen](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+U kunt [contact opnemen met de ondersteuning om een quotum verhoging aan te vragen](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 
 Er zijn echter enkele vaste quota limieten, bijvoorbeeld één Azure-abonnement kan Maxi maal 10.000 kernen hebben. Zie [Azure-abonnement en service limieten, quota's en beperkingen](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)voor meer informatie over deze limieten.
 

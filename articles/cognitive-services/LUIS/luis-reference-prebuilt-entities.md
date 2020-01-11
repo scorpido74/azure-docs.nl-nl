@@ -1,7 +1,7 @@
 ---
 title: Alle vooraf gemaakte entiteiten-LUIS
 titleSuffix: Azure Cognitive Services
-description: Dit artikel bevat een lijst van de vooraf gemaakte entiteiten die zijn opgenomen in Language Understanding (LUIS).
+description: In dit artikel bevat een lijst met de vooraf gemaakte entiteiten die zijn opgenomen in Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,304 +11,304 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: diberry
-ms.openlocfilehash: a5fcccc18a453101bd1166f2c85b0c3cdc747c3a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 254fec23ef34b936405439e0334e24e594a24dc4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464959"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890237"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entiteiten per cultuur in uw LUIS-model
 
-Language Understanding (LUIS) biedt vooraf gemaakte entiteiten. Wanneer een vooraf samengestelde entiteit is opgenomen in uw toepassing, bevat LUIS de overeenkomstige entiteit voorspellingen in het eindpunt antwoord. Alle voor beelden van uitingen worden ook aangeduid met de entiteit. Het gedrag van vooraf gemaakte entiteiten **kan niet** worden gewijzigd. Tenzij anders vermeld, zijn vooraf gebouwde entiteiten beschikbaar in alle land instellingen van de LUIS-toepassing (cultures). In de volgende tabel ziet u de vooraf gemaakte entiteiten die voor elke cultuur worden ondersteund.
+Language Understanding (LUIS) biedt vooraf gemaakte entiteiten. Wanneer een vooraf gedefinieerde entiteit is opgenomen in uw toepassing, bevat LUIS de bijbehorende voorspelling van de entiteit in het antwoord van het eindpunt. Alle uitingen van voorbeeld zijn ook met de entiteit gelabeld. Het gedrag van vooraf gemaakte entiteiten **kan geen** worden gewijzigd. Tenzij anders vermeld, is vooraf gemaakte entiteiten zijn beschikbaar in alle LUIS toepassing landinstellingen (culturen). De volgende tabel ziet u de vooraf gemaakte entiteiten die worden ondersteund voor elke cultuur.
 
-|Culture|Subcultuur|Opmerkingen|
+|Culture|Overenting|Opmerkingen|
 |--|--|--|
 |Chinees|[zh-CN](#chinese-entity-support)||
-|Nederlands|[nl-NL](#dutch-entity-support)||
+|Nederlands|[NL-NL](#dutch-entity-support)||
 |Nederlands|[en-US (Amerikaans)](#english-american-entity-support)||
-|Frans|[fr-ca (Canada)](#french-canadian-entity-support), [fr-fr (Frank rijk)](#french-france-entity-support), ||
-|Duits|[de-DE](#german-entity-support)||
+|Frans|[fr-CA (Canada)](#french-canadian-entity-support), [fr-FR (Frankrijk)](#french-france-entity-support), ||
+|Duits|[nl-nl](#german-entity-support)||
 |Italiaans|[IT-IT](#italian-entity-support)||
 |Japans|[ja-JP](#japanese-entity-support)||
 |Koreaans|[ko-KR](#korean-entity-support)||
 |Portugees|[pt-BR (Brazilië)](#portuguese-brazil-entity-support)||
-|Spaans|[es-es (Spanje)](#spanish-spain-entity-support), [es-MX (Mexico)](#spanish-mexico-entity-support)||
+|Spaans|[es-ES (Spanje)](#spanish-spain-entity-support), [es-MX (Mexico)](#spanish-mexico-entity-support)||
 |Turks|[Turks](#turkish-entity-support)|Geen vooraf gemaakte entiteiten die in Turks worden ondersteund|
 
 ## <a name="prediction-endpoint-runtime"></a>Voorspellings eindpunt runtime
 
 De beschik baarheid van een vooraf samengestelde entiteit in een specifieke taal wordt bepaald door de runtime-versie van de Voorspellings eindpunt. 
 
-## <a name="chinese-entity-support"></a>Ondersteuning voor Chinese entiteiten
+## <a name="chinese-entity-support"></a>Ondersteuning voor Chinese entiteit
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```zh-CN``` |
+|Vooraf gemaakte entiteiten|```zh-CN``` |
 ------|:------:|
-[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>blijft<br>Gevormd<br>profieldag   |    V2, V3   |
-[Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   | 
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volumebitmap<br>Locatie<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   | 
+[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>week<br>dag   |    V2, V3   |
+[Valuta](luis-reference-prebuilt-currency.md):<br>dollar<br>decimale eenheid (ex: afronding)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>tijd<br>timerange   |    V2, V3   | 
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (ex: bits/byte)<br>de lengte (ex: meter)<br>snelheid (ex: mijl per uur)  |    V2, V3   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    -   | 
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |  
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
+[Volgnummer](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentuele](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
-[Persoonnaam](luis-reference-prebuilt-person.md)   |    V2, V3   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
-[Tempe ratuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>graden<br>rankine<br>delisle<br>Fahrenheit   |    V2, V3   | 
+[Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    V2, V3   | 
+[Telefoonnummer](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   | 
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="dutch-entity-support"></a>Ondersteuning voor Nederlandstalige entiteiten
+## <a name="dutch-entity-support"></a>Nederlands entiteit ondersteuning
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```nl-NL``` |
+|Vooraf gemaakte entiteiten|```nl-NL``` |
 ------|:------:|
-[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>blijft<br>Gevormd<br>profieldag   |    V2, V3   |
-[Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
+[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>week<br>dag   |    V2, V3   |
+[Valuta](luis-reference-prebuilt-currency.md):<br>dollar<br>decimale eenheid (ex: afronding)  |    V2, V3   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   | 
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volumebitmap<br>Locatie<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   | 
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (ex: bits/byte)<br>de lengte (ex: meter)<br>snelheid (ex: mijl per uur)  |    V2, V3   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |  
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
+[Volgnummer](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentuele](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
-[Persoonnaam](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
-[Tempe ratuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>graden<br>rankine<br>delisle<br>Fahrenheit   |    V2, V3   | 
+[Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[Telefoonnummer](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   | 
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="english-american-entity-support"></a>Ondersteuning voor Engelse (American)-entiteiten
+## <a name="english-american-entity-support"></a>Ondersteuning voor Engels (Amerikaans) entiteit
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```en-US``` |
+|Vooraf gemaakte entiteiten|```en-US``` |
 ------|:------:|
-[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>blijft<br>Gevormd<br>profieldag   |    V2, V3   |
-[Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   | 
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volumebitmap<br>Locatie<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   | 
+[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>week<br>dag   |    V2, V3   |
+[Valuta](luis-reference-prebuilt-currency.md):<br>dollar<br>decimale eenheid (ex: afronding)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>tijd<br>timerange   |    V2, V3   | 
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (ex: bits/byte)<br>de lengte (ex: meter)<br>snelheid (ex: mijl per uur)  |    V2, V3   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    V2, V3   | 
-[Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |  
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
+[Volgnummer](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    V2, V3   |
-[Procentuele](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
-[Persoonnaam](luis-reference-prebuilt-person.md)   |    V2, V3   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
-[Tempe ratuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>graden<br>rankine<br>delisle<br>Fahrenheit   |    V2, V3   | 
+[Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    V2, V3   | 
+[Telefoonnummer](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   | 
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="french-france-entity-support"></a>Ondersteuning voor Frans (Frank rijk)
+## <a name="french-france-entity-support"></a>Ondersteuning van de entiteit Frans (Frankrijk)
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```fr-FR``` |
+|Vooraf gemaakte entiteiten|```fr-FR``` |
 ------|:------:|
-[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>blijft<br>Gevormd<br>profieldag   |    V2, V3   |
-[Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   | 
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volumebitmap<br>Locatie<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   | 
+[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>week<br>dag   |    V2, V3   |
+[Valuta](luis-reference-prebuilt-currency.md):<br>dollar<br>decimale eenheid (ex: afronding)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>tijd<br>timerange   |    V2, V3   | 
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (ex: bits/byte)<br>de lengte (ex: meter)<br>snelheid (ex: mijl per uur)  |    V2, V3   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |  
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Volgnummer](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |  
-[Procentuele](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
-[Persoonnaam](luis-reference-prebuilt-person.md)   |   -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
-[Tempe ratuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>graden<br>rankine<br>delisle<br>Fahrenheit   |    V2, V3   | 
+[Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
+[PersonName](luis-reference-prebuilt-person.md)   |   -   | 
+[Telefoonnummer](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   | 
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="french-canadian-entity-support"></a>Ondersteuning voor Frans (Canada)
+## <a name="french-canadian-entity-support"></a>Frans (Canadees) entiteit ondersteuning
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```fr-CA``` |
+|Vooraf gemaakte entiteiten|```fr-CA``` |
 ------|:------:|
-[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>blijft<br>Gevormd<br>profieldag   |    V2, V3   |
-[Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   | 
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volumebitmap<br>Locatie<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   | 
+[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>week<br>dag   |    V2, V3   |
+[Valuta](luis-reference-prebuilt-currency.md):<br>dollar<br>decimale eenheid (ex: afronding)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>tijd<br>timerange   |    V2, V3   | 
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (ex: bits/byte)<br>de lengte (ex: meter)<br>snelheid (ex: mijl per uur)  |    V2, V3   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |  
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
+[Volgnummer](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentuele](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
-[Persoonnaam](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
-[Tempe ratuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>graden<br>rankine<br>delisle<br>Fahrenheit   |    V2, V3   | 
+[Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[Telefoonnummer](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   | 
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="german-entity-support"></a>Duitse entiteits ondersteuning
+## <a name="german-entity-support"></a>Ondersteuning voor Duitse entiteit
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```de-DE``` |
+|Vooraf gemaakte entiteiten|```de-DE``` |
 ------|:------:|
-[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>blijft<br>Gevormd<br>profieldag   |    V2, V3   |
-[Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   | 
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volumebitmap<br>Locatie<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   | 
+[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>week<br>dag   |    V2, V3   |
+[Valuta](luis-reference-prebuilt-currency.md):<br>dollar<br>decimale eenheid (ex: afronding)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>tijd<br>timerange   |    V2, V3   | 
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (ex: bits/byte)<br>de lengte (ex: meter)<br>snelheid (ex: mijl per uur)  |    V2, V3   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |  
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
+[Volgnummer](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |  
-[Procentuele](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
-[Persoonnaam](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
-[Tempe ratuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>graden<br>rankine<br>delisle<br>Fahrenheit   |    V2, V3   | 
+[Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[Telefoonnummer](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   | 
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="italian-entity-support"></a>Ondersteuning voor Italiaanse entiteiten
+## <a name="italian-entity-support"></a>Italiaans entiteit ondersteuning
 
 Italiaanse vooraf ontwikkelde leeftijd, valuta, dimensie, getal, percentage _resolutie_ gewijzigd van v2 en V3 preview.
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```it-IT``` |
+|Vooraf gemaakte entiteiten|```it-IT``` |
 ------|:------:|
-[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>blijft<br>Gevormd<br>profieldag   |    V2, V3   |
-[Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
+[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>week<br>dag   |    V2, V3   |
+[Valuta](luis-reference-prebuilt-currency.md):<br>dollar<br>decimale eenheid (ex: afronding)  |    V2, V3   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   | 
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volumebitmap<br>Locatie<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   | 
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (ex: bits/byte)<br>de lengte (ex: meter)<br>snelheid (ex: mijl per uur)  |    V2, V3   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |  
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
+[Volgnummer](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentuele](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
-[Persoonnaam](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
-[Tempe ratuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>graden<br>rankine<br>delisle<br>Fahrenheit   |    V2, V3   | 
+[Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[Telefoonnummer](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   | 
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="japanese-entity-support"></a>Ondersteuning voor Japanse entiteit
+## <a name="japanese-entity-support"></a>Ondersteuning voor Japans entiteit
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```ja-JP``` |
+|Vooraf gemaakte entiteiten|```ja-JP``` |
 ------|:------:|
-[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>blijft<br>Gevormd<br>profieldag   |    V2,-   |
-[Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2,-   |
+[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>week<br>dag   |    V2,-   |
+[Valuta](luis-reference-prebuilt-currency.md):<br>dollar<br>decimale eenheid (ex: afronding)  |    V2,-   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   | 
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volumebitmap<br>Locatie<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2,-   | 
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (ex: bits/byte)<br>de lengte (ex: meter)<br>snelheid (ex: mijl per uur)  |    V2,-   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2,-   |  
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2,-   |  
+[Volgnummer](luis-reference-prebuilt-ordinal.md)   |    V2,-   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentuele](luis-reference-prebuilt-percentage.md)   |    V2,-   | 
-[Persoonnaam](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
-[Tempe ratuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>graden<br>rankine<br>delisle<br>Fahrenheit   |    V2,-   | 
+[Percentage](luis-reference-prebuilt-percentage.md)   |    V2,-   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[Telefoonnummer](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2,-   | 
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="korean-entity-support"></a>Koreaanse entiteits ondersteuning
+## <a name="korean-entity-support"></a>Koreaans entiteit ondersteuning
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```ko-KR``` |
+|Vooraf gemaakte entiteiten|```ko-KR``` |
 ------|:------:|
-[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>blijft<br>Gevormd<br>profieldag   |    -   |
-[Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    -   |
+[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>week<br>dag   |    -   |
+[Valuta](luis-reference-prebuilt-currency.md):<br>dollar<br>decimale eenheid (ex: afronding)  |    -   |
 [Datetime](luis-reference-prebuilt-deprecated.md)   |    -   | 
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volumebitmap<br>Locatie<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    -   | 
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (ex: bits/byte)<br>de lengte (ex: meter)<br>snelheid (ex: mijl per uur)  |    -   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    -   |  
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    -   |  
+[Volgnummer](luis-reference-prebuilt-ordinal.md)   |    -   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentuele](luis-reference-prebuilt-percentage.md)   |    -   | 
-[Persoonnaam](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
-[Tempe ratuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>graden<br>rankine<br>delisle<br>Fahrenheit   |    -   | 
+[Percentage](luis-reference-prebuilt-percentage.md)   |    -   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[Telefoonnummer](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    -   | 
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="portuguese-brazil-entity-support"></a>Ondersteuning voor Portugees (Brazilië)-entiteiten
+## <a name="portuguese-brazil-entity-support"></a>Ondersteuning voor Portugees (Brazilië)-entiteit
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```pt-BR``` |
+|Vooraf gemaakte entiteiten|```pt-BR``` |
 ------|:------:|
-[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>blijft<br>Gevormd<br>profieldag   |    V2, V3   |
-[Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   | 
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volumebitmap<br>Locatie<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   | 
+[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>week<br>dag   |    V2, V3   |
+[Valuta](luis-reference-prebuilt-currency.md):<br>dollar<br>decimale eenheid (ex: afronding)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>tijd<br>timerange   |    V2, V3   | 
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (ex: bits/byte)<br>de lengte (ex: meter)<br>snelheid (ex: mijl per uur)  |    V2, V3   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |  
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
+[Volgnummer](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentuele](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
-[Persoonnaam](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
-[Tempe ratuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>graden<br>rankine<br>delisle<br>Fahrenheit   |    V2, V3   | 
+[Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[Telefoonnummer](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   | 
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="spanish-spain-entity-support"></a>Ondersteuning voor Spaanse (Spanje)-entiteiten
+## <a name="spanish-spain-entity-support"></a>Spaans (Spanje) entiteit ondersteuning
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```es-ES``` |
+|Vooraf gemaakte entiteiten|```es-ES``` |
 ------|:------:|
-[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>blijft<br>Gevormd<br>profieldag   |    V2, V3   |
-[Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    V2, V3   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    V2, V3   | 
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volumebitmap<br>Locatie<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    V2, V3   | 
+[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>week<br>dag   |    V2, V3   |
+[Valuta](luis-reference-prebuilt-currency.md):<br>dollar<br>decimale eenheid (ex: afronding)  |    V2, V3   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>tijd<br>timerange   |    V2, V3   | 
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (ex: bits/byte)<br>de lengte (ex: meter)<br>snelheid (ex: mijl per uur)  |    V2, V3   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |  
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
+[Volgnummer](luis-reference-prebuilt-ordinal.md)   |    V2, V3   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentuele](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
-[Persoonnaam](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
-[Tempe ratuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>graden<br>rankine<br>delisle<br>Fahrenheit   |    V2, V3   | 
+[Percentage](luis-reference-prebuilt-percentage.md)   |    V2, V3   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[Telefoonnummer](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    V2, V3   | 
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-## <a name="spanish-mexico-entity-support"></a>Ondersteuning voor Spaanse (Mexico)-entiteiten
+## <a name="spanish-mexico-entity-support"></a>Ondersteuning van de entiteit Spaans (Mexico)
 
 De volgende entiteiten worden ondersteund:
 
-|Vooraf gebouwde entiteit|```es-MX``` |
+|Vooraf gemaakte entiteiten|```es-MX``` |
 ------|:------:|
-[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>blijft<br>Gevormd<br>profieldag   |    -   |
-[Valuta (Money)](luis-reference-prebuilt-currency.md):<br>Gulden<br>Fractionele eenheid (ex: afronding)  |    -   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>daterange<br>tijd<br>time Range   |    -   | 
-[Dimensie](luis-reference-prebuilt-dimension.md):<br>volumebitmap<br>Locatie<br>dikte<br>informatie (bijvoorbeeld: bit/byte)<br>lengte (bijvoorbeeld: meter)<br>snelheid (bijvoorbeeld: mijl per uur)  |    -   | 
+[Leeftijd](luis-reference-prebuilt-age.md):<br>jaar<br>maand<br>week<br>dag   |    -   |
+[Valuta](luis-reference-prebuilt-currency.md):<br>dollar<br>decimale eenheid (ex: afronding)  |    -   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>tijd<br>timerange   |    -   | 
+[Dimensie](luis-reference-prebuilt-dimension.md):<br>volume<br>gebied<br>gewicht<br>informatie (ex: bits/byte)<br>de lengte (ex: meter)<br>snelheid (ex: mijl per uur)  |    -   | 
 [E-mail](luis-reference-prebuilt-email.md)   |    V2, V3   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
-[Woordgroep](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    V2, V3   | 
 [Number](luis-reference-prebuilt-number.md)   |    V2, V3   |  
-[Rang telwoord](luis-reference-prebuilt-ordinal.md)   |    -   |  
+[Volgnummer](luis-reference-prebuilt-ordinal.md)   |    -   |  
 [OrdinalV2](luis-reference-prebuilt-ordinal-v2.md)   |    -   |
-[Procentuele](luis-reference-prebuilt-percentage.md)   |    -   | 
-[Persoonnaam](luis-reference-prebuilt-person.md)   |    -   | 
-[PhoneNumber](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
-[Tempe ratuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>graden<br>rankine<br>delisle<br>Fahrenheit   |    -   | 
+[Percentage](luis-reference-prebuilt-percentage.md)   |    -   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[Telefoonnummer](luis-reference-prebuilt-phonenumber.md)   |    V2, V3   | 
+[Temperatuur](luis-reference-prebuilt-temperature.md):<br>Fahrenheit<br>Kelvin<br>rankine<br>delisle<br>Celsius   |    -   | 
 [URL](luis-reference-prebuilt-url.md)   |    V2, V3   |
 
-Opmerkingen over [afgeschafte vooraf samengestelde entiteiten](luis-reference-prebuilt-deprecated.md) weer geven
+Zie Opmerkingen op [afgeschaft vooraf gemaakte entiteiten](luis-reference-prebuilt-deprecated.md)
 
-De woordgroep is niet beschikbaar in alle subcultuur van Portugees (Brazilië)-```pt-BR```.
+KeyPhrase is niet beschikbaar in alle overenting Portugees (Brazilië) - ```pt-BR```.
 
 ## <a name="turkish-entity-support"></a>Turkse entiteit ondersteuning
 
@@ -339,11 +339,11 @@ See notes on [Deprecated prebuilt entities](luis-reference-prebuilt-deprecated.m
 KeyPhrase is not available.
 -->
 
-## <a name="contribute-to-prebuilt-entity-cultures"></a>Bijdragen aan vooraf ontwikkelde entity culturen
-De vooraf gemaakte entiteiten worden ontwikkeld in het open-source-tekst project van recognizers. [Bijdragen](https://github.com/Microsoft/Recognizers-Text) aan het project. Dit project bevat voor beelden van valuta per cultuur. 
+## <a name="contribute-to-prebuilt-entity-cultures"></a>Bijdragen aan de vooraf gedefinieerde entiteit culturen
+De vooraf gemaakte entiteiten zijn ontwikkeld in de tekst van de kenmerken die zijn open source-project. [Bijdragen](https://github.com/Microsoft/Recognizers-Text) aan het project. Dit project bevat voorbeelden van valuta per cultuur. 
 
-GeographyV2 en Persoonnaam worden niet opgenomen in het tekst project recognizers. Voor problemen met deze vooraf gemaakte entiteiten opent u een [ondersteunings aanvraag](../../azure-supportability/how-to-create-azure-support-request.md). 
+GeographyV2 en PersonName zijn niet opgenomen in het project kenmerken tekst. Open voor problemen met deze vooraf gemaakte entiteiten, een [ondersteuningsaanvraag](../../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de entiteiten [aantal](luis-reference-prebuilt-number.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md)en [valuta](luis-reference-prebuilt-currency.md) . 
+Meer informatie over de [getal](luis-reference-prebuilt-number.md), [datetimeV2](luis-reference-prebuilt-datetimev2.md), en [valuta](luis-reference-prebuilt-currency.md) entiteiten. 

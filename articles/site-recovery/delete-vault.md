@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: fb1e22b0ca1da00bf2665d863b40f19fa1621771
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 0e409ffdedbac822aedf48833f2dd85f8e04afa2
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721292"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894979"
 ---
 # <a name="delete-a-site-recovery-services-vault"></a>Een Site Recovery Services-kluis verwijderen
 
@@ -44,7 +44,7 @@ Voordat u een kluis kunt verwijderen, moet u de geregistreerde servers en items 
 
 1. Volg [deze stappen](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-hyper-v-virtual-machine-replicating-to-azure-using-the-system-center-vmm-to-azure-scenario) om Hyper-V-vm's te verwijderen die worden beheerd door System Center VMM.
 2. Koppel en verwijder alle replicatie beleidsregels. Doe dit in uw kluis > **site Recovery infrastructuur** > **voor de System Center VMM** - > **replicatie beleid**.
-3. Volg [deze stappen](site-recovery-manage-registration-and-protection.md##unregister-a-vmm-server) om de registratie van een verbonden VMM-server ongedaan te maken.
+3. Volg [deze stappen](site-recovery-manage-registration-and-protection.md#unregister-a-vmm-server) om de registratie van een verbonden VMM-server ongedaan te maken.
 4. Verwijder vervolgens de kluis.
 
 ## <a name="delete-a-vault-hyper-v-vm-to-azure"></a>Een kluis verwijderen-Hyper-V VM naar Azure

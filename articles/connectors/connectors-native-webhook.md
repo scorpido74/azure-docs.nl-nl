@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 7ff411ae082acfe2d465ab9d3371982b0693c226
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 14daa37a414e814ed6de036bbb625933ce2532e0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74787043"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888121"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Geautomatiseerde op gebeurtenis gebaseerde werk stromen maken en uitvoeren met behulp van HTTP-webhooks in Azure Logic Apps
 
@@ -38,7 +38,7 @@ Zo is de actie [**e-mail bericht verzenden goed keuren**](connectors-create-api-
 > [!NOTE]
 > Logic Apps afdwingt Transport Layer Security (TLS) 1,2 wanneer de aanroep terugkeert naar de HTTP-webhook-trigger of-actie. Als er SSL-Handshake-fouten worden weer geven, moet u ervoor zorgen dat u TLS 1,2 gebruikt.
 
-Zie de volgende onderwerpen voor meer informatie:
+Zie deze onderwerpen voor meer informatie:
 
 * [Trigger parameters voor HTTP-webhook](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
 * [Webhooks en abonnementen](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
@@ -58,7 +58,7 @@ Zie de volgende onderwerpen voor meer informatie:
 
 Deze ingebouwde trigger registreert een call back-URL met de opgegeven service en wacht op de service om een HTTP POST-aanvraag naar die URL te verzenden. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en wordt de logische app onmiddellijk uitgevoerd.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Open uw lege logische app in de ontwerp functie voor logische apps.
 
 1. Voer op de ontwerp functie in het zoekvak ' http-webhook ' in als uw filter. Selecteer in de lijst **Triggers** de **http-webhook-** trigger.
 
@@ -86,7 +86,7 @@ Deze ingebouwde trigger registreert een call back-URL met de opgegeven service e
 
 Met deze ingebouwde actie wordt een call back-URL voor de opgegeven service geregistreerd, wordt de werk stroom van de logische app onderbroken en wordt gewacht tot de betreffende service een HTTP POST-aanvraag verzendt naar die URL. Wanneer deze gebeurtenis plaatsvindt, wordt de logische app uitgevoerd met de actie.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Open uw logische app in de ontwerp functie voor logische apps.
 
    In dit voor beeld wordt de HTTP-webhook-trigger als de eerste stap gebruikt.
 
@@ -100,7 +100,7 @@ Met deze ingebouwde actie wordt een call back-URL voor de opgegeven service gere
 
    In dit voor beeld wordt de naam van de actie gewijzigd in HTTP-webhook-actie zodat de stap een meer beschrijvende naam heeft.
 
-1. Geef de waarden op voor de para meters van de HTTP-webhook-actie, die vergelijkbaar zijn met de [para meters voor de http-webhook-trigger](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger) die u wilt gebruiken voor de abonnementen Subscriber and opzeg ging, bijvoorbeeld:
+1. Geef de waarden op voor de para meters van de HTTP-webhook-actie, die vergelijkbaar zijn met de [para meters voor de http-webhook-trigger](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) die u wilt gebruiken voor de abonnementen Subscriber and opzeg ging, bijvoorbeeld:
 
    ![Actie parameters voor HTTP-webhook opgeven](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
@@ -114,7 +114,7 @@ Met deze ingebouwde actie wordt een call back-URL voor de opgegeven service gere
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-Zie [http-webhook-para meters](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger)voor meer informatie over trigger-en actie parameters, die vergelijkbaar zijn met elkaar.
+Zie [http-webhook-para meters](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)voor meer informatie over trigger-en actie parameters, die vergelijkbaar zijn met elkaar.
 
 ### <a name="output-details"></a>Uitvoer Details
 
@@ -123,19 +123,19 @@ Hier vindt u meer informatie over de uitvoer van een HTTP-webhook-trigger of-act
 | Naam van eigenschap | Type | Beschrijving |
 |---------------|------|-------------|
 | koppen | object | De headers van de aanvraag |
-| organen | object | JSON-object | Het object met de inhoud van de hoofd tekst van de aanvraag |
-| status code | int | De status code van de aanvraag |
+| body | object | JSON-object | Het object met de inhoud van de hoofd tekst van de aanvraag |
+| statuscode | int | De status code van de aanvraag |
 |||
 
 | Statuscode | Beschrijving |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Afgewezen |
-| 400 | Ongeldige aanvraag |
+| 202 | Geaccepteerd |
+| 400 | Ongeldig verzoek |
 | 401 | Niet geautoriseerd |
 | 403 | Verboden |
 | 404 | Niet gevonden |
-| 500 | Interne server fout. Er is een onbekende fout opgetreden. |
+| 500 | Interne serverfout. Er is een onbekende fout opgetreden. |
 |||
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 11/08/2019
-ms.openlocfilehash: 2ffc3ced360e1fdf00f69ea5826e6c6af7806f71
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 26eec9cdd327ceb51e72deb1d6f40d585ce368fb
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215979"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896126"
 ---
 # <a name="authentication-issues-in-azure-hdinsight"></a>Verificatie problemen in azure HDInsight
 
@@ -36,7 +36,7 @@ Reason: Bad Request, Detailed Response: {"error":"invalid_grant","error_descript
 
 Azure AD-fout code 50126 betekent dat het `AllowCloudPasswordValidation` beleid niet is ingesteld door de Tenant.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 De beheerder van de Azure AD-Tenant moet Azure AD in staat stellen wacht woord-hashes te gebruiken voor gebruikers met een back-up van ADFS.  Pas de `AllowCloudPasswordValidationPolicy` toe, zoals wordt weer gegeven in het artikel [Enterprise Security package gebruiken in HDInsight](../domain-joined/apache-domain-joined-architecture.md).
 
@@ -56,7 +56,7 @@ Aanmelden is mislukt met fout code 50034. Fout bericht is vergelijkbaar met:
 
 De gebruikers naam is onjuist (bestaat niet). De gebruiker gebruikt niet dezelfde gebruikers naam die wordt gebruikt in Azure Portal.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 Gebruik dezelfde gebruikers naam die in die portal werkt.
 
@@ -76,7 +76,7 @@ Gebruikers account is vergrendeld, fout code 50053. Fout bericht is vergelijkbaa
 
 Te veel aanmeldings pogingen met een onjuist wacht woord.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 Wacht 30 minuten of, stop alle toepassingen die mogelijk worden geverifieerd.
 
@@ -96,7 +96,7 @@ Wacht woord is verlopen, fout code 50053. Fout bericht is vergelijkbaar met:
 
 Het wacht woord is verlopen.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 Wijzig het wacht woord in de Azure Portal (op uw on-premises systeem) en wacht 30 minuten totdat de synchronisatie is uitgevoerd.
 
@@ -112,7 +112,7 @@ Er wordt een fout bericht weer gegeven `interaction_required`.
 
 Het beleid voor voorwaardelijke toegang of MFA wordt toegepast op de gebruiker. Omdat interactieve verificatie nog niet wordt ondersteund, moet de gebruiker of het cluster worden uitgesloten van MFA/voorwaardelijke toegang. Als u ervoor kiest het cluster op te heffen (op IP-adres gebaseerd uitsluitings beleid), moet u ervoor zorgen dat de AD-`ServiceEndpoints` zijn ingeschakeld voor dat vnet.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 Gebruik het beleid voor voorwaardelijke toegang om de Hdinsight-clusters van MFA vrij te maken, zoals wordt weer gegeven in [een HDInsight-cluster configureren met Enterprise Security Package met behulp van Azure Active Directory Domain Services](./apache-domain-joined-configure-using-azure-adds.md).
 
@@ -128,7 +128,7 @@ Aanmelden is geweigerd.
 
 Om deze fase op te halen, is uw OAuth-verificatie geen probleem, maar is Kerberos-verificatie. Als dit cluster wordt ondersteund door ADLS, is OAuth Sign in geslaagd voordat de Kerberos-authenticatie wordt geprobeerd. In WASB-clusters wordt OAuth Sign in niet geprobeerd. Er kunnen veel redenen zijn waarom een Kerberos-fout is opgetreden, zoals wacht woord-hashes zijn niet synchroon, het gebruikers account is vergrendeld in azure AD DS, enzovoort. Wachtwoord hashes worden alleen gesynchroniseerd wanneer de gebruiker het wacht woord wijzigt. Wanneer u het exemplaar van Azure AD DS maakt, wordt het synchroniseren van wacht woorden gestart die zijn gewijzigd nadat het is gemaakt. Wacht woorden worden niet met terugwerkende kracht gesynchroniseerd die zijn ingesteld vóór het begin.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 Als u denkt dat wacht woorden mogelijk niet synchroon zijn, probeert u het wacht woord te wijzigen en wacht u een paar minuten om te synchroniseren.
 
@@ -146,7 +146,7 @@ Kinit mislukt.
 
 Hangt.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 Om kinit te laten slagen, moet u weten wat uw `sAMAccountName` zijn (dit is de korte account naam zonder de realm). `sAMAccountName` is doorgaans het account voorvoegsel (bijvoorbeeld Bob in `bob@contoso.com`). Voor sommige gebruikers kan het verschillend zijn. U hebt de mogelijkheid om door de map te bladeren/te zoeken om uw `sAMAccountName`te leren.
 
@@ -172,7 +172,7 @@ Kinit mislukt met `Preauthentication` fout.
 
 De gebruikers naam of het wacht woord is onjuist.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 Controleer uw gebruikers naam en wacht woord. Controleer ook of andere eigenschappen hierboven worden beschreven. Als u uitgebreide fout opsporing wilt inschakelen, voert u `export KRB5_TRACE=/tmp/krb.log` uit vanuit de sessie voordat u kinit probeert.
 
@@ -188,7 +188,7 @@ Taak/HDFS-opdracht mislukt vanwege `TokenNotFoundException`.
 
 Het vereiste OAuth-toegangs token is niet gevonden voor het slagen van de taak/opdracht. Het ADLS/ABFS-stuur programma probeert het OAuth-toegangs token op te halen uit de referentie service voordat er opslag aanvragen worden gedaan. Dit token wordt geregistreerd wanneer u zich met dezelfde gebruiker aanmeldt bij de Ambari-Portal.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 Zorg ervoor dat u bij de Ambari-Portal hebt aangemeld met de gebruikers naam waarvan de identiteit wordt gebruikt om de taak uit te voeren.
 
@@ -204,7 +204,7 @@ Gebruiker ontvangt fout bericht `Error fetching access token`.
 
 Deze fout treedt af en toe op wanneer gebruikers toegang proberen te krijgen tot de ADLS Gen2 met behulp van Acl's en het Kerberos-token is verlopen.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 * Voor Azure Data Lake Storage Gen1 moet u de cache van de browser opschonen en opnieuw aanmelden bij Ambari.
 
@@ -220,4 +220,4 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. Toegang tot abonnementsbeheer en factuurbeheer is in uw Microsoft Azure-abonnement inbegrepen, en technische ondersteuning wordt verstrekt via een van de [Azure-ondersteuningsplannen](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

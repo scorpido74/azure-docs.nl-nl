@@ -6,12 +6,12 @@ ms.author: arramac
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/05/2019
-ms.openlocfilehash: 8d2873dd2fd36ed1193aed457a04baae94a043a2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: d6b66c4a4924f8455b58b930621d6a7b93901a2a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951816"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887611"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Service quota's Azure Cosmos DB
 
@@ -23,8 +23,8 @@ Nadat u in uw abonnement een Azure Cosmos-account hebt gemaakt, kunt u gegevens 
 
 | Bron | Standaardlimiet |
 | --- | --- |
-| Maximum RUs per container ([ingerichte modus toegewezen door Voer](databases-containers-items.md#azure-cosmos-containers)) | standaard 1.000.000. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) |
-| Maximum RUs per data base ([ingerichte modus voor gedeelde door Voer](databases-containers-items.md#azure-cosmos-containers)) | standaard 1.000.000. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) |
+| Maximum RUs per container ([ingerichte modus toegewezen door Voer](databases-containers-items.md#azure-cosmos-containers)) | standaard 1.000.000. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) |
+| Maximum RUs per data base ([ingerichte modus voor gedeelde door Voer](databases-containers-items.md#azure-cosmos-containers)) | standaard 1.000.000. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) |
 | Maximum-RUs per (logische) partitie sleutel | 10.000 |
 | Maximale opslag ruimte in alle items per (logische) partitie sleutel| 10 GB |
 | Maximum aantal afzonderlijke (logische) partitie sleutels | Onbeperkt |
@@ -64,8 +64,8 @@ U kunt [uw Azure Cosmos-account inrichten en beheren](how-to-manage-database-acc
 
 | Bron | Standaardlimiet |
 | --- | --- |
-| Maximum aantal database accounts per abonnement | standaard 50. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
-| Maximum aantal regionale failovers | standaard 1/uur. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
+| Maximum aantal database accounts per abonnement | standaard 50. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)|
+| Maximum aantal regionale failovers | standaard 1/uur. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)|
 
 > [!NOTE]
 > Regionale failovers zijn alleen van toepassing op de ene regio en schrijft accounts. Voor schrijf accounts met meerdere regio's zijn geen beperkingen vereist voor het wijzigen van de schrijf regio.
@@ -132,7 +132,7 @@ Cosmos DB gebruikt HMAC voor autorisatie. U kunt een hoofd sleutel of een [bron 
 | --- | --- |
 | Maximale verloop tijd van Master token | 15 min  |
 | Minimale verloop tijd van bron token | 10 minuten  |
-| Maximale verloop tijd van bron token | standaard 24 uur. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)|
+| Maximale verloop tijd van bron token | standaard 24 uur. U kunt deze verhogen door [een ondersteunings ticket voor Azure te archiveren](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)|
 | Maximale klok scheefheid voor token autorisatie| 15 min |
 
 Cosmos DB ondersteunt de uitvoering van triggers tijdens het schrijven. De service ondersteunt Maxi maal één pretrigger en één post-trigger per schrijf bewerking. 

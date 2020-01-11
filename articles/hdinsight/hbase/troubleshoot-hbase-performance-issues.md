@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 0466b08e551a5fa9da37afe2e5ad175ef28c804e
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529566"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887152"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Problemen met Apache HBase-prestaties in azure HDInsight oplossen
 
@@ -57,7 +57,7 @@ Als uw query's plotseling worden gestart, kunt u controleren op mogelijke fouten
 
 ## <a name="migration-issues"></a>Migratie problemen
 
-Als u migreert naar Azure HDInsight, moet u ervoor zorgen dat uw migratie systematisch en nauw keurig wordt uitgevoerd, bij voor keur via Automation. Vermijd hand matige migratie. Zorg ervoor dat:
+Als u migreert naar Azure HDInsight, moet u ervoor zorgen dat uw migratie systematisch en nauw keurig wordt uitgevoerd, bij voor keur via Automation. Vermijd hand matige migratie. Vereisten:
 
 - Tabel kenmerken worden nauw keurig gemigreerd. Kenmerken kunnen bestaan uit als compressie, bloei filters, enzovoort.
 
@@ -67,7 +67,7 @@ Als u migreert naar Azure HDInsight, moet u ervoor zorgen dat uw migratie system
 
 In HDInsight HBase worden HFiles opgeslagen op externe opslag. Wanneer er een cache ontbreekt, zijn de kosten voor lees bewerkingen hoger dan on-premises systemen, omdat gegevens op on-premises systemen worden ondersteund door Local HDFS. Voor de meeste scenario's is intelligent gebruik van HBase-caches (Block cache en Bucket cache) ontworpen om dit probleem te omzeilen. In gevallen waarin het probleem niet wordt omzeild, kunt u dit probleem mogelijk oplossen met behulp van een account voor een Premium-blok-blob. Het Windows Azure Storage Blob-stuur programma is afhankelijk van bepaalde eigenschappen, zoals `fs.azure.read.request.size`, om gegevens op te halen in blokken op basis van de Lees modus (opeenvolgend versus wille keurig), zodat er mogelijk nog steeds exemplaren van hogere latenties met lees bewerkingen zijn. Door middel van empirische experimenten hebben we vastgesteld dat de blok grootte van de Lees aanvraag (`fs.azure.read.request.size`) wordt ingesteld op 512 KB en dat de blok grootte van de HBase-tabellen dezelfde grootte heeft als het beste resultaat in de praktijk.
 
-Voor de meeste clusters met een groot aantal knoop punten biedt HDInsight HBase `bucketcache` als een bestand op een lokale Premium-SSD die is gekoppeld aan de virtuele machine, die `regionservers` uitvoert. Het gebruik van een off-heap-cache kan in plaats daarvan enige verbeteringen opleveren. Deze tijdelijke oplossing heeft de beperking van het gebruik van het beschik bare geheugen en mogelijk kleiner dan een op bestanden gebaseerde cache, zodat het niet altijd de beste keuze is.
+Voor de meeste clusters met een groot aantal knoop punten biedt HDInsight HBase `bucketcache` als een bestand op een lokale Premium-SSD die is gekoppeld aan de virtuele machine, die `regionservers`uitvoert. Het gebruik van een off-heap-cache kan in plaats daarvan enige verbeteringen opleveren. Deze tijdelijke oplossing heeft de beperking van het gebruik van het beschik bare geheugen en mogelijk kleiner dan een op bestanden gebaseerde cache, zodat het niet altijd de beste keuze is.
 
 Hieronder vindt u enkele van de andere specifieke para meters die we hebben afgestemd en die u helpen bij het variëren van graden:
 
@@ -124,4 +124,4 @@ Als uw probleem niet is opgelost, gaat u naar een van de volgende kanalen voor m
 
 - Verbinding maken met [@AzureSupport](https://twitter.com/azuresupport). Dit is het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. De Azure-community wordt verbonden met de juiste resources: antwoorden, ondersteuning en experts.
 
-- Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. Uw Microsoft Azure-abonnement bevat toegang tot abonnements beheer en ondersteuning voor facturering, en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+- Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. Uw Microsoft Azure-abonnement bevat toegang tot abonnements beheer en ondersteuning voor facturering, en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

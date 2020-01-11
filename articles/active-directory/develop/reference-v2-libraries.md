@@ -18,12 +18,12 @@ ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d2b2ea9d878db8284aa44cdbdacb92c8cd4fabe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e7ff9e2015b4621c89b6a831cf7000aa32db5ea6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424007"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888947"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Micro soft Identity platform-verificatie bibliotheken
 
@@ -108,7 +108,7 @@ U kunt voor elke bibliotheek die voldoet aan de normen, het micro soft Identity 
 * Neem contact op met de eigenaar van de bibliotheek voor problemen en nieuwe functie aanvragen in bibliotheek code.
 * Neem contact op met micro soft voor problemen en nieuwe functie aanvragen in de service-side protocol-implementatie.
 * [Een functie aanvraag indienen](https://feedback.azure.com/forums/169401-azure-active-directory) voor aanvullende functies die u wilt weer geven in het protocol.
-* [Een ondersteunings aanvraag maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) als u een probleem vindt waarbij het micro soft Identity platform-eind punt niet compatibel is met OAuth 2,0 of openid connect Connect 1,0.
+* [Een ondersteunings aanvraag maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) als u een probleem vindt waarbij het micro soft Identity platform-eind punt niet compatibel is met OAuth 2,0 of openid connect Connect 1,0.
 
 ## <a name="related-content"></a>Verwante inhoud
 

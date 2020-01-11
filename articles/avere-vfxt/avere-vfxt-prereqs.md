@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 27b0fd1e6a9238e978518e06ab7f0aeeae5501d2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0dafef7cf262153ccdb3b490aa0c7bd039b4a89b
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414384"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889172"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Voorbereiden op het maken van de Avere vFXT
 
@@ -43,7 +43,7 @@ Een andere is het maken van een aangepaste functie op rollen gebaseerd toegangs 
 
 ## <a name="quota-for-the-vfxt-cluster"></a>Quota voor het vFXT-cluster
 
-U moet over voldoende quota beschikken voor de volgende onderdelen van Azure. Indien nodig kunt u [een quotum verhoging aanvragen](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+U moet over voldoende quota beschikken voor de volgende onderdelen van Azure. Indien nodig kunt u [een quotum verhoging aanvragen](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 
 > [!NOTE]
 > De virtuele machines en SSD-onderdelen die hier worden vermeld, gelden voor het vFXT-cluster zelf. U hebt extra quota nodig voor de Vm's en SSD die u wilt gebruiken voor uw Compute-farm.  Zorg ervoor dat het quotum is ingeschakeld voor de regio waar u de werk stroom wilt uitvoeren.

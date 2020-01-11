@@ -9,28 +9,28 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 01/07/2020
 ms.custom: include file
-ms.openlocfilehash: afce629cc4aa5e3bb62bd2cf2eeaf8af12dc7d9f
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 9ccdc7a438d1dade534d39dc97a39a3bdae37dc4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751480"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895434"
 ---
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 1. Selecteer de balk aan de linkerkant en klik vervolgens op **een resource maken**. 
 
-   [![Vouw de balk aan de linkerkant uit en selecteer vervolgens + een resource maken](./media/create-digital-twins-portal/create-a-resource.png)](./media/create-digital-twins-portal/create-a-resource.png#lightbox)
+   [![Vouw de balk aan de linkerkant uit en selecteer vervolgens + een resource maken](./media/create-digital-twins-portal/azure-portal-create-a-resource.png)](./media/create-digital-twins-portal/azure-portal-create-a-resource.png#lightbox)
 
 1. Zoek naar **Digital apparaatdubbels**en selecteer **Digital apparaatdubbels**. 
 
-   [![selecties voor het maken van een nieuw digitaal Apparaatdubbels-exemplaar](./media/create-digital-twins-portal/create-digital-twins.png)](./media/create-digital-twins-portal/create-digital-twins.png#lightbox)
+   [![selecties voor het maken van een nieuw digitaal Apparaatdubbels-exemplaar](./media/create-digital-twins-portal/azure-portal-create-digital-twins.png)](./media/create-digital-twins-portal/azure-portal-create-digital-twins.png#lightbox)
 
    U kunt ook **Internet of Things**selecteren en **Digital apparaatdubbels (preview)** selecteren.
 
 1. Selecteer **Maken** om het implementatieproces te starten.
 
-   [de implementatie van de resource ![maken en bevestigen](./media/create-digital-twins-portal/create-and-confirm-resource.png)](./media/create-digital-twins-portal/create-and-confirm-resource.png#lightbox)
+   [de implementatie van de resource ![maken en bevestigen](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png)](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png#lightbox)
 
 1. In het deelvenster **Digital Twins** voert u de volgende informatie in:
    * **Resourcenaam**: geef uw instantie van Digital Twins een unieke naam.

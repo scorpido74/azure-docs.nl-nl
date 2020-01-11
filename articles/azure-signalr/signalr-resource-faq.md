@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 013cf619edd998752265b8fa7e58e36869c830c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dde11b6097dddb1568f5adfea811606214a9759e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450220"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891255"
 ---
 # <a name="azure-signalr-service-faq"></a>Veelgestelde vragen over Azure SignalR Service
 
@@ -37,7 +37,7 @@ Als u toepassingsservers hebt, betekent dit foutbericht dat er geen toepassingss
 De mogelijke oorzaken zijn als volgt:
 - Er is geen toepassingsserver verbonden met SignalR Service. Controleer de toepassingsserverlogboeken voor mogelijke verbindingsfouten. Dit is sporadisch het geval bij een hogebeschikbaarheidsinstelling met meer dan één toepassingsserver.
 - Er zijn verbindingsproblemen met SignalR Service-exemplaren. Dit probleem is tijdelijk en wordt automatisch hersteld.
-Als het probleem langer dan een uur aanhoudt, [opent u een probleem in GitHub](https://github.com/Azure/azure-signalr/issues/new) of [maakt u een ondersteuningsaanvraag in Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
+Als het probleem langer dan een uur aanhoudt, [opent u een probleem in GitHub](https://github.com/Azure/azure-signalr/issues/new) of [maakt u een ondersteuningsaanvraag in Azure](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 ## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>Als er meerdere toepassingsservers zijn, worden clientberichten dan naar alle servers of slechts één ervan verzonden?
 

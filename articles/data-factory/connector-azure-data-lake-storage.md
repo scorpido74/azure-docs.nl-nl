@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: b390dda64ab9ece9a426bec94f4d866e8e524bc7
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: c32fbef3db0c0df2af1e07c062eb178e5516d736
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830255"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893214"
 ---
 # <a name="copy-and-transform-data-in-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Gegevens in Azure Data Lake Storage Gen2 kopiëren en transformeren met behulp van Azure Data Factory
 
@@ -609,4 +609,4 @@ Als u meer wilt weten over de eigenschappen, controleert u de [activiteit verwij
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md##supported-data-stores-and-formats).
+Zie voor een lijst met gegevensarchieven die worden ondersteund als bronnen en sinks door de kopieeractiviteit in Data Factory, [ondersteunde gegevensarchieven](copy-activity-overview.md#supported-data-stores-and-formats).

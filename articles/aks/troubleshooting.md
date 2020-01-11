@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: 5652c5035c2e4cd35ac6943ef90c8bcc02b95dba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de3a3d9e5523341c2f549ff2a90c9c40a4e3cb50
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442880"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889453"
 ---
 # <a name="aks-troubleshooting"></a>AKS problemen oplossen
 
@@ -25,7 +25,7 @@ Er is ook een [hand leiding](https://github.com/feiskyer/kubernetes-handbook/blo
 
 ## <a name="im-getting-a-quota-exceeded-error-during-creation-or-upgrade-what-should-i-do"></a>Ik krijg de fout ' quotum overschreden ' tijdens het maken of upgraden. Wat zal ik doen? 
 
-U moet [kernen aanvragen](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+U moet [kernen aanvragen](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 
 ## <a name="what-is-the-maximum-pods-per-node-setting-for-aks"></a>Wat is het maximum aantal instellingen per knoop punt voor AKS?
 
@@ -78,7 +78,7 @@ Mogelijk krijgt u deze fout omdat u de tags in de agent knooppunten in het AKS-c
 Deze fout treedt op wanneer clusters een mislukte status om meerdere redenen invoeren. Volg de onderstaande stappen om de status van het cluster fout op te lossen voordat u de eerder mislukte bewerking opnieuw probeert uit te voeren:
 
 1. `upgrade` en `scale` bewerkingen mislukken totdat het cluster niet meer `failed` status heeft. Veelvoorkomende basis problemen en oplossingen zijn:
-    * Schalen met **onvoldoende Compute-quota (CRP)** . U kunt dit oplossen door uw cluster eerst terug te schalen naar een stabiele doel status binnen het quotum. Voer vervolgens de volgende [stappen uit om een toename van het reken quotum aan te vragen](../azure-supportability/resource-manager-core-quotas-request.md) voordat u opnieuw opschaalt na de initiële quotum limieten.
+    * Schalen met **onvoldoende Compute-quota (CRP)** . U kunt dit oplossen door uw cluster eerst terug te schalen naar een stabiele doel status binnen het quotum. Voer vervolgens de volgende [stappen uit om een toename van het reken quotum aan te vragen](../azure-portal/supportability/resource-manager-core-quotas-request.md) voordat u opnieuw opschaalt na de initiële quotum limieten.
     * Het schalen van een cluster met geavanceerde netwerken en **onvoldoende subnet-bronnen (netwerken)** . U kunt dit oplossen door uw cluster eerst terug te schalen naar een stabiele doel status binnen het quotum. Voer vervolgens [de volgende stappen uit om een verhoging van het resource quotum aan te vragen](../azure-resource-manager/templates/error-resource-quota.md#solution) voordat u opnieuw opschaalt na de initiële quotum limieten.
 2. Zodra de onderliggende oorzaak van de upgrade fout is opgelost, moet uw cluster de status voltooid hebben. Als de status is gecontroleerd, voert u de oorspronkelijke bewerking opnieuw uit.
 

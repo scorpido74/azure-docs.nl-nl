@@ -9,12 +9,12 @@ ms.date: 04/12/2019
 ms.author: jafreebe
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: dec5d1c7c7664bf72d92e5aca4333ba64db26d02
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 9ee989a079366a470d086a8b931685a6c1dbc757
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671915"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889343"
 ---
 # <a name="configure-a-windows-java-app-for-azure-app-service"></a>Een Windows java-app configureren voor Azure App Service
 
@@ -315,7 +315,7 @@ Product ondersteuning voor de door [Azure ondersteunde Azul ZULU jdk](https://ww
 
 ### <a name="runtime-support"></a>Runtime-ondersteuning
 
-Ontwikkel aars kunnen [een probleem](/azure/azure-supportability/how-to-create-azure-support-request) met de Azul Zulu JDKs via Azure-ondersteuning openen als ze een [ondersteunings plan](https://azure.microsoft.com/support/plans/)hebben.
+Ontwikkel aars kunnen [een probleem](/azure/azure-portal/supportability/how-to-create-azure-support-request) met de Azul Zulu JDKs via Azure-ondersteuning openen als ze een [ondersteunings plan](https://azure.microsoft.com/support/plans/)hebben.
 
 ## <a name="next-steps"></a>Volgende stappen
 

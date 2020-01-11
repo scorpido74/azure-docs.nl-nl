@@ -15,12 +15,12 @@ ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 805f984ebdb5e95a9f3a46fab010cecf5c811547
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c042cf22334a0163cd5b89e556210db0cd5c15f4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424502"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888777"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Procedure: app-rollen toevoegen in uw toepassing en deze ontvangen in het token
 
@@ -37,9 +37,9 @@ Deze toepassings rollen worden gedefinieerd in de [Azure Portal](https://portal.
 ### <a name="declare-app-roles-using-azure-portal"></a>App-rollen declareren met Azure Portal
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-1. Selecteer uw account in de bovenste balk en **Schakel vervolgens over naar de map**.
-1. Zodra het deel venster voor het **adres lijst** en-abonnement wordt geopend, kiest u de Active Directory Tenant waar u uw toepassing wilt registreren in de lijst **Favorieten** of **alle directory's** .
-1. Selecteer **alle services** in het Linkernavigatie-navigatie venster en kies **Azure Active Directory**.
+1. Selecteer het pictogram voor het adres van de **map en het abonnement** op de werk balk van de portal.
+1. Kies in de lijst **Favorieten** of **alle directory's** de Active Directory Tenant waar u de toepassing wilt registreren.
+1. Zoek in het Azure Portal naar en selecteer **Azure Active Directory**.
 1. Selecteer in het deel venster Azure Active Directory **app-registraties** om een lijst met al uw toepassingen weer te geven.
 1. Selecteer de toepassing waarvoor u de app-rollen wilt definiëren. Selecteer vervolgens **manifest**.
 1. Bewerk het app-manifest door de `appRoles`-instelling te vinden en alle toepassings rollen toe te voegen.

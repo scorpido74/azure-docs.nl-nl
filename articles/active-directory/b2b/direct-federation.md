@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5b6e99c803fb703f18b61200c28cbdac3282750
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 036c8361af3f6631b6151782fa18495542d2e3f6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272738"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888893"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Directe Federatie met AD FS en providers van derden voor gast gebruikers (preview-versie)
 |     |
@@ -83,7 +83,7 @@ Eerst moet uw partner organisatie hun ID-provider configureren met de vereiste c
 Azure AD B2B kan worden geconfigureerd om te communiceren met id-providers die het SAML-protocol gebruiken met specifieke vereisten die hieronder worden weer gegeven. Zie [een saml 2,0-ID-provider (IDP) gebruiken voor eenmalige aanmelding](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp)voor meer informatie over het instellen van een vertrouwens relatie tussen uw SAML-ID-provider en Azure AD.  
 
 > [!NOTE]
-> Opmerking het doel domein voor directe Federatie mag niet worden geverifieerd door DNS op Azure AD. Het domein van de verificatie-URL moet overeenkomen met het doel domein of het moet het domein zijn van een toegestane ID-provider. Zie de sectie [beperkingen](#limitations) voor meer informatie. 
+> Het doel domein voor directe Federatie mag niet worden geverifieerd door DNS op Azure AD. Het domein van de verificatie-URL moet overeenkomen met het doel domein of het moet het domein zijn van een toegestane ID-provider. Zie de sectie [beperkingen](#limitations) voor meer informatie. 
 
 #### <a name="required-saml-20-attributes-and-claims"></a>Vereiste SAML 2,0-kenmerken en claims
 In de volgende tabellen worden de vereisten voor specifieke kenmerken en claims weer gegeven die moeten worden geconfigureerd bij de ID-provider van derden. Als u directe Federatie wilt instellen, moeten de volgende kenmerken worden ontvangen in het SAML 2,0-antwoord van de ID-provider. Deze kenmerken kunnen worden geconfigureerd door te koppelen aan het XML-bestand van de online beveiligings token service of door ze hand matig in te voeren.

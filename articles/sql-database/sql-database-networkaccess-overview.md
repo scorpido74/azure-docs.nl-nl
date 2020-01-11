@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 16de1d9fcf86459b6bcadd9d8c372e436aad0915
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 44fcaa0a4292ac86c7371c27f29faf0e7246e9d5
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802943"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894793"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>Netwerk toegangs beheer van Azure SQL Database en Data Warehouse
 
@@ -47,24 +47,53 @@ U kunt deze instelling ook wijzigen via het deel venster Firewall nadat de Azure
 
 Als deze functie is ingesteld op **op** Azure SQL Server worden communicaties van alle resources binnen de Azure-grens toegestaan die al dan niet deel uitmaken van uw abonnement.
 
-In veel gevallen is de instelling **on** moeilijker dan de meeste klanten. Ze willen deze instelling mogelijk instellen op **uit** en vervangen door meer beperkende IP-firewall regels of Virtual Network Firewall regels. Dit heeft gevolgen voor de volgende functies:
+In veel gevallen is de instelling **on** moeilijker dan de meeste klanten. Ze willen deze instelling mogelijk instellen op **uit** en vervangen door meer beperkende IP-firewall regels of Virtual Network Firewall regels. Dit heeft gevolgen voor de volgende functies die worden uitgevoerd op Vm's in azure die geen deel uitmaken van uw VNet en daarom verbinding maken met SQL data base via een Azure IP-adres.
 
 ### <a name="import-export-service"></a>Import export service
+Bij import export service werkt **Azure-Services niet om toegang te krijgen** tot de server. U kunt het probleem echter omzeilen [door sqlpackage. exe hand matig uit te voeren vanuit een Azure VM of door de export](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) rechtstreeks in uw code uit te voeren met behulp van de DACFX-API.
 
-Azure SQL Database import-export service wordt uitgevoerd op virtuele machines in Azure. Deze Vm's bevinden zich niet in uw VNet en krijgen daarom een Azure IP-adres bij het maken van verbinding met uw data base. Bij het verwijderen van **Azure-Services toegang verlenen** tot de server kunnen deze vm's geen toegang krijgen tot uw data bases.
-U kunt het probleem omzeilen door de BACPAC-import bewerking uit te voeren of rechtstreeks in uw code te exporteren met behulp van de DACFx-API.
+### <a name="data-sync"></a>Gegevens synchroniseren
+Als u de functie gegevens synchronisatie wilt gebruiken om **Azure-Services toegang te geven** tot de server, moet u afzonderlijke firewall regel vermeldingen maken om [IP-adressen toe te voegen](sql-database-server-level-firewall-rule.md) van de **SQL-service-tag** voor de regio die als host fungeert voor de **hub** -data base.
+Voeg deze firewall regels op server niveau toe aan de logische servers die fungeren als host voor de data bases van de **hub** en het **lid** (deze kunnen zich in verschillende regio's bevinden)
 
-### <a name="sql-database-query-editor"></a>Query-Editor SQL Database
+Gebruik het volgende Power shell-script om de IP-adressen te genereren die overeenkomen met de SQL service-tag voor de regio vs West
+```powershell
+PS C:\>  $serviceTags = Get-AzNetworkServiceTag -Location eastus2
+PS C:\>  $sql = $serviceTags.Values | Where-Object { $_.Name -eq "Sql.WestUS" }
+PS C:\> $sql.Properties.AddressPrefixes.Count
+70
+PS C:\> $sql.Properties.AddressPrefixes
+13.86.216.0/25
+13.86.216.128/26
+13.86.216.192/27
+13.86.217.0/25
+13.86.217.128/26
+13.86.217.192/27
+```
 
-De Azure SQL Database query-editor wordt geïmplementeerd op virtuele machines in Azure. Deze Vm's bevinden zich niet in uw VNet. Daarom krijgen de Vm's een Azure-IP-adres bij het maken van verbinding met uw data base. Bij het verwijderen van **Azure-Services toegang tot de server toestaan**, hebben deze vm's geen toegang tot uw data bases.
+> [!TIP]
+> Get-AzNetworkServiceTag retourneert het globale bereik voor SQL service-tag ondanks het opgeven van de locatie parameter. Zorg ervoor dat u deze filtert op de regio die de hub-data base host die door de synchronisatie groep wordt gebruikt
 
-### <a name="table-auditing"></a>Tabel controle
+Houd er rekening mee dat de uitvoer van het Power shell-script in CIDR-notatie (Classless Inter-Domain Routing) is en dat deze moet worden geconverteerd naar een indeling van het begin-en eind-IP-adres met behulp van [Get-IPrangeStartEnd. ps1](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) als volgt
+```powershell
+PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26                                                                   
+start        end
+-----        ---
+52.229.17.64 52.229.17.127
+```
 
-Op dit moment zijn er twee manieren om controle in te scha kelen op uw SQL Database. Het controleren van de tabel mislukt wanneer u service-eind punten hebt ingeschakeld in uw Azure SQL Server. U kunt dit doen door over te stappen op de controle van de blob.
+Voer de volgende aanvullende stappen uit om alle IP-adressen van CIDR te converteren naar de notatie voor begin-en eind adres van IP.
 
-### <a name="impact-on-data-sync"></a>Impact op de gegevens synchronisatie
+```powershell
+PS C:\>foreach( $i in $sql.Properties.AddressPrefixes) {$ip,$cidr= $i.split('/') ; Get-IPrangeStartEnd -ip $ip -cidr $cidr;}                                                                                                                
+start          end
+-----          ---
+13.86.216.0    13.86.216.127
+13.86.216.128  13.86.216.191
+13.86.216.192  13.86.216.223
+```
+U kunt deze nu als afzonderlijke firewall regels toevoegen en vervolgens instellen **dat Azure-Services toegang heeft** tot de server.
 
-Azure SQL Database heeft de functie gegevens synchronisatie die verbinding maakt met uw data bases met behulp van Azure Ip's. Wanneer u service-eind punten gebruikt, schakelt u **Azure-Services toegang verlenen** tot de server toegang tot uw SQL database-server en wordt de functie voor gegevens synchronisatie verbroken.
 
 ## <a name="ip-firewall-rules"></a>IP-firewall regels
 Op IP gebaseerde firewall is een functie van Azure SQL Server die ervoor zorgt dat toegang tot uw database server pas wordt voor komen wanneer u de [IP-adressen](sql-database-server-level-firewall-rule.md) van de client computers expliciet toevoegt.

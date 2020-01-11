@@ -11,12 +11,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 04/16/2019
-ms.openlocfilehash: 7cb3b4d6b490d09d14046465e0fc58526be5b045
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b5a48a686a238d724680e806daaed431107ec72
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433852"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894828"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Connectiviteits architectuur voor een beheerd exemplaar in Azure SQL Database
 
@@ -66,7 +66,7 @@ Laten we een diep gaande van de connectiviteits architectuur voor beheerde insta
 
 ![Connectiviteits architectuur van het virtuele cluster](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-Clients maken verbinding met een beheerd exemplaar met behulp van een hostnaam met het formulier `<mi_name>.<dns_zone>.database.windows.net`. Deze hostnaam wordt omgezet in een privé-IP-adres, maar is geregistreerd in een open bare Domain Name System (DNS)-zone en kan openbaar worden omgezet. De `zone-id` wordt automatisch gegenereerd wanneer u het cluster maakt. Als een nieuw cluster als host fungeert voor een secundaire beheerde instantie, wordt de zone-ID gedeeld met het primaire cluster. Zie voor meer informatie [automatische failover-groepen gebruiken om transparante en gecoördineerde failover van meerdere data bases in te scha kelen](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets).
+Clients maken verbinding met een beheerd exemplaar met behulp van een hostnaam met het formulier `<mi_name>.<dns_zone>.database.windows.net`. Deze hostnaam wordt omgezet in een privé-IP-adres, maar is geregistreerd in een open bare Domain Name System (DNS)-zone en kan openbaar worden omgezet. De `zone-id` wordt automatisch gegenereerd wanneer u het cluster maakt. Als een nieuw cluster als host fungeert voor een secundaire beheerde instantie, wordt de zone-ID gedeeld met het primaire cluster. Zie voor meer informatie [automatische failover-groepen gebruiken om transparante en gecoördineerde failover van meerdere data bases in te scha kelen](sql-database-auto-failover-group.md#enabling-geo-replication-between-managed-instances-and-their-vnets).
 
 Dit privé-IP-adres maakt deel uit van de interne load balancer van het beheerde exemplaar. De load balancer stuurt verkeer naar de gateway van het beheerde exemplaar. Omdat meerdere beheerde instanties binnen hetzelfde cluster kunnen worden uitgevoerd, gebruikt de gateway de hostnaam van het beheerde exemplaar om verkeer om te leiden naar de juiste SQL engine-service.
 

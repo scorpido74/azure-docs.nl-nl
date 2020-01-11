@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2018
 ms.author: alkohli
-ms.openlocfilehash: 31c432b884ce92c508dd7f893c12ba13acff28e8
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 4598f71f9b611e68f8eb00676138784833c39f32
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963520"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891500"
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple beveiliging en gegevens bescherming
 
@@ -57,7 +57,7 @@ Alleen geautoriseerde StorSimple-apparaten mogen lid worden van de StorSimple Ap
 
 ![Service registratie sleutel](./media/storsimple-security/ServiceRegistrationKey.png)
 
-Als u wilt weten hoe u een service registratie sleutel krijgt [, gaat u naar stap 2: De service registratie sleutel](storsimple-8000-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key)ophalen.
+Ga naar [stap 2: de service registratie sleutel ophalen](storsimple-8000-deployment-walkthrough-u2.md#step-2-get-the-service-registration-key)voor meer informatie over het ophalen van een service registratie sleutel.
 
 De service registratie sleutel is een lange sleutel die 100 + tekens bevat. U kunt de sleutel kopiëren en opslaan in een tekst bestand op een veilige locatie, zodat u deze kunt gebruiken om indien nodig extra apparaten te autoriseren. Als de service registratie sleutel verloren gaat nadat u uw eerste apparaat hebt geregistreerd, kunt u een nieuwe sleutel genereren op basis van de StorSimple-Apparaatbeheer service. Dit heeft geen invloed op de werking van bestaande apparaten.
 
@@ -164,7 +164,7 @@ Als u de versleutelings sleutel voor service gegevens en het bijbehorende certif
 
 De versleutelings sleutel voor de service gegevens en het certificaat voor gegevens versleuteling verlopen niet. We raden u echter aan om de versleutelings sleutel voor service gegevens jaarlijks te wijzigen om te voor komen dat de sleutel wordt gekraakt.
 
-## <a name="protect-data-at-rest"></a>Data-at-rest beveiligen
+## <a name="protect-data-at-rest"></a>Data-at-rest beschermen
 
 Het StorSimple-apparaat beheert gegevens door deze in lagen lokaal en in de Cloud op te slaan, afhankelijk van de frequentie van het gebruik. Alle hostcomputers die zijn verbonden met het apparaat verzenden gegevens naar het apparaat, waarna gegevens naar de cloud worden verplaatst, indien van toepassing. Gegevens worden veilig via internet overgedragen van het apparaat naar de Cloud. Elk apparaat heeft één iSCSI-doel dat alle gedeelde volumes op dat apparaat Opper vlakken. Alle gegevens worden versleuteld voordat ze worden verzonden naar de Cloud opslag. 
 
@@ -198,7 +198,7 @@ U wordt aangeraden deze aanbevolen procedures te volgen voor het draaien van sle
 
 StorSimple maakt gebruik van de volgende versleutelings algoritmen voor het beveiligen van gegevens die zijn opgeslagen in of reizen tussen de onderdelen van uw StorSimple-oplossing.
 
-| Algoritme | Sleutel lengte | Protocollen/toepassingen/opmerkingen |
+| Algoritme | Sleutellengte | Protocollen/toepassingen/opmerkingen |
 | --- | --- | --- |
 | RSA |2048 |RSA PKCS 1 v 1.5 wordt gebruikt door de Azure Portal om de configuratie gegevens te versleutelen die naar het apparaat worden verzonden: bijvoorbeeld de referenties van het opslag account, de StorSimple en de versleutelings sleutels voor de Cloud opslag. |
 | AES |256 |AES met CBC wordt gebruikt voor het versleutelen van het open bare gedeelte van de versleutelings sleutel voor service gegevens voordat deze wordt verzonden naar de Azure Portal van het StorSimple-apparaat. Het wordt ook gebruikt door het StorSimple-apparaat om gegevens te versleutelen voordat de gegevens naar het Cloud-opslag account worden verzonden. |
@@ -234,15 +234,15 @@ Hier volgen enkele vragen en antwoorden over beveiliging en Microsoft Azure Stor
 
 **A:** Deze sleutel is gemaakt toen u de StorSimple-Apparaatbeheer service voor het eerst hebt gemaakt. Wanneer u de StorSimple Apparaatbeheer-service gebruikt om verbinding te maken met het apparaat, kunt u de service-Quick Start-pagina gebruiken om de service registratie sleutel weer te geven of opnieuw te genereren. Het genereren van een nieuwe service registratie sleutel heeft geen invloed op de bestaande geregistreerde apparaten. Ga voor instructies naar:
 
-* [De service registratie sleutel weer geven of opnieuw genereren](storsimple-8000-manage-service.md##regenerate-the-service-registration-key)
+* [De service registratie sleutel weer geven of opnieuw genereren](storsimple-8000-manage-service.md#regenerate-the-service-registration-key)
 
-**V:** Ik ben mijn versleutelings sleutel voor service gegevens verloren. Wat moet ik doen?
+**V:** Ik ben mijn versleutelings sleutel voor service gegevens verloren. Wat kan ik doen?
 
 **A:** Neem contact op met Microsoft Ondersteuning. Ze kunnen zich aanmelden bij een ondersteunings sessie op uw apparaat en u helpen bij het ophalen van de sleutel (ten minste één apparaat is online). Onmiddellijk nadat u de versleutelings sleutel voor de service gegevens hebt verkregen, moet u deze wijzigen om ervoor te zorgen dat de nieuwe sleutel alleen bij u bekend is. Ga voor instructies naar:
 
 * [De versleutelings sleutel voor service gegevens wijzigen](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 
-**V:**  Ik heb een apparaat geautoriseerd voor een wijziging van de versleutelings sleutel van de service gegevens, maar het wijzigings proces van de sleutel is niet gestart. Wat moet ik doen?
+**V:**  Ik heb een apparaat geautoriseerd voor een wijziging van de versleutelings sleutel van de service gegevens, maar het wijzigings proces van de sleutel is niet gestart. Wat zal ik doen?
 
 **A:** Als de time-outperiode is verlopen, moet u het apparaat opnieuw autoriseren voor het wijzigen van de versleutelings sleutel van de service gegevens en het proces opnieuw starten.
 
@@ -250,7 +250,7 @@ Hier volgen enkele vragen en antwoorden over beveiliging en Microsoft Azure Stor
 
 **A:** De periode van 4 uur is alleen voor het initiëren van de wijziging. Nadat u het update proces op het geautoriseerde StorSimple-apparaat hebt gestart, is de autorisatie geldig totdat alle apparaten zijn bijgewerkt.
 
-**V:** Onze StorSimple-beheerder heeft het bedrijf verlaten. Wat moet ik doen?
+**V:** Onze StorSimple-beheerder heeft het bedrijf verlaten. Wat zal ik doen?
 
 **A:** Wijzig de wacht woorden en stel deze opnieuw in voor toegang tot het StorSimple-apparaat en wijzig de versleutelings sleutel van de service gegevens om ervoor te zorgen dat de nieuwe informatie niet bekend is bij niet-geautoriseerd personeel. Ga voor instructies naar:
 
@@ -258,7 +258,7 @@ Hier volgen enkele vragen en antwoorden over beveiliging en Microsoft Azure Stor
 * [De versleutelings sleutel voor service gegevens wijzigen](storsimple-8000-manage-service.md#change-the-service-data-encryption-key)
 * [CHAP configureren voor uw StorSimple-apparaat](storsimple-8000-configure-chap.md)
 
-**V:** Ik wil de StorSimple Snapshot Manager wacht woord opgeven voor een host die verbinding maakt met het StorSimple-apparaat, maar het wacht woord is niet beschikbaar. Wat kan ik doen?
+**V:** Ik wil de StorSimple Snapshot Manager wacht woord opgeven voor een host die verbinding maakt met het StorSimple-apparaat, maar het wacht woord is niet beschikbaar. Wat moet ik doen?
 
 **A:** Als u het wacht woord bent verg eten, kunt u een nieuw account maken. Informeer vervolgens alle bestaande gebruikers dat het wacht woord is gewijzigd en dat de clients moeten worden bijgewerkt om het nieuwe wacht woord te gebruiken. Ga voor instructies naar:
 

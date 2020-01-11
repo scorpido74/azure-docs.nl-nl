@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: tutorial
 ms.date: 07/19/2019
-ms.openlocfilehash: 27e166a8798f851f6c086c025dd82957b2dcfb84
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 15399d5a00c13141877dcf44640df2c1f9b9ba5c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849272"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889059"
 ---
 # <a name="tutorial-access-azure-blob-storage-from-azure-databricks-using-azure-key-vault"></a>Zelf studie: toegang tot Azure Blob Storage vanuit Azure Databricks met behulp van Azure Key Vault
 
@@ -32,11 +32,11 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 > [!Note]
 > Deze zelf studie kan niet worden uitgevoerd met een **gratis proef abonnement van Azure**.
-> Als u een gratis account hebt, gaat u naar uw profiel en wijzigt u uw abonnement in **betalen per gebruik**. Zie [Gratis Azure-account](https://azure.microsoft.com/free/) voor meer informatie. Vervolgens [verwijdert u de bestedings limiet](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)en [vraagt u een quotum toename](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) aan voor vcpu's in uw regio. Wanneer u uw Azure Databricks-werk ruimte maakt, kunt u de prijs categorie **Trial (Premium-14-dagen gratis dbu's)** selecteren om de werk ruimte gedurende 14 dagen toegang te geven tot gratis premium Azure Databricks dbu's.
+> Als u een gratis account hebt, gaat u naar uw profiel en wijzigt u uw abonnement in **betalen per gebruik**. Zie [Gratis Azure-account](https://azure.microsoft.com/free/) voor meer informatie. Vervolgens [verwijdert u de bestedings limiet](https://docs.microsoft.com/azure/billing/billing-spending-limit#why-you-might-want-to-remove-the-spending-limit)en [vraagt u een quotum toename](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) aan voor vcpu's in uw regio. Wanneer u uw Azure Databricks-werk ruimte maakt, kunt u de prijs categorie **Trial (Premium-14-dagen gratis dbu's)** selecteren om de werk ruimte gedurende 14 dagen toegang te geven tot gratis premium Azure Databricks dbu's.
 
 ## <a name="create-a-storage-account-and-blob-container"></a>Een opslag account en BLOB-container maken
 
@@ -76,7 +76,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
    |Eigenschap|Beschrijving|
    |--------|-----------|
-   |Naam|Een unieke naam voor uw sleutel kluis.|
+   |Name|Een unieke naam voor uw sleutel kluis.|
    |Abonnement|Kies een abonnement.|
    |Resourcegroep|Kies een resource groep of maak een nieuwe.|
    |Locatie|Kies een locatie.|
@@ -94,7 +94,7 @@ Meld u aan bij de [Azure-portal](https://portal.azure.com/).
    |Eigenschap|Waarde|
    |--------|-----------|
    |Uploadopties|Handmatig|
-   |Naam|Beschrijvende naam voor de sleutel van uw opslag account.|
+   |Name|Beschrijvende naam voor de sleutel van uw opslag account.|
    |Waarde|Key1 van uw opslag account.|
 
    ![Eigenschappen voor nieuw sleutel kluis geheim](./media/store-secrets-azure-key-vault/create-storage-secret.png)

@@ -9,18 +9,18 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 0c0192ac2cafc724875c07de152bdb1d3f4e49ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 73d2e075dd4d3cf9e9b37aa9131ab5f4c822e140
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434697"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895912"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Snelstartgids: een gesimuleerd apparaat inrichten met symmetrische sleutels
 
 In deze snelstartgids leert u hoe u een apparaatsimulator kunt maken en uitvoeren op een Windows-ontwikkelcomputer. U configureert dit gesimuleerde apparaat om een symmetrische sleutel te gebruiken voor een verificatie met een Device Provisioning Service-exemplaar en voor toewijzing aan een IoT-hub. Er wordt voorbeeldcode van de [Azure IoT C-SDK](https://github.com/Azure/azure-iot-sdk-c) gebruikt voor het simuleren van een opstartprocedure voor het apparaat dat de inrichting initieert. Het apparaat wordt herkend op basis van een afzonderlijke inschrijving met een inrichtingsservice-exemplaar en wordt toegewezen aan een IoT-hub.
 
-Hoewel dit artikel een inrichting met een afzonderlijke inschrijving laat zien, kunt u dezelfde procedures gebruiken bij inschrijvingsgroepen. Het enige verschil is dat u een afgeleide apparaatsleutel moet gebruiken met een unieke registratie-ID voor het apparaat. Bij inschrijvingsgroepen wordt de symmetrische sleutel op de inschrijving niet direct gebruikt. Hoewel inschrijvingsgroepen met symmetrische sleutel niet tot oudere apparaten beperkt zijn, biedt [Oudere apparaten inrichten door middel van attestation met een symmetrische sleutel](how-to-legacy-device-symm-key.md) een voorbeeld van een inschrijvingsgroep. Zie [Groepsinschrijvingen voor attestation met behulp van een symmetrische sleutel](concepts-symmetric-key-attestation.md#group-enrollments) voor meer informatie.
+Hoewel in dit artikel wordt gedemonstreerd met het inrichten met een individuele inschrijving, kunt u registratie groepen gebruiken. Er zijn enkele verschillen bij het gebruik van registratie groepen. U moet bijvoorbeeld een afgeleide-apparaatwachtwoord gebruiken met een unieke registratie-ID voor het apparaat. Hoewel inschrijvingsgroepen met symmetrische sleutel niet tot oudere apparaten beperkt zijn, biedt [Oudere apparaten inrichten door middel van attestation met een symmetrische sleutel](how-to-legacy-device-symm-key.md) een voorbeeld van een inschrijvingsgroep. Zie [Groepsinschrijvingen voor attestation met behulp van een symmetrische sleutel](concepts-symmetric-key-attestation.md#group-enrollments) voor meer informatie.
 
 Als u niet bekend bent met het proces van automatische inrichting, bekijk dan de [Concepten voor automatische inrichting](concepts-auto-provisioning.md). 
 
@@ -52,7 +52,7 @@ De SDK bevat de voorbeeldcode voor een gesimuleerd apparaat. Dit gesimuleerde ap
 
     Het is belangrijk dat de vereisten voor Visual Studio met (Visual Studio en de workload Desktopontwikkeling met C++) op uw computer zijn geïnstalleerd **voordat** de `CMake`-installatie wordt gestart. Zodra aan de vereisten is voldaan en de download is geverifieerd, installeert u het CMake-bouwsysteem.
 
-2. Zoek de code naam voor de [nieuwste versie](https://github.com/Azure/azure-iot-sdk-c/releases/latest) van de SDK.
+2. Klik op **Tags** en zoek de naam van de tag voor de meest recente release op de [pagina release van de Azure IOT C-SDK](https://github.com/Azure/azure-iot-sdk-c/releases/latest).
 
 3. Open een opdrachtprompt of Git Bash-shell. Voer de volgende opdrachten uit om de nieuwste versie van de [Azure IOT C SDK](https://github.com/Azure/azure-iot-sdk-c) github-opslag plaats te klonen. Gebruik het label dat u in de vorige stap hebt gevonden als waarde voor de para meter `-b`:
 
@@ -97,7 +97,7 @@ De SDK bevat de voorbeeldcode voor een gesimuleerd apparaat. Dit gesimuleerde ap
 
 ## <a name="create-a-device-enrollment-entry-in-the-portal"></a>Een vermelding voor apparaatregistratie maken in de portal
 
-1. Meld u aan bij de Azure Portal, selecteer de knop **alle resources** in het linkermenu en open uw Device Provisioning-Service.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com), selecteer de knop **alle resources** in het linkermenu en open uw Device Provisioning-Service.
 
 2. Selecteer het tabblad **inschrijvingen beheren** en selecteer vervolgens de knop **afzonderlijke registratie toevoegen** bovenaan. 
 
