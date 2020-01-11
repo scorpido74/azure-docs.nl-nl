@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 12/20/2019
-ms.openlocfilehash: b97c8c51bc63fb0c1ff0070714e7393d11ea0dbf
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 023128d35030f99458bc5fd2c7a4a155a856e4c9
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497421"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861503"
 ---
 # <a name="quickstart-explore-the-azure-time-series-insights-preview-demo-environment"></a>Snelstartgids: Verken de Azure Time Series Insights preview-demo omgeving
 
@@ -45,7 +45,7 @@ In de Time Series Insights preview Explorer worden historische gegevens en analy
 
       [![W7 in contoso plant 1](media/v2-update-quickstart/quick-start-generator-speed.png)](media/v2-update-quickstart/quick-start-generator-speed.png#lightbox)
 
-1. Onlangs heeft Contoso brand geconstateerd in windturbine **W7**. De mening is afhankelijk van wat het vuur heeft veroorzaakt. In Time Series Insights ziet u dat de brand waarschuwings sensor tijdens de brand is geactiveerd.
+1. Onlangs heeft Contoso brand geconstateerd in windturbine **W7**. De mening is afhankelijk van wat het vuur heeft veroorzaakt. In Time Series Insights wordt de brand waarschuwing weer gegeven die tijdens de brand werd geactiveerd.
 
    1. Wijzig het weergave bereik in **3/9/17 20:00:00.00 tot 3/10/17 20:00:00.00 (UTC)** .
    1. Selecteer **veiligheids systeem** > **FireAlert**.
@@ -59,7 +59,7 @@ In de Time Series Insights preview Explorer worden historische gegevens en analy
 
       [![andere gebeurtenissen rond hetzelfde tijdstip controleren](media/v2-update-quickstart/quick-start-active-warning.png)](media/v2-update-quickstart/quick-start-active-warning.png#lightbox)
 
-1. De olie druk en actieve waarschuwings sensors zijn direct vóór de brand opgetreden. Vouw de weer gegeven tijd reeks uit om andere tekens weer te geven die duidelijk zijn voor de brand. Beide Sens oren schommelen consistent in de loop van de tijd. De schommelingen geven een persistent en Worrisome patroon aan.
+1. De olie druk en actieve waarschuwings sensors zijn direct vóór de brand opgetreden. Vouw de weer gegeven tijd reeks uit om andere tekens te bekijken waarvan duidelijk is dat deze de brand veroorzaakt. Beide Sens oren schommelen consistent in de loop van de tijd. De schommelingen geven een persistent en Worrisome patroon aan.
 
     * Wijzig het weergave bereik in **2/24/17 20:00:00.00 tot 3/10/17 20:00:00.00 (UTC)** .
 
@@ -86,7 +86,7 @@ Door gebruik te maken van Time Series Insights en de telemetrie van de sensor, h
 
        [![het weergave bereik te wijzigen en W6 te selecteren](media/v2-update-quickstart/quick-start-voltage-switch-warning.png)](media/v2-update-quickstart/quick-start-voltage-switch-warning.png#lightbox)
 
-1. De waarschuwing duidt op een probleem met de spanning van de generator. De algemene energie-uitvoer van de Generator bevindt zich binnen de normale para meters in het huidige interval. Door ons interval te verg Roten, zien we een ander patroon. Een vervolg keuzelijst is duidelijk.
+1. De waarschuwing duidt op een probleem met de spanning van de generator. De algemene energie-uitvoer van de Generator bevindt zich binnen de normale para meters in het huidige interval. Door ons interval te verg Roten, komt er een ander patroon aan de hand. Een vervolg keuzelijst is duidelijk.
 
     1. Verwijder de **VoltageActuatorSwitchWarning** -sensor.
     1. Selecteer het **Generator systeem** > **ActivePower**.
@@ -100,7 +100,7 @@ Door gebruik te maken van Time Series Insights en de telemetrie van de sensor, h
 
       [de tijds Panne ![verlengen tot 60 dagen](media/v2-update-quickstart/quick-start-expand-interval-range.png)](media/v2-update-quickstart/quick-start-expand-interval-range.png#lightbox)
 
-1. Andere sensor gegevens punten kunnen worden toegevoegd om meer context te bieden. Hoe meer Sens oren er worden weer gegeven, het uitgebreidere inzicht van het probleem is. We verwijderen een markering om de werkelijke waarden te bekijken. 
+1. Andere sensor gegevens punten kunnen worden toegevoegd om meer context te bieden. Hoe meer Sens oren er worden weer gegeven, het uitgebreidere inzicht van het probleem is. Laten we een markering neerzetten om de werkelijke waarden weer te geven. 
 
     1. Selecteer **Generator systeem**en selecteer vervolgens drie Sens oren: **GridVoltagePhase1**, **GridVoltagePhase2**en **GridVoltagePhase3**.
     1. Verwijder een markering van het laatste gegevenspunt in het zichtbare gedeelte.

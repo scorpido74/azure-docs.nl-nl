@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 01/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 73f5f64a64ab28cdb4b57d0904911f62c2020cf0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 548fa8181c4841d8f57de485c0a4e714b5e9321a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082684"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863907"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Herstel na nood geval instellen op Azure voor Hyper-V-Vm's met behulp van Power shell en Azure Resource Manager
 
@@ -188,7 +188,13 @@ Houd er rekening mee dat het opgegeven opslag account zich in dezelfde Azure-reg
 
         Succeeded
 
-
+> [!NOTE]
+> Als u wilt repliceren naar CMK ingeschakelde beheerde schijven in azure, voert u de volgende stappen uit met AZ Power Shell 3.3.0:
+>
+> 1. Failover naar beheerde schijven inschakelen door de VM-eigenschappen bij te werken
+> 2. Gebruik de cmdlet Get-AsrReplicationProtectedItem om de schijf-ID op te halen voor elke schijf van het beveiligde item
+> 3. Maak een Dictionary-object met behulp van de cmdlet New-object System. Collections. generic. dictionary ' 2 [System. String, System. String] ' om de toewijzing van schijf-id aan schijf versleutelings te bevatten. Deze schijf versleutelings sets moeten vooraf door u worden gemaakt in de doel regio.
+> 4. Werk de VM-eigenschappen bij met de cmdlet Set-AsrReplicationProtectedItem door het object Dictionary in de DiskIdToDiskEncryptionSetMap-para meter door te geven.
 
 ## <a name="step-8-run-a-test-failover"></a>Stap 8: een testfailover uitvoeren
 1. Voer een testfailover als volgt uit:

@@ -2,35 +2,35 @@
 title: Voortgang van team data Science proces-projecten bijhouden
 description: Hoe gegevens wetenschap groeps beheerders, team leiders en project leiders de voortgang van een Data Science-project kunnen volgen.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 28bd3e558294c000ba65a1c60fe227bbae7e82dd
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 8cf1e5a4d97b882e7a8d0c81041bbcde709760d1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244064"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864193"
 ---
 # <a name="track-the-progress-of-data-science-projects"></a>De voortgang van data Science-projecten volgen
 
-Gegevens wetenschappen groeps beheerders, team leiders en project leiders kunnen de voortgang van hun projecten volgen, zoals wat werk heeft gedaan, wie het werk heeft uitgevoerd en wat er gebeurt. 
+Gegevens wetenschappen groeps beheerders, team leiders en project leiders kunnen de voortgang van hun projecten volgen.  Managers willen weten wat er gebeurt met het werk, wie het werk heeft gedaan en wat het werk blijft.   Het beheren van verwachtingen is een belang rijk onderdeel van succes.
 
-## <a name="azure-devops-dashboards"></a>Azure DevOps-Dash boards
+## <a name="azure-devops-dashboards"></a>Azure DevOps-dashboards
 
 Als u Azure DevOps gebruikt, kunt u Dash boards maken om de activiteiten en werk items bij te houden die aan een bepaald flexibel project zijn gekoppeld. Zie [Dash boards, rapporten en widgets](/azure/devops/report/dashboards/)voor meer informatie over Dash boards.
 
 Voor instructies over het maken en aanpassen van Dash boards en widgets in azure DevOps raadpleegt u de volgende Quick starts:
 
-- [Dash boards toevoegen en beheren](/azure/devops/report/dashboards/dashboards)
+- [Toevoegen en beheren van dashboards](/azure/devops/report/dashboards/dashboards)
 - [Widgets toevoegen aan een dash board](/azure/devops/report/dashboards/add-widget-to-dashboard)
 
-## <a name="example-dashboard"></a>Voorbeeld dashboard
+## <a name="example-dashboard"></a>Voorbeeld van dashboard
 
 Hier volgt een eenvoudig voor beeld van een dash board waarmee u de Sprint activiteiten van een flexibel data Science-project kunt bijhouden, met inbegrip van het aantal door voeringen aan gekoppelde opslag plaatsen. 
 
@@ -50,4 +50,4 @@ Hier volgt een eenvoudig voor beeld van een dash board waarmee u de Sprint activ
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Stapsgewijze instructies voor het uitvoeren van de team data Science proces](walkthroughs.md) bevat beschrijvingen van alle stappen in het proces voor specifieke scenario's, met koppelingen en miniaturen. De gekoppelde scenario's illustreren het combi neren van Cloud-en on-premises hulpprogram ma's en services in werk stromen of pijp lijnen om intelligente toepassingen te maken. 
+[Stapsgewijze instructies voor het uitvoeren van de team data Science proces bevat een overzicht van](walkthroughs.md) alle proces stappen. De gekoppelde scenario's laten zien hoe u de Cloud en on-premises resources kunt beheren in intelligente toepassingen. 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: time-series-insights
 services: time-series-insights
 ms.custom: seodec18
-ms.openlocfilehash: 5f0f1cf4202eebd3639d3946cd4c800bc5c216a0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c33fce5b6999c5b8372fe4c04401bf55898aee8d
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460318"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863441"
 ---
 # <a name="summary-of-customer-data-request-features"></a>Overzicht van de klant functies voor aanvraag
 
@@ -34,9 +34,9 @@ Een Tenant beheerder kan klant gegevens verwijderen met behulp van de Azure Port
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-Voordat u echter klant gegevens verwijdert via de portal, moet u het toegangs beleid van de gebruiker verwijderen uit de Time Series Insights omgeving binnen de Azure Portal. Zie [granting Data Access to a time series Insights environment using Azure Portal](time-series-insights-data-access.md)(Engelstalig) voor meer informatie.
+Voordat u echter klant gegevens verwijdert via de portal, moet u het toegangs beleid van de gebruiker verwijderen uit de Time Series Insights omgeving binnen de Azure Portal. Lees [granting Data Access to a time series Insights environment using Azure Portal](time-series-insights-data-access.md)voor meer informatie.
 
-U kunt ook delete-bewerkingen uitvoeren op toegangs beleid met behulp van de REST API. Zie [Access policies-Delete (](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/delete)Engelstalig) voor meer informatie.
+U kunt ook delete-bewerkingen uitvoeren op toegangs beleid met behulp van de REST API. Lees voor meer informatie, [toegangs beleid-verwijderen](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/delete).
 
 Time Series Insights is geïntegreerd met de Blade beleid in de Azure Portal. Zowel Time Series Insights als de Blade beleid kunt u gebruiken om gebruikers gegevens weer te geven, te exporteren en te verwijderen die zijn opgeslagen in de service. Alle verwijderings acties die zijn uitgevoerd op de Blade beleid van de Azure Portal resulteert in het verwijderen van gebruikers gegevens in Time Series Insights. Als een gebruiker bijvoorbeeld een opgeslagen persoonlijke query heeft, wordt die query permanent verwijderd uit de Time Series Insights Explorer. Als de gebruiker een opgeslagen gedeelde query heeft, blijft de query behouden, maar worden de gebruikers gegevens definitief verwijderd. De volgende notitie bevat instructies voor het uitvoeren van deze taken.
 
@@ -46,9 +46,9 @@ Net als bij het verwijderen van gegevens kan een Tenant beheerder gegevens die z
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-Als u een Tenant beheerder bent, kunt u het beleid voor gegevens toegang weer geven in de Time Series Insights omgeving van de Azure Portal. Zie [granting Data Access to a time series Insights environment using Azure Portal](time-series-insights-data-access.md)(Engelstalig) voor meer informatie.
+Als u een Tenant beheerder bent, kunt u het beleid voor gegevens toegang weer geven in de Time Series Insights omgeving van de Azure Portal. Lees [granting Data Access to a time series Insights environment using Azure Portal](time-series-insights-data-access.md)voor meer informatie.
 
-Het is ook mogelijk om export bewerkingen uit te voeren op toegangs beleid met behulp van de bewerking ' lijst op omgeving ' in de gegeven REST API. Zie [toegangs beleid-lijst per omgeving](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/listbyenvironment)voor meer informatie.
+Het is ook mogelijk om export bewerkingen uit te voeren op toegangs beleid met behulp van de bewerking ' lijst op omgeving ' in de gegeven REST API. Lees voor meer informatie [het toegangs beleid-lijst per omgeving](https://docs.microsoft.com/rest/api/time-series-insights/management/accesspolicies/listbyenvironment).
 
 ## <a name="to-delete-data-stored-within-time-series-insights"></a>Gegevens verwijderen die zijn opgeslagen in Time Series Insights
 
@@ -58,13 +58,13 @@ Persoonlijke gegevens kunnen worden omgezet in Time Series Insights opslag, een 
 
 Als u gegevens wilt weer geven en exporteren die zijn opgeslagen in Time Series Insights, moet u zoeken naar die gegevens. U kunt de Time Series Insights Explorer-of Time Series Insights query-Api's gebruiken om gegevens weer te geven en te exporteren. Als u gegevens wilt weer geven en exporteren met behulp van de Time Series Insights Explorer, zoekt u eerst naar de betreffende gebruikers gegevens. Klik na het zoeken met de rechter muisknop op de grafiek en selecteer **gebeurtenissen verkennen**. Het raster gebeurtenissen wordt weer gegeven en toont opties voor het exporteren van de gegevens als CSV en JSON.
 
-Zie [Azure time series Insights Explorer](time-series-insights-explorer.md)voor meer informatie.
+Lees [Azure time series Insights Explorer](time-series-insights-explorer.md)voor meer informatie.
 
 **Gegevens verwijderen**
 
 Op dit moment ondersteunt Time Series Insights geen gedetailleerde verwijdering van gegevens. Time Series Insights biedt echter de mogelijkheid om klant gegevens te verwijderen die zijn opgeslagen in Time Series Insights door het configureren van Bewaar beleid. U kunt de Bewaar periode van de hele Time Series Insights omgeving aanpassen tot een wille keurig aantal dagen om uw verwijderings vereisten te ondersteunen.
 
-Zie [retentie configureren in time series Insights](time-series-insights-how-to-configure-retention.md)voor meer informatie.
+Lees voor meer informatie het [configureren van Bewaar periode in time series Insights](time-series-insights-how-to-configure-retention.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

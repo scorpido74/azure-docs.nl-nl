@@ -2,21 +2,21 @@
 title: Team Data Science Process projectplanning
 description: Microsoft Project en Excel-sjablonen die u helpen plannen en beheren van data science-projecten.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bbedaa554e9c97a24e26c7927c1bf9c94d5cd507
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: c003145acd423fd96dd0ac6c054884024c2ce4a0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253008"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864227"
 ---
 # <a name="team-data-science-process-project-planning"></a>Team Data Science Process projectplanning
 
@@ -48,7 +48,7 @@ Elke taak heeft een opmerking. Deze taken uit om te zien welke resources al zijn
 
 ## <a name="excel-template"></a>Excel-sjabloon
 
-Als geen toegang hebt tot Microsoft Project, een Excel-werkblad met de dezelfde gegevens zijn ook hier downloaden: [Excel-sjabloon](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx) kun je ook hierbij het naar welke hulpprogramma die u wilt gebruiken.
+Als geen toegang hebt tot Microsoft Project, een Excel-werkblad met de dezelfde gegevens zijn ook hier downloaden: [Excel sjabloon](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.xlsx) kun je ook hierbij het naar welke hulpprogramma die u wilt gebruiken.
 
 Deze sjablonen gebruiken voor uw eigen risico. De [gebruikelijke disclaimers](https://www.gnu.org/licenses/gpl-3.0.en.html) toepassen.
 
@@ -58,7 +58,7 @@ Gebruik deze [project sjabloonopslagplaats](https://github.com/Azure/Azure-TDSP-
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Flexibele ontwikkeling van wetenschappelijke gegevensprojecten](agile-development.md) dit document wordt beschreven voor het uitvoeren van een data science-project in een systematische, versie beheerd en gezamenlijke manier binnen een projectteam met behulp van het Team Data Science Process.
+[Flexibele ontwikkeling van data Science-projecten](agile-development.md) In dit document wordt een Data Science-project beschreven in een systematische versie en op samenwerkings wijze met behulp van het team data Science process.
 
 Scenario's die laten zien van alle de stappen in het proces voor het **specifieke scenario's** worden ook gegeven. Ze worden weergegeven en die is gekoppeld met miniaturen beschrijvingen in de [voorbeeld walkthroughs](walkthroughs.md) artikel. Ze laten zien hoe u naar de cloud, on-premises hulpprogramma's en services combineren in een werkstroom of een pijplijn te maken van een intelligente toepassingen. 
 

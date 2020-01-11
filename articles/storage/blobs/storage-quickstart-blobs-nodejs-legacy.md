@@ -1,48 +1,46 @@
 ---
-title: 'Quick Start: client bibliotheek voor Azure Blob Storage v2 voor Java script'
-description: Maak een opslagaccount en een container in object(Blob)-opslag. Gebruik de Azure Storage-client bibliotheek voor node. js v2 om een BLOB te uploaden, een BLOB te downloaden en de blobs in een container weer te geven.
+title: 'Snelstartgids: Azure Blob Storage-client bibliotheek V10 toevoegen voor Java script'
+description: Blobs en containers maken, uploaden en verwijderen in node. js met de Azure Storage-client bibliotheek V10 toevoegen voor Java script
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 02/04/2019
+ms.date: 09/24/2019
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 7300d4eccec5b1e4b3b5b7dc292cf6150a42e7b4
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.topic: quickstart
+ms.openlocfilehash: dd59dec65f75a17c35750140349101c600a92636
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269689"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862846"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v2-for-javascript"></a>Quick Start: client bibliotheek voor Azure Blob Storage v2 voor Java script
+# <a name="quickstart-azure-blob-storage-client-library-v10-for-javascript"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V10 toevoegen voor Java script
 
-In deze hand leiding vindt u informatie over het gebruik van de client bibliotheek voor node. js v2 om blobs te uploaden, te downloaden en weer te geven met Azure Blob Storage.
-
-> [!TIP]
-> De meest recente versie van de Azure Storage-client bibliotheek voor node. js is V10 toevoegen. U wordt aangeraden de nieuwste versie van de client bibliotheek te gebruiken wanneer dat mogelijk is. Om aan de slag te gaan met v10 toevoegen, raadpleegt u [Quick Start: blobs uploaden, downloaden, weer geven en verwijderen met Azure Storage-client bibliotheek voor Java script V10 toevoegen (preview)](storage-quickstart-blobs-nodejs-v10.md).
+In deze snelstart leert u hoe u de [Azure Storage v10 SDK voor JavaScript](https://github.com/Azure/azure-sdk-for-js) kunt gebruiken in Node.js om blobs te uploaden, downloaden, weergeven en verwijderen en containers te beheren.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
-
-Maak een Azure-opslag account in de [Azure Portal](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). Zie voor meer informatie over het maken van het account [Een opslagaccount maken](../common/storage-quickstart-create-account.md).
+[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
 ## <a name="download-the-sample-application"></a>De voorbeeldtoepassing downloaden
 
-De [voorbeeld toepassing](https://github.com/Azure-Samples/storage-blobs-node-quickstart.git) is een eenvoudige node. js-console toepassing. Kloon om te beginnen de opslagplaats naar uw computer met de volgende opdracht:
+De [voorbeeldtoepassing](https://github.com/Azure-Samples/azure-storage-js-v10-quickstart.git) in deze quickstart is een eenvoudige Node.js-consoletoepassing. Kloon om te beginnen de opslagplaats naar uw computer met de volgende opdracht:
 
 ```bash
-git clone https://github.com/Azure-Samples/storage-blobs-node-quickstart.git
+git clone https://github.com/Azure-Samples/azure-storage-js-v10-quickstart.git
 ```
 
-Als u de toepassing wilt openen, gaat u naar de map *storage-blobs-node-quickstart* en opent u deze in uw favoriete omgeving voor het bewerken van code.
+Wijzig vervolgens de mappen voor de toepassing:
 
-[!INCLUDE [storage-copy-connection-string-portal](../../../includes/storage-copy-connection-string-portal.md)]
+```bash
+cd azure-storage-js-v10-quickstart
+```
 
-## <a name="configure-your-storage-connection-string"></a>De opslagverbindingsreeks configureren
+Open nu de map in uw favoriete omgeving voor codebewerking.
 
-U moet eerst de verbindingsreeks voor uw opslagaccount opgeven om de toepassing te kunnen uitvoeren. Het voorbeeld van de opslagplaats bevat een bestand met de naam *.env.example*. U kunt de naam van dit bestand wijzigen door de *.example*-extensie te verwijderen, wat resulteert in een bestand met de naam *.env*. In het bestand *.env* voegt u de waarde van de verbindingsreeks toe na de *AZURE_STORAGE_CONNECTION_STRING*-sleutel.
+## <a name="configure-your-storage-credentials"></a>Uw opslagreferenties configureren
+
+U moet eerst de beveiligingsreferenties voor uw opslagaccount opgeven om de toepassing te kunnen uitvoeren. Het voorbeeld van de opslagplaats bevat een bestand met de naam *.env.example*. U kunt de naam van dit bestand wijzigen door de *.example*-extensie te verwijderen, wat resulteert in een bestand met de naam *.env*. Voeg in het *.env*-bestand uw accountnaam en sleutelwaarden toe bij de sleutels *AZURE_STORAGE_ACCOUNT_NAME* en *AZURE_STORAGE_ACCOUNT_ACCESS_KEY*.
 
 ## <a name="install-required-packages"></a>De vereiste pakketten installeren
 
@@ -53,312 +51,360 @@ npm install
 ```
 
 ## <a name="run-the-sample"></a>De voorbeeldtoepassing uitvoeren
+
 Nu de afhankelijkheden zijn geïnstalleerd, kunt u het voorbeeld uitvoeren door de volgende opdracht te geven:
 
 ```bash
 npm start
 ```
 
-De uitvoer van het script ziet er ongeveer als volgt uit:
+De uitvoer van de app ziet er ongeveer als volgt uit:
 
 ```bash
+Container "demo" is created
 Containers:
  - container-one
  - container-two
-Container "demo" is created
+ - demo
 Blob "quickstart.txt" is uploaded
 Local file "./readme.md" is uploaded
 Blobs in "demo" container:
  - quickstart.txt
+ - readme-stream.md
  - readme.md
-Blob downloaded blob content: "hello Blob SDK"
+Blob downloaded blob content: "hello!"
 Blob "quickstart.txt" is deleted
 Container "demo" is deleted
 Done
 ```
 
-Als u een nieuw opslag account voor dit voor beeld gebruikt, ziet u mogelijk geen container namen die worden vermeld onder het label "*containers*".
+Als u een nieuw opslag account voor deze Quick Start gebruikt, ziet u mogelijk alleen de *demo* container die wordt vermeld onder het label '*containers:* '.
 
 ## <a name="understanding-the-code"></a>De code begrijpen
-De eerste expressie wordt gebruikt om waarden in de omgevingsvariabelen te laden.
+
+Het voorbeeld begint met het importeren van een aantal klassen en functies van de Azure Blob Storage-naamruimte. Elk van de geïmporteerde items wordt besproken in de context waarin ze worden gebruikt in het voorbeeld.
+
+```javascript
+const {
+    Aborter,
+    BlobURL,
+    BlockBlobURL,
+    ContainerURL,
+    ServiceURL,
+    SharedKeyCredential,
+    StorageURL,
+    uploadStreamToBlockBlob
+} = require('@azure/storage-blob');
+```
+
+Referenties worden op basis van de juiste context gelezen uit de omgevingsvariabelen.
 
 ```javascript
 if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').load();
+    require('dotenv').config();
 }
 ```
 
-De module *dotenv* laadt omgevingsvariabelen wanneer de app lokaal wordt uitgevoerd voor foutopsporing. De waarden worden gedefinieerd in een bestand met de naam *.env* en geladen in de huidige uitvoeringscontext. In een productiecontext worden deze waarden geleverd door de serverconfiguratie, daarom wordt deze code alleen uitgevoerd als het script niet wordt uitgevoerd in een ‘productie’context.
+De module *dotenv* laadt omgevingsvariabelen wanneer de app lokaal wordt uitgevoerd voor foutopsporing. De waarden worden gedefinieerd in een bestand met de naam *.env* en geladen in de huidige uitvoeringscontext. In een productiecontext worden deze waarden geleverd door de serverconfiguratie, daarom wordt deze code alleen uitgevoerd als het script *niet* wordt uitgevoerd in een productieomgeving.
+
+Het volgende blok modules wordt geïmporteerd om communicatie met het bestandssysteem makkelijker te maken.
 
 ```javascript
+const fs = require('fs');
 const path = require('path');
-const storage = require('azure-storage');
 ```
 
-Dit is het doel van de modules: 
+Dit is het doel van deze modules: 
 
-bestand met naam *.env* naar de huidige uitvoeringscontext
-- *path* is vereist om het absolute pad van het bestand te bepalen voor uploaden naar blob-opslag
-- *Azure-Storage* is de [Azure Storage-client bibliotheek](https://docs.microsoft.com/javascript/api/azure-storage) module voor node. js
+- *fs* is de systeemeigen Node.js-module die wordt gebruikt om te werken met het bestandssysteem;
 
-Vervolgens wordt de variabele **blobService** geïnitialiseerd als nieuw exemplaar van de Azure Blobservice.
+- *path* is vereist om het absolute pad van het bestand te bepalen dat wordt voor het uploaden van een bestand naar blob-opslag.
+
+Waarden van omgevingsvariabelen worden vervolgens gelezen en vastgelegd als constanten.
 
 ```javascript
-const blobService = storage.createBlobService();
+const STORAGE_ACCOUNT_NAME = process.env.AZURE_STORAGE_ACCOUNT_NAME;
+const ACCOUNT_ACCESS_KEY = process.env.AZURE_STORAGE_ACCOUNT_ACCESS_KEY;
+```
+De volgende set constanten helpt bij het bepalen van de intentie van de bestandsgrootteberekeningen tijdens uploadbewerkingen.
+
+```javascript
+const ONE_MEGABYTE = 1024 * 1024;
+const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
 
-In de volgende implementatie wordt elk van de *blobService*-functies verpakt in een *Promise* voor toegang tot de JavaScript-functie *async* en de *await*-operator voor het stroomlijnen van de callback van de [Azure Storage API](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest). Wanneer een geslaagde reactie voor elke functie wordt gegenereerd, wordt de promise omgezet met relevante gegevens, samen met een bericht dat specifiek bij die actie hoort.
-
-### <a name="list-containers"></a>Containers weergeven
-
-De *listContainers*-functie roept [listContainersSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) aan die een verzameling van containers in groepen retourneert.
+Aanvragen van de API kunnen zo worden ingesteld dat deze na een bepaalde periode een time-out bereiken. De [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy)-klasse is verantwoordelijk voor het beheren van hoe time-outs van aanvragen worden behandeld en de volgende constante wordt gebruikt voor het definiëren van de time-outs die in dit voorbeeld worden gebruikt.
 
 ```javascript
-const listContainers = async () => {
-    return new Promise((resolve, reject) => {
-        blobService.listContainersSegmented(null, (err, data) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `${data.entries.length} containers`, containers: data.entries });
-            }
-        });
-    });
-};
-```
-
-De grootte van de groepen kan worden geconfigureerd via [ListContainersOptions](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.listcontaineroptions?view=azure-node-latest). Het aanroepen van *listContainersSegmented* retourneert blobmetagegevens als een matrix met [ContainerResult](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.containerresult?view=azure-node-latest)-instanties. Resultaten worden geretourneerd in batches van 5000 blobs (segmenten). Als er in een container meer dan 5000 blobs zijn, bevatten de resultaten een waarde voor *continuationToken*. Als u volgende segmenten uit de blobcontainer wilt weergeven, kunt u het vervolgtoken als tweede argument doorgeven aan *listContainersSegmented*.
-
-### <a name="create-a-container"></a>Een container maken
-
-De *createContainer*-functie roept [createContainerIfNotExists](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) aan en stelt het juiste toegangsniveau voor de blob in.
-
-```javascript
-const createContainer = async (containerName) => {
-    return new Promise((resolve, reject) => {
-        blobService.createContainerIfNotExists(containerName, { publicAccessLevel: 'blob' }, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Container '${containerName}' created` });
-            }
-        });
-    });
-};
-```
-
-De tweede parameter (*options*) voor **createContainerIfNotExists** accepteert een waarde voor [publicAccessLevel](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest). De waarde *blob* voor *publicAccessLevel* geeft aan dat specifieke blob-gegevens worden weergegeven aan het publiek. Deze instelling is het tegenovergestelde van toegang op *container*niveau, waarmee de inhoud van de container kan worden weergegeven.
-
-Door **createContainerIfNotExists** kan de toepassing de opdracht *createContainer* meerdere keren uitvoeren zonder dat er fouten worden geretourneerd wanneer de container al bestaat. In een productieomgeving hoeft u **createContainerIfNotExists** vaak maar eenmaal aan te roepen wanneer dezelfde container overal in de toepassing wordt gebruikt. In dergelijke gevallen kunt u de container vooraf via de portal of via de Azure CLI maken.
-
-### <a name="upload-text"></a>Tekst uploaden
-
-De *uploadString*-functie roept [createBlockBlobFromText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) aan om een willekeurige tekenreeks naar de blobcontainer te schrijven of die te overschrijven.
-
-```javascript
-const uploadString = async (containerName, blobName, text) => {
-    return new Promise((resolve, reject) => {
-        blobService.createBlockBlobFromText(containerName, blobName, text, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Text "${text}" is written to blob storage` });
-            }
-        });
-    });
-};
-```
-### <a name="upload-a-local-file"></a>Een lokaal bestand uploaden
-
-De *uploadLocalFile*-functie maakt gebruik van de [createBlockBlobFromLocalFile](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromlocalfile-string--string--string--errororresult-blobresult--)-functie om een bestand te uploaden en te schrijven of overschrijven vanuit het bestandssysteem naar de blobopslag. 
-
-```javascript
-const uploadLocalFile = async (containerName, filePath) => {
-    return new Promise((resolve, reject) => {
-        const fullPath = path.resolve(filePath);
-        const blobName = path.basename(filePath);
-        blobService.createBlockBlobFromLocalFile(containerName, blobName, fullPath, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Local file "${filePath}" is uploaded` });
-            }
-        });
-    });
-};
-```
-Andere methoden voor het uploaden van inhoud naar blobs zijn werken met [tekst](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest-string--string--string---buffer--errororresult-blobresult--) en [streams](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromstream-string--string--stream-readable--number--errororresult-blobresult--). Om te controleren of het bestand is geüpload naar de blob-opslag, kunt u met de [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) de gegevens in uw account bekijken.
-
-### <a name="list-the-blobs"></a>Blobs weergeven
-
-De *listBlobs*-functie roept de [listBlobsSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#listblobssegmented-string--continuationtoken--errororresult-listblobsresult--)-methode aan om een lijst met blobmetagegevens in een container te retourneren. 
-
-```javascript
-const listBlobs = async (containerName) => {
-    return new Promise((resolve, reject) => {
-        blobService.listBlobsSegmented(containerName, null, (err, data) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `${data.entries.length} blobs in '${containerName}'`, blobs: data.entries });
-            }
-        });
-    });
-};
-```
-
-Het aanroepen van *listBlobsSegmented* retourneert blob-metagegevens als een matrix met [BlobResult](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice.blobresult?view=azure-node-latest)-instanties. Resultaten worden geretourneerd in batches van 5000 blobs (segmenten). Als er in een container meer dan 5000 blobs zijn, bevatten de resultaten een waarde voor **continuationToken**. Als u volgende segmenten uit de blob-container wilt weergeven, kunt u het vervolgtoken als tweede argument doorgeven aan **listBlobSegmented**.
-
-### <a name="download-a-blob"></a>Een blob downloaden
-
-De *downloadBlob*-functie maakt gebruik van [getBlobToText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) om de inhoud van de blob te downloaden naar het opgegeven absolute bestandspad.
-
-```javascript
-const downloadBlob = async (containerName, blobName) => {
-    const dowloadFilePath = path.resolve('./' + blobName.replace('.txt', '.downloaded.txt'));
-    return new Promise((resolve, reject) => {
-        blobService.getBlobToText(containerName, blobName, (err, data) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Blob downloaded "${data}"`, text: data });
-            }
-        });
-    });
-};
-```
-De hier getoonde implementatie verandert de bron en retourneert de inhoud van de blob als tekenreeks. U kunt de blob ook als [stream](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) downloaden en ook rechtstreeks naar een [lokaal bestand](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest).
-
-### <a name="delete-a-blob"></a>Een blob verwijderen
-
-De *deleteBlob*-functie roept de [deleteBlobIfExists](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#deleteblobifexists-string--string--errororresult-boolean--)-functie aan. Zoals de naam al aangeeft, retourneert deze functie geen fout als de blob al is verwijderd.
-
-```javascript
-const deleteBlob = async (containerName, blobName) => {
-    return new Promise((resolve, reject) => {
-        blobService.deleteBlobIfExists(containerName, blobName, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Block blob '${blobName}' deleted` });
-            }
-        });
-    });
-};
-```
-
-### <a name="delete-a-container"></a>Een container verwijderen
-
-Containers worden verwijderd door de *deleteContainer*-methode aan te roepen in de blobservice en de containernaam door te geven.
-
-```javascript
-const deleteContainer = async (containerName) => {
-    return new Promise((resolve, reject) => {
-        blobService.deleteContainer(containerName, err => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve({ message: `Container '${containerName}' deleted` });
-            }
-        });
-    });
-};
+const ONE_MINUTE = 60 * 1000;
 ```
 
 ### <a name="calling-code"></a>Code aanroepen
 
-Om de *async/await*-syntaxis van JavaScript te ondersteunen, wordt alle aanroepcode verpakt in een functie met de naam *execute*. Vervolgens wordt execute-functie aangeroepen en behandeld als promise.
+Om de *async/await*-syntaxis van JavaScript te ondersteunen, wordt alle aanroepcode verpakt in een functie met de naam *execute*. Vervolgens wordt *execute* aangeroepen en verwerkt als promise.
 
 ```javascript
 async function execute() {
-    // commands 
+    // commands... 
 }
 
 execute().then(() => console.log("Done")).catch((e) => console.log(e));
 ```
-Alle onderstaande code wordt uitgevoerd binnen de execute-functie waar de `// commands`-opmerking is geplaatst.
+
+Alle onderstaande code wordt uitgevoerd binnen de execute-functie waar de `// commands...`-opmerking is geplaatst.
 
 Eerst worden de relevante variabelen gedeclareerd om namen en voorbeeldinhoud toe te wijzen en om het lokale bestand aan te wijzen voor upload naar de blobopslag.
 
 ```javascript
 const containerName = "demo";
 const blobName = "quickstart.txt";
-const content = "hello Node SDK";
+const content = "hello!";
 const localFilePath = "./readme.md";
-let response;
 ```
 
-Om de containers in de opslagaccount weer te geven, wordt de functie listContainers aangeroepen en de geretourneerde lijst met containers wordt in het uitvoervenster weergegeven.
+Opslagaccountreferenties worden gebruikt om een pijplijn te maken die verantwoordelijk is voor het beheren van hoe aanvragen worden verzonden naar de REST-API. Pijplijnen zijn thread-safe en bevatten logica voor het beleid voor opnieuw proberen, logboekregistratie en deserialisatieregels voor HTTP-antwoorden.
+
+```javascript
+const credentials = new SharedKeyCredential(STORAGE_ACCOUNT_NAME, ACCOUNT_ACCESS_KEY);
+const pipeline = StorageURL.newPipeline(credentials);
+const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.windows.net`, pipeline);
+```
+
+De volgende klassen worden gebruikt in dit codeblok:
+
+- De klasse [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy) is verantwoordelijk voor het verpakken van opslagaccountreferenties om deze door te geven aan een aanvraagpijplijn.
+
+- De klasse [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy) is verantwoordelijk voor het maken van een nieuwe pijplijn.
+
+- De [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy) modelleert een URL die wordt gebruikt in de REST-API. Met instanties van deze klasse kunt u acties uitvoeren zoals het weergeven van een lijst met containers en het leveren van contextinformatie om container-URL's te genereren.
+
+Het exemplaar *ServiceURL* wordt gebruikt met de exemplaren [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy) en [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy) om containers en blobs in uw opslagaccount te beheren.
+
+```javascript
+const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
+const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, blobName);
+```
+
+De variabelen *containerURL* en *blockBlobURL* worden in het voorbeeld gebruikt om acties uit te voeren in het opslagaccount. 
+
+De container bestaat op dit moment niet in het opslagaccount. Het exemplaar *ContainerURL* vertegenwoordigt een URL waarop u kunt reageren. U kunt met behulp van dit exemplaar de container maken en verwijderen. De locatie van deze container komt overeen met een locatie als deze:
+
+```bash
+https://<ACCOUNT_NAME>.blob.core.windows.net/demo
+```
+
+De *blockBlobURL* wordt gebruikt voor het beheren van afzonderlijke blobs, zodat u blob-inhoud kunt uploaden, downloaden en verwijderen. De hier weergegeven URL lijkt op deze locatie:
+
+```bash
+https://<ACCOUNT_NAME>.blob.core.windows.net/demo/quickstart.txt
+```
+
+Net als bij de container, bestaat de blok-blob nog niet. De variabele *blockBlobURL* wordt later gebruikt om de blob te maken door inhoud te uploaden.
+
+### <a name="using-the-aborter-class"></a>De Aborter-klasse gebruiken
+
+Aanvragen van de API kunnen zo worden ingesteld dat deze na een bepaalde periode een time-out bereiken. De *Afbrekings* klasse is verantwoordelijk voor het beheren van de time-out van aanvragen. Met de volgende code wordt een context gemaakt waarbij een set aanvragen 30 minuten wordt gegeven.
+
+```javascript
+const aborter = Aborter.timeout(30 * ONE_MINUTE);
+```
+
+Aborters geven u controle over aanvragen doordat u:
+
+- een hoeveelheid tijd kunt toewijzen voor een batch aanvragen;
+- kunt bepalen hoe lang een afzonderlijke aanvraag in de batch er over mag doen om uit te voeren;
+- aanvragen kunt annuleren;
+- het statische lid *Aborter.none* kunt gebruiken om te voorkomen dat er time-outs voor uw aanvragen plaatsvinden.
+
+### <a name="create-a-container"></a>Een container maken
+
+De methode *create* van *ContainerURL* wordt gebruikt om een container te maken.
+
+```javascript
+await containerURL.create(aborter);
+console.log(`Container: "${containerName}" is created`);
+```
+
+Omdat de naam van de container wordt gedefinieerd bij het aanroepen van *ContainerURL.fromServiceURL(serviceURL, containerName)* , is het aanroepen van de methode *create* het enige dat nodig is om de container te maken.
+
+### <a name="show-container-names"></a>Containernamen weergeven
+
+Accounts kunnen een groot aantal containers opslaan. De volgende code laat zien hoe u containers op een gesegmenteerde wijze in een lijst kunt weergeven, zodat u een groot aantal containers kunt doorlopen. De functie *showContainerNames* wordt doorgegeven in exemplaren van *ServiceURL* en *Aborter*.
 
 ```javascript
 console.log("Containers:");
-response = await listContainers();
-response.containers.forEach((container) => console.log(` -  ${container.name}`));
+await showContainerNames(serviceURL, aborter);
 ```
 
-Zodra de lijst met containers beschikbaar is, kunt u de matrixmethode *findIndex* gebruiken om te zien of de container die u wilt maken al bestaat. Als de container nog niet bestaat, wordt die aangemaakt.
+De functie *showContainerNames* maakt gebruik van de methode *listContainersSegment* om batches met namen van containers aan te vragen bij het opslagaccount.
 
 ```javascript
-const containerDoesNotExist = response.containers.findIndex((container) => container.name === containerName) === -1;
+async function showContainerNames(aborter, serviceURL) {
+    let marker = undefined;
 
-if (containerDoesNotExist) {
-    await createContainer(containerName);
-    console.log(`Container "${containerName}" is created`);
+    do {
+        const listContainersResponse = await serviceURL.listContainersSegment(aborter, marker);
+        marker = listContainersResponse.nextMarker;
+        for(let container of listContainersResponse.containerItems) {
+            console.log(` - ${ container.name }`);
+        }
+    } while (marker);
 }
 ```
-Vervolgens worden een tekenreeks en een lokaal bestand geüpload naar Blobopslag.
+
+Wanneer het antwoord wordt geretourneerd, wordt *containerItems* herhaald om de naam naar de console te sturen. 
+
+### <a name="upload-text"></a>Tekst uploaden
+
+Als u tekst wilt uploaden naar de blob, gebruikt u de methode *upload*.
 
 ```javascript
-await uploadString(containerName, blobName, content);
+await blockBlobURL.upload(aborter, content, content.length);
 console.log(`Blob "${blobName}" is uploaded`);
-
-response = await uploadLocalFile(containerName, localFilePath);
-console.log(response.message);
 ```
-Het proces om de blobs weer te geven is hetzelfde als het weergeven van containers. De aanroep van *listBlobs* retourneert een matrix van blobs in de container die worden weergegeven in het uitvoervenster.
+
+Hier worden de tekst en de lengte doorgegeven aan de methode.
+
+### <a name="upload-a-local-file"></a>Een lokaal bestand uploaden
+
+Als een lokaal bestand wilt uploaden naar de container, hebt u de URL van een container en het pad naar het bestand nodig.
+
+```javascript
+await uploadLocalFile(aborter, containerURL, localFilePath);
+console.log(`Local file "${localFilePath}" is uploaded`);
+```
+
+De functie *uploadLocalFile* roept de functie *uploadFileToBlockBlob* aan, die het bestandspad en een bestemmingsexemplaar van de blok-blob als argumenten gebruikt.
+
+```javascript
+async function uploadLocalFile(aborter, containerURL, filePath) {
+
+    filePath = path.resolve(filePath);
+
+    const fileName = path.basename(filePath);
+    const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, fileName);
+
+    return await uploadFileToBlockBlob(aborter, filePath, blockBlobURL);
+}
+```
+
+### <a name="upload-a-stream"></a>Een stream uploaden
+
+Het uploaden van streams wordt ook ondersteund. In dit voorbeeld wordt een lokaal bestand geopend als een stream die doorgegeven wordt aan de uploadmethode.
+
+```javascript
+await uploadStream(containerURL, localFilePath, aborter);
+console.log(`Local file "${localFilePath}" is uploaded as a stream`);
+```
+
+De functie *uploadStream* roept *uploadStreamToBlockBlob* aan om de stream te uploaden naar de opslagcontainer.
+
+```javascript
+async function uploadStream(aborter, containerURL, filePath) {
+    filePath = path.resolve(filePath);
+
+    const fileName = path.basename(filePath).replace('.md', '-stream.md');
+    const blockBlobURL = BlockBlobURL.fromContainerURL(containerURL, fileName);
+
+    const stream = fs.createReadStream(filePath, {
+      highWaterMark: FOUR_MEGABYTES,
+    });
+
+    const uploadOptions = {
+        bufferSize: FOUR_MEGABYTES,
+        maxBuffers: 5,
+    };
+
+    return await uploadStreamToBlockBlob(
+                    aborter, 
+                    stream, 
+                    blockBlobURL, 
+                    uploadOptions.bufferSize, 
+                    uploadOptions.maxBuffers);
+}
+```
+
+Tijdens het uploaden wijst *uploadStreamToBlockBlob* buffers toe om gegevens uit de stream in cache op te slaan, mocht een nieuwe poging nodig zijn. De waarde *maxBuffers* bepaalt het maximaal te gebruiken aantal buffers, waarbij elke buffer een afzonderlijke uploadaanvraag maakt. In het ideale geval zorgt het gebruik van meer buffers voor hogere snelheden, maar leidt het wel tot hoger geheugengebruik. De uploadsnelheid bereikt een maximum wanneer het aantal buffers hoog genoeg om het knelpunt van de client te verplaatsen naar het netwerk of de schijf.
+
+### <a name="show-blob-names"></a>Blob-namen weergeven
+
+Net zoals accounts veel containers kunnen bevatten, kan elke container een grote hoeveelheid blobs bevatten. Toegang tot elke blob in een container is mogelijk via een exemplaar van de klasse *ContainerURL*.
 
 ```javascript
 console.log(`Blobs in "${containerName}" container:`);
-response = await listBlobs(containerName);
-response.blobs.forEach((blob) => console.log(` - ${blob.name}`));
+await showBlobNames(aborter, containerURL);
 ```
 
-Om een blob te downloaden, wordt het antwoord vastgelegd en gebruikt om bij de waarde van de blob te kunnen komen. Van het antwoord wordt readableStreamBody geconverteerd naar een tekenreeks en weergegeven in het uitvoervenster.
+De functie *showBlobNames* roept *listBlobFlatSegment* aan om batches blobs uit de container op te vragen.
 
 ```javascript
-response = await downloadBlob(containerName, blobName);
-console.log(`Downloaded blob content: "${response.text}"`);
+async function showBlobNames(aborter, containerURL) {
+    let marker = undefined;
+
+    do {
+        const listBlobsResponse = await containerURL.listBlobFlatSegment(Aborter.none, marker);
+        marker = listBlobsResponse.nextMarker;
+        for (const blob of listBlobsResponse.segment.blobItems) {
+            console.log(` - ${ blob.name }`);
+        }
+    } while (marker);
+}
 ```
 
-Ten slotte worden de blob en container verwijderd uit de opslagaccount.
+### <a name="download-a-blob"></a>Een blob downloaden
+
+Wanneer een blob is gemaakt, kunt u de inhoud downloaden met behulp van de methode *download*.
 
 ```javascript
-await deleteBlob(containerName, blobName);
-console.log(`Blob "${blobName}" is deleted`);
+const downloadResponse = await blockBlobURL.download(aborter, 0);
+const downloadedContent = await streamToString(downloadResponse.readableStreamBody);
+console.log(`Downloaded blob content: "${downloadedContent}"`);
+```
 
-await deleteContainer(containerName);
+Het antwoord wordt geretourneerd als een stream. In dit voor beeld wordt de stroom geconverteerd naar een teken reeks met behulp van de volgende *streamToString* -hulp functie.
+
+```javascript
+// A helper method used to read a Node.js readable stream into a string
+async function streamToString(readableStream) {
+    return new Promise((resolve, reject) => {
+      const chunks = [];
+      readableStream.on("data", data => {
+        chunks.push(data.toString());
+      });
+      readableStream.on("end", () => {
+        resolve(chunks.join(""));
+      });
+      readableStream.on("error", reject);
+    });
+}
+```
+
+### <a name="delete-a-blob"></a>Een blob verwijderen
+
+De methode *delete* van een *BlockBlobURL*-exemplaar verwijdert een blob uit de container.
+
+```javascript
+await blockBlobURL.delete(aborter)
+console.log(`Block blob "${blobName}" is deleted`);
+```
+
+### <a name="delete-a-container"></a>Een container verwijderen
+
+De methode *delete* van een *ContainerURL*-exemplaar verwijdert een container uit het opslagaccount.
+
+```javascript
+await containerURL.delete(aborter);
 console.log(`Container "${containerName}" is deleted`);
 ```
 
 ## <a name="clean-up-resources"></a>Resources opschonen
+
 Alle gegevens die zijn geschreven naar de opslagaccount worden automatisch verwijderd aan het einde van de voorbeeldcode. 
-
-## <a name="resources-for-developing-nodejs-applications-with-blobs"></a>Resources voor het ontwikkelen van Node.js-toepassingen met blobs
-
-Zie de volgende aanvullende bronnen voor Node.js-ontwikkeling met Blob-opslag:
-
-### <a name="binaries-and-source-code"></a>Binaire bestanden en broncode
-
-- Bekijk en installeer de [broncode voor de Node.js-clientbibliotheek](https://github.com/Azure/azure-storage-node) voor Azure Storage op GitHub.
-
-### <a name="client-library-reference-and-samples"></a>Naslaginformatie en voorbeelden voor de .NET-clientbibliotheek
-
-- Zie het [Node.js API-referentiemateriaal](https://docs.microsoft.com/javascript/api/overview/azure/storage) voor meer informatie over de Node.js-clientbibliotheek.
-- Verken [Blob-opslagvoorbeelden](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=nodejs&term=blob) die zijn geschreven met de Node.js-clientbibliotheek.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel wordt beschreven hoe u een bestand kunt uploaden tussen een lokale schijf en Azure Blob-opslag met behulp van node. js. Voor meer informatie over het werken met Blobopslag, gaat u naar de GitHub-opslagplaats.
+In deze snelstart leert u hoe u met behulp van Node.js blobs en containers kunt beheren in Azure Blob Storage. Voor meer informatie over het werken met deze SDK, gaat u naar de GitHub-opslagplaats.
 
 > [!div class="nextstepaction"]
-> [Microsoft Azure Storage SDK voor node. js en Java script voor browsers](https://github.com/Azure/azure-storage-node)
+> [Azure Storage V10 toevoegen SDK voor Java script-bibliotheek](https://github.com/Azure/azure-storage-js)
+> [Azure Storage java script API-referentie](/javascript/api/overview/azure/storage?view=azure-node-legacy)

@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 66be29b6d16e422eebd381cddb83ce94adf9f76e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 38f5af3cb2006e4b029f8979a213c0af10f1ed8a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745461"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863577"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>Bewaking in azure Digital Apparaatdubbels configureren
 
@@ -97,7 +97,7 @@ Voor beelden van gebruik zijn:
 Volledige logboek query's worden via Azure Monitor- [Logboeken](../azure-monitor/log-query/log-query-overview.md)verschaft. U kunt deze krachtige functies als volgt instellen:
 
 1. Zoek naar **log Analytics** in het Azure Portal.
-1. Uw beschik bare **log Analytics werkruimte** -instanties worden weer geven. Kies één en selecteer de **Logboeken** die u wilt doorzoeken:
+1. Uw beschik bare **log Analytics werkruimte** -instanties worden weer gegeven. Kies één en selecteer de **Logboeken** die u wilt doorzoeken:
 
     [Log Analytics ![](media/how-to-configure-monitoring/log-analytics.png)](media/how-to-configure-monitoring/log-analytics.png#lightbox)
 
@@ -109,7 +109,7 @@ Zodra uw **log Analytics werkruimte** -exemplaar is ingericht, kunt u krachtige 
 
    [![logboek beheer](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
-Zie aan de slag [met query's](../azure-monitor/log-query/get-started-queries.md)voor meer informatie over krachtige query bewerkingen.
+Lees [aan de slag met query's](../azure-monitor/log-query/get-started-queries.md)voor meer informatie over krachtige query bewerkingen.
 
 > [!NOTE]
 > Er kan een vertraging van 5 minuten optreden bij het verzenden van gebeurtenissen naar **log Analytics werk ruimte** voor de eerste keer.
@@ -123,7 +123,7 @@ Azure Monitor logboeken bieden ook krachtige services voor fout meldingen en waa
 
 ## <a name="other-options"></a>Andere opties
 
-Azure Digital Apparaatdubbels biedt ook ondersteuning voor toepassingsspecifieke logboek registratie en beveiligings controles. Zie het artikel over [Azure-logboek controle](../security/fundamentals/log-audit.md) voor een uitgebreid overzicht van alle opties voor Azure-logboek registratie die beschikbaar zijn voor uw Azure Digital apparaatdubbels-exemplaar.
+Azure Digital Apparaatdubbels biedt ook ondersteuning voor toepassingsspecifieke logboek registratie en beveiligings controles. Lees het artikel over [Azure-logboek controle](../security/fundamentals/log-audit.md) voor een uitgebreid overzicht van alle opties voor Azure-logboek registratie die beschikbaar zijn voor uw Azure Digital apparaatdubbels-exemplaar.
 
 ## <a name="next-steps"></a>Volgende stappen
 

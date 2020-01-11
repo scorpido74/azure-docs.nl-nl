@@ -1,5 +1,5 @@
 ---
-title: 'Een virtueel Azure-netwerk verbinden met een ander VNet met behulp van een VNet-naar-VNet-verbinding: Power shell | Microsoft Docs'
+title: 'Een VNet verbinden met een ander VNet met behulp van een Azure VPN Gateway VNet-naar-VNet-verbinding: Power shell'
 description: Virtuele netwerken met elkaar verbinden met behulp van een VNet-naar-VNet-verbinding en PowerShell.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: dbf59740af64bf8d403b6596a17646304c0f1eb0
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: eebe66ca038b31f23ca864b107816b8cf761b29c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385786"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860517"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Een VPN-gatewayverbinding tussen VNets configureren met behulp van PowerShell
 
@@ -21,7 +21,7 @@ Dit artikel helpt u om virtuele netwerken te verbinden met behulp van het verbin
 De stappen in dit artikel zijn van toepassing op het Resource Manager-implementatiemodel. Er wordt gebruikgemaakt van PowerShell. U kunt deze configuratie ook maken met een ander implementatiehulpprogramma of een ander implementatiemodel door in de volgende lijst een andere optie te selecteren:
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure-CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure Portal (klassiek)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -65,11 +65,11 @@ Het belangrijkste verschil tussen de reeksen is dat u afzonderlijke PowerShell-s
 
 Voor deze oefening kunt u configuraties combineren of alleen de configuratie kiezen waarmee u wilt werken. Alle configuraties maken gebruik van het verbindingstype VNet-naar-VNet. Netwerkverkeer verloopt tussen de VNet's die rechtstreeks met elkaar zijn verbonden. In deze oefening wordt verkeer van TestVNet4 niet gerouteerd naar TestVNet5.
 
-* [VNets die zich in hetzelfde abonnement bevinden](#samesub): De stappen voor deze configuratie maken gebruik van TestVNet1 en TestVNet4.
+* [VNet's die zich in hetzelfde abonnement bevinden:](#samesub) in de stappen voor deze configuratie wordt gebruikgemaakt van TestVNet1 en TestVNet4.
 
   ![v2v-diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-* [VNets die zich in verschillende abonnementen bevinden](#difsub): De stappen voor deze configuratie maken gebruik van TestVNet1 en TestVNet5.
+* [VNet's die zich in verschillende abonnementen bevinden:](#difsub) in de stappen voor deze configuratie wordt gebruikgemaakt van TestVNet1 en TestVNet5.
 
   ![v2v-diagram](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
@@ -91,23 +91,23 @@ In de voorbeelden worden de volgende waarden gebruikt:
 
 **Waarden voor TestVNet1:**
 
-* VNET-naam: TestVNet1
+* VNet-naam: TestVNet1
 * Resourcegroep: TestRG1
-* Locatie: East US
-* TestVNet1: 10.11.0.0/16 & 10.12.0.0/16
+* Locatie: US - oost
+* TestVNet1: 10.11.0.0/16 en 10.12.0.0/16
 * FrontEnd: 10.11.0.0/24
 * BackEnd: 10.12.0.0/24
 * GatewaySubnet: 10.12.255.0/27
 * GatewayName: VNet1GW
 * Openbare IP: VNet1GWIP
-* VPNType: RouteBased
+* VPNType: op route gebaseerd
 * Connection(1to4): VNet1toVNet4
 * Connection(1to5): VNet1toVNet5 (voor VNets in verschillende abonnementen)
-* ConnectionType: Vnet2Vnet
+* ConnectionType: VNet2VNet
 
 **Waarden voor TestVNet4:**
 
-* VNET-naam: TestVNet4
+* VNet-naam: TestVNet4
 * TestVNet2: 10.41.0.0/16 & 10.42.0.0/16
 * FrontEnd: 10.41.0.0/24
 * BackEnd: 10.42.0.0/24
@@ -116,9 +116,9 @@ In de voorbeelden worden de volgende waarden gebruikt:
 * Locatie: US - west
 * GatewayName: VNet4GW
 * Openbare IP: VNet4GWIP
-* VPNType: RouteBased
+* VPNType: op route gebaseerd
 * Verbinding: VNet4toVNet1
-* ConnectionType: Vnet2Vnet
+* ConnectionType: VNet2VNet
 
 
 ### <a name="Step2"></a>Stap 2: TestVNet1 maken en configureren
@@ -310,7 +310,7 @@ Het is belangrijk dat u controleert of de IP-adresruimte van het nieuwe virtuele
 
 **Waarden voor TestVNet5:**
 
-* VNET-naam: TestVNet5
+* VNet-naam: TestVNet5
 * Resourcegroep: TestRG5
 * Locatie: Japan - oost
 * TestVNet5: 10.51.0.0/16 & 10.52.0.0/16
@@ -319,9 +319,9 @@ Het is belangrijk dat u controleert of de IP-adresruimte van het nieuwe virtuele
 * GatewaySubnet: 10.52.255.0.0/27
 * GatewayName: VNet5GW
 * Openbare IP: VNet5GWIP
-* VPNType: RouteBased
+* VPNType: op route gebaseerd
 * Verbinding: VNet5toVNet1
-* ConnectionType: Vnet2Vnet
+* ConnectionType: VNet2VNet
 
 ### <a name="step-7---create-and-configure-testvnet5"></a>Stap 7: TestVNet5 maken en configureren
 

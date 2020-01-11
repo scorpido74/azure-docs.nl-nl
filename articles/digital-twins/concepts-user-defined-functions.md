@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 5b1c3e6dcd106e16ab07f707729f31ee1e269461
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 75ed2029582438ede43687addfd54c0a187e0120
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660304"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861095"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Gegevensverwerking en door gebruikers gedefinieerde functies
 
@@ -104,7 +104,7 @@ Door de gebruiker gedefinieerde functies kunnen worden geschreven in Java script
 - Een melding maken wanneer aan bepaalde voor waarden wordt voldaan voor een binnenkomende sensor Lees bewerking.
 - Voeg de meta gegevens van de grafiek toe aan de lees van de sensor voordat u een melding verzendt.
 
-Zie [How to use User-defined functions](./how-to-user-defined-functions.md)(Engelstalig) voor meer informatie.
+Lees voor meer informatie [over het gebruik van door de gebruiker gedefinieerde functies](./how-to-user-defined-functions.md).
 
 #### <a name="examples"></a>Voorbeelden
 
@@ -114,7 +114,7 @@ De [github-opslag plaats voor het digitale C# apparaatdubbels-voor beeld](https:
 
 ### <a name="role-assignment"></a>Nieuwe roltoewijzing
 
-De acties van een door de gebruiker gedefinieerde functie zijn onderhevig aan op [rollen gebaseerd toegangs beheer van](./security-role-based-access-control.md) Azure Digital apparaatdubbels voor het beveiligen van gegevens in de service. Met roltoewijzingen definieert u welke door de gebruiker gedefinieerde functies de juiste machtigingen hebben om te communiceren met de ruimtelijke grafiek en de bijbehorende entiteiten. Een door de gebruiker gedefinieerde functie kan bijvoorbeeld de mogelijkheid hebben om grafiek gegevens te *maken*, *lezen*, *bijwerken*of *verwijderen* onder een bepaalde ruimte. Het toegangs niveau van een door de gebruiker gedefinieerde functie wordt gecontroleerd wanneer de door de gebruiker gedefinieerde functie de grafiek voor gegevens aanvraagt of een actie probeert uit te proberen. Zie [Op rollen gebaseerd toegangsbeheer](./security-create-manage-role-assignments.md) voor meer informatie.
+De acties van een door de gebruiker gedefinieerde functie zijn onderhevig aan op [rollen gebaseerd toegangs beheer van](./security-role-based-access-control.md) Azure Digital apparaatdubbels voor het beveiligen van gegevens in de service. Met roltoewijzingen definieert u welke door de gebruiker gedefinieerde functies de juiste machtigingen hebben om te communiceren met de ruimtelijke grafiek en de bijbehorende entiteiten. Een door de gebruiker gedefinieerde functie kan bijvoorbeeld de mogelijkheid hebben om grafiek gegevens te *maken*, *lezen*, *bijwerken*of *verwijderen* onder een bepaalde ruimte. Het toegangs niveau van een door de gebruiker gedefinieerde functie wordt gecontroleerd wanneer de door de gebruiker gedefinieerde functie de grafiek voor gegevens aanvraagt of een actie probeert uit te proberen. Lees op [rollen gebaseerd toegangs beheer](./security-create-manage-role-assignments.md)voor meer informatie.
 
 Het is mogelijk dat een Matcher een door de gebruiker gedefinieerde functie moet activeren die geen roltoewijzingen heeft. In dit geval kan de door de gebruiker gedefinieerde functie geen gegevens uit de grafiek lezen.
 

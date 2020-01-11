@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: tutorial
 ms.date: 12/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6adb48b9d6c490b60302f93101506ec53679ae4f
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: bebc7dde30dad57157d0abee7f2294d9da58fd5c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530234"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861809"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-preview-environment"></a>Zelf studie: een Azure Time Series Insights-voorbeeld omgeving instellen
 
@@ -39,7 +39,7 @@ Meld u aan voor een [gratis Azure-abonnement](https://azure.microsoft.com/free/)
 
 ## <a name="prerequisites"></a>Vereisten
 
-* U moet mini maal de rol **Inzender** hebben voor het Azure-abonnement. Zie [toegang beheren met op rollen gebaseerd toegangs beheer en de Azure Portal](../role-based-access-control/role-assignments-portal.md)voor meer informatie.
+* U moet mini maal de rol **Inzender** hebben voor het Azure-abonnement. Lees voor meer informatie [beheren van toegang door gebruik te maken van op rollen gebaseerd toegangs beheer en de Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="create-a-device-simulation"></a>Een apparaatsimulatie maken
 
@@ -62,12 +62,12 @@ In deze sectie maakt u drie gesimuleerde apparaten die gegevens verzenden naar e
 
    [![de simulatie oplossing voor apparaten in te richten.](media/v2-update-provision/iot-solution-accelerators-configuration.png)](media/v2-update-provision/iot-solution-accelerators-configuration.png#lightbox)
 
-1. Nadat het inrichten is voltooid, worden er twee updates weer gegeven die aangeven dat de implementatie status is verplaatst van **inrichting** naar **gereed**. 
+1. Nadat het inrichten is voltooid, worden er twee meldingen weer gegeven dat de implementatie status is verplaatst van **Provisioning** naar **ready**. 
 
    >[!IMPORTANT]
    > Voer uw oplossings versneller nog niet in. Laat deze webpagina geopend omdat u deze later weer gaat gebruiken.
 
-   [inrichting van de inrichtings oplossing voor ![Device simulatie is voltooid.](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
+   [de inrichtingen voor de simulatie van ![apparaten zijn voltooid.](media/v2-update-provision/iot-solution-accelerator-ready.png)](media/v2-update-provision/iot-solution-accelerator-ready.png#lightbox)
 
 1. Inspecteer nu de zojuist gemaakte resources in het Azure Portal. Op de pagina **resource groepen** ziet u dat er een nieuwe resource groep is gemaakt met behulp van de **oplossings naam** die in de laatste stap is opgenomen. Noteer de resources die zijn gemaakt voor de simulatie van het apparaat.
 
@@ -92,7 +92,7 @@ In deze sectie wordt beschreven hoe u een Azure Time Series Insights-voorbeeld o
     | **Resourcegroep** | Selecteer een bestaande resource groep of maak een nieuwe resource groep voor de resource van de Azure Time Series Insights preview-omgeving. Een resourcegroep is een container voor Azure-resources. Een best practice is het gebruik van dezelfde resource groep als de andere IoT-resources die door de Device Simulator zijn gemaakt. |
     | **Locatie** | Selecteer een regio voor het Data Center voor uw Azure Time Series Insights-voorbeeld omgeving. Om extra latentie te voor komen, kunt u het beste uw Azure Time Series Insights-voorbeeld omgeving maken in dezelfde regio als uw IoT-hub die is gemaakt door de Device Simulator. |
     | **Laag** |  Selecteer **payg** (*betalen naar*gebruik). Dit is de SKU voor het Azure Time Series Insights Preview-product. |
-    | **Eigenschapsnaam** | Voer een unieke waarde in voor uw time series-instantie. De waarde die u invoert in het vak **eigenschap-ID** kan later niet worden gewijzigd. Voer voor deze zelf studie ***iothub-Connection-apparaat-id***in. Zie [Aanbevolen procedures voor het kiezen van een time series-id voor](./time-series-insights-update-how-to-id.md)meer informatie over de tijd reeks-id. |
+    | **Eigenschapsnaam** | Voer een unieke waarde in voor uw time series-instantie. De waarde die u invoert in het vak **eigenschap-ID** kan later niet worden gewijzigd. Voer voor deze zelf studie ***iothub-Connection-apparaat-id***in. Lees [Aanbevolen procedures voor het kiezen van een time series-id voor](./time-series-insights-update-how-to-id.md)meer informatie over de tijd reeks-id. |
     | **Naam van opslagaccount** | Voer een globaal unieke naam in voor een nieuw opslag account.|
     |**Warme Store inschakelen**|Selecteer **Ja** om warme Store in te scha kelen. U kunt later terugkeren en deze instelling inschakelen. |
     |**Bewaren van gegevens (in dagen)**|Kies de standaard optie van 7 dagen. |
@@ -169,7 +169,7 @@ Nu u uw Time Series Insights-omgeving hebt geïmplementeerd, begint u gegevens t
 
     Selecteer **simulatie starten**.
 
-    In het dash board voor Device simulatie ziet u **actieve apparaten** en **Totaal aantal berichten**.
+    In het dash board voor Device simulatie worden **actieve apparaten** en **Totaal aantal berichten** weer gegeven.
 
     [![Azure IoT-simulatie dashboard.](media/v2-update-provision/tsi-see-active-devices-and-messages.png)](media/v2-update-provision/tsi-see-active-devices-and-messages.png#lightbox)
 
@@ -181,9 +181,9 @@ In deze sectie voert u een eenvoudige analyse uit op uw tijdreeksgegevens met de
 
     [![de Time Series Insights preview Explorer-URL.](media/v2-update-provision/tsi-select-explorer-url.png)](media/v2-update-provision/tsi-select-explorer-url.png#lightbox)
 
-1. In de Time Series Insights Explorer ziet u een balk die de bovenkant van het scherm beslaat. Dit is de beschikbaarheids kiezer. Zorg ervoor dat er ten minste twee m is geselecteerd en vouw, indien nodig, het tijds bestek uit door de selectie grepen naar links en rechts te slepen.
+1. In de Time Series Insights Explorer wordt een balk weer gegeven die de bovenkant van het scherm beslaat. Dit is de beschikbaarheids kiezer. Zorg ervoor dat er ten minste twee m is geselecteerd en vouw, indien nodig, het tijds bestek uit door de selectie grepen naar links en rechts te slepen.
 
-1. U ziet **nu de time series-exemplaren** aan de linkerkant.
+1. **Time Series-exemplaren** worden aan de linkerkant weer gegeven.
 
     [Lijst met niet-bovenliggende instanties ![.](media/v2-update-provision/tsi-explorer-unparented-instances.png)](media/v2-update-provision/tsi-explorer-unparented-instances.png#lightbox)
 
@@ -205,7 +205,7 @@ In deze sectie voert u een eenvoudige analyse uit op uw tijdreeksgegevens met de
 
 ## <a name="define-and-apply-a-model"></a>Een model definiëren en toepassen
 
-In dit gedeelte past u een model toe om uw gegevens te structureren. U definieert typen, hiërarchieën en exemplaren om het model te voltooien. Zie [Time Series model](./time-series-insights-update-tsm.md)voor meer informatie over gegevens modellering.
+In dit gedeelte past u een model toe om uw gegevens te structureren. U definieert typen, hiërarchieën en exemplaren om het model te voltooien. Lees voor meer informatie over gegevens modellering het [Time Series-model](./time-series-insights-update-tsm.md).
 
 1. Selecteer het tabblad **Model** in de verkenner:
 
@@ -254,9 +254,9 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
 
     Selecteer **Toepassen**.
 
-1. Selecteer **Opslaan**. U ziet nu drie variabelen die zijn gemaakt.
+1. Selecteer **Opslaan**. Er worden drie variabelen gemaakt en weer gegeven.
 
-    [Zie ![na het toevoegen van het type in de model weergave.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
+    [Nadat u het type hebt toegevoegd ![, controleert u het in de model weergave.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
 1. Selecteer het tabblad **hiërarchieën** . Selecteer vervolgens **+ toevoegen**.
    

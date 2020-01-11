@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d4470a89455fd4b49fb7bb5ae26375f9cf9884c
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: a14f3f6c17423dd9a86cbafe477fb8148932d43c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456966"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863526"
 ---
 # <a name="azure-digital-twins-swagger-reference-documentation"></a>Naslag documentatie voor Azure Digital Apparaatdubbels Swagger
 
@@ -50,9 +50,9 @@ Beheer-API-object modellen worden ook weer gegeven.
 
 U kunt elk weer gegeven object model selecteren voor een gedetailleerd overzicht van belang rijke kenmerken.
 
-[![Swagger-modellen zijn uitgevouwen om de inhoud van modellen te bekijken](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
+[![Swagger-modellen uitgebreid om de inhoud van modellen te lezen](media/how-to-use-swagger/swagger-management-model-img.png)](media/how-to-use-swagger/swagger-management-model-img.png#lightbox)
 
-De gegenereerde Swagger-object modellen zijn handig om alle beschik bare [objecten en api's](./concepts-objectmodel-spatialgraph.md)van Azure Digital apparaatdubbels te zien. Ontwikkel aars kunnen deze resource gebruiken wanneer ze oplossingen bouwen op Azure Digital Apparaatdubbels.
+De gegenereerde Swagger-object modellen zijn handig om alle beschik bare [objecten en api's](./concepts-objectmodel-spatialgraph.md)van Azure Digital apparaatdubbels te lezen. Ontwikkel aars kunnen deze resource gebruiken wanneer ze oplossingen bouwen op Azure Digital Apparaatdubbels.
 
 ## <a name="endpoint-summary"></a>Eind punt overzicht
 
@@ -66,13 +66,13 @@ Elk eind punt in de lijst bevat ook de vereiste aanvraag informatie, zoals:
 
 [![Swagger-eind punten weer gegeven in de Swagger-gebruikers interface](media/how-to-use-swagger/swagger-management-endpoints-img.png)](media/how-to-use-swagger/swagger-management-endpoints-img.png#lightbox)
 
-Als u een gedetailleerd overzicht wilt weer geven, selecteert u elke resource.
+Selecteer elke resource om de extra inhoud weer te geven voor een gedetailleerder overzicht.
 
 ## <a name="use-swagger-to-test-endpoints"></a>Swagger gebruiken om eind punten te testen
 
 Een van de krachtige functies Swagger biedt de mogelijkheid om een API-eind punt rechtstreeks te testen via de gebruikers interface van de documentatie.
 
-Nadat u een bepaald eind punt hebt geselecteerd, ziet u **het uitproberen**.
+Wanneer u een bepaald eind punt selecteert, wordt de knop **try-out** weer gegeven.
 
 [knop ![Swagger try-out](media/how-to-use-swagger/swagger-management-try-img.png)](media/how-to-use-swagger/swagger-management-try-img.png#lightbox)
 
@@ -84,7 +84,7 @@ Nadat u de test hebt uitgevoerd, kunt u de antwoord gegevens valideren.
 
 ## <a name="swagger-response-data"></a>Reactie gegevens van Swagger
 
-Elk eind punt in de lijst bevat ook gegevens over de antwoord tekst om uw ontwikkeling en tests te valideren. Deze voor beelden bevatten de status codes en JSON die u wilt zien voor geslaagde HTTP-aanvragen.
+Elk eind punt in de lijst bevat ook gegevens over de antwoord tekst om uw ontwikkeling en tests te valideren. Deze voor beelden bevatten de status codes en JSON voor geslaagde HTTP-aanvragen.
 
 [voor beeld van JSON-antwoord ![Swagger](media/how-to-use-swagger/swagger-management-response-img.png)](media/how-to-use-swagger/swagger-management-response-img.png#lightbox)
 
@@ -104,7 +104,7 @@ De voor beelden bevatten ook fout codes voor het oplossen van fouten of het verb
     ```plaintext
     https://YOUR_SWAGGER_URL/ui/oauth2-redirect-html
     ```
-    | Naam  | Vervangen door | Voorbeeld |
+    | Name  | Vervangen door | Voorbeeld |
     |---------|---------|---------|
     | YOUR_SWAGGER_URL | Uw management REST API-documentatie-URL gevonden in de portal  | `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/swagger` |
 
@@ -124,7 +124,7 @@ Na het volt ooien van de Azure Active Directory registratie:
 
     [![Swagger-omleiding modaal](media/how-to-use-swagger/swagger-auth-redirect-img.png)](media/how-to-use-swagger/swagger-auth-redirect-img.png#lightbox)
 
-Zie de [officiële documentatie](https://swagger.io/docs/specification/authentication/oauth2/)voor meer informatie over het interactief testen van aanvragen die worden beveiligd door OAuth 2,0.
+Lees de [officiële documentatie](https://swagger.io/docs/specification/authentication/oauth2/)voor meer informatie over het interactief testen van aanvragen die worden beveiligd door OAuth 2,0.
 
 ## <a name="next-steps"></a>Volgende stappen
 

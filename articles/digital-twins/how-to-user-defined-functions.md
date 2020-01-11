@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 824fe611867216233e223e505f5321b23b7406fb
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7334d4292db710a32b888d9a3ad4e78872d15227
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383317"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863509"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Door de gebruiker gedefinieerde functies maken in azure Digital Apparaatdubbels
 
@@ -193,11 +193,11 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Zie voor een complexere door de gebruiker gedefinieerde functie code voor beeld van de [Snelstartgids](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js).
+Lees voor een complexere door de gebruiker gedefinieerde functie code voor beeld van de [Snelstartgids](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js).
 
 ## <a name="create-a-role-assignment"></a>Een roltoewijzing maken
 
-Maak een roltoewijzing voor de door de gebruiker gedefinieerde functie die u wilt uitvoeren. Als er geen roltoewijzing voor de door de gebruiker gedefinieerde functie bestaat, beschikt u niet over de juiste machtigingen om te communiceren met de beheer-API of kunt u geen acties uitvoeren op Graph-objecten. Acties die door een door de gebruiker gedefinieerde functie kunnen worden uitgevoerd, worden opgegeven en gedefinieerd via op rollen gebaseerd toegangs beheer binnen de Azure Digital Apparaatdubbels Management-Api's. Door de gebruiker gedefinieerde functies kunnen bijvoorbeeld worden beperkt in het bereik door bepaalde rollen of bepaalde toegangscontrole paden op te geven. Zie de documentatie [op basis van op rollen gebaseerde toegangs beheer](./security-role-based-access-control.md) voor meer informatie.
+Maak een roltoewijzing voor de door de gebruiker gedefinieerde functie die u wilt uitvoeren. Als er geen roltoewijzing voor de door de gebruiker gedefinieerde functie bestaat, beschikt u niet over de juiste machtigingen om te communiceren met de beheer-API of kunt u geen acties uitvoeren op Graph-objecten. Acties die door een door de gebruiker gedefinieerde functie kunnen worden uitgevoerd, worden opgegeven en gedefinieerd via op rollen gebaseerd toegangs beheer binnen de Azure Digital Apparaatdubbels Management-Api's. Door de gebruiker gedefinieerde functies kunnen bijvoorbeeld worden beperkt in het bereik door bepaalde rollen of bepaalde toegangscontrole paden op te geven. Lees de documentatie [op basis van op rollen gebaseerde toegangs beheer](./security-role-based-access-control.md) voor meer informatie.
 
 1. [Vraag de systeem-API](./security-create-manage-role-assignments.md#retrieve-all-roles) voor alle rollen op om de rol-id op te halen die u wilt toewijzen aan uw door de gebruiker gedefinieerde functie. Doe dit door een geverifieerde HTTP GET-aanvraag in te stellen voor:
 

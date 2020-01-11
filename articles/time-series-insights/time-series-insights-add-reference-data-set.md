@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.custom: seodec18
-ms.openlocfilehash: a810076c8836acccf83733df02fbd0a29a8eba9b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b5950c3769431420c199711190a02ad0be1e177
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460316"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863492"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Maak een referentie gegevensverzameling voor uw Time Series Insights-omgeving met behulp van de Azure Portal
 
@@ -72,7 +72,7 @@ Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Daarom wo
 
    [Referentie gegevens ![controleren](media/add-reference-data-set/review-displayed-data-grid.png)](media/add-reference-data-set/review-displayed-data-grid.png#lightbox)
 
-1. Bekijk elke kolom om te zien welk gegevens type wordt gebruikt en wijzig zo nodig het gegevens type.  Selecteer het gegevens type symbool in de kolomkop: **#** voor dubbele (numerieke gegevens), **t | F** voor Booleaanse waarde, of **ABC** voor teken reeks.
+1. Bekijk elke kolom om het gegevens type ervan te begrijpen en wijzig zo nodig het gegevens type.  Selecteer het gegevens type symbool in de kolomkop: **#** voor dubbele (numerieke gegevens), **t | F** voor Booleaanse waarde, of **ABC** voor teken reeks.
 
    [![gegevens typen kiezen in de kolom koppen.](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
 
@@ -116,4 +116,4 @@ Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Daarom wo
 
 * Programmatisch [referentiegegevens beheren](time-series-insights-manage-reference-data-csharp.md).
 
-* Zie voor de volledige API-verwijzing het document [Reference Data API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api).
+* Lees [referentie gegevens-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-reference-data-api) -document voor de volledige API-referentie.

@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: ad70bbe36369c03225079d1194043e6ceb109c6f
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: c5543470f790d00158297cb7c3f0c06c5fc05e14
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671011"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866982"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>Azure Files configureren in een Windows-container op App Service
 
@@ -31,6 +31,15 @@ Deze hand leiding laat zien hoe u toegang krijgt tot Azure Storage in Windows-co
 > Azure Files is niet-standaard opslag en wordt afzonderlijk gefactureerd, niet opgenomen in de web-app. Het gebruik van de firewall configuratie wordt niet ondersteund vanwege beperkingen van de infra structuur.
 >
 
+## <a name="limitations"></a>Beperkingen
+
+- Azure Storage in Windows-containers is beschikbaar als **Preview-versie** en wordt **niet ondersteund** voor **productie scenario's**.
+- Azure Storage in Windows-containers ondersteunt het koppelen van **Azure files containers** (lezen/schrijven).
+- Azure Storage in Windows-containers wordt momenteel **niet ondersteund** voor het nemen van uw eigen code Scenario's in Windows app service-abonnementen.
+- Azure Storage in Windows-containers **biedt geen ondersteuning** voor het gebruik van de **opslag firewall** -configuratie vanwege beperkingen van de infra structuur.
+- Met Azure Storage in Windows-containers kunt u **Maxi maal vijf** koppel punten per app opgeven.
+- Azure Storage wordt afzonderlijk in rekening gebracht en **niet opgenomen** in uw web-app. Meer informatie over [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage).
+
 ## <a name="link-storage-to-your-web-app-preview"></a>Opslag koppelen aan uw web-app (preview)
 
  Als u een Azure Files share wilt koppelen aan een map in uw App Service-app, gebruikt u de [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) opdracht. Het opslag type moet Azure files zijn.
@@ -48,7 +57,6 @@ Zodra een Azure Files share is gekoppeld aan een web-app, kunt u dit controleren
 ```azurecli
 az webapp config storage-account list --resource-group <resource_group> --name <app_name>
 ```
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

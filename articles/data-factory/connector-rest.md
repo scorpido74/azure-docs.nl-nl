@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 34abb93dd54245e03baaa6efe0130d951f7565bf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3e0dd6e0bb81aef340dc83288e6e5c0af0bf11c6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927734"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867373"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Gegevens kopiëren van een REST-eind punt met behulp van Azure Data Factory
 
@@ -371,6 +371,75 @@ De bijbehorende bron configuratie van de REST Copy-activiteit met name de `pagin
     }
 }
 ```
+
+## <a name="use-oauth"></a>OAuth gebruiken
+In deze sectie wordt beschreven hoe u een oplossings sjabloon gebruikt om gegevens van de REST-connector naar Azure Data Lake Storage in JSON-indeling te kopiëren met behulp van OAuth. 
+
+### <a name="about-the-solution-template"></a>Over de oplossings sjabloon
+
+De sjabloon bevat twee activiteiten:
+- **Webactiviteit haalt** het Bearer-token op en geeft dit vervolgens door aan de volgende Kopieer activiteit als autorisatie.
+- Met de **Kopieer** activiteit worden gegevens van REST naar Azure data Lake Storage gekopieerd.
+
+De sjabloon definieert twee para meters:
+- **SinkContainer** is het pad naar de hoofdmap waarnaar de gegevens worden gekopieerd in uw Azure data Lake Storage. 
+- **SinkDirectory** is het mappad in de hoofdmap waarnaar de gegevens worden gekopieerd in uw Azure data Lake Storage. 
+
+### <a name="how-to-use-this-solution-template"></a>Deze oplossings sjabloon gebruiken
+
+1. Ga naar de **kopie van rest of http met OAuth** -sjabloon. Een nieuwe verbinding maken voor de bron verbinding. 
+    ![nieuwe verbindingen maken](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
+
+    Hieronder vindt u belang rijke stappen voor nieuwe instellingen voor de gekoppelde service (REST):
+    
+     1. Geef onder **basis-URL**de URL-para meter voor uw eigen bron rest-service op. 
+     2. Kies *anoniem*bij **verificatie type**.
+        ![nieuwe REST-verbinding](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
+
+2. Maak een nieuwe verbinding voor de doel verbinding.  
+    ![Nieuwe Gen2-verbinding](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
+
+3. Selecteer **Deze sjabloon gebruiken**.
+    Deze sjabloon ![gebruiken](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
+
+4. U ziet de pijp lijn die u hebt gemaakt, zoals wordt weer gegeven in het volgende voor beeld: ![pijp lijn](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+
+5. Selecteer webactiviteit. Geef in **instellingen**de corresponderende **URL**, **methode**, **headers**en **hoofd tekst** op om een OAUTH Bearer-token op te halen uit de API voor aanmelden van de service waarvan u gegevens wilt kopiëren. In de tijdelijke aanduiding in de sjabloon wordt een voor beeld van een Azure Active Directory (AAD) OAuth gedemonstreerd. Opmerking AAD-verificatie wordt systeem eigen ondersteund door REST connector. Dit is slechts een voor beeld van een OAuth-stroom. 
+
+    | Eigenschap | Beschrijving |
+    |:--- |:--- |:--- |
+    | URL |Geef de URL op waarvoor het OAuth Bearer-token moet worden opgehaald. bijvoorbeeld in het voor beeld is het https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
+    | Methode | De HTTP-methode. Toegestane waarden zijn **post** en **Get**. | 
+    | Headers | De header is door de gebruiker gedefinieerd, die verwijst naar één header naam in de HTTP-aanvraag. | 
+    | Hoofdtekst | De hoofd tekst van de HTTP-aanvraag. | 
+
+    ![Pijplijn](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
+
+6. Selecteer in activiteit **gegevens kopiëren** het tabblad *bron* , u kunt zien dat het Bearer-token (access_token) dat is opgehaald uit de vorige stap, wordt door gegeven om de activiteit gegevens te kopiëren als **verificatie** onder aanvullende headers. Bevestig de instellingen voor de volgende eigenschappen voordat u begint met het uitvoeren van een pijplijn.
+
+    | Eigenschap | Beschrijving |
+    |:--- |:--- |:--- | 
+    | Aanvraag methode | De HTTP-methode. Toegestane waarden zijn **Get** (standaard) en **post**. | 
+    | Aanvullende kopteksten | Aanvullende HTTP-aanvraag headers.| 
+
+   ![Bron verificatie kopiëren](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
+
+7. Selecteer **debug**, voer de **para meters**in en selecteer **volt ooien**.
+   ![pijplijn uitvoering](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
+
+8. Wanneer de uitvoering van de pijp lijn is voltooid, ziet u het resultaat dat lijkt op het volgende voor beeld: ![pijplijn resultaat](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+
+9. Klik op het pictogram uitvoer van webactiviteit in de kolom **acties** , maar u ziet de access_token die door de service is geretourneerd.
+
+   ![Token uitvoer](media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png) 
+
+10. Klik op het pictogram invoer in CopyActivity in **acties** kolom, maar u ziet dat de access_token opgehaald door webactiviteit wordt door gegeven aan CopyActivity voor verificatie. 
+
+    ![Token invoer](media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png)
+        
+    >[!CAUTION] 
+    >Als u wilt voor komen dat token wordt geregistreerd als tekst zonder opmaak, schakelt u ' beveiligde uitvoer ' in bij webactiviteit en ' beveiligde invoer ' in Kopieer activiteit.
+
 
 ## <a name="export-json-response-as-is"></a>JSON-antwoord exporteren als-is
 

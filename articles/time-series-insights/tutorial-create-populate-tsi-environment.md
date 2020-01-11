@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 387f3df7313c26c5cd8f7fee7c9b58ec3b5c4552
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 83462d47af49a02817dcfa05afcd8fdb5e0beab1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872393"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863703"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Zelfstudie: Een Azure Time Series Insights-omgeving maken
 
@@ -32,7 +32,7 @@ Deze zelf studie leidt u door het proces van het maken van een Azure Time Series
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Uw Azure-aanmeldings account moet ook lid zijn van de rol **eigenaar** van het abonnement. Zie [toegang beheren met op rollen gebaseerd toegangs beheer en de Azure Portal](../role-based-access-control/role-assignments-portal.md)voor meer informatie.
+* Uw Azure-aanmeldings account moet ook lid zijn van de rol **eigenaar** van het abonnement. Lees voor meer informatie [beheren van toegang door gebruik te maken van op rollen gebaseerd toegangs beheer en de Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="review-video"></a>Video bekijken
 
@@ -72,7 +72,7 @@ Maak eerst de simulatie oplossing voor apparaten, waarmee test gegevens worden g
 
    [de oplossing voor het simuleren van apparaten ![inrichten](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png#lightbox)
 
-1. Nadat het inrichten is voltooid, worden er twee updates weer gegeven die aangeven dat de implementatie status is verplaatst van **inrichting** naar **gereed**. 
+1. Nadat het inrichten is voltooid, worden er twee updates weer gegeven met de melding dat de implementatie status is verplaatst van **Provisioning** naar **ready**. 
 
    >[!IMPORTANT]
    > Voer uw oplossings versneller nog niet in. Laat deze webpagina geopend omdat u deze later weer gaat gebruiken.
@@ -162,7 +162,7 @@ In dit laatste gedeelte controleert u of de telemetriegegevens zijn gegenereerd 
 
    [![Time Series Insights Explorer](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png#lightbox)
 
-1. De Time Series Insights Explorer wordt geladen en geverifieerd met behulp van uw Azure Portal-account. U kunt bij de eerste weer gave in het grafiek gebied zien dat de Time Series Insights omgeving is gevuld met gesimuleerde telemetriegegevens. Als u een smallere periode wilt filteren, selecteert u de vervolg keuzelijst in de linkerbovenhoek. Voer een tijds bereik in dat groot genoeg is om de duur van de simulatie van het apparaat te beslaan. Selecteer vervolgens het vergroot glas voor zoeken.
+1. De Time Series Insights Explorer wordt geladen en geverifieerd met behulp van uw Azure Portal-account. In eerste instantie wordt het grafiek gebied waarmee de Time Series Insights omgeving is gevuld samen met de gesimuleerde telemetriegegevens weer gegeven. Als u een smallere periode wilt filteren, selecteert u de vervolg keuzelijst in de linkerbovenhoek. Voer een tijds bereik in dat groot genoeg is om de duur van de simulatie van het apparaat te beslaan. Selecteer vervolgens het vergroot glas voor zoeken.
 
    [filter Time Series Insights Explorer-tijd bereik ![](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
 
@@ -198,4 +198,4 @@ In deze zelfstudie hebt u het volgende geleerd:
 Nu u weet hoe u uw eigen Time Series Insights-omgeving kunt maken, leert u hoe u een webtoepassing bouwt die gegevens uit een Time Series Insights omgeving gebruikt:
 
 > [!div class="nextstepaction"]
-> [Zie voor beelden van gehoste client-SDK-visualisaties](https://tsiclientsample.azurewebsites.net/)
+> [Voor beelden van gehoste client-SDK voor visualisatie lezen](https://tsiclientsample.azurewebsites.net/)

@@ -1,20 +1,20 @@
 ---
-title: VPN-door voer naar een Microsoft Azure Virtual Network valideren | Microsoft Docs
+title: VPN-door voer naar een Microsoft Azure Virtual Network valideren
 description: Het doel van dit document is om een gebruiker te helpen bij het valideren van de netwerk doorvoer van hun on-premises resources naar een virtuele machine van Azure.
+titleSuffix: Azure VPN Gateway
 services: vpn-gateway
 author: cherylmc
-manager: dcscontentpm
 ms.service: vpn-gateway
 ms.topic: troubleshooting
 ms.date: 05/29/2019
 ms.author: radwiv
 ms.reviewer: chadmat;genli
-ms.openlocfilehash: 9c2f50c49037305663330a3c455e40291b9e6242
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a88e339e82484c2ec1cd2276f6218fa718b990f9
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058804"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860483"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>VPN-door voer naar een virtueel netwerk valideren
 
@@ -29,7 +29,7 @@ In dit artikel wordt beschreven hoe u de netwerk doorvoer kunt valideren van de 
 
 De VPN-gateway verbinding bestaat uit de volgende onderdelen:
 
-* On-premises VPN-apparaat (een lijst met gevalideerde [VPN-apparaten](vpn-gateway-about-vpn-devices.md#devicetable)weer geven.)
+* On-premises VPN-apparaat (een lijst met [gevalideerde VPN-apparaten](vpn-gateway-about-vpn-devices.md#devicetable)weer geven.)
 * Openbaar Internet
 * Azure VPN-gateway
 * Azure VM
@@ -84,7 +84,7 @@ Down load [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Zi
    netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
    ```
 
-   **Azure Linux:** Azure Linux-installatie kopieën hebben een strikte firewall. Als er een toepassing luistert op een poort, wordt het verkeer toegestaan via. Voor aangepaste installatie kopieën die zijn beveiligd, zijn mogelijk poorten expliciet geopend. Algemene firewalls voor Linux-besturings `iptables`systemen `ufw`bevatten, `firewalld`, of.
+   **Azure Linux:** Azure Linux-installatie kopieën hebben een strikte firewall. Als er een toepassing luistert op een poort, wordt het verkeer toegestaan via. Voor aangepaste installatie kopieën die zijn beveiligd, zijn mogelijk poorten expliciet geopend. Algemene firewalls voor Linux-besturingssysteem lagen zijn `iptables`, `ufw`of `firewalld`.
 
 1. Ga naar de map waarin iperf3. exe is geëxtraheerd op het server knooppunt. Voer vervolgens iPerf uit in de server modus en stel deze in op poort 5001 als de volgende opdrachten:
 
@@ -107,7 +107,7 @@ Down load [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Zi
 
    In het volgende scherm ziet u de uitvoer van dit voor beeld:
 
-   ![Output](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
+   ![Uitvoer](./media/vpn-gateway-validate-throughput-to-vnet/06theoutput.png)
 
 1. Beschrijving Als u de test resultaten wilt behouden, voert u deze opdracht uit:
 
@@ -126,7 +126,7 @@ Down load [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). Zi
 
 De meest recente versie van [latte. exe](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b) downloaden
 
-Overweeg om latte. exe in een afzonderlijke map te plaatsen, zoals`c:\tools`
+Overweeg om latte. exe in een afzonderlijke map te plaatsen, zoals `c:\tools`
 
 ### <a name="allow-latteexe-through-the-windows-firewall"></a>Latte. exe toestaan via de Windows Firewall
 
@@ -216,7 +216,7 @@ Installeren is snel
 
 > [!Note]
 > Zorg ervoor dat er geen tussenliggende hops (bijvoorbeeld virtueel apparaat) zijn tijdens het testen van de door Voer tussen de virtuele machine en de gateway.
-> Raadpleeg het volgende artikel om inzicht te krijgen in de belangrijkste factoren achter de mogelijke hoofd oorzaken van het probleem, als er sprake is van slechte resultaten (wat een algemene door Voer is) die afkomstig zijn van de hierboven genoemde iPERF/NTTTCP-tests. https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
+> Raadpleeg het volgende artikel om inzicht te krijgen in de belangrijkste factoren achter de mogelijke hoofd oorzaken van het probleem, als er sprake is van slechte resultaten (wat een algemene door Voer is) die afkomstig zijn van de hierboven genoemde iPERF/NTTTCP-tests: https://docs.microsoft.com/azure/virtual-network/virtual-network-tcpip-performance-tuning
 
 Met name de analyse van pakket Capture-traceringen (wireshark/Network Monitor) die parallel van de client en de server zijn verzameld tijdens deze tests, kunnen helpen bij de evaluatie van slechte prestaties. Deze traceringen kunnen pakket verlies, hoge latentie, MTU-grootte omvatten. fragmentatie, TCP 0-venster, fragmenten met een andere volg orde, enzovoort.
 
@@ -238,9 +238,9 @@ Zelfs als de algemene door Voer die is beoordeeld met de vorige stappen (iPERF/N
 
 Vermeld de subnetten van on-premises bereiken die door Azure moeten worden bereikt via VPN op de lokale netwerk gateway. Definieer tegelijkertijd de VNET-adres ruimte in azure op het on-premises apparaat.
 
-* **Op route gebaseerde gateway**: Het beleid of de verkeersselector voor op route gebaseerde VPN's is geconfigureerd als alles-naar-alles (of jokertekens).
+* **Op route gebaseerde gateway**: het beleid of de selectie van verkeer voor op route gebaseerde vpn's worden geconfigureerd als een wille keurig (of Joker).
 
-* **Op beleid gebaseerde gateway**: Op beleid gebaseerde VPN-verbindingen versleutelen pakketten en versturen deze op basis van de combinaties van adresvoorvoegsels tussen uw on-premises netwerk en het Azure-VNET. Het beleid (of de verkeersselector) wordt gewoonlijk gedefinieerd als een toegangslijst in de VPN-configuratie.
+* **Op beleid gebaseerde gateway**: op beleid gebaseerde vpn's versleutelen en direct pakketten via IPSec-tunnels op basis van de combi Naties van adres voorvoegsels tussen uw on-premises netwerk en Azure VNet. Het beleid (of de verkeersselector) wordt gewoonlijk gedefinieerd als een toegangslijst in de VPN-configuratie.
 
 * **UsePolicyBasedTrafficSelector** -verbindingen: (' UsePolicyBasedTrafficSelectors ' om een verbinding te $True, configureert de Azure VPN-gateway om verbinding te maken met op beleid gebaseerde VPN-Firewall on-premises. Als u PolicyBasedTrafficSelectors inschakelt, moet u ervoor zorgen dat op uw VPN-apparaat de overeenkomende verkeers selectie is gedefinieerd met alle combi Naties van uw on-premises netwerk (lokale netwerk gateway) voor voegsels van en naar de voor voegsels van het virtuele Azure-netwerk in plaats van any-to-any.
 
@@ -252,7 +252,7 @@ U kunt de latentie controleren met behulp van de volgende hulpprogram ma's:
 
 * WinMTR
 * TCPTraceroute
-* `ping`en `psping` (deze hulpprogram ma's kunnen een goede schatting van de RTT bieden, maar ze kunnen niet in alle gevallen worden gebruikt.)
+* `ping` en `psping` (deze hulpprogram ma's kunnen een goede schatting van de RTT bieden, maar ze kunnen niet in alle gevallen worden gebruikt.)
 
 ![Latentie controleren](./media/vpn-gateway-validate-throughput-to-vnet/08checkinglatency.png)
 

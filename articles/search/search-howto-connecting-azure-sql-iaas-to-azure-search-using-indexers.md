@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 426ec57b3dbce884e55ef7a11ccca32ed295d70d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 12e642e59a1341926a0c4d66533465cecfc21709
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111890"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863135"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Een verbinding van een Azure Cognitive Search Indexeer functie configureren om te SQL Server op een Azure VM
 
@@ -72,8 +72,12 @@ De onderstaande koppelingen bieden instructies voor de NSG-configuratie voor VM-
 
 IP-adres Sering kan enkele uitdagingen opleveren die eenvoudig kunnen worden verholpen als u op de hoogte bent van het probleem en mogelijke oplossingen. De overige secties bevatten aanbevelingen voor het verwerken van problemen met betrekking tot IP-adressen in de ACL.
 
-#### <a name="restrict-access-to-the-search-service-ip-address"></a>De toegang tot het IP-adres van de zoek service beperken
-We raden u ten zeerste aan de toegang tot het IP-adres van uw zoek service in de ACL te beperken, in plaats van uw SQL Azure Vm's breed open te maken voor verbindings aanvragen. U kunt het IP-adres eenvoudig vinden door de FQDN-namen (bijvoorbeeld `<your-search-service-name>.search.windows.net`) van uw zoek service te pingen.
+#### <a name="restrict-access-to-the-azure-cognitive-search"></a>Toegang tot de Azure-Cognitive Search beperken
+We raden u ten zeerste aan de toegang tot het IP-adres van de zoek service en het IP-adres bereik van `AzureCognitiveSearch` servicetag in de ACL te beperken [, in plaats](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) van uw SQL Azure-vm's te openen voor alle verbindings aanvragen.
+
+U kunt het IP-adres vinden door de FQDN-namen (bijvoorbeeld `<your-search-service-name>.search.windows.net`) van uw zoek service te pingen.
+
+U kunt het IP-adres bereik van `AzureCognitiveSearch` [servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) vinden voor de specifieke regio waarin uw Azure Cognitive Search-service zich bevindt met behulp van [Download bare json-bestanden](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) of via de [service tag discovery-API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Het IP-adres bereik wordt wekelijks bijgewerkt.
 
 #### <a name="managing-ip-address-fluctuations"></a>Schommelingen van IP-adressen beheren
 Als uw zoek service slechts één Zoek eenheid (dat wil zeggen, één replica en één partitie) heeft, wordt het IP-adres gewijzigd tijdens het starten van de routine service, waarbij een bestaande ACL met het IP-adres van uw zoek service ongeldig wordt.

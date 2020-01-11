@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: mlearned
-ms.openlocfilehash: ded3fc97c4cdf041fdf50d7b4aa9a9b2fbdf1c84
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1b0d3dec3925518922c5f668560889edd6f5de0b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913493"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867170"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Service-principals met AKS (Azure Kubernetes Service)
 
@@ -131,6 +131,8 @@ Houd rekening met het volgende wanneer u werkt met AKS en Azure AD-service-princ
 - Gebruik bij het opgeven van de **client-id** van de service-principal de waarde van de `appId`.
 - Op het agent knooppunt Vm's in het Kubernetes-cluster worden de referenties van de Service-Principal opgeslagen in het bestand `/etc/kubernetes/azure.json`
 - Wanneer u de opdracht [AZ AKS Create][az-aks-create] gebruikt om de Service-Principal automatisch te genereren, worden de referenties van de Service-Principal naar het bestand `~/.azure/aksServicePrincipal.json` op de computer die wordt gebruikt om de opdracht uit te voeren.
+- Als u een Service-Principal niet specifiek doorgeeft in extra AKS CLI-opdrachten, wordt de standaard service-principal in `~/.azure/aksServicePrincipal.json` gebruikt.  
+- U kunt eventueel ook het bestand aksServicePrincipal. json verwijderen en AKS maakt een nieuwe service-principal.
 - Wanneer u een AKS-cluster verwijdert dat is gemaakt door [AZ AKS Create][az-aks-create], wordt de service-principal die automatisch is gemaakt, niet verwijderd.
     - Als u de Service-Principal wilt verwijderen, voert u een query uit voor uw cluster *servicePrincipalProfile. clientId* en verwijdert u vervolgens met [AZ AD App delete][az-ad-app-delete]. Vervang de volgende brongroeps- en clusternamen door uw eigen waarden:
 

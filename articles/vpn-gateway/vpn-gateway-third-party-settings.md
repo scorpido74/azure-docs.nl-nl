@@ -1,26 +1,19 @@
 ---
-title: Door de Community voorgestelde VPN-of firewall-Apparaatinstellingen van derden voor Azure VPN-gateway | Microsoft Docs
+title: Door de Community voorgestelde VPN-of firewall instellingen van derden voor Azure VPN Gateway
 description: Meer informatie over door de Community voorgestelde VPN-of firewall instellingen van derden voor Azure VPN-gateway.
 services: vpn-gateway
-documentationcenter: ''
 author: chadmath
 manager: dcscontentpm
-editor: ''
-tags: azure-vpn-gateway
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: aa4650897abcd38fec4d45f57969d4bf30b9d773
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: b87340fbb3f94eee106fc5d0d72117d30e331035
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058846"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862710"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Door de Community voorgestelde VPN-of firewall-Apparaatinstellingen van derden voor Azure VPN-gateway
 
@@ -39,7 +32,7 @@ De volgende tabel bevat een lijst met verschillende algemene apparaten en gerela
 |Cisco ISR  |[Community-voorgestelde oplossingen voor Cisco ISR op Azure VPN](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |
 |Cisco ASR  |[Community-voorgestelde oplossingen voor Cisco ASR op Azure VPN](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
 |SonicWall |Zoeken naar **Azure VPN** op de [SonicWALL-site](https://www.sonicwall.com/en-us/support) |
-| Controlepunt    |Zoeken naar **Azure VPN** op [controlepunt site](https://supportcenter.checkpoint.com/supportcenter/portal) |
+| Check Point    |Zoeken naar **Azure VPN** op [controlepunt site](https://supportcenter.checkpoint.com/supportcenter/portal) |
 |Juniper |Zoeken naar **Azure VPN** op de [Juniper-site]( https://www.juniper.net/search/public/)|
 |Barracuda  |[Door de Community voorgestelde oplossingen voor Barracuda op Azure VPN](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |
 |F5         |[Door de Community voorgestelde oplossingen voor F5 op Azure VPN](https://support.f5.com/csp/#/federated-search?q=%22Azure%20VPN%22&source=support)          |

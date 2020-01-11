@@ -10,19 +10,19 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: c305da097a4474e6a4aa91ec0e784e627533ee43
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b25639b237979aff8980c1ff5b8787d298c157e1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452440"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861457"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Uw Azure Time Series Insights-voorbeeld omgeving plannen
 
 In dit artikel worden de aanbevolen procedures beschreven voor het plannen en snel aan de slag met Azure Time Series Insights preview.
 
 > [!NOTE]
-> Zie [uw Azure time series Insights algemene beschikbaarheids omgeving plannen](time-series-insights-environment-planning.md)voor aanbevolen procedures voor het plannen van een algemene Beschik baarheid time series Insights-exemplaar.
+> Voor aanbevolen procedures voor het plannen van een algemene Beschik baarheid Time Series Insights-exemplaar, Lees [uw Azure time series Insights algemene beschikbaarheids omgeving plannen](time-series-insights-environment-planning.md).
 
 ## <a name="best-practices-for-planning-and-preparation"></a>Aanbevolen procedures voor planning en voor bereiding
 
@@ -34,7 +34,7 @@ De aanbevolen procedures voor het plannen en voorbereiden van uw omgeving worden
 * Het [efficiënt verzenden van gebeurtenissen in JSON](#shape-your-events).
 * Time Series Insights [Opties voor herstel na nood](#business-disaster-recovery)geval.
 
-Azure Time Series Insights maakt gebruik van een zakelijk model voor betalen per gebruik. Zie voor meer informatie over kosten en capaciteit [Time Series Insights prijzen](https://azure.microsoft.com/pricing/details/time-series-insights/).
+Azure Time Series Insights maakt gebruik van een zakelijk model voor betalen per gebruik. Lees [Time Series Insights prijzen](https://azure.microsoft.com/pricing/details/time-series-insights/)voor meer informatie over kosten en capaciteit.
 
 ## <a name="the-preview-environment"></a>De voorbeeld omgeving
 
@@ -48,7 +48,7 @@ Als onderdeel van het inrichtings proces geeft u op of u een warme Store wilt in
 Query's in de warme Store zijn gratis, terwijl query's voor de koude opslag kosten in rekening worden gebracht. Het is belang rijk om inzicht te krijgen in uw query patronen en uw warme archief configuratie dienovereenkomstig te plannen. We raden u aan om interactieve analyses uit te voeren op de meest recente gegevens in uw warme archief-en patroon analyse en op lange termijn trends.
 
 > [!NOTE]
-> [Zie hier](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters)voor meer informatie over het uitvoeren van een query op uw warme gegevens.
+> Lees de [API-verwijzing](https://docs.microsoft.com/rest/api/time-series-insights/dataaccess(preview)/query/execute#uri-parameters)voor meer informatie over het uitvoeren van een query op uw warme gegevens.
 
 Als u wilt beginnen, hebt u drie extra items nodig:
 
@@ -80,7 +80,7 @@ Als dit veld leeg blijft, wordt de tijd voor het plaatsen van gebeurtenissen van
 
 U kunt nu het time series-model van uw Time Series Insights omgeving configureren. Het nieuwe model maakt het eenvoudig om IoT-gegevens te vinden en analyseren. Hiermee wordt de inschakeling, het onderhoud en de verrijking van tijdreeks gegevens mogelijk en helpt u gegevens sets te voorbereiden. Het model maakt gebruik van Time Series-Id's, die zijn toegewezen aan een exemplaar dat de unieke resource koppelt aan variabelen, zoals typen en hiërarchieën. Meer informatie over het nieuwe [Time Series-model](./time-series-insights-update-tsm.md).
 
-Het model is dynamisch, zodat het op elk gewenst moment kan worden gebouwd. Als u snel aan de slag wilt gaan, bouwt en uploadt u deze voordat u gegevens naar Time Series Insights pusht. Zie [het time series-model gebruiken](./time-series-insights-update-how-to-tsm.md)om uw model te bouwen.
+Het model is dynamisch, zodat het op elk gewenst moment kan worden gebouwd. Als u snel aan de slag wilt gaan, bouwt en uploadt u deze voordat u gegevens naar Time Series Insights pusht. Lees [het time series-model gebruiken](./time-series-insights-update-how-to-tsm.md)om uw model te bouwen.
 
 Voor veel klanten is het time series-model gekoppeld aan een bestaand Asset model of ERP-systeem dat al aanwezig is. Als u geen bestaand model hebt, wordt een vooraf ontwikkelde gebruikers ervaring [gegeven](https://github.com/Microsoft/tsiclient) om snel aan de slag te gaan. Als u wilt bepalen hoe een model u kan helpen, bekijkt u de voor [beeld-demo omgeving](https://insights.timeseries.azure.com/preview/demo).
 
@@ -93,7 +93,7 @@ Een goede vuist regel:
 * Sla meta gegevens op in uw time series-model.
 * Zorg ervoor dat de modus Time Series, instance Fields en Events alleen de benodigde informatie bevat, zoals een tijd reeks-ID of eigenschap time stamp.
 
-Zie [gebeurtenissen vorm](./time-series-insights-send-events.md#supported-json-shapes)geven voor meer informatie.
+Lees voor meer informatie [Shape-gebeurtenissen](./time-series-insights-send-events.md#supported-json-shapes).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

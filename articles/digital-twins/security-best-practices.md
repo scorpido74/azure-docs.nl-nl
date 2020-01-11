@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: f5c0f6d9f6f7f35722f3df5f35dc1da945f21b9a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d2fe5a00d131af54862551991cf984d8576b57e
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229042"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860942"
 ---
 # <a name="azure-digital-twins-security-best-practices"></a>Best practices voor Azure Digital Apparaatdubbels-beveiliging
 
@@ -46,7 +46,7 @@ Enkele belang rijke procedures voor het veilig beveiligen van een IoT-ruimte zij
 > [!div class="checklist"]
 > * Opgeslagen, opgeslagen of permanente gegevens versleutelen.
 > * Vereisen dat wacht woorden of sleutels regel matig worden gewijzigd of vernieuwd.
-> * Beperk de toegang en machtigingen op rol nauw keurig. Raadpleeg de sectie [Aanbevolen procedures voor toegangs beheer op basis van rollen](#role-based-access-control-best-practices) hieronder.
+> * Beperk de toegang en machtigingen op rol nauw keurig. Lees de sectie [Aanbevolen procedures voor toegangs beheer op basis van rollen](#role-based-access-control-best-practices) hieronder.
 > * Overweeg een gesplitste netwerk topologie zodat apparaten op elk netwerk van elkaar zijn geïsoleerd.
 > * Gebruik krachtige versleuteling. Lange wacht woorden vereisen, beveiligde protocollen gebruiken en [multi-factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
 
@@ -56,7 +56,7 @@ Enkele belang rijke procedures voor het veilig beveiligen van een IoT-ruimte zij
 > Lees de [Aanbevolen procedures voor Azure IOT Security](../iot-fundamentals/iot-security-best-practices.md) om een uitgebreide IOT-beveiligings strategie te starten.
 
 > [!NOTE]
-> Zie voor meer informatie over het verwerken en controleren van gebeurtenissen [route gebeurtenissen en berichten met Azure Digital apparaatdubbels](./concepts-events-routing.md).
+> Lees [route gebeurtenissen en berichten met Azure Digital apparaatdubbels](./concepts-events-routing.md)voor meer informatie over het verwerken en bewaken van gebeurtenissen.
 
 ## <a name="azure-active-directory-best-practices"></a>Aanbevolen procedures Azure Active Directory
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 0ce2884a2382c7dff2bdb90bd92934609675f314
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
-ms.translationtype: HT
+ms.openlocfilehash: 2627e4be20d80251e3753e46624c58a0c6244aba
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834376"
+ms.locfileid: "75863084"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Wat is er nieuw in azure Cognitive Search
 
@@ -38,6 +38,8 @@ API-versies, Nuget-pakketten, naam ruimten en eind punten zijn ongewijzigd. Uw b
 ### <a name="december-2019"></a>December 2019
 
 + [App maken (preview)](search-create-app-portal.md) is een nieuwe wizard in de portal waarmee een DOWNLOADBAAR HTML-bestand wordt gegenereerd. Het bestand wordt geleverd met een Inge sloten script dat een operationele ' localhost '-stijl web-app weergeeft, gebonden aan een index in uw zoek service. Pagina's kunnen in de wizard worden geconfigureerd en bevatten een zoek balk, een resultaat gebied, een navigatie naar een terzijde en typeahead-query ondersteuning. U kunt de HTML offline wijzigen om de werk stroom of het uiterlijk te verlengen of aan te passen.
+
++ [Een persoonlijk eind punt maken voor beveiligde verbindingen (preview)](service-create-private-endpoint.md) in dit artikel wordt uitgelegd hoe u een persoonlijke koppeling kunt instellen voor beveiligde verbindingen met uw zoek service. Deze preview-functie is beschikbaar op aanvraag en maakt gebruik van [Azure private link](../private-link/private-link-overview.md) en [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) als onderdeel van de oplossing.
 
 ### <a name="november-2019---ignite-conference"></a>November 2019-Ignite-conferentie
 

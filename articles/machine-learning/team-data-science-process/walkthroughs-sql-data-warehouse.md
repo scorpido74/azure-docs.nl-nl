@@ -3,20 +3,20 @@ title: Analyse van SQL datawarehouse met T-SQL, Python - Team Data Science Proce
 description: Voorbeelden die stapsgewijs door het gebruik van SQL Data Warehouse te doen, voorspellende analyses.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c545e73e51ea33db1ced546bf47465197b3fb8e4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4c8be715391f71e281ca41cc68428a2d29d78783
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589136"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864125"
 ---
 # <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>SQL Data Warehouse datatechnologische rondleidingen met behulp van T-SQL en Python op Azure
 
@@ -27,11 +27,11 @@ Aanvullende gegevens datatechnologische rondleidingen die het Team Data Science 
 
 ## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>Met behulp van T-SQL en IPython-notitieblokken met SQL Data Warehouse taxiritjes voorspellen
 
-De [gebruikt SQL Data Warehouse scenario](sqldw-walkthrough.md) ziet u hoe u bouwen en implementeren van machine learning classificatie- en regressiemodellen modellen met behulp van SQL Data Warehouse (SQL DW) voor een openbaar beschikbare NYC taxi reis- en fare gegevensset.
+In het [SQL data warehouses overzicht kunt](sqldw-walkthrough.md) u zien hoe u machine learning classificatie-en regressie modellen bouwt en implementeert met behulp van SQL data WAREHOUSE (SQL DW).  De gegevens zijn een openbaar beschik bare NYCe taxi en een ritbedrag-gegevensset.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie voor een bespreking van de belangrijkste onderdelen die deel uitmaken van het Team Data Science Process [Team Data Science Process overzicht](overview.md).
 
-Zie voor een bespreking van de levenscyclus van het Team Data Science Process die u gebruiken kunt voor uw data science-projecten structureren, [Team Data Science Process lifecycle](lifecycle.md). De levenscyclus van geeft een overzicht van de stappen van begin tot eind, projecten gewoonlijk volgen wanneer ze worden uitgevoerd. 
+Zie voor een bespreking van de team data Science proces levenscyclus de [team data Science process Lifecycle](lifecycle.md). Deze levens cyclus bevat een overzicht van de stappen, van begin tot eind, die projecten meestal volgen wanneer ze worden uitgevoerd. 

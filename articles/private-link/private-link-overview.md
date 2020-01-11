@@ -5,14 +5,14 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: overview
-ms.date: 11/04/2019
+ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 127807a57598fcfe239db39cb9874bca955da44e
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 299cd81c05af385c435eaf3788e3d7e39c486623
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647353"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867546"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Wat is Azure Private Link? (Preview)
 Met Azure private link kunt u toegang krijgen tot Azure PaaS-Services (bijvoorbeeld Azure Storage, Azure Cosmos DB en SQL Database) en Azure hostende klanten/partner services via een [persoonlijk eind punt](private-endpoint-overview.md) in uw virtuele netwerk. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt ook uw eigen [privé koppelings service](private-link-service-overview.md) maken in uw virtuele netwerk (VNet) en deze privé leveren aan uw klanten. De installatie en consumptie-ervaring met behulp van persoonlijke Azure-koppeling is consistent voor Azure PaaS-, klanten-en Shared partner services.
@@ -46,6 +46,9 @@ Persoonlijke Azure-koppeling biedt de volgende voor delen:
 |  |  Azure SQL Database         | Alle open bare regio's      |   Preview      |
 ||Azure SQL Data Warehouse| Alle open bare regio's |Preview|
 ||Azure Cosmos DB| West-Centraal VS, Westus, Noord-Centraal VS |Preview|
+|  |  Azure Database for PostgreSQL-één server         | Alle open bare regio's      |   Preview      |
+|  |  Azure Database voor MySQL         | Alle open bare regio's      |   Preview      |
+|  |  Azure Database voor MariaDB         | Alle open bare regio's      |   Preview      |
 
 Controleer de [pagina Azure Virtual Network updates](https://azure.microsoft.com/updates/?product=virtual-network)voor de meest recente meldingen.
 

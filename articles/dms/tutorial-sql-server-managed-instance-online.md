@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 88bc90a50fb9579e29b8b31b4be23052275b2b28
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 01/10/2020
+ms.openlocfilehash: e9a24daeeab906419416a3a10fda901c91d9fb33
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746849"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863220"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Zelf studie: SQL Server naar een beheerde instantie van Azure SQL Database migreren met behulp van DMS
 
@@ -44,7 +44,7 @@ In deze zelfstudie leert u het volgende:
 > Voor een optimale migratie-ervaring raadt micro soft aan om een instantie van Azure Database Migration Service te maken in dezelfde Azure-regio als de doel database. Het verplaatsen van gegevens naar regio's of geografieën kan het migratieproces vertragen en fouten veroorzaken.
 
 > [!IMPORTANT]
-> Het is belang rijk om de duur van het online migratie proces zo veel mogelijk te beperken, om het risico van de onderbreking te minimaliseren die wordt veroorzaakt door herconfiguratie van exemplaren of gepland onderhoud. In het geval van een dergelijke gebeurtenis wordt het migratie proces vanaf het begin gestart. In het geval van gepland onderhoud geldt een respijt periode van 36 uur voordat het migratie proces opnieuw wordt gestart.
+> Verminder zo veel mogelijk de duur van het online migratie proces om het risico van de onderbreking te minimaliseren die wordt veroorzaakt door herconfiguratie van exemplaren of gepland onderhoud. In het geval van een dergelijke gebeurtenis wordt het migratie proces vanaf het begin gestart. In het geval van gepland onderhoud geldt een respijt periode van 36 uur voordat het migratie proces opnieuw wordt gestart.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
@@ -70,7 +70,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
     > [!IMPORTANT]
     > Met betrekking tot het opslag account dat wordt gebruikt als onderdeel van de migratie, moet u:
     > * Kies ervoor te zorgen dat alle netwerken toegang hebben tot het opslag account.
-    > * Stel Acl's in voor het virtuele netwerk. Zie voor meer informatie het artikel [Azure Storage firewalls en virtuele netwerken configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+    > * Schakel [subnet delegering](https://docs.microsoft.com/azure/virtual-network/manage-subnet-delegation) op mi-subnet in en werk de firewall regels van het opslag account om dit subnet toe te staan.
 
 * Zorg ervoor dat de regels voor de netwerk beveiligings groep van uw virtuele netwerk niet de volgende binnenkomende communicatie poorten blok keren tot Azure Database Migration Service: 443, 53, 9354, 445, 12000. Zie het artikel [netwerk verkeer filteren met netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)voor meer informatie over het filteren van NSG verkeer van virtuele netwerken.
 * Configureer uw [Windows-firewall voor toegang tot de engine van de brondatabase](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
@@ -208,7 +208,7 @@ Nadat er een exemplaar van de service is gemaakt, zoekt u het exemplaar in de Az
 
     | | |
     |--------|---------|
-    |**SMB-netwerksharelocatie** | De lokale SMB-netwerk share of de Azure-bestands share met de back-upbestanden van de volledige data base en de back-upbestanden voor transactie logboeken die Azure Database Migration Service voor migratie kunnen gebruiken. Het serviceaccount waarmee het SQL Server-bronexemplaar wordt uitgevoerd, moet lees-\schrijfbevoegdheid op deze netwerkshare hebben. Geef een FQDN-naam of IP-adressen op van de server in de netwerkshare, bijvoorbeeld '\\\servernaam.domeinnaam.com\back-upmap' of '\\\IP-adres\back-upmap'.|
+    |**SMB-netwerksharelocatie** | De lokale SMB-netwerk share of de Azure-bestands share met de back-upbestanden van de volledige data base en de back-upbestanden voor transactie logboeken die Azure Database Migration Service voor migratie kunnen gebruiken. Het serviceaccount waarmee het SQL Server-bronexemplaar wordt uitgevoerd, moet lees-\schrijfbevoegdheid op deze netwerkshare hebben. Geef een FQDN-naam of IP-adressen op van de server in de netwerkshare, bijvoorbeeld '\\\servernaam.domeinnaam.com\back-upmap' of '\\\IP-adres\back-upmap'. Voor betere prestaties kunt u het beste afzonderlijke mappen gebruiken voor elke Data Base die moet worden gemigreerd. U kunt het pad naar de bestands share op database niveau opgeven met de optie **Geavanceerde instellingen** . |
     |**Gebruikersnaam** | Zorg ervoor dat de Windows-gebruiker volledig beheer heeft over de netwerkshare die u hierboven hebt opgegeven. Azure Database Migration Service imiteert de gebruikers referentie voor het uploaden van de back-upbestanden naar Azure Storage container voor de herstel bewerking. Als u Azure-bestands share gebruikt, gebruikt u de naam van het opslag account pre-pended met AZURE \ als de gebruikers naam. |
     |**Wachtwoord** | Het wachtwoord voor de gebruiker. Als u Azure-bestands share gebruikt, gebruikt u een sleutel voor het opslag account als wacht woord. |
     |**Abonnement van het Azure Storage-account** | Selecteer het abonnement met het Azure Storage-account. |
@@ -216,10 +216,11 @@ Nadat er een exemplaar van de service is gemaakt, zoekt u het exemplaar in de Az
 
     ![Migratie-instellingen configureren](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
+    > [!NOTE]
+    > Als Azure Database Migration Service fout ' systeem fout 53 ' of ' systeem fout 57 ' wordt weer gegeven, kan dit tot gevolg hebben dat Azure Database Migration Service geen toegang meer heeft tot de Azure-bestands share. Als u een van deze fouten tegen komt, moet u via [de instructies in](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)het virtuele netwerk toegang verlenen tot het opslag account.
 
-> [!NOTE]
-  > Als Azure Database Migration Service de fout ' systeem fout 53 ' of ' systeem fout 57 ' weergeeft, kan dit ertoe leiden dat Azure Database Migration Service geen toegang meer heeft tot de Azure-bestands share. Als u een van deze fouten tegen komt, moet u via [de instructies in](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)het virtuele netwerk toegang verlenen tot het opslag account.
-
+    > [!IMPORTANT]
+    > Als de functie loop back-controle is ingeschakeld en de bron SQL Server en de bestands share zich op dezelfde computer bevinden, is de bron niet in staat om toegang te krijgen tot de bestanden harenaa die gebruikmaken van FQDN. Als u dit probleem wilt oplossen, schakelt u de functie loop back-controle uit met behulp van de instructies [hier](https://support.microsoft.com/help/926642/error-message-when-you-try-to-access-a-server-locally-by-using-its-fqd).
 
 2. Selecteer **Opslaan**.
 

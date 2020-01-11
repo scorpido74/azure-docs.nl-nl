@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 13bff4abcb308e4d5ea55f360d979e3e67d313c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39665e0361747e0f75fa6c92f244317b995ce6a8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452870"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863373"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Uw Azure Time Series Insights GA-omgeving plannen
 
@@ -32,7 +32,7 @@ In dit artikel wordt beschreven hoe u de Azure Time Series Insights algemene Bes
 
 Om aan de slag te gaan met Azure Time Series Insights, is het het beste als u weet hoeveel gegevens u naar verwachting wilt pushen per minuut en hoe lang uw gegevens moeten worden opgeslagen.  
 
-Zie [Time Series Insights prijzen](https://azure.microsoft.com/pricing/details/time-series-insights/)voor meer informatie over capaciteit en retentie voor beide time series Insights sku's.
+Lees [Time Series Insights prijzen](https://azure.microsoft.com/pricing/details/time-series-insights/)voor meer informatie over capaciteit en retentie voor beide time series Insights sku's.
 
 Houd rekening met de volgende kenmerken als u uw Time Series Insights omgeving voor een lange termijn wilt best uren:
 
@@ -71,7 +71,7 @@ U kunt de Bewaar periode aanpassen en scha kelen tussen de twee modi op de confi
    [Bewaar ![configureren](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 > [!TIP]
-> Zie de [Bewaar periode configureren](./time-series-insights-how-to-configure-retention.md)voor meer informatie over het implementeren van een geschikt Bewaar beleid voor gegevens.
+> Lees voor meer informatie over het implementeren van een geschikt Bewaar beleid voor gegevens [het configureren van Bewaar periode](./time-series-insights-how-to-configure-retention.md).
 
 ## <a name="ingress-capacity"></a>Ingangs capaciteit
 
@@ -103,7 +103,7 @@ U kunt als volgt uw ingangs vereisten berekenen:
 
 ### <a name="mitigate-throttling-and-latency"></a>Beperkende beperking en latentie
 
-Zie [latentie en beperking beperken](time-series-insights-environment-mitigate-latency.md)voor informatie over het voor komen van beperking en latentie.
+Lees [beperkende latentie en beperking](time-series-insights-environment-mitigate-latency.md)voor informatie over het voor komen van beperking en latentie.
 
 ## <a name="shape-your-events"></a>Uw gebeurtenissen vorm geven
 
@@ -119,7 +119,7 @@ Een *referentie gegevensset* is een verzameling items waarmee de gebeurtenissen 
 > [!NOTE]
 > Referentie gegevens worden niet met terugwerkende kracht samengevoegd. Alleen huidige en toekomstige ingangs gegevens worden vergeleken en samengevoegd met de referentie gegevensset nadat deze is geconfigureerd en geüpload. Als u van plan bent om een grote hoeveelheid historische gegevens naar Time Series Insights te verzenden en niet eerst te uploaden of referentie gegevens in Time Series Insights te maken, moet u uw werk mogelijk opnieuw uitvoeren (Hint: niet leuk).  
 
-Raadpleeg de [documentatie over referentie gegevensset](time-series-insights-add-reference-data-set.md)voor meer informatie over het maken, uploaden en beheren van uw referentie gegevens in time series Insights.
+Lees onze [documentatie over referentie gegevensset](time-series-insights-add-reference-data-set.md)voor meer informatie over het maken, uploaden en beheren van uw referentie gegevens in time series Insights.
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

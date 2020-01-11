@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 43fc928b1274159839dc0df395e86d065f84b4c7
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 2dae0a31ad53a777f5ae88c1c12f988d2f80630a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550263"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867422"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>Een IoT Plug en Play preview-apparaat bouwen dat gereed is voor certificering
 
@@ -35,7 +35,7 @@ Voor deze zelfstudie hebt u het volgende nodig:
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [Azure IOT-Hulpprogram ma's voor VS code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) -uitbreidings pakket
 
-U hebt ook het IoT Plug en Play-apparaat nodig dat u in de Quick Start maakt [: gebruik een mogelijkheidsprofiel om een apparaat te maken](quickstart-create-pnp-device-windows.md).
+U moet ook het [functionaliteits model van een apparaat gebruiken om](quickstart-create-pnp-device-windows.md) de Snelstartgids voor Windows te maken. De Snelstartgids laat zien hoe u uw ontwikkel omgeving kunt instellen met behulp van Vcpkg en hoe u een voorbeeld project maakt.
 
 ## <a name="store-a-capability-model-and-interfaces"></a>Een mogelijkheidsprofiel en interfaces opslaan
 
@@ -107,20 +107,53 @@ Als u het apparaat wilt certificeren, moet het inrichten via de [Azure IOT Devic
 
 1. Kies het DCM-bestand dat u wilt gebruiken voor het genereren van de stub voor het apparaat.
 
-1. Voer de naam van het project in. Dit is de naam van uw apparaat-app.
+1. Voer de naam van het project in, zoals **sample_device**. Dit is de naam van uw apparaat-app.
 
 1. Kies **ANSI C** als taal.
 
 1. Kies **via DPS (Device Provisioning Service) symmetrische sleutel** als verbindings methode.
 
-1. Kies **cmake project in Windows** of **cmake project op Linux** als project sjabloon, afhankelijk van het besturings systeem van uw apparaat.
+1. Kies **cmake project in Windows** als uw project sjabloon.
+
+1. Kies **via Vcpkg** als de manier waarop u de SDK van het apparaat wilt toevoegen.
 
 1. VS code opent een nieuw venster met gegenereerde code stub-bestanden.
 
-1. Nadat u de code hebt gemaakt, voert u de DPS-referenties (**DPS-ID-bereik**, **symmetrische sleutel van DPS**, **apparaat-id**) in als para meters voor de toepassing. Zie [uw IOT-Plug en Play apparaat verbinden en testen](tutorial-certification-test.md#connect-and-discover-interfaces)om de referenties op te halen uit de certificerings Portal.
+## <a name="build-and-run-the-code"></a>De code bouwen en uitvoeren
 
-    ```cmd/sh
-    .\your_pnp_app.exe [DPS ID Scope] [DPS symmetric key] [device ID]
+U kunt het Vcpkg-pakket gebruiken om de gegenereerde stub voor een apparaatcode te maken. De toepassing die u bouwt, simuleert een apparaat dat is verbonden met een IoT-hub. De toepassing verzendt telemetrie en eigenschappen en ontvangt opdrachten.
+
+1. Maak een `cmake`-submap in de map `sample_device` en navigeer naar die map:
+
+    ```cmd
+    mkdir cmake
+    cd cmake
+    ```
+
+1. Voer de volgende opdrachten uit om de gegenereerde code-stub te maken (Vervang de tijdelijke aanduiding door de map van uw Vcpkg opslag plaats):
+
+    ```cmd
+    cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
+
+    cmake --build .
+    ```
+    
+    > [!NOTE]
+    > Als u Visual Studio 2017 of 2015 gebruikt, moet u de CMake-Generator opgeven op basis van de build-hulpprogram ma's die u gebruikt:
+    >```cmd
+    ># Either
+    >cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    ># or
+    >cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    >```
+
+    > [!NOTE]
+    > Als cmake uw C++ compiler niet kan vinden, krijgt u tijdens het uitvoeren van de vorige opdracht fouten bij het bouwen. Als dat het geval is, kunt u proberen deze opdracht uit te voeren op de [Visual Studio-opdracht prompt](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
+
+1. Nadat de build is voltooid, voert u de DPS-referenties (**DPS-ID-bereik**, **symmetrische sleutel van DPS**, **apparaat-id**) in als para meters voor de toepassing. Zie [uw IOT-Plug en Play apparaat verbinden en testen](tutorial-certification-test.md#connect-and-discover-interfaces)om de referenties op te halen uit de certificerings Portal.
+
+    ```cmd\sh
+    .\Debug\sample_device.exe [Device ID] [DPS ID Scope] [DPS symmetric key]
     ```
 
 ### <a name="implement-standard-interfaces"></a>Standaard interfaces implementeren

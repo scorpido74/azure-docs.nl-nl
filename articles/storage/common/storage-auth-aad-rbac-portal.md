@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 01/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: e1544303ee7b792a00f7afb57fe62b7b86a300f8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ec32990513d9199c4aaccf1bcfcbf76f348f877b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74891946"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867507"
 ---
 # <a name="use-the-azure-portal-to-assign-an-rbac-role-for-access-to-blob-and-queue-data"></a>De Azure Portal gebruiken om een RBAC-rol toe te wijzen voor toegang tot Blob-en wachtrij gegevens
 
@@ -45,7 +45,7 @@ In de volgende secties worden deze stappen uitvoeriger beschreven.
 
 > [!NOTE]
 > Als een eigenaar van uw Azure Storage-account, zijn u machtigingen voor toegang tot gegevens niet automatisch toegewezen. U moet zelf expliciet een RBAC-rol toewijzen voor Azure Storage. U kunt deze toewijzen op het niveau van uw abonnement, resource groep, opslag account of een container of wachtrij.
-> 
+>
 > U kunt geen rollen bereik toewijzen aan een container of wachtrij als uw opslag account een hiërarchische naam ruimte heeft ingeschakeld.
 
 ### <a name="assign-a-built-in-rbac-role"></a>Een ingebouwde RBAC-rol toewijzen
@@ -75,7 +75,6 @@ U kunt vergelijk bare stappen volgen om een rollen bereik toe te wijzen aan het 
 ### <a name="assign-the-reader-role-for-portal-access"></a>De rol van lezer toewijzen voor toegang tot de portal
 
 Wanneer u een ingebouwde of aangepaste rol toewijst aan Azure Storage aan een beveiligingsprincipal, verleent u machtigingen aan die beveiligingsprincipal om bewerkingen uit te voeren op gegevens in uw opslag account. De ingebouwde rollen van **gegevens lezers** bieden Lees machtigingen voor de gegevens in een container of wachtrij, terwijl de ingebouwde **gegevensinzender** rollen Lees-, schrijf-en verwijderings rechten bieden voor een container of wachtrij. De machtigingen bevinden zich in het bereik van de opgegeven resource.  
-
 Bijvoorbeeld, als u de rol van **BLOB-gegevens** van de opslag gebruiker aan Mary toewijst op het niveau van een container met de naam **sample-container**, wordt met Mary Lees-, schrijf-en verwijder toegang verleend voor alle blobs in die container.
 
 Als Mary echter een BLOB wil weer geven in de Azure Portal, biedt de rol van de BLOB voor de **gegevens verzamelaar** van de opslag op zichzelf niet voldoende machtigingen om door de portal naar de BLOB te navigeren om deze te kunnen bekijken. Aanvullende Azure AD-machtigingen zijn vereist om door de portal te navigeren en de andere bronnen weer te geven die daar zichtbaar zijn.
@@ -91,8 +90,10 @@ Volg deze stappen om de rol van **lezer** toe te wijzen, zodat een gebruiker toe
 1. Zoek naar de beveiligingsprincipal waaraan u de rol wilt toewijzen.
 1. Sla de roltoewijzing op.
 
-> [!NOTE]
-> Het toewijzen van de rol lezer is alleen nodig voor gebruikers die toegang moeten hebben tot blobs of wacht rijen met behulp van de Azure Portal. 
+Het toewijzen van de rol **lezer** is alleen nodig voor gebruikers die toegang moeten hebben tot blobs of wacht rijen met behulp van de Azure Portal.
+
+> [!IMPORTANT]
+> De preview-versie van Storage Explorer in het Azure Portal biedt geen ondersteuning voor het gebruik van Azure AD-referenties om BLOB-of wachtrij gegevens te bekijken en te wijzigen. Storage Explorer in de Azure Portal maakt altijd gebruik van de account sleutels om toegang te krijgen tot gegevens. Als u Storage Explorer in het Azure Portal wilt gebruiken, moet u een rol toewijzen die **micro soft. Storage/Storage accounts/listkeys ophalen/Action**bevat.
 
 ## <a name="next-steps"></a>Volgende stappen
 

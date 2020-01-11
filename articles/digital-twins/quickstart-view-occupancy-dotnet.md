@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 11/12/2019
-ms.openlocfilehash: b150167ca6a808e0da337be4a609a21cd974598a
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 621b02363310ccc6f3dc1b32807874307210e964
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383149"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861129"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Snelstart: beschikbare ruimten zoeken met behulp van Azure Digital Twins
 
@@ -102,7 +102,7 @@ Bouw en voer de app voor sensor Simulator uit door de volgende stappen uit te vo
 1. Voer `cd device-connectivity` uit.
 1. Voer `dotnet restore` uit.
 1. Bewerk [appsettings.json](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) om **DeviceConnectionString** bij te werken met de vorige `ConnectionString`. Sla het bijgewerkte bestand op.
-1. Voer `dotnet run` uit om te beginnen met het verzenden van gegevens. U ziet dat het wordt verzonden naar Digital Twins, zoals weergegeven in de volgende afbeelding.
+1. Voer `dotnet run` uit om te beginnen met het verzenden van gegevens. Het wordt verzonden naar Azure Digital Apparaatdubbels, zoals wordt weer gegeven in de volgende afbeelding.
 
      [Connectiviteit van ![apparaat](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png#lightbox)
 
@@ -137,7 +137,7 @@ In de zelfstudies wordt diep op de code ingegaan. U komt te weten hoe u configur
 https://YOUR_INSTANCE_NAME.YOUR_LOCATION.azuresmartspaces.net/management/swagger
 ```
 
-| Naam | Vervangen door |
+| Name | Vervangen door |
 | --- | --- |
 | YOUR_INSTANCE_NAME | De naam van uw Digital Twins-exemplaar |
 | YOUR_LOCATION | De server regio waar uw exemplaar wordt gehost |
@@ -154,14 +154,14 @@ In de zelfstudies wordt ook in detail ingegaan op:
 Als u doorgaat naar de zelfstudies, verwijder dan niet de resources die u in deze snelstart hebt gemaakt. Als u niet doorgaat, verwijdert u alle resources die u in deze snelstart hebt gemaakt.
 
 1. Verwijder de map die is gemaakt bij het downloaden van de opslagplaats met voorbeelden.
-1. Selecteer [Alle resources](https://portal.azure.com) in het menu aan de linkerkant van de **Azure-portal**. Selecteer vervolgens uw Digital Twins-resource. Selecteer boven aan het deelvenster **Alle resources** de optie **Verwijderen**.
+1. Selecteer **Alle resources** in het menu aan de linkerkant van de [Azure-portal](https://portal.azure.com). Selecteer vervolgens uw Digital Twins-resource. Selecteer boven aan het deelvenster **Alle resources** de optie **Verwijderen**.
 
     > [!TIP]
     > Als u eerder problemen hebt ondervonden bij het verwijderen van uw digitale Apparaatdubbels-exemplaar, is er een service-update met de oplossing geïmplementeerd. Probeer opnieuw of u het exemplaar kunt verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een eenvoudige scenario en voorbeeld toepassingen gebruikt om te laten zien hoe digitale Apparaatdubbels kan worden gebruikt om te zoeken naar ruimten met goede werk omstandigheden. Zie de volgende zelfstudie voor een meer diepgaande analyse van dit scenario:
+In deze Quick Start hebt u een eenvoudige scenario en voorbeeld toepassingen gebruikt om te laten zien hoe digitale Apparaatdubbels kan worden gebruikt om te zoeken naar ruimten met goede werk omstandigheden. Lees deze zelf studie voor uitgebreide analyse van dit scenario:
 
 >[!div class="nextstepaction"]
 >[Zelfstudie: Azure Digital Twins implementeren en een ruimtelijke grafiek configureren](tutorial-facilities-setup.md)

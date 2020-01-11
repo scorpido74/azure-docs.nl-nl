@@ -1,24 +1,24 @@
 ---
 title: Analyse van SQL Server met R, Python en T-SQL - Team Data Science Process
-description: Voorbeelden die bij het gebruik, helpen R, Python en T-SQL in SQL Server om te doen, voorspellende analyses.
+description: Voor beelden van het gebruik van R, python en T-SQL in SQL Server om predictive analytics uit te voeren.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 342db6cc7c6c9f50345d7e72b7d68d5f116c87f9
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 880ee0a4a1eb396312ea9692b7586d724d6fd410
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589090"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864091"
 ---
-# <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>SQL Server data science-scenario's met behulp van R, Python en T-SQL
+# <a name="sql-server-data-science-walkthroughs-using-r-python-and-t-sql"></a>SQL Server Data Science-instructies met R, python en T-SQL
 
 Deze scenario's maken gebruik van SQL Server, SQL Server R Services en SQL Server-Python-Services voor predictive analytics. R en Python-code is geïmplementeerd in opgeslagen procedures. Ze stappen de die worden beschreven in het Team Data Science Process. Zie voor een overzicht van het Team Data Science Process [Data Science Process](overview.md). 
 
@@ -27,12 +27,12 @@ Aanvullende gegevens datatechnologische rondleidingen die het Team Data Science 
 
 ## <a name="predict-taxi-tips-using-python-and-sql-queries-with-sql-server"></a>Met behulp van Python en SQL-query's met SQL Server taxiritjes voorspellen 
 
-De [Gebruik SQL Server](sql-walkthrough.md) scenario laat zien hoe u ontwikkelen en implementeren van machine learning-classificatie en regressiemodellen met behulp van SQL Server en een openbaar beschikbare NYC taxi reis- en fare gegevensset.
+In het scenario [SQL Server gebruiken kunt](sql-walkthrough.md) u zien hoe u machine learning classificatie-en regressie modellen bouwt en implementeert.  De gegevens zijn een openbaar beschik bare NYCe taxi en een ritbedrag-gegevensset.
 
 
 ## <a name="predict-taxi-tips-using-microsoft-r-with-sql-server"></a>Microsoft R gebruiken met SQL Server taxiritjes voorspellen 
 
-De [Gebruik SQL Server R Services](https://msdn.microsoft.com/library/mt612857.aspx) scenario biedt gegevenswetenschappers met een combinatie van R-code, SQL Server-gegevens, en aangepaste SQL-functies voor het bouwen en implementeren van een R-model met SQL Server. Deze stapsgewijze Kennismaking is ontworpen voor ontwikkelaars van R kennismaken met R Services (In-Database).
+In het [SQL Server R Servicess](https://msdn.microsoft.com/library/mt612857.aspx) scenario voor gebruik ziet u hoe u een R-model bouwt en implementeert voor SQL Server. Deze stapsgewijze Kennismaking is ontworpen voor ontwikkelaars van R kennismaken met R Services (In-Database).
 
 
 ## <a name="predict-taxi-tips-using-r-from-t-sql-or-stored-procedures-with-sql-server"></a>Met behulp van R van T-SQL of opgeslagen procedures met SQL Server taxiritjes voorspellen

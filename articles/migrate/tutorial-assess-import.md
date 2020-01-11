@@ -7,14 +7,14 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 7bf47731f2a3621e7bbdc1b104d94e97f2d03099
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: b9ad5ea6def79c4d7f132558b8b5339bac6f1bc3
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158647"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861299"
 ---
-# <a name="assess-servers-using-imported-data"></a>Servers beoordelen met behulp van geïmporteerde gegevens
+# <a name="assess-servers-using-imported-data"></a>Servers evalueren met geïmporteerde gegevens
 
 In dit artikel wordt uitgelegd hoe u on-premises servers kunt beoordelen met [Azure migrate: Server evaluatie](migrate-services-overview.md#azure-migrate-server-assessment-tool)door meta gegevens van de server te importeren met CSV. Bij deze evaluatie methode hoeft u het Azure Migrate apparaat niet in te stellen om een evaluatie te maken. Dit is handig als:
 
@@ -96,7 +96,7 @@ Down load de CSV-sjabloon en voeg er Server gegevens aan toe.
 
 1. In **migratie doelen** > **servers** > **Azure migrate: Server evaluatie**, klikt u op **ontdekken**.
 2. In **computers detecteren**selecteert **u importeren met. CSV**.
-3. Klik op **downloaden** om de te downloaden. CSV-sjabloon. U kunt [deze ook rechtstreeks downloaden](https://go.microsoft.com/fwlink/?linkid=2108404).
+3. Klik op **downloaden** om de te downloaden. CSV-sjabloon. U kunt [deze ook rechtstreeks downloaden](https://go.microsoft.com/fwlink/?linkid=2109031).
 
     ![Update. CSV-sjabloon](./media/tutorial-assess-import/download-template.png)
 
@@ -116,7 +116,7 @@ De volgende tabel bevat een overzicht van de bestands velden die moeten worden i
 **Servernaam** | Ja | U wordt aangeraden de FQDN op te geven.
 **IP-adres** | Nee | Server adres.
 **Aantal kernen** | Ja | Het aantal processor kernen dat aan de server is toegewezen.
-**Geheugenmetabase** | Ja | Totale hoeveelheid RAM-geheugen (MB) die aan de server is toegewezen.
+**Geheugen** | Ja | Totale hoeveelheid RAM-geheugen (MB) die aan de server is toegewezen.
 **Naam van besturings systeem** | Ja | Besturings systeem van de server.
 **Versie van het besturingssysteem** | Nee | Versie van het besturings systeem van de server.
 **Aantal schijven** | Nee | Niet nodig als er details van de afzonderlijke schijf worden gegeven.
@@ -231,7 +231,7 @@ Voer een evaluatie als volgt uit:
 1. Bekijk de [Aanbevolen procedures](best-practices-assessment.md) voor het maken van evaluaties.
 2. Klik op het tabblad **servers** in **Azure migrate: tegel server bepaling** op **evalueren**.
 
-    ![Evalueren](./media/tutorial-assess-physical/assess.png)
+    ![Beoordelen](./media/tutorial-assess-physical/assess.png)
 
 2. Geef in **servers beoordelen**een naam op voor de evaluatie.
 3. Selecteer in **detectie bron**de optie **machines die zijn toegevoegd via importeren in azure migrate**
@@ -295,7 +295,7 @@ In deze weer gave ziet u de geschatte berekenings-en opslag kosten voor het uitv
 
 ## <a name="supported-operating-system-names"></a>Ondersteunde namen van besturings systemen
 
-Naam | Naam
+Name | Name
 --- | ---
 **A-H** |
 Apple Mac OS X 10 | Asianux 3<br/>Asianux 4<br/>Asianux 5

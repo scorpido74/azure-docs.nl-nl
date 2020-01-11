@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d588e11525e5087f8667da4602797e5299c76f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1f560a7aa746ce7c6262dcaddf74c9d573332fa6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374696"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861384"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Time Series-model in Azure Time Series Insights preview
 
@@ -129,7 +129,7 @@ Exemplaren hebben de volgende JSON-weer gave:
 ```
 
 > [!TIP]
-> Zie het artikel over het [uitvoeren van query's](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) en de [documentatie over de API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)-reacties voor meer informatie over de API voor time series Insights-instanties en het maken, lezen, bijwerken en verwijderen (ruwe).
+> Lees voor de API voor Time Series Insights-api's en het maken, lezen, bijwerken en verwijderen (ruwe) ondersteuning, het [gegevens query](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) -artikel en de [API-documentatie](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api)van het exemplaar.
 
 ## <a name="time-series-model-hierarchies"></a>Time Series-model hiërarchieën
 
@@ -186,7 +186,7 @@ In het vorige voor beeld van JSON:
 * `ManufactureDate` definieert een hiërarchie met bovenliggende `year` en onderliggende `month`. Elke `ManufactureDate` kan meerdere `years`hebben, die op zijn beurt meerdere `months`kunnen hebben.
 
 > [!TIP]
-> Zie het artikel [gegevens query's](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) en de documentatie van de [hiërarchie-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api)voor time series INSIGHTS-instance-api's en ruwe ondersteuning.
+> Lees voor Time Series Insights instance API en ruwe ondersteuning het artikel [gegevens query's](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) en de documentatie van de [hiërarchie-API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
 
 ### <a name="hierarchy-example"></a>Hiërarchie-voor beeld
 
@@ -231,7 +231,7 @@ In de demo van de [Contoso wikkeling-Farm](https://insights.timeseries.azure.com
 [voor beeld van type ![time series-model](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> Zie het artikel [gegevens query's](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) en de rest-documentatie van het [Type API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api)voor time series INSIGHTS-instance-API en ruwe ondersteuning.
+> Lees voor Time Series Insights instance API en ruwe ondersteuning het artikel [gegevens query's](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) en de rest- [documentatie van het type API](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
 ### <a name="type-properties"></a>Type-eigenschappen
 
@@ -391,7 +391,7 @@ Variabelen worden opgeslagen in de type definitie van een time series-model en k
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure time series Insights preview-opslag en](./time-series-insights-update-storage-ingress.md)inkomend verkeer.
+- Lees [Azure time series Insights voor beeld-opslag en](./time-series-insights-update-storage-ingress.md)-inkomend verkeer.
 
 - Meer informatie over algemene bewerkingen voor time series-modellen in [gegevens modellering in azure time series Insights preview](./time-series-insights-update-how-to-tsm.md)
 

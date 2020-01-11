@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3d46e0695238ed7a09f180fe59063f8e2590f307
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 47a84e11149d9c54d335fe09f3c56532f2aaf58b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701924"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862863"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Zelfstudie: Azure Machine Learning implementeren als een IoT Edge-module (preview)
 
 Gebruik Azure Notebooks om een machine learning module te ontwikkelen en te implementeren op een Linux-apparaat met Azure IoT Edge. 
 
-U kunt IoT Edge-modules gebruiken voor het implementeren van code die uw bedrijfslogica rechtstreeks op uw IoT Edge-apparaten implementeert. Deze zelfstudie laat u stapsgewijs zien hoe u een Azure Machine Learning-module kunt implementeren waarmee wordt voorspeld wanneer een apparaat mislukt op basis van gesimuleerde machinetemperatuurgegevens. Zie [Azure machine learning documentatie](../machine-learning/service/how-to-deploy-to-iot.md)voor meer informatie over Azure Machine Learning op IOT Edge.
+U kunt IoT Edge-modules gebruiken voor het implementeren van code die uw bedrijfslogica rechtstreeks op uw IoT Edge-apparaten implementeert. Deze zelfstudie laat u stapsgewijs zien hoe u een Azure Machine Learning-module kunt implementeren waarmee wordt voorspeld wanneer een apparaat mislukt op basis van gesimuleerde machinetemperatuurgegevens. Zie [Azure machine learning documentatie](../machine-learning/how-to-deploy-and-where.md)voor meer informatie over Azure Machine Learning op IOT Edge.
 
 De Azure Machine Learning-module die u in deze zelfstudie maakt, leest de omgevingsgegevens die door uw apparaat zijn gegenereerd en markeert de berichten als afwijkend of niet.
 
@@ -49,7 +49,7 @@ Een Azure IoT Edge-apparaat:
 Cloudresources:
 
 * Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
-* Een Azure Machine Learning-werkruimte. Volg de instructies in [het Azure Portal gebruiken om aan de slag te gaan met Azure machine learning](../machine-learning/service/quickstart-get-started.md) om er een te maken en te leren hoe u deze kunt gebruiken.
+* Een Azure Machine Learning-werkruimte. Volg de instructies in [het Azure Portal gebruiken om aan de slag te gaan met Azure machine learning](../machine-learning/tutorial-1st-experiment-sdk-setup.md) om er een te maken en te leren hoe u deze kunt gebruiken.
    * Noteer de naam van de werk ruimte, de resource groep en de abonnements-ID. Deze waarden zijn allemaal beschikbaar in het overzicht van de werk ruimte in de Azure Portal. U gebruikt deze waarden later in de zelf studie om een Azure-notebook te verbinden met uw werkruimte resources. 
 
 
@@ -62,7 +62,7 @@ In deze sectie converteert u getrainde machine learning model bestanden en naar 
 
 2. Selecteer **github opslag plaats uploaden**.
 
-3. Geef de volgende naam op voor de GitHub-opslag plaats: `Azure/ai-toolkit-iot-edge`. Schakel het selectie vakje **openbaar** uit als u uw project privé wilt laten blijven. Selecteer **importeren**. 
+3. Geef de volgende naam op voor de GitHub-opslag plaats: `Azure/ai-toolkit-iot-edge`. Schakel het selectie vakje **openbaar** uit als u uw project privé wilt laten blijven. Selecteer **Importeren**. 
 
 4. Als het importeren is voltooid, gaat u naar het nieuwe project **AI-Toolkit-IOT-Edge** en opent u de map met de **zelf studie voor afwijkings detectie van IOT Edge** . 
 
@@ -101,11 +101,11 @@ Controleer of de container installatie kopie is gemaakt en opgeslagen in het Azu
 
 4. Selecteer **tempanomalydetection**. U ziet dat de opslag plaats één tag heeft: **1**. 
 
-   Nu u de register naam, de naam van de opslag plaats en het label kent, weet u het volledige pad naar de installatie kopie van de container. Afbeeldings paden zien eruit als **\<registry_name\>. azurecr.io/tempanomalydetection:1**. U kunt het pad naar de installatie kopie gebruiken om deze container te implementeren om apparaten te IoT Edge. 
+   Nu u de register naam, de naam van de opslag plaats en het label kent, weet u het volledige pad naar de installatie kopie van de container. Afbeeldings paden zien eruit als **\<registry_name\>. azurecr.io/tempanomalydetection:1**. U kunt het pad naar de installatiekopie gebruiken om deze container op IoT Edge-apparaten te implementeren. 
 
 5. Selecteer **toegangs sleutels**in het container register. Als het goed is, ziet u een aantal toegangs referenties, inclusief **aanmeldings server** en de **gebruikers naam**en het **wacht woord** voor een gebruiker met beheerders rechten.
 
-   Deze referenties kunnen worden opgenomen in het implementatie manifest om uw IoT Edge-apparaat toegang te geven tot container installatie kopieën uit het REGI ster. 
+   Deze referenties kunnen in het distributiemanifest worden opgenomen om uw IoT Edge-apparaat toegang te geven om containerinstallatiekopieën uit het register op te halen. 
 
 U weet nu waar de Machine Learning container installatie kopie is opgeslagen. In de volgende sectie worden de stappen beschreven voor het weer geven van de container die wordt uitgevoerd als een module op uw IoT Edge-apparaat. 
 
@@ -147,7 +147,7 @@ In de volgende stappen ziet u hoe u Visual Studio Code kunt instellen om apparaa
 
 4. Selecteer de optie **...** en selecteer vervolgens **controle van het ingebouwde gebeurtenis-eind punt starten**.
 
-5. Bekijk de berichten die de tempSensor elke vijf seconden verzendt. De bericht tekst bevat een eigenschap met de naam **anomalie**, die de machinelearningmodule biedt met de waarde True of false. De eigenschap **AzureMLResponse** bevat de waarde ‘OK’ als het model is uitgevoerd.
+5. Bekijk de berichten die de tempSensor elke vijf seconden verzendt. De berichttekst bevat een eigenschap genaamd **afwijking** die de machinelearningmodule voorziet van een waarde 'waar' of 'onwaar'. De eigenschap **AzureMLResponse** bevat de waarde ‘OK’ als het model is uitgevoerd.
 
    ![Reactie van Azure Machine Learning in bericht tekst](./media/tutorial-deploy-machine-learning/ml-output.png)
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
 ms.date: 01/06/2020
-ms.openlocfilehash: 21e9884ab4559b510b13691ac5cafccb753622d6
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: a905054b1b2a04fa2b7865d2c1065ccee37cffc0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690810"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860427"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Quickstart: Azure Time Series Insights verkennen
 
@@ -74,7 +74,7 @@ Deze Quick Start van Time Series Insights Explorer biedt een rond leiding door d
 
    [![een term toevoegen](media/quickstart/quickstart-add-a-term.png)](media/quickstart/quickstart-add-a-term.png#lightbox)
 
-1. Laat het vak **filter reeks** leeg om alle geselecteerde zoek termen te zien of geef een filter term op in het vak **filter reeksen** voor filteren op Improvised-serie.
+1. Laat het vak **filter reeks** leeg om alle geselecteerde zoek termen weer te geven of geef een filter term op in het vak **filter reeksen** voor filteren op Improvised-serie.
 
    [![-filter reeksen](media/quickstart/quickstart-filter-series.png)](media/quickstart/quickstart-filter-series.png#lightbox)
 

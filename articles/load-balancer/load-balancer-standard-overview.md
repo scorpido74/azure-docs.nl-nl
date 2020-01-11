@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 5a4240065039bd6e0633a19c8aad00604970c216
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 68f95c893646d76a80a4edfeb557064660ff9f1c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834680"
+ms.locfileid: "75864261"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Overzicht van Azure Standard Load Balancer
 
@@ -38,20 +38,6 @@ De functies van de Load Balancer resource worden altijd uitgedrukt als een front
 Een belang rijke hoogte is het bereik van het virtuele netwerk van de bron.  Hoewel Basic Load Balancer bestaat binnen het bereik van een beschikbaarheidsset, is een Standard Load Balancer volledig geïntegreerd met het bereik van een virtueel netwerk en zijn alle concepten van het virtuele netwerk van toepassing.
 
 Load Balancer resources zijn objecten waarin u kunt zien hoe Azure de multi tenant-infra structuur moet Program meren om het scenario dat u wilt maken te verhalen.  Er is geen rechtstreekse relatie tussen Load Balancer resources en de werkelijke infra structuur. Als u een Load Balancer maakt, wordt er geen exemplaar gemaakt, is de capaciteit altijd beschikbaar en zijn er geen vertragingen voor opstarten of schalen. 
-
-## <a name="why-use-standard-load-balancer"></a>Waarom Standard Load Balancer gebruiken?
-
-Met behulp van Standard Load Balancer kunt u de schaal van uw toepassingen aanpassen en hoge beschikbaarheid realiseren voor kleinschalige implementaties tot grote en complexe architecturen met meerdere zones.
-
-Bekijk de onderstaande tabel voor een overzicht van de verschillen tussen Standard Load Balancer en basis Load Balancer:
-
->[!NOTE]
-> Nieuwe ontwerpen moeten Standard Load Balancer kunnen faciliteren. 
-
-[!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
-
-Bekijk de [service limieten voor Load Balancer](https://aka.ms/lblimits), evenals de [prijzen](https://aka.ms/lbpricing)en [Sla](https://aka.ms/lbsla).
-
 
 ### <a name="backend"></a>Back-end-groep
 
@@ -184,12 +170,6 @@ Sku's zijn niet onveranderbaar. Volg de stappen in deze sectie om van de ene res
 4. Koppel alle VM-exemplaren aan de nieuwe standaard SKU-resources.
 
 >[!IMPORTANT]
->
->Er gelden beperkingen met betrekking tot het gebruik van de Basic-en Standard-Sku's.
->
->HA-poorten en diagnoses van de standaard-SKU zijn alleen beschikbaar in de standaard-SKU. U kunt niet migreren van de standaard-SKU naar de basis-SKU en ook deze functies behouden.
->
->De basis-en standaard-SKU hebben een aantal verschillen zoals beschreven in dit artikel.  Zorg ervoor dat u begrijpt en er voor bereidingen voor hebt.
 >
 >Overeenkomende Sku's moeten worden gebruikt voor Load Balancer en open bare IP-resources. U kunt geen combi natie van basis-SKU-resources en standaard-SKU-resources hebben. Het is evenmin mogelijk om zelfstandige virtuele machines, virtuele machines in een resource van een beschikbaarheidsset of resources uit schaalset met virtuele machines op beide SKU's tegelijk in te stellen.
 

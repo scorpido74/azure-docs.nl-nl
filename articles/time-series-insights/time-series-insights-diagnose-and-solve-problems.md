@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff723f490a3f6d34f652e0b21e5f6e0b16f0a841
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 3e73afa89ee61243784c5952eeda26a79d508dee
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900276"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863407"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>Problemen in uw Time Series Insights omgeving diagnosticeren en oplossen
 
@@ -34,7 +34,7 @@ Er kunnen om verschillende redenen geen gegevens in de [Azure time series Insigh
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>Oorzaak van een: gebeurtenis bron gegevens bevindt zich niet in JSON-indeling
 
-Azure Time Series Insights ondersteunt alleen JSON-gegevens. Zie voor voorbeelden van JSON, [ondersteund JSON-vormen](./how-to-shape-query-json.md).
+Azure Time Series Insights ondersteunt alleen JSON-gegevens. Lees voor JSON-voor beelden [ondersteunde JSON-vormen](./how-to-shape-query-json.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>Oorzaak B: er ontbreekt een vereiste machtiging voor de bron sleutel van de gebeurtenis
 
@@ -69,7 +69,7 @@ Als u oude gebeurtenissen in uw gebeurtenis bron hebt, kunt u op een van de volg
 - Wijzig de Bewaar limieten van uw gebeurtenis bron om oude gebeurtenissen die u niet wilt weer geven in Time Series Insights te verwijderen.
 - Richt een grotere omgevings grootte (aantal eenheden) in om de door Voer van oude gebeurtenissen te verg Roten. Als u in het voor gaande voor beeld dezelfde S1-omgeving tot vijf eenheden voor één dag verhoogt, moet de omgeving binnen een dag worden opgevangen. Als de productie van de vaste-toestand gebeurtenis 1.000.000 of minder gebeurtenissen per dag is, kunt u de capaciteit van de gebeurtenis beperken tot één eenheid nadat deze is opgevangen.
 
-De beperkings limiet wordt afgedwongen op basis van het SKU-type en de capaciteit van de omgeving. Alle gebeurtenis bronnen in de omgeving delen deze capaciteit. Als de gebeurtenis bron voor uw IoT-hub of Event Hub gegevens na de afgedwongen limieten pusht, ziet u vertraging en een vertraging.
+De beperkings limiet wordt afgedwongen op basis van het SKU-type en de capaciteit van de omgeving. Alle gebeurtenis bronnen in de omgeving delen deze capaciteit. Als de gebeurtenis bron voor uw IoT-hub of Event Hub gegevens na de afgedwongen limieten pusht, treden er vertragingen en vertraging op.
 
 In de volgende afbeelding ziet u een Time Series Insights omgeving met een SKU van S1 en een capaciteit van 3. Het kan 3.000.000 gebeurtenissen per dag inkomen.
 
@@ -82,11 +82,11 @@ Als voor beeld wordt ervan uitgegaan dat een omgeving berichten van een Event Hu
 
 Een S1-SKU-omgeving met een capaciteit van 3 kan per minuut slechts 2.100 gebeurtenissen binnenkomen (1.000.000 gebeurtenissen per dag = 700 gebeurtenissen per minuut bij drie eenheden = 2.100 gebeurtenissen per minuut). 
 
-Zie [ondersteunde JSON-shapes](./how-to-shape-query-json.md)voor meer informatie over hoe afvlakking logisch werkt.
+Voor een gedetailleerde uitleg over hoe logische afvlakking werkt, leest u [ondersteunde JSON-vormen](./how-to-shape-query-json.md).
 
 #### <a name="recommended-resolutions-for-excessive-throttling"></a>Aanbevolen oplossingen voor buitensporige beperking
 
-Als u de vertraging wilt herstellen, verg root u de SKU-capaciteit van uw omgeving. Zie [uw time series Insights-omgeving schalen](time-series-insights-how-to-scale-your-environment.md)voor meer informatie.
+Als u de vertraging wilt herstellen, verg root u de SKU-capaciteit van uw omgeving. Lees [uw time series Insights-omgeving schalen](time-series-insights-how-to-scale-your-environment.md)voor meer informatie.
 
 ### <a name="cause-b-initial-ingestion-of-historical-data-slows-ingress"></a>Oorzaak B: de eerste opname van historische gegevens vertraagt de ingang
 
@@ -109,9 +109,9 @@ Zorg ervoor dat de naam van de tijds tempel eigenschap en de waarde voldoen aan 
 
 De eenvoudigste manier om ervoor te zorgen dat de naam van de tijds tempel eigenschap wordt vastgelegd en correct werkt, is door de Time Series Insights Explorer te gebruiken. Selecteer in de Time Series Insights Explorer, in de grafiek, een periode nadat u de naam van de tijds tempel eigenschap hebt ingevoerd. Klik met de rechter muisknop op de selectie en selecteer vervolgens de optie **gebeurtenissen verkennen** .
 
-De eerste kolomkop moet de naam van de eigenschap time stamp zijn. Naast het **tijds tempel**van het woord ziet u **($TS)** .
+De eerste kolomkop moet de naam van de eigenschap time stamp zijn. Naast het **tijds tempel**van het woord **($TS)** wordt weer gegeven.
 
-De volgende waarden mogen niet worden weer geven:
+De volgende waarden worden niet weer gegeven:
 
 - *(ABC)* : geeft aan dat Time Series Insights de gegevens waarden leest als teken reeksen.
 - *Kalender pictogram*: geeft aan dat Time Series Insights de gegevens waarde als *datum/tijd*leest.

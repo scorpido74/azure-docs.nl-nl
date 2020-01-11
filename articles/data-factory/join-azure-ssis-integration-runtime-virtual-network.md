@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: a4b0debc712504e8cb3c6d61372bd3a82c7932bb
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: b068eeeada842f2439f6135bfa8567a6c9709d12
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497035"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862812"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Een Azure-SSIS-integratie-runtime toevoegen aan een virtueel netwerk
 
@@ -30,10 +30,20 @@ Wanneer u SQL Server Integration Services (SSIS) in Azure Data Factory gebruikt,
 
 - U wilt verbinding maken met gegevens archieven/-resources die zijn geconfigureerd met IP-firewall regels van SSIS-pakketten die worden uitgevoerd op uw Azure-SSIS IR.
 
-Met Data Factory kunt u uw Azure-SSIS IR toevoegen aan een virtueel netwerk dat is gemaakt via het klassieke implementatie model of het implementatie model van Azure Resource Manager. 
+Met Data Factory kunt u uw Azure-SSIS IR toevoegen aan een virtueel netwerk dat is gemaakt via het klassieke implementatie model of het implementatie model van Azure Resource Manager.
 
 > [!IMPORTANT]
 > Het klassieke virtuele netwerk wordt afgeschaft. gebruik in plaats daarvan het Azure Resource Manager virtuele netwerk.  Als u het klassieke virtuele netwerk al gebruikt, schakelt u zo snel mogelijk over naar het Azure Resource Manager virtuele netwerk.
+
+[Bij het configureren van een Azure-SQL Server Integration Services (SSIS) Integration runtime (IR) om deel te nemen aan een virtuele netwerk](tutorial-deploy-ssis-virtual-network.md) zelf studie worden de minimale stappen via Azure portal weer gegeven. In dit artikel wordt de zelf studie uitgebreid en worden alle optionele taken beschreven:
+
+- Als u een virtueel netwerk (klassiek) gebruikt.
+- Als u uw eigen open bare IP-adressen voor de Azure-SSIS IR meebrengt.
+- Als u uw eigen Domain Name System (DNS)-server gebruikt.
+- Als u een netwerk beveiligings groep (NSG) gebruikt in het subnet.
+- Als u Azure ExpressRoute of een door de gebruiker gedefinieerde route (UDR) gebruikt.
+- Als u aangepaste Azure-SSIS IR gebruikt.
+- Als u Azure Power shell-inrichting gebruikt.
 
 ## <a name="access-to-on-premises-data-stores"></a>Toegang tot on-premises gegevens archieven
 
@@ -319,7 +329,7 @@ Nadat u uw Azure Resource Manager virtuele netwerk of het klassieke virtuele net
 
    ![Lijst met gegevens fabrieken](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
 
-1. Selecteer uw data factory met de Azure-SSIS IR in de lijst. U ziet de start pagina voor uw data factory. Selecteer de tegel **auteur & implementeren** . U ziet de Data Factory gebruikers interface op een afzonderlijk tabblad. 
+1. Selecteer uw data factory met de Azure-SSIS IR in de lijst. U ziet de start pagina voor uw data factory. Selecteer de tegel **auteur & monitor** . U ziet de Data Factory gebruikers interface op een afzonderlijk tabblad. 
 
    ![Startpagina van de gegevensfactory](media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png)
 

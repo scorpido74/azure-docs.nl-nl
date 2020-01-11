@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 12/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9b9491a4438ff07222bb5ce5bd684964bdfc0031
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c068e33bc7844c464bc8a289387990128d96dd35
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452839"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861792"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Wat is Azure Time Series Insights?
 
@@ -67,7 +67,7 @@ Azure Time Series Insights legt een nieuwe gebeurtenis vast en slaat deze op in 
 
 ## <a name="capabilities"></a>Mogelijkheden
 
-- **Snel aan de slag**: Azure time series Insights vereist geen voorafe gegevens voorbereiding, zodat u snel verbinding kunt maken met miljoenen gebeurtenissen in uw IOT-hub of event hub. Nadat u verbinding hebt gemaakt, kunt u sensor gegevens visualiseren en ermee werken om uw IoT-oplossingen snel te valideren. U kunt met uw gegevens werken zonder code te schrijven en u hoeft geen nieuwe taal te leren kennen. Time Series Insights biedt een gedetailleerd onderliggend, vrije-tekst query vlak voor geavanceerde gebruikers en wijst en klikt u op verkennen.
+- **Snel aan de slag**: Azure time series Insights vereist geen voorafe gegevens voorbereiding, zodat u snel verbinding kunt maken met miljoenen gebeurtenissen in uw IOT-hub of event hub. Nadat u verbinding hebt gemaakt, kunt u sensor gegevens visualiseren en ermee werken om uw IoT-oplossingen snel te valideren. U kunt met uw gegevens werken zonder code te schrijven en u hoeft geen nieuwe taal te leren kennen. Time Series Insights biedt een gedetailleerd onderliggend, vrije-tekst query vlak voor geavanceerde gebruikers en Point-and-Klik verkennen.
 
 - **Nabije real-time inzichten**: Time Series Insights kunnen miljoenen sensor gebeurtenissen per dag opnemen, met een latentie van één minuut. Time Series Insights helpt u bij het verkrijgen van inzicht in uw sensor gegevens. Gebruik het om trends en afwijkingen op te sporen, de oorzaak van analyses uit te voeren en dure uitval tijd te voor komen. Kruis correlatie tussen realtime en historische gegevens helpt u bij het vinden van verborgen trends in de gegevens.
 
@@ -82,7 +82,7 @@ Voer de volgende stappen uit om aan de slag te gaan.
 1. Een Time Series Insights omgeving inrichten in de Azure Portal.
 1. Verbinding maken met een gebeurtenis bron, zoals een IoT-hub of een Event Hub.
 1. Upload referentie gegevens. Dit is geen aanvullende service.
-1. Bekijk de gegevens na enkele minuten met de verkenner van Time Series Insights.
+1. Uw gegevens in enkele minuten bekijken en weer geven met de Time Series Insights Explorer.
 
 ## <a name="explorer"></a>Verkenner
 

@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: f9f0a74a6ca57f90ed8bd217d0d2f57e4bc16749
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 5c2c519ece9806b92c3e455d5f550bc2abfc9f3b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660338"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862472"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Apparaatconnectiviteit en inkomende telemetriegegevens
 
@@ -21,7 +21,7 @@ De telemetriegegevens die worden verzonden door apparaten en Sens oren vormen de
 
 Als u aan de slag wilt gaan, maakt u een Azure IoT Hub-resource aan de basis van de ruimtelijke grafiek. Met de IoT Hub resource kunnen alle apparaten onder de hoofd ruimte berichten verzenden. Nadat de IoT Hub is gemaakt, registreert u apparaten met Sens oren binnen het digitale Apparaatdubbels-exemplaar. De apparaten kunnen via de [Azure IOT Device SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks)gegevens verzenden naar een Digital apparaatdubbels-service.
 
-Raadpleeg de [zelf studie voor het implementeren en configureren van digitale apparaatdubbels](tutorial-facilities-setup.md)voor een stapsgewijze hand leiding voor het maken van apparaten op de onboarding. In één oogopslag zijn de stappen:
+Lees de [zelf studie voor het implementeren en configureren van digitale apparaatdubbels](tutorial-facilities-setup.md)voor een stapsgewijze hand leiding voor het op de voor bereiding plaatsen van apparaten. In één oogopslag zijn de stappen:
 
 - Implementeer een Digital Apparaatdubbels-exemplaar vanuit het [Azure Portal](https://portal.azure.com).
 - Maak ruimten in uw grafiek.

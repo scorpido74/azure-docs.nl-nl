@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: alkohli
-ms.openlocfilehash: 365507f482217bd804bbd5017d4dbbaf8c187ad2
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 9e1a7f7cd2643aae61e60d77ad74f4a08266a977
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326880"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863594"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Azure Data Box Edge technische specificaties
 
@@ -23,7 +23,7 @@ De hardwareonderdelen van uw Microsoft Azure Data Box Edge apparaat voldoen aan 
 
 Het Data Box Edge-apparaat heeft de volgende specificaties voor Compute en geheugen:
 
-| Specificatie           | Value                  |
+| Specificatie           | Waarde                  |
 |-------------------------|----------------------------|
 | CPU    | 2 X 10 core CPU                     |
 | Geheugen              | 128 GB RAM                  |
@@ -33,9 +33,9 @@ Het Data Box Edge-apparaat heeft de volgende specificaties voor Compute en geheu
 
 Een veld Programmeer bare Gate-matrix (FPGA) is opgenomen op elk Data Box Edge apparaat dat Machine Learning (ML) scenario's mogelijk maakt. 
 
-| Specificatie           | Value                  |
+| Specificatie           | Waarde                  |
 |-------------------------|----------------------------|
-| FPGA   | Intel Arria 10 <br> Beschik bare DNN-modellen (diepe Neural Network) zijn hetzelfde als die [van Cloud FPGA-exemplaren](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
+| FPGA   | Intel Arria 10 <br> Beschik bare DNN-modellen (diepe Neural Network) zijn hetzelfde als die [van Cloud FPGA-exemplaren](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
 
 
 ## <a name="power-supply-unit-specifications"></a>Specificaties van voedings eenheid voor voeding
@@ -45,8 +45,8 @@ Het Data Box Edge-apparaat heeft twee 100-240 V-energievoedings eenheden (PSUs) 
 | Specificatie           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maximale uitvoer kracht    | 750 W                     |
-| Frequentie               | 50/60 Hz                   |
-| Selectie van voltage bereik | Automatische bereik bepaling: 100-240 V AC |
+| Frequency               | 50/60 Hz                   |
+| Selectie van voltage bereik | Automatisch variërend: 100-240 V AC |
 | Hot pluggable           | Ja                        |
 
 <!--## Power consumption statistics
@@ -57,14 +57,14 @@ The following table lists the typical power consumption data (actual values may 
 
 De Data Box Edge-apparaten hebben 9 X 2,5 ' NVMe Ssd's, elk met een capaciteit van 1,6 TB. Van deze Ssd's, 1 is een schijf van het besturings systeem en de andere 8 zijn gegevens schijven. De totale bruikbare capaciteit van het apparaat is ongeveer 12,5 TB. De volgende tabel bevat de Details voor de opslag capaciteit van het apparaat.
 
-|     Specificatie                          |     Value             |
+|     Specificatie                          |     Waarde             |
 |--------------------------------------------|-----------------------|
 |    Aantal Solid-state drives (Ssd's)     |    8                  |
 |    Capaciteit van één SSD                     |    1,6 TB             |
 |    Totale capaciteit                          |    12,8 TB            |
 |    Totale bruikbare capaciteit *                  |    ~ 12.5 TB            |
 
-**Er is ruimte gereserveerd voor intern gebruik.*
+**er ruimte is gereserveerd voor intern gebruik.*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>Afmetingen van behuizing en gewichts specificaties
 
@@ -74,11 +74,11 @@ In de volgende tabellen staan de verschillende specificaties van de behuizing vo
 
 De volgende tabel bevat de afmetingen van de behuizing in millimeters en inches.
 
-|     Behuizing     |     Millimeters     |     Mm     |
+|     Sluit     |     Millimeters     |     Mm     |
 |-------------------|---------------------|----------------|
 |    Hoogte         |    44,45            |    1,75 '          |
 |    Breedte          |    434,1           |    17,09 '          |
-|    Hoogte          |    740,4           |    29,15 '          |
+|    Lengte          |    740,4           |    29,15 '          |
 
 De volgende tabel bevat de afmetingen van het verzend pakket in millimeters en inches.
 
@@ -86,13 +86,13 @@ De volgende tabel bevat de afmetingen van het verzend pakket in millimeters en i
 |-------------------|---------------------|----------------|
 |    Hoogte         |    311,2            |    12,25 '          |
 |    Breedte          |    642,8          |    25,31 '          |
-|    Hoogte          |   1\.051,1          |    41,38 '          |
+|    Lengte          |   1\.051,1          |    41,38 '          |
 
 ### <a name="enclosure-weight"></a>Gewicht van behuizing
 
 Het apparaatstuurprogrammapakket weegt 66 lbs. en er zijn twee personen nodig om deze af te handelen. Het gewicht van het apparaat is afhankelijk van de configuratie van de behuizing.
 
-|     Behuizing                                 |     Gewicht          |
+|     Sluit                                 |     Gewicht          |
 |-----------------------------------------------|---------------------|
 |    Totaal gewicht inclusief de verpakking       |    61 lbs.          |
 |    Gewicht van het apparaat                       |    35 lbs.          |
@@ -103,14 +103,14 @@ In deze sectie vindt u de specificaties met betrekking tot de behuizing-omgeving
 
 ### <a name="temperature-and-humidity"></a>Tempe ratuur en vochtigheid
 
-|     Behuizing         |     Omgevings temperatuur bereik     |     Relatieve lucht vochtigheid     |     Maximum Dew-punt     |
+|     Sluit         |     Omgevings temperatuur bereik     |     Relatieve lucht vochtigheid     |     Maximum Dew-punt     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
-|    Operationeel        |    10 °C-35 °C (50 °F-86 °F)         |    10%-80% niet-condenserend.         |    29 °C (84 °F)            |
+|    Functioneren        |    10 °C-35 °C (50 °F-86 °F)         |    10%-80% niet-condenserend.         |    29 °C (84 °F)            |
 |    Niet-operationeel    |    -40 °C tot 65 °C (-40 °F-149 °F)     |    5%-95% niet-condenserend.          |    33 °C (91 °F)            |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Lucht stroom, hoogte, schokken, trillingen, oriëntatie, veiligheid en EMC
 
-|     Behuizing                           |     Operationele specificaties                                                                                                                                                                                         |
+|     Sluit                           |     Operationele specificaties                                                                                                                                                                                         |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    Lucht stroom                              |    De stroom van het systeem is aan de achterzijde. Het systeem moet worden bediend met een installatie met een lage druk, een achterlopende uitlaat. <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
 |    Maximum hoogte, operationeel        |    3048 meters (10.000 meter) met een maximale gebruiks temperatuur van de nominale waarde bepaald door [de specificaties van de gebruiks temperatuur van de beoordeling](#operating-temperature-de-rating-specifications).                                                                                |

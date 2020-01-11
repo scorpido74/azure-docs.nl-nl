@@ -1,5 +1,5 @@
 ---
-title: Een VPN-gatewayverbinding tussen VNet's configureren met behulp van Azure Portal | Microsoft Docs
+title: 'Een VNet-naar-VNet-VPN Gateway verbinding configureren: Azure Portal'
 description: Een VPN-gatewayverbinding maken tussen VNets met behulp van Resource Manager en Azure Portal.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7ad83327d5b85784f523a5931f277cd00009e0ed
-ms.sourcegitcommit: 3f22ae300425fb30be47992c7e46f0abc2e68478
+ms.openlocfilehash: c8ed01af9574ce10c95fb4af61f1da1c72c858ad
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266449"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860500"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Een VPN-gatewayverbinding tussen VNet's configureren met behulp van Azure Portal
 
@@ -23,7 +23,7 @@ Dit artikel helpt u om virtuele netwerken (VNet's) te verbinden met behulp van h
 De stappen in dit artikel zijn van toepassing op het Azure Resource Manager-implementatiemodel en maken gebruik van Azure Portal. U kunt deze configuratie ook maken met een ander implementatieprogramma of -model, met behulp van de opties die worden beschreven in de volgende artikelen:
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure-CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure Portal (klassiek)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
@@ -74,52 +74,52 @@ In dit artikel leest u hoe u VNet's verbindt met behulp van het verbindingstype 
 **Waarden voor TestVNet1:**
 
 - **Virtuele-netwerkinstellingen**
-    - **Naam**: Voer *TestVNet1* in.
-    - **Adresruimte**: Voer *10.11.0.0/16* in.
+    - **Naam**: Voer *TestVNet1*in.
+    - **Adres ruimte**: Voer *10.11.0.0/16*in.
     - **Abonnement**: Selecteer het abonnement dat u wilt gebruiken.
-    - **Resourcegroep**: Voer *TestRG1* in.
-    - **Locatie**: Selecteer **US - oost**.
+    - **Resource groep**: Voer *TestRG1*in.
+    - **Locatie**: Selecteer **VS-Oost**.
     - **Subnet**
-        - **Naam**: voer *FrontEnd* in.
-        - **Adresbereik**: Voer *10.11.0.0/24* in.
+        - **Naam**: Voer een *frontend*in.
+        - **Adres bereik**: Voer *10.11.0.0/24*in.
     - **Gatewaysubnet**:
-        - **Naam**: *GatewaySubnet* wordt automatisch ingevuld.
-        - **Adresbereik**: Voer *10.11.255.0/27* in.
+        - **Naam**: *GatewaySubnet* wordt aangevuld.
+        - **Adres bereik**: Voer *10.11.255.0/27*in.
 
 - **Instellingen voor virtuele-netwerkgateway** 
-    - **Naam**: Voer *TestVNet1GW* in.
-    - **Gatewaytype**: Selecteer **VPN**.
-    - **VPN-type**: Selecteer **Op route gebaseerd**.
+    - **Naam**: Voer *TestVNet1GW*in.
+    - **Gatewaytype**: selecteer **VPN**.
+    - **VPN-type**: Selecteer **op Route gebaseerde**.
     - **SKU**: Selecteer de gateway-SKU die u wilt gebruiken.
-    - **Openbare IP-adresnaam**: Voer *TestVNet1GWIP* in
+    - **Naam van openbaar IP-adres**: Voer *TestVNet1GWIP* in
     - **Verbinding** 
-       - **Naam**: Voer *TestVNet1toTestVNet4* in.
-       - **Gedeelde sleutel**: Voer *abc123* in. U kunt de gedeelde sleutel zelf maken. Wanneer u de verbinding tussen de VNets maakt, moeten de waarden overeenkomen.
+       - **Naam**: Voer *TestVNet1toTestVNet4*in.
+       - **Gedeelde sleutel**: Voer *abc123*in. U kunt de gedeelde sleutel zelf maken. Wanneer u de verbinding tussen de VNets maakt, moeten de waarden overeenkomen.
 
 **Waarden voor TestVNet4:**
 
 - **Virtuele-netwerkinstellingen**
-   - **Naam**: Voer *TestVNet4* in.
-   - **Adresruimte**: Voer *10.41.0.0/16* in.
+   - **Naam**: Voer *TestVNet4*in.
+   - **Adres ruimte**: Voer *10.41.0.0/16*in.
    - **Abonnement**: Selecteer het abonnement dat u wilt gebruiken.
-   - **Resourcegroep**: Voer *TestRG4* in.
-   - **Locatie**: Selecteer **US - west**.
+   - **Resource groep**: Voer *TestRG4*in.
+   - **Locatie**: selecteer **US - west**.
    - **Subnet** 
-      - **Naam**: voer *FrontEnd* in.
-      - **Adresbereik**: Voer *10.41.0.0/24* in.
+      - **Naam**: Voer een *frontend*in.
+      - **Adres bereik**: Voer *10.41.0.0/24*in.
    - **GatewaySubnet** 
-      - **Naam**: *GatewaySubnet* wordt automatisch ingevuld.
-      - **Adresbereik**: Voer *10.41.255.0/27* in.
+      - **Naam**: *GatewaySubnet* wordt aangevuld.
+      - **Adres bereik**: Voer *10.41.255.0/27*in.
 
 - **Instellingen voor virtuele-netwerkgateway** 
-    - **Naam**: Voer *TestVNet4GW* in.
-    - **Gatewaytype**: Selecteer **VPN**.
-    - **VPN-type**: Selecteer **Op route gebaseerd**.
+    - **Naam**: Voer *TestVNet4GW*in.
+    - **Gatewaytype**: selecteer **VPN**.
+    - **VPN-type**: Selecteer **op Route gebaseerde**.
     - **SKU**: Selecteer de gateway-SKU die u wilt gebruiken.
-    - **Openbare IP-adresnaam**: Voer *TestVNet4GWIP* in.
+    - **Naam van openbaar IP-adres**: Voer *TestVNet4GWIP*in.
     - **Verbinding** 
-       - **Naam**: Voer *TestVNet4toTestVNet1* in.
-       - **Gedeelde sleutel**: Voer *abc123* in. U kunt de gedeelde sleutel zelf maken. Wanneer u de verbinding tussen de VNets maakt, moeten de waarden overeenkomen.
+       - **Naam**: Voer *TestVNet4toTestVNet1*in.
+       - **Gedeelde sleutel**: Voer *abc123*in. U kunt de gedeelde sleutel zelf maken. Wanneer u de verbinding tussen de VNets maakt, moeten de waarden overeenkomen.
 
 ## <a name="create-and-configure-testvnet1"></a>TestVNet1 maken en configureren
 Als u al beschikt over een VNet, controleert u of de instellingen compatibel zijn met het ontwerp van de VPN-gateway. Let vooral op eventuele subnetten die met andere netwerken overlappen. Als u overlappende subnetten hebt, werkt de verbinding mogelijk niet goed.
@@ -150,25 +150,25 @@ Wanneer de virtuele netwerkgateways voor TestVNet1 en TestVNet4 zijn voltooid, k
 
 1. Selecteer in Azure Portal **Alle resources**, typ *gateway van virtueel netwerk* in het zoekvak en navigeer vervolgens naar de gateway voor uw VNet. Bijvoorbeeld **TestVNet1GW**. Selecteer deze om de pagina **Gateway van virtueel netwerk** te openen.
 
-   ![Pagina Verbindingen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/1to4connect2.png "Pagina Verbindingen")
+   ![Pagina verbindingen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/1to4connect2.png "Pagina verbindingen")
 2. Onder **Instellingen** selecteert u **Verbindingen**, en vervolgens **Toevoegen** om de pagina **Verbinding toevoegen** te openen.
 
    ![Verbinding toevoegen](./media/vpn-gateway-howto-vnet-vnet-resource-manager-portal/add.png "Een verbinding toevoegen")
 3. Vul op de pagina **Verbinding toevoegen** de waarden voor uw verbinding in:
 
-   - **Naam**: Geef een naam voor uw verbinding op. Bijvoorbeeld *TestVNet1toTestVNet4*.
+   - **Naam**: Voer een naam in voor de verbinding. Bijvoorbeeld *TestVNet1toTestVNet4*.
 
-   - **Verbindingstype**: Selecteer **VNet-naar-VNet** in de vervolgkeuzelijst.
+   - **Verbindings type**: Selecteer **VNet-naar-VNet** in de vervolg keuzelijst.
 
-   - **Eerste virtuele netwerkgateway**: Deze veldwaarde wordt automatisch ingevuld omdat u deze verbinding maakt vanuit de opgegeven virtuele netwerkgateway.
+   - **Eerste virtuele netwerk gateway**: deze veld waarde wordt automatisch ingevuld omdat u deze verbinding maakt op basis van de opgegeven virtuele netwerk gateway.
 
-   - **Tweede virtuele netwerkgateway**: Dit veld is de virtuele netwerkgateway van het VNet waarvoor u een verbinding wilt maken. Selecteer **Een andere virtuele netwerkgateway kiezen** om de pagina **Virtuele netwerkgateway kiezen** te openen.
+   - **Tweede virtuele netwerk gateway**: dit veld is de virtuele netwerk gateway van het VNet waarmee u een verbinding wilt maken. Selecteer **Een andere virtuele netwerkgateway kiezen** om de pagina **Virtuele netwerkgateway kiezen** te openen.
 
      - Bekijk de virtuele netwerkgateways die op deze pagina worden vermeld. U ziet dat er alleen virtuele netwerkgateways worden vermeld die binnen uw abonnement vallen. Als u verbinding wilt maken met een virtuele netwerkgateway die geen deel uitmaakt van uw abonnement, gebruikt u [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md).
 
      - Selecteer de virtuele netwerkgateway waarmee u verbinding wilt maken.
 
-     - **Gedeelde sleutel (PSK)** : Geef een gedeelde sleutel voor de verbinding op in dit veld. U kunt deze sleutel ook zelf maken of genereren. In een verbinding tussen sites is de sleutel gelijk aan de sleutel voor het on-premises apparaat en uw virtuele netwerkgatewayverbinding. Het concept is hier vergelijkbaar, maar in plaats van een verbinding te maken met een VPN-apparaat, maakt u verbinding met een andere virtuele netwerkgateway.
+     - **Gedeelde sleutel (PSK)** : Voer in dit veld een gedeelde sleutel in voor uw verbinding. U kunt deze sleutel ook zelf maken of genereren. In een verbinding tussen sites is de sleutel gelijk aan de sleutel voor het on-premises apparaat en uw virtuele netwerkgatewayverbinding. Het concept is hier vergelijkbaar, maar in plaats van een verbinding te maken met een VPN-apparaat, maakt u verbinding met een andere virtuele netwerkgateway.
     
 4. Selecteer **OK** om uw wijzigingen op te slaan.
 

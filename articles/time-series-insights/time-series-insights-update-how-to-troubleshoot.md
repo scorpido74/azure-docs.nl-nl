@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0e4ec63ffe715b17f55fde2a53c15d96d391cdba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1fc3aa6caa6266d2cd42e4783e8e39d5cc92c220
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452537"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861571"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Een voorbeeld omgeving diagnosticeren en problemen oplossen
 
@@ -29,7 +29,7 @@ Dit probleem kan zich voordoen als u geen machtigingen hebt voor toegang tot de 
 
 ## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>Probleem: er worden geen gegevens weer gegeven in de preview Explorer
 
-Er zijn verschillende veelvoorkomende redenen waarom u uw gegevens mogelijk niet ziet in de [Azure time series Insights preview Explorer](https://insights.timeseries.azure.com/preview).
+Er zijn verschillende veelvoorkomende redenen waarom uw gegevens mogelijk niet worden weer gegeven in de [Azure time series Insights preview Explorer](https://insights.timeseries.azure.com/preview).
 
 - De bron van de gebeurtenis kan geen gegevens ontvangen.
 
@@ -39,7 +39,7 @@ Er zijn verschillende veelvoorkomende redenen waarom u uw gegevens mogelijk niet
 
 - De bron gegevens van uw gebeurtenis bevindt zich niet in JSON-indeling.
 
-    Time Series Insights ondersteunt alleen JSON-gegevens. Zie voor voorbeelden van JSON, [ondersteund JSON-vormen](./how-to-shape-query-json.md).
+    Time Series Insights ondersteunt alleen JSON-gegevens. Lees voor JSON-voor beelden [ondersteunde JSON-vormen](./how-to-shape-query-json.md).
 
 - Er ontbreekt een vereiste machtiging voor de bron sleutel van uw gebeurtenis.
 
@@ -61,13 +61,13 @@ Er zijn verschillende veelvoorkomende redenen waarom u uw gegevens mogelijk niet
 
 - De eigenschap voor de tijd reeks-ID die is opgegeven bij het inrichten, is onjuist, ontbreekt of is null.
 
-    Dit probleem kan optreden als de time series-ID-eigenschap onjuist is geconfigureerd op het moment van de inrichting van de omgeving. Zie [Aanbevolen procedures voor het kiezen van een time series-id](./time-series-insights-update-how-to-id.md)voor meer informatie. Op dit moment kunt u een bestaande Time Series Insights omgeving niet bijwerken om een andere tijd reeks-ID te gebruiken.
+    Dit probleem kan optreden als de time series-ID-eigenschap onjuist is geconfigureerd op het moment van de inrichting van de omgeving. Lees [Aanbevolen procedures voor het kiezen van een time series-id](./time-series-insights-update-how-to-id.md)voor meer informatie. Op dit moment kunt u een bestaande Time Series Insights omgeving niet bijwerken om een andere tijd reeks-ID te gebruiken.
 
 ## <a name="problem-some-data-shows-but-some-is-missing"></a>Probleem: sommige gegevens worden weer gegeven, maar er ontbreekt een deel
 
 Mogelijk verzendt u gegevens zonder de tijd reeks-ID.
 
-- Dit probleem kan optreden wanneer u gebeurtenissen verzendt zonder het veld tijd reeks-ID in de payload. Zie [ondersteunde JSON-vormen](./how-to-shape-query-json.md)voor meer informatie.
+- Dit probleem kan optreden wanneer u gebeurtenissen verzendt zonder het veld tijd reeks-ID in de payload. Lees [ondersteunde JSON-vormen](./how-to-shape-query-json.md)voor meer informatie.
 - Dit probleem kan optreden omdat uw omgeving wordt beperkt.
 
     > [!NOTE]
@@ -97,7 +97,7 @@ Als de tijds tempel eigenschap niet expliciet is opgegeven, wordt de IoT-hub van
 
 - U hebt mogelijk toegang tot een Time Series Insights S1-of S2-omgeving.
 
-   Time Series-modellen worden alleen ondersteund in omgevingen met betalen per gebruik. Zie [gegevens visualiseren in de Explorer](./time-series-insights-update-explorer.md)voor meer informatie over het openen van de S1-of S2-omgeving vanuit de time series Insights preview Explorer.
+   Time Series-modellen worden alleen ondersteund in omgevingen met betalen per gebruik. Lees voor meer informatie over het openen van de S1-of S2-omgeving vanuit de Time Series Insights preview Explorer [gegevens visualiseren in de Explorer](./time-series-insights-update-explorer.md).
 
    [Er zijn geen gebeurtenissen in de omgeving ![.](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 
@@ -107,7 +107,7 @@ Als de tijds tempel eigenschap niet expliciet is opgegeven, wordt de IoT-hub van
 
 ## <a name="problem-all-my-instances-in-the-preview-explorer-lack-a-parent"></a>Probleem: al mijn instanties in de preview Explorer hebben geen bovenliggend item
 
-Dit probleem kan zich voordoen als in uw omgeving geen hiërarchie voor tijdreeks modellen is gedefinieerd. Zie [werken met Time Series-modellen](./time-series-insights-update-how-to-tsm.md)voor meer informatie.
+Dit probleem kan zich voordoen als in uw omgeving geen hiërarchie voor tijdreeks modellen is gedefinieerd. Lees voor meer informatie [werken met Time Series-modellen](./time-series-insights-update-how-to-tsm.md).
 
   [bij ![niet-bovenliggende instanties wordt een waarschuwing weer gegeven.](media/preview-troubleshoot/unparented-instances.png)](media/preview-troubleshoot/unparented-instances.png#lightbox)
 

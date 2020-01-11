@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b79ca1d93baf1941d5de8db0c314f9cd21e51056
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c7a70d8209c5c349fc082d939a24deac23fa954d
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328023"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863424"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Gegevens toegang verlenen tot een omgeving
 
@@ -113,7 +113,7 @@ Volg deze stappen om gast toegang tot een Time Series Insights omgeving toe te k
 
 1. De gast heeft nu toegang tot de gedeelde omgeving met behulp van de omgevings-URL die door de beheerder is ingesteld. Ze kunnen deze URL in hun webbrowser invoeren voor directe toegang.
 
-1. De gast gebruiker ziet de Tenant van de beheerder door hun profiel pictogram te selecteren in de rechter bovenhoek van de time series Explorer.
+1. De Tenant van de beheerder wordt weer gegeven aan de gast gebruiker nadat het profiel pictogram is geselecteerd in de rechter bovenhoek van de time series Explorer.
 
     [![avatar selecteren op insights.azure.com](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 

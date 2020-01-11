@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1f75e7112a8fc90c6c49ede7cd0ac726401fc1a9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b70604c62ae21f9c433b3cd7d9e59f4ccebb61bd
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452687"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861724"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>Azure Time Series Insights preview inrichten en beheren
 
@@ -86,7 +86,7 @@ Een Azure Time Series Insights-voorbeeld omgeving maken:
 
 ## <a name="manage-the-environment"></a>De omgeving beheren
 
-U kunt uw Azure Time Series Insights-voorbeeld omgeving beheren door gebruik te maken van de Azure Portal. Wanneer u via de Azure Portal beheert, ziet u enkele belang rijke verschillen tussen een PAYG-Azure Time Series Insights voorbeeld omgeving en de algemeen beschik bare S1-of S2-omgevingen:
+U kunt uw Azure Time Series Insights-voorbeeld omgeving beheren door gebruik te maken van de Azure Portal. Er zijn enkele belang rijke verschillen tussen een PAYG Azure Time Series Insights voorbeeld omgeving en de algemeen beschik bare S1-of S2-omgevingen waarmee u rekening moet kunnen brengen wanneer u uw omgeving beheert via de Azure Portal:
 
 * De Blade **overzicht** van Azure Portal Preview bevat de volgende wijzigingen:
 

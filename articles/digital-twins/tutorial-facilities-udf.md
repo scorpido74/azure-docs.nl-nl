@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 80fd1275f3bf9585ff8e40a94d0de2d422baec71
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b988d500ed2a201bb31f0d3a7cbeb7df00af9faf
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383228"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860891"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Zelf studie: uw bouw-en bewakings voorwaarden inrichten met Azure Digital Apparaatdubbels preview
 
@@ -84,7 +84,7 @@ Let ook op de sectie met de naam **roleassignments**. Hiermee wordt de rol van S
         var temperatureThreshold = 78;
     ```
 
-    b. Voeg onder de opmerking `var motionSensor` de volgende regels toe na de instructie waarmee `// Add your sensor variable here` wordt gedefinieerd:
+    b. Voeg onder de opmerking `// Add your sensor variable here` de volgende regels toe na de instructie waarmee `var motionSensor` wordt gedefinieerd:
 
      ```JavaScript
         var temperatureSensor = otherSensors.find(function(element) {
@@ -92,7 +92,7 @@ Let ook op de sectie met de naam **roleassignments**. Hiermee wordt de rol van S
         });
     ```
 
-    c. Voeg onder de opmerking `var carbonDioxideValue` de volgende regel toe na de instructie waarmee `// Add your sensor latest value here` wordt gedefinieerd:
+    c. Voeg onder de opmerking `// Add your sensor latest value here` de volgende regel toe na de instructie waarmee `var carbonDioxideValue` wordt gedefinieerd:
 
     ```JavaScript
         var temperatureValue = getFloatValue(temperatureSensor.Value().Value);
@@ -234,7 +234,7 @@ In deze sectie gebruikt u het project met de naam *device-connectivity* in het v
 
 ## <a name="get-results-of-the-user-defined-function"></a>Resultaten ophalen van een door de gebruiker gedefinieerde functie
 
-De door de gebruiker gedefinieerde functie wordt telkens uitgevoerd als uw instantie gegevens van het apparaat en de sensor ontvangt. In deze sectie voert de Azure Digital Twins-instantie een query uit om de resultaten van de door de gebruiker gedefinieerde functie op te halen. In bijna realtime ziet u wanneer een kamer beschikbaar is, dat de lucht vers is en dat de temperatuur klopt. 
+De door de gebruiker gedefinieerde functie wordt telkens uitgevoerd als uw instantie gegevens van het apparaat en de sensor ontvangt. In deze sectie voert de Azure Digital Twins-instantie een query uit om de resultaten van de door de gebruiker gedefinieerde functie op te halen. U ontvangt een melding in bijna real time, wanneer er een ruimte beschikbaar is, dat de lucht schoon is en de Tempe ratuur goed is. 
 
 1. Open het opdrachtvenster dat u heb gebruikt voor het inrichten van het voorbeeld, of open een nieuw opdrachtvenster, en ga weer naar de map **occupancy-quickstart\src** van het voorbeeld.
 

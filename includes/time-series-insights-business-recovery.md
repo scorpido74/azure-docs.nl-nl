@@ -5,12 +5,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 12/06/2019
-ms.openlocfilehash: 8d0c1edd2766d5fa46603d241c4f769fe5777cd1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: dec7f022a73c5eb47c99b2d2d38e1a3258bcf14e
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980715"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861456"
 ---
 ## <a name="business-disaster-recovery"></a>Bedrijfs nood herstel
 
@@ -55,7 +55,7 @@ Over het algemeen is het een goed idee om een Time Series Insights omgeving te d
 
 Een dubbele omgeving maken:
 
-1. Maak een omgeving in een tweede regio. Zie [een nieuwe time series Insights omgeving maken in de Azure Portal](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)voor meer informatie.
+1. Maak een omgeving in een tweede regio. Lees [een nieuwe time series Insights-omgeving maken in de Azure Portal](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)voor meer informatie.
 1. Maak een tweede toegewezen consumenten groep voor uw gebeurtenis bron.
 1. Verbind de bron van de gebeurtenis met de nieuwe omgeving. Zorg ervoor dat u de tweede toegewijde Consumer groep opgeeft.
 1. Bekijk de Time Series Insights- [IOT hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) en [Event hubs](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access) documentatie.
@@ -71,5 +71,5 @@ Als er zich een gebeurtenis voordoet:
 > * Er kan ook een vertraging optreden.
 > * Er kan een Momente piek in bericht verwerking optreden, omdat bewerkingen worden omgeleid.
 > 
-> Zie de [latentie verminderen in time series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency)voor meer informatie.
+> Lees [beperkende latentie in time series Insights](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency)voor meer informatie.
 

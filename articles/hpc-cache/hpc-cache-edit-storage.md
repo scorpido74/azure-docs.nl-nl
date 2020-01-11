@@ -4,18 +4,30 @@ description: Doel doelen van de Azure HPC-cache bewerken
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/4/2019
+ms.date: 1/08/2020
 ms.author: rohogue
-ms.openlocfilehash: 115e75c0149a35104d9c3696710bf8231a98743d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5635bfc6ea5faea41b125037c76c0b8635e0f528
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168518"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867008"
 ---
 # <a name="edit-storage-targets"></a>Opslagdoelen bewerken
 
-U kunt opslag doelen bewerken om sommige eigenschappen te wijzigen. Verschillende eigenschappen zijn bewerkbaar voor een ander type opslag:
+U kunt een opslag doel verwijderen of wijzigen op de pagina **opslag doelen** van de cache.
+
+## <a name="remove-a-storage-target"></a>Een opslag doel verwijderen
+
+Als u een opslag doel wilt verwijderen, selecteert u het in de lijst en klikt u op de knop **verwijderen** .
+
+Met deze actie wordt de opslag doel koppeling met dit Azure HPC-cache systeem verwijderd, maar wordt het back-end-opslag systeem niet gewijzigd. Als u bijvoorbeeld een Azure Blob Storage-container hebt gebruikt, bestaan de container en de inhoud ervan nog steeds nadat u deze uit de cache hebt verwijderd. U kunt de container toevoegen aan een andere Azure HPC-cache door deze opnieuw toe te voegen aan deze cache of door de Azure Portal te verwijderen.
+
+Alle bestands wijzigingen die in de cache zijn opgeslagen, worden naar het back-end-opslag systeem geschreven voordat het opslag doel wordt verwijderd. Dit proces kan een uur of langer duren als er veel gewijzigde gegevens in de cache staan.
+
+## <a name="update-storage-targets"></a>Opslag doelen bijwerken
+
+U kunt opslag doelen bewerken om sommige eigenschappen te wijzigen. Verschillende eigenschappen zijn bewerkbaar voor verschillende soorten opslag:
 
 * Voor Blob Storage-doelen kunt u het pad naar de naam ruimte wijzigen.
 

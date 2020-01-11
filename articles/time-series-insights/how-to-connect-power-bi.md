@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 1f6b753052b882b75884503f8c05f34b8cead821
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 22053bdc3a9836b76aa92303234a095cac6448ef
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749376"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863839"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Gegevens visualiseren van Time Series Insights in Power BI
 
@@ -51,7 +51,7 @@ Voer de volgende stappen uit om uw Time Series Insights-omgeving te verbinden me
 Aan de slag gaan:
 
 1. Open de Time Series Insights preview Explorer en uw gegevens te openen.
-1. Wanneer u een weer gave hebt gemaakt waarin u tevreden bent, gaat u naar het vervolg keuzemenu **meer acties** en klikt u op **verbinding maken met Power bi**.
+1. Wanneer u een weer gave hebt gemaakt waarin u tevreden bent, gaat u naar het vervolg keuzemenu **meer acties** en selecteert u **verbinding maken met Power bi**.
 
     [![Time Series Insights preview Verkenner exporteren](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
@@ -118,7 +118,7 @@ Nu u de gegevens in Power BI hebt geïmporteerd, is het tijd om een rapport met 
 
     [een lijn diagram ![maken](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
-1.  Als u nog een grafiek aan uw canvas wilt toevoegen, klikt u ergens op het canvas buiten het lijn diagram en herhaalt u dit proces.
+1.  Als u nog een grafiek aan uw canvas wilt toevoegen, selecteert u ergens op het canvas buiten het lijn diagram en herhaalt u dit proces.
 
     [![extra grafieken maken om te delen](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 
@@ -138,7 +138,7 @@ Als een overzicht:
 1. Wijzig de JSON-Payload naar wens.
 1. Selecteer **gereed** en **sluit & pas** in het venster van de **Power query editor**toe.
 
-U ziet dat de gewenste wijzigingen worden toegepast.  
+De interface geeft nu de gewenste wijzigingen weer.  
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -146,4 +146,4 @@ U ziet dat de gewenste wijzigingen worden toegepast.
 
 * Meer informatie over [Power bi bureau blad](https://docs.microsoft.com/power-bi/desktop-query-overview).
 
-* Zie [Time Series INSIGHTS ga Verkenner](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart) en [Time Series Insights preview Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
+* Lees [Time Series INSIGHTS ga Verkenner](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart) en [Time Series Insights preview Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).

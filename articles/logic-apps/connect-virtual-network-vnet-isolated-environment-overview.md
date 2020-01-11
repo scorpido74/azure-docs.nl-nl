@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: d6bb57c8163f7653f4b10142d7ec2b34f50456f1
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d8d57c15fffaa6a9d18ad3c83716f99247512c15
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527855"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860743"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Toegang tot Azure Virtual Network resources vanuit Azure Logic Apps met behulp van integratie service omgevingen (ISEs)
 
@@ -23,7 +23,7 @@ Nadat u uw ISE hebt gemaakt, kunt u uw ISE als de logische app of de locatie van
 
 ![Integratie service omgeving selecteren](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 
-Uw logische app kan nu rechtstreeks toegang krijgen tot systemen die zich binnen of verbonden zijn met uw virtuele netwerk door gebruik te maken van een van de volgende items:
+Uw logische app kan nu rechtstreeks toegang krijgen tot systemen die zich binnen of verbonden zijn met uw virtuele netwerk door gebruik te maken van een van deze items, die worden uitgevoerd in dezelfde ISE als uw logische app:
 
 * Een **ISE**-gelabelde connector voor dat systeem
 * Een **kern**, ingebouwde trigger of actie, zoals de http-trigger of actie
@@ -43,23 +43,21 @@ In dit overzicht vindt u meer informatie over hoe een ISE uw Logic apps en integ
 
 Wanneer u een geïntegreerde service omgeving (ISE) in azure maakt, kunt u het virtuele Azure-netwerk selecteren waar u uw ISE wilt *injecteren* . Azure voert vervolgens een privé-exemplaar van de Logic Apps-service in uw virtuele netwerk in of implementeert deze. Met deze actie wordt een geïsoleerde omgeving gemaakt waarin u uw Logic apps op toegewezen resources kunt maken en uitvoeren. Wanneer u uw logische app maakt, selecteert u uw ISE als de locatie van uw app, waardoor uw logische app direct toegang heeft tot uw virtuele netwerk en de bronnen in dat netwerk.
 
-Logic apps in een ISE bieden dezelfde gebruikers ervaringen en vergelijk bare mogelijkheden als de algemene Logic Apps service. U kunt niet alleen dezelfde ingebouwde triggers, ingebouwde acties en connectors van de Global Logic Apps-service gebruiken, maar u kunt ook ISE-specifieke connectors gebruiken. Dit zijn bijvoorbeeld enkele standaard connectoren die versies aanbieden die in een ISE worden uitgevoerd:
+Logic apps in een ISE bieden dezelfde gebruikers ervaringen en vergelijk bare mogelijkheden als de open bare Global Logic Apps service. U kunt alle dezelfde ingebouwde triggers, acties en beheerde connectors gebruiken die beschikbaar zijn in de Global Logic Apps-service. Sommige beheerde connectors bieden extra ISE-versies. Het verschil bestaat in waar ze worden uitgevoerd en de labels die ze weer geven in de ontwerp functie voor logische apps wanneer u in een ISE werkt.
 
-* Azure Blob Storage, File Storage en Table Storage
-* Azure-wacht rijen, Azure Service Bus, Azure Event Hubs en IBM MQ
-* FTP en SFTP-SSH
-* SQL Server, Azure SQL Data Warehouse Azure Cosmos DB
-* AS2, X12 en EDIFACT
+![Connectors met en zonder labels in een ISE](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-built-in-actions-triggers-managed-connectors.png)
 
-Het verschil tussen ISE en niet-ISE-connectors bevindt zich op de locaties waar de triggers en acties worden uitgevoerd:
+* Ingebouwde triggers en acties geven het **kern** label weer en ze worden altijd uitgevoerd in dezelfde ISE als uw logische app. Beheerde connectors die het label **ISE** weer geven, worden ook uitgevoerd in dezelfde ISE als uw logische app.
 
-* In uw ISE worden ingebouwde triggers en acties, zoals HTTP, altijd uitgevoerd in dezelfde ISE als uw logische app en wordt het **kern** label weer gegeven.
+  Dit zijn bijvoorbeeld enkele connectors die ISE-versies aanbieden:
 
-  ![Selecteer kern ingebouwde triggers en acties](./media/connect-virtual-network-vnet-isolated-environment-overview/select-core-built-in-actions-triggers.png)
+  * Azure Blob Storage, File Storage en Table Storage
+  * Azure-wacht rijen, Azure Service Bus, Azure Event Hubs en IBM MQ
+  * FTP en SFTP-SSH
+  * SQL Server, Azure SQL Data Warehouse Azure Cosmos DB
+  * AS2, X12 en EDIFACT
 
-* Connectors die worden uitgevoerd in een ISE hebben openbaar gehoste versies die beschikbaar zijn in de Global Logic Apps service. Voor connectors die twee versies aanbieden, worden connectors met het label **ISE** altijd uitgevoerd in dezelfde ISE als uw logische app. Connectors zonder het label **ISE** worden uitgevoerd in de service globale Logic apps.
-
-  ![ISE-connectors selecteren](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
+* Beheerde connectors die geen extra labels weer geven, worden altijd uitgevoerd in de open bare algemene Logic Apps-service, maar u kunt deze connectors nog steeds gebruiken in een op ISE gebaseerde logische app.
 
 Een ISE biedt ook verhoogde limieten voor de duur van de uitvoering, opslag retentie, door Voer, HTTP-aanvraag-en reactie-time-outs, bericht grootten en aangepaste connector aanvragen. Zie [limieten en configuratie voor Azure Logic apps](logic-apps-limits-and-config.md)voor meer informatie.
 

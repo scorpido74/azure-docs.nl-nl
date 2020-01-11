@@ -5,14 +5,14 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 673b74515ba03bc71e60a68b21b9330f9e62d424
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 38f424287788537cc5711bab8da60b5798a84b3a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647387"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867692"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
 
@@ -58,6 +58,9 @@ Een persoonlijke koppelings bron is het doel doel van een gegeven persoonlijk ei
 |**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (BLOB, blob_secondary)<BR> Tabel (tabel, table_secondary)<BR> Wachtrij (wachtrij, queue_secondary)<BR> Bestand (bestand, file_secondary)<BR> Web (Web, web_secondary)        |
 |**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (BLOB, blob_secondary)       |
 |**Azure Cosmos DB** | Micro soft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tabel|
+|**Azure Database for PostgreSQL-één server** | Microsoft.DBforPostgreSQL/servers   | postgresqlServer |
+|**Azure Database for MySQL** | Microsoft.DBforMySQL/servers    | mysqlServer |
+|**Azure Database for MariaDB** | Microsoft.DBforMariaDB/servers    | mariadbServer |
  
 ## <a name="network-security-of-private-endpoints"></a>Netwerk beveiliging van privé-eind punten 
 Wanneer u privé-eind punten voor Azure-Services gebruikt, wordt het verkeer beveiligd met een specifieke persoonlijke koppelings bron. Het platform voert een toegangs controle uit om netwerk verbindingen te valideren die alleen de opgegeven persoonlijke koppelings bron bereiken. Als u toegang wilt krijgen tot extra resources binnen dezelfde Azure-service, zijn er extra persoonlijke eind punten vereist. 
@@ -112,6 +115,9 @@ Voor Azure-Services gebruikt u de aanbevolen zone namen zoals beschreven in de v
 |Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
 |Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
 |Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|Tabel|privatelink.table.cosmos.azure.com|
+|Azure Database for PostgreSQL-één server (micro soft. DBforPostgreSQL/servers)|postgresqlServer|privatelink.postgres.database.azure.com|
+|Azure Database for MySQL (micro soft. DBforMySQL/servers)|mysqlServer|privatelink.mysql.database.azure.com|
+|Azure Database for MariaDB (micro soft. DBforMariaDB/servers)|mariadbServer|privatelink.mariadb.database.azure.com|
  
 Azure maakt een canonieke naam DNS-record (CNAME) op de open bare DNS om de oplossing om te leiden naar de voorgestelde domein namen. U kunt de oplossing overschrijven met het privé-IP-adres van uw privé-eind punten. 
  
@@ -136,3 +142,9 @@ De volgende tabel bevat een lijst met bekende beperkingen bij het gebruik van pr
 - [Een persoonlijk eind punt maken voor opslag account met behulp van portal](create-private-endpoint-storage-portal.md)
 - [Een persoonlijk eind punt voor Azure Cosmos-account maken met behulp van portal](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Uw eigen persoonlijke koppelings service maken met behulp van Azure PowerShell](create-private-link-service-powershell.md)
+- [Uw eigen persoonlijke koppeling maken voor Azure Database for PostgreSQL-één server met behulp van portal](../postgresql/howto-configure-privatelink-portal.md)
+- [Uw eigen persoonlijke koppeling maken voor Azure Database for PostgreSQL-één server met behulp van CLI](../postgresql/howto-configure-privatelink-cli.md)
+- [Uw eigen persoonlijke koppeling maken voor Azure Database for MySQL met behulp van de portal](../mysql/howto-configure-privatelink-portal.md)
+- [Uw eigen persoonlijke koppeling maken voor Azure Database for MySQL met behulp van CLI](../mysql/howto-configure-privatelink-cli.md)
+- [Uw eigen persoonlijke koppeling maken voor Azure Database for MariaDB met behulp van de portal](../mariadb/howto-configure-privatelink-portal.md)
+- [Uw eigen persoonlijke koppeling maken voor Azure Database for MariaDB met behulp van CLI](../mariadb/howto-configure-privatelink-cli.md)

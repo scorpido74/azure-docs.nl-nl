@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 094a3a838269921339dcd6c2c3b551720f394251
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 65b760eaf28d907fab3654ed92f960be7556b0d6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660321"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862353"
 ---
 # <a name="routing-iot-events-and-messages"></a>IoT-gebeurtenissen en-berichten routeren
 
@@ -53,7 +53,7 @@ Azure Digital Apparaatdubbels ondersteunt momenteel de volgende **EventTypes** d
 
 > [!IMPORTANT]  
 > Niet alle **EndpointTypes** ondersteunen alle **EventTypes**.
-> Zie de volgende tabel voor de **EventTypes** die zijn toegestaan voor elke **EndpointType**.
+> Bekijk de volgende tabel voor de **EventTypes** die zijn toegestaan voor elke **EndpointType**.
 
 |             | DeviceMessages | TopologyOperation | SpaceChange | SensorChange | UdfCustom |
 | ----------- | -------------- | ----------------- | ----------- | ------------ | --------- |
@@ -62,10 +62,10 @@ Azure Digital Apparaatdubbels ondersteunt momenteel de volgende **EventTypes** d
 | EventGrid|               |         X         |     X       |      X       |   X       |
 
 >[!NOTE]  
->Zie [uitgangen en eind punten](how-to-egress-endpoints.md)voor meer informatie over het maken van eind punten en voor beelden van het schema van gebeurtenissen.
+>Lees uitvoer [en eind punten](how-to-egress-endpoints.md)voor meer informatie over het maken van eind punten en voor beelden van het schema van gebeurtenissen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [limieten voor open bare Preview-Service](concepts-service-limits.md)voor meer informatie over de limieten voor Azure Digital apparaatdubbels preview.
+- Lees de [open bare Preview-Service limieten](concepts-service-limits.md)voor meer informatie over de limieten voor Azure Digital apparaatdubbels preview.
 
-- Als u een Azure Digital Apparaatdubbels-voor beeld wilt uitproberen, raadpleegt [u de Quick Start om beschik bare kamers te vinden](quickstart-view-occupancy-dotnet.md).
+- Als u een Azure Digital Apparaatdubbels-voor beeld wilt uitproberen, leest [u de Snelstartgids om beschik bare ruimten te vinden](quickstart-view-occupancy-dotnet.md).

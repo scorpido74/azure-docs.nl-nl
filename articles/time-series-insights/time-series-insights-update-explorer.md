@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: d94daa5fbda4ee60ffc6671f7b50126662416043
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c117510749abcf997e414371faa6dea1dc79ea7a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746545"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861758"
 ---
 # <a name="azure-time-series-insights-preview-explorer"></a>Preview Explorer Azure Time Series Insights
 
@@ -48,7 +48,7 @@ De Azure Time Series Insights preview Explorer bestaat uit de volgende zeven ele
 
 ## <a name="1-environment-panel"></a>1. Omgevings paneel
 
-De omgeving-paneel geeft alle Time Series Insights-omgevingen die u toegang tot hebt weer. De lijst bevat omgevingen met betalen per gebruik (preview), evenals S1/S2-omgevingen (algemene Beschik baarheid). Klik op de Time Series Insights omgeving die u wilt gebruiken om daar onmiddellijk mee te doen.
+De omgeving-paneel geeft alle Time Series Insights-omgevingen die u toegang tot hebt weer. De lijst bevat omgevingen met betalen per gebruik (preview), evenals S1/S2-omgevingen (algemene Beschik baarheid). Selecteer gewoon de Time Series Insights omgeving die u wilt gebruiken om daar onmiddellijk mee te doen.
 
 1. Selecteer de vervolg keuze pijl naast de weer gegeven omgeving.
 
@@ -75,7 +75,7 @@ De Azure Time Series Insights preview ondersteunt volledige bewerkingen voor mak
 * **Time Series-Model hiërarchie**: hiërarchieën zijn systematische organisaties van uw gegevens. Hiërarchieën weer de relaties tussen verschillende entiteiten in uw Time Series Insights-gegevens.
 * **Time Series-Model exemplaar**:-exemplaren zijn de tijdreeksen zelf. In de meeste gevallen zijn het **DeviceID** of **AssetID**, de unieke id van de asset in de omgeving.
 
-Zie voor meer informatie over de Time Series-Model, [tijden reeks modellen](./time-series-insights-update-tsm.md).
+Lees [Times-serie modellen](./time-series-insights-update-tsm.md)voor meer informatie over het time series-model.
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. hiërarchie structuur en zoek paneel
 
@@ -98,7 +98,7 @@ Daarnaast kunt u met het besturings element verkennen eenvoudig tijd verschuivin
   [opties voor ![juiste indeling](media/v2-update-explorer/well-layout-options.png)](media/v2-update-explorer/well-layout-options.png#lightbox)
 
 > [!NOTE]
-> Als het volgende bericht wordt weer gegeven, heeft het exemplaar geen gegevens tijdens de geselecteerde tijds periode. Om het probleem op te lossen, verg root u de tijds Panne of bevestigt u dat het exemplaar gegevens pusht.
+> Als het volgende bericht wordt weer gegeven, heeft het exemplaar geen gegevens tijdens de geselecteerde periode. Om het probleem op te lossen, verg root u de tijds Panne of bevestigt u dat het exemplaar gegevens pusht.
 >
 > ![Geen gegevens melding](media/v2-update-explorer/tsi-preview-no-data-warning.png)
 
@@ -110,9 +110,9 @@ Met de grafiek kunt u Time Series-exemplaren als regels weer geven. U kunt het d
 
 1. **Grafiek type**: Hiermee bepaalt u welke gegevens elementen beschikbaar zijn voor visualisatie.
 
-1. **Interval grootte**: met de schuif regelaar voor interval grootte kunt u in-en uitzoomen op dezelfde tijds duur. Dit biedt een nauw keurigere controle over de verplaatsing tussen grote tijds segmenten die soepele trends weer geven naar segmenten zo klein als de milliseconde, zodat u nauw keurige delen van uw gegevens met hoge resolutie kunt zien. Het standaard start punt van de schuif regelaar is ingesteld als de meest optimale weer gave van de gegevens uit uw selectie. Balancing-resolutie, query snelheid en granulatie.
+1. **Interval grootte**: met de schuif regelaar voor interval grootte kunt u in-en uitzoomen op dezelfde tijds duur. Dit biedt een nauw keurigere controle over de verplaatsing tussen grote tijds segmenten die soepele trends weer geven naar segmenten zo klein als de milliseconde, zodat u nauw keurige delen van uw gegevens met hoge resolutie kunt bekijken. Het standaard start punt van de schuif regelaar is ingesteld als de meest optimale weer gave van de gegevens uit uw selectie. Balancing-resolutie, query snelheid en granulatie.
 
-1. **Zoomen en pannen**: Klik op dit besturings element om het diagram in te zoomen en te pannen.
+1. **Zoomen en pannen**: Selecteer dit besturings element om het diagram in te zoomen en te pannen.
 
 1. **Besturings element voor y-as**: doorloopt de beschik bare opties voor de weer gave van de y-as:
 
@@ -122,15 +122,15 @@ Met de grafiek kunt u Time Series-exemplaren als regels weer geven. U kunt het d
 
 1. **Element marker**: het momenteel geselecteerde gegevens element en de bijbehorende details.
 
-U kunt verder inzoomen op een specifiek gegevens segment door met de rechter muisknop op een gegevens punt in de huidige grafiek **te klikken** terwijl u de muis ingedrukt houdt en vervolgens het geselecteerde gebied naar het gewenste eind punt sleept. **Klik** met de rechter muisknop op het blauwe, geselecteerde gebied en klik op in- **/uitzoomen** zoals hieronder wordt weer gegeven. U kunt ook de telemetrie-gebeurtenissen in de geselecteerde tijds periode weer geven en downloaden.
+U kunt verder inzoomen op een specifiek gegevens segment door met de rechter muisknop op een gegevens punt in de huidige grafiek **te klikken** terwijl u de muis ingedrukt houdt en vervolgens het geselecteerde gebied naar het gewenste eind punt sleept. **Klik** met de rechter muisknop op het blauwe, geselecteerde gebied en selecteer vervolgens **Inzoomen** , zoals hieronder wordt weer gegeven. U kunt ook de telemetrie-gebeurtenissen in de geselecteerde tijds periode weer geven en downloaden.
 
   [Zoom diagram ![voorbeeld grafiek](media/v2-update-explorer/preview-chart-zoom.png)](media/v2-update-explorer/preview-chart-zoom.png#lightbox)
 
-Nadat u de **Zoom** actie hebt uitgevoerd, ziet u de geselecteerde gegevensset. Selecteer het besturings element opmaken om de drie weer gaven van uw Time Series Insights gegevens op de y-as te door lopen.
+Nadat u de actie voor **Inzoomen** hebt uitgevoerd, wordt uw geselecteerde gegevensset weer gegeven. Selecteer het besturings element opmaken om de drie weer gaven van uw Time Series Insights gegevens op de y-as te door lopen.
 
   [y-as ![voorbeeld grafiek](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png)](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png#lightbox)
 
-Hier ziet u een voor beeld van een **overlappende grafiek**:
+Hier wordt een voor beeld van een **overlappende grafiek** gegeven:
 
   [optie ![overlappende grafiek](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png)](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png#lightbox)
 
@@ -207,7 +207,7 @@ Azure Time Series Insights Preview ondersteunt twee thema's:
 
 In deze sectie geldt alleen voor bestaande S1/S2-omgevingen wordt geprobeerd de explorer gebruiken in de bijgewerkte gebruikersinterface. Mogelijk wilt u het algemeen beschik bare product en de preview-versie gebruiken in combi natie. Er is bepaalde functionaliteit van de bestaande gebruikersinterface aan de bijgewerkte explorer toegevoegd, maar krijgt u de volledige gebruikersinterface-ervaring voor S1/S2-omgeving in de bestaande Time Series Insights-Verkenner. 
 
-In plaats van de hiërarchie ziet u het deel venster Time Series Insights voor waarden, waarin u query's in uw omgeving definieert. Gebruik dit om uw gegevens te filteren op basis van een predikaat.
+In plaats van de hiërarchie wordt het deel venster Time Series Insights voor waarden weer gegeven. In het deel venster voor waarden kunt u query's definiëren in uw omgeving. Gebruik deze functie om ook gegevens te filteren op basis van een predikaat.
 
   [![waar query paneel](media/v2-update-explorer/s1-s2-preview-query.png)](media/v2-update-explorer/s1-s2-preview-query.png#lightbox)
 
@@ -222,7 +222,7 @@ Het deelvenster met Time Series Insights Preview-voorwaarden editor bevat de vol
 | `IN` | String, Bool, Double, DateTime, TimeSpan NULL | Alle operands moeten zijn van hetzelfde type of NULL-constante. |
 | `HAS` | Tekenreeks | Aan de rechter kant zijn alleen letterlijke teken reeksen met constanten toegestaan. Lege teken reeks en NULL zijn niet toegestaan. |
 
-Zie de [Time Series-expressie (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)voor meer informatie over ondersteunde query bewerkingen en gegevens typen.
+Lees de [expressie time series (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)voor meer informatie over ondersteunde query bewerkingen en gegevens typen.
 
 ### <a name="examples-of-where-clauses"></a>Voor beelden van WHERE-componenten
 

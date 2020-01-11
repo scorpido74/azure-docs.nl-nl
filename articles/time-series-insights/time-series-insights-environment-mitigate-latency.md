@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: f29bd4ab679d734c3acce967a5d60784b9884ba6
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5000d79db0d9036fe8904322764e4c480111d6cc
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561394"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863390"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Beperking controleren en beperken om de latentie in Azure Time Series Insights te verminderen
 
@@ -74,11 +74,11 @@ Waarschuwingen kunnen u helpen bij het vaststellen en oplossen van latentie prob
 
 ## <a name="throttling-and-ingress-management"></a>Beperkings-en ingangs beheer
 
-* Als u een beperking hebt, ziet u een waarde voor de *tijds vertraging van ontvangen berichten*, met de melding dat u weet hoeveel seconden achter uw time series Insights-omgeving afkomstig zijn van de werkelijke tijd die het bericht in beslag neemt op de gebeurtenis bron (exclusief indexerings tijd van appx). 30-60 seconden).  
+* Als u een beperking ondervindt, wordt er een waarde voor de *tijds vertraging van ontvangen berichten weer gegeven* . u weet hoeveel seconden achter uw time series Insights-omgeving afkomstig zijn van de werkelijke tijd die het bericht ophaalt uit de bron van de gebeurtenis (exclusief indexerings tijd van appx. 30-60 seconden).  
 
   De vertraging bij het *Ontvangen van berichten* van het aantal inkomende berichten moet ook een waarde hebben, zodat u kunt bepalen hoeveel achterstanden er achter u zijn.  De eenvoudigste manier om aan de slag te gaan is om de capaciteit van uw omgeving te verg Roten tot een grootte waardoor u het verschil kunt oplossen.  
 
-  Als u bijvoorbeeld ziet dat uw S1-omgeving vertraging van 5.000.000 berichten demonstreert, kunt u de grootte van uw omgeving tot zes eenheden verhogen om ongeveer een dag te krijgen.  U kunt nog meer verg Roten om sneller te kunnen werken. De ophaal periode is een veelvoorkomende gebeurtenis bij het inrichten van een omgeving, met name wanneer u deze verbindt met een gebeurtenis bron die al gebeurtenissen bevat of wanneer u grote hoeveel heden historische gegevens uploadt.
+  Als uw S1-omgeving bijvoorbeeld vertraging van 5.000.000 berichten demonstreert, kunt u de grootte van uw omgeving tot zes eenheden verg Roten om ongeveer een dag te krijgen.  U kunt nog meer verg Roten om sneller te kunnen werken. De ophaal periode is een veelvoorkomende gebeurtenis bij het inrichten van een omgeving, met name wanneer u deze verbindt met een gebeurtenis bron die al gebeurtenissen bevat of wanneer u grote hoeveel heden historische gegevens uploadt.
 
 * Een andere techniek is het instellen van een waarschuwing over een **opgeslagen ingangs gebeurtenissen** > = een drempel waarde die iets lager is dan de totale capaciteit van de omgeving voor een periode van twee uur.  Deze waarschuwing helpt u te begrijpen als u voortdurend op capaciteit werkt, wat een hoge kans op latentie aangeeft. 
 
@@ -86,11 +86,11 @@ Waarschuwingen kunnen u helpen bij het vaststellen en oplossen van latentie prob
 
 * Als u vermoedt dat u wordt vertraagd, kunt u uw **ontvangen berichten** vergelijken met de egressed-berichten van uw gebeurtenis bron.  Als binnenkomend in uw event hub groter is dan uw **berichten ontvangen**, worden uw time series Insights waarschijnlijk beperkt.
 
-## <a name="improving-performance"></a>Prestaties verbeteren
+## <a name="improving-performance"></a>Verbeterde prestaties
 
 Om het beperken of de latentie te verminderen, is het de beste manier om dit te corrigeren door de capaciteit van uw omgeving te verg Roten.
 
-U kunt latentie en beperking voor komen door uw omgeving correct te configureren voor de hoeveelheid gegevens die u wilt analyseren. Zie [uw omgeving schalen](time-series-insights-how-to-scale-your-environment.md)voor meer informatie over het toevoegen van capaciteit aan uw omgeving.
+U kunt latentie en beperking voor komen door uw omgeving correct te configureren voor de hoeveelheid gegevens die u wilt analyseren. Lees [uw omgeving schalen](time-series-insights-how-to-scale-your-environment.md)voor meer informatie over het toevoegen van capaciteit aan uw omgeving.
 
 ## <a name="next-steps"></a>Volgende stappen
 

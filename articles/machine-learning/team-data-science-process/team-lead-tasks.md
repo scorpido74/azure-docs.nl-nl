@@ -2,26 +2,26 @@
 title: Taken voor het team leiden in Team Data Science Process Team
 description: Een gedetailleerd overzicht van de taken voor een team lead op een team data Science process team
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/23/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9c6d0fcc20afc613094f10e9f3fb7c917ec6fa73
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327237"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864278"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Taken voor de team leider van een team data Science process team
 
 In dit artikel worden de taken beschreven die een *team leider* voor hun data Science-Team heeft voltooid. Het doel van het team is een samenwerkings omgeving te maken die wordt gestandaardiseerd op het [team data Science process](overview.md) (TDSP). De TDSP is ontworpen om samen werking en team educatie te verbeteren. 
 
-De TDSP is een flexibele, iteratieve methode voor gegevens wetenschap om efficiënt predictive analytics oplossingen en intelligente toepassingen te leveren. Het proces is een distillatie van de best practices en structuren van micro soft en de branche, wat nodig is voor een succes volle implementatie van data Science-initiatieven om bedrijven te helpen de voor delen van hun Analytics-Program ma's volledig te benutten. Voor een overzicht van de personeels rollen en de bijbehorende taken voor een Data Science-team dat wordt gestandardization op de TDSP, raadpleegt u [rollen en taken voor team data Science process](roles-tasks.md).
+De TDSP is een flexibele, iteratieve methode voor gegevens wetenschap om efficiënt predictive analytics oplossingen en intelligente toepassingen te leveren. Het proces destilleert de aanbevolen procedures en structuren van micro soft en de branche.  Het doel is de implementatie van data Science-initiatieven te volt ooien en de voor delen van hun Analytics-Program ma's volledig te realiseren. Voor een overzicht van de personeels rollen en de bijbehorende taken voor een Data Science-team dat wordt gestandardization op de TDSP, raadpleegt u [rollen en taken voor team data Science process](roles-tasks.md).
 
 Een team leider beheert een team dat bestaat uit verschillende gegevens wetenschappers in de data Science-eenheid van een onderneming. Afhankelijk van de grootte en structuur van de data Science-eenheid kunnen de [groeps Manager](group-manager-tasks.md) en de team leider dezelfde persoon zijn of hun taken kunnen delegeren naar vervangingen. Maar de taken zelf niet te wijzigen. 
 
@@ -142,7 +142,7 @@ Als u uw team opslagplaatsen wilt vullen met de inhoud van de groep algemene ops
    
 1. In het dialoog venster **een Git-opslag plaats importeren** selecteert u **Git** als **bron type**en voert u de URL in voor de opslag plaats van de gemeen schappelijke sjabloon onder **kloon-URL**. De URL is *https:\//\<server naam >/\<organisatie naam >/_git/\<naam van de opslag plaats*>. Bijvoorbeeld: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
-1. Selecteer **importeren**. De inhoud van de opslag plaats van de groeps sjabloon wordt geïmporteerd in uw team sjabloon opslagplaats. 
+1. Selecteer **Importeren**. De inhoud van de opslag plaats van de groeps sjabloon wordt geïmporteerd in uw team sjabloon opslagplaats. 
    
    ![Opslag plaats algemene sjabloon import groep](./media/team-lead-tasks/import-repo-2.png)
    

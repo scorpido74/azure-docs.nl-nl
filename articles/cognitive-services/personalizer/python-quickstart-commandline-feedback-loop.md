@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 10/23/2019
+ms.date: 01/09/2020
 ms.author: diberry
-ms.openlocfilehash: f999a54c7841437e169205fed2edea1630aa81a2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0073b03cd06bcf5a6e0733ef1b72061e72c3afe2
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378939"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860296"
 ---
 # <a name="quickstart-personalizer-client-library-for-python"></a>Quick Start: client bibliotheek voor persoonlijke instellingen voor python
 
@@ -26,7 +26,7 @@ Ga aan de slag met de Personaler-client bibliotheek voor python. Volg deze stapp
  * Rang schikking van een lijst met acties voor persoonlijke instellingen.
  * Rapport belonings Score die het succes van de beste geclassificeerde actie aangeeft.
 
-[Pakket (pypi) | -](https://pypi.org/project/azure-cognitiveservices-personalizer/) voor [beelden](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
+[Referentie documentatie](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-personalizer)| [pakket (pypi)](https://pypi.org/project/azure-cognitiveservices-personalizer/) | -voor [beelden](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/python/sample.py)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -49,7 +49,7 @@ Er zijn verschillende stappen voor het gebruik van deze Snelstartgids:
 
 Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor Personaler met behulp van de [Azure Portal](https://portal.azure.com/) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. Raadpleeg [hoe u een Cognitive Services resource maakt met behulp van de Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) voor meer informatie. U kunt ook het volgende doen:
 
-* Ontvang een [proef versie](https://azure.microsoft.com/try/cognitive-services) die 7 dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
+* Ontvang een [proef versie](https://azure.microsoft.com/try/cognitive-services) die 7 dagen gratis geldig is. Nadat u zich hebt aangemeld, is deze beschikbaar op de [Azure-website](https://azure.microsoft.com/try/cognitive-services/my-apis/).
 * Bekijk uw resource op het [Azure Portal](https://portal.azure.com/).
 
 Nadat u een sleutel van uw proef abonnement of resource hebt ontvangen, maakt u twee [omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
@@ -80,11 +80,11 @@ Wanneer een aangepaste lus voor het eerst wordt geïnstantieerd, is er geen mode
 
 De Personaler-client is een PersonalizerClient-object dat wordt geverifieerd bij Azure met behulp van micro soft. rest. ServiceClientCredentials, dat uw sleutel bevat.
 
-Om te vragen om een positie van de inhoud, maakt u een RankRequest en geeft u het door aan de client. Positie methode. De methode Rank retourneert een RankResponse met daarin de gerangschikte inhoud. 
+Om te vragen om een positie van de inhoud, maakt u een RankRequest en geeft u het door aan de client. Positie methode. De methode Rank retourneert een RankResponse met daarin de gerangschikte inhoud.
 
-Als u een beloning naar persoonlijker wilt verzenden, maakt u een RewardRequest en geeft u het door aan de client. Belonings methode. 
+Als u een beloning naar persoonlijker wilt verzenden, maakt u een RewardRequest en geeft u het door aan de client. Belonings methode.
 
-Het bepalen van de beloning, in deze Snelstartgids is trivial. In een productie systeem kan de bepaling van wat invloed heeft op de [belonings Score](concept-rewards.md) en wat een complex proces kan zijn, u mogelijk besluiten om de tijd te wijzigen. Dit moet een van de belangrijkste ontwerp beslissingen zijn in uw persoonlijke architectuur. 
+Het bepalen van de beloning, in deze Snelstartgids is trivial. In een productie systeem kan de bepaling van wat invloed heeft op de [belonings Score](concept-rewards.md) en wat een complex proces kan zijn, u mogelijk besluiten om de tijd te wijzigen. Dit moet een van de belangrijkste ontwerp beslissingen zijn in uw persoonlijke architectuur.
 
 ## <a name="code-examples"></a>Codevoorbeelden
 
@@ -96,7 +96,7 @@ Deze code fragmenten laten zien hoe u het volgende kunt doen met de Personaler-c
 
 ## <a name="create-a-new-python-application"></a>Een nieuwe python-toepassing maken
 
-Maak een nieuwe python-toepassing in uw voorkeurs editor of IDE met de naam `sample.py`. 
+Maak een nieuwe python-toepassing in uw voorkeurs editor of IDE met de naam `sample.py`.
 
 ## <a name="add-the-dependencies"></a>De afhankelijkheden toevoegen
 
@@ -130,7 +130,7 @@ Acties vertegenwoordigen de inhouds keuzes die persoonlijker moeten worden geran
 
 ## <a name="create-the-learning-loop"></a>De leer loop maken
 
-De training voor persoonlijker leren is een cyclus van [positie](#request-a-rank) -en [belonings](#send-a-reward) aanroepen. In deze Quick Start wordt elke classificatie oproep, om de inhoud te personaliseren, gevolgd door een belonings oproep om persoonlijker te vertellen hoe goed de service de inhoud rangschikt. 
+De training voor persoonlijker leren is een cyclus van [positie](#request-a-rank) -en [belonings](#send-a-reward) aanroepen. In deze Quick Start wordt elke classificatie oproep, om de inhoud te personaliseren, gevolgd door een belonings oproep om persoonlijker te vertellen hoe goed de service de inhoud rangschikt.
 
 Met de volgende code wordt een cyclus voor het bepalen van de voor keuren van de gebruiker op de opdracht regel door lopen, waardoor die informatie naar persoonlijker kan worden geclassificeerd, waarbij de gerangschikte selectie aan de klant wordt gepresenteerd om uit de lijst te kiezen en vervolgens een beloning naar persoonlijker te sturen u kunt aangeven hoe goed de service heeft de selectie te rangschikken.
 
@@ -146,9 +146,9 @@ Voeg de volgende methoden toe, die [de inhouds keuzes ophalen](#get-content-choi
 
 ## <a name="request-a-rank"></a>Een positie aanvragen
 
-Om de positie aanvraag te volt ooien, worden de voor keuren van de gebruiker gevraagd om een `currentContent` van de inhouds keuzes te maken. Het proces kan inhoud maken om uit te sluiten van de positie, weer gegeven als `excludeActions`. De rang aanvraag heeft de acties, eigenschap currentcontext, excludeActions en een unieke positie gebeurtenis-ID (als GUID) nodig om de geclassificeerde reactie te ontvangen. 
+Om de positie aanvraag te volt ooien, worden de voor keuren van de gebruiker gevraagd om een `currentContent` van de inhouds keuzes te maken. Het proces kan inhoud maken om uit te sluiten van de positie, weer gegeven als `excludeActions`. De rang aanvraag heeft de acties, eigenschap currentcontext, excludeActions en een unieke positie gebeurtenis-ID (als GUID) nodig om de geclassificeerde reactie te ontvangen.
 
-Deze Snelstartgids bevat eenvoudige context functies van de dag en de voor keur voor de gebruikers-levens duur. In productie systemen kan het bepalen en [evalueren](concept-feature-evaluation.md) van [acties en functies](concepts-features.md) een niet-triviale zaak zijn.  
+Deze Snelstartgids bevat eenvoudige context functies van de dag en de voor keur voor de gebruikers-levens duur. In productie systemen kan het bepalen en [evalueren](concept-feature-evaluation.md) van [acties en functies](concepts-features.md) een niet-triviale zaak zijn.
 
 [!code-python[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/python/sample.py?name=rank)]
 
@@ -156,7 +156,7 @@ Deze Snelstartgids bevat eenvoudige context functies van de dag en de voor keur 
 
 Voor het volt ooien van de vraag, wordt de selectie van de gebruiker uit de opdracht regel opgehaald, waarna een numerieke waarde aan elke selectie wordt toegewezen, waarna de unieke positie gebeurtenis-ID en de numerieke waarde naar de belonings methode worden verzonden.
 
-In deze Quick Start wordt een eenvoudig getal als beloning, een nul of een 1, toegewezen. In productie systemen kan worden bepaald wanneer en wat er moet worden verzonden naar de [belonings](concept-rewards.md) oproep, afhankelijk van uw specifieke behoeften. 
+In deze Quick Start wordt een eenvoudig getal als beloning, een nul of een 1, toegewezen. In productie systemen kan worden bepaald wanneer en wat er moet worden verzonden naar de [belonings](concept-rewards.md) oproep, afhankelijk van uw specifieke behoeften.
 
 [!code-python[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/python/sample.py?name=reward&highlight=9)]
 

@@ -4,16 +4,16 @@ description: Meer informatie over het bewaken van een opslag account in azure me
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/31/2018
+ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 143574ff02960fcd0fd33ccaed5a80a9bb4f3147
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: e9ef700e45acc55f476d72883107b0c5c958fa7f
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211849"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862829"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Een opslag account in de Azure Portal bewaken
 
@@ -53,7 +53,7 @@ Een standaardset metrische gegevens wordt weer gegeven in grafieken op de Blade 
 U kunt metrische gegevens verzamelen en logboek registratie uitschakelen door de **status** in te stellen op **uit**.
 
 > [!NOTE]
-> Azure Storage gebruikt [tabel opslag](storage-introduction.md#table-storage) om de metrische gegevens voor uw opslag account op te slaan, en slaat de metrische gegevens op in tabellen in uw account. Zie voor meer informatie. [Hoe metrische gegevens worden opgeslagen](storage-analytics-metrics.md#how-metrics-are-stored).
+> Azure Storage gebruikt [tabel opslag](storage-introduction.md#table-storage) om de metrische gegevens voor uw opslag account op te slaan, en slaat de metrische gegevens op in tabellen in uw account. Zie  voor meer informatie. [Hoe metrische gegevens worden opgeslagen](storage-analytics-metrics.md#how-metrics-are-stored).
 >
 
 ## <a name="customize-metrics-charts"></a>Grafieken met metrische gegevens aanpassen
@@ -109,10 +109,10 @@ U kunt waarschuwingen maken om u te waarschuwen wanneer de drempel waarden voor 
 U kunt Azure Storage metrische grafieken voor uw opslag accounts toevoegen aan uw portal-dash board.
 
 1. Selecteer in het [Azure Portal](https://portal.azure.com)op **dash board bewerken** terwijl u uw dash board weergeeft.
-1. Selecteer in de **Galerie tegels**de optie **tegels zoeken op** > **type**.
-1. Selecteer**opslag accounts** **opgeven** > .
+1. Selecteer **tegels zoeken op** > **type**in de **tegel galerie**.
+1. Selecteer ** > ** **Storage-accounts**.
 1. Selecteer in **resources**het opslag account waarvan u de metrische gegevens aan het dash board wilt toevoegen.
-1. Selecteer **categorie** > **bewaking**.
+1. Selecteer **categorieën** > **bewaking**.
 1. Slepen en neerzetten van de grafiek tegel naar het dash board voor de metrische gegevens die u wilt weer geven. Herhaal deze stap voor alle metrische gegevens die u op het dash board wilt weer geven. In de volgende afbeelding is de grafiek ' blobs-totaal aantal aanvragen ' gemarkeerd als voor beeld, maar alle grafieken zijn beschikbaar voor plaatsing op uw dash board.
 
    ![Tegel galerie in Azure Portal](./media/storage-monitor-storage-account/storage-customize-dashboard.png)
@@ -129,7 +129,7 @@ U kunt Azure Storage voor het opslaan van Diagnostische logboeken voor lees-, sc
 >
 
 1. Selecteer in de [Azure Portal](https://portal.azure.com) **opslag accounts**en vervolgens de naam van het opslag account om de Blade opslag account te openen.
-1. Selecteer **Diagnostische gegevens** in het gedeelte **bewaking** van de menu-Blade.
+1. Selecteer **instellingen voor diagnostische gegevens (klassiek)** in het gedeelte **bewaking (klassiek)** van de menu Blade.
 
     ![Menu-item diagnostische gegevens onder bewaking in het Azure Portal.](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 

@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 16daf4a79252134703715ccd88f0b10dda7f4fa6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 0f91775e0175b4b4af9b57fa96e389c3a2a22564
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792156"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863118"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Een verbinding van een Azure Cognitive Search Indexeer functie configureren in een door SQL beheerd exemplaar
 
@@ -33,6 +33,13 @@ U kunt ook open bare eind punten inschakelen op een bestaand SQL beheerd exempla
 Controleer of de netwerk beveiligings groep de juiste **regels voor binnenkomende beveiliging** heeft waarmee verbindingen van Azure-Services zijn toegestaan.
 
    ![Binnenkomende beveiligings regel NSG](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/nsg-rule.png "Binnenkomende beveiligings regel NSG")
+
+> [!NOTE]
+> U kunt ervoor kiezen om meer beperkend te zijn in de inkomende toegang tot uw beheerde SQL-exemplaar door de huidige regel (`public_endpoint_inbound`) te vervangen door 2 regels:
+>
+> * Binnenkomende toegang vanaf [de `AzureCognitiveSearch` servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) toestaan (' Bron ' = `AzureCognitiveSearch`)
+>
+> * Het toestaan van binnenkomende toegang vanaf het IP-adres van de zoek service, die kan worden verkregen door de Fully Qualified Domain Name (bijvoorbeeld `<your-search-service-name>.search.windows.net`) te pingen. (' Bron ' = `IP address`)
 
 ## <a name="get-public-endpoint-connection-string"></a>connection string van open bare eind punten ophalen
 Zorg ervoor dat u de connection string gebruikt voor het **open bare eind punt** (poort 3342, niet poort 1433).

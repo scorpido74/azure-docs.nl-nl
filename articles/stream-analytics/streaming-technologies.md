@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: f3ecb3bedb8e0f55590aca1aa1c0e0c185f9acc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2146b1bd782aba5d98729a2d37d956744e469ba1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369249"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860245"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Kies een real-time analyse-en streaming-verwerkings technologie in azure
 
@@ -41,10 +41,6 @@ Azure Stream Analytics heeft een veelzijdige out-of-the-box-ervaring. U kunt onm
 * Onder 100-MS-end-to-end latentie van invoer bij Event Hubs, naar uitvoer overloop in Event Hubs, met inbegrip van de netwerk vertraging van en naar Event Hubs, tegen een duurzame hoge door Voer
 
 ## <a name="when-to-use-other-technologies"></a>Wanneer u andere technologieën wilt gebruiken
-
-### <a name="you-need-to-input-from-or-output-to-kafka"></a>U moet een invoer uitvoeren vanuit of uitvoer naar Kafka
-
-Azure Stream Analytics heeft geen Apache Kafka invoer-of uitvoer adapter. Als u gebeurtenissen hebt geaanvoer in of moet worden verzonden naar Kafka en u geen vereiste hebt om uw eigen Kafka-cluster uit te voeren, kunt u Stream Analytics blijven gebruiken door gebeurtenissen te verzenden naar Event Hubs met behulp van de Event Hubs Kafka-API zonder de afzender van de gebeurtenis te wijzigen. Als u uw eigen Kafka-cluster moet uitvoeren, kunt u gebruikmaken van Spark Structured streaming, dat volledig wordt ondersteund op [Azure Databricks](../azure-databricks/index.yml), of Storm op [Azure HDInsight](../hdinsight/storm/apache-storm-overview.md).
 
 ### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>U wilt Udf's-, Uda's-en aangepaste deserializers schrijven in een andere taal dan Java script ofC#
 

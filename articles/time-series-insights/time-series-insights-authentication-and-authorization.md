@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: b54034dc8828fb8a96f488197e517ef07ed55ab5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 960eb9b48a158358a076202db0d435feb918a6c8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460422"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863475"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Verificatie en autorisatie voor Azure Time Series Insights-API
 
@@ -87,7 +87,7 @@ In het volgende voor **stap 3**kunt u met behulp van de referenties van uw toepa
 
    1. Gebruik de **toepassings-id** en het **client geheim** (toepassings sleutel) uit de sectie app-registratie van Azure Active Directory om het token namens de toepassing te verkrijgen.
 
-   1. In C#kan de volgende code het token namens de toepassing verkrijgen. Zie [query data using C# ](time-series-insights-query-data-csharp.md)(Engelstalig) voor een volledig voor beeld.
+   1. In C#kan de volgende code het token namens de toepassing verkrijgen. Lees [query gegevens gebruiken C# ](time-series-insights-query-data-csharp.md)voor een volledig voor beeld.
 
         [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs?range=170-199)]
 
@@ -107,7 +107,7 @@ In deze sectie worden algemene HTTP-aanvraag headers en-para meters beschreven d
 Als u geverifieerde query's wilt uitvoeren op de [Time Series INSIGHTS rest api's](https://docs.microsoft.com/rest/api/time-series-insights/), moet er een geldig OAuth 2,0 Bearer-token worden door gegeven in de [autorisatie-header](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) met behulp van een rest C#-client naar keuze (Postman, java script,). 
 
 > [!TIP]
-> Bekijk de voor [beeld-visualisatie](https://tsiclientsample.azurewebsites.net/) van de gehoste Azure time series Insights client-SDK om te zien hoe u via een programma met de time series Insights api's kunt verifiëren met behulp van de [Java script-client-SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) en grafieken en grafieken.
+> Lees de voor [beeld-visualisatie](https://tsiclientsample.azurewebsites.net/) van de gehoste Azure time series Insights client-SDK voor meer informatie over de verificatie met de time series Insights api's programmatisch met behulp van de [Java script-client-SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) samen met grafieken en grafieken.
 
 ### <a name="http-headers"></a>HTTP-headers
 
@@ -126,7 +126,7 @@ De optionele aanvraag headers worden hieronder beschreven.
 
 | Optionele aanvraagheader | Beschrijving |
 | --- | --- |
-| Inhouds type | alleen `application/json` wordt ondersteund. |
+| Inhouds type | Alleen `application/json` wordt ondersteund. |
 | x-ms-client-request-id | Een client aanvraag-ID. Deze waarde wordt vastgelegd door de service. Hiermee kan de service bewerkingen volgen tussen services. |
 | x-MS-client-sessie-id | Een client sessie-ID. Deze waarde wordt vastgelegd door de service. Hiermee kan de service een groep gerelateerde bewerkingen in verschillende services traceren. |
 | x-MS-Client-toepassings naam | De naam van de toepassing die deze aanvraag heeft gegenereerd. Deze waarde wordt vastgelegd door de service. |
@@ -161,10 +161,10 @@ Optionele URL-query teken reeks parameters zijn onder andere het instellen van e
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [query data using C# ](./time-series-insights-query-data-csharp.md)(Engelstalig) voor voorbeeld code voor het aanroepen van de Ga Time Series Insights-API.
+- Lees [query gegevens met C# ](./time-series-insights-query-data-csharp.md)als voorbeeld code voor het aanroepen van de Ga Time Series Insights-API.
 
-- Zie [query voorbeeld gegevens gebruiken C# ](./time-series-insights-update-query-data-csharp.md)voor preview-time series Insights-API-code voorbeelden.
+- Lees preview-gegevens van Query's voor preview-Time Series Insights van API-code [met behulp C# ](./time-series-insights-update-query-data-csharp.md)van.
 
-- Zie de naslag documentatie voor query- [API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) voor informatie over API-verwijzingen.
+- Lees de naslag documentatie over de [query-API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) voor naslag informatie over de API.
 
 - Meer informatie over het [maken van een Service-Principal](../active-directory/develop/howto-create-service-principal-portal.md).

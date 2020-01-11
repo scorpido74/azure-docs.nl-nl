@@ -4,14 +4,14 @@ description: De Azure HPC-cache beheren en bijwerken met behulp van de Azure Por
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 1/08/2020
 ms.author: rohogue
-ms.openlocfilehash: 9cd5ad151c977838fea30f52c7d4a93b4663c8ff
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a166a904b2e63419efd5803fd54be1d1b59836fb
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166697"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867087"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Uw cache beheren via de Azure Portal
 
@@ -23,7 +23,7 @@ Als u de overzichts pagina wilt openen, selecteert u uw cache resource in het Az
 
 Met de knoppen boven aan de pagina kunt u de cache beheren:
 
-* [**Flush**](#flush-cached-data) : Hiermee worden alle gegevens in de cache naar opslag doelen geschreven
+* [**Flush**](#flush-cached-data) -schrijft gewijzigde gegevens naar opslag doelen
 * [**Upgrade**](#upgrade-cache-software) -de cache software bijwerken
 * **Vernieuwen** : Hiermee wordt de pagina Overzicht opnieuw geladen
 * [**Verwijderen**](#delete-the-cache) : de cache wordt definitief vernietigd
@@ -63,9 +63,18 @@ Klik op de knop **bijwerken** om de software-update te starten. De cache status 
 
 De knop **verwijderen** vernietigt de cache. Wanneer u een cache verwijdert, worden alle bijbehorende bronnen vernietigd en worden er geen account kosten meer in rekening gebracht.
 
-Opslag doelen worden niet beïnvloed wanneer u de cache verwijdert. U kunt ze later toevoegen aan een toekomstige cache of ze afzonderlijk uit bedrijf nemen.
+De back-end-opslag volumes die als opslag doelen worden gebruikt, worden niet beïnvloed wanneer u de cache verwijdert. U kunt ze later toevoegen aan een toekomstige cache of ze afzonderlijk uit bedrijf nemen.
 
-In de cache worden niet-opgeslagen gegevens automatisch naar opslag doelen verwijderd als onderdeel van de laatste afsluiting.
+> [!NOTE]
+> Azure HPC cache schrijft niet automatisch gewijzigde gegevens van de cache naar de back-end-opslag systemen voordat de cache wordt verwijderd.
+>
+> Voer de volgende procedure uit om ervoor te zorgen dat alle gegevens in de cache naar lange termijn opslag zijn geschreven:
+>
+> 1. [Verwijder](hpc-cache-edit-storage.md#remove-a-storage-target) elke opslag doel uit de Azure HPC-cache met behulp van de knop verwijderen op de pagina opslag doelen. Het systeem schrijft automatisch gewijzigde gegevens van de cache naar het back-end-opslag systeem voordat het doel wordt verwijderd.
+> 1. Wacht totdat het opslag doel volledig is verwijderd. Het proces kan een uur of langer duren als er veel gegevens moeten worden geschreven uit de cache. Wanneer dit is gebeurd, geeft een portal melding aan dat de Verwijder bewerking is geslaagd en verdwijnt het opslag doel uit de lijst.
+> 1. Nadat alle beïnvloede opslag doelen zijn verwijderd, is het veilig om de cache te verwijderen.
+>
+> U kunt ook de optie [leegmaken](#flush-cached-data) gebruiken om gegevens in de cache op te slaan, maar er is een klein risico van het verlies van werk wanneer een client een wijziging in de cache schrijft nadat de leegmaak bewerking is voltooid, maar voordat de cache-instantie wordt vernietigd.
 
 ## <a name="cache-metrics-and-monitoring"></a>Metrische gegevens over cache en bewaking
 

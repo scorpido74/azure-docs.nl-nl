@@ -1,18 +1,18 @@
 ---
-title: Azure Management en Operations Management Suite (OMS) | Microsoft Docs
-description: Overzicht van de beheergebieden voor de Azure-toepassingen en -resources met koppelingen naar inhoud in Azure beheerhulpprogramma's die eerder als Operations Management Suite (OMS) waren gebundeld.
+title: Azure-beheer
+description: Overzicht van de gebieden van beheer voor Azure-toepassingen en bronnen met koppelingen naar inhoud op Azure-beheerhulpprogramma's.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2018
-ms.openlocfilehash: 7f515c1c5d44058e14f02f7681bfbb7fd2787c6f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f68838e271e51c37985f55b40b140e279c1df2a4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597353"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862540"
 ---
 # <a name="azure-management---monitoring"></a>Azure Management - bewaking
 

@@ -2,18 +2,17 @@
 title: 'Azure VPN Gateway: Gateways verbinden met meerdere on-premises op beleid gebaseerde VPN-apparaten'
 description: Configureer een op Azure route gebaseerde VPN-gateway naar meerdere op beleid gebaseerde VPN-apparaten met behulp van Azure Resource Manager en Power shell.
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: f307e37debe47d2d352b1a375259fe7a0d6dd3cd
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 029b7ce31e7e3f1c71d9fbe806b2d76d8a98d24b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74146717"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863737"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Azure VPN-gateways verbinden met meerdere on-premises op beleid gebaseerde VPN-apparaten met behulp van Power shell
 
@@ -25,7 +24,7 @@ Dit artikel helpt u bij het configureren van een op Azure route gebaseerde VPN-g
 
 Beleid *versus* op route gebaseerde VPN-apparaten wijken af van hoe de selecters van het IPSec-verkeer worden ingesteld op een verbinding:
 
-* **Op beleid gebaseerd** VPN-apparaten gebruiken de combi Naties van voor voegsels van beide netwerken om te definiëren hoe verkeer wordt versleuteld/ontsleuteld via IPsec-tunnels. Het is doorgaans gebaseerd op Firewall apparaten die pakket filters uitvoeren. IPsec-tunnel versleuteling en-ontsleuteling worden toegevoegd aan de pakket filtering en de verwerkings engine.
+* **Op beleid gebaseerd** VPN-apparaten gebruiken de combi Naties van voor voegsels van beide netwerken om te definiëren hoe verkeer wordt versleuteld/ontsleuteld via IPsec-tunnels. Het is doorgaans gebaseerd op Firewall apparaten die pakket filters uitvoeren. IPsec-tunnelversleuteling en -ontsleuteling worden toegevoegd aan de engine voor pakketfiltering en verwerking.
 * **Op basis van route** VPN-apparaten gebruiken any-to-any-verkeer (joker tekens) en kunnen route ring/doorstuur tabellen direct verkeer naar verschillende IPsec-tunnels. Het is doorgaans gebaseerd op router platforms waar elke IPsec-tunnel wordt gemodelleerd als een netwerk interface of VTI (virtuele tunnel Interface).
 
 De volgende diagrammen markeren de twee modellen:

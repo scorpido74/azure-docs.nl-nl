@@ -1,5 +1,5 @@
 ---
-title: 'Configureer actieve en actieve S2S VPN-verbindingen voor VPN-gateways: Azure Resource Manager: Power shell | Microsoft Docs'
+title: Actieve en actieve S2S Azure-VPN Gateway verbindingen configureren
 description: Dit artikel begeleidt u bij het configureren van actieve verbindingen met Azure VPN-gateways met behulp van Azure Resource Manager en Power shell.
 services: vpn-gateway
 author: yushwang
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/24/2018
 ms.author: yushwang
 ms.reviewer: cherylmc
-ms.openlocfilehash: 6d973d81e0de407893beb5c5808962562f091d4c
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: dce05c558423400d095c83800cdcaf85e174e081
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67871824"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860406"
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Active-Active S2S VPN-verbindingen configureren met Azure VPN-gateways
 
@@ -54,7 +54,7 @@ De andere eigenschappen zijn gelijk aan die van de niet-actieve gateways.
 * U moet de Azure Resource Manager PowerShell-cmdlets installeren. Zie [overzicht van Azure PowerShell](/powershell/azure/overview) voor meer informatie over het installeren van de Power shell-cmdlets.
 
 ### <a name="step-1---create-and-configure-vnet1"></a>Stap 1: VNet1 maken en configureren
-#### <a name="1-declare-your-variables"></a>1. De variabelen declareren
+#### <a name="1-declare-your-variables"></a>1. Declareer de variabelen
 Voor deze oefening declareert u eerst de variabelen. In het volgende voorbeeld worden de variabelen gedeclareerd met de waarden voor deze oefening. Zorg dat u de waarden door uw eigen waarden vervangt wanneer u configureert voor productie. U kunt deze variabelen gebruiken als u de stappen wilt doorlopen om vertrouwd te raken met dit type configuratie. Wijzig de variabelen en kopieer en plak ze in uw PowerShell-console.
 
 ```powershell
@@ -82,7 +82,7 @@ $Connection151 = "VNet1toSite5_1"
 $Connection152 = "VNet1toSite5_2"
 ```
 
-#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Verbinding maken met uw abonnement en een nieuwe resource groep maken
+#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Maak verbinding met uw abonnement en maak een nieuwe resource groep
 Zorg ervoor dat u overschakelt naar de PowerShell-modus als u de Resource Manager-cmdlets wilt gebruiken. Zie [Using Windows PowerShell with Resource Manager](../powershell-azure-resource-manager.md) (Windows PowerShell gebruiken met Resource Manager) voor meer informatie.
 
 Open de PowerShell-console en maak verbinding met uw account. Gebruik het volgende voorbeeld als hulp bij het maken van de verbinding:
@@ -105,7 +105,7 @@ New-AzVirtualNetwork -Name $VNetName1 -ResourceGroupName $RG1 -Location $Locatio
 ```
 
 ### <a name="step-2---create-the-vpn-gateway-for-testvnet1-with-active-active-mode"></a>Stap 2: de VPN-gateway maken voor TestVNet1 met de modus actief-actief
-#### <a name="1-create-the-public-ip-addresses-and-gateway-ip-configurations"></a>1. De open bare IP-adressen en gateway-IP-configuraties maken
+#### <a name="1-create-the-public-ip-addresses-and-gateway-ip-configurations"></a>1. de open bare IP-adressen en gateway-IP-configuraties maken
 Vraag twee open bare IP-adressen aan die moeten worden toegewezen aan de gateway die u voor uw VNet gaat maken. U definieert ook het vereiste subnet en IP-configuratie.
 
 ```powershell
@@ -118,14 +118,14 @@ $gw1ipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf1 -Subnet $sub
 $gw1ipconf2 = New-AzVirtualNetworkGatewayIpConfig -Name $GW1IPconf2 -Subnet $subnet1 -PublicIpAddress $gw1pip2
 ```
 
-#### <a name="2-create-the-vpn-gateway-with-active-active-configuration"></a>2. De VPN-gateway met actief/actief-configuratie maken
+#### <a name="2-create-the-vpn-gateway-with-active-active-configuration"></a>2. Maak de VPN-gateway met actief/actief-configuratie
 Maak de gateway van het virtuele netwerk voor TestVNet1. Houd er rekening mee dat er twee GatewayIpConfig-vermeldingen zijn en dat de vlag EnableActiveActiveFeature is ingesteld. Het maken van een gateway kan even duren (45 minuten of langer).
 
 ```powershell
 New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1,$gw1ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet1ASN -EnableActiveActiveFeature -Debug
 ```
 
-#### <a name="3-obtain-the-gateway-public-ip-addresses-and-the-bgp-peer-ip-address"></a>3. De open bare IP-adressen van de gateway en het IP-adres van de BGP-peer verkrijgen
+#### <a name="3-obtain-the-gateway-public-ip-addresses-and-the-bgp-peer-ip-address"></a>3. Verkrijg de open bare IP-adressen van de gateway en het IP-adres van de BGP-peer
 Zodra de gateway is gemaakt, moet u het IP-adres van de BGP-peer verkrijgen op de Azure-VPN Gateway. Dit adres is nodig om de Azure VPN Gateway te configureren als een BGP-peer voor uw on-premises VPN-apparaten.
 
 ```powershell
@@ -163,7 +163,7 @@ Als u een cross-premises verbinding tot stand wilt brengen, moet u een lokale ne
 Voordat u doorgaat, moet u [deel 1](#aagateway) van deze oefening hebben voltooid.
 
 ### <a name="step-1---create-and-configure-the-local-network-gateway"></a>Stap 1: de lokale netwerk gateway maken en configureren
-#### <a name="1-declare-your-variables"></a>1. De variabelen declareren
+#### <a name="1-declare-your-variables"></a>1. Declareer de variabelen
 In deze oefening kunt u de configuratie die in het diagram wordt weer gegeven, blijven bouwen. Zorg ervoor dat u de waarden vervangt door de waarden die u voor uw configuratie wilt gebruiken.
 
 ```powershell
@@ -183,7 +183,7 @@ Er zijn enkele dingen die u moet weten over de para meters van de lokale netwerk
 * Als BGP is ingeschakeld, is het voor voegsel dat u moet declareren voor de lokale netwerk gateway het hostadres van uw IP-adres van de BGP-peer op uw VPN-apparaat. In dit geval is het een/32-voor voegsel van "10.52.255.253/32".
 * Als herinnering moet u verschillende BGP-Asn's gebruiken tussen uw on-premises netwerken en Azure VNet. Als ze hetzelfde zijn, moet u uw VNet-ASN wijzigen als uw on-premises VPN-apparaat het ASN al gebruikt voor de peer met andere BGP-neighbors.
 
-#### <a name="2-create-the-local-network-gateway-for-site5"></a>2. De lokale netwerk gateway maken voor site5
+#### <a name="2-create-the-local-network-gateway-for-site5"></a>2. de lokale netwerk gateway maken voor site5
 Controleer voordat u verder gaat of u nog bent verbonden met abonnement 1. Maak de resource groep als deze nog niet is gemaakt.
 
 ```powershell
@@ -192,15 +192,15 @@ New-AzLocalNetworkGateway -Name $LNGName51 -ResourceGroupName $RG5 -Location $Lo
 ```
 
 ### <a name="step-2---connect-the-vnet-gateway-and-local-network-gateway"></a>Stap 2: de VNet-gateway en de lokale netwerk gateway verbinden
-#### <a name="1-get-the-two-gateways"></a>1. De twee gateways ophalen
+#### <a name="1-get-the-two-gateways"></a>1. de twee gateways ophalen
 
 ```powershell
 $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
 $lng5gw1 = Get-AzLocalNetworkGateway  -Name $LNGName51 -ResourceGroupName $RG5
 ```
 
-#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. De TestVNet1 maken voor Site5-verbinding
-In deze stap maakt u de verbinding van TestVNet1 naar Site5_1 met ' EnableBGP ' ingesteld op $True.
+#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2. Maak de TestVNet1-verbinding naar site5
+In deze stap maakt u de verbinding van TestVNet1 naar Site5_1 waarvoor EnableBGP is ingesteld op $True.
 
 ```powershell
 New-AzVirtualNetworkGatewayConnection -Name $Connection151 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw1 -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP $True
@@ -228,7 +228,7 @@ De verbinding moet na een paar minuten tot stand worden gebracht en de BGP-peeri
 ### <a name="step-3---connect-two-on-premises-vpn-devices-to-the-active-active-vpn-gateway"></a>Stap 3: twee on-premises VPN-apparaten verbinden met de actief-actief VPN-gateway
 Als u twee VPN-apparaten op hetzelfde on-premises netwerk hebt, kunt u dubbele redundantie bezorgen door de Azure VPN-gateway te verbinden met het tweede VPN-apparaat.
 
-#### <a name="1-create-the-second-local-network-gateway-for-site5"></a>1. De tweede lokale netwerk gateway maken voor site5
+#### <a name="1-create-the-second-local-network-gateway-for-site5"></a>1. de tweede lokale netwerk gateway maken voor site5
 Het IP-adres van de gateway, het adres voorvoegsel en het BGP-peering adres voor de tweede lokale netwerk gateway mag niet overlappen met de vorige lokale netwerk gateway voor hetzelfde on-premises netwerk.
 
 ```powershell
@@ -242,8 +242,8 @@ $BGPPeerIP52 = "10.52.255.254"
 New-AzLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP52 -AddressPrefix $LNGPrefix52 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP52
 ```
 
-#### <a name="2-connect-the-vnet-gateway-and-the-second-local-network-gateway"></a>2. De VNet-gateway en de tweede lokale netwerk gateway verbinden
-Maak de verbinding van TestVNet1 naar Site5_2 met ' EnableBGP ' ingesteld op $True
+#### <a name="2-connect-the-vnet-gateway-and-the-second-local-network-gateway"></a>2. Verbind de VNet-gateway en de tweede lokale netwerk gateway
+Maak de verbinding van TestVNet1 naar Site5_2 waarvoor EnableBGP is ingesteld op $True
 
 ```powershell
 $lng5gw2 = Get-AzLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5
@@ -282,7 +282,7 @@ Het is belang rijk om ervoor te zorgen dat de IP-adres ruimte van het nieuwe vir
 
 In dit voor beeld maken de virtuele netwerken deel uit van hetzelfde abonnement. U kunt VNet-naar-VNet-verbindingen tussen verschillende abonnementen instellen. Raadpleeg [een vnet-naar-vnet-verbinding configureren](vpn-gateway-vnet-vnet-rm-ps.md) voor meer informatie. Zorg ervoor dat u de $True '-EnableBgpt ' toevoegt bij het maken van de verbindingen om BGP in te scha kelen.
 
-#### <a name="1-declare-your-variables"></a>1. De variabelen declareren
+#### <a name="1-declare-your-variables"></a>1. Declareer de variabelen
 Zorg ervoor dat u de waarden vervangt door de waarden die u voor uw configuratie wilt gebruiken.
 
 ```powershell
@@ -320,7 +320,7 @@ $gwsub2 = New-AzVirtualNetworkSubnetConfig -Name $GWSubName2 -AddressPrefix $GWS
 New-AzVirtualNetwork -Name $VNetName2 -ResourceGroupName $RG2 -Location $Location2 -AddressPrefix $VNetPrefix21,$VNetPrefix22 -Subnet $fesub2,$besub2,$gwsub2
 ```
 
-#### <a name="3-create-the-active-active-vpn-gateway-for-testvnet2"></a>3. De Active-Active VPN-gateway maken voor TestVNet2
+#### <a name="3-create-the-active-active-vpn-gateway-for-testvnet2"></a>3. de Active-Active VPN-gateway maken voor TestVNet2
 Vraag twee open bare IP-adressen aan die moeten worden toegewezen aan de gateway die u voor uw VNet gaat maken. U definieert ook het vereiste subnet en IP-configuratie.
 
 ```powershell
@@ -342,7 +342,7 @@ New-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Lo
 ### <a name="step-2---connect-the-testvnet1-and-testvnet2-gateways"></a>Stap 2: de gateways voor TestVNet1 en TestVNet2 verbinden
 In dit voor beeld bevinden beide gateways zich in hetzelfde abonnement. U kunt deze stap in dezelfde Power shell-sessie volt ooien.
 
-#### <a name="1-get-both-gateways"></a>1. Beide gateways ophalen
+#### <a name="1-get-both-gateways"></a>1. Haal beide gateways op
 Zorg dat u zich aanmeldt bij en verbinding maakt met Abonnement 1.
 
 ```powershell
@@ -350,7 +350,7 @@ $vnet1gw = Get-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
 $vnet2gw = Get-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2
 ```
 
-#### <a name="2-create-both-connections"></a>2. Beide verbindingen maken
+#### <a name="2-create-both-connections"></a>2. beide verbindingen maken
 In deze stap maakt u de verbinding van TestVNet1 naar TestVNet2 en de verbinding van TestVNet2 naar TestVNet1.
 
 ```powershell
@@ -376,7 +376,7 @@ Deze sectie helpt u bij het wijzigen van een bestaande Azure VPN-gateway van act
 
 In het volgende voor beeld wordt een gateway die actief is op stand-by omgezet in een actief-actief gateway. Wanneer u een actieve stand-by-gateway wijzigt in actief-actief, maakt u een ander openbaar IP-adres en voegt u vervolgens een tweede gateway-IP-configuratie toe.
 
-#### <a name="1-declare-your-variables"></a>1. De variabelen declareren
+#### <a name="1-declare-your-variables"></a>1. Declareer de variabelen
 
 Vervang de volgende para meters voor de voor beelden in combi natie met de instellingen die u nodig hebt voor uw eigen configuratie en Declareer vervolgens deze variabelen.
 
@@ -404,13 +404,13 @@ $gwpip2 = New-AzPublicIpAddress -Name $GWIPName2 -ResourceGroupName $RG -Locatio
 Add-AzVirtualNetworkGatewayIpConfig -VirtualNetworkGateway $gw -Name $GWIPconf2 -Subnet $subnet -PublicIpAddress $gwpip2
 ```
 
-#### <a name="3-enable-active-active-mode-and-update-the-gateway"></a>3. Modus actief-actief inschakelen en de gateway bijwerken
+#### <a name="3-enable-active-active-mode-and-update-the-gateway"></a>3. de modus actief-actief inschakelen en de gateway bijwerken
 
 In deze stap schakelt u de modus actief-actief in en werkt u de gateway bij. In het voor beeld wordt momenteel een verouderde standaard-SKU gebruikt voor de VPN-gateway. Active-Active biedt echter geen ondersteuning voor de standaard-SKU. Als u de verouderde SKU wilt verg Roten of verkleinen (in dit geval High Performance), geeft u eenvoudigweg de ondersteunde verouderde SKU op die u wilt gebruiken.
 
 * Met deze stap kunt u een verouderde SKU niet wijzigen in een van de nieuwe Sku's. U kunt de grootte van een verouderde SKU alleen wijzigen in een andere ondersteunde verouderde SKU. U kunt de SKU bijvoorbeeld niet wijzigen van Standard in VpnGw1 (zelfs als VpnGw1 wordt ondersteund voor actief-actief), omdat Standard een verouderde SKU is en VpnGw1 een huidige SKU is. Zie [Gateway-sku's](vpn-gateway-about-vpngateways.md#gwsku)voor meer informatie over het wijzigen van de grootte en het migreren van sku's.
 
-* Als u de grootte van een huidige SKU wilt wijzigen, bijvoorbeeld VpnGw1 naar VpnGw3, kunt u dit doen met deze stap omdat de Sku's zich in dezelfde SKU-familie bevinden. Hiervoor gebruikt u de waarde:```-GatewaySku VpnGw3```
+* Als u de grootte van een huidige SKU wilt wijzigen, bijvoorbeeld VpnGw1 naar VpnGw3, kunt u dit doen met deze stap omdat de Sku's zich in dezelfde SKU-familie bevinden. Hiervoor gebruikt u de waarde: ```-GatewaySku VpnGw3```
 
 Als u dit in uw omgeving gebruikt, hoeft u de-GatewaySku niet op te geven als u het formaat van de gateway niet hoeft te wijzigen. In deze stap moet u het gateway-object instellen in Power shell om de daad werkelijke update te activeren. Deze update kan 30 tot 45 minuten duren, zelfs als u de grootte van de gateway niet wijzigt.
 
@@ -419,7 +419,7 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -EnableActiveActiveFeatur
 ```
 
 ### <a name="change-an-active-active-gateway-to-an-active-standby-gateway"></a>Een Active-Active gateway wijzigen in een gateway die actief is op stand-by
-#### <a name="1-declare-your-variables"></a>1. De variabelen declareren
+#### <a name="1-declare-your-variables"></a>1. Declareer de variabelen
 
 Vervang de volgende para meters voor de voor beelden in combi natie met de instellingen die u nodig hebt voor uw eigen configuratie en Declareer vervolgens deze variabelen.
 
@@ -435,7 +435,7 @@ $gw = Get-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 $ipconfname = $gw.IpConfigurations[1].Name
 ```
 
-#### <a name="2-remove-the-gateway-ip-configuration-and-disable-the-active-active-mode"></a>2. De gateway-IP-configuratie verwijderen en de modus actief-actief uitschakelen
+#### <a name="2-remove-the-gateway-ip-configuration-and-disable-the-active-active-mode"></a>2. de gateway-IP-configuratie verwijderen en de modus actief-actief uitschakelen
 
 Gebruik dit voor beeld om de gateway-IP-configuratie te verwijderen en de modus actief-actief uit te scha kelen. U moet het gateway-object in Power shell instellen om de werkelijke update te activeren.
 

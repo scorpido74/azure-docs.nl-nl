@@ -3,12 +3,12 @@ title: Gast configuratie beleidsregels maken
 description: Meer informatie over het maken van een Azure Policy gast configuratie beleid voor Windows-of Linux-Vm's met Azure PowerShell.
 ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: f2e611998e42510eccde64ff6f945f58133fc4e9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: dbdb4288812b8d1016c3ccc879582f76222d17cd
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608521"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867325"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Gast configuratie beleidsregels maken
 
@@ -65,7 +65,7 @@ Wanneer een gast configuratie een machine controleert, wordt `Test-TargetResourc
 
 #### <a name="configuration-requirements"></a>Configuratie vereisten
 
-De enige vereiste voor gast configuratie voor het gebruik van een aangepaste configuratie is de naam van de configuratie die consistent is.  Dit omvat de naam van het zip-bestand voor het inhouds pakket, de configuratie naam in het MOF-bestand dat is opgeslagen in het inhouds pakket en de configuratie naam die in ARM wordt gebruikt als de naam van de gast toewijzing.
+De enige vereiste voor een gast configuratie voor het gebruik van een aangepaste configuratie is de naam van de configuratie die consistent is, ongeacht waar deze wordt gebruikt. Deze naam vereiste bevat de naam van het zip-bestand voor het inhouds pakket, de configuratie naam in het MOF-bestand dat is opgeslagen in het inhouds pakket en de configuratie naam die in een resource manager-sjabloon wordt gebruikt als de naam van de gast toewijzing.
 
 #### <a name="get-targetresource-requirements"></a>Vereisten voor Get-TargetResource
 
@@ -181,7 +181,7 @@ U kunt ook [service-eind punten](../../../storage/common/storage-network-securit
 
 In Azure Policy gast configuratie is de optimale manier om geheimen te beheren die tijdens runtime worden gebruikt, om ze op te slaan in Azure Key Vault. Dit ontwerp wordt geïmplementeerd in aangepaste DSC-resources.
 
-1. Maak eerst een door de gebruiker toegewezen beheerde identiteit in Azure.
+1. Een door de gebruiker toegewezen beheerde identiteit maken in Azure.
 
    De identiteit wordt door machines gebruikt om toegang te krijgen tot geheimen die zijn opgeslagen in Key Vault. Zie [een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)voor gedetailleerde stappen.
 
@@ -193,9 +193,9 @@ In Azure Policy gast configuratie is de optimale manier om geheimen te beheren d
 1. Wijs de door de gebruiker toegewezen identiteit toe aan uw computer.
 
    Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van Power shell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)voor gedetailleerde stappen.
-   Wijs op schaal deze identiteit toe met behulp van Azure Resource Manager via Azure Policy. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van een sjabloon](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)voor gedetailleerde stappen.
+   Wijs deze identiteit toe met behulp van Azure Resource Manager via Azure Policy op schaal. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van een sjabloon](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)voor gedetailleerde stappen.
 
-1. Ten slotte gebruiken de eerder gegenereerde client-ID in uw aangepaste resource om toegang te krijgen tot Key Vault met behulp van het token dat beschikbaar is op de computer.
+1. Gebruik de client-ID die hierboven is gegenereerd in uw aangepaste resource om toegang te krijgen tot Key Vault met behulp van het token dat beschikbaar is op de computer.
 
    De `client_id` en URL naar het Key Vault exemplaar kunnen worden door gegeven aan de resource als [Eigenschappen](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema) , zodat de resource niet hoeft te worden bijgewerkt voor meerdere omgevingen of als de waarden moeten worden gewijzigd.
 
@@ -305,7 +305,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-Voor Linux-beleid voegt u de eigenschap **AttributesYmlContent** in uw configuratie toe en overschrijft u de waarden dienovereenkomstig. De gast configuratie agent maakt automatisch het YaML-bestand dat wordt gebruikt door de specificatie voor het opslaan van kenmerken. Zie onderstaand voorbeeld.
+Voor Linux-beleid voegt u de eigenschap **AttributesYmlContent** in uw configuratie toe en overschrijft u de waarden naar behoefte. De gast configuratie agent maakt automatisch het YAML-bestand dat wordt gebruikt door de specificatie voor het opslaan van kenmerken. Zie onderstaand voorbeeld.
 
 ```powershell
 Configuration FirewalldEnabled {

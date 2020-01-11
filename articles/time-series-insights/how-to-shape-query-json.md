@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: article
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d611806d31719899d249b29ed4b0ea499280252
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3b8c25c09b87dc8e9874870881173944fea1ee73
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894918"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864346"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>JSON van shape om query prestaties te maximaliseren 
 
@@ -50,7 +50,7 @@ De volgende richt lijnen helpen de best mogelijke query prestaties te garanderen
 
 ## <a name="example-overview"></a>Voor beeld-overzicht
 
-De volgende twee voor beelden laten zien hoe u gebeurtenissen kunt verzenden om de vorige aanbevelingen te markeren. Na elk voor beeld kunt u zien hoe de aanbevelingen zijn toegepast.
+De volgende twee voor beelden laten zien hoe u gebeurtenissen kunt verzenden om de vorige aanbevelingen te markeren. In het volgende voor beeld kunt u zien hoe de aanbevelingen zijn toegepast.
 
 De voor beelden zijn gebaseerd op een scenario waarbij meerdere apparaten metingen of signalen verzenden. Metingen of signalen kunnen een stroom snelheid, olie belasting, Tempe ratuur en vochtigheid zijn. In het eerste voor beeld zijn er een aantal metingen op alle apparaten. Het tweede voor beeld heeft veel apparaten en elk apparaat verstuurt veel unieke metingen.
 
@@ -95,14 +95,14 @@ Houd rekening met de volgende JSON-nettolading die wordt verzonden naar uw Time 
 
 * Referentie gegevens tabel die de sleutel eigenschap **deviceId**heeft:
 
-   | deviceId | messageId | deviceLocation |
+   | deviceId | messageId | DeviceLocation |
    | --- | --- | --- |
    | FXXX | LINE\_DATA | EU |
    | FYYY | LINE\_DATA | VS |
 
 * Time Series Insights gebeurtenis tabel na afvlakking:
 
-   | deviceId | messageId | deviceLocation | tijdstempel | reeks. Stroom tarief ft3/s | reeks. Engine oliedruk psi |
+   | deviceId | messageId | DeviceLocation | tijdstempel | reeks. Stroom tarief ft3/s | reeks. Engine oliedruk psi |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
    | FXXX | LINE\_DATA | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
@@ -165,7 +165,7 @@ Voor beeld van JSON-nettolading:
 
 * Referentie gegevens tabel met de sleutel eigenschappen **deviceId** en **Series. tagId**:
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | eenheid |
+   | deviceId | series.tagId | messageId | DeviceLocation | type | eenheid |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | LINE\_DATA | EU | Stroom verhouding | ft3/s |
    | FXXX | oilPressure | LINE\_DATA | EU | Olie druk van de motor | psi |
@@ -174,7 +174,7 @@ Voor beeld van JSON-nettolading:
 
 * Time Series Insights gebeurtenis tabel na afvlakking:
 
-   | deviceId | series.tagId | messageId | deviceLocation | type | eenheid | tijdstempel | reeks. waarde |
+   | deviceId | series.tagId | messageId | DeviceLocation | type | eenheid | tijdstempel | reeks. waarde |
    | --- | --- | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | LINE\_DATA | EU | Stroom verhouding | ft3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
    | FXXX | oilPressure | LINE\_DATA | EU | Olie druk van de motor | psi | 2018-01-17T01:17:00Z | 34,7 |

@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 784e31b823c65c0b908dc07582805e7a69d19563
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: d87112697bfa3aa7bb6b4c8f14420598ccd914cb
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304821"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864312"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postman configureren voor Azure Digital Apparaatdubbels
 
@@ -86,7 +86,7 @@ Postman instellen en configureren om een Azure Active Directory token te verkrij
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | Naam  | Vervangen door | Voorbeeld |
+    | Name  | Vervangen door | Voorbeeld |
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | De naam van uw Tenant of organisatie | `microsoft` |
 
@@ -94,19 +94,19 @@ Postman instellen en configureren om een Azure Active Directory token te verkrij
 
     | Veld  | Waarde |
     |---------|---------|
-    | Toekennings type | `Implicit` |
-    | URL voor terugbellen | `https://www.getpostman.com/oauth2/callback` |
-    | Verificatie-URL | Gebruik de **autorisatie-URL** uit **stap 2** |
+    | Toekenningstype | `Implicit` |
+    | Callback-URL | `https://www.getpostman.com/oauth2/callback` |
+    | Auth.-URL | Gebruik de **autorisatie-URL** uit **stap 2** |
     | Client-id | Gebruik de **toepassings-id** voor de app Azure Active Directory die is gemaakt of opnieuw is gebruikt in de vorige sectie |
-    | Bereik | Leeg laten |
-    | Status | Leeg laten |
-    | Client verificatie | `Send as Basic Auth header` |
+    | Scope | Leeg laten |
+    | Staat | Leeg laten |
+    | Clientauthenticatie | `Send as Basic Auth header` |
 
 1. De client moet er nu als volgt uitzien:
 
     [![postman client token-voor beeld](media/how-to-configure-postman/configure-postman-oauth-token.png)](media/how-to-configure-postman/configure-postman-oauth-token.png#lightbox)
 
-1. Selecteer een **aanvraag token**.
+1. Selecteer **Token aanvragen**.
   
 1. Schuif omlaag en selecteer **token gebruiken**.
 
@@ -130,7 +130,7 @@ Na het volt ooien van de vorige stappen, moet u na het uitvoeren van een geverif
    > * U hoeft deze headers niet voor elk onderdeel op te geven.
    > * U moet `multipart/mixed` of een ander toepasselijk **type inhoud** voor de hele aanvraag selecteren.
 
-1. Selecteer ten slotte **verzenden** om uw multi part HTTP POST-aanvraag te verzenden. Een status code van `200` of `201` geeft een geslaagde aanvraag aan. U ziet ook het juiste antwoord bericht.
+1. Selecteer ten slotte **verzenden** om uw multi part HTTP POST-aanvraag te verzenden. Een status code van `200` of `201` geeft een geslaagde aanvraag aan. Het juiste antwoord bericht wordt weer gegeven in de client interface.
 
 ## <a name="next-steps"></a>Volgende stappen
 

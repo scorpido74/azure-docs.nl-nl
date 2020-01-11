@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 20174a4eafb4e72fb62eeff6df2d129b91016b9e
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 68bc6f8c81fb44dc26d2208d33893c21ff9b5b3c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383024"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860976"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-preview-and-configure-a-spatial-graph"></a>Zelf studie: Azure Digital Apparaatdubbels preview implementeren en een ruimtelijke grafiek configureren
 
@@ -64,7 +64,7 @@ In deze sectie ziet u hoe een Azure Digital Twins-toepassing communiceert met de
 
 ### <a name="download-the-sample"></a>Het voorbeeld downloaden
 
-Als u de voorbeelden voor de [quickstart om beschikbare ruimten te vinden](quickstart-view-occupancy-dotnet.md) al hebt gedownload, kunt u deze stappen overslaan.
+Als u de voorbeelden voor de [snelstart voor het vinden van beschikbare ruimten](quickstart-view-occupancy-dotnet.md) al hebt gedownload, kunt u deze stappen overslaan.
 
 1. Download de [.NET-voorbeelden van Digital Twins](https://github.com/Azure-Samples/digital-twins-samples-csharp/archive/master.zip).
 2. Pak de inhoud van de gecomprimeerde map uit op uw computer.
@@ -75,7 +75,7 @@ Open het bestand **digital-twins-samples-csharp\digital-twins-samples.code-works
 
 * U kunt het inrichtingsvoorbeeld **occupancy-quickstart** gebruiken voor het configureren en inrichten van een [ruimtelijke informatiegrafiek](concepts-objectmodel-spatialgraph.md#digital-twins-object-models). Deze grafiek is de digitale kopie van uw fysieke ruimten en de resources in die ruimten. Hiervoor wordt een [objectmodel](concepts-objectmodel-spatialgraph.md#digital-twins-object-models) gebruikt waarin objecten voor een slim gebouw worden gedefinieerd. Ga voor een volledige lijst van objecten en REST-API's van Digital Twins naar [deze REST API-documentatie](https://docs.westcentralus.azuresmartspaces.net/management/swagger) of de URL van de Beheer API die is gemaakt voor uw [exemplaar](#deploy-digital-twins).
 
-   Als u de voorbeeld-app wilt verkennen om te zien hoe deze communiceert met uw exemplaar van Digital Twins, kunt u beginnen met de map **src\actions**. De bestanden in deze map implementeren de opdrachten die u in deze zelfstudies gaat gebruiken:
+   Als u het voor beeld wilt bekijken om te begrijpen hoe het communiceert met uw Digital Apparaatdubbels-exemplaar, kunt u beginnen met de map **src\actions** . De bestanden in deze map implementeren de opdrachten die u in deze zelfstudies gaat gebruiken:
     - Het bestand **provisionSample.cs** laat zien hoe u de ruimtelijke grafiek kunt inrichten.
     - Het bestand **getSpaces.cs** haalt informatie over de ingerichte ruimten op.
     - Het bestand **getAvailableAndFreshSpaces.cs** haalt de resultaten op van een aangepaste (door de gebruiker gedefinieerde) functie op.
@@ -102,7 +102,7 @@ Open het bestand **digital-twins-samples-csharp\digital-twins-samples.code-works
    * **Tenant**: voer de map-id van uw [Azure AD-tenant](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) in. U hebt deze id ook genoteerd in de sectie voor het [instellen van app-machtigingen](#grant-permissions-to-your-app).
    * **BaseUrl**: voer de URL van uw exemplaar van Digital Twins in. Hiertoe vervangt u de tijdelijke aanduidingen in deze URL door de waarden voor uw exemplaar: `https://yourDigitalTwinsName.yourLocation.azuresmartspaces.net/management/api/v1.0/`. U kunt deze URL ook verkrijgen door de URL van de Beheer API uit [de implementatiesectie](#deploy-digital-twins) te wijzigen. Vervang **swagger/** door **api/v1.0/** .
 
-1. Bekijk een lijst met functies van Digital Twins die u kunt verkennen met behulp van het voorbeeld. Voer de volgende opdracht uit:
+1. Bekijk een lijst met digitale Apparaatdubbels-functies die u kunt verkennen met behulp van het voor beeld. Voer de volgende opdracht uit:
 
     ```cmd/sh
     dotnet run
@@ -150,7 +150,7 @@ Het bestand **provisionSample.yaml** bevat de volgende knooppunten:
 
 - **devices**: ruimten kunnen `devices` bevatten. Dat zijn fysieke of virtuele entiteiten waarmee een aantal sensoren wordt beheerd. Een apparaat kan bijvoorbeeld het telefoonnummer van een gebruiker zijn of een Raspberry Pi-sensorpod, een gateway, enzovoort. In het denkbeeldige gebouw uit het voorbeeld bevat de ruimte **Focus Room** bijvoorbeeld het apparaat **Raspberry Pi 3 A1**. Elk apparaatknooppunt wordt geïdentificeerd door een unieke `hardwareId`, die is vastgelegd in het voorbeeld. Als u dit voorbeeld wilt configureren in een productieomgeving, moet u deze waarden vervangen door de waarden van uw installatie.  
 
-- **sensoren**: een apparaat kan meerdere `sensors` bevatten. Hiermee kunnen fysieke wijzigingen (bijvoorbeeld in temperatuur, beweging of accuniveau) worden gedetecteerd en vastgelegd. Elk sensorknooppunt wordt geïdentificeerd door een unieke `hardwareId`, die hier is vastgelegd. Voor een werkelijke toepassing moet u deze vervangen door de unieke id's van de sensoren in uw installatie. Het bestand provisionSample.yaml bevat twee sensoren: een bewegingssensor (*Motion*) en een CO2-sensor (*CarbonDioxide*). Voeg, onder de regels voor de CO2-sensor, de volgende regels toe om een temperatuursensor (*Temperature*) toe te voegen. Merk op dat deze regels in provisionSample.yaml zijn opgegeven als commentaarregels. U kunt er coderegels van maken door het teken `#` aan het begin van elke regel te verwijderen. 
+- **sensoren**: een apparaat kan meerdere `sensors` bevatten. Hiermee kunnen fysieke wijzigingen (bijvoorbeeld in temperatuur, beweging of accuniveau) worden gedetecteerd en vastgelegd. Elk sensor knooppunt wordt uniek geïdentificeerd door een `hardwareId`, dat u hier kunt opgeven. Voor een werkelijke toepassing moet u deze vervangen door de unieke id's van de sensoren in uw installatie. Het bestand provisionSample.yaml bevat twee sensoren: een bewegingssensor (*Motion*) en een CO2-sensor (*CarbonDioxide*). Voeg, onder de regels voor de CO2-sensor, de volgende regels toe om een temperatuursensor (*Temperature*) toe te voegen. Merk op dat deze regels in provisionSample.yaml zijn opgegeven als commentaarregels. U kunt er coderegels van maken door het teken `#` aan het begin van elke regel te verwijderen. 
 
     ```yaml
             - dataType: Temperature

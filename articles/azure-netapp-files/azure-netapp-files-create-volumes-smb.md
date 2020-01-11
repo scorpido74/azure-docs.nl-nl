@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2019
+ms.date: 01/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 94fc4906478e44365d03e9c8eeadd7cb1946a43a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6b1946cdaebd01a0742f9ce2b2efb5054ac9d2a8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300542"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867438"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Een SMB-volume maken voor Azure NetApp Files
 
@@ -40,12 +40,12 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 * De juiste poorten moeten geopend zijn op de betreffende Windows Active Directory (AD)-server.  
     De vereiste poorten zijn als volgt: 
 
-    |     Service           |     Poort     |     Protocol     |
+    |     Service           |     Port     |     Protocol     |
     |-----------------------|--------------|------------------|
     |    AD-webservices    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    N.v.t.       |    ECHO antwoord    |
+    |    ICMPv4             |    N/A       |    ECHO antwoord    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -56,8 +56,6 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
     |    NetBIOS-naam       |    138       |    UDP           |
     |    SAM/LSA            |    445       |    TCP           |
     |    SAM/LSA            |    445       |    UDP           |
-    |    Secure LDAP        |    636       |    TCP           |
-    |    Secure LDAP        |    3269      |    TCP           |
     |    W32Time            |    123       |    UDP           |
 
 * De site topologie voor de doel-Active Directory Domain Services moet voldoen aan de aanbevolen procedures, met name de Azure VNet waar Azure NetApp Files wordt geïmplementeerd.  

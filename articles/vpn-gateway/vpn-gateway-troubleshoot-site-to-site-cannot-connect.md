@@ -1,27 +1,20 @@
 ---
-title: Problemen oplossen met een Azure site-naar-site-VPN-verbinding die geen verbinding kan maken | Microsoft Docs
+title: 'Problemen oplossen met een Azure site-naar-site-VPN-verbinding die geen verbinding kan maken met titleSuffix: Azure VPN Gateway'
 description: Informatie over het oplossen van problemen met een site-naar-site-VPN-verbinding die plotseling niet meer werkt en niet opnieuw verbinding kan maken.
 services: vpn-gateway
-documentationcenter: na
 author: chadmath
-manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: genli
-ms.openlocfilehash: e196c4b512de3fac97347e4c252b697ed6818227
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 4e827c5f6eedc819bc3635cb09a28f65df51312c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058878"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862574"
 ---
-# <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Meer Een Azure site-naar-site-VPN-verbinding kan geen verbinding maken en werkt niet meer
+# <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Problemen oplossen: een Azure site-naar-site-VPN-verbinding kan geen verbinding maken en werkt niet meer
 
 Nadat u een site-naar-site-VPN-verbinding tussen een on-premises netwerk en een virtueel Azure-netwerk hebt geconfigureerd, wordt de VPN-verbinding plotseling gestopt en kan deze niet meer worden aangesloten. Dit artikel bevat stappen voor probleem oplossing om dit probleem op te lossen. 
 
@@ -41,7 +34,7 @@ Controleer het type van de Azure VPN-gateway.
     
     ![Overzicht van de gateway](media/vpn-gateway-troubleshoot-site-to-site-cannot-connect/gatewayoverview.png)
 
-### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>Stap 1. Controleren of het on-premises VPN-apparaat is gevalideerd
+### <a name="step-1-check-whether-the-on-premises-vpn-device-is-validated"></a>Step 1. Controleren of het on-premises VPN-apparaat is gevalideerd
 
 1. Controleer of u een [gevalideerd VPN-apparaat en de versie van het besturings systeem](vpn-gateway-about-vpn-devices.md#devicetable)gebruikt. Als het apparaat geen gevalideerd VPN-apparaat is, moet u mogelijk contact opnemen met de fabrikant van het apparaat om te controleren of er een probleem is met de compatibiliteit.
 
@@ -53,7 +46,7 @@ Vergelijk de gedeelde sleutel voor het on-premises VPN-apparaat met de Azure Vir
 
 Gebruik een van de volgende methoden om de gedeelde sleutel voor de Azure VPN-verbinding weer te geven:
 
-**Azure-portal**
+**Azure Portal**
 
 1. Ga naar de site-naar-site-verbinding van de VPN-gateway die u hebt gemaakt.
 

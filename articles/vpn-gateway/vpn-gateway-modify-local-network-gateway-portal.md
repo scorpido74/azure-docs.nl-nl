@@ -2,25 +2,17 @@
 title: 'VPN Gateway: Wijzig de IP-adres instellingen van de gateway: Azure Portal'
 description: In dit artikel vindt u instructies voor het wijzigen van IP-adres voorvoegsels voor uw lokale netwerk gateway met behulp van de Azure Portal.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.openlocfilehash: 3a59f618536d44e838bf840264e70b0b2a43cced
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: fdb98242cede36f818604a7a5d713f5f7c75daad
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014914"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864023"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Instellingen voor lokale netwerk gateway wijzigen met behulp van de Azure Portal
 
@@ -31,7 +23,7 @@ Voordat u de verbinding verwijdert, kunt u de configuratie voor uw apparaten waa
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
 > * [PowerShell](vpn-gateway-modify-local-network-gateway.md)
-> * [Azure CLI](vpn-gateway-modify-local-network-gateway-cli.md)
+> * [Azure-CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 >
 >
 

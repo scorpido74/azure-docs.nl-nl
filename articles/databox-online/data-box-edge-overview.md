@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 38aa45a9fe9e182fa98756725a8b20d737929d23
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 654ca34ae4c0e393920965083567e3d9c71148d0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585376"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863628"
 ---
 # <a name="what-is-azure-stack-edge"></a>Wat is Azure Stack Edge? 
 
@@ -23,11 +23,11 @@ Azure Stack Edge is een rand computer apparaat met AI-functionaliteit met mogeli
 
 Azure Stack Edge is een hardware-as-a-service-oplossing. Micro soft stuurt u een door een Cloud beheerd apparaat met een ingebouwd veld Programmeer bare Gate-matrix (FPGA) waarmee de AI-interferentie wordt versneld en alle mogelijkheden van een gateway voor netwerk opslag zijn. 
 
-## <a name="use-cases"></a>Gebruiksvoorbeelden
+## <a name="use-cases"></a>Use cases
 
 Hier volgen de verschillende scenario's waarbij Azure Stack Edge kan worden gebruikt voor snelle Machine Learning (ML) bij de rand en voor verwerking van gegevens voordat deze naar Azure worden verzonden.
 
-- Demijnen **met Azure machine learning** -met Azure stack Edge kunt u ml-modellen uitvoeren om snelle resultaten te krijgen waarmee kan worden gereageerd voordat de gegevens naar de cloud worden verzonden. De volledige gegevensset kan eventueel worden overgedragen om uw ML-modellen verder te trainen en te verbeteren. Zie voor meer informatie over het gebruik van de met Azure ML versnelde modellen op het Azure Stack edge-apparaat [Azure ml-versnelde modellen implementeren op Azure stack Edge](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
+- Demijnen **met Azure machine learning** -met Azure stack Edge kunt u ml-modellen uitvoeren om snelle resultaten te krijgen waarmee kan worden gereageerd voordat de gegevens naar de cloud worden verzonden. De volledige gegevensset kan eventueel worden overgedragen om uw ML-modellen verder te trainen en te verbeteren. Zie voor meer informatie over het gebruik van de met Azure ML versnelde modellen op het Azure Stack edge-apparaat [Azure ml-versnelde modellen implementeren op Azure stack Edge](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server).
 
 - **Gegevens vooraf verwerken** : transformatie gegevens voordat deze naar Azure worden verzonden om een meer actie bare gegevensset te maken. Voorverwerking kan worden gebruikt om: 
 
@@ -48,7 +48,7 @@ Azure Stack Edge heeft de volgende mogelijkheden:
 |Versneld AI-interferentie| Ingeschakeld door de ingebouwde FPGA.|
 |Berekenen       |Gegevens kunnen worden geanalyseerd, verwerkt of gefilterd.|
 |Hoge prestaties | High Performance Compute en gegevens overdracht.|
-|Toegang tot gegevens     | Rechtstreekse gegevenstoegang vanuit Azure Storage Blobs en Azure Files met behulp van cloud-API’s voor aanvullende gegevensverwerking in de cloud. Lokale cache op het apparaat wordt gebruikt voor snelle toegang tot de meest recent gebruikte bestanden.|
+|Gegevenstoegang     | Rechtstreekse gegevenstoegang vanuit Azure Storage Blobs en Azure Files met behulp van cloud-API’s voor aanvullende gegevensverwerking in de cloud. Lokale cache op het apparaat wordt gebruikt voor snelle toegang tot de meest recent gebruikte bestanden.|
 |Door de Cloud beheerde     |Het apparaat en de service worden beheerd via de Azure Portal.  |
 |Offline upload     | Modus zonder verbinding ondersteunt scenario’s voor offline uploaden.|
 |Ondersteunde protocollen     | Ondersteuning voor het standaard SMB- en NFS-protocol voor gegevensopname. <br> Ga naar [Azure stack Edge-systeem vereisten](data-box-edge-system-requirements.md)voor meer informatie over ondersteunde versies.|

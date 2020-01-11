@@ -3,16 +3,16 @@ title: Azure Machine Learning gebruiken in Azure Notebooks preview
 description: Een overzicht van de voorbeeld notitieblokken voor Azure Machine Learning die u kunt gebruiken met Azure Notebooks preview.
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 3c0e0e9ccea079d7e8f4e35e9af2a0e1c1ec5051
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 435abca83255221d438d530b63c237c08bb0b672
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646949"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860568"
 ---
 # <a name="use-azure-machine-learning-in-azure-notebooks-preview"></a>Azure Machine Learning gebruiken in Azure Notebooks preview
 
-Azure Notebooks is vooraf geconfigureerd met de benodigde omgeving om te werken met [Azure machine learning](/azure/machine-learning/service/). U kunt eenvoudig een voorbeeldproject klonen bij uw account laptops om te verkennen tal van scenario's voor Machine Learning.
+Azure Notebooks is vooraf geconfigureerd met de benodigde omgeving om te werken met [Azure machine learning](/azure/machine-learning/). U kunt eenvoudig een voorbeeldproject klonen bij uw account laptops om te verkennen tal van scenario's voor Machine Learning.
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
@@ -39,9 +39,9 @@ Azure Notebooks is vooraf geconfigureerd met de benodigde omgeving om te werken 
 
 De Azure Machine Learning documentatie bevat diverse andere bronnen die u helpen bij het werken met Machine Learning in notitie blokken:
 
-- [Snelstartgids: Gebruik Python aan de slag met Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
-- [Zelf studie #1: een classificatie model voor een installatie kopie trainen met Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
-- [Zelfstudie #2: Een classificeringsmodel installatiekopie in Azure Container exemplaar (ACI) implementeren](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
-- [Zelf studie: een classificatie model trainen met geautomatiseerde machine learning in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
+- [Snelstartgids: Gebruik Python aan de slag met Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-configure-environment#local)
+- [Zelf studie #1: een classificatie model voor een installatie kopie trainen met Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)
+- [Zelfstudie #2: Een classificeringsmodel installatiekopie in Azure Container exemplaar (ACI) implementeren](https://docs.microsoft.com/azure/machine-learning/tutorial-deploy-models-with-aml)
+- [Zelf studie: een classificatie model trainen met geautomatiseerde machine learning in Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/tutorial-auto-train-models)
 
 Zie ook de documentatie voor de [Azure Machine Learning-SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
