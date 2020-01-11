@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: d57f1e87c503a86a522fdb3004b021fbcb5c6ff1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c01e5c508644214c078dfc42ae8c77964933a277
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351407"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895996"
 ---
 # <a name="vcore-model-overview"></a>Overzicht van vCore-modellen
 
@@ -32,8 +32,8 @@ Opties voor de servicelaag in het vCore-model bevatten Algemeen, Bedrijfskritiek
 ||**Algemeen doel**|**Bedrijfs kritiek**|**Grootschalige**|
 |---|---|---|---|
 |Ideaal voor|De meeste zakelijke workloads. Biedt budget gerichte, evenwichtige en schaal bare reken-en opslag opties. |Biedt zakelijke toepassingen de hoogste flexibiliteit voor storingen met behulp van verschillende geïsoleerde replica's en biedt de hoogste I/O-prestaties per database replica.|De meeste zakelijke workloads met zeer schaal bare opslag-en lees vereisten.  Biedt meer flexibiliteit voor storingen door de configuratie van meer dan één geïsoleerde database replica toe te staan. |
-|Storage|Maakt gebruik van externe opslag.<br/>**Reken kracht voor één data base en elastische pool**:<br/>5 GB – 4 TB<br/>**Serverloze Compute**:<br/>5 GB-3 TB<br/>**Beheerd exemplaar**: 32 GB-8 TB |Maakt gebruik van lokale SSD-opslag.<br/>**Reken kracht voor één data base en elastische pool**:<br/>5 GB – 4 TB<br/>**Beheerd exemplaar**:<br/>32 GB - 4 TB |Flexibele Automatische toename van opslag als dat nodig is. Ondersteunt Maxi maal 100 TB aan opslag ruimte. Maakt gebruik van lokale SSD-opslag voor lokale buffer-pool cache en lokale gegevens opslag. Maakt gebruik van Azure externe opslag als definitieve gegevens opslag op lange termijn. |
-|I/O-door Voer (ongeveer)|**Eén data base en elastische pool**: 500 IOPS per vCore tot 40000 maximum aantal IOPS.<br/>**Beheerd exemplaar**: is afhankelijk van de [grootte van het bestand](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes).|5000 IOPS per vCore tot 320.000 maximum aantal IOPS|Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPs is afhankelijk van de werk belasting.|
+|Storage|Maakt gebruik van externe opslag.<br/>**Afzonderlijke data bases en geprovisionte elastische Pools**:<br/>5 GB – 4 TB<br/>**Serverloze Compute**:<br/>5 GB-3 TB<br/>**Beheerd exemplaar**: 32 GB-8 TB |Maakt gebruik van lokale SSD-opslag.<br/>**Afzonderlijke data bases en geprovisionte elastische Pools**:<br/>5 GB – 4 TB<br/>**Beheerd exemplaar**:<br/>32 GB - 4 TB |Flexibele Automatische toename van opslag als dat nodig is. Ondersteunt Maxi maal 100 TB aan opslag ruimte. Maakt gebruik van lokale SSD-opslag voor lokale buffer-pool cache en lokale gegevens opslag. Maakt gebruik van Azure externe opslag als definitieve gegevens opslag op lange termijn. |
+|IOPS en door Voer (ongeveer)|**Afzonderlijke data bases en elastische Pools**: Zie resource limieten voor [afzonderlijke data bases](../sql-database/sql-database-vcore-resource-limits-single-databases.md) en [elastische Pools](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md).<br/>**Beheerd exemplaar**: zie [overzicht Azure SQL database de resource limieten voor beheerde exemplaren](../sql-database/sql-database-managed-instance-resource-limits.md#service-tier-characteristics).|Zie resource limieten voor [afzonderlijke data bases](../sql-database/sql-database-vcore-resource-limits-single-databases.md) en [elastische Pools](../sql-database/sql-database-vcore-resource-limits-elastic-pools.md).|Grootschalige is een architectuur met meerdere lagen met caching op meerdere niveaus. Effectief IOPS en door Voer is afhankelijk van de werk belasting.|
 |Beschikbaarheid|1 replica, geen replica's met lees schaal|3 replica's, 1 [replica met lees grootte](sql-database-read-scale-out.md),<br/>zone-redundante hoge Beschik baarheid (HA)|1 replica met lees-en schrijf bewerkingen, plus 0-4 [replica's met lees grootte](sql-database-read-scale-out.md)|
 |Back-ups|[Geografisch redundante opslag met lees toegang (RA-GRS)](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dagen (standaard 7 dagen)|[Ra-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 dagen (standaard 7 dagen)|Back-ups op basis van moment opnamen in azure externe opslag. Herstelt het gebruik van deze moment opnamen voor snel herstel. Back-ups zijn onmiddellijk en zijn niet van invloed op de I/O-prestaties van compute. Herstel bewerkingen zijn snel en zijn geen omvang van de gegevens bewerking (minuten in plaats van uren of dagen).|
 |In het geheugen|Niet ondersteund|Ondersteund|Niet ondersteund|

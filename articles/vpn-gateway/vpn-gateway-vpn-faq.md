@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: fa4e403733c418a4ceff417dd0cf7b54f9409a49
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 50b751d8e4e1a69a34e6421884f8b99c3eeb5924
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151661"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895984"
 ---
 # <a name="vpn-gateway-faq"></a>Veelgestelde vragen over VPN Gateways
 
@@ -34,7 +34,7 @@ U kunt verbinding maken met meerdere sites met behulp van Windows PowerShell en 
 
 Nee. 
 
-### <a name="what-are-my-cross-premises-connection-options"></a>Wat zijn mijn opties voor verbinding in meerdere gebouwen?
+### <a name="what-are-my-cross-premises-connection-options"></a>Wat zijn de opties voor cross-premises-verbinding?
 
 De volgende cross-premises verbindingen worden ondersteund:
 
@@ -66,7 +66,7 @@ Op beleid gebaseerde gateways implementeren op beleid gebaseerde VPN's. Op belei
 
 ### <a name="what-is-a-route-based-dynamic-routing-gateway"></a>Wat is een op route gebaseerde gateway (dynamische routering)?
 
-Op route gebaseerde gateways implementeren op route gebaseerde VPN's. VPN-verbindingen op basis van een route gebruiken "routes" in de IP-doorstuurtabel of routeringstabel om pakketten naar de bijbehorende tunnelinterfaces te sturen. De tunnelinterfaces versleutelen of ontsleutelen de pakketten vervolgens naar en vanuit de tunnels. Het beleid of de verkeersselector voor op route gebaseerde VPN's is geconfigureerd als alles-naar-alles (of jokertekens).
+Op route gebaseerde gateways implementeren op route gebaseerde VPN's. Op route gebaseerde VPN's gebruiken 'routes' in de IP-doorstuurtabel of routeringstabel om pakketten naar de bijbehorende tunnelinterfaces te sturen. De tunnelinterfaces versleutelen of ontsleutelen de pakketten vervolgens naar en vanuit de tunnels. Het beleid of de verkeersselector voor op route gebaseerde VPN's is geconfigureerd als alles-naar-alles (of jokertekens).
 
 ### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>Kan ik mijn op beleid gebaseerde VPN-gateway bijwerken naar een op route gebaseerde gateway?
 Nee. Een Azure Vnet-gateway type kan niet worden gewijzigd van beleid op basis van route ring of op een andere manier. De gateway moet worden verwijderd en opnieuw worden gemaakt. Dit duurt ongeveer 60 minuten. Het IP-adres van de gateway en ook de PSK (vooraf gedeelde sleutel) blijven niet behouden.

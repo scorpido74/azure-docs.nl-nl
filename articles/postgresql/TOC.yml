@@ -43,7 +43,7 @@
           items:
             - name: Azure Portal
               href: tutorial-design-database-using-azure-portal.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: tutorial-design-database-using-azure-cli.md
         - name: 2 - Een web-app ontwerpen - Python
           href: ../app-service/containers/tutorial-python-postgresql-app.md
@@ -58,7 +58,7 @@
           href: tutorial-design-database-hyperscale-realtime.md
 - name: Voorbeelden
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: sample-scripts-azure-cli.md
 - name: Concepten
   items:
@@ -98,6 +98,8 @@
               href: concepts-data-access-and-security-threat-protection.md
             - name: Azure Active Directory-verificatie
               href: concepts-aad-authentication.md
+            - name: Private Link
+              href: concepts-data-access-and-security-private-link.md
         - name: Bedrijfscontinuïteit
           items:
             - name: Inleiding tot bedrijfscontinuïteit
@@ -171,7 +173,7 @@
           items:
             - name: Configuratie-opties
               href: concepts-hyperscale-configuration-options.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Enkele server
       items:
@@ -199,13 +201,13 @@
           items:
             - name: Azure Portal
               href: howto-manage-firewall-using-portal.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: howto-manage-firewall-using-cli.md
         - name: Een server terugzetten
           items:
             - name: Azure Portal
               href: howto-restore-server-portal.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: howto-restore-server-cli.md
         - name: Een database migreren
           items:
@@ -219,19 +221,19 @@
           items:
             - name: Azure Portal
               href: howto-configure-server-parameters-using-portal.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: howto-configure-server-parameters-using-cli.md
         - name: Opslag automatisch vergroten
           items:
             - name: Azure Portal
               href: howto-auto-grow-storage-portal.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
         - name: Toegangslogboeken
           items:
             - name: Azure Portal
               href: howto-configure-server-logs-in-portal.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: howto-configure-server-logs-using-cli.md
         - name: Controleren
           items:
@@ -249,13 +251,19 @@
           items:
             - name: Azure Portal
               href: howto-manage-vnet-using-portal.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: howto-manage-vnet-using-cli.md
+        - name: Private Link
+          items:
+            - name: Azure Portal
+              href: howto-configure-privatelink-portal.md
+            - name: Azure CLI
+              href: howto-configure-privatelink-cli.md
         - name: Server opnieuw opstarten
           items:
             - name: Azure Portal
               href: howto-restart-server-portal.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: howto-restart-server-cli.md
         - name: Replicatie
           items:
@@ -283,7 +291,7 @@
               href: howto-hyperscale-troubleshoot-common-connection-issues.md
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/postgres
     - name: REST-API
       href: /rest/api/postgresql

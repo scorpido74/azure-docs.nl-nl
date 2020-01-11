@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 42bd6037bcc94a83e649433e9ea0425fbdf11cd2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0ecbb4399e038355a328055590da1c34170f3852
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353327"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894622"
 ---
 # <a name="supported-platforms"></a>Ondersteunde platforms 
 
@@ -48,7 +48,7 @@ De volgende secties bevatten een lijst met de ondersteunde besturings systemen v
 |Windows Server 2012 R2|✔|✔|
 |Windows Server 2008 R2|✔|✔|
 
-Zie [ondersteunde functies van virtual machine/server](security-center-services.md##vm-server-features)voor meer informatie over de ondersteunde functies voor de Windows-besturings systemen die hierboven worden vermeld.
+Zie [ondersteunde functies van virtual machine/server](security-center-services.md#vm-server-features)voor meer informatie over de ondersteunde functies voor de Windows-besturings systemen die hierboven worden vermeld.
 
 ### Linux-besturings systemen<a name="os-linux"></a>
 
@@ -72,7 +72,7 @@ Zie [ondersteunde functies van virtual machine/server](security-center-services.
 > [!NOTE]
 > Omdat de lijst met ondersteunde Linux-besturings systemen voortdurend wordt gewijzigd, klikt u [hier](https://github.com/microsoft/OMS-Agent-for-Linux#supported-linux-operating-systems) om de meest recente lijst met ondersteunde versies weer te geven, in het geval er wijzigingen zijn sinds dit onderwerp voor het laatst is gepubliceerd.
 
-Zie voor meer informatie over de ondersteunde functies voor de Linux-besturings systemen, die hierboven worden vermeld, de [functies van virtuele machine/server](security-center-services.md##vm-server-features)die worden ondersteund.
+Zie voor meer informatie over de ondersteunde functies voor de Linux-besturings systemen, die hierboven worden vermeld, de [functies van virtuele machine/server](security-center-services.md#vm-server-features)die worden ondersteund.
 
 ### Beheerde services voor virtuele machines<a name="virtual-machine"></a>
 

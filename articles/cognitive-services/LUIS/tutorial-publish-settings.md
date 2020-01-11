@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/13/2019
 ms.author: diberry
-ms.openlocfilehash: 7683a73fd1f403847089dc722e5f6382acd948cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2df32c20bebf4243f383a0cccd8f037721533602
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447699"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890391"
 ---
 # <a name="tutorial--add-sentiment-analysis-as-a-publishing-setting"></a>Zelf studie: sentiment-analyse toevoegen als publicatie-instelling
 
@@ -128,7 +128,7 @@ Omdat het een publicatie-instelling is, ziet u deze niet op de pagina's doel ite
 
 ## <a name="related-information"></a>Gerelateerde informatie
 
-* Sentimentanalyse wordt geleverd door de Cognitive Service [Text Analytics](../Text-Analytics/index.yml). De functie is beperkt tot de door Text Analytics [ondersteunde talen](luis-language-support.md##languages-supported).
+* Sentimentanalyse wordt geleverd door de Cognitive Service [Text Analytics](../Text-Analytics/index.yml). De functie is beperkt tot de door Text Analytics [ondersteunde talen](luis-language-support.md#languages-supported).
 * [Trainen](luis-how-to-train.md)
 * [Hoe u kunt publiceren](luis-how-to-publish-app.md)
 * [Testen in de LUIS-portal](luis-interactive-test.md)

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1c5d9f665c9b3e7a439a09f4259f304f8f8b1a0a
-ms.sourcegitcommit: a19f4b35a0123256e76f2789cd5083921ac73daf
+ms.openlocfilehash: 6b0a81a2f3af10a1e5ad60c6c33357a6e906ee47
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71718335"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895253"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Problemen met Apache Hadoop HDFS oplossen met behulp van Azure HDInsight
 
@@ -27,7 +27,7 @@ Open de lokale HDFS via de opdracht regel en toepassings code in plaats van met 
 
 ### <a name="resolution-steps"></a>Oplossingen
 
-1. Gebruik `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` in de opdracht prompt letterlijk, zoals in de volgende opdracht:
+1. Gebruik bij de opdracht prompt letterlijk `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...`, zoals in de volgende opdracht:
 
     ```output
     hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
@@ -37,7 +37,7 @@ Open de lokale HDFS via de opdracht regel en toepassings code in plaats van met 
     drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
     ```
 
-2. Gebruik vanaf de bron code de URI `hdfs://mycluster/` letterlijk, zoals in de volgende voorbeeld toepassing:
+2. Gebruik op basis van de bron code de URI `hdfs://mycluster/` letterlijk, zoals in de volgende voorbeeld toepassing:
 
     ```Java
     import java.io.IOException;
@@ -62,7 +62,7 @@ Open de lokale HDFS via de opdracht regel en toepassings code in plaats van met 
     }
     ```
 
-3. Voer het gecompileerde jar-bestand (bijvoorbeeld een bestand met de `java-unit-tests-1.0.jar`naam) uit op het HDInsight-cluster met de volgende opdracht:
+3. Voer het gecompileerde jar-bestand (bijvoorbeeld een bestand met de naam `java-unit-tests-1.0.jar`) uit op het HDInsight-cluster met de volgende opdracht:
 
     ```apache
     hadoop jar java-unit-tests-1.0.jar JavaUnitTests
@@ -76,7 +76,7 @@ Open de lokale HDFS via de opdracht regel en toepassings code in plaats van met 
 
 Met de opdracht [-du](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html#du) worden de grootte van bestanden en mappen in de opgegeven map of de lengte van een bestand weer gegeven als dit een bestand is.
 
-De `-s` optie produceert een statistische samen vatting van de bestands lengten die worden weer gegeven.  
+De optie `-s` produceert een statistische samen vatting van de bestands lengten die worden weer gegeven.  
 Met de optie `-h` wordt de bestands grootte opgemaakt.
 
 Voorbeeld:
@@ -102,6 +102,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

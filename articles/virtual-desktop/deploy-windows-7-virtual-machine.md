@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: 90b871c2b75f7ed40c290231ef822258c6b4e6d4
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 28111e45d365069f80f10b88c38618dbb2b4651d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606876"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896221"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Een virtuele Windows 7-machine implementeren in Windows Virtual Desktop
 
@@ -35,20 +35,21 @@ Een Windows 7-VM instellen op het virtuele bureau blad van Windows:
 5. Ga naar Windows Update op uw VM.
 6. Installeer alle Windows-updates in de belang rijke categorie.
 7. Installeer alle Windows-updates in de optionele categorie (exclusief taal pakketten). Hiermee installeert u de Remote Desktop Protocol 8,0-update ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)) die u nodig hebt om deze instructies te volt ooien.
-8. Open de Lokale groepsbeleidsobjecteditor en navigeer naar **computer configuratie** > **Beheersjablonen** > **Windows-onderdelen** > **extern bureaublad-services** > extern bureaublad **sessiehost**  > **externe sessie omgeving**.
+8. Open de Lokale groepsbeleidsobjecteditor en navigeer naar **computer configuratie** > **Beheersjablonen** > **Windows** -onderdelen ** > extern bureaublad-services > extern bureaublad** **sessie host** > **externe sessie omgeving**.
 9. Schakel het beleid voor Remote Desktop Protocol 8,0 in.
-10. Start de virtuele machine opnieuw op door de volgende opdracht uit te voeren:
+10. Voeg deze VM toe aan uw Active Directory domein.
+11. Start de virtuele machine opnieuw op door de volgende opdracht uit te voeren:
     
      ```cmd
      shutdown /r /t 0
      ```
     
-11. Volg de instructies [hier](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) om een registratie token op te halen.
-12. [Down load de Windows-agent voor virtueel bureau blad voor Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
-13. [Down load de Windows Virtual Desktop Agent Manager voor Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
-14. Open het installatie programma voor de virtueel-bureaublad agent van Windows en volg de instructies. Wanneer u hierom wordt gevraagd, geeft u de registratie sleutel op die u in stap 11 hebt gemaakt.
-15. Open het Windows-installatie programma voor virtueel bureau blad en volg de instructies.
-16. U kunt desgewenst de TCP/3389-poort blok keren om direct Remote Desktop Protocol toegang tot de virtuele machine te verwijderen.
+12. Volg de instructies [hier](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) om een registratie token op te halen.
+13. [Down load de Windows-agent voor virtueel bureau blad voor Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
+14. [Down load de Windows Virtual Desktop Agent Manager voor Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3).
+15. Open het installatie programma voor de virtueel-bureaublad agent van Windows en volg de instructies. Wanneer u hierom wordt gevraagd, geeft u de registratie sleutel op die u in stap 12 hebt gemaakt.
+16. Open het Windows-installatie programma voor virtueel bureau blad en volg de instructies.
+17. U kunt desgewenst de TCP/3389-poort blok keren om direct Remote Desktop Protocol toegang tot de virtuele machine te verwijderen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

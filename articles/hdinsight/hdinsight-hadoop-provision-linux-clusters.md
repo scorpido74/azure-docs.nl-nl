@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 39f22cc3cb026d4bed1dbe937e0e220b7bdceec7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e386aee68696a3b56036ec2dacc19fd9c138b88c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435561"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887254"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Clusters in HDInsight instellen met Apache Hadoop, Apache Spark, Apache Kafka en meer
 
@@ -208,7 +208,7 @@ Verschillende cluster typen hebben verschillende knooppunt typen, aantal knoop p
 Als u alleen een HDInsight probeert uit te voeren, raden we u aan om één worker-knoop punt te gebruiken. Zie [prijzen voor hdinsight](https://go.microsoft.com/fwLink/?LinkID=282635&clcid=0x409)voor meer informatie over de prijzen voor hdinsight.
 
 > [!NOTE]  
-> De limiet voor de cluster grootte is afhankelijk van Azure-abonnementen. Neem contact op met de [ondersteuning voor Azure-facturering](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) om de limiet te verhogen.
+> De limiet voor de cluster grootte is afhankelijk van Azure-abonnementen. Neem contact op met de [ondersteuning voor Azure-facturering](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) om de limiet te verhogen.
 
 Wanneer u de Azure Portal gebruikt om het cluster te configureren, is de grootte van het knoop punt beschikbaar via het tabblad **configuratie en prijzen** . In de portal kunt u ook de kosten zien die zijn gekoppeld aan de verschillende knooppunt grootten.
 

@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
-ms.openlocfilehash: f3f89de07e2e17a4dda47ce3650391af38663004
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087188"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894318"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError-uitzonde ringen voor Apache Spark in azure HDInsight
 
@@ -56,11 +56,11 @@ java.lang.OutOfMemoryError
 
 De meest waarschijnlijke oorzaak van deze uitzondering is dat niet voldoende heapgeheugen is toegewezen aan de Java virtual machines (JVMs). Deze JVMs worden als uitvoerende toepassingen of stuur Programma's geïntroduceerd als onderdeel van de Apache Spark toepassing.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 1. Bepaal de maximale grootte van de gegevens die de Spark-toepassing moet verwerken. Maak een schatting van de grootte op basis van het maximum van de invoer gegevens, de tussenliggende gegevens die worden geproduceerd door het transformeren van de invoer gegevens en de uitvoer gegevens die de tussenliggende gegevens hebben getransformeerd. Als de oorspronkelijke schatting niet voldoende is, verg root u de grootte en herhaalt u dit tot de geheugen fouten.
 
-1. Zorg ervoor dat het HDInsight-cluster dat u wilt gebruiken, over voldoende resources (geheugen en kernen) beschikt voor uitvoering van de Spark-toepassing. Dit kan worden bepaald door de sectie cluster metrieken van de garen-gebruikers interface van het cluster te bekijken voor de waarden van het **gebruikte geheugen** versus. **Totaal geheugen** en **VCores gebruikt** vs. **Totaal aantal VCores**.
+1. Zorg ervoor dat het HDInsight-cluster dat u wilt gebruiken, over voldoende resources (geheugen en kernen) beschikt voor uitvoering van de Spark-toepassing. Dit kan worden bepaald door de sectie cluster metrieken van de garen-gebruikers interface van het cluster te bekijken voor de waarden van **geheugen die worden gebruikt** versus **Totaal geheugen** en **VCores dat is gebruikt** voor het **totaal van VCores**.
 
     ![kern geheugen weergave van garen](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 
@@ -90,7 +90,7 @@ De meest waarschijnlijke oorzaak van deze uitzondering is dat niet voldoende hea
 
 ---
 
-## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>Scenario: Fout in Java-heap-ruimte bij het openen van Apache Spark geschiedenis server
+## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>Scenario: fout in Java-heap-ruimte bij het openen van Apache Spark geschiedenis server
 
 ### <a name="issue"></a>Probleem
 
@@ -114,15 +114,15 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 **2.1 G**  wasb:///hdp/spark2-events/application_1503957839788_0264_1
 ```
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
-U kunt het Spark-geschiedenis server geheugen verhogen door de `SPARK_DAEMON_MEMORY` eigenschap in de Spark-configuratie te bewerken en alle services opnieuw te starten.
+U kunt het Spark-geschiedenis server geheugen verhogen door de eigenschap `SPARK_DAEMON_MEMORY` in de Spark-configuratie te bewerken en alle services opnieuw te starten.
 
 U kunt dit doen vanuit de gebruikers interface van de Ambari-browser door de sectie Spark2/config/Advanced Spark2-env te selecteren.
 
 ![Sectie Geavanceerde spark2-env](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
 
-Voeg de volgende eigenschap toe om het Spark-geschiedenis server geheugen van 1g te wijzigen `SPARK_DAEMON_MEMORY=4g`in 4G:.
+Voeg de volgende eigenschap toe om het Spark-geschiedenis server geheugen van 1g te wijzigen in 4G: `SPARK_DAEMON_MEMORY=4g`.
 
 ![Spark-eigenschap](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
 
@@ -130,7 +130,7 @@ Zorg ervoor dat u alle betrokken services opnieuw opstart vanuit Ambari.
 
 ---
 
-## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>Scenario: Livy-server kan niet worden gestart op Apache Spark cluster
+## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>Scenario: livy-server kan niet worden gestart op Apache Spark cluster
 
 ### <a name="issue"></a>Probleem
 
@@ -194,13 +194,13 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 ### <a name="cause"></a>Oorzaak
 
-`java.lang.OutOfMemoryError: unable to create new native thread`highlight besturings systeem kan niet meer systeem eigen threads toewijzen aan JVMs. Bevestigd dat deze uitzonde ring wordt veroorzaakt door een overschrijding van de limiet van het aantal threads per proces.
+`java.lang.OutOfMemoryError: unable to create new native thread` markeert het besturings systeem niet om meer systeem eigen threads aan JVMs toe te wijzen. Bevestigd dat deze uitzonde ring wordt veroorzaakt door een overschrijding van de limiet van het aantal threads per proces.
 
 Wanneer de livy-server onverwacht wordt beëindigd, worden alle verbindingen met Spark-clusters ook beëindigd, wat betekent dat alle taken en gerelateerde gegevens verloren gaan. In het HDP 2,6-sessie herstel mechanisme is geïntroduceerd, worden de sessie gegevens in Zookeeper opgeslagen om te worden hersteld nadat de livy-server weer is.
 
 Wanneer een groot aantal taken wordt verzonden via livy, worden deze sessie statussen in ZK (op HDInsight-clusters) opgeslagen als onderdeel van hoge Beschik baarheid voor livy-server en worden deze sessies hersteld wanneer de livy-service opnieuw wordt gestart. Wanneer de computer opnieuw wordt opgestart na een onverwachte beëindiging, maakt livy één thread per sessie. Dit is een aantal te herstellen sessies die te veel threads veroorzaken.
 
-### <a name="resolution"></a>Oplossing
+### <a name="resolution"></a>Resolutie
 
 Verwijder alle vermeldingen met behulp van de stappen die hieronder worden beschreven.
 
@@ -239,7 +239,7 @@ Verwijder alle vermeldingen met behulp van de stappen die hieronder worden besch
 1. Wacht tot de bovenstaande opdracht is voltooid en de cursor de prompt retour neren en start de livy-service vervolgens opnieuw vanaf Ambari. deze moet slagen.
 
 > [!NOTE]
-> `DELETE`de livy-sessie zodra de uitvoering is voltooid. De livy-batch sessies worden niet automatisch verwijderd zodra de Spark-app is voltooid. Dit is een ontwerp. Een livy-sessie is een entiteit die is gemaakt met een POST-aanvraag voor livy rest server. Er `DELETE` is een aanroep nodig om die entiteit te verwijderen. Of we moeten wachten tot de GC is gestart.
+> `DELETE` de livy-sessie nadat deze is uitgevoerd. De livy-batch sessies worden niet automatisch verwijderd zodra de Spark-app is voltooid. Dit is een ontwerp. Een livy-sessie is een entiteit die is gemaakt met een POST-aanvraag voor livy rest server. Er is een `DELETE` aanroep vereist om die entiteit te verwijderen. Of we moeten wachten tot de GC is gestart.
 
 ---
 
@@ -253,6 +253,6 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Krijg antwoorden van Azure-experts via de [ondersteuning van Azure Community](https://azure.microsoft.com/support/community/).
 
-* Maak verbinding [@AzureSupport](https://twitter.com/azuresupport) met-het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
+* Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring. Verbinding maken met de Azure-community met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees [hoe u een ondersteunings aanvraag voor Azure kunt maken](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)voor meer informatie. De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).

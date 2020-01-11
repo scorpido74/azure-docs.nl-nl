@@ -11,34 +11,28 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9361f1ca998d32a998794a7e95220ee5c7ac623
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: bf86826d77c690b60c7b091d6250a85fffd21fc0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834767"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896337"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problemen met Azure Machine Learning Azure Kubernetes-service en Azure Container Instances-implementatie oplossen
 
 Meer informatie over het oplossen van veelvoorkomende docker-implementatie fouten met Azure Container Instances (ACI) en Azure Kubernetes service (AKS) met behulp van Azure Machine Learning.
 
-Bij het implementeren van een model in Azure Machine Learning, voert het systeem een aantal taken uit. De implementatietaken zijn:
+Bij het implementeren van een model in Azure Machine Learning, voert het systeem een aantal taken uit.
+
+De aanbevolen en meest recente benadering voor model implementatie is via de API [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) met behulp van een [omgevings](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) object als invoer parameter. In dit geval maakt onze service een basis-docker-installatie kopie voor u tijdens de implementatie fase en koppelt u de vereiste modellen in één aanroep. De basis taken voor implementatie zijn:
 
 1. Registreer het model in de werkruimte model-register.
 
-2. Bouw een Docker-installatiekopie, met inbegrip van:
-    1. Download het geregistreerde model uit het register. 
-    2. Maak een docker-bestand, met een Python-omgeving op basis van de afhankelijkheden die u in de omgeving yaml-bestand opgeeft.
-    3. Uw modelbestanden en het scoring-script dat u opgeeft in de dockerfile toevoegen.
-    4. Bouw een nieuwe Docker-installatiekopie met behulp van het bestand dockerfile.
-    5. Registreer de Docker-installatiekopie met de Azure Container Registry die zijn gekoppeld aan de werkruimte.
+2. Configuratie voor in-of afleiding definiëren:
+    1. Maak een [omgevings](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) object op basis van de afhankelijkheden die u opgeeft in het yaml-bestand van de omgeving of gebruik een van onze aangeschafte omgevingen.
+    2. Maak een Afleidings configuratie (InferenceConfig-object) op basis van de omgeving en het Score script.
 
-    > [!IMPORTANT]
-    > Afhankelijk van uw code wordt het maken van afbeeldingen automatisch uitgevoerd zonder uw invoer.
-
-3. De Docker-installatiekopie implementeren naar Azure Container exemplaar (ACI)-service of naar Azure Kubernetes Service (AKS).
-
-4. Starten van een nieuwe container (of containers) in ACI of AKS. 
+3. Implementeer het model op de Azure container instance-service (ACI) of naar de Azure Kubernetes-service (AKS).
 
 Meer informatie over dit proces in de [Modelbeheer](concept-model-management-and-deployment.md) inleiding.
 
@@ -56,11 +50,14 @@ Meer informatie over dit proces in de [Modelbeheer](concept-model-management-and
 
 Als u een probleem ondervindt, het eerste wat te doen is de Implementatietaak opdelen (vorige beschreven) in afzonderlijke stappen het probleem te isoleren.
 
-Het verbreken van de implementatie in taken is handig als u de API van de [webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none--overwrite-false-) -API of [webservice (web. deploy_from_model)](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none--overwrite-false-) gebruikt, omdat beide functies de bovengenoemde stappen als één actie uitvoeren. Deze Api's zijn meestal handig, maar het helpt bij het opruimen van de stappen bij het oplossen van problemen door ze te vervangen door de onderstaande API-aanroepen.
+Als u de nieuwe/Aanbevolen implementatie methode via [model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) -API met een [omgevings](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) object als een invoer parameter gebruikt, kan uw code worden onderverdeeld in drie belang rijke stappen:
 
-1. Registreer het model. Hier volgt een voorbeeld van code:
+1. Registreer het model. Hier volgt een voor beeld van code:
 
     ```python
+    from azureml.core.model import Model
+
+
     # register a model out of a run record
     model = best_run.register_model(model_name='my_best_model', model_path='outputs/my_model.pkl')
 
@@ -68,99 +65,35 @@ Het verbreken van de implementatie in taken is handig als u de API van de [webse
     model = Model.register(model_path='my_model.pkl', model_name='my_best_model', workspace=ws)
     ```
 
-2. Bouw de installatiekopie. Hier volgt een voorbeeld van code:
+2. Configuratie voor het afstellen van een afleiding definiëren voor implementatie:
 
     ```python
-    # configure the image
-    image_config = ContainerImage.image_configuration(runtime="python",
-                                                      entry_script="score.py",
-                                                      conda_file="myenv.yml")
+    from azureml.core.model import InferenceConfig
+    from azureml.core.environment import Environment
 
-    # create the image
-    image = Image.create(name='myimg', models=[model], image_config=image_config, workspace=ws)
 
-    # wait for image creation to finish
-    image.wait_for_creation(show_output=True)
+    # create inference configuration based on the requirements defined in the YAML
+    myenv = Environment.from_conda_specification(name="myenv", file_path="myenv.yml")
+    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
     ```
 
-3. De installatiekopie implementeert als service. Hier volgt een voorbeeld van code:
+3. Implementeer het model met behulp van de in de vorige stap gemaakte configuratie voor inactiviteit:
 
     ```python
-    # configure an ACI-based deployment
-    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
+    from azureml.core.webservice import AciWebservice
 
-    aci_service = Webservice.deploy_from_image(deployment_config=aci_config, 
-                                               image=image, 
-                                               name='mysvc', 
-                                               workspace=ws)
-    aci_service.wait_for_deployment(show_output=True)    
+
+    # deploy the model
+    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
+    aci_service = Model.deploy(workspace=ws,
+                           name='my-service',
+                           models=[model],
+                           inference_config=inference_config,
+                           deployment_config=aci_config)
+    aci_service.wait_for_deployment(show_output=True)
     ```
 
 Nadat u het implementatieproces in afzonderlijke taken hebt gesplitst, kunnen we kijken naar enkele van de meest voorkomende fouten.
-
-## <a name="image-building-fails"></a>De installatiekopie van het bouwen van mislukt
-
-Als de docker-installatie kopie niet kan worden gebouwd, mislukt de aanroep van de [installatie kopie. wait_for_creation ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) of [service. wait_for_deployment (](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-) ) met enkele fout berichten die een aantal aanwijzingen kunnen bieden. U vindt ook meer informatie over de fouten van het logboek van de build installatiekopie. Hieronder wordt een voorbeeld van code waarin wordt beschreven hoe u voor het detecteren van het logboek-uri van de installatiekopie-build.
-
-```python
-# if you already have the image object handy
-print(image.image_build_log_uri)
-
-# if you only know the name of the image (note there might be multiple images with the same name but different version number)
-print(ws.images['myimg'].image_build_log_uri)
-
-# list logs for all images in the workspace
-for name, img in ws.images.items():
-    print(img.name, img.version, img.image_build_log_uri)
-```
-
-De uri van de installatiekopie-logboek is een SAS-URL die verwijst naar een logboekbestand die zijn opgeslagen in de Azure blob-opslag. Alleen kopiëren en plakken de uri in een browservenster en u kunnen downloaden en weergeven van het logboekbestand.
-
-### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault toegangs beleid en Azure Resource Manager sjablonen
-
-De build van de installatie kopie kan ook mislukken vanwege een probleem met het toegangs beleid op Azure Key Vault. Deze situatie kan zich voordoen wanneer u een Azure Resource Manager sjabloon gebruikt om de werk ruimte en bijbehorende resources (inclusief Azure Key Vault) meerdere keren te maken. Gebruik bijvoorbeeld de sjabloon meerdere keren met dezelfde para meters als onderdeel van een continue integratie-en implementatie pijplijn.
-
-De meeste bewerkingen voor het maken van resources via sjablonen zijn idempotent, maar Key Vault wist het toegangs beleid telkens wanneer de sjabloon wordt gebruikt. Als u het toegangs beleid wist, wordt de toegang tot de Key Vault verbroken voor een bestaande werk ruimte waarin deze wordt gebruikt. Deze voor waarde resulteert in fouten wanneer u nieuwe installatie kopieën probeert te maken. Hier volgen enkele voor beelden van de fouten die u kunt ontvangen:
-
-__Portal__:
-```text
-Create image "myimage": An internal server error occurred. Please try again. If the problem persists, contact support.
-```
-
-__SDK__:
-```python
-image = ContainerImage.create(name = "myimage", models = [model], image_config = image_config, workspace = ws)
-Creating image
-Traceback (most recent call last):
-  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 341, in create
-    resp.raise_for_status()
-  File "C:\Python37\lib\site-packages\requests\models.py", line 940, in raise_for_status
-    raise HTTPError(http_error_msg, response=self)
-requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://eastus.modelmanagement.azureml.net/api/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>/images?api-version=2018-11-19
-
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 346, in create
-    'Content: {}'.format(resp.status_code, resp.headers, resp.content))
-azureml.exceptions._azureml_exception.WebserviceException: Received bad response from Model Management Service:
-Response Code: 500
-Headers: {'Date': 'Tue, 26 Feb 2019 17:47:53 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'api-supported-versions': '2018-03-01-preview, 2018-11-19', 'x-ms-client-request-id': '3cdcf791f1214b9cbac93076ebfb5167', 'x-ms-client-session-id': '', 'Strict-Transport-Security': 'max-age=15724800; includeSubDomains; preload'}
-Content: b'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}'
-```
-
-__CLI__:
-```text
-ERROR: {'Azure-cli-ml Version': None, 'Error': WebserviceException('Received bad response from Model Management Service:\nResponse Code: 500\nHeaders: {\'Date\': \'Tue, 26 Feb 2019 17:34:05
-GMT\', \'Content-Type\': \'application/json\', \'Transfer-Encoding\': \'chunked\', \'Connection\': \'keep-alive\', \'api-supported-versions\': \'2018-03-01-preview, 2018-11-19\', \'x-ms-client-request-id\':
-\'bc89430916164412abe3d82acb1d1109\', \'x-ms-client-session-id\': \'\', \'Strict-Transport-Security\': \'max-age=15724800; includeSubDomains; preload\'}\nContent:
-b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}\'',)}
-```
-
-Om dit probleem te voor komen, raden we u aan een van de volgende benaderingen te volgen:
-
-* Implementeer de sjabloon niet meer dan één keer voor dezelfde para meters. Of verwijder de bestaande resources voordat u de sjabloon opnieuw maakt.
-* Controleer de Key Vault toegangs beleid en gebruik vervolgens dit beleid om de eigenschap `accessPolicies` van de sjabloon in te stellen.
-* Controleer of de Key Vault resource al bestaat. Als dit het geval is, moet u het niet opnieuw maken via de sjabloon. Voeg bijvoorbeeld een para meter toe waarmee u het maken van de Key Vault resource kunt uitschakelen als deze al bestaat.
 
 ## <a name="debug-locally"></a>Lokaal fouten opsporen
 
@@ -169,17 +102,17 @@ Als u problemen ondervindt bij het implementeren van een model naar ACI of AKS, 
 > [!WARNING]
 > Lokale web service-implementaties worden niet ondersteund voor productie scenario's.
 
-Als u lokaal wilt implementeren, wijzigt u de code in `LocalWebservice.deploy_configuration()` om een implementatie configuratie te maken. Gebruik vervolgens `Model.deploy()` om de service te implementeren. In het volgende voor beeld wordt een model (opgenomen in de `model` variabele) geïmplementeerd als een lokale webservice:
+Als u lokaal wilt implementeren, wijzigt u de code in `LocalWebservice.deploy_configuration()` om een implementatie configuratie te maken. Gebruik vervolgens `Model.deploy()` om de service te implementeren. In het volgende voor beeld wordt een model (opgenomen in de variabele model) geïmplementeerd als lokale webservice:
 
 ```python
-from azureml.core.model import InferenceConfig, Model
 from azureml.core.environment import Environment
+from azureml.core.model import InferenceConfig, Model
 from azureml.core.webservice import LocalWebservice
+
 
 # Create inference configuration based on the environment definition and the entry script
 myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
 inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-
 # Create a local deployment, using port 8890 for the web service endpoint
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 # Deploy the service
@@ -329,13 +262,12 @@ Er zijn twee dingen die u kunnen helpen bij het voor komen van 503-status codes:
 
 Voor meer informatie over het instellen van `autoscale_target_utilization`, `autoscale_max_replicas`en `autoscale_min_replicas` voor, raadpleegt u de [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) -module verwijzing.
 
-
 ## <a name="advanced-debugging"></a>Geavanceerde fout opsporing
 
 In sommige gevallen moet u mogelijk interactief fouten opsporen in de python-code die in uw model implementatie is opgenomen. Als het script voor de vermelding bijvoorbeeld mislukt en de reden niet kan worden bepaald door aanvullende logboek registratie. Met Visual Studio code en de Python Tools for Visual Studio (PTVSD) kunt u koppelen aan de code die wordt uitgevoerd in de docker-container.
 
 > [!IMPORTANT]
-> Deze methode van fout opsporing werkt niet wanneer u `Model.deploy()` en `LocalWebservice.deploy_configuration` gebruikt voor het lokaal implementeren van een model. In plaats daarvan moet u een installatie kopie maken met behulp van de [ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) -klasse. 
+> Deze methode van fout opsporing werkt niet wanneer u `Model.deploy()` en `LocalWebservice.deploy_configuration` gebruikt voor het lokaal implementeren van een model. In plaats daarvan moet u een installatie kopie maken met behulp van de methode [model. package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) .
 
 Voor lokale web service-implementaties is een werkende docker-installatie op uw lokale systeem vereist. Raadpleeg de [docker-documentatie](https://docs.docker.com/)voor meer informatie over het gebruik van docker.
 
@@ -384,13 +316,14 @@ Voor lokale web service-implementaties is een werkende docker-installatie op uw 
 
     ```python
     from azureml.core.conda_dependencies import CondaDependencies 
-    
+
+
     # Usually a good idea to choose specific version numbers
     # so training is made on same packages as scoring
     myenv = CondaDependencies.create(conda_packages=['numpy==1.15.4',            
                                 'scikit-learn==0.19.1', 'pandas==0.23.4'],
-                                 pip_packages = ['azureml-defaults==1.0.17', 'ptvsd'])
-    
+                                 pip_packages = ['azureml-defaults==1.0.45', 'ptvsd'])
+
     with open("myenv.yml","w") as f:
         f.write(myenv.serialize_to_string())
     ```
@@ -406,70 +339,33 @@ Voor lokale web service-implementaties is een werkende docker-installatie op uw 
     print("Debugger attached...")
     ```
 
-1. Tijdens het opsporen van fouten wilt u mogelijk wijzigingen aanbrengen in de bestanden in de installatie kopie zonder deze opnieuw te hoeven maken. Als u een tekst editor (vim) in de docker-installatie kopie wilt installeren, maakt u een nieuw tekst bestand met de naam `Dockerfile.steps` en gebruikt u het volgende als de inhoud van het bestand:
-
-    ```text
-    RUN apt-get update && apt-get -y install vim
-    ```
-
-    Met een tekst editor kunt u de bestanden in de docker-installatie kopie wijzigen om wijzigingen te testen zonder een nieuwe installatie kopie te maken.
-
-1. Als u een installatie kopie wilt maken die gebruikmaakt van het `Dockerfile.steps`-bestand, gebruikt u de para meter `docker_file` bij het maken van een installatie kopie. In het volgende voor beeld ziet u hoe u dit doet:
+1. Maak een installatie kopie op basis van de omgevings definitie en haal de installatie kopie op in het lokale REGI ster. Tijdens het opsporen van fouten wilt u mogelijk wijzigingen aanbrengen in de bestanden in de installatie kopie zonder deze opnieuw te hoeven maken. Als u een tekst editor (vim) in de docker-installatie kopie wilt installeren, gebruikt u de eigenschappen `Environment.docker.base_image` en `Environment.docker.base_dockerfile`:
 
     > [!NOTE]
     > In dit voor beeld wordt ervan uitgegaan dat `ws` verwijst naar uw Azure Machine Learning-werk ruimte en dat `model` het model is dat wordt geïmplementeerd. Het `myenv.yml` bestand bevat de Conda-afhankelijkheden die u in stap 1 hebt gemaakt.
 
     ```python
-    from azureml.core.image import Image, ContainerImage
-    image_config = ContainerImage.image_configuration(runtime= "python",
-                                 execution_script="score.py",
-                                 conda_file="myenv.yml",
-                                 docker_file="Dockerfile.steps")
+    from azureml.core.conda_dependencies import CondaDependencies
+    from azureml.core.model import InferenceConfig
+    from azureml.core.environment import Environment
 
-    image = Image.create(name = "myimage",
-                     models = [model],
-                     image_config = image_config, 
-                     workspace = ws)
-    # Print the location of the image in the repository
-    print(image.image_location)
+
+    myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
+    myenv.docker.base_image = NONE
+    myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04\nRUN apt-get update && apt-get install vim -y"
+    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
+    package = Model.package(ws, [model], inference_config)
+    package.wait_for_creation(show_output=True)  # Or show_output=False to hide the Docker build logs.
+    package.pull()
     ```
 
-Zodra de installatie kopie is gemaakt, wordt de locatie van de installatie kopie in het REGI ster weer gegeven. De locatie is vergelijkbaar met de volgende tekst:
+    Zodra de installatie kopie is gemaakt en gedownload, wordt het pad naar de afbeelding (inclusief opslag plaats, naam en label, in dit geval ook de samen vatting) weer gegeven in een bericht dat er ongeveer als volgt uitziet:
 
-```text
-myregistry.azurecr.io/myimage:1
-```
-
-In dit voor beeld is de naam van het REGI ster `myregistry` en heeft de installatie kopie de naam `myimage`. De versie van de installatie kopie is `1`.
-
-### <a name="download-the-image"></a>De installatie kopie downloaden
-
-1. Open een opdracht prompt, Terminal of andere shell en gebruik de volgende [Azure cli](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) -opdracht om te verifiëren bij het Azure-abonnement dat uw Azure machine learning-werk ruimte bevat:
-
-    ```azurecli
-    az login
+    ```text
+    Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. Als u de Azure Container Registry (ACR) wilt verifiëren die uw installatie kopie bevat, gebruikt u de volgende opdracht. Vervang `myregistry` door de afbeelding die wordt geretourneerd tijdens het registreren van de installatie kopie:
-
-    ```azurecli
-    az acr login --name myregistry
-    ```
-
-1. Gebruik de volgende opdracht om de installatie kopie te downloaden naar uw lokale docker. Vervang `myimagepath` door de locatie die wordt geretourneerd bij het registreren van de installatie kopie:
-
-    ```bash
-    docker pull myimagepath
-    ```
-
-    Het pad naar de afbeelding moet vergelijkbaar zijn met `myregistry.azurecr.io/myimage:1`. Als `myregistry` uw REGI ster is, wordt `myimage` uw installatie kopie en `1` de versie van de installatie kopie.
-
-    > [!TIP]
-    > De verificatie van de vorige stap wordt niet voor het laatst gebruikt. Als u lang genoeg wacht tussen de verificatie opdracht en de pull-opdracht, ontvangt u een verificatie fout. Als dit het geval is, moet u zich opnieuw verifiëren.
-
-    De tijd die nodig is om het downloaden te volt ooien, is afhankelijk van de snelheid van uw Internet verbinding. Tijdens het proces wordt een Download status weer gegeven. Zodra het downloaden is voltooid, kunt u de opdracht `docker images` gebruiken om te controleren of het is gedownload.
-
-1. Gebruik de volgende opdracht om een tag toe te voegen om het gemakkelijker te maken om met de afbeelding te werken. Vervang `myimagepath` door de locatie waarde uit stap 2.
+1. Gebruik de volgende opdracht om een tag toe te voegen om het gemakkelijker te maken om met de afbeelding te werken. Vervang `myimagepath` door de locatie waarde uit de vorige stap.
 
     ```bash
     docker tag myimagepath debug:1

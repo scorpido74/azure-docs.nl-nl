@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 70cbc761c7e334ed9b13e3cd7d915102917ff149
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 0266c08052cd3db7d9081d6b617da94703b9ab77
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780195"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896326"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Aan de slag met SQL Database Auditing
 
@@ -86,8 +86,11 @@ In de volgende sectie wordt de configuratie van de controle met behulp van de Az
     ![Navigatievenster][3]
 
 5. **Nieuw** : u hebt nu meerdere opties voor het configureren van de locatie waar audit logboeken worden geschreven. U kunt Logboeken schrijven naar een Azure-opslag account, naar een Log Analytics-werk ruimte voor het gebruik van Azure Monitor-Logboeken of Event Hub voor gebruik met Event Hub. U kunt een wille keurige combi natie van deze opties configureren en er worden controle logboeken naar elke optie geschreven.
-
-   > [!WARNING]
+  
+  > [!NOTE]
+   >Klanten die een onveranderbare logboek opslag voor hun server-of database niveau controle gebeurtenissen willen configureren, moeten de [instructies van Azure Storage] volgen (https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)
+  
+  > [!WARNING]
    > Als u controle inschakelt op Log Analytics, worden er kosten in rekening gebracht op basis van opname tarieven. Houd rekening met de gekoppelde kosten met behulp van deze [optie](https://azure.microsoft.com/pricing/details/monitor/)of overweeg de audit logboeken op te slaan in een Azure-opslag account.
 
     ![opslag opties](./media/sql-database-auditing-get-started/auditing-select-destination.png)

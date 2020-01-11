@@ -232,7 +232,7 @@
     - name: Weergave voor bedrijfskosten is uitgeschakeld
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: Contact opnemen met ondersteuning
-      href: ../azure-supportability/how-to-create-azure-support-request.md
+      href: ../azure-portal/supportability/how-to-create-azure-support-request.md
 - name: Voorbeelden
   items:
     - name: REST-API

@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 1d05b130a98ce816d070bc3ad16e25b867d7dc8a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 8fa73479c5bbe73f0cb6c828a0552bb8dca80d3f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74215124"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894505"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>Een Standard Load Balancer met zonegebonden-frontend maken met behulp van Azure PowerShell
 
-In dit artikel wordt beschreven hoe u een openbaar [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) maakt met een zonegebonden-frontend met behulp van een openbaar IP-adres. Zie [Standard Load Balancer-en beschikbaarheids](load-balancer-standard-availability-zones.md)zones voor meer informatie over de werking van beschikbaarheids zones met Standard Load Balancer. 
+In dit artikel wordt beschreven hoe u een openbaar [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) maakt met een zonegebonden-frontend met behulp van een openbaar IP-adres. Zie voor meer informatie over de werking van beschikbaarheidszones met Standard Load Balancer, [Standard Load Balancer en Beschikbaarheidsset zones](load-balancer-standard-availability-zones.md). 
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 > [!NOTE]
-> Ondersteuning voor Beschikbaarheidszones is beschikbaar voor geselecteerde Azure-resources en regio's en groottefamilies van de virtuele machine. Zie [overzicht van Beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview)voor meer informatie over hoe u aan de slag kunt gaan en welke Azure-resources,-regio's en-Series met VM-grootten u de beschikbaarheids zones wilt proberen. Voor ondersteuning kunt u vragen stellen op [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) of [een Azure-ondersteuningsticket openen](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+> Ondersteuning voor Beschikbaarheidszones is beschikbaar voor geselecteerde Azure-resources en regio's en groottefamilies van de virtuele machine. Zie voor meer informatie over hoe u aan de slag en welke Azure-resources, -regio's en VM-groottefamilies u ze met uitproberen kunt, [overzicht van Beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview). Voor ondersteuning kunt u vragen stellen op [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) of [een Azure-ondersteuningsticket openen](../azure-portal/supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -98,4 +98,4 @@ $lb = New-AzLoadBalancer -ResourceGroupName myResourceGroupZLB -Name 'MyLoadBala
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [Standard Load Balancer-en beschikbaarheids zones](load-balancer-standard-availability-zones.md).
+- Meer informatie over [Standard Load Balancer en Beschikbaarheidsset zones](load-balancer-standard-availability-zones.md).

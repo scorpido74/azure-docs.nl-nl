@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
-ms.openlocfilehash: 0e6631d36f8b8153c34f787f8941b45b7522aceb
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b59f933fedd5f1d3ed3f7972b1a1fe653df31be2
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083929"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75893900"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Problemen met het upgraden van de Microsoft Azure Site Recovery-provider oplossen
 
@@ -27,7 +27,7 @@ De upgrade wordt niet ondersteund omdat er al een hogere versie van de software 
 Voer de volgende stappen uit om een upgrade uit te voeren:
 
 1. Down load de Microsoft Azure Site Recovery Unified Setup:
-   1. Selecteer in de sectie Koppelingen naar momenteel ondersteunde update pakketten van de service- [updates in azure site Recovery](service-updates-how-to.md##links-to-currently-supported-update-rollups) -artikel de provider waarmee u een upgrade uitvoert.
+   1. Selecteer in de sectie Koppelingen naar momenteel ondersteunde update pakketten van de service- [updates in azure site Recovery](service-updates-how-to.md#links-to-currently-supported-update-rollups) -artikel de provider waarmee u een upgrade uitvoert.
    2. Ga op de pagina samen vouwen naar de sectie **informatie over updates** en down load het update pakket voor Microsoft Azure site Recovery Unified Setup.
 
 2. Open een opdracht prompt en navigeer naar de map waarnaar u het Unified Setup-bestand hebt gedownload. Pak de installatie bestanden uit met behulp van de volgende opdracht, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;mappad voor de uitgepakte bestanden&gt;.
@@ -51,7 +51,7 @@ Om het probleem op te lossen.
 1. Start de REGI ster-editor (Regedit. exe) en open de vertakking HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10.
 1. Inspecteer de `Build_Version` sleutel waarde. Als deze is ingesteld op de meest recente versie, vermindert u het versie nummer. Bijvoorbeeld, als de meest recente versie 9,22 is.\* en de `Build_Version` sleutel ingesteld op die waarde, en verminder deze in 9,21.\*.
 1. Down load de nieuwste Microsoft Azure Site Recovery Unified Setup:
-   1. Selecteer in de sectie Koppelingen naar momenteel ondersteunde update pakketten van de service- [updates in azure site Recovery](service-updates-how-to.md##links-to-currently-supported-update-rollups) -artikel de provider waarmee u een upgrade uitvoert.
+   1. Selecteer in de sectie Koppelingen naar momenteel ondersteunde update pakketten van de service- [updates in azure site Recovery](service-updates-how-to.md#links-to-currently-supported-update-rollups) -artikel de provider waarmee u een upgrade uitvoert.
    2. Ga op de pagina samen vouwen naar de sectie **informatie over updates** en down load het update pakket voor Microsoft Azure site Recovery Unified Setup.
 1. Open een opdracht prompt en navigeer naar de map waarnaar u het Unified Setup-bestand hebt gedownload en de Setup-bestanden uit de down load te halen met behulp van de volgende opdracht, MicrosoftAzureSiteRecoveryUnifiedSetup. exe/q/x:&lt;mappad voor de uitgepakte bestanden&gt;.
 

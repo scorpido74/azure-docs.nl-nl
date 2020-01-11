@@ -3,7 +3,7 @@ title: Visual Studio gebruiken op een virtuele Azure-machine
 description: Visual Studio gebruiken op een virtuele machine van Azure.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: PhilLee-MSFT
+author: cathysull
 manager: cathys
 editor: tysonn
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: azure-vs
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.date: 12/04/2019
-ms.author: phillee
+ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 25e5cda3b91dd4b14d0a3d82963404dde7a80aa4
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2977fb6f14468429eb651e4f8a6034c060cdee2f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851397"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895949"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-installatie kopieën op Azure
 Het gebruik van Visual Studio in een vooraf geconfigureerde Azure virtual machine (VM) is een snelle en eenvoudige manier om van niets naar een ontwikkel omgeving te gaan. Systeem kopieën met verschillende Visual Studio-configuraties zijn beschikbaar op de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure).

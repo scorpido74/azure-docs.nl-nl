@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2019
 ms.author: anavin
-ms.openlocfilehash: 3aee53b823af5929ce48045d1addcbc4881b2825
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 768d01346b7697953d44742458c7e507ae7c115a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638269"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894595"
 ---
 # <a name="what-is-azure-virtual-network"></a>Wat is Azure Virtual Network?
 
@@ -79,7 +79,7 @@ Azure routeert verkeer standaard tussen subnetten, verbonden virtuele netwerken,
 
 ## <a name="azure-vnet-limits"></a>Limieten voor Azure VNet
 
-Er zijn bepaalde limieten rond het aantal Azure-resources dat u kunt implementeren. De meeste Azure-netwerk limieten bevinden zich in de maximum waarden. U kunt [bepaalde netwerk limieten echter verhogen](../azure-supportability/networking-quota-requests.md) zoals opgegeven op de [pagina VNet-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits). 
+Er zijn bepaalde limieten rond het aantal Azure-resources dat u kunt implementeren. De meeste Azure-netwerk limieten bevinden zich in de maximum waarden. U kunt [bepaalde netwerk limieten echter verhogen](../azure-portal/supportability/networking-quota-requests.md) zoals opgegeven op de [pagina VNet-limieten](../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits). 
 
 ## <a name="pricing"></a>Prijzen
 

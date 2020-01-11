@@ -41,7 +41,7 @@
       items:
         - name: Azure Portal
           href: tutorial-design-database-using-portal.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: tutorial-design-database-using-cli.md
         - name: Azure Resource Manager-sjabloon
           href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
@@ -55,7 +55,7 @@
           maintainContext: true
 - name: Voorbeelden
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: sample-scripts-azure-cli.md
     - name: Groepsgewijze Java-verbinding
       href: sample-scripts-java-connection-pooling.md
@@ -91,6 +91,8 @@
           href: concepts-data-access-and-security-vnet.md
         - name: Advanced Threat Protection
           href: concepts-data-access-and-security-threat-protection.md
+        - name: Private Link
+          href: concepts-data-access-security-private-link.md
     - name: Bedrijfscontinuïteit
       items:
         - name: Inleiding tot bedrijfscontinuïteit
@@ -134,7 +136,7 @@
           href: concepts-data-in-replication.md
         - name: Leesreplica's
           href: concepts-read-replicas.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Een server beheren
       items:
@@ -144,13 +146,13 @@
       items:
         - name: Azure Portal
           href: howto-manage-firewall-using-portal.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: howto-manage-firewall-using-cli.md
     - name: Een server terugzetten
       items:
         - name: Azure Portal
           href: howto-restore-server-portal.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: howto-restore-server-cli.md
     - name: Een database migreren
       items:
@@ -174,13 +176,13 @@
       items:
         - name: Azure Portal
           href: howto-server-parameters.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
     - name: Opslag automatisch vergroten
       items:
         - name: Azure Portal
           href: howto-auto-grow-storage-portal.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: howto-auto-grow-storage-cli.md
     - name: Serverlogboeken openen
       items:
@@ -188,7 +190,7 @@
           items:
             - name: Azure Portal
               href: howto-configure-server-logs-in-portal.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: howto-configure-server-logs-in-cli.md
         - name: Auditlogboeken
           items:
@@ -222,17 +224,23 @@
       items:
         - name: Azure Portal
           href: howto-manage-vnet-using-portal.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: howto-manage-vnet-using-cli.md
+    - name: Private Link
+      items:
+        - name: Azure Portal
+          href: howto-configure-privatelink-portal.md
+        - name: Azure CLI
+          href: howto-configure-privatelink-cli.md
     - name: Server opnieuw opstarten
       items:
         - name: Azure Portal
           href: howto-restart-server-portal.md
-        - name: Azure-CLI
+        - name: Azure CLI
           href: howto-restart-server-cli.md
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/mysql
     - name: REST-API
       href: /rest/api/mysql

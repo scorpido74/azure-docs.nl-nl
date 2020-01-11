@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6203d78ee8d9c0a9837d03859856c5d0265422ac
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 47d4c1de12823eaf0aae5beeff776d50f8f5a6a7
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772326"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896369"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>Houd metrische gegevens bij en implementeer modellen met MLflow en Azure Machine Learning (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -228,17 +228,17 @@ run.get_metrics()
 ws.get_details()
 ```
 
-## <a name="deploy-mlflow-models-as-a-web-service"></a>MLflow-modellen implementeren als een webservice
+<!-- ## Deploy MLflow models as a web service
 
-Als u uw MLflow experimenten als een Azure Machine Learning-webservice implementeert, kunt u gebruikmaken van Azure Machine Learning de mogelijkheden voor model beheer en detectie van gegevens drift en deze Toep assen op uw productie modellen.
+Deploying your MLflow experiments as an Azure Machine Learning web service allows you to leverage the Azure Machine Learning model management and data drift detection capabilities and apply them to your production models.
 
-In het volgende diagram ziet u dat met de API voor MLflow implementeren uw bestaande MLflow-modellen kunnen worden geïmplementeerd als een Azure Machine Learning-webservice, ondanks hun Frameworks--PyTorch, tensor flow, scikit-leren, ONNX, enzovoort, en uw productie modellen beheren in uw werk ruimte.
+The following diagram demonstrates that with the MLflow deploy API you can deploy your existing MLflow models as an Azure Machine Learning web service, despite their frameworks--PyTorch, Tensorflow, scikit-learn, ONNX, etc., and manage your production models in your workspace.
 
-![mlflow met Azure machine learning diagram](./media/how-to-use-mlflow/mlflow-diagram-deploy.png)
+![mlflow with azure machine learning diagram](./media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
-### <a name="log-your-model"></a>Uw model registreren
+### Log your model
 
-Voordat u kunt implementeren, moet u ervoor zorgen dat uw model wordt opgeslagen, zodat u ernaar kunt verwijzen en de bijbehorende pad-locatie voor de implementatie. In uw trainings script moet code vergelijkbaar zijn met de volgende methode [mlflow. sklearn. log_model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) waarmee uw model wordt opgeslagen in de opgegeven uitvoer Directory. 
+Before you can deploy, be sure that your model is saved so you can reference it and its path location for deployment. In your training script, there should be code similar to the following [mlflow.sklearn.log_model()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) method, that saves your model to the specified outputs directory. 
 
 ```python
 # change sklearn to pytorch, tensorflow, etc. based on your experiment's framework 
@@ -248,11 +248,11 @@ import mlflow.sklearn
 mlflow.sklearn.log_model(regression_model, model_save_path)
 ```
 >[!NOTE]
-> Neem de para meter `conda_env` op voor het door geven van een woordenboek weergave van de afhankelijkheden en de omgeving waarin dit model moet worden uitgevoerd.
+> Include the `conda_env` parameter to pass a dictionary representation of the dependencies and environment this model should be run in.
 
-### <a name="retrieve-model-from-previous-run"></a>Model ophalen uit vorige uitvoering
+### Retrieve model from previous run
 
-Als u de uitvoering wilt ophalen, moet u de run-ID en het pad in de uitvoerings geschiedenis van waar het model is opgeslagen, hebben. 
+To retrieve the run, you need the run ID and the path in run history of where the model was saved. 
 
 ```python
 # gets the list of runs for your experiment as an array
@@ -265,11 +265,11 @@ runid = runs[0].id
 model_save_path = 'model'
 ```
 
-### <a name="create-docker-image"></a>Een Docker-installatiekopie maken
+### Create Docker image
 
-De functie `mlflow.azureml.build_image()` bouwt een docker-installatie kopie van het opgeslagen model op een op een framework bewuste manier. Er wordt automatisch een bedrijfsspecifieke wrapper-code voor het decoderen van het Framework gemaakt en er worden pakket afhankelijkheden voor u opgegeven. Geef het pad naar het model, de werk ruimte, de run-ID en andere para meters op.
+The `mlflow.azureml.build_image()` function builds a Docker image from the saved model in a framework-aware manner. It automatically creates the framework-specific inferencing wrapper code and specifies package dependencies for you. Specify the model path, your workspace, run ID and other parameters.
 
-Met de volgende code wordt een docker-installatie kopie gemaakt met behulp van de uitvoering van *:/< run. id >/model* als het model_uri-pad voor een experiment met Scikit-leren.
+The following code builds a docker image using *runs:/<run.id>/model* as the model_uri path for a Scikit-learn experiment.
 
 ```python
 import mlflow.azureml
@@ -280,17 +280,17 @@ azure_image, azure_model = mlflow.azureml.build_image(model_uri='runs:/{}/{}'.fo
                                                       image_name='sklearn-image',
                                                       synchronous=True)
 ```
-Het maken van de docker-installatie kopie kan enkele minuten duren. 
+The creation of the Docker image can take several minutes. 
 
-### <a name="deploy-the-docker-image"></a>De docker-installatie kopie implementeren 
+### Deploy the Docker image 
 
-Nadat de installatie kopie is gemaakt, gebruikt u de Azure Machine Learning SDK om de installatie kopie te implementeren als een webservice.
+After the image is created, use the Azure Machine Learning SDK to deploy the image as a web service.
 
-Geef eerst de implementatie configuratie op. Azure container instance (ACI) is een geschikte keuze voor een snelle ontwikkel-en test implementatie, terwijl Azure Kubernetes service (AKS) geschikt is voor schaal bare productie-implementaties.
+First, specify the deployment configuration. Azure Container Instance (ACI) is a suitable choice for a quick dev-test deployment, while Azure Kubernetes Service (AKS) is suitable for scalable production deployments.
 
-#### <a name="deploy-to-aci"></a>Implementeren naar ACI
+#### Deploy to ACI
 
-Stel uw implementatie configuratie in met de methode [deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . U kunt ook Tags en beschrijvingen toevoegen om uw web-service bij te houden.
+Set up your deployment configuration with the [deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) method. You can also add tags and descriptions to help keep track of your web service.
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -303,7 +303,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores=1,
                                                 location='eastus2')
 ```
 
-Implementeer vervolgens de installatie kopie met behulp van de methode Azure Machine Learning SDK [deploy_from_image ()](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-) . 
+Then, deploy the image by using the Azure Machine Learning SDK [deploy_from_image()](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-) method. 
 
 ```python
 webservice = Webservice.deploy_from_image( image=azure_image, 
@@ -313,11 +313,11 @@ webservice = Webservice.deploy_from_image( image=azure_image,
 
 webservice.wait_for_deployment(show_output=True)
 ```
-#### <a name="deploy-to-aks"></a>Implementeren naar AKS
+#### Deploy to AKS
 
-Als u wilt implementeren naar AKS, maakt u eerst een AKS-cluster en gaat u naar de docker-installatie kopie die u wilt implementeren. Voor dit voor beeld gaat u naar de eerder gemaakte installatie kopie van de ACI-implementatie.
+To deploy to AKS, first create an AKS cluster and bring over the Docker image you want to deploy. For this example, bring over the previously created image from the ACI deployment.
 
-Gebruik de klasse [Image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py) om de installatie kopie van de vorige ACI-implementatie te verkrijgen. 
+To get the image from the previous ACI deployment use the [Image](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image.image?view=azure-ml-py) class. 
 
 ```python
 from azureml.core.image import Image
@@ -326,7 +326,7 @@ from azureml.core.image import Image
 myimage = Image(workspace=ws, name='sklearn-image') 
 ```
 
-Maak een AKS-cluster met behulp van de methode [ComputeTarget. Create ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-) . Het kan 20-25 minuten duren om een nieuw cluster te maken.
+Create an AKS cluster using the [ComputeTarget.create()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-) method. It may take 20-25 minutes to create a new cluster.
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -346,7 +346,7 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-Stel uw implementatie configuratie in met de methode [deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . U kunt ook Tags en beschrijvingen toevoegen om uw web-service bij te houden.
+Set up your deployment configuration with the [deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) method. You can also add tags and descriptions to help keep track of your web service.
 
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
@@ -359,7 +359,7 @@ aks_config = AksWebservice.deploy_configuration(enable_app_insights=True)
 service_name ='aks-service'
 ```
 
-Implementeer vervolgens de installatie kopie met behulp van de methode Azure Machine Learning SDK [deploy_from_image ()](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-) . 
+Then, deploy the image by using the Azure Machine Learning SDK [deploy_from_image()](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-) method. 
 
 ```python
 # Webservice creation using single command
@@ -372,27 +372,28 @@ aks_service = Webservice.deploy_from_image( workspace=ws,
 aks_service.wait_for_deployment(show_output=True)
 ```
 
-De implementatie van de service kan enkele minuten duren.
+The service deployment can take several minutes.
 
-## <a name="clean-up-resources"></a>Resources opschonen
+## Clean up resources
 
-Als u niet van plan bent om de vastgelegde metrische gegevens en artefacten in uw werk ruimte te gebruiken, is de mogelijkheid om ze afzonderlijk te verwijderen, momenteel niet beschikbaar. Verwijder in plaats daarvan de resource groep die het opslag account en de werk ruimte bevat, zodat u geen kosten in rekening brengt:
+If you don't plan to use the logged metrics and artifacts in your workspace, the ability to delete them individually is currently unavailable. Instead, delete the resource group that contains the storage account and workspace, so you don't incur any charges:
 
-1. Selecteer **Resourcegroepen** links in Azure Portal.
+1. In the Azure portal, select **Resource groups** on the far left.
 
-   ![Verwijderen in Azure Portal](./media/how-to-use-mlflow/delete-resources.png)
+   ![Delete in the Azure portal](./media/how-to-use-mlflow/delete-resources.png)
 
-1. Selecteer de resourcegroep die u eerder hebt gemaakt uit de lijst.
+1. From the list, select the resource group you created.
 
-1. Selecteer **Resourcegroep verwijderen**.
+1. Select **Delete resource group**.
 
-1. Voer de naam van de resourcegroup in. Selecteer vervolgens **Verwijderen**.
+1. Enter the resource group name. Then select **Delete**.
 
 
-## <a name="example-notebooks"></a>Voorbeeld-laptops
+## Example notebooks
 
-De [MLflow met Azure ml-notebooks](https://aka.ms/azureml-mlflow-examples) demonstreren en uitvouwen op concepten die in dit artikel worden gepresenteerd.
+The [MLflow with Azure ML notebooks](https://aka.ms/azureml-mlflow-examples) demonstrate and expand upon concepts presented in this article.
 
-## <a name="next-steps"></a>Volgende stappen
-* [Uw modellen beheren](concept-model-management-and-deployment.md).
-* Bewaak uw productie modellen voor [gegevens drift](how-to-monitor-data-drift.md).
+## Next steps
+* [Manage your models](concept-model-management-and-deployment.md).
+* Monitor your production models for [data drift](how-to-monitor-data-drift.md).
+ -->

@@ -8,12 +8,12 @@ ms.author: klam
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.openlocfilehash: 80eadcadad58cc126a9213c9e5bc5c65c1eb5c6c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 1c21a84bd9aaa259d0459b4e16c7a62aabaa615d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793418"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896387"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Prijs model voor Azure Logic Apps
 
@@ -29,7 +29,7 @@ Acties omvatten bijvoorbeeld:
 
 * Triggers, die speciale acties zijn. Voor alle Logic apps is een trigger als de eerste stap vereist.
 * [Ingebouwde of systeem eigen acties](../connectors/apis-list.md#built-in) , zoals http, aanroepen naar Azure Functions en API Management, enzovoort
-* Aanroepen naar [beheerde connectors](../connectors/apis-list.md##managed-connectors) , zoals Outlook 365, Dropbox, enzovoort
+* Aanroepen naar [beheerde connectors](../connectors/apis-list.md#managed-connectors) , zoals Outlook 365, Dropbox, enzovoort
 * Stappen voor controle stroom, zoals lussen, voorwaardelijke instructies, enzovoort
 
 [Standaard](../connectors/apis-list.md#managed-connectors) connectors worden in rekening gebracht tegen de [standaard prijs](https://azure.microsoft.com/pricing/details/logic-apps)van de verbinding. Algemeen beschik bare [Enter prise](../connectors/apis-list.md#managed-connectors) -connectors worden in rekening gebracht tegen de [prijs voor Enter prise connector](https://azure.microsoft.com/pricing/details/logic-apps), terwijl open bare preview Enter prise-connectors in rekening worden gebracht tegen de [standaard prijs](https://azure.microsoft.com/pricing/details/logic-apps)voor
