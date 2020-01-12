@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: de2b79c5016b44011a14c1071eab6579f3a0b6df
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e756617a700d258078e84a3fa11c8aceb6f4dd88
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650252"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903267"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>De definitie van een beheerde toepassing maken en publiceren
 
@@ -18,7 +18,7 @@ ms.locfileid: "75650252"
 
 U kunt door Azure [beheerde toepassingen](overview.md) maken en publiceren die bedoeld zijn voor leden van uw organisatie. Zo kan een IT-afdeling beheerde toepassingen publiceren die voldoen aan de organisatiestandaarden. Deze beheerde toepassingen zijn beschikbaar via de servicecatalogus, niet Azure Marketplace.
 
-U moet het volgende doen om een beheerde toepassing te publiceren voor de servicecatalogus:
+Als u een beheerde toepassing naar uw Azure-Service catalogus wilt publiceren, moet u het volgende doen:
 
 * Een sjabloon maken die de resources definieert die met de beheerde toepassing moeten worden geïmplementeerd.
 * De elementen van de gebruikersinterface voor de portal definiëren bij het implementeren van de beheerde toepassing.
@@ -207,6 +207,108 @@ New-AzManagedApplicationDefinition `
   -Authorization "${groupID}:$ownerID" `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
+
+## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Uw eigen opslag plaatsen voor de definitie van de beheerde toepassing
+U kunt ervoor kiezen om de definitie van de beheerde toepassing op te slaan in een opslag account dat u tijdens het maken hebt gekregen, zodat de locatie en toegang volledig door u kan worden beheerd door u voor uw regelgevings behoeften.
+
+> [!NOTE]
+> Uw eigen opslag ruimte wordt alleen ondersteund met ARM-sjablonen of REST API implementaties van de definitie van de beheerde toepassing.
+
+### <a name="select-your-storage-account"></a>Uw opslag account selecteren
+U moet [een opslag account maken](../../storage/common/storage-account-create.md) dat de definitie van de beheerde toepassing bevat voor gebruik met Service Catalog.
+
+Kopieer de resource-ID van het opslag account. Deze wordt later gebruikt bij het implementeren van de definitie.
+
+### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>Stel de roltoewijzing voor ' toestel resource provider ' in uw opslag account in
+Voordat de definitie van de beheerde toepassing kan worden geïmplementeerd in uw opslag account, moet u Inzender machtigingen verlenen aan de rol van de **resource provider** van het apparaat, zodat de definitie bestanden kunnen worden geschreven naar de container van uw opslag account.
+
+1. Ga in [Azure Portal](https://portal.azure.com) naar uw opslagaccount.
+1. Selecteer **toegangs beheer (IAM)** om de instellingen voor toegangs beheer voor het opslag account weer te geven. Selecteer het **tabblad roltoewijzingen om de lijst** met roltoewijzingen weer te geven.
+1. Selecteer de rol **Inzender** in het venster **roltoewijzing toevoegen** . 
+1. Selecteer in het veld **toegang toewijzen aan** de optie **Azure AD-gebruiker,-groep of-Service-Principal**.
+1. Onder **Selecteer** zoeken naar de rol van de provider van het **apparaat** en selecteer deze.
+1. Sla de roltoewijzing op.
+
+### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>De definitie van de beheerde toepassing implementeren met een ARM-sjabloon 
+
+Gebruik de volgende ARM-sjabloon om uw ingepakte, beheerde toepassing te implementeren als een nieuwe definitie van een beheerde toepassing in de Service catalogus waarvan de definitie bestanden worden opgeslagen en onderhouden in uw eigen opslag account:
+   
+```json
+    {
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        },
+        "applicationName": {
+            "type": "string",
+            "metadata": {
+                "description": "Managed Application name"
+            }
+        },
+        "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS",
+        "Premium_LRS"
+      ],
+      "metadata": {
+        "description": "Storage Account type"
+      }
+    },
+        "definitionStorageResourceID": {
+            "type": "string",
+            "metadata": {
+                "description": "Storage account resource ID for where you're storing your definition"
+            }
+        },
+        "_artifactsLocation": {
+            "type": "string",
+            "metadata": {
+                "description": "The base URI where artifacts required by this template are located."
+            }
+        }
+    },
+    "variables": {
+        "lockLevel": "None",
+        "description": "Sample Managed application definition",
+        "displayName": "Sample Managed application definition",
+        "managedApplicationDefinitionName": "[parameters('applicationName')]",
+        "packageFileUri": "[parameters('_artifactsLocation')]",
+        "defLocation": "[parameters('definitionStorageResourceID')]",
+        "managedResourceGroupId": "[concat(subscription().id,'/resourceGroups/', concat(parameters('applicationName'),'_managed'))]",
+        "applicationDefinitionResourceId": "[resourceId('Microsoft.Solutions/applicationDefinitions',variables('managedApplicationDefinitionName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Solutions/applicationDefinitions",
+            "apiVersion": "2019-07-01",
+            "name": "[variables('managedApplicationDefinitionName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "lockLevel": "[variables('lockLevel')]",
+                "description": "[variables('description')]",
+                "displayName": "[variables('displayName')]",
+                "packageFileUri": "[variables('packageFileUri')]",
+                "storageAccountId": "[variables('defLocation')]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+We hebben een nieuwe eigenschap met de naam **storageAccountId** toegevoegd aan de eigenschappen van uw applicationDefintion en geven de opslag account-id op die u wilt opslaan als waarde:
+
+U kunt controleren of de definitie bestanden van de toepassing worden opgeslagen in het opslag account in een container met de naam **applicationdefinitions**.
+
+> [!NOTE]
+> Voor extra beveiliging kunt u een definitie van een beheerde toepassing maken en deze opslaan in een [Azure Storage-account-BLOB waarvoor versleuteling is ingeschakeld](../../storage/common/storage-service-encryption.md). De inhoud van de definitie wordt versleuteld via de versleutelings opties van het opslag account. Alleen gebruikers met machtigingen voor het bestand kunnen de definitie in de Service catalogus zien.
 
 ### <a name="make-sure-users-can-see-your-definition"></a>Ervoor zorgen dat gebruikers de definitie kunnen zien
 

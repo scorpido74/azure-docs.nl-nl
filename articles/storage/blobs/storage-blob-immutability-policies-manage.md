@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 79d7454722900eb1d9d6280e35313ef2f4a5cd54
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 68b144a838f0c6e65f3e399f610644315d109fde
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555676"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903483"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>Onveranderbaarheid-beleid instellen en beheren voor Blob Storage
 
@@ -57,9 +57,9 @@ In dit artikel wordt beschreven hoe u Onveranderbaarheid-beleid kunt instellen e
 
     ![Vak ' label naam ' onder het beleids type](media/storage-blob-immutability-policies-manage/portal-image-set-legal-hold-tags.png)
 
-9. Als u een juridische blok kering wilt wissen, verwijdert u gewoon de code van de toegepaste juridische id.
+9. Als u een juridische blok kering wilt wissen, verwijdert u de code van de toegepaste juridische id.
 
-### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 De functie is opgenomen in de volgende opdracht groepen: `az storage container immutability-policy` en `az storage container legal-hold`. Voer `-h` hierop uit om de opdrachten weer te geven.
 
@@ -73,7 +73,7 @@ De AZ. Storage-module ondersteunt onveranderbare opslag.  Voer de volgende stapp
 2. Verwijder alle eerdere installatie van Azure PowerShell.
 3. Installeer Azure PowerShell: `Install-Module Az –Repository PSGallery –AllowClobber`.
 
-Het volgende Power shell-voorbeeld script is ter referentie. Met dit script maakt u een nieuw opslag account en een nieuwe container. Vervolgens wordt uitgelegd hoe u juridische bewaringen instelt en wist, een op tijd gebaseerd Bewaar beleid maakt en vergrendelt (ook wel een Onveranderbaarheid-beleid genoemd) en het Bewaar interval uitbreiden.
+Het volgende Power shell-voorbeeld script is ter referentie. Met dit script maakt u een nieuw opslag account en een nieuwe container. Vervolgens wordt uitgelegd hoe u wettelijke wacht ruimten instelt en wist, een op tijd gebaseerd Bewaar beleid maakt en vergrendelt (ook wel een Onveranderbaarheid-beleid genoemd) en het Bewaar interval uitbreidt.
 
 Maak eerst een Azure Storage-account:
 
@@ -165,6 +165,20 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 ```
 
 ---
+
+## <a name="enabling-allow-protected-append-blobs-writes"></a>Schrijven van beveiligde toevoeg-blobs toestaan inschakelen
+
+Op dit moment hebt u alleen toegang tot de `allowProtectedAppendWrites` instelling voor Bewaar beleid op basis van tijd via deze specifieke [Portal koppeling](https://aka.ms/immutableappendblobs). 
+
+> [!IMPORTANT] 
+>  De instelling schrijven beveiligde toevoeg-blobs toestaan onder Bewaar periode is momenteel beschikbaar en alleen zichtbaar in de volgende regio's:
+> - VS - oost
+> - VS - zuid-centraal
+> - VS - west 2
+>
+> Zie voor meer informatie [toestaan dat beveiligde toevoeg-blobs worden geschreven](storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
+
+![Extra schrijf bewerkingen voor toevoegen toestaan](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

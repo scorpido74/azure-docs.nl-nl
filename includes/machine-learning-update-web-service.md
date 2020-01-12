@@ -2,19 +2,21 @@
 author: Blackmist
 ms.service: machine-learning
 ms.topic: include
-ms.date: 11/06/2019
+ms.date: 01/10/2019
 ms.author: larryfr
-ms.openlocfilehash: 04e8f1f212eb4fa7cf4d8e19132107f2ddb53729
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 469d87a828df19ca30260cada9dcea43859be9e0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927023"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901710"
 ---
 Als u een webservice wilt bijwerken, gebruikt u de methode `update`. U kunt de webservice bijwerken voor het gebruik van een nieuw model, een nieuw invoer script of nieuwe afhankelijkheden die kunnen worden opgegeven in een Afleidings configuratie. Zie de documentatie voor [webservice-update](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py#update--args-)voor meer informatie.
 
 > [!IMPORTANT]
 > Wanneer u een nieuwe versie van een model maakt, moet u elke service die u wilt gebruiken hand matig bijwerken.
+>
+> U kunt de SDK niet gebruiken om een webservice bij te werken die is gepubliceerd vanuit de Azure Machine Learning Designer.
 
 **De SDK gebruiken**
 

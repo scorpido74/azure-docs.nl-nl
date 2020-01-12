@@ -13,19 +13,21 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: b1219153b2b2a0246110d2d9a7a84d16cc2a25f0
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 95d0e1dfc977d77f7cd9853945dabefee3bb7bbd
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75707556"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903410"
 ---
 # <a name="virtual-network-service-tags"></a>Service tags van virtueel netwerk 
 <a name="network-service-tags"></a>
 
-Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde Azure-service. Zo kunt u de complexiteit van regel matige updates voor netwerk beveiligings regels minimaliseren. U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) of [Azure firewall](https://docs.microsoft.com/azure/firewall/service-tags). 
+Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde Azure-service. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het service label en werkt de servicetag automatisch bij met gewijzigde adressen, zodat de complexiteit van regel matige updates voor netwerk securitiy regels wordt geminimaliseerd. 
 
-U kunt service tags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door de naam van de service label (bijvoorbeeld **ApiManagement**) op te geven in het juiste *bron* -of *doel* veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen.
+U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) of [Azure firewall](https://docs.microsoft.com/azure/firewall/service-tags). Gebruik service tags in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door de naam van de service label (bijvoorbeeld **ApiManagement**) op te geven in het juiste *bron* of *doel* veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. 
+
+U kunt service tags gebruiken om netwerk isolatie te bereiken en uw Azure-resources te beveiligen via het algemene Internet tijdens het openen van Azure-Services met open bare eind punten. Maak regels voor binnenkomende/uitgaande netwerk beveiligings groepen om verkeer naar/van **Internet** te weigeren en verkeer naar/van **Cloud** of andere [beschik bare service Tags]() van specifieke Azure-Services toe te staan. 
 
 ## <a name="available-service-tags"></a>Beschik bare service Tags
 De volgende tabel bevat alle service tags die beschikbaar zijn voor gebruik in regels voor de [netwerk beveiligings groep](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) .

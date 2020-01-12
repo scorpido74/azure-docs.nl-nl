@@ -1,14 +1,14 @@
 ---
 title: 'Snelstartgids: nieuwe beleids toewijzing met Azure CLI'
 description: In deze Quick Start gebruikt u Azure CLI om een Azure Policy toewijzing te maken om niet-compatibele resources te identificeren.
-ms.date: 11/25/2019
+ms.date: 01/11/2020
 ms.topic: quickstart
-ms.openlocfilehash: 80dbccdb728da94d9f9fdd0aeb506ade40fd7394
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 2bc5c77ac5c2ac0a1f4c80d9b770d9e95d7864cf
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482640"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903516"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Snelstartgids: een beleids toewijzing maken om niet-compatibele resources te identificeren met Azure CLI
 
@@ -58,17 +58,16 @@ De voorgaande opdracht maakt gebruik van de volgende informatie:
 
 Als u de resources wilt zien die niet compatibel zijn onder deze nieuwe toewijzing, voert u de volgende opdrachten uit om de id van de beleidstoewijzing te verkrijgen:
 
-```azurepowershell-interactive
-$policyAssignment = Get-AzPolicyAssignment | Where-Object { $_.Properties.DisplayName -eq 'Audit VMs without managed disks Assignment' }
-$policyAssignment.PolicyAssignmentId
+```azurecli-interactive
+az policy assignment list --query "[?displayName=='Audit VMs without managed disks Assignment'].id"
 ```
 
-Zie [Get-AzPolicyAssignment](/powershell/module/az.resources/get-azpolicyassignment) voor meer informatie over beleidstoewijzings-id's.
+Zie [AZ Policy Assignment](/cli/azure/policy/assignment)(Engelstalig) voor meer informatie over beleids toewijzings-id's.
 
 Voer daarna de volgende opdracht uit om de resource-id's te verkrijgen van de niet-compatibele resources. Deze worden uitgevoerd naar een JSON-bestand:
 
 ```console
-armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2017-12-12-preview&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
+armclient post "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.PolicyInsights/policyStates/latest/queryResults?api-version=2019-09-01&$filter=IsCompliant eq false and PolicyAssignmentId eq '<policyAssignmentID>'&$apply=groupby((ResourceId))" > <json file to direct the output with the resource IDs into>
 ```
 
 De resultaten zien er ongeveer als volgt uit:

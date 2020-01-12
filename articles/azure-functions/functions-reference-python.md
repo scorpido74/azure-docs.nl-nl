@@ -3,12 +3,12 @@ title: Python-ontwikkelaars referentie voor Azure Functions
 description: Meer informatie over het ontwikkelen van functies met python
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: adea5603c997380dde6731b53bc99ba7443e310b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 374770c50300b9ca37253b3323a02c3371bfa521
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768999"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903238"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions python-ontwikkelaars handleiding
 
@@ -382,7 +382,7 @@ Voor lokale ontwikkeling worden toepassings instellingen [onderhouden in het bes
 
 ## <a name="python-version"></a>Python-versie 
 
-Momenteel ondersteunt Azure Functions zowel python 3.6. x als 3.7. x (officiële CPython-distributies). Wanneer lokaal wordt uitgevoerd, gebruikt de runtime de beschik bare python-versie. Als u een specifieke python-versie wilt aanvragen wanneer u de functie-app in azure maakt, gebruikt u de optie `--runtime-version` van de [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) opdracht.  
+Momenteel ondersteunt Azure Functions zowel python 3.6. x als 3.7. x (officiële CPython-distributies). Wanneer lokaal wordt uitgevoerd, gebruikt de runtime de beschik bare python-versie. Als u een specifieke python-versie wilt aanvragen wanneer u de functie-app in azure maakt, gebruikt u de optie `--runtime-version` van de [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) opdracht. Versie wijziging is alleen toegestaan bij het maken van functie-app.  
 
 ## <a name="package-management"></a>Pakketbeheer
 

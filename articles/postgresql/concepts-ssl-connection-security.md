@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 21b4dffa135e1311be8c738c634de22304665695
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 4f7fd3ea1c83e1bf5183aedf4fe894809884414c
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768143"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903512"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>SSL-connectiviteit configureren in Azure Database for PostgreSQL-één server
 Azure Database for PostgreSQL geven de voor keur aan uw client toepassingen te koppelen aan de PostgreSQL-service met behulp van Secure Sockets Layer (SSL). Het afdwingen van SSL-verbindingen tussen uw database server en uw client toepassingen biedt beveiliging tegen man-in-the-middle-aanvallen door de gegevens stroom tussen de server en uw toepassing te versleutelen.
@@ -25,6 +25,9 @@ De verbindings reeksen die vooraf zijn gedefinieerd in de instellingen voor verb
 
 ## <a name="configure-enforcement-of-ssl"></a>Afdwinging van SSL configureren
 U kunt eventueel het afdwingen van SSL-connectiviteit uitschakelen. Microsoft Azure wordt aanbevolen SSL- **verbindings instelling afdwingen** altijd in te scha kelen voor verbeterde beveiliging.
+
+> [!NOTE]
+> Op dit moment wordt de TLS-versie die wordt ondersteund voor Azure Database for PostgreSQL TLS 1,0, TLS 1,1, TLS 1,2.
 
 ### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
 Ga naar uw Azure Database for PostgreSQL-server en klik op **verbindings beveiliging**. Gebruik de wissel knop om de instelling SSL- **verbinding afdwingen** in of uit te scha kelen. Klik vervolgens op **Opslaan**. 

@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: ad6e912f976095ae7d8fd5276b0f1365566c181a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 4df22108591fe3f80078bce050081c4953443847
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74143792"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903002"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>VPN-client configuratie bestanden maken en installeren voor systeem eigen Azure-certificaat verificatie P2S-configuraties
 
@@ -107,10 +107,10 @@ Voer de volgende stappen uit om de systeem eigen VPN-client te configureren voor
    ![certificaat](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. **Kies een identiteit** om een lijst met certificaten weer te geven waaruit u kunt kiezen. Selecteer het juiste certificaat en klik vervolgens op **door gaan**.
 
-   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![identiteit](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. Geef in het veld **lokale id** de naam van het certificaat op (uit stap 6). In dit voor beeld is het ' ikev2Client.com '. Klik vervolgens op de knop **Toep assen** om de wijzigingen op te slaan.
 
-   ![Toep assen](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
+   ![aanvragen](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 9. Klik in het dialoog venster **netwerk** op **Toep assen** om alle wijzigingen op te slaan. Klik vervolgens op **verbinding maken** om de P2S-verbinding met Azure VNet te starten.
 
 ## <a name="linuxgui"></a>Linux (strongSwan GUI)

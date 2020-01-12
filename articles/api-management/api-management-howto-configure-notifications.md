@@ -11,16 +11,17 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 01/10/2020
 ms.author: apimpm
-ms.openlocfilehash: e0477b1ba044004eaf95cc138bc2e19f40379566
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 786a9e26003a7afb98307e0bd7fae94c42a2f00d
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442681"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902489"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Meldingen en e-mailsjablonen configureren in Azure API Management
+
 API Management biedt de mogelijkheid om meldingen te configureren voor specifieke gebeurtenissen en om de e-mail sjablonen te configureren die worden gebruikt om te communiceren met de beheerders en ontwikkel aars van een API Management-exemplaar. In dit artikel wordt beschreven hoe u meldingen kunt configureren voor de beschik bare gebeurtenissen en vindt u een overzicht van het configureren van de e-mail sjablonen die worden gebruikt voor deze gebeurtenissen.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -31,41 +32,46 @@ Als u geen API Management service-exemplaar hebt, voltooit u de volgende Snelsta
 
 ## <a name="publisher-notifications"> </a>Meldingen configureren
 
-1. Selecteer uw exemplaar van **API Management** .
-2. Klik op **meldingen** om de beschik bare meldingen weer te geven.
+1.  Selecteer uw exemplaar van **API Management** .
+2.  Klik op **meldingen** om de beschik bare meldingen weer te geven.
 
     ![Meldingen van de uitgever][api-management-publisher-notifications]
 
     De volgende lijst met gebeurtenissen kan worden geconfigureerd voor meldingen.
 
-   * **Abonnements aanvragen (goed keuring vereist)** : de opgegeven e-mail ontvangers en gebruikers ontvangen e-mail meldingen over abonnements aanvragen voor API-producten waarvoor goed keuring is vereist.
-   * **Nieuwe abonnementen** : de opgegeven e-mail ontvangers en gebruikers ontvangen e-mail meldingen over nieuwe API-product abonnementen.
-   * **Application Gallery-aanvragen** : de opgegeven e-mail ontvangers en gebruikers ontvangen e-mail meldingen wanneer er nieuwe toepassingen worden verzonden naar de toepassings galerie.
-   * **BCC** -de opgegeven e-mail ontvangers en gebruikers ontvangen e-mail blind carbon kopieën van alle e-mails die naar ontwikkel aars worden verzonden.
-   * **Nieuw probleem of opmerking** : de ontvangers van het e-mail bericht en gebruikers ontvangen e-mail meldingen wanneer een nieuw probleem of een opmerking wordt verzonden op de ontwikkelaars Portal.
-   * **Account bericht sluiten** : de opgegeven e-mail ontvangers en gebruikers ontvangen e-mail meldingen wanneer een account wordt gesloten.
-   * **Quota limiet voor abonnementen nadert** : de volgende e-mail ontvangers en gebruikers ontvangen e-mail meldingen wanneer het abonnements gebruik bijna de gebruiks quota wordt bereikt.
+    -   **Abonnements aanvragen (goed keuring vereist)** : de opgegeven e-mail ontvangers en gebruikers ontvangen e-mail meldingen over abonnements aanvragen voor API-producten waarvoor goed keuring is vereist.
+    -   **Nieuwe abonnementen** : de opgegeven e-mail ontvangers en gebruikers ontvangen e-mail meldingen over nieuwe API-product abonnementen.
+    -   **Application Gallery-aanvragen** : de opgegeven e-mail ontvangers en gebruikers ontvangen e-mail meldingen wanneer er nieuwe toepassingen worden verzonden naar de toepassings galerie.
+    -   **BCC** -de opgegeven e-mail ontvangers en gebruikers ontvangen e-mail blind carbon kopieën van alle e-mails die naar ontwikkel aars worden verzonden.
+    -   **Nieuw probleem of opmerking** : de ontvangers van het e-mail bericht en gebruikers ontvangen e-mail meldingen wanneer een nieuw probleem of een opmerking wordt verzonden op de ontwikkelaars Portal.
+    -   **Account bericht sluiten** : de opgegeven e-mail ontvangers en gebruikers ontvangen e-mail meldingen wanneer een account wordt gesloten.
+    -   **Quota limiet voor abonnementen nadert** : de volgende e-mail ontvangers en gebruikers ontvangen e-mail meldingen wanneer het abonnements gebruik bijna de gebruiks quota wordt bereikt.
 
-     Voor elke gebeurtenis kunt u e-mail ontvangers opgeven met behulp van het tekstvak e-mail adres of u kunt gebruikers selecteren in een lijst.
+        > [!NOTE]
+        > Meldingen worden alleen geactiveerd door het [quotum beleid voor abonnementen](api-management-access-restriction-policies.md#SetUsageQuota) . [Quota per sleutel](api-management-access-restriction-policies.md#SetUsageQuotaByKey) beleid genereert geen meldingen.
 
-3. Geef de e-mail adressen op die moeten worden gewaarschuwd in het tekstvak e-mail adres. Als u meerdere e-mail adressen hebt, kunt u deze scheiden met komma's.
+    Voor elke gebeurtenis kunt u e-mail ontvangers opgeven met behulp van het tekstvak e-mail adres of u kunt gebruikers selecteren in een lijst.
+
+3.  Geef de e-mail adressen op die moeten worden gewaarschuwd in het tekstvak e-mail adres. Als u meerdere e-mail adressen hebt, kunt u deze scheiden met komma's.
 
     ![Ontvangers van meldingen][api-management-email-addresses]
-4. Klik op **Toevoegen**.
+
+4.  Klik op **Toevoegen**.
 
 ## <a name="email-templates"> </a>Meldings sjablonen configureren
+
 API Management biedt meldings sjablonen voor de e-mail berichten die worden verzonden in de cursus van het beheer en het gebruik van de service. De volgende e-mail sjablonen worden gegeven.
 
-* Inzending van de toepassings galerie goedgekeurd
-* Farewell-brief voor ontwikkel aars
-* Melding voor de quota limiet voor ontwikkel aars
-* Gebruiker uitnodigen
-* Nieuwe opmerking toegevoegd aan een probleem
-* Nieuw probleem ontvangen
-* Nieuw abonnement geactiveerd
-* Bevestiging van verlenging van abonnement
-* Afwijzingen abonnements aanvraag
-* Ontvangen abonnements aanvraag
+-   Inzending van de toepassings galerie goedgekeurd
+-   Farewell-brief voor ontwikkel aars
+-   Melding voor de quota limiet voor ontwikkel aars
+-   Gebruiker uitnodigen
+-   Nieuwe opmerking toegevoegd aan een probleem
+-   Nieuw probleem ontvangen
+-   Nieuw abonnement geactiveerd
+-   Bevestiging van verlenging van abonnement
+-   Afwijzingen abonnements aanvraag
+-   Ontvangen abonnements aanvraag
 
 Deze sjablonen kunnen naar wens worden gewijzigd.
 
@@ -79,27 +85,20 @@ Elke e-mail sjabloon heeft een onderwerp in tekst zonder opmaak en een definitie
 
 De lijst met **para meters** bevat een lijst met para meters die worden ingevoegd in het onderwerp of de hoofd tekst. de opgegeven waarde wordt vervangen wanneer het e-mail bericht wordt verzonden. Als u een para meter wilt invoegen, plaatst u de cursor op de locatie waar u de para meter wilt plaatsen en klikt u op de pijl links van de parameter naam.
 
-> [!NOTE] 
+> [!NOTE]
 > De para meters worden niet vervangen door werkelijke waarden bij het weer geven of verzenden van een test.
 
 Als u de wijzigingen in de e-mail sjabloon wilt opslaan, klikt u op **Opslaan**of annuleert u de wijzigingen door op **negeren**te klikken.
- 
 
 [api-management-management-console]: ./media/api-management-howto-configure-notifications/api-management-management-console.png
 [api-management-publisher-notifications]: ./media/api-management-howto-configure-notifications/api-management-publisher-notifications.png
 [api-management-email-addresses]: ./media/api-management-howto-configure-notifications/api-management-email-addresses.png
-
-
 [api-management-email-templates]: ./media/api-management-howto-configure-notifications/api-management-email-templates.png
 [api-management-email-templates-list]: ./media/api-management-howto-configure-notifications/api-management-email-templates-list.png
 [api-management-email-template]: ./media/api-management-howto-configure-notifications/api-management-email-template.png
-
-
-[Configure publisher notifications]: #publisher-notifications
-[Configure email templates]: #email-templates
-
-[How to create and use groups]: api-management-howto-create-groups.md
-[How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
-
-[Get started with Azure API Management]: get-started-create-service-instance.md
-[Create an API Management service instance]: get-started-create-service-instance.md
+[configure publisher notifications]: #publisher-notifications
+[configure email templates]: #email-templates
+[how to create and use groups]: api-management-howto-create-groups.md
+[how to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
+[get started with azure api management]: get-started-create-service-instance.md
+[create an api management service instance]: get-started-create-service-instance.md

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8d28566cb10ddd1637eb81dffd102df6bd7b6e7a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: a6c333da0e88af25e3907af23f792a210002477f
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75663099"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902047"
 ---
 Met behulp van spot Vm's kunt u profiteren van onze ongebruikte capaciteit tegen een aanzienlijke kosten besparing. Op elk moment dat Azure de capaciteit nodig heeft, verwijdert de Azure-infra structuur spot Vm's. Daarom zijn de virtuele machines geschikt voor werk belastingen die onderbrekingen kunnen afhandelen, zoals batch verwerkings taken, ontwikkel-en test omgevingen, grootschalige werk belastingen en meer.
 
@@ -83,7 +83,7 @@ Met variabele prijzen kunt u een maximum prijs instellen, in Amerikaanse dollars
 
 **V:** Kan ik een extra quotum voor plaats vragen?
 
-**A:** Ja, u kunt de aanvraag indienen om uw quotum voor de begeleide Vm's te verhogen via het [standaard quotum aanvraag proces](https://docs.microsoft.com/azure/azure-supportability/per-vm-quota-requests).
+**A:** Ja, u kunt de aanvraag indienen om uw quotum voor de begeleide Vm's te verhogen via het [standaard quotum aanvraag proces](https://docs.microsoft.com/azure/azure-portal/supportability/per-vm-quota-requests).
 
 
 **V:** Welke kanalen ondersteunen de ondersteuning van virtuele machines?

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 9b08dd60020dad6f747167f35e8d172fdc24a59e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b9637265d263a75949d5a70c3e4f0ce06044d93c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751682"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901623"
 ---
 Geoptimaliseerde VM-grootten zijn gespecialiseerde virtuele machines die beschikbaar zijn met één of meer NVIDIA-Gpu's. Deze grootten zijn ontworpen voor computerintensieve, grafisch intensieve en visualisatie werk belastingen. Dit artikel bevat informatie over het aantal en het type Gpu's, Vcpu's, gegevens schijven en Nic's. Opslag doorvoer en netwerk bandbreedte worden ook voor elke grootte in deze groepering opgenomen.
 
@@ -56,7 +56,7 @@ Virtuele machines uit de NCv2-serie worden aangedreven door [Nvidia Tesla P100](
 De NC24rs v2-configuratie biedt een netwerk interface met lage latentie en hoge door Voer die is geoptimaliseerd voor nauw gekoppelde werk belastingen voor parallelle berekeningen.
 
 > [!IMPORTANT]
-> Voor deze grootte familie is het vCPU-quotum (core) in uw abonnement in eerste instantie ingesteld op 0 in elke regio. [Vraag een toename van een vCPU-quotum](../articles/azure-supportability/resource-manager-core-quotas-request.md) voor deze familie aan in een [beschik bare regio](https://azure.microsoft.com/regions/services/).
+> Voor deze grootte familie is het vCPU-quotum (core) in uw abonnement in eerste instantie ingesteld op 0 in elke regio. [Vraag een toename van een vCPU-quotum](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md) voor deze familie aan in een [beschik bare regio](https://azure.microsoft.com/regions/services/).
 >
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD): GiB | GPU | GPU-geheugen: GiB | Maximaal aantal gegevensschijven | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximale aantal NIC's |
@@ -79,7 +79,7 @@ Premium Storage caching: ondersteund
 Virtuele machines uit de NCv3-serie worden aangedreven door [Nvidia Tesla V100](https://www.nvidia.com/en-us/data-center/tesla-v100/) gpu's. Deze Gpu's kunnen 1,5 x de reken prestaties van de NCv2-serie bieden. Klanten kunnen profiteren van deze bijgewerkte Gpu's voor traditionele HPC-workloads, zoals het maken van tank modellen, DNA-sequentiëren, eiwithoudende analyse, Monte Carlo-simulaties en andere. De NC24rs v3-configuratie biedt een netwerk interface met lage latentie en hoge door Voer die is geoptimaliseerd voor nauw gekoppelde werk belastingen voor parallelle berekeningen. Naast de Gpu's worden de virtuele machines uit de NCv3-serie ook aangedreven door de Intel Xeon E5-2690 v4-Cpu's (Broadwell).
 
 > [!IMPORTANT]
-> Voor deze grootte familie is het vCPU-quotum (core) in uw abonnement in eerste instantie ingesteld op 0 in elke regio. [Vraag een toename van een vCPU-quotum](../articles/azure-supportability/resource-manager-core-quotas-request.md) voor deze familie aan in een [beschik bare regio](https://azure.microsoft.com/regions/services/).
+> Voor deze grootte familie is het vCPU-quotum (core) in uw abonnement in eerste instantie ingesteld op 0 in elke regio. [Vraag een toename van een vCPU-quotum](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md) voor deze familie aan in een [beschik bare regio](https://azure.microsoft.com/regions/services/).
 >
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD): GiB | GPU | GPU-geheugen: GiB | Maximaal aantal gegevensschijven | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximale aantal NIC's |
@@ -131,7 +131,7 @@ Premium Storage caching: ondersteund
 De virtuele machines uit de ND-serie vormen een nieuwe toevoeging aan de GPU-familie die is ontworpen voor AI en diep gaande werk belastingen. Ze bieden uitstekende prestaties voor training en demijnen. ND-instanties worden aangedreven door [Nvidia Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) -Gpu's en Intel Xeon E5-2690 v4-Cpu's (Broadwell). Deze instanties bieden uitstekende prestaties voor drijvende-komma bewerkingen met één precisie, voor AI-workloads die gebruikmaken van Microsoft Cognitive Toolkit, tensor flow, Caffe en andere frameworks. De ND-serie biedt daarnaast een veel groter GPU-geheugen (24 GB), waardoor het mogelijk is om veel grotere modellen met een neuraal netwerk in te zetten. Net als de NC-serie biedt de ND-serie een configuratie met een secundaire netwerk met lage latentie en een hoge door Voer via RDMA en InfiniBand-connectiviteit, zodat u grootschalige trainings taken kunt uitvoeren die veel Gpu's bespannen.
 
 > [!IMPORTANT]
-> Voor deze grootte serie wordt het vCPU (kern quotum) per regio in uw abonnement in eerste instantie ingesteld op 0. [Vraag een toename van een vCPU-quotum](../articles/azure-supportability/resource-manager-core-quotas-request.md) voor deze familie aan in een [beschik bare regio](https://azure.microsoft.com/regions/services/).
+> Voor deze grootte serie wordt het vCPU (kern quotum) per regio in uw abonnement in eerste instantie ingesteld op 0. [Vraag een toename van een vCPU-quotum](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md) voor deze familie aan in een [beschik bare regio](https://azure.microsoft.com/regions/services/).
 >
 
 | Grootte | vCPU | Geheugen: GiB | Tijdelijke opslag (SSD) GiB | GPU | GPU-geheugen: GiB | Maximaal aantal gegevensschijven | Max. doorvoer voor schijf zonder caching: IOPS/MBps | Maximale aantal NIC's |

@@ -8,18 +8,15 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: a5aa6a2e2578a995e4ef00489557fc02623e2d6a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 50d12a0aba9018b1ecb30c018249e8f94ebe6d95
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744819"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903285"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>Door de klant beheerde sleutels voor het versleutelen van Azure Event Hubs-gegevens op rest configureren met behulp van de Azure Portal (preview)
+# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Door de klant beheerde sleutels voor het versleutelen van Azure Event Hubs-gegevens op rest configureren met behulp van de Azure Portal
 Azure Event Hubs zorgt voor versleuteling van gegevens in rust met Azure Storage-service versleuteling (Azure SSE). Event Hubs is afhankelijk van Azure Storage om de gegevens op te slaan en standaard worden alle gegevens die zijn opgeslagen met Azure Storage versleuteld met door micro soft beheerde sleutels. 
-
->[!NOTE]
-> Deze functie is momenteel beschikbaar als preview-product. U kunt het beste niet gebruiken in in een productie omgeving.
 
 ## <a name="overview"></a>Overzicht
 Azure Event Hubs ondersteunt nu de mogelijkheid om gegevens in rust te versleutelen met door micro soft beheerde sleutels of door de klant beheerde sleutels (Bring Your Own Key – BYOK). Met deze functie kunt u toegang tot de door de klant beheerde sleutels maken, draaien, uitschakelen en intrekken die worden gebruikt voor het versleutelen van Azure Event Hubs-gegevens in rust.
@@ -41,7 +38,7 @@ Voer de volgende stappen uit om door de klant beheerde sleutels in te scha kelen
 
 1. Navigeer naar uw Event Hubs Dedicated-cluster.
 1. Selecteer de naam ruimte waarvoor u BYOK wilt inschakelen.
-1. Selecteer op de pagina **instellingen** van uw event hubs-naam ruimte de optie **versleuteling (preview-versie)** . 
+1. Selecteer op de pagina **instellingen** van uw event hubs-naam ruimte de optie **versleuteling**. 
 1. Selecteer de door de **klant beheerde sleutel versleuteling bij rest** , zoals wordt weer gegeven in de volgende afbeelding. 
 
     ![Door de klant beheerde sleutel inschakelen](./media/configure-customer-managed-key/enable-customer-managed-key.png)
@@ -72,8 +69,6 @@ Nadat u door de klant beheerde sleutels hebt ingeschakeld, moet u de door de kla
         ![Selecteer een sleutel in de sleutel kluis](./media/configure-customer-managed-key/select-key-from-key-vault.png)
     1. Vul de Details voor de sleutel in en klik op **selecteren**. Dit zorgt ervoor dat de versleuteling van gegevens in rust in de naam ruimte met een door de klant beheerde sleutel. 
 
-        > [!NOTE]
-        > Voor de preview-versie kunt u slechts één sleutel selecteren. 
 
 ## <a name="rotate-your-encryption-keys"></a>Uw versleutelings sleutels draaien
 U kunt de sleutel in de sleutel kluis draaien met behulp van het rotatie mechanisme voor Azure-sleutel kluizen. Zie voor meer informatie [sleutel rotatie en controle instellen](../key-vault/key-vault-key-rotation-log-monitoring.md). Activerings-en verloop datums kunnen ook worden ingesteld op het automatiseren van sleutel rotatie. Met de Event Hubs-service worden nieuwe sleutel versies gedetecteerd en worden ze automatisch gestart.
@@ -82,9 +77,6 @@ U kunt de sleutel in de sleutel kluis draaien met behulp van het rotatie mechani
 Als u de toegang tot de versleutelings sleutels intrekt, worden de gegevens niet verwijderd uit Event Hubs. De gegevens kunnen echter niet worden geopend vanuit de naam ruimte Event Hubs. U kunt de versleutelings sleutel intrekken via toegangs beleid of door de sleutel te verwijderen. Meer informatie over toegangs beleid en het beveiligen van uw sleutel kluis van [beveiligde toegang tot een sleutel kluis](../key-vault/key-vault-secure-your-key-vault.md).
 
 Zodra de versleutelings sleutel is ingetrokken, wordt de Event Hubs-service op de versleutelde naam ruimte niet meer bruikbaar. Als de toegang tot de sleutel is ingeschakeld of de sleutel verwijderen is hersteld, wordt de sleutel door Event Hubs service gekozen, zodat u toegang hebt tot de gegevens van de versleutelde Event Hubs naam ruimte.
-
-> [!NOTE]
-> Als u een bestaande versleutelings sleutel uit de sleutel kluis verwijdert en deze vervangt door een nieuwe sleutel in de naam ruimte Event Hubs, omdat de sleutel delete nog steeds geldig is (omdat deze in de cache wordt opgeslagen) gedurende een uur, worden de oude gegevens (die zijn versleuteld met de oude sleutel) mogelijk nog steeds toegankelijk via  met de nieuwe gegevens, die nu alleen toegankelijk zijn met de nieuwe sleutel. Dit gedrag is inherent aan het ontwerp van de preview-versie van de functie. 
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnostische logboeken instellen 
 Door Diagnostische logboeken in te stellen voor met BYOK ingeschakelde naam ruimten, beschikt u over de vereiste informatie over de bewerkingen wanneer een naam ruimte wordt versleuteld met door de klant beheerde sleutels. Deze logboeken kunnen worden ingeschakeld en later naar een Event Hub worden gestreamd of geanalyseerd via log Analytics of worden gestreamd naar opslag om aangepaste analyses uit te voeren. Zie [overzicht van Diagnostische logboeken van Azure](../azure-monitor/platform/platform-logs-overview.md)voor meer informatie over Diagnostische logboeken.
@@ -171,10 +163,6 @@ Hieronder vindt u de algemene fout codes die u moet zoeken wanneer BYOK-versleut
 
 > [!IMPORTANT]
 > Als u geo-DR wilt inschakelen voor een naam ruimte die gebruikmaakt van de BYOK-versleuteling, moet de secundaire naam ruimte voor koppelen zich in een toegewijd cluster bevinden en moet er een door het systeem toegewezen beheerde identiteit zijn ingeschakeld. Zie [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md)voor meer informatie.
-
-> [!NOTE]
-> Als de service-eind punten van Virtual Network (VNet) zijn geconfigureerd op Azure Key Vault voor uw Event Hubs naam ruimte, wordt BYOK niet ondersteund. 
-
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:

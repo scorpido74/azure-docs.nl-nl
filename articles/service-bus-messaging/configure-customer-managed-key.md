@@ -8,14 +8,14 @@ author: axisc
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 356f825524192c3b6cf7df7f0460975f23ea4f7c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6d20d4031f0ed4d1be4dddf9e33946251d6dd523
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852287"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903323"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal-preview"></a>Door de klant beheerde sleutels voor het versleutelen van Azure Service Bus gegevens op rest configureren met behulp van de Azure Portal (preview)
+# <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Door de klant beheerde sleutels configureren voor het versleutelen van Azure Service Bus gegevens op rest door gebruik te maken van de Azure Portal
 Azure Service Bus Premium zorgt voor versleuteling van gegevens in rust met Azure Storage-service versleuteling (Azure SSE). Service Bus Premium is afhankelijk van Azure Storage om de gegevens op te slaan en de standaard instelling is dat alle gegevens die zijn opgeslagen met Azure Storage, worden versleuteld met door micro soft beheerde sleutels. 
 
 ## <a name="overview"></a>Overzicht
@@ -27,7 +27,6 @@ Het inschakelen van de functie BYOK is een eenmalige installatie procedure voor 
 > Er zijn enkele voor behoud van de door de klant beheerde sleutel voor versleuteling aan de service zijde. 
 >   * Deze functie wordt ondersteund door [Azure service bus Premium](service-bus-premium-messaging.md) -laag. Het kan niet worden ingeschakeld voor de standaardlaag Service Bus naam ruimten.
 >   * De versleuteling kan alleen worden ingeschakeld voor nieuwe of lege naam ruimten. Als de naam ruimte gegevens bevat, mislukt de versleutelings bewerking.
->   * Als de [service-eind punten van Virtual Network (VNet)](service-bus-service-endpoints.md) zijn geconfigureerd op Azure Key Vault voor uw service bus naam ruimte, wordt BYOK niet ondersteund. 
 
 U kunt Azure Key Vault gebruiken voor het beheren van uw sleutels en het controleren van uw sleutel gebruik. U kunt zelf sleutels maken en deze opslaan in een sleutel kluis, of u kunt de Azure Key Vault-Api's gebruiken om sleutels te genereren. Zie [Wat is Azure Key Vault?](../key-vault/key-vault-overview.md) voor meer informatie over Azure Key Vault.
 
@@ -40,7 +39,7 @@ In dit artikel wordt beschreven hoe u een sleutel kluis kunt configureren met do
 Voer de volgende stappen uit om door de klant beheerde sleutels in te scha kelen in de Azure Portal:
 
 1. Navigeer naar uw Service Bus Premium-naam ruimte.
-2. Selecteer op de pagina **instellingen** van uw service bus-naam ruimte de optie **versleuteling (preview-versie)** .
+2. Selecteer op de pagina **instellingen** van uw service bus-naam ruimte de optie **versleuteling**.
 3. Selecteer de door de **klant beheerde sleutel versleuteling bij rest** , zoals wordt weer gegeven in de volgende afbeelding.
 
     ![Door de klant beheerde sleutel inschakelen](./media/configure-customer-managed-key/enable-customer-managed-key.png)
@@ -106,9 +105,6 @@ U kunt de sleutel in de sleutel kluis draaien met behulp van het rotatie mechani
 Als u de toegang tot de versleutelings sleutels intrekt, worden de gegevens niet verwijderd uit Service Bus. De gegevens kunnen echter niet worden geopend vanuit de naam ruimte Service Bus. U kunt de versleutelings sleutel intrekken via toegangs beleid of door de sleutel te verwijderen. Meer informatie over toegangs beleid en het beveiligen van uw sleutel kluis van [beveiligde toegang tot een sleutel kluis](../key-vault/key-vault-secure-your-key-vault.md).
 
 Zodra de versleutelings sleutel is ingetrokken, wordt de Service Bus-service op de versleutelde naam ruimte niet meer bruikbaar. Als de toegang tot de sleutel is ingeschakeld of de verwijderde sleutel is hersteld, wordt de sleutel door Service Bus service gekozen, zodat u toegang hebt tot de gegevens van de versleutelde Service Bus naam ruimte.
-
-> [!NOTE]
-> Als u een bestaande versleutelings sleutel uit de sleutel kluis verwijdert en deze vervangt door een nieuwe sleutel in de naam ruimte Service Bus, omdat de sleutel delete nog steeds geldig is (omdat deze in de cache wordt opgeslagen) tot een uur, zijn de oude gegevens (die zijn versleuteld met de oude sleutel) mogelijk nog steeds toegankelijk Alon g met de nieuwe gegevens, die nu alleen toegankelijk zijn met de nieuwe sleutel. Dit gedrag is inherent aan het ontwerp van de preview-versie van de functie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 Zie de volgende artikelen:

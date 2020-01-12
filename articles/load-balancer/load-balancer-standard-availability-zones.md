@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: 63a7db6e7078df978f47a6d53ea82df83c22c800
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 9e585f7d13e1686f125055056fd1e2d88e2bf8ff
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076988"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903336"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Load Balancer van het type Standard en beschikbaarheidszones
 
@@ -37,7 +37,7 @@ In de context van beschikbaarheids zones worden het gedrag en de eigenschappen v
 
 Zowel de open bare als de interne Load Balancer ondersteunings zone-redundante en zonegebonden-scenario's en beide kunnen verkeer omleiden naar alle zones, indien nodig (*Kruis zone taak verdeling*). 
 
-### <a name="frontend"></a>Front
+### <a name="frontend"></a>Front-end
 
 Een Load Balancer frontend is een front-end-IP-configuratie die verwijst naar een open bare IP-adres of een privé-IP-adres binnen het subnet van een virtuele netwerk bron.  Het vormt het eind punt met gelijke taak verdeling waar uw service wordt weer gegeven.
 
@@ -209,10 +209,6 @@ Zone-redundante kan een eenvoud bieden met een zone-neutraal-optie en tegelijker
 Zonegebonden kunnen een expliciete garantie voor een zone bieden, waarbij lotgevallen expliciet wordt gedeeld met de status van de zone. Het maken van een Load Balancer-regel met een zonegebonden IP-adres-front-end of zonegebonden intern Load Balancer front-end kan heel wenselijk zijn, vooral als uw gekoppelde bron een zonegebonden virtuele machine in dezelfde zone is.  Het is ook mogelijk dat uw toepassing expliciete kennis nodig heeft over welke zone een resource in de tussen tijd bevindt en dat u de beschik baarheid in afzonderlijke zones expliciet wilt controleren.  U kunt ervoor kiezen om meerdere zonegebonden-frontends beschikbaar te maken voor een end-to-end-service die wordt gedistribueerd over zones (dat wil zeggen, per zone zonegebonden-front-end voor meerdere zonegebonden virtuele-machine schaal sets).  En als uw zonegebonden-front-end een openbaar IP-adres zijn, kunt u deze meerdere zonegebonden-front-ends gebruiken om uw service met [Traffic Manager](../traffic-manager/traffic-manager-overview.md)aan te bieden.  U kunt ook meerdere zonegebonden-frontends gebruiken voor het verkrijgen van informatie over zone status en prestaties met behulp van bewakings oplossingen van derden en de algehele service bieden met een zone-redundante front-end. U moet alleen zonegebonden-resources met zonegebonden-front-end-toepassingen die zijn afgestemd op dezelfde zone, en potentieel schadelijke cross-zone scenario's voor zonegebonden bronnen vermijden.  Zonegebonden-resources bestaan alleen in regio's waar beschikbaarheids zones bestaan.
 
 Er zijn geen algemene richt lijnen die een betere keuze is dan de andere, zonder de service architectuur te weten.  Bekijk de [ontwerp patronen voor Azure-Clouds](https://docs.microsoft.com/azure/architecture/patterns/) om de flexibiliteit van uw toepassing te verbeteren tot fouten.
-
-## <a name="limitations"></a>Beperkingen
-
-- Terwijl het gegevens vlak volledig zone-redundant is (tenzij zonegebonden guarantee is opgegeven), zijn besturings vlak bewerkingen niet volledig zone-redundant.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [Beschikbaarheidszones](../availability-zones/az-overview.md)

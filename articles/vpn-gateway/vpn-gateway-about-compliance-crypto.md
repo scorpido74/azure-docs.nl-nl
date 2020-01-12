@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 10/17/2019
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: f1d30ef56350c3e1df796f20e3f9f39fdbc6428a
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 93e13592d9c434b159ad4f4c10ef30328941c64e
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666491"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902824"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>Over cryptografische vereisten en Azure VPN-gateways
 
@@ -34,7 +34,7 @@ Het standaard beleid dat is ingesteld voor Azure VPN-gateway wordt weer gegeven 
 
 ## <a name="cryptographic-requirements"></a>Cryptografische vereisten
 
-Voor communicatie waarvoor specifieke cryptografische algoritmen of para meters vereist zijn, is het meestal mogelijk om de Azure VPN-gateways te configureren voor het gebruik van een aangepast IPsec/IKE-beleid met specifieke cryptografische algoritmen en de belangrijkste sterke punten in plaats van de standaard beleids sets van Azure.
+Voor communicatie waarvoor specifieke cryptografische algoritmen of para meters vereist zijn, is het doorgaans mogelijk om de Azure VPN-gateways te configureren voor het gebruik van een aangepast IPsec/IKE-beleid met specifieke cryptografische algoritmen en sleutel sterkten, in plaats van de standaard-beleids sets van Azure.
 
 Het IKEv2-beleid voor de hoofd modus voor Azure VPN-gateways maakt bijvoorbeeld alleen Diffie-Hellman-groep 2 (1024 bits), maar u moet mogelijk sterkere groepen opgeven die moeten worden gebruikt in IKE, zoals groep 14 (2048-bits), groep 24 (2048-bits MODP Group) of ECP (elliptische curve groepen) 256 of 384 bits (respectievelijk groep 19 en groep 20). Vergelijk bare vereisten zijn ook van toepassing op IPsec-beleid voor snelle modus.
 
@@ -42,7 +42,7 @@ Het IKEv2-beleid voor de hoofd modus voor Azure VPN-gateways maakt bijvoorbeeld 
 
 Azure VPN-gateways bieden nu ondersteuning voor het aangepaste IPsec/IKE-beleid per verbinding. Voor een site-naar-site-of VNet-naar-VNet-verbinding kunt u een specifieke combi natie van cryptografische algoritmen kiezen voor IPsec en IKE met de gewenste sleutel sterkte, zoals wordt weer gegeven in het volgende voor beeld:
 
-![IPSec-IKE-beleid](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
+![ipsec-ike-policy](./media/vpn-gateway-about-compliance-crypto/ipsecikepolicy.png)
 
 U kunt een IPsec/IKE-beleid maken en Toep assen op een nieuwe of bestaande verbinding.
 

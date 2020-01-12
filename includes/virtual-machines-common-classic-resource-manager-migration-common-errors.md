@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9b47d3bde4c4c5ef7fd3d41c038ea078c19db900
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e590c07c3969865d573838352a8a778caa1cc799
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005733"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901843"
 ---
 In dit artikel behandelen we de meest voorkomende fouten en oplossingen tijdens de migratie van IaaS-resources van het klassieke Azure-implementatiemodel naar de Azure Resource Manager-stack.
 
@@ -19,9 +19,9 @@ In dit artikel behandelen we de meest voorkomende fouten en oplossingen tijdens 
 
 | Fouttekenreeks | Oplossing |
 | --- | --- |
-| Interne serverfout |In sommige gevallen is dit een tijdelijke fout die bij een nieuwe poging is verdwenen. Als deze fout zich blijft voordoen, [neem dan contact op met de ondersteuning van Azure](../articles/azure-supportability/how-to-create-azure-support-request.md). De platformlogboeken moeten namelijk worden onderzocht. <br><br> **OPMERKING:** Wanneer het incident eenmaal wordt gevolgd door het ondersteuningsteam, mag u zelf geen oplossingen meer proberen te zoeken voor het probleem. Dit kan ongewenste gevolgen hebben voor uw omgeving. |
+| Interne serverfout |In sommige gevallen is dit een tijdelijke fout die bij een nieuwe poging is verdwenen. Als deze fout zich blijft voordoen, [neem dan contact op met de ondersteuning van Azure](../articles/azure-portal/supportability/how-to-create-azure-support-request.md). De platformlogboeken moeten namelijk worden onderzocht. <br><br> **OPMERKING:** Wanneer het incident eenmaal wordt gevolgd door het ondersteuningsteam, mag u zelf geen oplossingen meer proberen te zoeken voor het probleem. Dit kan ongewenste gevolgen hebben voor uw omgeving. |
 | Migratie wordt niet ondersteund voor de implementatie {naam-implementatie} in HostedService {naam-gehoste-service} omdat dit een PaaS-implementatie (web-/werkrol) is. |Dit gebeurt wanneer een implementatie een web-/werkrol bevat. Omdat de migratie alleen wordt ondersteund voor virtuele machines, moet u de web-/werkrol uit de implementatie verwijderen. Probeer hierna het opnieuw. |
-| Sjabloonimplementatie {sjabloonnaam} is mislukt. CorrelationId = {guid} |In de back-end van de migratieservice gebruiken we Azure Resource Manager-sjablonen om resources te maken in de Azure Resource Manager-stack. Aangezien sjablonen idempotent zijn, kunt u de migratiebewerking meestal veilig opnieuw proberen om deze fout te verhelpen. Als deze fout zich blijft voordoen, [neemt u contact op met de ondersteuning van Azure](../articles/azure-supportability/how-to-create-azure-support-request.md) en verstrekt u hen de CorrelationId. <br><br> **OPMERKING:** Wanneer het incident eenmaal wordt gevolgd door het ondersteuningsteam, mag u zelf geen oplossingen meer proberen te zoeken voor het probleem. Dit kan ongewenste gevolgen hebben voor uw omgeving. |
+| Sjabloonimplementatie {sjabloonnaam} is mislukt. CorrelationId = {guid} |In de back-end van de migratieservice gebruiken we Azure Resource Manager-sjablonen om resources te maken in de Azure Resource Manager-stack. Aangezien sjablonen idempotent zijn, kunt u de migratiebewerking meestal veilig opnieuw proberen om deze fout te verhelpen. Als deze fout zich blijft voordoen, [neemt u contact op met de ondersteuning van Azure](../articles/azure-portal/supportability/how-to-create-azure-support-request.md) en verstrekt u hen de CorrelationId. <br><br> **OPMERKING:** Wanneer het incident eenmaal wordt gevolgd door het ondersteuningsteam, mag u zelf geen oplossingen meer proberen te zoeken voor het probleem. Dit kan ongewenste gevolgen hebben voor uw omgeving. |
 | Het virtuele netwerk {naam-virtueel-netwerk} bestaat niet. |Dit kan gebeuren als u het virtuele netwerk hebt gemaakt in de nieuwe Azure portal. De werkelijke Virtual Network naam volgt het patroon ' groep * \<VNET-naam > ' |
 | VM {vm-naam} in HostedService {naam-gehoste-service} bevat de extensie {naam-extensie}. Deze wordt niet ondersteund in Azure Resource Manager. We raden u aan deze te verwijderen uit de virtuele machine voordat u doorgaat met de migratie. |XML-extensies zoals BGInfo 1.\* worden niet ondersteund in Azure Resource Manager. Daarom kunnen deze extensies niet worden gemigreerd. Als deze uitbreidingen geïnstalleerd blijven op de virtuele machine, worden ze automatisch verwijderd voordat de migratie is voltooid. |
 | VM {vm-naam} in HostedService {naam-gehoste-service} bevat de extensie VMSnapshot/VMSnapshotLinux. Deze wordt momenteel niet ondersteund voor migratie. Verwijder deze uit de virtuele machine en voeg de extensie opnieuw toe met Azure Resource Manager nadat de migratie is voltooid |Dit is het scenario waarin de virtuele machine is geconfigureerd voor Azure Backup. Omdat dit momenteel een niet-ondersteund scenario is, volgt u de tijdelijke oplossing op https://aka.ms/vmbackupmigration |
