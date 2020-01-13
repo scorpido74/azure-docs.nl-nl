@@ -184,7 +184,7 @@
           items:
             - name: Geoptimaliseerde GPU
               href: sizes-gpu.md
-            - name: GPU-stuurprogramma's instellen
+            - name: NVIDIA GPU-stuurprogramma's instellen
               href: n-series-driver-setup.md
             - name: AMD GPU-stuurprogramma's instellen
               href: n-series-amd-driver-setup.md

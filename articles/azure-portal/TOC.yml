@@ -32,6 +32,30 @@
       href: azure-portal-export-delete-settings.md
     - name: Videoserie met instructies voor de Azure-portal
       href: azure-portal-video-series.md
+    - name: Ondersteuningsaanvragen maken en beheren
+      items:
+        - name: Een Azure-ondersteuningsaanvraag maken
+          href: supportability/how-to-create-azure-support-request.md
+        - name: Bestanden uploaden voor een ondersteuningsaanvraag
+          href: supportability/how-to-use-file-uploader.md
+        - name: Verhogingen van quotum aanvragen
+          items:
+            - name: vCPU-limieten voor berekening verhogen
+              items:
+                - name: Resource Manager-implementatiemodel
+                  items:
+                    - name: vCPU-limiet voor een VM-reeks verhogen
+                      href: supportability/per-vm-quota-requests.md
+                    - name: Totale regionale vCPU-limiet verhogen
+                      href: supportability/regional-quota-requests.md
+                    - name: Spotquotumlimiet verhogen
+                      href: supportability/low-priority-quota.md
+                - name: Klassiek implementatiemodel
+                  href: supportability/classic-deployment-model-quota-increase-requests.md
+            - name: Netwerklimieten verhogen
+              href: supportability/networking-quota-requests.md
+        - name: Abonnementsproblemen gerelateerd aan regio of SKU oplossen
+          href: supportability/sku-series-unavailable.md
 - name: Naslaginformatie
   items:
     - name: Sneltoetsen

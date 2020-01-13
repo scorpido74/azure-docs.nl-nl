@@ -177,6 +177,8 @@
               href: azure-to-azure-how-to-enable-replication.md
             - name: Azure naar Azure-replicatie inschakelen voor versleutelde VM's
               href: azure-to-azure-how-to-enable-replication-ade-vms.md
+            - name: Azure naar Azure-replicatie inschakelen voor VM's met schijven waarvoor CMK is ingeschakeld
+              href: azure-to-azure-how-to-enable-replication-cmk-disks.md
             - name: Azure naar Azure-replicatie inschakelen voor S2D-VM's
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
             - name: Replicatie inschakelen voor een toegevoegde schijf

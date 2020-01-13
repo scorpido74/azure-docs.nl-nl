@@ -82,6 +82,8 @@
       href: resource-manager-samples.md
 - name: Concepten
   items:
+    - name: No SQL-databases versus relationele databases
+      href: relational-nosql.md
     - name: Wereldwijde distributie
       items:
         - name: Overzicht
@@ -976,6 +978,8 @@
           href: certificate-based-authentication.md
         - name: Gebruikerstoegang beperken tot alleen gegevensbewerkingen
           href: how-to-restrict-user-data.md
+        - name: Door klant beheerde sleutels configureren
+          href: how-to-setup-cmk.md
     - name: Gereedheid voor bedrijven
       items:
         - name: Gegevens herstellen vanaf back-up
@@ -1058,6 +1062,8 @@
           href: cassandra-migrate-cosmos-db-blitzz.md
         - name: Honderden terabytes aan gegevens migreren naar Azure Cosmos DB
           href: migrate-cosmosdb-data.md
+        - name: Een-naar-weinig relationele gegevens migreren
+          href: migrate-relational-to-cosmos-db-sql-api.md
     - name: Bibliotheek voor bulksgewijs uitvoeren
       items:
         - name: Over de bibliotheek voor bulkuitvoering

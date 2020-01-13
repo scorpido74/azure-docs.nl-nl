@@ -617,6 +617,8 @@
           href: solution-template-copy-new-files-lastmodifieddate.md
         - name: Bulkgewijs kopiëren uit database
           href: solution-template-bulk-copy-with-control-table.md
+        - name: Bulkgewijs kopiëren van bestanden naar database
+          href: solution-template-bulk-copy-from-files-to-database.md
         - name: Delta kopiëren uit database
           href: solution-template-delta-copy-with-control-table.md
         - name: Gegevens migreren van Amazon S3 naar Azure Storage

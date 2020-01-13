@@ -51,14 +51,18 @@
       href: container-instances-orchestrator-relationship.md
     - name: Beveiligingsoverwegingen
       href: container-instances-image-security.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Implementeren
       items:
-        - name: Implementeren in een virtueel netwerk (preview)
+        - name: Implementeren in een virtueel netwerk
           href: container-instances-vnet.md
         - name: Implementeren vanuit Azure Container Registry
           href: container-instances-using-azure-container-registry.md
+        - name: Implementatiegegevens versleutelen
+          href: container-instances-encrypt-data.md
+        - name: Implementeren op toegewezen hosts
+          href: container-instances-dedicated-hosts.md
     - name: Containerscenario's
       items:
         - name: Beleid voor opnieuw opstarten instellen voor taken die eenmalig worden uitgevoerd
@@ -111,7 +115,7 @@
           href: container-instances-troubleshooting.md
 - name: Naslaginformatie
   items:
-    - name: Azure-CLI
+    - name: Azure CLI
       href: /cli/azure/container
     - name: REST
       href: /rest/api/container-instances

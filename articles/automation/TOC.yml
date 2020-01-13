@@ -15,6 +15,8 @@
       displayName: certificate renewal
     - name: Verificatie configureren met AWS
       href: automation-config-aws-account.md
+    - name: Versleuteling van beveiligde activa in Azure Automation
+      href: automation-secure-asset-encryption.md
     - name: Op rollen gebaseerd toegangsbeheer beheren
       href: automation-role-based-access-control.md
       displayName: RBAC

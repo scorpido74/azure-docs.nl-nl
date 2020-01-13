@@ -39,7 +39,7 @@
       href: logic-apps-enterprise-integration-overview.md
     - name: Toegang tot virtuele Azure-netwerken
       href: connect-virtual-network-vnet-isolated-environment-overview.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Ontwikkelen
       items:
@@ -111,6 +111,8 @@
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
         - name: Artefacten toevoegen aan integratieserviceomgevingen
           href: add-artifacts-integration-service-environment-ise.md
+        - name: Door klant beheerde versleutelingssleutels instellen voor integratieserviceomgevingen
+          href: customer-managed-keys-integration-service-environment.md
     - name: Toegang tot on-premises gegevens
       items:
         - name: Een gegevensgateway installeren

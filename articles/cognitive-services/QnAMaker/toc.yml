@@ -147,6 +147,8 @@
       href: troubleshooting.md
     - name: Bestandsindelingen
       items:
+        - name: Referentie voor Markdown
+          href: reference-markdown-format.md
         - name: TSV batchgewijs testen
           href: reference-tsv-format-batch-testing.md
     - name: Naslaginformatie over REST-API

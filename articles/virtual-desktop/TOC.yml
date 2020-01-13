@@ -16,9 +16,7 @@
       href: manage-app-groups.md
     - name: 5. Een hostpool voor het valideren van service-updates maken
       href: create-validation-host-pool.md
-    - name: 6. Een hulpprogramma voor beheer implementeren
-      href: manage-resources-using-ui.md
-    - name: 7. Servicewaarschuwingen instellen
+    - name: 6. Servicewaarschuwingen instellen
       href: set-up-service-alerts.md
 - name: Uitleg
   items:
@@ -70,6 +68,12 @@
       href: set-up-scaling-script.md
     - name: Feed aanpassen
       href: customize-feed-for-virtual-desktop-users.md
+    - name: Hulpprogramma voor beheer implementeren
+      items:
+        - name: Azure Resource Manager-sjabloon
+          href: manage-resources-using-ui.md
+        - name: PowerShell
+          href: manage-resources-using-ui-powershell.md
     - name: Diagnostische gegevens van de service gebruiken
       items:
         - name: Het diagnosehulpprogramma implementeren

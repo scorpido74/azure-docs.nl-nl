@@ -229,6 +229,8 @@
           href: certificate-rotation.md
         - name: Een privécluster maken
           href: private-clusters.md
+        - name: BYOK voor schijven
+          href: azure-disk-customer-managed-keys.md
     - name: Bewaking en registratie
       items:
         - name: Azure Monitor voor containers
