@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 47a84e11149d9c54d335fe09f3c56532f2aaf58b
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 420db19a5ddcddfe37fa1a922e792fc0c8bc5b66
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862863"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912301"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Zelfstudie: Azure Machine Learning implementeren als een IoT Edge-module (preview)
 
@@ -133,7 +133,7 @@ Mogelijk moet u `sudo` gebruiken voor verhoogde machtigingen om `iotedge`-opdrac
 
 ### <a name="view-data-arriving-at-your-iot-hub"></a>Gegevens weergeven die binnenkomen bij de IoT-hub
 
-U kunt de apparaat-naar-cloud-berichten die de IoT-hub ontvangt, weergeven met behulp van de [Azure IoT Hub Toolkit-extensie voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (voorheen Azure IoT Toolkit-extensie).
+U kunt de apparaat-naar-Cloud-berichten weer geven die door uw IoT-hub worden ontvangen met behulp [van de Azure IOT hub-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
 In de volgende stappen ziet u hoe u Visual Studio Code kunt instellen om apparaat-naar-cloud-berichten te controleren die binnenkomen bij de IoT-hub.
 

@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: d3737be5a3186774f230aef9d932464a27a764f4
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: cee548aff49cd5e4a57eed994b8ade2d157c6313
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75775639"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912169"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Peer-ASN koppelen aan een Azure-abonnement met behulp van de portal
 
@@ -25,6 +25,34 @@ Als u wilt, kunt u deze hand leiding volt ooien met behulp van [Power shell](how
 
 ### <a name="sign-in-to-the-portal"></a>Aanmelden bij de portal
 [!INCLUDE [Account](./includes/account-portal.md)]
+
+### <a name="register-for-peering-resource-provider"></a>Registreren voor de resource provider voor peering
+Registreer u voor de resource provider voor de peering in uw abonnement door de volgende stappen uit te voeren. Als u deze niet uitvoert, zijn Azure-resources die vereist zijn voor het instellen van peering, niet toegankelijk.
+
+1. Klik op **abonnementen** in de linkerbovenhoek van de portal. Als u deze niet ziet, klikt u op **meer services** en zoekt u deze.
+
+    > [!div class="mx-imgBorder"]
+    > ![geopende abonnementen](./media/rp-subscriptions-open.png)
+
+1. Klik op het abonnement dat u wilt gebruiken voor peering.
+
+    > [!div class="mx-imgBorder"]
+    > ![-abonnement starten](./media/rp-subscriptions-launch.png)
+
+1. Zodra het abonnement wordt geopend, klikt u aan de linkerkant op **resource providers**. Zoek vervolgens in het rechterdeel venster op *peering* in het zoek venster of gebruik de schuif balk om **micro soft. peering** te zoeken en de **status**te bekijken. Als de status is ***geregistreerd***, kunt u de onderstaande stappen overs Laan en door gaan naar de sectie **PeerAsn maken**. Als de status ***NotRegistered***is, selecteert u **micro soft. peering** en klikt u op **REGI ster**.
+
+    > [!div class="mx-imgBorder"]
+    > begin](./media/rp-register-start.png) ![registratie
+
+1. Houd er rekening mee dat de status wordt gewijzigd in ***registratie***.
+
+    > [!div class="mx-imgBorder"]
+    > ](./media/rp-register-progress.png) voor het ![van de registratie
+
+1. Wacht totdat de registratie is voltooid. Klik vervolgens op **vernieuwen** en controleer of de status is ***geregistreerd***.
+
+    > [!div class="mx-imgBorder"]
+    > ![registratie is voltooid](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>PeerAsn maken
 U kunt een nieuwe PeerAsn-resource maken voor het koppelen van een autonoom systeem nummer (ASN) aan een Azure-abonnement. U kunt meerdere Asn's koppelen aan een abonnement door een **PeerAsn** te maken voor elke ASN die u moet koppelen.

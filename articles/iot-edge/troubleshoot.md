@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 279b09250aaa3a87e066ade81fc63719adaf07b5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8022304af0f429024a796e02e64f6e23b938bd57
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429386"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912292"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Veelvoorkomende problemen en oplossingen voor Azure IoT Edge
 
@@ -167,7 +167,7 @@ Vervang `env: {}` met:
 
 Sla het bestand op en start de IoT Edge security manager opnieuw.
 
-U kunt ook de berichten controleren die worden verzonden tussen IoT Hub en de IoT Edge-apparaten. Bekijk deze berichten met behulp van de uitbrei ding [azure IOT hub Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (voorheen Azure IOT Toolkit-extensie) voor Visual Studio code. Zie voor meer informatie, [handig hulpmiddel bij het ontwikkelen met Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
+U kunt ook de berichten controleren die worden verzonden tussen IoT Hub en de IoT Edge-apparaten. Bekijk deze berichten met behulp van de [Azure IOT hub-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit). Zie voor meer informatie, [handig hulpmiddel bij het ontwikkelen met Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 
 ### <a name="restart-containers"></a>Opnieuw opstarten van containers
 

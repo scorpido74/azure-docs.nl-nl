@@ -1,6 +1,6 @@
 ---
-title: Zoom niveaus en tegel raster in Azure Maps | Microsoft Docs
-description: Meer informatie over zoom niveaus en tegel rasters in Azure Maps
+title: Zoom niveaus en tegel raster | Microsoft Azure kaarten
+description: In dit artikel vindt u meer informatie over zoom niveaus en tegel rasters in Microsoft Azure kaarten.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 68fbb9b8cd65e24d0fea0c571e5cf01b53560ba7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 09d6e357b87b59e8010e38693806da5f26f5b679
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407574"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910778"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Zoomniveaus en tegelraster
 
@@ -26,7 +26,7 @@ De kaart is onderverdeeld in vier Kante tegels om de prestaties van het ophalen 
 
 <center>
 
-![wereld tegel](./media/zoom-levels-and-tile-grid/world0.png)</center>
+![-tegel van de wereld kaart](./media/zoom-levels-and-tile-grid/world0.png)</center>
 
 Zoom niveau 1 maakt gebruik van vier tegels voor het weer geven van de wereld: a 2 x 2 vier kant
 

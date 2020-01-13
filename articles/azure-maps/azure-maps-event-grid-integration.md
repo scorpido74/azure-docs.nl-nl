@@ -1,6 +1,6 @@
 ---
-title: Reageren op gebeurtenissen van Azure Maps met behulp van Event Grid | Microsoft Docs
-description: Informatie over het reageren op gebeurtenissen van Azure Maps met behulp van Event Grid.
+title: Reageren op gebeurtenissen toewijzen met behulp van Event Grid | Microsoft Azure kaarten
+description: In dit artikel wordt beschreven hoe u met behulp van Event Grid kunt reageren op Microsoft Azure Maps-gebeurtenissen.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/08/2019
@@ -9,36 +9,36 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a70011b934398ac4e7f74bb67013e93bb5e86e4e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9a946d189706c9c789ab884670d13b0b3e7fcb0c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60799185"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911815"
 ---
-# <a name="react-to-azure-maps-events-by-using-event-grid"></a>Reageren op gebeurtenissen van Azure Maps met behulp van Event Grid 
+# <a name="react-to-azure-maps-events-by-using-event-grid"></a>Reageren op Azure Maps gebeurtenissen met behulp van Event Grid 
 
-Azure Maps kan worden geïntegreerd met Azure Event Grid, zodat u kunt meldingen van gebeurtenissen verzenden naar andere services en -trigger downstream-processen. Het doel van dit artikel is om u te helpen u bij het configureren van uw zakelijke toepassingen om te luisteren naar gebeurtenissen van Azure Maps, zodat u op kritieke gebeurtenissen op een betrouwbare, schaalbare en veilige manier reageren kunt. Bijvoorbeeld, een toepassing bouwt die meerdere bewerkingen zoals het bijwerken van een database, het maken van een ticket en het leveren van een e-mailmelding telkens wanneer een apparaat een geofence voert wordt uitgevoerd.
+Azure Maps integreert met Azure Event Grid, zodat u gebeurtenis meldingen kunt verzenden naar andere services en downstream-processen triggert. Het doel van dit artikel is om u te helpen uw zakelijke toepassingen te configureren om te Luis teren naar Azure Maps gebeurtenissen zodat u op een betrouw bare, schaal bare en veilige manier op kritieke gebeurtenissen kunt reageren. U kunt bijvoorbeeld een toepassing bouwen waarmee meerdere acties worden uitgevoerd, zoals het bijwerken van een Data Base, het maken van een ticket en het afleveren van een e-mail melding wanneer een apparaat een geofence binnenkomt.
 
-Azure Event Grid is een volledig beheerde service voor gebeurtenisroutering die gebruikmaakt van een publish-subscribe-model. Event Grid heeft ingebouwde ondersteuning voor Azure-services zoals [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) en [Azure Logic Apps](https://docs.microsoft.com/azure/azure-functions/functions-overview), en waarschuwingen kunt leveren aan niet-Azure-services met behulp van webhooks. Zie voor een volledige lijst van de gebeurtenis-handlers die ondersteuning biedt voor Event Grid, [een inleiding tot Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
+Azure Event Grid is een volledig beheerde service voor gebeurtenis routering die gebruikmaakt van een model voor publiceren en abonneren. Event Grid heeft ingebouwde ondersteuning voor Azure-Services, zoals [Azure functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) en [Azure Logic apps](https://docs.microsoft.com/azure/azure-functions/functions-overview), en kan gebeurtenis waarschuwingen leveren aan niet-Azure-Services met behulp van webhooks. Zie [Inleiding tot Azure Event grid](https://docs.microsoft.com/azure/event-grid/overview)voor een volledige lijst met gebeurtenis-handlers die Event grid ondersteunt.
 
 
 ![Azure Event Grid functionele model](./media/azure-maps-event-grid-integration/azure-event-grid-functional-model.png)
 
 
-## <a name="azure-maps-events-types"></a>Azure Maps gebeurtenistypen
+## <a name="azure-maps-events-types"></a>Azure Maps typen gebeurtenissen
 
-Maakt gebruik van Event grid [gebeurtenisabonnementen](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) gebeurtenis om berichten te routeren voor abonnees. Een Azure kaarten-account verzendt de volgende typen gebeurtenissen: 
+Event grid gebruikt [gebeurtenis abonnementen](https://docs.microsoft.com/azure/event-grid/concepts#event-subscriptions) om gebeurtenis berichten te routeren naar abonnees. Een Azure Maps account verzendt de volgende gebeurtenis typen: 
 
-| Gebeurtenistype | Description |
+| Gebeurtenistype | Beschrijving |
 | ---------- | ----------- |
-| Microsoft.Maps.GeofenceEntered | Treedt op wanneer coördinaten ontvangen zijn verplaatst van buiten een opgegeven geofence naar binnen |
-| Microsoft.Maps.GeofenceExited | Treedt op wanneer coördinaten ontvangen zijn verplaatst van binnen een bepaalde geofence naar buiten |
-| Microsoft.Maps.GeofenceResult | Deze gebeurtenis treedt op wanneer een query met geofencing een resultaat, ongeacht de status retourneert |
+| Microsoft.Maps.GeofenceEntered | Deze gebeurtenis treedt op wanneer de ontvangen coördinaten van buiten een bepaalde geofence zijn verplaatst naar in |
+| Microsoft.Maps.GeofenceExited | Deze gebeurtenis treedt op wanneer de ontvangen coördinaten van binnen een bepaalde geofence naar buiten zijn verplaatst |
+| Microsoft.Maps.GeofenceResult | Deze gebeurtenis treedt elke keer op wanneer een geoomheinings query een resultaat retourneert, ongeacht de status |
 
 ## <a name="event-schema"></a>Gebeurtenisschema
 
-Het volgende voorbeeld show-schema voor GeofenceResult
+In het volgende voor beeld wordt schema voor GeofenceResult weer gegeven
 
 ```JSON
 {   
@@ -76,17 +76,17 @@ Het volgende voorbeeld show-schema voor GeofenceResult
 }
 ```
 
-## <a name="tips-for-consuming-events"></a>Tips voor het gebruik van gebeurtenissen
+## <a name="tips-for-consuming-events"></a>Tips voor het gebruiken van gebeurtenissen
 
-Toepassingen die werken met Azure Maps geofence gebeurtenissen moeten volgen enkele aanbevolen procedures:
+Toepassingen die Azure Maps geofence-gebeurtenissen afhandelen, moeten een aantal aanbevolen procedures volgen:
 
-* Meerdere abonnementen kunnen worden geconfigureerd om gebeurtenissen routeren naar de dezelfde gebeurtenis-handler. Het is belangrijk dat u niet wordt ervan uitgegaan dat er gebeurtenissen van een bepaalde bron zijn. Controleer altijd het onderwerp van het bericht om ervoor te zorgen dat het afkomstig is van de bron die u verwacht.
-* Berichten kunnen niet de juiste volgorde of na een vertraging. Gebruik de `X-Correlation-id` veld in de antwoordkop om te begrijpen als uw gegevens over objecten bijgewerkt is.
-* Wanneer en POST Geofence-API wordt aangeroepen met de modusparameter ingesteld op `EnterAndExit`, een gebeurtenis Enter of afsluiten is gegenereerd voor elke geometrie in de geofence waarvoor de status van de vorige Geofence API-aanroep is gewijzigd.
+* Meerdere abonnementen kunnen worden geconfigureerd voor het door sturen van gebeurtenissen naar dezelfde gebeurtenis-handler. Het is belang rijk dat u ervan uitgaat dat gebeurtenissen van een bepaalde bron afkomstig zijn. Controleer altijd het onderwerp bericht om er zeker van te zijn dat het afkomstig is van de bron die u verwacht.
+* Berichten kunnen buiten de juiste volg orde of na een vertraging arriveren. Gebruik het `X-Correlation-id` veld in de antwoord header om te begrijpen of uw informatie over objecten actueel is.
+* Wanneer de geofence-API Get en POST wordt aangeroepen met de para meter voor de modus ingesteld op `EnterAndExit`, wordt er een Enter-of exit-gebeurtenis gegenereerd voor elke geometrie in de geofence waarvoor de status is gewijzigd ten opzichte van de vorige geofence API-aanroep.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voor meer informatie over het gebruik van geofencing voor beheerbewerkingen op een site bouwen, Zie:
+Zie voor meer informatie over het gebruik van geoomheining om bewerkingen op een bouw site te beheren:
 
 > [!div class="nextstepaction"] 
 > [Een geofence instellen met behulp van Azure Maps](tutorial-geofence.md)

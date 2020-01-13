@@ -1,6 +1,6 @@
 ---
-title: Uw Azure Maps-account beheren | Microsoft Docs
-description: U kunt de Azure Portal gebruiken om uw Azure Maps-account te beheren.
+title: Uw Azure Maps-account beheren in azure Portal | Microsoft Azure kaarten
+description: In dit artikel leert u hoe u de Azure Portal kunt gebruiken om uw Microsoft Azure Maps-account te beheren.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/14/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: a5697989696d0d375e52baeb9f7332e7013d16bf
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 92c76780473372c3e2ef87cdf4da0f21a22d9ac6
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768840"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911504"
 ---
 # <a name="manage-your-azure-maps-account"></a>Uw Azure Maps-account beheren
 
@@ -31,13 +31,13 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 4. Voer de gegevens voor uw nieuwe account in.
 
-![Account gegevens invoeren in de portal](./media/how-to-manage-account-keys/new-account-portal.png)
+![Voer Azure Maps account gegevens in het Azure Portal](./media/how-to-manage-account-keys/new-account-portal.png)
 
 ## <a name="delete-an-account"></a>Een account verwijderen
 
 U kunt een account verwijderen uit de Azure Portal. Navigeer naar de pagina account overzicht en selecteer **verwijderen**.
 
-![Uw account verwijderen in de portal](./media/how-to-manage-account-keys/account-delete-portal.png)
+![Verwijder uw Azure Maps-account in de Azure Portal](./media/how-to-manage-account-keys/account-delete-portal.png)
 
 Vervolgens wordt er een bevestigings pagina weer geven. U kunt het verwijderen van uw account bevestigen door de naam ervan te typen.
 

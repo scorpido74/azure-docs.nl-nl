@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: route zoeken met Azure Maps'
-description: 'Zelf studie: route naar een nuttige plaats met behulp van Azure Maps'
+title: 'Zelf studie: route naar een locatie zoeken | Microsoft Azure kaarten'
+description: Deze zelf studie laat zien hoe u route naar een locatie (belang rijke punt) kunt weer geven op een kaart met behulp van Microsoft Azure Maps Routing-service.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: efc60acae78c96983e79044ae1ba7399154f3568
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7f13e5342e880a9ed5e2cb35ebaf558a1641618b
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613598"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910839"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Zelf studie: route naar een nuttige plaats met behulp van Azure Maps
 
@@ -168,7 +168,7 @@ In deze zelfstudie wordt een eenvoudige route weergegeven met behulp van een sym
 
 3. Sla het bestand **MapRoute.html** op en vernieuw de browser. De kaart is nu gecentreerd op Seattle en u ziet de blauwe pincode die het begin punt markeert en de ronde blauwe PIN die het eind punt markeert.
 
-   ![Kaart met gemarkeerd begin- en eindpunt weergeven](media/tutorial-route-location/map-pins.png)
+   ![Begin-en eind punt van routes op de kaart weer geven](media/tutorial-route-location/map-pins.png)
 
 <a id="getroute"></a>
 

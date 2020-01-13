@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 4cd4cffdb0357b1cd73b1613e52c2a6c1a60f71e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc861126cd723bbb0f7c43d5d2db4eed1503605a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457052"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911901"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-apparaat-naar-Cloud-berichten traceren met gedistribueerde tracering (voor beeld)
 
@@ -208,15 +208,15 @@ Als u het percentage berichten wilt wijzigen dat moet worden getraceerd vanuit d
 
 1. Beschrijving Wijzig de sampling frequentie in een andere waarde en Bekijk de wijziging in de frequentie waarmee berichten `tracestate` in de toepassings eigenschappen bevatten.
 
-### <a name="update-using-azure-iot-hub-toolkit-for-vs-code"></a>Bijwerken met behulp van Azure IoT Hub Toolkit voor VS code
+### <a name="update-using-azure-iot-hub-for-vs-code"></a>Bijwerken met Azure IoT Hub voor VS code
 
-1. Installeer VS code en Installeer [hier](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)de nieuwste versie van Azure IOT hub Toolkit voor VS code.
+1. Installeer VS code en Installeer [hier](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)de nieuwste versie van Azure IOT hub voor VS code.
 
 1. Open VS code en [stel IoT Hub Connection String](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites)in.
 
 1. Vouw het apparaat uit en zoek naar de **instelling voor gedistribueerde tracering (preview)** . Klik daaronder op **Update gedistribueerde tracerings instelling (preview)** van SubNode.
 
-    ![Gedistribueerde tracering inschakelen in azure IoT Hub Toolkit](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
+    ![Gedistribueerde tracering inschakelen in azure IoT Hub-extensie](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
 1. Selecteer in het pop-upvenster **inschakelen**en druk vervolgens op Enter om 100 te bevestigen als sampling frequentie.
 

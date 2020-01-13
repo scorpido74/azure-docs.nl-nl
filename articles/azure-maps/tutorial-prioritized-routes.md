@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: meerdere routes met Azure Maps'
-description: 'Zelf studie: routes voor verschillende manieren van reizen zoeken met behulp van Azure Maps'
+title: 'Zelf studie: meerdere routes zoeken op reis wijze | Microsoft Azure kaarten'
+description: In deze zelf studie leert u hoe u routes kunt vinden voor verschillende reis methoden met behulp van Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cec7027ee0eadae2284e9aa2b127c195870ee929
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 258572d4451be6d9a1090c032467e85889148d14
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613632"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910850"
 ---
 # <a name="tutorial-find-routes-for-different-modes-of-travel-using-azure-maps"></a>Zelf studie: routes voor verschillende manieren van reizen zoeken met behulp van Azure Maps
 
@@ -117,7 +117,7 @@ Gebruik de volgende stappen voor het maken van een statische HTML-pagina, ingesl
 
 2. Sla het bestand **MapTruckRoute.html** op en vernieuw de pagina in uw browser. Als u met de kaart communiceert en inzoomt op Los Angeles, ziet u de straten met de huidige verkeers gegevens.
 
-   ![Kaart met verkeer weergeven](./media/tutorial-prioritized-routes/traffic-map.png)
+   ![Verkeer op een kaart weer geven](./media/tutorial-prioritized-routes/traffic-map.png)
 
 <a id="queryroutes"></a>
 

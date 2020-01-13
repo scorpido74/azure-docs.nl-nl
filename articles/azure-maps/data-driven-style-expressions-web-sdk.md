@@ -1,6 +1,6 @@
 ---
-title: Gegevensgestuurde stijl expressies in de Azure Maps Web-SDK | Microsoft Docs
-description: Het gebruik van gegevensgestuurde stijl expressies in de Azure Maps Web-SDK.
+title: Gegevensgestuurde stijl expressies in de Azure Maps Web-SDK | Microsoft Azure kaarten
+description: In dit artikel leert u hoe u gegevensgestuurde stijl expressies kunt gebruiken in de Microsoft Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 4/4/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 6cd69ba8abe243daadf5d517ab7c5a224953cc99
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 8372012734d937da99c32d2d18fed91ae52c7444
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480639"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911781"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Gegevensgestuurde stijl expressies (Web SDK)
 
@@ -84,7 +84,7 @@ Gegevens expressies bieden toegang tot de eigenschaps gegevens in een functie.
 | Expressie | Retour type | Beschrijving |
 |------------|-------------|-------------|
 | `['at', number, array]` | object | Hiermee wordt een item uit een matrix opgehaald. |
-| `['geometry-type']` | tekenreeks | Hiermee wordt het type geometrie van de functie opgehaald: Point, multi point, Lines Tring, multi line String, veelhoek, multiveelhoek. |
+| `['geometry-type']` | string | Hiermee wordt het type geometrie van de functie opgehaald: Point, multi point, Lines Tring, multi line String, veelhoek, multiveelhoek. |
 | `['get', string]` | waarde | Hiermee wordt de eigenschaps waarde opgehaald uit de eigenschappen van de huidige functie. Retourneert null als de aangevraagde eigenschap ontbreekt. |
 | `['get', string, object]` | waarde | Hiermee wordt de eigenschaps waarde opgehaald uit de eigenschappen van het gegeven object. Retourneert null als de aangevraagde eigenschap ontbreekt. |
 | `['has', string]` | booleaans | Hiermee wordt bepaald of de eigenschappen van een functie de opgegeven eigenschap hebben. |
@@ -400,12 +400,12 @@ Type-expressies bieden hulpprogram ma's voor het testen en omzetten van verschil
 | Expressie | Retour type | Beschrijving |
 |------------|-------------|-------------|
 | `['literal', array]`<br/><br/>`['literal', object]` | \|-object matrix | Retourneert een letterlijke matrix of object waarde. Gebruik deze expressie om te voor komen dat een matrix of object als een expressie wordt geëvalueerd. Dit is nodig wanneer een matrix of object moet worden geretourneerd door een expressie. |
-| `['image', string]` | tekenreeks | Hiermee wordt gecontroleerd of een opgegeven afbeeldings-ID is geladen in de Maps-installatie kopie sprite. Als dat het geval is, wordt de ID geretourneerd, anders wordt Null geretourneerd. |
+| `['image', string]` | string | Hiermee wordt gecontroleerd of een opgegeven afbeeldings-ID is geladen in de Maps-installatie kopie sprite. Als dat het geval is, wordt de ID geretourneerd, anders wordt Null geretourneerd. |
 | `['to-boolean', value]` | booleaans | Hiermee wordt de invoer waarde geconverteerd naar een Boolean. Het resultaat is `false` wanneer de invoer een lege teken reeks, `0`, `false`, `null`of `NaN`is. anders is het `true`. |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Converteert de invoer waarde naar een kleur. Als er meerdere waarden worden gegeven, wordt elke waarde in de aangegeven volg orde geëvalueerd totdat de eerste geslaagde conversie is verkregen. Als geen van de invoer kan worden geconverteerd, is de expressie een fout. |
 | `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | getal | Converteert de invoer waarde indien mogelijk naar een getal. Als de invoer `null` of `false`is, is het resultaat 0. Als de invoer is `true`, is het resultaat 1. Als de invoer een teken reeks is, wordt deze geconverteerd naar een getal met behulp van de [ToNumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) -teken reeks functie van de ECMAScript Language Specification. Als er meerdere waarden worden gegeven, wordt elke waarde in de aangegeven volg orde geëvalueerd totdat de eerste geslaagde conversie is verkregen. Als geen van de invoer kan worden geconverteerd, is de expressie een fout. |
-| `['to-string', value]` | tekenreeks | Converteert de invoer waarde naar een teken reeks. Als de invoer is `null`, wordt het resultaat `""`. Als de invoer een Booleaanse waarde is, wordt het resultaat `"true"` of `"false"`. Als de invoer een getal is, wordt dit geconverteerd naar een teken reeks met behulp van de functie [toString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) -nummer van de ECMAScript Language Specification. Als de invoer een kleur is, wordt deze geconverteerd naar de CSS-kleur teken reeks `"rgba(r,g,b,a)"`. Anders wordt de invoer geconverteerd naar een teken reeks met behulp van de [JSON. stringify](https://tc39.github.io/ecma262/#sec-json.stringify) -functie van de ECMAScript Language Specification. |
-| `['typeof', value]` | tekenreeks | Retourneert een teken reeks die het type van de opgegeven waarde beschrijft. |
+| `['to-string', value]` | string | Converteert de invoer waarde naar een teken reeks. Als de invoer is `null`, wordt het resultaat `""`. Als de invoer een Booleaanse waarde is, wordt het resultaat `"true"` of `"false"`. Als de invoer een getal is, wordt dit geconverteerd naar een teken reeks met behulp van de functie [toString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) -nummer van de ECMAScript Language Specification. Als de invoer een kleur is, wordt deze geconverteerd naar de CSS-kleur teken reeks `"rgba(r,g,b,a)"`. Anders wordt de invoer geconverteerd naar een teken reeks met behulp van de [JSON. stringify](https://tc39.github.io/ecma262/#sec-json.stringify) -functie van de ECMAScript Language Specification. |
+| `['typeof', value]` | string | Retourneert een teken reeks die het type van de opgegeven waarde beschrijft. |
 
 > [!TIP]
 > Als er een fout bericht lijkt op `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` wordt weer gegeven in de browser console, betekent dit dat er een expressie ergens in uw code staat die een matrix heeft die geen teken reeks voor de eerste waarde heeft. Als u wilt dat de expressie een matrix retourneert, laat u de matrix teruglopen met de `literal` expressie. In het volgende voor beeld wordt het pictogram `offset` optie van een Symbol-laag ingesteld, dat een matrix met twee getallen moet zijn door gebruik te maken van een `match`-expressie om te kiezen tussen twee offset waarden op basis van de waarde van de eigenschap `entityType` van de functie Point.
@@ -463,9 +463,9 @@ Teken reeks operator expressies voeren conversie bewerkingen uit op teken reekse
 
 | Expressie | Retour type | Beschrijving |
 |------------|-------------|-------------|
-| `['concat', string, string, …]` | tekenreeks | Meerdere teken reeksen samen voegen. Elke waarde moet een teken reeks zijn. Gebruik de expressie van het type `to-string` om andere waardetypen zo nodig te converteren naar teken reeks. |
-| `['downcase', string]` | tekenreeks | Hiermee wordt de opgegeven teken reeks geconverteerd naar kleine letters. |
-| `['upcase', string]` | tekenreeks | Converteert de opgegeven teken reeks naar hoofd letters. |
+| `['concat', string, string, …]` | string | Meerdere teken reeksen samen voegen. Elke waarde moet een teken reeks zijn. Gebruik de expressie van het type `to-string` om andere waardetypen zo nodig te converteren naar teken reeks. |
+| `['downcase', string]` | string | Hiermee wordt de opgegeven teken reeks geconverteerd naar kleine letters. |
+| `['upcase', string]` | string | Converteert de opgegeven teken reeks naar hoofd letters. |
 
 **Voorbeeld**
 
@@ -823,7 +823,7 @@ Met variabelen bindings expressies worden de resultaten van een berekening in ee
 
 | Expressie | Retour type | Beschrijving |
 |--------------|---------------|--------------|
-| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;' Let ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;NAME1: String,<br/>&nbsp;&nbsp;&nbsp;&nbsp;waarde1: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;naam2: String,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Value2: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;...<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Slaat een of meer waarden op als variabelen voor gebruik door de `var` expressie in de onderliggende expressie die het resultaat retourneert. |
+| \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;' Let ',<br/>&nbsp;&nbsp;&nbsp;&nbsp;NAME1: String,<br/>&nbsp;&nbsp;&nbsp;&nbsp;waarde1: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;naam2: String,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Value2: any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Slaat een of meer waarden op als variabelen voor gebruik door de `var` expressie in de onderliggende expressie die het resultaat retourneert. |
 | `['var', name: string]` | iedere | Verwijst naar een variabele die is gemaakt met behulp van de `let`-expressie. |
 
 **Voorbeeld**

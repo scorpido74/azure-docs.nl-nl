@@ -1,6 +1,6 @@
 ---
-title: Dekking van verkeer in Azure Maps | Microsoft Docs
-description: Meer informatie over dekking van verkeer in Azure Maps
+title: Verkeers dekking | Microsoft Azure kaarten
+description: In dit artikel vindt u informatie over de dekking van verkeer in Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/22/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cb7ebe5d9519f1a3967a29f4c883c420a892817f
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 544cae7f33bfb1077bfdf7f215fb313974334216
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958007"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910401"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Dekking van Azure Maps verkeer
 
@@ -23,7 +23,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 
 ## <a name="americas"></a>Noord- en Zuid-Amerika
 
-|Land/regio  |Gevallen  |Stroom  |
+|Land/regio  |Incidenten  |Stroom  |
 |---------|:---------:|:---------:|
 |Argentinië      |✓         |✓         |
 |Brazilië     |✓         |✓         |
@@ -37,19 +37,19 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 |Uruguay |✓         |✓         |
 
 
-## <a name="asia-pacific"></a>Azië en Stille Oceaan
+## <a name="asia-pacific"></a>Azië-Pacific
 
-|Land/regio   |Gevallen  |Stroom  |
+|Land/regio   |Incidenten  |Stroom  |
 |---------|:---------:|:---------:|
 |Australië     |✓         |✓        |
 |Brunei   |✓         |✓        |
-|Hong Kong SAR     |✓         |✓         |
+|Hongkong SAR     |✓         |✓         |
 |India   |✓         |✓         |
 |Indonesië     |✓         |✓         |
 |Macau SAR     |✓         |✓         |
 |Maleisië     |✓         |✓         |
 |Nieuw-Zeeland     |✓         |✓         |
-|Filipijnen  |✓         |✓         |
+|Filippijnen  |✓         |✓         |
 |Singapore     |✓         |✓         |
 |Taiwan     |✓         |✓        |
 |Thailand     |✓         |✓        |
@@ -58,11 +58,11 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 
 ## <a name="europe"></a>Europa
 
-|Land/regio   |Gevallen  |Stroom  |
+|Land/regio   |Incidenten  |Stroom  |
 |---------|:---------:|:---------:|
 |Andorra   |✓         |✓         |
 |Oostenrijk     |✓         |✓         |
-|Belarus    |✓         |✓         |
+|Wit-Rusland    |✓         |✓         |
 |België     |✓         |✓         |
 |Bosnië en Herzegovina    |✓         |✓         |
 |Bulgarije     |✓         |✓         |
@@ -111,12 +111,12 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 |\+ Gibraltar     |✓         |✓         |
 |\+ Guernsey & Jersey     |✓         |✓         |
 |\+ Isle of man     |✓         |✓         |
-|Vaticaan stad   |✓         |✓         |
+|Vaticaanstad   |✓         |✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Midden-Oosten en Afrika
 
-|Land/regio |Gevallen  |Stroom  |
+|Land/regio |Incidenten  |Stroom  |
 |---------|:---------:|:---------:|
 |Bahrein     |✓         |✓         |
 |Egypte     |✓         |✓         |

@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 3d748e1625f27be27b7f403fbab3e213b16c4dd6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c5de7b7bf30726dbfbf165799280ad892eca628a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890180"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911999"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure scheduler-taken migreren naar Azure Logic Apps
 
@@ -108,7 +108,7 @@ Als u bijvoorbeeld de Postman-app gebruikt, kunt u een POST-aanvraag maken met d
 
 | Aanvraag methode | URL | Hoofdtekst | Headers |
 |----------------|-----|------|---------|
-| **POST** | < *-eind punt-URL*> | **uitgang** <p>**JSON (toepassing/JSON)** <p>Voer in het vak **onbewerkt** de lading in die u in de aanvraag wilt verzenden. <p>**Opmerking**: met deze instelling worden de waarden van de **headers** automatisch geconfigureerd. | **Sleutel**: inhouds type <br>**Waarde**: Application/JSON |
+| **POST** | <*endpoint-URL*> | **uitgang** <p>**JSON(application/json)** <p>Voer in het vak **onbewerkt** de lading in die u in de aanvraag wilt verzenden. <p>**Opmerking**: met deze instelling worden de waarden van de **headers** automatisch geconfigureerd. | **Sleutel**: inhouds type <br>**Waarde**: Application/JSON |
 |||||
 
 ![Aanvraag verzenden om uw logische app hand matig te activeren](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -169,7 +169,7 @@ Als u wilt bepalen hoe een actie wordt uitgevoerd in uw logische app wanneer er 
 
    ![Beleid voor opnieuw proberen selecteren](./media/migrate-from-scheduler-to-logic-apps/retry-policy.png)
 
-## <a name="handle-exceptions-and-errors"></a>Uitzonde ringen en fouten verwerken
+## <a name="handle-exceptions-and-errors"></a>Uitzonderingen en fouten verwerken
 
 Als de standaard actie in azure scheduler niet kan worden uitgevoerd, kunt u een alterative-actie uitvoeren die de fout status verbiedt. In Azure Logic Apps kunt u ook dezelfde taak uitvoeren.
 
@@ -191,7 +191,7 @@ Als de standaard actie in azure scheduler niet kan worden uitgevoerd, kunt u een
 
 1. Wanneer u klaar bent, selecteert u **Gereed**.
 
-Zie voor meer informatie over het afhandelen van uitzonde [ringen afhandelen en de eigenschap RunAfter](../logic-apps/logic-apps-exception-handling.md#catch-and-handle-failures-with-the-runafter-property).
+Zie voor meer informatie over het afhandelen van uitzonde [ringen afhandelen en de eigenschap RunAfter](../logic-apps/logic-apps-exception-handling.md#control-run-after-behavior).
 
 ## <a name="faq"></a>Veelgestelde vragen
 
@@ -223,13 +223,13 @@ Als uw Azure-abonnement een betaald ondersteunings plan heeft, kunt u een aanvra
    | Eigenschap | Waarde |
    |---------|-------|
    | **Probleem type** | **Documentatie** |
-   | **Abonnement** | <*uw> Azure-abonnement* |
+   | **Abonnement** | <*your-Azure-subscription*> |
    | **Service** | Selecteer **scheduler**onder **bewaking van & beheer**. Als u **scheduler**niet kunt vinden, selecteert u eerst **alle services** . |
    ||| 
 
 1. Selecteer de gewenste ondersteunings optie. Als u een betaald ondersteunings abonnement hebt, selecteert u **volgende**.
 
-**Communitynamen**
+**Community**
 
 * [Azure Logic Apps forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)

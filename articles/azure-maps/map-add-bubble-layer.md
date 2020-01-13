@@ -1,6 +1,6 @@
 ---
-title: Een tekenlaag toevoegen aan Azure Maps | Microsoft Docs
-description: Een Bubble laag toevoegen aan de Azure Maps Web-SDK.
+title: Een doellaag toevoegen aan een kaart | Microsoft Azure kaarten
+description: In dit artikel leert u hoe u een tekenlaag aan een kaart kunt toevoegen met behulp van de Microsoft Azure Maps Web SDK.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5cc5dbdc89f629c09d47ef683b7ff7fff61d2f49
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 0088cced84da08828d02d3a0f83846babf286b71
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976580"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911288"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>Een tekenlaag aan een kaart toevoegen
 
 Dit artikel laat u zien hoe u punt gegevens van een gegevens bron kunt weer geven als een Bubble laag op een kaart. Met bellen lagen worden punten weer gegeven als cirkels op de kaart met een harde pixel RADIUS. 
 
 > [!TIP]
-> Met bellen lagen worden standaard de coördinaten van alle geometrieën in een gegevens bron weer gegeven. Als u de laag zo wilt beperken dat alleen de functies van de punt geometrie `filter` worden weer gegeven, stelt `['==', ['geometry-type'], 'Point']` u `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` de eigenschap van de laag in of als u ook multi point-functies wilt toevoegen.
+> Met bellen lagen worden standaard de coördinaten van alle geometrieën in een gegevens bron weer gegeven. Als u de laag zo wilt beperken dat alleen de functies van punt geometrie worden weer gegeven, stelt u de eigenschap `filter` van de laag in op `['==', ['geometry-type'], 'Point']` of `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` als u ook multi point-functies wilt toevoegen.
 
 ## <a name="add-a-bubble-layer"></a>Een bubbellaag toevoegen
 
@@ -57,16 +57,16 @@ Hieronder ziet u het volledige programma voor het uitvoeren van code van de bove
 
 <br/>
 
-<iframe height='500' scrolling='no' title='BubbleLayer gegevens bron' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer data source</a> by Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='BubbleLayer gegevens bron' src='//codepen.io/azuremaps/embed/mzqaKB/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/mzqaKB/'>BubbleLayer data source</a> by Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="show-labels-with-a-bubble-layer"></a>Labels weer geven met een Bubble Layer
 
-De volgende code laat zien hoe u een Bubble laag kunt gebruiken om een punt op de kaart en een symbool laag te renderen om een label weer te geven. Als u het pictogram van de laag Symbol wilt verbergen, `image` stelt u de eigenschap van de `'none'`pictogram opties in op.
+De volgende code laat zien hoe u een Bubble laag kunt gebruiken om een punt op de kaart en een symbool laag te renderen om een label weer te geven. Als u het pictogram van de laag Symbol wilt verbergen, stelt u de eigenschap `image` van de pictogram opties in op `'none'`.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Gegevens bron met meerdere lagen' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>gegevens bron</a> met meerdere lagen pen door<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Gegevens bron met meerdere lagen' src='//codepen.io/azuremaps/embed/rqbQXy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) pen- <a href='https://codepen.io/azuremaps/pen/rqbQXy/'>gegevens bron</a> op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="customize-a-bubble-layer"></a>Een Bubble laag aanpassen
@@ -75,7 +75,7 @@ De Bubble laag heeft slechts enkele opmaak opties. Hier volgt een hulp programma
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Opties voor Bubble Layers' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>laag opties</a> van de pen op Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Opties voor Bubble Layers' src='//codepen.io/azuremaps/embed/eQxbGm/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/eQxbGm/'>laag opties</a> van de Pen op Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Volgende stappen

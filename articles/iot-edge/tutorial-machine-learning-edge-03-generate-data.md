@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d51a577b8a460e872b2baddcb668b13981609e40
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1c56dd23084feabeb72f084b03e055d4aa09a11d
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707750"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912267"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Zelf studie: gesimuleerde apparaatgegevens genereren
 
@@ -123,7 +123,7 @@ Nu het project is gemaakt, maakt u verbinding met uw IoT-hub om toegang te krijg
 
 1. U kunt de berichten die worden verzonden naar de hub weer geven door met de rechter muisknop op een apparaat te klikken en **controle van het ingebouwde gebeurtenis-eind punt starten**te selecteren. De berichten worden weer gegeven in het deel venster uitvoer in Visual Studio code.
 
-1. Stop de bewaking door te klikken in het deel venster uitvoer van de **Azure IOT hub Toolkit** en kies **controle van ingebouwd gebeurtenis stop stoppen**.
+1. Stop de bewaking door te klikken in het deel venster **Azure IOT hub** -uitvoer en kies **controle stoppen ingebouwd gebeurtenis eindpunt**.
 
 1. Laat de toepassing uitvoeren, wat enkele minuten in beslag neemt.
 
@@ -141,7 +141,7 @@ De gegevens die door de DeviceHarness worden verzonden, zijn naar uw IoT-hub geg
 
 De gegevens die we zojuist naar uw IoT-hub hebben verzonden, worden doorgestuurd naar de opslag container die we in het vorige artikel hebben gemaakt. Laten we eens kijken naar de gegevens in het opslag account.
 
-1. Ga in Azure Portal naar uw opslagaccount.
+1. Ga in Azure Portal naar het nieuwe opslagaccount.
 
 1. Selecteer **Storage Explorer (preview)** in de Navigator voor opslag accounts.
 

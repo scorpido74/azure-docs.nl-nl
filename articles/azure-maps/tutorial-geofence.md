@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: een geofence maken met behulp van Azure Maps'
-description: 'Zelf studie: een geofence instellen met behulp van Azure Maps.'
+title: 'Zelf studie: een geofence maken en apparaten bijhouden op een kaart | Microsoft Azure kaarten'
+description: In deze zelf studie leert u hoe u een geofence kunt instellen en apparaten ten opzichte van de geofence kunt volgen met behulp van Microsoft Azure Maps Spatial service.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2998c67bf00c74422baa19af0b389118600ba1c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0e408adfe1daed402ef690224368e846bd0a97c8
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407836"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910945"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Zelf studie: een geofence instellen met behulp van Azure Maps
 
@@ -58,7 +58,7 @@ Open de Postman-app en volg de volgende stappen om de geofence van de bouwplaats
 
 3. Klik op **Params** en voer de volgende sleutel/waarde-paren in die voor de POST-aanvraag-URL moeten worden gebruikt. Vervang de abonnee sleutel waarde door uw Azure Maps sleutel.
    
-    ![Key-Value-parameters in Postman](./media/tutorial-geofence/postman-key-vals.png)
+    ![Para meters voor het uploaden van gegevens (geofence) in postman](./media/tutorial-geofence/postman-key-vals.png)
 
 4. Klik op **Body** en selecteer de onbewerkte invoerindeling. Kies de invoerindeling JSON in de vervolgkeuzelijst. Geef de volgende JSON op als de gegevens die u wilt uploaden:
 
@@ -177,7 +177,7 @@ U kun alle [ondersteunde gebeurtenis-handlers](https://docs.microsoft.com/azure/
 
 1. Een Logic App maken in Azure-portal
 
-   ![Logic Apps maken](./media/tutorial-geofence/logic-app.png)
+   ![Azure Logic Apps maken voor het verwerken van geofence-gebeurtenissen](./media/tutorial-geofence/logic-app.png)
 
 2. Selecteer een HTTP-aanvraagtrigger en selecteer vervolgens de actie ‘E-mail verzenden’ in de outlook-connector
   
@@ -185,7 +185,7 @@ U kun alle [ondersteunde gebeurtenis-handlers](https://docs.microsoft.com/azure/
 
 3. Sla de logische app op om het HTTP-URL-eindpunt te genereren en de HTTP-URL te kopiëren.
 
-   ![Logic Apps-eindpunt](./media/tutorial-geofence/logic-app-endpoint.png)
+   ![Een Logic Apps-eind punt genereren](./media/tutorial-geofence/logic-app-endpoint.png)
 
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Een abonnement maken op Azure Maps-evenementen
@@ -196,15 +196,15 @@ Volg de stappen hieronder om een gebeurtenisabonnement te maken voor Enter-gebeu
 
 1. Navigeer naar uw Azure Maps-account via [deze portal-koppeling](https://ms.portal.azure.com/#@microsoft.onmicrosoft.com/dashboard/) en selecteer het tabblad Gebeurtenissen.
 
-   ![Azure Maps-gebeurtenissen](./media/tutorial-geofence/events-tab.png)
+   ![Navigeren naar Azure Maps-account gebeurtenissen](./media/tutorial-geofence/events-tab.png)
 
 2. U maakt een gebeurtenisabonnement door Gebeurtenisabonnement te selecteren op de pagina Gebeurtenissen.
 
-   ![Abonnement op Azure Maps-gebeurtenissen](./media/tutorial-geofence/create-event-subscription.png)
+   ![Een abonnement maken op Azure Maps-evenementen](./media/tutorial-geofence/create-event-subscription.png)
 
 3. Geef het gebeurtenisabonnement een naam en abonneer u op het gebeurtenistype Enter. Selecteer nu Webhook als Eindpunttype en kopieer het HTTP-URL-eindpunt van de logische app in 'Eindpunt'
 
-   ![Gebeurtenisabonnement](./media/tutorial-geofence/events-subscription.png)
+   ![Details van abonnement voor Azure Maps gebeurtenissen](./media/tutorial-geofence/events-subscription.png)
 
 
 ## <a name="use-geofence-api"></a>Geofence-API gebruiken
@@ -214,7 +214,7 @@ U kunt de Geofence-API gebruiken om te controleren of een **apparaat** (apparatu
 > [!Note]
 > Bovenstaand scenario en gedrag zijn gebaseerd op dezelfde **apparaat-id**. Deze reflecteren dus de vijf verschillende locaties zoals in de afbeelding hieronder.
 
-![Geofence-kaart](./media/tutorial-geofence/geofence.png)
+![Geofence-toewijzing in Azure Maps](./media/tutorial-geofence/geofence.png)
 
 Open in de Postman-app een nieuw tabblad in de verzameling die u hierboven hebt gemaakt. Selecteer de methode GET HTTP op het tabblad Builder:
 

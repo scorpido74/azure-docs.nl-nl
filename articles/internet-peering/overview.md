@@ -8,16 +8,16 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: c5fd37c532e2abf2697c741e4dab10a945926e2b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 576bc3e37711851acd7d6c7ac811a10e40080710
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75775689"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908921"
 ---
 # <a name="internet-peering-overview"></a>Overzicht van Internet peering
 
-Peering is de onderlinge verbinding tussen het wereld wijde netwerk (AS8075) van micro soft en uw netwerk voor het uitwisselen van Internet verkeer van/naar micro soft onlineservices en Microsoft Azure Services. Vervoerders of service providers kunnen vragen om verbinding te maken met micro soft op een van onze Edge-locaties. Elke aanvraag wordt gecontroleerd door Microsoft Azure netwerk om te controleren of deze voldoet aan ons beleid voor peering. U kunt op twee manieren een peering met het micro soft-netwerk instellen:
+Peering is de onderlinge verbinding tussen het wereld wijde netwerk (AS8075) van micro soft en uw netwerk voor het uitwisselen van Internet verkeer van/naar micro soft onlineservices en Microsoft Azure Services. Vervoerders of service providers kunnen vragen om verbinding te maken met micro soft op een van onze Edge-locaties. Elke aanvraag wordt door micro soft gecontroleerd om te controleren of deze voldoet aan ons beleid voor peering. U kunt op twee manieren een peering met het micro soft-netwerk instellen:
 
 * **Directe peering:**
 
@@ -33,7 +33,7 @@ Peering is de onderlinge verbinding tussen het wereld wijde netwerk (AS8075) van
 * Bescherm klant verkeer tegen storingen in het netwerk van uw netwerk of door Voer van de provider door te koppelen aan micro soft op redundante locaties.
 * Meer informatie over de prestaties van uw peering-verbindingen en hoe u inzichten kunt gebruiken om problemen met uw netwerk op te lossen.
 
-## <a name="benefits-of-using-azure"></a>Voor delen van het gebruik van Azure
+## <a name="benefits-of-using-azure-to-set-up-peering"></a>Voor delen van het gebruik van Azure voor het instellen van peering
 
 U kunt een aanvraag indienen voor peering met behulp van Azure PowerShell of portal van micro soft. Peering is op deze manier ingesteld als een Azure-resource en biedt de volgende voor delen:
 * Vereenvoudigde en geautomatiseerde stappen voor het instellen en beheren van peering met micro soft.

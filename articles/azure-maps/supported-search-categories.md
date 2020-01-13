@@ -1,6 +1,6 @@
 ---
-title: Categorieën van Azure Maps zoeken | Microsoft Docs
-description: Meer informatie over zoekcategorieën in Azure-kaarten
+title: Categorieën zoeken | Microsoft Azure kaarten
+description: In dit artikel vindt u informatie over ondersteunde Zoek categorieën in Microsoft Azure Maps.
 author: sataneja
 ms.author: sataneja
 ms.date: 05/14/2018
@@ -8,125 +8,125 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 4d854aef62af1004faacf73c11bb417cf508a727
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: de44d07b5ebc6a898e3c098f16e553e9d4a46150
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64727143"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910415"
 ---
-# <a name="azure-maps-supported-categories"></a>Azure Maps ondersteunde categorieën
+# <a name="azure-maps-supported-categories"></a>Azure Maps ondersteunde Categorieën
 
-Bij het uitvoeren van een [categorie zoeken](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) voor punten van belang zijn, zijn er meer dan honderd ondersteunde categorieën. Hieronder volgt een lijst van de categoriecodes voor ondersteunde namen. Categoriecodes worden gegenereerd voor de hoogste niveau categorieën. Alle categorieën subsleutels delen dezelfde categoriecode. Houd er rekening mee dat deze lijst met categorieën kan worden gewijzigd in releases van nieuwe gegevens.
+Wanneer u een [categorie zoekt](https://docs.microsoft.com/rest/api/maps/search/getsearchpoicategory) naar interessante onderwerpen, zijn er meer dan honderd ondersteunde categorieën. Hieronder ziet u een lijst met de categorie codes voor ondersteunde categorie namen. Categorie codes worden gegenereerd voor categorieën op het hoogste niveau. Alle onderliggende categorieën delen dezelfde categorie code. Houd er rekening mee dat deze categorie lijst kan worden gewijzigd met nieuwe gegevens releases.
 
 <br/>
 
-| **Categoriecode** | **Categorieën die overeenkomt met de code** |
+| **Categorie code** | **Categorieën code die overeenkomen** |
 | --- | --- |
-| TOEGANG TOT\_GATEWAY | luchtvaartmaatschappij toegang, security-poort, station toegang, access-gateway |
-| ADMINISTRATIEVE\_DELING | Provincie, administratieve indeling vierde-volgorde, eerste volgorde administratieve indeling, historische derde volgorde administratieve indeling, seat van een vierde volgorde administratieve indeling, seat van een tweede maat administratieve indeling, afhankelijk van het politieke entiteit, aanwezig is ingevuld, stoel van een andere volgorde administratieve indeling, ingevuld plaatsen, administratieve indeling seconde-volgorde, seat van een eerste-volgorde administratieve afdeling, administratieve indeling plaats, historische regio, historische ingevuld site, historische ingevuld plaats, Israëlische verwerken, historische vierde volgorde administratieve indeling, administratieve indeling vijfde-volgorde, historische eerste volgorde administratieve indeling, derde volgorde administratieve indeling, historische politieke entiteit, historische administratieve indeling, seat van de overheid van een politieke entiteit, historische seconde volgorde administratieve indeling, hoofdstad van een politieke entiteit |
-| ADVENTURE\_SPORT\_VENUE | Adventure Sport venue |
-| LANDBOUW | tuinbouw, primaire producent, landbouw, farm, farm village, farmstead, liefst in homestead, exploiteert gebied, algemene, aquacultuur faciliteit, bedrijven, melkkoeien, visserij gebied velden |
-| LUCHTHAVEN | privé-instantie, leger-instantie, heliport, gesloten, gemiddeld luchthaven, grote luchthaven, kleine luchthaven, airfield, seaplane base, overheid, ballon poort, luchthaven |
-| AMUSEMENT\_PARK | amusement arcade, amusement plaats, pretparken |
-| AUTO\_DEALER | ATV/snowmobile, Boot, bus, motor, vrachtwagen, van, campers, auto, autobranche dealer |
-| BANK | Bank, banken, bank(s) |
-| BEACH | Beach, stranden |
-| HET BOUWEN VAN\_PUNT | het bouwen van (punt). |
-| ZAKELIJKE\_PARK | zakelijke park, industriële gebied |
-| CAFE\_PUB | internetcafé, thee house, café, internetcafé, café, restaurant, microbrewery/smaakt garden, pub, pub/pub, pub/pub |
-| KAMPEER\_GROND | recreatie, caravan site kampeer grond |
-| AUTO\_WAS | Auto was |
-| GELD\_DISPENSER | Automatische betaalautomaten machine, geld dispenser |
-| CASINO | casino |
-| CINEMA | Drive-in bioscoopvertoningen, bioscoopvertoningen |
-| PLAATS\_CENTER | netwerkomgeving, administratieve gebied, plaats center, midden |
-| CLUB\_KOPPELING | strand club, ijshockey club, club koppeling |
-| COLLEGE\_UNIVERSITEIT | Junior middelbare school/beroepsopleiding, middelbare school/universiteit, hogeschool, universiteit prep school, universiteit |
-| COMMERCIËLE\_BOUWEN | het bouwen van het bouwen, park-headquarters commerciële Office |
-| COMMUNITY\_CENTER | community-center |
-| BEDRIJF | BTW-Electronics, productie, computer-gegevensservices, technologieën voor de volksgezondheid, gediversifieerde financials, dieren beschermen, luchtvaartmaatschappij, apparatuur verhuur, service, e-mail/pakket/vrachtkosten levering, bus regels, home-apparaat herstellen, reiniging, oem, Services, olie natuurlijke gas, juridisch, bouw, telecommunicatie, transport, productie van auto's, chemisch, Begrafenis service mortuaries, bridge-tunnel operations, auto, mechanische engineering, services, investering adviseurs, reclame/marketing, het verplaatsen van opslag, besparingen instelling, verzekeringen, computersoftware, bus pharmaceuticals catering, bruiloft services, agricultural technologie, onroerend goed, taxi, limousine shuttle service Handvest huren, mijnbouw, publiceren technologieën, kabel telefoon, import/export-distributie, bedrijf, behandeling, steenkool mine(s), estate(s), brewery, gold mine(s) |
+| TOEGANG tot\_GATEWAY | toegang tot de luchtvaart maatschappij, beveiligings poort, toegang tot station, toegang tot gateway |
+| BEHEER\_delen | provincie, vierde administratieve divisie, administratieve divisie voor de eerste order, historische administratieve divisie van de derde order, Seat of a vierde administratieve divisie, Seat of a tweede order divisie, afhankelijke politieke entiteit, woon plaats, zetel van een derde opdracht administratieve divisie, gevulde plaatsen, tweede order divisie, zitplaats van een administratieve divisie voor de eerste order, administratieve divisie, gevulde plaats, historische regio, historisch site, historisch beschik bare plaats, Israëlische afwikkeling, historische, vierde administratieve divisie, vijfde administratieve divisie, historische administratieve divisie voor de eerste order, administratieve divisie met externe bestelling, historische politieke entiteit, historische administratieve afdeling, regering van de overheid van een politieke entiteit, historische administratieve divisie op tweede order, kapitaal van een politieke entiteit |
+| SPORT\_van ADVENTURE\_ | Adventure sporten-locaties |
+| LANDBOUW | Tuin, primaire producent, cultuur, Farm, Village, Farmstead, Homestead, regio, gemeen schappelijk, aquacultuur faciliteit, bedrijven, vangst gebied, zuivel, veld (en) |
+| ZÜRICH | particuliere autoriteit, militaire instantie, Heliport, gesloten, gemiddelde lucht haven, grote lucht haven, kleine lucht haven, Airfield, seaplane Base, open bare instantie, ballon poort, lucht haven |
+| PRET\_PARK | pret-Arcade, pret plaats, pret Park |
+| Automobiel\_DEALER | ATV/snowmobile, boot, bus, motor rijwiel, vracht wagen, van, opnieuw gemaakte Voer tuigen, auto, automobiel handelaar |
+| Deposit | Bank, banken, Bank (s) |
+| BEACH | strand, stranden |
+| \_punt bouwen | bouwen (punt) |
+| \_PARK voor bedrijven | bedrijfs Park, industrieel gebied |
+| CAFE\_PUB | Internet café, thee House, café, Internet café, café, koffie shop, microbrewery/bier Tuin, pub, café/pub, café/pub |
+| Kampeer\_grond | recreatie, caravan site, kampeer massa |
+| AUTO'S\_wassen | auto's wassen |
+| CASH\_verdeler | automatische geldauto machine, cash maten |
+| CASINO | Casino |
+| CINEMA | station-in bioscoop, bioscoop |
+| CITY\_CENTER | groep, administratieve gebied, stads centrum, Center |
+| CLUB\_ASSOCIATION | strand club, Hockey Club, Club Association |
+| Universiteit\_UNIVERSITY | onderwijs onderwijs/Community School, school/universiteit, Universiteit, Universiteit Prep School, Universiteit |
+| COMMERCIEEL\_gebouw | kantoor gebouw, Park Headquarters, commercieel gebouw |
+| COMMUNITY\_CENTER | Community Center |
+| BEDRIJFS | elektronica, productie, computer gegevens Services, open bare gezondheids technologieën, gediversifieerde Financiën, dierlijk beschutting, luchtvaart maatschappij, huur van de dienst verlening, service, mail/pakket/vracht levering, bus lijnen, reparatie van het Home-apparaat, schoonmaak Services, OEM, belasting Services, aardgas aardgas, juridische Services, bouw, telecom municatie, Trans Port, auto mobiele productie, chemicaliën, begrafenis service, services, Investment Advisor, reclame/marketing, opslag verplaatsen, besparing, verzekering, computer software, farmaceutische media, Cate ring, huwelijks diensten, agrarische technologie, onroerend goed, taxi, limousine-keuken dienst, verhuur van bus-charter, analyse, publicatie technologieën, kabel telefoon, import/export-distributie, bedrijf, goed koper, kolen en goud (en) |
 | COURTHOUSE | courthouse |
-| CULTURELE\_CENTER | culturele center |
-| TANDARTS | tandarts |
-| AFDELING\_STORE | warenhuis |
-| DOCTOR | algemene arts, gespecialiseerde, doctor |
-| ELEKTRISCHE\_VEHICLE\_STATION | elektrische vehicle station |
+| CULTUREEL\_CENTER | cultureel centrum |
+| ARTSEN | artsen |
+| \_winkel van de afdeling | afdelings winkel |
+| ARTS | algemene artsen, specialist, dokter |
+| ELEKTRISCH\_Voer tuig\_STATION | elektrisch Voer tuig station |
 | EMBASSY | Embassy |
-| EMS\_MEDISCHE\_SERVICE | noodgevallen medische service |
-| ENTERTAINMENT | entertainment |
-| EXCHANGE | Gold exchange, Valutawisselkoers, beurs, exchange |
-| ZO\_CONVENTION\_CENTER | Zo convention center |
-| VEERBOOT\_TERMINAL | veerboot, definitieve veerboot |
-| FIRE\_STATION\_BRIGADE | fire-station/brigade |
-| GRENS\_OVERSCHRIJDING | grens-overschrijding |
-| BRANDSTOF\_FACILITEITEN | brandstof faciliteiten |
-| GEOGRAFISCHE\_FUNCTIE | sleuven, cove, pannen, landinstelling, ridge, veren mineraalwater/hot en gasreservoirs, marsh/vollopen/vlei, quarry, rivier kruisende, dal, mountain piek, reef, dune, lagune, zonder opmaak/vast, rapids, Cabo, plafond, oasis, harbor, grot, rocks, geografische functie, promontory(-ies), -eilanden, headland, pier, krater lake, cliff(s), hill, woestijn, portage, glacier(s), gully, geyser, coral reef(s), gap, golf, jetty, ghat, hole, krater meren, gas-veld, islet, crater(s), cove(s), grasland, grind gebied, fracturing zone, Health, gorge(s), -eiland, headwaters, dal, pieken, hot spring(s), furrow, anabranch te hangende |
-| GOLF\_CURSUS | Golf cursus |
-| GOVERNMENT\_OFFICE | order 5 gebied, volgorde 8 gebied, volgorde 9 gebied, volgorde 2 gebied, volgorde 7 gebied, volgorde 3 gebied boven nationale, volgorde 4 gebied order 6 gebied, office government, diplomatieke faciliteit, Verenigde Staten government inrichting, lokale overheid office, douane house, douanekantoor |
-| STATUS\_CARE\_SERVICE | bloed bank, persoonlijke service, Persoonlijke verzorging faciliteit, ambulance eenheid, gezondheidszorg service, leprosarium, sanatorium, ziekenhuizen, medische center, clinic |
-| HELIPAD\_HELIKOPTER\_LANDINGSPAGINA | helipad/Landings |
-| VAKANTIEDAG\_VERHUUR | bungalow, cottage, chalet, anders, appartement, feestdagen verhuur |
-| ZIEKENHUIS\_POLYCLINIC | speciale, ziekenhuis van Chinese arts, ziekenhuis voor vrouwen kinderen, Algemeen ziekenhuis/polyclinic |
-| HOTEL\_MOTEL | hutten lodges, bed ontbijt Gast ook nieuwste, hotel, rest camps, motel, anders werkt, hostel, hotel/motel, resthouse, hammock(s), Gast house |
-| ICE\_SKATING\_RINK | IJsbaan ICE |
-| BELANGRIJKE\_TOERISTISCHE\_VOORDELEN | het bouwen van, voor de audiovisuele sector, arch, tunnel, wet, tower, bridge, planetarium, mausoleum/grave, monumenten, water hole, natuurlijke voordelen, belangrijke toeristische voordelen, promenade, pyramiden, pagoda, castle, palace, hermitage, piramide, fort, poort, land house , dam, vuurtoren, ernstig |
-| INDUSTRIËLE\_BOUWEN | Foundry, brandstof depot, industriële gebouw, factory |
-| GEMAK\_CENTER | bowlen, snooker, pool billiard, club, dance studio school, sauna, solarium massage, gemak center, beveiligd-wachtwoordverificatie voor een paar dagen |
-| BIBLIOTHEEK | bibliotheek |
-| PRODUCTIE-\_FACILITEIT | productiefaciliteit |
-| MARINA | yacht bekken, marina |
-| MARKT | supermarkten hypermarkten, landbouwers, openbare en informele, markt |
-| MEDIA\_FACILITEIT | Media-faciliteit |
-| LEGER\_INSTALLATIE | leger base, westkust guard station, Militaire installatie, Marine base |
-| MOTORING\_ORGANISATIE\_OFFICE | motoring organisatie office |
-| MOUNTAIN\_DOORGEVEN | Mountain pass |
+| \_medische\_-SERVICE in nood gevallen | nood medische dienst |
+| Amusement | Amusement |
+| EXCHANGE | Gold Exchange, valuta wisseling, aandelen wisseling, Exchange |
+| TENTOONSTELLING\_CONVENTION\_CENTER | tentoonstellingen Conventie Center |
+| VEER\_-TERMINAL | veer boten, veer boot-Terminal |
+| BRAND\_STATION\_BRIGADE | Fire station/Brigade |
+| GRENS\_OVERSCHRIJDing | grens overschrijding |
+| BRANDSTOF\_-installaties | brandstof faciliteiten |
+| FUNCTIE voor geografische\_ | Bay, Cove, pan, land instelling, tanden, mineraal/warme veren, goed, reservoir, Marsh/Swamp/Vlei, steen, stroom Kruis, dal, Mountain piek, Reef, duinen, Lagoon, gewoon/plat, Rapids, Kaapverdië, laag, Oasis, Harbor, grot, Rocks, locatie van Promontory Crater Lake, Cliff (s), Hill, woestijn, Portage, Glacier (s), Gully, Geyser, koraal rood Reef (s), Gap, Golf, jetty, Ghat, gat, Crater meren, gas veld, eilandt, Crater (s), Cove (s), gras, Grave gebied, afbreuk zone, Health, Gorge (s), eiland, headwaters, hangende dal, pieken, warme lente (s), Furrow, anabranch |
+| GOLF\_cursus | Golf cursus |
+| GOVERNMENT\_OFFICE | order 5-gebied, order 8-gebied, order 9-gebied, order 2-gebied, order 7-vlak, order 3-gebied, supra National, order 4-gebied, order 6-gebied, overheids kantoor, diplomatieke faciliteit, Amerikaanse overheids instelling, lokale overheids kantoor, douane-House, douane post |
+| HEALTH-\_CARE\_-SERVICE | bloed Bank, persoonlijke dienst, persoonlijke verzorging faciliteit, ambulance-eenheid, Health Care-service, Leprosarium, sanatorium, ziekenhuis ziekte, medisch centrum, kliniek |
+| HELIPAD\_helikopter\_OVERLOOP | Helipad/helikopter-overloop |
+| Kerst\_verhuur | Bungalow, huis, Chalet, Villa, appartement, vakantie huur |
+| ZIEKENHUIS\_Polyclinic | speciaal, ziekenhuis zieken huis, ziekenhuis voor vrouwen kinderen, algemeen, ziekenhuis/Polyclinic |
+| HOTEL\_MOTEL | cabines, inzendingen bed gast huizen, Hotel, rest Campers, Motel, redmiddel, Hostel, Hotels/Motel, resthouse, hammock (s), gast huis |
+| \_RINK voor ijs\_ | Rink voor ijs |
+| BELANG rijk\_toeristische\_AANTREKKINGS | buil ding, waarnemings, Arch, tunnel, wet, Tower, Bridge, Planetarium, Mausoleum/Grave, monumenten, water gat, natuurlijke aantrekkings, belang rijk toeristische aantrekkings, Promenade, piramides, Pagoda, Castle, Palace, Hermitage, piramide, Fort, Gate, Country House, Dam, Lighthouse, accent grave |
+| INDUSTRIEEL\_gebouw | gieterij, brandstof depot, industrieel gebouw, Factory |
+| Vrije\_CENTER | Bowling, snooker, Pool Billiard, vliegende Club, dans studio school, Sauna, Solarium Massage, vrijetijds centrum, beveiligd-wachtwoord verificatie |
+| TAGBIBLIOTHEEK | tagbibliotheek |
+| FACILITEIT voor productie\_ | productie faciliteit |
+| MARINA | Yacht-bekken, Marina |
+| MARKT | Super markten Hypermarkets, land bouwers, openbaar, informele, markt |
+| MEDIA\_-FACILITEIT | Media faciliteit |
+| INSTALLATIE van militaire\_ | militaire basis, kust beschermings station, militaire installatie, basis van Marine |
+| MOTOR\_organisatie\_OFFICE | Bureau voor de organisatie van de motor |
+| MOUNTAIN\_door geven | berg door geven |
 | MUSEUM | museum |
-| SYSTEEMEIGEN\_RESERVERING | systeemeigen reservering reservering |
-| NIGHTLIFE | balk, karaoke club, jazz club, persoonlijke club, wijn balk, comedy club, cocktail balk, discotheque, nightlife |
-| NIET\_GOVERNMENTAL\_ORGANISATIE | niet-gouvernementele organisatie |
-| OPEN\_VAN DE VERVANGENDE DOMEINPAGINA\_GEBIED | vervangende domeinpagina gebied, veel van de vervangende domeinpagina openen |
-| ANDERE | plaats, Vrijhandelsassociatie zone, verkeer cirkel, onbekend |
-| DE VERVANGENDE DOMEINPAGINA\_GARAGE | vervangende domeinpagina garage |
-| PARK\_RECREATIE\_GEBIED | historische site, lakeshore, seashore, rivier professionele gebied, visserij jacht gebied, battlefield, winter sport, Boot starten ramp, behouden, forest gebied, recreatie gebied, ski-instantie, kerkhof, historische park, parkway, gedenkteken, kermisdieren, Bedrijfspicknick gebied Routebeschrijving gebied, park recreatie gebied, forests, fossilized forest, garden(s), wild reserveren, aard reserveren, forest-station, reserveren, forest reserveren, park jacht |
-| BENZINE\_STATION | Tankstation |
-| FACULTEIT | geneesmiddelen, dispensary |
-| PLAATS\_VAN\_RELIGIE | ashram, synagogue, mosque, gurudwara, kerk, temple, religie, essentiële, terugtrekken, temple(s), religieuze site, religieuze center, monastery, convent plaats |
-| POLITIE\_STATION | order 1 gebied, politie station, politie post |
-| POORT\_DATAWAREHOUSE\_FACILITEIT | Harbor(s), dokken bekken, poort, poort/datawarehouse gebouw, dockyard, dock(s) |
-| POST\_OFFICE | lokale, post office |
-| PRIMAIRE\_RESOURCE\_HULPPROGRAMMA | primaire resource/hulpprogramma, power station, gas-olie scheidingsteken fabriek |
-| GEVANGENIS\_CORRECTIONAL\_FACILITEIT | Gevangenis, gevangenis/correctional faciliteit |
-| OPENBARE\_OPENBARE GROENVOORZIENINGEN | gewoontjes trein, cosmetische, weg redden, passagier transport ticket office, openbare oproep vak, openbare openbare groenvoorzieningen, communicatie center |
-| OPENBARE\_TRANSPORT\_STOPPEN | coach stoppen, bus stoppen, taxi zelfstandige, tram stoppen, openbaar vervoer stoppen, metro station, railroad station, busstation, railroad stoppen |
-| SPOOR\_STATION | nationale, spoor beplating, metro, stad, spoor-station (sub) |
-| HUUR\_A\_AUTO\_FACILITEIT | rent-a-CAR faciliteit |
-| HUUR\_A\_AUTO\_VAN DE VERVANGENDE DOMEINPAGINA | rent-a-car-parking |
-| REPARATIE\_FACILITEIT | bodyshops, band (band)-services, herstel winkels, auto glas vervanging winkels, algemene auto herstellen onderhoud van de installatie van de verkoop van Autoaccessoires, motor herstellen, vrachtwagen repair-service, herstellen faciliteit |
-| ONDERZOEK\_FACILITEIT | onderzoek faciliteit |
-| WOONADRES\_ACCOMMODATIE | buiten gebruik stellen community, townhouse complexe, appartementen/appartementencomplex, condominium complexe, woonadres goed, woonadres accommodatie |
-| RESTAURANT | Duits, creole Cajun, Nederlands, voetbal ruimten, bistro, Israëlische, Slowakije, Jamaicaanse, vegetarisch, vis, Vietnamees, Maltees, Sichuan, welsh, Chinese, Japans, Algerijns, Californian, passen, Shandong, salade balk Savoy een, Spaans, Ethiopische, Taiwanees, donuts, Iraans, Canada, American, Noors, Frans, Hunan, Polynesische, afghan, weg, Aziatische, Zwitserland, erotic, crêperie, Surinamese, Egyptische, Hongaars, Nepalese, barbecue, warm-pot, hamburgers, Middellandse, Latijns-Amerika, tapas, Britse, Mexicaanse, Guangdong, Azië (Overig), buffet, sushi, Mongools, international, mosselen, Thai, Venezolaans, Rumanian, kip, soep, koosjer, biefstuk house, yoghurt/SAP balk, Italiaans, Koreaans, Cypriotische, Bosnisch, Boliviaans, Dominicaanse, België, Tunesië, Schots, Engels, Pakistaans, Tsjechisch, Hawaiïaans, Maghrib, Tibetaans, Arabisch, eastern, Chileense midden, Shanghai, Pools, Filipijns, Soedanese, Armeens, Birmaans, Brazilië, Scandinavisch, Bulgaars, ziel food, Colombia, Joodse, pizza, Sicilian, organische, Grieks, Baskisch, Behalve, cafetaria's, Fins, Afrikaanse, Corsicaans, Syrië, Caribisch gebied, Dongbei, Russisch, grill, dit is opgeslagen, snel food, Australië, Ierland, pub food, fondue, Libanon, Indonesisch, Deens, Provençal, teppanyaki, vasteland van de Indiase, Mauritiaanse, westen, Peruaans, Cambodjaanse, eten, Zweeds, macrobiotic, ice cream parlor, Slavisch, Turks, Argentijnse, Oostenrijk, exotische, Portugees, Luxemburgse, Marokkaanse, sandwich, Cubaanse, restaurant |
-| RESTAURANT\_GEBIED | restaurant gebied |
-| REST\_GEBIED | rest-gebied, plaats beëindiging van de aantasting |
-| PROFESSIONELE\_PANORAMIC\_WEERGEVEN | landschap/panorama weergave waarneming punt |
-| SCHOOL | keuken school, primaire school, illustraties school, senior middelbare school, school, taal school, school sport, preschool, middelbare school, midden school, beroepsopleiding, speciale school, onderliggende care faciliteit, school, technische school, Militaire school te stimuleren landbouw school |
-| KIEZEN | Factory uitgang, security-producten, Christmas/feestdagen store, opticians, house-garden: belichting loterij shop, muziek instrumenten spijker salon, garden bevatten: tekenen met het inrichten, hobby/vrije tijd, newsagents: tabakswinkels, Kledingaccessoires: speciale, testmodus mag zakken leatherwear, leveringen, kleding accessoires dierverzorgers: kinderen, bouw materiaal apparatuur, sieraden, klokken kijkt naar kleding accessoires: schoeisel schoen reparaties, house-garden: gordijnen/textiel, elektrisch, office het: consumenten Electronics, elektrisch, office het: camera&#39;s fotografie, cd&#39;s, DVD-video's, wasgoed, Kledingaccessoires: mannen, bloemenwinkels, pion shop, book winkels, zee elektronische apparatuur, food drank: food markten, house-garden: tapijt/floor vloerbedekking , fotokopie, varen apparatuur accessoires, mobiele telefoon shop, toys games, specialiteiten, Kledingaccessoires: Algemeen, food drank: bakers, maat shop, cadeaus, kaarten, schertsartikelen souvenirs, de services, sport apparatuur kleding, stempel winkelen elektrische toestel elektrische, office het: kantoorartikelen, foto lab/ontwikkeling, Groothandel stadions, house-garden: meubels toebehoren, lokale specialiteiten, food drank: butchers, verschillende winkel, food drank: food winkels, food drank: wijn alcohol, drug store , meubels en thuis meubels, elektrisch, office het: computer leveringen, cd/video verhuur, leveringen medische apparatuur, de voorraad strekt, mooie salon, house-garden: garden centers services, food drank: fishmongers, mooie leveringen, kleding Bureau-accessoires: vrouwen, reizen agents, detailhandel, recycling shop, house-garden: windows, hardware, makelaars, gebruikt/keramische, Mama's delicatessen bevat, house-garden glas: keukens badkamer, station, gokken hairdressers barbers, food drank: grocers, voedsel drank: groen grocers, gemak winkels, station via bottle winkelen house-garden: doe datacenters, antieke/illustraties, shop, store |
-| WINKELEN\_CENTER | kleine, winkelen center |
-| SPORT\_CENTER | thematische sport squash rechtbank worden behandeld, geschiktheid club center, sport center |
-| STADIUM | netball, football, baseball, circuit, meerdere doeleinden, motor sport, cricket grond, succesvolle internationale rugbyteam grond, ijshockey, sport, paard racing basketbal, soccer, stadion, sport veld, ovaal |
-| ZWEMMEN\_POOL | zwemmen van toepassingen |
-| TENNIS\_RECHTBANK WORDEN BEHANDELD | Tennis rechtbank worden behandeld |
-| THEATER | amphitheater, concert hall, diner theater, muziek center, opera, cabaret, theater, opera house |
-| TOERISTISCHE\_INFORMATIE\_OFFICE | toeristische informatie office |
-| VERKEER\_LICHT | Stoplicht |
-| VERKEER\_SERVICE\_CENTER | verkeer besturingselement afdeling, traffic service center |
-| VERKEER\_ONDERTEKENEN | Meld u verkeer |
-| AUDITTRAIL\_SYSTEM | Adventure voertuig, knal stijgt, paard hing, mountain fiets, rondtrekken, system forum |
-| TRANSPORT\_INSTANTIE VEHICLE\_REGISTRATIE | registratie van de instantie/vehicle transport |
-| VRACHTWAGEN\_STOPPEN | vrachtwagen stoppen |
-| VETERINARIAN | veterinaire faciliteit, dierenarts |
+| SYSTEEM eigen\_reserve ring | systeem eigen reserve ring, reserve ring |
+| NIGHTLIFE | staaf, Karaoke-Club, Jazz-Club, persoonlijke Club, wijn staaf, Comedy Club, tal Bar, Discotheque, Nightlife |
+| NIET-\_gouvernementele\_organisatie | niet-gouvernementele organisatie |
+| \_parkeer\_gebied openen | parkeer ruimte openen, parkeer partij |
+| OVERIGE | locatie, vrije handels zone, verkeers cirkel, onbekend |
+| GARAGE\_ | Parkeer garage |
+| \_recreatie\_gebied van PARK | historische site, Lakeshore, Seashore, rivier scenicgebied, visserij-jacht, Battlefield, winter sport, boot lanceer platform, bewaren, forestgebied, recreatiegebied, ski-redmiddel, Cemetery, historisch park, Parkway, Memorial, Fairground, picknick wildernessgebied, regio voor recreatie, forest ('s), gefossield forest, Tuin (en), in het wild levende reserves, aard reserves, bosbouw station, jacht reserve, Forest-Reserve, Park |
+| BENZINE\_STATION | benzine station |
+| APOTHEEK | apotheek, overmaten |
+| \_van\_EREDIENSTEN plaatsen | Ashram, Synagogue, Mosque, gurudwara, Kerkslavisch, Temple, Place erediensten, Mission, Retreat, Temple (s), religieuze site, kerk Center, Monastery, subsidie |
+| POLITIE\_STATION | order 1-gebied, politie station, politie post |
+| FACILITEIT voor poort\_WAREHOUSE\_ | Harbor (s), docking-bekken, poort, poort/Warehouse-faciliteit, Dockyard, Dock (s) |
+| POST\_OFFICE | lokaal, post kantoor |
+| HULP programma voor primaire\_RESOURCE\_ | primaire bron/hulp programma, energie station, gas-olie scheidings inrichting |
+| PRISON\_correctie\_FACILITEIT | Prison, Prison/correctie-faciliteit |
+| OPEN bare\_AMENITY | voetgangers Subway, toilet, race reddingsoperatie, reizigers transport ticket Office, open bare oproep box, open bare Amenity, communicatie centrum |
+| OPENBAAR\_Trans Port\_stoppen | touringcar stop, bus stoppen, taxi standaard, tram stop, openbaar vervoer stop, metro station, spoor station, bus station, stop lijn stoppen |
+| SPOORWEG\_STATION | National, spoorweg siding, metro, (sub) stedelijk, spoorweg station |
+| HUREN\_een\_CAR\_-FACILITEIT | huur-a-Car-faciliteit |
+| HUUR\_een\_CAR\_parkeren | rent-a-car-parking |
+| \_-FACILITEIT herstellen | bodyshops, banden Services, reparatiewerk plaatsen, vervangings winkels voor auto's, onderhoud van algemene auto's, verkoop installatie van auto accessoires, motor reparatie, reparatie van vracht wagen, reparatie faciliteit |
+| RESEARCH\_FACILITy | Research Facility |
+| ACCOMMODATIE voor RESIDENTIAL\_ | buiten gebruiks telling Community, Townhouse complex, platen/Apartment complex, condominium complex, woningen, woon accommodatie |
+| RESTAURANT | Duits, Creole-Cajun, Nederlands, Banquet kamers, Bistro, Israëlische, Slowaaks, Jamaicaanse, Vegetarian, vis, Vietnamees, Maltees, Sichuan, Welsh, Chinees, Japans, Algerijnse, Californian, Fusion, Shandong, salad bar, Savoy a, Spaans, Ethiopische, Taiwan, ring, Iraans, Canadees, Amerikaans, Noors, Frans, Hunan, Polynesian, Afghaanse, langs, Aziatisch, Zwitser land, Erotic, Crêperie, Surinamese, Egyptisch, Hong aars, Nepalese, barbecue, heete, hamburgers, mediterrane, Latijns-Amerikaans, Tapas, British, Mexico , Guangdong, Aziatisch (overige), buffet, sushi, Mongools, internationaal, Mussels, Thai, Venezolaan land, Rumanian, kuiken, soep, Kosher, Steak House, Yogurt/SAP-balk, Italiaans, Koreaans, Cypriotische, Bosnisch, Boliviaanse, Dominicaanse, Belgisch, Tunesische, Schots, Engels, Pakistaanse, Tsjechisch, Hawaï, Maghrib, Tibetaans, Arabisch, Midden-Oosten, Chileense, Shanghai, Pools, Filipijns, Soedanese, Armeens, Birmaans, Brazilië, Scandinavian, Bulgaars, ziel Food, Colombiaanse, Jewish, pizza, Sicilian, biologisch, Grieks Uruguayaanse, Cafeterias, Fins, Afrikaanse, Corsicaans, Syrisch, Caribisch gebied, Dongbei, Russisch, rooster, wegnemen, snel voedsel, Australië, Iers, pub Food, Fondue, Libanese, Indonesisch, Deens, Provençal, teppanyaki, Indiase, Mauritiaanse, westelijk continentale, Peruaanse, Cambodjaanse, snacks, Zweeds, macrobiotic, Ice room Parlor, Slavisch, Turks, Argentinean, Oostenrijkse, exotische, Portugees, Luxembourgian, Russisch, sandwich, Cuban, restaurant |
+| RESTAURANT\_gebied | Restaurant gebied |
+| GEBIED REST\_ | rest-gebied, onderbrekings plaats |
+| SCENIC\_panoramisch\_weer gave | Scenic/panoramische weer gave, waarnemings punt |
+| STUDIE | Culinary school, school, school, onderwijs, Senior High School, upschool, taal school, sport school, Preschool, school, midden school, beroeps opleiding, speciale school, kinder zorg, faciliteit, school, technisch school, militaire school, agrarische school |
+| AANSCHAFFEN | afzet van fabrieks-, beveiligings-, kerst-en kerst winkels, Opticians, huizen tuin: verlichting, proactief Shop, Musical Instruments, spij salon, House Garden: Painting, hobby/vrije tijd, Newsagents Tobacconists, kleding toebehoren: speciale, droge reinigings middelen, tassen leatherwear, huis dier, kleding toebehoren: kinderen, bouw materiaal, juwelen, klokken horloges, kleding toebehoren: schoeisel/textiel, elektrisch, kantoor it: consumenten elektronica, elektrisch, Office IT: camera&#39;s foto grafie,&#39;cd s, DVD-Video's, wasgoed, kleding toebehoren: mannen, Florists, pion winkelen, boeken winkels, elektronica-elektronische apparatuur, voedings middelen: voedings middelen, huizen tuin: tapijt/vloer bedekking, foto kopie, booting uitrusting accessoires, mobiele telefoon winkel, speel goed, speciale voedings middelen, kleding toebehoren: algemeen, voedsel drank: Bakers, op maat gemaakte producten, cadeaus, kaarten, stempel winkel, elektrisch apparaat, elektrisch, kantoor it: kantoor uitrusting, foto lab/ontwikkeling, groothandels clubs, House Garden: meubels fittings, lokaal onderwijs, voedsel drank: Butchers, variëteits winkel, voedings middelen: food winkels, voedsel drank: wijn geesten, medicijnen opslag, meubelen/thuis stoffering, elektrisch, kantoor it: computer benodigdheden, cd/video verhuur, medische apparaten, agrarische producten, salon, huizen tuin: tuin centra accessoires: vrouwen, reis bureaus, Retail Outlet, recycling Shop, House Garden: glas Windows, hardware, onroerend goed, keukens, glas gerei, delicatessen, House Garden: bathrooms, verwacht station, Hairdressers Barbers, voedsel drank: boodschappen, voedsel drank: groene boodschappen, gemak winkels, station door fles, Tuin, winkel, winkel, antiek/Art, Shop, Store |
+| Shop ping\_CENTER | winkel centrum, Shop Center |
+| SPORT\_CENTER | thematische sport, squashe rechtbank, Fitness Club Center, sport centrum |
+| Stadion | netballe, voetbal, honkbal, race track, meerdere doel einden, motor sport, cricket bodem, rugbye bodem, ijs Hockey, Athletic, Hors race, basketbal, voetbal, stadion, Athletic Field, Racetrack |
+| GROEP ZWEM\_ | Zwembad |
+| TENNIS\_rechtbank | Tennis rechtbank |
+| BIOSCOOP | Amphitheater, concert zaal, diner theater, Music Center, Opera, cabaret, theater, me |
+| INFORMATIE over toeristische\_\_OFFICE | Toeristische informatie kantoor |
+| VERKEERS\_licht | verkeers licht |
+| TRAFFIC\_SERVICE\_CENTER | afdeling verkeers beheer, Traffic Service Center |
+| VERKEERS\_-teken | verkeers teken |
+| TRAIL\_-systeem | Adventure-Voer tuig, Rock beklimmen, paard afsluiten, berg fiets, rond trekken, volg systeem |
+| \_registratie van het Voer tuig voor Trans Port\_AUTHORITY | registratie van de transport instantie/het Voer tuig |
+| STOPPEN van TRUCK\_ | Stop van truck |
+| ZOWEL | veterinaire faciliteit, dieren arts |
 | WATER\_SPORT | water sport |
-| WEEG\_STATION | Weeg worden geschaald, wegen station |
-| WELZIJN\_ORGANISATIE | welzijn van organisatie |
-| WINERY | Winery |
-| DIERENTUINEN\_ARBORETA\_BOTANISCHE\_GARDEN | wild park, levende zoo zee park, arboreta plantentuinen, zoo, dierentuinen, arboreta botanische tuin |
+| \_STATION wegen | Weeg schalen, weeg station |
+| WELZIJN\_organisatie | welzijns organisatie |
+| WIJN | wijn |
+| ZOOS\_ARBORETA\_BOTANISCHe\_tuin | Wild Park, aquatische Park, arboreta botanische tuinen, Zoo, Zoos, arboreta botanische tuin |

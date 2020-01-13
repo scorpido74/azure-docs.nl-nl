@@ -4,14 +4,15 @@ description: Meer informatie over het configureren van door de klant beheerde sl
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 01/11/2020
 ms.author: thweiss
-ms.openlocfilehash: 32266abd5bcf8d7e137095d130ee872cc07edaf0
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ROBOTS: noindex, nofollow
+ms.openlocfilehash: 964c3e4e2de43e6bcae353f0b525eb62e6613361
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75904079"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911861"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-db-account"></a>Door de klant beheerde sleutels voor uw Azure Cosmos DB account configureren
 
@@ -30,13 +31,13 @@ Op dit moment zijn door de klant beheerde sleutels alleen beschikbaar voor nieuw
 
 ### <a name="1-make-sure-the-azure-cosmos-db-resource-provider-is-registered-for-your-azure-subscription"></a>1. Controleer of de Azure Cosmos DB resource provider is geregistreerd voor uw Azure-abonnement
 
-Ga vanuit het Azure Portal naar uw Azure-abonnement en selecteer ' resource providers ' in het menu links:
+Ga vanuit het Azure Portal naar uw Azure-abonnement en selecteer **resource providers** in het menu links:
 
 ![De vermelding resource providers in het menu links](./media/how-to-setup-cmk/portal-rp.png)
 
-Zoek naar de resource provider micro soft. DocumentDB.
+Zoek naar de resource provider **micro soft. DocumentDB** .
 - Als de resource provider al is gemarkeerd als geregistreerd, hoeft niets te worden gedaan.
-- Als dat niet het geval is, selecteert u het item en klikt u op registreren:
+- Als dat niet het geval is, selecteert u deze en klikt u op **registreren**:
 
     ![De resource provider micro soft. DocumentDB registreren](./media/how-to-setup-cmk/portal-rp-register.png)
 
@@ -50,34 +51,34 @@ Voor meer informatie over het inschakelen van deze eigenschappen voor een bestaa
 
 ### <a name="3-add-an-access-policy-to-your-azure-key-vault-instance"></a>3. een toegangs beleid toevoegen aan uw Azure Key Vault-exemplaar
 
-Ga vanuit het Azure Portal naar het Azure Key Vault exemplaar dat u wilt gebruiken voor het hosten van de versleutelings sleutels. Selecteer vervolgens ' toegangs beleid ' in het menu links:
+Ga vanuit het Azure Portal naar het Azure Key Vault exemplaar dat u wilt gebruiken voor het hosten van de versleutelings sleutels. Selecteer vervolgens **toegangs beleid** in het menu links:
 
 ![' Toegangs beleid ' in het menu links](./media/how-to-setup-cmk/portal-akv-ap.png)
 
-- Klik op "+ toegangs beleid toevoegen"
-- Selecteer in het vervolg keuzemenu sleutel machtigingen de optie Get, de optie voor het uitpakken van de sleutel en de terugloop sleutel:
+- Selecteer **+ toegangs beleid toevoegen**
+- Selecteer in het vervolg keuzemenu **sleutel machtigingen** de optie **Get**, **dewrap toets** en **wrap**:
 
     ![De juiste machtigingen selecteren](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-- Klik onder ' Selecteer principal ' op ' geen geselecteerd ', zoek en selecteer de principal ' Azure Cosmos DB ' en klik vervolgens op ' selecteren ' aan de onderkant (als de principal ' Azure Cosmos DB ' niet kan worden gevonden, moet u de resource ' micro soft. DocumentDB ' mogelijk opnieuw registreren provider bij stap 2):
+- Selecteer onder **Principal selecteren**de optie **geen geselecteerd**. Zoek en selecteer vervolgens de **Azure Cosmos DB** principal. Klik ten slotte op **selecteren** onderaan (als de principal van de **Azure Cosmos DB** niet kan worden gevonden, moet u de resource provider **micro soft. DocumentDB** mogelijk opnieuw registreren bij stap 1):
 
     ![De Azure Cosmos DB-Principal selecteren](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 
-- Klik op toevoegen om het nieuwe toegangs beleid toe te voegen
+- Selecteer **toevoegen** om het nieuwe toegangs beleid toe te voegen
 
 ### <a name="4-generate-a-key-in-azure-key-vault"></a>4. een sleutel in Azure Key Vault genereren
 
-Ga vanuit het Azure Portal naar de Azure Key Vault instantie die u wilt gebruiken voor het hosten van de versleutelings sleutels. Selecteer vervolgens ' sleutels ' in het menu links:
+Ga vanuit het Azure Portal naar de Azure Key Vault instantie die u wilt gebruiken voor het hosten van de versleutelings sleutels. Selecteer vervolgens **sleutels** in het menu links:
 
 ![Vermelding ' Keys ' in het menu links](./media/how-to-setup-cmk/portal-akv-keys.png)
 
-- Klik op genereren/importeren.
-- Geef een naam op voor de nieuwe sleutel, selecteer een RSA-sleutel grootte (mini maal 3072 wordt aanbevolen voor de beste beveiliging) en klik op maken:
+- Selecteer **genereren/importeren**
+- Geef een naam op voor de nieuwe sleutel, selecteer een RSA-sleutel grootte (mini maal 3072 wordt aanbevolen voor de beste beveiliging) en selecteer **maken**:
 
     ![Een nieuwe sleutel maken](./media/how-to-setup-cmk/portal-akv-gen.png)
 
 - Zodra de sleutel is gemaakt, klikt u op de zojuist gemaakte sleutel en vervolgens op de huidige versie
-- Kopieer de sleutel-id van de sleutel, behalve het deel na de laatste slash:
+- Kopieer de sleutel- **id** van de sleutel, behalve het deel na de laatste slash:
 
     ![De sleutel-id van de sleutel kopiëren](./media/how-to-setup-cmk/portal-akv-keyid.png)
 
@@ -85,15 +86,18 @@ Ga vanuit het Azure Portal naar de Azure Key Vault instantie die u wilt gebruike
 
 #### <a name="using-the-azure-portal"></a>Azure Portal gebruiken
 
-Kies bij het maken van een nieuw Azure Cosmos DB-account uit de Azure Portal ' door de klant beheerde sleutel ' bij de stap ' versleuteling '. In het veld sleutel-URI geeft u de URI van de Azure Key Vault sleutel die is gekopieerd uit stap 4:
+Wanneer u een nieuw Azure Cosmos DB-account maakt vanuit de Azure Portal, kiest u door de **klant beheerde sleutel** bij de **versleutelings** stap. Geef in het veld **sleutel-URI** de URI van de Azure Key Vault sleutel die is gekopieerd uit stap 4:
 
 ![CMK-para meters instellen in de Azure Portal](./media/how-to-setup-cmk/portal-cosmos-enc.png)
 
 #### <a name="using-powershell"></a>PowerShell gebruiken
 
 Wanneer u een nieuw Azure Cosmos DB-account maakt met Power shell,
-- Geef de URI van de Azure Key Vault sleutel die is gekopieerd uit stap 4 onder de eigenschap keyVaultKeyUri in de PropertyObject,
+- Geef de URI van de Azure Key Vault sleutel die is gekopieerd uit stap 4 onder de eigenschap **keyVaultKeyUri** in de **PropertyObject**,
 - Zorg ervoor dat u "2019-12-12" als API-versie gebruikt.
+
+> [!IMPORTANT]
+> De para meter `Location` moet expliciet worden ingesteld voor het account dat is gemaakt met CMK.
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
@@ -118,10 +122,13 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 #### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager sjablonen gebruiken
 
 Bij het maken van een nieuw Azure Cosmos DB-account via een Azure Resource Manager sjabloon:
-- Geef de URI van de Azure Key Vault sleutel die is gekopieerd uit stap 4 onder de eigenschap ' keyVaultKeyUri ' in het object ' Properties '
+- Geef de URI van de Azure Key Vault sleutel die is gekopieerd uit stap 4 onder de eigenschap **keyVaultKeyUri** in het object **Properties**
 - Zorg ervoor dat u "2019-12-12" als API-versie gebruikt
 
-```
+> [!IMPORTANT]
+> De para meter `location` moet expliciet worden ingesteld voor het account dat is gemaakt met CMK.
+
+```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",

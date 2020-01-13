@@ -1,6 +1,6 @@
 ---
-title: Besturings elementen toevoegen aan Azure Maps | Microsoft Docs
-description: Het toevoegen van een zoom besturings element, besturings element pitch, besturings element draaien en een stijl kiezer aan een kaart in Azure Maps.
+title: Besturings elementen toevoegen aan een kaart | Microsoft Azure kaarten
+description: Het toevoegen van een zoom besturings element, besturings element pitch, Control en een stijl kiezer aan een kaart in Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 07/29/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 7267f77ed3d296ac586dcfd0f525b94d5e6eb7a0
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 6652ca30d9f38eb6184fce5f1ff5428d29c271a6
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976226"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911257"
 ---
 # <a name="add-controls-to-a-map"></a>Besturings elementen aan een kaart toevoegen
 
@@ -34,7 +34,7 @@ Hieronder ziet u het volledige programma voor het uitvoeren van code van de bove
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Een zoom besturings element toevoegen' src='//codepen.io/azuremaps/embed/WKOQyN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/WKOQyN/'>een zoom besturings element toevoegen</a> door Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Een zoom besturings element toevoegen' src='//codepen.io/azuremaps/embed/WKOQyN/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/WKOQyN/'>een zoom besturings element toevoegen</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="add-pitch-control"></a>Besturings element voor Pitch toevoegen
@@ -52,7 +52,7 @@ Hieronder ziet u het volledige programma voor het uitvoeren van code van de bove
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Een besturings element voor Pitch toevoegen' src='//codepen.io/azuremaps/embed/xJrwaP/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/xJrwaP/'>een besturings element voor Pitch toevoegen</a> door<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Een besturings element voor Pitch toevoegen' src='//codepen.io/azuremaps/embed/xJrwaP/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/xJrwaP/'>een besturings element voor Pitch toevoegen</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="add-compass-control"></a>Besturings element kompas toevoegen
@@ -70,7 +70,7 @@ Hieronder ziet u het volledige programma voor het uitvoeren van code van de bove
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Een besturings element draaien toevoegen' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/GBEoRb/'>een rotatie besturings element toevoegen</a> door Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Een besturings element draaien toevoegen' src='//codepen.io/azuremaps/embed/GBEoRb/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/GBEoRb/'>een rotatie besturings element toevoegen</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="a-map-with-all-controls"></a>Een kaart met alle besturings elementen
@@ -79,7 +79,7 @@ In het volgende code voorbeeld worden de besturings elementen stijl kiezer, zoom
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Een kaart met alle besturings elementen' src='//codepen.io/azuremaps/embed/qyjbOM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/qyjbOM/'>A map met alle besturings elementen</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Een kaart met alle besturings elementen' src='//codepen.io/azuremaps/embed/qyjbOM/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de pen <a href='https://codepen.io/azuremaps/pen/qyjbOM/'>A map met alle besturings elementen</a> door middel van Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Het besturings element stijl kiezer wordt gedefinieerd door de [StyleControl](/javascript/api/azure-maps-control/atlas.control.stylecontrol) -klasse. Zie [een kaart stijl kiezen](choose-map-style.md)voor meer informatie over het gebruik van het besturings element stijl kiezer.
@@ -91,10 +91,10 @@ Hier volgt een hulp programma voor het testen van de verschillende opties voor h
 <br/>
 
 <iframe height="700" style="width: 100%;" scrolling="no" title="Opties voor navigatie beheer" src="//codepen.io/azuremaps/embed/LwBZMx/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie de opties voor het <a href='https://codepen.io/azuremaps/pen/LwBZMx/'>besturings element</a> voor pen<a href='https://codepen.io/azuremaps'>@azuremaps</a>-navigatie per Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+Zie de opties voor het <a href='https://codepen.io/azuremaps/pen/LwBZMx/'>besturings element</a> voor de navigatie van de Pen op Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-Als u aangepaste navigatie besturings elementen wilt maken, maakt u een klasse die uitbreidt van de `atlas.Control` -klasse of maakt u een HTML-element en plaatst u het boven het kaart-div. Laat dit besturings element voor de gebruikers `setCamera` interface de functie Maps aanroepen om de kaart te verplaatsen. 
+Als u aangepaste navigatie besturings elementen wilt maken, maakt u een klasse die uitbreidt van de `atlas.Control` klasse of maakt u een HTML-element en plaatst u het boven het kaart-div. Laat dit besturings element voor de gebruikers interface de functie Maps `setCamera` aanroepen om de kaart te verplaatsen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

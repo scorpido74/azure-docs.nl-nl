@@ -1,6 +1,6 @@
 ---
-title: Een tegel laag toevoegen aan Azure Maps | Microsoft Docs
-description: Een tegel laag toevoegen aan de Azure Maps Web-SDK.
+title: Een laag voor een tegel aan een kaart toevoegen | Microsoft Azure kaarten
+description: In dit artikel wordt beschreven hoe u een tegel laag kunt bedekken op een kaart met behulp van de Microsoft Azure Maps Web SDK. Met de tegel lagen kunt u afbeeldingen op een kaart weer geven.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,14 +9,14 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 3f047ec1aced55038384cbe29bd3a4b8a948dce9
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 83e8f6d684d6d39102fd682653cd19816a9f7b10
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976459"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911095"
 ---
-# <a name="add-a-tile-layer-to-a-map"></a>Een tegel laag aan een kaart toevoegen
+# <a name="add-a-tile-layer-to-a-map"></a>Een titellaag toevoegen aan een kaart
 
 In dit artikel wordt beschreven hoe u een tegel laag kunt bedekken op de kaart. Met tegel lagen kunt u afbeeldingen boven op Azure Maps basis kaart tegels plaatsen. Meer informatie over Azure Maps tegel systeem vindt u in de documentatie over het [Zoom niveau en het tegel raster](zoom-levels-and-tile-grid.md) .
 
@@ -24,23 +24,23 @@ Een tegel laag wordt in tegels van een server geladen. Deze installatie kopieën
 
 * X, Y, zoom notatie: gebaseerd op het zoom niveau, x is de kolom en Y de rijpositie van de tegel in het tegel raster.
 * Quadkey notatie: combi natie x, y en zoom informatie in een enkele teken reeks waarde die een unieke id voor een tegel is.
-* Omsluitende Box-coördinaten kunnen worden gebruikt om een afbeelding op te geven in de indeling `{west},{south},{east},{north}` die wordt gebruikt door [Web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms).
+* Omsluitende Box-coördinaten kunnen worden gebruikt om een afbeelding op te geven in de indeling `{west},{south},{east},{north}` die vaak wordt gebruikt door [Web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms).
 
 > [!TIP]
 > Een [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) is een uitstekende manier om grote gegevens sets op de kaart te visualiseren. U kunt niet alleen een tegel laag genereren op basis van een afbeelding, maar u kunt ook vector gegevens weer geven als een tegel laag. Door vector gegevens als een tegel laag te renderen, hoeft het kaart besturings element alleen de tegels te laden die veel kleiner kunnen zijn dan de vector gegevens die ze vertegenwoordigen. Deze techniek wordt gebruikt door veel die miljoenen rijen met gegevens op de kaart moeten weer geven.
 
 De tegel-URL die wordt door gegeven aan een tegel laag moet een HTTP/HTTPS-URL zijn naar een TileJSON-resource of een tegel-URL-sjabloon die gebruikmaakt van de volgende para meters: 
 
-* `{x}`-X-positie van de tegel. Ook nodig `{y}` en `{z}`.
-* `{y}`-Y-positie van de tegel. Ook nodig `{x}` en `{z}`.
-* `{z}`-Zoom niveau van de tegel. Ook nodig `{x}` en `{y}`.
-* `{quadkey}`-Tegel quadkey-id gebaseerd op de naam Conventie voor Bing Maps-tegel systeem.
-* `{bbox-epsg-3857}`-Een teken reeks voor selectie kader met de `{west},{south},{east},{north}` indeling in het EPSG 3857 Spatial Reference System.
-* `{subdomain}`-Een tijdelijke aanduiding waar de opgegeven subdomein waarden worden toegevoegd.
+* `{x}`-X-positie van de tegel. Ook moet `{y}` en `{z}`.
+* `{y}`-Y-positie van de tegel. Ook moet `{x}` en `{z}`.
+* `{z}`-zoom niveau van de tegel. Ook moet `{x}` en `{y}`.
+* `{quadkey}`-tegel quadkey-id op basis van de naam Conventie voor Bing Maps-tegel systemen.
+* `{bbox-epsg-3857}`-een teken reeks voor selectie kader met de indeling `{west},{south},{east},{north}` in het spatiale referentie systeem van EPSG 3857.
+* `{subdomain}`: een tijdelijke aanduiding waarbij de opgegeven subdomein waarden worden toegevoegd.
 
 ## <a name="add-a-tile-layer"></a>Een titellaag toevoegen
 
- Dit voor beeld laat zien hoe u een tegel laag maakt die verwijst naar een set tegels die gebruikmaken van het systeem x, y en zoomen. De bron van deze tegel laag is een weers radar-overlay van de [Iowa Environment Mesonet van de Iowa State University](https://mesonet.agron.iastate.edu/ogc/). Bij het weer geven van radar gegevens kunnen gebruikers in het ideale geval duidelijk de labels van steden zien wanneer ze door de kaart navigeren. Dit kan worden gedaan door de laag `labels` van de tegel onder de laag in te voegen.
+ Dit voor beeld laat zien hoe u een tegel laag maakt die verwijst naar een set tegels die gebruikmaken van het systeem x, y en zoomen. De bron van deze tegel laag is een weers radar-overlay van de [Iowa Environment Mesonet van de Iowa State University](https://mesonet.agron.iastate.edu/ogc/). Bij het weer geven van radar gegevens kunnen gebruikers in het ideale geval duidelijk de labels van steden zien wanneer ze door de kaart navigeren. Dit kan worden gedaan door de laag van de tegel onder de laag `labels` in te voegen.
 
 ```javascript
 //Create a tile layer and add it to the map below the label layer.
@@ -56,7 +56,7 @@ Hieronder ziet u het volledige programma voor het uitvoeren van code van de bove
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Tegel laag met X, Y en Z' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de laag met de tegels van de pen <a href='https://codepen.io/azuremaps/pen/BGEQjG/'>met X, Y en Z</a> per Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Tegel laag met X, Y en Z' src='//codepen.io/azuremaps/embed/BGEQjG/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de laag met de hoek van de pen <a href='https://codepen.io/azuremaps/pen/BGEQjG/'>met X, Y en Z</a> per Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="customize-a-tile-layer"></a>Een laag voor een tegel aanpassen
@@ -65,7 +65,7 @@ De klasse van de tegel laag heeft veel stijl opties. Hier volgt een hulp program
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Opties voor de laag van de tegel' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/xQeRWX/'>laag opties</a> voor pen-tegels<a href='https://codepen.io/azuremaps'>@azuremaps</a>per Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Opties voor de laag van de tegel' src='//codepen.io/azuremaps/embed/xQeRWX/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/xQeRWX/'>laag opties</a> van de Pen naast Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Volgende stappen

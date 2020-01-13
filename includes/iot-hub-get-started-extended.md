@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 8da233088389797271541b1aae55ec2e842f252d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: bd08812f83413a997ce655d68d866b145b20dcef
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176145"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912501"
 ---
 ## <a name="extended-iot-scenarios"></a>Uitgebreide IoT-scenario 's
 
@@ -21,15 +21,15 @@ Gebruik andere Azure-services en -hulpprogramma's. Wanneer u uw apparaat met IoT
 
 | Scenario                                                   | Azure-service of -hulpprogramma              |
 |----------------------------------------------------------- |------------------------------------|
-| [IoT Hub-berichten beheren](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | VS Code Azure IoT Hub Toolkit-extensie|
-| [Beheren van uw IoT-apparaat](../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md)                        | Azure CLI en de IoT-extensie    |
-| [Beheren van uw IoT-apparaat](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)                | VS Code Azure IoT Hub Toolkit-extensie|
-| [IoT Hub-berichten opslaan in Azure storage](../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md)  | Azure-tabelopslag                |
-| [Sensorgegevens visualiseren](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)                      | Microsoft Power BI                 |
-| [Sensorgegevens visualiseren](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)                      | Azure Web Apps                     |
-| [Weer voorspellen met sensorgegevens](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)      | Azure Machine Learning             |
-| [Automatische anomaliedetectie en reactie](../articles/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md) | Azure Logic Apps                   |
+| [IoT Hub berichten beheren](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | VS code Azure IoT Hub-extensie|
+| [Uw IoT-apparaat beheren](../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md)                        | Azure CLI en de IoT-extensie    |
+| [Uw IoT-apparaat beheren](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)                | VS code Azure IoT Hub-extensie|
+| [IoT Hub-berichten opslaan in azure Storage](../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md)  | Azure-tabelopslag                |
+| [Sensor gegevens visualiseren](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)                      | Microsoft Power BI                 |
+| [Sensor gegevens visualiseren](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)                      | Azure Web Apps                     |
+| [Prognose weer met sensor gegevens](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)      | Azure Machine Learning             |
+| [Automatische anomalie detectie en reactie](../articles/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md) | Azure Logic Apps                   |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Wanneer u deze zelfstudies hebt voltooid, kunt u verder verkennen de mogelijkheden van IoT Hub in de [Ontwikkelaarshandleiding voor](../articles/iot-hub/iot-hub-devguide.md). 
+Wanneer u deze zelf studies hebt voltooid, kunt u de mogelijkheden van IoT Hub in de [ontwikkelaars handleiding](../articles/iot-hub/iot-hub-devguide.md)verder verkennen. 

@@ -1,6 +1,6 @@
 ---
-title: Overzicht van Azure Maps | Microsoft Docs
-description: Een inleiding tot Azure Maps
+title: Overzicht | Microsoft Azure kaarten
+description: In dit artikel vindt u meer informatie over services en mogelijkheden in Microsoft Azure Maps en hoe u deze kunt gebruiken in uw toepassingen.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/04/2019
@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: dbcb0e87159efc7cc33101cdd5eee55afbdf3c10
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 353850cacb06dcc8a0db1b957114db314d7002a3
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516644"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911838"
 ---
 # <a name="what-is-azure-maps"></a>Wat is Azure Maps?
 
-Azure Maps is een verzameling georuimtelijke services die gebruikmaken van nieuwe toewijzings gegevens om de juiste geografische context te bieden voor web-en mobiele toepassingen. Azure Maps biedt:
+Azure Maps is een verzameling georuimtelijke services waarvoor nieuwe kaartgegevens worden gebruikt, waarmee u webtoepassingen en mobiele toepassingen kunt voorzien van een nauwkeurige geografische context. Azure Maps biedt:
 
 * REST-Api's voor het weer geven van kaarten in meerdere stijlen en satelliet installatie kopieën.
 * Zoekt naar adressen, plaatsen en interessante onderwerpen over de hele wereld.
@@ -38,7 +38,7 @@ In de volgende video wordt Azure Maps in detail uitgelegd:
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps/player?format=ny" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-## <a name="map-controls"></a>Besturings elementen toewijzen
+## <a name="map-controls"></a>Kaartbesturingselementen
 
 ### <a name="web-sdk"></a>Web SDK
 
@@ -145,8 +145,8 @@ Lees de [tijd zone API-documentatie](https://docs.microsoft.com/rest/api/maps/ti
 
 De traffic-service is een reeks webservices die ontwikkel aars kunnen gebruiken voor het maken van webtoepassingen en mobiele toepassingen waarvoor verkeers gegevens nodig zijn. De service omvat twee gegevenstypen:
 
-* Verkeers stroom: Real-time waargenomen snelheden en reis tijden voor alle belang rijke wegen in het netwerk.
-* Verkeers incidenten: Een up-to-date weer gave van storingen van verkeer en incidenten rond het wegnetwerk.
+* Verkeers stroom: in realtime waargenomen snelheden en reis tijden voor alle belang rijke wegen in het netwerk.
+* Verkeers incidenten: een up-to-date weer gave van storingen van verkeer en incidenten rond het wegnetwerk.
 
 ![Voor beeld van een kaart met verkeers gegevens](media/about-azure-maps/Introduction_Traffic.png)
 
@@ -184,7 +184,7 @@ Verifieer of de locatie van uw IP-adres niet in een van de bovenstaande landen i
 Probeer een voor beeld-app met een demonstratie Azure Maps:
 
 > [!div class="nextstepaction"]
-> [Snelstart: Een web-app maken](quick-demo-map-app.md)
+> [Snelstartgids: een web-app maken](quick-demo-map-app.md)
 
 Blijf op de hoogte van Azure Maps: 
 

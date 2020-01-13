@@ -1,6 +1,6 @@
 ---
-title: Concepten van weer Services in Azure Maps | Microsoft Docs
-description: Meer informatie over de weer Services in Azure Maps
+title: Concepten van weer Services | Microsoft Azure kaarten
+description: In dit artikel vindt u informatie over de concepten die van toepassing zijn op Microsoft Azure kaarten weer Services.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9d464ab172fcb375d62b9928818362574a485231
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4bf13477bfee39b5be39715374592811e8f8cc89
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382366"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911032"
 ---
 # <a name="weather-services-in-azure-maps"></a>Weer Services in Azure Maps
 
@@ -26,8 +26,8 @@ Sommige van de weers-Api's kunnen gebruikers toestaan om op te geven of de gegev
 |Unit type|Beschrijving         |
 |--------|--------------------|
 |0       |meter                |
-|1       |mm              |
-|2       |km               |
+|1       |Mm              |
+|2       |mijl               |
 |3       |millimeter          |
 |4       |x          |
 |5       |verbinding               |
@@ -54,7 +54,7 @@ Sommige van de weers-Api's kunnen gebruikers toestaan om op te geven of de gegev
 
 Sommige van de weer service-Api's retour neren pictogram codes (iconCode) in het antwoord, een numerieke waarde die kan worden gebruikt om het pictogram te definiëren. Koppel geen rechtstreeks aan deze installatie kopieën vanuit uw toepassingen. de Url's kunnen worden gewijzigd.
 
-| Pictogram nummer |Pictogram| Dag | 's | Tekst |
+| Pictogram nummer |Pictogram| Dag | 'S | Tekst |
 |-------------|:----:|-----|-------|------|
 | 1           |![](./media/weather-services-concepts/sunny-i.png)                      | Ja |  Nee    | Zon|
 | 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | Ja |  Nee    | Grotendeels zonnig|
@@ -82,7 +82,7 @@ Sommige van de weer service-Api's retour neren pictogram codes (iconCode) in het
 | 26           |![](./media/weather-services-concepts/freezing-rain.png)              | Ja |  Ja   | Vries regen|
 | 29           |![](./media/weather-services-concepts/rain-snow.png)                  | Ja |  Ja   | Regen en sneeuw|
 | 30           |![](./media/weather-services-concepts/hot-i.png)                       | Ja |  Ja   | Warm|
-| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Ja |  Ja   | Huizen|
+| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Ja |  Ja   | Koud|
 | 32           |![](./media/weather-services-concepts/windy-i.png)                     | Ja |  Ja   | Wikkeling|
 | 33           |![](./media/weather-services-concepts/clear-night.png)                | Nee  |  Ja   | Wissen|
 | 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | Nee  |  Ja   | Voornamelijk wissen|

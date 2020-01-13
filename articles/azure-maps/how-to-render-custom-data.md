@@ -1,6 +1,6 @@
 ---
-title: Aangepaste gegevens weer geven in een raster toewijzing in Azure Maps | Microsoft Docs
-description: In dit artikel leert u hoe u aangepaste gegevens op een raster kaart kunt weer geven met behulp van de service statische installatie kopie van Azure Maps.
+title: Aangepaste gegevens op een raster kaart weer geven | Microsoft Azure kaarten
+description: In dit artikel leert u hoe u aangepaste gegevens op een raster kaart kunt weer geven met behulp van Microsoft Azure Maps statische installatie kopie service.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b77cb73f08852768d10de8c76cde5e299f0776c2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c052ae1f7bab902dcd22b3cc081907468874b35c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408899"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911482"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Aangepaste gegevens op een raster kaart weer geven
 

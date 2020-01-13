@@ -1,6 +1,6 @@
 ---
-title: Efficiënt zoeken met behulp van de Azure Maps Search-service | Microsoft Docs
-description: Meer informatie over het gebruik van aanbevolen procedures voor zoeken met behulp van de Azure Maps Search-service
+title: Efficiënt zoeken met behulp van de Azure Maps Search Service | Microsoft Azure kaarten
+description: Meer informatie over het gebruik van aanbevolen procedures voor zoeken met behulp van de Microsoft Azure Maps Search Service
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/08/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 88f864abc82ea6ba70559c8db5db2d0fe07383b1
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aa3c7b58b3a391de40940636a67a4a224c44fe10
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768823"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911371"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>Aanbevolen procedures voor het gebruik van Azure Maps Search Service
 

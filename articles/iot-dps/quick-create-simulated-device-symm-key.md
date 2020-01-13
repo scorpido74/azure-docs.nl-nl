@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 73d2e075dd4d3cf9e9b37aa9131ab5f4c822e140
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 4e84a43f8984e2adeac916e467a8cac693ee453d
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895912"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912436"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Snelstartgids: een gesimuleerd apparaat inrichten met symmetrische sleutels
 
@@ -51,6 +51,8 @@ De SDK bevat de voorbeeldcode voor een gesimuleerd apparaat. Dit gesimuleerde ap
 1. Down load het [cmake build-systeem](https://cmake.org/download/).
 
     Het is belangrijk dat de vereisten voor Visual Studio met (Visual Studio en de workload Desktopontwikkeling met C++) op uw computer zijn geïnstalleerd **voordat** de `CMake`-installatie wordt gestart. Zodra aan de vereisten is voldaan en de download is geverifieerd, installeert u het CMake-bouwsysteem.
+
+    Oudere versies van het CMake build-systeem genereren het oplossings bestand dat in dit artikel wordt gebruikt, niet. Zorg ervoor dat u een nieuwere versie van CMake gebruikt.
 
 2. Klik op **Tags** en zoek de naam van de tag voor de meest recente release op de [pagina release van de Azure IOT C-SDK](https://github.com/Azure/azure-iot-sdk-c/releases/latest).
 
@@ -136,6 +138,8 @@ In deze sectie werkt u de voorbeeldcode voor het verzenden van de opstartvolgord
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
+
+    Als het bestand niet is gegenereerd in de cmake-Directory, zorg er dan voor dat u een recente versie van het CMake-build-systeem hebt gebruikt.
 
 3. Navigeer in het deelvenster *Solution Explorer* van Visual Studio naar de map **Provision\_Samples**. Vouw het voorbeeldproject met de naam **prov\_dev\_client\_sample** uit. Vouw **Source Files** uit en open **prov\_dev\_client\_sample.c**.
 

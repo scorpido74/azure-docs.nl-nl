@@ -1,6 +1,6 @@
 ---
-title: Verificatie met Azure Maps | Microsoft Docs
-description: Azure Active Directory (Azure AD) of gedeelde sleutel verificatie voor het gebruik van Microsoft Azure Maps Services. Meer informatie over het verkrijgen van Azure Maps-abonnements sleutel.
+title: Verificatie methoden | Microsoft Azure kaarten
+description: In dit artikel vindt u informatie over Azure Active Directory (Azure AD) of gedeelde sleutel verificatie voor het gebruik van Microsoft Azure Maps Services. Meer informatie over het verkrijgen van Azure Maps-abonnements sleutel.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 12/30/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a58436063009b732a15e74c8a3fc3f95b8df29cf
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 006adae99b2430f4c08ce5fc692598e48f45c239
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834205"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911829"
 ---
 # <a name="authentication-with-azure-maps"></a>Verificatie met Azure Maps
 

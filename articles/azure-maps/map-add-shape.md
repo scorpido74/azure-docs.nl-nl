@@ -1,6 +1,6 @@
 ---
-title: Een polygoon laag toevoegen aan Azure Maps | Microsoft Docs
-description: Een polygoon laag toevoegen aan de Azure Maps Web-SDK.
+title: Een polygoon laag toevoegen aan een kaart | Microsoft Azure kaarten
+description: In dit artikel leert u hoe u een veelhoek en meerdere veelhoeken kunt weer geven op een kaart in de Microsoft Azure Maps Web SDK.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 07/29/2019
@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: ca6c0f5e6fde5a31655ed17f4a016bf44216643f
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 77d952666be12d7dea780b3aa8f094cf5f70f2d3
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976146"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911136"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>Een polygoon laag toevoegen aan de kaart
 
-In dit artikel leest u hoe u de gebieden van `Polygon` en `MultiPolygon` functie geometrie op de kaart kunt weer geven met behulp van een polygoon laag. De websdk van Azure Maps biedt ook ondersteuning voor het maken van cirkel geometrie zoals gedefinieerd in het [uitgebreide GEOjson-schema](extend-geojson.md#circle). Deze cirkels worden omgezet in veelhoeken wanneer ze op de kaart worden weer gegeven. Alle functie-geometrieën kunnen ook eenvoudig worden bijgewerkt als deze met de [Atlas wordt verpakt. ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)Klasse van vorm.
+In dit artikel wordt beschreven hoe u de onderdelen van `Polygon` en `MultiPolygon` functie geometrie op de kaart kunt weer geven met behulp van een polygoon laag. De websdk van Azure Maps biedt ook ondersteuning voor het maken van cirkel geometrie zoals gedefinieerd in het [uitgebreide GEOjson-schema](extend-geojson.md#circle). Deze cirkels worden omgezet in veelhoeken wanneer ze op de kaart worden weer gegeven. Alle functie-geometrieën kunnen ook eenvoudig worden bijgewerkt als deze met de [Atlas wordt verpakt. ](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)Klasse van vorm.
 
 ## <a name="use-a-polygon-layer"></a>Een polygoon laag gebruiken 
 
-Wanneer een polygoon laag is verbonden met een gegevens bron en op de kaart is geladen, wordt het gebied van a `Polygon` en `MultiPolygon` de functies weer gegeven. De volgende code laat zien hoe u een veelhoek maakt, deze toevoegt aan een gegevens bron en deze weergeeft met een polygoon laag met behulp van de [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) -klasse.
+Wanneer een polygoon laag is verbonden met een gegevens bron en op de kaart is geladen, wordt het gebied van een `Polygon` en `MultiPolygon` functies weer gegeven. De volgende code laat zien hoe u een veelhoek maakt, deze toevoegt aan een gegevens bron en deze weergeeft met een polygoon laag met behulp van de [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) -klasse.
 
 ```javascript
 //Create a data source and add it to the map.
@@ -51,24 +51,24 @@ Hieronder ziet u het volledige programma voor het uitvoeren van code van de bove
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Een veelhoek aan een kaart toevoegen ' src='//codepen.io/azuremaps/embed/yKbOvZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de pen <a href='https://codepen.io/azuremaps/pen/yKbOvZ/'>een veelhoek aan een kaart toevoegen</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Een veelhoek aan een kaart toevoegen ' src='//codepen.io/azuremaps/embed/yKbOvZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de pen <a href='https://codepen.io/azuremaps/pen/yKbOvZ/'>een veelhoek toevoegen aan een kaart</a> op basis van Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="use-a-polygon-and-line-layer-together"></a>Een veelhoek en een lijn-laag samen gebruiken
 
 Een line-laag kan worden gebruikt om het overzicht van veelhoeken weer te geven. In het volgende code voorbeeld wordt een veelhoek weer gegeven zoals in het vorige voor beeld, maar wordt nu een laag toegevoegd als een tweede laag die is verbonden met de gegevens bron.  
 
-<iframe height='500' scrolling='no' title='Veelhoek en lijn-laag om veelhoek toe te voegen' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>veelhoek en de lijn-laag om veelhoek toe te voegen</a> met Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Veelhoek en lijn-laag om veelhoek toe te voegen' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>veelhoek en de lijn-laag voor het toevoegen van veelhoeken</a> met Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="fill-a-polygon-with-a-pattern"></a>Een veelhoek met een patroon vullen
 
-Naast het vullen van een veelhoek met een kleur, kan een afbeeldings patroon ook worden gebruikt. Laad een afbeeldings patroon in de Maps-afbeelding sprite-resources en verwijs vervolgens `fillPattern` naar deze installatie kopie met de eigenschap van de polygoon laag.
+Naast het vullen van een veelhoek met een kleur, kan een afbeeldings patroon ook worden gebruikt. Laad een afbeeldings patroon in de Maps-installatie kopie resources Sprite en vervolgens naar deze installatie kopie met de eigenschap `fillPattern` van de polygoon laag.
 
 <br/>
 
 <iframe height="500" style="width: 100%;" scrolling="no" title="Opvul patroon veelhoek" src="//codepen.io/azuremaps/embed/JzQpYX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-Zie het <a href='https://codepen.io/azuremaps/pen/JzQpYX/'>opvul patroon</a> voor de pen-veelhoek<a href='https://codepen.io/azuremaps'>@azuremaps</a>door Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+Zie het <a href='https://codepen.io/azuremaps/pen/JzQpYX/'>opvul patroon</a> voor de pen-veelhoek op Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
@@ -88,7 +88,7 @@ De polygoon laag heeft slechts enkele opmaak opties. Hier volgt een hulp program
 
 ## <a name="add-a-circle-to-the-map"></a>Een cirkel aan de kaart toevoegen
 
-Azure Maps maakt gebruik van een uitgebreide versie van het geojson-schema met een definitie voor cirkels zoals [hier](extend-geojson.md#circle)wordt beschreven. Een cirkel kan worden weer gegeven op de `Point` kaart door een functie te maken die een `subType` eigenschap heeft met een waarde van `"Circle"` en `radius` een eigenschap die een getal heeft dat de RADIUS in meters vertegenwoordigt. Bijvoorbeeld:
+Azure Maps maakt gebruik van een uitgebreide versie van het geojson-schema met een definitie voor cirkels zoals [hier](extend-geojson.md#circle)wordt beschreven. Een cirkel kan worden weer gegeven op de kaart door een `Point`-functie te maken met een `subType`-eigenschap met de waarde `"Circle"` en een `radius`-eigenschap met een getal dat de RADIUS in meters vertegenwoordigt. Bijvoorbeeld:
 
 ```javascript
 {
@@ -104,16 +104,16 @@ Azure Maps maakt gebruik van een uitgebreide versie van het geojson-schema met e
 }  
 ```
 
-Met de Azure Maps Web SDK worden `Point` deze functies `Polygon` geconverteerd naar functies onder de kaften en kunnen ze worden weer gegeven op de kaart met behulp van veelhoek-en lijn lagen, zoals in het volgende code voorbeeld wordt weer gegeven.
+Met de Azure Maps Web-SDK worden deze `Point` functies geconverteerd naar `Polygon` functies onder de kaften en kunnen ze worden weer gegeven op de kaart met behulp van veelhoek-en lijn lagen, zoals in het volgende code voorbeeld wordt weer gegeven.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Een cirkel aan een kaart toevoegen' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de pen <a href='https://codepen.io/azuremaps/pen/PRmzJX/'>een cirkel aan een kaart toevoegen</a> door Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Een cirkel aan een kaart toevoegen' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Bekijk de pen <a href='https://codepen.io/azuremaps/pen/PRmzJX/'>een cirkel toevoegen aan een kaart</a> op basis van Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="make-a-geometry-easy-to-update"></a>Een geometrie gemakkelijk te updaten maken
 
-Een `Shape` klasse verpakt een [geometrie](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest) of [functie](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) en maakt deze eenvoudig bij en houdt deze bij. Een shape kan worden gemaakt door door te geven in een geometrie en een set eigenschappen, of door door te geven in een functie, zoals wordt weer gegeven in de volgende code.
+Met een `Shape` klasse wordt een [geometrie](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest) of [functie](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) ingepakt en kunnen deze eenvoudig worden bijgewerkt en onderhouden. Een shape kan worden gemaakt door door te geven in een geometrie en een set eigenschappen, of door door te geven in een functie, zoals wordt weer gegeven in de volgende code.
 
 ```javascript
 //Creating a shape by passing in a geometry and a object containing properties.
@@ -127,7 +127,7 @@ In het volgende code voorbeeld ziet u hoe u een geojson-object in een cirkel met
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Eigenschappen van shape bijwerken' src='//codepen.io/azuremaps/embed/ZqMeQY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de eigenschappen van de <a href='https://codepen.io/azuremaps/pen/ZqMeQY/'>shape pen bijwerken</a> per<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () op <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Eigenschappen van shape bijwerken' src='//codepen.io/azuremaps/embed/ZqMeQY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zie de eigenschappen van de <a href='https://codepen.io/azuremaps/pen/ZqMeQY/'>shape pen bijwerken</a> per Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) op <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Volgende stappen

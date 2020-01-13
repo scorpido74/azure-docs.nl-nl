@@ -1,6 +1,6 @@
 ---
-title: Ondersteunde kaart stijlen in Azure Maps | Microsoft Docs
-description: Kaart stijlen die door Azure Maps worden ondersteund
+title: Ondersteunde kaart stijlen | Microsoft Azure kaarten
+description: In dit artikel vindt u informatie over verschillende stijlen voor het weer geven van kaarten die worden ondersteund door Microsoft Azure kaarten.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 05/06/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 5368aec04eb0a57654adf5b0d5914282a979dcfd
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 92e48486777d82589a56074790dd709c5d525859
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325403"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910629"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps ondersteunde kaart stijlen
 Azure Maps biedt ondersteuning voor verschillende ingebouwde kaart stijlen, zoals hieronder wordt beschreven.
@@ -21,7 +21,7 @@ Azure Maps biedt ondersteuning voor verschillende ingebouwde kaart stijlen, zoal
 ## <a name="road"></a>Tour
 Een **wegkaart is een standaard** kaart met wegen, natuurlijke en kunst matige functies, samen met de labels voor deze functies.
 
-![Tour](./media/supported-map-styles/road.png)
+![kaart stijl weg](./media/supported-map-styles/road.png)
 
 **Toepasselijke Api's:**
 * [Kaart afbeelding](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
@@ -39,10 +39,10 @@ De **lege** en **blank_accessible** kaart stijlen bieden een leeg canvas waarop 
 **Toepasselijke Api's:**
 * Web SDK-kaart besturings element
 
-## <a name="satellite"></a>kantoor 
+## <a name="satellite"></a>satellite 
 De **satelliet** stijl is een combi natie van satelliet-en lucht foto beelden.
 
-![kantoor](./media/supported-map-styles/satellite.png)
+![stijl van kaart voor satelliet tegel](./media/supported-map-styles/satellite.png)
 
 **Toepasselijke Api's:**
 * [Satelliet tegel](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
@@ -52,7 +52,7 @@ De **satelliet** stijl is een combi natie van satelliet-en lucht foto beelden.
 ## <a name="satellite_road_labels"></a>satellite_road_labels
 Deze kaart stijl bestaat uit een hybride van de weg en labels op satelliet-en lucht foto-afbeelding.
 
-![satellite_road_labels](./media/supported-map-styles/satellite_road_labels.png)
+![stijl van satellite_road_labelse kaart](./media/supported-map-styles/satellite_road_labels.png)
 
 **Toepasselijke Api's:**
 * Web SDK-kaart besturings element
@@ -61,7 +61,7 @@ Deze kaart stijl bestaat uit een hybride van de weg en labels op satelliet-en lu
 ## <a name="grayscale_dark"></a>grayscale_dark
 het **donkere grijs tinten** is een donkere versie van het kaart type weg.
 
-![gray_scale](./media/supported-map-styles/grayscale_dark.png)
+![stijl van gray_scalee kaart](./media/supported-map-styles/grayscale_dark.png)
 
 **Toepasselijke Api's:**
 * [Kaart afbeelding](https://docs.microsoft.com/rest/api/maps/render/getmapimage)
@@ -73,17 +73,17 @@ het **donkere grijs tinten** is een donkere versie van het kaart type weg.
 ## <a name="grayscale_light"></a>grayscale_light
 **grijs waarden licht** is een lichte versie van het kaart type weg.
 
-![licht grijs tinten](./media/supported-map-styles/grayscale_light.png)
+![stijl van licht grijs waarden diagram](./media/supported-map-styles/grayscale_light.png)
 
 **Toepasselijke Api's:**
 * Web SDK-kaart besturings element
 * Besturings element Android-kaart
 
 
-## <a name="night"></a>'s
+## <a name="night"></a>nacht
 **'s avonds** is een donkere versie van de kaart stijl met gekleurde wegen en symbolen.
 
-!['s](./media/supported-map-styles/night.png)
+![stijl van nacht kaart](./media/supported-map-styles/night.png)
 
 **Toepasselijke Api's:**
 * Web SDK-kaart besturings element
@@ -92,7 +92,7 @@ het **donkere grijs tinten** is een donkere versie van het kaart type weg.
 ## <a name="road_shaded_relief"></a>road_shaded_relief
 **Uitlichting** van de weg is een Azure Maps hoofd stijl voltooid met conto uren van de aarde.
 
-![verlichting in grijs tinten](./media/supported-map-styles/shaded-relief.png)
+![stijl van de kaart met schaduw verlichting](./media/supported-map-styles/shaded-relief.png)
 
 **Toepasselijke Api's:**
 * [Kaart tegel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)

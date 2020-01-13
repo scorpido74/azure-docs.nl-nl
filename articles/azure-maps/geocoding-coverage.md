@@ -1,6 +1,6 @@
 ---
-title: Geocoderings dekking in Azure Maps | Microsoft Docs
-description: Meer informatie over de geocoderings dekking in Microsoft Azure Maps en in welke regio's/landen u Azure Maps geocodeer kunt gebruiken.
+title: Dekking voor geocodering | Microsoft Azure kaarten
+description: Het proces voor het converteren van een locatie adres naar de breedte-en lengte graad-coördinaten wordt geocodering genoemd. In dit artikel vindt u informatie over regio's met geocoderings dekking in Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 12/31/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4def947c13588cde57b55aeaa9d958eafa923093
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 38d25b7494f8b2f3e1abdac959edde8969d7d4c7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768806"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911638"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Geocoderings dekking Azure Maps
 

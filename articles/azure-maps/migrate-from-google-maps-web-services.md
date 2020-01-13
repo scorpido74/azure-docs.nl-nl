@@ -1,20 +1,20 @@
 ---
-title: Webservices migreren vanuit Google Maps | Microsoft Docs
-description: Een zelf studie over het migreren van webservices van Google Maps naar Microsoft Azure Maps.
+title: 'Zelf studie: webservices migreren vanuit Google Maps | Microsoft Azure kaarten'
+description: Het migreren van webservices van Google Maps naar Microsoft Azure Maps.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/17/2019
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 8fc3270d15f77576ff353a110d8a3a9a17c7144d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 51c00524c781d9af58f60b36aa3baeb079c6eafa
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480019"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910763"
 ---
 # <a name="migrate-web-service-from-google-maps"></a>Webservice migreren vanuit Google Maps
 

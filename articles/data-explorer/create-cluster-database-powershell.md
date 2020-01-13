@@ -1,18 +1,18 @@
 ---
 title: Een Azure Data Explorer-cluster en-data base maken met behulp van Power shell
 description: Meer informatie over het maken van een Azure Data Explorer-cluster en-data base met behulp van Power shell
-author: oflipman
-ms.author: oflipman
+author: lucygoldbergmicrosoft
+ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 1975125dd3bcd327ae7520e4cc413718e48d6ba9
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: b855fde88173fe9a14a964ba1f9fd07aa74d85eb
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326753"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911984"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Een Azure Data Explorer-cluster en-data base maken met behulp van Power shell
 

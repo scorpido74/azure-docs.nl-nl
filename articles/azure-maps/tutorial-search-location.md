@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: zoeken met Azure Maps'
-description: 'Zelf studie: zoeken in een nabijgelegen punt met Azure Maps'
+title: 'Zelf studie: zoeken naar nabijgelegen locaties op een kaart | Microsoft Azure kaarten'
+description: In deze zelf studie leert u hoe u kunt zoeken naar nabijgelegen locaties (interessante punten) op een kaart met behulp van Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ae2d7b3d855f1c06397d4eb0f977dd04aa841942
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65a091dbe935967d63a11c3c40dd834207f34782
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432747"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910828"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Zelf studie: interessante punten zoeken met behulp van Azure Maps
 
@@ -49,7 +49,7 @@ Voer de volgende stappen uit om een nieuw Maps-account te maken:
     * Lees de *licentie* en de *privacyverklaring*, en schakel het selectievakje in om de voorwaarden te accepteren.
     * Klik op de knop **Maken**.
 
-![Maps-account maken in de portal](./media/tutorial-search-location/create-account.png)
+![Azure Maps-account maken in Azure Portal](./media/tutorial-search-location/create-account.png)
 
 <a id="getkey"></a>
 
@@ -61,7 +61,7 @@ Als het Azure Kaarten-account is gemaakt, haalt u de sleutel op waarmee u query'
 2. Selecteer in de sectie instellingen de optie **verificatie**.
 3. Kopieer de **Primaire Sleutel** naar het Klembord. Sla de sleutel lokaal op voor gebruik verderop in deze zelfstudie.
 
-![Primaire sleutel in de portal ophalen](./media/tutorial-search-location/get-key.png)
+![Primaire sleutel in Azure Portal ophalen](./media/tutorial-search-location/get-key.png)
 
 Zie [verificatie beheren in azure Maps](how-to-manage-authentication.md)voor meer informatie over verificatie in azure Maps.
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 39051014e5e474264a44983fb366bc08f02c31e0
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dd315277e6e8f29a103760d605a7da4603190c20
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639851"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908874"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Veelgestelde vragen over de Azure front-deur service
 
@@ -99,7 +99,7 @@ Als u uw toepassing wilt vergren delen om alleen verkeer van uw specifieke voor 
     > De backend-back-end van de voor deur kan later worden gewijzigd, maar we zorgen ervoor dat voordat dat gebeurt, dat we hebben geïntegreerd met [Azure IP-bereiken en-Tags](https://www.microsoft.com/download/details.aspx?id=56519). U wordt aangeraden om u te abonneren op [Azure IP-bereiken en service Tags](https://www.microsoft.com/download/details.aspx?id=56519) voor eventuele wijzigingen of updates.
 
 -   Filter op de waarden voor de inkomende header**X-forward-host**verzonden door de voor deur. De enige toegestane waarden voor de header moeten alle frontend-hosts zijn, zoals gedefinieerd in de voor deur configuratie. Meer specifiek, alleen de hostnamen waarvoor u verkeer wilt accepteren, op deze specifieke back-end van uw bedrijf.
-    - Voor beeld: Stel dat uw front-deur configuratie de volgende frontend-hosts bevat _`contoso.azurefd.net`_ (a), _`www.contoso.com`_ (B), _ (C) en _`notifications.contoso.com`_ (D). Stel dat u twee back-ends hebt X en Y. 
+    - Voor beeld: Stel dat uw front-deur configuratie de volgende frontend-hosts bevat _`contoso.azurefd.net`_ (a), _`www.contoso.com`_ (B), _`api.contoso.com`_ (C) en _`notifications.contoso.com`_ (D). Stel dat u twee back-ends hebt X en Y. 
     - Back-end X mag alleen verkeer van hostnamen A en B overnemen. back-end-Y kan verkeer van A, C en D overnemen.
     - Op backend X moet u dus alleen verkeer accepteren waarbij de header**X-forward-host**is ingesteld op _`contoso.azurefd.net`_ of _`www.contoso.com`_ . Voor alle andere gegevens, backend X moet het verkeer afwijzen.
     - Op de back-end-Y mag alleen verkeer worden geaccepteerd dat de header**X-forward-host**heeft ingesteld op _`contoso.azurefd.net`_ , _`api.contoso.com`_ of _`notifications.contoso.com`_ . Voor alle andere zaken moet de back-end-Y het verkeer afwijzen.

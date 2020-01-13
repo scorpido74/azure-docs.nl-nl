@@ -1,6 +1,6 @@
 ---
-title: Dekking in Azure Maps weer geven | Microsoft Docs
-description: Meer informatie over de weergave dekking in Azure Maps
+title: Dekking weer geven | Microsoft Azure kaarten
+description: In dit artikel vindt u informatie over regio's met Microsoft Azure kaarten weergave dekking samen met het niveau van de weer gegeven gegevens.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 03/22/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 5affc9952cfe13ebfeede126051f2236499d1343
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 84d5d7fc6490420857032ead964f5bccea8f397a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934299"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910676"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps weergave dekking
 
@@ -21,9 +21,9 @@ Azure Maps maakt gebruik van raster tegels en vector tegels om kaarten te maken.
 
 Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor alle regio's. De volgende tabellen bevatten informatie over het niveau van de weer gegeven details die u van elke regio kunt verwachten.
 
-## <a name="legend"></a>Labels
+## <a name="legend"></a>Legenda
 
-| Valuta | Betekenis |
+| Symbool | Betekenis |
 |--------|---------|
 | ✓ | Regio wordt weer gegeven met gedetailleerde gegevens.   |
 | Ø | Regio wordt weer gegeven met vereenvoudigde gegevens. |
@@ -46,7 +46,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Tsjaad                             | ✓ | Ø |
 | Comoren                          | ✓ | Ø |
 | Congo (DRC) | ✓ | ✓ |
-| Côte d'Ivoire                    | ✓ | Ø |
+| Ivoorkust (Côte d’Ivoire)                    | ✓ | Ø |
 | Djibouti                         | ✓ | Ø |
 | Egypte                            | ✓ | ✓ |
 | Equatoriaal-Guinea                | ✓ | Ø |
@@ -75,12 +75,12 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Réunion                          | ✓ | ✓ |
 | Rwanda                           | ✓ | ✓ |
 | Sint-Helena, Ascension en Tristan da Cunha | ✓ | Ø |
-| Sao Tomé en principe            | ✓ | Ø |
+| São Tomé en Principe            | ✓ | Ø |
 | Senegal                          | ✓ | ✓ |
 | Sierra Leone                     | ✓ | ✓ |
 | Somalië                          | ✓ | ✓ |
 | Zuid-Afrika                     | ✓ | ✓ |
-| Zuid-Soedan                      | ✓ | ✓ |
+| Zuid-Sudan                      | ✓ | ✓ |
 | Soedan                            | ✓ | ✓ |
 | Swaziland                        | ✓ | ✓ |
 | Verenigde Republiek Tanzania      | ✓ | ✓ |
@@ -164,9 +164,9 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Brunei                    | ✓ | ✓ |
 | Cambodja                  |   | Ø |
 | China                     |   | Ø |
-| Cocos-Keeling-eilanden   |   | Ø |
+| Cocoseilanden   |   | Ø |
 | Noord-Korea |   | Ø |
-| Hong Kong SAR             | ✓ | ✓ |
+| Hongkong SAR             | ✓ | ✓ |
 | India                     | Ø | ✓ | 
 | Indonesië                 | ✓ | ✓ |
 | Iran                      |   | Ø |
@@ -198,7 +198,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Taiwan                    | ✓ | ✓ |
 | Tadzjikistan                |   | Ø |
 | Thailand                  | ✓ | ✓ |
-| Oost-leste               |   | Ø |
+| Timor-Leste               |   | Ø |
 | Turkmenistan              |   | Ø |
 | Verenigde Arabische Emiraten      | ✓ | ✓ |
 | Amerikaanse ondergeschikte afgelegen eilanden |   | Ø |
@@ -206,7 +206,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Vietnam                   | ✓ | ✓ |
 | Jemen                     | ✓ | ✓ |
 
-## <a name="oceania"></a>Oceania
+## <a name="oceania"></a>Oceanië
 
 | Land/regio | Geïntegreerde raster tegels | Geïntegreerde vector tegels |
 | ------ | :------------------: | :------------------: |
@@ -217,16 +217,16 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Frans-Polynesië          |   | Ø |
 | Guam                      | ✓ | ✓ |
 | Kiribati                  |   | Ø |
-| Marshall eilanden          |   | Ø |
+| Marshalleilanden          |   | Ø |
 | Micronesia                |   | Ø |
 | Nauru                     |   | Ø |
 | Nieuw-Caledonië             |   | Ø |
 | Nieuw-Zeeland               | ✓ | ✓ |
 | Niue                      |   | Ø |
-| Norfolk eiland            |   | Ø |
+| Norfolk            |   | Ø |
 | Palau                     |   | Ø |
 | Papoea-Nieuw-Guinea          |   | Ø |
-| Pitcairneilanden                  |   | Ø |
+| Pitcairn                  |   | Ø |
 | Samoa                     |   | Ø |
 | Salomonseilanden           |   | Ø|
 | Tokelau                   |   | Ø |
@@ -247,7 +247,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Azerbeidzjan                | ✓ | Ø |
 | Wit-Rusland                   | Ø | ✓ |
 | België                   | ✓ | ✓ |
-| Bosnië-Herzegovina        | ✓ | ✓ |
+| Bosnia-Herzegovina        | ✓ | ✓ |
 | Bulgarije                  | ✓ | ✓ |
 | Kroatië                   | ✓ | ✓ |
 | Cyprus                    | ✓ | ✓ |
@@ -296,7 +296,7 @@ Maps heeft echter niet hetzelfde niveau van informatie en nauw keurigheid voor a
 | Turkije                    | ✓ | ✓ |
 | Oekraïne                   | ✓ | ✓ |
 | Verenigd Koninkrijk            | ✓ | ✓ |
-| Vaticaan stad              | ✓ | ✓ |
+| Vaticaanstad              | ✓ | ✓ |
 
 ## <a name="next-steps"></a>Volgende stappen
 

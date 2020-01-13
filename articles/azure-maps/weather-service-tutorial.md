@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: sensor gegevens samen voegen met weer prognose gegevens met behulp van Azure Notebooks (python) | Microsoft Docs'
-description: 'Zelf studie: deze zelf studie laat zien hoe u met behulp van Azure Notebooks (python) sensor gegevens kunt samen voegen met de weers verwachting van Azure Maps weer service.'
+title: 'Zelf studie: sensor gegevens samen voegen met weer prognose gegevens met behulp van Azure Notebooks (python) | Microsoft Azure kaarten'
+description: In deze zelf studie leert u hoe u met behulp van Azure Notebooks (python) sensor gegevens kunt samen voegen met de weers verwachting gegevens van Microsoft Azure Maps-service.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 12/09/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 809c188dc37aba64de27e89e38acd8692c7de032
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 1a1493033717b18bef5d80b28d06004c901ffb29
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613564"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910781"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Zelf studie: sensor gegevens samen voegen met weer prognose gegevens met behulp van Azure Notebooks (python)
 

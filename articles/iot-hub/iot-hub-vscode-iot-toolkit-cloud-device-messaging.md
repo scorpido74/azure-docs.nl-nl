@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 785c6f2b36396558cc21ce6c025be59c456ff32d
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 0b081229dcb382786fea03dff358b5cc47d77ee7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083257"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912017"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Gebruik Azure IoT-Hulpprogram Ma's voor Visual Studio code voor het verzenden en ontvangen van berichten tussen uw apparaat en IoT Hub
 
@@ -64,7 +64,7 @@ Voer de volgende stappen uit om berichten te bewaken die worden verzonden vanaf 
 
 1. Klik met de rechter muisknop op het apparaat en selecteer **controle van het ingebouwde gebeurtenis-eind punt starten**.
 
-2. De bewaakte berichten worden weer gegeven in de weer gave **uitvoer** > **Azure IOT hub-werkset** .
+2. De bewaakte berichten worden weer gegeven in de **uitvoer** > **Azure IOT hub** weer gave.
 
 3. Als u de bewaking wilt stoppen, klikt u met de rechter muisknop op de **uitvoer** weergave en selecteert u **controle stoppen ingebouwd gebeurtenis eindpunt**.
 
@@ -76,7 +76,7 @@ Voer de volgende stappen uit om een bericht van uw IoT-hub naar uw apparaat te v
 
 2. Voer het bericht in het invoervak in.
 
-3. De resultaten worden weer gegeven in de weer gave **OUTPUT** > **Azure IOT hub Toolkit** .
+3. De resultaten worden weer gegeven in de **uitvoer** > **Azure IOT hub** weer gave.
 
 ## <a name="next-steps"></a>Volgende stappen
 

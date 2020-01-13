@@ -1,18 +1,18 @@
 ---
 title: Een Azure Data Explorer-cluster en-data base maken met behulp vanC#
 description: Meer informatie over het maken van een Azure Data Explorer-cluster en-data base met behulp van deC#
-author: oflipman
-ms.author: oflipman
+author: lucygoldbergmicrosoft
+ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: 1260b7754f80a3d008084f632d299c684162628e
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: 7dc032d52a8cb3c5c54cf57c7ae7bf697796b5cc
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74667881"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910606"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>Een Azure Data Explorer-cluster en-data base maken met behulp vanC#
 
@@ -36,7 +36,7 @@ Azure Data Explorer is een snelle, volledig beheerde service voor gegevensanalys
 * Installeer het [Azure Data Explorer (Kusto) nuget-pakket](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 * Installeer het [nuget-pakket micro soft. Identity model. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) voor verificatie.
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 Voor het uitvoeren van de voor beelden in dit artikel hebben we een Azure AD-toepassing en service-principal nodig die toegang hebben tot resources. Schakel het selectie vakje [een Azure AD-toepassing maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) in om een gratis Azure AD-toepassing te maken en roltoewijzing toe te voegen aan het abonnements bereik. U ziet ook hoe u de `Directory (tenant) ID`, `Application ID`en `Client Secret`kunt ophalen.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Het Azure Data Explorer-cluster maken

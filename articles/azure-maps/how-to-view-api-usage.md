@@ -1,6 +1,6 @@
 ---
-title: Om weer te geven van het gebruik van Azure kaarten-API | Microsoft Docs
-description: Leer hoe u de metrische gegevens voor uw Azure kaarten-API-aanroepen weergeven in de portal.
+title: Azure Maps metrische gegevens over het gebruik van de API weer geven | Microsoft Azure kaarten
+description: In dit artikel leert u hoe u de metrische gegevens voor uw Microsoft Azure Maps-API-aanroepen in de Azure Portal kunt weer geven.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 08/06/2018
@@ -8,62 +8,62 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 716f9fbc02905a8981771c2fd9dd2be0baeb8196
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 7ba50f63fb015a8696904df3decd13c811625459
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460196"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911337"
 ---
-# <a name="view-azure-maps-api-usage"></a>Azure kaarten-API-gebruik weergeven
+# <a name="view-azure-maps-api-usage-metrics"></a>Metrische gegevens over het gebruik van Azure Maps-API weergeven
 
-Dit artikel leest u hoe u om weer te geven de metrische gegevens over gebruik API voor uw Azure-kaarten-account in de [portal](https://portal.azure.com). De metrische gegevens worden weergegeven in een handige grafiek langs een aanpasbare tijdsduur.
+Dit artikel laat u zien hoe u de metrische gegevens over het API-gebruik voor uw Azure Maps-account in de [Portal](https://portal.azure.com)kunt weer geven. De metrische gegevens worden in een handige grafiek indeling weer gegeven, samen met een aanpas bare tijds duur.
 
-## <a name="view-metric-snapshot"></a>Momentopname van metrische gegevens weergeven
+## <a name="view-metric-snapshot"></a>Moment opname van metrische gegevens weer geven
 
-Ziet u enkele algemene metrische gegevens van de **overzicht** pagina van uw kaarten-account. Toont momenteel *totaal aantal aanvragen*, *totaal aantal fouten*, en *beschikbaarheid* via een tijdsduur worden geselecteerd.
+Op de pagina **overzicht** van uw Maps-account ziet u enkele algemene metrische gegevens. Het bevat momenteel *Totaal aantal aanvragen*, *Totaal aantal fouten*en *Beschik baarheid* gedurende een Selecteer bare tijds duur.
 
-![Overzicht van metrische gegevens van Azure Maps](media/how-to-view-api-usage/portal-overview.png)
+![Overzicht van metrische gegevens over Azure Maps gebruik](media/how-to-view-api-usage/portal-overview.png)
 
-Doorgaan naar de volgende sectie als u nodig hebt om aan te passen van de grafieken voor uw specifieke analyse.
+Ga door naar de volgende sectie als u deze grafieken voor uw specifieke analyse wilt aanpassen.
 
-## <a name="view-detailed-metrics"></a>Gedetailleerde metrische gegevens weergeven
+## <a name="view-detailed-metrics"></a>Gedetailleerde metrische gegevens weer geven
 
-1. Aanmelden bij uw Azure-abonnement in de [portal](https://portal.azure.com).
+1. Meld u aan bij uw Azure-abonnement in de [Portal](https://portal.azure.com).
 
-2. Klik op de **alle resources** menu-item aan de linkerkant en navigeer naar uw *Azure kaarten-Account*.
+2. Klik op het menu-item **alle resources** aan de linkerkant en navigeer naar uw *Azure Maps-account*.
 
-3. Als uw kaarten-account geopend is, klikt u op de **metrische gegevens** menu aan de linkerkant.
+3. Zodra uw Maps-account is geopend, klikt u op het menu **metrische gegevens** aan de linkerkant.
 
-4. Op de **metrische gegevens** deelvenster kiezen tussen een van de volgende:
+4. Kies in het deel venster **metrieken** een van de volgende opties:
 
-   1. **Beschikbaarheid** -deze toont de *gemiddelde* API beschikbaar gedurende een bepaalde periode.
-   2. **Gebruik** -deze toont hoe het gebruik *aantal* voor uw account.
+   1. **Beschik baarheid** : Hiermee wordt het *gemiddelde* van de API-Beschik baarheid gedurende een bepaalde tijd weer gegeven.
+   2. **Gebruik** : hier wordt weer gegeven hoe het *aantal items* voor uw account wordt gebruikt.
 
-      ![Deelvenster in Azure Maps metrische gegevens](media/how-to-view-api-usage/portal-metrics.png)
+      ![Deel venster metrische gegevens over Azure Maps gebruik](media/how-to-view-api-usage/portal-metrics.png)
 
-5. Vervolgens kunt u selecteren de *tijdsbereik* door te klikken op **afgelopen 24 uur (automatisch)** . Het tijdsbereik is standaard ingesteld op 24 uur. Nadat u hebt geklikt, ziet u alle selecteerbare tijdsbereik. U kunt selecteren de *tijdgranulatie* en kies om weer te geven van de tijd als *lokale* of *GMT* in de dezelfde vervolgkeuzelijst. Klik op **Toepassen**.
+5. Daarna kunt u het *tijds bereik* selecteren door te klikken op de **laatste 24 uur (automatisch)** . Het tijds bereik is standaard ingesteld op 24 uur. Nadat u op hebt geklikt, ziet u alle geselecteerde Peri Oden. U kunt de *tijd granulatie* selecteren en ervoor kiezen om de tijd weer te geven als *lokaal* of *GMT* in dezelfde vervolg keuzelijst. Klik op **Toepassen**.
 
-    ![Tijdsbereik van Azure Maps metrische gegevens](media/how-to-view-api-usage/time-range.png)
+    ![Tijds bereik voor Azure Maps meet waarden](media/how-to-view-api-usage/time-range.png)
 
-6. Als u uw metrische gegevens toevoegt, kunt u vervolgens **filter toevoegen** in met de eigenschappen die relevant zijn voor die metrische gegevens en selecteer vervolgens de waarde van de eigenschap die u wilt zien de grafiek voor.
+6. Zodra u uw metrische gegevens hebt toegevoegd, kunt u vervolgens een **filter toevoegen** uit de eigenschappen die relevant zijn voor die metriek en vervolgens de waarde van de eigenschap selecteren waarvoor u de grafiek wilt weer geven.
 
-    ![Azure Maps metrische gegevens filteren](media/how-to-view-api-usage/filter.png)
+    ![Filter voor metrische gegevens over Azure Maps gebruik](media/how-to-view-api-usage/filter.png)
 
-7. U kunt ook **toepassen splitsen** voor uw metrische gegevens op basis van de eigenschap van de geselecteerde metrische gegevens. Hiermee wordt de grafiek moet worden gesplitst in meerdere diagrammen, één voor elke waarde van deze eigenschap. In de volgende afbeelding, de kleur van elke grafiek komt overeen met de waarde van de eigenschap weergegeven aan de onderkant van de grafiek.
+7. U kunt ook **splitsen Toep assen** op uw metrische gegevens op basis van de geselecteerde metrische eigenschap. Hierdoor kan de grafiek worden opgesplitst in meerdere grafieken, één voor elke waarde van die eigenschap. In de volgende afbeelding komt de kleur van elke grafiek overeen met de eigenschaps waarde die onder aan de grafiek wordt weer gegeven.
 
-    ![Azure kaarten-metrische gegevens splitsen](media/how-to-view-api-usage/splitting.png)
+    ![Splitsing van metrische gegevens over Azure Maps gebruik](media/how-to-view-api-usage/splitting.png)
 
-8. U kunt ook meerdere metrische gegevens over dezelfde grafiek, leren door te klikken op de **metrische waarde toevoegen** bovenaan op de knop.
+8. U kunt ook meerdere metrische gegevens in dezelfde grafiek bekijken door simpelweg op de knop **metriek toevoegen** bovenaan te klikken.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de Azure kaarten-API die u wilt bijhouden voor:
+Meer informatie over de Azure Maps Api's waarvoor u het gebruik wilt bijhouden:
 > [!div class="nextstepaction"] 
-> [Azure Maps Web SDK How-To](how-to-use-map-control.md)
+> [Azure Maps Web SDK-instructies](how-to-use-map-control.md)
 
 > [!div class="nextstepaction"] 
-> [Procedures voor het Android-SDK van Azure Maps](how-to-use-android-map-control-library.md)
+> [Azure Maps van de Android SDK](how-to-use-android-map-control-library.md)
 
 > [!div class="nextstepaction"]
-> [Azure kaarten REST-API-documentatie](https://docs.microsoft.com/rest/api/maps)
+> [Documentatie voor Azure Maps REST API](https://docs.microsoft.com/rest/api/maps)

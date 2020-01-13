@@ -1,6 +1,6 @@
 ---
-title: Een tegel laag toevoegen aan Android-kaarten in Azure Maps | Microsoft Docs
-description: Een laag voor een tegel toevoegen aan een kaart met Azure Maps Android SDK
+title: Een tegel laag toevoegen aan Android-kaarten | Microsoft Azure kaarten
+description: In dit artikel leert u hoe u een tegel laag op een kaart kunt weer geven met behulp van de Microsoft Azure Mapss Android SDK.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5d5f50a38db95f6e62bdd8c51aefd5957041e682
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e54eeaa6dafd60e5fc481f2f4b45929edda77c44
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886609"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911515"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Een tegel laag aan een kaart toevoegen met behulp van de Azure Maps Android SDK
 
@@ -23,19 +23,19 @@ Een tegel laag wordt in tegels van een server geladen. Deze installatie kopieën
 
 * X, Y, zoom notatie: gebaseerd op het zoom niveau, x is de kolom en Y de rijpositie van de tegel in het tegel raster.
 * Quadkey notatie: combi natie x, y en zoom informatie in een enkele teken reeks waarde die een unieke id voor een tegel is.
-* Omsluitende Box-coördinaten kunnen worden gebruikt om een afbeelding op te geven in de indeling `{west},{south},{east},{north}` die wordt gebruikt door [Web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms).
+* Omsluitende Box-coördinaten kunnen worden gebruikt om een afbeelding op te geven in de indeling `{west},{south},{east},{north}` die vaak wordt gebruikt door [Web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms).
 
 > [!TIP]
 > Een TileLayer is een uitstekende manier om grote gegevens sets op de kaart te visualiseren. U kunt niet alleen een tegel laag genereren op basis van een afbeelding, maar u kunt ook vector gegevens weer geven als een tegel laag. Door vector gegevens als een tegel laag te renderen, hoeft het kaart besturings element alleen de tegels te laden die veel kleiner kunnen zijn dan de vector gegevens die ze vertegenwoordigen. Deze techniek wordt gebruikt door veel die miljoenen rijen met gegevens op de kaart moeten weer geven.
 
 De tegel-URL die wordt door gegeven aan een tegel laag moet een HTTP/HTTPS-URL zijn naar een TileJSON-resource of een tegel-URL-sjabloon die gebruikmaakt van de volgende para meters: 
 
-* `{x}`-X-positie van de tegel. Ook nodig `{y}` en `{z}`.
-* `{y}`-Y-positie van de tegel. Ook nodig `{x}` en `{z}`.
-* `{z}`-Zoom niveau van de tegel. Ook nodig `{x}` en `{y}`.
-* `{quadkey}`-Tegel quadkey-id gebaseerd op de naam Conventie voor Bing Maps-tegel systeem.
-* `{bbox-epsg-3857}`-Een teken reeks voor selectie kader met de `{west},{south},{east},{north}` indeling in het EPSG 3857 Spatial Reference System.
-* `{subdomain}`-Een tijdelijke aanduiding waar de opgegeven subdomein waarden worden toegevoegd.
+* `{x}`-X-positie van de tegel. Ook moet `{y}` en `{z}`.
+* `{y}`-Y-positie van de tegel. Ook moet `{x}` en `{z}`.
+* `{z}`-zoom niveau van de tegel. Ook moet `{x}` en `{y}`.
+* `{quadkey}`-tegel quadkey-id op basis van de naam Conventie voor Bing Maps-tegel systemen.
+* `{bbox-epsg-3857}`-een teken reeks voor selectie kader met de indeling `{west},{south},{east},{north}` in het spatiale referentie systeem van EPSG 3857.
+* `{subdomain}`: een tijdelijke aanduiding waarbij de opgegeven subdomein waarden worden toegevoegd.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -71,7 +71,7 @@ U kunt een tegel laag toevoegen aan de kaart door de volgende stappen uit te voe
     </FrameLayout>
     ```
 
-2. Kopieer het volgende code fragment hieronder in de methode **onCreate ()** van uw `MainActivity.java` klasse.
+2. Kopieer het volgende code fragment hieronder in de methode **onCreate ()** van uw `MainActivity.java`-klasse.
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,9 +84,9 @@ U kunt een tegel laag toevoegen aan de kaart door de volgende stappen uit te voe
     });
     ```
     
-    In het bovenstaande code fragment wordt eerst een exemplaar van Azure Maps kaart besturings element opgehaald met de call back methode **onReady ()** . Vervolgens wordt een `TileLayer` -object gemaakt en wordt een geopmaakde **xyz** - `tileUrl` tegel-URL in de optie door gegeven. De dekking van de laag is ingesteld op `0.8` en sinds de tegels van de tegel service die wordt gebruikt, zijn 256 pixel tegels, wordt `tileSize` deze informatie door gegeven aan de optie. De laag van de tegel wordt vervolgens door gegeven aan de Maps Layer Manager.
+    In het bovenstaande code fragment wordt eerst een exemplaar van Azure Maps kaart besturings element opgehaald met de call back methode **onReady ()** . Vervolgens wordt er een `TileLayer`-object gemaakt en wordt een tegel-URL opgemaakt **xyz** door gegeven aan de `tileUrl` optie. De dekking van de laag is ingesteld op `0.8` en aangezien de tegels van de tegel service die wordt gebruikt, 256 pixels-tegels zijn, wordt deze informatie door gegeven aan de `tileSize` optie. De laag van de tegel wordt vervolgens door gegeven aan de Maps Layer Manager.
 
-    Nadat u het code fragment hierboven hebt toegevoegd `MainActivity.java` , ziet uw er als volgt uit:
+    Nadat u het code fragment hierboven hebt toegevoegd, moet uw `MainActivity.java` er als volgt uitzien:
     
     ```Java
     package com.example.myapplication;
@@ -172,7 +172,7 @@ Als u de toepassing nu uitvoert, ziet u een regel op de kaart zoals hieronder wo
 
 <center>
 
-![Android-kaart lijn](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
+![Android-kaart regel](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 3cdeecd5b7698274b899832d7a66a5572a114e4b
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 139d1a470c67d5dab310c4fa2a9171f433df2061
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954505"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912362"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit AZ3166 verbinden met Azure IoT Hub
 
@@ -92,7 +92,7 @@ Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan m
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyNodeDevice --output table
     ```
 
-    Noteer de apparaatverbindingsreeks, die er ongeveer zo uitziet:
+    Noteer de apparaatverbindingsreeks. Deze ziet er ongeveer als volgt uit:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -174,7 +174,7 @@ Volg deze stappen om de ontwikkelings omgeving voor te bereiden voor de DevKit:
     > [Azure IoT Tools Extension Pack installeren](vscode:extension/vsciot-vscode.azure-iot-tools)
 
     > [!NOTE]
-    > Het extensie pakket voor Azure IoT-Hulpprogram Ma's bevat de [Azure IOT-Device Workbench](https://aka.ms/iot-workbench) die wordt gebruikt voor het ontwikkelen en opsporen van fouten op verschillende IOT Devkit-apparaten. De [azure IOT hub Toolkit](https://aka.ms/iot-toolkit), die ook is opgenomen in het uitbreidings pakket voor Azure IOT-hulpprogram ma's, wordt gebruikt voor het beheren en gebruiken van Azure IOT hubs.
+    > Het extensie pakket voor Azure IoT-Hulpprogram Ma's bevat de [Azure IOT-Device Workbench](https://aka.ms/iot-workbench) die wordt gebruikt voor het ontwikkelen en opsporen van fouten op verschillende IOT Devkit-apparaten. De [azure IOT hub-extensie](https://aka.ms/iot-toolkit), die ook is opgenomen in het uitbreidings pakket voor Azure IOT-hulpprogram ma's, wordt gebruikt voor het beheren en gebruiken van Azure IOT hubs.
 
 5. VS-code configureren met Arduino-instellingen.
 
@@ -328,7 +328,7 @@ U kunt [Azure IOT-Hulpprogram ma's](https://marketplace.visualstudio.com/items?i
 
 1. Meld u aan [Azure Portal](https://portal.azure.com/), zoek de IOT hub die u hebt gemaakt.
 
-    ![Azure-portal](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
+    ![Azure Portal](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
 
 1. Klik in het deel venster **beleid voor gedeelde toegang** op het **iothubowner-beleid**en noteer de verbindings reeks van uw IOT-hub.
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 03997bb6999af9ebaad36cc95f7834e3b9ed4569
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 9d4d82472664900c96b77b31740573d0463465b8
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953199"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911913"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Gebruik Azure IoT-Hulpprogram Ma's voor Visual Studio code voor Azure IoT Hub Apparaatbeheer
 
@@ -71,7 +71,7 @@ Voer Azure IoT-Hulpprogram Ma's voor Visual Studio code uit met verschillende be
 
 2. Voer de methode naam en payload in het invoervak in.
 
-3. De resultaten worden weer gegeven in de weer gave **OUTPUT** > **Azure IOT hub Toolkit** .
+3. De resultaten worden weer gegeven in de **uitvoer** > **Azure IOT hub** weer gave.
 
 ## <a name="read-device-twin"></a>Dubbele apparaten lezen
 
@@ -95,7 +95,7 @@ Voer de volgende stappen uit om een bericht van uw IoT-hub naar uw apparaat te v
 
 2. Voer het bericht in het invoervak in.
 
-3. De resultaten worden weer gegeven in de weer gave **OUTPUT** > **Azure IOT hub Toolkit** .
+3. De resultaten worden weer gegeven in de **uitvoer** > **Azure IOT hub** weer gave.
 
 ## <a name="next-steps"></a>Volgende stappen
 

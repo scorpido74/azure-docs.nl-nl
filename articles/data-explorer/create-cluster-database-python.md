@@ -1,18 +1,18 @@
 ---
 title: Een Azure Data Explorer-cluster en-data base maken met behulp van python
 description: Meer informatie over het maken van een Azure Data Explorer-cluster en-data base met behulp van python.
-author: oflipman
-ms.author: oflipman
+author: lucygoldbergmicrosoft
+ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: b3329ccb3edb3077a45e3bbf9ba7b48d7e3a93a2
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 5a3a7d79e43a4e0b4a160837be4d7f3cc33f4a91
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996225"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911938"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Een Azure Data Explorer-cluster en-data base maken met behulp van python
 
@@ -39,7 +39,7 @@ pip install azure-common
 pip install azure-mgmt-kusto
 ```
 ## <a name="authentication"></a>Authentication
-Voor het uitvoeren van de voor beelden in dit artikel hebben we een Azure AD-toepassing en service-principal nodig die toegang hebben tot resources. Schakel het selectie vakje [een Azure AD-toepassing maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) in om een gratis Azure AD-toepassing te maken en roltoewijzing toe te voegen aan het abonnements bereik. U ziet ook hoe u de `Directory (tenant) ID`, `Application ID` en `Client Secret` kunt ophalen.
+Voor het uitvoeren van de voor beelden in dit artikel hebben we een Azure AD-toepassing en service-principal nodig die toegang hebben tot resources. Schakel het selectie vakje [een Azure AD-toepassing maken](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) in om een gratis Azure AD-toepassing te maken en roltoewijzing toe te voegen aan het abonnements bereik. U ziet ook hoe u de `Directory (tenant) ID`, `Application ID`en `Client Secret`kunt ophalen.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Het Azure Data Explorer-cluster maken
 
@@ -83,11 +83,11 @@ Voor het uitvoeren van de voor beelden in dit artikel hebben we een Azure AD-toe
    | cluster_name | *mykustocluster* | De gewenste naam van uw cluster.|
    | sku_name | *Standard_D13_v2* | De SKU die wordt gebruikt voor uw cluster. |
    | laag | *Standard* | De SKU-laag. |
-   | capaciteit | *Telwoord* | Het aantal exemplaren van het cluster. |
+   | capacity | *Telwoord* | Het aantal exemplaren van het cluster. |
    | resource_group_name | *testrg* | Naam van de resourcegroep waar het cluster wordt gemaakt. |
 
     > [!NOTE]
-    > **Een cluster maken** is een langlopende bewerking. De methode **create_or_update** retourneert een exemplaar van LROPoller, Zie [LROPoller-klasse](/python/api/msrest/msrest.polling.lropoller?view=azure-python) voor meer informatie.
+    > **Een cluster maken** is een langlopende bewerking. **Create_or_update** -methode retourneert een exemplaar van LROPoller. Zie [LROPoller](/python/api/msrest/msrest.polling.lropoller?view=azure-python) voor meer informatie.
 
 1. Voer de volgende opdracht uit om te controleren of het cluster is gemaakt:
 
@@ -121,7 +121,7 @@ Als het resultaat `provisioningState` met waarde `Succeeded` bevat, is het maken
    |**Instelling** | **Voorgestelde waarde** | **Beschrijving van veld**|
    |---|---|---|
    | cluster_name | *mykustocluster* | De naam van het cluster waar de database wordt gemaakt.|
-   | database | *mykustodatabase* | De naam van uw database.|
+   | database_name | *mykustodatabase* | De naam van uw database.|
    | resource_group_name | *testrg* | Naam van de resourcegroep waar het cluster wordt gemaakt. |
    | soft_delete_period | *3650 dagen, 0:00:00* | Hoe lang gegevens worden opgeslagen om query's erop te kunnen uitvoeren. |
    | hot_cache_period | *3650 dagen, 0:00:00* | Hoe lang gegevens worden opgeslagen in de cache. |

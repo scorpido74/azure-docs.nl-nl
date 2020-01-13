@@ -1,6 +1,6 @@
 ---
-title: Een werk balk voor tekenen toevoegen aan Azure Maps | Microsoft Docs
-description: Een werk balk voor tekenen toevoegen aan een kaart met Azure Maps Web SDK
+title: Een werk balk tekenen toevoegen aan een kaart | Microsoft Azure kaarten
+description: In dit artikel leert u hoe u een werk balk tekenen aan een kaart kunt toevoegen met behulp van Microsoft Azure Maps Web SDK
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/05/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 63848ecf92daecf28f6e0046e87da15355aa35c1
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: fd235f3f39d67f86c8387add79ca0dbf17dc5906
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561827"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911670"
 ---
 # <a name="drawing-tool-events"></a>Gebeurtenissen voor het tekenen van gereedschappen
 

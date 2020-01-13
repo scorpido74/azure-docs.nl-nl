@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: een Store-Locator maken met behulp van Azure Maps'
-description: 'Zelf studie: een Store-Locator maken met behulp van Azure Maps.'
+title: 'Zelf studie: een Store Locator-toepassing maken met behulp van Azure Maps | Microsoft Azure kaarten'
+description: In deze zelf studie leert u hoe u een web-app voor Store Locator maakt met behulp van Microsoft Azure Maps Web SDK.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b5ce78e95d139cf16b6193fedffc563513b39719
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 830641ae1421b799ab8e7d8b47a1c1a6e38419cf
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408031"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910955"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Zelf studie: een Store-Locator maken met behulp van Azure Maps
 
@@ -43,13 +43,13 @@ Voordat u in de code duikt, is het een goed idee om met een ontwerp te beginnen.
 
 <center>
 
-![draad model van een Store-Locator voor de micro soft-winkel locaties van Contoso koffie,](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+![draad model van een Store Locator-toepassing voor contoso-winkel locaties](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 Om de bruikbaarheid van deze winkelzoeker te maximaliseren, gebruiken we een responsieve lay-out die wordt aangepast wanneer de schermbreedte van een gebruiker kleiner is dan 700 pixels. Een responsieve lay-out maakt het gemakkelijk om de winkelzoeker op een klein scherm te gebruiken, zoals op een mobiel apparaat. Hier volgt een draadmodel van een lay-out voor een klein scherm:  
 
 <center>
 
-![draad model van de contoso-Store-Locator op een mobiel apparaat](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+![draad model van de toepassing contoso Coffee Store Locator op een mobiel apparaat](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
 De draadmodellen tonen een redelijk eenvoudige toepassing. De toepassing heeft een zoekvak, een lijst met winkels in de buurt, een kaart met enkele markeringen (symbolen) en een pop-upvenster met extra informatie wanneer de gebruiker een markering selecteert. Meer specifiek zijn hier de functies die we in deze zelfstudie inbouwen in de winkelzoeker:
 

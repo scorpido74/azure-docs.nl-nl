@@ -1,6 +1,6 @@
 ---
-title: Ondersteuning voor lokalisatie in Azure Maps | Microsoft Docs
-description: Meer informatie over ondersteunde talen voor de services in Azure Maps
+title: Ondersteuning voor lokalisatie | Microsoft Azure kaarten
+description: In dit artikel vindt u informatie over ondersteunde talen voor de services in Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 64197cc85822997926a8011af8cb3b981fa9064d
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 4926cb2bb4cb1aa15b212cc7130e0db995a24ed9
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286422"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910436"
 ---
 # <a name="localization-support-in-azure-maps"></a>Ondersteuning voor lokalisatie in Azure Maps
 
@@ -25,7 +25,7 @@ Azure Maps ondersteunt diverse talen en weer gaven op basis van land/regio. In d
 Azure Maps zijn gelokaliseerd in verschillende talen in de services. De volgende tabel bevat de ondersteunde taal codes voor elke service.  
   
 
-| Id         | Naam                   |  Kaarten | Zoeken | Routing | Weer | Verkeers incidenten | JS-toewijzings beheer |
+| Id         | Name                   |  Kaarten | Search | Routes | Weer | Verkeers incidenten | JS-toewijzings beheer |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | af-ZA      | Afrikaans              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arabisch                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -46,7 +46,7 @@ Azure Maps zijn gelokaliseerd in verschillende talen in de services. De volgende
 | en-AU      | Engels (Australië)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | NL-NZ      | Engels (Nieuw-Zeeland)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-GB      | Engels (Groot-Brittannië) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| en-US      | Engels (Verenigde Staten)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| nl-NL      | Engels (Verenigde Staten)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | et-EE      | Estisch               |       |    ✓   |         |      ✓    |         ✓         |                |
 | fil-PH     | Filipijns               |       |       |         |     ✓    |                   |                |
 | fi-FI      | Fins                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
@@ -64,7 +64,7 @@ Azure Maps zijn gelokaliseerd in verschillende talen in de services. De volgende
 | IT-IT      | Italiaans                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | ja-JP      | Japans               |       |        |         |     ✓    |                   |                |
 | KN-IN      | Kanarees                |       |       |         |     ✓    |                   |                |
-| kk-KZ      | Kazachstaans                 |       |    ✓   |         |     ✓    |                   |                |
+| kk-KZ      | Kazachs                 |       |    ✓   |         |     ✓    |                   |                |
 | ko-KR      | Koreaans                 |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
 | es-419     | Latijns-Amerikaans-Spaans |       |    ✓   |         |         |                   |                |
 | lv-LV      | Lets                |       |    ✓   |         |     ✓    |         ✓         |                |
@@ -72,7 +72,7 @@ Azure Maps zijn gelokaliseerd in verschillende talen in de services. De volgende
 | MK-MK      | Macedonisch             |       |       |         |     ✓    |                   |                |
 | ms-MY      | Maleis (Latijns)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
 | Mr-IN      | Marathi                 |       |       |         |     ✓    |                   |                |
-| nb-NO      | Noors Bokmål       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| nb-NO      | Noors - Bokmål       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | NGT        | Neutrale waarheid-officiële talen voor alle regio's in lokale scripts indien beschikbaar |   ✓     |        |         |       |        |      ✓          |
 | NGT-Latn   | Neutrale waarheid-Latijns exonyms. Latijns script wordt gebruikt indien beschikbaar |   ✓     |        |         |         |                |        ✓         |
 | pl-PL      | Pools                 |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
@@ -148,7 +148,7 @@ Standaard is de weer gave-para meter ingesteld op **Unified**, zelfs als u deze 
 
 De volgende tabel bevat ondersteunde weer gaven.
 
-| Weergave         | Beschrijving                            |  Kaarten | Zoeken | JS-Map Control |
+| Weergeven         | Beschrijving                            |  Kaarten | Search | JS-Map Control |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Verenigde Arabische Emiraten (Arabische weer gave)    |   ✓   |        |     ✓          |
 | AR           | Argentinië (Argentijnse weer gave)           |   ✓   |    ✓   |     ✓          |
@@ -166,5 +166,5 @@ De volgende tabel bevat ondersteunde weer gaven.
 | SA           | Saudi-Arabië (Arabische weer gave)            |   ✓   |        |     ✓          |
 | SY           | Syrië (Arabische weer gave)                   |   ✓   |        |     ✓          |
 | TEZAM           | Jemen (Arabische weer gave)                   |   ✓   |        |     ✓          |
-| Auto         | De kaart gegevens retour neren op basis van het IP-adres van de aanvraag.|   ✓   |    ✓   |     ✓          |
+| Automatisch         | De kaart gegevens retour neren op basis van het IP-adres van de aanvraag.|   ✓   |    ✓   |     ✓          |
 | Gecentraliseerd      | Unified View (overige)                  |   ✓   |   ✓     |     ✓          |

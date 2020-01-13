@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ab3805e39112d4d37635571d8aa43030a1896951
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: aa6d3d61cb2ce0972653f787976a89e3d372ae27
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552437"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912345"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-windows-device"></a>Quick Start: uw eerste IoT Edge-module implementeren op een virtueel Windows-apparaat
 
@@ -29,7 +29,7 @@ In deze snelstart leert u de volgende zaken:
 
 ![Diagram - Snelstartarchitectuur voor apparaat en cloud](./media/quickstart/install-edge-full.png)
 
-In deze Snelstartgids leert u hoe u een virtuele Windows-machine maakt en deze configureert als een IoT Edge apparaat. Vervolgens implementeert u een module vanuit Azure Portal op uw apparaat. De module die u in deze snelstart implementeert, is een gesimuleerde sensor waarmee temperatuur-, luchtvochtigheids- en drukgegevens worden gegenereerd. De andere Azure IoT Edge-zelfstudies zijn een uitbreiding op het werk dat u hier doet. Hierin worden modules geïmplementeerd waarmee de gesimuleerde gegevens worden geanalyseerd voor zakelijke inzichten.
+In deze Snelstartgids leert u hoe u een virtuele Windows-machine maakt en deze configureert als een IoT Edge apparaat. Vervolgens implementeert u een module vanuit Azure Portal op uw apparaat. De module die u in deze zelfstudie implementeert, is een gesimuleerde sensor waarmee temperatuur-, luchtvochtigheids- en drukgegevens worden gegenereerd. De andere Azure IoT Edge-zelfstudies zijn een uitbreiding op het werk dat u hier doet. Hierin worden modules geïmplementeerd waarmee de gesimuleerde gegevens worden geanalyseerd voor zakelijke inzichten.
 
 Als u nog geen actief abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free) aan voordat u begint.
 
@@ -227,7 +227,7 @@ iotedge logs SimulatedTemperatureSensor -f
 
    ![De gegevens van uw module bekijken](./media/quickstart/iotedge-logs.png)
 
-U kunt de berichten ook zien binnenkomen bij uw IoT Hub door de [Azure IoT Hub Toolkit-extensie voor Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (voorheen Azure IoT Toolkit-extensie) te gebruiken.
+U kunt ook de berichten bekijken die binnenkomen op uw IoT-hub met behulp van de [Azure IOT hub-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 3fe4dfae2e86d549056805e87c0fd3927697fe24
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 668087ae596688e86b7b84a16bc5c0fd0f9fcef6
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890570"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912253"
 ---
 # <a name="create-an-iot-hub-using-the-azure-iot-tools-for-visual-studio-code"></a>Een IoT-hub maken met de Azure IoT-Hulpprogram Ma's voor Visual Studio code
 
@@ -32,13 +32,13 @@ U hebt het volgende nodig om dit artikel te volt ooien:
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
-1. Open in Visual Studio code de weer gave **Explorer** .
+1. Open in Visual Studio Code, de **Explorer** weergeven.
 
-2. Vouw de sectie **Azure IOT Hub-apparaten** aan de onderkant van de Explorer uit. 
+2. Vouw aan de onderkant van de Verkenner van de **Azure IoT Hub-apparaten** sectie. 
 
    ![Azure IoT Hub-apparaten uitvouwen](./media/iot-hub-create-use-iot-toolkit/azure-iot-hub-devices.png)
 
-3. Klik op de sectie **..** . in de koptekst van de **Azure IOT Hub-apparaten** . Als u het weglatings teken niet ziet, beweegt u de muis aanwijzer over de koptekst. 
+3. Klik op de **...**  in de **Azure IoT Hub-apparaten** sectiekop. Als u het beletselteken niet ziet, Beweeg de muisaanwijzer over de header. 
 
 4. Kies **IOT hub maken**.
 
@@ -64,4 +64,4 @@ Nu hebt u een IoT-hub geïmplementeerd met de Azure IoT-Hulpprogram Ma's voor Vi
 
 * [Gebruik de Azure IoT-Hulpprogram Ma's voor Visual Studio code voor Azure IoT Hub Apparaatbeheer](iot-hub-device-management-iot-toolkit.md)
 
-* [Zie de pagina met de Azure IOT hub Toolkit-wiki](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki).
+* [Zie de pagina Azure IOT hub for VS code wiki](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki).

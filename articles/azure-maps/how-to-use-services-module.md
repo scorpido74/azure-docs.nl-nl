@@ -1,6 +1,6 @@
 ---
-title: De Services-module gebruiken-Azure Maps | Microsoft Docs
-description: Meer informatie over het gebruik van de Azure Maps Services-module.
+title: De Azure Maps Services-module gebruiken | Microsoft Azure kaarten
+description: In dit artikel wordt beschreven hoe u met behulp van de Azure Maps Services-module de Microsoft Azure Maps REST-services kunt gebruiken.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 24777c0b14bc6bb16a5f9c5c8213a9f3d524833e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6bfbbb38d164dcb179541084de3ffeb89f44668d
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408667"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911319"
 ---
 # <a name="use-the-azure-maps-services-module"></a>De Azure Maps Services-module gebruiken
 

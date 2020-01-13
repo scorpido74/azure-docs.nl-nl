@@ -1,6 +1,6 @@
 ---
-title: Aan de slag met het besturings element Android map in Azure Maps | Microsoft Docs
-description: Het Android-kaart besturings element in Azure Maps.
+title: Aan de slag met het besturings element Android map | Microsoft Azure kaarten
+description: In dit artikel leert u hoe u aan de slag gaat met het besturings element Android map met behulp van de Microsoft Azure Mapss Android SDK.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cb79b24a37758307657c1245622fa980123cc5c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb9dc16eabbd6065e05d26258c1421aa7a46dbd7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432920"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911400"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Aan de slag met Azure Maps Android SDK
 
@@ -43,7 +43,7 @@ Maak eerst een nieuw project met een lege activiteit. Voer de volgende stappen u
 
 Raadpleeg de [Android Studio-documentatie](https://developer.android.com/studio/intro/) voor meer informatie over het installeren van Android Studio en het maken van een nieuw project.
 
-![Een project maken](./media/how-to-use-android-map-control-library/form-factor-android.png)
+![Een project maken in Android Studio ](./media/how-to-use-android-map-control-library/form-factor-android.png)
 
 ## <a name="set-up-a-virtual-device"></a>Een virtueel apparaat instellen
 
@@ -217,7 +217,7 @@ Het duurt een paar seconden Android Studio om de toepassing te bouwen. Nadat de 
 
 <center>
 
-![Android-kaart](./media/how-to-use-android-map-control-library/android-map.png)</center>
+![Azure Maps in Android-toepassing](./media/how-to-use-android-map-control-library/android-map.png)</center>
 
 ## <a name="localizing-the-map"></a>De kaart lokaliseren
 
@@ -263,7 +263,7 @@ Hier volgt een voor beeld van Azure Maps waarbij de taal is ingesteld op ' fr-FR
 
 <center>
 
-![kaart afbeelding met labels in de Franse](./media/how-to-use-android-map-control-library/android-localization.png)
+![Azure Maps, kaart afbeelding met labels in de Franse](./media/how-to-use-android-map-control-library/android-localization.png)
 </center>
 
 Een volledige lijst met ondersteunde talen en regionale weer gaven wordt [hier](supported-languages.md)beschreven.

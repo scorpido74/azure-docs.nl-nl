@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 78b73688306fb51278afba7283a1ea82af603349
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7705ea3b60d8c8e2b189ad555d1b53fa395aa1fb
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459170"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912495"
 ---
 Azure Compute biedt formaten virtuele machines die zijn geïsoleerd voor een specifiek hardwaretype en bedoeld voor een enkele klant.  Deze formaten virtuele machines zijn ideaal voor workloads waarvoor een hoge mate van isolatie van andere klanten vereist is en voor workloads waarbij elementen als naleving en wettelijke vereisten een rol spelen.  Klanten kunnen er ook voor kiezen om de resources van deze geïsoleerde virtuele machines verder te onderverdelen met behulp [van Azure-ondersteuning voor geneste virtuele machines](https://azure.microsoft.com/blog/nested-virtualization-in-azure/).
 
@@ -30,7 +30,7 @@ Het gebruik van een geïsoleerde grootte garandeert dat uw virtuele machine de e
 [Hier](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)vindt u meer informatie over elke beschik bare, geïsoleerde grootte.
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>D15_v2/DS15_v2-isolatie buiten gebruik stellen op 15 februari 2020
-De speciale Azure-host is nu GA, waarmee u de virtuele Linux-en Windows-machines van uw organisatie kunt uitvoeren op fysieke servers met één Tenant. We zijn van plan om geïsoleerde Azure-Vm's volledig te vervangen door de toegewezen Azure-host. Na **15 februari 2020** zijn de Azure-vm's van D15_v2/DS15_v2 mogelijk niet langer hardware geïsoleerd.
+De speciale Azure-host is nu GA, waarmee u de virtuele Linux-en Windows-machines van uw organisatie kunt uitvoeren op fysieke servers met één Tenant. We zijn van plan om geïsoleerde Azure-Vm's volledig te vervangen door de toegewezen Azure-host. Na **15 februari 2020** zijn de Azure-vm's van D15_v2/DS15_v2 niet langer hardware geïsoleerd.
 
 ## <a name="how-does-this-affect-me"></a>Wat betekent dit voor mij?
 Na 15 februari 2020 worden er geen isolatie garanties meer geboden voor uw D15_v2/DS15_v2 Azure virtual machines. 

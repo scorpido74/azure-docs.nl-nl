@@ -1,6 +1,6 @@
 ---
-title: 'Snelstartgids: interactieve kaarten zoeken met Azure Maps'
-description: 'Azure-quickstart: Een demo maken voor interactief zoeken in kaarten met Azure Maps'
+title: 'Snelstartgids: interactieve kaarten zoeken met Azure Maps | Microsoft Azure kaarten'
+description: Meer informatie over het maken van een demo-webtoepassing voor het zoeken in interactieve mappen met behulp van Microsoft Azure Maps Web SDK.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7553499dc9aba8d20bee126204b6d19f2386d295
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5f11fa4fce38b125e21564b4cfbe4582e55a7b64
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408436"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910683"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Snelstartgids: een interactieve Zoek toewijzing maken met behulp van Azure Maps
 
@@ -57,7 +57,7 @@ Als het Azure Kaarten-account is gemaakt, haalt u de sleutel op waarmee u query'
 2. Selecteer in de sectie instellingen de optie **verificatie**.
 3. Kopieer de **Primaire Sleutel** naar het Klembord. Sla de sleutel lokaal op voor gebruik verderop in deze zelfstudie.
 
-![Primaire sleutel in de portal ophalen](./media/quick-demo-map-app/get-key.png)
+![Azure Maps sleutel voor primaire sleutel in Azure Portal ophalen](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>De toepassing downloaden
 
@@ -73,7 +73,7 @@ Als het Azure Kaarten-account is gemaakt, haalt u de sleutel op waarmee u query'
 4. Probeer de interactieve zoekervaring uit. Zoek in het zoekvak linksboven in de demo-webtoepassing naar **restaurants**.
 5. Beweeg de muis over de lijst met adressen en locaties die worden weergegeven onder het zoekvak. U ziet hoe bij de bijbehorende speld op de kaart een pop-upvenster met informatie over die locatie wordt weergegeven. Ten behoeve van de privacy van particuliere bedrijven worden er fictieve namen en adressen weergegeven.
 
-    ![Webtoepassing voor interactief zoeken](./media/quick-demo-map-app/interactive-search.png)
+    ![Interactieve map zoeken webtoepassing](./media/quick-demo-map-app/interactive-search.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
