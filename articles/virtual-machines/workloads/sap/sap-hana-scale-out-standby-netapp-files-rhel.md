@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/18/2019
+ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: 059937cc390a15c986724b3107a7f64fb789fc92
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 975f4940590bfbdab559122c68488c51c65d868e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480279"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896306"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Een SAP HANA scale-out systeem met stand-by-knoop punt op virtuele Azure-machines implementeren met behulp van Azure NetApp Files op Red Hat Enterprise Linux 
 
@@ -435,7 +435,11 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
     mount 10.9.0.4:/HN1-shared /mnt/tmp
     umount  /mnt/tmp
     echo "Y" > /sys/module/nfs/parameters/nfs4_disable_idmapping
-    </code></pre>`
+    # Make the configuration permanent
+    echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
+    </code></pre>
+
+   Zie https://access.redhat.com/solutions/1749883 voor meer informatie over het wijzigen van `nfs4_disable_idmapping` para meters.
 
 6. **[A]** Hiermee koppelt u de gedeelde Azure NetApp files volumes.  
 
@@ -569,14 +573,14 @@ In dit voor beeld voor de implementatie van SAP HANA in scale-out configuratie m
      * Voor **Selecteer systeem gebruik/Voer index [4]** : Voer **4** in (voor aangepast)
      * Voor **locatie van gegevens volumes** [/Hana/data/HN1]: druk op ENTER om de standaard instelling te accepteren
      * Voor de **locatie van de logboek volumes** [/Hana/log/HN1]: druk op ENTER om de standaard instelling te accepteren
-     * Voor **maximale geheugen toewijzing beperken?** [n]\: Voer **n** in
+     * Voor **maximale geheugen toewijzing beperken?** [n]: Voer **n** in
      * Voor de naam van het **certificaat voor host hanadb1** [hanadb1]: druk op ENTER om de standaard waarde te accepteren
      * Voor de naam van het **certificaat voor host hanadb2** [hanadb2]: druk op ENTER om de standaard waarde te accepteren
      * Voor de naam van het **certificaat voor host hanadb3** [hanadb3]: druk op ENTER om de standaard waarde te accepteren
      * Voor het **wacht woord van de systeem beheerder (hn1adm)** : Voer het wacht woord in
      * Voor **systeem database gebruikers (systeem) wacht woord**: Voer het systeem wachtwoord in
      * Voor het bevestigen van het **wacht woord van de systeem database gebruiker (systeem)** : Voer het systeem wachtwoord in
-     * **Systeem opnieuw opstarten na** het opnieuw opstarten van de computer? [n]\: Voer **n** in 
+     * **Systeem opnieuw opstarten na** het opnieuw opstarten van de computer? [n]: Voer **n** in 
      * Voor wilt **u door gaan (j/n)** : de samen vatting valideren en als alles goed lijkt, voert u **y** in
 
 

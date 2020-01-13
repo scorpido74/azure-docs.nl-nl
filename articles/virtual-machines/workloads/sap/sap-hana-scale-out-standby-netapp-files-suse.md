@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: 49e7fd49e000a3d4475c60a0c58cf6a2c7455fa5
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 243bbd431b7332d06a4e14581aa5c02bae2b7cba
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531419"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896277"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Een SAP HANA scale-out systeem met stand-by-knoop punt op virtuele Azure-machines implementeren met behulp van Azure NetApp Files op SUSE Linux Enterprise Server 
 
@@ -150,7 +150,7 @@ Bij de volgende instructies wordt ervan uitgegaan dat u uw [virtuele Azure-netwe
    
    In dit voor beeld hebben we een afzonderlijke Azure NetApp Files-volume gebruikt voor elk HANA-gegevens-en logboek volume. Voor een kosten geoptimaliseerde configuratie op kleinere of niet-productieve systemen is het mogelijk om alle gegevens koppelingen en alle logboeken te koppelen aan één volume.  
 
-### <a name="important-considerations"></a>Belang rijke overwegingen
+### <a name="important-considerations"></a>Belangrijke overwegingen
 
 Houd bij het maken van uw Azure NetApp Files voor SAP NetWeaver op SUSE-architectuur met hoge Beschik baarheid rekening met de volgende belang rijke overwegingen:
 
@@ -429,7 +429,9 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
     mount 10.23.1.4:/HN1-shared /mnt/tmp
     umount  /mnt/tmp
     echo "Y" > /sys/module/nfs/parameters/nfs4_disable_idmapping
-    </code></pre>`
+    # Make the configuration permanent
+    echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
+    </code></pre>
 
 5. **[A]** maak de SAP Hana groep en de gebruiker hand matig. De Id's voor de groep sapsys en de gebruiker **HN1**adm moeten worden ingesteld op dezelfde id's die tijdens het voorbereiden worden opgegeven. (In dit voor beeld zijn de Id's ingesteld op **1001**.) Als de Id's niet juist zijn ingesteld, hebt u geen toegang tot de volumes. De Id's voor de groeps-sapsys en gebruikers accounts **HN1**adm en sapadm moeten op alle virtuele machines hetzelfde zijn.  
 
@@ -508,7 +510,7 @@ Configureer en bereid uw besturings systeem uit door de volgende stappen uit te 
      Flags: rw,noatime,vers=<b>4.1</b>,rsize=262144,wsize=262144,namlen=255,hard,proto=tcp,timeo=600,retrans=2,sec=sys,clientaddr=10.23.2.4,local_lock=none,addr=10.23.1.4
     </code></pre>
 
-## <a name="installation"></a>Installatie  
+## <a name="installation"></a>Installeren  
 
 In dit voor beeld voor de implementatie van SAP HANA in scale-out configuratie met een stand-by-knoop punt met Azure, hebben we HANA 2,0 SP4 gebruikt.  
 

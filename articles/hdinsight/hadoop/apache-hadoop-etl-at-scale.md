@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: ashishth
-ms.openlocfilehash: d19640d19c3b7fa611f5bfe0e4fd0868924650c5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ceafee2d3356d37e74039789c8243ace41c141b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066927"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435776"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>(ETL) uitpakken, transformeren en laden op schaal
 
@@ -51,11 +51,11 @@ Raadpleeg de [documentatie](../../data-factory/introduction.md)voor meer informa
 
 ## <a name="ingest-file-storage-and-result-storage"></a>Bestands opslag en resultaat opslag opnemen
 
-Brongegevens bestanden worden meestal geladen op een locatie in Azure Storage of Azure Data Lake Storage. Bestanden kunnen een wille keurige indeling hebben, maar meestal zijn platte bestanden zoals Csv's. 
+Brongegevens bestanden worden meestal geladen op een locatie in Azure Storage of Azure Data Lake Storage. Bestanden kunnen een wille keurige indeling hebben, maar meestal zijn platte bestanden zoals Csv's.
 
-### <a name="azure-storage"></a>Azure Storage 
+### <a name="azure-storage"></a>Azure Storage
 
-[Azure Storage](https://azure.microsoft.com/services/storage/blobs/) heeft [specifieke schaalbaarheids doelen](../../storage/common/storage-scalability-targets.md).  Voor de meeste analytische knoop punten wordt Azure Storage het beste geschaald wanneer er veel kleinere bestanden worden verwerkt.  Azure Storage garandeert dezelfde prestaties, ongeacht het aantal bestanden of de grootte van de bestanden (op voor waarde dat u zich binnen uw limieten bevindt).  Dit betekent dat u terabytes aan gegevens kunt opslaan en toch consistente prestaties krijgt, of u nu een subset van de gegevens of alle gegevens gebruikt.
+[Azure Storage](https://azure.microsoft.com/services/storage/blobs/) heeft specifieke schaalbaarheids doelen. Zie [schaalbaarheids-en prestatie doelen voor Blob Storage](../../storage/blobs/scalability-targets.md)voor meer informatie. Voor de meeste analytische knoop punten wordt Azure Storage het beste geschaald wanneer er veel kleinere bestanden worden verwerkt.  Azure Storage garandeert dezelfde prestaties, ongeacht het aantal bestanden of de grootte van de bestanden (op voor waarde dat u zich binnen uw limieten bevindt).  Dit betekent dat u terabytes aan gegevens kunt opslaan en toch consistente prestaties krijgt, of u nu een subset van de gegevens of alle gegevens gebruikt.
 
 Azure Storage heeft verschillende typen blobs.  Een *toevoeg-BLOB* is een uitstekende optie om Weblogboeken of sensor gegevens op te slaan.  
 
@@ -77,7 +77,7 @@ ADLS is ook geoptimaliseerd voor gebeurtenis opname met behulp van Azure Event h
 
 Voor het uploaden van gegevens sets in het terabyte-bereik kan de netwerk latentie een groot probleem zijn, met name als de gegevens afkomstig zijn van een on-premises locatie.  In dergelijke gevallen kunt u de onderstaande opties gebruiken:
 
-* Azure ExpressRoute:  Met Azure ExpressRoute kunt u particuliere verbindingen maken tussen Azure-data centers en uw on-premises infra structuur. Deze verbindingen bieden een betrouw bare optie voor het overbrengen van grote hoeveel heden gegevens. Zie de [documentatie van Azure ExpressRoute](../../expressroute/expressroute-introduction.md)voor meer informatie.
+* Azure ExpressRoute: met Azure ExpressRoute kunt u particuliere verbindingen maken tussen Azure-data centers en uw on-premises infra structuur. Deze verbindingen bieden een betrouw bare optie voor het overbrengen van grote hoeveel heden gegevens. Zie de [documentatie van Azure ExpressRoute](../../expressroute/expressroute-introduction.md)voor meer informatie.
 
 * ' Offline ' uploaden van gegevens. U kunt de [Azure import/export-service](../../storage/common/storage-import-export-service.md) gebruiken om harde schijven met uw gegevens naar een Azure-Data Center te verzenden. Uw gegevens worden eerst geüpload naar Azure Storage blobs. U kunt vervolgens [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) of het hulp programma [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) gebruiken om gegevens van Azure Storage blobs naar Data Lake Storage te kopiëren.
 

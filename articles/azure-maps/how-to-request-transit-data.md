@@ -1,6 +1,6 @@
 ---
-title: Tussenliggende gegevens aanvragen in Azure Maps | Microsoft Docs
-description: Open bare doorvoer gegevens aanvragen met behulp van de Azure Maps Mobility-service.
+title: Tussenliggende gegevens aanvragen | Microsoft Azure kaarten
+description: In dit artikel leert u hoe u gegevens van open bare door Voer kunt aanvragen met behulp van de Microsoft Azure Maps Mobility service.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/06/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 47952421c50979a014507c81ef5bc3217df7d860
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: d9fac909dbb264dea65447a086b78e8a53acefae
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432936"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911425"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>Open bare doorvoer gegevens aanvragen met behulp van de Azure Maps Mobility-service 
 
