@@ -2,13 +2,14 @@
 title: Algemene vragen over de Azure Site Recovery-service
 description: In dit artikel worden populaire algemene vragen over Azure Site Recovery beschreven.
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: f64b885e82d2f790d7d146e16bb6ccb44e207465
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 1/10/2020
+ms.author: raynew
+ms.openlocfilehash: 44abe9eafa9aef9e027778470d3f0483f99b0d32
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497532"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863560"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Algemene vragen over Azure Site Recovery
 
@@ -101,7 +102,8 @@ Ja. Wanneer u een Site Recovery kluis maakt in een regio, zorgen we ervoor dat a
 ### <a name="does-site-recovery-encrypt-replication"></a>Wordt replicatie met Site Recovery versleuteld?
 Voor virtuele machines en fysieke servers moet replicatie tussen on-premises sites worden gerepliceerd-in-transit wordt ondersteund. Voor virtuele machines en fysieke servers die worden gerepliceerd naar Azure, wordt zowel versleuteling als door Voer [(in Azure)](https://docs.microsoft.com/azure/storage/storage-service-encryption) ondersteund.
 
-
+### <a name="how-can-i-enforce-tls-12-on-all-on-premises-azure-site-recovery-components"></a>Hoe kan ik TLS 1,2 afdwingen op alle on-premises Azure Site Recovery onderdelen?
+Mobility-agents die zijn geïnstalleerd op de gerepliceerde items communiceren alleen met de proces server op TLS 1,2. Communicatie van configuratie server naar Azure en van proces server naar Azure kan echter worden uitgevoerd op TLS 1,1 of 1,0. Volg de [richt lijnen](https://support.microsoft.com/en-us/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi) voor het afdwingen van TLS 1,2 op alle configuratie servers en proces servers die door u zijn ingesteld.
 
 
 ## <a name="disaster-recovery"></a>Herstel na noodgeval

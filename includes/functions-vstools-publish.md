@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: b96586c801acfc0419b80fa725a468dcb896f79e
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 327a7689e0297002f1ce3f48d2bd367104277680
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70197122"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769694"
 ---
 1. Klik in **Solution Explorer** met de rechtermuisknop op het project en selecteer **Publiceren**.
 
@@ -21,7 +21,7 @@ ms.locfileid: "70197122"
 
     ![Kies een publicatiedoel](./media/functions-vstools-publish/functions-visual-studio-publish-profile.png)
 
-    | Optie      | Description                                |
+    | Optie      | Beschrijving                                |
     | ------------ |  -------------------------------------------------- |
     | **Azure Functions verbruiks abonnement** |   Wanneer u uw project publiceert naar een functie-app die wordt uitgevoerd in een [verbruiks abonnement](../articles/azure-functions/functions-scale.md#consumption-plan), betaalt u alleen voor uitvoeringen van uw functions-app. Andere hosting abonnementen nemen hogere kosten in bestaan. Zie [Azure functions schalen en hosten](../articles/azure-functions/functions-scale.md)voor meer informatie. | 
     | **Nieuwe maken** | Er wordt een nieuwe functie-app met gerelateerde resources gemaakt in Azure. Als u **Bestaande selecteren** kiest, worden alle bestanden in de bestaande functie-app in Azure overschreven door bestanden uit het lokale project. Gebruik deze optie alleen als u updates opnieuw publiceert naar een bestaande functie-app. |
@@ -30,13 +30,13 @@ ms.locfileid: "70197122"
 
 3. Selecteer **Publiceren**. Als u zich nog niet hebt aangemeld bij uw Azure-account vanuit Visual Studio, selecteert u **Aanmelden**. U kunt ook een gratis Azure-account maken.
 
-4. In de **app service: Maak een** nieuw dialoog venster en gebruik de **Hosting** -instellingen zoals opgegeven in de tabel onder de afbeelding:
+4. In het dialoog venster **Azure app service: nieuwe maken** gebruikt u de **Hosting** -instellingen zoals opgegeven in de tabel onder de afbeelding:
 
-    ![Het dialoogvenster App Service maken](./media/functions-vstools-publish/functions-visual-studio-publish.png)
+    ![Het dialoogvenster Create App Service](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 
-    | Instelling      | Voorgestelde waarde  | Description                                |
+    | Instelling      | Voorgestelde waarde  | Beschrijving                                |
     | ------------ |  ------- | -------------------------------------------------- |
-    | **Name** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app uniek wordt aangeduid. Geldige tekens zijn `a-z`, `0-9` en `-`. |
+    | **Naam** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app uniek wordt aangeduid. Geldige tekens zijn `a-z`, `0-9` en `-`. |
     | **Abonnement** | Kies uw abonnement | Het te gebruiken Azure-abonnement. |
     | **[Resourcegroep](../articles/azure-resource-manager/resource-group-overview.md)** | myResourceGroup |  Naam van de resourcegroep waarin uw functie-app moet worden gemaakt. Kies **Nieuw** om een nieuwe resourcegroep te maken.|
     | **[Hosting plan](../articles/azure-functions/functions-scale.md)** | Verbruiksabonnement | Zorg ervoor dat u het **verbruik** kiest onder **grootte** nadat u **Nieuw** hebt geselecteerd om een serverloos plan te maken. Kies ook een **Locatie** in een [regio](https://azure.microsoft.com/regions/) bij u in de buurt of in de buurt van andere services die door uw functies worden gebruikt. Wanneer u in een abonnement van een ander type dan **Verbruik** werkt, moet u de [schaal van uw functie-app](../articles/azure-functions/functions-scale.md) beheren.  |

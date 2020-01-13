@@ -4,12 +4,12 @@ ms.service: app-service
 ms.topic: include
 ms.date: 08/12/2019
 ms.author: cephalin
-ms.openlocfilehash: 4f3236c0a167a2b6f7586c6cb5fea8e30f55a86c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 92e39f128e90ba83a919388e217f0edc86f81770
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954057"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75769660"
 ---
 ## <a name="rest"></a>ZIP-bestand implementeren met REST-Api's 
 
@@ -19,13 +19,13 @@ Voor de HTTP-basis verificatie hebt u uw App Service implementatie referenties n
 
 ### <a name="with-curl"></a>Met krul
 
-In het volgende voor beeld wordt het gereedschap krul gebruikt voor het implementeren van een zip-bestand. `<username>`Vervang de tijdelijke aanduidingen `<password>` `<zip_file_path>`,, en `<app_name>`. Wanneer u wordt gevraagd door krul, typt u het wacht woord.
+In het volgende voor beeld wordt het gereedschap krul gebruikt voor het implementeren van een zip-bestand. Vervang de tijdelijke aanduidingen `<deployment_user>`, `<zip_file_path>`en `<app_name>`. Wanneer u wordt gevraagd door krul, typt u het wacht woord.
 
 ```bash
 curl -X POST -u <deployment_user> --data-binary @"<zip_file_path>" https://<app_name>.scm.azurewebsites.net/api/zipdeploy
 ```
 
-Met deze aanvraag wordt push implementatie geactiveerd vanuit het geüploade zip-bestand. U kunt de huidige en eerdere implementaties controleren met behulp `https://<app_name>.scm.azurewebsites.net/api/deployments` van het eind punt, zoals wordt weer gegeven in het volgende krul-voor beeld. Vervang `<app_name>` opnieuw door de naam van uw app en `<deployment_user>` met de gebruikers naam van uw implementatie referenties.
+Met deze aanvraag wordt push implementatie geactiveerd vanuit het geüploade zip-bestand. U kunt de huidige en eerdere implementaties controleren met behulp van het `https://<app_name>.scm.azurewebsites.net/api/deployments`-eind punt, zoals wordt weer gegeven in het volgende krul-voor beeld. Vervang opnieuw `<app_name>` door de naam van uw app en `<deployment_user>` met de gebruikers naam van uw implementatie referenties.
 
 ```bash
 curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deployments
@@ -33,7 +33,7 @@ curl -u <deployment_user> https://<app_name>.scm.azurewebsites.net/api/deploymen
 
 ### <a name="with-powershell"></a>Met PowerShell
 
-In het volgende voor beeld wordt het zip-bestand geüpload [-AzWebapp](/powershell/module/az.websites/publish-azwebapp) . Vervang de tijdelijke `<group-name>`aanduidingen `<app-name>`, en `<zip-file-path>`.
+In het volgende voor beeld wordt het zip-bestand geüpload [-AzWebapp](/powershell/module/az.websites/publish-azwebapp) . Vervang de tijdelijke aanduidingen `<group-name>`, `<app-name>`en `<zip-file-path>`.
 
 ```powershell
 Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <zip-file-path>
@@ -41,7 +41,7 @@ Publish-AzWebapp -ResourceGroupName <group-name> -Name <app-name> -ArchivePath <
 
 Met deze aanvraag wordt push implementatie geactiveerd vanuit het geüploade zip-bestand. 
 
-Voer de volgende opdrachten uit om de huidige en eerdere implementaties te bekijken. Vervang opnieuw de `<deployment-user>`tijdelijke aanduidingen, `<app-name>` `<deployment-password>`, en.
+Voer de volgende opdrachten uit om de huidige en eerdere implementaties te bekijken. Vervang opnieuw de `<deployment-user>`, `<deployment-password>`en `<app-name>` tijdelijke aanduidingen.
 
 ```bash
 $username = "<deployment-user>"

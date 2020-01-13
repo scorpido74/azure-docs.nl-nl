@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: fe0eb6c2305dd01d8ff3df5be7056cbeae92fff2
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 98c76b2be6a5cc801f9e7b31357cbeb158a966fe
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74762714"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75771288"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Nuttige bronnen voor het werken met Azure Sentinel
 
@@ -32,7 +32,7 @@ Azure Logic Apps-connectors: <https://docs.microsoft.com/connectors/>
 
 
 ## <a name="auditing-and-reporting"></a>Controle en rapportage
-Audit logboeken van Azure Sentinel worden onderhouden in [Azure-activiteiten logboeken](../azure-monitor/platform/activity-logs-overview.md).
+Audit logboeken van Azure Sentinel worden onderhouden in [Azure-activiteiten logboeken](../azure-monitor/platform/platform-logs-overview.md).
 
 De volgende ondersteunde bewerkingen kunnen worden gecontroleerd.
 
@@ -40,12 +40,10 @@ De volgende ondersteunde bewerkingen kunnen worden gecontroleerd.
 |----|----|
 |Werkmap maken of bijwerken  |Micro soft. Insights/werkmappen|
 |Werkmap verwijderen    |Micro soft. Insights/werkmappen|
-|Werk stroom instellen   |Micro soft. Logic/werk stromen|
-|Werk stroom verwijderen    |Micro soft. Logic/werk stromen|
+|Werk stroom instellen   |Microsoft.Logic/workflows|
+|Werk stroom verwijderen    |Microsoft.Logic/workflows|
 |Opgeslagen zoek opdracht maken    |Micro soft. OperationalInsights/werk ruimten/savedSearches|
 |Opgeslagen zoek opdracht verwijderen    |Micro soft. OperationalInsights/werk ruimten/savedSearches|
-|Dash board instellen  |Micro soft. Portal/Dash boards|
-|Dash board verwijderen   |Micro soft. Portal/Dash boards|
 |Waarschuwings regels bijwerken |Micro soft. SecurityInsights/alertRules|
 |Waarschuwings regels verwijderen |Micro soft. SecurityInsights/alertRules|
 |Reactie acties van waarschuwings regel bijwerken |Micro soft. SecurityInsights/alertRules|
@@ -57,7 +55,7 @@ De volgende ondersteunde bewerkingen kunnen worden gecontroleerd.
 |Case-opmerkingen maken   |Micro soft. SecurityInsights/cases|
 |Gegevens connectors bijwerken |Micro soft. SecurityInsights/dataConnectors|
 |Gegevens connectors verwijderen |Micro soft. SecurityInsights/dataConnectors|
-|Update-instellingen    |Micro soft. SecurityInsights/Settings|
+|Instellingen bijwerken    |Micro soft. SecurityInsights/Settings|
 
 ### <a name="view-audit-and-reporting-data-in-azure-sentinel"></a>Audit-en rapportage gegevens weer geven in azure Sentinel
 
