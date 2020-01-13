@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 61a8cf366d5ae03f5267718f8ab20580295ddab5
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 473f1d12188a8686748d19c8c35d4421f9477ae9
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903442"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912797"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Bedrijfs kritieke blobgegevens opslaan met onveranderlijke opslag
 
@@ -80,7 +80,7 @@ Alleen op tijd gebaseerd Bewaar beleid heeft een `allowProtectedAppendWrites` in
 
 Omdat deze instelling deel uitmaakt van een Bewaar beleid op basis van tijd, blijven de toevoeg-blobs nog steeds in de onveranderbare status voor de duur van de *daad werkelijke* Bewaar periode. Omdat er nieuwe gegevens kunnen worden toegevoegd na het maken van de toevoeg-blob, is er een enigszins verschil in de manier waarop de Bewaar periode wordt bepaald. De doel matige Bewaar periode is het verschil tussen de **laatste wijzigings tijd** van de BLOB en de door de gebruiker opgegeven Bewaar periode. Op dezelfde manier als het Bewaar interval uitgebreid is, gebruikt onveranderbare opslag de meest recente waarde van de door de gebruiker opgegeven Bewaar termijn om de ingangs periode te berekenen.
 
-Stel bijvoorbeeld dat een gebruiker een Bewaar beleid op basis van tijd maakt met `allowProtectedAppendWrites` ingeschakeld en een Bewaar interval van 90 dagen. Een toevoeg-blob, _logblob1_, wordt vandaag gemaakt in de container. nieuwe logboeken worden nog steeds toegevoegd aan de toevoeg-BLOB voor de volgende 10 dagen. de daad werkelijke Bewaar periode voor de _logblob1_ is dus 100 dagen vanaf vandaag (de tijd van de laatste wijziging/toevoeging).
+Stel bijvoorbeeld dat een gebruiker een Bewaar beleid op basis van tijd maakt met `allowProtectedAppendWrites` ingeschakeld en een Bewaar interval van 90 dagen. Een toevoeg-blob, _logblob1_, wordt vandaag gemaakt in de container. nieuwe logboeken worden nog steeds toegevoegd aan de toevoeg-BLOB voor de volgende 10 dagen. de meest efficiënte Bewaar periode voor de _logblob1_ is dus 100 dagen vanaf vandaag (de tijd van de laatste append + 90 dagen).
 
 Met een niet-vergrendeld op tijd gebaseerd Bewaar beleid kunt u de `allowProtectedAppendWrites` instelling op elk gewenst moment inschakelen en uitschakelen. Wanneer het Bewaar beleid op basis van tijd is vergrendeld, kan de instelling van de `allowProtectedAppendWrites` niet worden gewijzigd.
 

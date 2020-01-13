@@ -8,83 +8,83 @@ ms.topic: include
 ms.date: 01/10/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 165a115f35810c1bfe463a571affb2e44ed74205
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a799339f2780c2bc372c39120a6e20b34d907326
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893693"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912756"
 ---
 ### <a name="portal"></a>Portal
 
-Door door de klant beheerde sleutels voor uw schijven in te stellen, moet u resources in een bepaalde volg orde maken, als u deze voor de eerste keer uitvoert. Eerst moet u een Azure Key Vault maken en instellen.
+Setting up customer-managed keys for your disks will require you to create resources in a particular order, if you're doing it for the first time. First, you will need to create and set up an Azure Key Vault.
 
-#### <a name="setting-up-your-azure-key-vault"></a>Uw Azure Key Vault instellen
+#### <a name="setting-up-your-azure-key-vault"></a>Setting up your Azure Key Vault
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) en zoek naar Key Vault
-1. Zoek en selecteer **sleutel kluizen**.
+1. Sign into the [Azure portal](https://portal.azure.com/) and search for Key Vault
+1. Search for and select **Key Vaults**.
 
-![SSE-Key-Vault-Portal-Search. png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)
+    [ ![sse-key-vault-portal-search.png](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search.png)](media/virtual-machines-disk-encryption-portal/sse-key-vault-portal-search-expanded.png#lightbox)
 
-> [!IMPORTANT]
-> De Azure-sleutel kluis, de schijf versleutelings, de virtuele machine, de schijven en moment opnamen moeten allemaal in dezelfde regio en hetzelfde abonnement staan om te kunnen worden geïmplementeerd.
+    > [!IMPORTANT]
+    > Your Azure key vault, disk encryption set, VM, disks, and snapshots must all be in the same region and subscription for deployment to succeed.
 
-1. Selecteer **+ toevoegen** om een nieuw Key Vault te maken.
+1. Select **+Add** to create a new Key Vault.
 1. Een nieuwe resourcegroep maken
-1. Voer een naam voor de sleutel kluis in, selecteer een regio en selecteer een prijs categorie.
-1. Selecteer **controleren + maken**, Controleer uw keuzes en selecteer vervolgens **maken**.
+1. Enter a key vault name, select a region, and select a pricing tier.
+1. Select **Review + Create**, verify your choices, then select **Create**.
 
-![SSE-Create-a-key-Vault. png](media/virtual-machines-disk-encryption-portal/sse-create-a-key-vault.png)
+    ![sse-create-a-key-vault.png](media/virtual-machines-disk-encryption-portal/sse-create-a-key-vault.png)
 
-1. Als uw sleutel kluis is geïmplementeerd, selecteert u deze.
-1. Selecteer **sleutels** onder **instellingen**.
-1. Selecteer **genereren/importeren**
+1. Once your key vault finishes deploying, select it.
+1. Select **Keys** under **Settings**.
+1. Select **Generate/Import**
 
-![SSE-Key-Vault-generate-Settings. png](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
+    ![sse-key-vault-generate-settings.png](media/virtual-machines-disk-encryption-portal/sse-key-vault-generate-settings.png)
 
-1. Zorg dat het **sleutel type** is ingesteld op **RSA** en **RSA-sleutel grootte** ingesteld op **2080**.
-1. Vul de resterende selecties in zoals u wilt en selecteer vervolgens **maken**.
+1. Leave both **Key Type** set to **RSA** and **RSA Key Size** set to **2080**.
+1. Fill in the remaining selections as you like and then select **Create**.
 
-![SSE-Create-a-key-generate. png](media/virtual-machines-disk-encryption-portal/sse-create-a-key-generate.png)
+    ![sse-create-a-key-generate.png](media/virtual-machines-disk-encryption-portal/sse-create-a-key-generate.png)
 
-#### <a name="setting-up-your-disk-encryption-set"></a>Uw schijf versleutelings instellen
+#### <a name="setting-up-your-disk-encryption-set"></a>Setting up your disk encryption set
 
-Als u schijf versleutelings sets wilt maken en configureren, moet u de volgende koppeling gebruiken: https://aka.ms/diskencryptionsets. Het maken van de schijf versleuteling is nog niet beschikbaar in de open bare Azure Portal.
+To create and configure disk encryption sets, you must use the following link: https://aka.ms/diskencryptionsets. Disk encryption set creation is not yet available in the global Azure portal.
 
-1. Open de [koppeling schijf versleutelings sets](https://aka.ms/diskencryptionsets).
-1. Selecteer **+ toevoegen**.
+1. Open the [disk encryption sets link](https://aka.ms/diskencryptionsets).
+1. Select **+Add**.
 
-![SSE-Create-Disk-Encryption-set. png](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
+    ![sse-create-disk-encryption-set.png](media/virtual-machines-disk-encryption-portal/sse-create-disk-encryption-set.png)
 
-1. Selecteer uw resource groep, geef uw versleutelings set een naam en selecteer dezelfde regio als uw sleutel kluis.
-1. Selecteer **sleutel kluis en sleutel**.
-1. Selecteer de sleutel kluis en de sleutel die u eerder hebt gemaakt, evenals de versie.
-1. Druk op **selecteren**.
-1. Selecteer **controleren + maken** en vervolgens **maken**.
+1. Select your resource group, name your encryption set, and select the same region as your key vault.
+1. Select **Key vault and key**.
+1. Select the key vault and key you created previously, as well as the version.
+1. Press **Select**.
+1. Select **Review + Create** and then **Create**.
 
-![SSE-Disk-enc-set-Blade-Key. png](media/virtual-machines-disk-encryption-portal/sse-disk-enc-set-blade-key.png)
+    ![sse-disk-enc-set-blade-key.png](media/virtual-machines-disk-encryption-portal/sse-disk-enc-set-blade-key.png)
 
-1. Open de schijf versleutelings nadat deze is gemaakt en selecteer de waarschuwing die wordt weer gegeven.
+1. Open the disk encryption set once it finishes creating and select the alert that pops up.
 
-![SSE-Disk-enc-alert-fix. png](media/virtual-machines-disk-encryption-portal/sse-disk-enc-alert-fix.png)
+    ![sse-disk-enc-alert-fix.png](media/virtual-machines-disk-encryption-portal/sse-disk-enc-alert-fix.png)
 
-Er worden twee meldingen over de pop-up en geslaagd. Als u dit doet, kunt u de set gebruiken met uw sleutel kluis.
+Two notifications should pop up and succeed. Doing this will allow you to use the disk encryption set with your key vault.
 
-![Disk-enc-notification-success. png](media/virtual-machines-disk-encryption-portal/disk-enc-notification-success.png)
+![disk-enc-notification-success.png](media/virtual-machines-disk-encryption-portal/disk-enc-notification-success.png)
 
 #### <a name="deploy-a-vm"></a>Een virtuele machine implementeren
 
-Nu u de sleutel kluis en de schijf versleutelings hebt gemaakt en ingesteld, kunt u een virtuele machine implementeren met behulp van de versleuteling.
-Het implementatie proces van de VM is vergelijkbaar met het standaard implementatieproces, maar de enige verschillen zijn dat u de virtuele machine in dezelfde regio als uw andere resources moet implementeren en u ervoor kiest om een door de klant beheerde sleutel te gebruiken.
+Now that you've created and set up your key vault and the disk encryption set, you can deploy a VM using the encryption.
+The VM deployment process is similar to the standard deployment process, the only differences are that you need to deploy the VM in the same region as your other resources and you opt to use a customer managed key.
 
-1. Zoek naar **virtual machines** en selecteer **+ toevoegen** om een virtuele machine te maken.
-1. Op het tabblad **basis** selecteert u dezelfde regio als uw schijf versleutelings en Azure Key Vault.
-1. Vul op het tabblad **basis** de andere waarden in zoals u wilt.
+1. Search for **Virtual Machines** and select **+ Add** to create a VM.
+1. On the **Basic** tab, select the same region as your disk encryption set and Azure Key Vault.
+1. Fill in the other values on the **Basic** tab as you like.
 
-![SSE-Create-a-VM-Region. png](media/virtual-machines-disk-encryption-portal/sse-create-a-vm-region.png)
+    ![sse-create-a-vm-region.png](media/virtual-machines-disk-encryption-portal/sse-create-a-vm-region.png)
 
-1. Op het tabblad **schijven** selecteert u **versleuteling in rust met door de klant beheerde sleutel**.
-1. Selecteer de schijf versleuteling die u hebt ingesteld in de vervolg keuzelijst **schijf versleuteling instellen** .
-1. Breng de resterende selecties naar wens aan.
+1. On the **Disks** tab, select **Encryption at rest with a customer-managed key**.
+1. Select your disk encryption set in the **Disk encryption set** drop-down.
+1. Make the remaining selections as you like.
 
-![SSE-Create-VM-Select-CMK-Encryption-set. png](media/virtual-machines-disk-encryption-portal/sse-create-vm-select-cmk-encryption-set.png)
+    ![sse-create-vm-select-cmk-encryption-set.png](media/virtual-machines-disk-encryption-portal/sse-create-vm-select-cmk-encryption-set.png)

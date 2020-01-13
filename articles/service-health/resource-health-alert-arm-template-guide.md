@@ -3,12 +3,12 @@ title: Azure resource Health-waarschuwingen maken-Resource Manager-sjablonen
 description: Maak waarschuwingen via een programma waarmee u wordt gewaarschuwd wanneer uw Azure-resources niet meer beschikbaar zijn.
 ms.topic: conceptual
 ms.date: 9/4/2018
-ms.openlocfilehash: 34367c89666fd486f233136ce7968c7f3bf61912
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c14e3c327d83e75b08f3b52b59970557ec87f5b5
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551713"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912837"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Health-waarschuwingen configureren met behulp van Resource Manager-sjablonen
 
@@ -16,8 +16,6 @@ In dit artikel wordt uitgelegd hoe u Resource Health waarschuwingen voor activit
 
 Azure Resource Health houdt u op de hoogte van de huidige en historische status van uw Azure-resources. Azure Resource Health waarschuwingen kunnen u in bijna realtime een melding sturen wanneer deze resources een wijziging in hun integriteits status hebben. Door Resource Health waarschuwingen via een programma te maken, kunnen gebruikers waarschuwingen bulksgewijs maken en aanpassen.
 
-> [!NOTE]
-> Resource Health-waarschuwingen zijn momenteel beschikbaar als preview-versie.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

@@ -4,17 +4,17 @@ description: Azure Storage beveiligt uw gegevens door deze automatisch te versle
 services: storage
 author: tamram
 ms.service: storage
-ms.date: 01/03/2020
+ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 35a5bfd582c9717b062d42d86e7581029861fd0c
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: b74943ce3e3e67855a07fa32f15612bbb2351170
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665436"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913096"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage versleuteling voor Data-at-rest
 
@@ -38,7 +38,7 @@ Zie [crypto GRAFIE API: Next Generation](https://docs.microsoft.com/windows/desk
 
 U kunt gebruikmaken van door micro soft beheerde sleutels voor de versleuteling van uw opslag account, of u kunt versleuteling beheren met uw eigen sleutels. Als u ervoor kiest om versleuteling te beheren met uw eigen sleutels, hebt u twee opties:
 
-- U kunt een door de *klant beheerde sleutel* opgeven met Azure Key Vault die moet worden gebruikt voor het versleutelen en ontsleutelen van gegevens in Blob Storage en in azure files.
+- U kunt een door de *klant beheerde sleutel* opgeven met Azure Key Vault die moet worden gebruikt voor het versleutelen en ontsleutelen van gegevens in Blob Storage en in azure files. <sup>1, 2</sup>
 - U kunt een door de *klant opgegeven sleutel* voor Blob-opslag bewerkingen opgeven. Een client die een lees-of schrijf aanvraag uitvoert voor Blob Storage, kan een versleutelings sleutel bevatten op de aanvraag voor gedetailleerde controle over hoe BLOB-gegevens worden versleuteld en ontsleuteld.
 
 De volgende tabel vergelijkt de opties voor sleutel beheer voor Azure Storage versleuteling.
@@ -46,11 +46,14 @@ De volgende tabel vergelijkt de opties voor sleutel beheer voor Azure Storage ve
 |                                        |    Door micro soft beheerde sleutels                             |    Door de klant beheerde sleutels                                                                                                                        |    Door de klant verschafte sleutels                                                          |
 |----------------------------------------|-------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
 |    Bewerkingen voor versleuteling/ontsleuteling    |    Azure                                              |    Azure                                                                                                                                        |    Azure                                                                         |
-|    Azure Storage services ondersteund    |    Alles                                                |    Blob-opslag, Azure Files                                                                                                               |    Blob-opslag                                                                  |
+|    Azure Storage services ondersteund    |    Alles                                                |    Blob-opslag, Azure Files<sup>1, 2</sup>                                                                                                               |    Blob-opslag                                                                  |
 |    Sleutel opslag                         |    Micro soft-sleutel archief    |    Azure Key Vault                                                                                                                              |    Azure Key Vault of een ander sleutel archief                                                                 |
 |    Verantwoordelijkheid voor sleutel rotatie         |    Microsoft                                          |    Klant                                                                                                                                     |    Klant                                                                      |
 |    Sleutelgebruik                           |    Microsoft                                          |    Azure Portal, opslag Resource provider REST API, Azure Storage beheer Bibliotheken, Power shell, CLI        |    Azure Storage REST API (Blob Storage), Azure Storage client bibliotheken    |
 |    Sleutel toegang                          |    Alleen micro soft                                     |    Micro soft, klant                                                                                                                    |    Alleen klant                                                                 |
+
+<sup>1</sup> Zie [een account maken dat door de klant beheerde sleutels voor wacht rijen ondersteunt](account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)voor meer informatie over het maken van een account dat gebruikmaakt van door de klant beheerde sleutels met behulp van een wachtrij opslag.<br />
+<sup>2</sup> Zie voor meer informatie over het maken van een account dat gebruikmaakt van door de klant beheerde sleutels met table-opslag [een account maken dat door de klant beheerde sleutels voor tabellen ondersteunt](account-encryption-key-create.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json).
 
 In de volgende secties worden de opties voor sleutel beheer in meer detail beschreven.
 

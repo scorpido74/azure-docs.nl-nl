@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 0955e4082056963b075544aad2c66be9c0f8c8d9
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 84bb33f724622ba994c81b1d09c99b6399fd36ac
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75893822"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913123"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Versleuteling aan server zijde van Azure Managed disks
 
@@ -68,13 +68,14 @@ Voor nu worden alleen de volgende scenario's ondersteund:
 
 We hebben nu ook de volgende beperkingen:
 
-- **Alleen beschikbaar in West-Centraal VS, Zuid-Centraal VS, VS-Oost 2, VS-Oost, VS-West 2, Centraal-Canada en Europa-noord.**
+- Beschikbaar als GA aanbieding in VS-Oost, VS-West 2 en Zuid-Centraal vs.
+- Beschikbaar als open bare preview in West-Centraal VS, VS-Oost 2, Canada-centraal en Europa-noord.
 - Schijven die zijn gemaakt op basis van aangepaste installatie kopieën die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels en moeten zich in hetzelfde abonnement bevinden.
 - Moment opnamen die zijn gemaakt op basis van schijven die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels.
 - Aangepaste installatie kopieën die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels kunnen niet worden gebruikt in de galerie met gedeelde afbeeldingen.
 - Alle resources met betrekking tot uw door de klant beheerde sleutels (Azure Key kluizen, schijf versleutelings sets, Vm's, schijven en moment opnamen) moeten zich in hetzelfde abonnement en dezelfde regio bevinden.
 - Schijven, moment opnamen en installatie kopieën die zijn versleuteld met door de klant beheerde sleutels, kunnen niet worden verplaatst naar een ander abonnement.
-- Als u Azure Portal gebruikt om uw schijf versleutelings te maken, kunt u nu geen moment opnamen gebruiken.
+- Als u de Azure Portal gebruikt om uw schijf versleutelings te maken, kunt u nu geen moment opnamen gebruiken.
 - Alleen [' soft ' en ' hard ' RSA-sleutels](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) met een grootte van 2080 worden ondersteund, geen andere sleutels of grootten.
 
 ### <a name="powershell"></a>PowerShell
@@ -180,6 +181,50 @@ $vm = Add-AzVMDataDisk -VM $vm -Name $diskName -CreateOption Empty -DiskSizeInGB
 
 Update-AzVM -ResourceGroupName $rgName -VM $vm
 
+```
+
+#### <a name="create-a-virtual-machine-scale-set-using-a-marketplace-image-encrypting-the-os-and-data-disks-with-customer-managed-keys"></a>Een schaalset voor virtuele machines maken met behulp van een Marketplace-installatie kopie, het besturings systeem en de gegevens schijven versleutelen met door de klant beheerde sleutels
+
+```PowerShell
+$VMLocalAdminUser = "yourLocalAdminUser"
+$VMLocalAdminSecurePassword = ConvertTo-SecureString Password@123 -AsPlainText -Force
+$LocationName = "westcentralus"
+$ResourceGroupName = "yourResourceGroupName"
+$ComputerNamePrefix = "yourComputerNamePrefix"
+$VMScaleSetName = "yourVMSSName"
+$VMSize = "Standard_DS3_v2"
+$diskEncryptionSetName="yourDiskEncryptionSetName"
+    
+$NetworkName = "yourVNETName"
+$SubnetName = "yourSubnetName"
+$SubnetAddressPrefix = "10.0.0.0/24"
+$VnetAddressPrefix = "10.0.0.0/16"
+    
+$SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
+
+$Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroupName -Location $LocationName -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
+
+$ipConfig = New-AzVmssIpConfig -Name "myIPConfig" -SubnetId $Vnet.Subnets[0].Id 
+
+$VMSS = New-AzVmssConfig -Location $LocationName -SkuCapacity 2 -SkuName $VMSize -UpgradePolicyMode 'Automatic'
+
+$VMSS = Add-AzVmssNetworkInterfaceConfiguration -Name "myVMSSNetworkConfig" -VirtualMachineScaleSet $VMSS -Primary $true -IpConfiguration $ipConfig
+
+$diskEncryptionSet=Get-AzDiskEncryptionSet -ResourceGroupName $ResourceGroupName -Name $diskEncryptionSetName
+
+# Enable encryption at rest with customer managed keys for OS disk by setting DiskEncryptionSetId property 
+
+$VMSS = Set-AzVmssStorageProfile $VMSS -OsDiskCreateOption "FromImage" -DiskEncryptionSetId $diskEncryptionSet.Id -ImageReferenceOffer 'WindowsServer' -ImageReferenceSku '2012-R2-Datacenter' -ImageReferenceVersion latest -ImageReferencePublisher 'MicrosoftWindowsServer'
+
+$VMSS = Set-AzVmssOsProfile $VMSS -ComputerNamePrefix $ComputerNamePrefix -AdminUsername $VMLocalAdminUser -AdminPassword $VMLocalAdminSecurePassword
+
+# Add a data disk encrypted at rest with customer managed keys by setting DiskEncryptionSetId property 
+
+$VMSS = Add-AzVmssDataDisk -VirtualMachineScaleSet $VMSS -CreateOption Empty -Lun 1 -DiskSizeGB 128 -StorageAccountType Premium_LRS -DiskEncryptionSetId $diskEncryptionSet.Id
+
+$Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
+
+New-AzVmss -VirtualMachineScaleSet $VMSS -ResourceGroupName $ResourceGroupName -VMScaleSetName $VMScaleSetName
 ```
 
 > [!IMPORTANT]

@@ -1,6 +1,6 @@
 ---
-title: Detectie van bedreigingen voor Azure-beveiligings producten in Azure Security Center
-description: Dit onderwerp bevat de Azure-beveiligings producten waarvoor Azure Security Center detectie van bedreigingen kan bieden
+title: Waarschuwingen voor detectie van bedreigingen van Azure-beveiligings producten in Azure Security Center
+description: In dit onderwerp vindt u de Azure-beveiligings producten waarvan Azure Security Center bedreigings waarschuwingen kunt weer geven
 services: security-center
 documentationcenter: na
 author: memildin
@@ -8,18 +8,18 @@ manager: rkarlin
 ms.assetid: ad4b0373-08ee-46ca-a573-638ed93a647c
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 01/05/2020
+ms.date: 01/12/2020
 ms.author: memildin
-ms.openlocfilehash: 1ea207f0ba09e0637a08632d5c56591fd1335b22
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 16cae819b1714c2b410cfa311a3602e0f4ed968a
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665723"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913026"
 ---
-# <a name="threat-detection-for-azure-waf-and-azure-ddos-protection"></a>Detectie van bedreigingen voor Azure WAF en Azure DDoS Protection
+# <a name="threat-detection-alerts-from-azure-waf-and-azure-ddos-protection"></a>Waarschuwingen voor detectie van bedreigingen van Azure WAF en Azure DDoS Protection
 
-Azure Security Center kunt detectie van bedreigingen bieden voor de volgende Azure-beveiligings producten (een afzonderlijke licentie voor elk product is vereist):
+Azure Security Center kunt bedreigingen detectie waarschuwingen weer geven en verzamelen die zijn gegenereerd door de volgende Azure-beveiligings producten (er is een afzonderlijke licentie voor elk product vereist):
 
 * [Azure WAF](#azure-waf)
 * [Azure DDoS Protection](#azure-ddos)

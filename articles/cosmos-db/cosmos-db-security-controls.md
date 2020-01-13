@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
-ms.openlocfilehash: 5ab4281f1ad591befda5a439906604331a1ab323
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 1ac4d12f58977497642cdb0706ab7e85e9a4db64
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872142"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913077"
 ---
 # <a name="security-controls-for-azure-cosmos-db"></a>Beveiligings controles voor Azure Cosmos DB
 
@@ -41,18 +41,18 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Verificatie| Ja | Ja op het account niveau van de data base. op het niveau van het gegevensvlak Cosmos DB maakt gebruik van bron tokens en toegang tot sleutels. |
+| Authentication| Ja | Ja op het account niveau van de data base. op het niveau van het gegevensvlak Cosmos DB maakt gebruik van bron tokens en toegang tot sleutels. |
 | Autorisatie| Ja | Ondersteund in het Azure Cosmos-account met hoofd sleutels (primair en secundair) en bron tokens. U kunt alleen lees-en schrijf toegang krijgen tot gegevens met hoofd sleutels. Met bron tokens kunt u beperkte tijd toegang tot resources, zoals documenten en containers, toestaan. |
 
 ## <a name="data-protection"></a>Databeveiliging
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Alle Azure Cosmos-data bases en-back-ups worden standaard versleuteld. Zie [gegevens versleuteling in azure Cosmos DB](database-encryption-at-rest.md). Versleuteling aan de server zijde met door de klant beheerde sleutels wordt niet ondersteund. |
-| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Nee |  |
+| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja | Alle Azure Cosmos-data bases en-back-ups worden standaard versleuteld. Zie [gegevens versleuteling in azure Cosmos DB](database-encryption-at-rest.md). |
+| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Ja | Zie door [de klant beheerde sleutels voor uw Azure Cosmos DB account configureren](how-to-setup-cmk.md)  |
 | Versleuteling op kolom niveau (Azure Data Services)| Ja | Alleen in de Table API Premium. Niet alle Api's ondersteunen deze functie. Zie [Inleiding tot Azure Cosmos DB: Table-API](table-introduction.md). |
 | Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | Alle Azure Cosmos DB gegevens worden tijdens de overdracht versleuteld. |
-| Versleutelde API-aanroepen| Ja | Alle verbindingen met Azure Cosmos DB ondersteuning voor HTTPS. Azure Cosmos DB ondersteunt ook TLS 1,2-verbindingen, maar dit is nog niet afgedwongen. Als klanten minder TLS op hun eind niveau uitschakelen, kunnen ze ervoor zorgen dat ze verbinding maken met Cosmos DB.  |
+| Versleutelde API-aanroepen| Ja | Alle verbindingen met Azure Cosmos DB ondersteuning voor HTTPS. Azure Cosmos DB ondersteunt ook TLS 1,2.<br>Het is mogelijk om een minimale TLS-versie aan de server zijde af te dwingen. Als u dit wilt doen, neemt u contact op met [cosmosdbpm@microsoft.com](maito:cosmosdbpm@microsoft.com]). |
 
 ## <a name="configuration-management"></a>Configuratiebeheer
 

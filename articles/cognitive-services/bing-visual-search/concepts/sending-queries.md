@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 08/30/2019
+ms.date: 01/08/2019
 ms.author: aahi
-ms.openlocfilehash: 2a87bee4769111e01dc49e8fce14569233dfaef3
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 5d27aa80a63232694e1c9951f98b2191ba575e74
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111630"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913076"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Zoek query's naar de Bing Visual Search-API verzenden
 
@@ -73,7 +73,7 @@ Aanvragen mogen alleen worden verzonden als HTTP POST-aanvragen.
 
 Hier volgen de queryparameters die in uw aanvraag moeten worden opgegeven. U moet mini maal de para meter `mkt` query toevoegen:
 
-| Naam | Waarde | Type | Vereist |
+| Name | Waarde | Type | Verplicht |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | Een land code van twee tekens die aangeeft waar de resultaten vandaan komen.<br /><br /> Als u deze parameter instelt, moet u ook de [Accept-Language](#acceptlanguage)-header opgeven. Bing gebruikt de eerste ondersteunde taal die wordt gevonden in de lijst met talen en combineert de taal met de landcode die u opgeeft om de markt te bepalen waaruit de resultaten moeten worden geretourneerd. Als de talenlijst geen ondersteunde taal bevat, vindt Bing de dichtstbijzijnde taal en markt die de aanvraag ondersteunen. Of het kan een geaggregeerde of standaardmarkt voor de resultaten gebruiken in plaats van degene die is opgegeven.<br /><br /> Gebruik deze queryparameter en de parameter `Accept-Language` alleen als u meerdere talen opgeeft; anders moet u de queryparameters `mkt` en `setLang` gebruiken.<br /><br /> Deze parameter en de parameter [mkt](#mkt) sluiten elkaar uit&mdash;geef ze niet beide op. | Tekenreeks | Nee       |
 | <a name="mkt" />mkt   | De markt waaruit de resultaten afkomstig zijn. <br /><br /> **Opmerking:** U moet altijd de markt opgeven, indien bekend. Het specificeren van de markt helpt Bing de aanvraag te routeren en een passend en optimaal antwoord te geven.<br /><br /> Deze parameter en de parameter [cc](#cc) sluiten elkaar uit&mdash;geef ze niet beide op. | Tekenreeks | Ja      |
@@ -116,6 +116,26 @@ Content-Disposition: form-data; name="knowledgeRequest"
     "imageInfo" : {
         "url" : "https://contoso.com/2018/05/fashion/red.jpg"
     }
+}
+
+--boundary_1234-abcd--
+```
+
+U kunt eventueel het `enableEntityData` kenmerk in de koptekst instellen op `true` voor gedetailleerde informatie over de hoofd entiteit in de installatie kopie die u uploadt, inclusief koppelingen naar de web-en informatie over de toewijzing. Dit veld is standaard `false`.
+
+```
+--boundary_1234-abcd
+Content-Disposition: form-data; name="knowledgeRequest"
+
+{
+  "imageInfo" : {
+      "url" : "https://contoso.com/2018/05/fashion/red.jpg"
+  },
+  "knowledgeRequest" : {
+    "invokedSkillsRequestData" : {
+        "enableEntityData" : "true"
+    }
+  }
 }
 
 --boundary_1234-abcd--
@@ -368,37 +388,81 @@ Tekstherkenning kan ook de contactgegevens op visitekaartjes herkennen, zoals te
     }
 ```
 
-Als de installatie kopie een herkende entiteit bevat, zoals een cultuur bekende/populaire persoon, plaats of ding, kan een van de Tags een entiteit inzicht bevatten.
+Als de installatie kopie een herkende entiteit bevat, zoals een cultuur bekende/populaire persoon, plaats of ding, kan een van de Tags een entiteit inzicht bevatten. De velden `mainEntity` en `data` zijn alleen beschikbaar als het kenmerk `enableEntityData` in de koptekst `Content-Type` is ingesteld op `true`.
 
 ```json
-    {
-      "image" : {
-        "thumbnailUrl" : "https:\/\/tse4.mm.bing.net\/th?q=Statue+of+Liberty..."
-      },
-      "displayName" : "Statue of Liberty",
-      "boundingBox" : {
-        "queryRectangle" : {
-          "topLeft" : {"x" : 0.40625, "y" : 0.1757813},
-          "topRight" : {"x" : 0.6171875, "y" : 0.1757813},
-          "bottomRight" : {"x" : 0.6171875, "y" : 0.3867188},
-          "bottomLeft" : {"x" : 0.40625, "y" : 0.3867188}
-        },
-        "displayRectangle" : {
-          "topLeft" : {"x" : 0.40625, "y" : 0.1757813},
-          "topRight" : {"x" : 0.6171875, "y" : 0.1757813},
-          "bottomRight" : {"x" : 0.6171875, "y" : 0.3867188},
-          "bottomLeft" : {"x" : 0.40625, "y" : 0.3867188}
-        }
-      },
-      "actions" : [
-        {
-          "_type" : "ImageEntityAction",
-          "webSearchUrl" : "https:\/\/www.bing.com\/search?q=Statue+of+Liberty",
-          "displayName" : "Statue of Liberty",
-          "actionType" : "Entity",
-        }
-      ]
+{
+  "image" : {
+    "thumbnailUrl" : "https:\/\/tse4.mm.bing.net\/th?q=Statue+of+Liberty..."
+  },
+  "displayName" : "Statue of Liberty",
+  "boundingBox" : {
+    "queryRectangle" : {
+      "topLeft" : {"x" : 0.40625, "y" : 0.1757813},
+      "topRight" : {"x" : 0.6171875, "y" : 0.1757813},
+      "bottomRight" : {"x" : 0.6171875, "y" : 0.3867188},
+      "bottomLeft" : {"x" : 0.40625, "y" : 0.3867188}
+    },
+    "displayRectangle" : {
+      "topLeft" : {"x" : 0.40625, "y" : 0.1757813},
+      "topRight" : {"x" : 0.6171875, "y" : 0.1757813},
+      "bottomRight" : {"x" : 0.6171875, "y" : 0.3867188},
+      "bottomLeft" : {"x" : 0.40625, "y" : 0.3867188}
     }
+  },
+  "actions" : [
+    {
+      "_type" : "ImageEntityAction",
+      "webSearchUrl" : "https:\/\/www.bing.com\/search?q=Statue+of+Liberty",
+      "displayName" : "Statue of Liberty",
+      "actionType" : "Entity",
+      "mainEntity" : {
+        "name" = "Statue of liberty",
+        "bingId" : "..."
+      },
+      "data" : {
+        "id" : "https://api.cognitive.microsoft.com/api/v7/entities/...",
+        "readLink": "https://www.bingapis.com/api/v7/search?q=...",
+        "readLinkPingSuffix": "...",
+        "contractualRules": [
+          {
+            "_type": "ContractualRules/LicenseAttribution",
+            "targetPropertyName": "description",
+            "mustBeCloseToContent": true,
+            "license": {
+                "name": "CC-BY-SA",
+                "url": "http://creativecommons.org/licenses/by-sa/3.0/",
+                "urlPingSuffix": "..."
+            },
+            "licenseNotice": "Text under CC-BY-SA license"
+          },
+          {
+            "_type": "ContractualRules/LinkAttribution",
+            "targetPropertyName": "description",
+            "mustBeCloseToContent": true,
+            "text": "Wikipedia",
+            "url": "http://en.wikipedia.org/wiki/...",
+            "urlPingSuffix": "..."
+          }
+        ],
+        "webSearchUrl": "https://www.bing.com/entityexplore?q=...",
+        "webSearchUrlPingSuffix": "...",
+        "name": "Statue of Liberty",
+        "image": {
+          "thumbnailUrl": "https://tse1.mm.bing.net/th?id=...",
+          "hostPageUrl": "http://upload.wikimedia.org/wikipedia/...",
+          "hostPageUrlPingSuffix": "...",
+          "width": 50,
+          "height": 50,
+          "sourceWidth": 474,
+          "sourceHeight": 598
+        },
+        "description" : "...",
+        "bingId": "..."
+        }
+      }
+  ]
+}
 ```
 
 ## <a name="see-also"></a>Zie ook
