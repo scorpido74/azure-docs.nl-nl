@@ -1,14 +1,14 @@
 ---
 title: Voor beelden van ISO 27001 gedeelde services blauw druk
 description: De toewijzing van het voor beeld van de ISO 27001-gedeelde services blauw drukken. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: b484bdc2fdaa346e5137b31e3225dc913f43ed0c
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 6c03da7d5d4caada9ef47a828163a79a003bea93
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546718"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922523"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Beheer toewijzing van het voor beeld van de ISO 27001-gedeelde services blauw druk
 
@@ -53,7 +53,7 @@ Deze blauw druk helpt u om privileged Access Rights te beperken en te beheren do
 - \[preview\]: audit accounts met schrijf machtigingen waarvoor geen MFA is ingeschakeld voor een abonnement
 - \[preview\]: externe accounts met eigenaars machtigingen voor een abonnement controleren
 - \[preview\]: externe accounts met schrijf machtigingen voor een abonnement controleren
-- Inrichting van een Azure Active Directory beheerder voor SQL Server controleren
+- Een Azure Active Directory-beheerder moet worden ingericht voor SQL-servers
 - Gebruik van Azure Active Directory voor client verificatie in Service Fabric controleren
 - Gebruik van aangepaste RBAC-regels controleren
 

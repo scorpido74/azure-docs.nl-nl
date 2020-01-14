@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: a013d4cfcfddc709e60e91adf57bc27c98934a96
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 2e55f98f8c7b6ddbc21f7ea8633467461ea5be29
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68596544"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922167"
 ---
-# <a name="azure-security-center-for-iot-architecture"></a>Azure Security Center voor IoT-architectuur
+# <a name="azure-security-center-for-iot-architecture"></a>Azure Security Center for IoT-architectuur
 
 In dit artikel wordt de functionele systeem architectuur uitgelegd van de Azure Security Center voor IoT-oplossing. 
 
@@ -36,15 +36,15 @@ Azure Security Center voor IoT bestaat uit de volgende onderdelen:
  
 ### <a name="azure-security-center-for-iot-workflows"></a>Azure Security Center voor IoT-werk stromen
 
-Azure Security Center voor IoT werkt op een van de twee functie werk stromen: Ingebouwd en uitgebreid  
+Azure Security Center voor IoT werkt op een van de twee functie werk stromen: ingebouwd en uitgebreid  
 
 ### <a name="built-in"></a>Ingebouwd
-In de **ingebouwde** modus is Azure Security Center voor IOT ingeschakeld wanneer u ervoor kiest om de optie **beveiliging** in uw IOT hub in te scha kelen. Dankzij realtime bewaking, aanbevelingen en waarschuwingen biedt de ingebouwde modus een duidelijk beeld van de zicht baarheid van apparaten en ongeëvenaarde beveiliging. Voor de build-in modus is geen agent geïnstalleerd op apparaten en wordt gebruikgemaakt van geavanceerde analyses op geregistreerde activiteiten om uw veld apparaat te analyseren en beveiligen. 
+In de **ingebouwde** modus is Azure Security Center voor IOT ingeschakeld wanneer u ervoor kiest om de optie **beveiliging** in uw IOT hub in te scha kelen. Dankzij realtime bewaking, aanbevelingen en waarschuwingen biedt de ingebouwde modus een beschermte en ongeëvenaarde beveiliging voor apparaten in één stap. Voor de build-in modus is geen agent geïnstalleerd op apparaten en wordt gebruikgemaakt van geavanceerde analyses op geregistreerde activiteiten om uw veld apparaat te analyseren en beveiligen. 
 
 ### <a name="enhanced"></a>Verbeterd 
-Na het inschakelen van de optie **beveiliging** in uw IOT hub en het installeren van Azure Security Center voor IOT Device agents op uw apparaten, verzamelen en analyseren de agents onbewerkte beveiligings gebeurtenissen van uw apparaten. Onbewerkte beveiligings gebeurtenissen kunnen IP-verbindingen, het maken van processen, gebruikers aanmeldingen en andere informatie over beveiliging zijn. Azure Security Center voor IoT-apparaat-agents verwerken ook gebeurtenissen aggregatie om te voor komen dat hoge netwerk doorvoer wordt door voer. De agents zijn zeer aanpasbaar, zodat u ze kunt gebruiken voor specifieke taken, zoals het verzenden van belang rijke informatie op de snelste SLA, of voor het samen voegen van uitgebreide beveiligings informatie en-context in grotere segmenten, waardoor er hogere service kosten worden bespaard.
+Na het **inschakelen van de** optie **beveiliging** in uw IOT hub en het installeren van Azure Security Center voor IOT Device agents op uw apparaten, verzamelen en analyseren de agents onbewerkte beveiligings gebeurtenissen van uw apparaten. Onbewerkte beveiligings gebeurtenissen kunnen IP-verbindingen, het maken van processen, gebruikers aanmeldingen en andere informatie over beveiliging zijn. Azure Security Center voor IoT-apparaat-agents verwerken ook gebeurtenissen aggregatie om te voor komen dat hoge netwerk doorvoer wordt door voer. De agents zijn zeer aanpasbaar, zodat u ze kunt gebruiken voor specifieke taken, zoals het verzenden van belang rijke informatie op de snelste SLA, of voor het samen voegen van uitgebreide beveiligings informatie en-context in grotere segmenten, waardoor er hogere service kosten worden bespaard.
 
-![Azure Security Center voor IoT-architectuur](./media/architecture/azure-iot-security-architecture.png)
+![Azure Security Center for IoT-architectuur](./media/architecture/azure-iot-security-architecture.png)
  
 Apparaat-agents en andere toepassingen gebruiken de SDK voor het **verzenden van beveiligings berichten van Azure** om beveiligings gegevens naar Azure IOT hub te verzenden. IoT Hub haalt deze informatie op en stuurt deze door naar de Azure Security Center voor IoT-service.
 
@@ -65,4 +65,4 @@ In dit artikel hebt u geleerd over de basis architectuur en werk stroom van Azur
 - [Uw oplossing configureren](quickstart-configure-your-solution.md)
 - [Beveiliging in IoT Hub inschakelen](quickstart-onboard-iot-hub.md)
 - [Veelgestelde vragen over Azure Security Center voor IoT](resources-frequently-asked-questions.md)
-- [Azure Security Center voor IoT-beveiligings waarschuwingen](concept-security-alerts.md)
+- [Beveiligingswaarschuwingen in Azure Security Center for IoT](concept-security-alerts.md)

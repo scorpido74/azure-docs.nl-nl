@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b08a124ade6e2db8ca27ef61c7f5a6b3fe839885
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4a99bfe8d8235400f9122423aa4592fc6898abc1
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442767"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922291"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Gegevens bronnen die worden ondersteund in Azure Analysis Services
 
@@ -120,7 +120,9 @@ Voor gegevens bronnen in de Cloud:
 
 ## <a name="oauth-credentials"></a>OAuth-referenties
 
-Voor tabellaire modellen op het compatibiliteits niveau 1400 en hoger, Azure SQL Database, Azure SQL Data Warehouse, Dynamics 365 en share point-lijst worden OAuth-referenties ondersteund. Azure Analysis Services beheert het vernieuwen van tokens voor OAuth-gegevens bronnen om time-outs voor langdurige vernieuwings bewerkingen te voor komen. Als u geldige tokens wilt genereren, stelt u referenties in met behulp van SSMS.
+Voor modellen in tabel vorm met het compatibiliteits niveau 1400 en hoger met behulp van de in-Memory modus, Azure SQL Database, Azure SQL Data Warehouse, Dynamics 365 en share point-lijst worden OAuth-referenties ondersteund. Azure Analysis Services beheert het vernieuwen van tokens voor OAuth-gegevens bronnen om time-outs voor langdurige vernieuwings bewerkingen te voor komen. Als u geldige tokens wilt genereren, stelt u referenties in met behulp van SSMS.
+
+De direct query-modus wordt niet ondersteund met OAuth-referenties.
 
 ## <a name="next-steps"></a>Volgende stappen
 [On-premises gateway](analysis-services-gateway.md)   

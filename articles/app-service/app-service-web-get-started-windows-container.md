@@ -4,12 +4,12 @@ description: Implementeer uw eerste aangepaste Windows-container naar Azure App 
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b618c4f1a24e4089cac2ddf34e61bab156aefdd
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7901498772b8e746fb2c87a5237f06ab279e3b64
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671352"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922296"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Een aangepaste Windows-container uitvoeren in Azure (Preview)
 
@@ -19,7 +19,7 @@ In deze Quick start ziet u hoe u een ASP.NET-app, in een Windows-installatie kop
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Vereisten om deze zelfstudie te voltooien:
 
 - <a href="https://hub.docker.com/" target="_blank">Registreren voor een Docker Hub-account</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker voor Windows installeren</a>.
@@ -79,7 +79,7 @@ Maak een ASP.NET-Web-app door de volgende stappen uit te voeren:
 
 ## <a name="create-a-windows-container-app"></a>Een Windows-container-app maken
 
-1. Meld u aan bij de [Azure-portal]( https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal]( https://portal.azure.com).
 
 1. Kies in de linkerbovenhoek van Azure Portal **Een resource maken**.
 
@@ -103,7 +103,7 @@ Maak een ASP.NET-Web-app door de volgende stappen uit te voeren:
 
 Als de bewerking in Azure is voltooid, wordt er een melding weergegeven.
 
-![Implementatie is voltooid](media/app-service-web-get-started-windows-container/portal-create-finished.png)
+![Implementatie geslaagd](media/app-service-web-get-started-windows-container/portal-create-finished.png)
 
 1. Klik op **Ga naar resource**.
 
@@ -163,7 +163,7 @@ De gestreamde logboeken zien er ongeveer als volgt uit:
 
 ## <a name="use-a-different-parent-image"></a>Een andere bovenliggende installatiekopie gebruiken
 
-U kunt een andere aangepaste docker-installatie kopie gebruiken om uw app uit te voeren. Kies echter wel de juiste [bovenliggende installatiekopie](https://docs.docker.com/develop/develop-images/baseimages/) voor het gewenste framework:
+U kunt een andere aangepaste docker-installatie kopie gebruiken om uw app uit te voeren. U moet echter de juiste [bovenliggende installatie kopie (basis installatie kopie)](https://docs.docker.com/develop/develop-images/baseimages/) kiezen voor het gewenste Framework:
 
 - Als u .NET Framework-Apps wilt implementeren, gebruikt u een bovenliggende installatie kopie op basis van de versie van het Windows Server Core 2019 [-LTSC (Long-term Servicing Channel)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) . 
 - Als u .NET Core-Apps wilt implementeren, gebruikt u een bovenliggende installatie kopie op basis van de versie van het Windows Server nano 1809 [Semi-Annual-onderhouds kanaal (SAC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) . 
@@ -171,7 +171,7 @@ U kunt een andere aangepaste docker-installatie kopie gebruiken om uw app uit te
 Het duurt enige tijd om een bovenliggende installatiekopie te downloaden tijdens het opstarten van de app. U kunt deze opstarttijd echter verminderen door een van de volgende bovenliggende installatiekopieën te gebruiken die al in cache zijn opgeslagen in Azure App Service:
 
 - [MCR.Microsoft.com/DOTNET/Framework/ASPNET](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/): 4.7.2-windowsservercore-ltsc2019
-- [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809-deze installatie kopie is de basis container die wordt gebruikt in micro soft [ASP.net core](https://hub.docker.com/_microsoft-dotnet-cores-aspnet) micro soft Windows nano server-installatie kopieën.
+- [MCR.Microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809-deze installatie kopie is de basis container die wordt gebruikt in micro soft [ASP.net core](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/) micro soft Windows nano server-installatie kopieën.
 
 ## <a name="next-steps"></a>Volgende stappen
 

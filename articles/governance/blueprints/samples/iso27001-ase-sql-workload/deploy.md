@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 ASE/SQL-werk belasting blauw druk-voor beeld implementeren
 description: Implementeer stappen van het voor beeld van de ISO 27001 App Service Environment/SQL Database werk belasting blauw druk, inclusief de para meters voor de artefact parameter.
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 3cf3c062b1e8b69a6a0b9eb585b30ce2d5c4acfb
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 6b8f3b753f1dd8cfbc247a77f2004e3c4d3423bb
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546750"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922581"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Het voor beeld van de ISO 27001 App Service Environment/SQL Database werk belasting blauw druk implementeren
 
@@ -111,12 +111,12 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 
 |Artefact naam|Type artefact|Parameternaam|Beschrijving|
 |-|-|-|-|
-|Log Analytics resource groep|Resourcegroep|Naam|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-log-rg` om de resource groep uniek te maken.|
+|Log Analytics resource groep|Resourcegroep|Name|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-log-rg` om de resource groep uniek te maken.|
 |Log Analytics resource groep|Resourcegroep|Locatie|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
 |Log Analytics sjabloon|Resource Manager-sjabloon|Serviceniveau|Hiermee stelt u de laag van de Log Analytics-werk ruimte. De standaard waarde is _PerNode_.|
 |Log Analytics sjabloon|Resource Manager-sjabloon|Bewaar periode logboek in dagen|Bewaren van gegevens in dagen. De standaard waarde is _365_.|
 |Log Analytics sjabloon|Resource Manager-sjabloon|Locatie|De regio die wordt gebruikt voor het maken van de Log Analytics-werk ruimte. De standaard waarde is _VS-West 2_.|
-|Netwerk resource groep|Resourcegroep|Naam|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-net-rg` om de resource groep uniek te maken.|
+|Netwerk resource groep|Resourcegroep|Name|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-net-rg` om de resource groep uniek te maken.|
 |Netwerk resource groep|Resourcegroep|Locatie|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
 |Sjabloon netwerk beveiligings groep|Resource Manager-sjabloon|Bewaar periode logboek in dagen|Bewaren van gegevens in dagen. De standaard waarde is _365_.|
 |Sjabloon voor Virtual Network en route tabel|Resource Manager-sjabloon|Privé-IP van Azure-firewall|Hiermee configureert u het privé IP-adres van de [Azure-firewall](../../../../firewall/overview.md). Moet deel uitmaken van de CIDR-notatie die is gedefinieerd in _ISO 27001: Shared Services_ artefact parameter **Azure firewall subnet adres voorvoegsel**. De standaard waarde is _10.0.4.4_.|
@@ -124,13 +124,13 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 |Sjabloon voor Virtual Network en route tabel|Resource Manager-sjabloon|Adres voorvoegsel Virtual Network|De CIDR-notatie voor het virtuele netwerk. De standaard waarde is _10.1.0.0/16_.|
 |Sjabloon voor Virtual Network en route tabel|Resource Manager-sjabloon|Adres voorvoegsel van het standaard subnet|De CIDR-notatie voor het standaard subnet van het virtuele netwerk. De standaard waarde is _10.1.0.0/16_.|
 |Sjabloon voor Virtual Network en route tabel|Resource Manager-sjabloon|IP-adres toevoegen|IP-adres van de eerste virtuele machine toevoegen. Deze waarde wordt gebruikt als aangepaste VNET DNS.|
-|Key Vault resource groep|Resourcegroep|Naam|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-kv-rg` om de resource groep uniek te maken.|
+|Key Vault resource groep|Resourcegroep|Name|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-kv-rg` om de resource groep uniek te maken.|
 |Key Vault resource groep|Resourcegroep|Locatie|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
 |Key Vault sjabloon|Resource Manager-sjabloon|AAD-object-ID|De AAD-object-id van het account dat toegang moet hebben tot het Key Vault exemplaar. Geen standaard waarde en mag niet leeg zijn. Als u deze waarde wilt vinden in de Azure Portal, zoekt en selecteert u ' gebruikers ' onder _Services_. Gebruik het vak _naam_ om te filteren op de account naam en selecteer dat account. Selecteer op de pagina _gebruikers profiel_ het pictogram ' Klik om te kopiëren ' naast de _object-id_.|
 |Key Vault sjabloon|Resource Manager-sjabloon|Bewaar periode logboek in dagen|Bewaren van gegevens in dagen. De standaard waarde is _365_.|
 |Key Vault sjabloon|Resource Manager-sjabloon|Key Vault SKU|Hiermee geeft u de SKU op van de Key Vault die is gemaakt. De standaard waarde is _Premium_.|
 |Key Vault sjabloon|Resource Manager-sjabloon|Gebruikers naam van Azure SQL Server beheerder|De gebruikers naam die wordt gebruikt voor toegang tot Azure SQL Server. Moet overeenkomen met dezelfde eigenschaps waarde in **Azure SQL database sjabloon**. De standaard waarde is _SQL-admin-user_.|
-|Azure SQL Database resource groep|Resourcegroep|Naam|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-azsql-rg` om de resource groep uniek te maken.|
+|Azure SQL Database resource groep|Resourcegroep|Name|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-azsql-rg` om de resource groep uniek te maken.|
 |Azure SQL Database resource groep|Resourcegroep|Locatie|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
 |Azure SQL Database sjabloon|Resource Manager-sjabloon|Gebruikers naam van Azure SQL Server beheerder|Gebruikers naam voor de Azure-SQL Server. Moet overeenkomen met dezelfde eigenschaps waarde in **Key Vault sjabloon**. De standaard waarde is _SQL-admin-user_.|
 |Azure SQL Database sjabloon|Resource Manager-sjabloon|Wacht woord voor Azure SQL Server-beheerder (Key Vault Resource-ID)|De resource-ID van de Key Vault. Gebruik '/subscription/{subscriptionId}/resourceGroups/{orgName}-workload-kv/providers/Microsoft.KeyVault/vaults/{orgName}-workload-kv ' en vervang `{subscriptionId}` door uw abonnements-ID en `{orgName}` met de para meter voor de naam blauw druk van de **organisatie** .|
@@ -138,7 +138,7 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 |Azure SQL Database sjabloon|Resource Manager-sjabloon|Bewaar periode logboek in dagen|Bewaren van gegevens in dagen. De standaard waarde is _365_.|
 |Azure SQL Database sjabloon|Resource Manager-sjabloon|AAD-beheer object-ID|AAD-object-ID van de gebruiker die wordt toegewezen als een Active Directory beheerder. Geen standaard waarde en mag niet leeg zijn. Als u deze waarde wilt vinden in de Azure Portal, zoekt en selecteert u ' gebruikers ' onder _Services_. Gebruik het vak _naam_ om te filteren op de account naam en selecteer dat account. Selecteer op de pagina _gebruikers profiel_ het pictogram ' Klik om te kopiëren ' naast de _object-id_.|
 |Azure SQL Database sjabloon|Resource Manager-sjabloon|Aanmelding AAD-beheerder|Op dit moment kunnen micro soft-accounts (zoals live.com of outlook.com) niet als beheerder worden ingesteld. Alleen gebruikers en beveiligings groepen in uw organisatie kunnen als beheerder worden ingesteld. Geen standaard waarde en mag niet leeg zijn. Als u deze waarde wilt vinden in de Azure Portal, zoekt en selecteert u ' gebruikers ' onder _Services_. Gebruik het vak _naam_ om te filteren op de account naam en selecteer dat account. Kopieer de _gebruikers naam_op de pagina _gebruikers profiel_ .|
-|App Service Environment resource groep|Resourcegroep|Naam|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-ase-rg` om de resource groep uniek te maken.|
+|App Service Environment resource groep|Resourcegroep|Name|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-workload-ase-rg` om de resource groep uniek te maken.|
 |App Service Environment resource groep|Resourcegroep|Locatie|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
 |App Service Environment sjabloon|Resource Manager-sjabloon|Domeinnaam|De naam van de Active Directory gemaakt door het voor beeld. De standaard waarde is _contoso.com_.|
 |App Service Environment sjabloon|Resource Manager-sjabloon|Locatie van ASE|App Service Environment locatie. De standaard waarde is _VS-West 2_.|

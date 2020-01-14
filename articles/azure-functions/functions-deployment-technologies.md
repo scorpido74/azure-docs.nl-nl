@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 0eeb9c0c938793bb13218c5407f2a3fa117880e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6c946667befdf34a2ae6769b2c1bb43871111c24
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226998"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921022"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Implementatie technologieën in Azure Functions
 
@@ -32,7 +32,7 @@ Elk plan heeft verschillende gedragingen. Niet alle implementatie technologieën
 | Externe pakket-URL<sup>1</sup> |✔|✔|✔|✔|✔|✔|
 | Zip-implementatie |✔|✔|✔|✔|✔|✔|
 | Docker-container | | | | |✔|✔|
-| Web implementeren |✔|✔|✔| | | |
+| Webimplementatie |✔|✔|✔| | | |
 | Broncodebeheer |✔|✔|✔| |✔|✔|
 | Lokale Git<sup>1</sup> |✔|✔|✔| |✔|✔|
 | Cloud synchronisatie<sup>1</sup> |✔|✔|✔| |✔|✔|
@@ -42,7 +42,7 @@ Elk plan heeft verschillende gedragingen. Niet alle implementatie technologieën
 <sup>1</sup> implementatie technologie waarvoor [hand matige synchronisatie](#trigger-syncing)van de trigger is vereist.  
 <sup>2</sup> het bewerken van de portal is alleen ingeschakeld voor http-en timer triggers voor functies op Linux met behulp van Premium-en speciale abonnementen.
 
-## <a name="key-concepts"></a>Belangrijkste concepten
+## <a name="key-concepts"></a>Belangrijke concepten
 
 Enkele belang rijke concepten zijn essentieel om te weten hoe implementaties werken in Azure Functions.
 

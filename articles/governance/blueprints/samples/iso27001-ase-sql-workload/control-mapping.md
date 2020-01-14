@@ -1,14 +1,14 @@
 ---
 title: Voor beeld van ISO 27001 ASE/SQL workload blauw drukken besturings elementen
 description: Bepaal de toewijzing van de blauw druk App Service Environment/SQL Database workload van de werk belasting van ISO 27001 in Azure Policy en RBAC.
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 5c5b83669a477255f0cdce45993a5871b5a9c6f8
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: bc370170374654bf8bc9ae9ed3f1b545f4db8cba
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546783"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920702"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Toewijzing van de ASE van de ISO 27001-workload/SQL-werk belasting blauw druk-voor beeld
 
@@ -53,7 +53,7 @@ Deze blauw druk helpt u om privileged Access Rights te beperken en te beheren do
 - \[preview\]: audit accounts met schrijf machtigingen waarvoor geen MFA is ingeschakeld voor een abonnement
 - \[preview\]: externe accounts met eigenaars machtigingen voor een abonnement controleren
 - \[preview\]: externe accounts met schrijf machtigingen voor een abonnement controleren
-- Inrichting van een Azure Active Directory beheerder voor SQL Server controleren
+- Een Azure Active Directory-beheerder moet worden ingericht voor SQL-servers
 - Gebruik van Azure Active Directory voor client verificatie in Service Fabric controleren
 - Gebruik van aangepaste RBAC-regels controleren
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: rezas
 ms.custom: Azure IoT Hub TLS
-ms.openlocfilehash: 62fdfc4277b44a502206eb37466e6409521186a5
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: eb6b04a476ac6100962e1103af37d75b719dd546
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75839528"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921246"
 ---
 # <a name="tls-support-in-iot-hub"></a>TLS-ondersteuning in IoT Hub
 
@@ -77,6 +77,19 @@ IoT-hubs die zijn geconfigureerd om alleen TLS 1,2 te accepteren, afdwingen ook 
 * `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
 * `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
+
+
+### <a name="use-tls-12-in-your-iot-hub-sdks"></a>TLS 1,2 gebruiken in uw IoT Hub Sdk's
+
+Gebruik de onderstaande koppelingen voor het configureren van TLS 1,2 en toegestane code ringen in IoT Hub client-Sdk's.
+
+| Taal | TLS 1,2 ondersteund | Documentatie |
+|----------|-------------------|---------------|
+| C        | Ja               | [Koppeling](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | Ja               | [Koppeling](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | Ja               | [Koppeling](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | Ja               | [Koppeling](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | Ja               | [Koppeling](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
 ### <a name="use-tls-12-in-your-iot-edge-setup"></a>TLS 1,2 gebruiken in uw IoT Edge-installatie

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 2627e4be20d80251e3753e46624c58a0c6244aba
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/13/2020
+ms.openlocfilehash: e115316daf3673d9ad854e7ccd6d5256d729b5af
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863084"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921014"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Wat is er nieuw in azure Cognitive Search
 
@@ -33,7 +33,11 @@ API-versies, Nuget-pakketten, naam ruimten en eind punten zijn ongewijzigd. Uw b
 
 + Door de [klant beheerde versleutelings sleutels](search-security-manage-encryption-keys.md) zijn nu algemeen beschikbaar. Als u REST gebruikt, kunt u de functie openen met behulp van `api-version=2019-05-06`. Voor beheerde code is het juiste pakket nog steeds [.NET SDK-versie 8,0-Preview](search-dotnet-sdk-migration-version-9.md) , ook al is de functie niet beschikbaar in de preview-fase. 
 
-+ *Beperkte IP-toegang en persoonlijk eind punt (preview)* voor een Search service-eind punt is nu beschikbaar in **API-Version = 2019-10 -01-preview**. U kunt een beveiligd eind punt instellen met behulp van de nieuwe eigenschappen **IpRule** en **NetworkRuleSet** in de rest API voor het [maken of bijwerken](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate) van beheer. Zie [How to use the Management rest API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)voor meer informatie over API-versies en regionale Beschik baarheid.
++ Persoonlijke toegang tot een zoek service is beschikbaar via twee mechanismen:
+
+  + U kunt de toegang tot specifieke IP-adressen beperken met behulp van de beheer REST API `api-version=2019-10-01-Preview` om de service te maken. De preview-API bevat nieuwe eigenschappen **IpRule** en **NetworkRuleSet** in de [CreateOrUpdate-API](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate). Deze preview-functie is beschikbaar in geselecteerde regio's. Zie [How to use the Management rest API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)voor meer informatie.
+
+  + Momenteel beschikbaar via een preview-versie van beperkte toegang kunt u een Azure Search service inrichten die Azure private endpoint ondersteunt voor verbindingen van clients in hetzelfde virtuele netwerk. Zie [een persoonlijk eind punt maken voor een beveiligde verbinding](service-create-private-endpoint.md)voor meer informatie.
 
 ### <a name="december-2019"></a>December 2019
 

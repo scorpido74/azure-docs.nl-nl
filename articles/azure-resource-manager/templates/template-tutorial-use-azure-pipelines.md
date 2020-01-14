@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2dfe17b99c1a9b1130695c8e5cd9c65ca7681d35
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e7d6b23aa3f35c99cf03f855152b2b231a60a965
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472448"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921625"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Zelf studie: doorlopende integratie van Azure Resource Manager sjablonen met Azure-pijp lijnen
 
@@ -194,7 +194,7 @@ Een pijp lijn maken met een stap voor het implementeren van een sjabloon:
 
     Breng de volgende wijzigingen aan:
 
-    * **deloymentScope**: Selecteer het implementatie bereik in de opties: `Management Group`, `Subscription` en `Resource Group`. Gebruik de **resource groep** in deze zelf studie. Zie [implementatie bereiken](deploy-rest.md#deployment-scope)voor meer informatie over de scopes.
+    * **deploymentScope**: Selecteer het implementatie bereik in de opties: `Management Group`, `Subscription` en `Resource Group`. Gebruik de **resource groep** in deze zelf studie. Zie [implementatie bereiken](deploy-rest.md#deployment-scope)voor meer informatie over de scopes.
     * **ConnectedServiceName**: Geef de naam van de service verbinding op die u eerder hebt gemaakt.
     * **Subscriptionname**: Geef de id van het doel abonnement op.
     * **actie**: de actie voor het **maken of bijwerken van de resource groep** heeft 2 acties-1. Maak een resource groep als er een nieuwe naam voor de resource groep wordt gegeven. twee. Implementeer de opgegeven sjabloon.

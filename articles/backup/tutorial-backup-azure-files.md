@@ -3,12 +3,12 @@ title: Zelf studie-back-ups maken van Azure Files bestands shares
 description: In deze zelf studie leert u hoe u de Azure Portal gebruikt voor het configureren van een Recovery Services kluis en het maken van back-ups van Azure-bestands shares.
 ms.date: 06/10/2019
 ms.topic: tutorial
-ms.openlocfilehash: f3c1956a0344d300fff9a745a4733b7bef45a367
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b002d1ea092d2d0507dc761f56ca7835f1521fb3
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171871"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921634"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Back-ups maken van Azure-bestands shares in de Azure Portal
 
@@ -28,7 +28,6 @@ Voordat u een back-up van een Azure-bestandsshare probeert te maken, moet u naga
 
 Back-up voor Azure-bestandsshares is in preview. Azure-bestandsshares worden ondersteund voor de accounts voor algemeen gebruik v1 en v2. De volgende back-upscenario's worden niet ondersteund voor Azure-bestandsshares:
 
-* U kunt Azure-bestandsshares niet beveiligen in opslagaccounts waarvoor virtuele netwerken zijn of een firewall is ingeschakeld.
 * Er is geen CLI beschikbaar voor het beveiligen van Azure Files met behulp van Azure Backup.
 * Het maximumaantal geplande back-ups per dag is één.
 * Het maximumaantal on-demand back-ups per dag is vier.

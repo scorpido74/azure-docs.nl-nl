@@ -6,21 +6,20 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/10/2020
-ms.openlocfilehash: 10af869a631b620c2c75aa69722dc03df15f8539
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 01c64a6880d671289d02dd36f9e4a9dda2f91131
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903845"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922814"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-server-using-azure-portal"></a>Gegevens versleuteling voor Azure Database for MySQL server met behulp van Azure Portal
 
 In dit artikel vindt u informatie over het instellen en beheren van de Azure Portal voor het instellen van gegevens versleuteling voor uw Azure Database for MySQL.
 
-## <a name="prerequisites-for-powershell"></a>Vereisten voor Power shell
+## <a name="prerequisites-for-cli"></a>Vereisten voor CLI
 
 * U moet een Azure-abonnement hebben en een beheerder van dat abonnement zijn.
-* Azure PowerShell moet zijn geïnstalleerd en worden uitgevoerd.
 * Maak een Azure Key Vault en een sleutel om te gebruiken voor door de klant beheerde sleutel.
 * De Key Vault moet de volgende eigenschap hebben om te kunnen worden gebruikt als een door de klant beheerde sleutel
     * [Voorlopig verwijderen](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
@@ -45,7 +44,7 @@ In dit artikel vindt u informatie over het instellen en beheren van de Azure Por
 
    ![Overzicht van toegangs beleid](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
-2. Selecteer de **belangrijkste machtigingen** **Get**, **wrap**, **dewrap** en **Principal** , de naam van de mysql-server.
+2. Selecteer de **belangrijkste machtigingen** **Get**, **wrap**, **dewrap** en **Principal**. Dit is de naam van de mysql-server. Als uw server-Principal niet kan worden gevonden in de lijst met bestaande principals, moet u deze registreren door de gegevens versleuteling voor de eerste keer in te stellen. Dit kan mislukken.
 
    ![Overzicht van toegangs beleid](media/concepts-data-access-and-security-data-encryption/access-policy-warp-unwrap.png)
 
@@ -63,9 +62,9 @@ In dit artikel vindt u informatie over het instellen en beheren van de Azure Por
 
 3. **Sla** de instellingen op.
 
-4. Om ervoor te zorgen dat alle bestanden (inclusief tijdelijke bestanden) volledig zijn versleuteld, moet de server opnieuw worden opgestart.
+4. Om ervoor te zorgen dat alle bestanden (inclusief **tijdelijke bestanden**) volledig zijn versleuteld, moet de server opnieuw worden **opgestart** .
 
-## <a name="restoring-or-creating-replica-of-the-server-which-has-data-encryption-enabled"></a>Replica terugzetten of maken van de server waarvoor gegevens versleuteling is ingeschakeld
+## <a name="restoring-or-creating-replica-of-the-server-which-has-data-encryption-enabled"></a>Replica van de server herstellen of maken, waarvoor gegevens versleuteling is ingeschakeld
 
 Zodra een Azure Database for MySQL is versleuteld met de door de klant beheerde sleutel die is opgeslagen in de Key Vault, wordt een nieuwe kopie van de server, ongeacht de lokale of geo-herstel bewerking of een replica (lokale/cross-regio). Voor een versleutelde MySQL-server kunt u de onderstaande stappen uitvoeren om een versleutelde herstelde server te maken.
 
@@ -81,16 +80,18 @@ Zodra een Azure Database for MySQL is versleuteld met de door de klant beheerde 
 
    ![Server markeren als niet toegankelijk](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
-3. Als u de niet-toegankelijke status wilt herstellen, moet u de sleutel op de herstelde server opnieuw valideren.
+3. Als u de niet-toegankelijke status wilt herstellen, moet u de sleutel op de herstelde server opnieuw valideren. Klik op de Blade **gegevens versleuteling** en vervolgens op de knop **sleutel opnieuw valideren** .
+
+   > [!NOTE]
+   > De eerste poging om opnieuw te valideren, mislukt omdat de service-principal van de nieuwe server toegang moet krijgen tot de sleutel kluis. Als u de Service-Principal wilt genereren, klikt u op de **sleutel opnieuw valideren**, waardoor er een fout optreedt, maar wordt de Service-Principal gegenereerd. Daarna raadpleegt u de stappen [in sectie 2](https://docs.microsoft.com/azure/mysql/howto-data-encryption-portal#setting-the-right-permissions-for-key-operations) hierboven.
 
    ![server opnieuw valideren](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
 
    U moet toegang tot de nieuwe server verlenen aan de Key Vault. 
 
-4. Zodra u de sleutel opnieuw hebt gevalideerd, wordt de normale functionaliteit van de server hervat.
+4. Nadat u de Service-Principal hebt geregistreerd, moet u de sleutel opnieuw valideren en wordt de normale functionaliteit van de server hervat.
 
    ![De normale server is hersteld](media/concepts-data-access-and-security-data-encryption/restore-successful.png)
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

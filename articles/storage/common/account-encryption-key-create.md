@@ -10,12 +10,12 @@ ms.date: 01/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c501dda60b65f78bb82649bed6bca4b031ad8a6b
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 39568d65978592b360512db2e556cfa6b59760b6
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/13/2020
-ms.locfileid: "75913158"
+ms.locfileid: "75921207"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Een account maken dat door de klant beheerde sleutels voor tabellen en wacht rijen ondersteunt
 
@@ -75,7 +75,7 @@ az provider register --namespace 'Microsoft.Storage'
 
 U moet een nieuw opslag account configureren voor het gebruik van de account versleutelings sleutel voor wacht rijen en tabellen op het moment dat u het opslag account maakt. Het bereik van de versleutelings sleutel kan niet worden gewijzigd nadat het account is gemaakt.
 
-Het opslag account moet van het type General-Purpose v2 zijn en moet worden geconfigureerd voor lokaal redundante opslag (LRS). U kunt het opslag account maken en configureren om te vertrouwen op de account versleutelings sleutel met behulp van Azure CLI of een Azure Resource Manager sjabloon.
+Het opslag account moet van het type voor algemeen gebruik v2 zijn. U kunt het opslag account maken en configureren om te vertrouwen op de account versleutelings sleutel met behulp van Azure CLI of een Azure Resource Manager sjabloon.
 
 > [!NOTE]
 > Alleen wachtrij-en tabel opslag kunnen eventueel worden geconfigureerd voor het versleutelen van gegevens met de versleutelings sleutel van het account wanneer het opslag account wordt gemaakt. Blob-opslag en Azure Files altijd de account versleutelings sleutel gebruiken voor het versleutelen van gegevens.

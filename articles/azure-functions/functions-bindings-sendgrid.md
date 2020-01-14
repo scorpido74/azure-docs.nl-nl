@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: a0731a66af32b45215145c1d4f4404eb008cf897
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d70b05842fc7f251af6aefd743f064c037f63b7b
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410049"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922359"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid-bindingen
 
@@ -27,9 +27,6 @@ De SendGrid-bindingen zijn opgenomen in het [micro soft. Azure. webjobs. Extensi
 ## <a name="packages---functions-2x-and-higher"></a>Pakketten-functions 2. x en hoger
 
 De SendGrid-bindingen zijn opgenomen in het [micro soft. Azure. webjobs. Extensions. SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet-pakket, versie 3. x. De bron code voor het pakket bevindt zich in de GitHub-opslag plaats [Azure-webjobs-SDK-Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) .
-
-> [!NOTE]
-> In versie 2. x en hoger wordt het onderwerp of abonnement dat is geconfigureerd in het `ServiceBusTrigger`-exemplaar niet gemaakt. Deze versies zijn gebaseerd op [micro soft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) , dat wachtrij beheer niet verwerkt.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -351,9 +348,9 @@ De volgende tabel geeft een lijst van de bindings configuratie-eigenschappen die
 
 | *Function. json* -eigenschap | Kenmerk/annotatie-eigenschap | Beschrijving | Optioneel |
 |--------------------------|-------------------------------|-------------|----------|
-| type || Moet worden ingesteld op `sendGrid`.| Nee |
-| richting || Moet worden ingesteld op `out`.| Nee |
-| name || De naam van de variabele die wordt gebruikt in de functie code voor de aanvraag of aanvraag tekst. Deze waarde is `$return` als er slechts één retour waarde is. | Nee |
+| type |n.v.t.| Moet worden ingesteld op `sendGrid`.| Nee |
+| richting |n.v.t.| Moet worden ingesteld op `out`.| Nee |
+| name |n.v.t.| De naam van de variabele die wordt gebruikt in de functie code voor de aanvraag of aanvraag tekst. Deze waarde is `$return` als er slechts één retour waarde is. | Nee |
 | apiKey | ApiKey | De naam van een app-instelling die uw API-sleutel bevat. Als deze niet is ingesteld, is de standaard naam voor de app-instelling *AzureWebJobsSendGridApiKey*.| Nee |
 | tot| Tot | Het e-mail adres van de ontvanger. | Ja |
 | uit| Vanaf | Het e-mail adres van de afzender. |  Ja |

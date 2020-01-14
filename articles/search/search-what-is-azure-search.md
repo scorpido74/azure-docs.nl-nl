@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 17cefdd5976efdd86d9f171f4eb1518f63fe043b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0d2fca7b46cd0392fe8e94c1371443e7fcebc2fd
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754293"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922485"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Wat is Azure Cognitive Search?
 
@@ -68,7 +68,7 @@ Azure Cognitive Search is heel geschikt voor de volgende toepassings scenario's:
 |-------------------|----------|
 | Hulpprogramma's voor het ontwikkelen van prototypen en voor controle | In de portal kunt u de [**wizard Gegevens importeren**](search-import-data-portal.md) gebruiken om indexeerfuncties te configureren, Index Designer om een index te bouwen, en [**Search Explorer**](search-explorer.md) om query’s te testen en scoreprofielen te verfijnen. U kunt ook elke gewenste index openen om het bijbehorende schema te bekijken. |
 | Controle en diagnose | [**Schakel de bewakings functies**](search-monitor-usage.md) in om verder te gaan dan de metrische gegevens: in één oogopslag die altijd zichtbaar zijn in de portal. Metrische gegevens over query’s per seconde, latentie en beperkingen worden vastgelegd en gerapporteerd op portalpagina’s zonder dat hiervoor extra configuratie is vereist.|
-| Versleuteling aan de serverzijde | [**Micro soft Managed encryption-at-rest**](search-security-overview.md#encrypted-transmission-and-storage) is ingebouwd in de interne opslaglaag en is onherroepelijk. Optioneel kunt u de standaard versleuteling aanvullen met door de [**klant beheerde versleutelings sleutels (preview)** ](search-security-manage-encryption-keys.md). Sleutels die u in Azure Key Vault maakt en beheert, worden gebruikt voor het versleutelen van indexen en synoniemen in azure Cognitive Search. |
+| Versleuteling aan de serverzijde | [**Micro soft Managed encryption-at-rest**](search-security-overview.md#encrypted-transmission-and-storage) is ingebouwd in de interne opslaglaag en is onherroepelijk. Optioneel kunt u de standaard versleuteling aanvullen met door de [**klant beheerde versleutelings sleutels**](search-security-manage-encryption-keys.md). Sleutels die u in Azure Key Vault maakt en beheert, worden gebruikt voor het versleutelen van indexen en synoniemen in azure Cognitive Search. |
 | Infrastructuur | Het **maximaal beschikbare platform** zorgt ervoor dat de zoekservice uiterst betrouwbaar is. Bij een juiste schaal [biedt Azure Cognitive Search een sla van 99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/).<br/><br/> **Volledig beheerd en schaalbaar** als een end-to-end oplossing vereist Azure Cognitive Search absoluut geen infrastructuur beheer. De service kan worden aangepast aan uw persoonlijke behoeften door in twee dimensies te schalen voor het verwerken van meer documentopslag, een hogere querybelasting, of beide.<br/><br/>|
 
 ## <a name="how-to-use-azure-cognitive-search"></a>Azure Cognitive Search gebruiken

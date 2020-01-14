@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2019
 ms.author: memildin
-ms.openlocfilehash: fabccb7a3f49442a009fd69ee6d3b831760751d2
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 1a66ea200082f60a3a763c6a4e2bdea62ec473d8
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201017"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920989"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Geef beveiligings contact gegevens op in Azure Security Center
-Azure Security Center wordt aangeraden om de contact gegevens van de beveiliging voor uw Azure-abonnement te verstrekken als u dat nog niet hebt gedaan. Deze informatie wordt gebruikt door Microsoft om contact met u op te nemen als door Microsoft Security Response Center (MSRC) wordt gedetecteerd dat uw klantgegevens zijn geopend door een illegale of niet-geautoriseerde derde. MSRC voert de selectie van beveiligings bewaking van het Azure-netwerk en de infra structuur uit en ontvangt bedreigings informatie en klachten van derden.
+Azure Security Center wordt aangeraden om de contact gegevens van de beveiliging voor uw Azure-abonnement te verstrekken als u dat nog niet hebt gedaan. Deze informatie wordt gebruikt door Microsoft om contact met u op te nemen als door Microsoft Security Response Center (MSRC) wordt gedetecteerd dat uw klantgegevens zijn geopend door een illegale of niet-geautoriseerde derde. MSRC voert een speciale beveiligingscontrole van het Azure-netwerk en de Azure-infrastructuur uit en ontvangt bedreigingsinformatie en klachten van derden over misbruik.
 
-Er wordt een melding per e-mail verzonden de eerste keer dat een waarschuwing plaatsvindt en alleen voor waarschuwingen met een hoge urgentie. E-mailvoorkeuren kunnen alleen worden geconfigureerd voor abonnementsbeleid. Resourcegroepen binnen een abonnement nemen deze instellingen over. 
+Er wordt een melding per e-mail verzonden de eerste keer dat een waarschuwing plaatsvindt en alleen voor waarschuwingen met een hoge urgentie. E-mailvoorkeuren kunnen alleen worden geconfigureerd voor abonnementsbeleid. Resourcegroepen binnen een abonnement nemen deze instellingen over. Waarschuwingen zijn alleen beschikbaar in de laag standaard van Azure Security Center.
 
 E-mailmeldingen voor waarschuwingen worden verzonden volgens de volgende richtlijnen:
 - Alleen voor waarschuwingen met hoge urgentie
@@ -40,21 +40,21 @@ Als er bijvoorbeeld al een e-mailbericht is verstuurd om u te waarschuwen voor e
 
 1. Selecteer in de portal **prijzen & instellingen**.
 1. Klik op het abonnement.
-1. Klik op **e-mail meldingen**.
+1. Klik op **E-mailmeldingen**.
 
 > [!NOTE]
 > Als u een aanbeveling implementeert, selecteert u onder **aanbevelingen**de optie **beveiligings contact gegevens opgeven**, selecteert u het Azure-abonnement om contact gegevens op te geven. Hiermee opent u **e-mail meldingen**.
 
-   ![Gegevens van de contactpersoon voor beveiliging opgeven][2]
+   ![Contactgegevens voor beveiliging verstrekken][2]
 
    * Voer het e-mail adres of de adressen van het beveiligings contact in, gescheiden door komma's. Er is geen limiet voor het aantal e-mail adressen dat u kunt invoeren.
    * Geef een internationaal telefoon nummer voor de contact persoon voor beveiliging op.
    * Schakel de optie **e-mail berichten over waarschuwingen verzenden**in als u e-mails wilt ontvangen over waarschuwingen met een hoge urgentie.
-   * In de toekomst kunt u e-mail meldingen verzenden naar abonnements eigenaren. Deze optie is momenteel grijs weer gegeven.
+   * U hebt de optie om e-mail meldingen te verzenden naar abonnements eigenaren (klassieke service beheerder en mede beheerders, plus de rol van de RBAC-eigenaar bij het abonnements bereik).
    * Selecteer **Opslaan** om de contact gegevens van de beveiliging toe te passen op uw abonnement.
 
 ## <a name="see-also"></a>Zie ook
-Zie de volgende onderwerpen voor meer informatie over het Beveiligingscentrum:
+Zie de volgende onderwerpen voor meer informatie over Security Center:
 
 * [Setting security policies in Azure Security Center](tutorial-security-policy.md) (Beveiligingsbeleid instellen in Azure Security Center): leer hoe u beveiligingsbeleid voor uw Azure-abonnementen en -resourcegroepen configureert.
 * [Aanbevelingen voor beveiliging in azure Security Center](security-center-recommendations.md) : Ontdek hoe aanbevelingen u helpen uw Azure-resources te beveiligen.

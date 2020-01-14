@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 473f1d12188a8686748d19c8c35d4421f9477ae9
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: a8c19a8e88ec7fe2002a327c7e4a57874a753b9f
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912797"
+ms.locfileid: "75921237"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Bedrijfs kritieke blobgegevens opslaan met onveranderlijke opslag
 
@@ -76,7 +76,7 @@ De volgende limieten gelden voor het Bewaar beleid:
 
 Toevoeg-blobs bestaan uit gegevens blokken en geoptimaliseerd voor bewerkingen voor het toevoegen van gegevens die vereist zijn voor controle-en logboek registratie scenario's. Door middel van toevoeg-blobs kunnen nieuwe blokken alleen worden toegevoegd aan het einde van de blob. Ongeacht de Onveranderbaarheid is het niet toegestaan om bestaande blokken in een toevoeg-BLOB te wijzigen of te verwijderen. Zie [informatie over toevoeg](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)-blobs voor meer informatie over toevoeg-blobs.
 
-Alleen op tijd gebaseerd Bewaar beleid heeft een `allowProtectedAppendWrites` instelling waarmee u nieuwe blokken kunt schrijven naar een toevoeg-BLOB terwijl u Onveranderbaarheid-beveiliging en-naleving behoudt. Als u deze functie inschakelt, kunt u rechtstreeks een toevoeg-Blob in de door beleid beveiligde container maken en nieuwe gegevens blokken toevoegen aan het einde van bestaande toevoeg-blobs met behulp van de *AppendBlock* -API. Alleen nieuwe blokken kunnen worden toegevoegd en bestaande blokken kunnen niet worden gewijzigd of verwijderd. Er wordt nog steeds een tijd-retentie Onveranderbaarheid-beveiliging toegepast, waardoor de toevoeg-BLOB niet kan worden verwijderd totdat de juiste Bewaar periode is verstreken.  
+Alleen op tijd gebaseerd Bewaar beleid heeft een `allowProtectedAppendWrites` instelling waarmee u nieuwe blokken kunt schrijven naar een toevoeg-BLOB terwijl u Onveranderbaarheid-beveiliging en-naleving behoudt. Als u deze functie inschakelt, kunt u rechtstreeks een toevoeg-Blob in de door beleid beveiligde container maken en nieuwe gegevens blokken toevoegen aan het einde van bestaande toevoeg-blobs met behulp van de *AppendBlock* -API. Alleen nieuwe blokken kunnen worden toegevoegd en bestaande blokken kunnen niet worden gewijzigd of verwijderd. Er wordt nog steeds een tijd-retentie Onveranderbaarheid-beveiliging toegepast, waardoor de toevoeg-BLOB niet kan worden verwijderd totdat de juiste Bewaar periode is verstreken. Het inschakelen van deze instelling heeft geen invloed op het gedrag van de Onveranderbaarheid van blok-blobs of pagina-blobs.
 
 Omdat deze instelling deel uitmaakt van een Bewaar beleid op basis van tijd, blijven de toevoeg-blobs nog steeds in de onveranderbare status voor de duur van de *daad werkelijke* Bewaar periode. Omdat er nieuwe gegevens kunnen worden toegevoegd na het maken van de toevoeg-blob, is er een enigszins verschil in de manier waarop de Bewaar periode wordt bepaald. De doel matige Bewaar periode is het verschil tussen de **laatste wijzigings tijd** van de BLOB en de door de gebruiker opgegeven Bewaar periode. Op dezelfde manier als het Bewaar interval uitgebreid is, gebruikt onveranderbare opslag de meest recente waarde van de door de gebruiker opgegeven Bewaar termijn om de ingangs periode te berekenen.
 
