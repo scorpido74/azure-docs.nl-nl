@@ -16,14 +16,14 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d21bf0f2ba7c93a35952d2eb2dd4df49bb3260b
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 06dfe1e76682d70170bfea104050b1000269c38f
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290761"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932396"
 ---
-# <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Pass-Through-verificatie Azure Active Directory: Veelgestelde vragen
+# <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Pass-Through-verificatie Azure Active Directory: veelgestelde vragen
 
 In dit artikel vindt u veelgestelde vragen over de Pass-Through-verificatie van Azure Active Directory (Azure AD). Blijf op de hoogte van bijgewerkte inhoud.
 
@@ -44,7 +44,7 @@ Nee. Pass-Through-verificatie is alleen beschikbaar in het wereld wijde exemplaa
 Ja. Alle mogelijkheden voor voorwaardelijke toegang, inclusief Azure Multi-Factor Authentication, werken met Pass Through-verificatie.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Ondersteunt Pass-Through-verificatie "alternatieve ID" als de gebruikers naam, in plaats van "userPrincipalName"?
-Bij een beperkt gebied ondersteunt Pass-Through-verificatie alternatieve ID als de gebruikers naam wanneer deze wordt geconfigureerd in Azure AD Connect. Azure AD Connect moet het on-premises Active Directory `UserPrincipalName` kenmerk synchroniseren met Azure AD als een vereiste. Dit maakt de `UserPrincipalName` on-premises AD-en Azure AD identiek. Als u een ander kenmerk wilt gebruiken om te synchroniseren van on-premises AD als de UPN voor Azure AD, moet u een wachtwoord hash-synchronisatie of AD FS gebruiken. Zie voor meer informatie, [aangepaste installatie van Azure AD Connect](how-to-connect-install-custom.md). Niet alle Office 365-toepassingen `Alternate ID`ondersteunen. Raadpleeg de documentatie van de specifieke toepassings ondersteuning voor de toepassing.
+Bij een beperkt gebied ondersteunt Pass-Through-verificatie alternatieve ID als de gebruikers naam wanneer deze wordt geconfigureerd in Azure AD Connect. Azure AD Connect moet de on-premises Active Directory `UserPrincipalName` kenmerk synchroniseren met Azure AD als een vereiste. Dit maakt het `UserPrincipalName` op de on-premises AD-en Azure AD identiek. Als u een ander kenmerk wilt gebruiken om te synchroniseren van on-premises AD als de UPN voor Azure AD, moet u een wachtwoord hash-synchronisatie of AD FS gebruiken. Zie voor meer informatie, [aangepaste installatie van Azure AD Connect](how-to-connect-install-custom.md). Niet alle Office 365-toepassingen ondersteunen `Alternate ID`. Raadpleeg de documentatie van de specifieke toepassings ondersteuning voor de toepassing.
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Fungeert wachtwoord hash synchroniseren als terugval voor Pass-Through-verificatie?
 
@@ -66,7 +66,7 @@ Voor een goede werking van deze functie hebt u versie 1.1.750.0 of hoger nodig v
 
 Als u het [terugschrijven van wacht woorden](../authentication/concept-sspr-writeback.md) voor een specifieke gebruiker hebt geconfigureerd en als de gebruiker zich aanmeldt met behulp van Pass-Through-verificatie, kunnen ze hun wacht woord wijzigen of opnieuw instellen. De wacht woorden worden teruggeschreven naar een on-premises Active Directory, zoals verwacht.
 
-Als u het terugschrijven van wacht woorden niet hebt geconfigureerd voor een specifieke gebruiker of als aan de gebruiker geen geldige Azure AD-licentie is toegewezen, kan de gebruiker hun wacht woord niet bijwerken in de Cloud. Ze kunnen hun wacht woord niet bijwerken, zelfs niet als het wacht woord is verlopen. In plaats daarvan ziet de gebruiker het volgende bericht: "Uw organisatie staat niet toe dat u uw wacht woord op deze site bijwerkt. Werk het bij volgens de methode die door uw organisatie wordt aanbevolen of vraag uw beheerder om hulp nodig. " De gebruiker of de beheerder moet het wacht woord opnieuw instellen in on-premises Active Directory.
+Als u het terugschrijven van wacht woorden niet hebt geconfigureerd voor een specifieke gebruiker of als aan de gebruiker geen geldige Azure AD-licentie is toegewezen, kan de gebruiker hun wacht woord niet bijwerken in de Cloud. Ze kunnen hun wacht woord niet bijwerken, zelfs niet als het wacht woord is verlopen. In plaats daarvan ziet de gebruiker het volgende bericht: "uw organisatie staat niet toe dat u uw wacht woord op deze site bijwerkt. Werk het bij volgens de methode die door uw organisatie wordt aanbevolen of vraag uw beheerder om hulp nodig. " De gebruiker of de beheerder moet het wacht woord opnieuw instellen in on-premises Active Directory.
 
 ## <a name="how-does-pass-through-authentication-protect-you-against-brute-force-password-attacks"></a>Hoe wordt de Pass-Through-verificatie beschermd tegen aanvallen met felle wacht woorden?
 
@@ -87,7 +87,7 @@ Ja. Als WPAD (Web Proxy Auto-Discovery) is ingeschakeld in uw on-premises omgevi
 Als u geen WPAD hebt in uw-omgeving, kunt u proxy gegevens toevoegen (zoals hieronder wordt weer gegeven), zodat een Pass-Through-verificatie agent kan communiceren met Azure AD:
 - Configureer proxy-informatie in Internet Explorer voordat u de Pass-Through-verificatie agent op de server installeert. Hiermee kunt u de installatie van de verificatie agent volt ooien, maar deze wordt nog steeds weer gegeven als **inactief** in de beheer Portal.
 - Ga op de-server naar ' C:\Program Files\Microsoft Azure AD Connect authentication agent '.
-- Bewerk het configuratie bestand ' AzureADConnectAuthenticationAgentService ' en voeg de volgende regels toe (Vervang '\:http//contosoproxy.com:8080 ' door het daad werkelijke proxy adres):
+- Bewerk het configuratie bestand ' AzureADConnectAuthenticationAgentService ' en voeg de volgende regels toe (Vervang ' http\://contosoproxy.com:8080 ' door uw eigen eigen proxy adres):
 
 ```
    <system.net>
@@ -111,7 +111,7 @@ De communicatie tussen elke pass-through-verificatie agent en Azure AD wordt bev
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Een Pass-Through-verificatie agent Hoe kan ik verwijderen?
 
-Zolang er een Pass-Through-verificatie agent wordt uitgevoerd, blijft deze actief en wordt de aanmeldings aanvragen van gebruikers continu verwerkt. Als u een verificatie agent wilt verwijderen, gaat u naar **configuratie scherm-> Program ma's-> Program ma's en onderdelen** en verwijdert u zowel de **Microsoft Azure AD Connect authentication agent** als de **Microsoft Azure AD connect agent Updater** ma's.
+Zolang er een Pass-Through-verificatie agent wordt uitgevoerd, blijft deze actief en wordt de aanmeldings aanvragen van gebruikers continu verwerkt. Als u de installatie van een verificatie agent wilt ongedaan maken, gaat u naar **configuratie scherm-> Program ma's-> Program ma's en onderdelen** en verwijdert u de **Microsoft Azure AD Connect Authentication Agent** en de Microsoft Azure AD Program ma's voor de verbinding met de **agent bijwerken** .
 
 Als u de Blade Pass-Through-verificatie in het [Azure Active Directory-beheer centrum](https://aad.portal.azure.com) controleert nadat u de vorige stap hebt voltooid, ziet u dat de verificatie agent wordt weer gegeven als **inactief**. Dit wordt _verwacht_. De verificatie agent wordt na een paar dagen automatisch verwijderd uit de lijst.
 
@@ -134,7 +134,7 @@ Het installeren van meerdere Pass Through-verificatie agenten garandeert een [ho
 Houd rekening met de piek en de gemiddelde belasting van aanmeldings aanvragen die u verwacht te zien in uw Tenant. Als referentie kan één verificatie agent 300 tot 400 authenticaties per seconde afhandelen op een standaard 4-core CPU, 16 GB RAM-server.
 
 Als u het netwerk verkeer wilt schatten, gebruikt u de volgende richt lijnen:
-- Elke aanvraag heeft een Payload grootte van (0,5 K + 1K * num_of_agents) bytes; gegevens van Azure AD naar de verificatie agent. Hier geeft ' num_of_agents ' het aantal verificatie agenten aan dat is geregistreerd op uw Tenant.
+- Elke aanvraag heeft een Payload grootte van (0,5 K + 1K * num_of_agents) bytes; gegevens van Azure AD naar de verificatie agent. Num_of_agents geeft hier het aantal verificatie agenten aan dat is geregistreerd op uw Tenant.
 - Elk antwoord heeft een Payload-grootte van 1 KB aan bytes; gegevens van de verificatie-agent naar Azure AD.
 
 Voor de meeste klanten zijn twee of drie verificatie agenten in totaal voldoende voor hoge Beschik baarheid en capaciteit. U moet verificatie agenten voor uw domein controllers sluiten om de aanmeldings latentie te verbeteren.
@@ -160,7 +160,7 @@ Als u een Pass-Through-verificatie agent van een server verwijdert, wordt de ser
 
 ## <a name="i-have-an-older-tenant-that-was-originally-setup-using-ad-fs--we-recently-migrated-to-pta-but-now-are-not-seeing-our-upn-changes-synchronizing-to-azure-ad--why-are-our-upn-changes-not-being-synchronized"></a>Ik heb een oudere Tenant die oorspronkelijk is ingesteld met behulp van AD FS.  Onlangs gemigreerd naar PTA, maar de UPN-wijzigingen worden niet meer in azure AD gesynchroniseerd.  Waarom worden de UPN-wijzigingen niet gesynchroniseerd?
 
-A: In de volgende situaties worden uw on-premises UPN-wijzigingen mogelijk niet gesynchroniseerd als:
+A: in de volgende gevallen worden uw on-premises UPN-wijzigingen mogelijk niet gesynchroniseerd als:
 
 - Uw Azure AD-Tenant is gemaakt vóór 15 juni 2015
 - U bent in eerste instantie federatieve met uw Azure AD-Tenant met behulp van AD FS voor verificatie
@@ -168,20 +168,20 @@ A: In de volgende situaties worden uw on-premises UPN-wijzigingen mogelijk niet 
 
 Dit komt omdat het standaard gedrag van tenants die vóór 15 juni 2015 zijn gemaakt, de UPN-wijzigingen blokkeert.  Als u de UPN-wijzigingen wilt blok keren, moet u de volgende Power shell-cmdlt uitvoeren:  
 
-`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers-Enable $True`
+`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $True`
 
 Tenants die zijn gemaakt na 15 juni 2015, hebben het standaard gedrag om UPN-wijzigingen te synchroniseren.   
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Huidige beperkingen](how-to-connect-pta-current-limitations.md): Meer informatie over welke scenario's worden ondersteund en wat niet.
-- [Snel starten](how-to-connect-pta-quick-start.md): Ga aan de slag met Azure AD Pass-Through-verificatie.
+- [Huidige beperkingen](how-to-connect-pta-current-limitations.md): meer informatie over welke scenario's worden ondersteund en wat niet.
+- [Snel starten](how-to-connect-pta-quick-start.md): aan de slag met Azure AD Pass-Through-verificatie.
 - [Migratie van AD FS naar Pass-](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) through-verificatie: een gedetailleerde hand leiding voor het migreren van AD FS (of andere Federatie technologieën) naar Pass-Through-verificatie.
-- [Slimme vergren deling](../authentication/howto-password-smart-lockout.md): Meer informatie over het configureren van de mogelijkheden voor slim vergren delen van uw Tenant voor het beveiligen van gebruikers accounts.
-- [Technisch diep gaande](how-to-connect-pta-how-it-works.md): Begrijpen hoe de functie Pass-Through-verificatie werkt.
-- [Problemen oplossen](tshoot-connect-pass-through-authentication.md): Meer informatie over het oplossen van veelvoorkomende problemen met de functie Pass-Through-verificatie.
-- [Grondige beveiliging](how-to-connect-pta-security-deep-dive.md): Krijg uitgebreide technische informatie over de functie Pass-Through-verificatie.
-- [Naadloze SSO van Azure AD](how-to-connect-sso.md): Meer informatie over deze complementaire functie.
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Gebruik het Azure Active Directory-forum om nieuwe functie aanvragen te verwerken.
+- [Slimme vergren deling](../authentication/howto-password-smart-lockout.md): informatie over het configureren van de mogelijkheden voor slim vergren delen van uw Tenant voor het beveiligen van gebruikers accounts.
+- [Technisch diep gaande](how-to-connect-pta-how-it-works.md): begrijpen hoe de functie Pass-Through-verificatie werkt.
+- [Problemen oplossen](tshoot-connect-pass-through-authentication.md): informatie over het oplossen van veelvoorkomende problemen met de functie Pass-Through-verificatie.
+- [Grondige beveiliging](how-to-connect-pta-security-deep-dive.md): krijg uitgebreide technische informatie over de functie Pass-Through-verificatie.
+- [Naadloze SSO van Azure AD](how-to-connect-sso.md): meer informatie over deze complementaire functie.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): gebruik het Azure Active Directory-forum om nieuwe functie aanvragen te verwerken.
 

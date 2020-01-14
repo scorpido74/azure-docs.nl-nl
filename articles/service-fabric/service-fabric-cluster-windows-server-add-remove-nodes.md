@@ -5,48 +5,68 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: aa9550d1ec6201f7cbaf552fac5f71c875428e21
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f9bee35ee8e82070b4cf601139b471562ba5e10b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75458249"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934212"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Knoop punten toevoegen aan of verwijderen uit een zelfstandig Service Fabric cluster dat wordt uitgevoerd op Windows Server
 Nadat u [uw zelfstandige service Fabric cluster op Windows Server-computers hebt gemaakt](service-fabric-cluster-creation-for-windows-server.md), kan het zijn dat uw (zakelijke) uw bedrijfs behoeften veranderen en moet u knoop punten toevoegen aan of verwijderen uit uw cluster. Dit artikel bevat gedetailleerde stappen om dit te doen. Houd er rekening mee dat de functionaliteit van het knoop punt toevoegen/verwijderen niet wordt ondersteund in lokale ontwikkel clusters.
 
 ## <a name="add-nodes-to-your-cluster"></a>Knoop punten toevoegen aan uw cluster
 
-1. Bereid de virtuele machine of computer voor die u aan het cluster wilt toevoegen aan de hand van de stappen die worden beschreven in het [plannen en voorbereiden van de implementatie van het service Fabric-cluster](service-fabric-cluster-creation-for-windows-server.md)
-2. Bepaal welk fout domein en welk upgrade domein u deze VM/machine gaat toevoegen
-3. Extern bureau blad (RDP) naar de virtuele machine of computer die u aan het cluster wilt toevoegen
-4. Kopieer of [down load het zelfstandige pakket voor service Fabric voor Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690) naar de VM/machine en pak het pakket uit
-5. Voer Power shell uit met verhoogde bevoegdheden en navigeer naar de locatie van het uitgepakte pakket
-6. Voer het script *AddNode. ps1* uit met de para meters die het nieuwe knoop punt beschrijven dat moet worden toegevoegd. In het onderstaande voor beeld wordt een nieuw knoop punt met de naam VM5, met het type NodeType0 en IP-adres 182.17.34.52, toegevoegd aan UD1 en FD:/DC1/R0. De *ExistingClusterConnectionEndPoint* is een verbindings eindpunt voor een knoop punt dat al aanwezig is in het bestaande cluster. Dit kan het IP-adres zijn van *een wille keurig* knoop punt in het cluster.
+1. Bereid de virtuele machine die u wilt toevoegen aan uw cluster voor door de stappen te volgen die worden beschreven in het [plannen en voorbereiden van de implementatie van het service Fabric-cluster](service-fabric-cluster-standalone-deployment-preparation.md).
 
-    ```
-    .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
-    ```
-    Zodra het uitvoeren van het script is voltooid, kunt u controleren of het nieuwe knoop punt is toegevoegd door de cmdlet [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) uit te voeren.
+2. Bepaal welk fout domein en welk upgrade domein u deze VM/machine gaat toevoegen aan.
 
-7. Om consistentie tussen de verschillende knoop punten in het cluster te garanderen, moet u een configuratie-upgrade starten. Voer [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) uit om het meest recente configuratie bestand op te halen en voeg het zojuist toegevoegde knoop punt toe aan de sectie knoop punten. Het is ook raadzaam om altijd de meest recente cluster configuratie beschikbaar te hebben wanneer u een cluster opnieuw moet implementeren met dezelfde configuratie.
+   Als u certificaten gebruikt voor het beveiligen van het cluster, worden de certificaten naar verwachting geïnstalleerd in de lokale certificaat archieven in de voor bereiding van het knoop punt om lid te worden van het cluster. De analoge is van toepassing wanneer u andere vormen van beveiliging gebruikt.
 
-    ```
-        {
-            "nodeName": "vm5",
-            "iPAddress": "182.17.34.52",
-            "nodeTypeRef": "NodeType0",
-            "faultDomain": "fd:/dc1/r0",
-            "upgradeDomain": "UD1"
-        }
-    ```
+3. Extern bureau blad (RDP) naar de virtuele machine/machine die u aan het cluster wilt toevoegen.
+
+4. Kopieer of [down load het zelfstandige pakket voor service Fabric voor Windows Server](https://go.microsoft.com/fwlink/?LinkId=730690) naar de VM/machine en pak het pakket uit.
+
+5. Voer Power shell uit met verhoogde bevoegdheden en ga naar de locatie van het uitgepakte pakket.
+
+6. Voer het script *AddNode. ps1* uit met de para meters die het nieuwe knoop punt beschrijven dat moet worden toegevoegd. In het volgende voor beeld wordt een nieuw knoop punt met de naam VM5, met het type NodeType0 en IP-adres 182.17.34.52, toegevoegd aan UD1 en FD:/DC1/R0. `ExistingClusterConnectionEndPoint` is een verbindings eindpunt voor een knoop punt dat zich al in het bestaande cluster bevindt. Dit kan het IP-adres zijn van *een wille keurig* knoop punt in het cluster. 
+
+   Niet beveiligd (prototypen):
+
+   ```
+   .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
+   ```
+
+   Beveiligd (op basis van een certificaat):
+
+   ```  
+   $CertThumbprint= "***********************"
+    
+   .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -X509Credential -ServerCertThumbprint $CertThumbprint  -AcceptEULA
+
+   ```
+
+   Wanneer het uitvoeren van het script is voltooid, kunt u controleren of het nieuwe knoop punt is toegevoegd door de cmdlet [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) uit te voeren.
+
+7. Om consistentie tussen de verschillende knoop punten in het cluster te garanderen, moet u een configuratie-upgrade starten. Voer [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) uit om het meest recente configuratie bestand op te halen en voeg het zojuist toegevoegde knoop punt toe aan de sectie knoop punten. Het is ook raadzaam om altijd de meest recente cluster configuratie beschikbaar te hebben voor het geval u een cluster met dezelfde configuratie opnieuw moet implementeren.
+
+   ```
+    {
+        "nodeName": "vm5",
+        "iPAddress": "182.17.34.52",
+        "nodeTypeRef": "NodeType0",
+        "faultDomain": "fd:/dc1/r0",
+        "upgradeDomain": "UD1"
+    }
+   ```
+
 8. Voer [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) uit om de upgrade te starten.
 
-    ```
-    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
+   ```
+   Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
+   ```
 
-    ```
-    U kunt de voortgang van de upgrade op Service Fabric Explorer bewaken. U kunt ook [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) uitvoeren
+   U kunt de voortgang van de upgrade op Service Fabric Explorer bewaken. U kunt ook [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)uitvoeren.
 
 ### <a name="add-nodes-to-clusters-configured-with-windows-security-using-gmsa"></a>Knoop punten toevoegen aan clusters die zijn geconfigureerd met Windows-beveiliging met behulp van gMSA
 Voor clusters die zijn geconfigureerd met een door een groep beheerd service account (gMSA) (https://technet.microsoft.com/library/hh831782.aspx), kan een nieuw knoop punt worden toegevoegd met behulp van een configuratie-upgrade:
@@ -104,7 +124,7 @@ Voeg de para meter ' NodesToBeRemoved ' toe aan de sectie ' Setup ' in de sectie
     Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
 
     ```
-    U kunt de voortgang van de upgrade op Service Fabric Explorer bewaken. U kunt ook [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) uitvoeren
+    U kunt de voortgang van de upgrade op Service Fabric Explorer bewaken. U kunt ook [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps)uitvoeren.
 
 > [!NOTE]
 > Het verwijderen van knoop punten kan meerdere upgrades initiëren. Sommige knoop punten zijn gemarkeerd met `IsSeedNode=”true”`-tag en kunnen worden geïdentificeerd door het cluster manifest te doorzoeken met behulp van `Get-ServiceFabricClusterManifest`. Het verwijderen van deze knoop punten kan langer duren dan andere omdat de Seed-knoop punten in dergelijke scenario's moeten worden verplaatst. Het cluster moet mini maal drie knoop punten van het primaire knooppunt type onderhouden.

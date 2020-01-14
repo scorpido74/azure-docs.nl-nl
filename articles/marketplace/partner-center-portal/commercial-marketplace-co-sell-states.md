@@ -1,19 +1,19 @@
 ---
 title: Status codes co-sell | Azure Marketplace
 description: Gebruik deze provincie codes bij het verstrekken van contact gegevens op de pagina voor co-sell van uw aanbieding.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 38dcfe04473e8d2fbd81614908adef9636c44b19
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c64fc161108560e893ef7b207782d79b6c3c01d4
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812862"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934367"
 ---
 # <a name="co-sell-state-codes"></a>Status codes co-sell
 
@@ -21,7 +21,7 @@ Gebruik, indien van toepassing, deze codes om informatie over de staat/provincie
 
 ## <a name="stateprovince-table"></a>Tabel staat/provincie
 
-|   Naam van provincie               |   Code    |
+|   Naam van provincie               |   Coderen    |
 |-------------------------------------|-----------|
 | Alabama                             | VS-AL     |
 | Alaska                              | VS-AK     |
@@ -33,7 +33,7 @@ Gebruik, indien van toepassing, deze codes om informatie over de staat/provincie
 | Delaware                            | VS-DE     |
 | Florida                             | VS-FL     |
 | Georgië                             | VS-GA     |
-| Hawaï                              | VS-HOOG     |
+| Hawaii                              | VS-HOOG     |
 | Idaho                               | US-ID     |
 | Illinois                            | US-IL     |
 | Indiana                             | VS-IN     |
@@ -42,7 +42,7 @@ Gebruik, indien van toepassing, deze codes om informatie over de staat/provincie
 | Kentucky                            | VS-KY     |
 | Louisiana                           | VS-LA     |
 | Maine                               | VS     |
-| Mary land                            | US-MD     |
+| Maryland                            | US-MD     |
 | Massachusetts                       | VS-MA     |
 | Michigan                            | VS-MI     |
 | Minnesota                           | VS-MN     |
@@ -51,9 +51,9 @@ Gebruik, indien van toepassing, deze codes om informatie over de staat/provincie
 | Montana                             | VS-MT     |
 | Nebraska                            | VS-NE     |
 | Nevada                              | VS-NV     |
-| Nieuwe Hampshire                       | VS-NH     |
-| Nieuwe Jersey                          | VS-NJ     |
-| Nieuwe Mexico                          | VS-NM     |
+| New Hampshire                       | VS-NH     |
+| New Jersey                          | VS-NJ     |
+| New Mexico                          | VS-NM     |
 | New York                            | VS-NY     |
 | North Carolina                      | US-NC     |
 | North Dakota                        | VS-ND     |
@@ -61,19 +61,19 @@ Gebruik, indien van toepassing, deze codes om informatie over de staat/provincie
 | Oklahoma                            | VS-OK     |
 | Oregon                              | VS-OF     |
 | Pennsylvania                        | VS-PA     |
-| Rhode-eiland                        | VS-RI     |
-| Zuid-Carolina                      | VS-SC     |
-| Zuid-Dakota                        | VS-SD     |
+| Rhode Island                        | VS-RI     |
+| South Carolina                      | VS-SC     |
+| South Dakota                        | VS-SD     |
 | Tennessee                           | VS-TN     |
 | Texas                               | VS-TX     |
 | Utah                                | US-UT     |
 | Vermont                             | VS-VT     |
 | Virginia                            | VS-VA     |
 | Washington                          | VS-WA     |
-| West-Virginia                       | VS-WV     |
+| West Virginia                       | VS-WV     |
 | Wisconsin                           | VS-WI     |
 | Wyoming                             | VS-WY     |
-| District van Columbia                | VS-DC     |
+| District of Columbia                | VS-DC     |
 | Amerikaans-Samoa                      | US-AS     |
 | Guam                                | US-GU     |
 | Noordelijke Marianen            | US-MP     |

@@ -1,9 +1,9 @@
 ---
 title: Uw StorSimple-apparaat bijwerken | Microsoft Docs
-description: Wordt uitgelegd hoe u de functie StorSimple update gebruiken voor het installeren van hotfixes en updates voor de normale en onderhoud.
+description: In dit artikel wordt uitgelegd hoe u de StorSimple-update functie kunt gebruiken om updates en hotfixes voor reguliere en onderhouds modus te installeren.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: carmonm
 editor: ''
 ms.assetid: 786059f5-2a38-4105-941d-0860ce4ac515
@@ -13,113 +13,113 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
-ms.author: v-sharos
-ms.openlocfilehash: d973a16c121a1e8ebee10826d135bcbb33ef748c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: c9451afaefdd220b5f87d4650c7844f06926b03a
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61409931"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933425"
 ---
-# <a name="update-your-storsimple-8000-series-device"></a>Uw StorSimple 8000-serie-apparaat bijwerken
+# <a name="update-your-storsimple-8000-series-device"></a>Uw StorSimple 8000 Series-apparaat bijwerken
 > [!NOTE]
-> De klassieke portal voor StorSimple is afgeschaft. De StorSimple-apparaatbeheerfuncties worden automatisch volgens schema verplaatst naar de nieuwe Azure Portal. U ontvangt hierover een e-mailbericht en een portalmelding. Dit document wordt binnenkort ook ingetrokken. Zie voor vragen met betrekking tot de verplaatsing, [Veelgestelde vragen over: Verplaatsen naar Azure portal](storsimple-8000-move-azure-portal-faq.md).
+> De klassieke portal voor StorSimple is afgeschaft. De StorSimple-apparaatbeheerfuncties worden automatisch volgens schema verplaatst naar de nieuwe Azure Portal. U ontvangt hierover een e-mailbericht en een portalmelding. Dit document wordt binnenkort ook ingetrokken. Zie [FAQ: Move to Azure portal](storsimple-8000-move-azure-portal-faq.md) (Veelgestelde vragen: verplaatsing naar Azure Portal) voor vragen met betrekking tot de verplaatsing.
 
 ## <a name="overview"></a>Overzicht
-De StorSimple-updates-functies kunnen u eenvoudig uw StorSimple-apparaat om up-to-date te houden. Afhankelijk van het updatetype, kunt u updates toepassen op het apparaat via de klassieke Azure portal of via de Windows PowerShell-interface. Deze zelfstudie wordt de update-typen en hoe u het installeren van elk van beide beschreven.
+Met de functies van StorSimple-updates kunt u uw StorSimple-apparaat eenvoudig up-to-date houden. Afhankelijk van het update type, kunt u updates op het apparaat Toep assen via de klassieke Azure-portal of via de Windows Power shell-interface. In deze zelf studie worden de update typen beschreven en wordt uitgelegd hoe u deze kunt installeren.
 
-U kunt twee soorten apparaatupdates toepassen: 
+U kunt twee soorten updates van apparaten Toep assen: 
 
-* Reguliere (of de normale modus) updates
-* Updates voor de onderhoudsmodus
+* Normale updates (of normale modus)
+* Onderhouds modus updates
 
-U kunt reguliere updates via de klassieke Azure-portal of de Windows PowerShell; installeren echter, moet u Windows PowerShell gebruiken voor het installeren van updates voor de onderhoudsmodus. 
+U kunt regel matige updates installeren via de klassieke Azure-portal of Windows Power shell. u moet echter Windows Power shell gebruiken om updates voor de onderhouds modus te installeren. 
 
-Elk updatetype wordt afzonderlijk, hieronder beschreven.
+Elk update type wordt afzonderlijk beschreven.
 
-### <a name="regular-updates"></a>Regelmatige updates
-Regelmatige updates zijn niet-storende updates die kunnen worden geïnstalleerd wanneer het apparaat zich in de normale modus. Deze updates worden toegepast via de website Microsoft Update op elke apparaatcontroller. 
-
-> [!IMPORTANT]
-> Een failover van de controller kan zich voordoen tijdens het updateproces. Dit heeft echter geen gevolgen beschikbaarheid van het systeem of de bewerking.
-> 
-> 
-
-* Zie voor meer informatie over het installeren van regelmatige updates via de klassieke Azure portal [regelmatige updates installeren via de klassieke Azure portal](#install-regular-updates-via-the-azure-classic-portal).
-* U kunt ook regelmatige updates via Windows PowerShell voor StorSimple installeren. Zie voor meer informatie, [regelmatige updates installeren via Windows PowerShell voor StorSimple](#install-regular-updates-via-windows-powershell-for-storsimple).
-
-### <a name="maintenance-mode-updates"></a>Updates voor de onderhoudsmodus
-Updates voor de onderhoudsmodus zijn updates waarvoor de computer, zoals upgrades van de schijf. Deze updates vereisen dat het apparaat in de onderhoudsmodus worden geplaatst. Zie voor meer informatie, [stap 2: Voer onderhoudsmodus](#step2). U kunt de klassieke Azure-portal niet gebruiken voor het installeren van updates voor de onderhoudsmodus. In plaats daarvan moet u Windows PowerShell voor StorSimple. 
-
-Zie voor meer informatie over het installeren van updates voor de onderhoudsmodus [updates voor de onderhoudsmodus installeren via Windows PowerShell voor StorSimple](#install-maintenance-mode-updates-via-windows-powershell-for-storsimple).
+### <a name="regular-updates"></a>Regel matige updates
+Regel matige updates zijn niet-verstorende updates die kunnen worden geïnstalleerd wanneer het apparaat de normale modus heeft. Deze updates worden door de Microsoft Update-website toegepast op elke apparaat controller. 
 
 > [!IMPORTANT]
-> Updates voor de onderhoudsmodus moeten afzonderlijk worden toegepast op elke domeincontroller. 
+> Er kan een failover van een controller optreden tijdens het update proces. Dit heeft echter geen invloed op de beschik baarheid van het systeem of de bewerking.
 > 
 > 
 
-## <a name="install-regular-updates-via-the-azure-classic-portal"></a>Regelmatige updates installeren via de klassieke Azure portal
-Updates toepassen op uw StorSimple-apparaat kunt u de klassieke Azure portal.
+* Zie [reguliere updates installeren via de klassieke Azure-Portal](#install-regular-updates-via-the-azure-classic-portal)voor meer informatie over het installeren van regel matige updates via de klassieke Azure-Portal.
+* U kunt ook regel matige updates installeren via Windows PowerShell voor StorSimple. Zie voor meer informatie [regel matige updates installeren via Windows PowerShell voor StorSimple](#install-regular-updates-via-windows-powershell-for-storsimple).
+
+### <a name="maintenance-mode-updates"></a>Onderhouds modus updates
+Updates voor onderhouds modus zijn verstorende updates, zoals upgrades van de schijf firmware. Voor deze updates moet het apparaat in de onderhouds modus worden geplaatst. Zie [stap 2: de onderhouds modus invoeren](#step2)voor meer informatie. U kunt de klassieke Azure-Portal niet gebruiken om updates voor de onderhouds modus te installeren. In plaats daarvan moet u Windows PowerShell voor StorSimple gebruiken. 
+
+Zie updates voor de [onderhouds modus installeren via Windows PowerShell voor StorSimple](#install-maintenance-mode-updates-via-windows-powershell-for-storsimple)voor meer informatie over het installeren van updates voor de onderhouds modus.
+
+> [!IMPORTANT]
+> Updates voor de onderhouds modus moeten afzonderlijk worden toegepast op elke controller. 
+> 
+> 
+
+## <a name="install-regular-updates-via-the-azure-classic-portal"></a>Regel matige updates installeren via de klassieke Azure-Portal
+U kunt de klassieke Azure-Portal gebruiken om updates toe te passen op uw StorSimple-apparaat.
 
 [!INCLUDE [storsimple-install-updates-manually](../../includes/storsimple-install-updates-manually.md)]
 
-## <a name="install-regular-updates-via-windows-powershell-for-storsimple"></a>Regelmatige updates installeren via Windows PowerShell voor StorSimple
-U kunt ook Windows PowerShell voor StorSimple gebruiken normaal (normale modus)-updates toe te passen.
+## <a name="install-regular-updates-via-windows-powershell-for-storsimple"></a>Installeer reguliere updates via Windows PowerShell voor StorSimple
+U kunt ook Windows PowerShell voor StorSimple gebruiken om regel matige updates (normale modus) toe te passen.
 
 > [!IMPORTANT]
-> Hoewel u regelmatig updates met behulp van Windows PowerShell voor StorSimple installeren kunt, wordt aangeraden dat u regelmatig updates via de klassieke Azure-portal installeert. Vanaf Update 1, worden controles van systeemtabel uitgevoerd voordat u updates installeert vanuit de portal. Deze controles van systeemtabel hebben voorrang op fouten en zorg ervoor dat een soepeler ervaring. 
+> Hoewel u regel matige updates kunt installeren met behulp van Windows PowerShell voor StorSimple, raden wij u ten zeerste aan om regel matig updates te installeren via de klassieke Azure-Portal. Vanaf update 1 worden vóór controles uitgevoerd voordat updates vanuit de portal worden geïnstalleerd. Deze vooraf controles hebben voor rang op storingen en zorgen voor een soepeler ervaring. 
 > 
 > 
 
 [!INCLUDE [storsimple-install-regular-updates-powershell](../../includes/storsimple-install-regular-updates-powershell.md)]
 
-## <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Installeren van updates voor de onderhoudsmodus via Windows PowerShell voor StorSimple
-Windows PowerShell voor StorSimple kunt u updates voor de onderhoudsmodus toepassen op uw StorSimple-apparaat. Alle i/o-aanvragen zijn in deze modus onderbroken. Services, zoals niet-vluchtige RAM-geheugen (NVRAM) of de clustering-service worden ook gestopt. Beide controllers zijn opnieuw gestart wanneer u opgeven of deze modus sluit. Wanneer u deze modus afsluit, worden alle services wordt hervat en moeten in orde. (Dit kan enkele minuten duren.)
+## <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Updates voor onderhouds modus installeren via Windows PowerShell voor StorSimple
+U gebruikt Windows PowerShell voor StorSimple om updates voor de onderhouds modus toe te passen op uw StorSimple-apparaat. Alle I/O-aanvragen worden in deze modus onderbroken. Services als niet-vluchtig RAM-geheugen (Random Access Memory) of de Clustering-service worden ook gestopt. Beide controllers worden opnieuw opgestart wanneer u deze modus invoert of afsluit. Wanneer u deze modus verlaat, worden alle services hervat en moeten ze in orde zijn. (Dit kan enkele minuten duren.)
 
-Als u toepassen van updates voor de onderhoudsmodus wilt, ontvangt u een waarschuwing via de klassieke Azure portal dat er updates die moeten worden geïnstalleerd. Deze waarschuwing bevat instructies voor het gebruik van Windows PowerShell voor StorSimple om de updates te installeren. Nadat u uw apparaat bijwerkt, gebruikt u dezelfde procedure om te wijzigen van het apparaat in de normale modus. Zie voor stapsgewijze instructies [stap 4: Onderhoudsmodus afsluiten](#step4).
+Als u updates voor onderhouds modus wilt Toep assen, ontvangt u een waarschuwing via de klassieke Azure-Portal waarvoor u updates hebt die moeten worden geïnstalleerd. Deze waarschuwing bevat instructies voor het gebruik van Windows PowerShell voor StorSimple om de updates te installeren. Nadat u het apparaat hebt bijgewerkt, gebruikt u dezelfde procedure om het apparaat te wijzigen in de normale modus. Zie [stap 4: onderhouds modus afsluiten](#step4)voor stapsgewijze instructies.
 
 > [!IMPORTANT]
-> * Controleer of beide apparaatcontrollers in orde zijn door te controleren voordat u de onderhoudsmodus invoert, de **hardwarestatus** op de **onderhoud** pagina in de klassieke Azure portal. Als de controller niet in orde is, contact op met Microsoft Support voor de volgende stappen. Ga voor meer informatie naar contact opnemen met Microsoft ondersteuning. 
-> * Wanneer u in de onderhoudsmodus bevindt bent, moet u eerst de update van toepassing op een domeincontroller en klik vervolgens op de andere controller.
+> * Voordat u de onderhouds modus inschakelt, controleert u of beide controllers in orde zijn door de **status hardware** te controleren op de pagina **onderhoud** in de klassieke Azure-Portal. Als de controller niet in orde is, neemt u contact op met Microsoft Ondersteuning om de volgende stappen uit te voeren. Ga naar contact Microsoft Ondersteuning voor meer informatie. 
+> * Wanneer u zich in de onderhouds modus bevindt, moet u de update eerst op één controller Toep assen en vervolgens op de andere controller.
 > 
 > 
 
-### <a name="step-1-connect-to-the-serial-console-a-namestep1"></a>Stap 1: Verbinding maken met de seriële console <a name="step1">
-Gebruik een toepassing, zoals PuTTY eerst toegang tot de seriële console. De volgende procedure wordt uitgelegd hoe u PuTTY gebruiken om verbinding maken met de seriële console.
+### <a name="step-1-connect-to-the-serial-console-a-namestep1"></a>Stap 1: verbinding maken met de seriële console <a name="step1">
+Gebruik eerst een toepassing zoals PuTTy om toegang te krijgen tot de seriële console. In de volgende procedure wordt uitgelegd hoe u PuTTy gebruikt om verbinding te maken met de seriële console.
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
-### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>Stap 2: Onderhoudsmodus starten <a name="step2">
-Nadat u verbinding met de console maakt, moet u bepalen of er updates beschikbaar zijn voor installeren en voer de onderhoudsmodus voor het installeren van deze.
+### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>Stap 2: Voer de onderhouds modus in <a name="step2">
+Nadat u verbinding hebt gemaakt met de-console, controleert u of er updates zijn om te installeren en voert u de onderhouds modus in om ze te installeren.
 
 [!INCLUDE [storsimple-enter-maintenance-mode](../../includes/storsimple-enter-maintenance-mode.md)]
 
-### <a name="step-3-install-your-updates-a-namestep3"></a>Stap 3: Uw updates installeren <a name="step3">
-Vervolgens installeert u de updates.
+### <a name="step-3-install-your-updates-a-namestep3"></a>Stap 3: Installeer de updates <a name="step3">
+Installeer vervolgens uw updates.
 
 [!INCLUDE [storsimple-install-maintenance-mode-updates](../../includes/storsimple-install-maintenance-mode-updates.md)]
 
-### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>Stap 4: Onderhoudsmodus afsluiten <a name="step4">
-Ten slotte de onderhoudsmodus afsluit.
+### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>Stap 4: de onderhouds modus afsluiten <a name="step4">
+Ten slotte wordt de onderhouds modus afgesloten.
 
 [!INCLUDE [storsimple-exit-maintenance-mode](../../includes/storsimple-exit-maintenance-mode.md)]
 
-## <a name="install-hotfixes-via-windows-powershell-for-storsimple"></a>Installeren van hotfixes via Windows PowerShell voor StorSimple
-In tegenstelling tot de updates voor Microsoft Azure StorSimple, zijn hotfixes geïnstalleerd vanuit een gedeelde map. Net als bij updates, zijn er twee soorten hotfixes: 
+## <a name="install-hotfixes-via-windows-powershell-for-storsimple"></a>Installeer hotfixes via Windows PowerShell voor StorSimple
+In tegens telling tot updates voor Microsoft Azure StorSimple, worden hotfixes geïnstalleerd vanuit een gedeelde map. Net als bij updates zijn er twee typen hotfixes: 
 
 * Reguliere hotfixes 
-* Hotfixes in de onderhoudsmodus  
+* Hotfixes voor onderhouds modus  
 
-De volgende procedures wordt uitgelegd hoe u Windows PowerShell voor StorSimple gebruiken voor het installeren van normale en hotfixes in de onderhoudsmodus.
+In de volgende procedures wordt uitgelegd hoe u Windows PowerShell voor StorSimple gebruikt voor het installeren van hotfixes voor reguliere en onderhouds modus.
 
 [!INCLUDE [storsimple-install-regular-hotfixes](../../includes/storsimple-install-regular-hotfixes.md)]
 
 [!INCLUDE [storsimple-install-maintenance-mode-hotfixes](../../includes/storsimple-install-maintenance-mode-hotfixes.md)]
 
-## <a name="what-happens-to-updates-if-you-perform-a-factory-reset-of-the-device"></a>Wat gebeurt er met updates als u de fabrieksinstellingen van het apparaat uitvoeren?
-Als een apparaat opnieuw wordt ingesteld op de fabrieksinstellingen, zijn alle updates gaan verloren. Nadat het apparaat teruggezet naar de fabrieksinstellingen is geregistreerd en geconfigureerd, moet u handmatig installeren van updates via de klassieke Azure-portal en/of de Windows PowerShell voor StorSimple. Zie voor meer informatie over de fabrieksinstellingen terug te zetten, [het apparaat terugzetten op fabrieksinstellingen](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings).
+## <a name="what-happens-to-updates-if-you-perform-a-factory-reset-of-the-device"></a>Wat gebeurt er met updates als u de fabrieks instellingen van het apparaat opnieuw instelt?
+Als een apparaat opnieuw wordt ingesteld op de fabrieks instellingen, gaan alle updates verloren. Nadat het apparaat voor de fabrieks instellingen is geregistreerd en geconfigureerd, moet u de updates hand matig installeren via de klassieke Azure-Portal en/of de Windows PowerShell voor StorSimple. Zie [de standaard fabrieks instellingen van het apparaat herstellen](storsimple-8000-manage-device-controller.md#reset-the-device-to-factory-default-settings)voor meer informatie over het opnieuw instellen van de fabriek.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over [Windows PowerShell voor StorSimple gebruiken voor het beheer van uw StorSimple-apparaat](storsimple-windows-powershell-administration.md).
-* Meer informatie over [met behulp van de StorSimple Manager-service voor het beheren van uw StorSimple-apparaat](storsimple-manager-service-administration.md).
+* Meer informatie over [het gebruik van Windows PowerShell voor StorSimple voor het beheren van uw StorSimple-apparaat](storsimple-windows-powershell-administration.md).
+* Meer informatie over [het gebruik van de StorSimple Manager-service voor het beheren van uw StorSimple-apparaat](storsimple-manager-service-administration.md).
 

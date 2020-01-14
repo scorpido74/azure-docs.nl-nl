@@ -1,18 +1,18 @@
 ---
 title: Herstel na nood gevallen voor een Dynamics AX-implementatie met meerdere lagen met Azure Site Recovery | Microsoft Docs
 description: In dit artikel wordt beschreven hoe u herstel na nood gevallen instelt voor Dynamics AX met Azure Site Recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
-ms.author: asgang
-ms.openlocfilehash: 5b8aaff3a3418177f92c3b54fb3bb3e99f93810e
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.author: carmonm
+ms.openlocfilehash: 089edd1f408494f59c8f0042b57d2d79c7faffae
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620741"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930175"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Herstel na nood geval instellen voor een Dynamics AX-toepassing met meerdere lagen   
 
@@ -92,7 +92,7 @@ U kunt de virtuele machine in de gerepliceerde items selecteren om de netwerk in
 
 * Als u een statisch IP-adres gebruikt, geeft u het IP-adres op dat u wilt dat de virtuele machine in het tekstvak **doel-IP** moet worden uitgevoerd.
 
-    ![Netwerk instellingen](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
+    ![Netwerkinstellingen](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
 ### <a name="5-create-a-recovery-plan"></a>5. een herstel plan maken

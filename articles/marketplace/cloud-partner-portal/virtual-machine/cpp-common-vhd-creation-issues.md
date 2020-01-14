@@ -2,19 +2,19 @@
 title: Veelvoorkomende problemen tijdens het maken van de VHD (FAQ) voor Azure Marketplace
 description: Veelgestelde vragen over het maken van virtuele harde schijven en gerelateerde problemen.
 services: Azure Marketplace
-author: HannibalSII
+author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/02/2018
-ms.author: hascipio
+ms.author: evansma
 ms.reviewer: v-divte; v-miclar
-ms.openlocfilehash: 1d4224d8f1f735ecef3d4551e3032b916e81dc3c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 152a2f6fda081b2612197cc4848207b336adf8dc
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826615"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934265"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>Veelvoorkomende problemen tijdens het maken van de VHD (FAQ)
 
@@ -73,7 +73,7 @@ In het volgende artikel wordt beschreven hoe u de aangepaste script extensie geb
 
 ## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>Worden 32-bits toepassingen of services ondersteund in azure Marketplace?
 
-In het algemeen, nee.  De ondersteunde besturings systemen en standaard services voor virtuele Azure-machines zijn allemaal 64 bits.  Vanuit een technisch oogpunt ondersteunen de meeste 64-bits besturings systemen echter de uitvoering van 32-bits versies van toepassingen voor achterwaartse compatibiliteit.  Het gebruik van 32-bits toepassingen als onderdeel van uw VM-oplossing wordt echter niet ondersteund en wordt daarom *sterk afgeraden*.  Compileer uw toepassing in plaats daarvan als een 64-bits project.
+In het algemeen niet.  De ondersteunde besturings systemen en standaard services voor virtuele Azure-machines zijn allemaal 64 bits.  Vanuit een technisch oogpunt ondersteunen de meeste 64-bits besturings systemen echter de uitvoering van 32-bits versies van toepassingen voor achterwaartse compatibiliteit.  Het gebruik van 32-bits toepassingen als onderdeel van uw VM-oplossing wordt echter niet ondersteund en wordt daarom *sterk afgeraden*.  Compileer uw toepassing in plaats daarvan als een 64-bits project.
 
 Raadpleeg voor meer informatie de volgende artikelen:
 - [Het uitvoeren van 32-bits toepassingen](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications)

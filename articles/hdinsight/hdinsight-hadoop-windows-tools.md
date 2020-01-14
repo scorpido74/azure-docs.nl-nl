@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: 0fd299ea6ceb9631ff473ec2ac9f37be2f6be215
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 3ec50acc693452fe73d929effcea98b12fc5ff8b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495732"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933941"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Werken in het Apache Hadoop ecosysteem op HDInsight vanaf een Windows-computer
 
@@ -58,7 +58,7 @@ Voor beelden van taken die u kunt uitvoeren met Visual Studio en Data Lake-Hulpp
 U kunt Visual Studio met de .NET SDK gebruiken voor het beheren van clusters en het ontwikkelen van big data toepassingen. U kunt andere Ide's gebruiken voor de volgende taken, maar voor beelden worden weer gegeven in Visual Studio.
 
 Voor beelden van taken die u kunt uitvoeren met de .NET SDK in Visual Studio:
-* [Clusters maken en werken in HDInsight vanuit een .NET Framework-toepassing](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md).
+* [Azure HDInsight-SDK voor .net](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
 * [Voer Apache Hive Query's uit met behulp van de .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 * [Door C# de gebruiker gedefinieerde functies gebruiken met Apache Hive en Apache Pig-streaming op Apache Hadoop](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md).
 

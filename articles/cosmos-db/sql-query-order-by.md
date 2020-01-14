@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5cae2bdd7d1f2f26e626c81ea95d2cee3cc8ae13
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc5c875f4ae54ed334318efc5a1d5610b89bdda5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444796"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929588"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>ORDER BY-component in Azure Cosmos DB
 
@@ -52,7 +52,7 @@ ORDER BY <sort_specification>
    De ORDER BY-component vereist dat het indexerings beleid een index bevat voor de gesorteerde velden. De runtime van Azure Cosmos DB query's ondersteunt sorteren op basis van een eigenschaps naam en niet op basis van berekende eigenschappen. Azure Cosmos DB ondersteunt meerdere ORDER BY-eigenschappen. Als u een query met meerdere ORDER BY-eigenschappen wilt uitvoeren, moet u een [samengestelde index](index-policy.md#composite-indexes) definiëren voor de gesorteerde velden.
    
 > [!Note] 
-> Als u de .NET SDK 3.4.0 of hoger gebruikt, moet u expliciet een index voor deze eigenschappen maken als de gesorteerde eigenschappen voor sommige documenten niet kunnen worden gedefinieerd. Het standaard indexerings beleid staat niet toe dat de documenten worden opgehaald waarvoor de sorteer eigenschap niet is gedefinieerd.
+> Als de eigenschappen die worden gesorteerd, mogelijk niet zijn gedefinieerd voor sommige documenten en u deze wilt ophalen met behulp van een query, moet u expliciet een index op die eigenschappen maken. Het standaard indexerings beleid staat niet toe dat de documenten worden opgehaald waarvoor de sorteer eigenschap niet is gedefinieerd.
 
 ## <a name="examples"></a>Voorbeelden
 

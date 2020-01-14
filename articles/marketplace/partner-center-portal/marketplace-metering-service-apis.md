@@ -1,19 +1,19 @@
 ---
 title: Api's voor Marketplace-meet service | Azure Marketplace
 description: Gebruiks gebeurtenis voor SaaS-aanbiedingen in azure Marketplace.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 36ca95191e0e6422bd93360b98243393acad8147
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dea950ff72eff2372fc10f989d4ce77fa746c4bf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825477"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933577"
 ---
 # <a name="marketplace-metering-service-apis"></a>Service-API's voor Marketplace-meting
 
@@ -31,7 +31,7 @@ Met de gebruiks gebeurtenis-API kunt u gebruiks gebeurtenissen voor een specifie
 
 *Aanvraag headers:*
 
-| inhouds type       | `application/json`    |
+| Inhouds type       | `application/json`    |
 | ------------------ | ---------------------------- |
 | `x-ms-requestid`     | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en weer gegeven in de antwoord headers. |
 | `x-ms-correlationid` | Unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en geleverd in de antwoord headers. |
@@ -131,7 +131,7 @@ Met de gebeurtenis-API voor batch gebruik kunt u gebruiks gebeurtenissen voor me
 
 *Aanvraag headers:*
 
-| inhouds type       | `application/json`       |
+| Inhouds type       | `application/json`       |
 | ------------------ | ------ |
 | `x-ms-requestid`     | Een unieke teken reeks waarde voor het bijhouden van de aanvraag van de client, bij voor keur een GUID. Als deze waarde niet wordt gegeven, wordt er een gegenereerd en gegeven in de antwoord headers. |
 | `x-ms-correlationid` | Unieke teken reeks waarde voor de bewerking op de client. Deze para meter verbindt alle gebeurtenissen van de client bewerking met gebeurtenissen aan de server zijde. Als deze waarde niet is opgenomen, wordt er een gegenereerd en gegeven in de antwoord headers. |
@@ -200,7 +200,7 @@ Beschrijving van de status code waarnaar wordt verwezen in de `BatchUsageEvent` 
 | `Accepted` | Geaccepteerde code. |
 | `Expired` | Verlopen gebruik. |
 | `Duplicate` | Er is een dubbel gebruik gegeven. |
-| `Error` | Fout code. |
+| `Error` | Foutcode. |
 | `ResourceNotFound` | De gegeven gebruiks resource is ongeldig. |
 | `ResourceNotAuthorized` | U bent niet gemachtigd om gebruik te maken van deze resource. |
 | `InvalidDimension` | De dimensie waarvoor het gebruik wordt door gegeven, is ongeldig voor deze aanbieding/dit plan. |

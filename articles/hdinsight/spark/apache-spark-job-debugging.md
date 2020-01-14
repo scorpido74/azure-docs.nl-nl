@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 110a8e86fc1916254ab914630ce10d2b7ae073b7
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: bcf2f97e855126c86dbb1d74cd430704e2af3af1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775330"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932139"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Fouten opsporen Apache Spark taken die worden uitgevoerd op Azure HDInsight
 
@@ -116,7 +116,7 @@ Zodra een taak is voltooid, wordt de informatie over de taak opgeslagen in de Sp
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](apache-spark-machine-learning-mllib-ipython.md)
 * [Analyse van website logboeken met Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
 * [Application Insight-telemetriegegevens voor gegevens analyse met behulp van Apache Spark in HDInsight](apache-spark-analyze-application-insight-logs.md)
-* [Caffe gebruiken in Azure HDInsight Spark voor gedistribueerde diep gaande lessen](apache-spark-deep-learning-caffe.md)
+
 
 ### <a name="for-spark-developers"></a>Voor Spark-ontwikkel aars
 

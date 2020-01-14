@@ -1,14 +1,14 @@
 ---
 title: Azure Red Hat open Shift-clusters configureren met Azure Monitor voor containers | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u Azure Monitor voor containers kunt configureren voor het bewaken van Kubernetes-clusters die worden gehost op Azure Red Hat open SHIFT.
+description: In dit artikel wordt beschreven hoe u de bewaking van een Kubernetes-cluster configureert met Azure Monitor die worden gehost op Azure Red Hat open SHIFT.
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 6922cb7b143989ba329df972a06825629c4c5020
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.openlocfilehash: cb68d08f86efa395f9d4567a00e74632a293ea3f
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405579"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930360"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Azure Red Hat open Shift-clusters met Azure Monitor voor containers configureren
 
@@ -27,10 +27,8 @@ Azure Monitor voor containers kunnen worden ingeschakeld voor nieuwe of een of m
 
 Azure Monitor voor containers biedt ondersteuning voor het bewaken van Azure Red Hat open Shift zoals beschreven in het artikel [overzicht](container-insights-overview.md) , met uitzonde ring van de volgende functies:
 
-- Live-gegevens
-- Prometheus metrische gegevens
+- Live-gegevens (preview-versie)
 - [Metrische gegevens verzamelen](container-insights-update-metrics.md) van cluster knooppunten en peulen en deze opslaan in de data base met Azure monitor gegevens
-- Status functie
 
 ## <a name="prerequisites"></a>Vereisten
 

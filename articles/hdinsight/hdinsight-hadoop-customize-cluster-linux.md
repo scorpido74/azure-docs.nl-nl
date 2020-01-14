@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: df5dbfc9c86294c7ec046d3a02832192bf67b4ce
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 555596ba1040fcbd5c9131869fd275d749e0d734
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747086"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934023"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Azure HDInsight-clusters aanpassen met behulp van script acties
 
@@ -148,7 +148,6 @@ HDInsight biedt scripts voor het installeren van de volgende onderdelen op HDIns
 | --- | --- |
 | Een Azure Storage-account toevoegen |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. Zie [extra opslag accounts toevoegen aan HDInsight](hdinsight-hadoop-add-storage.md). |
 | Hue installeren |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. Zie [kleur Toon installeren en gebruiken op HDInsight Hadoop-clusters](hdinsight-hadoop-hue-linux.md). |
-| Giraph installeren |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`. Zie [Apache Giraph installeren op HDInsight Hadoop-clusters](hdinsight-hadoop-giraph-install-linux.md). |
 | Hive-bibliotheken vooraf laden |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. Zie [aangepaste Apache Hive bibliotheken toevoegen bij het maken van uw HDInsight-cluster](hdinsight-hadoop-add-hive-libraries.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>Een script actie gebruiken tijdens het maken van een cluster
@@ -221,7 +220,7 @@ Het kan enkele minuten duren voordat het cluster is gemaakt.
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-hdinsight-net-sdk"></a>Een script actie gebruiken tijdens het maken van het cluster vanuit de HDInsight .NET SDK
 
-De HDInsight .NET SDK bevat client bibliotheken waarmee u gemakkelijker kunt werken met HDInsight vanuit een .NET-toepassing. Zie voor een code voorbeeld [Linux-clusters maken in HDInsight met behulp van de .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action).
+De HDInsight .NET SDK bevat client bibliotheken waarmee u gemakkelijker kunt werken met HDInsight vanuit een .NET-toepassing. Zie [script acties](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#script-actions)voor een code voorbeeld.
 
 ## <a name="apply-a-script-action-to-a-running-cluster"></a>Een script actie Toep assen op een actief cluster
 
@@ -507,7 +506,6 @@ Er zijn twee uitzonderingen:
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Script actie scripts voor HDInsight ontwikkelen](hdinsight-hadoop-script-actions-linux.md)
-* [Apache Giraph in HDInsight-clusters installeren en gebruiken](hdinsight-hadoop-giraph-install-linux.md)
 * [Extra opslag ruimte toevoegen aan een HDInsight-cluster](hdinsight-hadoop-add-storage.md)
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png "Fasen tijdens het maken van het cluster"

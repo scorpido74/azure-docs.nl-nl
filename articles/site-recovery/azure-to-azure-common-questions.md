@@ -1,18 +1,18 @@
 ---
 title: Veelgestelde vragen over herstel na nood gevallen voor Azure VM met Azure Site Recovery
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over herstel na nood gevallen van virtuele Azure-machines naar een andere Azure-regio met Azure Site Recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.author: asgang
-ms.openlocfilehash: 5ed501a9f11e790bcc2196d57c6479beb54f1a17
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.author: carmonm
+ms.openlocfilehash: 2e1689a4f6d3a2271da868350263bef098562127
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621073"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929907"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Veelgestelde vragen: nood herstel voor Azure naar Azure
 
@@ -203,7 +203,7 @@ U kunt een failover activeren na de storing. Site Recovery hebt geen verbinding 
 ### <a name="what-is-a-rto-of-a-vm-failover-"></a>Wat is een RTO van een VM-failover?
 Site Recovery heeft een [RTO-sla van twee uur](https://azure.microsoft.com/support/legal/sla/site-recovery/v1_2/). De meeste tijd Site Recovery failover van virtuele machines binnen enkele minuten. U kunt de RTO berekenen door te gaan naar de failover-taken die de tijd weer geven die nodig is om de virtuele machine te openen. Raadpleeg de sectie voor het herstel plan RTO.
 
-## <a name="recovery-plans"></a>Herstel plannen
+## <a name="recovery-plans"></a>Herstelplannen
 
 ### <a name="what-is-a-recovery-plan"></a>Wat is een herstel plan?
 Een herstel plan in Site Recovery is het herstel van failover van Vm's. Zo kunt u de herstel bewerking consistent maken, herhaalbaar en geautomatiseerd. Een herstel plan heeft betrekking op de volgende behoeften voor de gebruiker:

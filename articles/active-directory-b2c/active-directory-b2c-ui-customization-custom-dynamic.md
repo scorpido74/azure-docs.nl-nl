@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dbc932bd7a68212ce94f2ad07de6e625d26c0918
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: ae29a068ef29898c3fa27d3620d1e6be0be4bf3b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950235"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931208"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Configureer de gebruikers interface met dynamische inhoud door gebruik te maken van aangepaste beleids regels
 
@@ -217,17 +217,19 @@ Ga als volgt te werk om `ContentDefinition`te configureren:
     ![Voor beeld van een XML-fragment met LoadUri-element gemarkeerd](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
 
 ## <a name="step-6-upload-the-policy-to-your-tenant"></a>Stap 6: het beleid uploaden naar uw Tenant
-1. In de [Azure Portal](https://portal.azure.com)gaat u naar de [context van uw Azure AD B2C-Tenant](active-directory-b2c-navigate-to-b2c-context.md)en selecteert u **Azure AD B2C**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com)het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die de Azure AD B2C Tenant bevat.
 
-2. Selecteer een **Framework voor identiteits ervaring**.
+1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
 
-3. Selecteer **alle beleids regels**.
+1. Selecteer een **Framework voor identiteits ervaring**.
 
-4. Selecteer **beleid uploaden**.
+1. Selecteer **alle beleids regels**.
 
-5. Selecteer het selectie vakje het **beleid overschrijven als dit bestaat** .
+1. Selecteer **beleid uploaden**.
 
-6. Upload het bestand *TrustFrameworkExtensions. XML* en zorg ervoor dat het validatie wordt door gegeven.
+1. Selecteer het selectie vakje het **beleid overschrijven als dit bestaat** .
+
+1. Upload het bestand *TrustFrameworkExtensions. XML* en zorg ervoor dat het validatie wordt door gegeven.
 
 ## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>Stap 7: het aangepaste beleid testen met behulp van nu uitvoeren
 1. Selecteer **Azure AD B2C instellingen**en selecteer vervolgens **Framework voor identiteits ervaring**.
@@ -345,7 +347,3 @@ Als u de koppeling **nu registreren** op de aanmeldings pagina selecteert, wordt
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>Beschrijving De volledige beleids bestanden en code downloaden
 * Nadat u de walkthrough aan de [slag met aangepast beleid](active-directory-b2c-get-started-custom.md) hebt voltooid, wordt u aangeraden om uw scenario te bouwen met behulp van uw eigen aangepaste beleids bestanden. Voor uw referentie hebben we [voorbeeld beleids bestanden](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization)gegeven.
 * U kunt de volledige code downloaden van een [voor beeld van een Visual Studio-oplossing voor referentie](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization).
-
-
-
-

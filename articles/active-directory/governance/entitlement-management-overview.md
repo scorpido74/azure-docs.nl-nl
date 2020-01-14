@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/24/2019
+ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a99b9089e568351cf736310e778ba477441407
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d1faf501aff8960a4b1961b34164be07b1d685d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422575"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932478"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Wat is Azure AD-rechtenbeheer?
 
@@ -134,17 +134,32 @@ Als u meer inzicht wilt krijgen in het rechten beheer en de bijbehorende documen
 
 Gespecialiseerde Clouds, zoals Azure Government, Azure Duitsland en Azure China 21Vianet, zijn momenteel niet beschikbaar voor gebruik.
 
-### <a name="which-users-must-have-licenses"></a>Welke gebruikers moeten licenties hebben?
+### <a name="how-many-licenses-must-you-have"></a>Hoeveel licenties moet u hebben?
 
-Uw Tenant moet ten minste evenveel Azure AD Premium P2-licenties hebben als lid van gebruikers actief zijn in het rechts beheer. Gebruikers van actieve leden in het recht op beheer zijn onder andere:
+Zorg ervoor dat uw directory ten minste evenveel Azure AD Premium P2-licenties heeft wanneer u werk nemers hebt die de volgende taken uitvoeren:
 
-- Een gebruiker die een aanvraag voor een toegangs pakket initieert of goedkeurt.
-- Een gebruiker aan wie een toegangs pakket is toegewezen.
-- Een gebruiker die toegangs pakketten beheert.
+- Gebruikers van leden die een toegangs pakket **kunnen** aanvragen.
+- Leden en gast gebruikers die een toegangs pakket aanvragen.
+- Leden en gast gebruikers die aanvragen voor een toegangs pakket goed keuren.
 
-Als onderdeel van de licenties voor leden van gebruikers kunt u ook een aantal gast gebruikers toestaan om te communiceren met het rechten beheer. Zie [Azure Active Directory B2B Collaboration guidance](../b2b/licensing-guidance.md)(Engelstalig) voor meer informatie over het berekenen van het aantal gast gebruikers dat u kunt gebruiken.
+Azure AD Premium P2-licenties zijn **niet** vereist voor de volgende taken:
 
-Voor informatie over het toewijzen van licenties aan uw gebruikers raadpleegt u [licenties toewijzen of verwijderen via de Azure Active Directory Portal](../fundamentals/license-users-groups.md). Houd er rekening mee dat het rechten beheer momenteel geen licentie toewijzing afdwingt voor gebruikers.
+- Er zijn geen licenties vereist voor gebruikers met de rol van globale beheerder die de initiële catalogi, toegangs pakketten en beleids regels heeft ingesteld, en beheer taken aan andere gebruikers delegeren.
+- Er zijn geen licenties vereist voor gebruikers die zijn gedelegeerde beheer taken, zoals catalogus Maker, catalogus eigenaar en toegangs pakket beheer.
+- Er zijn geen licenties vereist voor gasten die toegangs pakketten **kunnen** aanvragen, maar **geen** toegangs pakket aanvragen.
+
+Voor elke betaalde Azure AD Premium P2-licentie die u voor uw gebruikers (werk nemers) aanschaft, kunt u Azure AD B2B gebruiken om Maxi maal vijf gast gebruikers uit te nodigen. Deze gast gebruikers kunnen ook gebruikmaken van Azure AD Premium P2-functies. Zie [licentie richtlijnen voor Azure AD B2B-samen werking](../b2b/licensing-guidance.md)voor meer informatie.
+
+Zie [licenties toewijzen of verwijderen met de Azure Active Directory-Portal](../fundamentals/license-users-groups.md)voor meer informatie over licenties.
+
+### <a name="example-license-scenarios"></a>Voor beeld van licentie scenario's
+
+Hier volgen enkele voor beelden van licentie scenario's die u helpen bij het bepalen van het aantal licenties dat u nodig hebt.
+
+| Scenario | Berekening | Aantal licenties |
+| --- | --- | --- |
+| Een globale beheerder bij Woodgrove Bank maakt initiële catalogi en delegeert beheer taken aan zes andere gebruikers. Een van de beleids regels geeft aan dat **alle werk nemers** (2.000 werk nemers) een specifieke set toegangs pakketten kunnen aanvragen. 150 werk nemers aanvragen de toegangs pakketten. | 2\.000 werk nemers die de toegangs pakketten **kunnen** aanvragen | 2,000 |
+| Een globale beheerder bij Woodgrove Bank maakt initiële catalogi en delegeert beheer taken aan zes andere gebruikers. Een van de beleids regels geeft aan dat **alle werk nemers** (2.000 werk nemers) een specifieke set toegangs pakketten kunnen aanvragen. Een ander beleid geeft aan dat sommige gebruikers van **gebruikers van Contoso** (gasten) dezelfde toegangs pakketten kunnen aanvragen als goed keuring. Contoso heeft 30.000 gebruikers. 150 werk nemers vragen om toegang tot de toegangs pakketten en 10.500 gebruikers van contoso. | 2\.000 werk nemers + 500 gast gebruikers van Contoso die de 1:5 verhouding overschrijden (10.500-(2.000 * 5)) | 2,500 |
 
 ## <a name="next-steps"></a>Volgende stappen
 

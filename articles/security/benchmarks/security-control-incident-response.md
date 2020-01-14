@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: b027a668403f47e9ffb824179ae54b89cded7a0c
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: fb3560aa2d3fbf48ab63c4da4d3a8d69cb677209
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564229"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934416"
 ---
 # <a name="security-control-incident-response"></a>Beveiligings beheer: respons op incidenten
 
@@ -65,7 +65,7 @@ Raadpleeg de publicatie van het NIST: hand leiding voor het testen, trainen en u
 
 https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-84.pdf
 
-## <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-nbspfor-security-incidents"></a>10,4: contact gegevens van het beveiligings incident opgeven en waarschuwings meldingen &nbsp;voor beveiligings incidenten configureren
+## <a name="104-provide-security-incident-contact-details-and-configure-alert-notifications-for-security-incidents"></a>10,4: contact gegevens van het beveiligings incident opgeven en waarschuwings meldingen configureren voor beveiligings incidenten
 
 | Azure-ID | CIS-Id's | Verantwoordelijkheid |
 |--|--|--|

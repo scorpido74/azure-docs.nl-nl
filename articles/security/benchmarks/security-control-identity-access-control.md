@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 9081f74aee7ff503c7fe29cef6ca76e6d6b46a4f
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 543573610c2ea3ab0bcd89e1b8f4ee5f5a34dbc0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564268"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934436"
 ---
 # <a name="security-control-identity-and-access-control"></a>Beveiligings beheer: identiteit en Access Control
 
@@ -63,9 +63,11 @@ Meer informatie: https://docs.microsoft.com/azure/active-directory/privileged-id
 
 Gebruik waar mogelijk Azure Active Directory-SSO in plaats van afzonderlijke zelfstandige referenties per service te configureren. Gebruik Azure Security Center aanbevelingen voor identiteits-en toegangs beheer.
 
-Informatie over eenmalige aanmelding met Azure AD: https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+Meer informatie over eenmalige aanmelding met Azure AD:
 
-## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: gebruik multi-factor Authentication voor alle toegang op basis van Azure Active Directory.
+https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+
+## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: multi-factor Authentication gebruiken voor alle op Azure Active Directory gebaseerde toegang
 
 | Azure-ID | CIS-Id's | Verantwoordelijkheid |
 |--|--|--|
@@ -89,9 +91,13 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 Gebruik Paw's (privileged Access workstations) met MFA dat is geconfigureerd om Azure-resources aan te melden en te configureren.
 
-Meer informatie over privileged Access workstations: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+Meer informatie over privileged Access workstations:
 
-MFA inschakelen in Azure: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+
+MFA inschakelen in Azure:
+
+https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
 ## <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: logboek en waarschuwing voor verdachte activiteiten van beheerders accounts
@@ -130,19 +136,25 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-
 
 Gebruik Azure Active Directory (AAD) als centrale verificatie-en autorisatie systeem. AAD beveiligt gegevens door gebruik te maken van sterke versleuteling voor gegevens in rust en tijdens de overdracht. AAD bevat ook zouten, hashes en veilige gebruikers referenties.
 
-Een AAD-exemplaar maken en configureren: https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
+Een AAD-exemplaar maken en configureren:
+
+https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
 ## <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: regel matig gebruikers toegang controleren en afstemmen
 
 | Azure-ID | CIS-Id's | Verantwoordelijkheid |
 |--|--|--|
-| 3.1 | 16,9, 16,10 | Klant |
+| 3,10 | 16,9, 16,10 | Klant |
 
 Azure AD biedt logboeken waarmee u verlopen accounts kunt detecteren. Daarnaast kunt u Azure Identity Access revisies gebruiken om groepslid maatschappen en de toegang tot bedrijfs toepassingen en roltoewijzingen op efficiënte wijze te beheren. Gebruikers toegang kan regel matig worden gecontroleerd om ervoor te zorgen dat alleen de juiste gebruikers toegang hebben. 
 
-Azure AD-rapportage https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Azure AD-rapportage:
 
-Azure Identity Access revisies gebruiken: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+
+Azure Identity Access revisies gebruiken:
+
+https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 ## <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: controle pogingen om toegang te krijgen tot gedeactiveerde accounts
 
@@ -186,7 +198,7 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 In ondersteunings scenario's waarin micro soft toegang moet krijgen tot klant gegevens, bevat Klanten-lockbox een interface waarmee u aanvragen voor het verkrijgen van gegevens toegang voor klanten kunt controleren en goed keuren of afwijzen.
 
-Wat is Klanten-lockbox?
+Klanten-lockbox begrijpen:
 
 https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview
 

@@ -2,18 +2,18 @@
 title: Een bestaande VM-aanbieding bijwerken in azure Marketplace
 description: Hierin wordt uitgelegd hoe u een bestaande VM-aanbieding op Azure Marketplace bijwerkt.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/27/2018
-ms.author: ansud
-ms.openlocfilehash: 5cbee909b4bd6353ad8fbe9fcbc126dc4a245012
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: 1ba2abb3fbeb1d08ed780669fb94a2ef83cbfb1b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823990"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934251"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Een bestaande VM-aanbieding op Azure Marketplace bijwerken
 
@@ -157,7 +157,7 @@ Als u vragen hebt over deze wijziging, neemt u contact op met de [ondersteuning 
 
 ## <a name="compare-feature"></a>Functie vergelijken
 
-Wanneer u wijzigingen aanbrengt in een al gepubliceerde aanbieding, kunt u gebruikmaken van de functie **compare** om de wijzigingen te controleren die zijn aangebracht. Als u deze functie wilt gebruiken:
+Wanneer u wijzigingen aanbrengt in een al gepubliceerde aanbieding, kunt u gebruikmaken van de functie **compare** om de wijzigingen te controleren die zijn aangebracht. Om deze functie te gebruiken, moet u ook het volgende doen:
 
 1.  Op elk moment in het bewerkings proces, klikt u op de knop **vergelijken** voor uw aanbieding.
 

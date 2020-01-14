@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: 2b69a17c7f9de62187d9dc99f7c1d5c5b74c25ad
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 8a5b54131210d243015b37bf234408fd9d2b4c12
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073191"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933609"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef VM-extensie voor Linux en Windows
 
@@ -67,26 +67,26 @@ In de volgende JSON wordt het schema voor de VM-extensie chef weer gegeven. Voor
 
 ### <a name="core-property-values"></a>Kern eigenschaps waarden
 
-| Naam | Waarde / voorbeeld | Gegevenstype
+| Name | Waarde / voorbeeld | Gegevenstype
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (datum) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | tekenreeks |
-| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | tekenreeks |
+| publisher | `Chef.Bootstrap.WindowsAzure` | string |
+| type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
 | typeHandlerVersion | `1210.12` | string (double) |
 
 ### <a name="settings"></a>Instellingen
 
-| Naam | Waarde / voorbeeld | Gegevenstype | Vereist?
+| Name | Waarde / voorbeeld | Gegevenstype | Vereist?
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | J |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | tekenreeks | J |
-| instellingen/runlist | `recipe[mycookbook::default]` | tekenreeks | J |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | J |
+| instellingen/runlist | `recipe[mycookbook::default]` | string | J |
 
 ### <a name="protected-settings"></a>Beveiligde instellingen
 
-| Naam | Voorbeeld | Gegevenstype | Vereist?
+| Name | Voorbeeld | Gegevenstype | Vereist?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | tekenreeks | J |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | J |
 
 <!--
 ### Linux-specific settings
@@ -151,6 +151,9 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 | 51 | Deze extensie wordt niet ondersteund op het besturings systeem van de virtuele machine | |
 
 Meer informatie over het oplossen van problemen vindt u in het Leesmij-bestand van de [chef VM-extensie](https://github.com/chef-partners/azure-chef-extension).
+
+> [!NOTE]
+> Neem contact op met de [ondersteuning van chef](https://www.chef.io/support/)voor iets anders rechtstreeks met betrekking tot chef.
 
 ## <a name="next-steps"></a>Volgende stappen
 

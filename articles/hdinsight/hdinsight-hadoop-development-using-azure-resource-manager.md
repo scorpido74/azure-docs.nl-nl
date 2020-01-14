@@ -1,6 +1,6 @@
 ---
-title: Migreren naar Azure Resource Manager-hulpprogramma's voor HDInsight
-description: Migreren naar ontwikkelingsprogramma's van Azure Resource Manager voor HDInsight-clusters
+title: Migreren naar Azure Resource Manager-hulpprogram ma's voor HDInsight
+description: Migreren naar Azure Resource Manager ontwikkelingsprogram ma's voor HDInsight-clusters
 ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
@@ -8,94 +8,94 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 320611f05190d755c85a94a8e8eb9a1c04b3310e
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 76eb3a135f7a32a30cfa62546a644bc77cf39998
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508821"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934589"
 ---
-# <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migreren naar Azure Resource Manager gebaseerde ontwikkelingsprogramma's voor HDInsight-clusters
+# <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migreren naar op Azure Resource Manager gebaseerde ontwikkel hulpprogramma's voor HDInsight-clusters
 
-HDInsight is niet meer ondersteund op basis van een Azure Service Manager ASM-hulpprogramma's voor HDInsight. Als u hebt gebruikt Azure PowerShell, klassieke Azure-CLI of de HDInsight .NET SDK voor het werken met HDInsight-clusters, wordt u aangeraden de Azure Resource Manager-versies van PowerShell, CLI en .NET-SDK gaan gebruiken. In dit artikel bevat verwijzingen over het migreren naar de nieuwe Resource Manager gebaseerde aanpak. Waar van toepassing, worden de verschillen tussen de benaderingen ASM en Resource Manager voor HDInsight in dit document gemarkeerd.
+HDInsight reafschaffing van Azure Service Manager (ASM)-hulpprogram ma's voor HDInsight. Als u Azure PowerShell, klassieke CLI van Azure of de HDInsight .NET SDK gebruikt om te werken met HDInsight-clusters, wordt u aangeraden de Azure Resource Manager versies van Power shell, CLI en .NET SDK vooruit te gebruiken. In dit artikel vindt u verwijzingen naar de nieuwe methode op basis van Resource Manager. In dit document worden alle verschillen tussen de ASM-en Resource Manager-benaderingen voor HDInsight gemarkeerd.
 
 > [!IMPORTANT]  
-> De ondersteuning voor ASM op basis van PowerShell, CLI, en .NET-SDK wordt stopgezet op **per 1 januari 2017**.
+> De ondersteuning voor op ASM gebaseerde Power shell, CLI en .NET SDK wordt beëindigd op **1 januari 2017**.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="migrating-azure-classic-cli-to-azure-resource-manager"></a>Azure CLI voor klassieke migreren naar Azure Resource Manager
+## <a name="migrating-azure-classic-cli-to-azure-resource-manager"></a>Klassieke Azure-CLI migreren naar Azure Resource Manager
 
 > [!IMPORTANT]  
-> Azure CLI biedt geen ondersteuning voor het werken met HDInsight-clusters. U kunt nog steeds klassieke Azure-CLI gebruiken met HDInsight, maar de klassieke Azure-CLI is afgeschaft.
+> Azure CLI biedt geen ondersteuning voor het werken met HDInsight-clusters. U kunt nog steeds Azure Classic CLI met HDInsight gebruiken, maar de klassieke Azure-CLI is afgeschaft.
 
-Hier volgen de basisopdrachten voor het werken met HDInsight via de klassieke Azure-CLI:
+Hieronder vindt u de basis opdrachten voor het werken met HDInsight via de klassieke Azure-CLI:
 
-* `azure hdinsight cluster create` -maakt een nieuw HDInsight-cluster
-* `azure hdinsight cluster delete` -Hiermee verwijdert u een bestaand HDInsight-cluster
-* `azure hdinsight cluster show` -informatie weergeven over een bestaand cluster
-* `azure hdinsight cluster list` -een lijst met HDInsight-clusters voor uw Azure-abonnement
+* `azure hdinsight cluster create`-maakt een nieuw HDInsight-cluster
+* `azure hdinsight cluster delete`-een bestaand HDInsight-cluster verwijderen
+* `azure hdinsight cluster show`-informatie weer geven over een bestaand cluster
+* `azure hdinsight cluster list`-bevat HDInsight-clusters voor uw Azure-abonnement
 
-Gebruik de `-h` overschakelen naar het inspecteren van de parameters en switches die beschikbaar zijn voor elke opdracht.
+Gebruik de schakel optie `-h` om de para meters en switches te controleren die beschikbaar zijn voor elke opdracht.
 
-### <a name="new-commands"></a>Nieuwe CLI-opdrachten
-Nieuwe opdrachten die beschikbaar zijn met Azure Resource Manager zijn:
+### <a name="new-commands"></a>Nieuwe opdrachten
+Er zijn nieuwe opdrachten beschikbaar met Azure Resource Manager:
 
-* `azure hdinsight cluster resize` -het aantal worker-knooppunten in het cluster dynamisch wordt gewijzigd
-* `azure hdinsight cluster enable-http-access` -Hiermee kunt u HTTPs-toegang tot het cluster (op standaard)
-* `azure hdinsight cluster disable-http-access` -schakelt u de HTTPs-toegang tot het cluster
-* `azure hdinsight script-action` -bevat opdrachten voor het maken/beheren van scriptacties op een cluster
-* `azure hdinsight config` -bevat opdrachten voor het maken van een configuratiebestand die kan worden gebruikt met de `hdinsight cluster create` opdracht om configuratie-informatie te geven.
+* `azure hdinsight cluster resize`: Hiermee wordt het aantal worker-knoop punten in het cluster dynamisch gewijzigd
+* `azure hdinsight cluster enable-http-access`: Hiermee schakelt u HTTPs-toegang tot het cluster in (standaard ingeschakeld)
+* `azure hdinsight cluster disable-http-access`-schakelt de HTTPs-toegang tot het cluster uit
+* `azure hdinsight script-action`-bevat opdrachten voor het maken/beheren van script acties op een cluster
+* `azure hdinsight config`-bevat opdrachten voor het maken van een configuratie bestand dat kan worden gebruikt met de opdracht `hdinsight cluster create` om configuratie gegevens op te geven.
 
 ### <a name="deprecated-commands"></a>Afgeschafte opdrachten
-Als u de `azure hdinsight job` opdrachten voor het verzenden van taken naar uw HDInsight-cluster, deze opdrachten zijn niet beschikbaar is via het Resource Manager-opdrachten. Als u nodig hebt voor het programmatisch verzenden van taken naar HDInsight van scripts, moet u in plaats daarvan de geleverd door HDInsight REST-API's. Zie de volgende documenten voor meer informatie over het verzenden van taken met behulp van REST-API's.
+Als u de `azure hdinsight job`-opdrachten gebruikt om taken te verzenden naar uw HDInsight-cluster, zijn deze opdrachten niet beschikbaar via de Resource Manager-opdrachten. Als u vanuit scripts programmatisch taken wilt verzenden naar HDInsight, moet u in plaats daarvan de REST Api's gebruiken die door HDInsight worden verstrekt. Raadpleeg de volgende documenten voor meer informatie over het verzenden van taken met behulp van REST-Api's.
 
-* [MapReduce-taken uitvoeren met Hadoop op HDInsight met cURL](hadoop/apache-hadoop-use-mapreduce-curl.md)
-* [Apache Hive-query's uitvoeren met Apache Hadoop op HDInsight met cURL](hadoop/apache-hadoop-use-hive-curl.md)
+* [MapReduce-taken uitvoeren met Hadoop op HDInsight met behulp van krul](hadoop/apache-hadoop-use-mapreduce-curl.md)
+* [Apache Hive query's uitvoeren met Apache Hadoop op HDInsight met behulp van krul](hadoop/apache-hadoop-use-hive-curl.md)
 
 
-Zie voor meer informatie over andere manieren om uit te voeren van Apache Hadoop MapReduce, Apache Hive en Apache Pig interactief [MapReduce gebruiken met Hadoop op HDInsight](hadoop/hdinsight-use-mapreduce.md), [Apache Hive gebruiken met Apache Hadoop op HDInsight](hadoop/hdinsight-use-hive.md), en [Apache Pig gebruiken met Apache Hadoop op HDInsight](hadoop/hdinsight-use-pig.md).
+Zie [MapReduce gebruiken met Hadoop in hdinsight](hadoop/hdinsight-use-mapreduce.md)voor informatie over andere manieren om Apache Hadoop MapReduce, Apache Hive en Apache varken interactief uit te voeren, [gebruik Apache Hive met de Apache Hadoop in](hadoop/hdinsight-use-hive.md)Hdinsight en [gebruik Apache Pig met Apache Hadoop op hdinsight](hadoop/hdinsight-use-pig.md).
 
 ### <a name="examples"></a>Voorbeelden
-**Het maken van een cluster**
+**Een cluster maken**
 
-* Oude opdracht (ASM)- `azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
-* Nieuwe opdracht: `azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
+* Oude opdracht (ASM)-`azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
+* Nieuwe opdracht-`azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
 
-**Verwijderen van een cluster**
+**Een cluster verwijderen**
 
-* Oude opdracht (ASM)- `azure hdinsight cluster delete myhdicluster`
-* Nieuwe opdracht: `azure hdinsight cluster delete mycluster -g myresourcegroup`
+* Oude opdracht (ASM)-`azure hdinsight cluster delete myhdicluster`
+* Nieuwe opdracht-`azure hdinsight cluster delete mycluster -g myresourcegroup`
 
-**Clusters groeperen**
+**Clusters weer geven**
 
-* Oude opdracht (ASM)- `azure hdinsight cluster list`
-* Nieuwe opdracht: `azure hdinsight cluster list`
+* Oude opdracht (ASM)-`azure hdinsight cluster list`
+* Nieuwe opdracht-`azure hdinsight cluster list`
 
 > [!NOTE]  
-> Voor de opdracht de lijst op te geven de resource-groep met `-g` retourneert alleen de clusters in de opgegeven resourcegroep.
+> Als u voor de lijst opdracht de resource groep met `-g` opgeeft, worden alleen de clusters in de opgegeven resource groep geretourneerd.
 
-**Cluster-informatie weergeven**
+**Cluster gegevens weer geven**
 
-* Oude opdracht (ASM)- `azure hdinsight cluster show myhdicluster`
-* Nieuwe opdracht: `azure hdinsight cluster show myhdicluster -g myresourcegroup`
+* Oude opdracht (ASM)-`azure hdinsight cluster show myhdicluster`
+* Nieuwe opdracht-`azure hdinsight cluster show myhdicluster -g myresourcegroup`
 
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Azure PowerShell migreren naar Azure Resource Manager
-De algemene informatie over Azure PowerShell in de modus Azure Resource Manager kan worden gevonden op [met behulp van Azure PowerShell met Azure Resource Manager](../powershell-azure-resource-manager.md).
+De algemene informatie over Azure PowerShell in de Azure Resource Manager modus vindt [u in azure PowerShell gebruiken met Azure Resource Manager](../powershell-azure-resource-manager.md).
 
-De Azure PowerShell Resource Manager-cmdlets kunnen worden geïnstalleerd naast de ASM-cmdlets. De cmdlets van de twee modi kunnen worden onderscheiden door hun namen.  De modus Resource Manager heeft *AzHDInsight* in vergelijking met namen van de cmdlets *AzureHDInsight* in de ASM-modus.  Bijvoorbeeld, *New-AzHDInsightCluster* vs. *New-AzureHDInsightCluster*. Parameters en switches mogelijk nieuws namen en er zijn veel nieuwe parameters beschikbaar bij het gebruik van Resource Manager.  Bijvoorbeeld verschillende cmdlets vereisen dat een nieuwe switch met de naam *- ResourceGroupName*. 
+De Azure PowerShell Resource Manager-cmdlets kunnen naast de ASM-cmdlets worden geïnstalleerd. De cmdlets uit de twee modi kunnen worden onderscheiden met hun namen.  De Resource Manager-modus heeft *AzHDInsight* in de namen van de cmdlets vergeleken met *AZUREHDINSIGHT* in de ASM-modus.  Bijvoorbeeld: *New-AzHDInsightCluster* versus *New-AzureHDInsightCluster*. Para meters en Schakel opties hebben mogelijk nieuws namen en er zijn veel nieuwe para meters beschikbaar wanneer u Resource Manager gebruikt.  Verschillende cmdlets vereisen bijvoorbeeld een nieuwe switch met de naam *-ResourceGroupName*. 
 
-Voordat u de HDInsight-cmdlets gebruiken kunt, moet u verbinding maken met uw Azure-account en een nieuwe resourcegroep maken:
+Voordat u de HDInsight-cmdlets kunt gebruiken, moet u verbinding maken met uw Azure-account en een nieuwe resource groep maken:
 
 * [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount)
 * [New-AzResourceGroup](https://msdn.microsoft.com/library/mt603739.aspx)
 
-### <a name="renamed-cmdlets"></a>Hernoemd cmdlets
-Overzicht van de HDInsight ASM-cmdlets in Windows PowerShell-console:
+### <a name="renamed-cmdlets"></a>De naam van cmdlets is gewijzigd
+De HDInsight ASM-cmdlets in de Windows Power shell-console weer geven:
 
     help *azurehdinsight*
 
-De volgende tabel bevat de ASM-cmdlets en hun namen in Resource Manager-modus:
+De volgende tabel bevat de ASM-cmdlets en hun namen in de Resource Manager-modus:
 
 | ASM-cmdlets | Resource Manager-cmdlets |
 | --- | --- |
@@ -128,21 +128,21 @@ De volgende tabel bevat de ASM-cmdlets en hun namen in Resource Manager-modus:
 | Wait-AzureHDInsightJob |[Wait-AzHDInsightJob](https://docs.microsoft.com/powershell/module/az.hdinsight/wait-azhdinsightjob) |
 
 ### <a name="new-cmdlets"></a>Nieuwe cmdLets
-Hieronder vindt u de nieuwe cmdlets die alleen beschikbaar in Resource Manager-modus zijn. 
+Hieronder vindt u de nieuwe cmdlets die alleen beschikbaar zijn in de Resource Manager-modus. 
 
 **Script actie-gerelateerde cmdlets:**
 
-* **Get-AzHDInsightPersistedScriptAction**: Opgehaald van de persistente scriptacties voor een cluster en worden ze weergegeven in chronologische volgorde of Hiermee haalt u details voor een opgegeven persistente scriptactie. 
-* **Get-AzHDInsightScriptActionHistory**: Hiermee haalt u de geschiedenis van de scriptactie voor een cluster en geeft dit weer in omgekeerde volgorde of details van een eerder uitgevoerde scriptactie opgehaald. 
-* **Remove-AzHDInsightPersistedScriptAction**: Hiermee verwijdert u een persistente scriptactie vanuit een HDInsight-cluster.
-* **Set-AzHDInsightPersistedScriptAction**: Hiermee stelt u een eerder uitgevoerde scriptactie moet een persistente scriptactie.
-* **Submit-AzHDInsightScriptAction**: Verzendt een nieuwe scriptactie naar een Azure HDInsight-cluster. 
+* **Get-AzHDInsightPersistedScriptAction**: Hiermee worden de persistente script acties voor een cluster opgehaald en in chronologische volg orde vermeld of worden details opgehaald voor een opgegeven persistente script actie. 
+* **Get-AzHDInsightScriptActionHistory**: Hiermee wordt de geschiedenis van de script actie voor een cluster opgehaald en in omgekeerde chronologische volg orde weer gegeven, of worden details van een eerder uitgevoerde script actie opgehaald. 
+* **Remove-AzHDInsightPersistedScriptAction**: Hiermee wordt een persistente script actie uit een HDInsight-cluster verwijderd.
+* **Set-AzHDInsightPersistedScriptAction**: stelt een eerder uitgevoerde script actie in op een persistente script actie.
+* **Submit-AzHDInsightScriptAction**: Hiermee wordt een nieuwe script actie verzonden naar een Azure HDInsight-cluster. 
 
-Zie voor informatie over het extra gebruik, [aanpassen Linux gebaseerde HDInsight-clusters met Script Action](hdinsight-hadoop-customize-cluster-linux.md).
+Zie [HDInsight-clusters op basis van Linux aanpassen met behulp van script acties](hdinsight-hadoop-customize-cluster-linux.md)voor meer informatie over het gebruik van.
 
-**Cluster-id-gerelateerde cmdlets:**
+**Met de cluster-id gerelateerde cmdlets:**
 
-* **Add-AzHDInsightClusterIdentity**: Voegt de identiteit van een cluster toe aan een configuratieobject cluster zodat het HDInsight-cluster toegang heeft tot Azure Data Lake-opslag. Zie [een HDInsight-cluster maken met Data Lake Storage met behulp van Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
+* **Add-AzHDInsightClusterIdentity**: voegt een cluster identiteit toe aan een cluster configuratie object, zodat het HDInsight-cluster toegang kan krijgen tot Azure data Lake Storage. Zie [een HDInsight-cluster met data Lake Storage maken met behulp van Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md).
 
 ### <a name="examples"></a>Voorbeelden
 **Cluster maken**
@@ -189,7 +189,7 @@ Nieuwe opdracht:
 
     Remove-AzHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $clusterName 
 
-**Lijst met cluster**
+**Cluster weer geven**
 
 Oude opdracht (ASM):
 
@@ -199,7 +199,7 @@ Nieuwe opdracht:
 
     Get-AzHDInsightCluster 
 
-**Cluster weergeven**
+**Cluster weer geven**
 
 Oude opdracht (ASM):
 
@@ -213,35 +213,34 @@ Nieuwe opdracht:
 #### <a name="other-samples"></a>Andere voorbeelden
 * [HDInsight-clusters maken](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
 * [Apache Hive-taken verzenden](hadoop/apache-hadoop-use-hive-powershell.md)
-* [Apache Sqoop taken verzenden](hadoop/apache-hadoop-use-sqoop-powershell.md)
+* [Apache Sqoop-taken verzenden](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
 ## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>Migreren naar de nieuwe HDInsight .NET SDK
-De Azure Service Management-gebaseerde [(ASM) HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) is nu verouderd. U wordt aangeraden gebruik van de Azure Resource Management-gebaseerde [Resource Manager gebaseerde HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight). De volgende HDInsight op basis van een ASM-pakketten worden afgeschaft.
+De op Azure Service Management gebaseerde [(ASM) HDInsight .NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) is nu afgeschaft. U wordt aangeraden de op [Resource Manager gebaseerde HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)op basis van Azure resource management te gebruiken. De volgende HDInsight-pakketten op basis van ASM worden afgeschaft.
 
 * `Microsoft.WindowsAzure.Management.HDInsight`
 * `Microsoft.Hadoop.Client`
 
-Deze sectie bevat verwijzingen naar meer informatie over het uitvoeren van bepaalde taken met behulp van de SDK op basis van Resource Manager.
+In deze sectie vindt u meer informatie over het uitvoeren van bepaalde taken met de SDK op basis van Resource Manager.
 
-| Hoe u... met de Resource Manager gebaseerde HDInsight-SDK | Koppelingen |
+| Procedures... de op Resource Manager gebaseerde HDInsight SDK gebruiken | Koppelingen |
 | --- | --- |
-| Maken van HDInsight-clusters met behulp van .NET SDK |Zie [maken van HDInsight-clusters met behulp van .NET SDK](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |
-| Aanpassen van een cluster met Script Action met .NET SDK |Zie [aanpassen HDInsight Linux-clusters met Script Action](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action) |
-| Toepassingen die gebruikmaken van Azure Active Directory interactief met .NET SDK verifiëren |Zie [uitvoeren Apache Hive-query's met .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md). Het codefragment in dit artikel maakt gebruik van de aanpak van interactieve verificatie. |
-| Toepassingen die gebruikmaken van Azure Active Directory niet-interactief met .NET SDK verifiëren |Zie [maken van niet-interactieve toepassingen voor HDInsight](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
-| Verzenden van een Apache Hive-taak met behulp van .NET SDK |Zie [indienen Apache Hive-taken](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |
-| Verzenden van een Apache Sqoop-taak met behulp van .NET SDK |Zie [indienen Apache Sqoop taken](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md) |
-| Lijst met HDInsight-clusters met behulp van .NET SDK |Zie [lijst met HDInsight-clusters](hdinsight-administer-use-dotnet-sdk.md#list-clusters) |
-| Schalen van HDInsight-clusters met behulp van .NET SDK |Zie [schaal HDInsight-clusters](hdinsight-administer-use-dotnet-sdk.md#scale-clusters) |
-| Toegang verlenen of in te trekken met HDInsight-clusters met behulp van .NET SDK |Zie [Grant/revoke toegang tot HDInsight-clusters](hdinsight-administer-use-dotnet-sdk.md#grantrevoke-access) |
-| HTTP-gebruikersreferenties voor HDInsight-clusters met behulp van .NET SDK bijwerken |Zie [Update HTTP-gebruikersreferenties voor HDInsight-clusters](hdinsight-administer-use-dotnet-sdk.md#update-http-user-credentials) |
-| Het standaardopslagaccount vinden voor HDInsight-clusters met behulp van .NET SDK |Zie [vinden van het standaardaccount voor opslag voor HDInsight-clusters](hdinsight-administer-use-dotnet-sdk.md#find-the-default-storage-account) |
-| HDInsight-clusters met behulp van .NET SDK verwijderen |Zie [verwijderen HDInsight-clusters](hdinsight-administer-use-dotnet-sdk.md#delete-clusters) |
+| Azure HDInsight-SDK voor .NET|Zie de [Azure HDInsight-SDK voor .net](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet) |
+| Toepassingen interactief verifiëren met behulp van Azure Active Directory met .NET SDK |Zie [Apache Hive Query's uitvoeren met behulp van .NET SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md). In het code fragment in dit artikel wordt gebruikgemaakt van de interactieve verificatie methode. |
+| Toepassingen niet-interactief verifiëren met behulp van Azure Active Directory met .NET SDK |Zie [niet-interactieve toepassingen voor HDInsight maken](hdinsight-create-non-interactive-authentication-dotnet-applications.md) |
+| Een Apache Hive-taak verzenden met behulp van .NET SDK |Zie [Apache Hive taken verzenden](hadoop/apache-hadoop-use-hive-dotnet-sdk.md) |
+| Een Apache Sqoop-taak verzenden met behulp van .NET SDK |Zie [Apache Sqoop-taken verzenden](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md) |
+| HDInsight-clusters vermelden met behulp van .NET SDK |Zie [HDInsight-clusters](hdinsight-administer-use-dotnet-sdk.md#list-clusters) weer geven |
+| HDInsight-clusters schalen met behulp van .NET SDK |Zie [HDInsight-clusters schalen](hdinsight-administer-use-dotnet-sdk.md#scale-clusters) |
+| Toegang verlenen/intrekken voor HDInsight-clusters met behulp van .NET SDK |Zie [toegang verlenen/intrekken voor HDInsight-clusters](hdinsight-administer-use-dotnet-sdk.md#grantrevoke-access) |
+| HTTP-gebruikers referenties voor HDInsight-clusters bijwerken met behulp van .NET SDK |Zie [HTTP-gebruikers referenties voor HDInsight-clusters bijwerken](hdinsight-administer-use-dotnet-sdk.md#update-http-user-credentials) |
+| Het standaard opslag account voor HDInsight-clusters zoeken met behulp van .NET SDK |Zie [het standaard opslag account voor HDInsight-clusters zoeken](hdinsight-administer-use-dotnet-sdk.md#find-the-default-storage-account) |
+| HDInsight-clusters verwijderen met behulp van .NET SDK |Zie [HDInsight-clusters verwijderen](hdinsight-administer-use-dotnet-sdk.md#delete-clusters) |
 
 ### <a name="examples"></a>Voorbeelden
-Hier volgen enkele voorbeelden van hoe een bewerking is uitgevoerd met behulp van de SDK op basis van ASM en de equivalente codefragment voor de SDK op basis van Resource Manager.
+Hieronder volgen enkele voor beelden van de manier waarop een bewerking wordt uitgevoerd met behulp van de op ASM gebaseerde SDK en het equivalente code fragment voor de op Resource Manager gebaseerde SDK.
 
-**Het maken van een cluster CRUD-client**
+**Een ruwe cluster-client maken**
 
 * Oude opdracht (ASM)
   
@@ -251,7 +250,7 @@ Hier volgen enkele voorbeelden van hoe een bewerking is uitgevoerd met behulp va
         const string subid = "454467d4-60ca-4dfd-a556-216eeeeeeee1";
         var cred = new HDInsightCertificateCredential(new Guid(subid), new X509Certificate2(@"path\to\certificate.cer"));
         var client = HDInsightClient.Connect(cred);
-* Nieuwe opdracht (Service principal autorisatie)
+* Nieuwe opdracht (Service Principal Authorization)
   
         //Service principal auth
         //This will log the application in as itself, rather than on behalf of a specific user.
@@ -269,7 +268,7 @@ Hier volgen enkele voorbeelden van hoe een bewerking is uitgevoerd met behulp va
         var creds = new TokenCloudCredentials(subId.ToString(), accessToken);
   
         _hdiManagementClient = new HDInsightManagementClient(creds);
-* Nieuwe opdracht (gebruikersverificatie)
+* Nieuwe opdracht (gebruikers autorisatie)
   
         //User auth
         //This will log the application in on behalf of the user.
@@ -287,7 +286,7 @@ Hier volgen enkele voorbeelden van hoe een bewerking is uitgevoerd met behulp va
   
         _hdiManagementClient = new HDInsightManagementClient(creds);
 
-**Het maken van een cluster**
+**Een cluster maken**
 
 * Oude opdracht (ASM)
   
@@ -344,7 +343,7 @@ Hier volgen enkele voorbeelden van hoe een bewerking is uitgevoerd met behulp va
         };
         client.Clusters.ConfigureHttpSettings(resourceGroup, dnsname, httpParams);
 
-**Verwijderen van een cluster**
+**Een cluster verwijderen**
 
 * Oude opdracht (ASM)
   

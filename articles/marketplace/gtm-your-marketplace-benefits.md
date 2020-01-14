@@ -2,18 +2,18 @@
 title: 'Go-to-Market-Services: uw voor delen voor uw commerciële Marketplace | Azure'
 description: 'Go-to-Market-Services: micro soft-bronnen die uitgevers kunnen gebruiken, worden beschreven in deze sectie.'
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security, Partner Center
-author: qianw211
+author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/10/2019
-ms.author: v-qiwe
-ms.openlocfilehash: 7b563cd90ec3e46dfd2d4420b728cd6f69df40eb
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: b8c1034b047e0c72db41bbbbff06feb0bdf06517
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818653"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933927"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Uw voor delen voor commerciële Marketplace
 
@@ -45,7 +45,7 @@ De stappen om aan de slag te gaan zijn eenvoudig:
 2. Het team bereikt de aanbieding ' eigenaar ' of ' primaire contact persoon ' per Marketplace. Het is een best practice om een individu of een alias in te voeren die u regel matig controleert: berichten die worden verzonden naar aliassen, zoals info@company.com vaak verloren gaan.
 
 >[!Note]
->Als uw aanbieding al meer dan vier weken Live is en u geen bericht hebt ontvangen, controleert u of u de eigenaar bent van de betreffende aanbieding in Cloud Partner-portal of in het partner centrum. De communicatie en de volgende stappen moeten worden uitgevoerd. <br> <br> Als u de eigenaar niet kunt bepalen of als de eigenaar uw bedrijf heeft verlaten, kunt u op https://aka.ms/marketplacepublishersupporteen ondersteunings ticket genereren.
+>Als uw aanbieding al meer dan vier weken Live is en u geen bericht hebt ontvangen, controleert u of u de eigenaar bent van de betreffende aanbieding in Cloud Partner-portal of in het partner centrum. De communicatie en de volgende stappen moeten worden uitgevoerd. <br> <br> Als u de eigenaar niet kunt bepalen of als de eigenaar uw bedrijf heeft verlaten, kunt u op https://aka.ms/marketplacepublishersupport een ondersteunings ticket genereren.
 
 Het bereik van de activiteiten die voor u beschikbaar zijn, wordt uitgebreid naarmate u uw aanbiedingen in de Marketplace verg root. Alle vermeldingen ontvangen een basis niveau van optimalisatie aanbevelingen en promotie als onderdeel van een eigen e-mail van resources en aanbevolen procedures.
 
@@ -103,7 +103,7 @@ Micro soft behoudt zich het recht voor de voor delen van Marketplace-beloningen 
 
 Deze aanbieding wordt in het Engels uitgevoerd voor alle partners met een live aanbieding in azure Marketplace of Microsoft AppSource.
 
-Trans acties die frauduleus zijn bewezen, worden niet meegeteld bij de [laag gefactureerde verkoop Programma's](https://aka.ms/marketplacepublisherrewards), zoals vermeld in de sectie [lijst, proef versie, Consulting](#list-trial-and-consulting-benefits) , de sectie [voor delen](#marketplace-rewards-for-transact-partners) van de Transact-partner en de [gedetailleerde programma-deck ](https://aka.ms/marketplacepublisherrewards). Micro soft wijst partners toe aan de kwalificatie lagen op basis van de werkelijke gefactureerde verkoop, nadat de fraude is verwijderd. 
+Trans acties die frauduleus zijn bewezen, worden niet meegeteld bij de [laag gefactureerde verkoop Programma's](https://aka.ms/marketplacepublisherrewards), zoals vermeld in de [sectie lijst, proef versie, Consulting](#list-trial-and-consulting-benefits) , de sectie [voor delen](#marketplace-rewards-for-transact-partners) van de Transact-partner en het [gedetailleerde programma-dek](https://aka.ms/marketplacepublisherrewards). Micro soft wijst partners toe aan de kwalificatie lagen op basis van de werkelijke gefactureerde verkoop, nadat de fraude is verwijderd. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

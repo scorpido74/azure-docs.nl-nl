@@ -2,18 +2,18 @@
 title: Virtuele Azure-machines met Opslagruimten Direct repliceren met Azure Site Recovery
 description: In dit artikel wordt beschreven hoe u Azure-Vm's met Opslagruimten Direct repliceert met behulp van Azure Site Recovery.
 services: site-recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: asgang
-ms.openlocfilehash: 25ac7fa577aa33eda036c0f8544cc5ab03b12cd7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.author: carmonm
+ms.openlocfilehash: 49a4f59e68a409696480f89ee4b606fbed2b77ed
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954452"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929843"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Virtuele Azure-machines met Opslagruimten Direct repliceren naar een andere regio
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: c3251cb26f5ab6dc211c61bc0a6d02b283de6ae5
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aaa083ef52dcf18fade3315f598b5f57e791cbe0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770336"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932962"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-beheer oplossing in azure (preview-versie)
 
@@ -30,7 +30,7 @@ ms.locfileid: "75770336"
 > Voor de verzameling van Azure AD-logboeken gelden Azure Monitor prijzen.  Zie [Azure monitor prijzen](https://azure.microsoft.com/pricing/details/monitor/) voor meer informatie.
 >
 > De Azure Sentinel Office 365-oplossing gebruiken:
-> 1. Het gebruik van deze connector is van invloed op de prijzen van uw werk ruimte. Zie [Azure Sentinel-prijzen](https://azure.microsoft.com/pricing/details/azure-sentinel/)voor meer informatie.
+> 1. Het gebruik van Office 365 connector in azure Sentinel heeft gevolgen voor de prijzen voor uw werk ruimte. Zie [Azure Sentinel-prijzen](https://azure.microsoft.com/pricing/details/azure-sentinel/)voor meer informatie.
 > 2. Als u al gebruikmaakt van de oplossing Azure Monitor Office 365, moet u deze eerst verwijderen met het script in de [onderstaande sectie verwijderen](#uninstall).
 > 3. [De Azure-oplossing voor Sentinel inschakelen](../../sentinel/quickstart-onboard.md) in uw werk ruimte.
 > 4. Ga naar de pagina **Data connectors** in azure Sentinel en schakel de **Office 365** -connector in.

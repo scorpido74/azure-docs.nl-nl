@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: ac62ec49803bf55bbe61e08e60b648dd6c268510
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f58bb534728660b85f7d16910dde7a37914fd571
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357965"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933961"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Maximale beschikbaarheid en herstel na noodgeval voor SQL Server in SQL Server Virtual Machine
 
@@ -77,7 +77,7 @@ U kunt een oplossing voor herstel na nood geval hebben voor uw SQL Server-data b
 
 ## <a name="free-dr-replica-in-azure"></a>Gratis DR-replica in azure
 
-Als u [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)hebt, kunt u hybride plannen voor herstel na nood gevallen (Dr) implementeren met SQL Server met behulp van AlwaysOn-beschikbaarheids groepen of-cluster instanties zonder extra licentie kosten voor de PASSIEve Dr-instantie.
+Als u [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3)hebt, kunt u plannen voor hybride nood herstel (Dr) met SQL Server implementeren zonder dat er extra licentie kosten worden berekend voor de passieve Dr-instantie.
 
 In de onderstaande afbeelding gebruikt de installatie SQL Server die op een virtuele machine van Azure wordt uitgevoerd, gebruik van 12 kernen als herstel replica voor een on-premises SQL Server-implementatie met behulp van 12 kernen. In het verleden moet u 12 kernen van SQL Server voor de implementatie van on-premises en de virtuele Azure-machine in licentie hebben. Het nieuwe voor deel biedt de voor delen van passieve replica's die worden uitgevoerd op een virtuele machine van Azure. Nu moet u alleen 12 kernen van SQL Server on-premises uitvoeren, zolang er wordt voldaan aan de criteria voor herstel na nood gevallen voor de passieve replica op de virtuele machine van Azure.
 

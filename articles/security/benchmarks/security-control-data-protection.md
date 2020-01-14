@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 914d1af9793107031af9797cb965420443e80c4a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 5482495f87e87e5d05d8adca6b053810a62dcb4e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564333"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934523"
 ---
 # <a name="security-control-data-protection"></a>Beveiligings beheer: gegevens beveiliging
 
@@ -85,7 +85,7 @@ Versleutel alle gevoelige gegevens tijdens de overdracht. Zorg ervoor dat alle c
 
 Volg Azure Security Center aanbevelingen voor het versleutelen van de rest en de versleuteling in de door Voer, indien van toepassing.
 
-Informatie over versleuteling in transit met Azure:
+Meer informatie over versleuteling in transit met Azure:
 
 https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit
 
@@ -164,4 +164,3 @@ https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie het volgende beveiligings beheer: [beveiligings beheer](security-control-vulnerability-management.md)
-

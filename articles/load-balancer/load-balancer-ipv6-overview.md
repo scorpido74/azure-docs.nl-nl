@@ -4,7 +4,7 @@ description: Met dit leer traject kunt u aan de slag met IPv6-ondersteuning voor
 services: load-balancer
 documentationcenter: na
 author: asudbring
-keywords: IPv6, Azure load balancer, dual stack, openbaar IP, systeem eigen IPv6, mobiel, IOT
+keywords: IPv6-, azure-load balancer, dual-stack, openbaar IP-adres, systeemeigen IPv6-, mobiele, iot
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -13,17 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 4f4baea1c293a1707d87780044a21ff675cb7f98
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 6bc7f45d84d525156a3d25bdceef4d1012844afa
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666202"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931990"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Overzicht van IPv6 voor Azure Load Balancer
 
 
 >[!NOTE] 
+>Deze inhoud is vervangen door [IPv6 voor Azure VNet-overzicht](https://docs.microsoft.com/azure/virtual-network/ipv6-overview). Azure raadt nieuwe IPv6-implementaties aan om de nieuwe functies van IPv6 voor virtuele netwerken van Azure te gebruiken.
+
+>[!NOTE]
 >Azure Load Balancer ondersteunt twee verschillende typen: Basic en Standard. In dit artikel wordt Basic Load Balancer beschreven. Zie [Standard Load Balancer Overview](load-balancer-standard-overview.md)voor meer informatie over Standard Load Balancer.
 
 Basis-SKU Internet gerichte load balancers kan worden geïmplementeerd met een IPv6-adres. Naast de IPv4-connectiviteit, kunnen de volgende mogelijkheden worden toegepast:

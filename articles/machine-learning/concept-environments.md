@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: trbye
 author: trevorbye
 ms.date: 01/06/2020
-ms.openlocfilehash: ad520c7e6503f28de0bd5538662c223575a078fa
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 3216248943ccc0dba788816cdba38732f9e43e14
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692730"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930751"
 ---
 # <a name="what-are-azure-machine-learning-environments"></a>Wat zijn Azure Machine Learning omgevingen?
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -44,6 +44,7 @@ Omgevingen kunnen worden gemaakt door:
 * Het definiëren van nieuwe `Environment`-objecten, het gebruik van een gecuratore omgeving of het definiëren van uw eigen afhankelijkheden
 * Bestaande `Environment`-objecten uit uw werk ruimte gebruiken. Dit maakt consistentie en reproduceer baarheid mogelijk met uw afhankelijkheden
 * Importeren uit een bestaande Anaconda-omgevings definitie.
+* De Azure Machine Learning CLI gebruiken
 
 Zie de [voor beelden voor specifieke](how-to-use-environments.md#create-an-environment) code. Omgevingen worden ook eenvoudig beheerd via uw werk ruimte en bevatten de volgende functionaliteit:
 

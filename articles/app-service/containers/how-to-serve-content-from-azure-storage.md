@@ -5,21 +5,20 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 0a1e811787a43be76f94b13a6ec9886510c47d1d
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 752c9dfd1ae67397713cdffce9ba530ad6a2c159
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866959"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930012"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Inhoud van Azure Storage in App Service in Linux verzenden
 
-In deze hand leiding wordt uitgelegd hoe u Azure Storage kunt koppelen aan App Service op Linux. Voor delen zijn onder andere beveiligde inhoud, draag baarheid van inhoud, permanente opslag, toegang tot meerdere apps en meerdere overdrachts methoden.
-
-
-> [!IMPORTANT]
-> Azure Storage in App Service op Linux is een **Preview** -functie. Deze functie wordt **niet ondersteund voor productie scenario's**.
+> [!NOTE]
+> Dit artikel is van toepassing op Linux-containers. Zie [Azure files configureren in een Windows-container op app service](../configure-connect-to-azure-storage.md)voor meer informatie over het implementeren van aangepaste Windows-containers. Azure Storage in App Service op Linux is een **Preview** -functie. Deze functie wordt **niet ondersteund voor productie scenario's**.
 >
+
+In deze hand leiding wordt uitgelegd hoe u Azure Storage kunt koppelen aan App Service op Linux. Voor delen zijn onder andere beveiligde inhoud, draag baarheid van inhoud, permanente opslag, toegang tot meerdere apps en meerdere overdrachts methoden.
 
 ## <a name="prerequisites"></a>Vereisten
 

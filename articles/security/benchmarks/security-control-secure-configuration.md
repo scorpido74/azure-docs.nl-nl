@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 08458777d8a8c5c74ac20a63245135ffaf0a5c04
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 03564effeee36ddb3316d48329ccab8ccfce75b9
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564112"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934296"
 ---
 # <a name="security-control-secure-configuration"></a>Beveiligings beheer: beveiligde configuratie
 
@@ -27,7 +27,9 @@ De beveiligings configuratie van Azure-resources tot stand brengen, implementere
 
 Gebruik Azure Policy of Azure Security Center om beveiligings configuraties voor alle Azure-resources te onderhouden.
 
-Azure Policy configureren en beheren: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy configureren en beheren:
+
+https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ## <a name="72-establish-secure-operating-system-configurations"></a>7,2: veilige configuraties van besturings systemen instellen
 
@@ -57,7 +59,7 @@ Azure Policy configureren en beheren:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Informatie over Azure Policy effecten:
+Azure Policy effecten begrijpen:
 
 https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
@@ -85,7 +87,7 @@ https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-overview
 |--|--|--|
 | 7.5 | 5.3 | Klant |
 
-Als u aangepaste definities van Azure-beleid gebruikt, kunt u Azure Azure DevOps of Azure opslag plaatsen gebruiken om uw code veilig op te slaan en te beheren.
+Als u aangepaste definities van Azure-beleid gebruikt, kunt u Azure DevOps of Azure opslag plaatsen gebruiken om uw code veilig op te slaan en te beheren.
 
 Code opslaan in azure DevOps:
 
@@ -171,11 +173,17 @@ https://docs.microsoft.com/azure/security-center/security-center-container-recom
 
 Gebruik Managed Service Identity in combi natie met Azure Key Vault om het geheim beheer voor uw Cloud toepassingen te vereenvoudigen en te beveiligen.
 
-Integratie met door Azure beheerde identiteiten: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Integratie met door Azure beheerde identiteiten:
 
-Een Key Vault maken: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Key Vault verificatie bieden met een beheerde identiteit: https://docs.microsoft.com/azure/key-vault/managed-identity
+Een Key Vault maken:
+
+https://docs.microsoft.com/azure/key-vault/quick-create-portal
+
+Key Vault verificatie bieden met een beheerde identiteit:
+
+https://docs.microsoft.com/azure/key-vault/managed-identity
 
 ## <a name="712-manage-identities-securely-and-automatically"></a>7,12: identiteiten veilig en automatisch beheren
 
@@ -185,7 +193,9 @@ Key Vault verificatie bieden met een beheerde identiteit: https://docs.microsoft
 
 Gebruik beheerde identiteiten om Azure-Services te voorzien van een automatisch beheerde identiteit in azure AD. Met beheerde identiteiten kunt u zich verifiëren bij elke service die ondersteuning biedt voor Azure AD-verificatie, met inbegrip van Key Vault, zonder enige referenties in uw code.
 
-Beheerde identiteiten configureren: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+Beheerde identiteiten configureren:
+
+https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
 ## <a name="713-eliminate-unintended-credential-exposure"></a>7,13: onbedoelde referentie blootstelling elimineren
 
@@ -195,7 +205,9 @@ Beheerde identiteiten configureren: https://docs.microsoft.com/azure/active-dire
 
 Referentie scanner implementeren om referenties in code te identificeren. Referentie scanner stimuleert ook het verplaatsen van gedetecteerde referenties naar veiliger locaties, zoals Azure Key Vault. 
 
-Referentie scanner instellen: https://secdevtools.azurewebsites.net/helpcredscan.html
+Referentie scanner instellen:
+
+https://secdevtools.azurewebsites.net/helpcredscan.html
 
 ## <a name="next-steps"></a>Volgende stappen
 

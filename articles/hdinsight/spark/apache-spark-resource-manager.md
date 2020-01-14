@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 8c4306b9fb7a6f45ccad45083b6efc019e9a2920
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 3aab89f86dcd48328771cd0fda03d1c9de4bc2c2
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951623"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932094"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Resources voor Apache Spark cluster beheren in azure HDInsight
 
@@ -150,7 +150,6 @@ Start de gebruikers interface van het garen zoals in het begin van het artikel w
 * [Apache Spark met Machine Learning: Spark in HDInsight gebruiken om voedsel inspectie resultaten te voors pellen](apache-spark-machine-learning-mllib-ipython.md)
 * [Analyse van website logboeken met Apache Spark in HDInsight](apache-spark-custom-library-website-log-analysis.md)
 * [Application Insight-telemetriegegevens voor gegevens analyse met behulp van Apache Spark in HDInsight](apache-spark-analyze-application-insight-logs.md)
-* [Caffe gebruiken in Azure HDInsight Spark voor gedistribueerde diep gaande lessen](apache-spark-deep-learning-caffe.md)
 
 ### <a name="for-apache-spark-developers"></a>Voor Apache Spark-ontwikkel aars
 

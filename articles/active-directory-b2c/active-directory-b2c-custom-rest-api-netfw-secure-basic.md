@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a956638e8bd74c974012834ca650195e5bee37e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 24aa0d3d3f12934c54ac9aaa5ab8ae5c0d710825
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949437"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930509"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Beveilig uw REST-services met behulp van HTTP-basis verificatie
 
@@ -303,17 +303,19 @@ Nadat de REST-service is beveiligd door de client-ID (gebruikers naam) en het ge
 
 ## <a name="step-5-upload-the-policy-to-your-tenant"></a>Stap 5: het beleid uploaden naar uw Tenant
 
-1. In de [Azure Portal](https://portal.azure.com)gaat u naar de [context van uw Azure AD B2C-Tenant](active-directory-b2c-navigate-to-b2c-context.md)en opent u **Azure AD B2C**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com)het pictogram voor het adres van de map en het **abonnement** op de werk balk van de portal en selecteer vervolgens de map die de Azure AD B2C Tenant bevat.
 
-2. Selecteer een **Framework voor identiteits ervaring**.
+1. Zoek in het Azure Portal naar en selecteer **Azure AD B2C**.
 
-3. Open **alle beleids regels**.
+1. Selecteer een **Framework voor identiteits ervaring**.
 
-4. Selecteer **beleid uploaden**.
+1. Open **alle beleids regels**.
 
-5. Selecteer het selectie vakje het **beleid overschrijven als dit bestaat** .
+1. Selecteer **beleid uploaden**.
 
-6. Upload het bestand *TrustFrameworkExtensions. XML* en controleer of het validatie wordt door gegeven.
+1. Selecteer het selectie vakje het **beleid overschrijven als dit bestaat** .
+
+1. Upload het bestand *TrustFrameworkExtensions. XML* en controleer of het validatie wordt door gegeven.
 
 ## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>Stap 6: het aangepaste beleid testen met behulp van nu uitvoeren
 

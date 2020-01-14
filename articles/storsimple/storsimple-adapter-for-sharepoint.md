@@ -1,9 +1,9 @@
 ---
-title: StorSimple Adapter voor SharePoint installeren | Microsoft Docs
-description: Beschrijft het installeren en configureren of verwijderen van de StorSimple-Adapter voor SharePoint in een SharePoint-serverfarm.
+title: StorSimple-adapter voor share point installeren | Microsoft Docs
+description: Hierin wordt beschreven hoe u de StorSimple-adapter voor share point installeert en configureert of verwijdert in een share Point-server farm.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 36c20b75-f2e5-4184-a6b5-9c5e618f79b2
@@ -13,248 +13,248 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
-ms.author: v-sharos
-ms.openlocfilehash: a2f8e75578e396085e7d80f43c1180e158967061
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: twooley
+ms.openlocfilehash: a841ce8b664389ccd8fdf55de9965f09412fecf5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60633291"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930208"
 ---
-# <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Installeren en configureren van de StorSimple-Adapter voor SharePoint
+# <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>De StorSimple-adapter voor share point installeren en configureren
 ## <a name="overview"></a>Overzicht
-De StorSimple-Adapter voor SharePoint is een onderdeel dat beschikt u over flexibele Microsoft Azure StorSimple-opslag en betere gegevensbescherming naar SharePoint-serverfarms. Binaire grote Object (BLOB)-inhoud van de SQL Server-inhoudsdatabases naar het apparaat met Microsoft Azure StorSimple hybrid cloud-opslag kunt u de adapter.
+De StorSimple-adapter voor share point is een onderdeel waarmee u Microsoft Azure StorSimple flexibele opslag en gegevens beveiliging kunt bieden aan share Point-server farms. U kunt de adapter gebruiken om de inhoud van binaire Large Object (BLOB) te verplaatsen van de SQL Server-inhouds databases naar het Microsoft Azure StorSimple Hybrid Cloud Storage-apparaat.
 
-De StorSimple-Adapter voor SharePoint fungeert als een externe BLOB Storage planning-provider en de functie voor SQL Server extern BLOB-opslag gebruikt voor het opslaan van ongestructureerde SharePoint-inhoud (in de vorm van BLOBs) op een bestandsserver die wordt ondersteund door een StorSimple-apparaat.
+De StorSimple-adapter voor share point fungeert als een resource voor externe BLOB-opslag (RBS) en maakt gebruik van de SQL Server externe BLOB Storage-functie voor het opslaan van ongestructureerde share point-inhoud (in de vorm van BLOBs) op een bestands server die wordt ondersteund door een StorSimple-apparaat.
 
 > [!NOTE]
-> De StorSimple-Adapter voor SharePoint biedt ondersteuning voor SharePoint Server 2010 extern BLOB Storage planning. Het biedt geen ondersteuning voor SharePoint Server 2010 externe BLOB Storage (EBS).
+> De StorSimple-adapter voor share point ondersteunt externe BLOB-opslag van share Point Server 2010 (RBS). Het biedt geen ondersteuning voor externe BLOB Storage van share Point Server 2010 (EBS).
 
 
-* Voor het downloaden van de StorSimple-Adapter voor SharePoint, gaat u naar [StorSimple Adapter voor SharePoint][1] in het Microsoft Download Center.
-* Voor informatie over het plannen van Resourcestructuur en Resourcestructuur beperkingen, gaat u naar [besluit te gebruikt dit veld in SharePoint 2013][2] of [plannen voor Resourcestructuur (SharePoint Server 2010)][3].
+* Als u de StorSimple-adapter voor share point wilt downloaden, gaat u naar de [StorSimple-adapter voor share point][1] in het micro soft Download centrum.
+* Ga voor informatie over planning voor de beperkingen van de RBS-en RBS-beslissing naar het [gebruik van RBS in share point 2013][2] of [plan voor resource structuur (share Point Server 2010)][3].
 
-De rest van dit overzicht wordt een korte beschrijving van de rol van de StorSimple-Adapter voor SharePoint en de SharePoint-capaciteit en prestaties van limieten die u moet rekening houden met voordat u installeert en configureert de adapter. Nadat u deze gegevens bekijken, gaat u naar [StorSimple-Adapter voor SharePoint-installatie](#storsimple-adapter-for-sharepoint-installation) om te beginnen met het instellen van de adapter.
+In de rest van dit overzicht vindt u een korte beschrijving van de rol van de StorSimple-adapter voor share point en de share point-capaciteit en prestatie limieten waarvan u op de hoogte moet zijn voordat u de adapter installeert en configureert. Nadat u deze informatie hebt bekeken, gaat u naar de [StorSimple-adapter voor share point-installatie](#storsimple-adapter-for-sharepoint-installation) om te beginnen met het instellen van de adapter.
 
-### <a name="storsimple-adapter-for-sharepoint-benefits"></a>StorSimple Adapter voor SharePoint-voordelen
-In een SharePoint-site wordt inhoud opgeslagen als niet-gestructureerde blobgegevens in een of meer inhoudsdatabases. Standaard worden deze databases worden gehost op computers waarop SQL Server wordt uitgevoerd en bevinden zich in de SharePoint-serverfarm. BLOBs toenemen snel in omvang, verbruiken grote hoeveelheden on-premises opslag. Daarom is het raadzaam om een andere, minder dure opslagoplossing te zoeken. SQL Server biedt een technologie met de naam van de externe Blob Storage planning waarmee u kunt de inhoud van BLOB opslaan in het bestandssysteem buiten de SQL Server-database. BLOBs kunnen zich bevinden in het bestandssysteem op de computer waarop SQL Server wordt uitgevoerd met Resourcestructuur, of ze kunnen worden opgeslagen in het bestandssysteem op een andere servercomputer.
+### <a name="storsimple-adapter-for-sharepoint-benefits"></a>StorSimple-adapter voor share point-voor delen
+In een share point-site wordt inhoud opgeslagen als ongestructureerde BLOB-gegevens in een of meer inhouds databases. Deze data bases worden standaard gehost op computers met SQL Server en bevinden zich in de share Point-server farm. BLOBs kunnen snel groter worden, waardoor grote hoeveel heden on-premises opslag ruimte worden verbruikt. Daarom wilt u mogelijk een andere, goedkopere opslag oplossing vinden. SQL Server biedt een technologie met de naam externe Blob Storage (RBS) waarmee u BLOB-inhoud in het bestands systeem buiten de SQL Server-Data Base kunt opslaan. Met de RBS kunnen BLOBs zich bevinden in het bestands systeem op de computer met SQL Server, of kunnen ze worden opgeslagen in het bestands systeem op een andere Server computer.
 
-Resourcestructuur is vereist dat u een RBS-provider, zoals de StorSimple-Adapter voor SharePoint gebruiken om in te schakelen Resourcestructuur in SharePoint. De StorSimple-Adapter voor SharePoint werkt met Resourcestructuur, zodat u BLOBs verplaatsen naar een server die back-up gemaakt door de Microsoft Azure StorSimple-systeem. Microsoft Azure StorSimple slaat vervolgens de BLOB-gegevens lokaal of in de cloud, op basis van gebruik. BLOBs die zeer actief zijn (gewoonlijk aangeduid als laag 1 of gegevens) lokaal zich bevinden. Minder actieve gegevens en archivering van gegevens zich bevinden in de cloud. Nadat u op een inhoudsdatabase Resourcestructuur hebt ingeschakeld, wordt een nieuwe blobinhoud in SharePoint gemaakt op het StorSimple-apparaat en niet in de inhoud van de database opgeslagen.
+RBS vereist dat u een RBS-provider gebruikt, zoals de StorSimple-adapter voor share point, om de resource structuur in share point in te scha kelen. De StorSimple-adapter voor share point werkt met de resource structuur, zodat u BLOBs kunt verplaatsen naar een server waarvan een back-up wordt gemaakt door het Microsoft Azure StorSimple systeem. Microsoft Azure StorSimple de BLOB-gegevens vervolgens lokaal of in de Cloud opslaat, op basis van het gebruik. BLOBs die zeer actief zijn (doorgaans aangeduid als Tier 1 of warme gegevens), zijn lokaal opgeslagen. Minder actieve gegevens-en archiverings gegevens bevinden zich in de Cloud. Nadat u RBS hebt ingeschakeld voor een inhouds database, worden nieuwe BLOB-inhoud die in share point is gemaakt, opgeslagen op het StorSimple-apparaat en niet in de inhouds database.
 
-De Microsoft Azure StorSimple-implementatie van Resourcestructuur biedt de volgende voordelen:
+De Microsoft Azure StorSimple implementatie van de resource structuur biedt de volgende voor delen:
 
-* BLOB-inhoud naar een aparte server verplaatsen, kunt u beperken de querybelasting op SQL Server, die de SQL Server-reactietijd kunt verbeteren. 
-* Azure StorSimple maakt gebruik van gegevensontdubbeling en compressie om gegevensgrootte te beperken.
-* Azure StorSimple biedt bescherming van gegevens in de vorm van lokale en cloudmomentopnamen. Ook als u de database zelf op het StorSimple-apparaat, kunt u back-up de inhoud van de database en de BLOBs samen in een crash-consistente manier. (De inhoud van de database te verplaatsen naar het apparaat wordt alleen ondersteund voor de StorSimple 8000-apparaat. Deze functie wordt niet ondersteund voor de 5000 of 7000-serie.)
-* Azure StorSimple bevat disaster recovery functies zoals failover, bestands- en volume recovery (inclusief test recovery) en snel herstel van gegevens.
-* Data recovery-software, zoals Kroll Ontrack PowerControls, kunt u met StorSimple momentopnamen van BLOB-gegevens om uit te voeren herstel op itemniveau van SharePoint-inhoud. (Deze gegevens recovery-software is een afzonderlijke aankoop.)
-* De StorSimple-Adapter voor SharePoint kunt aansluiten op de centrale beheersite van SharePoint-portal, zodat u kunt voor het beheren van uw gehele SharePoint-oplossing van een centrale locatie.
+* Door BLOB-inhoud naar een afzonderlijke server te verplaatsen, kunt u de belasting van de query op SQL Server verminderen, waardoor de reactie snelheid van SQL Server kan worden verbeterd. 
+* Azure StorSimple maakt gebruik van ontdubbeling en compressie om de gegevens grootte te reduceren.
+* Azure StorSimple biedt gegevens beveiliging in de vorm van lokale en Cloud momentopnamen. Als u de data base zelf op het StorSimple-apparaat plaatst, kunt u ook een back-up maken van de inhouds database en BLOBs in een crash consistente manier. (Het verplaatsen van de inhouds database naar het apparaat wordt alleen ondersteund voor het apparaat uit de StorSimple 8000-serie. Deze functie wordt niet ondersteund voor de 5000-of 7000-serie.)
+* Azure StorSimple bevat functies voor herstel na nood gevallen, waaronder failover, bestands-en volume herstel (met inbegrip van test herstel) en het snel herstellen van gegevens.
+* U kunt gegevens herstel software, zoals Kroll Ontrack PowerControls, gebruiken met StorSimple moment opnamen van BLOB-gegevens voor het uitvoeren van herstel op item niveau van share point-inhoud. (Deze software voor gegevens herstel is een afzonderlijke aankoop.)
+* De StorSimple-adapter voor share point wordt toegevoegd aan de share Point-Portal voor Centraal beheer, zodat u uw volledige share point-oplossing kunt beheren vanaf een centrale locatie.
 
-BLOB-inhoud verplaatsen naar het bestandssysteem, kan andere kosten te besparen en de voordelen bieden. Bijvoorbeeld, met behulp van Resourcestructuur kunt verminderen de noodzaak van dure laag 1-opslag en omdat Hiermee verkleint u de inhoud van de database, Resourcestructuur het aantal databases dat is vereist in de SharePoint-serverfarm kunt beperken. Kan zijn dat de andere factoren, zoals de maximale grootte database en de hoeveelheid niet-Resourcestructuur inhoud, ook opslagvereisten beïnvloeden. Zie voor meer informatie over de kosten en voordelen van het gebruik van Resourcestructuur [plannen voor Resourcestructuur (SharePoint Foundation 2010)] [ 4] en [besluit te gebruikt dit veld in SharePoint 2013] [5].
+Het verplaatsen van BLOB-inhoud naar het bestands systeem kan andere kosten besparingen en voor delen bieden. Als u bijvoorbeeld resource structuur gebruikt, kan de duur van de dure opslag op laag 1 worden verminderd en wordt het aantal data bases dat is vereist in de share Point-server farm verminderd door de resource structuur te verkleinen. Andere factoren, zoals de grootte limieten van de data base en de hoeveelheid niet-RBS-inhoud, kunnen ook van invloed zijn op de opslag vereisten. Voor meer informatie over de kosten en voor delen van het gebruik van de resource structuur, Zie [planning voor RBS (share point Foundation 2010)][4] en [het gebruik van de resource structuur in share point 2013][5].
 
-### <a name="capacity-and-performance-limits"></a>Limieten voor capaciteit en prestaties
-Voordat u kunt u Resourcestructuur in uw SharePoint-oplossing overwegen, moet u rekening houden met de geteste prestaties en de beperkingen van de capaciteit van SharePoint Server 2010 en SharePoint Server 2013 en hoe deze limieten zich verhouden tot aanvaardbare prestaties. Zie voor meer informatie, [Software grenzen en beperkingen voor SharePoint 2013](https://technet.microsoft.com/library/cc262787.aspx).
+### <a name="capacity-and-performance-limits"></a>Capaciteits-en prestatie limieten
+Voordat u rekening houdt met het gebruik van de resource structuur in uw share point-oplossing, moet u rekening houden met de geteste prestaties en capaciteits limieten van share Point Server 2010 en share Point server 2013, en hoe deze limieten te maken hebben met acceptabele prestaties. Zie [Software grenzen en limieten voor share point 2013](https://technet.microsoft.com/library/cc262787.aspx)voor meer informatie.
 
-Lees het volgende voordat u Resourcestructuur configureren:
+Bekijk het volgende voordat u de resource structuur configureert:
 
-* Zorg ervoor dat de totale grootte van de inhoud (de grootte van een inhoudsdatabase) plus de grootte van alle bijbehorende externalized BLOBs niet de maximale grootte voor Resourcestructuur dat wordt ondersteund door SharePoint overschrijdt. Deze limiet is 200 GB. 
+* Zorg ervoor dat de totale grootte van de inhoud (de grootte van een inhouds database plus de grootte van alle gekoppelde externe BLOBs) de RBS-grootte limiet niet overschrijdt die door share point wordt ondersteund. Deze limiet is 200 GB. 
   
-    **Meting inhoud van de database en de grootte van de BLOB**
+    **Inhouds database en BLOB-grootte meten**
   
-  1. Deze query uitvoeren op de centrale beheersite WFE. Start de SharePoint-beheershell en voer de volgende Windows PowerShell-opdracht om op te halen van de grootte van de inhoudsdatabases:
+  1. Voer deze query uit op de WFE van Centraal beheer. Start de share point-beheer shell en voer de volgende Windows Power shell-opdracht in om de grootte van de inhouds databases op te halen:
      
      `Get-SPContentDatabase | Select-Object -ExpandProperty DiskSizeRequired`
      
-      Deze stap wordt de grootte van de inhoud van de database op de schijf.
-  2. Voer een van de volgende SQL-query's in SQL Management Studio op het SQL server-vak in elke inhoudsdatabase en het resultaat toevoegen aan het aantal verkregen in stap 1.
+      Met deze stap wordt de grootte van de inhouds database op de schijf opgehaald.
+  2. Voer een van de volgende SQL-query's uit in SQL Management Studio in het vak SQL Server op elke inhouds database en voeg het resultaat toe aan het aantal dat u in stap 1 hebt verkregen.
      
-     Voer op de inhoudsdatabases van SharePoint 2013:
+     Voer in share point 2013-inhouds databases het volgende in:
      
      `SELECT SUM([Size]) FROM [ContentDatabaseName].[dbo].[DocStreams] WHERE [Content] IS NULL`
      
-     Voer op de inhoudsdatabases van SharePoint 2010:
+     Voer in share point 2010-inhouds databases het volgende in:
      
      `SELECT SUM([Size]) FROM [ContentDatabaseName].[dbo].[AllDocs] WHERE [Content] IS NULL`
      
-     Deze stap wordt de grootte van de BLOBs die zijn is externalized opgehaald.
-* Het is raadzaam dat u alle inhoud voor BLOB STORAGE en database lokaal opslaan op het StorSimple-apparaat. Het StorSimple-apparaat is een cluster met twee knooppunten voor hoge beschikbaarheid. Hoge beschikbaarheid biedt het plaatsen van de inhoudsdatabases en BLOBs op het StorSimple-apparaat.
+     Met deze stap wordt de grootte van de BLOBs opgehaald die extern zijn ingesteld.
+* U wordt aangeraden alle BLOB-en database inhoud lokaal op het StorSimple-apparaat op te slaan. Het StorSimple-apparaat is een cluster met twee knoop punten voor hoge Beschik baarheid. Het plaatsen van de inhouds databases en BLOBs op het StorSimple-apparaat biedt een hoge Beschik baarheid.
   
-    Traditionele SQL Server-migratie aanbevolen werkwijzen gebruikt om de inhoud van de database verplaatsen naar het StorSimple-apparaat. Verplaats de database pas nadat alle BLOB-inhoud uit de database is verplaatst naar de bestandsshare via de Resourcestructuur. Als u ervoor kiest om te verplaatsen van de inhoud van de database met de StorSimple-apparaat, raden wij u aan de inhoud van de database-opslag te configureren op het apparaat als een primaire volume.
-* In Microsoft Azure StorSimple, als gelaagde volumes, is er geen manier om te waarborgen dat inhoud lokaal opgeslagen op de StorSimple device gelaagd naar Microsoft Azure-cloudopslag. Daarom is het raadzaam StorSimple lokaal vastgemaakt volumes gebruiken in combinatie met SharePoint RBS. Dit zorgt ervoor dat alle BLOB-inhoud lokaal op het StorSimple-apparaat blijft, en niet wordt verplaatst naar Microsoft Azure.
-* Als u de inhoudsdatabases niet bij de StorSimple-apparaat bewaren, gebruikt u traditionele hoge beschikbaarheid aanbevolen procedures van SQL Server die ondersteuning bieden voor Resourcestructuur. SQL Server clustering ondersteunt Resourcestructuur, terwijl SQL Server spiegelen niet. 
+    Gebruik de traditionele SQL Server aanbevolen procedures voor de migratie om de inhouds database naar het StorSimple-apparaat te verplaatsen. Verplaats de data base pas nadat alle BLOB-inhoud van de data base is verplaatst naar de bestands share via de resource structuur. Als u ervoor kiest om de inhouds database naar het StorSimple-apparaat te verplaatsen, raden we u aan de opslag van inhouds databases op het apparaat als primair volume te configureren.
+* Als in Microsoft Azure StorSimple gelaagde volumes worden gebruikt, is er geen manier om te garanderen dat inhoud die lokaal is opgeslagen op het StorSimple-apparaat niet wordt getierd naar Microsoft Azure-Cloud opslag. Daarom kunt u het beste StorSimple lokaal vastgemaakte volumes gebruiken in combi natie met share point-RBS. Dit zorgt ervoor dat alle BLOB-inhoud lokaal op het StorSimple-apparaat blijft en niet wordt verplaatst naar Microsoft Azure.
+* Als u de inhouds databases niet opslaat op het StorSimple-apparaat, gebruikt u traditionele SQL Server aanbevolen procedures voor hoge Beschik baarheid die ondersteuning bieden voor RBS. SQL Server Clustering ondersteunt resource structuur, terwijl SQL Server mirroring niet. 
 
 > [!WARNING]
-> Als u Resourcestructuur niet hebt ingeschakeld, niet aangeraden de inhoud van de database verplaatsen naar het StorSimple-apparaat. Dit is een niet-geteste configuratie.
+> Als u de resource structuur niet hebt ingeschakeld, raden we u aan om de inhouds database niet naar het StorSimple-apparaat te verplaatsen. Dit is een niet-test configuratie.
 
-## <a name="storsimple-adapter-for-sharepoint-installation"></a>StorSimple Adapter voor SharePoint-installatie
-Voordat u de StorSimple-Adapter voor SharePoint installeert kunt, moet u het StorSimple-apparaat configureren en ervoor zorgen dat de SharePoint-serverfarm en de SQL Server-instantiëring aan alle vereisten. Deze zelfstudie beschrijft configuratievereisten, evenals de procedures voor het installeren en upgraden van de StorSimple-Adapter voor SharePoint.
+## <a name="storsimple-adapter-for-sharepoint-installation"></a>StorSimple-adapter voor share point-installatie
+Voordat u de StorSimple-adapter voor share point kunt installeren, moet u het StorSimple-apparaat configureren en ervoor zorgen dat de share Point server-farm en SQL Server-instantiëring voldoen aan alle vereisten. In deze zelf studie worden de configuratie vereisten beschreven, evenals de procedures voor het installeren en upgraden van de StorSimple-adapter voor share point.
 
 ## <a name="configure-prerequisites"></a>Vereisten configureren
-Voordat u de StorSimple-Adapter voor SharePoint installeert kunt, controleert u de StorSimple-apparaat, SharePoint server-farm en SQL Server-instantiëring voldoen aan de volgende vereisten.
+Voordat u de StorSimple-adapter voor share point kunt installeren, moet u ervoor zorgen dat het StorSimple-apparaat, de share Point-server farm en SQL Server-instantiëring voldoen aan de volgende vereisten.
 
 ### <a name="system-requirements"></a>Systeemvereisten
-De StorSimple-Adapter voor SharePoint werkt met de volgende hardware en software:
+De StorSimple-adapter voor share point werkt met de volgende hardware en software:
 
-* Ondersteund besturingssysteem: Windows Server 2008 R2 SP1, Windows Server 2012 of Windows Server 2012 R2
-* Ondersteunde SharePoint-versies: SharePoint Server 2010 of SharePoint Server 2013
-* Ondersteunde versies van SQL Server: SQL Server 2008 Enterprise Edition, SQL Server 2008 R2 Enterprise Edition of SQL Server 2012 Enterprise Edition
-* StorSimple-apparaten ondersteund StorSimple 8000-serie, StorSimple 7000-serie en StorSimple 5000-reeks.
+* Ondersteund besturings systeem: Windows Server 2008 R2 SP1, Windows Server 2012 of Windows Server 2012 R2
+* Ondersteunde share point-versies: share Point Server 2010 of share Point server 2013
+* Ondersteunde SQL Server versies: SQL Server 2008 Enter prise Edition, SQL Server 2008 R2 Enter prise Edition of SQL Server 2012 Enter prise Edition
+* Ondersteunde StorSimple-apparaten – StorSimple 8000-reeks, StorSimple 7000-serie of StorSimple 5000-serie.
 
-### <a name="storsimple-device-configuration-prerequisites"></a>Configuratievereisten voor StorSimple-apparaat
-Het StorSimple-apparaat een apparaat is geblokkeerd en als zodanig vereist een bestandsserver waarop de gegevens kunnen worden gehost. U wordt aangeraden dat u een afzonderlijke server in plaats van een bestaande server van de SharePoint-farm gebruiken. Deze bestandsserver moet op het dezelfde local area network (LAN) als de SQL Server-computer die als host fungeert voor de inhoudsdatabases.
+### <a name="storsimple-device-configuration-prerequisites"></a>Vereisten voor configuratie van StorSimple-apparaten
+Het StorSimple-apparaat is een blok apparaat en hiervoor is een bestands server vereist waarop de gegevens kunnen worden gehost. U kunt het beste een afzonderlijke server gebruiken in plaats van een bestaande server uit de share point-farm. Deze bestands server moet zich op hetzelfde lokale netwerk (LAN) bevinden als de SQL Server computer die als host fungeert voor de inhouds databases.
 
 > [!TIP]
-> * Als u uw SharePoint-farm voor maximale beschikbaarheid configureert, moet u ook de bestandsserver voor hoge beschikbaarheid implementeren.
-> * Als u de inhoud van de database niet bij de StorSimple-apparaat bewaren, gebruikt u traditionele, maximaal beschikbare aanbevolen procedures die ondersteuning bieden voor Resourcestructuur. SQL Server clustering ondersteunt Resourcestructuur, terwijl SQL Server spiegelen niet. 
+> * Als u uw share point-Farm voor maximale Beschik baarheid configureert, moet u de bestands server ook implementeren voor maximale Beschik baarheid.
+> * Als u de inhouds database niet opslaat op het StorSimple-apparaat, gebruik dan traditionele aanbevolen procedures voor hoge Beschik baarheid die ondersteuning bieden voor RBS. SQL Server Clustering ondersteunt resource structuur, terwijl SQL Server mirroring niet. 
 
 
-Zorg ervoor dat uw StorSimple-apparaat correct is geconfigureerd en dat de juiste volumes voor de ondersteuning van uw SharePoint-implementatie zijn geconfigureerd en toegankelijk is vanaf de SQL Server-computer. Ga naar [uw on-premises StorSimple-apparaat implementeren](storsimple-8000-deployment-walkthrough-u2.md) als u nog niet hebt geïmplementeerd en geconfigureerd van uw StorSimple-apparaat. Houd er rekening mee de IP-adres van het StorSimple-apparaat. u moet deze tijdens de StorSimple-Adapter voor SharePoint-installatie.
+Zorg ervoor dat uw StorSimple-apparaat correct is geconfigureerd en dat de juiste volumes ter ondersteuning van uw share point-implementatie zijn geconfigureerd en toegankelijk zijn vanaf uw SQL Server computer. Ga naar [uw on-premises StorSimple-apparaat implementeren](storsimple-8000-deployment-walkthrough-u2.md) als u nog geen StorSimple-apparaat hebt geïmplementeerd en geconfigureerd. Noteer het IP-adres van het StorSimple-apparaat. u hebt deze nodig tijdens de installatie van de StorSimple-adapter voor share point.
 
-Bovendien moet u ervoor zorgen dat het volume moet worden gebruikt voor BLOB bedrijfsprocessen voldoet aan de volgende vereisten:
+Bovendien moet u ervoor zorgen dat het volume dat moet worden gebruikt voor BLOB externalization voldoet aan de volgende vereisten:
 
-* Het volume moet zijn geformatteerd met een clustergrootte van 64 KB.
-* Uw web-front-end (WFE) en de toepassingsservers moet toegang hebben tot het volume via een pad (Universal Naming Convention) bevinden.
-* De SharePoint-serverfarm moet worden geconfigureerd voor het schrijven naar het volume.
+* Het volume moet zijn geformatteerd met een 64 KB-Allocation Unit Size.
+* Uw web-front-end (WFE) en toepassings servers moeten toegang kunnen krijgen tot het volume via een UNC-pad (Universal Naming Convention).
+* De share Point server-farm moet worden geconfigureerd om naar het volume te schrijven.
 
 > [!NOTE]
-> Na het installeren en configureren van de adapter, alle BLOB bedrijfsprocessen moet gaan via het StorSimple-apparaat (het apparaat zal dienen als de volumes met SQL Server en de opslaglagen beheren). U kunt andere doelen niet gebruiken voor BLOB-bedrijfsprocessen.
+> Nadat u de adapter hebt geïnstalleerd en geconfigureerd, moet alle BLOB-externalization via het StorSimple-apparaat worden weer gegeven (het apparaat geeft de volumes aan SQL Server en beheert de opslag lagen). U kunt geen andere doelen gebruiken voor BLOB-externalization.
 
 
-Als u van plan bent te StorSimple Snapshot Manager om momentopnamen van de gegevens voor BLOB STORAGE en database te gebruiken, moet u StorSimple Snapshot Manager installeren op de database-server zodat deze de SQL Writer-Service gebruiken kunt voor het implementeren van de Windows Volume Shadow Copy Service (VSS).
+Als u van plan bent Snapshot Manager StorSimple te gebruiken om moment opnamen van de BLOB-en database gegevens te maken, moet u StorSimple Snapshot Manager op de database server installeren, zodat deze de SQL Writer-service kan gebruiken voor het implementeren van de Windows Volume Shadow Copy Service (VSS).
 
 > [!IMPORTANT]
-> StorSimple Snapshot Manager biedt geen ondersteuning voor de SharePoint VSS Writer en toepassingsconsistente momentopnamen van SharePoint-gegevens kan niet worden gemaakt. StorSimple Snapshot Manager voorziet in een SharePoint-scenario, alleen crash-consistente back-ups.
+> StorSimple Snapshot Manager biedt geen ondersteuning voor de share point VSS-schrijver en kan geen toepassings consistente moment opnamen van share point-gegevens maken. In een share point-scenario biedt StorSimple Snapshot Manager alleen crash consistente back-ups.
 
 
-## <a name="sharepoint-farm-configuration-prerequisites"></a>Configuratievereisten voor SharePoint-farm
-Zorg ervoor dat uw SharePoint-serverfarm correct is geconfigureerd, als volgt:
+## <a name="sharepoint-farm-configuration-prerequisites"></a>Vereisten voor share point-Farm configuratie
+Controleer als volgt of de share Point-server farm correct is geconfigureerd:
 
-* Controleer of uw SharePoint-serverfarm in orde is, en controleert u het volgende:
-* Alle SharePoint WFE en toepassingsservers die zijn geregistreerd in de farm worden uitgevoerd en van de server waarop u de StorSimple-Adapter voor SharePoint installeert kunnen worden gepingd.
-* De SharePoint Timer-service (SPTimerV3 of SPTimerV4) wordt uitgevoerd op de WFE-server en de toepassingsserver.
-* Zowel de IIS-toepassingsgroep waarmee de centraalbeheersite van SharePoint wordt uitgevoerd als de SharePoint Timer-service hebt beheerdersbevoegdheden nodig.
-* Zorg ervoor dat Internet Explorer Verbeterde beveiligingscontext (IE ESC) is uitgeschakeld. Volg deze stappen voor IE ESC uitschakelen:
+* Controleer of de share Point-server farm in orde is en controleer het volgende:
+* Alle share point WFE-en toepassings servers die in de farm zijn geregistreerd, worden uitgevoerd en kunnen worden gepingd vanaf de server waarop u de StorSimple-adapter voor share point gaat installeren.
+* De share point-timer service (SPTimerV3 of SPTimerV4) wordt uitgevoerd op elke WFE-server en toepassings server.
+* Zowel de share point-timer service als de IIS-toepassings groep waaronder de share point-centrale beheer site wordt uitgevoerd, heeft Administrator bevoegdheden.
+* Zorg ervoor dat Internet Explorer Enhanced Security context (IE ESC) is uitgeschakeld. Volg deze stappen voor het uitschakelen van Internet Explorer ESC:
   
   1. Sluit alle exemplaren van Internet Explorer.
-  2. Start de Server Manager.
-  3. Klik in het linkerdeelvenster op **lokale Server**.
-  4. In het rechterdeelvenster naast **verbeterde beveiliging van Internet Explorer**, klikt u op **op**.
-  5. Onder **beheerders**, klikt u op **uit**.
+  2. Start de Serverbeheer.
+  3. Klik in het linkerdeel venster op **lokale server**.
+  4. Klik in het rechterdeel venster naast **Verbeterde beveiliging van Internet Explorer**op **ingeschakeld**.
+  5. Klik onder **beheerders**op **uit**.
   6. Klik op **OK**.
 
-## <a name="remote-blob-storage-rbs-prerequisites"></a>Externe vereisten voor BLOB Storage planning
-Zorg ervoor dat u van een ondersteunde versie van SQL Server gebruikmaakt. Alleen de volgende versies worden ondersteund en kan gebruikt dit veld:
+## <a name="remote-blob-storage-rbs-prerequisites"></a>Vereisten voor externe BLOB Storage (RBS)
+Zorg ervoor dat u een ondersteunde versie van SQL Server gebruikt. Alleen de volgende versies worden ondersteund en kunnen gebruikmaken van RBS:
 
 * SQL Server 2008 Enterprise Edition
 * SQL Server 2008 R2 Enterprise Edition
 * SQL Server 2012 Enterprise Edition
 
-BLOBs kunnen worden externalized voor alleen volumes die het StorSimple-apparaat aan SQL Server biedt. Er zijn geen andere doelen voor BLOB bedrijfsprocessen worden ondersteund.
+BLOBs kunnen worden geexternal op alleen de volumes die het StorSimple-apparaat aan SQL Server geeft. Er worden geen andere doelen voor BLOB-externalization ondersteund.
 
-Als u alle vereiste configuratiestappen hebt voltooid, gaat u naar [de StorSimple-Adapter voor SharePoint installeren](#install-the-storsimple-adapter-for-sharepoint).
+Wanneer u alle stappen voor de vereiste configuratie hebt voltooid, gaat u naar [de StorSimple-adapter installeren voor share point](#install-the-storsimple-adapter-for-sharepoint).
 
-## <a name="install-the-storsimple-adapter-for-sharepoint"></a>De StorSimple-Adapter voor SharePoint installeren
-Gebruik de volgende stappen voor het installeren van de StorSimple-Adapter voor SharePoint. Als u de software opnieuw installeert, Zie [bijwerken of opnieuw installeren van de StorSimple-Adapter voor SharePoint](#upgrade-or-reinstall-the-storsimple-adapter-for-sharepoint). De tijd die nodig is voor de installatie is afhankelijk van het totale aantal SharePoint-databases in uw SharePoint-serverfarm.
+## <a name="install-the-storsimple-adapter-for-sharepoint"></a>De StorSimple-adapter voor share point installeren
+Gebruik de volgende stappen om de StorSimple-adapter voor share point te installeren. Als u de software opnieuw wilt installeren, raadpleegt u [de StorSimple-adapter voor share point bijwerken of opnieuw](#upgrade-or-reinstall-the-storsimple-adapter-for-sharepoint)installeren. De tijd die nodig is voor de installatie is afhankelijk van het totale aantal share point-data bases in uw share Point-server farm.
 
 [!INCLUDE [storsimple-install-sharepoint-adapter](../../includes/storsimple-install-sharepoint-adapter.md)]
 
-## <a name="configure-rbs"></a>Resourcestructuur configureren
-Nadat u de StorSimple-Adapter voor SharePoint installeert, configureert u Resourcestructuur zoals beschreven in de volgende procedure.
+## <a name="configure-rbs"></a>Resource structuur configureren
+Nadat u de StorSimple-adapter voor share point hebt geïnstalleerd, configureert u de resource structuur zoals beschreven in de volgende procedure.
 
 > [!TIP]
-> De StorSimple-Adapter voor SharePoint kunt aansluiten op de pagina Centraal beheer van SharePoint zodat Resourcestructuur moet worden ingeschakeld of uitgeschakeld in elke inhoudsdatabase in de SharePoint-farm. In- of uitschakelen van Resourcestructuur op de inhoud van de database wordt echter een IIS opnieuw instellen, die, afhankelijk van de configuratie van uw bedrijf tijdelijk de beschikbaarheid van de SharePoint web-front-end (WFE onderbroken kan). (Factoren, zoals het gebruik van een front-end-load balancer, de huidige serverwerkbelasting, enzovoort, kunnen beperken of deze onderbreking te elimineren.) Als u wilt voorkomen dat gebruikers een onderbreking, wordt aangeraden dat u in- of uitschakelen van Resourcestructuur alleen tijdens een geplande onderhoudsvenster.
+> De StorSimple-adapter voor share point wordt op de pagina Centraal beheer van share point geplaatst, zodat de resource structuur kan worden in-of uitgeschakeld voor elke inhouds database in de share point-farm. Het in-of uitschakelen van de resource structuur voor de inhouds database leidt ertoe dat een IIS-reset, afhankelijk van de configuratie van uw farm, de beschik baarheid van de share point-Webfront-end (WFE) tijdelijk kan verstoren. (Factoren zoals het gebruik van een front-end load balancer, de huidige server workload, enzovoort, kunnen deze onderbreking beperken of elimineren.) Om gebruikers te beschermen tegen onderbrekingen, raden we u aan om RBS alleen in of uit te scha kelen tijdens een gepland onderhouds venster.
 
 
 [!INCLUDE [storsimple-sharepoint-adapter-configure-rbs](../../includes/storsimple-sharepoint-adapter-configure-rbs.md)]
 
 ## <a name="configure-garbage-collection"></a>Garbagecollection configureren
-Wanneer u objecten uit een SharePoint-site worden verwijderd, zijn ze niet automatisch verwijderd uit de store Resourcestructuur volume. In plaats daarvan een asynchrone, achtergrond onderhoudsprogramma verwijdert zwevende BLOBs uit de store van het bestand. Systeembeheerders kunnen plannen dat dit proces periodiek wordt uitgevoerd of ze deze altijd indien nodig kunnen starten.
+Wanneer objecten worden verwijderd uit een share point-site, worden ze niet automatisch verwijderd uit het RBS-archief volume. In plaats daarvan worden zwevende BLOBs uit het bestands archief verwijderd met een asynchroon, onderhouds programma voor de achtergrond. Systeem beheerders kunnen dit proces plannen om periodiek uit te voeren, of ze kunnen het altijd starten als dat nodig is.
 
-Dit onderhoudsprogramma (Microsoft.Data.SqlRemoteBlobs.Maintainer.exe) wordt automatisch geïnstalleerd op alle SharePoint WFE-servers en toepassingsservers, wanneer u Resourcestructuur inschakelt. Het programma is geïnstalleerd op de volgende locatie: *opstartschijf*: \Program Files\Microsoft externe SQL-blobopslag 10.50\Maintainer\
+Dit onderhouds programma (Microsoft. data. SqlRemoteBlobs. maintainer. exe) wordt automatisch geïnstalleerd op alle share point WFE-servers en toepassings servers wanneer u RBS inschakelt. Het programma wordt geïnstalleerd op de volgende locatie: *opstart station*: \Program Files\Microsoft SQL Remote Blob Storage 10,50 \ maintainer \
 
-Zie voor meer informatie over het configureren en gebruiken van de onderhoudsprogramma [Resourcestructuur onderhouden in SharePoint Server 2013][8].
+Zie voor meer informatie over het configureren en gebruiken van het onderhouds programma [resource structuur onderhouden in share Point Server 2013][8].
 
 > [!IMPORTANT]
-> Het Resourcestructuur maintainer programma is resource-intensief. U moet plannen voor uitvoering alleen tijdens perioden van weinig activiteit op de SharePoint-farm.
+> De RBS-onderhouds programma is resource-intensief. U moet de toepassing plannen om alleen te worden uitgevoerd tijdens peri Oden met een lichte activiteit op de share point-farm.
 
 
-### <a name="delete-orphaned-blobs-immediately"></a>Zwevende BLOBs onmiddellijk verwijderen
-Als u verwijderen van zwevende BLOBs onmiddellijk wilt, kunt u de volgende instructies gebruiken. Houd er rekening mee dat deze instructies een voorbeeld zijn van hoe dit kan worden gedaan in een SharePoint 2013-omgeving met de volgende onderdelen:
+### <a name="delete-orphaned-blobs-immediately"></a>Zwevende BLOBs direct verwijderen
+Als u zwevende BLOBs onmiddellijk wilt verwijderen, kunt u de volgende instructies gebruiken. Deze instructies zijn een voor beeld van hoe dit kan worden gedaan in een share point 2013-omgeving met de volgende onderdelen:
 
-* De naam van de inhoud van de database is WSS_Content.
-* De naam van de SQL Server is SHRPT13 SQL12\SHRPT13.
-* Naam van de webtoepassing is SharePoint – 80.
+* De naam van de inhouds database is WSS_Content.
+* De SQL Server naam is SHRPT13-SQL12\SHRPT13.
+* De naam van de webtoepassing is share point – 80.
 
 [!INCLUDE [storsimple-sharepoint-adapter-garbage-collection](../../includes/storsimple-sharepoint-adapter-garbage-collection.md)]
 
-## <a name="upgrade-or-reinstall-the-storsimple-adapter-for-sharepoint"></a>Bijwerken of opnieuw installeren van de StorSimple-Adapter voor SharePoint
-Gebruik de volgende procedure SharePoint-server bijwerken en opnieuw StorSimple-Adapter voor SharePoint installeren of te eenvoudig upgraden of opnieuw installeren van de adapter in een bestaande SharePoint-serverfarm.
+## <a name="upgrade-or-reinstall-the-storsimple-adapter-for-sharepoint"></a>De StorSimple-adapter voor share point bijwerken of opnieuw installeren
+Gebruik de volgende procedure om share Point server bij te werken en de StorSimple-adapter voor share point opnieuw te installeren of om eenvoudigweg de adapter in een bestaande share Point-server farm te upgraden of opnieuw te installeren.
 
 > [!IMPORTANT]
-> Lees de volgende informatie voordat u probeert te upgraden van uw SharePoint-software en/of de upgrade of de StorSimple-Adapter voor SharePoint installeren:
+> Controleer de volgende informatie voordat u een upgrade uitvoert van uw share point-software en/of de StorSimple-adapter voor share point moet bijwerken of opnieuw installeren:
 > 
-> * Alle bestanden die eerder zijn verplaatst naar de externe opslag, via de Resourcestructuur zijn is niet beschikbaar totdat de installatie is voltooid en de functie Resourcestructuur opnieuw is ingeschakeld. Als u wilt beperken impact op gebruikers, uitvoeren een upgrade of installatie tijdens gepland onderhoud.
-> * De tijd die nodig is voor de upgrade/opnieuw installeren kan variëren, afhankelijk van het totale aantal SharePoint-databases in de SharePoint-serverfarm.
-> * Nadat de upgrade/installatie voltooid is, moet u Resourcestructuur inschakelen voor de inhoudsdatabases. Zie [configureren Resourcestructuur](#configure-rbs) voor meer informatie.
-> * Als u Resourcestructuur configureert voor een SharePoint-farm met een zeer groot aantal databases (meer dan 200), de **Centraal beheer van SharePoint** pagina mogelijk time-out. Als dat gebeurt, vernieuw de pagina. Dit heeft geen invloed op het configuratieproces.
+> * Bestanden die eerder zijn verplaatst naar externe opslag via de resource structuur, zijn pas beschikbaar als de installatie is voltooid en de resource structuur functie opnieuw is ingeschakeld. Als u de gevolgen van de gebruiker wilt beperken, voert u een upgrade of herinstallatie uit tijdens een gepland onderhouds venster.
+> * De tijd die nodig is voor de upgrade/herinstallatie, kan variëren, afhankelijk van het totale aantal share point-data bases in de share Point-server farm.
+> * Nadat de upgrade/herinstallatie is voltooid, moet u de resource structuur voor de inhouds databases inschakelen. Zie [resource structuur configureren](#configure-rbs) voor meer informatie.
+> * Als u een resource structuur configureert voor een share point-farm met een zeer groot aantal data bases (groter dan 200), is er mogelijk een time-out opgetreden op de pagina **Centraal beheer van share point** . Als dat het geval is, vernieuwt u de pagina. Dit heeft geen invloed op het configuratie proces.
 
 
 [!INCLUDE [storsimple-upgrade-sharepoint-adapter](../../includes/storsimple-upgrade-sharepoint-adapter.md)]
 
-## <a name="storsimple-adapter-for-sharepoint-removal"></a>StorSimple Adapter voor SharePoint verwijderen
-De volgende procedures wordt beschreven hoe u de BLOBs terug verplaatsen naar de SQL Server-inhoudsdatabases en verwijder de StorSimple-Adapter voor SharePoint. 
+## <a name="storsimple-adapter-for-sharepoint-removal"></a>StorSimple-adapter voor share point verwijderen
+In de volgende procedures wordt beschreven hoe u de BLOBs terugplaatst naar de SQL Server-inhouds databases en vervolgens de StorSimple-adapter voor share point kunt verwijderen. 
 
 > [!IMPORTANT]
-> U moet de BLOBs terug verplaatsen naar de inhoudsdatabases voordat u de adaptersoftware verwijderen.
+> U moet de BLOBs weer verplaatsen naar de inhouds databases voordat u de adapter software verwijdert.
 
 
 ### <a name="before-you-begin"></a>Voordat u begint
-Verzamelt de volgende informatie voordat u de gegevens terug naar de SQL Server-inhoudsdatabases verplaatsen en beginnen met het verwijderingsproces adapter:
+Verzamel de volgende informatie voordat u de gegevens weer naar de SQL Server-inhouds databases verplaatst en het verwijderen van de adapter start:
 
-* De namen van alle databases waarvoor Resourcestructuur is ingeschakeld
-* Het UNC-pad van de geconfigureerde BLOB-opslag
+* De namen van alle data bases waarvoor de resource structuur is ingeschakeld
+* Het UNC-pad van het geconfigureerde BLOB-archief
 
-### <a name="move-the-blobs-back-to-the-content-databases"></a>De BLOBs terug verplaatsen naar de inhoudsdatabases
-Voordat u de StorSimple-Adapter voor SharePoint-software verwijdert, moet u alle BLOBs die zijn externalized terug naar de SQL Server-inhoudsdatabases migreren. Als u probeert te verwijderen van de StorSimple-Adapter voor SharePoint voordat u alle BLOBs terug naar de inhoudsdatabases verplaatsen, ziet u de volgende waarschuwing weergegeven.
+### <a name="move-the-blobs-back-to-the-content-databases"></a>Verplaats de BLOBs terug naar de inhouds databases
+Voordat u de StorSimple-adapter voor share point-software verwijdert, moet u alle BLOBs migreren die extern zijn teruggestuurd naar de SQL Server-inhouds databases. Als u de StorSimple-adapter voor share point probeert te verwijderen voordat u alle BLOBs weer naar de inhouds databases verplaatst, wordt de volgende waarschuwing weer gegeven.
 
-![Waarschuwingsbericht](./media/storsimple-adapter-for-sharepoint/sasp1.png)
+![Waarschuwings bericht](./media/storsimple-adapter-for-sharepoint/sasp1.png)
 
-#### <a name="to-move-the-blobs-back-to-the-content-databases"></a>De BLOBs terug verplaatsen naar de inhoudsdatabases
-1. Download de externalized op hun beurt.
-2. Open de **Centraal beheer van SharePoint** pagina en blader naar **systeeminstellingen**.
-3. Onder **Azure StorSimple**, klikt u op **StorSimple-Adapter configureren**.
-4. Op de **StorSimple-Adapter configureren** pagina, klikt u op de **uitschakelen** knop onder elk van de inhoudsdatabases die u wilt verwijderen van externe BLOB-opslag. 
-5. De objecten uit SharePoint verwijderen en vervolgens opnieuw uploaden.
+#### <a name="to-move-the-blobs-back-to-the-content-databases"></a>De BLOBs weer verplaatsen naar de inhouds databases
+1. Down load elk van de externe objecten.
+2. Open de pagina **Centraal beheer van share point** en blader naar **systeem instellingen**.
+3. Klik onder **Azure StorSimple**op **StorSimple-adapter configureren**.
+4. Op de pagina **StorSimple-adapter configureren** klikt u op de knop **uitschakelen** onder elk van de inhouds databases die u wilt verwijderen uit externe Blob-opslag. 
+5. Verwijder de objecten uit share point en upload ze vervolgens opnieuw.
 
-U kunt ook kunt u de Microsoft `RBS Migrate()` PowerShell-cmdlet die deel uitmaakt van SharePoint. Zie voor meer informatie, [inhoud migreren naar of uit Resourcestructuur](https://technet.microsoft.com/library/ff628255.aspx).
+U kunt ook de micro soft `RBS Migrate()` Power shell-cmdlet gebruiken die deel uitmaakt van share point. Zie [inhoud migreren naar of uit een resource structuur](https://technet.microsoft.com/library/ff628255.aspx)voor meer informatie.
 
-Nadat u de BLOBs terug naar de inhoud van de database verplaatsen, gaat u naar de volgende stap: [Verwijderen van de adapter](#uninstall-the-adapter).
+Nadat u de BLOBs weer naar de inhouds database hebt verplaatst, gaat u naar de volgende stap: [de adapter verwijderen](#uninstall-the-adapter).
 
 ### <a name="uninstall-the-adapter"></a>De adapter verwijderen
-Nadat u de BLOBs terug naar de SQL Server-inhoudsdatabases verplaatsen, kunt u een van de volgende opties voor het verwijderen van de StorSimple-Adapter voor SharePoint gebruiken.
+Nadat u de BLOBs weer naar de SQL Server-inhouds databases hebt verplaatst, gebruikt u een van de volgende opties om de StorSimple-adapter voor share point te verwijderen.
 
-#### <a name="to-use-the-installation-program-to-uninstall-the-adapter"></a>Het installatieprogramma voor het verwijderen van de adapter te gebruiken
-1. Gebruik een account met administrator-bevoegdheden voor aanmelding bij de web-front-end (WFE)-server.
-2. Dubbelklik op de StorSimple-Adapter voor SharePoint-installatieprogramma. De Wizard Setup wordt gestart.
+#### <a name="to-use-the-installation-program-to-uninstall-the-adapter"></a>Het installatie programma gebruiken om de adapter te verwijderen
+1. Gebruik een account met beheerders bevoegdheden om u aan te melden bij de server van de web-front-end (WFE).
+2. Dubbel klik op de StorSimple-adapter voor share point Installer. De wizard Setup wordt gestart.
    
-    ![Setup-wizard](./media/storsimple-adapter-for-sharepoint/sasp2.png)
-3. Klik op **volgende**. De volgende pagina wordt weergegeven.
+    ![Wizard Setup](./media/storsimple-adapter-for-sharepoint/sasp2.png)
+3. Klik op **Volgende**. De volgende pagina wordt weer gegeven.
    
-    ![Pagina voor Setup wizard verwijderen](./media/storsimple-adapter-for-sharepoint/sasp3.png)
-4. Klik op **verwijderen** het verwijderingsproces te selecteren. De volgende pagina wordt weergegeven.
+    ![Pagina installatie wizard verwijderen](./media/storsimple-adapter-for-sharepoint/sasp3.png)
+4. Klik op **verwijderen** om het verwijderings proces te selecteren. De volgende pagina wordt weer gegeven.
    
-    ![Bevestigingspagina voor Setup-wizard](./media/storsimple-adapter-for-sharepoint/sasp4.png)
-5. Klik op **verwijderen** de verwijdering te bevestigen. De volgende pagina van de voortgang wordt weergegeven.
+    ![Pagina Bevestiging van installatie wizard](./media/storsimple-adapter-for-sharepoint/sasp4.png)
+5. Klik op **verwijderen** om de verwijdering te bevestigen. De volgende voortgangs pagina wordt weer gegeven.
    
-    ![Instellen van de voortgangspagina van wizard](./media/storsimple-adapter-for-sharepoint/sasp5.png)
-6. Wanneer het verwijderen voltooid is, verschijnt de voltooiingspagina. Klik op **voltooien** aan de Wizard Setup afsluit.
+    ![Voortgangs pagina van de installatie wizard](./media/storsimple-adapter-for-sharepoint/sasp5.png)
+6. Wanneer het verwijderen is voltooid, wordt de pagina volt ooien weer gegeven. Klik op **volt ooien** om de wizard Setup te sluiten.
 
-#### <a name="to-use-the-control-panel-to-uninstall-the-adapter"></a>Het Configuratiescherm gebruiken om te verwijderen van de adapter
-1. Open het Configuratiescherm en klik vervolgens op **programma's en onderdelen**.
-2. Selecteer **StorSimple Adapter voor SharePoint**, en klik vervolgens op **verwijderen**.
+#### <a name="to-use-the-control-panel-to-uninstall-the-adapter"></a>Het configuratie scherm gebruiken om de adapter te verwijderen
+1. Open het configuratie scherm en klik vervolgens op **Program ma's en onderdelen**.
+2. Selecteer **StorSimple-adapter voor share point**en klik vervolgens op **verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over StorSimple](storsimple-overview.md).
+Meer [informatie over StorSimple](storsimple-overview.md).
 
 <!--Reference links-->
 [1]: https://www.microsoft.com/download/details.aspx?id=44073

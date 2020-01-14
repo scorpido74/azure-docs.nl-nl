@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 01/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6ab9d0ae07978e69bebb0fc24c8965cce971cfd5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c85db05e6feeea43023c2391998f837348caed4e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082354"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929669"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Blobs toevoegen aan objecten in azure Digital Apparaatdubbels
 
@@ -36,7 +36,7 @@ Naast het **inhouds type** en de **Content-dispositie**moeten door Azure Digital
 
 De vier belangrijkste JSON-schema's zijn:
 
-[JSON-schema's ![](media/how-to-add-blobs/blob-models-img.png)](media/how-to-add-blobs/blob-models-img.png#lightbox)
+[JSON-schema's ![](media/how-to-add-blobs/blob-models-swagger-img.png)](media/how-to-add-blobs/blob-models-swagger-img.png#lightbox)
 
 Meta gegevens van JSON-BLOB voldoen aan het volgende model:
 
@@ -196,7 +196,7 @@ curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
 | YOUR_SPACE_ID | De ID van de ruimte waaraan de BLOB moet worden gekoppeld |
 | PATH_TO_FILE | Het pad naar het tekst bestand |
 
-[![krul-voor beeld](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
+[![krul-voor beeld](media/how-to-add-blobs/http-blob-post-through-curl-img.png)](media/how-to-add-blobs/http-blob-post-through-curl-img.png#lightbox)
 
 Een geslaagde POST retourneert de ID van de nieuwe blob.
 
@@ -208,7 +208,7 @@ In de volgende secties worden de belangrijkste BLOB-API-eind punten en de functi
 
 U kunt blobs koppelen aan apparaten. De volgende afbeelding toont de Swagger-referentie documentatie voor uw beheer-Api's. Hiermee worden Device-gerelateerde API-eind punten opgegeven voor het BLOB-verbruik en eventueel vereiste para meters voor het pad.
 
-[blobs van ![apparaat](media/how-to-add-blobs/blobs-device-api-img.png)](media/how-to-add-blobs/blobs-device-api-img.png#lightbox)
+[blobs van ![apparaat](media/how-to-add-blobs/blobs-device-api-swagger-img.png)](media/how-to-add-blobs/blobs-device-api-swagger-img.png#lightbox)
 
 Als u bijvoorbeeld een BLOB wilt bijwerken of maken en de BLOB aan een apparaat wilt koppelen, moet u een geverifieerde HTTP-PATCH aanvraag indienen voor het volgende:
 
@@ -226,7 +226,7 @@ Voltooide aanvragen retour neren een JSON-object zoals [eerder beschreven](#blob
 
 U kunt ook blobs koppelen aan ruimten. De volgende afbeelding geeft een lijst van alle Space-API-eind punten die verantwoordelijk zijn voor het verwerken van blobs. Het bevat ook een lijst met alle para meters die moeten worden door gegeven aan deze eind punten.
 
-[![ruimte-blobs](media/how-to-add-blobs/blobs-space-api-img.png)](media/how-to-add-blobs/blobs-space-api-img.png#lightbox)
+[![ruimte-blobs](media/how-to-add-blobs/blobs-space-api-swagger-img.png)](media/how-to-add-blobs/blobs-space-api-swagger-img.png#lightbox)
 
 Als u bijvoorbeeld een BLOB wilt retour neren die aan een ruimte is gekoppeld, maakt u een geverifieerde HTTP GET-aanvraag naar:
 
@@ -246,7 +246,7 @@ Met een PATCH-aanvraag voor hetzelfde eind punt worden meta gegevens beschrijvin
 
 U kunt blobs koppelen aan gebruikers modellen (bijvoorbeeld om een profiel foto te koppelen). De volgende afbeelding toont relevante gebruikers-API-eind punten en alle vereiste para meters voor het pad, zoals `id`:
 
-[Gebruikers-blobs ![](media/how-to-add-blobs/blobs-users-api-img.png)](media/how-to-add-blobs/blobs-users-api-img.png#lightbox)
+[Gebruikers-blobs ![](media/how-to-add-blobs/blobs-users-api-swagger-img.png)](media/how-to-add-blobs/blobs-users-api-swagger-img.png#lightbox)
 
 Als u bijvoorbeeld een BLOB wilt ophalen die aan een gebruiker is gekoppeld, maakt u een geverifieerde HTTP GET-aanvraag met de vereiste formulier gegevens voor:
 
@@ -262,23 +262,41 @@ Voltooide aanvragen retour neren een JSON-object zoals [eerder beschreven](#blob
 
 ## <a name="common-errors"></a>Algemene fouten
 
-Een veelvoorkomende fout houdt in dat u de juiste header-informatie niet opgeeft:
+* Een veelvoorkomende fout houdt in dat u de juiste header-informatie niet opgeeft:
 
-```JSON
-{
-    "error": {
-        "code": "400.600.000.000",
-        "message": "Invalid media type in first section."
-    }
-}
-```
+  ```JSON
+  {
+      "error": {
+          "code": "400.600.000.000",
+          "message": "Invalid media type in first section."
+      }
+  }
+  ```
 
-Om deze fout op te lossen, controleert u of de algemene aanvraag een juiste **Content-type-** header heeft:
+  Om deze fout op te lossen, controleert u of de algemene aanvraag een juiste **Content-type-** header heeft:
 
-* `multipart/mixed`
-* `multipart/form-data`
+     * `multipart/mixed`
+     * `multipart/form-data`
 
-Controleer ook of elk meerdelige segment een bijbehorend **inhouds type** heeft als dat nodig is.
+  Controleer ook of elk *meerdelige segment* een passend overeenkomend **type inhoud**heeft.
+
+* Er treedt een tweede algemene fout op wanneer meerdere blobs zijn toegewezen aan dezelfde resource in uw [ruimtelijke Intelligence-grafiek](concepts-objectmodel-spatialgraph.md):
+
+  ```JSON
+  {
+      "error": {
+          "code": "400.600.000.000",
+          "message": "SpaceBlobMetadata already exists."
+      }
+  }
+  ```
+
+  > [!NOTE]
+  > Het **bericht** kenmerk kan variëren op basis van de resource. 
+
+  Er kan slechts één BLOB (van elk soort) aan elke resource in uw ruimtelijke grafiek worden gekoppeld. 
+
+  Om deze fout op te lossen, werkt u de bestaande BLOB bij met behulp van de juiste API HTTP-PATCH bewerking. Als u dit doet, worden de bestaande BLOB-gegevens vervangen door de gewenste gegevens.
 
 ## <a name="next-steps"></a>Volgende stappen
 

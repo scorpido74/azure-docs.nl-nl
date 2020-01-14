@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 9389466b6291542563c068706479bf981c5880da
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: c2846759a8daa04fc5c1d3b7f69e2c061bacb272
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692756"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933483"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>Experimentele voor instelling voor code ring met Content-Aware
 
@@ -29,7 +29,9 @@ Het is belang dat u verder gaat dan een vooraf ingestelde methode die geschikt i
 
 In vroege 2017 heeft micro soft de [adaptieve streaming](autogen-bitrate-ladder.md) -voor instelling uitgebracht om het probleem van de variabiliteit in de kwaliteit en resolutie van de bron Video's te verhelpen. Onze klanten hadden een gevarieerde combi natie van inhoud, een aantal van 1080p, anderen op 720p en enkele van de SD en lagere resoluties. Bovendien was niet alle bron inhoud van hoge kwaliteit mezzanine van film of TV Studios. Met de vooraf ingestelde adaptieve streaming worden deze problemen opgelost door ervoor te zorgen dat de videoladder nooit de resolutie of de gemiddelde bitsnelheid van de invoer-mezzanine overschrijdt.
 
-De voor keuren voor de experimentele inhoud van de coderings functie breidt dat mechanisme uit door aangepaste logica te integreren waarmee de encoder de optimale bitrate waarde voor een bepaalde oplossing kan zoeken, maar zonder dat er uitgebreide reken kundige analyse nodig is. Het resultaat is dat deze nieuwe standaard instelling een uitvoer produceert die een lagere bitsnelheid heeft dan de vooraf ingestelde adaptieve streaming, maar met een hogere kwaliteit. Bekijk de volgende voorbeeld grafieken die de vergelijking weer geven met behulp van kwaliteits metingen, zoals [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) en [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). De bron is gemaakt door het samen voegen van korte clips met zeer complexe opnamen van films en TV-Program ma's, die zijn bedoeld om het coderings programma te stressren. Deze standaard instelling produceert per definitie resultaten die variëren van inhoud tot inhoud. het betekent ook dat er voor sommige inhoud geen aanzienlijke vermindering van de bitrate of verbetering van de bitsnelheid kan optreden.
+De nieuwe, vooraf gedefinieerde coderings voorinstelling breidt dat mechanisme uit door aangepaste logica te integreren waarmee de encoder de optimale bitrate waarde voor een bepaalde oplossing kan zoeken, maar zonder dat er uitgebreide reken kundige analyse nodig is. Deze vooraf ingestelde produceert een reeks GOP terug-afgevulde Mp4's. Op basis van de invoer inhoud voert de service een initiële licht gewicht analyse uit van de invoer inhoud en gebruikt de resultaten om het optimale aantal lagen, de juiste bitrate en resolutie-instellingen voor levering door adaptieve streaming te bepalen. Deze standaard instelling is met name van toepassing op Video's met een laag en gemiddeld complexiteit, waarbij de uitvoer bestanden lagere bitsnelheden zijn dan de vooraf ingestelde voor instelling van adaptief streamen, maar met een kwaliteit die nog steeds een goede ervaring voor kijkers biedt. De uitvoer bevat MP4-bestanden met Interleaved video en audio
+
+Bekijk de volgende voorbeeld grafieken die de vergelijking weer geven met behulp van kwaliteits metingen, zoals [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) en [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion). De bron is gemaakt door het samen voegen van korte clips met zeer complexe opnamen van films en TV-Program ma's, die zijn bedoeld om het coderings programma te stressren. Deze standaard instelling produceert per definitie resultaten die variëren van inhoud tot inhoud. het betekent ook dat er voor sommige inhoud geen aanzienlijke vermindering van de bitrate of verbetering van de bitsnelheid kan optreden.
 
 ![Distorsie (RD)-curve met behulp van PSNR](media/cae-experimental/msrv1.png)
 
@@ -39,7 +41,7 @@ De voor keuren voor de experimentele inhoud van de coderings functie breidt dat 
 
 **Afbeelding 2: een bocht-curve (distorsie) met behulp van VMAF-metrische gegevens voor een hoge complexiteits bron**
 
-De voor instelling is momenteel afgesteld voor hoge complexiteit, bron Video's van hoge kwaliteit (films, TV-Program ma's). Het werk wordt uitgevoerd om aan te passen aan inhoud met weinig complexiteit (bijvoorbeeld Power Point-presentaties), en Video's met een slechte kwaliteit. Deze vooraf ingestelde gebruikt ook dezelfde set resoluties als de vooraf ingestelde voor instelling van adaptief streamen. Micro soft werkt aan methoden om de minimale set resoluties te selecteren op basis van de inhoud. Dit zijn de resultaten voor een andere categorie bron inhoud, waarbij het coderings programma kan bepalen dat de invoer van slechte kwaliteit was (veel compressie artefacten vanwege de lage bitrate). Houd er rekening mee dat met de voor instelling voor experimenteren het coderings programma heeft besloten om slechts één uitvoer laag te maken: met een lage bitrate, zodat de meeste clients de stroom kunnen afspelen zonder te hoeven aflopen.
+Hieronder vindt u de resultaten voor een andere categorie bron inhoud, waarbij het coderings programma kan bepalen dat de invoer van slechte kwaliteit was (veel compressie artefacten vanwege de lage bitrate). Houd er rekening mee dat met de vooraf ingestelde voor instelling voor het coderings programma slechts één uitvoer laag moet worden gemaakt, met een lage bitrate, zodat de meeste clients de stroom kunnen afspelen zonder dat ze worden gestopt.
 
 ![RD-curve met PSNR](media/cae-experimental/msrv3.png)
 
@@ -62,16 +64,16 @@ TransformOutput[] output = new TransformOutput[]
       // You can customize the encoding settings by changing this to use "StandardEncoderPreset" class.
       Preset = new BuiltInStandardEncoderPreset()
       {
-         // This sample uses the new experimental preset for content-aware encoding
-         PresetName = EncoderNamedPreset.ContentAwareEncodingExperimental
+         // This sample uses the new preset for content-aware encoding
+         PresetName = EncoderNamedPreset.ContentAwareEncoding
       }
    }
 };
 ```
 
 > [!NOTE]
-> Het voor voegsel "experimenteel" wordt hier gebruikt om te Signa leren dat de onderliggende algoritmen nog steeds in ontwikkeling zijn. Er kunnen wijzigingen in de loop van de tijd worden aangebracht aan de logica die wordt gebruikt voor het genereren van bitsnelheid ladders, met het doel van het convergeren van een algoritme dat robuust is, en wordt aangepast aan een groot aantal invoer voorwaarden. Voor het coderen van taken die gebruikmaken van deze voor instelling worden nog steeds kosten in rekening gebracht op basis van uitvoer minuten en het uitvoer activum kan worden geleverd vanuit onze streaming-eind punten in protocollen zoals streepje en HLS.
+> De onderliggende algoritmen zijn onderhevig aan verdere verbeteringen. Er kunnen wijzigingen in de loop van de tijd worden aangebracht aan de logica die wordt gebruikt voor het genereren van bitsnelheid ladders, met als doel een algoritme te bieden die robuust is en wordt aangepast aan een groot aantal verschillende invoer voorwaarden. Voor het coderen van taken die gebruikmaken van deze voor instelling worden nog steeds kosten in rekening gebracht op basis van uitvoer minuten en het uitvoer activum kan worden geleverd vanuit onze streaming-eind punten in protocollen zoals streepje en HLS.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd over deze nieuwe optie voor het optimaliseren van uw Video's, nodigen we u uit om het uit te proberen. U kunt ons feedback sturen via de koppelingen aan het einde van dit artikel of ons meer rechtstreeks op <amsved@microsoft.com>.
+Nu u hebt geleerd over deze nieuwe optie voor het optimaliseren van uw Video's, nodigen we u uit om het uit te proberen. U kunt ons feedback sturen via de koppelingen aan het einde van dit artikel.

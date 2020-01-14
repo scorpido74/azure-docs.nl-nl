@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 844b62f9575249c7b99672e9e67c94cea7ec9f99
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 32897994e4ef22845b1d19d6e0eb3e6b2c968c01
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931417"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930728"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Facturerings model voor Azure Active Directory B2C
 
@@ -76,11 +76,11 @@ Zie [Azure Active Directory B2C prijzen](https://azure.microsoft.com/pricing/det
 
 ## <a name="link-an-azure-ad-b2c-tenant-to-a-subscription"></a>Een Azure AD B2C-Tenant koppelen aan een abonnement
 
-Gebruiks kosten voor Azure Active Directory B2C (Azure AD B2C) worden gefactureerd voor een Azure-abonnement. Wanneer een Azure AD B2C-Tenant wordt gemaakt, moet de Tenant beheerder de Azure AD B2C Tenant expliciet koppelen aan een Azure-abonnement.
+Gebruiks kosten voor Azure Active Directory B2C (Azure AD B2C) worden gefactureerd voor een Azure-abonnement. Wanneer een Azure AD B2C-tenant is gemaakt, wordt de tenantbeheerder moet expliciet de Azure AD B2C-tenant koppelen aan een Azure-abonnement.
 
 De koppeling van het abonnement wordt bereikt door een Azure AD B2C *resource* te maken binnen het doel-Azure-abonnement. Verschillende Azure AD B2C resources kunnen worden gemaakt in één Azure-abonnement, samen met andere Azure-resources, zoals virtuele machines, opslag accounts en Logic Apps. U kunt alle resources in een abonnement zien door te gaan naar de Azure Active Directory (Azure AD)-Tenant waaraan het abonnement is gekoppeld.
 
-Een abonnement dat is gekoppeld aan een Azure AD B2C-Tenant kan worden gebruikt voor het factureren van Azure AD B2C gebruik of andere Azure-resources, inclusief aanvullende Azure AD B2C resources. Het kan niet worden gebruikt voor het toevoegen van andere Azure-licentie services of Office 365-licenties in de Azure AD B2C Tenant.
+Een abonnement dat is gekoppeld aan een Azure AD B2C-Tenant kan worden gebruikt voor het factureren van Azure AD B2C gebruik of andere Azure-resources, inclusief aanvullende Azure AD B2C resources. Het kan niet worden gebruikt voor het toevoegen van andere Azure-licentie op basis van services of Office 365-licenties in de Azure AD B2C-tenant.
 
 ### <a name="prerequisites"></a>Vereisten
 
@@ -91,7 +91,7 @@ Een abonnement dat is gekoppeld aan een Azure AD B2C-Tenant kan worden gebruikt 
 
 ### <a name="create-the-link"></a>De koppeling maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Selecteer het filter **Directory + abonnement** in het bovenste menu en selecteer vervolgens de map met het Azure-abonnement dat u wilt gebruiken (*niet* de map die de Azure AD B2C Tenant bevat).
 1. Selecteer **een resource maken**, voer `Active Directory B2C` in het veld **Marketplace doorzoeken** in en selecteer vervolgens **Azure Active Directory B2C**.
 1. Selecteer **Maken**
@@ -104,15 +104,15 @@ Een abonnement dat is gekoppeld aan een Azure AD B2C-Tenant kan worden gebruikt 
 
 Nadat u deze stappen voor een Azure AD B2C Tenant hebt voltooid, wordt uw Azure-abonnement gefactureerd volgens uw Azure direct-of Enterprise Agreement-gegevens, indien van toepassing.
 
-### <a name="manage-your-azure-ad-b2c-tenant-resources"></a>Uw Azure AD B2C-Tenant resources beheren
+### <a name="manage-your-azure-ad-b2c-tenant-resources"></a>Uw Azure AD B2C-tenantresources beheren
 
 Nadat u de Azure AD B2C resource in een Azure-abonnement hebt gemaakt, ziet u een nieuwe resource van het type ' B2C-Tenant ' weer gegeven met uw andere Azure-resources.
 
-U kunt deze resource gebruiken voor het volgende:
+U kunt deze resource om te gebruiken:
 
 * Navigeer naar het abonnement om facturerings gegevens te bekijken
 * De Tenant-ID van de Azure AD B2C Tenant in GUID-indeling ophalen
-* Ga naar uw Azure AD B2C-Tenant
+* Ga naar uw Azure AD B2C-tenant
 * Een ondersteuningsaanvraag indienen
 * Uw Azure AD B2C Tenant resource verplaatsen naar een ander Azure-abonnement of een andere resource groep
 
@@ -134,7 +134,7 @@ Het beheer van Azure AD B2C met op rollen gebaseerd toegangs beheer wordt niet b
 
 Azure AD B2C-tenants kunnen worden verplaatst naar een ander abonnement als de bron-en doel abonnementen binnen dezelfde Azure Active Directory Tenant bestaan.
 
-Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/resource-group-move-resources.md)voor meer informatie over het verplaatsen van Azure-resources, zoals uw Azure AD B2C-Tenant naar een ander abonnement.
+Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md)voor meer informatie over het verplaatsen van Azure-resources, zoals uw Azure AD B2C-Tenant naar een ander abonnement.
 
 Lees voordat u begint met verplaatsen het hele artikel om de beperkingen en vereisten voor een dergelijke verplaatsing volledig te begrijpen. Naast instructies voor het verplaatsen van resources bevat deze essentiële informatie zoals een controle lijst voorafgaand aan het verplaatsen en het valideren van de verplaatsings bewerking.
 

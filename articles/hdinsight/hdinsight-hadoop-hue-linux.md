@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: 8a644beede4089133f88b824fd8d34dddec3b15e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 69acfd4f2edab9be1b1dcfbb52eafbd00aec712f
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751109"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934567"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Tint op HDInsight Hadoop-clusters installeren en gebruiken
 
@@ -127,6 +127,4 @@ SSH-Tunneling is de enige manier om toegang te krijgen tot de tint op het cluste
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Installeer Apache Giraph op HDInsight-clusters](hdinsight-hadoop-giraph-install-linux.md). Gebruik cluster aanpassing om Giraph te installeren op HDInsight Hadoop-clusters. Met Giraph kunt u grafiek verwerking uitvoeren met behulp van Hadoop en kan deze worden gebruikt met Azure HDInsight.
-
-* [Installeer R op HDInsight-clusters](hdinsight-hadoop-r-scripts-linux.md). Gebruik cluster aanpassing om R-op HDInsight Hadoop-clusters te installeren. R is een open source-taal en-omgeving voor statistische computing. Het biedt honderden ingebouwde statistische functies en een eigen programmeer taal waarmee aspecten van functionele en objectgeoriënteerd Program meren worden gecombineerd. Het biedt ook uitgebreide grafische mogelijkheden.
+[Installeer R op HDInsight-clusters](hdinsight-hadoop-r-scripts-linux.md). Gebruik cluster aanpassing om R-op HDInsight Hadoop-clusters te installeren. R is een open source-taal en-omgeving voor statistische computing. Het biedt honderden ingebouwde statistische functies en een eigen programmeer taal waarmee aspecten van functionele en objectgeoriënteerd Program meren worden gecombineerd. Het biedt ook uitgebreide grafische mogelijkheden.

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: 23d2c771c8918099c0db2b68c290e7d90077932a
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ad9b4b69b0be34c89d03b677c1889e486aae0379
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687727"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931702"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Ontwikkeling van script acties met HDInsight
 
@@ -322,10 +322,7 @@ Zie [How to use script Action](hdinsight-hadoop-customize-cluster-linux.md)(Enge
 
 ## <a name="sampleScripts"></a>Voor beelden van aangepaste scripts
 
-Micro soft biedt voorbeeld scripts voor het installeren van onderdelen in een HDInsight-cluster. Raadpleeg de volgende koppelingen voor meer voorbeeld script acties.
-
-* [Kleur Toon op HDInsight-clusters installeren en gebruiken](hdinsight-hadoop-hue-linux.md)
-* [Apache Giraph in HDInsight-clusters installeren en gebruiken](hdinsight-hadoop-giraph-install-linux.md)
+Micro soft biedt voorbeeld scripts voor het installeren van onderdelen in een HDInsight-cluster. Zie [kleur Toon op HDInsight-clusters installeren en gebruiken](hdinsight-hadoop-hue-linux.md) als een voorbeeld script actie.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 

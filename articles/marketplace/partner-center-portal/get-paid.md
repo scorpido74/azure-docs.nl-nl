@@ -1,20 +1,20 @@
 ---
 title: Betalen in commerciële Marketplace | Azure Marketplace
 description: Meer informatie over het ontvangen van betalingen voor uw inkomsten in de commerciële Marketplace.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: a87c74c2c344670d2d305e472245c56946d658ad
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7f539d4165df04ddca198385f9eef4f90ed15189
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980346"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933605"
 ---
-# <a name="getting-paid"></a>Betaald worden
+# <a name="getting-paid"></a>Betaald krijgen
 Hieronder vindt u belang rijke informatie over het ontvangen van betalingen voor uw aanbiedingen, invoeg toepassingen en reclame-inkomsten.
 
 > [!IMPORTANT]

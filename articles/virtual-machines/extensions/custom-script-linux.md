@@ -3,7 +3,7 @@ title: Aangepaste scripts uitvoeren op Linux-Vm's in azure
 description: Configuratie taken voor Linux-VM'S automatiseren met behulp van de aangepaste script extensie v2
 services: virtual-machines-linux
 documentationcenter: ''
-author: axayjo
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
-ms.author: akjosh
-ms.openlocfilehash: 87826b5bec4294ce45355ab0cfc4df373895563b
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.author: mimckitt
+ms.openlocfilehash: da7ade4b4724f8d155deb1c109587a311d03375c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073232"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931022"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Gebruik de aangepaste script extensie versie 2 van Azure met virtuele Linux-machines
 De aangepaste script extensie versie 2 downloadt en voert scripts uit op virtuele machines van Azure. Deze uitbrei ding is handig voor configuratie na de implementatie, software-installatie of een andere configuratie/beheer taak. U kunt scripts downloaden van Azure Storage of een andere toegankelijke Internet locatie, of u kunt deze opgeven voor de runtime van de uitbrei ding. 
@@ -61,7 +61,7 @@ Als uw script zich op een lokale server bevindt, moet u mogelijk nog steeds extr
 * Wanneer het script wordt uitgevoerd, ziet u alleen de extensiestatus 'overgang maken' van de Azure-portal of CLI. Als u meer frequente status updates van een actief script wilt, moet u uw eigen oplossing maken.
 * Aangepaste script extensie biedt geen systeem eigen ondersteuning voor proxy servers, maar u kunt wel een hulp programma voor bestands overdracht gebruiken dat proxy servers in uw script ondersteunt, zoals *krul*. 
 * Houd er rekening mee dat niet-standaard adreslijst locaties waarvan uw scripts of opdrachten afhankelijk zijn, logica hebben om dit te kunnen afhandelen.
-
+*  Bij het implementeren van een aangepast script voor productie VMSS-instanties wordt het aanbevolen om te implementeren via JSON-sjabloon en uw script opslag account op te slaan, waar u controle hebt over het SAS-token. 
 
 
 ## <a name="extension-schema"></a>Extensieschema
@@ -106,21 +106,22 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 
 ### <a name="property-values"></a>Waarden van eigenschappen
 
-| Naam | Waarde / voorbeeld | Gegevenstype | 
+| Name | Waarde / voorbeeld | Gegevenstype | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | date |
-| publisher | Microsoft.Compute.Extensions | tekenreeks |
-| type | CustomScript | tekenreeks |
+| publisher | Microsoft.Compute.Extensions | string |
+| type | CustomScript | string |
 | typeHandlerVersion | 2.0 | int |
 | fileUris (bijvoorbeeld) | https://github.com/MyProject/Archive/MyPythonScript.py | matrix |
-| commandToExecute (bijvoorbeeld) | python MyPythonScript.py \<mijn-param1 > | tekenreeks |
-| uit | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | tekenreeks |
+| commandToExecute (bijvoorbeeld) | python MyPythonScript.py \<mijn-param1 > | string |
+| uit | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
 | skipDos2Unix (bijvoorbeeld) | false | booleaans |
 | timestamp (bijvoorbeeld) | 123456789 | 32-bits geheel getal |
-| storageAccountName (bijvoorbeeld) | examplestorageacct | tekenreeks |
-| storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | tekenreeks |
+| storageAccountName (bijvoorbeeld) | examplestorageacct | string |
+| storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
 
 ### <a name="property-value-details"></a>Details van eigenschaps waarde
+* `apiVersion`: u kunt het meest recente apiVersion vinden met [resource Explorer](https://resources.azure.com/) of vanuit Azure CLI met behulp van de volgende opdracht `az provider list -o json`
 * `skipDos2Unix`: (optioneel, Booleaans) overs Laan dos2unix conversie van bestands-Url's of script bestanden op basis van een script.
 * `timestamp` (optioneel, 32-bits geheel getal) gebruik dit veld alleen om een nieuwe uitvoering van het script te activeren door de waarde van dit veld te wijzigen.  Een gehele waarde is acceptabel; de waarde mag alleen gelijk zijn aan die van de vorige.
   * `commandToExecute`: (**vereist** als script niet is ingesteld, teken reeks) het ingangs punt script dat moet worden uitgevoerd. Gebruik dit veld in plaats daarvan als uw opdracht geheimen bevat zoals wacht woorden.

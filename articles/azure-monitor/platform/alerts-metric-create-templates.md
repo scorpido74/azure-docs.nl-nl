@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/5/2019
+ms.date: 1/13/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 7b2751957bf341b37527697f92931bacfb425c09
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f8ed6be825470504b5e7b45a15c4faa9cf5ccfc
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397343"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932882"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
@@ -555,7 +555,12 @@ az group deployment create \
 
 Nieuwere metrische waarschuwingen bieden ondersteuning voor waarschuwingen over multidimensionale metrische gegevens en het ondersteunen van meerdere criteria. U kunt de volgende sjabloon gebruiken om een meer geavanceerde waarschuwings regel voor metrische gegevens te maken over dimensionale metrische gegevens en meerdere criteria op te geven.
 
-Houd er rekening mee dat als de waarschuwings regel meerdere criteria bevat, het gebruik van dimensies is beperkt tot één waarde per dimensie in elk criterium.
+Houd rekening met de volgende beperkingen bij het gebruik van dimensies in een waarschuwings regel die meerdere criteria bevat:
+- U kunt in elk criterium slechts één waarde per dimensie selecteren.
+- U kunt '\*' niet als dimensie waarde gebruiken.
+- Wanneer de metrische gegevens die in verschillende criteria zijn geconfigureerd, dezelfde dimensie ondersteunen, moet een geconfigureerde dimensie waarde expliciet op dezelfde manier worden ingesteld voor al deze metrische gegevens (in de relevante criteria).
+    - In het onderstaande voor beeld, omdat zowel de para meters voor **trans acties** als **SuccessE2ELatency** een **API-naam** dimensie hebben en *criterion1* de waarde *' GetBlob '* opgeeft voor de naam van de **API** -dimensie, moet *criterion2* ook een *' GetBlob* -waarde instellen voor de naam dimensie van de **API** .
+
 
 Sla de JSON hieronder op als advancedstaticmetricalert. json voor het doel van deze procedure.
 
@@ -784,9 +789,6 @@ az group deployment create \
     --parameters @advancedstaticmetricalert.parameters.json
 ```
 
->[!NOTE]
->
-> Wanneer een waarschuwings regel meerdere criteria bevat, is het gebruik van dimensies beperkt tot één waarde per dimensie in elk criterium.
 
 ## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>Sjabloon voor een statische metrische waarschuwing waarmee meerdere dimensies worden bewaakt
 

@@ -1,18 +1,18 @@
 ---
 title: Samen vatting van uitbetaling commerciële Marketplace | Azure Marketplace
 description: In de samen vatting van de betaling ziet u details over het geld dat u hebt behaald met uw aanbieding. U kunt ook zien wanneer u betalingen ontvangt en hoeveel u wordt betaald.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 3836e815d296456ff95f87f0592e3277503420fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 38717ae103ac72d35042ced9bf662d295ed8a29b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427142"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931805"
 ---
 # <a name="payout-reporting"></a>Rapportage voor betaling
 
@@ -74,11 +74,11 @@ Bijvoorbeeld als de klant inkopen met een credit card.
 |Einde van de term (maand)   | 30 augustus 2019 | | |
 |Factuur datum | 1 Sept 2019 | | |
 |Betalings datum van klant | 1 Sept 2019 | | |
-|Borg periode (alleen voor credit cards, 30 dagen) | Sept 1 september 2019-september 30, 2019 | | **Correlatie kenmerken orders:** <br> <ul><li>AssetId</li> <li>Klant-ID</li> <li> Klant naam</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalings status:** Verwerkte |
+|Borg periode (alleen voor credit cards, 30 dagen) | Sept 1 september 2019-september 30, 2019 | | **Correlatie kenmerken orders:** <br> <ul><li>AssetId</li> <li>Klant-ID</li> <li> Klant naam</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalings status:** Verwerkte |
 |Begin van verzamelings periode | 1 Sept 2019 | | |
 |Einde van de verzamelings periode (Maxi maal 30 dagen) | Sept 30, 2019 | | |
-|Berekenings datum van betaling (maandelijks op de 15e) | Okt 1, 2019 | | **Correlatie kenmerken** <br> <ul><li>AssetId</li> <li>Klant-ID</li> <li>Klant naam</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalings status:** Verschijnen |
-|Uitbetalings datum | 15 oktober 2019 | | **Correlatie kenmerken** <br> <ul><li>AssetId</li> <li>Klant-ID</li> <li> Klant naam</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalings status:** Betaling verzonden |
+|Berekenings datum van betaling (maandelijks op de 15e) | Okt 1, 2019 | | **Correlatie kenmerken** <br> <ul><li>AssetId</li> <li>Klant-ID</li> <li>Klant naam</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalings status:** Verschijnen |
+|Uitbetalings datum | 15 oktober 2019 | | **Correlatie kenmerken** <br> <ul><li>AssetId</li> <li>Klant-ID</li> <li> Klant naam</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalings status:** Betaling verzonden |
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Enter prise Agreement (kwartaal klanten/maandelijks)
 
@@ -93,7 +93,7 @@ Bijvoorbeeld als de klant inkopen met een credit card.
 |Einde van verzamelings periode (Maxi maal 90 dagen) | 15 januari 2020 | | |
 |Betalings datum van klant | 30 dec, 2019 | | |
 |Berekening van uitbetaling | 15 januari 2020 | | |
-|Uitbetalings datum | 15 februari 2020 | | **Voor elk kwar taal op basis van klanten** <br> <br> **Rapport Orders** <br> <ul><li>AssetId</li> <li>Klant-ID</li> <li> Klant naam</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Status van uitbetaling:** verzonden |
+|Uitbetalings datum | 15 februari 2020 | | **Voor elk kwar taal op basis van klanten** <br> <br> **Rapport Orders** <br> <ul><li>AssetId</li> <li>Klant-ID</li> <li> Klant naam</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Status van uitbetaling:** verzonden |
 
 ## <a name="transaction-history-download-export"></a>Transactie geschiedenis downloaden exporteren
 

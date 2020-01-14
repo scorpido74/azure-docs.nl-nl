@@ -1,19 +1,19 @@
 ---
 title: Api's voor SaaS-uitvoering-Veelgestelde vragen | Azure Marketplace
 description: Ervaringen voor detectie en aankopen door de klanten van een SaaS-aanbieding op de Azure Marketplace.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 2f8aa41604ac176181252fb7b30cdeb2f039d10f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: d5b7a4e880cbd5dca73b3b091402e2c7dd3b7901
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822877"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934190"
 ---
 # <a name="saas-fulfillment-apis---faq"></a>SaaS-uitvoerings-API's - Veelgestelde vragen
 

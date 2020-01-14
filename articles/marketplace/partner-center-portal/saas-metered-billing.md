@@ -1,19 +1,19 @@
 ---
 title: Facturering met data limieten met Marketplace meter service | Azure Marketplace
 description: Deze documentatie is een hand leiding voor Isv's die SaaS-aanbiedingen publiceren met flexibele facturerings modellen.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 54b59cfecbbba6b71cf301aa4872892825d4b675
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f1b60831e08383ee455cd3afbfbc21ed27445ffc
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827935"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934170"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Facturering met data limieten met behulp van Marketplace-meet service
 
@@ -51,7 +51,7 @@ Contoso is bijvoorbeeld een uitgever met een SaaS-service met de naam contoso No
     * 10000 e-mails en 1000 teksten verzenden voor $0/maand
     * Na de 10000 e-mails betaalt u $1 voor elke 100 e-mail berichten
     * Na de 1000 teksten betaalt u voor elke tekst een bedrag van $0,02
-* Premium-abonnement
+* Premium-plan
     * 50000 e-mails en 10000 teksten verzenden voor $350/maand
     * Na de 50000 e-mails betaalt u $0,5 voor elke 100 e-mail berichten
     * Na de 10000 teksten betaalt u voor elke tekst een bedrag van $0,01
@@ -74,7 +74,7 @@ Facturerings dimensies worden gedeeld in alle abonnementen voor een aanbieding. 
 De kenmerken die de dimensie zelf definiëren, worden verdeeld over alle abonnementen voor een aanbieding.  Voordat u de aanbieding publiceert, is een wijziging in deze kenmerken van de context van een plan van invloed op de dimensie definitie voor alle plannen.  Zodra u de aanbieding hebt gepubliceerd, kunnen deze kenmerken niet meer worden bewerkt.  Deze kenmerken zijn:
 
 * Id
-* Naam
+* Name
 * Meeteenheid
 
 De andere kenmerken van een dimensie zijn specifiek voor elk plan en kunnen verschillende waarden hebben van plan tot plan.  Voordat u het abonnement publiceert, kunt u deze waarden bewerken. Dit geldt alleen voor dit abonnement.  Zodra u het abonnement hebt gepubliceerd, kunnen deze kenmerken niet meer worden bewerkt.  Deze kenmerken zijn:
@@ -104,7 +104,7 @@ Omdat een dimensie die wordt gebruikt met de Marketplace-meet service, een goed 
 Zodra een aanbieding is gepubliceerd met een dimensie, kunnen de details van het aanbod niveau voor die dimensie niet meer worden gewijzigd:
 
 * Id
-* Naam
+* Name
 * Meeteenheid
 
 Zodra een plan is gepubliceerd, kunnen de details op plan niveau niet meer worden gewijzigd:
@@ -118,7 +118,7 @@ Zodra een plan is gepubliceerd, kunnen de details op plan niveau niet meer worde
 
 Het maximum aantal dimensies dat kan worden geconfigureerd voor een enkele aanbieding is 18 unieke dimensies.
 
-## <a name="get-support"></a>Ondersteuning krijgen
+## <a name="get-support"></a>Krijg ondersteuning
 
 Als u een van de volgende hebt, kunt u een ondersteunings ticket openen.
 

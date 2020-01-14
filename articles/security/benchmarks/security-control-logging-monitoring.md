@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 1354bd2895a8fe6e8aa1f12cd92295c77ca2d4b2
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: ceb82bf729470f9996bc9ecc766329a0d1242ec4
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564164"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930031"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Beveiligings beheer: logboek registratie en controle
 
@@ -79,9 +79,13 @@ https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
 Als de reken resource eigendom is van micro soft, is micro soft verantwoordelijk voor het bewaken van de bron. Als de reken resource eigendom is van uw organisatie, is het uw verantwoordelijkheid om deze te controleren. U kunt Azure Security Center gebruiken om het besturings systeem te bewaken. Gegevens die worden verzameld door Security Center van het besturings systeem zijn onder andere besturingssysteem type en-versie, besturings systeem (Windows-gebeurtenis Logboeken), actieve processen, computer naam, IP-adressen en aangemelde gebruiker. De Log Analytics-agent verzamelt ook crash dump bestanden.
 
-Interne host-logboeken van de virtuele machine van Azure verzamelen met Azure Monitor: https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm
+Interne host-logboeken van virtuele machines van Azure verzamelen met Azure Monitor:
 
-Informatie over het verzamelen van Azure Security Center gegevens: https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection
+https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm
+
+Meer informatie over het verzamelen van Azure Security Center gegevens:
+
+https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection
 
 ## <a name="25-configure-security-log-storage-retention"></a>2,5: Bewaar beveiliging van het beveiligings logboek configureren
 
@@ -91,7 +95,9 @@ Informatie over het verzamelen van Azure Security Center gegevens: https://docs.
 
 Stel binnen Azure Monitor uw Bewaar periode voor Log Analytics werk ruimte in volgens de nalevings voorschriften van uw organisatie. Gebruik Azure Storage-accounts voor lange termijn/archiverings opslag.
 
-Para meters voor het bewaren van Logboeken instellen voor Log Analytics-werk ruimten: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+Para meters voor het bewaren van Logboeken instellen voor Log Analytics-werk ruimten:
+
+https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
 ## <a name="26-monitor-and-review-logs"></a>2,6: Logboeken bewaken en controleren
 
@@ -107,7 +113,7 @@ Azure-Sentinel onboarden:
 
 https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
-Informatie over Log Analytics-werk ruimte:
+Meer informatie over Log Analytics-werk ruimte:
 
 https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal
 
@@ -153,7 +159,7 @@ Micro soft antimalware configureren voor Cloud Services:
 
 https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension?view=azuresmps-4.0.0
 
-Informatie over micro soft antimalware:
+Meer informatie over micro soft antimalware:
 
 https://docs.microsoft.com/azure/security/fundamentals/antimalware
 

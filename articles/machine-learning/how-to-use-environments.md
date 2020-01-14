@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: af6848e85db5d2a557835b063a499e3439557eb6
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 93a70bf0d9189368135b8007e95627fc64064c51
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690436"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932185"
 ---
 # <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Omgevingen hergebruiken voor training & implementatie met Azure Machine Learning.
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -344,6 +344,34 @@ service = Model.deploy(
 ## <a name="example-notebooks"></a>Voorbeeld-laptops
 
 In dit [voor beeld wordt het notitie blok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) uitgebreid op concepten en methoden die in dit artikel worden getoond.
+
+## <a name="create-and-manage-environments-with-the-cli"></a>Omgevingen maken en beheren met de CLI
+
+De [Azure machine learning cli](reference-azure-machine-learning-cli.md) komt overeen met de meerderheid van de functionaliteit van de PYTHON-SDK en kan worden gebruikt voor het maken en beheren van omgevingen. Met de volgende opdrachten wordt de basis functionaliteit gedemonstreerd.
+
+Met de volgende opdracht worden de bestanden gesteigerd voor een standaard omgevings definitie in de opgegeven map. Deze bestanden zijn JSON-bestanden die vergelijkbaar zijn met de functie in de SDK en kunnen worden gebruikt om nieuwe omgevingen met aangepaste instellingen te maken. 
+
+```azurecli-interactive
+az ml environment scaffold -n myenv -d myenvdir
+```
+
+Voer de volgende opdracht uit om een omgeving te registreren vanuit een opgegeven map.
+
+```azurecli-interactive
+az ml environment register -d myenvdir
+```
+
+Als u de volgende opdracht uitvoert, worden alle geregistreerde omgevingen weer geven.
+
+```azurecli-interactive
+az ml environment list
+```
+
+Down load een geregistreerde omgeving met de volgende opdracht.
+
+```azurecli-interactive
+az ml environment download -n myenv -d downloaddir
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

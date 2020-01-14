@@ -2,26 +2,26 @@
 title: Ondersteuning voor Azure Marketplace en AppSource | Azure
 description: Ondersteunings informatie en koppelingen voor Azure Marketplace en AppSource
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 7/25/2019
-ms.author: v-qiwe
-ms.openlocfilehash: b036f7f7455d265849db3c0b82a21471ed1a902c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: 40d466bd4e5959453f8c3042c4b14f6c3ef605bf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822626"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933460"
 ---
 # <a name="support-for-the-marketplace"></a>Ondersteuning voor Marketplace  
 Hier volgt een lijst met ondersteunings opties voor Marketplace.  
 
 Daarnaast kunt u veel van uw vragen beantwoorden in het Marketplace- [kanaal van C + AI Community-Forum](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222).  
 
-## <a name="onboarding"></a>Onboarding
+## <a name="onboarding"></a>Voorbereiden
 
 Open een ticket met ondersteuning voor micro soft [Marketplace-Uitgever](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820) voor problemen met voorbereiden en aan de slag, of met ondersteuning voor micro soft- [partners](https://partner.microsoft.com/support) als u vragen hebt over Microsoft Partner Network.
 
@@ -31,7 +31,7 @@ Open een ticket met ondersteuning voor micro soft [Marketplace-Uitgever](https:/
 |:--- |:--- |:--- |  
 | Ga voor meer informatie naar de pagina een incident maken op [Marketplace-ondersteuning](https://go.microsoft.com/fwlink/?linkid=844975)</li> </ul> | Ondersteuning voor Partner Center of Cloud Partner-portal. | Ondersteuning wordt geboden tussen 06.00 18:00 uur PST. |  
 
-## <a name="technical"></a>Documentatie  
+## <a name="technical"></a>Technisch  
 
 | Ondersteunings kanaal | Beschrijving |  
 |:--- |:--- |  

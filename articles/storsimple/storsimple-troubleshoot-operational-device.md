@@ -1,9 +1,9 @@
 ---
-title: Een geïmplementeerde StorSimple-apparaat oplossen | Microsoft Docs
-description: Beschrijft hoe u kunt vaststellen en oplossen van fouten die optreden op een StorSimple-apparaat dat momenteel is geïmplementeerd en operationele.
+title: Problemen met een geïmplementeerd StorSimple-apparaat oplossen | Microsoft Docs
+description: Hierin wordt beschreven hoe u fouten opspoort en corrigeert die optreden op een StorSimple-apparaat dat momenteel is geïmplementeerd en operationeel is.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: carmonm
 editor: ''
 ms.assetid: ea5d89ae-e379-423f-b68b-53785941d9d0
@@ -13,58 +13,58 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
-ms.author: v-sharos
-ms.openlocfilehash: 8ad3f09bf46caf426b2008b583ebd2ff78522462
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: ca79e4240c1a82e46bea44a9d018a3c681920480
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64713061"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933298"
 ---
-# <a name="troubleshoot-an-operational-storsimple-device"></a>Een operationele StorSimple-apparaat oplossen
+# <a name="troubleshoot-an-operational-storsimple-device"></a>Problemen met een operationeel StorSimple-apparaat oplossen
 > [!NOTE]
-> De klassieke portal voor StorSimple is afgeschaft. De StorSimple-apparaatbeheerfuncties worden automatisch volgens schema verplaatst naar de nieuwe Azure Portal. U ontvangt hierover een e-mailbericht en een portalmelding. Dit document wordt binnenkort ook ingetrokken. Zie voor vragen met betrekking tot de verplaatsing, [Veelgestelde vragen over: Verplaatsen naar Azure portal](storsimple-8000-move-azure-portal-faq.md).
+> De klassieke portal voor StorSimple is afgeschaft. De StorSimple-apparaatbeheerfuncties worden automatisch volgens schema verplaatst naar de nieuwe Azure Portal. U ontvangt hierover een e-mailbericht en een portalmelding. Dit document wordt binnenkort ook ingetrokken. Zie [FAQ: Move to Azure portal](storsimple-8000-move-azure-portal-faq.md) (Veelgestelde vragen: verplaatsing naar Azure Portal) voor vragen met betrekking tot de verplaatsing.
 
 ## <a name="overview"></a>Overzicht
-In dit artikel vindt u nuttige richtlijnen voor probleemoplossing voor het oplossen van problemen met configuratie voor dat u tegenkomen kunt wanneer uw StorSimple-apparaat geïmplementeerd en operationele is. Hierin worden veelvoorkomende problemen, mogelijke oorzaken en aanbevolen stappen voor het oplossen van problemen die u tegenkomen kunt wanneer u Microsoft Azure StorSimple uitvoert. Deze informatie is van toepassing op zowel de on-premises StorSimple fysieke apparaat en het virtuele StorSimple-apparaat.
+In dit artikel vindt u nuttige richt lijnen voor probleem oplossing voor het oplossen van configuratie problemen die zich kunnen voordoen nadat het StorSimple-apparaat is geïmplementeerd en operationeel is. Hierin worden veelvoorkomende problemen, mogelijke oorzaken en aanbevolen stappen beschreven om u te helpen bij het oplossen van problemen die kunnen optreden wanneer u Microsoft Azure StorSimple uitvoert. Deze informatie is van toepassing op zowel het StorSimple on-premises fysieke apparaat als het virtuele StorSimple-apparaat.
 
-Aan het einde van dit artikel vindt u een lijst met foutcodes die u tijdens het Microsoft Azure StorSimple tegenkomen kunt, evenals stappen kunt u uitvoeren om de fouten oplossen. 
+Aan het einde van dit artikel vindt u een lijst met fout codes die u tijdens Microsoft Azure StorSimple bewerking kunt tegen komen, evenals de stappen die u kunt ondernemen om de fouten op te lossen. 
 
-## <a name="setup-wizard-process-for-operational-devices"></a>Setup-wizard het proces voor actieve apparaten
-U de wizard setup gebruiken ([Invoke-hcssetupwizard uit][1]) om te controleren van de apparaatconfiguratie en zo nodig actie ondernemen.
+## <a name="setup-wizard-process-for-operational-devices"></a>Installatie wizard-proces voor operationele apparaten
+U gebruikt de wizard Setup ([invoke-hcssetupwizard uit][1]) om de apparaatconfiguratie te controleren en zo nodig corrigerende maat regelen te nemen.
 
-Wanneer u de wizard setup op een eerder geconfigureerde en operationele apparaat uitvoert, wordt het proces dat plaatsvindt verschilt. U kunt alleen de volgende items wijzigen:
+Wanneer u de installatie wizard uitvoert op een eerder geconfigureerd en operationeel apparaat, is de proces stroom anders. U kunt alleen de volgende vermeldingen wijzigen:
 
 * IP-adres, subnetmasker en gateway
 * Primaire DNS-server
 * Primaire NTP-server
-* Optionele configuratie van uw webproxy
+* Optionele web proxy-configuratie
 
-De wizard setup voert de bewerkingen die betrekking hebben op de verzameling en apparaat-wachtwoordregistratie.
+De wizard Setup voert geen bewerkingen uit die betrekking hebben op wachtwoord verzameling en apparaatregistratie.
 
-## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>Fouten die tijdens de volgende uitvoeringen van de wizard setup optreden
-De volgende tabel beschrijft de fouten die optreden tijdens het uitvoeren van de wizard setup op een operationele apparaat, de mogelijke oorzaken voor de fouten en aanbevolen acties op te lossen. 
+## <a name="errors-that-occur-during-subsequent-runs-of-the-setup-wizard"></a>Fouten die optreden tijdens volgende uitvoeringen van de wizard Setup
+In de volgende tabel worden de fouten beschreven die u kunt tegen komen wanneer u de installatie wizard uitvoert op een operationeel apparaat, mogelijke oorzaken van fouten en aanbevolen acties om deze op te lossen. 
 
-| Nee. | Foutbericht of een voorwaarde | Mogelijke oorzaken | Aanbevolen actie |
+| Nee. | Fout bericht of voor waarde | Mogelijke oorzaken | Aanbevolen actie |
 |:--- |:--- |:--- |:--- |
-| 1 |Fout 350032: Dit apparaat is al gedeactiveerd. |U kunt deze fout wordt weergegeven als u de wizard setup uitvoeren op een apparaat dat is gedeactiveerd. |[Neem contact op met Microsoft Ondersteuning](storsimple-contact-microsoft-support.md) voor volgende stappen. Een gedeactiveerd apparaat kan niet worden geplaatst in de service. Fabrieksinstellingen terugzetten is mogelijk vereist voordat het apparaat kan opnieuw worden geactiveerd. |
-| 2 |Invoke-hcssetupwizard uit: ERROR_INVALID_FUNCTION (uitzondering van HRESULT: 0x80070001) |Het bijwerken van de DNS-server is mislukt. DNS-instellingen zijn algemene instellingen en worden toegepast op alle ingeschakelde netwerkinterfaces. |Schakel de interface en de DNS-instellingen opnieuw toepassen. Omdat deze instellingen zijn van toepassing, kan dit het netwerk voor andere netwerkinterfaces ingeschakelde verstoren. |
-| 3 |Het apparaat wordt weergegeven in de serviceportal voor StorSimple Manager online te zijn, maar wanneer u de minimale installatie voltooid en de configuratie op te slaan, de bewerking is mislukt. |Tijdens de eerste configuratie, is de webproxy niet geconfigureerd, zelfs als er een werkelijke proxyserver voldaan is. |Gebruik de [cmdlet Test-HcsmConnection] [ 2] te vinden van de fout. [Neem contact op met Microsoft Support](storsimple-contact-microsoft-support.md) als u niet om het probleem te verhelpen. |
-| 4 |Invoke-hcssetupwizard uit: Waarde valt niet binnen het verwachte bereik. |Deze fout wordt veroorzaakt door een onjuiste subnetmasker. Mogelijke oorzaken zijn: <ul><li> Het subnetmasker is ontbreekt of is leeg.</li><li>Het Ipv6-voorvoegselindeling is onjuist.</li><li>De interface is ingeschakeld voor de cloud, maar de gateway is ontbreekt of is onjuist.</li></ul>Houd er rekening mee dat de DATA 0 automatisch ingeschakeld voor de cloud is als geconfigureerd via de wizard setup. |Subnet 0.0.0.0 of 256.256.256.256 gebruiken om te bepalen van het probleem, en zoek vervolgens naar de uitvoer. Geef de juiste waarden voor het subnetmasker, gateway en Ipv6-voorvoegsel, indien nodig. |
+| 1 |Fout 350032: dit apparaat is al gedeactiveerd. |Deze fout wordt weer geven als u de installatie wizard uitvoert op een apparaat dat wordt gedeactiveerd. |[Neem contact op met Microsoft Ondersteuning](storsimple-contact-microsoft-support.md) voor volgende stappen. Een gedeactiveerd apparaat kan niet in de service worden geplaatst. Het is mogelijk dat de fabrieks instellingen opnieuw worden ingesteld voordat het apparaat weer kan worden geactiveerd. |
+| 2 |Invoke-Hcssetupwizard uit: ERROR_INVALID_FUNCTION (uitzonde ring van HRESULT: 0x80070001) |De update van de DNS-server is mislukt. DNS-instellingen zijn algemene instellingen en worden toegepast op alle ingeschakelde netwerk interfaces. |Schakel de interface in en pas de DNS-instellingen opnieuw toe. Hierdoor kan het netwerk voor andere ingeschakelde interfaces worden verstoord, omdat deze instellingen globaal zijn. |
+| 3 |Het apparaat lijkt online te zijn in de StorSimple Manager-service portal, maar wanneer u de minimale installatie wilt volt ooien en de configuratie opslaat, mislukt de bewerking. |Tijdens de eerste installatie is de webproxy niet geconfigureerd, ook al is er een daad werkelijke proxy server aanwezig. |Gebruik de [cmdlet test-HcsmConnection][2] om de fout te vinden. [Neem contact op met Microsoft ondersteuning](storsimple-contact-microsoft-support.md) als u het probleem niet kunt oplossen. |
+| 4 |Invoke-Hcssetupwizard uit: de waarde valt niet binnen het verwachte bereik. |Deze fout treedt op bij een onjuist subnetmasker. Mogelijke oorzaken zijn: <ul><li> Het subnetmasker ontbreekt of is leeg.</li><li>De IPv6-voorvoegsel indeling is onjuist.</li><li>De interface is in de Cloud ingeschakeld, maar de gateway ontbreekt of is onjuist.</li></ul>Houd er rekening mee dat DATA 0 automatisch in de Cloud wordt ingeschakeld als dit is geconfigureerd via de wizard Setup. |Om het probleem te achterhalen, gebruikt u subnet 0.0.0.0 of 256.256.256.256 en kijkt u vervolgens naar de uitvoer. Voer indien nodig de juiste waarden voor het subnetmasker, de gateway en het IPv6-voor voegsel in. |
 
 ## <a name="error-codes"></a>Foutcodes
-Fouten worden weergegeven in numerieke volgorde.
+Fouten worden weer gegeven in numerieke volg orde.
 
-| Foutnummer | Fouttekst of beschrijving | Aanbevolen gebruikersactie |
+| Fout nummer | Fout tekst of beschrijving | Aanbevolen gebruikers actie |
 |:--- |:--- |:--- |
-| 10502 |Er is een fout opgetreden tijdens het openen van uw storage-account. |Wacht een paar minuten en probeer het vervolgens opnieuw. Als u de fout zich blijft voordoen, neemt u contact opnemen met Microsoft ondersteuning voor de volgende stappen. |
-| 40017 |De back-upbewerking is mislukt omdat er een volume dat is opgegeven in de back-upbeleid is niet gevonden op het apparaat. |Probeer de back-up bewerking, als de fout zich blijft voordoen, neem contact op met Microsoft Support. voor de volgende stappen. |
-| 40018 |De back-upbewerking is mislukt omdat geen van de volumes die zijn opgegeven in de back-upbeleid zijn gevonden op het apparaat. |Probeer de back-up bewerking, als de fout zich blijft voordoen, neem contact op met Microsoft Support. voor de volgende stappen. |
-| 390061 |Het systeem is bezet of niet beschikbaar. |Wacht een paar minuten en probeer het vervolgens opnieuw. Als u de fout zich blijft voordoen, neemt u contact opnemen met Microsoft ondersteuning voor de volgende stappen. |
-| 390143 |Er is een fout opgetreden met foutcode 390143. (Onbekende fout.) |Als de fout zich blijft voordoen, kunt u contact op met Microsoft Support voor de volgende stappen. |
+| 10502 |Er is een fout opgetreden tijdens het openen van uw opslag account. |Wacht een paar minuten en probeer het opnieuw. Als de fout zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning om de volgende stappen uit te voeren. |
+| 40017 |De back-upbewerking is mislukt omdat een volume dat is opgegeven in het back-upbeleid, niet op het apparaat is gevonden. |Voer de back-upbewerking opnieuw uit. Neem contact op met Microsoft Ondersteuning als de fout zich blijft voordoen. voor de volgende stappen. |
+| 40018 |De back-upbewerking is mislukt omdat geen van de volumes die zijn opgegeven in het back-upbeleid op het apparaat zijn gevonden. |Voer de back-upbewerking opnieuw uit. Neem contact op met Microsoft Ondersteuning als de fout zich blijft voordoen. voor de volgende stappen. |
+| 390061 |Het systeem is bezet of niet beschikbaar. |Wacht een paar minuten en probeer het opnieuw. Als de fout zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning om de volgende stappen uit te voeren. |
+| 390143 |Er is een fout opgetreden met fout code 390143. (Onbekende fout.) |Als de fout zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning om de volgende stappen uit te voeren. |
 
 ## <a name="next-steps"></a>Volgende stappen
-Als u niet het probleem op te lossen [Neem contact op met Microsoft Support](storsimple-contact-microsoft-support.md) voor hulp. 
+Als u het probleem niet kunt oplossen, [neemt u contact op met Microsoft ondersteuning](storsimple-contact-microsoft-support.md) voor hulp. 
 
 [1]: https://technet.microsoft.com/%5Clibrary/Dn688135(v=WPS.630).aspx
 [2]: https://technet.microsoft.com/%5Clibrary/Dn715782(v=WPS.630).aspx

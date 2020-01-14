@@ -1,19 +1,19 @@
 ---
 title: Verwerkings feedback voor Azure apps-aanbieding in de commerciële Marketplace
 description: Beoordelings feedback voor Azure apps-aanbieding verwerken voor het aanbieden of verkopen in azure Marketplace, AppSource of via het programma Cloud Solution Provider (CSP) met behulp van de portal voor commerciële Marketplace in micro soft Partner Center.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 7406a6e35929e3df5d342affbcb4b740efa0cab8
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5dd74a7be95ecf92289f2a144c9c509c71ce935b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281218"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933646"
 ---
 # <a name="handling-review-feedback"></a>Beoordelingsfeedback verwerken
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: d052226470042d374544de0b7e1ced4ca0f48a14
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 376d7c1a9d2fe2ebce857362fd216e2047eb1f7b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564151"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934335"
 ---
 # <a name="security-control-network-security"></a>Beveiligings beheer: netwerk beveiliging
 
@@ -29,7 +29,9 @@ Zorg ervoor dat alle implementaties van Virtual Network subnet een netwerk bevei
 
 Als u een specifieke use-case hebt, kunnen aan vereisten worden voldaan door de implementatie van Azure Firewall.
 
-Algemene informatie over privé-koppeling: https://docs.microsoft.com/azure/private-link/private-link-overview
+Algemene informatie over privé-koppeling:
+
+https://docs.microsoft.com/azure/private-link/private-link-overview
 
 Een Virtual Network maken:
 
@@ -55,7 +57,7 @@ NSG-stroom logboeken inschakelen:
 
 https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
 
-Informatie over netwerk beveiliging die wordt verschaft door Azure Security Center:
+Informatie over netwerk beveiliging van Azure Security Center:
 
 https://docs.microsoft.com/azure/security-center/security-center-network-recommendations
 
@@ -97,11 +99,11 @@ Meer informatie over Azure Security Center geïntegreerde bedreigings informatie
 
 https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
-Meer informatie over Azure Security Center adaptieve netwerk beveiliging
+Meer informatie over Azure Security Center adaptieve netwerk beveiliging:
 
 https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening
 
-Meer informatie over Azure Security Center just-in-time-netwerk Access Control
+Meer informatie over Azure Security Center just-in-time-netwerk Access Control:
 
 https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
@@ -113,9 +115,13 @@ https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
 Registreer NSG-stroom Logboeken in een opslag account om stroom records te genereren. Als dit nodig is voor het onderzoeken van afwijkende activiteiten, schakelt u Network Watcher pakket vastleggen in.
 
-NSG-stroom logboeken inschakelen: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+NSG-stroom logboeken inschakelen:
 
-Network Watcher inschakelen: https://docs.microsoft.com/azure/network-watcher/network-watcher-create
+https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+
+Network Watcher inschakelen:
+
+https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 ## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: op netwerk gebaseerde inbreuk detectie/indringings systemen (ID'S/IP-adressen) implementeren
 
@@ -137,11 +143,17 @@ Waarschuwingen configureren met Azure Firewall: https://docs.microsoft.com/azure
 
 Implementeer Azure-toepassing gateway voor webtoepassingen waarvoor HTTPS/SSL is ingeschakeld voor vertrouwde certificaten.
 
-Application Gateway implementeren: https://docs.microsoft.com/azure/application-gateway/quick-create-portal
+Application Gateway implementeren:
 
-Application Gateway configureren voor het gebruik van HTTPS: https://docs.microsoft.com/azure/application-gateway/create-ssl-portal
+https://docs.microsoft.com/azure/application-gateway/quick-create-portal
 
-Over Layer 7-taak verdeling met Azure Web Application-gateways: https://docs.microsoft.com/azure/application-gateway/overview
+Application Gateway configureren voor het gebruik van HTTPS:
+
+https://docs.microsoft.com/azure/application-gateway/create-ssl-portal
+
+De taak verdeling van laag 7 met Azure Web Application-gateways begrijpen:
+
+https://docs.microsoft.com/azure/application-gateway/overview
 
 ## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: de complexiteit en administratieve overhead van netwerk beveiligings regels minimaliseren
 
@@ -149,9 +161,11 @@ Over Layer 7-taak verdeling met Azure Web Application-gateways: https://docs.mic
 |--|--|--|
 | 1.8 | 1.5 | Klant |
 
-Gebruik Virtual Network Service Tags &nbsp;om netwerk toegangs beheer te definiëren voor netwerk beveiligings groepen of Azure Firewall. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de service label (bijvoorbeeld ApiManagement) op te geven in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen.
+Gebruik Virtual Network Service Tags om netwerk toegangs beheer te definiëren voor netwerk beveiligings groepen of Azure Firewall. U kunt servicetags gebruiken in plaats van specifieke IP-adressen wanneer u beveiligingsregels maakt. Door de naam van de service label (bijvoorbeeld ApiManagement) op te geven in het juiste bron-of doel veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. Micro soft beheert de adres voorvoegsels die zijn opgenomen in het servicetag van de service en werkt de servicetag automatisch bij met gewijzigde adressen.
 
-Service Tags leren en gebruiken: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+Service Tags begrijpen en gebruiken:
+
+https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: standaard beveiligings configuraties voor netwerk apparaten onderhouden
 
@@ -161,7 +175,7 @@ Service Tags leren en gebruiken: https://docs.microsoft.com/azure/virtual-networ
 
 Definieer en implementeer standaard beveiligings configuraties voor netwerk bronnen met Azure Policy.
 
-U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, RBAC-besturings elementen en-beleid, in één blauw definitie te voorzien. U kunt de blauw druk Toep assen op nieuwe abonnementen en omgevingen, en het beheer en beheer verfijnen door versies te maken.
+U kunt ook Azure-blauw drukken gebruiken om grootschalige Azure-implementaties te vereenvoudigen door sleutel omgevings artefacten, zoals Azure Resource Manager sjablonen, RBAC-besturings elementen en-beleid, in één blauw definitie te voorzien. U kunt de blauw druk Toep assen op nieuwe abonnementen en beheer en beheer nauw keuriger beheren via versie beheer.
 
 Azure Policy configureren en beheren:
 

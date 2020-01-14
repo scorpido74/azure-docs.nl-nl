@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: 7700c61a978532a63fc5b3298d45b8e7041dba40
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/10/2020
+ms.openlocfilehash: 1cd617204bbc12a99b6ae9e3b55fbc59b0e0578a
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790341"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933714"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Zelfstudie: Meldingen ontvangen uit uw Azure Digital Twins-ruimten met behulp van Logic Apps
 
@@ -51,7 +51,7 @@ In deze sectie stelt u een [Event Grid](../event-grid/overview.md) in voor het v
 
 [Event Grid-onderwerpen](../event-grid/concepts.md#topics) bieden een interface voor het routeren van de gebeurtenissen die worden gegenereerd door de functie die door de gebruiker is gedefinieerd. 
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **Een resource maken** in het linkerdeelvenster. 
 
@@ -65,7 +65,7 @@ In deze sectie stelt u een [Event Grid](../event-grid/overview.md) in voor het v
 
 1. Selecteer **Toegangssleutels** en kopieer **Sleutel 1** en **Sleutel 2** naar een tijdelijk bestand. U hebt deze waarden nodig om het eindpunt in de volgende sectie te maken.
 
-    [Event Grid sleutels ![](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
+    [Event Grid sleutels ![](./media/tutorial-facilities-events/tutorial-event-grid-keys.png)](./media/tutorial-facilities-events/tutorial-event-grid-keys.png#lightbox)
 
 ### <a name="create-an-endpoint-for-the-event-grid-topic"></a>Een eindpunt voor het Event Grid-onderwerp maken
 
@@ -114,7 +114,7 @@ Met de [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-service kunt u g
 
 1. Voer een **Naam** in voor uw Logic Apps-resource en selecteer uw **Abonnement**, **Resourcegroep** en **Locatie**. Selecteer **Maken**.
 
-    [![een Logic Apps resource maken](./media/tutorial-facilities-events/create-logic-app.png)](./media/tutorial-facilities-events/create-logic-app.png#lightbox)
+    [![een Logic Apps resource maken](./media/tutorial-facilities-events/tutorial-create-logic-app.png)](./media/tutorial-facilities-events/tutorial-create-logic-app.png#lightbox)
 
 1. Open uw Logic Apps-resource wanneer deze wordt geïmplementeerd en open vervolgens het deel venster **Logic app Designer** . 
 
@@ -172,7 +172,7 @@ Met de [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-service kunt u g
 
    c. In het tweede tekstvak **Kies een waarde** voert u `UdfCustom` in.
 
-   [Geselecteerde voor waarden ![](./media/tutorial-facilities-events/logic-app-condition.png)](./media/tutorial-facilities-events/logic-app-condition.png#lightbox)
+   [Geselecteerde voor waarden ![](./media/tutorial-facilities-events/tutorial-logic-app-condition.png)](./media/tutorial-facilities-events/tutorial-logic-app-condition.png#lightbox)
 
 1. In het venster **Indien waar**:
 
@@ -182,9 +182,9 @@ Met de [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-service kunt u g
 
    c. In het vak **Aan** voert u uw e-mail-ID in om meldingen te ontvangen. Voer bij **Onderwerp** de tekst **Digital Twins-melding voor slechte luchtkwaliteit in ruimte**. Selecteer vervolgens **TopologyObjectId** in de lijst **Dynamische inhoud** voor **JSON parseren**.
 
-   d. Voer onder **Hoofdtekst** in hetzelfde venster een soortgelijke tekst als deze in: **Slechte luchtkwaliteit gedetecteerd in een ruimte en temperatuur moet worden aangepast**. U kunt dit gerust uitbreiden met behulp van elementen uit de lijst **Dynamische inhoud**.
+   d. Onder **hoofd** tekst in hetzelfde venster voert u in het volgende voor beeld: **slechte lucht kwaliteit gedetecteerd in een kamer en de Tempe ratuur moet worden aangepast**. U kunt dit gerust uitbreiden met behulp van elementen uit de lijst **Dynamische inhoud**.
 
-   [![Logic Apps ' een e-mail verzenden '](./media/tutorial-facilities-events/logic-app-send-email.png)](./media/tutorial-facilities-events/logic-app-send-email.png#lightbox)
+   [![Logic Apps ' een e-mail verzenden '](./media/tutorial-facilities-events/tutorial-logic-app-send-email.png)](./media/tutorial-facilities-events/tutorial-logic-app-send-email.png#lightbox)
 
 1. Selecteer de knop **Opslaan** boven aan het deel venster **Logic app Designer** .
 

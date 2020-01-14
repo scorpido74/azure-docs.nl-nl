@@ -1,19 +1,19 @@
 ---
 title: Controle lijst voor het maken van SaaS-aanbiedingen-commerciële Marketplace voor Azure
 description: De details die u kunt opgeven in het proces voor het maken van SaaS-aanbiedingen. -Commerciële Marketplace voor Azure
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 1643a1e309ecc2bcfc440e3553fcffef54cfb038
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8b01f15673f68bcc3fb0b205b9dd85a276c9b972
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824626"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930307"
 ---
 # <a name="saas-offer-creation-checklist"></a>Controlelijst voor SaaS-aanbieding maken
 
@@ -79,7 +79,7 @@ De pagina met de vermelding bevat de tekst en afbeeldingen die klanten zien wann
 
 | **Veld naam**    | **Opmerkingen**   |
 | :---------------- | :-----------| 
-| Naam  | Vereist, Maxi maal 50 tekens. |
+| Name  | Vereist, Maxi maal 50 tekens. |
 | Samenvatting  | Vereist, Maxi maal 100 tekens. | 
 | Beschrijving  | Vereist, Maxi maal 3000 tekens. |
 | Aan de slag-instructies  | Vereist, Maxi maal 3000 tekens. |
@@ -111,7 +111,7 @@ Op de pagina technische configuratie kunt u de technische gegevens opgeven die d
 | :---------------- | :-----------| 
 | URL van landings pagina | Vereist als er wordt verkocht via micro soft. |
 | Verbindings-webhook | Vereist als er wordt verkocht via micro soft. |
-| Azure AD-Tenant-ID | Vereist als er wordt verkocht via micro soft. |
+| Azure AD-tenant-id | Vereist als er wordt verkocht via micro soft. |
 | Azure AD-App-ID | Vereist als er wordt verkocht via micro soft. |
 
 ## <a name="plan-identity-modal"></a>De identiteit van het modale abonnement
@@ -159,7 +159,7 @@ Deze optie is alleen beschikbaar als u een test drive voor uw aanbieding aanbied
 
 | **Veld naam**    | **Opmerkingen**   | 
 | :---------------- | :-----------| 
-| Opmerkingen voor certificering  | Optioneel. |
+| Opmerkingen voor certificatie  | Optioneel. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

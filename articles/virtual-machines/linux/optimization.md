@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: ea0d284b8220e4f8bc7bc1b91684654b32da7065
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a042e768ef6693d2ced6d679947a6fe321d259bf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035391"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934721"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Uw Linux VM optimaliseren voor Azure
 Het maken van een virtuele Linux-machine (VM) is eenvoudig vanuit de opdracht regel of vanuit de portal. In deze zelf studie ziet u hoe u ervoor kunt zorgen dat u deze hebt ingesteld om de prestaties van het Microsoft Azure platform te optimaliseren. In dit onderwerp wordt een Ubuntu-Server-VM gebruikt, maar u kunt ook virtuele Linux-machine maken met behulp van [uw eigen installatie kopieën als sjablonen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
@@ -33,7 +33,7 @@ In dit onderwerp wordt ervan uitgegaan dat u al een werkend Azure-abonnement ([g
 Wanneer u een virtuele Linux-machine in azure hebt gemaakt, zijn er twee schijven gekoppeld. **/dev/sda** is de schijf met het besturings systeem, **/dev/sdb** is de tijdelijke schijf.  Gebruik niet de hoofd besturingssysteem schijf ( **/dev/sda**) voor iets behalve het besturings systeem als het is geoptimaliseerd voor de snelle opstart tijd van de virtuele machine en biedt geen goede prestaties voor uw workloads. U wilt een of meer schijven aan uw virtuele machine koppelen om permanente en geoptimaliseerde opslag voor uw gegevens te krijgen. 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>Schijven toevoegen voor grootte-en prestatie doelen
-Op basis van de VM-grootte kunt u Maxi maal 16 extra schijven op a-Series, 32-schijven op een D-en 64-schijven op een G-serie machine aansluiten, elk Maxi maal 1 TB. U voegt extra schijven toe als dat nodig is voor uw ruimte en IOps-vereisten. Elke schijf heeft een prestatie doel van 500 IOps voor standaard opslag en Maxi maal 5000 IOps per schijf voor Premium Storage.
+Op basis van de VM-grootte kunt u Maxi maal 16 extra schijven op a-Series, 32-schijven op een D-en 64-schijven op een G-serie machine aansluiten, elk tot 32 TB groot. U voegt extra schijven toe als dat nodig is voor uw ruimte en IOps-vereisten. Elke schijf heeft een prestatie doel van 500 IOps voor standaard opslag en Maxi maal 20.000 IOps per schijf voor Premium Storage.
 
 Als u de hoogste IOps wilt benutten op Premium Storage schijven waarop de cache-instellingen zijn ingesteld op **alleen-lezen** of op **geen**, moet u **belemmeringen** uitschakelen bij het koppelen van het bestands systeem in Linux. U hebt geen obstakels nodig omdat de schrijf bewerkingen naar Premium Storage schijven duurzaam zijn voor deze cache-instellingen.
 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 12e642e59a1341926a0c4d66533465cecfc21709
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 7933e2608ae0b59a6dce89169f4bb1faba0aa25e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863135"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934134"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Een verbinding van een Azure Cognitive Search Indexeer functie configureren om te SQL Server op een Azure VM
 
@@ -77,7 +77,7 @@ We raden u ten zeerste aan de toegang tot het IP-adres van de zoek service en he
 
 U kunt het IP-adres vinden door de FQDN-namen (bijvoorbeeld `<your-search-service-name>.search.windows.net`) van uw zoek service te pingen.
 
-U kunt het IP-adres bereik van `AzureCognitiveSearch` [servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) vinden voor de specifieke regio waarin uw Azure Cognitive Search-service zich bevindt met behulp van [Download bare json-bestanden](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) of via de [service tag discovery-API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Het IP-adres bereik wordt wekelijks bijgewerkt.
+U kunt het IP-adres bereik [van `AzureCognitiveSearch` servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) vinden door [Download bare json-bestanden](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) te gebruiken of via de [service tag discovery-API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Het IP-adres bereik wordt wekelijks bijgewerkt.
 
 #### <a name="managing-ip-address-fluctuations"></a>Schommelingen van IP-adressen beheren
 Als uw zoek service slechts één Zoek eenheid (dat wil zeggen, één replica en één partitie) heeft, wordt het IP-adres gewijzigd tijdens het starten van de routine service, waarbij een bestaande ACL met het IP-adres van uw zoek service ongeldig wordt.

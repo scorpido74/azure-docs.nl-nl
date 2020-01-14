@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d1efd44614cc2384043b32da20f38c91f006459c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 5f646b4cef782b569910bdf881208c9984194589
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863101"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931110"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Veelvoorkomende problemen met Indexeer functies in azure Cognitive Search oplossen
 
@@ -30,7 +30,7 @@ Indexeer functies kunnen in een aantal problemen worden uitgevoerd bij het index
 >
 > U kunt het IP-adres van uw zoek service nagaan door de Fully Qualified Domain Name (bijvoorbeeld `<your-search-service-name>.search.windows.net`) te pingen.
 >
-> U kunt het IP-adres bereik van `AzureCognitiveSearch` [servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) vinden voor de specifieke regio waarin uw Azure Cognitive Search-service aanwezig is door gebruik te maken van [Download bare json-bestanden](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) of via de [service tag discovery-API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Het IP-adres bereik wordt wekelijks bijgewerkt.
+> U kunt het IP-adres bereik [van `AzureCognitiveSearch` servicetag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) vinden door [Download bare json-bestanden](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) te gebruiken of via de [service tag discovery-API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview). Het IP-adres bereik wordt wekelijks bijgewerkt.
 
 ### <a name="configure-firewall-rules"></a>Firewall regels configureren
 

@@ -1,18 +1,18 @@
 ---
 title: 'MFA inschakelen voor VPN-gebruikers: Azure AD-verificatie'
 description: Multi-factor Authentication inschakelen voor VPN-gebruikers
-services: vpn-gateway
+services: virtual-wan
 author: anzaman
-ms.service: vpn-gateway
+ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: alzam
-ms.openlocfilehash: 3700014752233e29d157f1695906babe4fa35c74
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 9329ac33a771c829b8d67670bc07d9a353c58ff1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74822771"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930583"
 ---
 # <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Azure Multi-Factor Authentication (MFA) inschakelen voor VPN-gebruikers
 

@@ -2,22 +2,22 @@
 title: Problemen met doorlopende replicatie van Azrue-Vm's met Azure Site Recovery oplossen
 description: Problemen en problemen oplossen bij het repliceren van virtuele machines van Azure voor herstel na nood gevallen
 services: site-recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 8/2/2019
-ms.author: asgang
-ms.openlocfilehash: 7b9da202704b20e5770343f857c044ea19ae696a
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.author: carmonm
+ms.openlocfilehash: b738ffc36334fc540582ba29e803eb2790e2119e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620886"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930748"
 ---
 # <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>Lopende problemen in azure-naar-Azure-VM-replicatie oplossen
 
-In dit artikel worden veelvoorkomende problemen in Azure Site Recovery beschreven wanneer u virtuele machines van Azure repliceert en herstelt vanuit de ene regio naar een andere regio. Ook wordt uitgelegd hoe u problemen kunt oplossen. Zie de [ondersteunings matrix voor het repliceren van virtuele Azure-machines](site-recovery-support-matrix-azure-to-azure.md)voor meer informatie over ondersteunde configuraties.
+In dit artikel worden veelvoorkomende problemen in Azure Site Recovery beschreven wanneer u virtuele machines van Azure repliceert en herstelt vanuit de ene regio naar een andere regio. Ook wordt uitgelegd hoe u problemen kunt oplossen. Zie voor meer informatie over ondersteunde configuraties, de [ondersteuningsmatrix voor het repliceren van virtuele Azure-machines](site-recovery-support-matrix-azure-to-azure.md).
 
 Azure Site Recovery repliceert gegevens van de bron regio consistent naar de herstel regio voor nood gevallen en maakt elke vijf minuten een crash-consistent herstel punt. Als Site Recovery geen herstel punten voor 60 minuten kunt maken, wordt u hiervan op de hoogte door deze informatie:
 
@@ -78,8 +78,8 @@ Als u wilt controleren of er een probleem is met de latentie, gebruikt u [azcopy
 
 U kunt het beste een netwerk service-eind punt in uw virtuele netwerk maken voor ' opslag ', zodat het replicatie verkeer niet naar de NVA gaat. Zie [configuratie van virtueel netwerk apparaat](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration)voor meer informatie.
 
-### <a name="network-connectivity"></a>Netwerk verbinding
-Voor een goede werking van Site Recovery replicatie is uitgaande verbinding met specifieke Url's of IP-adresbereiken vereist van de virtuele machine. Als uw virtuele machine zich achter een firewall bevindt of gebruikmaakt van regels voor netwerk beveiligings groepen (NSG) om de uitgaande connectiviteit te beheren, kunt u een van deze problemen tegen komen. Zie [uitgaande connectiviteit voor site Recovery url's](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)om ervoor te zorgen dat alle url's zijn verbonden. 
+### <a name="network-connectivity"></a>Netwerkverbinding
+Voor Site Recovery-replicatie met werk, uitgaande connectiviteit voor bepaalde URL's of IP-bereiken zijn van de virtuele machine. Als uw virtuele machine zich achter een firewall bevindt of gebruikmaakt van regels voor netwerk beveiligings groepen (NSG) om de uitgaande connectiviteit te beheren, kunt u een van deze problemen tegen komen. Zie [uitgaande connectiviteit voor site Recovery url's](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)om ervoor te zorgen dat alle url's zijn verbonden. 
 
 ## <a name="error-id-153006---no-app-consistent-recovery-point-available-for-the-vm-in-the-last-xxx-minutes"></a>Fout-ID 153006-geen app-consistent herstel punt beschikbaar voor de virtuele machine in de afgelopen ' XXX ' minuten
 
@@ -88,7 +88,7 @@ Hieronder vindt u enkele van de meest voorkomende problemen
 #### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>Oorzaak 1: bekend probleem in SQL Server 2008/2008 R2 
 **Oplossen** : er is een bekend probleem met SQL Server 2008/2008 R2. Raadpleeg dit KB-artikel [Azure site Recovery agent of andere VSS-back-ups van niet-onderdeel zijn mislukt voor een server die als host fungeert voor SQL Server 2008 R2](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Oorzaak 2: Azure Site Recovery taken mislukken op servers die fungeren als host voor elke versie van SQL Server instanties met AUTO_SLUITEN Db's 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>Oorzaak 2: Azure Site Recovery taken mislukken op servers die fungeren als host voor elke versie van SQL Server instanties met AUTO_CLOSE Db's 
 **Oplossen** : verwijzen naar KB- [artikel](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
 
 
@@ -127,13 +127,13 @@ Raadpleeg het [artikel over het oplossen van problemen met de VSS Writer-install
         - Azure Site Recovery VSS-provider
         - VDS-service
 
-####  <a name="vss-provider-not_registered---error-2147754756"></a>VSS-PROVIDER NOT_REGISTERED-fout 2147754756
+####  <a name="vss-provider-not_registered---error-2147754756"></a>NOT_REGISTERED van VSS-PROVIDER-fout 2147754756
 
 **Oplossen**: voor het genereren van een toepassings consistentie code Azure site Recovery maakt gebruik van micro soft Volume Shadow Copy service (VSS). Controleer of de Azure Site Recovery VSS-Provider service is geïnstalleerd of niet. </br>
 
 - Voer de installatie van de provider opnieuw uit met de volgende opdrachten:
-- Bestaande provider verwijderen: C:\Program Files (x86) \Microsoft Azure site Recovery\agent\InMageVSSProvider_Uninstall.cmd
-- Opnieuw installeren: C:\Program Files (x86) \Microsoft Azure site Recovery\agent\InMageVSSProvider_Install.cmd
+- Bestaande provider verwijderen: C:\Program Files (x86) \Microsoft Azure site Recovery\agent\ InMageVSSProvider_Uninstall. cmd
+- Opnieuw installeren: C:\Program Files (x86) \Microsoft Azure site Recovery\agent\ InMageVSSProvider_Install. cmd
  
 Controleer of het opstart type van de VSS-Provider service is ingesteld op **automatisch**.
     - Start de volgende services opnieuw:

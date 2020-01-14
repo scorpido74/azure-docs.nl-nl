@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: a947ff11fbbe418af84ff49033cba3857bb8447f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 108294e3f125da9fb009eb0a85585dab026c8d01
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925184"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933320"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Opwarmende trigger Azure Functions
 
@@ -30,11 +30,11 @@ Het pakket [micro soft. Azure. webjobs. Extensions](https://www.nuget.org/packag
 
 ## <a name="trigger"></a>Trigger
 
-Met de trigger opwarm kunt u een functie definiëren die wordt uitgevoerd op een instantie wanneer deze wordt toegevoegd aan uw actieve app. U kunt een opwarm-functie gebruiken om verbindingen te openen, afhankelijkheden te laden of andere aangepaste logica uit te voeren voordat uw app verkeer ontvangt. 
+Met de trigger opwarm kunt u een functie definiëren die wordt uitgevoerd op een nieuw exemplaar wanneer deze wordt toegevoegd aan uw actieve app. U kunt een opwarm-functie gebruiken om verbindingen te openen, afhankelijkheden te laden of andere aangepaste logica uit te voeren voordat uw app verkeer ontvangt. 
 
 De trigger opwarm is bedoeld voor het maken van gedeelde afhankelijkheden die worden gebruikt door de andere functies in uw app. [Zie hier voor voor beelden van gedeelde afhankelijkheden](./manage-connections.md#client-code-examples).
 
-Houd er rekening mee dat de trigger opwarm alleen wordt aangeroepen tijdens opschalen, niet tijdens het opnieuw opstarten of andere niet-schaal bare opstart bewerkingen. U moet ervoor zorgen dat uw logica alle vereiste afhankelijkheden kan laden zonder gebruik te maken van de opwarm-trigger. Luie lading is een goed patroon om dit te doen.
+Houd er rekening mee dat de trigger opwarm alleen wordt aangeroepen tijdens scale-out bewerkingen, niet tijdens het opnieuw opstarten of het niet schalen van de schaal. U moet ervoor zorgen dat uw logica alle vereiste afhankelijkheden kan laden zonder gebruik te maken van de opwarm-trigger. Luie lading is een goed patroon om dit te doen.
 
 ## <a name="trigger---example"></a>Trigger - voorbeeld
 

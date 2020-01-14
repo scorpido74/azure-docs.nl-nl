@@ -1,19 +1,19 @@
 ---
 title: Een nieuwe Azure apps-aanbieding maken in de commerciële Marketplace
 description: Het maken van een nieuwe Azure apps-aanbieding voor het aanbieden of verkopen in azure Marketplace, AppSource of via het programma Cloud Solution Provider (CSP) met behulp van de commerciële Marketplace-Portal in micro soft Partner Center.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: d7e05f12c04136c8394dbcb27b7a950fc5ce85d9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 60a3392474d11c306d28b9d95668a1e783cdfbb0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281270"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930713"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -69,7 +69,7 @@ Raadpleeg de volgende documentatie voor Azure-toepassingen, die Quick starts, ze
 
 * Voor beelden
 
-    * [Azure CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
+    * [Azure-CLI](https://docs.microsoft.com/azure/managed-applications/cli-samples)
     * [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
     * [Oplossingen voor beheerde toepassingen](https://docs.microsoft.com/azure/managed-applications/sample-projects)
 
@@ -90,7 +90,7 @@ Uw technische team moet kennis hebben van de volgende micro soft-technologieën:
 Kies een of beide van de volgende script omgevingen om uw Azure-toepassing te beheren:
 
 * [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
-* [Azure CLI](https://docs.microsoft.com/cli/azure)
+* [Azure-CLI](https://docs.microsoft.com/cli/azure)
 
 Het is raadzaam om de volgende hulpprogram ma's toe te voegen aan uw ontwikkel omgeving:
 
@@ -179,7 +179,7 @@ U moet de details van de Marketplace (naam, beschrijving, installatie kopieën, 
 > [!NOTE]
 > Aanbiedings inhoud (zoals de beschrijving, documenten, scherm afbeeldingen, gebruiks voorwaarden, enzovoort) is niet vereist in het Engels, zolang de beschrijving van het aanbod begint met de woord groep ' deze toepassing is alleen beschikbaar in [niet-Engelse taal] '. Het is ook acceptabel om een *nuttige koppelings-URL* te bieden om inhoud te bieden in een andere taal dan de versie die wordt gebruikt in de inhoud van de aanbieding.
 
-### <a name="name"></a>Naam
+### <a name="name"></a>Name
 
 De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de aanbieding. Dit veld wordt vooraf ingevuld met de tekst die u hebt ingevoerd voor de **aanbiedings alias** tijdens het maken van de aanbieding, maar u kunt deze waarde wijzigen. Deze naam kan worden aangemerkt (en u kunt symbolen van het handels merk of copyright bevatten). De naam mag niet langer zijn dan 50 tekens en mag geen emojis bevatten.
 
@@ -218,7 +218,7 @@ In deze sectie vindt u koppelingen waarmee klanten meer inzicht kunnen krijgen i
 
 Voer de URL in voor het privacybeleid van uw organisatie. U bent verantwoordelijk om ervoor te zorgen dat uw app voldoet aan de wetten en voor schriften van de privacy en om een geldig privacybeleid te bieden.
 
-#### <a name="useful-links"></a>Handige koppelingen
+#### <a name="useful-links"></a>Nuttige koppelingen
 
 Bied optionele aanvullende online documenten over uw oplossing.  Voeg extra nuttige koppelingen toe door te klikken op **+ een koppeling toevoegen**.
 
@@ -244,7 +244,7 @@ De afbeelding van de held is optioneel. Als u een waarde opgeeft, moet deze 815 
 
 Scherm afbeeldingen toevoegen die laten zien hoe uw aanbieding werkt. U kunt Maxi maal vijf scherm opnamen toevoegen. Alle scherm afbeeldingen moeten 1280 x 720 pixels zijn.
 
-#### <a name="videos"></a>Video's
+#### <a name="videos"></a>Video’s
 
 U kunt optioneel Maxi maal vijf Video's toevoegen die uw aanbieding aantonen. Deze Video's moeten worden gehost op YouTube en/of Vimeo. Voer voor elke video de naam, de URL en een miniatuur afbeelding van de video in (1280 x 720 pixels).
 
@@ -287,7 +287,7 @@ Nadat u hebt gemaakt, ziet u de namen van uw plannen, Id's, plan type, Beschik b
 
 Op het tabblad **installatie plannen** kunt u de high-level configuratie voor het type abonnement instellen, of deze pakketten van een ander abonnement opnieuw gebruikt en op welke Clouds het plan beschikbaar moet zijn.  Uw antwoorden op dit tabblad beïnvloeden welke velden worden weer gegeven op andere tabbladen voor hetzelfde abonnement.
 
-#### <a name="plan-type"></a>Type abonnement
+#### <a name="plan-type"></a>Plantype
 
 Zoals beschreven in de [typen Azure-toepassings abonnementen](#types-of-azure-application-plans), geeft u aan of uw plan een oplossings sjabloon of een beheerde toepassing zal bevatten.
 
@@ -319,7 +319,7 @@ Azure Government Services verwerkt gegevens die onderworpen zijn aan bepaalde we
 
 Op het tabblad **plan vermelding** worden de plannings gegevens weer gegeven die kunnen verschillen tussen verschillende abonnementen voor dezelfde aanbieding.
 
-### <a name="name"></a>Naam
+### <a name="name"></a>Name
 
 Ingevuld op basis van uw naam die u bij het maken van het abonnement hebt ingesteld.  Deze naam wordt weer gegeven als de titel van dit ' software-abonnement ' dat wordt weer gegeven in de Marketplace.  Mag Maxi maal 100 tekens bevatten.
 
@@ -352,7 +352,7 @@ U kunt elk plan zodanig configureren dat het zichtbaar is voor iedereen of allee
 
 Als uw oplossings sjabloon alleen indirect moet worden geïmplementeerd als er een andere oplossings sjabloon of beheerde toepassing wordt verwezen, schakelt u dit selectie vakje in om de oplossings sjabloon te publiceren, maar deze te verbergen bij klanten die ze rechtstreeks zoeken en bezoeken.
 
-## <a name="pricing-and-availability"></a>Prijzen en beschik baarheid
+## <a name="pricing-and-availability"></a>Prijzen en beschikbaarheid
 
 Het tabblad **prijzen en beschik baarheid** is alleen zichtbaar voor beheerde toepassings abonnementen.  U kunt de markten configureren waarop dit plan beschikbaar is, de prijs per maand van het beheer van de oplossing en of het plan zichtbaar moet worden voor iedereen of alleen voor specifieke klanten (een privé-publiek).
 
@@ -461,7 +461,7 @@ Selecteer voor elke principal een van de ingebouwde Azure AD-rollen uit de lijst
 
 Pas [Azure-beleid](https://docs.microsoft.com/azure/governance/policy/overview) toe op uw beheerde toepassing om nalevings vereisten voor de geïmplementeerde oplossing op te geven.  Zie [Voorbeelden van Azure Policy](https://docs.microsoft.com/azure/governance/policy/samples/index) voor beleidsdefinities en de indeling van de parameterwaarden.  U kunt Maxi maal vijf beleids regels configureren, en slechts één exemplaar van elke beleids optie.  Voor sommige beleids regels zijn aanvullende para meters vereist.  De standaard-SKU is vereist voor controle beleid.  De naam van het beleid is beperkt tot 50 tekens.
 
-## <a name="co-sell"></a>Gezamenlijk verkopen
+## <a name="co-sell"></a>Co-Sell
 
 Het is volledig optioneel om informatie op het tabblad verkopen op te geven voor het publiceren van uw aanbieding. Het is vereist voor het vergemakkelijkt van de verkoop van Ready en de status van de voor bereidingen op de IP-mede verkoop. De gegevens die u verstrekt, worden door micro soft Sales teams gebruikt om meer te weten te komen over uw oplossing bij de evaluatie van de geschiktheid voor klanten behoeften. Het is niet rechtstreeks beschikbaar voor klanten.
 
@@ -501,7 +501,7 @@ De optie voor het **testen van stations** die is gevonden op het tabblad **test 
 
 - **Gebruikers handleiding** (vereist): een diep gaande overzicht van uw test drive ervaring. De gebruikers handleiding moet betrekking hebben op precies wat u wilt dat de klant het test drive verkrijgt en zich als referentie voor eventuele vragen bevindt. Het bestand moet een PDF-indeling hebben en een naam hebben (255 tekens Max) na het uploaden.
 
-- **Video's: Video's toevoegen** (optioneel): Video's kunnen worden geüpload naar YouTube of Vimeo en hiernaar wordt verwezen met een koppeling en een miniatuur afbeelding (533 x 324 pixels), zodat een klant een overzicht van de informatie kan bekijken om hen meer inzicht te geven in de test drive, waaronder hoe u de functies van uw aanbieding kunt gebruiken en inzicht krijgt in scenario's die hun voor delen accentueren.
+- **Video's: Video's toevoegen** (optioneel): Video's kunnen worden geüpload naar YouTube of Vimeo en hiernaar wordt verwezen met een koppeling en een miniatuur afbeelding (533 x 324 pixels), zodat een klant een overzicht van de informatie kan bekijken om hen meer inzicht te geven in de test drive, met inbegrip van de manier waarop u de functies van uw aanbieding kunt gebruiken en inzicht kunt krijgen in de voor delen.
   - **Naam** (vereist)
   - **URL (alleen YouTube of Vimeo)** (vereist)
   - **Miniatuur (533 x 324 px)** : het afbeeldings bestand moet de PNG-indeling hebben.

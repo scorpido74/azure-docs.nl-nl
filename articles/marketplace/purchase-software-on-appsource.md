@@ -1,19 +1,19 @@
 ---
 title: Software aanschaffen op AppSource | Azure Marketplace
 description: Stappen voor een om software te kopen op AppSource | Azure Marketplace.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2019
-ms.openlocfilehash: 3ca07f060aebcea82895f0463cac693c66f0c629
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 70e51d7c05e93e7d5f4451fa383023605a02af99
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827736"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933501"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Software aanschaffen op Microsoft AppSource
 
@@ -23,7 +23,7 @@ Met micro soft [AppSource](https://appsource.microsoft.com/) kunnen klanten zich
 
 Voor het kopen van SaaS-aanbiedingen hebt u het volgende nodig:
 
-- Een werk-of school account.
+- Een werk- of schoolaccount.
 
     > [!Note]
     > Als u geen werk-of school account hebt, moet u een Azure Active Directory-Tenant maken waaraan een werk-of school account kan worden toegevoegd. Zie [Quick Start: een nieuwe Tenant maken in azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant)voor meer informatie.
@@ -41,7 +41,7 @@ Voor het kopen van SaaS-aanbiedingen hebt u het volgende nodig:
     > [!Note]
     > AppSource biedt u een keuze uit apps waaruit u kunt kiezen, inclusief gratis, proef versies en betaalde abonnementen. In dit artikel wordt beschreven hoe betaalde abonnementen kunnen worden aangeschaft via AppSource.
 
-1. Selecteer **nu downloaden**.
+1. Selecteer **Nu downloaden**.
 1. Kies het abonnement:
 
     1. Het aantal stoelen instellen

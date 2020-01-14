@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 1cd3e39fd504b5095a83192a4a6314c71d3ca980
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: c585ebd903d4070f6247456e06efffbc6ec45270
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564294"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934493"
 ---
 # <a name="security-control-data-recovery"></a>Beveiligings beheer: gegevens herstellen
 
@@ -27,7 +27,9 @@ Zorg ervoor dat er regel matig een back-up wordt gemaakt van alle systeem gegeve
 
 Schakel Azure Backup in en configureer de back-upbron (Azure Vm's, SQL Server of bestands shares), evenals de gewenste frequentie en bewaar periode.
 
-Azure Backup inschakelen: https://docs.microsoft.com/azure/backup/
+Azure Backup inschakelen:
+
+https://docs.microsoft.com/azure/backup/
 
 ## <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: volledige back-ups van het systeem uitvoeren en een back-up maken van een door de klant beheerde sleutels
 
@@ -37,9 +39,13 @@ Azure Backup inschakelen: https://docs.microsoft.com/azure/backup/
 
 Schakel Azure Backup en doel-VM ('s) in, evenals de gewenste frequentie en retentie perioden. Back-ups van door de klant beheerde sleutels binnen Azure Key Vault.
 
-Azure Backup inschakelen: https://docs.microsoft.com/azure/backup/
+Azure Backup inschakelen:
 
-Hoe kan ik een back-up maken van sleutel kluis sleutels in Azure: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/azure/backup/
+
+Hoe kan ik een back-up maken van sleutel kluis sleutels in Azure:
+
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
 ## <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: alle back-ups valideren, inclusief door de klant beheerde sleutels
 

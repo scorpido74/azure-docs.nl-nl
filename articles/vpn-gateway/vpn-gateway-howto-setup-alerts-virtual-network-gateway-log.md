@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: e2d0227f7481f75c1b0a4e3fe9d0fa3134a7261c
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 732f4b460a3a97f84dd79a37715aff972e8482ed
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778597"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934531"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Waarschuwingen instellen voor diagnostische logboek gebeurtenissen van VPN Gateway
 
@@ -56,6 +56,10 @@ Met de volgende voorbeeld stappen wordt een waarschuwing gemaakt voor een verbin
 6. Vul de details in en zorg ervoor dat **verzenden naar log Analytics** en **TunnelDiagnosticLog** zijn geselecteerd. Kies de Log Analytics-werk ruimte die u in stap 3 hebt gemaakt.
 
    ![Geselecteerde selectie vakjes](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Selecteer")
+   
+> [!NOTE]
+> Het kan een paar uur duren voordat de gegevens in eerste instantie worden weer gegeven.
+>
 
 7. Ga naar het overzicht van de resource van de virtuele netwerk gateway en selecteer **waarschuwingen** op het tabblad **bewaking** . Maak vervolgens een nieuwe waarschuwings regel of bewerk een bestaande waarschuwings regel.
 

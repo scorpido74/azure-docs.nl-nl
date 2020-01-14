@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: 575dda47b5e6fc0d70ef80dfd7a1baba0f63be2d
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: a96a3de7c8ad309986417e21a13d5e18f56cbd24
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814854"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934132"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Veelgestelde vragen over spraak naar tekst
 
@@ -79,7 +79,7 @@ Als u een model hebt aangepast en geïmplementeerd met basis lijn V 1.0, blijft 
 
 **V: hoe worden er kosten in rekening gebracht voor Dual Channel audio?**
 
-**A**: als u elk kanaal afzonderlijk verzendt (elk kanaal in een eigen bestand), wordt u per duur van het bestand in rekening gebracht. Als u één bestand met elk kanaal hebt verzonden, worden er kosten in rekening gebracht voor de duur van het ene bestand.
+**A**: als u elk kanaal afzonderlijk verzendt (elk kanaal in een eigen bestand), wordt u in rekening gebracht voor de duur van elk bestand. Als u één bestand met elk kanaal hebt verzonden, worden er kosten in rekening gebracht voor de duur van het ene bestand. Raadpleeg de [pagina met prijzen voor Azure Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)voor meer informatie over prijzen.
 
 > [!IMPORTANT]
 > Neem contact op met een van de ondersteunings kanalen als u meer privacy-problemen hebt die verhinderen dat u de aangepaste spraak service kunt gebruiken.
@@ -197,5 +197,5 @@ De spraak ervaring die is ingebouwd in Office 365, zoals dicteer-en Power Point-
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Problemen oplossen](troubleshooting.md)
+- [Probleemoplossing](troubleshooting.md)
 - [Releaseopmerkingen](releasenotes.md)
