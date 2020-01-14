@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 50dd97107296c70ba9dde162b723f49a658a3994
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 72b6c1f86b18df172994827ec78eb109fe82454e
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355890"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75913769"
 ---
 ## <a name="benefits-of-managed-disks"></a>Voor delen van beheerde schijven
 
@@ -55,7 +55,7 @@ Beheerde schijven bieden twee verschillende soorten versleuteling. De eerste is 
 
 ### <a name="server-side-encryption"></a>Versleuteling aan de serverzijde
 
-[Azure server-side Encryption](../articles/virtual-machines/windows/disk-encryption.md) biedt versleuteling-at-rest en beveiligt uw gegevens om te voldoen aan de verplichtingen van de beveiliging en naleving van uw organisatie. Versleuteling aan de server zijde is standaard ingeschakeld voor alle beheerde schijven, moment opnamen en installatie kopieën in alle regio's waar beheerde schijven beschikbaar zijn. U kunt Azure toestaan uw sleutels voor u te beheren, dit zijn door het platform beheerde sleutels, of u kunt de sleutels zelf beheren. Dit zijn door de klant beheerde sleutels (preview). Ga naar de [pagina met Managed disks Veelgestelde vragen](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) voor meer informatie.
+[Azure server-side Encryption](../articles/virtual-machines/windows/disk-encryption.md) biedt versleuteling-at-rest en beveiligt uw gegevens om te voldoen aan de verplichtingen van de beveiliging en naleving van uw organisatie. Versleuteling aan de server zijde is standaard ingeschakeld voor alle beheerde schijven, moment opnamen en installatie kopieën in alle regio's waar beheerde schijven beschikbaar zijn. U kunt Azure toestaan uw sleutels voor u te beheren, dit zijn door het platform beheerde sleutels, of u kunt de sleutels zelf beheren. Dit zijn door de klant beheerde sleutels. Ga naar de [pagina met Managed disks Veelgestelde vragen](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption) voor meer informatie.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 

@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: b8de6df5761baef79310062614f578a92f17b826
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2570e3753dd93173166c6b563e9add69bed3f862
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670481"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922263"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Een Linux python-app voor Azure App Service configureren
 
@@ -50,7 +50,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="container-characteristics"></a>Containerkenmerken
 
-Python-apps die zijn geïmplementeerd in App Service met Linux worden uitgevoerd binnen een Docker-container die is gedefinieerd in de GitHub-opslagplaats [Python 3.6](https://github.com/Azure-App-Service/python/tree/master/3.6.6) of [Python 3.7](https://github.com/Azure-App-Service/python/tree/master/3.7.0).
+Python-apps die zijn geïmplementeerd op App Service in Linux, worden uitgevoerd binnen een docker-container die is gedefinieerd in de [app service python github-opslag plaats](https://github.com/Azure-App-Service/python). U vindt de installatie kopieën in de versie-specifieke directory's.
 
 Deze container heeft de volgende kenmerken:
 

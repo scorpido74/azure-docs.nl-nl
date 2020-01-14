@@ -5,12 +5,12 @@ author: mcoskun
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: 712069a34b6bc5d8aa4bcbab3fdbf9fc9cd8958b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ac6bb14517b67a4b308460583e8c9fb99a2df9f0
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645545"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922782"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Back-up en herstel Reliable Services en Reliable Actors
 Azure Service Fabric is een platform met hoge Beschik baarheid dat de status van meerdere knoop punten repliceert om deze hoge Beschik baarheid te behouden.  Dus zelfs als één knoop punt in het cluster uitvalt, blijven de services beschikbaar. Hoewel deze door het platform verschafte redundantie mogelijk voldoende is voor sommige, is het wenselijk dat de service back-ups maakt van gegevens (naar een externe opslag).
@@ -64,7 +64,7 @@ Zoals hieronder wordt weer gegeven, neemt `BackupAsync` in een `BackupDescriptio
 
 ```csharp
 
-BackupDescription myBackupDescription = new BackupDescription(backupOption.Incremental,this.BackupCallbackAsync);
+BackupDescription myBackupDescription = new BackupDescription(BackupOption.Incremental,this.BackupCallbackAsync);
 
 await this.BackupAsync(myBackupDescription);
 

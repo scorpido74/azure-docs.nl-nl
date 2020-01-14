@@ -6,12 +6,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: jehollan
-ms.openlocfilehash: db072d90c39b3856127925306cb1407c5837a0bb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bdeff0194bda620250481a215c145b1ec3b2207e
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226962"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920795"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geo-nood herstel
 
@@ -34,7 +34,7 @@ Voor het bezorgen van actieve/actieve implementaties van functies, is een onderd
 
 ## <a name="activeactive-for-non-https-functions"></a>Actief/actief voor niet-HTTPS-functies
 
-U kunt nog steeds actieve/actieve implementaties voor niet-HTTPS-functies.  U moet echter nadenken over hoe de twee regio's met elkaar zullen communiceren of onderling worden gecoördineerd.  Als u dezelfde functie-app in twee regio's hebt geïmplementeerd, worden deze allemaal geactiveerd op dezelfde Service Bus wachtrij. ze fungeren als concurrerende consumenten in de wachtrij van die wachtrij.  Hoewel dit betekent dat elk bericht alleen door een van de instanties wordt verwerkt, betekent dit dat er nog steeds een Single Point of Failure is op de afzonderlijke service bus.  Als u twee service bus-wacht rijen implementeert (één in een primaire regio, een in een secundaire regio) en de twee functie-apps die naar hun regio wachtrij verwijzen, wordt de uitdaging nu geleverd in de manier waarop de wachtrij berichten tussen de twee regio's worden gedistribueerd.  Dit betekent vaak dat elke uitgever een bericht probeert te publiceren naar *beide* regio's en dat elk bericht wordt verwerkt door zowel actieve functie-apps.  Hoewel hiermee een actief/actief patroon wordt gemaakt, worden er ook andere uitdagingen gegenereerd voor het dupliceren van Compute en wanneer of hoe gegevens worden geconsolideerd.  Daarom wordt het aanbevolen om niet-HTTPS-triggers het actieve/passieve patroon te gebruiken.
+U kunt nog steeds actieve/actieve implementaties voor niet-HTTPS-functies.  U moet echter nadenken over hoe de twee regio's met elkaar zullen communiceren of onderling worden gecoördineerd.  Als u dezelfde functie-app in twee regio's hebt geïmplementeerd, worden deze allemaal geactiveerd op dezelfde Service Bus wachtrij. ze fungeren als concurrerende consumenten in de wachtrij van die wachtrij.  Hoewel dit betekent dat elk bericht alleen wordt verwerkt door een van de instanties, betekent dit ook dat er nog steeds een Single Point of Failure is op het Service Bus.  Als u twee Service Bus-wacht rijen implementeert (één in een primaire regio, een in een secundaire regio) en de twee functie-apps naar hun regio wachtrij verwijzen, wordt de uitdaging nu in de wachtrij geplaatst tussen de twee regio's.  Dit betekent vaak dat elke uitgever een bericht probeert te publiceren naar *beide* regio's en dat elk bericht wordt verwerkt door zowel actieve functie-apps.  Hoewel hiermee een actief/actief patroon wordt gemaakt, worden er ook andere uitdagingen gegenereerd voor het dupliceren van Compute en wanneer of hoe gegevens worden geconsolideerd.  Daarom wordt het aanbevolen om niet-HTTPS-triggers het actieve/passieve patroon te gebruiken.
 
 ## <a name="activepassive-for-non-https-functions"></a>Actief/passief voor niet-HTTPS-functies
 
