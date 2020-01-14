@@ -17,7 +17,7 @@
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
-            - name: Azure-CLI
+            - name: Azure CLI
               href: service-bus-quickstart-cli.md
             - name: Azure Resource Manager-sjabloon
               href: service-bus-resource-manager-namespace-queue.md
@@ -112,7 +112,7 @@
                   href: authenticate-application.md
         - name: Ingebouwde beveiligingsmaatregelen
           href: service-bus-messaging-security-controls.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Een naamruimte maken
       href: service-bus-create-namespace-portal.md
@@ -205,7 +205,7 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: Beveiligen
       items:
-        - name: Door de klant beheerde sleutels configureren voor versleuteling-at-rest (preview)
+        - name: Door de klant beheerde sleutels configureren voor versleuteling-at-rest
           href: configure-customer-managed-key.md
     - name: Problemen oplossen
       items:

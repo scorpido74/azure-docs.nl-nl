@@ -63,7 +63,7 @@
           href: security-center-alerts-data-services.md
         - name: Detectie van bedreigingen voor Azure-servicelagen
           href: security-center-alerts-service-layer.md
-        - name: Detectie van bedreigingen voor Azure WAF en Azure DDoS Protection
+        - name: Waarschuwingen voor detectie van bedreigingen voor Azure WAF en Azure DDoS Protection
           href: security-center-alerts-integration.md
         - name: Correlatie van Cloud Smart Alert (incidenten)
           href: security-center-alerts-cloud-smart.md
