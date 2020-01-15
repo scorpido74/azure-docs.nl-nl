@@ -31,9 +31,9 @@
         - name: Java
           href: event-hubs-java-get-started-send.md
         - name: Python
-          href: event-hubs-python-get-started-send.md
+          href: get-started-python-send-v2.md
         - name: Node.js
-          href: event-hubs-node-get-started-send.md
+          href: get-started-node-send-v2.md
         - name: Aan de slag
           href: event-hubs-go-get-started-send.md
         - name: C (alleen verzenden)
@@ -49,7 +49,7 @@
         - name: Resource Manager-sjabloon gebruiken om Event Hubs Capture in te schakelen
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
         - name: Gegevens van Event Hubs vastleggen met behulp van Python
-          href: event-hubs-capture-python.md
+          href: get-started-capture-python-v2.md
     - name: Streamen naar Azure Event Hubs voor Apache Kafka
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
     - name: Een toegewezen cluster maken
@@ -114,10 +114,22 @@
           href: event-hubs-get-connection-string.md
         - name: Gebeurtenissen uitwisselen tussen toepassingen die gebruikmaken van verschillende protocollen
           href: event-hubs-exchange-events-different-protocols.md
-        - name: .NET-programmeergids
-          href: event-hubs-programming-guide.md
-        - name: 'Gebeurtenissen verzenden, ontvangen en vastleggen met behulp van Python'
-          href: event-hubs-python.md
+        - name: Programmeerhandleidingen
+          items:
+            - name: Python
+              href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/README.md'
+            - name: Javascript
+              href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/README.md'
+            - name: .NET-programmeergids
+              href: event-hubs-programming-guide.md
+        - name: Opgenomen gegevens lezen met Python (verouderd)
+          href: event-hubs-capture-python.md
+        - name: Gebeurtenissen verzenden en ontvangen (verouderd)
+          items:
+            - name: Python (verouderd)
+              href: event-hubs-python-get-started-send.md
+            - name: Node.js (verouderd)
+              href: event-hubs-node-get-started-send.md
     - name: Gegevens verwerken
       items:
         - name: Gegevens verwerken met Azure Stream Analytics
@@ -193,7 +205,15 @@
         - name: Microsoft.Azure.Management.EventHub
           href: /dotnet/api/microsoft.azure.management.eventhub
     - name: Node.js
-      href: /javascript/api/overview/azure/event-hub?view=azure-node-latest
+      items:
+        - name: Migreren van versie 2 naar versie 5
+          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'
+        - name: API-verwijzing
+          href: /javascript/api/overview/azure/event-hub?view=azure-node-latest
+    - name: Python
+      items:
+        - name: Migreren van versie 1 naar versie 5
+          href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md'
     - name: REST
       href: /rest/api/eventhub
     - name: Resource Manager-sjabloon

@@ -9,26 +9,32 @@
   items:
     - name: 'C# gebruiken'
       href: Quickstart.md
+    - name: Node.js gebruiken
+      href: quickstart-nodejs.md
     - name: Swift (iOS) gebruiken
       href: ios-quickstart.md
 - name: Zelfstudies
   items:
-    - name: Start de Insluitende lezer (Node.js)
-      href: tutorial-nodejs.md
     - name: De Insluitende lezer starten (Python)
       href: tutorial-python.md
-    - name: Afbeelding naar Insluitende lezer (Swift)
-      href: tutorial-ios-picture-immersive-reader.md
 - name: 'Uitleg:'
   items:
-    - name: Verificatie via Azure Active Directory
-      href: azure-active-directory-authentication.md
+    - name: Insluitende lezersresource maken
+      href: how-to-create-immersive-reader.md
+    - name: Het cookiebeleid instellen
+      href: how-to/set-cookie-policy.md
+    - name: Wiskunde weergeven
+      href: how-to/display-math.md
+    - name: De Insluitende lezer starten met HTML-inhoud
+      href: how-to-launch-with-html.md
+    - name: Knop Insluitende lezer aanpassen
+      href: how-to-customize-launch-button.md
+    - name: Het verificatietoken cachen
+      href: how-to-cache-token.md
 - name: Naslaginformatie
   items:
     - name: SDK-naslaginformatie
       href: reference.md
-    - name: iOS SDK-naslaginformatie
-      href: ios-reference.md
 - name: Resources
   items:
     - name: Azure-roadmap

@@ -730,6 +730,9 @@
                 - name: Hyperopt met HorovodRunner
                   href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-distributed-ml
                   maintainContext: true
+                - name: Best practices voor Hyperopt
+                  href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-best-practices
+                  maintainContext: true
                 - name: Modellen zoeken met gedistribueerde Hyperopt
                   href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-model-selection
                   maintainContext: true
@@ -993,6 +996,12 @@
             - name: Voorbeeld van een geheime werkstroom
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
+        - name: Verkeer tussen clusterwerkknooppunten versleutelen
+          href: /azure/databricks/security/encrypt-otw
+        - name: Door de klant beheerde sleutels inschakelen voor notebooks
+          href: /azure/databricks/security/customer-managed-key-notebook
+        - name: Door de klant beheerde sleutels inschakelen voor DBFS
+          href: /azure/databricks/security/customer-managed-keys-dbfs
     - name: Beheer
       items:
         - name: Beheeroverzicht

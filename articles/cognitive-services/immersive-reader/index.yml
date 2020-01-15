@@ -12,12 +12,12 @@ metadata:
   author: IEvangelist
   ms.author: dapine
   ms.date: 08/29/2019
-  ms.openlocfilehash: 50185a0bbfc3a9677ebc90f326b0c43ab2a2eb13
-  ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+  ms.openlocfilehash: 1d246396e8d6a5595cff6100ac0cae1032ce2af4
+  ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 08/29/2019
-  ms.locfileid: "70164495"
+  ms.lasthandoff: 01/14/2020
+  ms.locfileid: "75945522"
 landingContent:
 - title: Over Insluitende lezer
   linkLists:
@@ -31,25 +31,31 @@ landingContent:
     links:
     - text: ASP.NET Core
       url: quickstart.md
+    - text: Node.js
+      url: quickstart-nodejs.md
     - text: Swift (iOS)
       url: ios-quickstart.md
   - linkListType: tutorial
     links:
-    - text: Node.js
-      url: tutorial-nodejs.md
     - text: Python
       url: tutorial-python.md
-    - text: Swift (iOS)
-      url: tutorial-ios-picture-immersive-reader.md
 - title: Insluitende lezer ontdekken
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Verifiëren bij Azure Active Directory
-      url: azure-active-directory-authentication.md
+    - text: Een insluitende lezerservaring maken
+      url: how-to-create-immersive-reader.md
+    - text: Het cookiebeleid instellen
+      url: how-to/set-cookie-policy.md
+    - text: Wiskunde weergeven
+      url: how-to/display-math.md
+    - text: De Insluitende lezer starten met HTML-inhoud
+      url: how-to-launch-with-html.md
+    - text: Knop Insluitende lezer aanpassen
+      url: how-to-customize-launch-button.md
+    - text: Het verificatietoken cachen
+      url: how-to-cache-token.md
   - linkListType: reference
     links:
     - text: JavaScript SDK
       url: reference.md
-    - text: iOS SDK
-      url: ios-reference.md

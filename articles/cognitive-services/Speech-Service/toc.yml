@@ -7,7 +7,7 @@
       href: overview.md
     - name: Ondersteuning voor taal en regio
       href: language-support.md
-      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code'
+      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code,neural voice,standard voice'
 - name: Spraak naar tekst
   expanded: false
   items:
@@ -27,6 +27,8 @@
       items:
         - name: Brontaal voor spraakherkenning wijzigen
           href: how-to-specify-source-language.md
+        - name: Spraakherkenningsmodus kiezen
+          href: how-to-choose-recognition-mode.md
         - name: Nauwkeurigheid verbeteren met Custom Speech
           href: how-to-custom-speech.md
         - name: Nauwkeurigheid verbeteren met Frasenlijsten
@@ -102,6 +104,7 @@
           href: speech-synthesis-markup.md
         - name: Uitvoer verbeteren met Custom Voice
           href: how-to-custom-voice.md
+          displayName: custom voice
         - name: Spraaksynthese met API voor lange audio
           href: long-audio-api.md
         - name: Spraaksynthese gebruiken met Docker-containers
@@ -363,6 +366,7 @@
           items:
             - name: Aan de slag met Custom Voice
               href: how-to-custom-voice.md
+              displayName: 'custom voice, neural voice'
             - name: Gegevens voorbereiden
               href: how-to-custom-voice-prepare-data.md
             - name: Custom Voice-modellen maken en gebruiken

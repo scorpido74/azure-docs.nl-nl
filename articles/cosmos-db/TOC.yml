@@ -869,6 +869,9 @@
         - name: Kosten voor aanvraageenheid zoeken
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md
+        - name: Schalen met Azure Functions-timer
+          displayName: 'request units, RUs, RU, timer'
+          href: scale-on-schedule.md
     - name: Werken met containers en items
       items:
         - name: Werken met Cosmos DB-gegevens
