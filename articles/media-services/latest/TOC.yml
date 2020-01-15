@@ -77,7 +77,7 @@
         - name: Automatisch gegenereerde adaptieve bitrateladder
           href: autogen-bitrate-ladder.md
         - name: Inhoudsafhankelijke codering
-          href: cae-experimental.md
+          href: content-aware-encoding.md
     - name: Inhoud wordt geanalyseerd (Video Indexer)
       items:
         - name: Overzicht
@@ -178,7 +178,7 @@
     - name: Hulp bij migratie van v2 naar v3
       href: migrate-from-v2-to-v3.md
       displayName: naming
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Aan de slag
       items:
@@ -301,7 +301,7 @@
       displayName: schema
     - name: REST
       href: 'https://aka.ms/ams-v3-rest-ref'
-    - name: Azure-CLI
+    - name: Azure CLI
       href: 'https://aka.ms/ams-v3-cli-ref'
     - name: SDK's
       items:
@@ -338,7 +338,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
     - name: SDK’s/hulpprogramma’s
       items:
-        - name: Azure-CLI
+        - name: Azure CLI
           href: 'https://aka.ms/ams-v3-cli'
         - name: .NET
           href: 'https://aka.ms/ams-v3-dotnet-sdk'
