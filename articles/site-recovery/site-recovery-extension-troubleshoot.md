@@ -1,20 +1,18 @@
 ---
-title: Problemen met Azure Site Recovery agents oplossen | Microsoft Docs '
-description: Bevat informatie over symptomen, oorzaken en oplossingen van Azure Site Recovery agent fouten.
-author: carmonmills
+title: Problemen met de Azure VM-extensie oplossen voor herstel na nood gevallen met Azure Site Recovery
+description: Los problemen met de Azure VM-extensie op voor herstel na nood gevallen met Azure Site Recovery.
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.author: carmonm
-ms.openlocfilehash: 0de5a9843b8029c1e1926ae296f43fc95b48106c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 7f9ae32b95d629ef79f085ed590d9057b0414911
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930131"
+ms.locfileid: "75941539"
 ---
-# <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Problemen met de Azure Site Recovery-agent oplossen
+# <a name="troubleshoot-azure-vm-extension-issues"></a>Problemen met Azure VM-extensies oplossen
 
 Dit artikel bevat probleemoplossings stappen die u kunnen helpen bij het oplossen van Azure Site Recovery fouten met betrekking tot de VM-agent en-extensie.
 
@@ -30,7 +28,7 @@ Fout code: "151076"
 **Oorzaak 2: [de agent die is geïnstalleerd in de virtuele machine is verouderd (voor Linux-vm's)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **Oorzaak 3: [de site Recovery extensie kan niet worden bijgewerkt of geladen](#the-site-recovery-extension-fails-to-update-or-load)**  
 
-Fout bericht: de bewerking voor de extensie van een vorige site Recovery neemt meer tijd in beslag dan verwacht.<br>
+Fout bericht: de bewerking voor een eerdere Site Recovery-extensie neemt meer tijd in beslag dan verwacht.<br>
 Fout code: "150066"<br>
 
 **Oorzaak 1: [de agent is geïnstalleerd in de VM, maar is niet reageren (voor Windows-vm's)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     

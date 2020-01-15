@@ -1,56 +1,56 @@
 ---
 title: Verbinding maken met Azure Cosmos DB met behulp van kompas
-description: Informatie over het gebruik van MongoDB kompas opslaan en beheren van gegevens in Azure Cosmos DB.
+description: Leer hoe u MongoDB-kompas kunt gebruiken om gegevens op te slaan en te beheren in Azure Cosmos DB.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
 ms.date: 06/24/2019
-author: roaror
-ms.author: roaror
-ms.openlocfilehash: 102d3fdc2e36f812e9a86286383a06f9930a1947
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+author: LuisBosquez
+ms.author: lbosq
+ms.openlocfilehash: 5c01bd02b1fef7c7b27a3119465cad53155b9bbf
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67665917"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940976"
 ---
-# <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB kompas verbinding maken met Azure Cosmos DB-API voor MongoDB gebruiken 
+# <a name="use-mongodb-compass-to-connect-to-azure-cosmos-dbs-api-for-mongodb"></a>MongoDB-kompas gebruiken om verbinding te maken met de API van Azure Cosmos DB voor MongoDB 
 
-In deze zelfstudie ziet u hoe u [MongoDB kompas](https://www.mongodb.com/products/compass) bij het opslaan van en/of beheren van gegevens in Cosmos DB. We gebruiken de Azure Cosmos DB-API voor MongoDB voor deze procedure. Voor wie niet bekend is kompas een GUI voor MongoDB. Het wordt vaak gebruikt om uw gegevens visualiseren, ad-hoc-query's, samen met het beheren van uw gegevens uitvoeren. 
+In deze zelf studie wordt gedemonstreerd hoe u [MongoDb kompas](https://www.mongodb.com/products/compass) kunt gebruiken bij het opslaan en/of beheren van gegevens in Cosmos db. We gebruiken de Azure Cosmos DB-API voor MongoDB voor deze procedure. Voor degenen die niet bekend zijn, is kompas een GUI voor MongoDB. Het wordt meestal gebruikt voor het visualiseren van uw gegevens, het uitvoeren van ad-hoc query's en het beheren van uw gegevens. 
 
-Cosmos DB is wereldwijd gedistribueerde multi-modeldatabase-service van Microsoft. U kunt snel databases maken van documenten, sleutel/waarde-paren en grafieken en hier query's op uitvoeren. Deze databases genieten allemaal het voordeel van de globale distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Cosmos DB.
+Cosmos DB is de wereld wijd gedistribueerde multi-model database service van micro soft. U kunt snel databases maken van documenten, sleutel/waarde-paren en grafieken en hier query's op uitvoeren. Deze databases genieten allemaal het voordeel van de globale distributie en horizontale schaalmogelijkheden die ten grondslag liggen aan Cosmos DB.
 
 
 ## <a name="pre-requisites"></a>Vereisten 
-Voor verbinding met uw Cosmos DB-account met behulp van Robo 3T, moet u:
+Als u verbinding wilt maken met uw Cosmos DB-account met behulp van Robo 3T gebruiken, moet u het volgende doen:
 
-* Download en installeer [kompas](https://www.mongodb.com/download-center/compass?jmp=hero)
-* Uw Cosmos DB hebt [verbindingsreeks](connect-mongodb-account.md) informatie
+* Een [kompas](https://www.mongodb.com/download-center/compass?jmp=hero) downloaden en installeren
+* Informatie over uw Cosmos DB [Connection String](connect-mongodb-account.md)
 
-## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>Verbinding maken met Cosmos DB-API voor MongoDB 
-Voor uw Cosmos DB-account verbinding met kompas, voert u de onderstaande stappen te volgen:
+## <a name="connect-to-cosmos-dbs-api-for-mongodb"></a>Verbinding maken met de API van Cosmos DB voor MongoDB 
+Als u uw Cosmos DB-account wilt verbinden met een kompas, kunt u de onderstaande stappen volgen:
 
-1. Ophalen van de verbindingsgegevens voor uw Cosmos-account dat is geconfigureerd met behulp van de instructies van Azure Cosmos DB API MongoDB [hier](connect-mongodb-account.md).
+1. Haal de verbindings gegevens op voor uw Cosmos-account dat is geconfigureerd met de API-MongoDB van Azure Cosmos DB met behulp van de instructies [hier](connect-mongodb-account.md).
 
-    ![Schermafbeelding van de blade verbindingsreeks](./media/mongodb-compass/mongodb-compass-connection.png)
+    ![Scherm afbeelding van de Blade connection string](./media/mongodb-compass/mongodb-compass-connection.png)
 
-2. Klik op de knop met de melding dat **naar Klembord kopiëren** naast uw **primaire/secundaire verbindingsreeks** in Cosmos DB. Op deze knop klikt, wordt de volledige verbindingsreeks naar het Klembord te kopiëren. 
+2. Klik op de knop met de tekst **kopiëren naar het klem bord** naast uw **primaire/secundaire Connection String** in Cosmos db. Als u op deze knop klikt, wordt uw hele connection string naar het klem bord gekopieerd. 
 
-    ![Schermopname van het kopiëren naar Klembord-knop](./media/mongodb-compass/mongodb-connection-copy.png)
+    ![Scherm afbeelding van de knop kopiëren naar klem bord](./media/mongodb-compass/mongodb-connection-copy.png)
 
-3. Kompasrichting Open op uw bureaublad/computer en klik op **Connect** en vervolgens **verbinden...** . 
+3. Open kompas op het bureau blad of de computer en klik op **verbinding maken** en vervolgens **verbinding maken met...** . 
 
-4. Een verbinding wordt automatisch gedetecteerd door kompas tekenreeks in het Klembord en wordt gevraagd om te vragen of u wilt gebruiken om verbinding te maken. Klik op **Ja** zoals wordt weergegeven in de onderstaande schermafbeelding.
+4. Met kompas wordt automatisch een connection string in het klem bord gedetecteerd en wordt u gevraagd of u wilt gebruiken om verbinding te maken. Klik op **Ja** , zoals wordt weer gegeven in de onderstaande scherm afbeelding.
 
-    ![Schermafbeelding van de kompasrichting prompt om verbinding te maken](./media/mongodb-compass/mongodb-compass-detect.png)
+    ![Scherm afbeelding van de kompas prompt om verbinding te maken](./media/mongodb-compass/mongodb-compass-detect.png)
 
-5. Wanneer u op klikt **Ja** in de vorige stap, de details van de verbindingsreeks worden automatisch ingevuld. Verwijder de waarde automatisch wordt ingevuld de **replicanaam** veld om ervoor te zorgen dat dit veld leeg blijft. 
+5. Wanneer u op **Ja** klikt in de bovenstaande stap, worden uw details van de Connection String automatisch ingevuld. Verwijder de waarde die automatisch is ingevuld in het veld **naam van replicaset** om ervoor te zorgen dat deze leeg blijft. 
 
-    ![Schermafbeelding van de kompasrichting prompt om verbinding te maken](./media/mongodb-compass/mongodb-compass-replica.png)
+    ![Scherm afbeelding van de kompas prompt om verbinding te maken](./media/mongodb-compass/mongodb-compass-replica.png)
 
-6. Klik op **Connect** aan de onderkant van de pagina. Uw Cosmos DB-account en de databases moeten nu zijn zichtbaar in MongoDB kompas.
+6. Klik onder aan de pagina op **verbinding maken** . Uw Cosmos DB-account en data bases moeten nu worden weer gegeven in MongoDB-kompas.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Meer informatie over het [gebruik van Studio 3T](mongodb-mongochef.md) met de API voor MongoDB van Azure Cosmos DB.
-- Verken [voorbeelden](mongodb-samples.md) van MongoDB met de API voor MongoDB van Azure Cosmos DB.
+- Verken [voorbeelden](mongodb-samples.md) van MongoDB met de API van Azure Cosmos DB voor MongoDB.

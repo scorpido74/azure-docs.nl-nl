@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/30/2019
+ms.date: 01/13/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2563ea4ab498c11c846cfe79f0e668f7d491c2e7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 66edde9591d4491fa630772f99372f9901319b2f
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692351"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940584"
 ---
 # <a name="what-is-workload-management"></a>Wat is werkbelasting beheer?
 
@@ -42,7 +42,7 @@ Als u bijvoorbeeld het lidmaatschap van een ad-hoc gebruikersrol wilt verlenen a
 
 Werkbelasting beheer op SQL Data Warehouse bestaat uit drie concepten op hoog niveau: [werk belasting classificatie](sql-data-warehouse-workload-classification.md), [urgentie van werk](sql-data-warehouse-workload-importance.md) belasting en isolatie van [werk belastingen](sql-data-warehouse-workload-isolation.md).  Deze mogelijkheden bieden u meer controle over de manier waarop uw werk belasting gebruikmaakt van systeem bronnen.
 
-Classificatie van werk belasting is het concept van het toewijzen van een aanvraag aan een werkbelasting groep en het instellen van urgentie niveaus.  Deze toewijzing is historisch uitgevoerd via het rollidmaatschap met [sp_addrolemember](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#change-a-users-resource-class).  Dit kan nu worden gedaan via de [werk belasting CLASSIFER maken](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  De classificatie mogelijkheid biedt een uitgebreidere set opties zoals label, sessie en tijd voor het classificeren van aanvragen.
+Classificatie van werk belasting is het concept van het toewijzen van een aanvraag aan een werkbelasting groep en het instellen van urgentie niveaus.  Deze toewijzing is historisch uitgevoerd via het lidmaatschap van de rol met behulp van [sp_addrolemember](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management#change-a-users-resource-class).  Dit kan nu worden gedaan via de [werk belasting CLASSIFER maken](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql).  De classificatie mogelijkheid biedt een uitgebreidere set opties zoals label, sessie en tijd voor het classificeren van aanvragen.
 
 De werkbelasting urgentie is van invloed op de volg orde waarin een aanvraag toegang krijgt tot resources.  Een aanvraag met een hogere prioriteit heeft in een systeem voor het eerst toegang tot resources.  De urgentie kan ook de bestelde toegang tot vergren delingen garanderen. 
 
@@ -54,3 +54,4 @@ Met werkbelasting isolatie worden resources voor een werkbelasting groep gereser
 - Zie [workload classificatie](sql-data-warehouse-workload-classification.md)voor meer informatie over de classificatie van werk belastingen.  
 - Zie [isolatie van werk belasting](sql-data-warehouse-workload-isolation.md)voor meer informatie over isolatie van werk belastingen.  
 - Zie urgentie van het [werk belasting](sql-data-warehouse-workload-importance.md)voor meer informatie over het belang van de werk belasting.  
+- Zie voor meer informatie over bewaking van workload Management [werk belasting Beheerportal bewaking](sql-data-warehouse-workload-management-portal-monitor.md).  

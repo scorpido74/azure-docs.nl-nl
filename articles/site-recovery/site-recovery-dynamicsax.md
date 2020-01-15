@@ -1,18 +1,16 @@
 ---
-title: Herstel na nood gevallen voor een Dynamics AX-implementatie met meerdere lagen met Azure Site Recovery | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u herstel na nood gevallen instelt voor Dynamics AX met Azure Site Recovery
-author: carmonmills
+title: Herstel na nood gevallen van Dynamics AX met Azure Site Recovery
+description: Meer informatie over het instellen van herstel na nood gevallen voor Dynamics AX met Azure Site Recovery
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2018
-ms.author: carmonm
-ms.openlocfilehash: 089edd1f408494f59c8f0042b57d2d79c7faffae
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930175"
+ms.locfileid: "75941593"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Herstel na nood geval instellen voor een Dynamics AX-toepassing met meerdere lagen   
 
@@ -39,7 +37,7 @@ Voor het implementeren van herstel na nood gevallen voor de Dynamics AX-toepassi
 
 ## <a name="site-recovery-support"></a>Ondersteuning voor Site Recovery
 
-Voor het maken van dit artikel hebben we virtuele VMware-machines gebruikt met Dynamics AX 2012 R3 op Windows Server 2012 R2 Enter prise. Omdat de replicatie van site Recovery de neutraal van de toepassing is, verwachten we de aanbevelingen die hier worden gegeven voor de volgende scenario's.
+Voor het maken van dit artikel hebben we virtuele VMware-machines gebruikt met Dynamics AX 2012 R3 op Windows Server 2012 R2 Enter prise. Omdat Site Recovery replicatie neutraal is, verwachten we de aanbevelingen die hier worden gegeven voor de volgende scenario's.
 
 ### <a name="source-and-target"></a>Bron en doel
 

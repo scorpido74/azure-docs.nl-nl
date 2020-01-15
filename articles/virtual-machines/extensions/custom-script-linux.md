@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: da7ade4b4724f8d155deb1c109587a311d03375c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: dcc9e63eba605e87a14ba4f09c61a00e9629bd23
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931022"
+ms.locfileid: "75941215"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Gebruik de aangepaste script extensie versie 2 van Azure met virtuele Linux-machines
 De aangepaste script extensie versie 2 downloadt en voert scripts uit op virtuele machines van Azure. Deze uitbrei ding is handig voor configuratie na de implementatie, software-installatie of een andere configuratie/beheer taak. U kunt scripts downloaden van Azure Storage of een andere toegankelijke Internet locatie, of u kunt deze opgeven voor de runtime van de uitbrei ding. 
@@ -87,7 +87,7 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
   "properties": {
     "publisher": "Microsoft.Azure.Extensions",
     "type": "CustomScript",
-    "typeHandlerVersion": "2.0",
+    "typeHandlerVersion": "2.1",
     "autoUpgradeMinorVersion": true,
     "settings": {
       "skipDos2Unix":false,
@@ -98,11 +98,15 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
        "script": "<base64-script-to-execute>",
        "storageAccountName": "<storage-account-name>",
        "storageAccountKey": "<storage-account-key>",
-       "fileUris": ["https://.."]  
+       "fileUris": ["https://.."],
+        "managedIdentity" : "<managed-identity-identifier>"
     }
   }
 }
 ```
+
+>[!NOTE]
+> de eigenschap managedIdentity **mag niet** worden gebruikt in combi natie met storageAccountName-of storageAccountKey-eigenschappen
 
 ### <a name="property-values"></a>Waarden van eigenschappen
 
@@ -111,7 +115,7 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 | apiVersion | 2019-03-01 | date |
 | publisher | Microsoft.Compute.Extensions | string |
 | type | CustomScript | string |
-| typeHandlerVersion | 2.0 | int |
+| typeHandlerVersion | 2.1 | int |
 | fileUris (bijvoorbeeld) | https://github.com/MyProject/Archive/MyPythonScript.py | matrix |
 | commandToExecute (bijvoorbeeld) | python MyPythonScript.py \<mijn-param1 > | string |
 | uit | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | string |
@@ -119,6 +123,7 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 | timestamp (bijvoorbeeld) | 123456789 | 32-bits geheel getal |
 | storageAccountName (bijvoorbeeld) | examplestorageacct | string |
 | storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| managedIdentity (bijvoorbeeld) | {} of {"clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232"} of {"objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | JSON-object |
 
 ### <a name="property-value-details"></a>Details van eigenschaps waarde
 * `apiVersion`: u kunt het meest recente apiVersion vinden met [resource Explorer](https://resources.azure.com/) of vanuit Azure CLI met behulp van de volgende opdracht `az provider list -o json`
@@ -129,6 +134,9 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 * `fileUris`: (optioneel, teken reeks matrix) de Url's voor bestanden die moeten worden gedownload.
 * `storageAccountName`: (optioneel, String) de naam van het opslag account. Als u opslag referenties opgeeft, moeten alle `fileUris` Url's voor Azure-blobs zijn.
 * `storageAccountKey`: (optioneel, String) de toegangs sleutel van het opslag account
+* `managedIdentity`: (optioneel, JSON-object) de [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) voor het downloaden van bestand (en)
+  * `clientId`: (optioneel, String) de client-ID van de beheerde identiteit
+  * `objectId`: (optioneel, String) de object-ID van de beheerde identiteit
 
 
 De volgende waarden kunnen worden ingesteld in de open bare of beveiligde instellingen. de uitbrei ding weigert de configuratie, waarbij de waarden hieronder worden ingesteld in de open bare en beveiligde instellingen.
@@ -200,6 +208,45 @@ CustomScript maakt gebruik van de volgende algoritme om een script uit te voeren
  1. de gedecodeerde (en eventueel gedecomprimeerde) waarde naar de schijf schrijven (/var/lib/waagent/custom-script/#/script.sh)
  1. Voer het script uit met behulp van _/bin/sh-c/var/lib/waagent/custom-script/#/script.sh.
 
+####  <a name="property-managedidentity"></a>Eigenschap: managedIdentity
+
+CustomScript (versie 2.1.2 en hoger) ondersteunt [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) op basis van RBAC voor het downloaden van een of meer bestanden van url's die zijn opgenomen in de instelling ' fileUris '. Hiermee kan CustomScript toegang krijgen tot Azure Storage persoonlijke blobs/containers zonder dat de gebruiker geheimen zoals SAS-tokens of opslag account-sleutels hoeft door te geven.
+
+Als u deze functie wilt gebruiken, moet de gebruiker een door het [systeem toegewezen](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity) of door de [gebruiker toegewezen](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity) identiteit toevoegen aan de virtuele machine of VMSS waar CustomScript naar verwachting wordt uitgevoerd en [de beheerde identiteit toegang verlenen aan de Azure storage container of BLOB](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
+
+Als u de door het systeem toegewezen identiteit op de doel-VM-VMSS wilt gebruiken, stelt u het veld managedidentity in op een leeg JSON-object. 
+
+> Voorbeeld:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.sh"],
+>   "commandToExecute": "sh script1.sh",
+>   "managedIdentity" : {}
+> }
+> ```
+
+Als u de door de gebruiker toegewezen identiteit op de doel-VM-VMSS wilt gebruiken, configureert u het veld managedidentity met de client-ID of de object-ID van de beheerde identiteit.
+
+> Voorbeelden:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.sh"],
+>   "commandToExecute": "sh script1.sh",
+>   "managedIdentity" : { "clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232" }
+> }
+> ```
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.sh"],
+>   "commandToExecute": "sh script1.sh",
+>   "managedIdentity" : { "objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b" }
+> }
+> ```
+
+> [!NOTE]
+> de eigenschap managedIdentity **mag niet** worden gebruikt in combi natie met storageAccountName-of storageAccountKey-eigenschappen
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Het JSON-schema dat in de vorige sectie wordt beschreven, kan worden gebruikt in een Azure Resource Manager sjabloon voor het uitvoeren van de aangepaste script extensie tijdens het implementeren van een Azure Resource Manager sjabloon. Een voorbeeld sjabloon met de aangepaste script extensie vindt u hier, [github](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
@@ -220,7 +267,7 @@ Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sja
   "properties": {
     "publisher": "Microsoft.Azure.Extensions",
     "type": "CustomScript",
-    "typeHandlerVersion": "2.0",
+    "typeHandlerVersion": "2.1",
     "autoUpgradeMinorVersion": true,
     "settings": {
       },

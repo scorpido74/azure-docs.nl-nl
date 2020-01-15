@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 01/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 6dd0734d39237545b7a9bc2553fcd9dea75b8ee0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3d3a1704b75de53bf65012329fba5f8522adff3a
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892825"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941754"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Gegevens van DB2 kopiëren met behulp van Azure Data Factory
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -46,11 +46,6 @@ In het bijzonder ondersteunt deze DB2-connector de volgende IBM DB2-platforms en
 * IBM DB2 voor LUW 10,5
 * IBM DB2 voor LUW 10,1
 
-> [!TIP]
-> Als u een fout bericht ontvangt met de melding dat het pakket dat overeenkomt met een aanvraag voor het uitvoeren van een SQL-instructie, niet is gevonden. SQLSTATE = 51002 SQLCODE =-805. de reden hiervoor is dat er geen vereist pakket is gemaakt voor een normale gebruiker van dit besturings systeem. Volg deze instructies op basis van het type DB2-Server:
-> - DB2 for i (AS400): de hoofd gebruiker kan een verzameling voor de aanmeldings gebruiker maken voordat u de Kopieer activiteit gebruikt. Opdracht: `create collection <username>`
-> - DB2 voor z/O'S of LUW: gebruik een account met hoge bevoegdheden-Power gebruiker of beheerder met pakket instanties en BIND, BINDADD, GRANT EXECUTe TO open bare Permissions: als u de Kopieer activiteit eenmaal wilt uitvoeren, wordt het benodigde pakket automatisch gemaakt tijdens het kopiëren. Daarna kunt u teruggaan naar de normale gebruiker voor de volgende Kopieer uitvoeringen.
-
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
@@ -75,9 +70,12 @@ De volgende eigenschappen worden ondersteund voor gekoppelde DB2-service:
 | authenticationType |Type verificatie dat wordt gebruikt om verbinding te maken met de DB2-Data Base.<br/>Toegestane waarde is: **Basic**. |Ja |
 | gebruikersnaam |Geef de gebruikers naam op om verbinding te maken met de DB2-Data Base. |Ja |
 | wachtwoord |Geef het wacht woord op voor het gebruikers account dat u hebt opgegeven voor de gebruikers naam. Markeer dit veld als een SecureString om het veilig op te slaan in Data Factory, of [verwijs naar een geheim dat is opgeslagen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
-| packageCollection | Opgeven wanneer de benodigde pakketten automatisch worden gemaakt door ADF bij het uitvoeren van query's op de data base | Nee |
+| packageCollection | Geef op onder waar de benodigde pakketten automatisch worden gemaakt door ADF bij het uitvoeren van query's op de data base. | Nee |
 | certificateCommonName | Wanneer u Secure Sockets Layer (SSL) of Transport Layer Security (TLS)-code ring gebruikt, moet u een waarde opgeven voor de algemene naam van het certificaat. | Nee |
 | connectVia | De [Integration Runtime](concepts-integration-runtime.md) moet worden gebruikt verbinding maken met het gegevensarchief. Meer informatie vindt u in de sectie [vereisten](#prerequisites) . Als niet is opgegeven, wordt de standaard Azure Integration Runtime. |Nee |
+
+> [!TIP]
+> Als er een fout bericht wordt weer gegeven met de melding dat `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805`, is de reden dat het benodigde pakket niet is gemaakt voor de gebruiker. Standaard probeert ADF een pakket te maken onder de verzameling met de naam van de gebruiker die u hebt gebruikt voor verbinding met de DB2. Geef de verzamelings eigenschap van het pakket op om aan te geven onder waar u de benodigde pakketten wilt maken bij het uitvoeren van een query op de data base.
 
 **Voorbeeld:**
 

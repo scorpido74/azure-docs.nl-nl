@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 804eb63406b33b94e70ef56e0066fa213be04708
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 2cbe5066974734093e440e64eb0b47542e569765
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997051"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940913"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Kenmerk toewijzingen voor het inrichten van gebruikers aanpassen voor SaaS-toepassingen in Azure Active Directory
 
@@ -71,6 +71,7 @@ Naast deze eigenschap ondersteunen kenmerk toewijzingen ook de volgende kenmerke
 
 - **Bron kenmerk** : het gebruikers kenmerk van het bron systeem (voor beeld: Azure Active Directory).
 - **Doel kenmerk** : het gebruikers kenmerk in het doel systeem (voor beeld: ServiceNow).
+- **Standaard waarde indien Null (optioneel)** : de waarde die wordt door gegeven aan het doel systeem als het bron kenmerk null is. Deze waarde wordt alleen ingericht wanneer een gebruiker wordt gemaakt. De ' standaard waarde wanneer null ' wordt niet ingericht bij het bijwerken van een bestaande gebruiker. Als u bijvoorbeeld alle bestaande gebruikers in het doel systeem met een bepaalde functie titel wilt inrichten (als deze null is in het bron systeem), kunt u de volgende [expressie](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)gebruiken: switch (IsPresent ([jobTitle]), "DefaultValue", "True", [jobtitle]). Zorg ervoor dat u de "standaard waarde" vervangt door de inhoud die u wilt inrichten als deze null is in het bron systeem. 
 - **Objecten met dit kenmerk matchen** : bepaalt of deze toewijzing moet worden gebruikt om gebruikers tussen de bron-en doel systemen uniek te identificeren. Deze is doorgaans ingesteld op het kenmerk userPrincipalName of mail in azure AD, dat meestal wordt toegewezen aan een gebruikersnaam veld in een doel toepassing.
 - **Overeenkomende prioriteit** : meerdere overeenkomende kenmerken kunnen worden ingesteld. Wanneer er meerdere zijn, worden deze geëvalueerd in de volg orde die is gedefinieerd door dit veld. Zodra er een overeenkomst wordt gevonden, worden er geen verdere overeenkomende kenmerken geëvalueerd.
 - **Deze toewijzing Toep assen**

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 6c6e092f16111f3f54ed17e19d28775e35eedc96
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4fe543010df9514cb2b22c56482a4b592574e917
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227810"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941767"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>Queue Storage gebruiken met C++
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -46,7 +46,7 @@ Voor het installeren van de Azure-opslagclientbibliotheek voor C++ kunt u de vol
 .\vcpkg.exe install azure-storage-cpp
 ```
 
-U vindt een hand leiding voor het maken van de bron code en het exporteren naar Nuget in het [Leesmij](https://github.com/Azure/azure-storage-cpp#download--install) -bestand.
+U vindt een hand leiding voor het maken van de bron code en het exporteren naar NuGet in het [Leesmij](https://github.com/Azure/azure-storage-cpp#download--install) -bestand.
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>Uw toepassing configureren voor toegang tot Queue Storage
 Voeg de volgende include-instructies toe aan het C++ begin van het bestand waarin u de Azure Storage-api's wilt gebruiken om toegang te krijgen tot wacht rijen:  

@@ -1,6 +1,6 @@
 ---
-title: Power shell gebruiken om de grootte van een Windows-VM in azure te wijzigen
-description: Wijzig de grootte van een virtuele Windows-machine die is gemaakt in het Resource Manager-implementatie model met behulp van Azure Power shell.
+title: Het formaat van een Windows-VM in azure wijzigen
+description: De VM-grootte wijzigen die wordt gebruikt voor een virtuele Azure-machine.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -12,26 +12,34 @@ ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: 4b30f2fd8e095b00898e083e33c23c7c9a915b99
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6718804d4635edb2628b53017ab9d377928afad8
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073371"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941722"
 ---
 # <a name="resize-a-windows-vm"></a>Het formaat van een Windows-VM wijzigen
 
-In dit artikel wordt beschreven hoe u een virtuele machine naar een andere [VM-grootte](sizes.md) kunt verplaatsen met behulp van Azure Power shell.
+In dit artikel wordt beschreven hoe u een virtuele machine naar een andere [VM-grootte](sizes.md)kunt verplaatsen.
 
 Nadat u een virtuele machine (VM) hebt gemaakt, kunt u de VM omhoog of omlaag schalen door de VM-grootte te wijzigen. In sommige gevallen moet u eerst de toewijzing van de VM ongedaan maken. Dit kan gebeuren als de nieuwe grootte niet beschikbaar is in het hardwareprofiel dat momenteel als host fungeert voor de virtuele machine.
 
 Als uw virtuele machine gebruikmaakt van Premium Storage, moet u ervoor zorgen dat u een **s** -versie van de grootte kiest om Premium Storage ondersteuning te krijgen. Kies bijvoorbeeld Standard_E4**s**_v3 in plaats van Standard_E4_v3.
 
- 
+## <a name="use-the-portal"></a>Gebruik de portal
 
-## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>Het formaat van een Windows-virtuele machine niet wijzigen in een beschikbaarheidsset
+1. Open de [Azure Portal](https://portal.azure.com).
+1. Open de pagina voor de virtuele machine.
+1. Selecteer in het menu links **grootte**.
+1. Kies een nieuwe grootte in de lijst met beschik bare grootten en selecteer vervolgens **formaat wijzigen**.
+
+
+Als de virtuele machine momenteel wordt uitgevoerd en de grootte ervan wordt gewijzigd, wordt deze opnieuw gestart. Als u de virtuele machine stopt, wordt er mogelijk extra grootten weer geven.
+
+## <a name="use-powershell-to-resize-a-vm-not-in-an-availability-set"></a>Power shell gebruiken voor het wijzigen van de grootte van een virtuele machine in een beschikbaarheidsset
 
 Stel enkele variabelen in. Vervang de waarden door uw eigen gegevens.
 
@@ -69,7 +77,7 @@ Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName
 > 
 > 
 
-## <a name="resize-a-windows-vm-in-an-availability-set"></a>Het formaat van een virtuele Windows-machine in een beschikbaarheidsset wijzigen
+## <a name="use-powershell-to-resize-a-vm-in-an-availability-set"></a>Power shell gebruiken om de grootte van een virtuele machine in een beschikbaarheidsset te wijzigen
 
 Als de nieuwe grootte voor een virtuele machine in een beschikbaarheidsset niet beschikbaar is in het hardwareprofiel dat momenteel als host fungeert voor de virtuele machine, moeten alle virtuele machines in de beschikbaarheidsset worden vrijgegeven om de grootte van de virtuele machine te wijzigen. Het is ook mogelijk dat u de grootte van andere virtuele machines in de beschikbaarheidsset moet bijwerken nadat het formaat van een virtuele machine is gewijzigd. Als u de grootte van een virtuele machine in een beschikbaarheidsset wilt wijzigen, voert u de volgende stappen uit.
 

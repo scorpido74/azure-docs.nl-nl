@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/28/2019
-ms.openlocfilehash: 2b54dd5161312a081d439b3e10d2cb4bf9014d52
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 01/14/2020
+ms.openlocfilehash: 739f97e912a33402aa7482e59dd78f5aeb005772
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496540"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75944426"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Azure Log Analytics-werk ruimte verwijderen en herstellen
 
@@ -55,7 +55,7 @@ U kunt een werk ruimte verwijderen met behulp van [Power shell](https://docs.mic
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell
-PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "ContosResourceGroup" -Name "MyWorkspace"
+PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
 
 ## <a name="recover-workspace"></a>Werk ruimte herstellen
@@ -68,6 +68,12 @@ U kunt een werk ruimte herstellen door deze opnieuw te maken met behulp van de v
 * Naam van resource groep
 * Naam van de werkruimte
 * Regio
+
+### <a name="powershell"></a>PowerShell
+```PowerShell
+PS C:\>Select-AzSubscription "subscription-name-the-workspace-was-in"
+PS C:\>New-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name-the-workspace-was-in" -Name "deleted-workspace-name" -Location "region-name-the-workspace-was-in"
+```
 
 De werk ruimte en alle bijbehorende gegevens worden teruggezet na de herstel bewerking. Oplossingen en gekoppelde services zijn permanent verwijderd uit de werk ruimte toen ze werd verwijderd en moeten opnieuw worden geconfigureerd om de werk ruimte naar de eerder geconfigureerde status te brengen. Sommige gegevens zijn mogelijk niet beschikbaar voor de query nadat de werk ruimte is hersteld en de bijbehorende schema's worden toegevoegd aan de werk ruimte.
 

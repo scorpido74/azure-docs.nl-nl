@@ -1,19 +1,16 @@
 ---
 title: Problemen met de verbinding met Azure voor herstel na nood gevallen met Azure Site Recovery oplossen
-description: Fouten en problemen oplossen bij het repliceren van virtuele Azure-machines voor herstel na nood gevallen
-services: site-recovery
-author: carmonmills
+description: Verbindings problemen met nood herstel voor Azure VM oplossen
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/05/2019
-ms.author: carmonm
-ms.openlocfilehash: 41b5203c328243c9ef7cc74e6b9771c677a54c7c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: d55f06669a538c2f26f3a1d2da0d96a73529f76e
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933414"
+ms.locfileid: "75941472"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Problemen met Azure-naar-Azure-VM-netwerk connectiviteit oplossen
 

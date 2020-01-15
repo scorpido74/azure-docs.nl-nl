@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 696bba195ac3902a3a90a82bcc7665591eba643f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4ef2987ee72348fb4353ba735d6da76fb218f01e
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922338"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942143"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Beveiligings waarschuwingen-een referentie gids
 
@@ -97,6 +97,7 @@ Onder de tabel waarschuwingen staat een tabel met een beschrijving van de Azure 
 |**Ongebruikelijke hoeveelheid gegevens die uit een opslag account is geëxtraheerd**|Geeft aan dat een ongebruikelijk grote hoeveelheid gegevens is geëxtraheerd vergeleken met recente activiteiten op deze opslag container. Een mogelijke oorzaak is dat een aanvaller een grote hoeveelheid gegevens heeft geëxtraheerd uit een container met Blob Storage.|Exfiltratie|
 |**Ongebruikelijke verwijdering in een opslag account**|Hiermee wordt aangegeven dat er een of meer onverwachte verwijderings bewerkingen zijn uitgevoerd in een opslag account, vergeleken met recente activiteiten voor dit account. Een mogelijke oorzaak is dat een aanvaller gegevens uit uw opslag account heeft verwijderd.|Exfiltratie|
 |**Ongebruikelijke upload van. cspkg naar een opslag account**|Geeft aan dat een Azure Cloud Services-pakket (. cspkg-bestand) op een ongebruikelijke manier is geüpload naar een opslag account, vergeleken met de recente activiteit voor dit account. Een mogelijke oorzaak is dat een aanvaller bereid is om schadelijke code vanuit uw opslag account te implementeren naar een Azure-Cloud service.|LateralMovement/uitvoering|
+|**Ongebruikelijke upload van. exe naar een opslag account**|Geeft aan dat een exe-bestand op een ongebruikelijke manier is geüpload naar een opslag account, vergeleken met recente activiteiten voor dit account. Een mogelijke oorzaak is dat een aanvaller een schadelijk uitvoerbaar bestand naar uw opslag account heeft geüpload of dat een rechtmatige gebruiker een uitvoerbaar bestand heeft geüpload.|LateralMovement/uitvoering|
 |**Ongebruikelijke wijziging van toegangs machtigingen in een opslag account**|Geeft aan dat de toegangs machtigingen van deze opslag container op een ongebruikelijke manier zijn gewijzigd. Een mogelijke oorzaak is dat een aanvaller container machtigingen heeft gewijzigd om de beveiligings postuur te verzwakken of om persistentie te verkrijgen.|Persistentie|
 |**Ongebruikelijke toegangs inspectie in een opslag account**|Geeft aan dat de toegangs machtigingen van een opslag account op een ongebruikelijke manier zijn geïnspecteerd, vergeleken met de recente activiteit voor dit account. Een mogelijke oorzaak is dat een aanvaller Reconnaissance heeft uitgevoerd voor een toekomstige aanval.|Verzameling|
 |**Ongebruikelijke gegevens exploratie in een opslag account**|Geeft aan dat blobs of containers in een opslag account op een abnormale manier zijn geïnventariseerd, vergeleken met de recente activiteit van dit account. Een mogelijke oorzaak is dat een aanvaller Reconnaissance heeft uitgevoerd voor een toekomstige aanval.|Verzameling|

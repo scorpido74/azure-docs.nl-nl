@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 09244b634fa2603a7dc92af3c78d171f8d6bd9df
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 47d10f75775c49fda0effe10c32e219b3682866d
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903115"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945283"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Naslag Gids voor insluitende lezers SDK
 
@@ -41,10 +41,10 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>Parameters
 
-| Naam | Type | Beschrijving |
+| Name | Type | Beschrijving |
 | ---- | ---- |------------ |
-| `token` | tekenreeks | Het Azure AD-verificatie token. Zie de [instructies voor Azure AD-verificatie](./azure-active-directory-authentication.md). |
-| `subdomain` | tekenreeks | Het aangepaste subdomein van uw insluitende lezer-resource in Azure. Zie de [instructies voor Azure AD-verificatie](./azure-active-directory-authentication.md). |
+| `token` | string | Het Azure AD-verificatie token. |
+| `subdomain` | string | Het aangepaste subdomein van uw insluitende lezer-resource in Azure. |
 | `content` | [Inhoud](#content) | Een object met de inhoud die in de insluitende lezer moet worden weer gegeven. |
 | `options` | [Opties](#options) | Opties voor het configureren van bepaald gedrag van de insluitende lezer. Optioneel. |
 
@@ -80,7 +80,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Parameters
 
-| Naam | Type | Beschrijving |
+| Name | Type | Beschrijving |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | Opties voor het configureren van bepaald gedrag van de functie renderButtons. Optioneel. |
 
@@ -97,7 +97,7 @@ Bevat de inhoud die in de insluitende lezer moet worden weer gegeven.
 }
 ```
 
-### <a name="chunk"></a>Gedeelde
+### <a name="chunk"></a>Segment
 
 Eén gegevens segment dat wordt door gegeven aan de inhoud van de insluitende lezer.
 
@@ -109,13 +109,21 @@ Eén gegevens segment dat wordt door gegeven aan de inhoud van de insluitende le
 }
 ```
 
+### <a name="cookiepolicy-enum"></a>CookiePolicy Enum
+
+Een opsomming die wordt gebruikt om het beleid voor het cookie gebruik van de insluitende lezer in te stellen. Zie [Opties](#options).
+
+```typescript
+enum CookiePolicy { Disable, Enable }
+```
+
 #### <a name="supported-mime-types"></a>Ondersteunde MIME-typen
 
 | MIME-type | Beschrijving |
 | --------- | ----------- |
-| tekst/zonder opmaak | Tekst zonder opmaak. |
-| tekst/HTML | HTML-inhoud. [Meer informatie](#html-support)|
-| Application/MathML + XML | MathML (wiskundige Markup Language). [Meer informatie](https://developer.mozilla.org/en-US/docs/Web/MathML).
+| text/plain | Tekst zonder opmaak. |
+| text/html | HTML-inhoud. [Meer informatie](#html-support)|
+| Application/MathML + XML | MathML (wiskundige Markup Language). [Meer informatie](./how-to/display-math.md).
 | application/vnd. openxmlformats-officedocument. WordprocessingML. document | Micro soft Word. docx-indelings document.
 
 ### <a name="html-support"></a>HTML-ondersteuning
@@ -124,7 +132,7 @@ Eén gegevens segment dat wordt door gegeven aan de inhoud van de insluitende le
 | Lettertype stijlen | Vet, cursief, onderstrepen, code, doorhaling, Super script |
 | Niet-geordende lijsten | Schijf, cirkel, vier kant |
 | Geordende lijsten | Decimaal, hoofd letter, kleine letter alfa, bovenste Romeins, kleine letter Romeins |
-| Link | Binnenkort beschikbaar |
+| Hyperlinks | Binnenkort beschikbaar |
 
 Niet-ondersteunde labels worden weer gegeven comparably. Afbeeldingen en tabellen worden momenteel niet ondersteund.
 
@@ -142,6 +150,7 @@ Bevat eigenschappen die bepaald gedrag van de insluitende lezer configureren.
     customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
     allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
     hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
+    cookiePolicy?: CookiePolicy; // Setting for the Immersive Reader's cookie usage (default is CookiePolicy.Disable). It's the responsibility of the host application to obtain any necessary user consent in accordance with EU Cookie Compliance Policy.
 }
 ```
 
@@ -168,10 +177,10 @@ Bevat informatie over de fout.
 
 #### <a name="error-codes"></a>Foutcodes
 
-| Code | Beschrijving |
+| Coderen | Beschrijving |
 | ---- | ----------- |
 | BadArgument | Het opgegeven argument is ongeldig. Zie `message` voor meer informatie. |
-| Out | De insluitende lezer kan niet worden geladen binnen de opgegeven time-out. |
+| Time-out | De insluitende lezer kan niet worden geladen binnen de opgegeven time-out. |
 | TokenExpired | Het opgegeven token is verlopen. |
 | Beperkt | De limiet voor de aanroep frequentie is overschreden. |
 
@@ -189,11 +198,11 @@ Gebruik de volgende kenmerken om het uiterlijk van de knop te configureren.
 
 | Kenmerk | Beschrijving |
 | --------- | ----------- |
-| `data-button-style` | Hiermee wordt de stijl van de knop ingesteld. Kan `icon`, `text`of `iconAndText`zijn. De standaard instelling is `icon`. |
+| `data-button-style` | Hiermee wordt de stijl van de knop ingesteld. Kan `icon`, `text`of `iconAndText`zijn. Standaard ingesteld op `icon`. |
 | `data-locale` | Hiermee stelt u de land instelling. Bijvoorbeeld `en-US` of `fr-FR`. De standaard instelling is Engels `en`. |
 | `data-icon-px-size` | Hiermee stelt u de grootte van het pictogram in pixels. De standaard waarde is 20px. |
 
-## <a name="browser-support"></a>Browser ondersteuning
+## <a name="browser-support"></a>Browserondersteuning
 
 Gebruik de meest recente versies van de volgende browsers voor de beste ervaring met de insluitende lezer.
 

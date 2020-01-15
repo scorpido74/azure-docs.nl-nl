@@ -3,12 +3,12 @@ title: YAML-verwijzing-ACR-taken
 description: Naslag voor het definiëren van taken in YAML voor ACR-taken, waaronder taak eigenschappen, stap typen, stap eigenschappen en ingebouwde variabelen.
 ms.topic: article
 ms.date: 10/23/2019
-ms.openlocfilehash: da1b1613d880b9edf6ec6d6018011f43a7ac69a5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d86eb0e24233afb536d27f5d0938d4748941e88a
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445699"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945742"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Naslag informatie over ACR-taken: YAML
 
@@ -79,7 +79,7 @@ Taak eigenschappen worden meestal boven aan een `acr-task.yaml`-bestand weer geg
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | string | Ja | De versie van het `acr-task.yaml`-bestand zoals geparseerd door de service ACR tasks. Hoewel ACR-taken streven om achterwaartse compatibiliteit te behouden, kunnen met deze waarde ACR-taken de compatibiliteit binnen een gedefinieerde versie behouden blijven. Als u geen waarde opgeeft, wordt de meest recente versie gebruikt. | Nee | Geen |
 | `stepTimeout` | int (seconden) | Ja | Het maximum aantal seconden dat een stap kan worden uitgevoerd. Als de eigenschap is opgegeven voor een taak, wordt de standaard eigenschap `timeout` van alle stappen. Als de eigenschap `timeout` is opgegeven in een stap, wordt de eigenschap die door de taak wordt opgegeven, overschreven. | Ja | 600 (10 minuten) |
-| `workingDirectory` | string | Ja | De werkmap van de container tijdens runtime. Als de eigenschap is opgegeven voor een taak, wordt de standaard eigenschap `workingDirectory` van alle stappen. Als u een stap opgeeft, wordt de eigenschap die door de taak is opgegeven, overschreven. | Ja | `$HOME` |
+| `workingDirectory` | string | Ja | De werkmap van de container tijdens runtime. Als de eigenschap is opgegeven voor een taak, wordt de standaard eigenschap `workingDirectory` van alle stappen. Als u een stap opgeeft, wordt de eigenschap die door de taak is opgegeven, overschreven. | Ja | `/workspace` |
 | `env` | [teken reeks, teken reeks,...] | Ja |  Matrix van teken reeksen in `key=value` indeling waarmee de omgevings variabelen voor de taak worden gedefinieerd. Als de eigenschap is opgegeven voor een taak, wordt de standaard eigenschap `env` van alle stappen. Als u een stap opgeeft, worden de omgevings variabelen die zijn overgenomen van de taak, overschreven. | Geen |
 | `secrets` | [geheim, geheim,...] | Ja | Matrix van [geheime](#secret) objecten. | Geen |
 | `networks` | [netwerk, netwerk,...] | Ja | Matrix van [netwerk](#network) objecten. | Geen |
@@ -379,7 +379,7 @@ Elk stap type ondersteunt verschillende eigenschappen die geschikt zijn voor het
 | `timeout` | int (seconden) | Ja | Maximum aantal seconden dat een stap kan worden uitgevoerd voordat deze wordt beëindigd. | 600 |
 | [`when`](#example-when) | [teken reeks, teken reeks,...] | Ja | Hiermee configureert u de afhankelijkheid van een stap voor een of meer andere stappen in de taak. | Geen |
 | `user` | string | Ja | De gebruikers naam of UID van een container | Geen |
-| `workingDirectory` | string | Ja | Hiermee stelt u de werkmap voor een stap in. ACR-taken maken standaard een hoofdmap als werkmap. Als uw build echter verschillende stappen heeft, kunnen eerdere stappen artefacten delen met latere stappen door dezelfde werkmap op te geven. | `$HOME` |
+| `workingDirectory` | string | Ja | Hiermee stelt u de werkmap voor een stap in. ACR-taken maken standaard een hoofdmap als werkmap. Als uw build echter verschillende stappen heeft, kunnen eerdere stappen artefacten delen met latere stappen door dezelfde werkmap op te geven. | `/workspace` |
 
 ### <a name="examples-task-step-properties"></a>Voor beelden: taak stap eigenschappen
 

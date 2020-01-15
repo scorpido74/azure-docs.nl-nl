@@ -1,19 +1,16 @@
 ---
-title: Replicatie configureren voor virtuele Azure-machines in Azure Site Recovery | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u replicatie voor virtuele Azure-machines kunt configureren, van de ene Azure-regio naar de andere met behulp van Site Recovery.
-services: site-recovery
-author: carmonmills
+title: Replicatie configureren voor virtuele Azure-machines in Azure Site Recovery
+description: Meer informatie over het configureren van replicatie naar een andere regio voor Azure-Vm's met behulp van Site Recovery.
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/29/2018
-ms.author: carmonm
-ms.openlocfilehash: 4dbac05ddf747ccaf483e547a2070505487a3706
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 471a7f288cec980e73ab10c8233ea38511acdd8b
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75929863"
+ms.locfileid: "75942322"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Virtuele Azure-machines repliceren naar een andere Azure-regio
 

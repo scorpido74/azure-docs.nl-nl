@@ -1,32 +1,25 @@
 ---
-title: 'Quick Start: spraak herkennen die zijn opgeslagen in C++ Blob Storage,-Speech Service'
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b7ce80baa090ed87722397384b8e75c134eb26da
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: 731248c88855e2c23d2d7e94a01a9681d30259ce
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469755"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942647"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
+> * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md?tabs=linux&pivots=programmming-language-cpp)
+> * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md?pivots=programmming-language-cpp)
 > * [Een Azure-spraak resource maken](../../../../get-started.md)
 > * [Een bron bestand uploaden naar een Azure-Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-> * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md?tabs=dotnet)
 
 ## <a name="open-your-project-in-visual-studio"></a>Uw project openen in Visual Studio
 
@@ -53,7 +46,8 @@ vcpkg install nlohmann-json
 Laten we een code toevoegen die als een skelet voor het project werkt.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/from-blob/helloworld.cpp?range=7-32,187-190,300-309)]
-(U moet de waarden van `YourSubscriptionKey`, `YourServiceRegion`en `YourFileUrl` vervangen door uw eigen waarden.)
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
 ## <a name="json-wrappers"></a>JSON-wrappers
 

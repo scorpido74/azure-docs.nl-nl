@@ -3,14 +3,14 @@ title: Updatebeheer oplossing in azure
 description: In dit artikel wordt beschreven hoe u de Azure Updatebeheer-oplossing gebruikt voor het beheren van updates voor uw Windows-en Linux-computers.
 services: automation
 ms.subservice: update-management
-ms.date: 12/03/2019
+ms.date: 01/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 924f5bee94544c533f3a2548d931fce292469567
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0cf47538f7db1cef629c2b58a9fbde16640a50ae
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420343"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945129"
 ---
 # <a name="update-management-solution-in-azure"></a>Updatebeheer oplossing in azure
 
@@ -237,7 +237,9 @@ Voor Linux kan Updatebeheer een onderscheid maken tussen essentiële updates en 
 sudo yum -q --security check-update
 ```
 
-Er is momenteel geen ondersteunde methode voor het inschakelen van systeem eigen classificatie-gegevens beschikbaarheid op CentOS. Op dit moment wordt alleen ondersteuning voor de beste werk belasting gegeven aan klanten die deze zelf kunnen hebben ingeschakeld.
+Er is momenteel geen ondersteunde methode voor het inschakelen van systeem eigen classificatie-gegevens beschikbaarheid op CentOS. Op dit moment wordt alleen ondersteuning voor de beste werk belasting gegeven aan klanten die deze zelf kunnen hebben ingeschakeld. 
+
+Als u updates wilt classificeren voor Red Hat Enter prise versie 6, moet u de yum-beveiligings-invoeg toepassing installeren. Op Red Hat Enterprise Linux 7 maakt de invoeg toepassing al deel uit van yum. u hoeft niets te installeren. Zie het volgende Red Hat [Knowledge-artikel](https://access.redhat.com/solutions/10021)voor meer informatie.
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integreren met System Center Configuration Manager
 
@@ -251,7 +253,7 @@ Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats vo
 
 ## <a name="patch-linux-machines"></a>Linux-machines bijwerken
 
-In de volgende secties worden mogelijke problemen met Linux-patches uitgelegd.
+In de volgende secties worden mogelijke problemen met patches voor Linux-distributies uitgelegd.
 
 ### <a name="unexpected-os-level-upgrades"></a>Onverwachte upgrades op besturingssysteem niveau
 

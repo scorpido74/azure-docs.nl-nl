@@ -1,18 +1,16 @@
 ---
 title: Veelgestelde vragen over herstel na nood gevallen voor Azure VM met Azure Site Recovery
-description: In dit artikel vindt u antwoorden op veelgestelde vragen over herstel na nood gevallen van virtuele Azure-machines naar een andere Azure-regio met Azure Site Recovery
-author: carmonmills
+description: In dit artikel vindt u antwoorden op veelgestelde vragen over nood herstel van Azure VM met behulp van Azure Site Recovery.
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.author: carmonm
-ms.openlocfilehash: 2e1689a4f6d3a2271da868350263bef098562127
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 8ed5df15b8ae8e9836c5b8ac8e7d6ad0111f63e1
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75929907"
+ms.locfileid: "75941899"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Veelgestelde vragen: nood herstel voor Azure naar Azure
 
@@ -45,7 +43,7 @@ Het Site Recovery-team werkt samen met het Azure capacity management-team om vol
 Ja, Site Recovery ondersteunt nood herstel van Vm's met behulp van de functie voor Azure Disk Encryption (ADE) ingeschakeld. Wanneer u replicatie inschakelt, worden alle vereiste schijf versleutelings sleutels en-geheimen gekopieerd van de bron regio naar de doel regio in de gebruikers context. Als u niet de juiste machtiging hebt, kan een kant-en-klaar script aan de beveiligings beheerder worden door gegeven om de sleutels en geheimen te kopiëren.
 
 - Site Recovery ondersteunt ADE voor virtuele Azure-machines waarop Windows wordt uitgevoerd.
-- Site Recovery biedt ondersteuning voor ADE versie 0,1, met een schema met Azure Active Directory (AAD) en versie 1,1, zonder AAD. [Meer informatie](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata).
+- Site Recovery ondersteunt ADE versie 0,1, met een schema dat gebruikmaakt van Azure Active Directory (AAD) en versie 1,1, zonder AAD. [Meer informatie](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata).
 - ADE versie 1,1, de virtuele Windows-machines moeten worden gebruikt voor beheerde schijven.
 - [Meer informatie](azure-to-azure-how-to-enable-replication-ade-vms.md) over het inschakelen van replicatie voor versleutelde vm's.
 

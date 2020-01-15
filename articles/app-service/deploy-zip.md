@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 28bd45b0e9bdaf87c29b0118c47595db9179edc5
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 716f6813e37aec086a7d496e001fe2ca0f4aab57
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921161"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945143"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Uw app implementeren voor Azure App Service met een ZIP-of WAR-bestand
 
@@ -20,7 +20,7 @@ Bij deze ZIP-bestands implementatie wordt gebruikgemaakt van dezelfde kudu-servi
 
 - Het verwijderen van bestanden van een vorige implementatie is overgebleven.
 - Optie voor het inschakelen van het standaard constructie proces, dat package Restore bevat.
-- [Aanpassing](https://github.com/projectkudu/kudu/wiki/Configurable-settings#repository-and-deployment-related-settings)van de implementatie, waaronder het uitvoeren van implementatie scripts.  
+- Aanpassing van de implementatie, waaronder het uitvoeren van implementatie scripts.  
 - Implementatie Logboeken. 
 - De maximale bestands grootte van 2048 MB.
 
@@ -28,47 +28,25 @@ Zie onze [Kudu-documentatie](https://github.com/projectkudu/kudu/wiki/Deploying-
 
 De WAR-bestands implementatie implementeert uw [War](https://wikipedia.org/wiki/WAR_(file_format)) -bestand op app service om uw Java-Web-app uit te voeren. Zie [war-bestand implementeren](#deploy-war-file).
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de stappen in dit artikel wilt uitvoeren:
+Als u de stappen in dit artikel wilt uitvoeren, [maakt u een app service-app](/azure/app-service/)of gebruikt u een app die u hebt gemaakt voor een andere zelf studie.
 
-* [Maak een App Service-app](/azure/app-service/), of gebruik een app die u hebt gemaakt voor een andere zelfstudie.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-project-zip-file"></a>Een ZIP-bestand van het project maken
-
->[!NOTE]
-> Als u de bestanden in een ZIP-bestand hebt gedownload, pakt u eerst de bestanden uit. Als u bijvoorbeeld een ZIP-bestand van GitHub hebt gedownload, kunt u dat bestand niet implementeren. GitHub voegt extra geneste directory's toe, die niet samen werken met App Service. 
->
-
-Navigeer in een lokaal Terminal venster naar de hoofdmap van uw app-project. 
-
-Deze map moet het invoer bestand bevatten naar uw web-app, zoals _index. html_, _index. php_en _app. js_. Het kan ook pakket beheer bestanden bevatten zoals _project. json_, _Composer. json_, _package. json_, _Bower. json_en _Requirements. txt_.
-
-Maak een ZIP-archief van alle bestanden in uw project. De volgende opdracht maakt gebruik van het standaardhulpprogramma in de terminal:
-
-```
-# Bash
-zip -r <file-name>.zip .
-
-# PowerShell
-Compress-Archive -Path * -DestinationPath <file-name>.zip
-``` 
+[!INCLUDE [Create a project ZIP file](../../includes/app-service-web-deploy-zip-prepare.md)]
 
 [!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
 Het bovenstaande eind punt werkt op dit moment niet voor Linux-App Services. Overweeg in plaats daarvan FTP of de [API voor zip-implementatie](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-faq#continuous-integration-and-deployment) te gebruiken.
 
 ## <a name="deploy-zip-file-with-azure-cli"></a>ZIP-bestand implementeren met Azure CLI
 
-Zorg ervoor dat uw Azure CLI-versie 2.0.21 of hoger is. Als u wilt zien welke versie u hebt, voert u `az --version` opdracht uit in het Terminal venster.
-
 Implementeer het geüploade ZIP-bestand naar uw web-app met behulp van de opdracht [AZ webapp Deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-zip) .  
 
 In het volgende voor beeld wordt het ZIP-bestand dat u hebt geüpload, geïmplementeerd. Wanneer u een lokale installatie van Azure CLI gebruikt, geeft u het pad op naar het lokale ZIP-bestand voor `--src`.
 
 ```azurecli-interactive
-az webapp deployment source config-zip --resource-group myResourceGroup --name <app_name> --src clouddrive/<filename>.zip
+az webapp deployment source config-zip --resource-group <group-name> --name <app-name> --src clouddrive/<filename>.zip
 ```
 
 Met deze opdracht worden de bestanden en mappen uit het ZIP-bestand geïmplementeerd in de standaardmap voor de App Service-toepassing (`\home\site\wwwroot`) en wordt de app opnieuw opgestart.
@@ -76,10 +54,8 @@ Met deze opdracht worden de bestanden en mappen uit het ZIP-bestand geïmplement
 De implementatie-engine veronderstelt standaard dat een ZIP-bestand gereed is om te worden uitgevoerd, en voert geen automatisering op basis van builds uit. Als u dezelfde build-automatisering wilt inschakelen als in een [Git-implementatie](deploy-local-git.md), stelt u de `SCM_DO_BUILD_DURING_DEPLOYMENT` app-instelling in door de volgende opdracht uit te voeren in de [Cloud shell](https://shell.azure.com):
 
 ```azurecli-interactive
-az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
+az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
 ```
-
-
 
 Zie onze [Kudu-documentatie](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file-or-url) voor meer informatie.
 
@@ -87,7 +63,7 @@ Zie onze [Kudu-documentatie](https://github.com/projectkudu/kudu/wiki/Deploying-
 
 ## <a name="deploy-war-file"></a>WAR-bestand implementeren
 
-Als u een WAR-bestand wilt implementeren op App Service, stuurt u een POST-aanvraag naar `https://<app_name>.scm.azurewebsites.net/api/wardeploy`. Het WAR-bestand moet zijn opgenomen in de hoofdtekst van de POST-aanvraag. De implementatiereferenties voor uw app moet u opgegeven in de aanvraag met behulp van HTTP-basisverificatie.
+Als u een WAR-bestand wilt implementeren op App Service, stuurt u een POST-aanvraag naar `https://<app-name>.scm.azurewebsites.net/api/wardeploy`. Het WAR-bestand moet zijn opgenomen in de hoofdtekst van de POST-aanvraag. De implementatiereferenties voor uw app moet u opgegeven in de aanvraag met behulp van HTTP-basisverificatie.
 
 Gebruik altijd `/api/wardeploy` bij het implementeren van WAR-bestanden. Met deze API wordt uw WAR-bestand uitgebreid en op het gedeelde bestands station geplaatst. het gebruik van andere implementatie-Api's kan leiden tot inconsistent gedrag. 
 
@@ -98,7 +74,7 @@ Voor de HTTP-basis verificatie hebt u uw App Service implementatie referenties n
 In het volgende voor beeld wordt het gereedschap krul gebruikt om een WAR-bestand te implementeren. Vervang de tijdelijke aanduidingen `<username>`, `<war-file-path>`en `<app-name>`. Wanneer u wordt gevraagd door krul, typt u het wacht woord.
 
 ```bash
-curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app_name>.scm.azurewebsites.net/api/wardeploy
+curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app-name>.scm.azurewebsites.net/api/wardeploy
 ```
 
 ### <a name="with-powershell"></a>Met PowerShell

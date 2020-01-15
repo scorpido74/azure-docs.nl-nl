@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: security
 ms.subservice: security-fundamentals
 ms.workload: identity
-ms.openlocfilehash: 78f8b7097060f1091bfed30722c9ea456feed384
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 39078e298093c2c2ab4835925a2ba8a70269f5f5
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74007283"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945587"
 ---
 # <a name="a-world-without-passwords-with-azure-active-directory"></a>Een wereld zonder wacht woorden met Azure Active Directory
 
@@ -208,7 +208,7 @@ Beheerders kunnen FIDO2-ondersteuning inschakelen in azure AD en de mogelijkheid
 
 * Azure AD
 
-* Azure Multi-Factor Authentication
+* Verificatie op basis van meerdere factoren van Azure
 
 * Preview van gecombineerde registratie
 
@@ -236,13 +236,13 @@ Naast het selecteren van het hardware-token als de standaard methode voor multi-
 
 * Verificator-app of-hardware-token--code
 
-* Telefoon oproep
+* Telefoonoproep
 
 * Sms-bericht
 
 #### <a name="user-using-fido2-security-key-for-sign-in"></a>Gebruiker die de FIDO2-beveiligings sleutel gebruikt voor aanmelden
 
-FIDO2 biedt een abstractie laag tussen de vorm factor die wordt gebruikt als authenticatie van de verificator en open bare/persoonlijke sleutel, zodat ingebouwde platform-verificatoren, zoals Windows hello en beveiligings sleutels, kunnen worden omgezet in een persoonlijke sleutel en een open bare sleutel kunnen leveren die kunnen worden gebruikt als een id voor toegang tot externe resources. FIDO2-beveiligings sleutels zijn uitgerust met hun eigen ingebouwde beveiligde enclave die de persoonlijke sleutel opslaat en de biometrische of pincode nodig heeft om deze te ontgrendelen. Referenties kunnen niet opnieuw worden gebruikt, herhaald of gedeeld tussen services en zijn niet onderhevig aan phishing-en MiTM-aanvallen of server inbreuken.
+FIDO2 biedt een abstractie laag tussen de vorm factor die wordt gebruikt als authenticatie van de verificator en open bare/persoonlijke sleutel, zodat ingebouwde platform-verificatoren, zoals Windows hello en beveiligings sleutels, kunnen worden omgezet in een persoonlijke sleutel en een open bare sleutel leveren die kan worden gebruikt als een id voor toegang tot externe bronnen. FIDO2-beveiligings sleutels zijn uitgerust met hun eigen ingebouwde beveiligde enclave die de persoonlijke sleutel opslaat en de biometrische of pincode nodig heeft om deze te ontgrendelen. Referenties kunnen niet opnieuw worden gebruikt, herhaald of gedeeld tussen services en zijn niet onderhevig aan phishing-en MiTM-aanvallen of server inbreuken.
 
 ![FIDO2-aanmelding](./media/ad-passwordless/azure-ad-pwdless-image6.png)
 
@@ -284,7 +284,7 @@ Hier volgen enkele factoren waarmee u rekening moet houden bij het kiezen van mi
 ||**Windows Hello voor Bedrijven**|**Aanmelding zonder wacht woord met de Microsoft Authenticator-app**|**FIDO2-beveiligings sleutels**|
 |:-|:-|:-|:-|
 |**Vereiste**| Windows 10, versie 1809 of hoger<br>Azure Active Directory| Microsoft Authenticator-app<br>Telefoon (iOS-en Android-apparaten met Android 6,0 of hoger.)|Windows 10, versie 1809 of hoger<br>Azure Active Directory|
-|**Penmodus**|Platform|Software|Hardware|
+|**Mode**|Platform|Software|Hardware|
 |**Systemen en apparaten**|PC met ingebouwde Trusted Platform Module (TPM)<br>Herkenning van PINCODEs en biometrie |Herkenning van PINCODEs en biometrie op telefoon|FIDO2-beveiligings apparaten die compatibel zijn met micro soft|
 |**Gebruikers ervaring**|Meld u aan met een pincode of biometrische herkenning (gezicht, Iris of vinger afdruk) met Windows-apparaten.<br>Windows hello-verificatie is gekoppeld aan het apparaat. de gebruiker heeft het apparaat en een aanmeldings onderdeel zoals een pincode of biometrische factor nodig om toegang te krijgen tot bedrijfs bronnen.|Meld u aan met een mobiele telefoon met vingerafdruk scan, gezichts controle of Iris herkenning of pincode.<br>Gebruikers melden zich aan bij een werk-of persoonlijk account vanaf hun PC of mobiele telefoon.|Aanmelden met FIDO2-beveiligings apparaat (biometrie, PIN en NFC)<br>Gebruiker heeft toegang tot het apparaat op basis van organisatie besturings elementen en verificatie op basis van pincode, biometrie met behulp van apparaten zoals USB-beveiligings sleutels en met NFC ingeschakelde Smart Cards, sleutels of Wearables.|
 |**Ingeschakelde scenario's**| Wachtwoord minder ervaring met Windows-apparaat.<br>Van toepassing op toegewezen werk computer met mogelijkheid voor eenmalige aanmelding bij apparaten en toepassingen.|Een wacht woord met een mobiele telefoon.<br>Van toepassing voor toegang tot zakelijke of persoonlijke toepassingen op het web vanaf elk apparaat.|Wacht woord minder ervaring voor werk nemers met biometrie, PIN en NFC.<br>Van toepassing op gedeelde Pc's en waar een mobiele telefoon geen geschikte optie is (zoals voor helpdesk personeel, open bare kiosk of ziekenhuis team)|
@@ -311,7 +311,7 @@ Verificatie met een wacht woord is de Golf van de toekomst en het pad naar een v
 
 * Implementeer Microsoft Authenticator-app voor mobiliteit.
 
-* Windows hello voor bedrijven (1903: blijf actueel) implementeren.
+* Windows hello voor bedrijven (1909: blijf actueel) implementeren.
 
 * Implementeer FIDO2-apparaten voor gebruikers die geen telefoons kunnen gebruiken.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: d198ee2e1fa8d3afeacda53c2ad6b91d69abca2a
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 14e33bf77144e4cd5728ec85d3012dc0ba717ece
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195768"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945660"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Azure Firewall implementeren en configureren in een hybride netwerk met Azure PowerShell
 
@@ -53,7 +53,7 @@ Voor dit artikel moet u Power shell lokaal uitvoeren. U moet de module Azure Pow
 
 Er zijn drie belangrijke vereisten voor de correcte werking van dit scenario:
 
-- Een door de gebruiker gedefinieerde route (UDR) in het spoke-subnet die verwijst naar het IP-adres van Azure Firewall als de standaardgateway. Doorgifte van BGP-route moet zijn **Uitgeschakeld** voor deze routetabel.
+- Een door de gebruiker gedefinieerde route (UDR) in het spoke-subnet die verwijst naar het IP-adres van Azure Firewall als de standaardgateway. De route doorgifte van de virtuele netwerk gateway moet worden **uitgeschakeld** voor deze route tabel.
 - Een door de gebruiker gedefinieerde route (UDR) in het subnet van de hubgateway moet verwijzen naar het IP-adres van de firewall als de volgende hop naar de spoke-netwerken.
 
    Er is geen door de gebruiker gedefinieerde route (UDR) nodig in het Azure Firewall-subnet, omdat het de routes overneemt van BGP.
@@ -355,7 +355,7 @@ Set-AzVirtualNetwork
 
 #Now create the default route
 
-#Create a table, with BGP route propagation disabled
+#Create a table, with BGP route propagation disabled. The property is now called "Virtual network gateway route propagation," but the API still refers to the parameter as "DisableBgpRoutePropagation."
 $routeTableSpokeDG = New-AzRouteTable `
   -Name 'UDR-DG' `
   -ResourceGroupName $RG1 `

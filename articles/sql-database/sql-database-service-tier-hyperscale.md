@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 8c694cbd8d9386401b8ad26cf5ce6ce31e6b9bd9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 9cce221946a16103e706875e179c677190f32af1
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614935"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940812"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
@@ -251,6 +251,7 @@ Dit zijn de huidige beperkingen voor het grootschalige van de service tier.  We 
 | Data base kopiëren | U kunt geen database kopie gebruiken om een nieuwe data base in Azure SQL grootschalige te maken. |
 | TDE/Azure-integratie | Transparante database versleuteling met behulp van Azure Key Vault (ook wel uw eigen sleutel of BYOK genoemd) wordt nog niet ondersteund voor Azure SQL Database grootschalige, maar TDE met door service beheerde sleutels wordt volledig ondersteund. |
 |Intelligente database functies | Met uitzonde ring van de optie ' plan forceren ' worden alle andere opties voor automatisch afstemmen nog niet ondersteund op grootschalige: mogelijk lijkt het alsof de opties zijn ingeschakeld, maar zijn er geen aanbevelingen of acties gedaan. |
+|Inzicht in queryprestaties | Query performance Insights wordt momenteel niet ondersteund voor grootschalige-data bases. |
 | Data base verkleinen | DBCC SHRINKDATABASE of DBCC SHRINKFILE wordt momenteel niet ondersteund voor grootschalige-data bases. |
 | Integriteits controle van data base | DBCC CHECKDB wordt momenteel niet ondersteund voor grootschalige-data bases. Zie [gegevens integriteit in Azure SQL database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/) voor meer informatie over het beheer van gegevens integriteit in Azure SQL database. |
 

@@ -103,6 +103,8 @@
       items:
         - name: De app implementeren
           items:
+            - name: Uitvoeren uit pakket
+              href: ../deploy-run-package.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
             - name: Implementeren via FTP
               href: ../deploy-ftp.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
             - name: Implementeren via cloudsynchronisatie

@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/02/2019
 ms.author: dylankil
-ms.openlocfilehash: 6404a5d49bd7af1ed5d74299f03eda8d0bb14b89
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 3293c4ea76010e5f39c793a1faee14d9a74226a0
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326395"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945232"
 ---
 # <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Zelf studie: de insluitende lezer starten met behulp van het python-voorbeeld project
 
@@ -30,7 +30,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een insluitende lezer-resource die is geconfigureerd voor Azure Active Directory-verificatie (Azure AD). Volg [deze instructies om de](./azure-active-directory-authentication.md) instellingen op te halen. U hebt enkele van de waarden nodig die u hier hebt gemaakt bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekst bestand voor toekomstig naslag doeleinden.
+* Een resource voor insluitende lezer die is geconfigureerd voor Azure Active Directory authenticatie. Volg [deze instructies om de](./how-to-create-immersive-reader.md) instellingen op te halen. U hebt enkele van de waarden nodig die u hier hebt gemaakt bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekst bestand voor toekomstig naslag doeleinden.
 * [Git](https://git-scm.com/)
 * [Insluitende lezer-SDK](https://github.com/microsoft/immersive-reader-sdk)
 * [Python](https://www.python.org/downloads/) en [PIP](https://docs.python.org/3/installing/index.html). Vanaf python 3,4 is PIP standaard opgenomen in de binaire python-installatie Programma's.
@@ -40,20 +40,9 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 * [module aanvragen](https://pypi.org/project/requests/2.7.0/)
 * Een IDE zoals [Visual Studio code](https://code.visualstudio.com/)
 
-## <a name="acquire-an-azure-ad-authentication-token"></a>Een Azure AD-verificatie token verkrijgen
+## <a name="configure-authentication-credentials"></a>Verificatie referenties configureren
 
-Schrijf een back-end-API om een Azure AD-verificatie token op te halen.
-
-Voor dit onderdeel hebt u enkele waarden nodig uit de hierboven beschreven Azure AD-verificatie configuratie. Ga terug naar het tekst bestand dat u van deze sessie hebt opgeslagen.
-
-````text
-TenantId     => Azure subscription TenantId
-ClientId     => Azure AD ApplicationId
-ClientSecret => Azure AD Application Service Principal password
-Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
-````
-
-Zodra u deze waarden hebt, maakt u een nieuw bestand met de naam _. env_en plakt u de volgende code in de gegevens bron, waarbij u de waarden van de aangepaste eigenschappen kunt opgeven. Vervang _. env._ bestand in de voor beeld-app met het zojuist gemaakte bestand.
+Maak een nieuw bestand met de naam _. env_en plak de volgende code hierin en geef de waarden op die zijn opgegeven bij het maken van uw insluitende lezer-resource.
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}
@@ -206,7 +195,7 @@ Nadat de python-installatie is voltooid, opent u Terminal en `cd` naar de map py
 cd immersive-reader-sdk/js/samples/advanced-python
 ```
 
-Pip installeren.
+Installeer pip.
 
 ```bash
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py

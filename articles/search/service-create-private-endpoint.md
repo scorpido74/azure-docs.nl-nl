@@ -8,22 +8,26 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: cfa8db0d00f351f5ab2bda96744305ca83cccb19
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 2664b1abd4131cf1dca186c7b044e338bf1efa84
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922457"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945829"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search-preview"></a>Een persoonlijk eind punt maken voor een beveiligde verbinding met Azure Cognitive Search (preview-versie)
 
-[Privé-eind punten](../private-link/private-endpoint-overview.md) voor Azure Cognitive Search een client in een virtueel netwerk in staat stellen om veilig toegang te krijgen tot gegevens in een zoek index via een [persoonlijke koppeling](../private-link/private-link-overview.md). Het persoonlijke eind punt gebruikt een IP-adres uit de [adres ruimte van het virtuele netwerk](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) voor uw zoek service. Netwerk verkeer tussen de client en de zoek service gaat over het virtuele netwerk en een privé koppeling op het micro soft-backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt geëlimineerd. Raadpleeg de [sectie Beschik baarheid](../private-link/private-link-overview.md#availability) in de product documentatie voor een lijst met andere PaaS-services die persoonlijke koppelingen ondersteunen.
+In dit artikel kunt u de portal gebruiken om een nieuw exemplaar van Azure Cognitive Search service te maken dat niet toegankelijk is via een openbaar IP-adres. Vervolgens configureert u een virtuele Azure-machine in hetzelfde virtuele netwerk, en gebruikt u deze om toegang te krijgen tot de zoek service via een persoonlijk eind punt.
 
 > [!Important]
-> Ondersteuning voor privé-eind punten voor Azure Cognitive Search is beschikbaar als preview-versie van beperkte toegang en is momenteel niet bedoeld voor productie gebruik. Vul het formulier voor de [toegangs aanvraag](https://aka.ms/SearchPrivateLinkRequestAccess) in en verzend het als u toegang wilt tot de preview. Het formulier vraagt informatie over u, uw bedrijf en algemene toepassings architectuur. Zodra we uw aanvraag hebben gecontroleerd, ontvangt u een bevestigings-e-mail met aanvullende instructies.
+> Ondersteuning voor privé-eind punten voor Azure Cognitive Search is als een preview-versie beschikbaar [op aanvraag](https://aka.ms/SearchPrivateLinkRequestAccess) . Preview-functies zijn beschikbaar zonder service level agreement en worden niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. 
 >
-> Zodra u toegang tot de preview hebt gekregen, kunt u persoonlijke eind punten voor uw service configureren met behulp van de Azure Portal en REST API versie [2019-10-06-preview](search-api-preview.md).
+> Zodra u toegang tot de preview hebt gekregen, kunt u persoonlijke eind punten voor uw service configureren met behulp van de Azure Portal of het [beheer rest API versie 2019-10-06-preview](https://docs.microsoft.com/rest/api/searchmanagement/).
 >   
+
+## <a name="why-use-private-endpoint-for-secure-access"></a>Waarom een persoonlijk eind punt gebruiken voor beveiligde toegang?
+
+[Privé-eind punten](../private-link/private-endpoint-overview.md) voor Azure Cognitive Search een client in een virtueel netwerk in staat stellen om veilig toegang te krijgen tot gegevens in een zoek index via een [persoonlijke koppeling](../private-link/private-link-overview.md). Het persoonlijke eind punt gebruikt een IP-adres uit de [adres ruimte van het virtuele netwerk](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) voor uw zoek service. Netwerk verkeer tussen de client en de zoek service gaat over het virtuele netwerk en een privé koppeling op het micro soft-backbone-netwerk, waardoor de bloot stelling van het open bare Internet wordt geëlimineerd. Raadpleeg de [sectie Beschik baarheid](../private-link/private-link-overview.md#availability) in de product documentatie voor een lijst met andere PaaS-services die persoonlijke koppelingen ondersteunen.
 
 Met persoonlijke eind punten voor uw zoek service kunt u het volgende doen:
 
@@ -36,16 +40,18 @@ Met persoonlijke eind punten voor uw zoek service kunt u het volgende doen:
 > * Alleen beschikbaar voor zoek services op de laag **basis** . 
 > * Beschikbaar in de Verenigde Staten West 2, VS-West-Centraal, VS-Oost, Zuid-Centraal, Australië-oost en Australië-zuidoost regio's.
 > * Wanneer het service-eind punt privé is, zijn sommige Portal functies uitgeschakeld. U kunt informatie over het service niveau weer geven en beheren, maar de toegang tot de portal voor het indexeren van gegevens en de verschillende onderdelen in de service, zoals de definities index, Indexer en vaardigheids, is beperkt om veiligheids redenen.
-> * Wanneer het service-eind punt privé is, moet u de zoek-API gebruiken om documenten te uploaden naar de index.
+> * Wanneer het service-eind punt privé is, moet u de [zoek rest API](https://docs.microsoft.com/rest/api/searchservice/) gebruiken om documenten te uploaden naar de index.
 > * U moet de volgende koppeling gebruiken om de ondersteunings optie voor privé-eind punten weer te geven in de Azure Portal: https://portal.azure.com/?feature.enablePrivateEndpoints=true
 
-In dit artikel leert u hoe u de portal kunt gebruiken om een nieuw exemplaar van Azure Cognitive Search service te maken dat niet toegankelijk is via een openbaar IP-adres, hoe u een virtuele machine van Azure kunt configureren in hetzelfde virtuele netwerk en hoe u deze kunt gebruiken om toegang te krijgen tot de zoek service via een persoonlijke endpoints.
 
 
-## <a name="create-a-vm"></a>Een VM maken
+## <a name="request-access"></a>Toegang aanvragen 
+
+Klik op [toegang aanvragen](https://aka.ms/SearchPrivateLinkRequestAccess) om u aan te melden voor deze preview-functie. Het formulier vraagt informatie over u, uw bedrijf en algemene netwerk topologie. Zodra we uw aanvraag hebben gecontroleerd, ontvangt u een bevestigings-e-mail met aanvullende instructies.
+
+## <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
+
 In deze sectie maakt u een virtueel netwerk en een subnet voor het hosten van de virtuele machine die wordt gebruikt om toegang te krijgen tot het privé-eind punt van uw zoek service.
-
-### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
 
 1. Selecteer op het tabblad Start Azure Portal **een resource maken** > **netwerk** > **virtueel netwerk**.
 
@@ -65,7 +71,7 @@ In deze sectie maakt u een virtueel netwerk en een subnet voor het hosten van de
 1. Laat de rest als standaard en selecteer **maken**.
 
 
-## <a name="create-your-search-service-with-a-private-endpoint"></a>Uw zoek service maken met een persoonlijk eind punt
+## <a name="create-a-search-service-with-a-private-endpoint"></a>Een zoek service met een persoonlijk eind punt maken
 
 In deze sectie maakt u een nieuwe Azure Cognitive Search-service met een persoonlijk eind punt. 
 
@@ -119,9 +125,9 @@ In deze sectie maakt u een nieuwe Azure Cognitive Search-service met een persoon
 
 1. Selecteer **sleutels** in het menu links.
 
-1. Kopieer de **primaire Administrator sleutel** voor later.
+1. Kopieer de **primaire Administrator sleutel** voor later, wanneer u verbinding maakt met de service.
 
-### <a name="create-a-virtual-machine"></a>Een virtuele machine maken
+## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
 1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource maken** > **reken** > **virtuele machine**.
 
@@ -170,9 +176,9 @@ In deze sectie maakt u een nieuwe Azure Cognitive Search-service met een persoon
 1. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**. 
 
 
-## <a name="connect-to-a-vm-from-the-internet"></a>Verbinding maken met een virtuele machine via internet
+## <a name="connect-to-the-vm"></a>Verbinding maken met de virtuele machine
 
-Maak als volgt verbinding met de VM- *myVm* van het Internet:
+Down load en maak vervolgens als volgt verbinding met de VM- *myVm* :
 
 1. Voer in de zoek balk van de portal *myVm*in.
 
@@ -196,9 +202,11 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
 1. Wanneer het VM-bureaublad wordt weergegeven, minimaliseert u het om terug te gaan naar het lokale bureaublad.  
 
 
-## <a name="access-the-search-service-privately-from-the-vm"></a>De zoek service privé openen vanuit de VM
+## <a name="test-connections"></a>Verbindingen testen
 
 In deze sectie gaat u de persoonlijke netwerk toegang tot de zoek service controleren en een persoonlijke verbinding maken met het gebruik van het persoonlijke eind punt.
+
+Intrekken van de inleiding die voor alle interacties met de zoek service de [zoek rest API](https://docs.microsoft.com/rest/api/searchservice/)vereist. De portal en .NET SDK worden niet ondersteund in deze preview-versie.
 
 1. Open Power shell in de Extern bureaublad van *myVM*.
 
@@ -213,14 +221,14 @@ In deze sectie gaat u de persoonlijke netwerk toegang tot de zoek service contro
     Address:  10.0.0.5
     Aliases:  [search service name].search.windows.net
     ```
-1. Volg deze [Snelstartgids](search-get-started-postman.md) van de VM om een nieuwe zoek index in uw service te maken in postman met behulp van de rest API.  Gebruik de sleutel die u in een vorige stap hebt gekopieerd om u te verifiëren bij de service.
 
-1. Probeer enkele van deze dezelfde aanvragen in postman op uw lokale werk station.
+1. Maak vanuit de virtuele machine verbinding met de zoek service om een index te maken. U kunt deze [Snelstartgids](search-get-started-postman.md) volgen om een nieuwe zoek index in uw service te maken in postman met behulp van de rest API. Voor het instellen van aanvragen van Postman is het Search service-eind punt (https://[Zoek service naam]. Search. Windows. net) en de beheer-API-sleutel die u in een vorige stap hebt gekopieerd.
 
-1. Als u de Snelstartgids vanaf de VM kunt volt ooien, maar u een fout bericht krijgt dat de externe server niet op uw lokale werk station aanwezig is, hebt u een persoonlijk eind punt geconfigureerd voor uw zoek service.
+1. Het volt ooien van de Quick Start van de VM is uw bevestiging dat de service volledig operationeel is.
 
 1. Sluit de verbinding met extern bureau blad met *myVM*. 
 
+1. Als u wilt controleren of uw service niet toegankelijk is op een openbaar eind punt, opent u postman op uw lokale werk station en voert u de eerste verschillende taken in de Quick Start uit. Als er een fout bericht wordt weer gegeven dat de externe server niet bestaat, hebt u een persoonlijk eind punt geconfigureerd voor uw zoek service.
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
 Wanneer u klaar bent met het persoonlijke eind punt, de zoek service en de virtuele machine, verwijdert u de resource groep en alle resources die deze bevat:

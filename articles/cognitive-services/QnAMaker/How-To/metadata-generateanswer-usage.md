@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: 0190b94cc6195163de4d428c2cae0de3620bdb01
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e84a6c93ad8757b302670af202f9d4b407f3ef57
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422698"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945317"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Een antwoord krijgen met de GenerateAnswer-API en meta gegevens
 
@@ -41,7 +41,7 @@ U gebruikt de [GenerateAnswer-API](https://docs.microsoft.com/rest/api/cognitive
 
 <a name="generateanswer-endpoint"></a>
 
-## <a name="publish-to-get-generateanswer-endpoint"></a>Publiceren om GenerateAnswer-eind punt op te halen 
+## <a name="publish-to-get-generateanswer-endpoint"></a>Publiceren om GenerateAnswer-eind punt op te halen
 
 Nadat u uw Knowledge Base hebt gepubliceerd vanuit de [QnA Maker Portal](https://www.qnamaker.ai)of met behulp van de [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish), kunt u de details van uw GenerateAnswer-eind punt ophalen.
 
@@ -59,15 +59,15 @@ U kunt ook uw eindpunt gegevens ophalen via het tabblad **instellingen** van de 
 
 ## <a name="generateanswer-request-configuration"></a>Configuratie van GenerateAnswer-aanvraag
 
-U roept GenerateAnswer aan met een HTTP POST-aanvraag. Raadpleeg de [Quick](../quickstarts/create-publish-kb-csharp-sdk.md#generate-an-answer-from-the-knowledge-base)starts voor voorbeeld code die laat zien hoe u GenerateAnswer aanroept. 
+U roept GenerateAnswer aan met een HTTP POST-aanvraag. Raadpleeg de [Quick](../quickstarts/quickstart-sdk.md#generate-an-answer-from-the-knowledge-base)starts voor voorbeeld code die laat zien hoe u GenerateAnswer aanroept.
 
 De POST-aanvraag gebruikt:
 
 * Vereiste [URI-para meters](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
 * Vereiste [header-eigenschap](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer), `Authorization`, voor beveiliging
-* Vereiste [Eigenschappen van de hoofd tekst](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto). 
+* Vereiste [Eigenschappen van de hoofd tekst](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto).
 
-De GenerateAnswer-URL heeft de volgende indeling: 
+De GenerateAnswer-URL heeft de volgende indeling:
 
 ```
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
@@ -95,7 +95,7 @@ Een voor beeld van een JSON-bericht ziet er als volgt uit:
 
 Meer informatie over [rankerType](../concepts/best-practices.md#choosing-ranker-type).
 
-De vorige JSON heeft alleen antwoorden aangevraagd die 30% of hoger zijn dan de drempel waarde. 
+De vorige JSON heeft alleen antwoorden aangevraagd die 30% of hoger zijn dan de drempel waarde.
 
 <a name="generateanswer-response"></a>
 
@@ -125,7 +125,7 @@ Het [antwoord](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerrun
 }
 ```
 
-De vorige JSON heeft gereageerd met een antwoord met een Score van 38,5%. 
+De vorige JSON heeft gereageerd met een antwoord met een Score van 38,5%.
 
 ## <a name="use-qna-maker-with-a-bot-in-c"></a>QnA Maker gebruiken met een bot inC#
 
@@ -144,7 +144,7 @@ qnaOptions.ScoreThreshold = 0.3F;
 var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
 ```
 
-De vorige JSON heeft alleen antwoorden aangevraagd die 30% of hoger zijn dan de drempel waarde. 
+De vorige JSON heeft alleen antwoorden aangevraagd die 30% of hoger zijn dan de drempel waarde.
 
 De ondersteunings bot bevat [een voor beeld](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418) met deze code.
 
@@ -164,7 +164,7 @@ var qnaMakerOptions = {
 var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
 ```
 
-De vorige JSON heeft alleen antwoorden aangevraagd die 30% of hoger zijn dan de drempel waarde. 
+De vorige JSON heeft alleen antwoorden aangevraagd die 30% of hoger zijn dan de drempel waarde.
 
 De ondersteunings bot bevat [een voor beeld](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36) met deze code.
 
@@ -200,7 +200,7 @@ Omdat de resultaten alleen vereist zijn voor het restaurant "Paradise", kunt u e
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>Vraag-en antwoord resultaten gebruiken om de discussie context te blijven
 
-De reactie op de GenerateAnswer bevat de bijbehorende meta gegevens van de overeenkomende vraag en antwoordset. U kunt deze informatie in uw client toepassing gebruiken om de context van de vorige conversatie op te slaan voor gebruik in latere conversaties. 
+De reactie op de GenerateAnswer bevat de bijbehorende meta gegevens van de overeenkomende vraag en antwoordset. U kunt deze informatie in uw client toepassing gebruiken om de context van de vorige conversatie op te slaan voor gebruik in latere conversaties.
 
 ```json
 {
@@ -245,7 +245,7 @@ U kunt in de gepubliceerde KB zoeken met behulp van `isTest=false`of in de test 
 
 ## <a name="common-http-errors"></a>Veelvoorkomende HTTP-fouten
 
-|Code|Uitleg|
+|Coderen|Uitleg|
 |:--|--|
 |2xx|Geslaagd|
 |400|de aanvraagparameters zijn onjuist wat betekent dat de vereiste parameters ontbreken, onjuist gevormd of te groot zijn|

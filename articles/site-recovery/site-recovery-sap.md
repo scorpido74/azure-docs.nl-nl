@@ -1,18 +1,16 @@
 ---
 title: Herstel na nood gevallen voor SAP NetWeaver instellen met Azure Site Recovery
-description: In dit artikel wordt beschreven hoe u herstel na nood gevallen instelt voor toepassings implementaties met SAP NetWeaver met behulp van Azure Site Recovery.
-author: carmonmills
+description: Meer informatie over het instellen van herstel na nood gevallen voor SAP NetWeaver met Azure Site Recovery.
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/27/2018
-ms.author: carmonm
-ms.openlocfilehash: 3ae9a92a27da1b736bf9db6dff88660f7d40143b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: eeb85e97d653b0faac171e2986cb933fc41e6606
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934448"
+ms.locfileid: "75940665"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Herstel na nood geval instellen voor een implementatie van SAP NetWeaver met meerdere lagen
 
@@ -62,28 +60,28 @@ In deze referentie architectuur wordt SAP NetWeaver uitgevoerd in een Windows-om
 Voor herstel na noodgevallen (DR), moet u een failover uitvoeren naar een secundaire regio kunnen zijn. Voor elke laag wordt een andere strategie gebruikt om DR (Disaster Recovery, herstel na noodgeval) te bieden.
 
 #### <a name="vms-running-sap-web-dispatcher-pool"></a>Vm's met een SAP Web dispatcher-pool 
-Het onderdeel Web Dispatcher wordt gebruikt als een load balancer voor SAP-verkeer tussen de SAP-toepassingsservers. Voor een hoge Beschik baarheid van het onderdeel webdispatcher, Azure Load Balancer wordt gebruikt voor het implementeren van de installatie van de parallelle webdispatcher in een Round-Robin configuratie voor HTTP (S)-verkeer distributie over de beschik bare webdispatchers in de Balancer-pool. Dit wordt gerepliceerd met behulp van Azure Site Recovery (ASR) en automatiserings scripts worden gebruikt voor het configureren van load balancer op het gebied voor herstel na nood gevallen. 
+Het onderdeel Web Dispatcher wordt gebruikt als een load balancer voor SAP-verkeer tussen de SAP-toepassingsservers. Voor een hoge Beschik baarheid van het onderdeel webdispatcher, Azure Load Balancer wordt gebruikt voor het implementeren van de installatie van de parallelle webdispatcher in een Round-Robin configuratie voor HTTP (S)-verkeer distributie over de beschik bare webdispatchers in de Balancer-pool. Dit wordt gerepliceerd met Site Recovery en automatiserings scripts worden gebruikt voor het configureren van load balancer op het gebied voor herstel na nood gevallen. 
 
 #### <a name="vms-running-application-servers-pool"></a>Virtuele machines met een groep toepassings servers
-Voor het beheren van aanmeldingsgroepen voor ABAP-toepassingsservers, wordt de transactie SMLG gebruikt. De load balancer-functie binnen de berichtenserver van de centrale Services wordt gebruikt voor het distribueren van werkbelasting tussen SAP-toepassingen voor servers voor SAPGUIs en RFC verkeer. Dit wordt gerepliceerd met Azure Site Recovery 
+Voor het beheren van aanmeldingsgroepen voor ABAP-toepassingsservers, wordt de transactie SMLG gebruikt. De load balancer-functie binnen de berichtenserver van de centrale Services wordt gebruikt voor het distribueren van werkbelasting tussen SAP-toepassingen voor servers voor SAPGUIs en RFC verkeer. Dit wordt gerepliceerd met behulp van Site Recovery.
 
 #### <a name="vms-running-sap-central-services-cluster"></a>Vm's met een SAP Central Services-cluster
 Deze referentiearchitectuur centrale Services worden uitgevoerd op virtuele machines in de toepassingslaag. De centrale Services is een potentieel single point of failure (SPOF) bij de implementatie op een enkele virtuele machine, normale implementatie als hoge beschikbaarheid geen vereiste is.<br>
 
 Als u een oplossing met hoge Beschik baarheid wilt implementeren, kunt u een gedeeld schijf cluster of een bestands share-cluster gebruiken. Als u Vm's wilt configureren voor een gedeeld schijf cluster, gebruikt u Windows Server-failovercluster. Cloud-witness wordt aanbevolen als een quorumwitness. 
  > [!NOTE]
- > Azure Site Recovery repliceert de Cloud-Witness daarom het is raadzaam om de cloudwitness in het gebied voor nood herstel te implementeren.
+ > Site Recovery repliceert de Cloud-Witness daarom het is raadzaam om de cloudwitness in het gebied voor nood herstel te implementeren.
 
 Ter ondersteuning van de failover-clusteromgeving [SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) het cluster shared volume-functie wordt uitgevoerd door onafhankelijke schijven die eigendom zijn van de clusterknooppunten te repliceren. Azure biedt geen systeemeigen ondersteuning voor gedeelde schijven en daarom vereist SIOS-oplossingen. 
 
 Een andere manier om clustering af te handelen is het implementeren van een bestands share cluster. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) het patroon van de implementatie Central Services voor toegang tot de algemene mappen /sapmnt via een UNC-pad die onlangs zijn gewijzigd. Het is echter nog steeds raadzaam om ervoor te zorgen dat de/sapmnt UNC-share Maxi maal beschikbaar is. Dit kan worden gedaan in het centrale Services-exemplaar met behulp van Windows Server-failovercluster met scale out file server (SOFS) en de functie Opslagruimten Direct (S2D) in Windows Server 2016. 
  > [!NOTE]
- > Momenteel Azure Site Recovery ondersteunen alleen crash consistente punt replicatie van virtuele machines met behulp van opslag ruimten direct en passief knoop punt SIOS data keeper
+ > Momenteel Site Recovery ondersteunen alleen crash consistente punt replicatie van virtuele machines met behulp van opslag ruimten direct en passief knoop punt SIOS data keeper
 
 
 ## <a name="disaster-recovery-considerations"></a>Overwegingen voor herstel na noodgeval
 
-U kunt Azure Site Recovery gebruiken om de failover van een volledige SAP-implementatie in azure-regio's te organiseren.
+U kunt Site Recovery gebruiken om de failover van een volledige SAP-implementatie in azure-regio's te organiseren.
 Hieronder vindt u de stappen voor het instellen van herstel na nood gevallen 
 
 1. Virtuele machines repliceren 
@@ -97,9 +95,9 @@ Hieronder ziet u de aanbeveling voor herstel na nood gevallen van elke laag die 
 
  **SAP-lagen** | **Aanbeveling**
  --- | ---
-**SAP Web dispatcher-pool** |  Repliceren met site Recovery 
-**SAP-toepassings server groep** |  Repliceren met site Recovery 
-**SAP Central Services-cluster** |  Repliceren met site Recovery 
+**SAP Web dispatcher-pool** |  Repliceren met Site Recovery 
+**SAP-toepassings server groep** |  Repliceren met Site Recovery 
+**SAP Central Services-cluster** |  Repliceren met Site Recovery 
 **Virtuele machines van Active Directory** |  Active Directory-replicatie 
 **SQL database-servers** |  SQL always on Replication
 
@@ -133,7 +131,7 @@ Een herstel plan ondersteunt het sequentiëren van verschillende lagen in een to
 Voor een goede werking van uw toepassingen moet u mogelijk bepaalde bewerkingen uitvoeren op de virtuele Azure-machines na de failover of tijdens een testfailover. U kunt bewerkingen na de failover automatiseren. U kunt de DNS-vermelding bijvoorbeeld bijwerken en bindingen en verbindingen wijzigen door de bijbehorende scripts toe te voegen aan het herstel plan.
 
 
-U kunt de meest gebruikte Azure Site Recovery scripts implementeren in uw Automation-account door te klikken op de knop implementeren naar Azure hieronder. Wanneer u een gepubliceerd script gebruikt, zorg er dan voor dat u de instructies in het script volgt.
+U kunt de meest gebruikte Site Recovery scripts implementeren in uw Automation-account door te klikken op de knop implementeren naar Azure hieronder. Wanneer u een gepubliceerd script gebruikt, zorg er dan voor dat u de instructies in het script volgt.
 
 [![Implementeren in Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
@@ -164,5 +162,5 @@ Zie [failover testen naar Azure in site Recovery](site-recovery-test-failover-to
 Zie [failover in site Recovery](site-recovery-failover.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Voor meer informatie over het bouwen van een oplossing voor herstel na nood gevallen voor SAP NetWeaver-implementaties met behulp van Site Recovery raadpleegt u het Download bare White paper [SAP NetWeaver: een oplossing voor nood herstel met Azure site Recovery bouwen](https://aka.ms/asr_sap). In het technisch document vindt u aanbevelingen voor diverse SAP-architecturen, een lijst met ondersteunde toepassingen en VM-typen voor SAP on Azure en een beschrijving van de test plan opties voor uw oplossing voor herstel na nood gevallen.
+* Voor meer informatie over het bouwen van een oplossing voor herstel na nood gevallen voor SAP NetWeaver-implementaties met behulp van Site Recovery raadpleegt u het Download bare White paper [SAP NetWeaver: een oplossing voor nood herstel met site Recovery bouwen](https://aka.ms/asr_sap). In het technisch document vindt u aanbevelingen voor diverse SAP-architecturen, een lijst met ondersteunde toepassingen en VM-typen voor SAP on Azure en een beschrijving van de test plan opties voor uw oplossing voor herstel na nood gevallen.
 * Meer informatie over het [repliceren van andere werk belastingen](site-recovery-workload.md) met behulp van site Recovery.

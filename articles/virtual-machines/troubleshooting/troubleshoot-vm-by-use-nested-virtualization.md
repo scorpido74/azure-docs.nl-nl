@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 4565eb86727e768ba894d701cbc5e0073c07ee01
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 87faea5385f5b0fd2c481c6aa7c45a9867b34163
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185514"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942188"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Een probleem met een Azure-VM oplossen met geneste virtualisatie in azure
 
@@ -29,8 +29,6 @@ In dit artikel wordt beschreven hoe u een geneste Virtualization Environment maa
 Als u de probleem-VM wilt koppelen, moet de virtuele machine voor herstel voldoen aan de volgende vereisten:
 
 -   De herstel-VM moet zich op dezelfde locatie bevindt als de probleem-VM.
-
--   De virtuele machine voor herstel moet zich in dezelfde resource groep bevindt als de probleem-VM.
 
 -   De herstel-VM moet gebruikmaken van hetzelfde type opslag account (Standard of Premium) als de probleem-VM.
 

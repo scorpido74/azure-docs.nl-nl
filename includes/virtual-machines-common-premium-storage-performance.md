@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 32c1ca95c01edec74f22fc051e453f2ac0dbd03f
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 88b19257a6a7d335e6a928a9eaf7526fbfd5b02e
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564785"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942767"
 ---
 ## <a name="application-performance-indicators"></a>Prestatie-indica toren voor toepassingen
 
@@ -126,7 +126,7 @@ Zie [Linux VM-grootten](../articles/virtual-machines/linux/sizes.md) of [Windows
 | **I/o-grootte** |Bij een kleinere IO-grootte wordt een hogere IOPS als resultaat verkregen. |Grotere IO-grootte om een hogere door voer te leveren. | &nbsp;|
 | **VM-grootte** |Gebruik een VM-grootte die IOPS groter is dan de vereiste van uw toepassing. |Gebruik een VM-grootte met een doorvoer limiet van meer dan uw toepassings vereiste. |Gebruik een VM-grootte die groter is dan de vereiste schaal limieten. |
 | **Schijf grootte** |Gebruik een schijf grootte met IOPS die groter is dan de vereiste van uw toepassing. |Gebruik een schijf grootte met een doorvoer limiet van meer dan uw toepassings vereiste. |Gebruik een schijf grootte die hoger is dan de vereiste voor uw toepassing. |
-| **Schaal limieten voor VM'S en schijven** |De limiet voor IOPS van de gekozen VM-grootte moet groter zijn dan het totale aantal IOPS dat is gekoppeld aan de Premium Storage-schijven. |De doorvoer limiet van de gekozen VM-grootte moet groter zijn dan de totale door Voer die wordt aangestuurd door de Premium-opslag schijven die eraan zijn gekoppeld. |De schaal limieten van de gekozen VM-grootte moeten groter zijn dan de totale schaal limieten van gekoppelde Premium Storage-schijven. |
+| **Schaal limieten voor VM'S en schijven** |De limiet voor IOPS van de gekozen VM-grootte moet groter zijn dan het totale aantal IOPS dat wordt aangestuurd door de opslag schijven die eraan zijn gekoppeld. |De doorvoer limiet van de gekozen VM-grootte moet groter zijn dan de totale door Voer die wordt aangestuurd door de Premium-opslag schijven die eraan zijn gekoppeld. |De schaal limieten van de gekozen VM-grootte moeten groter zijn dan de totale schaal limieten van gekoppelde Premium Storage-schijven. |
 | **Schijf cache** |Schakel alleen-lezen cache op Premium-opslag schijven in met zware bewerkingen om meer Lees-IOPS te krijgen. | &nbsp; |Schakel alleen-lezen cache op Premium-opslag schijven met kant-en-klare bewerkingen uit om zeer weinig lees latentie te verkrijgen. |
 | **Schijf striping** |Gebruik meerdere schijven en strip deze samen om een gecombineerde hogere IOPS en doorvoer limiet te verkrijgen. De gecombineerde limiet per VM moet hoger zijn dan de gecombineerde limieten van gekoppelde Premium-schijven. | &nbsp; | &nbsp; |
 | **Stripe-grootte** |Kleinere Stripe-grootte voor wille keurig klein i/o-patroon dat wordt weer gegeven in OLTP-toepassingen. Gebruik bijvoorbeeld Stripe-grootte van 64 KB voor SQL Server OLTP-toepassing. |Grotere Stripe-grootte voor het sequentiële grote i/o-patroon dat wordt weer gegeven in Data Warehouse-toepassingen. Gebruik bijvoorbeeld 256 KB-Stripe-grootte voor SQL Server Data Warehouse-toepassing. | &nbsp; |

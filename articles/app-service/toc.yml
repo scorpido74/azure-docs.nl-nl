@@ -117,6 +117,8 @@
       items:
         - name: De app implementeren
           items:
+            - name: Uitvoeren uit pakket
+              href: deploy-run-package.md
             - name: Een ZIP- of WAR-bestand implementeren
               href: deploy-zip.md
             - name: Implementeren via FTP

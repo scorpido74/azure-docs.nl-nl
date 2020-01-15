@@ -5,15 +5,15 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 01/13/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 21f11b9175566fc020ad21e1983a9bef64ebbae3
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a3180593eaf8c01c772fd761d88b5f5b9f7657ee
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327864"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941510"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>Gegevens van Amazon S3 naar Azure Storage kopiëren met behulp van AzCopy
 
@@ -56,47 +56,64 @@ AzCopy maakt gebruik [van de API put van URL](https://docs.microsoft.com/rest/ap
 > [!TIP]
 > De voor beelden in deze sectie zijn pad-argumenten met enkele aanhalings tekens (' '). Gebruik enkele aanhalings tekens in alle opdracht shells, met uitzonde ring van de Windows-opdracht shell (cmd. exe). Als u een Windows-opdracht shell (cmd. exe) gebruikt, plaatst u padvariabelen tussen dubbele aanhalings tekens ("") in plaats van enkele aanhalings tekens (' ').
 
+ Deze voor beelden werken ook met accounts die een hiërarchische naam ruimte hebben. Met [toegang via meerdere protocollen op Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) kunt u dezelfde URL-syntaxis (`blob.core.windows.net`) gebruiken voor deze accounts. 
+
 ### <a name="copy-an-object"></a>Een object kopiëren
+
+Gebruik dezelfde URL-syntaxis (`blob.core.windows.net`) voor accounts die een hiërarchische naam ruimte hebben.
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
 | **Voorbeeld** | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
+| **Voor beeld** (hiërarchische naam ruimte) | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
 
 > [!NOTE]
 > Voor beelden in dit artikel gebruiken Path-Url's voor AWS S3-buckets (bijvoorbeeld: `http://s3.amazonaws.com/<bucket-name>`). 
 >
 > U kunt ook virtuele Url's voor gehoste stijlen gebruiken (bijvoorbeeld: `http://bucket.s3.amazonaws.com`). 
 >
-> Zie [virtuele hosting van buckets]] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html)voor meer informatie over virtuele hosting van buckets.
+> Zie [virtuele hosting van buckets]] (https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html) voor meer informatie over virtuele hosting van buckets.
 
 ### <a name="copy-a-directory"></a>Een map kopiëren
+
+Gebruik dezelfde URL-syntaxis (`blob.core.windows.net`) voor accounts die een hiërarchische naam ruimte hebben.
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **Voorbeeld** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **Voor beeld** (hiërarchische naam ruimte)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>Een Bucket kopiëren
+
+Gebruik dezelfde URL-syntaxis (`blob.core.windows.net`) voor accounts die een hiërarchische naam ruimte hebben.
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
 | **Voorbeeld** | `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
+| **Voor beeld** (hiërarchische naam ruimte)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-all-regions"></a>Alle buckets in alle regio's kopiëren
+
+Gebruik dezelfde URL-syntaxis (`blob.core.windows.net`) voor accounts die een hiërarchische naam ruimte hebben.
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Voorbeeld** | `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
+| **Voor beeld** (hiërarchische naam ruimte)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-a-specific-s3-region"></a>Alle buckets in een specifieke S3-regio kopiëren
+
+Gebruik dezelfde URL-syntaxis (`blob.core.windows.net`) voor accounts die een hiërarchische naam ruimte hebben.
 
 |    |     |
 |--------|-----------|
 | **Syntaxis** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Voorbeeld** | `azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
+| **Voor beeld** (hiërarchische naam ruimte)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ## <a name="handle-differences-in-object-naming-rules"></a>Verschillen in regels voor object naamgeving afhandelen
 

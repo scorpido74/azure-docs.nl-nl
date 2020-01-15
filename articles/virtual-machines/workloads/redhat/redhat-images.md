@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2019
 ms.author: alsin
-ms.openlocfilehash: 27cd5b775fbd2af58d93d539420262665d70ead4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 211ac68fd10cd745faf68a5efae7392345008d7b
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486324"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941452"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Overzicht van Red Hat Enterprise Linux installatie kopieën
 In dit artikel worden beschik bare installatie kopieën van Red Hat Enterprise Linux (RHEL) in de Azure Marketplace beschreven, samen met beleids regels rondom hun naam en bewaar periode.
@@ -154,5 +154,5 @@ Ons huidige beleid is om alle eerder gepubliceerde installatie kopieën te blijv
 ## <a name="next-steps"></a>Volgende stappen
 * Bekijk de volledige lijst met [RHEL-installatie kopieën in azure](./redhat-imagelist.md).
 * Lees [hier](https://aka.ms/rhui-update)meer over de Azure Red Hat-update-infra structuur.
-* Meer informatie over de [RHEL BYOS-aanbieding](./redhat-byos.md).
+* Meer informatie over de [RHEL BYOS-aanbieding](./byos.md).
 * Informatie over Red Hat-ondersteunings beleid voor alle versies van RHEL vindt u op de pagina [levens cyclus van Red Hat Enterprise Linux](https://access.redhat.com/support/policy/updates/errata) .

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 11/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f8f7d16c9fa5141add5c661c0e05cc93da436614
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 97d8d49b958293e3b51937cafc0874beb4f5ff4a
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834889"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942237"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Modellen trainen met Azure Machine Learning met behulp van estimator
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -131,7 +131,7 @@ Zodra u het model hebt getraind, kunt u het opslaan en registreren in uw werk ru
 Als u de volgende code uitvoert, wordt het model geregistreerd in uw werk ruimte en wordt het beschikbaar gemaakt om te verwijzen op naam in externe Compute-contexten of implementatie scripts. Zie [`register_model`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) in de naslag documentatie voor meer informatie en aanvullende para meters.
 
 ```python
-model = run.register_model(model_name='sklearn-sample')
+model = run.register_model(model_name='sklearn-sample', model_path=None)
 ```
 
 ## <a name="github-tracking-and-integration"></a>GitHub bijhouden en integreren

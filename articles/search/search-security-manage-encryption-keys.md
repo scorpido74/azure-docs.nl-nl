@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 2663e6c37819acf7cb781779107673b8ee3aec53
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 6c7be7d92cae992e54ca6e9f50dda6342c57856b
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832247"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945721"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Versleuteling: op rest van inhoud in azure Cognitive Search met door de klant beheerde sleutels in Azure Key Vault
 
@@ -32,7 +32,7 @@ Sleutels hoeven niet allemaal in hetzelfde Key Vault te zijn. Eén zoek service 
 
 In dit voor beeld worden de volgende services gebruikt. 
 
-+ [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt voor deze zelf studie gebruikmaken van een gratis service.
++ [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. De zoek service moet na januari 2019 zijn gemaakt en kan geen gratis (gedeelde) service zijn.
 
 + [Een Azure Key Vault resource maken](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) of een bestaande kluis vinden onder uw abonnement.
 

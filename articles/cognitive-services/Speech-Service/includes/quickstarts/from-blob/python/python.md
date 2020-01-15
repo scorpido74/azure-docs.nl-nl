@@ -1,32 +1,25 @@
 ---
-title: 'Quick Start: spraak herkennen die zijn opgeslagen in C# Blob Storage,-Speech Service'
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 2f06d0015bd80b37407df28045d4ced4a128e47e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: bfecfa1918d2e9199971b2f9738530dc1b4e3c4c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469335"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942728"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
-> * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Een bron bestand uploaden naar een Azure-Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 > * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md)
 > * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md)
+> * [Een Azure-spraak resource maken](../../../../get-started.md)
+> * [Een bron bestand uploaden naar een Azure-Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="download-and-install-the-api-client-library"></a>Down load en installeer de API-client bibliotheek
 
@@ -43,7 +36,8 @@ Voer de volgende stappen uit om de installatie uit te voeren:
 1. Installeer de uitgepakte python-client module in uw python-omgeving met PIP: `pip install path/to/package/python-client`.
 1. Het geïnstalleerde pakket heeft de naam `swagger_client`. U kunt controleren of de installatie is uitgevoerd met behulp van de opdracht `python -c "import swagger_client"`.
 
-> **Opmerking:** Als gevolg [van een bekende fout in de Swagger automatisch genereren](https://github.com/swagger-api/swagger-codegen/issues/7541), kunnen er fouten optreden bij het importeren van het `swagger_client`-pakket.
+> [!NOTE]
+> Als gevolg [van een bekende fout in de Swagger automatisch genereren](https://github.com/swagger-api/swagger-codegen/issues/7541), kunnen er fouten optreden bij het importeren van het `swagger_client`-pakket.
 > Deze kunnen worden opgelost door de regel met de inhoud te verwijderen
 > ```py
 > from swagger_client.models.model import Model  # noqa: F401,E501
@@ -67,7 +61,8 @@ pip install requests
 Laten we een code toevoegen die als een skelet voor het project werkt.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-2,7-34,115-119)]
-(U moet de waarden van `YourSubscriptionKey`, `YourServiceRegion`en `YourFileUrl` vervangen door uw eigen waarden.)
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
 ## <a name="create-and-configure-an-http-client"></a>Een HTTP-client maken en configureren
 Het eerste wat u nodig hebt, is een HTTP-client waarvoor een juiste basis-URL en verificatieset is ingesteld.

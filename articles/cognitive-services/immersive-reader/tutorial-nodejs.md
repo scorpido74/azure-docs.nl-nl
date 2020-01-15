@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: De insluitende lezer starten met node. js'
+title: 'Zelf studie: de insluitende lezer starten met node. js'
 titleSuffix: Azure Cognitive Services
 description: In deze zelf studie maakt u een node. js-toepassing waarmee de insluitende lezer wordt gestart.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 2a07e392170fb9e6993f4c560a4896a468d90820
-ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+ms.openlocfilehash: 37453e1fdd8fdcfc89468731980581652027343c
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71338505"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945237"
 ---
-# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Zelfstudie: Start de Insluitende lezer (Node.js)
+# <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Zelf studie: de insluitende lezer (node. js) starten
 
 In het [overzicht](./overview.md)hebt u geleerd wat de insluitende lezer is en hoe deze de bewezen technieken implementeert om de Lees vaardigheid te verbeteren voor taal kennis, opkomende lezers en studenten met meer informatie. In deze zelf studie wordt beschreven hoe u een node. js-webtoepassing maakt waarmee de insluitende lezer wordt gestart. In deze zelfstudie leert u het volgende:
 
@@ -33,13 +33,13 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een insluitende lezer-resource die is geconfigureerd voor Azure Active Directory-verificatie (Azure AD). Volg [deze instructies om de](./azure-active-directory-authentication.md) instellingen op te halen. U hebt enkele van de waarden nodig die u hier hebt gemaakt bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekst bestand voor toekomstig naslag doeleinden.
+* Een resource voor insluitende lezer die is geconfigureerd voor Azure Active Directory authenticatie. Volg [deze instructies om de](./how-to-create-immersive-reader.md) instellingen op te halen. U hebt enkele van de waarden nodig die u hier hebt gemaakt bij het configureren van de eigenschappen van de omgeving. Sla de uitvoer van uw sessie op in een tekst bestand voor toekomstig naslag doeleinden.
 * [Node. js](https://nodejs.org/) en [garens](https://yarnpkg.com)
 * Een IDE zoals [Visual Studio code](https://code.visualstudio.com/)
 
 ## <a name="create-a-nodejs-web-app-with-express"></a>Een node. js-web-app maken met Express
 
-Maak een node. js-web-app `express-generator` met het hulp programma.
+Maak een node. js-web-app met het `express-generator`-hulp programma.
 
 ```bash
 npm install express-generator -g
@@ -47,7 +47,7 @@ express --view=pug myapp
 cd myapp
 ```
 
-Installeer garen afhankelijkheden en voeg `request` afhankelijkheden `dotenv`toe en, die later in de zelf studie worden gebruikt.
+Installeer garen afhankelijkheden en voeg afhankelijkheden `request` en `dotenv`toe, die later in de zelf studie worden gebruikt.
 
 ```bash
 yarn
@@ -111,14 +111,14 @@ router.get('/getimmersivereaderlaunchparams', function(req, res) {
                 if (err) {
                     return res.status(500).send('CogSvcs IssueToken error');
                 }
-        
+
                 const token = JSON.parse(tokenResponse).access_token;
                 const subdomain = process.env.SUBDOMAIN;
                 return res.send({token: token, subdomain: subdomain});
         }
   );
 });
- 
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -132,7 +132,7 @@ Het **getimmersivereaderlaunchparams** -API-eind punt moet worden beveiligd acht
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>De insluitende lezer starten met voorbeeld inhoud
 
-1. Open _views\layout.Pug_en voeg de volgende code toe onder het `head` label vóór de `body` tag. Met `script` deze tags worden de [insluitende lezer-SDK](https://github.com/microsoft/immersive-reader-sdk) en jQuery geladen.
+1. Open _views\layout.Pug_en voeg de volgende code toe onder het label `head` vóór de tag `body`. Met deze `script` Tags worden de [insluitende lezer-SDK](https://github.com/microsoft/immersive-reader-sdk) en jQuery geladen.
 
     ```pug
     script(src='https://contentstorage.onenote.office.net/onenoteltir/immersivereadersdk/immersive-reader-sdk.0.0.2.js')
@@ -149,7 +149,7 @@ Het **getimmersivereaderlaunchparams** -API-eind punt moet worden beveiligd acht
           p(id='content') The study of Earth's landforms is called physical geography. Landforms can be mountains and valleys. They can also be glaciers, lakes or rivers.
           div(class='immersive-reader-button' data-button-style='iconAndText' data-locale='en-US' onclick='launchImmersiveReader()')
           script.
-        
+
             function getImmersiveReaderLaunchParamsAsync() {
                     return new Promise((resolve, reject) => {
                         $.ajax({
@@ -165,7 +165,7 @@ Het **getimmersivereaderlaunchparams** -API-eind punt moet worden beveiligd acht
                         });
                     });
             }
-        
+
             async function launchImmersiveReader() {
                     const content = {
                             title: document.getElementById('title').innerText,
@@ -174,11 +174,11 @@ Het **getimmersivereaderlaunchparams** -API-eind punt moet worden beveiligd acht
                                     lang: 'en'
                             }]
                     };
-            
+
                     const launchParams = await getImmersiveReaderLaunchParamsAsync();
                     const token = launchParams.token;
                     const subdomain = launchParams.subdomain;
-            
+
                     ImmersiveReader.launchAsync(token, subdomain, content);
             }
     ```
@@ -195,13 +195,13 @@ Het **getimmersivereaderlaunchparams** -API-eind punt moet worden beveiligd acht
 
 De insluitende lezer biedt ondersteuning voor veel verschillende talen. U kunt de taal van uw inhoud opgeven door de volgende stappen uit te voeren.
 
-1. Open _views\index.Pug_ en voeg de volgende code toe onder `p(id=content)` het label dat u in de vorige stap hebt toegevoegd. Met deze code wordt de Engelse inhoud van inhoud aan uw pagina toegevoegd.
+1. Open _views\index.Pug_ en voeg de volgende code toe onder het `p(id=content)` label dat u in de vorige stap hebt toegevoegd. Met deze code wordt de Engelse inhoud van inhoud aan uw pagina toegevoegd.
 
     ```pug
     p(id='content-spanish') El estudio de las formas terrestres de la Tierra se llama geografía física. Los accidentes geográficos pueden ser montañas y valles. También pueden ser glaciares, lagos o ríos.
     ```
 
-2. Voeg in de Java script-code het volgende toe boven de `ImmersiveReader.launchAsync`aanroep van. Met deze code wordt de Spaanse inhoud door gegeven aan de insluitende lezer.
+2. Voeg in de Java script-code het volgende toe boven de aanroep van `ImmersiveReader.launchAsync`. Met deze code wordt de Spaanse inhoud door gegeven aan de insluitende lezer.
 
     ```pug
     content.chunks.push({
@@ -210,13 +210,13 @@ De insluitende lezer biedt ondersteuning voor veel verschillende talen. U kunt d
     });
     ```
 
-3. Ga opnieuw _http://localhost:3000_ naar opnieuw. De Spaanse tekst op de pagina wordt weer gegeven, en wanneer u op **insluitende lezer**klikt, wordt deze ook in de insluitende lezer getoond.
+3. Ga opnieuw naar _http://localhost:3000_ . De Spaanse tekst op de pagina wordt weer gegeven, en wanneer u op **insluitende lezer**klikt, wordt deze ook in de insluitende lezer getoond.
 
 ## <a name="specify-the-language-of-the-immersive-reader-interface"></a>De taal van de insluitende Reader-interface opgeven
 
 De taal van de insluitende Reader-interface komt standaard overeen met de taal instellingen van de browser. U kunt ook de taal van de insluitende Reader-interface met de volgende code opgeven.
 
-1. Vervang in _views\index.Pug_de aanroep door door `ImmersiveReader.launchAsync(token, subdomain, content)` de onderstaande code in te voeren.
+1. Vervang in _views\index.Pug_de aanroep naar `ImmersiveReader.launchAsync(token, subdomain, content)` door de onderstaande code.
 
     ```javascript
     const options = {
@@ -231,7 +231,7 @@ De taal van de insluitende Reader-interface komt standaard overeen met de taal i
 
 U kunt wiskundige inhoud in de insluitende lezer toevoegen met behulp van [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML).
 
-1. Wijzig _views\index.Pug_ zodat de volgende code wordt toegevoegd aan de aanroep `ImmersiveReader.launchAsync`:
+1. Wijzig _views\index.Pug_ zodat de volgende code wordt toegevoegd boven de aanroep van `ImmersiveReader.launchAsync`:
 
     ```javascript
     const mathML = '<math xmlns="https://www.w3.org/1998/Math/MathML" display="block"> \

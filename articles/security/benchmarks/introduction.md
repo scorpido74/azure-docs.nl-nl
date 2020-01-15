@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: 3169959250eb45346456c64e606f25efb0ea44f0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 8f65eb008d5df6ea3f2f85778d538023e6ce98eb
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934228"
+ms.locfileid: "75945322"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Inleiding tot Azure Security Bench Mark
 
@@ -27,7 +27,7 @@ De Azure Security Bench Mark bevat een verzameling essentiële aanbevelingen voo
 
 De documentatie voor Azure Security Bench Mark bevat beveiligings controles en service aanbevelingen.
 
-- **Beveiligings controles**: de aanbevelingen voor Azure Security-benchmarks worden gecategoriseerd door beveiligings controles. Beveiligings controles vertegenwoordigen neutraal beveiligings vereisten op hoog niveau, zoals netwerk beveiliging en gegevens bescherming. Elk beveiligings beheer heeft een aantal beveiligings aanbevelingen en instructies waarmee u deze aanbevelingen kunt implment. 
+- **Beveiligings controles**: de aanbevelingen voor Azure Security-benchmarks worden gecategoriseerd door beveiligings controles. Beveiligings controles vertegenwoordigen neutraal beveiligings vereisten op hoog niveau, zoals netwerk beveiliging en gegevens bescherming. Elk beveiligings beheer bevat een reeks beveiligings aanbevelingen en instructies voor het implementeren van deze aanbevelingen. 
 - **Aanbevelingen voor services**: wanneer deze beschikbaar zijn, bevatten de benchmark aanbevelingen voor Azure-Services Azure Security Bench Mark-aanbevelingen die specifiek zijn afgestemd op die service. 
 
 De termen "besturings element", "bench Mark" en "baseline" worden vaak gebruikt in de documentatie over Azure Security Bench Mark. het is belang rijk om te begrijpen hoe Azure deze voor waarden gebruikt. 

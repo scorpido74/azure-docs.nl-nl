@@ -13,20 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: shvija
-ms.openlocfilehash: ade4aa79b2de005bfecd7a5882f06cb491ea4e6d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: e81871e27c04f8a43f678110d7f44cc9c3be149c
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717844"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940760"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python"></a>Snelstartgids: overzicht van het vastleggen van Event Hubs: python
 
-Capture is een functie van Azure Event Hubs. U kunt vastleggen gebruiken om automatisch de streaming-gegevens in uw Event Hub te leveren naar een Azure Blob Storage-account van uw keuze. Deze mogelijkheid maakt het eenvoudig om batch verwerking uit te voeren op realtime streaming-gegevens. In dit artikel wordt beschreven hoe u Event Hubs Capture kunt gebruiken met python. Zie [gebeurtenissen vastleggen via Azure Event hubs][Overview of Event Hubs Capture]voor meer informatie over het vastleggen van Event hubs.
+Vastleggen is een functie van Azure Event Hubs. U kunt vastleggen gebruiken om automatisch de streaming-gegevens in uw Event Hub te leveren naar een Azure Blob Storage-account van uw keuze. Deze mogelijkheid maakt het eenvoudig om batch verwerking uit te voeren op realtime streaming-gegevens. In dit artikel wordt beschreven hoe u Event Hubs Capture gebruiken met Python. Zie [gebeurtenissen vastleggen via Azure Event hubs][Overview of Event Hubs Capture]voor meer informatie over het vastleggen van Event hubs.
 
 In dit scenario wordt de [Azure PYTHON SDK](https://azure.microsoft.com/develop/python/) gebruikt om de Capture-functie te demonstreren. Het *Sender.py* -programma verzendt gesimuleerde omgevings-telemetrie naar Event hubs in JSON-indeling. De Event Hub gebruikt de Capture-functie om deze gegevens in batches te schrijven naar Blob Storage. De *capturereader.py* -app leest deze blobs, maakt een toevoeg bestand voor elk van uw apparaten en schrijft de gegevens naar *CSV* -bestanden op elk apparaat.
+
+> [!IMPORTANT]
+> Deze Snelstartgids maakt gebruik van versie 1 van de Azure Event Hubs python SDK. Als u geen ervaring hebt met Azure Event Hubs, gebruikt u versie 5 van de python-SDK. Zie [dit artikel](get-started-capture-python-v2.md)voor een Snelstartgids die versie 5 van de PYTHON-SDK gebruikt. Als u bestaande code van versie 1 naar versie 5 wilt migreren, raadpleegt u de [migratie handleiding](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md).
 
 In dit scenario kunt u het volgende doen: 
 
@@ -74,7 +77,7 @@ Maak een opslag account en een container die moeten worden gebruikt voor de opna
 5. Selecteer op het scherm **vastleggen** de optie **wijzigingen opslaan**. 
 
 ## <a name="create-a-python-script-to-send-events-to-event-hub"></a>Een python-script maken voor het verzenden van gebeurtenissen naar Event hub
-Met dit script worden 200 gebeurtenissen naar uw Event Hub verzonden. De gebeurtenissen zijn eenvoudige omgevings leesingen die in JSON worden verzonden.
+Met dit script verzonden 200 gebeurtenissen naar uw event hub. De gebeurtenissen zijn eenvoudige omgevings leesingen die in JSON worden verzonden.
 
 1. Open uw favoriete python-editor, zoals [Visual Studio code][Visual Studio Code].
 2. Maak een nieuw bestand met de naam *Sender.py*. 

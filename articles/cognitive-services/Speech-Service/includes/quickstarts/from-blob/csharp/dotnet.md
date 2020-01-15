@@ -1,32 +1,25 @@
 ---
-title: 'Quick Start: spraak herkennen die zijn opgeslagen in C# Blob Storage,-Speech Service'
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b8b650920c03b14c7d55aafd6ecdb43dafaafafe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: 1022a744564ed61a90973f7bba3eb32e9a632b46
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75467345"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942759"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
+> * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md?tabs=vs&pivots=programmming-language-csharp)
+> * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md?pivots=programmming-language-csharp)
 > * [Een Azure-spraak resource maken](../../../../get-started.md)
 > * [Een bron bestand uploaden naar een Azure-Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-> * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md?tabs=dotnet)
 
 ## <a name="open-your-project-in-visual-studio"></a>Uw project openen in Visual Studio
 
@@ -35,7 +28,7 @@ De eerste stap is om ervoor te zorgen dat uw project in Visual Studio is geopend
 1. Start Visual Studio 2019.
 2. Laad uw project en open `Program.cs`.
 
-## <a name="add-a-reference-to-newtonsoftjson"></a>Een verwijzing naar NewtonSoftJSon toevoegen
+## <a name="add-a-reference-to-newtonsoftjson"></a>Een verwijzing naar Newton soft. json toevoegen
 
 1. Klik in de Solution Explorer met de rechter muisknop op het project **HelloWorld** en selecteer vervolgens **NuGet-pakketten beheren** om de NuGet-pakket manager weer te geven.
 
@@ -45,7 +38,7 @@ De eerste stap is om ervoor te zorgen dat uw project in Visual Studio is geopend
 
 1. Typ *Newton soft. json* in het zoekvak en selecteer **Enter**.
 
-1. Selecteer in de zoek resultaten het pakket **Newton soft. json** en selecteer vervolgens **installeren** om de nieuwste stabiele versie te installeren.
+1. Selecteer in de zoek resultaten het pakket [**Newton soft. json**](https://www.nuget.org/packages/Newtonsoft.Json) en selecteer vervolgens **installeren** om de nieuwste stabiele versie te installeren.
 
 1. Accepteer alle overeenkomsten en licenties om de installatie te starten.
 
@@ -56,7 +49,9 @@ De eerste stap is om ervoor te zorgen dat uw project in Visual Studio is geopend
 Laten we een code toevoegen die als een skelet voor het project werkt.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=6-43,138,277)]
-(U moet de waarden van `YourSubscriptionKey`, `YourServiceRegion`en `YourFileUrl` vervangen door uw eigen waarden.)
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
+
 ## <a name="json-wrappers"></a>JSON-wrappers
 
 Als de aanvragen van de REST API in JSON-indeling worden uitgevoerd en de resultaten worden geretourneerd in JSON, kunnen ze met alleen teken reeksen communiceren, maar dit wordt niet aanbevolen.

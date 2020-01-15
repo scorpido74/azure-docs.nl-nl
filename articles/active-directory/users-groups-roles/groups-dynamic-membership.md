@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f5be34a58d8f0416a31cd575ef0fea614b3d43e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8ff2ff69ca00a9ed9c48ebd6f1704fac0b16d068
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768708"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940998"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Dynamische lidmaatschaps regels voor groepen in Azure Active Directory
 
@@ -97,10 +97,10 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 | --- | --- | --- |
 | city |Een wille keurige teken reeks waarde of *Null* |(User. City-EQ "waarde") |
 | land |Een wille keurige teken reeks waarde of *Null* |(User. country-EQ "waarde") |
-| CompanyName | Een wille keurige teken reeks waarde of *Null* | (user.companyName -eq "value") |
+| companyName | Een wille keurige teken reeks waarde of *Null* | (user.companyName -eq "value") |
 | department |Een wille keurige teken reeks waarde of *Null* |(User. Department-EQ "waarde") |
-| displayName |Wille keurige teken reeks waarde |(User. displayName-EQ "waarde") |
-| employeeId |Wille keurige teken reeks waarde |(User. employeeId-EQ "waarde")<br>(User. employeeId-ne *Null*) |
+| displayName |wille keurige teken reeks waarde |(User. displayName-EQ "waarde") |
+| employeeId |wille keurige teken reeks waarde |(User. employeeId-EQ "waarde")<br>(User. employeeId-ne *Null*) |
 | facsimileTelephoneNumber |Een wille keurige teken reeks waarde of *Null* |(user.facsimileTelephoneNumber -eq "value") |
 | givenName |Een wille keurige teken reeks waarde of *Null* |(gebruiker. OpgegevenNaam-EQ "waarde") |
 | Functie |Een wille keurige teken reeks waarde of *Null* |(User. jobTitle-EQ "waarde") |
@@ -119,14 +119,14 @@ Hier volgen de gebruikers eigenschappen die u kunt gebruiken om één expressie 
 | surname |Een wille keurige teken reeks waarde of *Null* |(User. achternaam-EQ "waarde") |
 | telephoneNumber |Een wille keurige teken reeks waarde of *Null* |(user.telephoneNumber -eq "value") |
 | usageLocation |Land code van twee letters |(user.usageLocation -eq "US") |
-| userPrincipalName |Wille keurige teken reeks waarde |(user.userPrincipalName -eq "alias@domain") |
+| userPrincipalName |wille keurige teken reeks waarde |(user.userPrincipalName -eq "alias@domain") |
 | userType |*Null* voor leden gast |(User. User type-EQ "lid") |
 
 ### <a name="properties-of-type-string-collection"></a>Eigenschappen van het type teken reeks verzameling
 
 | Eigenschappen | Toegestane waarden | Gebruik |
 | --- | --- | --- |
-| otherMails |Wille keurige teken reeks waarde |(User. otherMails-bevat "alias@domain") |
+| otherMails |wille keurige teken reeks waarde |(User. otherMails-bevat "alias@domain") |
 | proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses-bevat "SMTP: alias@domain") |
 
 Zie [regels voor apparaten](#rules-for-devices)voor de eigenschappen die worden gebruikt voor apparaat regels.
@@ -321,7 +321,12 @@ U kunt een groep met alle gebruikers binnen een Tenant maken met behulp van een 
 De regel ' alle gebruikers ' is gemaakt met behulp van een enkele expressie met behulp van de-ne-operator en de null-waarde. Deze regel voegt B2B-gast gebruikers toe, evenals gebruikers van leden aan de groep.
 
 ```
-user.objectid -ne null
+user.objectId -ne null
+```
+Als u wilt dat de groep gast gebruikers uitsluit en alleen leden van uw Tenant bevat, kunt u de volgende syntaxis gebruiken:
+
+```
+(user.objectId -ne null) -and (user.userType -eq “Member”)
 ```
 
 ### <a name="create-an-all-devices-rule"></a>Een regel voor alle apparaten maken
@@ -331,7 +336,7 @@ U kunt een groep met alle apparaten binnen een Tenant maken met behulp van een l
 De regel ' alle apparaten ' is gemaakt met behulp van een enkele expressie met behulp van de-ne-operator en de null-waarde:
 
 ```
-device.objectid -ne null
+device.objectId -ne null
 ```
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Extensie-eigenschappen en aangepaste extensie-eigenschappen

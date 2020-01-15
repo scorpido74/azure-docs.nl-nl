@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Een iOS-app maken die een foto maakt en deze start in de insluitende lezer (SWIFT)'
+title: 'Zelf studie: een iOS-app maken die een foto maakt en deze start in de insluitende lezer (SWIFT)'
 titleSuffix: Azure Cognitive Services
 description: In deze zelf studie bouwt u een volledig nieuwe iOS-app en voegt u de afbeelding toe aan de functionaliteit voor insluitende lezers.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: bdaee97c8c5d7e19076847c5f1f7c07c528c1747
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: defa49bd5ca6be6862412e3caf40295ef1d639cf
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69899379"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945304"
 ---
-# <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Zelfstudie: Een iOS-app maken waarmee de insluitende lezer wordt gestart met inhoud van een foto (SWIFT)
+# <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Zelf studie: een iOS-app maken waarmee de insluitende lezer wordt gestart met inhoud van een foto (SWIFT)
 
 De [insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulp programma waarmee bewezen technieken worden geïmplementeerd om de Lees vaardigheid te verbeteren.
 
@@ -29,7 +29,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 ## <a name="prerequisites"></a>Vereisten
 
 * [Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
-* Een insluitende lezer-resource die is geconfigureerd voor Azure Active Directory-verificatie (Azure AD). Volg [deze instructies om de](./azure-active-directory-authentication.md) instellingen op te halen. U hebt enkele van de waarden nodig die u hier hebt gemaakt bij het configureren van de voorbeeld project eigenschappen. Sla de uitvoer van uw sessie op in een tekst bestand voor toekomstig naslag doeleinden.
+* Een resource voor insluitende lezer die is geconfigureerd voor Azure Active Directory authenticatie. Volg [deze instructies om de](./how-to-create-immersive-reader.md) instellingen op te halen. U hebt enkele van de waarden nodig die u hier hebt gemaakt bij het configureren van de voorbeeld project eigenschappen. Sla de uitvoer van uw sessie op in een tekst bestand voor toekomstig naslag doeleinden.
 * Voor het gebruik van dit voor beeld is een Azure-abonnement op de Computer Vision cognitieve service vereist. [Maak een computer vision cognitieve service resource in de Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision).
 
 ## <a name="create-an-xcode-project"></a>Een Xcode-project maken
@@ -45,7 +45,7 @@ Kies **app met één weer gave**.
 ## <a name="get-the-sdk-cocoapod"></a>De SDK-CocoaPod ophalen
 De eenvoudigste manier om de insluitende lezer-SDK te gebruiken is via CocoaPods. Installeren via Cocoapods:
 1. [Installeer CocoaPods](http://guides.cocoapods.org/using/getting-started.html) -Volg de aan de slag-hand leiding om CocoaPods te installeren.
-2. Maak een Podfile door uit `pod init` te voeren in de hoofdmap van uw Xcode-project.
+2. Maak een Podfile door `pod init` uit te voeren in de hoofdmap van uw Xcode-project.
 3.  Voeg de CocoaPod toe aan uw Podfile door `pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'`toe te voegen. Uw Podfile moet er als volgt uitzien, met de naam van uw doel, waarbij Picture-to-ondergedompeld-Reader-SWIFT wordt vervangen:
  ```ruby
   platform :ios, '9.0'
@@ -56,9 +56,9 @@ De eenvoudigste manier om de insluitende lezer-SDK te gebruiken is via CocoaPods
   pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'
   end
 ```
-4. Voer in de Terminal, in de map van uw Xcode-project, de `pod install` opdracht uit om de insluitende Reader SDK pod te installeren.
-5. Voeg `import immersive_reader_sdk` toe aan alle bestanden die moeten verwijzen naar de SDK.
-6. Zorg ervoor dat u het project opent door `.xcworkspace` het bestand en niet `.xcodeproj` het bestand te openen.
+4. Voer in de Terminal, in de map van uw Xcode-project, de opdracht uit `pod install` om de insluitende Reader SDK pod te installeren.
+5. Voeg `import immersive_reader_sdk` toe aan alle bestanden die moeten worden verwezen naar de SDK.
+6. Zorg ervoor dat u het project opent door het `.xcworkspace` bestand te openen en niet het `.xcodeproj` bestand.
 
 ## <a name="acquire-an-azure-ad-authentication-token"></a>Een Azure AD-verificatie token verkrijgen
 
@@ -90,14 +90,14 @@ Wijzig de naam van view controller. Swift in PictureLaunchViewController. Swift 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 
 Stel het archief schema in Xcode in door een Simulator of apparaat doel te selecteren.
-![Archief schema](./media/ios/xcode-archive-scheme.png)<br/>
-![Doel selecteren](./media/ios/xcode-select-target.png)
+![archief schema](./media/ios/xcode-archive-scheme.png)<br/>
+Doel](./media/ios/xcode-select-target.png) ![selecteren
 
 In Xcode, drukt u op CTRL + R of klikt u op de knop afspelen om het project uit te voeren. de app moet worden gestart op de opgegeven Simulator of op het apparaat.
 
 In uw app ziet u het volgende:
 
-![Voor beeld-app](./media/ios/picture-to-immersive-reader-ipad-app.png)
+![Voorbeeldapp](./media/ios/picture-to-immersive-reader-ipad-app.png)
 
 In de app kunt u een foto van tekst nemen of uploaden door op de knop foto nemen of de knop foto van de bibliotheek kiezen te drukken en de insluitende lezer vervolgens te starten met het weer geven van de tekst van de foto.
 
@@ -105,4 +105,4 @@ In de app kunt u een foto van tekst nemen of uploaden door op de knop foto nemen
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Verken de insluitende [lezer IOS SDK](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS) en de referentie voor de insluitende [lezer IOS SDK](./ios-reference.md)
+* De referentie voor de [insluitende lezer-SDK](./reference.md) verkennen

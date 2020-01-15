@@ -1,21 +1,18 @@
 ---
-title: Problemen met doorlopende replicatie van Azrue-Vm's met Azure Site Recovery oplossen
-description: Problemen en problemen oplossen bij het repliceren van virtuele machines van Azure voor herstel na nood gevallen
-services: site-recovery
-author: carmonmills
+title: Problemen met replicatie van virtuele Azure-machines met Azure Site Recovery oplossen
+description: Problemen met de replicatie in azure VM-nood herstel oplossen met Azure Site Recovery
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 8/2/2019
-ms.author: carmonm
-ms.openlocfilehash: b738ffc36334fc540582ba29e803eb2790e2119e
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fe300c1efc8f5802397a59296f8b127c321bd871
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930748"
+ms.locfileid: "75941563"
 ---
-# <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>Lopende problemen in azure-naar-Azure-VM-replicatie oplossen
+# <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Problemen met replicatie in nood herstel voor Azure VM oplossen
 
 In dit artikel worden veelvoorkomende problemen in Azure Site Recovery beschreven wanneer u virtuele machines van Azure repliceert en herstelt vanuit de ene regio naar een andere regio. Ook wordt uitgelegd hoe u problemen kunt oplossen. Zie voor meer informatie over ondersteunde configuraties, de [ondersteuningsmatrix voor het repliceren van virtuele Azure-machines](site-recovery-support-matrix-azure-to-azure.md).
 
@@ -67,7 +64,7 @@ Als een piek van een incidenteel gegevens burst is en de wijzigings frequentie v
     - Navigeer naar de Blade schijven van de betrokken gerepliceerde machine en kopieer de naam van de replica schijf
     - Ga naar deze door de replica beheerde schijf
     - Mogelijk ziet u een banner op de Blade overzicht met de melding dat er een SAS-URL is gegenereerd. Klik op deze banner en Annuleer de export. Negeer deze stap als u de banner niet ziet.
-    - Zodra de SAS-URL is ingetrokken, gaat u naar de Blade configuratie van de beheerde schijf en verhoogt u de grootte zodat ASR het waargenomen verloop op de bron schijf ondersteunt
+    - Zodra de SAS-URL is ingetrokken, gaat u naar de Blade configuratie van de beheerde schijf en verg root u de grootte zodat Site Recovery het waargenomen verloop op de bron schijf ondersteunt
 
 ## <a name="Network-connectivity-problem"></a>Problemen met de netwerk verbinding
 
@@ -113,12 +110,12 @@ In bovenstaand voor beeld **2147754994** is de fout code die u vertelt over de f
 
 #### <a name="vss-writer-is-not-installed---error-2147221164"></a>VSS Writer is niet geïnstalleerd-fout 2147221164 
 
-*Oplossen*: voor het genereren van een toepassings consistentie code Azure site Recovery maakt gebruik van micro soft Volume Shadow Copy service (VSS). Er wordt een VSS-provider geïnstalleerd voor de werking ervan om app-consistentie momentopnamen te maken. Deze VSS-provider is geïnstalleerd als een service. Als de VSS-Provider service niet is geïnstalleerd, mislukt het maken van de toepassings consistentie van de moment opname met de fout-id 0x80040154 ' klasse is niet geregistreerd '. </br>
+*Oplossen*: voor het genereren van een toepassings consistentie code Azure site Recovery maakt gebruik van micro soft Volume Shadow Copy service (VSS). Er wordt een VSS-provider geïnstalleerd voor de werking ervan om app-consistentie momentopnamen te maken. Deze VSS-provider is geïnstalleerd als een service. Als de VSS-Provider service niet is geïnstalleerd, mislukt het maken van de toepassings consistentie van de moment opname met de fout-ID 0x80040154 ' klasse is niet geregistreerd '. </br>
 Raadpleeg het [artikel over het oplossen van problemen met de VSS Writer-installatie](https://docs.microsoft.com/azure/site-recovery/vmware-azure-troubleshoot-push-install#vss-installation-failures) 
 
 #### <a name="vss-writer-is-disabled---error-2147943458"></a>VSS Writer is uitgeschakeld-fout 2147943458
 
-**Oplossen**: voor het genereren van een toepassings consistentie code Azure site Recovery maakt gebruik van micro soft Volume Shadow Copy service (VSS). Er wordt een VSS-provider geïnstalleerd voor de werking ervan om app-consistentie momentopnamen te maken. Deze VSS-provider is geïnstalleerd als een service. Als de VSS-Provider service is uitgeschakeld, mislukt het maken van de moment opname van de toepassings consistentie met de fout-id. de opgegeven service is uitgeschakeld en kan niet worden gestart (0x80070422). </br>
+**Oplossen**: voor het genereren van een toepassings consistentie code Azure site Recovery maakt gebruik van micro soft Volume Shadow Copy service (VSS). Er wordt een VSS-provider geïnstalleerd voor de werking ervan om app-consistentie momentopnamen te maken. Deze VSS-provider is geïnstalleerd als een service. Als de VSS-Provider service is uitgeschakeld, mislukt het maken van de moment opname van de toepassings consistentie met de fout-ID. de opgegeven service is uitgeschakeld en kan niet worden gestart (0x80070422). </br>
 
 - Als VSS is uitgeschakeld,
     - Controleer of het opstart type van de VSS-Provider service is ingesteld op **automatisch**.

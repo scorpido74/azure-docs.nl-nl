@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfe51558cf96e77288186c2ed2b4a2773cbc5cf2
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: ee241c9b4d26377931e828df60db1c50a9c86b84
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829864"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940875"
 ---
 # <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>Een SCIM-eind punt bouwen en gebruikers inrichten configureren met Azure Active Directory (Azure AD)
 
@@ -153,8 +153,11 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
   - [Gebruiker bijwerken [eigenschappen met meerdere waarden]](#update-user-multi-valued-properties) ([aanvraag](#request-4) /  [antwoord](#response-4))
   - [Update gebruiker [eigenschappen met één waarde]](#update-user-single-valued-properties) ([aanvraag](#request-5)
 / [antwoord](#response-5)) 
+  - [Gebruiker uitschakelen](#disable-user) ( [reactie](#response-14)van / 
+[aanvragen](#request-14) )
   - [Gebruiker verwijderen](#delete-user) ([aanvraag](#request-6) / 
 [antwoord](#response-6))
+
 
 [Groeps bewerkingen](#group-operations)
   - [Groep maken](#create-group) ( [vraag](#request-7) / [antwoord](#response-7))
@@ -435,6 +438,60 @@ Deze sectie bevat voor beelden van SCIM-aanvragen die worden verzonden door de A
 }
 ```
 
+### <a name="disable-user"></a>Gebruiker uitschakelen
+
+##### <a name="request-14"></a>Schot
+
+*PATCH/users/5171a35d82074e068ce2 HTTP/1.1*
+```json
+{
+    "Operations": [
+        {
+            "op": "Replace",
+            "path": "active",
+            "value": false
+        }
+    ],
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
+    ]
+}
+```
+
+##### <a name="response-14"></a>Beantwoord
+
+```json
+{
+    "schemas": [
+        "urn:ietf:params:scim:schemas:core:2.0:User"
+    ],
+    "id": "CEC50F275D83C4530A495FCF@834d0e1e5d8235f90a495fda",
+    "userName": "deanruiz@testuser.com",
+    "name": {
+        "familyName": "Harris",
+        "givenName": "Larry"
+    },
+    "active": false,
+    "emails": [
+        {
+            "value": "gloversuzanne@testuser.com",
+            "type": "work",
+            "primary": true
+        }
+    ],
+    "addresses": [
+        {
+            "country": "ML",
+            "type": "work",
+            "primary": true
+        }
+    ],
+    "meta": {
+        "resourceType": "Users",
+        "location": "/scim/5171a35d82074e068ce2/Users/CEC50F265D83B4530B495FCF@5171a35d82074e068ce2"
+    }
+}
+```
 #### <a name="delete-user"></a>Gebruiker verwijderen
 
 ##### <a name="request-6"></a>Schot

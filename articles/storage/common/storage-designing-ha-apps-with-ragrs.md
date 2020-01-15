@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 01/14/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8cb644495d99b331ec95eb0a9759be45a65e97a6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bab95f6494fad86c9fdfc0b8fb044c22a7c5a628
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895343"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945456"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>Maxi maal beschik bare toepassingen ontwerpen met geografisch redundante opslag met lees toegang
 
@@ -99,7 +99,7 @@ Er zijn veel manieren om update-aanvragen af te handelen wanneer ze worden uitge
 
 ## <a name="handling-retries"></a>Verwerkings pogingen
 
-De Azure Storage-client bibliotheek helpt u te bepalen welke fouten opnieuw kunnen worden uitgevoerd. Een 404-fout (resource niet gevonden) kan bijvoorbeeld opnieuw worden uitgevoerd omdat het niet waarschijnlijk is dat het opnieuw wordt geprobeerd. Aan de andere kant kan een 500-fout niet opnieuw worden uitgevoerd omdat het een server fout is en mogelijk een tijdelijk probleem is. Bekijk voor meer informatie de open- [bron code voor de klasse ExponentialRetry](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) in de client bibliotheek voor .net-opslag. (Zoek naar de methode ShouldRetry.)
+De Azure Storage-client bibliotheek helpt u te bepalen welke fouten opnieuw kunnen worden uitgevoerd. Er wordt bijvoorbeeld een 404-fout (resource niet gevonden) opnieuw uitgevoerd, omdat het niet waarschijnlijk is dat het opnieuw wordt geprobeerd. Aan de andere kant kan een 500-fout opnieuw worden uitgevoerd omdat het een server fout is en het probleem mogelijk alleen een tijdelijk probleem is. Bekijk voor meer informatie de open- [bron code voor de klasse ExponentialRetry](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) in de client bibliotheek voor .net-opslag. (Zoek naar de methode ShouldRetry.)
 
 ### <a name="read-requests"></a>Aanvragen lezen
 
@@ -204,8 +204,8 @@ In de volgende tabel ziet u een voor beeld van wat er kan gebeuren wanneer u de 
 |----------|------------------------------------------------------------|---------------------------------------|--------------------|------------| 
 | T0       | Trans actie A: <br> Werk nemer invoegen <br> entiteit in primaire |                                   |                    | Trans actie A ingevoegd op primaire,<br> nog niet gerepliceerd. |
 | T1       |                                                            | Trans actie A <br> gerepliceerd naar<br> primaire | T1 | Trans actie A gerepliceerd naar secundair. <br>Laatste synchronisatie tijd bijgewerkt.    |
-| T2       | Trans actie B:<br>Bijwerken<br> Entiteit werk nemer<br> in primaire  |                                | T1                 | Trans actie B, geschreven naar primair,<br> nog niet gerepliceerd.  |
-| T3       | Trans actie C:<br> Bijwerken <br>beheerder<br>rol-entiteit in<br>basis |                    | T1                 | Trans actie C geschreven naar primair,<br> nog niet gerepliceerd.  |
+| T2       | Trans actie B:<br>Update<br> entiteit werk nemer<br> in primaire  |                                | T1                 | Trans actie B, geschreven naar primair,<br> nog niet gerepliceerd.  |
+| T3       | Trans actie C:<br> Update <br>beheerder<br>rol-entiteit in<br>basis |                    | T1                 | Trans actie C geschreven naar primair,<br> nog niet gerepliceerd.  |
 | *T4*     |                                                       | Trans actie C <br>gerepliceerd naar<br> primaire | T1         | Trans actie C gerepliceerd naar secundair.<br>LastSyncTime is niet bijgewerkt omdat <br>trans actie B is nog niet gerepliceerd.|
 | *T5*     | Entiteiten lezen <br>van secundaire                           |                                  | T1                 | U krijgt de verouderde waarde voor werk nemer <br> entiteit omdat trans actie B niet <br> gerepliceerd. U krijgt de nieuwe waarde voor<br> entiteit van beheerdersrol omdat C<br> bijgewerkt. Laatste synchronisatie tijd nog niet<br> bijgewerkt omdat trans actie B<br> is niet gerepliceerd. U kunt de<br>entiteit van beheerdersrol is inconsistent <br>omdat de datum/tijd van de entiteit na <br>de laatste synchronisatie tijd. |
 | *T6*     |                                                      | Trans actie B<br> gerepliceerd naar<br> primaire | T6                 | *T6* : alle trans acties via C hebben <br>gerepliceerd, laatste synchronisatie tijd<br> is bijgewerkt. |
@@ -234,7 +234,7 @@ $lastSyncTime = $(Get-AzStorageAccount -ResourceGroupName <resource-group> `
     -IncludeGeoReplicationStats).GeoReplicationStats.LastSyncTime
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 Als u de laatste synchronisatie tijd voor het opslag account wilt ophalen met behulp van Azure CLI, controleert u de eigenschap **geoReplicationStats. lastSyncTime** van het opslag account. Gebruik de para meter `--expand` om waarden te retour neren voor de eigenschappen die onder **geoReplicationStats**zijn genest. Vergeet niet om de waarden van de tijdelijke aanduidingen te vervangen door uw eigen waarden:
 

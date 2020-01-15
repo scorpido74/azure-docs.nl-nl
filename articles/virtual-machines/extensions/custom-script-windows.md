@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: b3c355219fcbebc5fda38c33d6eb7f9126b3b2b8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 9fe0875f34745b0b5b8b1b7e8b352116b6cbf997
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073828"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941909"
 ---
 # <a name="custom-script-extension-for-windows"></a>Aangepaste script extensie voor Windows
 
@@ -81,7 +81,7 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
     "properties": {
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.9",
+        "typeHandlerVersion": "1.10",
         "autoUpgradeMinorVersion": true,
         "settings": {
             "fileUris": [
@@ -92,11 +92,15 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
         "protectedSettings": {
             "commandToExecute": "myExecutionCommand",
             "storageAccountName": "myStorageAccountName",
-            "storageAccountKey": "myStorageAccountKey"
+            "storageAccountKey": "myStorageAccountKey",
+            "managedIdentity" : {}
         }
     }
 }
 ```
+
+> [!NOTE]
+> de eigenschap managedIdentity **mag niet** worden gebruikt in combi natie met storageAccountName-of storageAccountKey-eigenschappen
 
 > [!NOTE]
 > Er kan slechts één versie van een uitbrei ding op een virtuele machine op een bepaald moment worden geïnstalleerd. Als u een aangepast script twee keer opgeeft in dezelfde resource manager-sjabloon voor dezelfde virtuele machine, mislukt de installatie.
@@ -106,17 +110,18 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 
 ### <a name="property-values"></a>Waarden van eigenschappen
 
-| Naam | Waarde / voorbeeld | Gegevenstype |
+| Name | Waarde / voorbeeld | Gegevenstype |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.Compute | tekenreeks |
-| type | CustomScriptExtension | tekenreeks |
-| typeHandlerVersion | 1.9 | int |
+| publisher | Microsoft.Compute | string |
+| type | CustomScriptExtension | string |
+| typeHandlerVersion | 1.10 | int |
 | fileUris (bijvoorbeeld) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | matrix |
 | timestamp (bijvoorbeeld) | 123456789 | 32-bits geheel getal |
-| commandToExecute (bijvoorbeeld) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | tekenreeks |
-| storageAccountName (bijvoorbeeld) | examplestorageacct | tekenreeks |
-| storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | tekenreeks |
+| commandToExecute (bijvoorbeeld) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | string |
+| storageAccountName (bijvoorbeeld) | examplestorageacct | string |
+| storageAccountKey (bijvoorbeeld) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | string |
+| managedIdentity (bijvoorbeeld) | {} of {"clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232"} of {"objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | JSON-object |
 
 >[!NOTE]
 >Deze eigenschaps namen zijn hoofdletter gevoelig. Als u implementatie problemen wilt voor komen, gebruikt u de namen zoals hier wordt weer gegeven.
@@ -128,6 +133,9 @@ Deze items moeten worden behandeld als gevoelige gegevens en worden opgegeven in
 * `timestamp` (optioneel, 32-bits geheel getal) gebruik dit veld alleen om een opnieuw uitvoeren van het script te activeren door de waarde van dit veld te wijzigen.  Een gehele waarde is acceptabel; de waarde mag alleen gelijk zijn aan die van de vorige.
 * `storageAccountName`: (optioneel, String) de naam van het opslag account. Als u opslag referenties opgeeft, moeten alle `fileUris` Url's voor Azure-blobs zijn.
 * `storageAccountKey`: (optioneel, String) de toegangs sleutel van het opslag account
+* `managedIdentity`: (optioneel, JSON-object) de [beheerde identiteit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) voor het downloaden van bestand (en)
+  * `clientId`: (optioneel, String) de client-ID van de beheerde identiteit
+  * `objectId`: (optioneel, String) de object-ID van de beheerde identiteit
 
 De volgende waarden kunnen worden ingesteld in de open bare of beveiligde instellingen. de uitbrei ding weigert de configuratie, waarbij de waarden hieronder worden ingesteld in de open bare en beveiligde instellingen.
 
@@ -136,6 +144,46 @@ De volgende waarden kunnen worden ingesteld in de open bare of beveiligde instel
 Het gebruik van open bare instellingen kan handig zijn voor het opsporen van fouten, maar het wordt aanbevolen dat u beveiligde instellingen gebruikt.
 
 Open bare instellingen worden in ongecodeerde tekst verzonden naar de virtuele machine waarop het script wordt uitgevoerd.  Beveiligde instellingen worden versleuteld met een sleutel die alleen bekend is bij Azure en de virtuele machine. De instellingen worden opgeslagen naar de virtuele machine wanneer ze zijn verzonden, dat wil zeggen, als de instellingen zijn versleuteld, zijn versleuteld opgeslagen op de VM. Het certificaat dat wordt gebruikt voor het ontsleutelen van de versleutelde waarden wordt opgeslagen op de virtuele machine en wordt gebruikt voor het ontsleutelen van instellingen (indien nodig) tijdens runtime.
+
+####  <a name="property-managedidentity"></a>Eigenschap: managedIdentity
+
+CustomScript (versie 1.10.4 en hoger) ondersteunt [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) op basis van RBAC voor het downloaden van een of meer bestanden van url's die zijn opgenomen in de instelling "fileUris". Hiermee kan CustomScript toegang krijgen tot Azure Storage persoonlijke blobs/containers zonder dat de gebruiker geheimen zoals SAS-tokens of opslag account-sleutels hoeft door te geven.
+
+Als u deze functie wilt gebruiken, moet de gebruiker een door het [systeem toegewezen](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity) of door de [gebruiker toegewezen](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity) identiteit toevoegen aan de virtuele machine of VMSS waar CustomScript naar verwachting wordt uitgevoerd en [de beheerde identiteit toegang verlenen aan de Azure storage container of BLOB](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
+
+Als u de door het systeem toegewezen identiteit op de doel-VM-VMSS wilt gebruiken, stelt u het veld managedidentity in op een leeg JSON-object. 
+
+> Voorbeeld:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : {}
+> }
+> ```
+
+Als u de door de gebruiker toegewezen identiteit op de doel-VM-VMSS wilt gebruiken, configureert u het veld managedidentity met de client-ID of de object-ID van de beheerde identiteit.
+
+> Voorbeelden:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : { "clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232" }
+> }
+> ```
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : { "objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b" }
+> }
+> ```
+
+> [!NOTE]
+> de eigenschap managedIdentity **mag niet** worden gebruikt in combi natie met storageAccountName-of storageAccountKey-eigenschappen
 
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 
@@ -157,7 +205,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
     -Name DemoScriptExtension
 ```
 
-## <a name="additional-examples"></a>Aanvullende voor beelden
+## <a name="additional-examples"></a>Aanvullende voorbeelden
 
 ### <a name="using-multiple-scripts"></a>Meerdere scripts gebruiken
 
@@ -181,7 +229,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
     -Name "buildserver1" `
     -Publisher "Microsoft.Compute" `
     -ExtensionType "CustomScriptExtension" `
-    -TypeHandlerVersion "1.9" `
+    -TypeHandlerVersion "1.10" `
     -Settings $settings    `
     -ProtectedSettings $protectedSettings `
 ```
@@ -199,7 +247,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
     -Name "serverUpdate"
     -Publisher "Microsoft.Compute" `
     -ExtensionType "CustomScriptExtension" `
-    -TypeHandlerVersion "1.9" `
+    -TypeHandlerVersion "1.10" `
     -ProtectedSettings $protectedSettings
 
 ```
@@ -225,7 +273,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 
 Als u de aangepaste script extensie op klassieke Vm's wilt implementeren, kunt u de Azure Portal of de klassieke Azure PowerShell-cmdlets gebruiken.
 
-### <a name="azure-portal"></a>Azure-portal
+### <a name="azure-portal"></a>Azure Portal
 
 Navigeer naar uw klassieke VM-resource. Selecteer **extensies** onder **instellingen**.
 

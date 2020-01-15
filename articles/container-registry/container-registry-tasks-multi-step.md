@@ -3,12 +3,12 @@ title: Taak met meerdere stappen voor het maken, testen van & patch-installatie 
 description: Inleiding tot taken met meerdere stappen, een functie van ACR-taken in Azure Container Registry die werk stromen op basis van taken bieden voor het bouwen, testen en repareren van container installatie kopieën in de Cloud.
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 3ed071fa2027e91ee5bc6c07738dc66763454847
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: cf5f90263c75aeb96220967142d28995209f2d86
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456167"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945668"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Meerdere stappen uitvoeren voor het bouwen, testen en patchen van taken in ACR-taken
 
@@ -50,33 +50,33 @@ Een taak met meerdere stappen in ACR-taken wordt gedefinieerd als een reeks stap
 De volgende code fragmenten laten zien hoe u deze taak stap typen kunt combi neren. Taken met meerdere stappen kunnen zo eenvoudig zijn als het bouwen van één installatie kopie van een Dockerfile en naar uw REGI ster pushen, met een YAML-bestand dat vergelijkbaar is met:
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
-  - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
-  - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
+  - build: -t $Registry/hello-world:$ID .
+  - push: ["$Registry/hello-world:$ID"]
 ```
 
 Of complexere, zoals deze fictieve definitie van meerdere stappen, die stappen bevat voor Build, test, helm package en helm Deploy (container Registry en helm opslagplaats configuratie niet weer gegeven):
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
   - id: build-web
-    build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
+    build: -t $Registry/hello-world:$ID .
     when: ["-"]
   - id: build-tests
-    build -t {{.Run.Registry}}/hello-world-tests ./funcTests
+    build -t $Registry/hello-world-tests ./funcTests
     when: ["-"]
   - id: push
-    push: ["{{.Run.Registry}}/helloworld:{{.Run.ID}}"]
+    push: ["$Registry/helloworld:$ID"]
     when: ["build-web", "build-tests"]
   - id: hello-world-web
-    cmd: {{.Run.Registry}}/helloworld:{{.Run.ID}}
+    cmd: $Registry/helloworld:$ID
   - id: funcTests
-    cmd: {{.Run.Registry}}/helloworld:{{.Run.ID}}
+    cmd: $Registry/helloworld:$ID
     env: ["host=helloworld:80"]
-  - cmd: {{.Run.Registry}}/functions/helm package --app-version {{.Run.ID}} -d ./helm ./helm/helloworld/
-  - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
+  - cmd: $Registry/functions/helm package --app-version $ID -d ./helm ./helm/helloworld/
+  - cmd: $Registry/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image=$Registry/helloworld:$ID
 ```
 
 Zie [taak voorbeelden](container-registry-tasks-samples.md) voor YAML-bestanden en Dockerfiles voor taken in meerdere stappen voor verschillende scenario's.

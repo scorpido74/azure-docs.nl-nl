@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: bd15e406cdbee57112ff8ecba158d503e908b73f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cab9d309d052acca493e112965c8477a325d8c88
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178011"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75944759"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>De Azure import/export-service gebruiken om gegevens te importeren in Azure Blob Storage
 
@@ -25,7 +25,7 @@ Voordat u een import taak maakt om gegevens over te dragen naar Azure Blob Stora
 
 - Een actief Azure-abonnement hebben dat kan worden gebruikt voor de import/export-service.
 - U hebt ten minste één Azure Storage account met een opslag container. Zie de lijst met [ondersteunde opslag accounts en opslag typen voor de import/export-service](storage-import-export-requirements.md). 
-    - Zie [een opslag account maken](storage-quickstart-create-account.md)voor meer informatie over het maken van een nieuw opslag account. 
+    - Zie voor meer informatie over het maken van een nieuw opslagaccount [over het maken van een Storage-Account](storage-quickstart-create-account.md). 
     - Voor informatie over opslag container gaat u naar [een opslag container maken](../blobs/storage-quickstart-blobs-portal.md#create-a-container).
 - Voldoende aantal schijven van [ondersteunde typen](storage-import-export-requirements.md#supported-disks)hebben. 
 - Een Windows-systeem met een [ondersteunde besturingssysteem versie](storage-import-export-requirements.md#supported-operating-systems)hebben. 
@@ -66,13 +66,13 @@ Voer de volgende stappen uit om de stations voor te bereiden.
 
     |Optie  |Beschrijving  |
     |---------|---------|
-    |/j     |De naam van het logboek bestand met de extensie. jrn. Er wordt een logboek bestand gegenereerd per station. Het is raadzaam om het serie nummer van de schijf als de naam van het logboek bestand te gebruiken.         |
-    |/id     |De sessie-ID. Gebruik een uniek sessie nummer voor elk exemplaar van de opdracht.      |
-    |Schakel     |De stationsletter van de schijf die moet worden verzonden. Bijvoorbeeld station `D`.         |
+    |/j:     |De naam van het logboek bestand met de extensie. jrn. Er wordt een logboek bestand gegenereerd per station. Het is raadzaam om het serie nummer van de schijf als de naam van het logboek bestand te gebruiken.         |
+    |/ID:     |De sessie-ID. Gebruik een uniek sessie nummer voor elk exemplaar van de opdracht.      |
+    |/t:     |De stationsletter van de schijf die moet worden verzonden. Bijvoorbeeld station `D`.         |
     |/bk:     |De BitLocker-sleutel voor het station. Het numerieke wacht woord van de uitvoer van `manage-bde -protectors -get D:`      |
     |/srcdir:     |De stationsletter van de schijf die moet worden verzonden, gevolgd door `:\`. Bijvoorbeeld `D:\`.         |
     |/dstdir:     |De naam van de doel container in Azure Storage.         |
-    |/blobtype:     |Met deze optie geeft u het type blobs op waarnaar u de gegevens wilt importeren. Voor blok-blobs is dit `BlockBlob` en voor pagina-blobs is dit `PagaBlob`.         |
+    |/blobtype:     |Met deze optie geeft u het type blobs op waarnaar u de gegevens wilt importeren. Voor blok-blobs is dit `BlockBlob` en voor pagina-blobs is dit `PageBlob`.         |
     |/skipwrite:     |De optie waarmee wordt aangegeven dat er geen nieuwe gegevens moeten worden gekopieerd en dat bestaande gegevens op de schijf moeten worden voor bereid.          |
     |/enablecontentmd5:     |Als u deze optie inschakelt, zorgt u ervoor dat MD5 wordt berekend en wordt ingesteld als `Content-md5` eigenschap op elke blob. Gebruik deze optie alleen als u het veld `Content-md5` wilt gebruiken nadat de gegevens zijn geüpload naar Azure. <br> Deze optie is niet van invloed op de gegevens integriteits controle (dit gebeurt standaard). De instelling neemt de benodigde tijd voor het uploaden van gegevens naar de Cloud toe.          |
 7. Herhaal de vorige stap voor elke schijf die moet worden verzonden. Er wordt een logboek bestand met de gegeven naam gemaakt voor elke uitvoering van de opdracht regel.

@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
-ms.date: 10/10/2019
+ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: 957acc25c3218069a20e90fe83e00e441b6303d6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3a5ddf5bd4614b68e97e7616173a3e0640007530
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839565"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941557"
 ---
 # <a name="quickstart-how-to-sign-up-and-upload-your-first-video"></a>Snelstartgids: aanmelden en uw eerste video uploaden
 
@@ -32,6 +32,12 @@ Als u wilt gaan ontwikkelen met Video Indexer, gaat u naar de website van [Video
 > [!NOTE]
 > Een naam van de video mag niet langer zijn dan 80 tekens.
 
+### <a name="supported-file-formats-for-video-indexer"></a>Ondersteunde bestands indelingen voor Video Indexer
+
+Zie het artikel [invoer container/bestands indelingen](../latest/media-encoder-standard-formats.md#input-containerfile-formats) voor een lijst met bestands indelingen die u kunt gebruiken met video indexer.
+
+### <a name="upload-a-video"></a>Een video uploaden
+
 1. Registreer u op de [Video Indexer](https://www.videoindexer.ai/)-website.
 2. Als u een video wilt uploaden, drukt u op de knop of link **Uploaden**.
 
@@ -45,7 +51,9 @@ Als u wilt gaan ontwikkelen met Video Indexer, gaat u naar de website van [Video
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt nu de [Video Indexer](video-indexer-view-edit.md)-website of de [Video Indexer Developer-portal](video-indexer-use-apis.md) gebruiken om de inzichten van de video te bekijken. 
+Zie [Video's uploaden en indexeren](upload-index-videos.md) voor meer informatie.
+
+Nadat u een video hebt geüpload en geïndexeerd, kunt u [video indexer](video-indexer-view-edit.md) website of [video indexer ontwikkelaars Portal](video-indexer-use-apis.md) gaan gebruiken om de inzichten van de video te bekijken. 
 
 ## <a name="see-also"></a>Zie ook
 

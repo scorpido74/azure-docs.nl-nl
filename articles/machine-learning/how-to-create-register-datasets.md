@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 65bc164f344090894622a7b2db62336b19d3599e
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 775c6016acbcd0f87f368852a68eaea706c79898
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75540670"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945712"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning gegevens sets maken
 
@@ -67,21 +67,10 @@ Gegevens sets maken op basis van een [Azure-gegevens opslag](how-to-access-data.
 
 1. Controleer of u `contributor` of `owner` toegang hebt tot het geregistreerde Azure-gegevens archief.
 
-1. Maak de gegevensset door te verwijzen naar een pad in het gegevens archief:
+2. Maak de gegevensset door te verwijzen naar de paden in het gegevens archief.
+> [!Note]
+> U kunt een gegevensset maken op basis van meerdere paden in meerdere gegevens opslag. Er is geen vaste limiet voor het aantal bestanden of gegevens grootte waaruit u een gegevensset kunt maken. Voor elk gegevenspad worden echter enkele aanvragen verzonden naar de opslag service om te controleren of deze naar een bestand of map verwijst. Deze overhead kan leiden tot slechtere prestaties of storingen. Een gegevensset die verwijst naar één map met 1000 bestanden in, wordt beschouwd als verwijzingen naar één gegevenspad. We raden u aan om een gegevensset te maken die verwijst naar minder dan 100 paden in gegevens opslag voor optimale prestaties.
 
-    ```Python
-    from azureml.core.workspace import Workspace
-    from azureml.core.datastore import Datastore
-    from azureml.core.dataset import Dataset
-    
-    datastore_name = 'your datastore name'
-    
-    # get existing workspace
-    workspace = Workspace.from_config()
-    
-    # retrieve an existing datastore in the workspace by name
-    datastore = Datastore.get(workspace, datastore_name)
-    ```
 
 #### <a name="create-a-tabulardataset"></a>Een TabularDataset maken
 
@@ -90,12 +79,20 @@ U kunt TabularDatasets maken via de SDK of met behulp van Azure Machine Learning
 Gebruik de methode [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) op de klasse `TabularDatasetFactory` om bestanden te lezen in de CSV-of. TSV-indeling en om een niet-geregistreerde TabularDataset te maken. Als u een lees bewerking uitvoert van meerdere bestanden, worden de resultaten samengevoegd in één tabel weergave.
 
 ```Python
-# create a TabularDataset from multiple paths in datastore
-datastore_paths = [
-                  (datastore, 'weather/2018/11.csv'),
-                  (datastore, 'weather/2018/12.csv'),
-                  (datastore, 'weather/2019/*.csv')
-                 ]
+from azureml.core import Workspace, Datastore, Dataset
+
+datastore_name = 'your datastore name'
+
+# get existing workspace
+workspace = Workspace.from_config()
+    
+# retrieve an existing datastore in the workspace by name
+datastore = Datastore.get(workspace, datastore_name)
+
+# create a TabularDataset from 3 paths in datastore
+datastore_paths = [(datastore, 'ather/2018/11.csv'),
+                   (datastore, 'weather/2018/12.csv'),
+                   (datastore, 'weather/2019/*.csv')]
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
@@ -156,16 +153,12 @@ Gebruik de methode [`from_files()`](https://docs.microsoft.com/python/api/azurem
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
-datastore_paths = [
-                  (datastore, 'animals')
-                 ]
+datastore_paths = [(datastore, 'animals')]
 animal_ds = Dataset.File.from_files(path=datastore_paths)
 
 # create a FileDataset from image and label files behind public web urls
-web_paths = [
-            'https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
-            'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz'
-           ]
+web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
+             'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz']
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
 
@@ -248,10 +241,8 @@ De gegevensset is nu beschikbaar in uw werk ruimte onder **gegevens sets**. U ku
 U kunt een nieuwe gegevensset onder dezelfde naam registreren door een nieuwe versie te maken. Een gegevensset-versie is een manier om de status van uw gegevens te bookmarkren, zodat u een specifieke versie van de gegevensset kunt Toep assen voor experimenten of toekomstige reproductie. Meer informatie over de versies van de [gegevensset](how-to-version-track-datasets.md).
 ```Python
 # create a TabularDataset from Titanic training data
-web_paths = [
-            'https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
-            'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv'
-           ]
+web_paths = ['https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
+             'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv']
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_paths)
 
 # create a new version of titanic_ds

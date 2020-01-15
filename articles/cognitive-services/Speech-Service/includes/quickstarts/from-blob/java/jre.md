@@ -1,32 +1,26 @@
 ---
-title: 'Quick Start: spraak herkennen die zijn opgeslagen in Blob Storage, Java spraak service'
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: e110c87835cdf517bdd54adda0ef6d9168a44d52
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: 1225a1e528b32401f350374fb9393c52225c49e8
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75469063"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942718"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
+> * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
+> * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md?pivots=programmming-language-java)
 > * [Een Azure-spraak resource maken](../../../../get-started.md)
 > * [Een bron bestand uploaden naar een Azure-Blob](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-> * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md?tabs=dotnet)
+
 
 ## <a name="open-your-project-in-eclipse"></a>Open uw project in eclips
 
@@ -45,7 +39,8 @@ Open pom. XML en voeg de volgende verwijzing toe: [!code-xml[](~/samples-cogniti
 Laten we een code toevoegen die als een skelet voor het project werkt.
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=1-13,95-105,206-207)]
-(U moet de waarden van `YourSubscriptionKey`, `YourServiceRegion`en `YourFileUrl` vervangen door uw eigen waarden.)
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
 ## <a name="json-wrappers"></a>JSON-wrappers
 
