@@ -4,15 +4,15 @@ description: Meer informatie over het installeren en configureren van een on-pre
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 37658ea6b94d6369d282c49f79947a1f183b61c7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 019da1810851c730ea8bfe4cf5eea0cfa900bea0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572841"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029895"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Een on-premises gegevensgateway installeren en configureren
 
@@ -22,16 +22,16 @@ Zie [verbinding maken met on-premises gegevens bronnen](analysis-services-gatewa
 
 ## <a name="prerequisites"></a>Vereisten
 
-**Minimale vereisten:**
+**Minimale vereisten**
 
-* .NET 4,5-Framework
-* 64-bits versie van Windows 7/Windows Server 2008 R2 (of hoger)
+* .NET 4.5 Framework
+* 64-bits versie van Windows 8/Windows Server 2012 R2 (of hoger)
 
-**Aanbevelingen**
+**Aanbevolen:**
 
 * 8-core CPU
 * 8 GB geheugen
-* 64-bits versie van Windows 2012 R2 (of hoger)
+* 64-bits versie van Windows 8/Windows Server 2012 R2 (of hoger)
 
 **Belang rijke overwegingen:**
 

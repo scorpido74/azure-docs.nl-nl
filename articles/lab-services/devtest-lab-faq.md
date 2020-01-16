@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e95cc6a724c17402ed1ed0cda83377492787a3a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: afd6ded6dc027e118694078f8b8eeadfe8dd80e4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644916"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981481"
 ---
 # <a name="azure-devtest-labs-faq"></a>Veelgestelde vragen over Azure DevTest Labs
 Krijg antwoorden op enkele van de meest voorkomende vragen over Azure DevTest Labs.
@@ -46,13 +46,13 @@ Onze Twitter-ingang: [@azlabservices](https://twitter.com/azlabservices)
 ### <a name="what-if-my-question-isnt-answered-here"></a>Wat gebeurt er als mijn vraag hier niet wordt beantwoord?
 Als uw vraag hier niet wordt vermeld, laat het ons dan weten, zodat we u kunnen helpen om een antwoord te vinden.
 
-- Plaats een vraag aan het einde van deze veelgestelde vragen. 
+- Plaats een vraag aan het einde van deze veelgestelde vragen.
 - Als u een breder publiek wilt bereiken, plaatst u een vraag op het [MSDN-forum van Azure DevTest Labs](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). Neem contact op met het Azure DevTest Labs team en andere leden van de community.
 - Voor functie aanvragen stuurt u uw aanvragen en ideeën naar [Azure DevTest Labs gebruikers stem](https://feedback.azure.com/forums/320373-azure-devtest-labs).
 
 ### <a name="what-is-a-microsoft-account"></a>Wat is een Microsoft-account?
 Een Microsoft-account is een account dat u gebruikt voor bijna alles wat u met micro soft-apparaten en-services doet. Het is een e-mail adres en wacht woord dat u gebruikt om u aan te melden bij Skype, Outlook.com, OneDrive, Windows Phone, Azure en Xbox Live. Eén account houdt in dat uw bestanden, Foto's, contact personen en instellingen u op elk apparaat kunnen volgen.
- 
+
 > [!NOTE]
 > Een Microsoft-account een Windows Live ID wordt genoemd.
 
@@ -145,18 +145,18 @@ Uiteindelijk moet hetzelfde type beperkingen worden toegepast in de hele organis
 ## <a name="lab-configuration"></a>Lab-configuratie
 
 ### <a name="how-do-i-create-a-lab-from-a-resource-manager-template"></a>Hoe kan ik een lab maken op basis van een resource manager-sjabloon?
-We bieden een [github-opslag plaats van lab Azure Resource Manager-sjablonen](https://azure.microsoft.com/resources/templates/101-dtl-create-lab) die u kunt implementeren of aanpassen om aangepaste sjablonen voor uw Labs te maken. Elke sjabloon bevat een koppeling voor het implementeren van het lab in uw eigen Azure-abonnement. Of u kunt de sjabloon aanpassen en [implementeren met behulp van Power shell of Azure cli](../azure-resource-manager/resource-group-template-deploy.md).
+We bieden een [github-opslag plaats van lab Azure Resource Manager-sjablonen](https://azure.microsoft.com/resources/templates/101-dtl-create-lab) die u kunt implementeren of aanpassen om aangepaste sjablonen voor uw Labs te maken. Elke sjabloon bevat een koppeling voor het implementeren van het lab in uw eigen Azure-abonnement. Of u kunt de sjabloon aanpassen en [implementeren met behulp van Power shell of Azure cli](../azure-resource-manager/templates/deploy-powershell.md).
 
 
-### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Kan ik alle virtuele machines in een gemeen schappelijke resource groep maken in plaats van elke machine in een eigen resource groep? 
-Ja, als eigenaar van het lab kunt u de toewijzing van resource groepen door de Lab laten verwerken of alle virtuele machines die zijn gemaakt in een gemeen schappelijke resource groep die u opgeeft. 
+### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Kan ik alle virtuele machines in een gemeen schappelijke resource groep maken in plaats van elke machine in een eigen resource groep?
+Ja, als eigenaar van het lab kunt u de toewijzing van resource groepen door de Lab laten verwerken of alle virtuele machines die zijn gemaakt in een gemeen schappelijke resource groep die u opgeeft.
 
 Scenario voor afzonderlijke resource groep:
 -   In DevTest Labs wordt een nieuwe resource groep gemaakt voor elke open bare en persoonlijke IP-virtuele machine die u omhoog draait
 -   DevTest Labs maakt een resource groep voor gedeelde IP-computers die tot dezelfde grootte behoren.
 
 Scenario voor een gemeen schappelijke resource groep:
--   Alle virtuele machines zijn in de gemeen schappelijke resource groep die u opgeeft. Meer informatie over [de toewijzing van resource groepen voor het lab](https://aka.ms/RGControl). 
+-   Alle virtuele machines zijn in de gemeen schappelijke resource groep die u opgeeft. Meer informatie over [de toewijzing van resource groepen voor het lab](https://aka.ms/RGControl).
 
 ### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>Hoe kan ik een naamgevings Conventie in mijn DevTest Labs-omgeving behouden?
 U kunt de huidige ondernemings naamgevings conventies uitbreiden naar Azure-bewerkingen en ze consistent maken in de DevTest Labs-omgeving. Wanneer u DevTest Labs implementeert, is het raadzaam om specifiek start beleid te gebruiken. U implementeert dit beleid door een centraal script en JSON-sjabloon om consistentie af te dwingen. Naamgevings beleid kan worden geïmplementeerd via Azure-beleid dat wordt toegepast op het abonnements niveau. Zie Azure Policy-voor [beelden](../governance/policy/samples/index.md)voor json-voor beelden voor Azure Policy.
@@ -196,7 +196,7 @@ Wanneer u een virtuele machine in DevTest Labs maakt, krijgt u toegang tot die v
 U hebt twee opties voor het tegelijkertijd maken van meerdere Vm's vanuit dezelfde sjabloon:
 
 - U kunt de [extensie Azure DevOps-taken](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)gebruiken.
-- U kunt [een resource manager-sjabloon genereren](devtest-lab-add-vm.md#save-azure-resource-manager-template) tijdens het maken van een virtuele machine en [de Resource Manager-sjabloon implementeren vanuit Windows Power shell](../azure-resource-manager/resource-group-template-deploy.md).
+- U kunt [een resource manager-sjabloon genereren](devtest-lab-add-vm.md#save-azure-resource-manager-template) tijdens het maken van een virtuele machine en [de Resource Manager-sjabloon implementeren vanuit Windows Power shell](../azure-resource-manager/templates/deploy-powershell.md).
 - U kunt ook meer dan één exemplaar van een machine opgeven die moet worden gemaakt tijdens het maken van de virtuele machine. Zie voor meer informatie over het maken van meerdere exemplaren van virtuele machines het document over het [maken van een Lab-virtuele machine](devtest-lab-add-vm.md).
 
 ### <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>Hoe kan ik mijn bestaande Azure-Vm's verplaatsen naar mijn DevTest Labs Lab?
@@ -252,7 +252,7 @@ foreach($labVM in $labVMs)
 }
 ```
 
-## <a name="environments"></a>Omgevingen 
+## <a name="environments"></a>Omgevingen
 
 ### <a name="how-can-i-use-resource-manager-templates-in-my-devtest-labs-environment"></a>Hoe kan Ik Resource Manager-sjablonen in mijn DevTest Labs-omgeving gebruiken?
 U implementeert uw Resource Manager-sjablonen in een DevTest Labs-omgeving met behulp van de stappen die worden beschreven in de [functie omgevingen in DevTest Labs](devtest-lab-test-env.md) -artikel. In principe controleert u uw Resource Manager-sjablonen in een Git-opslag plaats (Azure opslag plaatsen of GitHub) en voegt u een [privé-opslag plaats voor uw sjablonen](devtest-lab-test-env.md) toe aan het lab. Dit scenario is mogelijk niet nuttig als u DevTest Labs gebruikt om ontwikkel machines te hosten, maar dit kan handig zijn als u een faserings omgeving bouwt die representatief is voor productie.
@@ -264,7 +264,7 @@ Het is ook een goed idee dat voor het aantal virtuele machines per Lab of per ge
 ### <a name="how-can-i-set-up-an-easily-repeatable-process-to-bring-my-custom-organizational-images-into-a-devtest-labs-environment"></a>Hoe kan ik een eenvoudig herhaalbaar proces instellen om mijn aangepaste organisatie-installatie kopieën naar een DevTest Labs-omgeving te brengen?
 Bekijk deze [video over het patroon van de afbeeldings fabriek](https://sec.ch9.ms/ch9/8e8a/9ea0b8d4-b803-4f23-bca4-4808d9368e8a/dtlimagefactory_mid.mp4). Dit scenario is een geavanceerd scenario en de meegeleverde scripts zijn alleen voorbeeld scripts. Als er wijzigingen zijn vereist, moet u de scripts die in uw omgeving worden gebruikt, beheren en onderhouden.
 
-Voor gedetailleerde informatie over het maken van een image Factory, Zie [een aangepaste installatie kopie maken Factory in azure DevTest Labs](image-factory-create.md). 
+Voor gedetailleerde informatie over het maken van een image Factory, Zie [een aangepaste installatie kopie maken Factory in azure DevTest Labs](image-factory-create.md).
 
 ### <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>Wat is het verschil tussen een aangepaste installatie kopie en een formule?
 Een aangepaste installatie kopie is een beheerde installatie kopie. Een formule is een installatie kopie die u kunt configureren met aanvullende instellingen en vervolgens opslaat en reproduceert. Een aangepaste installatie kopie kan de voor keur hebben als u snel verschillende omgevingen wilt maken met behulp van dezelfde basis, onveranderlijke afbeelding. Een formule kan beter zijn als u de configuratie van uw virtuele machine wilt reproduceren met de meest recente bits, als onderdeel van een virtueel netwerk of subnet, of als een virtuele machine van een bepaalde grootte. Zie [aangepaste afbeeldingen en formules vergelijken in DevTest Labs](devtest-lab-comparing-vm-base-image-types.md)voor een uitgebreidere uitleg.
@@ -343,19 +343,19 @@ De volgende blog berichten bieden richt lijnen en informatie over het gebruik va
 - [Een nieuwe virtuele machine implementeren in een bestaand DevTest Labs Lab van Azure DevOps Services](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 - [Release beheer van Azure DevOps Services gebruiken voor continue implementaties naar DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-Voor de/Continuous Delivery (CD) toolchains van andere doorlopende integratie (CI), kunt u dezelfde scenario's gebruiken door [Azure Resource Manager sjablonen](https://azure.microsoft.com/resources/templates/) te implementeren met behulp van [Azure PowerShell-cmdlets](../azure-resource-manager/resource-group-template-deploy.md) en [.net sdk's](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). U kunt ook [rest-api's gebruiken voor DevTest Labs](https://aka.ms/dtlrestapis) om te integreren met uw hulpprogramma keten.
+Voor de/Continuous Delivery (CD) toolchains van andere doorlopende integratie (CI), kunt u dezelfde scenario's gebruiken door [Azure Resource Manager sjablonen](https://azure.microsoft.com/resources/templates/) te implementeren met behulp van [Azure PowerShell-cmdlets](../azure-resource-manager/templates/deploy-powershell.md) en [.net sdk's](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/). U kunt ook [rest-api's gebruiken voor DevTest Labs](https://aka.ms/dtlrestapis) om te integreren met uw hulpprogramma keten.
 
 ## <a name="networking"></a>Networking
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Wanneer moet ik een nieuw virtueel netwerk maken voor mijn DevTest Labs-omgeving versus een bestaand virtueel netwerk gebruiken?
-Als uw Vm's moeten communiceren met de bestaande infra structuur, kunt u overwegen om een bestaand virtueel netwerk in uw DevTest Labs-omgeving te gebruiken. Als u ExpressRoute gebruikt, is het raadzaam om de hoeveelheid VNets/subnetten zo klein mogelijk te maken dat u de IP-adres ruimte die wordt toegewezen voor gebruik in de abonnementen niet hoeft te fragmenteren. 
+Als uw Vm's moeten communiceren met de bestaande infra structuur, kunt u overwegen om een bestaand virtueel netwerk in uw DevTest Labs-omgeving te gebruiken. Als u ExpressRoute gebruikt, is het raadzaam om de hoeveelheid VNets/subnetten zo klein mogelijk te maken dat u de IP-adres ruimte die wordt toegewezen voor gebruik in de abonnementen niet hoeft te fragmenteren.
 
-Denk ook aan het gebruik van het VNet-peering-patroon ([hub-spoke model](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)). Deze aanpak maakt vnet/subnet-communicatie mogelijk tussen abonnementen. Anders kan elke DevTest Labs-omgeving een eigen virtueel netwerk hebben. 
+Denk ook aan het gebruik van het VNet-peering-patroon ([hub-spoke model](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)). Deze aanpak maakt vnet/subnet-communicatie mogelijk tussen abonnementen. Anders kan elke DevTest Labs-omgeving een eigen virtueel netwerk hebben.
 
 Er zijn [limieten](../azure-resource-manager/management/azure-subscription-service-limits.md) voor het aantal virtuele netwerken per abonnement. De standaard waarde is 50, maar deze limiet kan worden verhoogd naar 100.
 
 ### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>Wanneer moet ik een gedeeld IP-adres versus een openbaar IP-adres versus particulier IP-adres gebruiken?
- 
+
 Als u een site-naar-site-VPN of Express route gebruikt, kunt u het gebruik van privé IP-adressen overwegen, zodat uw computers toegankelijk zijn via uw interne netwerk en niet toegankelijk zijn via het open bare Internet.
 
 > [!NOTE]
@@ -383,15 +383,15 @@ Een van de mogelijkheden is dat de naam van uw virtuele netwerk punten bevat. Al
 ### <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>Waarom wordt de fout ' bovenliggende resource niet gevonden ' weer gegeven wanneer ik een virtuele machine inrich vanuit Power shell?
 Wanneer een resource een bovenliggend item is voor een andere resource, moet de bovenliggende resource bestaan voordat u de onderliggende resource maakt. Als de bovenliggende resource niet bestaat, wordt er een **ParentResourceNotFound** -bericht weer gegeven. Als u geen afhankelijkheid opgeeft voor de bovenliggende resource, kan de onderliggende resource worden geïmplementeerd vóór het bovenliggende item.
 
-Vm's zijn onderliggende resources onder een lab in een resource groep. Wanneer u Resource Manager-sjablonen gebruikt om Vm's te implementeren met behulp van Power shell, moet de naam van de resource groep in het Power shell-script de naam van de resource groep van het lab zijn. Zie [problemen met algemene Azure-implementatie fouten oplossen](../azure-resource-manager/resource-manager-common-deployment-errors.md)voor meer informatie.
+Vm's zijn onderliggende resources onder een lab in een resource groep. Wanneer u Resource Manager-sjablonen gebruikt om Vm's te implementeren met behulp van Power shell, moet de naam van de resource groep in het Power shell-script de naam van de resource groep van het lab zijn. Zie [problemen met algemene Azure-implementatie fouten oplossen](../azure-resource-manager/templates/common-deployment-errors.md)voor meer informatie.
 
 ### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Waar vind ik meer fout informatie als een VM-implementatie mislukt?
 VM-implementatie fouten worden vastgelegd in activiteiten Logboeken. U kunt activiteiten logboeken voor Lab-VM'S vinden onder **audit logboeken** of **virtuele machine Diagnostics** in het menu resource op de VM-pagina van het lab (de pagina wordt weer gegeven nadat u de virtuele machine hebt geselecteerd in de lijst mijn vm's).
 
-Soms treedt er een implementatie fout op voordat de implementatie van de VM begint. Een voor beeld is het overschrijden van de abonnements limiet voor een resource die is gemaakt met de virtuele machine. In dit geval worden de fout Details vastgelegd in de activiteiten logboeken op Lab-niveau. Activiteiten logboeken bevinden zich onder aan de instellingen voor **configuratie en beleid** . Zie [activiteiten logboeken weer geven om acties op resources te controleren](../azure-resource-manager/resource-group-audit.md)voor meer informatie over het gebruik van activiteiten Logboeken in Azure.
+Soms treedt er een implementatie fout op voordat de implementatie van de VM begint. Een voor beeld is het overschrijden van de abonnements limiet voor een resource die is gemaakt met de virtuele machine. In dit geval worden de fout Details vastgelegd in de activiteiten logboeken op Lab-niveau. Activiteiten logboeken bevinden zich onder aan de instellingen voor **configuratie en beleid** . Zie [activiteiten logboeken weer geven om acties op resources te controleren](../azure-resource-manager/management/view-activity-logs.md)voor meer informatie over het gebruik van activiteiten Logboeken in Azure.
 
 ### <a name="why-do-i-get-location-is-not-available-for-resource-type-error-when-trying-to-create-a-lab"></a>Waarom krijg ik de fout ' locatie is niet beschikbaar voor resource type ' bij het maken van een Lab?
-Er wordt mogelijk een fout bericht van de volgende strekking weer gegeven wanneer u probeert een lab te maken: 
+Er wordt mogelijk een fout bericht van de volgende strekking weer gegeven wanneer u probeert een lab te maken:
 
 ```
 The provided location 'australiacentral' is not available for resource type 'Microsoft.KeyVault/vaults'. List of available regions for the resource type is 'northcentralus,eastus,northeurope,westeurope,eastasia,southeastasia,eastus2,centralus,southcentralus,westus,japaneast,japanwest,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia,canadacentral,canadaeast,uksouth,ukwest,westcentralus,westus2,koreacentral,koreasouth,francecentral,southafricanorth
@@ -400,9 +400,7 @@ The provided location 'australiacentral' is not available for resource type 'Mic
 U kunt deze fout oplossen door een van de volgende stappen uit te voeren:
 
 #### <a name="option-1"></a>Optie 1
-Controleer de beschik baarheid van het resource type in azure-regio's op de pagina [beschik bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/) . Als het resource type niet beschikbaar is in een bepaalde regio, biedt DevTest Labs geen ondersteuning voor het maken van een lab in die regio. Selecteer een andere regio bij het maken van uw Lab. 
+Controleer de beschik baarheid van het resource type in azure-regio's op de pagina [beschik bare producten per regio](https://azure.microsoft.com/global-infrastructure/services/) . Als het resource type niet beschikbaar is in een bepaalde regio, biedt DevTest Labs geen ondersteuning voor het maken van een lab in die regio. Selecteer een andere regio bij het maken van uw Lab.
 
 #### <a name="option-2"></a>Optie 2
-Als het bron type beschikbaar is in uw regio, controleert u of het is geregistreerd bij uw abonnement. U kunt dit doen op het niveau van de abonnements eigenaar, zoals wordt weer gegeven in [dit artikel](../azure-resource-manager/resource-manager-supported-services.md). 
-
-
+Als het bron type beschikbaar is in uw regio, controleert u of het is geregistreerd bij uw abonnement. U kunt dit doen op het niveau van de abonnements eigenaar, zoals wordt weer gegeven in [dit artikel](../azure-resource-manager/management/resource-providers-and-types.md).

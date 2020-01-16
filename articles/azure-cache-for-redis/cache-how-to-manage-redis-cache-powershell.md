@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 6eeabb279f5bd5165ebb249651b8bc926deb92a6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: a385d3ed7ef46389f96de72c98ffc29cebf60ec4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530915"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978851"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Azure-cache beheren voor redis met Azure PowerShell
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ In dit onderwerp wordt beschreven hoe u algemene taken uitvoert, zoals het maken
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-Zie Azure Resource Manager vs. klassieke implementatie voor meer informatie over het klassieke implementatie model [: inzicht in implementatie modellen en de status van uw resources](../azure-resource-manager/resource-manager-deployment-model.md).
+Zie Azure Resource Manager vs. klassieke implementatie voor meer informatie over het klassieke implementatie model [: inzicht in implementatie modellen en de status van uw resources](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="prerequisites"></a>Vereisten
 Als u Azure PowerShell al hebt geïnstalleerd, moet u Azure PowerShell versie 1.0.0 of hoger hebben. U kunt controleren welke versie van Azure PowerShell u met deze opdracht hebt geïnstalleerd bij de Azure PowerShell opdracht prompt.
@@ -776,7 +776,7 @@ Raadpleeg de volgende bronnen voor meer informatie over het gebruik van Windows 
 
 * [Documentatie voor Azure cache for redis-cmdlets op MSDN](https://docs.microsoft.com/powershell/module/az.rediscache)
 * [Azure Resource Manager-cmdlets](https://go.microsoft.com/fwlink/?LinkID=394765): meer informatie over het gebruik van de cmdlets in de module Azure Resource Manager.
-* [Resource groepen gebruiken om uw Azure-resources te beheren](../azure-resource-manager/resource-group-template-deploy-portal.md): informatie over het maken en beheren van resource groepen in de Azure Portal.
+* [Resource groepen gebruiken om uw Azure-resources te beheren](../azure-resource-manager/templates/deploy-portal.md): informatie over het maken en beheren van resource groepen in de Azure Portal.
 * [Azure-blog](https://azure.microsoft.com/blog/): meer informatie over nieuwe functies in Azure.
 * [Windows Power shell-blog](https://blogs.msdn.com/powershell): meer informatie over nieuwe functies in Windows Power shell.
 * ["Hey, Scripting Guy!" Blog](https://blogs.technet.com/b/heyscriptingguy/): krijg praktische tips en trucs van de Windows Power shell-community.

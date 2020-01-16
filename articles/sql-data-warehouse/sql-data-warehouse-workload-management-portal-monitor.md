@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 01/14/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3baaab59031c4cfad036a7181318502d1969715
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: fd9bd846beba718cb305907d4d0c5a613d2ef816
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942423"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029939"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring-preview"></a>Azure Synapse Analytics-werk belasting Beheerportal bewaking (preview)
 In dit artikel wordt uitgelegd hoe u resource gebruik en query activiteit van [werkbelasting groepen](sql-data-warehouse-workload-isolation.md#workload-groups) bewaakt. Zie het artikel aan de slag [met azure Metrics Explorer](../azure-monitor/platform/metrics-getting-started.md) voor meer informatie over het configureren van de Azure Metrics Explorer.  Zie de sectie [resource gebruik](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization) in Azure SQL Data Warehouse controle van de documentatie voor meer informatie over het bewaken van het verbruik van systeem bronnen.
@@ -49,8 +49,11 @@ CREATE WORKLOAD CLASSIFIER wcCEOPriority
 WITH ( WORKLOAD_GROUP = 'wgPriority'
       ,MEMBERNAME = 'TheCEO');
 ```
-De onderstaande grafiek is als volgt geconfigureerd: metriek 1: *effectief min resource percentage* (gem. aggregatie, `blue line`) metric 2: *werkbelasting groep toegewezen door systeem percentage* (gem. aggregatie, `purple line`) filter: [werkbelasting groep] = `wgPriority`
-![underutilized-WG. png](media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) de grafiek laat zien dat er gemiddeld 10% wordt gebruikt voor de werk belasting.  In dit geval kan de waarde van de `MIN_PERCENTAGE_RESOURCE`-para meter worden verlaagd tot 10 of 15 en kunnen andere werk belastingen op het systeem de bronnen gebruiken.
+De onderstaande grafiek wordt als volgt geconfigureerd:<br>
+Metriek 1: *effectief min resource percentage* (gem. aggregatie, `blue line`)<br>
+Metriek 2: *werkbelasting groep toegewezen door systeem percentage* (gem. aggregatie, `purple line`)<br>
+Filter: [werkbelasting groep] = `wgPriority`<br>
+![underutilized-WG. png](media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) in het diagram wordt weer gegeven dat met 25% workload-isolatie, slechts 10% wordt gebruikt bij gemiddelde.  In dit geval kan de waarde van de `MIN_PERCENTAGE_RESOURCE`-para meter worden verlaagd tot 10 of 15 en kunnen andere werk belastingen op het systeem de bronnen gebruiken.
 
 ### <a name="workload-group-bottleneck"></a>Bottleneck van werkbelasting groep
 Houd rekening met de volgende werkbelasting groep en classificatie configuratie, waarbij een werkbelasting groep met de naam `wgDataAnalyst` wordt gemaakt en de *DataAnalyst* `membername` wordt toegewezen aan deze met behulp van de classificatie `wcDataAnalyst` werk belasting.  Voor de werkbelasting groep voor `wgDataAnalyst` is 6% een werkbelasting isolatie geconfigureerd (`MIN_PERCENTAGE_RESOURCE` = 6) en een resource limiet van 9% (`CAP_PERCENTAGE_RESOURCE` = 9).  Elke query die wordt verzonden door de *DataAnalyst* , krijgt 3% systeem bronnen (`REQUEST_MIN_RESOURCE_GRANT_PERCENT` = 3).
@@ -65,8 +68,12 @@ CREATE WORKLOAD CLASSIFIER wcDataAnalyst
 WITH ( WORKLOAD_GROUP = 'wgDataAnalyst'
       ,MEMBERNAME = 'DataAnalyst');
 ```
-De onderstaande grafiek is als volgt geconfigureerd: metriek 1: *effectief cap resource percent* (gem aggregatie, `blue line`) metric 2: *toewijzing van werkbelasting groep op Maxi maal resource percentage* (gem. aggregatie, `purple line`) metrische waarde 3: *werkbelasting groep query's in wachtrij* (Sum Aggregation, `turquoise line`) filter: [werkbelasting groep] = `wgDataAnalyst`
-![fles-hals-WG](media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) het diagram laat zien dat de werkbelasting groep 90% + gebruikt (van de werkbelasting *groep toegewezen op Max resource percentage meet waarde*).  Er is een stabiele wachtrij met query's, zoals wordt weer gegeven in de *groep workload query's*in de wachtrij.  In dit geval is het verhogen van de `CAP_PERCENTAGE_RESOURCE` naar een waarde hoger dan 9% zodat meer query's gelijktijdig kunnen worden uitgevoerd.  Als u de `CAP_PERCENTAGE_RESOURCE` verhoogt, wordt ervan uitgegaan dat er voldoende bronnen beschikbaar zijn en niet worden geïsoleerd door andere werkbelasting groepen.  Controleer of de limiet is verhoogd door de *werkelijke Cap-waarde voor het resource percentage*te controleren.  Als u meer door voer wilt doen, kunt u ook overwegen om de `REQUEST_MIN_RESOURCE_GRANT_PERCENT` te verhogen naar een waarde die groter is dan 3.  Het verg Roten van de `REQUEST_MIN_RESOURCE_GRANT_PERCENT` kan ertoe leiden dat query's sneller worden uitgevoerd.
+De onderstaande grafiek wordt als volgt geconfigureerd:<br>
+Metriek 1: *percentage van effectief cap-resource* (gem. aggregatie, `blue line`)<br>
+Metriek 2: *toewijzing van werkbelasting groepen op Maxi maal resource percentage* (gem. aggregatie, `purple line`)<br>
+Metrisch 3: *werkbelasting groep query's in wachtrij* (Sum aggregatie, `turquoise line`)<br>
+Filter: [werkbelasting groep] = `wgDataAnalyst`<br>
+![van een fles met hals en WG](media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) in het diagram wordt weer gegeven met een limiet van 9% op resources, is de werkbelasting groep 90% + gebruikt (van de *werkbelasting groep toewijzing op basis van het percentage metrische resources*).  Er is een stabiele wachtrij met query's, zoals wordt weer gegeven in de *groep workload query's*in de wachtrij.  In dit geval is het verhogen van de `CAP_PERCENTAGE_RESOURCE` naar een waarde hoger dan 9% zodat meer query's gelijktijdig kunnen worden uitgevoerd.  Als u de `CAP_PERCENTAGE_RESOURCE` verhoogt, wordt ervan uitgegaan dat er voldoende bronnen beschikbaar zijn en niet worden geïsoleerd door andere werkbelasting groepen.  Controleer of de limiet is verhoogd door de *werkelijke Cap-waarde voor het resource percentage*te controleren.  Als u meer door voer wilt doen, kunt u ook overwegen om de `REQUEST_MIN_RESOURCE_GRANT_PERCENT` te verhogen naar een waarde die groter is dan 3.  Het verg Roten van de `REQUEST_MIN_RESOURCE_GRANT_PERCENT` kan ertoe leiden dat query's sneller worden uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 [Snelstartgids: werk belasting isolatie configureren met T-SQL](quickstart-configure-workload-isolation-tsql.md)<br>

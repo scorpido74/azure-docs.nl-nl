@@ -10,16 +10,16 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: d34182e09bf453dbec1e9592f131cb9b3b78a086
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 0506527808892bf1ee531d892e2773d095e18560
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086473"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965629"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Diagnostische gegevens over opstarten gebruiken om problemen met virtuele machines in azure op te lossen
 
-Er kunnen verschillende redenen zijn waarom een virtuele machine een niet-opstart bare status krijgt. U kunt de volgende functies voor fout opsporing gebruiken om problemen op te lossen met uw virtuele machines die zijn gemaakt met het Resource Manager-implementatie model: Console-uitvoer en scherm afbeeldingen bieden ondersteuning voor virtuele machines van Azure. 
+Er kunnen verschillende redenen zijn waarom een virtuele machine een niet-opstart bare status krijgt. Als u problemen wilt oplossen met uw virtuele machines die zijn gemaakt met het Resource Manager-implementatie model, kunt u de volgende functies voor fout opsporing gebruiken: console-uitvoer en scherm afbeeldingen-ondersteuning voor virtuele machines van Azure. 
 
 Voor virtuele Linux-machines kunt u de uitvoer van uw console logboek vanuit de portal bekijken. Voor virtuele Windows-en Linux-machines kunt u met Azure een scherm opname van de virtuele machine in de Hyper Visor bekijken. Beide functies worden ondersteund voor virtuele Azure-machines in alle regio's. Houd er rekening mee dat het tot 10 minuten kan duren voordat de schermafbeeldingen en uitvoer worden weergegeven in uw opslagaccount.
 
@@ -79,7 +79,7 @@ Met het diagnostische profiel kunt u het opslagaccount selecteren waarin u deze 
 }
 ```
 
-Voor meer informatie over het implementeren van resources met behulp van sjablonen raadpleegt [u Quick Start: Azure Resource Manager-sjablonen maken en implementeren via Azure Portal](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).
+Voor meer informatie over het implementeren van resources met behulp van sjablonen raadpleegt u [Quick Start: Azure Resource Manager sjablonen maken en implementeren met behulp van de Azure Portal](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 ## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>Diagnostische gegevens over opstarten op bestaande virtuele machine inschakelen 
 
@@ -96,5 +96,5 @@ U moet de virtuele machine opnieuw opstarten om de wijziging door te voeren.
 
 ### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>Diagnostische gegevens over opstarten inschakelen met behulp van Azure CLI
 
-U kunt de Azure CLI gebruiken om diagnostische gegevens over opstarten in te scha kelen op een bestaande virtuele machine van Azure. Zie [AZ VM boot-](
-https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest)Diagnostics (Engelstalig) voor meer informatie.
+U kunt de Azure CLI gebruiken om diagnostische gegevens over opstarten in te scha kelen op een bestaande virtuele machine van Azure. Zie [AZ VM boot-Diagnostics](
+https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest)(Engelstalig) voor meer informatie.

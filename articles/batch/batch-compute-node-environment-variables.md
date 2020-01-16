@@ -2,7 +2,7 @@
 title: Omgevings variabelen voor taak-runtime-Azure Batch | Microsoft Docs
 description: Richt lijnen voor de omgevings variabele van de taak runtime en naslag informatie voor Azure Batch Analytics.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 09/12/2019
-ms.author: lahugh
-ms.openlocfilehash: cb087b261780ba88bd26bea3e14fc875e5c63566
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.author: jushiman
+ms.openlocfilehash: fd3c8ac9e65f7f77be070e1d1d108490e61eb248
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177153"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027184"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Omgevings variabelen Azure Batch-runtime
 
@@ -48,7 +48,7 @@ De opdracht regels die door taken op reken knooppunten worden uitgevoerd, worden
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | De naam van het batch-account waartoe de taak behoort.                  | Alle taken.   | mybatchaccount gemaakt |
 | AZ_BATCH_ACCOUNT_URL            | De URL van het batch-account. | Alle taken. | `https://myaccount.westus.batch.azure.com` |
-| AZ_BATCH_APP_PACKAGE            | Een voor voegsel van alle omgevings variabelen voor het app-pakket. Als bijvoorbeeld toepassing "FOO" versie "1" is geïnstalleerd op een groep, is de omgevings variabele AZ_BATCH_APP_PACKAGE_FOO_1. AZ_BATCH_APP_PACKAGE_FOO_1 verwijst naar de locatie waar het pakket is gedownload (een map). Wanneer u de standaard versie van het app-pakket gebruikt, gebruikt u de omgevings variabele AZ_BATCH_APP_PACKAGE zonder de versie nummers. | Elke taak met een gekoppeld app-pakket. Ook beschikbaar voor alle taken als het knoop punt zelf toepassings pakketten heeft. | AZ_BATCH_APP_PACKAGE_FOO_1 |
+| AZ_BATCH_APP_PACKAGE            | Een voor voegsel van alle omgevings variabelen voor het app-pakket. Als bijvoorbeeld toepassing "FOO" versie "1" is geïnstalleerd in een groep, wordt de omgevings variabele AZ_BATCH_APP_PACKAGE_FOO_1. AZ_BATCH_APP_PACKAGE_FOO_1 verwijst naar de locatie waar het pakket is gedownload (een map). Wanneer u de standaard versie van het app-pakket gebruikt, gebruikt u de omgevings variabele AZ_BATCH_APP_PACKAGE zonder de versie nummers. | Elke taak met een gekoppeld app-pakket. Ook beschikbaar voor alle taken als het knoop punt zelf toepassings pakketten heeft. | AZ_BATCH_APP_PACKAGE_FOO_1 |
 | AZ_BATCH_AUTHENTICATION_TOKEN   | Een verificatie token dat toegang verleent tot een beperkt aantal batch-service bewerkingen. Deze omgevings variabele is alleen aanwezig als de [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) worden ingesteld wanneer de [taak wordt toegevoegd](/rest/api/batchservice/task/add#request-body). De token waarde wordt in de batch-Api's gebruikt als referenties voor het maken van een batch-client, zoals in de [.net API BatchClient. Open ()](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_). | Alle taken. | OAuth2-toegangs token |
 | AZ_BATCH_CERTIFICATES_DIR       | Een map in de [werkmap][files_dirs] van de taak waarin certificaten worden opgeslagen voor Linux-reken knooppunten. Deze omgevings variabele is niet van toepassing op Windows-reken knooppunten.                                                  | Alle taken.   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_HOST_LIST              | De lijst met knoop punten die worden toegewezen aan een [taak met meerdere instanties][multi_instance] in de indeling `nodeIP,nodeIP`. | Primaire en subtaken voor meerdere instanties. | `10.0.0.4,10.0.0.5` |
@@ -57,7 +57,7 @@ De opdracht regels die door taken op reken knooppunten worden uitgevoerd, worden
 | AZ_BATCH_JOB_PREP_DIR           | Het volledige pad van de map voor taak voorbereidings [taak][files_dirs] op het knoop punt. | Alle taken behalve taak begin taak en taak voorbereiden. Alleen beschikbaar als de taak is geconfigureerd met een taak voorbereidings taak. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation |
 | AZ_BATCH_JOB_PREP_WORKING_DIR   | Het volledige pad naar de werkmap van de taak voorbereidings [taak][files_dirs] op het knoop punt. | Alle taken behalve taak begin taak en taak voorbereiden. Alleen beschikbaar als de taak is geconfigureerd met een taak voorbereidings taak. | C:\user\tasks\workitems\jobprepreleasesamplejob\job-1\jobpreparation\wd |
 | AZ_BATCH_MASTER_NODE            | Het IP-adres en de poort van het reken knooppunt waarop de primaire taak van een [taak met meerdere exemplaren][multi_instance] wordt uitgevoerd. | Primaire en subtaken voor meerdere instanties. | `10.0.0.4:6000` |
-| AZ_BATCH_NODE_ID                | De ID van het knoop punt waaraan de taak is toegewezen. | Alle taken. | TVM-1219235766_3-20160919t172711z |
+| AZ_BATCH_NODE_ID                | De ID van het knoop punt waaraan de taak is toegewezen. | Alle taken. | tvm-1219235766_3-20160919t172711z |
 | AZ_BATCH_NODE_IS_DEDICATED      | Als `true`, het huidige knoop punt een toegewezen knoop punt is. Als `false`, is het een [knoop punt met een lage prioriteit](batch-low-pri-vms.md). | Alle taken. | `true` |
 | AZ_BATCH_NODE_LIST              | De lijst met knoop punten die worden toegewezen aan een [taak met meerdere instanties][multi_instance] in de indeling `nodeIP;nodeIP`. | Primaire en subtaken voor meerdere instanties. | `10.0.0.4;10.0.0.5` |
 | AZ_BATCH_NODE_MOUNTS_DIR        | Het volledige pad van de [bestandssysteem koppelings](virtual-file-mount.md) locatie op knooppunt niveau waar alle koppelings directory's zich bevinden. Windows-bestands shares maken gebruik van een stationsletter, dus voor Windows is het koppel station onderdeel van apparaten en stations.  |  Alle taken met inbegrip van een begin taak hebben toegang tot de gebruiker, op voor hand dat de gebruiker op de hoogte is van de koppelings machtigingen voor de gekoppelde map. | In Ubuntu is de locatie bijvoorbeeld: `/mnt/batch/tasks/fsmounts` |

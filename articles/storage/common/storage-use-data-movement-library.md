@@ -10,14 +10,14 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 22dae518a45d5c4af20044d5f3eb88e764e92c8b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5fe1e45f2ff80c1a212009291ab880a57f347fdf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895117"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978395"
 ---
-# <a name="transfer-data-with-the-data-movement-library"></a>Gegevens overdragen met de bibliotheek voor gegevens verplaatsing
+# <a name="transfer-data-with-the-data-movement-library"></a>Gegevens overdragen met de bibliotheek voor gegevensverplaatsing
 
 De Azure Storage-bibliotheek voor gegevens verplaatsing is een platformoverschrijdende open-bron bibliotheek die is ontworpen voor hoge prestaties uploaden, downloaden en kopiëren van blobs en bestanden. Deze bibliotheek is het belangrijkste Framework voor gegevens verplaatsing dat [AzCopy](../storage-use-azcopy.md). De bibliotheek voor gegevens verplaatsing biedt handige methoden die niet beschikbaar zijn in de Azure Storage-client bibliotheek voor .NET. Deze methoden bieden de mogelijkheid om het aantal parallelle bewerkingen in te stellen, de voortgang van de overdracht op te sporen, een geannuleerde overdracht eenvoudig te hervatten en nog veel meer.
 
@@ -35,7 +35,7 @@ Dit document laat zien hoe u een .NET core-console toepassing maakt die wordt ui
 ## <a name="prerequisites"></a>Vereisten
 
 - [Visual Studio Code](https://code.visualstudio.com/)
-- Een [Azure Storage-account](storage-quickstart-create-account.md)
+- Een [Azure Storage-account](storage-account-create.md)
 
 ## <a name="setup"></a>Instellen
 

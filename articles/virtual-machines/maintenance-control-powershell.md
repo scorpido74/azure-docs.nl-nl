@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: e7a5f9ba865ab555bde3125f40ee8675709bef40
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7ca98723511cc7297b462747d4e1e12ca9bd38c2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932708"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979022"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>Voor beeld: updates beheren met onderhouds beheer en Azure PowerShell
 
@@ -36,7 +36,7 @@ Met onderhouds controle kunt u het volgende doen:
 ## <a name="limitations"></a>Beperkingen
 
 - Vm's moeten op een [specifieke host](./linux/dedicated-hosts.md)staan of worden gemaakt met behulp van een [geïsoleerde VM-grootte](./linux/isolation.md).
-- Na 35 dagen wordt een update automatisch toegepast en worden beschikbaarheids beperkingen niet in acht genomen.
+- Na 35 dagen wordt een update automatisch toegepast.
 - De gebruiker moet toegang hebben tot de **resource-eigenaar** .
 
 
@@ -109,7 +109,7 @@ New-AzConfigurationAssignment `
    -MaintenanceConfigurationId $config.Id
 ```
 
-### <a name="dedicate-host"></a>Host toewijzen
+### <a name="dedicated-host"></a>Toegewezen host
 
 Als u een configuratie wilt Toep assen op een specifieke host, moet u ook `-ResourceType hosts`, `-ResourceParentName` toevoegen met de naam van de hostgroep en `-ResourceParentType hostGroups`. 
 
@@ -129,7 +129,9 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>Controleren op updates die nog niet zijn uitgevoerd
 
-Gebruik [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) om te zien of er updates in behandeling zijn. Gebruik `-subscription` om het Azure-abonnement van de virtuele machine op te geven als deze verschilt van de VM die u bent aangemeld. 
+Gebruik [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) om te zien of er updates in behandeling zijn. Gebruik `-subscription` om het Azure-abonnement van de virtuele machine op te geven als deze verschilt van de VM die u bent aangemeld.
+
+Als er geen updates zijn, wordt er een fout bericht weer gegeven met de opdracht: `Resource not found...StatusCode: 404`.
 
 ### <a name="isolated-vm"></a>Geïsoleerde VM
 
@@ -185,6 +187,39 @@ New-AzApplyUpdate `
    -ResourceParentName myHostGroup `
    -ResourceParentType hostGroups `
    -ProviderName Microsoft.Compute
+```
+
+## <a name="check-update-status"></a>Update status controleren
+Gebruik [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) om de status van een update te controleren. Met de onderstaande opdrachten wordt de status van de meest recente update weer gegeven met behulp van `default` voor de para meter `-ApplyUpdateName`. U kunt de naam van de update vervangen (geretourneerd door de opdracht [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) ) om de status van een specifieke update op te halen.
+
+Als er geen updates zijn om weer te geven, wordt een fout bericht weer gegeven met de volgende opdracht: `Resource not found...StatusCode: 404`.
+
+### <a name="isolated-vm"></a>Geïsoleerde VM
+
+Controleren op updates voor een specifieke virtuele machine.
+
+```azurepowershell-interactive
+Get-AzApplyUpdate `
+   -ResourceGroupName myResourceGroup `
+   -ResourceName myVM `
+   -ResourceType VirtualMachines `
+   -ProviderName Microsoft.Compute `
+   -ApplyUpdateName default
+```
+
+### <a name="dedicated-host"></a>Toegewezen host
+
+Controleren op updates voor een specifieke host.
+
+```azurepowershell-interactive
+Get-AzApplyUpdate `
+   -ResourceGroupName myResourceGroup `
+   -ResourceName myHost `
+   -ResourceType hosts `
+   -ResourceParentName myHostGroup `
+   -ResourceParentType hostGroups `
+   -ProviderName Microsoft.Compute `
+   -ApplyUpdateName default
 ```
 
 ## <a name="remove-a-maintenance-configuration"></a>Een onderhouds configuratie verwijderen

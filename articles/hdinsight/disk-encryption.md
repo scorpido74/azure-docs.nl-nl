@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2019
-ms.openlocfilehash: f3414033068f99e638030efb158a7fb01706b88c
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 2c015db828bcbfa8b26f519b3a4707b5ec69b8f3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75897713"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982494"
 ---
 # <a name="customer-managed-key-disk-encryption"></a>Door de klant beheerde sleutel schijf versleuteling
 
@@ -176,4 +176,4 @@ Door de klant beheerde sleutels van HDInsight zijn beschikbaar in alle open bare
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Overzicht van ENTER prise Security in azure HDInsight](/domain-joined/hdinsight-security-overview.md)
+* [Overzicht van ENTER prise Security in azure HDInsight](./domain-joined/hdinsight-security-overview.md)

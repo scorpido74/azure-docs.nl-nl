@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.service: batch
-ms.openlocfilehash: 7f471032d69213fc11ff748e3fa9093991ee23d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 03e383e43cbe90ae2f59766a235f167cff623b6a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449802"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982701"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Gebruik Azure-pijp lijnen om HPC-oplossingen te bouwen en te implementeren
 
@@ -192,7 +192,7 @@ De volgende sjabloon toont een voor beeld van het maken van een Azure Batch groe
 
 Ten slotte hebben we een sjabloon die vergelijkbaar is met een Orchestrator. Deze sjabloon is verantwoordelijk voor het implementeren van de mogelijkheden sjablonen.
 
-U kunt ook meer te weten komen over [het maken van gekoppelde Azure Resource Manager sjablonen](../azure-resource-manager/resource-manager-tutorial-create-linked-templates.md) in een afzonderlijk artikel.
+U kunt ook meer te weten komen over [het maken van gekoppelde Azure Resource Manager sjablonen](../azure-resource-manager/templates/template-tutorial-create-linked-templates.md) in een afzonderlijk artikel.
 
 ```json
 {
@@ -368,7 +368,7 @@ Azure-pijp lijnen worden ook gebruikt voor het implementeren van uw toepassing e
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>Uw toepassing en de onderliggende infra structuur implementeren
 
-Er zijn een aantal stappen voor het implementeren van de-infra structuur. Omdat we [gekoppelde sjablonen](../azure-resource-manager/resource-group-linked-templates.md)hebben gebruikt, moeten deze sjablonen toegankelijk zijn vanaf een openbaar eind punt (http of https). Dit kan een opslag plaats op GitHub, een Azure Blob Storage-account of een andere opslag locatie zijn. De geüploade sjabloon artefacten kunnen veilig blijven, omdat ze kunnen worden ondergebracht in een persoonlijke modus, maar via een van de volgende SAS-tokens (Shared Access Signature) worden geopend. In het volgende voor beeld ziet u hoe u een infra structuur implementeert met sjablonen van een Azure Storage-blob.
+Er zijn een aantal stappen voor het implementeren van de-infra structuur. Omdat we [gekoppelde sjablonen](../azure-resource-manager/templates/linked-templates.md)hebben gebruikt, moeten deze sjablonen toegankelijk zijn vanaf een openbaar eind punt (http of https). Dit kan een opslag plaats op GitHub, een Azure Blob Storage-account of een andere opslag locatie zijn. De geüploade sjabloon artefacten kunnen veilig blijven, omdat ze kunnen worden ondergebracht in een persoonlijke modus, maar via een van de volgende SAS-tokens (Shared Access Signature) worden geopend. In het volgende voor beeld ziet u hoe u een infra structuur implementeert met sjablonen van een Azure Storage-blob.
 
 1. Maak een **nieuwe release definitie**en selecteer een lege definitie. Vervolgens moet u de nieuwe omgeving een andere naam geven die relevant is voor de pijp lijn.
 

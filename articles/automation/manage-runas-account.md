@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 34dd15ee638335048c983fbb752bd812291456ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1761eebe51c5ccb4d30b93ad4122dfc185d216e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418056"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028259"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation uitvoeren als-accounts beheren
 
@@ -20,19 +20,19 @@ Wanneer u een uitvoeren als-account maakt, wordt er in Azure Active Directory ee
 
 Er zijn twee typen uitvoeren als-accounts:
 
-* **Uitvoeren als-account van Azure** : dit account wordt gebruikt voor het beheren van resources van het [Resource Manager-implementatie model](../azure-resource-manager/resource-manager-deployment-model.md) .
+* **Uitvoeren als-account van Azure** : dit account wordt gebruikt voor het beheren van resources van het [Resource Manager-implementatie model](../azure-resource-manager/management/deployment-models.md) .
   * Er wordt een Azure AD-toepassing met een zelf-ondertekend certificaat gemaakt. Daarnaast wordt er voor de toepassing in Azure AD een service-principalaccount gemaakt en wordt aan dit account de rol Inzender toegewezen in uw huidige abonnement. U kunt deze instelling wijzigen in Eigenaar of een andere rol. Zie [Op rollen gebaseerd toegangsbeheer in Azure Automation](automation-role-based-access-control.md) voor meer informatie.
   * Er wordt een Automation-certificaatasset gemaakt met de naam *AzureRunAsCertificate* in het opgegeven Automation-account. Het certificaatasset bevat de persoonlijke sleutel van het certificaat die wordt gebruikt door de Azure AD-toepassing.
   * Er wordt een Automation-verbindingsasset gemaakt met de naam *AzureRunAsConnection* in het opgegeven Automation-account. Het verbindingsasset bevat de toepassing-id, tenant-id, abonnement-id en certificaatvingerafdruk.
 
-* **Klassiek uitvoeren als-account van Azure** : dit account wordt gebruikt voor het beheren van de resources van het [klassieke implementatie model](../azure-resource-manager/resource-manager-deployment-model.md) .
+* **Klassiek uitvoeren als-account van Azure** : dit account wordt gebruikt voor het beheren van de resources van het [klassieke implementatie model](../azure-resource-manager/management/deployment-models.md) .
   * Hiermee maakt u een beheer certificaat in het abonnement
   * Er wordt een Automation-certificaatasset gemaakt met de naam *AzureClassicRunAsCertificate* in het opgegeven Automation-account. Het certificaatasset bevat de persoonlijke sleutel van het certificaat die wordt gebruikt door het beheercertificaat.
   * Er wordt een Automation-verbindingsasset gemaakt met de naam *AzureClassicRunAsConnection* in het opgegeven Automation-account. Het verbindingsasset bevat de naam van het abonnement, de abonnements-id en de certificaatassetnaam.
   * Moet een mede beheerder zijn van het abonnement om te maken of te vernieuwen
 
   > [!NOTE]
-  > Azure Cloud Solution Provider-abonnementen (Azure CSP) ondersteunen alleen het Azure Resource Manager model, niet-Azure Resource Manager services zijn niet beschikbaar in het programma. Wanneer u een CSP-abonnement gebruikt, wordt het klassieke uitvoeren als-account van Azure niet gemaakt. Het uitvoeren als-account van Azure wordt nog steeds gemaakt. Zie [beschik bare Services in CSP-abonnementen](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)voor meer informatie over CSP-abonnementen.
+  > Azure Cloud Solution Provider-abonnementen (Azure CSP) ondersteunen alleen het Azure Resource Manager model, niet-Azure Resource Manager services zijn niet beschikbaar in het programma. Wanneer u een CSP-abonnement gebruikt, wordt het klassieke uitvoeren als-account van Azure niet gemaakt. Het uitvoeren als-account van Azure wordt nog steeds gemaakt. Zie [beschik bare Services in CSP-abonnementen](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)voor meer informatie over CSP-abonnementen.
 
   > [!NOTE]
   > De service-principal voor een uitvoeren als-account heeft niet de bevoegdheid om Azure Active Directory standaard te lezen. Als u machtigingen wilt toevoegen voor het lezen of beheren van Azure Active Directory, moet u die machtiging verlenen aan de Service-Principal onder **API-machtigingen**. Zie [machtigingen toevoegen voor toegang tot Web-api's](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis)voor meer informatie.
@@ -437,7 +437,7 @@ U kunt het script [Extend-AutomationRunAsAccountRoleAssignmentToKeyVault. ps1](h
 
 Bepaalde configuratie-items die nodig zijn voor het juist functioneren van het Uitvoeren als- of klassieke Uitvoeren als-account, zijn mogelijk verwijderd of niet juist gemaakt tijdens de initiële configuratie. Dit zijn onder meer de volgende items:
 
-* certificaatasset
+* Certificaatasset
 * Verbindingsasset
 * Uitvoeren als-account is verwijderd uit de rol Inzender
 * Service-principal of toepassing in Azure AD

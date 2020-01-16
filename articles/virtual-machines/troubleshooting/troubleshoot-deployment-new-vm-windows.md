@@ -15,12 +15,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6dbe4c1533aecfab4a62ce3ad90b694c0c00f4b6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0bc363b87a9f5b2f013c0bae75a07d79a3a7a830
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103492"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981389"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Implementatie problemen oplossen bij het maken van een nieuwe Windows-VM in azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -35,7 +35,7 @@ Zie problemen [met het implementeren van virtuele Windows-machines in azure oplo
 ## <a name="collect-activity-logs"></a>Activiteiten logboeken verzamelen
 Om te beginnen met het oplossen van problemen, verzamelt u de activiteiten Logboeken om de fout te identificeren die aan het probleem is gekoppeld. De volgende koppelingen bevatten gedetailleerde informatie over het proces dat moet worden gevolgd.
 
-[Implementatiebewerkingen bekijken](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[Implementatiebewerkingen bekijken](../../azure-resource-manager/templates/deployment-history.md)
 
 [Activiteiten logboeken weer geven om Azure-resources te beheren](../../resource-group-audit.md)
 
@@ -43,7 +43,7 @@ Om te beginnen met het oplossen van problemen, verzamelt u de activiteiten Logbo
 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-table.md)]
 
-**VORIG** Als het besturings systeem Windows gegeneraliseerd is en het is geüpload en/of vastgelegd met de gegeneraliseerde instelling, zijn er geen fouten. Op dezelfde manier geldt dat als het besturings systeem Windows specialist is en het is geüpload en/of vastgelegd met de gespecialiseerde instelling, er geen fouten zijn.
+**Y:** Als het besturings systeem Windows gegeneraliseerd is en het is geüpload en/of vastgelegd met de gegeneraliseerde instelling, zijn er geen fouten. Op dezelfde manier geldt dat als het besturings systeem Windows specialist is en het is geüpload en/of vastgelegd met de gespecialiseerde instelling, er geen fouten zijn.
 
 **Upload fouten:**
 
@@ -65,7 +65,7 @@ Als u beide fouten wilt oplossen, gebruikt u [add-AzVhd om de oorspronkelijke VH
 
 Om beide fouten op te lossen, verwijdert u de huidige installatie kopie uit de portal en [legt u deze opnieuw vast vanaf de huidige vhd's](../windows/create-vm-specialized.md) met dezelfde instelling als voor het besturings systeem (gegeneraliseerd/gespecialiseerd).
 
-## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Probleem: Aangepaste/galerie/Marketplace-afbeelding; toewijzings fout
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Probleem: afbeelding voor aangepast/galerie/Marketplace; toewijzings fout
 Deze fout treedt op wanneer de nieuwe VM-aanvraag is vastgemaakt aan een cluster dat de aangevraagde VM-grootte niet kan ondersteunen of waarvoor er geen beschik bare ruimte beschikbaar is om aan de aanvraag te voldoen.
 
 **Oorzaak 1:** Het cluster kan de aangevraagde VM-grootte niet ondersteunen.
@@ -75,7 +75,7 @@ Deze fout treedt op wanneer de nieuwe VM-aanvraag is vastgemaakt aan een cluster
 * Voer de aanvraag opnieuw uit met een kleinere VM-grootte.
 * Als de grootte van de aangevraagde virtuele machine niet kan worden gewijzigd:
   * Stop alle virtuele machines in de beschikbaarheidsset.
-    Klik op **resource groepen** > *uw resource groep* >  > omuw > *beschikbaarheidsset*virtualmachines > *uw virtuele machine in te stellen. Stoppen.*   > 
+    Klik op **resource groepen** > *de resource groep* > **Resources** > *uw beschikbaarheidsset* > **virtual machines** > *uw virtuele machine* > **gestopt**.
   * Nadat alle Vm's zijn gestopt, maakt u de nieuwe virtuele machine op de gewenste grootte.
   * Start eerst de nieuwe VM en selecteer vervolgens elk van de gestopte Vm's en klik op **Start**.
 

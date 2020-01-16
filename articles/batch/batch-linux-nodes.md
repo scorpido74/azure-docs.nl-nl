@@ -3,7 +3,7 @@ title: Linux uitvoeren op reken knooppunten van de virtuele machine-Azure Batch 
 description: Meer informatie over het verwerken van uw parallelle Compute-werk belastingen op Pools met virtuele Linux-machines in Azure Batch.
 services: batch
 documentationcenter: python
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: na
 ms.date: 06/01/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18df43ebf3a20547917ddd372d922741b4cee849
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 27273fecc9d117079cfda58d537cf7342d3c5dc4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350120"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027073"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linux-reken knooppunten inrichten in batch-Pools
 
@@ -31,7 +31,7 @@ U kunt Azure Batch gebruiken om werk belastingen voor parallelle berekeningen ui
 >
 
 ## <a name="virtual-machine-configuration"></a>Configuratie van de virtuele machine
-Wanneer u een pool van reken knooppunten in batch maakt, hebt u twee opties waaruit u de grootte van het knoop punt en het besturings systeem kunt selecteren: Configuratie en configuratie van de virtuele machine Cloud Services.
+Wanneer u een pool van reken knooppunten in batch maakt, hebt u twee opties waaruit u de grootte van het knoop punt en het besturings systeem kunt selecteren: Cloud Services configuratie en configuratie van de virtuele machine.
 
 **Cloud Services-configuratie** biedt *alleen* Windows rekenknooppunten. Beschik bare groottes van reken knooppunten worden weer gegeven in [grootten voor Cloud Services](../cloud-services/cloud-services-sizes-specs.md)en beschik bare besturings systemen worden vermeld in de [Azure Guest OS releases en SDK Compatibility Matrix](../cloud-services/cloud-services-guestos-update-matrix.md). Wanneer u een pool maakt die Azure-Cloud Services knooppunten bevat, geeft u de knooppunt grootte en de besturingssysteem familie op, die in de eerder genoemde artikelen worden beschreven. Voor Pools van Windows-reken knooppunten wordt Cloud Services het meest gebruikt.
 
@@ -48,7 +48,7 @@ Wanneer u een verwijzing naar een installatie kopie van een virtuele machine con
 | Uitgever |Canonical |
 | Aanbieding |UbuntuServer |
 | SKU |14.04.4-LTS |
-| Version |latest |
+| Versie |nieuwste |
 
 > [!TIP]
 > Meer informatie over deze eigenschappen en hoe u Marketplace-installatie kopieën kunt weer geven in [navigeren en installatie kopieën van virtuele Linux-machines in azure selecteren met CLI of Power shell](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Houd er rekening mee dat niet alle installatie kopieën van Marketplace momenteel compatibel zijn met batch. Zie [SKU van node agent](#node-agent-sku)voor meer informatie.
@@ -67,7 +67,7 @@ De batch-knooppunt agent is een programma dat wordt uitgevoerd op elk knoop punt
 >
 >
 
-## <a name="create-a-linux-pool-batch-python"></a>Een Linux-groep maken: Batch Python
+## <a name="create-a-linux-pool-batch-python"></a>Een Linux-groep maken: batch python
 Het volgende code fragment toont een voor beeld van het gebruik van de [Microsoft Azure batch-client bibliotheek voor python][py_batch_package] om een pool met Ubuntu-Server Compute-knoop punten te maken. Referentie documentatie voor de batch python-module vindt u in [Azure. batch-pakket][py_batch_docs] op Lees de documenten.
 
 Met dit code fragment wordt een [ImageReference][py_imagereference] expliciet gemaakt en worden alle eigenschappen (uitgever, aanbieding, SKU, versie) opgegeven. In productie code wordt u echter aangeraden de methode [list_node_agent_skus][py_list_skus] te gebruiken om de beschik bare combi Naties van installatie kopieën en node-agents in runtime te bepalen en te selecteren.
@@ -146,7 +146,7 @@ vmc = batchmodels.VirtualMachineConfiguration(
     node_agent_sku_id=ubuntu1404agent.id)
 ```
 
-## <a name="create-a-linux-pool-batch-net"></a>Een Linux-groep maken: Batch .NET
+## <a name="create-a-linux-pool-batch-net"></a>Een Linux-groep maken: batch .NET
 Het volgende code fragment toont een voor beeld van het gebruik van de [batch .net][nuget_batch_net] -client bibliotheek voor het maken van een pool met Ubuntu-Server Compute-knoop punten. U kunt de [naslag documentatie voor batch .net][api_net] vinden op docs.Microsoft.com.
 
 Het volgende code fragment maakt gebruik van de [pool Operations][net_pool_ops]. Methode [ListNodeAgentSkus][net_list_skus] om een selectie te selecteren in de lijst met momenteel ondersteunde Marketplace-combi Naties van installatie kopie en node-agent. Deze techniek is wenselijk omdat de lijst met ondersteunde combi Naties van tijd tot tijd kan veranderen. De meeste ondersteunde combi Naties worden toegevoegd.
@@ -217,33 +217,33 @@ De volgende tabel geeft een lijst van de installatie kopieën van virtuele machi
 
 | **Publisher** | **Aanbieding** | **Afbeeldings-SKU** | **Versie** | **SKU-ID van de knooppunt agent** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
-| batch | rendering-centos73 | aanwijzer | latest | batch. node. CentOS 7 |
-| batch | Rendering-windows2016 | aanwijzer | latest | batch. node. Windows amd64 |
-| Canonical | UbuntuServer | 16.04-LTS | latest | batch.node.ubuntu 16.04 |
-| Canonical | UbuntuServer | 14.04.5-LTS | latest | batch. node. Ubuntu 14,04 |
-| credativ | Debian | 9 | latest | batch. node. Debian 9 |
-| credativ | Debian | 8 | latest | batch.node.debian 8 |
-| microsoft-ads | linux-data-science-vm | linuxdsvm | latest | batch. node. CentOS 7 |
-| microsoft-ads | Standard-data-Science-VM | Standard-data-Science-VM | latest | batch. node. Windows amd64 |
-| microsoft-azure-batch | CentOS-container | 7-4 | latest | batch. node. CentOS 7 |
-| microsoft-azure-batch | CentOS-container-RDMA | 7-4 | latest | batch. node. CentOS 7 |
-| microsoft-azure-batch | Ubuntu-Server-container | 16-04-LTS | latest | batch.node.ubuntu 16.04 |
-| microsoft-azure-batch | Ubuntu-Server-container-RDMA | 16-04-LTS | latest | batch.node.ubuntu 16.04 |
-| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter | latest | batch. node. Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter-smalldisk | latest | batch. node. Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2016-Data Center-met-containers | latest | batch. node. Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | latest | batch. node. Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter-smalldisk | latest | batch. node. Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | latest | batch. node. Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter-smalldisk | latest | batch. node. Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 | latest | batch. node. Windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1-smalldisk | latest | batch. node. Windows amd64 |
-| OpenLogic | CentOS | 7.4 | latest | batch. node. CentOS 7 |
-| OpenLogic | CentOS-HPC | 7.4 | latest | batch. node. CentOS 7 |
-| OpenLogic | CentOS-HPC | 7.3 | latest | batch. node. CentOS 7 |
-| OpenLogic | CentOS-HPC | 7.1 | latest | batch. node. CentOS 7 |
-| Oracle | Oracle-Linux | 7.4 | latest | batch. node. CentOS 7 |
-| SUSE | SLES-HPC | 12-SP2 | latest | batch. node. openSUSE 42,1 |
+| batch | rendering-centos73 | aanwijzer | nieuwste | batch. node. CentOS 7 |
+| batch | Rendering-windows2016 | aanwijzer | nieuwste | batch. node. Windows amd64 |
+| Canonical | UbuntuServer | 16.04-LTS | nieuwste | batch.node.ubuntu 16.04 |
+| Canonical | UbuntuServer | 14.04.5-LTS | nieuwste | batch. node. Ubuntu 14,04 |
+| credativ | Debian | 9 | nieuwste | batch. node. Debian 9 |
+| credativ | Debian | 8 | nieuwste | batch.node.debian 8 |
+| microsoft-ads | linux-data-science-vm | linuxdsvm | nieuwste | batch. node. CentOS 7 |
+| microsoft-ads | Standard-data-Science-VM | Standard-data-Science-VM | nieuwste | batch. node. Windows amd64 |
+| microsoft-azure-batch | CentOS-container | 7-4 | nieuwste | batch. node. CentOS 7 |
+| microsoft-azure-batch | CentOS-container-RDMA | 7-4 | nieuwste | batch. node. CentOS 7 |
+| microsoft-azure-batch | Ubuntu-Server-container | 16-04-LTS | nieuwste | batch.node.ubuntu 16.04 |
+| microsoft-azure-batch | Ubuntu-Server-container-RDMA | 16-04-LTS | nieuwste | batch.node.ubuntu 16.04 |
+| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter | nieuwste | batch. node. Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter-smalldisk | nieuwste | batch. node. Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2016-Data Center-met-containers | nieuwste | batch. node. Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | nieuwste | batch. node. Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter-smalldisk | nieuwste | batch. node. Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | nieuwste | batch. node. Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter-smalldisk | nieuwste | batch. node. Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 | nieuwste | batch. node. Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1-smalldisk | nieuwste | batch. node. Windows amd64 |
+| OpenLogic | CentOS | 7.4 | nieuwste | batch. node. CentOS 7 |
+| OpenLogic | CentOS-HPC | 7.4 | nieuwste | batch. node. CentOS 7 |
+| OpenLogic | CentOS-HPC | 7.3 | nieuwste | batch. node. CentOS 7 |
+| OpenLogic | CentOS-HPC | 7.1 | nieuwste | batch. node. CentOS 7 |
+| Oracle | Oracle-Linux | 7.4 | nieuwste | batch. node. CentOS 7 |
+| SUSE | SLES-HPC | 12-SP2 | nieuwste | batch. node. openSUSE 42,1 |
 
 ## <a name="connect-to-linux-nodes-using-ssh"></a>Verbinding maken met Linux-knoop punten met SSH
 Tijdens het ontwikkelen of tijdens het oplossen van problemen kan het nodig zijn om u aan te melden bij de knoop punten in uw pool. In tegens telling tot Windows-reken knooppunten kunt u Remote Desktop Protocol (RDP) niet gebruiken om verbinding te maken met Linux-knoop punten. In plaats daarvan schakelt de batch-service op elk knoop punt SSH-toegang in voor externe verbinding.
@@ -317,7 +317,7 @@ tvm-1219235766_3-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50002
 tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 ```
 
-In plaats van een wacht woord kunt u een open bare SSH-sleutel opgeven wanneer u een gebruiker op een knoop punt maakt. In de python-SDK gebruikt u de para meter **ssh_public_key** op [ComputeNodeUser][py_computenodeuser]. In .NET gebruikt u de [ComputeNodeUser][net_computenodeuser]. Eigenschap [SshPublicKey][net_ssh_key] .
+In plaats van een wacht woord kunt u een open bare SSH-sleutel opgeven wanneer u een gebruiker op een knoop punt maakt. Gebruik in de python-SDK de para meter **ssh_public_key** op [ComputeNodeUser][py_computenodeuser]. In .NET gebruikt u de [ComputeNodeUser][net_computenodeuser]. Eigenschap [SshPublicKey][net_ssh_key] .
 
 ## <a name="pricing"></a>Prijzen
 Azure Batch is gebaseerd op Azure Cloud Services en Azure Virtual Machines technologie. De batch-service zelf wordt gratis aangeboden. Dit betekent dat u alleen kosten in rekening brengt voor de reken resources die door uw batch-oplossingen worden verbruikt. Wanneer u **Cloud Services configuratie**kiest, worden kosten in rekening gebracht op basis van de [Cloud Services prijs][cloud_services_pricing] structuur. Wanneer u de **configuratie van de virtuele machine**kiest, worden kosten in rekening gebracht op basis van de [virtual machines prijs][vm_pricing] structuur. 

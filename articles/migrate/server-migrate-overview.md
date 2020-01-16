@@ -1,17 +1,14 @@
 ---
 title: Selecteer een optie voor VMware-migratie met Azure Migrate server migratie | Microsoft Docs
 description: Biedt een overzicht van de opties voor het migreren van virtuele VMware-machines naar Azure met Azure Migrate server migratie
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: raynew
-ms.openlocfilehash: 68026af5b96728ea66fd9e584e67e5e596e690fb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 52e7103ea3ebcd83369a866cc3f75b0bf0e889a2
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974662"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028711"
 ---
 # <a name="select-a-vmware-migration-option"></a>Selecteer een VMware-migratie optie
 
@@ -25,7 +22,7 @@ U kunt virtuele VMware-machines migreren naar Azure met behulp van het hulp prog
 
 ## <a name="compare-migration-methods"></a>Migratie methoden vergelijken
 
-Gebruik deze geselecteerde vergelijkingen om u te helpen beslissen welke methode u wilt gebruiken. U kunt ook volledige ondersteunings vereisten voor niet- [gemachtigde](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements) en [op agents gebaseerde](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) migraties bekijken.
+Gebruik deze geselecteerde vergelijkingen om u te helpen beslissen welke methode u wilt gebruiken. U kunt ook volledige ondersteunings vereisten voor niet- [gemachtigde](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) en [op agents gebaseerde](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) migraties bekijken.
 
 **Instelling** | **Zonder agent** | **Op basis van een agent**
 --- | --- | ---

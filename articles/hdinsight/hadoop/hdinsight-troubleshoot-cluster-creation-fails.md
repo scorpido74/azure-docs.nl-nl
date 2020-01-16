@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: 607eacc531166d9d770f31cc64825e8ffea9ca76
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ea60faf5b5689fa674095201d3db18422d3e0f1b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810672"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980501"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Problemen met het maken van clusters oplossen met Azure HDInsight
 
@@ -29,7 +29,7 @@ De volgende problemen zijn de meest voorkomende oorzaken voor het maken van een 
 
 ## <a name="permissions-issues"></a>Problemen met machtigingen
 
-Als u Azure data Lake Storage Gen2 gebruikt en de fout ```AmbariClusterCreationFailedErrorCode``` ```Internal server error occurred while processing the request. Please retry the request or contact support.```ontvangt, opent u de Azure Portal, gaat u naar uw opslag account en controleert u onder Access Control (IAM) of de BLOB- **gegevens bijdrager** of de opslag- **BLOB** De rol van gegevens eigenaar heeft toegang toegewezen aan de door de **gebruiker toegewezen beheerde identiteit** voor het abonnement. Zie [Machtigingen voor de beheerde identiteit instellen in het Data Lake Storage Gen2-account](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) voor gedetailleerde instructies.
+Als u Azure Data Lake Storage Gen2 gebruikt en de fout ```AmbariClusterCreationFailedErrorCode```ontvangt, ```Internal server error occurred while processing the request. Please retry the request or contact support.```opent u de Azure Portal, gaat u naar uw opslag account en klikt u onder Access Control (IAM), moet u ervoor zorgen dat de rol van de **BLOB voor gegevens bijdrage** of de eigenaar van de **opslag** -BLOB toegang heeft toegewezen aan de door de **gebruiker toegewezen beheerde identiteit** voor het abonnement. Zie [Machtigingen voor de beheerde identiteit instellen in het Data Lake Storage Gen2-account](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) voor gedetailleerde instructies.
 
 Als u Azure Data Lake Storage Gen1 gebruikt, raadpleegt u de installatie-en configuratie-instructies [hier](../hdinsight-hadoop-use-data-lake-store.md). Data Lake Storage Gen1 wordt niet ondersteund voor HBase-clusters en wordt niet ondersteund in HDInsight-versie 4,0.
 
@@ -51,7 +51,7 @@ Firewalls in uw virtuele netwerk of opslag account kunnen communicatie met IP-ad
 
 Verkeer toestaan van de IP-adressen in de onderstaande tabel.
 
-| IP-adres van de bron | Bestemming | Direction |
+| IP-adres van bron | Bestemming | Richting |
 |---|---|---|
 | 168.61.49.99 | *: 443 | Inkomend |
 | 23.99.5.239 | *: 443 | Inkomend |
@@ -64,7 +64,7 @@ Zie [een virtueel netwerk plannen voor Azure HDInsight-verbinding maken met meer
 
 ## <a name="resources-locks"></a>Resources vergren delen  
 
-Zorg ervoor dat [het virtuele netwerk en de resource groep geen vergren delingen](../../azure-resource-manager/resource-group-lock-resources.md)hebben.  
+Zorg ervoor dat [het virtuele netwerk en de resource groep geen vergren delingen](../../azure-resource-manager/management/lock-resources.md)hebben.  
 
 ## <a name="unsupported-component-versions"></a>Niet-ondersteunde onderdeel versies
 
@@ -82,7 +82,7 @@ Controleer de [Azure-status](https://status.azure.com/status) op mogelijke stori
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure HDInsight met behulp van een Azure-netwerk uitbreiden](../hdinsight-plan-virtual-network-deployment.md)
+* [Azure HDInsight uitbreiden met behulp van een virtueel Azure-netwerk](../hdinsight-plan-virtual-network-deployment.md).
 * [Azure Data Lake Storage Gen2 gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 * [Azure-opslag gebruiken met Azure HDInsight-clusters](../hdinsight-hadoop-use-blob-storage.md)
 * [Clusters in HDInsight instellen met Apache Hadoop, Apache Spark, Apache Kafka en meer](../hdinsight-hadoop-provision-linux-clusters.md)

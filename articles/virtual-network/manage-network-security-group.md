@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: kumud
-ms.openlocfilehash: d6c948c7fdfe2c5dc89c3e284ada33c2f7b542db
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: fa933b820d8677e4d080b54ce5e6a5d506ea38fc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750667"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978932"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Een netwerk beveiligings groep maken, wijzigen of verwijderen
 
@@ -69,8 +69,8 @@ In het zoekvak boven aan de portal voert u *netwerk beveiligings groepen*in. Wan
 3. Zie de volgende artikelen voor meer informatie over de algemene Azure-instellingen die worden weer gegeven:
     *   [Activiteitenlogboek](../azure-monitor/platform/platform-logs-overview.md)
     *   [Toegangs beheer (IAM)](../role-based-access-control/overview.md)
-    *   [Tags](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-    *   [Vergren delingen](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    *   [Tags](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+    *   [Vergren delingen](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Automatiserings script](../azure-resource-manager/templates/export-template-portal.md)
 
 **Opdrachten**

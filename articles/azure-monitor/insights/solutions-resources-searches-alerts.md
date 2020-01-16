@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 488130fbd2939fa4d98e379126ba3353a417fd72
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5ff9c45ffb636f53951a763f617c25a2e8c09088
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401765"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977722"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics opgeslagen Zoek opdrachten en waarschuwingen toevoegen aan beheer oplossing (preview)
 
@@ -23,7 +23,7 @@ ms.locfileid: "75401765"
 > [!NOTE]
 > Dit is voorlopige documentatie voor het maken van beheer oplossingen die momenteel als preview-versie beschikbaar zijn. Elk schema dat hieronder wordt beschreven, kan worden gewijzigd.
 
-[Beheer oplossingen](solutions.md) bevatten doorgaans [opgeslagen zoek opdrachten](../../azure-monitor/log-query/log-query-overview.md) in log Analytics voor het analyseren van gegevens die door de oplossing worden verzameld. Ze kunnen ook [waarschuwingen](../../azure-monitor/platform/alerts-overview.md) definiëren om de gebruiker op de hoogte te stellen of automatisch actie ondernemen als reactie op een kritiek probleem. In dit artikel wordt beschreven hoe u Log Analytics opgeslagen Zoek opdrachten en waarschuwingen definieert in een [sjabloon voor resource beheer](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) , zodat deze kunnen worden opgenomen in [beheer oplossingen](solutions-creating.md).
+[Beheer oplossingen](solutions.md) bevatten doorgaans [opgeslagen zoek opdrachten](../../azure-monitor/log-query/log-query-overview.md) in log Analytics voor het analyseren van gegevens die door de oplossing worden verzameld. Ze kunnen ook [waarschuwingen](../../azure-monitor/platform/alerts-overview.md) definiëren om de gebruiker op de hoogte te stellen of automatisch actie ondernemen als reactie op een kritiek probleem. In dit artikel wordt beschreven hoe u Log Analytics opgeslagen Zoek opdrachten en waarschuwingen definieert in een [sjabloon voor resource beheer](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) , zodat deze kunnen worden opgenomen in [beheer oplossingen](solutions-creating.md).
 
 > [!NOTE]
 > In de voor beelden in dit artikel worden para meters en variabelen gebruikt die vereist zijn of gemeen schappelijk zijn voor beheer oplossingen en die worden beschreven in [ontwerp en bouw een beheer oplossing in azure](solutions-creating.md)

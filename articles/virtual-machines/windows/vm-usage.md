@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: d574c5eef15c21d3d490bcfe682b87bae2856f1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2aa175d97787d82aae062a95ed519f35ff65816b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353726"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982265"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Meer informatie over het gebruik van virtuele machines in azure
-Door uw Azure-gebruiks gegevens te analyseren, kunnen er krachtige verbruiks inzichten worden verworven: inzichten waarmee betere kosten beheer en toewijzing in uw organisatie mogelijk zijn. In dit document vindt u meer informatie over uw Azure Compute-verbruik. Ga voor meer informatie over het algemene Azure-gebruik naar [inzicht in uw factuur](../../billing/billing-understand-your-bill.md).
+Door uw Azure-gebruiks gegevens te analyseren, kunnen er krachtige verbruiks inzichten worden verworven: inzichten waarmee betere kosten beheer en toewijzing in uw organisatie mogelijk zijn. In dit document vindt u meer informatie over uw Azure Compute-verbruik. Ga voor meer informatie over het algemene Azure-gebruik naar [inzicht in uw factuur](../../cost-management-billing/understand/review-individual-bill.md).
 
 ## <a name="download-your-usage-details"></a>De gebruiks gegevens downloaden
-[Down load uw gebruiks gegevens](../../billing/billing-download-azure-invoice-daily-usage-date.md)om te beginnen. De onderstaande tabel bevat de definitie-en voorbeeld waarden voor het gebruik van Virtual Machines die via de Azure Resource Manager zijn geïmplementeerd. Dit document bevat geen gedetailleerde informatie voor virtuele machines die via ons klassieke model zijn geïmplementeerd.
+[Down load uw gebruiks gegevens](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md)om te beginnen. De onderstaande tabel bevat de definitie-en voorbeeld waarden voor het gebruik van Virtual Machines die via de Azure Resource Manager zijn geïmplementeerd. Dit document bevat geen gedetailleerde informatie voor virtuele machines die via ons klassieke model zijn geïmplementeerd.
 
 
 | Velden             | Betekenis                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Voorbeeld waarden                                                                                                                                                                                                                                                                                                                                                   |
@@ -132,7 +132,7 @@ ComputeHR staat voor het reken uur dat de gebruiks gebeurtenis voor de onderligg
 ### <a name="how-do-i-know-if-i-am-charged-for-premium-software"></a>Hoe kan ik weet ik of er kosten in rekening worden gebracht voor Premium-software?
 Als u wilt weten welke VM-installatie kopie het meest geschikt is voor uw behoeften, bekijkt u de [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute). De afbeelding heeft de software plan frequentie. Als u ' gratis ' ziet voor het aantal, zijn er geen extra kosten voor de software. 
 ### <a name="what-is-the-difference-between-microsoftclassiccompute-and-microsoftcompute-in-the-consumed-service"></a>Wat is het verschil tussen micro soft. ClassicCompute en micro soft. Compute in de verbruikte service?
-Micro soft. ClassicCompute vertegenwoordigt de klassieke resources die worden geïmplementeerd via de Azure-Service Manager. Als u implementeert via de Resource Manager, wordt micro soft. Compute in de verbruikte service ingevuld. Meer informatie over de [Azure-implementatie modellen](../../azure-resource-manager/resource-manager-deployment-model.md).
+Micro soft. ClassicCompute vertegenwoordigt de klassieke resources die worden geïmplementeerd via de Azure-Service Manager. Als u implementeert via de Resource Manager, wordt micro soft. Compute in de verbruikte service ingevuld. Meer informatie over de [Azure-implementatie modellen](../../azure-resource-manager/management/deployment-models.md).
 ### <a name="why-is-the-instanceid-field-blank-for-my-virtual-machine-usage"></a>Waarom is het veld InstanceID leeg voor het gebruik van mijn virtuele machine?
 Als u via het klassieke implementatie model implementeert, is de InstanceID-teken reeks niet beschikbaar.
 ### <a name="why-are-the-tags-for-my-vms-not-flowing-to-the-usage-details"></a>Waarom worden de tags voor mijn Vm's niet naar de gebruiks Details gestroomd?
@@ -143,5 +143,5 @@ In het klassieke model wordt de facturering voor resources geaggregeerd op het n
 Virtuele machines met Premium-opslag worden in rekening gebracht tegen hetzelfde tarief als Vm's waarvoor geen Premium-opslag mogelijk is. Alleen uw opslag kosten verschillen. Ga naar de [pagina met prijzen voor opslag](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [inzicht in uw factuur voor Microsoft Azure](../../billing/billing-understand-your-bill.md) voor meer informatie over uw gebruiks gegevens.
+Zie [inzicht in uw factuur voor Microsoft Azure](../../cost-management-billing/understand/review-individual-bill.md) voor meer informatie over uw gebruiks gegevens.
 

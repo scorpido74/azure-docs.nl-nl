@@ -4,12 +4,12 @@ description: Azure Block Chain Service Data Access-en Security-concepten
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: e1a40acfec6b0dc5cdf21fb84b341b6b4987797a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 06bf4e0fa4037b07505a4f816fc7af56c14576d8
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455707"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982233"
 ---
 # <a name="azure-blockchain-service-security"></a>Azure Block Chain service-beveiliging
 
@@ -23,7 +23,7 @@ Azure Block Chain-service bronnen worden geïsoleerd in een particulier virtueel
 
 ## <a name="encryption"></a>Versleuteling
 
-Gebruikers gegevens worden opgeslagen in azure Storage. Gebruikers gegevens zijn versleuteld in beweging en op rest voor beveiliging en vertrouwelijkheid. Zie [Azure Storage Security Guide (Engelstalig](../../storage/common/storage-security-guide.md)) voor meer informatie.
+Gebruikers gegevens worden opgeslagen in azure Storage. Gebruikers gegevens zijn versleuteld in beweging en op rest voor beveiliging en vertrouwelijkheid. Zie [Azure Storage Security Guide (Engelstalig](../../storage/blobs/security-recommendations.md)) voor meer informatie.
 
 ## <a name="authentication"></a>Authentication
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 0e9b382b27d0bd1e4fd3a553ca468dd562eca368
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 753977ed0516e934f661d81904b60ff9935aa423
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792910"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981177"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -174,7 +174,7 @@ U kunt alleen specifieke gebruikers of groepen toestaan specifieke taken uit te 
 
 * [Logische app-operator](../role-based-access-control/built-in-roles.md#logic-app-operator): Hiermee kunt u logische apps lezen, inschakelen en uitschakelen, maar u kunt ze niet bewerken of bijwerken.
 
-U kunt [Azure resource Lock](../azure-resource-manager/resource-group-lock-resources.md)gebruiken om te voor komen dat anderen uw logische app wijzigen of verwijderen. Deze mogelijkheid voor komt dat anderen productie resources wijzigen of verwijderen.
+U kunt [Azure resource Lock](../azure-resource-manager/management/lock-resources.md)gebruiken om te voor komen dat anderen uw logische app wijzigen of verwijderen. Deze mogelijkheid voor komt dat anderen productie resources wijzigen of verwijderen.
 
 <a name="secure-run-history"></a>
 
@@ -356,7 +356,7 @@ Hier volgen enkele [aandachtspunten om te controleren](#obfuscation-consideratio
 
 ## <a name="access-to-parameter-inputs"></a>Toegang tot parameter invoer
 
-Als u in verschillende omgevingen implementeert, kunt u de waarden in uw werk stroom definitie parameterizingen die variëren op basis van deze omgevingen. Op die manier kunt u hardcoded gegevens voor komen door een [Azure Resource Manager sjabloon](../azure-resource-manager/template-deployment-overview.md) te gebruiken om uw logische app te implementeren, gevoelige gegevens te beschermen door beveiligde para meters te definiëren en deze gegevens als afzonderlijke invoer door te geven via de [para meters van de sjabloon](../azure-resource-manager/template-parameters.md) met behulp van een [parameter bestand](../azure-resource-manager/resource-manager-parameter-files.md).
+Als u in verschillende omgevingen implementeert, kunt u de waarden in uw werk stroom definitie parameterizingen die variëren op basis van deze omgevingen. Op die manier kunt u hardcoded gegevens voor komen door een [Azure Resource Manager sjabloon](../azure-resource-manager/templates/overview.md) te gebruiken om uw logische app te implementeren, gevoelige gegevens te beschermen door beveiligde para meters te definiëren en deze gegevens als afzonderlijke invoer door te geven via de [para meters van de sjabloon](../azure-resource-manager/templates/template-parameters.md) met behulp van een [parameter bestand](../azure-resource-manager/templates/parameter-files.md).
 
 Als u bijvoorbeeld HTTP-acties met [Azure Active Directory OAuth](#azure-active-directory-oauth-authentication)verifieert, kunt u de para meters definiëren en beveiligen die de client-id en het client geheim accepteren die worden gebruikt voor verificatie. Als u deze para meters in uw logische app wilt definiëren, gebruikt u de sectie `parameters` in de werk stroom definitie van de logische app en de Resource Manager-sjabloon voor implementatie. Als u parameter waarden wilt verbergen die u niet wilt weer geven bij het bewerken van de logische app of de weer gave van de uitvoerings geschiedenis, definieert u de para meters met behulp van de `securestring` of `secureobject` type en gebruikt u indien nodig code ring. Para meters van dit type worden niet geretourneerd met de resource definitie en zijn niet toegankelijk wanneer de resource wordt weer gegeven na de implementatie. Als u tijdens runtime toegang wilt krijgen tot deze parameter waarden, gebruikt u de `@parameters('<parameter-name>')` expressie in de definitie van uw werk stroom. Deze expressie wordt alleen geëvalueerd tijdens runtime en wordt beschreven door de [taal van de werk stroom definitie](../logic-apps/logic-apps-workflow-definition-language.md).
 
@@ -368,11 +368,11 @@ Zie voor meer informatie deze secties in dit onderwerp:
 * [Veilige para meters in werk stroom definities](#secure-parameters-workflow)
 * [Gegevens uit de uitvoerings geschiedenis verbergen door gebruik te maken van een donkere weer geven](#obfuscate)
 
-Als u de [implementatie van Logic apps automatiseert met behulp van Resource Manager-sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), kunt u de [para meters](../azure-resource-manager/template-parameters.md)voor beveiligde sjablonen definiëren die tijdens de implementatie worden geëvalueerd met behulp van de `securestring`-en `secureobject` typen. Voor het definiëren van sjabloon parameters gebruikt u de sectie `parameters` op het hoogste niveau van uw sjabloon, die gescheiden is en anders is dan de sectie `parameters` van uw werk stroom definitie. Als u de waarden voor sjabloon parameters wilt opgeven, gebruikt u een afzonderlijk [parameter bestand](../azure-resource-manager/resource-manager-parameter-files.md).
+Als u de [implementatie van Logic apps automatiseert met behulp van Resource Manager-sjablonen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), kunt u de [para meters](../azure-resource-manager/templates/template-parameters.md)voor beveiligde sjablonen definiëren die tijdens de implementatie worden geëvalueerd met behulp van de `securestring`-en `secureobject` typen. Voor het definiëren van sjabloon parameters gebruikt u de sectie `parameters` op het hoogste niveau van uw sjabloon, die gescheiden is en anders is dan de sectie `parameters` van uw werk stroom definitie. Als u de waarden voor sjabloon parameters wilt opgeven, gebruikt u een afzonderlijk [parameter bestand](../azure-resource-manager/templates/parameter-files.md).
 
-Als u bijvoorbeeld geheimen gebruikt, kunt u de para meters voor beveiligde sjablonen definiëren en gebruiken om deze geheimen op te halen uit [Azure Key Vault](../key-vault/key-vault-overview.md) tijdens de implementatie. U kunt vervolgens naar de sleutel kluis en het geheim in het parameter bestand verwijzen. Zie de volgende onderwerpen voor meer informatie:
+Als u bijvoorbeeld geheimen gebruikt, kunt u de para meters voor beveiligde sjablonen definiëren en gebruiken om deze geheimen op te halen uit [Azure Key Vault](../key-vault/key-vault-overview.md) tijdens de implementatie. U kunt vervolgens naar de sleutel kluis en het geheim in het parameter bestand verwijzen. Zie deze onderwerpen voor meer informatie:
 
-* [Gevoelige waarden door geven tijdens de implementatie met behulp van Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+* [Gevoelige waarden door geven tijdens de implementatie met behulp van Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 * [Veilige para meters in azure Resource Manager sjablonen](#secure-parameters-deployment-template) verderop in dit onderwerp
 
 <a name="secure-parameters-workflow"></a>
@@ -425,11 +425,11 @@ Als u gevoelige informatie in de werk stroom definitie van de logische app wilt 
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Veilige para meters in Azure Resource Manager sjablonen
 
-Een [Resource Manager-sjabloon](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) voor een logische app heeft meerdere `parameters`-secties. Als u wacht woorden, sleutels, geheimen en andere gevoelige informatie wilt beveiligen, definieert u de beveiligde para meters op sjabloon niveau en op het niveau van de werk stroom definitie met behulp van het type `securestring` of `secureobject`. U kunt deze waarden vervolgens opslaan in [Azure Key Vault](../key-vault/key-vault-overview.md) en het [parameter bestand](../azure-resource-manager/resource-manager-parameter-files.md) gebruiken om te verwijzen naar de sleutel kluis en het geheim. Uw sjabloon haalt vervolgens die informatie op tijdens de implementatie. Zie voor meer informatie [gevoelige waarden door geven tijdens de implementatie met behulp van Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+Een [Resource Manager-sjabloon](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) voor een logische app heeft meerdere `parameters`-secties. Als u wacht woorden, sleutels, geheimen en andere gevoelige informatie wilt beveiligen, definieert u de beveiligde para meters op sjabloon niveau en op het niveau van de werk stroom definitie met behulp van het type `securestring` of `secureobject`. U kunt deze waarden vervolgens opslaan in [Azure Key Vault](../key-vault/key-vault-overview.md) en het [parameter bestand](../azure-resource-manager/templates/parameter-files.md) gebruiken om te verwijzen naar de sleutel kluis en het geheim. Uw sjabloon haalt vervolgens die informatie op tijdens de implementatie. Zie voor meer informatie [gevoelige waarden door geven tijdens de implementatie met behulp van Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md).
 
 Hier vindt u meer informatie over deze `parameters`-secties:
 
-* Op het hoogste niveau van de sjabloon definieert een `parameters` sectie de para meters voor de waarden die de sjabloon gebruikt bij de *implementatie*. Deze waarden kunnen bijvoorbeeld verbindings reeksen bevatten voor een specifieke implementatie omgeving. U kunt deze waarden vervolgens opslaan in een afzonderlijk [parameter bestand](../azure-resource-manager/resource-manager-parameter-files.md), waardoor het wijzigen van deze waarden eenvoudiger wordt.
+* Op het hoogste niveau van de sjabloon definieert een `parameters` sectie de para meters voor de waarden die de sjabloon gebruikt bij de *implementatie*. Deze waarden kunnen bijvoorbeeld verbindings reeksen bevatten voor een specifieke implementatie omgeving. U kunt deze waarden vervolgens opslaan in een afzonderlijk [parameter bestand](../azure-resource-manager/templates/parameter-files.md), waardoor het wijzigen van deze waarden eenvoudiger wordt.
 
 * In de resource definitie van de logische app, maar buiten uw werk stroom definitie, geeft een `parameters` sectie de waarden op voor de para meters van uw werk stroom definitie. In deze sectie kunt u deze waarden toewijzen met behulp van sjabloon expressies die verwijzen naar de para meters van uw sjabloon. Deze expressies worden geëvalueerd tijdens de implementatie.
 
@@ -694,7 +694,7 @@ Als de optie [OAuth Active Directory](../active-directory/develop/about-microsof
 
 | Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
-| **Verificatie** | `type` | Ja | **Active Directory OAuth** <br>of <br>`ActiveDirectoryOAuth` | Het verificatie type dat moet worden gebruikt. Het [OAuth 2,0-protocol](../active-directory/develop/v2-overview.md)wordt momenteel gevolgd door Logic apps. |
+| **Verificatie** | `type` | Ja | **Active Directory OAuth** <br>of <br>`ActiveDirectoryOAuth` | Het verificatietype te gebruiken. Het [OAuth 2,0-protocol](../active-directory/develop/v2-overview.md)wordt momenteel gevolgd door Logic apps. |
 | **Bouw** | `tenant` | Ja | *Tenant-id* van <> | De Tenant-ID voor de Azure AD-Tenant |
 | **Gericht** | `audience` | Ja | <> voor de goed keuring van *resources* | De resource die u wilt gebruiken voor autorisatie, bijvoorbeeld `https://management.core.windows.net/` |
 | **Client ID** | `clientId` | Ja | <*client-ID*> | De client-ID voor de app die autorisatie aanvraagt |
@@ -748,7 +748,7 @@ Geef in de trigger of actie die onbewerkte authenticatie ondersteunt de volgende
 
 | Eigenschap (Designer) | Eigenschap (JSON) | Verplicht | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
-| **Verificatie** | `type` | Ja | Uitgang | Het te gebruiken verificatie type |
+| **Verificatie** | `type` | Ja | Onbewerkt | Het te gebruiken verificatie type |
 | **Waarde** | `value` | Ja | <*autorisatie-header-waarde*> | De waarde van de autorisatie-header die moet worden gebruikt voor verificatie |
 ||||||
 

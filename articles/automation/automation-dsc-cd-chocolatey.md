@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: ad42d7c2257519c2622ba17f74f97b9521233850
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4445f6e9b72380b66f3282d50871b4283f7fc7fa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366427"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966745"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Voor beeld van gebruik: doorlopende implementatie naar Virtual Machines met behulp van de configuratie van de automatiserings status en chocolade
 
@@ -40,7 +40,7 @@ Met de configuratie van de Azure Automation-status kunt u deze automatiserings f
 Een DSC-resource is een module code met specifieke mogelijkheden, zoals het beheren van netwerken, Active Directory of SQL Server. De chocolade DSC-resource weet hoe u toegang kunt krijgen tot een NuGet-server (onder andere), pakketten downloaden, pakketten installeert, enzovoort. Er zijn veel andere DSC-resources in de [PowerShell Gallery](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title).
 Deze modules worden geïnstalleerd in de pull-server van de configuratie van de Azure Automation status (door u) zodat deze door uw configuraties kunnen worden gebruikt.
 
-Resource Manager-sjablonen bieden een declaratieve manier voor het genereren van uw infra structuur, zoals netwerken, subnetten, netwerk beveiliging en route ring, load balancers, Nic's, Vm's, enzovoort. Hier volgt een [artikel](../azure-resource-manager/resource-manager-deployment-model.md) dat het Resource Manager-implementatie model (declaratief) vergelijkt met het Azure Service Management (ASM of Classic)-implementatie model (verplicht) en worden de belangrijkste resource providers, compute, opslag en het netwerk besproken.
+Resource Manager-sjablonen bieden een declaratieve manier voor het genereren van uw infra structuur, zoals netwerken, subnetten, netwerk beveiliging en route ring, load balancers, Nic's, Vm's, enzovoort. Hier volgt een [artikel](../azure-resource-manager/management/deployment-models.md) dat het Resource Manager-implementatie model (declaratief) vergelijkt met het Azure Service Management (ASM of Classic)-implementatie model (verplicht) en worden de belangrijkste resource providers, compute, opslag en het netwerk besproken.
 
 Een belang rijke functie van een resource manager-sjabloon is de mogelijkheid om een VM-extensie te installeren in de virtuele machine wanneer deze is ingericht. Een VM-extensie heeft specifieke mogelijkheden, zoals het uitvoeren van een aangepast script, het installeren van antivirus software of het uitvoeren van een DSC-configuratie script. Er zijn veel andere typen VM-extensies.
 

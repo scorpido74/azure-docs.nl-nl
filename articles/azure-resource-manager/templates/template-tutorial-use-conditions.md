@@ -5,12 +5,12 @@ author: mumian
 ms.date: 05/21/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 999b932cc12b945c3bf6bb0a4b56c3da19bb3ca6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 895d82eb79e4674ca95b9052d2384a257b296bf5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472406"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980661"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Zelfstudie: Voorwaarde gebruiken in Azure Resource Manager-sjablonen
 
@@ -155,7 +155,7 @@ New-AzResourceGroupDeployment `
 > [!NOTE]
 > De implementatie mislukt als **newOrExisting** de waarde **new** heeft, maar het opslagaccount met de opgegeven naam al bestaat.
 
-Probeer een andere implementatie uit te voeren met **newOrExisting** ingesteld op ' bestaand ' en geef een bestaand opslag account op. Zie [Een opslagaccount maken](../../storage/common/storage-quickstart-create-account.md) voor informatie over het vooraf maken van een opslagaccount.
+Probeer een andere implementatie uit te voeren met **newOrExisting** ingesteld op ' bestaand ' en geef een bestaand opslag account op. Zie [Een opslagaccount maken](../../storage/common/storage-account-create.md) voor informatie over het vooraf maken van een opslagaccount.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

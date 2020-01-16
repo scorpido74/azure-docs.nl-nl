@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf34abaf072b7b80f5831f15d86b12ad2780a920
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 42fa4dfb3e373eac4167ea1fecbd84ff3a7cca0d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424862"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977994"
 ---
 # <a name="conditional-access-block-access-by-location"></a>Voorwaardelijke toegang: toegang blok keren per locatie
 
@@ -30,7 +30,7 @@ Met de voor waarde voor de locatie in voorwaardelijke toegang kunt u de toegang 
 1. Geef een naam op voor uw locatie.
 1. Kies **IP-adresbereiken** als u de specifieke, extern toegankelijke IPv4-adresbereiken die deze locatie of **landen/regio's**vormen, kent.
    1. Geef het **IP-bereik** op of selecteer de **landen/regio's** voor de locatie die u opgeeft.
-      * Als u landen/regio's hebt gekozen, kunt u desgewenst ook onbekende gebieden opgeven.
+      * Als u landen/regio's kiest, kunt u desgewenst ook onbekende gebieden opgeven.
 1. Kies **Opslaan**.
 
 Meer informatie over de locatie voorwaarde in voorwaardelijke toegang vindt u in het artikel, [Wat is de voor waarde voor de locatie in azure Active Directory voorwaardelijke toegang](location-condition.md)

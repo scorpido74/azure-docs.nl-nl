@@ -8,14 +8,14 @@ ms.workload: core
 ms.topic: article
 ms.date: 01/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 9ea6febc781422a72ac6547338c8b21239331083
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: d4810c325acc42d5aa665002654cb01154cdc6bb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942514"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981617"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>Gebeurtenissen verzenden naar of ontvangen van Azure Event Hubs met behulp van node. js 
+# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>Gebeurtenissen verzenden naar of ontvangen van Azure Event Hubs met behulp van node. js
 
 Azure Event Hubs is een Big data streaming-platform en Event opname-service waarmee miljoenen gebeurtenissen per seconde kunnen worden ontvangen en verwerkt. Event Hubs kan gebeurtenissen, gegevens of telemetrie die wordt geproduceerd door gedistribueerde software en apparaten, verwerken en opslaan. Gegevens die naar een Event Hub worden verzonden, kunnen worden getransformeerd en opgeslagen via een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. Zie [Overzicht van Event Hubs](event-hubs-about.md) en [Functies van Event Hubs](event-hubs-features.md) voor een gedetailleerd overzicht van Event Hubs.
 
@@ -53,34 +53,34 @@ npm install @azure/eventhubs-checkpointstore-blob
 
 ## <a name="send-events"></a>Gebeurtenissen verzenden
 
-In deze sectie wordt beschreven hoe u een node. js-toepassing maakt die gebeurtenissen naar een Event Hub verzendt. 
+In deze sectie wordt beschreven hoe u een node. js-toepassing maakt die gebeurtenissen naar een Event Hub verzendt.
 
-1. Open uw favoriete editor, zoals [Visual Studio code](https://code.visualstudio.com). 
-2. Maak een bestand met de naam `send.js` en plak de volgende code in de map. 
+1. Open uw favoriete editor, zoals [Visual Studio code](https://code.visualstudio.com).
+2. Maak een bestand met de naam `send.js` en plak de volgende code in de map.
 
     ```javascript
     const { EventHubProducerClient } = require("@azure/event-hubs");
-    
+
     const connectionString = "EVENT HUBS NAMESPACE CONNECTION STRING";
     const eventHubName = "EVENT HUB NAME";
 
     async function main() {
-    
+
       // create a producer client to send messages to the event hub
       const producer = new EventHubProducerClient(connectionString, eventHubName);
-    
+
       // prepare a batch of three events
       const batch = await producer.createBatch();
       batch.tryAdd({ body: "First event" });
       batch.tryAdd({ body: "Second event" });
       batch.tryAdd({ body: "Third event" });    
-    
+
       // send the batch to the event hub
       await producer.sendBatch(batch);
-    
+
       // close the producer client
       await producer.close();
-    
+
       console.log("A batch of three events have been sent to the event hub");
     }
 
@@ -88,69 +88,69 @@ In deze sectie wordt beschreven hoe u een node. js-toepassing maakt die gebeurte
       console.log("Error occurred: ", err);
     });
     ```
-3. Vergeet niet om de **Connection String** en de **Event hub naam** waarden in de code te vervangen. 
+3. Vergeet niet om de **Connection String** en de **Event hub naam** waarden in de code te vervangen.
 5. Voer de opdracht uit `node send.js` om dit bestand uit te voeren. Hiermee wordt een batch van drie gebeurtenissen naar uw Event Hub verzonden
-6. In de Azure Portal kunt u controleren of de Event Hub de berichten heeft ontvangen. Schakel over naar de weer gave **berichten** in het gedeelte **metrische gegevens** . Vernieuw de pagina om de grafiek bij te werken. Het kan een paar seconden duren voordat wordt weer gegeven dat de berichten zijn ontvangen. 
+6. In de Azure Portal kunt u controleren of de Event Hub de berichten heeft ontvangen. Schakel over naar de weer gave **berichten** in het gedeelte **metrische gegevens** . Vernieuw de pagina om de grafiek bij te werken. Het kan een paar seconden duren voordat wordt weer gegeven dat de berichten zijn ontvangen.
 
     [![controleren of het Event Hub de berichten heeft ontvangen](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png)](./media/getstarted-dotnet-standard-send-v2/verify-messages-portal.png#lightbox)
 
     > [!NOTE]
     > Voor de volledige bron code met meer informatieve opmerkingen raadpleegt u [dit bestand op de GitHub](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/samples/javascript/sendEvents.js)
 
-Gefeliciteerd. U hebt nu gebeurtenissen verzonden naar een Event Hub. 
+Gefeliciteerd. U hebt nu gebeurtenissen verzonden naar een Event Hub.
 
 
-## <a name="receive-events"></a>Gebeurtenissen ontvangen 
+## <a name="receive-events"></a>Gebeurtenissen ontvangen
 In deze sectie wordt beschreven hoe u gebeurtenissen van een Event Hub ontvangt met behulp van een Azure Blob-opslag punt archief in een node. js-toepassing. Deze controlepunten metagegevens op de ontvangen berichten met regelmatige tussenpozen in een Azure Storage-Blob. Deze aanpak maakt het eenvoudig om door te gaan met het ontvangen van berichten van waar u gestopt op een later tijdstip bent.
 
 ### <a name="create-an-azure-storage-and-a-blob-container"></a>Een Azure Storage en een BLOB-container maken
-Volg deze stappen om een Azure Storage account te maken in een BLOB-container. 
+Volg deze stappen om een Azure Storage account te maken in een BLOB-container.
 
-1. [Een Azure Storage-account maken](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal)
+1. [Een Azure Storage-account maken](../storage/common/storage-account-create.md?tabs=azure-portal)
 2. [Een BLOB-container maken](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 3. [De connection string ophalen voor het opslag account](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
 
-    Noteer connection string en de naam van de container. U gebruikt deze in de receive-code. 
+    Noteer connection string en de naam van de container. U gebruikt deze in de receive-code.
 
 ### <a name="write-code-to-receive-events"></a>Code schrijven voor het ontvangen van gebeurtenissen
 
-1. Open uw favoriete editor, zoals [Visual Studio code](https://code.visualstudio.com). 
-2. Maak een bestand met de naam `receive.js` en plak de volgende code in de map. Zie code opmerkingen voor meer informatie. 
+1. Open uw favoriete editor, zoals [Visual Studio code](https://code.visualstudio.com).
+2. Maak een bestand met de naam `receive.js` en plak de volgende code in de map. Zie code opmerkingen voor meer informatie.
     ```javascript
     const { EventHubConsumerClient } = require("@azure/event-hubs");
     const { ContainerClient } = require("@azure/storage-blob");    
     const { BlobCheckpointStore } = require("@azure/eventhubs-checkpointstore-blob");
-    
+
     const connectionString = "EVENT HUBS NAMESPACE CONNECTION STRING";    
     const eventHubName = "EVENT HUB NAME";
     const consumerGroup = "$Default"; // name of the default consumer group
     const storageConnectionString = "AZURE STORAGE CONNECTION STRING";
     const containerName = "BLOB CONTAINER NAME";
-    
+
     async function main() {
       // create a blob container client and a blob checkpoint store using the client
       const containerClient = new ContainerClient(storageConnectionString, containerName);
       const checkpointStore = new BlobCheckpointStore(containerClient);
-    
+
       // create a consumer client for the event hub by specifying the checkpoint store
       const consumerClient = new EventHubConsumerClient(consumerGroup, connectionString, eventHubName, checkpointStore);
-    
-      // subscribe for the events and specify handlers for processing the events and errors. 
+
+      // subscribe for the events and specify handlers for processing the events and errors.
       const subscription = consumerClient.subscribe({
           processEvents: async (events, context) => {
             for (const event of events) {
               console.log(`Received event: '${event.body}' from partition: '${context.partitionId}' and consumer group: '${context.consumerGroup}'`);
             }
-            // update the checkpoint 
+            // update the checkpoint
             await context.updateCheckpoint(events[events.length - 1]);
           },
-    
+
           processError: async (err, context) => {
             console.log(`Error : ${err}`);
           }
         }
       );
-        
+
       // after 30 seconds, stop processing
       await new Promise((resolve) => {
         setTimeout(async () => {
@@ -160,17 +160,17 @@ Volg deze stappen om een Azure Storage account te maken in een BLOB-container.
         }, 30000);
       });
     }
-    
+
     main().catch((err) => {
       console.log("Error occurred: ", err);
     });    
     ```
-3. Vergeet niet om de **volgende waarden** op te geven in de code: 
+3. Vergeet niet om de **volgende waarden** op te geven in de code:
     - Verbindings reeks voor de Event Hubs naam ruimte
     - De naam van de Event Hub
     - Verbindings reeks met het Azure Storage-account
     - De naam van de BLOB-container
-5. Voer vervolgens de opdracht `node receive.js` in een opdracht prompt uit om dit bestand uit te voeren. U ziet de berichten over ontvangen gebeurtenissen in het venster. 
+5. Voer vervolgens de opdracht `node receive.js` in een opdracht prompt uit om dit bestand uit te voeren. U ziet de berichten over ontvangen gebeurtenissen in het venster.
 
     > [!NOTE]
     > Zie [dit bestand op de GitHub](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/receiveEventsUsingCheckpointStore.js)voor de volledige bron code met meer informatieve opmerkingen.

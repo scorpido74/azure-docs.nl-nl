@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 02/08/2019
-ms.openlocfilehash: 3c03797c97a354eb06b6c3b1d76ba5c39d512c18
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/14/2020
+ms.openlocfilehash: 4283e1a2c92b7fe738fb57a8103cea1deb0015a0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811211"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027715"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Een enkele data base gebruiken in Azure SQL Database
 
@@ -42,7 +42,7 @@ In deze sectie vindt u verschillende hand leidingen, scripts en uitleg die u kun
 - [Schakel e-mail meldingen voor automatisch afstemmen](sql-database-automatic-tuning-email-notifications.md) in om informatie te krijgen over de aanbevelingen voor het afstemmen.
 - [Aanbevelingen voor prestaties Toep assen](sql-database-advisor-portal.md) en uw data base optimaliseren.
 - [Waarschuwingen maken](sql-database-insights-alerts-portal.md) voor het ontvangen van meldingen van Azure SQL database.
-- [Los problemen met de verbinding](sql-database-troubleshoot-common-connection-issues.md) op als u enkele verbindings problemen tussen de toepassingen en de data base ziet. U kunt ook [resource Health gebruiken om verbindings problemen op te lossen](sql-database-resource-health.md).
+- [Los problemen met de verbinding](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md) op als u enkele verbindings problemen tussen de toepassingen en de data base ziet. U kunt ook [resource Health gebruiken om verbindings problemen op te lossen](sql-database-resource-health.md).
 - [Bestands ruimte beheren](sql-database-file-space-management.md) om het gebruik van opslag in uw data base te controleren.
 
 ## <a name="query-distributed-data"></a>Een query uitvoeren op gedistribueerde gegevens

@@ -9,12 +9,12 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 12/17/2019
-ms.openlocfilehash: df2e73138cec6c684d612543280871eb2d49b207
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 659c205bd12d7ca27bfc28e3ab6e62f58d9743ac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456345"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978662"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Naslag informatie voor algoritme & module voor Azure Machine Learning Designer
 
@@ -50,4 +50,4 @@ Modules zijn ingedeeld op functionaliteit:
 
 ## <a name="error-messages"></a>Foutberichten
 
-Meer informatie over de [fout berichten en uitzonderings codes](machine-learning-module-error-codes.md) die u kunt tegen komen met behulp van modules in azure machine learning Designer.
+Meer informatie over de [fout berichten en uitzonderings codes](designer-error-codes.md) die u kunt tegen komen met behulp van modules in azure machine learning Designer.

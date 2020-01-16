@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: c128f17a3d2c4f5461a04ae375e05336cc994b4b
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e4e15d1c6554fc567f668b2033bff5b5664db918
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552301"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972801"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Apache HBase-clusters maken op HDInsight in azure Virtual Network
 
@@ -29,7 +29,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="create-apache-hbase-cluster-into-virtual-network"></a>Een Apache HBase-cluster maken in een virtueel netwerk
 
-In deze sectie maakt u een op Linux gebaseerd Apache HBase-cluster met het afhankelijke Azure Storage account in een virtueel Azure-netwerk met behulp van een [Azure Resource Manager sjabloon](../../azure-resource-manager/resource-group-template-deploy.md). Zie [HDInsight-clusters maken](../hdinsight-hadoop-provision-linux-clusters.md)voor andere methoden voor het maken van een cluster en de uitleg van de instellingen. Zie [Apache Hadoop clusters in Hdinsight maken met behulp van Azure Resource Manager-sjablonen](../hdinsight-hadoop-create-linux-clusters-arm-templates.md) voor meer informatie over het gebruik van een sjabloon voor het maken van Apache Hadoop clusters in hdinsight.
+In deze sectie maakt u een op Linux gebaseerd Apache HBase-cluster met het afhankelijke Azure Storage account in een virtueel Azure-netwerk met behulp van een [Azure Resource Manager sjabloon](../../azure-resource-manager/templates/deploy-powershell.md). Zie [HDInsight-clusters maken](../hdinsight-hadoop-provision-linux-clusters.md)voor andere methoden voor het maken van een cluster en de uitleg van de instellingen. Zie [Apache Hadoop clusters in Hdinsight maken met behulp van Azure Resource Manager-sjablonen](../hdinsight-hadoop-create-linux-clusters-arm-templates.md) voor meer informatie over het gebruik van een sjabloon voor het maken van Apache Hadoop clusters in hdinsight.
 
 > [!NOTE]  
 > Sommige eigenschappen worden vastgelegd in de sjabloon. Bijvoorbeeld:

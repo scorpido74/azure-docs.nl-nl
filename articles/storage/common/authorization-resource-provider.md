@@ -9,12 +9,12 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d632de0a6274ebb2ede950ca610dfd5e94310d28
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f5d42a6a0567d3949bc4b0fb1947450a9c957f18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613870"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972350"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>De resource provider van Azure Storage gebruiken om toegang te krijgen tot beheer resources
 
@@ -72,7 +72,7 @@ Zie de volgende voor beelden voor code voorbeelden die laten zien hoe u beheer b
 
 Het implementatiemodel van Resource Manager en het klassieke implementatiemodel zijn twee verschillende manieren voor het implementeren en beheren van uw Azure-oplossingen. U wordt aangeraden het Azure Resource Manager-implementatie model te gebruiken wanneer u een nieuw opslag account maakt. Als dat mogelijk is, raadt micro soft u ook aan om bestaande klassieke opslag accounts opnieuw te maken met het Resource Manager-model. Hoewel u een opslag account kunt maken met behulp van het klassieke implementatie model, is het klassieke model minder flexibel en zal het uiteindelijk worden afgeschaft.
 
-Zie [Resource Manager en klassieke implementatie](../../azure-resource-manager/resource-manager-deployment-model.md)voor meer informatie over Azure-implementatie modellen.
+Zie [Resource Manager en klassieke implementatie](../../azure-resource-manager/management/deployment-models.md)voor meer informatie over Azure-implementatie modellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: e0ff9bc66c7d185f8fe07b4b4574833fcd7e2604
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4eb203915c8fedbef6af0e5a3bc14eff1835a92b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582086"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982160"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>Meerdere caches gebruiken voor regionale failover-herstel
 
@@ -37,7 +37,7 @@ Voer de volgende stappen uit om een cache in te stellen die is voor bereid op mo
    1. Opdracht koppelen voor gebruik door cache-clients
 
    > [!NOTE]
-   > De Azure HPC-cache kan via een programma worden gemaakt, via een [Azure Resource Manager sjabloon](../azure-resource-manager/template-deployment-overview.md) of door rechtstreeks toegang te krijgen tot de API. Neem contact op met het team van HPC-cache voor meer informatie.
+   > De Azure HPC-cache kan via een programma worden gemaakt, via een [Azure Resource Manager sjabloon](../azure-resource-manager/templates/overview.md) of door rechtstreeks toegang te krijgen tot de API. Neem contact op met het team van HPC-cache voor meer informatie.
 
 ## <a name="failover-example"></a>Voor beeld van failover
 

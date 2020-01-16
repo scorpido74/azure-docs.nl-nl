@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 63f386212b0277c3b5ee383e707d4c32fa4e63fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7ed58201fa7aa1e608cba6d64ac95740cf9a60dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428850"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965924"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor logboeken voor open bare basis Load Balancer
 
->[!IMPORTANT] 
+>[!IMPORTANT]
 >Azure Load Balancer ondersteunt twee verschillende typen: Basic en Standard. In dit artikel wordt Basic Load Balancer beschreven. Voor meer informatie over Standard Load Balancer raadpleegt u [Standard Load Balancer Overview](load-balancer-standard-overview.md) , waarmee u telemetrie kunt weer geven via multidimensionale metrische gegevens in azure monitor.
 
 U kunt verschillende typen logboeken in azure gebruiken om Basic load balancers te beheren en problemen op te lossen. Sommige van deze logboeken kunnen worden geopend via de portal. Logboeken kunnen worden gestreamd naar een Event Hub-of Log Analytics-werk ruimte. Alle logboeken kunnen worden geëxtraheerd uit Azure Blob-opslag en worden weer gegeven in verschillende hulpprogram ma's, zoals Excel en Power BI.  In de onderstaande lijst vindt u meer informatie over de verschillende typen logboeken.
@@ -32,7 +32,7 @@ U kunt verschillende typen logboeken in azure gebruiken om Basic load balancers 
 * **Health probe-logboeken:** U kunt dit logboek gebruiken om problemen weer te geven die zijn gedetecteerd door uw Health Probe, zoals het aantal exemplaren in uw back-end-pool die geen aanvragen ontvangen van de load balancer als gevolg van fouten in de status test. In dit logboek wordt geschreven wanneer er een wijziging is in de status van de status test.
 
 > [!IMPORTANT]
-> Azure Monitor-logboeken werken momenteel alleen voor open bare Basic load balancers. Logboeken zijn alleen beschikbaar voor resources die zijn geïmplementeerd in het Resource Manager-implementatie model. U kunt geen Logboeken gebruiken voor bronnen in het klassieke implementatie model. Zie [Resource Manager-implementatie en klassieke implementatie](../azure-resource-manager/resource-manager-deployment-model.md)voor meer informatie over de implementatie modellen.
+> Azure Monitor-logboeken werken momenteel alleen voor open bare Basic load balancers. Logboeken zijn alleen beschikbaar voor resources die zijn geïmplementeerd in het Resource Manager-implementatie model. U kunt geen Logboeken gebruiken voor bronnen in het klassieke implementatie model. Zie [Resource Manager-implementatie en klassieke implementatie](../azure-resource-manager/management/deployment-models.md)voor meer informatie over de implementatie modellen.
 
 ## <a name="enable-logging"></a>Logboekregistratie inschakelen
 
@@ -57,7 +57,7 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com). Als u nog geen load 
     1. Schakel het selectie vakje in naast **archiveren naar een opslag account**.
     2. Selecteer **configureren** om het deel venster **een opslag account selecteren** te openen.
     3. Selecteer het **abonnement** waarin uw opslag account is gemaakt in de vervolg keuzelijst.
-    4. Selecteer de naam van uw opslag account onder **opslag account** in de vervolg keuzelijst. 
+    4. Selecteer de naam van uw opslag account onder **opslag account** in de vervolg keuzelijst.
     5. Selecteer OK.
 
     ### <a name="stream-to-an-event-hub"></a>Streamen naar een Event Hub
@@ -160,7 +160,7 @@ De JSON-uitvoer wordt weer gegeven in het veld eigenschappen de basis informatie
 
 U kunt met behulp van de volgende methoden controle logboek gegevens weer geven en analyseren:
 
-* **Azure-hulpprogram ma's:** Gegevens uit de audit logboeken ophalen via Azure PowerShell, de Azure-opdracht regel interface (CLI), de Azure-REST API of de Azure Portal. Stapsgewijze instructies voor elke methode worden beschreven in het artikel [controle bewerkingen met Resource Manager](../azure-resource-manager/resource-group-audit.md) .
+* **Azure-hulpprogram ma's:** Gegevens uit de audit logboeken ophalen via Azure PowerShell, de Azure-opdracht regel interface (CLI), de Azure-REST API of de Azure Portal. Stapsgewijze instructies voor elke methode worden beschreven in het artikel [controle bewerkingen met Resource Manager](../azure-resource-manager/management/view-activity-logs.md) .
 * **Power BI:** Als u nog geen [Power bi](https:// .microsoft.com/pricing) account hebt, kunt u het gratis uitproberen. Met het [Azure audit logs-inhouds pakket voor Power bi](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)kunt u uw gegevens analyseren met vooraf geconfigureerde Dash boards, of u kunt weer gaven aanpassen aan uw vereisten.
 
 ### <a name="view-and-analyze-the-health-probe-and-event-log"></a>De status test en het gebeurtenis logboek weer geven en analyseren

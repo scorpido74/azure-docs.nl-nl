@@ -1,5 +1,5 @@
 ---
-title: 'Python: Account beheer bewerkingen op Azure Data Lake Storage Gen1 | Microsoft Docs'
+title: 'Python: account beheer bewerkingen op Azure Data Lake Storage Gen1 | Microsoft Docs'
 description: Meer informatie over het gebruik van python SDK voor het werken met Azure Data Lake Storage Gen1 account beheer bewerkingen.
 services: data-lake-store
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 494959e071fb5777f9a815b5bde4bd093cf10bd6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: fad832ba7b16e8dbb37043d971368062fcbd842f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088785"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966044"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Account beheer bewerkingen op Azure Data Lake Storage Gen1 met behulp van python
 > [!div class="op_single_selector"]
-> * [.NET SDK](data-lake-store-get-started-net-sdk.md)
+> * [.NET-SDK](data-lake-store-get-started-net-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Python](data-lake-store-get-started-python.md)
 >
@@ -35,15 +35,15 @@ Meer informatie over het gebruik van de python-SDK voor Azure Data Lake Storage 
 
 * **Een Azure-abonnement**. Zie [Gratis proefversie van Azure ophalen](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Een Azure-resourcegroep**. Zie [Een Azure-resourcegroep maken](../azure-resource-manager/manage-resource-groups-portal.md) voor instructies.
+* **Een Azure-resourcegroep**. Zie [Een Azure-resourcegroep maken](../azure-resource-manager/management/manage-resource-groups-portal.md) voor instructies.
 
 ## <a name="install-the-modules"></a>De modules installeren
 
 Als u wilt werken met Data Lake Storage Gen1 met behulp van python, moet u drie modules installeren.
 
 * Module `azure-mgmt-resource`, die Azure-modules bevat voor Active Directory enzovoort.
-* De `azure-mgmt-datalake-store` module, die de Azure data Lake Storage gen1 account beheer bewerkingen bevat. Zie voor meer informatie over deze module, de [referentie voor Azure data Lake Storage gen1 management module](/python/api/azure-mgmt-datalake-store/).
-* De `azure-datalake-store` module, die de Azure data Lake Storage gen1 bestandssysteem bewerkingen bevat. Zie voor meer informatie over deze module [Azure-datalake-Store module Reference](https://azure-datalake-store.readthedocs.io/en/latest/).
+* De module `azure-mgmt-datalake-store`, met inbegrip van de Azure Data Lake Storage Gen1 account beheer bewerkingen. Zie voor meer informatie over deze module, de [referentie voor Azure data Lake Storage gen1 management module](/python/api/azure-mgmt-datalake-store/).
+* De module `azure-datalake-store`, die de Azure Data Lake Storage Gen1 bestandssysteem bewerkingen bevat. Zie voor meer informatie over deze module [Azure-datalake-Store module Reference](https://azure-datalake-store.readthedocs.io/en/latest/).
 
 Gebruik de volgende opdrachten om de modules te installeren.
 
@@ -90,8 +90,8 @@ pip install azure-datalake-store
 
 In deze sectie bespreken we de verschillende manieren om te verifiëren met Azure AD. De beschikbare opties zijn:
 
-* Voor verificatie door eind gebruikers voor uw toepassing raadpleegt [u verificatie door eind gebruikers met data Lake Storage gen1](data-lake-store-end-user-authenticate-python.md)met behulp van python.
-* Zie [service-to-service-verificatie met data Lake Storage gen1](data-lake-store-service-to-service-authenticate-python.md)met behulp van python voor service-naar-service verificatie voor uw toepassing.
+* Voor verificatie door eind gebruikers voor uw toepassing raadpleegt [u verificatie door eind gebruikers met data Lake Storage gen1 met behulp van python](data-lake-store-end-user-authenticate-python.md).
+* Zie [service-to-service-verificatie met data Lake Storage gen1 met behulp van python](data-lake-store-service-to-service-authenticate-python.md)voor service-naar-service verificatie voor uw toepassing.
 
 ## <a name="create-client-and-data-lake-storage-gen1-account"></a>Client-en Data Lake Storage Gen1 account maken
 

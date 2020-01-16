@@ -7,22 +7,22 @@ ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/12/2019
-ms.openlocfilehash: 0fda04bbfa632f429539ddc0ad90941cb645226b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: a483f143b70a4969114c078b3b0a6f960c4b6b41
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934643"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976068"
 ---
-# <a name="commercial-marketplace-billing"></a>Facturering voor commerciële Marketplace 
+# <a name="commercial-marketplace-billing"></a>Facturering voor commerciële Marketplace
 
 Dit artikel heeft betrekking op commerce-gerelateerde onderwerpen voor de commerciële Marketplace:
 
-- [Publicatie opties voor Marketplace](#marketplace-publishing-options) 
+- [Publicatie opties voor Marketplace](#marketplace-publishing-options)
 - [Overzicht van Transact-algemeen](#transact-general-overview)
 - [Facturerings modellen voor trans acties](#transact-billing-models)
 
-## <a name="marketplace-publishing-options"></a>Publicatie opties voor Marketplace 
+## <a name="marketplace-publishing-options"></a>Publicatie opties voor Marketplace
 
 Commerciële Marketplace biedt verschillende publicatie opties voor uitgevers.
 
@@ -36,9 +36,9 @@ Naast de lijst met opties voor de proef versie, is de optie voor het publiceren 
 
 ## <a name="transact-general-overview"></a>Overzicht van Transact-algemeen
 
-Wanneer u de optie voor het publiceren van Transact gebruikt, schakelt micro soft de verkoop van software van derden in en de implementatie van sommige aanbiedings typen aan het Azure-abonnement van de klant. De uitgever moet rekening houden met de facturering van de kosten voor de infra structuur en de eigen software licentie kosten van de uitgever bij het selecteren van een facturerings model en aanbiedings type. 
+Wanneer u de optie voor het publiceren van Transact gebruikt, schakelt micro soft de verkoop van software van derden in en de implementatie van sommige aanbiedings typen aan het Azure-abonnement van de klant. De uitgever moet rekening houden met de facturering van de kosten voor de infra structuur en de eigen software licentie kosten van de uitgever bij het selecteren van een facturerings model en aanbiedings type.
 
-De optie voor het publiceren van Transact wordt momenteel ondersteund voor de volgende aanbiedings typen: virtuele machines, Azure-toepassingen en SaaS-toepassingen. 
+De optie voor het publiceren van Transact wordt momenteel ondersteund voor de volgende aanbiedings typen: virtuele machines, Azure-toepassingen en SaaS-toepassingen.
 
 ![Trans acties in azure Marketplace](./media/transact-amp.png)
 

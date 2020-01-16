@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: e002a5fbe38596d6507eec81ba3dd2a05c25153a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975802"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982692"
 ---
 # <a name="what-is-custom-translator"></a>Wat is Custom Translator?
 
@@ -30,7 +30,7 @@ Custom Translator biedt verschillende mogelijkheden voor het bouwen van een aang
 
 |Functie  |Beschrijving  |
 |---------|---------|
-|[Maak gebruik van neurale technologie voor automatische vertalingen](https://blogs.msdn.microsoft.com/translation/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Verbeter de vertalingen door gebruik te maken van neurale machinevertalingen (NMT) van Custom Translator.       |
+|[Maak gebruik van neurale technologie voor automatische vertalingen](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Verbeter de vertalingen door gebruik te maken van neurale machinevertalingen (NMT) van Custom Translator.       |
 |[Bouw systemen met uw eigen vaktermen](what-are-parallel-documents.md)     |  Bouw vertaalsystemen en pas vertaalsystemen aan met behulp van parallelle documenten in de terminologie van uw eigen bedrijf en bedrijfstak.       |
 |[Een woordenlijst gebruiken om uw modellen te bouwen](what-is-dictionary.md)     |   Als u geen set met trainingsgegevens hebt, kunt u een model trainen met alleen de gegevens van een woordenlijst.       |
 |[Werk samen met anderen](how-to-manage-settings.md#share-your-workspace)     |   Werk samen met uw team door uw werk te delen met andere personen.     |
@@ -38,7 +38,7 @@ Custom Translator biedt verschillende mogelijkheden voor het bouwen van een aang
 
 ## <a name="get-better-translations"></a>Betere vertalingen verkrijgen
 
-[Neurale machinevertalingen (NMT)](https://blogs.msdn.microsoft.com/translation/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/) van Microsoft Translator is uitgebracht in 2016. NMT biedt belangrijke voordelen in de vertaalkwaliteit ten opzichte van de industriestandaardtechnologie van [statistische machinevertalingen (SMT)](https://en.wikipedia.org/wiki/Statistical_machine_translation). Omdat NMT beter in staat is de context van volledige zinnen te begrijpen alvorens ze te vertalen, levert NMT vertalingen van hogere kwaliteit, die menselijker klinken en vloeiender lopen. [Custom Translator](https://portal.customtranslator.azure.ai) maakt gebruik van NMT voor uw aangepaste modellen, hetgeen resulteert in vertalingen van betere kwaliteit.
+[Neurale machinevertalingen (NMT)](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/) van Microsoft Translator is uitgebracht in 2016. NMT biedt belangrijke voordelen in de vertaalkwaliteit ten opzichte van de industriestandaardtechnologie van [statistische machinevertalingen (SMT)](https://en.wikipedia.org/wiki/Statistical_machine_translation). Omdat NMT beter in staat is de context van volledige zinnen te begrijpen alvorens ze te vertalen, levert NMT vertalingen van hogere kwaliteit, die menselijker klinken en vloeiender lopen. [Custom Translator](https://portal.customtranslator.azure.ai) maakt gebruik van NMT voor uw aangepaste modellen, hetgeen resulteert in vertalingen van betere kwaliteit.
 
 U kunt een vertaalsysteem opbouwen met behulp van eerder vertaalde documenten. Deze documenten bevatten specifieke terminologie en stijl van een domein, beter dan een standaard Vertaal systeem. Gebruikers kunnen ALIGN-, PDF-, LCL-, HTML-, HTM-, XLF-, TMX-, XLIFF-, TXT-, DOCX- en XLSX-documenten uploaden.
 

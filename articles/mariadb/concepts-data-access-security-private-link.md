@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 40aa35e9f9d40a8a021797a0a2a4af9216d90618
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 92d7522c8382ded182c5f482df3f3d917b4b3a14
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898168"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982388"
 ---
 # <a name="private-link-for-azure-database-for-mariadb-preview"></a>Persoonlijke koppeling voor Azure Database for MariaDB (preview-versie)
 
@@ -28,7 +28,7 @@ Gegevens die worden gefilterd in Azure Database for MariaDB, zijn wanneer een ge
 
 Overweeg een scenario met een gebruiker die MariaDB workbench in een Azure-VM gebruikt en verbinding maakt met een Azure Database for MariaDB-exemplaar. Dit MariaDB-exemplaar bevindt zich in het VS-West-Data Center. In het onderstaande voor beeld ziet u hoe u de toegang tot de open bare eind punten op Azure Database for MariaDB met behulp van besturings elementen voor netwerk toegang kunt beperken.
 
-* Schakel alle Azure-service verkeer uit voor Azure Database for MariaDB via het open bare eind punt door de instelling Azure-Services toestaan in te scha kelen. Zorg ervoor dat er geen IP-adressen of bereiken toegang hebben tot de server via [firewall regels](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules) of [virtuele netwerk service-eind punten](https://docs.microsoft.com/azure/mariadb/concepts-data-access-and-security-vnet).
+* Schakel alle Azure-service verkeer uit voor Azure Database for MariaDB via het open bare eind punt door de instelling Azure-Services toestaan in te scha kelen. Zorg ervoor dat er geen IP-adressen of bereiken toegang hebben tot de server via [firewall regels](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules) of [virtuele netwerk service-eind punten](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet).
 
 * Alleen verkeer naar het Azure Database for MariaDB toestaan met behulp van het privé-IP-adres van de virtuele machine. Zie de artikelen over [service-eind punten](concepts-data-access-security-vnet.md) en VNet- [firewall regels](howto-manage-vnet-portal.md)voor meer informatie.
 

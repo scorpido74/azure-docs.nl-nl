@@ -9,12 +9,12 @@ ms.service: storage
 custom: jenkins
 ms.date: 08/13/2019
 ms.subservice: common
-ms.openlocfilehash: 72756bd3eb12ca80f419a0d53db76e6637d884fc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0e426dcead5d1f315717fbc19cf7f7bdac62d563
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839135"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970174"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Azure Storage gebruiken met een Jenkins-oplossing voor continue integratie
 
@@ -49,7 +49,7 @@ Voor delen van het gebruik van de Blob service om uw flexibele ontwikkel artefac
      
       Hoewel een typische Jenkins CI-oplossing zo is ingesteld dat deze als een service wordt uitgevoerd, is het uitvoeren van de Jenkins War op de opdracht regel voldoende voor deze zelf studie.
 * Een Azure-account. U kunt zich op <https://www.azure.com>registreren voor een Azure-account.
-* Een Azure Storage-account. Als u nog geen opslag account hebt, kunt u er een maken met behulp van de stappen in [een opslag account maken](../common/storage-quickstart-create-account.md).
+* Een Azure Storage-account. Als u nog geen opslag account hebt, kunt u er een maken met behulp van de stappen in [een opslag account maken](../common/storage-account-create.md).
 * De vertrouwdheid van de Jenkins CI-oplossing wordt aanbevolen, maar is niet vereist, omdat de volgende inhoud een basis voorbeeld gebruikt om u te laten zien welke stappen nodig zijn bij het gebruik van de Blob service als opslag plaats voor Jenkins CI-build-artefacten.
 
 ## <a name="how-to-use-the-blob-service-with-jenkins-ci"></a>Het Blob service gebruiken met Jenkins CI

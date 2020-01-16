@@ -11,16 +11,16 @@ ms.topic: conceptual
 author: dalechen
 manager: dcscontentpm
 ms.author: ninarn
-ms.reviewer: carlrab
-ms.date: 11/14/2019
-ms.openlocfilehash: c25fa3f378c1e5a0f8bc26e4fb8c6f4ec752b43c
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.reviewer: carlrab, vanto
+ms.date: 01/14/2020
+ms.openlocfilehash: d2b56e259f551f7655936c975a7a864a27a1df79
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082499"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027793"
 ---
-# <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Werken met SQL Database verbindings problemen en tijdelijke fouten
+# <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>Problemen met tijdelijke verbindings fouten naar SQL Database oplossen
 
 In dit artikel wordt beschreven hoe u verbindings fouten en tijdelijke fouten voor komt, oplost en verhelpt die uw client toepassing tegen komt wanneer deze communiceert met Azure SQL Database. Meer informatie over het configureren van de logica voor opnieuw proberen, het bouwen van de connection string en het aanpassen van andere Verbindings instellingen.
 
@@ -187,7 +187,7 @@ Normaal gesp roken moet u ervoor zorgen dat alleen poort 1433 is geopend voor ui
 
 Als uw client programma bijvoorbeeld wordt gehost op een Windows-computer, kunt u Windows Firewall op de host gebruiken om poort 1433 te openen.
 
-1. Open het configuratie scherm.
+1. Open het Configuratiescherm.
 2. Selecteer **alle configuratie scherm-Items** > **Windows Firewall** > **geavanceerde instellingen** > **Uitgaande regels** > **acties** > **nieuwe regel**.
 
 Als uw client programma wordt gehost op een virtuele machine (VM) van Azure, Lees [dan de poorten na 1433 voor ADO.NET 4,5 en SQL database](sql-database-develop-direct-route-ports-adonet-v12.md).
@@ -215,7 +215,7 @@ Als u ADO.NET 4,0 of eerder gebruikt, raden we u aan om een upgrade uit te voere
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
 
-## <a name="diagnostics"></a>Diagnostiek
+## <a name="diagnostics"></a>Diagnostics
 
 <a id="d-test-whether-utilities-can-connect" name="d-test-whether-utilities-can-connect"></a>
 
@@ -444,7 +444,6 @@ public bool IsTransient(Exception ex)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [verbindings problemen met Azure SQL database oplossen](sql-database-troubleshoot-common-connection-issues.md)voor meer informatie over het oplossen van andere veelvoorkomende problemen met de SQL database verbinding.
 - [Verbindings bibliotheken voor SQL Database en SQL Server](sql-database-libraries.md)
 - [SQL Server Groepsgewijze verbinding (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
 - [ *Nieuwe poging* is een Apache 2,0-gelicentieerde, algemeen nieuwe bibliotheek voor het opnieuw proberen, geschreven in Python,](https://pypi.python.org/pypi/retrying) om de taak voor het toevoegen van het gedrag voor opnieuw proberen toe te voegen aan vrijwel alles.

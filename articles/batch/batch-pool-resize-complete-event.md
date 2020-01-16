@@ -2,7 +2,7 @@
 title: Gebeurtenis voor het wijzigen van de grootte van de groep Azure Batch
 description: Verwijzing voor de voltooiings gebeurtenis voor het wijzigen van de batch pool. Bekijk een voor beeld van een pool die groter is gemaakt en is voltooid.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: lahugh
-ms.openlocfilehash: 44d7aaa60ee89a1ec6b0b98c38b83038fc4e70d4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: jushiman
+ms.openlocfilehash: 0d4d07fe5762905633487cfd541b1c039ee1c841
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449777"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026655"
 ---
 # <a name="pool-resize-complete-event"></a>Gebeurtenis formaat pool wijzigen voltooid
 

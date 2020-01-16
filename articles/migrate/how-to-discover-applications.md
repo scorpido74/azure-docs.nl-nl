@@ -1,17 +1,14 @@
 ---
-title: Ontdek apps, functies en onderdelen die zijn geïnstalleerd op on-premises servers met behulp van Azure Migrate server-evaluatie
-description: Hierin wordt beschreven hoe u apps, functies en onderdelen detecteert op on-premises servers met behulp van Azure Migrate server-evaluatie.
-author: snehaamicrosoft
-ms.service: azure-migrate
+title: Ontdek apps, functies en onderdelen op on-premises servers met Azure Migrate
+description: Meer informatie over het detecteren van apps, functies en onderdelen op on-premises servers met Azure Migrate server-evaluatie.
 ms.topic: article
 ms.date: 11/20/2019
-ms.author: snehaa
-ms.openlocfilehash: 279e326ace308b354d7bcb8366d3286980e7b8c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: adc22925d1152639babe2377a1eae440e0ce418e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278480"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029070"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Machine-apps,-functies en-functies detecteren
 
@@ -30,14 +27,14 @@ App-detectie met Azure Migrate: Server evaluatie is zonder agent. Er hoeft niets
 1. Bekijk de [ondersteunings beperkingen](migrate-support-matrix-vmware.md#application-discovery) voor detectie op app-niveau.
 2. Zorg ervoor dat u een Azure Migrate project hebt [gemaakt](how-to-add-tool-first-time.md) .
 3. Als u al een project hebt gemaakt, moet u ervoor zorgen dat u het Azure Migrate: Server Assessment Tool hebt [toegevoegd](how-to-assess.md) .
-4. Raadpleeg de [VMware-vereisten](migrate-support-matrix-vmware.md#assessment-vcenter-server-requirements) voor het detecteren en beoordelen van virtuele VMware-machines met het Azure migrate apparaat.
-4. Controleer de [vereisten](migrate-support-matrix-vmware.md#assessment-appliance-requirements) voor het implementeren van het Azure migrate apparaat.
+4. Raadpleeg de [VMware-vereisten](migrate-support-matrix-vmware.md#vmware-requirements) voor het detecteren en beoordelen van virtuele VMware-machines met het Azure migrate apparaat.
+4. Controleer de [vereisten](migrate-appliance.md) voor het implementeren van het Azure migrate apparaat.
 
 ## <a name="prepare-for-app-discovery"></a>App-detectie voorbereiden
 
-1. [Bereid u voor op de implementatie van het apparaat](https://docs.microsoft.com/azure/migrate/tutorial-prepare-vmware). Voor bereiding omvat het controleren van de instellingen van het apparaat en het instellen van een account dat door het apparaat wordt gebruikt voor toegang tot vCenter Server.
+1. [Bereid u voor op de implementatie van het apparaat](tutorial-prepare-vmware.md). Voor bereiding omvat het controleren van de instellingen van het apparaat en het instellen van een account dat door het apparaat wordt gebruikt voor toegang tot vCenter Server.
 2. Zorg ervoor dat u een gebruikers account (één voor Windows-en Linux-servers) hebt met beheerders machtigingen voor computers waarop u apps, functies en onderdelen wilt detecteren.
-3. [Implementeer het VMware-apparaat](how-to-set-up-appliance-vmware.md) om detectie te starten. Als u het apparaat wilt implementeren, downloadt en importeert u een eicellen-sjabloon in VMware om het apparaat als een virtuele VMware-machine te maken. U configureert het apparaat en registreert het vervolgens met Azure Migrate.
+3. [Implementeer het Azure migrate apparaat om de](how-to-set-up-appliance-vmware.md) detectie te starten. Als u het apparaat wilt implementeren, downloadt en importeert u een eicellen-sjabloon in VMware om het apparaat als een virtuele VMware-machine te maken. U configureert het apparaat en registreert het vervolgens met Azure Migrate.
 2. Wanneer u het apparaat implementeert, moet u het volgende opgeven om de continue detectie te starten:
     - De naam van de vCenter Server waarmee u verbinding wilt maken.
     - Referenties die u hebt gemaakt voor het apparaat om verbinding te maken met vCenter Server.

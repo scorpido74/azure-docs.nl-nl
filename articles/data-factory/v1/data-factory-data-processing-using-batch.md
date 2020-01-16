@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 699aab617e56ab87eb0bd6d6c4ceabf9aac4c4fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: afc7a7406831568304c2ebd8d9a6c72b497e04e4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438888"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972884"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Grootschalige gegevens sets verwerken met behulp van Data Factory en batch
 > [!NOTE]
@@ -91,7 +91,7 @@ De voorbeeld oplossing is opzettelijk eenvoudig. Het is ontworpen om u te laten 
 Als u geen Azure-abonnement hebt, kunt u snel een gratis proef account maken. Zie [gratis proef versie](https://azure.microsoft.com/pricing/free-trial/)voor meer informatie.
 
 #### <a name="azure-storage-account"></a>Azure Storage-account
-In deze zelf studie gebruikt u een opslag account om de gegevens op te slaan. Zie [een opslag account maken](../../storage/common/storage-quickstart-create-account.md)als u geen opslag account hebt. De voorbeeld oplossing maakt gebruik van Blob Storage.
+In deze zelf studie gebruikt u een opslag account om de gegevens op te slaan. Zie [een opslag account maken](../../storage/common/storage-account-create.md)als u geen opslag account hebt. De voorbeeld oplossing maakt gebruik van Blob Storage.
 
 #### <a name="azure-batch-account"></a>Azure Batch-account
 Maak een batch-account met behulp van de [Azure Portal](https://portal.azure.com/). Zie [een batch-account maken en beheren](../../batch/batch-account-create-portal.md)voor meer informatie. Noteer de batch-account naam en de account sleutel. U kunt ook de cmdlet [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) gebruiken om een batch-account te maken. Zie [aan de slag met batch-Power shell-cmdlets](../../batch/batch-powershell-cmdlets-get-started.md)voor instructies over het gebruik van deze cmdlet.
@@ -211,10 +211,10 @@ De-methode heeft enkele belang rijke onderdelen die u moet begrijpen:
     using System.Globalization;
     using System.Diagnostics;
     using System.Linq;
-    
+
     using Microsoft.Azure.Management.DataFactories.Models;
     using Microsoft.Azure.Management.DataFactories.Runtime;
-    
+
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
@@ -241,15 +241,15 @@ De-methode heeft enkele belang rijke onderdelen die u moet begrijpen:
        Activity activity,
        IActivityLogger logger)
     {
-    
+
        // Declare types for the input and output data stores.
        AzureStorageLinkedService inputLinkedService;
-    
+
        Dataset inputDataset = datasets.Single(dataset => dataset.Name == activity.Inputs.Single().Name);
-    
+
        foreach (LinkedService ls in linkedServices)
            logger.Write("linkedService.Name {0}", ls.Name);
-    
+
        // Use the First method instead of Single because we are using the same
        // Azure Storage linked service for input and output.
        inputLinkedService = linkedServices.First(
@@ -257,15 +257,15 @@ De-methode heeft enkele belang rijke onderdelen die u moet begrijpen:
            linkedService.Name ==
            inputDataset.Properties.LinkedServiceName).Properties.TypeProperties
            as AzureStorageLinkedService;
-    
+
        string connectionString = inputLinkedService.ConnectionString; // To create an input storage client.
        string folderPath = GetFolderPath(inputDataset);
        string output = string.Empty; // for use later.
-    
+
        // Create the storage client for input. Pass the connection string.
        CloudStorageAccount inputStorageAccount = CloudStorageAccount.Parse(connectionString);
        CloudBlobClient inputClient = inputStorageAccount.CreateCloudBlobClient();
-    
+
        // Initialize the continuation token before using it in the do-while loop.
        BlobContinuationToken continuationToken = null;
        do
@@ -277,34 +277,34 @@ De-methode heeft enkele belang rijke onderdelen die u moet begrijpen:
                                     continuationToken,
                                     null,
                                     null);
-    
+
            // The Calculate method returns the number of occurrences of
            // the search term "Microsoft" in each blob associated
            // with the data slice.
            //
            // The definition of the method is shown in the next step.
            output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
-    
+
        } while (continuationToken != null);
-    
+
        // Get the output dataset by using the name of the dataset matched to a name in the Activity output collection.
        Dataset outputDataset = datasets.Single(dataset => dataset.Name == activity.Outputs.Single().Name);
-    
+
        folderPath = GetFolderPath(outputDataset);
-    
+
        logger.Write("Writing blob to the folder: {0}", folderPath);
-    
+
        // Create a storage object for the output blob.
        CloudStorageAccount outputStorageAccount = CloudStorageAccount.Parse(connectionString);
        // Write the name of the file.
        Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
-    
+
        logger.Write("output blob URI: {0}", outputBlobUri.ToString());
        // Create a blob and upload the output text.
        CloudBlockBlob outputBlob = new CloudBlockBlob(outputBlobUri, outputStorageAccount.Credentials);
        logger.Write("Writing {0} to the output blob", output);
        outputBlob.UploadText(output);
-    
+
        // The dictionary can be used to chain custom activities together in the future.
        // This feature is not implemented yet, so just return an empty dictionary.
        return new Dictionary<string, string>();
@@ -322,41 +322,41 @@ De-methode heeft enkele belang rijke onderdelen die u moet begrijpen:
        {
            return null;
        }
-    
+
        AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
        if (blobDataset == null)
        {
            return null;
        }
-    
+
        return blobDataset.FolderPath;
     }
-    
+
     /// <summary>
     /// Gets the fileName value from the input/output dataset.
     /// </summary>
-    
+
     private static string GetFileName(Dataset dataArtifact)
     {
        if (dataArtifact == null || dataArtifact.Properties == null)
        {
            return null;
        }
-    
+
        AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
        if (blobDataset == null)
        {
            return null;
        }
-    
+
        return blobDataset.FileName;
     }
-    
+
     /// <summary>
     /// Iterates through each blob (file) in the folder, counts the number of instances of the search term in the file,
     /// and prepares the output text that is written to the output blob.
     /// </summary>
-    
+
     public static string Calculate(BlobResultSegment Bresult, IActivityLogger logger, string folderPath, ref BlobContinuationToken token, string searchTerm)
     {
        string output = string.Empty;
@@ -416,7 +416,7 @@ In deze sectie vindt u meer informatie over de code in de methode Execute.
     {
     // Get the list of input blobs from the input storage client object.
     BlobResultSegment blobList = inputClient.ListBlobsSegmented(folderPath,
-    
+
                          true,
                                    BlobListingDetails.Metadata,
                                    null,
@@ -424,9 +424,9 @@ In deze sectie vindt u meer informatie over de code in de methode Execute.
                                    null,
                                    null);
     // Return a string derived from parsing each blob.
-    
+
      output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
-    
+
     } while (continuationToken != null);
 
     ```
@@ -454,14 +454,14 @@ In deze sectie vindt u meer informatie over de code in de methode Execute.
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
-    
+
     return blobDataset.FolderPath;
     ```
 1. De code roept de **GetFileName** -methode op om de bestands naam (BLOB name) op te halen. De code is vergelijkbaar met de vorige code die is gebruikt om het mappad op te halen.
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
-    
+
     return blobDataset.FileName;
     ```
 1. De naam van het bestand wordt geschreven door een URI-object te maken. De URI-constructor gebruikt de eigenschap **BlobEndpoint** om de container naam te retour neren. Het pad en de bestands naam van de map worden toegevoegd om de URI van de uitvoer-BLOB te maken.  
@@ -590,7 +590,7 @@ In deze stap maakt u een gekoppelde service voor uw batch-account dat wordt gebr
       > De Data Factory-service biedt geen ondersteuning voor een on-demand optie voor batch zoals voor HDInsight. U kunt alleen uw eigen batch-pool gebruiken in een data factory.
       >
       >
-   
+
    e. Geef **StorageLinkedService** op voor de eigenschap **linkedServiceName** . U hebt deze gekoppelde service gemaakt in de vorige stap. Deze opslag wordt gebruikt als tijdelijke ruimte voor bestanden en Logboeken.
 
 1. Selecteer in de opdrachtbalk **Implementeren** om de gekoppelde service te implementeren.
@@ -900,11 +900,11 @@ Fout opsporing bestaat uit een aantal basis technieken.
 
     ```
     Trace\_T\_D\_12/6/2015 1:43:35 AM\_T\_D\_\_T\_D\_Verbose\_T\_D\_0\_T\_D\_Loading assembly file MyDotNetActivity...
-    
+
     Trace\_T\_D\_12/6/2015 1:43:35 AM\_T\_D\_\_T\_D\_Verbose\_T\_D\_0\_T\_D\_Creating an instance of MyDotNetActivityNS.MyDotNetActivity from assembly file MyDotNetActivity...
-    
+
     Trace\_T\_D\_12/6/2015 1:43:35 AM\_T\_D\_\_T\_D\_Verbose\_T\_D\_0\_T\_D\_Executing Module
-    
+
     Trace\_T\_D\_12/6/2015 1:43:38 AM\_T\_D\_\_T\_D\_Information\_T\_D\_0\_T\_D\_Activity e3817da0-d843-4c5c-85c6-40ba7424dce2 finished successfully
     ```
 1. Neem het **PDB** -bestand op in het zip-bestand, zodat de fout Details informatie, zoals aanroep stack, bevatten wanneer er een fout optreedt.
@@ -936,13 +936,13 @@ U kunt dit voor beeld uitbreiden voor meer informatie over Data Factory-en batch
 
 1. Maak een pool met een hoger/lager **maximum aantal taken per VM**. Als u de nieuwe groep wilt gebruiken die u hebt gemaakt, werkt u de gekoppelde batch-service bij in de data factory-oplossing. Zie "stap 4: de pijp lijn maken en uitvoeren met een aangepaste activiteit" voor meer informatie over de **maximum taken per VM** -instelling.
 
-1. Maak een batch-pool met de functie voor **automatisch schalen** . Het automatisch schalen van reken knooppunten in een batch-pool is de dynamische aanpassing van het verwerkings vermogen dat door uw toepassing wordt gebruikt. 
+1. Maak een batch-pool met de functie voor **automatisch schalen** . Het automatisch schalen van reken knooppunten in een batch-pool is de dynamische aanpassing van het verwerkings vermogen dat door uw toepassing wordt gebruikt.
 
     Met de voorbeeld formule wordt het volgende gedrag gerealiseerd. Wanneer de pool voor het eerst wordt gemaakt, begint deze met één virtuele machine. Met de $PendingTasks meet waarde wordt het aantal taken in de status van actief en actief (in wachtrij) gedefinieerd. Met de formule vindt u het gemiddelde aantal taken in de afgelopen 180 seconden dat in behandeling is en stelt u TargetDedicated dienovereenkomstig in. Zo zorgt u ervoor dat TargetDedicated nooit meer dan 25 Vm's verloopt. Wanneer er nieuwe taken worden verzonden, wordt de groep automatisch verg root. Zodra de taken zijn voltooid, worden virtuele machines één voor één vrijgegeven en worden de Vm's automatisch geschaald. U kunt startingNumberOfVMs en maxNumberofVMs aan uw behoeften aanpassen.
- 
+
     Formule voor automatisch schalen:
 
-    ``` 
+    ```
     startingNumberOfVMs = 1;
     maxNumberofVMs = 25;
     pendingTaskSamplePercent = $PendingTasks.GetSamplePercent(180 * TimeInterval_Second);

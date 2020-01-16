@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2019
-ms.openlocfilehash: fd020755ec579b2553bca42db5d050bd442bf6fc
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 6cbbe63d7968816de78256f5a8408517bb8da278
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942308"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973795"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Replicatie inschakelen voor een schijf die is toegevoegd aan een Azure VM
 
@@ -31,9 +31,9 @@ Wanneer u een nieuwe schijf toevoegt aan een virtuele machine van Azure die word
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-In dit artikel wordt ervan uitgegaan dat u nood herstel al hebt ingesteld voor de virtuele machine waaraan u de schijf wilt toevoegen. Als dat niet het geval is, volgt u de [zelf studie over Azure nood herstel](azure-to-azure-tutorial-enable-replication.md). 
+In dit artikel wordt ervan uitgegaan dat u nood herstel al hebt ingesteld voor de virtuele machine waaraan u de schijf wilt toevoegen. Als dat niet het geval is, volgt u de [zelf studie over Azure nood herstel](azure-to-azure-tutorial-enable-replication.md).
 
-## <a name="enable-replication-for-an-added-disk"></a>Replicatie inschakelen voor een toegevoegde schijf 
+## <a name="enable-replication-for-an-added-disk"></a>Replicatie inschakelen voor een toegevoegde schijf
 
 Ga als volgt te werk om replicatie in te scha kelen voor een toegevoegde schijf:
 

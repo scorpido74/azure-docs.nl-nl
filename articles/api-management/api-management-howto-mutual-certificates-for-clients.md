@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 85eeaaa052604c3198ca2ab8988f9e7a77e2a63d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3680473209b3d65d616879dfbb9080dfbb9c80f4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430653"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967402"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Api's beveiligen met verificatie op basis van client certificaten in API Management
 
@@ -27,7 +27,12 @@ API Management biedt de mogelijkheid om de toegang tot Api's (client naar API Ma
 Voor informatie over het beveiligen van de toegang tot de back-end-service van een API met behulp van client certificaten (API Management naar back-end), raadpleegt u [back-end-services beveiligen met verificatie op basis van client certificaten](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
 
 > [!IMPORTANT]
-> Als u client certificaten wilt ontvangen en verifiëren in de laag verbruik, moet u eerst de instelling client certificaat aanvragen inschakelen op de Blade aangepaste domeinen, zoals hieronder wordt weer gegeven.
+> Als u client certificaten wilt ontvangen en controleren via HTTP/2 in de lagen ontwikkelaar, Basic, Standard of Premium, moet u de instelling ' onderhandelen over client certificaat ' op de Blade ' aangepaste domeinen ' inschakelen, zoals hieronder wordt weer gegeven.
+
+![Onderhandelen over client certificaat](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
+
+> [!IMPORTANT]
+> Als u client certificaten wilt ontvangen en verifiëren in de laag verbruik, moet u de instelling client certificaat aanvragen inschakelen op de Blade aangepaste domeinen, zoals hieronder wordt weer gegeven.
 
 ![Clientcertificaat aanvragen](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 01/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83a839d75757bcee14d7f696d2d11d1d7d8fa4cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 589d8219681304242585c9fed33a4e3d364909ec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422847"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978890"
 ---
 # <a name="what-are-security-defaults"></a>Wat zijn de standaard beveiligings instellingen?
 
@@ -28,7 +28,10 @@ Micro soft maakt standaard beveiligings instellingen voor iedereen beschikbaar. 
 
 ![Scherm afbeelding van de Azure Portal met de wissel knop voor het inschakelen van standaard instellingen voor beveiliging](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
  
-De volgende beveiligings configuraties worden ingeschakeld in uw Tenant. 
+> [!TIP]
+> Als uw Tenant is gemaakt op of na 22 oktober 2019, is het mogelijk dat u het nieuwe beveiligd-standaard gedrag ondervindt en dat de standaard instellingen voor beveiliging al zijn ingeschakeld in uw Tenant. Als u al onze gebruikers wilt beveiligen, worden de standaard instellingen voor de beveiliging geïmplementeerd naar alle nieuwe tenants die zijn gemaakt.
+
+Meer informatie over de beschik bare standaard instellingen voor de beveiliging vindt u in het blog bericht van Alex Weinert, waarin de [standaard instellingen voor beveiliging worden geïntroduceerd](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-security-defaults/ba-p/1061414).
 
 ## <a name="unified-multi-factor-authentication-registration"></a>Registratie Unified Multi-Factor Authentication
 

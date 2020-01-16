@@ -12,25 +12,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: f038e56fe4b1e6ad2737217674706eef77a39fd6
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 590505d954d52ebec9f8a5c344d6e750f11ef677
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058058"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981366"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows geeft een ' kritieke SERVICE is mislukt ' weer op het blauwe scherm bij het opstarten van een Azure VM
 In dit artikel wordt de fout ' essentiële SERVICE is mislukt ' beschreven die u kunt tegen komen wanneer u een virtuele Windows-machine (VM) opstart in Microsoft Azure. Het bevat probleemoplossings stappen om de problemen op te lossen. 
 
 > [!NOTE] 
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../../azure-resource-manager/resource-manager-deployment-model.md). In dit artikel wordt beschreven hoe u het Resource Manager-implementatie model gebruikt. dit wordt aangeraden voor nieuwe implementaties in plaats van het klassieke implementatie model.
+> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het Resource Manager-implementatie model gebruikt. dit wordt aangeraden voor nieuwe implementaties in plaats van het klassieke implementatie model.
 
 ## <a name="symptom"></a>Symptoom 
 
 Een Windows-VM start niet. Wanneer u de opstart scherm afbeeldingen in [Diagnostische gegevens over opstarten](./boot-diagnostics.md)controleert, wordt een van de volgende fout berichten weer gegeven in een blauw scherm:
 
-- ' Er is een probleem opgetreden in de PC en opnieuw moet worden opgestart. U kunt opnieuw opstarten. Ga naar https://windows.com/stopcode voor meer informatie over dit probleem en mogelijke oplossingen. Als u een ondersteunings medewerker belt, geeft u deze informatie: Stop code: KRITIEKE SERVICE MISLUKT ' 
-- ' Er is een probleem opgetreden in de PC en opnieuw moet worden opgestart. Er worden alleen fout gegevens verzameld en vervolgens wordt de computer opnieuw opgestart. Als u meer wilt weten, kunt u later online zoeken naar deze fout: CRITICAL_SERVICE_FAILED"
+- ' Er is een probleem opgetreden in de PC en opnieuw moet worden opgestart. U kunt opnieuw opstarten. Ga naar https://windows.com/stopcode voor meer informatie over dit probleem en mogelijke oplossingen. Als u een ondersteunings medewerker belt, geeft u deze de volgende informatie: stop code: kritieke SERVICE mislukt ' 
+- ' Er is een probleem opgetreden in de PC en opnieuw moet worden opgestart. Er worden alleen fout gegevens verzameld en vervolgens wordt de computer opnieuw opgestart. Als u meer wilt weten, kunt u later online zoeken naar deze fout: CRITICAL_SERVICE_FAILED "
 
 ## <a name="cause"></a>Oorzaak
 
@@ -103,21 +103,21 @@ Voer het volgende script uit om dump logboeken en seriële console in te scha ke
         bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
 8.  Start de VM opnieuw. 
 
-### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Optioneel: De dump Logboeken in de modus Dump crash analyseren
+### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Optioneel: de dump Logboeken in de dump crash modus analyseren
 
 Voer de volgende stappen uit om de dump logboeken zelf te analyseren:
 
 1. Koppel de besturingssysteemschijf aan een virtuele machine voor herstel.
 2. Blader op de besturingssysteem schijf die u hebt toegevoegd naar **\Windows\System32\Config**. Kopieer alle bestanden als back-up in geval van een terugdraai actie vereist is.
 3. Start de **REGI ster-editor** (Regedit. exe).
-4. Selecteer de sleutel **HKEY_LOCAL_MACHINE** . Selecteer in het menu de optie **bestand** > **laden**.
+4. Selecteer de **HKEY_LOCAL_MACHINE** sleutel. Selecteer in het menu **File** > **Component laden**.
 5. Blader naar de map **\windows\system32\config\SYSTEM** op de besturingssysteem schijf die u hebt toegevoegd. Voer **BROKENSYSTEM**in voor de naam van de component. De nieuwe register component wordt weer gegeven onder de sleutel **HKEY_LOCAL_MACHINE** .
-6. Blader naar **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** en breng de volgende wijzigingen aan:
+6. Blader naar **HKEY_LOCAL_MACHINE \brokensystem\controlset00x\control\crashcontrol** en breng de volgende wijzigingen aan:
 
     AutoReboot = 0
 
     CrashDumpEnabled = 2
-7.  Selecteer **BROKENSYSTEM**. Selecteer in het menu het onderdeel **bestand** > **verwijderen**.
+7.  Selecteer **BROKENSYSTEM**. Selecteer in het menu **File** > **Hive verwijderen**.
 8.  Wijzig de BCD-instellingen om op te starten in de foutopsporingsmodus. Voer de volgende opdrachten uit vanaf een opdracht prompt met verhoogde bevoegdheid:
 
     ```cmd
@@ -137,7 +137,7 @@ Voer de volgende stappen uit om de dump logboeken zelf te analyseren:
 9. [Ontkoppel de besturingssysteem schijf en koppel de besturingssysteem schijf opnieuw aan de betreffende VM](troubleshoot-recovery-disks-portal-windows.md).
 10. Start de virtuele machine op om te controleren of de dump analyse wordt weer gegeven. Zoek het bestand dat niet kan worden geladen. U moet dit bestand vervangen door een bestand van de werkende VM. 
 
-    Hieronder ziet u een voor beeld van een dump analyse. U kunt zien dat de **fout** zich voordoet op filecrypt. sys: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys".
+    Hieronder ziet u een voor beeld van een dump analyse. U kunt zien dat de **fout** zich op filecrypt. sys: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt. sys" bevindt.
 
     ```
     kd> !analyze -v 

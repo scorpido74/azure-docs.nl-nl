@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: 335b956701a87b6a0e5984ae50507a91d212ab67
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e47c7d7c4e982604814b227544a98bb301a20105
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646741"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980109"
 ---
 # <a name="virtual-network-peering"></a>Virtual Network-peering
 
@@ -34,7 +34,7 @@ Enkele voordelen van het gebruik van peering van virtuele netwerken - lokaal of 
 * De mogelijkheid voor bronnen in één virtueel netwerk om te communiceren met resources in een ander virtueel netwerk.
 * De mogelijkheid om gegevens over te dragen tussen virtuele netwerken over Azure-abonnementen, Azure Active Directory-tenants, implementatie modellen en Azure-regio's.
 * De mogelijkheid om virtuele netwerken die zijn gemaakt via de Azure Resource Manager te koppelen.
-* De mogelijkheid om een virtueel netwerk dat is gemaakt via Resource Manager te koppelen aan één dat is gemaakt via het klassieke implementatie model. Zie [Over Azure-implementatiemodellen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over Azure-implementatiemodellen.
+* De mogelijkheid om een virtueel netwerk dat is gemaakt via Resource Manager te koppelen aan één dat is gemaakt via het klassieke implementatie model. Zie [Over Azure-implementatiemodellen](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over Azure-implementatiemodellen.
 * Geen downtime tot bronnen in een virtueel netwerk bij het maken van de peering of nadat de peering is gemaakt.
 
 Netwerkverkeer tussen gekoppelde virtuele netwerken is privé. Verkeer tussen de virtuele netwerken wordt opgeslagen in het Microsoft-backbone-netwerk. Er zijn geen openbare internetverbinding, gateways of versleuteling vereist in de communicatie tussen de virtuele netwerken.

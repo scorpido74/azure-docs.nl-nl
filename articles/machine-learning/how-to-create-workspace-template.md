@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 275eb545b431085627658eb5d8ac0a065d0cb00e
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6cd450ac18007e31d9d8144fdb0e8554dd31c363
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867020"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968666"
 ---
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
@@ -92,7 +92,7 @@ new-azresourcegroupdeployment -name exampledeployment `
   -templatefile .\azuredeploy.json -workspaceName "exampleworkspace" -sku "basic"
 ```
 
-Zie [resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) en een [privé Resource Manager-sjabloon met SAS-token en Azure PowerShell implementeren](../azure-resource-manager/secure-template-with-sas-token.md)voor meer informatie.
+Zie [resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md) en een [privé Resource Manager-sjabloon met SAS-token en Azure PowerShell implementeren](../azure-resource-manager/templates/secure-template-with-sas-token.md)voor meer informatie.
 
 ## <a name="use-azure-cli"></a>Azure CLI gebruiken
 
@@ -107,7 +107,7 @@ az group deployment create \
   --parameters workspaceName=exampleworkspace location=eastus sku=basic
 ```
 
-Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../azure-resource-manager/resource-group-template-deploy-cli.md) en een [persoonlijke Resource Manager-sjabloon implementeren met SAS-token en Azure cli](../azure-resource-manager/secure-template-with-sas-token.md)voor meer informatie.
+Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../azure-resource-manager/templates/deploy-cli.md) en een [persoonlijke Resource Manager-sjabloon implementeren met SAS-token en Azure cli](../azure-resource-manager/templates/secure-template-with-sas-token.md)voor meer informatie.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
@@ -124,7 +124,7 @@ De meeste bewerkingen voor het maken van resources via sjablonen zijn idempotent
 Om dit probleem te voor komen, raden we u aan een van de volgende benaderingen te volgen:
 
 * Implementeer de sjabloon niet meer dan één keer voor dezelfde para meters. Of verwijder de bestaande resources voordat u de sjabloon opnieuw maakt.
-  
+
 * Controleer de Key Vault toegangs beleid en gebruik vervolgens dit beleid om de eigenschap `accessPolicies` van de sjabloon in te stellen. Gebruik de volgende Azure CLI-opdracht om het toegangs beleid weer te geven:
 
     ```azurecli-interactive
@@ -165,7 +165,7 @@ Om dit probleem te voor komen, raden we u aan een van de volgende benaderingen t
           }
         },
         ```
-    
+
     * **Verwijder** de `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` regel uit de sectie `dependsOn` van de werk ruimte. **Wijzig** ook de `keyVault` vermelding in de sectie `properties` van de werk ruimte om te verwijzen naar de `keyVaultId`-para meter:
 
         ```json
@@ -193,7 +193,7 @@ Om dit probleem te voor komen, raden we u aan een van de volgende benaderingen t
           }
         }
         ```
-      
+
     Nadat u deze wijzigingen hebt aangebracht, kunt u de ID van de bestaande Key Vault resource opgeven wanneer u de sjabloon uitvoert. De sjabloon zal de Key Vault vervolgens opnieuw gebruiken door de eigenschap `keyVault` van de werk ruimte in te stellen op de bijbehorende ID.
 
     Als u de ID van de Key Vault wilt ophalen, kunt u verwijzen naar de uitvoer van de oorspronkelijke sjabloon run of de Azure CLI gebruiken. De volgende opdracht is een voor beeld van het gebruik van de Azure CLI om de Key Vault Resource-ID op te halen:
@@ -210,5 +210,5 @@ Om dit probleem te voor komen, raden we u aan een van de volgende benaderingen t
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Resources implementeren met Resource Manager-sjablonen en Resource Manager-rest API](../azure-resource-manager/resource-group-template-deploy-rest.md).
-* [Azure-resource groepen maken en implementeren via Visual Studio](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+* [Resources implementeren met Resource Manager-sjablonen en Resource Manager-rest API](../azure-resource-manager/templates/deploy-rest.md).
+* [Azure-resource groepen maken en implementeren via Visual Studio](../azure-resource-manager/templates/create-visual-studio-deployment-project.md).

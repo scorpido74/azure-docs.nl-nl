@@ -9,19 +9,19 @@ ms.reviewer: klam
 ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: 3cc15d173ad735d77505f636bd230e0876371271
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 6a729df7eb08f8dacff4b0d35d011854208510ff
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300934"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979291"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Hoge Beschik baarheid en betrouw baarheid voor Azure scheduler
 
 > [!IMPORTANT]
 > [Azure Logic apps](../logic-apps/logic-apps-overview.md) vervangt Azure scheduler, die buiten gebruik wordt [gesteld](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date). Als u wilt blijven werken met de taken die u in scheduler hebt ingesteld, moet u zo snel mogelijk [naar Azure Logic apps worden gemigreerd](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
 
-Azure Scheduler biedt zowel [hoge Beschik baarheid](https://docs.microsoft.com/azure/architecture/guide/pillars#availability) als betrouw baarheid voor uw taken. Zie [Sla voor scheduler](https://azure.microsoft.com/support/legal/sla/scheduler)voor meer informatie.
+Azure Scheduler biedt zowel [hoge Beschik baarheid](https://docs.microsoft.com/azure/architecture/framework/#resiliency) als betrouw baarheid voor uw taken. Zie [Sla voor scheduler](https://azure.microsoft.com/support/legal/sla/scheduler)voor meer informatie.
 
 ## <a name="high-availability"></a>Hoge beschikbaarheid
 

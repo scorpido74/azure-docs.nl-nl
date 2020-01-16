@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 2738e7be6ae40afd5f0d94f1ad32b7b4cda0417f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3cdabbd5f527934492ce7ff37ae7d0f756d91fc1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453420"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979420"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Integratie accounts voor B2B-ondernemings integraties maken en beheren in Azure Logic Apps
 
@@ -77,7 +77,7 @@ Voor deze taak kunt u de Azure Portal gebruiken door de stappen in deze sectie, 
 
 ## <a name="link-to-logic-app"></a>Koppeling naar logische app
 
-Om uw Logic apps toegang te geven tot een integratie account dat uw B2B-artefacten bevat, moet u eerst uw integratie account koppelen aan uw logische app. Zowel de logische app als het integratie account moeten zich in dezelfde regio bevinden. U kunt de Azure Portal gebruiken om deze taak te volt ooien. Als u Visual Studio gebruikt en uw logische app zich in een [Azure-resource groeps project](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)bevindt, kunt u [uw logische app koppelen aan een integratie account met behulp van Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md#link-integration-account).
+Om uw Logic apps toegang te geven tot een integratie account dat uw B2B-artefacten bevat, moet u eerst uw integratie account koppelen aan uw logische app. Zowel de logische app als het integratie account moeten zich in dezelfde regio bevinden. U kunt de Azure Portal gebruiken om deze taak te volt ooien. Als u Visual Studio gebruikt en uw logische app zich in een [Azure-resource groeps project](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)bevindt, kunt u [uw logische app koppelen aan een integratie account met behulp van Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md#link-integration-account).
 
 1. Zoek en open uw logische app in de Azure Portal.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 6521c139463bb0de1e24783bbbdd6a2d3996be6f
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ffe68352fed0b9c0df0cdfb971c085d1bb7f18c4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430104"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978058"
 ---
 # <a name="sap-lama-connector-for-azure"></a>SAP LaMa-connector voor Azure
 
@@ -47,7 +47,7 @@ In deze hand leiding wordt beschreven hoe u de Azure connector voor SAP LaMa ins
 > [!NOTE]
 > De connector is alleen beschikbaar in de SAP LaMa Enter prise Edition
 
-## <a name="resources"></a>Bronnen
+## <a name="resources"></a>Resources
 
 De volgende SAP-opmerkingen zijn gerelateerd aan het onderwerp van SAP LaMa op Azure:
 
@@ -69,18 +69,25 @@ Lees ook de [SAP-Help Portal voor SAP LaMa](https://help.sap.com/viewer/p/SAP_LA
 * Als u zich aanmeldt bij Managed hosts, moet u ervoor zorgen dat bestands systemen niet worden ontkoppeld  
   Als u zich aanmeldt bij een virtuele Linux-machine en de werkmap wijzigt in een map in een koppel punt, bijvoorbeeld/usr/sap/AH1/ASCS00/exe, kan het volume niet worden ontkoppeld en kan het niet worden verwijderd of worden voor bereid.
 
+* Zorg ervoor dat CLOUD_NETCONFIG_MANAGE is uitgeschakeld op SUSE SLES Linux virtual machines. Zie [SuSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633)voor meer informatie.
+
 ## <a name="set-up-azure-connector-for-sap-lama"></a>Azure connector instellen voor SAP LaMa
 
-De Azure-connector wordt geleverd vanaf SAP LaMa 3,0 SP05. U kunt het beste altijd het meest recente ondersteunings pakket en patch voor SAP LaMa 3,0 installeren. De Azure-connector maakt gebruik van een Service-Principal om te autoriseren bij Microsoft Azure. Volg deze stappen om een service-principal te maken voor het beheer van SAP liggend (LaMa).
+De Azure-connector wordt geleverd vanaf SAP LaMa 3,0 SP05. U kunt het beste altijd het meest recente ondersteunings pakket en patch voor SAP LaMa 3,0 installeren.
+
+De Azure-connector gebruikt de Azure Resource Manager-API om uw Azure-resources te beheren. SAP LaMa kan gebruikmaken van een service-principal of een beheerde identiteit voor verificatie bij deze API. Als uw SAP-LaMa wordt uitgevoerd op een virtuele machine van Azure, raden we u aan een beheerde identiteit te gebruiken zoals beschreven in hoofd stuk [een beheerde identiteit gebruiken om toegang te krijgen tot de Azure-API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d). Als u een Service-Principal wilt gebruiken, volgt u de stappen in hoofd stuk [een Service-Principal gebruiken om toegang te krijgen tot de Azure-API](lama-installation.md#913c222a-3754-487f-9c89-983c82da641e).
+
+### <a name="913c222a-3754-487f-9c89-983c82da641e"></a>Een Service-Principal gebruiken om toegang te krijgen tot de Azure API
+
+De Azure-connector kan gebruikmaken van een service-principal voor het autoriseren van Microsoft Azure. Volg deze stappen om een service-principal te maken voor het beheer van SAP liggend (LaMa).
 
 1. Ga naar https://portal.azure.com
 1. Open de Azure Active Directory-blade
 1. Klik op App-registraties
-1. Klik op toevoegen
-1. Voer een naam in, selecteer het toepassings type Web app/API, voer een aanmeldings-URL in (bijvoorbeeld http:\//localhost) en klik op maken
-1. De aanmeldings-URL wordt niet gebruikt en kan geldige URL zijn
-1. Selecteer de nieuwe app en klik op sleutels op het tabblad instellingen.
-1. Voer een beschrijving in voor een nieuwe sleutel, selecteer nooit verloopt en klik op opslaan
+1. Klik op nieuwe registratie
+1. Voer een naam in en klik op registreren
+1. Selecteer de nieuwe app en klik op certificaten & geheimen op het tabblad instellingen.
+1. Maak een nieuw client geheim, voer een beschrijving in voor een nieuwe sleutel, selecteer wanneer het geheim moet exire en klik op opslaan
 1. Noteer de waarde in. Dit wordt gebruikt als het wacht woord voor de Service-Principal
 1. Noteer de toepassings-ID. Deze wordt gebruikt als de gebruikers naam van de Service-Principal
 
@@ -93,20 +100,43 @@ De Service-Principal heeft geen machtigingen voor toegang tot uw Azure-resources
 1. Klik op roltoewijzing toevoegen
 1. De rol bijdrager selecteren
 1. Voer de naam van de toepassing die u hierboven hebt gemaakt
-1. Op Opslaan klikken
+1. Klik op Opslaan.
 1. Herhaal stap 3 tot 8 voor alle resource groepen die u wilt gebruiken in SAP LaMa
+
+### <a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>Een beheerde identiteit gebruiken om toegang te krijgen tot de Azure API
+
+Als u een beheerde identiteit wilt gebruiken, moet uw SAP LaMa-exemplaar worden uitgevoerd op een virtuele Azure-machine met een systeem-of gebruiker-toegewezen identiteit. Lees voor meer informatie over beheerde identiteiten [Wat is beheerde identiteiten voor Azure-resources?](../../../active-directory/managed-identities-azure-resources/overview.md) en [Configureer beheerde identiteiten voor Azure-resources op een virtuele machine met behulp van de Azure Portal](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md).
+
+De beheerde identiteit heeft standaard geen machtigingen voor toegang tot uw Azure-resources. U moet deze machtigingen verlenen voor toegang.
+
+1. Ga naar https://portal.azure.com
+1. Open de Blade resource groepen
+1. Selecteer de resource groep die u wilt gebruiken
+1. Klik op de Access control (IAM)
+1. Klik op toevoegen-> roltoewijzing toevoegen
+1. De rol bijdrager selecteren
+1. Selecteer ' virtuele machine ' voor ' toegang toewijzen '
+1. Selecteer de virtuele machine waarop uw SAP LaMa-exemplaar wordt uitgevoerd
+1. Klik op Opslaan.
+1. Herhaal de stappen voor alle resource groepen die u wilt gebruiken in SAP LaMa
+
+Selecteer beheerde identiteit gebruiken in de configuratie van uw SAP LaMa Azure-connector om het gebruik van de beheerde identiteit in te scha kelen. Als u een door het systeem toegewezen identiteit wilt gebruiken, zorg er dan voor dat u het veld gebruikers naam leeg laat. Als u een door de gebruiker toegewezen identiteit wilt gebruiken, voert u de gebruiker toegewezen identiteits-id in het veld gebruikers naam in.
+
+### <a name="create-a-new-connector-in-sap-lama"></a>Een nieuwe connector maken in SAP LaMa
 
 Open de SAP LaMa-website en navigeer naar infra structuur. Ga naar tabblad Cloud managers en klik op toevoegen. Selecteer de Microsoft Azure Cloud Adapter en klik op volgende. Voer de volgende informatie in:
 
 * Label: Kies een naam voor de connector instantie
-* Gebruikers naam: toepassings-ID van Service-Principal
-* Wacht woord: sleutel/wacht woord voor Service-Principal
+* Gebruikers naam: de Service-Principal-toepassings-ID of ID van de door de gebruiker toegewezen identiteit van de virtuele machine. Zie [een systeem-of door de gebruiker toegewezen identiteit gebruiken] voor meer informatie
+* Wacht woord: sleutel/wacht woord voor Service-Principal. U kunt dit veld leeg laten als u een door het systeem of de gebruiker toegewezen identiteit gebruikt.
 * URL: standaard https://management.azure.com/ blijven
 * Bewakings interval (seconden): moet ten minste 300 zijn
+* Beheerde identiteit gebruiken: SAP LaMa kan gebruikmaken van een door het systeem of de gebruiker toegewezen identiteit voor verificatie bij de Azure API. Zie hoofd stuk [een beheerde identiteit gebruiken om toegang te krijgen tot de Azure API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d) in deze hand leiding.
 * Abonnements-ID: Azure-abonnements-ID
 * Azure Active Directory Tenant-ID: ID van de Active Directory Tenant
 * Proxy-host: de hostnaam van de proxy als SAP LaMa een proxy nodig heeft om verbinding te maken met Internet
 * Proxy poort: TCP-poort van de proxy
+* Opslag type wijzigen om kosten op te slaan: Schakel deze instelling in als de Azure-adapter het opslag type van de Managed Disks moet wijzigen om kosten te besparen wanneer de schijven niet worden gebruikt. Voor gegevens schijven waarnaar wordt verwezen in een SAP-exemplaar configuratie, wijzigt de adapter het schijf type in standaard opslag tijdens een instantie, en wordt deze weer voor bereid op het oorspronkelijke opslag type tijdens het voorbereiden van een exemplaar. Als u een virtuele machine in SAP LaMa stopt, wijzigt de adapter het opslag type van alle gekoppelde schijven, met inbegrip van de schijf van het besturings systeem naar de standaard opslag. Als u een virtuele machine in SAP LaMa start, wordt het opslag type door de adapter gewijzigd in het oorspronkelijke opslag type.
 
 Klik op configuratie testen om uw invoer te valideren. U ziet
 
@@ -264,7 +294,7 @@ ANF biedt NFS voor Azure. In de context van SAP LaMa Dit vereenvoudigt het maken
 
 Australië-oost, Central VS, VS-Oost, VS-Oost 2, Europa-noord, Zuid-Centraal VS, Europa-west en VS-West 2.
 
-#### <a name="network-requirements"></a>Netwerk vereisten
+#### <a name="network-requirements"></a>Netwerkvereisten
 
 ANF vereist een gedelegeerd subnet dat deel moet uitmaken van hetzelfde VNET als de SAP-servers. Hier volgt een voor beeld van een dergelijke configuratie.
 In dit scherm wordt het maken van het VNET en het eerste subnet weer gegeven:

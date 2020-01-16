@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 1/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 4cd5fde2f47cca1b03efbc217d7764ac429d15fb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: aaceee65ae91a22dc658d185a874e2040b1e0f04
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74973931"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975672"
 ---
 # <a name="using-the-azure-importexport-tool-classic-deployment-model"></a>Het Azure-hulp programma voor importeren/exporteren (klassiek implementatie model) gebruiken
 
@@ -25,10 +25,10 @@ In de volgende artikelen wordt uitgelegd hoe u:
 
 - Het import/export-hulp programma installeren en instellen.
 - Bereid uw harde schijven voor op een taak waar u gegevens van uw stations importeert in Azure Blob Storage.
-- Bekijk de status van een taak met kopie logboek bestanden. 
-- Een import taak herstellen. 
-- Een export taak herstellen. 
-- Los het Azure import/export-hulp programma op, voor het geval u tijdens het proces een probleem ondervindt. 
+- Bekijk de status van een taak met kopie logboek bestanden.
+- Een import taak herstellen.
+- Een export taak herstellen.
+- Los het Azure import/export-hulp programma op, voor het geval u tijdens het proces een probleem ondervindt.
 
 ## <a name="next-steps"></a>Volgende stappen
 

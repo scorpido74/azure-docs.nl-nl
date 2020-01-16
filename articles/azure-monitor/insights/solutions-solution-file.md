@@ -8,26 +8,26 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 517b9768c1df928012c34a4dcdd2dfa6b0c94d0c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d583f47a9c83abb1119262a2a6b70292cfa4ab69
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401585"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977698"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Een bestand met een beheer oplossing maken in azure (preview)
 > [!NOTE]
 > Dit is voorlopige documentatie voor het maken van beheer oplossingen in azure die momenteel als preview-versie beschikbaar zijn. Elk schema dat hieronder wordt beschreven, kan worden gewijzigd.  
 
-Beheer oplossingen in Azure worden geïmplementeerd als [Resource Manager-sjablonen](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).  De belangrijkste taak bij het leren van beheer oplossingen is leren hoe u [een sjabloon](../../azure-resource-manager/templates/template-syntax.md)maakt.  In dit artikel vindt u unieke details over de sjablonen die worden gebruikt voor oplossingen en over het configureren van typische bronnen voor oplossingen.
+Beheer oplossingen in Azure worden geïmplementeerd als [Resource Manager-sjablonen](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).  De belangrijkste taak bij het leren van beheer oplossingen is leren hoe u [een sjabloon](../../azure-resource-manager/templates/template-syntax.md)maakt.  In dit artikel vindt u unieke details over de sjablonen die worden gebruikt voor oplossingen en over het configureren van typische bronnen voor oplossingen.
 
 
-## <a name="tools"></a>Hulpprogramma's
+## <a name="tools"></a>Tools
 
 U kunt een tekst editor gebruiken om te werken met oplossings bestanden, maar we raden u aan de functies van Visual Studio of Visual Studio code te benutten zoals beschreven in de volgende artikelen.
 
-- [Azure-resource groepen maken en implementeren met Visual Studio](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
-- [Werken met Azure Resource Manager sjablonen in Visual Studio code](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [Azure-resource groepen maken en implementeren met Visual Studio](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)
+- [Werken met Azure Resource Manager sjablonen in Visual Studio code](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 
 
 
@@ -79,12 +79,12 @@ De volgende tabel bevat de standaard parameters voor alle beheer oplossingen.  D
 
 | Parameter | Type | Beschrijving |
 |:--- |:--- |:--- |
-| accountName |tekenreeks |Azure Automation account naam. |
-| pricingTier |tekenreeks |Prijs categorie van zowel Log Analytics werk ruimte als Azure Automation account. |
-| regionId |tekenreeks |De regio van het Azure Automation-account. |
-| solutionName |tekenreeks |De naam van de oplossing.  Als u de oplossing implementeert via Quick Start-sjablonen, moet u de naam van de oplossing definiëren als para meter, zodat u een teken reeks kunt definiëren in plaats daarvan een gebruiker in te stellen. |
-| workspaceName |tekenreeks |Naam van Log Analytics werk ruimte. |
-| workspaceRegionId |tekenreeks |De regio van de Log Analytics-werk ruimte. |
+| accountName |string |Azure Automation account naam. |
+| pricingTier |string |Prijs categorie van zowel Log Analytics werk ruimte als Azure Automation account. |
+| regionId |string |De regio van het Azure Automation-account. |
+| solutionName |string |De naam van de oplossing.  Als u de oplossing implementeert via Quick Start-sjablonen, moet u de naam van de oplossing definiëren als para meter, zodat u een teken reeks kunt definiëren in plaats daarvan een gebruiker in te stellen. |
+| workspaceName |string |Naam van Log Analytics werk ruimte. |
+| workspaceRegionId |string |De regio van de Log Analytics-werk ruimte. |
 
 
 Hieronder ziet u de structuur van de standaard parameters die u kunt kopiëren en plakken in het oplossings bestand.  
@@ -154,12 +154,12 @@ U kunt ook complexe variabelen definiëren die meerdere sets waarden hebben.  De
 
 In dit geval verwijst u naar variabele waarden via de oplossing met de syntaxis **variabelen (' naam variabele '). eigenschap**.  Als u bijvoorbeeld de variabele oplossings naam wilt openen, gebruikt u **variabelen (' oplossing '). Naam**.
 
-## <a name="resources"></a>Bronnen
+## <a name="resources"></a>Resources
 [Resources](../../azure-resource-manager/templates/template-syntax.md#resources) definiëren de verschillende bronnen die door uw beheer oplossing worden geïnstalleerd en geconfigureerd.  Dit is het grootste en meest complexe gedeelte van de sjabloon.  U kunt de structuur en volledige beschrijving van resource-elementen in [ontwerp Azure Resource Manager sjablonen](../../azure-resource-manager/templates/template-syntax.md#resources)ophalen.  Andere resources die u doorgaans definieert, worden in andere artikelen in deze documentatie beschreven. 
 
 
 ### <a name="dependencies"></a>Afhankelijkheden
-Het **dependsOn** -element bevat een [afhankelijkheid](../../azure-resource-manager/resource-group-define-dependencies.md) van een andere resource.  Wanneer de oplossing is geïnstalleerd, wordt een resource pas gemaakt nadat alle afhankelijkheden ervan zijn gemaakt.  Uw oplossing kan bijvoorbeeld [een runbook starten](solutions-resources-automation.md#runbooks) wanneer het wordt geïnstalleerd met behulp van een [taak resource](solutions-resources-automation.md#automation-jobs).  De taak resource is afhankelijk van de runbook-resource om er zeker van te zijn dat het runbook wordt gemaakt voordat de taak wordt gemaakt.
+Het **dependsOn** -element bevat een [afhankelijkheid](../../azure-resource-manager/templates/define-resource-dependency.md) van een andere resource.  Wanneer de oplossing is geïnstalleerd, wordt een resource pas gemaakt nadat alle afhankelijkheden ervan zijn gemaakt.  Uw oplossing kan bijvoorbeeld [een runbook starten](solutions-resources-automation.md#runbooks) wanneer het wordt geïnstalleerd met behulp van een [taak resource](solutions-resources-automation.md#automation-jobs).  De taak resource is afhankelijk van de runbook-resource om er zeker van te zijn dat het runbook wordt gemaakt voordat de taak wordt gemaakt.
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics-werkruimte en het Automation-account
 Voor beheer oplossingen is een [log Analytics-werk ruimte](../../azure-monitor/platform/manage-access.md) vereist voor weer gaven en een [Automation-account](../../automation/automation-security-overview.md#automation-account-overview) dat runbooks en gerelateerde resources bevat.  Deze moeten beschikbaar zijn voordat de resources in de oplossing worden gemaakt en niet in de oplossing zelf moeten worden gedefinieerd.  De gebruiker [geeft een werk ruimte en account](solutions.md#log-analytics-workspace-and-automation-account) op wanneer de oplossing wordt geïmplementeerd, maar als de auteur moet u rekening houden met de volgende punten.
@@ -200,7 +200,7 @@ Voor elke oplossing is een bron vermelding vereist in het **resources** -element
 
 
 ### <a name="dependencies"></a>Afhankelijkheden
-De oplossings resource moet [afhankelijk](../../azure-resource-manager/resource-group-define-dependencies.md) zijn van elke andere resource in de oplossing, omdat deze moet bestaan voordat de oplossing kan worden gemaakt.  U doet dit door een vermelding toe te voegen voor elke resource in het **dependsOn** -element.
+De oplossings resource moet [afhankelijk](../../azure-resource-manager/templates/define-resource-dependency.md) zijn van elke andere resource in de oplossing, omdat deze moet bestaan voordat de oplossing kan worden gemaakt.  U doet dit door een vermelding toe te voegen voor elke resource in het **dependsOn** -element.
 
 ### <a name="properties"></a>Eigenschappen
 De oplossings resource heeft de eigenschappen in de volgende tabel.  Dit omvat de resources waarnaar wordt verwezen en die zijn opgenomen in de oplossing die definieert hoe de bron wordt beheerd nadat de oplossing is geïnstalleerd.  Elke resource in de oplossing moet worden weer gegeven in de **referencedResources** of de eigenschap **containedResources** .
@@ -213,13 +213,13 @@ De oplossings resource heeft de eigenschappen in de volgende tabel.  Dit omvat d
 
 Het bovenstaande voor beeld is voor een oplossing met een runbook, een planning en een weer gave.  In het element **Properties** wordt *verwezen naar* de planning en het runbook, zodat deze niet worden verwijderd wanneer de oplossing wordt verwijderd.  De weer gave is *opgenomen* zodat deze wordt verwijderd wanneer de oplossing wordt verwijderd.
 
-### <a name="plan"></a>Plannen
+### <a name="plan"></a>Plan
 De **plan** entiteit van de oplossings resource heeft de eigenschappen in de volgende tabel.
 
 | Eigenschap | Beschrijving |
 |:--- |:--- |
-| naam |De naam van de oplossing. |
-| version |De versie van de oplossing, zoals bepaald door de auteur. |
+| name |De naam van de oplossing. |
+| versie |De versie van de oplossing, zoals bepaald door de auteur. |
 | product |Unieke teken reeks voor het identificeren van de oplossing. |
 | publisher |Uitgever van de oplossing. |
 

@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 7101cef6acd7c7b321fbd31c614063a1fa8fe17a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 339ab811969a3de6ce87d529e1bf77f325be4071
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771867"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968489"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>De interpretatie van modellen in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -77,7 +77,7 @@ Dit pakket maakt gebruik van de technieken voor interpretaties die zijn ontwikke
 * **Nabootte uitleg**: nabooter is gebaseerd op het idee van [globale surrogaat modellen](https://christophm.github.io/interpretable-ml-book/global.html) met trainingen om blackbox modellen te simuleren. Een globaal surrogaat model is een intrinsiek interpretable model dat is getraind om de voor spellingen van een Black Box-model zo nauw keurig mogelijk te benaderen. Data wetenschapper kan het surrogaat model interpreteren om conclusies over het zwarte box-model te tekenen. U kunt een van de volgende verwerkte modellen gebruiken als surrogaat model: LightGBM (LGBMExplainableModel), lineaire regressie (LinearExplainableModel), stochastische Gradient Daal verklarend model (SGDExplainableModel) en beslissings structuur ( DecisionTreeExplainableModel).
 
 
-* De **belang rijke uitleg van de permutatie functie**: permutatie functie is een techniek die wordt gebruikt om classificatie-en regressie modellen te verklaren die zijn geïnspireerd op [het breiman van een wille keurige bossen](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf) (zie sectie 10). Op hoog niveau kan de manier waarop het werkt, worden uitgevoerd door in wille keurige volg orde de gegevens per functie op te nemen voor de hele gegevensset en te berekenen hoeveel de prestatie metriek van de interesses is gewijzigd. Hoe groter de verandering, des te belang rijker deze functie is.
+* De **belang rijke uitleg van de permutatie functie**: permutatie functie is een techniek die wordt gebruikt om classificatie-en regressie modellen te verklaren die zijn geïnspireerd op [het breiman van een wille keurige bossen](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (zie sectie 10). Op hoog niveau kan de manier waarop het werkt, worden uitgevoerd door in wille keurige volg orde de gegevens per functie op te nemen voor de hele gegevensset en te berekenen hoeveel de prestatie metriek van de interesses is gewijzigd. Hoe groter de verandering, des te belang rijker deze functie is.
 
 * **Kalk lichter** (`contrib`): op basis van [kalk](https://github.com/marcotcr/lime), gebruikt kalk lichter de geavanceerde status van het algoritme voor het gebruik van lokale vertolkingen (licht-neutraal uitleg) om lokale surrogaat modellen te maken. In tegens telling tot de globale surrogaat modellen, is kalk gericht op het trainen van lokale surrogaat modellen om afzonderlijke voor spellingen te verklaren.
 * **Han-tekst uitleg** (`contrib`): Han-tekst uitleg maakt gebruik van een hiërarchische attentie netwerk voor het verkrijgen van model verklaringen van tekst gegevens voor een gegeven zwart-Box-tekst model. Het surrogaat model van het HAN wordt op een gegeven voor speld Black Box-model getraind. Na de wereld wijde training over de tekst verzameling, voegt het een nauw keurige stap voor een specifiek document toe om de nauw keurigheid van de uitleg te verbeteren. HAN maakt gebruik van een bidirectionele RNN met twee attentie lagen, voor de aandacht van zinnen en woorden. Zodra de DNN is getraind op het zwarte box-model en op een specifiek document is afgestemd, kan de gebruiker de woord urgentie uit de attentie lagen extra heren. HAN wordt weer gegeven om nauw keuriger te zijn dan kalk-of SHAP voor tekst gegevens, maar ook meer kosten in het kader van de trainings tijd. Er zijn verbeteringen aangebracht om gebruikers de mogelijkheid te geven het netwerk te initialiseren met ondersteunt woord insluitingen om de trainings tijd te verminderen. De trainings tijd kan aanzienlijk worden verbeterd door een HAN uit te voeren op een externe Azure GPU-VM. De implementatie van HAN wordt beschreven in [' hiërarchische aandacht netwerken voor document classificatie (Yang et al., 2016) '](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification).

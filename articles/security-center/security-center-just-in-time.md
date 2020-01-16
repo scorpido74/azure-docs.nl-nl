@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 51b4ef06806e2a6647975a373f1bc4bd58740b7f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e3289ae5dbc2b0db410b3316834ae38a1f6b8523
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355567"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974156"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Toegang tot virtuele machines beheren met Just-in-time
 
@@ -24,7 +24,7 @@ JIT-toegang (Just-In-Time) tot virtuele machines (VM's) kan worden gebruikt om b
 
 
 > [!NOTE]
-> Security Center just-in-time-VM-toegang ondersteunt momenteel alleen Vm's die via Azure Resource Manager zijn geïmplementeerd. Zie [Azure Resource Manager vs. klassieke implementatie](../azure-resource-manager/resource-manager-deployment-model.md)voor meer informatie over het klassieke en Resource Manager-implementatie model.
+> Security Center just-in-time-VM-toegang ondersteunt momenteel alleen Vm's die via Azure Resource Manager zijn geïmplementeerd. Zie [Azure Resource Manager vs. klassieke implementatie](../azure-resource-manager/management/deployment-models.md)voor meer informatie over het klassieke en Resource Manager-implementatie model.
 
 ## <a name="attack-scenario"></a>Aanvals scenario
 

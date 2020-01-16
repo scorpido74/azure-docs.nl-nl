@@ -3,7 +3,7 @@ title: VM-grootten kiezen voor Pools-Azure Batch | Microsoft Docs
 description: Kiezen uit de beschik bare VM-grootten voor reken knooppunten in Azure Batch Pools
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/12/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: e3d96ad7783c43dba6b69f6b11acccf790d0d6c9
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 34ab09f7d8d47804992b8ef6864bfea60d1c9b4d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983756"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026605"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Een VM-grootte voor reken knooppunten in een Azure Batch groep kiezen
 
@@ -38,30 +38,30 @@ Batch-Pools in de virtuele-machine configuratie ondersteunen bijna alle VM-groot
 
 Alle promotie-of preview-VM-grootten die niet worden vermeld, zijn niet gegarandeerd voor ondersteuning.
 
-| VM-reeks  | Ondersteunde grootten | Groeps toewijzings modus Batch-account<sup>1</sup> |
+| VM-serie  | Ondersteunde grootten | Groeps toewijzings modus Batch-account<sup>1</sup> |
 |------------|---------|-----------------|
-| Basic A-serie | Alle grootten *behalve* Basic_A0 (a0) | Any |
-| A-serie | Alle grootten *behalve* Standard_A0 | Any |
-| Av2-serie | Alle grootten | Any |
+| Basic A-serie | Alle grootten *behalve* Basic_A0 (a0) | Alle |
+| A-serie | Alle grootten *behalve* Standard_A0 | Alle |
+| Av2-serie | Alle grootten | Alle |
 | B-serie | Geen | Niet beschikbaar |
 | DC-serie | Geen | Niet beschikbaar |
-| Dv2, DSv2-serie | Alle grootten | Any |
-| Dv3, Dsv3-serie | Alle grootten | Any |
-| Ev3, Esv3-serie | Alle grootten | Any |
-| Fsv2-serie | Alle grootten | Any |
-| H-serie | Alle grootten | Any |
-| HB-serie<sup>2</sup> | Alle grootten | Any |
-| HC-serie<sup>2</sup> | Alle grootten | Any |
-| Ls-serie | Alle grootten | Any |
+| Dv2, DSv2-serie | Alle grootten | Alle |
+| Dv3, Dsv3-serie | Alle grootten | Alle |
+| Ev3, Esv3-serie | Alle grootten | Alle |
+| Fsv2-reeks | Alle grootten | Alle |
+| H-serie | Alle grootten | Alle |
+| HB-serie<sup>2</sup> | Alle grootten | Alle |
+| HC-serie<sup>2</sup> | Alle grootten | Alle |
+| Ls-serie | Alle grootten | Alle |
 | Lsv2-serie | Geen | Niet beschikbaar |
-| M-serie | Standard_M64ms (alleen lage prioriteit), Standard_M128s (alleen lage prioriteit) | Any |
+| M-serie | Standard_M64ms (alleen met lage prioriteit), Standard_M128s (alleen lage prioriteit) | Alle |
 | Mv2-serie | Geen | Niet beschikbaar |
-| NC-serie | Alle grootten | Any |
-| NCv2-serie<sup>2</sup> | Alle grootten | Any |
-| NCv3-serie<sup>2</sup> | Alle grootten | Any |
-| ND-serie<sup>2</sup> | Alle grootten | Any |
+| NC-serie | Alle grootten | Alle |
+| NCv2-serie<sup>2</sup> | Alle grootten | Alle |
+| NCv3-serie<sup>2</sup> | Alle grootten | Alle |
+| ND-serie<sup>2</sup> | Alle grootten | Alle |
 | NDv2-serie | Alle grootten | Modus Gebruikersabonnement |
-| NV-serie | Alle grootten | Any |
+| NV-serie | Alle grootten | Alle |
 | NVv3-serie | Geen | Niet beschikbaar |
 | SAP HANA | Geen | Niet beschikbaar |
 
@@ -73,12 +73,12 @@ Alle promotie-of preview-VM-grootten die niet worden vermeld, zijn niet gegarand
 
 Batch-Pools in de Cloud service configuratie ondersteunen alle [VM-grootten voor Cloud Services](../cloud-services/cloud-services-sizes-specs.md) **, met uitzonde ring** van de volgende opties:
 
-| VM-reeks  | Niet-ondersteunde grootten |
+| VM-serie  | Niet-ondersteunde grootten |
 |------------|-------------------|
 | A-serie   | Extra klein       |
 | Av2-serie | Standard_A1_v2, Standard_A2_v2, Standard_A2m_v2 |
 
-## <a name="size-considerations"></a>Grootte van overwegingen
+## <a name="size-considerations"></a>Overwegingen over grootte
 
 * **Toepassings vereisten** : Houd rekening met de kenmerken en vereisten van de toepassing die u op de knoop punten uitvoert. Houd ook rekening met het feit of bijvoorbeeld de toepassing meerdere threads heeft en hoeveel geheugen deze gebruikt. Zo kunt u gemakkelijker de meest geschikte en voordeligste knooppuntgrootte bepalen. Voor [mpi-werk belastingen](batch-mpi.md) of CUDA-toepassingen met meerdere instanties kunt u respectievelijk gespecialiseerde VM-grootten met [HPC](../virtual-machines/linux/sizes-hpc.md) of [GPU-](../virtual-machines/linux/sizes-gpu.md) capaciteit overwegen. (Zie [met RDMA compatibele of GPU-compatibele instanties in batch-Pools gebruiken](batch-pool-compute-intensive-sizes.md).)
 

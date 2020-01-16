@@ -10,12 +10,12 @@ ms.date: 01/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 39568d65978592b360512db2e556cfa6b59760b6
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 8cf1f8ecb68e31f93c19d93d6ebc4f8ef37724e7
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921207"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028451"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Een account maken dat door de klant beheerde sleutels voor tabellen en wacht rijen ondersteunt
 
@@ -149,7 +149,7 @@ Nadat u een account hebt gemaakt dat afhankelijk is van de versleutelings sleute
 
 ## <a name="verify-the-account-encryption-key"></a>De versleutelings sleutel voor het account controleren
 
-Als u wilt controleren of het nieuwe opslag account gebruikmaakt van de account versleutelings sleutel, roept u de opdracht Azure CLI [AZ Storage account](/cli/azure/storage/account#az-storage-account-show) aan. Met deze opdracht wordt een lijst met eigenschappen van het opslag account en de bijbehorende waarden geretourneerd. Zoek naar de eigenschap `keyType` en controleer of deze is ingesteld op `Account`.
+Als u wilt controleren of een service in een opslag account gebruikmaakt van de versleutelings sleutel van het account, roept u de opdracht Azure CLI [AZ Storage account](/cli/azure/storage/account#az-storage-account-show) aan. Met deze opdracht wordt een set eigenschappen van het opslag account en de bijbehorende waarden geretourneerd. Zoek naar het veld `keyType` voor elke service binnen de versleutelings eigenschap en controleer of deze is ingesteld op `Account`.
 
 ```azurecli
 az storage account show /

@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 4/29/2019
-ms.openlocfilehash: 6a95cbad161906bd12a608880ac694d6bdf1ed27
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.date: 1/14/2020
+ms.openlocfilehash: 868e9e068244af91e218d906bee115b58906152f
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383056"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027906"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark-preview"></a>Azure Data Explorer connector voor Apache Spark (preview-versie)
 
@@ -33,7 +33,7 @@ Azure Data Explorer Spark-connector is een [open-source project](https://github.
 * Installeer de Azure Data Explorer-connector bibliotheek en de bibliotheken die worden vermeld in [afhankelijkheden](https://github.com/Azure/azure-kusto-spark#dependencies) , waaronder de volgende [Kusto Java SDK](/azure/kusto/api/java/kusto-java-client-library) -bibliotheken:
     * [Kusto data-client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
     * [Kusto opname-client](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
-* Vooraf ontwikkelde bibliotheken voor [Spark 2,4, Scala 2,11](https://github.com/Azure/azure-kusto-spark/releases)
+* Vooraf ontwikkelde bibliotheken voor [Spark 2,4, Scala 2,11](https://github.com/Azure/azure-kusto-spark/releases) en [maven opslag plaats](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector)
 
 ## <a name="how-to-build-the-spark-connector"></a>De Spark-connector maken
 
@@ -82,20 +82,13 @@ Zie voor meer informatie [connector gebruik](https://github.com/Azure/azure-kust
 > [!NOTE]
 > Het is raadzaam om de nieuwste versie van de Azure Data Explorer Spark-connector te gebruiken bij het uitvoeren van de volgende stappen:
 
-1. Stel de volgende Spark-cluster instellingen in op basis van Azure Databricks cluster met Spark 2,4 en scala 2,11: 
+1. Stel de volgende Spark-cluster instellingen in op basis van Azure Databricks cluster met Spark 2.4.4 en scala 2,11: 
 
     ![Databricks-cluster instellingen](media/spark-connector/databricks-cluster.png)
-
-1. Importeer de Azure Data Explorer-connector bibliotheek:
+    
+1. Installeer de meest recente Spark-kusto-connector bibliotheek van Maven:
 
     ![Azure Data Explorer-bibliotheek importeren](media/spark-connector/db-create-library.png)
-
-1. Aanvullende afhankelijkheden toevoegen (niet nodig indien gebruikt vanuit Maven):
-
-    ![Afhankelijkheden toevoegen](media/spark-connector/db-dependencies.png)
-
-    > [!TIP]
-    > De juiste Java-release versie voor elke Spark-versie vindt u [hier](https://github.com/Azure/azure-kusto-spark#dependencies).
 
 1. Controleer of alle vereiste bibliotheken zijn geïnstalleerd:
 
@@ -103,13 +96,13 @@ Zie voor meer informatie [connector gebruik](https://github.com/Azure/azure-kust
 
 ## <a name="authentication"></a>Authentication
 
-Met Azure Data Explorer Spark-connector kunt u zich verifiëren met Azure Active Directory (Azure AD) met behulp van een [Azure AD-toepassing](#azure-ad-application-authentication), een [Azure AD-toegangs token](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token), een verificatie van het [apparaat](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (voor niet-productie scenario's) of [Azure-sleutel Kluis](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault). De gebruiker moet het Azure-sleutel kluis pakket installeren en toepassings referenties opgeven om toegang te krijgen tot de Key Vault resource.
+Met Azure Data Explorer Spark-connector kunt u verifiëren met Azure Active Directory (Azure AD) met behulp van een [Azure AD-toepassing](#azure-ad-application-authentication), een [Azure AD-toegangs token](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token), een verificatie van het [apparaat](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (voor niet-productie scenario's) of [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault). De gebruiker moet het Azure-sleutel kluis pakket installeren en toepassings referenties opgeven om toegang te krijgen tot de Key Vault resource.
 
 ### <a name="azure-ad-application-authentication"></a>Azure AD-toepassings verificatie
 
 De meest eenvoudige en algemene verificatie methode. Deze methode wordt aanbevolen voor het gebruik van Azure Data Explorer Spark-connector.
 
-|properties  |Description  |
+|Eigenschappen  |Beschrijving  |
 |---------|---------|
 |**KUSTO_AAD_CLIENT_ID**     |   Id van de Azure AD-toepassing (client).      |
 |**KUSTO_AAD_AUTHORITY_ID**     |  Azure AD-verificatie autoriteit. ID van Azure AD-Directory (Tenant).        |
@@ -124,7 +117,7 @@ De volgende bevoegdheden moeten worden verleend op een Azure Data Explorer-clust
  
 Zie [autorisatie op basis van rollen](/azure/kusto/management/access-control/role-based-authorization)voor meer informatie over de belangrijkste rollen van Azure Data Explorer. Zie [beveiligings rollen](/azure/kusto/management/security-roles)beheren voor het beheren van beveiligings rollen.
 
-## <a name="spark-sink-writing-to-azure-data-explorer"></a>Spark-Sink: Schrijven naar Azure Data Explorer
+## <a name="spark-sink-writing-to-azure-data-explorer"></a>Spark-Sink: schrijven naar Azure Data Explorer
 
 1. Sink-para meters instellen:
 
@@ -144,19 +137,19 @@ Zie [autorisatie op basis van rollen](/azure/kusto/management/access-control/rol
 
     ```scala
     import com.microsoft.kusto.spark.datasink.KustoSinkOptions
-    val conf = Map(
-            KustoSinkOptions.KUSTO_CLUSTER -> cluster,
-            KustoSinkOptions.KUSTO_TABLE -> table,
-            KustoSinkOptions.KUSTO_DATABASE -> database,
-            KustoSinkOptions.KUSTO_AAD_CLIENT_ID -> appId,
-            KustoSinkOptions.KUSTO_AAD_CLIENT_PASSWORD -> appKey,
-            KustoSinkOptions.KUSTO_AAD_AUTHORITY_ID -> authorityId)
-    
+    import org.apache.spark.sql.{SaveMode, SparkSession}
+
     df.write
       .format("com.microsoft.kusto.spark.datasource")
-      .options(conf)
-      .save()
-      
+      .option(KustoSinkOptions.KUSTO_CLUSTER, cluster)
+      .option(KustoSinkOptions.KUSTO_DATABASE, database)
+      .option(KustoSinkOptions.KUSTO_TABLE, "Demo3_spark")
+      .option(KustoSinkOptions.KUSTO_AAD_CLIENT_ID, appId)
+      .option(KustoSinkOptions.KUSTO_AAD_CLIENT_PASSWORD, appKey)
+      .option(KustoSinkOptions.KUSTO_AAD_AUTHORITY_ID, authorityId)
+      .option(KustoSinkOptions.KUSTO_TABLE_CREATE_OPTIONS, "CreateIfNotExist")
+      .mode(SaveMode.Append)
+      .save()  
     ```
     
    Of gebruik de vereenvoudigde syntaxis:
@@ -189,10 +182,9 @@ Zie [autorisatie op basis van rollen](/azure/kusto/management/access-control/rol
           .option(KustoSinkOptions.KUSTO_WRITE_ENABLE_ASYNC, "true") // Optional, better for streaming, harder to handle errors
           .trigger(Trigger.ProcessingTime(TimeUnit.SECONDS.toMillis(10))) // Sync this with the ingestionBatching policy of the database
           .start()
-    
     ```
 
-## <a name="spark-source-reading-from-azure-data-explorer"></a>Spark-Bron: Lezen van Azure Data Explorer
+## <a name="spark-source-reading-from-azure-data-explorer"></a>Spark-Bron: lezen van Azure Data Explorer
 
 1. Bij het lezen van kleine hoeveel heden gegevens, definieert u de gegevens query:
 
@@ -252,3 +244,9 @@ Zie [autorisatie op basis van rollen](/azure/kusto/management/access-control/rol
     
     display(dfFiltered)
     ```
+
+## <a name="next-steps"></a>Volgende stappen
+
+* Meer informatie over de [Azure Data Explorer Spark-connector](https://github.com/Azure/azure-kusto-spark/tree/master/docs)
+* [Voorbeeldcode](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)
+

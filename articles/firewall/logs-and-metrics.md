@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: f233b1a60202b440abf34edd1c56eebaecba18e2
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1267b3295762f6eb6af92b1cec909bae768886c1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167000"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974510"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall-logboeken en metrische gegevens
 
@@ -20,7 +20,7 @@ U kunt Azure Firewall bewaken met behulp van firewall-logboeken. U kunt ook acti
 
 Via de portal kunt u toegang verkrijgen tot sommige van deze logboeken. Logboeken kunnen worden verzonden naar [Azure Monitor-logboeken](../azure-monitor/insights/azure-networking-analytics.md), Storage en Event Hubs en kunnen worden geanalyseerd in Azure Monitor-logboeken of door verschillende hulpprogramma's zoals Excel en Power BI.
 
-Metrische gegevens zijn licht gewicht en kunnen bijna realtime-scenario's ondersteunen, waardoor ze nuttig zijn voor waarschuwingen en snelle detectie van problemen. 
+Metrische gegevens zijn licht gewicht en kunnen bijna realtime-scenario's ondersteunen, waardoor ze nuttig zijn voor waarschuwingen en snelle detectie van problemen.
 
 ## <a name="diagnostic-logs"></a>Diagnostische logboeken
 
@@ -33,7 +33,7 @@ Metrische gegevens zijn licht gewicht en kunnen bijna realtime-scenario's onders
    ```
    Category: application rule logs.
    Time: log timestamp.
-   Properties: currently contains the full message. 
+   Properties: currently contains the full message.
    note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
    ```
 
@@ -56,7 +56,7 @@ Metrische gegevens zijn licht gewicht en kunnen bijna realtime-scenario's onders
    ```
    Category: network rule logs.
    Time: log timestamp.
-   Properties: currently contains the full message. 
+   Properties: currently contains the full message.
    note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
    ```
 
@@ -83,7 +83,7 @@ U hebt drie opties voor het opslaan van uw logboeken:
 
    Activiteitenlogboekitems worden standaard verzameld en kunnen in de Azure-portal worden bekeken.
 
-   U kunt [Azure-activiteiten logboeken](../azure-resource-manager/resource-group-audit.md) (voorheen bekend als operationele logboeken en audit Logboeken) gebruiken om alle bewerkingen weer te geven die zijn verzonden naar uw Azure-abonnement.
+   U kunt [Azure-activiteiten logboeken](../azure-resource-manager/management/view-activity-logs.md) (voorheen bekend als operationele logboeken en audit Logboeken) gebruiken om alle bewerkingen weer te geven die zijn verzonden naar uw Azure-abonnement.
 
 ## <a name="metrics"></a>Metrische gegevens
 
