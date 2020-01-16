@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: e4146155915979e51a6e3a989ab57316ca643018
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 43c9ba4ff21f32ca321a62c7f11430d82dfc4ec0
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658016"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045181"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Gebruik en kosten beheren met Azure Monitor-logboeken
 
@@ -43,6 +43,8 @@ De standaard prijs voor Log Analytics is een model voor **betalen naar gebruik**
   
 Naast het betalen naar gebruik-model is Log Analytics **capaciteits reserverings** lagen waarmee u Maxi maal 25% kunt besparen op basis van de betalen naar gebruik-prijs. Met de prijzen voor capaciteits reservering kunt u een reserve ring kopen vanaf 100 GB per dag. Elk gebruik boven het reserverings niveau wordt gefactureerd op basis van het betalen naar gebruik-tarief. De lagen voor capaciteits reservering hebben een toezeggings periode van 31 dagen. Tijdens de toezeggings periode kunt u overschakelen naar een reserverings tier van een hoger niveau (waardoor de dag van 31 dagen opnieuw wordt opgestart), maar u kunt niet teruggaan naar betalen naar gebruik of naar een reserverings laag met een lagere capaciteit totdat de toezeggings periode is verstreken geïnstalleerd. 
 Meer [informatie](https://azure.microsoft.com/pricing/details/monitor/) over log Analytics prijzen voor betalen per gebruik en capaciteits reservering. 
+
+In alle prijs categorieën wordt het gegevens volume berekend op basis van een teken reeks representatie van de gegevens die worden voor bereid om te worden opgeslagen. Diverse [eigenschappen die voor alle gegevens typen gelden](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties) , worden niet opgenomen in de berekening van de gebeurtenis grootte, met inbegrip van `_ResourceId`, `_ItemId`, `_IsBillable` en `_BilledSize`.
 
 Houd er ook rekening mee dat sommige oplossingen, zoals [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/) en [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/), hun eigen prijs model hebben. 
 
@@ -164,6 +166,9 @@ Wanneer de dagelijkse limiet is bereikt, stopt het verzamelen van factureerbare 
 
 > [!NOTE]
 > Het dagelijks kapje stopt niet het verzamelen van gegevens uit Azure Security Center, met uitzonde ring van werk ruimten waarin Azure Security Center is geïnstalleerd vóór 19 juni 2017. 
+
+> [!NOTE]
+> De latentie die inherent is aan het Toep assen van de dagelijkse limiet, kan betekenen dat het kapje niet zo precies het opgegeven niveau voor de dagelijkse Cap wordt toegepast. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>Identificeren welke dagelijkse limiet voor gegevens definiëren
 

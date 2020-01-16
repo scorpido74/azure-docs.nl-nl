@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 66c5873749924df2133cb1ba4711b779e0aba24a
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 5d828ab59f790bab1003f0ad73fc7be1b77410bb
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834748"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044887"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Een model implementeren met behulp van een aangepaste docker-basis installatie kopie
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -234,13 +234,12 @@ myenv.inferencing_stack_version = "latest"  # This will install the inference sp
 # Define the packages needed by the model and scripts
 from azureml.core.conda_dependencies import CondaDependencies
 conda_dep = CondaDependencies()
-# Unless you are using your own custom inference stack,
 # you must list azureml-defaults as a pip dependency
 conda_dep.add_pip_package("azureml-defaults")
 myenv.python.conda_dependencies=conda_dep
 ```
 
-Houd er rekening mee dat u, tenzij u ook uw eigen aangepaste in-Afleidings stack gebruikt, de waarde voor azureml-standaard met versie > = 1.0.45 als PIP-afhankelijkheid moet toevoegen. Dit pakket bevat de functionaliteit die nodig is om het model als een webservice te hosten.
+U moet de standaard waarden van azureml toevoegen met versie > = 1.0.45 als een PIP-afhankelijkheid. Dit pakket bevat de functionaliteit die nodig is om het model als een webservice te hosten. U moet ook inferencing_stack_version eigenschap op de omgeving instellen op ' meest recent ', maar Hiermee installeert u specifieke apt-pakketten die nodig zijn voor de webservice. 
 
 Nadat u de omgeving hebt gedefinieerd, kunt u deze gebruiken met een [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) -object om de Afleidings omgeving te definiëren waarin het model en de webservice worden uitgevoerd.
 

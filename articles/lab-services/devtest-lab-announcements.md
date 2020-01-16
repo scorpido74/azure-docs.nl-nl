@@ -1,5 +1,5 @@
 ---
-title: Het plaatsen van een aankondiging voor aan een lab in Azure DevTest Labs | Microsoft Docs
+title: Een aankondiging op een lab in Azure DevTest Labs plaatsen | Microsoft Docs
 description: Meer informatie over het toevoegen van een aankondiging aan een lab in Azure DevTest Labs
 services: devtest-lab,virtual-machines
 documentationcenter: na
@@ -14,76 +14,76 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 2fe31271fa84bc4170bd431a4aadbcafc0df9086
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 84120b07de3a03a049493eb973b6dc46f8668387
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311477"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976449"
 ---
-# <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Het plaatsen van een aankondiging naar een lab in Azure DevTest Labs
+# <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Een aankondiging in Azure DevTest Labs plaatsen in een Lab
 
-Als de beheerder van een lab, kunt u een aangepaste aankondiging posten in een bestaande lab, waar gebruikers te informeren over recente wijzigingen in of toevoegingen aan het lab. U wilt bijvoorbeeld gebruikers informeren over:
+Als test beheerder kunt u een aangepaste aankondiging in een bestaand Lab plaatsen om gebruikers op de hoogte te stellen van recente wijzigingen of toevoegingen aan het lab. U kunt bijvoorbeeld gebruikers informeren over:
 
 - Nieuwe VM-grootten die beschikbaar zijn
-- Installatiekopieën die op dit moment onbruikbaar zijn
-- Updates voor beleid voor lab maken
+- Installatie kopieën die momenteel onbruikbaar zijn
+- Updates voor Lab-beleid
 
-Zodra geplaatst, de aankondiging wordt weergegeven op de pagina overzicht van de testomgeving en de gebruiker voor meer informatie selecteren kunt.
+Zodra de aankondiging is gepost, wordt deze weer gegeven op de overzichts pagina van het lab en kan de gebruiker deze selecteren voor meer informatie.
 
-De functie aankondiging is bedoeld om te worden gebruikt voor tijdelijke meldingen.  Nadat deze is niet meer nodig hebt, kunt u eenvoudig een aankondiging uitschakelen.
+De aankondigings functie is bedoeld om te worden gebruikt voor tijdelijke meldingen.  U kunt een aankondiging eenvoudig uitschakelen nadat deze niet meer nodig is.
 
-## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>Stappen voor het plaatsen van een aankondiging in een bestaande lab
+## <a name="steps-to-post-an-announcement-in-an-existing-lab"></a>Stappen voor het plaatsen van een aankondiging in een bestaand Lab
 
-1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Selecteer indien nodig, **alle Services**, en selecteer vervolgens **DevTest Labs** in de lijst. (Uw lab mogelijk al worden weergegeven op het Dashboard onder **alle Resources**).
-1. Selecteer in het lab waarin u wilt plaatsen van een aankondiging uit de lijst met labs.
-1. Op van het lab **overzicht** gedeelte **configuratie en het beleid**.
+1. Meld u aan bij de [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Selecteer indien nodig **alle services**en selecteer vervolgens **DevTest Labs** in de lijst. (Uw Lab wordt mogelijk al weer gegeven op het dash board onder **alle resources**).
+1. Selecteer in de lijst met Labs het lab waarin u een aankondiging wilt plaatsen.
+1. Selecteer in het gedeelte **overzicht** van het lab de optie **configuratie en beleid**.
 
-    ![Knop voor configuratie en het beleid](./media/devtest-lab-announcements/devtestlab-config-and-policies.png)
+    ![Knop configuratie en beleid](./media/devtest-lab-announcements/devtestlab-config-and-policies.png)
 
-1. Aan de linkerkant onder **instellingen**, selecteer **Lab aankondiging**.
+1. Selecteer aan de linkerkant onder **instellingen**de optie **Lab-aankondiging**.
 
     ![Knop voor Lab-aankondiging](./media/devtest-lab-announcements/devtestlab-announcements.png)
 
-1. Als u een bericht voor de gebruikers in dit lab, stelt u **ingeschakeld** naar **Ja**.
+1. Stel **ingeschakeld** in op **Ja**als u een bericht wilt maken voor de gebruikers in dit lab.
 
-1. U kunt een **vervaldatum** om op te geven van een datum en tijd waarna de aankondiging niet meer wordt weergegeven aan gebruikers. Als u een vervaldatum niet opgeeft, wordt de aankondiging blijft totdat u deze uitschakelen.
+1. U kunt een **verval datum** invoeren om een datum en tijd op te geven waarna de aankondiging niet meer wordt weer gegeven voor gebruikers. Als u geen verval datum invoert, blijft de aankondiging actief totdat u deze uitschakelt.
 
    > [!NOTE]
-   > Nadat de aankondiging is verlopen, deze niet meer wordt weergegeven aan gebruikers, maar nog steeds aanwezig in de **Lab aankondiging** deelvenster. U kunt wijzigingen aanbrengen en weer inschakelen om het te activeren opnieuw.
+   > Nadat de aankondiging is verlopen, wordt deze niet meer weer gegeven voor gebruikers, maar nog steeds in het **aankondigings** deel venster voor de Lab. U kunt wijzigingen aanbrengen in het bestand en het opnieuw inschakelen om het weer actief te maken.
    >
    >
 
-1. Voer een **aankondiging titel** en de **aankondiging tekst**.
+1. Voer een **titel** voor de aankondiging en de tekst van de **aankondiging**in.
 
-   De titel mag maximaal 100 tekens bestaan en wordt weergegeven aan de gebruiker op de pagina overzicht van de testomgeving. Als de gebruiker de titel selecteert, wordt de aankondiging tekst weergegeven.
+   De titel mag Maxi maal 100 tekens lang zijn en wordt weer gegeven aan de gebruiker op de overzichts pagina van het lab. Als de gebruiker de titel selecteert, wordt de tekst van de aankondiging weer gegeven.
 
-   De tekst van de aankondiging accepteert markdown. Als u de tekst van de aankondiging invoert, kunt u het bericht weergeven in de Preview-gebied aan de onderkant van het scherm.
+   De tekst van de aankondiging accepteert de prijs verlaging. Als u de tekst van de aankondiging opgeeft, kunt u het bericht weer geven in het voorbeeld gebied onder aan het scherm.
 
-    ![Lab aankondiging scherm om het bericht te maken.](./media/devtest-lab-announcements/devtestlab-post-announcement.png)
+    ![Aankondigings scherm voor het lab om het bericht te maken.](./media/devtest-lab-announcements/devtestlab-post-announcement.png)
 
 
-1. Selecteer **opslaan** zodra uw aankondiging is klaar om te posten.
+1. Selecteer **Opslaan** zodra uw aankondiging gereed is om te worden geplaatst.
 
-Als u niet meer weergeven van deze aankondiging voor labgebruikers wilt, Ga terug naar de **Lab aankondiging** pagina en stel **ingeschakeld** naar **Nee**. Als u een verloopdatum hebt opgegeven, is de aankondiging automatisch uitgeschakeld op die datum en tijd.
+Als u deze aankondiging niet meer wilt weer geven voor gebruikers met een lab, keert u terug naar de **aankondigings** pagina voor Lab en stelt u **ingeschakeld** in op **Nee**. Als u een verval datum hebt opgegeven, wordt de aankondiging automatisch uitgeschakeld op die datum en tijd.
 
-## <a name="steps-for-users-to-view-an-announcement"></a>Stappen voor gebruikers om weer te geven van een aankondiging
+## <a name="steps-for-users-to-view-an-announcement"></a>Stappen voor het weer geven van een aankondiging door gebruikers
 
-1. Uit de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040), selecteert u een lab.
+1. Selecteer een lab in het [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Als het lab een aankondiging voor geplaatst heeft, wordt een aankondiging wordt weergegeven boven aan de pagina overzicht van de testomgeving. Deze aankondiging is de titel van de aankondiging die is opgegeven tijdens het maken van de aankondiging.
+1. Als er een aankondiging voor het lab is geplaatst, wordt er een melding weer gegeven aan de bovenkant van de overzichts pagina van het lab. Deze informatie is de aankondigings titel die is opgegeven bij het maken van de aankondiging.
 
-    ![Lab-aankondiging op de pagina overzicht](./media/devtest-lab-announcements/devtestlab-user-announcement.png)
+    ![Aankondiging van Lab op overzichts pagina](./media/devtest-lab-announcements/devtestlab-user-announcement.png)
 
-1. De gebruiker kan het bericht om weer te geven van de volledige aankondiging selecteren.
+1. De gebruiker kan het bericht selecteren om de volledige aankondiging weer te geven.
 
-    ![Meer informatie voor de aankondiging in het lab](./media/devtest-lab-announcements/devtestlab-user-announcement-text.png)
+    ![Meer informatie voor de Lab-aankondiging](./media/devtest-lab-announcements/devtestlab-user-announcement-text.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sjabloon
-U kunt een aankondiging opgeven als onderdeel van een Azure Resource Manager-sjabloon, zoals wordt weergegeven in het volgende voorbeeld:
+U kunt een aankondiging opgeven als onderdeel van een Azure Resource Manager sjabloon zoals wordt weer gegeven in het volgende voor beeld:
 
 ```json
 {
@@ -160,11 +160,11 @@ U kunt een aankondiging opgeven als onderdeel van een Azure Resource Manager-sja
 
 U kunt een Azure Resource Manager-sjabloon implementeren met behulp van een van de volgende manieren:
 
-- [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
-- [Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
-- [Azure-CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
-- [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+- [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
+- [Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+- [Azure-CLI](../azure-resource-manager/templates/deploy-cli.md)
+- [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ## <a name="next-steps"></a>Volgende stappen
-* Als u een lab-beleid instellen of wijzigt, is het raadzaam om te posten van een aankondiging om gebruikers te informeren. [Beleid en planningen instellen](devtest-lab-set-lab-policy.md) bevat informatie over het toepassen van beperkingen en conventies voor uw abonnement met behulp van aangepast beleid.
-* Verken de [DevTest Labs Azure Resource Manager QuickStart-sjablonen](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).
+* Als u een Lab-beleid wijzigt of instelt, wilt u mogelijk een aankondiging plaatsen om gebruikers op de hoogte te stellen. [Beleid en planningen instellen](devtest-lab-set-lab-policy.md) biedt informatie over het Toep assen van beperkingen en conventies in uw abonnement met behulp van aangepast beleid.
+* Verken de [DevTest Labs Azure Resource Manager-sjabloon galerie voor Quick](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)start.

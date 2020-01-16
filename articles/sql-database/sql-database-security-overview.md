@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: c9f59eb8c299eb9319694d392c2b5d1d814ed9b8
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 4aa45cc1e8b79186d3ddd5d2b2964addb3929b1a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997323"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978572"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Een overzicht van Azure SQL Database beveiligings mogelijkheden
 
@@ -46,7 +46,7 @@ Met [regels voor virtuele netwerken](sql-database-vnet-service-endpoint-rule-ove
 > [!IMPORTANT]
 > Het beheren van data bases en database servers binnen Azure wordt bepaald door de roltoewijzingen van uw portal-gebruikers account. Zie op [rollen gebaseerd toegangs beheer in azure Portal](../role-based-access-control/overview.md)voor meer informatie over dit artikel.
 
-### <a name="authentication"></a>Verificatie
+### <a name="authentication"></a>Authentication
 
 Verificatie is het proces waarbij de gebruiker wordt geclaimd. Azure SQL Database ondersteunt twee typen verificatie:
 
@@ -104,7 +104,7 @@ Als best practice kunt u het beste een versleutelde verbinding opgeven in de con
 Als u bijvoorbeeld het ADO.NET-stuur programma gebruikt, wordt dit bereikt via **versleutelen = True** en **TrustServerCertificate = False**. Als u uw connection string van de Azure Portal opvraagt, worden de juiste instellingen weer geven.
 
 > [!IMPORTANT]
-> Houd er rekening mee dat sommige niet-micro soft-Stuur Programma's standaard geen gebruikmaken van TLS of gebruikmaken van een oudere versie van TLS (< 1.2) om te kunnen functioneren. In dit geval kunt SQL Server nog steeds verbinding maken met uw data base. We raden u echter aan de beveiligings Risico's te evalueren waarmee dergelijke Stuur Programma's en toepassingen verbinding kunnen maken met SQL Database, met name als u gevoelige gegevens opslaat. 
+> Houd er rekening mee dat sommige niet-micro soft-Stuur Programma's standaard geen gebruikmaken van TLS of gebruikmaken van een oudere versie van TLS (< 1.2) om te kunnen functioneren. In dit geval kunt SQL Server nog steeds verbinding maken met uw data base. We raden u echter aan de beveiligings Risico's te evalueren waarmee dergelijke Stuur Programma's en toepassingen verbinding kunnen maken met SQL Database, met name als u gevoelige gegevens opslaat.
 >
 > Zie voor meer informatie over TLS en connectiviteit [TLS-overwegingen](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
 

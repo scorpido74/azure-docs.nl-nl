@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08a5c2c101b934f07ab85082e726cb8e1341e5d0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: cd9f85e3bfd11ee655ce581c60a5b65e13f4497b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888723"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971839"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Zelfstudie: een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Key Vault 
 
@@ -38,6 +38,13 @@ Procedures voor:
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+
+## <a name="enable"></a>Inschakelen
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
 
 ## <a name="grant-access"></a>Toegang verlenen  
  
@@ -66,7 +73,7 @@ Voeg vervolgens een geheim toe aan de sleutelkluis, zodat u het geheim later kun
 5. Laat de activeringsdatum en vervaldatum leeg en laat **Ingeschakeld** ingesteld staan op **Ja**. 
 6. Klik op **Maken** om het geheim te maken. 
  
-## <a name="get-an-access-token"></a>Een toegangstoken opvragen  
+## <a name="access-data"></a>Toegang tot gegevens  
 
 In deze sectie wordt beschreven hoe u een toegangs token kunt ophalen met behulp van de VM-identiteit en hoe u het kunt ophalen uit de Key Vault. Als PowerShell 4.3.1 of hoger niet is geïnstalleerd, moet u [de meest recente versie downloaden en installeren](https://docs.microsoft.com/powershell/azure/overview).
 
@@ -108,6 +115,13 @@ Eerst gebruiken we de door het systeem toegewezen beheerde identiteit van de VM 
     ```
     
 Zodra u het geheim hebt opgehaald uit de sleutelkluis, kunt u deze gebruiken om te verifiëren bij een service die een gebruikersnaam en wachtwoord vereist. 
+
+
+## <a name="disable"></a>Uitschakelen
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

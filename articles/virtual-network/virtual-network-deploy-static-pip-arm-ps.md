@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 6e278172bc1c3ec4e81860c3f6d6a4b644731e2c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 0eb4f86a2484486658171ab4b099794e4ba3e4bc
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647778"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043396"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Een virtuele machine met een statisch openbaar IP-adres maken met behulp van Power shell
 
@@ -50,7 +50,7 @@ U kunt de volgende stappen uitvoeren vanaf uw lokale computer of met behulp van 
      -AllocationMethod "Static"
    ```
 
-   Als het open bare IP-adres een standaard-SKU moet zijn, dient u [een openbaar IP-adres te maken](virtual-network-public-ip-address.md#create-a-public-ip-address), [een netwerk interface te maken](virtual-network-network-interface.md#create-a-network-interface), [het open bare IP-adres toe te wijzen aan de netwerk interface](virtual-network-network-interface-addresses.md#add-ip-addresses)en vervolgens [een virtuele machine te maken met de netwerk interface](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm), in afzonderlijke stappen. Meer informatie over [open bare IP-adres-sku's](virtual-network-ip-addresses-overview-arm.md#sku). Als de virtuele machine wordt toegevoegd aan de back-end-groep van een openbaar Azure Load Balancer, moet de SKU van het open bare IP-adres van de virtuele machine overeenkomen met de SKU van het open bare IP-adres van de load balancer. Zie [Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus)voor meer informatie.
+   Als het open bare IP-adres een standaard-SKU moet zijn, dient u [een openbaar IP-adres te maken](virtual-network-public-ip-address.md#create-a-public-ip-address), [een netwerk interface te maken](virtual-network-network-interface.md#create-a-network-interface), [het open bare IP-adres toe te wijzen aan de netwerk interface](virtual-network-network-interface-addresses.md#add-ip-addresses)en vervolgens [een virtuele machine te maken met de netwerk interface](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm), in afzonderlijke stappen. Meer informatie over [open bare IP-adres-sku's](virtual-network-ip-addresses-overview-arm.md#sku). Als de virtuele machine wordt toegevoegd aan de back-end-groep van een openbaar Azure Load Balancer, moet de SKU van het open bare IP-adres van de virtuele machine overeenkomen met de SKU van het open bare IP-adres van de load balancer. Zie [Azure Load Balancer](../load-balancer/concepts-limitations.md#skus)voor meer informatie.
 
 4. Bekijk het toegewezen open bare IP-adres en bevestig dat het is gemaakt als een statisch adres, met [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress):
 

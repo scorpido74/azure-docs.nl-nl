@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: c1de86c1d12109853bb5d6d1aac4143caab9199f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5bcbb8c6845928cf21b5b6a1c04f609305bd7983
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638218"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979531"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>Gereserveerd IP adressen (klassieke implementatie)
 
@@ -28,7 +28,7 @@ ms.locfileid: "75638218"
 Als u wilt voor komen dat IP-adressen worden gewijzigd, kunt u een IP-adres reserveren. Gereserveerde Ip's kunnen alleen worden gebruikt als een VIP, zodat het IP-adres voor de Cloud service hetzelfde blijft, zelfs wanneer resources worden afgesloten of gestopt (toewijzing ongedaan gemaakt). Daarnaast kunt u bestaande dynamische IP-adressen die worden gebruikt als een VIP omzetten in een gereserveerd IP-adres.
 
 > [!IMPORTANT]
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../azure-resource-manager/resource-manager-deployment-model.md). Dit artikel gaat over het gebruik van het klassieke implementatiemodel. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Meer informatie over het reserveren van een statisch openbaar IP-adres met behulp van het [Resource Manager-implementatie model](virtual-network-ip-addresses-overview-arm.md).
+> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../azure-resource-manager/management/deployment-models.md). Dit artikel gaat over het gebruik van het klassieke implementatiemodel. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Meer informatie over het reserveren van een statisch openbaar IP-adres met behulp van het [Resource Manager-implementatie model](virtual-network-ip-addresses-overview-arm.md).
 
 Lees het artikel [IP-adressen](virtual-network-ip-addresses-overview-classic.md) voor meer informatie over IP-adressen in Azure.
 

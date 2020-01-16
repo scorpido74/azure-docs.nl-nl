@@ -1,6 +1,6 @@
 ---
-title: Overzicht van de beveiliging in Azure Data Lake Storage Gen1 | Microsoft Docs
-description: Informatie over hoe Azure Data Lake Storage Gen1 is een veiligere big data-archief
+title: Overzicht van beveiliging in Azure Data Lake Storage Gen1 | Microsoft Docs
+description: Begrijpen hoe Azure Data Lake Storage Gen1 een veiligere big data store is
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -12,105 +12,104 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 63e538ab43eaf4a34226b0084cf55334e2cc782b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4e640aa1cb02174c935c0f7c1d61ab2fca5ea046
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60195247"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974582"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Beveiliging in Azure Data Lake Storage Gen1
-Veel ondernemingen profiteren van big data-analyses voor zakelijke inzichten zodat ze slimme besluiten. Een organisatie kan een complexe en gereguleerde omgeving, met een toenemend aantal diverse gebruikers hebben. Het is essentieel voor een onderneming om ervoor te zorgen dat kritieke bedrijfsgegevens veiliger, worden opgeslagen met het juiste niveau van toegang verleend aan individuele gebruikers. Azure Data Lake Storage Gen1 is ontworpen om te voldoen aan deze beveiligingsvereisten. In dit artikel leert u over de beveiligingsfuncties van Data Lake Storage Gen1, met inbegrip van:
+Veel bedrijven maken gebruik van big data Analytics voor zakelijke inzichten om hen te helpen bij het maken van slimme beslissingen. Een organisatie kan een complexe en gereguleerde omgeving hebben, met een toenemend aantal verschillende gebruikers. Het is van essentieel belang dat een onderneming ervoor zorgt dat kritieke Bedrijfs gegevens veilig worden opgeslagen, met het juiste toegangs niveau dat aan afzonderlijke gebruikers wordt verleend. Azure Data Lake Storage Gen1 is ontworpen om te voldoen aan deze beveiligings vereisten. In dit artikel vindt u meer informatie over de beveiligings mogelijkheden van Data Lake Storage Gen1, waaronder:
 
-* Verificatie
+* Authentication
 * Autorisatie
 * Netwerkisolatie
-* Gegevensbescherming
-* Controleren
+* Databeveiliging
+* Controle
 
-## <a name="authentication-and-identity-management"></a>Verificatie en identiteitsbeheer
-Verificatie is het proces waarmee de identiteit van een gebruiker is geverifieerd wanneer de gebruiker communiceert met Data Lake Storage Gen1 of met een service die verbinding met Data Lake Storage Gen1 maakt. Voor identiteitsbeheer en authenticatie, het gebruik van Data Lake Storage Gen1 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), een uitgebreide identiteits- en toegangsbeheer cloudoplossing die het beheer van gebruikers en groepen vereenvoudigt.
+## <a name="authentication-and-identity-management"></a>Verificatie en identiteits beheer
+Verificatie is het proces waarmee de identiteit van een gebruiker wordt geverifieerd wanneer de gebruiker met Data Lake Storage Gen1 communiceert of met een service die verbinding maakt met Data Lake Storage Gen1. Data Lake Storage Gen1 maakt gebruik van identiteits beheer en-verificatie [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)een uitgebreide Cloud oplossing voor identiteits-en toegangs beheer die het beheer van gebruikers en groepen vereenvoudigt.
 
-Elk Azure-abonnement kan worden gekoppeld aan een exemplaar van Azure Active Directory. Alleen gebruikers en service-identiteiten die zijn gedefinieerd in uw Azure Active Directory-service hebben toegang tot uw Data Lake Storage Gen1-account met behulp van Azure portal, opdrachtregelprogramma's, of via de clienttoepassingen uw organisatie worden gebouwd met behulp van de Data Lake Opslag Gen1 SDK. Belangrijkste voordelen van het gebruik van Azure Active Directory als een gecentraliseerde mechanisme voor toegangsbeheer zijn:
+Elk Azure-abonnement kan worden gekoppeld aan een exemplaar van Azure Active Directory. Alleen gebruikers en service-identiteiten die in uw Azure Active Directory-service zijn gedefinieerd, hebben toegang tot uw Data Lake Storage Gen1-account met behulp van de Azure Portal, opdracht regel Programma's of client toepassingen die uw organisatie bouwt met behulp van de Data Lake Gen1 SDK voor opslag. De belangrijkste voor delen van het gebruik van Azure Active Directory als een gecentraliseerd toegangs beheer mechanisme zijn:
 
-* Vereenvoudigd beheer van identiteitslevenscycli. De identiteit van een gebruiker of een service (een service principal identiteit) worden snel gemaakt en snel door gewoon verwijderen of uitschakelen van de account in de map is ingetrokken.
-* Meervoudige verificatie. [Meervoudige verificatie](../active-directory/authentication/multi-factor-authentication.md) biedt een extra beveiligingslaag voor gebruikersaanmeldingen en transacties.
-* Verificatie van elke client via een open standaard protocol, zoals OAuth of OpenID.
-* Federatie met enterprise directoryservices en cloud-id-providers.
+* Vereenvoudigd beheer van identiteits levenscyclus. De identiteit van een gebruiker of een service (een Service-Principal-identiteit) kan snel worden gemaakt en snel worden ingetrokken door simpelweg het account in de map te verwijderen of uit te scha kelen.
+* Multi-factor Authentication. [Multi-factor Authentication](../active-directory/authentication/multi-factor-authentication.md) biedt een extra beveiligingslaag voor gebruikers aanmeldingen en trans acties.
+* Verificatie van elke client via een standaard open protocol, zoals OAuth of OpenID Connect.
+* Federatie met ondernemings Directory Services en Cloud-id-providers.
 
-## <a name="authorization-and-access-control"></a>Autorisatie en toegangsbeheer
-Nadat u Azure Active Directory wordt een gebruiker geverifieerd, zodat de gebruiker toegang heeft tot Data Lake Storage Gen1, toegangsmachtigingen besturingselementen voor autorisatie voor Data Lake Storage Gen1. Data Lake Storage Gen1 scheidt autorisatie voor account-gerelateerd en -gegevens activiteiten in de volgende manier:
+## <a name="authorization-and-access-control"></a>Autorisatie en toegangs beheer
+Nadat Azure Active Directory een gebruiker verifieert, zodat de gebruiker toegang heeft tot Data Lake Storage Gen1, controleert autorisatie de toegangs machtigingen voor Data Lake Storage Gen1. Data Lake Storage Gen1 de autorisatie voor account-en gegevensgerelateerde activiteiten op de volgende wijze gescheiden:
 
 * [Op rollen gebaseerd toegangsbeheer](../role-based-access-control/overview.md) (RBAC) verstrekt door Azure voor accountbeheer
-* POSIX ACL voor toegang tot gegevens in de store
+* POSIX-ACL voor toegang tot gegevens in de Store
 
-### <a name="rbac-for-account-management"></a>RBAC voor accountbeheer
-Vier eenvoudige rollen zijn gedefinieerd voor Data Lake Storage Gen1 standaard. De rollen kunnen verschillende bewerkingen op een Gen1 van Data Lake Storage-account via de Azure portal, PowerShell-cmdlets en REST-API's. De rollen eigenaar en Inzender kunnen u een verscheidenheid aan functies voor beheer uitvoeren op het account. U kunt de rol van lezer toewijzen aan gebruikers die alleen account management gegevens weergeven.
+### <a name="rbac-for-account-management"></a>RBAC voor account beheer
+Standaard worden vier basis rollen gedefinieerd voor Data Lake Storage Gen1. Met de functies kunnen verschillende bewerkingen worden uitgevoerd op een Data Lake Storage Gen1 account via de Azure Portal, Power shell-cmdlets en REST-Api's. De rollen eigenaar en Inzender kunnen diverse beheer functies op het account uitvoeren. U kunt de rol van lezer toewijzen aan gebruikers die alleen account beheer gegevens weer geven.
 
 ![RBAC-rollen](./media/data-lake-store-security-overview/rbac-roles.png "RBAC-rollen")
 
-Houd er rekening mee dat hoewel rollen zijn toegewezen voor accountbeheer, sommige rollen gevolgen heeft voor toegang tot gegevens. U moet de ACL's gebruiken voor het beheren van toegang tot de bewerkingen die een gebruiker op het bestandssysteem uitvoeren kan. De volgende tabel bevat een overzicht van de rights management en gegevens toegangsrechten voor de standaardrollen.
+Houd er rekening mee dat hoewel rollen zijn toegewezen aan account beheer, sommige functies van invloed zijn op de toegang tot gegevens. U moet Acl's gebruiken voor het beheren van de toegang tot bewerkingen die een gebruiker kan uitvoeren op het bestands systeem. In de volgende tabel ziet u een overzicht van de beheer rechten en gegevens toegangs rechten voor de standaard rollen.
 
-| Rollen | Rights management | Toegangsrechten voor gegevens | Uitleg |
+| Rollen | Beheer rechten | Gegevens toegangs rechten | Uitleg |
 | --- | --- | --- | --- |
-| Er is geen rol die is toegewezen |Geen |Beheerst door de ACL |De gebruiker niet de Azure portal of Azure PowerShell-cmdlets gebruiken voor het Data Lake Storage Gen1 bladeren. De gebruiker kan alleen de opdrachtregelprogramma's gebruiken. |
-| Eigenaar |Alle |Alle |De rol van eigenaar is een supergebruiker. Deze rol kan alles beheren, en heeft volledige toegang tot gegevens. |
-| Lezer |Alleen-lezen |Beheerst door de ACL |De rol van lezer kan alles met betrekking tot accountbeheer, zoals welke gebruiker is toegewezen aan welke rol weergeven. De rol van lezer kunt geen wijzigingen aanbrengen. |
-| Inzender |Overal behalve in rollen toevoegen en verwijderen |Beheerst door de ACL |De rol Inzender kunt bepaalde aspecten van een account, zoals implementaties en het maken en beheren van waarschuwingen beheren. De rol Inzender geen toevoegen of verwijderen van rollen. |
-| Beheerder van gebruikerstoegang |Toevoegen en verwijderen van rollen |Beheerst door de ACL |De rol Administrator voor gebruikerstoegang kunt toegang tot accounts voor gebruikers beheren. |
+| Er is geen rol toegewezen |Geen |Beheerd door ACL |De gebruiker kan de Azure Portal-of Azure PowerShell-cmdlets niet gebruiken om Data Lake Storage Gen1 te bladeren. De gebruiker kan alleen opdracht regel Programma's gebruiken. |
+| Eigenaar |Alles |Alles |De rol van eigenaar is een super gebruiker. Deze rol kan alles beheren en heeft volledige toegang tot de gegevens. |
+| Lezer |Alleen-lezen |Beheerd door ACL |Met de rol lezer kan alles worden weer gegeven met betrekking tot account beheer, zoals welke gebruiker aan welke rol is toegewezen. De rol van lezer kan geen wijzigingen aanbrengen. |
+| Inzender |Alle behalve functies toevoegen en verwijderen |Beheerd door ACL |De rol Inzender kan sommige aspecten van een account beheren, zoals implementaties en het maken en beheren van waarschuwingen. De rol Inzender kan geen rollen toevoegen of verwijderen. |
+| Beheerder van gebruikerstoegang |Rollen toevoegen en verwijderen |Beheerd door ACL |De rol beheerder van gebruikers toegang kan de gebruikers toegang tot accounts beheren. |
 
-Zie voor instructies [gebruikers of beveiligingsgroepen toewijzen aan Gen1 van Data Lake Storage-accounts](data-lake-store-secure-data.md#assign-users-or-security-groups-to-data-lake-storage-gen1-accounts).
+Zie [gebruikers of beveiligings groepen toewijzen aan data Lake Storage gen1 accounts](data-lake-store-secure-data.md#assign-users-or-security-groups-to-data-lake-storage-gen1-accounts)voor instructies.
 
-### <a name="using-acls-for-operations-on-file-systems"></a>Met behulp van ACL's voor bewerkingen voor bestandssystemen
-Data Lake Storage Gen1 is een hiërarchische bestandssysteem, zoals Hadoop Distributed File System (HDFS) en deze ondersteunt [POSIX ACL's](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Hiermee kunt u lezen (r), schrijven (s) en uitvoeren (x) machtigingen voor resources voor de rol van eigenaar, voor de groep eigenaren en voor andere gebruikers en groepen. In Data Lake Storage Gen1, kunnen de ACL's worden ingeschakeld voor de hoofdmap, submappen en afzonderlijke bestanden. Zie voor meer informatie over de werking van ACL's in de context van Data Lake Storage Gen1 [toegangsbeheer in Data Lake Storage Gen1](data-lake-store-access-control.md).
+### <a name="using-acls-for-operations-on-file-systems"></a>Acl's gebruiken voor bewerkingen op bestands systemen
+Data Lake Storage Gen1 is een hiërarchisch bestands systeem zoals Hadoop Distributed File System (HDFS) en het ondersteunt [POSIX-acl's](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Hiermee worden Lees-(r), schrijf-(w) en execute (x)-machtigingen voor bronnen voor de rol eigenaar, voor de groep eigen aren en voor andere gebruikers en groepen, gecontroleerd. In Data Lake Storage Gen1 kunnen Acl's worden ingeschakeld voor de hoofdmap, submappen en afzonderlijke bestanden. Zie [toegangs beheer in data Lake Storage gen1](data-lake-store-access-control.md)voor meer informatie over de werking van acl's in de context van data Lake Storage gen1.
 
-Het is raadzaam dat u ACL's voor meerdere gebruikers met behulp van definiëren [beveiligingsgroepen](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Gebruikers toevoegen aan een beveiligingsgroep en vervolgens de ACL's voor een bestand of map toewijzen aan die beveiligingsgroep. Dit is handig als u bieden toegewezen machtigingen, wilt omdat u beperkt tot een maximum van 28-vermeldingen voor toegewezen machtigingen bent. Zie voor meer informatie over hoe u gegevens die zijn opgeslagen in Data Lake Storage Gen1 met behulp van Azure Active Directory-beveiligingsgroepen beter kunt beveiligen, [gebruikers of beveiligingsgroep als ACL's toewijzen aan het bestandssysteem van Data Lake Storage Gen1](data-lake-store-secure-data.md#filepermissions).
+U wordt aangeraden Acl's voor meerdere gebruikers te definiëren met behulp van [beveiligings groepen](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Gebruikers toevoegen aan een beveiligings groep en vervolgens de Acl's voor een bestand of map aan die beveiligings groep toewijzen. Dit is handig wanneer u toegewezen machtigingen wilt opgeven, omdat u beperkt tot Maxi maal 28 vermeldingen voor toegewezen machtigingen. Zie [gebruikers of beveiligings groep als Acl's toewijzen aan het bestands systeem van data Lake Storage gen1](data-lake-store-secure-data.md#filepermissions)voor meer informatie over het beter beveiligen van gegevens die zijn opgeslagen in data Lake Storage gen1 door gebruik te maken van Azure Active Directory-beveiligings groepen.
 
-![Lijst met machtigingen voor toegang](./media/data-lake-store-security-overview/adl.acl.2.png "toegangsmachtigingen van lijst")
+![Toegangs machtigingen weer geven](./media/data-lake-store-security-overview/adl.acl.2.png "Toegangs machtigingen weer geven")
 
 ## <a name="network-isolation"></a>Netwerkisolatie
-Data Lake Storage Gen1 om de toegang beheren tot uw gegevensopslag op het niveau van het netwerk te gebruiken. U kunt tot stand brengen firewalls en een IP-adresbereik definiëren voor uw vertrouwde clients. Een IP-adresbereik, alleen clients met een IP-adres binnen het gedefinieerde bereik kunnen verbinding maken met Data Lake Storage Gen1.
+Gebruik Data Lake Storage Gen1 om de toegang tot uw gegevens archief op netwerk niveau te beheren. U kunt firewalls tot stand brengen en een IP-adres bereik definiëren voor uw vertrouwde clients. Met een IP-adres bereik kunnen alleen clients met een IP-adres binnen het gedefinieerde bereik verbinding maken met Data Lake Storage Gen1.
 
-![Firewall-instellingen en IP-toegang hebben tot](./media/data-lake-store-security-overview/firewall-ip-access.png "Firewall-instellingen en IP-adres")
+![Firewall instellingen en IP-toegang](./media/data-lake-store-security-overview/firewall-ip-access.png "Firewall instellingen en IP-adres")
 
-## <a name="data-protection"></a>Gegevensbescherming
-Data Lake Storage Gen1 beschermt uw gegevens in de gehele levenscyclus. Voor gegevens die onderweg zijn, Data Lake Storage Gen1 de industriestandaard Transport Layer Security (TLS 1.2)-protocol gebruikt voor het beveiligen van gegevens via het netwerk.
+## <a name="data-protection"></a>Databeveiliging
+Data Lake Storage Gen1 beschermt uw gegevens gedurende de hele levens cyclus. Voor gegevens die onderweg zijn, gebruikt Data Lake Storage Gen1 het Protocol van de industrie norm Transport Layer Security (TLS 1,2) om gegevens via het netwerk te beveiligen.
 
-![Versleuteling in Data Lake Storage Gen1](./media/data-lake-store-security-overview/adls-encryption.png "versleuteling in Data Lake Storage Gen1")
+![Versleuteling in Data Lake Storage Gen1](./media/data-lake-store-security-overview/adls-encryption.png "Versleuteling in Data Lake Storage Gen1")
 
-Data Lake Storage Gen1 biedt ook versleuteling voor gegevens die zijn opgeslagen in het account. U kunt ervoor kiezen de gegevens te versleutelen of niet te versleutelen. Als u zich voor versleuteling aanmelden, wordt opgeslagen in Data Lake Storage Gen1 gegevens versleuteld vóór het opslaan op permanente media. In dat geval Data Lake Storage Gen1 versleutelt automatisch gegevens voordat deze worden opgeslagen en ontsleutelt gegevens voordat ze worden opgehaald, dus het is volledig transparant voor de client toegang tot de gegevens. Er is er zijn geen codewijzigingen vereist op de client voor versleutelen/ontsleutelen van gegevens.
+Data Lake Storage Gen1 biedt ook versleuteling voor gegevens die in het account zijn opgeslagen. U kunt ervoor kiezen de gegevens te versleutelen of niet te versleutelen. Als u zich aanmeldt voor versleuteling, worden de gegevens die zijn opgeslagen in Data Lake Storage Gen1 versleuteld voordat ze worden opgeslagen op de permanente media. In dat geval worden de gegevens in Data Lake Storage Gen1 automatisch versleuteld voordat ze worden opgehaald en gedecodeerd voordat ze worden opgezocht, zodat het volledig transparant is voor de client die toegang heeft tot de gegevens. Er is geen code wijziging vereist aan de client zijde om gegevens te versleutelen/ontsleutelen.
 
-Voor sleutelbeheer biedt Data Lake Storage Gen1 twee modi voor het beheren van uw hoofdversleutelingssleutels (MEK's), die vereist zijn voor het ontsleutelen van gegevens die zijn opgeslagen in Data Lake Storage Gen1. U kunt ofwel Data Lake Storage Gen1 de MEK's voor u beheren of kies eigendom van de MEK's met uw Azure Key Vault-account behouden. U opgeven de modus van Sleutelbeheer tijdens het maken van een Data Lake Storage Gen1-account. Zie voor meer informatie over het bieden van versleuteling-gerelateerde configuratie [aan de slag met Azure Data Lake Storage Gen1 met behulp van de Azure-Portal](data-lake-store-get-started-portal.md).
+Data Lake Storage Gen1 biedt sleutel beheer twee modi voor het beheren van uw Mek's (Master Encryption Keys), die vereist zijn voor het ontsleutelen van gegevens die zijn opgeslagen in Data Lake Storage Gen1. U kunt Data Lake Storage Gen1 de Mek's voor u laten beheren of ervoor kiezen om het eigendom van de Mek's te behouden met uw Azure Key Vault-account. U geeft de modus van sleutel beheer op tijdens het maken van een Data Lake Storage Gen1-account. Zie [aan de slag met Azure data Lake Storage gen1 met behulp van Azure Portal](data-lake-store-get-started-portal.md)voor meer informatie over het bieden van versleutelings configuratie.
 
 ## <a name="activity-and-diagnostic-logs"></a>Diagnostische en activiteitslogboeken
-U kunt de activiteit of diagnostische logboeken, afhankelijk van of u op zoek naar de logboeken voor account-gerelateerde activiteiten of gegevens gerelateerde activiteiten.
+U kunt activiteiten of diagnostische Logboeken gebruiken, afhankelijk van het feit of u zoekt naar Logboeken voor activiteiten met betrekking tot account beheer of activiteiten met betrekking tot gegevens.
 
-* Account voor activiteiten met betrekking tot beheer van Azure Resource Manager-API's gebruiken en worden weergegeven in Azure portal via activiteitenlogboeken.
-* Activiteiten met betrekking tot gegevens WebHDFS REST-API's gebruiken en in Azure portal via Logboeken met diagnostische gegevens worden opgehaald.
+* Activiteiten met betrekking tot account beheer gebruiken Azure Resource Manager-Api's en worden in de Azure Portal via activiteiten logboeken weer gegeven.
+* Gegevensgerelateerde activiteiten gebruiken WebHDFS REST-Api's en worden weer gegeven in de Azure Portal via Diagnostische logboeken.
 
 ### <a name="activity-log"></a>Activiteitenlogboek
-Om te voldoen aan de regelgeving, mogelijk een organisatie adequaat audittrails van beheeractiviteiten account als nodig is om u te verdiepen in specifieke incidenten. Data Lake Storage Gen1 heeft ingebouwde controle en registreert alle activiteiten van de account management.
+Om te voldoen aan de voor Schriften, kan een organisatie een adequaat controle spoor van account beheer activiteiten vereisen als er specifieke incidenten moeten worden opgevolgd. Data Lake Storage Gen1 heeft ingebouwde bewaking en registreert alle account beheer activiteiten.
 
-Voor account management audittrails, weergeven en kies de kolommen die u wilt registreren. U kunt ook activiteitenlogboeken exporteren naar Azure Storage.
+Bekijk en selecteer de kolommen die u wilt registreren voor de controle sporen van account beheer. U kunt ook activiteiten logboeken exporteren naar Azure Storage.
 
-![Activiteitenlogboek](./media/data-lake-store-security-overview/activity-logs.png "activiteitenlogboek")
+![Activiteitenlogboek](./media/data-lake-store-security-overview/activity-logs.png "Activiteitenlogboek")
 
-Zie voor meer informatie over het werken met activiteitenlogboeken [activiteitenlogboeken om te controleren van acties op resources bekijken](../azure-resource-manager/resource-group-audit.md).
+Zie [activiteiten logboeken weer geven om acties op resources te controleren](../azure-resource-manager/management/view-activity-logs.md)voor meer informatie over het werken met activiteiten Logboeken.
 
-### <a name="diagnostics-logs"></a>Logboeken met diagnostische gegevens
-U kunt controle van de gegevens en diagnostische gegevens vastleggen in Azure portal inschakelen en de logboeken verzenden naar een Azure Blob storage-account, een event hub of Azure Monitor-Logboeken.
+### <a name="diagnostics-logs"></a>Diagnoselogboeken
+U kunt de controle van gegevens toegang en diagnostische logboek registratie inschakelen in de Azure Portal en de logboeken verzenden naar een Azure Blob Storage-account, een Event Hub of Azure Monitor Logboeken.
 
-![Logboeken met diagnostische gegevens](./media/data-lake-store-security-overview/diagnostic-logs.png "logboeken met diagnostische gegevens")
+![Diagnostische logboeken](./media/data-lake-store-security-overview/diagnostic-logs.png "Diagnoselogboeken")
 
-Zie voor meer informatie over het werken met diagnostische logboeken met Data Lake Storage Gen1 [diagnostische logboeken openen voor Data Lake Storage Gen1](data-lake-store-diagnostic-logs.md).
+Zie voor meer informatie over het werken met Diagnostische logboeken met Data Lake Storage Gen1 [Diagnostische logboeken openen voor data Lake Storage gen1](data-lake-store-diagnostic-logs.md).
 
 ## <a name="summary"></a>Samenvatting
-Enterprise-klanten de vraag een data analytics-cloudplatform dat u veilig en eenvoudig te gebruiken. Data Lake Storage Gen1 is ontworpen om u te helpen met het adres van deze vereisten via het identiteitsbeheer en verificatie via Azure Active Directory-integratie, op basis van claims ACL, netwerkisolatie, gegevensversleuteling in-transit en inactieve en controle.
+Enter prise-klanten vragen een Cloud platform voor gegevens analyse dat veilig en gemakkelijk te gebruiken is. Data Lake Storage Gen1 is ontworpen om deze vereisten te helpen aanpakken door middel van identiteits beheer en verificatie via Azure Active Directory integratie, autorisatie op basis van toegangs beheer, netwerk isolatie, gegevens versleuteling tijdens de overdracht en in rust en controle.
 
-Als u zien van nieuwe functies in Data Lake Storage Gen1 wilt, stuur ons uw feedback in de [Data Lake Storage Gen1 UserVoice-forum](https://feedback.azure.com/forums/327234-data-lake).
+Als u nieuwe functies in Data Lake Storage Gen1 wilt zien, stuurt u ons uw feedback in het [Data Lake Storage gen1 UserVoice-forum](https://feedback.azure.com/forums/327234-data-lake).
 
 ## <a name="see-also"></a>Zie ook
 * [Overzicht van Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 * [Aan de slag met Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * [Gegevens beveiligen in Data Lake Storage Gen1](data-lake-store-secure-data.md)
-

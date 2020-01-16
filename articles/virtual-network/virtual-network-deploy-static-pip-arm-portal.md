@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 891b21aa1c832214fad12759643dc72a632e1cd7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 66050c16f40e0a06117327ef53e3aae87d03c5db
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647795"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043538"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Maak een virtuele machine met een statisch openbaar IP-adres met behulp van de Azure Portal
 
@@ -51,7 +51,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
    ![Statisch selecteren](./media/virtual-network-deploy-static-pip-arm-portal/select-static.png)
 
-   Als het open bare IP-adres een standaard-SKU moet zijn, selecteert u **Standard** onder **SKU**. Meer informatie over [open bare IP-adres-sku's](virtual-network-ip-addresses-overview-arm.md#sku). Als de virtuele machine wordt toegevoegd aan de back-end-groep van een openbaar Azure Load Balancer, moet de SKU van het open bare IP-adres van de virtuele machine overeenkomen met de SKU van het open bare IP-adres van de load balancer. Zie [Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus)voor meer informatie.
+   Als het open bare IP-adres een standaard-SKU moet zijn, selecteert u **Standard** onder **SKU**. Meer informatie over [open bare IP-adres-sku's](virtual-network-ip-addresses-overview-arm.md#sku). Als de virtuele machine wordt toegevoegd aan de back-end-groep van een openbaar Azure Load Balancer, moet de SKU van het open bare IP-adres van de virtuele machine overeenkomen met de SKU van het open bare IP-adres van de load balancer. Zie [Azure Load Balancer](../load-balancer/concepts-limitations.md#skus)voor meer informatie.
 
 6. Selecteer een poort of geen poorten onder **Selecteer open bare binnenkomende poorten**. Portal 3389 is geselecteerd om externe toegang tot de virtuele Windows Server-machine via internet in te scha kelen. Het openen van poort 3389 van Internet wordt niet aanbevolen voor productie werkbelastingen.
 

@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 77e23467551df8d72fd999049c490600eff11825
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 00a62e970e27d689eb639a62938376f73410c270
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763629"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024906"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Een machine learning model implementeren op Azure Functions (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -156,27 +156,35 @@ Als `show_output=True`, wordt de uitvoer van het docker-bouw proces weer gegeven
     > [!IMPORTANT]
     > Installatie kopieën die zijn gemaakt door Azure Machine Learning Linux gebruiken, dus u moet de `--is-linux`-para meter gebruiken.
 
-1. Als u de functie-app wilt maken, gebruikt u de volgende opdracht. Vervang `<app-name>` door de naam die u wilt gebruiken. Vervang `<acrinstance>` en `<imagename>` door de waarden van de geretourneerde `package.location` eerder:
-
-    ```azurecli-interactive
-    az storage account create --name 
-    az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
-    ```
-
-    > [!IMPORTANT]
-    > Op dit moment is de functie-app gemaakt. Omdat u echter geen connection string hebt ingevoerd voor de BLOB-trigger of referenties voor de Azure Container Registry die de installatie kopie bevatten, is de functie-app niet actief. In de volgende stappen geeft u de connection string en de verificatie gegevens voor het container register. 
-
-1. Maak het opslag account dat moet worden gebruikt als de trigger en ontvang het connection string.
+1. Maak het opslag account dat moet worden gebruikt voor de opslag van de Webtaak en ontvang het connection string. Vervang `<webjobStorage>` door de naam die u wilt gebruiken.
 
     ```azurecli-interactive
     az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
-    az storage account show-connection-string --resource-group myresourcegroup --name triggerStorage --query connectionString --output tsv
+    az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
+    ```
+
+1. Als u de functie-app wilt maken, gebruikt u de volgende opdracht. Vervang `<app-name>` door de naam die u wilt gebruiken. Vervang `<acrinstance>` en `<imagename>` door de waarden van `package.location` eerder zijn geretourneerd. Vervang `<webjobStorage>` vervangen door de naam van het opslag account uit de vorige stap:
+
+    ```azurecli-interactive
+    az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>
+    ```
+
+    > [!IMPORTANT]
+    > Op dit moment is de functie-app gemaakt. Omdat u echter geen connection string hebt ingevoerd voor de BLOB-trigger of referenties voor de Azure Container Registry die de installatie kopie bevatten, is de functie-app niet actief. In de volgende stappen geeft u de connection string en de verificatie gegevens voor het container register. 
+
+1. Maak het opslag account dat moet worden gebruikt voor de Blob-opslag en ontvang het connection string. Vervang `<triggerStorage>` door de naam die u wilt gebruiken.
+
+    ```azurecli-interactive
+    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    ```
+    ```azurecli-interactive
+    az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
     Neem deze connection string op om te voorzien in de functie-app. Deze worden later gebruikt wanneer u wordt gevraagd om `<triggerConnectionString>`
 
-1. Maak de containers voor de invoer en uitvoer in het opslag account. 
+1. Maak de containers voor de invoer en uitvoer in het opslag account. Vervang `<triggerConnectionString>` door de connection string die u eerder hebt geretourneerd:
 
     ```azurecli-interactive
     az storage container create -n input --connection-string <triggerConnectionString>
@@ -185,12 +193,17 @@ Als `show_output=True`, wordt de uitvoer van het docker-bouw proces weer gegeven
     az storage container create -n output --connection-string <triggerConnectionString>
     ```
 
-1. U moet het label dat is gekoppeld aan de gemaakte container, ophalen met de volgende opdracht:
+1. Gebruik de volgende opdracht om de trigger connection string te koppelen aan de functie-app. Vervang `<app-name>` door de naam van de functie-app. Vervang `<triggerConnectionString>` door de connection string die u eerder hebt geretourneerd:
+
+    ```azurecli-interactive
+    az functionapp config appsettings set --name <app-name> --resource-group myresourcegroup --settings "TriggerConnectionString=<triggerConnectionString>"
+    ```
+1. U moet het label dat is gekoppeld aan de gemaakte container, ophalen met de volgende opdracht. Vervang `<username>` door de gebruikers naam die eerder is geretourneerd uit het container register:
 
     ```azurecli-interactive
     az acr repository show-tags --repository package --name <username> --output tsv
     ```
-    De meest recente tag die wordt weer gegeven, wordt hieronder `imagetag`.
+    Sla de geretourneerde waarde op. deze wordt gebruikt als de `imagetag` in de volgende stap.
 
 1. Als u de functie-app met de referenties die nodig zijn voor toegang tot het container register, wilt opgeven, gebruikt u de volgende opdracht. Vervang `<app-name>` door de naam die u wilt gebruiken. Vervang `<acrinstance>` en `<imagetag>` door de waarden van de aanroep AZ CLI in de vorige stap. Vervang `<username>` en `<password>` door de ACR-aanmeldings gegevens die u eerder hebt opgehaald:
 

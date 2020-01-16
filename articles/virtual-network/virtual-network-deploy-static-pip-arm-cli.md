@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 421fe373c93159b81a7dd962920eb17845895925
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 4b8f91d7d9fc414ed0ae6387c25f71b1601e0b6c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647812"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043404"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>Een virtuele machine met een statisch openbaar IP-adres maken met behulp van de Azure CLI
 
@@ -50,7 +50,7 @@ U kunt de volgende stappen uitvoeren vanaf uw lokale computer of met behulp van 
      --public-ip-address-allocation static
    ```
 
-   Als het open bare IP-adres een standaard-SKU moet zijn, voegt u `--public-ip-sku Standard` toe aan de vorige opdracht. Meer informatie over [open bare IP-adres-sku's](virtual-network-ip-addresses-overview-arm.md#sku). Als de virtuele machine wordt toegevoegd aan de back-end-groep van een openbaar Azure Load Balancer, moet de SKU van het open bare IP-adres van de virtuele machine overeenkomen met de SKU van het open bare IP-adres van de load balancer. Zie [Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus)voor meer informatie.
+   Als het open bare IP-adres een standaard-SKU moet zijn, voegt u `--public-ip-sku Standard` toe aan de vorige opdracht. Meer informatie over [open bare IP-adres-sku's](virtual-network-ip-addresses-overview-arm.md#sku). Als de virtuele machine wordt toegevoegd aan de back-end-groep van een openbaar Azure Load Balancer, moet de SKU van het open bare IP-adres van de virtuele machine overeenkomen met de SKU van het open bare IP-adres van de load balancer. Zie [Azure Load Balancer](../load-balancer/concepts-limitations.md#skus)voor meer informatie.
 
 4. Bekijk het toegewezen open bare IP-adres en bevestig dat het is gemaakt als een statisch, basis-SKU-adres met [AZ Network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show):
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 34bc62a9cb7e5d1358322500a8929b6f8b36d422
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4dec76140f61c433561ccfea07b833d9821acfc5
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454558"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028902"
 ---
 # <a name="prepare-vmware-vms-for-assessment-and-migration-to-azure"></a>VMware-Vm's voorbereiden voor evaluatie en migratie naar Azure
 
@@ -104,8 +104,9 @@ Voor de voor bereiding op de VMware VM-evaluatie moet u het volgende doen:
 
 ### <a name="verify-vmware-settings"></a>VMware-instellingen verifiëren
 
-1. [Controleren](migrate-support-matrix-vmware.md#assessment-vcenter-server-requirements) Vereisten voor de VMware-Server voor evaluatie.
-2. [Zorg ervoor](migrate-support-matrix-vmware.md#assessment-port-requirements) dat de poorten die u nodig hebt, zijn geopend op vCenter Server.
+1. [Controleren](migrate-support-matrix-vmware.md#vmware-requirements) Vereisten voor de VMware-Server voor evaluatie.
+2. [Zorg ervoor](migrate-support-matrix-vmware.md#port-access) dat de poorten die u nodig hebt, zijn geopend op vCenter Server.
+3. Zorg er op vCenter Server voor dat uw account machtigingen heeft voor het maken van een virtuele machine met behulp van een bestand met eicellen. U implementeert het Azure Migrate-apparaat als een VMware-VM met behulp van een bestand met eicellen.
 
 
 ### <a name="set-up-an-account-for-assessment"></a>Een account instellen voor evaluatie
@@ -120,15 +121,12 @@ Azure Migrate moet toegang hebben tot de vCenter Server om Vm's te ontdekken voo
 
 ### <a name="verify-appliance-settings-for-assessment"></a>De instellingen van het toestel controleren op evaluatie
 
-Controleer de vereisten van het apparaat voordat u het apparaat implementeert.
+Voordat u het Azure Migrate apparaat instelt en de evaluatie begint in de volgende zelf studie, moet u de implementatie van het apparaat voorbereiden.
 
-1. [Controleer](migrate-support-matrix-vmware.md#assessment-appliance-requirements) de vereisten en beperkingen van het apparaat.
-2. Als u een firewall proxy op basis van een URL gebruikt, [controleert](migrate-support-matrix-vmware.md#assessment-url-access-requirements) u de Azure-url's die het apparaat nodig heeft voor toegang. Zorg ervoor dat de proxy alle CNAME-records die zijn ontvangen, verhelpt tijdens het opzoeken van de Url's.
-3. Controleer de [prestatie gegevens](migrate-appliance.md#collected-performance-data-vmware) en [meta gegevens](migrate-appliance.md#collected-metadata-vmware) die het apparaat tijdens detectie en evaluatie verzamelt.
-4. [Noteer](migrate-support-matrix-vmware.md#assessment-port-requirements) de poorten die door het apparaat worden gebruikt.
-5. Zorg er op vCenter Server voor dat uw account machtigingen heeft voor het maken van een virtuele machine met behulp van een bestand met eicellen. U implementeert het Azure Migrate-apparaat als een VMware-VM met behulp van een bestand met eicellen.
-
-Als u een firewall op basis van een URL gebruikt, verleent u toegang tot de vereiste [Azure-url's](migrate-support-matrix-vmware.md#assessment-url-access-requirements).
+1. [Controleer](migrate-appliance.md#appliance---vmware) de vereisten voor het apparaat voor virtuele VMware-machines.
+2. [Bekijk](migrate-appliance.md#url-access) de Azure-url's die het apparaat nodig heeft om toegang te krijgen. Als u een op een URL gebaseerde firewall of proxy gebruikt, moet u ervoor zorgen dat deze toegang tot de vereiste Url's biedt.
+3. [Controleer](migrate-appliance.md#collected-data---vmware) of het apparaat wordt verzameld tijdens de detectie en evaluatie.
+4. [Noteer](migrate-support-matrix-vmware.md#port-access) de toegangs vereisten voor poorten voor het apparaat.
 
 
 
@@ -137,23 +135,22 @@ Als u een firewall op basis van een URL gebruikt, verleent u toegang tot de vere
 
 Bekijk de vereisten voor de migratie van virtuele VMware-machines in agents.
 
-1. [Controleren](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements) Vereisten voor VMware-Server.
-2. Stel een account in met de [vereiste machtigingen](migrate-support-matrix-vmware.md#agentless-migration-vcenter-server-permissions), zodat Azure migrate toegang heeft tot de vCenter Server voor migratie zonder agents met behulp van de migratie van Azure migrate server.
-3. [Bekijk](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements) de vereisten voor VMware-vm's die u wilt migreren naar Azure met migratie zonder agent.
-4. [Bekijk](migrate-support-matrix-vmware.md#agentless-migration-appliance-requirements) de vereisten voor het gebruik van het Azure migrate apparaat voor migratie zonder agent.
-5. Noteer de [URL-toegang](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements) en [poort toegang](migrate-support-matrix-vmware.md#agentless-migration-port-requirements) die het Azure migrate apparaat nodig heeft voor de migratie zonder agent.
+1. [Controleren](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) De vereisten voor VMware-servers en de [machtigingen](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) die Azure migrate nodig heeft voor vCenter Server de migratie van agentloze toegang met behulp van Azure migrate server migratie.
+2. [Bekijk](migrate-support-matrix-vmware-migration.md#agentless-vmware-vms) de vereisten voor VMware-vm's die u wilt migreren naar Azure met migratie zonder agent.
+4. [Bekijk](migrate-support-matrix-vmware-migration.md#agentless-azure-migrate-appliance) de vereisten voor het gebruik van het Azure migrate apparaat voor migratie zonder agent.
+5. Noteer de [URL-toegang](migrate-appliance.md#url-access) en [poort toegang](migrate-support-matrix-vmware-migration.md#agentless-ports) die nodig is voor migratie zonder agent.
 
 
 ## <a name="prepare-for-agent-based-vmware-migration"></a>Voorbereiden voor VMware-migratie op basis van agents
 
 Bekijk de vereisten voor de migratie van virtuele VMware [-machines op basis](server-migrate-overview.md) van een agent.
 
-1. [Controleren](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) Vereisten voor VMware-Server.
-2. Stel een account in met de [vereiste machtigingen](migrate-support-matrix-vmware.md#agent-based-migration-vcenter-server-permissions). zodat Azure Migrate toegang krijgt tot de vCenter Server voor migratie op basis van een agent met behulp van de migratie van Azure Migrate server.
-3. [Bekijk](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) de vereisten voor VMware-vm's die u wilt migreren naar Azure met migratie op basis van een agent, inclusief de installatie van de Mobility-service op elke virtuele machine die u wilt migreren.
-4. Let op [URL-toegang](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements).
-5. Bekijk [poort toegang](migrate-support-matrix-vmware.md#agent-based-migration-port-requirements) die Azure migrate onderdelen nodig hebben voor toegang op basis van een agent.
-
+1. [Controleren](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) De vereisten voor VMware-servers en de machtigingen Azure Migrate moeten toegang hebben tot de vCenter Server voor migratie op basis van een agent met behulp van de migratie van Azure Migrate server.
+2. [Bekijk](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms) de vereisten voor VMware-vm's die u wilt migreren naar Azure met migratie op basis van een agent, inclusief de installatie van de Mobility-service op elke virtuele machine die u wilt migreren.
+3. Voor migraties op basis van een agent wordt een replicatie-apparaat gebruikt:
+    - [Controleer](migrate-replication-appliance.md#appliance-requirements) de implementatie vereisten voor het replicatie apparaat en de [Opties](migrate-replication-appliance.md#mysql-installation) voor het installeren van MySQL op het apparaat.
+    - Controleer de toegangs vereisten voor de [URL](migrate-replication-appliance.md#url-access) en [poort](migrate-replication-appliance.md#port-access) voor het replicatie apparaat.
+    
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie hebt u:

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: f08915c07db6759a03fc9bd0695523dead6dcb7f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d7feb0f7c32ab544df2b9de08daaf8cd007318b5
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784832"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045305"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Veelgestelde vragen over Traffic Manager
 
@@ -29,7 +29,7 @@ Zoals beschreven in de werking van [Traffic Manager](../traffic-manager/traffic-
 Daarom biedt Traffic Manager geen eind punt of IP-adres waarmee clients verbinding kunnen maken. Als u een statisch IP-adres voor uw service wilt, dat moet worden geconfigureerd op de service, niet in Traffic Manager.
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Welk type verkeer kan worden gerouteerd met Traffic Manager?
-Zoals beschreven in de werking van [Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), kan een Traffic Manager-eind punt een Internet gerichte service zijn die binnen of buiten Azure wordt gehost. Daarom kan Traffic Manager verkeer dat afkomstig is van het open bare Internet, routeren naar een set eind punten die ook Internet Facing zijn. Als u eind punten hebt die zich in een particulier netwerk (bijvoorbeeld een interne versie van [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)) bevinden of als u wilt dat gebruikers DNS-aanvragen van dergelijke interne netwerken hebben gedaan, kunt u Traffic Manager niet gebruiken om dit verkeer te routeren.
+Zoals beschreven in de werking van [Traffic Manager](../traffic-manager/traffic-manager-how-it-works.md), kan een Traffic Manager-eind punt een Internet gerichte service zijn die binnen of buiten Azure wordt gehost. Daarom kan Traffic Manager verkeer dat afkomstig is van het open bare Internet, routeren naar een set eind punten die ook Internet Facing zijn. Als u eind punten hebt die zich in een particulier netwerk (bijvoorbeeld een interne versie van [Azure Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer)) bevinden of als u wilt dat gebruikers DNS-aanvragen van dergelijke interne netwerken hebben gedaan, kunt u Traffic Manager niet gebruiken om dit verkeer te routeren.
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Ondersteunt Traffic Manager ' Sticky ' sessies?
 
@@ -384,8 +384,8 @@ Voor profielen met een andere routerings methode dan meerdere waarden:
 
 |Binnenkomende query aanvraag|    Type eind punt|  Antwoord gegeven|
 |--|--|--|
-|IEDERE |  A/AAAA/CNAME |  Doel eindpunt| 
-|A |    A/CNAME | Doel eindpunt|
+|ALLE |  A/AAAA/CNAME |  Doel eindpunt| 
+|A |    A / CNAME | Doel eindpunt|
 |A |    AAAA |  Geen gegevens |
 |AAAA | AAAA/CNAME |  Doel eindpunt|
 |AAAA | A | Geen gegevens |
@@ -397,7 +397,7 @@ Voor profielen waarvoor een routerings methode is ingesteld op meerdere waarden:
 
 |Binnenkomende query aanvraag|    Type eind punt | Antwoord gegeven|
 |--|--|--|
-|IEDERE |  Combi natie van A en AAAA | Doel eindpunten|
+|ALLE |  Combi natie van A en AAAA | Doel eindpunten|
 |A |    Combi natie van A en AAAA | Alleen doel eindpunten van het type A|
 |AAAA   |Combi natie van A en AAAA|     Alleen doel eindpunten van het type AAAA|
 |CNAME |    Combi natie van A en AAAA | Geen gegevens |
@@ -499,9 +499,9 @@ In de volgende tabel wordt het gedrag van Traffic Manager status controles voor 
 
 | Monitor status van onderliggend profiel | Monitor status van bovenliggend eind punt | Opmerkingen |
 | --- | --- | --- |
-| Geblokkeerd. Het onderliggende profiel is uitgeschakeld. |Stopped |De status van het bovenliggende eind punt is gestopt, niet uitgeschakeld. De uitgeschakelde status is gereserveerd om aan te geven dat u het eind punt in het bovenliggende profiel hebt uitgeschakeld. |
+| Disabled. Het onderliggende profiel is uitgeschakeld. |Stopped |De status van het bovenliggende eind punt is gestopt, niet uitgeschakeld. De uitgeschakelde status is gereserveerd om aan te geven dat u het eind punt in het bovenliggende profiel hebt uitgeschakeld. |
 | Gedegradeerd. Ten minste één onderliggend Profiel van de onderliggende profielen heeft een gedegradeerde status. |Online: het aantal online eindpunten in het onderliggende profiel is ten minste de waarde van MinChildEndpoints.<BR>CheckingEndpoint: het aantal online plus CheckingEndpoint-eind punten in het onderliggende profiel is ten minste de waarde van MinChildEndpoints.<BR>Gedegradeerd: anders. |Verkeer wordt doorgestuurd naar het eind punt van de status CheckingEndpoint. Als MinChildEndpoints te hoog is ingesteld, wordt het eind punt altijd gedegradeerd. |
-| Aanschaffen. Ten minste één onderliggend profiel voor een onderliggend knoop punt is een online status. Er is geen eind punt met de gedegradeerde status. |Zie hierboven. | |
+| Online. Ten minste één onderliggend profiel voor een onderliggend knoop punt is een online status. Er is geen eind punt met de gedegradeerde status. |Zie hierboven. | |
 | CheckingEndpoints. Ten minste één onderliggend profiel voor een onderliggend knoop punt is ' CheckingEndpoint '. Er zijn geen eind punten ' online ' of ' verslechterd ' |Hetzelfde als hierboven. | |
 | Inactieve. Alle eind punten van een onderliggend profiel zijn uitgeschakeld of gestopt of dit profiel heeft geen eind punten. |Stopped | |
 

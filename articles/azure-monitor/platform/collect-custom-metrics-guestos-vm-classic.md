@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: af99bd8ea619d17bdc40ea025f0bfcb1c095db52
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: d911a6b65ba0d63bca09437f6451019addcbc0b3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286153"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977621"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Metrische gegevens van het gast besturingssysteem verzenden naar de data base van de Azure Monitor metrics voor een virtuele Windows-machine (klassiek)
 
@@ -29,7 +29,7 @@ Het proces dat wordt beschreven in dit artikel, werkt alleen op klassieke virtue
 
 ## <a name="prerequisites"></a>Vereisten
 
-- U moet een [service beheerder of mede beheerder](../../billing/billing-add-change-azure-subscription-administrator.md) zijn voor uw Azure-abonnement. 
+- U moet een [service beheerder of mede beheerder](../../cost-management-billing/manage/add-change-subscription-administrator.md) zijn voor uw Azure-abonnement. 
 
 - Uw abonnement moet zijn geregistreerd bij [micro soft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
@@ -60,7 +60,7 @@ Geef deze app ' bewaking metrische gegevens Uitgever ' door aan de resource waar
 
 ## <a name="author-diagnostics-extension-configuration"></a>Configuratie van de extensie voor diagnostische gegevens van auteur
 
-1. Bereid het configuratie bestand voor de diagnostische extensie voor. Dit bestand bepaalt welke logboeken en prestatie meter items de diagnostische uitbrei ding moet worden verzameld voor uw klassieke VM. Hier volgt een voor beeld:
+1. Bereid het configuratie bestand voor de diagnostische extensie voor. Dit bestand bepaalt welke logboeken en prestatie meter items de diagnostische uitbrei ding moet worden verzameld voor uw klassieke VM. Hier volgt een voorbeeld:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>

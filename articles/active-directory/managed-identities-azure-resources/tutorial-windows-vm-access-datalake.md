@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/13/2018
+ms.date: 11/14/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3909e80ea36ed7aab638d717ecf8404d80beb59
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: c03f78341b7521267f8aaf72d58ebd4c912949ce
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74181889"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977885"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Zelfstudie: Een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Data Lake Store
 
@@ -36,7 +36,15 @@ Deze zelfstudie laat zien hoe u toegang krijgt tot een Azure Data Lake Store met
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="grant-your-vm-access-to-azure-data-lake-store"></a>Uw virtuele machine toegang verlenen tot Azure Data Lake Storage
+
+
+## <a name="enable"></a>Inschakelen
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+
+## <a name="grant-access"></a>Toegang verlenen
 
 U kunt nu uw virtuele machine toegang tot bestanden en mappen in Azure Data Lake Storage verlenen.  Voor deze stap kunt u een bestaande Data Lake Storage gebruiken, of een nieuwe maken.  Als u een nieuwe Data Lake Storage wilt maken met behulp van Azure Portal, volgt u deze [snelstart voor Azure Data Lake Storage](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal). Er zijn ook snelstarts in de [documentatie over Azure Data Lake Storage](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) voor het gebruik van Azure CLI en Azure Powershell.
 
@@ -46,7 +54,7 @@ Maak een nieuwe map in uw Data Lake Storage, en verleen de door het systeem toeg
 2. Klik op de Data Lake Storage die u wilt gebruiken voor deze zelfstudie.
 3. Klik op **Data Explorer** in de opdrachtbalk.
 4. De hoofdmap van de Data Lake Storage is geselecteerd.  Klik op **Toegang** in de opdrachtbalk.
-5. Klik op **Toevoegen**.  Voer in het veld **Selecteren** de naam van uw virtuele machine in, bijvoorbeeld **DevTestVM**.  Klik op uw virtuele machine in de zoekresultaten om deze te selecteren, en klik vervolgens op **Selecteren**.
+5. Klik op **Add**.  Voer in het veld **Selecteren** de naam van uw virtuele machine in, bijvoorbeeld **DevTestVM**.  Klik op uw virtuele machine in de zoekresultaten om deze te selecteren, en klik vervolgens op **Selecteren**.
 6. Klik op **Machtigingen selecteren**.  Selecteer **Lezen** en **Uitvoeren**, voeg deze toe aan **Deze map** als **Alleen een toegangsmachtiging**.  Klik op **OK**.  De machtiging wordt toegevoegd.
 7. Sluit de blade **Toegang**.
 8. Voor deze zelfstudie maakt u een nieuwe map.  Klik op **Nieuwe map** in de opdrachtbalk en geef een naam voor de nieuwe map op, bijvoorbeeld **TestFolder**.  Klik op **OK**.
@@ -56,7 +64,7 @@ Maak een nieuwe map in uw Data Lake Storage, en verleen de door het systeem toeg
 
 De door het systeem toegewezen beheerde identiteit van uw virtuele machine kan nu alle bewerkingen uitvoeren op bestanden in de map die u hebt gemaakt.  Lees dit artikel over [toegangsbeheer in Data Lake Storage](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-access-control) voor meer informatie over het beheren van de toegang tot Data Lake Storage.
 
-## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-the-azure-data-lake-store-filesystem"></a>Een toegangstoken ophalen met behulp van de door het systeem toegewezen beheerde identiteit van de virtuele machine en dat token gebruiken om toegang te krijgen tot het bestandssysteem van Azure Data Lake Storage
+## <a name="access-data"></a>Toegang tot gegevens
 
 Azure Data Lake Storage biedt systeemeigen ondersteuning voor Azure Active Directory-verificatie, zodat toegangstokens die zijn verkregen met behulp van beheerde identiteiten voor Azure-resources kunnen worden geaccepteerd.  Om te verifiëren bij het bestandssysteem van Data Lake Storage verzendt u een toegangstoken dat door Azure AD is uitgegeven aan het eindpunt van uw Data Lake Storage-bestandssysteem, in een autorisatie-header in de indeling 'Bearer <WAARDE_VAN_TOEGANGSTOKEN>'.  Lees [Verificatie bij Data Lake Storage met Azure Active Directory](https://docs.microsoft.com/azure/data-lake-store/data-lakes-store-authentication-using-azure-active-directory) voor meer informatie over ondersteuning voor Azure AD-verificatie in Data Lake Storage
 
@@ -173,6 +181,12 @@ In deze zelfstudie gebruikt u PowerShell voor het maken van REST-aanvragen om te
    ```
 
 Met andere API's van het Data Lake Storage-bestandssysteem kunt u toevoegen aan bestanden, bestanden downloaden, en nog veel meer.
+
+
+## <a name="disable"></a>Uitschakelen
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: f5e0344cb1da86661ae87b5e45bd93dd181e7bb0
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659556"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978760"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure verklarende woorden lijst: een woorden lijst met Cloud terminologie op het Azure-platform
 
@@ -31,7 +31,7 @@ De Microsoft Azure verklarende woorden lijst is een korte woorden lijst met Clou
 
 ## <a name="account"></a>account
 Een account dat wordt gebruikt voor toegang tot en beheer van een Azure-abonnement. Dit wordt vaak een Azure-account genoemd, maar een account kan een van de volgende zijn: een bestaand werk, school of persoonlijk Microsoft-account, of een Office 365-gebruikers naam en-wacht woord. U kunt ook een account voor het beheren van een Azure-abonnement maken wanneer u zich aanmeldt voor de [gratis proef versie](https://azure.microsoft.com).  
-Zie [registreren voor een Azure-abonnement met uw Office 365-account](billing/billing-use-existing-office-365-account-azure-subscription.md) en- [accounts die u kunt gebruiken om u aan te melden](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+Zie [registreren voor een Azure-abonnement met uw Office 365-account](cost-management-billing/manage/office-365-account-for-azure-subscription.md) en- [accounts die u kunt gebruiken om u aan te melden](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="api-app"></a>API-app
 Een andere naam voor de [App app service](#app-service-app).
@@ -96,11 +96,11 @@ Zie [Azure-regio's](best-practices-availability-paired-regions.md)
 
 ## <a name="resource"></a>resource
 Een item dat deel uitmaakt van uw Azure-oplossing. Met elke Azure-service kunt u verschillende typen resources implementeren, zoals data bases of virtuele machines.   
-Zie [Azure Resource Manager overzicht](azure-resource-manager/resource-group-overview.md)
+Zie [Azure Resource Manager overzicht](azure-resource-manager/management/overview.md)
 
 ## <a name="resource-group"></a>resourcegroep
 Een container in Resource Manager die gerelateerde resources voor een toepassing bevat. De resource groep kan alle resources voor een toepassing bevatten of alleen de resources die logisch zijn gegroepeerd. U kunt bepalen hoe resources worden toegewezen aan resourcegroepen op basis van wat voor uw organisatie het meest zinvol is.  
-Zie [Azure Resource Manager overzicht](azure-resource-manager/resource-group-overview.md)
+Zie [Azure Resource Manager overzicht](azure-resource-manager/management/overview.md)
 
 ## <a name="arm-template"></a>Resource Manager-sjabloon
 Een JSON-bestand waarmee declaratieve een of meer Azure-resources worden gedefinieerd en waarmee afhankelijkheden tussen de geïmplementeerde resources worden gedefinieerd. De sjabloon kan worden gebruikt om de resources consistent en herhaaldelijk te implementeren.  
@@ -108,7 +108,7 @@ Zie [Azure Resource Manager sjablonen ontwerpen](resource-group-authoring-templa
 
 ## <a name="resource-provider"></a>resource provider
 Een service die de resources levert die u kunt implementeren en beheren via Resource Manager. Elke resourceprovider biedt bewerkingen voor het werken met de resources die zijn geïmplementeerd. Resource providers zijn toegankelijk via de Azure Portal, Azure PowerShell en verschillende Program ma's voor programmering.  
-Zie [Azure Resource Manager overzicht](azure-resource-manager/resource-group-overview.md)
+Zie [Azure Resource Manager overzicht](azure-resource-manager/management/overview.md)
 
 ## <a name="role"></a>role
 Een manier om toegang te beheren die kan worden toegewezen aan gebruikers, groepen en services. Rollen kunnen acties uitvoeren zoals maken, beheren en lezen op Azure-resources.  

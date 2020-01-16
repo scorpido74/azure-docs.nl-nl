@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 22e542715afa8c87ffb742bec6c22f758cd16587
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5534a46ba99d1536d331b5852ef47588f03d73a4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354268"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980281"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Problemen met Azure Stream Analytics query's oplossen
 
 In dit artikel worden veelvoorkomende problemen beschreven met het ontwikkelen van Stream Analytics query's en het oplossen van problemen.
 
-## <a name="query-is-not-producing-expected-output"></a>De verwachte uitvoer wordt niet geproduceerd met de query 
+## <a name="query-is-not-producing-expected-output"></a>De verwachte uitvoer wordt niet geproduceerd met de query
 1.  Controleer fouten door lokaal te testen:
     - Selecteer op het tabblad **query** de optie **testen**. Gebruik de gedownloade voorbeeld gegevens om [de query te testen](stream-analytics-test-query.md). Controleer eventuele fouten en probeer deze te corrigeren.   
     - U kunt [uw query ook rechtstreeks op Live-invoer testen](stream-analytics-live-data-local-testing.md) met behulp van stream Analytics-hulpprogram Ma's voor Visual Studio.
@@ -32,10 +32,10 @@ In dit artikel worden veelvoorkomende problemen beschreven met het ontwikkelen v
     - Wanneer u venster functies gebruikt, wacht u tot de volledige venster duur een uitvoer van de query ziet.
     - De tijds tempel voor gebeurtenissen gaat vooraf aan de begin tijd van de taak en daarom worden gebeurtenissen verwijderd.
 
-4.  Zorg ervoor dat het beleid voor het best Ellen van gebeurtenissen is geconfigureerd zoals verwacht. Ga naar **instellingen** en selecteer [**gebeurtenissen ordenen**](stream-analytics-out-of-order-and-late-events.md). Het beleid wordt *niet* toegepast wanneer u de knop **testen** gebruikt om de query te testen. Dit resultaat is een verschil tussen het testen van in-browser en het uitvoeren van de taak in de productie omgeving. 
+4.  Zorg ervoor dat het beleid voor het best Ellen van gebeurtenissen is geconfigureerd zoals verwacht. Ga naar **instellingen** en selecteer [**gebeurtenissen ordenen**](stream-analytics-out-of-order-and-late-events.md). Het beleid wordt *niet* toegepast wanneer u de knop **testen** gebruikt om de query te testen. Dit resultaat is een verschil tussen het testen van in-browser en het uitvoeren van de taak in de productie omgeving.
 
 5. Fouten opsporen met behulp van controle-en Diagnostische logboeken:
-    - Gebruik [controle logboeken](../azure-resource-manager/resource-group-audit.md)en filter om fouten op te sporen en op te sporen.
+    - Gebruik [controle logboeken](../azure-resource-manager/management/view-activity-logs.md)en filter om fouten op te sporen en op te sporen.
     - Gebruik [Diagnostische logboeken voor taken](stream-analytics-job-diagnostic-logs.md) om fouten te identificeren en op te sporen.
 
 ## <a name="job-is-consuming-too-many-streaming-units"></a>Taak verbruikt te veel streaming-eenheden
@@ -52,7 +52,7 @@ De volgende voorbeeld query in een Azure Stream Analytics-taak heeft één stroo
 Houd er rekening mee dat de taak wordt uitgevoerd, maar er worden geen gebeurtenissen geproduceerd in de uitvoer. Op de **bewakings** tegel, die hier wordt weer gegeven, kunt u zien dat de invoer gegevens produceert, maar u weet niet welke stap van de **samen voeging** heeft geleid tot alle gebeurtenissen die moeten worden verwijderd.
 
 ![De tegel Stream Analytics bewaking](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
- 
+
 In dit geval kunt u een aantal extra instructies voor SELECT INTO toevoegen aan de tussenliggende samenvoegings resultaten en de gegevens die van de invoer worden gelezen.
 
 In dit voor beeld hebben we twee nieuwe tijdelijke uitvoer bewerkingen toegevoegd. Ze kunnen een wille keurige Sink zijn. Hier gebruiken we Azure Storage als voor beeld:

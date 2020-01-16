@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: b67c77f25b14263abe7207359c00660df635df13
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 49fbdf4a4090350cc0a6a5a1b938621b3cb08632
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863788"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045110"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Een punt-naar-site-VPN-verbinding met een VNet configureren met behulp van systeem eigen Azure-certificaat verificatie: Power shell
 
@@ -32,13 +32,15 @@ Native punt-naar-site-verbindingen voor certificaatverificatie in Azure gebruike
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Controleer of u een Azure-abonnement hebt. Als u nog geen Azure-abonnement hebt, kunt u [uw voordelen als MSDN-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details) of [u aanmelden voor een gratis account](https://azure.microsoft.com/pricing/free-trial).
+
+### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-De meeste stappen in dit artikel kunnen Cloud Shell gebruiken. Als u de open bare sleutel van het basis certificaat echter wilt uploaden, moet u Power shell lokaal of op de Azure Portal gebruiken.
+>[!NOTE]
+> De meeste stappen in dit artikel kunnen Azure Cloud Shell gebruiken. Als u de open bare sleutel van het basis certificaat echter wilt uploaden, moet u Power shell lokaal of op de Azure Portal gebruiken.
+>
 
 ### <a name="example"></a>Voorbeeldwaarden
 
@@ -170,7 +172,9 @@ Als u zelfondertekende certificaten gebruikt, moeten ze worden gemaakt met behul
 
 Controleer of het maken van de VPN-gateway is voltooid. Als dat het geval is, uploadt u het CER-bestand (met de gegevens van de openbare sleutel) voor een vertrouwd basiscertificaat naar Azure. Nadat het CER-bestand is geüpload, kan Azure daarmee clients met een geïnstalleerd clientcertificaat (gemaakt op basis van het vertrouwde basiscertificaat) verifiëren. Indien nodig kunt u later aanvullende vertrouwde basiscertificaatbestanden uploaden (maximaal 20).
 
-U kunt deze informatie niet uploaden met behulp van Azure Cloud Shell. U kunt Power shell lokaal op uw computer gebruiken, de [Azure Portal stappen](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile).
+>[!NOTE]
+> U kunt het CER-bestand niet uploaden met behulp van Azure Cloud Shell. U kunt Power shell lokaal op uw computer gebruiken of u kunt de [Azure Portal stappen](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)gebruiken.
+>
 
 1. Declareer de variabele voor uw certificaatnaam, waarbij u de waarde vervangt door uw eigen waarde.
 
@@ -185,7 +189,7 @@ U kunt deze informatie niet uploaden met behulp van Azure Cloud Shell. U kunt Po
    $CertBase64 = [system.convert]::ToBase64String($cert.RawData)
    $p2srootcert = New-AzVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
    ```
-3. Upload de gegevens van de openbare sleutel naar Azure. Zodra de certificaat gegevens zijn geüpload, beschouwt Azure deze als een vertrouwd basis certificaat.
+3. Upload de gegevens van de openbare sleutel naar Azure. Zodra de certificaat gegevens zijn geüpload, beschouwt Azure deze als een vertrouwd basis certificaat. Zorg ervoor dat u Power shell lokaal op uw computer uitvoert, of dat u in plaats daarvan de [Azure Portal stappen](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)kunt gebruiken. U kunt niet uploaden met behulp van Azure Cloud Shell.
 
    ```azurepowershell
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $CertBase64

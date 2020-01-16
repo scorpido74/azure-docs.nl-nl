@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/22/2019
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: eb2d663a56084fc625c95f1f1a6236385880180d
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 2c5312c2e0a7121237c4d11197d90a2a5638557c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74795995"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020975"
 ---
 | Bron | Standaardlimiet | Maximumaantal |
 | --- | --- | --- |
@@ -21,16 +21,16 @@ ms.locfileid: "74795995"
 | Totaal aantal VM-cores per [abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> per regio. | Neem contact op met ondersteuning. |
 | Azure spot VM totale aantal kernen per [abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> per regio. | Neem contact op met ondersteuning. |
 | VM per serie, zoals dv2 en F, kernen per [abonnement](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> per regio. | Neem contact op met ondersteuning. |
-| [Cobeheerders](../articles/billing-add-change-azure-subscription-administrator.md) per abonnement |Limited. |Limited. |
-| [Opslag accounts](../articles/storage/common/storage-quickstart-create-account.md) per regio per abonnement |250 |250 |
-| [Resource groepen](../articles/azure-resource-manager/resource-group-overview.md) per abonnement |980 |980 |
+| [Cobeheerders](../articles/cost-management-billing/manage/add-change-subscription-administrator.md) per abonnement |Limited. |Limited. |
+| [Opslag accounts](../articles/storage/common/storage-account-create.md) per regio per abonnement |250 |250 |
+| [Resource groepen](../articles/azure-resource-manager/management/overview.md) per abonnement |980 |980 |
 | [Beschikbaarheids sets](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) per abonnement |2\.000 per regio. |2\.000 per regio. |
 | Grootte van de Azure Resource Manager-API-aanvraag |4\.194.304 bytes. |4\.194.304 bytes. |
 | Tags per abonnement<sup>2</sup> |Limited. |Limited. |
 | Unieke label berekeningen per abonnement<sup>2</sup> | 10.000 | 10.000 |
 | [Cloudservices](../articles/cloud-services/cloud-services-choose-me.md) per abonnement |N.v.t.<sup>3</sup> |N.v.t.<sup>3</sup> |
 | [Affiniteitsgroepen](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) per abonnement |N.v.t.<sup>3</sup> |N.v.t.<sup>3</sup> |
-| [Implementaties op abonnements niveau](../articles/azure-resource-manager/deploy-to-subscription.md) per locatie | 800<sup>4</sup> | 800 |
+| [Implementaties op abonnements niveau](../articles/azure-resource-manager/templates/deploy-to-subscription.md) per locatie | 800<sup>4</sup> | 800 |
 
 <sup>1</sup> De standaard limieten variëren per aanbiedings categorie type, zoals gratis proef versie en betalen per gebruik en op serie, zoals dv2, F en G. De standaard instelling voor Enterprise Agreement abonnementen is 350.
 

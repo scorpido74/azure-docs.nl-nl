@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 2a749e9345fec0e91751641cd15805d7f7d62d95
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: a48edda31f19ef4ce1ba23664eef1f51ba9cf8d1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961415"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970505"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Virtuele Azure-machines verplaatsen tussen Azure Government en open bare regio's 
 
@@ -65,7 +65,7 @@ Stel een Azure-doel [netwerk](../virtual-network/quick-create-portal.md)in.
 
 ### <a name="set-up-an-azure-storage-account"></a>Een Azure-opslagaccount instellen
 
-Stel een [Azure Storage-account](../storage/common/storage-quickstart-create-account.md)in.
+Stel een [Azure Storage-account](../storage/common/storage-account-create.md)in.
 
 - Site Recovery repliceert on-premises machines naar Azure Storage. Virtuele Azure-machines worden gemaakt op basis van de opslag nadat de failover is uitgevoerd.
 - Het opslagaccount moet zich in dezelfde regio bevinden als de Recovery Services-kluis.
@@ -115,7 +115,7 @@ De onderstaande stappen begeleiden u bij het gebruik van Azure Site Recovery om 
 4. Maak een resourcegroep met de naam **ContosoRG**.
 5. Geef een Azure-regio op. Zie Geografische beschikbaarheid in [Prijsinformatie voor Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/) om na te gaan welke regio's er worden ondersteund.
 6. Klik in Recovery Services kluizen op **overzicht** > **ConsotoVMVault** > **en repliceren**
-7. selecteer **Naar Azure** > **Niet gevirtualiseerde/overige**.
+7. Selecteer **naar Azure** > **niet gevirtualiseerd/Overig**.
 
 ### <a name="set-up-the-configuration-server-to-discover-vms"></a>Stel de configuratie server in om virtuele machines te detecteren.
 
@@ -163,7 +163,7 @@ Selecteer en controleer doelbronnen.
 2. Geef het doel implementatie model op.
 3. Site Recovery controleert of u een of meer compatibele Azure-opslagaccounts en -netwerken hebt.
 
-   ![Doel](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Kiezen](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ### <a name="create-a-replication-policy"></a>Een replicatiebeleid maken
@@ -197,7 +197,7 @@ Het beleid wordt automatisch gekoppeld aan de configuratieserver. Standaard word
    > [!WARNING]
    > U moet het IP-adres invoeren van de virtuele Azure-machine die u wilt verplaatsen
 
-10. Selecteer in **eigenschappen** > **eigenschappen configureren**het account dat door de proces server wordt gebruikt om automatisch de Mobility-service op de computer te installeren.
+10. Selecteer in **Eigenschappen** > **Eigenschappen configureren** het account dat door de processerver zal worden gebruikt om automatisch de Mobility-service op de computer te installeren.
 11. Controleer of het juiste replicatiebeleid is geselecteerd in **Replicatie-instellingen** > **Replicatie-instellingen configureren**. 
 12. Klik op **Replicatie inschakelen**. U kunt de voortgang van de taak **Beveiliging inschakelen** volgen via **Instellingen** > **Taken** > **Site Recovery-taken**. Nadat de taak **Beveiliging voltooien** is uitgevoerd, is de machine klaar voor een mogelijke failover.
 

@@ -4,12 +4,12 @@ description: Hierin wordt beschreven hoe u on-premises virtuele Hyper-V-machines
 ms.topic: tutorial
 ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: f2a7caad13ad845d5b2aeb3240b7d77fa89faf12
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: f36b0fbae01b25e604222c76d41ac21c0a7ae5a9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720256"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029022"
 ---
 # <a name="assess-hyper-v-vms-with-azure-migrate-server-assessment"></a>Virtuele Hyper-V-machines beoordelen met Azure Migrate server-evaluatie
 
@@ -145,7 +145,7 @@ Importeer het gedownloade bestand en maak de virtuele machine.
 
 ### <a name="verify-appliance-access-to-azure"></a>Toestel toegang tot Azure controleren
 
-Zorg ervoor dat de virtuele machine van het apparaat verbinding kan maken met [Azure-url's](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access).
+Zorg ervoor dat de virtuele machine van het apparaat verbinding kan maken met [Azure-url's](migrate-appliance.md#url-access).
 
 ### <a name="configure-the-appliance"></a>Het apparaat configureren
 

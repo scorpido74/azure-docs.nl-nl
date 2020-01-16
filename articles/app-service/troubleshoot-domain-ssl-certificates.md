@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 2260dddd74d7ed64eb19158a5360ed2e4c09b4a9
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: e299821b54692327cbb7d497af0295e3b93658cf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688347"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966983"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Problemen met domein-en SSL-certificaten in Azure App Service oplossen
 
 In dit artikel vindt u veelvoorkomende problemen die u kunt tegen komen wanneer u een domein-of SSL-certificaat voor uw web-apps configureert in Azure App Service. Hierin worden ook mogelijke oorzaken en oplossingen voor deze problemen beschreven.
 
-Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
+Als u op elk moment in dit artikel meer hulp nodig hebt, kunt u contact opnemen met de Azure-experts op [MSDN en stack overflow forums](https://azure.microsoft.com/support/forums/). U kunt ook een Azure-ondersteuning-incident indienen. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -88,7 +88,7 @@ Dit probleem kan om de volgende redenen optreden:
 
     **Oplossing**: als het certificaat is gemarkeerd als fraude en na 24 uur niet is opgelost, voert u de volgende stappen uit:
 
-    1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+    1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
     2. Ga naar **app service certificaten**en selecteer het certificaat.
     3. Selecteer **certificaat configuratie** > **stap 2: Controleer** de **verificatie**van > domein. Met deze stap verzendt u een e-mail bericht naar de Azure-certificaat provider om het probleem op te lossen.
 
@@ -190,7 +190,7 @@ App Service synchroniseert uw certificaat automatisch binnen 48 uur. Wanneer u e
 
 U kunt de synchronisatie van het certificaat forceren:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **app service certificaten**en selecteer vervolgens het certificaat.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **app service certificaten**en selecteer vervolgens het certificaat.
 2. Selecteer opnieuw **genereren en synchroniseren**en selecteer vervolgens **synchroniseren**. Het kan enige tijd duren voordat de synchronisatie is voltooid. 
 3. Wanneer de synchronisatie is voltooid, ziet u de volgende melding: alle resources zijn bijgewerkt met het nieuwste certificaat.
 
@@ -318,6 +318,6 @@ U kunt uw domein beheren, zelfs als u geen App Service web-app hebt. Het domein 
 
 **Kan ik een web-app met een aangepast domein verplaatsen naar een ander abonnement of van App Service Environment v1 naar v2?**
 
-Ja, u kunt uw web-app verplaatsen naar andere abonnementen. Volg de richt lijnen [voor het verplaatsen van resources in azure](../azure-resource-manager/resource-group-move-resources.md). Er zijn enkele beperkingen bij het verplaatsen van de web-app. Zie [beperkingen voor het verplaatsen van app service resources](../azure-resource-manager/move-limitations/app-service-move-limitations.md)voor meer informatie.
+Ja, u kunt uw web-app verplaatsen naar andere abonnementen. Volg de richt lijnen [voor het verplaatsen van resources in azure](../azure-resource-manager/management/move-resource-group-and-subscription.md). Er zijn enkele beperkingen bij het verplaatsen van de web-app. Zie [beperkingen voor het verplaatsen van app service resources](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)voor meer informatie.
 
 Na het verplaatsen van de web-app, moeten de hostnamen van de domeinen binnen de instellingen van de aangepaste domeinen hetzelfde blijven. Er zijn geen extra stappen vereist om de bindingen met de hostnaam te configureren.

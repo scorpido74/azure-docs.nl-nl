@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: 71f768506d7cec575c6bd765447397d8d0406859
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0314dceb23f02b723854dfc406e9440bbc14ccf6
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445940"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044282"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>FTP-bestanden maken, controleren en beheren met behulp van Azure Logic Apps
 
@@ -25,7 +25,7 @@ Met Azure Logic Apps en de FTP-connector kunt u geautomatiseerde taken en werk s
 
 U kunt triggers gebruiken die reacties ontvangen van uw FTP-server en de uitvoer beschikbaar maken voor andere acties. U kunt acties uitvoeren in uw Logic apps gebruiken voor het beheren van bestanden op uw FTP-server. U kunt ook andere acties uitvoeren met de uitvoer van FTP-acties. Als u bijvoorbeeld regel matig bestanden van uw FTP-server ontvangt, kunt u e-mail over deze bestanden en hun inhoud verzenden met behulp van de Office 365 Outlook-Connector of de Outlook.com-connector. Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md).
 
-## <a name="limits"></a>Beperkingen
+## <a name="limitations"></a>Beperkingen
 
 * De FTP-connector ondersteunt alleen expliciete FTP via SSL (FTPS) en is niet compatibel met impliciete FTPS.
 
@@ -36,6 +36,8 @@ U kunt triggers gebruiken die reacties ontvangen van uw FTP-server en de uitvoer
   * Gebruik een FTP-trigger die bestands eigenschappen retourneert, bijvoorbeeld **Wanneer een bestand wordt toegevoegd of gewijzigd (alleen eigenschappen)** .
 
   * Volg de trigger met de actie **Bestands inhoud** voor FTP ophalen, die het volledige bestand leest en impliciet gebruikmaakt van Chunking.
+
+* Als u een on-premises FTP-server hebt, kunt u overwegen om een [ISE (Integration service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) te maken of [Azure app service hybride verbindingen](../app-service/app-service-hybrid-connections.md)te gebruiken, waarmee u toegang kunt krijgen tot on-premises gegevens bronnen zonder een on-premises gegevens gateway te gebruiken.
 
 ## <a name="how-ftp-triggers-work"></a>Hoe FTP-triggers werken
 

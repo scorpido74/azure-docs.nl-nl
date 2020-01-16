@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 8301dc779799ff67a348403e661fc7e66b9e721f
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: a1dbabafe32e013d526ed88a83e446ee765cdb7b
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750127"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045877"
 ---
 # <a name="introduction-to-azure-security"></a>Inleiding tot Azure-beveiliging
 ## <a name="overview"></a>Overzicht
@@ -69,7 +69,7 @@ De [beveiliging en audit-oplossing](../../security-center/security-center-intro.
 Daarnaast kunt u Beveiliging en naleving zodanig configureren dat er [automatisch specifieke acties worden uitgevoerd](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/) wanneer een specifieke gebeurtenis wordt gedetecteerd.
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
-[Azure Resource Manager](../../azure-resource-manager/resource-manager-deployment-model.md) kunt u met de resources in uw oplossing als groep gebruiken. U kunt alle resources voor uw oplossing implementeren, bijwerken of verwijderen in een enkele, gecoördineerde bewerking. U gebruikt een [Azure Resource Manager-sjabloon](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) voor de implementatie en die sjabloon kan werken voor verschillende omgevingen, zoals testen, faseren en productie. Resource Manager biedt beveiliging, controle en tagfuncties die u na de implementatie helpen bij het beheren van uw resources.
+[Azure Resource Manager](../../azure-resource-manager/management/deployment-models.md) kunt u met de resources in uw oplossing als groep gebruiken. U kunt alle resources voor uw oplossing implementeren, bijwerken of verwijderen in een enkele, gecoördineerde bewerking. U gebruikt een [Azure Resource Manager-sjabloon](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) voor de implementatie en die sjabloon kan werken voor verschillende omgevingen, zoals testen, faseren en productie. Resource Manager biedt beveiliging, controle en tagfuncties die u na de implementatie helpen bij het beheren van uw resources.
 
 Azure Resource Manager implementaties op basis van een sjabloon helpen bij het verbeteren van de beveiliging van oplossingen die zijn geïmplementeerd in azure, omdat standaard instellingen voor beveiligings beheer en kunnen worden geïntegreerd in gestandaardiseerde implementaties op basis van een sjabloon. Dit vermindert het risico van beveiligings configuratie fouten die kunnen optreden tijdens hand matige implementaties.
 
@@ -142,16 +142,16 @@ In Application Diagnostics kunt u gebeurtenissen weergeven die op de volgende ma
 De sectie bevat aanvullende informatie over de belangrijkste functies in azure Storage-beveiliging en samenvattings informatie over deze mogelijkheden.
 
 ### <a name="role-based-access-control-rbac"></a>RBAC (op rollen gebaseerd toegangsbeheer)
-U kunt uw opslag account beveiligen met op rollen gebaseerd Access Control (RBAC). Het beperken van de toegang op basis van de beveiligings principes van de [nood zaak om te kennen](https://en.wikipedia.org/wiki/Need_to_know) , is van cruciaal belang voor organisaties [die beveiligings beleid](https://en.wikipedia.org/wiki/Principle_of_least_privilege) voor gegevens toegang willen afdwingen. Deze toegangs rechten worden verleend door de juiste RBAC-rol toe te wijzen aan groepen en toepassingen bij een bepaald bereik. U kunt [Ingebouwde RBAC-rollen](../../role-based-access-control/built-in-roles.md), zoals Inzender voor opslag accounts, gebruiken om machtigingen toe te wijzen aan gebruikers. Toegang tot de opslag sleutels voor een opslag account met behulp van het [Azure Resource Manager](../../storage/common/storage-security-guide.md) model kan worden beheerd via op rollen gebaseerde Access Control (RBAC).
+U kunt uw opslag account beveiligen met op rollen gebaseerd Access Control (RBAC). Het beperken van de toegang op basis van de beveiligings principes van de [nood zaak om te kennen](https://en.wikipedia.org/wiki/Need_to_know) , is van cruciaal belang voor organisaties [die beveiligings beleid](https://en.wikipedia.org/wiki/Principle_of_least_privilege) voor gegevens toegang willen afdwingen. Deze toegangs rechten worden verleend door de juiste RBAC-rol toe te wijzen aan groepen en toepassingen bij een bepaald bereik. U kunt [Ingebouwde RBAC-rollen](../../role-based-access-control/built-in-roles.md), zoals Inzender voor opslag accounts, gebruiken om machtigingen toe te wijzen aan gebruikers. Toegang tot de opslag sleutels voor een opslag account met behulp van het [Azure Resource Manager](../../storage/blobs/security-recommendations.md) model kan worden beheerd via op rollen gebaseerde Access Control (RBAC).
 
 ### <a name="shared-access-signature"></a>Shared Access Signature
 Een [SAS (Shared Access Signature; handtekening voor gedeelde toegang)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) biedt gedelegeerde toegang tot bronnen in uw opslagaccount. De SAS betekent dat u een client beperkte machtigingen kunt verlenen voor objecten in uw opslag account voor een opgegeven periode en met een opgegeven set machtigingen. U kunt deze beperkte machtigingen verlenen zonder dat u de toegangs sleutels van uw account hoeft te delen.
 
 ### <a name="encryption-in-transit"></a>Versleuteling in transit
 Versleuteling in transit is een mechanisme voor het beveiligen van gegevens wanneer deze via netwerken worden verzonden. Met Azure Storage kunt u gegevens beveiligen met behulp van:
--   [Versleuteling op transport niveau](../../storage/common/storage-security-guide.md), zoals https wanneer u gegevens overbrengt naar of van Azure Storage.
+-   [Versleuteling op transport niveau](../../storage/blobs/security-recommendations.md), zoals https wanneer u gegevens overbrengt naar of van Azure Storage.
 
--   [Wire-versleuteling](../../storage/common/storage-security-guide.md), zoals [SMB 3,0-versleuteling](../../storage/common/storage-security-guide.md) voor [Azure-bestands shares](../../storage/files/storage-dotnet-how-to-use-files.md).
+-   [Wire-versleuteling](../../storage/blobs/security-recommendations.md), zoals [SMB 3,0-versleuteling](../../storage/blobs/security-recommendations.md) voor [Azure-bestands shares](../../storage/files/storage-dotnet-how-to-use-files.md).
 
 -   Versleuteling aan de client zijde, voor het versleutelen van de gegevens voordat deze naar de opslag wordt overgebracht en voor het ontsleutelen van de gegevens nadat deze buiten de opslag zijn overgedragen.
 
@@ -266,9 +266,9 @@ Traffic Manager biedt een reeks methoden voor het routeren van verkeer voor vers
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) zorgt dat uw toepassingen een hoge beschikbaarheid hebben en goede netwerkprestaties leveren. Het is een laag 4 (TCP, UDP) load balancer waarmee binnenkomend verkeer wordt verdeeld over in orde zijnde instanties van services die zijn gedefinieerd in een set met gelijke taak verdeling. Azure Load Balancer kunnen worden geconfigureerd voor het volgende:
 
--   Taak verdeling van binnenkomend Internet verkeer naar virtuele machines. Deze configuratie wordt ook wel [Internet gerichte taak verdeling](../../load-balancer/load-balancer-overview.md#publicloadbalancer)genoemd.
+-   Taak verdeling van binnenkomend Internet verkeer naar virtuele machines. Deze configuratie wordt ook wel [Internet gerichte taak verdeling](../../load-balancer/concepts-limitations.md#publicloadbalancer)genoemd.
 
--   Taak verdeling van verkeer tussen virtuele machines in een virtueel netwerk, tussen virtuele machines in Cloud Services of tussen lokale computers en virtuele machines in een cross-premises virtueel netwerk. Deze configuratie wordt ook wel [interne taak verdeling](../../load-balancer/load-balancer-overview.md#internalloadbalancer)genoemd.
+-   Taak verdeling van verkeer tussen virtuele machines in een virtueel netwerk, tussen virtuele machines in Cloud Services of tussen lokale computers en virtuele machines in een cross-premises virtueel netwerk. Deze configuratie wordt ook wel [interne taak verdeling](../../load-balancer/concepts-limitations.md#internalloadbalancer)genoemd.
 
 - Extern verkeer door sturen naar een specifieke virtuele machine
 

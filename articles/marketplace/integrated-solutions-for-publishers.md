@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/16/2019
 ms.author: evansma
-ms.openlocfilehash: 22d1f2d39a1ef3825d7d6c7eb0724e108b9b78e6
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 6f09df7c4ccdfa8a339b9d7f2655128c7ead5184
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933765"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978649"
 ---
 # <a name="publish-an-integrated-solution"></a>Een geïntegreerde oplossing publiceren
 
@@ -28,13 +28,13 @@ Bekijk [deze video](https://aka.ms/AA5qos4)voor een overzicht van het geïntegre
 * Klanten kunnen verpakte oplossingen vinden waarmee end-to-end zakelijke uitdagingen worden opgelost via Marketplace. Ze krijgen een snellere tijd, omdat de technologie vooraf is geïntegreerd. Klanten hoeven niet afzonderlijk te hoeven deel nemen aan meerdere apps die op een gefragmenteerde manier worden geïmplementeerd.
 * IP is verpakt samen met andere oplossingen en services waarmee de waarde van de technologie die wordt geleverd door partners van de deskundige Services, wordt verbeterd.
 * Services-partners maken vooraf gedefinieerde, geïntegreerde oplossingen met de beste technologie om ze te schalen, te land en uit te breiden in meer klanten accounts.
-* Micro soft kan deze vooraf geïntegreerde, in de branche uitgelijnde oplossingen gebruiken om eenvoudig samen te verkopen aan klanten. De prijzen en voor waarden zijn van tevoren gesorteerd. 
+* Micro soft kan deze vooraf geïntegreerde, in de branche uitgelijnde oplossingen gebruiken om eenvoudig samen te verkopen aan klanten. De prijzen en voor waarden zijn van tevoren gesorteerd.
 
 ## <a name="eligibility-criteria"></a>Criteria om in aanmerking te komen
 
 * Deelnemende partners moeten een MPN-ID hebben.
 * Deelnemende dienst verleners moeten klaar zijn voor samen verkopen.
-* Deelnemende software leveranciers moeten klaar zijn voor het samen verkopen van het IP-adres. 
+* Deelnemende software leveranciers moeten klaar zijn voor het samen verkopen van het IP-adres.
 * Ten minste één deelnemende partner moet een goud competentie hebben op een van de volgende gebieden:
 
     * Ontwikkeling van toepassingen
@@ -53,13 +53,13 @@ Bekijk [deze video](https://aka.ms/AA5qos4)voor een overzicht van het geïntegre
 
 ## <a name="submit-a-nomination"></a>Een benoeming indienen
 
-Partners die willen deel nemen aan het programma, moeten andere partners identificeren waarmee ze willen werken. Ze moeten het formulier voor de [benoeming van geïntegreerde oplossingen](https://aka.ms/AA5qicu)invullen. Het team van Integrated Solutions Program controleert de benoeming en volgt binnen 10 werk dagen. Het team geeft goed keuring en de volgende stappen. 
+Partners die willen deel nemen aan het programma, moeten andere partners identificeren waarmee ze willen werken. Ze moeten het formulier voor de [benoeming van geïntegreerde oplossingen](https://aka.ms/AA5qicu)invullen. Het team van Integrated Solutions Program controleert de benoeming en volgt binnen 10 werk dagen. Het team geeft goed keuring en de volgende stappen.
 
-## <a name="develop-an-integrated-solution"></a>Een geïntegreerde oplossing ontwikkelen 
+## <a name="develop-an-integrated-solution"></a>Een geïntegreerde oplossing ontwikkelen
 
-Nadat uw aannamen zijn goedgekeurd, gebruikt u de gekoppelde programma bronnen om uw geïntegreerde oplossing te ontwikkelen. Volg deze stappen: 
+Nadat uw aannamen zijn goedgekeurd, gebruikt u de gekoppelde programma bronnen om uw geïntegreerde oplossing te ontwikkelen. Volg deze stappen:
 
-1. Voltooi de belangrijkste zakelijke en technische discussies in een workshop-indeling voor het definiëren van de oplossing en de integratie benadering. 
+1. Voltooi de belangrijkste zakelijke en technische discussies in een workshop-indeling voor het definiëren van de oplossing en de integratie benadering.
 
     Uw bespreking over de oplossing moet de volgende punten omvatten:
     * Scope
@@ -73,7 +73,7 @@ Nadat uw aannamen zijn goedgekeurd, gebruikt u de gekoppelde programma bronnen o
     * Verkoop proces
     * Activiteiten
 
-    Uw bespreking over de integratie benadering moet de volgende punten omvatten: 
+    Uw bespreking over de integratie benadering moet de volgende punten omvatten:
     * Integratie punten
     * Architectuur voor de oplossing
     * Authentication
@@ -101,15 +101,15 @@ Nadat uw aannamen zijn goedgekeurd, gebruikt u de gekoppelde programma bronnen o
     * Een beschrijving van de geïntegreerde oplossing. Volg de [Aanbevolen procedures voor aanbiedingen](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
     * Een breedte van één pagina naar klanten. Gebruik de [sjabloon met één pager](https://aka.ms/AA5s08a).
     * Een presentatie van een klant. De [presentatie sjabloon](https://aka.ms/AA5s7ql)gebruiken.
-    * Een logo voor de gecombineerde oplossing. 
+    * Een logo voor de gecombineerde oplossing.
 
-## <a name="publish-your-integrated-solution"></a>Uw geïntegreerde oplossing publiceren 
+## <a name="publish-your-integrated-solution"></a>Uw geïntegreerde oplossing publiceren
 
 Nadat u de technische integratie en het marketing onderpand hebt voltooid, raadpleegt u de Publisher-hand leiding voor [Consulting Services voor Microsoft AppSource en Azure Marketplace](https://docs.microsoft.com/azure/marketplace/consulting-services). Gebruik deze resource om te bepalen of uw oplossing wordt gepubliceerd in Microsoft AppSource of Azure Marketplace. Gebruik ook de hand leiding om uw publicatie artefacten voor te bereiden en het publicatie proces te volt ooien.
 
 Hoewel er vijf service typen beschikbaar zijn voor consulting-service aanbiedingen, moet een geïntegreerde oplossing een proef concept of een volledige implementatie zijn.
 
-## <a name="go-to-market-with-your-integrated-solution"></a>Ga naar de markt met uw geïntegreerde oplossing 
+## <a name="go-to-market-with-your-integrated-solution"></a>Ga naar de markt met uw geïntegreerde oplossing
 
 Als uw oplossing Live is in Microsoft AppSource of Azure Marketplace, kunt u op de hoogte zijn van de beschik baarheid en vraag via marketing activiteiten. Bekijk de activiteiten die worden vermeld in het [Project plan en de tijd lijn](https://aka.ms/AA5qiuc). Deze resource omvat activiteiten die partners kunnen aansturen binnen hun eigen teams en met elkaar. Ga vervolgens naar de [markt voordelen](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) voor partners die op Marketplace publiceren. Alle aanbiedingen voor geïntegreerde oplossingen komen in aanmerking voor voor delen op proef niveau.
 

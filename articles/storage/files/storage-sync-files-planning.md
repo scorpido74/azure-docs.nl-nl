@@ -4,15 +4,15 @@ description: Meer informatie over hoe u rekening moet houden bij het plannen van
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c81f06d924a0ba871115e0ae0164d61449855263
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: d2dbe29c5a348363172f57da86483ccf3fd787f0
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665264"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046097"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planning voor de implementatie van Azure Files Sync
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -347,13 +347,13 @@ In de volgende tabel hebben we zowel de grootte van de naam ruimte als de conver
 | Grootte van de naam ruimte-bestanden & directory's (miljoenen)  | Typische capaciteit (TiB)  | CPU-kernen  | Aanbevolen geheugen (GiB) |
 |---------|---------|---------|---------|
 | 3        | 1.4     | 2        | 8 (initiële synchronisatie)/2 (standaard verloop)      |
-| 5        | 2.3     | 2        | 16 (initiële synchronisatie)/4 (standaard verloop)    |
-| 10       | 4.7     | 4        | 32 (initiële synchronisatie)/8 (standaard verloop)   |
-| 30       | 14,0    | 8        | 48 (initiële synchronisatie)/16 (typische verloop)   |
-| 50       | 23,3    | 16       | 64 (initiële synchronisatie)/32 (standaard verloop)  |
-| 100 *     | 46,6    | 32       | 128 (initiële synchronisatie)/32 (standaard verloop)  |
+| 5        | 2.4     | 2        | 16 (initiële synchronisatie)/4 (standaard verloop)    |
+| 10       | 4.8     | 4        | 32 (initiële synchronisatie)/8 (standaard verloop)   |
+| 30       | 14,3    | 8        | 48 (initiële synchronisatie)/16 (typische verloop)   |
+| 50       | 23,8    | 16       | 64 (initiële synchronisatie)/32 (standaard verloop)  |
+| 100 *     | 47,7   | 32       | 128 (initiële synchronisatie)/32 (standaard verloop)  |
 
-\*meer dan 100.000.000 bestanden & mappen wordt op dit moment niet ondersteund. Dit is een zachte limiet.
+\*meer dan 100.000.000 bestanden & directory's niet zijn getest. Dit is een zachte limiet.
 
 > [!TIP]
 > De initiële synchronisatie van een naam ruimte is een intensieve bewerking. het is raadzaam meer geheugen toe te wijzen totdat de initiële synchronisatie is voltooid. Dit is niet vereist, maar kan de initiële synchronisatie versnellen. 

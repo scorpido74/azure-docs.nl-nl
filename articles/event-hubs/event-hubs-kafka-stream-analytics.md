@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: dd429c7e8478bb0576605bcffe3c72bde35ae41e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0b48fea308b385fd8c66bf87d708b1c51f7f495
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437255"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977354"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Zelf studie: Apache Kafka voor Event Hubs gebeurtenissen verwerken met Stream Analytics 
 In dit artikel laat zien hoe gegevens streamen naar Event Hubs waarvoor Kafka is ingeschakeld en met Azure Stream Analytics te verwerken. Dit leidt u door de volgende stappen uit: 
@@ -38,7 +38,7 @@ Zorg ervoor dat u aan de volgende vereisten voldoet om deze snelstart uit te voe
 * [Java Development Kit (JDK) 1.7+](https://aka.ms/azure-jdks).
 * [Download](https://maven.apache.org/download.cgi) en [installeer](https://maven.apache.org/install.html) een binair Maven-archief.
 * [Git](https://www.git-scm.com/)
-* Een **Azure Storage-account**. Als u nog geen hebt, [maakt u er een](../storage/common/storage-quickstart-create-account.md) voordat u doorgaat. De uitvoergegevens worden opgeslagen in een Azure blob-opslag van de Stream Analytics-taak in dit scenario. 
+* Een **Azure Storage-account**. Als u nog geen hebt, [maakt u er een](../storage/common/storage-account-create.md) voordat u doorgaat. De uitvoergegevens worden opgeslagen in een Azure blob-opslag van de Stream Analytics-taak in dit scenario. 
 
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Een Event Hubs-naamruimte maken waarvoor Kafka is ingeschakeld
@@ -114,7 +114,7 @@ U kunt nu gebeurtenissen vanaf uw toepassing, waarbij gebruikgemaakt wordt van h
     ![Event hub - berichten](./media/event-hubs-kafka-stream-analytics/confirm-event-hub-messages.png)
 
 ## <a name="process-event-data-using-a-stream-analytics-job"></a>Gebeurtenis-gegevens verwerken met behulp van een Stream Analytics-taak
-In deze sectie maakt u een Azure Stream Analytics-taak. De Kafka-client verzendt gebeurtenissen naar de event hub. U maakt een Stream Analytics-taak die gebeurtenis gegevens als invoer en levert deze naar een Azure blob-opslag. Als u geen een **Azure Storage-account**, [maakt u er een](../storage/common/storage-quickstart-create-account.md).
+In deze sectie maakt u een Azure Stream Analytics-taak. De Kafka-client verzendt gebeurtenissen naar de event hub. U maakt een Stream Analytics-taak die gebeurtenis gegevens als invoer en levert deze naar een Azure blob-opslag. Als u geen een **Azure Storage-account**, [maakt u er een](../storage/common/storage-account-create.md).
 
 De query in de Stream Analytics-taak wordt doorgegeven via de gegevens zonder de uitvoering van alle analyses. U kunt een query maken die de invoergegevens transformeert om uitvoergegevens in een andere indeling of met de verworven inzichten te produceren.  
 

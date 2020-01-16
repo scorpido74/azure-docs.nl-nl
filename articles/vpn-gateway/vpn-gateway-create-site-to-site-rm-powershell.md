@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 07/31/2019
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 85ea3855b13350901d85701e9bca8d87ff6632c3
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: d1693a6165aa31b221b6901e2e1c8b2955a3dfb3
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778801"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045690"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Een VNet met een site-naar-site-VPN-verbinding maken met PowerShell
 
@@ -33,23 +33,15 @@ Een site-naar-site-VPN-gatewayverbinding wordt gebruikt om een on-premises netwe
 
 ## <a name="before"></a>Voordat u begint
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Controleer voordat u met de configuratie begint of u aan de volgende criteria hebt voldaan:
 
 * U hebt een compatibel VPN-apparaat nodig en iemand die dit kan configureren. Zie [Over VPN-apparaten](vpn-gateway-about-vpn-devices.md) voor meer informatie over compatibele VPN-apparaten en -apparaatconfiguratie.
 * Controleer of u een extern gericht openbaar IPv4-adres voor het VPN-apparaat hebt.
 * Als u de IP-adresbereiken in uw on-premises netwerkconfiguratie niet kent, moet u contact opnemen met iemand die u hierbij kan helpen en de benodigde gegevens kan verstrekken. Wanneer u deze configuratie maakt, moet u de IP-adresbereikvoorvoegsels opgeven die Azure naar uw on-premises locatie doorstuurt. Geen van de subnetten van uw on-premises netwerk kan overlappen met de virtuele subnetten waarmee u verbinding wilt maken.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+### <a name="azure-powershell"></a>Azure PowerShell
 
-### <a name="running-powershell-locally"></a>PowerShell lokaal uitvoeren
-
-Als u ervoor kiest om PowerShell lokaal te installeren en te gebruiken, moet u de nieuwste versie van de Azure Resource Manager PowerShell-cmdlets installeren. PowerShell-cmdlets worden regelmatig bijgewerkt. Doorgaans moet u PowerShell-cmdlets bijwerken om de meest recente functionaliteit op te halen. Als u de PowerShell-cmdlets niet bijwerkt, kunnen de opgegeven waarden mislukken. 
-
-Voer ' Get-module-ListAvailable AZ ' uit om de versie te vinden die u gebruikt. Zie [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps) als u een upgrade wilt uitvoeren. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie.
-Als u Power shell lokaal uitvoert, moet u ook ' Connect-AzAccount ' uitvoeren om een verbinding te maken met Azure.
-
+[!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
 ### <a name="example"></a>Voorbeeldwaarden
 
@@ -257,6 +249,15 @@ Als de IP-adresvoorvoegsels die u wilt routeren naar de locatie van uw on-premis
 ## <a name="modifygwipaddress"></a>Het IP-adres van de gateway wijzigen in dat van een lokale netwerkgateway
 
 [!INCLUDE [Modify gateway IP address](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
+
+## <a name="deleteconnection"></a>Een gateway verbinding verwijderen
+
+Als u de naam van uw verbinding niet weet, kunt u deze vinden met behulp van de cmdlet ' Get-AzVirtualNetworkGatewayConnection '.
+
+```azurepowershell-interactive
+Remove-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 `
+-ResourceGroupName TestRG1
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

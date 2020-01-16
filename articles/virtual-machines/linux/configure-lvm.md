@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: 38e460138fde1de6d8fd57dcab5a88238f0981fe
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4fdb3af0433cc32aa7cdbee3c8ca9bdb85031135
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751023"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045338"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>LVM configureren op een virtuele Linux-machine in azure
 In dit document wordt beschreven hoe u Logical Volume Manager (LVM) configureert in uw virtuele Azure-machine. LVM kan worden gebruikt op de besturingssysteem schijf of gegevens schijven in azure-Vm's, maar in de meeste Cloud installatie kopieën is LVM niet geconfigureerd op de besturingssysteem schijf. Met de volgende stappen wordt de nadruk gelegd op het configureren van LVM voor uw gegevens schijven.
@@ -172,7 +172,7 @@ Er zijn twee manieren om ondersteuning voor het verkleinen van de virtuele Linux
     # sudo fstrim /datadrive
     ```
 
-    **RHEL/CentOS**
+    **RHEL, CentOS & Oracle Linux**
 
     ```bash 
     # sudo yum install util-linux

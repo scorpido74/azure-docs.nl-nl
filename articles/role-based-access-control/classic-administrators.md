@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/26/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 340717242d642475217bbe87fd96be66ec9b2e2d
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 40bda408731e90ab4c0c987b981a1c7f16b0de5d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554229"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979344"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Beheerders van klassieke Azure-abonnementen
 
-Micro soft raadt u aan om de toegang tot Azure-resources te beheren met op rollen gebaseerd toegangs beheer (RBAC). Als u nog steeds gebruikmaakt van het klassieke implementatie model, moet u echter een klassieke rol voor abonnements beheerders gebruiken: Service beheerder en mede beheerder. Zie [Azure Resource Manager vs. klassieke implementatie](../azure-resource-manager/resource-manager-deployment-model.md)voor meer informatie.
+Micro soft raadt u aan om de toegang tot Azure-resources te beheren met op rollen gebaseerd toegangs beheer (RBAC). Als u nog steeds gebruikmaakt van het klassieke implementatie model, moet u echter een klassieke rol voor abonnements beheerders gebruiken: Service beheerder en mede beheerder. Zie [Azure Resource Manager vs. klassieke implementatie](../azure-resource-manager/management/deployment-models.md)voor meer informatie.
 
 In dit artikel wordt beschreven hoe u de rollen mede beheerder en service beheerder kunt toevoegen of wijzigen, en hoe u de account beheerder kunt weer geven.
 
@@ -62,7 +62,7 @@ Zie [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure P
 
 ### <a name="differences-for-guest-users"></a>Verschillen voor gast gebruikers
 
-Gast gebruikers aan wie de rol mede beheerder is toegewezen, kunnen enkele verschillen zien ten opzichte van gebruikers die lid zijn van de rol mede beheerder. Houd rekening met het volgende scenario:
+Gast gebruikers aan wie de rol mede beheerder is toegewezen, kunnen enkele verschillen zien ten opzichte van gebruikers die lid zijn van de rol mede beheerder. Neem het volgende scenario in overweging:
 
 - Gebruiker A met een Azure AD-account (werk-of school account) is een service beheerder voor een Azure-abonnement.
 - Gebruiker B heeft een Microsoft-account.
@@ -105,7 +105,7 @@ Er zijn twee manieren om de servicebeheerder te wijzigen. U kunt wijzigingen aan
 
 1. Zorg ervoor dat uw scenario wordt ondersteund door de beperkingen voor het wijzigen van service beheerders te controleren.
 
-1. Meld u als accountbeheerder aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u als accountbeheerder aan bij [Azure Portal](https://portal.azure.com).
 
 1. Open [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) en selecteer een abonnement.
 
@@ -152,11 +152,11 @@ Zie [Wat is Azure Active Directory?](../active-directory/fundamentals/active-dir
 
 ## <a name="view-the-account-administrator"></a>De account beheerder weer geven
 
-De account beheerder is de gebruiker die zich voor het eerst aanmeldt voor het Azure-abonnement en is verantwoordelijk als de facturerings eigenaar van het abonnement. Zie [eigendom van een Azure-abonnement overdragen aan een ander account](../billing/billing-subscription-transfer.md)om de account beheerder van een abonnement te wijzigen.
+De account beheerder is de gebruiker die zich voor het eerst aanmeldt voor het Azure-abonnement en is verantwoordelijk als de facturerings eigenaar van het abonnement. Zie [eigendom van een Azure-abonnement overdragen aan een ander account](../cost-management-billing/manage/billing-subscription-transfer.md)om de account beheerder van een abonnement te wijzigen.
 
 Volg deze stappen om de account beheerder weer te geven.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 1. Open [Abonnementen](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) en selecteer een abonnement.
 
@@ -170,4 +170,4 @@ Volg deze stappen om de account beheerder weer te geven.
 
 * [Inzicht in de verschillende rollen](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Toegang tot Azure-resources beheren met op rollen gebaseerd toegangsbeheer en de Azure-portal](../role-based-access-control/role-assignments-portal.md)
-* [Azure-abonnementsbeheerders toevoegen of wijzigen](../billing/billing-add-change-azure-subscription-administrator.md)
+* [Azure-abonnementsbeheerders toevoegen of wijzigen](../cost-management-billing/manage/add-change-subscription-administrator.md)

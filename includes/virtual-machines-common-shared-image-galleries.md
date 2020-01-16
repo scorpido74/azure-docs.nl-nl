@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5618757f4bf5eaf1afc5ef0ce1735eb4ae94e1d2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ef0eed330dd7a5b338cdbf36a159d1f046d3939d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75663155"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020808"
 ---
 Galerie met gedeelde afbeeldingen is een service die u helpt bij het bouwen van structuur en organisatie rond uw beheerde installatie kopieën. Galerieën met gedeelde afbeeldingen bieden:
 
@@ -65,7 +65,7 @@ Hieronder ziet u andere para meters die kunnen worden ingesteld voor de definiti
 * EULA: kan worden gebruikt om te verwijzen naar een gebruiksrecht overeenkomst die specifiek is voor de definitie van de installatie kopie.
 * Privacyverklaring en opmerkingen bij de release: Sla release opmerkingen en privacyverklaringen op in azure Storage en geef een URI op om ze te openen als onderdeel van de definitie van de installatie kopie.
 * Datum van einde van de levens duur: koppel een einddatum datum aan de definitie van uw installatie kopie om oude afbeeldings definities te kunnen verwijderen.
-* Tag: u kunt labels toevoegen wanneer u de definitie van de installatie kopie maakt. Zie [Tags gebruiken om uw resources te organiseren](../articles/azure-resource-manager/resource-group-using-tags.md) voor meer informatie over tags.
+* Tag: u kunt labels toevoegen wanneer u de definitie van de installatie kopie maakt. Zie [Tags gebruiken om uw resources te organiseren](../articles/azure-resource-manager/management/tag-resources.md) voor meer informatie over tags.
 * Minimale en maximale vCPU-en geheugen aanbevelingen: als uw installatie kopie vCPU en geheugen aanbevelingen heeft, kunt u die gegevens koppelen aan de definitie van uw installatie kopie.
 * Niet-toegestane schijf typen: u kunt informatie geven over de opslag behoeften voor uw VM. Als de installatie kopie bijvoorbeeld niet geschikt is voor standaard HDD-schijven, voegt u deze toe aan de lijst niet toegestaan.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: b2c94e51e25fd34b7332e6653a9c2f2d5bb53139
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: da564f8d49675ba0d51c5120768028e9d333e2fd
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754236"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045488"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Een interne load balancer maken met behulp van de Azure PowerShell-module
 
@@ -48,7 +48,7 @@ De volgende objecten moeten worden gemaakt om een load balancer te implementeren
 * Testconfiguratie: de status van de tests voor virtuele machines.
 * Binnenkomende NAT-regels: de poortregels voor directe toegang tot virtuele machines.
 
-Zie [Azure Load Balancer-onderdelen](load-balancer-overview.md#load-balancer-components)voor meer informatie over Load Balancer-onderdelen.
+Zie [Azure Load Balancer-onderdelen](concepts-limitations.md#load-balancer-components)voor meer informatie over Load Balancer-onderdelen.
 
 In de volgende stappen wordt uitgelegd hoe u een load balancer tussen twee virtuele machines configureert.
 

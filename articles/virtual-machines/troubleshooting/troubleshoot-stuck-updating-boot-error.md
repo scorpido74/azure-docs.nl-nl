@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: 226151d81319dc4e6f132e76ce2d310f88a484e8
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: e8e4bed052ec5b70c441a3ae76f3409c307299e5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087026"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981436"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Opstarten van Azure VM is vastgelopen op Windows Update
 
 Dit artikel helpt u bij het oplossen van het probleem wanneer uw virtuele machine (VM) tijdens het opstarten vastloopt in de Windows Update fase. 
 
 > [!NOTE] 
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../../azure-resource-manager/resource-manager-deployment-model.md). In dit artikel wordt beschreven hoe u het Resource Manager-implementatie model gebruikt. U wordt aangeraden dit model te gebruiken voor nieuwe implementaties in plaats van het klassieke implementatie model te gebruiken.
+> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het Resource Manager-implementatie model gebruikt. U wordt aangeraden dit model te gebruiken voor nieuwe implementaties in plaats van het klassieke implementatie model te gebruiken.
 
 ## <a name="symptom"></a>Symptoom
 
@@ -55,7 +55,7 @@ Het update proces kan enige tijd in beslag nemen, afhankelijk van het aantal upd
     Als de gekoppelde besturingssysteem schijf bijvoorbeeld station F is, voert u de volgende opdracht uit:
 
         dism /image:F:\ /get-packages > c:\temp\Patch_level.txt
-5. Open het C:\temp\Patch_level.txt-bestand en lees het van de onderkant. Zoek de update die in **behandeling** is of verwijder de status in **behandeling** .  Hier volgt een voor beeld van de update status:
+5. Open het C:\temp\-bestand Patch_level. txt en lees het venster vanuit de onderkant. Zoek de update die in **behandeling** is of verwijder de status in **behandeling** .  Hier volgt een voor beeld van de update status:
 
      ```
     Package Identity : Package_for_RollupFix~31bf3856ad364e35~amd64~~17134.345.1.5

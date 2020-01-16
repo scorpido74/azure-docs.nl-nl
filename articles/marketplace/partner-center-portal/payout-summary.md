@@ -7,12 +7,12 @@ ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 38717ae103ac72d35042ced9bf662d295ed8a29b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 997014263f0d12e7cc16a761152870c2ee63d6ec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931805"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979698"
 ---
 # <a name="payout-reporting"></a>Rapportage voor betaling
 
@@ -52,7 +52,7 @@ Als u aanbiedingen in azure Marketplace verkoopt, ziet u ook informatie over ges
 | Trans actie niet gereed voor uitbetaling | Facturering wordt uitgevoerd | Volgende geschatte betaling: de status van de uitbetaling is in de niet-verwerkte staat.  |
 | Status uitbetaling |  | Verwerkte <br> Het verdienen komt in aanmerking voor betaling. Deze status blijft van toepassing op een koel periode zoals gedefinieerd in de programma gids voor het prestatie programma. <br> <br> Verschijnen <br> Door de betaling gegenereerde interne beoordelingen die in behandeling zijn, voordat de betaling wordt verwerkt. <br> <br> Verzonden: <br> De betaling is naar uw bank verzonden. |
 
-## <a name="customer-types"></a>Klant typen 
+## <a name="customer-types"></a>Klant typen
 
 ### <a name="enterprise-agreement"></a>Enter prise overeenkomst
 
@@ -66,7 +66,7 @@ Klanten kunnen ook betalen met een credit card en een maandelijkse factuur. In d
 
 Bijvoorbeeld als de klant inkopen met een credit card.
 
-## <a name="corelation-between-payout-and-usage"></a>Relatie tussen uitbetaling en gebruik 
+## <a name="corelation-between-payout-and-usage"></a>Relatie tussen uitbetaling en gebruik
 
 |Beschrijving    |    Datum  | Orders/gebruik  | Betaling |
 |----------|----------|-----------|-------------|
@@ -74,11 +74,11 @@ Bijvoorbeeld als de klant inkopen met een credit card.
 |Einde van de term (maand)   | 30 augustus 2019 | | |
 |Factuur datum | 1 Sept 2019 | | |
 |Betalings datum van klant | 1 Sept 2019 | | |
-|Borg periode (alleen voor credit cards, 30 dagen) | Sept 1 september 2019-september 30, 2019 | | **Correlatie kenmerken orders:** <br> <ul><li>AssetId</li> <li>Klant-ID</li> <li> Klant naam</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalings status:** Verwerkte |
+|Borg periode (alleen voor credit cards, 30 dagen) | Sept 1 september 2019-september 30, 2019 | | **Correlatie kenmerken orders:** <br> <ul><li>AssetId</li> <li>Klant-ID</li> <li> Klant naam</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalings status:** Verwerkte |
 |Begin van verzamelings periode | 1 Sept 2019 | | |
 |Einde van de verzamelings periode (Maxi maal 30 dagen) | Sept 30, 2019 | | |
-|Berekenings datum van betaling (maandelijks op de 15e) | Okt 1, 2019 | | **Correlatie kenmerken** <br> <ul><li>AssetId</li> <li>Klant-ID</li> <li>Klant naam</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalings status:** Verschijnen |
-|Uitbetalings datum | 15 oktober 2019 | | **Correlatie kenmerken** <br> <ul><li>AssetId</li> <li>Klant-ID</li> <li> Klant naam</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalings status:** Betaling verzonden |
+|Berekenings datum van betaling (maandelijks op de 15e) | Okt 1, 2019 | | **Correlatie kenmerken** <br> <ul><li>AssetId</li> <li>Klant-ID</li> <li>Klant naam</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalings status:** Verschijnen |
+|Uitbetalings datum | 15 oktober 2019 | | **Correlatie kenmerken** <br> <ul><li>AssetId</li> <li>Klant-ID</li> <li> Klant naam</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Uitbetalings status:** Betaling verzonden |
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Enter prise Agreement (kwartaal klanten/maandelijks)
 
@@ -93,37 +93,37 @@ Bijvoorbeeld als de klant inkopen met een credit card.
 |Einde van verzamelings periode (Maxi maal 90 dagen) | 15 januari 2020 | | |
 |Betalings datum van klant | 30 dec, 2019 | | |
 |Berekening van uitbetaling | 15 januari 2020 | | |
-|Uitbetalings datum | 15 februari 2020 | | **Voor elk kwar taal op basis van klanten** <br> <br> **Rapport Orders** <br> <ul><li>AssetId</li> <li>Klant-ID</li> <li> Klant naam</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Status van uitbetaling:** verzonden |
+|Uitbetalings datum | 15 februari 2020 | | **Voor elk kwar taal op basis van klanten** <br> <br> **Rapport Orders** <br> <ul><li>AssetId</li> <li>Klant-ID</li> <li> Klant naam</li> </ul> <br> **Gebruik** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Klant naam</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Status van uitbetaling:** verzonden |
 
 ## <a name="transaction-history-download-export"></a>Transactie geschiedenis downloaden exporteren
 
-Deze optie biedt een down load van elk item op de pagina met de transactie geschiedenis, het type, de datum, het bijbehorende transactie bedrag, de klant, het product en andere transactionele gegevens die van toepassing zijn op het prikkel programma. 
+Deze optie biedt een down load van elk item op de pagina met de transactie geschiedenis, het type, de datum, het bijbehorende transactie bedrag, de klant, het product en andere transactionele gegevens die van toepassing zijn op het prikkel programma.
 
-| Kolomnaam     | Beschrijving    | 
+| Kolomnaam     | Beschrijving    |
 |-------------|-------------------------------|
 | earningId                      | Unieke id voor elk verdienen                                                                                                       |
-| participantId                  | De primaire identiteit van de partner die onder het programma is aangegaan                                                                            | 
-| participantIdType              | Voornamelijk programma-ID voor prikkel Programma's en verkopers als voor Store-Program ma's en Azure Marketplace                                          | 
-| deel nemer                | Naam van de verdienen partner                                                                                                              | 
+| participantId                  | De primaire identiteit van de partner die onder het programma is aangegaan                                                                            |
+| participantIdType              | Voornamelijk programma-ID voor prikkel Programma's en verkopers als voor Store-Program ma's en Azure Marketplace                                          |
+| deel nemer                | Naam van de verdienen partner                                                                                                              |
 | partnerCountryCode             | Locatie/land van de verdienen partner                                                                                                  |
-| programName                    | Naam van het prestatie/archief programma                                                                                                             | 
-| transactionId                  | De unieke id voor de trans actie                                                                                                    | 
-| transactionCurrency            | Valuta waarin de oorspronkelijke klant transactie heeft plaatsgevonden (dit is niet de valuta van de partner locatie)                                     | 
-| transactionDate                | De datum van de trans actie. Handig voor Program ma's waarbij veel trans acties bijdragen aan één verdienen                                           | 
-| transactionExchangeRate        | De wissel koers die wordt gebruikt voor het weer geven van het bijbehorende bedrag voor de trans actie USD                                                                 | 
-| transactionAmount              | Transactie bedrag in de oorspronkelijke transactie valuta op basis waarvan het verdienen is gegenereerd                                              | 
-| transactionAmountUSD           | Transactie bedrag in USD                                                                                                                | 
-| kern                          | Geeft bedrijfs regel voor het verdienen aan                                                                                                  | 
-| earningRate                    | Prestatie percentage toegepast op transactie bedrag om een verdienen te genereren                                                                      | 
-| quantity                       | Is afhankelijk van het programma. Hiermee wordt de gefactureerde hoeveelheid voor transactionele Program ma's aangegeven                                                            | 
+| programName                    | Naam van het prestatie/archief programma                                                                                                             |
+| transactionId                  | De unieke id voor de trans actie                                                                                                    |
+| transactionCurrency            | Valuta waarin de oorspronkelijke klant transactie heeft plaatsgevonden (dit is niet de valuta van de partner locatie)                                     |
+| transactionDate                | De datum van de trans actie. Handig voor Program ma's waarbij veel trans acties bijdragen aan één verdienen                                           |
+| transactionExchangeRate        | De wissel koers die wordt gebruikt voor het weer geven van het bijbehorende bedrag voor de trans actie USD                                                                 |
+| transactionAmount              | Transactie bedrag in de oorspronkelijke transactie valuta op basis waarvan het verdienen is gegenereerd                                              |
+| transactionAmountUSD           | Transactie bedrag in USD                                                                                                                |
+| kern                          | Geeft bedrijfs regel voor het verdienen aan                                                                                                  |
+| earningRate                    | Prestatie percentage toegepast op transactie bedrag om een verdienen te genereren                                                                      |
+| quantity                       | Is afhankelijk van het programma. Hiermee wordt de gefactureerde hoeveelheid voor transactionele Program ma's aangegeven                                                            |
 | quantityType                   | Hiermee wordt het type van de hoeveelheid aangegeven, bijvoorbeeld: Gefactureerd aantal, MAU                                                                                     |
-| earningType                    | Geeft aan of het kosten, kortingen, Coop, verkoop enz. is.                                                                                          | 
+| earningType                    | Geeft aan of het kosten, kortingen, Coop, verkoop enz. is.                                                                                          |
 | earningAmount                  | Het verdienen van het bedrag in de oorspronkelijke transactie valuta                                                                                      |
 | earningAmountUSD               | Verdienen bedrag in USD                                                                                                                    |
 | earningDate                    | Datum van het verdienen                                                                                                                      |
 | calculationDate                | De datum waarop het verdienen is berekend in het systeem                                                                                            |
 | earningExchangeRate            | De wissel koers die wordt gebruikt om het overeenkomstige USD-bedrag weer te geven                                                                                  |
-| exchangeRateDate               | Wisselkoers datum die wordt gebruikt voor het berekenen van EarningAmount USD                                                                                   | 
+| exchangeRateDate               | Wisselkoers datum die wordt gebruikt voor het berekenen van EarningAmount USD                                                                                   |
 | paymentAmountWOTax             | Betaalde hoeveelheid (zonder BTW) voor de factuur voor ' verzonden ' betalingen                                                                 |
 | paymentCurrency                | Betalen voor de valuta die wordt gekozen door de partner in het betalings profiel. Alleen weer gegeven voor verzonden betalingen                                                   |
 | paymentExchangeRate            | De wissel koers die wordt gebruikt om paymentAmountWOTax in de betalings valuta te berekenen met behulp van ExchangeRateDate                                            |

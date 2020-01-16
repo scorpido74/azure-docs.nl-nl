@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: defa49bd5ca6be6862412e3caf40295ef1d639cf
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 48e74f7dd6fa6f2c7fafe10797a301b3d4cc7f1d
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945304"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045234"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Zelf studie: een iOS-app maken waarmee de insluitende lezer wordt gestart met inhoud van een foto (SWIFT)
 
@@ -73,19 +73,13 @@ Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the reso
 
 Maak in de hoofdmap van het project, dat het bestand view controller. Swift bevat, een Swift-klasse bestand met de naam constanten. Swift. Vervang de klasse door de volgende code door de waarden toe te voegen, indien van toepassing. Bewaar dit bestand als een lokaal bestand dat alleen op uw computer bestaat en zorg ervoor dat dit bestand niet wordt door gegeven aan broncode beheer, omdat het geheimen bevat dat niet openbaar mag worden gemaakt. U wordt aangeraden geen geheimen in uw app te bedenken. In plaats daarvan raden we u aan om een back-end-service te gebruiken om het token te verkrijgen, waarbij de geheimen kunnen worden bewaard buiten de app en van het apparaat. Het back-end-API-eind punt moet worden beveiligd achter een vorm van verificatie (bijvoorbeeld [OAuth](https://oauth.net/2/)) om te voor komen dat niet-geautoriseerde gebruikers tokens verkrijgen om te gebruiken voor uw insluitende lezer-service en facturering. Dit werk valt buiten het bereik van deze zelf studie.
 
-[!code-swift[Constants](~/ImmersiveReaderSdk/iOS/samples/picture-to-immersive-reader-swift/picture-to-immersive-reader-swift/Constants.swift)]
-
 ## <a name="set-up-the-app-to-run-without-a-storyboard"></a>Instellen dat de app wordt uitgevoerd zonder een Story Board
 
 Open AppDelegate. Swift en vervang het bestand door de volgende code.
 
-[!code-swift[AppDelegate](~/ImmersiveReaderSdk/iOS/samples/picture-to-immersive-reader-swift/picture-to-immersive-reader-swift/AppDelegate.swift)]
-
 ## <a name="add-functionality-for-taking-and-uploading-photos"></a>Functionaliteit toevoegen voor het maken en uploaden van Foto's
 
 Wijzig de naam van view controller. Swift in PictureLaunchViewController. Swift en vervang het bestand door de volgende code.
-
-[!code-swift[PictureLaunchViewController](~/ImmersiveReaderSdk/iOS/samples/picture-to-immersive-reader-swift/picture-to-immersive-reader-swift/PictureLaunchViewController.swift)]
 
 ## <a name="build-and-run-the-app"></a>De app bouwen en uitvoeren
 

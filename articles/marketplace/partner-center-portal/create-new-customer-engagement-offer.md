@@ -1,19 +1,19 @@
 ---
 title: Maak een nieuwe Dynamics 365 voor klant betrokkenheid & PowerApps-aanbieding in de commerciële Marketplace
 description: Het maken van een nieuwe Dynamics 365 voor klant betrokkenheid & PowerApps-aanbieding voor het aanbieden of verkopen in azure Marketplace, AppSource of via het programma Cloud Solution Provider (CSP) met behulp van de portal voor commerciële Marketplace in het micro soft partner centrum.
-author: JnHs
+author: ChJenk
 manager: evansma
-ms.author: jenhayes
+ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 12/31/2019
-ms.openlocfilehash: 354bd8520977ee7533f7902255a7c8ecbab11e19
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.date: 01/13/2020
+ms.openlocfilehash: 9a2237c0cea5fcc67e093709a0b42193b7326d1d
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779991"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045987"
 ---
 # <a name="create-a-new-dynamics-365-for-customer-engagement--powerapps-offer"></a>Een nieuw Dynamics 365 maken voor klant betrokkenheid & PowerApps-aanbieding
 
@@ -32,7 +32,7 @@ Selecteer de knop **+ nieuwe aanbieding** en selecteer vervolgens het menu-item 
 
 ### <a name="offer-id-and-alias"></a>Aanbiedings-ID en alias
 
-- **Aanbiedings-id**: unieke id voor elke aanbieding in uw account. Deze ID is zichtbaar voor klanten in het URL-adres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen (indien van toepassing). De aanbiedings-ID moet kleine letters en alfanumerieke tekens bevatten (met inbegrip van streepjes en onderstrepingen, maar geen witruimte). Dit is beperkt tot 50 tekens en kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.  Als u hier bijvoorbeeld *test-aanbieding-1* invoert, wordt de URL van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- **Aanbiedings-id**: unieke id voor elke aanbieding in uw account. Deze ID is zichtbaar voor klanten in het URL-adres voor de Marketplace-aanbieding en Azure Resource Manager sjablonen (indien van toepassing). De aanbiedings-ID moet kleine letters en alfanumerieke tekens bevatten (met inbegrip van streepjes en onderstrepingen, maar geen witruimte). De ID is beperkt tot 50 tekens en kan niet worden gewijzigd nadat u **maken**hebt geselecteerd. Als u hier bijvoorbeeld *test-aanbieding-1* invoert, wordt de URL van de aanbieding `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
 
 - **Aanbiedings alias**: de naam die wordt gebruikt om te verwijzen naar de aanbieding in het partner centrum. Deze naam wordt niet gebruikt in Marketplace en wijkt af van de naam van de aanbieding en andere waarden die aan klanten worden weer gegeven. Deze waarde kan niet worden gewijzigd nadat u **maken**hebt geselecteerd.
 
@@ -65,7 +65,7 @@ Contact gegevens van klanten verzamelen door verbinding te maken met uw CRM-syst
 
 Een test drive is een fantastische manier om uw aanbieding aan potentiële klanten te laten presen teren door hen de mogelijkheid te geven voor ' voor u ' te kopen, wat resulteert in een verhoogde conversie en de generatie van uiterst gekwalificeerde leads. [Meer informatie over test stations.](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
-Als u een test drive wilt inschakelen, schakelt u het selectie vakje **een test drive inschakelen** in. Vervolgens moet u een demonstratie omgeving configureren in de [technische configuratie van het test station](#test-drive-technical-configuration) configureren zodat klanten uw aanbieding voor een bepaalde periode kunnen proberen. 
+Als u een test drive wilt inschakelen, schakelt u het selectie vakje **een test drive inschakelen** in. Vervolgens moet u een demonstratie omgeving configureren in de [technische configuratie van het test station](#test-drive-technical-configuration) configureren zodat klanten uw aanbieding voor een bepaalde periode kunnen uitproberen. 
 
 #### <a name="type-of-test-drive"></a>Type test drive
 
@@ -88,17 +88,17 @@ Maak een keuze uit de volgende opties:
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-Zie [overzicht Lead beheer](./commercial-marketplace-get-customer-leads.md) voor meer informatie.
+Zie [Lead Management Overview](./commercial-marketplace-get-customer-leads.md)voor meer informatie.
 
 Vergeet niet om te **slaan** voordat u verdergaat met de volgende sectie.
 
 ## <a name="properties"></a>Eigenschappen
 
-Op de pagina **Eigenschappen** kunt u de categorieën en industrieën definiëren die worden gebruikt voor het groeperen van uw aanbieding op Marketplace, uw app-versie en de juridische contracten die uw aanbieding ondersteunen. Selecteer **Opslaan** nadat u deze pagina hebt voltooid. 
+Op de pagina **Eigenschappen** kunt u de categorieën en industrieën definiëren die worden gebruikt voor het groeperen van uw aanbieding op Marketplace, uw app-versie en de juridische contracten die uw aanbieding ondersteunen. Selecteer **Opslaan** nadat u deze pagina hebt voltooid.
 
 ### <a name="category"></a>Categorie
 
-Selecteer mini maal één en Maxi maal drie categorieën. Deze worden gebruikt om uw aanbieding te plaatsen in de juiste Zoek gebieden voor Marketplace. Neem contact op met de manier waarop uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding. 
+Selecteer mini maal één en Maxi maal drie categorieën. De **categorie** wordt gebruikt om uw aanbieding in de juiste Zoek gebieden voor Marketplace te plaatsen. Neem contact op met de manier waarop uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding.
 
 ### <a name="industry"></a>Industrie
 
@@ -110,13 +110,13 @@ Selecteer alle Dynamics 365-producten waarop deze aanbieding van toepassing is.
 
 ### <a name="app-version"></a>App-versie
 
-Voer het versie nummer van uw aanbieding in. Klanten zien dat deze versie wordt weer gegeven op de detail pagina van de aanbieding. Als u het versie nummer alleen bijwerkt als gevolg van marketing/beschrijvende wijzigingen, schakelt u het selectie vakje **alleen marketing** in. Op deze manier kan de aanbieding de certificerings-en inrichtings fases omzeilen.
+Voer het versie nummer van uw aanbieding in. Klanten zien dat deze versie wordt weer gegeven op de detail pagina van de aanbieding. Als u het versie nummer alleen bijwerkt als gevolg van marketing/beschrijvende wijzigingen, schakelt u het selectie vakje **alleen marketing** in. Met deze optie kan de aanbieding de certificerings-en inrichtings fases omzeilen.
 
 ### <a name="standard-contract"></a>Standaard contract
 
-Om het aankoop proces voor klanten te vereenvoudigen en de juridische complexiteit voor software leveranciers te verminderen, biedt micro soft een standaard contract sjabloon om een trans actie in de Marketplace te vergemakkelijken. 
+Om het aankoop proces voor klanten te vereenvoudigen en de juridische complexiteit voor software leveranciers te verminderen, biedt micro soft een standaard contract sjabloon om een trans actie in de Marketplace te vergemakkelijken.
 
-In plaats van aangepaste voor waarden te gebruiken, kunt u ervoor kiezen om uw software aan te bieden onder het Standard-contract, wat klanten alleen maar één keer hoeven te accepteren. 
+In plaats van aangepaste voor waarden te gebruiken, kunt u ervoor kiezen om uw software aan te bieden onder het Standard-contract, wat klanten alleen maar één keer hoeven te accepteren.
 
 Het standaard contract vindt u hier: https://go.microsoft.com/fwlink/?linkid=2041178
 
@@ -128,7 +128,7 @@ Als u het selectie vakje **standaard contract gebruiken** niet inschakelt, moet 
 
 ## <a name="offer-listing"></a>Aanbieding weer geven
 
-De aanbiedings pagina bevat de talen waarin uw aanbieding wordt weer gegeven. Houd er rekening mee dat **Engels (Verenigde Staten)** de enige beschik bare optie is.
+De aanbiedings pagina bevat de talen waarin uw aanbieding wordt weer gegeven. **Engels (Verenigde Staten)** is momenteel de enige beschik bare optie.
 
 U moet de details van de Marketplace (naam, beschrijving, installatie kopieën, enzovoort) voor elke taal/markt opgeven. Selecteer de naam van de taal/markt om deze gegevens op te geven.
 
@@ -141,22 +141,56 @@ De naam die u hier invoert, wordt aan klanten weer gegeven als de titel van de a
 
 ### <a name="short-description"></a>Korte beschrijving
 
-Geef een korte beschrijving van uw aanbieding (Maxi maal 100 tekens). Dit kan worden gebruikt in Zoek resultaten voor Marketplace.
+Geef een korte beschrijving van uw aanbieding (Maxi maal 100 tekens). Deze beschrijving kan worden gebruikt in Zoek resultaten voor Marketplace.
+
+
+
+
+
+
+
+
+
+
 
 ### <a name="description"></a>Beschrijving
 
-Geef een langere beschrijving van uw aanbieding (Maxi maal 3.000 tekens). Deze beschrijving wordt weer gegeven aan klanten in het overzicht van Marketplace-vermeldingen. Neem de toegevoegde waarde van de prijs van uw aanbod, belang rijke voor delen, categorie-en/of branche koppelingen, in-app aankoop kansen en eventuele vereiste informatie op. 
+Geef een langere beschrijving van uw aanbieding (Maxi maal 3.000 tekens). Deze beschrijving wordt weer gegeven aan klanten in het overzicht van Marketplace-vermeldingen. Neem de toegevoegde waarde van de prijs van uw aanbod, belang rijke voor delen, categorie-en/of branche koppelingen, in-app aankoop kansen en eventuele vereiste informatie op.
 
 Tips voor het schrijven van uw beschrijving:  
 
-- Beschrijf duidelijk de toegevoegde waarde van uw aanbieding in de eerste paar zinnen van uw beschrijving. Voeg het volgende toe aan de toegevoegde waarde:
+- Beschrijf duidelijk de toegevoegde waarde van uw aanbieding in de eerste paar zinnen van uw beschrijving. Neem de volgende informatie op in de toegevoegde waarde:
   - Beschrijving van het product
   - Het type gebruiker dat voor deel is van het product
   - Klant behoeften of pijn dat de product adressen
 - Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in de resultaten van de zoek machine.  
 - Vertrouw niet op functies en functionaliteit om uw product te verkopen. Richt u in plaats daarvan op de waarde die u levert.  
-- Gebruik zo veel mogelijk branchespecifieke woorden lijst of op basis van voor delen. 
+- Gebruik zo veel mogelijk branchespecifieke woorden lijst of op basis van voor delen.
 - U kunt HTML-tags gebruiken om uw beschrijving te Format teren en het aantrekkelijker te maken.
+
+Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, gebruikt u de RTF-editor om uw beschrijving op te maken.
+
+![De RTF-editor gebruiken](./media/text-editor2.png)
+
+Gebruik de volgende instructies voor het gebruik van de RTF-editor:
+
+- Als u de indeling van de inhoud wilt wijzigen, markeert u de tekst die u wilt opmaken en selecteert u een tekst stijl, zoals hieronder wordt weer gegeven:
+
+     ![De RTF-editor gebruiken om de tekst indeling te wijzigen](./media/text-editor3.png)
+
+- Gebruik de onderstaande opties om een lijst met opsommings tekens of genummerde lijsten aan de tekst toe te voegen:
+
+     ![De RTF-editor gebruiken om lijsten toe te voegen](./media/text-editor4.png)
+
+- Gebruik de onderstaande opties om inspringing toe te voegen aan of te verwijderen uit de tekst:
+
+     ![De Rich Text Editor gebruiken om in te springen](./media/text-editor5.png)
+
+
+
+
+
+
 
 ### <a name="search-keywords"></a>Sleutelwoorden zoeken
 
@@ -218,16 +252,14 @@ De pagina **Beschik baarheid** bevat opties over waar en hoe u uw aanbieding bes
 
 ### <a name="markets"></a>Landen
 
-In deze sectie kunt u de markten opgeven waarin uw aanbieding beschikbaar moet zijn. Als u dit wilt doen, selecteert u **markten bewerken.** Hiermee wordt het pop-upvenster **markt selectie** weer gegeven.
+In deze sectie kunt u de markten opgeven waarin uw aanbieding beschikbaar moet zijn. Als u dit wilt doen, selecteert u **markten bewerken**om het pop-upvenster **markt selectie** weer te geven.
 
 Standaard zijn er geen markten geselecteerd, maar u moet ten minste één markt selecteren om uw aanbieding te publiceren. Klik op **Alles selecteren** om uw aanbieding beschikbaar te stellen op elke mogelijke markt of selecteer de specifieke markten die u wilt toevoegen. Wanneer u klaar bent, selecteert u **Opslaan**.
 
-Houd er rekening mee dat uw selecties hier alleen van toepassing zijn op nieuwe acquisities; Als iemand uw app al in een bepaalde markt heeft en u deze markt later verwijdert, kunnen de personen die de aanbieding al op die markt hebben, deze blijven gebruiken, maar kunnen er geen nieuwe klanten op deze markt worden aangeboden.
+Uw selecties zijn hier alleen van toepassing op nieuwe verwervingen; Als iemand uw app al in een bepaalde markt heeft en u deze markt later verwijdert, kunnen de personen die de aanbieding al op die markt hebben, deze blijven gebruiken, maar kunnen er geen nieuwe klanten op deze markt worden aangeboden.
 
 > [!IMPORTANT]
-> Het is uw verantwoordelijkheid om te voldoen aan alle lokale wettelijke vereisten, zelfs als deze vereisten hier niet worden vermeld of in het partner centrum.
-
-Houd er rekening mee dat zelfs als u alle markten selecteert, de lokale wetgeving en beperkingen of andere factoren ervoor kunnen zorgen dat bepaalde aanbiedingen in sommige landen en regio's niet worden vermeld.
+> Het is uw verantwoordelijkheid om te voldoen aan alle lokale wettelijke vereisten, zelfs als deze vereisten hier niet worden vermeld of in het partner centrum. Zelfs als u alle markten selecteert, kunnen lokale wetten en beperkingen of andere factoren verhinderen dat bepaalde aanbiedingen in sommige landen en regio's worden weer gegeven.
 
 ### <a name="preview-audience"></a>Voor beeld van doel groep
 
@@ -245,7 +277,7 @@ Het basis licentie model bepaalt hoe klanten uw toepassing toewijzen in het CRM-
 
 ### <a name="requires-s2s-outbound-and-crm-secure-store-access"></a>Vereist S2S-uitgaande en CRM Secure Store-toegang
 
-Schakel dit selectie vakje in om de configuratie van de beveiligde Store van CRM of de server-naar-server (S2S) uitgaande toegang in te scha kelen. Houd er rekening mee dat deze functie tijdens de certificerings fase gespecialiseerde aandacht vereist van het Dynamics 365-team. Micro soft neemt contact met u op om extra stappen uit te voeren om deze functie te ondersteunen.
+Schakel dit selectie vakje in om de configuratie van de beveiligde Store van CRM of de server-naar-server (S2S) uitgaande toegang in te scha kelen. Deze functie vereist een specialistische overweging van het Dynamics 365-team tijdens de certificerings periode. Micro soft neemt contact met u op om extra stappen uit te voeren om deze functie te ondersteunen.
 
 ### <a name="application-configuration-url"></a>Configuratie-URL van de toepassing
 
@@ -290,7 +322,7 @@ Een implementatie sjabloon die alle Azure-resources bevat waaruit uw oplossing b
 
 - **Azure Resource Manager sjabloon voor het station testen**: Upload de. zip met uw Azure Resource Manager sjabloon.  Meer informatie over het maken van een Azure Resource Manager sjabloon in het Quick Start-artikel [Azure Resource Manager sjablonen maken en implementeren met behulp van de Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal).
 
-- **Duur van test drive** (vereist): Geef aan hoe lang het test station actief blijft, in aantal uren. De Test Drive wordt automatisch beëindigd na afloop van deze periode. Deze duur mag alleen worden ingesteld met een geheel aantal uren (bijvoorbeeld ' 2 ' uur, ' 1,5 ' is niet geldig).
+- **Duur van test drive** (vereist): Geef aan hoe lang het test station actief blijft, in aantal uren. De Test Drive wordt automatisch beëindigd na afloop van deze periode. Deze duur mag alleen worden ingesteld met een geheel aantal uren (bijvoorbeeld 2 uur; "1,5" is niet geldig).
 
 ### <a name="technical-configuration-for-dynamics-365-test-drive"></a>Technische configuratie voor Dynamics 365 test drive
 
@@ -298,17 +330,17 @@ Micro soft kan de complexiteit van het instellen van een test drive verwijderen 
 
 - **Maxi maal aantal gelijktijdige test schijven** (vereist): Stel het maximum in voor de klanten die uw test drive tegelijk kunnen gebruiken. Elke gelijktijdige gebruiker gebruikt een Dynamics 365-licentie terwijl de test drive actief is. u moet er dus voor zorgen dat er voldoende licenties beschikbaar zijn voor de ondersteuning van de maximum limiet. Aanbevolen waarde van 3-5.
 
-- **Duur van test drive** (vereist): Geef aan hoe lang het test station actief blijft door het aantal uren te definiëren. Na dit aantal uur wordt de sessie beëindigd en wordt een van uw licenties niet meer verbruikt. We raden een waarde van 2-24 uur aan, afhankelijk van de complexiteit van uw aanbieding. Deze duur mag alleen worden ingesteld met een geheel aantal uren (bijvoorbeeld ' 2 ' uur, ' 1,5 ' is niet geldig).  De gebruiker kan een nieuwe sessie aanvragen als deze niet langer actief zijn en de test drive opnieuw willen gebruiken.
+- **Duur van test drive** (vereist): Geef aan hoe lang het test station actief blijft door het aantal uren te definiëren. Na dit aantal uur wordt de sessie beëindigd en wordt een van uw licenties niet meer verbruikt. We raden een waarde van 2-24 uur aan, afhankelijk van de complexiteit van uw aanbieding. Deze duur mag alleen worden ingesteld met een geheel aantal uren (bijvoorbeeld 2 uur; "1,5" is niet geldig). De gebruiker kan een nieuwe sessie aanvragen als deze niet langer actief zijn en de test drive opnieuw willen gebruiken.
 
 - **URL van exemplaar** (vereist): de URL waar de klant de test drive begint. Doorgaans de URL van uw Dynamics 365-exemplaar waarop uw app wordt uitgevoerd, waarbij voorbeeld gegevens zijn geïnstalleerd (bijvoorbeeld https://testdrive.crm.dynamics.com).
 
 - **URL** van de Web-API voor het exemplaar (vereist): Haal de Web-API-URL voor uw Dynamics 365-exemplaar op door u aan te melden bij uw Microsoft 365-account en te navigeren naar **instellingen** \&gt; **Aanpassing** \&gt; **Resources voor ontwikkel aars** \&gt; **Web-API van het exemplaar (Service root URL)** , kopieer de URL die u hier kunt vinden (bijvoorbeeld https://testdrive.crm.dynamics.com/api/data/v9.0).
 
-- **Rolnaam** (vereist): Geef de naam op van de beveiligingsrol die u hebt gedefinieerd in uw aangepaste Dynamics 365-test drive. Deze wordt toegewezen aan de gebruiker tijdens hun test drive (bijvoorbeeld test-drive-rol).
+- **Rolnaam** (vereist): Geef de naam op van de beveiligingsrol die u hebt gedefinieerd in uw aangepaste Dynamics 365-test drive. Deze beveiligingsrol naam wordt toegewezen aan de gebruiker tijdens hun test drive (bijvoorbeeld test station-Role).
 
 ### <a name="technical-configuration-for-logic-app-test-drive"></a>Technische configuratie voor de test drive Logic-app
 
-Aangepaste producten moeten gebruikmaken van dit type test drive-implementatie sjabloon dat een verscheidenheid aan complexe oplossings architecturen omvat. Ga voor meer informatie over het instellen van de test schijven voor logische apps naar [activiteiten](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) en [klanten betrokkenheid](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app) op github.
+Aangepaste producten moeten gebruikmaken van dit type test drive-implementatie sjabloon, dat een verscheidenheid aan complexe oplossings architecturen omvat. Ga voor meer informatie over het instellen van de test schijven voor logische apps naar [activiteiten](https://github.com/Microsoft/AppSource/blob/master/Setup-your-Azure-subscription-for-Dynamics365-Operations-Test-Drives.md) en [klanten betrokkenheid](https://github.com/Microsoft/AppSource/wiki/Setting-up-Test-Drives-for-Dynamics-365-app) op github.
 
 - **Regio** (vereist, vervolg keuzelijst met één selectie): er zijn momenteel 26 door Azure ondersteunde regio's waar uw test drive beschikbaar kan worden gemaakt. De resources voor uw logische app worden geïmplementeerd in de regio die u selecteert. Als uw logische app aangepaste resources heeft die zijn opgeslagen in een bepaalde regio, moet u ervoor zorgen dat de regio hier wordt geselecteerd. De beste manier om dit te doen is om uw logische app lokaal te implementeren in uw Azure-abonnement in de portal en te controleren of deze correct werkt voordat u deze selectie maakt.
 
@@ -328,21 +360,21 @@ Producten die een interactief Power BI visueel element willen demonstreren, kunn
 
 ### <a name="deployment-subscription-details"></a>Details van implementatie abonnement
 
-Als u het test station namens u wilt implementeren, moet u een afzonderlijk, uniek Azure-abonnement maken en opgeven. (Niet vereist voor Power BI test stations).
+Als u het test station namens u wilt implementeren, maakt en levert u een afzonderlijk, uniek Azure-abonnement (niet vereist voor Power BI test stations).
 
 - **Azure-abonnements-id** (vereist voor Azure Resource Manager en Logic apps): Voer de abonnements-id in om toegang te verlenen tot uw Azure-account services voor rapportage en facturering van resource gebruik. Het is raadzaam om [een afzonderlijk Azure-abonnement te maken](https://docs.microsoft.com/azure/billing/billing-create-subscription) dat u voor test stations kunt gebruiken als u er nog geen hebt. U kunt uw Azure-abonnements-ID vinden door u aan te melden bij de [Azure Portal](https://portal.azure.com/) en te navigeren naar het tabblad **abonnementen** van het menu aan de linkerkant. Als u het tabblad selecteert, wordt uw abonnements-ID weer gegeven (bijvoorbeeld "a83645ac-1234-5ab6-6789-1h234g764ghty").
 
-- **Azure AD-Tenant-id** (vereist): voer uw Azure Active Directory (AD) [Tenant-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links, selecteert u **Eigenschappen** en zoekt u naar de weer gegeven **Directory-id** (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van uw organisatie opzoeken met uw domein naam-URL op: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
+- **Azure AD-Tenant-id** (vereist): voer uw Azure Active Directory (AD) [Tenant-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links, selecteert u **Eigenschappen**en zoekt u naar de weer gegeven **Directory-id** (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e). U kunt ook de Tenant-ID van uw organisatie opzoeken met uw domein naam-URL op: [https://www.whatismytenantid.com](https://www.whatismytenantid.com).
 
 - **Naam van Azure AD-Tenant** (vereist voor dynamische 365): Voer de naam van uw Azure Active Directory (AD) in. Als u deze naam wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). in de rechter bovenhoek wordt de naam van de Tenant vermeld onder uw account naam.
 
-- **Azure AD-App-ID** (vereist): voer uw Azure Active Directory (AD) [-toepassings-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu aan de linkerkant, selecteert u **app-registraties**en zoekt u naar het weer gegeven **toepassings-id** -nummer (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
+- **Azure AD-App-ID** (vereist): voer uw Azure Active Directory (AD) [-toepassings-id](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)in. Als u deze ID wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/), selecteert u het tabblad Active Directory in het menu links, selecteert u **app-registraties**en zoekt u naar het **toepassings-id-** nummer dat wordt weer gegeven (bijvoorbeeld 50c464d3-4930-494c-963c-1e951d15360e).
 
-- **Azure AD-App-client geheim** (vereist): Voer uw Azure AD-toepassings [client geheim](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)in. Als u deze waarde wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). Selecteer in het linkermenu het tabblad **Azure Active Directory** , selecteer **app-registraties**en selecteer vervolgens uw test drive-app. Selecteer vervolgens **certificaten en geheimen**, selecteer **Nieuw client geheim**, voer een beschrijving in, selecteer **nooit** onder **verlooptd**en kies vervolgens **toevoegen**. Zorg ervoor dat u de waarde kopieert. (Verlaat de pagina niet voordat u dit doet, anders hebt u geen toegang tot de waarde.)
+- **Azure AD-App-client geheim** (vereist): Voer uw Azure AD-toepassings [client geheim](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets)in. Als u deze waarde wilt vinden, meldt u zich aan bij de [Azure Portal](https://portal.azure.com/). Selecteer in het linkermenu het tabblad **Azure Active Directory** , selecteer **app-registraties**en selecteer vervolgens uw test drive-app. Selecteer vervolgens **certificaten en geheimen**, selecteer **Nieuw client geheim**, voer een beschrijving in, selecteer **nooit** onder **verlooptd**en kies vervolgens **toevoegen**. Zorg ervoor dat u de waarde kopieert. Navigeer niet weg van de pagina voordat u de waarde kopieert of u hebt geen toegang tot de waarde.)
 
 ### <a name="test-drive-marketplace-listings"></a>Marketplace-vermeldingen testen
 
-Met de optie **Marketplace-vermelding** die is gevonden op het tabblad **test station** worden de talen weer gegeven waarin uw test drive beschikbaar is. Houd er rekening mee dat momenteel **Nederlands (Verenigde Staten)** de enige locatie beschikbaar is. Selecteer de naam van de taal om informatie in te voeren die de test drive ervaring beschrijft.
+Met de optie **Marketplace-vermelding** die is gevonden op het tabblad **test station** worden de talen weer gegeven waarin uw test drive beschikbaar is. **Engels (Verenigde Staten)** is momenteel de enige locatie die beschikbaar is. Selecteer de naam van de taal om informatie in te voeren die de test drive ervaring beschrijft.
 
 - **Beschrijving** (vereist): Geef een beschrijving van uw test drive, wat wordt aangetoond, wat de gebruiker kan doen om te experimenteren met, functies om te verkennen en alle relevante informatie om de gebruiker te helpen bepalen of u uw aanbieding moet verkrijgen. In dit veld kunnen Maxi maal 3.000 tekens tekst worden ingevoerd. 
 
@@ -350,7 +382,7 @@ Met de optie **Marketplace-vermelding** die is gevonden op het tabblad **test st
 
 - **Gebruikers handleiding** (vereist): een diep gaande overzicht van uw test drive ervaring. De gebruikers handleiding moet betrekking hebben op precies wat u wilt dat de klant het test drive verkrijgt en zich als referentie voor eventuele vragen bevindt. Het bestand moet een PDF-indeling hebben en een naam hebben (255 tekens Max) na het uploaden.
 
-- **Video's: Video's toevoegen** (optioneel): Video's kunnen worden geüpload naar YouTube of Vimeo en hiernaar wordt verwezen met een koppeling en een miniatuur afbeelding (533 x 324 pixels), zodat een klant een door loop van de informatie kan bekijken om hen meer inzicht te geven in de test drive, met inbegrip van de manier waarop u de functies van uw aanbieding kunt gebruiken en inzicht kunt krijgen in de voor delen.
+- **Video's: Video's toevoegen** (optioneel): Video's kunnen worden geüpload naar YouTube of Vimeo en hiernaar wordt verwezen met een koppeling en een miniatuur afbeelding (533 x 324 pixels), zodat een klant een overzicht van de informatie kan bekijken om hen meer inzicht te geven in de test drive, met inbegrip van de manier waarop u de functies van uw aanbieding kunt gebruiken en inzicht kunt krijgen in de voor delen.
   - **Naam** (vereist)
   - **URL (alleen YouTube of Vimeo)** (vereist)
   - **Miniatuur (533 x 324px)** : het afbeeldings bestand moet de PNG-indeling hebben.
@@ -361,13 +393,13 @@ Op deze pagina kunt u aanvullende informatie over uw aanbieding opgeven zodat we
 
 ### <a name="key-usage-scenario"></a>Scenario voor sleutel gebruik
 
-U moet een PDF-bestand uploaden met een lijst met de scenario's voor het gebruik van sleutels die worden vermeld in een document (PDF-indeling). Alle scenario's die hier worden vermeld, kunnen door ons validatie team worden geverifieerd voordat we uw aanbieding voor Marketplace goed keuren.
+Het is nood zakelijk om een PDF-bestand te uploaden met een overzicht van de scenario's voor het gebruik van sleutels die worden vermeld in een document (PDF-indeling). Alle scenario's die hier worden vermeld, kunnen door ons validatie team worden geverifieerd voordat we uw aanbieding voor Marketplace goed keuren.
 
 ## <a name="publish"></a>Publiceren
 
 ### <a name="submit-offer-to-preview"></a>Aanbieding verzenden naar Preview
 
-Zodra u alle vereiste delen van de aanbieding hebt voltooid, selecteert u **publiceren** in de rechter bovenhoek van de portal. U wordt opnieuw omgeleid naar de pagina **controleren en publiceren** . 
+Zodra u alle vereiste delen van de aanbieding hebt voltooid, selecteert u **publiceren** in de rechter bovenhoek van de portal. U wordt omgeleid naar de pagina **controleren en publiceren** .
 
 Als dit de eerste keer is dat u deze aanbieding publiceert, kunt u het volgende doen:
 
@@ -376,7 +408,7 @@ Als dit de eerste keer is dat u deze aanbieding publiceert, kunt u het volgende 
     - *Onvolledig* : de sectie bevat fouten die moeten worden hersteld of waarvoor meer informatie moet worden verstrekt. Ga terug naar de sectie (s) en werk deze bij.
     - *Voltooid* : de sectie is voltooid, alle vereiste gegevens zijn opgegeven en er zijn geen fouten. Alle secties van de aanbieding moeten een volledige status hebben voordat u de aanbieding kunt indienen.
 - Geef in de sectie **opmerkingen voor certificering** test instructies op voor het certificerings team om ervoor te zorgen dat uw app correct wordt getest, naast eventuele aanvullende notities die nuttig zijn voor de uitleg van uw app.
-- Verzend de aanbieding voor publicatie door **verzenden**te selecteren. We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Ga terug naar het partner centrum en selecteer **Go-Live** voor de aanbieding om uw aanbieding te publiceren naar het open bare (of als u een privé-aanbieding naar de persoonlijke doel groep hebt).
+- Verzend de aanbieding voor publicatie door **verzenden**te selecteren. We sturen u een e-mail om u te laten weten wanneer een preview-versie van de aanbieding beschikbaar is om te controleren en goed te keuren. Ga terug naar het partner centrum en selecteer **Go-Live** voor de aanbieding om te publiceren naar het publiek (of als u een privé-aanbieding naar de privé doelgroep wilt).
 
 ## <a name="next-steps"></a>Volgende stappen
 

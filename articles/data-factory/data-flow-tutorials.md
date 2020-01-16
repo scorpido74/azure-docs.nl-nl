@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 01/13/2020
-ms.openlocfilehash: 8350a42bc5f72adec135b2b39c5dde36e408c174
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.date: 01/14/2020
+ms.openlocfilehash: dee8c919b815c6f22b171f58be9fc6a38167056a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942135"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030025"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Video-zelf studies voor gegevens stroom toewijzen
 
@@ -63,7 +63,7 @@ Wanneer updates worden doorgevoerd in het product, hebben sommige functies in de
 
 [Filter transformatie](https://youtu.be/OhbKDOXSfeE)
 
-[Voorwaardelijke Splits transformatie](https://youtu.be/OhbKDOXSfeE)
+[Voorwaardelijke Splits transformatie](http://youtu.be/W1lQHojhKZw?hd=1)
 
 [Bestaat trans formatie](http://youtu.be/GS8JVgNBMfs?hd=1)
 

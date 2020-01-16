@@ -1,18 +1,14 @@
 ---
 title: Fysieke servers beoordelen voor migratie naar Azure met Azure Migrate server-evaluatie
 description: Hierin wordt beschreven hoe u on-premises fysieke servers kunt beoordelen voor migratie naar Azure met behulp van Azure Migrate server-evaluatie.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.author: raynew
-ms.openlocfilehash: 56b7cc6e95cb85b5508199287cc77aedeebc8b81
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 10cd13831fe6cb6b843f0a79a5d5ba56814bcde0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280552"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028985"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Fysieke servers beoordelen met Azure Migrate: Server evaluatie
 
@@ -141,7 +137,7 @@ In het geval van problemen kunt u de script Logboeken openen op C:\ProgramData\M
 
 ### <a name="verify-appliance-access-to-azure"></a>Toestel toegang tot Azure controleren
 
-Zorg ervoor dat het apparaat verbinding kan maken met [Azure-url's](migrate-support-matrix-physical.md#assessment-appliance-url-access).
+Zorg ervoor dat het apparaat verbinding kan maken met [Azure-url's](migrate-appliance.md#url-access).
 
 
 ### <a name="configure-the-appliance"></a>Het apparaat configureren
@@ -211,7 +207,7 @@ Voer een evaluatie als volgt uit:
 1. Bekijk de [Aanbevolen procedures](best-practices-assessment.md) voor het maken van evaluaties.
 2. Klik op het tabblad **servers** in **Azure migrate: tegel server bepaling** op **evalueren**.
 
-    ![Evalueren](./media/tutorial-assess-physical/assess.png)
+    ![Beoordelen](./media/tutorial-assess-physical/assess.png)
 
 2. Geef in **servers beoordelen**een naam op voor de evaluatie.
 3. Klik op **Alles weergeven** om de evaluatie-eigenschappen te controleren.

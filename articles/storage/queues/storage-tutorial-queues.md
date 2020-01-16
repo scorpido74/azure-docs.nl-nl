@@ -8,14 +8,14 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: tutorial
 ms.reviewer: cbrooks
-ms.openlocfilehash: c8e1d5c1c11c4fdf902c7be7bc03be298e93a8b9
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 9cbdc5231fdc9f836f300b1a3a81a237a9efc123
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721131"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968198"
 ---
-# <a name="tutorial-work-with-azure-storage-queues"></a>Zelfstudie: Werken met Azure-opslagwachtrijen
+# <a name="tutorial-work-with-azure-storage-queues"></a>Zelf studie: werken met Azure Storage-wacht rijen
 
 Azure Queue-opslag implementeert Cloud wachtrijen om communicatie tussen onderdelen van een gedistribueerde toepassing mogelijk te maken. Elke wachtrij houdt een lijst bij van berichten die kunnen worden toegevoegd door een onderdeel van de afzender en worden verwerkt door een onderdeel van de ontvanger. Met een wachtrij kan uw toepassing onmiddellijk worden geschaald om aan de vraag te voldoen. In dit artikel worden de basis stappen beschreven voor het werken met een Azure Storage-wachtrij.
 
@@ -41,13 +41,13 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="create-an-azure-storage-account"></a>Een Azure-opslagaccount maken
 
-Maak eerst een Azure Storage-account. Zie de Snelstartgids [een opslag account maken](../common/storage-quickstart-create-account.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json) voor een stapsgewijze hand leiding voor het maken van een opslag account.
+Maak eerst een Azure Storage-account. Zie de Snelstartgids [een opslag account maken](../common/storage-account-create.md?toc=%2Fazure%2Fstorage%2Fqueues%2Ftoc.json) voor een stapsgewijze hand leiding voor het maken van een opslag account.
 
 ## <a name="create-the-app"></a>De app maken
 
 Maak een .NET core-toepassing met de naam **QueueApp**. Voor eenvoud kan deze app berichten verzenden en ontvangen via de wachtrij.
 
-1. In een console venster (zoals cmd, Power shell of Azure CLI) gebruikt u de `dotnet new` opdracht om een nieuwe console-app te maken met de naam **QueueApp**. Met deze opdracht maakt u een eenvoudig ' C# Hallo wereld '-project met één bron bestand: **Program.cs**.
+1. In een console venster (zoals CMD, Power shell of Azure CLI) gebruikt u de opdracht `dotnet new` om een nieuwe console-app te maken met de naam **QueueApp**. Met deze opdracht maakt u een eenvoudig ' C# Hallo wereld '-project met één bron bestand: **Program.cs**.
 
    ```console
    dotnet new console -n QueueApp
@@ -97,11 +97,11 @@ Maak een .NET core-toepassing met de naam **QueueApp**. Voor eenvoud kan deze ap
 
 Omdat de app gebruikmaakt van cloud resources, wordt de code asynchroon uitgevoerd. C#Het is echter wel **async** en **wacht** op ongeldige tref woorden in **hoofd** methoden tot C# 7,1. U kunt eenvoudig overschakelen naar die compiler via een vlag in het **csproj** -bestand.
 
-1. Op de opdracht regel in de projectmap typt `code .` u Visual Studio code openen in de huidige map. Houd het opdracht regel venster geopend. Er zijn meer opdrachten om later uit te voeren. Als u wordt gevraagd om assets C# toe te voegen die vereist zijn voor het maken en opsporen van fouten, klikt u op de knop **Ja** .
+1. Ga naar de opdracht regel in de projectmap en typ `code .` om Visual Studio code te openen in de huidige map. Houd het opdracht regel venster geopend. Er zijn meer opdrachten om later uit te voeren. Als u wordt gevraagd om assets C# toe te voegen die vereist zijn voor het maken en opsporen van fouten, klikt u op de knop **Ja** .
 
-2. Open het bestand **QueueApp. csproj** in de editor.
+2. Open het bestand **QueueApp.csproj** in de editor.
 
-3. Voeg `<LangVersion>7.1</LangVersion>` deze toe aan de eerste **PropertyGroup** in het build-bestand. Zorg ervoor dat u alleen de **LangVersion** -tag toevoegt als uw **TargetFramework** kan afwijken, afhankelijk van welke versie van .net u hebt geïnstalleerd.
+3. Voeg `<LangVersion>7.1</LangVersion>` toe aan de eerste **PropertyGroup** in het build-bestand. Zorg ervoor dat u alleen de **LangVersion** -tag toevoegt als uw **TargetFramework** kan afwijken, afhankelijk van welke versie van .net u hebt geïnstalleerd.
 
    ```xml
    <Project Sdk="Microsoft.NET.Sdk">
@@ -124,18 +124,18 @@ Omdat de app gebruikmaakt van cloud resources, wordt de code asynchroon uitgevoe
    static async Task Main(string[] args)
    ```
 
-6. Sla het **Program.cs** -bestand op.
+6. Sla bestand **Program.cs** op.
 
 ## <a name="create-a-queue"></a>Een wachtrij maken
 
-1. Installeer de pakketten **micro soft. Azure. storage. common** en **micro soft. Azure. storage. Queue** in het project `dotnet add package` met de opdracht. Voer de volgende DotNet-opdrachten uit vanuit de projectmap in het console venster.
+1. Installeer de pakketten **micro soft. Azure. storage. common** en **micro soft. Azure. storage. Queue** in het project met de opdracht `dotnet add package`. Voer de volgende DotNet-opdrachten uit vanuit de projectmap in het console venster.
 
    ```console
    dotnet add package Microsoft.Azure.Storage.Common
    dotnet add package Microsoft.Azure.Storage.Queue
    ```
 
-2. Voeg boven aan het **Program.cs** -bestand de volgende naam ruimten toe na de `using System;` instructie. Deze app gebruikt typen uit deze naam ruimten om verbinding te maken met Azure Storage en te werken met wacht rijen.
+2. Voeg boven aan het **Program.cs** -bestand de volgende naam ruimten toe, direct na de `using System;`-instructie. Deze app gebruikt typen uit deze naam ruimten om verbinding te maken met Azure Storage en te werken met wacht rijen.
 
    ```csharp
    using System.Threading.Tasks;
@@ -143,7 +143,7 @@ Omdat de app gebruikmaakt van cloud resources, wordt de code asynchroon uitgevoe
    using Microsoft.Azure.Storage.Queue;
    ```
 
-3. Sla het **Program.cs** -bestand op.
+3. Sla bestand **Program.cs** op.
 
 ### <a name="get-your-connection-string"></a>Verbindingsreeks ophalen
 
@@ -229,7 +229,7 @@ Maak een nieuwe methode om een bericht naar de wachtrij te verzenden. Voeg de vo
 
 Een bericht moet in een formaat zijn dat kan worden opgenomen in een XML-aanvraag met UTF-8-codering, en mag maximaal 64 KB groot zijn. Als een bericht binaire gegevens bevat, is het raadzaam om het bericht met base64 te coderen.
 
-Standaard is de maximale time-to-live voor een bericht ingesteld op 7 dagen. U kunt elk wille keurig positief getal voor de time-to-Live-bericht opgeven. Gebruik `Timespan.FromSeconds(-1)` in de aanroep van **AddMessageAsync**om een bericht toe te voegen dat niet verloopt.
+Standaard is de maximale time-to-live voor een bericht ingesteld op 7 dagen. U kunt elk wille keurig positief getal voor de time-to-Live-bericht opgeven. Als u een bericht wilt toevoegen dat niet verloopt, gebruikt u `Timespan.FromSeconds(-1)` in de aanroep van **AddMessageAsync**.
 
 ```csharp
 await theQueue.AddMessageAsync(message, TimeSpan.FromSeconds(-1), null, null, null);
@@ -264,7 +264,7 @@ Maak een nieuwe methode met de naam **ReceiveMessageAsync**. Met deze methode wo
 
 ## <a name="delete-an-empty-queue"></a>Een lege wachtrij verwijderen
 
-Het is een best practice aan het einde van een project om te bepalen of u nog steeds de resources nodig hebt die u hebt gemaakt. Resources die actief zijn, kunnen kosten in rekening worden. Als de wachtrij bestaat, maar leeg is, vraagt u de gebruiker of ze deze wil verwijderen.
+Het is een best practice aan het einde van een project om te bepalen of u nog steeds de resources nodig hebt die u hebt gemaakt. Resources die actief blijven, kunnen u geld kosten. Als de wachtrij bestaat, maar leeg is, vraagt u de gebruiker of ze deze wil verwijderen.
 
 1. Vouw de methode **ReceiveMessageAsync** uit om een prompt op te geven voor het verwijderen van de lege wachtrij.
 
@@ -452,7 +452,7 @@ Dit is de volledige code lijst voor dit project.
    dotnet run First queue message
    ```
 
-U ziet deze uitvoer:
+Deze uitvoer ziet er ongeveer als volgt uit:
 
    ```output
    C:\Tutorials\QueueApp>dotnet run First queue message
@@ -505,7 +505,7 @@ U ziet deze uitvoer:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 1. Een wachtrij maken
 2. Berichten toevoegen aan en verwijderen uit een wachtrij

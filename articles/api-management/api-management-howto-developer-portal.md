@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: a06184cb45280d323a050085e94945a730d6c72c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81daada7a62da86772d4657a1a8aaff91f27b673
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442597"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045576"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Overzicht van Azure API Management-ontwikkelaars Portal
 
@@ -39,7 +39,7 @@ In dit artikel worden de verschillen beschreven tussen zelf-hostende en beheerde
 U kunt uw ontwikkelaars Portal op twee manieren bouwen:
 
 - **Beheerde versie** : door de portal te bewerken en aan te passen, die in uw API Management-exemplaar is ingebouwd en toegankelijk is via de URL `<your-api-management-instance-name>.developer.azure-api.net`. Raadpleeg [Dit documentatie artikel](api-management-howto-developer-portal-customize.md) voor meer informatie over het openen en aanpassen van de beheerde Portal.
-- **Zelf-hostende versie** : door uw portal buiten een API Management-exemplaar te implementeren en zelf te hosten. Met deze aanpak kunt u de code base van de portal bewerken en de meegeleverde kern functionaliteit uitbreiden. U moet ook zelf een upgrade van de portal naar de nieuwste versie uitvoeren. Raadpleeg de [github-opslag plaats met de bron code van de portal][1]voor meer informatie en instructies. In de [zelf studie voor de beheerde versie](api-management-howto-developer-portal-customize.md) wordt het beheer paneel van de portal beschreven. dit wordt ook aanbevolen in de zelf-hostende versie.
+- **Zelf-hostende versie** : door uw portal buiten een API Management-exemplaar te implementeren en zelf te hosten. Met deze aanpak kunt u de code base van de portal bewerken en de meegeleverde kern functionaliteit uitbreiden. U moet ook zelf een upgrade van de portal naar de nieuwste versie uitvoeren. Raadpleeg de [github-opslag plaats met de bron code van de portal][1] en [de zelf studie over het implementeren van een widget][4]voor meer informatie en instructies. In de [zelf studie voor de beheerde versie](api-management-howto-developer-portal-customize.md) wordt het beheer paneel van de portal beschreven. dit wordt ook aanbevolen in de zelf-hostende versie.
 
 ## <a name="portal-architectural-concepts"></a>Concepten van de portal architectuur
 
@@ -101,6 +101,10 @@ Verificatie met OAuth in de interactieve ontwikkelaars console wordt nog niet on
 De oude portals voor ontwikkel aars en uitgevers zijn nu *verouderde* functies. ze ontvangen alleen beveiligings updates. Nieuwe functies worden alleen in de nieuwe ontwikkelaarsportal geïmplementeerd.
 
 Afschaffing van de verouderde portals wordt afzonderlijk aangekondigd. Als u vragen of opmerkingen hebt, kunt u deze [in een specifiek github-probleem](https://github.com/Azure/api-management-developer-portal/issues/121)opheffen.
+
+### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>De benodigde functionaliteit wordt niet ondersteund in de portal
+
+Gebruik de zelf-hostende versie en [Implementeer uw eigen widget][4].
 
 ### <a name="how-can-i-automate-portal-deployments"></a>Hoe kan ik Portal implementaties automatiseren?
 
@@ -216,6 +220,7 @@ Meer informatie over de nieuwe ontwikkelaars portal:
 
 - [De beheerde ontwikkelaars Portal openen en aanpassen](api-management-howto-developer-portal-customize.md)
 - [Zelf-hostende versie van de Portal instellen][2]
+- [Uw eigen widget implementeren][4]
 
 Bladeren door andere resources:
 
@@ -225,3 +230,4 @@ Bladeren door andere resources:
 [1]: https://aka.ms/apimdevportal
 [2]: https://github.com/Azure/api-management-developer-portal/wiki
 [3]: https://github.com/Azure/api-management-developer-portal/projects
+[4]: https://aka.ms/apimdevportal/extend

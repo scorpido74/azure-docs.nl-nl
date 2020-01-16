@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 1dbbe04818e75e41944a1c0fe54f53849cf71983
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 854d98a4f2a1b2500bc301d2305c0dd1f27aaaa4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725856"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980819"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Problemen met het Azure Migrate apparaat en de detectie oplossen
 
@@ -75,7 +75,7 @@ Als deze verbindings fout optreedt, kunt u mogelijk geen verbinding maken met vC
 
 - Fout 60052 ' het apparaat is mogelijk niet geregistreerd voor het Azure Migrate-project ' treedt op als het Azure-account dat wordt gebruikt om het apparaat te registreren, onvoldoende machtigingen heeft.
     - Zorg ervoor dat het Azure-gebruikers account dat wordt gebruikt om het apparaat te registreren, ten minste Inzender machtigingen heeft voor het abonnement.
-    - Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) over vereiste Azure-rollen en-machtigingen.
+    - Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) over vereiste Azure-rollen en-machtigingen.
 - Fout 60039 ' het apparaat is mogelijk niet geregistreerd voor het Azure Migrate-project ' kan zich voordoen als de registratie mislukt, omdat het Azure Migrate project dat is gebruikt voor de registratie van het apparaat, niet kan worden gevonden.
     - In de Azure Portal en controleer of het project bestaat in de resource groep.
     - Als het project niet bestaat, maakt u een nieuw Azure Migrate project in de resource groep en registreert u het apparaat opnieuw. [Meer informatie over het](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool) maken van een nieuw project.
@@ -86,7 +86,7 @@ Ga als volgt te werk als de fout 60030 of 60031 wordt weer gegeven: ' een Azure 
 - Zorg ervoor dat het Azure-gebruikers account dat wordt gebruikt om het apparaat te registreren, ten minste Inzender machtigingen heeft voor het abonnement.
 - Zorg ervoor dat het account toegang heeft tot de sleutel kluis die is opgegeven in het fout bericht en voer de bewerking opnieuw uit.
 - Als het probleem zich blijft voordoen, neemt u contact op met Microsoft-ondersteuning.
-- Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) over de vereiste Azure-rollen en-machtigingen.
+- Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) over de vereiste Azure-rollen en-machtigingen.
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>Fout 60028: detectie kan niet worden gestart
 
@@ -101,7 +101,7 @@ Fout 60025: er is een Azure AD-bewerking mislukt. De fout is opgetreden tijdens 
 - Zorg ervoor dat het gebruikers account dat de detectie initieert, hetzelfde is als dat waarmee het apparaat wordt geregistreerd.
 - Geef Azure Active Directory machtigingen voor toegang tot de toepassing op voor het gebruikers account waarvoor de detectie bewerking is mislukt.
 - Verwijder de resource groep die u eerder hebt gemaakt voor het Azure Migrate project. Maak een andere resource groep om opnieuw te starten.
-- Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) over Azure Active Directory toepassings machtigingen.
+- Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) over Azure Active Directory toepassings machtigingen.
 
 
 ## <a name="error-50004-cant-connect-to-host-or-cluster"></a>Fout 50004: kan geen verbinding maken met de host of het cluster

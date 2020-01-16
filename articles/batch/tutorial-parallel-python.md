@@ -2,27 +2,27 @@
 title: Een parallelle workload uitvoeren - Azure Batch Python
 description: 'Zelfstudie: Mediabestanden parallel verwerken met ffmpeg in Azure Batch met behulp van de clientbibliotheek Batch Python'
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: d06cf74b2a29af3fea2c24facac2899d09a0a84f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: bc73c3c40754d1c3eeb6c86f6c9578047a22d73e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090785"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029243"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Zelfstudie: Een parallelle workload uitvoeren met Azure Batch met behulp van de Python API
 
-Met Azure Batch kunt u grootschalige parallelle en HPC-batchrekentaken (High Performance Computing) efficiënt uitvoeren in Azure. Deze zelfstudie leidt u door een Python-voorbeeld van het uitvoeren van een parallelle workload met behulp van Batch. U leert een gangbare Batch-toepassingswerkstroom en leert hoe u via programmacode werkt met Batch- en Storage-bronnen. In deze zelfstudie leert u procedures om het volgende te doen:
+Met Azure Batch kunt u grootschalige parallelle en HPC-batchrekentaken (High Performance Computing) efficiënt uitvoeren in Azure. Deze zelfstudie leidt u door een Python-voorbeeld van het uitvoeren van een parallelle workload met behulp van Batch. U leert een gangbare Batch-toepassingswerkstroom en leert hoe u via programmacode werkt met Batch- en Storage-bronnen. Procedures voor:
 
 > [!div class="checklist"]
-> * Verifiëren met Batch- en Storage-accounts
+> * Verifiëren met uw Batch- en Storage-accounts
 > * Invoerbestanden uploaden naar Storage
 > * Een pool van rekenknooppunten maken om een toepassing uit te voeren
 > * Een job en taken maken om invoerbestanden te verwerken
@@ -39,7 +39,7 @@ In deze zelfstudie zet u MP4-mediabestanden parallel om in de MP3-indeling met b
 
 * [PIP](https://pip.pypa.io/en/stable/installing/)-pakketbeheer
 
-* Een Azure Batch-account en een gekoppeld Azure Storage-account. Raadpleeg de Batch-quickstarts met behulp van [Azure Portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md) voor instructies voor het maken van deze accounts.
+* Een Azure Batch-account en een gekoppeld Azure Storage-account. Raadpleeg de Batch-snelstartgidsen via de [Azure Portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md) voor instructies over het maken van deze accounts.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -84,7 +84,7 @@ Het script uitvoeren:
 python batch_python_tutorial_ffmpeg.py
 ```
 
-Wanneer u de voorbeeldtoepassing uitvoert, ziet de uitvoer van de console er ongeveer als volgt uit. Tijdens de uitvoering wordt bij `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` gewacht terwijl de rekenknooppunten van de pool worden gestart. 
+Wanneer u de voorbeeldtoepassing uitvoert, ziet de uitvoer van de console er ongeveer als volgt uit. De actieve uitvoering wordt bij `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` onderbroken terwijl de rekenknooppunten van de pool worden gestart. 
    
 ```
 Sample start: 11/28/2018 3:20:21 PM
@@ -123,7 +123,7 @@ In de volgende secties wordt de voorbeeldtoepassing uitgesplitst in de stappen d
 
 ### <a name="authenticate-blob-and-batch-clients"></a>Blob- en Batch-clients verifiëren
 
-Voor het werken met een opslagaccount gebruikt de app het pakket [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob) om een [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice)-object te maken.
+Voor het werken met een opslagaccount gebruikt de app het [azure-storage-blob](https://pypi.python.org/pypi/azure-storage-blob)-pakket om een [BlockBlobService](/python/api/azure-storage-blob/azure.storage.blob.blockblobservice.blockblobservice)-object te maken.
 
 ```python
 blob_client = azureblob.BlockBlobService(
@@ -131,7 +131,7 @@ blob_client = azureblob.BlockBlobService(
     account_key=_STORAGE_ACCOUNT_KEY)
 ```
 
-De app maakt een [BatchServiceClient](/python/api/azure.batch.batchserviceclient)-object om pools, jobs en taken in de Batch-service te maken en te beheren. De Batch-client in het voorbeeld gebruikt verificatie op basis van gedeelde sleutels. Batch ondersteunt ook verificatie via [Azure Active Directory](batch-aad-auth.md) om afzonderlijke gebruikers of een toepassing zonder toezicht te verifiëren.
+De app maakt een [BatchServiceClient](/python/api/azure.batch.batchserviceclient)-object om pools, Batch-taken en taken in de Batch-service te maken en te beheren. De Batch-client in het voorbeeld gebruikt verificatie op basis van gedeelde sleutels. Batch ondersteunt ook verificatie via [Azure Active Directory](batch-aad-auth.md) om afzonderlijke gebruikers of een toepassing zonder toezicht te verifiëren.
 
 ```python
 credentials = batchauth.SharedKeyCredentials(_BATCH_ACCOUNT_NAME,
@@ -144,7 +144,7 @@ batch_client = batch.BatchServiceClient(
 
 ### <a name="upload-input-files"></a>Invoerbestanden uploaden
 
-De app gebruikt de verwijzing `blob_client` om een opslagcontainer voor de MP4-invoerbestanden en een container voor de taakuitvoer te maken. Vervolgens wordt de functie `upload_file_to_container` aangeroepen om MP4-bestanden in de lokale map `InputFiles` naar de container te uploaden. De bestanden in de opslag zijn gedefinieerd als Batch [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile)-objecten die later met Batch kunnen worden gedownload op rekenknooppunten.
+De app gebruikt de verwijzing `blob_client` om een opslagcontainer voor de MP4-invoerbestanden en een container voor de taakuitvoer te maken. Vervolgens wordt de functie `upload_file_to_container` aangeroepen om MP4-bestanden in de lokale map `InputFiles` naar de container te uploaden. De bestanden in de opslag zijn gedefinieerd als Batch [ResourceFile](/python/api/azure-batch/azure.batch.models.resourcefile)-objecten die Batch later kan downloaden naar rekenknooppunten.
 
 ```python
 blob_client.create_container(input_container_name, fail_on_exist=False)
@@ -163,7 +163,7 @@ input_files = [
     for file_path in input_file_paths]
 ```
 
-### <a name="create-a-pool-of-compute-nodes"></a>Een pool van rekenknooppunten maken
+### <a name="create-a-pool-of-compute-nodes"></a>Een pool met rekenknooppunten maken
 
 Daarna wordt in het voorbeeld met behulp van een aanroep naar `create_pool` een pool van rekenknooppunten in het Batch-account gemaakt. Deze gedefinieerd functie gebruikt de Batch-klasse [PoolAddParameter](/python/api/azure-batch/azure.batch.models.pooladdparameter) om het aantal rekenknooppunten, de VM-grootte en een poolconfiguratie in te stellen. Hier geeft het object [VirtualMachineConfiguration](/python/api/azure-batch/azure.batch.models.virtualmachineconfiguration) een [ImageReference](/python/api/azure-batch/azure.batch.models.imagereference) naar een Ubuntu Server 18.04 LTS-installatiekopie op die is gepubliceerd in de Azure Marketplace. Batch ondersteunt diverse VM-installatiekopieën in de Azure Marketplace, evenals aangepaste VM-installatiekopieën.
 
@@ -171,7 +171,7 @@ Het aantal knooppunten en de VM-grootte worden ingesteld met behulp van gedefini
 
 Naast fysieke eigenschappen van knooppunten bevat deze poolconfiguratie het object [StartTask](/python/api/azure-batch/azure.batch.models.starttask). StartTask wordt in elk knooppunt uitgevoerd wanneer dat knooppunt aan de pool wordt toegevoegd en telkens wanneer dat knooppunt opnieuw wordt opgestart. In dit voorbeeld voert StartTask Bash-shell-opdrachten uit om het ffmpeg-pakket en afhankelijkheden op de knooppunten te installeren.
 
-Met de methode [pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations) wordt de pool naar de Batch-service verzonden.
+Met de [pool.add](/python/api/azure-batch/azure.batch.operations.pooloperations)-methode wordt de pool naar de Batch-service verzonden.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -201,7 +201,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-job"></a>Een taak maken
 
-Een Batch-taak (job) geeft een pool op die taken moet uitvoeren en optionele instellingen, zoals een prioriteit en planning voor het werk. In het voorbeeld wordt een job gemaakt met een aanroep naar `create_job`. De app gebruikt de klasse [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) om een taak te maken in de pool. Met de methode [job.add](/python/api/azure-batch/azure.batch.operations.joboperations) wordt de pool naar de Batch-service verzonden. De Batch-taak heeft in eerste instantie geen taken.
+Een Batch-taak (job) geeft een pool op die taken moet uitvoeren en optionele instellingen, zoals een prioriteit en planning voor het werk. In het voorbeeld wordt een job gemaakt met een aanroep naar `create_job`. De app gebruikt de klasse [JobAddParameter](/python/api/azure-batch/azure.batch.models.jobaddparameter) om een taak te maken in de pool. Met de [job.add](/python/api/azure-batch/azure.batch.operations.joboperations)-methode wordt de pool naar de Batch-service verzonden. De Batch-taak heeft in eerste instantie geen taken.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -213,11 +213,11 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>Taken maken
 
-De app maakt taken in de Batch-taak met een aanroep naar `add_tasks`. Deze gedefinieerde functie gebruikt de klasse [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter) om een lijst met taakobjecten te maken. Elke taak voert ffmpeg uit om een `resource_files`-invoerobject met de parameter `command_line` verwerken. ffmpeg is eerder op elk knooppunt geïnstalleerd toen de pool werd gemaakt. Hier voert de opdrachtregel ffmpeg uit om elk MP4-invoerbestand (video) te converteren naar een MP3-bestand (audio).
+De app maakt taken in de Batch-taak met een aanroep naar `add_tasks`. Deze gedefinieerde functie gebruikt de klasse [TaskAddParameter](/python/api/azure-batch/azure.batch.models.taskaddparameter) om een lijst met taakobjecten te maken. Elke taak voert ffmpeg uit om een `resource_files`-invoerobject met de parameter `command_line` verwerken. ffmpeg is eerder geïnstalleerd op elk knooppunt toen de pool werd gemaakt. Hier voert de opdrachtregel ffmpeg uit om elk MP4-invoerbestand (video) te converteren naar een MP3-bestand (audio).
 
 Het voorbeeld maakt een [OutputFile](/python/api/azure-batch/azure.batch.models.outputfile)-object voor het MP3-bestand nadat de opdrachtregel is uitgevoerd. De uitvoerbestanden van elke taak (één in dit geval) worden geüpload naar een container in het gekoppelde opslagaccount met behulp van de eigenschap `output_files` van de taak.
 
-Vervolgens worden met de app taken toegevoegd aan de Batch-taak met behulp van de methode [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations). Deze methode plaatst de taken in een wachtrij voor uitvoering op de rekenknooppunten. 
+Vervolgens worden met de app taken toegevoegd aan de Batch-taak met behulp van de [task.add_collection](/python/api/azure-batch/azure.batch.operations.taskoperations)-methode. Deze methode plaatst de taken in een wachtrij voor uitvoering op de rekenknooppunten. 
 
 ```python
 tasks = list()
@@ -267,7 +267,7 @@ while datetime.datetime.now() < timeout_expiration:
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Nadat de taken zijn uitgevoerd, verwijdert de app automatisch de gemaakte invoeropslagcontainer en biedt u de mogelijkheid de Batch-pool en -taak te verwijderen. De klassen [JobOperations](/python/api/azure-batch/azure.batch.operations.joboperations) en [PoolOperations](/python/api/azure-batch/azure.batch.operations.pooloperations) van BatchClient hebben verwijderingsmethoden, die worden aangeroepen wanneer u de verwijdering bevestigt. Hoewel jobs en taken zelf niet in rekening worden gebracht, worden rekenknooppunten wel in rekening gebracht. Daarom is het raadzaam om pools alleen toe te wijzen als dat nodig is. Wanneer u de pool verwijdert, wordt ook alle taakuitvoer op de knooppunten verwijderd. De invoer- en uitvoerbestanden blijven echter aanwezig in het opslagaccount.
+Nadat de taken zijn uitgevoerd, verwijdert de app automatisch de gemaakte invoeropslagcontainer en biedt u de mogelijkheid de Batch-pool en job te verwijderen. De klassen [JobOperations](/python/api/azure-batch/azure.batch.operations.joboperations) en [PoolOperations](/python/api/azure-batch/azure.batch.operations.pooloperations) van BatchClient hebben verwijderingsmethoden, die worden aangeroepen wanneer u de verwijdering bevestigt. Hoewel jobs en taken zelf niet in rekening worden gebracht, worden rekenknooppunten wel in rekening gebracht. Daarom is het raadzaam om pools alleen toe te wijzen als dat nodig is. Wanneer u de pool verwijdert, wordt ook alle taakuitvoer op de knooppunten verwijderd. De invoer- en uitvoerbestanden blijven echter aanwezig in het opslagaccount.
 
 Verwijder de resourcegroep, het Batch-account en het opslagaccount wanneer u deze niet meer nodig hebt. Hiervoor selecteert u in Azure Portal de resourcegroep voor het Batch-account en klikt u op **Resourcegroep verwijderen**.
 
@@ -276,7 +276,7 @@ Verwijder de resourcegroep, het Batch-account en het opslagaccount wanneer u dez
 In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
-> * Verifiëren met Batch- en Storage-accounts
+> * Verifiëren met uw Batch- en Storage-accounts
 > * Invoerbestanden uploaden naar Storage
 > * Een pool van rekenknooppunten maken om een toepassing uit te voeren
 > * Een job en taken maken om invoerbestanden te verwerken

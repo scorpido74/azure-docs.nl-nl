@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: fcb89cbcadb5e101ab2b4bfd18d0b7b91c63c92a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6cc8282a5c56f8f45e8d9e5ee452089a74f0d4ed
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821296"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045640"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Persoonlijke koppeling voor Azure SQL Database en het Data Warehouse (preview-versie)
 
@@ -57,7 +57,7 @@ Privé-eind punten kunnen worden gemaakt met behulp van de portal, Power shell o
 ### <a name="approval-process"></a>Goedkeurings proces
 Zodra de netwerk beheerder het persoonlijke eind punt (PE) heeft gemaakt, kan de SQL-beheerder de verbinding met het privé-eind punt (PEC) met SQL Database beheren.
 
-1. Ga naar de SQL Server-Resource in het Azure Portal.
+1. Ga naar de SQL Server-Resource in het Azure Portal volgens de stappen in de onderstaande scherm afbeelding
 
     - (1) Selecteer de verbindingen met het privé-eind punt in het linkerdeel venster
     - (2) toont een lijst met alle privé-eindpunt verbindingen (PECs)
@@ -84,7 +84,7 @@ Voor dit scenario wordt ervan uitgegaan dat u een virtuele machine van Azure (VM
 
 1. [Start een extern bureaublad-sessie (RDP) en maak verbinding met de virtuele machine](../virtual-machines/windows/connect-logon.md#connect-to-the-virtual-machine). 
 1. U kunt vervolgens een aantal basis connectiviteits controles uitvoeren om ervoor te zorgen dat de virtuele machine verbinding maakt met SQL Database via het persoonlijke eind punt met behulp van de volgende hulpprogram ma's:
-    1. Via
+    1. Telnet
     1. Psping
     1. Nmap
     1. SQL Server Management Studio (SSMS)
@@ -146,8 +146,10 @@ In het resultaat ziet u dat één IP-adres actief is. die overeenkomt met het IP
 
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Connectiviteit controleren met behulp van SQL Server Management Studio (SSMS)
+> [!NOTE]
+>Gebruik de **FQDN-naam (Fully Qualified Domain Name)** van de-server in verbindings reeksen voor uw clients. Aanmeldings pogingen rechtstreeks naar het IP-adres kunnen niet worden ontworpen.
 
-De laatste stap is SSMS gebruiken [om verbinding te maken met de SQL database](sql-database-connect-query-ssms.md). Nadat u verbinding hebt gemaakt met de SQL Database met behulp van SSMS, controleert u of u verbinding maakt vanaf het privé-IP-adres van de virtuele Azure-machine door de volgende query uit te voeren:
+Volg de onderstaande stappen om SSMS te gebruiken [om verbinding te maken met de SQL database](sql-database-connect-query-ssms.md). Nadat u verbinding hebt gemaakt met de SQL Database met behulp van SSMS, controleert u of u verbinding maakt vanaf het privé-IP-adres van de virtuele Azure-machine door de volgende query uit te voeren:
 
 ````
 select client_net_address from sys.dm_exec_connections 
