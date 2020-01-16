@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 1ee238e833569bac73bc95932a8d9f044640a59b
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: b9b84cb2c442e7da65da332da1a78b28c32c4de9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770319"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979668"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Virtual Network Service-eind punten en-regels gebruiken voor Azure Database for MySQL
 
@@ -51,7 +51,7 @@ Met een regel voor het virtuele netwerk krijgt uw Azure Database for MySQL-serve
 
 Totdat u actie onderneemt, kunnen de Vm's op uw subnetten niet communiceren met uw Azure Database for MySQL-server. Een actie die de communicatie tot stand brengt, is het maken van een regel voor een virtueel netwerk. De motivering van het kiezen van de methode voor de VNet-regel vereist een vergelijking en contrast met betrekking tot de concurrerende beveiligings opties die door de firewall worden geboden.
 
-### <a name="a-allow-access-to-azure-services"></a>A. Toegang tot Azure-Services toestaan
+### <a name="a-allow-access-to-azure-services"></a>A. Toegang tot Azure-services toestaan
 
 Het deel venster verbindings beveiliging heeft een **aan/uit-** knop met de naam **toegang tot Azure-Services toestaan**. Met de instelling **bij** kunt u communicatie van alle Azure IP-adressen en alle Azure-subnetten toestaan. Deze IP-adressen of subnetten van Azure zijn mogelijk niet het eigendom van u. Deze **bij** instelling is waarschijnlijk meer open dan u wilt dat uw Azure database for MySQL-data base. De functie regel voor virtueel netwerk biedt veel nauw keurigere controle.
 
@@ -118,7 +118,7 @@ Voor Azure Database for MySQL heeft de functie regels voor virtuele netwerken de
 
 - Het inschakelen van service-eind punten voor virtuele netwerken voor het Azure Database for MySQL met behulp van het tag **micro soft. SQL** -service, schakelt ook de eind punten in voor alle Azure data base-services: Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL Database en Azure SQL Data Warehouse.
 
-- Ondersteuning voor VNet-service-eind punten is alleen voor servers met Algemeen en geoptimaliseerd voor geheugen.
+- Ondersteuning voor VNet-service-eindpunten is alleen voor algemeen gebruik en geoptimaliseerd voor geheugen-servers.
 
 - IP-adresbereiken op de firewall zijn van toepassing op de volgende netwerk items, maar de regels voor het virtuele netwerk doen dit niet:
     - [Virtueel particulier netwerk (VPN) van site-naar-site (S2S)][vpn-gateway-indexmd-608y]
@@ -146,7 +146,7 @@ Zie voor artikelen over het maken van VNet-regels:
 - [Azure Database for MySQL VNet-regels maken en beheren met Azure CLI](howto-manage-vnet-using-cli.md)
 
 <!-- Link references, to text, Within this same GitHub repo. -->
-[arm-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
+[arm-deployment-model-568f]: ../azure-resource-manager/management/deployment-models.md
 
 [vm-virtual-network-overview]: ../virtual-network/virtual-networks-overview.md
 
@@ -160,4 +160,4 @@ Zie voor artikelen over het maken van VNet-regels:
 
 [expressroute-indexmd-744v]: ../expressroute/index.yml
 
-[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

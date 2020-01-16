@@ -3,12 +3,12 @@ title: Azure Backup Server gebruiken om een back-up te maken van workloads
 description: In dit artikel leert u hoe u uw omgeving voorbereidt op het beveiligen en maken van een back-up van workloads met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 7379992eeb441372a9140621f9d90b337ad0d2e2
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: db2bac3464939edc5dec2ee2947faf7a05ad6812
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172996"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979866"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server installeren en upgraden
 
@@ -31,7 +31,7 @@ In dit artikel wordt uitgelegd hoe u uw omgeving voorbereidt op back-ups van wer
 MABS geïmplementeerd in een Azure-VM kan een back-up maken van virtuele machines in azure, maar ze moeten zich in hetzelfde domein bevinden om back-upbewerking mogelijk te maken. Het proces voor een back-up van een virtuele Azure-machine blijft hetzelfde als het maken van back-ups van virtuele machines op locatie, maar het implementeren van MABS in azure heeft enkele beperkingen. Zie [DPM als een virtuele machine van Azure](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites) voor meer informatie over beperking.
 
 > [!NOTE]
-> Azure heeft twee implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../azure-resource-manager/resource-manager-deployment-model.md). In dit artikel vindt u informatie en procedures voor het herstellen van Vm's die zijn geïmplementeerd met het Resource Manager-model.
+> Azure heeft twee implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../azure-resource-manager/management/deployment-models.md). In dit artikel vindt u informatie en procedures voor het herstellen van Vm's die zijn geïmplementeerd met het Resource Manager-model.
 >
 >
 
@@ -215,7 +215,7 @@ Zodra het uitpakken is voltooid, schakelt u het selectie vakje in om de vers ge�
     ![Azure Backup Server PreReq2](./media/backup-azure-microsoft-azure-backup/mars/04.png)
 9. Zodra de registratie van de Microsoft Azure Backup-Server is voltooid, wordt de installatie en configuratie van SQL Server en de Azure Backup Server-onderdelen voortgezet. Zodra de installatie van het SQL Server onderdeel is voltooid, worden de Azure Backup Server-onderdelen geïnstalleerd.
 
-    ![Azure Backup-server](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
+    ![Azure Backup Server](./media/backup-azure-microsoft-azure-backup/final-install/venus-installation-screen.png)
 
 Wanneer de installatie stap is voltooid, worden ook de bureaublad pictogrammen van het product gemaakt. Dubbel klik op het pictogram om het product te starten.
 
@@ -262,7 +262,7 @@ Hier volgen de stappen als u MABS moet verplaatsen naar een nieuwe server, terwi
 2. Sluit de oorspronkelijke Azure backup-server af of neem de kabel weg.
 3. Stel de computer account in Active Directory opnieuw in.
 4. Installeer Server 2016 op de nieuwe computer en geef deze dezelfde computer naam als de oorspronkelijke Azure Backup Server.
-5. Lid worden van het domein
+5. Toevoegen aan het domein
 6. Azure Backup Server v3 of later installeren (Verplaats MABS-opslag pool schijven van een oude server en importeren)
 7. Herstel de DPMDB die u in stap 1 hebt gemaakt.
 8. Koppel de opslag van de oorspronkelijke back-upserver aan de nieuwe server.
@@ -275,7 +275,7 @@ Hier volgen de stappen als u MABS moet verplaatsen naar een nieuwe server, terwi
 
     Als u nieuwe schijven aan de DPM-opslag groep hebt toegevoegd in plaats van de oude te verplaatsen, voert u DPMSYNC-Reallocatereplica uit uit.
 
-## <a name="network-connectivity"></a>Netwerk verbinding
+## <a name="network-connectivity"></a>Netwerkverbinding
 
 Azure Backup Server moet verbinding hebben met de Azure Backup-service om het product goed te laten werken. Als u wilt controleren of de computer de verbinding met Azure heeft, gebruikt u de cmdlet ```Get-DPMCloudConnection``` in de Azure Backup Server Power shell-console. Als de uitvoer van de cmdlet TRUE is, is er verbinding, maar is er geen verbinding.
 
@@ -283,14 +283,14 @@ Op hetzelfde moment moet het Azure-abonnement de status in orde hebben. Als u de
 
 Zodra u de status van de Azure-verbinding en het Azure-abonnement kent, kunt u de onderstaande tabel gebruiken om de gevolgen van de functionaliteit voor back-up/herstel te bepalen.
 
-| Connectiviteits status | Azure-abonnement | Back-ups maken naar Azure | Back-up op schijf maken | Herstellen vanuit Azure | Herstellen uit een schijf |
+| Connectiviteits status | Azure-abonnement | Back-up naar Azure | Back-up op schijf maken | Herstellen vanuit Azure | Herstellen uit een schijf |
 | --- | --- | --- | --- | --- | --- |
 | Verbonden |Actief |Toegestaan |Toegestaan |Toegestaan |Toegestaan |
-| Verbonden |Verlopen |Gestopt |Gestopt |Toegestaan |Toegestaan |
-| Verbonden |Ongedaan gemaakt |Gestopt |Gestopt |Gestopt en Azure-herstel punten zijn verwijderd |Gestopt |
-| Verbroken Connectiviteit > 15 dagen |Actief |Gestopt |Gestopt |Toegestaan |Toegestaan |
-| Verbroken Connectiviteit > 15 dagen |Verlopen |Gestopt |Gestopt |Toegestaan |Toegestaan |
-| Verbroken Connectiviteit > 15 dagen |Ongedaan gemaakt |Gestopt |Gestopt |Gestopt en Azure-herstel punten zijn verwijderd |Gestopt |
+| Verbonden |Verlopen |Stopped |Stopped |Toegestaan |Toegestaan |
+| Verbonden |Ongedaan gemaakt |Stopped |Stopped |Gestopt en Azure-herstel punten zijn verwijderd |Stopped |
+| Verbroken Connectiviteit > 15 dagen |Actief |Stopped |Stopped |Toegestaan |Toegestaan |
+| Verbroken Connectiviteit > 15 dagen |Verlopen |Stopped |Stopped |Toegestaan |Toegestaan |
+| Verbroken Connectiviteit > 15 dagen |Ongedaan gemaakt |Stopped |Stopped |Gestopt en Azure-herstel punten zijn verwijderd |Stopped |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Herstellen van connectiviteits verlies
 

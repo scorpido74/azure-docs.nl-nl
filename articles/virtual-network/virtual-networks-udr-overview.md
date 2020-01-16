@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 4132dacbb628051e674952806cb6b606ee915525
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c6ea57ac30a1b4d228a19c3be6a794b3d2175171
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644611"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973032"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routering van verkeer in virtuele netwerken
 
@@ -69,7 +69,7 @@ Azure voegt aanvullende standaardsysteemroutes toe voor verschillende mogelijkhe
 * **VirtualNetworkServiceEndpoint**: de openbare IP-adressen voor bepaalde services worden door Azure aan de routetabel toegevoegd wanneer u een service-eindpunt voor de service inschakelt. Service-eindpunten worden ingeschakeld voor afzonderlijke subnetten in een virtueel netwerk, zodat de route alleen wordt toegevoegd aan de routetabel van een subnet waarvoor een service-eindpunt is ingeschakeld. De openbare IP-adressen van Azure-services worden periodiek gewijzigd. Azure beheert de adressen in de routetabel automatisch als de adressen worden gewijzigd. Lees hier meer over [service-eindpunten van virtuele netwerken](virtual-network-service-endpoints-overview.md), en de services waarvoor u service-eindpunten kunt maken.<br>
 
     > [!NOTE]
-    > De 'volgende hoptypen' **VNet-peering** en **VirtualNetworkServiceEndpoint** worden alleen toegevoegd aan routetabellen van subnetten in virtuele netwerken die zijn gemaakt via het implementatiemodel Azure Resource Manager. De 'volgende hoptypen' worden niet toegevoegd aan routetabellen die zijn gekoppeld aan subnetten van virtuele netwerken die zijn gemaakt met behulp van het klassieke implementatiemodel. Lees hier meer over [implementatiemodellen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) van Azure.
+    > De 'volgende hoptypen' **VNet-peering** en **VirtualNetworkServiceEndpoint** worden alleen toegevoegd aan routetabellen van subnetten in virtuele netwerken die zijn gemaakt via het implementatiemodel Azure Resource Manager. De 'volgende hoptypen' worden niet toegevoegd aan routetabellen die zijn gekoppeld aan subnetten van virtuele netwerken die zijn gemaakt met behulp van het klassieke implementatiemodel. Lees hier meer over [implementatiemodellen](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) van Azure.
 
 ## <a name="custom-routes"></a>Aangepaste routes
 
@@ -101,7 +101,7 @@ U kunt de onderstaande 'volgende hoptypen' opgeven wanneer u een door de gebruik
 
 ## <a name="next-hop-types-across-azure-tools"></a>Typen volgende hop over Azure-hulpprogram ma's
 
-De naam die wordt weergegeven en waarnaar wordt verwezen voor 'volgende hoptypen' is verschillend voor de Azure-portal en voor opdrachtregelprogramma's, evenals voor het implementatiemodel Azure Resource Manager en het klassieke implementatiemodel. De onderstaande tabel bevat de namen die worden gebruikt om te verwijzen naar elk 'volgend hoptype' in de verschillende hulpprogramma's en [implementatiemodellen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json):
+De naam die wordt weergegeven en waarnaar wordt verwezen voor 'volgende hoptypen' is verschillend voor de Azure-portal en voor opdrachtregelprogramma's, evenals voor het implementatiemodel Azure Resource Manager en het klassieke implementatiemodel. De onderstaande tabel bevat de namen die worden gebruikt om te verwijzen naar elk 'volgend hoptype' in de verschillende hulpprogramma's en [implementatiemodellen](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json):
 
 |Volgend hoptype                   |Azure CLI en PowerShell (Resource Manager) |Azure CLI (klassiek) en PowerShell (klassiek)|
 |-------------                   |---------                                       |-----|

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: c8629975d375dda32fdd9aee42b4ae09069a2049
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a7a3c6edbbeca96a90f8003fda1b92fc8bf99fec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005416"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021126"
 ---
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Is dit migratieplan van invloed op mijn bestaande services en toepassingen die worden uitgevoerd op virtuele Azure-machines? 
 
@@ -21,7 +21,7 @@ Nee. De VM's (klassiek) zijn volledig ondersteunde services met een algemene bes
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>Wat gebeurt er met mijn virtuele machines als ik niet van plan ben om in de nabije toekomst te migreren? 
 
-De bestaande klassieke API's en het bestaande resourcemodel worden niet buiten gebruik gesteld. Het is de bedoeling om migreren eenvoudig te maken omdat er veel geavanceerde functies beschikbaar zijn in het Resource Manager-implementatiemodel. Het wordt aanbevolen om [enkele van de ontwikkelingen](../articles/azure-resource-manager/resource-manager-deployment-model.md) te bekijken die deel uitmaken van IaaS via Resource Manager.
+De bestaande klassieke API's en het bestaande resourcemodel worden niet buiten gebruik gesteld. Het is de bedoeling om migreren eenvoudig te maken omdat er veel geavanceerde functies beschikbaar zijn in het Resource Manager-implementatiemodel. Het wordt aanbevolen om [enkele van de ontwikkelingen](../articles/azure-resource-manager/management/deployment-models.md) te bekijken die deel uitmaken van IaaS via Resource Manager.
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>Wat betekent dit migratieplan voor mijn bestaande tooling? 
 
@@ -52,7 +52,7 @@ Tijdens de migratie worden de klassieke resources Resource Manager-resources. Da
 <a name="vault">Wanneer</a> u een virtuele machine van de klassieke naar de Resource Manager-modus verplaatst, worden back-ups die zijn gemaakt vóór de migratie, niet gemigreerd naar de zojuist gemigreerde Resource Manager-VM. Als u echter uw back-ups van klassieke Vm's wilt houden, volgt u deze stappen vóór de migratie. 
 
 1. Ga in de Recovery Services kluis naar het tabblad **beveiligde items** en selecteer de virtuele machine. 
-2. Klik op beveiliging stoppen. Laat de optie *Gekoppelde back-upgegevens verwijderen* **uitgeschakeld**.
+2. Klik op Beveiliging stoppen. Laat de optie *Gekoppelde back-upgegevens verwijderen***uitgeschakeld**.
 
 > [!NOTE]
 > De kosten voor back-upexemplaar worden in rekening gebracht tot u de gegevens behoudt. Back-upkopieën worden verwijderd volgens een Bewaar termijn. De laatste back-up wordt echter altijd bewaard totdat u de back-upgegevens expliciet verwijdert. U wordt aangeraden uw Bewaar termijn van de virtuele machine te controleren en ' back-upgegevens verwijderen ' te activeren voor het beveiligde item in de kluis wanneer de Bewaar termijn is overschreden. 

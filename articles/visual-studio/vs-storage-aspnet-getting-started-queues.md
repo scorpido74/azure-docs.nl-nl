@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5b57f171a9407acea8231d796a80c3a1cc1d9474
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f229661ca78dc75adbc0b49073dc6f0feaf2ba22
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300108"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980758"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Aan de slag met Azure Queue Storage en Visual Studio Connected Services (ASP.NET)
 
@@ -33,7 +33,7 @@ In deze zelf studie leert u hoe u ASP.NET-code kunt schrijven voor een aantal al
 ## <a name="prerequisites"></a>Vereisten
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Azure Storage-account](../storage/common/storage-quickstart-create-account.md)
+* [Azure Storage-account](../storage/common/storage-account-create.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
@@ -55,7 +55,7 @@ In deze zelf studie leert u hoe u ASP.NET-code kunt schrijven voor een aantal al
 
     ![De MVC-controller een naam](./media/vs-storage-aspnet-getting-started-queues/add-controller-name.png)
 
-1. Voeg *de volgende instructies* toe aan het `QueuesController.cs`-bestand:
+1. Voeg het volgende toe *met behulp van* de instructies in het `QueuesController.cs`-bestand:
 
     ```csharp
     using Microsoft.Azure;
@@ -84,7 +84,7 @@ De volgende stappen laten zien hoe u een wachtrij maakt:
     }
     ```
 
-1. In de methode **CreateQueue** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;storage-account naam >* in de naam van het Azure Storage-account dat u wilt openen.)
+1. In de methode **CreateQueue** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;naam van het opslag account >* in de naam van het Azure Storage-account dat u wilt openen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -118,7 +118,7 @@ De volgende stappen laten zien hoe u een wachtrij maakt:
 
 1. Voer in het dialoog venster **weer gave toevoegen** **CreateQueue** in als weergave naam en selecteer **toevoegen**.
 
-1. Open `CreateQueue.cshtml` en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
+1. Open `CreateQueue.cshtml`en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
 
     ```csharp
     @{
@@ -130,7 +130,7 @@ De volgende stappen laten zien hoe u een wachtrij maakt:
     Creation of @ViewBag.QueueName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. Vouw in het **Solution Explorer**de **gedeelde map weer gaven->** uit en open `_Layout.cshtml`.
+1. In de **Solution Explorer**vouwt u de **weer gaven-> gedeelde** map uit en opent u `_Layout.cshtml`.
 
 1. Voeg na de laatste **HTML. ActionLink**de volgende **HTML. ActionLink**toe:
 
@@ -165,7 +165,7 @@ Wanneer u [een wachtrij hebt gemaakt](#create-a-queue), kunt u berichten toevoeg
     }
     ```
  
-1. In de methode **AddMessage** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;storage-account naam >* in de naam van het Azure Storage-account dat u wilt openen.)
+1. In de methode **AddMessage** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;naam van het opslag account >* in de naam van het Azure Storage-account dat u wilt openen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -207,7 +207,7 @@ Wanneer u [een wachtrij hebt gemaakt](#create-a-queue), kunt u berichten toevoeg
 
 1. Voer in het dialoog venster **weer gave toevoegen** **AddMessage** in als weergave naam en selecteer **toevoegen**.
 
-1. Open `AddMessage.cshtml` en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
+1. Open `AddMessage.cshtml`en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
 
     ```csharp
     @{
@@ -219,7 +219,7 @@ Wanneer u [een wachtrij hebt gemaakt](#create-a-queue), kunt u berichten toevoeg
     The message '@ViewBag.Message' was added to the queue '@ViewBag.QueueName'.
     ```
 
-1. Vouw in het **Solution Explorer**de **gedeelde map weer gaven->** uit en open `_Layout.cshtml`.
+1. In de **Solution Explorer**vouwt u de **weer gaven-> gedeelde** map uit en opent u `_Layout.cshtml`.
 
 1. Voeg na de laatste **HTML. ActionLink**de volgende **HTML. ActionLink**toe:
 
@@ -254,7 +254,7 @@ In deze sectie wordt beschreven hoe u een bericht in de wachtrij bekijkt (Lees h
     }
     ```
  
-1. In de methode **PeekMessage** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;storage-account naam >* in de naam van het Azure Storage-account dat u wilt openen.)
+1. In de methode **PeekMessage** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;naam van het opslag account >* in de naam van het Azure Storage-account dat u wilt openen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -290,7 +290,7 @@ In deze sectie wordt beschreven hoe u een bericht in de wachtrij bekijkt (Lees h
 
 1. Voer in het dialoog venster **weer gave toevoegen** **PeekMessage** in als weergave naam en selecteer **toevoegen**.
 
-1. Open `PeekMessage.cshtml` en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
+1. Open `PeekMessage.cshtml`en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
 
     ```csharp
     @{
@@ -305,7 +305,7 @@ In deze sectie wordt beschreven hoe u een bericht in de wachtrij bekijkt (Lees h
     </table>    
     ```
 
-1. Vouw in het **Solution Explorer**de **gedeelde map weer gaven->** uit en open `_Layout.cshtml`.
+1. In de **Solution Explorer**vouwt u de **weer gaven-> gedeelde** map uit en opent u `_Layout.cshtml`.
 
 1. Voeg na de laatste **HTML. ActionLink**de volgende **HTML. ActionLink**toe:
 
@@ -338,7 +338,7 @@ In deze sectie leert u hoe u een bericht uit een wachtrij leest en verwijdert.
     }
     ```
  
-1. In de methode **ReadMessage** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;storage-account naam >* in de naam van het Azure Storage-account dat u wilt openen.)
+1. In de methode **ReadMessage** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;naam van het opslag account >* in de naam van het Azure Storage-account dat u wilt openen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -381,7 +381,7 @@ In deze sectie leert u hoe u een bericht uit een wachtrij leest en verwijdert.
 
 1. Voer in het dialoog venster **weer gave toevoegen** **ReadMessage** in als weergave naam en selecteer **toevoegen**.
 
-1. Open `ReadMessage.cshtml` en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
+1. Open `ReadMessage.cshtml`en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
 
     ```csharp
     @{
@@ -396,7 +396,7 @@ In deze sectie leert u hoe u een bericht uit een wachtrij leest en verwijdert.
     </table>
     ```
 
-1. Vouw in het **Solution Explorer**de **gedeelde map weer gaven->** uit en open `_Layout.cshtml`.
+1. In de **Solution Explorer**vouwt u de **weer gaven-> gedeelde** map uit en opent u `_Layout.cshtml`.
 
 1. Voeg na de laatste **HTML. ActionLink**de volgende **HTML. ActionLink**toe:
 
@@ -429,7 +429,7 @@ In deze sectie ziet u hoe u de lengte van de wachtrij kunt ophalen (aantal beric
     }
     ```
  
-1. In de methode **ReadMessage** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;storage-account naam >* in de naam van het Azure Storage-account dat u wilt openen.)
+1. In de methode **ReadMessage** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;naam van het opslag account >* in de naam van het Azure Storage-account dat u wilt openen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -471,7 +471,7 @@ In deze sectie ziet u hoe u de lengte van de wachtrij kunt ophalen (aantal beric
 
 1. Voer in het dialoog venster **weer gave toevoegen** **GetQueueLength** in als weergave naam en selecteer **toevoegen**.
 
-1. Open `GetQueueLengthMessage.cshtml` en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
+1. Open `GetQueueLengthMessage.cshtml`en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
 
     ```csharp
     @{
@@ -483,7 +483,7 @@ In deze sectie ziet u hoe u de lengte van de wachtrij kunt ophalen (aantal beric
     The queue '@ViewBag.QueueName' has a length of (number of messages): @ViewBag.Length
     ```
 
-1. Vouw in het **Solution Explorer**de **gedeelde map weer gaven->** uit en open `_Layout.cshtml`.
+1. In de **Solution Explorer**vouwt u de **weer gaven-> gedeelde** map uit en opent u `_Layout.cshtml`.
 
 1. Voeg na de laatste **HTML. ActionLink**de volgende **HTML. ActionLink**toe:
 
@@ -516,7 +516,7 @@ In deze sectie wordt beschreven hoe u een wachtrij verwijdert.
     }
     ```
  
-1. In de methode **Delete Queue** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;storage-account naam >* in de naam van het Azure Storage-account dat u wilt openen.)
+1. In de methode **Delete Queue** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;naam van het opslag account >* in de naam van het Azure Storage-account dat u wilt openen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -551,7 +551,7 @@ In deze sectie wordt beschreven hoe u een wachtrij verwijdert.
 
 1. Voer in het dialoog venster **weer gave toevoegen** **Delete Queue** in als weergave naam en selecteer **toevoegen**.
 
-1. Open `DeleteQueue.cshtml` en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
+1. Open `DeleteQueue.cshtml`en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
 
     ```csharp
     @{
@@ -563,7 +563,7 @@ In deze sectie wordt beschreven hoe u een wachtrij verwijdert.
     @ViewBag.QueueName deleted.
     ```
 
-1. Vouw in het **Solution Explorer**de **gedeelde map weer gaven->** uit en open `_Layout.cshtml`.
+1. In de **Solution Explorer**vouwt u de **weer gaven-> gedeelde** map uit en opent u `_Layout.cshtml`.
 
 1. Voeg na de laatste **HTML. ActionLink**de volgende **HTML. ActionLink**toe:
 

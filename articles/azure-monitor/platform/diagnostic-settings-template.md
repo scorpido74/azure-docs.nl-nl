@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b549cc0e890a122a04984baa2348831fc51abe08
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 2a171ae89e8314684eddf29f78b9b09bc52f9c9b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531000"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977555"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Diagnostische instelling maken in azure met behulp van een resource manager-sjabloon
-[Diagnostische instellingen](diagnostic-settings.md) in azure monitor opgeven waar u de [platform logboeken](platform-logs-overview.md) wilt verzenden die worden verzameld door Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. In dit artikel vindt u details en voor beelden voor het gebruik van een [Azure Resource Manager sjabloon](../../azure-resource-manager/resource-group-authoring-templates.md) voor het maken en configureren van diagnostische instellingen voor het verzamelen van platform logboeken op verschillende locaties. 
+[Diagnostische instellingen](diagnostic-settings.md) in azure monitor opgeven waar u de [platform logboeken](platform-logs-overview.md) wilt verzenden die worden verzameld door Azure-resources en het Azure-platform waarvan ze afhankelijk zijn. In dit artikel vindt u details en voor beelden voor het gebruik van een [Azure Resource Manager sjabloon](../../azure-resource-manager/templates/template-syntax.md) voor het maken en configureren van diagnostische instellingen voor het verzamelen van platform logboeken op verschillende locaties.
 
 > [!NOTE]
 > Omdat u geen [Diagnostische instelling](diagnostic-settings.md) voor het Azure-activiteiten logboek kunt maken met behulp van Power shell of cli zoals Diagnostische instellingen voor andere Azure-resources, maakt u een resource manager-sjabloon voor het activiteiten logboek met behulp van de informatie in dit artikel en implementeert u de sjabloon met Power shell of cli.
 
 ## <a name="deployment-methods"></a>Implementatie methoden
-U kunt Resource Manager-sjablonen implementeren met een wille keurige geldige methode, waaronder Power shell en CLI. Diagnostische instellingen voor het activiteiten logboek moeten worden geïmplementeerd op een abonnement met `az deployment create` voor CLI of `New-AzDeployment` voor Power shell. Diagnostische instellingen voor resource logboeken moeten worden geïmplementeerd op een resource groep met `az group deployment create` voor CLI of `New-AzResourceGroupDeployment` voor Power shell. 
+U kunt Resource Manager-sjablonen implementeren met een wille keurige geldige methode, waaronder Power shell en CLI. Diagnostische instellingen voor het activiteiten logboek moeten worden geïmplementeerd op een abonnement met `az deployment create` voor CLI of `New-AzDeployment` voor Power shell. Diagnostische instellingen voor resource logboeken moeten worden geïmplementeerd op een resource groep met `az group deployment create` voor CLI of `New-AzResourceGroupDeployment` voor Power shell.
 
-Zie [resources implementeren met Resource Manager-sjablonen en resources Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md) en [implementeren met Resource Manager-sjablonen en Azure cli](../../azure-resource-manager/resource-group-template-deploy-cli.md) voor meer informatie. 
+Zie [resources implementeren met Resource Manager-sjablonen en resources Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md) en [implementeren met Resource Manager-sjablonen en Azure cli](../../azure-resource-manager/templates/deploy-cli.md) voor meer informatie. 
 
 
 
@@ -33,7 +33,7 @@ Zie [resources implementeren met Resource Manager-sjablonen en resources Azure P
 ## <a name="resource-logs"></a>Resourcelogboeken
 Voor resource logboeken voegt u een resource van het type `<resource namespace>/providers/diagnosticSettings` toe aan de sjabloon. De sectie Properties is gebaseerd op de indeling die wordt beschreven in [Diagnostische instellingen-maken of bijwerken](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Geef een `category` op in de sectie `logs` voor elk van de categorieën die geldig zijn voor de resource die u wilt verzamelen. Voeg de eigenschap `metrics` toe voor het verzamelen van metrische gegevens voor resources aan dezelfde doelen als de [resource metrische gegevens ondersteunt](metrics-supported.md).
 
-Hieronder volgt een sjabloon waarmee een resource logboek categorie voor een bepaalde resource wordt verzameld voor een Log Analytics-werk ruimte, een opslag account en Event Hub. 
+Hieronder volgt een sjabloon waarmee een resource logboek categorie voor een bepaalde resource wordt verzameld voor een Log Analytics-werk ruimte, een opslag account en Event Hub.
 
 ```json
 "resources": [
@@ -50,7 +50,7 @@ Hieronder volgt een sjabloon waarmee een resource logboek categorie voor een bep
       "eventHubAuthorizationRuleId": "[parameters('eventHubAuthorizationRuleId')]",
       "eventHubName": "[parameters('eventHubName')]",
       "workspaceId": "[parameters('workspaceId')]",
-      "logs": [ 
+      "logs": [
         {
           "category": "<category name>",
           "enabled": true

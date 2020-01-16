@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/01/2019
-ms.openlocfilehash: 9eebb181ed7aa1ac5898646c29e308f85dbe0f8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 381dfb4fca7476d5805bff92d58ecbbf49679346
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354896"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979977"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparante gegevens versleuteling voor SQL Database en Data Warehouse
 
@@ -79,7 +79,7 @@ Als u transparante gegevens versleuteling wilt configureren via de Azure Portal,
 
 U kunt transparante gegevens versleuteling in-en uitschakelen op het niveau van de data base. Als u transparante gegevens versleuteling wilt inschakelen voor een Data Base, gaat u naar de [Azure Portal](https://portal.azure.com) en meldt u zich aan met uw Azure-beheerder of Inzender account. Zoek de transparante instellingen voor gegevens versleuteling onder uw gebruikers database. Standaard wordt door service beheerde transparante gegevens versleuteling gebruikt. Er wordt automatisch een transparant gegevens versleutelings certificaat gegenereerd voor de server die de Data Base bevat. Gebruik T-SQL voor beheerd exemplaar van Azure SQL om transparante gegevens versleuteling in en uit te scha kelen voor een Data Base.
 
-![Door service beheerde transparante gegevens versleuteling](./media/transparent-data-encryption-azure-sql/service-managed-transparent-data-encryption.png)  
+![Door service beheerde transparante gegevens versleuteling](./media/transparent-data-encryption-azure-sql/service-managed-transparent-data-encryption.png)
 
 U stelt de transparante gegevens versleutelings hoofd sleutel, ook wel de transparante beveiliging voor gegevens versleuteling, in op server niveau. Als u transparante gegevens versleuteling wilt gebruiken met Bring Your Own Key ondersteuning en het beveiligen van uw data bases met een sleutel van Key Vault, opent u de transparante instellingen voor gegevens versleuteling onder uw server.
 

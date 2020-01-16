@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: aaa67c5e48c6246e94410bdbf2eb8509b6810001
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8325b4ef6b89a76eeec418386cec4922cb5916b1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645188"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979154"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Gegevens fabrieken melden en bewaken met behulp van Azure Monitor
 
@@ -67,7 +67,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="headers"></a>Headers
 
 * Vervang `{api-version}` door `2016-09-01`.
-* Vervang `{resource-id}` door de ID van de resource waarvoor u de diagnostische instellingen wilt bewerken. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/manage-resource-groups-portal.md) voor meer informatie.
+* Vervang `{resource-id}` door de ID van de resource waarvoor u de diagnostische instellingen wilt bewerken. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/manage-resource-groups-portal.md) voor meer informatie.
 * Stel de `Content-Type`-header in op `application/json`.
 * Stel de autorisatie-header in op het JSON-webtoken dat u hebt ontvangen van Azure Active Directory (Azure AD). Zie [verificatie aanvragen](../active-directory/develop/authentication-scenarios.md)voor meer informatie.
 
@@ -188,7 +188,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="headers"></a>Headers
 
 * Vervang `{api-version}` door `2016-09-01`.
-* Vervang `{resource-id}` door de ID van de resource waarvoor u de diagnostische instellingen wilt bewerken. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/manage-resource-groups-portal.md) voor meer informatie.
+* Vervang `{resource-id}` door de ID van de resource waarvoor u de diagnostische instellingen wilt bewerken. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/manage-resource-groups-portal.md) voor meer informatie.
 * Stel de `Content-Type`-header in op `application/json`.
 * Stel de autorisatie-header in op een JSON-webtoken dat u hebt ontvangen van Azure AD. Zie [verificatie aanvragen](../active-directory/develop/authentication-scenarios.md)voor meer informatie.
 

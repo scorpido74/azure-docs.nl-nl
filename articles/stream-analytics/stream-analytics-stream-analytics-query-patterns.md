@@ -8,12 +8,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/18/2019
-ms.openlocfilehash: 54d1b640a4067cf65fc28501840b4926455ec259
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: aa8bd6e89dd47c4e972a860691d1bc3779ba5bc7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903462"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982316"
 ---
 # <a name="common-query-patterns-in-azure-stream-analytics"></a>Algemene query patronen in Azure Stream Analytics
 
@@ -836,7 +836,7 @@ From
 
 De door de gebruiker gedefinieerde functie berekent de *bigint* -waarde van de HexValue bij elke gebeurtenis die wordt verbruikt.
 
-Raadpleeg [Java script](/stream-analytics/stream-analytics-javascript-user-defined-functions) en [C#](/stream-analytics/stream-analytics-edge-csharp-udf)voor meer informatie.
+Raadpleeg [Java script](/azure/stream-analytics/stream-analytics-javascript-user-defined-functions) en [C#](/azure/stream-analytics/stream-analytics-edge-csharp-udf)voor meer informatie.
 
 ## <a name="advanced-pattern-matching-with-match_recognize"></a>Geavanceerd patroon dat overeenkomt met MATCH_RECOGNIZE
 

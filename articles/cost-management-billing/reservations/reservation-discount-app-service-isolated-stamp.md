@@ -1,0 +1,55 @@
+---
+title: Reserverings kortingen voor Azure App Service
+description: Ontdek hoe reserveringskortingen worden toegepast op Azure App Service Isolated-zegels.
+services: billing
+author: yashesvi
+manager: yashar
+ms.service: cost-management-billing
+ms.topic: conceptual
+ms.date: 10/01/2019
+ms.author: banders
+ms.openlocfilehash: 1294ee126ecef1f635ffc4d6bec6da02c6171897
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75995791"
+---
+# <a name="how-reservation-discounts-apply-to-azure-app-service-isolated-stamps"></a>Hoe reserveringskortingen worden toegepast op Azure App Service Isolated-zegels
+
+Wanneer u gereserveerde capaciteit hebt gekocht om de zegelkosten van App Service Isolated te dekken, wordt de reserveringskorting automatisch toegepast op de zegelkosten in een bepaalde regio. De reserveringskorting geldt voor het gebruik dat door de zegelkostenmeter van App Service Isolated wordt bijgehouden. Werkrollen, extra front-ends en overige resources die aan de zegel zijn gekoppeld, worden als voorheen gefactureerd op basis van het normale tarief.
+
+## <a name="reservation-discount-application"></a>Toepassing van reserveringskorting
+
+De korting op de zegelkosten voor App Service Isolated wordt op uurbasis toegepast op actieve Isolated-zegels. Als u een zegel geen vol uur implementeert, gaat de resterende gereserveerde capaciteit voor dat uur verloren. Deze restcapaciteit kan niet worden overgedragen.
+
+Na aankoop wordt de door u gekochte reservering gekoppeld aan een App Service Isolated-zegel die wordt uitgevoerd in een specifieke regio. Als u deze zegel afsluit, wordt de reserveringskorting automatisch toegepast op andere zegels die in de betreffende regio worden uitgevoerd. Als er geen zegels aanwezig zijn, wordt de reservering toegepast op de volgende zegel die in de regio wordt gemaakt.
+
+Als een zegel geen volledig uur wordt uitgevoerd, wordt de reservering gedurende de resterende tijd in dat uur automatisch toegepast op andere in aanmerking komende zegels in dezelfde regio.
+
+## <a name="choose-a-stamp-type---windows-or-linux"></a>Een type zegel kiezen: Windows of Linux
+
+Standaard wordt voor een lege Isolated-zegel de Windows-zegelmeter gebruikt. Dit is bijvoorbeeld het geval wanneer er geen werkrollen zijn geïmplementeerd. Deze meter blijft in gebruik als er Windows-werkrollen worden geïmplementeerd. De meter wordt echter gewijzigd in een Linux-zegelmeter als u een Linux-werkrol implementeert. Als er zowel Linux- als Windows-werkrollen zijn geïmplementeerd, wordt voor de zegel de Windows-meter gebruikt.
+
+De zegelmeter kan tijdens de levensduur dus veranderen van Windows in Linux en omgekeerd. Reserveringen zijn echter specifiek voor een bepaald besturingssysteem. U moet daarom een reservering kopen die ondersteuning biedt voor de werkrollen die u via de zegel wilt implementeren. Voor zegels met uitsluitend Windows-werkrollen en voor zegels met gemengde werkrollen wordt de Windows-reservering gebruikt. Voor zegels met alleen Linux-werkrollen wordt gebruikgemaakt van de Linux-reservering.
+
+U moet dus alleen een Linux-reservering kopen als u van plan bent via de zegel _uitsluitend_ Linux-werkrollen te implementeren.
+
+## <a name="discount-examples"></a>Kortingsvoorbeelden
+
+De volgende voorbeelden laten zien hoe de korting op de zegelkosten voor gereserveerde instanties van App Service Isolated voor verschillende implementaties wordt toegepast.
+
+- **Voor beeld 1**: u koopt één exemplaar van een geïsoleerde gereserveerde stempel capaciteit in een regio zonder app service isolated stem pels. U implementeert een nieuwe zegel in de betreffende regio en betaalt hiervoor het tarief voor gereserveerde capaciteit.
+- **Voor beeld 2**: u koopt één exemplaar van een geïsoleerde gereserveerde stempel capaciteit in een regio waarvoor al een app service isolated stempel is geïmplementeerd. U betaalt voor de geïmplementeerde zegel vanaf nu het tarief voor gereserveerde capaciteit.
+- **Voor beeld 3**: u koopt één exemplaar van een geïsoleerde gereserveerde stempel capaciteit in een regio met een app service isolated stempel al is geïmplementeerd. U betaalt voor de geïmplementeerde zegel vanaf nu het tarief voor gereserveerde capaciteit. Later verwijdert u de bestaande zegel en implementeert u een nieuwe zegel. U betaalt voor de nieuwe zegel het tarief voor gereserveerde capaciteit. De korting kan niet worden overgedragen als er geen geïmplementeerde zegels zijn.
+- **Voor beeld 4**: u koopt één exemplaar van de geïsoleerde, gereserveerde Linux-stempel capaciteit in een regio en implementeert vervolgens een nieuwe stempel in de regio. Als de zegel aanvankelijk zonder werkrollen wordt geïmplementeerd, wordt de Windows-zegelmeter gebruikt. Er wordt geen korting toegepast. Wanneer de eerste Linux-werkrol via de zegel wordt geïmplementeerd, wordt er overgeschakeld naar de Linux-zegelmeter en is de reserveringskorting van kracht. Als er later via de zegel een Windows-werkrol wordt geïmplementeerd, wordt er teruggeschakeld naar de Windows-zegelmeter. De korting voor Linux-specifieke gereserveerde App Service Isolated-zegelcapaciteit vervalt dan weer.
+
+## <a name="next-steps"></a>Volgende stappen
+
+- Zie [Azure-reserveringen beheren](manage-reserved-vm-instance.md) voor meer informatie over het beheren van een reservering.
+- Zie [Prepay for Azure App Service Isolated Stamp Fee with reserved capacity](prepay-app-service-isolated-stamp.md) (Vooraf betalen voor gereserveerde Azure App Service Isolated-zegelcapaciteit) voor meer informatie over hoe u geld bespaart door vooraf gereserveerde App Service Isolated-zegelcapaciteit te kopen.
+- Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
+  - [Wat zijn Azure-reserveringen?](save-compute-costs-reservations.md)
+  - [Reserveringen beheren in Azure](manage-reserved-vm-instance.md)
+  - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](understand-reserved-instance-usage.md)
+  - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](understand-reserved-instance-usage-ea.md)

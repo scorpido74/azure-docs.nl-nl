@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: e9a0a8c8709e41bb7778878f76024263cdc32481
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6a134d2bdfe7f370503b80703933ff646970d976
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896093"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981110"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Video en audio coderen met Media Services
 
-De term encoding in Media Services is van toepassing op het proces van het converteren van bestanden met digitale video en/of audio van de ene standaard indeling naar een andere, met het doel van (a) om de grootte van de bestanden te reduceren en/of (b) die een indeling produceert die compatibel is met een breed scala aan apparaten en apps. Dit proces wordt ook wel video compressie of transcode ring genoemd. Zie [gegevens compressie](https://en.wikipedia.org/wiki/Data_compression) en [Wat is code ring en trans codering?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) voor verdere bespreking van de concepten.
+De term encoding in Media Services is van toepassing op het proces van het converteren van bestanden met digitale video en/of audio van de ene standaard indeling naar een andere, met het doel van (a) om de grootte van de bestanden te reduceren en/of (b) die een indeling produceert die compatibel is met een groot aantal apparaten en apps. Dit proces wordt ook wel video compressie of transcode ring genoemd. Zie [gegevens compressie](https://en.wikipedia.org/wiki/Data_compression) en [Wat is code ring en trans codering?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) voor verdere bespreking van de concepten.
 
 Video's worden meestal geleverd aan apparaten en apps door [progressief te downloaden](https://en.wikipedia.org/wiki/Progressive_download) of door [Adaptive bitrate streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming).
 
@@ -95,7 +95,7 @@ De volgende voorinstellingen worden momenteel ondersteund:
 
 - **EncoderNamedPreset. AACGoodQualityAudio**: produceert één MP4-bestand met alleen stereo audio dat is gecodeerd met 192 kbps.
 - **EncoderNamedPreset. AdaptiveStreaming** (aanbevolen): Zie [automatisch genereren van een bitrate ladder](autogen-bitrate-ladder.md)voor meer informatie.
-- **EncoderNamedPreset. ContentAwareEncodingExperimental**: beschrijft een experimentele voor instelling voor code ring met inhoud. Op basis van de invoer inhoud probeert de service automatisch het optimale aantal lagen en de juiste bitrate-en resolutie-instellingen te bepalen voor levering door adaptieve streaming. De onderliggende algoritmen blijven in de loop van de tijd worden uitgevoerd. De uitvoer bevat MP4-bestanden met Interleaved video-en audio-indeling. Zie voor meer informatie [experimentele voor instelling voor code ring met inhoud](cae-experimental.md).
+- **EncoderNamedPreset. ContentAwareEncodingExperimental**: beschrijft een experimentele voor instelling voor code ring met inhoud. Op basis van de invoer inhoud probeert de service automatisch het optimale aantal lagen en de juiste bitrate-en resolutie-instellingen te bepalen voor levering door adaptieve streaming. De onderliggende algoritmen blijven in de loop van de tijd worden uitgevoerd. De uitvoer bevat MP4-bestanden met Interleaved video-en audio-indeling. Zie voor meer informatie [experimentele voor instelling voor code ring met inhoud](content-aware-encoding.md).
 - **EncoderNamedPreset. H264MultipleBitrate1080p**: produceert een set van acht GOP terug-afgevulde MP4-bestanden, variërend van 6000 kbps tot 400 kbps en stereo AAC-audio. Resolutie begint bij 1080p en gaat naar de 360 p.
 - **EncoderNamedPreset. H264MultipleBitrate720p**: produceert een set van zes GOP terug-afgevulde MP4-bestanden, variërend van 3400 kbps tot 400 kbps en stereo AAC-audio. Resolutie begint bij 720p en gaat naar de 360 p.
 - **EncoderNamedPreset. H264MultipleBitrateSD**: produceert een set van vijf GOP terug-afgevulde MP4-bestanden, variërend van 1600 kbps tot 400 kbps en stereo AAC-audio. Resolutie begint bij 480p en gaat naar de 360 p.

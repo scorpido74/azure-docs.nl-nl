@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f40b479b66f2fa9a60e084fc0e29f40cef052e99
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 479f9abc667e20a136da5f6231e78a1e4052f087
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162526"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965674"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Azure Premium Storage gebruiken met SQL Server op Virtual Machines
 
@@ -29,7 +29,7 @@ ms.locfileid: "73162526"
 [Azure Premium ssd's](../disks-types.md) is de volgende generatie opslag met lage latentie en een hoge doorvoer-io. Het werkt het beste voor intensieve i/o-werk belastingen, zoals SQL Server op IaaS [virtual machines](https://azure.microsoft.com/services/virtual-machines/).
 
 > [!IMPORTANT]
-> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/resource-manager-deployment-model.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
+> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
 
 In dit artikel vindt u plannings-en richt lijnen voor het migreren van een virtuele machine met SQL Server om Premium Storage te gebruiken. Dit omvat de stappen voor Azure-infra structuur (netwerken, opslag) en Windows VM-gast. In het voor beeld in de [bijlage](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) ziet u een volledig uitgebreide end-to-end migratie van hoe grotere vm's moeten worden verplaatst om te profiteren van verbeterde lokale SSD-opslag met Power shell.
 
@@ -623,7 +623,7 @@ In de rest van dit artikel vindt u een gedetailleerd voor beeld van het converte
 
 ### <a name="environment"></a>Omgeving
 
-* Windows 2k12/SQL 2k12
+* Windows 2k12 / SQL 2k12
 * 1 DB-bestanden in SP
 * 2 x opslag groepen per knoop punt
 

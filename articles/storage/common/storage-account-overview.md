@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 30f39fc72d6a96b83f57d6553db3f348c8486ee5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8f912635fc0fb14fc54426a108af5f67d26213f4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460612"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975695"
 ---
 # <a name="storage-account-overview"></a>Overzicht van opslagaccounts
 
 Een Azure-opslag account bevat al uw Azure Storage gegevens objecten: blobs, bestanden, wacht rijen, tabellen en schijven. Het opslag account biedt een unieke naam ruimte voor uw Azure Storage gegevens die overal ter wereld toegankelijk zijn via HTTP of HTTPS. Gegevens in uw Azure Storage-account zijn duurzaam en Maxi maal beschikbaar, veilig en zeer schaalbaar.
 
-Zie [een opslag account maken](storage-quickstart-create-account.md)voor meer informatie over het maken van een Azure-opslag account.
+Zie [een opslag account maken](storage-account-create.md)voor meer informatie over het maken van een Azure-opslag account.
 
 ## <a name="types-of-storage-accounts"></a>Typen opslagaccounts
 
@@ -72,7 +72,7 @@ BlockBlobStorage-accounts ondersteunen momenteel geen lagen op dynamische, koele
 
 ### <a name="filestorage-accounts"></a>FileStorage-accounts
 
-Een FileStorage-account is een gespecialiseerd opslag account dat wordt gebruikt voor het opslaan en maken van Premium-bestands shares. Dit type opslag account ondersteunt bestanden, maar geen blok-blobs, toevoeg-blobs, pagina-blobs, tabellen of wacht rijen. 
+Een FileStorage-account is een gespecialiseerd opslag account dat wordt gebruikt voor het opslaan en maken van Premium-bestands shares. Dit type opslag account ondersteunt bestanden, maar geen blok-blobs, toevoeg-blobs, pagina-blobs, tabellen of wacht rijen.
 
 FileStorage-accounts bieden unieke prestatie gerichte kenmerken, zoals IOPS-bursting. Zie de sectie [prestatie lagen voor bestands shares](../files/storage-files-planning.md#file-share-performance-tiers) in de hand leiding voor het plannen van bestanden voor meer informatie over deze kenmerken.
 
@@ -150,15 +150,15 @@ U kunt met behulp van de volgende benaderingen toegang tot de gegevens in uw ops
 - **Shared Access Signature:** Gebruik een gedeelde hand tekening voor toegang om de toegang tot resources in uw opslag account te delegeren als u geen Azure AD-autorisatie gebruikt. Een Shared Access Signature is een token dat alle informatie bevat die nodig is voor het autoriseren van een aanvraag voor het Azure Storage van de URL. U kunt de opslag Resource, de toegekende machtigingen en het interval opgeven waarvoor de machtigingen geldig zijn als onderdeel van de Shared Access-hand tekening. Zie [using Shared Access signatures (SAS) (Engelstalig)](storage-sas-overview.md)voor meer informatie.
 
 > [!NOTE]
-> Het verifiëren van gebruikers of toepassingen die gebruikmaken van Azure AD-referenties biedt een superieure beveiliging en gebruiks gemak ten opzichte van andere autorisatie methoden. U kunt de verificatie van de gedeelde sleutel blijven gebruiken met uw toepassingen, maar met Azure AD wordt de nood zaak om uw account toegangs sleutel op te slaan met uw code. U kunt ook door gaan met het gebruik van Shared Access signatures (SAS) om nauw keurige toegang tot resources in uw opslag account te verlenen, maar Azure AD biedt soort gelijke mogelijkheden zonder de behoefte aan het beheer van SAS-tokens of een probleem bij het intrekken van een aangetaste SAS. 
+> Het verifiëren van gebruikers of toepassingen die gebruikmaken van Azure AD-referenties biedt een superieure beveiliging en gebruiks gemak ten opzichte van andere autorisatie methoden. U kunt de verificatie van de gedeelde sleutel blijven gebruiken met uw toepassingen, maar met Azure AD wordt de nood zaak om uw account toegangs sleutel op te slaan met uw code. U kunt ook door gaan met het gebruik van Shared Access signatures (SAS) om nauw keurige toegang tot resources in uw opslag account te verlenen, maar Azure AD biedt soort gelijke mogelijkheden zonder de behoefte aan het beheer van SAS-tokens of een probleem bij het intrekken van een aangetaste SAS.
 >
 > Micro soft raadt u aan gebruik te maken van Azure AD-autorisatie voor uw Azure Storage Blob-en wachtrij toepassingen wanneer dat mogelijk is.
 
 ## <a name="copying-data-into-a-storage-account"></a>Gegevens kopiëren naar een opslag account
 
-Micro soft biedt hulpprogram ma's en bibliotheken voor het importeren van uw gegevens van on-premises opslag apparaten of Cloud-opslag providers van derden. Welke oplossing u gebruikt, is afhankelijk van het aantal gegevens dat u wilt overbrengen. 
+Micro soft biedt hulpprogram ma's en bibliotheken voor het importeren van uw gegevens van on-premises opslag apparaten of Cloud-opslag providers van derden. Welke oplossing u gebruikt, is afhankelijk van het aantal gegevens dat u wilt overbrengen.
 
-Wanneer u een upgrade uitvoert naar een v2-account voor algemeen gebruik van een v1-of Blob-opslag account voor algemeen gebruik, worden uw gegevens automatisch gemigreerd. Micro soft adviseert dit traject voor het upgraden van uw account. Als u echter besluit gegevens te verplaatsen van een algemeen v1-account naar een Blob Storage-account, migreert u uw gegevens hand matig met behulp van de hulpprogram ma's en bibliotheken die hieronder worden beschreven. 
+Wanneer u een upgrade uitvoert naar een v2-account voor algemeen gebruik van een v1-of Blob-opslag account voor algemeen gebruik, worden uw gegevens automatisch gemigreerd. Micro soft adviseert dit traject voor het upgraden van uw account. Als u echter besluit gegevens te verplaatsen van een algemeen v1-account naar een Blob Storage-account, migreert u uw gegevens hand matig met behulp van de hulpprogram ma's en bibliotheken die hieronder worden beschreven.
 
 ### <a name="azcopy"></a>AzCopy
 
@@ -183,5 +183,5 @@ Zie [Azure Storage Services rest API Reference](https://docs.microsoft.com/rest/
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een opslagaccount maken](storage-quickstart-create-account.md)
+- [Een opslagaccount maken](storage-account-create.md)
 - [Een blok-blob-opslagaccount maken](../blobs/storage-blob-create-account-block-blob.md)

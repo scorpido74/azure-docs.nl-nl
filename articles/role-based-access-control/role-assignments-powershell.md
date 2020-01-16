@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9c16ec978a0689059c60903182337936960c7a4b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0ee996e39950d38b10f8df78fe47f7087c4a2ed1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707854"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981049"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-powershell"></a>Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en Azure PowerShell
 
@@ -232,4 +232,4 @@ Als u het volgende fout bericht wordt weer gegeven: ' de opgegeven informatie is
 - [Roltoewijzingen weer geven met behulp van Azure RBAC en Azure PowerShell](role-assignments-list-powershell.md)
 - [Zelf studie: een groep toegang verlenen tot Azure-resources met RBAC en Azure PowerShell](tutorial-role-assignments-group-powershell.md)
 - [Zelf studie: een aangepaste rol maken voor Azure-resources met behulp van Azure PowerShell](tutorial-custom-role-powershell.md)
-- [Resources beheren met Azure PowerShell](../azure-resource-manager/manage-resources-powershell.md)
+- [Resources beheren met Azure PowerShell](../azure-resource-manager/management/manage-resources-powershell.md)

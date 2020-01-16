@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0255787ac90e63aff02ea65912ffa37c8ecc09fa
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cc2f0a513219a671dd8a75ee00af4fc9d4c6a68a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929752"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979731"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Zelf studie: gegevens kopiëren van Blob Storage naar SQL Database met behulp van Data Factory
 > [!div class="op_single_selector"]
@@ -31,11 +31,11 @@ ms.locfileid: "74929752"
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u de [zelfstudie over kopieeractiviteiten](../quickstart-create-data-factory-dot-net.md). 
+> Dit artikel is van toepassing op versie 1 van Data Factory. Als u de huidige versie van de Data Factory-service gebruikt, raadpleegt u de [zelfstudie over kopieeractiviteiten](../quickstart-create-data-factory-dot-net.md).
 
 In deze zelf studie maakt u een data factory met een pijp lijn om gegevens te kopiëren van Blob-opslag naar SQL database.
 
-Met Copy Activity wordt de gegevensverplaatsing in Azure Data Factory uitgevoerd. De activiteit wordt mogelijk gemaakt door een wereldwijd beschikbare service waarmee gegevens veilig, betrouwbaar en schaalbaar kunnen worden gekopieerd tussen verschillende gegevensarchieven. Zie [Activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) voor meer informatie over Copy Activity.  
+Met de kopieeractiviteit wordt de gegevensverplaatsing in Azure Data Factory uitgevoerd. De activiteit wordt mogelijk gemaakt door een wereldwijd beschikbare service waarmee gegevens veilig, betrouwbaar en schaalbaar kunnen worden gekopieerd tussen verschillende gegevensarchieven. Zie [Activiteiten voor gegevensverplaatsing](data-factory-data-movement-activities.md) voor meer informatie over de kopieeractiviteit.  
 
 > [!NOTE]
 > Zie het artikel [Introduction to Azure Data Factory](data-factory-introduction.md) voor een uitgebreid overzicht van de Data Factory-service.
@@ -46,7 +46,7 @@ Met Copy Activity wordt de gegevensverplaatsing in Azure Data Factory uitgevoerd
 Voordat u met deze zelfstudie begint, moet u aan de volgende vereisten voldoen:
 
 * **Azure-abonnement**.  Als u geen abonnement hebt, kunt u binnen een paar minuten een gratis proefaccount maken. Raadpleeg het artikel over de [gratis proef versie](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.
-* **Azure Storage-account**. In deze zelf studie gebruikt u de Blob-opslag als een **brongegevens** opslag. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [Een opslagaccount maken](../../storage/common/storage-quickstart-create-account.md) voor de stappen voor het maken van een account.
+* **Azure Storage-account**. In deze zelf studie gebruikt u de Blob-opslag als een **brongegevens** opslag. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) voor de stappen voor het maken van een account.
 * **Azure SQL-database**. In deze zelf studie gebruikt u een Azure SQL database als **doel** gegevens opslag. Als u geen Azure-SQL database hebt die u in de zelf studie kunt gebruiken, raadpleegt u [een Azure SQL database maken en configureren](../../sql-database/sql-database-get-started.md) om er een te maken.
 * **SQL Server 2012/2014 of Visual Studio 2013**. U gebruikt SQL Server Management Studio of Visual Studio om een voorbeeld database te maken en om de resultaat gegevens in de-Data Base weer te geven.  
 
@@ -107,11 +107,11 @@ Bereid nu uw Azure Blob-opslag en Azure SQL database voor op de zelf studie door
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-    **Als SQL Server 2012/2014 is geïnstalleerd op uw computer:** Volg de instructies van het [beheer van Azure SQL database met behulp van SQL Server Management Studio](../../sql-database/sql-database-manage-azure-ssms.md) om verbinding te maken met uw Azure SQL-Server en het SQL-script uit te voeren. 
+    **Als SQL Server 2012/2014 is geïnstalleerd op uw computer:** Volg de instructies van het [beheer van Azure SQL database met behulp van SQL Server Management Studio](../../sql-database/sql-database-manage-azure-ssms.md) om verbinding te maken met uw Azure SQL-Server en het SQL-script uit te voeren.
 
     Als de client geen toegang heeft tot de Azure SQL-server, moet u de firewall configureren voor uw Azure SQL-server zodat toegang vanaf uw apparaat (IP-adres) wordt toegestaan. Raadpleeg [dit artikel](../../sql-database/sql-database-configure-firewall-settings.md) voor stappen waarmee u uw firewall kunt configureren voor uw Azure SQL-server.
 
-## <a name="create-a-data-factory"></a>Een gegevensfactory maken
+## <a name="create-a-data-factory"></a>Een data factory maken
 U hebt de vereisten voltooid. U kunt op een van de volgende manieren een data factory maken. Klik op een van de opties in de vervolg keuzelijst aan de bovenkant of de volgende koppelingen om de zelf studie uit te voeren.     
 
 * [De wizard Kopiëren](data-factory-copy-data-wizard-tutorial.md)
@@ -123,5 +123,5 @@ U hebt de vereisten voltooid. U kunt op een van de volgende manieren een data fa
 
 > [!NOTE]
 > In de gegevenspijplijn in deze zelfstudie worden gegevens van een brongegevensarchief gekopieerd naar een doelgegevensarchief. Er worden geen invoergegevens mee getransformeerd in uitvoergegevens. Zie [Zelfstudie: uw eerste pijplijn maken om gegevens te transformeren met een Hadoop-cluster](data-factory-build-your-first-pipeline.md) voor meer informatie over het transformeren van gegevens met Azure Data Factory.
-> 
-> U kunt twee activiteiten koppelen (de ene activiteit na de andere laten uitvoeren) door de uitvoergegevensset van één activiteit in te stellen als invoergegevensset voor een andere activiteit. Zie [Planning en uitvoering in Data Factory](data-factory-scheduling-and-execution.md) voor gedetailleerde informatie. 
+>
+> U kunt twee activiteiten koppelen (de ene activiteit na de andere laten uitvoeren) door de uitvoergegevensset van één activiteit in te stellen als invoergegevensset voor een andere activiteit. Zie [Planning en uitvoering in Data Factory](data-factory-scheduling-and-execution.md) voor gedetailleerde informatie.

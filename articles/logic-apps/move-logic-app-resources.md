@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/31/2019
-ms.openlocfilehash: 2d09484fcb5211003aeec0ec10bfc9892b4e6f31
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d6250238edd15126e7a56bd821fbd1c736ebda07
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456539"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965893"
 ---
 # <a name="move-logic-app-resources-to-other-azure-subscriptions-resource-groups-or-regions"></a>Logische app-resources verplaatsen naar andere Azure-abonnementen, resource groepen of regio's
 
@@ -33,7 +33,7 @@ Als u uw logische app of gerelateerde resources wilt verplaatsen naar een ander 
 
 ## <a name="move-resources-between-subscriptions"></a>Resources verplaatsen tussen abonnementen
 
-Als u een resource, zoals een logische app of een integratie account, wilt verplaatsen naar een ander Azure-abonnement, kunt u de Azure Portal, Azure PowerShell, Azure CLI of REST API gebruiken. Deze stappen omvatten de Azure Portal, die u kunt gebruiken wanneer de resource regio hetzelfde blijft. Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/resource-group-move-resources.md)voor andere stappen en algemene voor bereiding.
+Als u een resource, zoals een logische app of een integratie account, wilt verplaatsen naar een ander Azure-abonnement, kunt u de Azure Portal, Azure PowerShell, Azure CLI of REST API gebruiken. Deze stappen omvatten de Azure Portal, die u kunt gebruiken wanneer de resource regio hetzelfde blijft. Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md)voor andere stappen en algemene voor bereiding.
 
 1. Zoek in het [Azure Portal](https://portal.azure.com)de logische app-resource die u wilt verplaatsen en selecteer deze.
 
@@ -51,7 +51,7 @@ Als u een resource, zoals een logische app of een integratie account, wilt verpl
 
 ## <a name="move-resources-between-resource-groups"></a>Resources verplaatsen tussen resource groepen
 
-Als u een resource, zoals een logische app of een integratie account, wilt verplaatsen naar een andere Azure-resource groep, kunt u de Azure Portal, Azure PowerShell, Azure CLI of REST API gebruiken. Deze stappen omvatten de Azure Portal, die u kunt gebruiken wanneer de resource regio hetzelfde blijft. Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/resource-group-move-resources.md)voor andere stappen en algemene voor bereiding.
+Als u een resource, zoals een logische app of een integratie account, wilt verplaatsen naar een andere Azure-resource groep, kunt u de Azure Portal, Azure PowerShell, Azure CLI of REST API gebruiken. Deze stappen omvatten de Azure Portal, die u kunt gebruiken wanneer de resource regio hetzelfde blijft. Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md)voor andere stappen en algemene voor bereiding.
 
 Voordat u resources tussen groepen verplaatst, kunt u testen of u uw resource kunt verplaatsen naar een andere groep. Zie [uw verhuizing valideren](../azure-resource-manager/management/move-resource-group-and-subscription.md#validate-move)voor meer informatie.
 
@@ -106,4 +106,4 @@ De sjabloon die u in Visual Studio krijgt, bevat alleen de resource definities v
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Azure-resources verplaatsen naar nieuwe resource groepen of-abonnementen](../azure-resource-manager/resource-group-move-resources.md)
+[Azure-resources verplaatsen naar nieuwe resource groepen of-abonnementen](../azure-resource-manager/management/move-resource-group-and-subscription.md)

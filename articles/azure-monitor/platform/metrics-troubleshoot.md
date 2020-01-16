@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d31b046bf02893affff84069ee92b3bd7735b904
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 072e62d89e8febc4837c10874398daea3b8114ed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243226"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974873"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Problemen met metrische grafieken oplossen
 
@@ -29,7 +29,7 @@ U hebt op de knop **Resource selecteren** geklikt, maar u ziet uw resource niet 
 
 1. Controleer of u de juiste resourcegroep hebt geselecteerd.
     > [!WARNING]
-    > Wanneer u Metrics Explorer de eerste keer opent, bevat de vervolgkeuzelijst **Resourcegroep** geen vooraf geselecteerde resourcegroepen. Dit is om de beste prestatie te kunnen bieden. U moet minstens één groep kiezen om resources te zien te krijgen.
+    > Voor de beste prestaties, wanneer u metrische gegevens Verkenner voor het eerst opent, heeft de vervolg keuzelijst **resource groep** geen vooraf geselecteerde resource groepen. U moet minstens één groep kiezen om resources te zien te krijgen.
 
 ## <a name="chart-shows-no-data"></a>Diagram toont geen gegevens
 
@@ -37,7 +37,7 @@ Soms kunnen de grafieken geen gegevens weer geven nadat u de juiste resources en
 
 ### <a name="microsoftinsights-resource-provider-isnt-registered-for-your-subscription"></a>De resource provider micro soft. Insights is niet geregistreerd voor uw abonnement
 
-U kunt alleen metrische gegevens verkennen als de resourceprovider *Microsoft.Insights* is geregistreerd in uw abonnement. In veel gevallen gebeurt dit automatisch (dat wil zeggen, nadat u een waarschuwingsregel hebt geconfigureerd, diagnostische instellingen hebt aangepast voor een resource of een regel voor automatisch schalen hebt geconfigureerd). Als de resource provider van micro soft. Insights niet is geregistreerd, moet u deze hand matig registreren door de stappen te volgen die worden beschreven in [Azure resource providers en-typen](../../azure-resource-manager/resource-manager-supported-services.md).
+U kunt alleen metrische gegevens verkennen als de resourceprovider *Microsoft.Insights* is geregistreerd in uw abonnement. In veel gevallen gebeurt dit automatisch (dat wil zeggen, nadat u een waarschuwingsregel hebt geconfigureerd, diagnostische instellingen hebt aangepast voor een resource of een regel voor automatisch schalen hebt geconfigureerd). Als de resource provider van micro soft. Insights niet is geregistreerd, moet u deze hand matig registreren door de stappen te volgen die worden beschreven in [Azure resource providers en-typen](../../azure-resource-manager/management/resource-providers-and-types.md).
 
 **Oplossing:** Open **abonnementen**, **resource providers** en controleer of *micro soft. Insights* is geregistreerd voor uw abonnement.
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: ec391db0e18128ad85d3bacb79fa51770aa70ea1
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: c49df689ae859c93046c19af043aa2001dbb5481
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298893"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979634"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Aan de slag met Azure Table Storage en Visual Studio Connected Services (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -32,7 +32,7 @@ In deze zelf studie leert u hoe u ASP.NET-code kunt schrijven voor een aantal al
 ## <a name="prerequisites"></a>Vereisten
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Azure Storage-account](../storage/common/storage-quickstart-create-account.md)
+* [Azure Storage-account](../storage/common/storage-account-create.md)
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 

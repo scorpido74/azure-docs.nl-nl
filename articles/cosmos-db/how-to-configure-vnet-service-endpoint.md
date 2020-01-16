@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: mjbrown
-ms.openlocfilehash: 80e77e2caacfed7d662fdfa04aa9524bd7c2083a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 36f6152e52d6cb45d0a30b385678596331232560
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445421"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980676"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Toegang vanaf virtuele netwerken (VNet) configureren
 
@@ -52,7 +52,7 @@ In de volgende secties wordt beschreven hoe u een service-eind punt voor een vir
 > Als u service-eind punten voor virtuele netwerken wilt inschakelen, hebt u de volgende abonnements machtigingen nodig:
 >   * Abonnement met virtueel netwerk: Inzender voor netwerken
 >   * Abonnement met Azure Cosmos DB account: Inzender van DocumentDB-account
->   * Als uw virtuele netwerk en Azure Cosmos DB account zich in verschillende abonnementen bevinden, moet u ervoor zorgen dat er voor het abonnement met het virtuele netwerk ook `Microsoft.DocumentDB` resource provider is geregistreerd. Als u een resource provider wilt registreren, raadpleegt u het artikel [Azure-resource providers en-typen](../azure-resource-manager/resource-manager-supported-services.md) .
+>   * Als uw virtuele netwerk en Azure Cosmos DB account zich in verschillende abonnementen bevinden, moet u ervoor zorgen dat er voor het abonnement met het virtuele netwerk ook `Microsoft.DocumentDB` resource provider is geregistreerd. Als u een resource provider wilt registreren, raadpleegt u het artikel [Azure-resource providers en-typen](../azure-resource-manager/management/resource-providers-and-types.md) .
 
 Hier vindt u de instructies voor het registreren van een abonnement bij een resource provider.
 

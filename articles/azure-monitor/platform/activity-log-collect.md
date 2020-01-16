@@ -7,17 +7,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: f4612232acfe6099c56d365e482cbc82c8436dee
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2bf2f012e553e08a1eb829f93d9af0f0e74f638b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745622"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977661"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure-activiteiten Logboeken in Log Analytics werk ruimte in Azure Monitor verzamelen en analyseren
 
 > [!WARNING]
-> U kunt het activiteiten logboek nu verzamelen in een Log Analytics-werk ruimte met behulp van een diagnostische instelling, vergelijkbaar met de manier waarop u bron logboeken verzamelt. Zie [Azure-activiteiten logboeken verzamelen en analyseren in log Analytics werk ruimte in azure monitor](diagnostic-settings-subscription.md).
+> U kunt het activiteiten logboek nu verzamelen in een Log Analytics-werk ruimte met behulp van een diagnostische instelling, vergelijkbaar met de manier waarop u bron logboeken verzamelt. Zie [Azure-activiteiten logboeken verzamelen en analyseren in log Analytics werk ruimte in azure monitor](diagnostic-settings-legacy.md).
 
 Het [Azure-activiteiten logboek](platform-logs-overview.md) biedt inzicht in gebeurtenissen op abonnements niveau die in uw Azure-abonnement zijn opgetreden. In dit artikel wordt beschreven hoe u het activiteiten logboek in een Log Analytics-werk ruimte verzamelt en hoe u de Analyse van activiteitenlogboek [bewakings oplossing](../insights/solutions.md)gebruikt, waarmee logboek query's en-weer gaven worden geboden voor het analyseren van deze gegevens. 
 
@@ -32,7 +32,7 @@ Het verbinden van het activiteiten logboek met een Log Analytics-werk ruimte bie
 Eén werk ruimte kan worden gekoppeld aan het activiteiten logboek voor meerdere abonnementen in dezelfde Azure-Tenant. Zie [Azure-activiteiten logboeken verzamelen in een log Analytics-werk ruimte voor het verzamelen van gegevens over meerdere tenants in verschillende Azure Active Directory tenants](activity-log-collect-tenants.md).
 
 > [!IMPORTANT]
-> Er kan een fout met de volgende procedure worden weer gegeven als de resource providers micro soft. OperationalInsights en micro soft. OperationsManagement niet zijn geregistreerd voor uw abonnement. Zie [Azure-resource providers en-typen](../../azure-resource-manager/resource-manager-supported-services.md) om deze providers te registreren.
+> Er kan een fout met de volgende procedure worden weer gegeven als de resource providers micro soft. OperationalInsights en micro soft. OperationsManagement niet zijn geregistreerd voor uw abonnement. Zie [Azure-resource providers en-typen](../../azure-resource-manager/management/resource-providers-and-types.md) om deze providers te registreren.
 
 Gebruik de volgende procedure om het activiteiten logboek te verbinden met uw Log Analytics-werk ruimte:
 

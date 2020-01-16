@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: f92226a76462289b9f26ae9d3bab22d780fb35db
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2453b29c5efd768930f534df89d4c62320ed4770
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464989"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965342"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>Een SQL Server-failovercluster configureren met Premium-bestands share op Azure virtual machines
 
@@ -42,7 +42,7 @@ Als u zich bewust bent van een Azure IaaS VM-failovercluster, raden we u aan é�
 U moet ook algemene informatie over deze technologieën hebben:
 
 - [Azure Premium-bestands share](../../../storage/files/storage-how-to-create-premium-fileshare.md)
-- [Azure-resource groepen](../../../azure-resource-manager/manage-resource-groups-portal.md)
+- [Azure-resource groepen](../../../azure-resource-manager/management/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
 > Op dit moment worden SQL Server failover-cluster exemplaren op virtuele machines van Azure alleen ondersteund in de [Lightweight-beheer modus](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) van de [SQL Server IaaS agent-extensie](virtual-machines-windows-sql-server-agent-extension.md). Als u wilt overschakelen van de volledige extensie modus naar Lightweight, verwijdert u de resource van de **virtuele SQL-machine** voor de bijbehorende vm's en registreert u deze vervolgens bij de resource provider van de SQL-vm in de Lightweight-modus. Als u de bron van de **virtuele SQL-machine** verwijdert met behulp van de Azure Portal, **schakelt u het selectie vakje naast de juiste virtuele machine uit**. De volledige extensie ondersteunt functies zoals automatische back-ups, patches en Geavanceerd Portal beheer. Deze functies werken niet voor SQL-Vm's nadat de agent opnieuw is geïnstalleerd in de modus voor licht gewicht beheer.

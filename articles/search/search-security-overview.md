@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c1a800ceb12c2e7ad69329d0391478a8e2ae268b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 44d5edd7b5808b6c212a832dd95de7a9cb4b7c08
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945690"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978592"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Beveiliging en privacy van gegevens in azure Cognitive Search
 
@@ -49,7 +49,7 @@ Versleuteling loopt over de gehele indexerings pijplijn: vanuit verbindingen, vi
 
 Verschillende beveiligings mechanismen zijn beschikbaar voor het hele Azure en dus automatisch beschikbaar voor de Azure Cognitive Search-resources die u maakt.
 
-+ [Vergrendelt op het niveau van de abonnement of het resource om verwijdering te voor komen](../azure-resource-manager/resource-group-lock-resources.md)
++ [Vergrendelt op het niveau van de abonnement of het resource om verwijdering te voor komen](../azure-resource-manager/management/lock-resources.md)
 + [Op rollen gebaseerd Access Control (RBAC) voor het beheren van de toegang tot informatie en beheer bewerkingen](../role-based-access-control/overview.md)
 
 Alle Azure-Services bieden ondersteuning voor op rollen gebaseerde toegangs beheer (RBAC) voor het instellen van toegangs niveaus op consistente wijze voor alle services. Bijvoorbeeld: het weer geven van gevoelige gegevens, zoals de beheerders sleutel, is beperkt tot de rollen eigenaar en Inzender, terwijl de weer gave van de status van de service beschikbaar is voor leden van een wille keurige rol. RBAC biedt de rollen eigenaar, bijdrager en lezer. Standaard zijn alle service beheerders lid van de rol eigenaar.

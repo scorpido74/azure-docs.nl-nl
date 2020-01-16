@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: 75b0ea106be04cd77b18bfed8487edb6a7b7f65b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f8cdd7b950a11045f795ac93d4a0904f2dc526fa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839190"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970198"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Azure Storage gebruiken met een Hudson CI-oplossing
 ## <a name="overview"></a>Overzicht
@@ -53,7 +53,7 @@ U hebt het volgende nodig om de Blob service te gebruiken met uw Hudson CI-oplos
      
       Hoewel een typische Hudson CI-oplossing zo is ingesteld dat deze als een service wordt uitgevoerd, is het uitvoeren van de Hudson War op de opdracht regel voldoende voor deze zelf studie.
 * Een Azure-account. U kunt zich op <https://www.azure.com>registreren voor een Azure-account.
-* Een Azure Storage-account. Als u nog geen opslag account hebt, kunt u er een maken met behulp van de stappen in [een opslag account maken](../common/storage-quickstart-create-account.md).
+* Een Azure Storage-account. Als u nog geen opslag account hebt, kunt u er een maken met behulp van de stappen in [een opslag account maken](../common/storage-account-create.md).
 * De vertrouwdheid van de Hudson CI-oplossing wordt aanbevolen, maar is niet vereist, omdat de volgende inhoud een basis voorbeeld gebruikt om u te laten zien welke stappen nodig zijn bij het gebruik van de Blob service als opslag plaats voor Hudson CI-build-artefacten.
 
 ## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>Het Blob service gebruiken met Hudson CI
@@ -65,7 +65,7 @@ Als u de Blob service wilt gebruiken met Hudson, moet u de Azure Storage-invoeg 
 3. Klik op het tabblad **beschikbaar** .
 4. Klik op **anderen**.
 5. Selecteer **Microsoft Azure Storage-invoeg toepassing**in de sectie **artefacten uploaden** .
-6. Klik op **Installeren**.
+6. Klik op **Install**.
 7. Nadat de installatie is voltooid, start u Hudson opnieuw.
 
 ## <a name="how-to-configure-the-azure-storage-plugin-to-use-your-storage-account"></a>De Azure Storage-invoeg toepassing configureren voor het gebruik van uw opslag account

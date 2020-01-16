@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 29aaedeafb3995cc09e221d2e049dd538808904a
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f26c5a6c6fc2774d19beaa021015357a1991f0ed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032658"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978171"
 ---
 # <a name="configure-an-ilb-listener-for-availability-groups-on-azure-sql-server-vms"></a>Een ILB-listener configureren voor beschikbaarheids groepen op Azure SQL Server Vm's
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "74032658"
 ## <a name="overview"></a>Overzicht
 
 > [!IMPORTANT]
-> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Azure Resource Manager en klassiek](../../../azure-resource-manager/resource-manager-deployment-model.md). In dit artikel wordt het gebruik van het klassieke implementatie model besproken. Het is raadzaam om de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
+> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Azure Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt het gebruik van het klassieke implementatie model besproken. Het is raadzaam om de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
 
 Als u een listener wilt configureren voor een AlwaysOn-beschikbaarheids groep in het Resource Manager-model, raadpleegt u [een Load Balancer configureren voor een always on-beschikbaarheids groep in azure](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md).
 

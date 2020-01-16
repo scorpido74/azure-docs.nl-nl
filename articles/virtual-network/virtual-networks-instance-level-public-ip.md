@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: genli
-ms.openlocfilehash: d92832d1eee995e8883dc6c8ed0f58c9755e40f8
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 74d10c8fbe2f82d6148f5e13cb57c46dd645f76f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058410"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979546"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Overzicht van open bare IP-adressen (klassiek) op exemplaar niveau
 Een openbaar IP-adres (ILPIP) op exemplaar niveau is een openbaar IP-adressen dat u rechtstreeks kunt toewijzen aan een virtuele machine of Cloud Services rolinstantie, in plaats van naar de Cloud service waar uw VM of rolinstantie zich bevindt. Een ILPIP neemt niet de plaats van het virtuele IP-adres (VIP) dat is toegewezen aan uw Cloud service. In plaats daarvan is het een extra IP-adres dat u kunt gebruiken om rechtstreeks verbinding te maken met uw VM of rolinstantie.
 
 > [!IMPORTANT]
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources:  [Resource Manager en het klassieke model](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dit artikel gaat over het gebruik van het klassieke implementatiemodel. Micro soft raadt aan Vm's te maken met Resource Manager. Zorg ervoor dat u begrijpt hoe [IP-adressen](virtual-network-ip-addresses-overview-classic.md) werken in Azure.
+> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Dit artikel gaat over het gebruik van het klassieke implementatiemodel. Micro soft raadt aan Vm's te maken met Resource Manager. Zorg ervoor dat u begrijpt hoe [IP-adressen](virtual-network-ip-addresses-overview-classic.md) werken in Azure.
 
 ![Verschil tussen ILPIP en VIP](./media/virtual-networks-instance-level-public-ip/Figure1.png)
 
-Zoals weer gegeven in afbeelding 1, wordt de Cloud service geopend met behulp van een VIP, terwijl de afzonderlijke vm's normaal gesp&lt;roken worden&gt;gebruikt via VIP: poort nummer. Door een ILPIP toe te wijzen aan een specifieke virtuele machine, kan de virtuele machine rechtstreeks worden geopend met behulp van dat IP-adres.
+Zoals weer gegeven in afbeelding 1, wordt de Cloud service geopend met behulp van een VIP, terwijl de afzonderlijke Vm's normaal gesp roken worden gebruikt via VIP:&lt;poort nummer&gt;. Door een ILPIP toe te wijzen aan een specifieke virtuele machine, kan de virtuele machine rechtstreeks worden geopend met behulp van dat IP-adres.
 
-Wanneer u een Cloud service in azure maakt, worden de bijbehorende DNS-records automatisch gemaakt om toegang tot de service toe te staan via een Fully Qualified Domain Name (FQDN), in plaats van de daad werkelijke VIP te gebruiken. Hetzelfde proces treedt op voor een ILPIP, waardoor toegang tot de virtuele machine of het rolinstantie wordt toegestaan door de FQDN in plaats van de ILPIP. Als u bijvoorbeeld een Cloud service met de naam *contosoadservice*maakt en u een webrol met de naam *contosoweb* met twee exemplaren configureert, en in. `domainNameLabel` cscfg is ingesteld op *WebPublicIP*, registreert Azure de volgende a-records voor de vaak
+Wanneer u een Cloud service in azure maakt, worden de bijbehorende DNS-records automatisch gemaakt om toegang tot de service toe te staan via een Fully Qualified Domain Name (FQDN), in plaats van de daad werkelijke VIP te gebruiken. Hetzelfde proces treedt op voor een ILPIP, waardoor toegang tot de virtuele machine of het rolinstantie wordt toegestaan door de FQDN in plaats van de ILPIP. Als u bijvoorbeeld een Cloud service met de naam *contosoadservice*maakt en u een webrol met de naam *contosoweb* met twee exemplaren configureert, en in. cscfg `domainNameLabel` is ingesteld op *WebPublicIP*, registreert Azure de volgende records voor de instanties:
 
 
 * WebPublicIP.0.contosoadservice.cloudapp.net
@@ -45,7 +45,7 @@ Wanneer u een Cloud service in azure maakt, worden de bijbehorende DNS-records a
 > 
 
 ## <a name="why-would-i-request-an-ilpip"></a>Waarom zou ik een ILPIP aanvragen?
-Als u verbinding wilt kunnen maken met uw virtuele machine of rolinstantie met een IP-adres dat rechtstreeks aan de VM is toegewezen, in plaats van het Cloud service&lt;-VIP&gt;: poort nummer te gebruiken, moet u een ILPIP aanvragen voor uw virtuele machine of uw rolinstantie.
+Als u verbinding wilt kunnen maken met uw virtuele machine of rolinstantie met een IP-adres dat rechtstreeks aan de VM is toegewezen, in plaats van de Cloud service-VIP te gebruiken:&lt;poort nummer&gt;, vraagt u een ILPIP aan voor uw virtuele machine of uw rolinstantie.
 
 * **Actieve FTP** : door een ILPIP toe te wijzen aan een virtuele machine, kan het verkeer ontvangen op elke poort. Er zijn geen eind punten vereist voor de virtuele machine om verkeer te ontvangen.  Zie [overzicht van FTP-protocollen](https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) voor meer informatie over het FTP-protocol.
 * **Uitgaand IP** -verkeer dat afkomstig is van de virtuele machine, wordt toegewezen aan de ILPIP als bron en de ILPIP unieke identificatie van de virtuele machine naar externe entiteiten.
@@ -140,7 +140,7 @@ Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -Publi
 Voer de volgende stappen uit om een ILPIP toe te voegen aan een Cloud Services Role:
 
 1. Down load het. cscfg-bestand voor de Cloud service door de stappen in het artikel [Cloud Services configureren te](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) volt ooien.
-2. Werk het. cscfg-bestand bij door `InstanceAddress` het element toe te voegen. In het volgende voor beeld wordt een ILPIP met de naam *MyPublicIP* toegevoegd aan een rolinstantie met de naam *WebRole1*: 
+2. Werk het cscfg-bestand bij door het `InstanceAddress`-element toe te voegen. In het volgende voor beeld wordt een ILPIP met de naam *MyPublicIP* toegevoegd aan een rolinstantie met de naam *WebRole1*: 
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -176,7 +176,7 @@ $roles[0].PublicIPAddress
 $roles[1].PublicIPAddress
 ```
 
-U kunt ook gebruiken `nslookup` om een query uit te zoeken naar een record van het subdomein:
+U kunt ook `nslookup` gebruiken om een query uit te zoeken naar een record van het subdomein:
 
 ```batch
 nslookup WebPublicIP.0.<Cloud Service Name>.cloudapp.net

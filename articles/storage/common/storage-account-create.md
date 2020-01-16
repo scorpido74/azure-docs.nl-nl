@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/11/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0d12f50b059bf74cc1bbc55913d4ce49b77f81fd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 203bff23b2ae1a5e5e19b4abc323c3ffeb31f367
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486714"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975920"
 ---
 # <a name="create-an-azure-storage-account"></a>Een Azure Storage-account maken
 
@@ -260,7 +260,7 @@ az storage account delete --name storageAccountName --resource-group resourceGro
 
 ---
 
-U kunt ook de resource groep verwijderen, waardoor het opslag account en eventuele andere resources in die resource groep worden verwijderd. Zie [resource groep en resources verwijderen](../../azure-resource-manager/resource-group-delete.md)voor meer informatie over het verwijderen van een resource groep.
+U kunt ook de resource groep verwijderen, waardoor het opslag account en eventuele andere resources in die resource groep worden verwijderd. Zie [resource groep en resources verwijderen](../../azure-resource-manager/management/delete-resource-group.md)voor meer informatie over het verwijderen van een resource groep.
 
 > [!WARNING]
 > Het is niet mogelijk om een verwijderd opslagaccount te herstellen of om inhoud terug te halen die het account vóór verwijdering bevatte. Zorg ervoor dat u een back-up maakt van alles dat u wilt opslaan, voordat u het account verwijdert. Dit geldt ook voor alle resources in het account: als u blobs, tabellen, wachtrijen of bestanden verwijdert, worden deze permanent verwijderd.

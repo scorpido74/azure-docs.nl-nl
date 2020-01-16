@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: alsin
-ms.openlocfilehash: e9cbd98afd5f9ed5561cba2236d85da331db7895
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 911d86dd7cb03479d9bde49d8fce0f7861e32e27
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75944706"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980141"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux uw gouden installatie kopieën met uw eigen abonnement in azure
 Red Hat Enterprise Linux-installatie kopieën (RHEL) zijn beschikbaar in azure via een PAYG-model (betalen per gebruik) of uw eigen abonnement (Red Hat Gold image). Dit document bevat een overzicht van de Red Hat Gold-installatie kopieën in Azure.
@@ -189,5 +189,6 @@ Hier volgt een voor beeld van een script. U moet de resource groep, de locatie, 
 ## <a name="next-steps"></a>Volgende stappen
 * Stapsgewijze hand leidingen en programma Details voor Cloud toegang zijn beschikbaar in de [Red Hat Cloud Access-documentatie.](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/index)
 * Meer informatie over de [Azure Red Hat-update-infra structuur](./redhat-rhui.md).
-* Ga naar de [documentatie pagina](./redhat-images.md)voor meer informatie over de Red Hat-afbeeldingen in Azure.
+* Ga naar de [documentatie pagina](./redhat-images.md)voor meer informatie over alle Red Hat-afbeeldingen in Azure.
 * Informatie over Red Hat-ondersteunings beleid voor alle versies van RHEL vindt u op de pagina [levens cyclus van Red Hat Enterprise Linux](https://access.redhat.com/support/policy/updates/errata) .
+* Meer documentatie over de RHEL-gouden installatie kopieën vindt u in de [documentatie van Red Hat](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure).

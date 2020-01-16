@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: f0dd7160ae41ac004564ea21300945e135d31689
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 56be45b8d0f8086d9a64811fe715fad967fca33e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945528"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027772"
 ---
 # <a name="release-notes"></a>Releaseopmerkingen
 
@@ -34,10 +34,10 @@ Deze release geldt voor HDInsight 3,6 en 4,0. HDInsight-release wordt beschikbaa
 ### <a name="tls-12-enforcement"></a>TLS 1.2 afdwingen
 Transport Layer Security (TLS) en Secure Sockets Layer (SSL) zijn cryptografische protocollen die communicatie beveiliging bieden via een computer netwerk. Meer informatie over [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0). HDInsight gebruikt TLS 1,2 voor open bare HTTPs-eind punten, maar TLS 1,1 wordt nog steeds ondersteund voor achterwaartse compatibiliteit. 
 
-In deze release kunnen klanten alleen voor alle verbindingen met behulp van het eind punt van het open bare cluster kiezen voor TLS 1,2. Ter ondersteuning hiervan wordt de nieuwe eigenschap **minSupportedTlsVersion** geïntroduceerd en kan deze worden opgegeven tijdens het maken van het cluster. Als de eigenschap niet is ingesteld, ondersteunt het cluster nog steeds TLS 1,0, 1,1 en 1,2, wat gelijk is aan het gedrag van vandaag. Klanten kunnen de waarde voor deze eigenschap instellen op ' 1,2 ', wat betekent dat het cluster alleen TLS 1,2 en hoger ondersteunt. 
+In deze release kunnen klanten alleen voor alle verbindingen met behulp van het eind punt van het open bare cluster kiezen voor TLS 1,2. Ter ondersteuning hiervan wordt de nieuwe eigenschap **minSupportedTlsVersion** geïntroduceerd en kan deze worden opgegeven tijdens het maken van het cluster. Als de eigenschap niet is ingesteld, ondersteunt het cluster nog steeds TLS 1,0, 1,1 en 1,2, wat gelijk is aan het gedrag van vandaag. Klanten kunnen de waarde voor deze eigenschap instellen op ' 1,2 ', wat betekent dat het cluster alleen TLS 1,2 en hoger ondersteunt. Zie [een virtueel netwerk plannen-Transport Layer Security](https://docs.microsoft.com/azure/hdinsight/hdinsight-plan-virtual-network-deployment#transport-layer-security)voor meer informatie.
 
 ### <a name="bring-your-own-key-for-disk-encryption"></a>Uw eigen sleutel voor schijf versleuteling nemen
-Alle beheerde schijven in HDInsight worden beveiligd met Azure Storage-service versleuteling (SSE). Gegevens op deze schijven worden standaard versleuteld door door micro soft beheerde sleutels. Vanaf deze release kunt u Bring Your Own Key (BYOK) voor schijf versleuteling en deze beheren met Azure Key Vault. BYOK-versleuteling is een configuratie met één stap tijdens het maken van het cluster zonder extra kosten. Registreer HDInsight als een beheerde identiteit met Azure Key Vault en voeg de versleutelings sleutel toe wanneer u uw cluster maakt. 
+Alle beheerde schijven in HDInsight worden beveiligd met Azure Storage-service versleuteling (SSE). Gegevens op deze schijven worden standaard versleuteld door door micro soft beheerde sleutels. Vanaf deze release kunt u Bring Your Own Key (BYOK) voor schijf versleuteling en deze beheren met Azure Key Vault. BYOK-versleuteling is een configuratie met één stap tijdens het maken van het cluster zonder extra kosten. Registreer HDInsight als een beheerde identiteit met Azure Key Vault en voeg de versleutelings sleutel toe wanneer u uw cluster maakt. Zie door de [klant beheerde sleutel schijf versleuteling](https://docs.microsoft.com/azure/hdinsight/disk-encryption)voor meer informatie.
 
 ## <a name="deprecation"></a>Afschaffing
 Geen afschaffing van deze release. Zie [aanstaande wijzigingen](#upcoming-changes)voor meer informatie over het voorbereiden van toekomstige afschaffing.

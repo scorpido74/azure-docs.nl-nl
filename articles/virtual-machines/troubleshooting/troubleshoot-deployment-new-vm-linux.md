@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
-ms.openlocfilehash: f02e1f73460140c9fe9f2cf6d7ffda26533d570d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 98c3a6b14230e30ccbb103be741595696a20c236
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090028"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981406"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Problemen met de implementatie van Resource Manager oplossen met het maken van een nieuwe virtuele Linux-machine in azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -34,7 +34,7 @@ Voor andere problemen met en vragen over de VM-implementatie raadpleegt u [Troub
 ## <a name="collect-activity-logs"></a>Activiteiten logboeken verzamelen
 Om te beginnen met het oplossen van problemen, verzamelt u de activiteiten Logboeken om de fout te identificeren die aan het probleem is gekoppeld. De volgende koppelingen bevatten gedetailleerde informatie over het proces dat moet worden gevolgd.
 
-[Implementatiebewerkingen bekijken](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[Implementatiebewerkingen bekijken](../../azure-resource-manager/templates/deployment-history.md)
 
 [Activiteiten logboeken weer geven om Azure-resources te beheren](../../resource-group-audit.md)
 
@@ -42,7 +42,7 @@ Om te beginnen met het oplossen van problemen, verzamelt u de activiteiten Logbo
 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**VORIG** Als het besturings systeem wordt gegeneraliseerd door Linux en het is geüpload en/of vastgelegd met de gegeneraliseerde instelling, zijn er geen fouten. Op dezelfde manier geldt dat als het besturings systeem Linux gespecialiseerd is en het is geüpload en/of vastgelegd met de gespecialiseerde instelling, er geen fouten zijn.
+**Y:** Als het besturings systeem wordt gegeneraliseerd door Linux en het is geüpload en/of vastgelegd met de gegeneraliseerde instelling, zijn er geen fouten. Op dezelfde manier geldt dat als het besturings systeem Linux gespecialiseerd is en het is geüpload en/of vastgelegd met de gespecialiseerde instelling, er geen fouten zijn.
 
 **Upload fouten:**
 
@@ -50,7 +50,7 @@ Om te beginnen met het oplossen van problemen, verzamelt u de activiteiten Logbo
 
 **N<sup>2</sup>:** Als het besturings systeem Linux gespecialiseerd is en het is geüpload als gegeneraliseerd, krijgt u een inrichtings fout, omdat de nieuwe virtuele machine wordt uitgevoerd met de oorspronkelijke computer naam, gebruikers naam en wacht woord.
 
-**Opgelost**
+**Oplossing:**
 
 Als u beide fouten wilt oplossen, uploadt u de oorspronkelijke VHD, die beschikbaar is op locatie, met dezelfde instelling als die voor het besturings systeem (gegeneraliseerd/gespecialiseerd). Als u wilt uploaden als gegeneraliseerd, moet u eerst de uitvoering van het programma uitvoeren.
 
@@ -60,11 +60,11 @@ Als u beide fouten wilt oplossen, uploadt u de oorspronkelijke VHD, die beschikb
 
 **N<sup>4</sup>:** Als het besturings systeem Linux gespecialiseerd is en het is vastgelegd als gegeneraliseerd, krijgt u een inrichtings fout omdat de nieuwe virtuele machine wordt uitgevoerd met de oorspronkelijke computer naam, gebruikers naam en wacht woord. De oorspronkelijke virtuele machine kan ook niet worden gebruikt omdat deze is gemarkeerd als gespecialiseerd.
 
-**Opgelost**
+**Oplossing:**
 
 Om beide fouten op te lossen, verwijdert u de huidige installatie kopie uit de portal en [legt u deze opnieuw vast vanaf de huidige vhd's](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) met dezelfde instelling als voor het besturings systeem (gegeneraliseerd/gespecialiseerd).
 
-## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Probleem: Aangepaste/galerie/Marketplace-afbeelding; toewijzings fout
+## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Probleem: afbeelding voor aangepast/galerie/Marketplace; toewijzings fout
 Deze fout treedt op wanneer de nieuwe VM-aanvraag is vastgemaakt aan een cluster dat de aangevraagde VM-grootte niet kan ondersteunen of waarvoor er geen beschik bare ruimte beschikbaar is om aan de aanvraag te voldoen.
 
 **Oorzaak 1:** Het cluster kan de aangevraagde VM-grootte niet ondersteunen.
@@ -74,7 +74,7 @@ Deze fout treedt op wanneer de nieuwe VM-aanvraag is vastgemaakt aan een cluster
 * Voer de aanvraag opnieuw uit met een kleinere VM-grootte.
 * Als de grootte van de aangevraagde virtuele machine niet kan worden gewijzigd:
   * Stop alle virtuele machines in de beschikbaarheidsset.
-    Klik op **resource groepen** > *uw resource groep* >  > omuw > *beschikbaarheidsset*virtualmachines > *uw virtuele machine in te stellen. Stoppen.*   > 
+    Klik op **resource groepen** > *de resource groep* > **Resources** > *uw beschikbaarheidsset* > **virtual machines** > *uw virtuele machine* > **gestopt**.
   * Nadat alle Vm's zijn gestopt, maakt u de nieuwe virtuele machine op de gewenste grootte.
   * Start eerst de nieuwe VM en selecteer vervolgens elk van de gestopte Vm's en klik op **Start**.
 

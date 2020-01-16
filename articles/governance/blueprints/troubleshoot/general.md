@@ -3,12 +3,12 @@ title: Veelvoorkomende problemen oplossen
 description: Meer informatie over het oplossen van problemen met het maken, toewijzen en verwijderen van blauw drukken, zoals beleids schendingen en Blue para meter-functies.
 ms.date: 11/22/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 4e7ea1760e000a167c4329d6f12f3acc18d18f7c
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 5b8a20b0757934bbd356ab037a22521a248a7eb2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406612"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982477"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Problemen met Azure-blauw drukken oplossen
 
@@ -43,7 +43,7 @@ Een beleid kan om een aantal redenen conflicteren met de implementatie:
 - De bron die wordt gemaakt, wordt beperkt door het beleid (vaak SKU of locatie beperkingen)
 - De implementatie is het instellen van velden die worden geconfigureerd door beleid (gemeen schappelijk met Tags)
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
 Wijzig de blauw druk zodat deze niet in strijd is met het beleid in de fout Details. Als deze wijziging niet mogelijk is, is het bereik van de beleids toewijzing gewijzigd, zodat de blauw druk niet meer in strijd is met het beleid.
 
@@ -57,9 +57,9 @@ Blauw drukken-para meters die zijn functies worden verwerkt voordat ze worden do
 
 Het door geven van een blauw druk-para meter die gebruikmaakt van een functie, zoals `[resourceGroup().tags.myTag]`, op een artefact resulteert in het verwerkte resultaat van de functie die wordt ingesteld op het artefact in plaats van de dynamische functie.
 
-#### <a name="resolution"></a>Oplossing
+#### <a name="resolution"></a>Resolutie
 
-Als u een functie wilt door geven door middel van een para meter, moet u de volledige teken reeks met `[` zodanig wegvallen dat de blauw druk-para meter lijkt op `[[resourceGroup().tags.myTag]`. Het escape teken resulteert in blauw drukken om de waarde te behandelen als een teken reeks bij het verwerken van de blauw druk. Blauw drukken plaatst vervolgens de functie op het artefact, zodat deze dynamisch kan worden uitgevoerd. Zie [syntaxis en expressies in azure Resource Manager-sjablonen](../../../azure-resource-manager/template-expressions.md)voor meer informatie.
+Als u een functie wilt door geven door middel van een para meter, moet u de volledige teken reeks met `[` zodanig wegvallen dat de blauw druk-para meter lijkt op `[[resourceGroup().tags.myTag]`. Het escape teken resulteert in blauw drukken om de waarde te behandelen als een teken reeks bij het verwerken van de blauw druk. Blauw drukken plaatst vervolgens de functie op het artefact, zodat deze dynamisch kan worden uitgevoerd. Zie [syntaxis en expressies in azure Resource Manager-sjablonen](../../../azure-resource-manager/templates/template-expressions.md)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

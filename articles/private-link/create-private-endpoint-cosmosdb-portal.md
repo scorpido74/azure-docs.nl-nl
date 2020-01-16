@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 13b0f7bd37956b51c6dce780d0709abfb3546336
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 23e04bf651c199364f23bf36f327de94c709d643
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430305"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028588"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Privé verbinding maken met een Azure Cosmos-account met behulp van een persoonlijke Azure-koppeling
 
@@ -141,7 +141,7 @@ In deze sectie maakt u een particuliere verbinding met het Azure Cosmos-account 
    10.1.255.14 mycosmosaccount-eastus.documents.azure.com
 
 
-1. Installeer [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)In de Extern bureaublad van *myVM*.
+1. Installeer [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows)In de Extern bureaublad van *myVM*.
 
 1. Selecteer **Cosmos DB accounts (preview)** met de rechter muisknop.
 
@@ -159,22 +159,22 @@ In deze sectie maakt u een particuliere verbinding met het Azure Cosmos-account 
 
 1. (Optioneel) Voeg nieuwe items toe aan *mycosmosaccount*.
 
-1. Sluit de verbinding met extern bureau blad met *myVM*.
+1. Sluit de verbinding met extern bureau blad met *myVM*.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Wanneer u klaar bent met het persoonlijke eind punt, het Azure Cosmos-account en de virtuele machine, verwijdert u de resource groep en alle resources die deze bevat: 
 
-1. Geef *myResourceGroup* op in het **zoekvak** boven aan de portal en selecteer *myResourceGroup* in de zoek resultaten.
+1. Voer *myResourceGroup* in het **zoekvak** boven aan de portal in en selecteer *myResourceGroup* in de zoek resultaten.
 
 1. Selecteer **Resourcegroep verwijderen**.
 
-1. Voer *myResourceGroup* in om **de naam van de resource groep te typen** en selecteer **verwijderen**.
+1. Voer *myResourceGroup* in voor **TYP DE RESOURCEGROEPNAAM** en selecteer **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In dit artikel hebt u een VM gemaakt in een virtueel netwerk, een Azure Cosmos-account en een persoonlijk eind punt. U hebt verbinding gemaakt met de virtuele machine via internet en veilig door gegeven aan het Azure Cosmos-account met behulp van een persoonlijke koppeling.
 
-* Zie [Wat is Azure private endpoint?](private-endpoint-overview.md)voor meer informatie over privé-eind punten.
+* Zie [Wat is Azure private endpoint?](private-endpoint-overview.md)voor meer informatie over privé-eind punten.
 
 * Zie voor meer informatie over het beperken van een persoonlijk eind punt bij gebruik met Azure Cosmos DB [Azure private link met Azure Cosmos DB](../cosmos-db/how-to-configure-private-endpoints.md) artikel.

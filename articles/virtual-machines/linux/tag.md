@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/28/2017
 ms.author: memccror
-ms.openlocfilehash: 871159a660d03469b67461f5eb1ce8245d4c3611
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cb8ec68ac0be4cf4480f5d75f987707cf7393003
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369147"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973207"
 ---
 # <a name="how-to-tag-a-linux-virtual-machine-in-azure"></a>Een virtuele Linux-machine in azure labelen
 In dit artikel worden verschillende manieren beschreven om een virtuele Linux-machine in azure te labelen via het Resource Manager-implementatie model. Tags zijn door de gebruiker gedefinieerde sleutel/waarde-paren die rechtstreeks kunnen worden geplaatst op een resource of resource groep. Azure ondersteunt momenteel Maxi maal 15 Tags per resource en resource groep. Labels kunnen worden geplaatst op een resource op het moment dat ze worden gemaakt of worden toegevoegd aan een bestaande resource. Let op: Tags worden alleen ondersteund voor resources die zijn gemaakt via het Resource Manager-implementatie model.
@@ -61,6 +61,6 @@ Nu we tags hebben toegepast op onze resources Azure CLI en de portal, gaan we de
 
 [Azure CLI environment]: ../../azure-resource-manager/xplat-cli-azure-resource-manager.md
 [Azure Resource Manager Overview]: ../../azure-resource-manager/management/overview.md
-[Using Tags to organize your Azure Resources]: ../../azure-resource-manager/resource-group-using-tags.md
-[Understanding your Azure Bill]: ../../billing/billing-understand-your-bill.md
-[Gain insights into your Microsoft Azure resource consumption]: ../../billing/billing-usage-rate-card-overview.md
+[Using Tags to organize your Azure Resources]: ../../azure-resource-manager/management/tag-resources.md
+[Understanding your Azure Bill]:../../cost-management-billing/understand/review-individual-bill.md
+[Gain insights into your Microsoft Azure resource consumption]:../../cost-management-billing/manage/usage-rate-card-overview.md

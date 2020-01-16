@@ -4,15 +4,15 @@ description: Hierin wordt beschreven hoe u de Azure Analysis Services REST API g
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7c6fba10264939335cdef26f288973f8217f340b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2281f9d493edf955881772ec174c82b527f1b6fa
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573399"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029875"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchroon vernieuwen met de REST API
 
@@ -30,7 +30,7 @@ De basis-URL heeft de volgende indeling:
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-Denk bijvoorbeeld aan een model met de naam AdventureWorks op een server met de naam MijnServer, dat zich bevindt in de Azure-regio vs West. De server naam is:
+Denk bijvoorbeeld aan een model met de naam AdventureWorks op een server met de naam `myserver`, dat zich in de regio vs West Azure bevindt. De server naam is:
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -97,9 +97,9 @@ De hoofd tekst kan er als volgt uitzien:
 
 Het opgeven van para meters is niet vereist. De standaard waarde wordt toegepast.
 
-| Naam             | Type  | Beschrijving  |Standaard  |
+| Name             | Type  | Beschrijving  |Standaard  |
 |------------------|-------|--------------|---------|
-| `Type`           | Enum  | Het type verwerking dat moet worden uitgevoerd. De typen zijn afgestemd op de TMSL- [vernieuwings opdracht](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) typen: Full, clearValues, Calculate, dataOnly, Automatic en defragmenteren. Het type toevoegen wordt niet ondersteund.      |   Automatisch      |
+| `Type`           | Enum  | Het type verwerking dat moet worden uitgevoerd. De typen zijn afgestemd op de TMSL- [vernieuwings opdracht](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) typen: Full, clearValues, Calculate, dataOnly, Automatic en defragmenteren. Het type toevoegen wordt niet ondersteund.      |   automatisch      |
 | `CommitMode`     | Enum  | Bepaalt of objecten worden doorgevoerd in batches of alleen wanneer dit is voltooid. Voor beelden zijn: standaard, transactioneel, partialBatch.  |  transactionele       |
 | `MaxParallelism` | Int   | Deze waarde bepaalt het maximum aantal threads waarop verwerkings opdrachten parallel moeten worden uitgevoerd. Deze waarde is afgestemd op de eigenschap MaxParallelism die kan worden ingesteld in de [opdracht TMSL sequence](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) of met behulp van andere methoden.       | 10        |
 | `RetryCount`     | Int   | Hiermee wordt het aantal keren aangegeven dat de bewerking opnieuw wordt uitgevoerd voordat er een fout optreedt.      |     0    |
@@ -110,9 +110,20 @@ CommitMode is gelijk aan partialBatch. Dit wordt gebruikt bij het uitvoeren van 
 > [!NOTE]
 > De Batch grootte is op het moment van schrijven de MaxParallelism-waarde, maar deze waarde zou kunnen veranderen.
 
+### <a name="status-values"></a>Status waarden
+
+|Statuswaarde  |Beschrijving  |
+|---------|---------|
+|`notStarted`    |   De bewerking is nog niet gestart.      |
+|`inProgress`     |   De bewerking wordt uitgevoerd.      |
+|`timedOut`     |    Er is een time-out opgetreden voor de bewerking op basis van de opgegeven time     |
+|`cancelled`     |   De bewerking is geannuleerd door de gebruiker of het systeem.      |
+|`failed`     |   De bewerking is mislukt.      |
+|`succeeded`      |   De bewerking is voltooid.      |
+
 ## <a name="get-refreshesrefreshid"></a>/Refreshes/\<refreshId-> ophalen
 
-Als u de status van een vernieuwings bewerking wilt controleren, gebruikt u de bewerking GET bij de vernieuwings-ID. Hier volgt een voor beeld van de hoofd tekst van het antwoord. Als de bewerking wordt uitgevoerd, wordt de status **InProgress** geretourneerd.
+Als u de status van een vernieuwings bewerking wilt controleren, gebruikt u de bewerking GET bij de vernieuwings-ID. Hier volgt een voor beeld van de hoofd tekst van het antwoord. Als de bewerking wordt uitgevoerd, wordt `inProgress` geretourneerd in de status.
 
 ```
 {
@@ -202,7 +213,7 @@ Hier volgt een C# code voorbeeld om aan de slag te gaan, [RestApiSample op githu
 
 Het code voorbeeld maakt gebruik van [Service-Principal](#service-principal) -verificatie.
 
-### <a name="service-principal"></a>Service-Principal
+### <a name="service-principal"></a>Service-principal
 
 Zie [Service-Principal maken-Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) en [een Service-Principal toevoegen aan de rol Server beheerder](analysis-services-addservprinc-admins.md) voor meer informatie over het instellen van een Service-Principal en het toewijzen van de benodigde machtigingen in azure als. Nadat u de stappen hebt voltooid, voert u de volgende aanvullende stappen uit:
 
@@ -214,6 +225,6 @@ Zie [Service-Principal maken-Azure Portal](../active-directory/develop/howto-cre
 ## <a name="see-also"></a>Zie ook
 
 [Voorbeelden](analysis-services-samples.md)   
-[REST-API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
+[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
 
 

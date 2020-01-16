@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d26bc6044ca106b0f081cee5a39405b4b78ce7ac
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0549427cfc99703af9f13280cf7377106423367b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303901"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982012"
 ---
-# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Het Team Data Science Process in actie: Azure HDInsight Hadoop-clusters gebruiken
+# <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Het Team Data Science Process in actie: gebruik Azure HDInsight Hadoop-clusters
 In dit scenario gebruiken we de [Team Data Science Process (TDSP)](overview.md) in een end-to-end-scenario. We gebruiken een [Azure HDInsight Hadoop-cluster](https://azure.microsoft.com/services/hdinsight/) wilt opslaan, verkennen, en de functie-engineering gegevens uit de openbaar beschikbare [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) gegevensset, en down-sampling van de gegevens. Voor het afhandelen van binaire en multiklassen classificatie en de voorspellende taken regressie, bouwen we modellen van de gegevens met Azure Machine Learning. 
 
 Zie voor een overzicht waarin wordt getoond hoe u voor het afhandelen van een grotere gegevensset, [Team Data Science Process - met behulp van Azure HDInsight Hadoop-Clusters op een gegevensset van 1 TB](hive-criteo-walkthrough.md).
@@ -50,18 +50,18 @@ De unieke sleutel voor deelname aan reis\_gegevens en reis\_fare bestaat uit de 
 ## <a name="mltasks"></a>Voorbeelden van taken voor voorspelling
 Bepaal de aard van voorspellingen die u wilt maken op basis van gegevensanalyse. Dit helpt de taken die u wilt opnemen in uw proces te verduidelijken. Hier volgen drie voorbeelden van voorspelling problemen die we in dit scenario behandelen. Deze zijn gebaseerd op de *tip\_bedrag*:
 
-- **Binaire classificatie**: Voorspel of een tip voor een reis is betaald. Dat wil zeggen, een *tip\_bedrag* die groter is dan $0 een voorbeeld van een positieve is, terwijl een *tip\_bedrag* van $0 is een voorbeeld van een negatief zijn.
+- **Binaire classificatie**: voorspellen of een tip voor een reis is betaald. Dat wil zeggen, een *tip\_bedrag* die groter is dan $0 een voorbeeld van een positieve is, terwijl een *tip\_bedrag* van $0 is een voorbeeld van een negatief zijn.
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0
-- **Multiklassen classificatie**: Het bereik van de tip bedragen betalen voor de reis te voorspellen. We delen de *tip\_bedrag* in vijf klassen:
+- **Multiklassen classificatie**: het bereik van de tip bedragen betalen voor de reis te voorspellen. We delen de *tip\_bedrag* in vijf klassen:
    
         Class 0: tip_amount = $0
         Class 1: tip_amount > $0 and tip_amount <= $5
         Class 2: tip_amount > $5 and tip_amount <= $10
         Class 3: tip_amount > $10 and tip_amount <= $20
         Class 4: tip_amount > $20
-- **Regressie taak**: Het bedrag van de tip betaald voor een reis te voorspellen.  
+- **Regressie taak**: het bedrag van de tip betaald voor een reis te voorspellen.  
 
 ## <a name="setup"></a>Instellen van een HDInsight Hadoop-cluster voor geavanceerde analyses
 > [!NOTE]
@@ -71,12 +71,12 @@ Bepaal de aard van voorspellingen die u wilt maken op basis van gegevensanalyse.
 
 U kunt een Azure-omgeving voor geavanceerde analyses, waardoor een HDInsight-cluster in drie stappen instellen:
 
-1. [Maak een opslagaccount](../../storage/common/storage-quickstart-create-account.md): Dit opslagaccount wordt gebruikt voor het opslaan van gegevens in Azure Blob-opslag. De gegevens die worden gebruikt in HDInsight-clusters ook bevinden zich hier.
+1. [Maak een opslagaccount](../../storage/common/storage-account-create.md): dit storage-account wordt gebruikt voor het opslaan van gegevens in Azure Blob-opslag. De gegevens die worden gebruikt in HDInsight-clusters ook bevinden zich hier.
 2. [Azure HDInsight Hadoop-clusters aanpassen voor de Advanced Analytics Process and Technology](customize-hadoop-cluster.md). Deze stap maakt u een HDInsight Hadoop-cluster met 64-bits Anaconda Python 2.7 geïnstalleerd op alle knooppunten. Er zijn twee belangrijke stappen om te onthouden tijdens het aanpassen van uw HDInsight-cluster.
    
    * Houd er rekening mee te koppelen van het opslagaccount dat in stap 1 met uw HDInsight-cluster gemaakt wanneer u deze maakt. Dit storage-account heeft toegang tot gegevens die wordt verwerkt binnen het cluster.
    * Nadat u het cluster hebt gemaakt, kunt u externe toegang inschakelen met het hoofdknooppunt van het cluster. Blader naar de **configuratie** tabblad, en selecteer **externe inschakelen**. Deze stap geeft de referenties van de gebruiker gebruikt voor externe aanmelding.
-3. [Een Azure Machine Learning-werkruimte maken](../studio/create-workspace.md): Deze werkruimte kunt u machine learning-modellen bouwen. Deze taak is gericht na het voltooien van een initiële gegevens verkennen en down-sampling, met behulp van het HDInsight-cluster.
+3. [Een Azure Machine Learning-werkruimte maken](../studio/create-workspace.md): U deze werkruimte kunt machine learning-modellen bouwen. Deze taak is gericht na het voltooien van een initiële gegevens verkennen en down-sampling, met behulp van het HDInsight-cluster.
 
 ## <a name="getdata"></a>De gegevens ophalen uit een openbare gegevensbron
 > [!NOTE]
@@ -88,11 +88,11 @@ Kopiëren van de [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) gegeve
 
 Hier wordt beschreven hoe u AzCopy gebruiken om over te dragen van de bestanden met gegevens. Volg de instructies op om te downloaden en installeren van AzCopy, [aan de slag met het AzCopy-opdrachtregelprogramma](../../storage/common/storage-use-azcopy.md).
 
-1. Vanuit een opdrachtpromptvenster, voer de volgende AzCopy-opdrachten, vervangen  *\<path_to_data_folder >* met de gewenste bestemming:
+1. Voer vanuit een opdracht prompt venster de volgende AzCopy-opdrachten uit en vervang *\<path_to_data_folder >* met de gewenste bestemming:
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-1. Wanneer de kopie is voltooid, ziet u een totaal van 24 ZIP-bestanden in de map data gekozen. Pak het gedownloade bestanden naar dezelfde map op uw lokale computer. Maak een notitie van de map waar de niet-gecomprimeerde bestanden zich bevinden. Deze map wordt aangeduid als de *\<pad\_naar\_unzipped_data\_bestanden\>* in welke volgt.
+1. Wanneer de kopie is voltooid, ziet u een totaal van 24 ZIP-bestanden in de map data gekozen. Pak het gedownloade bestanden naar dezelfde map op uw lokale computer. Maak een notitie van de map waar de niet-gecomprimeerde bestanden zich bevinden. Deze map wordt de *\<pad genoemd\_naar\_unzipped_data\_bestanden* in wat volgt.
 
 ## <a name="upload"></a>De gegevens uploaden naar de standaardcontainer van het HDInsight Hadoop-cluster
 > [!NOTE]
@@ -102,10 +102,10 @@ Hier wordt beschreven hoe u AzCopy gebruiken om over te dragen van de bestanden 
 
 In de volgende AzCopy-opdrachten, vervangt u de volgende parameters met de werkelijke waarden die u hebt opgegeven bij het maken van het Hadoop-cluster en het uitpakken van de gegevensbestanden.
 
-* ***\<path_to_data_folder >*** de map (samen met het pad) op de computer die de uitgepakte bestanden bevat.  
-* ***\<Storage-accountnaam van Hadoop-cluster >*** de storage-account dat is gekoppeld aan uw HDInsight-cluster.
-* ***\<standaardcontainer van Hadoop-cluster >*** de standaardcontainer die wordt gebruikt door uw cluster. Houd er rekening mee dat de naam van de standaard-container meestal dezelfde naam als het cluster zelf wordt. Bijvoorbeeld, als het cluster wordt 'abc123.azurehdinsight.net' genoemd, is de standaardcontainer abc123.
-* ***\<opslagaccountsleutel >*** de sleutel voor het opslagaccount die wordt gebruikt door uw cluster.
+* ***\<path_to_data_folder >*** De map (samen met het pad) op de computer die de uitgepakte gegevens bestanden bevat.  
+* ***\<Storage-account naam van Hadoop-cluster >*** Het opslag account dat is gekoppeld aan uw HDInsight-cluster.
+* ***\<standaard container van Hadoop-cluster >*** De standaard container die door uw cluster wordt gebruikt. Houd er rekening mee dat de naam van de standaard-container meestal dezelfde naam als het cluster zelf wordt. Bijvoorbeeld, als het cluster wordt 'abc123.azurehdinsight.net' genoemd, is de standaardcontainer abc123.
+* \<van de sleutel voor het ***opslag account >*** De sleutel voor het opslag account dat door uw cluster wordt gebruikt.
 
 Voer de volgende twee AzCopy-opdrachten uit vanaf de opdrachtprompt of een Windows PowerShell-venster.
 
@@ -376,7 +376,7 @@ Dit resulteert in:
 
 Het totale aantal records in beide tabellen is ook hetzelfde. Dit biedt een tweede validatie van de gegevens correct zijn geladen.
 
-### <a name="exploration-trip-distribution-by-medallion"></a>Verkennen: Verdeling naar reis straten
+### <a name="exploration-trip-distribution-by-medallion"></a>Verkennen: Verdeling reis straten
 > [!NOTE]
 > Dit is meestal een gegevenswetenschappers van elk gegevens taak.
 > 
@@ -410,7 +410,7 @@ Het Hive-directory-opdrachtprompt en voer de volgende opdracht:
 
     hive -f "C:\temp\sample_hive_trip_count_by_medallion.hql" > C:\temp\queryoutput.tsv
 
-### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Verkennen: Verdeling naar reis straten en hack-licentie
+### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Verkennen: Reis distributie per licentie straten en hack
 > [!NOTE]
 > Dit is meestal een gegevenswetenschappers van elk gegevens taak.
 > 
@@ -459,7 +459,7 @@ Het Hive-directory-opdrachtprompt en voert u de volgende uit:
 
 De *-S* argument is opgenomen in deze opdracht wordt de afdruk van het scherm status van de taken voor toewijzen/verminderen Hive onderdrukt. Dit is handig omdat het scherm afdrukken van de Hive-query-uitvoer beter leesbaar.
 
-### <a name="exploration-binary-class-distributions-of-trip-tips"></a>Verkennen: Binaire klasse distributies reis tips
+### <a name="exploration-binary-class-distributions-of-trip-tips"></a>Verkennen: Binaire klasse-distributies reis tips
 > [!NOTE]
 > Dit is meestal een gegevenswetenschappers van elk gegevens taak.
 > 
@@ -508,7 +508,7 @@ Voer de volgende opdracht uit vanaf de opdrachtregel Hadoop-console:
 
     hive -f "C:\temp\sample_hive_tip_range_frequencies.hql"
 
-### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>Verkennen: De rechtstreekse afstand tussen twee locaties van de lengtegraad, breedtegraad COMPUTE
+### <a name="exploration-compute-the-direct-distance-between-two-longitude-latitude-locations"></a>Verkennen: Berekenen van de directe afstand tussen de twee lengtegraad, breedtegraad locaties
 > [!NOTE]
 > Dit is meestal een gegevenswetenschappers van elk gegevens taak.
 > 
@@ -563,7 +563,7 @@ Als u wilt zien van de inhoud van een bepaald bestand, zeg **000000\_0**, gebrui
 > 
 > 
 
-Een groot voordeel van deze gegevens zich bevinden in een Azure-blob is dat we de gegevens in Machine Learning, verkennen met behulp van kunt de [importgegevens] [ import-data] module.
+Een belang rijk voor deel van het gebruik van deze gegevens bevindt zich in een Azure-Blob. Dit kan de gegevens in Machine Learning verkennen met behulp van de module [gegevens importeren][import-data] .
 
 ## <a name="#downsample"></a>Down-sampling van gegevens en Machine Learning-modellen te bouwen
 > [!NOTE]
@@ -571,12 +571,12 @@ Een groot voordeel van deze gegevens zich bevinden in een Azure-blob is dat we d
 > 
 > 
 
-Na de analysefase experimentele gegevens bent er nu klaar om down-sampling van de gegevens voor het ontwikkelen van modellen in Machine Learning. In deze sectie laten we zien hoe u een Hive-query voor down-sampling van de gegevens. Machine Learning vervolgens opent vanuit de [importgegevens] [ import-data] module.
+Na de analysefase experimentele gegevens bent er nu klaar om down-sampling van de gegevens voor het ontwikkelen van modellen in Machine Learning. In deze sectie laten we zien hoe u een Hive-query voor down-sampling van de gegevens. Machine Learning opent deze vervolgens vanuit de module [gegevens importeren][import-data] .
 
 ### <a name="down-sampling-the-data"></a>De gegevens down-sampling
 Er zijn twee stappen in deze procedure. Eerst we toevoegen de **nyctaxidb.trip** en **nyctaxidb.fare** tabellen op de drie sleutels die aanwezig in alle records zijn: **straten**, **hack\_ licentie**, en **ophalen\_datum-/** . We vervolgens een label binaire classificatie genereren **punt**, en een multiklassen classificatielabel **tip\_klasse**.
 
-Kunnen gebruikmaken van de gegevens naar beneden steekproef rechtstreeks vanuit de [importgegevens] [ import-data] module in Machine Learning, moet u de resultaten van de voorgaande query naar een interne Hive-tabel opslaan. In het volgende, we een interne Hive-tabel maken en vullen van de inhoud ervan met de gegevens van een domein en down-voorbeelden worden gemaakt.
+Als u de gegevens van de voor gaande steek proef rechtstreeks vanuit de module [gegevens importeren][import-data] in machine learning wilt gebruiken, moet u de resultaten van de vorige query opslaan in een interne Hive-tabel. In het volgende, we een interne Hive-tabel maken en vullen van de inhoud ervan met de gegevens van een domein en down-voorbeelden worden gemaakt.
 
 De query is van toepassing standaardfuncties Hive rechtstreeks voor het genereren van het volgende achter de **ophalen\_datum-/** veld:
 - uur van de dag
@@ -714,27 +714,27 @@ Deze query uitvoeren vanaf de opdrachtprompt van de Hive-map:
 
     hive -f "C:\temp\sample_hive_prepare_for_aml_full.hql"
 
-We hebben nu een interne tabel **nyctaxidb.nyctaxi_downsampled_dataset**, die kunnen worden geopend met behulp van de [importgegevens] [ import-data] module op basis van Machine Learning. We kunnen bovendien deze gegevensset gebruiken voor het bouwen van Machine Learning-modellen.  
+We hebben nu een interne tabel, **nyctaxidb. nyctaxi_downsampled_dataset**, die toegankelijk is via de module [gegevens importeren][import-data] vanuit machine learning. We kunnen bovendien deze gegevensset gebruiken voor het bouwen van Machine Learning-modellen.  
 
 ### <a name="use-the-import-data-module-in-machine-learning-to-access-the-down-sampled-data"></a>De module gegevens importeren in Machine Learning gebruiken voor toegang tot de gegevens naar beneden steekproef
-Om uit te geven van Hive-query's in de [importgegevens] [ import-data] -module van Machine Learning, moet u toegang tot een Machine Learning-werkruimte. U moet ook toegang tot de referenties van het cluster en de gekoppelde storage-account.
+Als u Hive-query's wilt uitgeven in de module [gegevens importeren][import-data] van machine learning, moet u toegang hebben tot een machine learning-werk ruimte. U moet ook toegang tot de referenties van het cluster en de gekoppelde storage-account.
 
-Hier vindt u bepaalde informatie over de [importgegevens] [ import-data] -module en de parameters voor het invoeren van:
+Hier volgen enkele details over de module [gegevens importeren][import-data] en de para meters die moeten worden ingevoerd:
 
-**HCatalog-server URI**: Als de naam van het cluster is **abc123**, dit is eenvoudig: https://abc123.azurehdinsight.net.
+**HCatalog server-URI**: als de naam van het cluster is **abc123**, dit is eenvoudig: https://abc123.azurehdinsight.net.
 
-**Hadoop-gebruikersaccountnaam**: De naam van de gebruiker die is gekozen voor het cluster (niet de RAS-gebruikersnaam).
+**Hadoop-gebruikersaccountnaam**: de naam van de gebruiker gekozen voor het cluster (niet de RAS-gebruikersnaam).
 
-**Accountwachtwoord voor Hadoop-ser**: Het wachtwoord dat is gekozen voor het cluster (niet het wachtwoord voor externe toegang).
+**Accountwachtwoord voor Hadoop-ser**: het wachtwoord dat is gekozen voor het cluster (niet het wachtwoord voor externe toegang).
 
-**Locatie van de uitvoergegevens**: Dit is gekozen als Azure.
+**Locatie van de uitvoergegevens**: dit is gekozen om te worden van Azure.
 
-**Azure storage-accountnaam**: De naam van het standaardopslagaccount dat is gekoppeld aan het cluster.
+**Azure storage-accountnaam**: naam van het standaardopslagaccount dat is gekoppeld aan het cluster.
 
-**De containernaam van de Azure**: Dit is de standaardnaam van de container voor het cluster, en is meestal hetzelfde als de naam van het cluster. Voor een cluster met de naam **abc123**, dit abc123 is.
+**De containernaam van de Azure**: dit is de standaardnaam van de container voor het cluster en is meestal hetzelfde als de naam van het cluster. Voor een cluster met de naam **abc123**, dit abc123 is.
 
 > [!IMPORTANT]
-> Elke tabel die we opvragen willen met behulp van de [importgegevens] [ import-data] module in Machine Learning moeten een interne tabel.
+> Elke tabel die u wilt opvragen met behulp van de module [gegevens importeren][import-data] in machine learning moet een interne tabel zijn.
 > 
 > 
 
@@ -746,7 +746,7 @@ Als de tabel een interne tabel is en dit is ingevuld, moeten de inhoud ervan hie
 
 Een andere manier om te bepalen of een tabel een interne tabel is is het gebruik van Azure Storage Explorer. Gebruik deze om te navigeren naar de standaardnaam van de container van het cluster en vervolgens filteren op naam van de tabel. Als de tabel en de inhoud ervan wordt weergegeven, bevestigt dit dat het is een interne tabel.
 
-Hier volgt een schermopname van de Hive-query en de [importgegevens] [ import-data] module:
+Hier volgt een scherm opname van de Hive-query en de module [gegevens importeren][import-data] :
 
 ![Schermafbeelding van de Hive-query voor de module gegevens importeren](./media/hive-walkthrough/1eTYf52.png)
 
@@ -757,11 +757,11 @@ De gegevensset kan nu worden gebruikt als startpunt voor het bouwen van Machine 
 ### <a name="mlmodel"></a>Stel modellen samen in Machine Learning
 U kunt nu doorgaan naar modellen bouwen en implementeren van modellen in [Machine Learning](https://studio.azureml.net). De gegevens zijn gereed voor gebruik bij het oplossen van problemen met de voorspelling eerder hebt geïdentificeerd:
 
-- **Binaire classificatie**: Om te voorspellen of een tip is betaald voor een reis.
+- **Binaire classificatie**: om te voorspellen of een tip is betaald voor een reis.
 
-  **Learner gebruikt:** Twee klassen logistieke regressie
+  **Learner gebruikt:** Two-class logistieke regressie
 
-  a. Voor dit probleem, het doel (of klasse) het label is **punt**. De oorspronkelijke omlaag steekproef gegevensset heeft enkele kolommen die lekken van het doel van deze classificatie-experiment zijn. In het bijzonder **tip\_klasse**, **tip\_bedrag**, en **totale\_bedrag** onthullen informatie over het doel dat label is niet beschikbaar bij het testen van de tijd. We deze kolommen in aanmerking verwijderen met behulp van de [Select Columns in Dataset] [ select-columns] module.
+  a. Voor dit probleem, het doel (of klasse) het label is **punt**. De oorspronkelijke omlaag steekproef gegevensset heeft enkele kolommen die lekken van het doel van deze classificatie-experiment zijn. In het bijzonder **tip\_klasse**, **tip\_bedrag**, en **totale\_bedrag** onthullen informatie over het doel dat label is niet beschikbaar bij het testen van de tijd. We verwijderen deze kolommen van overweging met behulp van de module [select columns in dataset][select-columns] .
 
   Het volgende diagram toont onze experiment te voorspellen of een tip voor een bepaalde reis is betaald:
 
@@ -777,13 +777,13 @@ U kunt nu doorgaan naar modellen bouwen en implementeren van modellen in [Machin
 
   ![Grafiek van AUC waarde](./media/hive-walkthrough/8JDT0F8.png)
 
-- **Multiklassen classificatie**: Om te voorspellen van het bereik van de tip bedragen zijn betaald voor de reis door met behulp van de eerder gedefinieerde klassen.
+- **Multiklassen classificatie**: om te voorspellen van het bereik van de tip bedragen zijn betaald voor de reis door met behulp van de eerder gedefinieerde klassen.
 
   **Learner gebruikt:** Multiklassen logistieke regressie
 
-  a. Voor dit probleem is het ons doel (of klasse) label **tip\_klasse**, die kan duren voordat een van vijf waarden (0,1,2,3,4). Zoals in het geval binaire classificatie hebben we een paar kolommen die doel lekken voor dit experiment. In het bijzonder **punt**, **tip\_bedrag**, en **totale\_bedrag** geven informatie over het doellabel dat momenteel niet beschikbaar testen van tijd. We deze kolommen verwijderen met behulp van de [Select Columns in Dataset] [ select-columns] module.
+  a. Voor dit probleem is het ons doel (of klasse) label **tip\_klasse**, die kan duren voordat een van vijf waarden (0,1,2,3,4). Zoals in het geval binaire classificatie hebben we een paar kolommen die doel lekken voor dit experiment. In het bijzonder **punt**, **tip\_bedrag**, en **totale\_bedrag** geven informatie over het doellabel dat momenteel niet beschikbaar testen van tijd. Deze kolommen worden verwijderd met behulp van de module [select columns in dataset][select-columns] .
 
-  Het volgende diagram toont het experiment te voorspellen in welke opslaglocaties een tip is waarschijnlijk vallen. De opslaglocaties zijn: Klasse 0: tip-= $0, klasse 1: tip > $0 en tip < = $5, klasse 2: tip > $5 en tip < = $10, klasse 3: tip > $10 en tip < = $20 en klasse 4: tip > $20.
+  Het volgende diagram toont het experiment te voorspellen in welke opslaglocaties een tip is waarschijnlijk vallen. De opslaglocaties zijn: klasse 0: tip = $0, 1 van de klasse: tip > $0 en tip < = $5, klasse 2: tip > $5 en tip < = $10, klasse 3: tip > $10 en tip < = $20 en klasse 4: tip > $20.
 
   ![Diagram van experiment te voorspellen opslaglocatie voor de tip](./media/hive-walkthrough/5ztv0n0.png)
 
@@ -797,11 +797,11 @@ U kunt nu doorgaan naar modellen bouwen en implementeren van modellen in [Machin
 
   Houd er rekening mee dat de klasse nauwkeurigheden op de gangbare klassen zijn heel goed, het model wordt niet goed werk 'learning' op de zeldzame klassen.
 
-- **Regressie taak**: Om te voorspellen van de hoeveelheid tip betaald voor een reis.
+- **Regressie taak**: om te voorspellen van de hoeveelheid tip voor een reis betaald.
 
-  **Learner gebruikt:** boosted-beslisboom
+  **Learner gebruikt:** Boosted decision tree
 
-  a. Voor dit probleem, het doel (of klasse) het label is **tip\_bedrag**. De doel-lekken in dit geval zijn: **punt**, **tip\_klasse**, en **totale\_bedrag**. Alle deze variabelen geven informatie over de tip-bedrag dat is doorgaans niet beschikbaar was vanaf het moment testen. We deze kolommen verwijderen met behulp van de [Select Columns in Dataset] [ select-columns] module.
+  a. Voor dit probleem, het doel (of klasse) het label is **tip\_bedrag**. De doel-lekken in dit geval zijn: **punt**, **tip\_klasse**, en **totale\_bedrag**. Alle deze variabelen geven informatie over de tip-bedrag dat is doorgaans niet beschikbaar was vanaf het moment testen. Deze kolommen worden verwijderd met behulp van de module [select columns in dataset][select-columns] .
 
   Het volgende diagram toont het experiment te voorspellen van het bedrag van de opgegeven tip:
 
@@ -821,7 +821,7 @@ U kunt nu doorgaan naar modellen bouwen en implementeren van modellen in [Machin
 ## <a name="license-information"></a>Licentie-informatie
 In dit voorbeeld scenario en de bijbehorende scripts worden gedeeld door Microsoft onder de MIT-licentie. Zie voor meer informatie de **LICENSE.txt** bestand in de map van de voorbeeldcode op GitHub.
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Naslaginformatie
 • [Andrés Monroy NYC Taxi Trips downloadpagina](https://www.andresmh.com/nyctaxitrips/)  
 • [FOILing NYC Taxi reisgegevens door Chris Whong](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 • [NYC Taxi en Limousine Commissie onderzoek en statistieken](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

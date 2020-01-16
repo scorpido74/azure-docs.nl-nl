@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2239387ffff4c30e1183721a528e666199316bed
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 5164bf55ef8233cf34a470524da3bc852678d79a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695097"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979167"
 ---
-# <a name="patternany-entity"></a>Pattern.any-entiteit 
+# <a name="patternany-entity"></a>Pattern.any-entiteit
 
 Patroon. any is een tijdelijke aanduiding met variabele lengte die alleen wordt gebruikt in de sjabloon van een patroon utterance om te markeren waar de entiteit begint en eindigt.  
 
@@ -25,13 +25,13 @@ Patroon. alle entiteiten moeten worden gemarkeerd in de voor beelden van [patroo
 
 **De entiteit is goed geschikt wanneer:**
 
-* Het einde van de entiteit kan worden verward met de resterende tekst van de utterance. 
+* Het einde van de entiteit kan worden verward met de resterende tekst van de utterance.
 
 ## <a name="usage"></a>Gebruik
 
-Aan de hand van een client toepassing die zoekt naar boeken op basis van de titel, het patroon. alle extraheert de volledige titel. Een sjabloon utterance het gebruik van een patroon. elke voor deze zoek opdracht van het boek is `Was {BookTitle} written by an American this year[?]`. 
+Aan de hand van een client toepassing die zoekt naar boeken op basis van de titel, het patroon. alle extraheert de volledige titel. Een sjabloon utterance het gebruik van een patroon. elke voor deze zoek opdracht van het boek is `Was {BookTitle} written by an American this year[?]`.
 
-In de volgende tabel heeft elke rij twee versies van de utterance. De bovenste utterance is hoe LUIS aanvankelijk de utterance ziet. Het is niet duidelijk waar de titel van het boek begint en eindigt. De onderste utterance maakt gebruik van een patroon. een wille keurige entiteit om het begin en het einde van de entiteit te markeren. 
+In de volgende tabel heeft elke rij twee versies van de utterance. De bovenste utterance is hoe LUIS aanvankelijk de utterance ziet. Het is niet duidelijk waar de titel van het boek begint en eindigt. De onderste utterance maakt gebruik van een patroon. een wille keurige entiteit om het begin en het einde van de entiteit te markeren.
 
 |Utterance met entiteit in vet|
 |--|
@@ -45,7 +45,7 @@ In de volgende tabel heeft elke rij twee versies van de utterance. De bovenste u
 
 ## <a name="example-json"></a>Voorbeeld van JSON
 
-Bekijk de volgende query:
+Laten we nu eens naar deze query kijken:
 
 `where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
@@ -104,8 +104,8 @@ Dit is de JSON als `verbose=true` is ingesteld in de query reeks:
 }
 ```
 
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze [zelf studie](luis-tutorial-pattern-any.md)gebruikt u het **patroon. elke** entiteit voor het extra heren van gegevens uit uitingen waarbij de uitingen goed zijn opgemaakt en waarbij het einde van de gegevens gemakkelijk kan worden verward met de resterende woorden van de utterance.
+In deze [zelf studie](luis-tutorial-pattern.md)gebruikt u het **patroon. elke** entiteit voor het extra heren van gegevens uit uitingen waarbij de uitingen goed zijn opgemaakt en waarbij het einde van de gegevens gemakkelijk kan worden verward met de resterende woorden van de utterance.

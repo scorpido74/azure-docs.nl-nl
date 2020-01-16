@@ -5,27 +5,28 @@ services: networking
 author: anavinahar
 ms.service: networking
 ms.topic: include
-ms.date: 01/13/2020
+ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 97ee10e0b286f1b007f2e807351301f2037d1754
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 17558b44c91425ce1a06625f8fd5c1806a762ba2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942688"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021267"
 ---
 <a name="azure-resource-manager-virtual-networking-limits"></a>Netwerk limieten-Azure Resource Manager de volgende limieten gelden alleen voor netwerk resources die worden beheerd via **Azure Resource Manager** per regio per abonnement. Meer informatie over het [weer geven van uw huidige resource gebruik op basis van uw abonnements limieten](../articles/networking/check-usage-against-limits.md).
 
 > [!NOTE]
-> We hebben onlangs alle standaard limieten uitgebreid tot hun maximum limieten. Als er geen kolom maximum limiet is, heeft de resource geen aanpas bare limieten. Als u deze limieten hebt verhoogd met ondersteuning in het verleden en geen bijgewerkte limieten in de volgende tabellen ziet, kunt u gratis [een online klant ondersteunings aanvraag openen](../articles/azure-resource-manager/resource-manager-quota-errors.md)
+> We hebben onlangs alle standaard limieten uitgebreid tot hun maximum limieten. Als er geen kolom maximum limiet is, heeft de resource geen aanpas bare limieten. Als u deze limieten hebt verhoogd met ondersteuning in het verleden en geen bijgewerkte limieten in de volgende tabellen ziet, kunt u gratis [een online klant ondersteunings aanvraag openen](../articles/azure-resource-manager/templates/error-resource-quota.md)
 
 | Bron | Standaard/maximum limiet | 
 | --- | --- |
 | Virtuele netwerken |1000 |
 | Subnetten per virtueel netwerk |3\.000 |
 | Peering van virtuele netwerken per virtueel netwerk |500 |
-| [Virtuele netwerk gateways (VPN-gateways) per virtueel netwerk](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |30 |
+| [Virtuele netwerk gateways (VPN-gateways) per virtueel netwerk](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku) |1 |
+| [Virtuele netwerk gateways (ExpressRoute-gateways) per virtueel netwerk](../articles/expressroute/expressroute-about-virtual-network-gateways.md#gwsku) |1 |
 | DNS-servers per virtueel netwerk |20 |
 | Privé-IP-adressen per virtueel netwerk |65.536 |
 | Privé-IP-adressen per netwerk interface |256 |

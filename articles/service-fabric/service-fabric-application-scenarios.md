@@ -2,18 +2,20 @@
 title: Toepassings scenario's en-ontwerp
 description: Overzicht van categorieën Cloud toepassingen in Service Fabric. Beschrijft een toepassings ontwerp dat gebruikmaakt van stateful en stateless Services.
 ms.topic: conceptual
-ms.date: 4/24/2019
-ms.openlocfilehash: bdbbf81186463e1f645738b370662de9c13f5c17
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.custom: sfrev
+ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464907"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024737"
 ---
 # <a name="service-fabric-application-scenarios"></a>Toepassings scenario's Service Fabric
-Azure Service Fabric biedt een betrouwbaar en flexibel platform waar u veel soorten bedrijfs toepassingen en-services kunt schrijven en uitvoeren. Deze toepassingen en micro Services kunnen stateless of stateful zijn, en de resources worden verdeeld over virtuele machines om de efficiëntie te maximaliseren. 
 
-Met de unieke architectuur van Service Fabric kunt u bijna realtime gegevens analyses uitvoeren, berekeningen in het geheugen, parallelle trans acties en gebeurtenis verwerking in uw toepassingen. U kunt uw toepassingen eenvoudig omhoog of omlaag schalen (in werkelijkheid of uitgaand), afhankelijk van de veranderende resource vereisten.
+Azure Service Fabric biedt een betrouwbaar en flexibel platform waar u veel soorten bedrijfs toepassingen en-services kunt schrijven en uitvoeren. Deze toepassingen en micro Services kunnen stateless of stateful zijn, en de resources worden verdeeld over virtuele machines om de efficiëntie te maximaliseren.
+
+Met de unieke architectuur van Service Fabric kunt u bijna realtime gegevens analyses uitvoeren, berekeningen in het geheugen, parallelle trans acties en gebeurtenis verwerking in uw toepassingen. U kunt uw toepassingen eenvoudig in-of uitschalen, afhankelijk van de veranderende resource vereisten.
 
 Lees de [architectuur micro Services in Azure service Fabric](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric) en [Aanbevolen procedures voor het ontwerpen van toepassingen met behulp van service Fabric](service-fabric-best-practices-applications.md)voor ontwerp richtlijnen voor het bouwen van apps.
 
@@ -33,8 +35,8 @@ Overweeg het gebruik van het Service Fabric platform voor de volgende typen toep
 
 * **Berekening van gegevens**: met Service Fabric kunt u stateful toepassingen bouwen die intensieve gegevens berekening uitvoeren. Service Fabric kunt de verwerkings locatie en gegevens in toepassingen. 
 
-   Normaal gesp roken geldt dat als uw toepassing toegang tot gegevens vereist, de netwerk latentie die aan een externe gegevens cache of opslaglaag is gekoppeld, de tijd van de berekening beperkt. Stateful Service Fabric services elimineren die latentie, waardoor er meer geoptimaliseerde Lees-en schrijf bewerkingen mogelijk zijn. 
-   
+   Normaal gesp roken geldt dat als uw toepassing toegang tot gegevens vereist, de netwerk latentie die aan een externe gegevens cache of opslaglaag is gekoppeld, de tijd van de berekening beperkt. Stateful Service Fabric services elimineren die latentie, waardoor er meer geoptimaliseerde Lees-en schrijf bewerkingen mogelijk zijn.
+
    Denk bijvoorbeeld aan een toepassing die bijna in realtime aanbevolen selecties voor klanten uitvoert, met een vereiste voor een round-trip tijd van minder dan 100 milliseconden. De latentie-en prestatie kenmerken van Service Fabric services bieden een reactie op de gebruiker, vergeleken met het standaard implementatie model van om de benodigde gegevens uit de externe opslag op te halen. Het systeem reageert meer omdat de berekening van de aanbevelings selectie is gekoppeld aan de gegevens en regels.
 
     Klanten die reken Services hebben gebouwd, zijn [Solid Soft reply](https://customers.microsoft.com/story/solidsoft-reply-platform-powers-e-verification-of-pharmaceuticals) en [Infosupport](https://customers.microsoft.com/story/service-fabric-customer-profile-info-support-and-fudura).
@@ -44,16 +46,18 @@ Overweeg het gebruik van het Service Fabric platform voor de volgende typen toep
 * **Schaal bare Services**: afzonderlijke services kunnen worden gepartitioneerd, zodat de status van het hele cluster kan worden uitgeschaald. U kunt ook afzonderlijke services maken en verwijderen. U kunt services van slechts enkele exemplaren op een paar knoop punten uitschalen naar duizenden exemplaren op meerdere knoop punten en deze vervolgens naar behoefte schalen. U kunt Service Fabric gebruiken om deze services te bouwen en hun volledige levens cyclus te beheren.
 
 ## <a name="application-design-case-studies"></a>Case-study's over toepassings ontwerp
-Casestudy's die laten zien hoe Service Fabric wordt gebruikt voor het ontwerpen van toepassingen, worden gepubliceerd op de [klant verhalen](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=0&so=story_publish_date%20desc/) en micro [Services in azure](https://azure.microsoft.com/solutions/microservice-applications/) -sites.
+
+Casestudy's die laten zien hoe Service Fabric wordt gebruikt voor het ontwerpen van toepassingen, worden gepubliceerd op de [klant verhalen](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=2&so=story_publish_date%20desc) en micro [Services in azure](https://azure.microsoft.com/solutions/microservice-applications/) -sites.
 
 ## <a name="designing-applications-composed-of-stateless-and-stateful-microservices"></a>Toepassingen ontwerpen die bestaan uit stateless en stateful micro Services
-Het maken van toepassingen met Azure Cloud Services worker-werk rollen is een voor beeld van een stateless service. Stateful micro Services behouden daarentegen hun gezaghebbende status naast de aanvraag en de reactie. Deze functionaliteit biedt hoge Beschik baarheid en consistentie van de status via eenvoudige Api's die transactionele garanties bieden die door replicatie worden ondersteund. 
+
+Het maken van toepassingen met Azure Cloud Services worker-werk rollen is een voor beeld van een stateless service. Stateful micro Services behouden daarentegen hun gezaghebbende status naast de aanvraag en de reactie. Deze functionaliteit biedt hoge Beschik baarheid en consistentie van de status via eenvoudige Api's die transactionele garanties bieden die door replicatie worden ondersteund.
 
 Stateful Services in Service Fabric hoge Beschik baarheid bieden voor alle soorten toepassingen, niet alleen voor data bases en andere gegevens archieven. Dit is een natuurlijke voortgang. Toepassingen zijn al verplaatst van het gebruik van louter relationele data bases voor hoge Beschik baarheid tot NoSQL-data bases. Nu kunnen de toepassingen zelf hun ' hot ' status hebben en gegevens die worden beheerd in hun voor extra prestatie voordelen zonder dat er wordt geofferd dat betrouw baarheid, consistentie of Beschik baarheid.
 
 Wanneer u toepassingen bouwt die bestaan uit micro Services, hebt u normaal gesp roken een combi natie van stateless web-apps (zoals ASP.NET en node. js) die worden aangeroepen op stateless en stateful bedrijfs Services voor de middelste laag. De apps en services worden allemaal geïmplementeerd in hetzelfde Service Fabric cluster via de Service Fabric-implementatie opdrachten. Elk van deze services is onafhankelijk van de schaal, betrouw baarheid en het resource gebruik. Deze onafhankelijkheid verbetert de flexibiliteit en flexibiliteit bij het ontwikkelen en het levenscyclus beheer.
 
-Stateful micro Services is van toepassing op toepassings ontwerpen omdat ze de nood zaak van de extra wacht rijen en caches die traditioneel zijn vereist voor het oplossen van de vereisten voor Beschik baarheid en latentie van louter stateless toepassingen, verwijderen. Omdat stateful Services hoge Beschik baarheid en lage latentie hebben, zijn er minder details die in uw toepassing kunnen worden beheerd. 
+Stateful micro Services is van toepassing op toepassings ontwerpen omdat ze de nood zaak van de extra wacht rijen en caches die traditioneel zijn vereist voor het oplossen van de vereisten voor Beschik baarheid en latentie van louter stateless toepassingen, verwijderen. Omdat stateful Services hoge Beschik baarheid en lage latentie hebben, zijn er minder details die in uw toepassing kunnen worden beheerd.
 
 In de volgende diagrammen ziet u de verschillen tussen het ontwerpen van een toepassing die staatloos is en die de statussen heeft. Door gebruik te maken van de [reliable Services](service-fabric-reliable-services-introduction.md) -en [reliable actors](service-fabric-reliable-actors-introduction.md) -programmeer modellen, kunnen stateful Services de complexiteit van de toepassing beperken tijdens hoge door Voer en lage latentie.
 
@@ -63,18 +67,16 @@ Hier volgt een voorbeeld toepassing die gebruikmaakt van stateful Services: ![to
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [patronen en scenario's](service-fabric-patterns-and-scenarios.md).
-
 * Ga aan de slag met het bouwen van stateless en stateful Services met de Service Fabric [reliable Services](service-fabric-reliable-services-quick-start.md) en [reliable actors](service-fabric-reliable-actors-get-started.md) programmeer modellen.
 * Ga naar de Azure Architecture Center voor hulp bij het bouwen van micro [Services in azure](https://docs.microsoft.com/azure/architecture/microservices/).
 * Ga naar de [Aanbevolen procedures voor Azure service Fabric-toepassingen en-clusters](service-fabric-best-practices-overview.md) voor hulp bij het ontwerpen van toepassingen.
 
-* Raadpleeg ook de volgende onderwerpen:
-  * [Meer informatie over micro Services](service-fabric-overview-microservices.md)
+* Zie ook:
+  * [Informatie over micro Services](service-fabric-overview-microservices.md)
   * [Service status definiëren en beheren](service-fabric-concepts-state.md)
-  * [Beschik baarheid van Service Fabric Services](service-fabric-availability-services.md)
-  * [Service Fabric Services schalen](service-fabric-concepts-scalability.md)
-  * [Service Fabric Services partitioneren](service-fabric-concepts-partitioning.md)
+  * [Beschikbaarheid van services](service-fabric-availability-services.md)
+  * [Services schalen](service-fabric-concepts-scalability.md)
+  * [Partitie Services](service-fabric-concepts-partitioning.md)
 
 [Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.png
 [Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.png

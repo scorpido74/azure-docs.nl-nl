@@ -9,18 +9,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/31/2019
 ms.author: evansma
-ms.openlocfilehash: f4cd5083d694cb7c463596b7b45c384e0dc8b28d
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 8c0af3f059d1beb0e1d07d3494b31c674f15438d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779736"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980874"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Verkoop richtlijnen voor Azure Marketplace
 
 Dit document bevat richt lijnen voor vereisten en een controle lijst voor revisoren voor nieuwe aanbiedingen en services die worden vermeld op Azure Marketplace.
 
-Alle aanbiedingen moeten voldoen aan de [vereisten voor alle vermeldingen](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements) die hieronder worden aangegeven. Aanvullende vereisten en controle lijsten worden geboden voor specifieke aanbiedings typen, waaronder: aanbiedingen met gekoppelde [experimenten](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements), [SaaS-apps](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-apps-requirements), [containers](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)en [advies aanbiedingen](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements).
+Alle aanbiedingen moeten voldoen aan de [vereisten voor alle vermeldingen](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements) die hieronder worden aangegeven. Aanvullende vereisten en controle lijsten worden geboden voor specifieke aanbiedings typen, waaronder: aanbiedingen met gekoppelde [experimenten](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements), [SaaS-apps](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-app-requirements), [containers](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)en [advies aanbiedingen](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements).
 
 
 ## <a name="all-listing-requirements"></a>Alle vermeldings vereisten

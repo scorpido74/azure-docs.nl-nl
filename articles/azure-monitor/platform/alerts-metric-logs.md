@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d6b65b76138cb180ab105631ebc0f19b7d38f206
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 358312bcbb23aee5a06eaa39898ff4e632cd8b4b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226523"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977598"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrische waarschuwingen maken voor logboeken in Azure Monitor
 
@@ -357,7 +357,7 @@ Stel dat de bovenstaande JSON is opgeslagen als metricfromLogsAlertStatic. json.
 }
 ```
 
-Ervan uitgaande dat het bovenstaande parameter bestand is opgeslagen als metricfromLogsAlertStatic. para meters. json; vervolgens kan een metrische waarschuwing voor logboeken worden gemaakt met behulp van een [resource sjabloon om te maken in azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Ervan uitgaande dat het bovenstaande parameter bestand is opgeslagen als metricfromLogsAlertStatic. para meters. json; vervolgens kan een metrische waarschuwing voor logboeken worden gemaakt met behulp van een [resource sjabloon om te maken in azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
 
 U kunt ook de Azure Power shell-opdracht hieronder ook gebruiken:
 
@@ -673,7 +673,7 @@ Stel dat de bovenstaande JSON is opgeslagen als metricfromLogsAlertDynamic. json
 }
 ```
 
-Ervan uitgaande dat het bovenstaande parameter bestand is opgeslagen als metricfromLogsAlertDynamic. para meters. json; vervolgens kan een metrische waarschuwing voor logboeken worden gemaakt met behulp van een [resource sjabloon om te maken in azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Ervan uitgaande dat het bovenstaande parameter bestand is opgeslagen als metricfromLogsAlertDynamic. para meters. json; vervolgens kan een metrische waarschuwing voor logboeken worden gemaakt met behulp van een [resource sjabloon om te maken in azure Portal](../../azure-resource-manager/templates/deploy-portal.md).
 
 U kunt ook de Azure Power shell-opdracht hieronder ook gebruiken:
 

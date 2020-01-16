@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: f6e1af2fdf43eb4351e996297f7dba775b7ffcef
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4baa65ca5dda6b266cd6c739225ebd01d011268c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278799"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980090"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Een Log Analytics-werk ruimte verplaatsen naar een ander abonnement of een andere resource groep
 
-In dit artikel leert u de stappen voor het verplaatsen van Log Analytics werk ruimte naar een andere resource groep of een ander abonnement in dezelfde regio. U vindt meer informatie over het verplaatsen van Azure-resources via de Azure Portal, Power shell, de Azure CLI of de REST API. bij [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../../azure-resource-manager/resource-group-move-resources.md). 
+In dit artikel leert u de stappen voor het verplaatsen van Log Analytics werk ruimte naar een andere resource groep of een ander abonnement in dezelfde regio. U vindt meer informatie over het verplaatsen van Azure-resources via de Azure Portal, Power shell, de Azure CLI of de REST API. bij [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md). 
 
 > [!IMPORTANT]
 > U kunt een werk ruimte niet verplaatsen naar een andere regio.
@@ -82,7 +82,7 @@ Gebruik de volgende procedure om het Automation-account te ontkoppelen van de we
 
 ## <a name="move-your-workspace"></a>Uw werk ruimte verplaatsen
 
-### <a name="azure-portal"></a>Azure-portal
+### <a name="azure-portal"></a>Azure Portal
 Gebruik de volgende procedure om uw werk ruimte te verplaatsen met behulp van de Azure Portal:
 
 1. Open het menu **log Analytics werk ruimten** en selecteer vervolgens uw werk ruimte.
@@ -107,4 +107,4 @@ Move-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- Zie [ondersteuning voor het verplaatsen van resources voor bronnen](../../azure-resource-manager/move-support-resources.md)voor een lijst met resources die kunnen worden verplaatst.
+- Zie [ondersteuning voor het verplaatsen van resources voor bronnen](../../azure-resource-manager/management/move-support-resources.md)voor een lijst met resources die kunnen worden verplaatst.

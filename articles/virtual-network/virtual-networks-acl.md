@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 0002e61827817af958007e1f789219e9291990d8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5e410dc4e7f47223430497825dc2a26e41c6af67
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647761"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979554"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>Wat is een toegangs beheer lijst voor het eind punt?
 
 > [!IMPORTANT]
-> Azure heeft twee verschillende [implementatie modellen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor het maken van en werken met resources: Resource Manager en klassiek. Dit artikel gaat over het gebruik van het klassieke implementatiemodel. Micro soft raadt aan de meeste nieuwe implementaties het Resource Manager-implementatie model te gebruiken. 
+> Azure heeft twee verschillende [implementatie modellen](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor het maken van en werken met resources: Resource Manager en klassiek. Dit artikel gaat over het gebruik van het klassieke implementatiemodel. Micro soft raadt aan de meeste nieuwe implementaties het Resource Manager-implementatie model te gebruiken. 
 
 Een toegangs beheer lijst (ACL) voor eind punten is een beveiligings uitbreiding die beschikbaar is voor uw Azure-implementatie. Een ACL biedt de mogelijkheid om selectief verkeer toe te staan of te weigeren voor een eind punt van een virtuele machine. Deze functie voor pakket filtering biedt een extra beveiligingslaag. U kunt alleen netwerk-Acl's opgeven voor eind punten. U kunt geen ACL opgeven voor een virtueel netwerk of een specifiek subnet dat zich in een virtueel netwerk bevindt. Het is raadzaam om waar mogelijk netwerk beveiligings groepen (Nsg's) in plaats van Acl's te gebruiken. Wanneer u Nsg's gebruikt, wordt de toegangs beheer lijst van het eind punt vervangen en wordt deze niet meer afgedwongen. Zie [overzicht van netwerk beveiligings groepen](security-overview.md) voor meer informatie over nsg's
 

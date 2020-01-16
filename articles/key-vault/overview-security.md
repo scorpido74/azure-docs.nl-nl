@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to learn the options available to secure my vaults
-ms.openlocfilehash: 728398aeec4715d15ebe44ae6d4e4bfa5f295df8
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 74dac926ea67b9f6a31993a72dc6331aa48155b7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884783"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981573"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault beveiliging
 
@@ -45,16 +45,16 @@ Het model van één mechanisme voor verificatie voor beide abonnementen heeft ve
 
 ### <a name="managing-administrative-access-to-key-vault"></a>Beheer toegang tot Key Vault beheren
 
-Wanneer u een sleutel kluis maakt in een resource groep, beheert u de toegang met behulp van Azure AD. U verleent gebruikers of groepen de mogelijkheid om de sleutel kluizen in een resource groep te beheren. U kunt toegang verlenen op een specifiek Scope niveau door de juiste RBAC-rollen toe te wijzen. Als u toegang wilt verlenen aan een gebruiker om sleutel kluizen te beheren, wijst u `key vault Contributor` een vooraf gedefinieerde rol toe aan de gebruiker op een specifiek bereik. De volgende Scope niveaus kunnen worden toegewezen aan een RBAC-rol:
+Wanneer u een sleutel kluis maakt in een resource groep, beheert u de toegang met behulp van Azure AD. U verleent gebruikers of groepen de mogelijkheid om de sleutel kluizen in een resource groep te beheren. U kunt toegang verlenen op een specifiek Scope niveau door de juiste RBAC-rollen toe te wijzen. Als u toegang wilt verlenen aan een gebruiker om sleutel kluizen te beheren, wijst u een vooraf gedefinieerde `key vault Contributor` rol toe aan de gebruiker op een specifiek bereik. De volgende Scope niveaus kunnen worden toegewezen aan een RBAC-rol:
 
-- **Abonnement**: Een RBAC-rol die is toegewezen op abonnements niveau, is van toepassing op alle resource groepen en resources in dat abonnement.
-- **Resourcegroep**: Een RBAC-rol die is toegewezen op het niveau van de resource groep, is van toepassing op alle resources in die resource groep.
-- **Specifieke resource**: Een RBAC-rol die is toegewezen voor een specifieke resource, is van toepassing op die resource. In dit geval is de resource een specifieke sleutel kluis.
+- **Abonnement**: een RBAC-rol die is toegewezen op abonnements niveau, is van toepassing op alle resource groepen en resources in dat abonnement.
+- **Resource groep**: een RBAC-rol die is toegewezen op het niveau van de resource groep, is van toepassing op alle resources in die resource groep.
+- **Specifieke resource**: een RBAC-rol die is toegewezen voor een specifieke resource, is van toepassing op die resource. In dit geval is de resource een specifieke sleutel kluis.
 
-Er zijn verschillende vooraf gedefinieerde rollen. Als een vooraf gedefinieerde rol niet aan uw behoeften voldoet, kunt u uw eigen rol definiëren. Zie [voor meer informatie RBAC: Ingebouwde rollen](../role-based-access-control/built-in-roles.md).
+Er zijn verschillende vooraf gedefinieerde rollen. Als een vooraf gedefinieerde rol niet aan uw behoeften voldoet, kunt u uw eigen rol definiëren. Zie [RBAC: ingebouwde rollen](../role-based-access-control/built-in-roles.md)voor meer informatie.
 
 > [!IMPORTANT]
-> Als een gebruiker machtigingen `Contributor` heeft voor een sleutel kluis beheer vlak, kan de gebruiker zichzelf toegang verlenen tot het gegevens vlak door een Key Vault toegangs beleid in te stellen. U moet nauw keurig bepalen wie rollen `Contributor` toegang heeft tot uw sleutel kluizen. Zorg ervoor dat alleen geautoriseerde personen uw sleutel kluizen, sleutels, geheimen en certificaten kunnen gebruiken en beheren.
+> Als een gebruiker `Contributor` machtigingen heeft voor een sleutel kluis beheer vlak, kan de gebruiker zichzelf toegang verlenen tot het gegevens vlak door een Key Vault toegangs beleid in te stellen. U moet nauw keurig bepalen wie `Contributor` rol toegang heeft tot uw sleutel kluizen. Zorg ervoor dat alleen geautoriseerde personen uw sleutel kluizen, sleutels, geheimen en certificaten kunnen gebruiken en beheren.
 
 <a id="data-plane-access-control"></a>
 ### <a name="controlling-access-to-key-vault-data"></a>Toegang tot Key Vault gegevens beheren
@@ -76,7 +76,7 @@ Nadat de firewall regels van kracht zijn, kunnen gebruikers alleen gegevens van 
 
 Raadpleeg voor meer informatie over Azure Key Vault netwerk adres [service-eind punten voor virtuele netwerken voor Azure Key Vault](key-vault-overview-vnet-service-endpoints.md)
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
 Met Key Vault logboek registratie wordt informatie opgeslagen over de activiteiten die zijn uitgevoerd op uw kluis. Key Vault logboeken:
 
@@ -87,15 +87,15 @@ Met Key Vault logboek registratie wordt informatie opgeslagen over de activiteit
     - Ondertekenen, controleren, versleutelen, ontsleutelen, decoderen en inpakken van sleutels, geheimen ophalen en sleutels en geheimen weer geven (en hun versie).
 - Niet-geverifieerde aanvragen die in een 401-respons resulteren. Voor beelden zijn aanvragen die geen Bearer-token hebben, die ongeldig of verlopen zijn of die een ongeldig token hebben.
 
-Logboek informatie kan worden geopend binnen 10 minuten na de sleutel kluis bewerking. Het is aan u om uw logboeken in uw opslag account te beheren. 
+Logboek informatie kan worden geopend binnen 10 minuten na de sleutel kluis bewerking. Het is aan u om uw logboeken in uw opslag account te beheren.
 
 - Gebruik standaardmethoden van Azure voor toegangsbeheer om uw logboeken te beveiligen door het aantal gebruikers te beperken dat toegang heeft tot de logboeken.
 - Verwijder de logboeken die u niet meer in uw opslagaccount wilt bewaren.
 
-Raadpleeg de [Azure Storage-beveiligings handleiding](../storage/common/storage-security-guide.md) voor aanbevelingen voor het veilig beheren van opslag accounts.
+Raadpleeg de [Azure Storage-beveiligings handleiding](../storage/blobs/security-recommendations.md) voor aanbevelingen voor het veilig beheren van opslag accounts.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Virtuele netwerk service-eind punten voor Azure Key Vault](key-vault-overview-vnet-service-endpoints.md)
-- [RBAC: Ingebouwde rollen](../role-based-access-control/built-in-roles.md)
+- [RBAC: ingebouwde rollen](../role-based-access-control/built-in-roles.md)
 - [virtuele netwerk service-eind punten voor Azure Key Vault](key-vault-overview-vnet-service-endpoints.md)

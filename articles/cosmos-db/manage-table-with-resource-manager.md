@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: thvankra
-ms.openlocfilehash: 0f3c4562fde9ac57315c72b89ed156051aea062b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0435198af09b087e1449541df078b47758148d42
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445225"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980568"
 ---
 # <a name="manage-azure-cosmos-db-table-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Table-API resources beheren met behulp van Azure Resource Manager sjablonen
 
@@ -82,4 +82,4 @@ Hier volgen enkele aanvullende bronnen:
 - [Documentatie over Azure Resource Manager](/azure/azure-resource-manager/)
 - [Resource provider-schema Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
 - [Quick Start-sjablonen Azure Cosmos DB](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Veelvoorkomende fouten bij Azure Resource Manager implementatie oplossen](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+- [Veelvoorkomende fouten bij Azure Resource Manager implementatie oplossen](../azure-resource-manager/templates/common-deployment-errors.md)

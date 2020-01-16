@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c08dc5091e7ab0eec5d4e6dd455e6adb3caa35f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5465c177cf174ebf8d6b7d4f43c5387bce3adb70
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402051"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969699"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Een beheer oplossing ontwerpen en bouwen in azure (preview)
 > [!NOTE]
@@ -23,7 +23,7 @@ ms.locfileid: "75402051"
 
 ## <a name="what-is-a-management-solution"></a>Wat is een beheer oplossing?
 
-Beheer oplossingen bevatten Azure-resources die samen werken om een bepaald beheer scenario te krijgen.  Ze worden geïmplementeerd als [resource beheer sjablonen](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) die details bevatten over het installeren en configureren van de opgenomen resources wanneer de oplossing is geïnstalleerd.
+Beheer oplossingen bevatten Azure-resources die samen werken om een bepaald beheer scenario te krijgen.  Ze worden geïmplementeerd als [resource beheer sjablonen](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) die details bevatten over het installeren en configureren van de opgenomen resources wanneer de oplossing is geïnstalleerd.
 
 De basis strategie bestaat uit het starten van de beheer oplossing door de afzonderlijke onderdelen in uw Azure-omgeving te bouwen.  Zodra u de functionaliteit hebt werken, kunt u deze in een bestand met een [beheer oplossing]( solutions-solution-file.md)inpakken. 
 
@@ -64,7 +64,7 @@ Zodra u de onderdelen die deel uitmaken van uw oplossing hebt geconfigureerd en 
 
 
 ## <a name="test-your-solution"></a>Uw oplossing testen
-Tijdens het ontwikkelen van uw oplossing moet u deze installeren en testen in uw werk ruimte.  U kunt dit doen met behulp van een van de beschik bare methoden om [Resource Manager-sjablonen te testen en te installeren](../../azure-resource-manager/resource-group-template-deploy.md).
+Tijdens het ontwikkelen van uw oplossing moet u deze installeren en testen in uw werk ruimte.  U kunt dit doen met behulp van een van de beschik bare methoden om [Resource Manager-sjablonen te testen en te installeren](../../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="publish-your-solution"></a>Uw oplossing publiceren
 Zodra u uw oplossing hebt voltooid en getest, kunt u deze beschikbaar maken voor klanten via de volgende bronnen.

@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 5429ebb611f852f7672d89de190ddd68dbcb01cf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 67d624bb81105b8219030c57460b6d7bf7458671
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707783"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980990"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Problemen met RBAC voor Azure-resources oplossen
 
@@ -41,13 +41,13 @@ In dit artikel vindt u antwoorden op algemene vragen over op rollen gebaseerd to
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>RBAC herstellen als abonnementen tussen tenants zijn verplaatst
 
-- Zie het [eigendom van een Azure-abonnement overdragen aan een ander account](../billing/billing-subscription-transfer.md)als u stappen nodig hebt voor het overdragen van een abonnement naar een andere Azure AD-Tenant.
+- Zie het [eigendom van een Azure-abonnement overdragen aan een ander account](../cost-management-billing/manage/billing-subscription-transfer.md)als u stappen nodig hebt voor het overdragen van een abonnement naar een andere Azure AD-Tenant.
 - Als u een abonnement verplaatst naar een ander Azure AD-tenant, worden alle roltoewijzingen permanent verwijderd uit de Azure AD-brontenant en worden deze niet gemigreerd naar de Azure AD-doeltenant. U moet uw roltoewijzingen opnieuw maken in de doel-tenant. U moet ook hand matig beheerde identiteiten voor Azure-resources maken. Zie [Veelgestelde vragen en bekende problemen met beheerde identiteiten](../active-directory/managed-identities-azure-resources/known-issues.md)voor meer informatie.
 - Als u een globale Azure AD-beheerder bent en u geen toegang hebt tot een abonnement nadat het is verplaatst tussen tenants, gebruikt u de wissel knop **voor het toegangs beheer voor Azure** om de toegang tot het abonnement tijdelijk te [verhogen](elevate-access-global-admin.md) .
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>Problemen met servicebeheerders of co-beheerders
 
-- Als u problemen ondervindt met Service beheerder of mede beheerders, raadpleegt u Azure-abonnements beheerders en [klassieke beheerders rollen voor abonnementen, Azure RBAC-rollen en Azure AD-beheerders rollen](rbac-and-directory-admin-roles.md) [toevoegen of wijzigen](../billing/billing-add-change-azure-subscription-administrator.md) .
+- Als u problemen ondervindt met Service beheerder of mede beheerders, raadpleegt u Azure-abonnements beheerders en [klassieke beheerders rollen voor abonnementen, Azure RBAC-rollen en Azure AD-beheerders rollen](rbac-and-directory-admin-roles.md) [toevoegen of wijzigen](../cost-management-billing/manage/add-change-subscription-administrator.md) .
 
 ## <a name="access-denied-or-permission-errors"></a>Toegang geweigerd of machtigings fouten
 
@@ -56,7 +56,7 @@ In dit artikel vindt u antwoorden op algemene vragen over op rollen gebaseerd to
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>Roltoewijzingen met onbekende beveiligingsprincipal
 
-Als u een rol toewijst aan een beveiligingsprincipal (gebruiker, groep, Service-Principal of beheerde identiteit) en u de beveiligings-principal later verwijdert zonder de roltoewijzing te verwijderen, wordt het beveiligings-principal-type voor de roltoewijzing vermeld als **onbekend**. In de volgende scherm afbeelding ziet u een voor beeld in de Azure Portal. De naam van de beveiligingsprincipal wordt weer gegeven als **identiteit verwijderd** en de **identiteit bestaat niet meer**. 
+Als u een rol toewijst aan een beveiligingsprincipal (gebruiker, groep, Service-Principal of beheerde identiteit) en u de beveiligings-principal later verwijdert zonder de roltoewijzing te verwijderen, wordt het beveiligings-principal-type voor de roltoewijzing vermeld als **onbekend**. In de volgende schermopname ziet u een voorbeeld in Azure Portal. De naam van de beveiligingsprincipal wordt weer gegeven als **identiteit verwijderd** en de **identiteit bestaat niet meer**. 
 
 ![Resource groep voor web-app](./media/troubleshooting/unknown-security-principal.png)
 
@@ -150,7 +150,7 @@ Deze items hebben **Schrijf** toegang tot de hele **resource groep** die uw webs
 
 * SSL-certificaten en-bindingen (SSL-certificaten kunnen worden gedeeld tussen sites in dezelfde resource groep en geografische locatie)  
 * Waarschuwingsregels  
-* Instellingen voor automatisch schalen  
+* instellingen voor automatisch schalen  
 * Application Insights-onderdelen  
 * Webtests  
 

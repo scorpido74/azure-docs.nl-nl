@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/22/2018
-ms.openlocfilehash: 05e87258576bceee2e1bbba7ec5ef6ea5ead4924
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7815a99d4521e6797b4095a38fcfce50ac29a2b8
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440254"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981201"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Gegevens in Azure SQL Data Warehouse laden met behulp van Azure Data Factory
 
@@ -40,19 +40,19 @@ In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp p
 
 * Azure-abonnement: als u geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 * Azure SQL Data Warehouse: het Data Warehouse bevat de gegevens die worden gekopieerd van de SQL database. Als u geen Azure SQL Data Warehouse hebt, raadpleegt u de instructies in [Create a SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
-* Azure SQL Database: in deze zelf studie worden gegevens uit een Azure-SQL database gekopieerd met LT Works-voorbeeld gegevens. U kunt een SQL database maken door de instructies in [een Azure-SQL database maken](../sql-database/sql-database-get-started-portal.md)te volgen. 
-* Azure-opslag account: Azure Storage wordt gebruikt als de _faserings_ -Blob in de bulksgewijze Kopieer bewerking. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md).
+* Azure SQL Database: in deze zelf studie worden gegevens uit een Azure-SQL database gekopieerd met LT Works-voorbeeld gegevens. U kunt een SQL database maken door de instructies in [een Azure-SQL database maken](../sql-database/sql-database-get-started-portal.md)te volgen.
+* Azure-opslag account: Azure Storage wordt gebruikt als de _faserings_ -Blob in de bulksgewijze Kopieer bewerking. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-account-create.md).
 
 ## <a name="create-a-data-factory"></a>Een data factory maken
 
-1. Selecteer in het menu links de optie **een resource maken** > **gegevens en analyses** > **Data Factory**: 
-   
+1. Selecteer in het menu links de optie **een resource maken** > **gegevens en analyses** > **Data Factory**:
+
    ![Selectie van Data Factory in het deelvenster Nieuw](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
 2. Geef op de pagina **nieuw Data Factory** waarden op voor de velden die worden weer gegeven in de volgende afbeelding:
-      
+
    ![De pagina Nieuwe data factory](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
- 
+
     * **Naam**: Voer een wereld wijd unieke naam in voor uw Azure-Data Factory. Als het fout bericht ' Data Factory-naam \"LoadSQLDWDemo\" niet beschikbaar is, geeft u een andere naam op voor de data factory. U kunt bijvoorbeeld _**de naam**_ **ADFTutorialDataFactory**. Probeer de data factory opnieuw te maken. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
     * **Abonnement**: Selecteer het Azure-abonnement waarin u de Data Factory wilt maken. 
     * **Resource groep**: Selecteer een bestaande resource groep in de vervolg keuzelijst of selecteer de optie **nieuwe maken** en voer de naam van een resource groep in. Zie [Resourcegroepen gebruiken om Azure-resources te beheren](../azure-resource-manager/management/overview.md) voor meer informatie.  
@@ -61,7 +61,7 @@ In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp p
 
 3. Selecteer **Maken**.
 4. Nadat het maken is voltooid, gaat u naar uw data factory. U ziet de **Data Factory** start pagina zoals wordt weer gegeven in de volgende afbeelding:
-   
+
    ![Startpagina van de gegevensfactory](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
 
    Klik op de tegel **Maken en bewaken** om de toepassing Gegevensintegratie in een afzonderlijk tabblad te openen.
@@ -86,14 +86,14 @@ In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp p
     ![Azure SQL DB selecteren](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
 
     c. Selecteer op de pagina **nieuwe gekoppelde service** de naam van de server en de data base in de vervolg keuzelijst en geef de gebruikers naam en het wacht woord op. Klik op **Verbinding testen** om de instellingen te valideren en selecteer vervolgens **Voltooien**.
-   
+
     ![Azure SQL DB configureren](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
 
     d. Selecteer de zojuist gemaakte gekoppelde service als bron. Klik vervolgens op **Volgende**.
 
     ![Aan de bron gekoppelde service selecteren](./media/load-azure-sql-data-warehouse/select-source-linked-service.png)
 
-1. Voer in de **tabellen selecteren waaruit de gegevens moeten worden gekopieerd of een aangepaste query** pagina, **tabel saleslt** in om de tabellen te filteren. Kies het vak **(Alles selecteren)** om alle tabellen voor de kopie te gebruiken en selecteer vervolgens **volgende**: 
+1. Voer in de **tabellen selecteren waaruit de gegevens moeten worden gekopieerd of een aangepaste query** pagina, **tabel saleslt** in om de tabellen te filteren. Kies het vak **(Alles selecteren)** om alle tabellen voor de kopie te gebruiken en selecteer vervolgens **volgende**:
 
     ![Bron tabellen selecteren](./media/load-azure-sql-data-warehouse/select-source-tables.png)
 
@@ -108,14 +108,14 @@ In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp p
     ![Azure SQL DW selecteren](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
     c. Selecteer op de pagina **nieuwe gekoppelde service** de naam van de server en de data base in de vervolg keuzelijst en geef de gebruikers naam en het wacht woord op. Klik op **Verbinding testen** om de instellingen te valideren en selecteer vervolgens **Voltooien**.
-   
+
     ![Azure SQL DW configureren](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 
     d. Selecteer de zojuist gemaakte gekoppelde service als sink. Klik vervolgens op **Volgende**.
 
     ![Aan sink gekoppelde service selecteren](./media/load-azure-sql-data-warehouse/select-sink-linked-service.png)
 
-1. Bekijk de inhoud op de pagina **tabel toewijzing** en selecteer **volgende**. Een intelligente tabel toewijzing wordt weer gegeven. De bron tabellen worden toegewezen aan de doel tabellen op basis van de tabel namen. Als een bron tabel niet bestaat op de doel locatie, maakt Azure Data Factory standaard een doel tabel met dezelfde naam. U kunt ook een bron tabel toewijzen aan een bestaande doel tabel. 
+1. Bekijk de inhoud op de pagina **tabel toewijzing** en selecteer **volgende**. Een intelligente tabel toewijzing wordt weer gegeven. De bron tabellen worden toegewezen aan de doel tabellen op basis van de tabel namen. Als een bron tabel niet bestaat op de doel locatie, maakt Azure Data Factory standaard een doel tabel met dezelfde naam. U kunt ook een bron tabel toewijzen aan een bestaande doel tabel.
 
    > [!NOTE]
    > Het automatisch maken van tabellen voor de SQL Data Warehouse Sink geldt wanneer SQL Server of Azure SQL Database de bron is. Als u gegevens uit een ander brongegevens archief kopieert, moet u het schema vooraf maken in de Sink-Azure SQL Data Warehouse voordat u de gegevens kopie uitvoert.
@@ -128,12 +128,12 @@ In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp p
 
 1. Voer op de pagina **instellingen** de volgende stappen uit:
 
-    a. Klik in de sectie **faserings instellingen** op **+ Nieuw** voor een nieuwe staging-opslag. De opslag wordt gebruikt voor het faseren van de gegevens voordat deze in SQL Data Warehouse wordt geladen met poly base. Nadat de kopie is voltooid, worden de tussenliggende gegevens in Azure Storage automatisch opgeschoond. 
+    a. Klik in de sectie **faserings instellingen** op **+ Nieuw** voor een nieuwe staging-opslag. De opslag wordt gebruikt voor het faseren van de gegevens voordat deze in SQL Data Warehouse wordt geladen met poly base. Nadat de kopie is voltooid, worden de tussenliggende gegevens in Azure Storage automatisch opgeschoond.
 
     ![Fase ring configureren](./media/load-azure-sql-data-warehouse/configure-staging.png)
 
     b. Selecteer uw opslag account op de pagina **nieuwe gekoppelde service** en selecteer **volt ooien**.
-   
+
     ![Azure Storage configureren](./media/load-azure-sql-data-warehouse/configure-blob-storage.png)
 
     c. Schakel in de sectie **Geavanceerde instellingen** de optie **type standaard gebruiken** uit en selecteer **volgende**.
@@ -146,10 +146,10 @@ In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp p
 1. Selecteer op de **pagina implementatie**de optie **controleren** om de pijp lijn te bewaken (taak):
 
     ![De pagina Implementatie](./media/load-azure-sql-data-warehouse/deployment-page.png)
-1. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd. De kolom **acties** bevat koppelingen om de details van de activiteit weer te geven en de pijp lijn opnieuw uit te voeren: 
+1. U ziet dat het tabblad **Controleren** aan de linkerkant automatisch wordt geselecteerd. De kolom **acties** bevat koppelingen om de details van de activiteit weer te geven en de pijp lijn opnieuw uit te voeren:
 
     ![Pijplijnuitvoeringen controleren](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)
-1. Selecteer de koppeling **uitvoeringen van activiteit weer** geven in de kolom **acties** om de uitvoering van activiteiten te bekijken die zijn gekoppeld aan de pijplijn uitvoering. Als u wilt terugkeren naar de weer gave pijplijn uitvoeringen, selecteert u de koppeling **pijp lijnen** bovenaan. Selecteer **Vernieuwen** om de lijst te vernieuwen. 
+1. Selecteer de koppeling **uitvoeringen van activiteit weer** geven in de kolom **acties** om de uitvoering van activiteiten te bekijken die zijn gekoppeld aan de pijplijn uitvoering. Als u wilt terugkeren naar de weer gave pijplijn uitvoeringen, selecteert u de koppeling **pijp lijnen** bovenaan. Selecteer **Vernieuwen** om de lijst te vernieuwen.
 
     ![Uitvoering van activiteiten controleren](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
 
@@ -159,7 +159,7 @@ In dit artikel wordt beschreven hoe u het Data Factory Gegevens kopiëren-hulp p
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar het volgende artikel voor meer informatie over de ondersteuning van Azure SQL Data Warehouse: 
+Ga naar het volgende artikel voor meer informatie over de ondersteuning van Azure SQL Data Warehouse:
 
 > [!div class="nextstepaction"]
 >[Azure SQL Data Warehouse-connector](connector-azure-sql-data-warehouse.md)

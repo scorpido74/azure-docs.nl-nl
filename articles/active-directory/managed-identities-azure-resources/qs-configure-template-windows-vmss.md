@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5f006832fd1f1386adaf89b0045272a70db2df3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9854027bbdfaf22c650ae9e2e0aa1eec457f89dd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429952"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977951"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Beheerde identiteiten configureren voor Azure-resources op een Azure virtual machine-schaal met behulp van een sjabloon
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Beheerde identiteiten voor Azure-resources bieden Azure-Services met een automatisch beheerde identiteit in Azure Active Directory. U kunt deze identiteit gebruiken voor verificatie bij elke service die ondersteuning biedt voor Azure AD-verificatie, zonder dat u referenties hebt in uw code. 
+Beheerde identiteiten voor Azure-resources bieden Azure-Services met een automatisch beheerde identiteit in Azure Active Directory. U kunt deze identiteit gebruiken voor verificatie bij elke service die ondersteuning biedt voor Azure AD-verificatie, zonder dat u referenties hebt in uw code.
 
 In dit artikel leert u hoe u de volgende beheerde identiteiten voor Azure-bronnen bewerkingen kunt uitvoeren op een virtuele machine schaalset van Azure met Azure Resource Manager-implementatie sjabloon:
 - De door het systeem toegewezen beheerde identiteit inschakelen en uitschakelen op een virtuele-machine schaalset van Azure
@@ -54,7 +54,7 @@ Net als bij de Azure Portal en scripting bieden [Azure Resource Manager](../../a
    - Een lokale [JSON-editor gebruiken (zoals VS code)](../../azure-resource-manager/resource-manager-create-first-template.md)en vervolgens uploaden en implementeren met behulp van Power shell of cli.
    - Het Visual Studio [Azure Resource Group-project](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md) gebruiken om een sjabloon te maken en te implementeren.  
 
-Ongeacht de optie die u kiest, is de sjabloon syntaxis hetzelfde tijdens de eerste implementatie en opnieuw implementeren. Het inschakelen van beheerde identiteiten voor Azure-resources op een nieuwe of bestaande virtuele machine gebeurt op dezelfde manier. Azure Resource Manager voert standaard een [incrementele update](../../azure-resource-manager/deployment-modes.md) uit voor implementaties.
+Ongeacht de optie die u kiest, is de sjabloon syntaxis hetzelfde tijdens de eerste implementatie en opnieuw implementeren. Het inschakelen van beheerde identiteiten voor Azure-resources op een nieuwe of bestaande virtuele machine gebeurt op dezelfde manier. Azure Resource Manager voert standaard een [incrementele update](../../azure-resource-manager/templates/deployment-modes.md) uit voor implementaties.
 
 ## <a name="system-assigned-managed-identity"></a>Door het systeem toegewezen beheerde identiteit
 
@@ -66,7 +66,7 @@ In deze sectie schakelt u de door het systeem toegewezen beheerde identiteit in 
 2. Als u de door het systeem toegewezen beheerde identiteit wilt inschakelen, laadt u de sjabloon in een editor, zoekt u de `Microsoft.Compute/virtualMachinesScaleSets` bron van belang in de sectie resources en voegt u de eigenschap `identity` op hetzelfde niveau toe als de eigenschap `"type": "Microsoft.Compute/virtualMachinesScaleSets"`. Gebruik de volgende syntaxis:
 
    ```JSON
-   "identity": { 
+   "identity": {
        "type": "SystemAssigned"
    }
    ```
@@ -106,14 +106,14 @@ In deze sectie schakelt u de door het systeem toegewezen beheerde identiteit in 
                                       "port": 50342
                                   }
                                 }
-                            } 
+                            }
                         ]
                     }
                 }
             }
         }
     ]
-   ``` 
+   ```
 
 ### <a name="disable-a-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Een door het systeem toegewezen beheerde identiteit uitschakelen vanuit een schaalset voor virtuele Azure-machines
 
@@ -129,12 +129,12 @@ Als u een schaalset voor virtuele machines hebt waarvoor geen door het systeem t
 
    **Micro soft. Compute/virtualMachineScaleSets API-versie 2018-06-01**
 
-   Als uw apiVersion is `2017-12-01` en de schaalset van de virtuele machine zowel door het systeem en de gebruiker toegewezen beheerde identiteiten heeft, verwijdert u `SystemAssigned` uit het identiteits type en blijft u `UserAssigned` samen met de `identityIds` matrix van de door de gebruiker toegewezen beheerde identiteiten. 
-   
-    
+   Als uw apiVersion is `2017-12-01` en de schaalset van de virtuele machine zowel door het systeem en de gebruiker toegewezen beheerde identiteiten heeft, verwijdert u `SystemAssigned` uit het identiteits type en blijft u `UserAssigned` samen met de `identityIds` matrix van de door de gebruiker toegewezen beheerde identiteiten.
+
+
 
    In het volgende voor beeld ziet u hoe u een door het systeem toegewezen beheerde identiteit verwijdert uit een schaalset voor virtuele machines zonder door de gebruiker toegewezen beheerde identiteiten:
-   
+
    ```json
    {
        "name": "[variables('vmssName')]",
@@ -157,7 +157,7 @@ In deze sectie wijst u een door de gebruiker toegewezen beheerde identiteit toe 
 ### <a name="assign-a-user-assigned-managed-identity-to-a-virtual-machine-scale-set"></a>Een door de gebruiker toegewezen beheerde identiteit toewijzen aan een schaalset voor virtuele machines
 
 1. Voeg onder het element `resources` de volgende vermelding toe om een door de gebruiker toegewezen beheerde identiteit toe te wijzen aan de schaalset van de virtuele machine.  Zorg ervoor dat u `<USERASSIGNEDIDENTITY>` vervangt door de naam van de door de gebruiker toegewezen beheerde identiteit die u hebt gemaakt.
-   
+
    **Micro soft. Compute/virtualMachineScaleSets API-versie 2018-06-01**
 
    Als uw apiVersion is `2018-06-01`, worden uw door de gebruiker toegewezen beheerde identiteiten opgeslagen in de `userAssignedIdentities` woordenlijst indeling en moet de `<USERASSIGNEDIDENTITYNAME>` waarde worden opgeslagen in een variabele die is gedefinieerd in de sectie `variables` van uw sjabloon.
@@ -173,12 +173,12 @@ In deze sectie wijst u een door de gebruiker toegewezen beheerde identiteit toe 
                "[resourceID('Microsoft.ManagedIdentity/userAssignedIdentities/',variables('<USERASSIGNEDIDENTITYNAME>'))]": {}
            }
        }
-    
+
    }
    ```   
 
    **Micro soft. Compute/virtualMachineScaleSets API-versie 2017-12-01**
-    
+
    Als uw `apiVersion` `2017-12-01` of eerder is, worden uw door de gebruiker toegewezen beheerde identiteiten opgeslagen in de `identityIds` matrix en moet de `<USERASSIGNEDIDENTITYNAME>` waarde worden opgeslagen in een variabele die is gedefinieerd in de sectie Varia bles van uw sjabloon.
 
    ```json
@@ -194,12 +194,12 @@ In deze sectie wijst u een door de gebruiker toegewezen beheerde identiteit toe 
        }
 
    }
-   ``` 
+   ```
 > [!NOTE]
 > U kunt eventueel de beheerde identiteiten voor de virtuele-machine schaalset-extensie van Azure-resources inrichten door deze op te geven in het `extensionProfile`-element van de sjabloon. Deze stap is optioneel, omdat u het identiteits eindpunt van Azure Instance Metadata Service (IMDS) kunt gebruiken om tokens ook op te halen.  Zie [migreren van VM-extensie naar Azure IMDS voor authenticatie](howto-migrate-vm-extension.md)voor meer informatie.
 
 3. Wanneer u klaar bent, moet uw sjabloon er ongeveer als volgt uitzien:
-   
+
    **Micro soft. Compute/virtualMachineScaleSets API-versie 2018-06-01**   
 
    ```json
@@ -234,7 +234,7 @@ In deze sectie wijst u een door de gebruiker toegewezen beheerde identiteit toe 
                                       "port": 50342
                                   }
                                 }
-                            } 
+                            }
                         ]
                     }
                 }
@@ -277,7 +277,7 @@ In deze sectie wijst u een door de gebruiker toegewezen beheerde identiteit toe 
                                       "port": 50342
                                   }
                                 }
-                            } 
+                            }
                         ]
                     }
                 }
@@ -305,9 +305,9 @@ Als u een schaalset voor virtuele machines hebt waarvoor geen door de gebruiker 
         }
    }
    ```
-   
+
    **Micro soft. Compute/virtualMachineScaleSets API-versie 2018-06-01**
-    
+
    Als u één door de gebruiker toegewezen beheerde identiteit uit een schaalset voor virtuele machines wilt verwijderen, verwijdert u deze uit de `userAssignedIdentities` woorden lijst.
 
    Als u een door het systeem toegewezen identiteit hebt, laat u deze dan in de `type` waarde onder de waarde `identity`.
@@ -317,8 +317,7 @@ Als u een schaalset voor virtuele machines hebt waarvoor geen door de gebruiker 
    Als u één door de gebruiker toegewezen beheerde identiteit uit een schaalset voor virtuele machines wilt verwijderen, verwijdert u deze uit de `identityIds` matrix.
 
    Als u een door het systeem toegewezen beheerde identiteit hebt, laat u deze dan in de `type` waarde onder de waarde `identity`.
-   
+
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Overzicht van beheerde identiteiten voor Azure-resources](overview.md).
-

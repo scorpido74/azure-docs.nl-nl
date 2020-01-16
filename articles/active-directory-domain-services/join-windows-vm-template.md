@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: iainfou
-ms.openlocfilehash: 3e1a754d39025136866712cb57026e827c986f6a
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: c9f5bcd9921b0324eb194eefd2066f6c0eaa4706
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705001"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975211"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain-using-a-resource-manager-template"></a>Een virtuele machine met Windows Server toevoegen aan een Azure Active Directory Domain Services beheerd domein met behulp van een resource manager-sjabloon
 
@@ -95,7 +95,7 @@ Als u een Windows Server-VM wilt maken, voegt u deze toe aan een door Azure AD D
     | VM-grootte                   | Geef een VM-grootte op, bijvoorbeeld *Standard_DS2_v2*. |
     | Domein om lid te worden            | De DNS-naam van het beheerde domein van Azure AD DS, zoals *aadds.contoso.com*. |
     | Domein gebruikers naam           | Het gebruikers account in de Azure-AD DS beheerd domein dat moet worden gebruikt om de virtuele machine toe te voegen aan het beheerde domein. Dit account moet lid zijn van de groep *Azure AD DC-Administrators* . |
-    | Domein wachtwoord           | Het wacht woord voor het gebruikers account dat is opgegeven in de vorige instelling. |
+    | Domeinwachtwoord           | Het wacht woord voor het gebruikers account dat is opgegeven in de vorige instelling. |
     | Optioneel pad naar OE          | De aangepaste organisatie-eenheid waaraan de virtuele machine moet worden toegevoegd. Als u geen waarde opgeeft voor deze para meter, wordt de virtuele machine toegevoegd aan de standaard organisatie-eenheid voor *Aad DC-computers* . |
     | Gebruikers naam van de VM-beheerder         | Geef een lokaal Administrator-account op om te maken op de VM. |
     | Wacht woord voor de VM-beheerder         | Geef een lokaal beheerders wachtwoord op voor de virtuele machine. Maak een sterk wacht woord voor de lokale beheerder om te beschermen tegen aanvallen met een wacht woord. |
@@ -143,6 +143,6 @@ In dit artikel hebt u de Azure Portal gebruikt voor het configureren en implemen
 [create-azure-ad-tenant]: ../active-directory/fundamentals/sign-up-organization.md
 [associate-azure-ad-tenant]: ../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md
 [create-azure-ad-ds-instance]: tutorial-create-instance.md
-[template-overview]: ../azure-resource-manager/template-deployment-overview.md
-[deploy-powershell]: ../azure-resource-manager/resource-group-template-deploy.md
-[deploy-cli]: ../azure-resource-manager/resource-group-template-deploy-cli.md
+[template-overview]: ../azure-resource-manager/templates/overview.md
+[deploy-powershell]: ../azure-resource-manager/templates/deploy-powershell.md
+[deploy-cli]: ../azure-resource-manager/templates/deploy-cli.md

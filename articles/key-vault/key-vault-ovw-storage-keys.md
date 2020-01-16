@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 62faf33dc8b3690036407972e12633e741a85d78
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 880a85676ff7a0364431b33b90093298b12bffed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176757"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980468"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Sleutels voor opslag accounts beheren met Key Vault en de Azure CLI
 
@@ -44,7 +44,7 @@ Key Vault is een micro soft-toepassing die vooraf is geregistreerd in alle Azure
 | Tenants | Cloud | Toepassings-id |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
-| Azure AD | Open bare Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Azure AD | Openbare Azure-peering | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | Overige  | Alle | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Vereisten
@@ -53,7 +53,7 @@ Als u deze hand leiding wilt volt ooien, moet u eerst het volgende doen:
 
 - [Installeer de Azure cli](/cli/azure/install-azure-cli).
 - [Een sleutel kluis maken](quick-create-cli.md)
-- [Maak een Azure Storage-account](../storage/common/storage-quickstart-create-account.md?tabs=azure-cli). De naam van het opslag account mag alleen kleine letters en cijfers bevatten. De naam moet tussen de 3 en 24 tekens lang zijn.
+- [Maak een Azure Storage-account](../storage/common/storage-account-create.md?tabs=azure-cli). De naam van het opslag account mag alleen kleine letters en cijfers bevatten. De naam moet tussen de 3 en 24 tekens lang zijn.
       
 ## <a name="manage-storage-account-keys"></a>Sleutels voor opslag accounts beheren
 

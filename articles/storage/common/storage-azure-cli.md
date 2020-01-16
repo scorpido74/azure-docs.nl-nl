@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f8e745b214ced865ac41d72bdfd5e44ca36b803a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b80c29788bd2f8d5172795aa2c92a80e460ff81f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460467"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978530"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>De Azure CLI gebruiken met Azure Storage
 
@@ -23,7 +23,7 @@ De open-source, platformoverschrijdende Azure CLI biedt een reeks opdrachten voo
 
 In deze hand leiding wordt uitgelegd hoe u de [Azure cli](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) gebruikt voor het uitvoeren van verschillende taken die werken met resources in uw Azure Storage-account. We raden u aan de meest recente versie van de CLI te downloaden en installeren of te upgraden voordat u deze hand leiding gebruikt.
 
-In de voor beelden in de hand leiding wordt uitgegaan van het gebruik van de bash-shell op Ubuntu, maar andere platforms moeten op dezelfde manier worden uitgevoerd. 
+In de voor beelden in de hand leiding wordt uitgegaan van het gebruik van de bash-shell op Ubuntu, maar andere platforms moeten op dezelfde manier worden uitgevoerd.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -34,7 +34,7 @@ In deze hand leiding wordt ervan uitgegaan dat u bekend bent met de basis concep
 
 ### <a name="accounts"></a>Accounts
 * **Azure-account**: als u nog geen Azure-abonnement hebt, [maakt u een gratis Azure-account](https://azure.microsoft.com/free/).
-* **Opslagaccount**: zie [Een opslagaccount maken](storage-quickstart-create-account.md) in [Over Azure-opslagaccounts](storage-create-storage-account.md).
+* **Opslagaccount**: zie [Een opslagaccount maken](storage-account-create.md) in [Over Azure-opslagaccounts](storage-account-overview.md).
 
 ### <a name="install-the-azure-cli"></a>Azure-CLI installeren
 
@@ -335,7 +335,7 @@ Het type inhoud, ook wel het MIME-type genoemd, geeft de indeling aan van de geg
 
 ```azurecli
 az storage blob update
-    --container-name <container_name> 
+    --container-name <container_name>
     --name <blob_name>
     --content-type <content_type>
 ```
@@ -390,7 +390,7 @@ az storage file list --share-name myshare --path myDir/mySubDir/MySubDir2 --outp
 
 ### <a name="copy-files"></a>Bestanden kopiëren      
 U kunt een bestand kopiëren naar een ander bestand, een bestand naar een BLOB of een BLOB naar een bestand. Als u bijvoorbeeld een bestand wilt kopiëren naar een map in een andere share:        
-        
+
 ```azurecli
 az storage file copy start \
 --source-share share1 --source-path dir1/file.txt \
@@ -524,7 +524,7 @@ az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --sn
 U kunt een moment opname van een share verwijderen met behulp van de `az storage share delete` opdracht door `--snapshot` para meter op te geven met de time stamp van de moment opname:
 
 ```cli
-az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z' 
+az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z'
 ```
 
 Voorbeelduitvoer
@@ -535,7 +535,7 @@ Voorbeelduitvoer
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Hier volgen enkele aanvullende bronnen voor meer informatie over het werken met de Azure CLI. 
+Hier volgen enkele aanvullende bronnen voor meer informatie over het werken met de Azure CLI.
 
 * [Aan de slag met Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Azure CLI-opdrachtenreferentie](/cli/azure)

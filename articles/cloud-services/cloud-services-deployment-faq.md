@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f935e8fc1e5d6d64bffaeb582e8b248317f49687
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660593"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980633"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Implementatie problemen voor Azure Cloud Services: veelgestelde vragen (FAQ)
 
@@ -56,7 +56,7 @@ De implementatie van een Cloud service kan mislukken als de resources die moeten
 
 U kunt ook het huidige gebruik/quotum voor uw abonnement volgen op de portal: Azure Portal = >-abonnementen = > \<juiste abonnement > = > ' gebruik + quotum '.
 
-Informatie over het resource gebruik/het verbruik kan ook worden opgehaald via de Azure Billing-API's. Zie de [Azure resource usage-API (preview)](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview).
+Informatie over het resource gebruik/het verbruik kan ook worden opgehaald via de Azure Billing-API's. Zie de [Azure resource usage-API (preview)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview).
 
 ## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>Hoe kan ik de grootte van een geïmplementeerde Cloud service-VM wijzigen zonder deze opnieuw te implementeren?
 U kunt de VM-grootte van een geïmplementeerde Cloud service niet wijzigen zonder deze opnieuw te implementeren. De VM-grootte is ingebouwd in de CSDEF, die alleen kan worden bijgewerkt met een nieuwe implementatie.
@@ -66,17 +66,17 @@ Zie [How to update a Cloud service](cloud-services-update-azure-service.md)(Enge
 ## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Waarom kan ik Cloud Services niet implementeren via Service Management-Api's of Power shell wanneer ik Azure Resource Manager-opslag account gebruik? 
 
 Omdat de Cloud service een klassieke resource is die niet rechtstreeks compatibel is met het Azure Resource Manager model, kunt u deze niet koppelen aan de Azure Resource Manager-opslag accounts. Hier volgen enkele opties: 
- 
+
 - Implementeren via REST API.
 
     Wanneer u implementeert via Service Management REST API, kunt u de beperking omzeilen door een SAS-URL op te geven voor de Blob-opslag, die met zowel het klassieke als het Azure Resource Manager Storage-account wordt gebruikt. Lees [hier](/previous-versions/azure/reference/ee460813(v=azure.100))meer over de eigenschap ' PackageUrl '.
-  
+
 - Implementeren via [Azure Portal](https://portal.azure.com).
 
     Dit werkt vanaf de [Azure Portal](https://portal.azure.com) omdat de aanroep via een proxy/Shim wordt verzonden waarmee communicatie tussen Azure Resource Manager en klassieke resources mogelijk is. 
- 
-## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Waarom moet ik een opslag account opgeven voor de implementatie van Azure Portal? 
 
-In de klassieke Portal is het pakket rechtstreeks naar de Management API-laag geüpload, waarna de API-laag het pakket tijdelijk in een intern opslag account plaatst.  Dit proces veroorzaakt prestatie-en schaalbaarheids problemen omdat de API-laag niet is ontworpen om een file upload-service te zijn.  In het Azure Portal (Resource Manager-implementatie model) hebben we de tijdelijke stap voor het eerst uploaden naar de API-laag overgeslagen, wat resulteert in snellere en betrouwbaardere implementaties. 
+## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Waarom moet ik een opslag account opgeven voor de implementatie van Azure Portal?
 
-Net als voor de kosten is het zeer klein en kunt u hetzelfde opslag account voor alle implementaties gebruiken. U kunt de [reken machine voor opslag kosten](https://azure.microsoft.com/pricing/calculator/#storage1) gebruiken om de kosten te bepalen voor het uploaden van het service pakket (CSPKG), de CSPKG te downloaden en vervolgens de CSPKG te verwijderen. 
+In de klassieke Portal is het pakket rechtstreeks naar de Management API-laag geüpload, waarna de API-laag het pakket tijdelijk in een intern opslag account plaatst.  Dit proces veroorzaakt prestatie-en schaalbaarheids problemen omdat de API-laag niet is ontworpen om een file upload-service te zijn.  In het Azure Portal (Resource Manager-implementatie model) hebben we de tijdelijke stap voor het eerst uploaden naar de API-laag overgeslagen, wat resulteert in snellere en betrouwbaardere implementaties.
+
+Net als voor de kosten is het zeer klein en kunt u hetzelfde opslag account voor alle implementaties gebruiken. U kunt de [reken machine voor opslag kosten](https://azure.microsoft.com/pricing/calculator/#storage1) gebruiken om de kosten te bepalen voor het uploaden van het service pakket (CSPKG), de CSPKG te downloaden en vervolgens de CSPKG te verwijderen.

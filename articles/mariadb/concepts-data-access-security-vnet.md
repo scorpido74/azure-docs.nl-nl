@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 72d8e58d1f4ca2955ed2469d061277949751d8b3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 17c957dbd9c43b3cc66af39195a73bad8e006814
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74772695"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982352"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Virtual Network Service-eind punten en-regels gebruiken voor Azure Database for MariaDB
 
@@ -50,7 +50,7 @@ Met een regel voor het virtuele netwerk krijgt uw Azure Database for MariaDB-ser
 
 Totdat u actie onderneemt, kunnen de Vm's op uw subnetten niet communiceren met uw Azure Database for MariaDB-server. Een actie die de communicatie tot stand brengt, is het maken van een regel voor een virtueel netwerk. De motivering van het kiezen van de methode voor de VNet-regel vereist een vergelijking en contrast met betrekking tot de concurrerende beveiligings opties die door de firewall worden geboden.
 
-### <a name="a-allow-access-to-azure-services"></a>A. Toegang tot Azure-Services toestaan
+### <a name="a-allow-access-to-azure-services"></a>A. Toegang tot Azure-services toestaan
 
 Het deel venster verbindings beveiliging heeft een **aan/uit-** knop met de naam **toegang tot Azure-Services toestaan**. Met de instelling **bij** kunt u communicatie van alle Azure IP-adressen en alle Azure-subnetten toestaan. Deze IP-adressen of subnetten van Azure zijn mogelijk niet het eigendom van u. Deze **bij** instelling is waarschijnlijk meer open dan u wilt dat uw Azure database for MariaDB-data base. De functie regel voor virtueel netwerk biedt veel nauw keurigere controle.
 
@@ -117,7 +117,7 @@ Voor Azure Database for MariaDB heeft de functie regels voor virtuele netwerken 
 
 - Als u de service-eind punten van het virtuele netwerk inschakelt voor Azure Database for MariaDB met het tag **micro soft. SQL** -service, worden ook de eind punten ingeschakeld voor alle Azure data base-services: Azure Database for MariaDB, Azure Database for MySQL, Azure Database for PostgreSQL, Azure SQL Database en Azure SQL Data Warehouse.
 
-- Ondersteuning voor VNet-service-eind punten is alleen voor servers met Algemeen en geoptimaliseerd voor geheugen.
+- Ondersteuning voor VNet-service-eindpunten is alleen voor algemeen gebruik en geoptimaliseerd voor geheugen-servers.
 
 - IP-adresbereiken op de firewall zijn van toepassing op de volgende netwerk items, maar de regels voor het virtuele netwerk doen dit niet:
     - [Virtueel particulier netwerk (VPN) van site-naar-site (S2S)][vpn-gateway-indexmd-608y]
@@ -148,7 +148,7 @@ Zie voor artikelen over het maken van VNet-regels:
 -->
 
 <!-- Link references, to text, Within this same GitHub repo. -->
-[resource-manager-deployment-model-568f]: ../azure-resource-manager/resource-manager-deployment-model.md
+[resource-manager-deployment-model-568f]: ../azure-resource-manager/management/deployment-models.md
 
 [vm-virtual-network-overview]: ../virtual-network/virtual-networks-overview.md
 
@@ -162,4 +162,4 @@ Zie voor artikelen over het maken van VNet-regels:
 
 [expressroute-indexmd-744v]: ../expressroute/index.yml
 
-[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

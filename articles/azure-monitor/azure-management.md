@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2018
-ms.openlocfilehash: f68838e271e51c37985f55b40b140e279c1df2a4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 337b340df10eb406fef3148b1d8bfde66b3b8ff6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862540"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979836"
 ---
 # <a name="azure-management---monitoring"></a>Azure Management - bewaking
 
@@ -36,7 +36,7 @@ Bewaken is het verzamelen en analyseren van gegevens om de prestaties, status en
 Configureren heeft betrekking op de initiële implementatie en configuratie van toepassingen en resources, en op het voortdurende onderhoud ervan met patches en updates.  Automatisering van deze taken via scripts en beleid zorgt ervoor dat u redundantie wegneemt en zo de benodigde tijd en moeite beperkt, terwijl u de nauwkeurigheid en efficiëntie verbetert.  [Azure Automation](../automation/automation-intro.md) biedt het merendeel van de services die bestemd zijn om configuratietaken te automatiseren.  Naast runbooks om processen te automatiseren, biedt Azure Automation ook update- en configuratiebeheer. Hiermee kunt u configuraties beheren met behulp van beleid, en updates identificeren en implementeren.
 
 ## <a name="govern"></a>Governance
-Governance biedt mechanismen en processen om de controle over uw toepassingen en resources in Azure te behouden.  Dat omvat het plannen van initiatieven en het stellen van strategische prioriteiten.  Governance in Azure wordt hoofdzakelijk geïmplementeerd via twee services.  Met [Azure Policy](../governance/policy/overview.md) kunt u beleidsdefinities maken, toewijzen en beheren waarmee verschillende regels en acties voor uw resources worden afgedwongen, zodat deze resources blijven voldoen aan uw bedrijfsstandaarden en service level agreements. Met [Azure Cost Management](../cost-management/overview-cost-mgt.md) kunt u het Cloud gebruik en-uitgaven bijhouden voor uw Azure-resources en andere cloud providers, waaronder AWS en Google.
+Governance biedt mechanismen en processen om de controle over uw toepassingen en resources in Azure te behouden.  Dat omvat het plannen van initiatieven en het stellen van strategische prioriteiten.  Governance in Azure wordt hoofdzakelijk geïmplementeerd via twee services.  Met [Azure Policy](../governance/policy/overview.md) kunt u beleidsdefinities maken, toewijzen en beheren waarmee verschillende regels en acties voor uw resources worden afgedwongen, zodat deze resources blijven voldoen aan uw bedrijfsstandaarden en service level agreements. Met [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) kunt u het Cloud gebruik en-uitgaven bijhouden voor uw Azure-resources en andere cloud providers, waaronder AWS en Google.
 
 ## <a name="secure"></a>Veilig
 Het beheren van de beveiliging van uw toepassingen, resources en gegevens vereist een combinatie van taken: bedreigingen beoordelen, beveiligingsgegevens verzamelen en analyseren, en ervoor zorgen dat uw toepassingen en resources op een veilige manier zijn ontworpen en geconfigureerd.  Beveiligingsbewaking en bedreigingsanalyse worden door [Azure Security Center](../security-center/security-center-intro.md) geboden, dat ook geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbescherming voor verschillende hybride cloud-werkbelastingen mogelijk maakt.  Raadpleeg ook [Inleiding tot Azure-beveiliging](../security/fundamentals/overview.md) voor uitgebreide informatie over beveiliging in Azure en richtlijnen voor het veilig configureren van Azure-resources.

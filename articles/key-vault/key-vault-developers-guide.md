@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1bfd156f9fbdb69766e4588a342a695fbd79ca3a
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 7991fcec42a81a74ead1a00784e2cec59997da57
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595301"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981534"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Ontwikkelaars handleiding Azure Key Vault
 
@@ -28,7 +28,7 @@ Zie [Wat is Key Vault](key-vault-overview.md)voor meer algemene informatie over 
 
 ## <a name="public-previews"></a>Open bare voor beelden
 
-Er wordt regel matig een open bare preview van een nieuwe Key Vault-functie uitgebracht. Probeer het eens en laat ons weten wat u van azurekeyvault@microsoft.com hebt, ons feedback e-mail adres.
+Er wordt regel matig een open bare preview van een nieuwe Key Vault-functie uitgebracht. Probeer het eens en laat ons weten wat u van azurekeyvault@microsoft.comhebt, ons feedback e-mail adres.
 
 ## <a name="creating-and-managing-key-vaults"></a>Sleutel kluizen maken en beheren
 
@@ -89,7 +89,7 @@ In node. js worden de API voor Key Vault beheer en de Key Vault object-API gesch
 - [Key Vault maken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 - [Aan de slag met Key Vault in node. js](https://github.com/Azure-Samples/key-vault-node-getting-started)
 
-### <a name="code-examples"></a>Code voorbeelden
+### <a name="code-examples"></a>Codevoorbeelden
 
 Zie voor meer voor beelden van het gebruik van Key Vault met uw toepassingen:
 
@@ -103,8 +103,8 @@ De volgende artikelen en scenario's bevatten toepassingsspecifieke richt lijnen 
 - De [Tenant-id van de sleutel kluis wijzigen nadat het abonnement is verplaatst](key-vault-subscription-move-fix.md) : wanneer u uw Azure-abonnement van Tenant A naar Tenant b verplaatst, zijn uw bestaande sleutel kluizen niet toegankelijk voor de principals (gebruikers en toepassingen) in Tenant b. Los dit probleem op met behulp van deze hand leiding.
 - Toegang [tot Key Vault achter de firewall](key-vault-access-behind-firewall.md) : voor toegang tot een sleutel kluis moet de client toepassing voor de sleutel kluis toegang hebben tot meerdere eind punten voor verschillende functies.
 - [Het genereren en overdragen van met HSM beveiligde sleutels voor Azure Key Vault](key-vault-hsm-protected-keys.md) : dit helpt u bij het plannen, genereren en vervolgens overdragen van uw eigen met HSM beveiligde sleutels voor gebruik met Azure Key Vault.
-- [Veilige waarden (zoals wacht woorden) door geven tijdens de implementatie](../azure-resource-manager/resource-manager-keyvault-parameter.md) : wanneer u tijdens de implementatie een beveiligde waarde (zoals een wacht woord) moet door geven als een para meter, kunt u die waarde opslaan als een geheim in een Azure Key Vault en naar de waarde in een andere Resource Manager verwijzen sjablonen.
-- Het [gebruik van Key Vault voor Extensible Key Management met SQL Server](https://msdn.microsoft.com/library/dn198405.aspx) -de SQL Server-connector voor Azure Key Vault stelt SQL Server en SQL-in-a-vm in staat om gebruik te maken van de Azure Key Vault-service als een EKM-provider (Extensible Key Management) voor het beveiligen van de versleutelings sleutels voor de koppeling van toepassingen; Transparent Data Encryption, versleuteling van back-ups en versleuteling op kolom niveau.
+- [Veilige waarden (zoals wacht woorden) door geven tijdens de implementatie](../azure-resource-manager/templates/key-vault-parameter.md) : wanneer u tijdens de implementatie een beveiligde waarde (zoals een wacht woord) moet door geven als een para meter, kunt u die waarde opslaan als een geheim in een Azure Key Vault en naar de waarde in andere Resource Manager-sjablonen verwijzen.
+- Het [gebruik van Key Vault voor Extensible Key Management met SQL Server](https://msdn.microsoft.com/library/dn198405.aspx) -de SQL Server-connector voor Azure Key Vault stelt SQL Server en SQL-in-a-vm in staat om gebruik te maken van de Azure Key Vault-service als een EKM-provider (Extensible Key Management) om de versleutelings sleutels voor de koppeling van toepassingen te beveiligen; Transparent Data Encryption, versleuteling van back-ups en versleuteling op kolom niveau.
 - [Certificaten implementeren op vm's van Key Vault](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) : een Cloud toepassing die wordt uitgevoerd in een VM in azure, heeft een certificaat nodig. Hoe krijgt u dit certificaat vandaag nog aan deze VM?
 - [Key Vault met end-to-end-draaiing en controle instellen](key-vault-key-rotation-log-monitoring.md) : in dit artikel wordt beschreven hoe u de sleutel wisseling en controle kunt instellen met Azure Key Vault.
 - Het implementeren van een [Azure web app-certificaat via Key Vault]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) biedt stapsgewijze instructies voor het implementeren van certificaten die zijn opgeslagen in Key Vault als onderdeel van [app service Certificate](https://azure.microsoft.com/blog/internals-of-app-service-certificate/) aanbieding.
@@ -119,7 +119,7 @@ Deze artikelen zijn over andere scenario's en services die gebruikmaken van of w
 
 - [Azure Disk Encryption](../security/fundamentals/encryption-overview.md) maakt gebruik van de industrie standaard [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) -functie van Windows en de [DM-cryptografie](https://en.wikipedia.org/wiki/Dm-crypt) functie van Linux om volume versleuteling voor het besturings systeem en de gegevens schijven te bieden. De oplossing is geïntegreerd met Azure Key Vault om u te helpen de schijf versleutelings sleutels en geheimen in uw sleutel kluis-abonnement te controleren en te beheren, terwijl u ervoor zorgt dat alle gegevens in de virtuele-machine schijven op rest worden versleuteld in uw Azure-opslag.
 - [Azure data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) biedt optie voor het versleutelen van gegevens die in het account zijn opgeslagen. Data Lake Store biedt sleutel beheer twee modi voor het beheren van uw Mek's (Master Encryption Keys), die vereist zijn voor het ontsleutelen van gegevens die zijn opgeslagen in de Data Lake Store. U kunt Data Lake Store de Mek's voor u laten beheren of ervoor kiezen om het eigendom van de Mek's te behouden met uw Azure Key Vault-account. U geeft de modus van sleutel beheer op tijdens het maken van een Data Lake Store-account.
-- Met [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) kunt u uw eigen Tenant sleutel beheren. In plaats van micro soft uw Tenant sleutel te laten beheren (standaard), kunt u bijvoorbeeld uw eigen Tenant sleutel beheren om te voldoen aan specifieke regels die van toepassing zijn op uw organisatie. Het beheren van uw eigen Tenant sleutel wordt ook wel uw eigen sleutel of BYOK.
+- Met [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) kunt u uw eigen Tenant sleutel beheren. In plaats van micro soft uw Tenant sleutel te laten beheren (standaard), kunt u bijvoorbeeld uw eigen Tenant sleutel beheren om te voldoen aan specifieke regels die van toepassing zijn op uw organisatie. Uw eigen tenantsleutel beheren wordt ook wel aangeduid als BYOK (Bring Your Own Key).
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault overzichten en concepten
 

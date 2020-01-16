@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 421604bcec5277d337b7e7f73a869f40fa73158a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: fb0a71a650a8c36d4da962adaf3f1f314c30d4c2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764964"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979996"
 ---
 # <a name="security-in-azure-database-for-mysql"></a>Beveiliging in Azure Database for MySQL
 
@@ -37,6 +37,8 @@ IP-firewall regels verlenen toegang tot servers op basis van het oorspronkelijke
 ### <a name="virtual-network-firewall-rules"></a>Firewallregels voor virtueel netwerk
 Met Service-eind punten van een virtueel netwerk breidt u de connectiviteit van uw virtuele netwerk uit via de Azure-backbone. Met regels voor virtuele netwerken kunt u uw Azure Database for MySQL-server in staat stellen verbindingen van geselecteerde subnetten in een virtueel netwerk toe te staan. Zie het overzicht van het [virtuele netwerk service-eind punt](concepts-data-access-and-security-vnet.md)voor meer informatie.
 
+### <a name="private-ip"></a>Privé IP-adres
+Met persoonlijke koppeling kunt u verbinding maken met uw Azure Database for MySQL in azure via een persoonlijk eind punt. Met Azure private link worden Azure-Services binnen uw persoonlijke Virtual Network (VNet) geplaatst. De PaaS-bronnen kunnen worden geopend met behulp van het privé-IP-adres, net zoals elke andere resource in het VNet. Zie voor meer informatie het [overzicht van persoonlijke koppelingen](concepts-data-access-security-private-link.md)
 
 ## <a name="access-management"></a>Toegangsbeheer
 

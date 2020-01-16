@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: e3d8ada67b0a592df9c2dba145626836f27da631
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 52fb7c770e9f9e2570cad92a8c0dd9bc4374e708
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459371"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980196"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Meer informatie over sjablonen voor virtuele-machine schaal sets
 [Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) zijn bijzonder handig om groepen gerelateerde resources te implementeren. In deze reeks zelf studies ziet u hoe u een basis sjabloon voor een schaalset maakt en hoe u deze sjabloon wijzigt in verschillende scenario's. Alle voor beelden zijn afkomstig uit deze [github-opslag plaats](https://github.com/gatneil/mvss).
@@ -75,7 +75,7 @@ Voor alle resources zijn `type`-, `name`-, `apiVersion`-en `location`-eigenschap
 ```
 
 ## <a name="specify-location"></a>Locatie opgeven
-Als u de locatie voor het virtuele netwerk wilt opgeven, gebruikt u een [Resource Manager-sjabloon functie](../azure-resource-manager/resource-group-template-functions.md). Deze functie moet tussen aanhalings tekens en vier Kante haakjes worden geplaatst, bijvoorbeeld: `"[<template-function>]"`. In dit geval gebruikt u de functie `resourceGroup`. Er worden geen argumenten gebruikt en er wordt een JSON-object geretourneerd met meta gegevens over de resource groep waarop deze implementatie wordt geïmplementeerd. De resource groep wordt ingesteld door de gebruiker op het moment van de implementatie. Deze waarde wordt vervolgens in dit JSON-object geïndexeerd met `.location` om de locatie op te halen uit het JSON-object.
+Als u de locatie voor het virtuele netwerk wilt opgeven, gebruikt u een [Resource Manager-sjabloon functie](../azure-resource-manager/templates/template-functions.md). Deze functie moet tussen aanhalings tekens en vier Kante haakjes worden geplaatst, bijvoorbeeld: `"[<template-function>]"`. In dit geval gebruikt u de functie `resourceGroup`. Er worden geen argumenten gebruikt en er wordt een JSON-object geretourneerd met meta gegevens over de resource groep waarop deze implementatie wordt geïmplementeerd. De resource groep wordt ingesteld door de gebruiker op het moment van de implementatie. Deze waarde wordt vervolgens in dit JSON-object geïndexeerd met `.location` om de locatie op te halen uit het JSON-object.
 
 ```json
        "location": "[resourceGroup().location]",

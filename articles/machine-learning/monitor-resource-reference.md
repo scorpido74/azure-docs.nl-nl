@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/06/2019
-ms.openlocfilehash: 8d2dccc1543512ead4b0ff6475ace20045bb1b8c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: bbc62aa153e6ecb5d9ae65c37392c2697b9beaa2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762770"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979709"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Naslag informatie voor Azure machine learning monitoring-gegevens
 
@@ -38,7 +38,7 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 | CustomerSubscriptionId | SubscriptionId waar experiment en job worden verzonden |
 | WorkspaceName | De naam van de machine learning-werk ruimte |
 | ClusterName | De naam van het cluster |
-| ProvisioningState | Status van het verzenden van taken |
+| provisioningState | Status van het verzenden van taken |
 | ResourceGroupName | Naam van de resource groep |
 | JobName | De naam van de taak |
 | ClusterId | ID van het cluster |
@@ -61,7 +61,7 @@ De volgende tabel geeft een lijst van de eigenschappen voor Azure Machine Learni
 | TimeGenerated | Tijdstip waarop de logboek vermelding is gegenereerd |
 | OperationName | De naam van de bewerking die is gekoppeld aan de logboek gebeurtenis |
 | Categorie | De naam van de logboek gebeurtenis, AmlComputeClusterNodeEvent |
-| ProvisioningState | De inrichtings status van het cluster |
+| provisioningState | De inrichtings status van het cluster |
 | ClusterName | De naam van het cluster |
 | ClusterType | Type van het cluster |
 | Type CreatedBy | Gebruiker die het cluster heeft gemaakt |
@@ -194,5 +194,5 @@ De geldige waarden voor de dimensie RunType zijn:
 
 ## <a name="see-also"></a>Zie ook
 
-- Zie [bewaking Azure machine learning](service/monitor-azure-machine-learning.md) voor een beschrijving van de bewakings Azure machine learning.
+- Zie [bewaking Azure machine learning](monitor-azure-machine-learning.md) voor een beschrijving van de bewakings Azure machine learning.
 - Zie [Azure-resources bewaken met Azure monitor](/azure/azure-monitor/insights/monitor-azure-resource) voor meer informatie over het bewaken van Azure-resources.

@@ -7,12 +7,12 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 12/20/2019
-ms.openlocfilehash: e3a8048d8bcb8bb737c511a8b8bb6b57f9e81403
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 55efdfe2bb1b37e566654b8041f2cf5ed411cc3f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750975"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977569"
 ---
 # <a name="collect-azure-activity-log-with-legacy-settings"></a>Azure-activiteiten logboek met oude instellingen verzamelen
 Het [Azure-activiteiten logboek](platform-logs-overview.md) is een [platform logboek](platform-logs-overview.md) dat inzicht biedt in gebeurtenissen op abonnements niveau die zich in azure hebben voorgedaan. Tot onlangs hebt u een logboek profiel gemaakt voor het verzenden van activiteiten logboek vermeldingen naar [een event hub of een opslag account](activity-log-export.md) en een connector gebruikt om ze te verzamelen in een [log Analytics-werk ruimte](activity-log-collect.md). In dit artikel wordt het verschil beschreven tussen de methoden, het werken met bestaande oude instellingen en het wissen van verouderde instellingen in de voor bereiding op Diagnostische instellingen.
@@ -28,7 +28,7 @@ Het gebruik van diagnostische instellingen heeft de volgende voor delen ten opzi
 - Filter verzameling om alleen logboeken voor bepaalde categorieën te verzamelen.
 - Verzamel alle activiteiten logboek categorieën. Sommige categorieën worden niet verzameld met een verouderde methode.
 - Snellere latentie voor opname van Logboeken. De vorige methode heeft ongeveer 15 minuten latentie terwijl Diagnostische instellingen meer dan 1 minuut toevoegen.
-  
+
 ### <a name="considerations"></a>Overwegingen
 Houd rekening met de volgende details van de verzameling activiteiten logboeken met Diagnostische instellingen voordat u deze functie inschakelt.
 
@@ -44,7 +44,7 @@ De volgende eigenschappen zijn verwijderd:
 - ActivityStatus
 - ActivitySubstatus
 - OperationName
-- ResourceProvider 
+- ResourceProvider
 
 De volgende eigenschappen zijn toegevoegd:
 
@@ -57,10 +57,10 @@ De oude instellingen voor het verzamelen van het activiteiten logboek blijven we
 
 1. Selecteer in het menu **Azure monitor** van de Azure Portal het **activiteiten logboek**.
 3. Klik op **Diagnostische instellingen**.
-   
+
    ![Diagnostische instellingen](media/diagnostic-settings-subscription/diagnostic-settings.png)
-   
-4. Klik op de banner paars voor de oude ervaring. 
+
+4. Klik op de banner paars voor de oude ervaring.
 
     ![Verouderde ervaring](media/diagnostic-settings-subscription/legacy-experience.png)
 
@@ -84,7 +84,7 @@ U moet de bestaande verzameling van de activiteit uitschakelen voordat u deze in
 ### <a name="disable-log-profile"></a>Logboek profiel uitschakelen
 
 1. Gebruik de procedure die wordt beschreven in [werken met oude instellingen](#work-with-legacy-settings) om oude instellingen te openen.
-2. Alle huidige verzamelingen uitschakelen voor opslag of event hubs. 
+2. Alle huidige verzamelingen uitschakelen voor opslag of event hubs.
 
 
 
@@ -93,5 +93,5 @@ De Azure Log Analytics-bewakings oplossing bevat meerdere logboek query's en-wee
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het activiteiten logboek](../../azure-resource-manager/resource-group-audit.md)
+* [Meer informatie over het activiteiten logboek](../../azure-resource-manager/management/view-activity-logs.md)
 * [Meer informatie over diagnostische instellingen](diagnostic-settings.md)

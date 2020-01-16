@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 12/03/2019
+ms.date: 01/14/2020
 ms.author: juliako
-ms.openlocfilehash: beb44c469aa8a03430cd5cb5a162966855aad448
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: c4c39dc53e492fd295cf30a7b7d75c933ebc912f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815395"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972627"
 ---
 # <a name="upload-and-index-your-videos"></a>Uw video's uploaden en indexeren  
 
@@ -40,6 +40,7 @@ Als uw video eenmaal is geüpload, wordt de video eventueel door Video Indexer g
 - De URL die is opgenomen in de `videoURL` para meter moet worden gecodeerd.
 - Het indexeren van Media Services assets heeft dezelfde beperking als het indexeren van een URL.
 - Video Indexer heeft een maximale duur limiet van vier uur voor één bestand.
+- U kunt Maxi maal 60 films per minuut uploaden.
 
 > [!Tip]
 > Het verdient aanbeveling om .NET Framework versie 4.6.2 of hoger te gebruiken omdat oudere versies van .NET Framework niet standaard gebruikmaken van TLS 1.2.
@@ -61,7 +62,7 @@ Een URL die wordt gebruikt om de klant (met een POST-aanvraag) op de hoogte te s
 - Statuswijziging indexering: 
     - Eigenschappen:    
     
-        |Naam|Beschrijving|
+        |Name|Beschrijving|
         |---|---|
         |id|De video-ID|
         |state|De videostatus|  
@@ -69,7 +70,7 @@ Een URL die wordt gebruikt om de klant (met een POST-aanvraag) op de hoogte te s
 - Personen geïdentificeerd in de video:
   - Eigenschappen
     
-      |Naam|Beschrijving|
+      |Name|Beschrijving|
       |---|---|
       |id| De video-ID|
       |faceId|De gezichts-id die wordt weergegeven in de video-index|
@@ -313,7 +314,7 @@ De statuscodes in de volgende tabel kunnen worden geretourneerd door de uploadbe
 
 |Statuscode|ErrorType (in hoofdtekst van antwoord)|Beschrijving|
 |---|---|---|
-|400|VIDEO_ALREADY_IN_PROGRESS|Dezelfde video wordt al verwerkt in het opgegeven account.|
+|409|VIDEO_INDEXING_IN_PROGRESS|Dezelfde video wordt al verwerkt in het opgegeven account.|
 |400|VIDEO_ALREADY_FAILED|Dezelfde video kon minder dan twee uur geleden niet worden verwerkt in het opgegeven account. API-clients moeten ten minste twee uur wachten voordat ze een video opnieuw uploaden.|
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -14,23 +14,23 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: 89f731062ce46969c73f745d62b289b3b3483d8c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ba6f1300353247ef2de99b2bd903bc82665d9a52
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100361"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978145"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>De AlwaysOn-beschikbaarheids groep configureren op een virtuele Azure-machine met Power shell
 > [!div class="op_single_selector"]
-> * [Klassieke GEBRUIKERS INTERFACE](../classic/portal-sql-alwayson-availability-groups.md)
-> * [Klassieke PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
+> * [Klassiek: UI](../classic/portal-sql-alwayson-availability-groups.md)
+> * [Klassiek: Power shell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
 Bedenk voordat u begint dat u deze taak nu kunt volt ooien in het Azure Resource Manager-model. We raden het Azure Resource Manager-model aan voor nieuwe implementaties. Zie SQL Server AlwaysOn- [beschikbaarheids groepen op virtuele machines van Azure](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
 
 > [!IMPORTANT]
-> Het is raadzaam om de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../../../azure-resource-manager/resource-manager-deployment-model.md). Dit artikel gaat over het gebruik van het klassieke implementatiemodel.
+> Het is raadzaam om de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en het klassieke model](../../../azure-resource-manager/management/deployment-models.md). Dit artikel gaat over het gebruik van het klassieke implementatiemodel.
 
 Azure virtual machines (Vm's) kunnen database beheerders helpen bij het verlagen van de kosten van een SQL Server systeem met hoge Beschik baarheid. In deze zelf studie leert u hoe u een beschikbaarheids groep implementeert met behulp van SQL Server altijd op end-to-end in een Azure-omgeving. Aan het einde van de zelf studie bestaan uw SQL Server always on solution in azure uit de volgende elementen:
 
@@ -45,7 +45,7 @@ Dit scenario is een goede keuze voor de eenvoud op Azure, niet voor de kosten ef
 Deze zelf studie is bedoeld om u te laten zien welke stappen u moet uitvoeren om de hierboven beschreven oplossing in te stellen, zonder dat u de details van elke stap hoeft op te lossen. Daarom kunt u in plaats van de GUI-configuratie stappen een Power shell-script gebruiken om snel door elke stap te gaan. In deze zelf studie wordt ervan uitgegaan dat het volgende:
 
 * U hebt al een Azure-account met het abonnement van de virtuele machine.
-* U hebt de [Azure PowerShell](/powershell/azure/overview)-cmdlets geïnstalleerd.
+* U hebt de [Azure PowerShell-cmdlets](/powershell/azure/overview)geïnstalleerd.
 * U hebt al een solide memorandum van AlwaysOn-beschikbaarheids groepen voor on-premises oplossingen. Zie AlwaysOn [Availability groups (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx)voor meer informatie.
 
 ## <a name="connect-to-your-azure-subscription-and-create-the-virtual-network"></a>Maak verbinding met uw Azure-abonnement en maak het virtuele netwerk
@@ -158,7 +158,7 @@ Deze zelf studie is bedoeld om u te laten zien welke stappen u moet uitvoeren om
    * **Add-AzureDataDisk** voegt de gegevens schijf toe die u gebruikt voor het opslaan van Active Directory gegevens, waarbij de optie cache is ingesteld op geen.
    * **New-AzureVM** maakt een nieuwe Cloud service en maakt de nieuwe virtuele machine van Azure in de nieuwe Cloud service.
 
-7. Wacht tot de nieuwe virtuele machine volledig is ingericht en down load het extern bureau blad-bestand naar uw werkmap. Omdat de nieuwe virtuele machine van Azure veel tijd in beslag neemt `while` , blijft de lus de nieuwe VM pollen tot deze klaar is voor gebruik.
+7. Wacht tot de nieuwe virtuele machine volledig is ingericht en down load het extern bureau blad-bestand naar uw werkmap. Omdat de nieuwe virtuele machine van Azure veel tijd in beslag neemt, wordt de nieuwe VM door de `while` lus gecontroleerd totdat deze klaar is voor gebruik.
 
         $VMStatus = Get-AzureVM -ServiceName $dcServiceName -Name $dcServerName
 
@@ -238,7 +238,7 @@ De domein controller Server is nu ingericht. Vervolgens configureert u het domei
         $acl.AddAccessRule($ace1)
         Set-Acl -Path "DC=corp,DC=contoso,DC=com" -AclObject $acl
 
-    De hierboven opgegeven GUID is de GUID voor het type computer object. Het **CORP\Install** -account heeft de machtiging **alle eigenschappen lezen** en **computer objecten maken** nodig om de Active direct-objecten voor het failovercluster te maken. De machtiging **alle eigenschappen lezen** wordt standaard al aan CORP\Install gegeven, dus u hoeft deze niet expliciet toe te kennen. Zie [stapsgewijze hand leiding voor failover-clusters voor meer informatie over de machtigingen die nodig zijn voor het maken van het failovercluster: Accounts configureren in Active Directory](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx).
+    De hierboven opgegeven GUID is de GUID voor het type computer object. Het **CORP\Install** -account heeft de machtiging **alle eigenschappen lezen** en **computer objecten maken** nodig om de Active direct-objecten voor het failovercluster te maken. De machtiging **alle eigenschappen lezen** wordt standaard al aan CORP\Install gegeven, dus u hoeft deze niet expliciet toe te kennen. Zie [Stapsgewijze hand leiding voor failover-clusters](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx)voor meer informatie over de machtigingen die nodig zijn voor het maken van het failovercluster: accounts configureren in Active Directory.
 
     Nu u klaar bent met het configureren van Active Directory en de gebruikers objecten, maakt u twee SQL Server Vm's en voegt u deze toe aan dit domein.
 
@@ -354,7 +354,7 @@ De domein controller Server is nu ingericht. Vervolgens configureert u het domei
    * **Set-AzureSubnet** plaatst de virtuele machine in het back-subnet.
    * **Add-AzureEndpoint** voegt toegangs eindpunten toe zodat client toepassingen toegang hebben tot deze SQL Server services-instanties op internet. Er worden verschillende poorten gegeven aan ContosoSQL1 en ContosoSQL2.
    * **New-AzureVM** maakt de nieuwe SQL Server virtuele machine in dezelfde Cloud service als ContosoQuorum. U moet de virtuele machines in dezelfde Cloud service plaatsen als u wilt dat ze zich in dezelfde beschikbaarheidsset bevinden.
-4. Wacht totdat elke virtuele machine volledig is ingericht en voor elke virtuele machine het externe bureau blad-bestand naar uw werkmap downloadt. De `for` lus doorloopt de drie nieuwe virtuele machines en voert de opdrachten binnen de accolades van het hoogste niveau voor elk van deze cycli uit.
+4. Wacht totdat elke virtuele machine volledig is ingericht en voor elke virtuele machine het externe bureau blad-bestand naar uw werkmap downloadt. De `for` lus doorloopt de drie nieuwe Vm's en voert de opdrachten binnen de accolades op het hoogste niveau voor elk van de virtuele machines uit.
 
         Foreach ($VM in $VMs = Get-AzureVM -ServiceName $sqlServiceName)
         {
@@ -379,15 +379,15 @@ De domein controller Server is nu ingericht. Vervolgens configureert u het domei
 ## <a name="initialize-the-failover-cluster-vms"></a>Virtuele failover-cluster-Vm's initialiseren
 In deze sectie moet u de drie servers wijzigen die u gaat gebruiken in het failovercluster en de SQL Server-installatie. Specifiek:
 
-* Alle servers: U moet het onderdeel **failover clustering** installeren.
-* Alle servers: U moet **CORP\Install** toevoegen als machine **beheerder**.
-* Alleen ContosoSQL1 en ContosoSQL2: U moet **CORP\Install** toevoegen als **sysadmin** -rol in de standaard database.
-* Alleen ContosoSQL1 en ContosoSQL2: U moet **NT AUTHORITY\SYSTEM** toevoegen als aanmelding met de volgende machtigingen:
+* Alle servers: u moet het onderdeel **failover clustering** installeren.
+* Alle servers: u moet **CORP\Install** toevoegen als machine **beheerder**.
+* Alleen ContosoSQL1 en ContosoSQL2: u moet **CORP\Install** toevoegen als **sysadmin** -rol in de standaard database.
+* Alleen ContosoSQL1 en ContosoSQL2: u moet **NT AUTHORITY\SYSTEM** toevoegen als aanmelding met de volgende machtigingen:
 
   * Elke beschikbaarheids groep wijzigen
   * Verbinding maken met SQL
   * Server status weer geven
-* Alleen ContosoSQL1 en ContosoSQL2: Het **TCP** -protocol is al ingeschakeld op de SQL Server VM. U moet echter wel de firewall openen voor externe toegang van SQL Server.
+* Alleen ContosoSQL1 en ContosoSQL2: het **TCP** -protocol is al ingeschakeld op de SQL Server VM. U moet echter wel de firewall openen voor externe toegang van SQL Server.
 
 U bent nu klaar om te beginnen. Volg de onderstaande stappen vanaf **ContosoQuorum**:
 

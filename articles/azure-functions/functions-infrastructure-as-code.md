@@ -4,12 +4,12 @@ description: Meer informatie over het bouwen van een Azure Resource Manager sjab
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 6d5b7b33bfb2645128a545bb371c70188a724c40
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 650997cfddc71a8bfe347e29c8992b78d1828034
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920625"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978792"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>De implementatie van resources voor uw functie-app in Azure Functions automatiseren
 
@@ -372,7 +372,7 @@ Voor een functie-app voor een Premium-abonnement moet de eigenschap `serverFarmI
 ```
 
 
-<a name="app-service-plan"></a> 
+<a name="app-service-plan"></a>
 
 ## <a name="deploy-on-app-service-plan"></a>Implementeren op App Service plan
 
@@ -419,7 +419,7 @@ Als u uw app op Linux wilt uitvoeren, moet u de `kind` ook instellen op `Linux`:
 }
 ```
 
-### <a name="create-a-function-app"></a>Een functie-app maken 
+### <a name="create-a-function-app"></a>Een functie-app maken
 
 De eigenschap `serverFarmId` van een functie-app voor een App Service plan moet zijn ingesteld op de resource-ID van het abonnement dat u eerder hebt gemaakt.
 
@@ -637,10 +637,10 @@ Een functie-app heeft veel onderliggende resources die u kunt gebruiken in uw im
 
 U kunt een van de volgende manieren gebruiken om uw sjabloon te implementeren:
 
-* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
-* [Azure-CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)
-* [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
-* [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
+* [Azure-CLI](../azure-resource-manager/templates/deploy-cli.md)
+* [Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
+* [REST API](../azure-resource-manager/templates/deploy-rest.md)
 
 ### <a name="deploy-to-azure-button"></a>Knop implementeren naar Azure
 

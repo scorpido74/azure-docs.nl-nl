@@ -3,12 +3,12 @@ title: Programmatisch beleid maken
 description: Dit artikel helpt u bij het programmatisch maken en beheren van beleids regels voor Azure Policy met Azure CLI, Azure PowerShell en REST API.
 ms.date: 01/31/2019
 ms.topic: how-to
-ms.openlocfilehash: e81f0ca43788d8f36dde0a58d2ecd4b1604fd77e
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 08ed43a464d1dd7de8220428dbc1c61ce9fc3ad6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873060"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982472"
 ---
 # <a name="programmatically-create-policies"></a>Programmatisch beleid maken
 
@@ -30,7 +30,7 @@ Voordat u begint, zorg ervoor dat de volgende vereisten wordt voldaan:
    Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
    ```
 
-   Zie [Resourceproviders en -typen](../../../azure-resource-manager/resource-manager-supported-services.md) voor meer informatie over het registreren en weergeven van resourceproviders.
+   Zie [Resourceproviders en -typen](../../../azure-resource-manager/management/resource-providers-and-types.md) voor meer informatie over het registreren en weergeven van resourceproviders.
 
 1. Als u niet hebt gedaan, installeert u Azure CLI. Krijgt u de nieuwste versie [Azure CLI installeren op Windows](/cli/azure/install-azure-cli-windows).
 

@@ -1,20 +1,20 @@
 ---
-title: Service Fabric-geheimenopslag
-description: In dit artikel wordt beschreven hoe u Service Fabric geheimen-archief gebruikt.
+title: Archief met Azure Service Fabric Central-geheimen
+description: In dit artikel wordt beschreven hoe u het archief centrale geheimen kunt gebruiken in azure Service Fabric.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: 16608d9eaf12fc9abc535ef316d7b5e8b74a8b37
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bc6ea6260bf50d5b4f8e294e0a3827426f90bee3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457505"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980941"
 ---
-#  <a name="service-fabric-secrets-store"></a>Service Fabric-geheimenopslag
-In dit artikel wordt beschreven hoe u geheimen maakt en gebruikt in Service Fabric-toepassingen met behulp van Service Fabric geheimen-archief (CSS). CSS is een lokale archief cache, die wordt gebruikt om gevoelige gegevens te bewaren, zoals een wacht woord, tokens en sleutels die in het geheugen zijn versleuteld.
+# <a name="central-secrets-store-in-azure-service-fabric"></a>Archief met centrale geheimen in azure Service Fabric 
+In dit artikel wordt beschreven hoe u centraal geheimen (CSS) in azure Service Fabric kunt gebruiken om geheimen te maken in Service Fabric toepassingen. CSS is een lokale archief cache voor het opslaan van gevoelige gegevens, zoals een wacht woord, tokens en sleutels, versleuteld in het geheugen.
 
-## <a name="enabling-secrets-store"></a>Archief met geheimen inschakelen
- Voeg het onderstaande toe aan uw cluster configuratie onder `fabricSettings` om CSS in te scha kelen. Het is raadzaam om een ander certificaat dan het cluster certificaat voor CSS te gebruiken. Zorg ervoor dat het versleutelings certificaat is geïnstalleerd op alle knoop punten en dat `NetworkService` Lees machtigingen hebt voor de persoonlijke sleutel van het certificaat.
+## <a name="enable-central-secrets-store"></a>Archief met centrale geheimen inschakelen
+Voeg het volgende script toe aan de cluster configuratie onder `fabricSettings` om CSS in te scha kelen. Het is raadzaam om een ander certificaat dan een cluster certificaat voor CSS te gebruiken. Zorg ervoor dat het versleutelings certificaat is geïnstalleerd op alle knoop punten en dat `NetworkService` Lees machtigingen heeft voor de persoonlijke sleutel van het certificaat.
   ```json
     "fabricSettings": 
     [
@@ -46,10 +46,14 @@ In dit artikel wordt beschreven hoe u geheimen maakt en gebruikt in Service Fabr
         ...
      ]
 ```
-## <a name="declare-secret-resource"></a>Geheime resource declareren
-U kunt een geheime bron maken met behulp van de Resource Manager-sjabloon of met behulp van de REST API.
+## <a name="declare-a-secret-resource"></a>Een geheime resource declareren
+U kunt een geheime bron maken met behulp van de Azure Resource Manager sjabloon of de REST API.
 
-* Een Resource Manager-sjabloon gebruiken
+### <a name="use-resource-manager"></a>Resource Manager gebruiken
+
+Gebruik de volgende sjabloon om Resource Manager te gebruiken om de geheime resource te maken. De sjabloon maakt een `supersecret` geheime resource, maar er is nog geen waarde ingesteld voor de geheime resource.
+
+
 ```json
    "resources": [
       {
@@ -66,20 +70,20 @@ U kunt een geheime bron maken met behulp van de Resource Manager-sjabloon of met
         }
       ]
 ```
-De bovenstaande sjabloon maakt `supersecret` geheime resource, maar er is nog geen waarde ingesteld voor de geheime resource.
 
-* Met behulp van de REST API
+### <a name="use-the-rest-api"></a>REST-API gebruiken
 
-Als u een geheime resource wilt maken, `supersecret` maakt u een PUT-aanvraag naar `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`. U hebt het cluster certificaat of het client certificaat van de beheerder nodig voor het maken van een geheim.
+Als u een `supersecret` geheime resource wilt maken met behulp van de REST API, maakt u een PUT-aanvraag `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`. U hebt het cluster certificaat of het client certificaat van de beheerder nodig voor het maken van een geheime resource.
 
 ```powershell
 Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint>
 ```
 
-## <a name="set-secret-value"></a>Geheime waarde instellen
-* Een Resource Manager-sjabloon gebruiken
+## <a name="set-the-secret-value"></a>De geheime waarde instellen
 
-De onderstaande Resource Manager-sjabloon maakt en stelt een waarde in voor geheime `supersecret` met versie `ver1`.
+### <a name="use-the-resource-manager-template"></a>De Resource Manager-sjabloon gebruiken
+
+Gebruik de volgende Resource Manager-sjabloon om de geheime waarde te maken en in te stellen. Met deze sjabloon wordt de geheime waarde voor de `supersecret` geheime resource ingesteld als versie `ver1`.
 ```json
   {
   "parameters": {
@@ -117,67 +121,68 @@ De onderstaande Resource Manager-sjabloon maakt en stelt een waarde in voor gehe
     }
   ],
   ```
-* Met behulp van de REST API
+### <a name="use-the-rest-api"></a>REST-API gebruiken
 
+Gebruik het volgende script om de REST API te gebruiken om de geheime waarde in te stellen.
 ```powershell
 $Params = @{"properties": {"value": "mysecretpassword"}}
 Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret/values/ver1?api-version=6.4-preview -Method PUT -Body $Params -CertificateThumbprint <ClusterCertThumbprint>
 ```
-## <a name="using-the-secret-in-your-application"></a>Het geheim in uw toepassing gebruiken
+## <a name="use-the-secret-in-your-application"></a>Het geheim gebruiken in uw toepassing
 
-1.  Voeg een sectie toe aan het bestand settings. XML met de onderstaande inhoud. Opmerking Hier ziet u de indeling {`secretname:version`}
+Volg deze stappen om het geheim in uw Service Fabric-toepassing te gebruiken.
 
-```xml
-  <Section Name="testsecrets">
-   <Parameter Name="TopSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/
-  </Section>
-```
-2. Importeer nu de sectie in ApplicationManifest. XML
-```xml
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-    <Policies>
-      <ConfigPackagePolicies CodePackageRef="Code">
-        <ConfigPackage Name="Config" SectionName="testsecrets" EnvironmentVariableName="SecretPath" />
-        </ConfigPackagePolicies>
-    </Policies>
-  </ServiceManifestImport>
-```
+1. Voeg een sectie toe aan het bestand **Settings. XML** met het volgende code fragment. Hier ziet u dat de waarde de notatie {`secretname:version`} heeft.
 
-De omgevings variabele ' SecretPath ' verwijst naar de map waarin alle geheimen zijn opgeslagen. Elke para meter die wordt vermeld onder sectie `testsecrets` wordt opgeslagen in een afzonderlijk bestand. De toepassing kan nu het geheim gebruiken, zoals hieronder wordt weer gegeven
-```C#
-secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
-```
-3. Geheimen koppelen aan een container
+   ```xml
+     <Section Name="testsecrets">
+      <Parameter Name="TopSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/
+     </Section>
+   ```
 
-Alleen wijzigingen die vereist zijn om de geheimen beschikbaar te maken binnen de container is het opgeven van een koppel punt in `<ConfigPackage>`.
-Dit is de gewijzigde ApplicationManifest. XML  
+1. Importeer de sectie in **ApplicationManifest. XML**.
+   ```xml
+     <ServiceManifestImport>
+       <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
+       <ConfigOverrides />
+       <Policies>
+         <ConfigPackagePolicies CodePackageRef="Code">
+           <ConfigPackage Name="Config" SectionName="testsecrets" EnvironmentVariableName="SecretPath" />
+           </ConfigPackagePolicies>
+       </Policies>
+     </ServiceManifestImport>
+   ```
 
-```xml
-<ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-    <Policies>
-      <ConfigPackagePolicies CodePackageRef="Code">
-        <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="C:\secrets" EnvironmentVariableName="SecretPath" />
-        <!-- Linux Container
-         <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="/mnt/secrets" EnvironmentVariableName="SecretPath" />
-        -->
-      </ConfigPackagePolicies>
-    </Policies>
-  </ServiceManifestImport>
-```
-Geheimen zijn beschikbaar onder het koppel punt in uw container.
+   De omgevings variabele `SecretPath` verwijst naar de map waarin alle geheimen zijn opgeslagen. Elke para meter die wordt vermeld in de sectie `testsecrets`, wordt opgeslagen in een afzonderlijk bestand. De toepassing kan het geheim nu als volgt gebruiken:
+   ```C#
+   secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
+   ```
+1. De geheimen koppelen aan een container. De enige wijziging die nodig is om de geheimen beschikbaar te maken binnen de container is het `specify` van een koppel punt in `<ConfigPackage>`.
+Het volgende code fragment is de gewijzigde **ApplicationManifest. XML**.  
 
-4. Geheim binden aan een omgevings variabele 
+   ```xml
+   <ServiceManifestImport>
+       <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
+       <ConfigOverrides />
+       <Policies>
+         <ConfigPackagePolicies CodePackageRef="Code">
+           <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="C:\secrets" EnvironmentVariableName="SecretPath" />
+           <!-- Linux Container
+            <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="/mnt/secrets" EnvironmentVariableName="SecretPath" />
+           -->
+         </ConfigPackagePolicies>
+       </Policies>
+     </ServiceManifestImport>
+   ```
+   Geheimen zijn beschikbaar onder het koppel punt in uw container.
 
-U kunt geheim binden aan een proces omgevings variabele door type = ' SecretsStoreRef ' op te geven. Hier volgt een voor beeld van het binden van `supersecret` versie `ver1` aan omgevings variabele `MySuperSecret` in ServiceManifest. XML.
+1. U kunt een geheim binden aan een proces omgevings variabele door `Type='SecretsStoreRef`op te geven. Het volgende code fragment is een voor beeld van het koppelen van de `supersecret` versie `ver1` aan de omgevings variabele `MySuperSecret` in **ServiceManifest. XML**.
 
-```xml
-<EnvironmentVariables>
-  <EnvironmentVariable Name="MySuperSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/>
-</EnvironmentVariables>
-```
+   ```xml
+   <EnvironmentVariables>
+     <EnvironmentVariable Name="MySuperSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/>
+   </EnvironmentVariables>
+   ```
+
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over de [beveiliging van toepassingen en services](service-fabric-application-and-service-security.md)
+Meer informatie over de [beveiliging van toepassingen en services](service-fabric-application-and-service-security.md).

@@ -15,12 +15,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 076d6fc387aaee85a1cd407fa48e7347ff185ef4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b7a8f7136d0899ab3afe04bce2d25bc2e7f8d3e2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038866"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981717"
 ---
 # <a name="pricing-guidance-for-azure-sql-server-vms"></a>Prijs informatie voor Azure SQL Server Vm's
 
@@ -54,7 +54,7 @@ Zie de volgende koppelingen voor het maken van een SQL Server 2017 Azure VM met 
 
 Als u een niet-lichte productie werk belasting hebt, gebruikt u een van de volgende SQL Server-edities:
 
-| SQL Server-editie | Workload |
+| SQL Server-editie | Werkbelasting |
 |-----|-----|
 | Web | Kleine websites |
 | Standard | Kleine tot middel grote werk belastingen |
@@ -139,10 +139,10 @@ De licentie kosten van SQL Server zijn direct gerelateerd aan het aantal Vcpu's.
 
 Er zijn nieuwe machine grootten die geschikt zijn voor bepaalde soorten SQL Server werk belastingen. Deze computer grootten zorgen voor grote hoeveel heden geheugen, opslag ruimte en I/O-band breedte, maar ze hebben een lager gevirtualiseerde aantal gevirtualiseerd. Bekijk bijvoorbeeld het volgende voor beeld:
 
-| VM-grootte | Vcpu's | Geheugen | Maximum aantal schijven | Maximale I/O-door Voer | SQL-licentie kosten | Totale kosten (Compute + licentie verlening) |
+| VM-grootte | vCPUs | Geheugen | Maximum aantal schijven | Maximale I/O-door Voer | SQL-licentie kosten | Totale kosten (Compute + licentie verlening) |
 |---|---|---|---|---|---|---|
-| **Standard_DS14v2** | 16 | 112 GB | 32 | 51.200 IOPS of 768 MB/s | | |
-| **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51.200 IOPS of 768 MB/s | 75% lager | 57% lager |
+| **Standard_DS14v2** | 16 | 112 GB | 32 | 51.200 IOP's of 768 MB/s | | |
+| **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51.200 IOP's of 768 MB/s | 75% lager | 57% lager |
 
 > [!IMPORTANT]
 > Dit is een voor beeld van een bepaald tijd punt. Raadpleeg het artikel over de computer grootte en de Azure-pagina met prijzen voor [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) en [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)voor de meest recente specificaties.
@@ -166,7 +166,7 @@ Voor andere werk stromen kunt u overwegen om Azure-Vm's automatisch af te sluite
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de prijzen van Azure [onverwachte kosten voor komen bij facturering en kosten beheer van Azure](../../../billing/billing-getting-started.md). Voor de nieuwste Virtual Machines prijzen, waaronder SQL Server, raadpleegt u de Azure VM Azure-pagina met prijzen voor virtuele [Windows-machines](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) en [Linux-vm's](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+Zie voor meer informatie over de prijzen van Azure [onverwachte kosten voor komen bij facturering en kosten beheer van Azure](../../../cost-management-billing/manage/getting-started.md). Voor de nieuwste Virtual Machines prijzen, waaronder SQL Server, raadpleegt u de Azure VM Azure-pagina met prijzen voor virtuele [Windows-machines](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) en [Linux-vm's](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 Raadpleeg de volgende artikelen voor een overzicht van SQL Server die worden uitgevoerd op Azure Virtual Machines:
 

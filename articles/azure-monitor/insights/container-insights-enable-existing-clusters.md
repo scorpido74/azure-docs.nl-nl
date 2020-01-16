@@ -3,12 +3,12 @@ title: Een AKS-cluster (Azure Kubernetes service) bewaken dat is geïmplementeer
 description: Meer informatie over het inschakelen van bewaking van een Azure Kubernetes service-cluster (AKS) met Azure Monitor voor containers die al zijn geïmplementeerd in uw abonnement.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: eced371f7d44b486d671c2c22ca9fbb4c0b65fbb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 57d492778828254da7a6899641ab9dbd19a40154
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405493"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977797"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Bewaking van het cluster van Azure Kubernetes service (AKS) inschakelen dat al is geïmplementeerd
 
@@ -18,12 +18,12 @@ U kunt de bewaking van een AKS-cluster inschakelen dat al is geïmplementeerd me
 
 * Azure-CLI
 * Terraform
-* [Vanuit Azure monitor](#enable-from-azure-monitor-in-the-portal) of [rechtstreeks vanuit het AKS-cluster](#enable-directly-from-aks-cluster-in-the-portal) in de Azure Portal 
-* Met de [meegeleverde Azure Resource Manager sjabloon](#enable-using-an-azure-resource-manager-template) met behulp van de Azure PowerShell-cmdlet `New-AzResourceGroupDeployment` of met Azure cli. 
+* [Vanuit Azure monitor](#enable-from-azure-monitor-in-the-portal) of [rechtstreeks vanuit het AKS-cluster](#enable-directly-from-aks-cluster-in-the-portal) in de Azure Portal
+* Met de [meegeleverde Azure Resource Manager sjabloon](#enable-using-an-azure-resource-manager-template) met behulp van de Azure PowerShell-cmdlet `New-AzResourceGroupDeployment` of met Azure cli.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com). 
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-using-azure-cli"></a>Inschakelen met behulp van Azure CLI
 
@@ -65,14 +65,14 @@ Als u liever met een bestaande werk ruimte zou integreren, voert u de volgende s
     az account set -s <subscriptionId of the workspace>
     ```
 
-3. In het volgende voor beeld wordt de lijst met werk ruimten in uw abonnementen weer gegeven in de standaard JSON-indeling. 
+3. In het volgende voor beeld wordt de lijst met werk ruimten in uw abonnementen weer gegeven in de standaard JSON-indeling.
 
     ```
     az resource list --resource-type Microsoft.OperationalInsights/workspaces -o json
     ```
 
     Zoek in de uitvoer de naam van de werk ruimte en kopieer de volledige Resource-ID van die Log Analytics werk ruimte onder de veld **-id**.
- 
+
 4. Voer de volgende opdracht uit om de invoeg toepassing bewaking in te scha kelen, waarbij u de waarde voor de para meter `--workspace-resource-id` vervangt. De teken reeks waarde moet binnen de dubbele aanhalings tekens staan:
 
     ```azurecli
@@ -100,11 +100,11 @@ Als u liever met een bestaande werk ruimte zou integreren, voert u de volgende s
 
 2. Voeg de [azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html) de stappen in de documentatie van Terraform te volgen.
 
-## <a name="enable-from-azure-monitor-in-the-portal"></a>Inschakelen van Azure Monitor in de portal 
+## <a name="enable-from-azure-monitor-in-the-portal"></a>Inschakelen van Azure Monitor in de portal
 
 Als u wilt inschakelen voor bewaking van uw AKS-cluster in Azure portal van Azure Monitor, het volgende doen:
 
-1. Selecteer in de Azure portal, **Monitor**. 
+1. Selecteer in de Azure portal, **Monitor**.
 
 2. Selecteer **Containers** in de lijst.
 
@@ -113,22 +113,22 @@ Als u wilt inschakelen voor bewaking van uw AKS-cluster in Azure portal van Azur
 4. In de lijst met clusters niet-bewaakt, de container niet vinden in de lijst en klik op **inschakelen**.   
 
 5. Op de **Onboarding naar Azure Monitor voor containers** pagina, hebt u een bestaande Log Analytics-werkruimte in hetzelfde abonnement bevinden als het cluster, selecteert u deze in de vervolgkeuzelijst.  
-    De lijst worden er de standaardwerkruimte en de locatie die het AKS-container is geïmplementeerd op in het abonnement. 
+    De lijst worden er de standaardwerkruimte en de locatie die het AKS-container is geïmplementeerd op in het abonnement.
 
     ![AKS-Container inzichten, bewaking inschakelen](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Als u maken van een nieuwe werkruimte voor logboekanalyse wilt voor het opslaan van de gegevens uit het cluster, volg de instructies in [een Log Analytics-werkruimte maken](../../azure-monitor/learn/quick-create-workspace.md). Zorg ervoor dat de werkruimte maakt in hetzelfde abonnement dat voor de AKS-container is geïmplementeerd. 
- 
-Wanneer u bewaking inschakelt, is het duurt ongeveer 15 minuten voordat u de gezondheid van metrische gegevens voor het cluster kunt weergeven. 
+    >Als u maken van een nieuwe werkruimte voor logboekanalyse wilt voor het opslaan van de gegevens uit het cluster, volg de instructies in [een Log Analytics-werkruimte maken](../../azure-monitor/learn/quick-create-workspace.md). Zorg ervoor dat de werkruimte maakt in hetzelfde abonnement dat voor de AKS-container is geïmplementeerd.
+
+Wanneer u bewaking inschakelt, is het duurt ongeveer 15 minuten voordat u de gezondheid van metrische gegevens voor het cluster kunt weergeven.
 
 ## <a name="enable-directly-from-aks-cluster-in-the-portal"></a>Rechtstreeks inschakelen vanuit het AKS-cluster in de portal
 
 Ga als volgt te werk om bewaking rechtstreeks vanuit een van uw AKS-clusters in de Azure Portal in te scha kelen:
 
-1. Selecteer in de Azure-portal de optie **Alle services**. 
+1. Selecteer in de Azure-portal de optie **Alle services**.
 
-2. Begin met typen in de lijst met resources **Containers**.  De lijst gefilterd op basis van uw invoer. 
+2. Begin met typen in de lijst met resources **Containers**.  De lijst gefilterd op basis van uw invoer.
 
 3. Selecteer **Kubernetes-services**.  
 
@@ -139,20 +139,20 @@ Ga als volgt te werk om bewaking rechtstreeks vanuit een van uw AKS-clusters in 
 5. Selecteer op de overzichtspagina van container **Containers bewaken**.  
 
 6. Op de **Onboarding naar Azure Monitor voor containers** pagina, hebt u een bestaande Log Analytics-werkruimte in hetzelfde abonnement bevinden als het cluster, selecteert u deze in de vervolgkeuzelijst.  
-    De lijst worden er de standaardwerkruimte en de locatie die het AKS-container is geïmplementeerd op in het abonnement. 
+    De lijst worden er de standaardwerkruimte en de locatie die het AKS-container is geïmplementeerd op in het abonnement.
 
     ![Statuscontrole van AKS container inschakelen](./media/container-insights-onboard/kubernetes-onboard-brownfield-02.png)
 
     >[!NOTE]
-    >Als u maken van een nieuwe werkruimte voor logboekanalyse wilt voor het opslaan van de gegevens uit het cluster, volg de instructies in [een Log Analytics-werkruimte maken](../../azure-monitor/learn/quick-create-workspace.md). Zorg ervoor dat de werkruimte maakt in hetzelfde abonnement dat voor de AKS-container is geïmplementeerd. 
- 
-Wanneer u bewaking inschakelt, is het duurt ongeveer 15 minuten voordat u de operationele gegevens voor het cluster kunt weergeven. 
+    >Als u maken van een nieuwe werkruimte voor logboekanalyse wilt voor het opslaan van de gegevens uit het cluster, volg de instructies in [een Log Analytics-werkruimte maken](../../azure-monitor/learn/quick-create-workspace.md). Zorg ervoor dat de werkruimte maakt in hetzelfde abonnement dat voor de AKS-container is geïmplementeerd.
+
+Wanneer u bewaking inschakelt, is het duurt ongeveer 15 minuten voordat u de operationele gegevens voor het cluster kunt weergeven.
 
 ## <a name="enable-using-an-azure-resource-manager-template"></a>Inschakelen met behulp van een Azure Resource Manager sjabloon
 
 Deze methode omvat twee JSON-sjablonen. Een sjabloon Hiermee geeft u de configuratie voor bewaking en de andere bevat parameterwaarden die u configureert voor het volgende opgeven:
 
-* De AKS container resource-ID. 
+* De AKS container resource-ID.
 * De resourcegroep die in het cluster is geïmplementeerd.
 
 >[!NOTE]
@@ -163,11 +163,11 @@ De Log Analytics-werk ruimte moet worden gemaakt voordat u bewaking met behulp v
 
 Als u niet bekend met het concept bent van het implementeren van resources met behulp van een sjabloon, Zie:
 
-* [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)
+* [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md)
 
-* [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voor het identificeren van uw versie uitvoeren `az --version`. Als u wilt installeren of upgraden van de Azure CLI, Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli). 
+Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lokaal gebruikt. U moet de Azure CLI-versie 2.0.59 of hoger uitvoeren. Voor het identificeren van uw versie uitvoeren `az --version`. Als u wilt installeren of upgraden van de Azure CLI, Zie [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="create-and-execute-a-template"></a>Maken en uitvoeren van een sjabloon
 
@@ -256,20 +256,20 @@ Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lo
     }
     ```
 
-4. Bewerk de waarden voor **aksResourceId** en **aksResourceLocation** met behulp van de waarden op de **overzichts** pagina van AKS voor het AKS-cluster. De waarde voor **workspaceResourceId** is de volledige resource-ID van uw Log Analytics-werkruimte, waaronder de naam van de werkruimte. 
+4. Bewerk de waarden voor **aksResourceId** en **aksResourceLocation** met behulp van de waarden op de **overzichts** pagina van AKS voor het AKS-cluster. De waarde voor **workspaceResourceId** is de volledige resource-ID van uw Log Analytics-werkruimte, waaronder de naam van de werkruimte.
 
     Bewerk de waarden voor **aksResourceTagValues** zodat deze overeenkomen met de bestaande label waarden die zijn opgegeven voor het AKS-cluster.
 
 5. Sla dit bestand als **existingClusterParam.json** naar een lokale map.
 
-6. U kunt deze sjabloon nu implementeren. 
+6. U kunt deze sjabloon nu implementeren.
 
    * Als u wilt implementeren met Azure PowerShell, gebruikt u de volgende opdrachten in de map met de sjabloon:
 
        ```powershell
        New-AzResourceGroupDeployment -Name OnboardCluster -ResourceGroupName <ResourceGroupName> -TemplateFile .\existingClusterOnboarding.json -TemplateParameterFile .\existingClusterParam.json
        ```
-       
+
        Wijzigen van de configuratie kan een paar minuten duren. Wanneer deze voltooid, wordt er een bericht weergegeven dat vergelijkbaar is met het volgende en het resultaat bevat:
 
        ```powershell
@@ -277,7 +277,7 @@ Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lo
        ```
 
    * Als u wilt implementeren met Azure CLI, voert u de volgende opdrachten uit:
-    
+
        ```azurecli
        az login
        az account set --subscription "Subscription Name"
@@ -289,8 +289,8 @@ Als u ervoor de Azure CLI gebruiken kiest, moet u eerst installeren en de CLI lo
        ```azurecli
        provisioningState       : Succeeded
        ```
-     
-       Wanneer u bewaking inschakelt, is het duurt ongeveer 15 minuten voordat u de gezondheid van metrische gegevens voor het cluster kunt weergeven. 
+
+       Wanneer u bewaking inschakelt, is het duurt ongeveer 15 minuten voordat u de gezondheid van metrische gegevens voor het cluster kunt weergeven.
 
 ## <a name="verify-agent-and-solution-deployment"></a>Controleer of de implementatie van agent en de oplossing
 
@@ -298,7 +298,7 @@ Met de versie van agent *06072018* of hoger, kunt u controleren dat zowel de age
 
 ### <a name="agent-version-06072018-or-later"></a>Agentversie 06072018 of hoger
 
-Voer de volgende opdracht om te controleren dat de agent is geïmplementeerd. 
+Voer de volgende opdracht om te controleren dat de agent is geïmplementeerd.
 
 ```
 kubectl get ds omsagent --namespace=kube-system
@@ -307,7 +307,7 @@ kubectl get ds omsagent --namespace=kube-system
 De uitvoer moet eruitzien zoals in het volgende, waarmee wordt aangegeven dat deze correct is geïmplementeerd:
 
 ```
-User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
+User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
@@ -321,7 +321,7 @@ kubectl get deployment omsagent-rs -n=kube-system
 De uitvoer moet eruitzien zoals in het volgende, waarmee wordt aangegeven dat deze correct is geïmplementeerd:
 
 ```
-User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system 
+User@aksuser:~$ kubectl get deployment omsagent-rs -n=kube-system
 NAME       DESIRED   CURRENT   UP-TO-DATE   AVAILABLE    AGE
 omsagent   1         1         1            1            3h
 ```
@@ -337,7 +337,7 @@ kubectl get ds omsagent --namespace=kube-system
 De uitvoer moet eruitzien zoals in het volgende, waarmee wordt aangegeven dat deze correct is geïmplementeerd:  
 
 ```
-User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system 
+User@aksuser:~$ kubectl get ds omsagent --namespace=kube-system
 NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE SELECTOR                 AGE
 omsagent   2         2         2         2            2           beta.kubernetes.io/os=linux   1d
 ```  
@@ -368,5 +368,3 @@ Na een paar minuten, de opdracht is voltooid en retourneert JSON opgemaakte info
 * Als u problemen ondervindt tijdens een poging voor de Onboarding van de oplossing, raadpleegt u de [problemen oplossen met](container-insights-troubleshoot.md)
 
 * Als controle is ingeschakeld voor het verzamelen van het status-en resource gebruik van uw AKS-cluster en werk belastingen die erop worden uitgevoerd, leert [u hoe u Azure monitor gebruikt](container-insights-analyze.md) voor containers.
-
-

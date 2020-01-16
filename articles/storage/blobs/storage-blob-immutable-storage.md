@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: a8c19a8e88ec7fe2002a327c7e4a57874a753b9f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921237"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981846"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Bedrijfs kritieke blobgegevens opslaan met onveranderlijke opslag
 
@@ -156,7 +156,7 @@ De bewerking voor het verwijderen van een container mislukt als er ten minste é
 
 **Wat gebeurt er als ik probeer een opslag account te verwijderen met een container die een Bewaar beleid op basis van tijd of een juridische bewaring heeft?**
 
-Het verwijderen van het opslag account mislukt als er ten minste één container met een geldige blok kering of een **vergrendeld** op tijd gebaseerd beleid is ingesteld. Een container met een niet-vergrendeld op tijd gebaseerd beleid biedt geen bescherming tegen het verwijderen van een opslag account. U moet alle juridische bewaringen verwijderen en alle **vergrendelde** containers verwijderen voordat u het opslag account kunt verwijderen. Zie de vorige vraag voor meer informatie over het verwijderen van een container. U kunt ook verdere verwijderings beveiligingen voor uw opslag account Toep assen met [Azure Resource Manager-vergren delingen](../../azure-resource-manager/resource-group-lock-resources.md).
+Het verwijderen van het opslag account mislukt als er ten minste één container met een geldige blok kering of een **vergrendeld** op tijd gebaseerd beleid is ingesteld. Een container met een niet-vergrendeld op tijd gebaseerd beleid biedt geen bescherming tegen het verwijderen van een opslag account. U moet alle juridische bewaringen verwijderen en alle **vergrendelde** containers verwijderen voordat u het opslag account kunt verwijderen. Zie de vorige vraag voor meer informatie over het verwijderen van een container. U kunt ook verdere verwijderings beveiligingen voor uw opslag account Toep assen met [Azure Resource Manager-vergren delingen](../../azure-resource-manager/management/lock-resources.md).
 
 **Kan ik de gegevens verplaatsen tussen verschillende BLOB-lagen (hot, cool, Archive) wanneer de BLOB de status onveranderbaar heeft?**
 
@@ -179,4 +179,4 @@ Ja, als uw nalevings vereisten toestaan dat zacht verwijderen is ingeschakeld. [
 - [Onveranderbaarheid-beleid instellen en beheren voor Blob Storage](storage-blob-immutability-policies-manage.md)
 - [Regels instellen voor het automatisch laag maken en verwijderen van BLOB-gegevens met levenscyclus beheer](storage-lifecycle-management-concepts.md)
 - [Voorlopig verwijderen voor Azure Storage-blobs](../blobs/storage-blob-soft-delete.md)
-- [Beveilig abonnementen, resource groepen en resources met Azure Resource Manager sloten](../../azure-resource-manager/resource-group-lock-resources.md).
+- [Beveilig abonnementen, resource groepen en resources met Azure Resource Manager sloten](../../azure-resource-manager/management/lock-resources.md).

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/06/2019
 ms.author: helohr
-ms.openlocfilehash: 817cd09797ad861521a462da9c5d0850c65bf562
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ce1af278d67f96873ed611db8dc05938205638dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459571"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980242"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>Probleemoplossingsoverzicht, feedback en ondersteuning
 
@@ -27,7 +27,7 @@ Ga naar de [technische community van Windows virtueel bureau blad](https://techc
 Gebruik de volgende tabel voor het identificeren en oplossen van problemen die zich kunnen voordoen bij het instellen van een Tenant omgeving met Extern bureaublad-client. Zodra de Tenant is ingesteld, kunt u onze nieuwe service voor [Diagnostische gegevens](https://docs.microsoft.com/azure/virtual-desktop/diagnostics-role-service) gebruiken om problemen voor veelvoorkomende scenario's te identificeren.
 
 >[!NOTE]
-> We hebben een technisch Community-Forum dat u kunt bezoeken om uw problemen met het product team en de actieve communityleden te bespreken. Bezoek de [technische community van Windows Virtual Desktop](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) voor 
+> We hebben een technisch Community-Forum dat u kunt bezoeken om uw problemen met het product team en de actieve communityleden te bespreken. Bezoek de [technische community van Windows Virtual Desktop](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) voor
 
 | **Probleem**                                                            | **Voorgestelde oplossing**  |
 |----------------------------------------------------------------------|-------------------------------------------------|
@@ -54,6 +54,6 @@ Gebruik de volgende tabel voor het identificeren en oplossen van problemen die z
 - Zie [problemen met de Extern bureaublad-client oplossen](troubleshoot-client.md) om problemen met extern bureaublad-clients op te lossen
 - Zie [Windows Virtual Desktop Power shell](troubleshoot-powershell.md)(Engelstalig) voor informatie over het oplossen van problemen met het gebruik van Power shell met Windows virtueel bureau blad.
 - Zie [Windows Virtual Desktop Environment](environment-setup.md)(Engelstalig) voor meer informatie over de service.
-- Zie [zelf studie: problemen met implementaties van Resource Manager-sjablonen oplossen](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md)om de zelf studie voor problemen oplossen op te lossen.
-- Zie [bewerkingen controleren met Resource Manager](../azure-resource-manager/resource-group-audit.md)voor meer informatie over controle acties.
-- Zie [implementatie bewerkingen weer geven](../azure-resource-manager/resource-manager-deployment-operations.md)voor meer informatie over acties om fouten te bepalen tijdens de implementatie.
+- Zie [zelf studie: problemen met implementaties van Resource Manager-sjablonen oplossen](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)om de zelf studie voor problemen oplossen op te lossen.
+- Zie [bewerkingen controleren met Resource Manager](../azure-resource-manager/management/view-activity-logs.md)voor meer informatie over controle acties.
+- Zie [implementatie bewerkingen weer geven](../azure-resource-manager/templates/deployment-history.md)voor meer informatie over acties om fouten te bepalen tijdens de implementatie.

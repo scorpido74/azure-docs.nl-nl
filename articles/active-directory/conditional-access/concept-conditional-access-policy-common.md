@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 01/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d8d803a8256845c61def1b1df4d633ce95a3ce6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d5cfe6b790d5eb2877e46845317779c89cf33884
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424991"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978008"
 ---
 # <a name="common-conditional-access-policies"></a>Algemeen beleid voor voorwaardelijke toegang
 
@@ -33,14 +33,16 @@ Meer informatie over accounts voor toegang in nood gevallen en waarom ze belang 
 
 ## <a name="typical-policies-deployed-by-organizations"></a>Typische beleids regels die door organisaties worden geïmplementeerd
 
-* [MFA vereisen voor beheerders](howto-conditional-access-policy-admin-mfa.md)
-* [MFA vereisen voor Azure-beheer](howto-conditional-access-policy-azure-management.md)
-* [MFA vereisen voor alle gebruikers](howto-conditional-access-policy-all-users-mfa.md)
-* [Verouderde verificatie blok keren](howto-conditional-access-policy-block-legacy.md)
+* [MFA vereisen voor beheerders](howto-conditional-access-policy-admin-mfa.md)\*
+* [MFA vereisen voor Azure-beheer](howto-conditional-access-policy-azure-management.md)\*
+* [MFA vereisen voor alle gebruikers](howto-conditional-access-policy-all-users-mfa.md)\*
+* [Verouderde verificatie\* blok keren](howto-conditional-access-policy-block-legacy.md)
 * [Voorwaardelijke toegang op basis van een risico (vereist Azure AD Premium P2)](howto-conditional-access-policy-risk.md)
 * [Vertrouwde locatie vereisen voor MFA-registratie](howto-conditional-access-policy-registration.md)
 * [Toegang op locatie blok keren](howto-conditional-access-policy-location.md)
 * [Compatibel apparaat vereisen](howto-conditional-access-policy-compliant-device.md)
+
+\* deze vier beleids regels wanneer ze samen worden geconfigureerd, imiteert de functionaliteit ingeschakeld door de [standaard instellingen voor beveiliging](../fundamentals/concept-fundamentals-security-defaults.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

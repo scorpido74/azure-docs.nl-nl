@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: a80a54f3dc760d80f713db9857cbef0c580e66d6
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 088913959b5850e87dc3a6a39d2907d30b7e5ade
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621373"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976247"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>PaaS-Services (platform-as-a-Service) gebruiken in Azure DevTest Labs
 PaaS wordt ondersteund in DevTest Labs via de omgevings functie. Omgevingen in DevTest Labs worden ondersteund door vooraf geconfigureerde Azure Resource Manager sjablonen in een Git-opslag plaats. Omgevingen kunnen zowel PaaS-als IaaS-resources bevatten. Ze bieden u de mogelijkheid om complexe systemen te maken die Azure-resources zoals virtuele machines, data bases, virtuele netwerken en web-apps kunnen bevatten, die zijn aangepast om samen te werken. Deze sjablonen bieden een consistente implementatie en een verbeterd beheer van omgevingen met broncode beheer. 
@@ -53,9 +53,9 @@ Er zijn een aantal aangepaste Lab-gegevens die zich buiten de resource groep bev
 In de [verbinding met omgevingen met het virtuele netwerk van het lab](connect-environment-lab-virtual-network.md) wordt beschreven hoe u uw Resource Manager-sjabloon kunt wijzigen om het `$(LabSubnetId)`-token te gebruiken. Wanneer een omgeving wordt gemaakt, wordt het `$(LabSubnetId)`-token vervangen door het eerste subnet, waarbij de optie **gebruiken bij het maken van virtuele machines** is ingesteld op **waar**. Zo kan onze omgeving eerder gemaakte netwerken gebruiken. Als u de Resource Manager-sjablonen in omgevingen testen als fase ring en productie wilt gebruiken, gebruikt u `$(LabSubnetId)` als standaard waarde in een resource manager-sjabloon parameter. 
 
 #### <a name="environment-storage-account"></a>Omgevings opslag account
-DevTest Labs ondersteunt het gebruik van [geneste Resource Manager-sjablonen](../azure-resource-manager/resource-group-linked-templates.md). In het artikel [[geneste Azure Resource Manager sjablonen implementeren voor test omgevingen](deploy-nested-template-environments.md) wordt uitgelegd hoe u `_artifactsLocation`-en `_artifactsLocationSasToken`-tokens kunt gebruiken voor het maken van een URI naar een resource manager-sjabloon in dezelfde map als of in een geneste map van de hoofd sjabloon. Zie de sectie **implementatie artefacten** in de [hand leiding voor de aanbevolen procedures van Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)voor meer informatie over deze twee tokens.
+DevTest Labs ondersteunt het gebruik van [geneste Resource Manager-sjablonen](../azure-resource-manager/templates/linked-templates.md). In het artikel [[geneste Azure Resource Manager sjablonen implementeren voor test omgevingen](deploy-nested-template-environments.md) wordt uitgelegd hoe u `_artifactsLocation`-en `_artifactsLocationSasToken`-tokens kunt gebruiken voor het maken van een URI naar een resource manager-sjabloon in dezelfde map als of in een geneste map van de hoofd sjabloon. Zie de sectie **implementatie artefacten** in de [hand leiding voor de aanbevolen procedures van Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)voor meer informatie over deze twee tokens.
 
-## <a name="user-experience"></a>Gebruikers ervaring
+## <a name="user-experience"></a>Ervaring gebruiker
 
 ## <a name="developer"></a>Developer
 Ontwikkel aars gebruiken dezelfde werk stroom voor het maken van een virtuele machine voor het maken van een specifieke omgeving. Ze selecteren de omgeving versus de installatie kopie van de computer en voeren de benodigde gegevens in die vereist zijn voor de sjabloon. Elke ontwikkelaar die een omgeving heeft, kan wijzigingen aanbrengen en verbeterde fout opsporing in de interne lus. De omgeving kan op elk gewenst moment worden gemaakt met behulp van de meest recente sjabloon.  Met deze functie kunnen de omgevingen worden vernietigd en opnieuw worden gemaakt om de downtime te verminderen van het hand matig maken van het systeem of het herstellen van fouten testen.  

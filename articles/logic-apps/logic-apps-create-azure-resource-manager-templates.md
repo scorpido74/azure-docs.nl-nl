@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/26/2019
-ms.openlocfilehash: d45cf8d951eb542e248a3ff4fe714b4d2af90cc7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1fdee9a5d90fc065e198d880f9d0dea10804b881
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428728"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972637"
 ---
 # <a name="create-azure-resource-manager-templates-to-automate-deployment-for-azure-logic-apps"></a>Azure Resource Manager sjablonen maken voor het automatiseren van de implementatie voor Azure Logic Apps
 
@@ -26,7 +26,7 @@ Zie de volgende onderwerpen voor meer informatie over Azure Resource Manager sja
 
 * [Structuur en syntaxis van Azure Resource Manager sjabloon](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/templates/template-syntax.md)
-* [Azure Resource Manager-sjablonen voor consistentie van de cloud ontwikkelen](../azure-resource-manager/templates-cloud-consistency.md)
+* [Azure Resource Manager-sjablonen voor consistentie van de cloud ontwikkelen](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
 <a name="visual-studio"></a>
 

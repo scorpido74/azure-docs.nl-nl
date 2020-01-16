@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e58b3f651a7a8f65d3450cf4b069d4e3f252d928
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b76ade40db1e85abc0fb42af2e6f4ab88cb092c4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100269"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982284"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>Beheer taken op Azure Virtual Machines automatiseren met de SQL Server Agent extensie (klassiek)
 > [!div class="op_single_selector"]
@@ -32,12 +32,12 @@ ms.locfileid: "70100269"
 De SQL Server IaaS agent extension (SQLIaaSAgent) wordt uitgevoerd op virtuele machines van Azure om de beheer taken te automatiseren. Dit onderwerp bevat een overzicht van de services die door de extensie worden ondersteund, evenals instructies voor de installatie, status en verwijdering.
 
 > [!IMPORTANT] 
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/resource-manager-deployment-model.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Als u de Resource Manager-versie van dit artikel wilt bekijken, raadpleegt u [SQL Server Agent-extensie voor SQL Server Vm's Resource Manager](../sql/virtual-machines-windows-sql-server-agent-extension.md).
+> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Als u de Resource Manager-versie van dit artikel wilt bekijken, raadpleegt u [SQL Server Agent-extensie voor SQL Server Vm's Resource Manager](../sql/virtual-machines-windows-sql-server-agent-extension.md).
 
 ## <a name="supported-services"></a>Ondersteunde services
 De SQL Server IaaS agent-extensie ondersteunt de volgende beheer taken:
 
-| Beheer functie | Description |
+| Beheer functie | Beschrijving |
 | --- | --- |
 | **Automatische back-up van SQL** |Automatiseert het plannen van back-ups voor alle data bases voor het standaard exemplaar van SQL Server in de virtuele machine. Zie [automatische back-up voor SQL Server in Azure virtual machines (klassiek)](../classic/sql-automated-backup.md)voor meer informatie. |
 | **Automatische SQL-patching** |Hiermee configureert u een onderhouds venster waarin belang rijke Windows-updates voor uw virtuele machine kunnen worden uitgevoerd, zodat u updates kunt voor komen tijdens piek tijden voor uw werk belasting. Zie voor meer informatie [automatische patching voor SQL Server in Azure virtual machines (klassiek)](../classic/sql-automated-patching.md). |
@@ -71,7 +71,7 @@ Op dit moment kunt u een lijst met de klassieke virtuele machines en de bijbehor
 
     Get-AzureVM
 
-## <a name="installation"></a>Installatie
+## <a name="installation"></a>Installeren
 Voor klassieke Vm's moet u Power shell gebruiken om de SQL Server IaaS agent-extensie te installeren en de bijbehorende services te configureren. Gebruik de Power shell **-cmdlet Set-AzureVMSqlServerExtension** om de extensie te installeren. Met de volgende opdracht wordt bijvoorbeeld de uitbrei ding geïnstalleerd op een virtuele Windows Server-machine (klassiek) en de naam ' SQLIaaSExtension '.
 
     Get-AzureVM -ServiceName <vmservicename> -Name <vmname> | Set-AzureVMSqlServerExtension -ReferenceName "SQLIaasExtension" -Version "1.2" | Update-AzureVM
@@ -93,7 +93,7 @@ U kunt ook de Azure Power shell **-cmdlet Get-AzureVMSqlServerExtension** gebrui
 
     Get-AzureVM –ServiceName "service" –Name "vmname" | Get-AzureVMSqlServerExtension
 
-## <a name="removal"></a>Verwijdering
+## <a name="removal"></a>Procedure
 In azure Portal kunt u de uitbrei ding verwijderen door op het weglatings teken te klikken op de Blade **uitbrei dingen** van de eigenschappen van de virtuele machine. Klik vervolgens op **verwijderen**.
 
 ![De uitbrei ding voor de SQL Server IaaS-agent verwijderen in azure Portal](./media/virtual-machines-windows-classic-sql-server-agent-extension/azure-sql-server-iaas-agent-uninstall.png)

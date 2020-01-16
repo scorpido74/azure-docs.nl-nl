@@ -12,19 +12,19 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 7949bedec2d304cd87fb512b44cd61d6f0894638
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 92c4a40de7e35d0580fe407e36305a50ad68094c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168955"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981794"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>Extern bureaublad-services wordt niet gestart op een virtuele Azure-machine
 
 In dit artikel wordt beschreven hoe u problemen oplost wanneer u verbinding maakt met een virtuele machine (VM) van Azure en Extern bureaublad-services, of als de term wordt gestart, niet wordt gestart of niet start.
 
 > [!NOTE]  
-> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Azure Resource Manager en klassiek](../../azure-resource-manager/resource-manager-deployment-model.md). In dit artikel wordt het gebruik van het Resource Manager-implementatie model beschreven. U wordt aangeraden dit model te gebruiken voor nieuwe implementaties in plaats van het klassieke implementatie model.
+> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Azure Resource Manager en klassiek](../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt het gebruik van het Resource Manager-implementatie model beschreven. U wordt aangeraden dit model te gebruiken voor nieuwe implementaties in plaats van het klassieke implementatie model.
 
 ## <a name="symptoms"></a>Symptomen
 
@@ -34,7 +34,7 @@ Wanneer u probeert verbinding te maken met een virtuele machine, treden de volge
 
     ![Scherm afbeelding van de status van de virtuele machine](./media/troubleshoot-remote-desktop-services-issues/login-page.png)
 
-- U kunt de gebeurtenis logboeken op afstand weer geven in de virtuele machine met behulp van Logboeken. U ziet dat Extern bureaublad-services, de term niet start of niet kan worden gestart. Het volgende logboek is een voor beeld:
+- U weergeven op afstand de gebeurtenislogboeken op de virtuele machine met behulp van Logboeken. U ziet dat Extern bureaublad-services, de term niet start of niet kan worden gestart. Het volgende logboek is een voor beeld:
 
     **Logboek naam**: systeem </br>
     **Bron**: Service besturings beheer </br>
@@ -65,7 +65,7 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
 
 ### <a name="use-serial-console"></a>Seriële console gebruiken
 
-1. Open de [seriële console](serial-console-windows.md) door ondersteuning te selecteren & problemen  > **seriële console**op te **lossen**. Als de functie is ingeschakeld op de virtuele machine, kunt u verbinding maken met de virtuele machine.
+1. Open de [seriële console](serial-console-windows.md) door ondersteuning te selecteren & problemen > **seriële console**op te **lossen** . Als de functie is ingeschakeld op de virtuele machine, kunt u verbinding maken met de virtuele machine.
 
 2. Een nieuw kanaal maken voor een CMD-exemplaar. Voer **cmd** in om het kanaal te starten en de kanaal naam op te halen.
 
@@ -98,21 +98,21 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
 
     |  Fout |  Suggestie |
     |---|---|
-    |5-TOEGANG GEWEIGERD |Zie [de service term wordt gestopt vanwege een fout bij de toegang geweigerd](#termservice-service-is-stopped-because-of-an-access-denied-problem). |
-    |1053-ERROR_SERVICE_REQUEST_TIMEOUT  |Zie de [service term is uitgeschakeld](#termservice-service-is-disabled).  |  
-    |1058-ERROR_SERVICE_DISABLED  |Zie de [service terminals is vastgelopen of vastloopt](#termservice-service-crashes-or-hangs).  |
-    |1059-ERROR_CIRCULAR_DEPENDENCY |[Neem contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.|
-    |1067-ERROR_PROCESS_ABORTED  |Zie de [service terminals is vastgelopen of vastloopt](#termservice-service-crashes-or-hangs).  |
-    |1068-ERROR_SERVICE_DEPENDENCY_FAIL|[Neem contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.|
-    |1069-ERROR_SERVICE_LOGON_FAILED  |Zie de [service term is mislukt vanwege een mislukte aanmelding](#termservice-service-fails-because-of-logon-failure) |
-    |1070-ERROR_SERVICE_START_HANG   | Zie de [service terminals is vastgelopen of vastloopt](#termservice-service-crashes-or-hangs). |
-    |1077-ERROR_SERVICE_NEVER_STARTED   | Zie de [service term is uitgeschakeld](#termservice-service-is-disabled).  |
-    |1079-ERROR_DIFERENCE_SERVICE_ACCOUNT   |[Neem contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen. |
+    |5 - TOEGANG IS GEWEIGERD |Zie [de service term wordt gestopt vanwege een fout bij de toegang geweigerd](#termservice-service-is-stopped-because-of-an-access-denied-problem). |
+    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |Zie de [service term is uitgeschakeld](#termservice-service-is-disabled).  |  
+    |1058 - ERROR_SERVICE_DISABLED  |Zie de [service terminals is vastgelopen of vastloopt](#termservice-service-crashes-or-hangs).  |
+    |1059 - ERROR_CIRCULAR_DEPENDENCY |[Neem contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.|
+    |1067 - ERROR_PROCESS_ABORTED  |Zie de [service terminals is vastgelopen of vastloopt](#termservice-service-crashes-or-hangs).  |
+    |1068 - ERROR_SERVICE_DEPENDENCY_FAIL|[Neem contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.|
+    |1069 - ERROR_SERVICE_LOGON_FAILED  |Zie de [service term is mislukt vanwege een mislukte aanmelding](#termservice-service-fails-because-of-logon-failure) |
+    |1070 - ERROR_SERVICE_START_HANG   | Zie de [service terminals is vastgelopen of vastloopt](#termservice-service-crashes-or-hangs). |
+    |1077 - ERROR_SERVICE_NEVER_STARTED   | Zie de [service term is uitgeschakeld](#termservice-service-is-disabled).  |
+    |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |[Neem contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen. |
     |1753   |[Neem contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.   |
     
 #### <a name="termservice-service-is-stopped-because-of-an-access-denied-problem"></a>De service wordt gestopt vanwege een probleem met de toegang is geweigerd
 
-1. Maak verbinding met de [seriële console](serial-console-windows.md) en open een Power shell-exemplaar.
+1. Verbinding maken met [seriële Console](serial-console-windows.md) en open een PowerShell-exemplaar.
 2. Down load het hulp programma Process Monitor door het volgende script uit te voeren:
 
    ```
@@ -123,7 +123,7 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
    $wc.DownloadFile($source,$destination) 
    ```
 
-3. Begin nu met een **ProcMon** -tracering:
+3. Nu beginnen met een **procmon** trace:
 
    ```
    procmon /Quiet /Minimized /BackingFile c:\temp\ProcMonTrace.PML 
@@ -135,7 +135,7 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
    sc start TermService 
    ```
 
-   Als dit mislukt, beëindigt u de proces monitor tracering:
+   Wanneer deze is mislukt, de trace-Monitor voor processen beëindigd:
 
    ```   
    procmon /Terminate 
@@ -143,9 +143,9 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
 
 5. Het bestand **c:\temp\ProcMonTrace.PML**verzamelen:
 
-    1. [Een gegevens schijf koppelen aan de virtuele machine](../windows/attach-managed-disk-portal.md
+    1. [Een gegevensschijf koppelen aan de virtuele machine](../windows/attach-managed-disk-portal.md
 ).
-    2. Seriële console gebruiken u kunt het bestand naar het nieuwe station kopiëren. Bijvoorbeeld `copy C:\temp\ProcMonTrace.PML F:\`. In deze opdracht is F de letter van het stuur programma van de gekoppelde gegevens schijf.
+    2. Seriële Console kunt u het bestand kopiëren naar het nieuwe station gebruiken. Bijvoorbeeld `copy C:\temp\ProcMonTrace.PML F:\`. In deze opdracht is F de stationsletter van de gekoppelde gegevensschijf.
     3. Ontkoppel het gegevens station en koppel dit aan een werkende VM waarop Process Monitor-ubstakke is geïnstalleerd.
 
 6. Open **ProcMonTrace. PML** met behulp van process monitoring the working VM. Vervolgens filteren op **resultaat is toegang geweigerd**, zoals wordt weer gegeven in de volgende scherm afbeelding:
@@ -153,11 +153,11 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
     ![Filteren op resultaat in proces monitor](./media/troubleshoot-remote-desktop-services-issues/process-monitor-access-denined.png)
 
  
-6. Herstel de register sleutels,-mappen of-bestanden die zich in de uitvoer bevinden. Dit probleem treedt meestal op wanneer het aanmeldings account dat wordt gebruikt voor de service geen ACL-machtiging heeft voor toegang tot deze objecten. Als u de juiste ACL-machtiging voor het aanmeldings account wilt weten, kunt u controleren op een goede VM. 
+6. Corrigeer de registersleutels, mappen of bestanden die zich op de uitvoer. Dit probleem wordt meestal veroorzaakt wanneer de aanmeldingsaccount die wordt gebruikt op de service beschikt niet over ACL-machtiging voor toegang tot deze objecten. Als u de juiste ACL-machtiging voor het aanmeldings account wilt weten, kunt u controleren op een goede VM. 
 
 #### <a name="termservice-service-is-disabled"></a>De service wordt uitgeschakeld
 
-1. Herstel de standaard opstart waarde van de service:
+1. Herstellen van de service op de standaardwaarde voor opstarten:
 
    ```
    sc config TermService start= demand 
@@ -191,7 +191,7 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
 1. Als de status van de service vastzit aan het **starten** of **stoppen**, probeert u de service te stoppen: 
 
         sc stop TermService
-2. De service op een eigen ' Svchost '-container isoleren:
+2. De service op een eigen container 'svchost' isoleren:
 
         sc config TermService type= own
 3. Start de service:
@@ -199,13 +199,13 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
         sc start TermService
 4. Als de service nog steeds niet kan worden gestart, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-### <a name="repair-the-vm-offline"></a>De virtuele machine offline herstellen
+### <a name="repair-the-vm-offline"></a>Herstel de virtuele machine offline
 
-#### <a name="attach-the-os-disk-to-a-recovery-vm"></a>De besturingssysteem schijf koppelen aan een herstel-VM
+#### <a name="attach-the-os-disk-to-a-recovery-vm"></a>De besturingssysteemschijf koppelen aan een virtuele machine voor herstel
 
-1. [Koppel de besturingssysteem schijf aan een herstel-VM](../windows/troubleshoot-recovery-disks-portal.md).
-2. Start een Extern bureaublad verbinding met de virtuele machine voor herstel. Controleer of de gekoppelde schijf **online** is gemarkeerd in de schijf beheer-console. Noteer de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf.
-3. Open een opdracht prompt exemplaar met verhoogde bevoegdheid (**als administrator uitvoeren**). Voer vervolgens het volgende script uit. We gaan ervan uit dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf **F**is. Vervang deze door de juiste waarde in uw VM. 
+1. [De besturingssysteemschijf koppelen aan een virtuele machine voor herstel](../windows/troubleshoot-recovery-disks-portal.md).
+2. Start een externe bureaubladverbinding met de virtuele machine voor herstel. Zorg ervoor dat de gekoppelde schijf is gemarkeerd als **Online** in de Schijfbeheer-console. Houd er rekening mee de stationsletter die toegewezen aan de gekoppelde besturingssysteemschijf.
+3. Open een opdrachtprompt met verhoogde bevoegdheid-exemplaar (**als administrator uitvoeren**). Voer het volgende script. We gaan ervan uit dat de stationsletter die is toegewezen aan de gekoppelde besturingssysteem schijf **F**is. Vervang deze door de juiste waarde in uw VM. 
 
    ```
    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
@@ -219,8 +219,8 @@ Gebruik de seriële console om dit probleem op te lossen. Of [herstel de virtuel
    reg add "HKLM\BROKENSYSTEM\ControlSet002\services\TermService" /v type /t REG_DWORD /d 16 /f
    ```
 
-4. [Ontkoppel de besturingssysteem schijf en maak de virtuele machine opnieuw](../windows/troubleshoot-recovery-disks-portal.md). Controleer vervolgens of het probleem is opgelost.
+4. [De OS-schijf loskoppelen en opnieuw maken van de virtuele machine](../windows/troubleshoot-recovery-disks-portal.md). Controleer vervolgens of het probleem is opgelost.
 
-## <a name="need-help-contact-support"></a>Hulp nodig? Contact opnemen met ondersteuning
+## <a name="need-help-contact-support"></a>Hebt u hulp nodig? Contact opnemen met ondersteuning
 
 Als u nog hulp nodig hebt, [neemt u contact op met de ondersteuning](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om het probleem op te lossen.

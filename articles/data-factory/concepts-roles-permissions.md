@@ -10,12 +10,12 @@ ms.workload: data-services
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: 00d84a7f3b4a15c9278caac8c2715380dd330482
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d143992317c77c6fc3137527bea485a98c046daa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930502"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969225"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Rollen en machtigingen voor Azure Data Factory
 
@@ -29,7 +29,7 @@ Als u onderliggende resources wilt maken en beheren voor Data Factory, waaronder
 - Als u onderliggende resources in Azure Portal wilt maken en beheren, moet u de rol **Data Factory-inzender** op minimaal het niveau van de resourcegroep hebben.
 - Voor het maken en beheren van onderliggende resources met PowerShell of de SDK is de rol **Inzender** op minimaal het resourceniveau voldoende.
 
-Zie het artikel [Rollen toevoegen](../billing/billing-add-change-azure-subscription-administrator.md) voor voorbeelden van instructies voor het toevoegen van een gebruiker aan een rol.
+Zie het artikel [Rollen toevoegen](../cost-management-billing/manage/add-change-subscription-administrator.md) voor voorbeelden van instructies voor het toevoegen van een gebruiker aan een rol.
 
 ## <a name="set-up-permissions"></a>Machtigingen instellen
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5a1fb3b1260beb6bd85363f4611dae23cd3d321f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ddc732655c7cfb72c4948f83752440608332915d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427353"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974090"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Gegevens verplaatsen naar SQL Server op een virtuele Azure-machine
 
@@ -42,7 +42,7 @@ Merk op dat in dit document wordt ervan uitgegaan dat de SQL-opdrachten worden u
 In deze zelfstudie wordt ervan uitgegaan dat u hebt:
 
 * Een **Azure-abonnement**. Als u geen abonnement hebt, kunt u zich aanmelden voor een [gratis proefversie](https://azure.microsoft.com/pricing/free-trial/).
-* Een **Azure storage-account**. U gebruikt een Azure storage-account voor het opslaan van gegevens in deze zelfstudie. Zie het artikel [Een opslagaccount maken](../../storage/common/storage-quickstart-create-account.md) als u geen account Azure-opslagaccount hebt. Nadat u de storage-account hebt gemaakt, moet u het ophalen van de accountsleutel gebruikt voor toegang tot de opslag. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md).
+* Een **Azure storage-account**. U gebruikt een Azure storage-account voor het opslaan van gegevens in deze zelfstudie. Zie het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) als u geen account Azure-opslagaccount hebt. Nadat u de storage-account hebt gemaakt, moet u het ophalen van de accountsleutel gebruikt voor toegang tot de opslag. Zie [toegangs sleutels voor opslag accounts beheren](../../storage/common/storage-account-keys-manage.md).
 * Ingericht **SQL Server op een Azure-VM**. Zie voor instructies [een virtuele machine van Azure SQL-Server instellen als IPython Notebook-server voor geavanceerde analyses](../data-science-virtual-machine/setup-sql-server-virtual-machine.md).
 * Geïnstalleerd en geconfigureerd **Azure PowerShell** lokaal. Zie voor instructies [hoe u Azure PowerShell installeren en configureren](/powershell/azure/overview).
 

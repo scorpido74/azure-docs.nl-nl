@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: b71f5590f120e15bd4ea027bcf6132795dac3cb6
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0e5780561df121d3d5af3a9b754d774cc7d6cf76
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750574"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969664"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure-activiteiten logboek exporteren naar opslag of Azure Event Hubs
 
 > [!WARNING]
-> U kunt het activiteiten logboek nu verzamelen in een Log Analytics-werk ruimte met behulp van een diagnostische instelling, vergelijkbaar met de manier waarop u bron logboeken verzamelt. Zie [Azure-activiteiten logboeken verzamelen en analyseren in log Analytics werk ruimte in azure monitor](diagnostic-settings-subscription.md).
+> U kunt het activiteiten logboek nu verzamelen in een Log Analytics-werk ruimte met behulp van een diagnostische instelling, vergelijkbaar met de manier waarop u bron logboeken verzamelt. Zie [Azure-activiteiten logboeken verzamelen en analyseren in log Analytics werk ruimte in azure monitor](diagnostic-settings-legacy.md).
 
 Het [Azure-activiteiten logboek](platform-logs-overview.md) biedt inzicht in gebeurtenissen op abonnements niveau die in uw Azure-abonnement zijn opgetreden. Naast het weer geven van het activiteiten logboek in de Azure Portal of het kopiëren naar een Log Analytics werk ruimte waar het kan worden geanalyseerd met andere gegevens die zijn verzameld door Azure Monitor, kunt u een logboek profiel maken om het activiteiten logboek te archiveren in een Azure Storage-account of om het te streamen naar een  Event hub.
 
@@ -28,12 +28,12 @@ Het archiveren van het activiteiten logboek naar een opslag account is handig al
 ## <a name="stream-activity-log-to-event-hub"></a>Activiteiten logboek streamen naar Event hub
 [Azure Event hubs](/azure/event-hubs/) is een service voor het streamen van gegevens en gebeurtenissen, waarmee miljoenen gebeurtenissen per seconde kunnen worden ontvangen en verwerkt. Gegevens die naar een Event Hub worden verzonden, kunnen worden omgezet en opgeslagen door gebruik te maken van een provider voor realtime analytische gegevens of batchverwerking/opslagadapters. U kunt de streaming-mogelijkheid voor het activiteiten logboek op twee manieren gebruiken:
 * **Streamen naar logboek registratie van derden en telemetrie-systemen**: na verloop van tijd is Azure Event hubs streaming het mechanisme om uw activiteiten logboek te pipeen in siem's-en log Analytics-oplossingen van derden.
-* **Een aangepast telemetrie-en logboek registratie platform bouwen**: als u al een aangepast telemetrie-platform hebt of als u er een wilt maken, kunt u met de uiterst schaal bare functie voor publiceren en abonneren van Event hubs flexibel het activiteiten logboek opnemen. 
+* **Een aangepast telemetrie-en logboek registratie platform bouwen**: als u al een aangepast telemetrie-platform hebt of als u er een wilt maken, kunt u met de uiterst schaal bare functie voor publiceren en abonneren van Event hubs flexibel het activiteiten logboek opnemen.
 
 ## <a name="prerequisites"></a>Vereisten
 
 ### <a name="storage-account"></a>Opslagaccount
-Als u uw activiteiten logboek archiveert, moet u [een opslag account maken](../../storage/common/storage-quickstart-create-account.md) als u er nog geen hebt. Gebruik geen bestaand opslag account met andere, niet-bewakings gegevens die erin zijn opgeslagen, zodat u de toegang tot bewakings gegevens beter kunt beheren. Als u ook logboeken en metrische gegevens naar een opslag account archiveert, kunt u ervoor kiezen om hetzelfde opslag account te gebruiken om alle bewakings gegevens op een centrale locatie te bewaren.
+Als u uw activiteiten logboek archiveert, moet u [een opslag account maken](../../storage/common/storage-account-create.md) als u er nog geen hebt. Gebruik geen bestaand opslag account met andere, niet-bewakings gegevens die erin zijn opgeslagen, zodat u de toegang tot bewakings gegevens beter kunt beheren. Als u ook logboeken en metrische gegevens naar een opslag account archiveert, kunt u ervoor kiezen om hetzelfde opslag account te gebruiken om alle bewakings gegevens op een centrale locatie te bewaren.
 
 Het opslag account hoeft zich niet in hetzelfde abonnement te benemen als het abonnement dat Logboeken verzendt, zolang de gebruiker die de instelling configureert de juiste RBAC-toegang heeft tot beide abonnementen.
 > [!NOTE]
@@ -65,7 +65,7 @@ Als het Bewaar beleid is ingesteld, maar logboeken worden opgeslagen in een opsl
 
 
 > [!IMPORTANT]
-> Er wordt mogelijk een fout bericht weer gegeven bij het maken van een logboek profiel als de resource provider micro soft. Insights niet is geregistreerd. Zie [Azure-resource providers en-typen](../../azure-resource-manager/resource-manager-supported-services.md) om deze provider te registreren.
+> Er wordt mogelijk een fout bericht weer gegeven bij het maken van een logboek profiel als de resource provider micro soft. Insights niet is geregistreerd. Zie [Azure-resource providers en-typen](../../azure-resource-manager/management/resource-providers-and-types.md) om deze provider te registreren.
 
 
 ### <a name="create-log-profile-using-the-azure-portal"></a>Een logboek profiel maken met behulp van de Azure Portal
@@ -77,7 +77,7 @@ Maak of bewerk een logboek profiel met de optie **exporteren naar Event hub** in
     ![De knop exporteren in de portal](media/activity-log-export/portal-export.png)
 
 3. Op de Blade die wordt weer gegeven, geeft u het volgende op:
-   * Regio's met de gebeurtenissen die moeten worden geëxporteerd. U moet alle regio's selecteren om ervoor te zorgen dat u geen sleutel gebeurtenissen mist omdat het activiteiten logboek een globaal (niet-regionaal) logboek is en dus er aan de meeste gebeurtenissen geen regio is gekoppeld. 
+   * Regio's met de gebeurtenissen die moeten worden geëxporteerd. U moet alle regio's selecteren om ervoor te zorgen dat u geen sleutel gebeurtenissen mist omdat het activiteiten logboek een globaal (niet-regionaal) logboek is en dus er aan de meeste gebeurtenissen geen regio is gekoppeld.
    * Als u naar het opslag account wilt schrijven:
        * Het opslag account waarnaar u gebeurtenissen wilt opslaan.
        * Het aantal dagen dat u deze gebeurtenissen in de opslag ruimte wilt behouden. Met een instelling van 0 dagen worden de logboeken voor altijd bewaard.
@@ -167,5 +167,5 @@ Als er al een logboek profiel bestaat, moet u eerst het bestaande logboek profie
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het activiteiten logboek](../../azure-resource-manager/resource-group-audit.md)
+* [Meer informatie over het activiteiten logboek](../../azure-resource-manager/management/view-activity-logs.md)
 * [Activiteiten logboek in Azure Monitor logboeken verzamelen](activity-log-collect.md)
