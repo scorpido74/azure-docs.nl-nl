@@ -1,0 +1,76 @@
+- name: Documentatie over Azure Reservations
+  href: index.yml
+  items:
+    - name: Overzicht
+      expanded: true
+      items:
+        - name: Wat zijn Azure-reserveringen?
+          href: save-compute-costs-reservations.md
+    - name: Instructiegidsen
+      items:
+        - name: Een SQL Data Warehouse-reservering aanschaffen
+          href: prepay-sql-data-warehouse-charges.md
+        - name: Een virtuele-machinereservering aanschaffen
+          href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: Een Azure Storage-reservering aanschaffen
+          href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Een Cosmos DB-reservering aanschaffen
+          href: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Een SQL Database-reservering aanschaffen
+          href: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Een Azure Data Explorer-reservering aanschaffen
+          href: ../../data-explorer/pricing-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Een Azure Databricks-reservering aanschaffen
+          href: prepay-databricks-reserved-capacity.md
+        - name: Een App Service-reservering kopen
+          href: prepay-app-service-isolated-stamp.md
+        - name: Een reservering voor een Azure-softwareabonnement aanschaffen
+          href: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
+        - name: Een reservering kopen met maandelijkse betalingen
+          href: monthly-payments-reservations.md
+        - name: Reserveringen verlengen
+          href: reservation-renew.md
+        - name: Reserveringen uitwisselen en restitutie
+          href: exchange-and-refund-azure-reservations.md
+        - name: Reserveringen beheren
+          href: manage-reserved-vm-instance.md
+        - name: Reserveringen bekijken
+          href: view-reservations.md
+    - name: Concepten
+      items:
+        - name: Kortingen voor gereserveerde VM-exemplaren
+          href: ../manage/understand-vm-reservation-charges.md
+        - name: Kortingen voor gereserveerde Azure Storage-capaciteit
+          href: understand-storage-charges.md
+        - name: Kortingen voor gereserveerde Cosmos DB-capaciteit
+          href: understand-cosmosdb-reservation-charges.md
+        - name: Kortingen voor gereserveerde SQL Database-capaciteit
+          href: understand-reservation-charges.md
+        - name: Kortingen voor SQL Data Warehouse
+          href: reservation-discount-azure-sql-dw.md
+        - name: Kortingen voor Azure Data Explorer
+          href: understand-azure-data-explorer-reservation-charges.md
+        - name: Kortingen voor Azure Databricks
+          href: reservation-discount-databricks.md
+        - name: Kortingen voor Azure Database for MySQL
+          href: understand-reservation-charges-mysql.md
+        - name: Kortingen voor Azure Database for PostgreSQL
+          href: understand-reservation-charges-postgresql.md
+        - name: Kortingen voor Red Hat Linux Enterprise
+          href: understand-rhel-reservation-charges.md
+        - name: Kortingen voor Azure Database for MariaDB
+          href: understand-reservation-charges-mariadb.md
+        - name: Kortingen voor App Service
+          href: reservation-discount-app-service-isolated-stamp.md
+        - name: Kortingen voor Azure-softwareabonnementen
+          href: understand-suse-reservation-charges.md
+        - name: Windows- en SQL-kosten niet inbegrepen
+          href: reserved-instance-windows-software-costs.md
+        - name: Gebruiksgegevens voor afzonderlijke abonnementen
+          href: understand-reserved-instance-usage.md
+        - name: Gebruiksgegevens voor Enterprise-klanten
+          href: understand-reserved-instance-usage-ea.md
+    - name: Naslaginformatie
+      items:
+        - name: Azure Reserverings-API's
+          href: reservation-apis.md

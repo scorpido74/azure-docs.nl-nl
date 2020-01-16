@@ -1,0 +1,88 @@
+### YamlMime:Landing
+title: Aan de slag met Azure Billing
+summary: Meer informatie over hoe u aan de slag gaat met Azure-facturering door uw factuur te controleren en informatie over kosten en gebruik te bekijken.
+metadata:
+  title: Aan de slag met Azure Billing
+  description: Aan de slag met Azure Billing
+  ms.service: cost-management-billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.manager: dougeby
+  ms.date: 12/18/2019
+  ms.openlocfilehash: bc472c68ea2a414fce81fe39e3282a43be3db829
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983287"
+landingContent:
+- title: Afzonderlijke accounts controleren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Uw afzonderlijke accountfactuur controleren
+      url: review-individual-bill.md
+  - linkListType: concept
+    links:
+    - text: Informatie over gebruiksvoorwaarden
+      url: understand-usage.md
+    - text: Informatie over factureringsvoorwaarden
+      url: understand-invoice.md
+  - linkListType: how-to-guide
+    links:
+    - text: Uw Azure-factuur weergeven en downloaden
+      url: download-azure-invoice.md
+    - text: Uw Azure-gebruik en -kosten weergeven en downloaden
+      url: download-azure-daily-usage.md
+    - text: Externe servicekosten weergeven
+      url: understand-azure-marketplace-charges.md
+- title: Microsoft-klantovereenkomstaccounts controleren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Uw factuur voor uw Microsoft-klantovereenkomst controleren
+      url: review-customer-agreement-bill.md
+  - linkListType: concept
+    links:
+    - text: Factureringsaccounts voor Microsoft-klantovereenkomst
+      url: mca-overview.md
+    - text: Gebruiksvoorwaarden voor Microsoft-klantovereenkomst
+      url: mca-understand-your-usage.md
+    - text: Factuurvoorwaarden voor Microsoft-klantovereenkomst
+      url: mca-understand-your-invoice.md
+  - linkListType: how-to-guide
+    links:
+    - text: Azure-factuur weergeven en downloaden
+      url: download-azure-invoice.md
+    - text: Azure-gebruik en -kosten weergeven en downloaden
+      url: download-azure-daily-usage.md
+    - text: Belastingdocumenten weergeven en downloaden
+      url: mca-download-tax-document.md
+    - text: Externe servicekosten weergeven
+      url: understand-azure-marketplace-charges.md
+    - text: Uw factuur voor uw Microsoft-klantovereenkomst betalen
+      url: pay-bill.md
+- title: Uw Microsoft-klantovereenkomstaccounts controleren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Uw factuur voor uw Microsoft-partnerovereenkomst controleren
+      url: review-partner-agreement-bill.md
+  - linkListType: concept
+    links:
+    - text: Factureringsaccounts voor Microsoft-partnerovereenkomst
+      url: mpa-overview.md
+    - text: Factuurvoorwaarden voor Microsoft-klantovereenkomst
+      url: mpa-invoice-terms.md
+- title: Enterprise Agreement-accounts controleren
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Uw Enterprise Agreement-factuur controleren
+      url: review-enterprise-agreement-bill.md
+  - linkListType: concept
+    links:
+    - text: Aan de slag in de Azure EA-portal
+      url: ../manage/ea-portal-get-started.md

@@ -29,6 +29,8 @@
   items:
     - name: Een beheerd domein maken met Azure PowerShell
       href: powershell-create-instance.md
+    - name: Een beheerd domein maken met een sjabloon
+      href: template-create-instance.md
 - name: Concepten
   items:
     - name: Basisprincipes van beheer

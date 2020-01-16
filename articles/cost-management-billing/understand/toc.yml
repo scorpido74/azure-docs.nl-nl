@@ -1,0 +1,53 @@
+- name: Aan de slag met documentatie voor Azure-facturering
+  href: index.yml
+  items:
+    - name: Zelfstudies
+      items:
+        - name: Uw afzonderlijke accountfactuur controleren
+          href: review-individual-bill.md
+        - name: Uw factuur voor uw Microsoft-klantovereenkomst controleren
+          href: review-customer-agreement-bill.md
+        - name: Uw factuur voor uw Microsoft-partnerovereenkomst controleren
+          href: review-partner-agreement-bill.md
+    - name: Concepten
+      items:
+        - name: Gebruiksvoorwaarden voor afzonderlijke abonnementen
+          href: understand-usage.md
+        - name: Factuurvoorwaarden voor afzonderlijke abonnementen
+          href: understand-invoice.md
+        - name: Gebruiksvoorwaarden voor Microsoft-klantovereenkomst
+          href: mca-understand-your-usage.md
+        - name: Factuurvoorwaarden voor Microsoft-klantovereenkomst
+          href: mca-understand-your-invoice.md
+        - name: Prijslijstvoorwaarden voor Microsoft-klantovereenkomst
+          href: ../manage/mca-understand-pricesheet.md
+        - name: Factureringsaccounts voor Microsoft-klantovereenkomst
+          href: mca-overview.md
+        - name: Factuurvoorwaarden voor Microsoft-partnerovereenkomst
+          href: mpa-invoice-terms.md
+        - name: Factureringsaccounts voor Microsoft-partnerovereenkomst
+          href: mpa-overview.md
+    - name: Instructiegidsen
+      items:
+        - name: Onverwachte kosten voorkomen
+          href: ../manage/getting-started.md
+        - name: Uw Azure-factuur weergeven en downloaden
+          href: download-azure-invoice.md
+        - name: Uw Azure-gebruik en -kosten weergeven en downloaden
+          href: download-azure-daily-usage.md
+        - name: Uw factuur en gegevens over dagelijks gebruik downloaden
+          href: ../manage/download-azure-invoice-daily-usage-date.md
+        - name: Belastingdocumenten weergeven en downloaden
+          href: mca-download-tax-document.md
+        - name: Externe Azure-servicekosten weergeven
+          href: understand-azure-marketplace-charges.md
+        - name: Uw factuur betalen
+          href: pay-bill.md
+        - name: Prijzen voor uw organisatie weergeven en downloaden
+          href: ../manage/ea-pricing.md
+        - name: Tegoed bijhouden voor Microsoft-klantovereenkomst
+          href: ../manage/mca-check-azure-credits-balance.md
+        - name: Prijs berekenen
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: De bestedingslimiet begrijpen
+          href: ../manage/spending-limit.md

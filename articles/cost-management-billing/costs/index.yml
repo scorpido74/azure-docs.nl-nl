@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: Azure-kosten en -gebruik beheren
+summary: Azure Cost Management is een oplossing voor kostenbeheer waarmee u uw Azure-uitgaven kunt bijhouden en bewaken, en het resourcegebruik kunt optimaliseren. Leer aan de hand van onze snelstarts en zelfstudies hoe u kosten analyseert, budgetten maakt en beheert, gegevens exporteert, en aanbevelingen bekijkt en hier actie op onderneemt.
+metadata:
+  title: Azure Kostenbeheer en facturering
+  description: Azure Cost Management is een oplossing voor kostenbeheer waarmee u uw Azure-uitgaven kunt bijhouden en bewaken, en het resourcegebruik kunt optimaliseren. Leer aan de hand van onze snelstarts en zelfstudies hoe u kosten analyseert, budgetten maakt en beheert, gegevens exporteert, en aanbevelingen bekijkt en hier actie op onderneemt.
+  ms.service: cost-management-billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.manager: dougeby
+  ms.date: 12/18/2019
+  ms.openlocfilehash: 33821c027d242da1a9361a796280213b5265dcde
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983219"
+landingContent:
+- title: Meer informatie over Kostenbeheer
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Kostenbeheer en facturering?
+      url: ../cost-management-billing-overview.md
+  - linkListType: concept
+    links:
+    - text: Best practices voor Azure Cost Management
+      url: cost-mgt-best-practices.md
+    - text: Inzicht in gegevens van Cost Management
+      url: understand-cost-mgt-data.md
+    - text: Bereiken begrijpen en gebruiken
+      url: understand-work-scopes.md
+- title: Azure-kosten analyseren en beheren
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Beginnen met analyseren van kosten
+      url: quick-acm-cost-analysis.md
+  - linkListType: tutorial
+    links:
+    - text: Budgetten maken en beheren
+      url: tutorial-acm-create-budgets.md
+    - text: Gegevens over kosten en gebruik exporteren
+      url: tutorial-export-acm-data.md
+    - text: Aanbevelingen opvolgen
+      url: tutorial-acm-opt-recommendations.md
+  - linkListType: how-to-guide
+    links:
+    - text: Toegang tot gegevens toewijzen
+      url: assign-access-acm-data.md
+    - text: Kosten analyse gebruiken voor veelvoorkomende taken
+      url: cost-analysis-common-uses.md
+    - text: Kostenwaarschuwingen gebruiken
+      url: cost-mgt-alerts-monitor-usage-spending.md
+    - text: Cost Management voor partners
+      url: get-started-partners.md
+    - text: Verbinding maken met Power BI Desktop
+      url: /power-bi/desktop-connect-azure-cost-management
+- title: AWS-kosten analyseren en beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: AWS-integratie instellen en configureren
+      url: aws-integration-set-up-configure.md
+    - text: AWS-kosten en -gebruik beheren
+      url: aws-integration-manage.md
+- title: Kostenbeheer-API's
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Migreren van EA naar MCA-API's
+      url: migrate-cost-management-api.md
+  - linkListType: reference
+    links:
+    - text: Azure Cost Management REST API
+      url: https://docs.microsoft.com/rest/api/cost-management
+    - text: Azure Consumption REST API
+      url: https://docs.microsoft.com/rest/api/consumption
+    - text: Resource Manager-sjabloon
+      url: /azure/templates/microsoft.consumption/budgets
+    - text: Voorbeelden van Azure Cost Management REST API
+      url: https://github.com/Azure-Samples/Cost-Management-Samples

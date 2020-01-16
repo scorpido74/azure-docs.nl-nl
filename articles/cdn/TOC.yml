@@ -40,13 +40,13 @@
       href: cdn-china-delivery.md
     - name: Ondersteuning voor HTTP/2
       href: cdn-http2.md
-    - name: Een Verizon POP-lijst ophalen
+    - name: POP-IP's ophalen
       href: cdn-pop-list-api.md
     - name: Migreren van Verizon naar Premium Verizon
       href: cdn-migrate.md
     - name: DDoS-bescherming
       href: cdn-ddos.md
-- name: Handleidingen
+- name: Instructiegidsen
   items:
     - name: Inhoud optimaliseren
       href: cdn-optimization-overview.md

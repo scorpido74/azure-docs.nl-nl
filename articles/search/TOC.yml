@@ -85,6 +85,8 @@
   items:
     - name: Zoekopdracht in volledige tekst
       href: search-lucene-query-architecture.md
+    - name: Indexeerfuncties
+      href: search-indexer-overview.md
     - name: AI-verrijking
       href: cognitive-search-concept-intro.md
     - name: Vaardighedensets
@@ -179,7 +181,7 @@
           href: search-howto-complex-data-types.md
         - name: Relationele gegevens modelleren
           href: index-sql-relational-data.md
-    - name: Alle soorten gegevens indexeren
+    - name: Importeren (indexeren)
       items:
         - name: Overzicht van gegevensimport
           href: search-what-is-data-import.md
@@ -273,12 +275,16 @@
           href: search-query-lucene-examples.md
         - name: Search Explorer gebruiken (portal)
           href: search-explorer.md
-        - name: Vereenvoudigde querysyntaxis
-          href: query-simple-syntax.md
-        - name: Volledige Lucene-querysyntaxis
-          href: query-lucene-syntax.md
-        - name: Queryparameter moreLikeThis
-          href: search-more-like-this.md
+        - name: Speciale tekens en gedeeltelijke voorwaarden
+          href: search-query-partial-matching.md
+        - name: Naslaginformatie over syntaxis
+          items:
+            - name: Vereenvoudigde querysyntaxis
+              href: query-simple-syntax.md
+            - name: Volledige Lucene-querysyntaxis
+              href: query-lucene-syntax.md
+            - name: moreLikeThis (preview)
+              href: search-more-like-this.md
     - name: Filters toepassen
       items:
         - name: Filteroverzicht

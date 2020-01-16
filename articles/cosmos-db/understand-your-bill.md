@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 6d2edb7674a82a0388a0e028bee1b222e0e55004
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: be1697038674a177eaced03732536c0df5b16983
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754729"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046143"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Meer informatie over uw Azure Cosmos DB factuur
 
@@ -22,7 +22,8 @@ Met Azure Cosmos DB wordt per uur gefactureerd op basis van de ingerichte door V
 
 In dit artikel worden enkele voor beelden gebruikt om inzicht te krijgen in de details die u op de maandelijkse factuur ziet. De getallen die in de voor beelden worden weer gegeven, kunnen verschillen als uw Azure Cosmos-containers een andere hoeveelheid door Voer inrichten hebben, als deze over meerdere regio's vallen of gedurende een maand een andere periode hebben.
 
->! Opmerking: facturering is voor elk deel van een uur in de periode, niet een duur van 60 minuten.
+> [!NOTE]
+> Facturering is voor elk deel van een uur in de periode, geen 60 minuut.
 
 ## <a name="billing-examples"></a>Voorbeelden van facturering
 
@@ -76,11 +77,11 @@ Als u de ingerichte door Voer voor een container of een set containers op 9:30 u
 
 ### <a name="billing-example-containers-with-shared-throughput-mode"></a>Facturerings voorbeeld: containers met gedeelde doorvoer modus
 
-* Als u een Azure Cosmos-account in VS-Oost 2 maakt met twee Azure Cosmos-data bases (met een set containers die de door Voer op database niveau delen) met de ingerichte door Voer van 50-K RU/SEC en 70-K RU/sec, hebt u een totaal ingericht door Voer van 120 K RU/sec.  
+* Als u een Azure Cosmos-account in VS-Oost 2 maakt met twee Azure Cosmos-data bases (met een set containers die de door Voer op database niveau delen) met de ingerichte door Voer van 50-K RU/SEC en 70-K RU/sec, hebt u een totale ingerichte door Voer van 120 K RU/sec.  
 
 * Er worden 1200 x $0,008 = $9.60/uur in rekening gebracht. 
 
-* Als uw door Voer is gewijzigd en u de ingerichte door Voer van elke Data Base hebt verhoogd met 10.000 RU/SEC voor elke Data Base, en u een nieuwe container toevoegt aan de eerste data base met de toegewezen doorvoer modus van 15 K RU/seconde naar uw gedeelde doorvoer database, wordt uw de totale ingerichte capaciteit is 155-K RU/sec. (60 K RU/sec. + 80 K RU/SEC + 15 K RU/sec.).  
+* Als uw door Voer is gewijzigd en u de ingerichte door Voer van elke Data Base hebt verhoogd door 10K RU/SEC voor elke Data Base, en u voegt een nieuwe container toe aan de eerste data base met de toegewezen doorvoer modus van 15-K RU/sec. de totale ingerichte capaciteit zou 155-K RU/SEC (60 K RU/sec. + 80 K RU/sec. + 15 K RU/sec.) zijn.  
 
 * Uw factuur wordt dan gewijzigd in: 1.550 * $0,008 = $12.40/uur.  
 
@@ -90,13 +91,13 @@ Als u de ingerichte door Voer voor een container of een set containers op 9:30 u
 
 ## <a name="billing-examples-with-geo-replication-and-multi-master"></a>Facturerings voorbeelden met geo-replicatie en multi-master  
 
-U kunt Azure-regio's overal ter wereld toevoegen aan of verwijderen uit uw Azure Cosmos-database account. De door u geconfigureerde doorvoer voor de verschillende Azure Cosmos-data bases en containers wordt gereserveerd in elk van de Azure-regio's die zijn gekoppeld aan uw Azure Cosmos-database account. Als de som van de ingerichte door Voer (RU/sec) die is geconfigureerd voor alle data bases en containers in uw Azure Cosmos-database account (ingericht per uur), T is en het aantal Azure-regio's dat aan uw database account is gekoppeld, N is, wordt het totaal de ingerichte door Voer voor een bepaald uur, voor uw Azure Cosmos-database account, (a) die is geconfigureerd met één schrijf regio, is gelijk aan T x N RU/sec. en (b) geconfigureerd met alle regio's die kunnen worden verwerkt, is gelijk aan T x (N + 1) RU/sec. respectievelijk. Ingerichte door Voer (enkele schrijf regio) kosten $0.008/uur per 100 RU/SEC en ingerichte door Voer met meerdere Beschrijf bare regio's (configuratie van meerdere masters) $0,016/per uur per 100 RU/sec. (Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/)). Met Azure Cosmos DB kunt u de gegevens uit een wille keurige regio lezen, ongeacht of er een enkele schrijf regio of meerdere schrijf regio's zijn.
+U kunt Azure-regio's overal ter wereld toevoegen aan of verwijderen uit uw Azure Cosmos-database account. De door u geconfigureerde doorvoer voor de verschillende Azure Cosmos-data bases en containers wordt gereserveerd in elk van de Azure-regio's die zijn gekoppeld aan uw Azure Cosmos-database account. Als de som van de ingerichte door Voer (RU/sec) die is geconfigureerd voor alle data bases en containers in uw Azure Cosmos-database account (ingericht per uur), T is en het aantal Azure-regio's dat aan uw database account is gekoppeld, N is, de totale ingerichte door Voer voor een bepaald uur, voor uw Azure Cosmos-database account, (a) die is geconfigureerd met één schrijf regio is gelijk aan T x N RU/sec. en (b) geconfigureerd met alle regio's die kunnen worden verwerkt, is gelijk aan T x (N + 1) RU/sec. Ingerichte door Voer (enkele schrijf regio) kosten $0.008/uur per 100 RU/SEC en ingerichte door Voer met meerdere Beschrijf bare regio's (configuratie van meerdere masters) $0,016/per uur per 100 RU/sec. (Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/)). Met Azure Cosmos DB kunt u de gegevens uit een wille keurige regio lezen, ongeacht of er een enkele schrijf regio of meerdere schrijf regio's zijn.
 
 ### <a name="billing-example-multi-region-azure-cosmos-account-single-region-writes"></a>Voor beeld van facturering: meerdere regio's Azure Cosmos-account, schrijf bewerkingen in één regio
 
 We gaan ervan uit dat u een Azure Cosmos-container hebt in VS West. De container wordt gemaakt met een door Voer van 10.000 RU/SEC en u hebt 1 TB aan gegevens per maand opgeslagen. We gaan ervan uit dat u drie regio's (VS-Oost, Europa-noord en Azië-oost) toevoegt aan uw Azure Cosmos-account, elk met dezelfde opslag en door voer. Uw totale maandelijkse factuur wordt (ervan uitgaande in 30 dagen per maand). Uw factuur zou er als volgt uitzien: 
 
-|**Item** |**Gebruik (maand)** |**Malen** |**Maandelijkse kosten** |
+|**Item** |**Gebruik (maand)** |**Snelheid** |**Maandelijkse kosten** |
 |---------|---------|---------|-------|
 |Doorvoerfactuur voor container in US - west      | 10.000 RU/SEC * 24 * 30    |$0,008 per 100 RU/sec per uur   |$576|
 |Doorvoerfactuur voor drie extra regio's: US - oost, Europa - noord en Azië - oost       | 3 * 10.000 RU/SEC * 24 * 30    |$0,008 per 100 RU/sec per uur  |$1.728|
@@ -110,7 +111,7 @@ We gaan ervan uit dat u een Azure Cosmos-container hebt in VS West. De container
 
 We gaan ervan uit dat u een Azure Cosmos-container maakt in VS West. De container wordt gemaakt met een door Voer van 10.000 RU/SEC en u hebt 1 TB aan gegevens per maand opgeslagen. We gaan ervan uit dat u drie regio's toevoegt (VS-Oost, Europa-noord en Azië-oost), elk met dezelfde opslag en door Voer en u de mogelijkheid wilt geven om te schrijven naar de containers in alle regio's die zijn gekoppeld aan uw Azure Cosmos-account. De totale maandelijkse factuur wordt als volgt (indien 30 dagen per maand):
 
-|**Item** |**Gebruik (maand)**|**Malen** |**Maandelijkse kosten** |
+|**Item** |**Gebruik (maand)**|**Snelheid** |**Maandelijkse kosten** |
 |---------|---------|---------|-------|
 |Doorvoer factuur voor container in West-VS (alle regio's zijn schrijfbaar)       | 10.000 RU/SEC * 24 * 30    |$0,016 per 100 RU/sec per uur    |$1.152 |
 |Doorvoer factuur voor drie extra regio's: VS-Oost, Europa-noord en Azië-oost (alle regio's zijn schrijfbaar)        | (3 + 1) * 10.000 RU/SEC * 24 * 30    |$0,016 per 100 RU/sec per uur   |$4.608 |
@@ -180,7 +181,7 @@ In de onderstaande afbeelding ziet u de wijzigingen in de totale ingerichte door
 
 De totale maandelijkse factuur (ervan uitgaande tot 30 dagen/720 uur per maand) wordt als volgt berekend:
 
-|**Loopt**  |**RU/s** |**Item** |**Gebruik (elk uur)** |**Kosten** |
+|**Hours**  |**RU/s** |**Item** |**Gebruik (elk uur)** |**Kosten** |
 |---------|---------|---------|-------|-------|
 |[0-100] |D1:10K <br/>D2:30K <br/>C1:20.000 |Doorvoer factuur voor container in West-VS (alle regio's zijn schrijfbaar)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$960  |
 | | |Doorvoer factuur voor twee extra regio's: VS-Oost, Europa-noord (alle regio's zijn schrijfbaar)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2.880  |
@@ -256,7 +257,7 @@ Wat u effectief hebt aangeschaft, is een tegoed van $8 per uur, voor 100 K RU pe
 |Japan - Oost|$0,009 |50 K| $4,50 |$3.240 |
 |||Betalen naar gebruik|$8,50|$6120|
 |Aangeschafte gereserveerde capaciteit|$0,0064 (20% korting) |100 RU/sec of $8 capaciteit vooraf aangeschaft |-$8|-$5.760 |
-|Nettofactuur|||$0,50 |$360 |
+|Nettofactuur|||$ 0,50 |$360 |
 
 ## <a name="next-steps"></a>Volgende stappen
 

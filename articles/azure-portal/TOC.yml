@@ -54,8 +54,12 @@
                   href: supportability/classic-deployment-model-quota-increase-requests.md
             - name: Netwerklimieten verhogen
               href: supportability/networking-quota-requests.md
+    - name: Problemen met de Azure-portal oplossen
+      items:
         - name: Abonnementsproblemen gerelateerd aan regio of SKU oplossen
           href: supportability/sku-series-unavailable.md
+        - name: Een browsertracering vastleggen om problemen op te lossen
+          href: capture-browser-trace.md
 - name: Naslaginformatie
   items:
     - name: Sneltoetsen
