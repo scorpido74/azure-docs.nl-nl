@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7bc44d8e755af3d212d616425c6a1fd925172298
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5aa9a4f0ab536c197f08cb64a5cee8280c23039f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602933"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982062"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Met SQL en Python functies maken voor gegevens in SQL Server
 Dit document laat zien hoe voor het genereren van functies voor gegevens die zijn opgeslagen op een SQL Server-VM in Azure waarmee algoritmen efficiënter Leer van de gegevens. U kunt SQL of een programmeertaal zoals Python gebruiken om deze taak te volbrengen. Beide methoden die hier.
@@ -31,7 +31,7 @@ Deze taak is een stap in de [Team Data Science Process (TDSP)](https://docs.micr
 ## <a name="prerequisites"></a>Vereisten
 In dit artikel wordt ervan uitgegaan dat u hebt:
 
-* Een Azure storage-account gemaakt. Als u instructies nodig hebt, raadpleegt u [maken van een Azure Storage-account](../../storage/common/storage-quickstart-create-account.md)
+* Een Azure storage-account gemaakt. Als u instructies nodig hebt, raadpleegt u [maken van een Azure Storage-account](../../storage/common/storage-account-create.md)
 * Uw gegevens opgeslagen in SQL Server. Als u niet hebt gedaan, Zie [gegevens verplaatsen naar een Azure SQL Database voor Azure Machine Learning](move-sql-azure.md) voor instructies over het verplaatsen van de gegevens bevat.
 
 ## <a name="sql-featuregen"></a>Functie genereren met behulp van SQL
@@ -68,7 +68,7 @@ Hier volgt een korte uitleg van breedtegraad/lengtegraad locatiegegevens (resour
 * Het teken geeft aan of we Noord of -Zuid, Oost- of westen van de hele wereld.
 * Een andere waarde dan nul honderden cijfer lengtegraad aangeeft, niet breedtegraad wordt gebruikt.
 * De tientallen cijfer biedt een positie naar ongeveer 1000 kilometer zijn verwijderd. Het biedt nuttige informatie over welke continent of in de Indische Oceaan worden op.
-* De eenheden cijfers (één decimaal graad) biedt een positie tot 111 kilometer (60 zeemijl, ongeveer 69 mijl). Het kan ongeveer, geeft wat grote staat of land/regio, zijn we in.
+* De eenheden cijfers (één decimaal graad) biedt een positie tot 111 kilometer (60 zeemijl, ongeveer 69 mijl). Het geeft, ongeveer, in welke staat of welk land of welke regio we zich bevinden.
 * De eerste decimaal de moeite waard tot 11.1 km is: het de positie van een grote plaats van een nabijgelegen grote plaats kunt onderscheiden.
 * De tweede decimaalpositie de moeite waard tot 1.1 km is: kan het één village scheiden van de volgende.
 * De derde decimaal de moeite waard is maximaal 110 m: dat het een grote agricultural veld of institutionele campus kunt identificeren.

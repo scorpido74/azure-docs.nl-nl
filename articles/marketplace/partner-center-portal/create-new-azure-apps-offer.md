@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 60a3392474d11c306d28b9d95668a1e783cdfbb0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: eb8540ac1904b46ba428b3b1e703e59c8b18d9e8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930713"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046042"
 ---
 # <a name="create-an-azure-application-offer"></a>Een Azure-toepassingsaanbieding maken
 
@@ -48,7 +48,7 @@ Alle Azure-toepassingen bevatten ten minste twee bestanden in de hoofdmap van ee
 
 * Een gebruikersinterface definitie voor de Azure-app voor het maken van toepassingen met de naam [createUiDefinition. json](https://docs.microsoft.com/azure/managed-applications/create-uidefinition-overview).  In de gebruikersinterface geeft u elementen op waarmee consumenten parameterwaarden kunnen opgeven.
 
-Alle nieuwe aanbiedingen van Azure Application moeten een [GUID voor gebruiks toewijzing](??)van een Azure-partner bevatten.
+Alle nieuwe aanbiedingen van Azure Application moeten een [GUID voor gebruiks toewijzing](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution)van een Azure-partner bevatten.
 
 ### <a name="before-you-begin"></a>Voordat u begint
 

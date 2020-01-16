@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: c13b2a24147c542e36b78e8ae17af8e85414cd74
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 93cbf8e9e60ef48e1ff3516dd4e9e123f70e0f42
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533459"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982439"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Zelf studie: uw eerste classificatie model maken met geautomatiseerde machine learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -138,9 +138,9 @@ U voltooit de volgende proef installatie en voert stappen uit in Azure Machine L
         Validatie | Kies een type Kruis validatie en aantal testen.|Validatie type:<br>Kruis validatie &nbsp;k-vouwen&nbsp; <br> <br> Aantal validaties: 2
         Gelijktijdigheid| Het maximum aantal parallelle iteraties dat wordt uitgevoerd en gebruikte kernen per herhaling| Maxi maal aantal&nbsp;gelijktijdige&nbsp;herhalingen: 5<br> Maxi maal aantal&nbsp;kernen&nbsp;per&nbsp;herhaling: geen
         
-        Selecteer **OK**.
+        Selecteer **Opslaan**.
 
-1. Selecteer **maken** om het experiment uit te voeren. Het scherm **Details uitvoeren** wordt geopend met de **uitvoerings status** , omdat de voor bereiding van het experiment begint.
+1. Selecteer **volt ooien** om het experiment uit te voeren. Het scherm **Details uitvoeren** wordt geopend met de **uitvoerings status** , omdat de voor bereiding van het experiment begint.
 
 >[!IMPORTANT]
 > Voor bereiding duurt **10-15 minuten** om de uitvoering van het experiment voor te bereiden.

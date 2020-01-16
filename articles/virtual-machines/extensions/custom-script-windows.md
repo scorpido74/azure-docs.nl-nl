@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 9fe0875f34745b0b5b8b1b7e8b352116b6cbf997
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: ff84b085b7d40bcb6c5a0aa87416e5814f67814b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941909"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979571"
 ---
 # <a name="custom-script-extension-for-windows"></a>Aangepaste script extensie voor Windows
 
@@ -189,7 +189,7 @@ Als u de door de gebruiker toegewezen identiteit op de doel-VM-VMSS wilt gebruik
 
 Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Het JSON-schema, dat in de vorige sectie wordt beschreven, kan worden gebruikt in een Azure Resource Manager sjabloon voor het uitvoeren van de aangepaste script extensie tijdens de implementatie. In de volgende voor beelden ziet u hoe u de aangepaste script extensie gebruikt:
 
-* [Zelf studie: extensies voor virtuele machines implementeren met Azure Resource Manager sjablonen](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
+* [Zelf studie: extensies voor virtuele machines implementeren met Azure Resource Manager sjablonen](../../azure-resource-manager/templates/template-tutorial-deploy-vm-extensions.md)
 * [Toepassing met twee lagen implementeren in Windows en Azure SQL DB](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
 
 ## <a name="powershell-deployment"></a>Power shell-implementatie

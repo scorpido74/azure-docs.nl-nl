@@ -1,10 +1,10 @@
 ---
 title: Azure Instance Metadata Service
-description: De REST-interface voor het ophalen van informatie over de compute-, netwerk-en aanstaande onderhouds gebeurtenissen van Windows VM.
+description: De REST-interface voor het ophalen van informatie over Windows Vm's compute, Network en aanstaande onderhouds gebeurtenissen.
 services: virtual-machines-windows
 documentationcenter: ''
 author: KumariSupriya
-manager: harijayms
+manager: paulmey
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 901e075572e0ed73dc7d0633941311c04b4f3c1c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8849029f59ee4eef3baa43a6027022598e12d102
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358357"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045885"
 ---
 # <a name="azure-instance-metadata-service"></a>Meta gegevens service van Azure-exemplaar
 
-De Azure Instance Metadata Service bevat informatie over het uitvoeren van exemplaren van virtuele machines die kunnen worden gebruikt voor het beheren en configureren van uw virtuele machines.
-Dit omvat informatie zoals SKU, netwerk configuratie en aanstaande onderhouds gebeurtenissen. Zie [meta data api's](#metadata-apis)(Engelstalig) voor meer informatie over welk type informatie er beschikbaar is.
+De Azure Instance Metadata Service (IMDS) bevat informatie over actieve exemplaren van virtuele machines en kan worden gebruikt voor het beheren en configureren van uw virtuele machines.
+De verstrekte informatie omvat de gebeurtenissen SKU, netwerk configuratie en gepland onderhoud. Zie [meta data api's](#metadata-apis)voor een volledige lijst van de beschik bare gegevens.
 
 De Instance Metadata Service van Azure is een REST-eind punt dat toegankelijk is voor alle virtuele IaaS-machines die via de [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/)zijn gemaakt.
 Het eind punt is beschikbaar via een bekend, niet-routeerbaar IP-adres (`169.254.169.254`) dat alleen vanuit de virtuele machine kan worden geopend.
@@ -38,14 +38,15 @@ De service is beschikbaar in de algemeen beschik bare Azure-regio's. Niet alle A
 
 Regio's                                        | Availability?                                 | Ondersteunde versies
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Alle algemeen beschik bare wereld wijde Azure-regio's](https://azure.microsoft.com/regions/)     | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
-[Azure China](https://www.azure.cn/)                                                     | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
-[Azure Duitsland](https://azure.microsoft.com/overview/clouds/germany/)                    | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
+[Alle algemeen beschik bare wereld wijde Azure-regio's](https://azure.microsoft.com/regions/)     | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Azure China 21Vianet](https://www.azure.cn/)                                            | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Azure Duitsland](https://azure.microsoft.com/overview/clouds/germany/)                    | Algemeen verkrijgbaar | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
 
-Deze tabel wordt bijgewerkt wanneer er service-updates zijn en of er nieuwe ondersteunde versies beschikbaar zijn.
+Deze tabel wordt bijgewerkt wanneer er service-updates zijn en/of er nieuwe ondersteunde versies beschikbaar zijn.
 
 Als u de Instance Metadata Service wilt uitproberen, maakt u een VM op basis van [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) of de [Azure Portal](https://portal.azure.com) in de bovenstaande regio's en volgt u de voor beelden hieronder.
+Meer voor beelden van het uitvoeren van een query op IMDS vindt u voor [beelden van Azure instance meta data](https://github.com/microsoft/azureimds)
 
 ## <a name="usage"></a>Gebruik
 
@@ -130,7 +131,7 @@ HTTP-statuscode | Reden
 200 OK |
 400 ongeldige aanvraag | `Metadata: true` header ontbreekt of de indeling ontbreekt tijdens het uitvoeren van een query op een Leaf-knoop punt
 404 – Niet gevonden | Het aangevraagde element bestaat niet
-methode 405 niet toegestaan | Alleen `GET`-en `POST`-aanvragen worden ondersteund
+methode 405 niet toegestaan | Alleen `GET`-aanvragen worden ondersteund
 429 te veel aanvragen | De API ondersteunt momenteel Maxi maal vijf query's per seconde
 500-service fout     | Na enige tijd opnieuw proberen
 
@@ -191,7 +192,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interfac
 **Aanvraag**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019-03-11"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019-06-01"
 ```
 
 **Antwoord**
@@ -204,30 +205,83 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
   "compute": {
     "azEnvironment": "AzurePublicCloud",
     "customData": "",
-    "location": "westus",
-    "name": "jubilee",
-    "offer": "Windows-10",
-    "osType": "Windows",
+    "location": "centralus",
+    "name": "negasonic",
+    "offer": "lampstack",
+    "osType": "Linux",
     "placementGroupId": "",
     "plan": {
-        "name": "",
-        "product": "",
-        "publisher": ""
+        "name": "5-6",
+        "product": "lampstack",
+        "publisher": "bitnami"
     },
-    "platformFaultDomain": "1",
-    "platformUpdateDomain": "1",
+    "platformFaultDomain": "0",
+    "platformUpdateDomain": "0",
     "provider": "Microsoft.Compute",
     "publicKeys": [],
-    "publisher": "MicrosoftWindowsDesktop",
+    "publisher": "bitnami",
     "resourceGroupName": "myrg",
     "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/negasonic",
-    "sku": "rs4-pro",
+    "sku": "5-6",
+    "storageProfile": {
+        "dataDisks": [
+          {
+            "caching": "None",
+            "createOption": "Empty",
+            "diskSizeGB": "1024",
+            "image": {
+              "uri": ""
+            },
+            "lun": "0",
+            "managedDisk": {
+              "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+              "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampledatadiskname",
+            "vhd": {
+              "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+          }
+        ],
+        "imageReference": {
+          "id": "",
+          "offer": "UbuntuServer",
+          "publisher": "Canonical",
+          "sku": "16.04.0-LTS",
+          "version": "latest"
+        },
+        "osDisk": {
+          "caching": "ReadWrite",
+          "createOption": "FromImage",
+          "diskSizeGB": "30",
+          "diffDiskSettings": {
+            "option": "Local"
+          },
+          "encryptionSettings": {
+            "enabled": "false"
+          },
+          "image": {
+            "uri": ""
+          },
+          "managedDisk": {
+            "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+            "storageAccountType": "Standard_LRS"
+          },
+          "name": "exampleosdiskname",
+          "osType": "Linux",
+          "vhd": {
+            "uri": ""
+          },
+          "writeAcceleratorEnabled": "false"
+        }
+    },
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "Department:IT;Environment:Prod;Role:WorkerRole",
-    "version": "17134.345.59",
+    "tags": "Department:IT;Environment:Test;Role:WebRole",
+    "version": "7.1.1902271506",
     "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
     "vmScaleSetName": "",
-    "vmSize": "Standard_D1",
+    "vmSize": "Standard_A1_v2",
     "zone": "1"
   },
   "network": {
@@ -264,14 +318,14 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 Meta gegevens van exemplaren kunnen worden opgehaald in Windows via het `curl`-programma:
 
 ```powershell
-curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2019-03-11 | select -ExpandProperty Content
+curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2019-06-01 | select -ExpandProperty Content
 ```
 
 Of via de `Invoke-RestMethod` Power shell-cmdlet:
 
 ```powershell
 
-Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2019-03-11 -Method get
+Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2019-06-01 -Method get
 ```
 
 **Antwoord**
@@ -284,31 +338,84 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
   "compute": {
     "azEnvironment": "AzurePublicCloud",
     "customData": "",
-    "location": "westus",
-    "name": "SQLTest",
-    "offer": "SQL2016SP1-WS2016",
-    "osType": "Windows",
+    "location": "centralus",
+    "name": "negasonic",
+    "offer": "lampstack",
+    "osType": "Linux",
     "placementGroupId": "",
     "plan": {
-        "name": "",
-        "product": "",
-        "publisher": ""
+        "name": "5-6",
+        "product": "lampstack",
+        "publisher": "bitnami"
     },
     "platformFaultDomain": "0",
     "platformUpdateDomain": "0",
     "provider": "Microsoft.Compute",
     "publicKeys": [],
-    "publisher": "MicrosoftSQLServer",
+    "publisher": "bitnami",
     "resourceGroupName": "myrg",
     "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/negasonic",
-    "sku": "Enterprise",
+    "sku": "5-6",
+    "storageProfile": {
+        "dataDisks": [
+          {
+            "caching": "None",
+            "createOption": "Empty",
+            "diskSizeGB": "1024",
+            "image": {
+              "uri": ""
+            },
+            "lun": "0",
+            "managedDisk": {
+              "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+              "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampledatadiskname",
+            "vhd": {
+              "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+          }
+        ],
+        "imageReference": {
+          "id": "",
+          "offer": "UbuntuServer",
+          "publisher": "Canonical",
+          "sku": "16.04.0-LTS",
+          "version": "latest"
+        },
+        "osDisk": {
+          "caching": "ReadWrite",
+          "createOption": "FromImage",
+          "diskSizeGB": "30",
+          "diffDiskSettings": {
+            "option": "Local"
+          },
+          "encryptionSettings": {
+            "enabled": "false"
+          },
+          "image": {
+            "uri": ""
+          },
+          "managedDisk": {
+            "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+            "storageAccountType": "Standard_LRS"
+          },
+          "name": "exampleosdiskname",
+          "osType": "Linux",
+          "vhd": {
+            "uri": ""
+          },
+          "writeAcceleratorEnabled": "false"
+        }
+    },
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
     "tags": "Department:IT;Environment:Test;Role:WebRole",
-    "version": "13.0.400110",
-    "vmId": "453945c8-3923-4366-b2d3-ea4c80e9b70e",
+    "version": "7.1.1902271506",
+    "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
     "vmScaleSetName": "",
-    "vmSize": "Standard_DS2",
-    "zone": ""
+    "vmSize": "Standard_A1_v2",
+    "zone": "1"
   },
   "network": {
     "interface": [
@@ -339,7 +446,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 ## <a name="metadata-apis"></a>Api's voor meta gegevens
 
-#### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>De volgende Api's zijn beschikbaar via het eind punt voor meta gegevens:
+De volgende Api's zijn beschikbaar via het eind punt voor meta gegevens:
 
 Gegevens | Beschrijving | Geïntroduceerde versie
 -----|-------------|-----------------------
@@ -349,7 +456,8 @@ instance | Zie [instance API](#instance-api) | 2017-04-02
 scheduledevents | Zie [Scheduled Events](scheduled-events.md) | 2017-08-01
 
 #### <a name="instance-api"></a>Exemplaar-API
-##### <a name="the-following-compute-categories-are-available-through-the-instance-api"></a>De volgende Compute-categorieën zijn beschikbaar via de instance API:
+
+De volgende Compute-categorieën zijn beschikbaar via de instance API:
 
 > [!NOTE]
 > Via het eind punt van de meta gegevens zijn de volgende categorieën toegankelijk via instance/compute
@@ -357,13 +465,13 @@ scheduledevents | Zie [Scheduled Events](scheduled-events.md) | 2017-08-01
 Gegevens | Beschrijving | Geïntroduceerde versie
 -----|-------------|-----------------------
 azEnvironment | Azure-omgeving waarin de virtuele machine wordt uitgevoerd | 10-01-2018
-customData | [Aangepaste gegevens](#custom-data) weer geven | 2019-02-01
+customData | Deze functie is momenteel uitgeschakeld en deze documentatie wordt bijgewerkt zodra deze beschikbaar is | 2019-02-01
 location | Azure-regio waarin de virtuele machine wordt uitgevoerd | 2017-04-02
 name | Naam van de virtuele machine | 2017-04-02
 offer | Informatie over de installatie kopie van de virtuele machine weer geven en die alleen aanwezig is voor installatie kopieën die vanuit de Azure-installatie kopie galerie | 2017-04-02
 besturingssysteemtype | Linux of Windows | 2017-04-02
 placementGroupId | [Plaatsings groep](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) van de schaalset voor virtuele machines | 2017-08-01
-plannen | [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) met naam, product en uitgever voor een virtuele machine als de Azure Marketplace-installatie kopie | 2018-04-02
+plannen | [Plan](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) met naam, product en uitgever voor een virtuele machine als dit een Azure Marketplace-installatie kopie is | 2018-04-02
 platformUpdateDomain |  [Domein bijwerken](manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
 platformFaultDomain | [Fout domein](manage-availability.md) waarop de VM wordt uitgevoerd | 2017-04-02
 provider | Provider van de virtuele machine | 10-01-2018
@@ -372,16 +480,17 @@ publisher | Uitgever van de VM-installatie kopie | 2017-04-02
 resourceGroupName | [Resource groep](../../azure-resource-manager/management/overview.md) voor uw virtuele machine | 2017-08-01
 resourceId | De [volledig gekwalificeerde](https://docs.microsoft.com/rest/api/resources/resources/getbyid) id van de resource | 2019-03-11
 sku | Specifieke SKU voor de VM-installatie kopie | 2017-04-02
+storageProfile | [Opslag profiel](#storage-profile) bekijken | 2019-06-01
 subscriptionId | Azure-abonnement voor de virtuele machine | 2017-08-01
-tags | [Labels](../../azure-resource-manager/resource-group-using-tags.md) voor uw virtuele machine  | 2017-08-01
+tags | [Labels](../../azure-resource-manager/management/tag-resources.md) voor uw virtuele machine  | 2017-08-01
 tagsList | Tags die zijn opgemaakt als een JSON-matrix voor eenvoudiger programmatisch parseren  | 2019-06-04
 versie | Versie van de VM-installatie kopie | 2017-04-02
 vmId | De [unieke id](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) voor de virtuele machine | 2017-04-02
-vmScaleSetName | [Naam van de virtuele-machine schaalset](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) van de schaalset voor virtuele machines | 2017-12-01
+vmScaleSetName | [Naam van de schaalset voor virtuele machines](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) van de schaalset voor virtuele machines | 2017-12-01
 vmSize | [VM-grootte](sizes.md) | 2017-04-02
 zone | [Beschikbaarheids zone](../../availability-zones/az-overview.md) van uw virtuele machine | 2017-12-01
 
-##### <a name="the-following-network-categories-are-available-through-the-instance-api"></a>De volgende netwerk categorieën zijn beschikbaar via de exemplaar-API:
+De volgende netwerk categorieën zijn beschikbaar via de exemplaar-API:
 
 > [!NOTE]
 > Via het eind punt van de meta gegevens zijn de volgende categorieën toegankelijk via instance/Network/Interface
@@ -397,7 +506,7 @@ macAddress | Mac-adres van VM | 2017-04-02
 
 ## <a name="attested-data"></a>Attestende gegevens
 
-Meta gegevens van exemplaren reageren op http-eind punt op 169.254.169.254. Een deel van het scenario dat wordt verzorgd door Instance Metadata Service is het garanderen van garanties dat de geantwoorde gegevens afkomstig zijn van Azure. We ondertekenen een deel van deze informatie zodat installatie kopieën van Marketplace er zeker van kunnen zijn dat de installatie kopie wordt uitgevoerd op Azure.
+Een deel van het scenario dat wordt verzorgd door Instance Metadata Service is om ervoor te zorgen dat de verstrekte gegevens afkomstig zijn van Azure. We ondertekenen een deel van deze informatie zodat installatie kopieën van Marketplace er zeker van kunnen zijn dat de installatie kopie wordt uitgevoerd op Azure.
 
 ### <a name="example-attested-data"></a>Voor beeld van Attestation-gegevens
 
@@ -412,7 +521,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-ver
 ```
 
 API-Version is een verplicht veld. Raadpleeg de [sectie Service beschikbaarheid](#service-availability) voor ondersteunde API-versies.
-Nonce is een optionele teken reeks van tien cijfers. Nonce kan worden gebruikt om de aanvraag bij te houden en als er geen waarde is opgegeven, wordt de huidige UTC-tijds tempel geretourneerd in de gecodeerde antwoord reeks.
+Nonce is een optionele teken reeks van tien cijfers. Als u dit niet opgeeft, retourneert IMDS de huidige UTC-tijds tempel. Vanwege het cache mechanisme van IMDS kan een eerder in de cache opgeslagen nonce-waarde worden geretourneerd.
 
  **Antwoord**
 
@@ -425,7 +534,7 @@ Nonce is een optionele teken reeks van tien cijfers. Nonce kan worden gebruikt o
 }
 ```
 
-> De hand tekening-blob is een ondertekende [pkcs7](https://aka.ms/pkcs7) -versie van het document. Het bevat het certificaat dat wordt gebruikt voor het ondertekenen samen met de VM-Details, zoals vmId, nonce, subscriptionId, time stamp voor het maken en verlopen van het document en de plannings informatie over de installatie kopie. De plan gegevens worden alleen ingevuld voor installatie kopieën van Azure-markt plaatsen. Het certificaat kan worden geëxtraheerd uit het antwoord en wordt gebruikt om te valideren dat het antwoord geldig is en afkomstig is van Azure.
+De hand tekening-blob is een ondertekende [pkcs7](https://aka.ms/pkcs7) -versie van het document. Het bevat het certificaat dat wordt gebruikt voor het ondertekenen samen met de VM-Details zoals vmId, SKU, nonce, subscriptionId, time stamp voor het maken en verlopen van het document en de plannings informatie over de installatie kopie. De plan gegevens worden alleen ingevuld voor installatie kopieën van Azure-markt plaatsen. Het certificaat kan worden geëxtraheerd uit het antwoord en wordt gebruikt om te valideren dat het antwoord geldig is en afkomstig is van Azure.
 
 #### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>De verwerkte meta gegevens worden opgehaald in de virtuele Windows-machine
 
@@ -444,7 +553,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI "http://169.254.169.254/met
 ```
 
 API-Version is een verplicht veld. Raadpleeg de sectie Service beschikbaarheid voor ondersteunde API-versies.
-Nonce is een optionele teken reeks van tien cijfers. Nonce kan worden gebruikt om de aanvraag bij te houden en als er geen waarde is opgegeven, wordt de huidige UTC-tijds tempel geretourneerd in de gecodeerde antwoord reeks.
+Nonce is een optionele teken reeks van tien cijfers. Als u dit niet opgeeft, retourneert IMDS de huidige UTC-tijds tempel. Vanwege het cache mechanisme van IMDS kan een eerder in de cache opgeslagen nonce-waarde worden geretourneerd.
 
  **Antwoord**
 
@@ -457,7 +566,7 @@ Nonce is een optionele teken reeks van tien cijfers. Nonce kan worden gebruikt o
 }
 ```
 
-> De hand tekening-blob is een ondertekende [pkcs7](https://aka.ms/pkcs7) -versie van het document. Het bevat het certificaat dat wordt gebruikt voor het ondertekenen samen met de VM-Details, zoals vmId, nonce, subscriptionId, time stamp voor het maken en verlopen van het document en de plannings informatie over de installatie kopie. De plan gegevens worden alleen ingevuld voor installatie kopieën van Azure-markt plaatsen. Het certificaat kan worden geëxtraheerd uit het antwoord en wordt gebruikt om te valideren dat het antwoord geldig is en afkomstig is van Azure.
+De hand tekening-blob is een ondertekende [pkcs7](https://aka.ms/pkcs7) -versie van het document. Het bevat het certificaat dat wordt gebruikt voor het ondertekenen samen met de VM-Details zoals vmId, SKU, nonce, subscriptionId, time stamp voor het maken en verlopen van het document en de plannings informatie over de installatie kopie. De plan gegevens worden alleen ingevuld voor installatie kopieën van Azure-markt plaatsen. Het certificaat kan worden geëxtraheerd uit het antwoord en wordt gebruikt om te valideren dat het antwoord geldig is en afkomstig is van Azure.
 
 
 ## <a name="example-scenarios-for-usage"></a>Voorbeeld scenario's voor gebruik  
@@ -503,7 +612,7 @@ Als service provider kunt u een ondersteunings oproep krijgen waarin u meer info
 **Aanvraag**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2017-08-01"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
 ```
 
 **Antwoord**
@@ -513,19 +622,86 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 
 ```json
 {
-  "compute": {
-    "location": "CentralUS",
-    "name": "IMDSCanary",
-    "offer": "RHEL",
+    "azEnvironment": "AzurePublicCloud",
+    "customData": "",
+    "location": "centralus",
+    "name": "negasonic",
+    "offer": "lampstack",
     "osType": "Linux",
+    "placementGroupId": "",
+    "plan": {
+        "name": "5-6",
+        "product": "lampstack",
+        "publisher": "bitnami"
+    },
     "platformFaultDomain": "0",
     "platformUpdateDomain": "0",
-    "publisher": "RedHat",
-    "sku": "7.2",
-    "version": "7.2.20161026",
-    "vmId": "5c08b38e-4d57-4c23-ac45-aca61037f084",
-    "vmSize": "Standard_DS2"
-  }
+    "provider": "Microsoft.Compute",
+    "publicKeys": [],
+    "publisher": "bitnami",
+    "resourceGroupName": "myrg",
+    "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/negasonic",
+    "sku": "5-6",
+    "storageProfile": {
+        "dataDisks": [
+          {
+            "caching": "None",
+            "createOption": "Empty",
+            "diskSizeGB": "1024",
+            "image": {
+              "uri": ""
+            },
+            "lun": "0",
+            "managedDisk": {
+              "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+              "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampledatadiskname",
+            "vhd": {
+              "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+          }
+        ],
+        "imageReference": {
+          "id": "",
+          "offer": "UbuntuServer",
+          "publisher": "Canonical",
+          "sku": "16.04.0-LTS",
+          "version": "latest"
+        },
+        "osDisk": {
+          "caching": "ReadWrite",
+          "createOption": "FromImage",
+          "diskSizeGB": "30",
+          "diffDiskSettings": {
+            "option": "Local"
+          },
+          "encryptionSettings": {
+            "enabled": "false"
+          },
+          "image": {
+            "uri": ""
+          },
+          "managedDisk": {
+            "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+            "storageAccountType": "Standard_LRS"
+          },
+          "name": "exampleosdiskname",
+          "osType": "Linux",
+          "vhd": {
+            "uri": ""
+          },
+          "writeAcceleratorEnabled": "false"
+        }
+    },
+    "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    "tags": "Department:IT;Environment:Test;Role:WebRole",
+    "version": "7.1.1902271506",
+    "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
+    "vmScaleSetName": "",
+    "vmSize": "Standard_A1_v2",
+    "zone": "1"
 }
 ```
 
@@ -549,7 +725,7 @@ De regio's en de waarden van de Azure-omgeving worden hieronder weer gegeven.
 ---------|-----------------
 [Alle algemeen beschik bare wereld wijde Azure-regio's](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
-[Azure China](https://azure.microsoft.com/global-infrastructure/china)                   | AzureChinaCloud
+[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china)          | AzureChinaCloud
 [Azure Duitsland](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ### <a name="getting-the-tags-for-the-vm"></a>De labels voor de virtuele machine ophalen
@@ -637,7 +813,8 @@ Verification successful
     "expiresOn":"11/28/18 06:16:17 -0000"
   },
 "vmId":"d3e0e374-fda6-4649-bbc9-7f20dc379f34",
-"subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
+"subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+"sku": "RS3-Pro"
 }
 ```
 
@@ -645,10 +822,11 @@ Gegevens | Beschrijving
 -----|------------
 nonce | Door de gebruiker opgegeven optionele teken reeks met de aanvraag. Als er geen nonce in de aanvraag is opgegeven, wordt de huidige UTC-tijds tempel geretourneerd
 plannen | Een virtuele machine in een Azure Marketplace-installatie kopie [plannen](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) , met naam, product en uitgever
-timestamp/createdOn | Het tijds tempel waarop het eerste ondertekende document is gemaakt
-timestamp/expiresOn | Het tijds tempel waarop het ondertekende document verloopt
+timestamp/createdOn | De UTC-tijds tempel waarop het eerste ondertekende document is gemaakt
+timestamp/expiresOn | De UTC-tijds tempel waarop het ondertekende document verloopt
 vmId |  De [unieke id](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) voor de virtuele machine
 subscriptionId | Azure-abonnement voor de virtuele machine, geïntroduceerd in `2019-04-30`
+sku | Specifieke SKU voor de VM-installatie kopie, geïntroduceerd in `2019-11-01`
 
 #### <a name="verifying-the-signature"></a>De hand tekening verifiëren
 
@@ -661,7 +839,7 @@ Nadat u de hand tekening hierboven hebt opgehaald, kunt u controleren of de hand
 ---------|-----------------
 [Alle algemeen beschik bare wereld wijde Azure-regio's](https://azure.microsoft.com/regions/)     | metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure China](https://azure.microsoft.com/global-infrastructure/china/)                  | metadata.azure.cn
+[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | metadata.azure.cn
 [Azure Duitsland](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
 
 ```bash
@@ -725,35 +903,120 @@ Network Destination        Netmask          Gateway       Interface  Metric
 route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
-### <a name="custom-data"></a>Aangepaste gegevens
-Instance Metadata Service biedt de mogelijkheid om de virtuele machine toegang tot de aangepaste gegevens te geven. De binaire gegevens moeten kleiner zijn dan 64 KB en worden door gegeven aan de virtuele machine in base64-gecodeerde vorm.
+### <a name="storage-profile"></a>Opslagprofiel
 
-Aangepaste Azure-gegevens kunnen worden ingevoegd op de VM via REST Api's, Power shell-cmdlets, een Azure Command Line Interface (CLI) of een ARM-sjabloon.
+Instance Metadata Service kunt details opgeven over de opslag schijven die zijn gekoppeld aan de virtuele machine. Deze gegevens zijn te vinden op het eind punt van de instantie/Compute/storageProfile.
 
-Zie [aangepaste gegevens en Cloud-init op Microsoft Azure](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/)voor een Azure-opdracht regel interface voor beeld.
+Het opslag profiel van een virtuele machine is onderverdeeld in drie categorieën: verwijzing naar afbeelding, besturingssysteem schijf en gegevens schijven.
 
-Zie [een virtuele machine implementeren met CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata)voor een voor beeld van een arm-sjabloon.
+Het verwijzings object voor de afbeelding bevat de volgende informatie over de installatie kopie van het besturings systeem:
 
-Aangepaste gegevens zijn beschikbaar voor alle processen die worden uitgevoerd in de virtuele machine. Klanten wordt aangeraden geen geheime gegevens in te voegen in aangepaste gegevens.
+Gegevens    | Beschrijving
+--------|-----------------
+id      | Resource-id
+offer   | Aanbieding van de installatie kopie van het platform of de Marketplace
+publisher | Uitgever van installatie kopie
+sku     | Afbeeldings-SKU
+versie | Versie van de installatie kopie van het platform of de Marketplace
 
-Momenteel zijn aangepaste gegevens gegarandeerd beschikbaar tijdens Boots trap van een virtuele machine. Als er updates worden uitgevoerd op de VM, zoals het toevoegen van schijven of het wijzigen van de grootte van de virtuele machine, worden Instance Metadata Service geen aangepaste gegevens verstrekt. Er wordt momenteel aangepaste gegevens verstrekt via Instance Metadata Service.
+Het object van de besturingssysteem schijf bevat de volgende informatie over de besturingssysteem schijf die wordt gebruikt door de virtuele machine:
 
-#### <a name="retrieving-custom-data-in-virtual-machine"></a>De aangepaste gegevens worden opgehaald in de virtuele machine
-Instance Metadata Service biedt aangepaste gegevens aan de virtuele machine in base64-gecodeerde vorm. In het volgende voor beeld wordt de base64-gecodeerde teken reeks gedecodeerd.
+Gegevens    | Beschrijving
+--------|-----------------
+in | Cache vereisten
+createOption | Informatie over de manier waarop de virtuele machine is gemaakt
+diffDiskSettings | Tijdelijke schijf instellingen
+diskSizeGB | Grootte van de schijf in GB
+installatiekopie   | Virtuele harde schijf voor installatie kopie van bron gebruiker
+LUN     | Nummer van de logische eenheid van de schijf
+managedDisk | Beheerde schijf parameters
+name    | Schijfnaam
+schijven     | Virtuele harde schijf
+writeAcceleratorEnabled | Hiermee wordt aangegeven of Write Accelerator is ingeschakeld op de schijf
 
-> [!NOTE]
-> De aangepaste gegevens in dit voor beeld worden geïnterpreteerd als een ASCII-teken reeks die ' mijn aangepaste gegevens ' leest.
+De matrix gegevens schijven bevat een lijst met gegevens schijven die zijn gekoppeld aan de VM. Elk gegevens schijf object bevat de volgende informatie:
+
+Gegevens    | Beschrijving
+--------|-----------------
+in | Cache vereisten
+createOption | Informatie over de manier waarop de virtuele machine is gemaakt
+diffDiskSettings | Tijdelijke schijf instellingen
+diskSizeGB | Grootte van de schijf in GB
+encryptionSettings | Versleutelings instellingen voor de schijf
+installatiekopie   | Virtuele harde schijf voor installatie kopie van bron gebruiker
+managedDisk | Beheerde schijf parameters
+name    | Schijfnaam
+besturingssysteemtype  | Type besturings systeem dat is opgenomen in de schijf
+schijven     | Virtuele harde schijf
+writeAcceleratorEnabled | Hiermee wordt aangegeven of Write Accelerator is ingeschakeld op de schijf
+
+Hier volgt een voor beeld van hoe u een query kunt uitvoeren op de opslag gegevens van de virtuele machine.
 
 **Aanvraag**
 
 ```bash
-curl -H "Metadata:true" "http://169.254.169.254/metadata/instance/compute/customData?api-version=2019-02-01&&format=text" | base64 --decode
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
 ```
 
 **Antwoord**
 
-```text
-My custom data.
+> [!NOTE]
+> Het antwoord is een JSON-teken reeks. Het volgende voor beeld is een mooie afdruk van de Lees baarheid.
+
+```json
+{
+    "dataDisks": [
+      {
+        "caching": "None",
+        "createOption": "Empty",
+        "diskSizeGB": "1024",
+        "image": {
+          "uri": ""
+        },
+        "lun": "0",
+        "managedDisk": {
+          "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+          "storageAccountType": "Standard_LRS"
+        },
+        "name": "exampledatadiskname",
+        "vhd": {
+          "uri": ""
+        },
+        "writeAcceleratorEnabled": "false"
+      }
+    ],
+    "imageReference": {
+      "id": "",
+      "offer": "UbuntuServer",
+      "publisher": "Canonical",
+      "sku": "16.04.0-LTS",
+      "version": "latest"
+    },
+    "osDisk": {
+      "caching": "ReadWrite",
+      "createOption": "FromImage",
+      "diskSizeGB": "30",
+      "diffDiskSettings": {
+        "option": "Local"
+      },
+      "encryptionSettings": {
+        "enabled": "false"
+      },
+      "image": {
+        "uri": ""
+      },
+      "managedDisk": {
+        "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+        "storageAccountType": "Standard_LRS"
+      },
+      "name": "exampleosdiskname",
+      "osType": "Linux",
+      "vhd": {
+        "uri": ""
+      },
+      "writeAcceleratorEnabled": "false"
+    }
+}
 ```
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Voor beelden van het aanroepen van meta gegevens service met verschillende talen in de VM 
@@ -780,9 +1043,9 @@ Puppet | https://github.com/keirans/azuremetadata
 2. Waarom krijg ik geen reken gegevens voor mijn virtuele machine?
    * Momenteel ondersteunt de Instance Metadata Service alleen instanties die zijn gemaakt met Azure Resource Manager. In de toekomst kan ondersteuning voor Cloud service-Vm's worden toegevoegd.
 3. Ik heb mijn virtuele machine door Azure Resource Manager een tijdje gemaakt. Waarom zie ik geen gegevens voor reken gegevens berekenen?
-   * Voor virtuele machines die na sep 2016 zijn gemaakt, voegt u een [tag](../../azure-resource-manager/resource-group-using-tags.md) toe om te beginnen met het bekijken van meta gegevens. Voor oudere Vm's (gemaakt vóór sep 2016) kunt u uitbrei dingen of gegevens schijven aan de virtuele machine toevoegen/verwijderen om meta gegevens te vernieuwen.
+   * Voor virtuele machines die na sep 2016 zijn gemaakt, voegt u een [tag](../../azure-resource-manager/management/tag-resources.md) toe om te beginnen met het bekijken van meta gegevens. Voor oudere Vm's (gemaakt vóór sep 2016) kunt u uitbrei dingen of gegevens schijven aan de virtuele machine toevoegen/verwijderen om meta gegevens te vernieuwen.
 4. Ik zie niet alle gegevens die zijn ingevuld voor een nieuwe versie
-   * Voor virtuele machines die na sep 2016 zijn gemaakt, voegt u een [tag](../../azure-resource-manager/resource-group-using-tags.md) toe om te beginnen met het bekijken van meta gegevens. Voor oudere Vm's (gemaakt vóór sep 2016) kunt u uitbrei dingen of gegevens schijven aan de virtuele machine toevoegen/verwijderen om meta gegevens te vernieuwen.
+   * Voor virtuele machines die na sep 2016 zijn gemaakt, voegt u een [tag](../../azure-resource-manager/management/tag-resources.md) toe om te beginnen met het bekijken van meta gegevens. Voor oudere Vm's (gemaakt vóór sep 2016) kunt u uitbrei dingen of gegevens schijven aan de virtuele machine toevoegen/verwijderen om meta gegevens te vernieuwen.
 5. Waarom krijg ik de fout `500 Internal Server Error`?
    * Voer de aanvraag opnieuw uit op basis van een exponentieel back-systeem. Neem contact op met de ondersteuning van Azure als het probleem zich blijft voordoen.
 6. Waar kan ik extra vragen/opmerkingen delen?

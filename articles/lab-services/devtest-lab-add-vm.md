@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 64a5892226b90019f175308b5984dc0a0108e226
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 22060cc6dd5eb15e81a0c397a7b0255f16780d74
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70162257"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976498"
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Een VM toevoegen aan een lab in Azure DevTest Labs
 Als u [uw eerste virtuele machine](tutorial-create-custom-lab.md#add-a-vm-to-the-lab)al hebt gemaakt, hebt u waarschijnlijk een vooraf geladen [installatie kopie](devtest-lab-configure-marketplace-images.md)van de Marketplace. Als u nu de volgende Vm's wilt toevoegen aan uw Lab, kunt u ook een *basis* kiezen die een [aangepaste installatie kopie](devtest-lab-create-template.md) of een [formule](devtest-lab-manage-formulas.md)is. In deze zelf studie wordt u begeleid bij het gebruik van de Azure Portal om een virtuele machine toe te voegen aan een lab in DevTest Labs.
@@ -27,12 +27,12 @@ Als u [uw eerste virtuele machine](tutorial-create-custom-lab.md#add-a-vm-to-the
 In dit artikel leest u ook hoe u de artefacten voor een virtuele machine in uw Lab beheert.
 
 ## <a name="steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Stappen voor het toevoegen van een virtuele machine aan een lab in Azure DevTest Labs
-1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij de [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de sectie **DEVOPS** . Als u * (Star) selecteert naast **DevTest Labs** in de sectie **DEVOPS** . Met deze actie worden **DevTest Labs** toegevoegd aan het navigatie menu aan de linkerkant, zodat u de volgende keer snel toegang kunt krijgen. Vervolgens kunt u **DevTest Labs** selecteren in het navigatie menu aan de linkerkant.
 
     ![Alle services: Selecteer DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)
 1. Selecteer in de lijst met Labs het lab waarin u de virtuele machine wilt maken.
-2. Op de overzichts pagina van het lab selecteert u **+ toevoegen**.
+2. Op de **overzichts** pagina van het lab selecteert u **+ toevoegen**.
 
     ![Knop virtuele machine toevoegen](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
 1. Selecteer op de pagina **een basis kiezen** een Marketplace-installatie kopie voor de virtuele machine.
@@ -65,12 +65,12 @@ In dit artikel leest u ook hoe u de artefacten voor een virtuele machine in uw L
 ## <a name="add-an-existing-artifact-to-a-vm"></a>Een bestaand artefact toevoegen aan een VM
 Tijdens het maken van een virtuele machine kunt u bestaande artefacten toevoegen. Elk lab bevat artefacten uit de open bare DevTest Labs-artefact opslagplaats en artefacten die u hebt gemaakt en toegevoegd aan uw eigen artefact opslagplaats.
 
-* Met Azure DevTest Labs artefacten kunt u *acties* opgeven die worden uitgevoerd wanneer de virtuele machine wordt ingericht, zoals het uitvoeren van Windows Power shell-scripts, het uitvoeren van bash-opdrachten en het installeren van software.
+* Met Azure DevTest Labs *artefacten* kunt u *acties* opgeven die worden uitgevoerd wanneer de virtuele machine wordt ingericht, zoals het uitvoeren van Windows Power shell-scripts, het uitvoeren van bash-opdrachten en het installeren van software.
 * Met artefact *parameters* kunt u het artefact voor uw specifieke scenario aanpassen
 
 Zie het artikel, [informatie over het maken van uw eigen artefacten voor gebruik met DevTest Labs](devtest-lab-artifact-author.md), om te ontdekken hoe u artefacten maakt.
 
-1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij de [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 1. Selecteer in de lijst met Labs het lab met de virtuele machine waarmee u wilt werken.
 1. Selecteer **mijn virtuele machines**.
@@ -107,7 +107,7 @@ De volgende stappen laten zien hoe u de para meters van een artefact kunt weer g
 ## <a name="save-azure-resource-manager-template"></a>Azure Resource Manager sjabloon opslaan
 Een Azure Resource Manager sjabloon biedt een declaratieve manier om een Herhaal bare implementatie te definiëren.
 In de volgende stappen wordt uitgelegd hoe u de Azure Resource Manager sjabloon opslaat voor de virtuele machine die wordt gemaakt.
-Nadat het is opgeslagen, kunt u de Azure Resource Manager-sjabloon gebruiken om [nieuwe vm's te implementeren met Azure PowerShell](../azure-resource-manager/template-deployment-overview.md).
+Nadat het is opgeslagen, kunt u de Azure Resource Manager-sjabloon gebruiken om [nieuwe vm's te implementeren met Azure PowerShell](../azure-resource-manager/templates/overview.md).
 
 1. Selecteer in het deel venster **virtuele machine** **Azure Resource Manager sjabloon weer geven**.
 2. Selecteer in het deel venster **Azure Resource Manager sjabloon weer geven** de sjabloon tekst.

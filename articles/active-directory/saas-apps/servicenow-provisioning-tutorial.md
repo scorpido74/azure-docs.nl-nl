@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: da733eef4dcfc15db10bb5bf303086ae601189ed
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 04fb34ff9c0ba9822e9760bcd3989bd0b5675506
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443187"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044732"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Zelf studie: ServiceNow configureren voor automatische gebruikers inrichting
 
@@ -142,6 +142,7 @@ Nadat u het inrichten hebt geconfigureerd, gebruikt u de volgende bronnen om uw 
 * **EntryJoiningPropertyValueIsMissing:** Controleer de [kenmerk toewijzingen](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) om het overeenkomende kenmerk te identificeren. Deze waarde moet aanwezig zijn op de gebruiker of groep die u wilt inrichten. 
 * Bekijk de [SERVICENOW SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) om inzicht te krijgen in vereisten of beperkingen (bijvoorbeeld indeling om land code op te geven voor een gebruiker)
 * Voor sommige ServiceNow-implementaties is het toestaan van IP-adresbereiken vereist voor de Azure AD-inrichtings service. De gereserveerde IP-bereiken voor de Azure AD-inrichtings service vindt u [hier](https://www.microsoft.com/download/details.aspx?id=56519) onder "AzureActiveDirectoryDomainServices".
+* Het is momenteel niet mogelijk om gebruikers in te richten op de ServiceNow Government-Cloud.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 

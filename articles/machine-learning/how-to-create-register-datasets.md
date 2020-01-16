@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 775c6016acbcd0f87f368852a68eaea706c79898
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: d55dc2a1311d66eae01ae12a3dae798fbab20677
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945712"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045610"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning gegevens sets maken
 
@@ -196,16 +196,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 
 Als u gegevens sets met Azure open gegevens sets wilt maken vanuit de SDK, moet u ervoor zorgen dat u het pakket hebt geïnstalleerd met `pip install azureml-opendatasets`. Elke afzonderlijke gegevensset wordt vertegenwoordigd door een eigen klasse in de SDK en bepaalde klassen zijn beschikbaar als een `TabularDataset`, `FileDataset`of beide. Zie de [referentie documentatie](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py) voor een volledige lijst met klassen.
 
-De meeste klassen nemen van en retour neren een exemplaar van `TabularDataset`. Voor beelden van deze klassen zijn `PublicHolidays`, `BostonSafety`en `UsPopulationZip`. Als u een `TabularDataset` van deze typen klassen wilt maken, gebruikt u de constructor zonder argumenten. Wanneer u een gegevensset registreert die is gemaakt op basis van geopende gegevens sets, worden er geen gegevens direct gedownload, maar worden de gegevens later weer gegeven wanneer u hierom wordt gevraagd (bijvoorbeeld tijdens training) vanuit een centrale opslag locatie. 
-
-```python
-from azureml.opendatasets import UsPopulationZip
-
-tabular_dataset = UsPopulationZip()
-tabular_dataset = tabular_dataset.register(workspace=workspace, name="pop data", description="US population data by zip code")
-```
-
-U kunt bepaalde klassen ophalen als een `TabularDataset` of `FileDataset`, zodat u de bestanden rechtstreeks kunt bewerken en/of downloaden. Andere klassen kunnen een gegevensset alleen ophalen met behulp van de functies `get_tabular_dataset()` of `get_file_dataset()`. In het volgende code voorbeeld ziet u enkele voor beelden van deze typen klassen:
+U kunt bepaalde klassen ophalen als een `TabularDataset` of `FileDataset`, zodat u de bestanden rechtstreeks kunt bewerken en/of downloaden. Andere klassen kunnen een gegevensset **alleen** ophalen met behulp van een van `get_tabular_dataset()`-of `get_file_dataset()`-functies. In het volgende code voorbeeld ziet u enkele voor beelden van deze typen klassen.
 
 ```python
 from azureml.opendatasets import MNIST
@@ -219,6 +210,8 @@ from azureml.opendatasets import Diabetes
 # Diabetes class can return ONLY return TabularDataset and must be called from the static function
 diabetes_tabular = Diabetes.get_tabular_dataset()
 ```
+
+Wanneer u een gegevensset registreert die is gemaakt op basis van geopende gegevens sets, worden er geen gegevens direct gedownload, maar worden de gegevens later weer gegeven wanneer u hierom wordt gevraagd (bijvoorbeeld tijdens training) vanuit een centrale opslag locatie.
 
 ### <a name="use-the-ui"></a>De gebruikers interface gebruiken
 

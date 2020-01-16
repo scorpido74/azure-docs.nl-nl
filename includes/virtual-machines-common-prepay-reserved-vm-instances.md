@@ -4,14 +4,14 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11/21/2019
-ms.openlocfilehash: 9bed0a47c6c13b3c209f593509b71aa697c6eb4a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 119ef52bd801f66cd25a844d3a87b1906881c484
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75901903"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021032"
 ---
-Wanneer u een gereserveerde VM-instantie voor Azure doorvoert, kunt u geld besparen. De reserverings korting wordt automatisch toegepast op het aantal actieve virtuele machines die overeenkomen met het reserverings bereik en de kenmerken. U hoeft geen reserve ring aan een virtuele machine toe te wijzen om de kortingen te krijgen. Voor een gereserveerde instantie aankoop geldt alleen het reken onderdeel van uw VM-gebruik. Voor virtuele Windows-machines wordt de gebruiks meter gesplitst in twee afzonderlijke meters. Er is een compute-meter, die gelijk is aan de Linux meter en een Windows IP-meter. De kosten die u ziet wanneer u de aankoop uitvoert, zijn alleen voor de reken kosten. Kosten zijn niet van toepassing op Windows-software. Zie [software kosten die niet zijn opgenomen in azure reserved VM instances](../articles/billing/billing-reserved-instance-windows-software-costs.md)voor meer informatie over software kosten.
+Wanneer u een gereserveerde VM-instantie voor Azure doorvoert, kunt u geld besparen. De reserverings korting wordt automatisch toegepast op het aantal actieve virtuele machines die overeenkomen met het reserverings bereik en de kenmerken. U hoeft geen reserve ring aan een virtuele machine toe te wijzen om de kortingen te krijgen. Voor een gereserveerde instantie aankoop geldt alleen het reken onderdeel van uw VM-gebruik. Voor virtuele Windows-machines wordt de gebruiks meter gesplitst in twee afzonderlijke meters. Er is een compute-meter, die gelijk is aan de Linux meter en een Windows IP-meter. De kosten die u ziet wanneer u de aankoop uitvoert, zijn alleen voor de reken kosten. Kosten zijn niet van toepassing op Windows-software. Zie [software kosten die niet zijn opgenomen in azure reserved VM instances](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)voor meer informatie over software kosten.
 
 ## <a name="determine-the-right-vm-size-before-you-buy"></a>Bepaal de juiste VM-grootte voordat u koopt
 
@@ -78,7 +78,7 @@ Gereserveerde VM-instanties zijn beschikbaar voor de meeste VM-grootten met enke
 
 ## <a name="buy-a-reserved-vm-instance"></a>Een gereserveerde VM-instantie kopen
 
-U kunt een gereserveerde VM-instantie kopen in de [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). Betaal [vooraf of per maand](../articles/billing/billing-monthly-payments-reservations.md) voor de reservering.
+U kunt een gereserveerde VM-instantie kopen in de [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). Betaal [vooraf of per maand](../articles/cost-management-billing/reservations/monthly-payments-reservations.md) voor de reservering.
 Deze vereisten zijn van toepassing op het kopen van een gereserveerde VM-instantie:
 
 - U moet een rol van eigenaar zijn voor ten minste één EA-abonnement of een abonnement met een betalen naar gebruik-tarief.
@@ -111,7 +111,7 @@ Als u een EA-overeenkomst hebt, kunt u de **optie meer toevoegen** gebruiken om 
 
 Uw gebruiksgegevens kosten niets voor het deel waarvoor u een reserveringskorting verkrijgt. U kunt zien welke VM-instantie de reserverings korting voor elke reserve ring heeft ontvangen.
 
-Zie het [gebruik van Azure-reserve ringen voor uw Enter prise-inschrijving](../articles/billing/billing-understand-reserved-instance-usage-ea.md) als u een EA-klant bent voor meer informatie over hoe reserverings kortingen worden weer gegeven in gebruiks gegevens. Zie [het gebruik van Azure-reserve ringen voor uw abonnement op basis van betalen per gebruik voor meer informatie](../articles/billing/billing-understand-reserved-instance-usage.md)over een afzonderlijk abonnement.
+Zie het [gebruik van Azure-reserve ringen voor uw Enter prise-inschrijving](../articles/cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) als u een EA-klant bent voor meer informatie over hoe reserverings kortingen worden weer gegeven in gebruiks gegevens. Zie [het gebruik van Azure-reserve ringen voor uw abonnement op basis van betalen per gebruik voor meer informatie](../articles/cost-management-billing/reservations/understand-reserved-instance-usage.md)over een afzonderlijk abonnement.
 
 ## <a name="change-a-reservation-after-purchase"></a>Een reserve ring wijzigen na aankoop
 
@@ -134,7 +134,7 @@ U kunt echter wel een reserve ring *uitwisselen* als u wijzigingen wilt aanbreng
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Annulering, omwisseling of terugbetaling van reserveringen
 
-Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md) voor meer informatie.
+Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](../articles/cost-management-billing/reservations/exchange-and-refund-azure-reservations.md) voor meer informatie.
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
 
@@ -142,12 +142,12 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [Azure-reserveringen beheren](../articles/billing/billing-manage-reserved-vm-instance.md) voor meer informatie over het beheren van een reservering.
+- Zie [Azure-reserveringen beheren](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md) voor meer informatie over het beheren van een reservering.
 - Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
-    - [Wat zijn Azure-reserveringen?](../articles/billing/billing-save-compute-costs-reservations.md)
-    - [Reserveringen beheren in Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
-    - [Begrijpen hoe de reserveringskorting wordt toegepast](../articles/billing/billing-understand-vm-reservation-charges.md)
-    - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](../articles/billing/billing-understand-reserved-instance-usage.md)
-    - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
-    - [Kosten van Windows-software zijn niet inbegrepen in reserveringen](../articles/billing/billing-reserved-instance-windows-software-costs.md)
+    - [Wat zijn Azure-reserveringen?](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
+    - [Reserveringen beheren in Azure](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md)
+    - [Begrijpen hoe de reserveringskorting wordt toegepast](../articles/cost-management-billing/manage/understand-vm-reservation-charges.md)
+    - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](../articles/cost-management-billing/reservations/understand-reserved-instance-usage.md)
+    - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](../articles/cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+    - [Kosten van Windows-software zijn niet inbegrepen in reserveringen](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
     - [Azure-reserveringen in het CSP-programma (Cloud Solution Provider) van het Partnercentrum](https://docs.microsoft.com/partner-center/azure-reservations)

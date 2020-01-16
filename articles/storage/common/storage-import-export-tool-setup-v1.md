@@ -8,77 +8,77 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: f523d1ebf5c96596142c6897af2be5f760b3d4b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f65220a04a709bae5a6892bfd4105195cee35741
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978948"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978422"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Het Azure-hulp programma voor importeren/exporteren instellen
 Het hulp programma Microsoft Azure Import/Export is het hulp programma voor het voorbereiden en repareren van stations dat u kunt gebruiken met de Microsoft Azure Import/Export-service. U kunt het hulp programma gebruiken voor de volgende functies:  
-  
+
 -   Voordat u een import taak maakt, kunt u dit hulp programma gebruiken om gegevens te kopiëren naar de harde schijven die u gaat verzenden naar een Windows Azure-Data Center.  
-  
+
 -   Nadat een import taak is voltooid, kunt u dit hulp programma gebruiken om blobs te herstellen die zijn beschadigd, ontbreken of conflicteren met andere blobs.  
-  
+
 -   Nadat u de stations van een voltooide export taak hebt ontvangen, kunt u dit hulp programma gebruiken om bestanden te herstellen die op de stations zijn beschadigd of ontbreken.  
-  
+
 ## <a name="prerequisites"></a>Vereisten  
 Als u stations voor een import taak voorbereidt, moet aan de volgende vereisten worden voldaan:  
-  
+
 -   U moet een actief Azure-abonnement hebben.  
-  
+
 -   Uw abonnement moet een opslag account bevatten met voldoende beschik bare ruimte voor het opslaan van de bestanden die u gaat importeren.  
-  
+
 -   U hebt ten minste één van de account sleutels voor het opslag account nodig.  
-  
+
 -   U hebt een computer nodig (de ' machine kopiëren ') met Windows 7, Windows Server 2008 R2 of een nieuwere Windows-besturings systeem geïnstalleerd.  
-  
+
 -   De .NET Framework 4 moet zijn geïnstalleerd op de Kopieer machine.  
-  
+
 -   BitLocker moet zijn ingeschakeld op de Kopieer machine.  
-  
+
 -   U hebt een of meer stations nodig die gegevens bevatten die moeten worden geïmporteerd of lege 3,5-inch SATA harde schijven die zijn verbonden met de Kopieer machine.  
-  
--   De bestanden die u wilt importeren, moeten toegankelijk zijn vanaf de Kopieer machine, ongeacht of ze zich op een netwerk share of op een lokale vaste schijf bevinden. 
-  
+
+-   De bestanden die u wilt importeren, moeten toegankelijk zijn vanaf de Kopieer machine, ongeacht of ze zich op een netwerk share of op een lokale vaste schijf bevinden.
+
 Als u probeert een import bewerking te herstellen die gedeeltelijk is mislukt, hebt u het volgende nodig:  
-  
+
 - De kopie logboek bestanden  
-  
+
 - De sleutel van het opslag account  
-  
+
   Als u probeert een export te herstellen die gedeeltelijk is mislukt, hebt u het volgende nodig:  
-  
+
 - De kopie logboek bestanden  
-  
+
 - De manifest bestanden (optioneel)  
-  
+
 - De sleutel van het opslag account  
-  
+
 ## <a name="installing-the-azure-importexport-tool"></a>Het Azure-hulp programma voor importeren/exporteren installeren  
  Het Azure-hulp programma voor importeren/exporteren bestaat uit de volgende bestanden:  
-  
+
 - WAImportExport.exe  
-  
+
 - WAImportExport.exe.config  
-  
+
 - WAImportExportCore.dll  
-  
+
 - WAImportExportRepair.dll  
-  
+
 - Microsoft.WindowsAzure.Storage.dll  
-  
+
 - Hddid.dll  
-  
+
   Kopieer deze bestanden naar een werkmap, bijvoorbeeld `c:\WAImportExport`. Open vervolgens een opdracht regel venster in de beheerders modus en stel de bovenstaande map in als huidige map.  
-  
+
   Als u de Help-informatie voor de opdracht wilt uitvoeren, voert u het hulp programma zonder para meters uit:  
-  
+
 ```  
 WAImportExport, a client tool for Microsoft Azure Import/Export service. Microsoft (c) 2013, 2014  
-  
+
 Copy a Directory:  
     WAImportExport.exe PrepImport  
         /j:<JournalFile> [/logdir:<LogDirectory>] [/id:<SessionId>] [/resumesession]  
@@ -87,7 +87,7 @@ Copy a Directory:
         [/bk:<BitLockerKey>] [/Disposition:<Disposition>] [/BlobType:<BlobType>]  
         [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]  
         /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory>  
-  
+
 Copy a File:  
     WAImportExport.exe PrepImport  
         /j:<JournalFile> [/logdir:<LogDirectory>] [/id:<SessionId>] [/resumesession]  
@@ -96,7 +96,7 @@ Copy a File:
         [/bk:<BitLockerKey>] [/Disposition:<Disposition>] [/BlobType:<BlobType>]  
         [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]  
         /srcfile:<SourceFilePath> /dstblob:<DestinationBlobPath>  
-  
+
 Repair a Drive:  
     WAImportExport.exe RepairImport | RepairExport  
         /r:<RepairFile> [/logdir:<LogDirectory>]  
@@ -104,15 +104,15 @@ Repair a Drive:
         /sn:<StorageAccountName> [/sk:<StorageAccountKey> | /csas:<ContainerSas>]  
         [/CopyLogFile:<DriveCopyLogFile>] [/ManifestFile:<DriveManifestFile>]  
         [/PathMapFile:<DrivePathMapFile>]  
-  
+
 Preview an Export Job:  
     WAImportExport.exe PreviewExport  
         [/logdir:<LogDirectory>]  
         /sn:<StorageAccountName> [/sk:<StorageAccountKey> | /csas:<ContainerSas>]  
         /ExportBlobListFile:<ExportBlobListFile> /DriveSize:<DriveSize>  
-  
+
 Parameters:  
-  
+
     /j:<JournalFile>  
         - Required. Path to the journal file. Each drive must have one and only one  
           journal file. The journal file corresponding to the target drive must always  
@@ -213,32 +213,32 @@ Parameters:
         - Optional. To skip write process. Used for inplace data drive preparation.
           Be sure to reserve enough space (3 GB per 7TB) for drive manifest file!
 Examples:  
-  
+
     Copy a source directory to a drive:  
     WAImportExport.exe PrepImport  
         /j:9WM35C2V.jrn /id:session#1 /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GEL  
         xmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /t:x /format /encrypt /srcdir:d:\movi  
         es\drama /dstdir:movies/drama/  
-  
+
     Copy another directory to the same drive following the above command:  
     WAImportExport.exe PrepImport  
         /j:9WM35C2V.jrn /id:session#2 /srcdir:d:\movies\action /dstdir:movies/action/  
-  
+
     Copy another file to the same drive following the above commands:  
     WAImportExport.exe PrepImport  
         /j:9WM35C2V.jrn /id:session#3 /srcfile:d:\movies\dvd.vhd /dstblob:movies/dvd.vhd /BlobType:PageBlob  
-  
+
     Preview how many 1.5 TB drives are needed for an export job:  
     WAImportExport.exe PreviewExport  
         /sn:mytestaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7K  
         ysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\temp\myexportbloblist.xml  
         /DriveSize:1.5TB  
-  
+
     Repair an finished import job:  
     WAImportExport.exe RepairImport  
         /r:9WM35C2V.rep /d:X:\ /bk:442926-020713-108086-436744-137335-435358-242242-2795  
         98 /sn:mytestaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94  
-        f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\temp\9WM35C2V_error.log 
+        f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\temp\9WM35C2V_error.log
 
     Skip write process, inplace data drive preparation:
     WAImportExport.exe PrepImport
@@ -246,7 +246,7 @@ Examples:
         xmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /t:d /encrypt /srcdir:d:\movi
         es\drama /dstdir:movies/drama/ /skipwrite
 ```  
-  
+
 ## <a name="next-steps"></a>Volgende stappen
 
 * [Harde schijven voorbereiden voor een importtaak](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   

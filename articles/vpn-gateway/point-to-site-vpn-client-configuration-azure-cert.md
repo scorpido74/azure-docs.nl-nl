@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4df22108591fe3f80078bce050081c4953443847
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 9342a70e539c4a2717fe45426c26595285172681
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903002"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045770"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>VPN-client configuratie bestanden maken en installeren voor systeem eigen Azure-certificaat verificatie P2S-configuraties
 
@@ -99,9 +99,14 @@ Voer de volgende stappen uit om de systeem eigen VPN-client te configureren voor
 4. Kopieer in de map **Algemeen** , in het bestand **VpnSettings. XML** , de waarde van de **VpnServer** -tag. Plak deze waarde in de velden **server adres** en **externe ID** van het profiel.
 
    ![Server gegevens](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
-5. Klik op **verificatie-instellingen** en selecteer **certificaat**. 
+5. Klik op **verificatie-instellingen** en selecteer **certificaat**. Klik voor **Catalina**op **geen** en vervolgens op **certificaat**
 
    ![verificatie-instellingen](./media/point-to-site-vpn-client-configuration-azure-cert/authsettings.png)
+
+   * Selecteer voor Catalina de optie **geen** en vervolgens **certificaat**. **Selecteer** het juiste certificaat:
+   
+   ![catalina](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
+
 6. Klik op **selecteren...** om het client certificaat te kiezen dat u voor verificatie wilt gebruiken. Dit is het certificaat dat u in stap 2 hebt geïnstalleerd.
 
    ![certificaat](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)

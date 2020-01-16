@@ -15,12 +15,12 @@ ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 00d4487abed97084976d81ee1ec78316fc688193
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 17a1f2c245e19afbf4d8c5092a0ddf0562a7cb0e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74851380"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979324"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Ingebouwde rollen voor Azure-resources
 
@@ -3153,6 +3153,6 @@ De volgende tabel bevat een korte beschrijving van elke ingebouwde rol. Klik op 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overeenkomende resource provider voor service](../azure-resource-manager/azure-services-resource-providers.md)
+- [Overeenkomende resource provider voor service](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Aangepaste rollen voor Azure-resources](custom-roles.md)
 - [Machtigingen in Azure Security Center](../security-center/security-center-permissions.md)

@@ -11,48 +11,48 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 28a9631860691b29c1954d67e521d4ff54c901a7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1a3651f82d7818ad105c0a8a7b5fd9fcf073b4a1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439202"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982552"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Incrementeel gegevens van een Azure-SQL database naar Azure Blob-opslag laden met Power shell
 
-In deze zelfstudie maakt u een Azure-gegevensfactory met een pijplijn waarmee deltagegevens uit een tabel in een Azure SQL-database worden geladen naar Azure Blob Storage. 
+In deze zelfstudie maakt u een Azure-gegevensfactory met een pijplijn waarmee deltagegevens uit een tabel in een Azure SQL-database worden geladen naar Azure Blob Storage.
 
 In deze zelfstudie voert u de volgende stappen uit:
 
 > [!div class="checklist"]
 > * Bereid de gegevensopslag voor om de grenswaarde in op te slaan.
 > * Een gegevensfactory maken.
-> * Maak gekoppelde services. 
+> * Maak gekoppelde services.
 > * Maak bron-, sink- en grenswaardegegevenssets.
 > * Maak een pijplijn.
 > * Voer de pijplijn uit.
-> * Controleer de pijplijnuitvoering. 
+> * Controleer de pijplijnuitvoering.
 
 ## <a name="overview"></a>Overzicht
-Hier volgt de diagramoplossing op hoog niveau: 
+Hier volgt de diagramoplossing op hoog niveau:
 
 ![Stapsgewijs gegevens laden](media/tutorial-Incrementally-copy-powershell/incrementally-load.png)
 
-Dit zijn de belangrijke stappen voor het maken van deze oplossing: 
+Dit zijn de belangrijke stappen voor het maken van deze oplossing:
 
 1. **Selecteer de grenswaardekolom**.
     Selecteer één kolom in de brongegevensopslag die kan worden gebruikt om de nieuwe of bijgewerkte records voor elke uitvoering te segmenteren. Normaal gesproken nemen de gegevens in deze geselecteerde kolom (bijvoorbeeld, last_modify_time of id) toe wanneer de rijen worden gemaakt of bijgewerkt. De maximale waarde in deze kolom wordt gebruikt als grenswaarde.
 
 2. **Bereid een gegevensopslag voor om de grenswaarde in op te slaan**.   
     In deze zelfstudie slaat u de grenswaarde op in een SQL-database.
-    
-3. **Maak een pijplijn met de volgende werkstroom**: 
-    
+
+3. **Maak een pijplijn met de volgende werkstroom**:
+
     De pijplijn in deze oplossing heeft de volgende activiteiten:
-  
-    * Maak twee opzoekactiviteiten. Gebruik de eerste opzoekactiviteit om de laatste grenswaarde op te halen. Gebruik de tweede opzoekactiviteit om de nieuwe grenswaarde op te halen. Deze grenswaarden worden doorgegeven aan de kopieeractiviteit. 
-    * Maak een kopieeractiviteit waarmee rijen uit de brongegevensopslag worden gekopieerd met een waarde uit de grenswaardekolom die groter is dan de oude grenswaarde en kleiner dan de nieuwe grenswaarde. Vervolgens worden de deltagegevens uit de brongegevensopslag als een nieuw bestand gekopieerd naar een Blob-opslag. 
-    * Maak een opgeslagen-procedureactiviteit waarmee de grenswaarde wordt bijgewerkt voor de pijplijn die de volgende keer wordt uitgevoerd. 
+
+    * Maak twee opzoekactiviteiten. Gebruik de eerste opzoekactiviteit om de laatste grenswaarde op te halen. Gebruik de tweede opzoekactiviteit om de nieuwe grenswaarde op te halen. Deze grenswaarden worden doorgegeven aan de kopieeractiviteit.
+    * Maak een kopieeractiviteit waarmee rijen uit de brongegevensopslag worden gekopieerd met een waarde uit de grenswaardekolom die groter is dan de oude grenswaarde en kleiner dan de nieuwe grenswaarde. Vervolgens worden de deltagegevens uit de brongegevensopslag als een nieuw bestand gekopieerd naar een Blob-opslag.
+    * Maak een opgeslagen-procedureactiviteit waarmee de grenswaarde wordt bijgewerkt voor de pijplijn die de volgende keer wordt uitgevoerd.
 
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
@@ -62,14 +62,14 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * **Azure SQL-database**. U gebruikt de database als de brongegevensopslag. Als u geen SQL-database hebt, raadpleegt u het artikel [Een Azure SQL-database maken](../sql-database/sql-database-get-started-portal.md) om een database te maken.
-* **Azure Storage**. U gebruikt de Blob-opslag als de sinkgegevensopslag. Als u geen opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) om een account te maken. Maak een container met de naam adftutorial. 
+* **Azure Storage**. U gebruikt de Blob-opslag als de sinkgegevensopslag. Als u geen opslagaccount hebt, raadpleegt u het artikel [Een opslagaccount maken](../storage/common/storage-account-create.md) om een account te maken. Maak een container met de naam adftutorial. 
 * **Azure PowerShell**. Volg de instructies in [Azure PowerShell installeren en configureren](/powershell/azure/install-Az-ps).
 
 ### <a name="create-a-data-source-table-in-your-sql-database"></a>Een gegevensbrontabel maken in uw SQL-database
 1. Open SQL Server Management Studio. Klik in **Server Explorer** met de rechtermuisknop op de database en kies **Nieuwe query**.
 
-2. Voer de volgende SQL-opdracht uit voor de SQL-database om een tabel met de naam `data_source_table` te maken als de gegevensbronopslag: 
-    
+2. Voer de volgende SQL-opdracht uit voor de SQL-database om een tabel met de naam `data_source_table` te maken als de gegevensbronopslag:
+
     ```sql
     create table data_source_table
     (
@@ -101,11 +101,11 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ### <a name="create-another-table-in-your-sql-database-to-store-the-high-watermark-value"></a>Nog een tabel in uw SQL-database maken om de bovengrenswaarde op te slaan
 1. Voer de volgende SQL-opdracht uit op de SQL-database om een tabel met de naam `watermarktable` te maken om de grenswaarde op te slaan:  
-    
+
     ```sql
     create table watermarktable
     (
-    
+
     TableName varchar(255),
     WatermarkValue datetime,
     );
@@ -117,11 +117,11 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
     VALUES ('data_source_table','1/1/2010 12:00:00 AM')    
     ```
 3. Controleer de gegevens in de tabel `watermarktable`.
-    
+
     ```sql
     Select * from watermarktable
     ```
-    Uitvoer: 
+    Uitvoer:
 
     ```
     TableName  | WatermarkValue
@@ -129,7 +129,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
     data_source_table | 2010-01-01 00:00:00.000
     ```
 
-### <a name="create-a-stored-procedure-in-your-sql-database"></a>Een opgeslagen procedure maken in uw SQL-database 
+### <a name="create-a-stored-procedure-in-your-sql-database"></a>Een opgeslagen procedure maken in uw SQL-database
 
 Voer de volgende opdracht uit om een opgeslagen procedure te maken in uw SQL-database:
 
@@ -138,11 +138,11 @@ CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varc
 AS
 
 BEGIN
-    
+
     UPDATE watermarktable
-    SET [WatermarkValue] = @LastModifiedtime 
+    SET [WatermarkValue] = @LastModifiedtime
 WHERE [TableName] = @TableName
-    
+
 END
 ```
 
@@ -155,30 +155,30 @@ END
 
     Als de resourcegroep al bestaat, wilt u waarschijnlijk niet dat deze wordt overschreven. Wijs een andere waarde toe aan de `$resourceGroupName`-variabele en voer de opdracht opnieuw uit.
 
-2. Definieer een variabele voor de locatie van de data factory. 
+2. Definieer een variabele voor de locatie van de data factory.
 
     ```powershell
     $location = "East US"
     ```
-3. Voer de volgende opdracht uit om de resourcegroep te maken: 
+3. Voer de volgende opdracht uit om de resourcegroep te maken:
 
     ```powershell
     New-AzResourceGroup $resourceGroupName $location
-    ``` 
+    ```
     Als de resourcegroep al bestaat, wilt u waarschijnlijk niet dat deze wordt overschreven. Wijs een andere waarde toe aan de `$resourceGroupName`-variabele en voer de opdracht opnieuw uit.
 
-4. Definieer een variabele voor de naam van de data factory. 
+4. Definieer een variabele voor de naam van de data factory.
 
     > [!IMPORTANT]
-    >  Werk de naam van de data factory zodanig bij dat deze uniek is. Bijvoorbeeld: ADFTutorialFactorySP1127. 
+    >  Werk de naam van de data factory zodanig bij dat deze uniek is. Bijvoorbeeld: ADFTutorialFactorySP1127.
 
     ```powershell
     $dataFactoryName = "ADFIncCopyTutorialFactory";
     ```
-5. Voer de volgende **set-AzDataFactoryV2-** cmdlet uit om de Data Factory te maken: 
-    
+5. Voer de volgende **set-AzDataFactoryV2-** cmdlet uit om de Data Factory te maken:
+
     ```powershell       
-    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName 
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
     ```
 
 Houd rekening met de volgende punten:
@@ -194,7 +194,7 @@ Houd rekening met de volgende punten:
 
 
 ## <a name="create-linked-services"></a>Gekoppelde services maken
-U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze sectie maakt u gekoppelde services in uw opslagaccount en de SQL-database. 
+U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en compute-services aan de gegevensfactory te koppelen. In deze sectie maakt u gekoppelde services in uw opslagaccount en de SQL-database.
 
 ### <a name="create-a-storage-linked-service"></a>Een gekoppelde Storage-service maken
 1. Maak een JSON-bestand met de naam AzureStorageLinkedService.json in de map C:\ADF folder met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang `<accountName>` en `<accountKey>` door de naam en sleutel van uw opslag account voordat u het bestand opslaat.
@@ -212,7 +212,7 @@ U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en co
     ```
 2. Schakel in PowerShell over naar de map ADF.
 
-3. Voer de cmdlet **set-AzDataFactoryV2LinkedService** uit om de gekoppelde service AzureStorageLinkedService te maken. In het volgende voorbeeld geeft u de waarden door voor de parameters *ResourceGroupName* en *DataFactoryName*: 
+3. Voer de cmdlet **set-AzDataFactoryV2LinkedService** uit om de gekoppelde service AzureStorageLinkedService te maken. In het volgende voorbeeld geeft u de waarden door voor de parameters *ResourceGroupName* en *DataFactoryName*:
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
@@ -228,7 +228,7 @@ U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en co
     ```
 
 ### <a name="create-a-sql-database-linked-service"></a>Een gekoppelde SQL Database-service maken
-1. Maak een JSON-bestand met de naam AzureSQLDatabaseLinkedService.json in de map C:\ADF folder met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang &lt;server&gt;, &lt;data base&gt;, &lt;gebruikers-id&gt;en &lt;wachtwoord&gt; met de naam van uw server, Data Base, gebruikers-ID en wacht woord voordat u het bestand opslaat. 
+1. Maak een JSON-bestand met de naam AzureSQLDatabaseLinkedService.json in de map C:\ADF folder met de volgende inhoud. (Maak de map ADF als deze nog niet bestaat.) Vervang &lt;server&gt;, &lt;data base&gt;, &lt;gebruikers-id&gt;en &lt;wachtwoord&gt; met de naam van uw server, Data Base, gebruikers-ID en wacht woord voordat u het bestand opslaat.
 
     ```json
     {
@@ -243,7 +243,7 @@ U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en co
     ```
 2. Schakel in PowerShell over naar de map ADF.
 
-3. Voer de cmdlet **set-AzDataFactoryV2LinkedService** uit om de gekoppelde service AzureSQLDatabaseLinkedService te maken. 
+3. Voer de cmdlet **set-AzDataFactoryV2LinkedService** uit om de gekoppelde service AzureSQLDatabaseLinkedService te maken.
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSQLDatabaseLinkedService" -File ".\AzureSQLDatabaseLinkedService.json"
@@ -260,11 +260,11 @@ U maakt gekoppelde services in een gegevensfactory om uw gegevensarchieven en co
     ```
 
 ## <a name="create-datasets"></a>Gegevenssets maken
-In deze stap maakt u gegevenssets om de bron- en sinkgegevens te vertegenwoordigen. 
+In deze stap maakt u gegevenssets om de bron- en sinkgegevens te vertegenwoordigen.
 
 ### <a name="create-a-source-dataset"></a>Een brongegevensset maken
 
-1. Maak een JSON-bestand met de naam SourceDataset.json in dezelfde map met de volgende inhoud: 
+1. Maak een JSON-bestand met de naam SourceDataset.json in dezelfde map met de volgende inhoud:
 
     ```json
     {
@@ -280,18 +280,18 @@ In deze stap maakt u gegevenssets om de bron- en sinkgegevens te vertegenwoordig
             }
         }
     }
-   
+
     ```
     In deze zelfstudie wordt de tabelnaam data_source_table gebruikt. Vervang deze naam als u een tabel gebruikt met een andere naam.
 
 2. Voer de cmdlet **set-AzDataFactoryV2Dataset** uit om de gegevensset source dataset te maken.
-    
+
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
     ```
 
     Hier volgt een uitvoervoorbeeld van de cmdlet:
-    
+
     ```json
     DatasetName       : SourceDataset
     ResourceGroupName : ADF
@@ -302,7 +302,7 @@ In deze stap maakt u gegevenssets om de bron- en sinkgegevens te vertegenwoordig
 
 ### <a name="create-a-sink-dataset"></a>Een sinkgegevensset maken
 
-1. Maak een JSON-bestand met de naam SinkDataset.json in dezelfde map met de volgende inhoud: 
+1. Maak een JSON-bestand met de naam SinkDataset.json in dezelfde map met de volgende inhoud:
 
     ```json
     {
@@ -311,7 +311,7 @@ In deze stap maakt u gegevenssets om de bron- en sinkgegevens te vertegenwoordig
             "type": "AzureBlob",
             "typeProperties": {
                 "folderPath": "adftutorial/incrementalcopy",
-                "fileName": "@CONCAT('Incremental-', pipeline().RunId, '.txt')", 
+                "fileName": "@CONCAT('Incremental-', pipeline().RunId, '.txt')",
                 "format": {
                     "type": "TextFormat"
                 }
@@ -328,13 +328,13 @@ In deze stap maakt u gegevenssets om de bron- en sinkgegevens te vertegenwoordig
     > In dit fragment wordt ervan uitgegaan dat u een blobcontainer hebt met de naam adftutorial in uw Blob-opslag. Maak de container als deze bestaat niet of stel deze in op de naam van een bestaande container. De uitvoermap `incrementalcopy` wordt automatisch gemaakt als deze niet bestaat in de container. In deze zelfstudie wordt de bestandsnaam dynamisch gegenereerd met behulp van de expressie `@CONCAT('Incremental-', pipeline().RunId, '.txt')`.
 
 2. Voer de cmdlet **set-AzDataFactoryV2Dataset** uit om de gegevensset SinkDataset te maken.
-    
+
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
     ```
 
     Hier volgt een uitvoervoorbeeld van de cmdlet:
-    
+
     ```json
     DatasetName       : SinkDataset
     ResourceGroupName : ADF
@@ -344,9 +344,9 @@ In deze stap maakt u gegevenssets om de bron- en sinkgegevens te vertegenwoordig
     ```
 
 ## <a name="create-a-dataset-for-a-watermark"></a>Een gegevensset maken voor een grenswaarde
-In deze stap maakt u een gegevensset voor het opslaan van een bovengrenswaarde. 
+In deze stap maakt u een gegevensset voor het opslaan van een bovengrenswaarde.
 
-1. Maak een JSON-bestand met de naam WatermarkDataset.json in dezelfde map met de volgende inhoud: 
+1. Maak een JSON-bestand met de naam WatermarkDataset.json in dezelfde map met de volgende inhoud:
 
     ```json
     {
@@ -364,13 +364,13 @@ In deze stap maakt u een gegevensset voor het opslaan van een bovengrenswaarde.
     }    
     ```
 2.  Voer de cmdlet **set-AzDataFactoryV2Dataset** uit om de gegevensset water Mark dataset te maken.
-    
+
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "WatermarkDataset" -File ".\WatermarkDataset.json"
     ```
 
     Hier volgt een uitvoervoorbeeld van de cmdlet:
-    
+
     ```json
     DatasetName       : WatermarkDataset
     ResourceGroupName : ADF
@@ -380,10 +380,10 @@ In deze stap maakt u een gegevensset voor het opslaan van een bovengrenswaarde.
     ```
 
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
-In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopieeractiviteit en één opgeslagen procedureactiviteit als keten in één pijplijn. 
+In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopieeractiviteit en één opgeslagen procedureactiviteit als keten in één pijplijn.
 
 
-1. Maak een JSON-bestand met de naam IncrementalCopyPipeline.json in dezelfde map met de volgende inhoud: 
+1. Maak een JSON-bestand met de naam IncrementalCopyPipeline.json in dezelfde map met de volgende inhoud:
 
     ```json
     {
@@ -398,7 +398,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
                         "type": "SqlSource",
                         "sqlReaderQuery": "select * from watermarktable"
                         },
-    
+
                         "dataset": {
                         "referenceName": "WatermarkDataset",
                         "type": "DatasetReference"
@@ -413,14 +413,14 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
                             "type": "SqlSource",
                             "sqlReaderQuery": "select MAX(LastModifytime) as NewWatermarkvalue from data_source_table"
                         },
-    
+
                         "dataset": {
                         "referenceName": "SourceDataset",
                         "type": "DatasetReference"
                         }
                     }
                 },
-                
+
                 {
                     "name": "IncrementalCopyActivity",
                     "type": "Copy",
@@ -447,7 +447,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
                             ]
                         }
                     ],
-    
+
                     "inputs": [
                         {
                             "referenceName": "SourceDataset",
@@ -461,24 +461,24 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
                         }
                     ]
                 },
-    
+
                 {
                     "name": "StoredProceduretoWriteWatermarkActivity",
                     "type": "SqlServerStoredProcedure",
                     "typeProperties": {
-    
+
                         "storedProcedureName": "usp_write_watermark",
                         "storedProcedureParameters": {
                             "LastModifiedtime": {"value": "@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}", "type": "datetime" },
                             "TableName":  { "value":"@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}", "type":"String"}
                         }
                     },
-    
+
                     "linkedServiceName": {
                         "referenceName": "AzureSQLDatabaseLinkedService",
                         "type": "LinkedServiceReference"
                     },
-    
+
                     "dependsOn": [
                         {
                             "activity": "IncrementalCopyActivity",
@@ -489,19 +489,19 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
                     ]
                 }
             ]
-            
+
         }
     }
     ```
-    
+
 
 2. Voer de cmdlet **set-AzDataFactoryV2Pipeline** uit om de pijp lijn IncrementalCopyPipeline te maken.
-    
+
    ```powershell
    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"
-   ``` 
+   ```
 
-   Hier volgt een voorbeeld van uitvoer: 
+   Hier volgt een voorbeeld van uitvoer:
 
    ```json
     PipelineName      : IncrementalCopyPipeline
@@ -510,14 +510,14 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     Activities        : {LookupOldWaterMarkActivity, LookupNewWaterMarkActivity, IncrementalCopyActivity, StoredProceduretoWriteWatermarkActivity}
     Parameters        :
    ```
- 
+
 ## <a name="run-the-pipeline"></a>De pijplijn uitvoeren
 
 1. Voer de pijplijn IncrementalCopyPipeline uit met behulp van de cmdlet **invoke-AzDataFactoryV2Pipeline** . Vervang tijdelijke aanduidingen door de namen van uw eigen resourcegroep en data factory.
 
     ```powershell
     $RunId = Invoke-AzDataFactoryV2Pipeline -PipelineName "IncrementalCopyPipeline" -ResourceGroupName $resourceGroupName -dataFactoryName $dataFactoryName
-    ``` 
+    ```
 2. Controleer de status van de pijp lijn door de cmdlet **Get-AzDataFactoryV2ActivityRun** uit te voeren totdat alle activiteiten worden uitgevoerd. Vervang tijdelijke aanduidingen door uw eigen juiste tijd voor de parameters *RunStartedAfter* en *RunStartedBefore*. In deze zelfstudie gaat u *-RunStartedAfter "2017/09/14"* en *-RunStartedBefore "2017/09/15"* gebruiken.
 
     ```powershell
@@ -525,7 +525,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     ```
 
     Hier volgt een voorbeeld van uitvoer:
- 
+
     ```json
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
@@ -540,7 +540,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     DurationInMs      : 7777
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupOldWaterMarkActivity
@@ -554,7 +554,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     DurationInMs      : 25437
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : IncrementalCopyActivity
@@ -568,7 +568,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     DurationInMs      : 19769
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : StoredProceduretoWriteWatermarkActivity
@@ -595,15 +595,15 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     3,cccc,2017-09-03 02:36:00.0000000
     4,dddd,2017-09-04 03:21:00.0000000
     5,eeee,2017-09-05 08:06:00.0000000
-    ``` 
+    ```
 2. Controleer de laatste waarde van `watermarktable`. U ziet dat de grenswaarde is bijgewerkt.
 
     ```sql
     Select * from watermarktable
     ```
-    
+
     Hier volgt een voorbeeld van uitvoer:
- 
+
     TableName | WatermarkValue
     --------- | --------------
     data_source_table | 2017-09-05 8:06:00.000
@@ -615,10 +615,10 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     ```sql
     INSERT INTO data_source_table
     VALUES (6, 'newdata','9/6/2017 2:23:00 AM')
-    
+
     INSERT INTO data_source_table
     VALUES (7, 'newdata','9/7/2017 9:01:00 AM')
-    ``` 
+    ```
 
     De bijgewerkte gegevens in de SQL-database zijn:
 
@@ -645,7 +645,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     ```
 
     Hier volgt een voorbeeld van uitvoer:
- 
+
     ```json
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
@@ -660,7 +660,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     DurationInMs      : 31758
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : LookupOldWaterMarkActivity
@@ -674,7 +674,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     DurationInMs      : 25497
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : IncrementalCopyActivity
@@ -688,7 +688,7 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     DurationInMs      : 20194
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
-    
+
     ResourceGroupName : ADF
     DataFactoryName   : incrementalloadingADF
     ActivityName      : StoredProceduretoWriteWatermarkActivity
@@ -711,29 +711,26 @@ In deze zelfstudie maakt u een pijplijn met twee opzoekactiviteiten, één kopie
     ```sql
     Select * from watermarktable
     ```
-    voorbeelduitvoer: 
-    
+    voorbeelduitvoer:
+
     TableName | WatermarkValue
     --------- | ---------------
     data_source_table | 2017-09-07 09:01:00.000
 
-     
+
 ## <a name="next-steps"></a>Volgende stappen
-In deze zelfstudie hebt u de volgende stappen uitgevoerd: 
+In deze zelfstudie hebt u de volgende stappen uitgevoerd:
 
 > [!div class="checklist"]
-> * Bereid de gegevensopslag voor om de grenswaarde in op te slaan. 
+> * Bereid de gegevensopslag voor om de grenswaarde in op te slaan.
 > * Een gegevensfactory maken.
-> * Maak gekoppelde services. 
+> * Maak gekoppelde services.
 > * Maak bron-, sink- en grenswaardegegevenssets.
 > * Maak een pijplijn.
 > * Voer de pijplijn uit.
-> * Controleer de pijplijnuitvoering. 
+> * Controleer de pijplijnuitvoering.
 
-In deze zelfstudie heeft de pijplijn gegevens uit één tabel in een SQL-database naar een Blob-opslag gekopieerd. Ga door naar de volgende zelfstudie voor meer informatie over het kopiëren van gegevens uit meerdere tabellen in een on-premises SQL Server-database naar een SQL-database. 
+In deze zelfstudie heeft de pijplijn gegevens uit één tabel in een SQL-database naar een Blob-opslag gekopieerd. Ga door naar de volgende zelfstudie voor meer informatie over het kopiëren van gegevens uit meerdere tabellen in een on-premises SQL Server-database naar een SQL-database.
 
 > [!div class="nextstepaction"]
 >[Incrementeel gegevens uit meerdere tabellen in SQL Server naar een Azure SQL Database kopiëren](tutorial-incremental-copy-multiple-tables-powershell.md)
-
-
-

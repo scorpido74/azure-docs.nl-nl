@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 12/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9d4b4134fa26fd2cb904a862ac16544873bf8bcb
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: e2655a03fe315feb58668fcda0d19578a5df1a78
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934462"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981095"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Bewerkingen voor de resource provider Azure Resource Manager
 
-Dit artikel bevat een overzicht van de bewerkingen die beschikbaar zijn voor elke Azure Resource Manager resource provider. Deze bewerkingen kunnen worden gebruikt in [aangepaste rollen](custom-roles.md) om nauw keurig op [rollen gebaseerd toegangs beheer (RBAC)](overview.md) te bieden voor bronnen in Azure. Bewerkings reeksen hebben de volgende indeling: `{Company}.{ProviderName}/{resourceType}/{action}`. Zie [overeenkomen met de resource provider voor service](../azure-resource-manager/azure-services-resource-providers.md)voor een lijst met de manier waarop naam ruimten van de resource provider worden toegewezen aan Azure-Services.
+Dit artikel bevat een overzicht van de bewerkingen die beschikbaar zijn voor elke Azure Resource Manager resource provider. Deze bewerkingen kunnen worden gebruikt in [aangepaste rollen](custom-roles.md) om nauw keurig op [rollen gebaseerd toegangs beheer (RBAC)](overview.md) te bieden voor bronnen in Azure. Bewerkings reeksen hebben de volgende indeling: `{Company}.{ProviderName}/{resourceType}/{action}`. Zie [overeenkomen met de resource provider voor service](../azure-resource-manager/management/azure-services-resource-providers.md)voor een lijst met de manier waarop naam ruimten van de resource provider worden toegewezen aan Azure-Services.
 
 De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de meest recente bewerkingen wilt downloaden, gebruikt u de [bewerkings lijst](/cli/azure/provider/operation#az-provider-operation-list)van de [AzProviderOperation-](/powershell/module/az.resources/get-azprovideroperation) of AZ-provider.
 
@@ -6708,6 +6708,6 @@ De bewerkingen van de resource provider zijn altijd in ontwikkeling. Als u de me
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overeenkomende resource provider voor service](../azure-resource-manager/azure-services-resource-providers.md)
+- [Overeenkomende resource provider voor service](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Aangepaste rollen voor Azure-resources](custom-roles.md)
 - [Ingebouwde rollen voor Azure-resources](built-in-roles.md)

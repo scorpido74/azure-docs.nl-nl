@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: c666d718586d3e5351974da287a91f6a3a8c04ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 659d00c3fc7a766d800de6f1f12f410003284360
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459163"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979279"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolatie in de open bare Azure-Cloud
 Met Azure kunt u toepassingen en virtuele machines (Vm's) uitvoeren op gedeelde fysieke infra structuur. Een van de Prime economische motivaties voor het uitvoeren van toepassingen in een cloud omgeving is de mogelijkheid om de kosten van gedeelde resources over meerdere klanten te verdelen. In deze praktijk van multitenancy wordt de efficiëntie verbeterd door resources te multiplexen tussen verschillende klanten tegen lage kosten. Helaas introduceert het ook het risico van het delen van fysieke servers en andere infrastructuur resources om uw gevoelige toepassingen en Vm's uit te voeren die kunnen behoren tot een wille keurige en mogelijk schadelijke gebruiker.
@@ -190,7 +190,7 @@ Daarom worden Azure Storage uitgevoerd op afzonderlijke hardware zonder netwerk 
 De SAS betekent dat we een door de client beperkte machtigingen kunnen verlenen aan objecten in het opslag account voor een bepaalde periode en met een opgegeven set machtigingen. We kunnen deze beperkte machtigingen verlenen zonder dat ze de toegangs sleutels van uw account hoeven te delen.
 
 ### <a name="ip-level-storage-isolation"></a>Isolatie van opslag op IP-niveau
-U kunt firewalls tot stand brengen en een IP-adres bereik definiëren voor uw vertrouwde clients. Met een IP-adres bereik kunnen alleen clients met een IP-adres binnen het gedefinieerde bereik verbinding maken met [Azure Storage](../../storage/common/storage-security-guide.md).
+U kunt firewalls tot stand brengen en een IP-adres bereik definiëren voor uw vertrouwde clients. Met een IP-adres bereik kunnen alleen clients met een IP-adres binnen het gedefinieerde bereik verbinding maken met [Azure Storage](../../storage/blobs/security-recommendations.md).
 
 IP-opslag gegevens kunnen worden beschermd tegen onbevoegde gebruikers via een netwerk mechanisme dat wordt gebruikt om een toegewezen of toegewezen tunnel van verkeer toe te wijzen aan de IP-opslag.
 
@@ -203,18 +203,18 @@ Azure biedt de volgende typen versleuteling om gegevens te beveiligen:
 #### <a name="encryption-in-transit"></a>Versleuteling in transit
 Versleuteling in transit is een mechanisme voor het beveiligen van gegevens wanneer deze via netwerken worden verzonden. Met Azure Storage kunt u gegevens beveiligen met behulp van:
 
--   [Versleuteling op transport niveau](../../storage/common/storage-security-guide.md), zoals https wanneer u gegevens overbrengt naar of van Azure Storage.
+-   [Versleuteling op transport niveau](../../storage/blobs/security-recommendations.md), zoals https wanneer u gegevens overbrengt naar of van Azure Storage.
 
--   [Wire-versleuteling](../../storage/common/storage-security-guide.md), zoals SMB 3,0-versleuteling voor Azure-bestands shares.
+-   [Wire-versleuteling](../../storage/blobs/security-recommendations.md), zoals SMB 3,0-versleuteling voor Azure-bestands shares.
 
--   [Versleuteling aan de client zijde](../../storage/common/storage-security-guide.md), voor het versleutelen van de gegevens voordat deze naar de opslag wordt overgebracht en voor het ontsleutelen van de gegevens nadat deze buiten de opslag zijn overgedragen.
+-   [Versleuteling aan de client zijde](../../storage/blobs/security-recommendations.md), voor het versleutelen van de gegevens voordat deze naar de opslag wordt overgebracht en voor het ontsleutelen van de gegevens nadat deze buiten de opslag zijn overgedragen.
 
 #### <a name="encryption-at-rest"></a>Versleuteling bij rest
 Voor veel organisaties is [gegevens versleuteling in rust](isolation-choices.md) een verplichte stap op het vlak van gegevens privacy, naleving en data soevereiniteit. Er zijn drie Azure-functies voor het versleutelen van gegevens met de waarde ' op rest ':
 
--   Met [Storage service Encryption](../../storage/common/storage-security-guide.md) kunt u aanvragen dat de opslag service automatisch gegevens versleutelt bij het schrijven naar Azure Storage.
+-   Met [Storage service Encryption](../../storage/blobs/security-recommendations.md) kunt u aanvragen dat de opslag service automatisch gegevens versleutelt bij het schrijven naar Azure Storage.
 
--   [Versleuteling aan de client zijde](../../storage/common/storage-security-guide.md) biedt ook de mogelijkheid om op rest te versleutelen.
+-   [Versleuteling aan de client zijde](../../storage/blobs/security-recommendations.md) biedt ook de mogelijkheid om op rest te versleutelen.
 
 -   Met [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) kunt u de stations van het besturings systeem en de gegevens schijven die worden gebruikt door een virtuele machine van IaaS versleutelen.
 

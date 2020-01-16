@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/27/2019
 ms.author: nitinme
-ms.openlocfilehash: dfbd11b97ee77d77599ead08ba58fe173b64f876
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 14affb2c2aa53fc7a2b1a5946e81ad124800f678
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446475"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981264"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Zelf studie: formulier herkenner gebruiken met Azure Logic Apps voor het analyseren van facturen
 
@@ -52,7 +52,7 @@ In deze zelf studie leert u hoe u de informatie uit deze tabellen uitpakt in een
 
 U gebruikt deze container om voorbeeld gegevens te uploaden die nodig zijn om het model te trainen.
 
-1. Volg de instructies in [Create a Azure Storage account](../../storage/common/storage-quickstart-create-account.md) om een opslag account te maken. Gebruik **formrecostorage** als de naam van het opslag account.
+1. Volg de instructies in [Create a Azure Storage account](../../storage/common/storage-account-create.md) om een opslag account te maken. Gebruik **formrecostorage** als de naam van het opslag account.
 1. Volg de instructies in [een Azure Blob-container maken](../../storage/blobs/storage-quickstart-blobs-portal.md) om een container te maken binnen het Azure Storage-account. Gebruik **formrecocontainer** als container naam. Zorg ervoor dat u het niveau voor open bare toegang instelt op **container (anonieme lees toegang voor containers en blobs)** .
 
     > [!div class="mx-imgBorder"]

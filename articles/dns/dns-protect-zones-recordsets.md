@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
 ms.author: allensu
-ms.openlocfilehash: b84ba055dd8214ae18e76004671e3922e6f3b878
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c87f9d51c69c4f4d330862e83e5cc8e8e849a988
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211445"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969022"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS-zones en-records beveiligen
 
@@ -20,7 +20,7 @@ ms.locfileid: "74211445"
 
 DNS-zones en-records zijn essentiële bronnen. Het verwijderen van een DNS-zone of zelfs één DNS-record kan leiden tot een totale service storing.  Daarom is het belang rijk dat kritieke DNS-zones en-records worden beschermd tegen onbevoegde of onopzettelijke wijzigingen.
 
-In dit artikel wordt uitgelegd hoe u met Azure DNS uw DNS-zones en-records kunt beveiligen tegen dergelijke wijzigingen.  We hebben twee krachtige beveiligings functies van Azure Resource Manager toegepast: [toegangs beheer op basis van rollen](../role-based-access-control/overview.md) en [resource vergrendelingen](../azure-resource-manager/resource-group-lock-resources.md).
+In dit artikel wordt uitgelegd hoe u met Azure DNS uw DNS-zones en-records kunt beveiligen tegen dergelijke wijzigingen.  We hebben twee krachtige beveiligings functies van Azure Resource Manager toegepast: [toegangs beheer op basis van rollen](../role-based-access-control/overview.md) en [resource vergrendelingen](../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="role-based-access-control"></a>Toegangsbeheer op basis van rollen
 
@@ -156,9 +156,9 @@ De rol kan vervolgens op dezelfde manier worden toegewezen als ingebouwde rollen
 
 Zie [aangepaste rollen in azure RBAC](../role-based-access-control/custom-roles.md)voor meer informatie over het maken, beheren en toewijzen van aangepaste rollen.
 
-## <a name="resource-locks"></a>Resource vergrendelingen
+## <a name="resource-locks"></a>Resourcevergrendelingen
 
-Naast RBAC ondersteunt Azure Resource Manager ook een ander type beveiligings beheer, namelijk de mogelijkheid om resources te vergren delen. Met de RBAC-regels kunt u de acties van specifieke gebruikers en groepen beheren, worden resource vergrendelingen toegepast op de resource en zijn ze effectief voor alle gebruikers en rollen. Zie voor meer informatie [Resources vergrendelen met Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md).
+Naast RBAC ondersteunt Azure Resource Manager ook een ander type beveiligings beheer, namelijk de mogelijkheid om resources te vergren delen. Met de RBAC-regels kunt u de acties van specifieke gebruikers en groepen beheren, worden resource vergrendelingen toegepast op de resource en zijn ze effectief voor alle gebruikers en rollen. Zie voor meer informatie [Resources vergrendelen met Azure Resource Manager](../azure-resource-manager/management/lock-resources.md).
 
 Er zijn twee typen bron vergrendeling: **CanNotDelete** en **alleen-lezen**. Deze kunnen worden toegepast op een DNS-zone of op een afzonderlijke Recordset.  In de volgende secties worden verschillende algemene scenario's beschreven en wordt uitgelegd hoe u deze kunt ondersteunen met resource vergrendelingen.
 
@@ -217,4 +217,4 @@ Het is mogelijk om beide benaderingen-resource vergrendelingen en aangepaste rol
 ## <a name="next-steps"></a>Volgende stappen
 
 * Zie [aan de slag met toegangs beheer in de Azure Portal](../role-based-access-control/overview.md)voor meer informatie over het werken met RBAC.
-* Zie [resources vergren delen met Azure Resource Manager](../azure-resource-manager/resource-group-lock-resources.md)voor meer informatie over het werken met resource vergrendelingen.
+* Zie [resources vergren delen met Azure Resource Manager](../azure-resource-manager/management/lock-resources.md)voor meer informatie over het werken met resource vergrendelingen.

@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 104fc212dc590c1366b8dd2cd276f70bdadee5db
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614533"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980213"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Gebeurtenis aggregatie en verzameling met behulp van Windows Azure Diagnostics
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Als u een cluster wilt maken met behulp van Resource Manager, moet u de JSON van
 
 Als u de instelling diagnostische gegevens in de Resource Manager-sjabloon wilt zien, opent u het bestand azuredeploy. json en zoekt u naar **IaaSDiagnostics**. Als u een cluster wilt maken met behulp van deze sjabloon, selecteert u de knop **implementeren in azure die u kunt** vinden op de vorige koppeling.
 
-U kunt ook het Resource Manager-voor beeld downloaden, wijzigingen aanbrengen en een cluster maken met de gewijzigde sjabloon met behulp van de `New-AzResourceGroupDeployment` opdracht in een Azure PowerShell-venster. Raadpleeg de volgende code voor de para meters die u doorgeeft aan de opdracht. Voor gedetailleerde informatie over het implementeren van een resource groep met behulp van Power shell raadpleegt u het artikel [een resource groep implementeren met de sjabloon Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md).
+U kunt ook het Resource Manager-voor beeld downloaden, wijzigingen aanbrengen en een cluster maken met de gewijzigde sjabloon met behulp van de `New-AzResourceGroupDeployment` opdracht in een Azure PowerShell-venster. Raadpleeg de volgende code voor de para meters die u doorgeeft aan de opdracht. Voor gedetailleerde informatie over het implementeren van een resource groep met behulp van Power shell raadpleegt u het artikel [een resource groep implementeren met de sjabloon Azure Resource Manager](../azure-resource-manager/templates/deploy-powershell.md).
 
 ### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>De diagnostische extensie toevoegen aan een bestaand cluster
 Als u een bestaand cluster hebt waarvoor geen diagnostische gegevens zijn geïmplementeerd, kunt u het toevoegen of bijwerken via de cluster sjabloon. Wijzig de Resource Manager-sjabloon die wordt gebruikt voor het maken van het bestaande cluster of down load de sjabloon uit de portal zoals eerder beschreven. Wijzig het bestand template. json door de volgende taken uit te voeren:

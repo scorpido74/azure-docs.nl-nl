@@ -4,12 +4,12 @@ description: Meer informatie over het migreren van on-premises virtuele Hyper-V-
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: MVC
-ms.openlocfilehash: edbd52924a77c961cb923f48bba76a21b56489ff
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: b9c0de866a61ee2646d987c4fb98cb24a218417b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720222"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028967"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V VM's migreren naar Azure 
 
@@ -122,7 +122,7 @@ Installeer het gedownloade installatie bestand (AzureSiteRecoveryProvider. exe) 
     - Geef de proxy naam op als **http://ip-address** , of **http://FQDN** . HTTPS-proxy servers worden niet ondersteund.
    
 
-6. Zorg ervoor dat de provider de [vereiste url's](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access)kan bereiken.
+6. Zorg ervoor dat de provider de [vereiste url's](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts)kan bereiken.
 7. Klik in **registratie**, nadat de host is geregistreerd, op **volt ooien**.
 
 ## <a name="replicate-hyper-v-vms"></a>Virtuele Hyper-V-machines repliceren
@@ -155,7 +155,7 @@ Als de detectie is voltooid, kunt u beginnen met de replicatie van virtuele Hype
 
     ![Doel instellingen](./media/tutorial-migrate-hyper-v/target-settings.png)
 
-10. Controleer in **Compute** de naam, de grootte, het schijftype van het besturingssysteem en de beschikbaarheidsset van de VM. VM's moeten voldoen aan de [Azure-vereisten](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements).
+10. Controleer in **Compute** de naam, de grootte, het schijftype van het besturingssysteem en de beschikbaarheidsset van de VM. VM's moeten voldoen aan de [Azure-vereisten](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements).
 
     - **VM-grootte**: als u evaluatie aanbevelingen gebruikt, bevat de vervolg keuzelijst VM-grootte de aanbevolen grootte. Anders kiest Azure Migrate een grootte op basis van de dichtstbijzijnde overeenkomst in het Azure-abonnement. U kunt ook handmatig een grootte kiezen in **Azure VM-grootte**. 
     - **Besturingssysteem schijf**: Geef de opstart schijf van het besturings systeem voor de virtuele machine op. De besturingssysteemschijf is de schijf die de bootloader en het installatieprogramma van het besturingssysteem bevat. 

@@ -7,12 +7,12 @@ ms.reviewers: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
 tags: connectors
-ms.openlocfilehash: b3723ccc247b8a9451b9a5fdc628bff58da361a0
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 822a6d1cd812ead8e677a66a9b1e47ebdbcf8aea
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786992"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030138"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Binnenkomende HTTPS-aanroepen ontvangen en erop reageren met behulp van Azure Logic Apps
 
@@ -23,7 +23,16 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde aa
 * Ontvangen en reageren op een HTTPS-aanroep vanuit een andere logische app.
 
 > [!NOTE]
-> De trigger voor aanvragen ondersteunt *alleen* Transport Layer Security (TLS) 1,2 voor binnenkomende oproepen. Uitgaande oproepen blijven ondersteuning bieden voor TLS 1,0, 1,1 en 1,2. Als er SSL-Handshake-fouten worden weer geven, moet u ervoor zorgen dat u TLS 1,2 gebruikt.
+> De trigger voor aanvragen ondersteunt *alleen* Transport Layer Security (TLS) 1,2 voor binnenkomende oproepen. Uitgaande oproepen blijven ondersteuning bieden voor TLS 1,0, 1,1 en 1,2. Als er SSL-Handshake-fouten worden weer geven, moet u ervoor zorgen dat u TLS 1,2 gebruikt. Hier volgen de ondersteunde coderings suites voor inkomende oproepen:
+>
+> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -37,7 +46,7 @@ Met [Azure Logic apps](../logic-apps/logic-apps-overview.md) en de ingebouwde aa
 
 Deze ingebouwde trigger maakt een hand matig aanroep bare HTTPS-eind punt dat *alleen* binnenkomende HTTPS-aanvragen kan ontvangen. Wanneer deze gebeurtenis plaatsvindt, wordt de trigger geactiveerd en wordt de logische app uitgevoerd. Voor meer informatie over de onderliggende JSON-definitie van de trigger en hoe u deze trigger aanroept, raadpleegt u het [type trigger voor aanvragen](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) en [roept u werk stromen met http-eind punten aan in azure Logic apps](../logic-apps/logic-apps-http-endpoint.md).
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Een lege, logische app maken.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Een lege, logische app maken.
 
 1. Wanneer Logic app Designer wordt geopend, voert u in het zoekvak ' HTTP-aanvraag ' in als uw filter. Selecteer in de lijst triggers de trigger **Wanneer een HTTP-aanvraag wordt ontvangen** . Dit is de eerste stap in de werk stroom van uw logische app.
 

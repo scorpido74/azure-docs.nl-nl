@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 31af4ad9c6985202555dbcbe86c52e45d5c4154a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58e6e7b3cdf749909165d7ff071a2f3885d7e8b9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453286"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028739"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Virtuele VMware-machines beoordelen met behulp van Azure Migrate server-evaluatie
 
@@ -41,11 +41,11 @@ In de eerste zelf studie hebt u het volgende gedaan:
 
 - [Azure-machtigingen instellen](tutorial-prepare-vmware.md#prepare-azure) voor Azure Migrate.
 - [VMware voorbereiden](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment) voor evaluatie:
-   - Controleer de VMware-instellingen.
-   - Stel machtigingen in om een virtuele VMware-machine met een eicellen-sjabloon te maken.
-   - Stel een account in voor de detectie van VM'S. 
-   - Vereiste poorten beschikbaar maken.
-   - Houd rekening met de Url's die nodig zijn voor toegang tot Azure.
+   - [Verifiëren](migrate-support-matrix-vmware.md#vmware-requirements) VMware-instellingen.
+   - Stel machtigingen in VMware in om een virtuele VMware-machine te maken met een eicellen-sjabloon.
+   - Stel een [account in voor de detectie van vm's](migrate-support-matrix-vmware.md#vmware-requirements). 
+   - [Vereiste poorten](migrate-support-matrix-vmware.md#port-access) beschikbaar maken.
+   - Houd rekening met de [url's die nodig zijn](migrate-replication-appliance.md#url-access) voor toegang tot Azure.
 
 ## <a name="set-up-an-azure-migrate-project"></a>Een Azure Migrate project instellen
 
@@ -130,7 +130,7 @@ Importeer het gedownloade bestand en maak een virtuele machine:
 
 ### <a name="verify-appliance-access-to-azure"></a>Toestel toegang tot Azure controleren
 
-Zorg ervoor dat de virtuele machine van het apparaat verbinding kan maken met [Azure-url's](migrate-support-matrix-vmware.md#assessment-url-access-requirements).
+Zorg ervoor dat de virtuele machine van het apparaat verbinding kan maken met [Azure-url's](migrate-appliance.md#url-access).
 
 ### <a name="configure-the-appliance"></a>Het apparaat configureren
 
@@ -172,7 +172,7 @@ Het apparaat moet verbinding maken met vCenter Server om de configuratie-en pres
 1. Geef in **vCenter Server Details opgeven**de naam (FQDN) of het IP-adres van de vCenter Server instantie op. U kunt de standaard poort verlaten of een aangepaste poort opgeven waarop vCenter Server luistert.
 1. Geef bij **gebruikers naam** en **wacht woord**de vCenter Server account referenties op die het apparaat gebruikt voor het detecteren van vm's op het vCenter Server exemplaar. 
 
-   Zorg ervoor dat het account de [vereiste machtigingen voor detectie](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)heeft. U kunt [de detectie bereiken](tutorial-assess-vmware.md#set-the-scope-of-discovery) door de toegang tot het vCenter-account te beperken.
+   Zorg ervoor dat het account de [vereiste machtigingen voor detectie](migrate-support-matrix-vmware.md#vmware-requirements)heeft. U kunt [de detectie bereiken](tutorial-assess-vmware.md#set-the-scope-of-discovery) door de toegang tot het vCenter-account te beperken.
 1. Selecteer **verbinding valideren** om te controleren of het apparaat verbinding kan maken met vCenter Server.
 
 ### <a name="specify-vm-credentials"></a>VM-referenties opgeven

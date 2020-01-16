@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: c01e5c508644214c078dfc42ae8c77964933a277
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7c4d6a01ccaeffb4042753dc0a904d970631383f
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895996"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045201"
 ---
 # <a name="vcore-model-overview"></a>Overzicht van vCore-modellen
 
@@ -142,6 +142,16 @@ Selecteer op het tabblad **basis beginselen** de koppeling **Data Base configure
   
 **Het genereren van de hardware van een bestaand beheerd exemplaar wijzigen**
 
+# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+
+Selecteer op de pagina beheerd exemplaar de **prijs categorie** koppeling die in de sectie instellingen is geplaatst
+
+![hardware van beheerd exemplaar wijzigen](media/sql-database-service-tiers-vcore/change-managed-instance-hardware.png)
+
+Op de pagina **prijs categorie** kunt u de generatie van de hardware wijzigen, zoals beschreven in de vorige stappen.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 Gebruik het volgende PowerShell-script:
 
 ```powershell-interactive
@@ -176,7 +186,9 @@ $properties = New-Object System.Object
 Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType "Microsoft.SQL/managedInstances" -Sku $sku -ResourceGroupName $resourceGroup -Force -ApiVersion "2015-05-01-preview"
 ```
 
-Zorg ervoor dat u de abonnements-id, naam en resource groep van het beheerde exemplaar opgeeft.
+Zorg ervoor dat u de abonnements-ID, naam en resource groep van het beheerde exemplaar opgeeft.
+
+---
 
 ### <a name="hardware-availability"></a>Hardwarematige Beschik baarheid
 
@@ -213,9 +225,9 @@ Geef op de pagina **basis beginselen** het volgende op:
 
 Geef op de pagina **Details** het volgende op:
 
-5. Selecteer in de sectie **probleem Details** de koppeling **Details opgeven** . 
-6. Voor **SQL database quotum type** selecteert u **M-serie**.
-7. Selecteer bij **regio**de regio om de M-serie in te scha kelen.
+1. Selecteer in de sectie **probleem Details** de koppeling **Details opgeven** . 
+2. Voor **SQL database quotum type** selecteert u **M-serie**.
+3. Selecteer bij **regio**de regio om de M-serie in te scha kelen.
     Zie de [Beschik baarheid van de m-serie](#m-series)voor regio's waar de m-serie beschikbaar is.
 
 Goedgekeurde ondersteunings aanvragen worden doorgaans binnen 5 werk dagen afgehandeld.

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 09/11/2018
-ms.openlocfilehash: 537f57249065a6b47c2ce4d679205ac21a75fe4c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6335fce717772e268f711c2e6e5050fa8c17d573
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439410"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977337"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Gegevens kopiëren van Azure Blob Storage naar een SQL-database met behulp van het hulpprogramma Copy Data
 
@@ -39,7 +39,7 @@ In deze zelfstudie voert u de volgende stappen uit:
 ## <a name="prerequisites"></a>Vereisten
 
 * **Azure-abonnement**: als u nog geen abonnement op Azure hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
-* **Azure-opslagaccount**: Blob Storage als het _brongegevensarchief_ gebruiken. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md).
+* **Azure-opslagaccount**: Blob Storage als het _brongegevensarchief_ gebruiken. Als u geen Azure-opslagaccount hebt, raadpleegt u de instructies in [Een opslagaccount maken](../storage/common/storage-account-create.md).
 * **Azure SQL Database**: een SQL-database als de _sink-gegevensopslag_ gebruiken. Als u geen SQL-database hebt, raadpleegt u de instructies in [Een SQL Database maken](../sql-database/sql-database-get-started-portal.md).
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Een blob en een SQL-tabel maken
@@ -78,18 +78,18 @@ Bereid uw Blob-opslag en de SQL-database voor voor gebruik tijdens de zelfstudie
 ## <a name="create-a-data-factory"></a>Een data factory maken
 
 1. Selecteer in het menu aan de linkerkant **een resource maken** > **Analytics** > **Data Factory**:
-    
+
     ![Nieuwe data factory maken](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in bij **Naam**.
 
     De naam van de data factory moet _wereldwijd uniek_ zijn. Mogelijk wordt het volgende foutbericht weergegeven:
-    
+
     ![Foutbericht nieuwe data factory](./media/doc-common-process/name-not-available-error.png)
 
     Als u een foutbericht ontvangt dat betrekking heeft op de waarde die bij de naam is ingevuld, voert u een andere naam in voor de data factory. Gebruik bijvoorbeeld de naam _**uwnaam**_ **ADFTutorialDataFactory**. Raadpleeg het onderwerp [Data Factory - Naamgevingsregels](naming-rules.md) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
 1. Selecteer het Azure-**abonnement** waarin u de nieuwe data factory wilt maken.
 1. Voer een van de volgende stappen uit voor **Resourcegroep**:
-    
+
     a. Selecteer **Bestaande gebruiken** en selecteer een bestaande resourcegroep in de vervolgkeuzelijst.
 
     b. Selecteer **Nieuwe maken** en voer de naam van een resourcegroep in.
@@ -101,7 +101,7 @@ Bereid uw Blob-opslag en de SQL-database voor voor gebruik tijdens de zelfstudie
 1. Selecteer **Maken**.
 
 1. Nadat de data factory is gemaakt, wordt de startpagina **Data Factory** weergegeven.
-    
+
     ![Startpagina van de gegevensfactory](./media/doc-common-process/data-factory-home-page.png)
 1. Selecteer de tegel **Author & Monitor** om de gebruikersinterface (UI) van Azure Data Factory te openen in een afzonderlijk tabblad.
 
@@ -125,7 +125,7 @@ Bereid uw Blob-opslag en de SQL-database voor voor gebruik tijdens de zelfstudie
     ![Aan de bron gekoppelde service selecteren](./media/tutorial-copy-data-tool/select-source-linked-service.png)
 
 1. Voltooi op de pagina **Invoerbestand of invoermap kiezen** de volgende stappen:
-    
+
     a. Klik op **Bladeren** om naar de map **adfv2tutorial/input** te gaan en selecteer het bestand **inputEmp.txt**. Klik vervolgens op **Kiezen**.
 
     b. Klik op **Volgende** om verder te gaan met de volgende stap.

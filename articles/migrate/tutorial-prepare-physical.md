@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 363549662a17a87513c8426347909142ee405cae
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: f81f47349610cd72489df305ccf544c8346cb9b3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196401"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028669"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Voor bereiding voor de evaluatie en migratie van fysieke servers naar Azure
 
@@ -95,18 +95,18 @@ Voor de voor bereiding op de beoordeling van de fysieke server moet u de instell
 
 ### <a name="verify-physical-server-settings"></a>Controleer de instellingen van de fysieke server
 
-1. Controleer de vereisten voor de [fysieke server](migrate-support-matrix-physical.md#assessment-physical-server-requirements) voor Server evaluatie.
-2. Zorg ervoor dat de [vereiste poorten](migrate-support-matrix-physical.md#assessment-port-requirements) op fysieke servers zijn geopend.
+1. Controleer de vereisten voor de [fysieke server](migrate-support-matrix-physical.md#physical-server-requirements) voor Server evaluatie.
+2. Zorg ervoor dat de [vereiste poorten](migrate-support-matrix-physical.md#port-access) op fysieke servers zijn geopend.
 
 
 ### <a name="verify-appliance-settings"></a>Instellingen voor toestellen controleren
 
 Voordat u het Azure Migrate apparaat instelt en de evaluatie begint in de volgende zelf studie, moet u de implementatie van het apparaat voorbereiden.
 
-1. [Controleer](migrate-support-matrix-physical.md#assessment-appliance-requirements) de vereisten van het apparaat.
-2. [Bekijk](migrate-support-matrix-physical.md#assessment-appliance-url-access) de Azure-url's die het apparaat nodig heeft om toegang te krijgen.
-3. Bekijk de gegevens die door het apparaat worden verzameld tijdens de detectie en evaluatie.
-4. [Noteer](migrate-support-matrix-physical.md#assessment-port-requirements) de toegangs vereisten voor poorten voor het apparaat.
+1. [Controleer](migrate-appliance.md#appliance---physical) de vereisten voor apparaten voor fysieke servers.
+2. [Bekijk](migrate-appliance.md#url-access) de Azure-url's die het apparaat nodig heeft om toegang te krijgen.
+3. [Controleer](migrate-appliance.md#collected-data---vmware) of het apparaat wordt verzameld tijdens de detectie en evaluatie.
+4. Beoordeling van de fysieke server vereisten voor toegang [tot poort.](migrate-support-matrix-physical.md#port-access)
 
 
 ### <a name="set-up-an-account-for-physical-server-discovery"></a>Een account instellen voor detectie van fysieke servers
@@ -115,6 +115,15 @@ Azure Migrate heeft machtigingen nodig om on-premises servers te detecteren.
 
 - **Windows:** Stel een lokale gebruikers account in op alle Windows-servers die u wilt toevoegen in de detectie. Het gebruikers account moet worden toegevoegd aan de volgende groepen:-extern beheer gebruikers-prestatie meter gebruikers-prestaties logboek gebruikers
 - **Linux:** U hebt een hoofd account nodig op de Linux-servers die u wilt detecteren.
+
+## <a name="prepare-for-physical-server-migration"></a>Voorbereiden van de migratie van de fysieke server
+
+Bekijk de vereisten voor migratie van fysieke servers.
+
+- [Controleer](migrate-support-matrix-physical-migration.md#physical-server-requirements) de vereisten voor de fysieke server voor migratie.
+- Azure Migrate: Server migratie maakt gebruik van een replicatie server voor de migratie van fysieke servers:
+    - [Controleer](migrate-replication-appliance.md#appliance-requirements) de implementatie vereisten voor het replicatie apparaat en de [Opties](migrate-replication-appliance.md#mysql-installation) voor het installeren van MySQL op het apparaat.
+    - Controleer de toegangs vereisten voor de [URL](migrate-replication-appliance.md#url-access) en [poort] (migrate-Replication-Appliance. MD # Port-Access) voor het replicatie apparaat.
 
 
 ## <a name="next-steps"></a>Volgende stappen

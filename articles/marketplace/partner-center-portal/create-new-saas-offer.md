@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 1df30b25d2029ba31525eaea232d258bbb134366
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/13/2020
+ms.openlocfilehash: c39f41af8ed2f1e25064324c0e1da4a6603face8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863802"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045535"
 ---
 # <a name="create-a-new-saas-offer"></a>Een nieuwe SaaS-aanbieding maken
 
@@ -167,7 +167,7 @@ Selecteer **Opslaan** na het volt ooien van deze velden.
 
 ### <a name="category"></a>Categorie
 
-Selecteer mini maal één (1) en een maximum van drie (3) categorieën die worden gebruikt voor het groeperen van uw aanbieding in de juiste Zoek gebieden voor Marketplace. Neem contact op met de manier waarop uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding. 
+Selecteer mini maal één (1) en een maximum van drie (3) categorieën die worden gebruikt voor het groeperen van uw aanbieding in de juiste Zoek gebieden voor Marketplace. Bel op hoe uw aanbod deze categorieën ondersteunt in de beschrijving van de aanbieding.
 
 ### <a name="industry"></a>Industrie
 
@@ -175,7 +175,7 @@ Selecteer mini maal één (1) en een maximum van drie (3) categorieën die worde
 
 ### <a name="app-version"></a>App-versie
 
-Dit is een optioneel veld dat in de AppSource Marketplace wordt gebruikt om het versie nummer van uw aanbieding te identificeren.
+Dit veld is optioneel en wordt gebruikt in de AppSource Marketplace om het versie nummer van uw aanbieding te identificeren.
 
 ### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standard-contract voor micro soft Commercial Marketplace
 
@@ -204,7 +204,7 @@ Er zijn twee soorten wijzigingen beschikbaar voor uitgevers van commerciële Mar
 >[!NOTE]
 > Deze twee typen wijzigingen worden boven op elkaar gestapeld. Klanten die zijn gericht op aangepaste wijzigingen, krijgen ook de universele wijziging in het standaard contract tijdens de aankoop.
 
-Voor **waarden voor universele wijzigingen in het Standard-contract voor de commerciële Marketplace van micro soft**: Voer de voor waarden voor universele wijzigingen in dit vak in. U kunt één universele wijziging per aanbieding opgeven. U kunt een onbeperkt aantal tekens in dit vak invoeren. Deze worden weer gegeven aan klanten in AppSource, Azure Marketplace en/of Azure Portal tijdens de detectie-en aankoop stroom.
+Voor **waarden voor universele wijzigingen in het Standard-contract voor de commerciële Marketplace van micro soft**: Voer de voor waarden voor universele wijzigingen in dit vak in. U kunt één universele wijziging per aanbieding opgeven. U kunt een onbeperkt aantal tekens in dit vak invoeren. Deze voor waarden worden weer gegeven aan klanten in AppSource, Azure Marketplace en/of Azure Portal tijdens de detectie-en aankoop stroom.
 
 **Aangepaste aanpassings voorwaarden voor het Standard-contract voor de commerciële Marketplace van micro soft**: begin door **aangepaste wijzigings voorwaarden toevoegen**te selecteren. U kunt Maxi maal 10 aangepaste voor waarden per aanbieding opgeven.
 
@@ -231,7 +231,7 @@ Op het tabblad aanbiedings vermelding worden de talen (en markten) weer gegeven 
 
 Geef de details op die in Marketplace moeten worden weer gegeven, inclusief beschrijvingen van uw aanbieding en marketing-assets.
 
-- **Naam** (vereist): de naam die hier is opgegeven, wordt weer gegeven als de titel van uw aanbieding op de Marketplace (s) die u hebt gekozen. De naam wordt vooraf ingevuld op basis van uw vorige **nieuwe aanbieding** .  Dit kan een handels merk zijn.  Dit mag geen emojis bevatten (tenzij ze de symbolen van het handels merk en copyright zijn) en moet beperkt zijn tot 50 tekens.
+- **Naam** (vereist): de naam die hier is opgegeven, wordt weer gegeven als de titel van uw aanbieding op de Marketplace (s) die u hebt gekozen. De naam wordt vooraf ingevuld op basis van uw vorige **nieuwe aanbieding** . De naam kan worden aangemerkt. Het mag geen emojis bevatten (tenzij ze de symbolen van het handels merk en copyright zijn) en moet beperkt zijn tot 50 tekens.
 - **Samen vatting** (vereist): Geef een korte beschrijving van uw aanbieding die moet worden gebruikt in de zoek resultaten voor Marketplace-aanbiedingen. In dit veld kunnen Maxi maal 100 tekens tekst worden ingevoerd.
 - **Beschrijving** (vereist): Geef een beschrijving op van uw aanbieding die moet worden weer gegeven in het overzicht van Marketplace-lijst (en). Overweeg het opnemen van een toegevoegde waarde, belang rijke voor delen, categorie-of branche koppelingen, in-app aankoop kansen, eventueel vereiste informatie en een koppeling voor meer informatie.
 In dit veld kunnen Maxi maal 3.000 tekens tekst worden ingevoerd. Zie het artikel [een fantastische app-beschrijving schrijven](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)voor aanvullende tips.
@@ -240,7 +240,7 @@ In dit veld kunnen Maxi maal 3.000 tekens tekst worden ingevoerd. Zie het artike
 
 #### <a name="description"></a>**Beschrijving**
 
-Dit is een verplicht veld. Items die moeten worden meegenomen in de beschrijving:
+Dit veld is verplicht. Items die in **Beschrijving**moeten worden meegenomen:
 
 * Beschrijf duidelijk de toegevoegde waarde van uw aanbieding in de eerste paar zinnen van uw beschrijving.  
 * Houd er rekening mee dat de eerste paar zinnen kunnen worden weer gegeven in de resultaten van de zoek machine.  
@@ -253,76 +253,28 @@ De belangrijkste onderdelen van de toegevoegde waarde moeten de volgende informa
 * Het type gebruiker dat voor deel is van het product.
 * Klanten wensen of pijn dat de product adressen.
 
-Als u de beschrijving van uw aanbieding aantrekkelijker wilt maken, kunt u HTML-tags gebruiken om de beschrijving op te maken.
+Als u de **Beschrijving** van uw aanbieding aantrekkelijker wilt maken, gebruikt u de RTF-editor om uw beschrijving op te maken.
 
-1. Als u alinea's wilt maken, moet u `<p>` toevoegen aan de Begging van de tekst en `</p>` aan het einde toevoegen.
+![De RTF-editor gebruiken](./media/text-editor2.png)
 
-    **Voor beeld**:
+Gebruik de volgende instructies voor het gebruik van de RTF-editor:
 
-    `<p>` dit is mijn eerste alinea. `</p>` <br>
-    `<p>` dit is mijn tweede alinea. `</p>` <br>
+- Als u de indeling van de inhoud wilt wijzigen, markeert u de tekst die u wilt opmaken en selecteert u een tekst stijl, zoals hieronder wordt weer gegeven:
 
-    Het bovenstaande ziet er als volgt uit:
+     ![De RTF-editor gebruiken om de tekst indeling te wijzigen](./media/text-editor3.png)
 
-    <p> Dit is mijn eerste alinea. </p>
-    <p> Dit is mijn tweede alinea. </p>
+- Gebruik de onderstaande opties om een lijst met opsommings tekens of genummerde lijsten aan de tekst toe te voegen:
 
-1. Als u een **lijst met opsommings tekens**wilt toevoegen aan items, plaatst u de tekst in de `<li>` tags hieronder. U kunt meer items met opsommings tekens (items tussen de `<li>` en `</li>` Tags) binnen de labels `<ul>` en `</ul>` kopiëren en plakken. Zorg ervoor dat u de `<ul></ul>`toevoegt.
+     ![De RTF-editor gebruiken om lijsten toe te voegen](./media/text-editor4.png)
 
-    **Voor beeld**:
+- Gebruik de onderstaande opties om inspringing toe te voegen aan of te verwijderen uit de tekst:
 
-    ```
-    <ul> 
-        <li>add text here</li>
-        <li> add text here </li>
-        <li> add text here </li>
-    </ul>
-    ```
-
-    Het bovenstaande ziet er als volgt uit:
-    <ul> 
-        <li>Voeg hier tekst toe</li>
-        <li> Voeg hier tekst toe </li>
-        <li> Voeg hier tekst toe </li>
-    </ul> 
-
-1. Voeg `<b>` **toe aan het** begin van de tekst die u wilt vet en voeg `</b>` toe aan het einde van de tekst die u wilt vet weer gegeven.
-
-    **Voor beeld**: `<b>` gratis proef versie `</b>`
-    
-    De bovenstaande term zou ertoe leiden dat de woorden gratis proef versie vet worden weer gegeven in de beschrijving van de aanbieding op de winkel.
-
-    **GRATIS PROEFVERSIE**
-
-1. Als u **regel einden** wilt toevoegen tussen uw inhoud, voegt u `<br>` toe vóór de inhoud die u op een nieuwe regel wilt starten. Als u een ruimte wilt houden en wilt controleren of inhoud op een nieuwe regel begint, voegt u `<br><br>` toe vóór de inhoud.
-
-    **Voor beeld**:
-
-    Dit is een tekst regel. `<br>` dit is een tekst regel die wordt gestart op een nieuwe regel. `<br><br>` dit is een regel waarmee twee regels worden gestart.
-
-    Het bovenstaande ziet er als volgt uit:
-
-    Dit is een tekst regel. <br> Dit is een tekst regel die wordt gestart op een nieuwe regel. <br><br> Dit is een regel waarmee twee regels worden gestart.
-
-1. Als u de **tekst**groter wilt maken, kiest u eerst hoe groot de tekst moet zijn. Gebruik de onderstaande voor beelden. Nadat u de grootte van de tekst hebt geselecteerd, voegt u de bijbehorende `<H*></H*>`-tags toe aan het begin en het einde van de tekst.
-
-    **Voor beeld**:
-
-    `<h1>`dit is Kop 1`</h1>` <br>
-    `<h2>`dit is Kop 2`</h2>` <br>
-    `<h3>`dit is kop 3`</h3>` <br>
-    `<h4>`dit is kop 4`</h4>` <br>
-    `<h5>`dit is koptekst 5`</h5>` <br>
-    `<h6>`dit is kop 6`</h6>` 
-
-    Het bovenstaande ziet er als volgt uit:
-
-    ![Voorbeeld koppen](./media/heading.png)
+     ![De Rich Text Editor gebruiken om in te springen](./media/text-editor5.png)
 
 #### <a name="links"></a>Koppelingen
 
 - **Privacybeleid** (vereist): koppeling naar het privacybeleid van uw organisatie. U bent verantwoordelijk om ervoor te zorgen dat uw app voldoet aan de wetten en voor schriften van de privacy en voor het bieden van een geldig privacybeleid
-- **Software** voor het CSP-programma (optioneel): u moet een koppeling naar marketing materialen opgeven als u ervoor kiest om uw aanbieding uit te breiden naar het [CSP-programma (Cloud Solution Provider)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) . CSP breidt uw aanbieding uit naar een breder scala aan gekwalificeerde klanten door CSP-partners in staat te stellen om uw aanbieding te bundelen, te verhandelen en te verkopen. Deze wederverkopers moeten toegang hebben tot materialen om uw aanbieding in de handel te brengen. Zie [Go-to-Market Services](https://partner.microsoft.com/reach-customers/gtm)(Engelstalig) voor meer informatie.
+- **Software** voor het CSP-programma (optioneel): Geef een koppeling op naar marketing materiaal als u ervoor kiest uw aanbieding uit te breiden naar het [CSP-programma (Cloud Solution Provider)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) . CSP breidt uw aanbieding uit naar een breder scala aan gekwalificeerde klanten door CSP-partners in staat te stellen om uw aanbieding te bundelen, te verhandelen en te verkopen. Deze wederverkopers moeten toegang hebben tot materialen om uw aanbieding in de handel te brengen. Zie [Go-to-Market Services](https://partner.microsoft.com/reach-customers/gtm)(Engelstalig) voor meer informatie.
 - **Nuttige koppelingen** (optioneel): optionele aanvullende online documenten over uw app of gerelateerde services die worden vermeld door een **titel** en **URL**op te geven. Voeg extra nuttige koppelingen toe door op **+ een URL toevoegen**te klikken.
 
 #### <a name="contact-information"></a>Contactgegevens
@@ -353,7 +305,7 @@ Vergeet niet om te **slaan** voordat u verdergaat met de volgende sectie.
 Op het tabblad **voor beeld** kunt u een beperkte **Preview-doel groep** definiëren voor het vrijgeven van uw aanbieding voordat u uw aanbieding Live publiceert naar het bredere publiek van de Marketplace.
 
 > [!IMPORTANT]
-> U moet **Live go** selecteren voordat uw aanbieding naar de open bare doel groep van Marketplace wordt gepubliceerd nadat u uw aanbieding in Preview hebt gecontroleerd.
+> Nadat u uw aanbieding in Preview hebt gecontroleerd, selecteert u **Live gaan** zodat uw aanbieding Live kan worden gepubliceerd voor de open bare doel groep van Marketplace.
 
 - **Een preview-doel groep definiëren: Voeg per regel één AAD/MSA-account toe, samen met een optionele beschrijving.**
 
@@ -390,8 +342,8 @@ Zodra u een abonnement hebt gemaakt, ziet u de namen, Id's, prijs modellen, Besc
 
 **Nieuw plan maken** (mini maal één abonnement voor degenen die via micro soft willen verkopen)
 
-- **Plan-id:** Maak een unieke plan-ID voor elk abonnement in deze aanbieding. Deze ID is zichtbaar voor klanten in de product-URL en Azure Resource Manager sjablonen (indien van toepassing). Gebruik alleen kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. Voor deze abonnement-ID zijn Maxi maal 50 tekens toegestaan. Houd er rekening mee dat de ID niet kan worden gewijzigd nadat het maken is geselecteerd.
-- **Naam van abonnement:** Klanten zien deze naam wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak in deze aanbieding een unieke aanbiedings naam voor elk abonnement. De naam van het abonnement wordt gebruikt om software-abonnementen te onderscheiden die deel kunnen uitmaken van dezelfde aanbieding (bijvoorbeeld Naam van aanbieding: Windows Server; plannen: Windows Server 2016, Windows Server 2019).
+- **Plan-id:** Maak een unieke plan-ID voor elk abonnement in deze aanbieding. Deze ID is zichtbaar voor klanten in de product-URL en Azure Resource Manager sjablonen (indien van toepassing). Gebruik alleen kleine letters, alfanumerieke tekens, streepjes of onderstrepingen. Voor deze abonnement-ID zijn Maxi maal 50 tekens toegestaan. De ID kan niet worden gewijzigd nadat de maken is geselecteerd.
+- **Naam van abonnement:** Klanten zien deze naam wanneer ze bepalen welk abonnement binnen uw aanbieding moet worden geselecteerd. Maak in deze aanbieding een unieke aanbiedings naam voor elk abonnement. De naam van het abonnement wordt gebruikt om software-abonnementen te onderscheiden die deel kunnen uitmaken van dezelfde aanbieding (bijvoorbeeld aanbiedings naam: Windows Server; abonnementen: Windows Server 2016, Windows Server 2019).
 
 ### <a name="plan-listing"></a>Aanbieding plannen
 
@@ -424,7 +376,7 @@ De mogelijkheid om een gratis proef versie te configureren, is beschikbaar voor 
 >[!Note]
 >Zodra uw aanbieding is gepubliceerd met een gratis proef versie, kan deze niet worden uitgeschakeld voor dat abonnement. Zorg ervoor dat deze instelling juist is voor de eerste publicatie om te voor komen dat u het abonnement opnieuw moet maken.
 
-Als u informatie wilt verkrijgen over klant abonnementen die momenteel deel nemen aan een gratis proef versie, gebruikt u de nieuwe API-eigenschap `isFreeTrial`, die wordt gemarkeerd als waar of onwaar. Zie de [API voor SaaS Get-abonnementen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) voor meer informatie.
+Als u informatie wilt verkrijgen over klant abonnementen die momenteel deel nemen aan een gratis proef versie, gebruikt u de nieuwe API-eigenschap `isFreeTrial`, die wordt gemarkeerd als waar of onwaar. Zie de [API voor SaaS Get-abonnementen](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription)voor meer informatie.
 
 >[!Note]
 >Gratis proef versies worden niet ondersteund voor abonnementen die gebruikmaken van de Marketplace-meter service.

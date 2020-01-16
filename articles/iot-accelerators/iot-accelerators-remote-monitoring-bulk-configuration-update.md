@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: adugar
-ms.openlocfilehash: 8a5c74c76662a089675fcbdcd8d5a7ea54b58fd1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8ba2d4eca3287efc746c0d4902b6bcc4bd0c796e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61448748"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980552"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Zelfstudie: Uw verbonden apparaten bulksgewijs beheren
 
@@ -45,7 +45,7 @@ Voor deze zelfstudie hebt u een geïmplementeerd exemplaar van de verbetering vo
 
 Als u de verbetering voor de externe bewakingsoplossing nog niet hebt geïmplementeerd, voltooit u eerst de snelstart [Een externe bewakingsoplossing in de cloud implementeren](quickstart-remote-monitoring-deploy.md).
 
-U hebt een Azure-opslagaccount nodig om de firmwarebestanden op te slaan. U kunt een bestaand opslagaccount gebruiken of [een nieuw opslagaccount maken](../storage/common/storage-quickstart-create-account.md) in uw abonnement.
+U hebt een Azure-opslagaccount nodig om de firmwarebestanden op te slaan. U kunt een bestaand opslagaccount gebruiken of [een nieuw opslagaccount maken](../storage/common/storage-account-create.md) in uw abonnement.
 
 In de zelfstudie wordt het apparaat [IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/) als voorbeeldapparaat gebruikt.
 
@@ -57,7 +57,7 @@ De volgende software moet op uw lokale computer zijn geïnstalleerd:
 Voordat u begint:
 
 * Controleer of de [bootloader op uw IoT DevKit-apparaat versie 1.4.0 of hoger](https://microsoft.github.io/azure-iot-developer-kit/docs/firmware-upgrading/) is.
-* Controleer of de SDK van IoT DevKit dezelfde versie heeft als de bootloader. U kunt de SDK van IoT DevKit bijwerken met behulp van de Azure IoT Workbench in VS Code. Open het opdrachtenpalet en voer de **Arduino: Bord Manager**. Zie [Prepare the development environment](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment) (De ontwikkelomgeving voorbereiden) voor meer informatie.
+* Controleer of de SDK van IoT DevKit dezelfde versie heeft als de bootloader. U kunt de SDK van IoT DevKit bijwerken met behulp van de Azure IoT Workbench in VS Code. Open het opdrachtenpalet en voer **Arduino: Board Manager** in. Zie [Prepare the development environment](../iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md#prepare-the-development-environment) (De ontwikkelomgeving voorbereiden) voor meer informatie.
 
 U hebt ook minimaal één IoT DevKit-apparaat met de verbetering voor de externe bewakingsoplossing nodig. Als u nog geen IoT DevKit-apparaat hebt verbonden, zie dan [Connect MXChip IoT DevKit AZ3166 to the IoT Remote Monitoring solution accelerator](iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md) (MXChip IoT DevKit AZ3166 verbinden met de IoT-verbetering voor de externe bewakingsoplossing).
 
@@ -73,7 +73,7 @@ Als u de firmware automatisch wilt bijwerken op een groep apparaten, moeten de a
 
 1. Selecteer op de pagina **Apparaten** alle **IoT DevKit**-apparaten die u hebt verbonden met de oplossingsverbetering. Klik vervolgens op **Taken**.
 
-1. In het deelvenster **Taken** selecteert u **Tags** en stelt u de naam van de taak in op **AddDevKitTag**. Voeg vervolgens een teksttag toe met de naam **IsDevKitDevice** en de waarde **Y**. Klik vervolgens op **Toepassen**.
+1. In het deel venster **taken** selecteert u **Tags**, stelt u de taak naam in op **AddDevKitTag**en voegt u vervolgens een tekst code toe met de naam **IsDevKitDevice** met een waarde van **Y**. Klik vervolgens op **Toep assen**.
 
 1. Nu kunt u de tagwaarden gebruiken om een apparaatgroep te maken. Klik op de pagina **Apparaten** op **Apparaatgroepen beheren**.
 
@@ -89,7 +89,7 @@ De VS Code-extensie van [Azure IoT Workbench](https://marketplace.visualstudio.c
 
 1. Zorg dat uw IoT DevKit niet is verbonden met uw computer. Start VS Code en verbind de DevKit verbinden met uw computer.
 
-1. Druk op **F1** om te openen de command palette, typ en selecteer **IoT Workbench: Voorbeelden**. Selecteer **IoT DevKit** als het bord.
+1. Druk op **F1** om het opdrachtenpalet te openen. Typ of selecteer **IoT Workbench: Examples**. Selecteer **IoT DevKit** als het bord.
 
 1. Zoek **Firmware OTA** en klik op **Open Sample**. In een nieuw VS Code-venster wordt de projectmap **firmware_ota** weergegeven:
 
@@ -103,7 +103,7 @@ De eerste versie van de apparaatfirmware is 1.0.0. De nieuwe firmware moet een h
 
     ![Firmwareversie wijzigen](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. Open het opdrachtenpalet, typ en selecteer vervolgens **IoT Workbench: Device**. Selecteer vervolgens **Device Compile** om de code te compileren:
+1. Open het opdrachtenpalet en typ of selecteer **IoT Workbench: Device**. Selecteer vervolgens **Device Compile** om de code te compileren:
 
     ![Device compile](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-compile.png)
 
@@ -111,7 +111,7 @@ De eerste versie van de apparaatfirmware is 1.0.0. De nieuwe firmware moet een h
 
 ### <a name="generate-the-crc-value-and-calculate-the-firmware-file-size"></a>De CRC-waarde genereren en de grootte van het firmwarebestand berekenen
 
-1. Open het opdrachtenpalet, typ en selecteer vervolgens **IoT Workbench: Device**. Selecteer vervolgens **Generate CRC**:
+1. Open het opdrachtenpalet en typ of selecteer **IoT Workbench: Device**. Selecteer vervolgens **Generate CRC**:
 
     ![Generate CRC](media/iot-accelerators-remote-monitoring-bulk-configuration-update/iot-workbench-device-crc.png)
 
@@ -139,13 +139,13 @@ Gebruik het Azure storage-account om het nieuwe firmwarebestand te hosten in de 
 
     ![Versie 1.0.0](media/iot-accelerators-remote-monitoring-bulk-configuration-update/version-1-0-1.png)
 
-1. Open het opdrachtenpalet, typ en selecteer vervolgens **IoT Workbench: Device**. Selecteer vervolgens **Device Upload**:
+1. Open het opdrachtenpalet en typ of selecteer **IoT Workbench: Device**. Selecteer vervolgens **Device Upload**:
 
     ![Device Upload](media/iot-accelerators-remote-monitoring-bulk-configuration-update/device-upload.png)
 
 1. In VS Code wordt de code gecontroleerd en geüpload naar het IoT DevKit-apparaat.
 
-1. Wanneer het uploaden is voltooid, wordt het IoT DevKit-apparaat opnieuw opgestart. Wanneer het opnieuw opstarten voltooid is, ziet u het scherm van IoT DevKit **FW-versie: 1.0.0**, en dat deze controleert op nieuwe firmware:
+1. Wanneer het uploaden is voltooid, wordt het IoT DevKit-apparaat opnieuw opgestart. Wanneer het apparaat opnieuw is opgestart, wordt in het scherm van IoT DevKit **FW-versie: 1.0.0** weergegeven en ziet u dat er op nieuwe firmware wordt gecontroleerd:
 
     ![ota-1](media/iot-accelerators-remote-monitoring-bulk-configuration-update/ota-1.jpg)
 
@@ -226,7 +226,7 @@ In deze sectie gaat u een implementatie maken en uitvoeren die de apparaatconfig
 
 1. Maak in het deelvenster **Nieuwe implementatie** een implementatie met de volgende instellingen:
 
-    |Optie|Value|
+    |Optie|Waarde|
     |---|---|
     |Name|Firmware-update implementeren|
     |Pakkettype|Apparaatconfiguratie|

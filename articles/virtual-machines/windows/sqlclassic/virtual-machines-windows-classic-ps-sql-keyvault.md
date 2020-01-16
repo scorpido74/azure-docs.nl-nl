@@ -16,12 +16,12 @@ ms.date: 02/17/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ddf23126154f5bc62c49f62ac4adf517d6987091
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f878c6f7a59328e2f68ffbaee066bba4a5b6c898
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033460"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978134"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Azure Key Vault integratie configureren voor SQL Server op Azure Virtual Machines (klassiek)
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "74033460"
 Er zijn meerdere SQL Server versleutelings functies, zoals [transparante gegevens versleuteling (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), [versleuteling op kolom niveau (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)en [back-upcodering](https://msdn.microsoft.com/library/dn449489.aspx). Voor deze coderings vormen moet u de cryptografische sleutels die u voor versleuteling gebruikt, beheren en opslaan. De Azure Key Vault-service (Azure) is ontworpen voor het verbeteren van de beveiliging en het beheer van deze sleutels op een veilige en Maxi maal beschik bare locatie. Met de [SQL Server-connector](https://www.microsoft.com/download/details.aspx?id=45344) kan SQL Server deze sleutels vanuit Azure Key Vault gebruiken.
 
 > [!IMPORTANT] 
-> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/resource-manager-deployment-model.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
+> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
 
 Als u SQL Server met on-premises machines uitvoert, zijn er [stappen die u kunt volgen om toegang te krijgen tot Azure Key Vault vanaf uw on-premises SQL Server computer](https://msdn.microsoft.com/library/dn198405.aspx). Maar voor SQL Server in azure-Vm's kunt u tijd besparen door gebruik te maken van de functie voor *Azure Key Vault integratie* . Met enkele Azure PowerShell-cmdlets om deze functie in te scha kelen, kunt u de configuratie automatiseren die nodig is voor een SQL-VM om toegang te krijgen tot uw sleutel kluis.
 

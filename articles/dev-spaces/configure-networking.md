@@ -5,12 +5,12 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 description: Hierin worden de netwerk vereisten beschreven voor het uitvoeren van Azure-ontwikkel ruimten in azure Kubernetes Services
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, CNI, kubenet, SDN, netwerk
-ms.openlocfilehash: 51604e2862a4d2ff575906fa2ba480ddd10504ed
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 9e32e3b65451dceefaeeaf7faed7c8337797e0b8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75897921"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044986"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Netwerken configureren voor Azure-ontwikkel ruimten in verschillende netwerk topologieën
 
@@ -18,7 +18,7 @@ Azure dev Spaces worden uitgevoerd op Azure Kubernetes service (AKS)-clusters me
 
 ![Configuratie van virtueel netwerk](media/configure-networking/virtual-network-clusters.svg)
 
-## <a name="aks-clusters-with-different-virtual-network-or-subnet-configurations"></a>AKS-clusters met verschillende virtuele netwerken of subnetten
+## <a name="virtual-network-or-subnet-configurations"></a>Configuraties van virtuele netwerken of subnetten
 
 Uw AKS-cluster kan een andere configuratie voor het virtuele netwerk of subnet hebben om binnenkomend of uitgaand verkeer voor uw AKS-cluster te beperken. Het is bijvoorbeeld mogelijk dat uw cluster zich achter een firewall bevindt, zoals Azure Firewall, of u kunt netwerk beveiligings groepen of aangepaste rollen gebruiken voor het beperken van netwerk verkeer.
 
@@ -53,19 +53,19 @@ Met Azure dev Spaces kunt u rechtstreeks communiceren met een pod in een dev-rui
 
 Azure dev Spaces biedt route ring tussen de verschillende naam ruimten. Bijvoorbeeld: naam ruimten waarvoor Azure dev Spaces zijn ingeschakeld, kunnen een bovenliggende/onderliggende relatie hebben, waardoor netwerk verkeer tussen de verschillende bovenliggende en onderliggende naam ruimtes kan worden gerouteerd. Als u deze functie wilt gebruiken, voegt u een netwerk beleid toe dat verkeer tussen naam ruimten toestaat waarbij netwerk verkeer wordt gerouteerd, zoals bovenliggende/onderliggende naam ruimten. Als de ingangs controller wordt geïmplementeerd in de *azds* -naam ruimte, moet de ingangs controller ook communiceren met een van de Azure-ontwikkel ruimte in een andere naam ruimte. Voor een goede werking van de ingangs controller moet het netwerk verkeer van de *azds* -naam ruimte worden toegestaan in de naam ruimte waar de gewerkte peulen worden uitgevoerd.
 
-## <a name="using-azure-container-networking-with-azure-dev-spaces"></a>Azure container Networking gebruiken met Azure dev Spaces
+## <a name="using-azure-cni"></a>Azure CNI gebruiken
 
 AKS-clusters zijn standaard geconfigureerd voor het gebruik van [kubenet][aks-kubenet] voor netwerken, die werken met Azure dev Spaces. U kunt uw AKS-cluster ook configureren voor het gebruik van [Azure container Networking interface (cni)][aks-cni]. Als u Azure dev Spaces wilt gebruiken met Azure CNI op uw AKS-cluster, moet u het virtuele netwerk en het subnet adres voorzien van Maxi maal 10 privé-IP-adressen voor de peulen die worden geïmplementeerd door Azure dev Spaces. Meer informatie over het toestaan van privé-IP-adressen is beschikbaar in de [AKS Azure cni-documentatie][aks-cni-ip-planning].
 
-## <a name="using-api-server-authorized-ip-ranges-with-azure-dev-spaces"></a>Met de API server geautoriseerde IP-bereiken met Azure dev Spaces gebruiken
+## <a name="using-api-server-authorized-ip-ranges"></a>Met API server geautoriseerde IP-adresbereiken gebruiken
 
 Met AKS-clusters kunt u extra beveiliging configureren waarmee het IP-adres kan communiceren met uw clusters, bijvoorbeeld met behulp van aangepaste virtuele netwerken of [het beveiligen van toegang tot de API-server met behulp van geautoriseerde IP-bereiken][aks-ip-auth-ranges]. Als u Azure dev Spaces wilt gebruiken wanneer u deze extra beveiliging gebruikt tijdens het [maken][aks-ip-auth-range-create] van het cluster, moet u [extra bereiken op basis van uw regio toestaan][dev-spaces-ip-auth-range-regions]. U kunt ook een bestaand cluster [bijwerken][aks-ip-auth-range-update] om deze extra bereiken toe te staan. U moet ook het IP-adres van alle ontwikkel computers toestaan die verbinding maken met uw AKS-cluster voor fout opsporing om verbinding te maken met uw API-server.
 
-## <a name="using-aks-private-clusters-with-azure-dev-spaces"></a>AKS private clusters gebruiken met Azure dev Spaces
+## <a name="using-aks-private-clusters"></a>AKS persoonlijke clusters gebruiken
 
 Op dit moment wordt Azure dev Spaces niet ondersteund met [persoonlijke AKS-clusters][aks-private-clusters].
 
-## <a name="azure-dev-spaces-client-requirements"></a>Client vereisten voor Azure dev Spaces
+## <a name="client-requirements"></a>Clientvereisten
 
 Azure dev Spaces maakt gebruik van Program ma's aan de client zijde, zoals de Azure dev Spaces CLI-extensie, Visual Studio code extension en Visual Studio-extensie, om te communiceren met uw AKS-cluster voor fout opsporing. Als u de Azure dev Spaces-client-side Tool wilt gebruiken, moet u verkeer van de ontwikkel machines naar het *azds-\*. azds.io-* domein toestaan. Zie *dataplaneFqdn* in `USERPROFILE\.azds\settings.json` voor de exacte FQDN. Als u door [API server geautoriseerde IP-adresbereiken][auth-range-section]gebruikt, moet u ook het IP-adres van alle ontwikkel machines toestaan die verbinding maken met uw AKS-cluster voor fout opsporing om verbinding te maken met uw API-server.
 
@@ -85,7 +85,7 @@ Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te 
 [aks-ip-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
 [aks-network-policies]: ../aks/use-network-policies.md
 [aks-private-clusters]: ../aks/private-clusters.md
-[auth-range-section]: #using-api-server-authorized-ip-ranges-with-azure-dev-spaces
+[auth-range-section]: #using-api-server-authorized-ip-ranges
 [dev-spaces-ip-auth-range-regions]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [traefik-ingress]: how-to/ingress-https-traefik.md
 [nginx-ingress]: how-to/ingress-https-nginx.md

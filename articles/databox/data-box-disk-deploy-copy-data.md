@@ -10,12 +10,12 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: c309a7cb18086526b23c875b41d9d4f4db4bc213
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: be2bda4e1bfd6a679076f79969e4829aa1a847c9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70231371"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895968"
 ---
 ::: zone target="docs"
 
@@ -46,7 +46,7 @@ In deze zelfstudie leert u het volgende:
 Zorg voordat u begint voor het volgende:
 - U hebt de zelfstudie [ uw Azure Data Box Disk installeren en configureren](data-box-disk-deploy-set-up.md) voltooid.
 - Uw schijven worden ontgrendeld en verbonden met een clientcomputer.
-- Er moet een [ondersteund besturingssysteem](data-box-disk-system-requirements.md##supported-operating-systems-for-clients) worden uitgevoerd op de clientcomputer die wordt gebruikt om gegevens naar de schijven te kopiëren.
+- Er moet een [ondersteund besturingssysteem](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) worden uitgevoerd op de clientcomputer die wordt gebruikt om gegevens naar de schijven te kopiëren.
 - Zorg ervoor dat het beoogde opslagtype voor uw gegevens overeenkomt met [Ondersteunde opslagtypen](data-box-disk-system-requirements.md#supported-storage-types-for-upload).
 - Lees [Groottelimieten voor beheerde schijven in Azure-objectgroottelimieten](data-box-disk-limits.md#azure-object-size-limits).
 
@@ -292,7 +292,7 @@ Als tijdens de validatie fouten optreden, raadpleegt u [problemen met validatief
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie bent u meer te weten gekomen over verschillende onderwerpen met betrekking tot de Azure Data Box-schijf, zoals:
+In deze zelfstudie zijn verschillende onderwerpen besproken over de Azure Data Box-schijf, zoals:
 
 > [!div class="checklist"]
 > * Gegevens kopiëren naar de Data Box-schijf

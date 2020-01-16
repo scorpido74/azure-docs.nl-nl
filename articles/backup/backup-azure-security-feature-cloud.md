@@ -3,12 +3,12 @@ title: Beveiligings functies voor het beveiligen van Cloud werkbelastingen
 description: Meer informatie over het gebruik van beveiligings functies in Azure Backup om back-ups veiliger te maken.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: e3da4778a82cd5eb50fbb82c7f9f00cf6c6f1a85
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: e4519a342e1be3244b5d4598880e9ad490f50030
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829626"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028207"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Beveiligings functies voor het beveiligen van Cloud werkbelastingen die gebruikmaken van Azure Backup
 
@@ -251,7 +251,7 @@ Tijdens het maken van een back-up van Azure Virtual Machines hebt u ook de mogel
 
 ### <a name="backup-of-managed-disk-vm-encrypted-using-customer-managed-keys"></a>Back-up van de beheerde schijf-VM is versleuteld met door de klant beheerde sleutels
 
-Met Azure Backup kunt u een back-up maken van Azure Virtual Machines met schijven die zijn versleuteld met door de klant beheerde sleutels. Raadpleeg [Encrypting of Managed disks with door de klant beheerde sleutels](https://docs.microsoft.com//azure/virtual-machines/windows/disk-encryption#customer-managed-keys-public-preview)voor meer informatie.
+Met Azure Backup kunt u een back-up maken van Azure Virtual Machines met schijven die zijn versleuteld met door de klant beheerde sleutels. Raadpleeg [Encrypting of Managed disks with door de klant beheerde sleutels](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)voor meer informatie.
 
 ### <a name="backup-of-encrypted-vms"></a>Back-up van versleutelde Vm's
 

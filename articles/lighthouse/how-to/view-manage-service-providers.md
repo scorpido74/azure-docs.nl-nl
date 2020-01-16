@@ -1,14 +1,14 @@
 ---
 title: Serviceproviders weergeven en beheren
 description: Klanten kunnen de pagina service providers in het Azure Portal gebruiken om informatie over service providers, aanbiedingen van providers en gedelegeerde resources weer te geven.
-ms.date: 11/15/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 453f5d3ba4ed5c49b5e71c7530298bc0a03c73ee
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: ff3c37c02c580a833008a65315009d1e42e49043
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463812"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046122"
 ---
 # <a name="view-and-manage-service-providers"></a>Serviceproviders weergeven en beheren
 
@@ -60,6 +60,9 @@ Nadat u de wijzigingen hebt bekeken, kan de klant ervoor kiezen om bij te werken
 Delegaties vertegenwoordigen de roltoewijzingen die machtigingen verlenen aan de service provider voor de resources die een klant heeft gedelegeerd. Als u deze informatie wilt weer geven, selecteert u **delegaties** aan de linkerkant van de pagina **service providers** .
 
 Met filters boven aan de pagina kunt u uw delegatie gegevens sorteren en groeperen of filteren op specifieke klanten, aanbiedingen of tref woorden.
+
+> [!NOTE]
+> Klanten krijgen deze roltoewijzingen niet te zien of gebruikers van de Tenant van de service provider die deze rollen hebben gekregen bij het [weer geven van roltoewijzings gegevens voor het overgedragen bereik in de Azure Portal](../../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-at-a-scope) of via api's.
 
 ## <a name="next-steps"></a>Volgende stappen
 

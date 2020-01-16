@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: 6cde620b4949da8a6cff4ad89a863c80f0514f1c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792397"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979382"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML valideren met schema's in Azure Logic Apps met Enterprise Integration Pack
 
@@ -31,7 +31,7 @@ Zie [limieten en configuratie-informatie voor Azure Logic apps](../logic-apps/lo
   Om dat schema toe te voegen aan uw integratie account, kunt u een koppeling maken naar uw opslag account vanuit uw integratie account. 
   Dit zijn de items die u nodig hebt voor deze taak: 
 
-  * [Azure Storage-account](../storage/common/storage-account-overview.md) waar u een BLOB-container voor uw schema maakt. Meer informatie over het [maken van een opslag account](../storage/common/storage-quickstart-create-account.md). 
+  * [Azure Storage-account](../storage/common/storage-account-overview.md) waar u een BLOB-container voor uw schema maakt. Meer informatie over het [maken van een opslag account](../storage/common/storage-account-create.md). 
 
   * BLOB-container voor het opslaan van uw schema. Meer informatie over het [maken van een BLOB-container](../storage/blobs/storage-quickstart-blobs-portal.md). 
   U hebt de inhouds-URI van de container later nodig wanneer u het schema toevoegt aan uw integratie account.

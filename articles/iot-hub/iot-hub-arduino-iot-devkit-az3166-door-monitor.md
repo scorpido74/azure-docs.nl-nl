@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 23607b52f866bb7b0be760e49be7d62d1732d43c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954753"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977305"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Monitor voor deuren: e-mail met Azure Functions en SendGrid verzenden wanneer een deur wordt geopend           
 
@@ -65,7 +65,7 @@ U ziet nu het SendGrid-aanmeld formulier.
 
 Vul het formulier voor het aanmelden in:
 
-   * **Resource groep**: Maak een resource groep om de SendGrid-service te hosten of gebruik een bestaande. Zie [resource groepen gebruiken om uw Azure-resources te beheren](../azure-resource-manager/manage-resource-groups-portal.md).
+   * **Resource groep**: Maak een resource groep om de SendGrid-service te hosten of gebruik een bestaande. Zie [resource groepen gebruiken om uw Azure-resources te beheren](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
    * **Naam**: de naam voor uw SendGrid-service. Kies een unieke naam die verschilt van andere services die u mogelijk hebt.
 
@@ -105,7 +105,7 @@ Het formulier voor aanmelden wordt weer gegeven.
 
 Vul de velden in op het formulier voor registratie.
 
-   * **Resource groep**: Maak een resource groep om de SendGrid-service te hosten of gebruik een bestaande. Zie [resource groepen gebruiken om uw Azure-resources te beheren](../azure-resource-manager/manage-resource-groups-portal.md).
+   * **Resource groep**: Maak een resource groep om de SendGrid-service te hosten of gebruik een bestaande. Zie [resource groepen gebruiken om uw Azure-resources te beheren](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
    * **IOT-hub-naam**: de naam voor uw IOT-hub. Kies een unieke naam die verschilt van andere services die u mogelijk hebt.
 
@@ -122,7 +122,7 @@ Laad vervolgens de voorbeeld code in VS code en richt de benodigde Azure-Service
 ### <a name="start-vs-code"></a>Begin VS code
 
 - Zorg ervoor dat uw DevKit **niet** is verbonden met uw computer.
-- Begin VS code.
+- Start VS Code.
 - Verbind de DevKit met uw computer.
 
 > [!NOTE]

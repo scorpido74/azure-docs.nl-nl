@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 039a19f38da4e651ee35fe60ba2b95a40cf890b0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: be797f76988c924503e11b6f66cce899b515e3a2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931909"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982202"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Gegevens verplaatsen tussen on-premises bronnen en de Cloud met Data Management Gateway
 > [!NOTE]
@@ -29,15 +29,15 @@ Dit artikel bevat een overzicht van gegevens integratie tussen on-premises gegev
 U moet Data Management Gateway op de on-premises computer installeren om gegevens naar/van een on-premises gegevens opslag te kunnen verplaatsen. De gateway kan worden geïnstalleerd op dezelfde computer als het gegevens archief of op een andere computer, mits de gateway verbinding kan maken met het gegevens archief.
 
 > [!IMPORTANT]
-> Zie [Data Management Gateway](data-factory-data-management-gateway.md) artikel voor meer informatie over Data Management Gateway. 
+> Zie [Data Management Gateway](data-factory-data-management-gateway.md) artikel voor meer informatie over Data Management Gateway.
 
 In de volgende procedure ziet u hoe u een data factory maakt met een pijp lijn die gegevens verplaatst van een on-premises **SQL Server** -Data Base naar een Azure Blob-opslag. Als onderdeel van de procedure installeert en configureert u de gegevensbeheergateway op uw computer.
 
 ## <a name="walkthrough-copy-on-premises-data-to-cloud"></a>Walkthrough: on-premises gegevens kopiëren naar de Cloud
-In dit scenario voert u de volgende stappen uit: 
+In dit scenario voert u de volgende stappen uit:
 
-1. Een gegevensfactory maakt.
-2. Een Data Management gateway maken. 
+1. Een gegevensfactory maken.
+2. Een Data Management gateway maken.
 3. Gekoppelde services maken voor de bron-en Sink-gegevens opslag.
 4. Gegevens sets maken om invoer-en uitvoer gegevens weer te geven.
 5. Een pijplijn maakt met een kopieeractiviteit om de gegevens te verplaatsen.
@@ -46,8 +46,8 @@ In dit scenario voert u de volgende stappen uit:
 Voordat u met deze procedure begint, moet u beschikken over de volgende vereisten:
 
 * **Azure-abonnement**.  Als u geen abonnement hebt, kunt u binnen een paar minuten een gratis proefaccount maken. Raadpleeg het artikel over de [gratis proef versie](https://azure.microsoft.com/pricing/free-trial/) voor meer informatie.
-* **Azure Storage-account**. In deze zelf studie gebruikt u de Blob-opslag als een **doel/Sink-** gegevens archief. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [Een opslagaccount maken](../../storage/common/storage-quickstart-create-account.md) voor de stappen voor het maken van een account.
-* **SQL Server**. In deze zelfstudie gebruikt u een on-premises SQL Server-database als een **brongegevensopslag**. 
+* **Azure Storage-account**. In deze zelf studie gebruikt u de Blob-opslag als een **doel/Sink-** gegevens archief. Als u geen Azure Storage-account hebt, raadpleegt u het artikel [Een opslagaccount maken](../../storage/common/storage-account-create.md) voor de stappen voor het maken van een account.
+* **SQL Server**. In deze zelfstudie gebruikt u een on-premises SQL Server-database als een **brongegevensopslag**.
 
 ## <a name="create-data-factory"></a>Een gegevensfactory maken
 In deze stap gebruikt u de Azure Portal om een Azure Data Factory-exemplaar te maken met de naam **ADFTutorialOnPremDF**.

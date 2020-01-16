@@ -3,7 +3,7 @@ title: Een account maken in de Azure-portal - Azure Batch| Microsoft Docs
 description: Informatie over het maken van een Azure Batch-account in Azure Portal voor het uitvoeren van grootschalige parallelle workloads in de cloud
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 3fbae545-245f-4c66-aee2-e25d7d5d36db
@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5cceb7cc179f78d6b6d7350e7c4f6c31bb9cbfed
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4eb6b0c64fc40dec48dc9103c67e8e4a0730d7e2
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095718"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029804"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Een Batch-account maken met behulp van Azure Portal
 
@@ -27,11 +27,11 @@ Meer informatie over het maken van een Azure Batch-account in de [Azure Portal][
 
 Zie [Overzicht van de functies](batch-api-basics.md) voor achtergrondinformatie over Batch-accounts en scenario's.
 
-## <a name="create-a-batch-account"></a>Batch-account maken
+## <a name="create-a-batch-account"></a>Een Batch-account maken
 
 [!INCLUDE [batch-account-mode-include](../../includes/batch-account-mode-include.md)]
 
-1. Meld u aan bij [Azure Portal][azure_portal].
+1. Meld u aan bij de [Azure Portal][azure_portal].
 
 1. Selecteer **Resource maken** > **Compute** > **Batch-service**.
 
@@ -39,21 +39,21 @@ Zie [Overzicht van de functies](batch-api-basics.md) voor achtergrondinformatie 
 
 1. Voer instellingen in voor **Nieuw Batch-account**. Zie de volgende details.
 
-    ![Batch-account maken][account_portal]
+    ![Een Batch-account maken][account_portal]
 
-    a. **Abonnement**: Het abonnement waarin het Batch-account moet worden gemaakt. Als u slechts één abonnement hebt, is het standaard geselecteerd.
+    a. **Abonnement**: het abonnement waarin het Batch-account moet worden gemaakt. Als u slechts één abonnement hebt, is het standaard geselecteerd.
 
-    b. **Resourcegroep**: Een bestaande resourcegroep voor het nieuwe Batch-account. U kunt ook optioneel een nieuwe resourcegroep maken.
+    b. **Resourcegroep**: Selecteer een bestaande resourcegroep voor het nieuwe Batch-account. U kunt er ook voor kiezen om een nieuwe resourcegroep te maken.
 
-    c. **Accountnaam**: De naam die u kiest, moet uniek zijn in de Azure-regio waarin het account wordt gemaakt (zie **Locatie** hieronder). De accountnaam mag alleen kleine letters of cijfers bevatten en moet 3 tot 24 tekens lang zijn.
+    c. **Accountnaam**: de naam die u kiest, moet uniek zijn in de Azure-regio waarin het account wordt gemaakt (zie **Locatie** hieronder). De accountnaam mag alleen kleine letters of cijfers bevatten en moet 3 tot 24 tekens lang zijn.
 
-    d. **Locatie**: De Azure-regio om het Batch-account in te maken. Alleen de regio's die door uw abonnement en resourcegroep worden ondersteund, worden als opties weergegeven.
+    d. **Locatie**: de Azure-regio om het Batch-account in te maken. Alleen de regio's die door uw abonnement en resourcegroep worden ondersteund, worden als opties weergegeven.
 
-    e. **Opslagaccount**: Een optioneel Azure Storage-account voor algemeen gebruik dat u koppelt aan het Batch-account. Een v2-opslagaccount voor algemeen gebruik wordt aanbevolen voor de beste prestaties. Zie het [Overzicht van Batch-functies](batch-api-basics.md#azure-storage-account) voor alle opslagaccountopties in Batch. Selecteer in de portal een bestaand opslagaccount of maak een nieuw opslagaccount.
+    e. **Opslag account**: een optioneel Azure Storage account dat u aan uw batch-account koppelt. Een v2-opslagaccount voor algemeen gebruik wordt aanbevolen voor de beste prestaties. Zie het [Overzicht van Batch-functies](batch-api-basics.md#azure-storage-account) voor alle opslagaccountopties in Batch. Selecteer in de portal een bestaand opslagaccount of maak een nieuw opslagaccount.
 
-      ![Create a storage account][storage_account]
+      ![Maak een opslagaccount][storage_account]
 
-    f. **Pooltoewijzingsmodus**: Op het tabblad met **Geavanceerde** instellingen kunt u de groepstoewijzingsmodus **Batch-service** of **Gebruikersabonnement** opgeven. Voor de meeste scenario's kunt u de standaardinstelling **Batch-service** accepteren.
+    f. **Groeps toewijzings modus**: op het tabblad **Geavanceerde** instellingen kunt u de groeps toewijzings modus opgeven als **batch-service** of **gebruikers abonnement**. Voor de meeste scenario's accepteert u de standaard **batch-service**.
 
       ![Groepstoewijzingsmodus van Batch][pool_allocation]
 
@@ -65,7 +65,7 @@ Zodra het account is gemaakt, selecteert u het account om naar de instellingen e
 
 ![Pagina Batch-account in Azure Portal][account_blade]
 
-* **Naam, URL en sleutels voor het Batch-account**: Wanneer u een toepassing ontwikkelt met de [Batch-API's](batch-apis-tools.md#azure-accounts-for-batch-development), hebt u een account-URL en -sleutel nodig voor toegang tot de Batch-resources. (Batch ondersteunt ook Azure Active Directory-verificatie.)
+* **Batch-account, URL en sleutels**: wanneer u een toepassing ontwikkelt met de [Batch-API‘s](batch-apis-tools.md#azure-accounts-for-batch-development), hebt u een account-URL en sleutel nodig voor toegang tot de Batch-resources. (Batch ondersteunt ook Azure Active Directory-verificatie.)
 
     Selecteer **Sleutels** om de toegangsgegevens voor het Batch-account te bekijken.
 
@@ -83,7 +83,7 @@ Als u ervoor kiest een Batch-account te maken in de modus Gebruikersabonnement, 
 
 Wanneer u uw eerste Batch-account maakt in de modus Gebruikersabonnement, moet u de volgende stappen uitvoeren om uw abonnement te registreren bij Batch. (Als u dit eerder hebt gedaan, gaat u naar de volgende sectie.)
 
-1. Meld u aan bij [Azure Portal][azure_portal].
+1. Meld u aan bij de [Azure Portal][azure_portal].
 
 1. Selecteer **Meer services** > **Abonnementen** en selecteer het abonnement dat u wilt gebruiken voor het Batch-account.
 
@@ -108,7 +108,7 @@ Wanneer u uw eerste Batch-account maakt in de modus Gebruikersabonnement, moet u
 
 In de modus Gebruikersabonnement is een Azure-sleutelkluis vereist die behoort tot dezelfde resourcegroep als het Batch-account dat moet worden gemaakt. Zorg ervoor dat de resourcegroep zich bevindt in een regio waarin Batch [beschikbaar](https://azure.microsoft.com/regions/services/) is en die uw abonnement ondersteunt.
 
-1. Selecteer in [het Azure Portal][azure_portal] **nieuwe** > **beveiligings** > **Key Vault**.
+1. Selecteer in het [Azure Portal][azure_portal] **nieuwe** > **beveiligings** > **Key Vault**.
 
 1. Typ op de pagina **Sleutelkluis maken** een naam voor de sleutelkluis en maak een resourcegroep in de gewenste regio voor uw Batch-account. Laat de overige instellingen op de standaardwaarden staan en selecteer **Maken**.
 

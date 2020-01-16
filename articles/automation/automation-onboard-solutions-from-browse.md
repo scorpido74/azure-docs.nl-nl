@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 188306ca02cee05f17514826ae6d973a17e6bb97
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 385806dca7dcac9fd0aac4c1bf9e1072e7fe5ecb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75421861"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979478"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Oplossingen voor Updatebeheer, Wijzigingen bijhouden en inventaris inschakelen op meerdere Vm's
 
@@ -41,7 +41,7 @@ De lijst met virtuele machines wordt gefilterd om alleen de virtuele machines we
 
 ### <a name="resource-group-limit"></a>Beperkingen voor onboarding
 
-Het aantal resource groepen dat u voor onboarding kunt gebruiken, wordt beperkt door de [implementatie limieten van Resource Manager](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md). Implementaties van Resource Manager, niet te verwarren met update-implementaties, zijn beperkt tot 5 Resource groepen per implementatie. 2 van deze resource groepen zijn gereserveerd voor het configureren van de Log Analytics-werk ruimte, het Automation-account en gerelateerde resources om de integriteit van de onboarding te garanderen. U kunt drie resource groepen selecteren voor implementatie. Deze limiet geldt alleen voor gelijktijdige onboarding, niet het aantal resource groepen dat kan worden beheerd door een Automation-oplossing.
+Het aantal resource groepen dat u voor onboarding kunt gebruiken, wordt beperkt door de [implementatie limieten van Resource Manager](../azure-resource-manager/templates/cross-resource-group-deployment.md). Implementaties van Resource Manager, niet te verwarren met update-implementaties, zijn beperkt tot 5 Resource groepen per implementatie. 2 van deze resource groepen zijn gereserveerd voor het configureren van de Log Analytics-werk ruimte, het Automation-account en gerelateerde resources om de integriteit van de onboarding te garanderen. U kunt drie resource groepen selecteren voor implementatie. Deze limiet geldt alleen voor gelijktijdige onboarding, niet het aantal resource groepen dat kan worden beheerd door een Automation-oplossing.
 
 U kunt ook een runbook gebruiken voor onboarding. Zie voor meer informatie [onboard update en oplossingen voor het bijhouden van wijzigingen in azure Automation](automation-onboard-solutions.md).
 

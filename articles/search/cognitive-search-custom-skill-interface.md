@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e0b54ca89511063e1a76753793846deaf8e8b9b4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c8f6e36997939be90d74eabad9a4145d2e503521
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466791"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045042"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Een aangepaste vaardigheid toevoegen aan een Azure Cognitive Search-verrijkings pijplijn
 
@@ -122,7 +122,7 @@ Zoals weer gegeven in het vorige voor beeld, kunt u fout-en waarschuwings berich
 
 ## <a name="consuming-custom-skills-from-skillset"></a>Aangepaste vaardig heden uit vaardig heden gebruiken
 
-Wanneer u een web API-verrijker maakt, kunt u HTTP-headers en-para meters beschrijven als onderdeel van de aanvraag. In het volgende fragment ziet u hoe aanvraag parameters en HTTP-headers kunnen worden beschreven als onderdeel van de definitie van de vaardig heden.
+Wanneer u een web API-verrijker maakt, kunt u HTTP-headers en-para meters beschrijven als onderdeel van de aanvraag. In het volgende fragment ziet u hoe aanvraag parameters en *optionele* http-headers kunnen worden beschreven als onderdeel van de definitie van de vaardigheidset. HTTP-headers zijn geen vereiste, maar u kunt hiermee aanvullende configuratie mogelijkheden aan uw vaardig heden toevoegen en deze instellen vanuit de definitie van de vaardig heden.
 
 ```json
 {

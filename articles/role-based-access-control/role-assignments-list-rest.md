@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8a9841e2a8a8ec0aede94f849b7818c86f9862df
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0db3e1b222aad7d2a5aa9fc20663fc6e17ea4f8c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934084"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981079"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>Roltoewijzingen weer geven met behulp van Azure RBAC en de REST API
 
@@ -48,7 +48,7 @@ In RBAC kunt u de roltoewijzingen weer geven om toegang weer te geven. Als u rol
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resourcegroep |
     | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Bron |
 
-    In het vorige voor beeld is micro soft. web een resource provider die verwijst naar een App Service-exemplaar. U kunt ook andere resource providers gebruiken en het bereik opgeven. Zie voor meer informatie [Azure-resource providers en-typen](../azure-resource-manager/resource-manager-supported-services.md) en ondersteunde Azure Resource Manager van de [resource provider](resource-provider-operations.md).  
+    In het vorige voor beeld is micro soft. web een resource provider die verwijst naar een App Service-exemplaar. U kunt ook andere resource providers gebruiken en het bereik opgeven. Zie voor meer informatie [Azure-resource providers en-typen](../azure-resource-manager/management/resource-providers-and-types.md) en ondersteunde Azure Resource Manager van de [resource provider](resource-provider-operations.md).  
      
 1. Vervang *{filter}* door de voor waarde die u wilt Toep assen om de roltoewijzings lijst te filteren.
 

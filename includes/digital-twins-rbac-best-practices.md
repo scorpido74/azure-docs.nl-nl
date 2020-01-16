@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 11/20/2019
+ms.date: 01/15/2020
 ms.custom: include file
-ms.openlocfilehash: e22ca39536e8e5d216d786c9d3c473f13431859f
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 893beb0800af0eece4d69e727e427c3e92b79121
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74307241"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044954"
 ---
 Op rollen gebaseerd toegangs beheer is een overname strategie voor het beheren van de toegang, machtigingen en rollen. Onderliggende rollen nemen machtigingen over van bovenliggende rollen. Machtigingen kunnen ook worden toegewezen zonder dat ze worden overgenomen van een bovenliggende rol. Ze kunnen ook worden toegewezen om een rol zo nodig aan te passen.
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 28705ea8a552f4d2e6653857c69ebb8d5f87b962
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.openlocfilehash: 4a6e33770f93c365d5ccd034803c7c7f247d528a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907108"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028799"
 ---
 # <a name="migrate-physical-or-virtualized-servers-to-azure"></a>Fysieke of gevirtualiseerde servers migreren naar Azure 
 
@@ -123,9 +123,8 @@ Zorg ervoor dat de computers voldoen aan de vereisten voor migratie naar Azure.
 > [!NOTE]
 > Migratie op basis van een agent met Azure Migrate server migratie is gebaseerd op de functies van de Azure Site Recovery-service. Sommige vereisten kunnen worden gekoppeld aan Site Recovery documentatie.
 
-1. [Controleer](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) de server vereisten.
-2. [Verifiëren](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) VM-ondersteunings vereisten voor migratie.
-3. Controleer de VM-instellingen. On-premises Vm's die u naar Azure repliceert, moeten voldoen aan de vereisten van de [Azure-VM](migrate-support-matrix-vmware.md#azure-vm-requirements).
+1. [Controleer](migrate-support-matrix-physical-migration.md#physical-server-requirements) de vereisten voor de fysieke server.
+2. Controleer de VM-instellingen. On-premises machines die u naar Azure repliceert, moeten voldoen aan de vereisten van de [Azure-VM](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
 
 
 ### <a name="prepare-a-machine-for-the-replication-appliance"></a>Een machine voorbereiden voor het replicatie apparaat
@@ -135,7 +134,7 @@ Azure Migrate server migratie gebruikt een replicatie apparaat om machines naar 
 - **Configuratie server**: de configuratie server coördineert de communicatie tussen on-premises en Azure, en beheert de gegevens replicatie.
 - **Proces server**: de proces server fungeert als replicatie gateway. Het ontvangt replicatie gegevens; optimaliseert het met caching, compressie en versleuteling, en verzendt het naar een cache-opslag account in Azure. 
 
-Voordat u begint, moet u een Windows Server 2016-computer voorbereiden om het replicatie apparaat te hosten. De machine moet voldoen aan [deze vereisten](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements). Het apparaat mag niet worden geïnstalleerd op een bron computer die u wilt beveiligen.
+Voordat u begint, moet u een Windows Server 2016-computer voorbereiden om het replicatie apparaat te hosten. De machine moet voldoen aan [deze vereisten](migrate-replication-appliance.md). Het apparaat mag niet worden geïnstalleerd op een bron computer die u wilt beveiligen.
 
 
 ## <a name="add-the-azure-migrate-server-migration-tool"></a>Het hulp programma voor migratie van Azure Migrate server toevoegen
@@ -276,7 +275,7 @@ Selecteer nu machines voor migratie.
 7. In **virtual machines**, in **migratie-instellingen importeren uit een evaluatie?** , de standaard instelling **Nee, ik geef de migratie-instellingen hand matig**op.
 8. Controleer elke VM die u wilt migreren. Klik vervolgens op **volgende: doel instellingen**.
 
-    ![Vm's selecteren](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
+    ![VM's selecteren](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
 
 
 9. Selecteer in **Doelinstellingen** het abonnement en de doelregio waarnaar u migreert en geef de resourcegroep op waarin de Azure-VM's na de migratie moeten worden geplaatst.
@@ -288,7 +287,7 @@ Selecteer nu machines voor migratie.
 
     ![Doel instellingen](./media/tutorial-migrate-physical-virtual-machines/target-settings.png)
 
-12. Controleer in **Compute** de naam, de grootte, het schijftype van het besturingssysteem en de beschikbaarheidsset van de VM. VM's moeten voldoen aan de [Azure-vereisten](migrate-support-matrix-vmware.md#azure-vm-requirements).
+12. Controleer in **Compute** de naam, de grootte, het schijftype van het besturingssysteem en de beschikbaarheidsset van de VM. VM's moeten voldoen aan de [Azure-vereisten](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
 
     - **VM-grootte**: standaard wordt door Azure migrate server migratie een grootte gekozen op basis van het dichtstbijzijnde resultaat van het Azure-abonnement. U kunt ook handmatig een grootte kiezen in **Azure VM-grootte**. 
     - **Besturingssysteem schijf**: Geef de opstart schijf van het besturings systeem voor de virtuele machine op. De besturingssysteemschijf is de schijf die de bootloader en het installatieprogramma van het besturingssysteem bevat. 
@@ -300,7 +299,7 @@ Selecteer nu machines voor migratie.
     - U kunt schijven uitsluiten van replicatie.
     - Als u schijven uitsluit, zijn deze na migratie niet beschikbaar in de Azure-VM. 
 
-    ![Schijf instellingen](./media/tutorial-migrate-physical-virtual-machines/disks.png)
+    ![Schijfinstellingen](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
 
 14. Controleer in **Replicatie controleren en beginnen** de instellingen en klik op **Repliceren** om de eerste replicatie van de servers te beginnen.
@@ -365,7 +364,7 @@ Nadat u hebt gecontroleerd of de test migratie werkt zoals verwacht, kunt u de o
 4. Er wordt een migratietaak gestart voor de VM. Volg de taak in Azure-meldingen.
 5. Nadat de taak is afgerond, kunt u de VM bekijken en beheren vanaf de pagina **Virtuele machines**.
 
-## <a name="complete-the-migration"></a>Migratie voltooien
+## <a name="complete-the-migration"></a>De migratie voltooien
 
 1. Nadat de migratie is voltooid, klikt u met de rechter muisknop op de virtuele machine > de **migratie stoppen**. Hiermee wordt de replicatie voor de on-premises computer gestopt en worden de gegevens van de replicatie status voor de virtuele machine opgeschoond.
 2. Installeer de Azure VM [Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) -of [Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) -agent op de gemigreerde computers.

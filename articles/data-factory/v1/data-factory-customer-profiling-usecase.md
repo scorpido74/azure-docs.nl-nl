@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 866a7fdabaf51738333d8583bea5d0fa9fabf6f2
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: c570f988dea894b8106405f4e427edb386a3e74a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70139859"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969293"
 ---
 # <a name="use-case---customer-profiling"></a>Use case: klantprofilering
 Azure Data Factory is een van de vele services die worden gebruikt voor het implementeren van de Cortana Intelligence Suite oplossings versnellers.  Ga voor meer informatie over Cortana Intelligence naar [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics). In dit document beschrijven we een eenvoudige use-case om u te helpen aan de slag te gaan met informatie over hoe Azure Data Factory veelvoorkomende analyse problemen kunt oplossen.
@@ -29,7 +29,7 @@ Het doel van Contoso is het identificeren van verkoop-en cross-sell-mogelijkhede
 In deze oplossing wil Contoso de effectiviteit evalueren van een marketing campagne die onlangs is gestart. We beginnen met de onbewerkte gaming logboeken, verwerken en verrijken deze met geolocatiegegevens, nemen samen met de advertentie referentie gegevens en kopiëren ze in een Azure SQL Database om de impact van de campagne te analyseren.
 
 ## <a name="deploy-solution"></a>Oplossing implementeren
-Alles wat u nodig hebt om toegang te krijgen tot deze eenvoudige use-case is een [Azure-abonnement](https://azure.microsoft.com/pricing/free-trial/), een [Azure Blob-opslag account](../../storage/common/storage-quickstart-create-account.md)en een [Azure SQL database](../../sql-database/sql-database-get-started.md). U implementeert de klant profilerings pijplijn vanuit de tegel **voorbeeld pijplijnen** op de start pagina van uw Data Factory.
+Alles wat u nodig hebt om toegang te krijgen tot deze eenvoudige use-case is een [Azure-abonnement](https://azure.microsoft.com/pricing/free-trial/), een [Azure Blob-opslag account](../../storage/common/storage-account-create.md)en een [Azure SQL database](../../sql-database/sql-database-get-started.md). U implementeert de klant profilerings pijplijn vanuit de tegel **voorbeeld pijplijnen** op de start pagina van uw Data Factory.
 
 1. Maak een data factory of open een bestaande data factory. Zie [gegevens kopiëren van Blob Storage naar SQL database met behulp van Data Factory](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) voor stappen om een Data Factory te maken.
 2. Klik in de Blade **Data Factory** voor de Data Factory op de tegel **voorbeeld pijplijnen** .

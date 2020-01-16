@@ -16,20 +16,20 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc92fb7bc5ddf451279e6c157f9e93aa7fe9a12a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9cf660cbf981079ca20111e34fcd34504d8dcbfb
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423622"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044114"
 ---
-# <a name="web-api-that-calls-web-apis---acquire-a-token-for-the-app"></a>Web-API voor het aanroepen van web-Api's-een Token ophalen voor de app
+# <a name="a-web-api-that-calls-web-apis-acquire-a-token-for-the-app"></a>Een web-API die web-Api's aanroept: een Token ophalen voor de app
 
-Zodra u een client toepassings object hebt gemaakt, gebruikt u dit om een token op te halen dat u kunt gebruiken om een web-API aan te roepen.
+Nadat u een client toepassings object hebt gemaakt, gebruikt u dit om een token op te halen dat u kunt gebruiken om een web-API aan te roepen.
 
 ## <a name="code-in-the-controller"></a>Code in de controller
 
-Hier volgt een voor beeld van code die wordt aangeroepen in de acties van de API-controllers, aanroepen van een stroomafwaartse API (met de naam ToDoList).
+Hier volgt een voor beeld van code die wordt aangeroepen in de acties van de API-controllers. Er wordt een stroomafwaartse API met de naam *ToDoList*aangeroepen.
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -50,9 +50,9 @@ private async Task GetTodoList(bool isAppStarting)
 }
 ```
 
-`BuildConfidentialClient()` is vergelijkbaar met wat u hebt gezien in de [Web-API voor het artikel die web-api's aanroept-app-configuratie](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()` instantieert `IConfidentialClientApplication` met een cache die alleen informatie voor één account bevat. Het account wordt verzorgd door de `GetAccountIdentifier` methode.
+`BuildConfidentialClient()` is vergelijkbaar met het scenario in [een web-API die web-api's aanroept: app-configuratie](scenario-web-api-call-api-app-configuration.md). `BuildConfidentialClient()` maakt `IConfidentialClientApplication` een exemplaar van een cache dat informatie bevat voor slechts één account. Het account wordt verzorgd door de `GetAccountIdentifier` methode.
 
-De `GetAccountIdentifier` methode maakt gebruik van de claims die zijn gekoppeld aan de identiteit van de gebruiker waarvoor de Web-API de JWT heeft ontvangen:
+De `GetAccountIdentifier` methode maakt gebruik van de claims die zijn gekoppeld aan de identiteit van de gebruiker voor wie de Web-API de JSON Web Token (JWT) heeft ontvangen:
 
 ```csharp
 public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
@@ -73,4 +73,4 @@ public static string GetMsalAccountId(this ClaimsPrincipal claimsPrincipal)
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een web-API aanroepen](scenario-web-api-call-api-call-api.md)
+> [Een web-API die web-Api's aanroept: een API aanroepen](scenario-web-api-call-api-call-api.md)

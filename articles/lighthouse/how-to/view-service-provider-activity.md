@@ -1,14 +1,14 @@
 ---
 title: Activiteit van serviceprovider bekijken
 description: Klanten kunnen vastgelegde activiteiten weer geven om acties te bekijken die door service providers worden uitgevoerd via het beheer van gedelegeerde resources van Azure.
-ms.date: 12/6/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 31a9e7ff80623cc59b0a2db5951dff95d3088b05
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: de149bddb6917a63d91b1890c0430f64465cb40c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749173"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046106"
 ---
 # <a name="view-service-provider-activity"></a>Activiteit van serviceprovider bekijken
 
@@ -24,6 +24,9 @@ U kunt [het activiteiten logboek bekijken](../../azure-monitor/platform/activity
 In het activiteiten logboek ziet u de naam van de bewerking en de bijbehorende status, samen met de datum en tijd waarop het is uitgevoerd. In de **gebeurtenis gestart door** de kolom ziet u welke gebruiker de bewerking heeft uitgevoerd, of het een gebruiker in de Tenant van een service provider was die optreedt door middel van het beheer van gedelegeerde resources van Azure of een gebruiker in de eigen Tenant van de klant. Houd er rekening mee dat de naam van de gebruiker wordt weer gegeven in plaats van de Tenant of de rol die aan de gebruiker is toegewezen voor dat abonnement.
 
 Geregistreerde activiteiten is in de afgelopen 90 dagen beschikbaar in de Azure Portal. Zie [Azure-activiteiten logboeken verzamelen en analyseren in log Analytics werk ruimte in azure monitor](../../azure-monitor/platform/activity-log-collect.md) voor meer informatie over hoe u deze gegevens langer dan 90 dagen kunt opslaan.
+
+> [!NOTE]
+> Gebruikers van de service provider worden weer gegeven in het activiteiten logboek, maar deze gebruikers en hun roltoewijzingen worden niet weer gegeven in **Access Control (IAM)** of bij het ophalen van roltoewijzings gegevens via api's.
 
 ## <a name="set-alerts-for-critical-operations"></a>Waarschuwingen instellen voor kritieke bewerkingen
 

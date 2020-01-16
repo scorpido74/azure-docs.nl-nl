@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 5c4eb5241cc5e50c11c05cac6909e37557ba106d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ed5fc923c82fb0d0e4004e18159d943564c6f55e
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037519"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045817"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>Zelf studie: beschikbaarheids groep op Azure SQL Server VM hand matig configureren
 
@@ -42,8 +42,8 @@ De volgende tabel bevat de vereisten die u moet volt ooien voordat u met deze ze
 |----- |----- |----- |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | Twee SQL-servers | -In een Azure-beschikbaarheidsset <br/> -In één domein <br/> -Met functie Failoverclustering geïnstalleerd |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | Bestands share voor cluster Witness |  
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server-service account | Domein account |
-|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server Agent-service account | Domein account |  
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server-service account | Domeinaccount |
+|![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|SQL Server Agent-service account | Domeinaccount |  
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Firewall poorten geopend | -SQL Server: **1433** voor standaard exemplaar <br/> -Data base mirroring-eind punt: **5022** of een beschik bare poort <br/> -Beschikbaarheids groep load balancer IP-adres test: **59999** of een wille keurige beschik bare poort <br/> -Cluster kern load balancer IP-adres test: **58888** of een wille keurige beschik bare poort |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Functie Failover Clustering toevoegen | Voor beide SQL-servers is deze functie vereist |
 |![Square](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)|Account voor installatie domein | -Lokale beheerder op elke SQL Server <br/> -Lid van de vaste serverrol SQL Server sysadmin voor elk exemplaar van SQL Server  |
@@ -291,7 +291,7 @@ U bent nu klaar om een beschikbaarheids groep te configureren met de volgende st
 4. Klik op de pagina **Replica's opgeven** op **replica toevoegen**.
 
    ![Wizard Nieuwe AG, Replica's opgeven](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/62-newagaddreplica.png)
-5. Het dialoog venster **verbinding maken met server** wordt weer gegeven. Typ de naam van de tweede server in **Server naam**. Klik op **Verbinding maken**.
+5. Het dialoog venster **verbinding maken met server** wordt weer gegeven. Typ de naam van de tweede server in **Server naam**. Klik op **Connect** (Verbinden).
 
    Op de pagina **Replica's opgeven** ziet u nu de tweede server die wordt vermeld in **beschikbaarheids replica's**. Configureer de replica's als volgt.
 
@@ -318,7 +318,7 @@ U bent nu klaar om een beschikbaarheids groep te configureren met de volgende st
 10. Klik op de pagina **samen vatting** op **volt ooien**en vervolgens op een ogen blik geduld. de wizard configureert de nieuwe beschikbaarheids groep. Op de pagina **voortgang** kunt u op **meer details** klikken om de gedetailleerde voortgang weer te geven. Nadat de wizard is voltooid, controleert u de **resultaten** pagina om te controleren of de beschikbaarheids groep is gemaakt.
 
      ![Wizard Nieuwe AG, resultaten](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/74-results.png)
-11. Klik op **sluiten** om de wizard af te sluiten.
+11. Klik op **Sluiten** om de wizard af te sluiten.
 
 ### <a name="check-the-availability-group"></a>De beschikbaarheids groep controleren
 
@@ -348,14 +348,14 @@ Op dit moment hebt u een beschikbaarheids groep met replica's op twee exemplaren
 
 Op virtuele machines van Azure is een load balancer vereist voor een SQL Server-beschikbaarheids groep. Het load balancer bevat de IP-adressen voor de listeners voor de beschikbaarheids groep en het Windows Server-failovercluster. In deze sectie wordt een overzicht gegeven van het maken van de load balancer in de Azure Portal.
 
-Een Azure Load Balancer kan een Standard Load Balancer of een basis Load Balancer zijn. Standard Load Balancer heeft meer functies dan de basis Load Balancer. Voor een beschikbaarheids groep is de Standard Load Balancer vereist als u een beschikbaarheids zone gebruikt (in plaats van een Beschikbaarheidsset). Zie [Load BALANCER SKU-vergelijking](../../../load-balancer/load-balancer-overview.md#skus)voor meer informatie over het verschil tussen de Load Balancer typen.
+Een Azure Load Balancer kan een Standard Load Balancer of een basis Load Balancer zijn. Standard Load Balancer heeft meer functies dan de basis Load Balancer. Voor een beschikbaarheids groep is de Standard Load Balancer vereist als u een beschikbaarheids zone gebruikt (in plaats van een Beschikbaarheidsset). Zie [Load BALANCER SKU-vergelijking](../../../load-balancer/concepts-limitations.md#skus)voor meer informatie over het verschil tussen de Load Balancer typen.
 
 1. Ga in het Azure Portal naar de resource groep waar uw SQL-servers zijn en klik op **+ toevoegen**.
 1. Zoeken naar **Load Balancer**. Kies de load balancer gepubliceerd door micro soft.
 
    ![AG in Failoverclusterbeheer](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
-1. Klik op **Create**.
+1. Klik op **Maken**.
 1. Configureer de volgende para meters voor de load balancer.
 
    | Instelling | Veld |
@@ -408,7 +408,7 @@ Als u de load balancer wilt configureren, moet u een back-end-pool maken, een te
    | **Protocol** | TCP kiezen | TCP |
    | **Poort** | Alle ongebruikte poort | 59999 |
    | **Interval**  | De hoeveelheid tijd tussen de test pogingen in seconden |5 |
-   | **Drempel waarde voor onjuiste status** | Het aantal opeenvolgende test fouten dat moet optreden voor een virtuele machine als een slechte status  | 2 |
+   | **Dempelwaarde voor beschadigd** | Het aantal opeenvolgende test fouten dat moet optreden voor een virtuele machine als een slechte status  | 2 |
 
 1. Klik op **OK** om de status test in te stellen.
 
@@ -421,7 +421,7 @@ Als u de load balancer wilt configureren, moet u een back-end-pool maken, een te
    | Instelling | Beschrijving | Voorbeeld
    | --- | --- |---
    | **Naam** | Tekst | SQLAlwaysOnEndPointListener |
-   | **Frontend-IP-adres** | Kies een adres |Gebruik het adres dat u hebt gemaakt tijdens het maken van de load balancer. |
+   | **Front-end-IP-adres** | Kies een adres |Gebruik het adres dat u hebt gemaakt tijdens het maken van de load balancer. |
    | **Protocol** | TCP kiezen |TCP |
    | **Poort** | De poort voor de beschikbaarheids groep-listener gebruiken | 1433 |
    | **Backend-poort** | Dit veld wordt niet gebruikt wanneer er een zwevend IP-adres is ingesteld voor Direct Server Return | 1433 |
@@ -451,7 +451,7 @@ Het WSFC IP-adres moet ook op het load balancer zijn.
    | **Protocol** | TCP kiezen | TCP |
    | **Poort** | Alle ongebruikte poort | 58888 |
    | **Interval**  | De hoeveelheid tijd tussen de test pogingen in seconden |5 |
-   | **Drempel waarde voor onjuiste status** | Het aantal opeenvolgende test fouten dat moet optreden voor een virtuele machine als een slechte status  | 2 |
+   | **Dempelwaarde voor beschadigd** | Het aantal opeenvolgende test fouten dat moet optreden voor een virtuele machine als een slechte status  | 2 |
 
 1. Klik op **OK** om de status test in te stellen.
 
@@ -462,7 +462,7 @@ Het WSFC IP-adres moet ook op het load balancer zijn.
    | Instelling | Beschrijving | Voorbeeld
    | --- | --- |---
    | **Naam** | Tekst | WSFCEndPoint |
-   | **Frontend-IP-adres** | Kies een adres |Gebruik het adres dat u hebt gemaakt tijdens het configureren van het WSFC IP-adres. Dit wijkt af van het IP-adres van de listener |
+   | **Front-end-IP-adres** | Kies een adres |Gebruik het adres dat u hebt gemaakt tijdens het configureren van het WSFC IP-adres. Dit wijkt af van het IP-adres van de listener |
    | **Protocol** | TCP kiezen |TCP |
    | **Poort** | Gebruik de poort voor het IP-adres van het cluster. Dit is een beschik bare poort die niet wordt gebruikt voor de listener-test poort. | 58888 |
    | **Backend-poort** | Dit veld wordt niet gebruikt wanneer er een zwevend IP-adres is ingesteld voor Direct Server Return | 58888 |

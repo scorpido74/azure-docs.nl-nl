@@ -2,32 +2,28 @@
 title: Azure PowerShell-voorbeeldscript - Het RDP-poortbereik wijzigen | Microsoft Docs
 description: Azure PowerShell-voorbeeldscript - Wijzigt het RDP-poortbereik van een geïmplementeerd cluster.
 services: service-fabric
-documentationcenter: ''
-author: athinanthny
-manager: chackdan
-editor: ''
 tags: azure-service-management
-ms.assetid: ''
+author: athinanthny
+ms.author: atsenthi
 ms.service: service-fabric
 ms.workload: multiple
 ms.topic: sample
 ms.date: 03/19/2018
-ms.author: atsenthi
-ms.custom: mvc
-ms.openlocfilehash: 4ca7b4085a3978dc3218480c5c8a42679d80de23
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.custom: sfrev
+ms.openlocfilehash: b3d922cb5a7cdf34e63731ab32f21c94d7b6bca0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69035658"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76025020"
 ---
 # <a name="update-the-rdp-port-range-values"></a>De waarden voor het RDP-poortbereik bijwerken
 
-Met dit voorbeeldscript worden de waarden voor het RDP-poortbereik op de clusterknooppunt-VM's gewijzigd nadat het cluster is geïmplementeerd.  Azure PowerShell wordt gebruikt, zodat de onderliggende VM's niet uit en aan hoeven te worden gezet.  Het script haalt de `Microsoft.Network/loadBalancers`-resource in de resourcegroep van het cluster op en werkt de waarden `inboundNatPools.frontendPortRangeStart` en `inboundNatPools.frontendPortRangeEnd` bij. Pas de parameters zo nodig aan.
+Met dit voorbeeldscript worden de waarden voor het RDP-poortbereik op de clusterknooppunt-VM's gewijzigd nadat het cluster is geïmplementeerd.  Azure PowerShell wordt gebruikt, zodat de onderliggende VM's niet uit en aan hoeven te worden gezet.  Met het script wordt de `Microsoft.Network/loadBalancers` resource in de resource groep van het cluster opgehaald en worden de `inboundNatPools.frontendPortRangeStart` en `inboundNatPools.frontendPortRangeEnd` waarden bijgewerkt. Pas de parameters zo nodig aan.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Installeer zo nodig Azure PowerShell met behulp van de instructies in de [Azure PowerShell-handleiding](/powershell/azure/overview). 
+Installeer zo nodig Azure PowerShell met behulp van de instructies in de [Azure PowerShell-handleiding](/powershell/azure/overview).
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -35,7 +31,7 @@ Installeer zo nodig Azure PowerShell met behulp van de instructies in de [Azure 
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel is gekoppeld aan de specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|

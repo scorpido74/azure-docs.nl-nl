@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ad6c63ee15bc97ddd0ca6432f0b0f7b25a859804
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: aeb4bfbc40196575e2cb812738a9ab5de991d2aa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462188"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981021"
 ---
 # <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Roltoewijzingen toevoegen met behulp van Azure RBAC en Azure Resource Manager sjablonen
 
@@ -361,7 +361,7 @@ Hieronder ziet u een voor beeld van de toewijzing van de rol Inzender aan een ni
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Snelstartgids: Azure Resource Manager-sjablonen maken en implementeren via Azure Portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [Snelstartgids: Azure Resource Manager-sjablonen maken en implementeren via Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 - [Informatie over de structuur en de syntaxis van Azure Resource Manager-sjablonen](../azure-resource-manager/templates/template-syntax.md)
-- [Resource groepen en-resources op abonnements niveau maken](../azure-resource-manager/deploy-to-subscription.md)
+- [Resource groepen en-resources op abonnements niveau maken](../azure-resource-manager/templates/deploy-to-subscription.md)
 - [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/?term=rbac)

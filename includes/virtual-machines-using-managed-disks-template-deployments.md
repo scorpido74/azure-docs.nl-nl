@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: ba49fc72fe07378d702b8c12fcdf77d5cebee9bb
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 126b488d2bb59e2904bee646301240efe6fe71a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013092"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76037945"
 ---
 In dit document wordt uitgelegd wat de verschillen zijn tussen beheerde en onbeheerde schijven bij het gebruik van Azure Resource Manager sjablonen voor het inrichten van virtuele machines. De voor beelden helpen u bij het bijwerken van bestaande sjablonen die gebruikmaken van niet-beheerde schijven naar beheerde schijven. Ter referentie gebruiken we de sjabloon [101-VM-Simple-Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) als richt lijn. U kunt de sjabloon weer geven met behulp van zowel [beheerde schijven](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) als een eerdere versie met behulp van [onbeheerde schijven](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) als u deze direct wilt vergelijken.
 
@@ -94,7 +94,16 @@ Met Azure Managed Disks wordt de schijf een resource op het hoogste niveau en ho
 
 ### <a name="default-managed-disk-settings"></a>Standaard instellingen voor beheerde schijven
 
-Als u een virtuele machine met Managed disks wilt maken, hoeft u de bron van het opslag account niet meer te maken en kunt u de resource van de virtuele machine als volgt bijwerken. Het `apiVersion` weerspiegelt `2017-03-30` en de `osDisk` en `dataDisks` niet langer verwijzen naar een specifieke URI voor de VHD. Wanneer u implementeert zonder extra eigenschappen op te geven, gebruikt de schijf een opslag type op basis van de grootte van de virtuele machine. Als u bijvoorbeeld een VM-grootte gebruikt die geschikt is voor Premium (grootten met ' s ' in hun naam, zoals Standard_D2s_v3), gebruikt het systeem Premium_LRS opslag. Gebruik de SKU-instelling van de schijf om een opslag type op te geven. Als er geen naam is opgegeven, wordt de indeling van `<VMName>_OsDisk_1_<randomstring>` voor de besturingssysteem schijf en `<VMName>_disk<#>_<randomstring>` voor elke gegevens schijf gebruikt. Azure Disk Encryption is standaard uitgeschakeld. caching is lezen/schrijven voor de besturingssysteem schijf en geen voor gegevens schijven. U kunt in het onderstaande voor beeld zien dat er nog steeds een opslag account afhankelijk is, hoewel dit alleen geldt voor opslag van diagnostische gegevens en niet nodig is voor schijf opslag.
+Als u een virtuele machine met Managed disks wilt maken, hoeft u de bron van het opslag account niet meer te maken. Als u verwijst naar het volgende voor beeld van een sjabloon, zijn er enkele verschillen ten opzichte van de voor beelden van de vorige unmanged-schijf:
+
+- De `apiVersion` is een versie die ondersteuning biedt voor beheerde schijven.
+- `osDisk` en `dataDisks` niet langer verwijzen naar een specifieke URI voor de VHD.
+- Wanneer u implementeert zonder extra eigenschappen op te geven, gebruikt de schijf een opslag type op basis van de grootte van de virtuele machine. Als u bijvoorbeeld een VM-grootte gebruikt die Premium-opslag (grootten met ' s ' in hun naam ondersteunt, zoals Standard_D2s_v3), worden standaard Premium-schijven geconfigureerd. U kunt dit wijzigen door de SKU-instelling van de schijf te gebruiken om een opslag type op te geven.
+- Als er geen naam voor de schijf is opgegeven, wordt de indeling van `<VMName>_OsDisk_1_<randomstring>` voor de besturingssysteem schijf en `<VMName>_disk<#>_<randomstring>` voor elke gegevens schijf gebruikt.
+  - Als er een virtuele machine wordt gemaakt op basis van een aangepaste installatie kopie, worden de standaard instellingen voor het type opslag account en de schijf naam opgehaald uit de schijf eigenschappen die zijn gedefinieerd in de aangepaste installatie kopie bron. Deze kunnen worden overschreven door waarden voor deze in de sjabloon op te geven.
+- Azure Disk Encryption is standaard uitgeschakeld.
+- Schijf cache is standaard lezen/schrijven voor de besturingssysteem schijf en geen voor gegevens schijven.
+- In het voor beeld hieronder bevindt zich nog steeds een opslag account afhankelijkheid, hoewel dit alleen geldt voor opslag van diagnostische gegevens en niet nodig is voor schijf opslag.
 
 ```json
 {

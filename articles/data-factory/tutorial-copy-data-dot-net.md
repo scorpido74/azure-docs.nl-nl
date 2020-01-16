@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 7f3fdf1b723158db873bc2635de34d878c464201
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93c4f71c762cff3e3f5a01f0e2595f3498f9d38d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439439"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977315"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Gegevens met Azure Data Factory kopiëren van Azure Blob Storage naar SQL Database
 
@@ -38,7 +38,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](htt
 
 ## <a name="prerequisites"></a>Vereisten
 
-* *Azure Storage-account*. U gebruikt de blob-opslag als *bron*-gegevensopslag. Als u geen Azure Storage-account hebt, raadpleegt u [een opslag account voor algemeen gebruik maken](../storage/common/storage-quickstart-create-account.md).
+* *Azure Storage-account*. U gebruikt de blob-opslag als *bron*-gegevensopslag. Als u geen Azure Storage-account hebt, raadpleegt u [een opslag account voor algemeen gebruik maken](../storage/common/storage-account-create.md).
 * *Azure SQL-database*. U gebruikt de database als *sink*-gegevensopslag. Als u geen Azure SQL Database hebt, raadpleegt u [een Azure SQL database maken](../sql-database/sql-database-single-database-get-started.md).
 * *Visual Studio*. In de procedure in dit artikel wordt gebruikgemaakt van Visual Studio 2019.
 * *[Azure SDK voor .net](/dotnet/azure/dotnet-tools)* .
@@ -84,7 +84,7 @@ Maak vervolgens een Sink SQL-tabel:
     1. Ga naar de [Azure Portal](https://portal.azure.com) om uw SQL-Server te beheren. Zoek en selecteer **SQL-servers**.
 
     2. Selecteer uw server.
-    
+
     3. Selecteer in de **beveiligings** titel van het menu SQL Server de optie **firewalls en virtuele netwerken**.
 
     4. Selecteer **op**de pagina **firewall en virtuele netwerken** onder **Azure-Services en-bronnen toestaan om toegang te krijgen tot deze server**.
@@ -154,7 +154,7 @@ Volg deze stappen om een data factory-client te maken.
     string inputBlobName = "inputEmp.txt";
 
     // Specify the sink Azure SQL Database information
-    string azureSqlConnString = 
+    string azureSqlConnString =
         "Server=tcp:<your server name>.database.windows.net,1433;" +
         "Database=<your database name>;" +
         "User ID=<your username>@<your server name>;" +
@@ -265,7 +265,7 @@ Console.WriteLine(
 
 ## <a name="create-datasets"></a>Gegevenssets maken
 
-In deze sectie maakt u twee gegevens sets: een voor de bron, de andere voor de sink. 
+In deze sectie maakt u twee gegevens sets: een voor de bron, de andere voor de sink.
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>Een gegevensset maken voor de brongegevens in Azure Blob
 
@@ -283,8 +283,8 @@ Console.WriteLine("Creating dataset " + blobDatasetName + "...");
 DatasetResource blobDataset = new DatasetResource(
     new AzureBlobDataset
     {
-        LinkedServiceName = new LinkedServiceReference { 
-            ReferenceName = storageLinkedServiceName 
+        LinkedServiceName = new LinkedServiceReference {
+            ReferenceName = storageLinkedServiceName
         },
         FolderPath = inputBlobPath,
         FileName = inputBlobName,
@@ -309,7 +309,7 @@ Console.WriteLine(
 
 Voeg de volgende code toe aan de `Main` methode waarmee een *Azure SQL database-gegevensset*wordt gemaakt. Zie [Eigenschappen van Azure SQL database-gegevensset](connector-azure-sql-database.md#dataset-properties)voor meer informatie over ondersteunde eigenschappen en Details.
 
-U definieert een gegevensset die de sink-gegevens in Azure SQL Database vertegenwoordigt. Deze gegevensset verwijst naar de Azure SQL Database gekoppelde service die u in de vorige stap hebt gemaakt. De gegevensset geeft ook aan in welke SQL-tabel de gekopieerde gegevens worden opgeslagen. 
+U definieert een gegevensset die de sink-gegevens in Azure SQL Database vertegenwoordigt. Deze gegevensset verwijst naar de Azure SQL Database gekoppelde service die u in de vorige stap hebt gemaakt. De gegevensset geeft ook aan in welke SQL-tabel de gekopieerde gegevens worden opgeslagen.
 
 ```csharp
 // Create an Azure SQL Database dataset
@@ -416,14 +416,14 @@ Voeg nu de code in om de status van de pijplijn uitvoeringen te controleren en o
     ActivityRunsQueryResponse queryResponse = client.ActivityRuns.QueryByPipelineRun(
         resourceGroup, dataFactoryName, runResponse.RunId, filterParams
     );
- 
+
     if (pipelineRun.Status == "Succeeded")
     {
         Console.WriteLine(queryResponse.Value.First().Output);
     }
     else
         Console.WriteLine(queryResponse.Value.First().Error);
-    
+
     Console.WriteLine("\nPress any key to exit...");
     Console.ReadKey();
     ```
@@ -564,7 +564,7 @@ Press any key to exit...
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene naar de andere locatie in Azure Blob Storage. U hebt geleerd hoe u: 
+Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene naar de andere locatie in Azure Blob Storage. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
 > * Een gegevensfactory maken.
@@ -574,7 +574,7 @@ Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene naar de a
 > * Een pijplijnuitvoering starten.
 > * De uitvoering van de pijplijn en van de activiteit controleren
 
-Ga verder met de volgende zelfstudie als u wilt weten hoe u on-premises gegevens kopieert naar de cloud: 
+Ga verder met de volgende zelfstudie als u wilt weten hoe u on-premises gegevens kopieert naar de cloud:
 
 > [!div class="nextstepaction"]
 >[On-premises gegevens kopiëren naar de cloud](tutorial-hybrid-copy-powershell.md)

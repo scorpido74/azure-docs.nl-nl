@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: c97c8231265cf87f52333a56d21d6fb13180c554
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 5680bd1c3fadab8edcde1634c708ca8683c0e99c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808818"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021196"
 ---
 ## <a name="create-base-resources"></a>Basis bronnen maken
 
@@ -23,7 +23,7 @@ Gebruik dezelfde resourcegroep en -locatie voor alle resources. Aan het einde ku
 
 Hieronder vindt u een overzicht van de stappen die moeten worden uitgevoerd in de volgende secties: 
 
-1. Maak een [resourcegroep](../articles/azure-resource-manager/resource-group-overview.md).
+1. Maak een [resourcegroep](../articles/azure-resource-manager/management/overview.md).
 
 2. Maak een IoT Hub in de S1-laag. Voeg een consumentengroep toe aan uw IoT Hub. De consumentengroep wordt gebruikt door de Azure Stream Analytics bij het ophalen van gegevens.
 

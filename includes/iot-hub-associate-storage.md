@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: f88f6aa6daec342b24d165c4c4cc0a89a0805f7a
-ms.sourcegitcommit: a6888fba33fc20cc6a850e436f8f1d300d03771f
+ms.openlocfilehash: ebc23ce4238c736442fbc4507e858876f9192fd9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69558452"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020927"
 ---
 ## <a name="associate-an-azure-storage-account-to-iot-hub"></a>Een Azure Storage-account koppelen aan IoT Hub
 
-Omdat de app gesimuleerde apparaten een bestand uploadt naar een blob, moet u een [Azure Storage](../articles/storage/common/storage-quickstart-create-account.md) -account hebben dat is gekoppeld aan uw IOT-hub. Wanneer u een Azure Storage-account koppelt aan een IoT-hub, genereert de IoT-hub een SAS-URI. Een apparaat kan deze SAS-URI gebruiken om een bestand veilig te uploaden naar een BLOB-container. De IoT Hub-service en de Sdk's van het apparaat coördineren het proces dat de SAS-URI genereert en maakt het beschikbaar voor een apparaat dat wordt gebruikt om een bestand te uploaden.
+Omdat de app gesimuleerde apparaten een bestand uploadt naar een blob, moet u een [Azure Storage](../articles/storage/common/storage-account-create.md) -account hebben dat is gekoppeld aan uw IOT-hub. Wanneer u een Azure Storage-account koppelt aan een IoT-hub, genereert de IoT-hub een SAS-URI. Een apparaat kan deze SAS-URI gebruiken om een bestand veilig te uploaden naar een BLOB-container. De IoT Hub-service en de Sdk's van het apparaat coördineren het proces dat de SAS-URI genereert en maakt het beschikbaar voor een apparaat dat wordt gebruikt om een bestand te uploaden.
 
 Volg de instructies in [uploads van bestanden configureren met behulp van de Azure Portal](../articles/iot-hub/iot-hub-configure-file-upload.md). Zorg ervoor dat een BLOB-container is gekoppeld aan uw IoT-hub en dat bestands meldingen worden ingeschakeld.
 

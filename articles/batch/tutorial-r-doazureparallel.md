@@ -2,27 +2,27 @@
 title: Parallelle R-simulatie met Azure Batch
 description: 'Zelfstudie: Stapsgewijze instructies voor het uitvoeren van een financiële Monte Carlo-simulatie in Azure Batch met het R-pakket doAzureParallel'
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 7fad37af268d3dcd3d4d974d8e839ac47f171b50
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a5422b3b3dfee548e24e989654f8cc219700e712
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321911"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029205"
 ---
-# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Zelfstudie: Een parallelle R-simulatie uitvoeren met Azure Batch 
+# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Zelfstudie: Parallelle R-simulatie uitvoeren met Azure Batch 
 
 Voer uw parallelle R-workloads op schaal uit met behulp van [doAzureParallel](https://www.github.com/Azure/doAzureParallel), een lichtgewicht R-pakket dat het mogelijk maakt Azure Batch rechtstreeks vanuit uw R-sessie te gebruiken. Het pakket doAzureParallel is gebouwd op het populaire R-pakket [foreach](https://cran.r-project.org/web/packages/foreach/index.html). doAzureParallel haalt elke herhaling van de foreach-lus op en verzendt deze als een Azure Batch-taak.
 
-In deze zelfstudie wordt uitgelegd hoe u een Batch-pool implementeert en een parallelle R-taak in Azure Batch rechtstreeks uitvoert in RStudio. In deze zelfstudie leert u procedures om het volgende te doen:
+In deze zelfstudie wordt uitgelegd hoe u een Batch-pool implementeert en een parallelle R-taak in Azure Batch rechtstreeks uitvoert in RStudio. Procedures voor:
  
 
 > [!div class="checklist"]
@@ -36,7 +36,7 @@ In deze zelfstudie wordt uitgelegd hoe u een Batch-pool implementeert en een par
 
 * [RStudio](https://www.rstudio.com/), de commerciële versie of de open-source versie [RStudio Desktop](https://www.rstudio.com/products/rstudio/#Desktop). 
 
-* Een Azure Batch-account en een Azure Storage-account. Raadpleeg de Batch-quickstarts met behulp van [Azure Portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md) voor instructies voor het maken van deze accounts. 
+* Een Azure Batch-account en een Azure Storage-account. Raadpleeg de Batch-snelstartgidsen via de [Azure Portal](quick-create-portal.md) of [Azure CLI](quick-create-cli.md) voor instructies over het maken van deze accounts. 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 

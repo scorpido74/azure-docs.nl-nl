@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: ef0445727c100b7262ebffc69be5e00a7956520a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f25486aba9549855939b06ea5b8dfc14db0af95
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428780"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969123"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Zelf studie: taken automatiseren voor het verwerken van e-mail berichten met behulp van Azure Logic Apps, Azure Functions en Azure Storage
 
@@ -52,7 +52,7 @@ Gebruik de referenties van uw Azure-account om u aan melden bij het [Azure Porta
 
 U kunt binnenkomende e-mails en bijlagen als blobs opslaan in een [Azure-opslagcontainer](../storage/common/storage-introduction.md).
 
-1. Voordat u een opslag container kunt maken, [maakt u een opslag account](../storage/common/storage-quickstart-create-account.md) met deze instellingen op het tabblad **basis beginselen** in de Azure portal:
+1. Voordat u een opslag container kunt maken, [maakt u een opslag account](../storage/common/storage-account-create.md) met deze instellingen op het tabblad **basis beginselen** in de Azure portal:
 
    | Instelling | Waarde | Beschrijving |
    |---------|-------|-------------|
@@ -159,7 +159,7 @@ Gebruik nu het codefragment in deze stappen om een Azure-functie te maken waarme
 
    ![Gemaakte functie-app](./media/tutorial-process-email-attachments-workflow/function-app-created.png)
 
-   U kunt ook [Azure cli](../azure-functions/functions-create-first-azure-function-azure-cli.md)-of [Power shell-en Resource Manager-sjablonen](../azure-resource-manager/resource-group-template-deploy.md)gebruiken om een functie-app te maken.
+   U kunt ook [Azure cli](../azure-functions/functions-create-first-azure-function-azure-cli.md)-of [Power shell-en Resource Manager-sjablonen](../azure-resource-manager/templates/deploy-powershell.md)gebruiken om een functie-app te maken.
 
 1. Vouw in de lijst **functie-apps** de functie-app uit, als deze nog niet is uitgevouwen. Selecteer **functies**onder uw functie-app. Selecteer op de functiewerkbalk **Nieuwe functie**.
 
@@ -282,7 +282,7 @@ Voeg vervolgens een [trigger](../logic-apps/logic-apps-overview.md#logic-app-con
       | **Interval** | 1 | Het aantal intervallen dat tussen controles moet worden gewacht |
       | **Frequentie** | Minuut | De tijdseenheid voor elk interval tussen controles |
       ||||
-  
+
    1. Selecteer in de lijst **nieuwe para meter toevoegen** de optie **onderwerps filter**.
 
    1. Nadat het vak **onderwerps filter** in de actie wordt weer gegeven, geeft u het onderwerp op zoals hier wordt weer gegeven:
@@ -377,7 +377,8 @@ Test nu of de voorwaarde correct werkt:
 Bepaal vervolgens de te nemen acties voor de vertakking **Indien waar**. Als u uw e-mail met eventuele bijlagen wilt opslaan, wist u de HTML uit de hoofdtekst van de e-mail en maakt u blobs in de opslagcontainer voor de e-mail en de bijlagen.
 
 > [!NOTE]
-> Uw logische app hoeft niets te doen voor de vertakking **Indien onwaar** als een e-mail geen bijlagen heeft. Als extra oefening na deze zelfstudie, kunt u een geschikte actie toevoegen voor de vertakking **Indien onwaar**.
+> Uw logische app hoeft niets te doen voor de vertakking **Indien onwaar** als een e-mail geen bijlagen heeft.
+> Als extra oefening na deze zelfstudie, kunt u een geschikte actie toevoegen voor de vertakking **Indien onwaar**.
 
 ## <a name="call-removehtmlfunction"></a>RemoveHTMLFunction aanroepen
 
@@ -605,7 +606,9 @@ Voeg vervolgens een actie toe, zodat uw logische app een e-mail verzendt om meld
    ||||
 
    > [!NOTE]
-   > Als u een veld selecteert waarin een matrix is opgeslagen, zoals het veld **Inhoud**, wat een matrix is die bijlagen bevat, wordt in de ontwerpfunctie automatisch een lus 'Voor elke' toegevoegd rond de actie die naar het veld verwijst. Op die manier kan de actie voor elk matrixitem worden uitgevoerd. Als u de lus wilt verwijderen, verwijdert u het veld voor de matrix, verplaatst u de verwijzende actie naar buiten de lus, selecteert u de weglatings tekens ( **...** ) op de titel balk van de lus en selecteert u **verwijderen**.
+   > Als u een veld selecteert waarin een matrix is opgeslagen, zoals het veld **Inhoud**, wat een matrix is die bijlagen bevat, wordt in de ontwerpfunctie automatisch een lus 'Voor elke' toegevoegd rond de actie die naar het veld verwijst.
+   > Op die manier kan de actie voor elk matrixitem worden uitgevoerd.
+   > Als u de lus wilt verwijderen, verwijdert u het veld voor de matrix, verplaatst u de verwijzende actie naar buiten de lus, selecteert u de weglatings tekens ( **...** ) op de titel balk van de lus en selecteert u **verwijderen**.
 
 1. Sla uw logische app op.
 

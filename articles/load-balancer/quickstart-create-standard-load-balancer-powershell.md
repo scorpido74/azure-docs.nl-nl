@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: b387df5049fff2cb17e8d0758f1cf5fd8f0d0853
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 21488fbc8a5a9354db74d5b93719d100bce8878c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049114"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045663"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Snelstartgids: een Standard Load Balancer maken met behulp van Azure PowerShell
 
@@ -62,7 +62,7 @@ In deze sectie configureert u de front-end-IP en de back-endadresgroep voor de l
 
 ### <a name="create-front-end-ip"></a>Maak een front-end IP-adres
 
-Maak een front-end IP-adres met [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). In het volgende voorbeeld wordt een front-end-IP-configuratie met de naam *myFrontEnd* gemaakt en wordt het adres *myPublicIP* eraan gekoppeld:
+Maak een front-end-IP-adres met [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). In het volgende voorbeeld wordt een front-end-IP-configuratie met de naam *myFrontEnd* gemaakt en wordt het adres *myPublicIP* eraan gekoppeld:
 
 ```azurepowershell
 $feip = New-AzLoadBalancerFrontendIpConfig -Name 'myFrontEndPool' -PublicIpAddress $publicIp
@@ -105,7 +105,7 @@ $rule = New-AzLoadBalancerRuleConfig `
 
 ### <a name="create-the-nat-rules"></a>De NAT-regels maken
 
-Maak NAT-regels met [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig). In het volgende voorbeeld worden NAT-regels genaamd *myLoadBalancerRDP1* en *myLoadBalancerRDP2* gemaakt om RDP-verbindingen met de back-endservers toe te staan op poort 4221 en 4222:
+NAT-regels maken met [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig). In het volgende voorbeeld worden NAT-regels genaamd *myLoadBalancerRDP1* en *myLoadBalancerRDP2* gemaakt om RDP-verbindingen met de back-endservers toe te staan op poort 4221 en 4222:
 
 ```azurepowershell
 $natrule1 = New-AzLoadBalancerInboundNatRuleConfig `
@@ -149,7 +149,7 @@ $lb = New-AzLoadBalancer `
 ## <a name="create-network-resources"></a>Netwerkbronnen maken
 Voordat u enkele VM's implementeert en uw balancer test, moet u ondersteunende netwerkbronnen maken (virtueel netwerk en virtuele NIC's). 
 
-### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
 Maak een virtueel netwerk met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In het volgende voorbeeld wordt een virtueel netwerk gemaakt met de naam *myVnet* met *mySubnet*:
 
 ```azurepowershell

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: 7f9ae32b95d629ef79f085ed590d9057b0414911
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: a9d28a12f5f1fa32d2bc3bcf590134930503f2ac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941539"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970381"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Problemen met Azure VM-extensies oplossen
 
@@ -105,8 +105,6 @@ De uitbrei ding verwijderen:
 4. Selecteer **site Recovery extensie**.
 5. Selecteer **Verwijderen**.
 
-Als de VMSnapshot-extensie niet wordt weer gegeven in de Azure Portal, werkt u voor de Linux-VM naar de [Azure Linux-agent](../virtual-machines/linux/update-agent.md)en voert u de beveiliging uit. 
+Als de VMSnapshot-extensie niet wordt weer gegeven in de Azure Portal, werkt u voor de Linux-VM naar de [Azure Linux-agent](../virtual-machines/linux/update-agent.md)en voert u de beveiliging uit.
 
 Als u deze stappen uitvoert, wordt de extensie tijdens de beveiliging opnieuw geïnstalleerd.
-
-

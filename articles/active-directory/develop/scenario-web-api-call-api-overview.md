@@ -15,32 +15,32 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b357def86b77d4bbb294e2253dacfbd129998ec
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b67507daf8005f3f9a299b778f1fba4ce67d46d4
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965123"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044161"
 ---
-# <a name="scenario-web-api-that-calls-web-apis"></a>Scenario: Web-API voor het aanroepen van web-Api's
+# <a name="scenario-a-web-api-that-calls-web-apis"></a>Scenario: een web-API die web-Api's aanroept
 
-Meer informatie over wat u nodig hebt om een web-API te maken die web-Api's aanroept.
+Meer informatie over wat u moet weten om een web-API te maken die web-Api's aanroept.
 
 ## <a name="prerequisites"></a>Vereisten
 
-In dit scenario wordt de beveiligde web-API voor het aanroepen van web-Api's gebaseerd op het scenario ' een web-API beveiligen '. Zie voor meer informatie over dit kern scenario de [beveiligde web API-scenario](scenario-protected-web-api-overview.md) .
+In dit scenario, waarin een beveiligde web-API Web-Api's aanroept, bouwt u op het scenario ' een web-API beveiligen '. Zie [scenario: Protected Web API](scenario-protected-web-api-overview.md)(Engelstalig) voor meer informatie over dit scenario.
 
 ## <a name="overview"></a>Overzicht
 
-- Een client (Web-, Desktop-, mobiele of toepassing met één pagina)-wordt niet weer gegeven in het onderstaande diagram: roept een beveiligde web-API aan en biedt een JWT Bearer-token in de http-header autorisatie.
-- De beveiligde web-API valideert het token en maakt gebruik van de methode MSAL `AcquireTokenOnBehalfOf` om een andere token aan te vragen (van Azure AD), zodat het zelf een tweede Web-API (met de naam de downstream Web-API) kan aanroepen namens de gebruiker.
-- De beveiligde web-API gebruikt dit token om een downstream API aan te roepen. Het kan ook `AcquireTokenSilent`later aanroepen om tokens aan te vragen voor andere downstream-Api's (maar nog steeds namens dezelfde gebruiker). `AcquireTokenSilent` het token zo nodig vernieuwen.
+- Een web-, Desktop-, mobiele of toepassing met één pagina (niet weer gegeven in het bijbehorende diagram) roept een beveiligde web-API aan en biedt een JSON Web Token (JWT) Bearer-token in de HTTP-header autorisatie.
+- De beveiligde web-API valideert het token en maakt gebruik van de methode micro soft Authentication Library (MSAL) `AcquireTokenOnBehalfOf` om een token van Azure Active Directory (Azure AD) aan te vragen, zodat de beveiligde web-API een tweede Web-API of downstream Web-API kan aanroepen namens de gebruiker.
+- De beveiligde web-API kan ook `AcquireTokenSilent`later aanroepen om tokens voor andere downstream-Api's namens dezelfde gebruiker aan te vragen. `AcquireTokenSilent` het token zo nodig vernieuwen.
 
-![Web-API die een web-API aanroept](media/scenarios/web-api.svg)
+![Diagram van een web-API die een web-API aanroept](media/scenarios/web-api.svg)
 
 ## <a name="specifics"></a>Opsporingsgegevens
 
-Het deel van de registratie van de app met betrekking tot de API-machtigingen is klassiek. De configuratie van de toepassing omvat het gebruik van de OAuth 2,0-stroom om het JWT Bearer-token uit te wisselen op basis van een token voor een stroomafwaartse API. Dit token wordt toegevoegd aan de token cache, waar deze beschikbaar is in de controller van de Web-API, en kan een token op de achtergrond verkrijgen om downstream-Api's aan te roepen.
+Het app-registratie onderdeel dat is gerelateerd aan API-machtigingen is klassiek. De configuratie van de app omvat het gebruik van de OAuth 2,0-stroom om het JWT Bearer-token uit te wisselen op basis van een token voor een downstream API. Dit token wordt toegevoegd aan de token cache, waar deze beschikbaar is in de controller van de Web-API, en kan vervolgens een token op de achtergrond verkrijgen om downstream-Api's aan te roepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

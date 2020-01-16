@@ -9,19 +9,19 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 86f042a451583759aa15e886b3261700335a5285
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 87b05256103790c706f3ba0df7ea72c169b79f16
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748548"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979821"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Metrische gegevens en logboekgegevens van Azure archiveren met behulp van Azure Storage
 
-Verschillende lagen van uw Azure-omgeving genereren logboekgegevens en metrische gegevens die in een Azure Storage-account kunnen worden gearchiveerd. U kunt hier bijvoorbeeld gebruik van maken als u bewakingsgegevens waarvan de bewaarperiode is verstreken langere tijd wilt bewaren in een voordelig, niet-doorzoekbaar archief. 
+Verschillende lagen van uw Azure-omgeving genereren logboekgegevens en metrische gegevens die in een Azure Storage-account kunnen worden gearchiveerd. U kunt hier bijvoorbeeld gebruik van maken als u bewakingsgegevens waarvan de bewaarperiode is verstreken langere tijd wilt bewaren in een voordelig, niet-doorzoekbaar archief.
 
-- De metrische gegevens van het Azure Monitor-platform worden gedurende 93 dagen bewaard. 
-- Resourcelogboeken met diagnostische gegevens worden alleen weergegeven als ze worden gerouteerd naar Log Analytics - hier worden ze minimaal 30 dagen bewaard. De definitieve bewaarperiode kan worden ingesteld. 
+- De metrische gegevens van het Azure Monitor-platform worden gedurende 93 dagen bewaard.
+- Resourcelogboeken met diagnostische gegevens worden alleen weergegeven als ze worden gerouteerd naar Log Analytics - hier worden ze minimaal 30 dagen bewaard. De definitieve bewaarperiode kan worden ingesteld.
 - Vermeldingen in het activiteitenlogboek worden gedurende 90 dagen bewaard.  
 
 In deze zelfstudie beschrijven we hoe u uw Azure-omgeving configureert voor het archiveren van gegevens in een opslagaccount.
@@ -42,7 +42,7 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Maak een opslagaccount
 
-U moet eerst een opslagaccount instellen waarin de bewakingsgegevens worden gearchiveerd. Daarvoor [volgt u deze stappen](../../storage/common/storage-quickstart-create-account.md).
+U moet eerst een opslagaccount instellen waarin de bewakingsgegevens worden gearchiveerd. Daarvoor [volgt u deze stappen](../../storage/common/storage-account-create.md).
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>Abonnementlogboeken naar het opslagaccount doorsturen
 
@@ -144,9 +144,9 @@ Bewakingsgegevens uit uw virtuele machines worden nu doorgestuurd naar het opsla
 ## <a name="view-the-monitoring-data-in-the-storage-account"></a>De bewakingsgegevens in het opslagaccount weergeven
 
 > [!WARNING]
-> De indeling van de logboekgegevens in het opslagaccount wordt op 1 november 2018 gewijzigd in JSON Lines. [Raadpleeg dit artikel voor een beschrijving van de gevolgen en hoe u uw tooling kunt bijwerken om de nieuwe indeling te verwerken. ](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
+> De indeling van de logboekgegevens in het opslagaccount wordt op 1 november 2018 gewijzigd in JSON Lines. [Raadpleeg dit artikel voor een beschrijving van de gevolgen en hoe u uw tooling kunt bijwerken om de nieuwe indeling te verwerken. ](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md)
 >
-> 
+>
 
 Als u de voorgaande stappen hebt gevolgd, worden gegevens nu doorgestuurd naar uw opslagaccount.
 
@@ -199,4 +199,3 @@ Om meer uit uw gegevens te halen en extra inzichten af te leiden, moet u uw gege
 
 > [!div class="nextstepaction"]
 > [Aan de slag met Log Analytics](../../azure-monitor/log-query/log-query-overview.md)
-

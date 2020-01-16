@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e3ec9ea9cfbae314297c5b59f6a07bcebaef6a5c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8439788c63ec1b9feaea148ab52aba498791dc12
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791962"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045014"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Herkennings vaardigheid van taal detectie
 
@@ -30,14 +30,14 @@ Met taal detectie kunt u gebruikmaken van de natuurlijke taal verwerkings biblio
 
 
 ## <a name="odatatype"></a>@odata.type  
-Micro soft. skills. Text. LanguageDetectionSkill
+Microsoft.Skills.Text.LanguageDetectionSkill
 
 ## <a name="data-limits"></a>Gegevenslimieten
-De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Als u uw gegevens wilt opsplitsen voordat u deze naar de sentiment Analyzer verzendt, kunt u de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)gebruiken.
+De maximale grootte van een record moet 50.000 tekens zijn, zoals gemeten door [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Als u uw gegevens wilt opsplitsen voordat u deze naar de taal detectie vaardigheid verzendt, kunt u de [Kwalificatie tekst splitsen](cognitive-search-skill-textsplit.md)gebruiken.
 
 ## <a name="skill-inputs"></a>Vaardigheids invoer
 
-Para meters zijn hoofdletter gevoelig.
+Parameters zijn hoofdlettergevoelig.
 
 | Invoer     | Beschrijving |
 |--------------------|-------------|
@@ -48,8 +48,8 @@ Para meters zijn hoofdletter gevoelig.
 | Uitvoer naam    | Beschrijving |
 |--------------------|-------------|
 | languageCode | De ISO 6391-taal code voor de geïdentificeerde taal. Bijvoorbeeld ' en '. |
-| taal | De naam van de taal. Bijvoorbeeld ' Engels '. |
-| Score | Een waarde tussen 0 en 1. De kans dat de taal correct wordt geïdentificeerd. De score kan lager zijn dan 1 als de zin gemengde talen heeft.  |
+| languageName | De naam van de taal. Bijvoorbeeld ' Engels '. |
+| score | Een waarde tussen 0 en 1. De kans dat de taal correct wordt geïdentificeerd. De score kan lager zijn dan 1 als de zin gemengde talen heeft.  |
 
 ##  <a name="sample-definition"></a>Voorbeeld definitie
 

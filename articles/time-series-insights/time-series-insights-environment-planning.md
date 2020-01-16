@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 39665e0361747e0f75fa6c92f244317b995ce6a8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ab8baa810c36c794bbefd264c5588f8b28cbd62a
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863373"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046199"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Uw Azure Time Series Insights GA-omgeving plannen
 
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u de Azure Time Series Insights algemene Bes
 
 ## <a name="video"></a>Video
 
-**Bekijk deze video voor meer informatie over het bewaren van gegevens in azure time series Insights en hoe u deze kunt plannen**:<br /><br />
+**Bekijk deze video voor meer informatie over het bewaren van gegevens in azure time series Insights en hoe u deze kunt plannen**:<br />
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
@@ -53,7 +53,7 @@ U kunt de instelling voor de **Bewaar tijd van gegevens** in uw Azure time serie
 Azure Time Series Insights heeft twee modi:
 
 * De ene modus optimaliseert voor de meest actuele gegevens. Er wordt een beleid afgedwongen om **oude gegevens te verwijderen** die recente gegevens verlaten die beschikbaar zijn bij het exemplaar. Deze modus is standaard ingeschakeld. 
-* De overige optimaliseert gegevens zodat deze onder de geconfigureerde Bewaar limieten blijven. Door **ingangen te onderbreken** voor komt u dat nieuwe gegevens worden uitgeschakeld wanneer de **opslag limiet is overschreden**. 
+* De overige optimaliseert gegevens zodat deze onder de geconfigureerde Bewaar limieten blijven. Door **ingangen te onderbreken** voor komt u dat nieuwe gegevens worden uitgeschakeld wanneer de **opslag limiet is overschreden**.
 
 U kunt de Bewaar periode aanpassen en scha kelen tussen de twee modi op de configuratie pagina van de omgeving in het Azure Portal.
 

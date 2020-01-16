@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4da78fbb15aea2bd0f54ffec1b0851466c799584
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 182bf02bfaad598a447304cc9f2ed42f6221176d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888580"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971964"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Zelfstudie: een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Storage
 
@@ -40,7 +40,18 @@ Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Storage met een door he
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-account"></a>Account maken
+
+
+## <a name="enable"></a>Inschakelen
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+
+## <a name="grant-access"></a>Toegang verlenen
+
+
+### <a name="create-storage-account"></a>Een opslagaccount maken
 
 In deze sectie maakt u een opslagaccount.
 
@@ -53,7 +64,7 @@ In deze sectie maakt u een opslagaccount.
 
     ![Nieuw opslagaccount maken](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
-## <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>Een blobcontainer maken en een bestand naar het opslagaccount uploaden
+### <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>Een blobcontainer maken en een bestand naar het opslagaccount uploaden
 
 Voor bestanden is blobopslag nodig, dus moeten we een blobcontainer maken waarin het bestand kan worden opgeslagen. Vervolgens uploadt u een bestand naar de blobcontainer in het nieuwe opslagaccount.
 
@@ -69,7 +80,7 @@ Voor bestanden is blobopslag nodig, dus moeten we een blobcontainer maken waarin
 7. Klik in het deelvenster **Blob uploaden** onder **Bestanden** op het mappictogram en blader naar het bestand **hello_world.txt** op uw lokale computer, selecteer het bestand en klik vervolgens op **Uploaden**.
     ![Tekstbestand uploaden](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
-## <a name="grant-access"></a>Toegang verlenen
+### <a name="grant-access"></a>Toegang verlenen
 
 In deze sectie wordt beschreven hoe u uw VM toegang verleent tot een Azure Storage-container. U kunt de door het systeem toegewezen beheerde identiteit van de virtuele machine gebruiken om de gegevens in de Azure Storage-blob op te halen.
 
@@ -83,7 +94,7 @@ In deze sectie wordt beschreven hoe u uw VM toegang verleent tot een Azure Stora
 
     ![Machtigingen toewijzen](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
-## <a name="get-an-access-token"></a>Een toegangstoken opvragen 
+## <a name="access-data"></a>Toegang tot gegevens 
 
 Azure Storage biedt systeemeigen ondersteuning voor Microsoft Azure AD-verificatie, zodat toegangstokens die zijn verkregen met behulp van een beheerde identiteit direct kunnen worden geaccepteerd. Dit maakt deel uit van de integratie van Azure Storage met Azure AD en wijkt af van het opgeven van referenties in de verbindingsreeks.
 
@@ -160,6 +171,13 @@ namespace StorageOAuthToken
 Het antwoord bevat de inhoud van het bestand:
 
 `Hello world! :)`
+
+
+## <a name="disable"></a>Uitschakelen
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

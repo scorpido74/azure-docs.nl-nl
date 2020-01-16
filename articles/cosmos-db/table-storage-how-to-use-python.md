@@ -9,12 +9,12 @@ ms.date: 04/05/2018
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 6c01b9581795f4ac74bd74757b9116c0d5df586d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1bb09ec4a7cc2a64edabfa2014ea7c1cf48ad835
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444759"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972891"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-python"></a>Aan de slag met Azure Table Storage en de Azure Cosmos DB Table-API met behulp van Python
 
@@ -39,7 +39,7 @@ U hebt het volgende nodig voor dit voorbeeld:
 
 - [Python](https://www.python.org/downloads/) 2.7, 3.3, 3.4, 3.5 of 3.6
 - [Azure Cosmos DB Table SDK voor Python](https://pypi.python.org/pypi/azure-cosmosdb-table/). Deze SDK is verbonden met zowel Azure Table Storage als de Azure Cosmos DB Table-API.
-- Een [Azure Storage-account](../storage/common/storage-quickstart-create-account.md) of [Azure Cosmos DB-account](https://azure.microsoft.com/try/cosmosdb/)
+- Een [Azure Storage-account](../storage/common/storage-account-create.md) of [Azure Cosmos DB-account](https://azure.microsoft.com/try/cosmosdb/)
 
 ## <a name="create-an-azure-service-account"></a>Een Azure-serviceaccount maken
 [!INCLUDE [cosmos-db-create-azure-service-account](../../includes/cosmos-db-create-azure-service-account.md)]

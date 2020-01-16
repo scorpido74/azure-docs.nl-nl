@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 0d96fd4c435251fb4dd604351e6efeea8bde8353
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 601574cc2a478dc53a261cfcb074e43a556dd4c0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704551"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979517"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Fouten van niet-overeenkomende mappen oplossen voor bestaande Azure AD Domain Services beheerde domeinen
 
@@ -56,7 +56,7 @@ In dit voor beeld van een implementatie scenario wordt het beheerde domein conto
 Met de volgende twee opties wordt de fout met niet-overeenkomende mappen opgelost:
 
 * [Verwijder het door azure AD DS beheerde domein](delete-aadds.md) uit uw bestaande Azure AD-adres lijst. [Maak een vervangend Azure-AD DS beheerd domein](tutorial-create-instance.md) in dezelfde Azure AD-Directory als het virtuele netwerk dat u wilt gebruiken. Als u klaar bent, moet u alle computers die eerder zijn toegevoegd aan het verwijderde domein, toevoegen aan het opnieuw gemaakte beheerde domein.
-* [Verplaats het Azure-abonnement](../billing/billing-subscription-transfer.md) met het virtuele netwerk naar dezelfde Azure AD-adres lijst als het door Azure AD DS beheerde domein.
+* [Verplaats het Azure-abonnement](../cost-management-billing/manage/billing-subscription-transfer.md) met het virtuele netwerk naar dezelfde Azure AD-adres lijst als het door Azure AD DS beheerde domein.
 
 ## <a name="next-steps"></a>Volgende stappen
 

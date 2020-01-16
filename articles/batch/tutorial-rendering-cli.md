@@ -2,23 +2,23 @@
 title: Een scène renderen in de cloud - Azure Batch
 description: 'Zelfstudie: Een Autodesk 3ds Max-scène renderen met Arnold met behulp van de Batch-renderingservice en de Azure-opdrachtregelinterface'
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: tutorial
 ms.date: 12/11/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 28914244f7ea84ec133821d4b125cbd3b0378348
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: e63bd26ec226cfeba1c11570b085fd88570fbb2d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272336"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029190"
 ---
-# <a name="tutorial-render-a-scene-with-azure-batch"></a>Zelfstudie: Een scène weergeven met Azure Batch 
+# <a name="tutorial-render-a-scene-with-azure-batch"></a>Zelfstudie: Een scène renderen met Azure Batch 
 
-Azure Batch biedt mogelijkheden voor rendering in de cloud waarbij u betaalt op basis van gebruik. Azure Batch ondersteunt rendering-apps zoals Autodesk Maya, 3ds Max, Arnold en V-Ray. In deze zelfstudie wordt stapsgewijs uitgelegd hoe u een kleine scène rendert met Batch met behulp van de Azure-opdrachtregelinterface. In deze zelfstudie leert u procedures om het volgende te doen:
+Azure Batch biedt mogelijkheden voor rendering in de cloud waarbij u betaalt op basis van gebruik. Azure Batch ondersteunt rendering-apps zoals Autodesk Maya, 3ds Max, Arnold en V-Ray. In deze zelfstudie wordt stapsgewijs uitgelegd hoe u een kleine scène rendert met Batch met behulp van de Azure-opdrachtregelinterface. Procedures voor:
 
 > [!div class="checklist"]
 > * Een scène uploaden naar Azure Storage
@@ -39,7 +39,7 @@ De 3ds Max-voorbeeldscène voor deze zelfstudie staat op [GitHub](https://github
 
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelfstudie Azure CLI 2.0.20 of later uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-## <a name="create-a-batch-account"></a>Batch-account maken
+## <a name="create-a-batch-account"></a>Een Batch-account maken
 
 Als u dat nog niet hebt gedaan, maakt u een resourcegroep, een Batch-account en een gekoppeld opslagaccount in uw abonnement. 
 
@@ -291,7 +291,7 @@ Deze wijziging duurt enkele minuten. Tijdens dit proces stelt u de volgende take
 
 ## <a name="render-a-multiframe-scene"></a>Een scène met meerdere frames renderen
 
-Net als in het voorbeeld met één frame gebruikt u de opdracht [az batch task create](/cli/azure/batch/task#az-batch-task-create) om renderingtaken te maken in de taak genaamd *myrenderjob*. Hier geeft u de taakinstellingen op in een JSON-bestand genaamd *myrendertask_multi.json*. (U kunt het bestand downloaden van [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json).) Elk van de zes taken geeft een Arnold-opdrachtregel op om één frame van de 3ds Max-scène *MotionBlur DragonFlying.max* te renderen.
+Net als in het voorbeeld met één frame gebruikt u de opdracht [az batch task create](/cli/azure/batch/task#az-batch-task-create) om renderingtaken te maken in de taak genaamd *myrenderjob*. Hier geeft u de taakinstellingen op in een JSON-bestand genaamd *myrendertask_multi.json*. (U kunt het bestand downloaden van [github](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json).) In elk van de zes taken wordt een Arnold-opdracht regel opgegeven voor het weer geven van één frame van de 3ds Max scène *motionblur dragonflying. Max*.
 
 Maak een bestand in uw huidige shell met de naam *myrendertask_multi.json* en kopieer en plak de inhoud uit het gedownloade bestand. Wijzig de elementen `blobSource` en `containerURL` in het JSON-bestand, zodat ze de naam van uw opslagaccount en uw SAS-token bevatten. Let erop dat u de instellingen voor elk van de zes taken wijzigt. Sla het bestand op en voer de volgende opdracht uit om de taken in de wachtrij te plaatsen:
 

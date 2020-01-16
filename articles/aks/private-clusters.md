@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: mlearned
-ms.openlocfilehash: d7b1d82f88afd8ac3d94cbdd2d117834c12d0b96
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: e01579272878a2436abca2ee50f0f6ea6cf78cbf
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867153"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045605"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Een persoonlijk Azure Kubernetes service-cluster maken (preview)
 
@@ -131,7 +131,7 @@ Het API-server eindpunt heeft geen openbaar IP-adres. Daarom moet u een virtuele
 
 ## <a name="limitations"></a>Beperkingen 
 * De beperkingen van de [Azure Private Link-service][private-link-service] zijn van toepassing op persoonlijke clusters, Azure-eind punten en service-eind punten van virtuele netwerken, die momenteel niet worden ondersteund in hetzelfde virtuele netwerk.
-* Geen ondersteuning voor virtuele knoop punten in een persoonlijk cluster om particuliere Cisco Application Center-infrastructuur exemplaren (ACI) in een particulier Azure Virtual Network te draaien.
+* Geen ondersteuning voor virtuele knoop punten in een persoonlijk cluster om een persoonlijke Cisco-instantie (Cisco Application Center Infrastructure) in een particulier Azure Virtual Network te draaien.
 * Geen ondersteuning voor Azure DevOps-integratie uit het vak met persoonlijke clusters.
 * Voor klanten die Azure Container Registry kunnen gebruiken met persoonlijke AKS, moet het virtuele netwerk Container Registry worden gekoppeld aan het virtuele netwerk van het agent cluster.
 * Geen huidige ondersteuning voor Azure dev Spaces.

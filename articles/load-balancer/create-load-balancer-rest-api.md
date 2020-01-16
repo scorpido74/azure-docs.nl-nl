@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: allensu
-ms.openlocfilehash: b8acf1faff17f657999769216f71cfb5fa6e3181
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b52c554617bdcbe88b65639473044eb9c5eb7fa8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077082"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045427"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Een Azure Basic Load Balancer maken met REST-API
 
-Een Azure Load Balancer verdeelt nieuwe binnenkomende stromen die op de load balancer-frontend naar de exemplaren van de back-end-groep op basis van regels en tests binnenkomen. De Load Balancer is beschikbaar in twee SKU's: Basic en Standard. Aan het verschil tussen de twee versies van de SKU [Load Balancer-SKU vergelijkingen](load-balancer-overview.md#skus).
+Een Azure Load Balancer verdeelt nieuwe binnenkomende stromen die op de load balancer-frontend naar de exemplaren van de back-end-groep op basis van regels en tests binnenkomen. De Load Balancer is beschikbaar in twee SKU's: Basic en Standard. Aan het verschil tussen de twee versies van de SKU [Load Balancer-SKU vergelijkingen](concepts-limitations.md#skus).
  
 Deze instructies wordt beschreven hoe het maken van een Azure Basic Load Balancer met [REST API van Azure](/rest/api/azure/) om te helpen bij de inkomende saldoaanvraag op meerdere virtuele machines binnen een virtueel Azure-netwerk. Volledige naslaginformatie en extra voorbeelden zijn beschikbaar in de [naslaginformatie over de Azure Load Balancer REST](/rest/api/load-balancer/).
  
@@ -33,12 +33,12 @@ Gebruik de volgende HTTP PUT-aanvraag te maken van een nieuwe Azure Basic Load B
   ```
 ### <a name="uri-parameters"></a>URI-parameters
 
-|Naam  |In  |Vereist |Type |Beschrijving |
+|Name  |In  |Verplicht |Type |Beschrijving |
 |---------|---------|---------|---------|--------|
-|subscriptionId   |  pad       |  True       |   tekenreeks      |  De referenties van het abonnement die unieke identificatie van de Microsoft Azure-abonnement. De abonnements-ID maakt deel uit van de URI voor elke Serviceaanroep.      |
-|resourceGroupName     |     pad    | True        |  tekenreeks       |   De naam van de resourcegroep.     |
-|loadBalancerName     |  pad       |      True   |    tekenreeks     |    De naam van de load balancer.    |
-|api-version    |   query     |  True       |     tekenreeks    |  Client-API-versie.      |
+|subscriptionId   |  Pad       |  Waar       |   string      |  De referenties van het abonnement die unieke identificatie van de Microsoft Azure-abonnement. De abonnements-ID maakt deel uit van de URI voor elke Serviceaanroep.      |
+|resourceGroupName     |     Pad    | Waar        |  string       |   De naam van de resourcegroep.     |
+|loadBalancerName     |  Pad       |      Waar   |    string     |    De naam van de load balancer.    |
+|api-version    |   query     |  Waar       |     string    |  Client-API-versie.      |
 
 
 
@@ -46,9 +46,9 @@ Gebruik de volgende HTTP PUT-aanvraag te maken van een nieuwe Azure Basic Load B
 
 Is de enige vereiste parameter `location`. Als u geen definieert de *SKU* versie, een Basic Load Balancer wordt standaard gemaakt.  Gebruik [optionele parameters](https://docs.microsoft.com/rest/api/load-balancer/loadbalancers/createorupdate#request-body) om aan te passen van de load balancer.
 
-| Naam | Type | Beschrijving |
+| Name | Type | Beschrijving |
 | :--- | :--- | :---------- |
-| locatie | tekenreeks | Resourcelocatie. Een huidige lijst met locaties met behulp van de [lijst met locaties](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) bewerking. |
+| location | string | Resourcelocatie. Een huidige lijst met locaties met behulp van de [lijst met locaties](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) bewerking. |
 
 
 ## <a name="example-create-and-update-a-basic-load-balancer"></a>Voorbeeld: Maken en bijwerken van een Basic Load Balancer

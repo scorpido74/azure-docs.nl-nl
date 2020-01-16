@@ -6,12 +6,12 @@ ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 10/03/2017
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 4af2afc0efad2784bbde902fd2cdf4a40beb7803
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 5488606939bafc402210ad35f3a17e71ac072010
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769078"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044526"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Een inleiding tot Azure Functions  
 Azure Functions is een oplossing voor het eenvoudig uitvoeren van kleine stukjes code, ofwel ‘functies’, in de cloud. U hoeft alleen de code te schrijven die u op dat moment nodig hebt, zonder dat u een complete toepassing of de bijbehorende infrastructuur nodig hebt. Met functies kunnen ontwikkel aars nog productiever worden en kunt u de gewenste programmeer taal gebruiken, zoals C#Java, java script, Power shell en python. U betaalt alleen voor de tijd dat uw code wordt uitgevoerd en Azure zorgt het eventuele schalen. Met Azure Functions kunt u [serverloze](https://azure.microsoft.com/solutions/serverless/) toepassingen ontwikkelen in Microsoft Azure.
@@ -30,7 +30,7 @@ Hier volgen een aantal belangrijke kenmerken van Functions:
 * **Open-source**: de runtime van Functions is open-source en [beschikbaar op GitHub](https://github.com/azure/azure-webjobs-sdk-script).  
 
 ## <a name="what-can-i-do-with-functions"></a>Wat kan ik doen met Functions?
-Functions is de ideale oplossing voor het verwerken van gegevens, integreren van systemen, werken met IoT (Internet of Things) en het bouwen van eenvoudige API's en microservices. Overweeg om Functions te gebruiken voor taken zoals het verwerken van afbeeldingen of bestellingen, onderhouden van bestanden, of voor andere taken die u wilt uitvoeren volgens een planning. 
+Functions is de ideale oplossing voor het verwerken van gegevens, integreren van systemen, werken met IoT (Internet of Things) en het bouwen van eenvoudige API's en microservices. Overweeg functies voor taken zoals web-Api's, het verwerken van afbeeldingen of bestellingen, het onderhoud van bestanden of voor taken die u volgens een planning wilt uitvoeren. 
 
 Functions biedt sjablonen waarmee u meteen aan de slag kunt met essentiële scenario's, zoals:
 

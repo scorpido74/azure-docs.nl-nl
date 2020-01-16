@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: f7c0eb9bd258d2efbdb4df78f2cf86861f77a975
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: bff6a7ca6eb1a6859ec25d488f564c66946a780b
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076016"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045404"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Een openbare load balancer maken met IPv6 met Azure CLI
 
->[! Opmerking: wijziging in Aanbevolen procedures voor IPv6] in dit artikel wordt een inleidende IPv6-functie beschreven waarmee Basic load balancers zowel IPv4-als IPv6-connectiviteit kan bieden.  Uitgebreide IPv6-connectiviteit is nu beschikbaar met [IPv6 voor Azure VNETs](../virtual-network/ipv6-overview.md) , die IPv6-connectiviteit integreert met uw virtuele netwerken en die belang rijke functies bevat, zoals regels voor IPv6-netwerk beveiligings groepen, door IPv6 door de gebruiker gedefinieerde route ring, IPv6-basis en standaard taak verdeling en meer.  IPv6 voor Azure VNETs is de aanbevolen best practice voor IPv6-toepassingen in Azure. 
->Zie [IPv6 voor Azure VNET cli-implementatie](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md)
+>[!NOTE] 
+>In dit artikel wordt een inleidende IPv6-functie beschreven waarmee Basic load balancers zowel IPv4-als IPv6-connectiviteit kunnen bieden. Uitgebreide IPv6-connectiviteit is nu beschikbaar met [IPv6 voor Azure VNETs](../virtual-network/ipv6-overview.md) , die IPv6-connectiviteit integreert met uw virtuele netwerken en die belang rijke functies bevat zoals regels voor IPv6-netwerk beveiligings groepen, door IPv6 door de gebruiker gedefinieerde route ring, IPv6-basis en standaard taak verdeling en meer.  IPv6 voor Azure VNETs is de aanbevolen standaard voor IPv6-toepassingen in Azure. Zie [IPv6 voor Azure VNET Power shell-implementatie](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
 
 Azure Load Balancer is een Layer-4 (TCP, UDP) load balancer. Load balancers bieden hoge beschikbaarheid door de distributie van inkomend verkeer over gezonde service-exemplaren in cloudservices of virtuele machines in een load balancer-set. Load balancers kunnen ook deze services op meerdere poorten of meerdere IP-adressen of beide aanwezig.
 

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: eeb85e97d653b0faac171e2986cb933fc41e6606
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 0cef6332a169b71d7812efdc41247443fbc194f2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940665"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982364"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Herstel na nood geval instellen voor een implementatie van SAP NetWeaver met meerdere lagen
 
@@ -68,13 +68,13 @@ Voor het beheren van aanmeldingsgroepen voor ABAP-toepassingsservers, wordt de t
 #### <a name="vms-running-sap-central-services-cluster"></a>Vm's met een SAP Central Services-cluster
 Deze referentiearchitectuur centrale Services worden uitgevoerd op virtuele machines in de toepassingslaag. De centrale Services is een potentieel single point of failure (SPOF) bij de implementatie op een enkele virtuele machine, normale implementatie als hoge beschikbaarheid geen vereiste is.<br>
 
-Als u een oplossing met hoge Beschik baarheid wilt implementeren, kunt u een gedeeld schijf cluster of een bestands share-cluster gebruiken. Als u Vm's wilt configureren voor een gedeeld schijf cluster, gebruikt u Windows Server-failovercluster. Cloud-witness wordt aanbevolen als een quorumwitness. 
+Als u een oplossing met hoge Beschik baarheid wilt implementeren, kunt u een gedeeld schijf cluster of een bestands share-cluster gebruiken. Als u Vm's wilt configureren voor een gedeeld schijf cluster, gebruikt u Windows Server-failovercluster. Cloud-witness wordt aanbevolen als een quorumwitness.
  > [!NOTE]
  > Site Recovery repliceert de Cloud-Witness daarom het is raadzaam om de cloudwitness in het gebied voor nood herstel te implementeren.
 
-Ter ondersteuning van de failover-clusteromgeving [SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) het cluster shared volume-functie wordt uitgevoerd door onafhankelijke schijven die eigendom zijn van de clusterknooppunten te repliceren. Azure biedt geen systeemeigen ondersteuning voor gedeelde schijven en daarom vereist SIOS-oplossingen. 
+Ter ondersteuning van de failover-clusteromgeving [SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) het cluster shared volume-functie wordt uitgevoerd door onafhankelijke schijven die eigendom zijn van de clusterknooppunten te repliceren. Azure biedt geen systeemeigen ondersteuning voor gedeelde schijven en daarom vereist SIOS-oplossingen.
 
-Een andere manier om clustering af te handelen is het implementeren van een bestands share cluster. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) het patroon van de implementatie Central Services voor toegang tot de algemene mappen /sapmnt via een UNC-pad die onlangs zijn gewijzigd. Het is echter nog steeds raadzaam om ervoor te zorgen dat de/sapmnt UNC-share Maxi maal beschikbaar is. Dit kan worden gedaan in het centrale Services-exemplaar met behulp van Windows Server-failovercluster met scale out file server (SOFS) en de functie Opslagruimten Direct (S2D) in Windows Server 2016. 
+Een andere manier om clustering af te handelen is het implementeren van een bestands share cluster. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) het patroon van de implementatie Central Services voor toegang tot de algemene mappen /sapmnt via een UNC-pad die onlangs zijn gewijzigd. Het is echter nog steeds raadzaam om ervoor te zorgen dat de/sapmnt UNC-share Maxi maal beschikbaar is. Dit kan worden gedaan in het centrale Services-exemplaar met behulp van Windows Server-failovercluster met scale out file server (SOFS) en de functie Opslagruimten Direct (S2D) in Windows Server 2016.
  > [!NOTE]
  > Momenteel Site Recovery ondersteunen alleen crash consistente punt replicatie van virtuele machines met behulp van opslag ruimten direct en passief knoop punt SIOS data keeper
 
@@ -84,14 +84,14 @@ Een andere manier om clustering af te handelen is het implementeren van een best
 U kunt Site Recovery gebruiken om de failover van een volledige SAP-implementatie in azure-regio's te organiseren.
 Hieronder vindt u de stappen voor het instellen van herstel na nood gevallen 
 
-1. Virtuele machines repliceren 
+1. Virtuele machines repliceren
 2. Een herstel netwerk ontwerpen
 3.  Een domein controller repliceren
-4.  Data base-laag repliceren 
-5.  Een testfailover uitvoeren 
-6.  Een failover uitvoeren 
+4.  Data base-laag repliceren
+5.  Een testfailover uitvoeren
+6.  Een failover uitvoeren
 
-Hieronder ziet u de aanbeveling voor herstel na nood gevallen van elke laag die in dit voor beeld wordt gebruikt. 
+Hieronder ziet u de aanbeveling voor herstel na nood gevallen van elke laag die in dit voor beeld wordt gebruikt.
 
  **SAP-lagen** | **Aanbeveling**
  --- | ---

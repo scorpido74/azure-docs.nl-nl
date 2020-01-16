@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 46e6f19a071986cf12590e9bd5c420e070572a14
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 584a37ffb9727a48e2adb5e339697314cffe93f7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707107"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980854"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Sleutels voor opslag accounts beheren met Key Vault en Azure PowerShell
 
@@ -45,7 +45,7 @@ Key Vault is een micro soft-toepassing die vooraf is geregistreerd in alle Azure
 | Tenants | Cloud | Toepassings-id |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
-| Azure AD | Open bare Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Azure AD | Openbare Azure-peering | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | Overige  | Alle | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Vereisten
@@ -54,7 +54,7 @@ Als u deze hand leiding wilt volt ooien, moet u eerst het volgende doen:
 
 - [Installeer de Azure PowerShell-module](/powershell/azure/install-az-ps?view=azps-2.6.0).
 - [Een sleutel kluis maken](quick-create-powershell.md)
-- [Maak een Azure Storage-account](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell). De naam van het opslag account mag alleen kleine letters en cijfers bevatten. De naam moet tussen de 3 en 24 tekens lang zijn.
+- [Maak een Azure Storage-account](../storage/common/storage-account-create.md?tabs=azure-powershell). De naam van het opslag account mag alleen kleine letters en cijfers bevatten. De naam moet tussen de 3 en 24 tekens lang zijn.
       
 
 ## <a name="manage-storage-account-keys"></a>Sleutels voor opslag accounts beheren
@@ -117,7 +117,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-Als Key Vault al is toegevoegd aan de rol van uw opslag account, ontvangt u een *' de roltoewijzing bestaat al. '* optreedt. U kunt ook de roltoewijzing controleren met behulp van de pagina toegangs beheer (IAM) van het opslag account in de Azure Portal.  
+Als Key Vault al is toegevoegd aan de rol van uw opslag account, ontvangt u een *' de roltoewijzing bestaat al. '* fout. U kunt ook de roltoewijzing controleren met behulp van de pagina toegangs beheer (IAM) van het opslag account in de Azure Portal.  
 
 ### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Uw gebruikers account machtigingen geven voor beheerde opslag accounts
 
@@ -185,7 +185,7 @@ Tags                :
 
 ## <a name="shared-access-signature-tokens"></a>Shared Access Signature-tokens
 
-U kunt ook Key Vault vragen om de tokens voor Shared Access-hand tekeningen te genereren. Een Shared Access Signature biedt gedelegeerde toegang tot resources in uw opslag account. U kunt clients toegang verlenen tot resources in uw opslag account zonder uw account sleutels te delen. Een Shared Access Signature biedt u een veilige manier om uw opslag resources te delen zonder in te boeten voor uw account sleutels.
+U kunt ook Key Vault vragen om de tokens voor Shared Access-hand tekeningen te genereren. Een shared access signature biedt gedelegeerde toegang tot resources in uw opslagaccount. U kunt clients toegang verlenen tot resources in uw opslag account zonder uw account sleutels te delen. Een Shared Access Signature biedt u een veilige manier om uw opslag resources te delen zonder in te boeten voor uw account sleutels.
 
 De opdrachten in deze sectie voeren de volgende acties uit:
 

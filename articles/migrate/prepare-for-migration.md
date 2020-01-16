@@ -1,19 +1,15 @@
 ---
 title: Machines voorbereiden voor migratie met Azure Migrate
 description: Meer informatie over het voorbereiden van on-premises machines voor migratie met Azure Migrate.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 12/10/2019
-ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6f5535a57fae847c8a376b8b39e43955675da739
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c3c10321e8d49ac6ecfe80024d23f24711298651
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974781"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028748"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>On-premises machines voorbereiden voor migratie naar Azure
 
@@ -44,9 +40,9 @@ In dit artikel leert u het volgende:
 
 ## <a name="check-whats-supported"></a>Controleren wat er wordt ondersteund
 
-- Voor virtuele VMware-machines ondersteunt Azure Migrate server migratie zonder [agents of migratie op basis van een agent](server-migrate-overview.md). Controleer de vereisten voor VMware-VM'S en ondersteuning voor migraties zonder [agent](migrate-support-matrix-vmware.md#migration---limitations) en [op basis van agents](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) .
-- Controleer de [migratie vereisten en ondersteuning](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) voor virtuele Hyper-V-machines.
-- Controleer de [migratie vereisten en ondersteuning](migrate-support-matrix-physical.md) voor on-premises fysieke machines of andere gevirtualiseerde servers. 
+- Voor virtuele VMware-machines ondersteunt Azure Migrate server migratie zonder [agents of migratie op basis van een agent](server-migrate-overview.md). Controleer de [vereisten en ondersteuning voor](migrate-support-matrix-vmware-migration.md)VMware VM-migratie.
+- Controleer de [migratie vereisten en ondersteuning](migrate-support-matrix-hyper-v-migration.md) voor Hyper-V.
+- Controleer de [migratie vereisten en ondersteuning](migrate-support-matrix-physical-migration.md) voor on-premises fysieke machines of andere gevirtualiseerde servers. 
 
 
 
@@ -55,10 +51,11 @@ In dit artikel leert u het volgende:
 
 Computers hebben mogelijk Internet toegang nodig tijdens de migratie.
 
-- Bekijk Url's die VMware-Vm's nodig hebben tijdens zonder [agents](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements) of [op agents gebaseerde](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements) migraties.
-- Bekijk Url's die Hyper-V-hosts moeten openen tijdens de migratie. Virtuele Hyper-V-machines hebben geen toegang tot internet nodig.
-- [Bekijk url's](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements) die fysieke machines of andere gevirtualiseerde servers nodig hebben tijdens de migratie.
-- Bij migratie op basis van een agent van virtuele VMware-machines/fysieke servers moet de Mobility-service die op de computers wordt uitgevoerd, toegang hebben tot Azure Migrate-onderdelen. Voor replicatie beheer communiceert de service die op de computer wordt uitgevoerd, met het on-premises Azure Migrate replicatie apparaat op poort HTTPS 443 binnenkomend. De computers verzenden replicatie gegevens naar de Azure Migrate-proces server op poort HTTPS 9443 binnenkomend. Deze poort kan worden gewijzigd.
+- [Bekijk de url's](migrate-appliance.md#url-access) die het Azure migrate-apparaat moet openen tijdens de migratie zonder agent. [Controleer de toegangs](migrate-support-matrix-vmware-migration.md#agentless-ports) vereisten voor de poort.
+- Bekijk [url's](migrate-replication-appliance.md#url-access) en [ports] (migrate-Replication-Appliance. MD # Port-Access) die het replicatie apparaat gebruikt tijdens de migratie van een VMware VM-agent. 
+- [Controleren](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) Url's en poorten die door Hyper-V-hosts moeten worden geopend tijdens de migratie. 
+- Bekijk [url's](migrate-replication-appliance.md#url-access) en [ports] (migrate-Replication-Appliance. MD # Port-Access) die het replicatie apparaat gebruikt tijdens de migratie van de fysieke server.
+
 
 
 ## <a name="verify-required-changes-before-migration"></a>Controleer de vereiste wijzigingen vóór de migratie
@@ -105,7 +102,7 @@ Als uw on-premises installatie bijvoorbeeld gebruikmaakt van een gegevens schijf
 
 ## <a name="check-azure-vm-requirements"></a>Azure VM-vereisten controleren
 
-On-premises machines die u naar Azure repliceert, moeten voldoen aan de vereisten van de Azure-VM voor het besturings systeem en de architectuur, schijven, netwerk instellingen en VM-naamgeving. Controleer de vereisten voor [VMware-vm's/fysieke servers](migrate-support-matrix-vmware.md#azure-vm-requirements)en [virtuele Hyper-V-machines](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) vóór de migratie.
+On-premises machines die u naar Azure repliceert, moeten voldoen aan de vereisten van de Azure-VM voor het besturings systeem en de architectuur, schijven, netwerk instellingen en VM-naamgeving. Controleer de vereisten voor [VMware-vm's/fysieke servers](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)en [virtuele Hyper-V-machines](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements) vóór de migratie.
 
 
 ## <a name="prepare-to-connect-after-migration"></a>Voorbereiden om verbinding te maken na de migratie

@@ -5,22 +5,22 @@ services: active-directory
 documentationcenter: ''
 author: MarkusVi
 manager: daveba
-editor: daveba
+editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee331435cbc7d0cb580b3ad5865030aba6d372ea
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ec9956f0c5d834633646938da19f03e5467a9f6d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888461"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977839"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Zelf studie: een door de gebruiker toegewezen beheerde identiteit op een Windows-VM gebruiken om toegang te krijgen tot Azure Resource Manager
 
@@ -54,7 +54,16 @@ Procedures voor:
 - Voer `Install-Module -Name PowerShellGet -AllowPrerelease` uit om de voorlopige versie van de `PowerShellGet`-module op te halen (mogelijk moet u met `Exit` de huidige PowerShell-sessie afsluiten nadat u met deze opdracht de `Az.ManagedServiceIdentity`-module hebt geïnstalleerd).
 - Voer `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` uit om de voorlopige versie van de `Az.ManagedServiceIdentity`-module te installeren en de aan de gebruiker toegewezen identiteitsbewerkingen in dit artikel uit te voeren.
 
-## <a name="create-identity"></a>Identiteit maken
+
+## <a name="enable"></a>Inschakelen
+
+Voor een scenario dat is gebaseerd op een door de gebruiker toegewezen identiteit, moet u de volgende stappen uitvoeren:
+
+- Een identiteit maken
+ 
+- De zojuist gemaakte identiteit toewijzen
+
+### <a name="create-identity"></a>Identiteit maken
 
 In deze sectie wordt uitgelegd hoe u een door de gebruiker toegewezen identiteit maakt. Een door de gebruiker toegewezen identiteit wordt als een zelfstandige Azure-resource gemaakt. Met de [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity) wordt een identiteit gemaakt in uw Azure AD-tenant die kan worden toegewezen aan een of meer Azure-service-exemplaren.
 
@@ -80,7 +89,7 @@ Type: Microsoft.ManagedIdentity/userAssignedIdentities
 }
 ```
 
-## <a name="assign-identity"></a>Identiteit toewijzen
+### <a name="assign-identity"></a>Identiteit toewijzen
 
 In deze sectie wordt beschreven hoe u de door de gebruiker toegewezen identiteit aan een Windows-VM toewijst. Een door de gebruiker toegewezen identiteit kan worden gebruikt door clients op meerdere Azure-resources. Gebruik de volgende opdrachten om de door de gebruiker toegewezen identiteit toe te wijzen aan één VM. Gebruik de eigenschap `Id` die in de vorige stap is geretourneerd voor de parameter `-IdentityID`.
 
@@ -114,7 +123,9 @@ ObjectType: ServicePrincipal
 CanDelegate: False
 ```
 
-## <a name="get-an-access-token"></a>Een toegangstoken opvragen 
+## <a name="access-data"></a>Toegang tot gegevens
+
+### <a name="get-an-access-token"></a>Een toegangstoken opvragen 
 
 Voor de rest van de zelfstudie werkt u op de virtuele machine die we eerder hebben gemaakt.
 
@@ -134,7 +145,7 @@ Voor de rest van de zelfstudie werkt u op de virtuele machine die we eerder hebb
     $ArmToken = $content.access_token
     ```
 
-## <a name="read-properties"></a>Eigenschappen lezen
+### <a name="read-properties"></a>Eigenschappen lezen
 
 Gebruik het in de vorige stap opgehaalde toegangstoken om toegang te krijgen tot Azure Resource Manager en lees de eigenschappen van de resourcegroep waarvoor u uw door de gebruiker toegewezen identiteit toegang hebt verleend. Vervang `<SUBSCRIPTION ID>` door de abonnements-id van uw omgeving.
 

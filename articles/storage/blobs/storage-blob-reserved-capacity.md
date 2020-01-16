@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cb21291d4beb9fbba27a56089f13bd0363604eab
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f393ab23df49751efbbcb3d70314b2ac404a8b77
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686715"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981814"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Optimaliseer de kosten voor Blob Storage met gereserveerde capaciteit
 
@@ -21,7 +21,7 @@ U kunt geld besparen op opslag kosten voor BLOB-gegevens met Azure Storage geres
 
 Azure Storage gereserveerde capaciteit kan uw capaciteits kosten voor blok-blobs en Azure Data Lake Storage Gen2 gegevens aanzienlijk verminderen. De gerealiseerde kosten besparingen zijn afhankelijk van de duur van uw reserve ring, de totale capaciteit die u wilt reserveren en de toegangs laag en het type redundantie die u hebt gekozen voor uw opslag account. Gereserveerde capaciteit biedt een facturerings korting en heeft geen invloed op de status van uw Azure Storage-resources.
 
-Zie prijzen voor [blok-blobs](https://azure.microsoft.com/pricing/details/storage/blobs/) en [Azure data Lake Storage prijzen van Diversen 2](https://azure.microsoft.com/pricing/details/storage/data-lake/)voor meer informatie over de prijzen van Azure Storage-reserve ring.
+Zie [Prijzen voor blok-blobs](https://azure.microsoft.com/pricing/details/storage/blobs/) en [Prijzen voor Azure Data Lake Storage Gen 2](https://azure.microsoft.com/pricing/details/storage/data-lake/) voor meer informatie over Azure Storage-reserveringsprijzen.
 
 ## <a name="reservation-terms-for-azure-storage"></a>Reserverings voorwaarden voor Azure Storage
 
@@ -66,7 +66,7 @@ Er zijn vandaag nog reserve ringen beschikbaar voor 100 TB of 1 PB-blokken, met 
 
 U kunt Azure Storage gereserveerde capaciteit aanschaffen via de [Azure Portal](https://portal.azure.com). Betaal voor de reserve ring vóór of met maandelijkse betalingen. Zie voor meer informatie over aankopen met maandelijkse betalingen [Azure-reserve ringen aanschaffen met vooraf of maandelijks betalen](/azure/billing/billing-monthly-payments-reservations).
 
-Zie [inzicht in de korting op Azure Storage gereserveerde capaciteit](../../billing/billing-understand-storage-charges.md)voor hulp bij het identificeren van de reserverings voorwaarden die geschikt zijn voor uw scenario.
+Zie [inzicht in de korting op Azure Storage gereserveerde capaciteit](../../cost-management-billing/reservations/understand-storage-charges.md)voor hulp bij het identificeren van de reserverings voorwaarden die geschikt zijn voor uw scenario.
 
 Volg deze stappen om gereserveerde capaciteit aan te schaffen:
 
@@ -85,7 +85,7 @@ Volg deze stappen om gereserveerde capaciteit aan te schaffen:
    | **Redundantie** | De redundantie optie voor de reserve ring. Opties zijn *LRS*, *ZRS*, *GRS*en *Ra-GZRS*. Zie [Azure Storage redundantie](../common/storage-redundancy.md)voor meer informatie over redundantie opties. |
    | **Facturerings frequentie** | Hiermee wordt aangegeven hoe vaak het account wordt gefactureerd voor de reserve ring. De opties zijn *maandelijks* of *vooraf*. |
    | **Grootte** | De regio waar de reserve ring van kracht is. |
-   |**Mandaat**  | Eén jaar of drie jaar.   |
+   |**Term**  | Eén jaar of drie jaar.   |
 
 1. Nadat u de para meters voor de reserve ring hebt geselecteerd, worden de kosten weer gegeven in de Azure Portal. In de portal wordt ook het kortings percentage weer gegeven over betalen per gebruik-facturering.
 
@@ -101,7 +101,7 @@ U kunt een reserve ring uitwisselen of terugbetalen, met bepaalde beperkingen. D
 
 Als u een reserve ring wilt omruilen of terugbetalen, gaat u naar de reserverings details in het Azure Portal. Selecteer **Exchange** of **terugbetaling**en volg de instructies om een ondersteunings aanvraag in te dienen. Wanneer de aanvraag is verwerkt, ontvangt micro soft u een e-mail om de voltooiing van de aanvraag te bevestigen.
 
-Zie voor meer informatie over Azure Reservations-beleid [self-service uitwisselingen en terugstortingen voor Azure Reservations](../../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Zie voor meer informatie over Azure Reservations-beleid [self-service uitwisselingen en terugstortingen voor Azure Reservations](../../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ### <a name="exchange-a-reservation"></a>Een reserve ring uitwisselen
 
@@ -121,11 +121,11 @@ Wanneer een reserve ring verloopt, wordt de Azure Storage capaciteit die u onder
 
 U ontvangt een e-mail melding van 30 dagen vóór het verstrijken van de reserve ring en opnieuw op de verval datum. Om te kunnen profiteren van de kosten besparingen die een reserve ring biedt, verlengt u deze niet later dan de verval datum.
 
-## <a name="need-help-contact-us"></a>Hulp nodig? Contact opnemen
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen
 
 Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Wat zijn Azure-reserveringen?](../../billing/billing-save-compute-costs-reservations.md)
-- [Begrijpen hoe de reserverings korting wordt toegepast op Azure Storage](../../billing/billing-understand-storage-charges.md)
+- [Wat zijn Azure-reserveringen?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Begrijpen hoe de reserverings korting wordt toegepast op Azure Storage](../../cost-management-billing/reservations/understand-storage-charges.md)

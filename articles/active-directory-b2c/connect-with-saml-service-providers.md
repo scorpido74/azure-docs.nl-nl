@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9bb324c3863a13e1f47e1b31f7656ab8c77a6f1
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 16651441919ecd5167e518f68addd8964e767001
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763144"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043524"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Een SAML-toepassing registreren in Azure AD B2C
 
@@ -177,7 +178,7 @@ Nu uw Tenant SAML-bevestigingen kan uitgeven, moet u het SAML-Relying Party bele
     PublicPolicyUri="http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml">
     ```
 
-1. Voeg het volgende XML-fragment net vóór het `<RelyingParty>`-element toe. Met deze XML wordt de indelings stap nummer 7 van de _SignUpOrSignIn_ -gebruikers traject overschreven. Als u uw gebruikers traject hebt aangepast door het toevoegen of verwijderen van Orchestration-stappen, moet u ervoor zorgen dat het aantal (in het element `order`) wordt uitgelijnd met het nummer dat is opgegeven in de gebruikers reis voor de stap van de token Uitgever.
+1. Voeg het volgende XML-fragment net vóór het `<RelyingParty>`-element toe. Met deze XML wordt de indelings stap nummer 7 van de _SignUpOrSignIn_ -gebruikers traject overschreven. Als u bent begonnen vanuit een andere map in het eerste pakket of als u uw gebruikers traject hebt aangepast door het toevoegen of verwijderen van Orchestration-stappen, moet u ervoor zorgen dat het aantal (in het element `order`) is afgestemd op het nummer dat is opgegeven in de gebruikers traject voor de `SocialAndLocalAccountsWithMfa``SocialAccounts` `LocalAccounts`stap van de token Uitgever
 
     ```XML
     <UserJourneys>

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: b6dffb46d8c0fd7201079de3e8509ece516d2f8f
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 58997b20c01f33037a5e5e149caa59e1630373ff
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821409"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978476"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure Import/Export-systeemvereisten
 
@@ -43,13 +43,13 @@ Azure Import/Export-service ondersteunt de volgende typen opslagaccounts:
 
 - Standard Algemeen v2-opslag accounts (aanbevolen voor de meeste scenario's)
 - Blob Storage-accounts
-- Algemeen v1-opslag accounts (klassiek of Azure Resource Manager implementaties), 
+- Algemeen v1-opslag accounts (klassiek of Azure Resource Manager implementaties),
 
 Zie voor meer informatie over de storage-accounts, [overzicht van Azure storage-accounts](storage-account-overview.md).
 
-Elke taak kan worden gebruikt voor het overbrengen van gegevens naar of van slechts één opslagaccount. Een taak één import/export kan niet met andere woorden, omvatten voor meerdere opslagaccounts. Zie voor meer informatie over het maken van een nieuw opslagaccount [over het maken van een Storage-Account](storage-quickstart-create-account.md).
+Elke taak kan worden gebruikt voor het overbrengen van gegevens naar of van slechts één opslagaccount. Een taak één import/export kan niet met andere woorden, omvatten voor meerdere opslagaccounts. Zie voor meer informatie over het maken van een nieuw opslagaccount [over het maken van een Storage-Account](storage-account-create.md).
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > De Azure Import Export-service biedt geen ondersteuning voor storage-accounts waarbij de [Virtual Network-Service-eindpunten](../../virtual-network/virtual-network-service-endpoints-overview.md) functie is ingeschakeld. 
 
 ## <a name="supported-storage-types"></a>Ondersteunde opslagtypen
@@ -63,7 +63,7 @@ De volgende lijst met opslagtypen wordt ondersteund met Azure Import/Export-serv
 |Exporteren     |   Azure Blob Storage       | Blok-blobs, pagina-blobs en toevoeg-blobs ondersteund         | Azure Files niet ondersteund
 
 
-## <a name="supported-hardware"></a>Ondersteunde hardware 
+## <a name="supported-hardware"></a>Ondersteunde hardware
 
 Voor de Azure Import/Export-service moet u ondersteunde schijven om gegevens te kopiëren.
 
@@ -74,7 +74,7 @@ De volgende lijst van schijven wordt ondersteund voor gebruik met de Import/Expo
 
 |Schijftype  |Grootte  |Ondersteund |
 |---------|---------|---------|
-|SSD    |   2,5-inch      |SATA III          | 
+|SSD    |   2,5-inch      |SATA III          |
 |HDD     |  2,5-inch<br>3,5-inch       |SATA II, SATA III         |
 
 De volgende schijf typen worden niet ondersteund:
@@ -88,7 +88,7 @@ Een enkele import-/ exporttaak kan hebben:
 
 Groot aantal stations kan worden verdeeld over meerdere taken en er is geen beperkingen voor het aantal taken dat kan worden gemaakt. Voor de taken van gegevensimport, wordt alleen de eerste gegevensvolume op het station verwerkt. Het gegevensvolume moet zijn geformatteerd met NTFS.
 
-Bij het voorbereiden van harde schijven en kopiëren van de gegevens met behulp van het hulpprogramma WAImportExport, kunt u externe USB-adapters. Meest gebruiksklare USB 3.0 of hoger adapters kunnen worden gebruikt. 
+Bij het voorbereiden van harde schijven en kopiëren van de gegevens met behulp van het hulpprogramma WAImportExport, kunt u externe USB-adapters. Meest gebruiksklare USB 3.0 of hoger adapters kunnen worden gebruikt.
 
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -96,4 +96,3 @@ Bij het voorbereiden van harde schijven en kopiëren van de gegevens met behulp 
 * [Instellen van het hulpprogramma WAImportExport](storage-import-export-tool-how-to.md)
 * [Gegevensoverdracht met het AzCopy-opdrachtregelprogramma](storage-use-azcopy.md)
 * [Voorbeeld van Azure Import Export REST-API](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)
-
