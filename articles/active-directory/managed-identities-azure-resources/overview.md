@@ -15,18 +15,18 @@ ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee30962db230417bf3e20a354614a5ebb8f35a0
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: a6c4363d6124a7cec075003f7b54a2825c3f489a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561899"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977972"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Wat zijn beheerde identiteiten voor Azure-resources?
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Een veelvoorkomende uitdaging bij het bouwen van cloud-apps is het beheren van de referenties in uw code voor verificatie bij cloudservices. Het is belangrijk dat de referenties veilig worden bewaard. In het ideale geval worden de referenties nooit weergegeven op werkstations van ontwikkelaars en niet ingecheckt in broncodebeheer. Azure Key Vault biedt een manier voor het veilig opslaan van referenties, geheimen en andere sleutels, maar uw code moet worden geverifieerd bij Key Vault om ze op te halen. 
+Een veelvoorkomende uitdaging bij het bouwen van cloud-apps is het beheren van de referenties in uw code voor verificatie bij cloudservices. Het is belangrijk dat de referenties veilig worden bewaard. In het ideale geval worden de referenties nooit weergegeven op werkstations van ontwikkelaars en niet ingecheckt in broncodebeheer. Azure Key Vault biedt een manier voor het veilig opslaan van referenties, geheimen en andere sleutels, maar uw code moet worden geverifieerd bij Key Vault om ze op te halen.
 
 Dit probleem wordt opgelost met de functie Beheerde identiteiten voor Azure-resources in Azure Active Directory (Azure AD). De functie biedt Azure-services met een automatisch beheerde identiteit in Azure AD. U kunt de identiteit gebruiken voor verificatie bij alle services die ondersteuning bieden voor Azure AD-verificatie, inclusief Key Vault, zonder referenties in de code.
 
@@ -50,9 +50,9 @@ Er zijn twee typen beheerde identiteit:
 - Een **door het systeem toegewezen beheerde identiteit** wordt rechtstreeks op een Azure-service-exemplaar ingeschakeld. Wanneer de identiteit is ingeschakeld, wordt een identiteit voor het service-exemplaar in de Azure AD-tenant gemaakt, dat wordt vertrouwd door het abonnement van het service-exemplaar. Nadat de identiteit is gemaakt, worden de referenties op het exemplaar ingericht. De levenscyclus van een door het systeem toegewezen identiteit is rechtstreeks gekoppeld aan het Azure-service-exemplaar waarop de identiteit is ingeschakeld. Als het exemplaar wordt verwijderd, ruimt Azure automatisch de referenties en de identiteit in Azure AD op.
 - Een **door de gebruiker toegewezen beheerde identiteit** wordt gemaakt als een zelfstandige Azure-resource. Via een productieproces maakt Azure een identiteit in de Azure AD-tenant, die wordt vertrouwd door het gebruikte abonnement. Nadat de identiteit is gemaakt, kan deze worden toegewezen aan een of meer Azure-service-exemplaren. De levenscyclus van een door de gebruiker toegewezen identiteit wordt afzonderlijk beheerd van de levenscyclus van de Azure Service-exemplaren waaraan de identiteit is toegewezen.
 
-Interne beheerde identiteiten zijn service-principals van een speciaal type, die zijn vergrendeld om alleen te worden gebruikt met Azure-resources. Wanneer de beheerde identiteit wordt verwijderd, wordt de bijbehorende service-principal automatisch verwijderd. 
+Interne beheerde identiteiten zijn service-principals van een speciaal type, die zijn vergrendeld om alleen te worden gebruikt met Azure-resources. Wanneer de beheerde identiteit wordt verwijderd, wordt de bijbehorende service-principal automatisch verwijderd.
 
-De code kan gebruikmaken van een beheerde identiteit om toegangstokens aan te vragen voor services die ondersteuning bieden voor Azure AD-verificatie. Azure zorgt voor het implementeren van de referenties die worden gebruikt door het service-exemplaar. 
+De code kan gebruikmaken van een beheerde identiteit om toegangstokens aan te vragen voor services die ondersteuning bieden voor Azure AD-verificatie. Azure zorgt voor het implementeren van de referenties die worden gebruikt door het service-exemplaar.
 
 In het volgende diagram ziet u hoe beheerde service-identiteiten samenwerken met virtuele machines (VM's) van Azure:
 
@@ -60,10 +60,10 @@ In het volgende diagram ziet u hoe beheerde service-identiteiten samenwerken met
 
 |  Eigenschap    | Door het systeem toegewezen beheerde identiteit | Door een gebruiker toegewezen beheerde identiteit |
 |------|----------------------------------|--------------------------------|
-| Zelf |  Gemaakt als onderdeel van een Azure-resource (bijvoorbeeld een virtuele machine van Azure of Azure App Service) | Gemaakt als een zelfstandige Azure-resource |
+| Maken |  Gemaakt als onderdeel van een Azure-resource (bijvoorbeeld een virtuele machine van Azure of Azure App Service) | Gemaakt als een zelfstandige Azure-resource |
 | Levenscyclus | Gedeelde levens cyclus met de Azure-resource waarmee de beheerde identiteit wordt gemaakt. <br/> Wanneer de bovenliggende resource wordt verwijderd, wordt ook de beheerde identiteit verwijderd. | Onafhankelijke levens cyclus. <br/> Moet expliciet worden verwijderd. |
 | Delen tussen Azure-resources | Kan niet worden gedeeld. <br/> Deze kan alleen worden gekoppeld aan één Azure-resource. | Kan worden gedeeld <br/> Dezelfde door de gebruiker toegewezen beheerde identiteit kan worden gekoppeld aan meer dan één Azure-resource. |
-| Algemene use cases | Werk belastingen die zijn opgenomen in één Azure-resource <br/> Werk belastingen waarvoor u onafhankelijke identiteiten nodig hebt. <br/> Bijvoorbeeld een toepassing die op één virtuele machine wordt uitgevoerd | Workloads die worden uitgevoerd op meerdere resources en die één identiteit kunnen delen. <br/> Workloads waarvoor vooraf autorisatie is vereist voor een beveiligde bron als onderdeel van een inrichtings stroom. <br/> Werk belastingen waarbij resources regel matig worden gerecycled, maar de machtigingen moeten consistent blijven. <br/> Bijvoorbeeld een werk belasting waarbij meerdere virtuele machines toegang moeten hebben tot dezelfde resource | 
+| Algemene use cases | Werk belastingen die zijn opgenomen in één Azure-resource <br/> Werk belastingen waarvoor u onafhankelijke identiteiten nodig hebt. <br/> Bijvoorbeeld een toepassing die op één virtuele machine wordt uitgevoerd | Workloads die worden uitgevoerd op meerdere resources en die één identiteit kunnen delen. <br/> Workloads waarvoor vooraf autorisatie is vereist voor een beveiligde bron als onderdeel van een inrichtings stroom. <br/> Werk belastingen waarbij resources regel matig worden gerecycled, maar de machtigingen moeten consistent blijven. <br/> Bijvoorbeeld een werk belasting waarbij meerdere virtuele machines toegang moeten hebben tot dezelfde resource |
 
 ### <a name="how-a-system-assigned-managed-identity-works-with-an-azure-vm"></a>Hoe een door het systeem toegewezen beheerde identiteit samenwerkt met een Azure-VM
 
@@ -116,7 +116,7 @@ Informatie over het gebruik van een beheerde identiteit met een Windows-VM:
 * [Toegang tot Azure Data Lake Store](tutorial-windows-vm-access-datalake.md)
 * [Toegang tot Azure Resource Manager](tutorial-windows-vm-access-arm.md)
 * [Toegang tot Azure SQL](tutorial-windows-vm-access-sql.md)
-* [Toegang tot Azure Storage met behulp van een toegangssleutel](tutorial-windows-vm-access-storage.md)
+* [Toegang tot Azure Storage met behulp van een toegangssleutel](tutorial-vm-windows-access-storage.md)
 * [Toegang tot Azure Storage met behulp van handtekeningen voor gedeelde toegang](tutorial-windows-vm-access-storage-sas.md)
 * [Toegang tot een niet-Azure-resource met Azure Key Vault](tutorial-windows-vm-access-nonaad.md)
 

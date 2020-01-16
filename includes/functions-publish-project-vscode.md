@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 04/16/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: abb8b6bed6766ff0ea85eab1434014a057af4ca3
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 66c100ecd40e9f0899f7686397339ab849315c3e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68843184"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020818"
 ---
 ## <a name="publish-the-project-to-azure"></a>Het project naar Azure publiceren
 
@@ -37,13 +37,13 @@ In deze sectie wordt ervan uitgegaan dat u een nieuwe functie-app in azure maakt
 
     Wanneer u op ENTER drukt, worden de volgende Azure-resources in uw abonnement gemaakt:
 
-    * **[Resource groep](../articles/azure-resource-manager/resource-group-overview.md)** : Bevat alle gemaakte Azure-resources. De naam is gebaseerd op de naam van uw functie-app.
-    * **[Opslag account](../articles/storage/common/storage-quickstart-create-account.md)** : Een standaard opslag account wordt gemaakt met een unieke naam die is gebaseerd op de naam van uw functie-app.
-    * **[Hosting plan](../articles/azure-functions/functions-scale.md)** : Er wordt een verbruiks plan gemaakt in de regio vs-West om uw serverloze functie-app te hosten.
-    * **Functie-app**: Uw project wordt geïmplementeerd naar en wordt uitgevoerd in deze nieuwe functie-app.
+    * **[Resource groep](../articles/azure-resource-manager/management/overview.md)** : bevat alle gemaakte Azure-resources. De naam is gebaseerd op de naam van uw functie-app.
+    * **[Opslag account](../articles/storage/common/storage-account-create.md)** : een standaard opslag account wordt gemaakt met een unieke naam die is gebaseerd op de naam van uw functie-app.
+    * **[Hosting plan](../articles/azure-functions/functions-scale.md)** : er wordt een verbruiks abonnement in de regio vs West gemaakt om uw serverloze functie-app te hosten.
+    * **Functie-app**: uw project wordt geïmplementeerd naar en wordt uitgevoerd in deze nieuwe functie-app.
 
     Nadat de functie-app is gemaakt en het implementatiepakket is toegepast, wordt er een melding weergegeven. Selecteer **uitvoer weer geven** in deze melding om de resultaten voor het maken en implementeren weer te geven, inclusief de Azure-resources die u hebt gemaakt.
 
-1. Terug in **Azure: In** het gebied functies vouwt u de nieuwe functie-app uit onder uw abonnement. Vouw **functies**uit, klik met de rechter muisknop op **http trigger**en kies vervolgens **functie-URL kopiëren**.
+1. Ga terug naar het gedeelte **functies van Azure:** , en vouw de nieuwe functie-app uit onder uw abonnement. Vouw **functies**uit, klik met de rechter muisknop op **http trigger**en kies vervolgens **functie-URL kopiëren**.
 
     ![Kopieer de functie-URL voor de nieuwe HTTP-trigger](./media/functions-publish-project-vscode/function-copy-endpoint-url.png)

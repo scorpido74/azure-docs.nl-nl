@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bc8141b951dbc27972dc2efb6819a7c0137ea7fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 491ba986c6ca71be0bc5b13e2f9f0717ffec99a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459930"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028896"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Snelstartgids: een persoonlijk eind punt maken met Azure Portal
 
@@ -162,7 +162,7 @@ In deze sectie maakt u een SQL Server en voegt u hieraan een persoonlijk eind pu
     | ------- | ----- |
     |**INBEL**| |
     | Virtueel netwerk| Selecteer *MyVirtualNetwork*. |
-    | Subnet | Selecteer *mySubnet*. |
+    | Subnet | Selecteer *mySubnet*. |
     |**INTEGRATIE VAN PARTICULIERE DNS**||
     |Integreren met een privé-DNS-zone |Selecteer **Ja**. |
     |Privé-DNS zone |Selecteer *(nieuw) privatelink. data base. Windows. net* |
@@ -199,9 +199,9 @@ Nadat u **myVm**hebt gemaakt, kunt u als volgt verbinding maken met het Internet
 
 ## <a name="access-the-sql-database-server-privately-from-the-vm"></a>De SQL database-server privé openen vanuit de VM
 
-1. Open Power shell in de Extern bureaublad van *myVM*.
+1. Open Power shell in de Extern bureaublad van *myVM*.
 
-2. Voer `nslookup myserver.database.windows.net`in. 
+2. Voer `nslookup myserver.database.windows.net` in. 
 
     U ontvangt een bericht dat er ongeveer als volgt uitziet:
     ```azurepowershell
@@ -227,11 +227,11 @@ Nadat u **myVm**hebt gemaakt, kunt u als volgt verbinding maken met het Internet
 1. Selecteer **Verbinden**.
 2. Bladeren door data bases vanuit het menu links.
 3. Eventueel Gegevens uit mydatabase maken of er een query op uitvoeren.
-4. Sluit de verbinding met extern bureau blad met *myVm*. 
+4. Sluit de verbinding met extern bureau blad met *myVm*. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
 Wanneer u klaar bent met het persoonlijke eind punt, de SQL-Server en de virtuele machine, verwijdert u de resource groep en alle resources die deze bevat: 
-1. Geef *myResourceGroup* op in het **zoekvak** boven aan de portal en selecteer *myResourceGroup* in de zoek resultaten. 
+1. Voer *myResourceGroup* in het **zoekvak** boven aan de portal in en selecteer *myResourceGroup* in de zoek resultaten. 
 2. Selecteer **Resourcegroep verwijderen**. 
 3. Voer myResourceGroup in bij **Typ de naam van de resource groep** en selecteer **verwijderen**.
 

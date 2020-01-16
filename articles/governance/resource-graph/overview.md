@@ -3,12 +3,12 @@ title: Overzicht van Azure Resource Graph
 description: Meer informatie over hoe u met de Azure resource Graph-service complexe query's kunt uitvoeren op resources op schaal in abonnementen en tenants.
 ms.date: 10/21/2019
 ms.topic: overview
-ms.openlocfilehash: 7a96faa8502fca6fc501985cd677ac28454f1ba1
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: 301543075d587079af0f53b6200890a75bfbb768
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406687"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965981"
 ---
 # <a name="what-is-azure-resource-graph"></a>Wat is Azure Resource Graph?
 
@@ -31,7 +31,7 @@ In deze documentatie komt elke mogelijkheid gedetailleerd aan bod.
 
 Azure Resource Manager ondersteunt momenteel query's over basis resource velden, met name resource naam, ID, type, resource groep, abonnement en locatie. Resource Manager biedt ook voorzieningen voor het aanroepen van afzonderlijke resource providers voor gedetailleerde eigenschappen per resource per keer.
 
-Met Azure Resource Graph hebt u toegang tot de eigenschappen die de resourceproviders retourneren zonder dat u elke resourceprovider afzonderlijk moet aanroepen. Zoek voor een lijst met ondersteunde resource typen naar een **Ja** in de tabel [resources voor implementatie van volledige modus](../../azure-resource-manager/complete-mode-deletion.md) . Meer resource typen vindt u in de gerelateerde [resource grafiek tabellen](./concepts/query-language.md#resource-graph-tables). Een alternatieve manier om ondersteunde resource typen te bekijken, is via de [schema browser van de Azure resource Graph Explorer](./first-query-portal.md#schema-browser).
+Met Azure Resource Graph hebt u toegang tot de eigenschappen die de resourceproviders retourneren zonder dat u elke resourceprovider afzonderlijk moet aanroepen. Zoek voor een lijst met ondersteunde resource typen naar een **Ja** in de tabel [resources voor implementatie van volledige modus](../../azure-resource-manager/templates/complete-mode-deletion.md) . Meer resource typen vindt u in de gerelateerde [resource grafiek tabellen](./concepts/query-language.md#resource-graph-tables). Een alternatieve manier om ondersteunde resource typen te bekijken, is via de [schema browser van de Azure resource Graph Explorer](./first-query-portal.md#schema-browser).
 
 Met Azure resource Graph kunt u het volgende doen:
 
@@ -84,7 +84,7 @@ Met Azure resource Graph Explorer, onderdeel van Azure Portal, kunt u resource G
 Resource grafiek ondersteunt Azure CLI, Azure PowerShell, Azure SDK voor .NET en meer. De query is voor elke taal hetzelfde gestructureerd. Meer informatie over het inschakelen van resource grafiek met:
 
 - [Azure Portal en resource grafiek Verkenner](first-query-portal.md) 
-- [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
+- [Azure-CLI](first-query-azurecli.md#add-the-resource-graph-extension)
 - [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
 
 ## <a name="next-steps"></a>Volgende stappen

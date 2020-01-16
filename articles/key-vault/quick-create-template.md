@@ -10,18 +10,18 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/17/2019
 ms.author: jgao
-ms.openlocfilehash: d3c1070577ee57f18018e9b74be5e29998cc3e64
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0462039efa02998b41560d6c308653809875ab1c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453670"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982122"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Snelstartgids: een geheim instellen en ophalen uit Azure Key Vault met Resource Manager-sjabloon
 
 [Azure Key Vault](./key-vault-overview.md) is een Cloud service die een veilig archief voor geheimen levert, zoals sleutels, wacht woorden, certificaten en andere geheimen. Deze Snelstartgids is gericht op het proces van het implementeren van een resource manager-sjabloon om een sleutel kluis en een geheim te maken.
 
-[Resource Manager-sjabloon](../azure-resource-manager/template-deployment-overview.md) is een JavaScript object Notation-bestand (JSON) waarmee de infra structuur en configuratie voor uw project worden gedefinieerd. De sjabloon maakt gebruik van declaratieve syntaxis, waarmee u kunt aangeven wat u wilt implementeren zonder dat u de volg orde van de programmeer opdrachten hoeft te schrijven om deze te maken. Als u meer wilt weten over het ontwikkelen van Resource Manager-sjablonen, raadpleegt u de [documentatie van Resource Manager](/azure/azure-resource-manager/) en de [sjabloon verwijzing](/azure/templates/microsoft.keyvault/allversions).
+[Resource Manager-sjabloon](../azure-resource-manager/templates/overview.md) is een JavaScript object Notation-bestand (JSON) waarmee de infra structuur en configuratie voor uw project worden gedefinieerd. De sjabloon maakt gebruik van declaratieve syntaxis, waarmee u kunt aangeven wat u wilt implementeren zonder dat u de volg orde van de programmeer opdrachten hoeft te schrijven om deze te maken. Als u meer wilt weten over het ontwikkelen van Resource Manager-sjablonen, raadpleegt u de [documentatie van Resource Manager](/azure/azure-resource-manager/) en de [sjabloon verwijzing](/azure/templates/microsoft.keyvault/allversions).
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -88,7 +88,7 @@ Meer Azure Key Vault sjabloon voorbeelden vindt u [hier](https://azure.microsoft
 
     ![Resource Manager-sjabloon, integratie van Key Vault, portal-melding implementeren](./media/quick-create-template/resource-manager-template-portal-deployment-notification.png)
 
-De Azure Portal wordt gebruikt voor het implementeren van de sjabloon. Naast de Azure Portal, kunt u ook de Azure PowerShell, Azure CLI en REST API gebruiken. Zie voor meer informatie over andere implementatie methoden [sjablonen implementeren](../azure-resource-manager/resource-group-template-deploy.md).
+De Azure Portal wordt gebruikt voor het implementeren van de sjabloon. Naast de Azure Portal, kunt u ook de Azure PowerShell, Azure CLI en REST API gebruiken. Zie voor meer informatie over andere implementatie methoden [sjablonen implementeren](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="validate-the-deployment"></a>De implementatie valideren
 

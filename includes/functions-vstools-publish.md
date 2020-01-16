@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 327a7689e0297002f1ce3f48d2bd367104277680
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 689889588aba4da888a7d66f5e1d45dfde71d520
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769694"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021109"
 ---
 1. Klik in **Solution Explorer** met de rechtermuisknop op het project en selecteer **Publiceren**.
 
@@ -38,9 +38,9 @@ ms.locfileid: "75769694"
     | ------------ |  ------- | -------------------------------------------------- |
     | **Naam** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app uniek wordt aangeduid. Geldige tekens zijn `a-z`, `0-9` en `-`. |
     | **Abonnement** | Kies uw abonnement | Het te gebruiken Azure-abonnement. |
-    | **[Resourcegroep](../articles/azure-resource-manager/resource-group-overview.md)** | myResourceGroup |  Naam van de resourcegroep waarin uw functie-app moet worden gemaakt. Kies **Nieuw** om een nieuwe resourcegroep te maken.|
+    | **[Resourcegroep](../articles/azure-resource-manager/management/overview.md)** | myResourceGroup |  Naam van de resourcegroep waarin uw functie-app moet worden gemaakt. Kies **Nieuw** om een nieuwe resourcegroep te maken.|
     | **[Hosting plan](../articles/azure-functions/functions-scale.md)** | Verbruiksabonnement | Zorg ervoor dat u het **verbruik** kiest onder **grootte** nadat u **Nieuw** hebt geselecteerd om een serverloos plan te maken. Kies ook een **Locatie** in een [regio](https://azure.microsoft.com/regions/) bij u in de buurt of in de buurt van andere services die door uw functies worden gebruikt. Wanneer u in een abonnement van een ander type dan **Verbruik** werkt, moet u de [schaal van uw functie-app](../articles/azure-functions/functions-scale.md) beheren.  |
-    | **[Azure Storage](../articles/storage/common/storage-quickstart-create-account.md)** | Opslag account voor algemeen gebruik | Er is een Azure-opslagaccount vereist voor de Functions-runtime. Selecteer **Nieuw** om een opslag account voor algemeen gebruik te maken. U kunt ook een bestaand account gebruiken dat voldoet aan de [vereisten voor een opslagaccount](../articles/azure-functions/functions-scale.md#storage-account-requirements).  |
+    | **[Azure Storage](../articles/storage/common/storage-account-create.md)** | Opslag account voor algemeen gebruik | Er is een Azure-opslagaccount vereist voor de Functions-runtime. Selecteer **Nieuw** om een opslag account voor algemeen gebruik te maken. U kunt ook een bestaand account gebruiken dat voldoet aan de [vereisten voor een opslagaccount](../articles/azure-functions/functions-scale.md#storage-account-requirements).  |
 
 5. Selecteer **maken** om een functie-app en gerelateerde resources in azure te maken met deze instellingen en om uw functie project code te implementeren. 
 

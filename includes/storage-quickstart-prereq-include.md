@@ -8,13 +8,13 @@ ms.topic: include
 ms.date: 02/04/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 79f99aa80179fc46eab00a804e61e41aae3cedbf
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: afe0b6a2952651461e327371dc746abee411cbb4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71203927"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020812"
 ---
 U hebt een Azure-abonnement nodig voor toegang tot Azure Storage. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
 
-Alle toegang tot Azure Storage vindt plaats via een opslagaccount. Voor deze quickstart gaat u een opslagaccount maken met de [Azure-portal](https://portal.azure.com/), Azure PowerShell of Azure CLI. Zie voor meer informatie over het maken van het account [Een opslagaccount maken](../articles/storage/common/storage-quickstart-create-account.md).
+Alle toegang tot Azure Storage vindt plaats via een opslagaccount. Voor deze quickstart gaat u een opslagaccount maken met de [Azure-portal](https://portal.azure.com/), Azure PowerShell of Azure CLI. Zie voor meer informatie over het maken van het account [Een opslagaccount maken](../articles/storage/common/storage-account-create.md).

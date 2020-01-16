@@ -15,18 +15,18 @@ ms.workload: infrastructure-services
 ms.date: 09/20/2019
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 884ba1106e7b68fefaf91ee4e25cacd05bf96fc0
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 28c4ca59b20fcdd8ab0249392dc0f13cbabf1a97
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048752"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970636"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Quick Start: een standaard load balancer maken om taken van Vm's te verdelen met behulp van Azure Resource Manager sjabloon
 
 Taakverdeling zorgt voor een hogere beschikbaarheid en betere schaalbaarheid door binnenkomende aanvragen te spreiden over meerdere virtuele machines (VM's). In deze Quick start ziet u hoe u een Azure Resource Manager sjabloon kunt implementeren waarmee een standaard-load balancer wordt gemaakt voor de taak verdeling van Vm's. Het gebruik van Resource Manager-sjablonen neemt minder stappen in vergelijking met andere implementatie methoden.
 
-[Resource Manager-sjabloon](../azure-resource-manager/template-deployment-overview.md) is een JavaScript object Notation-bestand (JSON) waarmee de infra structuur en configuratie voor uw project worden gedefinieerd. De sjabloon maakt gebruik van declaratieve syntaxis, waarmee u kunt aangeven wat u wilt implementeren zonder dat u de volg orde van de programmeer opdrachten hoeft te schrijven om deze te maken. Als u meer wilt weten over het ontwikkelen van Resource Manager-sjablonen, raadpleegt u de [documentatie van Resource Manager](/azure/azure-resource-manager/) en de [sjabloon verwijzing](/azure/templates/microsoft.network/loadbalancers).
+[Resource Manager-sjabloon](../azure-resource-manager/templates/overview.md) is een JavaScript object Notation-bestand (JSON) waarmee de infra structuur en configuratie voor uw project worden gedefinieerd. De sjabloon maakt gebruik van declaratieve syntaxis, waarmee u kunt aangeven wat u wilt implementeren zonder dat u de volg orde van de programmeer opdrachten hoeft te schrijven om deze te maken. Als u meer wilt weten over het ontwikkelen van Resource Manager-sjablonen, raadpleegt u de [documentatie van Resource Manager](/azure/azure-resource-manager/) en de [sjabloon verwijzing](/azure/templates/microsoft.network/loadbalancers).
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -84,7 +84,7 @@ Het duurt ongeveer 10 minuten om de sjabloon te implementeren. Wanneer dit is vo
 
 ![Uitvoer van Azure Standard Load Balancer Resource Manager-sjabloon Power shell-implementatie](./media/quickstart-load-balancer-standard-public-template/azure-standard-load-balancer-resource-manager-template-powershell-output.png)
 
-Azure PowerShell wordt gebruikt voor het implementeren van de sjabloon. Naast Azure PowerShell, kunt u ook de Azure Portal, Azure CLI en REST API gebruiken. Zie voor meer informatie over andere implementatie methoden [sjablonen implementeren](../azure-resource-manager/resource-group-template-deploy-portal.md).
+Azure PowerShell wordt gebruikt voor het implementeren van de sjabloon. Naast Azure PowerShell, kunt u ook de Azure Portal, Azure CLI en REST API gebruiken. Zie voor meer informatie over andere implementatie methoden [sjablonen implementeren](../azure-resource-manager/templates/deploy-portal.md).
 
 ## <a name="test-the-load-balancer"></a>Load balancer testen
 

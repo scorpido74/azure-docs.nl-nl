@@ -3,12 +3,12 @@ title: 'Snelstartgids: nieuwe beleids toewijzing met Power shell'
 description: In deze Quick Start gebruikt u Azure PowerShell om een Azure Policy toewijzing te maken om niet-compatibele resources te identificeren.
 ms.date: 11/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 3ce823a7abfe16e4433128dcdfe073dfcfaeba50
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 3fd6060d1f38c523ccf22e80807f6220bfdf3cbc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482396"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978295"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Snelstartgids: een beleids toewijzing maken om niet-compatibele resources te identificeren met behulp van Azure PowerShell
 
@@ -30,7 +30,7 @@ In deze hand leiding wordt uitgelegd hoe u AZ module gebruikt om een beleids toe
   Register-AzResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
   ```
 
-  Zie [Resourceproviders en -typen](../../azure-resource-manager/resource-manager-supported-services.md) voor meer informatie over het registreren en weergeven van resourceproviders.
+  Zie [Resourceproviders en -typen](../../azure-resource-manager/management/resource-providers-and-types.md) voor meer informatie over het registreren en weergeven van resourceproviders.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

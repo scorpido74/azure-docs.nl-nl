@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: rkarlin
-ms.openlocfilehash: a76f149b8ab9ca8515a7475cd7954b6d4862a92d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: cbd452fcf4056c1bcf4d5b8d6debb9d8f4a6f11c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746879"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976108"
 ---
 # <a name="connect-data-sources"></a>Verbinding maken met gegevensbronnen
 
@@ -105,7 +105,7 @@ U kunt de agent ook hand matig implementeren op een bestaande Azure-VM, op een v
 | AzureNetworkAnalytics_CL  | Verkeers [analyse](../network-watcher/traffic-analytics.md) van [Traffic analytic-schema](../network-watcher/traffic-analytics.md)  | | |
 | CommonSecurityLog  | [Verbinding maken met CEF](connect-common-event-format.md)  | V | |
 | OfficeActivity | [Verbinding maken met Office 365](connect-office-365.md) | V | |
-| SecurityEvents | [Windows-beveiligings gebeurtenissen verbinden](connect-windows-security-events.md)  | V | Zie voor de werkmappen met Inveilige protocollen [onveilige protocollen werkmap instellen](https://blogs.technet.microsoft.com/jonsh/azure-sentinel-insecure-protocols-dashboard-setup/)  |
+| SecurityEvents | [Windows-beveiligings gebeurtenissen verbinden](connect-windows-security-events.md)  | V | Zie voor de werkmappen met Inveilige protocollen [onveilige protocollen werkmap instellen](/azure/sentinel/quickstart-get-visibility#use-built-in-workbooks)  |
 | Syslog | [Syslog verbinden](connect-syslog.md) | V | |
 | Micro soft Web Application firewall (WAF)-(AzureDiagnostics) |[Verbinding maken met micro soft Web Application firewall](connect-microsoft-waf.md) | V | |
 | SymantecICDx_CL | [Symantec verbinden](connect-symantec.md) | V | |

@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d313e7620361f976cc1670c2370e5f19bdb99a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f003daea188c6f556d0981c83c98f3328362f864
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768126"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975116"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Snelstartgids: gebruikers aanmelden en een toegangs token verkrijgen in een Java script-beveiligd-wachtwoord verificatie
 
@@ -61,7 +61,7 @@ In deze Snelstartgids gebruikt u een code voorbeeld om te zien hoe een Java scri
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Stap 1: uw toepassing configureren in de Azure-portal
-> Het code voorbeeld voor deze Quick Start werkt alleen als u een omleidings-URI als `http://localhost:30662/` toevoegt en **impliciete toekenning**inschakelt.
+> Het code voorbeeld voor deze Quick Start werkt alleen als u een `redirectUri` als `http://localhost:30662/` toevoegt en **impliciete toekenning**inschakelt.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Breng deze wijzigingen voor mij aan]()
 >
@@ -167,7 +167,7 @@ var msalConfig = {
     auth: {
         clientId: "Enter_the_Application_Id_here",
         authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
-        redirectURI: "http://localhost:30662/"
+        redirectUri: "http://localhost:30662/"
     },
     cache: {
         cacheLocation: "localStorage",
@@ -182,7 +182,7 @@ var myMSALObj = new Msal.UserAgentApplication(msalConfig);
 > |---------|---------|
 > |`clientId`     | De toepassings-ID van de toepassing die is geregistreerd in de Azure Portal.|
 > |`authority`    | Beschrijving De CA-URL die ondersteuning biedt voor account typen, zoals eerder is beschreven in de sectie configuratie. De standaard instantie is `https://login.microsoftonline.com/common`. |
-> |`redirectURI`     | De geconfigureerde antwoord/omleidings-URI voor de registratie van de toepassing. In dit geval `http://localhost:30662/`. |
+> |`redirectUri`     | De geconfigureerde antwoord-redirectUri voor de registratie van de toepassing. In dit geval `http://localhost:30662/`. |
 > |`cacheLocation`  | Beschrijving Hiermee stelt u de opslag voor de browser in voor de verificatie status. De standaard waarde is sessionStorage.   |
 > |`storeAuthStateInCookie`  | Beschrijving De bibliotheek waarin de status van de verificatie aanvraag wordt opgeslagen die vereist is voor de validatie van de verificatie stromen in de browser cookies. Deze cookie is ingesteld voor IE-en Edge-browsers om bepaalde [bekende problemen](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues)te verhelpen. |
 

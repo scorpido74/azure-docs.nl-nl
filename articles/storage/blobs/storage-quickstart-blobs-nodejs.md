@@ -7,19 +7,19 @@ ms.date: 11/19/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 089cda74740d3934c76a3b0ca8803a30654feccf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c8473bff3b6e7d2079bb202befc23e1ada3791eb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465113"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970261"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-javascript"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V12 voor Java script
 
 Ga aan de slag met de Azure Blob Storage-client bibliotheek V12 voor Java script. Azure Blob Storage is Microsoft's oplossing voor opslag van objecten in de cloud. Volg de stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens.
 
 > [!NOTE]
-> Zie [Snelstartgids: Azure Blob Storage-client bibliotheek voor Java script](storage-quickstart-blobs-nodejs-v10.md)om aan de slag te gaan met de vorige SDK-versie.
+> Zie [Snelstartgids: Azure Blob Storage-client bibliotheek voor Java script](storage-quickstart-blobs-nodejs-legacy.md)om aan de slag te gaan met de vorige SDK-versie.
 
 Gebruik de Azure Blob Storage-client bibliotheek V12 voor Java script voor het volgende:
 

@@ -3,12 +3,12 @@ title: 'Snelstartgids: nieuwe beleids toewijzing met Azure CLI'
 description: In deze Quick Start gebruikt u Azure CLI om een Azure Policy toewijzing te maken om niet-compatibele resources te identificeren.
 ms.date: 01/11/2020
 ms.topic: quickstart
-ms.openlocfilehash: 2bc5c77ac5c2ac0a1f4c80d9b770d9e95d7864cf
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 7f76191d97a936c745fc2b13b54011e787e0b5e6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903516"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978324"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Snelstartgids: een beleids toewijzing maken om niet-compatibele resources te identificeren met Azure CLI
 
@@ -31,7 +31,7 @@ Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de 
   az provider register --namespace 'Microsoft.PolicyInsights'
   ```
 
-  Zie [Resourceproviders en -typen](../../azure-resource-manager/resource-manager-supported-services.md) voor meer informatie over het registreren en weergeven van resourceproviders.
+  Zie [Resourceproviders en -typen](../../azure-resource-manager/management/resource-providers-and-types.md) voor meer informatie over het registreren en weergeven van resourceproviders.
 
 - Installeer de [ARMClient](https://github.com/projectkudu/ARMClient) als u dit nog niet hebt gedaan. Dit is een hulpprogramma waarmee HTTP-aanvragen worden verzonden naar Azure Resource Manager-API’s.
 

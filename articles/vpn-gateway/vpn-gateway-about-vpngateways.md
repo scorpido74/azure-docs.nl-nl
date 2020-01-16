@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: overview
 ms.date: 01/10/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5c7925c38cea3b341df216957e037df8a82b7ca5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c4a406961444845fef783c47942924b01b7aa646
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894726"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972405"
 ---
 # <a name="what-is-vpn-gateway"></a>Wat is VPN Gateway?
 
@@ -43,7 +43,7 @@ U kunt beginnen met het maken en configureren van resources met een configuratie
 
 ### <a name="models"></a>Implementatiemodel
 
-Er zijn momenteel twee implementatiemodellen voor Azure. Wanneer u een VPN-gateway configureert, zijn de stappen die u moet volgen, afhankelijk van het implementatiemodel waarmee u het virtuele netwerk hebt gemaakt. Als u bijvoorbeeld uw VNet hebt gemaakt met het klassieke implementatiemodel, gebruikt u de richtlijnen en instructies voor het klassieke implementatiemodel om de VPN-gateway te maken en de instellingen te configureren. Zie [Het Resource Manager-implementatiemodel en het klassieke implementatiemodel begrijpen](../azure-resource-manager/resource-manager-deployment-model.md) voor meer informatie over de implementatiemodellen.
+Er zijn momenteel twee implementatiemodellen voor Azure. Wanneer u een VPN-gateway configureert, zijn de stappen die u moet volgen, afhankelijk van het implementatiemodel waarmee u het virtuele netwerk hebt gemaakt. Als u bijvoorbeeld uw VNet hebt gemaakt met het klassieke implementatiemodel, gebruikt u de richtlijnen en instructies voor het klassieke implementatiemodel om de VPN-gateway te maken en de instellingen te configureren. Zie [Het Resource Manager-implementatiemodel en het klassieke implementatiemodel begrijpen](../azure-resource-manager/management/deployment-models.md) voor meer informatie over de implementatiemodellen.
 
 ### <a name="planningtable"></a>Tabel plannen
 

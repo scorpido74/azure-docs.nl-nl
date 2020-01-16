@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bbf127f105f0ef22a23f00541396c2ac66b0e5f9
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 801a6fc0602882d1af49c06bafcfd51942e6da2e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71828366"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965658"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Snelstartgids: Een virtuele SQL Server 2017-machine voor Windows maken in Azure Portal
 
@@ -39,7 +39,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a id="select"></a> Een installatiekopie selecteren voor uw virtuele SQL Server-machine
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met uw account.
+1. Meld u met uw account aan bij [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens *Azure SQL* in het zoekvak.
 1. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie weer geven door **Details weer geven** te selecteren op de tegel **virtuele SQL-machines** .
@@ -66,7 +66,7 @@ Geef op het tabblad **basis beginselen** de volgende informatie op:
     1. Selecteer in de lijst met **installatie kopieën** _gratis SQL Server licentie: SQL Server 2017 Developer op Windows Server 2016_. 
     1. Kies voor het wijzigen van de **grootte** voor de **grootte** van de virtuele machine en selecteer de **a2 Basic** -aanbieding. Zorg ervoor dat u uw resources opschoont nadat u klaar bent met deze om te voor komen dat er onverwachte kosten in rekening worden gebracht. 
 
-   ![Exemplaar Details](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
+   ![Exemplaardetails](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
 
 1. Geef onder **Administrator-account**een gebruikers naam op, zoals _azureuser_ en een wacht woord. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../../windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
@@ -88,7 +88,7 @@ Configureer op het tabblad **SQL Server instellingen** de volgende opties:
 
 1. Wijzig indien nodig de andere instellingen en selecteer vervolgens **controleren + maken**. 
 
-   ![Controleren en maken](media/quickstart-sql-vm-create-portal/review-create.png)
+   ![Beoordelen en maken](media/quickstart-sql-vm-create-portal/review-create.png)
 
 
 ## <a name="create-the-sql-server-vm"></a>De virtuele SQL Server-machine maken
@@ -128,7 +128,7 @@ Met toegang tot de machine kunt u rechtstreeks de instellingen voor de machine e
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als het niet nodig is dat de virtuele SQL-machine continu wordt uitgevoerd, kunt u overbodige kosten voorkomen door de virtuele machine te stoppen wanneer deze niet in gebruik is. U kunt ook alle resources die aan de virtuele machine zijn gekoppeld, definitief verwijderen. Dit doet u door in de portal de gekoppelde resourcegroep te verwijderen. Hiermee verwijdert u ook de virtuele machine zelf definitief. Bedenk dus van tevoren goed of u dit wel wilt. Raadpleeg [Manage Azure resources through portal](../../../azure-resource-manager/manage-resource-groups-portal.md) (Azure-resources via de portal beheren) voor meer informatie.
+Als het niet nodig is dat de virtuele SQL-machine continu wordt uitgevoerd, kunt u overbodige kosten voorkomen door de virtuele machine te stoppen wanneer deze niet in gebruik is. U kunt ook alle resources die aan de virtuele machine zijn gekoppeld, definitief verwijderen. Dit doet u door in de portal de gekoppelde resourcegroep te verwijderen. Wees voorzichtig met het gebruik van deze opdracht, want hiermee verwijdert u ook de virtuele machine zelf definitief. Raadpleeg [Manage Azure resources through portal](../../../azure-resource-manager/management/manage-resource-groups-portal.md) (Azure-resources via de portal beheren) voor meer informatie.
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -9,12 +9,12 @@ ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 9ecffc25461a909d47329d536d1c19724b3c22ac
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 1aa8c9ff26b85f5af8095ad1cff062b224abff83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718070"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982184"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Snelstartgids: Blob Storage-gebeurtenissen naar een webeindpunt door sturen met de Azure Portal
 
@@ -26,7 +26,7 @@ Wanneer u klaar bent, ziet u dat de gebeurtenisgegevens naar de web-app zijn ver
 
 ![Resultaten weergeven](./media/blob-event-quickstart-portal/view-results.png)
 
-## <a name="create-a-storage-account"></a>Een opslagaccount maken
+## <a name="create-a-storage-account"></a>Maak een opslagaccount
 
 1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
@@ -38,7 +38,7 @@ Wanneer u klaar bent, ziet u dat de gebeurtenisgegevens naar de web-app zijn ver
 
    ![Opslag selecteren](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. Voor het abonneren op gebeurtenissen moet u een algemeen v2-opslagaccount of een Blob-opslagaccount maken. Zie [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) voor meer informatie.
+1. Voor het abonneren op gebeurtenissen moet u een algemeen v2-opslagaccount of een Blob-opslagaccount maken. Zie [Een opslagaccount maken](../storage/common/storage-account-create.md) voor meer informatie.
 
    ![Eerste stappen](./media/blob-event-quickstart-portal/provide-blob-values.png)
 

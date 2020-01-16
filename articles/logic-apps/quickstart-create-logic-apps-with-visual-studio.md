@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/08/2019
-ms.openlocfilehash: bb284ad336e7110b0354450f3438fadb592370be
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 693b2fd8ac7440b67f53de0aedb9a8268a90de76
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428635"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968875"
 ---
 # <a name="quickstart-create-automated-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Snelstartgids: geautomatiseerde taken, processen en werk stromen maken met Azure Logic Apps-Visual Studio
 
@@ -61,7 +61,7 @@ In deze Quick Start maakt u dezelfde logische app met Visual Studio als Azure Po
 
 ## <a name="create-azure-resource-group-project"></a>Een Azure-resourcegroepproject maken
 
-Om te beginnen, maakt u een [Azure-resourcegroepproject](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md). Meer informatie over [Azure-resourcegroepen en resources](../azure-resource-manager/management/overview.md).
+Om te beginnen, maakt u een [Azure-resourcegroepproject](../azure-resource-manager/templates/create-visual-studio-deployment-project.md). Meer informatie over [Azure-resourcegroepen en resources](../azure-resource-manager/management/overview.md).
 
 1. Start Visual Studio. Meld u aan met uw Azure-account.
 

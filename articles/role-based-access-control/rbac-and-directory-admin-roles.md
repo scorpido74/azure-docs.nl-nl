@@ -15,12 +15,12 @@ ms.date: 10/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 8dbccdfdcf2a309c8324328f46336bab74839da4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d0966737964c44fc4a6778cdb811a4ecc732ffc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357516"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979310"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Klassieke abonnementsbeheerdersrollen, Azure RBAC-rollen en Azure AD-beheerdersrollen
 
@@ -81,7 +81,7 @@ Azure RBAC staat voor op rollen gebaseerd toegangsbeheer en is een machtigingssy
 
 Met de overige ingebouwde rollen kunnen specifieke Azure-resources worden beheerd. Met de rol [Inzender voor virtuele machines](built-in-roles.md#virtual-machine-contributor) kan een gebruiker bijvoorbeeld virtuele machines maken en beheren. Zie [Ingebouwde rollen](built-in-roles.md) voor een lijst met alle ingebouwde rollen voor Azure-resources.
 
-Alleen Azure Portal en de API's van Azure Resource Manager ondersteunen RBAC. Gebruikers, groepen en toepassingen met toegewezen RBAC-rollen kunnen geen gebruikmaken van de [API's van het klassieke implementatiemodel van Azure](../azure-resource-manager/resource-manager-deployment-model.md).
+Alleen Azure Portal en de API's van Azure Resource Manager ondersteunen RBAC. Gebruikers, groepen en toepassingen met toegewezen RBAC-rollen kunnen geen gebruikmaken van de [API's van het klassieke implementatiemodel van Azure](../azure-resource-manager/management/deployment-models.md).
 
 In Azure Portal worden roltoewijzingen met RBAC weergegeven op de blade **Toegangsbeheer (IAM)** . Deze Blade kan worden gevonden in de portal, zoals beheer groepen, abonnementen, resource groepen en verschillende bronnen.
 

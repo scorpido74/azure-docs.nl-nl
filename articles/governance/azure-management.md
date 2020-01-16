@@ -3,12 +3,12 @@ title: Overzicht van Azure Management-Azure governance
 description: Overzicht van de gebieden van beheer voor Azure-toepassingen en bronnen met koppelingen naar inhoud op Azure-beheerhulpprogramma's.
 ms.date: 12/06/2018
 ms.topic: overview
-ms.openlocfilehash: f91e439a5fb7c330fb29d300e83779083641875b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 644f4fc3a04f86426c2eb04b02c29882fa39fb88
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132841"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980901"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Overzicht van beheer Services in azure
 
@@ -24,7 +24,7 @@ Er is geen enkele Azure-service voldoet volledig aan de vereisten van een bepaal
 
 In de volgende gedeelten worden kort de diverse beheergebieden beschreven. Ook vindt u er koppelingen naar gedetailleerde inhoud over de belangrijkste Azure-services die voor deze gebieden bedoeld zijn.
 
-## <a name="monitor"></a>Bewaken
+## <a name="monitor"></a>Controleren
 
 Bewaken is het verzamelen en analyseren van gegevens om te controleren van de prestaties, status en beschikbaarheid van uw resources. Een strategie voor effectieve bewaking krijgt u inzicht in de bewerking van onderdelen en om te verhogen van de bedrijfstijd met meldingen. Lees een overzicht van bewaking die bevat informatie over de verschillende services gebruikt bij [bewaking van Azure-toepassingen en bronnen](../monitoring/monitoring-overview.md).
 
@@ -36,13 +36,13 @@ Automatisering van deze taken kunt u redundantie, minimaliseert de tijd en moeit
 ## <a name="govern"></a>Governance
 
 Governance biedt mechanismen en processen om de controle over uw toepassingen en resources in Azure te behouden. Dat omvat het plannen van initiatieven en het stellen van strategische prioriteiten.
-Governance in Azure wordt hoofdzakelijk geïmplementeerd via twee services. [Azure Policy](./policy/overview.md) kunt u maken, toewijzen en beheren van beleidsdefinities om af te dwingen van regels voor uw resources. Deze functie blijft deze resources voldoen aan uw bedrijfsnormen. Met [Azure Cost Management](../cost-management/overview-cost-mgt.md) kunt u het Cloud gebruik en-uitgaven bijhouden voor uw Azure-resources en andere cloud providers.
+Governance in Azure wordt hoofdzakelijk geïmplementeerd via twee services. [Azure Policy](./policy/overview.md) kunt u maken, toewijzen en beheren van beleidsdefinities om af te dwingen van regels voor uw resources. Deze functie blijft deze resources voldoen aan uw bedrijfsnormen. Met [Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) kunt u het Cloud gebruik en-uitgaven bijhouden voor uw Azure-resources en andere cloud providers.
 
-## <a name="secure"></a>Beveiligen
+## <a name="secure"></a>Veilig
 
 De beveiliging van uw resources en -gegevens beheren. Een beveiligingsprogramma omvat het beoordelen van bedreigingen, verzamelen en analyseren van gegevens en naleving van uw toepassingen en resources. Beveiligingsanalyse beveiligingsbewaking en bedreigingsanalyse worden geleverd door [Azure Security Center](../security-center/security-center-intro.md), dat ook geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbeveiliging voor hybride cloudworkloads. Zie [Inleiding tot Azure-beveiliging](../security/fundamentals/overview.md) voor uitgebreide informatie over en richtlijnen voor het beveiligen van Azure-resources.
 
-## <a name="protect"></a>beveiligen
+## <a name="protect"></a>Beschermen
 
 Beveiliging verwijst naar het houden van uw toepassingen en gegevens beschikbaar, zelfs bij storingen die buiten het besturingselement. Bescherming in Azure wordt door twee services geboden. [Azure Backup](../backup/backup-introduction-to-azure-backup.md) biedt back-ups en herstel van uw gegevens in de cloud of on-premises. [Azure Site Recovery](../site-recovery/site-recovery-overview.md) zorgt voor bedrijfscontinuïteit en onmiddellijk herstel tijdens een noodgeval.
 

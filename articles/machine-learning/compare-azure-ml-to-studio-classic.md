@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: 6c174faaad5d7d33a837d6399be27444ab0556c6
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a3122a3ae1687369b87d193efc693b3b7c659aac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771969"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974139"
 ---
 # <a name="how-azure-machine-learning-differs-from-machine-learning-studio-classic"></a>Hoe Azure Machine Learning verschilt van Machine Learning Studio (klassiek)
 
@@ -29,7 +29,7 @@ Ondertussen biedt [Azure machine learning](overview-what-is-azure-ml.md) een web
 Azure Machine Learning Designer biedt een vergelijk bare functionaliteit voor slepen en neerzetten naar Studio (klassiek). Maar in tegens telling tot het eigen reken platform van Studio (klassiek) gebruikt de ontwerper uw eigen reken resources, is schaalbaar en is deze volledig geïntegreerd in Azure Machine Learning.  
 
 > [!TIP]
-> Klanten die momenteel gebruikmaken van of evalueren van Machine Learning Studio (klassiek), worden aangemoedigd om [Azure machine learning Designer](https://docs.microsoft.com/azure/machine-learning/ui-concept-visual-interface) (preview) te proberen, met behulp van de modules voor slepen en neerzetten, __plus__ schaal baarheid, versie beheer en ondernemings beveiliging.
+> Klanten die momenteel gebruikmaken van of evalueren van Machine Learning Studio (klassiek), worden aangemoedigd om [Azure machine learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) (preview) te proberen, met behulp van de modules voor slepen en neerzetten, __plus__ schaal baarheid, versie beheer en ondernemings beveiliging.
 
 ## <a name="comparison-azure-machine-learning-vs-machine-learning-studio-classic"></a>Vergelijking: Azure Machine Learning versus Machine Learning Studio (klassiek)
 

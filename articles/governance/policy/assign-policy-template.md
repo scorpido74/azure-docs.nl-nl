@@ -3,12 +3,12 @@ title: 'Snelstartgids: nieuwe beleids toewijzing met sjablonen'
 description: In deze Quick Start gebruikt u een resource manager-sjabloon om een beleids toewijzing te maken om niet-compatibele resources te identificeren.
 ms.date: 11/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: e22c14768622408fb3afb0e491d4179b6113e4ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8b9b0024e5c15c78c6777b8657839791484d66b5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436456"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980514"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>Snelstartgids: een beleids toewijzing maken om niet-compatibele resources te identificeren met behulp van een resource manager-sjabloon
 
@@ -56,7 +56,7 @@ Enkele aanvullende bronnen:
 - Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Authorization&pageNumber=1&sort=Popular)start-sjabloon voor meer voor beelden van sjablonen.
 - Voor een overzicht van de sjabloon verwijzing gaat u naar de [Naslag informatie voor Azure-sjablonen](/azure/templates/microsoft.authorization/allversions).
 - Zie [Azure Resource Manager-documentatie](../../azure-resource-manager/management/overview.md)voor meer informatie over het ontwikkelen van Resource Manager-sjablonen.
-- Zie [resource groepen en-resources op abonnements niveau maken](../../azure-resource-manager/deploy-to-subscription.md)voor meer informatie over implementatie op abonnements niveau.
+- Zie [resource groepen en-resources op abonnements niveau maken](../../azure-resource-manager/templates/deploy-to-subscription.md)voor meer informatie over implementatie op abonnements niveau.
 
 ## <a name="identify-non-compliant-resources"></a>Niet-compatibele resources identificeren
 

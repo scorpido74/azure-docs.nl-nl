@@ -2,21 +2,21 @@
 title: Azure-snelstartgids - Batch-taak uitvoeren - Portal
 description: Leer snel hoe u een Batch-taak kunt uitvoeren met behulp van Azure Portal.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 92f8499a10c07e7d5ea74e49c374cef192b8a47f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 294d1658559dd426245cf66a47a8791f8b370533
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094127"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029410"
 ---
-# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Quickstart: Uw eerste Batch-taak uitvoeren in de Azure-portal
+# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Snelstart: uw eerste Batch-taak uitvoeren in Azure Portal
 
 In deze snelstartgids leert u hoe u Azure Portal gebruikt voor het maken van een Batch-account, een *pool* met computerknooppunten (virtuele machines), en een *Batch-taak* waarmee *basistaken* worden uitgevoerd in de groep. Nadat u deze snelstartgids hebt voltooid, begrijpt u de belangrijkste principes van de Batch-service en bent u er klaar voor om Batch op grotere schaal te gebruiken voor meer realistische workloads.
 
@@ -26,7 +26,7 @@ In deze snelstartgids leert u hoe u Azure Portal gebruikt voor het maken van een
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
 
-## <a name="create-a-batch-account"></a>Batch-account maken
+## <a name="create-a-batch-account"></a>Een Batch-account maken
 
 Volg deze stappen om een Batch-voorbeeldaccount te maken voor testdoeleinden. U hebt een Batch-account nodig om pools en taken te maken. Zoals hier wordt getoond, kunt u een Azure-opslagaccount aan het Batch-account koppelen. Hoewel dit niet is vereist voor deze snelstartgids, is een opslagaccount handig voor het implementeren van toepassingen, en voor het opslaan van invoer- en uitvoergegevens voor de meeste workloads uit de praktijk.
 
@@ -41,7 +41,7 @@ Volg deze stappen om een Batch-voorbeeldaccount te maken voor testdoeleinden. U 
 
 4. Laat de overige instellingen op de standaardwaarden staan, en selecteer **Maken** om het account te maken.
 
-   ![Batch-account maken][account_portal]  
+   ![Een Batch-account maken][account_portal]  
 
 Wanneer het bericht **Implementatie is voltooid** wordt weergegeven, gaat u naar het Batch-account in de portal.
 
@@ -56,7 +56,7 @@ Nu u beschikt over een Batch-account, maakt u een voorbeeldpool met Windows-reke
 
 3. Selecteer bij **Besturingssysteem** de volgende instellingen (u kunt andere opties verkennen).
   
-   |Instelling  |Value  |
+   |Instelling  |Waarde  |
    |---------|---------|
    |**Type installatiekopie**|Marketplace (Linux/Windows)|
    |**Publisher**     |MicrosoftWindowsServer|
@@ -67,7 +67,7 @@ Nu u beschikt over een Batch-account, maakt u een voorbeeldpool met Windows-reke
 
 4. Schuif naar beneden om de **Knooppuntgrootte** en instellingen voor **Schalen** in te voeren. De voorgestelde knooppuntgrootte in dit snelle voorbeeld biedt een goede balans tussen prestaties en kosten.
   
-   |Instelling  |Value  |
+   |Instelling  |Waarde  |
    |---------|---------|
    |**Prijscategorie voor het knooppunt**     |Standard_A1|
    |**Aan het doel toegewezen knooppunten**     |2|
@@ -84,7 +84,7 @@ Na enkele minuten is de status van de pool **Onveranderlijk** en worden de knoop
 
 ## <a name="create-a-job"></a>Een taak maken
 
-Nu u beschikt over een pool, kunt u een Batch-taak maken om uit te voeren op deze pool. Een Batch-taak is een logische groep met een of meer taken. Een Batch-taak omvat instellingen die gemeenschappelijk zijn voor de taken, zoals prioriteit en de pool waarop taken moeten worden uitgevoerd. De Batch-taak heeft in eerste instantie geen taken. 
+Nu u beschikt over een pool, kunt u een taak maken om uit te voeren op deze pool. Een Batch-taak is een logische groep met een of meer taken. Een Batch-taak omvat instellingen die gemeenschappelijk zijn voor de taken, zoals prioriteit en de pool waarop taken moeten worden uitgevoerd. De Batch-taak heeft in eerste instantie geen taken. 
 
 1. Selecteer in de weergave Batch-account **Taken** > **Toevoegen**. 
 

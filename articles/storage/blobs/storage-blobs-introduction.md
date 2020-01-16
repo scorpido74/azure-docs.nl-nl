@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 8071fe12b925384465c1e570465ebaa0100c53e9
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 8c2bbd3aff8c2c10864fb2fa8937c9159ecd3606
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749806"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972458"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Inleiding tot Azure Blob-opslag
 
@@ -41,7 +41,7 @@ Als de naam van uw opslagaccount bijvoorbeeld *mystorageaccount* is, is het stan
 http://mystorageaccount.blob.core.windows.net 
 ```
 
-Raadpleeg [Een opslagaccount maken](../common/storage-quickstart-create-account.md) als u een opslagaccount wilt maken. Zie [Overzicht voor Azure-opslagaccounts](../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor meer informatie over opslagaccounts.
+Raadpleeg [Een opslagaccount maken](../common/storage-account-create.md) als u een opslagaccount wilt maken. Zie [Overzicht voor Azure-opslagaccounts](../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor meer informatie over opslagaccounts.
 
 ### <a name="containers"></a>Containers
 

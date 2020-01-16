@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/17/2019
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: cd118def8b9caf97f26aaa5ad5dc1f6fb015316d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7da9f795f1865d635a26cd3acf3866dff3565716
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469238"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021241"
 ---
 1. Selecteer in het menu Azure Portal de optie **een resource maken**.
 
@@ -28,9 +28,9 @@ ms.locfileid: "73469238"
     | Instelling      | Voorgestelde waarde  | Beschrijving |
     | ------------ | ---------------- | ----------- |
     | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe functie-app is gemaakt. |
-    | **[Resourcegroep](../articles/azure-resource-manager/resource-group-overview.md)** |  *myResourceGroup* | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. |
-    | **functie-app naam** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn `a-z` (niet hoofdletter gevoelig), `0-9`en `-`.  |
-    |**Publiceren**| Code | Optie voor het publiceren van code bestanden of een docker-container. |
+    | **[Resourcegroep](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. |
+    | **Naam van de functie-app** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn `a-z` (niet hoofdletter gevoelig), `0-9`en `-`.  |
+    |**Publiceren**| Coderen | Optie voor het publiceren van codebestanden of een Docker-container. |
     | **Runtimestack** | Voorkeurstaal | Kies een runtime die uw favoriete functieprogrammeertaal ondersteunt. Kies **.NET** voor C#- en F#-functies. |
     |**Regio**| Voorkeurs regio | Kies een [regio](https://azure.microsoft.com/regions/) in de buurt of in de buurt van andere services die door uw functie worden gebruikt. |
 
@@ -42,7 +42,7 @@ ms.locfileid: "73469238"
 
     | Instelling      | Voorgestelde waarde  | Beschrijving |
     | ------------ | ---------------- | ----------- |
-    | **[Opslagaccount](../articles/storage/common/storage-quickstart-create-account.md)** |  Wereldwijd unieke naam |  Maak een opslagaccount die wordt gebruikt door uw functie-app. Namen van opslagaccounts moeten tussen 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. U kunt ook een bestaand account gebruiken dat moet voldoen aan de [vereisten voor het opslag account](../articles/azure-functions/functions-scale.md#storage-account-requirements). |
+    | **[Opslagaccount](../articles/storage/common/storage-account-create.md)** |  Wereldwijd unieke naam |  Maak een opslagaccount die wordt gebruikt door uw functie-app. Namen van opslagaccounts moeten tussen 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. U kunt ook een bestaand account gebruiken dat moet voldoen aan de [vereisten voor het opslag account](../articles/azure-functions/functions-scale.md#storage-account-requirements). |
     |**Besturingssysteem**| Voor keur besturings systeem | Er wordt vooraf een besturings systeem geselecteerd voor u op basis van de selectie van de runtime stack, maar u kunt de instelling wijzigen, indien nodig. |
     | **[Fonds](../articles/azure-functions/functions-scale.md)** | Verbruiksabonnement | Hostingabonnement dat definieert hoe resources worden toegewezen aan uw functie-app. In het standaard **Verbruiksabonnement** worden resources dynamisch toegevoegd zoals door uw functies wordt vereist. Met hosten [zonder server](https://azure.microsoft.com/overview/serverless-computing/) betaalt u alleen voor de tijd dat uw functies actief zijn. Wanneer u in een App Service-plan uitvoert, moet u het [Schalen van uw functie-app](../articles/azure-functions/functions-scale.md) beheren.  |
 
@@ -50,7 +50,7 @@ ms.locfileid: "73469238"
 
 1. Voer de volgende instellingen in voor bewaking.
 
-    ![Bewaking](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
+    ![Controleren](./media/functions-create-function-app-portal/function-app-create-monitoring.png)
 
     | Instelling      | Voorgestelde waarde  | Beschrijving |
     | ------------ | ---------------- | ----------- |

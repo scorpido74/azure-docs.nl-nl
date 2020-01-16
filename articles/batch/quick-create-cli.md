@@ -2,22 +2,22 @@
 title: Azure-snelstartgids - Batch-taak uitvoeren - CLI
 description: Leer snel hoe u een Batch-taak kunt uitvoeren met behulp van Azure CLI.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 72c3244fbd9c8d547e35c31f0cd6e659e367e21a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 900bafd5b27fcb5021e9dae2a6bbc13d4e233a45
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322498"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029490"
 ---
-# <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Quickstart: Uw eerste Batch-taak uitvoeren met Azure CLI
+# <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Snelstartgids: Uw eerste Batch-taak uitvoeren met Azure CLI
 
 De Azure CLI wordt gebruikt voor het maken en beheren van Azure-resources vanaf de opdrachtregel of in scripts. In deze snelstartgids leert u hoe u Azure CLI gebruikt voor het maken van een Batch-account, een *pool* met computerknooppunten (virtuele machines), en een *Batch-taak* waarmee *taken* worden uitgevoerd in de groep. Met elke voorbeeldtaak wordt een basisopdracht uitgevoerd op een van de knooppunten in de pool. Nadat u deze snelstartgids hebt voltooid, begrijpt u de belangrijkste principes van de Batch-service en bent u er klaar voor om Batch op grotere schaal te gebruiken voor meer realistische workloads.
 
@@ -39,7 +39,7 @@ az group create \
     --location eastus2
 ```
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Maak een opslagaccount
 
 U kunt een Azure-opslagaccount aan het Batch-account koppelen. Hoewel dit niet is vereist voor deze snelstartgids, is een opslagaccount handig voor het implementeren van toepassingen, en voor het opslaan van invoer- en uitvoergegevens voor de meeste workloads uit de praktijk. Maak een opslagaccount in de resourcegroep met behulp van de opdracht [az storage account create](/cli/azure/storage/account#az-storage-account-create).
 
@@ -51,11 +51,11 @@ az storage account create \
     --sku Standard_LRS
 ```
 
-## <a name="create-a-batch-account"></a>Batch-account maken
+## <a name="create-a-batch-account"></a>Een Batch-account maken
 
 Maak een Batch-account met behulp van de opdracht [az batch account create](/cli/azure/batch/account#az-batch-account-create). U hebt een account nodig om rekenresources (pools met rekenknooppunten) en Batch-taken te maken.
 
-In het volgende voorbeeld wordt een Batch-account met de naam *mybatchaccount* gemaakt in *myResourceGroup*, en wordt het gemaakte opslagaccount gekoppeld.  
+In het volgende voorbeeld wordt een Batch-account met de naam *mybatchaccount* gemaakt in *myResourceGroup* en wordt het gemaakte opslagaccount gekoppeld.  
 
 ```azurecli-interactive 
 az batch account create \
@@ -65,7 +65,7 @@ az batch account create \
     --location eastus2
 ```
 
-Als u rekenpools en -taken wilt maken en beheren, moet u zich verifiëren bij Batch. Meld u aan bij het account met behulp van de opdracht [az batch account login](/cli/azure/batch/account#az-batch-account-login). Nadat u zich hebt aangemeld, maken de `az batch`-opdrachten gebruik van deze accountcontext.
+Als u rekenpools en -taken wilt maken en beheren, moet u zich verifiëren bij Batch. Meld u aan bij het account met behulp van de opdracht [az batch account login](/cli/azure/batch/account#az-batch-account-login). Nadat u zich hebt aangemeld, maken uw `az batch`-opdrachten gebruik van deze accountcontext.
 
 ```azurecli-interactive 
 az batch account login \
@@ -97,7 +97,7 @@ Ga door met de volgende stappen om een Batch-taak en taken te maken terwijl de s
 
 ## <a name="create-a-job"></a>Een taak maken
 
-Nu u beschikt over een pool, kunt u een Batch-taak maken om uit te voeren op deze pool.  Een Batch-taak is een logische groep met een of meer taken. Een Batch-taak omvat instellingen die gemeenschappelijk zijn voor de taken, zoals prioriteit en de pool waarop taken moeten worden uitgevoerd. Maak een Batch-taak met behulp van de opdracht [az batch job create](/cli/azure/batch/job#az-batch-job-create). In het volgende voorbeeld wordt een taak *myjob* gemaakt in de pool *mypool*. De Batch-taak heeft in eerste instantie geen taken.
+Nu u beschikt over een pool, kunt u een taak maken om uit te voeren op deze pool.  Een Batch-taak is een logische groep met een of meer taken. Een Batch-taak omvat instellingen die gemeenschappelijk zijn voor de taken, zoals prioriteit en de pool waarop taken moeten worden uitgevoerd. Maak een Batch-taak met behulp van de opdracht [az batch job create](/cli/azure/batch/job#az-batch-job-create). In het volgende voorbeeld wordt een taak *myjob* gemaakt in de pool *mypool*. De Batch-taak heeft in eerste instantie geen taken.
 
 ```azurecli-interactive 
 az batch job create \

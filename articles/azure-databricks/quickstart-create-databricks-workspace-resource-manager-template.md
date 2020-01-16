@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/12/2019
-ms.openlocfilehash: e638f1a4e0b7512ef89984bcd7e23d28d062f6e9
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 857cfb4587d7b73a59fafac83dadbef3ad920ebf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889043"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971425"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-resource-manager-template"></a>Snelstart: Een Spark-taak uitvoeren op Azure Databricks met de Resource Manager-sjabloon
 
@@ -27,7 +27,7 @@ In deze Quick Start gebruikt u een Azure Resource Manager sjabloon om een Azure 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij de [Azure Portal](https://portal.azure.com). 
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 > [!Note]
 > Deze zelf studie kan niet worden uitgevoerd met een **gratis proef abonnement van Azure**.
@@ -87,7 +87,7 @@ Zie [Een Spark-cluster maken in Azure Databricks](/azure/databricks/clusters/cre
 
 Voordat u met deze sectie begint, moet u eerst aan de volgende vereisten voldoen:
 
-* [Maak een Azure Blob-opslagaccount](../storage/common/storage-quickstart-create-account.md).
+* [Maak een Azure Blob-opslagaccount](../storage/common/storage-account-create.md).
 * Download een voorbeeld-JSON-bestand [vanuit GitHub](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json).
 * Upload het JSON-voorbeeldbestand naar het Azure Blob-opslagaccount dat u hebt gemaakt. U kunt [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) gebruiken om bestanden te uploaden.
 
