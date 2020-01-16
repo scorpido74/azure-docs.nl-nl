@@ -3,12 +3,12 @@ title: Evaluaties in Azure Migrate
 description: Meer informatie over evaluaties in Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 6950050be3c6fb812a6ade47e98f2d1ed479e61f
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: a8912263432bc0e9cd7172c4b6c9b118132863d3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720239"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029115"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>Over evaluaties in Azure Migrate
 
@@ -23,7 +23,7 @@ Prestatie gegevens voor reken instellingen worden als volgt verzameld:
 
 1. Het [Azure migrate apparaat](migrate-appliance.md) verzamelt een real-time voorbeeld punt:
 
-    - **VMware-vm's*: voor virtuele VMware-machines verzamelt het Azure migrate apparaat een realtime-steekproef punt bij elke 20-seconden interval.
+    - **VMware-vm's**: voor virtuele VMware-machines verzamelt het Azure migrate apparaat een realtime-steekproef punt bij elke 20-seconden interval.
     - **Virtuele Hyper-v-machines**: voor virtuele Hyper-v-machines wordt het realtime-voorbeeld punt verzameld bij elk interval van dertig seconden.
     - **Fysieke servers**: voor fysieke servers wordt het realtime-voorbeeld punt verzameld tijdens elke interval van vijf minuten. 
     
@@ -58,7 +58,7 @@ Prestatie gegevens worden als volgt verzameld:
 
 1. Het [Azure migrate apparaat](migrate-appliance.md) verzamelt een real-time voorbeeld punt:
 
-    - **VMware-vm's*: voor virtuele VMware-machines verzamelt het Azure migrate apparaat een realtime-steekproef punt bij elke 20-seconden interval.
+    - **VMware-vm's**: voor virtuele VMware-machines verzamelt het Azure migrate apparaat een realtime-steekproef punt bij elke 20-seconden interval.
     - **Virtuele Hyper-v-machines**: voor virtuele Hyper-v-machines wordt het realtime-voorbeeld punt verzameld bij elk interval van dertig seconden.
     - **Fysieke servers**: voor fysieke servers wordt het realtime-voorbeeld punt verzameld tijdens elke interval van vijf minuten. 
     
@@ -73,24 +73,23 @@ Prestatie gegevens worden als volgt verzameld:
 5. Deze waarde wordt vermenigvuldigd met de comfort factor om de effectief prestatie gebruiks gegevens te verkrijgen voor elke metriek (CPU-gebruik, geheugen gebruik, schijf-IOPS (lezen en schrijven), schijf doorvoer (lezen en schrijven) en netwerk doorvoer (in en uit) die de apparaat verzamelt.
 ## <a name="whats-in-an-assessment"></a>Waaruit bestaat een evaluatie?
 
-Wat is er opgenomen in een beoordeling in Azure Migrate: Server evaluatie
+Hier volgt een beoordeling in Azure Migrate: Server Assessment.
 
 **Eigenschap** | **Details**
 --- | ---
-**Doellocatie** | De locatie waarnaar u wilt migreren.<br/><br/>Server evaluatie ondersteunt momenteel deze Azure-doel regio's: Australië-oost, Australië-zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, Centraal-India, centraal VS, China-oost, China-noord, Azië-oost, VS-Oost, Oost-VS2, Duitsland-centraal, Duitsland Noordoost, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord-Centraal VS, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, UK-west, US Gov-Arizona, US Gov-Texas, US Gov-Virginia, VS-West-Centraal, Europa-west, West-India, VS-West en West VS2.
-**Doel opslag schijf: in grootte formaat** | Het type schijven dat moet worden gebruikt voor opslag in Azure. <br/><br/> Geef de doel opslag schijf op als Premium beheerd, Standard SSD beheerd of standaard HDD beheerd.<br/><br/> 
-**Doel opslag schijf: op prestaties gebaseerd formaat** | Geef het type doel opslag schijf op als automatische, Premium beheerde, standaard HDD beheerd of standaard SSD beheerd.<br/><br/> **Automatisch**: de aanbevolen schijf is gebaseerd op de prestatie gegevens van de schijven (de invoer/uitvoer-bewerkingen per seconde (IOPS) en door Voer). <br/><br/>**Premium/Standard**: de evaluatie beveelt een schijf-SKU aan binnen het geselecteerde opslag type.<br/><br/> Als u een VM-SLA met één exemplaar van 99,9% wilt maken, overweeg dan om Premium Managed disks te gebruiken. Dit zorgt ervoor dat alle schijven in de evaluatie worden aanbevolen als Premium-beheerde schijven.<br/><br/> Azure Migrate biedt voor migratiebeoordeling alleen ondersteuning voor beheerde schijven.
+**Doellocatie** | De locatie waarnaar u wilt migreren. Server analyse ondersteunt momenteel deze Azure-doel regio's:<br/><br/> Australië-oost, Australië-zuidoost, Brazilië-zuid, Canada-centraal, Canada-oost, Centraal-India, centraal VS, China-oost, China-noord, Azië-oost, VS-Oost, Oost-VS2, Duitsland-centraal, Duitsland-noordoost, Japan-Oost, Japan-West, Korea-centraal, Korea-zuid, Noord VS-centraal, Europa-noord, Zuid-Centraal VS, Zuidoost-Azië, India-zuid, UK-zuid, UK-west, US Gov-Arizona, US Gov-Texas, US Gov-Virginia, VS-West-Centraal, Europa-west, West-India, westelijke VS en West-VS2.
+*Doel opslag schijf (in grootte)* * | Het type schijven dat moet worden gebruikt voor opslag in Azure. <br/><br/> Geef de doel opslag schijf op als Premium beheerd, Standard SSD beheerd of standaard HDD beheerd.
+**Doel opslag schijf (op basis van de grootte van de prestaties)** | Geef het type doel opslag schijf op als automatische, Premium beheerde, standaard HDD beheerd of standaard SSD beheerd.<br/><br/> **Automatisch**: de aanbevolen schijf is gebaseerd op de prestatie gegevens van de schijven (de invoer/uitvoer-bewerkingen per seconde (IOPS) en door Voer).<br/><br/>**Premium/Standard**: de evaluatie beveelt een schijf-SKU aan binnen het geselecteerde opslag type.<br/><br/> Als u een VM-SLA met één exemplaar van 99,9% wilt maken, overweeg dan om Premium Managed disks te gebruiken. Dit zorgt ervoor dat alle schijven in de evaluatie worden aanbevolen als Premium-beheerde schijven.<br/><br/> Azure Migrate biedt voor migratiebeoordeling alleen ondersteuning voor beheerde schijven.
 **Gereserveerde instanties (RIs)** | Geef [gereserveerde instanties](https://azure.microsoft.com/pricing/reserved-vm-instances/) op in azure, zodat de kosten ramingen in de evaluatie van de RI-kortingen in rekening worden gebracht.<br/><br/> RIs wordt momenteel alleen ondersteund voor aanbiedingen met betalen naar gebruik in Azure Migrate.
 **Grootte criteria** | Wordt gebruikt om de grootte van de virtuele machine in azure naar rechts te wijzigen.<br/><br/> Gebruiken als de grootte van het formaat of op basis van de prestaties.
 **Prestatiegeschiedenis** | Wordt gebruikt met een grootte op basis van prestaties. Geef de duur op die wordt gebruikt bij het evalueren van prestatie gegevens.
 **Percentiel gebruik** | Wordt gebruikt met een grootte op basis van prestaties. Hiermee geeft u de percentiel waarde van het voor beeld van de prestaties op die moet worden gebruikt voor de juiste grootte. 
 **VM-reeks** | Geef de Azure VM-serie op die u wilt overwegen voor een juiste grootte. Als u bijvoorbeeld geen productie omgeving hebt die virtuele machines van de A-serie nodig heeft in azure, kunt u een-serie uitsluiten van de lijst of reeks.
-**Comfortfactor** | Buffer die wordt gebruikt tijdens de evaluatie. Wordt toegepast boven op de machine gebruiks gegevens voor Vm's (CPU, geheugen, schijf en netwerk). 
-IT-accounts voor problemen zoals seizoen gebruik, korte prestatie geschiedenis en waarschijnlijke toename van toekomstig gebruik.<br/><br/> Zo resulteert een virtuele machine met 10 kern met 20% gebruik doorgaans in een virtuele machine met twee kernen. Met een comfort factor van 2,0 x is het resultaat een virtuele machine met vier kernen.
+**Comfortfactor** | Buffer die wordt gebruikt tijdens de evaluatie. Wordt toegepast boven op de machine gebruiks gegevens voor Vm's (CPU, geheugen, schijf en netwerk). IT-accounts voor problemen zoals seizoen gebruik, korte prestatie geschiedenis en waarschijnlijke toename van toekomstig gebruik.<br/><br/> Zo resulteert een virtuele machine met 10 kern met 20% gebruik doorgaans in een virtuele machine met twee kernen. Met een comfort factor van 2,0 x is het resultaat een virtuele machine met vier kernen.
 **Aanbieding** | Hier wordt de [Azure-aanbieding](https://azure.microsoft.com/support/legal/offer-details/) weer gegeven waarin u bent Inge schreven. De server beoordeling schat de kosten dienovereenkomstig.
 **Valuta** | De facturerings valuta voor uw account.
 **Korting (%)** | Een lijst met alle abonnements kortingen die boven op de Azure-aanbieding worden weer gegeven. De standaardinstelling is 0%.
-**VM-uptime** | Als Azure-Vm's niet 24 uur per dag, 7 dagen per week worden uitgevoerd, kunt u de duur (dagen per maand en uur per dag) opgeven. deze worden uitgevoerd. Kosten ramingen worden dienovereenkomstig afgehandeld.<br/><br/> De standaardwaarde is 31 dagen per maand en 24 uur per dag.
+**VM tijd actief** | Als Azure-Vm's niet 24 uur per dag, 7 dagen per week worden uitgevoerd, kunt u de duur (dagen per maand en uur per dag) opgeven. deze worden uitgevoerd. Kosten ramingen worden dienovereenkomstig afgehandeld.<br/><br/> De standaardwaarde is 31 dagen per maand en 24 uur per dag.
 **Azure Hybrid Benefit** | Hiermee geeft u op of u Software Assurance hebt en in aanmerking komt voor [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Als deze optie is ingesteld op Ja (de standaard instelling), worden niet-Windows Azure-prijzen in rekening gehouden voor Windows-Vm's.
 
 [Bekijk de aanbevolen procedures voor het](best-practices-assessment.md) maken van evaluatie met server evaluatie.

@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: jgao
-ms.openlocfilehash: 4dc28b8254c312836b2767c2efef52137e101777
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 6308f7832a898d97c455dc90265adea345aeb0cc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75839437"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981217"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatie scripts gebruiken in sjablonen (preview-versie)
 
@@ -57,7 +57,7 @@ De voor delen van het implementatie script:
   $id = (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name idName).Id
   ```
 
-- **Azure PowerShell versie 2.7.0, 2.8.0 of 3.0.0**. U hebt deze versies niet nodig voor het implementeren van sjablonen. Deze versies zijn echter nodig om implementatie scripts lokaal te testen. Zie [de Azure PowerShell-module installeren](/powershell/azure/install-az-ps.md). U kunt een vooraf geconfigureerde docker-installatie kopie gebruiken.  Zie [ontwikkel omgeving configureren](#configure-development-environment).
+- **Azure PowerShell versie 2.7.0, 2.8.0 of 3.0.0**. U hebt deze versies niet nodig voor het implementeren van sjablonen. Deze versies zijn echter nodig om implementatie scripts lokaal te testen. Zie [de Azure PowerShell-module installeren](/powershell/azure/install-az-ps). U kunt een vooraf geconfigureerde docker-installatie kopie gebruiken.  Zie [ontwikkel omgeving configureren](#configure-development-environment).
 
 ## <a name="resource-schema"></a>Resource schema
 
@@ -233,7 +233,7 @@ Als u de deploymentScripts-resource in de portal wilt bekijken, selecteert u **v
 
 ## <a name="clean-up-deployment-script-resources"></a>Implementatie script resources opschonen
 
-Met het implementatie script maakt u een opslag account en een container exemplaar die worden gebruikt voor het uitvoeren van implementatie scripts en het opslaan van fout opsporingsgegevens. Deze twee resources worden in dezelfde resource groep gemaakt als de ingerichte resources en worden verwijderd door de script service wanneer het script verloopt. U kunt de levens cyclus van deze resources beheren.  Totdat ze worden verwijderd, worden er kosten in rekening gebracht voor beide resources. Zie [container instances prijzen](/pricing/details/container-instances/) en [Azure Storage prijzen](/pricing/details/storage/)voor de prijs informatie.
+Met het implementatie script maakt u een opslag account en een container exemplaar die worden gebruikt voor het uitvoeren van implementatie scripts en het opslaan van fout opsporingsgegevens. Deze twee resources worden in dezelfde resource groep gemaakt als de ingerichte resources en worden verwijderd door de script service wanneer het script verloopt. U kunt de levens cyclus van deze resources beheren.  Totdat ze worden verwijderd, worden er kosten in rekening gebracht voor beide resources. Zie [container instances prijzen](https://azure.microsoft.com/pricing/details/container-instances/) en [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/)voor de prijs informatie.
 
 De levens cyclus van deze resources wordt bepaald door de volgende eigenschappen in de sjabloon:
 

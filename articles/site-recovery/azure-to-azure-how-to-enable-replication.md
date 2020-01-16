@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 471a7f288cec980e73ab10c8233ea38511acdd8b
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942322"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973693"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Virtuele Azure-machines repliceren naar een andere Azure-regio
 
@@ -62,7 +62,7 @@ Schakel replicatie in. Bij deze procedure wordt ervan uitgegaan dat de primaire 
      >[!NOTE]
      >Nadat u replicatie hebt ingeschakeld, kunt u het type beschikbaarheid - enkel exemplaar, beschikbaarheidsset of beschikbaarheidszone - niet meer wijzigen. Als u het type beschikbaarheid wilt wijzigen, moet u replicatie uitschakelen en opnieuw inschakelen.
      >
-    
+
    - **Replicatie beleid**: Hiermee worden de instellingen voor de Bewaar geschiedenis voor herstel punten en de frequentie van consistente moment opnamen voor apps gedefinieerd. Azure Site Recovery maakt standaard een nieuw replicatie beleid met de standaard instellingen van 24 uur voor retentie van herstel punten en 4 uur voor de frequentie van de consistente moment opname van de app.
 
      ![Replicatie inschakelen](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
@@ -74,7 +74,7 @@ Als u schijven toevoegt aan een virtuele machine van Azure waarvoor replicatie i
 -   Als u beveiliging inschakelt voor de toegevoegde schijven, verdwijnt de waarschuwing na de initiële replicatie van de schijf.
 -   Als u ervoor kiest geen replicatie voor de schijf in te scha kelen, kunt u de waarschuwing negeren.
 
-    
+
     ![Nieuwe schijf toegevoegd](./media/azure-to-azure-how-to-enable-replication/newdisk.png)
 
 Ga als volgt te werk om replicatie in te scha kelen voor een toegevoegde schijf:
@@ -88,7 +88,7 @@ Ga als volgt te werk om replicatie in te scha kelen voor een toegevoegde schijf:
 Nadat de taak voor het inschakelen van de replicatie is uitgevoerd en de initiële replicatie is voltooid, wordt de replicatie status waarschuwing voor het probleem van de schijf verwijderd.
 
 
-  
+
 ## <a name="customize-target-resources"></a>Doel resources aanpassen
 
 U kunt de standaard doel instellingen wijzigen die door Site Recovery worden gebruikt.
@@ -112,7 +112,7 @@ U kunt de standaard doel instellingen wijzigen die door Site Recovery worden geb
     - Zorg ervoor dat er geen firewall apparaat is die de interne communicatie tussen de Vm's via poort 20004 blokkeert.
     - Als u wilt dat Linux-Vm's deel uitmaken van een replicatie groep, zorgt u ervoor dat het uitgaande verkeer op poort 20004 hand matig wordt geopend volgens de richt lijnen voor de specifieke Linux-versie.
 ![Replicatie inschakelen](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
-    
+
 5. Klik op **doel resource maken** > **replicatie in te scha kelen**.
 6. Nadat de Vm's zijn ingeschakeld voor replicatie, kunt u de status van de VM controleren onder **gerepliceerde items**
 

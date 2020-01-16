@@ -1,64 +1,39 @@
 ---
-title: Ondersteuning voor de beoordeling/migratie van fysieke servers met Azure Migrate
-description: Hiermee wordt een overzicht gegeven van de ondersteuning voor fysieke server evaluatie/migratie met Azure Migrate.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: Ondersteuning voor fysieke server evaluatie met Azure Migrate
+description: Meer informatie over ondersteuning voor fysieke server beoordeling met Azure Migrate.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 9e749297d831aeae7d785a9a9a29bea1f8c6d5e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: 32080605217cde78bd648ca6192f73d1025dea4c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454619"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028772"
 ---
-# <a name="support-matrix-for-physical-server-assessment-and-migration"></a>Ondersteuningsmatrix voor evaluatie en migratie van fysieke servers
+# <a name="support-matrix-for-physical-server-assessment"></a>Ondersteunings matrix voor fysieke server evaluatie 
 
 U kunt de [Azure migrate-service](migrate-overview.md) gebruiken voor het beoordelen en migreren van machines naar de Microsoft Azure Cloud. In dit artikel vindt u een overzicht van de ondersteunings instellingen en beperkingen voor het beoordelen en migreren van on-premises fysieke servers.
 
 
+## <a name="overview"></a>Overzicht
 
-## <a name="physical-server-scenarios"></a>Scenario's voor fysieke servers
+Als u on-premises machines wilt evalueren voor migratie naar Azure met dit artikel, voegt u het hulp programma Azure Migrate: Server Assessment toe aan een Azure Migrate-project. U implementeert het [Azure migrate-apparaat](migrate-appliance.md). Het apparaat detecteert voortdurend on-premises machines en verzendt configuratie-en prestatie gegevens naar Azure. Na detectie van machines verzamelt u gedetecteerde computers in groepen en voert u een evaluatie uit voor een groep
 
-De tabel bevat een overzicht van de ondersteunde scenario's voor fysieke servers.
-
-**Implementatie** | **Details***
---- | ---
-**On-premises fysieke servers beoordelen** | [Stel](tutorial-prepare-physical.md) uw eerste beoordeling in.<br/><br/> [Voer](tutorial-assess-physical.md) een evaluatie uit.
-**Fysieke servers migreren naar Azure** | [Probeer](tutorial-migrate-physical-virtual-machines.md) de migratie naar Azure uit te proberen.
-
-
-## <a name="azure-migrate-projects"></a>Azure Migrate projecten
+## <a name="limitations"></a>Beperkingen
 
 **Ondersteuning** | **Details**
 --- | ---
-**Azure-machtigingen** | U hebt machtigingen voor Inzender of eigenaar nodig in het abonnement om een Azure Migrate project te maken.
-**Fysieke servers** | Evalueer Maxi maal 35.000 fysieke servers in één project. U kunt meerdere projecten in een Azure-abonnement hebben. Een project kan bestaan uit fysieke servers, virtuele VMware-machines en virtuele Hyper-V-machines, tot aan de evaluatie limieten.
-**Geografie** | U kunt Azure Migrate projecten maken in een aantal geographs. Hoewel u projecten in specifieke geografische grafieken kunt maken, kunt u machines voor andere doel locaties evalueren of migreren. De Geografie van het project wordt alleen gebruikt om de gedetecteerde meta gegevens op te slaan.
+**Beoordelings limieten**| Ontdek en evalueer Maxi maal 35.000 fysieke servers in één [project](migrate-support-matrix.md#azure-migrate-projects).
+**Project limieten** | U kunt meerdere projecten maken in een Azure-abonnement. Een project kan bestaan uit VMware-Vm's, virtuele Hyper-V-machines en fysieke servers, tot aan de evaluatie limieten.
+**Detectie** | Het Azure Migrate-apparaat kan Maxi maal 250 fysieke servers detecteren.
+**Evaluatie** | U kunt Maxi maal 35.000 computers in één groep toevoegen.<br/><br/> U kunt Maxi maal 35.000 computers in één evaluatie evalueren.
 
-  **Geografie** | **Opslag locatie van meta gegevens**
-  --- | ---
-  Azure Government | US Gov - Virginia
-  Azië-Pacific | Azië Azië-oost of Zuidoost
-  Australië | Australië-oost of Australië-zuidoost
-  Brazilië | Brazilië - Zuid
-  Canada | Canada-centraal of Canada-oost
-  Europa | Europa - noord of Europa - west
-  Frankrijk | Frankrijk - centraal
-  India | Centraal-India of India-zuid
-  Japan |  Japan-Oost of Japan-West
-  Korea | Korea-centraal of Korea-zuid
-  Verenigd Koninkrijk | UK-zuid of UK-west
-  Verenigde Staten | VS-midden, VS-West 2
+Meer [informatie](concepts-assessment-calculation.md) over evaluaties.
 
 
- > [!NOTE]
- > Ondersteuning voor Azure Government is momenteel alleen beschikbaar voor de [oudere versie](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) van Azure Migrate.
 
 
-## <a name="assessment-physical-server-requirements"></a>Beoordeling: vereisten voor fysieke servers
+## <a name="physical-server-requirements"></a>Vereisten voor fysieke servers
 
 | **Ondersteuning**                | **Details**               
 | :-------------------       | :------------------- |
@@ -67,42 +42,14 @@ De tabel bevat een overzicht van de ondersteunde scenario's voor fysieke servers
 | **Besturingssysteem** | Alle [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -en [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -besturings systemen worden ondersteund, met uitzonde ring van het volgende:<br/> Windows Server 2003 <br/> SUSE Linux|
 
 
-## <a name="assessment-appliance-requirements"></a>Beoordeling-vereisten voor apparaten
+## <a name="azure-migrate-appliance-requirements"></a>Vereisten van Azure Migrate apparaat
 
-Voor evaluatie voert Azure Migrate een licht gewicht in voor het detecteren van fysieke servers en het verzenden van meta gegevens en prestatie gegevens van de server naar Azure Migrate. Het apparaat kan worden uitgevoerd op een fysieke server of een virtuele machine en u kunt dit instellen met behulp van een Power shell-script dat u van de Azure Portal downloadt. De volgende tabel bevat een overzicht van de vereisten voor het apparaat.
+Azure Migrate gebruikt het [Azure migrate-apparaat](migrate-appliance.md) voor detectie en evaluatie. Het apparaat voor fysieke servers kan worden uitgevoerd op een virtuele machine of op een fysieke computer. U stelt deze in met behulp van een Power shell-script dat u van de Azure Portal downloadt.
 
-| **Ondersteuning**                | **Details**               
-| :-------------------       | :------------------- |
-| **Implementatie van het apparaat**   |  Het toestel installatie script kan worden gedownload van de portal (in een gezipte map). <br/> U kunt de map uitpakken en het Power shell-script (AzureMigrateInstaller. ps1) uitvoeren op een toegewezen fysieke server of een virtuele machine om het apparaat in te stellen.<br/>  Op de computer die u hebt gekozen om het apparaat te installeren, moet Windows Server 2016 worden uitgevoerd.<br/> De machine moet voldoende ruimte hebben om 16 GB RAM-geheugen, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte toe te wijzen en een externe switch voor de apparaat-VM.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en Internet toegang.
-| **Azure Migrate project**  |  Een apparaat kan worden gekoppeld aan een enkel project.<br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> U kunt Maxi maal 35.000 computers in een project evalueren.
-| **Detectie**              | Eén apparaat kan Maxi maal 250 servers detecteren.
-| **Beoordelings groep**       | U kunt Maxi maal 35.000 computers in één groep toevoegen.
-| **Evaluatie**             | U kunt Maxi maal 35.000 computers in één evaluatie evalueren.
+- Meer informatie over de [vereisten voor apparaten](migrate-appliance.md#appliance---physical) voor fysieke servers.
+- Meer informatie over de [url's](migrate-appliance.md#url-access) waartoe het apparaat toegang moet hebben.
 
-
-## <a name="assessment-appliance-url-access"></a>Beoordeling: toestel-URL-toegang
-
-Voor het beoordelen van Vm's heeft het Azure Migrate-apparaat Internet verbinding nodig.
-
-- Wanneer u het apparaat implementeert, controleert Azure Migrate een connectiviteits controle op de Url's die in de onderstaande tabel worden samenvatten.
-- Als u een proxy op basis van een URL gebruikt, verleent u toegang tot de Url's in de tabel en zorgt u ervoor dat de proxy alle CNAME-records verhelpt die zijn ontvangen tijdens het opzoeken van de Url's.
-- Als u een onderschepende proxy hebt, moet u mogelijk het server certificaat van de proxy server importeren naar het apparaat.
-
-
-**URL** | **Details**  
---- | ---
-*.portal.azure.com | Navigeren naar de Azure Portal
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *. live.com  | Meld u aan bij uw Azure-abonnement
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Het maken van Azure Active Directory-toepassingen voor het apparaat aan service communicatie.
-management.azure.com | Het maken van Azure Active Directory-toepassingen voor het apparaat aan service communicatie.
-dc.services.visualstudio.com | Logboekregistratie en bewaking
-*.vault.azure.net | Geheimen in Azure Key Vault beheren bij de communicatie tussen het apparaat en de service.
-aka.ms/* | Toegang tot ook wel-koppelingen toestaan.
-https://download.microsoft.com/download/* | Down loads van de micro soft-download site toestaan.
-
-
-
-## <a name="assessment-port-requirements"></a>Beoordeling-poort vereisten
+## <a name="port-access"></a>Poort toegang
 
 De volgende tabel bevat een overzicht van de poort vereisten voor evaluatie.
 
@@ -114,4 +61,4 @@ De volgende tabel bevat een overzicht van de poort vereisten voor evaluatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De [evaluatie van de fysieke server voorbereiden](tutorial-prepare-physical.md) voor de evaluatie en migratie van fysieke servers.
+De [evaluatie van de fysieke server wordt voor bereid](tutorial-prepare-physical.md).

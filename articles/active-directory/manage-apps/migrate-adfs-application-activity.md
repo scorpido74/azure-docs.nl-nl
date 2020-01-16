@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/22/2019
+ms.date: 01/14/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de64385e21604188a5c9002f2e007dad86b2674c
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 333e440fdd5f5062dda45fb12a83543c63e66c04
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420432"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978037"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Het rapport AD FS toepassings activiteit (preview) gebruiken voor het migreren van toepassingen naar Azure AD
 
@@ -63,7 +63,7 @@ Het rapport AD FS toepassings activiteit is beschikbaar in de Azure Portal onder
 
 1. Klik in de lijst AD FS toepassings activiteit op de status in de kolom **migratie status** om de migratie gegevens te openen. U ziet een samen vatting van de configuratie tests die zijn geslaagd, samen met eventuele mogelijke migratie problemen.
 
-   ![Migratie Details](media/migrate-adfs-application-activity/migration-details.png)
+   ![Details van de migratie](media/migrate-adfs-application-activity/migration-details.png)
 
 2. Klik op een bericht om meer details over de migratie regel te openen. Zie de tabel met [configuratie tests voor AD FS](#ad-fs-application-configuration-tests) hieronder voor een volledige lijst van de geteste eigenschappen.
 
@@ -124,6 +124,7 @@ De volgende tabel bevat alle claim regel tests die worden uitgevoerd op AD FS to
 
 ## <a name="next-steps"></a>Volgende stappen
 
+- [Video: het AD FS activiteiten rapport gebruiken om een toepassing te migreren](https://www.youtube.com/watch?v=OThlTA239lU)
 - [Toepassingen beheren met Azure Active Directory](what-is-application-management.md)
 - [Toegang tot apps beheren](what-is-access-management.md)
 - [Azure AD Connect-federatie](../hybrid/how-to-connect-fed-whatis.md)

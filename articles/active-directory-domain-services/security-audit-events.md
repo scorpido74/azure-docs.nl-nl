@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 5c51eff77c0375491f4376f12c9ff959f033e2ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d8e96ffc3e2b4756a4184a9a023133f14b326ed3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425374"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979931"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Beveiligings controles inschakelen voor Azure Active Directory Domain Services
 
@@ -126,7 +126,7 @@ Voer de volgende stappen uit om beveiligings controle gebeurtenissen van Azure A
 
 1. Maak de doel resource voor de beveiligings controle gebeurtenissen.
 
-    * **Azure storage** - [een opslag account maken met behulp van Azure PowerShell](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell)
+    * **Azure storage** - [een opslag account maken met behulp van Azure PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell)
     * **Azure Event hubs** - [een event hub maken met behulp van Azure PowerShell](../event-hubs/event-hubs-quickstart-powershell.md). Mogelijk moet u ook de cmdlet [New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) gebruiken om een autorisatie regel te maken waarmee Azure-AD DS machtigingen worden verleend aan de Event hub *naam ruimte*. De autorisatie regel moet de rechten **beheren**, **Luis teren**en **verzenden** bevatten.
 
         > [!IMPORTANT]

@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0723a3b0c96339ba86b98ab851c44d2a65e6f34b
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 6bc6f1ca29343e027730cbbd99d210f911fcb492
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672384"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967303"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Een aangepaste domein naam voor Azure App Service kopen
 
@@ -20,10 +20,10 @@ Zie [app service domein toewijzen aan Azure VM of Azure Storage](https://blogs.m
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Vereisten om deze zelfstudie te voltooien:
 
 * [Maak een App Service-app](/azure/app-service/), of gebruik een app die u hebt gemaakt voor een andere zelfstudie.
-* [Verwijder de bestedings limiet voor uw abonnement](../billing/billing-spending-limit.md#remove). U kunt geen App Service domeinen kopen met gratis abonnements tegoeden.
+* [Verwijder de bestedings limiet voor uw abonnement](../cost-management-billing/manage/spending-limit.md#remove). U kunt geen App Service domeinen kopen met gratis abonnements tegoeden.
 
 ## <a name="prepare-the-app"></a>De app voorbereiden
 
@@ -59,7 +59,7 @@ Als het App Service plan zich niet in de **F1** -laag bevindt, sluit u de pagina
 
 Selecteer een van de lagen die niet gratis zijn (**D1**, **B1**, **B2**, **B3** of een laag in de categorie **Productie**). Klik op **Aanvullende opties bekijken** voor aanvullende opties.
 
-Klik op **Apply** (Toepassen).
+Klik op **Toepassen**.
 
 ![Controleer prijscategorie](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 
@@ -108,7 +108,7 @@ Selecteer vervolgens de gewenste opties voor uw domein. Zie de volgende tabel vo
 
 | Instelling | Voorgestelde waarde | Beschrijving |
 |-|-|-|
-|Privacy-beveiliging | Inschakelen | Meld u aan als privacy-beveiliging, die in de _gratis_aankoop prijs is opgenomen. Sommige domeinen op het hoogste niveau worden beheerd door registraties die geen ondersteuning bieden voor privacy-bescherming en ze worden vermeld op de pagina **privacy-beveiliging** . |
+|Privacybescherming | Inschakelen | Meld u aan als privacy-beveiliging, die in de _gratis_aankoop prijs is opgenomen. Sommige domeinen op het hoogste niveau worden beheerd door registraties die geen ondersteuning bieden voor privacy-bescherming en ze worden vermeld op de pagina **privacy-beveiliging** . |
 | Standaard hostnamen toewijzen | **www** en **\@** | Selecteer de gewenste hostnamen bindingen, indien gewenst. Wanneer de aankoop bewerking van het domein is voltooid, kan uw app worden geopend op de geselecteerde hostnamen. Als de app zich achter [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)bevindt, ziet u de optie voor het toewijzen van het hoofd domein (@) niet, omdat Traffic Manager geen records ondersteunt. U kunt wijzigingen aanbrengen in de hostname-toewijzingen nadat de domein aankoop is voltooid. |
 
 ### <a name="accept-terms-and-purchase"></a>Voor waarden accepteren en kopen

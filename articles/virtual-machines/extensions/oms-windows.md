@@ -3,7 +3,7 @@ title: Extensie van de virtuele machine Azure Monitor voor Windows
 description: Implementeer de Log Analytics-agent op virtuele Windows-machines met behulp van een extensie van een virtuele machine.
 services: virtual-machines-windows
 documentationcenter: ''
-author: axayjo
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/12/2019
 ms.author: akjosh
-ms.openlocfilehash: c9fd62e57d131fb21e657c53914f9cd5349107ec
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 072e30baa4ebb976a662019e5213f7eb26808a93
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073664"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969952"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-windows"></a>Extensie van de virtuele machine Azure Monitor voor Windows
 
@@ -36,19 +36,19 @@ Raadpleeg het [overzichts artikel log Analytics agent](../../azure-monitor/platf
 ### <a name="agent-and-vm-extension-version"></a>Versie agent en VM-extensie
 De volgende tabel bevat een overzicht van de versie van de Windows Azure Monitor VM-extensie en Log Analytics agent bundel voor elke release. 
 
-| Log Analytics bundel versie van Windows-agent | Windows VM-extensie versie Azure Monitor | Releasedatum | Releaseopmerkingen |
+| Log Analytics bundel versie van Windows-agent | Windows VM-extensie versie Azure Monitor | Releasedatum | Opmerkingen bij de release |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
 | 10.20.18011 | 1.0.18011 | Juli 2019 | <ul><li> Kleine oplossingen voor fouten en stabilisatie verbeteringen </li><li> Verhoogde MaxExpressionDepth tot 10000 </li></ul> |
 | 10.20.18001 | 1.0.18001 | Juni 2019 | <ul><li> Kleine oplossingen voor fouten en stabilisatie verbeteringen </li><li> De mogelijkheid om standaard referenties uit te scha kelen is toegevoegd bij het maken van een proxy verbinding (ondersteuning voor WINHTTP_AUTOLOGON_SECURITY_LEVEL_HIGH) </li></ul>|
 | 10.19.13515 | 1.0.13515 | Maart 2019 | <ul><li>Problemen met kleine stabilisatie </li></ul> |
-| 10.19.10006 | N.v.t. | Dec 2018 | <ul><li> Problemen met kleine stabilisatie </li></ul> | 
-| 8.0.11136 | N.v.t. | Sept 2018 |  <ul><li> Er is ondersteuning toegevoegd voor het detecteren van een wijziging in de resource-ID bij verplaatsen van de VM </li><li> Er is ondersteuning toegevoegd voor de resource-ID voor rapportage bij gebruik van een installatie zonder extensie </li></ul>| 
-| 8.0.11103 | N.v.t. |  April 2018 | |
+| 10.19.10006 | n.v.t. | Dec 2018 | <ul><li> Problemen met kleine stabilisatie </li></ul> | 
+| 8.0.11136 | n.v.t. | Sept 2018 |  <ul><li> Er is ondersteuning toegevoegd voor het detecteren van een wijziging in de resource-ID bij verplaatsen van de VM </li><li> Er is ondersteuning toegevoegd voor de resource-ID voor rapportage bij gebruik van een installatie zonder extensie </li></ul>| 
+| 8.0.11103 | n.v.t. |  April 2018 | |
 | 8.0.11081 | 1.0.11081 | Nov 2017 | | 
 | 8.0.11072 | 1.0.11072 | Sept 2017 | |
 | 8.0.11049 | 1.0.11049 | Feb 2017 | |
 
-### <a name="azure-security-center"></a>Azure Security Center
+### <a name="azure-security-center"></a>Azure Beveiligingscentrum
 
 Azure Security Center de Log Analytics agent automatisch te voorzien van een verbinding met de standaard Log Analytics-werk ruimte van het Azure-abonnement. Als u van Azure Security Center gebruikmaakt, niet uitgevoerd door de stappen in dit document. Als u dit doet, wordt de geconfigureerde werk ruimte overschreven en wordt de verbinding met Azure Security Center verbroken.
 
@@ -84,7 +84,7 @@ De volgende JSON toont het schema voor de uitbrei ding van de Log Analytics agen
 ```
 ### <a name="property-values"></a>Waarden van eigenschappen
 
-| Naam | Waarde / voorbeeld |
+| Name | Waarde / voorbeeld |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
@@ -95,6 +95,8 @@ De volgende JSON toont het schema voor de uitbrei ding van de Log Analytics agen
 
 \* de workspaceId wordt consumerId genoemd in de Log Analytics-API.
 
+> [Opmerking!] Zie Azure [Connect Windows computes to Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows)voor extra eigenschappen.
+
 ## <a name="template-deployment"></a>Sjabloonimplementatie
 
 Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sjablonen. Het JSON-schema dat in de vorige sectie wordt beschreven, kan worden gebruikt in een Azure Resource Manager sjabloon om de Log Analytics agent-extensie uit te voeren tijdens de implementatie van een Azure Resource Manager-sjabloon. Een voorbeeld sjabloon met de extensie van de Log Analytics agent-VM vindt u in de [Azure Quick Start-galerie](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm). 
@@ -102,7 +104,7 @@ Azure VM-extensies kunnen worden geïmplementeerd met Azure Resource Manager-sja
 >[!NOTE]
 >De sjabloon biedt geen ondersteuning voor het opgeven van meer dan één werk ruimte-ID en werkruimte sleutel wanneer u de agent wilt configureren om te rapporteren aan meerdere werk ruimten. Zie [een werk ruimte toevoegen of verwijderen](../../azure-monitor/platform/agent-manage.md#adding-or-removing-a-workspace)als u de agent wilt configureren om te rapporteren aan meerdere werk ruimten.  
 
-De JSON voor een extensie van een virtuele machine kan worden genest in de resource van de virtuele machine of worden geplaatst op het hoofd niveau of op de hoogste niveaus van een JSON-sjabloon van Resource Manager. De plaatsing van de JSON is van invloed op de waarde van de naam en het type van de resource. Zie voor meer informatie, [naam en type voor de onderliggende resources instellen](../../azure-resource-manager/child-resource-name-type.md). 
+De JSON voor een extensie van een virtuele machine kan worden genest in de resource van de virtuele machine of worden geplaatst op het hoofd niveau of op de hoogste niveaus van een JSON-sjabloon van Resource Manager. De plaatsing van de JSON is van invloed op de waarde van de naam en het type van de resource. Zie voor meer informatie, [naam en type voor de onderliggende resources instellen](../../azure-resource-manager/templates/child-resource-name-type.md). 
 
 In het volgende voor beeld wordt ervan uitgegaan dat de extensie Azure Monitor is genest in de resource van de virtuele machine. Wanneer het nesten van de extensie-resource, de JSON wordt geplaatst in de `"resources": []` object van de virtuele machine.
 

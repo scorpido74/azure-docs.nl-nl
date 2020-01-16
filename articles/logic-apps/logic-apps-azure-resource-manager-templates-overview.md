@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 000271095530e269472fba4bc5f1c5563aa16ff9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 41410d4e534d0940050521ecc86e8a384566f439
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428809"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972684"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Overzicht: de implementatie voor Azure Logic Apps automatiseren met behulp van Azure Resource Manager sjablonen
 
 Wanneer u klaar bent om het maken en implementeren van uw logische app te automatiseren, kunt u de onderliggende werk stroom definitie van uw logische app uitbreiden naar een [Azure Resource Manager sjabloon](../azure-resource-manager/management/overview.md). Met deze sjabloon worden de infra structuur, bronnen, para meters en andere gegevens gedefinieerd voor het inrichten en implementeren van uw logische app. Door para meters te definiëren voor waarden die variëren tijdens de implementatie, ook wel bekend als *parameterizing*, kunt u regel matig Logic Apps implementeren op basis van verschillende implementatie behoeften.
 
-Als u bijvoorbeeld in omgevingen implementeert voor ontwikkeling, testen en productie, gebruikt u waarschijnlijk verschillende verbindings reeksen voor elke omgeving. U kunt sjabloon parameters declareren die verschillende verbindings reeksen accepteren en deze teken reeksen vervolgens opslaan in een afzonderlijk [parameter bestand](../azure-resource-manager/templates/parameter-files.md). Op die manier kunt u deze waarden wijzigen zonder dat u de sjabloon hoeft bij te werken en opnieuw te implementeren. Voor scenario's waarbij u parameter waarden hebt die gevoelig zijn of moeten worden beveiligd, zoals wacht woorden en geheimen, kunt u deze waarden opslaan in [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) en uw para meters bestand laten ophalen die waarden bevatten. In deze scenario's zou u echter opnieuw implementeren om de huidige waarden op te halen.
+Als u bijvoorbeeld in omgevingen implementeert voor ontwikkeling, testen en productie, gebruikt u waarschijnlijk verschillende verbindings reeksen voor elke omgeving. U kunt sjabloon parameters declareren die verschillende verbindings reeksen accepteren en deze teken reeksen vervolgens opslaan in een afzonderlijk [parameter bestand](../azure-resource-manager/templates/parameter-files.md). Op die manier kunt u deze waarden wijzigen zonder dat u de sjabloon hoeft bij te werken en opnieuw te implementeren. Voor scenario's waarbij u parameter waarden hebt die gevoelig zijn of moeten worden beveiligd, zoals wacht woorden en geheimen, kunt u deze waarden opslaan in [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) en uw para meters bestand laten ophalen die waarden bevatten. In deze scenario's zou u echter opnieuw implementeren om de huidige waarden op te halen.
 
 In dit overzicht worden de kenmerken van een resource manager-sjabloon beschreven die een werk stroom definitie van een logische app bevat. Zowel de sjabloon als uw werk stroom definitie gebruiken JSON-syntaxis, maar er zijn enkele verschillen, omdat de definitie van de werk stroom ook het [taal schema voor de werk stroom definitie](../logic-apps/logic-apps-workflow-definition-language.md)volgt. Sjabloon expressies en werk stroom definitie-expressies verschillen bijvoorbeeld in de manier waarop ze [verwijzen naar para meters](#parameter-references) en de waarden die ze kunnen accepteren.
 
@@ -31,8 +31,8 @@ In de logische app voor voor beelden in dit onderwerp wordt gebruikgemaakt van e
 Zie de volgende onderwerpen voor meer informatie over Resource Manager-sjablonen:
 
 * [Structuur en syntaxis van Azure Resource Manager sjabloon](../azure-resource-manager/templates/template-syntax.md)
-* [Best practices voor Azure Resource Manager-sjablonen](../azure-resource-manager/template-best-practices.md)
-* [Azure Resource Manager-sjablonen voor consistentie van de cloud ontwikkelen](../azure-resource-manager/templates-cloud-consistency.md)
+* [Best practices voor Azure Resource Manager-sjablonen](../azure-resource-manager/templates/template-best-practices.md)
+* [Azure Resource Manager-sjablonen voor consistentie van de cloud ontwikkelen](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
 Voor voor beelden van Logic app-sjablonen raadpleegt u deze voor beelden:
 
@@ -149,7 +149,7 @@ Zie de volgende onderwerpen voor het beveiligen van sjabloon parameters:
 
 * [Beveiligings aanbevelingen voor sjabloon parameters](../azure-resource-manager/templates/template-best-practices.md#parameters)
 * [Sjabloon parameters beveiligen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
-* [Beveilig parameter waarden door geven Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+* [Beveilig parameter waarden door geven Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 Andere sjabloon objecten verwijzen vaak naar sjabloon parameters, zodat ze de waarden kunnen gebruiken die de sjabloon parameters door geven, bijvoorbeeld:
 
@@ -173,7 +173,7 @@ Hier volgen enkele aanbevolen procedures voor het definiëren van para meters:
 
   * [Sjabloon parameters beveiligen](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
-  * [Beveilig parameter waarden door geven Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+  * [Beveilig parameter waarden door geven Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 * Als u de namen van sjabloon parameters wilt onderscheiden van para meters van werk stroom definities, kunt u beschrijvende sjabloon parameter namen gebruiken, bijvoorbeeld: `TemplateFabrikamPassword`
 
@@ -188,7 +188,7 @@ Als u de waarden voor sjabloon parameters wilt opgeven, slaat u deze waarden op 
 * Bestands naam van sjabloon van logische app: **<*Logic-app-name*>. json**
 * Bestands naam van de para meters: **<*Logic-app-name*>. para meters. json**
 
-Hier volgt de structuur in het parameter bestand, met daarin een sleutel kluis referentie voor [het door geven van een veilige parameter waarde met Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md):
+Hier volgt de structuur in het parameter bestand, met daarin een sleutel kluis referentie voor [het door geven van een veilige parameter waarde met Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md):
 
 ```json
 {
@@ -409,7 +409,7 @@ Deze syntaxis laat zien waar u para meters kunt declareren op zowel de sjabloon-
 
 Voor een werk stroom definitie parameter die gevoelige informatie, wacht woorden, toegangs sleutels of geheimen verwerkt tijdens runtime, declareert of bewerkt u de para meter om het `securestring`-of `secureobject` parameter type te gebruiken. U kunt in de definitie van uw werk stroom verwijzen naar deze para meter. Op het hoogste niveau van de sjabloon declareert u een para meter met hetzelfde type voor het afhandelen van deze gegevens tijdens de implementatie.
 
-Als u de waarde voor de para meter voor de werk stroom definitie wilt instellen, gebruikt u het `parameters`-object dat *zich buiten* uw werk stroom definitie bevindt, maar nog *in* de resource definitie van de logische app om te verwijzen naar de sjabloon parameter. Ten slotte, als u de waarde wilt door geven aan de sjabloon parameter tijdens de implementatie, slaat u die waarde op in [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md) en verwijst u naar die sleutel kluis in het [parameter bestand](#template-parameter-files) dat wordt gebruikt door uw sjabloon tijdens de implementatie.
+Als u de waarde voor de para meter voor de werk stroom definitie wilt instellen, gebruikt u het `parameters`-object dat *zich buiten* uw werk stroom definitie bevindt, maar nog *in* de resource definitie van de logische app om te verwijzen naar de sjabloon parameter. Ten slotte, als u de waarde wilt door geven aan de sjabloon parameter tijdens de implementatie, slaat u die waarde op in [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md) en verwijst u naar die sleutel kluis in het [parameter bestand](#template-parameter-files) dat wordt gebruikt door uw sjabloon tijdens de implementatie.
 
 In deze voorbeeld sjabloon ziet u hoe u deze taken kunt volt ooien door zo nodig beveiligde para meters te definiëren, zodat u hun waarden in Azure Key Vault kunt opslaan:
 
@@ -558,7 +558,7 @@ Volg de volgende aanbevolen procedures om ervoor te zorgen dat de Logic app Desi
 
   * [Beveiligings aanbevelingen voor para meters in werk stroom definities](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-workflow)
 
-  * [Beveilig parameter waarden door geven Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+  * [Beveilig parameter waarden door geven Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 Zie [para meters-werk stroom definitie taal](../logic-apps/logic-apps-workflow-definition-language.md#parameters)voor meer informatie over para meters voor de werk stroom definitie.
 
@@ -652,7 +652,7 @@ De resource definitie van uw logische app werkt ook op de volgende manieren met 
 
 * *Buiten* uw werk stroom definitie, maar nog steeds *binnen* de resource definitie van de logische app, stelt een andere `parameters`-object de waarden in die tijdens runtime worden gebruikt voor de para meter `$connections` door te verwijzen naar de bijbehorende sjabloon parameters. Deze waarden maken gebruik van sjabloon expressies om te verwijzen naar resources die de meta gegevens veilig opslaan voor de verbindingen in uw logische app.
 
-  Meta gegevens kunnen bijvoorbeeld verbindings reeksen en toegangs tokens bevatten, die u in [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)kunt opslaan. Als u deze waarden wilt door geven aan de sjabloon parameters, verwijst u naar de sleutel kluis in het [parameter bestand](#template-parameter-files) dat wordt gebruikt door uw sjabloon tijdens de implementatie. Zie [verwijzingen naar para meters](#parameter-references) verderop in dit onderwerp voor meer informatie over verschillen bij het verwijzen naar para meters.
+  Meta gegevens kunnen bijvoorbeeld verbindings reeksen en toegangs tokens bevatten, die u in [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)kunt opslaan. Als u deze waarden wilt door geven aan de sjabloon parameters, verwijst u naar de sleutel kluis in het [parameter bestand](#template-parameter-files) dat wordt gebruikt door uw sjabloon tijdens de implementatie. Zie [verwijzingen naar para meters](#parameter-references) verderop in dit onderwerp voor meer informatie over verschillen bij het verwijzen naar para meters.
 
   Wanneer u de werk stroom definitie van de logische app opent in de code weergave via de Azure Portal of Visual Studio, wordt het `$connections`-object buiten de werk stroom definitie weer gegeven, maar op hetzelfde niveau. Deze volg orde in de code weergave maakt het gemakkelijker om deze para meters te raadplegen wanneer u de werk stroom definitie hand matig bijwerkt:
 
@@ -744,7 +744,7 @@ In dit voor beeld ziet u de interacties tussen de resource definitie van uw logi
 
 ### <a name="secure-connection-parameters"></a>Para meters voor veilige verbinding
 
-Voor een verbindings parameter die gevoelige informatie, wacht woorden, toegangs sleutels of geheimen verwerkt, bevat de resource definitie van de verbinding een `parameterValues`-object waarin deze waarden worden opgegeven in de notatie naam/waarde-paar. Als u deze informatie wilt verbergen, kunt u de sjabloon parameters voor deze waarden declareren of bewerken met behulp van de para meters `securestring` of `secureobject`. U kunt deze informatie vervolgens opslaan in [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md). Als u deze waarden wilt door geven aan de sjabloon parameters, verwijst u naar de sleutel kluis in het [parameter bestand](#template-parameter-files) dat wordt gebruikt door uw sjabloon tijdens de implementatie.
+Voor een verbindings parameter die gevoelige informatie, wacht woorden, toegangs sleutels of geheimen verwerkt, bevat de resource definitie van de verbinding een `parameterValues`-object waarin deze waarden worden opgegeven in de notatie naam/waarde-paar. Als u deze informatie wilt verbergen, kunt u de sjabloon parameters voor deze waarden declareren of bewerken met behulp van de para meters `securestring` of `secureobject`. U kunt deze informatie vervolgens opslaan in [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md). Als u deze waarden wilt door geven aan de sjabloon parameters, verwijst u naar de sleutel kluis in het [parameter bestand](#template-parameter-files) dat wordt gebruikt door uw sjabloon tijdens de implementatie.
 
 Hier volgt een voor beeld waarin de account naam en toegangs sleutel voor een Azure Blob Storage-verbinding worden geboden:
 
@@ -1011,7 +1011,7 @@ Zie de volgende onderwerpen voor meer informatie over het werken met Service-pri
 
 ## <a name="references-to-parameters"></a>Verwijzingen naar para meters
 
-Als u wilt verwijzen naar sjabloon parameters, kunt u sjabloon expressies gebruiken met [sjabloon functies](../azure-resource-manager/resource-group-template-functions.md), die tijdens de implementatie worden geëvalueerd. Sjabloon expressies gebruiken vier Kante haken ( **[]** ):
+Als u wilt verwijzen naar sjabloon parameters, kunt u sjabloon expressies gebruiken met [sjabloon functies](../azure-resource-manager/templates/template-functions.md), die tijdens de implementatie worden geëvalueerd. Sjabloon expressies gebruiken vier Kante haken ( **[]** ):
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 

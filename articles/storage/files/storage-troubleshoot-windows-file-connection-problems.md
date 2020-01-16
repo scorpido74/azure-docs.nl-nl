@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4a5ab0b0ae76f3c646df42953c1602c63a274824
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a466601bb68e9cec72408a590f2aec3d3dbfbf93
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457387"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968261"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Problemen met Azure Files oplossen in Windows
 
@@ -185,7 +185,7 @@ Mogelijk ziet u trage prestaties wanneer u bestanden probeert over te brengen na
 -   Als u de uiteindelijke grootte kent van een bestand dat u uitbreidt met schrijf bewerkingen, en uw software geen compatibiliteits problemen heeft wanneer de niet-genoteerde staart van het bestand nullen bevat, moet u de bestands grootte vooraf instellen in plaats van elke schrijf bewerking uit te voeren.
 -   Gebruik de juiste Kopieer methode:
     -   Gebruik [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) voor elke overdracht tussen twee bestands shares.
-    -   Gebruik [Robocopy](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/) tussen bestands shares op een on-premises computer.
+    -   Gebruik [Robocopy](/azure/storage/files/storage-files-deployment-guide#robocopy) tussen bestands shares op een on-premises computer.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Overwegingen voor Windows 8,1 of Windows Server 2012 R2
 

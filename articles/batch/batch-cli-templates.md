@@ -2,21 +2,21 @@
 title: End-to-end-taken uitvoeren met behulp van sjablonen-Azure Batch | Microsoft Docs
 description: Maak batch-Pools,-taken en-taken met sjabloon bestanden en de Azure CLI.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.workload: big-compute
 ms.date: 12/07/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 4733cf1a83bec472baae42f2ac29636bff5fc324
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2612986491268651222e51646e75cdecc95dc40c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095316"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029735"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Azure Batch CLI-sjablonen en-bestands overdracht gebruiken
 
@@ -45,7 +45,7 @@ Taken gebruiken meestal invoer gegevensbestand en produceren uitvoer gegevens be
 
 -   Een eind gebruiker met een set video bestanden voor trans code maakt eerst een pool met behulp van de groeps sjabloon, waarbij alleen de groeps-ID en het aantal vereiste Vm's worden opgegeven. Ze kunnen vervolgens de bron bestanden uploaden naar transcoderen. Een taak kan vervolgens worden verzonden met behulp van de taak sjabloon, waarbij alleen de groeps-ID en de locatie van de geüploade bron bestanden worden opgegeven. De batch-taak is gemaakt, waarbij één taak per invoer bestand wordt gegenereerd. Ten slotte kan de gedecodeerde uitvoer bestanden worden gedownload.
 
-## <a name="installation"></a>Installatie
+## <a name="installation"></a>Installeren
 
 Als u de Azure Batch CLI-extensie wilt installeren, installeert u eerst [de Azure cli 2,0](/cli/azure/install-azure-cli)of voert u de Azure CLI uit in [Azure Cloud shell](../cloud-shell/overview.md).
 
@@ -143,7 +143,7 @@ Als het sjabloon bestand _groep-ffmpeg. json_heet, roept u de sjabloon als volgt
 az batch pool create --template pool-ffmpeg.json
 ```
 
-De CLI vraagt u om waarden op te geven `poolId` voor `nodeCount` de para meters en. U kunt ook de para meters opgeven in een JSON-bestand. Bijvoorbeeld:
+De CLI vraagt u om waarden op te geven voor de para meters `poolId` en `nodeCount`. U kunt ook de para meters opgeven in een JSON-bestand. Bijvoorbeeld:
 
 ```json
 {
@@ -260,7 +260,7 @@ U kunt een batch-CLI-sjabloon uploaden naar de [batch Explorer](https://github.c
 
 Een sjabloon uploaden:
 
-1. Selecteer in batch Explorer **Galerie** > **lokale sjablonen**.
+1. Selecteer in Batch Explorer **galerie** > **lokale sjablonen**.
 
 2. Selecteer een lokale groep of een taak sjabloon of sleep en zet deze neer.
 

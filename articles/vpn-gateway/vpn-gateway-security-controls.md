@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2c32f46ca85007608b5e17f2bf77b0a8f0fb8397
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: cdf616b29a93e786ef26af83b5d3b3541f94d67c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862744"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972284"
 ---
 # <a name="security-controls-for-azure-vpn-gateway"></a>Beveiligings controles voor Azure VPN Gateway
 
@@ -36,7 +36,7 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 |---|---|--|
 | Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Ja | Zie [Azure monitor Diagnostische logboeken/waarschuwing](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Azure monitor metrieken/waarschuwing](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
 | Logboek registratie en controle op het vlak van controle en beheer| Ja | Azure Resource Manager activiteiten logboek. |
-| Logboek registratie en controle van het gegevens vlak | Ja | [Diagnostische logboeken Azure monitor](../azure-resource-manager/resource-group-audit.md) voor logboek registratie en controle van de VPN-verbinding. |
+| Logboek registratie en controle van het gegevens vlak | Ja | [Diagnostische logboeken Azure monitor](../azure-resource-manager/management/view-activity-logs.md) voor logboek registratie en controle van de VPN-verbinding. |
 
 ## <a name="identity"></a>Identity
 
@@ -59,7 +59,7 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Ondersteuning voor configuratie beheer (versie van configuratie, enz.)| Ja | Voor beheer bewerkingen kan de status van een configuratie van een Azure VPN-gateway worden geëxporteerd als een Azure Resource Manager sjabloon en in de loop van de tijd. | 
+| Ondersteuning voor configuratie beheer (versie van configuratie, enz.)| Ja | Voor beheer bewerkingen kan de status van een configuratie van een Azure VPN-gateway worden geëxporteerd als een Azure Resource Manager sjabloon en in de loop van de tijd. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

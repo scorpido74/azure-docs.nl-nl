@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: rohogue
-ms.openlocfilehash: 19f31a2fafc112f499ff87eed23843915cab32a2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 28278f76497d6e9d0fee221bb4ef32fe6d369db0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414227"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966655"
 ---
 # <a name="disaster-recovery-guidance-for-avere-vfxt-for-azure"></a>Richt lijnen voor herstel na nood gevallen voor avere vFXT voor Azure
 
@@ -60,7 +60,7 @@ In deze sectie vindt u tips voor het verder beschermen van uw gegevens in Blob S
 Best practices voor het beveiligen van gegevens in Azure Blob Storage zijn onder andere:
 
 * Kopieer uw kritieke gegevens regel matig naar een ander opslag account in een andere regio (zo vaak als bepaald door uw plan voor herstel na nood gevallen).
-* De toegang tot gegevens op alle doel systemen beheren om onbedoeld verwijderen of beschadiging te voor komen. Overweeg het gebruik van [resource vergrendelingen](../azure-resource-manager/resource-group-lock-resources.md) voor gegevens opslag.
+* De toegang tot gegevens op alle doel systemen beheren om onbedoeld verwijderen of beschadiging te voor komen. Overweeg het gebruik van [resource vergrendelingen](../azure-resource-manager/management/lock-resources.md) voor gegevens opslag.
 * Schakel de functie avere vFXT voor Azure- [Cloud momentopname](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_snapshot_policies.html>) in voor uw BLOB-kern bestanden.
 
 ### <a name="copy-avere-vfxt-core-filer-data-to-a-backup-account"></a>AVERE vFXT-kern gegevensbestand kopiëren naar een back-upaccount

@@ -10,21 +10,24 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 8fe07318d33980ad3ec9fc3d6e8749c6c9aed42e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3c2cc3c280ba0da474898bed93bb8533a42ab07f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442552"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967352"
 ---
 # <a name="configure-a-custom-domain-name"></a>Een aangepaste domeinnaam configureren
 
-Wanneer u een Azure API Management service-exemplaar maakt, wijst Azure hieraan een subdomein van azure-api.net toe (bijvoorbeeld `apim-service-name.azure-api.net`). U kunt uw API Management-eind punten echter beschikbaar maken met uw eigen aangepaste domein naam, zoals **contoso.com**. Deze zelf studie laat zien hoe u een bestaande aangepaste DNS-naam toewijst aan eind punten die door een API Management-exemplaar worden weer gegeven.
+Wanneer u een Azure API Management service-exemplaar maakt, wijst Azure hieraan een subdomein van `azure-api.net` toe (bijvoorbeeld `apim-service-name.azure-api.net`). U kunt uw API Management-eind punten echter beschikbaar maken met uw eigen aangepaste domein naam, zoals **contoso.com**. Deze zelf studie laat zien hoe u een bestaande aangepaste DNS-naam toewijst aan eind punten die door een API Management-exemplaar worden weer gegeven.
+
+> [!IMPORTANT]
+> API Management accepteert alleen aanvragen met de waarden van de [host-header](https://tools.ietf.org/html/rfc2616#section-14.23) die overeenkomen met de standaard domein naam of een van de geconfigureerde aangepaste domein namen.
 
 > [!WARNING]
-> Klanten die een certificaat willen gebruiken om de beveiliging van hun toepassingen te verbeteren, moeten gebruikmaken van een aangepaste domein naam > en een certificaat dat ze beheren, niet het standaard certificaat. Klanten die het standaard certificaat vastmaken, worden in plaats daarvan > een vaste afhankelijkheid te maken van de eigenschappen van het certificaat dat ze niet beheren. Dit is geen aanbevolen procedure.
+> Klanten die een certificaat willen gebruiken om de beveiliging van hun toepassingen te verbeteren, moeten gebruikmaken van een aangepaste domein naam > en een certificaat dat ze beheren, niet het standaard certificaat. Klanten die het standaard certificaat in plaats daarvan vastmaken, nemen een vaste afhankelijkheid op de eigenschappen van het certificaat die ze niet beheren. Dit is geen aanbevolen procedure.
 
 ## <a name="prerequisites"></a>Vereisten
 

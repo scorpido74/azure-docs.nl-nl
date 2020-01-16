@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 0e0adef2728ef75dc67f02fdf38b6638965df62f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7efae8fb3c00868e2740eac2d4d5bcb3c82f663a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756873"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977543"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Prijs model in Azure Cosmos DB 
 
@@ -32,7 +32,7 @@ Het prijs model in Azure Cosmos DB is consistent voor alle Api's. Zie [hoe Azure
 
 Op dit moment is de minimum prijs voor zowel de Data Base als de door Voer op basis van een container $24/maand (Zie de [pagina met Azure Cosmos DB prijzen](https://azure.microsoft.com/pricing/details/cosmos-db/) voor de meest recente informatie. Als uw werk belasting meerdere containers gebruikt, kan deze worden geoptimaliseerd voor kosten met behulp van de door Voer van het data base-niveau, omdat door Voer via database niveau een wille keurig aantal containers in een Data Base met de door Voer tussen de containers kan worden gedeeld. De volgende tabel bevat een overzicht van de ingerichte door Voer en de kosten voor verschillende entiteiten:
 
-|**Vennootschap**  | **Minimale door Voer & kosten** |**Schaal verhogingen & kosten** |**Inrichtings bereik** |
+|**Entiteit**  | **Minimale door Voer & kosten** |**Schaal verhogingen & kosten** |**Inrichtings bereik** |
 |---------|---------|---------|-------|
 |Database    | 400 RU/s ($ 24/maand)    | 100 RU/s ($ 6/maand)   |De door Voer is gereserveerd voor de data base en wordt gedeeld door containers in de data base |
 |Container     | 400 RU/s ($ 24/maand)    | 100 RU/s ($ 6/maand)  |De door Voer is gereserveerd voor een specifieke container |
@@ -43,7 +43,7 @@ Zoals u in de voor gaande tabel ziet, begint de minimale door Voer in Azure Cosm
 
 Azure Cosmos DB biedt gratis verschillende opties voor ontwikkel aars. Het gaat om deze opties:
 
-* **Gratis Azure-account**: Azure biedt een [gratis laag](https://azure.microsoft.com/free/) met $200 in azure-tegoed voor de eerste 30 dagen en een beperkt aantal gratis services gedurende 12 maanden. Zie [Gratis Azure-account](../billing/billing-avoid-charges-free-account.md) voor meer informatie. Azure Cosmos DB maakt deel uit van een gratis Azure-account. Met name voor Azure Cosmos DB biedt deze gratis account 5 GB opslag ruimte en 400 RUs van ingerichte door Voer voor het hele jaar. 
+* **Gratis Azure-account**: Azure biedt een [gratis laag](https://azure.microsoft.com/free/) met $200 in azure-tegoed voor de eerste 30 dagen en een beperkt aantal gratis services gedurende 12 maanden. Zie [Gratis Azure-account](../cost-management-billing/manage/avoid-charges-free-account.md) voor meer informatie. Azure Cosmos DB maakt deel uit van een gratis Azure-account. Met name voor Azure Cosmos DB biedt deze gratis account 5 GB opslag ruimte en 400 RUs van ingerichte door Voer voor het hele jaar. 
 
 * **Probeer Azure Cosmos DB gratis**: Azure Cosmos DB biedt een tijdrovende ervaring met behulp van de Azure Cosmos DB voor gratis accounts. U kunt een Azure Cosmos DB account maken, data bases en verzamelingen maken en een voorbeeld toepassing uitvoeren met behulp van de Quick starts en zelf studies. U kunt de voorbeeld toepassing uitvoeren zonder u te abonneren op een Azure-account of uw credit card te gebruiken. [Probeer Azure Cosmos DB gratis](https://azure.microsoft.com/try/cosmosdb/) aanbiedingen Azure Cosmos DB gedurende één maand, waarbij u uw account een wille keurig aantal keren kunt verlengen.
 

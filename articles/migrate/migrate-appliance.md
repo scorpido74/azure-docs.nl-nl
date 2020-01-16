@@ -3,30 +3,26 @@ title: Azure Migrate-apparaat
 description: Biedt een overzicht van het Azure Migrate apparaat dat in Server evaluatie en-migratie wordt gebruikt.
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: c3ac39759cc096bb27535877084e14f4ed50cea9
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: efad1c48dd2c92c0fd5f268013b4a59f34b3a766
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75719576"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028820"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
-In dit artikel wordt het Azure Migrate apparaat beschreven. U implementeert het apparaat wanneer u Azure Migrate-hulpprogram ma's voor evaluatie en migratie gebruikt om apps, infra structuur en werk belastingen te detecteren, te evalueren en te migreren naar Microsoft Azure. 
-
-[Azure migrate](migrate-services-overview.md) biedt een centrale hub voor het bijhouden van de detectie, beoordeling en migratie van uw on-premises apps en workloads, en persoonlijke/open bare Cloud-Vm's naar Azure. De hub biedt Azure Migrate-hulpprogram ma's voor evaluatie en migratie, evenals onafhankelijke ISV'S-aanbiedingen (Independent Software Vendor) van derden.
-
-
+In dit artikel wordt het Azure Migrate apparaat beschreven. U implementeert het apparaat wanneer u [Azure migrate gebruikt: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) hulp programma voor het detecteren en beoordelen van apps, infra structuur en workloads voor migratie naar Microsoft Azure. Het apparaat wordt ook gebruikt wanneer u virtuele VMware-machines naar Azure migreert met behulp van [Azure migrate: Server evaluatie](migrate-services-overview.md#azure-migrate-server-migration-tool) met [migratie zonder agent](server-migrate-overview.md).
 
 ## <a name="appliance-overview"></a>Overzicht van apparaten
 
-De typen apparaten en het gebruik van Azure Migrate zijn als volgt.
+Het Azure Migrate apparaat wordt gebruikt in de volgende scenario's.
 
 **Scenario** | **Hulpprogramma** | **Gebruikt voor** 
---- | --- 
-VMware-VM | Azure Migrate: Server evaluatie; Azure Migrate: Server migratie | VMware-Vm's detecteren<br/><br/> Apps en afhankelijkheden detecteren<br/><br/> Meta gegevens en prestaties van meta gegevens van machines voor evaluaties verzamelen.<br/><br/> Virtuele VMware-machines repliceren met migratie zonder agent.
+--- | --- | ---
+VMware-VM | Azure Migrate: Server evaluatie<br/><br/> Azure Migrate: Server migratie | VMware-Vm's detecteren<br/><br/> Machine-apps en-afhankelijkheden detecteren<br/><br/> Meta gegevens en prestaties van meta gegevens van machines voor evaluaties verzamelen.<br/><br/> Virtuele VMware-machines repliceren met migratie zonder agent.
 Hyper-V VM | Azure Migrate: Server evaluatie | Virtuele Hyper-V-machines detecteren<br/><br/> Meta gegevens en prestaties van meta gegevens van machines voor evaluaties verzamelen.
-Fysieke machine |  Azure Migrate: beoordelings programma |  Fysieke servers detecteren<br/><br/> Meta gegevens en prestaties van meta gegevens van machines voor evaluaties verzamelen.
+Fysieke machine |  Azure Migrate: Server evaluatie |  Fysieke servers detecteren<br/><br/> Meta gegevens en prestaties van meta gegevens van machines voor evaluaties verzamelen.
 
 ## <a name="appliance---vmware"></a>Apparaat-VMware 
 
@@ -36,12 +32,14 @@ Fysieke machine |  Azure Migrate: beoordelings programma |  Fysieke servers dete
 **Downloadkoppeling** | https://aka.ms/migrate/appliance/vmware 
 **Download grootte** | 11,2 GB
 **Licentie** | De sjabloon voor het gedownloade apparaat wordt geleverd met een Windows Server 2016-evaluatie licentie, die voor 180 dagen geldig is. Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
+**Implementatie** | U implementeert het apparaat als een virtuele VMware-machine. U hebt voldoende resources op de vCenter Server nodig om een virtuele machine toe te wijzen met 32 GB RAM, 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch.<br/><br/> Voor het apparaat is toegang tot internet vereist, hetzij rechtstreeks hetzij via een proxy.<br/> De toestel-VM moet worden geïmplementeerd op een ESXi-host waarop versie 5,5 of hoger wordt uitgevoerd.<br/><br/> Het apparaat kan verbinding maken met één vCenter Server.
 **Hardware** | Resources in vCenter om een virtuele machine toe te wijzen met 32 GB RAM 8 Vcpu's, ongeveer 80 GB aan schijf opslag en een externe virtuele switch. 
 **Hash-waarde** | MD5: c06ac2a2c0f870d3b274a0b7a73b78b1<br/><br/> SHA256:4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 **vCenter-Server/host** | De toestel-VM moet worden geïmplementeerd op een ESXi-host waarop versie 5,5 of hoger wordt uitgevoerd.<br/><br/> vCenter Server met 5,5, 6,0, 6,5 of 6,7.
 **Azure Migrate project** | Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
 **Detectie** | Een apparaat kan tot 10.000 VMware-Vm's detecteren op een vCenter Server.<br/> Een apparaat kan verbinding maken met één vCenter Server.
 **Toestel onderdelen** | Beheer-app: Web-app in het apparaat voor gebruikers invoer tijdens de implementatie.<br/> Detectie agent: verzamelt computer configuratie gegevens.<br/> Beoordelings agent: prestatie gegevens verzamelen.<br/> DRA: organiseert de replicatie van de virtuele machine en coördineert de communicatie tussen computers/Azure.<br/> Gateway: verstuurt gerepliceerde gegevens naar Azure.<br/> Service voor automatische updates: onderdelen bijwerken (elke 24 uur wordt uitgevoerd).
+**VDDK (migratie zonder agent)** | Als u een migratie zonder agent uitvoert met Azure Migrate server migratie, moet de VMware vSphere VDDK zijn geïnstalleerd op de apparaat-VM).
 
 
 ## <a name="appliance---hyper-v"></a>Apparaat-Hyper-V
@@ -52,12 +50,13 @@ Fysieke machine |  Azure Migrate: beoordelings programma |  Fysieke servers dete
 **Downloadkoppeling** | https://aka.ms/migrate/appliance/hyperv 
 **Download grootte** | 10 GB
 **Licentie** | De sjabloon voor het gedownloade apparaat wordt geleverd met een Windows Server 2016-evaluatie licentie, die voor 180 dagen geldig is. Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
+**Implementatie van het apparaat**   |  U implementeert het apparaat als een Hyper-V-VM.<br/> De apparaat-VM van Azure Migrate is Hyper-V VM versie 5,0.<br/> Op de Hyper-V-host moet Windows Server 2012 R2 of later worden uitgevoerd.<br/> De host moet voldoende ruimte hebben om 16 GB RAM-geheugen, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte toe te wijzen en een externe switch voor de apparaat-VM.<br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en Internet toegang.
 **Hardware** | Resources op de Hyper-V-host om 16 GB RAM-geheugen, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte toe te wijzen en een externe switch voor de apparaat-VM.
 **Hash-waarde** | MD5:29a7531f32bcf69f32d964fa5ae950bc<br/><br/> SHA256:37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 **Hyper-V-host** | Met Windows Server 2012 R2 of hoger.
 **Azure Migrate project** | Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
 **Detectie** | Een apparaat kan tot 5000 VMware-Vm's detecteren op een vCenter Server.<br/> Een apparaat kan verbinding maken met Maxi maal 300 Hyper-V-hosts.
-**Toestel onderdelen** | Beheer-app: Web-app in het apparaat voor gebruikers invoer tijdens de implementatie.<br/> Detectie agent: verzamelt computer configuratie gegevens.<br/> Beoordelings agent: prestatie gegevens verzamelen.<br/>  Service voor automatische updates: onderdelen bijwerken (elke 24 uur wordt uitgevoerd)
+**Toestel onderdelen** | Beheer-app: Web-app in het apparaat voor gebruikers invoer tijdens de implementatie.<br/> Detectie agent: verzamelt computer configuratie gegevens.<br/> Beoordelings agent: prestatie gegevens verzamelen.<br/>  Service voor automatische updates: onderdelen bijwerken (elke 24 uur wordt uitgevoerd).
 
 
 ## <a name="appliance---physical"></a>Apparaat-fysiek
@@ -67,13 +66,15 @@ Fysieke machine |  Azure Migrate: beoordelings programma |  Fysieke servers dete
 **Indeling voor downloaden** | Gezipte map (met Power shell-installatie script)
 **Downloadkoppeling** | [Downloadkoppeling](https://go.microsoft.com/fwlink/?linkid=2105112)
 **Download grootte** | 59,7 MB
-**Hardware** | Voor een machine met een apparaat is 16 GB RAM, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte nodig.
+**Hardware** | Toegewezen fysieke machine of VM. Voor de computer met het apparaat is 16 GB RAM, 8 Vcpu's, ongeveer 80 GB aan opslag ruimte en een externe switch vereist.<br/><br/> Het apparaat heeft een statisch of dynamisch IP-adres nodig en Internet toegang.
 **Hash-waarde** | MD5:96fd99581072c400aa605ab036a0a7c0<br/><br/> SHA256: f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
-**Software** | Apparaatapparaat moet Windows Server 2016 uitvoeren. De server moet een toegewezen fysieke server of een virtuele machine zijn.
-**Azure Migrate project** | Een apparaat kan worden gekoppeld aan een enkel project. <br/> Een wille keurig aantal apparaten kan aan één project worden gekoppeld.<br/> 
+**Software** | Apparaatapparaat moet Windows Server 2016 uitvoeren. 
+**Implementatie van het apparaat**   |  Het toestel installatie script wordt gedownload van de portal (in een gezipte map). <br/> U comprimeert de map en voert het Power shell-script (AzureMigrateInstaller. ps1) uit.
 **Detectie** | Een apparaat kan Maxi maal 250 fysieke servers detecteren.
 **Toestel onderdelen** | Beheer-app: Web-app in het apparaat voor gebruikers invoer tijdens de implementatie.<br/> Detectie agent: verzamelt computer configuratie gegevens.<br/> Beoordelings agent: prestatie gegevens verzamelen.<br/>  Service voor automatische updates: onderdelen bijwerken (elke 24 uur wordt uitgevoerd).
-**Toegang/poorten** | Nadat u het apparaat hebt geconfigureerd, binnenkomende verbindingen op TCP-poort 3389 om extern bureau blad-verbindingen met het apparaat toe te staan.<br/><br/> Binnenkomende verbindingen op poort 44368 voor externe toegang tot de app voor het beheren van apparaten met behulp van de URL: ' https://< apparaat-IP-of-name >: 44368.<br/><br/> Uitgaande verbindingen op poort 443, 5671 en 5672 voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
+**Poort toegang** | Nadat u het apparaat hebt geconfigureerd, binnenkomende verbindingen op TCP-poort 3389 om extern bureau blad-verbindingen met het apparaat toe te staan.<br/><br/> Binnenkomende verbindingen op poort 44368 voor externe toegang tot de app voor het beheren van apparaten met behulp van de URL: ' https://< apparaat-IP-of-name >: 44368.<br/><br/> Uitgaande verbindingen op poort 443, 5671 en 5672 voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
+
+
 
 ## <a name="url-access"></a>URL-toegang
 
@@ -90,11 +91,13 @@ Het Azure Migrate-apparaat heeft verbinding met internet nodig.
 management.azure.com | Maak Active Directory apps voor het apparaat om te communiceren met de Azure Migrate-service.
 dc.services.visualstudio.com | App-logboeken uploaden die worden gebruikt voor interne bewaking.
 *.vault.azure.net | Geheimen beheren in de Azure Key Vault.
-aka.ms/* | Toegang tot ook wel-koppelingen toestaan.
+aka.ms/* | Toegang tot ook wel-koppelingen toestaan. Wordt gebruikt voor Azure Migrate apparaat-updates.
 download.microsoft.com/download | Down loads van micro soft downloaden toestaan.
-*.servicebus.windows.net | Communicatie tussen het apparaat en de Azure Migrate service.
-*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Verbinding maken met Azure Migrate service-Url's.
-*.blob.core.windows.net | Gegevens uploaden naar opslag accounts.
+*.servicebus.windows.net | Wordt gebruikt voor VMware-migratie zonder agent.<br/><br/> Communicatie tussen het apparaat en de Azure Migrate service.
+*.discoverysrv.windowsazure.com <br/> *.migration.windowsazure.com <br/> *.hypervrecoverymanager.windowsazure.com | Wordt gebruikt voor VMware-migratie zonder agent.<br/><br/> Verbinding maken met Azure Migrate service-Url's.
+*.blob.core.windows.net |  Wordt gebruikt voor VMware-migratie zonder agent.<br/><br/>Gegevens uploaden naar opslag.
+
+
 
 
 ## <a name="collected-data---vmware"></a>Verzamelde gegevens-VMware

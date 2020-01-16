@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 1799acdc7a6969d88936705006d67a6ea832fd81
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 201d0c0a545c5ba7ae1bb0b5e119f7acb1ae362f
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300285"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029965"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Azure import/export-service gebruiken om gegevens te importeren in Azure Files
 
@@ -26,8 +26,8 @@ De import/export-service ondersteunt alleen het importeren van Azure Files naar 
 Voordat u een import taak maakt om gegevens over te dragen naar Azure Files, moet u de volgende lijst met vereisten zorgvuldig door nemen en volt ooien. U moet het volgende doen:
 
 - Een actief Azure-abonnement hebben om te gebruiken met de import/export-service.
-- Ten minste één Azure Storage account hebben. Zie de lijst met [ondersteunde opslag accounts en opslag typen voor de import/export-service](storage-import-export-requirements.md). Zie [een opslag account maken](storage-quickstart-create-account.md)voor meer informatie over het maken van een nieuw opslag account.
-- Voldoende aantal schijven van [ondersteunde typen](storage-import-export-requirements.md#supported-disks)hebben. 
+- Ten minste één Azure Storage account hebben. Zie de lijst met [ondersteunde opslag accounts en opslag typen voor de import/export-service](storage-import-export-requirements.md). Zie voor meer informatie over het maken van een nieuw opslagaccount [over het maken van een Storage-Account](storage-account-create.md).
+- Voldoende aantal schijven van [ondersteunde typen](storage-import-export-requirements.md#supported-disks)hebben.
 - Een Windows-systeem met een [ondersteunde besturingssysteem versie](storage-import-export-requirements.md#supported-operating-systems)hebben.
 - [Down load de WAImportExport-versie 2](https://aka.ms/waiev2) op het Windows-systeem. Unzip de standaard map `waimportexport`. Bijvoorbeeld `C:\WaImportExport`.
 - Een FedEx/DHL-account hebben. Als u een andere transporteur dan FedEx/DHL wilt gebruiken, neemt u contact op met Azure Data Box Operations-team op `adbops@microsoft.com`.  
@@ -35,9 +35,9 @@ Voordat u een import taak maakt om gegevens over te dragen naar Azure Files, moe
     - Genereer een tracking nummer voor de export taak.
     - Elke taak moet een afzonderlijk tracking nummer hebben. Meerdere taken met hetzelfde tracking nummer worden niet ondersteund.
     - Als u geen draaggolf account hebt, gaat u naar:
-        - [Een FedEX-account maken](https://www.fedex.com/en-us/create-account.html)of 
+        - [Een FedEX-account maken](https://www.fedex.com/en-us/create-account.html)of
         - [Maak een DHL-account](http://www.dhl-usa.com/en/express/shipping/open_account.html).
- 
+
 
 
 ## <a name="step-1-prepare-the-drives"></a>Stap 1: de stations voorbereiden
@@ -50,32 +50,32 @@ Voer de volgende stappen uit om de stations voor te bereiden.
 2. Maak één NTFS-volume op elk station. Wijs een stationsletter aan het volume toe. Gebruik mountpoints niet.
 3. Wijzig het bestand *DataSet. CSV* in de hoofdmap waarin het hulp programma zich bevindt. Afhankelijk van of u een bestand of map of beide wilt importeren, voegt u in het bestand *DataSet. CSV* vermeldingen toe die vergelijkbaar zijn met de volgende voor beelden.  
 
-   - **Een bestand importeren**: in het volgende voor beeld bevindt de te kopiëren gegevens zich in station C:. Het bestand *MyFile1. txt* wordt gekopieerd naar de hoofdmap van de *MyAzureFileshare1*. Als de *MyAzureFileshare1* niet bestaat, wordt deze in het Azure Storage-account gemaakt. De mapstructuur wordt behouden.
+   - **Een bestand importeren**: in het volgende voor beeld bevindt de te kopiëren gegevens zich in het station F:. Het bestand *MyFile1. txt* wordt gekopieerd naar de hoofdmap van de *MyAzureFileshare1*. Als de *MyAzureFileshare1* niet bestaat, wordt deze in het Azure Storage-account gemaakt. De mapstructuur wordt behouden.
 
        ```
            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
-    
+
        ```
    - **Een map importeren**: alle bestanden en mappen onder *MyFolder2* worden recursief gekopieerd naar de bestands share. De mapstructuur wordt behouden.
 
        ```
-           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-            
+           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
+
        ```
-     Er kunnen meerdere vermeldingen worden gemaakt in hetzelfde bestand dat overeenkomt met de mappen of bestanden die worden geïmporteerd. 
+     Er kunnen meerdere vermeldingen worden gemaakt in hetzelfde bestand dat overeenkomt met de mappen of bestanden die worden geïmporteerd.
 
        ```
            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
-           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-                        
+           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
+
        ```
      Meer informatie over [het voorbereiden van het CSV-bestand van de gegevensset](storage-import-export-tool-preparing-hard-drives-import.md).
-    
+
 
 4. Wijzig het bestand *driveset. CSV* in de hoofdmap waarin het hulp programma zich bevindt. Voeg vermeldingen toe in het CSV-bestand van de *schijfset* , zoals in de volgende voor beelden. Het stationset-bestand bevat de lijst met schijven en bijbehorende stationsletters, zodat het hulp programma de lijst met schijven die moeten worden voor bereid, correct kan selecteren.
 
-    In dit voor beeld wordt ervan uitgegaan dat er twee schijven zijn gekoppeld en basis-NTFS-volumes G:\ en H:\ worden gemaakt. H:\is is niet versleuteld terwijl G: al is versleuteld. Het hulp programma formatteert en versleutelt de schijf die als host fungeert voor H:\ alleen (en niet G: \).
+    In dit voor beeld wordt ervan uitgegaan dat er twee schijven zijn gekoppeld en basis-NTFS-volumes G:\ en H:\ worden gemaakt. H:\is is niet versleuteld terwijl G: al is versleuteld. Het hulp programma formatteert en versleutelt de schijf die als host fungeert voor H:\ alleen (en niet G:\).
 
    - **Voor een niet-versleutelde schijf**: Geef *versleutelen* op om BitLocker-versleuteling op de schijf in te scha kelen.
 
@@ -83,7 +83,7 @@ Voer de volgende stappen uit om de stations voor te bereiden.
        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
        H,Format,SilentMode,Encrypt,
        ```
-    
+
    - **Voor een schijf die al is versleuteld**: Geef *AlreadyEncrypted* op en voer de BitLocker-sleutel in.
 
        ```
@@ -91,7 +91,7 @@ Voer de volgende stappen uit om de stations voor te bereiden.
        G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631
        ```
 
-     Er kunnen meerdere vermeldingen worden gemaakt in hetzelfde bestand dat overeenkomt met meerdere stations. Meer informatie over [het voorbereiden van het CSV-bestand van het station](storage-import-export-tool-preparing-hard-drives-import.md). 
+     Er kunnen meerdere vermeldingen worden gemaakt in hetzelfde bestand dat overeenkomt met meerdere stations. Meer informatie over [het voorbereiden van het CSV-bestand van het station](storage-import-export-tool-preparing-hard-drives-import.md).
 
 5. Gebruik de optie `PrepImport` om gegevens naar het schijf station te kopiëren en voor te bereiden. Voer de volgende opdracht uit voor de eerste Kopieer sessie om directory's en/of bestanden te kopiëren met een nieuwe Kopieer sessie:
 
@@ -100,23 +100,23 @@ Voer de volgende stappen uit om de stations voor te bereiden.
        ```
 
    Hieronder ziet u een voor beeld van een import.
-  
+
        ```
        .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
        ```
- 
-6. Een logboek bestand met de naam die u hebt ingevoerd met de para meter `/j:`, wordt gemaakt voor elke uitvoering van de opdracht regel. Elke schijf die u voorbereidt, heeft een logboek bestand dat moet worden geüpload wanneer u de import taak maakt. Stations zonder logboek bestanden worden niet verwerkt.
+
+6. Een logboek bestand met de naam die u hebt ingevoerd bij `/j:` para meter, wordt gemaakt voor elke uitvoering van de opdracht regel. Elke schijf die u voorbereidt, heeft een logboek bestand dat moet worden geüpload wanneer u de import taak maakt. Stations zonder logboek bestanden worden niet verwerkt.
 
     > [!IMPORTANT]
     > - Wijzig de gegevens op de schijf stations of het logboek bestand niet nadat de schijf voorbereiding is voltooid.
 
 Voor extra voor beelden gaat u naar [voor beelden van logboek bestanden](#samples-for-journal-files).
 
-## <a name="step-2-create-an-import-job"></a>Stap 2: een import taak maken 
+## <a name="step-2-create-an-import-job"></a>Stap 2: een import taak maken
 
 Voer de volgende stappen uit om een import taak te maken in de Azure Portal.
 1. Meld u aan bij https://portal.azure.com/.
-2. Ga naar **alle services > opslag > import/export-taken**. 
+2. Ga naar **alle services > opslag > import/export-taken**.
 
     ![Ga naar importeren/exporteren](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
 
@@ -129,32 +129,32 @@ Voer de volgende stappen uit om een import taak te maken in de Azure Portal.
     - Selecteer **importeren in azure**.
     - Voer een beschrijvende naam in voor de import taak. Gebruik deze naam om uw taken bij te houden terwijl ze worden uitgevoerd en zodra ze zijn voltooid.
         -  Deze naam mag alleen kleine letters, cijfers, afbreek streepjes en onderstrepings tekens bevatten.
-        -  De naam moet beginnen met een letter en mag geen spaties bevatten. 
+        -  De naam moet beginnen met een letter en mag geen spaties bevatten.
     - Selecteer een abonnement.
-    - Selecteer een resourcegroep. 
+    - Selecteer een resourcegroep.
 
         ![Import taak maken-stap 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
 3. In **taak Details**:
-    
-    - Upload de logboek bestanden die u hebt gemaakt tijdens de vorige [stap 1: bereid de stations](#step-1-prepare-the-drives)voor. 
-    - Selecteer het opslag account waarin de gegevens worden geïmporteerd. 
+
+    - Upload de logboek bestanden die u hebt gemaakt tijdens de vorige [stap 1: bereid de stations](#step-1-prepare-the-drives)voor.
+    - Selecteer het opslag account waarin de gegevens worden geïmporteerd.
     - De locatie van de dropoff wordt automatisch ingevuld op basis van de regio van het geselecteerde opslag account.
-   
+
        ![Import taak maken-stap 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 
 4. In **retour verzendings gegevens**:
 
     - Selecteer de transporteur in de vervolg keuzelijst. Als u een andere transporteur dan FedEx/DHL wilt gebruiken, kiest u een bestaande optie in de vervolg keuzelijst. Neem contact op met Azure Data Box Operations-team op `adbops@microsoft.com` met de informatie over de provider die u wilt gebruiken.
-    - Voer een geldig account nummer van een transporteur in dat u hebt gemaakt met die transporteur. Micro soft gebruikt dit account om de schijven terug naar u te verzenden zodra uw import taak is voltooid. 
+    - Voer een geldig account nummer van een transporteur in dat u hebt gemaakt met die transporteur. Micro soft gebruikt dit account om de schijven terug naar u te verzenden zodra uw import taak is voltooid.
     - Geef een volledige en geldige naam op voor de contact persoon, telefoon, e-mail, adres, plaats, post code, provincie en land/regio.
 
-        > [!TIP] 
+        > [!TIP]
         > In plaats van een e-mail adres voor één gebruiker op te geven, moet u een groeps-e-mail opgeven. Dit zorgt ervoor dat u meldingen ontvangt, zelfs als een beheerder deze verlaat.
 
        ![Import taak maken-stap 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
 
-   
+
 5. In de **samen vatting**:
 
     - Geef het Azure Data Center-verzend adres voor de verzend schijven terug naar Azure. Zorg ervoor dat de naam en het volledige adres van de taak worden vermeld op het verzend label.
@@ -162,7 +162,7 @@ Voer de volgende stappen uit om een import taak te maken in de Azure Portal.
 
         ![Import taak maken-stap 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
-## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>Stap 3: de stations naar het Azure-Data Center verzenden 
+## <a name="step-3-ship-the-drives-to-the-azure-datacenter"></a>Stap 3: de stations naar het Azure-Data Center verzenden
 
 [!INCLUDE [storage-import-export-ship-drives](../../../includes/storage-import-export-ship-drives.md)]
 
@@ -176,9 +176,9 @@ De taak bijhouden tot voltooiing. Nadat de taak is voltooid, controleert u of uw
 
 ## <a name="samples-for-journal-files"></a>Voor beelden voor logboek bestanden
 
-Als u **meer stations wilt toevoegen**, maakt u een nieuw stationset-bestand en voert u de volgende opdracht uit. 
+Als u **meer stations wilt toevoegen**, maakt u een nieuw stationset-bestand en voert u de volgende opdracht uit.
 
-Voor volgende Kopieer sessies naar de verschillende schijf stations dan opgegeven in het bestand *InitialDriveset. CSV* , geeft u een nieuw *CSV* -bestand van stationset op en geeft u dit als waarde aan de para meter `AdditionalDriveSet`. Gebruik dezelfde naam voor het **logboek bestand** en geef een **nieuwe sessie-id**op. De indeling van het CSV-bestand van AdditionalDriveset is gelijk aan de InitialDriveSet-indeling.
+Voor volgende Kopieer sessies naar de verschillende schijf stations dan opgegeven in *InitialDriveset. CSV* -bestand, geeft u een nieuw *CSV* -bestand van stationset op en geeft u het op als waarde voor de para meter `AdditionalDriveSet`. Gebruik dezelfde naam voor het **logboek bestand** en geef een **nieuwe sessie-id**op. De indeling van het CSV-bestand van AdditionalDriveset is gelijk aan de InitialDriveSet-indeling.
 
     ```
     WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AdditionalDriveSet:<driveset.csv>
@@ -209,5 +209,3 @@ Hieronder ziet u een voor beeld van een import.
 
 * [De taak en de status van het station weer geven](storage-import-export-view-drive-status.md)
 * [Vereisten voor importeren/exporteren controleren](storage-import-export-requirements.md)
-
-

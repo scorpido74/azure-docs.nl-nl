@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: b6a687fc7ddf5eeacdfe3480a252598c6f9e773e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e99a0e8e42bcfb5c7967a9cb1c91631bacbea53a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750383"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980076"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Azure-resource logboeken archiveren in een opslag account
 [Platform logboeken](platform-logs-overview.md) in azure, inclusief Azure-activiteiten logboek en resource logboeken, bieden gedetailleerde informatie over diagnostische gegevens en controle voor Azure-resources en het Azure-platform waarvan ze afhankelijk zijn.  In dit artikel wordt het verzamelen van platform Logboeken beschreven in een Azure-opslag account om gegevens te bewaren voor archivering.
 
 ## <a name="prerequisites"></a>Vereisten
-U moet [een Azure Storage-account maken](../../storage/common/storage-quickstart-create-account.md) als u er nog geen hebt. Het opslag account hoeft zich niet in hetzelfde abonnement te betreden als de resource waarmee logboeken worden verzonden zolang de gebruiker die de instelling configureert de juiste RBAC-toegang heeft tot beide abonnementen.
+U moet [een Azure Storage-account maken](../../storage/common/storage-account-create.md) als u er nog geen hebt. Het opslag account hoeft zich niet in hetzelfde abonnement te betreden als de resource waarmee logboeken worden verzonden zolang de gebruiker die de instelling configureert de juiste RBAC-toegang heeft tot beide abonnementen.
 
 
 > [!IMPORTANT]

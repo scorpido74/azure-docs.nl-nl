@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: e647725c5d30f35f39263757508bdd1725552731
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 72825a709ec55bf5879e15287eb8b258dc4c8e94
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997306"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965779"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>Power shell en CLI: Transparent Data Encryption met door de klant beheerde sleutel inschakelen vanuit Azure Key Vault
 
@@ -119,7 +119,7 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
    -ServerName <LogicalServerName> -DatabaseName <DatabaseName>  
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Zie [de Azure-opdracht regel 2,0 interface voor meerdere platformen installeren en configureren](https://docs.microsoft.com/cli/azure/install-azure-cli)voor meer informatie over het installeren van de vereiste opdracht regel interface versie 2,0 of hoger en het maken van een verbinding met uw Azure-abonnement.
 
@@ -205,7 +205,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
    Remove-AzSqlServerKeyVaultKey -KeyId <KeyVaultKeyId> -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 - Zie [AZ SQL](/cli/azure/sql)(Engelstalig) voor algemene data base-instellingen.
 
@@ -227,7 +227,7 @@ Controleer het volgende als er een probleem optreedt:
    Get-AzSubscription -SubscriptionId <SubscriptionId>
    ```
 
-   # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+   # <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
    ```powershell
    az account show - s <SubscriptionId>

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 48848fbacdc0e205604bb163aa36bdafcd175b0b
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 4521c2c112c93e83144cfc84d600208817b2ccac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173547"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978050"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>On-premises AlwaysOn-beschikbaarheids groepen uitbreiden naar Azure
 AlwaysOn-beschikbaarheids groepen bieden een hoge Beschik baarheid voor groepen data base door secundaire replica's toe te voegen. Met deze replica's kunnen data bases mislukken bij een storing. Daarnaast kunnen ze worden gebruikt voor het offloaden van Lees-workloads of back-uptaken.
@@ -33,7 +33,7 @@ In deze zelf studie wordt ervan uitgegaan dat u het volgende hebt:
 * Connectiviteit tussen het on-premises netwerk en uw virtuele Azure-netwerk. Zie [een site-naar-site-verbinding maken met behulp van de Azure Portal (klassiek)](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md)voor meer informatie over het maken van dit virtuele netwerk.
 
 > [!IMPORTANT] 
-> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/resource-manager-deployment-model.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
+> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken.
 
 ## <a name="add-azure-replica-wizard"></a>Wizard Azure replica toevoegen
 In deze sectie wordt beschreven hoe u de **wizard Azure replica toevoegen** gebruikt om uw oplossing voor AlwaysOn-beschikbaarheids groepen uit te breiden om Azure-replica's te omvatten.
@@ -41,7 +41,7 @@ In deze sectie wordt beschreven hoe u de **wizard Azure replica toevoegen** gebr
 > [!IMPORTANT]
 > De **wizard Azure replica toevoegen** ondersteunt alleen virtuele machines die zijn gemaakt met het klassieke implementatie model. Nieuwe VM-implementaties moeten het nieuwere Resource Manager-model gebruiken. Als u Vm's gebruikt met Resource Manager, moet u de secundaire Azure-replica hand matig toevoegen met behulp van Transact-SQL-opdrachten (deze worden hier niet weer gegeven). Deze wizard werkt niet in het Resource Manager-scenario.
 
-1. Vouw in SQL Server Management Studio altijd de  > **beschikbaarheids groepen**van Maxi maal **Beschik baarheid**uit  >  **[naam van uw beschikbaarheids groep]** .
+1. Vouw in SQL Server Management Studio altijd > **beschikbaarheids groepen** met **hoge beschik baarheid** >  **[naam van uw beschikbaarheids groep]** uit.
 2. Klik met de rechter muisknop op **beschikbaarheids replica's**en klik vervolgens op **replica toevoegen**.
 3. Standaard wordt de **wizard replica toevoegen aan beschikbaarheids groep** weer gegeven. Klik op **Volgende**.  Als u de optie **Deze pagina niet opnieuw weer geven** onder aan de pagina hebt geselecteerd tijdens een vorige keer dat deze wizard wordt gestart, wordt dit scherm niet weer gegeven.
    
@@ -65,7 +65,7 @@ In deze sectie wordt beschreven hoe u de **wizard Azure replica toevoegen** gebr
    | **Wacht woord bevestigen** |Bevestig het wacht woord van het nieuwe account |
    | **Virtueel netwerk** |Geef het virtuele netwerk van Azure op dat door de nieuwe virtuele machine moet worden gebruikt. Zie [Virtual Network Overview](../../../virtual-network/virtual-networks-overview.md)voor meer informatie over virtuele netwerken. |
    | **Virtual Network subnet** |Geef het subnet van het virtuele netwerk op dat door de nieuwe virtuele machine moet worden gebruikt |
-   | **Domeinen** |Controleren of de vooraf ingevulde waarde voor het domein juist is |
+   | **Domein** |Controleren of de vooraf ingevulde waarde voor het domein juist is |
    | **Domein gebruikers naam** |Geef een account op dat zich in de lokale groep Administrators op de knoop punten van het lokale cluster bevindt |
    | **Wachtwoord** |Geef het wacht woord voor de gebruikers naam van het domein op |
 8. Klik op **OK** om de implementatie-instellingen te valideren.

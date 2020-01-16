@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
-ms.openlocfilehash: 1cebe0fda7da97933fc94082a62c671535fe689b
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: 2a0d1c5af572c88dc11bed950b46706f0a2f081f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69015805"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981963"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Media Services bijwerken na gebruik toegangssleutels voor opslag 
 
 Wanneer u een nieuw Azure Media Services-account (AMS) maakt, wordt u ook gevraagd om een Azure Storage account te selecteren dat wordt gebruikt voor het opslaan van uw media-inhoud. U kunt meer dan één opslag account toevoegen aan uw Media Services-account. In dit artikel wordt beschreven hoe u opslag sleutels kunt draaien. Ook wordt uitgelegd hoe u opslag accounts toevoegt aan een media account. 
 
-U moet [Azure Resource Manager-api's](/rest/api/media/operations/azure-media-services-rest-api-reference) en [Power shell](https://docs.microsoft.com/powershell/module/az.media)gebruiken om de acties uit te voeren die in dit artikel worden beschreven.  Zie [Azure-resources beheren met Power shell en Resource Manager](../../azure-resource-manager/manage-resource-groups-powershell.md)voor meer informatie.
+U moet [Azure Resource Manager-api's](/rest/api/media/operations/azure-media-services-rest-api-reference) en [Power shell](https://docs.microsoft.com/powershell/module/az.media)gebruiken om de acties uit te voeren die in dit artikel worden beschreven.  Zie [Azure-resources beheren met Power shell en Resource Manager](../../azure-resource-manager/management/manage-resource-groups-powershell.md)voor meer informatie.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -71,7 +71,7 @@ In het volgende voor beeld ziet u hoe u het opslag account kunt ophalen en synch
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>Stappen voor het toevoegen van opslag accounts aan uw AMS-account
 
-In het volgende artikel ziet u hoe u opslag accounts kunt toevoegen aan uw AMS-account: [Koppel meerdere opslag accounts aan een Media Services-account](meda-services-managing-multiple-storage-accounts.md).
+In het volgende artikel ziet u hoe u opslag accounts toevoegt aan uw AMS-account: [meerdere opslag accounts koppelen aan een Media Services-account](meda-services-managing-multiple-storage-accounts.md).
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -79,5 +79,5 @@ In het volgende artikel ziet u hoe u opslag accounts kunt toevoegen aan uw AMS-a
 ## <a name="provide-feedback"></a>Feedback geven
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-### <a name="acknowledgments"></a>Bevestigingen
-We willen de volgende personen erkennen die hebben bijgedragen aan het maken van dit document: Cenk Dingiloglu, Milan Gada, Seva Titov.
+### <a name="acknowledgments"></a>Erkenningen
+We willen graag de volgende personen erkennen die hebben bijgedragen aan het maken van dit document: Cenk Dingiloglu, Milaan gada, Seva Titov.

@@ -3,12 +3,12 @@ title: 'Zelf studie: een aangepaste beleids definitie maken'
 description: In deze zelf studie maakt u een aangepaste beleids definitie voor Azure Policy om aangepaste bedrijfs regels af te dwingen voor uw Azure-resources.
 ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: 51899491d7a75dc41bdab94d17769393ab4a6659
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f7c303956b209b88ce3c697b5b66243e37071c83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885446"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966021"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Zelf studie: een aangepaste beleids definitie maken
 
@@ -66,7 +66,7 @@ De [VS code-extensie](../how-to/extension-for-vscode.md#search-for-and-view-reso
 
 ### <a name="resource-manager-templates"></a>Resource Manager-sjablonen
 
-Er zijn verschillende manieren om te kijken naar een [Resource Manager-sjabloon](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) die de eigenschap bevat die u wilt beheren.
+Er zijn verschillende manieren om te kijken naar een [Resource Manager-sjabloon](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md) die de eigenschap bevat die u wilt beheren.
 
 #### <a name="existing-resource-in-the-portal"></a>Bestaande resource in de portal
 
@@ -164,7 +164,7 @@ We hebben de resource-eigenschap gevonden, maar we moeten die eigenschap nog toe
 Er zijn enkele manieren om de aliassen van een Azure-resource te bepalen. In deze zelfstudie bekijken we elk daarvan:
 
 - Azure Policy-extensie voor VS code
-- Azure CLI
+- Azure-CLI
 - Azure PowerShell
 - Azure Resource Graph
 
@@ -172,7 +172,7 @@ Er zijn enkele manieren om de aliassen van een Azure-resource te bepalen. In dez
 
 Met de extensie Azure Policy voor de VS code-extensie kunt u eenvoudig bladeren door uw resources en [aliassen detecteren](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 In Azure CLI wordt de `az provider`-opdrachtgroep gebruikt om te zoeken naar resource-aliassen. We filteren op de naamruimte **Microsoft.Storage**, op basis van de gegevens die we eerder over de Azure-resource hebben verkregen.
 
@@ -386,7 +386,7 @@ Het opstellen van de [beleidsregel](../concepts/definition-structure.md#policy-r
 - Dat het **type** van het opslagaccount **Microsoft.Storage/storageAccounts** is
 - Dat de eigenschap **supportsHttpsTrafficOnly** van het opslagaccount niet **true** is
 
-Omdat we willen dat beide instructies waar zijn, gebruiken we de [logische operator](../concepts/definition-structure.md#logical-operators) **allOf**. We geven de parameter **effectType** door aan het effect in plaats van een statische declaratie te maken. Onze voltooide regel ziet eruit zoals in dit voorbeeld:
+Omdat we beide instructies nodig hebben om waar te zijn, gebruiken we de [logische operator](../concepts/definition-structure.md#logical-operators) **overzet** . We geven de parameter **effectType** door aan het effect in plaats van een statische declaratie te maken. Onze voltooide regel ziet eruit zoals in dit voorbeeld:
 
 ```json
 "if": {

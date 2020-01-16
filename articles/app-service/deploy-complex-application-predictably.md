@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 1168faa1f39546dc75af28b885c9095cfffa1135
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 62d0bf776b2d0c97d95b992ed6a1fd2a356e467a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422137"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967383"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Micro services zoals verwacht inrichten en implementeren in azure
 Deze zelf studie laat zien hoe u een toepassing kunt inrichten en implementeren die is samengesteld uit micro [Services](https://en.wikipedia.org/wiki/Microservices) in [Azure app service](https://azure.microsoft.com/services/app-service/) als één eenheid en op een voorspel bare manier met behulp van JSON-resource groeps sjablonen en Power shell-scripts. 
@@ -252,10 +252,10 @@ DevOps, REPEAT baarheid en voorspel baarheid zijn sleutels voor een succes volle
 ## <a name="more-resources"></a>Meer informatiebronnen
 * [Taal van Azure Resource Manager sjabloon](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/templates/template-syntax.md)
-* [Azure Resource Manager-sjabloon functies](../azure-resource-manager/resource-group-template-functions.md)
-* [Een toepassing implementeren met Azure Resource Manager sjabloon](../azure-resource-manager/resource-group-template-deploy.md)
+* [Azure Resource Manager-sjabloon functies](../azure-resource-manager/templates/template-functions.md)
+* [Een toepassing implementeren met Azure Resource Manager sjabloon](../azure-resource-manager/templates/deploy-powershell.md)
 * [Azure PowerShell gebruiken met Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md)
-* [Problemen met de implementatie van resource groepen in azure oplossen](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+* [Problemen met de implementatie van resource groepen in azure oplossen](../azure-resource-manager/templates/common-deployment-errors.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 

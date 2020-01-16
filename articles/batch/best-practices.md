@@ -1,18 +1,18 @@
 ---
 title: Aanbevolen procedures-Azure Batch
 description: Leer de aanbevolen procedures en handige tips voor het ontwikkelen van uw Azure Batch-oplossing.
-author: laurenhughes
-ms.author: lahugh
+author: ju-shim
+ms.author: jushiman
 ms.date: 11/22/2019
 ms.service: batch
 ms.topic: article
 manager: gwallace
-ms.openlocfilehash: 19c5b6acaeddb915af49cf62a884da0678075f15
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 20fc7844054fc7e05f56105e69ad6bd8a4272ed8
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74535663"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026158"
 ---
 # <a name="azure-batch-best-practices"></a>Aanbevolen procedures Azure Batch
 
@@ -67,7 +67,7 @@ De levens duur van de groep kan variëren, afhankelijk van de toewijzings method
 
 Groeps toewijzings fouten kunnen zich voordoen op elk moment tijdens de eerste toewijzing of de volgende grootte. Dit kan worden veroorzaakt door tijdelijke capaciteits uitputting in een regio of fouten in andere Azure-Services waarop batch van afhankelijk is. Uw kern quotum is geen garantie, maar een limiet.
 
-### <a name="unplanned-downtime"></a>Ongeplande downtime
+### <a name="unplanned-downtime"></a>Niet-geplande uitvaltijd
 
 Het is mogelijk dat batch-Pools downtime-gebeurtenissen in azure kunnen ervaren. Het is belang rijk dat u rekening houdt met het plannen en ontwikkelen van uw scenario of werk stroom voor batch.
 

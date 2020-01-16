@@ -2,7 +2,7 @@
 title: Bewaak batch met Azure-toepassing Insights | Microsoft Docs
 description: Meer informatie over het instrumenteren van een Azure Batch .NET-toepassing met behulp van de Azure-toepassing Insights-bibliotheek.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.devlang: .NET
 ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
-ms.author: lahugh
-ms.openlocfilehash: 8d896785a2f000a22f68611d5b3b1162c2021236
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.author: jushiman
+ms.openlocfilehash: c69ef0bf20e2ade15d2278d0fc2fabd75f39153b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322568"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029495"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Een Azure Batch .NET-toepassing bewaken en fouten opsporen met Application Insights
 
@@ -47,7 +47,7 @@ In github C# vindt u een voor beeld van een oplossing met code [](https://github
 
 ## <a name="add-application-insights-to-your-project"></a>Application Insights toevoegen aan uw project
 
-Het **micro soft. ApplicationInsights. Windowsserver** NuGet-pakket en de bijbehorende afhankelijkheden zijn vereist voor uw project. Deze toevoegen aan of herstellen in het project van uw toepassing. Gebruik de `Install-Package` opdracht of NuGet Package Manager om het pakket te installeren.
+Het **micro soft. ApplicationInsights. Windowsserver** NuGet-pakket en de bijbehorende afhankelijkheden zijn vereist voor uw project. Deze toevoegen aan of herstellen in het project van uw toepassing. Als u het pakket wilt installeren, gebruikt u de `Install-Package`-opdracht of NuGet Package Manager.
 
 ```powershell
 Install-Package Microsoft.ApplicationInsights.WindowsServer
@@ -56,17 +56,17 @@ Referentie Application Insights van uw .NET-toepassing met behulp van de **micro
 
 ## <a name="instrument-your-code"></a>Uw code instrumenteren
 
-Uw oplossing moet een Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient)maken om uw code te instrumenteren. In het voor beeld wordt de configuratie van de TelemetryClient geladen uit het [ApplicationInsights. config](../azure-monitor/app/configuration-with-applicationinsights-config.md) -bestand. Zorg ervoor dat u ApplicationInsights. config in de volgende projecten bijwerkt met uw Application Insights instrumentatie sleutel: Micro soft. Azure. batch. samples. TelemetryStartTask en TopNWordsSample.
+Uw oplossing moet een Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient)maken om uw code te instrumenteren. In het voor beeld wordt de configuratie van de TelemetryClient geladen uit het [ApplicationInsights. config](../azure-monitor/app/configuration-with-applicationinsights-config.md) -bestand. Zorg ervoor dat u ApplicationInsights. config in de volgende projecten bijwerkt met uw Application Insights instrumentatie sleutel: micro soft. Azure. batch. samples. TelemetryStartTask en TopNWordsSample.
 
 ```xml
 <InstrumentationKey>YOUR-IKEY-GOES-HERE</InstrumentationKey>
 ```
 Voeg ook de instrumentatie sleutel toe in het bestand TopNWords.cs.
 
-In het voor beeld in TopNWords.cs worden [](../azure-monitor/app/api-custom-events-metrics.md) de volgende instrumentatie aanroepen van de Application INSIGHTS-API gebruikt:
-* `TrackMetric()`-Houdt in hoe lang, het gemiddelde van een reken knooppunt het vereiste tekst bestand downloadt.
-* `TrackTrace()`-Voegt fout opsporingsgegevens toe aan uw code.
-* `TrackEvent()`-Hiermee worden interessante gebeurtenissen bijgehouden die moeten worden vastgelegd.
+In het voor beeld in TopNWords.cs worden de volgende [instrumentatie aanroepen](../azure-monitor/app/api-custom-events-metrics.md) van de Application INSIGHTS-API gebruikt:
+* `TrackMetric()`: er wordt getraceerd hoe lang, een reken knooppunt het vereiste tekst bestand downloadt.
+* `TrackTrace()`-voegt fout opsporingsgegevens toe aan uw code.
+* `TrackEvent()`: Hiermee worden interessante gebeurtenissen bijgehouden die moeten worden vastgelegd.
 
 In dit voor beeld wordt uitzonde ring verwerkt. In plaats daarvan Application Insights automatisch onverwerkte uitzonde ringen, waardoor de fout opsporing aanzienlijk wordt verbeterd. 
 
@@ -125,7 +125,7 @@ public void CountWords(string blobName, int numTopN, string storageAccountName, 
 ```
 
 ### <a name="azure-batch-telemetry-initializer-helper"></a>Hulp bij het initialiseren van Azure Batch telemetrie
-Wanneer u telemetrie rapporteert voor een bepaalde server en exemplaar, Application Insights gebruikt de Azure VM-rol en de VM-naam voor de standaard waarden. In de context van Azure Batch ziet u in het voor beeld hoe u de naam van de pool en de naam van het reken knooppunt kunt gebruiken. Gebruik een telemetrie- [initialisatie functie](../azure-monitor/app/api-filtering-sampling.md#add-properties) voor het overschrijven van de standaard waarden. 
+Wanneer u telemetrie rapporteert voor een bepaalde server en exemplaar, Application Insights gebruikt de Azure VM-rol en de VM-naam voor de standaard waarden. In de context van Azure Batch ziet u in het voor beeld hoe u de naam van de pool en de naam van het reken knooppunt kunt gebruiken. Gebruik een [telemetrie-initialisatie functie](../azure-monitor/app/api-filtering-sampling.md#add-properties) voor het overschrijven van de standaard waarden. 
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -294,7 +294,7 @@ Een voorbeeld grafiek maken:
    * Stel het **grafiek type** in op **raster**.
    * Stel **aggregatie** in op **gemiddelde**.
    * Stel **Group by** in op **NodeId**.
-   * Selecteer in **metrische gegevens**de optie **aangepaste** > **BLOB-down load in seconden**.
+   * Selecteer in **metrische gegevens** **aangepaste** > **BLOB-down load in seconden**.
    * Pas de weer gave **kleuren palet** aan uw keuze aan. 
 
 ![Download tijd voor BLOB per knoop punt](./media/monitor-application-insights/blobdownloadtime.png)

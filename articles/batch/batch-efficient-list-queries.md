@@ -3,7 +3,7 @@ title: Efficiënte lijst query's ontwerpen-Azure Batch | Microsoft Docs
 description: Verbeter de prestaties door uw query's te filteren bij het aanvragen van informatie over batch-resources zoals Pools, Jobs, taken en reken knooppunten.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 031fefeb-248e-4d5a-9bc2-f07e46ddd30d
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 12/07/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 37d34267220cbb7ceabfc823f6facd651969fbd4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d853302ebb0961f9e5fda9f5ecc41f3a26351170
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095168"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027097"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Query's maken om batch resources efficiënt weer te geven
 
@@ -34,7 +34,7 @@ Bijna alle batch-toepassingen moeten een type bewaking of een andere bewerking u
 ## <a name="meet-the-detaillevel"></a>Voldoen aan de DetailLevel
 In een productie batch-toepassing kunnen entiteiten zoals Jobs, taken en reken knooppunten het aantal duizend tallen. Wanneer u informatie nodig hebt over deze resources, moet u een mogelijke grote hoeveelheid gegevens ' cross ' door kruisen van de batch-service naar uw toepassing op elke query. Door het aantal items en het type informatie dat wordt geretourneerd door een query te beperken, kunt u de snelheid van uw query's verhogen en dus ook de prestaties van uw toepassing.
 
-Dit code fragment voor [batch .net][api_net] API bevat een lijst met alle taken die aan een taak zijn gekoppeld, samen met *alle* eigenschappen van elke taak:
+Dit code fragment voor [batch .net][api_net] API *bevat een* lijst met alle taken die aan een taak zijn gekoppeld, samen met *alle* eigenschappen van elke taak:
 
 ```csharp
 // Get a collection of all of the tasks and all of their properties for job-001
@@ -66,26 +66,26 @@ Als in dit voorbeeld scenario duizenden taken in de taak zijn, worden de resulta
 ## <a name="filter-select-and-expand"></a>Filteren, selecteren en uitvouwen
 De [batch .net][api_net] -en [batch][api_rest] -api's bieden de mogelijkheid om zowel het aantal geretourneerde items in een lijst te verminderen als de hoeveelheid gegevens die voor elk item wordt geretourneerd. U doet dit door **filter**-, **Select**-en **expand-teken reeksen** op te geven bij het uitvoeren van lijst query's.
 
-### <a name="filter"></a>Filteren
+### <a name="filter"></a>Filter
 De filter teken reeks is een expressie waarmee het aantal geretourneerde items wordt verminderd. U kunt bijvoorbeeld alleen de actieve taken voor een taak weer geven of alleen reken knooppunten weer geven die gereed zijn om taken uit te voeren.
 
 * De filter teken reeks bestaat uit een of meer expressies, met een expressie die bestaat uit een eigenschaps naam, een operator en een waarde. De eigenschappen die kunnen worden opgegeven, zijn specifiek voor elk entiteits type waarvoor u een query uitvoert, evenals de Opera tors die voor elke eigenschap worden ondersteund.
-* Meerdere expressies kunnen worden gecombineerd met behulp van de `and` logische `or`Opera tors en.
-* In dit voor beeld wordt gefilterde teken reeks alleen de actieve `(state eq 'running') and startswith(id, 'renderTask')`' render-taken ' weer gegeven:.
+* Meerdere expressies kunnen worden gecombineerd met behulp van de logische Opera tors `and` en `or`.
+* In dit voor beeld wordt gefilterde teken reeks alleen de actieve ' render-taken ' weer gegeven: `(state eq 'running') and startswith(id, 'renderTask')`.
 
-### <a name="select"></a>Selecteren
+### <a name="select"></a>Selecteer
 De teken reeks selecteren beperkt de eigenschaps waarden die voor elk item worden geretourneerd. U geeft een lijst met eigenschapnamen op, en alleen de eigenschaps waarden worden geretourneerd voor de items in de query resultaten.
 
 * De Select-teken reeks bestaat uit een lijst met door komma's gescheiden namen van eigenschappen. U kunt een van de eigenschappen opgeven voor het entiteits type dat u zoekt.
-* In dit voor beeld wordt een teken reeks selecteren geeft aan dat er slechts drie eigenschaps `id, state, stateTransitionTime`waarden worden geretourneerd voor elke taak:.
+* In dit voor beeld wordt een teken reeks selecteren geeft aan dat er slechts drie eigenschaps waarden worden geretourneerd voor elke taak: `id, state, stateTransitionTime`.
 
 ### <a name="expand"></a>Uitvouwen
 De Uitvouw teken reeks vermindert het aantal API-aanroepen dat nodig is om bepaalde gegevens te verkrijgen. Wanneer u een Uitvouw teken reeks gebruikt, kan er meer informatie over elk item worden verkregen met één API-aanroep. In plaats van eerst de lijst met entiteiten te verkrijgen en vervolgens informatie te vragen voor elk item in de lijst, gebruikt u een Uitvouw teken reeks om dezelfde informatie in één API-aanroep te verkrijgen. Minder API-aanroepen betekent betere prestaties.
 
 * Net als bij de selectie teken reeks bepaalt de Uitvouw teken reeks of bepaalde gegevens worden opgenomen in de lijst query resultaten.
 * De Uitvouw teken reeks wordt alleen ondersteund als deze wordt gebruikt bij het weer geven van taken, taak planningen, taken en groepen. Op dit moment wordt alleen statistische informatie ondersteund.
-* Als alle eigenschappen vereist zijn en er geen teken reeks voor selectie is opgegeven, *moet* de Uitvouw teken reeks worden gebruikt om statistische gegevens op te halen. Als er een teken reeks wordt gebruikt om een subset van eigenschappen op te `stats` halen, kan vervolgens worden opgegeven in de teken reeks selecteren en moet de Uitvouw teken reeks niet worden opgegeven.
-* In dit voor beeld wordt de teken reeks uitgebreid geeft aan dat er statistische gegevens moeten worden geretourneerd `stats`voor elk item in de lijst:.
+* Als alle eigenschappen vereist zijn en er geen teken reeks voor selectie is opgegeven, *moet* de Uitvouw teken reeks worden gebruikt om statistische gegevens op te halen. Als een teken reeks voor een selectie wordt gebruikt om een subset van eigenschappen op te halen, kan `stats` worden opgegeven in de teken reeks selecteren en moet de Uitvouw teken reeks niet worden opgegeven.
+* In dit voor beeld wordt de teken reeks uitgebreid geeft aan dat er statistische gegevens moeten worden geretourneerd voor elk item in de lijst: `stats`.
 
 > [!NOTE]
 > Bij het samen stellen van een van de drie typen query reeksen (filteren, selecteren en uitvouwen), moet u ervoor zorgen dat de namen van de eigenschappen en de aanvraag overeenkomen met die van hun REST API element tegen hangers. Als u bijvoorbeeld werkt met de .NET [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) -klasse, moet u in plaats van **status**een **status** opgeven, ook al is de .net-eigenschap [CloudTask. State](/dotnet/api/microsoft.azure.batch.cloudtask.state#Microsoft_Azure_Batch_CloudTask_State). Zie de onderstaande tabellen voor eigenschaps toewijzingen tussen de .NET-en REST-Api's.
@@ -95,19 +95,19 @@ De Uitvouw teken reeks vermindert het aantal API-aanroepen dat nodig is om bepaa
 ### <a name="rules-for-filter-select-and-expand-strings"></a>Regels voor het filteren, selecteren en uitvouwen van teken reeksen
 * Eigenschappen in filters, selecteren en Uitvouw teken reeksen moeten worden weer gegeven zoals in de [batch rest][api_rest] -API, zelfs wanneer u [batch .net][api_net] of een van de andere batch-sdk's gebruikt.
 * Alle eigenschapnamen zijn hoofdletter gevoelig, maar eigenschaps waarden zijn niet hoofdletter gevoelig.
-* Datum-en tijd teken reeksen kunnen een van de twee indelingen hebben en moeten worden `DateTime`voorafgegaan door.
+* Datum-en tijd teken reeksen kunnen een van de twee indelingen hebben en moeten worden voorafgegaan door `DateTime`.
   
-  * Voor beeld van de indeling W3C-DTF:`creationTime gt DateTime'2011-05-08T08:49:37Z'`
-  * Voor beeld van RFC 1123-indeling:`creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
-* Booleaanse teken reeksen zijn `true` ofwel `false`of.
-* Als er een ongeldige eigenschap of operator is opgegeven, `400 (Bad Request)` treedt er een fout op.
+  * Voor beeld van de indeling W3C-DTF: `creationTime gt DateTime'2011-05-08T08:49:37Z'`
+  * RFC 1123-indeling voor beeld: `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
+* Booleaanse teken reeksen zijn `true` of `false`.
+* Als er een ongeldige eigenschap of operator is opgegeven, treedt er een `400 (Bad Request)` fout op.
 
 ## <a name="efficient-querying-in-batch-net"></a>Efficiënte query's uitvoeren in batch .NET
 Binnen de [batch .net][api_net] -API wordt de klasse [ODATADetailLevel][odata] gebruikt voor het leveren van filters, selecteren en uitvouwen van teken reeksen om bewerkingen weer te geven. De klasse ODataDetailLevel heeft drie open bare teken reeks eigenschappen die kunnen worden opgegeven in de constructor of die rechtstreeks op het object kan worden ingesteld. Vervolgens geeft u het ODataDetailLevel-object als een para meter door aan de verschillende lijst bewerkingen, zoals [ListPools][net_list_pools], [ListJobs][net_list_jobs]en [ListTasks][net_list_tasks].
 
-* [ODATADetailLevel][odata]. [FilterClause][odata_filter]: Beperk het aantal items dat wordt geretourneerd.
+* [ODATADetailLevel][odata]. [FilterClause][odata_filter]: Beperk het aantal geretourneerde items.
 * [ODATADetailLevel][odata]. [SelectClause][odata_select]: Geef op welke eigenschaps waarden met elk item worden geretourneerd.
-* [ODATADetailLevel][odata]. [ExpandClause][odata_expand]: Gegevens ophalen voor alle items in één API-aanroep in plaats van afzonderlijke aanroepen voor elk item.
+* [ODATADetailLevel][odata]. [ExpandClause][odata_expand]: gegevens ophalen voor alle items in één API-aanroep in plaats van afzonderlijke aanroepen voor elk item.
 
 In het volgende code fragment wordt de batch .NET API gebruikt om de batch-service op een efficiënte manier te doorzoeken op de statistieken van een specifieke set met groepen. In dit scenario heeft de batch gebruiker zowel test-als productie Pools. De test groep-Id's worden voorafgegaan door ' test ' en de productie pool-Id's worden voorafgegaan door ' Prod '. In het fragment is *myBatchClient* een correct geïnitialiseerd exemplaar van de klasse [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) .
 
@@ -146,8 +146,8 @@ List<CloudPool> testPools =
 Eigenschaps namen in filters, selecteren en uitvouwen teken reeksen *moeten* overeenkomen met hun rest APIe equivalenten, zowel naam als case. De onderstaande tabellen bevatten toewijzingen tussen de .NET-en REST API-equivalenten.
 
 ### <a name="mappings-for-filter-strings"></a>Toewijzingen voor filter teken reeksen
-* **.Net-lijst methoden**: Elk van de .NET API-methoden in deze kolom accepteert een [ODATADetailLevel][odata] -object als para meter.
-* **Aanvragen**van de rest-lijst: Elke REST API pagina die aan deze kolom is gekoppeld, bevat een tabel die de eigenschappen en bewerkingen specificeert die in *filter* reeksen zijn toegestaan. U gebruikt deze eigenschapnamen en bewerkingen wanneer u een [ODATADetailLevel. FilterClause][odata_filter] -teken reeks maakt.
+* **.Net-lijst methoden**: voor elk van de .net API-methoden in deze kolom wordt een [ODATADetailLevel][odata] -object als para meter geaccepteerd.
+* **Rest-lijst aanvragen**: elke rest API pagina die aan deze kolom is gekoppeld, bevat een tabel die de eigenschappen en bewerkingen specificeert die zijn toegestaan in *filter* teken reeksen. U gebruikt deze eigenschapnamen en bewerkingen wanneer u een [ODATADetailLevel. FilterClause][odata_filter] -teken reeks maakt.
 
 | .NET-lijst methoden | Aanvragen van de REST-lijst |
 | --- | --- |
@@ -163,8 +163,8 @@ Eigenschaps namen in filters, selecteren en uitvouwen teken reeksen *moeten* ove
 | [Pool Operations. ListPools][net_list_pools] |[De Pools in een account weer geven][rest_list_pools] |
 
 ### <a name="mappings-for-select-strings"></a>Toewijzingen voor selectie teken reeksen
-* **Batch .net-typen**: Batch .NET API-typen.
-* **Rest API entiteiten**: Elke pagina in deze kolom bevat een of meer tabellen met de REST API eigenschaps namen voor het type. Deze eigenschapnamen worden gebruikt wanneer u teken reeksen samen stelt. U gebruikt dezelfde eigenschaps namen wanneer u een teken reeks voor [ODATADetailLevel. SelectClause][odata_select] bouwt.
+* **Batch .net-typen**: batch .net API-typen.
+* **Rest API entiteiten**: elke pagina in deze kolom bevat een of meer tabellen met de rest API eigenschaps namen voor het type. Deze eigenschapnamen worden gebruikt wanneer *u teken reeksen* samen stelt. U gebruikt dezelfde eigenschaps namen wanneer u een teken reeks voor [ODATADetailLevel. SelectClause][odata_select] bouwt.
 
 | Batch .NET-typen | REST API entiteiten |
 | --- | --- |
@@ -178,7 +178,7 @@ Eigenschaps namen in filters, selecteren en uitvouwen teken reeksen *moeten* ove
 ## <a name="example-construct-a-filter-string"></a>Voor beeld: een filter teken reeks maken
 Wanneer u een filter teken reeks voor [ODATADetailLevel. FilterClause][odata_filter]bouwt, raadpleegt u de bovenstaande tabel onder toewijzingen voor filter reeksen om de rest API-documentatie pagina te vinden die overeenkomt met de lijst bewerking die u wilt uitvoeren. U vindt de filter eigenschappen en de ondersteunde Opera tors in de eerste kolom MultiRow op die pagina. Als u alle taken wilt ophalen waarvan de afsluit code niet gelijk is aan nul, bijvoorbeeld deze rij in [de lijst met taken die aan een taak zijn gekoppeld][rest_list_tasks] , geeft u de toepasselijke eigenschap teken reeks en toegestane Opera tors op:
 
-| Eigenschap | Toegestane bewerkingen | type |
+| Eigenschap | Toegestane bewerkingen | Type |
 |:--- |:--- |:--- |
 | `executionInfo/exitCode` |`eq, ge, gt, le , lt` |`Int` |
 
@@ -189,7 +189,7 @@ De filter teken reeks voor het weer geven van alle taken met een niet-nul afslui
 ## <a name="example-construct-a-select-string"></a>Voor beeld: een SELECT-teken reeks maken
 Als u [ODATADetailLevel. SelectClause][odata_select]wilt maken, raadpleegt u de bovenstaande tabel onder ' toewijzingen voor Select strings ' en navigeert u naar de rest API pagina die overeenkomt met het type entiteit dat u wilt weer geven. U vindt de eigenschappen die kunnen worden geselecteerd en de Opera tors die worden ondersteund in de eerste kolom MultiRow op die pagina. Als u alleen de ID en de opdracht regel voor elke taak in een lijst wilt ophalen, kunt u deze rijen in de desbetreffende tabel vinden op [informatie over een taak ophalen][rest_get_task]:
 
-| Eigenschap | type | Opmerkingen |
+| Eigenschap | Type | Opmerkingen |
 |:--- |:--- |:--- |
 | `id` |`String` |`The ID of the task.` |
 | `commandLine` |`String` |`The command line of the task.` |
@@ -228,7 +228,7 @@ De voorbeeld toepassing in het project demonstreert de volgende bewerkingen:
 1. Specifieke kenmerken selecteren om alleen de eigenschappen te downloaden die u nodig hebt
 2. Filteren op status overgangs tijden om alleen wijzigingen te downloaden sinds de laatste query
 
-De volgende methode wordt bijvoorbeeld weer gegeven in de BatchMetrics-bibliotheek. Er wordt een ODATADetailLevel geretourneerd waarin wordt aangegeven dat `id` alleen `state` de eigenschappen en moeten worden opgehaald voor de entiteiten waarvoor een query wordt uitgevoerd. Er wordt ook opgegeven dat alleen entiteiten waarvan de status is gewijzigd sinds `DateTime` de opgegeven para meter moet worden geretourneerd.
+De volgende methode wordt bijvoorbeeld weer gegeven in de BatchMetrics-bibliotheek. Er wordt een ODATADetailLevel geretourneerd waarin wordt aangegeven dat alleen de eigenschappen `id` en `state` moeten worden verkregen voor de entiteiten waarvoor een query wordt uitgevoerd. Er wordt ook opgegeven dat alleen entiteiten waarvan de status is gewijzigd sinds de opgegeven `DateTime` para meter moet worden geretourneerd.
 
 ```csharp
 internal static ODATADetailLevel OnlyChangedAfter(DateTime time)

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: a8a5b8df4307d9a73477944351c2889a86bdb2b4
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 562dd900bb3d64731e5467058e2718b081c675b6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75540332"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968534"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Een machine learning model implementeren op Azure App Service (preview-versie)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -49,7 +49,7 @@ Zie [app service-overzicht](/azure/app-service/overview)voor meer informatie ove
     > * `model`-het geregistreerde model dat wordt geïmplementeerd.
     > * `inference_config`-de configuratie voor het afwachten van het model.
     >
-    > Zie [modellen implementeren met Azure machine learning](service/how-to-deploy-and-where.md)voor meer informatie over het instellen van deze variabelen.
+    > Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over het instellen van deze variabelen.
 
 ## <a name="prepare-for-deployment"></a>Voorbereiden op implementatie
 
@@ -67,7 +67,7 @@ Voordat u implementeert, moet u definiëren wat er nodig is om het model als een
     >
     > Een ander alternatief dat kan worden gebruikt voor uw scenario is [batch voorspellingen](how-to-run-batch-predictions.md). Dit biedt ook toegang tot gegevens opslag in de score.
 
-    Zie [modellen implementeren met Azure machine learning](service/how-to-deploy-and-where.md)voor meer informatie over invoer scripts.
+    Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over invoer scripts.
 
 * **Afhankelijkheden**, zoals hulp scripts of python/Conda-pakketten die zijn vereist voor het uitvoeren van het script of model van de vermelding
 
@@ -93,7 +93,7 @@ Deze entiteiten worden ingekapseld in een Afleidings __configuratie__. De deduct
 
 Zie [omgevingen maken en beheren voor training en implementatie](how-to-use-environments.md)voor meer informatie over omgevingen.
 
-Zie [modellen implementeren met Azure machine learning](service/how-to-deploy-and-where.md)voor meer informatie over het afnemen van de configuratie.
+Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie over het afnemen van de configuratie.
 
 > [!IMPORTANT]
 > Wanneer u naar Azure App Service implementeert, hoeft u geen __implementatie configuratie__te maken.
@@ -103,7 +103,7 @@ Zie [modellen implementeren met Azure machine learning](service/how-to-deploy-an
 Als u de docker-installatie kopie wilt maken die is geïmplementeerd op Azure App Service, gebruikt u [model. package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-). Het volgende code fragment laat zien hoe u een nieuwe installatie kopie kunt bouwen op basis van het model en de configuratie voor het afwijzen van de afleiding:
 
 > [!NOTE]
-> In het code fragment wordt ervan uitgegaan dat `model` een geregistreerd model bevat en dat `inference_config` de configuratie voor de afnemende omgeving bevat. Zie [modellen implementeren met Azure machine learning](service/how-to-deploy-and-where.md)voor meer informatie.
+> In het code fragment wordt ervan uitgegaan dat `model` een geregistreerd model bevat en dat `inference_config` de configuratie voor de afnemende omgeving bevat. Zie [modellen implementeren met Azure machine learning](how-to-deploy-and-where.md)voor meer informatie.
 
 ```python
 from azureml.core import Model
@@ -121,7 +121,7 @@ Als `show_output=True`, wordt de uitvoer van het docker-bouw proces weer gegeven
 
 ## <a name="deploy-image-as-a-web-app"></a>Een installatie kopie implementeren als een web-app
 
-1. Gebruik de volgende opdracht om de aanmeldings referenties op te halen voor de Azure Container Registry die de installatie kopie bevat. Vervang `<acrinstance>` door de waarde van `package.location`die u eerder hebt geretourneerd: 
+1. Gebruik de volgende opdracht om de aanmeldings referenties op te halen voor de Azure Container Registry die de installatie kopie bevat. Vervang `<acrinstance>` door de waarde van `package.location`die u eerder hebt geretourneerd:
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -168,7 +168,7 @@ Als `show_output=True`, wordt de uitvoer van het docker-bouw proces weer gegeven
     Deze opdracht retourneert informatie die lijkt op het volgende JSON-document:
 
     ```json
-    { 
+    {
     "adminSiteName": null,
     "appServicePlanName": "myplanname",
     "geoRegion": "West Europe",

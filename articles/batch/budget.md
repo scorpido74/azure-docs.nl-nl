@@ -2,20 +2,20 @@
 title: Kosten analyse en budget-Azure Batch
 description: Meer informatie over het verkrijgen van een kosten analyse en het instellen van een budget voor uw batch-workload.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 07/19/2019
-ms.author: lahugh
-ms.openlocfilehash: 6ccf530fe2164b3d9b1936648ffe9057c334efd6
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.author: jushiman
+ms.openlocfilehash: 7707d966049e9eced1add1104441af8fee356ef0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70094208"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029562"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Kosten analyse en budgetten voor Azure Batch
 
@@ -23,7 +23,7 @@ Er zijn geen kosten verbonden aan Azure Batch, alleen de onderliggende reken res
 
 ## <a name="batch-resources"></a>Batch-resources
 
-Virtuele machines zijn de belangrijkste bronnen die worden gebruikt voor batch verwerking. De kosten voor het gebruik van Vm's voor batch worden berekend op basis van het type, de hoeveelheid en de duur van het gebruik. De facturerings opties voor de virtuele machine omvatten [betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/) of [reserve ring](../billing/billing-save-compute-costs-reservations.md) (vooraf betalen). Beide betalings opties hebben verschillende voor delen, afhankelijk van de reken werk belasting en beide betalings modellen beïnvloeden uw factuur anders.
+Virtuele machines zijn de belangrijkste bronnen die worden gebruikt voor batch verwerking. De kosten voor het gebruik van Vm's voor batch worden berekend op basis van het type, de hoeveelheid en de duur van het gebruik. De facturerings opties voor de virtuele machine omvatten [betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/) of [reserve ring](../cost-management-billing/reservations/save-compute-costs-reservations.md) (vooraf betalen). Beide betalings opties hebben verschillende voor delen, afhankelijk van de reken werk belasting en beide betalings modellen beïnvloeden uw factuur anders.
 
 Wanneer toepassingen worden geïmplementeerd op batch-knoop punten (Vm's) met behulp van [toepassings pakketten](batch-application-packages.md), worden er kosten in rekening gebracht voor de Azure storage resources die door uw toepassing worden gebruikt. U wordt ook gefactureerd voor de opslag van invoer-of uitvoer bestanden, zoals bron bestanden en andere logboek gegevens. Over het algemeen zijn de kosten voor opslag gegevens die aan de batch zijn gekoppeld, veel lager dan de kosten van reken resources. Elke VM in een groep die is gemaakt met **VirtualMachineConfiguration** heeft een gekoppelde besturingssysteem schijf die gebruikmaakt van door Azure beheerde schijven. Azure-beheerde schijven hebben extra kosten en andere schijf prestatie lagen hebben ook verschillende kosten.
 
@@ -38,7 +38,7 @@ Andere services die vaak worden gebruikt in combi natie met batch kunnen het vol
 - Application Insights
 - Data Factory
 - Azure Monitor
-- Virtueel netwerk
+- Virtual Network
 - Vm's met grafische toepassingen
 
 Afhankelijk van de services die u met uw batch-oplossing gebruikt, kunnen er extra kosten in rekening worden gebracht. Raadpleeg de [prijs calculator](https://azure.microsoft.com/pricing/calculator/) om de kosten van elke extra service te bepalen.
@@ -50,15 +50,15 @@ Via de Azure Portal kunt u budgetten en uitgaven voor uw batch-pool (s) of batch
 1. Selecteer **Cost Management + facturering** in de linkernavigatiebalk in het Azure Portal.
 1. Selecteer uw abonnement in de sectie **Mijn abonnementen**
 1. Ga naar **kosten analyse** in het gedeelte **Cost Management** van de navigatie balk aan de linkerkant. dit ziet er als volgt uit:
-1. Selecteer **filter toevoegen**. Selecteer **resource** ![Select het resource filter in de eerste vervolg keuzelijst ](./media/batch-budget/resource-filter.png)
+1. Selecteer **filter toevoegen**. Selecteer in de eerste vervolg keuzelijst **resource** ![Selecteer het resource filter](./media/batch-budget/resource-filter.png)
 1. Selecteer in de tweede vervolg keuzelijst de batch-pool. Wanneer de pool is geselecteerd, ziet de kosten analyse er ongeveer uit als de volgende analyse.
-    ![Cost analyse van een pool ](./media/batch-budget/pool-cost-analysis.png)
+    ![kosten analyse van een pool](./media/batch-budget/pool-cost-analysis.png)
 
 In de analyse van de resulterende kosten worden de kosten van de pool weer gegeven, evenals de resources die bijdragen aan deze kosten. In dit voor beeld zijn de virtuele machines die in de pool worden gebruikt de meest dure resource.
 
 Als u een budget voor de pool wilt maken, selecteert u **budget: geen**en selecteert u **nieuwe budget > maken**. Gebruik nu het venster om een specifiek budget voor uw groep te configureren.
 
-Zie [Azure-budgetten maken en beheren](../cost-management/tutorial-acm-create-budgets.md)voor meer informatie over het configureren van een budget.
+Zie [Azure-budgetten maken en beheren](../cost-management-billing/costs/tutorial-acm-create-budgets.md)voor meer informatie over het configureren van een budget.
 
 > [!NOTE]
 > Azure Batch is gebaseerd op Azure Cloud Services en Azure Virtual Machines technologie. Wanneer u **Cloud Services configuratie**kiest, worden kosten in rekening gebracht op basis van de Cloud Services prijs structuur. Wanneer u de **configuratie van de virtuele machine**kiest, worden kosten in rekening gebracht op basis van de virtual machines prijs structuur. In het voor beeld op deze pagina wordt de configuratie van de **virtuele machine**gebruikt.
@@ -81,9 +81,9 @@ Premium-SSD-schijven van het besturings systeem zijn duurder, maar ze hebben hog
 
 ### <a name="reserved-virtual-machine-instances"></a>Gereserveerde exemplaren van virtuele machines
 
-Als u batch wilt gebruiken gedurende een lange periode, kunt u besparen op de kosten van Vm's met behulp van [Azure Reservations](../billing/billing-save-compute-costs-reservations.md) voor uw workloads. Een reserverings tarief is aanzienlijk lager dan het tarief voor betalen naar gebruik. Voor exemplaren van virtuele machines die worden gebruikt zonder een reserve ring, wordt het tarief voor betalen naar gebruik in rekening gebracht. Als u een reserve ring aanschaft, wordt de reserverings korting toegepast en worden er geen kosten meer berekend op basis van de betalen naar gebruik-tarieven.
+Als u batch wilt gebruiken gedurende een lange periode, kunt u besparen op de kosten van Vm's met behulp van [Azure Reservations](../cost-management-billing/reservations/save-compute-costs-reservations.md) voor uw workloads. Een reserverings tarief is aanzienlijk lager dan het tarief voor betalen naar gebruik. Voor exemplaren van virtuele machines die worden gebruikt zonder een reserve ring, wordt het tarief voor betalen naar gebruik in rekening gebracht. Als u een reserve ring aanschaft, wordt de reserverings korting toegepast en worden er geen kosten meer berekend op basis van de betalen naar gebruik-tarieven.
 
-### <a name="automatic-scaling"></a>Automatisch schalen
+### <a name="automatic-scaling"></a>Automatische schaalaanpassing
 
 Met [automatisch schalen](batch-automatic-scaling.md) wordt het aantal vm's in de batch-pool dynamisch geschaald op basis van de vereisten van de huidige taak. Door de pool te schalen op basis van de levens duur van een taak, zorgt u er automatisch voor dat Vm's alleen omhoog worden geschaald en gebruikt wanneer er een taak wordt uitgevoerd. Wanneer de taak is voltooid of als er geen taken zijn, worden de Vm's automatisch omlaag geschaald om reken resources op te slaan. Met schalen kunt u de totale kosten van uw batch-oplossing verlagen door alleen de benodigde resources te gebruiken.
 

@@ -2,18 +2,17 @@
 title: Gebeurtenissen verwerken van Event Hubs met Storm-Azure HDInsight
 description: Meer informatie over het verwerken van gegevens van Azure Event Hubs C# met een storm-topologie die is gemaakt in Visual Studio, met behulp van de HDInsight-hulpprogram Ma's voor Visual Studio.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/27/2017
-ms.author: hrasheed
-ROBOTS: NOINDEX
-ms.openlocfilehash: 62d65a4f004494ac4ce4ecd3df0f091460028d8f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.date: 01/14/2020
+ms.openlocfilehash: 85b7093df99127b690c51e8f2f28d18e3f5f3c95
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800069"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981640"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Gebeurtenissen verwerken vanuit Azure Event Hubs met Apache Storm op HDInsight (C#)
 
@@ -26,19 +25,11 @@ Meer informatie over het werken met Azure Event Hubs van [Apache Storm](https://
 
 De stappen in dit document gebruiken SCP.NET, een NuGet-pakket waarmee u eenvoudig topologieën C# en onderdelen kunt maken voor gebruik met Storm op HDInsight.
 
-> [!IMPORTANT]  
-> Hoewel de stappen in dit document afhankelijk zijn van een Windows-ontwikkel omgeving met Visual Studio, kan het gecompileerde project worden verzonden naar een storm op HDInsight-cluster dat gebruikmaakt van Linux. Alleen op Linux gebaseerde clusters die zijn gemaakt na 28 oktober 2016, ondersteunen SCP.NET-topologieën.
-
 HDInsight 3,4 en hoger gebruiken mono om topologieën uit te voeren C# . Het voor beeld dat in dit document wordt gebruikt, werkt met HDInsight 3,6. Als u van plan bent uw eigen .NET-oplossingen voor HDInsight te maken, controleert u het document met [zwartwit compatibiliteit](https://www.mono-project.com/docs/about-mono/compatibility/) voor mogelijke incompatibiliteit.
 
 ### <a name="cluster-versioning"></a>Cluster versie beheer
 
 Het micro soft. SCP. net. SDK NuGet-pakket dat u voor uw project gebruikt, moet overeenkomen met de primaire versie van Storm geïnstalleerd op HDInsight. HDInsight-versies 3,5 en 3,6 gebruiken Storm 1. x, dus u moet SCP.NET versie 1.0. x. x met deze clusters gebruiken.
-
-> [!IMPORTANT]  
-> In het voor beeld in dit document wordt een HDInsight 3,5-of 3,6-cluster verwacht.
->
-> Linux is het enige besturingssysteem dat wordt gebruikt in HDInsight-versie 3.4 of hoger. 
 
 C#topologieën moeten ook .NET 4,5-doel hebben.
 
@@ -109,9 +100,6 @@ U kunt een volledige versie downloaden van het project dat in dit artikel is gem
 
 * Een Apache Storm cluster in HDInsight. Zie [Apache Hadoop clusters maken met behulp van de Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md) en selecteer **Storm** voor het **cluster type**.
 
-    > [!WARNING]  
-    > In het voor beeld dat in dit document wordt gebruikt, is Storm vereist voor HDInsight-versie 3,5 of 3,6. Dit werkt niet met oudere versies van HDInsight, omdat wijzigingen in de naam van de klasse worden verbroken. Voor een versie van dit voor beeld die werkt met oudere clusters, Zie [github](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases).
-
 * Een [Azure-Event hub](../../event-hubs/event-hubs-create.md).
 
 * De [Azure .NET SDK](https://azure.microsoft.com/downloads/).
@@ -133,9 +121,9 @@ Maak een map met de naam `eventhubspout`en sla het bestand op in de map.
 
 Event Hubs is de gegevens bron voor dit voor beeld. Gebruik de informatie in de sectie ' een Event Hub maken ' van aan de [slag met Event hubs](../../event-hubs/event-hubs-create.md).
 
-1. Nadat de Event Hub is gemaakt, bekijkt u de instellingen voor **EventHub** in de Azure Portal en selecteert u **beleid voor gedeelde toegang**. Selecteer **+ toevoegen** om het volgende beleid toe te voegen:
+1. Nadat de Event Hub is gemaakt, bekijkt u de instellingen voor **EventHub** in de Azure Portal en selecteert u **beleid voor gedeelde toegang**. Selecteer **+ toevoegen** om het volgende beleid te maken:
 
-   | Naam | Machtigingen |
+   | Name | Machtigingen |
    | --- | --- |
    | Writer |Verzenden |
    | gelezen |Luisteren |
@@ -146,11 +134,11 @@ Event Hubs is de gegevens bron voor dit voor beeld. Gebruik de informatie in de 
 
 ## <a name="configure-the-eventhubwriter"></a>De EventHubWriter configureren
 
-1. Als u de nieuwste versie van de HDInsight-hulpprogram ma's voor Visual Studio nog niet hebt geïnstalleerd, raadpleegt u [aan de slag met HDInsight-hulpprogram ma's voor Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md).
+1. Zie [aan de slag met hdinsight-hulpprogram ma's voor Visual Studio](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)als u de nieuwste versie van de HDInsight-hulpprogram Ma's voor Visual Studio nog niet hebt geïnstalleerd.
 
 2. Down load de oplossing van [eventhub-Storm-hybride](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub).
 
-3. Open het bestand **app. config** in het project **EventHubWriter** . Gebruik de informatie uit de Event Hub die u eerder hebt geconfigureerd om de waarde voor de volgende sleutels in te vullen:
+3. Open **EventHubExample. SLN**. Open het bestand **app. config** in het project **EventHubWriter** . Gebruik de informatie uit de Event Hub die u eerder hebt geconfigureerd om de waarde voor de volgende sleutels in te vullen:
 
    | Sleutel | Waarde |
    | --- | --- |
@@ -204,9 +192,11 @@ Event Hubs is de gegevens bron voor dit voor beeld. Gebruik de informatie in de 
 
 9. Selecteer in de sectie **uitvoerendeers** een van de koppelingen in de kolom **poort** . Hiermee wordt informatie weer gegeven die door het onderdeel is geregistreerd. De geregistreerde gegevens zijn vergelijkbaar met de volgende tekst:
 
-        2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
-        2017-03-02 14:51:29.283 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,283 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1756413275,"deviceId":"647a5eff-823d-482f-a8b4-b95b35ae570b"}
-        2017-03-02 14:51:29.313 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,312 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1108478910,"deviceId":"206a68fa-8264-4d61-9100-bfdb68ee8f0a"}
+    ```output
+    2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
+    2017-03-02 14:51:29.283 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,283 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1756413275,"deviceId":"647a5eff-823d-482f-a8b4-b95b35ae570b"}
+    2017-03-02 14:51:29.313 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,312 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1108478910,"deviceId":"206a68fa-8264-4d61-9100-bfdb68ee8f0a"}
+    ```
 
 ## <a name="stop-the-topologies"></a>De topologieën stoppen
 

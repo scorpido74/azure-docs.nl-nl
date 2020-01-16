@@ -3,7 +3,7 @@ title: Taken maken om taken voor te bereiden en taken te volt ooien op reken kno
 description: Met voorbereidings taken op taak niveau kunt u de gegevens overdracht naar Azure Batch Compute-knoop punten en release taken voor het opruimen van het knoop punt bij het volt ooien van de taak
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 2dbdbc8b13a75b72ca09a319c6925d0835a52e13
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7c5c9dfcaa88b35e14cf5d56b01b4e364c856600
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095118"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027112"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Taak voorbereiding en taak release taken uitvoeren op batch Compute-knoop punten
 
@@ -57,7 +57,7 @@ Mogelijk wilt u een kopie van de logboek bestanden die door uw taken worden gege
 > 
 > 
 
-## <a name="job-preparation-task"></a>Taakvoorbereidingstaak
+## <a name="job-preparation-task"></a>Taak voor het voorbereiden van taken
 Voordat de taken van een taak worden uitgevoerd, voert batch de taak voorbereidings taken uit op elk reken knooppunt dat is gepland om een taak uit te voeren. Standaard wacht de batch-service dat de taak voorbereidings taak moet worden voltooid voordat de taken worden uitgevoerd die zijn gepland om te worden uitgevoerd op het knoop punt. U kunt de service echter zo configureren dat deze niet wordt gewacht. Als het knoop punt opnieuw wordt opgestart, wordt de taak voor het voorbereiden van de taak opnieuw uitgevoerd, maar u kunt dit gedrag ook uitschakelen.
 
 De taak voor het voorbereiden van taken wordt alleen uitgevoerd op knoop punten waarop een taak is gepland. Hiermee wordt voor komen dat een voorbereidings taak onnodig wordt uitgevoerd als er geen taak aan een knoop punt is toegewezen. Dit kan gebeuren wanneer het aantal taken voor een taak kleiner is dan het aantal knoop punten in een pool. Dit geldt ook wanneer [gelijktijdige taak uitvoering](batch-parallel-node-tasks.md) is ingeschakeld, waardoor enkele knoop punten niet-actief blijven als het aantal taken lager is dan het totale aantal mogelijke gelijktijdige taken. Door de taak voorbereidings taak niet uit te voeren op niet-actieve knoop punten, kunt u minder geld best Eden aan de kosten voor gegevens overdracht.
@@ -67,7 +67,7 @@ De taak voor het voorbereiden van taken wordt alleen uitgevoerd op knoop punten 
 > 
 > 
 
-## <a name="job-release-task"></a>Taakvrijgevingstaak
+## <a name="job-release-task"></a>Taak voor taak release
 Zodra een taak is gemarkeerd als voltooid, wordt de taak vrijgave uitgevoerd op elk knoop punt in de pool dat ten minste één taak heeft uitgevoerd. U markeert een taak als voltooid door een Terminate-aanvraag uit te geven. De batch-service stelt vervolgens de taak status in op *beëindigen*, beëindigt actieve of actieve taken die zijn gekoppeld aan de taak en voert de taak vrijgave uit. De taak wordt vervolgens verplaatst naar de status *voltooid* .
 
 > [!NOTE]
@@ -80,7 +80,7 @@ Taak release taken kunnen Maxi maal 15 minuten worden uitgevoerd voordat de batc
 ## <a name="job-prep-and-release-tasks-with-batch-net"></a>Taak voorbereiding en release taken met batch .NET
 Wijs een [JobPreparationTask][net_job_prep] -object toe aan de eigenschap [eigenschap cloudjob. JobPreparationTask][net_job_prep_cloudjob] van uw taak om een taak voorbereidings taak te gebruiken. U kunt ook een [JobReleaseTask][net_job_release] initialiseren en toewijzen aan de eigenschap [eigenschap cloudjob. JobReleaseTask][net_job_prep_cloudjob] van uw taak om de release taak van de taak in te stellen.
 
-In dit code fragment `myBatchClient` is een instantie van [BatchClient][net_batch_client]en `myPool` is een bestaande pool binnen het batch-account.
+In dit code fragment is `myBatchClient` een instantie van [BatchClient][net_batch_client]en `myPool` een bestaande groep binnen het batch-account.
 
 ```csharp
 // Create the CloudJob for CloudPool "myPool"
@@ -181,7 +181,7 @@ Sample complete, hit ENTER to exit...
 ### <a name="inspect-job-preparation-and-release-tasks-in-the-azure-portal"></a>Taak voorbereiding en release taken in het Azure Portal controleren
 Wanneer u de voorbeeld toepassing uitvoert, kunt u de [Azure Portal][portal] gebruiken om de eigenschappen van de taak en de bijbehorende taken weer te geven, of het gedeelde tekst bestand te downloaden dat door de taken van de taak is gewijzigd.
 
-In de onderstaande scherm afbeelding ziet u de Blade voorbereidings **taken** in de Azure Portal na het uitvoeren van de voorbeeld toepassing. Ga naar de *JobPrepReleaseSampleJob* -eigenschappen nadat uw taken zijn voltooid (maar voordat u uw taak en groep hebt verwijderd) en klik op voorbereidings **taken** of **release taken** om de eigenschappen ervan weer te geven.
+In de onderstaande scherm afbeelding ziet u de **Blade voorbereidings taken** in de Azure Portal na het uitvoeren van de voorbeeld toepassing. Ga naar de *JobPrepReleaseSampleJob* -eigenschappen nadat uw taken zijn voltooid (maar voordat u uw taak en groep hebt verwijderd) en klik op **voorbereidings taken** of **release taken** om de eigenschappen ervan weer te geven.
 
 ![Eigenschappen voor het voorbereiden van taken in Azure Portal][1]
 

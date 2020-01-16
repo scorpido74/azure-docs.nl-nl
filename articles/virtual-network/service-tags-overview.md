@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: d0d7d9a4dd39428468d05ddf7297a424832d1020
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: e4c18f1148259d246445b94ac6117ebefa9470a4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921203"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975374"
 ---
 # <a name="virtual-network-service-tags"></a>Service tags van virtueel netwerk 
 <a name="network-service-tags"></a>
@@ -27,7 +27,7 @@ Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels van een bepaalde
 
 U kunt service tags gebruiken voor het definiëren van netwerk toegangs beheer voor [netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) of [Azure firewall](https://docs.microsoft.com/azure/firewall/service-tags). Gebruik service tags in plaats van specifieke IP-adressen wanneer u beveiligings regels maakt. Door de naam van de service label (bijvoorbeeld **ApiManagement**) op te geven in het juiste *bron* of *doel* veld van een regel, kunt u het verkeer voor de bijbehorende service toestaan of weigeren. 
 
-U kunt service tags gebruiken om netwerk isolatie te bereiken en uw Azure-resources te beveiligen via het algemene Internet tijdens het openen van Azure-Services met open bare eind punten. Maak regels voor binnenkomende/uitgaande netwerk beveiligings groepen om verkeer naar/van **Internet** te weigeren en verkeer naar/van **Cloud** of andere [beschik bare service Tags]() van specifieke Azure-Services toe te staan. 
+U kunt service tags gebruiken om netwerk isolatie te bereiken en uw Azure-resources te beveiligen via het algemene Internet tijdens het openen van Azure-Services met open bare eind punten. Maak regels voor binnenkomende/uitgaande netwerk beveiligings groepen om verkeer naar/van **Internet** te weigeren en verkeer naar/van **Cloud** of andere [beschik bare service Tags](#available-service-tags) van specifieke Azure-Services toe te staan. 
 
 ## <a name="available-service-tags"></a>Beschik bare service Tags
 De volgende tabel bevat alle service tags die beschikbaar zijn voor gebruik in regels voor de [netwerk beveiligings groep](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) .

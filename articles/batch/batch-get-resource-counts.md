@@ -2,19 +2,19 @@
 title: Statussen voor taken en knoop punten tellen-Azure Batch | Microsoft Docs
 description: Tel de status van Azure Batch taken en reken knooppunten op om batch-oplossingen te beheren en te bewaken.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 09/07/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 7b41be8c325cd238592f33369499348885de1778
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 5e90045b7863968e8c61c3cbc382434bc8be415a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323543"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029697"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Batch-oplossingen bewaken door taken en knoop punten te tellen per status
 
@@ -34,11 +34,11 @@ Als u een versie van de service gebruikt die geen ondersteuning biedt voor het a
 
 De bewerking taak aantal ophalen telt taken met de volgende statussen:
 
-- **Actief** : een taak die in de wachtrij is geplaatst en kan worden uitgevoerd, maar die momenteel niet is toegewezen aan een reken knooppunt. Een taak is ook `active` als deze [afhankelijk is van een bovenliggende taak](batch-task-dependencies.md) die nog niet is voltooid. 
-- **Uitvoeren** : een taak die is toegewezen aan een reken knooppunt, maar nog niet is voltooid. Een taak wordt meegeteld als `running` de status `preparing` of `running`is, zoals wordt aangegeven door de bewerking [informatie over een taak ophalen][rest_get_task] .
+- **Actief** : een taak die in de wachtrij is geplaatst en kan worden uitgevoerd, maar die momenteel niet is toegewezen aan een reken knooppunt. Een taak wordt ook `active` als deze [afhankelijk is van een bovenliggende taak](batch-task-dependencies.md) die nog niet is voltooid. 
+- **Uitvoeren** : een taak die is toegewezen aan een reken knooppunt, maar nog niet is voltooid. Een taak telt als `running` wanneer de status ervan `preparing` of `running`is, zoals wordt aangegeven door de bewerking [informatie over een taak ophalen][rest_get_task] .
 - **Voltooid** : een taak die niet langer in aanmerking komt voor uitvoering, omdat deze is voltooid, of als deze is voltooid en de limiet voor nieuwe pogingen is bereikt. 
-- **Geslaagd** : een taak waarvan het resultaat van de uitvoering `success`van de taak is. Batch bepaalt of een taak is geslaagd of mislukt door de `TaskExecutionResult` eigenschap van de eigenschap [executionInfo][rest_get_exec_info] te controleren.
-- **Is mislukt** Een taak waarvan het resultaat van de uitvoering `failure`van de taak is.
+- **Geslaagd** : een taak waarvan het resultaat van het uitvoeren van de taak is `success`. Batch bepaalt of een taak is geslaagd of mislukt door de eigenschap `TaskExecutionResult` van de eigenschap [executionInfo][rest_get_exec_info] te controleren.
+- **Is mislukt** Een taak waarvan het resultaat van het uitvoeren van de taak is `failure`.
 
 In het volgende voor beeld van de .NET-code ziet u hoe u taak aantallen kunt ophalen per status: 
 
@@ -55,7 +55,7 @@ Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
 U kunt een vergelijkbaar patroon voor REST en andere ondersteunde talen gebruiken om taak aantallen voor een taak te ontvangen. 
 
 > [!NOTE]
-> De API-versies van de batch-service vóór 2018 -08 `validationStatus` -01.7.0 retour neren ook een eigenschap in het antwoord taak aantallen ophalen. Deze eigenschap geeft aan of batch de status aantallen heeft gecontroleerd op consistentie met de statussen die zijn gerapporteerd in de API lijst taken. Een waarde van `validated` geeft alleen aan dat de batch ten minste één keer voor de taak is gecontroleerd op consistentie. De waarde van de `validationStatus` eigenschap geeft niet aan of het aantal dat taak tellingen ophalen, op dit moment up-to-date is.
+> De API-versies van de batch-service vóór 2018 -08-01.7.0 retour neren ook een `validationStatus` eigenschap in het antwoord taak aantallen ophalen. Deze eigenschap geeft aan of batch de status aantallen heeft gecontroleerd op consistentie met de statussen die zijn gerapporteerd in de API lijst taken. Een waarde van `validated` geeft alleen aan dat de batch ten minste één keer voor de taak is gecontroleerd op consistentie. De waarde van de eigenschap `validationStatus` geeft niet aan of de aantallen die de telling van het aantal taken ophalen op dit moment actueel zijn.
 >
 
 ## <a name="node-state-counts"></a>Aantal knooppunt statussen
@@ -63,7 +63,7 @@ U kunt een vergelijkbaar patroon voor REST en andere ondersteunde talen gebruike
 De bewerking aantal knoop punten van een lijst groep telt het aantal reken knooppunten op basis van de volgende statussen in elke groep. Er worden afzonderlijke statistische aantallen gegeven voor toegewezen knoop punten en knoop punten met lage prioriteit in elke groep.
 
 - **Maken** : een door Azure toegewezen virtuele machine die nog niet is gestart om lid te worden van een groep.
-- Inactief: er is een beschik bare Compute-knoop punt dat momenteel geen taak wordt uitgevoerd.
+- **Inactief** : er is een beschik bare Compute-knoop punt dat momenteel geen taak wordt uitgevoerd.
 - **LeavingPool** : een knoop punt dat de pool verlaat, hetzij omdat de gebruiker deze expliciet verwijdert of omdat het formaat van de groep wordt gewijzigd of automatisch wordt geschaald.
 - **Offline** : een knoop punt dat batch niet kan gebruiken om nieuwe taken te plannen.
 - **Afgebroken** : een knoop punt met lage prioriteit dat uit de groep is verwijderd omdat Azure de virtuele machine heeft teruggewonnen. Een `preempted` knoop punt kan opnieuw worden geïnitialiseerd als er een VM-capaciteit met lage prioriteit beschikbaar is.
@@ -71,7 +71,7 @@ De bewerking aantal knoop punten van een lijst groep telt het aantal reken knoop
 - **Reimaging** : een knoop punt waarop het besturings systeem opnieuw wordt geïnstalleerd.
 - **Uitvoeren** : een knoop punt waarop een of meer taken worden uitgevoerd (anders dan de begin taak).
 - **Starten** : een knoop punt waarop de batch-service wordt gestart. 
-- **StartTaskFailed** : een knoop punt waarop de [begin taak][rest_start_task] is mislukt en alle pogingen zijn uitgeput `waitForSuccess` en op de begin taak is ingesteld. Het knoop punt is niet bruikbaar voor het uitvoeren van taken.
+- **StartTaskFailed** : een knoop punt waarop de [begin taak][rest_start_task] is mislukt en alle pogingen zijn uitgeput, en waarop `waitForSuccess` is ingesteld op de begin taak. Het knoop punt is niet bruikbaar voor het uitvoeren van taken.
 - **Onbekend** : een knoop punt dat contact heeft gemaakt met de batch-service en waarvan de status niet bekend is.
 - **Onbruikbaar** : een knoop punt dat niet kan worden gebruikt voor het uitvoeren van taken vanwege fouten.
 - **WaitingForStartTask** : een knoop punt waarop de begin taak wordt uitgevoerd, maar `waitForSuccess` is ingesteld en de begin taak is niet voltooid.

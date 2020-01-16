@@ -16,24 +16,24 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: d934386a47c339cd3abdf72578736b44d40e7952
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 50054379a3032a368a10932e15396373a3817cff
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059010"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978912"
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>Een virtueel netwerk (klassiek) met meerdere subnetten maken
 
 > [!IMPORTANT]
-> Azure heeft twee [verschillende implementatie modellen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor het maken van en werken met resources: Resource Manager en klassiek. Dit artikel gaat over het gebruik van het klassieke implementatiemodel. Micro soft raadt u aan om de meeste nieuwe virtuele netwerken te maken via het [Resource Manager](quick-create-portal.md) -implementatie model.
+> Azure heeft twee [verschillende implementatie modellen](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor het maken van en werken met resources: Resource Manager en klassiek. Dit artikel gaat over het gebruik van het klassieke implementatiemodel. Micro soft raadt u aan om de meeste nieuwe virtuele netwerken te maken via het [Resource Manager](quick-create-portal.md) -implementatie model.
 
 In deze zelf studie leert u hoe u een eenvoudig virtueel Azure-netwerk (klassiek) maakt met afzonderlijke open bare en privé-subnetten. U kunt Azure-resources maken, zoals virtuele machines en Cloud Services in een subnet. Resources die in virtuele netwerken (klassiek) zijn gemaakt, kunnen met elkaar communiceren en met bronnen in andere netwerken die zijn verbonden met een virtueel netwerk.
 
 Meer informatie over alle instellingen van het [virtuele netwerk](manage-virtual-network.md) en het [subnet](virtual-network-manage-subnet.md) .
 
 > [!WARNING]
-> Virtuele netwerken (klassiek) worden direct verwijderd door Azure wanneer een [abonnement wordt uitgeschakeld](../billing/billing-subscription-become-disable.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit). Virtuele netwerken (klassiek) worden verwijderd ongeacht of er resources bestaan in het virtuele netwerk. Als u het abonnement later opnieuw inschakelt, moeten de resources die in het virtuele netwerk aanwezig waren opnieuw worden gemaakt.
+> Virtuele netwerken (klassiek) worden direct verwijderd door Azure wanneer een [abonnement wordt uitgeschakeld](../cost-management-billing/manage/subscription-disabled.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit). Virtuele netwerken (klassiek) worden verwijderd ongeacht of er resources bestaan in het virtuele netwerk. Als u het abonnement later opnieuw inschakelt, moeten de resources die in het virtuele netwerk aanwezig waren opnieuw worden gemaakt.
 
 U kunt een virtueel netwerk (klassiek) maken met behulp van de [Azure Portal](#portal), de [Azure-opdracht regel interface (CLI) 1,0](#azure-cli)of [Power shell](#powershell).
 
@@ -50,8 +50,8 @@ U kunt een virtueel netwerk (klassiek) maken met behulp van de [Azure Portal](#p
     |Name|myVnet|
     |Adresruimte|10.0.0.0/16|
     |Subnetnaam|Public|
-    |Adresbereik van subnet|10.0.0.0/24|
-    |Resource group|**Maak nieuw** geselecteerd en voer vervolgens **myResourceGroup**in.|
+    |Subnetadresbereik|10.0.0.0/24|
+    |Resourcegroep|**Maak nieuw** geselecteerd en voer vervolgens **myResourceGroup**in.|
     |Abonnement en locatie|Selecteer uw abonnement en locatie.
 
     Als u niet bekend bent met Azure, kunt u meer te weten komen over [resource groepen](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group), [abonnementen](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)en [locaties](https://azure.microsoft.com/regions) (ook wel *regio's*genoemd).
@@ -60,14 +60,14 @@ U kunt een virtueel netwerk (klassiek) maken met behulp van de [Azure Portal](#p
 6. Klik op **+ toevoegen** in het deel venster **myVnet-subnetten** dat wordt weer gegeven.
 7. Voer **privé** in bij **naam** in het deel venster **subnet toevoegen** . Voer **10.0.1.0/24** in voor het **adres bereik**.  Klik op **OK**.
 8. In het deel venster **myVnet-subnetten** ziet u de **open bare** en **particuliere** subnetten die u hebt gemaakt.
-9. **Optioneel**: Wanneer u deze zelf studie hebt voltooid, wilt u misschien de resources verwijderen die u hebt gemaakt, zodat u geen gebruik kunt maken van de kosten:
+9. **Optioneel**: wanneer u deze zelf studie hebt voltooid, wilt u misschien de resources verwijderen die u hebt gemaakt, zodat u geen gebruiks kosten kunt betalen:
     - Klik op **overzicht** in het deel venster **myVnet** .
     - Klik op het pictogram **verwijderen** in het deel venster **myVnet** .
     - Klik op **Ja** in het vak **virtueel netwerk verwijderen** om de verwijdering te bevestigen.
 
 ## <a name="azure-cli"></a>Azure-CLI
 
-1. U kunt [de Azure cli installeren en configureren](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json), of de CLI gebruiken in de Azure Cloud shell. De Azure Cloud Shell is een gratis Bash-shell die u rechtstreeks in Azure Portal kunt uitvoeren. In deze shell is de Azure CLI vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Als u hulp nodig hebt bij CLI- `azure <command> --help`opdrachten, typt u. 
+1. U kunt [de Azure cli installeren en configureren](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json), of de CLI gebruiken in de Azure Cloud shell. De Azure Cloud Shell is een gratis Bash-shell die u rechtstreeks in Azure Portal kunt uitvoeren. In deze shell is de Azure CLI vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Typ `azure <command> --help`om hulp te krijgen voor CLI-opdrachten. 
 2. Meld u in een CLI-sessie aan bij Azure met de volgende opdracht. Als u in het onderstaande vak op **try** -out klikt, wordt een Cloud shell geopend. U kunt u aanmelden bij uw Azure-abonnement zonder de volgende opdracht in te voeren:
 
     ```azurecli-interactive
@@ -98,7 +98,7 @@ U kunt een virtueel netwerk (klassiek) maken met behulp van de [Azure Portal](#p
     azure network vnet show --vnet myVnet
     ```
 
-7. **Optioneel**: Mogelijk wilt u de resources verwijderen die u hebt gemaakt tijdens het volt ooien van deze zelf studie, zodat u geen gebruik kunt maken van de kosten:
+7. **Optioneel**: u wilt misschien de resources verwijderen die u hebt gemaakt tijdens het volt ooien van deze zelf studie, zodat u geen gebruik kunt maken van de kosten:
 
     ```azurecli-interactive
     azure network vnet delete --vnet myVnet --quiet
@@ -153,7 +153,7 @@ U kunt een virtueel netwerk (klassiek) maken met behulp van de [Azure Portal](#p
     Get-AzureVNetSite -VNetName "myVnet"
     ```
 
-8. **Optioneel**: Mogelijk wilt u de resources verwijderen die u hebt gemaakt tijdens het volt ooien van deze zelf studie, zodat u geen gebruiks kosten hebt. Als u het virtuele netwerk wilt verwijderen, voert u de stappen 4-6 opnieuw uit. deze keer wordt het **VirtualNetworkSite** -element verwijderd dat u in stap 5 hebt toegevoegd.
+8. **Optioneel**: u wilt misschien de resources verwijderen die u hebt gemaakt tijdens het volt ooien van deze zelf studie, zodat u geen gebruiks kosten in rekening brengt. Als u het virtuele netwerk wilt verwijderen, voert u de stappen 4-6 opnieuw uit. deze keer wordt het **VirtualNetworkSite** -element verwijderd dat u in stap 5 hebt toegevoegd.
  
 > [!NOTE]
 > Hoewel u geen resource groep kunt opgeven voor het maken van een virtueel netwerk (klassiek) in Power shell, maakt Azure het virtuele netwerk in een resource groep met de naam *standaard netwerk*.

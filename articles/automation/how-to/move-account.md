@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2d1c747a52a1e8dedd0b5ba411b673eee463a2b6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1aa759a2984764169eb28935e095d0f7c0f90c08
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849578"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969835"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Uw Azure Automation-account verplaatsen naar een ander abonnement
 
-Azure biedt u de mogelijkheid om sommige resources te verplaatsen naar een nieuwe resource groep of een nieuw abonnement. U kunt resources verplaatsen via de Azure Portal, Power shell, de Azure CLI of de REST API. Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../../azure-resource-manager/resource-group-move-resources.md)voor meer informatie over het proces.
+Azure biedt u de mogelijkheid om sommige resources te verplaatsen naar een nieuwe resource groep of een nieuw abonnement. U kunt resources verplaatsen via de Azure Portal, Power shell, de Azure CLI of de REST API. Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md)voor meer informatie over het proces.
 
 Azure Automation accounts zijn een van de resources die kunnen worden verplaatst. In dit artikel leert u de stappen om Automation-accounts te verplaatsen naar een andere resource of een ander abonnement.
 
@@ -147,4 +147,4 @@ Wanneer de verplaatsing is voltooid, controleert u de volgende taken die moeten 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [resources verplaatsen in azure](../../azure-resource-manager/move-support-resources.md)voor meer informatie over het verplaatsen van resources in Azure.
+Zie [resources verplaatsen in azure](../../azure-resource-manager/management/move-support-resources.md)voor meer informatie over het verplaatsen van resources in Azure.

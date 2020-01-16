@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 87cdd3d18fe0e6a3655c8bbc940cdc00fa211e74
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 70523dc12f3f20362fcf4a2c3cb456a182038e8a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750588"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982251"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Een virtueel netwerk maken, wijzigen of verwijderen
 
@@ -79,7 +79,7 @@ Voer de volgende taken uit voordat u de stappen in een van de secties van dit ar
 
      ![Overzicht van de netwerk interface](./media/manage-virtual-network/vnet-overview.png)
 
-     U kunt een virtueel netwerk verplaatsen naar een ander abonnement of een andere resource groep door **wijzigen** te selecteren naast de **resource groep** of de naam van het **abonnement**. Zie [resources verplaatsen naar een andere resource groep of een ander abonnement](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over het verplaatsen van een virtueel netwerk. In het artikel vindt u vereisten en hoe u resources kunt verplaatsen met behulp van de Azure Portal, Power shell en Azure CLI. Alle resources die zijn verbonden met het virtuele netwerk moeten worden verplaatst met het virtuele netwerk.
+     U kunt een virtueel netwerk verplaatsen naar een ander abonnement of een andere resource groep door **wijzigen** te selecteren naast de **resource groep** of de naam van het **abonnement**. Zie [resources verplaatsen naar een andere resource groep of een ander abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over het verplaatsen van een virtueel netwerk. In het artikel vindt u vereisten en hoe u resources kunt verplaatsen met behulp van de Azure Portal, Power shell en Azure CLI. Alle resources die zijn verbonden met het virtuele netwerk moeten worden verplaatst met het virtuele netwerk.
    - **Adres ruimte**: de adres ruimten die worden toegewezen aan het virtuele netwerk worden weer gegeven. Volg de stappen in [een adres bereik toevoegen of verwijderen](#add-or-remove-an-address-range)voor meer informatie over het toevoegen en verwijderen van een adres bereik aan de adres ruimte.
    - **Verbonden apparaten**: alle resources die zijn verbonden met het virtuele netwerk, worden weer gegeven. In de vorige scherm afbeelding zijn drie netwerk interfaces en één load balancer verbonden met het virtuele netwerk. Nieuwe resources die u maakt en verbinding maken met het virtuele netwerk, worden weer gegeven. Als u een resource verwijdert die is verbonden met het virtuele netwerk, wordt deze niet meer weer gegeven in de lijst.
    - **Subnetten**: er wordt een lijst weer gegeven met de subnetten die in het virtuele netwerk aanwezig zijn. Zie [subnets beheren](virtual-network-manage-subnet.md)voor meer informatie over het toevoegen en verwijderen van een subnet.
@@ -90,8 +90,8 @@ Voer de volgende taken uit voordat u de stappen in een van de secties van dit ar
    - **Algemene Azure-instellingen**: voor meer informatie over algemene Azure-instellingen raadpleegt u de volgende informatie:
      - [Activiteitenlogboek](../azure-monitor/platform/platform-logs-overview.md)
      - [Toegangs beheer (IAM)](../role-based-access-control/overview.md)
-     - [Tags](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [Vergren delingen](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Tags](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Vergren delingen](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Automatiserings script](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
 **Opdrachten**

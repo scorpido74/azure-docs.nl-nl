@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 039b514fe70da0e300e74bbc98a3a0f4e9ea342c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c6f7f59f7bcc93edafa3cbb47bd432b52bde985c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848592"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979460"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>De Azure AD-functionaliteit aanpassen voor Self-service voor wachtwoord herstel
 
@@ -43,9 +43,9 @@ Gebruikers met een self-service voor wacht woord opnieuw instellen hebben de kop
 
 De contact-e-mail wordt in de volgende volg orde verzonden naar de volgende ontvangers:
 
-1. Als de rol **Wachtwoord beheerder** is toegewezen, worden beheerders met deze rol hiervan op de hoogte gesteld.
-2. Als er geen wachtwoord beheerders zijn toegewezen, worden beheerders met de rol **gebruikers beheerder** hiervan op de hoogte gesteld.
-3. Als geen van de vorige rollen zijn toegewezen, worden de **globale beheerders** hiervan op de hoogte gesteld.
+1. Als de rol **helpdesk beheerder** of **Wachtwoord beheerder** is toegewezen, worden beheerders met deze rollen hiervan op de hoogte gebracht.
+1. Als er geen helpdesk beheerders of wachtwoord beheerder zijn toegewezen, worden beheerders met de rol **gebruikers beheerder** hiervan op de hoogte gesteld.
+1. Als geen van de vorige rollen zijn toegewezen, worden de **globale beheerders** hiervan op de hoogte gesteld.
 
 In alle gevallen worden Maxi maal 100 ontvangers hiervan op de hoogte gebracht.
 

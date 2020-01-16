@@ -2,7 +2,7 @@
 title: Gebeurtenis Azure Batch taak voltooid | Microsoft Docs
 description: Verwijzing voor de gebeurtenis complete van batch-taak.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: lahugh
-ms.openlocfilehash: 085ca1d007371c3afd7246078369475da38f9b9f
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.author: jushiman
+ms.openlocfilehash: 0a325060097f11b38e3b35d032c572b9dfbe0cc7
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258246"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026111"
 ---
 # <a name="task-complete-event"></a>Gebeurtenis taak voltooid
 
@@ -51,7 +51,7 @@ ms.locfileid: "70258246"
 }
 ```
 
-|De naam van element|type|Opmerkingen|
+|Elementnaam|Type|Opmerkingen|
 |------------------|----------|-----------|
 |`jobId`|Tekenreeks|De ID van de taak die de taak bevat.|
 |`id`|Tekenreeks|De ID van de taak.|
@@ -64,29 +64,29 @@ ms.locfileid: "70258246"
 
 ###  <a name="nodeInfo"></a>nodeInfo
 
-|De naam van element|type|Opmerkingen|
+|Elementnaam|Type|Opmerkingen|
 |------------------|----------|-----------|
 |`poolId`|Tekenreeks|De ID van de pool waarvoor de taak is uitgevoerd.|
 |`nodeId`|Tekenreeks|De ID van het knoop punt waarop de taak is uitgevoerd.|
 
 ###  <a name="multiInstanceSettings"></a>multiInstanceSettings
 
-|De naam van element|type|Opmerkingen|
+|Elementnaam|Type|Opmerkingen|
 |------------------|----------|-----------|
 |`numberOfInstances`|Int32|Het aantal reken knooppunten dat is vereist voor de taak.|
 
 ###  <a name="constraints"></a>standaardwaarde
 
-|De naam van element|type|Opmerkingen|
+|Elementnaam|Type|Opmerkingen|
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|Het maximum aantal keren dat de taak opnieuw kan worden uitgevoerd. De batch-service probeert een taak opnieuw uit te proberen als de afsluit code niet gelijk is aan nul.<br /><br /> Houd er rekening mee dat deze waarde specifiek het aantal nieuwe pogingen bepaalt. De batch-service probeert de taak één keer uit te voeren en kan vervolgens de limiet opnieuw proberen. Als het maximum aantal nieuwe pogingen bijvoorbeeld 3 is, probeert batch een taak Maxi maal 4 keer uit te voeren (één eerste poging en 3 nieuwe pogingen).<br /><br /> Als het maximum aantal nieuwe pogingen 0 is, worden taken niet opnieuw geprobeerd met de batch-service.<br /><br /> Als het maximum aantal nieuwe pogingen-1 is, probeert de batch-service zonder limiet taken uit te voeren.<br /><br /> De standaard waarde is 0 (geen nieuwe pogingen).|
 
 ###  <a name="executionInfo"></a>executionInfo
 
-|De naam van element|type|Opmerkingen|
+|Elementnaam|Type|Opmerkingen|
 |------------------|----------|-----------|
-|`startTime`|DateTime|Het tijdstip waarop de uitvoering van de taak is gestart. ' Running ' komt overeen met de **actieve** status. als de taak bron bestanden of toepassings pakketten opgeeft, wordt de begin tijd weer gegeven voor het tijdstip waarop de taak is gestart of geïmplementeerd.  Als de taak opnieuw is gestart of opnieuw is uitgevoerd, is dit het meest recente tijdstip waarop de taak is gestart.|
-|`endTime`|DateTime|Het tijdstip waarop de taak is voltooid.|
+|`startTime`|Datum/tijd|Het tijdstip waarop de uitvoering van de taak is gestart. ' Running ' komt overeen met de **actieve** status. als de taak bron bestanden of toepassings pakketten opgeeft, wordt de begin tijd weer gegeven voor het tijdstip waarop de taak is gestart of geïmplementeerd.  Als de taak opnieuw is gestart of opnieuw is uitgevoerd, is dit het meest recente tijdstip waarop de taak is gestart.|
+|`endTime`|Datum/tijd|Het tijdstip waarop de taak is voltooid.|
 |`exitCode`|Int32|De afsluit code van de taak.|
 |`retryCount`|Int32|Het aantal keren dat de batch-service opnieuw is geprobeerd om de taak uit te proberen. De taak wordt opnieuw uitgevoerd als deze wordt afgesloten met een afsluit code die niet gelijk is aan nul, tot aan de opgegeven MaxTaskRetryCount.|
 |`requeueCount`|Int32|Het aantal keren dat de taak door de batch-service opnieuw in de wachtrij is geplaatst als gevolg van een gebruikers aanvraag.<br /><br /> Wanneer de gebruiker knoop punten uit een pool verwijdert (door het formaat of de groep te verkleinen) of wanneer de taak wordt uitgeschakeld, kan de gebruiker opgeven dat actieve taken op de knoop punten opnieuw in de wachtrij worden geplaatst om te worden uitgevoerd. Dit aantal houdt in hoe vaak de taak opnieuw in de wachtrij is geplaatst om deze redenen.|

@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: a5cfb79626370ab9f8493038ac1583993a154b59
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 21314d3c80832c14538130ce373ccf6d2dd19f18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912035"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965940"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Fouten en uitzonde ringen in Azure Logic Apps afhandelen
 
@@ -249,7 +249,7 @@ U kunt het gedrag ' uitvoeren na ' aanpassen zodat de actie wordt uitgevoerd wan
 
 ## <a name="evaluate-actions-with-scopes-and-their-results"></a>Acties met bereiken en hun resultaten evalueren
 
-Net als bij het uitvoeren van stappen na afzonderlijke acties met de eigenschap `runAfter`, kunt u acties groeperen binnen een [bereik](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md). U kunt bereiken gebruiken als u acties logisch wilt groeperen, de aggregatie status van het bereik wilt beoordelen en acties wilt uitvoeren op basis van deze status. Nadat alle acties in een bereik zijn uitgevoerd, krijgt de scope zelf een eigen status. 
+Net als bij het uitvoeren van stappen na afzonderlijke acties met de eigenschap `runAfter`, kunt u acties groeperen binnen een [bereik](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md). U kunt bereiken gebruiken als u acties logisch wilt groeperen, de aggregatie status van het bereik wilt beoordelen en acties wilt uitvoeren op basis van deze status. Nadat alle acties in een bereik zijn uitgevoerd, krijgt de scope zelf een eigen status.
 
 Als u de status van een bereik wilt controleren, kunt u dezelfde criteria gebruiken die u gebruikt om de uitvoerings status van een logische app te controleren, zoals `Succeeded`, `Failed`, enzovoort.
 
@@ -267,7 +267,7 @@ Hoewel het niet nuttig is om een bereik te bereiken, is het mogelijk dat u ook w
 
 De functie [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) biedt context over de resultaten van alle acties in een bereik. De functie `result()` accepteert één para meter, de naam van het bereik, en retourneert een matrix die alle actie resultaten van binnen dat bereik bevat. Deze actie objecten bevatten dezelfde kenmerken als het `actions()`-object, zoals de begin tijd, eind tijd, status, invoer, correlatie-Id's en uitvoer van de actie. Als u context wilt verzenden voor acties die zijn mislukt binnen een bereik, kunt u eenvoudig een `@result()` expressie koppelen aan de eigenschap `runAfter`.
 
-Als u een actie wilt uitvoeren voor elke actie in een bereik met een `Failed` resultaat en als u de matrix met resultaten wilt filteren op de mislukte acties, kunt u een `@result()`-expressie koppelen aan een [**filter matrix**](../connectors/connectors-native-query.md) actie en een [**voor elke**](../logic-apps/logic-apps-control-flow-loops.md) lus. U kunt de gefilterde resultaat matrix nemen en een actie uitvoeren voor elke fout met behulp van de `For_each`-lus.
+Als u een actie wilt uitvoeren voor elke actie in een bereik met een `Failed` resultaat en als u de matrix met resultaten wilt filteren op de mislukte acties, kunt u een `@result()`-expressie koppelen aan een [**filter matrix**](logic-apps-perform-data-operations.md#filter-array-action) actie en een [**voor elke**](../logic-apps/logic-apps-control-flow-loops.md) lus. U kunt de gefilterde resultaat matrix nemen en een actie uitvoeren voor elke fout met behulp van de `For_each`-lus.
 
 Hier volgt een voor beeld, gevolgd door een gedetailleerde uitleg, waarmee een HTTP POST-aanvraag wordt verzonden met de antwoord tekst voor acties die zijn mislukt binnen de scope ' My_Scope ':
 

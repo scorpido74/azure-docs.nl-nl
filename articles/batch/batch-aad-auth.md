@@ -3,7 +3,7 @@ title: Azure Active Directory gebruiken om Azure Batch-service oplossingen te ve
 description: Batch ondersteunt Azure AD voor verificatie vanuit de batch-service.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 tags: ''
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 08/15/2019
-ms.author: lahugh
-ms.openlocfilehash: 4ec85078e6664a43dd31cd04c132d87681bda225
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: jushiman
+ms.openlocfilehash: 56fcd5a8a02e292fdf43f9d22f3987813bce0743
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095626"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029823"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch-service oplossingen verifiëren met Active Directory
 
@@ -49,7 +49,7 @@ Voor verificatie met Azure AD gebruikt u dit eind punt samen met de Tenant-ID (D
 > [!NOTE] 
 > Het Tenant-specifieke eind punt is vereist wanneer u verifieert met behulp van een service-principal. 
 > 
-> Het Tenant-specifieke eind punt is optioneel wanneer u verifieert met behulp van geïntegreerde verificatie, maar wordt aanbevolen. U kunt echter ook het gemeen schappelijke eind punt van Azure AD gebruiken. Het algemene eind punt biedt een algemene interface voor het verzamelen van referenties wanneer er geen specifieke Tenant is opgegeven. Het algemene eind punt `https://login.microsoftonline.com/common`is.
+> Het Tenant-specifieke eind punt is optioneel wanneer u verifieert met behulp van geïntegreerde verificatie, maar wordt aanbevolen. U kunt echter ook het gemeen schappelijke eind punt van Azure AD gebruiken. Het algemene eind punt biedt een algemene interface voor het verzamelen van referenties wanneer er geen specifieke Tenant is opgegeven. Het gemeen schappelijke eind punt is `https://login.microsoftonline.com/common`.
 >
 >
 
@@ -67,7 +67,7 @@ De eerste stap bij het gebruik van Azure AD voor verificatie is het registreren 
 
 Als u uw toepassing registreert, kunt u informatie opgeven over uw toepassing naar Azure AD. Azure AD biedt vervolgens een toepassings-ID (ook wel een *client-id*genoemd) die u gebruikt om uw toepassing te koppelen aan Azure ad tijdens runtime. Zie voor meer informatie over de toepassings-ID [toepassings-en Service-Principal-objecten in azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md).
 
-Volg de stappen in de sectie [een toepassing toevoegen](../active-directory/develop/quickstart-register-app.md) in [toepassingen integreren met Azure Active Directory][aad_integrate]om uw batch-toepassing te registreren. Als u uw toepassing registreert als een systeem eigen toepassing, kunt u een geldige URI voor de omleidings- **URI**opgeven. Het hoeft geen echt eind punt te zijn.
+Volg de stappen in de sectie [een toepassing toevoegen](../active-directory/develop/quickstart-register-app.md) in [toepassingen integreren met Azure Active Directory][aad_integrate]om uw batch-toepassing te registreren. Als u uw toepassing registreert als een systeem eigen toepassing, kunt u een geldige URI voor de **omleidings-URI**opgeven. Het hoeft geen echt eind punt te zijn.
 
 Nadat u uw toepassing hebt geregistreerd, ziet u de toepassings-ID:
 
@@ -80,7 +80,7 @@ Zie [verificatie scenario's voor Azure AD](../active-directory/develop/authentic
 Met de Tenant-ID wordt de Azure AD-Tenant geïdentificeerd waarmee verificatie services voor uw toepassing worden geleverd. Als u de tenant-ID, de volgende stappen uit:
 
 1. Selecteer uw Active Directory in de Azure-portal.
-1. Selecteer **eigenschappen**.
+1. Selecteer **Eigenschappen**.
 1. Kopieer de GUID-waarde opgegeven voor de **map-ID**. Deze waarde wordt ook aangeroepen voor de tenant-ID.
 
 ![De map-ID kopiëren](./media/batch-aad-auth/aad-directory-id.png)
@@ -91,7 +91,7 @@ Als u verificatie met geïntegreerde verificatie wilt uitvoeren, moet u de toepa
 
 Nadat u uw toepassing hebt geregistreerd, voert u de volgende stappen uit in de Azure Portal om deze toegang tot de batch-service te verlenen:
 
-1. Kies in het navigatie deel venster aan de linkerkant van de Azure Portal **alle services**. Selecteer **app**-registraties.
+1. Kies in het navigatie deel venster aan de linkerkant van de Azure Portal **alle services**. Selecteer **app-registraties**.
 1. Zoek de naam van uw toepassing in de lijst met app-registraties:
 
     ![Zoek naar de naam van uw toepassing](./media/batch-aad-auth/search-app-registration.png)
@@ -119,9 +119,9 @@ Als u een toepassing wilt verifiëren die zonder toezicht wordt uitgevoerd, gebr
 
 Wanneer uw toepassing wordt geverifieerd met een Service-Principal, verzendt deze zowel de toepassings-ID als een geheim naar Azure AD. U moet de geheime sleutel maken en kopiëren voor gebruik vanuit uw code.
 
-Volg deze stappen in de Azure Portal:
+Volg deze stappen in Azure Portal:
 
-1. Kies in het navigatie deel venster aan de linkerkant van de Azure Portal **alle services**. Selecteer **app**-registraties.
+1. Kies in het navigatie deel venster aan de linkerkant van de Azure Portal **alle services**. Selecteer **app-registraties**.
 1. Selecteer uw toepassing in de lijst met app-registraties.
 1. Selecteer de toepassing en selecteer vervolgens **certificaten & geheimen**. Selecteer in de sectie **client geheimen** de optie **Nieuw client geheim**.
 1. Als u een geheim wilt maken, voert u een beschrijving in voor het geheim. Selecteer vervolgens een verloop voor het geheim van één jaar, twee jaar of geen verval datum.
@@ -149,12 +149,12 @@ Uw toepassing moet nu worden weer gegeven in de instellingen voor toegangs behee
 Met de Tenant-ID wordt de Azure AD-Tenant geïdentificeerd waarmee verificatie services voor uw toepassing worden geleverd. Als u de tenant-ID, de volgende stappen uit:
 
 1. Selecteer uw Active Directory in de Azure-portal.
-1. Selecteer **eigenschappen**.
+1. Selecteer **Eigenschappen**.
 1. Kopieer de GUID-waarde opgegeven voor de **map-ID**. Deze waarde wordt ook aangeroepen voor de tenant-ID.
 
 ![De map-ID kopiëren](./media/batch-aad-auth/aad-directory-id.png)
 
-## <a name="code-examples"></a>Code voorbeelden
+## <a name="code-examples"></a>Codevoorbeelden
 
 De code voorbeelden in deze sectie laten zien hoe u met Azure AD verifieert met geïntegreerde verificatie en met een service-principal. De meeste van deze code voorbeelden gebruiken .NET, maar de concepten zijn vergelijkbaar voor andere talen.
 
@@ -166,11 +166,11 @@ De code voorbeelden in deze sectie laten zien hoe u met Azure AD verifieert met 
 >
 >
 
-### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>Voorbeeld van code: Geïntegreerde Azure AD-verificatie met batch .NET gebruiken
+### <a name="code-example-using-azure-ad-integrated-authentication-with-batch-net"></a>Code voorbeeld: Azure AD Integrated-verificatie gebruiken met batch .NET
 
 Als u wilt verifiëren met geïntegreerde verificatie vanuit batch .NET, verwijst u naar het [Azure batch .net](https://www.nuget.org/packages/Microsoft.Azure.Batch/) -pakket en het [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -pakket.
 
-Neem de volgende `using` instructies op in uw code:
+Neem de volgende `using`-instructies op in uw code:
 
 ```csharp
 using Microsoft.Azure.Batch;
@@ -239,11 +239,11 @@ public static async Task PerformBatchOperations()
 }
 ```
 
-### <a name="code-example-using-an-azure-ad-service-principal-with-batch-net"></a>Voorbeeld van code: Een Azure AD-Service-Principal gebruiken met batch .NET
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-net"></a>Code voorbeeld: een Azure AD-Service-Principal gebruiken met batch .NET
 
 Als u wilt verifiëren met een Service-Principal vanuit batch .NET, verwijst u naar het [Azure batch .net](https://www.nuget.org/packages/Azure.Batch/) -pakket en het [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -pakket.
 
-Neem de volgende `using` instructies op in uw code:
+Neem de volgende `using`-instructies op in uw code:
 
 ```csharp
 using Microsoft.Azure.Batch;
@@ -307,7 +307,7 @@ public static async Task PerformBatchOperations()
 }
 ```
 
-### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>Voorbeeld van code: Een Azure AD-Service-Principal gebruiken met batch python
+### <a name="code-example-using-an-azure-ad-service-principal-with-batch-python"></a>Code voorbeeld: een Azure AD-Service-Principal gebruiken met batch python
 
 Als u wilt verifiëren met een Service-Principal vanuit batch python, installeert en raadpleegt u de [Azure-batch](https://pypi.org/project/azure-batch/) -en [Azure-algemene](https://pypi.org/project/azure-common/) modules.
 

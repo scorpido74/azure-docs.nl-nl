@@ -3,7 +3,7 @@ title: Aan de slag met PowerShell - Azure Batch | Microsoft Docs
 description: Een korte inleiding in de Azure PowerShell-cmdlets die u kunt gebruiken voor het beheren van Batch-resources.
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: powershell
 ms.workload: big-compute
 ms.date: 01/15/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 21930d5240225540159fa425d9d9fa518a1b19d5
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 48b728d0e5b710f3adaa576f012bdbd19effc20a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323081"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026590"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch-resources beheren met PowerShell-cmdlets
 
@@ -48,7 +48,7 @@ Dit artikel is gebaseerd op cmdlets in Azure Batch-module 1.0.0. Het wordt aange
 
 ## <a name="manage-batch-accounts-and-keys"></a>Batch-accounts en -sleutels beheren
 
-### <a name="create-a-batch-account"></a>Batch-account maken
+### <a name="create-a-batch-account"></a>Een Batch-account maken
 
 Met **New-AzBatchAccount** wordt een Batch-account in een opgegeven resourcegroep gemaakt. Als u nog geen resourcegroep hebt, maakt u er een door de cmdlet [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) uit te voeren. Geef een van de Azure-gebieden op in de parameter **locatie**, bijvoorbeeld 'US - centraal'. Bijvoorbeeld:
 
@@ -111,7 +111,7 @@ $context = Get-AzBatchAccountKeys -AccountName <account_name>
 > [!NOTE]
 > Standaard wordt de primaire sleutel van het account gebruikt voor verificatie, maar u kunt expliciet de te gebruiken sleutel selecteren door de eigenschap **KeyInUse** van het object BatchAccountContext te wijzigen: `$context.KeyInUse = "Secondary"`.
 
-### <a name="azure-active-directory-authentication"></a>Verificatie via Azure Active Directory
+### <a name="azure-active-directory-authentication"></a>Azure Active Directory-authenticatie
 
 ```powershell
 $context = Get-AzBatchAccount -AccountName <account_name>

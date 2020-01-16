@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: f4164966d1a9662a72d41fefcb7cfbb1b444d614
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c2cb7a90f0fe57efcd8f4d75aff3b5ee375abd07
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888984"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971501"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Veelgestelde vragen over Azure Databricks
 
@@ -107,7 +107,7 @@ Azure-fout code: MissingSubscriptionRegistration Azure-fout bericht: het abonnem
 1. Selecteer **abonnementen**, het abonnement dat u gebruikt en vervolgens **resource providers**. 
 1. Selecteer in de lijst met resource providers bij **micro soft. Compute**de optie **registreren**. U moet de rol Inzender of eigenaar hebben voor het abonnement om de resource provider te registreren.
 
-Zie [resource providers en-typen](../azure-resource-manager/resource-manager-supported-services.md)voor meer gedetailleerde instructies.
+Zie [resource providers en-typen](../azure-resource-manager/management/resource-providers-and-types.md)voor meer gedetailleerde instructies.
 
 ### <a name="issue-azure-databricks-needs-permissions-to-access-resources-in-your-organization-that-only-an-admin-can-grant"></a>Probleem: Azure Databricks moet machtigingen hebben voor toegang tot resources in uw organisatie die alleen door een beheerder kunnen worden verleend.
 

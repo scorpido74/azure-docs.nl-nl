@@ -15,25 +15,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: 4170418b4f53277a8f4306fe2835286c8ac99dee
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: ffeb8e1347d75af2be59763faf0b512c0b329221
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186345"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975346"
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>Route ring en virtuele apparaten (klassiek) met Power shell beheren
 
 > [!div class="op_single_selector"]
 > * [PowerShell](tutorial-create-route-table-powershell.md)
-> * [Azure CLI](tutorial-create-route-table-cli.md)
+> * [Azure-CLI](tutorial-create-route-table-cli.md)
 > * [PowerShell (klassiek)](virtual-network-create-udr-classic-ps.md)
 > * [CLI (klassiek)](virtual-network-create-udr-classic-cli.md)
 
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> Voordat u met Azure-resources gaat werken, is het belangrijk om te weten dat Azure momenteel twee implementatiemodellen heeft: Azure Resource Manager en het klassieke model. Zorg ervoor dat u begrijpt wat [implementatiemodellen en hulpprogramma's](../azure-resource-manager/resource-manager-deployment-model.md) zijn voordat u met een Azure-resource gaat werken. U kunt de documentatie voor verschillende hulpprogram ma's weer geven door een optie boven in dit artikel te selecteren. Dit artikel is van toepassing op het klassieke implementatiemodel.
+> Voordat u met Azure-resources gaat werken, is het belangrijk om te weten dat Azure momenteel twee implementatiemodellen heeft: Azure Resource Manager en het klassieke model. Zorg ervoor dat u begrijpt wat [implementatiemodellen en hulpprogramma's](../azure-resource-manager/management/deployment-models.md) zijn voordat u met een Azure-resource gaat werken. U kunt de documentatie voor verschillende hulpprogram ma's weer geven door een optie boven in dit artikel te selecteren. Dit artikel is van toepassing op het klassieke implementatiemodel.
 > 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]

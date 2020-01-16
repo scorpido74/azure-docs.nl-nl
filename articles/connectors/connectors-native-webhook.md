@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 14daa37a414e814ed6de036bbb625933ce2532e0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 24746b7bbbbf3985a9801139b301a829c51a14da
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888121"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030082"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Geautomatiseerde op gebeurtenis gebaseerde werk stromen maken en uitvoeren met behulp van HTTP-webhooks in Azure Logic Apps
 
@@ -36,7 +36,16 @@ Een HTTP-webhook-actie is ook op gebeurtenis gebaseerd en *abonneert* zich op ee
 Zo is de actie [**e-mail bericht verzenden goed keuren**](connectors-create-api-office365-outlook.md) van Office 365 Outlook Connector een voor beeld van een webhook-actie die volgt op dit patroon. U kunt dit patroon uitbreiden in een service met behulp van de webhook-actie.
 
 > [!NOTE]
-> Logic Apps afdwingt Transport Layer Security (TLS) 1,2 wanneer de aanroep terugkeert naar de HTTP-webhook-trigger of-actie. Als er SSL-Handshake-fouten worden weer geven, moet u ervoor zorgen dat u TLS 1,2 gebruikt.
+> Logic Apps afdwingt Transport Layer Security (TLS) 1,2 wanneer de aanroep terugkeert naar de HTTP-webhook-trigger of-actie. Als er SSL-Handshake-fouten worden weer geven, moet u ervoor zorgen dat u TLS 1,2 gebruikt. Hier volgen de ondersteunde coderings suites voor inkomende oproepen:
+>
+> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 Zie deze onderwerpen voor meer informatie:
 

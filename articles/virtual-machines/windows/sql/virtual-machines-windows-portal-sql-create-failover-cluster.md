@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 1a69741ba3ced91b6b0d1fc4bcd4aea887452151
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 20c231e4f3052797eac79a3c97a3d8148690b8c5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792176"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965423"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Een SQL Server-failovercluster configureren op virtuele machines van Azure
 
@@ -78,7 +78,7 @@ Als u zich bewust bent van een Azure IaaS VM-gast-failovercluster, raden we u aa
 U moet ook algemene informatie over deze technologieën hebben:
 
 - [Hyper-geconvergeerde oplossingen die gebruikmaken van Opslagruimten Direct in Windows Server 2016](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Azure-resource groepen](../../../azure-resource-manager/manage-resource-groups-portal.md)
+- [Azure-resource groepen](../../../azure-resource-manager/management/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
 > Op dit moment worden SQL Server failover-cluster exemplaren op virtuele machines van Azure alleen ondersteund in de [Lightweight-beheer modus](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) van de [SQL Server IaaS agent-extensie](virtual-machines-windows-sql-server-agent-extension.md). Als u wilt overschakelen van de volledige extensie modus naar Lightweight, verwijdert u de resource van de **virtuele SQL-machine** voor de bijbehorende vm's en registreert u deze vervolgens bij de resource provider van de SQL-vm in de Lightweight-modus. Als u de bron van de **virtuele SQL-machine** verwijdert met behulp van de Azure Portal, **schakelt u het selectie vakje naast de juiste virtuele machine uit**. De volledige extensie ondersteunt functies zoals automatische back-ups, patches en Geavanceerd Portal beheer. Deze functies werken niet voor SQL-Vm's nadat de agent opnieuw is geïnstalleerd in de modus voor licht gewicht beheer.
@@ -166,7 +166,7 @@ Als aan deze vereisten is voldaan, kunt u beginnen met het bouwen van uw failove
    1. Selecteer het standaard exemplaar.
    1. Verwijder alle functies onder **Data Base Engine-Services**. Verwijder **gedeelde onderdelen**niet. U ziet iets als de volgende scherm afbeelding:
 
-      ![Functies selecteren](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
+      ![Onderdelen selecteren](./media/virtual-machines-windows-portal-sql-create-failover-cluster/03-remove-features.png)
 
    1. Selecteer **volgende**en selecteer vervolgens **verwijderen**.
 
@@ -318,7 +318,7 @@ De schijven voor Opslagruimten Direct moeten leeg zijn. Ze kunnen geen partities
 
    Deze scherm afbeelding toont een Cluster Shared Volume met Opslagruimten Direct:
 
-   ![Cluster Shared Volume](./media/virtual-machines-windows-portal-sql-create-failover-cluster/15-cluster-shared-volume.png)
+   ![Gedeeld clustervolume](./media/virtual-machines-windows-portal-sql-create-failover-cluster/15-cluster-shared-volume.png)
 
 ## <a name="step-3-test-failover-cluster-failover"></a>Stap 3: failover van failover-cluster testen
 
@@ -397,7 +397,7 @@ De load balancer maken:
 
 1. Selecteer **OK** om de back-end-pool te maken.
 
-### <a name="configure-a-load-balancer-health-probe"></a>Een load balancer Health probe configureren
+### <a name="configure-a-load-balancer-health-probe"></a>Een load balancer-statustest configureren
 
 1. Selecteer op de Blade load balancer **status controles**.
 
