@@ -15,22 +15,22 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5829ca41aaa4bd61f8878657e5eedbf6351b5df4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 701f1f7c26731f3e9653955907f5f16d2688cdb2
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423580"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043434"
 ---
-# <a name="web-api-that-calls-web-apis---call-an-api"></a>Web-API voor het aanroepen van web-Api's-aanroepen van een API
+# <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Een web-API die web-Api's aanroept: een API aanroepen
 
-Zodra u een token hebt, kunt u een beveiligde web-API aanroepen. Dit wordt gedaan vanuit de controller van uw ASP.NET/ASP.NET core web-API.
+Nadat u een token hebt, kunt u een beveiligde web-API aanroepen. U kunt dit doen via de controller van uw ASP.NET of ASP.NET Core Web-API.
 
 ## <a name="controller-code"></a>Controller code
 
-Dit is de voortzetting van de voorbeeld code die wordt weer gegeven in de [beveiligde web-API aanroepen Web-api's: een Token ophalen](scenario-web-api-call-api-acquire-token.md), aangeroepen in de acties van de API-controllers, waarmee een downstream API (met de naam ToDoList) wordt opgeroepen.
+Met de volgende code wordt de voorbeeld code die wordt weer gegeven in [een web-API die web-api's aanroept, voortgezet: Schaf een token voor de app aan](scenario-web-api-call-api-acquire-token.md). De code wordt aangeroepen in de acties van de API-controllers. Er wordt een stroomafwaartse API met de naam *ToDoList*aangeroepen.
 
-Nadat u het token hebt verkregen, gebruikt u dit als Bearer-token om de downstream API aan te roepen.
+Nadat u het token hebt aangeschaft, kunt u dit als Bearer-token gebruiken om de downstream API aan te roepen.
 
 ```csharp
 private async Task GetTodoList(bool isAppStarting)
@@ -49,7 +49,7 @@ private async Task GetTodoList(bool isAppStarting)
  }
 ...
 
-// Once the token has been returned by MSAL, add it to the http authorization header, before making the call to access the To Do list service.
+// After the token has been returned by Microsoft Authentication Library (MSAL), add it to the HTTP authorization header before making the call to access the To Do list service.
 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
 
 // Call the To Do list service.
@@ -61,4 +61,4 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Naar productie verplaatsen](scenario-web-api-call-api-production.md)
+> [Een web-API die web-Api's aanroept: verplaatsen naar productie](scenario-web-api-call-api-production.md)

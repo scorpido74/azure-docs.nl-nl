@@ -12,18 +12,19 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9603cdf11373891aaa3541330cb7f65c09352496
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b621c9cbc35d0e9956f6648d870102affd84c24f
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818893"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028388"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migreren van Federatie naar wacht woord hash synchronisatie voor Azure Active Directory
 
 In dit artikel wordt beschreven hoe u uw organisatie domeinen kunt verplaatsen van Active Directory Federation Services (AD FS) naar de synchronisatie van wacht woord-hashes.
 
-U kunt [dit artikel downloaden](https://aka.ms/ADFSTOPHSDPDownload).
+> [!NOTE]
+> Het wijzigen van de verificatie methode vereist planning, testen en mogelijk downtime. [Gefaseerde implementatie](how-to-connect-staged-rollout.md) biedt een alternatieve manier om te testen en geleidelijk te migreren van Federatie naar Cloud verificatie met behulp van wachtwoord-hash-synchronisatie.
 
 ## <a name="prerequisites-for-migrating-to-password-hash-synchronization"></a>Vereisten voor het migreren naar wachtwoord-hash-synchronisatie
 
@@ -135,10 +136,10 @@ In deze sectie worden de overwegingen voor implementatie en informatie over het 
 
 Voordat u de federatieve identiteit omzet in een beheerde identiteit, kijkt u goed op hoe u momenteel AD FS voor Azure AD, Office 365 en andere toepassingen (Relying Party vertrouwens relaties) gebruikt. Bekijk in het bijzonder de scenario's die in de volgende tabel worden beschreven:
 
-| Als | Kies |
+| Als | Kies vervolgens of je de webnotitie wilt |
 |-|-|
 | U wilt AD FS blijven gebruiken met andere toepassingen (met uitzonde ring van Azure AD en Office 365). | Nadat u uw domeinen hebt geconverteerd, gebruikt u zowel AD FS als Azure AD. Denk aan de gebruikers ervaring. In sommige gevallen moeten gebruikers mogelijk twee maal worden geverifieerd: eenmaal naar Azure AD (waarbij een gebruiker SSO-toegang krijgt tot andere toepassingen, zoals Office 365) en opnieuw voor alle toepassingen die nog AD FS als Relying Party vertrouwen. |
-| Uw AD FS-exemplaar is sterk aangepast en is afhankelijk van specifieke aanpassings instellingen in het bestand OnLoad. js (bijvoorbeeld als u de aanmeldings ervaring hebt gewijzigd, zodat gebruikers alleen een **sAMAccountName** -indeling voor hun gebruikers naam gebruiken in plaats van een gebruikers-principal Naam (UPN) of uw organisatie heeft de aanmeldings ervaring sterk gemerkt). Het bestand OnLoad. js kan niet worden gedupliceerd in azure AD. | Voordat u doorgaat, moet u controleren of Azure AD kan voldoen aan uw huidige aanpassings vereisten. Zie de secties over AD FS huis stijl en AD FS aanpassen voor meer informatie en voor hulp.|
+| Uw AD FS-exemplaar is sterk aangepast en is afhankelijk van specifieke aanpassings instellingen in het bestand OnLoad. js (bijvoorbeeld als u de aanmeldings ervaring hebt gewijzigd, zodat gebruikers alleen een **sAMAccountName** -indeling voor hun gebruikers naam gebruiken in plaats van een UPN (User Principal Name), of uw organisatie de aanmeldings ervaring sterk merkt). Het bestand OnLoad. js kan niet worden gedupliceerd in azure AD. | Voordat u doorgaat, moet u controleren of Azure AD kan voldoen aan uw huidige aanpassings vereisten. Zie de secties over AD FS huis stijl en AD FS aanpassen voor meer informatie en voor hulp.|
 | U gebruikt AD FS om eerdere versies van Authentication-clients te blok keren.| Overweeg AD FS besturings elementen te vervangen die eerdere versies van authenticatie-clients blok keren door gebruik te maken van een combi natie van [besturings elementen voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) en [Exchange Online-regels voor client toegang](https://aka.ms/EXOCAR). |
 | U wilt dat gebruikers multi-factor Authentication uitvoeren op een on-premises multi-factor Authentication-Server oplossing wanneer gebruikers zich verifiëren bij AD FS.| U kunt in een beheerd identiteits domein geen multi-factor Authentication-Challenge injecteren via de on-premises multi-factor Authentication-oplossing in de verificatie stroom. U kunt echter de Azure Multi-Factor Authentication-Service voor multi-factor Authentication gebruiken nadat het domein is geconverteerd.<br /><br /> Als uw gebruikers momenteel geen Azure Multi-Factor Authentication gebruiken, is een eenmalige-gebruikers registratie-stap vereist. U moet de geplande registratie voorbereiden en aan uw gebruikers door geven. |
 | U gebruikt momenteel toegangs beheer beleid (AuthZ-regels) in AD FS om de toegang tot Office 365 te beheren.| Overweeg om het beleid te vervangen door het equivalente [beleid voor voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) van Azure AD en de [Exchange Online-regels voor client toegang](https://aka.ms/EXOCAR).|
@@ -147,7 +148,7 @@ Voordat u de federatieve identiteit omzet in een beheerde identiteit, kijkt u go
 
 In deze sectie worden algemene AD FS aanpassingen beschreven.
 
-#### <a name="insidecorporatenetwork-claim"></a>Claim InsideCorporateNetwork
+#### <a name="insidecorporatenetwork-claim"></a>InsideCorporateNetwork claim
 
 AD FS wordt de **InsideCorporateNetwork** -claim uitgegeven als de gebruiker die de verificatie uitvoert, zich in het bedrijfs netwerk bevindt. Deze claim kan vervolgens worden door gegeven aan Azure AD. De claim wordt gebruikt om multi-factor Authentication over te slaan op basis van de netwerk locatie van de gebruiker. Zie [vertrouwde IP-adressen voor federatieve gebruikers](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-adfs-cloud)voor meer informatie over het bepalen of deze functionaliteit momenteel is ingeschakeld in AD FS.
 
@@ -167,7 +168,7 @@ Voor Windows 8-en Windows 7-computer accounts gebruikt hybride deelname naadloze
 
 Zie [Configure Hybrid Azure AD-joined devices](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup)(Engelstalig) voor meer informatie.
 
-#### <a name="branding"></a>Namen
+#### <a name="branding"></a>Branding
 
 Als uw organisatie [uw AD FS aanmeld pagina's heeft aangepast](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) om informatie weer te geven die relevant is voor de organisatie, kunt u overwegen vergelijk bare [aanpassingen aan te brengen op de aanmeldings pagina van Azure AD](https://docs.microsoft.com/azure/active-directory/customize-branding).
 
@@ -202,7 +203,7 @@ Als u wilt terugdraaien, raadpleegt u de federatieve ontwerp-en implementatie do
 * Het converteren van beheerde domeinen naar federatieve domeinen met behulp van de cmdlet **Convert-MSOLDomainToFederated** .
 * Als dat nodig is, kunt u aanvullende claim regels configureren.
 
-### <a name="plan-communications"></a>Communicatie plannen
+### <a name="plan-communications"></a>De communicatie plannen
 
 Een belang rijk onderdeel van de implementatie en ondersteuning van de planning zorgt ervoor dat uw gebruikers proactief op de hoogte worden gebracht van aanstaande wijzigingen. Gebruikers moeten vooraf weten wat ze kunnen ervaren en wat er nodig is. 
 
@@ -437,7 +438,7 @@ Nadat u hebt gecontroleerd of alle gebruikers en clients zijn geverifieerd via A
 
 Als u AD FS niet gebruikt voor andere doel einden (dat wil zeggen, voor andere Relying Party-vertrouwens relaties), is het veilig om AD FS op dit punt uit te voeren.
 
-### <a name="rollback"></a>Actie
+### <a name="rollback"></a>Terugdraaien
 
 Als u een belang rijk probleem ontdekt en dit niet snel kunt oplossen, kunt u ervoor kiezen om de oplossing terug te zetten naar Federatie.
 

@@ -15,18 +15,18 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: allensu
-ms.openlocfilehash: e80de4a3102f9fec8ad06c0facd110b51558d338
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 37e5f5ed1d877900d8ef967f83de95f056fcca0c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211002"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980533"
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Overzicht van DNS-zones en records
 
 Op deze pagina worden de belangrijkste concepten van domeinen, DNS-zones, DNS-records en-record sets uitgelegd en hoe deze worden ondersteund in Azure DNS.
 
-## <a name="domain-names"></a>Domein namen
+## <a name="domain-names"></a>Domeinnamen
 
 Het Domain Name System is een hiërarchie van domeinen. De hiërarchie start vanaf het hoofddomein. De naam van dit domein is eenvoudigweg ' **.** '.  Hieronder komen de topleveldomeinen, zoals com, net, org, uk of nl.  Onder de topleveldomeinen komen de secondleveldomeinen, zoals org.uk of co.jp. De domeinen in de DNS-hiërarchie zijn wereld wijd gedistribueerd, gehost door DNS-naam servers over de hele wereld.
 
@@ -115,7 +115,7 @@ De meerdere teken reeksen in een DNS-record mogen niet worden verward met de mee
 
 ### <a name="tags"></a>Tags
 
-Tags zijn een lijst met naam/waarde-paren en worden gebruikt door Azure Resource Manager om resources te labelen.  Azure Resource Manager maakt gebruik van tags om gefilterde weer gaven van uw Azure-factuur in te scha kelen. Daarnaast kunt u een beleid instellen waarvoor Tags zijn vereist. Zie voor meer informatie over tags [Tags gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/resource-group-using-tags.md).
+Tags zijn een lijst met naam/waarde-paren en worden gebruikt door Azure Resource Manager om resources te labelen.  Azure Resource Manager maakt gebruik van tags om gefilterde weer gaven van uw Azure-factuur in te scha kelen. Daarnaast kunt u een beleid instellen waarvoor Tags zijn vereist. Zie voor meer informatie over tags [Tags gebruiken om uw Azure-resources te organiseren](../azure-resource-manager/management/tag-resources.md).
 
 Azure DNS ondersteunt het gebruik van Azure Resource Manager-Tags op DNS-zone bronnen.  Tags in DNS-record sets worden niet ondersteund, hoewel als alternatieve meta gegevens wordt ondersteund voor DNS-record sets, zoals hieronder wordt uitgelegd.
 

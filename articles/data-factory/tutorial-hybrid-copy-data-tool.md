@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 04/09/2018
-ms.openlocfilehash: db069571258bce8b79d223ce3115737061685b78
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d8c68550d294534178fd6094b71fd6a7f1d1c46
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439371"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977361"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Gegevens uit een on-premises SQL-serverdatabase naar Azure Blob-opslag kopiëren met behulp van het hulpprogramma Copy Data.
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
@@ -40,20 +40,20 @@ In deze zelfstudie voert u de volgende stappen uit:
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ### <a name="azure-roles"></a>Azure-rollen
-Als u data factory-exemplaren wilt maken, moet het gebruikersaccount waarmee u zich bij Azure aanmeldt, zijn toegewezen aan de rollen *Inzender* of *Eigenaar*, of moet dit een *beheerder* van het Azure-abonnement zijn. 
+Als u data factory-exemplaren wilt maken, moet het gebruikersaccount waarmee u zich bij Azure aanmeldt, zijn toegewezen aan de rollen *Inzender* of *Eigenaar*, of moet dit een *beheerder* van het Azure-abonnement zijn.
 
 Ga naar Azure Portal als u de machtigingen wilt weergeven die u hebt in het abonnement. Selecteer uw gebruikersnaam in de rechterbovenhoek en selecteer vervolgens **Machtigingen**. Als u toegang tot meerdere abonnementen hebt, moet u het juiste abonnement selecteren. Zie [Toegang beheren met RBAC en de Azure-portal](../role-based-access-control/role-assignments-portal.md) voor voorbeeldinstructies voor het toevoegen van een gebruiker aan een rol.
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 en 2017
-In deze zelfstudie gebruikt u een on-premises SQL Server-database als een *brongegevensopslag*. De pijplijn in de data factory die u in deze zelfstudie gaat maken, kopieert gegevens van deze on-premises SQL Server-database (bron) naar Blob-opslag (sink). Maak een tabel met de naam **emp** in uw SQL Server-database en voeg een aantal voorbeeldgegevens toe aan de tabel. 
+In deze zelfstudie gebruikt u een on-premises SQL Server-database als een *brongegevensopslag*. De pijplijn in de data factory die u in deze zelfstudie gaat maken, kopieert gegevens van deze on-premises SQL Server-database (bron) naar Blob-opslag (sink). Maak een tabel met de naam **emp** in uw SQL Server-database en voeg een aantal voorbeeldgegevens toe aan de tabel.
 
-1. Start SQL Server Management Studio. Als dit niet al is geïnstalleerd op uw computer, gaat u naar [SQL Server Management Studio downloaden](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms). 
+1. Start SQL Server Management Studio. Als dit niet al is geïnstalleerd op uw computer, gaat u naar [SQL Server Management Studio downloaden](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
-1. Maak verbinding met SQL Server-exemplaar met behulp van uw referenties. 
+1. Maak verbinding met SQL Server-exemplaar met behulp van uw referenties.
 
-1. Maak een voorbeelddatabase. Klik in de structuurweergave met de rechtermuisknop op **Databases** en selecteer **Nieuwe database**. 
+1. Maak een voorbeelddatabase. Klik in de structuurweergave met de rechtermuisknop op **Databases** en selecteer **Nieuwe database**.
 
-1. Voer in het venster **Nieuwe database** een naam in voor de database en selecteer **OK**. 
+1. Voer in het venster **Nieuwe database** een naam in voor de database en selecteer **OK**.
 
 1. Voer het volgende queryscript uit voor de database. Hiermee wordt de **emp**-tabel gemaakt en worden enkele voorbeeldgegevens ingevoegd in deze tabel. In de structuurweergave klikt u met de rechtermuisknop op de database die u hebt gemaakt en selecteert u **Nieuwe query**.
 
@@ -65,39 +65,39 @@ In deze zelfstudie gebruikt u een on-premises SQL Server-database als een *brong
         LastName varchar(50)
     )
     GO
-    
+
     INSERT INTO emp (FirstName, LastName) VALUES ('John', 'Doe')
     INSERT INTO emp (FirstName, LastName) VALUES ('Jane', 'Doe')
     GO
     ```
 
 ### <a name="azure-storage-account"></a>Azure Storage-account
-In deze zelfstudie gaat u een algemeen Azure Storage-account (en dan met name Blob Storage) gebruiken als een doel/sink-gegevensopslag. Zie het artikel [Een opslagaccount maken](../storage/common/storage-quickstart-create-account.md) als u geen opslagaccount voor algemeen gebruikt hebt en er een wilt maken. De pijplijn in de data factory die u in deze zelfstudie gaat maken, kopieert gegevens van de on-premises SQL Server-database (bron) naar deze Blob-opslag (sink). 
+In deze zelfstudie gaat u een algemeen Azure Storage-account (en dan met name Blob Storage) gebruiken als een doel/sink-gegevensopslag. Zie het artikel [Een opslagaccount maken](../storage/common/storage-account-create.md) als u geen opslagaccount voor algemeen gebruikt hebt en er een wilt maken. De pijplijn in de data factory die u in deze zelfstudie gaat maken, kopieert gegevens van de on-premises SQL Server-database (bron) naar deze Blob-opslag (sink). 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>De naam en sleutel van een opslagaccount ophalen
-In deze zelfstudie gaat u de naam en sleutel van uw opslagaccount gebruiken. Voer de volgende stappen uit om de naam en sleutel van uw opslagaccount op te halen: 
+In deze zelfstudie gaat u de naam en sleutel van uw opslagaccount gebruiken. Voer de volgende stappen uit om de naam en sleutel van uw opslagaccount op te halen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com) met uw Azure-gebruikersnaam en -wachtwoord. 
+1. Meld u aan bij [Azure Portal](https://portal.azure.com) met uw Azure-gebruikersnaam en -wachtwoord.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Filter met behulp van het sleutelwoord **Opslag** en selecteer vervolgens **Opslagaccounts**.
 
     ![Zoeken naar Storage-account](media/doc-common-process/search-storage-account.png)
 
-1. Filter indien nodig in de lijst met opslagaccounts op uw opslagaccount. Selecteer vervolgens uw opslagaccount. 
+1. Filter indien nodig in de lijst met opslagaccounts op uw opslagaccount. Selecteer vervolgens uw opslagaccount.
 
 1. Selecteer in het venster **Opslagaccount** de optie **Toegangssleutels**.
 
 
-1. Kopieer de waarden in de vakken **opslagaccountnaam** en **key1** en plak deze in Kladblok of een andere editor voor later gebruik in de zelfstudie. 
+1. Kopieer de waarden in de vakken **opslagaccountnaam** en **key1** en plak deze in Kladblok of een andere editor voor later gebruik in de zelfstudie.
 
-#### <a name="create-the-adftutorial-container"></a>De container adftutorial maken 
-In deze sectie maakt u in uw Blob Storage een blobcontainer met de naam **adftutorial**. 
+#### <a name="create-the-adftutorial-container"></a>De container adftutorial maken
+In deze sectie maakt u in uw Blob Storage een blobcontainer met de naam **adftutorial**.
 
-1. Schakel in het venster **Opslagaccount** over naar **Overzicht** en klik vervolgens op **Blobs**. 
+1. Schakel in het venster **Opslagaccount** over naar **Overzicht** en klik vervolgens op **Blobs**.
 
-1. Selecteer **+ container**in het venster **blobs** . 
+1. Selecteer **+ container**in het venster **blobs** .
 
-1. Voer in het venster **nieuwe container** onder **naam** **adftutorial**in en selecteer **OK**. 
+1. Voer in het venster **nieuwe container** onder **naam** **adftutorial**in en selecteer **OK**.
 
 1. Selecteer **adftutorial** in de lijst met containers.
 
@@ -107,18 +107,18 @@ In deze sectie maakt u in uw Blob Storage een blobcontainer met de naam **adftut
 
 ## <a name="create-a-data-factory"></a>Een data factory maken
 
-1. Selecteer in het menu aan de linkerkant **+ een resource maken** > **Analytics** > **Data Factory**. 
-  
+1. Selecteer in het menu aan de linkerkant **+ een resource maken** > **Analytics** > **Data Factory**.
+
    ![Nieuwe data factory maken](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-1. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in bij **Naam**. 
+1. Voer op de pagina **Nieuwe data factory** **ADFTutorialDataFactory** in bij **Naam**.
 
    De naam van de data factory moet *wereldwijd uniek* zijn. Als het volgende foutbericht wordt weergegeven voor het naamveld, wijzigt u de naam van de data factory (bijvoorbeeld uwnaamADFTutorialDataFactory). Zie [Data Factory naming rules](naming-rules.md) (Naamgevingsregels Data Factory) voor meer informatie over naamgevingsregels voor Data Factory-artefacten.
 
    ![Naam nieuwe data factory](./media/doc-common-process/name-not-available-error.png)
-1. Selecteer het Azure-**abonnement** waarin u de data factory wilt maken. 
+1. Selecteer het Azure-**abonnement** waarin u de data factory wilt maken.
 1. Voer een van de volgende stappen uit voor **Resourcegroep**:
-  
+
    - Selecteer **Bestaande gebruiken** en selecteer een bestaande resourcegroep in de vervolgkeuzelijst.
 
    - Selecteer **Nieuwe maken** en voer de naam van een resourcegroep in. 
@@ -129,37 +129,37 @@ In deze sectie maakt u in uw Blob Storage een blobcontainer met de naam **adftut
 1. Selecteer **Maken**.
 
 1. Na het aanmaken ziet u de pagina **Data Factory** zoals weergegeven in de afbeelding.
-  
+
      ![Startpagina van de gegevensfactory](./media/doc-common-process/data-factory-home-page.png)
-1. Selecteer **Maken en controleren** om de Data Factory-gebruikersinterface te openen op een afzonderlijk tabblad. 
+1. Selecteer **Maken en controleren** om de Data Factory-gebruikersinterface te openen op een afzonderlijk tabblad.
 
 ## <a name="use-the-copy-data-tool-to-create-a-pipeline"></a>Het hulpprogramma Copy Data gebruiken om een pijplijn te maken
 
-1. Selecteer op de pagina **Aan de slag** **Copy Data** om het hulpprogramma Copy Data te starten. 
+1. Selecteer op de pagina **Aan de slag** **Copy Data** om het hulpprogramma Copy Data te starten.
 
    ![Pagina Aan de slag](./media/doc-common-process/get-started-page.png)
 
-1. Typ op de pagina **Eigenschappen** van het hulpprogramma Copy Data **CopyFromOnPremSqlToAzureBlobPipeline** bij **Taaknaam**. Selecteer vervolgens **Volgende**. Met het hulpprogramma Copy Data wordt een pijplijn gemaakt met de naam die u opgeeft in dit veld. 
+1. Typ op de pagina **Eigenschappen** van het hulpprogramma Copy Data **CopyFromOnPremSqlToAzureBlobPipeline** bij **Taaknaam**. Selecteer vervolgens **Volgende**. Met het hulpprogramma Copy Data wordt een pijplijn gemaakt met de naam die u opgeeft in dit veld.
   ![taak naam](./media/tutorial-hybrid-copy-data-tool/properties-page.png)
 
-1. Klik op de pagina **Brongegevensarchief** op **Nieuwe verbinding maken**. 
+1. Klik op de pagina **Brongegevensarchief** op **Nieuwe verbinding maken**.
 
 
-1. Zoek onder **nieuwe gekoppelde service**naar **SQL Server**en selecteer vervolgens **door gaan**. 
+1. Zoek onder **nieuwe gekoppelde service**naar **SQL Server**en selecteer vervolgens **door gaan**.
 
 1. Voer in het dialoog venster **nieuwe gekoppelde service (SQL Server)** onder **naam** **SqlServerLinkedService**in. Selecteer **+ Nieuw** onder **Verbinding maken via integratieruntime**. U moet een zelf-hostende integratieruntime maken, deze downloaden op de computer en registreren bij Data Factory. Met de zelf-hostende integratieruntime worden gegevens gekopieerd tussen uw on-premises omgeving en de cloud.
 
 
-1. Selecteer in het dialoog venster **Integration runtime instellen** de optie **zelf gehost**. Selecteer vervolgens **Volgende**. 
+1. Selecteer in het dialoog venster **Integration runtime instellen** de optie **zelf gehost**. Selecteer vervolgens **Volgende**.
 
    ![Integratie-runtime maken](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-dialog0.png)
 
-1. Voer in het dialoog venster **Integration runtime-installatie** onder **naam** **TutorialIntegrationRuntime**in. Selecteer vervolgens **Volgende**. 
+1. Voer in het dialoog venster **Integration runtime-installatie** onder **naam** **TutorialIntegrationRuntime**in. Selecteer vervolgens **Volgende**.
 
 
-1. Selecteer in het dialoog venster **Integration runtime instellen** **de optie Klik hier om de snelle installatie voor deze computer te starten**. Met deze actie wordt de integratieruntime op de computer geïnstalleerd en geregistreerd bij Data Factory. U kunt er ook voor kiezen om handmatig te configureren door het installatiebestand te downloaden, uit te voeren, en de sleutel te gebruiken om de integratieruntime te registreren. 
+1. Selecteer in het dialoog venster **Integration runtime instellen** **de optie Klik hier om de snelle installatie voor deze computer te starten**. Met deze actie wordt de integratieruntime op de computer geïnstalleerd en geregistreerd bij Data Factory. U kunt er ook voor kiezen om handmatig te configureren door het installatiebestand te downloaden, uit te voeren, en de sleutel te gebruiken om de integratieruntime te registreren.
 
-1. Voer de gedownloade toepassing uit. U ziet de status van de snelle installatie in het venster. 
+1. Voer de gedownloade toepassing uit. U ziet de status van de snelle installatie in het venster.
 
     ![Status van snelle installatie](./media/tutorial-hybrid-copy-data-tool/express-setup-status.png)
 
@@ -175,7 +175,7 @@ In deze sectie maakt u in uw Blob Storage een blobcontainer met de naam **adftut
 
     e. Voer bij **Gebruikersnaam** de naam in van de gebruiker die toegang heeft tot de on-premises SQL Server.
 
-    f. Voer het **wachtwoord** voor de gebruiker in. 
+    f. Voer het **wachtwoord** voor de gebruiker in.
 
     g. Test de verbinding en selecteer **volt ooien**.
 
@@ -188,41 +188,41 @@ In deze sectie maakt u in uw Blob Storage een blobcontainer met de naam **adftut
 1. Selecteer op de pagina **Doelgegevensopslag** de optie **Nieuwe verbinding maken**
 
 
-1. Zoek in **nieuwe gekoppelde service**de optie **Azure Blob**en selecteer **door gaan**. 
+1. Zoek in **nieuwe gekoppelde service**de optie **Azure Blob**en selecteer **door gaan**.
 
    ![Selectie Blob-opslag](./media/tutorial-hybrid-copy-data-tool/select-destination-data-store.png)
 
-1. Voer de volgende stappen uit in het dialoogvenster **Nieuwe gekoppelde service (Azure Blob Storage)** : 
+1. Voer de volgende stappen uit in het dialoogvenster **Nieuwe gekoppelde service (Azure Blob Storage)** :
 
    a. Voer bij **Naam** **AzureStorageLinkedService** in.
 
    b. Selecteer onder **Verbinden via integratieruntime** de optie **TutorialIntegrationRuntime**
 
-   c. Selecteer bij **Opslagaccountnaam** uw opslagaccount in de vervolgkeuzelijst. 
+   c. Selecteer bij **Opslagaccountnaam** uw opslagaccount in de vervolgkeuzelijst.
 
    d. Selecteer **Finish**.
 
-1. Controleer in het dialoog venster **doel gegevens archief** of **Azure Blob Storage** is geselecteerd. Selecteer vervolgens **Volgende**. 
+1. Controleer in het dialoog venster **doel gegevens archief** of **Azure Blob Storage** is geselecteerd. Selecteer vervolgens **Volgende**.
 
 1. Voer onder **Mappad** **adftutorial/fromonprem** in het dialoogvenster **Het uitvoerbestand of de uitvoermap kiezen** in. U hebt de container **adftutorial** gemaakt als onderdeel van de vereisten. Als de uitvoermap (in dit geval **fromonprem**) niet bestaat, wordt deze automatisch aangemaakt in Data Factory. U kunt ook de knop **Bladeren** gebruiken om te bladeren door de Blob-opslag en de containers/mappen. Als u geen waarde opgeeft onder **Bestandsnaam** wordt standaard de naam van de bron gebruikt (in dit geval **dbo.emp**).
-           
+
    ![Het uitvoerbestand of de uitvoermap kiezen](./media/tutorial-hybrid-copy-data-tool/choose-output-file-folder.png)
 
-1. Selecteer op de pagina **Instellingen bestandsindelingen** de optie **Volgende**. 
+1. Selecteer op de pagina **Instellingen bestandsindelingen** de optie **Volgende**.
 
-1. Selecteer in het dialoogvenster **Instellingen** de optie **Volgende**. 
+1. Selecteer in het dialoogvenster **Instellingen** de optie **Volgende**.
 
-1. Bekijk in het dialoogvenster **Overzicht** de waarden voor alle instellingen en selecteer **Volgende**. 
+1. Bekijk in het dialoogvenster **Overzicht** de waarden voor alle instellingen en selecteer **Volgende**.
 
 1. Selecteer op de pagina **Implementatie** de optie **Controleren** om de pijplijn of taak die u hebt gemaakt, te controleren.
 
    ![De pagina Implementatie](./media/tutorial-hybrid-copy-data-tool/deployment-page.png)
 
-1. Op het tabblad **Controleren** kunt u de status bekijken van de pijplijn die u hebt gemaakt. Met de koppelingen in de kolom **Acties** kunt u de uitvoeringen van activiteit weergeven die zijn gekoppeld aan de pijplijnuitvoering, en de pijplijn opnieuw uitvoeren. 
-   
+1. Op het tabblad **Controleren** kunt u de status bekijken van de pijplijn die u hebt gemaakt. Met de koppelingen in de kolom **Acties** kunt u de uitvoeringen van activiteit weergeven die zijn gekoppeld aan de pijplijnuitvoering, en de pijplijn opnieuw uitvoeren.
+
 1. Selecteer de koppeling **Uitvoeringen van activiteit weergeven** in de kolom **Acties** om de activiteituitvoeringen te zien die zijn gekoppeld aan de pijplijnuitvoering. Selecteer de koppeling **Details** (pictogram van een bril) in de kolom **Acties** om details over de kopieerbewerking te zien. Als u wilt terugkeren naar de weer gave **pijplijn uitvoeringen** , selecteert u **pijp lijnen** bovenaan.
 
-1. Controleer of een uitvoerbestand wordt weergegeven in de map **fromonprem** van de container **adftutorial**. 
+1. Controleer of een uitvoerbestand wordt weergegeven in de map **fromonprem** van de container **adftutorial**.
 
 
 1. Selecteer het tabblad **Bewerken** aan de linkerkant om over te schakelen naar de bewerkingsmodus. U kunt de gekoppelde services, gegevenssets en pijplijnen die zijn gemaakt met het hulpprogramma, bijwerken met behulp van de editor. Selecteer **Code** om de JSON-code weer te geven die is gekoppeld aan de entiteit die in de editor is geopend. Bekijk [de Azure Portal-versie van deze tutorial](tutorial-copy-data-portal.md) voor details over hoe u entiteiten in de Data Factory-gebruikersinterface kunt bewerken.
@@ -231,7 +231,7 @@ In deze sectie maakt u in uw Blob Storage een blobcontainer met de naam **adftut
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Met de pijplijn in dit voorbeeld worden gegevens uit een on-premises SQL Server-database gekopieerd naar Blob Storage. U hebt geleerd hoe u: 
+Met de pijplijn in dit voorbeeld worden gegevens uit een on-premises SQL Server-database gekopieerd naar Blob Storage. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
 > * Een gegevensfactory maken.

@@ -10,12 +10,12 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 13e9abb2a7b79ad9355261832145766e424c3df6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b49b3187f9178012131d793a7762ae470b0ea540
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895165"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965722"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>REST API bewerkingen aanroepen met gedeelde sleutel autorisatie
 
@@ -23,13 +23,13 @@ In dit artikel wordt beschreven hoe u de Azure Storage REST-Api's aanroept, met 
 
 ## <a name="prerequisites"></a>Vereisten
 
-In de voorbeeld toepassing worden de BLOB-containers voor een opslag account vermeld. Als u de code in dit artikel wilt uitproberen, hebt u de volgende items nodig: 
+In de voorbeeld toepassing worden de BLOB-containers voor een opslag account vermeld. Als u de code in dit artikel wilt uitproberen, hebt u de volgende items nodig:
 
 - Installeer [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) met de werk belasting van **Azure Development** .
 
 - Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-- Een opslag account voor algemeen gebruik. Zie [een opslag account maken](storage-quickstart-create-account.md)als u nog geen opslag account hebt.
+- Een opslag account voor algemeen gebruik. Zie [een opslag account maken](storage-account-create.md)als u nog geen opslag account hebt.
 
 - In het voor beeld in dit artikel ziet u hoe u de containers in een opslag account kunt weer geven. Als u de uitvoer wilt zien, voegt u enkele containers toe aan Blob Storage in het opslag account voordat u begint.
 
@@ -43,7 +43,7 @@ Gebruik [git](https://git-scm.com/) om een kopie van de toepassing naar uw ontwi
 git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 ```
 
-Met deze opdracht wordt de opslagplaats naar uw lokale git-map gekloond. Als u de Visual Studio-oplossing wilt openen, zoekt u naar de map Storage-DotNet-rest-API-with-auth, opent u deze en dubbelklikt u op StorageRestApiAuth. SLN. 
+Met deze opdracht wordt de opslagplaats naar uw lokale git-map gekloond. Als u de Visual Studio-oplossing wilt openen, zoekt u naar de map Storage-DotNet-rest-API-with-auth, opent u deze en dubbelklikt u op StorageRestApiAuth. SLN.
 
 ## <a name="about-rest"></a>Over REST
 
@@ -93,16 +93,16 @@ Gebruik voor beveiliging bij het uitvoeren in productie altijd HTTPS in plaats v
 
 In het voorbeeld project bevindt de code voor het maken van de autorisatie-header zich in een afzonderlijke klasse. Het is raadzaam om de hele klasse te maken en deze toe te voegen aan uw eigen oplossing en deze te gebruiken. De code van de autorisatie-header werkt voor de meeste REST API-aanroepen naar Azure Storage.
 
-Als u de aanvraag wilt bouwen, wat een HttpRequestMessage-object is, gaat u naar ListContainersAsyncREST in Program.cs. De stappen voor het maken van de aanvraag zijn: 
+Als u de aanvraag wilt bouwen, wat een HttpRequestMessage-object is, gaat u naar ListContainersAsyncREST in Program.cs. De stappen voor het maken van de aanvraag zijn:
 
-- Maak de URI die moet worden gebruikt voor het aanroepen van de service. 
+- Maak de URI die moet worden gebruikt voor het aanroepen van de service.
 - Maak het HttpRequestMessage-object en stel de payload in. De nettolading is null voor ListContainersAsyncREST omdat er niets wordt door gegeven.
 - Voeg de aanvraag headers voor x-MS-date en x-MS-version toe.
 - Haal de autorisatie-header op en voeg deze toe.
 
-Enkele basis informatie die u nodig hebt: 
+Enkele basis informatie die u nodig hebt:
 
-- Voor ListContainers is de **methode** `GET`. Deze waarde wordt ingesteld bij het instantiëren van de aanvraag. 
+- Voor ListContainers is de **methode** `GET`. Deze waarde wordt ingesteld bij het instantiëren van de aanvraag.
 - De **resource** is het query gedeelte van de URI die aangeeft welke API wordt aangeroepen, dus de waarde is `/?comp=list`. Zoals eerder is vermeld, bevindt de resource zich op de pagina referentie documentatie waarop de informatie over de [ListContainers-API](/rest/api/storageservices/List-Containers2)wordt weer gegeven.
 - De URI wordt gemaakt door het Blob service-eind punt voor dat opslag account te maken en de resource samen te voegen. De waarde voor de **aanvraag-URI** eindigt op `http://contosorest.blob.core.windows.net/?comp=list`.
 - Voor ListContainers is **requestBody** Null en er zijn geen extra **headers**.
@@ -160,7 +160,7 @@ Nu u de aanvraag hebt gemaakt, kunt u de SendAsync-methode aanroepen om deze naa
     using (HttpResponseMessage httpResponseMessage =
       await new HttpClient().SendAsync(httpRequestMessage, cancellationToken))
     {
-        // If successful (status code = 200), 
+        // If successful (status code = 200),
         //   parse the XML response for the container names.
         if (httpResponseMessage.StatusCode == HttpStatusCode.OK)
         {
@@ -209,7 +209,7 @@ Content-Length: 1511
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
-<EnumerationResults 
+<EnumerationResults
   ServiceEndpoint="http://contosorest.blob.core.windows.net/">
   <Containers>
     <Container>
@@ -308,7 +308,7 @@ Laten we beginnen met deze twee canonieke velden, omdat deze zijn vereist voor h
 
 ### <a name="canonicalized-headers"></a>Canonieke kopteksten
 
-Als u deze waarde wilt maken, haalt u de kopteksten op die beginnen met ' x-MS-' en sorteert u deze en vervolgens maakt u deze op in een teken reeks van `[key:value\n]` instanties, samengevoegd tot één teken reeks. In dit voor beeld zien de canonieke kopteksten er als volgt uit: 
+Als u deze waarde wilt maken, haalt u de kopteksten op die beginnen met ' x-MS-' en sorteert u deze en vervolgens maakt u deze op in een teken reeks van `[key:value\n]` instanties, samengevoegd tot één teken reeks. In dit voor beeld zien de canonieke kopteksten er als volgt uit:
 
 ```
 x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
@@ -316,7 +316,7 @@ x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
 
 Dit is de code die wordt gebruikt om die uitvoer te maken:
 
-```csharp 
+```csharp
 private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMessage)
 {
     var headers = from kvp in httpRequestMessage.Headers
@@ -444,7 +444,7 @@ https://myaccount.blob.core.windows.net/container-1?restype=container&comp=list
 Wijzig in ListContainersAsyncREST de code waarmee de URI wordt ingesteld op de API voor ListBlobs. De container naam is **container-1**.
 
 ```csharp
-String uri = 
+String uri =
     string.Format("http://{0}.blob.core.windows.net/container-1?restype=container&comp=list",
       storageAccountName);
 
@@ -516,7 +516,7 @@ Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```
 
-**Tekst van antwoord (XML):** Deze XML-respons toont de lijst met blobs en hun eigenschappen. 
+**Tekst van antwoord (XML):** Deze XML-respons toont de lijst met blobs en hun eigenschappen.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

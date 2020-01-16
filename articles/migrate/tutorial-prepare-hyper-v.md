@@ -4,12 +4,12 @@ description: Meer informatie over het voorbereiden van de evaluatie/migratie van
 ms.topic: tutorial
 ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: a76c249f3d179a34fbb14e6c8bfb3666816fa160
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 6140d9689dafe8a97ae77346ea2212846e964cdc
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720205"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028921"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Voor bereiding voor de evaluatie en migratie van virtuele Hyper-V-machines naar Azure
 
@@ -91,9 +91,9 @@ De Tenant/globale beheerder kan de rol van toepassings ontwikkelaar toewijzen aa
 
 ## <a name="prepare-hyper-v-for-assessment"></a>Hyper-V voorbereiden op evaluatie
 
-U kunt Hyper-V voor de VM-evaluatie hand matig voorbereiden of een configuratie script gebruiken. Dit is wat er moet worden voor bereid:
+U kunt Hyper-V voor de VM-evaluatie hand matig voorbereiden of een configuratie script gebruiken. Dit is wat er moet worden voor bereid, hetzij met het script of [hand matig](#prepare-hyper-v-manually).
 
-- Controleer de instellingen voor de Hyper-V-host en zorg ervoor dat de vereiste poorten zijn geopend op Hyper-V-hosts.
+- [Verifiëren](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements) Instellingen voor Hyper-V-hosts, en zorg ervoor dat de [vereiste poorten](migrate-support-matrix-hyper-v.md#port-access) zijn geopend op hyper-v-hosts.
 - Externe communicatie van Power shell instellen op elke host, zodat het Azure Migrate apparaat Power shell-opdrachten op de host kan uitvoeren via een WinRM-verbinding.
 - Referenties delegeren als VM-schijven zich op externe SMB-shares bevinden.
 - Stel een account in dat het apparaat gebruikt voor het detecteren van Vm's op Hyper-V-hosts.
@@ -171,8 +171,8 @@ Azure Migrate heeft machtigingen nodig om on-premises virtuele machines te detec
 
 ### <a name="verify-hyper-v-host-settings"></a>Instellingen voor Hyper-V-hosts controleren
 
-1. Controleer de vereisten voor de [Hyper-V-host](migrate-support-matrix-hyper-v.md#assessment-hyper-v-host-requirements) voor Server evaluatie.
-2. Zorg ervoor dat de [vereiste poorten](migrate-support-matrix-hyper-v.md#assessment-port-requirements) zijn geopend op Hyper-V-hosts.
+1. Controleer de vereisten voor de [Hyper-V-host](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements) voor Server evaluatie.
+2. Zorg ervoor dat de [vereiste poorten](migrate-support-matrix-hyper-v.md#port-access) zijn geopend op Hyper-V-hosts.
 
 ### <a name="enable-powershell-remoting-on-hosts"></a>Externe communicatie van Power shell op hosts inschakelen
 
@@ -214,17 +214,17 @@ Wanneer u het apparaat instelt, voltooit u CredSSP door [het in te scha kelen op
 
 Voordat u het Azure Migrate apparaat instelt en de evaluatie begint in de volgende zelf studie, moet u de implementatie van het apparaat voorbereiden.
 
-1. [Controleer](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) de vereisten van het apparaat.
-2. [Bekijk](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) de Azure-url's die het apparaat nodig heeft om toegang te krijgen.
+1. [Controleer](migrate-appliance.md#appliance---hyper-v) de vereisten van het apparaat.
+2. [Bekijk](migrate-appliance.md#url-access) de Azure-url's die het apparaat nodig heeft om toegang te krijgen.
 3. Bekijk de gegevens die door het apparaat worden verzameld tijdens de detectie en evaluatie.
-4. [Noteer](migrate-support-matrix-hyper-v.md#assessment-port-requirements) de toegangs vereisten voor poorten voor het apparaat.
+4. [Noteer](migrate-appliance.md#collected-data---hyper-v) de toegangs vereisten voor poorten voor het apparaat.
 
 
 ## <a name="prepare-for-hyper-v-migration"></a>De migratie van Hyper-V voorbereiden
 
-1. [Controleren](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-requirements) Vereisten voor de Hyper-V-host voor migratie.
-2. [Bekijk](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) de vereisten voor virtuele Hyper-V-machines die u naar Azure wilt migreren.
-3. [Noteer](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access) de Azure-Url's waaraan Hyper-V-hosts en-clusters toegang nodig hebben voor VM-migratie.
+1. [Controleren](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) De vereisten voor de Hyper-V-host voor migratie en de Azure-Url's waarmee Hyper-V-hosts en-clusters toegang nodig hebben voor VM-migratie.
+2. [Bekijk](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) de vereisten voor virtuele Hyper-V-machines die u naar Azure wilt migreren.
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

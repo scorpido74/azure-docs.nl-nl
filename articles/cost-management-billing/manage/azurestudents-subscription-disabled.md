@@ -1,0 +1,57 @@
+---
+title: Uitgeschakeld Azure for Students-abonnement opnieuw activeren | Microsoft Docs
+description: In dit artikel wordt uitgelegd waarom uw Azure for Students-abonnement is uitgeschakeld en hoe u het opnieuw kunt activeren.
+author: amberbhargava
+manager: amberb
+tags: billing
+ms.service: cost-management-billing
+ms.devlang: na
+ms.topic: conceptual
+ms.tgt_pltfrm: na
+ms.workload: na
+ms.date: 03/01/2018
+ms.author: banders
+ROBOTS: NOINDEX
+ms.openlocfilehash: 111b95ddcff3667fa3f1e7df694af1d38887710f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75990019"
+---
+# <a name="why-is-my-azure-for-students-subscription-disabled-and-how-do-i-reactivate-it"></a>Waarom is mijn Azure for Students-abonnement uitgeschakeld en hoe kan ik het weer activeren?
+
+Uw Azure for Students-abonnement kan worden uitgeschakeld omdat u al uw tegoed hebt opgebruikt, uw tegoed is verlopen of omdat u het abonnement per ongeluk hebt geannuleerd. Kijk welk probleem op u van toepassing is en lees hoe u het abonnement weer kunt activeren.
+
+## <a name="youve-used-all-of-your-credit"></a>U hebt al uw tegoed opgebruikt
+
+Met een Azure for Students-account krijgt u $ 100 aan tegoed en een beperkt aantal gratis services voor 12 maanden. Gebruik buiten de gratis services en aantallen wordt van uw tegoed afgetrokken. Zodra uw tegoed op is, schakelt Azure uw services en abonnement uit. Als u Azure-services wilt blijven gebruiken, moet u uw abonnement upgraden naar een abonnement Betalen naar gebruik. Neem hiervoor contact op met [ondersteuning voor Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Na de upgrade hebt u met uw abonnement nog steeds 12 maanden toegang tot gratis services vanaf de originele registratiedatum. Er worden alleen kosten in rekening gebracht buiten de gratis services en volumes.
+
+U kunt het resterende tegoed controleren in de [Microsoft Azure Sponsorship-portal](https://www.microsoftazuresponsorships.com/balance).
+
+1. Meld u aan met de referenties van uw Azure for Students-account.
+2. De saldopagina bevat informatie over het gebruikte en resterende tegoed. De vervaldatum van uw tegoed vindt u onder het tegoeddiagram.  
+
+    ![Schermopname met tegoedinformatie voor Azure for Students-abonnement](./media/azurestudents-subscription-disabled/azurestudents-credit-balance.png)
+
+3. Als u wilt kijken welke services uw Azure-tegoed verbruiken, selecteert u **Gebruik** in de linkernavigatiebalk en selecteert u uw Azure for Students-abonnement.
+
+    ![Schermopname met gebruiksgegevens voor Azure for Students-tegoed](./media/azurestudents-subscription-disabled/azurestudents-credit-usage.png)
+
+De tabel heeft de volgende kolommen:
+
+* **Service naam:** Service die uw Azure-tegoed verbruikt.
+* **Service Resource:** Maat eenheid voor de service die wordt verbruikt.
+* **Uitgaven:** De hoeveelheid tegoed in USD ($) die is besteed aan de service.
+
+## <a name="your-credit-has-expired"></a>Uw tegoed is verlopen
+
+Uw Azure for Students-tegoed verloopt aan het einde van de 12 maanden. Zodra uw tegoed is verlopen, wordt uw abonnement uitgeschakeld door Azure. Als u Azure-services wilt blijven gebruiken, moet u uw abonnement upgraden naar een abonnement Betalen naar gebruik. Neem hiervoor contact op met [de ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Nadat u een upgrade hebt uitgevoerd, berekent Azure u tarieven voor Betalen naar gebruik voor services die u gebruikt.
+
+## <a name="youve-accidentally-canceled-your-subscription"></a>Het abonnement is per ongeluk opgezegd
+
+Als u uw Azure for Students-abonnement per ongeluk hebt geannuleerd, kunt u het opnieuw activeren door contact op te nemen met [de ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Zodra u het abonnement opnieuw hebt geactiveerd, hebt u nog steeds toegang tot het resterende tegoed en gratis services gedurende 12 maanden vanaf de registratiedatum.
+
+## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.
+
+Als u een vraag wilt stellen of hulp nodig hebt, maakt u een [ondersteuningsaanvraag](https://go.microsoft.com/fwlink/?linkid=2083458).
