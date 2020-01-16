@@ -50,6 +50,8 @@
       href: powershell-samples.md
 - name: Concepten
   items:
+    - name: Onderdelen en beperkingen
+      href: concepts-limitations.md
     - name: Statuscontrole
       items:
         - name: Statuscontroles

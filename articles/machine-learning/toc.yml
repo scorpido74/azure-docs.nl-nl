@@ -310,15 +310,9 @@
         - name: In realtime gebruiken
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: Batch-voorspellingen uitvoeren
-          displayName: score scoring batch consume pipeline parallelrunstep inference
-          href: how-to-run-batch-predictions.md
         - name: Batch-voorspellingen ontwerpen
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
           href: how-to-run-batch-predictions-designer.md
-        - name: Fouten in batch-voorspellingen opsporen en oplossen
-          displayName: debug_batch consume pipeline parallelrunstep inference
-          href: how-to-debug-batch-predictions.md
     - name: Modellen bewaken
       items:
         - name: Modelgegevens verzamelen en evalueren
@@ -343,6 +337,12 @@
         - name: 'Designer: Opnieuw trainen met behulp van gepubliceerde pijplijnen'
           displayName: 'retrain, designer, published pipeline'
           href: how-to-retrain-designer.md
+        - name: Parallelle uitvoerstap gebruiken
+          displayName: score scoring batch consume pipeline parallelrunstep inference
+          href: how-to-use-parallel-run-step.md
+        - name: Fouten in parallelle uitvoerstap opsporen en oplossen
+          displayName: debug_batch consume pipeline parallelrunstep inference
+          href: how-to-debug-parallel-run-step.md
     - name: Resourcequota beheren
       displayName: limits
       href: how-to-manage-quotas.md

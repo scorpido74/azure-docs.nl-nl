@@ -17,6 +17,8 @@
   items:
     - name: De Insluitende lezer starten (Python)
       href: tutorial-python.md
+    - name: Meerde resources voor Insluitende lezer gebruiken
+      href: tutorial-multiple-resources.md
 - name: 'Uitleg:'
   items:
     - name: Insluitende lezersresource maken
