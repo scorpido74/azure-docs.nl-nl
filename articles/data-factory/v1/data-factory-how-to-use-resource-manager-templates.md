@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 96adcfa4bbfc4ed0066ccfbdbe57f9840e8b07f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 930a3f0cf629c99fc03a84c701bcf7b2807c77c1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438807"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972861"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Sjablonen gebruiken om Azure Data Factory entiteiten te maken
 > [!NOTE]
@@ -32,7 +32,7 @@ In dit geval moet een taak in dezelfde omgeving worden herhaald, maar met versch
 Bovendien kunnen sjablonen, aangezien de organisatie deze 10 gegevens fabrieken meermaals wil implementeren in verschillende omgevingen, gebruikmaken van deze **herbruikbaarheid** door gebruik te maken van afzonderlijke parameter bestanden voor ontwikkelings-, test-en productie omgevingen.
 
 ## <a name="templating-with-azure-resource-manager"></a>Sjabloon met Azure Resource Manager
-[Azure Resource Manager sjablonen](../../azure-resource-manager/template-deployment-overview.md) zijn een uitstekende manier om sjabloon in azure Data Factory te krijgen. Resource Manager-sjablonen definiëren de infra structuur en configuratie van uw Azure-oplossing via een JSON-bestand. Omdat Azure Resource Manager sjablonen met alle/de meeste Azure-Services werken, kan deze veel worden gebruikt om eenvoudig alle resources van uw Azure-assets te beheren. Zie [Azure Resource Manager sjablonen ontwerpen](../../azure-resource-manager/templates/template-syntax.md) voor meer informatie over de Resource Manager-sjablonen in het algemeen.
+[Azure Resource Manager sjablonen](../../azure-resource-manager/templates/overview.md) zijn een uitstekende manier om sjabloon in azure Data Factory te krijgen. Resource Manager-sjablonen definiëren de infra structuur en configuratie van uw Azure-oplossing via een JSON-bestand. Omdat Azure Resource Manager sjablonen met alle/de meeste Azure-Services werken, kan deze veel worden gebruikt om eenvoudig alle resources van uw Azure-assets te beheren. Zie [Azure Resource Manager sjablonen ontwerpen](../../azure-resource-manager/templates/template-syntax.md) voor meer informatie over de Resource Manager-sjablonen in het algemeen.
 
 ## <a name="tutorials"></a>Zelfstudie
 Raadpleeg de volgende zelf studies voor stapsgewijze instructies voor het maken van Data Factory entiteiten met behulp van Resource Manager-sjablonen:

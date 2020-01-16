@@ -3,7 +3,7 @@ title: Taak-en taak uitvoer persistent maken voor Azure Storage met de bestands 
 description: Meer informatie over het gebruik van Azure Batch bestands conventies bibliotheek voor .NET om batch taak-en taak uitvoer te behouden voor Azure Storage en om de persistente uitvoer in de Azure Portal weer te geven.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 11/14/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2970c46c7cbc978bf6d7491c9258dcccc5404bd
-ms.sourcegitcommit: bd4198a3f2a028f0ce0a63e5f479242f6a98cc04
+ms.openlocfilehash: cf9372cfc89aca3285128c96c1b7e6756ba42cda
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72302673"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026212"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Taak-en taak gegevens persistent maken om te Azure Storage met de conventies bibliotheek voor batch bestanden voor .NET
 
@@ -74,7 +74,7 @@ Zie [aan de slag met Azure Blob Storage met .net](../storage/blobs/storage-dotne
 
 Als u de taak uitvoer naar Azure Storage wilt behouden, moet u eerst een container maken door [eigenschap cloudjob][net_cloudjob]aan te roepen. [PrepareOutputStorageAsync][net_prepareoutputasync]. Deze extensie methode gebruikt een [Cloud Storage account][net_cloudstorageaccount] -object als para meter. Er wordt een container gemaakt met de naam volgens de bestands conventies standaard, zodat de inhoud detecteerbaar is voor de Azure Portal en de methoden voor het ophalen die verderop in het artikel worden beschreven.
 
-Normaal gesp roken plaatst u de code voor het maken van een container in uw client toepassing &mdash; de toepassing die uw Pools, Jobs en taken maakt.
+Normaal gesp roken plaatst u de code voor het maken van een container in uw client toepassing &mdash; de toepassing waarmee uw Pools, taken en taken worden gemaakt.
 
 ```csharp
 CloudJob job = batchClient.JobOperations.CreateJob(
@@ -109,7 +109,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskOutput, "frame_full_res.jpg
 await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg");
 ```
 
-De para meter `kind` van de [TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage). De methode [SaveAsync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads) categoriseert de persistente bestanden. Er zijn vier vooraf gedefinieerde [TaskOutputKind][net_taskoutputkind] typen: `TaskOutput`, `TaskPreview`, `TaskLog` en `TaskIntermediate.` u kunt ook aangepaste uitvoer Categorieën definiëren.
+De para meter `kind` van de [TaskOutputStorage](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage). De methode [SaveAsync](/dotnet/api/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync#overloads) categoriseert de persistente bestanden. Er zijn vier vooraf gedefinieerde [TaskOutputKind][net_taskoutputkind] typen: `TaskOutput`, `TaskPreview`, `TaskLog`en `TaskIntermediate.` u kunt ook aangepaste uitvoer Categorieën definiëren.
 
 Met deze uitvoer typen kunt u opgeven welk type uitvoer moet worden weer gegeven wanneer u later een query uitvoert op batch voor de persistente uitvoer van een bepaalde taak. Met andere woorden, als u de uitvoer van een taak vermeldt, kunt u de lijst filteren op een van de uitvoer typen. Bijvoorbeeld ' Geef mij de *Preview* -uitvoer voor taak *109*'. Meer informatie over het opnemen en ophalen van uitvoer wordt weer gegeven in de uitvoer ophalen verderop in het artikel.
 
@@ -134,9 +134,9 @@ Net als bij het **TaskOutputKind** -type voor taak uitvoer, gebruikt u het type 
 
 ### <a name="store-task-logs"></a>Taak logboeken opslaan
 
-Naast het persistent maken van een bestand naar een duurzame opslag wanneer een taak of taak is voltooid, moet u mogelijk bestanden bewaren die zijn bijgewerkt tijdens de uitvoering van een taak &mdash; logboek bestanden of `stdout.txt` en `stderr.txt`, bijvoorbeeld. Voor dit doel biedt de Azure Batch bestands conventies bibliotheek de [TaskOutputStorage][net_taskoutputstorage]. Methode [SaveTrackedAsync][net_savetrackedasync] . Met [SaveTrackedAsync][net_savetrackedasync]kunt u updates bijhouden voor een bestand op het knoop punt (met een interval dat u opgeeft) en de updates persistent maken voor Azure Storage.
+Naast het persistent maken van een bestand naar een duurzame opslag wanneer een taak of taak is voltooid, moet u mogelijk bestanden behouden die worden bijgewerkt tijdens de uitvoering van een taak &mdash; logboek bestanden of `stdout.txt` en `stderr.txt`. Voor dit doel biedt de Azure Batch bestands conventies bibliotheek de [TaskOutputStorage][net_taskoutputstorage]. Methode [SaveTrackedAsync][net_savetrackedasync] . Met [SaveTrackedAsync][net_savetrackedasync]kunt u updates bijhouden voor een bestand op het knoop punt (met een interval dat u opgeeft) en de updates persistent maken voor Azure Storage.
 
-In het volgende code fragment gebruiken we [SaveTrackedAsync][net_savetrackedasync] om `stdout.txt` in azure Storage elke 15 seconden bij te werken tijdens de uitvoering van de taak:
+In het volgende code fragment gebruiken we [SaveTrackedAsync][net_savetrackedasync] om tijdens de uitvoering van de taak `stdout.txt` in azure Storage om de 15 seconden bij te werken:
 
 ```csharp
 TimeSpan stdoutFlushDelay = TimeSpan.FromSeconds(3);
@@ -161,9 +161,9 @@ using (ITrackedSaveOperation stdout =
 }
 ```
 
-De sectie met opmerkingen `Code to process data and produce output file(s)` is een tijdelijke aanduiding voor de code die de taak normaal gesp roken zou uitvoeren. U kunt bijvoorbeeld code hebben waarmee gegevens worden gedownload van Azure Storage en er trans formatie of berekening op wordt uitgevoerd. Het belang rijk deel van dit fragment laat zien hoe u deze code kunt verpakken in een `using`-blok om periodiek een bestand met [SaveTrackedAsync][net_savetrackedasync]bij te werken.
+De sectie met opmerkingen `Code to process data and produce output file(s)` is een tijdelijke aanduiding voor de code die door de taak normaal zou worden uitgevoerd. U kunt bijvoorbeeld code hebben waarmee gegevens worden gedownload van Azure Storage en er trans formatie of berekening op wordt uitgevoerd. Het belang rijk onderdeel van dit fragment laat zien hoe u deze code in een `using` blok kunt verpakken om periodiek een bestand bij te werken met [SaveTrackedAsync][net_savetrackedasync].
 
-De knooppunt agent is een programma dat wordt uitgevoerd op elk knoop punt in de pool en biedt de opdracht-en besturings interface tussen het knoop punt en de batch-service. De aanroep `Task.Delay` is aan het einde van dit `using`-blok vereist om ervoor te zorgen dat de knooppunt agent tijd heeft om de inhoud van standaard uit te legen naar het bestand stdout. txt op het knoop punt. Zonder deze vertraging is het mogelijk de laatste paar seconden van uitvoer te missen. Deze vertraging is mogelijk niet vereist voor alle bestanden.
+De knooppunt agent is een programma dat wordt uitgevoerd op elk knoop punt in de pool en biedt de opdracht-en besturings interface tussen het knoop punt en de batch-service. De `Task.Delay` aanroep is aan het einde van dit `using` blok kering vereist om ervoor te zorgen dat de knooppunt agent tijd heeft om de inhoud van standaard uit te legen naar het bestand stdout. txt op het knoop punt. Zonder deze vertraging is het mogelijk de laatste paar seconden van uitvoer te missen. Deze vertraging is mogelijk niet vereist voor alle bestanden.
 
 > [!NOTE]
 > Wanneer u bestands tracering inschakelt met **SaveTrackedAsync**, worden alleen *toegevoegde items toegevoegd* aan het bijgehouden bestand Azure Storage. Gebruik deze methode alleen voor het volgen van niet-roterende logboek bestanden of andere bestanden die zijn geschreven naar met toevoeg bewerkingen naar het einde van het bestand.

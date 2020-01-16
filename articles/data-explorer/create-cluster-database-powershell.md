@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: b855fde88173fe9a14a964ba1f9fd07aa74d85eb
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: d4561d49c37298a2b1a7f6c6542d78c3e19a145c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911984"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978338"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Een Azure Data Explorer-cluster en-data base maken met behulp van Power shell
 
@@ -52,9 +52,9 @@ De volgende stappen zijn niet vereist als u opdrachten in Azure Cloud Shell uitv
      Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     ```
 1. Wanneer u Azure CLI lokaal uitvoert of in de Azure Cloud Shell, moet u de module AZ. Kusto op uw apparaat installeren:
-    
+
     ```azurepowershell-interactive
-     Install-Module -Name Az.Kusto  
+     Install-Module -Name Az.Kusto
     ```
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Het Azure Data Explorer-cluster maken

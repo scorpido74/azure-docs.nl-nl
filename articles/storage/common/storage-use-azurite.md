@@ -7,12 +7,12 @@ ms.date: 08/31/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 0421f49b31eba688542adc0a5b62e1cf75028836
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5e1fce0852a4e820d7ee0af626ce3fddf6773750
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269459"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029924"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>De Azurite-emulator gebruiken voor het ontwikkelen en testen van lokale Azure Storage (preview-versie)
 
@@ -57,11 +57,11 @@ De volgende instellingen worden ondersteund:
 
    * **Azurite: BLOB host** : het BLOB service luisterende eind punt. De standaard instelling is 127.0.0.1.
    * **Azurite: BLOB-poort** -de BLOB service Luister poort. De standaard poort is 10000.
-   * **Azurite: debug** -het logboek voor fout opsporing uitvoeren op het Azurite-kanaal. De standaard waarde is **False**.
+   * **Azurite: debug** -het logboek voor fout opsporing uitvoeren op het Azurite-kanaal. De standaardwaarde is **false**.
    * **Azurite: locatie** -het pad naar de locatie van de werk ruimte. De standaard waarde is de werkmap Visual Studio-code.
    * **Azurite: wachtrij-host** -het Queue-service luisterende eind punt. De standaard instelling is 127.0.0.1.
    * **Azurite: wachtrij poort** : de Queue-service Luister poort. De standaard poort is 10001.
-   * **Azurite:** in de Stille modus wordt het toegangs logboek uitgeschakeld. De standaard waarde is **False**.
+   * **Azurite:** in de Stille modus wordt het toegangs logboek uitgeschakeld. De standaardwaarde is **false**.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>Azurite installeren en uitvoeren met behulp van NPM
 
@@ -153,7 +153,7 @@ azurite --silent --location c:\azurite --debug c:\azurite\debug.log
 
 Met deze opdracht wordt Azurite om alle gegevens op te slaan in een bepaalde map, **c:\azurite**. Als de optie **--locatie** wordt wegge laten, wordt de huidige werkmap gebruikt.
 
-## <a name="command-line-options"></a>Opdracht regel opties
+## <a name="command-line-options"></a>Opdrachtregelopties
 
 In deze sectie vindt u meer informatie over de opdracht regel opties die beschikbaar zijn bij het starten van Azurite. Alle opdracht regel opties zijn optioneel.
 
@@ -282,6 +282,20 @@ azurite --debug path/debug.log
 azurite -d path/debug.log
 ```
 
+### <a name="loose-mode"></a>Losse modus
+
+**Optioneel** Azurite past standaard de strikte modus toe om niet-ondersteunde aanvraag headers en-para meters te blok keren. Schakel de strikte modus uit met behulp van de **--losse** switch.
+
+```console
+azurite --loose
+```
+
+Let op de schakel optie voor de hoofd letter ' L ':
+
+```console
+azurite -L
+```
+
 ## <a name="authorization-for-tools-and-sdks"></a>Autorisatie voor hulpprogram ma's en Sdk's
 
 Maak verbinding met Azurite van Azure Storage Sdk's of hulpprogram ma's, zoals [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/), met behulp van een verificatie strategie. Verificatie is vereist. Azurite ondersteunt verificatie met gedeelde sleutel en Shared Access signatures (SAS). Azurite biedt ook ondersteuning voor anonieme toegang tot open bare containers.
@@ -307,6 +321,33 @@ De eenvoudigste manier om verbinding te maken met Azurite vanuit uw toepassing i
 ```
 
 Zie [Azure Storage-verbindings reeksen configureren](storage-configure-connection-string.md)voor meer informatie.
+
+### <a name="custom-storage-accounts-and-keys"></a>Aangepaste opslag accounts en-sleutels
+
+Azurite ondersteunt aangepaste opslag accountnamen en-sleutels door de omgevings variabele `AZURITE_ACCOUNTS` in te stellen in de volgende indeling: `account1:key1[:key2];account2:key1[:key2];...`.
+
+Gebruik bijvoorbeeld een aangepast opslag account met één sleutel:
+
+```cmd
+set AZURITE_ACCOUNTS="account1:key1"
+```
+
+Of gebruik meerdere opslag accounts met twee sleutels:
+
+```cmd
+set AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
+```
+
+Met Azurite worden aangepaste account namen en sleutels standaard elke minuut vernieuwd van de omgevings variabele. Met deze functie kunt u de account sleutel dynamisch draaien of nieuwe opslag accounts toevoegen zonder dat u Azurite opnieuw hoeft op te starten.
+
+> [!NOTE]
+> De standaard `devstoreaccount1` Storage-account wordt uitgeschakeld wanneer u aangepaste opslag accounts instelt.
+
+> [!NOTE]
+> Werk de connection string dienovereenkomstig bij met aangepaste account namen en sleutels.
+
+> [!NOTE]
+> Gebruik het sleutel woord `export` om omgevings variabelen in te stellen in een Linux-omgeving, gebruik `set` in Windows.
 
 ### <a name="storage-explorer"></a>Opslagverkenner
 

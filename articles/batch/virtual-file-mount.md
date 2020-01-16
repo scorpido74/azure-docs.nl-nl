@@ -3,20 +3,20 @@ title: Een virtueel bestands systeem koppelen aan een pool-Azure Batch | Microso
 description: Meer informatie over het koppelen van een virtueel bestands systeem aan een batch-pool.
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2019
-ms.author: lahugh
-ms.openlocfilehash: d687f3f9039ca39440abab218d75e1d5c5db6df9
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.author: jushiman
+ms.openlocfilehash: eab8e509e4978de50968bc1d960ee34d46bc73b0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770115"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029136"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Een virtueel bestands systeem koppelen aan een batch-pool
 

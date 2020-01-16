@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: allensu
-ms.openlocfilehash: c194d47842c927d3f8049a424dc08a34424a8a31
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 743715da51f2e8c77b81faba1bd8d6979e4f2aab
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212034"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974538"
 ---
 # <a name="azure-dns-faq"></a>Veelgestelde vragen over Azure DNS
 
@@ -167,7 +167,7 @@ Ja. DNS-zones kunnen worden verplaatst tussen resource groepen of tussen-abonnem
 
 Er zijn geen gevolgen voor DNS-query's wanneer u een DNS-zone verplaatst. De naam servers die aan de zone zijn toegewezen, blijven ongewijzigd. DNS-query's worden op de normale wijze verwerkt in.
 
-Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/resource-group-move-resources.md)voor meer informatie en instructies voor het verplaatsen van DNS-zones.
+Zie [resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement](../azure-resource-manager/management/move-resource-group-and-subscription.md)voor meer informatie en instructies voor het verplaatsen van DNS-zones.
 
 ### <a name="how-long-does-it-take-for-dns-changes-to-take-effect"></a>Hoe lang duurt het voordat DNS-wijzigingen van kracht worden?
 

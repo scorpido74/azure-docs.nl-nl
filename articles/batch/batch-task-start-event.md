@@ -2,7 +2,7 @@
 title: Gebeurtenis Azure Batch begin van taak | Microsoft Docs
 description: Verwijzing voor de begin gebeurtenis van de batch taak.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: lahugh
-ms.openlocfilehash: ffad1696bc2c85a1a150ac87d90c2fb9c34e1519
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.author: jushiman
+ms.openlocfilehash: e8265286a5d33c9a8a118dafa66a83b5ed36f8a6
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258546"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029618"
 ---
 # <a name="task-start-event"></a>Gebeurtenis taak starten
 
@@ -47,7 +47,7 @@ ms.locfileid: "70258546"
 }
 ```
 
-|De naam van element|type|Opmerkingen|
+|Elementnaam|Type|Opmerkingen|
 |------------------|----------|-----------|
 |`jobId`|Tekenreeks|De ID van de taak die de taak bevat.|
 |`id`|Tekenreeks|De ID van de taak.|
@@ -60,25 +60,25 @@ ms.locfileid: "70258546"
 
 ###  <a name="nodeInfo"></a>nodeInfo
 
-|De naam van element|type|Opmerkingen|
+|Elementnaam|Type|Opmerkingen|
 |------------------|----------|-----------|
 |`poolId`|Tekenreeks|De ID van de pool waarvoor de taak is uitgevoerd.|
 |`nodeId`|Tekenreeks|De ID van het knoop punt waarop de taak is uitgevoerd.|
 
 ###  <a name="multiInstanceSettings"></a>multiInstanceSettings
 
-|De naam van element|type|Opmerkingen|
+|Elementnaam|Type|Opmerkingen|
 |------------------|----------|-----------|
 |`numberOfInstances`|Int|Het aantal reken knooppunten dat is vereist voor de taak.|
 
 ###  <a name="constraints"></a>standaardwaarde
 
-|De naam van element|type|Opmerkingen|
+|Elementnaam|Type|Opmerkingen|
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|Het maximum aantal keren dat de taak opnieuw kan worden uitgevoerd. De batch-service probeert een taak opnieuw uit te proberen als de afsluit code niet gelijk is aan nul.<br /><br /> Houd er rekening mee dat deze waarde specifiek het aantal nieuwe pogingen bepaalt. De batch-service probeert de taak één keer uit te voeren en kan vervolgens de limiet opnieuw proberen. Als het maximum aantal nieuwe pogingen bijvoorbeeld 3 is, probeert batch een taak Maxi maal 4 keer uit te voeren (één eerste poging en 3 nieuwe pogingen).<br /><br /> Als het maximum aantal nieuwe pogingen 0 is, worden taken niet opnieuw geprobeerd met de batch-service.<br /><br /> Als het maximum aantal nieuwe pogingen-1 is, probeert de batch-service zonder limiet taken uit te voeren.<br /><br /> De standaard waarde is 0 (geen nieuwe pogingen).|
 
 ###  <a name="executionInfo"></a>executionInfo
 
-|De naam van element|type|Opmerkingen|
+|Elementnaam|Type|Opmerkingen|
 |------------------|----------|-----------|
 |`retryCount`|Int32|Het aantal keren dat de batch-service opnieuw is geprobeerd om de taak uit te proberen. De taak wordt opnieuw uitgevoerd als deze wordt afgesloten met een afsluit code die niet gelijk is aan nul, tot de opgegeven MaxTaskRetryCount|

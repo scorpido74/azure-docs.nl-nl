@@ -5,16 +5,16 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8ed5df15b8ae8e9836c5b8ac8e7d6ad0111f63e1
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 051e8b0add7cf7ab2c4cb2f02ed4e33ea9a23c9b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941899"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973812"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Veelgestelde vragen: nood herstel voor Azure naar Azure
 
-In dit artikel vindt u antwoorden op veelgestelde vragen over herstel na nood gevallen van virtuele Azure-machines naar een andere Azure-regio met behulp van [site Recovery](site-recovery-overview.md). 
+In dit artikel vindt u antwoorden op veelgestelde vragen over herstel na nood gevallen van virtuele Azure-machines naar een andere Azure-regio met behulp van [site Recovery](site-recovery-overview.md).
 
 
 ## <a name="general"></a>Algemeen
@@ -26,7 +26,7 @@ Elk exemplaar dat wordt beschermd met Azure Site Recovery, wordt de eerste 31 da
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Worden er gedurende de eerste 31 dagen andere Azure-kosten in rekening gebracht?
 Ja, hoewel Azure Site Recovery gratis is gedurende de eerste 31 dagen van een beschermd exemplaar, worden er mogelijk kosten in rekening gebracht voor Azure Storage, opslagtransacties en gegevensoverdracht. Voor een herstelde virtuele machine worden mogelijk ook Azure-rekenkosten in rekening gebracht. Bekijk [hier](https://azure.microsoft.com/pricing/details/site-recovery) de volledige informatie over de prijzen
 
-### <a name="where-can-i-find-best-practices-for-azure-vm-disaster-recovery"></a>Waar vind ik aanbevolen procedures voor herstel na nood gevallen voor Azure VM? 
+### <a name="where-can-i-find-best-practices-for-azure-vm-disaster-recovery"></a>Waar vind ik aanbevolen procedures voor herstel na nood gevallen voor Azure VM?
 1. [Meer informatie over Azure-naar-Azure-architectuur](azure-to-azure-architecture.md)
 2. [Controleer de ondersteunde en niet-ondersteunde configuraties](azure-to-azure-support-matrix.md)
 3. [Herstel na nood geval instellen voor virtuele Azure-machines](azure-to-azure-how-to-enable-replication.md)

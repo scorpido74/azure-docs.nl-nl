@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 84bb33f724622ba994c81b1d09c99b6399fd36ac
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 38459e76cc8f9df8bfb7c15750e138cfd55c453c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75913123"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028459"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Versleuteling aan server zijde van Azure Managed disks
 
@@ -54,29 +54,24 @@ In de volgende lijst wordt het diagram in nog meer details uitgelegd:
 
 Zie [Azure Key Vault Power shell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) en [Azure Key Vault cli](https://docs.microsoft.com/cli/azure/keyvault)voor meer informatie over het intrekken van de toegang tot door de klant beheerde sleutels. Als u toegang intrekt, wordt de toegang tot alle gegevens in het opslag account effectief geblokkeerd, omdat de versleutelings sleutel niet toegankelijk is voor Azure Storage.
 
-### <a name="supported-scenarios-and-restrictions"></a>Ondersteunde scenario's en beperkingen
+### <a name="supported-regions"></a>Ondersteunde regio’s
 
-Voor nu worden alleen de volgende scenario's ondersteund:
+Alleen de volgende regio's worden momenteel ondersteund:
 
-- Een virtuele machine (VM) maken op basis van een installatie kopie van Azure Marketplace en de besturingssysteem schijf versleutelen met versleuteling aan de server zijde met door de klant beheerde sleutels.
-- Maak een aangepaste installatie kopie die is versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels.
-- Een virtuele machine maken op basis van een aangepaste installatie kopie en de besturingssysteem schijf versleutelen met versleuteling aan de server zijde en door de klant beheerde sleutels.
-- Maak gegevens schijven die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels.
-- (CLI/alleen Power shell) Maak moment opnamen die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels.
-- Maak schaal sets voor virtuele machines die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels.
-- [' Soft ' en ' hard ' RSA-sleutels](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) met een grootte van 2080 worden ondersteund.
+- Beschikbaar als GA aanbieding in de regio's VS-Oost, VS-West 2 en Zuid-Centraal vs.
+- Beschikbaar als open bare preview in de regio's vs-West-Centraal, VS-Oost 2, Canada-centraal en Europa-noord.
 
-We hebben nu ook de volgende beperkingen:
+### <a name="restrictions"></a>Beperkingen
 
-- Beschikbaar als GA aanbieding in VS-Oost, VS-West 2 en Zuid-Centraal vs.
-- Beschikbaar als open bare preview in West-Centraal VS, VS-Oost 2, Canada-centraal en Europa-noord.
+De door de klant beheerde sleutels hebben nu de volgende beperkingen:
+
+- Alleen [' soft ' en ' hard ' RSA-sleutels](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) met een grootte van 2080 worden ondersteund, geen andere sleutels of grootten.
 - Schijven die zijn gemaakt op basis van aangepaste installatie kopieën die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels en moeten zich in hetzelfde abonnement bevinden.
 - Moment opnamen die zijn gemaakt op basis van schijven die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels.
 - Aangepaste installatie kopieën die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels kunnen niet worden gebruikt in de galerie met gedeelde afbeeldingen.
 - Alle resources met betrekking tot uw door de klant beheerde sleutels (Azure Key kluizen, schijf versleutelings sets, Vm's, schijven en moment opnamen) moeten zich in hetzelfde abonnement en dezelfde regio bevinden.
 - Schijven, moment opnamen en installatie kopieën die zijn versleuteld met door de klant beheerde sleutels, kunnen niet worden verplaatst naar een ander abonnement.
 - Als u de Azure Portal gebruikt om uw schijf versleutelings te maken, kunt u nu geen moment opnamen gebruiken.
-- Alleen [' soft ' en ' hard ' RSA-sleutels](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) met een grootte van 2080 worden ondersteund, geen andere sleutels of grootten.
 
 ### <a name="powershell"></a>PowerShell
 

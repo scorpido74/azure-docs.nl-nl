@@ -1,17 +1,14 @@
 ---
 title: Een Azure Migrate apparaat instellen voor Hyper-V
 description: Meer informatie over het instellen van een Azure Migrate apparaat om Hyper-V-Vm's te beoordelen en te migreren.
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: a94d11d48728b03dd978af85db4b6c2af4887938
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 0704adda314b94736b01fe114c3643ef8bd83753
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74534488"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029086"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Een apparaat instellen voor virtuele Hyper-V-machines
 
@@ -76,13 +73,13 @@ Importeer het gedownloade bestand en maak de virtuele machine.
 3. Laat in **doel kiezen**de standaard instelling ongewijzigd. Klik op **Volgende**.
 4. In **opslag mappen**, behoud de standaard instelling. Klik op **Volgende**.
 5. Geef in **netwerk kiezen**de virtuele switch op die door de VM moet worden gebruikt. De switch heeft Internet connectiviteit nodig om gegevens naar Azure te verzenden.
-6. Controleer de instellingen in **samen vatting**. Klik vervolgens op **volt ooien**.
+6. Controleer de instellingen in **samen vatting**. Klik vervolgens op **Voltooien**.
 7. Start de virtuele machine in Hyper-V-beheer > **virtual machines**.
 
 
 ### <a name="verify-appliance-access-to-azure"></a>Toestel toegang tot Azure controleren
 
-Zorg ervoor dat de virtuele machine van het apparaat verbinding kan maken met [Azure-url's](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access).
+Zorg ervoor dat de virtuele machine van het apparaat verbinding kan maken met [Azure-url's](migrate-appliance.md#url-access).
 
 ## <a name="configure-the-appliance"></a>Het apparaat configureren
 

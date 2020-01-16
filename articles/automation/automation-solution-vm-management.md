@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e37b6b800cbe0b4272df227e1411257b33a3e0cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 37fee7f96a27942a1295cb8c2315fedffc5bdefe
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420811"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030168"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>VM's buiten bedrijfsuren starten/stoppen oplossing in Azure Automation
 
@@ -33,7 +33,7 @@ De volgende beperkingen zijn van toepassing op de huidige oplossing:
 > [!NOTE]
 > Als u de oplossing gebruikt voor klassieke Vm's, worden alle Vm's opeenvolgend per Cloud service verwerkt. Virtuele machines worden nog steeds parallel verwerkt in verschillende Cloud Services. Als u meer dan 20 Vm's per Cloud service hebt, raden we u aan meerdere planningen te maken met het bovenliggende runbook **ScheduledStartStop_Parent** en 20 vm's per schema op te geven. Geef in de schema-eigenschappen als een lijst met door komma's gescheiden waarden VM-namen op in de para meter **VMList** . Als de Automation-taak voor deze oplossing meer dan drie uur wordt uitgevoerd, wordt deze tijdelijk ongedaan gemaakt of gestopt volgens de limiet voor de [billijke share](automation-runbook-execution.md#fair-share) .
 >
-> Azure Cloud Solution Provider-abonnementen (Azure CSP) ondersteunen alleen het Azure Resource Manager model, niet-Azure Resource Manager services zijn niet beschikbaar in het programma. Wanneer de oplossing starten/stoppen wordt uitgevoerd, kunnen er fouten optreden omdat deze cmdlets bevat voor het beheren van klassieke resources. Zie [beschik bare Services in CSP-abonnementen](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)voor meer informatie over CSP. Als u een CSP-abonnement gebruikt, moet u de variabele [**External_EnableClassicVMs**](#variables) aanpassen naar **Onwaar** na de implementatie.
+> Azure Cloud Solution Provider-abonnementen (Azure CSP) ondersteunen alleen het Azure Resource Manager model, niet-Azure Resource Manager services zijn niet beschikbaar in het programma. Wanneer de oplossing starten/stoppen wordt uitgevoerd, kunnen er fouten optreden omdat deze cmdlets bevat voor het beheren van klassieke resources. Zie [beschik bare Services in CSP-abonnementen](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)voor meer informatie over CSP. Als u een CSP-abonnement gebruikt, moet u de variabele [**External_EnableClassicVMs**](#variables) aanpassen naar **Onwaar** na de implementatie.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -300,7 +300,7 @@ Met Automation worden twee typen records gemaakt in de werk ruimte Log Analytics
 |Eigenschap | Beschrijving|
 |----------|----------|
 |Caller |  Wie de bewerking heeft gestart. Mogelijke waarden zijn een e-mailadres of het systeem voor geplande taken.|
-|Category | Classificatie van het type gegevens. Voor Automation is de waarde JobLogs.|
+|Categorie | Classificatie van het type gegevens. Voor Automation is de waarde JobLogs.|
 |CorrelationId | De GUID die de correlatie-ID van de runbook-taak is.|
 |JobId | De GUID die de ID van de runbook-taak is.|
 |operationName | Hiermee wordt het type bewerking opgegeven dat in Azure wordt uitgevoerd. Voor Automation is de waarde taak.|
@@ -321,7 +321,7 @@ Met Automation worden twee typen records gemaakt in de werk ruimte Log Analytics
 |Eigenschap | Beschrijving|
 |----------|----------|
 |Caller |  Wie de bewerking heeft gestart. Mogelijke waarden zijn een e-mailadres of het systeem voor geplande taken.|
-|Category | Classificatie van het type gegevens. Voor Automation is de waarde JobStreams.|
+|Categorie | Classificatie van het type gegevens. Voor Automation is de waarde JobStreams.|
 |JobId | De GUID die de ID van de runbook-taak is.|
 |operationName | Hiermee wordt het type bewerking opgegeven dat in Azure wordt uitgevoerd. Voor Automation is de waarde taak.|
 |ResourceGroup | Hiermee wordt de resourcegroepnaam van de runbooktaak opgegeven.|

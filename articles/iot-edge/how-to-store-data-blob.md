@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3496e0942488a881dbb376d0e53228956e10a7f3
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 12c5bf66de966faf8dc31c7265fdfb0180a95323
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75729438"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970834"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Gegevens opslaan aan de rand met Azure Blob Storage op IoT Edge
 
@@ -174,8 +174,8 @@ De volgende Quick start-voor beelden gebruiken talen die ook door IoT Edge worde
 * [Python](../storage/blobs/storage-quickstart-blobs-python.md)
   * Versies vóór V 2.1 van de python-SDK hebben een bekend probleem waarbij de module de aanmaak tijd van de BLOB niet retourneert. Vanwege dat probleem werkt sommige methoden als lijst-blobs niet. Als tijdelijke oplossing stelt u de API-versie op de BLOB-client expliciet in op ' 2017-04-17 '. Voor beeld: `block_blob_service._X_MS_VERSION = '2017-04-17'`
   * [Voor beeld van BLOB toevoegen](https://github.com/Azure/azure-storage-python/blob/master/samples/blob/append_blob_usage.py)
-* [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-v10.md)
-* [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-v10.md)
+* [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs-legacy.md)
+* [JS/HTML](../storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy.md)
 * [Ruby](../storage/blobs/storage-quickstart-blobs-ruby.md)
 * [Go](../storage/blobs/storage-quickstart-blobs-go.md)
 * [PHP](../storage/blobs/storage-quickstart-blobs-php.md)

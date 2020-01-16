@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 87faea5385f5b0fd2c481c6aa7c45a9867b34163
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 4ef8bc029c63aaf297462a7b53f6daba1a7c850b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942188"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028424"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Een probleem met een Azure-VM oplossen met geneste virtualisatie in azure
 
@@ -26,11 +26,7 @@ In dit artikel wordt beschreven hoe u een geneste Virtualization Environment maa
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u de probleem-VM wilt koppelen, moet de virtuele machine voor herstel voldoen aan de volgende vereisten:
-
--   De herstel-VM moet zich op dezelfde locatie bevindt als de probleem-VM.
-
--   De herstel-VM moet gebruikmaken van hetzelfde type opslag account (Standard of Premium) als de probleem-VM.
+Als u de probleem-VM wilt koppelen, moet de virtuele machine van de reddingsoperatie hetzelfde type opslag account (Standard of Premium) gebruiken als de probleem-VM.
 
 ## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>Stap 1: een herstel-VM maken en de Hyper-V-functie installeren
 

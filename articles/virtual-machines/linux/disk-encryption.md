@@ -2,17 +2,17 @@
 title: Versleuteling aan de server zijde van Azure Managed Disks-Azure CLI
 description: Azure Storage beveiligt uw gegevens door deze te versleutelen voordat deze in de opslag clusters worden bewaard. U kunt gebruikmaken van door micro soft beheerde sleutels voor de versleuteling van uw beheerde schijven, of u kunt door de klant beheerde sleutels gebruiken om versleuteling te beheren met uw eigen sleutels.
 author: roygara
-ms.date: 01/10/2020
+ms.date: 01/13/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 61e45a5d13da7af42bbed273e5b39ce2af15d1ca
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: d8729e447aabfcb1c378919501ee48124e7ae27b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912755"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027814"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Versleuteling aan server zijde van Azure Managed disks
 
@@ -54,21 +54,18 @@ In de volgende lijst wordt het diagram in nog meer details uitgelegd:
 
 Zie [Azure Key Vault Power shell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) en [Azure Key Vault cli](https://docs.microsoft.com/cli/azure/keyvault)voor meer informatie over het intrekken van de toegang tot door de klant beheerde sleutels. Als u toegang intrekt, wordt de toegang tot alle gegevens in het opslag account effectief geblokkeerd, omdat de versleutelings sleutel niet toegankelijk is voor Azure Storage.
 
-### <a name="supported-scenarios-and-restrictions"></a>Ondersteunde scenario's en beperkingen
+### <a name="supported-regions"></a>Ondersteunde regio’s
 
-Voor nu worden alleen de volgende scenario's ondersteund:
+Alleen de volgende regio's worden momenteel ondersteund:
 
-- Een virtuele machine (VM) maken op basis van een installatie kopie van Azure Marketplace en de besturingssysteem schijf versleutelen met versleuteling aan de server zijde met door de klant beheerde sleutels.
-- Maak een aangepaste installatie kopie die is versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels.
-- Een virtuele machine maken op basis van een aangepaste installatie kopie en de besturingssysteem schijf versleutelen met versleuteling aan de server zijde en door de klant beheerde sleutels.
-- Maak gegevens schijven die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels.
-- (CLI/alleen Power shell) Maak moment opnamen die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels.
-- Maak schaal sets voor virtuele machines die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels.
+- Beschikbaar als GA aanbieding in de regio's VS-Oost, VS-West 2 en Zuid-Centraal vs.
+- Beschikbaar als open bare preview in de regio's vs-West-Centraal, VS-Oost 2, Canada-centraal en Europa-noord.
 
-We hebben nu ook de volgende beperkingen:
+### <a name="restrictions"></a>Beperkingen
 
-- Beschikbaar als GA aanbieding in VS-Oost, VS-West 2 en Zuid-Centraal vs.
-- Beschikbaar als open bare preview in West-Centraal VS, VS-Oost 2, Canada-centraal en Europa-noord.
+De door de klant beheerde sleutels hebben nu de volgende beperkingen:
+
+- Alleen [' soft ' en ' hard ' RSA-sleutels](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) met een grootte van 2080 worden ondersteund, geen andere sleutels of grootten.
 - Schijven die zijn gemaakt op basis van aangepaste installatie kopieën die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels en moeten zich in hetzelfde abonnement bevinden.
 - Moment opnamen die zijn gemaakt op basis van schijven die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels moeten worden versleuteld met dezelfde door de klant beheerde sleutels.
 - Aangepaste installatie kopieën die zijn versleuteld met versleuteling aan de server zijde en door de klant beheerde sleutels kunnen niet worden gebruikt in de galerie met gedeelde afbeeldingen.
@@ -177,18 +174,18 @@ az vm disk attach --vm-name $vmName --lun $diskLUN --ids $diskId
 ```
 
 > [!IMPORTANT]
-> Customer-managed keys rely on managed identities for Azure resources, a feature of Azure Active Directory (Azure AD). When you configure customer-managed keys, a managed identity is automatically assigned to your resources under the covers. If you subsequently move the subscription, resource group, or managed disk from one Azure AD directory to another, the managed identity associated with managed disks is not transferred to the new tenant, so customer-managed keys may no longer work. For more information, see [Transferring a subscription between Azure AD directories](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
+> Door de klant beheerde sleutels zijn gebaseerd op beheerde identiteiten voor Azure-resources, een functie van Azure Active Directory (Azure AD). Wanneer u door de klant beheerde sleutels configureert, wordt er automatisch een beheerde identiteit toegewezen aan uw resources onder de kaften. Als u het abonnement, de resource groep of de beheerde schijf vervolgens verplaatst van een Azure AD-Directory naar een andere, wordt de beheerde identiteit die is gekoppeld aan Managed disks, niet overgebracht naar de nieuwe Tenant, zodat door de klant beheerde sleutels mogelijk niet meer werken. Zie [een abonnement overdragen tussen Azure AD-mappen](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)voor meer informatie.
 
 [!INCLUDE [virtual-machines-disks-encryption-portal](../../../includes/virtual-machines-disks-encryption-portal.md)]
 
 > [!IMPORTANT]
-> Customer-managed keys rely on managed identities for Azure resources, a feature of Azure Active Directory (Azure AD). When you configure customer-managed keys, a managed identity is automatically assigned to your resources under the covers. If you subsequently move the subscription, resource group, or managed disk from one Azure AD directory to another, the managed identity associated with managed disks is not transferred to the new tenant, so customer-managed keys may no longer work. For more information, see [Transferring a subscription between Azure AD directories](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories).
+> Door de klant beheerde sleutels zijn gebaseerd op beheerde identiteiten voor Azure-resources, een functie van Azure Active Directory (Azure AD). Wanneer u door de klant beheerde sleutels configureert, wordt er automatisch een beheerde identiteit toegewezen aan uw resources onder de kaften. Als u het abonnement, de resource groep of de beheerde schijf vervolgens verplaatst van een Azure AD-Directory naar een andere, wordt de beheerde identiteit die is gekoppeld aan Managed disks, niet overgebracht naar de nieuwe Tenant, zodat door de klant beheerde sleutels mogelijk niet meer werken. Zie [een abonnement overdragen tussen Azure AD-mappen](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)voor meer informatie.
 
-## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Server-side encryption versus Azure disk encryption
+## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Versleuteling aan de server zijde versus Azure Disk Encryption
 
-[Azure Disk Encryption for virtual machines and virtual machine scale sets](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) leverages the [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) feature of Windows and the [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) feature of Linux to encrypt managed disks with customer-managed keys within the guest VM.  Server-side encryption with customer-managed keys improves on ADE by enabling you to use any OS types and images for your VMs by encrypting data in the Storage service.
+[Azure Disk Encryption voor virtuele machines en virtuele-machine schaal sets](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) maakt gebruik van de [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) -functie van Windows en de [DM-cryptografie](https://en.wikipedia.org/wiki/Dm-crypt) functie van Linux om beheerde schijven te versleutelen met door de klant beheerde sleutels in de gast-VM.  Versleuteling aan de server zijde met door de klant beheerde sleutels wordt verbeterd op ADE door u in staat te stellen alle typen besturings systemen en installatie kopieën voor uw virtuele machines te gebruiken door gegevens in de opslag service te versleutelen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Explore the Azure Resource Manager templates for creating encrypted disks with customer-managed keys](https://github.com/ramankumarlive/manageddiskscmkpreview)
+- [Bekijk de Azure Resource Manager sjablonen voor het maken van versleutelde schijven met door de klant beheerde sleutels](https://github.com/ramankumarlive/manageddiskscmkpreview)
 - [Wat is Azure Key Vault?](../../key-vault/key-vault-overview.md)

@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 96edbd62dcb95fa8f24ea5a8a6f0716c1fefdcd8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb1913d77616869c889c464a41e8166b3a88b03c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357563"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028865"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Privé verbinding maken met een opslag account met behulp van een persoonlijk Azure-eind punt
 Persoonlijk Azure-eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hierdoor kunnen Azure-resources, zoals virtuele machines (Vm's), privé communiceren met persoonlijke koppelings bronnen.
@@ -127,11 +127,11 @@ In deze sectie maakt u een privé-opslag account met behulp van een persoonlijk 
     | Abonnement | Selecteer uw abonnement. |
     | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
     |Locatie|Selecteer **WestCentralUS**.|
-    |Name|Voer *myPrivateEndpoint*in.  |
+    |Name|Voer *myPrivateEndpoint*in.  |
     |Opslag subresource|Verlaat de standaard- **BLOB**. |
     | **INBEL** |  |
-    | Virtueel netwerk  | Selecteer *MyVirtualNetwork* in de resource groep *myResourceGroup*. |
-    | Subnet | Selecteer *mySubnet*. |
+    | Virtueel netwerk  | Selecteer *MyVirtualNetwork* in de resource groep *myResourceGroup*. |
+    | Subnet | Selecteer *mySubnet*. |
     | **INTEGRATIE VAN PARTICULIERE DNS**|  |
     | Integreren met een privé-DNS-zone  | Accepteer de standaard waarde **Ja**. |
     | Privé-DNS-zone  | Wijzig de standaard waarde voor **privatelink.blob.core.Windows.net (nieuw)** . |
@@ -172,8 +172,8 @@ Maak als volgt verbinding met de VM- *myVm* van het Internet:
 
 In deze sectie maakt u een particuliere verbinding met het opslag account met behulp van het persoonlijke eind punt.
 
-1. Open Power shell in de Extern bureaublad van *myVM*.
-2. Voer `nslookup mystorageaccount.blob.core.windows.net` u een bericht ontvangt dat er ongeveer als volgt uitziet:
+1. Open Power shell in de Extern bureaublad van *myVM*.
+2. Voer `nslookup mystorageaccount.blob.core.windows.net` u een bericht ontvangt dat er ongeveer als volgt uitziet:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -192,7 +192,7 @@ In deze sectie maakt u een particuliere verbinding met het opslag account met be
 10. Selecteer **Verbinden**.
 11. Door de BLOB-containers bladeren vanuit mystorageaccount 
 12. Eventueel Maak mappen en/of upload bestanden naar *mystorageaccount*. 
-13. Sluit de verbinding met extern bureau blad met *myVM*. 
+13. Sluit de verbinding met extern bureau blad met *myVM*. 
 
 Aanvullende opties voor toegang tot het opslag account:
 - Microsoft Azure Storage Explorer is een zelfstandige gratis app van micro soft waarmee u visueel met Azure Storage-gegevens kunt werken in Windows, macOS en Linux. U kunt de toepassing installeren om de inhoud van het opslag account privé te bekijken. 
@@ -202,9 +202,9 @@ Aanvullende opties voor toegang tot het opslag account:
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
 Wanneer u klaar bent met het persoonlijke eind punt, het opslag account en de virtuele machine, verwijdert u de resource groep en alle resources die deze bevat: 
-1. Geef *myResourceGroup* op in het **zoekvak** boven aan de portal en selecteer *myResourceGroup* in de zoek resultaten. 
+1. Voer *myResourceGroup* in het **zoekvak** boven aan de portal in en selecteer *myResourceGroup* in de zoek resultaten. 
 2. Selecteer **Resourcegroep verwijderen**. 
-3. Voer *myResourceGroup* in om **de naam van de resource groep te typen** en selecteer **verwijderen**. 
+3. Voer *myResourceGroup* in voor **TYP DE RESOURCEGROEPNAAM** en selecteer **Verwijderen**. 
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze Quick Start hebt u een VM gemaakt op een virtueel netwerk en een opslag account en een persoonlijk eind punt. U hebt verbinding gemaakt met één virtuele machine via internet en veilig door gegeven aan het opslag account met behulp van een persoonlijke koppeling. Zie [Wat is Azure private endpoint?](private-endpoint-overview.md)voor meer informatie over privé-eind punten.
+In deze Quick Start hebt u een VM gemaakt op een virtueel netwerk en een opslag account en een persoonlijk eind punt. U hebt verbinding gemaakt met één virtuele machine via internet en veilig door gegeven aan het opslag account met behulp van een persoonlijke koppeling. Zie [Wat is Azure private endpoint?](private-endpoint-overview.md)voor meer informatie over privé-eind punten.

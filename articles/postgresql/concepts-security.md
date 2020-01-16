@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: a1bd9b8cbcbc785425c2d1870dc555ff91f695f7
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 02dc9e1ad9ee46b1a400e44b6ef737e70571a17a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485079"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972591"
 ---
 # <a name="security-in-azure-database-for-postgresql---single-server"></a>Beveiliging in Azure Database for PostgreSQL-één server
 
@@ -36,6 +36,9 @@ IP-firewall regels verlenen toegang tot servers op basis van het oorspronkelijke
 
 ### <a name="virtual-network-firewall-rules"></a>Firewallregels voor virtueel netwerk
 Met Service-eind punten van een virtueel netwerk breidt u de connectiviteit van uw virtuele netwerk uit via de Azure-backbone. Met regels voor virtuele netwerken kunt u uw Azure Database for PostgreSQL-server in staat stellen verbindingen van geselecteerde subnetten in een virtueel netwerk toe te staan. Zie het overzicht van het [virtuele netwerk service-eind punt](concepts-data-access-and-security-vnet.md)voor meer informatie.
+
+### <a name="private-ip"></a>Privé IP-adres
+Met persoonlijke koppeling kunt u verbinding maken met uw Azure Database for PostgreSQL één server in azure via een persoonlijk eind punt. Met Azure private link worden Azure-Services binnen uw persoonlijke Virtual Network (VNet) geplaatst. De PaaS-bronnen kunnen worden geopend met behulp van het privé-IP-adres, net zoals elke andere resource in het VNet. Zie voor meer informatie het [overzicht van persoonlijke koppelingen](concepts-data-access-and-security-private-link.md)
 
 
 ## <a name="access-management"></a>Toegangsbeheer

@@ -2,18 +2,18 @@
 title: Knooppunt eindpunten configureren in Azure Batch groep | Microsoft Docs
 description: Toegang tot SSH-of RDP-poorten op reken knooppunten in een Azure Batch pool configureren of uitschakelen.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: lahugh
-ms.openlocfilehash: e6c7f2762a6742a1aff7a2c3aff977b5e3657349
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.author: jushiman
+ms.openlocfilehash: 1ac4c7647125cd6164235e98a4a828f6b072cbee
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322462"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029467"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>Externe toegang tot reken knooppunten in een Azure Batch groep configureren of uitschakelen
 
@@ -31,7 +31,7 @@ Elke configuratie van een NAT-groep bevat een of meer [regels voor netwerk bevei
 * U kunt meerdere NSG-regels configureren wanneer u een NAT-groep configureert. De regels worden in volg orde van prioriteit gecontroleerd. Zodra een regel van toepassing is, worden geen andere regels meer getest.
 
 
-## <a name="example-deny-all-rdp-traffic"></a>Voorbeeld: Alle RDP-verkeer weigeren
+## <a name="example-deny-all-rdp-traffic"></a>Voor beeld: alle RDP-verkeer weigeren
 
 Het volgende C# code fragment laat zien hoe u het RDP-eind punt configureert op reken knooppunten in een Windows-groep om al het netwerk verkeer te weigeren. Het eind punt gebruikt een front-end-groep poorten in het bereik *60000-60099*. 
 
@@ -48,7 +48,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>Voorbeeld: Alle SSH-verkeer van Internet weigeren
+## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>Voor beeld: alle SSH-verkeer van Internet weigeren
 
 Het volgende python-code fragment laat zien hoe u het SSH-eind punt configureert op reken knooppunten in een Linux-groep om al het Internet verkeer te weigeren. Het eind punt gebruikt een front-end-groep poorten in het bereik *4000-4100*. 
 
@@ -74,7 +74,7 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 )
 ```
 
-## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>Voorbeeld: RDP-verkeer van een specifiek IP-adres toestaan
+## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>Voor beeld: RDP-verkeer van een specifiek IP-adres toestaan
 
 Het volgende C# code fragment laat zien hoe u het RDP-eind punt op reken knooppunten in een Windows-groep configureert om alleen RDP-toegang vanaf het IP-adres *198.51.100.7*toe te staan. De tweede NSG-regel weigert verkeer dat niet overeenkomt met het IP-adres.
 
@@ -92,7 +92,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>Voorbeeld: SSH-verkeer van een specifiek subnet toestaan
+## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>Voor beeld: SSH-verkeer van een specifiek subnet toestaan
 
 Het volgende python-code fragment laat zien hoe u het SSH-eind punt op reken knooppunten in een Linux-groep configureert om alleen toegang toe te staan vanaf het subnet *192.168.1.0/24*. De tweede NSG-regel weigert verkeer dat niet overeenkomt met het subnet.
 

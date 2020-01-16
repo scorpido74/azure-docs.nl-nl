@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 737cd9d306f01fa77dafa3d1a9a71495ff0a572e
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 0e4b2cd208e11f7696e016d3fa4353b38f3060d8
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940778"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977523"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
 
@@ -145,7 +145,7 @@ Als u geheimen in een Azure Resource Manager sjabloon wilt door geven, raden we 
 
 Er zijn twee manieren om geheimen af te handelen:
 
--  Voeg de geheimen toe aan het parameter bestand. Zie [Azure Key Vault gebruiken om een beveiligde parameter waarde door te geven tijdens de implementatie](../azure-resource-manager/resource-manager-keyvault-parameter.md)voor meer informatie.
+1.  Voeg de geheimen toe aan het parameter bestand. Zie [Azure Key Vault gebruiken om de waarde van een beveiligde para meter door te geven tijdens de implementatie](../azure-resource-manager/templates/key-vault-parameter.md)voor meer informatie.
 
     Maak een kopie van het parameter bestand dat is geüpload naar de Publish-vertakking. Stel de waarden in van de para meters die u wilt ophalen van Key Vault met behulp van de volgende indeling:
 

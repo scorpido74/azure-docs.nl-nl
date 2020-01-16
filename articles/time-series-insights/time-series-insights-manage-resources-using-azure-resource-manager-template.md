@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c4902ff5194c1648a8353b2a21ea559d15d574b3
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b60b036954691bdea12dfff559ceee86f179d44d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861843"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973210"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights-resources maken met behulp van Azure Resource Manager sjablonen
 
@@ -33,8 +33,8 @@ Time Series Insights ondersteunt de volgende bronnen:
 
 Een resource manager-sjabloon is een JSON-bestand dat de infra structuur en configuratie van resources in een resource groep definieert. De volgende documenten beschrijven sjabloon bestanden in meer detail:
 
-- [Implementatie van Azure Resource Manager-sjabloon](../azure-resource-manager/template-deployment-overview.md)
-- [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
+- [Implementatie van Azure Resource Manager-sjabloon](../azure-resource-manager/templates/overview.md)
+- [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../azure-resource-manager/templates/deploy-powershell.md)
 - [Resource typen van micro soft. TimeSeriesInsights](/azure/templates/microsoft.timeseriesinsights/allversions)
 
 De Quick Start-sjabloon [201-timeseriesinsights-met-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) wordt gepubliceerd op github. Met deze sjabloon maakt u een Time Series Insights omgeving, een onderliggende gebeurtenis bron die is geconfigureerd voor het gebruik van gebeurtenissen van een event hub en toegangs beleid dat toegang verleent tot de gegevens van de omgeving. Als er geen bestaande Event hub wordt opgegeven, wordt er een gemaakt met de implementatie.
@@ -118,7 +118,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
          }
      }
      ```
-  
+
     * Lees het artikel [para meters](../azure-resource-manager/templates/parameter-files.md) voor meer informatie.
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>De Quick Start-sjabloon lokaal implementeren met Power shell
@@ -174,12 +174,12 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
 
 1. De implementatie maken
 
-    * Als u de nieuwe implementatie wilt maken, voert u de cmdlet `New-AzResourceGroupDeployment` uit en geeft u de benodigde para meters op wanneer u hierom wordt gevraagd. De para meters bevatten een naam voor uw implementatie, de naam van uw resource groep en het pad of de URL naar het sjabloon bestand. Als de **modus** parameter niet is opgegeven, wordt de standaard waarde **Incrementeel** gebruikt. Lees [incrementele en volledige implementaties](../azure-resource-manager/deployment-modes.md)voor meer informatie.
+    * Als u de nieuwe implementatie wilt maken, voert u de cmdlet `New-AzResourceGroupDeployment` uit en geeft u de benodigde para meters op wanneer u hierom wordt gevraagd. De para meters bevatten een naam voor uw implementatie, de naam van uw resource groep en het pad of de URL naar het sjabloon bestand. Als de **modus** parameter niet is opgegeven, wordt de standaard waarde **Incrementeel** gebruikt. Lees [incrementele en volledige implementaties](../azure-resource-manager/templates/deployment-modes.md)voor meer informatie.
 
     * Met de volgende opdracht wordt u gevraagd om de vijf vereiste para meters in het Power shell-venster:
 
       ```powershell
-      New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json 
+      New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
       ```
 
     * Als u in plaats daarvan een parameter bestand wilt opgeven, gebruikt u de volgende opdracht:
@@ -194,7 +194,7 @@ In de volgende procedure wordt beschreven hoe u Power shell gebruikt om een Azur
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
       ```
 
-    * Als u een [volledige](../azure-resource-manager/deployment-modes.md) implementatie wilt uitvoeren, stelt u de para meter voor de **modus** in op **voltooid**:
+    * Als u een [volledige](../azure-resource-manager/templates/deployment-modes.md) implementatie wilt uitvoeren, stelt u de para meter voor de **modus** in op **voltooid**:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json

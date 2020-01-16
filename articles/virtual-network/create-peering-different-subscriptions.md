@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
-ms.openlocfilehash: dd1d930fa09e3e53a4ac67e513ba1bff77ee1376
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e44a27178434e7e5decbd30fda8febe0a710e7f0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75373351"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978941"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Een peering voor een virtueel netwerk maken-Resource Manager, verschillende abonnementen
 
 In deze zelf studie leert u hoe u een virtueel netwerk met peering maakt tussen virtuele netwerken die zijn gemaakt via Resource Manager. De virtuele netwerken bevinden zich in verschillende abonnementen. Met peering van twee virtuele netwerken kunnen bronnen in verschillende virtuele netwerken met elkaar communiceren met dezelfde band breedte en latentie, alsof de resources zich in hetzelfde virtuele netwerk bevonden. Meer informatie over [peering van virtuele netwerken](virtual-network-peering-overview.md).
 
-De stappen voor het maken van peering op een virtueel netwerk zijn verschillend, afhankelijk van het feit of de virtuele netwerken zich in dezelfde of verschillende abonnementen bevinden, en welk [Azure-implementatie model](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) de virtuele netwerken zijn gemaakt via. Meer informatie over het maken van een virtuele netwerk-peering in andere scenario's door het scenario te selecteren in de volgende tabel:
+De stappen voor het maken van peering op een virtueel netwerk zijn verschillend, afhankelijk van het feit of de virtuele netwerken zich in dezelfde of verschillende abonnementen bevinden, en welk [Azure-implementatie model](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) de virtuele netwerken zijn gemaakt via. Meer informatie over het maken van een virtuele netwerk-peering in andere scenario's door het scenario te selecteren in de volgende tabel:
 
 |Azure-implementatiemodel  | Azure-abonnement  |
 |--------- |---------|

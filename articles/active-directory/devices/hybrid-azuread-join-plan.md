@@ -1,6 +1,6 @@
 ---
 title: Deelname aan een Hybrid Azure Active Directory-Azure Active Directory plannen
-description: Lees hoe u hybride Azure Active Directory-gekoppelde apparaten kunt configureren.
+description: Leer hoe u hybride Azure Active Directory-gekoppelde apparaten kunt configureren.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a4f85aeaf2fb263ba2df8f34a51f9e25c212aff
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 36dd80669c6a9495751f577748f48c02a782b920
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74379325"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029849"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: uw hybride Azure Active Directory deelname-implementatie plannen
 
@@ -77,7 +77,7 @@ Hybride Azure AD-deelname wordt momenteel niet ondersteund als uw omgeving besta
 
 Als uw omgeving gebruikmaakt van Virtual Desktop Infrastructure (VDI), raadpleegt u [apparaat-id en desktop-virtualisatie](https://docs.microsoft.com/azure/active-directory/devices/howto-device-identity-virtual-desktop-infrastructure).
 
-Hybride Azure AD-deelname wordt ondersteund voor FIPS-compatibele TPM 2,0 en wordt niet ondersteund voor TPM 1,2. Als uw apparaten FIPS-compatibele TPM 1,2 hebben, moet u ze uitschakelen voordat u verdergaat met hybride Azure AD-deelname. Micro soft biedt geen hulpprogram ma's voor het uitschakelen van de FIPS-modus voor Tpm's omdat deze afhankelijk is van de TPM-fabrikant. Neem contact op met uw OEM voor ondersteuning. Vanaf de release van WIndows 10 1903 worden Tpm's 1,2 niet gebruikt voor hybride Azure AD-deelname en-apparaten met deze Tpm's als ze geen TPM hebben.
+Hybride Azure AD-deelname wordt ondersteund voor FIPS-compatibele TPM 2,0 en wordt niet ondersteund voor TPM 1,2. Als uw apparaten FIPS-compatibele TPM 1,2 hebben, moet u ze uitschakelen voordat u verdergaat met hybride Azure AD-deelname. Micro soft biedt geen hulpprogram ma's voor het uitschakelen van de FIPS-modus voor Tpm's omdat deze afhankelijk is van de TPM-fabrikant. Neem contact op met uw OEM voor ondersteuning. Vanaf de release van Windows 10 1903 worden Tpm's 1,2 niet gebruikt voor hybride Azure AD-deelname en-apparaten met deze Tpm's als ze geen TPM hebben.
 
 Hybride Azure AD-samen voeging wordt niet ondersteund voor Windows Server met de rol domein controller (DC).
 
@@ -130,7 +130,7 @@ Een gefedereerde omgeving moet een id-provider hebben die de volgende vereisten 
 > [!NOTE]
 > Azure AD biedt geen ondersteuning voor Smart Cards of certificaten in beheerde domeinen.
 
-Vanaf versie 1.1.819.0 bevat Azure AD Connect een wizard om hybride Azure AD-koppeling te configureren. Met de wizard kunt u het configuratieproces aanzienlijk vereenvoudigen. Als het installeren van de vereiste versie van Azure AD Connect geen optie voor u is, raadpleegt u [apparaatregistratie hand matig configureren](hybrid-azuread-join-manual.md). 
+Vanaf versie 1.1.819.0 biedt Azure AD Connect u een wizard om hybride Azure AD-koppeling te configureren. Met de wizard kunt u het configuratieproces aanzienlijk vereenvoudigen. Als het installeren van de vereiste versie van Azure AD Connect geen optie voor u is, raadpleegt u [apparaatregistratie hand matig configureren](hybrid-azuread-join-manual.md). 
 
 Ga op basis van het scenario dat overeenkomt met uw identiteits infrastructuur naar:
 
@@ -148,8 +148,8 @@ De onderstaande tabel bevat gedetailleerde informatie over de ondersteuning voor
 
 | Type on-premises AD-UPN | Domeintype | Windows 10-versie | Beschrijving |
 | ----- | ----- | ----- | ----- |
-| Bare | Federatie | Van 1703 release | Algemeen beschikbaar |
-| Niet-routeerbaar | Federatie | Van 1803 release | Algemeen beschikbaar |
+| Bare | Federatief | Van 1703 release | Algemeen beschikbaar |
+| Niet-routeerbaar | Federatief | Van 1803 release | Algemeen beschikbaar |
 | Bare | Managed | Van 1803 release | Azure AD SSPR op Windows-vergrendelings scherm is algemeen beschikbaar. |
 | Niet-routeerbaar | Managed | Niet ondersteund | |
 

@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: a5b12a426e52c3b80c58a30b320b2f746bbe990d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 285b3608bc57d88ca2e81ed14355923436ed9d8d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832198"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028507"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Inleiding tot incrementele verrijking en caching in azure Cognitive Search
 
@@ -56,14 +56,16 @@ De levens cyclus van de cache wordt beheerd door de Indexeer functie. Als de eig
 
 Hoewel incrementele verrijking is ontworpen om wijzigingen zonder tussen komst van uw onderdeel te detecteren en erop te reageren, zijn er para meters die u kunt gebruiken om standaard gedrag te negeren:
 
-+ Caching onderbreken
++ Prioriteit geven aan nieuwe documenten
 + Vaardigheidset-controles overs Laan
 + Controles van gegevens bronnen overs Laan
 + Evaluatie van vaardig heden forceren
 
-### <a name="suspend-caching"></a>Caching onderbreken
+### <a name="prioritize-new-documents"></a>Prioriteit geven aan nieuwe documenten
 
-U kunt incrementele verrijking tijdelijk opschorten door de `enableReprocessing` eigenschap in de cache in te stellen op `false`, en later incrementele verrijking te hervatten en uiteindelijke consistentie te herstellen door deze in te `true`. Dit besturings element is vooral handig wanneer u een prioriteit wilt geven aan het indexeren van nieuwe documenten, waardoor consistentie tussen uw documenten wordt gegarandeerd.
+Stel de eigenschap `enableReprocessing` in voor het beheren van de verwerking van inkomende documenten die al in de cache worden weer gegeven. Als `true` (standaard), worden documenten die al in de cache staan, opnieuw verwerkt wanneer u de Indexeer functie opnieuw uitvoeren, ervan uitgaande dat uw vaardigheids update van invloed is op dat document. 
+
+Als `false`, worden bestaande documenten niet opnieuw verwerkt en krijgen ze in feite geen nieuwe, binnenkomende inhoud over bestaande inhoud. U moet `enableReprocessing` op tijdelijke wijze alleen instellen op `false`. Om consistentie tussen de verzameling te garanderen, moet `enableReprocessing` `true` de meeste tijd zijn, zodat alle documenten, zowel nieuwe als bestaande, geldig zijn volgens de huidige definitie van de vaardig heden.
 
 ### <a name="bypass-skillset-evaluation"></a>Beoordeling van vaardig heden overs Laan
 
@@ -93,9 +95,9 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 ### <a name="force-skillset-evaluation"></a>Evaluatie van vaardig heden forceren
 
-Het doel van de cache is om onnodige verwerking te voor komen, maar stel dat u een wijziging hebt aangebracht in een vaardigheid of vaardigheidset die de Indexeer functie niet detecteert (bijvoorbeeld wijzigingen in externe onderdelen, zoals een aangepaste vaardighedenset). 
+Het doel van de cache is om onnodige verwerking te voor komen, maar stel dat u een wijziging aanbrengt in een vaardigheid die de Indexeer functie niet detecteert (bijvoorbeeld het wijzigen van iets in externe code, zoals een aangepaste vaardigheid).
 
-In dit geval kunt u de API voor het [opnieuw instellen van vaardig heden](preview-api-resetskills.md) gebruiken om het opnieuw verwerken van een bepaalde vaardigheid af te dwingen, inclusief eventuele downstream-vaardig heden die een afhankelijkheid hebben van de uitvoer van die vaardigheid. Deze API accepteert een POST-aanvraag met een lijst met vaardig heden die moeten worden gevalideerd en opnieuw moeten worden uitgevoerd. Nadat u vaardig heden hebt ingesteld, voert u de Indexeer functie uit om de bewerking uit te voeren.
+In dit geval kunt u de [vaardig heden opnieuw instellen](preview-api-resetskills.md) gebruiken om het opnieuw verwerken van een bepaalde vaardigheid af te dwingen, inclusief eventuele downstream-vaardig heden die een afhankelijkheid hebben van de uitvoer van die vaardigheid. Deze API accepteert een POST-aanvraag met een lijst met vaardig heden die ongeldig moeten worden gemaakt en moeten worden gemarkeerd voor opnieuw verwerken. Nadat u vaardig heden hebt ingesteld, voert u de Indexeer functie uit om de pijp lijn aan te roepen.
 
 ## <a name="change-detection"></a>Wijzigings detectie
 
@@ -158,7 +160,7 @@ Met [Create Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/
 
 ### <a name="datasources"></a>Gegevensbronnen
 
-+ Met sommige Indexeer functies worden gegevens opgehaald via query's. Voor query's waarmee gegevens worden opgehaald, ondersteunt de [gegevens bron update](https://docs.microsoft.com/rest/api/searchservice/update-datasource) een nieuwe para meter voor een aanvraag `ignoreResetRequirement`, die moet worden ingesteld op `true` wanneer de update-actie de cache niet moet valideren.
++ Met sommige Indexeer functies worden gegevens opgehaald via query's. Voor query's waarmee gegevens worden opgehaald, ondersteunt de [gegevens bron update](https://docs.microsoft.com/rest/api/searchservice/update-data-source) een nieuwe para meter voor een aanvraag `ignoreResetRequirement`, die moet worden ingesteld op `true` wanneer de update-actie de cache niet moet valideren.
 
 Gebruik het `ignoreResetRequirement` spaarzaam als dit kan leiden tot onbedoelde inconsistentie in uw gegevens die niet eenvoudig kunnen worden gedetecteerd.
 

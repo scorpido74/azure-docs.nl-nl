@@ -2,7 +2,7 @@
 title: Taak-en taak uitvoer persistent maken om te Azure Storage met de API van de batch-service-Azure Batch | Microsoft Docs
 description: Meer informatie over het gebruik van de batch-Service-API voor het persistent maken van batch taak-en taak uitvoer naar Azure Storage.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.service: batch
@@ -10,14 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 03/05/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: e4a2af09b432961211a5f38ecd2d9dacd89d3868
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8d77da2a0298758dad3eff1a61aff45796bfb6c5
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094442"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029631"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Taak gegevens persistent maken voor Azure Storage met de API voor de batch-service
 
@@ -34,7 +34,7 @@ Azure Batch biedt meer dan één manier om taak uitvoer te behouden. Het gebruik
 - U wilt code schrijven om de taak uitvoer te behouden vanuit uw client toepassing, zonder de toepassing te wijzigen die door de taak wordt uitgevoerd.
 - U wilt de uitvoer behouden van batch taken en taak beheer taken in Pools die zijn gemaakt met de configuratie van de virtuele machine.
 - U wilt de uitvoer persistent maken naar een Azure Storage container met een wille keurige naam.
-- U wilt uitvoer persistent maken naar een Azure Storage-container met de naam volgens de conventies van het [batch-bestand Standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). 
+- U wilt uitvoer persistent maken naar een Azure Storage-container met de naam volgens de [conventies van het batch-bestand Standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). 
 
 Als uw scenario verschilt van wat hierboven wordt vermeld, moet u mogelijk een andere benadering overwegen. De batch-Service-API biedt momenteel geen ondersteuning voor streaming-uitvoer naar Azure Storage terwijl de taak wordt uitgevoerd. Voor het streamen van uitvoer kunt u de conventies bibliotheek voor batch bestanden gebruiken die beschikbaar is voor .NET. Voor andere talen moet u uw eigen oplossing implementeren. Zie voor meer informatie over andere opties voor het persistent maken van taak uitvoer de optie [persistente taak en taak uitvoer naar Azure Storage](batch-task-output.md).
 
@@ -51,7 +51,7 @@ await container.CreateIfNotExists();
 
 ## <a name="get-a-shared-access-signature-for-the-container"></a>Een Shared Access Signature voor de container ophalen
 
-Nadat u de container hebt gemaakt, kunt u een Shared Access Signature (SAS) met schrijf toegang tot de container ophalen. Een SAS biedt gedelegeerde toegang tot de container. De SAS verleent toegang met een opgegeven set machtigingen en over een opgegeven tijds interval. De batch-service heeft een SAS met schrijf machtigingen nodig om de taak uitvoer naar de container te schrijven. Zie [Shared Access signatures \(sa's\) gebruiken in azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md)voor meer informatie over SAS.
+Nadat u de container hebt gemaakt, kunt u een Shared Access Signature (SAS) met schrijf toegang tot de container ophalen. Een SAS biedt gedelegeerde toegang tot de container. De SAS verleent toegang met een opgegeven set machtigingen en over een opgegeven tijds interval. De batch-service heeft een SAS met schrijf machtigingen nodig om de taak uitvoer naar de container te schrijven. Zie voor meer informatie over SAS [gedeelde toegangs handtekeningen gebruiken \(SAS-\) in azure Storage](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 Wanneer u een SAS krijgt met behulp van de Azure Storage Api's, retourneert de API een SAS-token teken reeks. Deze token teken reeks bevat alle para meters van de SA'S, met inbegrip van de machtigingen en het interval waarmee de SA'S geldig zijn. Als u de SAS wilt gebruiken om toegang te krijgen tot een container in Azure Storage, moet u de SAS-token teken reeks toevoegen aan de resource-URI. De bron-URI, samen met het toegevoegde SAS-token, biedt geverifieerde toegang tot Azure Storage.
 
@@ -71,7 +71,7 @@ string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 
 Als u uitvoer bestanden voor een taak wilt opgeven, maakt u een verzameling [uitvoer](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) bare objecten en wijst u deze toe aan de eigenschap [CloudTask. OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) wanneer u de taak maakt.
 
-In het C# volgende code voorbeeld wordt een taak gemaakt die wille keurige getallen `output.txt`schrijft naar een bestand met de naam. In het voor beeld wordt een uitvoer `output.txt` bestand gemaakt dat naar de container wordt geschreven. In het voor beeld worden ook uitvoer bestanden gemaakt voor alle logboek bestanden die overeenkomen met het `std*.txt` bestands patroon `stderr.txt`(_bijvoorbeeld_, `stdout.txt` en). De container-URL vereist de SA'S die eerder voor de container zijn gemaakt. De batch-service gebruikt de SAS om toegang tot de container te verifiëren:
+In het C# volgende code voorbeeld wordt een taak gemaakt die wille keurige getallen schrijft naar een bestand met de naam `output.txt`. In het voor beeld wordt een uitvoer bestand gemaakt om `output.txt` naar de container te schrijven. In het voor beeld worden ook uitvoer bestanden gemaakt voor alle logboek bestanden die overeenkomen met het bestands patroon `std*.txt` (_bijvoorbeeld_`stdout.txt` en `stderr.txt`). De container-URL vereist de SA'S die eerder voor de container zijn gemaakt. De batch-service gebruikt de SAS om toegang tot de container te verifiëren:
 
 ```csharp
 new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,100000) DO (ECHO !RANDOM!)) > output.txt\"")
@@ -101,11 +101,11 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 
 Wanneer u een uitvoer bestand opgeeft, kunt u de eigenschap [output file. FilePattern](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) gebruiken om een bestands patroon op te geven voor de overeenkomst. Het bestands patroon kan overeenkomen met nul bestanden, één bestand of een set bestanden die door de taak worden gemaakt.
 
-De eigenschap **FilePattern** ondersteunt standaard bestandssysteem joker tekens, `*` zoals (voor niet-recursieve overeenkomsten) en `**` (voor recursieve overeenkomsten). Het bovenstaande code voorbeeld geeft bijvoorbeeld aan dat het bestand patroon niet- `std*.txt` recursief moet overeenkomen:
+De eigenschap **FilePattern** ondersteunt standaard bestandssysteem joker tekens, zoals `*` (voor niet-recursieve overeenkomsten) en `**` (voor recursieve overeenkomsten). In het bovenstaande code voorbeeld wordt bijvoorbeeld het bestand patroon opgegeven dat `std*.txt` niet-recursief moet worden aangepast:
 
 `filePattern: @"..\std*.txt"`
 
-Als u één bestand wilt uploaden, geeft u een bestands patroon zonder joker tekens op. In het bovenstaande code voorbeeld wordt bijvoorbeeld het bestands patroon aangegeven dat moet `output.txt`overeenkomen:
+Als u één bestand wilt uploaden, geeft u een bestands patroon zonder joker tekens op. Het bovenstaande code voorbeeld geeft bijvoorbeeld het bestands patroon aan dat moet overeenkomen met `output.txt`:
 
 `filePattern: @"output.txt"`
 
@@ -121,11 +121,11 @@ Zie [OutputFileUploadCondition](https://docs.microsoft.com/dotnet/api/microsoft.
 
 ### <a name="disambiguate-files-with-the-same-name"></a>Dubbel zinnigheid-bestanden met dezelfde naam
 
-De taken in een taak kunnen bestanden met dezelfde naam opleveren. `stdout.txt` En`stderr.txt` worden bijvoorbeeld gemaakt voor elke taak die in een taak wordt uitgevoerd. Omdat elke taak in een eigen context wordt uitgevoerd, conflicteren deze bestanden niet met het bestands systeem van het knoop punt. Wanneer u echter bestanden van meerdere taken naar een gedeelde container uploadt, moet u bestanden met dezelfde naam dubbel zinnigheid.
+De taken in een taak kunnen bestanden met dezelfde naam opleveren. `stdout.txt` en `stderr.txt` worden bijvoorbeeld gemaakt voor elke taak die in een taak wordt uitgevoerd. Omdat elke taak in een eigen context wordt uitgevoerd, conflicteren deze bestanden niet met het bestands systeem van het knoop punt. Wanneer u echter bestanden van meerdere taken naar een gedeelde container uploadt, moet u bestanden met dezelfde naam dubbel zinnigheid.
 
 De eigenschap [OutputFileBlobContainerDestination. Path](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) specificeert de doel-BLOB of de virtuele map voor uitvoer bestanden. U kunt de eigenschap **Path** gebruiken om de BLOB of virtuele map zo een naam te bieden dat uitvoer bestanden met dezelfde naam uniek zijn genoemd in azure Storage. Het gebruik van de taak-ID in het pad is een goede manier om unieke namen te garanderen en bestanden eenvoudig te identificeren.
 
-Als de eigenschap **FilePattern** is ingesteld op een Joker teken expressie, worden alle bestanden die overeenkomen met het patroon geüpload naar de virtuele map die is opgegeven door de eigenschap **Path** . Als de container `mycontainer`bijvoorbeeld de taak-id is `mytask`, en het bestands patroon is `..\std*.txt`, zijn de absolute uri's van de uitvoer bestanden in azure Storage vergelijkbaar met:
+Als de eigenschap **FilePattern** is ingesteld op een Joker teken expressie, worden alle bestanden die overeenkomen met het patroon geüpload naar de virtuele map die is opgegeven door de eigenschap **Path** . Als de container bijvoorbeeld is `mycontainer`, de taak-ID is `mytask`en het bestands patroon is `..\std*.txt`, worden de absolute Uri's van de uitvoer bestanden in Azure Storage vergelijkbaar met:
 
 ```
 https://myaccount.blob.core.windows.net/mycontainer/mytask/stderr.txt
@@ -155,11 +155,11 @@ Code: FileUploadContainerNotFound
 Message: One of the specified Azure container(s) was not found while attempting to upload an output file
 ```
 
-Bij elke upload van het bestand schrijft batch twee logboek bestanden naar het reken knooppunt `fileuploadout.txt` en `fileuploaderr.txt`. U kunt deze logboek bestanden controleren om meer te weten te komen over een specifieke fout. In gevallen waarin de upload van het bestand nooit is geslaagd, bijvoorbeeld omdat de taak zelf niet kan worden uitgevoerd, zijn deze logboek bestanden niet aanwezig.
+Bij elke upload van het bestand schrijft batch twee logboek bestanden naar het reken knooppunt, `fileuploadout.txt` en `fileuploaderr.txt`. U kunt deze logboek bestanden controleren om meer te weten te komen over een specifieke fout. In gevallen waarin de upload van het bestand nooit is geslaagd, bijvoorbeeld omdat de taak zelf niet kan worden uitgevoerd, zijn deze logboek bestanden niet aanwezig.
 
 ## <a name="diagnose-file-upload-performance"></a>Prestaties van het uploaden van bestanden vaststellen
 
-De `fileuploadout.txt` voortgang van het uploaden van bestands Logboeken. U kunt dit bestand bekijken voor meer informatie over hoe lang het uploaden van uw bestand tot gevolg heeft. Houd er rekening mee dat er veel factoren zijn bij het uploaden van de prestaties, met inbegrip van de grootte van het knoop punt, andere activiteit op het knoop punt op het moment van de upload, of de doel container zich in dezelfde regio bevindt als de batch-pool, hoeveel knoop punten worden geüpload naar de Stora ge-account op hetzelfde moment, enzovoort.
+De voortgang van het uploaden van `fileuploadout.txt` bestands Logboeken. U kunt dit bestand bekijken voor meer informatie over hoe lang het uploaden van uw bestand tot gevolg heeft. Houd er rekening mee dat er veel factoren zijn bij het uploaden van de prestaties, met inbegrip van de grootte van het knoop punt, andere activiteit op het knoop punt op het moment van de upload, of de doel container zich in dezelfde regio bevindt als de batch-pool, hoeveel knoop punten worden geüpload naar de Stora ge-account op hetzelfde moment, enzovoort.
 
 ## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>De batch-Service-API gebruiken met de conventies van het batch-bestand Standard
 
@@ -181,9 +181,9 @@ Het [PersistOutputs][github_persistoutputs] -voorbeeld project is een van de [Az
 
 1. Open het project in **Visual Studio 2019**.
 2. Voeg uw batch-en opslag **account referenties** toe aan **AccountSettings. settings** in het project micro soft. Azure. batch. samples. common.
-3. **Bouwen** (maar niet uitvoeren) de oplossing. Herstel eventuele NuGet-pakketten als u hierom wordt gevraagd.
-4. Gebruik de Azure Portal om een [toepassings pakket](batch-application-packages.md) te uploaden voor **PersistOutputsTask**. Neem de `PersistOutputsTask.exe` en de afhankelijke assembly's op in het zip-pakket, stel de toepassings-id in op ' PersistOutputsTask ' en de versie van het toepassings pakket op ' 1,0 '.
-5. **Starten** (Voer) het **PersistOutputs** -project uit.
+3. **Maak** de oplossing (maar voer deze niet uit). Herstel eventuele NuGet-pakketten als u hierom wordt gevraagd.
+4. Gebruik de Azure Portal om een [toepassings pakket](batch-application-packages.md) te uploaden voor **PersistOutputsTask**. Neem de `PersistOutputsTask.exe` en de afhankelijke assembly's op in het zip-pakket, stel de toepassings-ID in op ' PersistOutputsTask ' en de versie van het toepassings pakket op ' 1,0 '.
+5. Het **PersistOutputs** -project **starten** (uitvoeren).
 6. Wanneer u wordt gevraagd de persistentie technologie te kiezen die moet worden gebruikt voor het uitvoeren van het voor beeld, voert u **2** in om het voor beeld uit te voeren met de API van de batch-service om de taak uitvoer
 7. Voer, indien gewenst, het voor beeld opnieuw uit, geef **3** op voor persistente uitvoer met de batch-Service-API en geef ook de naam van de doel container en het BLOB op volgens de bestands conventies standaard.
 

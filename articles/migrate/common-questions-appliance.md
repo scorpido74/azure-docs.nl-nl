@@ -3,12 +3,12 @@ title: Veelgestelde vragen over het Azure Migrate apparaat
 description: Antwoorden vinden op veelgestelde vragen over het Azure Migrate apparaat
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 29cb390f509a2a4ebf44c1f9aacef99b507aebb8
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: c8bcebeee58401cb3d2b65ae82e51d31ab4dad0b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720324"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029123"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate apparaat: veelgestelde vragen
 
@@ -40,9 +40,9 @@ Wanneer u de apparaat-VM met behulp van de gedownloade sjabloon maakt, kunt u on
 ## <a name="what-network-connectivity-is-needed"></a>Welke netwerk verbinding is nodig?
 
 Controleer het volgende:
-- VMware-evaluatie van apparaat: vereisten voor de toegang tot de [URL](migrate-support-matrix-vmware.md#assessment-url-access-requirements) en [poort](migrate-support-matrix-vmware.md#assessment-port-requirements) .
-- VMware-migratie zonder agents: vereisten voor [URL](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements) en [poort](migrate-support-matrix-vmware.md#agentless-migration-port-requirements) toegang.
-- Toestel Hyper-V-beoordeling: vereisten voor [URL](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) en [poort](migrate-support-matrix-hyper-v.md#assessment-port-requirements) toegang.
+- VMware-evaluatie met behulp van het Azure Migrate-apparaat: vereisten voor toegang tot de [URL](migrate-appliance.md#url-access) en [poort](migrate-support-matrix-vmware.md#port-access) .
+- VMware-migratie zonder agents met behulp van het Azure Migrate apparaat: vereisten voor de toegang tot de [URL](migrate-appliance.md#url-access) en [poort](migrate-support-matrix-vmware-migration.md#agentless-ports) .
+- Hyper-V-evaluatie met behulp van het Azure Migrate apparaat: vereisten voor toegang tot de [URL](migrate-appliance.md#url-access) en [poort](migrate-support-matrix-hyper-v.md#port-access) .
 
 
 ## <a name="what-data-does-the-appliance-collect"></a>Welke gegevens worden door het apparaat verzameld?

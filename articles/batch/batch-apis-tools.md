@@ -2,19 +2,19 @@
 title: API's en -hulpprogramma's voor ontwikkelaars - Azure Batch | Microsoft Docs
 description: Meer informatie over de API's en hulpprogramma's voor het ontwikkelen van oplossingen met de Azure Batch-service.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 3eeb955d312e21f96f4b1029548c5e84b5e586ec
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a353651fa045b146b257432c812c73bec9485566
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323781"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027361"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Overzicht van Batch-API's en -hulpprogramma's
 
@@ -37,7 +37,7 @@ Wanneer u Batch-oplossingen ontwikkelt, gebruikt u de volgende accounts in uw Az
 
 Uw toepassingen en services kunnen direct REST-API-aanroepen verstrekken of een of meer van de volgende clientbibliotheken gebruiken voor het uitvoeren en beheren van uw Azure Batch-workloads.
 
-| API | API-verwijzing | Downloaden | Zelfstudie | Codevoorbeelden | Meer informatie |
+| API | API-referentie | Download | Zelfstudie | Codevoorbeelden | Meer informatie |
 | --- | --- | --- | --- | --- | --- |
 | **Batch REST** |[docs.microsoft.com][batch_rest] |N/A |- |- | [Ondersteunde versies](/rest/api/batchservice/batch-service-rest-api-versioning) |
 | **Batch .NET** |[docs.microsoft.com][api_net] |[NuGet][api_net_nuget] |[Zelfstudie](tutorial-parallel-dotnet.md) |[GitHub][api_sample_net] | [Releaseopmerkingen](https://aka.ms/batch-net-dataplane-changelog) |
@@ -49,7 +49,7 @@ Uw toepassingen en services kunnen direct REST-API-aanroepen verstrekken of een 
 
 De Azure Resource Manager-API's voor Batch bieden programmatisch toegang tot Batch-accounts. Met deze API's kunt u Batch-accounts, -quota, -toepassingspakketten en andere -resources programmatisch beheren via de Microsoft.Batch-provider.  
 
-| API | API-verwijzing | Downloaden | Zelfstudie | Codevoorbeelden |
+| API | API-referentie | Download | Zelfstudie | Codevoorbeelden |
 | --- | --- | --- | --- | --- |
 | **Batch Management REST** |[docs.microsoft.com][api_rest_mgmt] |N/A |- |[GitHub](https://github.com/Azure-Samples/batch-dotnet-manage-batch-accounts) |
 | **Batch Management .NET** |[docs.microsoft.com][api_net_mgmt] |[NuGet][api_net_mgmt_nuget] | [Zelfstudie](batch-management-dotnet.md) |[GitHub][api_sample_net] |
@@ -60,19 +60,19 @@ De Azure Resource Manager-API's voor Batch bieden programmatisch toegang tot Bat
 
 Deze opdrachtregelprogramma's bieden dezelfde functionaliteit als de API’s voor de Batch-service en Batch Management: 
 
-* [Batch-Power shell][batch_ps]-cmdlets: met de Azure Batch-cmdlets in de [Azure PowerShell](/powershell/azure/overview)-module kunt u Batch-resources beheren met PowerShell.
+* [Batch-Power shell-cmdlets][batch_ps]: met de Azure batch-cmdlets in de module [Azure PowerShell](/powershell/azure/overview) kunt u batch-resources beheren met Power shell.
 * [Azure CLI](/cli/azure): de Azure CLI is een platformoverschrijdende hulpmiddelenset die shellopdrachten biedt voor interactie met vele Azure-services, waaronder de Batch-service en Batch Management-service. Zie [Batch-resources beheren met de Azure CLI](batch-cli-get-started.md) voor meer informatie over het gebruik van de Azure CLI met Batch.
 
 ## <a name="other-tools-for-application-development"></a>Andere hulpmiddelen voor toepassingsontwikkeling
 
 Hier volgen enkele extra hulpprogramma's die mogelijk nuttig zijn voor het bouwen van uw Batch-toepassingen en -services en het opsporen van fouten daarin:
 
-* [Azure Portal][portal]: In de Azure-portal kunt u Batch-pools, -taken en -opdrachten maken, controleren en verwijderen. U kunt de statusinformatie voor deze en andere resources bekijken terwijl u taken uitvoert en zelfs taken downloadt van de rekenknooppunten in uw pools. U kunt bijvoorbeeld de `stderr.txt` van een taak downloaden bij het oplossen van problemen. U kunt ook Remote Desktop (RDP)-bestanden downloaden die u kunt gebruiken om aan te melden om knooppunten te berekenen.
-* [Azure batch Explorer][batch_labs]: Batch Explorer (vroeger BatchLabs genaamd) is een gratis, uitgebreid, zelfstandig clienthulpprogramma voor het maken en bewaken van en opsporen van fouten in Azure Batch-toepassingen. Download een [installatiepakket](https://azure.github.io/BatchExplorer/) voor Mac, Linux of Windows.
-* [Azure Batch Shipyard](https://github.com/Azure/batch-shipyard): Batch Shipyard is een hulpprogramma voor het inrichten, uitvoeren en bewaken van batchverwerking in containers en HPC-werkbelastingen op Azure Batch.
-* [Azure Storage Explorer][storage_explorer]: hoewel dit strikt genomen geen Azure Batch-hulpprogramma is, is Storage Explorer wel een waardevol hulpmiddel voor de ontwikkeling en foutopsporing van uw Batch-oplossingen.
+* [Azure Portal][portal]: u kunt batch-Pools,-taken en-taken in de Azure portal maken, controleren en verwijderen. U kunt de statusinformatie voor deze en andere resources bekijken terwijl u taken uitvoert en zelfs taken downloadt van de rekenknooppunten in uw pools. U kunt bijvoorbeeld de `stderr.txt` van een taak downloaden bij het oplossen van problemen. U kunt ook Remote Desktop (RDP)-bestanden downloaden die u kunt gebruiken om aan te melden om knooppunten te berekenen.
+* [Azure batch Explorer][batch_labs]: batch Explorer (voorheen batch Labs) is een gratis, uitgebreid, zelfstandig client hulpprogramma waarmee Azure batch toepassingen kunnen worden gemaakt, opgespoord en bewaakt. Download een [installatiepakket](https://azure.github.io/BatchExplorer/) voor Mac, Linux of Windows.
+* [Azure batch Shipyard](https://github.com/Azure/batch-shipyard): batch Shipyard is een hulp programma voor het inrichten, uitvoeren en bewaken van op containers gebaseerde batch verwerking en HPC-workloads op Azure batch.
+* [Azure Storage Explorer][storage_explorer]: Hoewel er geen Azure batch-hulp programma is, is de Storage Explorer nog een waardevol hulp middel om uw batch-oplossingen te ontwikkelen en fouten op te sporen.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - Zie [Logboekgebeurtenissen voor diagnostische evaluatie en bewaking van de Batch-oplossingen](batch-diagnostics.md) voor meer informatie over het vastleggen van gebeurtenissen van uw Batch-toepassing. Zie [Batch-analyses](batch-analytics.md) voor informatie over gebeurtenissen die worden gegenereerd door de Batch-service.
 - Zie [Omgevingsvariabelen van Azure Batch-rekenknooppunten](batch-compute-node-environment-variables.md) voor meer informatie over omgevingsvariabelen voor rekenknooppunten.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
-ms.openlocfilehash: 25b0c14fb94cba611dfa9fa9bece1b728f39a905
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0f328651ac4422226071d2de12e9cbc787ef64be
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585209"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978276"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Uitzonde ringen voor Service Bus Resource Manager
 
@@ -36,7 +36,7 @@ Hieronder vindt u de verschillende uitzonde ringen/fouten die worden weer gegeve
 
 | Foutcode | Fout subcode | Foutbericht | Beschrijving | Aanbeveling |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Onjuiste aanvraag | 40000 | Subcode = 40000. De eigenschaps *naam* kan niet worden ingesteld bij het maken van een wachtrij, omdat de naam ruimte *name* van de naam ruimte de laag Basic gebruikt. Deze bewerking wordt alleen ondersteund in de laag Standard of Premium. | Op Azure Service Bus Basic-laag kunnen de onderstaande eigenschappen niet worden ingesteld of bijgewerkt: <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> ForwardTo </li> <li> Onderwerpen </li> </ul> | Overweeg om een upgrade uit te scha kelen van Basic naar Standard of Premium om deze functionaliteit te gebruiken. |
+| Onjuiste aanvraag | 40000 | Subcode = 40000. De eigenschaps *naam* kan niet worden ingesteld bij het maken van een wachtrij, omdat de naam ruimte *name* van de naam ruimte de laag Basic gebruikt. Deze bewerking wordt alleen ondersteund in de laag Standard of Premium. | Op Azure Service Bus Basic-laag kunnen de onderstaande eigenschappen niet worden ingesteld of bijgewerkt: <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> ForwardTo </li> <li> Topics </li> </ul> | Overweeg om een upgrade uit te scha kelen van Basic naar Standard of Premium om deze functionaliteit te gebruiken. |
 | Onjuiste aanvraag | 40000 | Subcode = 40000. De waarde voor de eigenschap requiresDuplicateDetection van een bestaande wachtrij (of onderwerp) kan niet worden gewijzigd. | Duplicaten detectie moet zijn ingeschakeld/uitgeschakeld op het moment dat de entiteit wordt gemaakt. De configuratie parameter duplicaten detectie kan niet worden gewijzigd nadat deze is gemaakt. | Als u duplicaten detectie wilt inschakelen voor een eerder gemaakte wachtrij/onderwerp, kunt u een nieuwe wachtrij/onderwerp maken met duplicaten detectie en vervolgens door sturen van de oorspronkelijke wachtrij naar de nieuwe wachtrij/onderwerp. |
 | Onjuiste aanvraag | 40000 | Subcode = 40000. De opgegeven waarde 16384 is ongeldig. De eigenschap MaxSizeInMegabytes moet een van de volgende waarden hebben: 1024; 2048; 3072; 4096; 5120. | De MaxSizeInMegabytes-waarde is ongeldig. | Zorg ervoor dat de MaxSizeInMegabytes een van de volgende is: 1024, 2048, 3072, 4096, 5120. |
 | Onjuiste aanvraag | 40000 | Subcode = 40000. Partitioneren kan niet worden gewijzigd voor wachtrij/onderwerp. | Partitioneren kan niet worden gewijzigd voor entiteit. | Maak een nieuwe entiteit (wachtrij of onderwerp) en schakel partities in. | 
@@ -54,7 +54,7 @@ Net als bij HTTP geeft "fout code 429" te veel aanvragen aan ". Het impliceert d
 
 | Foutcode | Fout subcode | Foutbericht | Beschrijving | Aanbeveling |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| 429 | 50004 | Subcode = 50004. De aanvraag is beëindigd omdat de naam ruimte van *uw naam ruimte* wordt beperkt. | Deze fout is opgetreden wanneer het aantal binnenkomende aanvragen de beperking van de resource overschrijdt. | Wacht een paar seconden en probeer het opnieuw. <br/> <br/> Meer informatie over de [quota](service-bus-quotas.md) en [limieten voor Azure Resource Manager aanvragen](../azure-resource-manager/resource-manager-request-limits.md)|
+| 429 | 50004 | Subcode = 50004. De aanvraag is beëindigd omdat de naam ruimte van *uw naam ruimte* wordt beperkt. | Deze fout is opgetreden wanneer het aantal binnenkomende aanvragen de beperking van de resource overschrijdt. | Wacht een paar seconden en probeer het opnieuw. <br/> <br/> Meer informatie over de [quota](service-bus-quotas.md) en [limieten voor Azure Resource Manager aanvragen](../azure-resource-manager/management/request-limits-and-throttling.md)|
 | 429 | 40901 | Subcode = 40901. Er wordt een andere conflicterende bewerking uitgevoerd. | Er wordt een andere conflicterende bewerking uitgevoerd voor dezelfde resource/entiteit | Wacht tot de huidige bewerking in uitvoering is voltooid en probeer het opnieuw. |
 | 429 | 40900 | Subcode = 40900. Conflicteren. U vraagt een bewerking aan die niet is toegestaan in de huidige status van de resource. | Deze voor waarde kan worden bereikt wanneer meerdere aanvragen tegelijkertijd worden uitgevoerd om de bewerkingen op dezelfde entiteit (wachtrij, onderwerp, abonnement of regel) tegelijk uit te voeren. | Wacht een paar seconden en probeer het opnieuw |
 | 429 | 40901 | Er is een conflict opgetreden tussen de aanvraag op de entiteits *naam* en de andere aanvraag | Er wordt een andere conflicterende bewerking uitgevoerd voor dezelfde resource/entiteit | Wacht tot de vorige bewerking is voltooid en probeer het opnieuw. |

@@ -14,13 +14,14 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mathoma
 ms.reviewer: jroth
+experimental: true
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: 60c5af609cea876370c74684362e9b44db40c1ee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 1c2d5ae5d85624ea172eb9a95d4086dd71287c4f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101958"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978208"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Verbinding maken met een virtuele SQL Server-machine op Azure (klassieke implementatie)
 > [!div class="op_single_selector"]
@@ -33,7 +34,7 @@ ms.locfileid: "70101958"
 In dit onderwerp wordt beschreven hoe u verbinding maakt met uw SQL Server-exemplaar dat wordt uitgevoerd op een virtuele Azure-machine. Dit omvat enkele [algemene verbindings scenario's](#connection-scenarios) en bevat [gedetailleerde stappen voor het configureren van SQL Server connectiviteit in een Azure-VM](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
 
 > [!IMPORTANT] 
-> Azure heeft twee verschillende implementatiemodellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/resource-manager-deployment-model.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Als u Resource Manager-Vm's gebruikt, raadpleegt u [verbinding maken met een SQL Server virtuele machine in azure met behulp van Resource Manager](../sql/virtual-machines-windows-sql-connect.md).
+> Azure heeft twee verschillende implementatie modellen voor het maken van en werken met resources: [Resource Manager en klassiek](../../../azure-resource-manager/management/deployment-models.md). In dit artikel wordt beschreven hoe u het klassieke implementatie model gebruikt. U doet er verstandig aan voor de meeste nieuwe implementaties het Resource Manager-model te gebruiken. Als u Resource Manager-Vm's gebruikt, raadpleegt u [verbinding maken met een SQL Server virtuele machine in azure met behulp van Resource Manager](../sql/virtual-machines-windows-sql-connect.md).
 
 ## <a name="connection-scenarios"></a>Verbindings scenario's
 De manier waarop een client verbinding maakt met SQL Server die op een virtuele machine wordt uitgevoerd, verschilt afhankelijk van de locatie van de client en de configuratie van de computer/netwerk. Deze scenario's omvatten:

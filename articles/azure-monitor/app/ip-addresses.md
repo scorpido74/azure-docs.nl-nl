@@ -4,15 +4,15 @@ description: Uitzonde ringen voor Server firewalls vereist voor Application Insi
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 12/19/2019
-ms.openlocfilehash: 509f9d68351af6263a9d2bba1831e78a5608c592
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c571a4f36372b250a05564182b240bc4007240a1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432563"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977816"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>IP-adressen die worden gebruikt door Application Insights en Log Analytics
 De [Azure-toepassing Insights](../../azure-monitor/app/app-insights-overview.md) -service gebruikt een aantal IP-adressen. Mogelijk moet u deze adressen weten als de app die u bewaakt, wordt gehost achter een firewall.

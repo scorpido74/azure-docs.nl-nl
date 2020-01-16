@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: 19614570369e3814658f9ca6e50635507f094712
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 35236a95e691d6f7d0444a038e62116a684965a7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977315"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978448"
 ---
-# <a name="using-the-azure-importexport-tool"></a>Het Azure-hulp programma voor importeren/exporteren gebruiken 
+# <a name="using-the-azure-importexport-tool"></a>Het Azure-hulp programma voor importeren/exporteren gebruiken
 
 Het Azure import/export-hulp programma (WAImportExport. exe) wordt gebruikt voor het maken en beheren van taken voor de Azure import/export-service, zodat u grote hoeveel heden gegevens kunt overdragen naar of uit Azure Blob Storage.
 
@@ -25,10 +25,10 @@ In de volgende artikelen wordt uitgelegd hoe u:
 
 - Installeer en stel het Azure-hulp programma voor importeren/exporteren in.
 - Bereid uw harde schijven voor op een taak waar u gegevens van uw stations importeert in Azure Blob Storage.
-- Bekijk de status van een taak met kopie logboek bestanden. 
-- Een import taak herstellen. 
-- Een export taak herstellen. 
-- Problemen met het Azure import/export-hulp programma oplossen. 
+- Bekijk de status van een taak met kopie logboek bestanden.
+- Een import taak herstellen.
+- Een export taak herstellen.
+- Problemen met het Azure import/export-hulp programma oplossen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

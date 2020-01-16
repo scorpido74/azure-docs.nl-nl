@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: f9e60b2f1685e03a9daa7a4801f43799a21eb411
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 263fdda178752ee22997a03a11902a7bff4791dc
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940554"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028610"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-customer-managed-key"></a>Azure Database for PostgreSQL gegevens versleuteling met één server met door de klant beheerde sleutel
 
@@ -41,7 +41,7 @@ Gegevens versleuteling voor Azure Database for PostgreSQL één server biedt de 
 
 Sleutel versleutelings **sleutel (KEK)** : een versleutelings sleutel die wordt gebruikt om de gegevens versleutelings sleutels te versleutelen. Gebruik van een versleutelings sleutel die nooit Key Vault verlaat, zodat de gegevens versleutelings sleutels zelf kunnen worden versleuteld en beheerd. De entiteit die toegang heeft tot de KEK kan afwijken van de entiteit waarvoor de DEK is vereist. Omdat de KEK is vereist voor het ontsleutelen van de DEKs, is de KEK een specifiek punt waarmee DEKs effectief kan worden verwijderd door het verwijderen van de KEK.
 
-De gegevens versleutelings sleutels, versleuteld met de sleutel versleutelings sleutels, worden afzonderlijk opgeslagen en alleen een entiteit met toegang tot de sleutel coderings sleutel kan deze versleutelings sleutels ontsleutelen. Zie [beveiliging in versleuteling op rest](../security/fundamentals/encryption-atrest.md)voor meer informatie.
+De gegevens versleutelings sleutels (DEK), versleuteld met de sleutel versleutelings sleutels, worden afzonderlijk opgeslagen en alleen een entiteit met toegang tot de sleutel coderings sleutel kan deze versleutelings sleutels ontsleutelen. Zie [beveiliging in versleuteling op rest](../security/fundamentals/encryption-atrest.md)voor meer informatie.
 
 ## <a name="how-data-encryption-with-customer-managed-key-works"></a>Hoe gegevens versleuteling met door de klant beheerde sleutel werkt
 
@@ -50,8 +50,8 @@ De gegevens versleutelings sleutels, versleuteld met de sleutel versleutelings s
 Een Key Vault beheerder moet de volgende toegangs rechten verlenen aan de server met behulp van de unieke identiteit van een PostgreSQL-server die door de klant beheerde sleutels kan gebruiken die zijn opgeslagen in azure voor versleuteling van de DEK:
 
 * **Get** -voor het ophalen van het open bare onderdeel en de eigenschappen van de sleutel in de Key Vault
-* **wrapKey** : om te kunnen beveiligen (versleutelen) dek
-* **sleutel uitpakken** : voor het opheffen van de beveiliging (ontsleutelen) dek
+* **wrapKey** : dek kunnen worden versleuteld
+* **sleutel uitpakken** : dek kunnen ontsleutelen
 
 Key Vault beheerder kan [logboek registratie van Key Vault controle gebeurtenissen ook inschakelen](../azure-monitor/insights/azure-key-vault.md), zodat ze later kunnen worden gecontroleerd.
 

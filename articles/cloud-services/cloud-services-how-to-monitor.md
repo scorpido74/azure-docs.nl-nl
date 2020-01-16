@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
-ms.openlocfilehash: 096077550a426d7eb77ed0d71e720149dd103a55
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386065"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972944"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Inleiding tot Cloud service monitoring
 
@@ -52,7 +52,7 @@ Terwijl elke rol wordt gemaakt, voegt Visual Studio de Azure Diagnostics-extensi
 
 ## <a name="setup-diagnostics-extension"></a>Uitbrei ding voor installatie van diagnostische gegevens
 
-Als u geen **klassiek** opslag account hebt, [maakt u er eerst een](../storage/common/storage-quickstart-create-account.md). Zorg ervoor dat het opslag account is gemaakt met het **klassieke implementatie model** dat is opgegeven.
+Als u geen **klassiek** opslag account hebt, [maakt u er eerst een](../storage/common/storage-account-create.md). Zorg ervoor dat het opslag account is gemaakt met het **klassieke implementatie model** dat is opgegeven.
 
 Ga vervolgens naar de resource van het **opslag account (klassiek)** . Selecteer **instellingen** > **toegangs sleutels** en kopieer de **primaire Connection String** waarde. U hebt deze waarde nodig voor de Cloud service. 
 

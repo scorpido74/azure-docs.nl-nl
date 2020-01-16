@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 148d0c203248e4dcde5baaadc596d56e8b8ea17a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 533c91bdc02425cabf5eeae93f37811144b32149
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669381"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976328"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Het Team Data Science Process in actie: met behulp van SQL Server
 In deze zelfstudie hebt u stapsgewijs door het proces van het bouwen en implementeren van een machine learning-model met behulp van SQL Server en een openbaar beschikbare gegevensset testlab voor de [NYC Taxi Trips](https://www.andresmh.com/nyctaxitrips/) gegevensset. De procedure volgt een standaard gegevenswetenschapwerkstroom: opnemen en Verken de gegevens, functies, dingen en vervolgens bouwen en implementeren van een model bouwen.
@@ -66,7 +66,7 @@ In deze zelfstudie wordt gedemonstreerd parallelle bulkimport van de gegevens na
 
 Uw Azure Data Science-omgeving instellen:
 
-1. [Een opslagaccount maken](../../storage/common/storage-quickstart-create-account.md)
+1. [Een opslagaccount maken](../../storage/common/storage-account-create.md)
 2. [Een Azure Machine Learning-werkruimte maken](../studio/create-workspace.md)
 3. [Een Data Science Virtual Machine inrichten](../data-science-virtual-machine/setup-sql-server-virtual-machine.md), waarmee u een SQL-Server en IPython Notebook-server.
    
@@ -376,7 +376,7 @@ We op dezelfde manier kunt controleren of de relatie tussen **tarief\_code** en 
 ![#8 tekenen][8]
 
 ### <a name="sub-sampling-the-data-in-sql"></a>De gegevens in SQL steekproeven subplan
-Wanneer u gegevens voorbereidt voor het maken van modellen in [Azure machine learning Studio](https://studio.azureml.net), kunt u ervoor kiezen **om de SQL-query rechtstreeks te gebruiken in de module gegevens importeren** of de geprogrammeerde en voorbeeld gegevens in een nieuwe tabel te bewaren, die u in de import kunt gebruiken [ Gegevens][import-data] module met een eenvoudige **Select * van < uw\_nieuwe\_tabel\_naam >** .
+Wanneer u gegevens voorbereidt voor het maken van modellen in [Azure machine learning Studio](https://studio.azureml.net), kunt u ervoor kiezen **om de SQL-query rechtstreeks te gebruiken in de module gegevens importeren** of de ontworpen en voorbeeld gegevens in een nieuwe tabel te bewaren, die u in de module [gegevens importeren][import-data] kunt gebruiken met een eenvoudige **SELECT * van < uw\_nieuwe\_tabel\_naam >** .
 
 In deze sectie maken we een nieuwe tabel voor het opslaan van de sample en Social engineering-gegevens. Een voorbeeld van een directe SQL-query voor het model bouwen is opgegeven in de [gegevens verkennen en functie-Engineering in SQL Server](#dbexplore) sectie.
 

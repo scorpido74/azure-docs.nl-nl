@@ -6,18 +6,18 @@ ms.author: mbolz
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 7479b16f2e1f14d8ebe611bf3121005af342ccb9
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: ee1951de850e402721e0abb3e08a55b73f3eedfa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764930"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979354"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Azure Database for MySQL VNet-service-eind punten en VNet-regels maken en beheren met behulp van de Azure Portal
 Service-eindpunten en -regels voor virtuele netwerken (VNets) breiden de privé-adresruimte van een virtueel netwerk uit naar uw Azure Database for MySQL-server. Zie [Azure database for mysql server VNet-service-eind punten](concepts-data-access-and-security-vnet.md)voor een overzicht van Azure database for MySQL VNet-service-eind punten, met inbegrip van beperkingen. VNet-service-eind punten zijn beschikbaar in alle ondersteunde regio's voor Azure Database for MySQL.
 
 > [!NOTE]
-> Ondersteuning voor VNet-service-eind punten is alleen voor servers met Algemeen en geoptimaliseerd voor geheugen.
+> Ondersteuning voor VNet-service-eindpunten is alleen voor algemeen gebruik en geoptimaliseerd voor geheugen-servers.
 > In het geval van VNet-peering, als verkeer via een gemeen schappelijke VNet-gateway met Service-eind punten stroomt en naar de peer moet stromen, moet u een ACL/VNet-regel maken om Azure Virtual Machines in de gateway-VNet toegang te geven tot de Azure Database for MySQL-server.
 
 
@@ -46,7 +46,7 @@ Service-eindpunten en -regels voor virtuele netwerken (VNets) breiden de privé-
     
    Meer informatie over [ingebouwde rollen](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) en het toewijzen van specifieke machtigingen voor [aangepaste rollen](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles).
     
-   VNets en Azure-serviceresources kunnen in hetzelfde of in verschillend abonnementen zitten. Als de VNet-en Azure-service resources zich in verschillende abonnementen bevinden, moeten de resources onder dezelfde Active Directory (AD)-Tenant vallen. Zorg ervoor dat de **micro soft. SQL** -resource provider is geregistreerd voor beide abonnementen. Raadpleeg [Resource-Manager-registratie][resource-manager-portal] voor meer informatie
+   VNets en Azure-serviceresources kunnen in hetzelfde abonnement of in verschillende abonnementen zitten. Als de VNet-en Azure-service resources zich in verschillende abonnementen bevinden, moeten de resources onder dezelfde Active Directory (AD)-Tenant vallen. Zorg ervoor dat de **micro soft. SQL** -resource provider is geregistreerd voor beide abonnementen. Raadpleeg [Resource-Manager-registratie][resource-manager-portal] voor meer informatie
 
    > [!IMPORTANT]
    > Het is raadzaam om dit artikel te lezen over service-eindpunt configuraties en overwegingen voordat u service-eind punten configureert. **Service-eind punt Virtual Network:** Een [Virtual Network Service-eind punt](../virtual-network/virtual-network-service-endpoints-overview.md) is een subnet waarvan de eigenschaps waarden een of meer formele namen van Azure-service typen bevatten. VNet-service-eind punten gebruiken de service type naam **micro soft. SQL**, die verwijst naar de Azure-service met de naam SQL database. Deze servicetag is ook van toepassing op de Azure SQL Database, Azure Database for PostgreSQL en MySQL-Services. Het is belang rijk te weten wanneer u de code van het **micro soft. SQL** -service toepast op een VNet-service-eind punt Hiermee wordt service-eindpunt verkeer geconfigureerd voor alle Azure Data Base-Services, waaronder Azure SQL Database, Azure Database for PostgreSQL en Azure database for MySQL servers in het subnet. 
@@ -61,4 +61,4 @@ Service-eindpunten en -regels voor virtuele netwerken (VNets) breiden de privé-
 - Zie voor hulp bij het maken van verbinding met een Azure Database for MySQL-server [verbindings bibliotheken voor Azure database for MySQL](./concepts-connection-libraries.md)
 
 <!-- Link references, to text, Within this same GitHub repo. --> 
-[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

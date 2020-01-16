@@ -3,12 +3,12 @@ title: Power BI-rapporten configureren
 description: Power BI-rapporten configureren voor Azure Backup met behulp van een Recovery Services kluis.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 9b6ef62a924761642ef3217ff8af64ac6847c766
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f8a2dd927f996ea09e40c7db2e43b46c17f6258
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450108"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978378"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-rapporten configureren
 
@@ -30,7 +30,7 @@ Down load de nieuwste app (versie 1,8) om dit probleem te voor komen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Maak een [Azure Storage-account](../storage/common/storage-quickstart-create-account.md) om het te configureren voor-rapporten. Dit opslag account wordt gebruikt voor het opslaan van gegevens over rapporten.
+- Maak een [Azure Storage-account](../storage/common/storage-account-create.md) om het te configureren voor-rapporten. Dit opslag account wordt gebruikt voor het opslaan van gegevens over rapporten.
 - [Maak een Power bi-account](https://powerbi.microsoft.com/landing/signin/) om uw eigen rapporten te bekijken, aan te passen en te maken met behulp van de Power BI portal.
 - Registreer de resource provider **micro soft. Insights**als deze nog niet is geregistreerd. Gebruik de abonnementen voor het opslag account en de Recovery Services kluis zodat rapport gegevens naar het opslag account kunnen stromen. Als u deze stap wilt uitvoeren, gaat u naar de Azure Portal, selecteert u **abonnement** > **resource providers**en controleert u of deze provider deze kan registreren.
 
@@ -114,7 +114,7 @@ Als u het rapport wilt aanpassen en delen, maakt u een werk ruimte en voert u de
 
 ## <a name="troubleshooting-errors"></a>Fouten oplossen
 
-| Foutdetails | Oplossing |
+| Foutdetails | Resolutie |
 | --- | --- |
 | Nadat u het opslag account voor back-uprapporten hebt ingesteld, wordt in het **opslag account** nog steeds **niet geconfigureerd**weer gegeven. | Als u een opslag account hebt geconfigureerd, stromen uw rapport gegevens ondanks dit probleem. Als u dit probleem wilt oplossen, gaat u naar de Azure Portal en selecteert u **alle services** > **diagnostische instellingen** > **Recovery Services kluis** > **instelling bewerken**. Verwijder de eerder geconfigureerde instelling en maak een nieuwe instelling op dezelfde Blade. In dit tijdstip selecteert u in het vak **naam** de optie **service**. Nu wordt het geconfigureerde opslag account weer gegeven. |
 |Nadat u de Azure Backup sjabloon-app in Power BI hebt geïmporteerd, wordt het fout bericht ' 404-container is niet gevonden ' weer gegeven. | Zoals eerder vermeld, moet u 24 uur wachten nadat u rapporten hebt geconfigureerd in de Recovery Services kluis om ze correct te bekijken in Power BI. Als u de rapporten vóór 24 uur probeert te openen, wordt dit fout bericht weer gegeven omdat de voltooide gegevens nog niet aanwezig zijn om geldige rapporten weer te geven. |

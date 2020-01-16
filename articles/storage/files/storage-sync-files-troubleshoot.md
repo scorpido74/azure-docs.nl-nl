@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/8/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f60d9714db71325bd9c67cae6e2f82d54f8e5eb3
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 1b24258efdd75977b5571506b3eabf952a4ae0a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753922"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027778"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen met Azure Files Sync oplossen
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -182,8 +182,6 @@ Op de server die wordt weer gegeven als ' offline weer geven ' in de portal, kij
     ```powershell
     Reset-AzStorageSyncServerCertificate -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
-
-
 <a id="endpoint-noactivity-sync"></a>**Server-eind punt heeft de status ' geen activiteit ' en de status van de server op de Blade geregistreerde servers is ' online '**  
 
 De status van het server eindpunt van ' geen activiteit ' betekent dat het server-eind punt in de afgelopen twee uur geen synchronisatie activiteiten heeft geregistreerd.
@@ -393,6 +391,22 @@ Deze fout treedt op omdat de Azure File Sync-agent geen toegang kan krijgen tot 
 3. [Zorg ervoor dat Azure File Sync toegang heeft tot het opslag account.](#troubleshoot-rbac)
 4. [Controleren of de instellingen voor de firewall en het virtuele netwerk op het opslagaccount correct zijn geconfigureerd (indien ingeschakeld)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
+<a id="-2134351804"></a>**De synchronisatie is mislukt, omdat de aanvraag niet is gemachtigd om deze bewerking uit te voeren.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c86044 |
+| **HRESULT (decimaal)** | -2134351804 |
+| **Fout reeks** | ECS_E_AZURE_AUTHORIZATION_FAILED |
+| **Herstel vereist** | Ja |
+
+Deze fout treedt op omdat de Azure File Sync-agent geen toegang heeft tot de Azure-bestands share. U kunt deze fout oplossen door de volgende stappen te doorlopen:
+
+1. [Controleer of het opslag account bestaat.](#troubleshoot-storage-account)
+2. [Zorg ervoor dat de Azure-bestands share bestaat.](#troubleshoot-azure-file-share)
+3. [Controleren of de instellingen voor de firewall en het virtuele netwerk op het opslagaccount correct zijn geconfigureerd (indien ingeschakeld)](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+4. [Zorg ervoor dat Azure File Sync toegang heeft tot het opslag account.](#troubleshoot-rbac)
+
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**De gebruikte naam van het opslag account kan niet worden omgezet.**  
 
 | | |
@@ -495,7 +509,7 @@ Als de Azure-bestands share is verwijderd, moet u een nieuwe bestands share make
 | **Fout reeks** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
 | **Herstel vereist** | Ja |
 
-Deze fout treedt op wanneer het Azure-abonnement is onderbroken. Synchronisatie wordt opnieuw ingeschakeld wanneer het Azure-abonnement wordt hersteld. Zie [Waarom is mijn Azure-abonnement uitgeschakeld en hoe kan ik het opnieuw activeren?](../../billing/billing-subscription-become-disable.md) voor meer informatie.
+Deze fout treedt op wanneer het Azure-abonnement is onderbroken. Synchronisatie wordt opnieuw ingeschakeld wanneer het Azure-abonnement wordt hersteld. Zie [Waarom is mijn Azure-abonnement uitgeschakeld en hoe kan ik het opnieuw activeren?](../../cost-management-billing/manage/subscription-disabled.md) voor meer informatie.
 
 <a id="-2134364052"></a>**Er is een firewall of virtuele netwerken geconfigureerd voor het opslag account.**  
 

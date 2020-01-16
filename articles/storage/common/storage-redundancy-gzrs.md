@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e1789122079d5cbc6f5914a6fd6a69a38df04e45
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2591f1846574994b878814f3b08df1de2a6e9fc1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748257"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973364"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Bouw Maxi maal beschik bare Azure Storage toepassingen met geo-zone-redundante opslag (GZRS) (preview)
 
@@ -51,7 +51,7 @@ Wanneer gegevens worden geschreven naar een opslag account waarvoor GZRS of RA-G
 > [!IMPORTANT]
 > Asynchrone replicatie vergt een vertraging tussen de tijd dat gegevens naar de primaire regio worden geschreven en wanneer deze naar de secundaire regio worden gerepliceerd. In het geval van een regionale ramp kunnen wijzigingen die nog niet zijn gerepliceerd naar de secundaire regio, verloren gaan als de gegevens niet kunnen worden hersteld vanuit de primaire regio.
 
-Wanneer u een opslag account maakt, geeft u op hoe gegevens in dat account moeten worden gerepliceerd en geeft u ook de primaire regio voor dat account op. De gekoppelde secundaire regio voor een geo-gerepliceerd account wordt bepaald op basis van de primaire regio en kan niet worden gewijzigd. Zie [bedrijfs continuïteit en herstel na nood gevallen (BCDR): gekoppelde Azure-regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)voor actuele informatie over regio's die door Azure worden ondersteund. Zie [een opslag account maken](storage-quickstart-create-account.md)voor meer informatie over het maken van een opslag account met behulp van GZRS of Ra-GZRS.
+Wanneer u een opslag account maakt, geeft u op hoe gegevens in dat account moeten worden gerepliceerd en geeft u ook de primaire regio voor dat account op. De gekoppelde secundaire regio voor een geo-gerepliceerd account wordt bepaald op basis van de primaire regio en kan niet worden gewijzigd. Zie [bedrijfs continuïteit en herstel na nood gevallen (BCDR): gekoppelde Azure-regio's](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)voor actuele informatie over regio's die door Azure worden ondersteund. Zie [een opslag account maken](storage-account-create.md)voor meer informatie over het maken van een opslag account met behulp van GZRS of Ra-GZRS.
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>RA-GZRS gebruiken voor hoge Beschik baarheid
 

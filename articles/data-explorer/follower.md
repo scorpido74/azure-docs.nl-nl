@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 495f53bc97835c4940f7b36d23349b768a7a637f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b4e09bf84d78c88d3625b0f6b478746db09cc2d8
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440971"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030061"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>De follower-Data Base gebruiken om data bases in azure Data Explorer te koppelen
 
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Een Data Base koppelen met behulp van een Azure Resource Manager sjabloon
 
-In deze sectie leert u hoe u een Data Base kunt koppelen met behulp van een [Azure Resource Manager sjabloon](../azure-resource-manager/management/overview.md). 
+In deze sectie leert u hoe u een follower-cluster maakt en een Data Base eraan koppelt met behulp van een [Azure Resource Manager sjabloon](../azure-resource-manager/management/overview.md). Als u al een cluster hebt, verwijdert u de `Microsoft.Kusto/clusters` resource uit de onderstaande lijst met resources.
 
 ```json
 {
@@ -159,7 +159,7 @@ In deze sectie leert u hoe u een Data Base kunt koppelen met behulp van een [Azu
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Name of the leader cluster to create."
+                "description": "The resource ID of the leader cluster."
             }
         },
         "defaultPrincipalsModificationKind": {
@@ -217,7 +217,7 @@ U kunt de Azure Resource Manager-sjabloon implementeren met [behulp van de Azure
 
 |**Instelling**  |**Beschrijving**  |
 |---------|---------|
-|Naam van follower-cluster     |  De naam van het opvolg cluster       |
+|Naam van follower-cluster     |  De naam van het opvolg cluster. Als de cluster naam bestaat, verwijdert u de `Microsoft.Kusto/clusters` resource uit de lijst met resources in de ARM-sjabloon. Anders wordt er een nieuw cluster gemaakt.     |
 |Naam van gekoppelde database configuraties    |    De naam van het gekoppelde database configuratie object. De naam moet uniek zijn op het cluster niveau.     |
 |Databasenaam     |      De naam van de data base die moet worden gevolgd. Als u alle data bases van de leider wilt volgen, gebruikt u *.   |
 |Resource-ID van Leader cluster    |   De resource-ID van het leider cluster.      |

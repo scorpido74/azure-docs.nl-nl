@@ -1,0 +1,151 @@
+---
+title: Ondersteuning voor VMware-migratie in Azure Migrate
+description: Meer informatie over ondersteuning voor de migratie van virtuele VMware-machines in Azure Migrate.
+ms.topic: conceptual
+ms.date: 01/07/2020
+ms.openlocfilehash: e33811563063c0f8eb94b9927d07596d51cd45e4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.translationtype: MT
+ms.contentlocale: nl-NL
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030222"
+---
+# <a name="support-matrix-for-vmware-migration"></a>Ondersteunings matrix voor VMware-migratie
+
+In dit artikel vindt u een overzicht van de ondersteunings instellingen en beperkingen voor het migreren van virtuele VMware-machines met [Azure migrate: Server migratie](migrate-services-overview.md#azure-migrate-server-migration-tool) . Als u op zoek bent naar informatie over het beoordelen van virtuele VMware-machines voor migratie naar Azure, raadpleegt u de [ondersteunings matrix voor evaluatie](migrate-support-matrix-vmware.md).
+
+
+## <a name="migration-options"></a>Migratieopties
+
+U kunt virtuele VMware-machines op een aantal manieren migreren:
+
+- Met migratie zonder agent: migreert u Vm's en hoeft u niets te installeren. U implementeert het [Azure migrate-apparaat](migrate-appliance.md) voor migratie zonder agent.
+- Met migratie op basis van een agent: Installeer een agent op de virtuele machine voor replicatie. Voor migratie op basis van een agent moet u een [replicatie apparaat](migrate-replication-appliance.md)implementeren.
+
+Lees [dit artikel](server-migrate-overview.md) als u wilt weten welke methode u wilt gebruiken.
+
+## <a name="migration-limitations"></a>Migratiebeperkingen
+
+- U kunt Maxi maal 10 Vm's tegelijk selecteren voor replicatie. Als u meer machines wilt migreren, repliceert u in groepen van 10.
+- Voor VMware-agentloze migratie kunt u Maxi maal 100 replicaties tegelijk uitvoeren.
+
+## <a name="agentless-vmware-servers"></a>Zonder agent-VMware-servers
+
+**VMware** | **Details**
+--- | ---
+**VMware vCenter Server** | Versie 5,5, 6,0, 6,5 of 6,7.
+**ESXI-host VMware vSphere** | Versie 5,5, 6,0, 6,5 of 6,7.
+**vCenter Server machtigingen** | Migratie zonder agent maakt gebruik van het [migratie toestel](migrate-appliance.md). Het apparaat heeft de volgende machtigingen nodig:<br/><br/> - **Data Store. browse**: bladeren door VM-logboek bestanden toestaan om problemen met het maken en verwijderen van moment opnamen op te lossen.<br/><br/> **Data Store. LowLevelFileOperations**: bewerkingen voor lezen/schrijven/verwijderen/naam wijzigen in de Data Store-browser toestaan om problemen met het maken en verwijderen van moment opnamen op te lossen.<br/><br/> - **VirtualMachine. Configuration. DiskChangeTracking**: het in-of uitschakelen van het bijhouden van wijzigingen van VM-schijven toestaan om gewijzigde gegevens blokken tussen moment opnamen op te halen.<br/><br/> - **VirtualMachine. Configuration. DiskLease**: sta bewerkingen voor de schijf-lease voor een virtuele machine toe om de schijf te lezen met behulp van de VMware vSphere Virtual Disk Development Kit (vddk).<br/><br/> - **VirtualMachine. provisioning. AllowReadOnlyDiskAccess**: het openen van een schijf op een virtuele machine toestaan om de schijf te lezen met behulp van de VdDK.<br/><br/> - **VirtualMachine. provisioning. AllowVirtualMachineDownload**: Hiermee staat u lees bewerkingen toe voor bestanden die zijn gekoppeld aan een virtuele machine, om de logboeken te downloaden en problemen op te lossen.<br/><br/> -* * VirtualMachine. SnapshotManagement. * * *: maken en beheren van VM-moment opnamen voor replicatie toestaan.<br/><br/> - **virtuele machine. interactie. uitschakelen**: Hiermee staat u toe dat de VM wordt uitgeschakeld tijdens de migratie naar Azure.
+
+
+
+## <a name="agentless-vmware-vms"></a>Zonder agents-VMware-Vm's
+
+**Ondersteuning** | **Details**
+--- | ---
+**Ondersteunde besturingssystemen** | [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -en [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -besturings systemen die worden ondersteund door Azure, kunnen worden gemigreerd met migratie zonder agent.
+**Vereiste wijzigingen voor Azure** | Voor sommige Vm's zijn mogelijk wijzigingen vereist zodat ze kunnen worden uitgevoerd in Azure. Azure Migrate worden deze wijzigingen automatisch aangebracht voor de volgende besturings systemen:<br/> - Red Hat Enterprise Linux 6.5+, 7.0+<br/> - CentOS 6.5+, 7.0+</br> -SUSE Linux Enterprise Server 12 SP1 +<br/> -Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS<br/> -Debian 7, 8<br/><br/> Voor andere besturings systemen moet u hand matig aanpassingen maken voordat u de migratie uitvoert. De relevante artikelen bevatten instructies over hoe u dit doet.
+**Linux-opstart** | Als/boot zich op een toegewezen partitie bevindt, moet deze zich op de besturingssysteem schijf bevinden en niet over meerdere schijven worden verspreid.<br/> Als/boot deel uitmaakt van de hoofd partitie (/), moet de partitie '/' zich op de besturingssysteem schijf bevindt en niet over andere schijven beschikken.
+**UEFI-opstart** | Vm's met UEFI-opstart bewerkingen worden niet ondersteund voor migratie.
+**Schijf grootte** | 2 TB besturingssysteem schijf; 4 TB voor gegevens schijven.
+**Schijf limieten** |  Maxi maal 60 schijven per VM.
+**Versleutelde schijven/volumes** | Vm's met versleutelde schijven/volumes worden niet ondersteund voor migratie.
+**Gedeeld schijf cluster** | Wordt niet ondersteund.
+**Onafhankelijke schijven** | Wordt niet ondersteund.
+**RDM/passthrough-schijven** | Als Vm's een RDM-of passthrough-schijf hebben, worden deze schijven niet gerepliceerd naar Azure.
+**NFS** | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd.
+**iSCSI-doelen** | Vm's met iSCSI-doelen worden niet ondersteund voor migratie zonder agent.
+**Multipath IO** | Wordt niet ondersteund.
+**Storage vMotion** | Wordt niet ondersteund. De replicatie wordt niet uitgevoerd als een virtuele machine gebruikmaakt van Storage vMotion.
+**Team kaarten** | Wordt niet ondersteund.
+**Ipconfiguration** | Wordt niet ondersteund.
+**Doel schijf** | Vm's kunnen alleen worden gemigreerd naar Managed disks (standaard HDD, Premium SSD) in Azure.
+**Gelijktijdige replicatie** | 100 Vm's per vCenter Server. Als u meer hebt, migreert u deze in batches van 100.
+
+
+## <a name="agentless-azure-migrate-appliance"></a>Zonder agent-Azure Migrate apparaat 
+Migratie zonder agent maakt gebruik van het Azure Migrate apparaat, geïmplementeerd op een virtuele VMware-machine.
+
+- Meer informatie over de [vereisten voor apparaten](migrate-appliance.md#appliance---vmware) voor VMware.
+- Meer informatie over de [url's](migrate-appliance.md#url-access) waartoe het apparaat toegang moet hebben.
+
+## <a name="agentless-ports"></a>Zonder agents-poorten
+
+**Apparaat** | **Verbinding**
+--- | ---
+Apparaat | Uitgaande verbindingen op poort 443 voor het uploaden van gerepliceerde gegevens naar Azure en om te communiceren met Azure Migrate services die replicatie en migratie coördineren.
+vCenter-server | Binnenkomende verbindingen op poort 443 om het apparaat in staat te stellen de replicatie te organiseren-moment opnamen maken, gegevens kopiëren, moment opnamen van de release
+vSphere/EXSI-host | Inkomend op TCP-poort 902 voor het apparaat om gegevens van moment opnamen te repliceren.
+
+
+## <a name="agent-based-vmware-servers"></a>VMware-servers op basis van een agent
+Deze tabel geeft een overzicht van de evaluatie-ondersteuning en beperkingen voor VMware Virtualization-servers.
+
+**VMware-vereisten** | **Details**
+--- | ---
+**VMware vCenter Server** | Versie 5,5, 6,0, 6,5 of 6,7.
+**ESXI-host VMware vSphere** | Versie 5,5, 6,0, 6,5 of 6,7.
+**vCenter Server machtigingen** | Een alleen-lezen account voor vCenter Server.
+
+## <a name="agent-based-vmware-vms"></a>VMware-Vm's op basis van een agent
+
+De tabel bevat een overzicht van de VMware VM-ondersteuning voor VMware-Vm's die u wilt migreren met behulp van migratie op basis van een agent.
+
+**Ondersteuning** | **Details**
+--- | ---
+**Machine workload** | Azure Migrate ondersteunt de migratie van elke werk belasting (bijvoorbeeld Active Directory, SQL Server, enzovoort) die wordt uitgevoerd op een ondersteunde computer.
+**Besturingssystemen** | Raadpleeg de ondersteuning van het [besturings systeem](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) voor site Recovery voor de meest recente informatie. Azure Migrate biedt dezelfde ondersteuning voor het VM-besturings systeem.
+**Linux-bestands systeem/gast opslag** | Raadpleeg de ondersteuning van het Linux- [Bestands systeem](../site-recovery/vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) voor site Recovery voor de meest recente informatie. Azure Migrate heeft dezelfde ondersteuning voor het Linux-bestands systeem.
+**Netwerk/opslag** | Raadpleeg de vereisten voor het [netwerk](../site-recovery/vmware-physical-azure-support-matrix.md#network) en de [opslag](../site-recovery/vmware-physical-azure-support-matrix.md#storage) voor site Recovery voor de meest recente informatie. Azure Migrate biedt identieke netwerk-en opslag vereisten.
+**Azure-vereisten** | Bekijk de vereisten voor het Azure- [netwerk](../site-recovery/vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), de [opslag](../site-recovery/vmware-physical-azure-support-matrix.md#azure-storage)en de [reken kracht](../site-recovery/vmware-physical-azure-support-matrix.md#azure-compute) voor site Recovery voor de meest recente informatie. Azure Migrate heeft identieke vereisten voor VMware-migratie.
+**Mobility-service** | De Mobility Service-agent moet zijn geïnstalleerd op elke virtuele machine die u wilt migreren.
+**UEFI-opstart** | De gemigreerde VM in azure wordt automatisch geconverteerd naar een BIOS-opstart-VM.<br/><br/> De besturingssysteem schijf moet Maxi maal vier partities hebben en volumes moeten worden geformatteerd met NTFS.
+**Doel schijf** | Vm's kunnen alleen worden gemigreerd naar Managed disks (standaard HDD, Premium SSD) in Azure.
+**Schijf grootte** | 2 TB besturingssysteem schijf; 8 TB voor gegevens schijven.
+**Schijf limieten** |  Maxi maal 63 schijven per VM.
+**Versleutelde schijven/volumes** | Vm's met versleutelde schijven/volumes worden niet ondersteund voor migratie.
+**Gedeeld schijf cluster** | Wordt niet ondersteund.
+**Onafhankelijke schijven** | Ondersteund.
+**Passthrough-schijven** | Ondersteund.
+**NFS** | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd.
+**iSCSI-doelen** | Vm's met iSCSI-doelen worden niet ondersteund voor migratie zonder agent.
+**Multipath IO** | Wordt niet ondersteund.
+**Storage vMotion** | Ondersteund
+**Team kaarten** | Wordt niet ondersteund.
+**Ipconfiguration** | Wordt niet ondersteund.
+
+
+
+
+## <a name="agent-based-replication-appliance"></a>Op agent gebaseerd replicatie apparaat 
+
+Wanneer u het replicatie apparaat instelt met behulp van de eicellen-sjabloon die is opgegeven in de Azure Migrate hub, voert het apparaat Windows Server 2016 uit en voldoet aan de ondersteunings vereisten. Als u het replicatie apparaat hand matig instelt op een fysieke server, moet u ervoor zorgen dat het voldoet aan de vereisten.
+
+- Meer informatie over de [vereisten voor replicatie-apparaten](migrate-replication-appliance.md#appliance-requirements) voor VMware.
+- MySQL moet op het apparaat zijn geïnstalleerd. Meer informatie over [installatie opties](migrate-replication-appliance.md#mysql-installation).
+- Meer informatie over [url's](migrate-replication-appliance.md#url-access) waarvoor het replicatie apparaat toegang moet hebben.
+
+## <a name="azure-vm-requirements"></a>Vereisten voor Azure VM
+
+Alle on-premises Vm's die naar Azure worden gerepliceerd, moeten voldoen aan de vereisten voor de Azure-VM die in deze tabel worden samenvatten. Wanneer Site Recovery een controle op vereisten uitvoert voor replicatie, mislukt de controle als aan sommige vereisten niet wordt voldaan.
+
+**Onderdeel** | **Vereisten** | **Details**
+--- | --- | ---
+Gastbesturingssysteem | Controleert ondersteunde VMware-VM-besturings systemen voor migratie.<br/> U kunt elke werk belasting migreren die wordt uitgevoerd op een ondersteund besturings systeem. | De controle is mislukt als dit niet wordt ondersteund.
+Architectuur van gast besturingssysteem | 64-bits. | De controle is mislukt als dit niet wordt ondersteund.
+Schijf grootte van het besturings systeem | Maxi maal 2.048 GB. | De controle is mislukt als dit niet wordt ondersteund.
+Aantal besturingssysteem schijven | 1 | De controle is mislukt als dit niet wordt ondersteund.
+Aantal gegevens schijven | 64 of minder. | De controle is mislukt als dit niet wordt ondersteund.
+Grootte van de gegevens schijf | Maxi maal 4.095 GB | De controle is mislukt als dit niet wordt ondersteund.
+Netwerkadapters | Meerdere adapters worden ondersteund. |
+Gedeelde VHD | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
+FC-schijf | Wordt niet ondersteund. | De controle is mislukt als dit niet wordt ondersteund.
+BitLocker | Wordt niet ondersteund. | BitLocker moet worden uitgeschakeld voordat u replicatie voor een machine inschakelt.
+VM-naam | Van 1 tot 63 tekens.<br/> Alleen letters, cijfers en afbreekstreepjes.<br/><br/> De naam van de computer moet beginnen en eindigen met een letter of cijfer. |  Werk de waarde in de computer eigenschappen in Site Recovery bij.
+Verbinding maken na migratie-Windows | Verbinding maken met virtuele Azure-machines na de migratie:<br/> -Voordat de migratie RDP op de on-premises VM maakt. Zorg dat TCP- en UDP-regels zijn toegevoegd voor het profiel **Openbaar** en dat RDP is toegestaan in **Windows Firewall** > **Toegestane apps** voor alle profielen.<br/> Schakel voor site-naar-site-VPN-toegang RDP in en sta RDP toe in **Windows Firewall** -> **toegestane apps en functies** voor **domein en particuliere** netwerken. Controleer bovendien of het SAN-beleid van het besturings systeem is ingesteld op **OnlineAll**. [Meer informatie](prepare-for-migration.md). |
+Verbinding maken na migratie-Linux | Verbinding maken met virtuele Azure-machines na de migratie met SSH:<br/> Controleer voordat u de migratie op de on-premises computer controleert of de Secure shell-service is ingesteld op Start en of de firewall regels een SSH-verbinding toestaan.<br/> Nadat de failover is uitgevoerd op de Azure-VM, moet u binnenkomende verbindingen met de SSH-poort toestaan voor de regels voor de netwerk beveiligings groep op de virtuele machine die is mislukt en voor het Azure-subnet waarmee deze is verbonden. Voeg bovendien een openbaar IP-adres voor de virtuele machine toe. |  
+
+
+## <a name="next-steps"></a>Volgende stappen
+
+[Selecteer](server-migrate-overview.md) een optie voor VMware-migratie.

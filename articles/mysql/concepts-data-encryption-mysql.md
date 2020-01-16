@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 12e9ab9066449e8928d937d9c3f9f7f1522b6c60
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 7c54b3010b42d56ffa9b701b76c7aef51095404c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942098"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028646"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-customer-managed-key"></a>Gegevens versleuteling Azure Database for MySQL met door de klant beheerde sleutel
 
@@ -41,7 +41,7 @@ Gegevens versleuteling voor Azure Database for MySQL biedt de volgende voor dele
 
 Sleutel versleutelings **sleutel (KEK)** : een versleutelings sleutel die wordt gebruikt om de gegevens versleutelings sleutels te versleutelen. Gebruik van een versleutelings sleutel die nooit Key Vault verlaat, zodat de gegevens versleutelings sleutels zelf kunnen worden versleuteld en beheerd. De entiteit die toegang heeft tot de KEK kan afwijken van de entiteit waarvoor de DEK is vereist. Omdat de KEK is vereist voor het ontsleutelen van de DEKs, is de KEK een specifiek punt waarmee DEKs effectief kan worden verwijderd door het verwijderen van de KEK.
 
-De gegevens versleutelings sleutels, versleuteld met de sleutel versleutelings sleutels, worden afzonderlijk opgeslagen en alleen een entiteit met toegang tot de sleutel coderings sleutel kan deze versleutelings sleutels ontsleutelen. Zie [beveiliging in versleuteling op rest](../security/fundamentals/encryption-atrest.md)voor meer informatie.
+De gegevens versleutelings sleutels (DEK), versleuteld met de sleutel versleutelings sleutels, worden afzonderlijk opgeslagen en alleen een entiteit met toegang tot de sleutel coderings sleutel kan deze versleutelings sleutels ontsleutelen. Zie [beveiliging in versleuteling op rest](../security/fundamentals/encryption-atrest.md)voor meer informatie.
 
 ## <a name="how-data-encryption-with-customer-managed-key-works"></a>Hoe gegevens versleuteling met door de klant beheerde sleutel werkt
 
@@ -50,8 +50,8 @@ De gegevens versleutelings sleutels, versleuteld met de sleutel versleutelings s
 Een MySQL-server kan alleen door de klant beheerde sleutels gebruiken die zijn opgeslagen in azure voor versleuteling van de DEK, maar een Key Vault beheerder moet de volgende toegangs rechten geven voor de server met behulp van de unieke identiteit:
 
 * **Get** -voor het ophalen van het open bare onderdeel en de eigenschappen van de sleutel in de Key Vault
-* **wrapKey** : om te kunnen beveiligen (versleutelen) dek
-* **sleutel uitpakken** : voor het opheffen van de beveiliging (ontsleutelen) dek
+* **wrapKey** : dek kunnen worden versleuteld
+* **sleutel uitpakken** : dek kunnen ontsleutelen
 
 Key Vault beheerder kan [logboek registratie van Key Vault controle gebeurtenissen ook inschakelen](../azure-monitor/insights/azure-key-vault.md), zodat ze later kunnen worden gecontroleerd.
 

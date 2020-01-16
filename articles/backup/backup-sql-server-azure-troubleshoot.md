@@ -3,12 +3,12 @@ title: Problemen met SQL Server database back-up oplossen
 description: Informatie over het oplossen van back-ups van SQL Server-data bases die worden uitgevoerd op virtuele machines van Azure met Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: d49843e8fd96df29a7359ec639e42d312ad584e2
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 57630749b53224032c763481d12e33366274f13f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659250"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978772"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problemen met SQL Server database back-up oplossen met behulp van Azure Backup
 
@@ -52,7 +52,7 @@ Als de SQL-VM in de nieuwe kluis moet worden geregistreerd, moet de registratie 
 | Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
 | Deze SQL-database biedt geen ondersteuning voor het gevraagde type back-up. | Deze gebeurtenis treedt op wanneer het herstel model van de data base het aangevraagde back-uptype niet toestaat. De fout kan in de volgende situaties optreden: <br/><ul><li>Voor een Data Base die gebruikmaakt van een eenvoudig herstel model is logboek back-up niet toegestaan.</li><li>Differentiële en logboek back-ups zijn niet toegestaan voor een hoofd database.</li></ul>Zie de documentatie over [SQL Server herstel modellen](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) voor meer informatie. | Als de back-up van het logboek mislukt voor de data base in het eenvoudige herstel model, probeert u een van de volgende opties:<ul><li>Als de data base zich in de modus voor eenvoudig herstel bevindt, schakelt u logboek back-ups uit.</li><li>Gebruik de [SQL Server documentatie](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server) om het herstel model van de data base te wijzigen in volledig of bulksgewijs vastgelegd. </li><li> Als u het herstel model niet wilt wijzigen en u een standaard beleid hebt voor het maken van back-ups van meerdere data bases die niet kunnen worden gewijzigd, negeert u de fout. Uw volledige en differentiële back-ups worden per schema uitgevoerd. De back-ups van het logboek worden overgeslagen, wat in dit geval wordt verwacht.</li></ul>Als het een hoofd database is en u differentiële of logboek back-up hebt geconfigureerd, gebruikt u een van de volgende stappen:<ul><li>Gebruik de portal om het schema voor back-upbeleid voor de hoofd database te wijzigen in volledig.</li><li>Als u een standaard beleid hebt voor het maken van back-ups van meerdere data bases die niet kunnen worden gewijzigd, kunt u de fout negeren. De volledige back-up wordt per schema uitgevoerd. Differentiële of logboek back-ups worden niet uitgevoerd, wat in dit geval wordt verwacht.</li></ul> |
-| De bewerking is geannuleerd omdat er al een conflicterende bewerking wordt uitgevoerd op dezelfde data base. | Zie het [blog bericht over de beperkingen voor back-ups en herstel](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database) die gelijktijdig worden uitgevoerd.| [Gebruik SQL Server Management Studio (SSMS) om de back-uptaken te bewaken](manage-monitor-sql-database-backup.md). Als de conflicterende bewerking is mislukt, start u de bewerking opnieuw.|
+| De bewerking is geannuleerd omdat er al een conflicterende bewerking wordt uitgevoerd op dezelfde data base. | Zie het [blog bericht over de beperkingen voor back-ups en herstel](https://deep.data.blog/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database/) die gelijktijdig worden uitgevoerd.| [Gebruik SQL Server Management Studio (SSMS) om de back-uptaken te bewaken](manage-monitor-sql-database-backup.md). Als de conflicterende bewerking is mislukt, start u de bewerking opnieuw.|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
 

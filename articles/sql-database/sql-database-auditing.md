@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: aeca4499a41adf37ba78452f1cf76047dd8c6592
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0994ebe451bddea371f375e4d39172833df4d88a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931931"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028526"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Aan de slag met SQL Database Auditing
 
@@ -246,6 +246,14 @@ In productie zult u uw opslag sleutels waarschijnlijk periodiek vernieuwen. Wann
 - Wanneer u AAD-verificatie gebruikt, worden records met mislukte aanmeldingen *niet* weer gegeven in het SQL-controle logboek. Als u mislukte aanmeldings controle records wilt weer geven, gaat u naar de [Azure Active Directory-Portal]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), waarin de details van deze gebeurtenissen worden vastgelegd.
 
 - Azure SQL Database controle is geoptimaliseerd voor Beschik baarheid van & prestaties. Tijdens een zeer hoge activiteit Azure SQL Database bewerkingen door voeren en kunnen sommige gecontroleerde gebeurtenissen niet worden vastgelegd.
+
+- Zie [toestaan dat beveiligde toevoeg-blobs worden geschreven](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage#allow-protected-append-blobs-writes)voor het configureren van onveranderbare controles voor opslag accounts. Houd er rekening mee dat de container naam voor controle is **sqldbauditlogs**.
+
+> [!IMPORTANT] 
+>  De instelling schrijven beveiligde toevoeg-blobs toestaan onder Bewaar periode is momenteel beschikbaar en alleen zichtbaar in de volgende regio's:
+> - VS - oost
+> - VS - zuid-centraal
+> - VS - west 2
 
 
 ## <a id="subheading-7"></a>Beheer van Azure SQL Server en data bases controleren met behulp van Azure PowerShell

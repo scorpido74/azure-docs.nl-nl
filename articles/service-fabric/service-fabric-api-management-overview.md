@@ -5,18 +5,18 @@ author: vturecek
 ms.topic: conceptual
 ms.date: 06/22/2017
 ms.author: vturecek
-ms.openlocfilehash: 656bb6d400461c93540b77d871502b738c679f47
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2a331715d4e4538cfdda8d958ff549a81b627b79
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378107"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028545"
 ---
 # <a name="service-fabric-with-azure-api-management-overview"></a>Overzicht van Service Fabric met Azure API Management
 
 Cloudtoepassingen hebben meestal een gateway in de front-end nodig om een centraal ingangspunt te bieden voor gebruikers, apparaten of andere toepassingen. In Service Fabric kan een gateway een stateless service zoals een [ASP.net core toepassing](service-fabric-reliable-services-communication-aspnetcore.md), of een andere service die is ontworpen voor het binnenkomen van verkeer, zoals [Event hubs](https://docs.microsoft.com/azure/event-hubs/), [IOT hub](https://docs.microsoft.com/azure/iot-hub/)of [Azure API Management](https://docs.microsoft.com/azure/api-management/).
 
-Dit artikel is een inleiding tot het gebruik van Azure API Management als een gateway voor uw Service Fabric toepassingen. API Management kan rechtstreeks worden geïntegreerd met Service Fabric, zodat u Api's kunt publiceren met een uitgebreide set routerings regels voor uw back-end-Service Fabric Services. 
+Dit artikel is een inleiding tot het gebruik van Azure API Management als een gateway voor uw Service Fabric toepassingen. API Management kan rechtstreeks worden geïntegreerd met Service Fabric, zodat u Api's kunt publiceren met een uitgebreide set routerings regels voor uw back-end-Service Fabric Services.
 
 ## <a name="availability"></a>Beschikbaarheid
 
@@ -47,7 +47,8 @@ Azure API Management kan worden gebruikt met elke combi natie van stateless Serv
 
 In het eenvoudigste geval wordt verkeer doorgestuurd naar een stateless service-exemplaar. Hiervoor bevat een API Management-bewerking een beleid voor inkomende verwerking met een Service Fabric back-end dat is gekoppeld aan een specifiek stateless service exemplaar in Service Fabric back-end. Aanvragen die worden verzonden naar deze service, worden verzonden naar een wille keurig exemplaar van de service.
 
-#### <a name="example"></a>Voorbeeld
+**Voorbeeld**
+
 In het volgende scenario bevat een Service Fabric toepassing een stateless service met de naam `fabric:/app/fooservice`, waarmee een interne HTTP-API wordt weer gegeven. De naam van het service-exemplaar is goed bekend en kan rechtstreeks in het API Management beleid voor inkomende verwerking worden vastgelegd. 
 
 ![Overzicht van Service Fabric met Azure API Management topologie][sf-apim-static-stateless]
@@ -56,7 +57,7 @@ In het volgende scenario bevat een Service Fabric toepassing een stateless servi
 
 Net als bij het stateless service scenario kan verkeer worden doorgestuurd naar een stateful service-exemplaar. In dit geval bevat een API Management-bewerking een beleid voor inkomende verwerking met een Service Fabric back-end waarmee een aanvraag wordt toegewezen aan een specifieke partitie van een specifiek *stateful* service-exemplaar. De partitie waarmee elke aanvraag wordt toegewezen, wordt via een lambda-methode berekend met behulp van een invoer van de binnenkomende HTTP-aanvraag, zoals een waarde in het URL-pad. Het beleid kan zodanig worden geconfigureerd dat alleen aanvragen naar de primaire replica worden verzonden of naar een wille keurige replica voor lees bewerkingen.
 
-#### <a name="example"></a>Voorbeeld
+**Voorbeeld**
 
 In het volgende scenario bevat een Service Fabric toepassing een gepartitioneerd stateful service met de naam `fabric:/app/userservice` die een interne HTTP-API beschikbaar maakt. De naam van het service-exemplaar is goed bekend en kan rechtstreeks in het API Management beleid voor inkomende verwerking worden vastgelegd.  
 
@@ -66,14 +67,14 @@ De service is gepartitioneerd met behulp van het Int64-partitie schema met twee 
 
 ## <a name="send-traffic-to-multiple-stateless-services"></a>Verkeer verzenden naar meerdere stateless Services
 
-In meer geavanceerde scenario's kunt u een API Management bewerking definiëren waarmee aanvragen worden toegewezen aan meer dan één service-exemplaar. In dit geval bevat elke bewerking een beleid waarmee aanvragen worden toegewezen aan een specifiek service-exemplaar op basis van waarden uit de binnenkomende HTTP-aanvraag, zoals het URL-pad of de query reeks, en in het geval van stateful Services, een partitie binnen het service-exemplaar. 
+In meer geavanceerde scenario's kunt u een API Management bewerking definiëren waarmee aanvragen worden toegewezen aan meer dan één service-exemplaar. In dit geval bevat elke bewerking een beleid waarmee aanvragen worden toegewezen aan een specifiek service-exemplaar op basis van waarden uit de binnenkomende HTTP-aanvraag, zoals het URL-pad of de query reeks, en in het geval van stateful Services, een partitie binnen het service-exemplaar.
 
 Hiervoor bevat een API Management-bewerking een beleid voor inkomende verwerking met een Service Fabric back-end dat is gekoppeld aan een stateless service-exemplaar in Service Fabric back-end op basis van waarden die zijn opgehaald uit de binnenkomende HTTP-aanvraag. Aanvragen voor een service worden verzonden naar een wille keurig exemplaar van de service.
 
-#### <a name="example"></a>Voorbeeld
+**Voorbeeld**
 
 In dit voor beeld wordt een nieuw stateless service exemplaar gemaakt voor elke gebruiker van een toepassing met een dynamisch gegenereerde naam met behulp van de volgende formule:
- 
+
 - `fabric:/app/users/<username>`
 
   Elke service heeft een unieke naam, maar de namen zijn niet vooraf bekend, omdat de services worden gemaakt in reactie op de invoer van gebruikers of beheerders en dus niet kunnen worden vastgelegd in APIM-beleid of routerings regels. In plaats daarvan wordt de naam van de service waarnaar een aanvraag wordt verzonden, gegenereerd in de definitie van het back-end-beleid uit de `name` waarde die is ingesteld in het URL-verzoek-pad. Bijvoorbeeld:
@@ -89,10 +90,10 @@ Net als bij het stateless service-voor beeld kan een API Management bewerking aa
 
 Hiervoor bevat een API Management-bewerking een beleid voor inkomende verwerking met een Service Fabric back-end dat is gekoppeld aan een stateful service-exemplaar in Service Fabric back-end op basis van waarden die zijn opgehaald uit de binnenkomende HTTP-aanvraag. Naast het toewijzen van een aanvraag aan een specifiek service-exemplaar, kan de aanvraag ook worden toegewezen aan een specifieke partitie binnen het service-exemplaar en eventueel aan de primaire replica of een wille keurige secundaire replica binnen de partitie.
 
-#### <a name="example"></a>Voorbeeld
+**Voorbeeld**
 
 In dit voor beeld wordt een nieuw stateful service exemplaar gemaakt voor elke gebruiker van de toepassing met een dynamisch gegenereerde naam met behulp van de volgende formule:
- 
+
 - `fabric:/app/users/<username>`
 
   Elke service heeft een unieke naam, maar de namen zijn niet vooraf bekend, omdat de services worden gemaakt in reactie op de invoer van gebruikers of beheerders en dus niet kunnen worden vastgelegd in APIM-beleid of routerings regels. In plaats daarvan wordt de naam van de service waarnaar een aanvraag wordt verzonden, gegenereerd in de definitie van het back-end-beleid uit de `name` waarde het pad van de URL-aanvraag. Bijvoorbeeld:

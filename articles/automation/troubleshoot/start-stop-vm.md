@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: eeaf44b9abe5c8f0343325454f599d282be6c743
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aa71e1e6b58906953dfa22d08405c05c10c83242
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769843"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966686"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Problemen oplossen met het starten/stoppen van Vm's buiten kantoor uren
 
@@ -67,13 +67,13 @@ Implementaties kunnen mislukken vanwege een van de volgende redenen:
 Raadpleeg de volgende lijst voor mogelijke oplossingen voor uw probleem of voor het zoeken naar:
 
 1. Automation-accounts moeten uniek zijn binnen een Azure-regio, zelfs als ze zich in verschillende resource groepen bevinden. Controleer uw bestaande Automation-accounts in de doel regio.
-2. Een bestaand beleid voor komt dat een resource die vereist is voor het implementeren van de oplossing VM starten/stoppen. Ga naar de beleids toewijzingen in de Azure Portal en controleer of u een beleids toewijzing hebt die de implementatie van deze resource niet toestaat. Zie [RequestDisallowedByPolicy](../../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)voor meer informatie over dit onderwerp.
+2. Een bestaand beleid voor komt dat een resource die vereist is voor het implementeren van de oplossing VM starten/stoppen. Ga naar de beleids toewijzingen in de Azure Portal en controleer of u een beleids toewijzing hebt die de implementatie van deze resource niet toestaat. Zie [RequestDisallowedByPolicy](../../azure-resource-manager/templates/error-policy-requestdisallowedbypolicy.md)voor meer informatie over dit onderwerp.
 3. Als u de oplossing voor het starten/stoppen van de VM wilt implementeren, moet uw abonnement worden geregistreerd bij de volgende Azure-resource-naam ruimten:
     * `Microsoft.OperationsManagement`
     * `Microsoft.Insights`
     * `Microsoft.Automation`
 
-   Zie [fouten voor de registratie van de resource provider oplossen](../../azure-resource-manager/resource-manager-register-provider-errors.md) voor meer informatie over fouten bij het registreren van providers.
+   Zie [fouten voor de registratie van de resource provider oplossen](../../azure-resource-manager/templates/error-register-resource-provider.md) voor meer informatie over fouten bij het registreren van providers.
 4. Als u een vergren deling op uw Log Analytics-werk ruimte hebt, gaat u naar uw werk ruimte in de Azure Portal en verwijdert u de vergren delingen van de resource.
 5. Als de bovenstaande oplossingen het probleem niet oplossen, volgt u de instructies onder [Update de oplossing](../automation-solution-vm-management.md#update-the-solution) om de oplossing start/stop opnieuw te implementeren.
 

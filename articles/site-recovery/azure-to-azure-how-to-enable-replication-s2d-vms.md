@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 465c0ddd91e81bb597a996637fdc2147e90464de
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 9f394fa8d618c97d74a47ff6e42a002f177cf7d9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942217"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973654"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Virtuele Azure-machines met Opslagruimten Direct repliceren naar een andere regio
 
@@ -30,7 +30,7 @@ Onder diagram ziet u een Azure VM-failovercluster met twee knoop punten die gebr
 
 ![storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacedirect.png)
 
- 
+
 - Twee virtuele machines van Azure in een Windows-failovercluster en elke virtuele machine hebben twee of meer gegevens schijven.
 - S2D synchroniseert de gegevens op de gegevens schijf en geeft de gesynchroniseerde opslag weer als een opslag groep.
 - De opslag groep presenteert een CSV (cluster Shared volume) voor het failovercluster.
@@ -51,7 +51,7 @@ Onder diagram ziet u een Azure VM-failovercluster met twee knoop punten die gebr
 
    ![storagespacesdirect-beveiliging](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
 
-2. Ga naar gerepliceerde items en u kunt de status van de virtuele machine bekijken. 
+2. Ga naar gerepliceerde items en u kunt de status van de virtuele machine bekijken.
 3. De virtuele machines worden beveiligd en worden ook weer gegeven als onderdeel van de multi-VM-consistentie groep.
 
    ![storagespacesdirect-beveiliging](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)

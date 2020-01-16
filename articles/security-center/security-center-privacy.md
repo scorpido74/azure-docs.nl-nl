@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 45b7b419277d338d70cf285838103f97d4eb5c3a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 6edea1d0de53e2dc9f764de26209dc1f3110556e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749678"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978601"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Gebruikers gegevens beheren in Azure Security Center
 Dit artikel bevat informatie over hoe u de gebruikers gegevens in Azure Security Center kunt beheren. Het beheren van gebruikers gegevens omvat de mogelijkheid om gegevens te openen, te verwijderen of te exporteren.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-Een Security Center gebruiker de rol van lezer, eigenaar, Inzender of account beheerder heeft toegewezen, heeft toegang tot klant gegevens in het hulp programma. Zie voor meer informatie over de rol account beheerder [ingebouwde rollen voor op rollen gebaseerd toegangs beheer voor Azure](../role-based-access-control/built-in-roles.md) voor meer informatie over de rollen lezer, eigenaar en Inzender. Zie [Azure-abonnements beheerders](../billing/billing-add-change-azure-subscription-administrator.md).
+Een Security Center gebruiker de rol van lezer, eigenaar, Inzender of account beheerder heeft toegewezen, heeft toegang tot klant gegevens in het hulp programma. Zie voor meer informatie over de rol account beheerder [ingebouwde rollen voor op rollen gebaseerd toegangs beheer voor Azure](../role-based-access-control/built-in-roles.md) voor meer informatie over de rollen lezer, eigenaar en Inzender. Zie [Azure-abonnements beheerders](../cost-management-billing/manage/add-change-subscription-administrator.md).
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Persoonsgegevens zoeken en identificeren
 Een Security Center gebruiker kan hun persoonlijke gegevens bekijken via de Azure Portal. Met Security Center worden alleen beveiligings gegevens van contact personen opgeslagen, zoals e-mail adressen en telefoon nummers. Zie voor meer informatie [contact gegevens voor beveiliging opgeven in azure Security Center](security-center-provide-security-contact-details.md).

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: d62704feaaa46f6780c302f5564b112dd1badbc1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b416b38cfac48260f3375696caa2ecabcb4d57a9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353238"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973916"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Vijf stappen voor het beveiligen van uw identiteits infrastructuur
 
@@ -47,11 +47,11 @@ De aanbevelingen in dit document zijn afgestemd op de [identiteits veilige Score
 
 Voordat u aan deze controle lijst begint, moet u ervoor zorgen dat u niet meer in het gedrang komt wanneer u deze controle lijst leest. U moet eerst uw bevoorrechte accounts beveiligen.
 
-Aanvallers die het beheer van geprivilegieerde accounts krijgen, kunnen grote schade toebrengen, dus het is essentieel om deze accounts eerst te beveiligen. [Azure multi-factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) inschakelen en vereisen voor alle beheerders in uw organisatie met behulp van [Azure AD-beveiligings instellingen](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md) of [voorwaardelijke toegang](../../active-directory/conditional-access/plan-conditional-access.md). Als u MFA nog niet hebt geïmplementeerd, doet u dat nu. Dat is belang rijk.
+Aanvallers die het beheer van geprivilegieerde accounts krijgen, kunnen grote schade toebrengen, dus het is essentieel om deze accounts eerst te beveiligen. [Azure multi-factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) inschakelen en vereisen voor alle beheerders in uw organisatie met behulp van [Azure AD-beveiligings instellingen](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) of [voorwaardelijke toegang](../../active-directory/conditional-access/plan-conditional-access.md). Als u MFA nog niet hebt geïmplementeerd, doet u dat nu. Dat is belang rijk.
 
 Alle sets? Laten we aan de slag met de controle lijst.
 
-## <a name="step-1---strengthen-your-credentials"></a>Stap 1: uw referenties versterken 
+## <a name="step-1---strengthen-your-credentials"></a>Stap 1: uw referenties versterken
 
 De meeste beveiligings schendingen van een onderneming zijn afkomstig van een account met een van de verschillende methoden, zoals wachtwoord spray, het opnieuw afspelen of het afwijzen van een aanval. Meer informatie over deze aanvallen vindt u in deze video (45 min):
 > [!VIDEO https://www.youtube.com/embed/uy0j1_t5Hd4]
@@ -60,7 +60,7 @@ De meeste beveiligings schendingen van een onderneming zijn afkomstig van een ac
 
 Gezien de frequentie van wacht woorden die worden geschat, vergoedd, gestolen met malware of hergebruikt, is het belang rijk om het wacht woord te herstellen met een vorm van sterke referentie – meer informatie over [Azure multi-factor Authentication](../../active-directory/authentication/multi-factor-authentication.md).
 
-Als u het basis niveau van identiteits beveiliging eenvoudig wilt inschakelen, kunt u de activering met één klik gebruiken met de [standaard instellingen van Azure AD](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md). Met de standaard instellingen voor beveiliging wordt Azure MFA afgedwongen voor alle gebruikers in een Tenant en worden aanmeldingen van verouderde protocollen Tenant-breed geblokkeerd.
+Als u het basis niveau van identiteits beveiliging eenvoudig wilt inschakelen, kunt u de activering met één klik gebruiken met de [standaard instellingen van Azure AD](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md). Met de standaard instellingen voor beveiliging wordt Azure MFA afgedwongen voor alle gebruikers in een Tenant en worden aanmeldingen van verouderde protocollen Tenant-breed geblokkeerd.
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>Start verbieden doorgaans aangevallen wacht woorden en schakel de traditionele complexiteit en de verval regels uit.
 
@@ -86,7 +86,7 @@ Als uw organisatie gebruikmaakt van een hybride identiteits oplossing met Pass-T
 Meer informatie over hoe [wachtwoord-hash-synchronisatie](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) werkt.
 
 > [!NOTE]
-> Als u wacht woord-hash-synchronisatie inschakelt en Azure AD Domain Services gebruikt 256, worden de hashes en optioneel NTLM-hashes (RC4, no zout) ook versleuteld en gesynchroniseerd met Azure AD. 
+> Als u wacht woord-hash-synchronisatie inschakelt en Azure AD Domain Services gebruikt 256, worden de hashes en optioneel NTLM-hashes (RC4, no zout) ook versleuteld en gesynchroniseerd met Azure AD.
 
 ### <a name="implement-ad-fs-extranet-smart-lockout"></a>AD FS extranet-smartcard vergrendeling implementeren
 
@@ -106,7 +106,7 @@ Apps die gebruikmaken van hun eigen verouderde methoden om te verifiëren met Az
 
 1. [Verouderde verificatie blok keren als u AD FS gebruikt](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
 2. Stel [share point online en Exchange Online in voor gebruik van moderne verificatie](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md).
-3. Als u Azure AD Premium hebt, gebruikt u [beleid voor voorwaardelijke toegang](../../active-directory/conditional-access/conditions.md) om verouderde verificatie te blok keren, anders de [standaard instellingen voor Azure AD-beveiliging](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md)te gebruiken.
+3. Als u Azure AD Premium hebt, gebruikt u [beleid voor voorwaardelijke toegang](../../active-directory/conditional-access/conditions.md) om verouderde verificatie te blok keren, anders de [standaard instellingen voor Azure AD-beveiliging](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md)te gebruiken.
 
 ### <a name="block-invalid-authentication-entry-points"></a>Ongeldige invoer punten voor verificatie blok keren
 
@@ -123,7 +123,7 @@ Zorg ervoor dat gebruikers goed keuring van de beheerder kunnen aanvragen voor n
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management implementeren
 
-Een andere impact van ' veronderstelde schending ' is de nood zaak om de kans dat een aangetast account kan worden gebruikt met een geprivilegieerde rol te minimaliseren. 
+Een andere impact van ' veronderstelde schending ' is de nood zaak om de kans dat een aangetast account kan worden gebruikt met een geprivilegieerde rol te minimaliseren.
 
 [Azure AD privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md) helpt u bij het minimaliseren van de account bevoegdheden door het volgende te helpen:
 
@@ -164,7 +164,7 @@ Microsoft Azure Services en-functies bieden u Configureer bare opties voor bevei
 
 [Bewaking AD FS met Azure AD Connect Health](../../active-directory/hybrid/how-to-connect-health-adfs.md) biedt u meer inzicht in potentiële problemen en zicht baarheid van aanvallen op uw AD FS-infra structuur. Azure AD Connect Health biedt waarschuwingen met details, oplossings stappen en koppelingen naar gerelateerde documentatie. gebruiks analyse voor diverse metrische gegevens die betrekking hebben op verificatie verkeer; prestaties bewaken en rapporteren.
 
-![Azure AD Connect Health](./media/steps-secure-identity/azure-ad-sec-steps4.png)
+![Azure AD Connect Health (Engelstalig)](./media/steps-secure-identity/azure-ad-sec-steps4.png)
 
 ### <a name="monitor-azure-ad-identity-protection-events"></a>Azure AD Identity Protection gebeurtenissen bewaken
 
@@ -172,13 +172,13 @@ Microsoft Azure Services en-functies bieden u Configureer bare opties voor bevei
 
 Azure AD Identity Protection biedt twee belang rijke rapporten die u dagelijks moet bewaken:
 1. Met Risk ante aanmeldings rapporten worden aanmeldings activiteiten voor gebruikers gesurfacet die u moet onderzoeken; de rechtmatige eigenaar heeft de aanmelding mogelijk niet uitgevoerd.
-2. Risk ante gebruikers rapporten ondervinden gebruikers accounts die mogelijk zijn aangetast, zoals gelekte referenties of de gebruiker die zich heeft aangemeld vanaf verschillende locaties waardoor een reis gebeurtenis wordt veroorzaakt. 
+2. Risk ante gebruikers rapporten ondervinden gebruikers accounts die mogelijk zijn aangetast, zoals gelekte referenties of de gebruiker die zich heeft aangemeld vanaf verschillende locaties waardoor een reis gebeurtenis wordt veroorzaakt.
 
 ![Gebruikers voor wie wordt aangegeven dat ze risico lopen](./media/steps-secure-identity/azure-ad-sec-steps3.png)
 
 ### <a name="audit-apps-and-consented-permissions"></a>Apps en toegestuurde machtigingen controleren
 
-Gebruikers kunnen zich leiden tot het navigeren naar een gemanipuleerde website of apps die toegang krijgen tot hun profiel gegevens en gebruikers gegevens, zoals hun e-mail adres. Een kwaadwillende actor kan gebruikmaken van de toegestuurde machtigingen die zijn ontvangen om de inhoud van hun postvak te versleutelen en een Ransom te vragen om uw postvak gegevens opnieuw te verkrijgen. Beheerders moeten de machtigingen van gebruikers [controleren en controleren](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) of de mogelijkheid van gebruikers om toestemming te geven, uitschakelen. 
+Gebruikers kunnen zich leiden tot het navigeren naar een gemanipuleerde website of apps die toegang krijgen tot hun profiel gegevens en gebruikers gegevens, zoals hun e-mail adres. Een kwaadwillende actor kan gebruikmaken van de toegestuurde machtigingen die zijn ontvangen om de inhoud van hun postvak te versleutelen en een Ransom te vragen om uw postvak gegevens opnieuw te verkrijgen. Beheerders moeten de machtigingen van gebruikers [controleren en controleren](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) of de mogelijkheid van gebruikers om toestemming te geven, uitschakelen.
 
 Naast het controleren van de machtigingen die door gebruikers worden gegeven, kan het u helpen om met name [Risk ante of ongewenste OAuth-toepassingen te zoeken](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth). Dit is een functie die beschikbaar is voor Premium-omgevingen.
 

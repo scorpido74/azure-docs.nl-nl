@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6215884a5f11e92d3a6ab61d86c338c30c090ee6
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 275b3bd25f931b73e8a378433899ef9ade4d47c1
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769979"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028272"
 ---
 # <a name="configuration-based-on-stig"></a>Configuration op basis van STIG
 
@@ -37,7 +37,7 @@ Veel organisaties moeten [uitzonde ringen documenteren](https://github.com/micro
 PowerSTIG lost het probleem op door [samengestelde resources](https://github.com/microsoft/powerstig#powerstigdsc) op te geven voor elk gebied van de configuratie, in plaats van te proberen het hele bereik met instellingen in één groot bestand op te lossen.
 
 Zodra de configuraties zijn gegenereerd, kunt u de DSC- [configuratie scripts](/powershell/scripting/dsc/configurations/configurations) gebruiken om MOF-bestanden te genereren en [de MOF-bestanden uploaden naar Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Registreer uw servers vervolgens [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) of [in azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) om configuraties te halen.
+Registreer uw servers vervolgens [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) of [in azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) om configuraties te halen.
 
 Als u PowerSTIG wilt uitproberen, gaat u naar de [PowerShell Gallery](https://www.powershellgallery.com) en downloadt u de oplossing of klikt u op project site om de [documentatie](https://github.com/microsoft/powerstig)weer te geven.
 

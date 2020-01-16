@@ -10,12 +10,12 @@ ms.author: migreene
 ms.date: 08/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 85c13a7175bca015ab24c8b09500b47e3ea846ed
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c060462a84b197cdd0aec1beecc0b4d4807feb49
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231656"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030109"
 ---
 # <a name="convert-configurations-to-composite-resources"></a>Configuraties converteren naar samengestelde resources
 
@@ -50,7 +50,7 @@ De cmdlet laadt de inhoud van uw configuratie, haalt de lijst met para meters op
 Zodra u een module hebt gegenereerd, kunt u de versie verhogen en release opmerkingen toevoegen telkens wanneer u wijzigingen aanbrengt en deze naar uw eigen [PowerShellGet-opslag plaats](https://kevinmarquette.github.io/2018-03-03-Powershell-Using-a-NuGet-server-for-a-PSRepository/?utm_source=blog&utm_medium=blog&utm_content=psscriptrepo)publiceert.
 
 Wanneer u een samengestelde resource module hebt gemaakt met uw configuratie (of meerdere configuraties), kunt u deze gebruiken in de [ontwerp ervaring](/azure/automation/compose-configurationwithcompositeresources) in azure, of deze toevoegen aan [DSC-configuratie scripts](/powershell/scripting/dsc/configurations/configurations) voor het genereren van MOF-bestanden en [het uploaden van de MOF-bestanden naar Azure Automation](/azure/automation/tutorial-configure-servers-desired-state#create-and-upload-a-configuration-to-azure-automation).
-Registreer uw servers vervolgens [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azureaws) of [in azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) om configuraties te halen.
+Registreer uw servers vervolgens [on-premises](/azure/automation/automation-dsc-onboarding#physicalvirtual-windows-machines-on-premises-or-in-a-cloud-other-than-azure-including-aws-ec2-instances) of [in azure](/azure/automation/automation-dsc-onboarding#azure-virtual-machines) om configuraties te halen.
 De meest recente update van het project heeft ook [runbooks](https://www.powershellgallery.com/packages?q=DscGallerySamples) gepubliceerd voor Azure Automation om het proces van het importeren van configuraties vanuit de PowerShell Gallery te automatiseren.
 
 Als u het maken van samengestelde resources voor DSC wilt automatiseren, gaat u naar de [PowerShell Gallery](https://www.powershellgallery.com/packages/compositeresource/) en downloadt u de oplossing of klikt u op project site om de [documentatie](https://github.com/microsoft/compositeresource)weer te geven.

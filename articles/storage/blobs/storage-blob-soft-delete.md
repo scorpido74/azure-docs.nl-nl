@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 15db96824336c92611b9e1113c42c621f6508744
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f0db35e188aeca4de7b74d6c3e4dfc45b349279a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978114"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972730"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Zacht verwijderen voor Azure Storage-blobs
 
@@ -68,7 +68,7 @@ Wanneer **Delete BLOB** wordt aangeroepen op een basis-BLOB (een blob die niet z
 > [!NOTE]  
 > Wanneer een zachte verwijderde BLOB wordt overschreven, wordt er automatisch een voorlopig verwijderde moment opname van de status van de BLOB vóór de schrijf bewerking gegenereerd. De nieuwe BLOB neemt de laag over van de overschreven blob.
 
-Met zacht verwijderen worden uw gegevens niet opgeslagen in gevallen waarin containers of accounts worden verwijderd, noch wanneer meta gegevens en BLOB-eigenschappen worden overschreven. Als u een opslag account wilt beveiligen tegen foutieve verwijdering, kunt u een vergren deling configureren met behulp van de Azure Resource Manager. Raadpleeg het Azure Resource Manager artikel [resources vergren delen om te voor komen dat er onverwachte wijzigingen](../../azure-resource-manager/resource-group-lock-resources.md) meer zijn.
+Met zacht verwijderen worden uw gegevens niet opgeslagen in gevallen waarin containers of accounts worden verwijderd, noch wanneer meta gegevens en BLOB-eigenschappen worden overschreven. Als u een opslag account wilt beveiligen tegen foutieve verwijdering, kunt u een vergren deling configureren met behulp van de Azure Resource Manager. Raadpleeg het Azure Resource Manager artikel [resources vergren delen om te voor komen dat er onverwachte wijzigingen](../../azure-resource-manager/management/lock-resources.md) meer zijn.
 
 De volgende tabel bevat details over het verwachte gedrag wanneer zacht verwijderen is ingeschakeld:
 
@@ -335,7 +335,7 @@ Ja, zacht verwijderen kan worden geconfigureerd voor zowel bestaande als nieuwe 
 
 ### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>Als ik een hele account of container Verwijder waarvoor Soft zacht verwijderen is ingeschakeld, worden alle bijbehorende blobs opgeslagen?
 
-Nee, als u een hele account of container verwijdert, worden alle gekoppelde blobs definitief verwijderd. Zie [resources vergren delen om onverwachte wijzigingen te voor komen](../../azure-resource-manager/resource-group-lock-resources.md)voor meer informatie over het beveiligen van een opslag account tegen onbedoeld verwijderen.
+Nee, als u een hele account of container verwijdert, worden alle gekoppelde blobs definitief verwijderd. Zie [resources vergren delen om onverwachte wijzigingen te voor komen](../../azure-resource-manager/management/lock-resources.md)voor meer informatie over het beveiligen van een opslag account tegen onbedoeld verwijderen.
 
 ### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>Kan ik de metrische gegevens voor de capaciteit weer geven voor verwijderde data?
 

@@ -5,16 +5,16 @@ services: batch
 ms.service: batch
 author: davefellows
 manager: gwallace
-ms.author: lahugh
+ms.author: jushiman
 ms.date: 02/07/2019
 ms.topic: conceptual
 ms.custom: seodec18
-ms.openlocfilehash: fa2d59b2a6d2dea72276ab38a5cb1ca7bfb579a4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a04f59983aca4b7db1a58ab4e8b8a2da47a52783
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323114"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026311"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Referentie architecturen voor Azure-Rendering
 
@@ -26,9 +26,9 @@ Het volgende diagram toont een hybride scenario met de volgende Azure-Services:
 
 * **Compute** -Azure batch pool of virtuele-machine schaalset.
 
-* **Netwerk** -on-premises: Azure ExpressRoute of VPN. Azure: Azure VNet.
+* **Netwerk** -on-premises: Azure EXPRESSROUTE of VPN. Azure: Azure VNet.
 
-* **Opslag** -invoer-en uitvoer bestanden: NFS of CFS met behulp van Azure-Vm's, gesynchroniseerd met on-premises opslag via Azure File Sync of RSync. U kunt ook AVERE vFXT naar invoer-of uitvoer bestanden van on-premises NAS-apparaten met behulp van NFS.
+* **Opslag** -invoer-en uitvoer bestanden: NFS of CFS met behulp van Azure-vm's, gesynchroniseerd met on-premises opslag via Azure file sync of rsync. U kunt ook avere vFXT naar invoer-of uitvoer bestanden van on-premises NAS-apparaten met behulp van NFS.
 
   ![Cloud bursting-Hybrid met NFS of CFS](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
 
@@ -38,9 +38,9 @@ Het volgende diagram toont een hybride scenario met de volgende Azure-Services:
 
 * **Compute** -Azure batch pool of virtuele-machine schaalset.
 
-* **Netwerk** -on-premises: Azure ExpressRoute of VPN. Azure: Azure VNet.
+* **Netwerk** -on-premises: Azure EXPRESSROUTE of VPN. Azure: Azure VNet.
 
-* **Opslag** -invoer-en uitvoer bestanden: Blob-opslag, gekoppeld aan Compute-resources via Azure Blobfuse.
+* **Opslag** -invoer-en uitvoer bestanden: Blob Storage, gekoppeld aan Compute-bronnen via Azure Blobfuse.
 
   ![Cloud bursting-Hybrid met Blobfuse](./media/batch-rendering-architectures/hybrid-blob-fuse.png)
 
@@ -50,9 +50,9 @@ In het volgende diagram ziet u een volledig verbonden hybride scenario voor zowe
 
 * **Compute** -Azure batch pool of virtuele-machine schaalset.
 
-* **Netwerk** -on-premises: Azure ExpressRoute of VPN. Azure: Azure VNet.
+* **Netwerk** -on-premises: Azure EXPRESSROUTE of VPN. Azure: Azure VNet.
 
-* **Opslag** -cross-premises: Avere vFXT. Optioneel archiveren van on-premises bestanden via Azure Data Box naar Blob Storage, of on-premises avere FXT voor de versnelling van de NAS.
+* **Opslag** -cross-premises: avere vFXT. Optioneel archiveren van on-premises bestanden via Azure Data Box naar Blob Storage, of on-premises avere FXT voor de versnelling van de NAS.
 
   ![Cloud bursting-hybride Compute en opslag](./media/batch-rendering-architectures/hybrid-compute-storage-avere.png)
 

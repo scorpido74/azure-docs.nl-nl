@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccdd234f951327aeb5baa6aabcac4314b9de7b34
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 0b938de0fec099b3f964eae60dc94d059e05a1c6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517106"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973496"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple Virtual array implementeren: de Azure Portal voorbereiden
 
@@ -94,9 +94,9 @@ Zorg voordat u begint voor het volgende:
 
 Gebruik de volgende stapsgewijze instructies om uw portal voor te bereiden op de StorSimple-Apparaatbeheer service.
 
-## <a name="step-1-create-a-new-service"></a>Stap 1: Een nieuwe service maken
+## <a name="step-1-create-a-new-service"></a>Stap 1: een nieuwe service maken
 
-Eén exemplaar van de StorSimple-Apparaatbeheer service kan meerdere virtuele StorSimple-matrices beheren. Voer de volgende stappen uit om een exemplaar van de StorSimple-apparaatbeheerfunctie uit te voeren. Als u een bestaande StorSimple-Apparaatbeheer service hebt voor het beheren van uw virtuele matrices, slaat u deze stap [over en gaat u naar stap 2: De service registratie sleutel](#step-2-get-the-service-registration-key)ophalen.
+Eén exemplaar van de StorSimple-Apparaatbeheer service kan meerdere virtuele StorSimple-matrices beheren. Voer de volgende stappen uit om een exemplaar van de StorSimple-apparaatbeheerfunctie uit te voeren. Als u een bestaande StorSimple-Apparaatbeheer service hebt voor het beheren van uw virtuele matrices, slaat u deze stap over en gaat u naar [stap 2: de service registratie sleutel ophalen](#step-2-get-the-service-registration-key).
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
@@ -104,11 +104,11 @@ Eén exemplaar van de StorSimple-Apparaatbeheer service kan meerdere virtuele St
 > Als u de service niet hebt ingeschakeld om automatisch een opslagaccount te maken, moet u minimaal één opslagaccount maken nadat u een service hebt gemaakt.
 > 
 > * Als u niet automatisch een opslagaccount hebt gemaakt, gaat u naar [Een nieuw opslagaccount voor de service configureren](#optional-step-configure-a-new-storage-account-for-the-service) voor gedetailleerde instructies.
-> * Als u het automatisch maken van een opslag account hebt ingeschakeld, gaat [u naar stap 2: De service registratie sleutel](#step-2-get-the-service-registration-key)ophalen.
+> * Als u het automatisch maken van een opslagaccount hebt ingeschakeld, gaat u naar [Stap 2: de serviceregistratiesleutel ophalen](#step-2-get-the-service-registration-key).
 > 
 > 
 
-## <a name="step-2-get-the-service-registration-key"></a>Stap 2: De serviceregistratiesleutel ophalen
+## <a name="step-2-get-the-service-registration-key"></a>Stap 2: de serviceregistratiesleutel ophalen
 
 Wanneer de StorSimple-apparaatbeheerfunctie bedrijfsklaar is, moet u de serviceregistratiesleutel ophalen. Deze sleutel wordt gebruikt om het StorSimple-apparaat te registreren en te verbinden met de service.
 
@@ -121,7 +121,7 @@ Voer de volgende stappen uit in [Azure Portal](https://portal.azure.com/).
 > 
 > 
 
-## <a name="step-3-download-the-virtual-array-image"></a>Stap 3: De installatiekopie voor de virtuele matrix downloaden
+## <a name="step-3-download-the-virtual-array-image"></a>Stap 3: de installatie kopie van de virtuele matrix downloaden
 
 Nadat u de service registratie sleutel hebt, moet u de juiste installatie kopie van de virtuele matrix downloaden om een virtuele matrix op uw hostsysteem in te richten. De installatie kopieën van de virtuele array zijn specifiek voor het besturings systeem en kunnen worden gedownload van de Quick Start pagina in de Azure Portal.
 
@@ -144,11 +144,11 @@ Voer de volgende stappen uit in [Azure Portal](https://portal.azure.com/).
    * VMDK voor VMWare ESXi 5,0, 5,5, 6,0 of 6,5
 5. Download het bestand en pak het uit op een lokale schijf, en onthoud waar het zipbestand is uitgepakt.
 
-## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Optionele stap: Een nieuw opslagaccount voor de service configureren
+## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Optionele stap: een nieuw opslag account voor de service configureren
 
 Deze stap is optioneel en moet alleen worden uitgevoerd als u het automatisch maken van een opslag account bij uw service niet hebt ingeschakeld.
 
-Als u een Azure-opslag account in een andere regio wilt maken, raadpleegt u [een opslag account maken](../storage/common/storage-quickstart-create-account.md) voor stapsgewijze instructies.
+Als u een Azure-opslag account in een andere regio wilt maken, raadpleegt u [een opslag account maken](../storage/common/storage-account-create.md) voor stapsgewijze instructies.
 
 Voer de volgende stappen uit in de [Azure Portal](https://ms.portal.azure.com/) op de pagina StorSimple Apparaatbeheer-service om een bestaand Microsoft Azure Storage-account toe te voegen.
 
@@ -156,7 +156,7 @@ Voer de volgende stappen uit in de [Azure Portal](https://ms.portal.azure.com/) 
 
 1. Navigeer naar uw Apparaatbeheer-service, selecteer en dubbel klik erop. Hiermee opent u de Blade **overzicht** .
 2. Selecteer **referenties voor het opslag account** in de **configuratie** sectie.
-3. Klik op **Toevoegen**.
+3. Klik op **Add**.
 4. Ga als volgt te werk op de Blade **een opslag account toevoegen** :
    
    1. Selecteer bij **abonnement**de optie **actueel**.
@@ -165,7 +165,7 @@ Voer de volgende stappen uit in de [Azure Portal](https://ms.portal.azure.com/) 
    
    3. Selecteer **inschakelen** om een beveiligd kanaal te maken voor de netwerk communicatie tussen uw StorSimple-apparaat en de Cloud. Selecteer alleen **uitschakelen** als u binnen een privécloud werkt.
    
-   4. Klik op **Toevoegen**. U wordt gewaarschuwd nadat het opslag account is gemaakt.<br></br>
+   4. Klik op **Add**. U wordt gewaarschuwd nadat het opslag account is gemaakt.<br></br>
    
       ![Een bestaande opslag account referentie toevoegen](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 

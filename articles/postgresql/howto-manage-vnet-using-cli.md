@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 75a11cb5d513438824773a3bfba3b7443300dc05
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 5e80b48e43e72bc3eda16a5dcc64f980065c923f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770336"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974112"
 ---
 # <a name="create-and-manage-vnet-service-endpoints-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>VNet-service-eind punten maken en beheren voor Azure Database for PostgreSQL-één server met behulp van Azure CLI
 Virtual Network-Services (VNet)-eind punten en-regels breiden de privé-adres ruimte van een Virtual Network naar uw Azure Database for PostgreSQL-server uit. Met de handige CLI-opdrachten (opdracht regel Interface) van Azure kunt u VNet-service-eind punten en-regels maken, bijwerken, verwijderen en weer geven om uw server te beheren. Zie [Azure database for postgresql server VNet-service-eind punten](concepts-data-access-and-security-vnet.md)voor een overzicht van Azure database for PostgreSQL VNet-service-eind punten, met inbegrip van beperkingen. VNet-service-eind punten zijn beschikbaar in alle ondersteunde regio's voor Azure Database for PostgreSQL.
@@ -23,7 +23,7 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 - Een [Azure database for postgresql-server en-data base](quickstart-create-server-database-azure-cli.md).
 
 > [!NOTE]
-> Ondersteuning voor VNet-service-eind punten is alleen voor servers met Algemeen en geoptimaliseerd voor geheugen.
+> Ondersteuning voor VNet-service-eindpunten is alleen voor algemeen gebruik en geoptimaliseerd voor geheugen-servers.
 > In het geval van VNet-peering, als verkeer via een gemeen schappelijke VNet-gateway met Service-eind punten stroomt en naar de peer moet stromen, moet u een ACL/VNet-regel maken om Azure Virtual Machines in de gateway-VNet toegang te geven tot de Azure Database for PostgreSQL-server.
 
 
@@ -51,7 +51,7 @@ Als u Azure-service resources wilt beveiligen met een VNet, moet de gebruiker ov
 
 Meer informatie over [ingebouwde rollen](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles) en het toewijzen van specifieke machtigingen voor [aangepaste rollen](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles).
 
-VNets en Azure-serviceresources kunnen in hetzelfde of in verschillend abonnementen zitten. Als de VNet-en Azure-service resources zich in verschillende abonnementen bevinden, moeten de resources onder dezelfde Active Directory (AD)-Tenant vallen. Zorg ervoor dat de **micro soft. SQL** -resource provider is geregistreerd voor beide abonnementen. Raadpleeg [Resource-Manager-registratie][resource-manager-portal] voor meer informatie
+VNets en Azure-serviceresources kunnen in hetzelfde abonnement of in verschillende abonnementen zitten. Als de VNet-en Azure-service resources zich in verschillende abonnementen bevinden, moeten de resources onder dezelfde Active Directory (AD)-Tenant vallen. Zorg ervoor dat de **micro soft. SQL** -resource provider is geregistreerd voor beide abonnementen. Raadpleeg [Resource-Manager-registratie][resource-manager-portal] voor meer informatie
 
 > [!IMPORTANT]
 > Lees dit artikel over service-eindpunt configuraties en overwegingen voordat u het onderstaande voorbeeld script uitvoert of service-eind punten configureert. **Service-eind punt Virtual Network:** Een [Virtual Network Service-eind punt](../virtual-network/virtual-network-service-endpoints-overview.md) is een subnet waarvan de eigenschaps waarden een of meer formele namen van Azure-service typen bevatten. VNet-service-eind punten gebruiken de service type naam **micro soft. SQL**, die verwijst naar de Azure-service met de naam SQL database. Deze servicetag is ook van toepassing op de Azure SQL Database, Azure Database for PostgreSQL en MySQL-Services. Het is belang rijk te weten wanneer u de code van het **micro soft. SQL** -service toepast op een VNet-service-eind punt Hiermee wordt service-eindpunt verkeer geconfigureerd voor alle Azure Data Base-Services, waaronder Azure SQL Database, Azure Database for PostgreSQL en Azure database for MySQL servers in het subnet. 
@@ -66,4 +66,4 @@ Na het uitvoeren van het voorbeeldscript kan de volgende opdracht worden gebruik
 [!code-azurecli-interactive[main](../../cli_scripts/postgresql/create-postgresql-server-vnet/delete-postgresql.sh "Delete the resource group.")]
 
 <!-- Link references, to text, Within this same GitHub repo. --> 
-[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

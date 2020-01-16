@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 1c742daf29cbbef5e6f51af5363be7fd949aaebf
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: fb13bb7ec2de2633796aecb5216ae8b9e2574a57
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304779"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971197"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Metrische gegevens van het gast besturingssysteem verzenden naar de klassieke Azure Monitor voor metrische gegevens Cloud Services 
 
@@ -29,7 +29,7 @@ Het proces dat wordt beschreven in dit artikel, werkt alleen voor prestatie mete
 
 ## <a name="prerequisites"></a>Vereisten
 
-- U moet een [service beheerder of mede beheerder](~/articles/billing/billing-add-change-azure-subscription-administrator.md) zijn voor uw Azure-abonnement. 
+- U moet een [service beheerder of mede beheerder](../../cost-management-billing/manage/add-change-subscription-administrator.md) zijn voor uw Azure-abonnement. 
 
 - Uw abonnement moet zijn geregistreerd bij [micro soft. Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 

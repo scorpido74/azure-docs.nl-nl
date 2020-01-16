@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 02655a3697139ae3a9c4c36b423b874b6e5d34f9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 6bba4414390efa6e07be6c253fe55f1638d414dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541866"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974096"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Wat is een Azure Machine Learning Compute-instantie?
 
@@ -54,7 +54,7 @@ Deze hulpprogram ma's en omgevingen zijn geïnstalleerd op het reken exemplaar:
 |Intel MPI-bibliotheek||
 |Azure-CLI ||
 |Azure Machine Learning-voor beelden ||
-|EDAT-engine Azure Machine Learning ||            
+|EDAT-engine Azure Machine Learning ||
 |Docker||
 |Nginx||
 |NCCL 2,0 ||
@@ -76,11 +76,26 @@ Deze hulpprogram ma's en omgevingen zijn geïnstalleerd op het reken exemplaar:
 |Andere PyPI-pakketten|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda-pakketten|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Uitgebreide leer pakketten|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
-|ONNX-pakketten|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|                           
+|ONNX-pakketten|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
 |Azure Machine Learning python & R SDK-voor beelden||
+
+Python-pakketten zijn allemaal geïnstalleerd in de **Python 3,6-AzureML-** omgeving.  
 
 Reken instanties worden meestal gebruikt als ontwikkel omgevingen.  Ze kunnen ook worden gebruikt als een reken doel voor training en voor het afleiden van ontwikkel-en test doeleinden.  Voor grote taken is een [Azure machine learning Compute-Cluster](how-to-set-up-training-targets.md#amlcompute) met schaal mogelijkheden voor meerdere knoop punten een betere reken doel keuze.
 
+### <a name="installing-packages"></a>Pakketten installeren
+
+U kunt pakketten rechtstreeks in een Jupyter-notebook of Rstudio installeren:
+
+* RStudio gebruik het tabblad **pakketten** aan de rechter kant of op het tabblad **console** linksboven.  
+* Python: Voeg installatie code toe en voer uit in een Jupyter notebook-cel.
+
+Of u kunt op een van de volgende manieren toegang krijgen tot een Terminal venster:
+
+* RStudio: Selecteer het tabblad **Terminal** aan de rechter bovenhoek.
+* Jupyter Lab: Selecteer de tegel **Terminal** onder de **andere** kop op het tabblad Start.
+* Jupyter: Selecteer **nieuwe > Terminal** rechtsboven op het tabblad bestanden.
+* SSH naar de computer.  Installeer Python-pakketten vervolgens in de **Python 3,6-AzureML-** omgeving.  R-pakketten installeren in de **R** -omgeving.
 
 ## <a name="accessing-files"></a>Toegang tot bestanden
 

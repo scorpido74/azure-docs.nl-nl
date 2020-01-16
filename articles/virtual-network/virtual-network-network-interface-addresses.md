@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: 1a6fb5d2b27996d67e0bf27eb57d16f4d2fb2797
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dc5b1f2f8e8b529149184ce173bcdd315311bad4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647251"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975333"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>IP-adressen toevoegen, wijzigen of verwijderen voor een Azure-netwerk interface
 
@@ -146,7 +146,7 @@ Er zijn scenario's waarin het nodig is om het IP-adres van een netwerk interface
 4. Start de virtuele machine.
 5. Configureer de secundaire IP-adressen binnen het besturings systeem (en ook het primaire IP-adres in Windows) [hand matig](virtual-network-multiple-ip-addresses-portal.md#os-config) om te voldoen aan wat u in azure hebt ingesteld.
 
-Door de vorige stappen te volgen, blijven het privé-IP-adres dat is toegewezen aan de netwerk interface binnen Azure en binnen het besturings systeem van een virtuele machine, hetzelfde. Als u wilt bijhouden welke virtuele machines in uw abonnement u hand matig IP-adressen hebt ingesteld binnen een besturings systeem voor, kunt u een Azure- [tag](../azure-resource-manager/resource-group-using-tags.md) toevoegen aan de virtuele machines. U kunt bijvoorbeeld ' IP-adres toewijzing: static ' gebruiken. Op deze manier kunt u eenvoudig de virtuele machines in uw abonnement vinden waarvoor u het IP-adres hand matig hebt ingesteld in het besturings systeem.
+Door de vorige stappen te volgen, blijven het privé-IP-adres dat is toegewezen aan de netwerk interface binnen Azure en binnen het besturings systeem van een virtuele machine, hetzelfde. Als u wilt bijhouden welke virtuele machines in uw abonnement u hand matig IP-adressen hebt ingesteld binnen een besturings systeem voor, kunt u een Azure- [tag](../azure-resource-manager/management/tag-resources.md) toevoegen aan de virtuele machines. U kunt bijvoorbeeld ' IP-adres toewijzing: static ' gebruiken. Op deze manier kunt u eenvoudig de virtuele machines in uw abonnement vinden waarvoor u het IP-adres hand matig hebt ingesteld in het besturings systeem.
 
 Naast het inschakelen van een virtuele machine om te communiceren met andere resources binnen dezelfde of verbonden virtuele netwerken, kan een persoonlijk IP-adres ook een virtuele machine in staat stellen om uitgaande berichten te verzenden naar het internet. Uitgaande verbindingen zijn bron netwerk adres vertaald door Azure naar een onvoorspelbaar openbaar IP-adres. Lees het artikel [Azure uitgaande internet connectiviteit](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor meer informatie over uitgaande internet connectiviteit van Azure. U kunt geen inkomende communicatie met het privé-IP-adres van een virtuele machine via internet. Als voor uw uitgaande verbindingen een voorspelbaar openbaar IP-adres is vereist, koppelt u een open bare IP-adres resource aan een netwerk interface.
 

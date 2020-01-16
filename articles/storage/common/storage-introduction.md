@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 612da322e0d248f9b0000c8f0006893b87b74e44
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 4725329ace12a2bfb285253c52249f242da31619
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084646"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970215"
 ---
 # <a name="introduction-to-azure-storage"></a>Kennismaking met Azure Storage
 
@@ -21,7 +21,7 @@ Azure Storage is Microsoft's cloudoplossing bedoeld voor scenario's voor gegeven
 
 - **Duurzaam en maximaal beschikbaar.** Redundantie zorgt ervoor dat uw gegevens veilig zijn in geval van tijdelijke hardwarefouten. U kunt er ook voor kiezen gegevens te repliceren in datacenters of geografische regio's voor extra beveiliging tegen lokale rampen of natuurrampen. Op deze manier gerepliceerde gegevens blijven maximaal beschikbaar in het geval van een stroomstoring.
 - **Veilig.** Alle gegevens die naar Azure Storage worden geschreven, worden versleuteld door de service. Azure Storage biedt u gedetailleerde controle over wie toegang tot uw gegevens heeft.
-- **Schaalbaar.** Azure Storage is in hoge mate schaalbaar om te voldoen aan de gegevensopslag- en prestatiebehoeften van de huidige toepassingen. 
+- **Schaalbaar.** Azure Storage is in hoge mate schaalbaar om te voldoen aan de gegevensopslag- en prestatiebehoeften van de huidige toepassingen.
 - **Beheerd.** Microsoft Azure zorgt voor het onderhoud van hardware, updates en het oplossen van ernstige problemen.
 - **Toegankelijk.** Gegevens in Azure Storage zijn overal ter wereld toegankelijk via HTTP of HTTPS. Micro soft biedt client bibliotheken voor Azure Storage in verschillende talen, waaronder .NET, Java, node. js, Python, PHP, Ruby, Go en anderen, evenals een rijp REST API. Azure Storage ondersteunt scripts in Azure PowerShell of Azure CLI. En Azure Portal en Azure Storage Explorer bieden handige visuele oplossingen voor het werken met uw gegevens.  
 
@@ -31,14 +31,14 @@ Azure Storage omvat deze gegevensservices:
 
 - [Azure Blobs](../blobs/storage-blobs-introduction.md): een in hoge mate schaalbaar objectarchief voor tekst en binaire gegevens.
 - [Azure Files](../files/storage-files-introduction.md): beheerde bestandsshares voor implementaties in de cloud of on-premises.
-- [Azure Queues](../queues/storage-queues-introduction.md): een berichtenarchief voor betrouwbare uitwisseling van berichten tussen toepassingsonderdelen. 
+- [Azure Queues](../queues/storage-queues-introduction.md): een berichtenarchief voor betrouwbare uitwisseling van berichten tussen toepassingsonderdelen.
 - [Azure Tables](../tables/table-storage-overview.md): een NoSQL-archief voor schemaloze opslag van gestructureerde gegevens.
 
-Elke service kan worden geopend via een opslagaccount. Zie [Een opslagaccount maken](storage-quickstart-create-account.md) om aan de slag te gaan.
+Elke service kan worden geopend via een opslagaccount. Zie [Een opslagaccount maken](storage-account-create.md) om aan de slag te gaan.
 
-## <a name="blob-storage"></a>Blob Storage
+## <a name="blob-storage"></a>Blob-opslag
 
-Azure Blob Storage is Microsoft's oplossing voor opslag van objecten in de cloud. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens, zoals tekst of binaire gegevens. 
+Azure Blob Storage is Microsoft's oplossing voor opslag van objecten in de cloud. Blob Storage is geoptimaliseerd voor het opslaan van grote hoeveelheden ongestructureerde gegevens, zoals tekst of binaire gegevens.
 
 Blob-opslag is ideaal voor:
 
@@ -78,13 +78,13 @@ Stel dat u uw klanten in de gelegenheid wilt stellen om afbeeldingen te uploaden
 
 Raadpleeg de [Inleiding tot Azure Queues](../queues/storage-queues-introduction.md) voor meer informatie over Azure Queues.
 
-## <a name="table-storage"></a>Table Storage
+## <a name="table-storage"></a>Tabelopslag
 
 Azure Table Storage maakt nu deel uit van Cosmos DB. Voor documentatie over Azure Table Storage raadpleegt u [Overzicht van Azure Table Storage](../tables/table-storage-overview.md). Naast de bestaande Azure Table Storage-service is er een nieuwe Azure Cosmos DB tabel-API die voor doorvoer geoptimaliseerde tabellen, wereldwijde distributie en automatische secundaire indexen biedt. Bekijk [Azure Cosmos DB: tabel-API](https://aka.ms/premiumtables) voor meer informatie en om de nieuwe premium versie uit te proberen.
 
 Zie [Overzicht van Azure Table Storage](../tables/table-storage-overview.md) voor meer informatie over Table Storage.
 
-## <a name="disk-storage"></a>File Storage
+## <a name="disk-storage"></a>Disk-opslag
 
 Een Azure Managed disk is een virtuele harde schijf (VHD). U kunt dit beschouwen als een fysieke schijf op een on-premises server, maar is gevirtualiseerd. Azure Managed disks worden opgeslagen als pagina-blobs, een wille keurig i/o-opslag object in Azure. Er wordt een beheerde schijf ' beheerd ' aangeroepen omdat het een abstractie is boven pagina-blobs, Blob-containers en Azure Storage-accounts. Met Managed disks hoeft u alleen maar de schijf in te richten en Azure zorgt voor de rest.
 
@@ -108,7 +108,7 @@ Elke aanvraag voor Azure Storage moet worden geautoriseerd. Azure Storage onders
 
 ## <a name="encryption"></a>Versleuteling
 
-Er zijn twee basistypen versleuteling beschikbaar voor de Storage-services. Raadpleeg de Engelstalige [Azure Storage-beveiligingshandleiding](storage-security-guide.md) voor meer informatie over beveiliging en versleuteling.
+Er zijn twee basistypen versleuteling beschikbaar voor de Storage-services. Raadpleeg de Engelstalige [Azure Storage-beveiligingshandleiding](../blobs/security-recommendations.md) voor meer informatie over beveiliging en versleuteling.
 
 ### <a name="encryption-at-rest"></a>Versleuteling 'at rest'
 
@@ -171,4 +171,4 @@ Azure Storage-resources zijn toegankelijk voor elke taal waarvoor HTTP/HTTPS-aan
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Een opslagaccount maken](storage-quickstart-create-account.md) om aan de slag te gaan met Azure Storage.
+Zie [Een opslagaccount maken](storage-account-create.md) om aan de slag te gaan met Azure Storage.
