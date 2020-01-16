@@ -3,16 +3,16 @@ title: 'Zelf studie: Manage tag governance'
 description: In deze zelf studie gebruikt u het effect wijzigen van Azure Policy om een tag governance model op nieuwe en bestaande resources te maken en af te dwingen.
 ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: e3d6e279b293ea8063c690f9fb69a6f183b2838d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5e9cb9a4acb930c117374281a3debaeecce47110
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482266"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965988"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Zelf studie: tag governance met Azure Policy beheren
 
-[Labels](../../../azure-resource-manager/resource-group-using-tags.md) zijn een belang rijk onderdeel van het organiseren van uw Azure-resources in een taxonomie. Bij het volgen van de [Aanbevolen procedures voor het beheer](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)van labels kunnen Tags de basis vormen voor het Toep assen van uw bedrijfs beleid met Azure Policy of het [bijhouden van kosten met Cost Management](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources).
+[Labels](../../../azure-resource-manager/management/tag-resources.md) zijn een belang rijk onderdeel van het organiseren van uw Azure-resources in een taxonomie. Bij het volgen van de [Aanbevolen procedures voor het beheer](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)van labels kunnen Tags de basis vormen voor het Toep assen van uw bedrijfs beleid met Azure Policy of het [bijhouden van kosten met Cost Management](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources).
 Ongeacht hoe of waarom u tags gebruikt, is het belang rijk dat u deze Tags snel kunt toevoegen, wijzigen en verwijderen in uw Azure-resources.
 
 Het [wijzigings](../concepts/effects.md#modify) effect van Azure Policy is ontworpen om u te helpen bij het beheer van labels, ongeacht de fase van het resource governance waarin u zich bevindt. **Wijzigen** helpt bij het volgende:

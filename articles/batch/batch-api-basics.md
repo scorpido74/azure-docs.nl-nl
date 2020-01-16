@@ -3,7 +3,7 @@ title: Overzicht voor ontwikkelaars | Microsoft Docs
 description: Informatie over de functies van de Batch-service en de API's ervan, vanuit het standpunt van ontwikkelaars.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 08/29/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 364861e57f37192a3ae454e27fedf732ee8d513e
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 6ea5ce71622e98b60d68c1680382dc63c767999d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350181"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029770"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Grootschalige parallelle rekenoplossingen ontwikkelen met Batch
 
@@ -89,13 +89,13 @@ Batch biedt ondersteuning voor de volgende typen Azure Storage-account:
 
 Zie [Overzicht van Azure-opslagaccount](../storage/common/storage-account-overview.md) voor meer informatie over opslagaccounts.
 
-U kunt een opslagaccount koppelen aan uw Batch-account. Dit kunt u doen tijdens het maken van het Batch-account of later. Denk bij het kiezen van een opslagaccount aan de kosten- en prestatievereisten. Het GPv2-account en het Blob Storage-account bieden, vergeleken met een GPv1-account, bijvoorbeeld hogere [limieten voor capaciteit en schaalbaarheid](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/). (Neem contact op met Azure-ondersteuning om een hogere opslaglimiet aan te vragen.) Met deze accountopties kunnen de prestaties worden verbeterd van Batch-oplossingen die een groot aantal parallelle taken bevatten die worden gelezen of geschreven vanuit het opslagaccount.
+U kunt een opslagaccount koppelen aan uw Batch-account. Dit kunt u doen tijdens het maken van het Batch-account of later. Denk bij het kiezen van een opslagaccount aan de kosten- en prestatievereisten. Het GPv2-account en het Blob Storage-account bieden, vergeleken met een GPv1-account, bijvoorbeeld hogere [limieten voor capaciteit en schaalbaarheid](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/). (Neem contact op met de ondersteuning van Azure om een verhoging van een opslag limiet aan te vragen.) Met deze account opties kunt u de prestaties verbeteren van batch-oplossingen die een groot aantal parallelle taken bevatten die worden gelezen of geschreven naar het opslag account.
 
 ## <a name="compute-node"></a>Rekenknooppunt
 
 Een rekenknooppunt is een virtuele machine (VM) of cloudservice-VM van Azure die aan een specifiek deel van de workload van uw toepassing is toegewezen. De grootte van een knooppunt bepaalt het aantal CPU-kernen, de geheugencapaciteit en de grootte van het lokale bestandssysteem die aan het knooppunt worden toegewezen. U kunt Pools van Windows-of Linux-knoop punten maken met behulp van Azure Cloud Services, installatie kopieën van de [azure virtual machines Marketplace][vm_marketplace]of aangepaste installatie kopieën die u voorbereidt. Zie de volgende sectie ([Pool](#pool)) voor meer informatie over deze opties.
 
-Knooppunten kunnen elk uitvoerbaar bestand of script uitvoeren dat wordt ondersteund door de besturingssysteemomgeving van het knooppunt. Uitvoer bare bestanden of \*scripts zijn. \*exe-, \*. cmd-,. bat-en Power shell-scripts voor Windows--en binaire bestanden, shell en python-scripts voor Linux.
+Knooppunten kunnen elk uitvoerbaar bestand of script uitvoeren dat wordt ondersteund door de besturingssysteemomgeving van het knooppunt. Uitvoer bare bestanden of scripts zijn \*. exe, \*. cmd, \*. bat en Power shell-scripts voor Windows-en binaire bestanden, shell en python-scripts voor Linux.
 
 Alle rekenknooppunten in Batch omvatten ook:
 
@@ -322,12 +322,12 @@ Een jobbeheertaak wordt vóór alle andere taken gestart. Deze biedt de volgende
 
 Batch biedt jobvoorbereidingstaken om de job in te stellen voordat deze wordt uitgevoerd. Jobvrijgevingstaken zijn er voor onderhoud of opschoning nadat de job is uitgevoerd.
 
-* **Jobvoorbereidingstaak**: Een jobvoorbereidingstaak wordt uitgevoerd op alle rekenknooppunten die zijn gepland om taken uit te voeren, voordat een van de andere taken van de job wordt uitgevoerd. U kunt een jobvoorbereidingstaak gebruiken om bijvoorbeeld gegevens te kopiëren die door alle taken worden gedeeld, maar uniek zijn voor de job.
-* **Jobvrijgevingstaak**: Wanneer een job is voltooid, wordt er een jobvrijgevingstaak uitgevoerd op elk knooppunt in de pool dat ten minste één taak heeft uitgevoerd. U kunt een jobvrijgevingstaak gebruiken om bijvoorbeeld gegevens te verwijderen die door de jobvoorbereidingstaak zijn gekopieerd of om diagnostische logboekgegevens te comprimeren en te uploaden.
+* **Jobvoorbereidingstaak**: een jobvoorbereidingstaak wordt uitgevoerd op alle rekenknooppunten die zijn gepland om taken uit te voeren, voordat een van de andere taken van de job wordt uitgevoerd. U kunt een jobvoorbereidingstaak gebruiken om bijvoorbeeld gegevens te kopiëren die door alle taken worden gedeeld, maar uniek zijn voor de job.
+* **Jobvrijgevingstaak**: wanneer een job is voltooid, wordt er een jobvrijgevingstaak uitgevoerd op elk knooppunt in de pool dat ten minste één taak heeft uitgevoerd. U kunt een jobvrijgevingstaak gebruiken om bijvoorbeeld gegevens te verwijderen die door de jobvoorbereidingstaak zijn gekopieerd of om diagnostische logboekgegevens te comprimeren en te uploaden.
 
 Met zowel jobvoorbereidingstaken als jobvrijgevingstaken kunt u een opdrachtregel opgeven die moet worden uitgevoerd wanneer de taak wordt gestart. Ze bieden functies zoals het downloaden van bestanden, uitvoering met verhoogde bevoegdheden, aangepaste omgevingsvariabelen, maximale uitvoeringsduur, aantal pogingen en bewaartijd voor bestanden.
 
-Zie [Run job preparation and completion tasks on Azure Batch compute nodes](batch-job-prep-release.md) (Jobvoorbereidings- en jobvrijgevingstaken uitvoeren op Azure Batch-rekenknooppunten) voor meer informatie over jobvoorbereidings- en jobvrijgevingstaken.
+Zie [Run job preparation and completion tasks on Azure Batch compute nodes](batch-job-prep-release.md)  (Jobvoorbereidings- en jobvrijgevingstaken uitvoeren op Azure Batch-rekenknooppunten) voor meer informatie over jobvoorbereidings- en jobvrijgevingstaken.
 
 ### <a name="multi-instance-task"></a>Taak met meerdere instanties
 
@@ -353,9 +353,9 @@ Elke taak die wordt uitgevoerd door de Batch-service heeft toegang tot de omgevi
 
 U kunt aangepaste omgevingsvariabelen instellen op het niveau van de taak of de job door voor deze entiteiten de eigenschap voor *omgevingsinstellingen* in te vullen. Zie bijvoorbeeld het [onderdeel een taak toevoegen aan een taak][rest_add_task] (batch rest API) of de eigenschappen [CloudTask. EnvironmentSettings][net_cloudtask_env] en [eigenschap cloudjob. CommonEnvironmentSettings][net_job_env] in batch .net.
 
-Uw client toepassing of service kan de omgevings variabelen van een taak, zowel door service gedefinieerde als aangepaste, ophalen met behulp van de bewerking [informatie over een taak ophalen][rest_get_task_info] (batch rest) of door de eigenschap [CloudTask. EnvironmentSettings][net_cloudtask_env] te openen ( Batch .NET). Processen die op een rekenknooppunt worden uitgevoerd, kunnen ook toegang krijgen tot deze en andere omgevingsvariabelen in het knooppunt, bijvoorbeeld met behulp van de vertrouwde syntaxis van `%VARIABLE_NAME%` (Windows) of `$VARIABLE_NAME` (Linux).
+Uw client toepassing of service kan de omgevings variabelen van een taak, zowel door service gedefinieerde als aangepaste, ophalen met behulp van de bewerking [informatie over een taak ophalen][rest_get_task_info] (batch rest) of door de eigenschap [CloudTask. EnvironmentSettings][net_cloudtask_env] (batch .net) te openen. Processen die op een rekenknooppunt worden uitgevoerd, kunnen ook toegang krijgen tot deze en andere omgevingsvariabelen in het knooppunt, bijvoorbeeld met behulp van de vertrouwde syntaxis van `%VARIABLE_NAME%` (Windows) of `$VARIABLE_NAME` (Linux).
 
-U kunt een volledige lijst met alle door de service gedefinieerde omgevings variabelen vinden in de omgevings variabelen van het [reken knooppunt][msdn_env_vars].
+U kunt een volledige lijst met alle door de service gedefinieerde omgevings variabelen vinden in de [omgevings variabelen van het reken knooppunt][msdn_env_vars].
 
 ## <a name="files-and-directories"></a>Bestanden en mappen
 
@@ -367,23 +367,23 @@ De hoofdmap bevat de volgende mapstructuur:
 
 ![Mapstructuur rekenknooppunt][1]
 
-* **toepassingen**: Bevat informatie over de details van toepassings pakketten die op het reken knooppunt zijn geïnstalleerd. Taken kunnen toegang krijgen tot deze map door te verwijzen naar de omgevingsvariabele `AZ_BATCH_APP_PACKAGE`.
+* **toepassingen**: bevat informatie over de details van toepassings pakketten die op het reken knooppunt zijn geïnstalleerd. Taken kunnen toegang krijgen tot deze map door te verwijzen naar de omgevingsvariabele `AZ_BATCH_APP_PACKAGE`.
 
-* **fsmounts**: De map bevat alle bestands systemen die op een reken knooppunt zijn gekoppeld. Taken kunnen toegang krijgen tot deze map door te verwijzen naar de omgevingsvariabele `AZ_BATCH_NODE_MOUNTS_DIR`. Zie [een virtueel bestands systeem koppelen aan een batch-pool](virtual-file-mount.md)voor meer informatie.
+* **fsmounts**: de map bevat alle bestands systemen die op een reken knooppunt zijn gekoppeld. Taken kunnen toegang krijgen tot deze map door te verwijzen naar de omgevingsvariabele `AZ_BATCH_NODE_MOUNTS_DIR`. Zie [een virtueel bestands systeem koppelen aan een batch-pool](virtual-file-mount.md)voor meer informatie.
 
-* **shared**: Deze map biedt lees-/schrijftoegang tot *alle* taken die op een knooppunt worden uitgevoerd. Taken die in het knooppunt worden uitgevoerd, kunnen in deze map bestanden maken, lezen, bijwerken en verwijderen. Taken kunnen toegang krijgen tot deze map door te verwijzen naar de omgevingsvariabele `AZ_BATCH_NODE_SHARED_DIR`.
+* **gedeeld**: deze map biedt lees-/schrijftoegang tot *alle* taken die in een knooppunt worden uitgevoerd. Taken die in het knooppunt worden uitgevoerd, kunnen in deze map bestanden maken, lezen, bijwerken en verwijderen. Taken kunnen toegang krijgen tot deze map door te verwijzen naar de omgevingsvariabele `AZ_BATCH_NODE_SHARED_DIR`.
 
-* **startup**: Deze map wordt door een begintaak gebruikt als werkmap. Alle bestanden die door de begintaak naar het knooppunt zijn gedownload, worden hier opgeslagen. De begintaak kan in deze map bestanden maken, lezen, bijwerken en verwijderen. Taken kunnen toegang krijgen tot deze map door te verwijzen naar de omgevingsvariabele `AZ_BATCH_NODE_STARTUP_DIR`.
+* **startup**: deze map wordt door een begintaak gebruikt als werkmap. Alle bestanden die door de begintaak naar het knooppunt zijn gedownload, worden hier opgeslagen. De begintaak kan in deze map bestanden maken, lezen, bijwerken en verwijderen. Taken kunnen toegang krijgen tot deze map door te verwijzen naar de omgevingsvariabele `AZ_BATCH_NODE_STARTUP_DIR`.
 
-* **vluchtig**: Deze directory is voor interne doel einden. Er is geen garantie dat bestanden in deze map of de map zelf in de toekomst aanwezig zullen zijn.
+* **vluchtig**: deze map is voor interne doel einden. Er is geen garantie dat bestanden in deze map of de map zelf in de toekomst aanwezig zullen zijn.
 
-* **werk items**: Deze map bevat de mappen voor taken en hun taken op het reken knooppunt.
+* **werk items**: deze map bevat de mappen voor taken en hun taken op het reken knooppunt.
 
-* **Tasks**: In de **werk items** -map wordt een directory gemaakt voor elke taak die op het knoop punt wordt uitgevoerd. Het is toegankelijk door te verwijzen naar `AZ_BATCH_TASK_DIR` de omgevings variabele.
+* **Taken**: in de **werk items** -map wordt een directory gemaakt voor elke taak die op het knoop punt wordt uitgevoerd. U kunt deze openen door te verwijzen naar de `AZ_BATCH_TASK_DIR` omgevings variabele.
 
     Binnen elk taakmap maakt de Batch-service een werkmap (`wd`) waarvan het unieke pad wordt opgegeven door de omgevingsvariabele `AZ_BATCH_TASK_WORKING_DIR`. Deze map biedt lees-/schrijftoegang tot de taak. De taak kan in deze map bestanden maken, lezen, bijwerken en verwijderen. Deze map wordt behouden op basis van de *RetentionTime*-beperking die is opgegeven voor de taak.
 
-    `stdout.txt` en `stderr.txt`: Deze bestanden worden naar de taakmap geschreven bij het uitvoeren van de taak.
+    `stdout.txt` en `stderr.txt`: deze bestanden worden naar de taakmap geschreven bij het uitvoeren van de taak.
 
 > [!IMPORTANT]
 > Wanneer een knooppunt uit de pool wordt verwijderd, worden *alle* bestanden verwijderd die in het knooppunt zijn opgeslagen.
@@ -506,10 +506,10 @@ Het is ook mogelijk dat er een regel matig probleem optreedt waardoor een taak n
 
 ### <a name="connecting-to-compute-nodes"></a>Verbinding maken met rekenknooppunten
 
-U kunt extra foutopsporing en probleemoplossing uitvoeren door u op afstand aan te melden bij een rekenknooppunt. U kunt via Azure Portal een RDP-bestand (Remote Desktop Protocol) downloaden voor Windows-knooppunten en SSH-verbindingsinformatie (Secure Shell) verkrijgen voor Linux-knooppunten. U kunt dit ook doen met behulp van de batch-Api's, bijvoorbeeld met [batch .net][net_rdpfile] of [batch python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh).
+U kunt extra foutopsporing en probleemoplossing uitvoeren door u op afstand aan te melden bij een rekenknooppunt. U kunt via de Azure Portal een RDP-bestand (Remote Desktop Protocol) downloaden voor Windows-knooppunten en SSH-verbindingsinformatie (Secure Shell) verkrijgen voor Linux-knooppunten. U kunt dit ook doen met behulp van de batch-Api's, bijvoorbeeld met [batch .net][net_rdpfile] of [batch python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh).
 
 > [!IMPORTANT]
-> Als u via RDP of SSH verbinding wilt maken met een knooppunt, moet u in het knooppunt eerst een gebruiker maken. Hiervoor gebruikt u de Azure Portal, [voegt u een gebruikers account toe aan een knoop punt][rest_create_user] met behulp van de Batch-rest API, roept u de methode [ComputeNode. CreateComputeNodeUser][net_create_user] aan in batch .net of roept u de [add_user][py_add_user] -methode aan in de batch python-module.
+> Als u via RDP of SSH verbinding wilt maken met een knooppunt, moet u in het knooppunt eerst een gebruiker maken. Hiervoor gebruikt u de Azure Portal, [voegt u een gebruikers account toe aan een knoop punt][rest_create_user] met behulp van de Batch-rest API, roept u de methode [ComputeNode. CreateComputeNodeUser][net_create_user] aan in batch .net of roept u de methode [Add_user][py_add_user] aan in de batch python-module.
 >
 >
 
@@ -533,7 +533,7 @@ In situaties waarin een aantal taken mislukken, kan uw Batch-clienttoepassing of
     Hierdoor wordt het knooppunt effectief offline geplaatst, zodat er geen taken meer aan worden toegewezen, maar het knooppunt wel actief en in de pool blijft. Zo kunt u verder onderzoek verrichten naar de oorzaak van de fouten zonder verlies van gegevens van de mislukte taak en zonder dat het knooppunt extra taakfouten veroorzaakt. U kunt bijvoorbeeld de taakplanning in het knooppunt uitschakelen en u vervolgens [extern aanmelden](#connecting-to-compute-nodes) om de gebeurtenislogboeken van het knooppunt te onderzoeken of een andere probleemoplossing uitvoeren. Nadat u klaar bent met het onderzoek, kunt u het knoop punt weer online plaatsen door de taak planning in te scha kelen ([REST][rest_online] | [.net][net_online]) of door een van de andere acties uit te voeren die eerder zijn besproken.
 
 > [!IMPORTANT]
-> Met elk van de acties die in deze sectie zijn besproken (opnieuw opstarten, installatiekopie terugzetten, verwijderen en taakplanning uitschakelen), kunt u opgeven hoe taken die momenteel in het knooppunt worden uitgevoerd, worden afgehandeld wanneer u de actie uitvoert. Als u bijvoorbeeld het plannen van taken op een knoop punt met behulp van de batch .NET-client bibliotheek uitschakelt, kunt u een [DisableComputeNodeSchedulingOption][net_offline_option] Enum-waarde opgeven om op te geven of actieve taken moeten worden **beëindigd** en opnieuw **in de wachtrij** moet worden geplaatst planning op andere knoop punten of toestaan dat taken worden voltooid voordat de actie wordt uitgevoerd (**TaskCompletion**).
+> Met elk van de acties die in deze sectie zijn besproken (opnieuw opstarten, installatiekopie terugzetten, verwijderen en taakplanning uitschakelen), kunt u opgeven hoe taken die momenteel in het knooppunt worden uitgevoerd, worden afgehandeld wanneer u de actie uitvoert. Als u bijvoorbeeld het plannen van taken op een knoop punt met behulp van de batch .NET-client bibliotheek uitschakelt, kunt u een [DisableComputeNodeSchedulingOption][net_offline_option] Enum-waarde opgeven om op te geven of u actieve taken wilt **beëindigen** , opnieuw in de **wachtrij wilt plaatsen** voor planning op andere knoop punten of het uitvoeren van taken wilt toestaan voordat de actie wordt uitgevoerd (**TaskCompletion**).
 >
 >
 

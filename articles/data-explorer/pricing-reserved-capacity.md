@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: c728f3b9a4c10d52d7361ca76e9b40198a6a0dba
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: bbb2108967353b851a0fa0ee610ec30380e3fc50
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769095"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969274"
 ---
 # <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>Progeschikte-eenheden voor Azure-Data Explorer met Azure Data Explorer gereserveerde capaciteit
 
@@ -27,8 +27,8 @@ U kunt de gereserveerde capaciteit van Azure Data Explorer kopen in de [Azure Po
 * Voor het programma Cloud Solution Provider (CSP) kunnen alleen beheerders van de beheerder of de verkoop agents de gereserveerde capaciteit van Azure Data Explorer kopen.
 
 Zie voor meer informatie over hoe klanten van de onderneming en betalen per gebruik in rekening worden gebracht voor reserverings aankopen:
-* [Meer informatie over het gebruik van Azure-reserve ringen voor uw Enter prise-inschrijving](../billing/billing-understand-reserved-instance-usage-ea.md) 
-* Meer [informatie over het gebruik van Azure-reserve ringen voor uw abonnement met betalen per gebruik](../billing/billing-understand-reserved-instance-usage.md).
+* [Meer informatie over het gebruik van Azure-reserve ringen voor uw Enter prise-inschrijving](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) 
+* Meer [informatie over het gebruik van Azure-reserve ringen voor uw abonnement met betalen per gebruik](../cost-management-billing/reservations/understand-reserved-instance-usage.md).
 
 ## <a name="determine-the-right-markup-usage-before-purchase"></a>Het juiste opmaak gebruik bepalen vóór de aankoop
 
@@ -36,7 +36,7 @@ De grootte van de reserve ring moet worden gebaseerd op het totale aantal Azure 
 
 ## <a name="buy-azure-data-explorer-reserved-capacity"></a>Gereserveerde capaciteit van Azure Data Explorer kopen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Selecteer **alle services** > **reserve ringen** > **Nu kopen**. Selecteer **Toevoegen**
 1. Selecteer in het deel venster **product type selecteren** de optie **Azure Data Explorer** om een nieuwe reserve ring te kopen voor Azure Data Explorer-markerings eenheden. 
 1. Selecteer **kopen**
@@ -54,7 +54,7 @@ Als u de reserve ring van de gereserveerde capaciteit van Azure Data Explorer mo
 
 Als u de reserve ring van uw Azure Data Explorer gereserveerde capaciteit moet wijzigen naar een andere periode, kunt u deze uitwisselen voor een andere reserve ring met een waarde die gelijk of hoger is. De begindatum van de termijn voor de nieuwe reservering wordt niet meegenomen naar de uitgewisselde reservering. De periode van 1 of 3 jaar begint bij het maken van de nieuwe reserve ring. Als u een uitwisseling wilt aanvragen, gaat u naar de reserve ring in het Azure Portal en selecteert u **Exchange** om een ondersteunings aanvraag te maken.
 
-Zie [reserverings uitwisselingen en](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)terugbetalingen voor meer informatie over het omruilen of terugbetalen van reserve ringen.
+Zie [reserverings uitwisselingen en](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md)terugbetalingen voor meer informatie over het omruilen of terugbetalen van reserve ringen.
 
 ## <a name="manage-your-reserved-capacity-reservation"></a>Uw gereserveerde capaciteits reservering beheren
 
@@ -63,17 +63,17 @@ De korting voor de reserverings eenheden van Azure Data Explorer wordt automatis
 
 > [!NOTE]
 > * U kunt het bereik van de reserve ring van Azure Data Explorer gereserveerde capaciteit bijwerken via de [Azure Portal](https://portal.azure.com), Power shell, CLI of via de API.
-> * Zie [azure Data Explorer gereserveerde capaciteit beheren](../billing/billing-understand-kusto-azuredataexplorer-reservation-charges.md)voor meer informatie over het beheren van de reserve ring van de gereserveerde capaciteit van Azure Data Explorer.
+> * Zie [azure Data Explorer gereserveerde capaciteit beheren](../cost-management-billing/reservations/understand-azure-data-explorer-reservation-charges.md)voor meer informatie over het beheren van de reserve ring van de gereserveerde capaciteit van Azure Data Explorer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
-* [Wat zijn Azure-reserveringen?](../billing/billing-save-compute-costs-reservations.md)
-* [Azure-reserveringen beheren](../billing/billing-manage-reserved-vm-instance.md)
-* [Korting op Azure-reserveringen begrijpen](../billing/billing-understand-reservation-charges.md)
-* [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](../billing/billing-understand-reserved-instance-usage.md)
-* [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](../billing/billing-understand-reserved-instance-usage-ea.md)
+* [Wat zijn Azure-reserveringen?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+* [Azure-reserveringen beheren](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+* [Korting op Azure-reserveringen begrijpen](../cost-management-billing/reservations/understand-reservation-charges.md)
+* [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
+* [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
 * [Azure-reserveringen in het CSP-programma (Cloud Solution Provider) van het Partnercentrum](https://docs.microsoft.com/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Contact opnemen

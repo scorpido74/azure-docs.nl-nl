@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: 0a956a1372ba1535b9d918333bd7411a4ca6abe4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83ecb0ad85a02c8c05b9d7e504e578afd98ed7b6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441935"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969357"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Kosten optimaliseren met gereserveerde capaciteit in Azure Cosmos DB
 
@@ -20,9 +20,9 @@ Azure Cosmos DB gereserveerde capaciteit helpt u geld te besparen door over te s
 
 Azure Cosmos DB gereserveerde capaciteit kan uw Cosmos DB kosten aanzienlijk verminderen&mdash;tot 65 procent op reguliere prijzen met één jaar of drie jaar vooraf. Gereserveerde capaciteit biedt een facturerings korting en heeft geen invloed op de runtime status van uw Azure Cosmos DB-resources.
 
-Azure Cosmos DB gereserveerde capaciteit heeft betrekking op de door Voer ingericht voor uw resources. De opslag- en netwerkkosten vallen hier niet onder. Zodra u een reserve ring koopt, worden de doorvoer kosten die overeenkomen met de reserverings kenmerken niet meer in rekening gebracht tegen de betalen naar gebruik-tarieven. Zie het artikel over [Azure-reserve ringen](../billing/billing-save-compute-costs-reservations.md) voor meer informatie over reserve ringen.
+Azure Cosmos DB gereserveerde capaciteit heeft betrekking op de door Voer ingericht voor uw resources. De opslag- en netwerkkosten vallen hier niet onder. Zodra u een reserve ring koopt, worden de doorvoer kosten die overeenkomen met de reserverings kenmerken niet meer in rekening gebracht tegen de betalen naar gebruik-tarieven. Zie het artikel over [Azure-reserve ringen](../cost-management-billing/reservations/save-compute-costs-reservations.md) voor meer informatie over reserve ringen.
 
-U kunt Azure Cosmos DB gereserveerde capaciteit kopen via de [Azure Portal](https://portal.azure.com). Betaal [vooraf of per maand](../billing/billing-monthly-payments-reservations.md) voor de reservering. Gereserveerde capaciteit kopen:
+U kunt Azure Cosmos DB gereserveerde capaciteit kopen via de [Azure Portal](https://portal.azure.com). Betaal [vooraf of per maand](../cost-management-billing/reservations/monthly-payments-reservations.md) voor de reservering. Gereserveerde capaciteit kopen:
 
 * U moet de rol van eigenaar zijn voor minstens één bedrijf of een afzonderlijk abonnement met betalen per gebruik-tarieven.  
 * Voor Enterprise Agreements moet de optie **Gereserveerde instanties toevoegen** zijn ingeschakeld in de [EA Portal](https://ea.azure.com). Als deze instelling is uitgeschakeld, moet u een EA-beheerder zijn voor het abonnement.
@@ -74,22 +74,22 @@ Wanneer de reserve ring verloopt, blijven uw Azure Cosmos DB-exemplaren actief e
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Annulering, omwisseling of terugbetaling van reserveringen
 
-Zie [begrijpen hoe de reserverings korting wordt toegepast op Azure Cosmos DB](../billing/billing-understand-cosmosdb-reservation-charges.md)voor hulp bij het identificeren van de juiste gereserveerde capaciteit.
+Zie [begrijpen hoe de reserverings korting wordt toegepast op Azure Cosmos DB](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md)voor hulp bij het identificeren van de juiste gereserveerde capaciteit.
 
-Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](../billing/billing-azure-reservations-self-service-exchange-and-refund.md) voor meer informatie.
+Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md) voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 De reserverings korting wordt automatisch toegepast op de Azure Cosmos DB resources die overeenkomen met het reserverings bereik en de kenmerken. U kunt het bereik van de reserve ring bijwerken via de Azure Portal, Power shell, Azure CLI of de API.
 
-*  Zie [inzicht in de korting voor Azure-reserve ringen](../billing/billing-understand-cosmosdb-reservation-charges.md)voor meer informatie over hoe gereserveerde capaciteits kortingen worden toegepast op Azure Cosmos db.
+*  Zie [inzicht in de korting voor Azure-reserve ringen](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md)voor meer informatie over hoe gereserveerde capaciteits kortingen worden toegepast op Azure Cosmos db.
 
 * Raadpleeg de volgende artikelen voor meer informatie over Azure-reserveringen:
 
-   * [Wat zijn Azure-reserve ringen?](../billing/billing-save-compute-costs-reservations.md)  
-   * [Azure-reserveringen beheren](../billing/billing-manage-reserved-vm-instance.md)  
-   * [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](../billing/billing-understand-reserved-instance-usage-ea.md)  
-   * [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](../billing/billing-understand-reserved-instance-usage.md)
+   * [Wat zijn Azure-reserve ringen?](../cost-management-billing/reservations/save-compute-costs-reservations.md)  
+   * [Azure-reserveringen beheren](../cost-management-billing/reservations/manage-reserved-vm-instance.md)  
+   * [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)  
+   * [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
    * [Azure-reserve ringen in het Partner Center CSP-programma](https://docs.microsoft.com/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-us"></a>Hebt u hulp nodig? Neem contact met ons op.

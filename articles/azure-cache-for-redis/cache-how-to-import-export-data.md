@@ -6,15 +6,15 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: e4265cf3f9c211a19fe05bc18cf47a273165c3c3
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: df8b65fcb4dd2b9622716052be2df59cbfa5424a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122774"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971821"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Gegevens importeren en exporteren in azure cache voor redis
-Import/export is een Azure-cache voor redis. Hiermee kunt u gegevens importeren in azure cache voor redis of gegevens exporteren uit Azure cache voor redis door een Azure cache voor redis-data base (RDB)-moment opname te importeren en exporteren van een Premium-cache naar een BLOB in een Azure Storage-account. 
+Import/export is een Azure cache voor redis-gegevens beheer bewerking, waarmee u gegevens kunt importeren in azure-cache voor redis of gegevens uit Azure-cache exporteren voor redis door het importeren en exporteren van een Azure-cache voor de redis-data base (RDB) van een Premium-cache naar een BLOB in een Azure Storage-account.
 
 - **Exporteren** : u kunt uw Azure-cache exporteren voor redis RDB-moment opnamen naar een pagina-blob.
 - **Importeren** : u kunt uw Azure-cache voor redis RDB-moment opnamen importeren uit een pagina-BLOB of een blok-blob.
@@ -41,7 +41,7 @@ Importeren kan worden gebruikt om redis compatibele RDB-bestanden te halen van e
     ![Gegevens importeren](./media/cache-how-to-import-export-data/cache-import-data.png)
 2. Klik op **BLOB (s) kiezen** en selecteer het opslag account dat de gegevens bevat die u wilt importeren.
 
-    ![Opslag account kiezen](./media/cache-how-to-import-export-data/cache-import-choose-storage-account.png)
+    ![Opslagaccount kiezen](./media/cache-how-to-import-export-data/cache-import-choose-storage-account.png)
 3. Klik op de container die de gegevens bevat die u wilt importeren.
 
     ![Container kiezen](./media/cache-how-to-import-export-data/cache-import-choose-container.png)
@@ -57,7 +57,7 @@ Importeren kan worden gebruikt om redis compatibele RDB-bestanden te halen van e
 
     ![Importeren](./media/cache-how-to-import-export-data/cache-import-blobs.png)
 
-    U kunt de voortgang van de import bewerking controleren door de meldingen van de Azure Portal te volgen of door de gebeurtenissen in het [controle logboek](../azure-resource-manager/resource-group-audit.md)te bekijken.
+    U kunt de voortgang van de import bewerking controleren door de meldingen van de Azure Portal te volgen of door de gebeurtenissen in het [controle logboek](../azure-resource-manager/management/view-activity-logs.md)te bekijken.
 
     ![Voortgang van importeren](./media/cache-how-to-import-export-data/cache-import-data-import-complete.png)
 
@@ -81,7 +81,7 @@ Met exporteren kunt u de gegevens die zijn opgeslagen in azure cache exporteren 
 
     ![Exporteren](./media/cache-how-to-import-export-data/cache-export-data.png)
 
-    U kunt de voortgang van de export bewerking controleren door de meldingen van de Azure Portal te volgen of door de gebeurtenissen in het [controle logboek](../azure-resource-manager/resource-group-audit.md)te bekijken.
+    U kunt de voortgang van de export bewerking controleren door de meldingen van de Azure Portal te volgen of door de gebeurtenissen in het [controle logboek](../azure-resource-manager/management/view-activity-logs.md)te bekijken.
 
     ![Exporteren van gegevens is voltooid](./media/cache-how-to-import-export-data/cache-export-data-export-complete.png)
 
@@ -109,8 +109,8 @@ Ja, naast het importeren van gegevens die zijn geëxporteerd uit Azure cache voo
 
 > [!IMPORTANT]
 > Voor het importeren van gegevens die zijn geëxporteerd uit andere redis-servers dan Azure cache voor redis bij gebruik van een pagina-blob, moet de grootte van de pagina-BLOB worden uitgelijnd op een grens van 512 bytes. Zie voor beeld van de code voor het uitvoeren van een vereiste byte-celopvulling de voor beeld-upload van de [pagina-BLOB](https://github.com/JimRoberts-MS/SamplePageBlobUpload).
-> 
-> 
+>
+>
 
 ### <a name="what-rdb-versions-can-i-import"></a>Welke RDB-versies kan ik importeren?
 
