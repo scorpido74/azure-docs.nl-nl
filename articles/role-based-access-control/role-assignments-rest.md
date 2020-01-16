@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1ba0c2bd81f32c0aec242dbfb32b2d7f4064ddbe
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 3c7b7dac649548b8b21cc13761009c11609c8904
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707834"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981041"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>Roltoewijzingen toevoegen of verwijderen met behulp van Azure RBAC en de REST API
 
@@ -105,6 +105,6 @@ Als u in RBAC de toegang wilt intrekken voor een rol, verwijdert u de roltoewijz
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Roltoewijzingen weer geven met behulp van Azure RBAC en de REST API](role-assignments-list-rest.md)
-- [Resources implementeren met Resource Manager-sjablonen en Resource Manager REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+- [Resources implementeren met Resource Manager-sjablonen en Resource Manager REST API](../azure-resource-manager/templates/deploy-rest.md)
 - [Azure REST API-naslaginformatie](/rest/api/azure/)
 - [Aangepaste rollen maken voor Azure-resources met behulp van de REST API](custom-roles-rest.md)

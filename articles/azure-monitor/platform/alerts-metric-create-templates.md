@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 1/13/2020
+ms.date: 1/14/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 9f8ed6be825470504b5e7b45a15c4faa9cf5ccfc
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: bfa5d240ba4905f79274941568933daf1425bf8b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932882"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969417"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Een waarschuwing voor metrische gegevens maken met een Resource Manager-sjabloon
 
@@ -29,7 +29,7 @@ De basis stappen zijn als volgt:
 1. Gebruik een van de volgende sjablonen als een JSON-bestand met een beschrijving van het maken van de waarschuwing.
 2. Bewerk en gebruik het bijbehorende parameter bestand als een JSON om de waarschuwing aan te passen.
 3. Zie de beschik bare metrische gegevens in [Azure monitor ondersteunde metrische gegevens](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)voor de para meter `metricName`.
-4. Implementeer de sjabloon met [een implementatie methode](../../azure-resource-manager/resource-group-template-deploy.md).
+4. Implementeer de sjabloon met [een implementatie methode](../../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Sjabloon voor een eenvoudige waarschuwing voor een statische drempel waarde voor waarschuwingen
 
@@ -378,6 +378,13 @@ Sla de JSON hieronder op als simpledynamicmetricalert. json voor het doel van de
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
+    "ignoreDataBefore": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format, e.g. '2019-12-31T22:00:00Z')."
+            }
+        },
         "timeAggregation": {
             "type": "string",
             "defaultValue": "Average",
@@ -455,6 +462,7 @@ Sla de JSON hieronder op als simpledynamicmetricalert. json voor het doel van de
                                 "numberOfEvaluationPeriods": "[parameters('numberOfEvaluationPeriods')]",
                                 "minFailingPeriodsToAlert": "[parameters('minFailingPeriodsToAlert')]"
                             },
+                "ignoreDataBefore": "[parameters('ignoreDataBefore')]",
                             "timeAggregation": "[parameters('timeAggregation')]"
                         }
                     ]
@@ -511,6 +519,9 @@ Sla de JSON hieronder op als simpledynamicmetricalert. para meters. json en wijz
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
+    "ignoreDataBefore": {
+            "value": ""
+        },
         "timeAggregation": {
             "value": "Average"
         },
@@ -559,7 +570,7 @@ Houd rekening met de volgende beperkingen bij het gebruik van dimensies in een w
 - U kunt in elk criterium slechts één waarde per dimensie selecteren.
 - U kunt '\*' niet als dimensie waarde gebruiken.
 - Wanneer de metrische gegevens die in verschillende criteria zijn geconfigureerd, dezelfde dimensie ondersteunen, moet een geconfigureerde dimensie waarde expliciet op dezelfde manier worden ingesteld voor al deze metrische gegevens (in de relevante criteria).
-    - In het onderstaande voor beeld, omdat zowel de para meters voor **trans acties** als **SuccessE2ELatency** een **API-naam** dimensie hebben en *criterion1* de waarde *' GetBlob '* opgeeft voor de naam van de **API** -dimensie, moet *criterion2* ook een *' GetBlob* -waarde instellen voor de naam dimensie van de **API** .
+    - In het onderstaande voor beeld, omdat zowel de metrische gegevens van **trans acties** als **SuccessE2ELatency** een **ApiName** -dimensie hebben, en *criterion1* de waarde *GetBlob* opgeeft voor de dimensie **ApiName** , moet *criterion2* ook een *' GetBlob* -waarde instellen voor de dimensie **ApiName** .
 
 
 Sla de JSON hieronder op als advancedstaticmetricalert. json voor het doel van deze procedure.

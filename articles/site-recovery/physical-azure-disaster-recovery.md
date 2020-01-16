@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a298505779def353834c294f7b5a406720fdd46c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73936171"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980321"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Herstel na nood gevallen naar Azure instellen voor on-premises fysieke servers
 
@@ -29,7 +29,7 @@ Deze zelf studie laat zien hoe u herstel na nood gevallen instelt voor on-premis
 
 ## <a name="prerequisites"></a>Vereisten
 
-Vereisten voor het voltooien van deze zelfstudie:
+Vereisten om deze zelfstudie te voltooien:
 
 - Zorg ervoor dat u bekend bent met de [architectuur en onderdelen](physical-azure-architecture.md) voor dit scenario.
 - Raadpleeg de [ondersteuningsvereisten](vmware-physical-secondary-support-matrix.md) voor alle onderdelen.
@@ -73,7 +73,7 @@ Stel een [Azure-netwerk](../virtual-network/quick-create-portal.md)in.
 
 ## <a name="set-up-an-azure-storage-account"></a>Een Azure-opslagaccount instellen
 
-Stel een [Azure Storage-account](../storage/common/storage-quickstart-create-account.md)in.
+Stel een [Azure Storage-account](../storage/common/storage-account-create.md)in.
 
 - Site Recovery repliceert on-premises machines naar Azure Storage. Virtuele Azure-machines worden gemaakt op basis van de opslag nadat de failover is uitgevoerd.
 - Het opslagaccount moet zich in dezelfde regio bevinden als de Recovery Services-kluis.
@@ -146,7 +146,7 @@ Selecteer en controleer doelbronnen.
 2. Geef het doel implementatie model op.
 3. Site Recovery controleert of u een of meer compatibele Azure-opslagaccounts en -netwerken hebt.
 
-   ![Doel](./media/physical-azure-disaster-recovery/network-storage.png)
+   ![Kiezen](./media/physical-azure-disaster-recovery/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>Een replicatiebeleid maken
@@ -178,7 +178,7 @@ Schakel replicatie in voor elke server.
 7. Selecteer het Azure-netwerk en -subnet waarmee virtuele Azure-machines verbinding maken wanneer ze na een failover worden gemaakt.
 8. Selecteer **Nu configureren voor geselecteerde machines** om de netwerkinstelling toe te passen op alle machines die u voor beveiliging selecteert. Selecteer **Later configureren** om per machine een Azure-netwerk te selecteren. 
 9. Op **fysieke computers**en klik op **+ fysieke machine**. Geef de naam en het IP-adres op. Selecteer het besturings systeem van de computer die u wilt repliceren. Het duurt enkele minuten voordat de servers zijn gedetecteerd en worden weer gegeven. 
-10. Selecteer in **eigenschappen** > **eigenschappen configureren**het account dat door de proces server wordt gebruikt om automatisch de Mobility-service op de computer te installeren.
+10. Selecteer in **Eigenschappen** > **Eigenschappen configureren** het account dat door de processerver zal worden gebruikt om automatisch de Mobility-service op de computer te installeren.
 11. Controleer of het juiste replicatiebeleid is geselecteerd in **Replicatie-instellingen** > **Replicatie-instellingen configureren**. 
 12. Klik op **Replicatie inschakelen**. U kunt de voortgang van de taak **Beveiliging inschakelen** volgen via **Instellingen** > **Taken** > **Site Recovery-taken**. Nadat de taak **Beveiliging voltooien** is uitgevoerd, is de machine klaar voor een mogelijke failover.
 

@@ -2,18 +2,18 @@
 title: De galerie met gedeelde afbeeldingen gebruiken om een aangepaste groep te maken-Azure Batch | Microsoft Docs
 description: Maak een batch-pool met de galerie gedeelde afbeeldingen om aangepaste installatie kopieën in te richten op reken knooppunten die de software en gegevens bevatten die u nodig hebt voor uw toepassing. Aangepaste installatie kopieën zijn een efficiënte manier om reken knooppunten te configureren om uw batch-workloads uit te voeren.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
-ms.author: lahugh
-ms.openlocfilehash: fa232fb48e80e3ae3751920e4215c4b4d3ded19a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.author: jushiman
+ms.openlocfilehash: a933d0656bb4c22e848a663757f4e5e3fa276c61
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827917"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029646"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>De galerie met gedeelde afbeeldingen gebruiken om een aangepaste groep te maken
 
@@ -61,7 +61,7 @@ Als u batch-Pools betrouwbaar wilt schalen met een aangepaste installatie kopie,
 Als u een nieuwe VM voor de installatie kopie maakt, gebruikt u een Azure Marketplace-installatie kopie van de eerste partij die door batch wordt ondersteund als basis installatie kopie voor uw beheerde installatie kopie. Alleen installatie kopieën van de eerste partij kunnen worden gebruikt als basis installatie kopie. Voor een volledige lijst met voor beelden van Azure Marketplace-installatie kopieën die door Azure Batch worden ondersteund, raadpleegt u de [List node agent sku's](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) -bewerking.
 
 > [!NOTE]
-> U kunt geen afbeelding van derden gebruiken die aanvullende licentie-en aankoop voorwaarden als uw basis installatie kopie heeft. Zie de richt lijnen [voor Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+> U kunt geen afbeelding van derden gebruiken die aanvullende licentie-en aankoop voorwaarden als uw basis installatie kopie heeft. Zie de richt lijnen voor [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
 ) -of [Windows](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
 ) -vm's voor meer informatie over deze installatie kopieën voor Marketplace.
 
@@ -85,7 +85,7 @@ Wanneer u de beheerde installatie kopie hebt gemaakt, moet u een galerie met ged
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-cli"></a>Een groep maken op basis van een gedeelde installatie kopie met behulp van de Azure CLI
 
-Als u een groep wilt maken op basis van uw gedeelde installatie kopie met behulp van de Azure CLI, gebruikt u de `az batch pool create` opdracht. Geef de ID van de gedeelde installatie kopie op in het veld `--image`. Zorg ervoor dat het type besturings systeem en de SKU overeenkomen met de versies die zijn opgegeven door `--node-agent-sku-id`
+Als u een groep wilt maken op basis van uw gedeelde installatie kopie met behulp van de Azure CLI, gebruikt u de opdracht `az batch pool create`. Geef de ID van de gedeelde installatie kopie op in het veld `--image`. Zorg ervoor dat het type besturings systeem en de SKU overeenkomen met de versies die zijn opgegeven door `--node-agent-sku-id`
 
 ```azurecli
 az batch pool create \
@@ -148,7 +148,7 @@ Als u van plan bent om een pool met honderden of duizenden Vm's of meer te maken
 
 * **Replica nummers van de galerie met gedeelde afbeeldingen.**  Voor elke groep met Maxi maal 600 exemplaren, raden we u aan ten minste één replica te gebruiken. Als u bijvoorbeeld een groep met 3000 Vm's maakt, moet u ten minste vijf replica's van uw installatie kopie gebruiken. We suggereren altijd dat er meer replica's dan minimale vereisten zijn voor betere prestaties.
 
-* **Grootte van time-out wijzigen.** Als uw pool een vast aantal knoop punten bevat (als deze niet automatisch wordt geschaald), verhoogt u de `resizeTimeout`-eigenschap van de pool, afhankelijk van de grootte van de groep. Voor elke virtuele machine van 1000 is de aanbevolen grootte-time-out ten minste 15 minuten. Zo is de aanbevolen grootte voor een groep met 2000 Vm's ten minste 30 minuten.
+* **Grootte van time-out wijzigen.** Als uw pool een vast aantal knoop punten bevat (als deze niet automatisch wordt geschaald), verhoogt u de `resizeTimeout` eigenschap van de groep, afhankelijk van de grootte van de groep. Voor elke virtuele machine van 1000 is de aanbevolen grootte-time-out ten minste 15 minuten. Zo is de aanbevolen grootte voor een groep met 2000 Vm's ten minste 30 minuten.
 
 ## <a name="next-steps"></a>Volgende stappen
 
