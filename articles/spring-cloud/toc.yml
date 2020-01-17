@@ -54,7 +54,7 @@
       href: spring-cloud-service-registration.md
     - name: Toepassingslogboeken en metrische gegevens analyseren
       href: diagnostic-services.md
-    - name: Azure Spring Cloud-logboekstreaming voor onmiddellijke beschikbaarheid
+    - name: Azure Spring Cloud-applogboeken in realtime streamen
       href: spring-cloud-howto-log-streaming.md
     - name: Uw CI/CD-pijplijn automatiseren in Azure Spring Cloud
       href: spring-cloud-howto-cicd.md

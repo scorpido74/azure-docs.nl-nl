@@ -56,6 +56,12 @@
           href: tutorial-1st-r-experiment.md
     - name: Machine learning-CLI
       href: tutorial-train-deploy-model-cli.md
+    - name: Visual Studio Code
+      items:
+        - name: Azure Machine Learning-extensie instellen
+          href: tutorial-setup-vscode-extension.md
+        - name: Een classificatiemodel van een TensorFlow-installatiekopie trainen en implementeren
+          href: tutorial-train-deploy-image-classification-model-vscode.md
 - name: Voorbeelden
   items:
     - name: Jupyter Notebooks
@@ -151,9 +157,6 @@
         - name: Invoer- en uitvoermappen instellen
           displayName: 'large data, write, experiment files, size limit'
           href: how-to-save-write-experiment-files.md
-        - name: VS Code-extensie gebruiken
-          displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
-          href: how-to-vscode-tools.md
         - name: Interactieve foutopsporing
           displayName: 'Visual Studio Code, VSCode, debug, bugs, remote, compute, instance'
           href: how-to-set-up-vs-code-remote.md
@@ -397,3 +400,6 @@
     - name: Wat is er gebeurd met Workbench?
       displayName: 'desktop, ui, Workbench, upgrade, update, transfer'
       href: overview-what-happened-to-workbench.md
+    - name: Designer-toegankelijkheidsfuncties
+      displayName: 'accessibility, designer, visual interface, screen reader, keyboard shortcuts'
+      href: designer-accessibility.md

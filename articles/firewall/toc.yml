@@ -35,6 +35,8 @@
       href: rule-processing.md
     - name: Servicetags
       href: service-tags.md
+    - name: Nalevingscertificeringen
+      href: compliance-certifications.md
 - name: Instructiegidsen
   items:
     - name: Implementeren met Azure PowerShell

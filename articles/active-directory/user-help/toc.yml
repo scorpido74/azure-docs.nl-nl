@@ -2,44 +2,36 @@
   href: index.yml
 - name: Hulp bij verificatie in twee stappen
   items:
-    - name: Overzicht
-      href: user-help-two-step-verification-overview.md
-    - name: Uw methoden voor verificatie in twee stappen instellen
-      items:
-        - name: Overzicht
-          href: multi-factor-authentication-end-user-first-time.md
-        - name: Een verificator-app instellen
-          href: multi-factor-authentication-setup-auth-app.md
-        - name: Een mobiel apparaat instellen
-          href: multi-factor-authentication-setup-phone-number.md
-        - name: Een kantoortelefoon instellen
-          href: multi-factor-authentication-setup-office-phone.md
+    - name: Wat is de pagina Aanvullende verificatie?
+      href: multi-factor-authentication-end-user-first-time.md
+    - name: Een verificator-app instellen
+      href: multi-factor-authentication-setup-auth-app.md
+    - name: Een mobiel apparaat instellen
+      href: multi-factor-authentication-setup-phone-number.md
+    - name: Een kantoortelefoon instellen
+      href: multi-factor-authentication-setup-office-phone.md
     - name: Uw instellingen beheren
       href: multi-factor-authentication-end-user-manage-settings.md
-    - name: Help opvragen
-      href: multi-factor-authentication-end-user-troubleshoot.md
     - name: App-wachtwoorden beheren
       href: multi-factor-authentication-end-user-app-passwords.md
     - name: Aanmelden
       href: user-help-sign-in.md?toc=./toc.json
+    - name: Help opvragen
+      href: multi-factor-authentication-end-user-troubleshoot.md
 - name: Hulp bij wachtwoord opnieuw instellen
   items:
-    - name: Overzicht
-      href: user-help-password-reset-overview.md
     - name: Registreren voor wachtwoordherstel
       href: active-directory-passwords-reset-register.md
     - name: Uw wachtwoord opnieuw instellen
       href: active-directory-passwords-update-your-own-password.md
 - name: Hulp bij Microsoft Authenticator-app
   items:
-    - name: Overzicht
+    - name: Wat is de Microsoft Authenticator-app?
       href: user-help-auth-app-overview.md
     - name: De app downloaden en installeren
       href: user-help-auth-app-download-install.md
     - name: Accounts toevoegen
       items:
-        - name: Overzicht
-          href: user-help-auth-app-add-account-overview.md
         - name: Een werk- of schoolaccount toevoegen
           href: user-help-auth-app-add-work-school-account.md
         - name: Een persoonlijke Microsoft-account toevoegen
@@ -56,10 +48,10 @@
       href: user-help-auth-app-faq.md
 - name: Help voor portal Mijn account
   items:
-    - name: Overzicht
+    - name: Wat is de portal Mijn account?
       href: my-account-portal-overview.md
     - name: Uw beveiligingsgegevens beheren
-      href: user-help-security-info-overview.md
+      href: security-info-setup-signin.md
     - name: Uw verbonden apparaten beheren
       href: my-account-portal-devices-page.md
     - name: Uw wachtwoord wijzigen
@@ -72,14 +64,10 @@
       href: my-account-portal-sign-ins-page.md
 - name: Hulp bij beveiligingsgegevens (preview)
   items:
-    - name: Overzicht
-      href: user-help-security-info-overview.md
     - name: Beveiligingsgegevens toevoegen tijdens aanmelding
       href: security-info-setup-signin.md
     - name: Methoden om beveiligingsgegevens toe te voegen of bij te werken
       items:
-        - name: Overzicht
-          href: security-info-add-update-methods-overview.md
         - name: Een verificator-app instellen
           href: security-info-setup-auth-app.md
         - name: Sms-berichten instellen
@@ -98,8 +86,6 @@
       href: user-help-sign-in.md?toc=./toc.json
 - name: Hulp bij apparaten beheren
   items:
-    - name: Overzicht
-      href: user-help-device-mgmt-overview.md
     - name: Uw werkapparaat toevoegen
       href: user-help-join-device-on-network.md
     - name: Uw persoonlijke apparaat registreren voor werk
@@ -108,8 +94,6 @@
       href: user-help-device-remediation.md
 - name: Hulp bij Mijn Apps-portal
   items:
-    - name: Overzicht
-      href: my-apps-portal-end-user-overview.md
     - name: Mijn Apps-portal openen en gebruiken
       href: my-apps-portal-end-user-access.md
     - name: Uw profiel en accountinformatie bijwerken
@@ -122,8 +106,6 @@
       href: my-apps-portal-end-user-troubleshoot.md
 - name: Hulp met Mijn apps-portal (preview)
   items:
-    - name: Overzicht
-      href: my-applications-portal-overview.md
     - name: Mijn Apps-portal openen en gebruiken
       href: my-applications-portal-access.md
     - name: Werkruimten openen en gebruiken

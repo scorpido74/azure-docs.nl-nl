@@ -29,6 +29,10 @@
       href: security-center-compliance-dashboard.md
 - name: Concepten
   items:
+    - name: Veiligheidsscore in Security Center
+      href: security-center-secure-score.md
+    - name: De verbeterde Veiligheidsscore
+      href: secure-score-security-controls.md
     - name: Machtigingen
       href: security-center-permissions.md
     - name: Gegevensbeveiliging
@@ -73,8 +77,6 @@
           href: security-center-alert-validation.md
 - name: Instructiegidsen
   items:
-    - name: Uw secure score verbeteren
-      href: security-center-secure-score.md
     - name: Upgraden naar geavanceerde beveiliging
       href: security-center-onboarding.md
     - name: Uw VM's scannen op beveiligingsproblemen

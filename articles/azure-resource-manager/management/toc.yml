@@ -8,6 +8,8 @@
   items:
     - name: Abonnements- en servicebeperkingen
       href: azure-subscription-service-limits.md
+    - name: Naamregels voor resources
+      href: resource-name-rules.md
     - name: Resource Manager en klassieke implementatie
       href: deployment-models.md
     - name: Algemene Azure-beveiligingskenmerken
