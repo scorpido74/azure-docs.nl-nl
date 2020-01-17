@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Documentatie voor Face
-summary: De cloud-gebaseerde Face-API geeft ontwikkelaars toegang tot geavanceerde gezichtsalgoritmen. Microsoft Face-algoritmen maken detectie van gezichtskenmerken en gezichtsherkenning mogelijk. Leer hoe u inhoud op verschillende manieren kunt analyseren met behulp van snelstarts, zelfstudies en voorbeelden.
+summary: De cloud-gebaseerde Face-service geeft ontwikkelaars toegang tot geavanceerde gezichtsalgoritmen. Microsoft Face-algoritmen maken detectie van gezichtskenmerken en gezichtsherkenning mogelijk. Leer hoe u inhoud op verschillende manieren kunt analyseren met behulp van snelstarts, zelfstudies en voorbeelden.
 metadata:
-  title: Documentatie voor Face-API - Quickstarts, zelfstudies, API-naslag - Azure Cognitive Services | Microsoft Docs
-  description: De cloud-gebaseerde Face-API geeft ontwikkelaars toegang tot geavanceerde gezichtsalgoritmen. Microsoft Face-algoritmen maken detectie van gezichtskenmerken en gezichtsherkenning mogelijk. Leer hoe u inhoud op verschillende manieren kunt analyseren met behulp van snelstarts, zelfstudies en voorbeelden.
+  title: Documentatie voor Face - Quickstarts, zelfstudies, API-naslag - Azure Cognitive Services | Microsoft Docs
+  description: De cloud-gebaseerde Face-service geeft ontwikkelaars toegang tot geavanceerde gezichtsalgoritmen. Microsoft Face-algoritmen maken detectie van gezichtskenmerken en gezichtsherkenning mogelijk. Leer hoe u inhoud op verschillende manieren kunt analyseren met behulp van snelstarts, zelfstudies en voorbeelden.
   services: cognitive-services
   ms.service: cognitive-services
   ms.subservice: face-api
@@ -11,18 +11,18 @@ metadata:
   author: PatrickFarley
   ms.author: pafarley
   ms.date: 10/24/2019
-  ms.openlocfilehash: 438fe3ff0e48eba21acea596f8cbed4498aaca18
-  ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+  ms.openlocfilehash: 6a078d8504ea988d44ff5d4bce190c72da28452f
+  ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 11/16/2019
-  ms.locfileid: "74132704"
+  ms.lasthandoff: 01/17/2020
+  ms.locfileid: "76166398"
 landingContent:
-- title: Over Face-API
+- title: Over de Face-service
   linkLists:
   - linkListType: overview
     links:
-    - text: Wat is de Face-API?
+    - text: Wat is de Face-service?
       url: Overview.md
 - title: Gezichten detecteren
   linkLists:

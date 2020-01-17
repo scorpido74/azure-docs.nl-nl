@@ -63,6 +63,8 @@
           href: container-instances-encrypt-data.md
         - name: Implementeren op toegewezen hosts
           href: container-instances-dedicated-hosts.md
+        - name: Logic Apps-connector gebruiken
+          href: ../connectors/connectors-create-api-container-instances.md?toc=/azure/container-instances/toc.json&bc=/azure/container-instances/breadcrumb/toc.json
     - name: Containerscenario's
       items:
         - name: Beleid voor opnieuw opstarten instellen voor taken die eenmalig worden uitgevoerd

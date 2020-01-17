@@ -19,6 +19,8 @@
       href: concept-conditional-access-policy-common.md
     - name: Onderdelen van beleid voor voorwaardelijke toegang
       href: concept-conditional-access-policies.md
+    - name: Cloud-apps en -acties
+      href: concept-conditional-access-cloud-apps.md
     - name: Voorwaarden
       href: conditions.md
     - name: Locatievoorwaarden
@@ -35,7 +37,7 @@
       href: policy-migration.md
     - name: Basisbeschermingsbeleid
       href: concept-baseline-protection.md
-- name: Handleidingen
+- name: Instructiegidsen
   expanded: true
   items:
     - name: De implementatie van voorwaardelijke toegang plannen
