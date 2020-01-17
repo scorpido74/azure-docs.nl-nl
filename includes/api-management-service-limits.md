@@ -1,17 +1,22 @@
 ---
-ms.openlocfilehash: ee44cd4ee5ec6fedfec46cbbb68b0c30118a4b9f
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+title: bestand opnemen
+description: bestand opnemen
+services: api-management
+author: vladvino
+ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
+ms.service: api-management
+ms.topic: include
+ms.date: 01/10/2020
+ms.author: vlvinogr
+ms.custom: include file
+ms.openlocfilehash: 2d4c8c2c831bd6ef16f60c34a6353f4a742798f7
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75904456"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76159371"
 ---
----
-
-Titel: include file description: include file services: API-Management Author: vladvino
-
-MS. AssetID: 1b813833-39c8-46be-8666-fd0960cfbf04 MS. service: API-Management MS. topic: include MS. date: 01/10/2020 MS. Author: vlvinogr MS. Custom: include file
----| Bron | Limiet |
+| Bron | Limiet |
 | ---------------------------------------------------------------------- | -------------------------- |
 | Maximum aantal schaal eenheden | 10 per regio<sup>1</sup> |
 | Cachegrootte | 5 GiB per eenheid<sup>2</sup> |

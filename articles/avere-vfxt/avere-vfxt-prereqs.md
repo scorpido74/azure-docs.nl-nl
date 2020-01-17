@@ -4,22 +4,22 @@ description: Vereisten voor avere vFXT voor Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 0dafef7cf262153ccdb3b490aa0c7bd039b4a89b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7f89ea553bc7198c1faee5ba3549f88da5ec2b2c
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889172"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152983"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Voorbereiden op het maken van de Avere vFXT
 
-In dit artikel worden de vereiste taken voor het maken van een avere vFXT-cluster beschreven.
+In dit artikel worden de vereiste taken voor het maken van een avere vFXT-cluster uitgelegd.
 
 ## <a name="create-a-new-subscription"></a>Een nieuw abonnement maken
 
-Begin met het maken van een nieuw Azure-abonnement. Gebruik een afzonderlijk abonnement voor elk avere vFXT-project, zodat u eenvoudig alle project resources en onkosten kunt bijhouden, andere projecten tegen mogelijke resource beperking tijdens de inrichting moet beveiligen en het opschonen kunt vereenvoudigen.
+Begin met het maken van een nieuw Azure-abonnement. Gebruik een afzonderlijk abonnement voor elk avere vFXT-project om het bijhouden en opschonen van de kosten te vereenvoudigen, en om ervoor te zorgen dat andere projecten niet worden beïnvloed door quota of resource beperking bij het inrichten van de cluster werk stroom.
 
 Een nieuw Azure-abonnement maken in de Azure Portal:
 
@@ -30,37 +30,41 @@ Een nieuw Azure-abonnement maken in de Azure Portal:
 
 ## <a name="configure-subscription-owner-permissions"></a>Machtigingen voor abonnements eigenaren configureren
 
-Een gebruiker met eigenaars machtigingen voor het abonnement moet het vFXT-cluster maken. Er zijn machtigingen voor abonnements eigenaren nodig om de software voorwaarden te accepteren en andere acties uit te voeren.
+Een gebruiker met eigenaars machtigingen voor het abonnement moet het vFXT-cluster maken. Voor het maken van een cluster moet een eigenaar de software voorwaarden accepteren en wijzigingen aan netwerk-en opslag bronnen autoriseren.
 
-Er zijn enkele oplossingen die een niet-eigenaar in staat stellen om een avere vFTX voor Azure-cluster te maken. Deze scenario's omvatten het beperken van resources en het toewijzen van extra rollen aan de maker. In beide gevallen moet een eigenaar van het abonnement ook [de avere vFXT-software voorwaarden](#accept-software-terms) van tevoren accepteren.
+Er zijn enkele tijdelijke oplossingen waarmee een niet-eigenaar een avere vFXT voor Azure-cluster kan maken. Deze scenario's omvatten het beperken van resources en het toewijzen van extra functies op basis van op rollen gebaseerde toegangs beheer (RBAC) aan de maker. In al deze gevallen moet een eigenaar van het abonnement ook [de avere vFXT-software voorwaarden](#accept-software-terms) van tevoren accepteren.
 
 | Scenario | Beperkingen | Er zijn toegangs rollen vereist om het avere vFXT-cluster te maken |
 |----------|--------|-------|
-| Beheerder van resource groep | Het virtuele netwerk, de cluster controller en de cluster knooppunten moeten worden gemaakt in de resource groep | [Gebruikers toegang beheerder](../role-based-access-control/built-in-roles.md#user-access-administrator) en [Inzender](../role-based-access-control/built-in-roles.md#contributor) rollen, zowel binnen het bereik van de doel resource groep |
-| Extern virtueel netwerk | De cluster controller en de cluster knooppunten worden gemaakt in de resource groep, maar er wordt een bestaand virtueel netwerk in een andere resource groep gebruikt. | (1) de beheerders-en [Inzender](../role-based-access-control/built-in-roles.md#contributor) rollen van de [gebruikers toegang](../role-based-access-control/built-in-roles.md#user-access-administrator) tot de resource groep vFXT. en (2) de Inzender van de [virtuele machine](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), de [gebruikers toegangs beheerder](../role-based-access-control/built-in-roles.md#user-access-administrator)en de [avere-Inzender](../role-based-access-control/built-in-roles.md#avere-contributor) rollen binnen het bereik van de resource groep van het virtuele netwerk. |
-
-Een andere is het maken van een aangepaste functie op rollen gebaseerd toegangs beheer (RBAC) voor het eerst en het toewijzen van bevoegdheden aan de gebruiker, zoals wordt uitgelegd in [dit artikel](avere-vfxt-non-owner.md). Deze methode geeft belang rijke machtigingen voor deze gebruikers.
+| De beheerder van de resource groep maakt de vFXT | Het virtuele netwerk, de cluster controller en de cluster knooppunten moeten worden gemaakt in de resource groep. | [Gebruikers toegang beheerder](../role-based-access-control/built-in-roles.md#user-access-administrator) en [Inzender](../role-based-access-control/built-in-roles.md#contributor) rollen, zowel binnen het bereik van de doel resource groep. |
+| Een bestaand, extern virtueel netwerk gebruiken | De cluster controller en cluster knooppunten worden gemaakt in de resource groep van de vFXT, maar er wordt een bestaand virtueel netwerk gebruikt in een andere resource groep. | (1) de beheerders-en [Inzender](../role-based-access-control/built-in-roles.md#contributor) rollen van de [gebruikers toegang](../role-based-access-control/built-in-roles.md#user-access-administrator) tot de resource groep vFXT. en (2) de Inzender van de [virtuele machine](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), de [gebruikers toegangs beheerder](../role-based-access-control/built-in-roles.md#user-access-administrator)en de [avere-Inzender](../role-based-access-control/built-in-roles.md#avere-contributor) rollen binnen het bereik van de resource groep van het virtuele netwerk. |
+| Aangepaste rol voor cluster makers | Geen beperkingen voor de plaatsing van resources. Deze methode geeft niet-eigen aren belang rijke bevoegdheden. | De eigenaar van het abonnement maakt een aangepaste RBAC-rol, zoals wordt beschreven in [dit artikel](avere-vfxt-non-owner.md). |
 
 ## <a name="quota-for-the-vfxt-cluster"></a>Quota voor het vFXT-cluster
 
-U moet over voldoende quota beschikken voor de volgende onderdelen van Azure. Indien nodig kunt u [een quotum verhoging aanvragen](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+Controleer of u voldoende quota hebt voor de volgende Azure-onderdelen. Indien nodig kunt u [een quotum verhoging aanvragen](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 > [!NOTE]
-> De virtuele machines en SSD-onderdelen die hier worden vermeld, gelden voor het vFXT-cluster zelf. U hebt extra quota nodig voor de Vm's en SSD die u wilt gebruiken voor uw Compute-farm.  Zorg ervoor dat het quotum is ingeschakeld voor de regio waar u de werk stroom wilt uitvoeren.
+> De virtuele machines en SSD-onderdelen die hier worden vermeld, gelden voor het vFXT-cluster zelf. Houd er rekening mee dat u ook quota nodig hebt voor de Vm's en Ssd's die u voor uw Compute-Farm gaat gebruiken.
+>
+> Zorg ervoor dat het quotum is ingeschakeld voor de regio waar u de werk stroom wilt uitvoeren.
 
 |Azure-onderdeel|Quota|
 |----------|-----------|
-|Virtuele machines|3 of meer E32s_v3|
+|Virtuele machines|3 of meer E32s_v3 (één per cluster knooppunt) |
 |Premium SSD-opslag|200 GB ruimte in het besturingssysteem plus 1 tot 4 TB ruimte in de cache per knooppunt |
 |Opslagaccount (optioneel) |v2|
-|Back-endopslag van gegevens (optioneel) |Een nieuwe LRS-BLOB-container |
+|Back-end van gegevens (optioneel) |Een nieuwe LRS-BLOB-container |
+<!-- this table also appears in the overview - update it there if updating here -->
 
 ## <a name="accept-software-terms"></a>Software voorwaarden accepteren
 
-> [!NOTE]
-> Deze stap is niet vereist als de eigenaar van een abonnement het avere vFXT-cluster maakt.
+> [!TIP]
+> Sla deze stap over als de eigenaar van een abonnement het avere vFXT-cluster gaat maken.
 
-Tijdens het maken van het cluster moet u de service voorwaarden accepteren voor de avere vFXT-software. Als u geen eigenaar van het abonnement bent, moet de eigenaar van het abonnement de voor waarden van tevoren accepteren. Deze stap hoeft slechts één keer per abonnement te worden uitgevoerd.
+Tijdens het maken van het cluster moet u de service voorwaarden accepteren voor de avere vFXT-software. Als u geen eigenaar van het abonnement bent, moet de eigenaar van het abonnement de voor waarden van tevoren accepteren.
+
+Deze stap hoeft slechts één keer per abonnement te worden uitgevoerd.
 
 De software voorwaarden vooraf accepteren:
 
@@ -68,7 +72,7 @@ De software voorwaarden vooraf accepteren:
 
    ```azurecli
     az login
-    az account set --subscription abc123de-f456-abc7-89de-f01234567890
+    az account set --subscription <subscription ID>
    ```
 
 1. Geef de volgende opdracht om de service voorwaarden te accepteren en programmatische toegang in te scha kelen voor de avere vFXT voor Azure-software-installatie kopie:
@@ -81,14 +85,12 @@ De software voorwaarden vooraf accepteren:
 
 Een [service-eind punt](../virtual-network/virtual-network-service-endpoints-overview.md) houdt Azure Blob-verkeer lokaal in plaats van dit buiten het virtuele netwerk te routeren. Het wordt aanbevolen voor alle avere vFXT voor Azure-clusters die gebruikmaken van Azure Blob voor back-end-gegevens opslag.
 
-Als u een bestaand virtueel netwerk levert en een nieuwe Azure Blob-container voor uw back-end-opslag maakt als onderdeel van het maken van het cluster, moet u een service-eind punt in het netwerk hebben voor micro soft Storage. Dit eind punt moet bestaan voordat het cluster wordt gemaakt, anders mislukt het maken.
-
-Een opslag service-eind punt wordt aanbevolen voor alle avere vFXT voor Azure-clusters die gebruikmaken van Azure Blob Storage, zelfs als u de opslag later toevoegt.
+Als u tijdens het maken van het cluster een nieuw virtueel netwerk maakt, wordt automatisch een eind punt gemaakt. Als u een bestaand virtueel netwerk opgeeft, moet het een service-eind punt van micro soft Storage hebben als u een nieuwe Blob Storage-container wilt maken tijdens het maken van het cluster.<!-- if there is no endpoint in that situation, the cluster creation will fail -->
 
 > [!TIP]
 >
 >* Sla deze stap over als u een nieuw virtueel netwerk maakt als onderdeel van het maken van het cluster.
->* Deze stap is optioneel als u geen Blob Storage maakt tijdens het maken van het cluster. In dat geval kunt u het service-eind punt later maken als u ervoor kiest om Azure Blob te gebruiken.
+>* Een eind punt is optioneel als u geen Blob-opslag maakt tijdens het maken van het cluster. In dat geval kunt u het service-eind punt later maken als u ervoor kiest om Azure Blob te gebruiken.
 
 Maak het eind punt van de opslag service vanuit het Azure Portal.
 
@@ -104,4 +106,4 @@ Maak het eind punt van de opslag service vanuit het Azure Portal.
 
 ## <a name="next-step-create-the-vfxt-cluster"></a>Volgende stap: het vFXT-cluster maken
 
-Nadat u deze vereisten hebt voltooid, kunt u het cluster zelf maken. Lees [het vFXT-cluster implementeren](avere-vfxt-deploy.md) voor instructies.
+Nadat u deze vereisten hebt voltooid, kunt u het cluster maken. Lees [het vFXT-cluster implementeren](avere-vfxt-deploy.md) voor instructies.

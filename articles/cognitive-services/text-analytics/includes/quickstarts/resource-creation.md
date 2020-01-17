@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: b6b0b7b857e109997afb441aa60972c6da61f54b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9623398e51260d88df3d8fd88e3affaf7f906a64
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446242"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76159260"
 ---
 Begin met het gebruik van de Text Analytics-API met een van de volgende opties.
 
@@ -20,10 +20,10 @@ Begin met het gebruik van de Text Analytics-API met een van de volgende opties.
     * Dit is een uitstekende optie als u de Text Analytics-API wilt proberen, maar geen Azure-abonnement hebt.
     
 * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="een Text Analytics resource maken"  target="_blank">een Text Analytics resource <span class="docon docon-navigate-external x-hidden-focus"></span> maken</a>
-    * Beschikbaar via de Azure Portal totdat u de resource verwijdert.
+    * Beschikbaar totdat u de resource verwijdert.
     * Gebruik de gratis prijs categorie om de service te proberen en pas later bij te werken naar een betaalde laag voor productie.
      
 * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne"  title="een resource maken voor meerdere services" target="_blank">een resource <span class="docon docon-navigate-external x-hidden-focus"></span> voor meerdere Service maken</a>
-    * Beschikbaar via de Azure Portal totdat u de resource verwijdert.  
-    * Gebruik dezelfde sleutel en hetzelfde eind punt voor uw toepassingen, op meerdere Cognitive Services.
+    * Beschikbaar totdat u de resource verwijdert.  
+    * Gebruik dezelfde sleutel en hetzelfde eind punt om toegang te krijgen tot meerdere Cognitive Services.
     

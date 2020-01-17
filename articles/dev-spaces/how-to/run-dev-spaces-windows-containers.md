@@ -1,20 +1,20 @@
 ---
 title: Interactie met Windows-containers
 services: azure-dev-spaces
-ms.date: 07/25/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
 description: Meer informatie over het uitvoeren van Azure-ontwikkel ruimten op een bestaand cluster met Windows-containers
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, Windows-containers
-ms.openlocfilehash: 855b877653d4cf60c8165af3094fe0e68ca5e6dd
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 886f71dcaaca6a636b385ef6b101f0a893ff7035
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867299"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156995"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Interactie met Windows-containers met behulp van Azure dev Spaces
 
-U kunt Azure dev Spaces inschakelen voor zowel nieuwe als bestaande Kubernetes-naam ruimten. Azure dev Spaces worden uitgevoerd en instrument services die worden uitgevoerd op Linux-containers. Deze services kunnen ook communiceren met toepassingen die worden uitgevoerd op Windows-containers in dezelfde naam ruimte. In dit artikel leest u hoe u met behulp van ontwikkel ruimten Services in een naam ruimte kunt uitvoeren met bestaande Windows-containers.
+U kunt Azure dev Spaces inschakelen voor zowel nieuwe als bestaande Kubernetes-naam ruimten. Azure dev Spaces worden uitgevoerd en instrument services die worden uitgevoerd op Linux-containers. Deze services kunnen ook communiceren met toepassingen die worden uitgevoerd op Windows-containers in dezelfde naam ruimte. In dit artikel leest u hoe u met behulp van ontwikkel ruimten Services in een naam ruimte kunt uitvoeren met bestaande Windows-containers. Op dit moment kunt u geen fouten opsporen of koppelen aan Windows-containers met Azure dev Spaces.
 
 ## <a name="set-up-your-cluster"></a>Uw cluster instellen
 
@@ -36,8 +36,9 @@ In de volgende voorbeeld uitvoer ziet u een cluster met zowel een Windows-als ee
 
 ```console
 NAME                                STATUS   ROLES   AGE    VERSION
-aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
-aksnpwin987654                      Ready    agent   108s   v1.14.1
+aks-nodepool1-12345678-vmss000000   Ready    agent   13m    v1.14.8
+aks-nodepool1-12345678-vmss000001   Ready    agent   13m    v1.14.8
+aksnpwin000000                      Ready    agent   108s   v1.14.8
 ```
 
 Een [Taint][using-taints] Toep assen op uw Windows-knoop punten. De Taint op uw Windows-knoop punten voor komt dat ontwikkel ruimten van het plannen van Linux-containers worden uitgevoerd op uw Windows-knoop punten. Met de volgende opdracht voorbeeld opdracht wordt een Taint toegepast op het Windows-knoop punt *aksnpwin987654* vanuit het vorige voor beeld.
@@ -60,20 +61,12 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-De voorbeeld toepassing maakt gebruik van [helm 2][helm-installed] voor het uitvoeren van de Windows-service op uw cluster. Installeer helm in uw cluster en verleen de juiste machtigingen:
-
-```console
-helm init --wait
-kubectl create serviceaccount --namespace kube-system tiller
-kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
-kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
-``` 
-
-Ga naar de `charts` Directory en voer de Windows-service uit:
+De voorbeeld toepassing maakt gebruik van [helm][helm-installed] om de Windows-service op uw cluster uit te voeren. Ga naar de `charts` Directory en gebruik helm de Windows-service uitvoeren:
 
 ```console
 cd charts/
-helm install . --namespace dev
+kubectl create ns dev
+helm install windows-service . --namespace dev
 ```
 
 De bovenstaande opdracht gebruikt helm om uw Windows-service uit te voeren in de naam ruimte voor *ontwikkel aars* . Als u geen naam ruimte met de naam *dev*hebt, wordt deze gemaakt.
@@ -122,16 +115,15 @@ spec:
 Gebruik `helm list` om de implementatie van uw Windows-service weer te geven:
 
 ```cmd
-$ helm list
-NAME            REVISION    UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
-gilded-jackal   1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
+$ helm list --namespace dev
+NAME              REVISION  UPDATED                     STATUS      CHART           APP VERSION NAMESPACE
+windows-service 1           Wed Jul 24 15:45:59 2019    DEPLOYED    mywebapi-0.1.0  1.0         dev  
 ```
 
-In het bovenstaande voor beeld is de naam van uw implementatie *Gilded-Jackal*. Werk uw Windows-service bij met de nieuwe configuratie met behulp van `helm upgrade`:
+In het bovenstaande voor beeld is de naam van uw implementatie *Windows-service*. Werk uw Windows-service bij met de nieuwe configuratie met behulp van `helm upgrade`:
 
 ```cmd
-$ helm upgrade gilded-jackal . --namespace dev
-Release "gilded-jackal" has been upgraded.
+helm upgrade windows-service . --namespace dev
 ```
 
 Sinds u uw `deployment.yaml`hebt bijgewerkt, zullen ontwikkel ruimten uw service niet proberen en instrumenteren.
@@ -182,7 +174,7 @@ Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te 
 
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
-[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
+[helm-installed]: https://helm.sh/docs/intro/install/
 [sample-application]: https://github.com/Azure/dev-spaces/tree/master/samples/existingWindowsBackend
 [sample-application-toleration-example]: https://github.com/Azure/dev-spaces/blob/master/samples/existingWindowsBackend/mywebapi-windows/charts/templates/deployment.yaml#L24-L27
 [team-development-qs]: ../quickstart-team-development.md

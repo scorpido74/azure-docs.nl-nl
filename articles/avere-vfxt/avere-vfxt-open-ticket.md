@@ -4,18 +4,18 @@ description: Uitleg over het openen van ondersteunings tickets over avere vFXT v
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 27f32a922a1b063096b0ccf28a01a78d442e0271
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: b3c604003f78a150067875fb2064ab5eca0600db
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889287"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153301"
 ---
 # <a name="get-help-with-your-system"></a>Hulp vragen bij uw systeem
 
-Als u hulp nodig hebt bij uw avere vFXT voor Azure, kunt u de verschillende manieren om ondersteuning te verkrijgen:
+Voor hulp bij uw avere vFXT voor Azure-systeem zijn de volgende manieren om ondersteuning te krijgen:
 
 * **Avere vFXT-probleem** : gebruik de Azure Portal om een ondersteunings ticket voor uw avere-vFXT te openen, zoals [hieronder](#open-a-support-ticket-for-your-avere-vfxt)wordt beschreven.
 * **Quotum** : als u een quotum wilt hebben, moet u [een quotum toename aanvragen](#request-a-quota-increase)
@@ -27,11 +27,7 @@ Als u problemen ondervindt tijdens het implementeren of gebruiken van AVERE vFXT
 
 Volg deze stappen om ervoor te zorgen dat uw ondersteunings ticket is gelabeld met een resource uit uw cluster. Als u het ticket labelt, kunnen we dit routeren naar de juiste ondersteunings resource.
 
-1. Selecteer in [https://portal.azure.com](https://portal.azure.com) **resource groepen**.
-
-   ![scherm afbeelding van Azure Portal linkermenu met ' resource groepen ' omcirkeld](media/avere-vfxt-ticket-rg.png)
-
-1. Blader naar de resource groep die het vFXT-cluster bevat waarop het probleem zich heeft voorgedaan en klik op een van de virtuele avere-machines.
+1. Selecteer in [https://portal.azure.com](https://portal.azure.com) **resource groepen**. Blader naar de resource groep die het vFXT-cluster bevat waarop het probleem zich heeft voorgedaan en klik op een van de virtuele avere-cluster machines.
 
     ![scherm afbeelding van het deel venster Overzicht van Azure Portal-resource groep met een bepaalde VM omcirkeld](media/avere-vfxt-ticket-vm.png)
 
@@ -39,15 +35,25 @@ Volg deze stappen om ervoor te zorgen dat uw ondersteunings ticket is gelabeld m
 
     ![Scherm afbeelding van de Azure Portal VM-pagina voor de virtuele machine van de vorige scherm afbeelding. Het menu links wordt naar beneden geschoven en ' nieuwe ondersteunings aanvraag ' wordt omcirkeld.](media/avere-vfxt-ticket-request.png)
 
-1. Klik op de pagina een van de ondersteunings aanvraag op **alle services** en zoek onder **opslag** om **avere vFXT**te kiezen.
+1. Kies op de eerste pagina van de ondersteunings aanvraag het probleem type en controleer of het juiste abonnement is geselecteerd.
 
-    ![scherm opname van het nieuwe venster voor de ondersteunings aanvraag in de Azure Portal met de koptekst ' basis principes ' en een cirkel rond het item ' service '. De knop alle services is geselecteerd en de vervolg keuzelijst veld heeft de waarde ' avere vFXT '](media/avere-vfxt-ticket-service.png)
+   Klik onder **service**op **alle services** en zoek onder **opslag** om **avere vFXT**te kiezen.
 
-1. Kies op pagina twee het probleem type en de categorie die het meest overeenkomt met uw probleem. Voeg een korte titel en beschrijving toe die de tijd bevat waarop het probleem zich voordeed.
+   Voeg een korte samen vatting toe en selecteer het probleem type.
 
-   ![scherm opname van het nieuwe scherm met de ondersteunings aanvraag met de koptekst ' probleem ', dat veel velden bevat die moeten worden voltooid](media/avere-vfxt-ticket-problem.png)
+    ![scherm opname van een nieuw venster voor ondersteunings aanvraag in de Azure Portal. Het tabblad basis beginselen is geselecteerd. Scherm items zijn onder meer probleem type, abonnement, service, samen vatting en probleem type.](media/ticket-basics.png)
 
-1. Vul op de pagina drie uw contact gegevens in en klik op **maken**. Er wordt een bevestigings-en ticket nummer verzonden naar uw e-mail adres en een ondersteunings medewerker neemt contact met u op.
+   Klik op **Volgende** om door te gaan.
+
+1. De tweede pagina van het formulier ondersteuning bevat suggesties voor het oplossen van het probleem op basis van de beschrijving van uw samen vatting. Klik op de knop **volgende** onderaan als u nog steeds een ondersteunings ticket moet maken.
+
+   ![scherm afbeelding van het venster nieuwe ondersteunings aanvraag met het tabblad oplossingen geselecteerd. Een tekst veld in het midden bevat de titel aanbevolen oplossing en legt mogelijke oplossingen voor.](media/ticket-solutions.png)
+
+1. Geef op de derde pagina Details op. Dit omvat informatie over uw cluster, het tijdstip waarop het probleem zich voordeed, de ernst en hoe u contact met u opneemt. Vul de informatie in en klik onderaan op de knop **volgende** .
+
+   ![scherm afbeelding van het venster nieuwe ondersteunings aanvraag met het tabblad Details geselecteerd. Informatie velden zijn ingedeeld in de categorieën ' probleem Details ', ' ondersteunings methode ' en ' contact gegevens '.](media/ticket-details.png)
+
+1. Controleer de informatie op de laatste pagina en klik op **maken**. Er wordt een bevestigings-en ticket nummer verzonden naar uw e-mail adres en een ondersteunings medewerker neemt contact met u op.
 
 ## <a name="request-a-quota-increase"></a>Een quotum verhoging aanvragen
 

@@ -7,18 +7,16 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 08/07/2019
+ms.date: 01/14/2019
 ms.author: aahi
-ms.openlocfilehash: bce751da0e6f03d197951d2f207ac5c54d72c7ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b56bb8dfdce58de60f82693b511f7923b80fc37a
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75378757"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76159300"
 ---
 > [!IMPORTANT]
-> U kunt als volgt uw sleutel en eind punt vinden op het Azure Portal:
-> 1. Navigeer naar uw Azure-resource op https://portal.azure.com/.
-> 2. Klik op **snel starten**onder **resource beheer**.
+> Ga naar de resource die u hebt gemaakt om uw sleutel en eind punt te vinden. Ze bevinden zich op de pagina **snel starten** van de resource, onder **resource beheer**.
 >
-> Vergeet niet om uw referenties uit uw code te verwijderen wanneer u klaar bent en deze nooit openbaar te plaatsen. Overweeg voor productie een veilige manier om uw referenties op te slaan en te gebruiken. Bijvoorbeeld [Azure Key kluis](https://docs.microsoft.com/azure/key-vault/key-vault-overview).
+> Vergeet niet om de sleutel uit uw code te verwijderen wanneer u klaar bent en deze nooit openbaar te plaatsen. Overweeg voor productie een veilige manier om uw referenties op te slaan en te gebruiken. Bijvoorbeeld [Azure Key kluis](https://docs.microsoft.com/azure/key-vault/key-vault-overview).

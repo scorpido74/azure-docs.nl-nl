@@ -4,14 +4,14 @@ description: Veelgestelde vragen over avere vFXT voor Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 11/06/2019
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 5340952d6d30ae80d53234530a7e2ca6c067cf1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 186b2c048a9de42318e4af287393d731a4eb16f1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415344"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153459"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Veelgestelde vragen over Avere vFXT for Azure
 
@@ -25,11 +25,11 @@ AVERE vFXT voor Azure is een bestands systeem met hoge prestaties waarmee actiev
 
 ### <a name="is-avere-vfxt-a-storage-solution"></a>Is avere vFXT een opslag oplossing?
 
-Nee. AVERE vFXT is een bestandssysteem *cache* die wordt gekoppeld aan opslag omgevingen, zoals uw EMC-of NetApp NAS of een Azure Blob-container. AVERE vFXT stroomlijnt gegevens aanvragen van clients en slaat de gegevens op in de cache om de prestaties op schaal en na verloop van tijd te verbeteren. AVERE vFXT zelf slaat geen gegevens op. Het bevat geen informatie over de hoeveelheid gegevens die achter het bestand is opgeslagen.
+Nee. AVERE vFXT voor Azure is een bestandssysteem *cache* die is gekoppeld aan opslag omgevingen, zoals uw EMC-of NetApp NAS of een Azure Blob-container. AVERE vFXT stroomlijnt gegevens aanvragen van clients en slaat de gegevens op in de cache om de prestaties op schaal en na verloop van tijd te verbeteren. AVERE vFXT zelf slaat geen gegevens op. Het bevat geen informatie over de hoeveelheid gegevens die achter het bestand is opgeslagen.
 
 ### <a name="is-avere-vfxt-a-tiering-solution"></a>Is avere vFXT een laag oplossing?
 
-AVERE vFXT maakt geen automatische laag gegevens tussen warme en coole lagen.  
+AVERE vFXT voor Azure belaagt niet automatisch gegevens tussen warme en coole lagen.  
 
 ### <a name="how-do-i-know-if-an-environment-is-right-for-avere-vfxt"></a>Hoe kan ik weet of een omgeving geschikt is voor avere vFXT?
 
@@ -47,9 +47,9 @@ Overweeg avere vFXT voor Azure als u een analytische pijp lijn hebt die wordt ui
 
 * Uw HPC-toepassing is gebaseerd op NFSv3-clients. (In sommige gevallen kan het SMB 2,1-clients gebruiken, maar de prestaties zijn beperkt.)
 
-Het volgende diagram vereenvoudigt het antwoord op deze vraag. Hoe dichter uw werk stroom zich helemaal rechtsboven bevindt, des te waarschijnlijker is dat de avere-cache oplossing geschikt is voor uw omgeving.
+Het volgende diagram kan u helpen bij het beantwoorden van deze vraag. Hoe dichter uw werk stroom zich helemaal rechtsboven bevindt, des te waarschijnlijker is dat de oplossing voor het opslaan van de avere vFXT voor Azure geschikt is voor uw omgeving.
 
-![Diagram waarin wordt getoond dat het lezen-zwaar laden met duizenden clients beter geschikt is voor avere vFXT](media/avere-vfxt-fit-assessment.png)
+![Grafiek diagram waarin wordt getoond dat het lezen-zwaar laden met duizenden clients beter geschikt is voor avere vFXT](media/avere-vfxt-fit-assessment.png)
 
 ### <a name="at-what-scale-of-clients-does-the-avere-vfxt-solution-make-the-most-sense"></a>Op welke schaal van clients is de avere vFXT-oplossing het meest zinnig?
 
@@ -59,7 +59,7 @@ Typische avere vFXT-klanten voeren veeleisende workloads uit met ongeveer 1.000 
 
 ### <a name="how-much-data-can-an-avere-vfxt-environment-store"></a>Hoeveel gegevens kan een avere vFXT-omgevings opslag?
 
-AVERE vFXT is een cache. De gegevens worden niet specifiek opgeslagen. Er wordt gebruikgemaakt van een combi natie van RAM en Ssd's voor het opslaan van de gegevens in de cache. De gegevens worden permanent opgeslagen op een back-end-opslag systeem (bijvoorbeeld een NetApp NAS-systeem of een BLOB-container). Het avere vFXT-systeem heeft geen informatie over de hoeveelheid gegevens die erop zijn opgeslagen. AVERE vFXT slaat alleen de subset van die gegevens op die door clients worden aangevraagd.  
+AVERE vFXT voor Azure is een cache. De gegevens worden niet specifiek opgeslagen. Er wordt gebruikgemaakt van een combi natie van RAM en Ssd's voor het opslaan van de gegevens in de cache. De gegevens worden permanent opgeslagen op een back-end-opslag systeem (bijvoorbeeld een NetApp NAS-systeem of een BLOB-container). Het avere vFXT-systeem heeft geen informatie over de hoeveelheid gegevens die erop zijn opgeslagen. AVERE vFXT slaat alleen de subset van die gegevens op die door clients worden aangevraagd.  
 
 ### <a name="what-regions-are-supported"></a>Welke regio's worden ondersteund?
 
@@ -67,7 +67,7 @@ AVERE vFXT voor Azure wordt ondersteund in alle regio's, met uitzonde ring van s
 
 ### <a name="how-do-i-get-help-with-avere-vfxt"></a>Hoe kan ik hulp krijgen bij avere vFXT?
 
-Een gespecialiseerde ondersteunings groep biedt hulp bij avere vFXT voor Azure. Volg de instructies in [hulp bij uw systeem verkrijgen](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) om een ondersteunings ticket te openen via de Azure Portal.
+Een gespecialiseerde groep ondersteunings medewerkers biedt hulp bij avere vFXT voor Azure. Volg de instructies in [hulp bij uw systeem verkrijgen](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) om een ondersteunings ticket te openen via de Azure Portal.
 
 ### <a name="is-avere-vfxt-highly-available"></a>Is avere vFXT Maxi maal beschikbaar?
 
@@ -78,7 +78,7 @@ Ja, avere vFXT wordt uitsluitend uitgevoerd als een HA-oplossing.
 Ja, klanten kunnen meer dan één Cloud provider gebruiken met het avere vFXT-cluster. Het ondersteunt AWS S3 Standard buckets, Google Cloud Services Standard buckets en Azure Blob-containers.
 
 > [!NOTE]
-> Een software vergoeding is van toepassing op het gebruik van AVERE vFXT in AWS of Google Cloud, maar niet met Azure.
+> Een software vergoeding is van toepassing op het gebruik van AVERE vFXT met AWS of Google Cloud Storage. Er zijn geen extra software kosten voor het gebruik van Azure Blob Storage.
 
 ## <a name="technical-compute"></a>Technisch: berekenen
 
@@ -165,10 +165,10 @@ De gegevens worden gestripd over de schijven, maar niet versleuteld. De schijven
 
 ### <a name="what-network-is-recommended"></a>Welk netwerk wordt aanbevolen?
 
-Als u gebruikmaakt van on-premises opslag met avere vFXT, moet u een netwerk verbinding hebben van 1 Gbps of hoger. Als u een kleine hoeveelheid gegevens hebt en bereid bent om gegevens te kopiëren naar de Cloud voordat u taken uitvoert, kan de VPN-verbinding voldoende zijn. 
+Als u gebruikmaakt van on-premises opslag met avere vFXT, hebt u een netwerk verbinding van 1 Gbps of beter tussen uw opslag en het cluster nodig. Als u een kleine hoeveelheid gegevens hebt en bereid bent om gegevens te kopiëren naar de Cloud voordat u taken uitvoert, kan de VPN-verbinding voldoende zijn.
 
 > [!TIP]
-> Hoe langzamer de netwerk koppeling is, hoe langzamer de eerste koude Lees bewerkingen zijn. Trage Lees bewerkingen verhogen de latentie van de werk pijplijn.
+> Hoe langzamer de netwerk koppeling is, hoe langzamer de eerste Lees bewerkingen zijn. Trage Lees bewerkingen verhogen de latentie van de werk pijplijn.
 
 ### <a name="can-i-run-avere-vfxt-in-a-different-virtual-network-than-my-compute-cluster"></a>Kan ik avere vFXT uitvoeren in een ander virtueel netwerk dan mijn berekenings cluster?
 
@@ -176,7 +176,7 @@ Ja, u kunt uw avere vFXT-systeem maken in een ander virtueel netwerk. Raadpleeg 
 
 ### <a name="does-avere-vfxt-require-its-own-subnet"></a>Is avere vFXT een eigen subnet nodig?
 
-Ja. AVERE vFXT wordt uitsluitend als een cluster met hoge Beschik baarheid (HA) uitgevoerd en vereist dat meerdere IP-adressen actief zijn. Als het cluster zich in een eigen subnet bevindt, vermijdt u het risico op conflicten met IP-adressen. Dit kan leiden tot problemen met de installatie en de normale werking. Het subnet van het cluster kan zich in het bestaande virtuele netwerk bevinden zolang er geen IP-adressen overlappen.
+Ja. AVERE vFXT wordt uitsluitend als een cluster met hoge Beschik baarheid (HA) uitgevoerd en vereist dat meerdere IP-adressen actief zijn. Als het cluster zich in een eigen subnet bevindt, vermijdt u het risico op conflicten met IP-adressen. Dit kan leiden tot problemen met de installatie en de normale werking. Het subnet van het cluster kan zich in een virtueel netwerk bevinden dat door andere bronnen wordt gebruikt, zolang er geen IP-adressen zijn die elkaar overlappen.
 
 ### <a name="can-i-run-avere-vfxt-on-infiniband"></a>Kan ik avere vFXT op InfiniBand uitvoeren?
 
@@ -224,9 +224,6 @@ In het algemeen worden in avere vFXT voor Azure de volgende systemen ondersteund
 * Dell EMC Isilon (OneFS 7,1, 7,2, 8,0 en 8,1) 
 * NetApp ONTAP (geclusterde modus 9,4, 9,3, 9,2, 9.1 P1, 8.0-8.3) en (7-modus 7. *, 8.0-8,3)
 
-  > [!NOTE]
-  > Azure NetApp Files wordt momenteel niet ondersteund.
-
 * Azure Blob-containers (alleen lokaal redundante opslag)
 * AWS S3-buckets
 * Google-Cloud-buckets
@@ -245,11 +242,13 @@ Ondersteuning is gebaseerd op de hoeveelheid vraag in het veld. Als er voldoende
 
 ### <a name="can-i-use-azure-blob-storage-as-a-core-filer"></a>Kan ik Azure Blob-opslag als kern bestand gebruiken?
 
-Ja, avere vFXT voor Azure kan gebruikmaken van een blok-BLOB-container als een Cloud core-bestand.  
+Ja, avere vFXT voor Azure kan gebruikmaken van een blok-BLOB-container als een Cloud core-bestand.
 
 ### <a name="what-are-the-storage-account-requirements-for-a-blob-core-filer"></a>Wat zijn de vereisten voor het opslag account voor een BLOB core-bestand?
 
 Uw opslag account moet een GPv2-account (General-Purpose v2) zijn en alleen worden geconfigureerd voor lokaal redundante opslag. Geografisch redundante opslag en zone-redundante opslag worden niet ondersteund.
+
+Lees [Azure Blob Storage Cloud core filer](avere-vfxt-add-storage.md#azure-blob-storage-cloud-core-filer) voor meer informatie over de vereisten voor het opslag account.
 
 ### <a name="can-i-use-archive-blob-storage"></a>Kan ik archief-Blob-opslag gebruiken?
 

@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 08/26/2019
 ms.custom: seodec18
-ms.openlocfilehash: c1a749570fe2320be18c98bb6267656cf2687aa1
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 3c0ff63a360d96d0e9db18d430e755e567197de1
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533263"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122080"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Zelf studie: een classificatie model voor een installatie kopie implementeren in Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -389,6 +389,6 @@ service.delete()
 
 + Meer informatie over de [implementatie opties voor Azure machine learning](how-to-deploy-and-where.md).
 + Meer informatie over het [maken van clients voor de webservice](how-to-consume-web-service.md).
-+  Doe asynchroon [voorspellingen op grote hoeveelheden gegevens](how-to-run-batch-predictions.md).
++  Doe asynchroon [voorspellingen op grote hoeveelheden gegevens](how-to-use-parallel-run-step.md).
 + Bewaak uw Azure Machine Learning-modellen met [Application Insights](how-to-enable-app-insights.md).
 + Ga ook aan de slag met de zelfstudie [Automatisch algoritmen selecteren](tutorial-auto-train-models.md). 

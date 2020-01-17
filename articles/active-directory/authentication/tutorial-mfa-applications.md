@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bc721f4521c9ac9b8ed8fed2d6b41f6a1b8bd72
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 68474738aabde1b14752aa33789d7e40c3831908
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846399"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154836"
 ---
 # <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>Zelfstudie: Een Azure Multi-Factor Authentication-pilot implementeren
 
@@ -36,10 +36,10 @@ In deze zelf studie leert u hoe u een beleid voor voorwaardelijke toegang config
 ## <a name="enable-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication inschakelen
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com) met een globale-beheerdersaccount.
-1. Bladeren naar **Azure Active Directory**, **voorwaardelijke toegang**
+1. Naar **Azure Active Directory** > **beveiliging** bladeren > **voorwaardelijke toegang**
 1. Selecteer **Nieuw beleid**.
 1. Geef uw beleid de naam **MFA-pilot**
-1. Onder **Gebruikers en groepen** selecteert u het keuzerondje **Gebruikers en groepen selecteren**.
+1. Onder **gebruikers en groepen**selecteert u het keuze rondje **gebruikers en groepen selecteren**
     * Selecteer de pilotgroep die u hebt gemaakt als onderdeel van de sectie over vereisten in dit artikel.
     * Klik op **Gereed**.
 1. Onder **Cloud-apps** selecteert u het keuzerondje **Apps selecteren**.
@@ -69,8 +69,8 @@ Als u wilt bewijzen dat uw beleid voor voorwaardelijke toegang werkt, test u het
 
 Als u besluit dat u niet langer gebruik wilt maken van de functionaliteit die u als onderdeel van deze zelfstudie hebt geconfigureerd, moet u de volgende wijziging aanbrengen.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-1. Blader naar **Azure Active Directory**, **voorwaardelijke toegang**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
 1. Selecteer het beleid voor voorwaardelijke toegang dat u hebt gemaakt.
 1. Klik op **Verwijderen**.
 

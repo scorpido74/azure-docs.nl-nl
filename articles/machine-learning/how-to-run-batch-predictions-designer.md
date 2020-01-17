@@ -11,19 +11,19 @@ ms.author: trbye
 author: trevorbye
 ms.date: 11/19/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 8d80282044adfa723940aa6f68efc1e719e713c0
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 1e346d2542193ec1880ad0a56bd6afa1b0a46890
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533165"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122624"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Batch voorspellingen uitvoeren met behulp van Azure Machine Learning Designer
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 In deze procedure leert u hoe u de ontwerp functie kunt gebruiken om een model te trainen en een batch Voorspellings pijplijn en-webservice in te stellen. Met batch-voor spelling kunt u getrainde modellen op basis van een doorlopende en on-demand Score instellen voor grote gegevens sets, optioneel geconfigureerd als een webservice die kan worden geactiveerd vanuit elke HTTP-bibliotheek. 
 
-Voor het instellen van batch Score Services met behulp van de SDK raadpleegt u de bijbehorende [procedures](how-to-run-batch-predictions.md).
+Voor het instellen van batch Score Services met behulp van de SDK raadpleegt u de bijbehorende [procedures](how-to-use-parallel-run-step.md).
 
 In deze procedure leert u de volgende taken:
 

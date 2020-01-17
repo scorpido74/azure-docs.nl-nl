@@ -1,21 +1,21 @@
 ---
-title: Witboeken en casestudy's-avere vFTX voor Azure
+title: Witboeken en casestudy's-avere vFXT voor Azure
 description: Koppelingen naar Download bare witboeken, casestudy's en andere artikelen die avere vFXT voor Azure illustreren en hoe het kan worden gebruikt.
 ms.service: avere-vfxt
 author: ekpgh
 ms.author: rohogue
 ms.topic: conceptual
-ms.date: 02/13/2019
-ms.openlocfilehash: a85b939eb222fa459d33ba4eb79b4937baf9056f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/06/2020
+ms.openlocfilehash: 66df6a2018960d83c4aaa9129dad067732a8b3cf
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414283"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152966"
 ---
-# <a name="azure-vftx-for-azure-whitepapers-and-other-resources"></a>Azure-vFTX voor Azure-White papers en andere bronnen
+# <a name="azure-vfxt-for-azure-whitepapers-and-other-resources"></a>Azure-vFXT voor Azure-White papers en andere bronnen
 
-De resources in deze tabel bevatten casestudy's, technische witboeken, infographics en andere artikelen die u kunnen helpen inzicht te krijgen in de manier waarop avere vFXT voor Azure in uw werk stroom past.
+In dit artikel vindt u casestudy's, technische witboeken, infographics en andere bronnen die u kunnen helpen inzicht te krijgen in de manier waarop avere vFXT voor Azure in uw werk stroom past.
 
 ## <a name="deploy-agisoft-photoscan-on-azure"></a>Agisoft-scan op Azure implementeren
 
@@ -34,12 +34,6 @@ Deze korte twee pagina's bevat basis informatie en diagrammen waarin wordt uitge
 **Koppeling:** [infographic: een hybride Cloud maken voor op bestanden gebaseerde workloads](https://azure.microsoft.com/resources/building-a-hybrid-cloud-for-file-based-hpc-workloads/)
 
 In deze afbeelding ziet u de onderdelen en indelingen voor het gebruik van AVERE vFXT voor Azure om Cloud infrastructuur toe te voegen aan uw bestaande systeem. Gebruik avere vFXT voor Azure om de computer capaciteit te verbeteren met uw bestaande on-premises infra structuur, of verplaats gegevens en computing naar de Cloud op tijdelijke of permanente basis.
-
-## <a name="cloud-bursting"></a>Cloud bursting
-
-**Koppeling:** [Cloud bursting voor hoge prestaties, schaal bare NAS](https://microsoft.sharepoint.com/sites/Infopedia_G01KC/KCDOCs2/Avere%20customer%20resources/Solution%20Brief%20Cloud%20Bursting.pdf)
-
- In deze oplossing voor de bursting in de Cloud ziet u hoe u snel gegevens kunt maken die beschikbaar zijn voor Cloud Compute resources nondisruptively met behulp van AVERE vFXT voor Azure.
 
 ## <a name="next-steps"></a>Volgende stappen
 

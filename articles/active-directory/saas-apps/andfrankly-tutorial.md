@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c097c1f08bd72ed5795e4274c41e4eb48dbe34ad
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 736cca668057f38431f91e36ff8fa97840274a38
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152960"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120632"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Zelf studie: integratie met & Frank Azure Active Directory
 
@@ -54,7 +54,7 @@ Om de integratie van &frankly te configureren in Azure AD, moet u &frankly uit d
 
 **Voer de volgende stappen uit om &frankly toe te voegen uit de galerie:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -108,34 +108,30 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD wilt config
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/metadata.php/<tenant id>`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/saml2-acs.php/<tenant id>`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://andfrankly.com/saml/simplesaml/www/module.php/saml/sp/saml2-acs.php/<tenant id>`
 
 5. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
     ![Informatie over eenmalige aanmelding voor &frankly-domein en -URL's](common/metadata-upload-additional-signon.png)
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://andfrankly.com/saml/okta/?saml_sso=<tenant id>`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://andfrankly.com/saml/okta/?saml_sso=<tenant id>`
 
     > [!NOTE]
     > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. Neem contact op met het [&frankly-ondersteuningsteam](mailto:help@andfrankly.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-6. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
+6. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-7. In de sectie **&frankly instellen** kopieert u de juiste URL('s) op basis van uw behoeften.
 
-    ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
+### <a name="configure-frankly-single-sign-on"></a>& Per keer eenmalige aanmelding configureren
 
-    a. Aanmeldings-URL
+Eenmalige aanmelding in & Frankisch inschakelen:
 
-    b. Azure AD-id
-
-    c. Afmeldings-URL
-
-### <a name="configure-frankly-single-sign-on"></a>Eenmalige aanmelding configureren voor &frankly
-
-Als u eenmalige aanmelding aan de zijde van **&frankly** wilt configureren, moet u de gedownloade **XML met federatieve metagegevens** en de correcte uit de Microsoft Azure-portal gekopieerde URL's verzenden naar het [&frankly-ondersteuningsteam](mailto:help@andfrankly.com). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+1. Meld u aan bij &. Ga naar **Account** > **gebruikers beheer**.
+1. Wijzig het verificatie mechanisme van de standaard waarde in **Enter prise sign-on (SAML)** .
+1. Upload de **federatieve meta gegevens-XML** die u in stap 6 in de voor gaande sectie hebt gedownload.
+1. Selecteer **Opslaan**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -174,7 +170,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De &frankly-link in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -198,7 +194,7 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u op de tegel &frankly in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van &frankly waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

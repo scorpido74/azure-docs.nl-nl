@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 30990c3d1e3f885e8984227425d3e8e5c44b9286
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6f2db91a35573bc2cbdd0df2cb1ac09914cc956b
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927480"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122641"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Azure Data Factory gebruiken om gegevens te migreren van Amazon S3 naar Azure Storage 
 
@@ -47,7 +47,7 @@ In de bovenstaande afbeelding ziet u hoe u met behulp van verschillende niveaus 
 
 Binnen één exemplaar van de Kopieer activiteit heeft ADF een ingebouwd mechanisme voor opnieuw proberen, zodat het een bepaald niveau van tijdelijke fouten in de gegevens archieven of in het onderliggende netwerk kan verwerken. 
 
-Bij het binaire kopiëren van S3 naar Blob en van S3 naar ADLS Gen2, voert ADF automatisch controle punten uit.  Als er een fout is opgetreden > bij het uitvoeren van een Kopieer activiteit of als er een time-out optreedt, wordt het kopiëren hervat vanaf het laatste fout punt in plaats van vanaf het begin. 
+Bij het binaire kopiëren van S3 naar Blob en van S3 naar ADLS Gen2, voert ADF automatisch controle punten uit.  Als het uitvoeren van een Kopieer activiteit is mislukt of er een time-out is opgetreden, wordt de kopie hervat vanaf het laatste fout punt in plaats van vanaf het begin. 
 
 ## <a name="network-security"></a>Netwerkbeveiliging 
 
@@ -86,7 +86,7 @@ Gegevens migreren via een persoonlijke koppeling:
 
 ### <a name="initial-snapshot-data-migration"></a>Initiële momentopname gegevens migratie 
 
-Gegevens partities worden vooral aanbevolen bij het migreren van meer dan 10 TB aan gegevens.  Als u de gegevens wilt partitioneren, maakt u gebruik van de instelling voor voegsel om de mappen en bestanden in Amazon S3 op naam te filteren, waarna elke taak voor het kopiëren van de ADF één partitie per keer kan kopiëren.  U kunt gelijktijdig meerdere ADF-Kopieer taken uitvoeren voor een betere door voer. 
+Gegevens partities worden vooral aanbevolen bij het migreren van meer dan 100 TB aan gegevens.  Als u de gegevens wilt partitioneren, maakt u gebruik van de instelling voor voegsel om de mappen en bestanden in Amazon S3 op naam te filteren, waarna elke taak voor het kopiëren van de ADF één partitie per keer kan kopiëren.  U kunt gelijktijdig meerdere ADF-Kopieer taken uitvoeren voor een betere door voer. 
 
 Als een van de Kopieer taken mislukt als gevolg van een probleem met de tijdelijke netwerk-of gegevens opslag, kunt u de mislukte Kopieer taak opnieuw uitvoeren om deze specifieke partitie opnieuw te laden vanuit AWS S3.  Alle andere Kopieer taken voor het laden van andere partities worden niet beïnvloed. 
 

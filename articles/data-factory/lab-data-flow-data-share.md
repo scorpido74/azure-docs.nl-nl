@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: f5e36095c506918298404758523642073dfd19c7
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6c501205812ac72da8cd970b61b71e493888cef1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864525"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156723"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Gegevens integratie met behulp van Azure Data Factory en Azure-gegevens share
 
@@ -99,7 +99,7 @@ Als u fout opsporing wilt inschakelen, klikt u op de schuif regelaar voor **fout
 
 ![Portal](media/lab-data-flow-data-share/configure10.png)
 
-## <a name="ingest-data-from-azure-sql-db-into-adls-gen2-using-the-copy-activity"></a>Gegevens opnemen vanuit Azure SQL DB in ADLS Gen2 met behulp van de Kopieer activiteit
+## <a name="ingest-data-using-the-copy-activity"></a>Gegevens opnemen met behulp van de Kopieer activiteit
 
 In deze sectie maakt u een pijp lijn met een Kopieer activiteit die een tabel van een Azure SQL-data base opneemt in een ADLS Gen2-opslag account. U leert hoe u een pijp lijn toevoegt, een gegevensset configureert en een pijp lijn opspoort via de ADF-UX. Het configuratie patroon dat in deze sectie wordt gebruikt, kan worden toegepast voor het kopiëren van een relationele gegevens opslag naar een gegevens archief op basis van een bestand.
 

@@ -16,14 +16,17 @@ ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 815cffab118f6900c1c9d42a7e44821f8af62532
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 25dd638c15fecbef787e4ceabea9ae7cb4359582
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081990"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120329"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-creative-cloud"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Adobe Creative Cloud
+
+> [!NOTE]
+> In dit artikel wordt de aangepaste op SAML gebaseerde configuratie van de Adobe-beheer console voor Azure Active Directory (Azure AD) beschreven. Voor nieuwe configuraties kunt u het beste de [Azure AD-connector](https://helpx.adobe.com/enterprise/using/sso-setup-azure.html)gebruiken. De Azure AD-connector kan in enkele minuten worden ingesteld en verkort het proces van de domein claim, de installatie van eenmalige aanmelding en de gebruikers synchronisatie.
 
 In deze zelf studie leert u hoe u Adobe Creative Cloud integreert met Azure Active Directory (Azure AD). Wanneer u Adobe Creative Cloud integreert met Azure AD, kunt u het volgende doen:
 
@@ -89,7 +92,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL: `https://adobe.com`
 
-    b. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `https://www.okta.com/saml2/service-provider/<token>`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://www.okta.com/saml2/service-provider/<token>`
 
     > [!NOTE]
     > De id-waarde is niet echt. Werk deze waarde bij met de werkelijke id. Neem contact op met het [ondersteuningsteam van Adobe Creative Cloud](https://www.adobe.com/au/creativecloud/business/teams/plans.html) om deze waarde te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
@@ -100,16 +103,16 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Adobe Creative Cloud toepassing verwacht niet alleen nog maar weinig kenmerken om te worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereiste.
 
-    | Naam | Bronkenmerk|
+    | Name | Bronkenmerk|
     |----- | --------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | Email | user.mail |
+    | E-mail | user.mail |
 
     > [!NOTE]
     > De waarde voor de claim Email kan alleen worden gevuld in het SAML-antwoord als gebruikers beschikken over een geldige licentie voor Office 365 ExO.
 
-1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
+1. Ga op de pagina **eenmalige aanmelding met SAML instellen** naar de sectie SAML **-** **handtekening certificaat** en selecteer vervolgens **downloaden** om het XML-bestand met meta gegevens te downloaden en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
@@ -124,7 +127,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Maken**.
@@ -149,31 +152,26 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-adobe-creative-cloud-sso"></a>Adobe Creative Cloud SSO configureren
 
-1. Meld u in een ander browservenster als beheerder aan bij [Adobe Admin Console](https://adminconsole.adobe.com).
+1. Meld u in een ander webbrowser venster aan bij [Adobe admin console](https://adminconsole.adobe.com) als systeem beheerder.
 
-2. Ga naar **Settings** in de bovenste navigatiebalk en kies **Identity**. De lijst met domeinen wordt geopend. Klik op de koppeling **Configure** voor uw domein. Voer de volgende stappen uit in het gedeelte **Single Sign On Configuration Required**. Zie [Set up domains](https://helpx.adobe.com/enterprise/using/set-up-domain.html) voor meer informatie.
+1. Ga naar **instellingen** op de bovenste navigatie balk en kies vervolgens **identiteit**. De lijst met mappen wordt geopend. Selecteer de gewenste federatieve map.
 
-    ![Instellingen](https://helpx.adobe.com/content/dam/help/en/enterprise/using/configure-microsoft-azure-with-adobe-sso/_jcr_content/main-pars/procedure_719391630/proc_par/step_3/step_par/image/edit-sso-configuration.png "Instellingen")
+1. Selecteer op de pagina **Directory details** de optie **configureren**.
 
-    a. Klik op **Browse** om het gedownloade certificaat van Azure AD te uploaden naar **IDP Certificate**.
+1. Kopieer de entiteit-ID en de ACS-URL (URL of antwoord-URL van de Assertion Consumer-Service). Voer de Url's in op de juiste velden in de Azure Portal.
 
-    b. Plak in het tekstvak **IDP-Uitgever** de waarde van de **Azure ad-id** die u hebt gekopieerd uit Azure Portal.
+    ![Eenmalige aanmelding configureren aan de kant van de app](./media/adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
 
-    c. Plak in het tekstvak **IDP aanmeld-URL** de waarde van de **aanmeldings-URL** die u hebt gekopieerd uit Azure Portal.
+    a. Gebruik de entiteit-ID-waarde die Adobe u heeft verschaft voor **id** in het dialoog venster **app-instellingen configureren** .
 
-    d. Selecteer **HTTP - Redirect** bij **IDP Binding**.
+    b. Gebruik de ACS URL (assertion Consumer Service-URL) die u hebt ontvangen voor **antwoord-URL** in het dialoog venster app- **instellingen configureren** .
 
-    e. Selecteer **Email** bij **User login setting**.
+1. Upload het **XML-bestand met federatieve gegevens** dat u hebt gedownload van de Azure portal aan de onderkant van de pagina. 
 
-    f. Klik op de knop **Save**.
+    ![XML-bestand met federatieve gegevens](https://helpx.adobe.com/content/dam/help/en/enterprise/kb/configure-microsoft-azure-with-adobe-sso/jcr_content/main-pars/procedure/proc_par/step_228106403/step_par/image_copy/saml_signinig_certificate.png "IdP XML voor meta gegevens")
 
-3. In het dashboard wordt nu het XML-bestand **Download Metadata** weergegeven. Dit bestand bevat de EntityDescriptor-URL en AssertionConsumerService-URL van Adobe. Open het bestand en configureer de URL's in de Azure AD-toepassing.
+1. Selecteer **Opslaan**.
 
-    ![Eenmalige aanmelding aan app-zijde configureren](./media/adobe-creative-cloud-tutorial/tutorial_adobe-creative-cloud_003.png)
-
-    a. Gebruik de waarde voor de EntityDescriptor die u van Adobe hebt ontvangen voor **Id** in het dialoogvenster **App-instellingen configureren**.
-
-    b. Gebruik de waarde voor de AssertionConsumerService die u van Adobe hebt ontvangen voor **Antwoord-URL** in het dialoogvenster **App-instellingen configureren**.
 
 ### <a name="create-adobe-creative-cloud-test-user"></a>Een testgebruiker voor Adobe Creative Cloud definiëren
 
@@ -196,7 +194,7 @@ In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen v
 
 Wanneer u op de tegel Adobe Creative Cloud klikt in het toegangsvenster, wordt u als het goed is automatisch aangemeld bij het exemplaar van Adobe Creative Cloud waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
@@ -206,7 +204,7 @@ Wanneer u op de tegel Adobe Creative Cloud klikt in het toegangsvenster, wordt u
 
 - [Probeer Adobe Creative Cloud met Azure AD](https://aad.portal.azure.com/)
 
-- [Set up domains (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-domain.html)
+- [Een identiteit instellen (adobe.com)](https://helpx.adobe.com/enterprise/using/set-up-identity.html)
   
 - [Configure Microsoft Azure for use with Adobe SSO (adobe.com)](https://helpx.adobe.com/enterprise/kb/configure-microsoft-azure-with-adobe-sso.html)
 

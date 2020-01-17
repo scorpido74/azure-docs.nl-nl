@@ -4,14 +4,14 @@ description: Clients koppelen met avere vFXT voor Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: 39c4d6a77121e0b52a1da827ebb9e1976f609b30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b8486b5a33226b1faa5e3874144129dbe7a1a2f2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415283"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153408"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Het Avere vFXT-cluster koppelen
 
@@ -47,7 +47,7 @@ function mount_round_robin() {
 
     # no need to write again if it is already there
     if ! grep --quiet "${DEFAULT_MOUNT_POINT}" /etc/fstab; then
-        echo "${ROUND_ROBIN_IP}:${NFS_PATH}    ${DEFAULT_MOUNT_POINT}    nfs hard,nointr,proto=tcp,mountproto=tcp,retry=30 0 0" >> /etc/fstab
+        echo "${ROUND_ROBIN_IP}:${NFS_PATH}    ${DEFAULT_MOUNT_POINT}    nfs hard,proto=tcp,mountproto=tcp,retry=30 0 0" >> /etc/fstab
         mkdir -p "${DEFAULT_MOUNT_POINT}"
         chown nfsnobody:nfsnobody "${DEFAULT_MOUNT_POINT}"
     fi
@@ -62,27 +62,27 @@ De bovenstaande functie maakt deel uit van het batch-voor beeld dat beschikbaar 
 ## <a name="create-the-mount-command"></a>De koppeling maken opdracht
 
 > [!NOTE]
-> Als u geen nieuwe BLOB-container hebt gemaakt tijdens het maken van uw avere vFXT-cluster, volgt u de stappen in [opslag configureren](avere-vfxt-add-storage.md) voordat u probeert clients te koppelen.
+> Als u geen nieuwe BLOB-container hebt gemaakt tijdens het maken van uw avere vFXT-cluster, voegt u opslag systemen toe zoals beschreven in [opslag ruimte configureren](avere-vfxt-add-storage.md) voordat u probeert clients te koppelen.
 
 Vanaf uw client wijst de ``mount``-opdracht de virtuele server (vserver) toe aan het vFXT-cluster in een pad op het lokale bestands systeem. De indeling is ``mount <vFXT path> <local path> {options}``
 
-Er zijn drie elementen voor de koppelings opdracht:
+De opdracht mount heeft drie elementen:
 
-* vFXT-pad: (een combi natie van het pad voor IP-adres en naam ruimte koppeling dat hieronder wordt beschreven)
+* pad naar vFXT: een combi natie van een IP-adres en pad voor naam ruimte koppeling op het cluster 9described hieronder)
 * lokaal pad-het pad op de client
-* opdracht Opties koppelen-(weer gegeven in de [opdracht argumenten voor koppelen](#mount-command-arguments))
+* opdracht Opties koppelen: wordt weer gegeven in de [opdracht argumenten koppelen](#mount-command-arguments)
 
 ### <a name="junction-and-ip"></a>Verbinding en IP
 
 Het pad vserver is een combi natie van het *IP-adres* plus het pad naar een *naam ruimte koppeling*. De naam ruimte koppeling is een virtueel pad dat is gedefinieerd toen het opslag systeem werd toegevoegd.
 
-Als uw cluster is gemaakt met Blob Storage, wordt het pad naar de naam ruimte `/msazure`
+Als uw cluster is gemaakt met Blob Storage, wordt het pad naar de naam ruimte naar die container `/msazure`
 
 Voorbeeld: ``mount 10.0.0.12:/msazure /mnt/vfxt``
 
-Als u opslag hebt toegevoegd nadat het cluster is gemaakt, komt het pad naar de naam ruimte koppeling overeen met de waarde die u hebt ingesteld in het **pad naar de naam ruimte** bij het maken van de verbinding. Als u bijvoorbeeld ``/avere/files`` hebt gebruikt als het pad naar de naam ruimte, zouden uw clients *iP_address*:/avere/files koppelen aan hun lokale koppel punt.
+Als u opslag hebt toegevoegd nadat u het cluster hebt gemaakt, is het pad van de naam ruimte koppeling de waarde die u hebt ingesteld in het **pad naar de naam ruimte** bij het maken van de verbinding. Als u bijvoorbeeld ``/avere/files`` hebt gebruikt als het pad naar de naam ruimte, zouden uw clients *iP_address*:/avere/files koppelen aan hun lokale koppel punt.
 
-![Dialoog venster nieuwe verbinding toevoegen met/avere/files in het veld naam ruimte-pad](media/avere-vfxt-create-junction-example.png)
+![Dialoog venster nieuwe verbinding toevoegen met/avere/files in het veld naam ruimte-pad](media/avere-vfxt-create-junction-example.png) <!-- to do - change example and screenshot to vfxt/files instead of avere -->
 
 Het IP-adres is een van de client gerichte IP-adressen die zijn gedefinieerd voor de vserver. U kunt het bereik van client gerichte Ip's vinden op twee plaatsen in het configuratie scherm van AVERE:
 
@@ -100,7 +100,7 @@ Naast de paden moet u de volgende para [meters voor koppelen](#mount-command-arg
 
 Om ervoor te zorgen dat een naadloze client koppelt, geeft u deze instellingen en argumenten door in de opdracht Mount:
 
-``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
+``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
 | Vereiste instellingen | |
 --- | ---
@@ -109,14 +109,10 @@ Om ervoor te zorgen dat een naadloze client koppelt, geeft u deze instellingen e
 ``mountproto=netid`` | Deze optie biedt ondersteuning voor de juiste verwerking van netwerk fouten voor koppelings bewerkingen.
 ``retry=n`` | Stel ``retry=30`` in om storingen van de tijdelijke koppeling te voor komen. (Een andere waarde wordt aanbevolen in voorgrond koppelingen.)
 
-| Voorkeurs instellingen  | |
---- | ---
-``nointr``            | De optie ' nointr ' verdient de voor keur voor clients met oudere kernels (vóór april 2008) die deze optie ondersteunen. Houd er rekening mee dat de optie ' intr ' de standaard instelling is.
-
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u clients hebt gekoppeld, kunt u deze gebruiken om de back-end-gegevens opslag (kern bestand) te vullen. Raadpleeg de volgende documenten voor meer informatie over aanvullende installatie taken:
+Nadat u clients hebt gekoppeld, kunt u deze gebruiken om gegevens te kopiëren naar een nieuwe Blob Storage-container in uw cluster. Als u geen nieuwe opslag ruimte nodig hebt, leest u de andere koppelingen voor meer informatie over aanvullende installatie taken:
 
-* [Gegevens verplaatsen naar de cluster core-bestands extensie](avere-vfxt-data-ingest.md) : meerdere clients en threads gebruiken om uw gegevens efficiënt te uploaden
+* [Gegevens verplaatsen naar een kern bestand](avere-vfxt-data-ingest.md) van het cluster: meerdere clients en threads gebruiken om uw gegevens efficiënt te uploaden naar een nieuwe kern bestand
 * [Cluster aanpassing aanpassen](avere-vfxt-tuning.md) : de cluster instellingen op uw werk belasting passen
 * [Beheer van het cluster](avere-vfxt-manage-cluster.md) -het starten of stoppen van het cluster en het beheren van knoop punten

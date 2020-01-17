@@ -1,20 +1,20 @@
 ---
 title: 'Zelf studie: zoeken naar nabijgelegen locaties op een kaart | Microsoft Azure kaarten'
-description: In deze zelf studie leert u hoe u kunt zoeken naar nabijgelegen locaties (interessante punten) op een kaart met behulp van Microsoft Azure Maps.
+description: In deze zelf studie leert u hoe u kunt zoeken naar interessante punten op een kaart met behulp van Microsoft Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 65a091dbe935967d63a11c3c40dd834207f34782
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 974a60bafb3e9be56618824d6205d21c364d6601
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910828"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153017"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Zelf studie: interessante punten zoeken met behulp van Azure Maps
 
@@ -69,7 +69,7 @@ Zie [verificatie beheren in azure Maps](how-to-manage-authentication.md)voor mee
 
 ## <a name="create-a-new-map"></a>Een nieuwe kaart maken
 
-De Map Control-API is een handige clientbibliotheek waarmee u Maps eenvoudig kunt integreren in uw webtoepassing. Het verbergt de complexiteit van het aanroepen van de REST-service en verhoogt de productiviteit met stijlbare en aanpasbare onderdelen. Gebruik de volgende stappen voor het maken van een statische HTML-pagina, ingesloten met de Map Control-API.
+De Map Control-API is een handige client bibliotheek. Met deze API kunt u eenvoudig kaarten integreren in uw webtoepassing. Het verbergt de complexiteit van de bare REST-service aanroepen en stimuleert uw productiviteit met aangepaste onderdelen. Gebruik de volgende stappen voor het maken van een statische HTML-pagina, ingesloten met de Map Control-API.
 
 1. Maak een nieuw bestand op uw lokale computer en noem dit **MapSearch.html**.
 2. Voeg de volgende HTML-onderdelen toe aan het bestand:
@@ -133,7 +133,7 @@ De Map Control-API is een handige clientbibliotheek waarmee u Maps eenvoudig kun
 
    Dit segment initialiseert de Map Control-API voor de sleutel van uw Azure Maps-account. `atlas` is de naam ruimte die de API en gerelateerde visuele onderdelen bevat. `atlas.Map` biedt het besturings element voor een visuele en interactieve Webkaart.
 
-4. Sla de wijzigingen op in het bestand en open de HTML-pagina in een browser. Dit is de meest eenvoudige kaart die u kunt maken door `atlas.Map` aan te roepen met uw account sleutel.
+4. Sla de wijzigingen op in het bestand en open de HTML-pagina in een browser. De weer gegeven kaart is de meest eenvoudige kaart die u kunt maken door `atlas.Map` aan te roepen met uw account sleutel.
 
    ![De kaart weergeven](./media/tutorial-search-location/basic-map.png)
 
@@ -163,7 +163,7 @@ De Map Control-API is een handige clientbibliotheek waarmee u Maps eenvoudig kun
     });
     ```
 
-   In deze code segmenteert u een `ready` gebeurtenis wordt toegevoegd aan de kaart, die wordt geactiveerd wanneer de kaart resources zijn geladen en de kaart gereed is om te worden geopend. In de gebeurtenis-handler voor toewijzings `ready` wordt een gegevens bron gemaakt om resultaat gegevens op te slaan. Er wordt een symboollaag gemaakt en aan de gegevensbron gekoppeld. Deze laag geeft aan hoe de resultaatgegevens in de gegevensbron moeten worden weergegeven, in dit geval met een donkerblauw speldpictogram dat is gecentreerd over de resultatencoördinaat en dat andere pictogrammen de mogelijkheid biedt te overlappen. De laag van het resultaat wordt toegevoegd aan de kaart lagen.
+   In dit code segment wordt een `ready` gebeurtenis toegevoegd aan de kaart, die wordt geactiveerd wanneer de kaart resources zijn geladen en de kaart gereed is om te worden geopend. In de gebeurtenis-handler voor toewijzings `ready` wordt een gegevens bron gemaakt om resultaat gegevens op te slaan. Er wordt een symboollaag gemaakt en aan de gegevensbron gekoppeld. Deze laag geeft aan hoe de resultaat gegevens in de gegevens bron moeten worden gerenderd. In dit geval wordt het resultaat weer gegeven met een donker blauwe ronde PIN-pictogram, gecentreerd op de resultaten coördinaat en kunnen andere pictogrammen elkaar overlappen. De laag van het resultaat wordt toegevoegd aan de kaart lagen.
 
 <a id="usesearch"></a>
 
@@ -215,7 +215,7 @@ In deze sectie wordt uitgelegd hoe u de Maps- [API](https://docs.microsoft.com/r
     });
     ```
 
-3. Sla het bestand **MapSearch.html** op en vernieuw de browser. U ziet nu dat de kaart is gecentreerd op Seattle met een ronde-blauwe pincode waarmee de locaties van benzine stations in het gebied worden gemarkeerd.
+3. Sla het bestand **MapSearch.html** op en vernieuw de browser. Als het goed is, ziet u de kaart gecentreerd op Seattle met round-Blue-pincodes voor locaties van benzine stations in het gebied.
 
    ![De kaart met zoekresultaten weergeven](./media/tutorial-search-location/pins-map.png)
 
@@ -229,9 +229,9 @@ Op dit moment kunnen op de pagina MapSearch de locaties worden weergegeven van n
 
 ## <a name="add-interactive-data"></a>Interactieve gegevens toevoegen
 
-De kaart die we tot nu toe hebben gemaakt, is uitsluitend gebaseerd op de gegevens voor lengtegraad/breedtegraad voor de zoekresultaten. Als u kijkt naar de onbewerkte JSON die door de service Maps Search wordt geretourneerd, ziet u echter dat deze aanvullende informatie over elk tankstation bevat, inclusief de naam en het adres. U kunt die gegevens opnemen in de kaart met behulp van interactieve pop-upvakken.
+De kaart die we tot nu toe hebben gemaakt, is uitsluitend gebaseerd op de gegevens voor lengtegraad/breedtegraad voor de zoekresultaten. De onbewerkte JSON die de Search service Maps retourneert, bevat echter aanvullende informatie over elk station. Inclusief de naam en het adres van de geadresseerde. U kunt die gegevens opnemen in de kaart met behulp van interactieve pop-upvakken.
 
-1. Voeg de volgende regels code toe in de gebeurtenis-handler `ready` toewijzen na de code om een query uit te zoeken naar de fuzzy Search-service. Hiermee wordt een exemplaar van een pop-upvenster gemaakt en een mouse-overgebeurtenis toegevoegd aan de symboollaag.
+1. Voeg de volgende regels code toe in de gebeurtenis-handler `ready` toewijzen na de code om een query uit te zoeken naar de fuzzy Search-service. Met deze code wordt een exemplaar van een pop-upvenster gemaakt en wordt een mouseover-gebeurtenis toegevoegd aan de symbool laag.
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.

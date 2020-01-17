@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 268973f27336e97fe85e493da18714df46171f8a
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 591233154ab79b9493d77030727462bae68ea7d5
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497604"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152354"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Gegevens modellering in Azure Time Series Insights preview
 
@@ -64,9 +64,9 @@ Selecteer om te beginnen de **model** weergave in de weer gave **analyse** van T
 
 ### <a name="delete-an-instance"></a>Een exemplaar verwijderen
 
-1. Selecteer het type en selecteer het pictogram voor **verwijderen** of **afval lade**.
+1. Selecteer het exemplaar en selecteer het pictogram **verwijderen** of **afval lade**.
 
-   [![een type verwijderen door verwijderen te selecteren.](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png#lightbox)
+   [![een exemplaar verwijderen door verwijderen te selecteren.](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png#lightbox)
 
 1. Bevestig de verwijdering door **verwijderen**te selecteren.
 

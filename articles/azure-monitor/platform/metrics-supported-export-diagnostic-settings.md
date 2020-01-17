@@ -8,12 +8,12 @@ ms.date: 05/20/2019
 author: rboucher
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 1bab6a990ba38bc32c2b7350bb1d4eac15a7b95e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d38786d3c7b852d3a9b65cd366eed68ebbb01e3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479031"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152949"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>De metrische gegevens van het Azure Monitor-platform exporteerbaar via Diagnostische instellingen
 
@@ -689,10 +689,10 @@ Ja | Microsoft.Devices/IotHubs | d2c.endpoints.latency.eventHubs | Routering: be
 Ja | Microsoft.Devices/IotHubs | d2c.endpoints.latency.serviceBusQueues | Routering: berichtlatentie voor Service Bus-wachtrij | Milliseconden | Average
 Ja | Microsoft.Devices/IotHubs | d2c.endpoints.latency.serviceBusTopics | Route ring: bericht latentie voor Service Bus onderwerp | Milliseconden | Average
 Ja | Microsoft.Devices/IotHubs | d2c.endpoints.latency.storage | Route ring: bericht latentie voor opslag | Milliseconden | Average
-Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.dropped | Route ring: telemetrie-berichten verwijderd | Aantal | Totaal
+Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.dropped | Route ring: telemetrie-berichten verwijderd  | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.fallback | Route ring: berichten worden bezorgd bij terugval | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.invalid | Route ring: telemetrie-berichten incompatibel | Aantal | Totaal
-Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.orphaned | Route ring: telemetriegegevens van zwevende berichten | Aantal | Totaal
+Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.orphaned | Route ring: telemetriegegevens van zwevende berichten  | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | d2c.telemetry.egress.success | Route ring: telemetrie-berichten | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | d2c.telemetry.ingress.allProtocol | Verzend pogingen voor telemetrie-berichten | Aantal | Totaal
 Ja | Microsoft.Devices/IotHubs | d2c.telemetry.ingress.sendThrottle | Aantal netwerkbeperkingsfouten | Aantal | Totaal

@@ -3,12 +3,12 @@ title: Uw Azure-resources verkennen
 description: Meer informatie over het gebruik van de resource Graph-query taal om uw resources te verkennen en te ontdekken hoe ze zijn verbonden.
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: e489a4eafdbbd838c4850d67fcd8ec40f76f290c
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 0c191915b8c558d80ffef554ef758a35157e035c
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959243"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156978"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Azure-resources verkennen met Resource Graph
 
@@ -152,7 +152,7 @@ Als u terugkeert naar de oorspronkelijke eigenschappen van de virtuele machine, 
 ```kusto
 Resources
 | where type =~ 'Microsoft.Compute/virtualMachines' and properties.hardwareProfile.vmSize == 'Standard_B2s'
-| project name, resourceGroup"
+| project name, resourceGroup
 ```
 
 ```azurecli-interactive

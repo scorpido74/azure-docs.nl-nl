@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/19/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: a320a446bf6a2ff5d5d923961b2614970ffa70f9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b337c1d57d253f55f3171e1de78a81b6de13ba31
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75988407"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157143"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Aan de slag met Azure Cost Management voor partners
 
@@ -213,7 +213,7 @@ De volgende gegevens velden zijn te vinden in detail bestanden voor gebruik en C
 | Locatie | De genormaliseerde locatie van de resource. | N/A |
 | effectivePrice | De werkelijke eenheids prijs van de service, in de valuta prijs. Uniek voor een product, een service familie, een meter en een aanbieding. Wordt gebruikt met prijzen in het prijs overzicht voor het facturerings account. Als er gelaagde prijzen of een inbegrepen hoeveelheid zijn, wordt de overvloei prijs voor verbruik weer gegeven. | De eenheids prijs na aanpassingen wordt gemaakt. |
 | Hoeveelheid | Gemeten hoeveelheid die is gekocht of verbruikt. De hoeveelheid meter die wordt gebruikt tijdens de facturerings periode. | Aantal eenheden. Zorg ervoor dat deze overeenkomt met de informatie in uw facturerings systeem tijdens het afstemmen. |
-| unitOfMeasure | Hiermee wordt de eenheid geïdentificeerd waarin de service wordt gefactureerd. Bijvoorbeeld GB en uren. | Hiermee wordt de eenheid geïdentificeerd waarin de service wordt gefactureerd. Bijvoorbeeld GB, uren en 10, per 10.000. |
+| unitOfMeasure | Hiermee wordt de eenheid geïdentificeerd waarin de service wordt gefactureerd. Bijvoorbeeld GB en uren. | Hiermee wordt de eenheid geïdentificeerd waarin de service wordt gefactureerd. Bijvoorbeeld GB, uren en 10.000 s. |
 | pricingCurrency | De valuta waarin de eenheids prijs wordt gedefinieerd. | De valuta in de prijs lijst.|
 | billingCurrency | De valuta waarin de gefactureerde kosten worden gedefinieerd. | De valuta van de geografische regio van de klant. |
 | chargeType | Definieert het type kosten dat de kosten vertegenwoordigen in Azure Cost Management zoals aankoop en terugbetaling. | Het type kosten of correctie. Niet beschikbaar voor huidige activiteit. |
@@ -257,7 +257,7 @@ U kunt ook groeperen en filteren op de eigenschap **PartnerEarnedCreditApplied**
 
 ## <a name="export-cost-data-to-azure-storage"></a>Kosten gegevens exporteren naar Azure Storage
 
-Partners met toegang tot de facturerings bereiken in een partner-Tenant kunnen hun kosten-en gebruiks gegevens exporteren naar een Azure Storage blob. De BLOB moet zich in een abonnement benemen in de partner-Tenant die geen gedeeld service abonnement of een klant abonnement is. Om het exporteren van kosten gegevens in te scha kelen, wordt u aangeraden een onafhankelijk betalen per gebruik-abonnement in de partner-Tenant in te stellen om de geëxporteerde kosten gegevens te hosten. Het export opslag account wordt gemaakt op de Azure Storage-blob die wordt gehost in het abonnement voor betalen naar gebruik. Op basis van het bereik waarin de partner de export maakt, worden de bijbehorende gegevens automatisch op een terugkerende manier geëxporteerd naar het opslag account.
+Partners met toegang tot de facturerings bereiken in een partner-Tenant kunnen hun kosten-en gebruiks gegevens exporteren naar een Azure Storage blob. De BLOB moet zich in een abonnement benemen in de partner-Tenant die geen gedeeld service abonnement of een klant abonnement is. Om het exporteren van kosten gegevens in te scha kelen, wordt u aangeraden een onafhankelijk betalen per gebruik-abonnement in de partner-Tenant in te stellen om de geëxporteerde kosten gegevens te hosten. Het export opslag account wordt gemaakt op de Azure Storage-blob die wordt gehost in het abonnement voor betalen naar gebruik. Op basis van het bereik waarin de partner de export maakt, worden de bijbehorende gegevens automatisch op regel matige basis geëxporteerd naar het opslag account.
 
 Gebruikers met RBAC-toegang tot het abonnement kunnen de kosten gegevens ook exporteren naar een Azure Storage-blob die wordt gehost in een abonnement in de Tenant van de klant.
 
@@ -265,7 +265,11 @@ Gebruikers met RBAC-toegang tot het abonnement kunnen de kosten gegevens ook exp
 
 Meld u aan bij de partner-Tenant of de Tenant van de klant in het Azure Portal en selecteer **Cost Management + facturering**. Selecteer een geschikt bereik, bijvoorbeeld een facturerings account, en selecteer vervolgens **kosten analyse**. Wanneer de pagina wordt geladen, selecteert u **exporteren**. Selecteer **alle exporteren weer geven** onder planning exporteren.
 
+![Selecteer exporteren en alle exports weer geven](./media/get-started-partners/export01.png)
+
 Selecteer vervolgens **toevoegen** en typ de naam en selecteer een export type. Selecteer het tabblad **opslag** en voer de vereiste gegevens in.
+
+![Tabblad nieuwe export toevoegen en opslag selecteren](./media/get-started-partners/export02.png)
 
 Wanneer u een export maakt in de partner Tenant, selecteert u het abonnement voor betalen naar gebruik in de partner-Tenant. Maak een Azure Storage-account met dat abonnement.
 
@@ -274,6 +278,8 @@ Voor RBAC-gebruikers in de Tenant van de klant selecteert u een abonnement in de
 Bekijk de inhoud en selecteer vervolgens **maken** om een export te plannen.
 
 Als u gegevens wilt controleren in de lijst exporteren, selecteert u de naam van het opslag account. Selecteer op de pagina opslag account de optie **containers** en selecteer vervolgens de container. Ga naar de bijbehorende map en selecteer het CSV-bestand. Selecteer **downloaden** om het CSV-bestand op te halen en te openen. De geëxporteerde gegevens die worden geëxporteerd, zijn vergelijkbaar met kosten gegevens die gelijk zijn aan de gebruiks gegevens van de Azure Portal.
+
+![Voor beeld van geëxporteerde gegevens](./media/get-started-partners/example-export-data.png)
 
 ## <a name="cost-management-rest-apis"></a>Cost Management REST-Api's
 

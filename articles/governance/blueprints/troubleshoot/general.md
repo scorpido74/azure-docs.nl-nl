@@ -1,18 +1,18 @@
 ---
 title: Veelvoorkomende problemen oplossen
 description: Meer informatie over het oplossen van problemen met het maken, toewijzen en verwijderen van blauw drukken, zoals beleids schendingen en Blue para meter-functies.
-ms.date: 11/22/2019
+ms.date: 01/15/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 5b8a20b0757934bbd356ab037a22521a248a7eb2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7306e344a479008a87164a954c4444d375950b0b
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982477"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157080"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Problemen met Azure-blauw drukken oplossen
 
-Er kunnen fouten optreden bij het maken of toewijzen van blauw drukken. In dit artikel worden verschillende fouten beschreven die zich kunnen voordoen en hoe u deze kunt oplossen.
+Er kunnen fouten optreden bij het maken, toewijzen of verwijderen van blauw drukken. In dit artikel worden verschillende fouten beschreven die zich kunnen voordoen en hoe u deze kunt oplossen.
 
 ## <a name="finding-error-details"></a>Fout details zoeken
 
@@ -60,6 +60,22 @@ Het door geven van een blauw druk-para meter die gebruikmaakt van een functie, z
 #### <a name="resolution"></a>Resolutie
 
 Als u een functie wilt door geven door middel van een para meter, moet u de volledige teken reeks met `[` zodanig wegvallen dat de blauw druk-para meter lijkt op `[[resourceGroup().tags.myTag]`. Het escape teken resulteert in blauw drukken om de waarde te behandelen als een teken reeks bij het verwerken van de blauw druk. Blauw drukken plaatst vervolgens de functie op het artefact, zodat deze dynamisch kan worden uitgevoerd. Zie [syntaxis en expressies in azure Resource Manager-sjablonen](../../../azure-resource-manager/templates/template-expressions.md)voor meer informatie.
+
+## <a name="delete-errors"></a>Fouten verwijderen
+
+### <a name="assign-delete-timeout"></a>Scenario: time-out bij toewijzing verwijderen
+
+#### <a name="issue"></a>Probleem
+
+Het verwijderen van een blauw druk-toewijzing is niet voltooid.
+
+#### <a name="cause"></a>Oorzaak
+
+Een blauw druk-toewijzing kan worden vastlopen in een niet-Terminal status wanneer deze wordt verwijderd. Deze status wordt veroorzaakt wanneer resources die zijn gemaakt met de opdracht blauw druk nog steeds moeten worden verwijderd of geen status code retour neren naar Azure-blauw drukken.
+
+#### <a name="resolution"></a>Resolutie
+
+Blauw druk-toewijzingen in een niet-Terminal status worden automatisch gemarkeerd als **mislukt** na een time-out van _6 uur_ . Zodra de time-out de status van de blauw druk toewijzing heeft gewijzigd, kan het verwijderen opnieuw worden uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

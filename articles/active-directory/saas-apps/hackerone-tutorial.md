@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e03aa99e53f4aa2c646dc425a18d848539d537b0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: effd0593384190eb1a1cf261305dd61818c3d0b0
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768211"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120746"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Zelf studie: integratie Azure Active Directory met HackerOne
 
@@ -107,7 +107,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure Active Directo
 
     ![Domein- en URL-gegevens voor eenmalige aanmelding bij HackerOne](common/sp-identifier.png)
 
-    a. Voer in het tekstvak **URL voor aanmelden** het volgende in: `https://hackerone.com/users/saml/auth`
+    a. Voer in het tekstvak **URL voor aanmelden** het volgende in: `https://hackerone.com/users/saml/sign_in?email=<configured domain>`
 
     b. Voer in het tekstvak **id (Entiteits-ID)** het volgende in: `hackerone.com`
 
@@ -155,7 +155,13 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure Active Directo
 
     a. Klik op **Test uitvoeren**.
 
-    b. Als de waarde van het **Status**-veld gelijk is aan **Status van de laatste test: gemaakt**, neemt u contact op met uw [ondersteuningsteam van HackerOne](mailto:support@hackerone.com) om een beoordeling van uw configuratie aan te vragen.
+6. Wanneer de test is voltooid en in het veld **status** de **status van de laatste test**wordt weer gegeven: geslaagd, selecteert u de knop **verificatie aanvragen** om in te dienen bij HackerOne voor goed keuring.
+
+    ![Verzenden naar HackerOne voor goed keuring](./media/hackerone-tutorial/tutorial-hackerone-006.png)
+
+7. Nadat HackerOne de instellingen heeft goedgekeurd, kunt u de knop **Gebruikers migreren** selecteren om SSO-verificatie voor alle gebruikers te vereisen.
+
+    ![SAML inschakelen](./media/hackerone-tutorial/tutorial-hackerone-007.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -174,7 +180,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
     ![Het dialoogvenster Gebruiker](common/user-properties.png)
 
     a. Voer in het veld **Naam** **Britta Simon**in.
-  
+
     b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 

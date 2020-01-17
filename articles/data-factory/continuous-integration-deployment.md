@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 0e4b2cd208e11f7696e016d3fa4353b38f3060d8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fb049b5af5c700cdb72f0319019cfd6eee952d9f
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977523"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156961"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continue integratie en levering in Azure Data Factory
 
@@ -330,7 +330,7 @@ Als u zich in de GIT-modus bevindt, kunt u de standaard eigenschappen in uw Reso
 * U gebruikt automatische CI/CD en u wilt enkele eigenschappen wijzigen tijdens de implementatie van Resource Manager, maar de eigenschappen zijn niet standaard ingesteld op para meters.
 * Uw fabriek is zo groot dat de standaard Resource Manager-sjabloon ongeldig is omdat deze meer dan de Maxi maal toegestane para meters (256) heeft.
 
-Onder deze omstandigheden kunt u de standaard parameterisering-sjabloon overschrijven door een bestand te maken met de naam arm-sjabloon-para meters, definitie. json in de hoofdmap van de opslag plaats. U moet die exacte bestands naam gebruiken. Data Factory leest dit bestand van de vertakking waar u zich momenteel bevindt in de Azure Data Factory Portal, niet alleen vanuit de vertakking voor samen werking. U kunt het bestand maken of bewerken vanuit een persoonlijke vertakking, waar u uw wijzigingen kunt testen door **arm-sjabloon exporteren** te selecteren in de gebruikers interface. U kunt het bestand vervolgens samen voegen in de vertakking voor samen werking. Als er geen bestand wordt gevonden, wordt de standaard sjabloon gebruikt.
+Onder deze omstandigheden kunt u de standaard sjabloon parameterisering overschrijven door een bestand te maken met de naam arm-sjabloon-para meters-definition. json in de map die is opgegeven als de hoofdmap voor de data factory Git-integratie. U moet die exacte bestands naam gebruiken. Data Factory leest dit bestand van de vertakking waar u zich momenteel bevindt in de Azure Data Factory Portal, niet alleen vanuit de vertakking voor samen werking. U kunt het bestand maken of bewerken vanuit een persoonlijke vertakking, waar u uw wijzigingen kunt testen door **arm-sjabloon exporteren** te selecteren in de gebruikers interface. U kunt het bestand vervolgens samen voegen in de vertakking voor samen werking. Als er geen bestand wordt gevonden, wordt de standaard sjabloon gebruikt.
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Syntaxis van een bestand met aangepaste para meters
 

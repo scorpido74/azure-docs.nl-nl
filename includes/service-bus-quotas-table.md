@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ab17d86251be6a0ef2452b258acf8d055b4605db
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: c8412a01f4a5056b352b1d985f36e5a51a25a649
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561527"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76159148"
 ---
 De volgende tabel bevat de quotum gegevens die specifiek zijn voor Azure Service Bus berichten. Voor informatie over prijzen en andere quota's voor Service Bus raadpleegt u [Service Bus prijzen](https://azure.microsoft.com/pricing/details/service-bus/).
 
@@ -32,12 +32,12 @@ De volgende tabel bevat de quotum gegevens die specifiek zijn voor Azure Service
 | Maximale grootte van een bericht [sessie-id](/dotnet/api/microsoft.azure.servicebus.message.sessionid) | Entiteit |- | 128 |
 | Bericht grootte voor een entiteit in een wachtrij, onderwerp of abonnement |Entiteit |Inkomende berichten die groter zijn dan deze quota worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |Maximale bericht grootte: 256 KB voor de [Standard-laag](../articles/service-bus-messaging/service-bus-premium-messaging.md), 1 MB voor de Premium- [laag](../articles/service-bus-messaging/service-bus-premium-messaging.md). <br /><br />Als gevolg van systeem overhead is deze limiet kleiner dan deze waarden.<br /><br />Maximale header-grootte: 64 KB.<br /><br />Maximum aantal header-eigenschappen in eigenschappen verzameling: **byte/int. MaxValue**.<br /><br />Maximale grootte van eigenschap in eigenschappen verzameling: geen expliciete limiet. Beperkt door de maximale header-grootte. |
 | Grootte van bericht eigenschap voor een entiteit in een wachtrij, onderwerp of abonnement |Entiteit | De uitzonderings **SerializationException** is gegenereerd. |De maximale grootte van de bericht eigenschap voor elke eigenschap is 32.000. De cumulatieve grootte van alle eigenschappen mag niet groter zijn dan 64.000. Deze limiet is van toepassing op de volledige header van de [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage), die zowel gebruikers eigenschappen als systeem eigenschappen heeft, zoals [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber), [Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label)en [MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid). |
-| Aantal abonnementen per onderwerp |Entiteit |Volgende aanvragen voor het maken van extra abonnementen voor het onderwerp worden geweigerd. Als gevolg hiervan wordt een fout bericht weer gegeven als deze via de portal is geconfigureerd. Als deze wordt aangeroepen vanuit de beheer-API, wordt er een uitzonde ring ontvangen door de aanroepende code. |2\.000 per onderwerp voor de laag basis en standaard. |
-| Aantal SQL-filters per onderwerp |Entiteit |Volgende aanvragen voor het maken van extra filters in het onderwerp worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |2\.000 |
+| Aantal abonnementen per onderwerp |Entiteit |Volgende aanvragen voor het maken van extra abonnementen voor het onderwerp worden geweigerd. Als gevolg hiervan wordt een fout bericht weer gegeven als deze via de portal is geconfigureerd. Als deze wordt aangeroepen vanuit de beheer-API, wordt er een uitzonde ring ontvangen door de aanroepende code. |2\.000 per onderwerp voor de laag standaard. |
+| Aantal SQL-filters per onderwerp |Entiteit |Volgende aanvragen voor het maken van extra filters in het onderwerp worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |2,000 |
 | Aantal correlatie filters per onderwerp |Entiteit |Volgende aanvragen voor het maken van extra filters in het onderwerp worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |100.000 |
 | Grootte van SQL-filters of-acties |Naamruimte |Volgende aanvragen voor het maken van extra filters worden geweigerd en er wordt een uitzonde ring ontvangen door de aanroepende code. |Maximale lengte van teken reeks voor filter voorwaarde: 1.024 (1 K).<br /><br />Maximale lengte van regel actie teken reeks: 1.024 (1 K).<br /><br />Maximum aantal expressies per regel actie: 32. |
 | Aantal [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -regels per naam ruimte, wachtrij of onderwerp |Entiteit, naam ruimte |Volgende aanvragen voor het maken van aanvullende regels worden afgewezen en er wordt een uitzonde ring ontvangen door de aanroepende code. |Maximum aantal regels: 12. <br /><br /> Regels die zijn geconfigureerd voor een Service Bus naam ruimte, zijn van toepassing op alle wacht rijen en onderwerpen in die naam ruimte. |
-| Aantal berichten per trans actie | trans actie | Extra inkomende berichten worden geweigerd en een uitzonde ring met de melding ' kan niet meer dan 100 berichten verzenden in één trans actie ' wordt ontvangen door de aanroepende code. | 100 <br /><br /> Voor bewerkingen voor **verzenden ()** en **SendAsync ()** . |
+| Aantal berichten per trans actie | Transactie | Extra inkomende berichten worden geweigerd en een uitzonde ring met de melding ' kan niet meer dan 100 berichten verzenden in één trans actie ' wordt ontvangen door de aanroepende code. | 100 <br /><br /> Voor bewerkingen voor **verzenden ()** en **SendAsync ()** . |
 | Aantal regels voor het virtuele netwerk en IP-filter | Naamruimte | &nbsp; | 128 | 
 
 [Azure portal]: https://portal.azure.com

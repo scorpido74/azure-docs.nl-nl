@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0738e56cf6760a356b6e2b6db76f2dc3f6f157ee
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 74d209adf745d1a3c319ef6567b2a7818a5fd514
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763161"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152253"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Veelvoorkomende fouten en waarschuwingen voor Indexeer functies in azure Cognitive Search oplossen
 
@@ -35,7 +35,7 @@ Met ingang van API-versie `2019-05-06`worden indexerings fouten en waarschuwinge
 | Eigenschap | Beschrijving | Voorbeeld |
 | --- | --- | --- |
 | sleutel | De document-ID van het document dat wordt beïnvloed door de fout of waarschuwing. | https:\/-coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
-| naam | De naam van de bewerking waarin wordt beschreven waar de fout of waarschuwing zich voordeed. Dit wordt gegenereerd door de volgende structuur: [categorie]. [subcategorie]. [resource type]. ResourceName | DocumentExtraction. azureblob. myBlobContainerName-verrijking. WebApiSkill. mySkillName projectie. SearchIndex. OutputFieldMapping. myOutputFieldName-projectie. SearchIndex. MergeOrUpload. myIndexName Projectie. KnowledgeStore. table. myTableName |
+| name | De naam van de bewerking waarin wordt beschreven waar de fout of waarschuwing zich voordeed. Dit wordt gegenereerd door de volgende structuur: [categorie]. [subcategorie]. [resource type]. ResourceName | DocumentExtraction. azureblob. myBlobContainerName-verrijking. WebApiSkill. mySkillName projectie. SearchIndex. OutputFieldMapping. myOutputFieldName-projectie. SearchIndex. MergeOrUpload. myIndexName Projectie. KnowledgeStore. table. myTableName |
 | message | Een beschrijving van de fout of waarschuwing op hoog niveau. | Kan de vaardigheid niet uitvoeren omdat de Web-API-aanvraag is mislukt. |
 | details informatie | Aanvullende informatie die nuttig kan zijn bij het vaststellen van het probleem, zoals het WebApi-antwoord als het uitvoeren van een aangepaste kwalificatie is mislukt. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 bron, func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... rest van Stack tracering... |
 | documentationLink | Een koppeling naar relevante documentatie met gedetailleerde informatie voor het opsporen van fouten en het oplossen van het probleem. Deze koppeling wijst vaak naar een van de onderstaande secties op deze pagina. | https://go.microsoft.com/fwlink/?linkid=2106475 |
@@ -46,7 +46,7 @@ Met ingang van API-versie `2019-05-06`worden indexerings fouten en waarschuwinge
 
 De Indexeer functie kan het document niet lezen uit de gegevens bron. Dit kan gebeuren vanwege:
 
-| Reden | Details/voor beeld | Oplossing |
+| Reden | Details/voor beeld | Resolutie |
 | --- | --- | --- |
 | inconsistente veld typen in verschillende documenten | Het type van de waarde komt niet overeen met het kolom Type. Kan `'{47.6,-122.1}'` in de kolom AUTHORS niet opslaan.  Verwacht type is JArray. | Zorg ervoor dat het type van elk veld hetzelfde is in verschillende documenten. Als bijvoorbeeld het eerste document `'startTime'` veld een datum/tijd is en in het tweede document een teken reeks is, wordt deze fout weer bereikt. |
 | fouten van de onderliggende service van de gegevens bron | (van Cosmos DB) `{"Errors":["Request rate is large"]}` | Controleer uw opslag instantie om te controleren of deze in orde is. Mogelijk moet u de schaal/partitionering aanpassen. |
@@ -57,7 +57,7 @@ De Indexeer functie kan het document niet lezen uit de gegevens bron. Dit kan ge
 ## <a name="error-could-not-extract-content-or-metadata-from-your-document"></a>Fout: kan geen inhoud of meta gegevens uit het document extra heren
 Indexeer functie met een BLOB-gegevens bron kan de inhoud of meta gegevens niet ophalen uit het document (bijvoorbeeld een PDF-bestand). Dit kan gebeuren vanwege:
 
-| Reden | Details/voor beeld | Oplossing |
+| Reden | Details/voor beeld | Resolutie |
 | --- | --- | --- |
 | de BLOB overschrijdt de maximale grootte | Document is `'150441598'` bytes, wat de maximale grootte `'134217728'` bytes voor de document extractie voor uw huidige servicelaag overschrijdt. | [BLOB-indexerings fouten](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
 | de BLOB heeft een niet-ondersteund inhouds type | Het document bevat een niet-ondersteund inhouds type `'image/png'` | [BLOB-indexerings fouten](search-howto-indexing-azure-blob-storage.md#dealing-with-errors) |
@@ -69,7 +69,7 @@ Indexeer functie met een BLOB-gegevens bron kan de inhoud of meta gegevens niet 
 ## <a name="error-could-not-parse-document"></a>Fout: kan het document niet parseren
 De Indexeer functie heeft het document uit de gegevens bron gelezen, maar er is een probleem opgetreden bij het converteren van de document inhoud naar het opgegeven veld toewijzings schema. Dit kan gebeuren vanwege:
 
-| Reden | Details/voor beeld | Oplossing |
+| Reden | Details/voor beeld | Resolutie |
 | --- | --- | --- |
 | De document sleutel ontbreekt | De document sleutel mag niet ontbreken of zijn leeg | Zorg ervoor dat alle documenten geldige document sleutels hebben |
 | De document sleutel is ongeldig | De document sleutel mag niet langer zijn dan 1024 tekens | Wijzig de document sleutel zodat deze voldoet aan de validatie vereisten. |
@@ -81,7 +81,7 @@ De Indexeer functie heeft het document uit de gegevens bron gelezen, maar er is 
 ## <a name="error-could-not-execute-skill"></a>Fout: kan de kwalificatie niet uitvoeren
 De Indexeer functie kan geen vaardigheid uitvoeren in de vaardig heden.
 
-| Reden | Details/voor beeld | Oplossing |
+| Reden | Details/voor beeld | Resolutie |
 | --- | --- | --- |
 | Problemen met de tijdelijke verbinding | Er is een tijdelijke fout opgetreden. Probeer het later opnieuw. | Af en toe zijn er onverwachte verbindings problemen. Probeer het document later opnieuw uit te voeren via uw Indexeer functie. |
 | Mogelijke product bug | Er is een onverwachte fout opgetreden. | Dit duidt op een onbekende klasse fout. Dit kan betekenen dat er een product fout is opgetreden. Neem een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) op om hulp te krijgen. |
@@ -140,7 +140,7 @@ De maximum waarde die u voor de para meter `timeout` kunt instellen, is 230 seco
 
 Het document is gelezen en verwerkt, maar de Indexeer functie kan het niet toevoegen aan de zoek index. Dit kan gebeuren vanwege:
 
-| Reden | Details/voor beeld | Oplossing |
+| Reden | Details/voor beeld | Resolutie |
 | --- | --- | --- |
 | Een veld bevat een term die te groot is | Een term in uw document is groter dan de [limiet van 32 KB](search-limits-quotas-capacity.md#api-request-limits) | U kunt deze beperking vermijden door ervoor te zorgen dat het veld niet is geconfigureerd als filterbaar, facetable of sorteerbaar.
 | Het document is te groot om te worden geïndexeerd | Een document is groter dan de [maximale grootte](search-limits-quotas-capacity.md#api-request-limits) van de API-aanvraag | [Grote gegevens sets indexeren](search-howto-large-index.md)
@@ -171,6 +171,18 @@ In al deze gevallen raadpleegt u [ondersteunde gegevens typen](https://docs.micr
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Fout: kan het document niet verwerken binnen de Indexeer functie Max. uitvoerings tijd
 
 Deze fout treedt op wanneer de verwerking van één document uit de gegevens bron binnen de toegestane uitvoerings tijd niet kan worden voltooid met de Indexeer functie. De [maximale uitvoerings tijd](search-limits-quotas-capacity.md#indexer-limits) is korter wanneer vaardig heden worden gebruikt. Als deze fout optreedt, als u maxFailedItems hebt ingesteld op een andere waarde dan 0, wordt het document in toekomstige uitvoeringen door de Indexeer functie omzeild, zodat de indexering kan worden uitgevoerd. Als u geen enkel document kunt overs Laan of als deze fout consequent wordt weer gegeven, kunt u overwegen documenten te verbreken in kleinere documenten zodat gedeeltelijke voortgang kan worden gemaakt binnen een uitvoering van één Indexeer functie.
+
+<a name="could-not-project-document"/>
+
+## <a name="error-could-not-project-document"></a>Fout: kan document niet projecteren
+
+Deze fout treedt op wanneer de Indexeer functie probeert [gegevens te projecteren in een Knowledge Store](knowledge-store-projection-overview.md) en er een fout is opgetreden in onze poging om dit uit te voeren.  Deze fout kan consistent en fixable zijn, of kan een tijdelijke storing zijn bij de projectie-sink die u mogelijk moet wachten en probeer het opnieuw om het probleem op te lossen.  Hier vindt u een aantal bekende fout statussen en mogelijke oplossingen.
+
+| Reden | Details/voor beeld | Resolutie |
+| --- | --- | --- |
+| Kan de projectie-BLOB-`'blobUri'` niet bijwerken in de container `'containerName'` |De opgegeven container bestaat niet. | Met de Indexeer functie wordt gecontroleerd of de opgegeven container eerder is gemaakt en wordt deze zo nodig gemaakt, maar wordt deze controle slechts eenmaal uitgevoerd per Indexeer functie. Deze fout betekent dat de container na deze stap is verwijderd.  Probeer dit probleem op te lossen door de gegevens van uw opslag account op te slaan. wacht totdat de Indexeer functie is voltooid en voer de Indexeer functie opnieuw uit. |
+| Kan de projectie-BLOB-`'blobUri'` niet bijwerken in de container `'containerName'` |Kan geen gegevens schrijven naar de transport verbinding: een bestaande verbinding is geforceerd gesloten door de externe host. | Er wordt naar verwachting een tijdelijke fout opgetreden met Azure Storage en moet daarom worden opgelost door de Indexeer functie opnieuw uit te voeren. Als u deze fout consistent ondervindt, kunt u een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) indienen zodat het verder kan worden onderzocht.  |
+| Kan geen rij-`'projectionRow'` bijwerken in de tabel `'tableName'` | De server is bezet. | Er wordt naar verwachting een tijdelijke fout opgetreden met Azure Storage en moet daarom worden opgelost door de Indexeer functie opnieuw uit te voeren. Als u deze fout consistent ondervindt, kunt u een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) indienen zodat het verder kan worden onderzocht.  |
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
 
@@ -203,7 +215,7 @@ Als u een standaard waarde wilt opgeven in het geval van een ontbrekende invoer,
 }
 ```
 
-| Reden | Details/voor beeld | Oplossing |
+| Reden | Details/voor beeld | Resolutie |
 | --- | --- | --- |
 | De vaardigheids invoer is van het verkeerde type | De vereiste vaardigheids invoer is niet van het verwachte type `String`. Naam: `text`, Bron: `/document/merged_content`. "  ' De vereiste vaardigheids invoer heeft niet de verwachte indeling. Naam: `text`, Bron: `/document/merged_content`. "  "Kan niet nalopen over niet-matrix `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`".  "Kan geen `0` selecteren in niet-matrix `/document/normalized_images/0/imageCelebrities/0/detail/celebrities`" | Bepaalde vaardig heden verwachten invoer van bepaalde typen, bijvoorbeeld [sentiment-vaardigheid](cognitive-search-skill-sentiment.md) verwacht `text` een teken reeks te zijn. Als met de invoer een niet-teken reeks waarde wordt opgegeven, wordt de kwalificatie niet uitgevoerd en worden er geen uitvoer gegenereerd. Zorg ervoor dat uw gegevensset uniforme invoer waarden bevat, of gebruik een [aangepaste web API-vaardigheid](cognitive-search-custom-skill-web-api.md) om de invoer voor te verwerken. Als u de vaardigheid over een matrix wilt door lopen, controleert u of de context van de vaardigheid en de invoer `*` op de juiste posities hebben. Normaal gesp roken moet zowel de context als de invoer bron eindigen op `*` voor matrices. |
 | Vaardigheids invoer ontbreekt | De vereiste vaardigheids invoer ontbreekt. Naam: `text`, Bron: `/document/merged_content`ontbreekt `/document/normalized_images/0/imageTags`.  ' Kan geen `0` selecteren in matrix `/document/pages` met een lengte van `0`. | Als in al uw documenten deze waarschuwing wordt weer gegeven, is er waarschijnlijk een type fout in de invoer paden en moet u de naam van de eigenschap name, extra of ontbrekende `*` in het pad controleren en ervoor zorgen dat de documenten uit de gegevens bron de vereiste invoer hebben. |
