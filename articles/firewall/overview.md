@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/13/2020
+ms.date: 01/15/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: c78ac615d2a93865721152442461d40925dc088d
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: def954395c0f4f83afe28443ba63c89c41e07eba
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922589"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156740"
 ---
 # <a name="what-is-azure-firewall"></a>Wat is Azure Firewall?
 
@@ -90,11 +90,10 @@ Hiermee worden de volgende scenario's ingeschakeld:
 
 Alle gebeurtenissen zijn geïntegreerd met Azure Monitor, zodat u logboeken kunt archiveren in een opslagaccount, gebeurtenissen kunt streamen naar uw Event Hub of deze kunt verzenden naar Azure Monitor-logboeken.
 
-## <a name="pci-soc-and-iso-compliant"></a>Compatibel met PCI, SOC en ISO
+## <a name="compliance-certifications"></a>Nalevings certificeringen
 
-Azure Firewall zijn betaal kaart Industry (PCI), service organisatie Controls (SOC) en International Organization for Standardization (ISO)-compatibel. Het biedt momenteel ondersteuning voor SOC 1 type 2, SOC 2, SOC 3, PCI DSS en ISO 27001, 27018, 20000-1, 22301, 9001, 27017.
+Azure Firewall zijn betaal kaart Industry (PCI), service organisatie Controls (SOC) en International Organization for Standardization (ISO)-compatibel. Zie [Azure firewall nalevings certificeringen](compliance-certifications.md)voor meer informatie.
 
-Zie de [micro soft compliance Guide (Engelstalig](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide)) voor meer informatie.
 
 ## <a name="known-issues"></a>Bekende problemen
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ce2394805bfc302179da807c798445c30ce9daff
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ef1266b783034cf18dc2b3ea4be5ebc01bc12c70
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619545"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121859"
 ---
 # <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>DNS-en DHCP-toepassingen en werk belastingen instellen in uw CloudSimple-Privécloud
 
@@ -27,7 +27,7 @@ Toepassingen en werk belastingen die worden uitgevoerd in een Privécloud-omgevi
 
 ## <a name="linux-based-dns-server-setup"></a>Installatie van DNS-server op basis van Linux
 
-Linux biedt verschillende pakketten voor het instellen van DNS-servers.  Hier volgt een [voor beeld van een installatie van DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-centos-7) met instructies voor het instellen van een open-source BIND-DNS-server.
+Linux biedt verschillende pakketten voor het instellen van DNS-servers.  Hier volgt een [voor beeld van een installatie van DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04) met instructies voor het instellen van een open-source BIND-DNS-server.
 
 ## <a name="windows-based-setup"></a>Installatie op basis van Windows
 

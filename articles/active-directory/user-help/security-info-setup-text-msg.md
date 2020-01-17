@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fe8610d7551b63ed613153ba1ee0e6f8e73b5a5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 6e8e8b20fc9b8e19b2f7c5f9c1b9e926580c9dbb
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278909"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156060"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>SMS-berichten instellen als verificatie methode
 
@@ -28,7 +28,7 @@ Als u wordt gevraagd om dit onmiddellijk in te stellen nadat u zich hebt aangeme
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->Als u een telefoon optie niet ziet, is het mogelijk dat uw organisatie een telefoon nummer niet mag gebruiken voor verificatie. In dit geval moet u een andere methode kiezen of contact opnemen met de beheerder voor meer informatie.
+>Als u een telefoon optie niet ziet, is het mogelijk dat uw organisatie deze optie niet mag gebruiken voor verificatie. In dit geval moet u een andere methode kiezen of contact opnemen met de Help Desk van uw organisatie voor meer hulp.
 
 ## <a name="set-up-text-messages-from-the-security-info-page"></a>SMS-berichten instellen op de pagina beveiligings gegevens
 

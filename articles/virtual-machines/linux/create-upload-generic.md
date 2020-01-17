@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: mimckitt
-ms.openlocfilehash: d98efd46e3c2fbc11be2cde6a0c4f2b37acc8d7c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: ffa99c6ba0157eca133dc36ecbbb159b076b8bc0
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934000"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155550"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Informatie over niet-goedgekeurde distributies
 
@@ -43,7 +43,7 @@ Dit artikel richt zich op algemene richt lijnen voor het uitvoeren van uw Linux-
 
 ## <a name="general-linux-installation-notes"></a>Algemene Linux-installatie notities
 * De indeling van de virtuele harde schijf (VHDX) van Hyper-V wordt niet ondersteund in azure, alleen *vaste VHD*.  U kunt de schijf converteren naar VHD-indeling met behulp van Hyper-V-beheer of de cmdlet [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) . Als u VirtualBox gebruikt, selecteert u **vaste grootte** in plaats van de standaard waarde (dynamisch toegewezen) bij het maken van de schijf.
-* Azure biedt alleen ondersteuning voor virtuele machines van de eerste generatie. U kunt een virtuele machine van de eerste generatie converteren van VHDX naar de VHD-bestands indeling en van dynamisch uitbreiden naar een schijf met een vaste grootte. U kunt de generatie van een virtuele machine niet wijzigen. Zie [moet ik een virtuele machine van de eerste of tweede generatie maken in Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v) voor meer informatie.
+* Azure biedt ondersteuning voor gen1 (BIOS Boot) & Gen2 (UEFI boot) virtuele machines.
 * De maximale grootte die is toegestaan voor de VHD is 1.023 GB.
 * Bij de installatie van het Linux-systeem raden we u aan om standaard partities te gebruiken in plaats van Logical Volume Manager (LVM). Dit is de standaard instelling voor veel installaties. Het gebruik van standaard partities voor komt dat LVM naam strijdig is met gekloonde Vm's, met name als een besturingssysteem schijf ooit is gekoppeld aan een andere identieke virtuele machine voor het oplossen van problemen. [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) of [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) kan worden gebruikt op gegevens schijven.
 * Kernel-ondersteuning voor het koppelen van UDF-bestands systemen is nood zakelijk. Bij de eerste keer opstarten in azure wordt de inrichtings configuratie door gegeven aan de Linux-VM met behulp van UDF-geformatteerde media die aan de gast zijn gekoppeld. De Azure Linux-agent moet het UDF-bestands systeem koppelen om de configuratie te lezen en de virtuele machine in te richten.

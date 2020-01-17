@@ -5,12 +5,12 @@ ms.assetid: c9da27b2-47d4-4c33-a3cb-1819955ee43b
 ms.topic: article
 ms.date: 09/17/2019
 ms.custom: seodec18
-ms.openlocfilehash: 54435dd21fccdd43f17d13674b324b989a00f7a1
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 777fa7caa80371592f93ee6f7458a7669fe6698f
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74684253"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121355"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Diagnostische logboek registratie inschakelen voor apps in Azure App Service
 ## <a name="overview"></a>Overzicht
@@ -26,8 +26,8 @@ In dit artikel wordt gebruikgemaakt van de [Azure Portal](https://portal.azure.c
 |Type|Platform|Locatie|Beschrijving|
 |-|-|-|-|
 | Toepassingslogboeken | Windows, Linux | App Service bestands systeem en/of Azure Storage-blobs | Registreert berichten die zijn gegenereerd door de toepassings code. De berichten kunnen worden gegenereerd door het webframework dat u kiest, of vanuit de code van uw toepassing rechtstreeks met het standaard logboek registratie patroon van uw taal. Aan elk bericht wordt een van de volgende categorieën toegewezen: **kritiek**, **fout**, **waarschuwing**, **info**, **fout opsporing**en **tracering**. U kunt selecteren hoe uitgebreid u de logboek registratie wilt maken door het Ernst niveau in te stellen wanneer u logboek registratie van toepassingen inschakelt.|
-| Logboek registratie van webserver| Windows | App Service bestands systeem of Azure Storage-blobs| Onbewerkte HTTP-aanvraag gegevens in de [uitgebreide W3C-indeling van logboek bestand](/windows/desktop/Http/w3c-logging). Elk logboek bericht bevat gegevens zoals de HTTP-methode, bron-URI, client-IP, client poort, gebruikers agent, respons code, enzovoort. |
-| Gedetailleerde logboek registratie van fouten | Windows | App Service bestands systeem | Kopieën van de *htm* -fout pagina's die naar de client browser zouden zijn verzonden. Uit veiligheids overwegingen mogen gedetailleerde fout pagina's niet worden verzonden naar clients in de productie omgeving, maar App Service kunt de fout pagina opslaan telkens wanneer er een toepassings fout optreedt met HTTP-code 400 of hoger. De pagina bevat mogelijk informatie die u kan helpen bij het bepalen van de oorzaak van de fout code door de server. |
+| Webserverlogboeken| Windows | App Service bestands systeem of Azure Storage-blobs| Onbewerkte HTTP-aanvraag gegevens in de [uitgebreide W3C-indeling van logboek bestand](/windows/desktop/Http/w3c-logging). Elk logboek bericht bevat gegevens zoals de HTTP-methode, bron-URI, client-IP, client poort, gebruikers agent, respons code, enzovoort. |
+| Gedetailleerde fout berichten| Windows | App Service bestands systeem | Kopieën van de *htm* -fout pagina's die naar de client browser zouden zijn verzonden. Uit veiligheids overwegingen mogen gedetailleerde fout pagina's niet worden verzonden naar clients in de productie omgeving, maar App Service kunt de fout pagina opslaan telkens wanneer er een toepassings fout optreedt met HTTP-code 400 of hoger. De pagina bevat mogelijk informatie die u kan helpen bij het bepalen van de oorzaak van de fout code door de server. |
 | Tracering van mislukte aanvragen | Windows | App Service bestands systeem | Gedetailleerde tracerings informatie over mislukte aanvragen, inclusief een tracering van de IIS-onderdelen die worden gebruikt om de aanvraag te verwerken en de tijd die in elk onderdeel is gemaakt. Het is handig als u de prestaties van de site wilt verbeteren of een specifieke HTTP-fout wilt isoleren. Er wordt één map gegenereerd voor elke mislukte aanvraag, die het XML-logboek bestand bevat en het XSL-opmaak model waarmee het logboek bestand wordt weer gegeven. |
 | Implementatie logboek registratie | Windows, Linux | App Service bestands systeem | Logboeken voor wanneer u inhoud naar een app publiceert. De registratie van de implementatie wordt automatisch uitgevoerd en er zijn geen Configureer bare instellingen voor de registratie van de implementatie. Het helpt u om te bepalen waarom een implementatie is mislukt. Als u bijvoorbeeld een [aangepast implementatie script](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)gebruikt, kunt u de implementatie logboek registratie gebruiken om te bepalen waarom het script mislukt. |
 
@@ -60,7 +60,7 @@ Selecteer het **niveau**of het niveau van de details die moeten worden vastgeleg
 | Niveau | Opgenomen categorieën |
 |-|-|
 |**Uitgeschakeld** | Geen |
-|**Optreedt** | Fout, kritiek |
+|**Fout** | Fout, kritiek |
 |**Waarschuwing** | Waarschuwing, fout, kritiek|
 |**Gegevens** | Info, waarschuwing, fout, kritiek|
 |**Uitgebreide** | Traceren, fouten opsporen, info, waarschuwing, fout, kritiek (alle categorieën) |

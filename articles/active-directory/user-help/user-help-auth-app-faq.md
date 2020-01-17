@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 01/16/2020
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d6fe6744c2af22f8891d2f3b3a6eb30ec9d3904
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: dc68b34ce10957d8c025d4767cc4f8d04c6a72c3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045282"
+ms.locfileid: "76155856"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Veelgestelde vragen over de Microsoft Authenticator-app
 
@@ -52,6 +52,7 @@ De app Microsoft Authenticator vervangt de Azure Authenticator app en de aanbevo
 | Wat is de functie voor het vergren delen van apps en hoe kan ik me beter beveiligen? | Als u uw eenmalige wachtwoord code, app-informatie en app-instellingen veiliger wilt laten, kunt u de functie voor het vergren delen van apps inschakelen in de app Microsoft Authenticator. Wanneer u app-vergren deling inschakelt vanuit het scherm **instellingen** van de Microsoft Authenticator-app, wordt u gevraagd om te verifiëren met uw pincode of biometrisch telkens wanneer u de Microsoft Authenticator-app opent. Deze functie biedt extra beveiliging, zoals het goed keuren van uw meldingen in de Microsoft Authenticator app wordt niet gewijzigd.<br><br>**Opmerking**<br>Omdat apparaatregistratie kan plaatsvinden op andere locaties buiten de Microsoft Authenticator-app, zoals in de Bedrijfsportal app of in de instellingen van het Android-account, is er geen garantie dat een gebruiker geen toegang meer heeft tot de micro soft Verificator-app. |
 | Waarom krijg ik meldingen over mijn account activiteit? | Om u meer op de hoogte te houden van wat er gebeurt met uw persoonlijke Microsoft-account, sturen we meldingen over activiteiten naar uw Microsoft Authenticator-app. Deze meldingen worden direct na iets gewijzigd, zodat u beter beveiligd blijft. We hebben deze meldingen eerder via e-mail en SMS verzonden en zijn nu uitgebreid om de app op te nemen. Zie [Wat gebeurt er als er sprake is van een ongebruikelijke aanmelding bij uw account](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in)voor meer informatie over deze activiteiten. Meld u aan bij de pagina [waar kunnen we contact met u opnemen met niet-kritieke account waarschuwingen](https://account.live.com/SecurityNotifications/Update) van uw account om te wijzigen waar u uw meldingen ontvangt. |
 | Wanneer u zich aanmeldt bij mijn werk-of school account met behulp van de standaard-e-mail-app die wordt geleverd met iOS, wordt u door de Microsoft Authenticator-app gevraagd om de informatie over de beveiligings verificatie. Ik krijg een fout melding wanneer ik deze informatie heb ingevoerd en terugkeert naar de e-mail-app. Wat moet ik doen? | Dit is waarschijnlijk omdat uw aanmelding en uw e-mail-app zich in twee verschillende apps voordoen, waardoor het eerste aanmeldings proces van de achtergrond niet meer werkt en niet kan worden uitgevoerd. Om dit probleem op te lossen, raden we u aan om het **Safari** -pictogram aan de rechter kant van het scherm te selecteren terwijl u zich aanmeldt bij uw e-mail-app. Als u overstapt op Safari, wordt het hele aanmeldings proces uitgevoerd in één app, zodat u zich kunt aanmelden bij de app. |
+| Mijn OTP-code (eenmalig wacht woord) werkt niet. Wat zal ik doen? | Zorg ervoor dat de datum en tijd op het apparaat juist zijn en automatisch worden gesynchroniseerd. Als de datum en tijd onjuist zijn of niet synchroon zijn, werkt de code niet. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

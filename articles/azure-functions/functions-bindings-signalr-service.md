@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: cbc45036497547b78514b1d175d67c6ed437ee2d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: d5ded7200c438fc734e1af0a42ca6071196bd41c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769486"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120334"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>SignalR-servicebindingen voor Azure Functions
 
@@ -1011,9 +1011,9 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type**|| Moet worden ingesteld op `signalRConnectionInfo`.|
-|**direction**|| Moet worden ingesteld op `in`.|
-|**De naam**|| De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
+|**type**| n.v.t. | Moet worden ingesteld op `signalRConnectionInfo`.|
+|**direction**| n.v.t. | Moet worden ingesteld op `in`.|
+|**De naam**| n.v.t. | De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
 |**hubName**|**HubName**| Deze waarde moet worden ingesteld op de naam van de seingevings hub waarvoor de verbindings gegevens worden gegenereerd.|
 |**userId**|**Naam**| Optioneel: de waarde van de claim voor de gebruikers-id die moet worden ingesteld in het toegangs sleutel token. |
 |**connectionStringSetting**|**connectionStringSetting**| De naam van de app-instelling die de seingevings service connection string bevat (standaard ingesteld op ' AzureSignalRConnectionString ') |
@@ -1024,9 +1024,9 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**type**|| Moet worden ingesteld op `signalR`.|
-|**direction**|| Moet worden ingesteld op `out`.|
-|**De naam**|| De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
+|**type**| n.v.t. | Moet worden ingesteld op `signalR`.|
+|**direction**| n.v.t. | Moet worden ingesteld op `out`.|
+|**De naam**| n.v.t. | De naam van de variabele die wordt gebruikt in de functie code voor het verbindings info-object. |
 |**hubName**|**HubName**| Deze waarde moet worden ingesteld op de naam van de seingevings hub waarvoor de verbindings gegevens worden gegenereerd.|
 |**connectionStringSetting**|**connectionStringSetting**| De naam van de app-instelling die de seingevings service connection string bevat (standaard ingesteld op ' AzureSignalRConnectionString ') |
 

@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 10/22/2019
 ms.author: spelluru
 ms.custom: seodec18
-ms.openlocfilehash: 77497d709d7106bf7c13d1fafcc4e64ee0ed1d39
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6122f17637e76f42cc4fbcc87ac9f48da3cdca36
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790307"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122199"
 ---
 # <a name="choose-between-azure-messaging-services---event-grid-event-hubs-and-service-bus"></a>Kiezen tussen berichtenservices van Azure - Event Grid, Event Hubs en Service Bus
 
@@ -90,7 +90,7 @@ Deze functie heeft de volgende kenmerken:
 
 ## <a name="use-the-services-together"></a>De services samen gebruiken
 
-In sommige gevallen kunt u de services naast elkaar gebruiken om verschillende rollen te kunnen vervullen. Zo kan een e-commerce-site Service Bus gebruiken om orders te verwerken, Event Hubs om telemetrie van de site vast te leggen en Event Grid om te reageren op gebeurtenissen, bijvoorbeeld een artikel dat is verzonden.
+In sommige gevallen kunt u de services naast elkaar gebruiken om verschillende rollen te kunnen vervullen. Een e-commerce-site kan bijvoorbeeld Service Bus gebruiken om de volg orde te verwerken, Event Hubs voor het vastleggen van de telemetrie van de site en Event Grid om te reageren op gebeurtenissen zoals een item dat is verzonden.
 
 In andere gevallen kunt u ze koppelen om een gebeurtenis- en gegevenspijplijn te vormen. U gebruikt Event Grid om te reageren op gebeurtenissen in de andere services. Zie [Stream big data into a data warehouse](event-grid-event-hubs-integration.md) (Big Data streamen naar een data warehouse) voor een voorbeeld van het gebruik van Event Grid met Event Hubs om gegevens te migreren naar een datawarehouse. In de volgende afbeelding ziet u de werkstroom voor het streamen van de gegevens.
 

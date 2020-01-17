@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14e7a4389c192dde8d086a69a35114f3b8b33e96
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 15ccbc568a2986fbb2a547eb958b5e853c8c9f77
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562181"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154819"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Hoe SSO voor on-premises resources werkt op apparaten die zijn toegevoegd aan Azure AD
 
@@ -24,12 +24,17 @@ Het is waarschijnlijk niet een verrassing dat een Azure Active Directory (Azure 
 
 In dit artikel wordt uitgelegd hoe dit werkt.
 
-## <a name="how-it-works"></a>Hoe werkt het? 
+## <a name="prerequisites"></a>Vereisten
+
+ Als aan Azure AD gekoppelde computers niet zijn verbonden met het netwerk van uw organisatie, is een VPN-of andere netwerk infrastructuur vereist. On-premises SSO vereist een line-of-Insight-communicatie met uw on-premises AD DS domein controllers.
+
+## <a name="how-it-works"></a>Het werkt als volgt 
 
 Omdat u slechts één gebruikers naam en wacht woord moet onthouden, vereenvoudigt SSO de toegang tot uw resources en verbetert de beveiliging van uw omgeving. Met een toegevoegd Azure AD-apparaat hebben uw gebruikers al een SSO-ervaring voor de Cloud-apps in uw omgeving. Als uw omgeving een Azure AD en een on-premises AD heeft, wilt u waarschijnlijk het bereik van uw SSO-ervaring uitbreiden naar uw LOB-apps (line of Business), bestands shares en printers.  
 
 Apparaten die zijn toegevoegd aan Azure AD, hebben geen kennis van uw on-premises AD-omgeving, omdat ze niet zijn gekoppeld. U kunt echter aanvullende informatie over uw on-premises AD naar deze apparaten bieden met Azure AD Connect.
-Een omgeving met zowel een Azure AD-als een on-premises AD, is ook wel een hybride omgeving. Als u een hybride omgeving hebt, hebt u waarschijnlijk al Azure AD Connect geïmplementeerd om uw on-premises identiteits gegevens te synchroniseren met de Cloud. Als onderdeel van het synchronisatie proces Azure AD Connect synchroniseert on-premises domein gegevens naar Azure AD. Wanneer een gebruiker zich aanmeldt bij een in een hybride omgeving aangesloten Azure AD-apparaat:
+
+Een omgeving met zowel een Azure AD-als een on-premises AD, is ook wel een hybride omgeving. Als u een hybride omgeving hebt, hebt u waarschijnlijk al Azure AD Connect geïmplementeerd om uw on-premises identiteits gegevens te synchroniseren met de Cloud. Als onderdeel van het synchronisatie proces Azure AD Connect synchroniseert on-premises gebruikers gegevens naar Azure AD. Wanneer een gebruiker zich aanmeldt bij een in een hybride omgeving aangesloten Azure AD-apparaat:
 
 1. Azure AD verzendt de naam van het on-premises domein waarvan de gebruiker lid is, terug naar het apparaat. 
 1. De LSA-service (Local Security Authority) maakt Kerberos-verificatie mogelijk op het apparaat.
@@ -44,7 +49,7 @@ Alle apps die zijn geconfigureerd voor **geïntegreerde Windows-verificatie** , 
 
 Windows hello voor bedrijven vereist aanvullende configuratie om on-premises SSO in te scha kelen vanaf een aan Azure AD toegevoegd apparaat. Zie voor meer informatie [Azure AD gekoppelde apparaten configureren voor on-premises eenmalige aanmelding met Windows hello voor bedrijven](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
 
-## <a name="what-you-get"></a>Wat u krijgt
+## <a name="what-you-get"></a>Wat is inbegrepen
 
 Met SSO kunt u op een aan Azure AD gekoppelde apparaat het volgende doen: 
 

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 606c7d1fd012052a22afeef906bbe9df4c63a76b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 3e1adc9220dd9b49c49ff3fe5e798dfcc9d5c928
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825284"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122675"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v21-for-python"></a>Snelstartgids: Azure Blob Storage-client bibliotheek v 2.1 voor python
 
@@ -67,7 +67,7 @@ In het voorbeeld programma wordt een test bestand gemaakt in de map *documenten*
 1. De afhankelijkheden installeren:
 
     ```console
-    pip install azure-storage-blob
+    pip install azure-storage-blob==2.1.0
     ```
 
 1. Ga naar de voorbeeld toepassing:

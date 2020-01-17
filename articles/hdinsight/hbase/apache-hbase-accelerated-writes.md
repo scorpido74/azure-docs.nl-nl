@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: bcc9736280b144a77bca57b4f4df1303f4b54796
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: ebcc91bb374183a3f2fe000f37c66230459befa3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179087"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156927"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Versnelde schrijf bewerkingen van Azure HDInsight voor Apache HBase
 
@@ -37,7 +37,7 @@ Met de functie voor versnelde schrijf bewerkingen wordt het probleem opgelost da
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Versnelde schrijf bewerkingen inschakelen voor HBase in HDInsight
 
-Als u een nieuw HBase-cluster wilt maken met de functie voor versnelde schrijf bewerkingen, volgt u de stappen in [clusters instellen in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) totdat u **stap 3, opslag**. Klik onder **instellingen van meta Store**op het selectie vakje naast **versneld schrijven inschakelen (preview-versie)** . Ga vervolgens door met de resterende stappen voor het maken van het cluster.
+Als u een nieuw HBase-cluster wilt maken met de functie voor versnelde schrijf bewerkingen, volgt u de stappen in [clusters instellen in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) totdat u **stap 3, opslag**. Klik onder **instellingen van meta Store**op het selectie vakje naast **versneld schrijven inschakelen**. Ga vervolgens door met de resterende stappen voor het maken van het cluster.
 
 ![Optie voor versneld schrijven inschakelen voor HDInsight Apache HBase](./media/apache-hbase-accelerated-writes/accelerated-writes-cluster-creation.png)
 

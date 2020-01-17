@@ -1,6 +1,6 @@
 ---
-title: Overzicht van mijn account Portal-Azure Active Directory | Microsoft Docs
-description: Een overzicht op hoog niveau en koppelingen naar meer informatie over de portal van mijn account en de bijbehorende functies.
+title: Wat is de portal Mijn account? -Azure AD
+description: Ga naar de portal van mijn account en de bijbehorende functies, waaronder het instellen en beheren van uw beveiligings gegevens, apparaten, wacht woord, organisaties, privacy en mijn aanmeldingen.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -9,26 +9,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 10/28/2019
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d831add42f60df2688b5c846d556f5dea8cef556
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 58e73061406bc1be3f224e5726bdfca5a7553be1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586654"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156129"
 ---
-# <a name="my-account-portal-overview"></a>Overzicht van mijn account Portal
+# <a name="what-is-the-my-account-portal"></a>Wat is de portal Mijn account?
 
 De portal van **Mijn account** helpt u bij het beheren van uw werk-of school account door het instellen en beheren van uw beveiligings gegevens, het beheren van uw verbonden organisaties en apparaten, het weer geven van de manier waarop uw organisatie uw gegevens gebruikt.
-
->[!Important]
->Deze inhoud is bedoeld voor gebruikers. Als u een beheerder bent, kunt u meer informatie vinden over hoe u uw Azure Active Directory-omgeving (Azure AD) instelt en beheert in de [documentatie voor Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
-
-![Mijn account Portal, overzichts pagina](media/my-account-portal/my-account-portal-overview.png)
-
-## <a name="go-to-the-my-account-portal"></a>Ga naar de portal van mijn account
 
 U krijgt toegang tot de portal van **Mijn account** (https://myprofile.microsoft.com), vanuit de huidige versie van een van de volgende browsers:
 
@@ -38,20 +31,24 @@ U krijgt toegang tot de portal van **Mijn account** (https://myprofile.microsoft
 - Firefox
 - Internet Explorer 11
 
-## <a name="my-account-portal-articles"></a>Mijn account Portal artikelen
+![Mijn account Portal, overzichts pagina](media/my-account-portal/my-account-portal-overview.png)
 
-Raadpleeg de volgende artikelen voor gedetailleerde informatie en instructies over wat er beschikbaar is in de portal van **Mijn account** :
+>[!Important]
+>Dit artikel is bedoeld voor gebruikers die toegang willen krijgen tot de portal van mijn account om hun beveiligings gegevens, apparaatgegevens, wacht woord, verbonden organisaties, privacy of eerdere aanmeldings gegevens bij te werken. Als u een beheerder bent die op zoek bent naar informatie over het inschakelen van verificatie en andere functies van Azure Active Directory (Azure AD) voor uw werk nemers en andere toepassingen, raadpleegt u de [Azure AD-documentatie voor beheerders](https://docs.microsoft.com/azure/active-directory/).
 
-|Artikel |Beschrijving |
-|------|------------|
-| [Je beveiligings gegevens toevoegen](user-help-security-info-overview.md) | Diverse artikelen met instructies voor het instellen van de Microsoft Authenticator app, tekst berichten of telefoon gesprekken als verificatie methode. Bevat ook artikelen over het toevoegen van een e-mail adres of vooraf gedefinieerde beveiligings vragen, zodat u zo nodig uw eigen verg eten wacht woord opnieuw kunt instellen.|
-| [Uw verbonden apparaten weer geven of uitschakelen](my-account-portal-devices-page.md) | Instructies voor het weer geven of uitschakelen van apparaten die zijn verbonden met uw werk-of school account.|
-| [Het wacht woord voor uw werk-of school account wijzigen](my-account-change-password-page.md) | Instructies voor het wijzigen van het wacht woord voor uw werk-of school account. |
-| [Uw verbonden organisaties weer geven of verlaten](my-account-portal-organizations-page.md) | Instructies voor het weer geven en verlaten van organisaties die zijn verbonden met uw werk-of school account.|
-| [Uw aan privacy gerelateerde informatie bekijken](my-account-portal-privacy-page.md) | Instructies voor het weer geven van de onlineservices die zijn verbonden met uw werk-of school account, samen met de gebruiks voorwaarden van uw organisatie.|
-| [Uw recente aanmeldingsactiviteiten bekijken](my-account-portal-sign-ins-page.md) | Instructies voor het weer geven van aanmeldings activiteiten voor uw werk-of school account. |
+## <a name="next-steps"></a>Volgende stappen
 
-## <a name="related-office-content"></a>Verwante Office-inhoud
+- Selecteer deze optie om uw [beveiligings gegevens](user-help-security-info-overview.md) weer te geven of te beheren
+
+- Uw verbonden [apparaten](my-account-portal-devices-page.md) weer geven of beheren
+
+- Uw [organisaties](my-account-portal-organizations-page.md) weer geven en beheren
+
+- Uw [aanmeldings activiteit](my-account-portal-sign-ins-page.md) weer geven
+
+- Weer geven hoe uw organisatie [uw privacy-gerelateerde gegevens gebruikt](my-account-portal-privacy-page.md)
+
+## <a name="related-microsoft-office-content"></a>Gerelateerde Microsoft Office inhoud
 
 - [Meld u aan om uw Office-product te beheren](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
 

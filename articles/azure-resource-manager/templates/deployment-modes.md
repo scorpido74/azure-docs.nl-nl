@@ -3,12 +3,12 @@ title: Implementatiemodi
 description: Hierin wordt beschreven hoe u kunt opgeven of u een volledige of incrementele implementatie modus met Azure Resource Manager wilt gebruiken.
 ms.topic: conceptual
 ms.date: 12/23/2019
-ms.openlocfilehash: f5a6f6416240ce512167e779c086d2665771c3f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dc5446c56c92b61016563995ebc4c884d48e2419
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484751"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152388"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Implementatie modi Azure Resource Manager
 
@@ -26,16 +26,16 @@ Wees voorzichtig met het gebruik van de volledige modus met [Kopieer lussen](cre
 
 Als u naar [meer dan één resource groep in een sjabloon](cross-resource-group-deployment.md)implementeert, kunnen resources in de resource groep die zijn opgegeven in de implementatie bewerking worden verwijderd. Resources in de secundaire resource groepen worden niet verwijderd.
 
-Er zijn een aantal verschillen in de manier waarop bron typen het verwijderen van de modus volt ooien verwerken. Bovenliggende resources worden automatisch verwijderd als ze niet worden gebruikt in een sjabloon die wordt geïmplementeerd in de modus voltooid. Sommige onderliggende resources worden niet automatisch verwijderd wanneer ze niet in de sjabloon staan. Deze onderliggende resources worden echter verwijderd als de bovenliggende resource wordt verwijderd. 
+Er zijn een aantal verschillen in de manier waarop bron typen het verwijderen van de modus volt ooien verwerken. Bovenliggende resources worden automatisch verwijderd als ze niet worden gebruikt in een sjabloon die wordt geïmplementeerd in de modus voltooid. Sommige onderliggende resources worden niet automatisch verwijderd wanneer ze niet in de sjabloon staan. Deze onderliggende resources worden echter verwijderd als de bovenliggende resource wordt verwijderd.
 
-Als uw resource groep bijvoorbeeld een DNS-zone (het resource type micro soft. Network/dnsZones) en een CNAME-record (micro soft. Network/dnsZones/CNAME-resource type) bevat, is de DNS-zone de bovenliggende resource voor de CNAME-record. Als u implementeert in de modus volledig en u de DNS-zone niet in uw sjabloon opneemt, worden de DNS-zone en de CNAME-record verwijderd. Als u de DNS-zone in uw sjabloon opneemt, maar niet de CNAME-record opneemt, wordt de CNAME niet verwijderd. 
+Als uw resource groep bijvoorbeeld een DNS-zone (het resource type micro soft. Network/dnsZones) en een CNAME-record (micro soft. Network/dnsZones/CNAME-resource type) bevat, is de DNS-zone de bovenliggende resource voor de CNAME-record. Als u implementeert in de modus volledig en u de DNS-zone niet in uw sjabloon opneemt, worden de DNS-zone en de CNAME-record verwijderd. Als u de DNS-zone in uw sjabloon opneemt, maar niet de CNAME-record opneemt, wordt de CNAME niet verwijderd.
 
 Zie [Azure-resources verwijderen voor implementaties in de volledige modus](complete-mode-deletion.md)voor een lijst met de verwijdering van resource typen die worden verwijderd.
 
 Als de resource groep is [vergrendeld](../management/lock-resources.md), worden de resources niet verwijderd in de modus volt ooien.
 
 > [!NOTE]
-> Alleen hoofd niveau sjablonen ondersteunen de volledige implementatie modus. Voor [gekoppelde of geneste sjablonen](linked-templates.md)moet u de incrementele modus gebruiken. 
+> Alleen hoofd niveau sjablonen ondersteunen de volledige implementatie modus. Voor [gekoppelde of geneste sjablonen](linked-templates.md)moet u de incrementele modus gebruiken.
 >
 > [Implementaties op abonnements niveau](deploy-to-subscription.md) bieden geen ondersteuning voor de modus volt ooien.
 >
@@ -105,9 +105,9 @@ In het volgende voor beeld ziet u een gekoppelde sjabloon die is ingesteld op in
 ```json
 "resources": [
   {
+      "type": "Microsoft.Resources/deployments",
       "apiVersion": "2017-05-10",
       "name": "linkedTemplate",
-      "type": "Microsoft.Resources/deployments",
       "properties": {
           "mode": "Incremental",
           <nested-template-or-external-template>

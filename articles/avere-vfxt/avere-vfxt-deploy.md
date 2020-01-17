@@ -4,14 +4,14 @@ description: Stappen voor het implementeren van het avere vFXT-cluster in azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: ad5b0ecd9e7e6326c5b91844b6f7b557972b4852
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d1058125d5bb3912b9561027bbe0a977637d3379
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415567"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153569"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Het vFXT-cluster implementeren
 
@@ -22,7 +22,7 @@ Deze procedure begeleidt u bij het gebruik van de implementatie wizard die besch
 * Maakt de cluster knooppunt-Vm's en configureert deze als het avere-cluster.
 * Hiermee wordt indien aangevraagd een nieuwe Azure Blob-container gemaakt en geconfigureerd als een kern Bestands server van het cluster.
 
-Nadat u de instructies in dit document hebt gevolgd, hebt u een virtueel netwerk, een subnet, een controller en een vFXT-cluster zoals in het volgende diagram wordt weer gegeven. Dit diagram toont de optionele Azure Blob core-bestands extensie, die een nieuwe Blob Storage-container (in een nieuw opslag account, niet weer gegeven) en een service-eind punt voor micro soft Storage in het subnet bevat.
+Nadat u de instructies in dit document hebt gevolgd, hebt u een virtueel netwerk, een subnet, een cluster controller en een vFXT-cluster zoals in het volgende diagram wordt weer gegeven. Dit diagram toont de optionele Azure Blob core-bestands extensie, die een nieuwe Blob Storage-container (in een nieuw opslag account, niet weer gegeven) en een service-eind punt voor micro soft Storage in het subnet bevat.
 
 ![diagram met drie concentrische rechthoeken met avere-cluster onderdelen. De buitenste rechthoek heet ' resource groep ' en bevat een zeshoek met de naam ' Blob Storage (optional) '. De volgende rechthoek in heeft het label virtueel netwerk: 10.0.0.0/16 en bevat geen unieke onderdelen. De binnenste rechthoek heeft het label subnet: 10.0.0.0/24 en bevat een virtuele machine met de naam ' cluster controller ', een stapel van drie virtuele machines met het label ' vFXT nodes (vFXT cluster) ' en een zeshoek met het label ' service-eind punt '. Er is een pijl verbonden met het service-eind punt (dat zich binnen het subnet bevindt) en de Blob-opslag (die zich buiten het subnet en vnet bevindt in de resource groep). De pijl geeft de grenzen van het subnet en het virtuele netwerk door.](media/avere-vfxt-deployment.png)
 
@@ -31,7 +31,7 @@ Voordat u de sjabloon voor maken gebruikt, moet u ervoor zorgen dat u deze verei
 1. [Nieuw abonnement](avere-vfxt-prereqs.md#create-a-new-subscription)
 1. [Machtigingen voor abonnements eigenaar](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [Quota voor het vFXT-cluster](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [Opslag service-eind punt (indien nodig)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) : vereist voor implementaties met behulp van een bestaand virtueel netwerk en Blob-opslag maken
+1. [Opslag service-eind punt (indien nodig)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) : vereist voor implementaties die gebruikmaken van een bestaand virtueel netwerk en Blob-opslag maken
 
 Lees voor meer informatie over de stappen voor het implementeren van clusters en het plannen van het [overzicht](avere-vfxt-deploy-overview.md)van [uw avere vFXT-systeem](avere-vfxt-deploy-plan.md) en-implementatie.
 
@@ -41,7 +41,7 @@ Open de sjabloon maken in de Azure Portal door te zoeken naar avere en de optie 
 
 ![Browser venster met de Azure Portal met brood crumbs ' New > Marketplace > alles '. Op de pagina alles heeft het zoek veld de term ' avere ' en het tweede resultaat ' avere vFXT for Azure ARM Temp late ' wordt in rood beschreven om deze te markeren.](media/avere-vfxt-template-choose.png)
 
-Nadat u de details op de pagina avere vFXT voor Azure ARM-sjabloon hebt gelezen, klikt u op **maken** om te beginnen.
+Nadat u de details op de pagina avere vFXT voor Azure ARM-sjabloon hebt gelezen, klikt u op de knop **maken** om te beginnen.
 
 ![Azure Marketplace met de eerste pagina van de implementatie sjabloon met](media/avere-vfxt-deploy-first.png)
 
@@ -149,11 +149,11 @@ De informatie zoeken:
 
 1. Klik aan de linkerkant op **implementaties**en vervolgens op **micro soft-avere. vfxt-Temp late**.
 
-   ![De portal pagina van de resource groep met implementaties geselecteerd aan de linkerkant en micro soft-avere. vfxt: de sjabloon die wordt weer gegeven in een tabel onder implementatie naam](media/avere-vfxt-outputs-deployments.png) <!-- update image for new portal GUI -->
+   ![De portal pagina van de resource groep met implementaties geselecteerd aan de linkerkant en micro soft-avere. vfxt: de sjabloon die wordt weer gegeven in een tabel onder implementatie naam](media/avere-vfxt-outputs-deployments.png)
 
 1. Klik aan de linkerkant op **uitvoer**. Kopieer de waarden in elk van de velden.
 
-   ![uitvoer pagina met SSHSTRING, RESOURCE_GROUP, locatie, NETWORK_RESOURCE_GROUP, netwerk, SUBNET, SUBNET_ID, VSERVER_IPs en MGMT_IP waarden in velden rechts van de labels](media/avere-vfxt-outputs-values.png)<!-- update image for new portal GUI -->
+   ![uitvoer pagina met SSHSTRING, RESOURCE_GROUP, locatie, NETWORK_RESOURCE_GROUP, netwerk, SUBNET, SUBNET_ID, VSERVER_IPs en MGMT_IP waarden in velden rechts van de labels](media/avere-vfxt-outputs-values.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

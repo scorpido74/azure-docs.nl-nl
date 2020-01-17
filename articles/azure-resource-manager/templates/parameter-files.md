@@ -3,12 +3,12 @@ title: Parameterbestand maken
 description: Parameter bestand maken voor het door geven van waarden tijdens de implementatie van een Azure Resource Manager sjabloon
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: c315c86cdd04a01a883667f20325936fb789d2f5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb52d9c5ebcb0820362e5de3d6b24b0b18d742e9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484361"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155618"
 ---
 # <a name="create-resource-manager-parameter-file"></a>Resource Manager-parameter bestand maken
 
@@ -20,16 +20,16 @@ Het parameter bestand heeft de volgende indeling:
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "<first-parameter-name>": {
-            "value": "<first-value>"
-        },
-        "<second-parameter-name>": {
-            "value": "<second-value>"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "<first-parameter-name>": {
+      "value": "<first-value>"
+    },
+    "<second-parameter-name>": {
+      "value": "<second-value>"
     }
+  }
 }
 ```
 
@@ -39,21 +39,21 @@ Het volgende parameter bestand bevat een onbewerkte tekst waarde en een waarde d
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "<first-parameter-name>": {
-            "value": "<first-value>"
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "<first-parameter-name>": {
+      "value": "<first-value>"
+    },
+    "<second-parameter-name>": {
+      "reference": {
+        "keyVault": {
+          "id": "<resource-id-key-vault>"
         },
-        "<second-parameter-name>": {
-            "reference": {
-                "keyVault": {
-                    "id": "<resource-id-key-vault>"
-                },
-                "secretName": "<secret-name>"
-            }
-        }
+        "secretName": "<secret-name>"
+      }
     }
+  }
 }
 ```
 
@@ -65,20 +65,20 @@ Als u wilt weten hoe u de parameter waarden definieert, opent u de sjabloon die 
 
 ```json
 "parameters": {
-    "storagePrefix": {
-      "type": "string",
-      "maxLength": 11
-    },
-    "storageAccountType": {
-      "type": "string",
-      "defaultValue": "Standard_LRS",
-      "allowedValues": [
-        "Standard_LRS",
-        "Standard_GRS",
-        "Standard_ZRS",
-        "Premium_LRS"
-      ]
-    }
+  "storagePrefix": {
+    "type": "string",
+    "maxLength": 11
+  },
+  "storageAccountType": {
+    "type": "string",
+    "defaultValue": "Standard_LRS",
+    "allowedValues": [
+    "Standard_LRS",
+    "Standard_GRS",
+    "Standard_ZRS",
+    "Premium_LRS"
+    ]
+  }
 }
 ```
 
@@ -86,14 +86,14 @@ De eerste details die u ziet, is de naam van elke para meter. De waarden in het 
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storagePrefix": {
-        },
-        "storageAccountType": {
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storagePrefix": {
+    },
+    "storageAccountType": {
     }
+  }
 }
 ```
 
@@ -101,16 +101,16 @@ Let op het type van de para meter. De waarden in het parameter bestand moeten va
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storagePrefix": {
-            "value": ""
-        },
-        "storageAccountType": {
-            "value": ""
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storagePrefix": {
+      "value": ""
+    },
+    "storageAccountType": {
+      "value": ""
     }
+  }
 }
 ```
 
@@ -118,16 +118,16 @@ Vervolgens zoekt u naar een standaard waarde. Als een para meter een standaard w
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storagePrefix": {
-            "value": "" // This value must be provided.
-        },
-        "storageAccountType": {
-            "value": "" // This value is optional. Template will use default value if not provided.
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storagePrefix": {
+      "value": "" // This value must be provided.
+    },
+    "storageAccountType": {
+      "value": "" // This value is optional. Template will use default value if not provided.
     }
+  }
 }
 ```
 
@@ -135,16 +135,16 @@ Bekijk ten slotte de toegestane waarden en eventuele beperkingen, zoals de maxim
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "storagePrefix": {
-            "value": "storage"
-        },
-        "storageAccountType": {
-            "value": "Standard_ZRS"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storagePrefix": {
+      "value": "storage"
+    },
+    "storageAccountType": {
+      "value": "Standard_ZRS"
     }
+  }
 }
 ```
 
@@ -154,30 +154,30 @@ In het volgende voor beeld ziet u de indelingen van verschillende parameter type
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "exampleString": {
-            "value": "test string"
-        },
-        "exampleInt": {
-            "value": 4
-        },
-        "exampleBool": {
-            "value": true
-        },
-        "exampleArray": {
-            "value": [
-                "value 1",
-                "value 2"
-            ]
-        },
-        "exampleObject": {
-            "value": {
-                "property1": "value1",
-                "property2": "value2"
-            }
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "exampleString": {
+      "value": "test string"
+    },
+    "exampleInt": {
+      "value": 4
+    },
+    "exampleBool": {
+      "value": true
+    },
+    "exampleArray": {
+      "value": [
+        "value 1",
+        "value 2"
+      ]
+    },
+    "exampleObject": {
+      "value": {
+        "property1": "value1",
+        "property2": "value2"
+      }
+    }
    }
 }
 ```

@@ -3,12 +3,12 @@ title: Back-ups maken van VMware-Vm's met Azure Backup Server
 description: In dit artikel leert u hoe u Azure Backup Server kunt gebruiken om een back-up te maken van virtuele VMware-machines die op een VMware vCenter/ESXi-server worden uitgevoerd.
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: d1c8ec249e010d75bbe96f5c70072f41b9738370
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173361"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152864"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Back-ups maken van VMware-Vm's met Azure Backup Server
 
@@ -24,7 +24,7 @@ In dit artikel wordt uitgelegd hoe u:
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-- Controleer of u een versie van vCenter-ESXi gebruikt die wordt ondersteund voor back-up-versies 6,5, 6,0 en 5,5.
+- Controleer of u een versie van vCenter-ESXi gebruikt die wordt ondersteund voor back-up. Raadpleeg [hier](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix)de ondersteunings matrix.
 - Zorg ervoor dat u Azure Backup Server hebt ingesteld. Als u dat nog [niet hebt gedaan, moet u dat doen](backup-azure-microsoft-azure-backup.md) voordat u begint. U moet Azure Backup Server uitvoeren met de nieuwste updates.
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>Een beveiligde verbinding met de vCenter Server maken
@@ -96,9 +96,11 @@ Als u binnen uw organisatie beveiligde grenzen hebt en u het HTTPS-protocol niet
 
 1. Kopieer en plak de volgende tekst in een txt-bestand.
 
-       ```text
-      Windows Registry editor versie 5,00 [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare] "IgnoreCertificateValidation" = dword: 00000001
-       ```
+```text
+Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
+"IgnoreCertificateValidation"=dword:00000001
+```
 
 2. Sla het bestand op de Azure Backup Server computer op met de naam **DisableSecureAuthentication. reg**.
 
@@ -128,26 +130,41 @@ De Azure Backup Server moet een gebruikers account met machtigingen hebben voor 
 
 ### <a name="role-permissions"></a>Rolmachtigingen
 
-**6.5/6.0** | **5.5**
---- | ---
-Datastore.AllocateSpace | Datastore.AllocateSpace
-Global.ManageCustomFields | Global.ManageCustomFields
-Global.SetCustomField |
-Host. local. CreateVM | Netwerk. assign
-Netwerk. assign |
-Resource.AssignVMToPool |
-VirtualMachine.Config.AddNewDisk  | VirtualMachine.Config.AddNewDisk
-VirtualMachine.Config.AdvancedConfig| VirtualMachine.Config.AdvancedConfig
-VirtualMachine.Config.ChangeTracking| VirtualMachine.Config.ChangeTracking
-VirtualMachine.Config.HostUSBDevice |
-VirtualMachine.Config.QueryUnownedFiles |
-VirtualMachine.Config.SwapPlacement| VirtualMachine.Config.SwapPlacement
-VirtualMachine. interactie. uitgeschakeld| VirtualMachine. interactie. uitgeschakeld
-VirtualMachine. Inventory. Create| VirtualMachine. Inventory. Create
-VirtualMachine.Provisioning.DiskRandomAccess |
-VirtualMachine. provisioning. DiskRandomRead | VirtualMachine. provisioning. DiskRandomRead
-VirtualMachine.State.CreateSnapshot | VirtualMachine.State.CreateSnapshot
-VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
+| **Bevoegdheden voor de gebruikers account van vCenter 6,5 en hoger**        | **Bevoegdheden voor het vCenter 6,0-gebruikers account**               | **Bevoegdheden voor het vCenter 5,5-gebruikers account** |
+| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------- |
+| Datastore.AllocateSpace                                      |                                                           |                                             |
+| Data Store. bladeren in Data Store                                   | Datastore.AllocateSpace                                   | Netwerk. assign                              |
+| Bestands bewerkingen op laag niveau                          | Global. aangepaste kenmerken beheren                           | Datastore.AllocateSpace                     |
+| Data Store-cluster. Een datatstore-cluster configureren             | Global. Set Custom-kenmerk                               | VirtualMachine.Config.ChangeTracking        |
+| Global. Disable-methoden                                       | Host. lokale bewerkingen. Virtuele machine maken              | VirtualMachine.State.RemoveSnapshot         |
+| Global. enable-methoden                                        | Netwerk. Netwerk toewijzen                                   | VirtualMachine.State.CreateSnapshot         |
+| Global. licenties                                              | Resource. Virtuele machine aan resource groep toewijzen         | VirtualMachine. provisioning. DiskRandomRead  |
+| Global. log-gebeurtenis                                             | Virtuele machine. Configuratie. nieuwe schijf toevoegen                | VirtualMachine. interactie. uitgeschakeld            |
+| Global. aangepaste kenmerken beheren                              | Virtuele machine. Configuratie. Geavanceerd                    | VirtualMachine. Inventory. Create             |
+| Global. Set Custom-kenmerk                                  | Virtuele machine. Wijzigingen in de configuratie. schijf bijhouden        | VirtualMachine.Config.AddNewDisk            |
+| Netwerk. netwerk toewijzen                                       | Virtuele machine. Configuratie. host-USB-apparaat             | VirtualMachine.Config.HostUSBDevice         |
+| Resource. Virtuele machine aan resource groep toewijzen            | Virtuele machine. Configuratie. niet-eigendoms bestanden opvragen         | VirtualMachine.Config.AdvancedConfig        |
+| Virtuele machine. Configuratie. nieuwe schijf toevoegen                   | Virtuele machine. Plaatsing van configuratie. swapfile          | VirtualMachine.Config.SwapPlacement         |
+| Virtuele machine. Configuratie. Geavanceerd                       | Virtuele machine. Interactie. uit                     | Global.ManageCustomFields                   |
+| Virtuele machine. Wijzigingen in de configuratie. schijf bijhouden           | Virtuele machine. Tell. Nieuwe maken                     |                                             |
+| Virtuele machine. Configuratie. schijf lease                     | Virtuele machine. Inrichten. schijf toegang toestaan            |                                             |
+| Virtuele machine. Configuratie. virtuele schijf uitbreiden            | Virtuele machine. Inrichtings. Alleen-lezen schijf toegang toestaan |                                             |
+| Virtuele machine. Gast bewerkingen. wijzigingen in de gast bewerking | Virtuele machine. Beheer van moment opnamen. Moment opname maken       |                                             |
+| Virtuele machine. Gast bewerkingen. uitvoering van gast bewerkings programma | Virtuele machine. Beheer van moment opnamen. Moment opname verwijderen       |                                             |
+| Virtuele machine. Gast bewerkingen. Query's voor de gast bewerking     |                                                           |                                             |
+| Virtuele machine. Communiceer. Apparaat-verbinding              |                                                           |                                             |
+| Virtuele machine. Communiceer. Beheer van gast besturingssystemen met VIX-API |                                                           |                                             |
+| Virtuele machine. Inventarisatie. REGI ster                          |                                                           |                                             |
+| Virtuele machine. Inventaris. Remove                            |                                                           |                                             |
+| Virtuele machine. Inrichten. schijf toegang toestaan              |                                                           |                                             |
+| Virtuele machine. Inrichting. alleen-lezen schijf toegang toestaan    |                                                           |                                             |
+| Virtuele machine. Inrichten. het downloaden van virtuele machines toestaan |                                                           |                                             |
+| Virtuele machine. Beheer van moment opnamen. Momentopname maken        |                                                           |                                             |
+| Virtuele machine. Beheer van moment opnamen. Moment opname verwijderen         |                                                           |                                             |
+| Virtuele machine. Beheer van moment opnamen. Herstellen naar moment opname      |                                                           |                                             |
+| vApp. virtuele machine toevoegen                                     |                                                           |                                             |
+| vApp. resource groep toewijzen                                    |                                                           |                                             |
+| vApp. registratie ongedaan maken                                              |                                                           |                                             |
 
 ## <a name="create-a-vmware-account"></a>Een VMware-account maken
 
@@ -264,7 +281,7 @@ VMware-Vm's toevoegen voor back-up. Beveiligings groepen verzamelen meerdere Vm'
 
 1. Voer op de pagina **methode voor gegevens beveiliging selecteren** een naam in voor de beveiligings groep en beveiligings instellingen. Als u een back-up wilt maken naar Azure, stelt u kortetermijnbeveiliging op **schijf** in en schakelt u online beveiliging in. Klik op **Volgende**.
 
-    ![Methode voor gegevens beveiliging selecteren](./media/backup-azure-backup-server-vmware/name-protection-group.png)
+    ![Methode voor gegevensbeveiliging selecteren](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
 1. Geef in **doel stellingen voor de korte termijn**op hoe lang u een back-up van de gegevens wilt laten maken op schijf.
    - Geef in **Bewaar termijn**op hoeveel dagen schijf herstel punten moeten worden bewaard.
@@ -273,7 +290,7 @@ VMware-Vm's toevoegen voor back-up. Beveiligings groepen verzamelen meerdere Vm'
        - Back-ups op korte termijn zijn volledige back-ups en niet incrementeel.
        - Klik op **wijzigen** om de tijden of datums te wijzigen wanneer back-ups op korte termijn plaatsvinden.
 
-         ![Doelen voor de korte termijn opgeven](./media/backup-azure-backup-server-vmware/short-term-goals.png)
+         ![Korte-termijndoelstellingen opgeven](./media/backup-azure-backup-server-vmware/short-term-goals.png)
 
 1. Controleer in **schijf toewijzing controleren**de schijf ruimte die is vereist voor de back-ups van de virtuele machine. voor de Vm's.
 
@@ -324,31 +341,31 @@ VMware-Vm's toevoegen voor back-up. Beveiligings groepen verzamelen meerdere Vm'
 Ga als volgt te werk om een back-up te maken van vSphere 6,7:
 
 - TLS 1,2 inschakelen op de DPM-server
-  >[!Note]
-  >VMWare 6,7 heeft TLS ingeschakeld als communicatie protocol.
+
+>[!NOTE]
+>Voor VMWare 6,7 werd TLS ingeschakeld als communicatie protocol.
 
 - Stel de register sleutels als volgt in:
 
-       ```text
+```text
+Windows Registry Editor Version 5.00
 
-        Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-        [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
-
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
-       ```
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

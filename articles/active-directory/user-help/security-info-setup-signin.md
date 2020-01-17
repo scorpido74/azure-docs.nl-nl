@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710e43aec82c5d154b2e17a20abb2ce4dd481129
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f75cea566a09a1f4e147b999ad7d2c2d7ea80f29
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278984"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156111"
 ---
 # <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>Uw beveiligings gegevens (preview) instellen via een aanmeldings prompt
 
@@ -26,6 +26,19 @@ U kunt deze stappen volgen als u wordt gevraagd uw beveiligingsgegevens in te st
 U ziet deze prompt alleen als u de beveiligingsgegevens niet hebt ingesteld die zijn vereist door uw organisatie. Als u eerder de beveiligingsgegevens hebt ingesteld, maar u wijzigingen wilt aanbrengen, kunt u de stappen volgen in de verschillende artikelen met uitleg per methode. Zie [Uw overzicht met beveiligingsinformatie toevoegen of bijwerken](security-info-add-update-methods-overview.md) voor meer informatie.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+
+## <a name="security-verification-versus-password-reset-authentication"></a>Beveiligings verificatie versus wachtwoord herstel verificatie
+
+Beveiligings informatie methoden worden gebruikt voor verificatie met twee factoren en voor het opnieuw instellen van wacht woorden. Niet elke methode kan echter voor beide worden gebruikt.
+
+| Methode | Gebruikt voor |
+| ------ | -------- |
+| Authenticator-app | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
+| Sms-berichten | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
+| Telefoonoproep | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
+| Beveiligings sleutel | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
+| E-mailaccount | Alleen voor verificatie voor het opnieuw instellen van het wachtwoord. Voor tweeledige verificatie moet u een andere methode kiezen. |
+| Beveiligingsvragen | Alleen voor verificatie voor het opnieuw instellen van het wachtwoord. Voor tweeledige verificatie moet u een andere methode kiezen. |
 
 ## <a name="sign-in-to-your-work-or-school-account"></a>Meld u aan bij uw werk- of schoolaccount
 

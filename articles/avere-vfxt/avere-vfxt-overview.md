@@ -4,14 +4,14 @@ description: Inleiding tot Avere vFXT for Azure, een cloud-cachelaag voor HPC
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: overview
-ms.date: 12/03/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 5e2fbf857b198072328e08c81da256e2f60370dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9dab2ca844feb1c24dfffc48b4f29cd1a311314
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414405"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153188"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Wat is Avere vFXT for Azure?
 
@@ -71,7 +71,7 @@ AVERE vFXT voor Azure maakt gebruik van de volgende Azure-resources:
 |Virtuele machines|3 of meer E32s_v3|
 |Premium SSD-opslag|200 GB ruimte in het besturingssysteem plus 1 tot 4 TB ruimte in de cache per knooppunt |
 |Opslagaccount (optioneel) |v2|
-|Back-endopslag van gegevens (optioneel) | Eén lege LRS Blob-container |
+|Back-end van gegevens (optioneel) | Eén lege LRS Blob-container |
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -4,20 +4,20 @@ description: Gegevens toevoegen aan een nieuw opslag volume voor gebruik met de 
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: 183ed719eb5396fe0e442e6b774d962d1ba48386
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c2a38b20fff789faf370e3161a92a31ed5f04c57
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480594"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153715"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Gegevens verplaatsen naar het vFXT-cluster-parallelle gegevens opname
 
-Nadat u een nieuw vFXT-cluster hebt gemaakt, is het mogelijk dat de eerste taak gegevens naar het nieuwe opslag volume verplaatst. Als uw gebruikelijke methode voor het verplaatsen van gegevens echter een eenvoudige Kopieer opdracht van de ene client geeft, zult u waarschijnlijk een trage Kopieer snelheid zien. Kopiëren met één thread is geen goede optie voor het kopiëren van gegevens naar de back-avere van de vFXT-cluster.
+Nadat u een nieuw vFXT-cluster hebt gemaakt, is het mogelijk dat uw eerste taak gegevens naar een nieuw opslag volume in azure verplaatst. Als uw gebruikelijke methode voor het verplaatsen van gegevens echter een eenvoudige Kopieer opdracht van de ene client geeft, zult u waarschijnlijk een trage Kopieer snelheid zien. Kopiëren met één thread is geen goede optie voor het kopiëren van gegevens naar de back-avere van de vFXT-cluster.
 
-Omdat het avere vFXT-cluster een schaal bare cache voor meerdere clients is, is de snelste en efficiëntste manier om gegevens te kopiëren, met meerdere clients. Deze techniek parallelizes opname van de bestanden en objecten.
+Omdat de avere vFXT voor Azure cluster een schaal bare cache voor meerdere clients is, is de snelste en efficiëntste manier om gegevens te kopiëren, met meerdere clients. Deze techniek parallelizes opname van de bestanden en objecten.
 
 ![Diagram van het proces van het verplaatsen van meerdere clients en gegevens verplaatsing met meerdere threads: linksboven, een pictogram voor on-premises hardwarematige opslag bevat meerdere pijlen. De pijlen verwijzen naar vier client machines. Van elke client computer worden drie pijlen naar de avere vFXT. Vanuit de avere vFXT wijst u meerdere pijlen naar Blob Storage.](media/avere-vfxt-parallel-ingest.png)
 
@@ -44,12 +44,12 @@ De VM van de gegevens opname maakt deel uit van een zelf studie waarbij de zojui
 
 ## <a name="strategic-planning"></a>Strategische planning
 
-Bij het bouwen van een strategie voor het parallel kopiëren van gegevens, moet u inzicht hebben in de bestands grootte, het aantal bestanden en de diepte van de map.
+Bij het ontwerpen van een strategie voor het parallel kopiëren van gegevens, moet u inzicht hebben in de bestands grootte, het aantal bestanden en de diepte van de map.
 
 * Wanneer bestanden klein zijn, zijn de belang rijke gegevens bestanden per seconde.
 * Wanneer bestanden groot zijn (10MiBi of hoger), is de belang rijke hoeveelheid bytes per seconde.
 
-Elk kopieer proces heeft een doorvoer snelheid en een snelheid waarmee bestanden worden overgedragen, wat kan worden gemeten door de tijds duur van de Kopieer opdracht te bepalen en de bestands grootte en het aantal bestanden te bepalen. Uitleg over het meten van de tarieven valt buiten het bereik van dit document, maar het is wel belang rijk om te begrijpen of u met kleine of grote bestanden gaat omgaan.
+Elk kopieer proces heeft een doorvoer snelheid en een snelheid waarmee bestanden worden overgedragen, wat kan worden gemeten door de tijds duur van de Kopieer opdracht te bepalen en de bestands grootte en het aantal bestanden te bepalen. Uitleg over het meten van de tarieven valt buiten het bereik van dit document, maar het is belang rijk om te begrijpen of u met kleine of grote bestanden gaat omgaan.
 
 ## <a name="manual-copy-example"></a>Voor beeld van hand matig kopiëren
 
@@ -278,7 +278,7 @@ Deze methode is een eenvoudige en time-outwaarde methode voor gegevens sets tot 
 
 ## <a name="use-the-msrsync-utility"></a>Het hulp programma msrsync gebruiken
 
-Het hulp programma ``msrsync`` kan ook worden gebruikt om gegevens te verplaatsen naar een back-end-kern bestand voor het avere-cluster. Dit hulp programma is ontworpen om het bandbreedte gebruik te optimaliseren door meerdere parallelle ``rsync`` processen uit te voeren. Het is beschikbaar via GitHub op <https://github.com/jbd/msrsync>.
+U kunt het hulp programma ``msrsync`` ook gebruiken om gegevens te verplaatsen naar een back-end-kern bestand voor het avere-cluster. Dit hulp programma is ontworpen om het bandbreedte gebruik te optimaliseren door meerdere parallelle ``rsync`` processen uit te voeren. Het is beschikbaar via GitHub op <https://github.com/jbd/msrsync>.
 
 ``msrsync`` splitst de bron directory op in afzonderlijke buckets en voert vervolgens afzonderlijke ``rsync`` processen uit voor elke Bucket.
 
@@ -323,7 +323,7 @@ Als u ``msrsync`` wilt gebruiken om een Azure-Cloud volume met een avere-cluster
 
 ## <a name="use-the-parallel-copy-script"></a>Het script voor parallelle kopieën gebruiken
 
-Het ``parallelcp`` script kan ook handig zijn voor het verplaatsen van gegevens naar de back-upopslag van uw vFXT-cluster.
+Het ``parallelcp`` script kan ook handig zijn voor het verplaatsen van gegevens naar de back-vFXT van uw cluster.
 
 In het onderstaande script wordt het uitvoer bare `parallelcp`toegevoegd. (Dit script is ontworpen voor Ubuntu; als u een andere distributie gebruikt, moet u ``parallel`` afzonderlijk installeren.)
 

@@ -3,18 +3,18 @@ title: 'Snelstartgids: interactieve kaarten zoeken met Azure Maps | Microsoft Az
 description: Meer informatie over het maken van een demo-webtoepassing voor het zoeken in interactieve mappen met behulp van Microsoft Azure Maps Web SDK.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/08/2019
+ms.date: 1/14/2020
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5f11fa4fce38b125e21564b4cfbe4582e55a7b64
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4081dd383fc0e7378bc8c8438781c13e6a34e075
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910683"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156434"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Snelstartgids: een interactieve Zoek toewijzing maken met behulp van Azure Maps
 
@@ -61,7 +61,7 @@ Als het Azure Kaarten-account is gemaakt, haalt u de sleutel op waarmee u query'
 
 ## <a name="download-the-application"></a>De toepassing downloaden
 
-1. Download of kopieer de inhoud van het bestand [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html).
+1. Ga naar [interactiveSearch. html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) en klik hierop om de inhoud van de GitHub-gebruikers interface weer te geven. Klik met de rechter muisknop op de **onbewerkte** knop en kopieer de inhoud van het bestand of ' opslaan als ' om het bestand te downloaden.
 2. Sla de inhoud van dit bestand lokaal op als **AzureMapDemo.html**. Open het in een teksteditor.
 3. Zoek naar de tekenreeks `<Your Azure Maps Key>`. Vervang deze door de waarde van de **primaire sleutel** uit de voorgaande sectie.
 

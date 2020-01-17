@@ -1,7 +1,7 @@
 ---
 title: Naslag Gids voor insluitende lezers SDK
 titleSuffix: Azure Cognitive Services
-description: De insluitende lezer SDK is een Java script-bibliotheek waarmee u de insluitende lezer kunt integreren in uw webtoepassing.
+description: De insluitende lezer-SDK bevat een Java script-bibliotheek waarmee u de insluitende lezer kunt integreren in uw toepassing.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 47d10f75775c49fda0effe10c32e219b3682866d
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: b20a3e6dd3b32b183bbf34dbefd76f0e4cd56b99
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945283"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156400"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Naslag Gids voor insluitende lezers SDK
 
-De insluitende lezer SDK is een Java script-bibliotheek waarmee u de insluitende lezer kunt integreren in uw webtoepassing.
+De insluitende lezer-SDK bevat een Java script-bibliotheek waarmee u de insluitende lezer kunt integreren in uw toepassing.
 
 ## <a name="functions"></a>Functions
 
@@ -36,7 +36,7 @@ De SDK biedt de volgende functies beschikbaar:
 Hiermee wordt de insluitende lezer gestart binnen een `iframe` in uw webtoepassing.
 
 ```typescript
-launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
+launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
 ```
 
 ### <a name="parameters"></a>Parameters
@@ -50,7 +50,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="returns"></a>Retourneert
 
-Retourneert een `Promise<HTMLDivElement>`, die wordt omgezet wanneer de insluitende lezer wordt geladen. De `Promise` wordt omgezet naar een `div`-element waarvan alleen een onderliggend element een `iframe` is dat de pagina voor de insluitende lezer bevat.
+Retourneert een `Promise<LaunchResponse>`, die wordt omgezet wanneer de insluitende lezer wordt geladen. De `Promise` wordt omgezet in een [`LaunchResponse`](#launchresponse) -object.
 
 ### <a name="exceptions"></a>Uitzonderingen
 
@@ -109,6 +109,17 @@ Eén gegevens segment dat wordt door gegeven aan de inhoud van de insluitende le
 }
 ```
 
+### <a name="launchresponse"></a>LaunchResponse
+
+Bevat de reactie van de aanroep van `ImmersiveReader.launchAsync`.
+
+```typescript
+{
+    container: HTMLDivElement;    // HTML element which contains the Immersive Reader iframe
+    sessionId: string;            // Globally unique identifier for this session, used for debugging
+}
+```
+
 ### <a name="cookiepolicy-enum"></a>CookiePolicy Enum
 
 Een opsomming die wordt gebruikt om het beleid voor het cookie gebruik van de insluitende lezer in te stellen. Zie [Opties](#options).
@@ -127,6 +138,7 @@ enum CookiePolicy { Disable, Enable }
 | application/vnd. openxmlformats-officedocument. WordprocessingML. document | Micro soft Word. docx-indelings document.
 
 ### <a name="html-support"></a>HTML-ondersteuning
+
 | HTML | Ondersteunde inhoud |
 | --------- | ----------- |
 | Lettertype stijlen | Vet, cursief, onderstrepen, code, doorhaling, Super script |
@@ -186,7 +198,7 @@ Bevat informatie over de fout.
 
 ## <a name="launching-the-immersive-reader"></a>De insluitende lezer starten
 
-De SDK biedt standaard stijlen voor de knop voor het starten van de insluitende lezer. Gebruik het kenmerk `immersive-reader-button` class om deze stijl in te scha kelen.
+De SDK biedt standaard stijlen voor de knop voor het starten van de insluitende lezer. Gebruik het kenmerk `immersive-reader-button` class om deze stijl in te scha kelen. Raadpleeg [dit artikel](./how-to-customize-launch-button.md) voor meer informatie.
 
 ```html
 <div class='immersive-reader-button'></div>

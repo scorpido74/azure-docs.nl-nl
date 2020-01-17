@@ -4,14 +4,14 @@ description: koppelingen naar zelf studies voor code demonstratie voor avere vFX
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 406262be5f70ed891f657d184acff98331b6b7a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b01bcb743e4ffc110f0182e50630baea288f16d2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415398"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153697"
 ---
 # <a name="avere-vfxt-demo-projects"></a>AVERE vFXT-demo projecten
 
@@ -19,13 +19,13 @@ Voor beelden van zelf studies vindt u op [github](https://github.com/Azure/Avere
 
 ## <a name="video-rendering"></a>Video weergave
 
-* [Rendering met behulp van Azure batch en avere vFXT](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md) -een demo van 60 minuten waarin wordt getoond hoe u Autodesk Maya kunt gebruiken met Azure batch en een avere vFXT-cluster om een bewegende film te genereren
+* [Rendering met behulp van Azure batch en avere vFXT](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md) -een project van 60 minuten dat laat zien hoe u Autodesk Maya kunt gebruiken met Azure batch en een avere vFXT-cluster om een bewegende film te genereren
 
-* [Waarom de avere vFXT voor Rendering gebruiken?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) -Een demonstratie waarmee rendering-tijden van een NAS met en zonder een avere vFXT-cluster worden vergeleken
+* [Waarom de avere vFXT voor Rendering gebruiken?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) -Een demonstratie waarmee rendering-tijden worden vergeleken van network-attached storage met en zonder een avere vFXT-cluster
 
 ## <a name="high-performance-computing"></a>High Performance Computing
 
-* [Aanbevolen procedures voor het verbeteren van de opstart tijd van de Azure virtual machine (VM)](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) -een reproduceer bare test van het gebruik van AVERE VFXT voor Azure om de opstart tijden te verbeteren wanneer u snel duizenden Compute-clients draait
+* [Aanbevolen procedures voor het verbeteren van de opstart tijd van de Azure virtual machine (VM)](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) -een reproduceer bare test die gebruikmaakt van AVERE VFXT voor Azure om de opstart tijden te verbeteren wanneer u snel duizenden Compute-clients draait
 
 ## <a name="vfxt-performance"></a>vFXT prestaties
 

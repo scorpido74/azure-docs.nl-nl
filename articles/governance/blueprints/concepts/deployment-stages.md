@@ -1,14 +1,14 @@
 ---
 title: Stappen in een blauwdrukimplementatie
-description: Meer informatie over de beveiligings-en artefact stappen die door de Azure Blueprint services worden doorzocht tijdens het maken van een blauw druk-toewijzing.
+description: Meer informatie over de beveiligings-en artefact stappen die worden uitgevoerd door de Azure blauw drukken-Services tijdens het maken van een blauw druk-toewijzing.
 ms.date: 11/13/2019
 ms.topic: conceptual
-ms.openlocfilehash: 4c1d0cd47e0f43b73e3178e18a4ba5d705048a72
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: daa7722fa37547929aa21b76b870f70143ae71ab
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74463551"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156621"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Stappen in een blauwdrukimplementatie
 
@@ -27,7 +27,7 @@ De implementatie van blauw druk wordt geactiveerd door een blauw druk aan een ab
 
 De service-principal van Azure Blauwsen krijgt eigendoms rechten voor het toegewezen abonnement of de abonnementen wanneer een door het [systeem toegewezen beheerde](../../../active-directory/managed-identities-azure-resources/overview.md) identiteit wordt gebruikt. Met de verleende rol kunnen blauw drukken de door het **systeem toegewezen** beheerde identiteit maken en later intrekken. Als u een door de **gebruiker toegewezen** beheerde identiteit gebruikt, wordt de service-principal van Azure blauw niet ontvangen en heeft deze geen eigenaars rechten voor het abonnement.
 
-De rechten worden automatisch verleend als de toewijzing wordt uitgevoerd via de portal. Als de toewijzing echter wordt uitgevoerd via de REST API, moet het verlenen van de rechten worden uitgevoerd met een afzonderlijke API-aanroep. De Azure Blueprint AppId is `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, maar de Service-Principal is afhankelijk van de Tenant. Gebruik [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) en rest endpoint [servicePrincipals](/graph/api/resources/serviceprincipal) om de Service-Principal op te halen. Ken vervolgens het Azure-blauw drukken toe aan de rol van _eigenaar_ via de [Portal](../../../role-based-access-control/role-assignments-portal.md), de [Azure cli](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [rest API](../../../role-based-access-control/role-assignments-rest.md)of een [Resource Manager-sjabloon](../../../role-based-access-control/role-assignments-template.md).
+De rechten worden automatisch verleend als de toewijzing wordt uitgevoerd via de portal. Als de toewijzing echter wordt uitgevoerd via de REST API, moet het verlenen van de rechten worden uitgevoerd met een afzonderlijke API-aanroep. De app Azure-blauw drukken is `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, maar de Service-Principal is afhankelijk van de Tenant. Gebruik [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) en rest endpoint [servicePrincipals](/graph/api/resources/serviceprincipal) om de Service-Principal op te halen. Ken vervolgens het Azure-blauw drukken toe aan de rol van _eigenaar_ via de [Portal](../../../role-based-access-control/role-assignments-portal.md), de [Azure cli](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [rest API](../../../role-based-access-control/role-assignments-rest.md)of een [Resource Manager-sjabloon](../../../role-based-access-control/role-assignments-template.md).
 
 De blauw drukken-service implementeert de resources niet rechtstreeks.
 

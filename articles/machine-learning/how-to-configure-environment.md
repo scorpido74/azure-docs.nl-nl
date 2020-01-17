@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 096a880dc1553bec4c9d4dce36e14af7a917fc2a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b70fcb1d63636984e1d014723b50170651a553d9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75540852"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156876"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Een ontwikkelomgeving configureren voor Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -259,7 +259,7 @@ Visual Studio code gebruiken voor ontwikkeling:
 
 1. Installeer de Azure Machine Learning-extensie voor Visual Studio code, Zie [Azure machine learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
 
-    Zie [Azure machine learning voor Visual Studio code gebruiken](how-to-vscode-tools.md)voor meer informatie.
+    Zie [Azure machine learning voor Visual Studio code gebruiken](tutorial-setup-vscode-extension.md)voor meer informatie.
 
 1. Meer informatie over het gebruik van Visual Studio code voor elk type python-ontwikkeling, Zie [aan de slag met python in VSCode](https://code.visualstudio.com/docs/python/python-tutorial).
 

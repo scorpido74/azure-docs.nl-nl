@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c58371edffa4400c2c2b3efd37c3ce6d7c3cad95
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: eb47b9df51803c76662b5fb4ca1fe23740e7af9a
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847912"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155051"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>De aangepaste lijst met uitgesloten wacht woorden configureren
 
@@ -26,7 +26,7 @@ Veel organisaties vinden hun gebruikers een wacht woord met behulp van gang bare
 
 Voor het configureren van de aangepaste lijst met geblokkeerde wacht woorden is een Azure Active Directory Premium P1 of P2-licentie vereist. Zie de [pagina met Azure Active Directory prijzen](https://azure.microsoft.com/pricing/details/active-directory/)voor meer gedetailleerde informatie over Azure Active Directory-licenties.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en blader naar **Azure Active Directory**, **verificatie methoden**en vervolgens **wachtwoord beveiliging**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en blader **naar Azure Active Directory** > **beveiligings** > **verificatie methoden** > **wachtwoord beveiliging**.
 1. Stel de optie **aangepaste lijst afdwingen**in op **Ja**.
 1. Teken reeksen toevoegen aan de **lijst met aangepaste verboden wacht woorden**, één teken reeks per regel
    * De aangepaste lijst met verboden wacht woorden kan Maxi maal 1000 voor waarden bevatten.

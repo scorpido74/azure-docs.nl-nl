@@ -10,17 +10,65 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/08/2020
+ms.date: 01/15/2020
 ms.author: raiye
-ms.openlocfilehash: 97f4283e02dd3b67df5381f78e87c3ee5b23b74e
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 85029b5f819a59ffc4934d245778044a94a18d5e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779583"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122131"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
+
+## <a name="january-2020-guest-os"></a>Januari 2020-gast besturingssysteem
+
+>[!NOTE]
+>Het besturings systeem januari gast wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het besturings systeem januari gast. Deze lijst is onderhevig aan wijzigingen.
+
+| Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
+| --- | --- | --- | --- | --- |
+|  Rel 20-01  |  [4532960]  |  Windows-beveiliging  | 2,94 | 14 januari 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 2,94 | 14 januari 2020 |
+|  Rel 20-01  |  [4534314]  |  Windows-beveiliging  | 2,94 | 14 januari 2020 |
+|  Rel 20-01  |  [4532958]  |  Windows-beveiliging  | 3,81 | 14 januari 2020 |
+|  Rel 20-01  |  [4532963]  |  Windows-beveiliging  | 3,81 | 14 januari 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 3,81 | 14 januari 2020 |
+|  Rel 20-01  |  [4534288]  |  Windows-beveiliging  | 3,81 | 14 januari 2020 |
+|  Rel 20-01  |  [4532961]  |  Windows-beveiliging  | 4,74 | 14 januari 2020 |
+|  Rel 20-01  |  [4532962]  |  Windows-beveiliging  | 4,74 | 14 januari 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 4,74 | 14 januari 2020 |
+|  Rel 20-01  |  [4534309]  |  Windows-beveiliging  | 4,74 | 14 januari 2020 |
+|  Rel 20-01  |  [4494175]  |  Micro code v3  | 5,39 | 29 aug 2019 |
+|  Rel 20-01  |  [4534271]  |  LCU  | 5,39 | 14 januari 2020 |
+|  Rel 20-01  |  [4494174]  |  Micro code v4  | 6,15 | 29 aug 2019 |
+|  Rel 20-01  |  [4532947]  |  Windows-beveiliging  | 6,15 | 14 januari 2020 |
+|  Rel 20-01  |  [4534273]  |  LCU  | 6,15 | 14 januari 2020 |
+|  Rel 20-01  |  [4530734]  |  Niet-beveiliging  | 2,94 | 10 december 2019 |
+|  Rel 20-01  |  [4530691]  |  Niet-beveiliging   | 3,81 | 10 december 2019 |
+|  Rel 20-01  |  [4530702]  |  Niet-beveiliging  | 4,74 | 10 december 2019 |
+
+[4532960]: https://support.microsoft.com/kb/4532960
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534314]: https://support.microsoft.com/kb/4534314
+[4532958]: https://support.microsoft.com/kb/4532958
+[4532963]: https://support.microsoft.com/kb/4532963
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534288]: https://support.microsoft.com/kb/4534288
+[4532961]: https://support.microsoft.com/kb/4532961
+[4532962]: https://support.microsoft.com/kb/4532962
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534309]: https://support.microsoft.com/kb/4534309
+[4494175]: https://support.microsoft.com/kb/4494175
+[4534271]: https://support.microsoft.com/kb/4534271
+[4494174]: https://support.microsoft.com/kb/4494174
+[4532947]: https://support.microsoft.com/kb/4532947
+[4534273]: https://support.microsoft.com/kb/4534273
+[4530734]: https://support.microsoft.com/kb/4530734
+[4530691]: https://support.microsoft.com/kb/4530691
+[4530702]: https://support.microsoft.com/kb/4530702
+
 
 ## <a name="december-2019-guest-os"></a>December 2019-gast besturingssysteem
 

@@ -3,19 +3,19 @@ title: 'Quick Start: verbinding maken met een app voor aangepaste opdrachten met
 titleSuffix: Azure Cognitive Services
 description: In dit artikel maakt u een Speech SDK-client toepassing met aangepaste opdrachten.
 services: cognitive-services
-author: donkim
+author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 69a03ce5a8da7c8af6c17d122be3744e7b79e246
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9e324af0b90f595b5b7af2a417a562efb193d854
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381100"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156774"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Quick Start: verbinding maken met een toepassing voor aangepaste opdrachten met de spraak-SDK (preview)
 
@@ -46,7 +46,7 @@ In deze Snelstartgids wordt stapsgewijs beschreven hoe u een client toepassing k
 
 1. Open uw [eerder gemaakte toepassing voor aangepaste opdrachten](./quickstart-custom-speech-commands-create-new.md) en selecteer **publiceren**
 
-   > [!div class="mx-imgBorder"] 
+   > [!div class="mx-imgBorder"]
    > ![](media/custom-speech-commands/fulfill-sdk-publish-application.png) toepassing publiceren
 
 1. De App-ID uit de publicatie melding kopiëren voor later gebruik

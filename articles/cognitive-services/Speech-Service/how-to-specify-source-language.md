@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 01/07/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 94b8fb026b61b52e8096cf54e1db30a6c260c04b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e4f4dd3c1e23855a8a1a69dac72c232779206f1d
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109954"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121706"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>De bron taal voor spraak naar tekst opgeven
 
@@ -26,23 +26,28 @@ In dit artikel leert u hoe u de bron taal kunt opgeven voor een audio-invoer die
 
 ## <a name="how-to-specify-source-language-in-c"></a>De bron taal opgeven inC#
 
-De eerste stap bestaat uit het maken van een `SpeechConfig`:
+In dit voor beeld wordt de bron taal expliciet gegeven als een para meter met behulp van `SpeechRecognizer` construct.
 
 ```csharp
-var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+var recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-Geef vervolgens de bron taal van uw audio op met `SpeechRecognitionLanguage`:
+In dit voor beeld wordt de bron taal gegeven met behulp van `SourceLanguageConfig`. Vervolgens wordt de `sourceLanguageConfig` door gegeven als een para meter voor `SpeechRecognizer` construct.
 
 ```csharp
-speechConfig.SpeechRecognitionLanguage = "de-DE";
+var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE");
+var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-Als u een aangepast model gebruikt voor herkenning, kunt u het eind punt opgeven met `EndpointId`:
+In dit voor beeld worden de bron taal en het aangepaste eind punt voorzien van `SourceLanguageConfig`. Vervolgens wordt de `sourceLanguageConfig` door gegeven als een para meter voor `SpeechRecognizer` construct.
 
 ```csharp
-speechConfig.EndpointId = "The Endpoint ID for your custom model.";
+var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE", "The Endpoint ID for your custom model.");
+var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
+
+>[!Note]
+> `SpeechRecognitionLanguage`-en `EndpointId` set-methoden zijn afgeschaft uit de C#`SpeechConfig`-klasse in. Het gebruik van deze methoden wordt afgeraden en mag niet worden gebruikt bij het maken van een `SpeechRecognizer`.
 
 ::: zone-end
 

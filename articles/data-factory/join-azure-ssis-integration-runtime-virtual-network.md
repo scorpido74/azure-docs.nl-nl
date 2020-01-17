@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 58bfc35776e83df7754379a12ad4b7afca73e32c
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: fec34c54971878178b2a5ea4548ad20d3b51b104
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892349"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119890"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Een Azure-SSIS-integratie-runtime toevoegen aan een virtueel netwerk
 
@@ -140,49 +140,96 @@ Als u uw eigen statische open bare IP-adressen voor Azure-SSIS IR wilt meenemen 
 - Ze en het virtuele netwerk moeten zich onder hetzelfde abonnement en in dezelfde regio bevinden.
 
 ### <a name="dns_server"></a>De DNS-server instellen 
+Als u uw eigen DNS-server moet gebruiken in een virtueel netwerk dat is gekoppeld aan uw Azure-SSIS IR om de naam van uw particuliere host op te lossen, moet u ervoor zorgen dat deze ook globale namen van Azure-hosts kan omzetten (bijvoorbeeld een Azure Storage-blob met de naam `<your storage account>.blob.core.windows.net`). 
 
-Als u uw eigen DNS-server moet gebruiken in een virtueel netwerk dat is gekoppeld aan uw Azure-SSIS IR, moet u ervoor zorgen dat de globale namen van Azure-hosts worden omgezet (bijvoorbeeld een Azure Storage-blob met de naam `<your storage account>.blob.core.windows.net`). 
+Hieronder vindt u een aanbevolen benadering: 
 
-De volgende stappen worden aanbevolen: 
-
-- Configureer de aangepaste DNS-server voor het door sturen van aanvragen naar Azure DNS. U kunt niet-omgezette DNS-records door sturen naar het IP-adres van de recursieve resolvers van Azure (168.63.129.16) op uw eigen DNS-server. 
-
-- Stel de aangepaste DNS in als de primaire DNS-server voor het virtuele netwerk. Azure DNS instellen als de secundaire DNS-server. Registreer het IP-adres van de Azure recursieve resolver (168.63.129.16) als een secundaire DNS-server voor het geval uw eigen DNS-server niet beschikbaar is. 
+-   Configureer de aangepaste DNS-server voor het door sturen van aanvragen naar Azure DNS. U kunt niet-omgezette DNS-records door sturen naar het IP-adres van de recursieve resolvers van Azure (168.63.129.16) op uw eigen DNS-server. 
 
 Zie [naam omzetting die gebruikmaakt van uw eigen DNS-server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)voor meer informatie. 
 
-### <a name="nsg"></a>Een NSG instellen
+> [!NOTE]
+> Gebruik een Fully Qualified Domain Name (FQDN) voor de naam van uw particuliere host, bijvoorbeeld gebruik `<your_private_server>.contoso.com` in plaats van `<your_private_server>`, omdat Azure-SSIS IR niet automatisch uw eigen DNS-achtervoegsel toevoegt.
 
+### <a name="nsg"></a>Een NSG instellen
 Als u een NSG wilt implementeren voor het subnet dat door uw Azure-SSIS IR wordt gebruikt, kunt u inkomend en uitgaand verkeer via de volgende poorten toestaan: 
+
+-   **Inkomende vereiste van Azure-SSIS IR**
 
 | Richting | Transport Protocol | Bron | Poortbereik van bron | Bestemming | Poortbereik van doel | Opmerkingen |
 |---|---|---|---|---|---|---|
 | Inkomend | TCP | BatchNodeManagement | * | VirtualNetwork | 29876, 29877 (als u de IR koppelt aan een virtueel netwerk van Resource Manager) <br/><br/>10100, 20100, 30100 (als u de IR koppelt aan een klassiek virtueel netwerk)| De Data Factory-service gebruikt deze poorten om te communiceren met de knoop punten van uw Azure-SSIS IR in het virtuele netwerk. <br/><br/> Of u nu een NSG op subnetniveau maakt, Data Factory altijd een NSG configureert op het niveau van de netwerk interface kaarten (Nic's) die zijn gekoppeld aan de virtuele machines die de Azure-SSIS IR hosten. Alleen binnenkomend verkeer van Data Factory IP-adressen op de opgegeven poorten is toegestaan door deze NSG op NIC-niveau. Zelfs als u deze poorten opent op het Internet verkeer op subnetniveau, wordt verkeer van IP-adressen die niet Data Factory IP-adressen worden geblokkeerd op het niveau van de NIC. |
-| Uitgaand | TCP | VirtualNetwork | * | AzureCloud | 443 | De knoop punten van uw Azure-SSIS IR in het virtuele netwerk gebruiken deze poort voor toegang tot Azure-Services, zoals Azure Storage en Azure Event Hubs. |
-| Uitgaand | TCP | VirtualNetwork | * | Internet | 80 | De knoop punten van uw Azure-SSIS IR in het virtuele netwerk gebruiken deze poort om een certificaatintrekkingslijst van Internet te downloaden. |
-| Uitgaand | TCP | VirtualNetwork | * | SQL | 1433, 11000-11999 | De knoop punten van uw Azure-SSIS IR in het virtuele netwerk gebruiken deze poorten om toegang te krijgen tot een SSISDB die wordt gehost door uw SQL Database-Server. Als uw SQL Database Server-verbindings beleid is ingesteld op **proxy** in plaats van de **omleiding**, is alleen poort 1433 vereist. Deze uitgaande beveiligings regel is niet van toepassing op een SSISDB die wordt gehost door uw beheerde instantie in het virtuele netwerk. |
+| Inkomend | TCP | CorpNetSaw | * | VirtualNetwork | 3389 | Beschrijving Deze regel is alleen vereist wanneer micro soft-ondersteunings team de klant vraagt om te openen voor geavanceerde probleem oplossing en direct kan worden gesloten na het oplossen van problemen. De **CorpNetSaw** -service code staat alleen beveiligde toegang op werk stations in het bedrijfs netwerk van micro soft toe om extern bureau blad te gebruiken. En deze servicetag kan niet worden geselecteerd vanuit de portal en is alleen beschikbaar via Azure PowerShell of Azure CLI. <br/><br/> Op NIC-niveau NSG is poort 3389 standaard geopend en kunt u poort 3389 op subnetniveau NSG beheren, terwijl Azure-SSIS IR niet is toegestaan poort 3389 uitgaande van de Windows Firewall regel op elk IR-knoop punt voor beveiliging. |
 ||||||||
 
-### <a name="route"></a>Azure ExpressRoute of een UDR gebruiken
+-   **Uitgaande vereiste van Azure-SSIS IR**
 
-Wanneer u een [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) -circuit verbindt met uw virtuele netwerk infrastructuur om uw on-premises netwerk naar Azure uit te breiden, gebruikt een gemeen schappelijke configuratie geforceerde tunneling (adverteren van een BGP-route, 0.0.0.0/0, naar het virtuele netwerk). Deze tunneling dwingt uitgaand Internet verkeer van de virtuele netwerk stroom naar een on-premises netwerk apparaat voor inspectie en logboek registratie. 
- 
-Of u kunt [udr's](../virtual-network/virtual-networks-udr-overview.md) definiëren voor het afdwingen van uitgaand Internet verkeer van het subnet dat als host fungeert voor de Azure-SSIS IR naar een ander subnet dat fungeert als firewall of Azure Firewall voor inspectie en logboek registratie. 
+| Richting | Transport Protocol | Bron | Poortbereik van bron | Bestemming | Poortbereik van doel | Opmerkingen |
+|---|---|---|---|---|---|---|
+| Uitgaand | TCP | VirtualNetwork | * | AzureCloud | 443 | De knoop punten van uw Azure-SSIS IR in het virtuele netwerk gebruiken deze poort voor toegang tot Azure-Services, zoals Azure Storage en Azure Event Hubs. |
+| Uitgaand | TCP | VirtualNetwork | * | Internet | 80 | Beschrijving De knoop punten van uw Azure-SSIS IR in het virtuele netwerk gebruiken deze poort om een certificaatintrekkingslijst van Internet te downloaden. Als u dit verkeer blokkeert, kan dit leiden tot prestatie downgrade bij het starten van IR en verliest u de mogelijkheid om de intrekkings lijst voor certificaten te controleren op het gebruik van certificaten. Als u de bestemming verder wilt beperken tot bepaalde FQDN-verwijzingen, raadpleegt u de sectie **Azure ExpressRoute of UDR gebruiken**|
+| Uitgaand | TCP | VirtualNetwork | * | SQL | 1433, 11000-11999 | Beschrijving Deze regel is alleen vereist wanneer de knoop punten van uw Azure-SSIS IR in het virtuele netwerk toegang hebben tot een SSISDB die wordt gehost door uw SQL Database-Server. Als uw SQL Database Server-verbindings beleid is ingesteld op **proxy** in plaats van de **omleiding**, is alleen poort 1433 vereist. <br/><br/> Deze uitgaande beveiligings regel is niet van toepassing op een SSISDB die wordt gehost door uw beheerde instantie in het virtuele netwerk of de Azure data base-server die is geconfigureerd met een persoonlijk eind punt. |
+| Uitgaand | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 | Beschrijving Deze regel is alleen vereist wanneer de knoop punten van uw Azure-SSIS IR in het virtuele netwerk toegang hebben tot een SSISDB die wordt gehost door uw beheerde instantie in het virtuele netwerk of de Azure data base-server die is geconfigureerd met een persoonlijk eind punt. Als uw SQL Database Server-verbindings beleid is ingesteld op **proxy** in plaats van de **omleiding**, is alleen poort 1433 vereist. |
+| Uitgaand | TCP | VirtualNetwork | * | Storage | 445 | Beschrijving Deze regel is alleen vereist als u SSIS-pakket wilt uitvoeren dat is opgeslagen in Azure Files. |
+||||||||
 
-In beide gevallen zal de verkeers route de vereiste binnenkomende verbindingen van afhankelijke Azure Data Factory Services (met name Azure Batch Management Services) afbreken naar de Azure-SSIS IR in het virtuele netwerk. Om dit te voor komen, definieert u een of meer Udr's in het subnet dat de Azure-SSIS IR bevat. 
+### <a name="route"></a>Azure ExpressRoute of UDR gebruiken
+Als u uitgaand verkeer van Azure-SSIS IR wilt controleren, kunt u verkeer dat vanaf Azure-SSIS IR naar een on-premises firewall apparaat wordt geïnitieerd, routeren via [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) Force tunneling (adverteren van een BGP-route, 0.0.0.0/0, naar het virtuele netwerk) of naar het virtuele netwerk apparaat (NVA) als firewall of [Azure firewall](https://docs.microsoft.com/azure/firewall/) via [udr's](../virtual-network/virtual-networks-udr-overview.md). 
 
-U kunt de route 0.0.0.0/0 Toep assen met het type van de volgende hop als **Internet** op het subnet dat als host fungeert voor de Azure-SSIS IR in een Azure ExpressRoute-scenario. Of u kunt de bestaande route van 0.0.0.0/0 wijzigen van het type volgende hop als **virtueel apparaat** op **Internet** in een NVA-scenario.
+![NVA-scenario voor Azure-SSIS IR](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir-nva.png)
 
-![Een route toevoegen](media/join-azure-ssis-integration-runtime-virtual-network/add-route-for-vnet.png)
+U moet onder andere dingen doen om het hele scenario te laten werken
+   -   Inkomend verkeer tussen Azure Batch beheer Services en de Azure-SSIS IR kan niet worden gerouteerd via een firewall apparaat.
+   -   Het firewall apparaat moet uitgaand verkeer toestaan dat door Azure-SSIS IR wordt vereist.
 
-Als u zich zorgen maakt over de mogelijkheid om uitgaand Internet verkeer van dat subnet te controleren, kunt u specifieke Udr's definiëren voor het routeren van verkeer alleen tussen Azure Batch beheer Services en de Azure-SSIS IR met het type volgende hop als **Internet**.
+Inkomend verkeer tussen Azure Batch beheer Services en de Azure-SSIS IR kan niet worden gerouteerd naar een firewall apparaat anders wordt het verkeer verbroken vanwege een asymmetrisch routerings probleem. Routes moeten worden gedefinieerd voor binnenkomend verkeer zodat het verkeer op dezelfde manier als het kan worden beantwoord. U kunt specifieke Udr's definiëren voor het routeren van verkeer tussen Azure Batch beheer Services en de Azure-SSIS IR met het type volgende hop als **Internet**.
 
-Als uw Azure-SSIS IR zich bijvoorbeeld op `UK South`bevindt, ontvangt u een lijst met IP-adres bereik van de servicetag `BatchNodeManagement.UKSouth` van de service [Tags IP-adres bereik downloaden koppeling](https://www.microsoft.com/en-us/download/details.aspx?id=56519) of via de [service tag discovery-API](https://aka.ms/discoveryapi). Pas vervolgens de volgende Udr's van gerelateerde IP-bereik routes toe met het type volgende hop als **Internet**.
+Als uw Azure-SSIS IR bijvoorbeeld zich op `UK South` bevindt en u wilt uitgaand verkeer via Azure Firewall controleren, krijgt u eerst een lijst met IP-adres bereik van servicetag `BatchNodeManagement.UKSouth` van de [Download koppeling voor het IP-adres bereik van de service Tags](https://www.microsoft.com/download/details.aspx?id=56519) of via de [service tag discovery-API](https://aka.ms/discoveryapi). Pas vervolgens de volgende Udr's van gerelateerde IP-bereik routes toe met het volgende hop-type als **Internet** , samen met de 0.0.0.0/0-route met het type van de volgende hop als **virtueel apparaat**.
 
 ![UDR-instellingen voor Azure Batch](media/join-azure-ssis-integration-runtime-virtual-network/azurebatch-udr-settings.png)
 
 > [!NOTE]
 > Deze aanpak is een extra onderhouds kosten. Controleer regel matig het IP-adres bereik en voeg nieuwe IP-adresbereiken toe aan uw UDR om te voor komen dat de Azure-SSIS IR wordt verbroken. Het is raadzaam om het IP-bereik maandelijks te controleren. Wanneer het nieuwe IP-adres wordt weer gegeven in de servicetag van de service, zal het IP-adres van kracht worden. 
+
+Als u wilt dat uitgaand verkeer door een firewall apparaat wordt toegestaan, moet u uitgaand naar de onderstaande poorten als vereist toestaan in NSG uitgaande regels.
+-   Poort 443 met bestemming als Azure-Cloud Services.
+
+    Als u Azure Firewall gebruikt, kunt u netwerk regel met Cloud-servicetag opgeven. anders is het mogelijk dat u doel als alle in het firewall apparaat wilt toestaan.
+
+-   Poort 80 met doel als CRL-download sites.
+
+    U mag onder de volgende FQDN-namen die worden gebruikt als CRL (certificaatintrekkingslijst) de sites van certificaten voor Azure-SSIS IR beheer doel downloaden:
+    -  crl.microsoft.com:80
+    -  mscrl.microsoft.com:80
+    -  crl3.digicert.com:80
+    -  crl4.digicert.com:80
+    -  ocsp.digicert.com:80
+    -  cacerts.digicert.com:80
+    
+    Als u certificaten met een andere CRL gebruikt, wordt u geadviseerd om deze ook toe te voegen. U kunt dit lezen voor meer [informatie over de certificaatintrekkingslijst.](https://social.technet.microsoft.com/wiki/contents/articles/2303.understanding-access-to-microsoft-certificate-revocation-list.aspx)
+
+    Als u dit verkeer niet toestaat, kunt u prestatie downgrade ervaren wanneer u Azure-SSIS IR start en de mogelijkheid verliezen om de certificaatintrekkingslijst te controleren op basis van het certificaat gebruik dat niet wordt aanbevolen vanuit het beveiligings oogpunt van de weer gave.
+
+-   Poort 1433, 11000-11999 met bestemming als Azure SQL (alleen vereist wanneer de knoop punten van uw Azure-SSIS IR in het virtuele netwerk toegang hebben tot een SSISDB die wordt gehost door uw SQL Database-Server).
+
+    Als u Azure Firewall gebruikt, kunt u de netwerk regel met de Azure SQL-servicetag opgeven, anders kan de bestemming als specifieke Azure SQL-URL in het firewall apparaat worden toegestaan.
+
+-   Poort 445 met doel als Azure Storage (alleen vereist wanneer u SSIS-pakket uitvoert dat in Azure Files is opgeslagen).
+
+    Als u Azure Firewall gebruikt, kunt u netwerk regel met opslag servicetag opgeven, anders kan de bestemming als specifieke URL voor Azure-bestands opslag in het firewall apparaat worden toegestaan.
+
+> [!NOTE]
+> Als u in Azure SQL en Storage Virtual Network Service-eind punten op uw subnet configureert, wordt verkeer tussen Azure-SSIS IR en Azure SQL in dezelfde regio \ Azure Storage in dezelfde regio of in het gekoppelde gebied direct doorgestuurd naar Microsoft Azure backbone-netwerk. in plaats van uw firewall-apparaat.
+
+Als u geen mogelijkheid hebt om uitgaand verkeer van Azure-SSIS IR te controleren, kunt u gewoon een route Toep assen om al het verkeer naar het volgende hop-type **Internet**te forceren:
+
+-   In een Azure ExpressRoute-scenario kunt u de route 0.0.0.0/0 Toep assen met het type van de volgende hop als **Internet** op het subnet dat als host fungeert voor de Azure-SSIS IR. 
+-   In een NVA-scenario kunt u de bestaande, 0.0.0.0/0-route die is toegepast op het subnet waarop de Azure-SSIS IR als host van het **virtuele apparaat** wordt gehost op **Internet**, wijzigen.
+
+![Een route toevoegen](media/join-azure-ssis-integration-runtime-virtual-network/add-route-for-vnet.png)
+
+> [!NOTE]
+> Route opgeven met het type van de volgende hop **Internet** betekent niet dat al het verkeer via internet verloopt. Zolang het doel adres is voor een van de services van Azure, stuurt Azure het verkeer rechtstreeks naar de service via het backbone-netwerk van Azure, in plaats van het verkeer naar Internet te routeren.
 
 ### <a name="resource-group"></a>De resource groep instellen
 
@@ -291,21 +338,21 @@ Gebruik de portal om een klassiek virtueel netwerk te configureren voordat u pro
 
    1. Selecteer **toegangs beheer (IAM)** in het menu links en selecteer het tabblad **roltoewijzingen** . 
 
-   ![De knoppen toegangs beheer en toevoegen](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
+       ![De knoppen toegangs beheer en toevoegen](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
 
    1. Selecteer **roltoewijzing toevoegen**.
 
    1. Selecteer op de pagina **roltoewijzing toevoegen** , voor **rol**, de **Inzender voor klassieke virtuele machines**. Plak **ddbf3205-c6bd-46ae-8127-60eb93363864**in het **selectie** vakje en selecteer vervolgens **Microsoft Azure batch** in de lijst met zoek resultaten. 
 
-   ![Zoek resultaten op de pagina functie toewijzing toevoegen](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
+       ![Zoek resultaten op de pagina functie toewijzing toevoegen](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
 
    1. Selecteer **Opslaan** om de instellingen op te slaan en de pagina te sluiten. 
 
-   ![Toegangs instellingen opslaan](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
+       ![Toegangs instellingen opslaan](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
 
    1. Controleer of **Microsoft Azure batch** wordt weer geven in de lijst met inzenders. 
 
-   ![Azure Batch toegang bevestigen](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
+       ![Azure Batch toegang bevestigen](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
 
 1. Controleer of de Azure Batch provider is geregistreerd in het Azure-abonnement met het virtuele netwerk. Of Registreer de Azure Batch-provider. Als u al een Azure Batch account in uw abonnement hebt, wordt uw abonnement geregistreerd voor Azure Batch. (Als u de Azure-SSIS IR maakt in de Data Factory Portal, wordt de Azure Batch provider automatisch voor u geregistreerd.) 
 

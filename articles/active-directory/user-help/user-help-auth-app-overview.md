@@ -1,5 +1,5 @@
 ---
-title: Overzicht van de Microsoft Authenticator-app - Azure Active Directory | Microsoft Docs
+title: Wat is de Microsoft Authenticator-app? - Azure Active Directory | Microsoft Azure
 description: Meer informatie over de Microsoft Authenticator-app, met inbegrip van wat deze inhoudt, hoe de app werkt en welke informatie is opgenomen in deze sectie van de inhoud.
 services: active-directory
 author: eross-msft
@@ -9,20 +9,17 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/24/2019
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3766436851cb2f31fa7bb070402191e03ad9ad1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 468005094ab8a9c42d7eacdfefa990565a3297f3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382337"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155805"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Wat is de Microsoft Authenticator-app?
-
->[!Important]
->Deze inhoud is bedoeld voor gebruikers. Als u een beheerder bent, kunt u meer informatie vinden over hoe u uw Azure Active Directory-omgeving (Azure AD) instelt en beheert in de [documentatie voor Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
 
 Met de Microsoft Authenticator-app kunt u zich aanmelden bij uw accounts als u gebruikmaakt van verificatie in twee stappen. Verificatie in twee stappen helpt u veiliger toegang te krijgen tot uw accounts, vooral als u gevoelige informatie bekijkt. Omdat wachtwoorden kunnen worden vergeten, gestolen of gewijzigd, is verificatie in twee stappen een extra beveiligingsstap waarmee u uw account beschermt door het voor anderen lastiger te maken om in te breken.
 
@@ -37,16 +34,14 @@ U kunt de Microsoft Authenticator-app op meerdere manieren gebruiken, bijvoorbee
 > [!Important]
 > De Microsoft Authenticator-app werkt met een account dat gebruikmaakt van twee ledige verificatie en ondersteunt de op tijd gebaseerde mobiele TOTP-standaarden (one-time password).
 >
-> Mogelijk moet u voor uw organisatie gebruikmaken van een verificator-app om u aan te melden en de gegevens en documenten van uw organisatie te openen. Hoewel uw gebruikersnaam mogelijk in de app wordt weergegeven, wordt het account pas echt ingesteld om te fungeren als een verificatiemethode wanneer u het registratieproces voltooit. Zie [Uw werk- of schoolaccount toevoegen](user-help-auth-app-add-work-school-account.md) voor meer informatie.
-> 
-> Als u problemen ondervindt met aanmelden bij uw account, gaat u naar [Wanneer u zich niet kunt aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429) voor hulp. Bekijk meer informatie over wat u kunt doen wanneer het bericht ['Dat Microsoft-account bestaat niet'](https://support.microsoft.com/help/13811) wordt weergegeven wanneer u zich aanmeldt bij uw Microsoft-account.
+>Dit artikel is bedoeld voor gebruikers die proberen de Microsoft Authenticator-app te downloaden en gebruiken als methode voor beveiligings verificatie. Als u een beheerder bent die zoekt naar informatie over het inschakelen van aanmelding zonder wacht woord met behulp van de verificator-app voor uw werk nemers en andere toepassingen, raadpleegt u [aanmelden zonder wacht woord inschakelen met de Microsoft Authenticator-app (preview)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone).
 
 ## <a name="terminology"></a>Terminologie
 
-| Begrip|Description|
+| Termijn|Beschrijving|
 | ----|-----------|
 | Verificatie in twee stappen | Een verificatieproces waarvoor u specifiek twee stukjes verificatie-informatie, zoals een wachtwoord en een pincode, moet gebruiken. De Microsoft Authenticator-app biedt ondersteuning voor zowel de standaard verificatie in twee stappen als aanmelding zonder wachtwoord. |
-| Multi-factor authentication (MFA) | Alle verificatie in twee stappen bestaat uit meervoudige verificatie, waarvoor u *ten minste* twee stukjes verificatie-informatie moet gebruiken, op basis van de vereisten van uw organisatie. |
+| Meervoudige verificatie (MFA) | Alle verificatie in twee stappen bestaat uit meervoudige verificatie, waarvoor u *ten minste* twee stukjes verificatie-informatie moet gebruiken, op basis van de vereisten van uw organisatie. |
 | Microsoft-account (ook MSA genoemd) | U maakt uw eigen persoonlijke accounts om toegang te krijgen tot uw consumentgerichte producten en cloudservices van Microsoft, zoals Outlook, OneDrive, Xbox LIVE en Office 365. Uw Microsoft-account wordt gemaakt en opgeslagen in het accountsysteem voor consumentidentiteiten van Microsoft, dat wordt beheerd door Microsoft. |
 | Werk- of schoolaccount | Uw organisatie maakt uw werk- of schoolaccount (zoals alain@contoso.com) waarmee u toegang tot interne en mogelijk beperkte resources, zoals Microsoft Azure, Windows Intune en Office 365, kunt krijgen. |
 | Verificatiecode | De code van zes cijfers die wordt weergegeven in de Authenticator-app, onder elk toegevoegd account. De verificatiecode verandert elke 30 seconden om te voorkomen dat iemand een code meerdere keren kan gebruiken. Dit wordt ook wel een eenmalige wachtwoordcode of OTP (One-Time Passcode) genoemd. |
@@ -77,7 +72,7 @@ Afhankelijk van uw accounttype kan uw organisatie besluiten dat u gebruik moet m
 
 ## <a name="in-this-section"></a>In deze sectie doet u het volgende
 
-| Artikel | Description |
+| Artikel | Beschrijving |
 | ------ | ------------ |
 | [De app downloaden en installeren](user-help-auth-app-download-install.md) | Beschrijft waar en hoe u de Microsoft Authenticator-app kunt downloaden en installeren voor apparaten met Android en iOS. |
 | [Uw werk- of schoolaccounts toevoegen](user-help-auth-app-add-work-school-account.md) | Beschrijft hoe u uw verschillende werk- of schoolaccounts toevoegt aan de Microsoft Authenticator-app. |

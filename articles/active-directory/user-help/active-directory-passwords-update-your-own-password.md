@@ -9,23 +9,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c0d0fdf4e7df0401692eb026d55fe1a7c9322f1
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d8b46dbc0cc3c61396acdc7d21517c13d4650bf3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160801"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156281"
 ---
-# <a name="reset-your-work-or-school-password"></a>Uw werk-of school wachtwoord opnieuw instellen
+# <a name="reset-your-work-or-school-password-using-security-info"></a>Uw werk-of school wachtwoord opnieuw instellen met behulp van beveiligings gegevens
 
-Als u uw wachtwoord bent vergeten, nooit een wachtwoord van bedrijfsondersteuning hebt ontvangen, of uw account is vergrendeld, kunt u uw beveiligingsgegevens en mobiele apparaat gebruiken om uw wachtwoord opnieuw in te stellen.
+Als u uw werk-of school Wachtwoord verg eten bent, nooit een wacht woord hebt ontvangen van uw organisatie of uw account hebt vergrendeld, kunt u uw beveiligings gegevens en uw mobiele apparaat gebruiken om uw werk-of school wachtwoord opnieuw in te stellen. Uw beheerder moet deze functie inschakelen zodat u uw gegevens kunt instellen en uw eigen wacht woord opnieuw instelt.
 
->[!NOTE]
->Als u uw wacht woord kent en alleen deze wilt wijzigen, gaat u naar de stappen [uw wacht woord wijzigen](#how-to-change-your-password) in dit artikel.<br><br>
->Als u probeert terug te gaan naar een persoonlijk account, zoals Xbox, hotmail.com of outlook.com, kunt u de suggesties in de weer gegeven [Wanneer u zich niet kunt aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) -artikel.
+Als u uw wacht woord kent, maar dit wilt wijzigen, raadpleegt u de secties [uw wachtwoord stappen wijzigen](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) in dit artikel.
+
+>[!Important]
+>Dit artikel is bedoeld voor gebruikers die proberen een verg eten of onbekend werk-of school account-wacht woord opnieuw in te stellen. Als u een beheerder bent die op zoek is naar informatie over het inschakelen van de selfservice voor wachtwoord herstel voor uw werk nemers of andere gebruikers, raadpleegt u de [implementatie van Azure AD self-service voor wachtwoord herstel en andere artikelen](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
 
 ## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>Uw wacht woord opnieuw instellen of ontgrendelen voor een werk-of school account
 
@@ -58,7 +59,7 @@ Als u geen toegang hebt tot uw Azure Active Directory-account (Azure AD), kan di
     1. Selecteer **e-mail naar mijn alternatieve e-mail**adres en selecteer vervolgens **e-mail**.
 
     2. Typ de verificatie code van het e-mail adres in het vak en selecteer **volgende**.
-    
+
     3. Typ en bevestig uw nieuwe wacht woord en selecteer vervolgens **volt ooien**.
 
 - **Stel uw wacht woord opnieuw in met een tekst bericht.** Hiermee verzendt u een SMS-bericht naar het telefoon nummer dat u eerder hebt ingesteld in Security info. Als uw beheerder de beveiligings informatie heeft ingeschakeld, kunt u meer informatie over het instellen van SMS-berichten vinden in het artikel [beveiligings gegevens instellen voor het gebruik van tekst berichten (preview-versie)](security-info-setup-text-msg.md) . Als u nog geen beveiligings gegevens gebruikt, kunt u meer informatie over het instellen van SMS-berichten vinden in het artikel [Mijn account instellen voor verificatie in twee stappen](multi-factor-authentication-end-user-first-time.md) .
@@ -100,7 +101,7 @@ Als u geen toegang hebt tot uw Azure Active Directory-account (Azure AD), kan di
   3. Typ en bevestig uw nieuwe wacht woord en selecteer vervolgens **volt ooien**.
 
   4. Nadat u het bericht hebt ontvangen dat uw wacht woord opnieuw is ingesteld, kunt u zich aanmelden bij uw account met uw nieuwe wacht woord.
-        
+
      Als u nog steeds geen toegang hebt tot uw account, neemt u contact op met de beheerder van uw organisatie voor meer hulp.
 
 Nadat u uw wacht woord opnieuw hebt ingesteld, kunt u een bevestigings-e-mail ontvangen van een account als ' micro soft namens \<*your_organization*> '. Als u een soortgelijk e-mail bericht krijgt, maar u het wacht woord niet onlangs opnieuw hebt ingesteld, moet u onmiddellijk contact opnemen met de beheerder van uw organisatie.
@@ -160,13 +161,10 @@ Hier volgen enkele veelvoorkomende fout gevallen en hun oplossingen:
 |Wanneer ik mijn wacht woord probeer te wijzigen, krijg ik een fout melding. |Uw wacht woord heeft een woord, woord groep of patroon waarmee uw wacht woord gemakkelijk kan worden geraden.| Probeer het opnieuw met een sterker wacht woord.|
 |Nadat ik mijn gebruikers-ID heb ingevoerd, ga ik naar een pagina met de tekst ' Neem contact op met de beheerder '.|Micro soft heeft vastgesteld dat het wacht woord van uw gebruikers account wordt beheerd door uw beheerder in een on-premises omgeving. Als gevolg hiervan kunt u uw wacht woord niet opnieuw instellen via de koppeling geen toegang tot uw account. |Neem contact op met de beheerder voor meer informatie.|
 |Nadat ik mijn gebruikers-ID heb ingevoerd, krijg ik de fout melding ' uw account is niet ingeschakeld voor het opnieuw instellen van het wacht woord '.|Uw beheerder heeft uw account niet ingesteld zodat u uw eigen wacht woord opnieuw kunt instellen.|Uw beheerder heeft geen wacht woord opnieuw instellen ingesteld voor uw organisatie via de koppeling geen toegang tot uw account of u hebt geen licenties meer voor het gebruik van de functie.<br><br> Als u uw wacht woord opnieuw wilt instellen, moet u de koppeling ' contact opnemen met een beheerder ' selecteren om een e-mail bericht te verzenden naar de beheerder van uw bedrijf. laat u weten dat u uw wacht woord opnieuw wilt instellen.|
-|Wanneer ik mijn gebruikers-ID heb ingevoerd, krijg ik een fout melding dat het account niet kan worden geverifieerd.|De account gegevens kunnen niet worden geverifieerd met het aanmeldings proces.|Er zijn twee redenen waarom u dit bericht ziet.<br><br>1. de beheerder heeft het opnieuw instellen van het wacht woord voor uw organisatie ingeschakeld, maar u hebt zich niet geregistreerd voor het gebruik van de service. Als u zich wilt registreren voor het opnieuw instellen van wacht woorden, raadpleegt u een van de volgende artikelen, op basis van uw verificatie methode: [beveiligings gegevens instellen voor het gebruik van een verificator-app (preview)](security-info-setup-auth-app.md), [beveiligings gegevens instellen voor het gebruik van een telefoon gesprek (preview)](security-info-setup-phone-number.md), beveiligings gegevens [instellen voor gebruik SMS-berichten (preview)](security-info-setup-text-msg.md), [Stel beveiligings informatie in voor het gebruik van e-mail (preview)](security-info-setup-email.md)of [Stel beveiligings informatie in voor het gebruik van beveiligings vragen (preview)](security-info-setup-questions.md).<br><br>2. de beheerder heeft het opnieuw instellen van het wacht woord voor uw organisatie niet ingeschakeld. In dit geval moet u de koppeling ' contact opnemen met een beheerder ' selecteren om een e-mail naar uw beheerder te verzenden, waarbij u wordt gevraagd uw wacht woord opnieuw in te stellen.|
+|Wanneer ik mijn gebruikers-ID heb ingevoerd, krijg ik een fout melding dat het account niet kan worden geverifieerd.|De account gegevens kunnen niet worden geverifieerd met het aanmeldings proces.|Er zijn twee redenen waarom u dit bericht ziet.<br><br>1. de beheerder heeft het opnieuw instellen van het wacht woord voor uw organisatie ingeschakeld, maar u hebt zich niet geregistreerd voor het gebruik van de service. Registreren voor het opnieuw instellen van een wacht woord Zie een van de volgende artikelen, op basis van uw verificatie methode: [beveiligings gegevens instellen voor het gebruik van een verificator-app (](security-info-setup-auth-app.md)preview), [beveiligings gegevens instellen voor het gebruik van een telefoon gesprek (](security-info-setup-phone-number.md)preview), beveiligings gegevens instellen voor het gebruik van [SMS-berichten (](security-info-setup-text-msg.md)preview), beveiligings gegevens instellen voor het gebruik van [E-mail](security-info-setup-email.md)(preview) of [beveiligings informatie instellen voor het gebruik van beveiligings vragen](security-info-setup-questions.md)<br><br>2. de beheerder heeft het opnieuw instellen van het wacht woord voor uw organisatie niet ingeschakeld. In dit geval moet u de koppeling ' contact opnemen met een beheerder ' selecteren om een e-mail naar uw beheerder te verzenden, waarbij u wordt gevraagd uw wacht woord opnieuw in te stellen.|
 
 ## <a name="next-steps"></a>Volgende stappen
+
 - Meer informatie over beveiligings informatie vindt u in het [overzichts artikel Security info (preview)](user-help-security-info-overview.md) .
 
-- Meer informatie over verificatie in twee stappen vindt u in het artikel [verificatie overzicht in twee stappen](user-help-two-step-verification-overview.md) . 
-
-- Uw wacht woord opnieuw instellen als u het kwijtraakt of vergeet, vanuit de portal voor het [opnieuw instellen](https://passwordreset.microsoftonline.com/) van het wacht woord
-
-- Krijg tips voor het oplossen van problemen en hulp met problemen met aanmelden in het artikel [U kunt niet aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).
+- Als u probeert terug te gaan naar een persoonlijk account, zoals Xbox, hotmail.com of outlook.com, kunt u de suggesties in de weer gegeven [Wanneer u zich niet kunt aanmelden bij uw Microsoft-account-artikel](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

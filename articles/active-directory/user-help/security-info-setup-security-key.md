@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d02ca3a8b5b617edb8ee00ae7d15ea7e94cae80
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 03855b7596f45fcdde0bebe018d2157ad33a617b
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278951"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156077"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Stel een beveiligings sleutel in als uw verificatie methode
 
@@ -25,8 +25,21 @@ U kunt beveiligings sleutels gebruiken als een aanmeldings methode zonder wacht 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-key.md)]
 
->[!Important]
->Deze inhoud is bedoeld voor gebruikers. Als u een beheerder bent, kunt u meer informatie vinden over hoe u uw Azure Active Directory-omgeving (Azure AD) instelt en beheert in de [documentatie voor Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
+>[!Note]
+> Als u de optie beveiligings sleutel niet ziet, is het mogelijk dat uw organisatie deze optie niet kan gebruiken voor verificatie. In dit geval moet u een andere methode kiezen of contact opnemen met de Help Desk van uw organisatie voor meer hulp.
+
+## <a name="security-verification-versus-password-reset-authentication"></a>Beveiligings verificatie versus wachtwoord herstel verificatie
+
+Beveiligings informatie methoden worden gebruikt voor verificatie met twee factoren en voor het opnieuw instellen van wacht woorden. Niet elke methode kan echter voor beide worden gebruikt.
+
+| Methode | Gebruikt voor |
+| ------ | -------- |
+| Authenticator-app | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
+| Sms-berichten | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
+| Telefoonoproep | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
+| Beveiligings sleutel | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
+| E-mailaccount | Alleen voor verificatie voor het opnieuw instellen van het wachtwoord. Voor tweeledige verificatie moet u een andere methode kiezen. |
+| Beveiligingsvragen | Alleen voor verificatie voor het opnieuw instellen van het wachtwoord. Voor tweeledige verificatie moet u een andere methode kiezen. |
 
 ## <a name="what-is-a-security-key"></a>Wat is een beveiligings sleutel?
 
@@ -80,7 +93,7 @@ U moet uw beveiligings sleutel maken en deze een unieke pincode geven voordat u 
 
     U keert terug naar het vak **uw nieuwe aanmeldings methode instellen** .
 
-7. Selecteer **Volgende**.
+7. Selecteer **Next**.
 
 8. Ga terug naar de pagina **beveiligings gegevens** , typ een naam die u later voor uw nieuwe beveiligings sleutel gaat herkennen en selecteer **volgende**.
 

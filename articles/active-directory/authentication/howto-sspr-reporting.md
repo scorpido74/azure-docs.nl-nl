@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3b05c45d218c0f85817b4b5023ac22401879f81
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 27d219f46f82f4a74cb5dee0a6b11b673a4a3509
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847215"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155004"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Rapportage opties voor Azure AD-wachtwoord beheer
 
@@ -53,7 +53,7 @@ In de Azure Portal-ervaring hebben we de manier verbeterd waarop u wacht woord o
 
 ### <a name="converged-registration-preview"></a>Geconvergeerde registratie (preview-versie)
 
-Als u deelneemt aan de open bare preview van geconvergeerde registratie, vindt u onder de service **verificatie methoden**informatie over gebruikers activiteit in de audit Logboeken.
+Als u deelneemt aan de open bare preview van geconvergeerde registratie, wordt informatie over gebruikers activiteit in de audit logboeken gevonden onder **beveiligings** > **verificatie methoden**.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Beschrijving van de rapport kolommen in de Azure Portal
 

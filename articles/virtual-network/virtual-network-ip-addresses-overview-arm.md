@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 23db74b1cd157141454692805f9ec306ef89710a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f6f77268952f0ac7c01498ab8833bdad592bdc3f
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975195"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155601"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-adrestypen en toewijzingsmethoden in Azure
 
@@ -45,6 +45,7 @@ In Azure Resource Manager is een [openbaar IP](virtual-network-public-ip-address
 * Internetgerichte load balancers
 * VPN-gateways
 * Toepassingsgateways
+* Azure Firewall
 
 ### <a name="ip-address-version"></a>IP-adresversie
 

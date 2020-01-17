@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: e744cdde298054de3631adb96b56bbc808f36a38
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 044c453152d44420d5e78855751a2680698e89f3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750952"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120142"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Ondersteunde services, schema's en categorieën voor Azure-resource logboeken
 
@@ -86,7 +86,10 @@ Het schema voor de diagnostische logboeken voor bronnen varieert afhankelijk van
 | Virtuele-netwerkgateways | Het schema is niet beschikbaar. |
 
 ## <a name="supported-log-categories-per-resource-type"></a>Ondersteunde logboek categorieën per resource type
-|Resourcetype|Categorie|Weergave naam categorie|
+
+Sommige categorieën worden mogelijk alleen ondersteund voor specifieke typen resources. Dit is een lijst van alle beschik bare in een formulier.  Bijvoorbeeld: categorieën van micro soft. SQL/servers/data bases zijn niet beschikbaar voor alle typen data bases. Zie [informatie over SQL database diagnostische logboek registratie](../../sql-database/sql-database-metrics-diag-logging.md)voor meer informatie. 
+
+|Resourcetype|Category|Weergave naam categorie|
 |---|---|---|
 |Micro soft. AAD/domainServices|SystemSecurity|SystemSecurity|
 |Micro soft. AAD/domainServices|AccountManagement|AccountManagement|

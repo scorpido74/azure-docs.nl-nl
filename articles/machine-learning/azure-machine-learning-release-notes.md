@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b413fd7efe865f1dc2062a8f2dcfae983ec2f27a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 0e613dd1c47a9942d95bd668f1e9f85e42649b5c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771918"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122369"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
@@ -125,7 +125,7 @@ Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informa
     + Oplossing voor het laden van RunConfigurations vanaf relatieve paden.
     + Bij het aanroepen van `keep_columns` of `drop_columns` dat resulteert in een kolom tijds Erie die wordt verwijderd, worden de bijbehorende mogelijkheden ook voor de gegevensset verwijderd.
   + **azureml-interpreteren**
-    + bijgewerkte versie van interprete-community naar 0.2.0
+    + Bijgewerkte versie van interprete-community naar 0.2.0
   + **azureml-pipeline-steps**
     + Gedocumenteerde ondersteunde waarden voor `runconfig_pipeline_params` voor Azure machine learning pijplijn stappen.
   + **azureml-pipeline-core**
@@ -220,7 +220,7 @@ De Azure Machine Learning SDK voor R maakt gebruik van het `reticulate`-pakket o
 
 De belangrijkste mogelijkheden van de SDK zijn:
 
-+   Beheer cloud resources voor het bewaken, vastleggen en indelen van uw machine learning experimenten.
++   Cloudresources voor het bewaken, loggen en organiseren van uw machine-leerexperimenten beheren.
 +   Train modellen met behulp van cloud resources, waaronder GPU-versneld model training.
 +   Implementeer uw modellen als webservices op Azure Container Instances (ACI) en Azure Kubernetes service (AKS).
 
@@ -854,10 +854,10 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
     + Het resource gebruik van externe uitvoeringen verbeteren met behulp van azureml. mlflow.
   + **azureml-explain-model**
     + Argument voor vaste trans formaties voor de licht gewicht uitleg van de onbewerkte functie in het contrib-uitleg-model pakket
-    + scipy sparse-ondersteuning voor LimeExplainer toevoegen
+    + Scipy sparse-ondersteuning voor LimeExplainer toevoegen
     + vorm van lineaire uitleg weergave is toegevoegd, evenals een ander niveau voor de uitleg over lineaire modellen in tabel vorm
     + voor een gesimuleerde uitleg van de uitleg model bibliotheek is een vaste fout opgetreden wanneer include_local = False voor sparse gegevens invoer
-    + verwachte waarden toevoegen aan `automl` uitvoer
+    + Verwachte waarden toevoegen aan `automl` uitvoer
     + het is belang rijk dat het probleem is opgelost door het argument van de transformaties van de functie RAW te verkrijgen
     + `batch_size` is toegevoegd om de uitleger te simuleren wanneer `include_local=False`, voor het streamen van globale toelichtingen in batches om de uitvoerings tijd van DecisionTreeExplainableModel te verbeteren
     + voor de model verklarende bibliotheek is een vast blackbox-uitleg waarbij Pandas data frame invoer vereist is voor de voor spelling
@@ -884,7 +884,7 @@ Op het moment van deze release worden de volgende browsers ondersteund: Chrome, 
   + **azureml-train-automl**
     + Bijgewerkte documentatie over get_output om het werkelijke retour type weer te geven en aanvullende notities te geven over het ophalen van de sleutel eigenschappen.
     + NimbusML-afhankelijkheid bijwerken naar 1.2.0-versie (meest recent).
-    + verwachte waarden toevoegen aan `automl` uitvoer
+    + Verwachte waarden toevoegen aan `automl` uitvoer
   + **azureml-train-core**
     + Teken reeksen worden nu geaccepteerd als Compute target voor automatische afstemming-afstemming
     + De niet-gebruikte RunConfiguration-instelling auto_prepare_environment is gemarkeerd als afgeschaft.
@@ -1488,7 +1488,7 @@ Azure Machine Learning-Computing kunnen worden gemaakt in Python, met behulp van
 + ML-pijplijnen
   + Nieuwe en bijgewerkte laptops voor aan de slag met pijplijnen, batch scoping en stijl verplaatsen voorbeelden: https://aka.ms/aml-pipeline-notebooks
   + Meer informatie over het [uw eerste pijplijn maken](how-to-create-your-first-pipeline.md)
-  + Meer informatie over het [voorspellingen van batch met behulp van pijplijnen worden uitgevoerd](how-to-run-batch-predictions.md)
+  + Meer informatie over het [voorspellingen van batch met behulp van pijplijnen worden uitgevoerd](how-to-use-parallel-run-step.md)
 + Azure Machine Learning Compute-doel
   + Voor [beelden van notitie blokken](https://aka.ms/aml-notebooks) worden nu bijgewerkt met de nieuwe beheerde reken kracht.
   + [Meer informatie over deze rekenkracht](how-to-set-up-training-targets.md#amlcompute)

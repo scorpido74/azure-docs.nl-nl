@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/11/2020
-ms.openlocfilehash: 0354abf6a5450a1116423e3a35c3a7e2ae7b9057
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ef70c211c395556a4c15ff06e65098e8aaac32ba
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971091"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120261"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor door de klant beheerde sleutel configuratie 
 
@@ -378,8 +378,6 @@ Als u uw sleutel bijwerkt in Key Vault en de nieuwe *sleutel-id* -details niet b
 
 - CMK-versleuteling is van toepassing op nieuwe opgenomen gegevens na de CMK-configuratie. Gegevens die vóór de CMK-configuratie zijn opgenomen, zijn versleuteld met de micro soft-sleutel. U kunt gegevens voor en na de configuratie naadloos opvragen.
 
-- De functionaliteit van CMK is regionaal: uw Azure Key Vault, *cluster* bron en gekoppelde werk ruimten moeten zich in dezelfde regio bevinden, maar kunnen zich in verschillende abonnementen bevinden.
-
 - Nadat de werk ruimte is gekoppeld aan een *cluster* bron, kan deze niet worden gekoppeld aan de *cluster* bron, omdat de gegevens zijn versleuteld met uw sleutel en niet toegankelijk zijn zonder uw Kek in azure Key Vault.
 
 - De Azure Key Vault moet worden geconfigureerd als herstelbaar. Deze eigenschappen zijn niet standaard ingeschakeld en moeten worden geconfigureerd met CLI en Power shell:
@@ -391,9 +389,9 @@ Als u uw sleutel bijwerkt in Key Vault en de nieuwe *sleutel-id* -details niet b
 
 - Het verplaatsen van een *cluster* bron naar een andere resource groep of een ander abonnement wordt momenteel niet ondersteund.
 
-- De werkruimte koppeling met de *cluster* bron mislukt als de *cluster* bron zich in een andere Tenant bevindt.
+- Uw Azure Key Vault, *cluster* resource en gekoppelde werk ruimten moeten zich in dezelfde regio en in dezelfde Azure Active Directory (Azure AD)-Tenant bevinden, maar ze kunnen zich in verschillende abonnementen bevinden.
 
--   Werkruimte koppeling met *cluster* bron mislukt als deze is gekoppeld aan een andere *cluster* bron
+- Werkruimte koppeling met *cluster* bron mislukt als deze is gekoppeld aan een andere *cluster* bron
 
 ## <a name="troubleshooting-and-management"></a>Problemen oplossen en beheren
 
@@ -557,7 +555,7 @@ Content-type: application/json
 
 ```json
 {
-  "id": "/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.insights/components/{component-name}",
+  "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.insights/components/component-name",
   "name": "component-name",
   "type": "Microsoft.Insights/components",
   "location": "region-name",

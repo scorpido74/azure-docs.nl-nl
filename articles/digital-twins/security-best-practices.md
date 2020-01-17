@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 5d2fe5a00d131af54862551991cf984d8576b57e
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/15/2020
+ms.openlocfilehash: 5fc5ba447557aa89e8f0870c576d6d4c439f3353
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860942"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122556"
 ---
 # <a name="azure-digital-twins-security-best-practices"></a>Best practices voor Azure Digital Apparaatdubbels-beveiliging
 
@@ -40,6 +40,7 @@ Enkele belang rijke procedures voor het veilig beveiligen van uw IoT-apparaten z
 > * Beperk I/O en bandbreedte van apparaten om de prestaties te verbeteren. De mate van beperking kan de beveiliging verbeteren door denial-of-service-aanvallen te voor komen.
 > * Zorg ervoor dat de firmware, het besturings systeem en de software van het apparaat up-to-date blijven.
 > * Regel matig de best practices voor apparaten, software, netwerken en gateway beveiliging controleren en controleren wanneer ze blijven verbeteren en ontwikkelen.
+> * Gebruik vertrouwde, gecertificeerde en compatibele beveiligings systemen, software en apparaten. Bekijk bijvoorbeeld [de nalevings aanbiedingen](https://azure.microsoft.com/overview/trusted-cloud/compliance/) voor Azure Cloud.
 
 Enkele belang rijke procedures voor het veilig beveiligen van een IoT-ruimte zijn onder andere:
 
@@ -67,8 +68,8 @@ Azure Digital Apparaatdubbels maakt gebruik van [Azure Active Directory](https:/
 > * Gebruik een certificaat dat is uitgegeven door een vertrouwde [certificerings instantie](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) in plaats van app-geheimen om te verifiëren.
 > * Beperk OAuth 2,0-toegangs bereik voor een token.
 > * Controleer de tijds duur dat een token geldig is en of een token geldig blijft.
-> * Stel de juiste tijds duur in waarvoor tokens geldig zijn.
-> * Vernieuw verlopen tokens.
+> * Stel de juiste tijds duur in waarvoor tokens geldig zijn. Vernieuw verlopen tokens.
+> * Verwijder ongebruikte **omleidings-uri's** en machtigingen per [op rollen gebaseerd toegangs beheer aanbevolen procedures](#role-based-access-control-best-practices).
 
 ## <a name="role-based-access-control-best-practices"></a>Aanbevolen procedures voor toegangs beheer op basis van rollen
 

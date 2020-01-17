@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccffe8d104792d9723c1541466067de3ea2c2e66
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6da67589b15b4ab043510c0375c26c12f645adb
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848388"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155143"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Een Azure Multi-Factor Authentication-implementatie op basis van een Cloud plannen
 
@@ -85,18 +85,18 @@ Het is raadzaam dat organisaties voorwaardelijke toegang gebruiken om hun netwer
 ### <a name="configuring-a-named-location"></a>Een benoemde locatie configureren
 
 1. Open **Azure Active Directory** in het Azure Portal
-2. Klik op **voorwaardelijke toegang**
-3. Klik op **benoemde locaties**
-4. Klik op **nieuwe locatie**
+2. **Beveiliging** selecteren
+3. Kies onder **beheren**de optie **benoemde locaties**
+4. **Nieuwe locatie** selecteren
 5. Geef in het veld **naam** een zinvolle naam op
-6. Selecteren of u de locatie definieert met IP-bereiken of landen/regio's
-   1. Als IP-bereiken worden gebruikt
-      1. Bepaal of de locatie als vertrouwd moet worden gemarkeerd. Aanmelden van een vertrouwde benoemde locaties verlaagt het aanmeldingsrisico van een gebruiker. Markeer deze locatie alleen als vertrouwd als u weet dat de ingevoerde IP-bereiken tot stand zijn gebracht en geloofwaardig is in uw organisatie.
+6. Selecteren of u de locatie definieert met *IP-bereiken* of *landen/regio's*
+   1. Als *IP-bereiken* worden gebruikt
+      1. Bepaal of u *als vertrouwde locatie wilt markeren*. Aanmelden van een vertrouwde benoemde locaties verlaagt het aanmeldingsrisico van een gebruiker. Markeer deze locatie alleen als vertrouwd als u weet dat de ingevoerde IP-bereiken tot stand zijn gebracht en geloofwaardig is in uw organisatie.
       2. Geef de IP-bereiken op
-   2. Als u landen/regio's gebruikt
+   2. Als u *landen/regio's* gebruikt
       1. Vouw de vervolg keuzelijst uit en selecteer de landen of regio's die u voor deze benoemde locatie wilt definiëren.
-      2. Bepaal of u onbekende gebieden wilt toevoegen. Onbekende gebieden zijn IP-adressen die niet kunnen worden toegewezen aan een land/regio.
-7. Klik op **Maken**.
+      2. Bepaal of u *onbekende gebieden wilt toevoegen*. Onbekende gebieden zijn IP-adressen die niet kunnen worden toegewezen aan een land/regio.
+7. Selecteer **Maken**
 
 ## <a name="plan-authentication-methods"></a>Verificatie methoden plannen
 
@@ -221,7 +221,7 @@ Het is belang rijk dat u niet per ongeluk uw Azure AD-Tenant kunt vergren delen.
 ### <a name="create-conditional-access-policy"></a>Beleid voor voorwaardelijke toegang maken
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com) met behulp van een account voor globale beheerders.
-1. Blader naar **Azure Active Directory**, **voorwaardelijke toegang**.
+1. Blader naar **Azure Active Directory** > **beveiligings** > **voorwaardelijke toegang**.
 1. Selecteer **Nieuw beleid**.
    ![een beleid voor voorwaardelijke toegang maken om MFA in te scha kelen voor Azure Portal gebruikers in de groep prototype](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. Geef een beschrijvende naam op voor uw beleid.

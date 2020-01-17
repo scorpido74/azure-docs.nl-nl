@@ -12,20 +12,34 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c32e2e2a7b609f999c7b804494188e2c6820171
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: a6fb6153c2dc5794fce0e74d1981e98ad1f37fc1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279008"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156094"
 ---
 # <a name="set-up-security-questions-as-your-verification-method"></a>Beveiligings vragen instellen als verificatie methode
 
 U kunt deze stappen volgen om de methode voor het opnieuw instellen van een wacht woord toe te voegen. Nadat u dit de eerste keer hebt ingesteld, kunt u terugkeren naar de pagina met **beveiligings** gegevens om uw beveiligings gegevens toe te voegen, bij te werken of te verwijderen.
 
-Nadat u de methode voor het opnieuw instellen van het wacht woord hebt ingesteld, moet u ook uw twee ledige verificatie methode instellen met behulp van een [verificator-app](security-info-setup-auth-app.md), [SMS-berichten](security-info-setup-text-msg.md)of een [telefoon gesprek](security-info-setup-phone-number.md).
-
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+
+>[!Note]
+>Als u de optie beveiligings vragen niet ziet, is het mogelijk dat uw organisatie deze optie niet kan gebruiken voor de methode voor het opnieuw instellen van uw wacht woord. In dit geval moet u een andere methode kiezen of contact opnemen met de Help Desk van uw organisatie voor meer informatie.
+
+## <a name="security-verification-versus-password-reset-authentication"></a>Beveiligings verificatie versus wachtwoord herstel verificatie
+
+Beveiligings informatie methoden worden gebruikt voor verificatie met twee factoren en voor het opnieuw instellen van wacht woorden. Niet elke methode kan echter voor beide worden gebruikt.
+
+| Methode | Gebruikt voor |
+| ------ | -------- |
+| Authenticator-app | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
+| Sms-berichten | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
+| Telefoonoproep | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
+| Beveiligings sleutel | Tweeledige verificatie en verificatie voor het opnieuw instellen van het wachtwoord. |
+| E-mailaccount | Alleen voor verificatie voor het opnieuw instellen van het wachtwoord. Voor tweeledige verificatie moet u een andere methode kiezen. |
+| Beveiligingsvragen | Alleen voor verificatie voor het opnieuw instellen van het wachtwoord. Voor tweeledige verificatie moet u een andere methode kiezen. |
 
 ## <a name="set-up-your-security-questions-from-the-security-info-page"></a>Uw beveiligings vragen instellen op de pagina met beveiligings gegevens
 

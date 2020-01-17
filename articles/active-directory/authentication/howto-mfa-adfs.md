@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1cc696e6351281ec9bd84cc6611d81d9148cda1
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 00200436784eca970f736c4a7f2afebd652c9577
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848422"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155210"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Cloudresources beveiligen met Azure Multi-Factor Authentication en AD FS
 
@@ -77,7 +77,7 @@ Het eerste wat we moeten doen is de AD FS-claims configureren. U maakt twee clai
             => issue(claim = c);
     ![Aangepaste claim maken om gebruikers aangemeld te blijven](./media/howto-mfa-adfs/trustedip5.png)
 13. Klik op **Voltooien**.
-14. Klik op **Apply** (Toepassen).
+14. Klik op **Toepassen**.
 15. Klik op **OK**.
 16. Sluit AD FS-beheer.
 
@@ -85,8 +85,8 @@ Het eerste wat we moeten doen is de AD FS-claims configureren. U maakt twee clai
 
 Nu de claims zijn gemaakt, kunnen we goedgekeurde IP-adressen gaan configureren.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
-2. Selecteer **Azure Active Directory** > **voorwaardelijke toegang** > **benoemde locaties**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+2. Selecteer **Azure Active Directory** >  **voorwaardelijke toegang** >  > **benoemde locaties**.
 3. Selecteer op de Blade **voorwaardelijke toegang-benoemde locaties** de optie **MFA-vertrouwde IP-adressen configureren**
 
    ![Voorwaardelijke toegang voor Azure AD benoemde locaties geconfigureerde MFA-IP-adressen configureren](./media/howto-mfa-adfs/trustedip6.png)

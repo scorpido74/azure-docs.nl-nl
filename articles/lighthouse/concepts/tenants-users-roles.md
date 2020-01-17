@@ -1,14 +1,14 @@
 ---
 title: Tenants, rollen en gebruikers in azure Lighthouse-scenario's
 description: Inzicht in de concepten van Azure Active Directory-tenants, gebruikers en rollen, en hoe ze kunnen worden gebruikt in azure Lighthouse-scenario's.
-ms.date: 11/05/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 77a247c86765f25539833a6ba70f80e737c6846d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 344e104201a83b3589dae6dbd3b02e49e4575e00
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453571"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156332"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Tenants, rollen en gebruikers in azure Lighthouse-scenario's
 
@@ -29,6 +29,9 @@ Alle [ingebouwde rollen](../../role-based-access-control/built-in-roles.md) word
 - De rol van [eigenaar](../../role-based-access-control/built-in-roles.md#owner) wordt niet ondersteund.
 - Ingebouwde rollen met de machtiging [DataActions](../../role-based-access-control/role-definitions.md#dataactions) worden niet ondersteund.
 - De ingebouwde rol [gebruikers toegangs beheerder](../../role-based-access-control/built-in-roles.md#user-access-administrator) wordt ondersteund, maar alleen voor het beperkte doel van het [toewijzen van rollen aan een beheerde identiteit in de Tenant van de klant](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant). Er worden gewoonlijk geen andere machtigingen verleend door deze rol. Als u een gebruiker met deze rol definieert, moet u ook de ingebouwde rol (len) opgeven die deze gebruiker aan beheerde identiteiten kan toewijzen.
+
+> [!NOTE]
+> Zodra een van de toepasselijke nieuwe ingebouwde rollen aan Azure wordt toegevoegd, kan deze worden toegewezen wanneer [een klant met Azure Resource Manager sjablonen onboarding](../how-to/onboard-customer.md)kan worden uitgevoerd. Er kan een vertraging optreden voordat de toegevoegde rol beschikbaar wordt in Cloud Partner-portal wanneer u [een beheerde service aanbieding publiceert](../how-to/publish-managed-services-offers.md).
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Aanbevolen procedures voor het definiëren van gebruikers en rollen
 

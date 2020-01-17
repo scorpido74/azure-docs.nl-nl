@@ -16,12 +16,12 @@ ms.workload: billing
 ms.date: 10/01/2019
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: baf3d0e0e40cb9089ac91c51dd40c079232a973b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 766cfa38108faa0dbaa16a3d2596a4b34689553c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989759"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121094"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Gebruik Azure Billing-API's voor het op programmatische wijze verkrijgen van inzicht in uw gebruik van Azure
 Gebruik Azure Billing-API's voor het opnemen van gebruiks- en resourcegegevens in uw favoriete hulpprogramma's voor gegevensanalyse. De Azure Resource Usage- en RateCard-API’s kunnen u helpen uw kosten nauwkeurig te voorspellen en te beheren. De API's worden geïmplementeerd als resourceprovider en maken deel uit van de API-familie die beschikbaar wordt gesteld door Azure Resource Manager.  
@@ -42,13 +42,13 @@ Gebruik de [Azure-resourcegebruik-API](/previous-versions/azure/reference/mt2190
 * **Aggregaties per uur of per dag**: aanroepers kunnen opgeven of ze hun Azure-gebruiksgegevens in buckets per uur of per dag willen. De standaardinstelling is per dag.
 * **Metagegevens van exemplaren (inclusief resourcetags**): haal details op exemplaarniveau op, zoals de volledig gekwalificeerde resource-URI (/subscriptions/{subscription-id}/..), informatie over de resourcegroep en resourcetags. Deze metagegevens helpen u op een deterministische en programmatische manier gebruik toe te wijzen aan de tags, bijvoorbeeld voor kostendoorrekeningen.
 * **Metagegevens van resources**: resourcegegevens zoals de naam, categorie en subcategorie van de meter, eenheid en regio geven de aanroeper een beter inzicht in wat er is verbruikt. We werken ook aan het gelijktrekken van de terminologie voor resourcemetagegevens in de Azure-portal, CSV voor Azure-gebruik, EA Billing CSV en andere openbare ervaringen, zodat u gegevens in verschillende ervaringen kunt correleren.
-* **Gebruik voor verschillende aanbiedingstypen**: gebruiksgegevens zijn beschikbaar voor aanbiedingstypen zoals betalen naar gebruik, MSDN, monetaire toezegging, geldtegoed en EA, met uitzondering van [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-invoice#retrieve-usage-data-for-a-specific-subscription).
+* **Gebruik voor verschillende aanbiedingstypen**: gebruiksgegevens zijn beschikbaar voor aanbiedingstypen zoals betalen naar gebruik, MSDN, monetaire toezegging, geldtegoed en EA, met uitzondering van [CSP](https://docs.microsoft.com/partner-center).
 
 ## <a name="azure-resource-ratecard-api-preview"></a>Azure-resource-RateCard-API (preview)
 Gebruik de[Azure Resource RateCard-API](/previous-versions/azure/reference/mt219005(v=azure.100)) om een lijst met beschikbare Azure-resources op te halen, evenals geschatte prijsinformatie voor elke resource. De API omvat:
 
 * **Op rollen gebaseerd toegangsbeheer van Azure**: configureer uw toegangsbeleid op de [Azure-portal](https://portal.azure.com) of via [Azure PowerShell-cmdlets](/powershell/azure/overview) om op te geven welke gebruikers of toepassingen toegang kunnen krijgen tot de RateCard-gegevens. Aanroepers moeten standaard Azure Active Directory-tokens gebruiken voor verificatie. Voeg de aanroeper toe aan de rol Lezer, Eigenaar of Bijdrager om toegang te krijgen tot de gebruiksgegevens voor een bepaald Azure-abonnement.
-* **Ondersteuning voor de aanbiedingstypen betalen per gebruik, MSDN, monetaire toezegging en geldtegoed (EA en [CSP](https://docs.microsoft.com/azure/cloud-solution-provider/billing/azure-csp-pricelist#get-prices-by-using-the-azure-rate-card) worden niet ondersteund)** : deze API biedt informatie over de tarieven voor Azure.  De aanroeper van deze API moet de aanbiedingsgegevens invoeren om de resourcedetails en-tarieven op te halen. We kunnen momenteel geen EA-tarieven verstrekken omdat EA-aanbiedingen aangepaste tarieven per inschrijving hebben.
+* **Ondersteuning voor de aanbiedingstypen betalen per gebruik, MSDN, monetaire toezegging en geldtegoed (EA en [CSP](https://docs.microsoft.com/partner-center) worden niet ondersteund)** : deze API biedt informatie over de tarieven voor Azure.  De aanroeper van deze API moet de aanbiedingsgegevens invoeren om de resourcedetails en-tarieven op te halen. We kunnen momenteel geen EA-tarieven verstrekken omdat EA-aanbiedingen aangepaste tarieven per inschrijving hebben.
 
 ## <a name="scenarios"></a>Scenario's
 Hier volgen enkele van de scenario's die mogelijk worden gemaakt met de combinatie van de gebruiks- en de RateCard-API:

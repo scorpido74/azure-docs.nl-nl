@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77e24fa41c5f716460d82e1079659e6aee5e9a9b
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 0b70a475d841c3649ba9e2bcc63187fc4484a23d
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561147"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119972"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 
@@ -48,6 +48,9 @@ De volgende Windows-distributies worden momenteel ondersteund tijdens de preview
 
 - Windows Server 2019 Datacenter
 - Windows 10 1809 en hoger
+
+> [!IMPORTANT]
+> Externe verbinding met Vm's die zijn gekoppeld aan Azure AD is alleen toegestaan vanaf Windows 10-Pc's die zijn toegevoegd aan Azure AD of hybride Azure AD zijn toegevoegd aan **dezelfde** map als de virtuele machine. 
 
 De volgende Azure-regio's worden momenteel ondersteund tijdens de preview-versie van deze functie:
 

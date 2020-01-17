@@ -3,19 +3,19 @@ title: 'Snelstartgids: een aangepaste opdracht maken (preview)-spraak service'
 titleSuffix: Azure Cognitive Services
 description: In dit artikel kunt u een toepassing met gehoste aangepaste opdrachten maken en testen.
 services: cognitive-services
-author: donkim
+author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: d8e28b88757fa7557b04ee471ede17012094bb9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4ae8f13b4887bbc41b17defa3f9a20c07ed0cb45
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446895"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155584"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Snelstartgids: een aangepaste opdracht maken (preview)
 
@@ -24,7 +24,7 @@ De toepassing herkent een utterance zoals ' de TV inschakelen ' en reageert met 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een spraak abonnement. 
+- Een spraak abonnement.
 
 Als u geen spraak abonnement hebt, kunt u er een maken door te navigeren naar de [Speech Studio](https://speech.microsoft.com/) en **een spraak resource maken**te selecteren.
 
@@ -73,7 +73,7 @@ Uw weer gave moet nu een overzicht zijn van de toepassing aangepaste opdrachten.
 
 ## <a name="update-luis-resources-optional"></a>LUIS-resources bijwerken (optioneel)
 
-U kunt de set ontwerpen in het venster Nieuw project bijwerken en een Voorspellings resource instellen die wordt gebruikt om invoer tijdens runtime te herkennen. 
+U kunt de set ontwerpen in het venster Nieuw project bijwerken en een Voorspellings resource instellen die wordt gebruikt om invoer tijdens runtime te herkennen.
 
 > [!NOTE]
 > U moet een Voorspellings bron instellen voordat u de voor spellingen van de aanvraag van de 1.000-aanvragen voor de toepassing aanvraagt.

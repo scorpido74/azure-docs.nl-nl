@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 6b23ae21366699162b900ae420afae640aa20613
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4c2985f35621ff3120217cbe38705ad2c228d6f7
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921476"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122097"
 ---
 # <a name="how-to-use-batch-transcription"></a>Batch-transcriptie gebruiken
 
@@ -88,18 +88,13 @@ Configuratie parameters worden als JSON opgegeven:
 Gebruik deze optionele eigenschappen om transcriptie te configureren:
 
 | Parameter | Beschrijving |
-|-----------|------------|
-|`ProfanityFilterMode`|Hiermee wordt aangegeven hoe scheld woorden in de herkennings resultaten moet worden afgehandeld
-||**`Masked`** -standaard. Vervangt woorden met sterretjes<br>`None`-schakelt filteren van scheld woorden uit<br>`Removed`: verwijdert alle woorden uit het resultaat<br>`Tags`: voegt tags voor scheld woorden toe
-|`PunctuationMode`|Hiermee wordt opgegeven dat interpunctie in herkennings resultaten moet worden verwerkt
-||`Automatic`-de service plaatst interpunctie<br>interpunctie `Dictated` (gesp roken)<br>**`DictatedAndAutomatic`** -standaard. Gedicteerde en automatische interpunctie<br>`None`-schakelt interpunctie uit
-|`AddWordLevelTimestamps`|Hiermee wordt aangegeven of Time Stamps op woord niveau moeten worden toegevoegd aan de uitvoer
-||`True`-tijds tempels op woord niveau inschakelen<br>**`False`** -standaard. Time Stamps op woord niveau uitschakelen
-|`AddSentiment`|Hiermee wordt aangegeven of de sentiment-analyse wordt toegevoegd aan de utterance
-||`True`-schakelt sentiment per utterance in<br>**`False`** -standaard. Sentiment uitschakelen
-|`AddDiarization`|Hiermee wordt aangegeven of de diarization-analyse wordt uitgevoerd. Als `true`, wordt de invoer verwacht mono-kanaal audio met een maximum van twee stemmen. `AddWordLevelTimestamps` moet worden ingesteld op `true`
-||`True`-diarization inschakelen<br>**`False`** -standaard. Diarization uitschakelen
-|`TranscriptionResultsContainerUrl`|Optionele SAS-token naar een Beschrijf bare container in Azure. Het resultaat wordt opgeslagen in deze container
+|-----------|-------------|
+| `ProfanityFilterMode` | Geeft aan hoe grof taalgebruik in herkenningsresultaten worden verwerkt. Geaccepteerde waarden zijn `None` die wordt uitgeschakeld grof taalgebruik filteren, `Masked` die grof taalgebruik vervangen door sterretjes, `Removed` waarbij alle scheldwoorden worden verwijderd uit het resultaat, of `Tags` zodat 'grof taalgebruik' tags aan wordt toegevoegd. De standaardinstelling is `Masked`. |
+| `PunctuationMode` | Geeft aan hoe interpunctie in herkenningsresultaten worden verwerkt. Geaccepteerde waarden zijn `None` die wordt uitgeschakeld interpunctie, `Dictated` dit expliciete interpunctie houdt `Automatic` waarmee de decoder interpunctie, behandelt of `DictatedAndAutomatic` dit houdt bepaald leestekens of automatisch. |
+| `AddWordLevelTimestamps` | Hiermee wordt aangegeven of Time Stamps op woord niveau moeten worden toegevoegd aan de uitvoer. Geaccepteerde waarden zijn `true` die tijds tempels op woord niveau en `false` (de standaard waarde) in staat stelt om deze uit te scha kelen. |
+| `AddSentiment` | Hiermee geeft u sentiment moet worden toegevoegd aan de utterance. Geaccepteerde waarden zijn `true` die sentiment per utterance en `false` (de standaard waarde) in staat stelt om het uit te scha kelen. |
+| `AddDiarization` | Hiermee geeft u op dat diarization-analyse moet worden uitgevoerd op de invoer waarvan wordt verwacht dat deze een mono-kanaal met twee stemmen bevat. Geaccepteerde waarden zijn `true` die diarization en `false` (de standaard waarde) in staat stelt om het uit te scha kelen. Ook moet `AddWordLevelTimestamps` worden ingesteld op True.|
+|`TranscriptionResultsContainerUrl`|Optionele SAS-token naar een Beschrijf bare container in Azure. Het resultaat wordt opgeslagen in deze container.
 
 ### <a name="storage"></a>Storage
 

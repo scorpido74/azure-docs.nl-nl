@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/21/2019
 ms.author: kumud
-ms.openlocfilehash: 907a6de2ff89ddd3c2cb5bdab67e1deb984141dc
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: d08ce1c382d173ac98a0e61e6117ed50b958ba44
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965239"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119819"
 ---
 # <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell-preview"></a>Een IPv4-toepassing upgraden naar IPv6 in het virtuele netwerk van Azure-Power shell (preview)
 
@@ -26,7 +26,7 @@ In dit artikel wordt beschreven hoe u IPv6-connectiviteit kunt toevoegen aan een
 - IPv6-adres ruimte voor het virtuele netwerk en subnet
 - een Standard Load Balancer met zowel IPv4-als IPV6-front-end configuraties
 - Vm's met Nic's met een IPv4 + IPv6-configuratie
-- IPv open bare IP, zodat de load balancer een Internet gerichte IPv6-verbinding heeft
+- Open bare IPv6-IP, zodat de load balancer een Internet gerichte IPv6-verbinding heeft
 
 > [!Important]
 > IPv6-ondersteuning voor Azure Virtual Network is momenteel beschikbaar als open bare preview. Deze preview wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. De reden hiervoor is dat bepaalde functies mogelijk niet worden ondersteund of beperkte mogelijkheden hebben. Raadpleeg voor meer informatie de [aanvullende gebruiksrechtovereenkomst voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -108,7 +108,7 @@ $lb | Add-AzLoadBalancerBackendAddressPoolConfig -Name "LbBackEndPool_v6"
 $lb | Set-AzLoadBalancer
 ```
 
-## <a name="configure-load-balancer-rules"></a>load balancer-regels configureren
+## <a name="configure-load-balancer-rules"></a>Regels voor load balancers configureren
 Haal de bestaande configuratie voor de front-end-en back-AzLoadBalancerRuleConfig op en voeg nieuwe taakverdelings regels toe met behulp van [add-](/powershell/module/az.network/Add-AzLoadBalancerRuleConfig)Load Balancer.
 
 ```azurepowershell

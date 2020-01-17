@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 10/16/2019
+ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8b78c04d6e0ba2f87a5ff99098f689949cf7aa5e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c9ed7ddc6287239c90cc074f1c171f2d28206732
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771952"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154599"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -46,8 +46,8 @@ Gebruik deze hulpprogram ma's voor Azure Machine Learning:
 
 +  Communiceer met de service in een python-omgeving met de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 + Communiceer met de service in een wille keurige R-omgeving met de [Azure machine learning SDK voor R](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
-+ Automatiseer uw machine learning activiteiten met de [Azure machine learning cli](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli).
-+ Code schrijven in Visual Studio code met [Azure machine learning VS code-extensie](how-to-vscode-tools.md)
++ Automatiseer uw machine learning activiteiten met de [Azure machine learning cli](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli).
++ Code schrijven in Visual Studio code met [Azure machine learning VS code-extensie](tutorial-setup-vscode-extension.md)
 + Gebruik [Azure machine learning Designer (preview)](concept-designer.md) om de werk stroom stappen uit te voeren zonder code te schrijven.
 
 
@@ -93,7 +93,7 @@ Een **Azure machine learning Compute-instantie** (voorheen laptop-VM) is een vol
 
 Meer informatie over [Compute-exemplaren](concept-compute-instance.md).
 
-### <a name="compute-targets"></a>COMPUTE-doelen
+### <a name="compute-targets"></a>Rekendoelen
 
 Met een [reken doel](concept-compute-target.md) kunt u de reken resource opgeven waarin u uw trainings script uitvoert of uw service-implementatie host. Deze locatie kan uw lokale machine of een cloud-gebaseerde reken resource zijn.
 

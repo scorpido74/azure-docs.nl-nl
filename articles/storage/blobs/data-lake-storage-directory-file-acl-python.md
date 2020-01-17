@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: dbfee5d897d54d68ea6471f0001793a905c95e62
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: cb2e1c16c1419d9925bd837bb4e12119f08d56c4
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835057"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119530"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>Python gebruiken voor het beheren van mappen, bestanden en Acl's in Azure Data Lake Storage Gen2 (preview)
 
@@ -64,7 +64,7 @@ except Exception as e:
  
 - Vervang de waarde van de tijdelijke plaatsaanduiding `storage_account_name` door de naam van uw opslagaccount.
 
-- Vervang de waarde van de tijdelijke `storage-account-key` door de toegangs sleutel voor uw opslag account.
+- Vervang de waarde van de tijdelijke `storage_account_key` door de toegangs sleutel voor uw opslag account.
 
 ## <a name="create-a-file-system"></a>Een bestandssysteem maken
 

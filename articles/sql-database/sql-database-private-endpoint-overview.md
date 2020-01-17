@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: 6cc8282a5c56f8f45e8d9e5ee452089a74f0d4ed
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 427ba0e46f8f4090ce8c2080b1d6780b165e864c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045640"
+ms.locfileid: "76121077"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Persoonlijke koppeling voor Azure SQL Database en het Data Warehouse (preview-versie)
 
@@ -43,8 +43,6 @@ Met een persoonlijke koppeling kunnen klanten nu netwerk toegangs beheer instell
 Wanneer klanten verbinding maken met het open bare eind punt vanaf on-premises computers, moet hun IP-adres worden toegevoegd aan de op IP gebaseerde firewall met behulp van een [firewall regel op server niveau](sql-database-server-level-firewall-rule.md). Hoewel dit model goed werkt voor het toestaan van toegang tot afzonderlijke machines voor ontwikkel-of test werkbelastingen, is het moeilijk te beheren in een productie omgeving.
 
 Met een persoonlijke koppeling kunnen klanten cross-premises toegang tot het privé-eind punt bieden met behulp van [ExpressRoute](../expressroute/expressroute-introduction.md), privé-peering of VPN-tunneling. Klanten kunnen vervolgens alle toegang uitschakelen via het open bare eind punt en de op IP gebaseerde firewall niet gebruiken om IP-adressen toe te staan.
-
-Met een persoonlijke koppeling kunnen klanten cross-premises toegang tot het privé-eind punt inschakelen met behulp van een persoonlijke peering of VPN-tunnel voor Express route. Ze kunnen vervolgens alle toegang uitschakelen via het open bare eind punt en de op IP gebaseerde firewall niet gebruiken.
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Privé-koppeling instellen voor Azure SQL Database 
 

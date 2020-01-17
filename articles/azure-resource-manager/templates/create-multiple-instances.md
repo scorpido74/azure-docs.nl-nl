@@ -3,12 +3,12 @@ title: Meerdere exemplaren van bronnen implementeren
 description: Gebruik kopieer bewerkingen en matrices in een Azure Resource Manager sjabloon om meerdere keren te herhalen bij het implementeren van resources.
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: ed822862abee3fd05d3236d7c12562cd86768086
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 54d406771f64d97a3ba564556be6dc49677a732d
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479590"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121978"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Herhaling van resources, eigenschappen of variabelen in Azure Resource Manager sjablonen
 
@@ -18,10 +18,10 @@ Bij gebruik in combi natie met een resource heeft het object kopiëren de volgen
 
 ```json
 "copy": {
-    "name": "<name-of-loop>",
-    "count": <number-of-iterations>,
-    "mode": "serial" <or> "parallel",
-    "batchSize": <number-to-deploy-serially>
+  "name": "<name-of-loop>",
+  "count": <number-of-iterations>,
+  "mode": "serial" <or> "parallel",
+  "batchSize": <number-to-deploy-serially>
 }
 ```
 
@@ -30,9 +30,9 @@ Bij gebruik met een variabele of eigenschap heeft het object kopiëren de volgen
 ```json
 "copy": [
   {
-      "name": "<name-of-loop>",
-      "count": <number-of-iterations>,
-      "input": <values-for-the-property-or-variable>
+    "name": "<name-of-loop>",
+    "count": <number-of-iterations>,
+    "input": <values-for-the-property-or-variable>
   }
 ]
 ```
@@ -63,19 +63,19 @@ De resource voor het maken van verschillende tijden heeft de volgende indeling:
   "contentVersion": "1.0.0.0",
   "resources": [
     {
-      "apiVersion": "2016-01-01",
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
       "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
       "location": "[resourceGroup().location]",
       "sku": {
         "name": "Standard_LRS"
       },
       "kind": "Storage",
-      "properties": {},
       "copy": {
         "name": "storagecopy",
         "count": 3
-      }
+      },
+      "properties": {}
     }
   ],
   "outputs": {}
@@ -149,21 +149,21 @@ Als u opslag accounts bijvoorbeeld twee keer tegelijk wilt implementeren, gebrui
   "contentVersion": "1.0.0.0",
   "resources": [
     {
-      "apiVersion": "2016-01-01",
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
       "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
       "location": "[resourceGroup().location]",
       "sku": {
         "name": "Standard_LRS"
       },
       "kind": "Storage",
-      "properties": {},
       "copy": {
         "name": "storagecopy",
         "count": 4,
         "mode": "serial",
         "batchSize": 2
-      }
+      },
+      "properties": {}
     }
   ],
   "outputs": {}
@@ -186,9 +186,9 @@ In het volgende voor beeld ziet u hoe u `copy` toepast op de eigenschap data dis
 
 ```json
 {
-  "name": "examplevm",
   "type": "Microsoft.Compute/virtualMachines",
   "apiVersion": "2017-03-30",
+  "name": "examplevm",
   "properties": {
     "storageProfile": {
       "copy": [{
@@ -267,8 +267,8 @@ U kunt resource en eigenschaps herhaling samen gebruiken. Verwijzing naar eigens
 ```json
 {
   "type": "Microsoft.Network/virtualNetworks",
-  "name": "[concat(parameters('vnetname'), copyIndex())]",
   "apiVersion": "2018-04-01",
+  "name": "[concat(parameters('vnetname'), copyIndex())]",
   "copy":{
     "count": 2,
     "name": "vnetloop"
@@ -431,23 +431,23 @@ U geeft aan dat een resource wordt geïmplementeerd na een andere resource met b
   "parameters": {},
   "resources": [
     {
-      "apiVersion": "2016-01-01",
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
       "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
       "location": "[resourceGroup().location]",
       "sku": {
         "name": "Standard_LRS"
       },
       "kind": "Storage",
-      "properties": {},
       "copy": {
         "name": "storagecopy",
         "count": 3
-      }
+      },
+      "properties": {}
     },
     {
-      "apiVersion": "2015-06-15",
       "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2015-06-15",
       "name": "[concat('VM', uniqueString(resourceGroup().id))]",
       "dependsOn": ["storagecopy"],
       ...

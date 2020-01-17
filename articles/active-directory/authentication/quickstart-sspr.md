@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a168f9bf58c4942fc0b76b9ffefc2b32b5bfbe5a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: dd178f52665c77f03a48d87a9e73c9019390bb21
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549360"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154853"
 ---
 # <a name="quickstart-configure-azure-active-directory-self-service-password-reset"></a>Snelstartgids: Azure Active Directory self-service voor wachtwoord herstel configureren
 
@@ -71,7 +71,7 @@ Nu kunt u uw SSPR-configuratie testen met een test gebruiker die deel uitmaakt v
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de selfservice voor het opnieuw instellen van wacht woorden wilt uitschakelen, zoekt en selecteert u **Azure Active Directory** in de Azure Portal. Selecteer **eigenschappen** > **wacht woord opnieuw instellen**en kies vervolgens **geen** onder **self-service voor wacht woord opnieuw instellen is ingeschakeld**. Wanneer u klaar bent, selecteert u **Opslaan**.
+Als u de selfservice voor het opnieuw instellen van wacht woorden wilt uitschakelen, zoekt en selecteert u **Azure Active Directory** in de Azure Portal. Selecteer **wacht woord opnieuw instellen**en kies vervolgens **geen** onder **selfservice voor wacht woord opnieuw instellen is ingeschakeld**. Wanneer u klaar bent, selecteert u **Opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

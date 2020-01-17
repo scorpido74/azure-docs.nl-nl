@@ -12,29 +12,30 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0b8a5a8ac4132c998567f956f3171db06a9ca53
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1ab01f5427401bd129fa84f9a5dd1a4d3f8dc77d
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231851"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156196"
 ---
-# <a name="manage-organizations-connected-to-your-work-or-school-account-from-the-organizations-page"></a>Organisaties beheren die zijn verbonden met uw werk-of school account vanaf de pagina organisaties
+# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>Uw verbonden organisaties beheren via de pagina organisaties
 
-U kunt uw organisaties beheren op de pagina **organisaties** van de portal **Mijn account** .
-
-Er zijn twee soorten organisaties die worden weer gegeven op de pagina **organisaties** :
+De pagina **organisaties** van de portal van **Mijn account** helpt u bij het beheren van de organisaties (doorgaans de naam van uw organisatie) die is verbonden met uw werk-of school account. Er zijn twee soorten organisaties die worden weer gegeven op de pagina **organisaties** :
 
 - **Thuis organisatie.** Uw thuis organisatie is de organisatie die eigenaar is van uw werk-of school account. U kunt uw thuis organisatie niet verlaten.
-
-- **Andere organisaties.** De andere organisaties zijn een groep waarbij u zich eerder hebt aangemeld met uw werk-of school account. U kunt deze organisaties op elk gewenst moment verlaten.
 
     >[!NOTE]
     > Als u niet beschikt over een toegewezen thuis organisatie, ziet u slechts één post met de tekst van de organisaties in de lijst met gekoppelde organisaties.
 
+- **Andere organisaties.** De andere organisaties zijn een groep waarbij u zich eerder hebt aangemeld met uw werk-of school account. U kunt deze organisaties op elk gewenst moment verlaten.
+
+>[!Important]
+>Dit artikel is bedoeld voor gebruikers die de organisatie gegevens willen bijwerken die zijn verbonden met een werk-of school account. Als u een beheerder bent die op zoek is naar informatie over groeps-en gebruikers beheer voor uw werk nemers en andere toepassingen, raadpleegt u de [documentatie voor Enter prise-gebruikers beheer](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index).
+
 ## <a name="view-your-organizations"></a>Uw organisaties weer geven
 
-1. Meld u aan bij uw werk-of school account en ga vervolgens naar de pagina met https://myprofile.microsoft.com/.
+1. Meld u aan bij uw werk-of school account en ga vervolgens naar de pagina **Mijn account** (https://myprofile.microsoft.com/).
 
 2. Selecteer **organisaties** in het navigatie deel venster links of selecteer de koppeling **organisaties beheren** in het blok **organisaties** .
 
@@ -53,7 +54,7 @@ U kunt elke organisatie die niet uw thuis organisatie is, verlaten.
 >[!Important]
 >Als u een organisatie per ongeluk verlaat, is het niet mogelijk om deze ongedaan te maken. U moet wachten tot de beheerder van de organisatie u opnieuw nodig heeft.
 
-1. Selecteer **organisatie behouden** naast de organisatie die u wilt verlaten en selecteer vervolgens **verlof** om te bevestigen dat u wilt verlaten.
+- Selecteer **organisatie behouden** naast de organisatie die u wilt verlaten en selecteer vervolgens **verlof** om te bevestigen dat u wilt verlaten.
 
     ![Pagina organisaties met gemarkeerde organisatie koppeling verlaten](media/my-account-portal/my-account-portal-organizations-leave.png)
 

@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9cde171f1c031b4b02a71fe0dac1a689e3ec0722
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f6819ddce777a5740ef1f5f9ab887a0646c4e464
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772581"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122335"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model beheer, implementatie en bewaking met Azure Machine Learning
 
@@ -48,7 +48,7 @@ Met model registratie kunt u uw modellen in de Azure-Cloud opslaan en versie, in
 > [!TIP]
 > Een geregistreerd model is een logische container voor een of meer bestanden die het model vormen. Als u bijvoorbeeld een model hebt dat is opgeslagen in meerdere bestanden, kunt u ze registreren als één model in uw Azure Machine Learning-werk ruimte. Na de registratie kunt u het geregistreerde model downloaden of implementeren en alle geregistreerde bestanden ontvangen.
 
-Geregistreerde modellen worden geïdentificeerd op naam en versie. Telkens wanneer die u een model met dezelfde naam als een bestaande resourcegroep registreren in het register wordt het versienummer verhoogd. Er kunnen extra meta gegevenslabels worden gegeven tijdens de registratie. Deze tags worden vervolgens gebruikt bij het zoeken naar een model. Azure Machine Learning ondersteunt elk model dat kan worden geladen met python 3.5.2 of hoger.
+Geregistreerde modellen worden geïdentificeerd met naam en versie. Telkens wanneer u een model registreert met dezelfde naam als een bestaand model, wordt de versie in het register verhoogd. Er kunnen extra meta gegevenslabels worden gegeven tijdens de registratie. Deze tags worden vervolgens gebruikt bij het zoeken naar een model. Azure Machine Learning ondersteunt elk model dat kan worden geladen met python 3.5.2 of hoger.
 
 > [!TIP]
 > U kunt ook modellen die zijn getraind buiten Azure Machine Learning registreren.
@@ -90,7 +90,7 @@ U kunt ook de configuratie van het platform voor doel implementatie opgeven. Bij
 Wanneer de installatie kopie is gemaakt, worden de onderdelen die zijn vereist door Azure Machine Learning ook toegevoegd. Bijvoorbeeld activa die nodig zijn om de webservice uit te voeren en te communiceren met IoT Edge.
 
 #### <a name="batch-scoring"></a>Batchscore
-Batch scores worden ondersteund via ML-pijp lijnen. Zie [batch voorspellingen op Big Data](how-to-run-batch-predictions.md)voor meer informatie.
+Batch scores worden ondersteund via ML-pijp lijnen. Zie [batch voorspellingen op Big Data](how-to-use-parallel-run-step.md)voor meer informatie.
 
 #### <a name="real-time-web-services"></a>Real-time webservices
 
@@ -114,7 +114,7 @@ U kunt modellen met IoT-apparaten gebruiken via **Azure IOT Edge-modules**. IoT 
 
 Zie [modellen implementeren](how-to-deploy-and-where.md)voor meer informatie.
 
-### <a name="analytics"></a>Analyse
+### <a name="analytics"></a>Analytische gegevens
 
 Micro soft Power BI ondersteunt het gebruik van machine learning modellen voor gegevens analyse. Zie [Azure machine learning integration in Power bi (preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration)voor meer informatie.
 

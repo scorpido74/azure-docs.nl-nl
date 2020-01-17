@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 01/16/2020
 ms.author: jingwang
-ms.openlocfilehash: 32c4b9b8e6268aa648e3414b337e8b2b908589e8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1418205843fefc76db4e73832736b308d0cc79a3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928726"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122607"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Referenties opslaan in Azure Key Vault
 
@@ -31,8 +31,8 @@ Deze functie is afhankelijk van de data factory beheerde identiteit. Meer inform
 
 Als u wilt verwijzen naar een referentie die is opgeslagen in Azure Key Vault, moet u het volgende doen:
 
-1. **Haal Data Factory beheerde identiteit** op door de waarde van de beheerde ID-toepassings-id die samen met uw fabriek is gegenereerd te kopiëren. Als u de gebruikers interface voor ADF-ontwerpen gebruikt, wordt de ID van de beheerde identiteits toepassing weer gegeven in het venster Azure Key Vault gekoppelde service maken. u kunt deze ook ophalen uit Azure Portal. Raadpleeg [Data Factory beheerde identiteit ophalen](data-factory-service-identity.md#retrieve-managed-identity).
-2. **Verleen de beheerde identiteit toegang tot uw Azure Key Vault.** In uw sleutel kluis-> toegangs beleid-> Voeg nieuwe toe > Zoek deze toepassings-ID van de beheerde identiteit in **om toestemming te geven in** de vervolg keuzelijst geheim machtigingen. Hiermee kan deze toegewezen Factory toegang krijgen tot het geheim in de sleutel kluis.
+1. **Haal Data Factory beheerde identiteit** op door de waarde van de beheerde identiteit object-id die samen met uw fabriek is gegenereerd te kopiëren. Als u de gebruikers interface van ADF gebruikt, wordt de object-ID van de beheerde identiteit weer gegeven in het venster Azure Key Vault gekoppelde service maken. u kunt deze ook ophalen uit Azure Portal. Raadpleeg [Data Factory beheerde identiteit ophalen](data-factory-service-identity.md#retrieve-managed-identity).
+2. **Verleen de beheerde identiteit toegang tot uw Azure Key Vault.** In uw sleutel kluis-> toegangs beleid-> Voeg nieuwe-> deze beheerde identiteit te doorzoeken om **toestemming te geven in** de vervolg keuzelijst met geheime machtigingen. Hiermee kan deze toegewezen Factory toegang krijgen tot het geheim in de sleutel kluis.
 3. **Een gekoppelde service maken die verwijst naar uw Azure Key Vault.** Raadpleeg [Azure Key Vault gekoppelde service](#azure-key-vault-linked-service).
 4. **Maak een gekoppelde Data Store-service, waarin wordt verwezen naar het corresponderende geheim dat is opgeslagen in de sleutel kluis.** Raadpleeg het [referentie geheim dat is opgeslagen in de sleutel kluis](#reference-secret-stored-in-key-vault).
 

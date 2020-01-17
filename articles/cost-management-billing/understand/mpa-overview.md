@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/24/2019
 ms.author: banders
-ms.openlocfilehash: 2a15ad41850fdf574262c396bf70e43b3b08399c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 13ac51fc4cefa4d66cf9d8310dce80704454bd93
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989681"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122148"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Aan de slag met uw factureringsrekening voor Microsoft Partner-overeenkomst
 
@@ -71,7 +71,7 @@ Het beleid inschakelen:
 
 ## <a name="resellers"></a>Resellers
 
-Indirecte providers in het CSP-[model met twee lagen](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview#azure-csp-direct-and-azure-csp-indirect) kunnen een reseller selecteren tijdens het maken van abonnementen voor klanten in de Azure-portal. Na het maken kunnen ze de lijst met abonnementen gefilterd op een reseller weergeven en de kosten voor een klant per reseller analyseren in de Azure-kostenanalyse.
+Indirecte providers in het CSP-[model met twee lagen](https://docs.microsoft.com/partner-center) kunnen een reseller selecteren tijdens het maken van abonnementen voor klanten in de Azure-portal. Na het maken kunnen ze de lijst met abonnementen gefilterd op een reseller weergeven en de kosten voor een klant per reseller analyseren in de Azure-kostenanalyse.
 
 ## <a name="check-access-to-a-microsoft-partner-agreement"></a>Toegang tot een Microsoft Partner-overeenkomst controleren
 [!INCLUDE [billing-check-mpa](../../../includes/billing-check-mpa.md)]

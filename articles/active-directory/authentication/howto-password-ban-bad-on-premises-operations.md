@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8602a9c5b69c47c2f663dab461394ef5e1a9bed
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2440d373b726b4f97cd5d9ba162daaa0714f79e0
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762855"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155041"
 ---
 # <a name="azure-ad-password-protection-operational-procedures"></a>Operationele procedures voor Azure AD-wachtwoord beveiliging
 
@@ -28,7 +28,7 @@ Volg de instructies in het artikel [de aangepaste lijst met verboden wacht woord
 
 ## <a name="enable-password-protection"></a>Wachtwoord beveiliging inschakelen
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en blader **naar Azure Active Directory**, **beveiliging**,**verificatie methoden**en vervolgens **wachtwoord beveiliging**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en blader **naar Azure Active Directory** > **beveiligings** > **verificatie methoden** > **wachtwoord beveiliging**.
 1. Stel **wachtwoord beveiliging op Windows Server Active Directory** in op **Ja**
 1. Zoals vermeld in de [implementatie handleiding](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy), wordt aangeraden de **modus** in te stellen op **controleren**
    * Nadat u vertrouwd bent met de functie, kunt u de **modus** **afdwingen naar afgedwongen**

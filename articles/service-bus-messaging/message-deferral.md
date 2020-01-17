@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus-berichten uitstellen | Microsoft Docs
-description: Levering van Service Bus-berichten uitstellen
+title: Uitstel Azure Service Bus bericht | Microsoft Docs
+description: Aflevering van Service Bus berichten uitstellen
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -13,37 +13,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 11ea10f1deba5a21b98dea875a1b7dc94998aa00
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: fc7e40661ae345412eb0336322599616dc89d6c4
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60402731"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122182"
 ---
 # <a name="message-deferral"></a>Berichten uitstellen
 
-Een wachtrij of abonnement client ontvangt wanneer een bericht dat kunnen worden verwerkt, maar voor welke verwerking momenteel niet mogelijk vanwege een speciale omstandigheden binnen de toepassing is, heeft de mogelijkheid om 'uit' voor het ophalen van het bericht op een later tijdstip. Het bericht blijft aanwezig in de wachtrij of het abonnement, maar wordt nog niet verwerkt.
+Wanneer een wachtrij of abonnements-client een bericht ontvangt dat het wil verwerken, maar waarvoor de verwerking momenteel niet mogelijk is vanwege speciale omstandigheden in de toepassing, heeft het de optie ' het uitstellen van het bericht ' het ophalen van berichten naar een later tijdstip. Het bericht blijft aanwezig in de wachtrij of het abonnement, maar wordt nog niet verwerkt.
 
-Uitgestelde is een functie die speciaal bedoeld voor scenario's voor verwerking van de werkstroom. Werkstroom frameworks mogelijk bepaalde bewerkingen in een bepaalde volgorde worden verwerkt, en mogelijk moet u de verwerking van sommige ontvangen berichten uitstellen totdat voorgeschreven voorafgaande werkzaamheden die op de hoogte gesteld door andere berichten is voltooid.
+Uitstel is een functie die specifiek is gemaakt voor werk stroom verwerkings scenario's. Werk stroom raamwerken kunnen vereisen dat bepaalde bewerkingen in een bepaalde volg orde worden verwerkt en moeten mogelijk de verwerking van enkele ontvangen berichten uitstellen totdat het vereiste voorafgaande werk dat wordt geïnformeerd door andere berichten is voltooid.
 
-Een voorbeeld van een eenvoudige voorbeelden is een reeks waarin een melding betaling van de betalingsprovider van een externe wordt weergegeven in een systeem voordat de overeenkomende inkooporder is doorgegeven in de webwinkel op het systeem afhandeling van de bestellingsverwerking. In dat geval kan het systeem vervulling uitstellen verwerken van de melding betaling totdat er een order waarmee om deze te koppelen. In rendezvous-scenario's, waar berichten uit verschillende bronnen station een werkstroom doorsturen, de realtime uitvoeringsvolgorde inderdaad mogelijk wel correct, maar de berichten zetten op basis van de resultaten mogelijk niet de juiste volgorde binnenkomen.
+Een eenvoudig voor beeld is een verwerkings volgorde voor orders waarbij een betalings melding van een externe betalings provider wordt weer gegeven in een systeem voordat de overeenkomende aankoop order is door gegeven van de winkel naar het fulfillment-systeem. In dat geval kan het fulfillment-systeem de verwerking van de betalings melding uitstellen totdat er een order is waarmee deze kan worden gekoppeld. In de scenario's van rendez, waar berichten van verschillende bronnen een werk stroom sturen, is het mogelijk dat de volg orde voor het uitvoeren van realtime juist is, maar de berichten die de resultaten weer spie gelen, kunnen in de juiste volg orde arriveren.
 
-Uiteindelijk, helpt om in de volgorde van berichten van de volgorde van de aankomst in een volgorde waarin ze kunnen worden verwerkt, terwijl deze berichten veilig in het archief voor welke verwerking moet worden uitgesteld.
+Uiteindelijk worden hulp middelen voor uitstel bij het opnieuw ordenen van berichten van de aankomst order omgezet in een volg orde waarin ze kunnen worden verwerkt, terwijl deze berichten veilig in het berichten archief worden bewaard waarvoor de verwerking moet worden uitgesteld.
 
-## <a name="message-deferral-apis"></a>Berichten uitstellen API 's
+## <a name="message-deferral-apis"></a>Api's voor uitstel van berichten
 
-De API is [BrokeredMessage.Defer](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) of [BrokeredMessage.DeferAsync](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync) in de .NET Framework-client [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) in de standaard .NET-client en **mesageReceiver.defer** of **messageReceiver.deferSync** in de Java-client. 
+De API is [BrokeredMessage. defer](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.defer?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_Defer) of [BrokeredMessage. DeferAsync](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deferasync?view=azureservicebus-4.1.1#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeferAsync) in de .NET Framework-client, [MessageReceiver. DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) in de .NET Standard-client en [IMessageReceiver. defer](/java/api/com.microsoft.azure.servicebus.imessagereceiver.defer?view=azure-java-stable) of [IMessageReceiver. DeferAsync](/java/api/com.microsoft.azure.servicebus.imessagereceiver.deferasync?view=azure-java-stable) in de Java-client. 
 
-Uitgestelde berichten blijven in de hoofdwachtrij samen met andere actieve berichten (in tegenstelling tot onbestelbare berichten die bevinden zich in een subwachtrij), maar ze kunnen niet meer worden ontvangen met behulp van de reguliere ontvangen/ReceiveAsync-functies. Uitgestelde berichten kunnen worden gedetecteerd [door berichten bladert](message-browsing.md) als een toepassing bijhouden hiervan verliest.
+Uitgestelde berichten blijven in de hoofd wachtrij, samen met alle andere actieve berichten (in tegens telling tot onbestelbare berichten in een subwachtrij), maar ze kunnen niet langer worden ontvangen met de normale receive/ReceiveAsync-functies. Uitgestelde berichten kunnen worden gedetecteerd via het [Bladeren door berichten](message-browsing.md) als een toepassing deze niet kan bijhouden.
 
-Als u wilt een uitgesteld bericht ophalen, de eigenaar is verantwoordelijk voor het herinneren van de [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) als dit het wordt uitgesteld. Elke ontvanger die bekend is het volgnummer van een uitgesteld bericht kan later ontvangen het bericht expliciet met `Receive(sequenceNumber)`. Voor wachtrijen, kunt u de [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient), onderwerpabonnementen gebruiken de [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient).
+Als u een uitgesteld bericht wilt ophalen, is de eigenaar verantwoordelijk voor het onthouden van de [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) . Elke ontvanger die het Volg nummer van een uitgesteld bericht kent, kan het bericht later expliciet ontvangen met `Receive(sequenceNumber)`. Voor wacht rijen kunt u de [QueueClient](/dotnet/api/microsoft.servicebus.messaging.queueclient)gebruiken, de onderwerp-abonnementen gebruiken de [SubscriptionClient](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient).
 
-Als een bericht kan niet worden verwerkt omdat een bepaalde resource voor het verwerken van dat bericht tijdelijk niet beschikbaar is, maar berichtverwerking moet niet summarily worden onderbroken, een manier om dat bericht over een paar minuten aan de zijde te onthouden is de  **SequenceNumber** in een [gepland bericht](message-sequencing.md) worden geplaatst in een paar minuten en het uitgestelde bericht opnieuw ophalen als de geplande bericht wordt ontvangen. Als een berichtenhandler afhankelijk van een database voor alle bewerkingen is en dat de database tijdelijk niet beschikbaar is is, moet deze niet gebruiken om, maar in plaats daarvan onderbreken ontvangen van berichten helemaal totdat de database weer beschikbaar is.
+Als een bericht niet kan worden verwerkt omdat een bepaalde resource voor de verwerking van dat bericht tijdelijk niet beschikbaar is, maar de verwerking van berichten niet samen vatting mag worden onderbroken, is het niet meer mogelijk om de **SequenceNumber** in een [gepland bericht](message-sequencing.md) te onthouden en het uitgestelde bericht opnieuw op te halen wanneer het geplande bericht binnenkomt. Als een Message Handler afhankelijk is van een Data Base voor alle bewerkingen en die data base tijdelijk niet beschikbaar is, moet deze geen uitstel gebruiken, maar in plaats daarvan de ontvangst van berichten samen onderbreken totdat de Data Base weer beschikbaar is.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over Service Bus-berichten, de volgende onderwerpen:
+Zie de volgende onderwerpen voor meer informatie over Service Bus Messa ging:
 
 * [Service Bus-wachtrijen, -onderwerpen en -abonnementen](service-bus-queues-topics-subscriptions.md)
 * [Aan de slag met Service Bus-wachtrijen](service-bus-dotnet-get-started-with-queues.md)

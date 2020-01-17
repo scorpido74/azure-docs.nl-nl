@@ -12,25 +12,23 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 510f1ca441ef9645cff7f577bbad39991cebc285
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3981c152ba836a01daca16cd486623a9a26d86f2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231874"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156230"
 ---
-# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>Het wacht woord voor uw werk-of school account wijzigen vanuit de portal van mijn account
+# <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Het wacht woord voor uw werk-of school account wijzigen op de pagina wacht woord wijzigen
 
-Op de pagina **wacht woord wijzigen** van de portal van **Mijn account** kunt u het wacht woord van uw werk-of school account bijwerken. Dit werkt alleen als u uw bestaande wacht woord kent en u uw account niet hebt vergrendeld.
+De pagina **wacht woord wijzigen** van de portal **Mijn account** helpt u bij het bijwerken van een bestaand wacht woord voor uw werk-of school account, ervan uitgaande dat u het wacht woord herinnert en dat u uw account niet hebt vergrendeld. Als u uw wacht woord niet meer weet, als u uw account hebt vergrendeld of als u nooit een wacht woord hebt ontvangen van uw organisatie, kunt u uw beveiligings gegevens en uw mobiele apparaat gebruiken om uw wacht woord opnieuw in te stellen.
 
-Als u uw wacht woord niet meer weet, als u uw account hebt vergrendeld of als u nooit een wacht woord hebt ontvangen van het ondersteunings team van uw bedrijf, kunt u uw beveiligings gegevens en uw mobiele apparaat gebruiken om uw wacht woord opnieuw in te stellen. Zie [uw werk-of school wachtwoord opnieuw instellen](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password)voor meer informatie.
+>[!Important]
+>Dit artikel is bedoeld voor gebruikers die proberen een bekend wacht woord bij te werken voor een bestaand werk-of school account. Als u een gebruiker bent die probeert toegang te krijgen tot een persoonlijk account, zoals voor Xbox, Hotmail of Outlook.com, probeert u de suggesties in de [Wanneer u zich niet kunt aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) -artikel. Zie [selfservice voor wachtwoord herstel](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)voor meer informatie over het testen van self-service voor het opnieuw instellen van wacht woorden voor uw werk nemers of andere gebruikers.
 
->[!Note]
->Als u probeert terug te gaan naar een persoonlijk account zoals Xbox, hotmail.com of outlook.com, kunt u de suggesties in de weer gegeven [Wanneer u zich niet kunt aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) -artikel.
+## <a name="update-a-password-from-the-change-password-page"></a>Een wacht woord bijwerken op de pagina wacht woord wijzigen
 
-## <a name="to-change-your-password-from-the-my-account-portal"></a>Uw wacht woord wijzigen vanuit de portal van mijn account
-
-1. Meld u aan bij uw werk-of school account met uw bestaande wacht woord en ga vervolgens naar de pagina https://myprofile.microsoft.com/.
+1. Meld u aan bij uw werk-of school account met uw bestaande wacht woord en ga vervolgens naar de pagina **Mijn account** (https://myprofile.microsoft.com/).
 
 2. Selecteer **wacht woord** in het navigatie deel venster links of selecteer de koppeling **wacht woord wijzigen** in het blok met **wacht woord** .
 

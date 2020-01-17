@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: cd94001cfe795e7aa78a1332325052afce6b8ec6
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b8dbbb2810277bef20cb3b9b47a63deeea3e0ff9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762795"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155448"
 ---
 # <a name="what-is-azure-machine-learning"></a>Wat is Azure Machine Learning?
 
@@ -46,7 +46,7 @@ Azure Machine Learning biedt alle hulpprogram ma's voor ontwikkel aars en gegeve
 
 + R-scripts of-notebooks waarin u de <a href="https://azure.github.io/azureml-sdk-for-r/reference/index.html" target="_blank">SDK voor r</a> gebruikt voor het schrijven van uw eigen code of het gebruik van de R-modules in de ontwerp functie.
 
-+ [Visual Studio code-extensie](how-to-vscode-tools.md)
++ [Visual Studio code-extensie](tutorial-setup-vscode-extension.md)
 
 + [Machine learning-CLI](reference-azure-machine-learning-cli.md)
 
@@ -85,7 +85,7 @@ Wanneer u het juiste model hebt, kunt u het eenvoudig gebruiken in een webservic
 
 Vervolgens kunt u uw geïmplementeerde modellen beheren met behulp van de [Azure machine learning SDK voor python](https://aka.ms/aml-sdk), [Azure machine learning studio](https://ml.azure.com)of de [machine learning cli](reference-azure-machine-learning-cli.md).
 
-Deze modellen kunnen worden gebruikt en voor spellingen in [realtime](how-to-consume-web-service.md) of [asynchroon](how-to-run-batch-predictions.md) in grote hoeveel heden gegevens worden geretourneerd.
+Deze modellen kunnen worden gebruikt en voor spellingen in [realtime](how-to-consume-web-service.md) of [asynchroon](how-to-use-parallel-run-step.md) in grote hoeveel heden gegevens worden geretourneerd.
 
 En met geavanceerde [machine learning pijp lijnen](concept-ml-pipelines.md)kunt u samen werken aan elke stap van het voorbereiden van gegevens, het model leren en evalueren van een cursus, via implementatie. Met pijp lijnen kunt u het volgende doen:
 

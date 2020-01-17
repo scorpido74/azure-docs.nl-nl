@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/8/2020
+ms.date: 1/15/2020
 ms.author: raiye
-ms.openlocfilehash: dd148a4dd454e2ebebcb6b9befc576570ecb0352
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 1139e2b26cdc1dee524b1d3b6a942c735c43aec7
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778206"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122242"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure Guest OS releases en SDK Compatibility Matrix
 Voorziet in actuele informatie over de nieuwste versies van het Azure-gast besturingssysteem voor Cloud Services. Deze informatie helpt u bij het plannen van het upgradepad voordat een gast besturingssysteem wordt uitgeschakeld. Als u uw rollen configureert voor het gebruik van *automatische* updates van gast besturingssystemen zoals beschreven in de update-instellingen van het [Azure-gast besturingssysteem][Azure Guest OS Update Settings], is het niet belang rijk dat u deze pagina leest.
@@ -214,9 +214,9 @@ Het besturings systeem september gast is uitgebracht.
 
 | Configuratie teken reeks | Releasedatum | Datum uitschakelen |
 | --- | --- | --- |
-| WA-GUEST-OS-2.94 _201912-01 | 8 januari 2020 | Post 2,95 |  
-| WA-GUEST-OS-2.93 _201911-01 | 5 december 2019 | Post 2,94 |  
-|~ WA-GAST-OS-2.91 _201910-01 ~| 1 november 2019 | 8 januari 2020 |  
+| WA-GUEST-OS-2.93 _201912-01 | 8 januari 2020 | Post 2,95 |  
+| WA-GUEST-OS-2.92 _201911-01 | 5 december 2019 | Post 2,94 |  
+|~~WA-GUEST-OS-2.91 _201910-01~~| 1 november 2019 | 8 januari 2020 |  
 |~~WA-GUEST-OS-2.90 _201909-01~~| 7 oktober 2019 | 5 december 2019 |  
 |~~WA-GUEST-OS-2.89 _201908-01~~| 4 augustus 2019 | 1 november 2019 |  
 |~~WA-GUEST-OS-2,88 _201907-01~~| 26 juli 2019 | 7 oktober 2019 |

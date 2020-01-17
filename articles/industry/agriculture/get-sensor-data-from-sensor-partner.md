@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: d9e20c8e5859efc8f1f8a5214e6837ad46d2980d
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 7c40cfc8fbc6a9957281be842f6714fa9289a3c8
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777781"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122216"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Sensor gegevens ophalen van sensor partners
 
@@ -46,7 +46,7 @@ U kunt ook de referenties genereren door dit script uit Azure Cloud Shell uit te
 
 3. Klik op de registratie van de app die is gemaakt als onderdeel van uw FarmBeats-implementatie. Deze heeft dezelfde naam als uw FarmBeats-Datahub.
 
-4. Klik op "een API weer geven"-> Klik op "een client toepassing toevoegen" en voer **04b07795-8ddb-461A-bbee-02f9e1bf7b46** in en selecteer bereik autoriseren. Hiermee krijgt u toegang tot de Azure cli (Cloud shell) om de onderstaande stappen uit te voeren.
+4. Klik op "een API weer geven"-> Klik op "een client toepassing toevoegen" en voer **04b07795-8ddb-461A-bbee-02f9e1bf7b46** in en selecteer bereik autoriseren. Hiermee krijgt u toegang tot de Azure CLI (Cloud Shell) om de onderstaande stappen uit te voeren.
 
 5. Open Cloud Shell. Deze optie is beschikbaar op de werk balk in de rechter bovenhoek van de Azure Portal.
 

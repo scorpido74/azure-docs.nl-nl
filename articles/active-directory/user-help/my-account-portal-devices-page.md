@@ -12,24 +12,27 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37994125f7f1a7119a8878c7edec401328fd75ca
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9cd2d712dfcc6d3f01cbdb1f4886dd64a6d299d4
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233220"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156213"
 ---
-# <a name="manage-devices-connected-to-your-work-or-school-account-from-the-devices-page"></a>Apparaten die zijn verbonden met uw werk-of school account beheren via de pagina apparaten
+# <a name="manage-your-connected-devices-from-the-devices-page"></a>Uw verbonden apparaten beheren via de pagina apparaten
 
-Op de pagina **apparaten** van de portal van **Mijn account** kunt u het volgende doen:
+De pagina **apparaten** van de portal van **Mijn account** helpt u bij het beheren van de apparaten die zijn verbonden met uw werk-of school account. Op de pagina **apparaten** kunt u het volgende doen:
 
 - Bekijk de apparaten die zijn verbonden met uw werk-of school account.
 
 - Schakel alle apparaten uit die u niet meer bezit, verloren of die zijn gestolen.
 
+>[!Important]
+>Dit artikel is bedoeld voor gebruikers die proberen de apparaatgegevens bij te werken die zijn verbonden met een werk-of school account. Als u een beheerder bent die op zoek is naar informatie over Apparaatbeheer voor uw werk nemers en andere toepassingen, raadpleegt u de [documentatie voor apparaat-id's](https://docs.microsoft.com/azure/active-directory/devices/index).
+
 ## <a name="view-your-connected-devices"></a>Uw verbonden apparaten weer geven
 
-1. Meld u aan bij uw werk-of school account en ga vervolgens naar de pagina met https://myprofile.microsoft.com/.
+1. Meld u aan bij uw werk-of school account en ga vervolgens naar de pagina **Mijn account** (https://myprofile.microsoft.com/).
 
 2. Selecteer **apparaten** in het navigatie deel venster links of selecteer de koppeling **apparaten beheren** in het blok **apparaten** .
 
@@ -73,3 +76,13 @@ Nadat u de verbonden apparaten hebt weer gegeven, kunt u het volgende doen:
 - Bekijk uw [aanmeldings activiteit](my-account-portal-sign-ins-page.md).
 
 - Bekijk hoe uw organisatie [gebruikmaakt van uw privacy-gerelateerde gegevens](my-account-portal-privacy-page.md).
+
+## <a name="related-office-content"></a>Verwante Office-inhoud
+
+- [Meld u aan om uw Office-product te beheren](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
+
+- [Ga naar de pagina **mijn mijn account** in Office](https://portal.office.com/account/#home)
+
+- [Ga naar de pagina Office **mijn installaties**](https://portal.office.com/account/#installs)
+
+- [Ga naar de pagina met Office- **abonnementen**](https://portal.office.com/account/#subscriptions)

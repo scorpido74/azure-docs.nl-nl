@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 659d00c3fc7a766d800de6f1f12f410003284360
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8fab85b6f1d876cc65ceb44acd60b53c379e59e8
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979279"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121944"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolatie in de open bare Azure-Cloud
 Met Azure kunt u toepassingen en virtuele machines (Vm's) uitvoeren op gedeelde fysieke infra structuur. Een van de Prime economische motivaties voor het uitvoeren van toepassingen in een cloud omgeving is de mogelijkheid om de kosten van gedeelde resources over meerdere klanten te verdelen. In deze praktijk van multitenancy wordt de efficiëntie verbeterd door resources te multiplexen tussen verschillende klanten tegen lage kosten. Helaas introduceert het ook het risico van het delen van fysieke servers en andere infrastructuur resources om uw gevoelige toepassingen en Vm's uit te voeren die kunnen behoren tot een wille keurige en mogelijk schadelijke gebruiker.
@@ -179,7 +179,7 @@ Communicatie is toegestaan vanuit het FC VLAN naar het hoofd-VLAN, maar kan niet
 ### <a name="logical-isolation-between-compute-and-storage"></a>Logische isolatie tussen Compute en opslag
 Als onderdeel van het ontwerp van de Cloud, Microsoft Azure van opslag op basis van een virtuele machine gescheiden. Met deze schei ding kunnen reken kracht en opslag onafhankelijk worden geschaald, waardoor het eenvoudiger is om multitenancy en isolatie te bieden.
 
-Daarom worden Azure Storage uitgevoerd op afzonderlijke hardware zonder netwerk verbinding met Azure compute, behalve logisch. [Dit](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf) betekent dat er geen schijf ruimte wordt toegewezen voor de gehele capaciteit wanneer een virtuele schijf wordt gemaakt. In plaats daarvan wordt een tabel gemaakt die adressen op de virtuele schijf toewijst aan gebieden op de fysieke schijf en die tabel in eerste instantie leeg is. **De eerste keer dat een klant gegevens op de virtuele schijf schrijft, ruimte op de fysieke schijf wordt toegewezen en er een verwijzing naar het bestand in de tabel wordt geplaatst.**
+Daarom worden Azure Storage uitgevoerd op afzonderlijke hardware zonder netwerk verbinding met Azure compute, behalve logisch. Dit betekent dat er geen schijf ruimte wordt toegewezen voor de gehele capaciteit wanneer een virtuele schijf wordt gemaakt. In plaats daarvan wordt een tabel gemaakt die adressen op de virtuele schijf toewijst aan gebieden op de fysieke schijf en die tabel in eerste instantie leeg is. **De eerste keer dat een klant gegevens op de virtuele schijf schrijft, ruimte op de fysieke schijf wordt toegewezen en er een verwijzing naar het bestand in de tabel wordt geplaatst.**
 ### <a name="isolation-using-storage-access-control"></a>Isolatie met behulp van opslag toegangs beheer
 **Access Control in azure Storage** heeft een eenvoudig toegangs beheer model. Elk Azure-abonnement kan een of meer opslag accounts maken. Elk opslag account heeft één geheime sleutel die wordt gebruikt om de toegang tot alle gegevens in dat opslag account te beheren.
 
@@ -320,14 +320,6 @@ Azure-implementatie heeft meerdere lagen voor netwerk isolatie. In het volgende 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Netwerk isolatie opties voor computers in virtuele Windows Azure-netwerken](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
+- Meer informatie over [netwerk isolatie opties voor computers in virtuele Windows Azure-netwerken](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/). Dit omvat het klassieke front-end-en back-end-scenario waarbij computers in een bepaald back-end-netwerk of subnetwerk mogelijk alleen toestaan dat bepaalde clients of andere computers verbinding maken met een bepaald eind punt op basis van een lijst met toegestane IP-adressen.
 
-Dit omvat het klassieke front-end-en back-end-scenario waarbij computers in een bepaald back-end-netwerk of subnetwerk mogelijk alleen toestaan dat bepaalde clients of andere computers verbinding maken met een bepaald eind punt op basis van een lijst met toegestane IP-adressen.
-
-- [Reken isolatie](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
-
-Microsoft Azure biedt een aantal Cloud Computing Services die een breed scala aan reken instanties bevatten & Services die automatisch omhoog en omlaag kunnen worden geschaald om te voldoen aan de behoeften van uw toepassing of onderneming.
-
-- [Opslag isolatie](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
-
-Microsoft Azure van de opslag van de virtuele machine op basis van een klant gescheiden. Met deze schei ding kunnen reken kracht en opslag onafhankelijk worden geschaald, waardoor het eenvoudiger is om multitenancy en isolatie te bieden. Daarom worden Azure Storage uitgevoerd op afzonderlijke hardware zonder netwerk verbinding met Azure compute, behalve logisch. Alle aanvragen die via HTTP of HTTPS worden uitgevoerd, zijn gebaseerd op de keuze van de klant.
+- Meer informatie over de [isolatie van virtuele machines in azure](../../virtual-machines/windows/isolation.md). Azure Compute biedt virtuele machine grootten die zijn geïsoleerd voor een specifiek hardwaretype en die zijn toegewezen aan één klant.

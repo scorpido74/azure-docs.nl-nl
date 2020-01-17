@@ -3,14 +3,14 @@ title: Een Azure Automation runbook starten met een webhook
 description: Een webhook waarmee een client een runbook in Azure Automation kan starten vanuit een HTTP-aanroep.  In dit artikel wordt beschreven hoe u een webhook maakt en hoe u er een aanroept om een runbook te starten.
 services: automation
 ms.subservice: process-automation
-ms.date: 03/19/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbf3a48d1e7cb3dd80b6c418d7c916184756b6fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f86193e818a91132f9bbca447acadd7e81747522
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418973"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155822"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Een Azure Automation runbook starten met een webhook
 
@@ -126,7 +126,7 @@ De client kan niet bepalen wanneer de runbook-taak is voltooid of de voltooiings
 
 ## <a name="renew-webhook"></a>Een webhook vernieuwen
 
-Wanneer er een webhook wordt gemaakt, heeft deze een geldigheids duur van één jaar. De webhook verloopt na dit jaar automatisch. Zodra een webhook is verlopen, kan deze niet opnieuw worden geactiveerd. deze moet worden verwijderd en opnieuw worden gemaakt. Als een webhook de verloop tijd niet heeft bereikt, kan deze worden uitgebreid.
+Wanneer er een webhook wordt gemaakt, heeft deze een geldigheids duur van tien jaar. Na deze periode verloopt de webhook automatisch. Zodra een webhook is verlopen, kan deze niet opnieuw worden geactiveerd. deze moet worden verwijderd en opnieuw worden gemaakt. Als een webhook de verloop tijd niet heeft bereikt, kan deze worden uitgebreid.
 
 Als u een webhook wilt uitbreiden, gaat u naar het runbook dat de webhook bevat. Selecteer **webhooks** onder **resources**. Klik op de webhook die u wilt uitbreiden. met deze actie wordt de pagina **webhook** geopend.  Kies een nieuwe verval datum en-tijd en klik op **Opslaan**.
 

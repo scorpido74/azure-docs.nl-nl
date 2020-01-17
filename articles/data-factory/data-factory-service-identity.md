@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 01/16/2020
 ms.author: jingwang
-ms.openlocfilehash: ede1e56384c75c64765962b7db196973a30c605b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 45699680ad2003c034bce588857f8b102a0b6d26
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928452"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121774"
 ---
 # <a name="managed-identity-for-data-factory"></a>Beheerde identiteit voor Data Factory
 
@@ -155,17 +155,19 @@ U kunt de beheerde identiteit ophalen van Azure Portal of via een programma. In 
 
 ### <a name="retrieve-managed-identity-using-azure-portal"></a>Beheerde identiteit ophalen met behulp van Azure Portal
 
-U vindt de beheerde identiteits gegevens van Azure Portal-> uw data factory->-Eigenschappen:
+U kunt de informatie over beheerde identiteiten vinden in Azure Portal-> uw data factory-> Eigenschappen.
 
 - ID van beheerd identiteits object
 - Beheerde identiteits Tenant
-- **Toepassings-id van beheerde identiteit** > deze waarde te kopiëren
+- Toepassings-ID van beheerde identiteit
 
-![Beheerde identiteit ophalen](media/data-factory-service-identity/retrieve-service-identity-portal.png)
+De beheerde identiteits gegevens worden ook weer gegeven wanneer u een gekoppelde service maakt die beheerde identiteits verificatie ondersteunt, zoals Azure Blob, Azure Data Lake Storage, Azure Key Vault, enzovoort.
+
+Gebruik bij het verlenen van machtigingen de object-ID of data factory naam (als naam van de beheerde identiteit) om deze identiteit te vinden.
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>Beheerde identiteit ophalen met behulp van Power shell
 
-De ID van de beheerde ID en Tenant-ID wordt geretourneerd wanneer u een specifieke data factory als volgt krijgt:
+De ID van de beheerde ID en Tenant-ID wordt als volgt weer gegeven wanneer u een specifieke data factory ontvangt. Gebruik de **PrincipalId** om toegang te verlenen:
 
 ```powershell
 PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
@@ -175,7 +177,7 @@ PrincipalId                          TenantId
 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc 72f988bf-XXXX-XXXX-XXXX-2d7cd011db47
 ```
 
-Kopieer de principal-ID en voer hieronder Azure Active Directory opdracht uit met de principal-ID als para meter om de **ApplicationId**op te halen, die u gebruikt om toegang te verlenen:
+U kunt de toepassings-ID ophalen door boven de principal-ID te kopiëren en vervolgens onder Azure Active Directory opdracht met de principal-ID als para meter.
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc

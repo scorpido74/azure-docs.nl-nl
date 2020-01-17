@@ -3,12 +3,12 @@ title: Ondersteuning voor fysieke server evaluatie met Azure Migrate
 description: Meer informatie over ondersteuning voor fysieke server beoordeling met Azure Migrate.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 32080605217cde78bd648ca6192f73d1025dea4c
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 057d384c14328deca2853e891f23250aa1d61702
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028772"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154785"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Ondersteunings matrix voor fysieke server evaluatie 
 
@@ -58,6 +58,19 @@ De volgende tabel bevat een overzicht van de poort vereisten voor evaluatie.
 **Apparaat** | Binnenkomende verbindingen op TCP-poort 3389 om extern bureau blad-verbindingen met het apparaat toe te staan.<br/> Binnenkomende verbindingen op poort 44368 voor externe toegang tot de app voor het beheren van apparaten met behulp van de URL: ``` https://<appliance-ip-or-name>:44368 ```<br/> Uitgaande verbindingen op de poorten 443, 5671 en 5672 voor het verzenden van meta gegevens voor detectie en prestaties naar Azure Migrate.
 **Fysieke servers** | **Windows:** Binnenkomende verbindingen op poort 443, WinRM-poorten 5985 (HTTP) en 5986 (HTTPS) voor het ophalen van meta gegevens van de configuratie en prestaties van Windows-servers. <br/> **Linux:**  Binnenkomende verbindingen op poort 22 (UDP) voor het ophalen van meta gegevens van de configuratie en prestaties van Linux-servers. |
 
+## <a name="agent-based-dependency-visualization"></a>Visualisatie van afhankelijkheid op basis van een agent
+
+Met de [visualisatie van afhankelijkheden](concepts-dependency-visualization.md) kunt u afhankelijkheden visualiseren tussen computers die u wilt beoordelen en migreren. Voor visualisaties op basis van een agent worden vereisten en beperkingen beschreven in de volgende tabel.
+
+
+**Vereiste** | **Details**
+--- | ---
+**Implementatie** | Voordat u een afhankelijkheids visualisatie implementeert, moet er een Azure Migrate project aanwezig zijn, met het Azure Migrate: Server assessment tool is toegevoegd aan het project. U kunt de visualisatie van de afhankelijkheid implementeren nadat u een Azure Migrate apparaat hebt ingesteld om uw on-premises machines te detecteren.<br/><br/> Visualisatie van afhankelijkheid is niet beschikbaar in Azure Government.
+**Serviceoverzicht** | Visualisatie op basis van een agent maakt gebruik van de [servicetoewijzing](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) oplossing in [Azure monitor logboeken](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview).<br/><br/> Als u wilt implementeren, koppelt u een nieuwe of bestaande Log Analytics-werk ruimte aan een Azure Migrate-project.
+**Log Analytics-werkruimte** | De werk ruimte moet zich in hetzelfde abonnement bevinden als het Azure Migrate-project.<br/><br/> Azure Migrate ondersteunt werk ruimten die zich in het VS-Oost, Zuidoost-Azië en Europa-west regio's bevinden.<br/><br/>  De werk ruimte moet zich in een regio bevinden waarin [servicetoewijzing wordt ondersteund](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites).<br/><br/> De werk ruimte voor een Azure Migrate project kan niet worden gewijzigd nadat deze is toegevoegd.
+**Kosten** | Voor de Servicetoewijzing oplossing worden geen kosten in rekening gebracht voor de eerste 180 dagen (vanaf de dag dat u de werk ruimte Log Analytics aan het Azure Migrate project hebt gekoppeld).<br/><br/> Na 180 dagen zijn de standaard Log Analytics kosten van toepassing.<br/><br/> Bij het gebruik van een andere oplossing dan Servicetoewijzing in de gekoppelde Log Analytics werk ruimte worden standaard Log Analytics kosten in rekening gebracht.<br/><br/> Als u het Azure Migrate project verwijdert, wordt de werk ruimte niet verwijderd. Nadat het project is verwijderd, is Servicetoewijzing niet gratis en worden alle knoop punten in rekening gebracht volgens de betaalde laag van Log Analytics werk ruimte.
+**Middelen** | Voor visualisatie op basis van een agent moet u twee agents installeren op elke computer die u wilt analyseren.<br/><br/> - [micro soft Monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> - - [afhankelijkheids agent](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
+**Verbinding met internet** | Als computers niet zijn verbonden met internet, moet u de Log Analytics-gateway hierop installeren.
 
 ## <a name="next-steps"></a>Volgende stappen
 

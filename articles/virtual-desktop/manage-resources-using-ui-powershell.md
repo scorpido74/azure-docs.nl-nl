@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 5049c32e06967cc123a24f07f601c1698bea3351
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: d7304c1267c4a4f5548bb57ffb3e6016fac21d99
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896426"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122505"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Een beheer programma implementeren met Power shell
 
@@ -79,7 +79,7 @@ $subscriptionId = Read-Host -Prompt "Enter the Azure subscription ID where you w
 
 Nu u de registratie van de Azure AD-app hebt voltooid, kunt u het beheer programma implementeren.
 
-## <a name="deploy-the-management-tool"></a>Het beheer programma implementeren
+## <a name="deploy-the-management-tool"></a>Hulpprogramma voor beheer implementeren
 
 Voer de volgende Power shell-opdrachten uit om het beheer hulpprogramma te implementeren en dit te koppelen aan de service-principal die u zojuist hebt gemaakt:
      
@@ -135,7 +135,7 @@ De configuratie van de Azure AD-toepassing controleren en toestemming geven:
    
    [![de verificatie pagina met de ingevoerde omleidings-URI](media/management-ui-redirect-uri-inline.png)](media/management-ui-redirect-uri-expanded.png#lightbox)
 
-5. Selecteer in het linkerdeel venster **API-machtigingen** om te bevestigen dat er machtigingen zijn toegevoegd. Als u een globale beheerder bent, selecteert u de **beheerders rechten voor `tenantname`knop toestemming** en volgt u de dialoog prompts om toestemming van de beheerder voor uw organisatie op te geven.
+5. Selecteer in het linkerdeel venster **API-machtigingen** om te bevestigen dat er machtigingen zijn toegevoegd. Als u een globale beheerder bent, selecteert u de **beheerder toestemming geven voor `tenantname`** en volgt u de aanwijzingen in het dialoog venster om toestemming van de beheerder voor uw organisatie op te geven.
     
     [![de pagina API-machtigingen](media/management-ui-permissions-inline.png)](media/management-ui-permissions-expanded.png#lightbox)
 

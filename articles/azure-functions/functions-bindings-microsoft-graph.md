@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: ef65904b19c5f42548c7b98cb37f6609124e0541
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 1923e26ba0ada7dcf5b8b333150b7cd5b775398b
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922427"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121196"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph bindingen voor Azure Functions
 
@@ -207,9 +207,9 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**De naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het verificatie token. Zie [een verificatie token-invoer binding van code gebruiken](#token-input-code).|
-|**type**||Vereist: moet worden ingesteld op `token`.|
-|**direction**||Vereist: moet worden ingesteld op `in`.|
+|**De naam**| n.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het verificatie token. Zie [een verificatie token-invoer binding van code gebruiken](#token-input-code).|
+|**type**| n.v.t. |Vereist: moet worden ingesteld op `token`.|
+|**direction**| n.v.t. |Vereist: moet worden ingesteld op `in`.|
 |**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>: maakt gebruik van de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de eigenschap <code>userId</code>.</li><li><code>userFromToken</code>-gebruikt de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de eigenschap <code>userToken</code>.</li><li><code>clientCredentials</code>: de identiteit van de functie-app wordt gebruikt.</li></ul>|
 |**userId**|**Naam**  |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
 |**userToken**|**UserToken**|Alleen vereist als de _identiteit_ is ingesteld op `userFromToken`. Een token dat geldig is voor de functie-app. |
@@ -342,9 +342,9 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**De naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor de Excel-tabel. Zie [een Excel-tabel-invoer binding gebruiken vanuit code](#excel-input-code).|
-|**type**||Vereist: moet worden ingesteld op `excel`.|
-|**direction**||Vereist: moet worden ingesteld op `in`.|
+|**De naam**| n.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor de Excel-tabel. Zie [een Excel-tabel-invoer binding gebruiken vanuit code](#excel-input-code).|
+|**type**| n.v.t. |Vereist: moet worden ingesteld op `excel`.|
+|**direction**| n.v.t. |Vereist: moet worden ingesteld op `in`.|
 |**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>: maakt gebruik van de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de eigenschap <code>userId</code>.</li><li><code>userFromToken</code>-gebruikt de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de eigenschap <code>userToken</code>.</li><li><code>clientCredentials</code>: de identiteit van de functie-app wordt gebruikt.</li></ul>|
 |**userId**|**Naam**  |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
 |**userToken**|**UserToken**|Alleen vereist als de _identiteit_ is ingesteld op `userFromToken`. Een token dat geldig is voor de functie-app. |
@@ -504,9 +504,9 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**De naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het verificatie token. Zie [een Excel-tabel uitvoer binding van code gebruiken](#excel-output-code).|
-|**type**||Vereist: moet worden ingesteld op `excel`.|
-|**direction**||Vereist: moet worden ingesteld op `out`.|
+|**De naam**| n.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het verificatie token. Zie [een Excel-tabel uitvoer binding van code gebruiken](#excel-output-code).|
+|**type**| n.v.t. |Vereist: moet worden ingesteld op `excel`.|
+|**direction**| n.v.t. |Vereist: moet worden ingesteld op `out`.|
 |**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>: maakt gebruik van de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de eigenschap <code>userId</code>.</li><li><code>userFromToken</code>-gebruikt de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de eigenschap <code>userToken</code>.</li><li><code>clientCredentials</code>: de identiteit van de functie-app wordt gebruikt.</li></ul>|
 |**Naam** |**userId** |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
 |**userToken**|**UserToken**|Alleen vereist als de _identiteit_ is ingesteld op `userFromToken`. Een token dat geldig is voor de functie-app. |
@@ -650,9 +650,9 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**De naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het bestand. Zie [een OneDrive File-invoer binding gebruiken vanuit code](#onedrive-input-code).|
-|**type**||Vereist: moet worden ingesteld op `onedrive`.|
-|**direction**||Vereist: moet worden ingesteld op `in`.|
+|**De naam**| n.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het bestand. Zie [een OneDrive File-invoer binding gebruiken vanuit code](#onedrive-input-code).|
+|**type**| n.v.t. |Vereist: moet worden ingesteld op `onedrive`.|
+|**direction**| n.v.t. |Vereist: moet worden ingesteld op `in`.|
 |**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>: maakt gebruik van de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de eigenschap <code>userId</code>.</li><li><code>userFromToken</code>-gebruikt de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de eigenschap <code>userToken</code>.</li><li><code>clientCredentials</code>: de identiteit van de functie-app wordt gebruikt.</li></ul>|
 |**userId**|**Naam**  |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
 |**userToken**|**UserToken**|Alleen vereist als de _identiteit_ is ingesteld op `userFromToken`. Een token dat geldig is voor de functie-app. |
@@ -798,9 +798,9 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**De naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het bestand. Zie [een OneDrive file-uitvoer binding gebruiken vanuit code](#onedrive-output-code).|
-|**type**||Vereist: moet worden ingesteld op `onedrive`.|
-|**direction**||Vereist: moet worden ingesteld op `out`.|
+|**De naam**| n.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het bestand. Zie [een OneDrive file-uitvoer binding gebruiken vanuit code](#onedrive-output-code).|
+|**type**| n.v.t. |Vereist: moet worden ingesteld op `onedrive`.|
+|**direction**| n.v.t. |Vereist: moet worden ingesteld op `out`.|
 |**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>: maakt gebruik van de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de eigenschap <code>userId</code>.</li><li><code>userFromToken</code>-gebruikt de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de eigenschap <code>userToken</code>.</li><li><code>clientCredentials</code>: de identiteit van de functie-app wordt gebruikt.</li></ul>|
 |**Naam** |**userId** |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
 |**userToken**|**UserToken**|Alleen vereist als de _identiteit_ is ingesteld op `userFromToken`. Een token dat geldig is voor de functie-app. |
@@ -949,9 +949,9 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**De naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
-|**type**||Vereist: moet worden ingesteld op `outlook`.|
-|**direction**||Vereist: moet worden ingesteld op `out`.|
+|**De naam**| n.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
+|**type**| n.v.t. |Vereist: moet worden ingesteld op `outlook`.|
+|**direction**| n.v.t. |Vereist: moet worden ingesteld op `out`.|
 |**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>: maakt gebruik van de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de eigenschap <code>userId</code>.</li><li><code>userFromToken</code>-gebruikt de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de eigenschap <code>userToken</code>.</li><li><code>clientCredentials</code>: de identiteit van de functie-app wordt gebruikt.</li></ul>|
 |**userId**|**Naam**  |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
 |**userToken**|**UserToken**|Alleen vereist als de _identiteit_ is ingesteld op `userFromToken`. Een token dat geldig is voor de functie-app. |
@@ -1092,9 +1092,9 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**De naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
-|**type**||Vereist: moet worden ingesteld op `graphWebhook`.|
-|**direction**||Vereist: moet worden ingesteld op `trigger`.|
+|**De naam**| n.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
+|**type**| n.v.t. |Vereist: moet worden ingesteld op `graphWebhook`.|
+|**direction**| n.v.t. |Vereist: moet worden ingesteld op `trigger`.|
 |**resourceType**|**ResourceType**|Vereist: de grafiek resource waarvoor deze functie moet reageren op webhooks. Dit kan een van de volgende waarden zijn:<ul><li><code>#Microsoft.Graph.Message</code>-wijzigingen aangebracht in Outlook-berichten.</li><li><code>#Microsoft.Graph.DriveItem</code>-wijzigingen die zijn aangebracht in de OneDrive-hoofd items.</li><li><code>#Microsoft.Graph.Contact</code>-wijzigingen aangebracht in persoonlijke contact personen in Outlook.</li><li><code>#Microsoft.Graph.Event</code>-wijzigingen aangebracht in Outlook agenda-items.</li></ul>|
 
 > [!Note]
@@ -1244,9 +1244,9 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**De naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
-|**type**||Vereist: moet worden ingesteld op `graphWebhookSubscription`.|
-|**direction**||Vereist: moet worden ingesteld op `in`.|
+|**De naam**| n.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
+|**type**| n.v.t. |Vereist: moet worden ingesteld op `graphWebhookSubscription`.|
+|**direction**| n.v.t. |Vereist: moet worden ingesteld op `in`.|
 |**filter**|**Filter**| Als deze is ingesteld op `userFromRequest`, haalt de binding alleen abonnementen op die eigendom zijn van de aanroepende gebruiker (alleen geldig met [http-trigger]).| 
 
 ### <a name="webhook-input---usage"></a>Invoer van webhook-gebruik
@@ -1385,9 +1385,9 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-|**De naam**||Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
-|**type**||Vereist: moet worden ingesteld op `graphWebhookSubscription`.|
-|**direction**||Vereist: moet worden ingesteld op `out`.|
+|**De naam**| n.v.t. |Vereist: de naam van de variabele die wordt gebruikt in de functie code voor het e-mail bericht. Zie [een Outlook-bericht uitvoer binding van code gebruiken](#outlook-output-code).|
+|**type**| n.v.t. |Vereist: moet worden ingesteld op `graphWebhookSubscription`.|
+|**direction**| n.v.t. |Vereist: moet worden ingesteld op `out`.|
 |**persoon**|**Identity**|Vereist: de identiteit die wordt gebruikt om de actie uit te voeren. Dit kan een van de volgende waarden zijn:<ul><li><code>userFromRequest</code>-alleen geldig met [http-trigger]. Maakt gebruik van de identiteit van de aanroepende gebruiker.</li><li><code>userFromId</code>: maakt gebruik van de identiteit van een eerder aangemelde gebruiker met de opgegeven ID. Zie de eigenschap <code>userId</code>.</li><li><code>userFromToken</code>-gebruikt de identiteit die wordt vertegenwoordigd door het opgegeven token. Zie de eigenschap <code>userToken</code>.</li><li><code>clientCredentials</code>: de identiteit van de functie-app wordt gebruikt.</li></ul>|
 |**userId**|**Naam**  |Alleen vereist als de _identiteit_ is ingesteld op `userFromId`. Een User Principal-ID die is gekoppeld aan een eerder aangemelde gebruiker.|
 |**userToken**|**UserToken**|Alleen vereist als de _identiteit_ is ingesteld op `userFromToken`. Een token dat geldig is voor de functie-app. |

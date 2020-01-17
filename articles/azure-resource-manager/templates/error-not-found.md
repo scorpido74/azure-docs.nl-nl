@@ -3,12 +3,12 @@ title: Fouten bij niet-gevonden resources
 description: Hierin wordt beschreven hoe u fouten oplost wanneer een resource niet kan worden gevonden bij het implementeren met een Azure Resource Manager sjabloon.
 ms.topic: troubleshooting
 ms.date: 06/06/2018
-ms.openlocfilehash: 832dc15f81c0fd815072b9e95920a4388a94cb0b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81a2541be4f0a99aa28186eb6b7289bdb595e678
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477757"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152422"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Niet-gevonden fouten voor Azure-resources oplossen
 
@@ -41,8 +41,8 @@ Als u probeert de ontbrekende resource in de sjabloon te implementeren, controle
 
 ```json
 {
-  "apiVersion": "2015-08-01",
   "type": "Microsoft.Web/sites",
+  "apiVersion": "2015-08-01",
   "dependsOn": [
     "[variables('hostingPlanName')]"
   ],
@@ -76,8 +76,8 @@ Als de resource in een andere resource groep aanwezig is dan het item dat wordt 
 
 ```json
 "properties": {
-    "name": "[parameters('siteName')]",
-    "serverFarmId": "[resourceId('plangroup', 'Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+  "name": "[parameters('siteName')]",
+  "serverFarmId": "[resourceId('plangroup', 'Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
 }
 ```
 

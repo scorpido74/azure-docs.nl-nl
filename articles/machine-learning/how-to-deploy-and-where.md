@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 12/17/2019
+ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 48ecaea82e8874ff521abafaa075b41367f8fbf1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 1560b5d60ae3c6de3ecb6d50859e24ebb7bc2d28
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753997"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156910"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellen met Azure Machine Learning implementeren
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ Zie [modellen beheren, implementeren en bewaken met Azure machine learning](conc
 
 - Een model. Als u geen getraind model hebt, kunt u het model en de afhankelijkheids bestanden van [deze zelf studie](https://aka.ms/azml-deploy-cloud)gebruiken.
 
-- De [Azure cli-extensie voor de machine learning-service](reference-azure-machine-learning-cli.md), de [Azure machine learning SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)of de [Azure machine learning Visual Studio code extension](how-to-vscode-tools.md).
+- De [Azure cli-extensie voor de machine learning-service](reference-azure-machine-learning-cli.md), de [Azure machine learning SDK voor Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)of de [Azure machine learning Visual Studio code extension](tutorial-setup-vscode-extension.md).
 
 ## <a name="connect-to-your-workspace"></a>Verbinding maken met uw werkruimte
 
@@ -59,7 +59,7 @@ De volgende code laat zien hoe u verbinding maakt met een Azure Machine Learning
 
 + **VS code gebruiken**
 
-   Wanneer u VS code gebruikt, selecteert u de werk ruimte met behulp van een grafische interface. Zie [modellen implementeren en beheren](how-to-vscode-tools.md#deploy-and-manage-models) in de documentatie over de VS code-extensie voor meer informatie.
+   Wanneer u VS code gebruikt, selecteert u de werk ruimte met behulp van een grafische interface. Zie [modellen implementeren en beheren](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) in de documentatie over de VS code-extensie voor meer informatie.
 
 ## <a id="registermodel"></a>Uw model registreren
 
@@ -115,7 +115,7 @@ De code fragmenten in deze sectie laten zien hoe u een model kunt registreren bi
 
 + **VS code gebruiken**
 
-  Registreer modellen met behulp van een of meer model bestanden of mappen met de [VS code](how-to-vscode-tools.md#deploy-and-manage-models) -extensie.
+  Registreer modellen met behulp van een of meer model bestanden of mappen met de [VS code](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) -extensie.
 
 ### <a name="register-a-model-from-a-local-file"></a>Een model registreren vanuit een lokaal bestand
 
@@ -185,7 +185,7 @@ U hebt de volgende items nodig om het model te implementeren:
     >
     > * De SDK van Azure Machine Learning biedt geen manier voor webservices of IoT Edge implementaties om toegang te krijgen tot uw gegevens archief of data sets. Als uw geïmplementeerde model toegang moet hebben tot gegevens die buiten de implementatie zijn opgeslagen, zoals gegevens in een Azure Storage-account, moet u een aangepaste code oplossing ontwikkelen met behulp van de relevante SDK. Bijvoorbeeld de [Azure Storage SDK voor python](https://github.com/Azure/azure-storage-python).
     >
-    >   Een alternatief dat kan worden gebruikt voor uw scenario is [batch voorspelling](how-to-run-batch-predictions.md), waarmee tijdens de Score toegang wordt geboden tot gegevens archieven.
+    >   Een alternatief dat kan worden gebruikt voor uw scenario is [batch voorspelling](how-to-use-parallel-run-step.md), waarmee tijdens de Score toegang wordt geboden tot gegevens archieven.
 
 * **Afhankelijkheden**, zoals helper-scripts of Python-/Conda-pakketten die vereist zijn om het invoerscript of model uit te voeren.
 

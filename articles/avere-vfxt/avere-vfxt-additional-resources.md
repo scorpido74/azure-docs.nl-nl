@@ -4,14 +4,14 @@ description: Koppelingen naar aanvullende informatie over avere vFXT voor Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: fbd763827383c5ded2bb4ef0047ea3c5f650d78e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 78e0500057baf407f1d26afe29d9df1e525cbf3d
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416336"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153765"
 ---
 # <a name="additional-documentation"></a>Aanvullende documentatie
 
@@ -25,7 +25,7 @@ Meer documentatie over avere-clusters vindt u op de website op <https://azure.gi
   * Door de [instellingen voor ondersteuning en controle](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_support.html#config-support>) aan te passen wordt uitgelegd hoe u de instellingen voor het uploaden van ondersteuning kunt aanpassen en externe bewaking kunt inschakelen
   * Het configureren van de [VServers en de globale naam ruimte](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_vserver.html#config-vserver>) bevat informatie over het maken van een client gerichte naam ruimte.
   * Bij [het configureren van DNS voor het avere-cluster](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_network.html#dns-overview>) wordt uitgelegd hoe Round-Robin DNS moet worden geconfigureerd.
-  * [Back-end-opslag](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>) documenten toevoegen een kern bestand toevoegen.
+  * [Opslag documenten voor back-end toevoegen een](<https://azure.github.io/Avere/legacy/create_cluster/4_8/html/config_core_filer.html#add-core-filer>) kern bestand toevoegen.
 
 * De [cluster configuratie handleiding](<https://azure.github.io/Avere/#operations>) is een volledige verwijzing naar instellingen en opties voor een avere-cluster. Een vFXT-cluster maakt gebruik van een subset van deze opties, maar de meeste van dezelfde configuratie pagina's zijn van toepassing.
 
@@ -33,4 +33,4 @@ Meer documentatie over avere-clusters vindt u op de website op <https://azure.gi
 
 ## <a name="vfxt-creation-and-management-documentation"></a>documentatie voor het maken en beheren van vFXT
 
-Een volledige hand leiding voor het gebruik van vfxt.py, het hulp programma voor het maken en beheren van Cloud clusters, wordt verschaft op GitHub: [Cloud cluster Management met vfxt.py](https://github.com/Azure/AvereSDK/blob/master/docs/README.md).
+Een volledige hand leiding voor het gebruik van vfxt.py, een script op basis van het maken en beheren van Cloud clusters, wordt gegeven op GitHub: [Cloud cluster Management met vfxt.py](https://github.com/Azure/AvereSDK/blob/master/docs/README.md).

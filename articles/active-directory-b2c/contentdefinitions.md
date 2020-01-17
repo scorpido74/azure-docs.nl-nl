@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f8acf499d4d82c49096e4e5beff8209d0970b421
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1ce564767fe9664604687d8cbaced58507e6b8b3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064336"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119649"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -37,13 +37,13 @@ In het volgende voor beeld ziet u de definitie-id van de inhoud en de definitie 
   <Metadata>
     <Item Key="DisplayName">Local account sign up page</Item>
   </Metadata>
-  <LoalizedResourcesReferences MergeBehavior="Prepend">
+  <LocalizedResourcesReferences MergeBehavior="Prepend">
     <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
     <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
     ...
 ```
 
-De meta gegevens van het zelfondertekende technische profiel van **LocalAccountSignUpWithLogonEmail** bevatten de inhouds definitie-id **ContentDefinitionReferenceId** ingesteld op`api.localaccountsignup`
+De meta gegevens van het zelfondertekende technische profiel voor **LocalAccountSignUpWithLogonEmail** bevatten de inhouds definitie-id **ContentDefinitionReferenceId** ingesteld op `api.localaccountsignup`
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -61,13 +61,13 @@ De meta gegevens van het zelfondertekende technische profiel van **LocalAccountS
 
 Het element **ContentDefinition** bevat het volgende kenmerk:
 
-| Kenmerk | Vereist | Description |
+| Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
-| ID | Ja | Een id voor een inhouds definitie. De waarde is één opgegeven in de sectie **inhouds definitie-id's** verderop op deze pagina. |
+| Id | Ja | Een id voor een inhouds definitie. De waarde is één opgegeven in de sectie **inhouds definitie-id's** verderop op deze pagina. |
 
 Het **ContentDefinition** -element bevat de volgende elementen:
 
-| Element | Gevallen | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | LoadUri | 1:1 | Een teken reeks die de URL van de HTML5-pagina voor de inhouds definitie bevat. |
 | RecoveryUri | 0:1 | Een teken reeks die de URL van de HTML-pagina bevat voor het weer geven van een fout met betrekking tot de inhouds definitie. |
@@ -79,7 +79,7 @@ Het **ContentDefinition** -element bevat de volgende elementen:
 
 Het element **DataUri** wordt gebruikt om de pagina-id op te geven. Azure AD B2C gebruikt de pagina-id om UI-elementen en Java script aan de client zijde te laden en te initiëren. De notatie van de waarde is `urn:com:microsoft:aad:b2c:elements:page-name:version`.  De volgende tabel bevat een lijst met de pagina-id's die u kunt gebruiken.
 
-| Value |   Description |
+| Waarde |   Beschrijving |
 | ----- | ----------- |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | Hiermee wordt een fout pagina weer gegeven wanneer een uitzonde ring of een fout wordt aangetroffen. |
 | `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | Een lijst met de id-providers waaruit gebruikers kunnen kiezen tijdens het aanmelden. |
@@ -93,13 +93,13 @@ Het element **DataUri** wordt gebruikt om de pagina-id op te geven. Azure AD B2C
 
 Het **LocalizedResourcesReferences** -element bevat de volgende elementen:
 
-| Element | Gevallen | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1: n | Een lijst met gelokaliseerde resource verwijzingen voor de inhouds definitie. |
 
 Het **LocalizedResourcesReferences** -element bevat de volgende kenmerken:
 
-| Kenmerk | Vereist | Description |
+| Kenmerk | Verplicht | Beschrijving |
 | --------- | -------- | ----------- |
 | Taal | Ja | Een teken reeks die een ondersteunde taal voor het beleid bevat per RFC 5646-Tags voor het identificeren van talen. |
 | LocalizedResourcesReferenceId | Ja | De id van het **LocalizedResources** -element. |
@@ -141,7 +141,7 @@ Zie [lokalisatie](localization.md)voor meer informatie over het toevoegen van lo
 
 Het kenmerk ID van het element **ContentDefinition** geeft het type pagina aan dat is gekoppeld aan de inhouds definitie. Het element definieert de context waarin een aangepaste HTML5/CSS-sjabloon wordt toegepast. De volgende tabel beschrijft de set met inhouds definitie-Id's die worden herkend door het Framework voor identiteits ervaring en de pagina typen die aan hen zijn gerelateerd. U kunt uw eigen inhouds definities met een wille keurige ID maken.
 
-| id | Standaardsjabloon | Description |
+| Id | Standaard sjabloon | Beschrijving |
 | -- | ---------------- | ----------- |
 | **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Fout pagina** : er wordt een fout pagina weer gegeven wanneer een uitzonde ring of een fout wordt aangetroffen. |
 | **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | Pagina voor het selecteren van de **identiteits provider** : geeft een lijst van id-providers waaruit gebruikers kunnen kiezen tijdens het aanmelden. De opties zijn doorgaans ondernemings-id-providers, sociale id-providers zoals Facebook en Google + of lokale accounts. |

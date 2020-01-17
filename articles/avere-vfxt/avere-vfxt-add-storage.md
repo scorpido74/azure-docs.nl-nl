@@ -4,14 +4,14 @@ description: Een back-end-opslag systeem toevoegen aan uw avere vFXT voor Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 3f7d7b5091b6439f17455b5ea66a3a23ebf79811
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416436"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153986"
 ---
 # <a name="configure-storage"></a>Opslag configureren
 
@@ -69,7 +69,7 @@ Ga vervolgens verder met het [maken van een verbinding](#create-a-junction).
 
 ### <a name="azure-blob-storage-cloud-core-filer"></a>Azure Blob Storage Cloud-kern bestand
 
-Als u Azure Blob Storage wilt gebruiken als back-upopslag van uw vFXT-cluster, hebt u een lege container nodig om toe te voegen als een kern bestand.
+Als u Azure Blob Storage wilt gebruiken als de back-end-opslag van uw vFXT-cluster, hebt u een lege container nodig om toe te voegen als een kern bestand.
 
 Voor het toevoegen van Blob-opslag aan uw cluster zijn de volgende taken vereist:
 

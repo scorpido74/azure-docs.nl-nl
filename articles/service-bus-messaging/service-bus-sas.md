@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 15b7dab7de2affb67fa080d69b4895a31bf9ba3b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462073"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121740"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Toegangs beheer Service Bus met hand tekeningen voor gedeelde toegang
 
@@ -82,7 +82,7 @@ SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-e
 * **`sr`** -URI van de bron waartoe toegang wordt verkregen.
 * **`sig`** -hand tekening.
 
-De `signature-string` is de SHA-256-hash die wordt berekend op basis van de resource-URI (**Scope** zoals beschreven in de vorige sectie) en de teken reeks representatie van het token verloop, gescheiden door CRLF.
+De `signature-string` is de SHA-256-hash die wordt berekend op basis van de resource-URI (**Scope** zoals beschreven in de vorige sectie) en de teken reeks representatie van het token verloop direct, gescheiden door LF.
 
 De hash-berekening ziet er ongeveer uit als de volgende pseudo code en retourneert een 256-bits/32-byte hash-waarde.
 

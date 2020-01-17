@@ -3,12 +3,12 @@ title: Ongeldige sjabloon fouten
 description: Hierin wordt beschreven hoe u fouten met ongeldige sjablonen oplost tijdens het implementeren van Azure Resource Manager sjablonen.
 ms.topic: troubleshooting
 ms.date: 03/08/2018
-ms.openlocfilehash: 9337812152dac7948afc7471760f3dc14443f549
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65cd69d67933d117b51f37b587b276aec2bd635a
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484569"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154054"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Fouten voor ongeldige sjabloon oplossen
 
@@ -86,18 +86,18 @@ Voor onderliggende resources hebben het type en de naam hetzelfde aantal segment
 
 ```json
 "resources": [
-    {
-        "type": "Microsoft.KeyVault/vaults",
-        "name": "contosokeyvault",
+  {
+    "type": "Microsoft.KeyVault/vaults",
+    "name": "contosokeyvault",
+    ...
+    "resources": [
+      {
+        "type": "secrets",
+        "name": "appPassword",
         ...
-        "resources": [
-            {
-                "type": "secrets",
-                "name": "appPassword",
-                ...
-            }
-        ]
-    }
+      }
+    ]
+  }
 ]
 ```
 
@@ -105,9 +105,9 @@ Het recht segmenten ophalen kan lastig zijn bij Resource Manager-typen die worde
 
 ```json
 {
-    "type": "Microsoft.Web/sites/providers/locks",
-    "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
-    ...
+  "type": "Microsoft.Web/sites/providers/locks",
+  "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
+  ...
 }
 ```
 
@@ -140,13 +140,13 @@ U ontvangt deze fout melding wanneer de resources van elkaar afhankelijk zijn op
 
 Een circulaire afhankelijkheid oplossen:
 
-1. Zoek in uw sjabloon de resource die in de circulaire afhankelijkheid is geïdentificeerd. 
-2. Bekijk voor die resource de eigenschap **dependsOn** en het gebruik van de functie **Reference** om te zien op welke resources deze is gebaseerd. 
+1. Zoek in uw sjabloon de resource die in de circulaire afhankelijkheid is geïdentificeerd.
+2. Bekijk voor die resource de eigenschap **dependsOn** en het gebruik van de functie **Reference** om te zien op welke resources deze is gebaseerd.
 3. Bekijk deze bronnen om te zien van welke bronnen ze afhankelijk zijn. Volg de afhankelijkheden totdat u een bron ziet die afhankelijk is van de oorspronkelijke resource.
-5. Voor de resources die deel uitmaken van de circulaire afhankelijkheid, onderzoekt zorgvuldig alle toepassingen van de eigenschap **dependsOn** om eventuele afhankelijkheden te identificeren die niet nodig zijn. Verwijder deze afhankelijkheden. Als u niet zeker weet of een afhankelijkheid nodig is, kunt u deze verwijderen. 
+5. Voor de resources die deel uitmaken van de circulaire afhankelijkheid, onderzoekt zorgvuldig alle toepassingen van de eigenschap **dependsOn** om eventuele afhankelijkheden te identificeren die niet nodig zijn. Verwijder deze afhankelijkheden. Als u niet zeker weet of een afhankelijkheid nodig is, kunt u deze verwijderen.
 6. Implementeer de sjabloon opnieuw.
 
-Het verwijderen van waarden van de eigenschap **dependsOn** kan fouten veroorzaken tijdens het implementeren van de sjabloon. Als er een fout optreedt, voegt u de afhankelijkheid weer toe aan de sjabloon. 
+Het verwijderen van waarden van de eigenschap **dependsOn** kan fouten veroorzaken tijdens het implementeren van de sjabloon. Als er een fout optreedt, voegt u de afhankelijkheid weer toe aan de sjabloon.
 
 Als deze aanpak de circulaire afhankelijkheid niet oplost, kunt u overwegen om een deel van uw implementatie logica te verplaatsen naar onderliggende resources (zoals extensies of configuratie-instellingen). Configureer deze onderliggende resources om te implementeren na de resources die bij de circulaire afhankelijkheid betrokken zijn. Stel bijvoorbeeld dat u twee virtuele machines implementeert, maar u moet eigenschappen instellen voor elke machine die naar de andere verwijzen. U kunt deze in de volgende volg orde implementeren:
 

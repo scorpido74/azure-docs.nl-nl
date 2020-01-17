@@ -3,16 +3,16 @@ title: Resources implementeren met REST API en sjabloon
 description: Gebruik Azure Resource Manager en Resource Manager-REST API om resources te implementeren in Azure. De resources zijn gedefinieerd in een Resource Manager-sjabloon.
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.openlocfilehash: 3a3447746b3e7cbdfeeddd296ce78068e120a134
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc386f51073c256fd083a04bbed39316784827b1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484959"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152507"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Resources implementeren met Resource Manager-sjablonen en Resource Manager REST API
 
-In dit artikel wordt uitgelegd hoe u Resource Manager REST API gebruikt met Resource Manager-sjablonen om uw resources te implementeren in Azure.  
+In dit artikel wordt uitgelegd hoe u Resource Manager REST API gebruikt met Resource Manager-sjablonen om uw resources te implementeren in Azure.
 
 U kunt uw sjabloon insluiten in de hoofd tekst van de aanvraag of een koppeling naar een bestand. Wanneer u een bestand gebruikt, kan dit een lokaal bestand zijn of een extern bestand dat beschikbaar is via een URI. Als uw sjabloon zich in een opslag account bevindt, kunt u de toegang tot de sjabloon beperken en een SAS-token (Shared Access Signature) opgeven tijdens de implementatie.
 
@@ -67,7 +67,7 @@ In de voor beelden in dit artikel worden de implementaties van resource groepen 
 
 1. Valideer uw implementatie voordat u deze uitvoert door de implementatie bewerking voor het [valideren van een sjabloon](/rest/api/resources/deployments/validate) uit te voeren. Wanneer u de implementatie test, geeft u de para meters op exact dezelfde manier op als bij het uitvoeren van de implementatie (Zie de volgende stap).
 
-1. Als u een sjabloon wilt implementeren, geeft u uw abonnements-ID, de naam van de resource groep, de naam van de implementatie op in de aanvraag-URI. 
+1. Als u een sjabloon wilt implementeren, geeft u uw abonnements-ID, de naam van de resource groep, de naam van de implementatie op in de aanvraag-URI.
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-05-01
@@ -116,7 +116,7 @@ In de voor beelden in dit artikel worden de implementaties van resource groepen 
 
     U kunt uw opslag account instellen om een SAS-token (Shared Access Signature) te gebruiken. Zie [toegang overdragen met een Shared Access Signature](/rest/api/storageservices/delegating-access-with-a-shared-access-signature)voor meer informatie.
 
-    Als u een gevoelige waarde voor een para meter (bijvoorbeeld een wacht woord) moet opgeven, voegt u die waarde toe aan een sleutel kluis. Haal de sleutel kluis op tijdens de implementatie, zoals wordt weer gegeven in het vorige voor beeld. Zie [veilige waarden door geven tijdens de implementatie](key-vault-parameter.md)voor meer informatie. 
+    Als u een gevoelige waarde voor een para meter (bijvoorbeeld een wacht woord) moet opgeven, voegt u die waarde toe aan een sleutel kluis. Haal de sleutel kluis op tijdens de implementatie, zoals wordt weer gegeven in het vorige voor beeld. Zie [veilige waarden door geven tijdens de implementatie](key-vault-parameter.md)voor meer informatie.
 
 1. In plaats van te koppelen aan bestanden voor de sjabloon en para meters, kunt u deze in de hoofd tekst van de aanvraag toevoegen. In het volgende voor beeld wordt de hoofd tekst van de aanvraag met de sjabloon en de parameter inline weer gegeven:
 
@@ -155,8 +155,8 @@ In de voor beelden in dit artikel worden de implementaties van resource groepen 
         "resources": [
           {
             "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('storageAccountName')]",
             "apiVersion": "2018-02-01",
+            "name": "[variables('storageAccountName')]",
             "location": "[parameters('location')]",
             "sku": {
               "name": "[parameters('storageAccountType')]"

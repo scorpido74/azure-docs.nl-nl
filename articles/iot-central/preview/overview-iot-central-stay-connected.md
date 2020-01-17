@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: ''
-ms.openlocfilehash: 938d93b1df077914323c7b5f4ee1d42276aeff04
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c102e7ffde7faab5d864c1d9acaafe141664ebf
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434918"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119547"
 ---
 # <a name="stay-connected-with-azure-iot-central-preview-features"></a>Blijf verbonden met Azure IoT Central (preview-functies)
 
@@ -21,7 +21,7 @@ ms.locfileid: "75434918"
 
 In dit artikel vindt u een overzicht van de manier waarop Azure IoT Central u helpt uw apparaten verbonden en in orde te laten zijn.
 
-Met een IoT-oplossing die is ontworpen om op schaal te worden gebruikt, is een goed gestructureerde benadering van het beheer van apparaten van belang. Het is niet voldoende alleen om apparaten ' verbonden ' aan de te krijgen, u hebt een benadering nodig om apparaten verbonden en in orde te laten blijven als uw oplossing zich ontwikkelt, groeit en leeftijden. Azure IoT Central biedt de benodigde mogelijkheden om ervoor te zorgen dat apparaten in uw IoT-oplossing goed onderhouden zijn gedurende de levens cyclus van de toepassing.
+Met een IoT-oplossing die is ontworpen om op schaal te worden gebruikt, is een goed gestructureerde benadering van het beheer van apparaten van belang. Het is niet voldoende alleen om apparaten ' verbonden ' aan de Cloud op te halen. u hebt een benadering nodig om apparaten verbonden en in orde te blijven als uw oplossing zich ontwikkelt, groeit en leeftijden. Azure IoT Central biedt de benodigde mogelijkheden om ervoor te zorgen dat apparaten in uw IoT-oplossing goed onderhouden zijn gedurende de levens cyclus van de toepassing.
 
 ## <a name="dashboards"></a>Dashboards 
 Ingebouwde [Dash boards](howto-manage-devices.md#import-devices) bieden een aanpas bare Surface Area voor het bewaken van apparaatstatus en telemetrie. Begin met een vooraf gebouwd dash board uit een [toepassings sjabloon](howto-use-app-templates.md) of maak uw eigen Dash boards die zijn afgestemd op de behoeften van uw toepassing. Dash boards kunnen worden gedeeld met alle gebruikers in uw toepassing, of worden privé bewaard.

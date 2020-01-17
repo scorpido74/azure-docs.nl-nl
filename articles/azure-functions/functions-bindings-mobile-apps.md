@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 051b8780a102a8a1ec4d3979cc53b686e2823dc8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 952a94797e01a3931fdd151461250af0c2590c11
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928599"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120538"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps bindingen voor Azure Functions 
 
@@ -38,7 +38,7 @@ De Mobile Apps invoer binding laadt een record uit een eind punt van een mobiele
 Zie het voorbeeld taalspecifieke:
 
 * [C# script (.csx)](#input---c-script-example)
-* Javascript
+* JavaScript
 
 ### <a name="input---c-script-example"></a>Voor beeld C# van invoer script
 
@@ -136,9 +136,9 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-| **type**|| Moet worden ingesteld op ' mobileTable '|
-| **direction**||Moet worden ingesteld op ' in '|
-| **De naam**|| Naam van invoer parameter in functie handtekening.|
+| **type**| n.v.t. | Moet worden ingesteld op ' mobileTable '|
+| **direction**| n.v.t. |Moet worden ingesteld op ' in '|
+| **De naam**| n.v.t. | Naam van invoer parameter in functie handtekening.|
 |**tableName** |**TableName**|De naam van de gegevens tabel van de mobiele app|
 | **id**| **Id** | De id van de record die moet worden opgehaald. Kan statisch zijn of op basis van de trigger die de functie aanroept. Als u bijvoorbeeld een wachtrij trigger gebruikt voor uw functie, gebruikt `"id": "{queueTrigger}"` de teken reeks waarde van het wachtrij bericht als de record-ID die moet worden opgehaald.|
 |**verbinding**|**Verbinding**|De naam van een app-instelling met de URL van de mobiele app. De functie gebruikt deze URL om de vereiste REST bewerkingen te maken voor uw mobiele app. Maak een app-instelling in de functie-app die de URL van de mobiele app bevat en geef vervolgens de naam van de app-instelling op in de eigenschap `connection` in uw invoer binding. De URL ziet eruit als `http://<appname>.azurewebsites.net`.
@@ -294,9 +294,9 @@ De volgende tabel beschrijft de binding configuratie-eigenschappen die u instelt
 
 |de eigenschap Function.JSON | De kenmerkeigenschap |Beschrijving|
 |---------|---------|----------------------|
-| **type**|| Moet worden ingesteld op ' mobileTable '|
-| **direction**||Moet worden ingesteld op out|
-| **De naam**|| De naam van de uitvoer parameter in de functie handtekening.|
+| **type**| n.v.t. | Moet worden ingesteld op ' mobileTable '|
+| **direction**| n.v.t. |Moet worden ingesteld op out|
+| **De naam**| n.v.t. | De naam van de uitvoer parameter in de functie handtekening.|
 |**tableName** |**TableName**|De naam van de gegevens tabel van de mobiele app|
 |**verbinding**|**MobileAppUriSetting**|De naam van een app-instelling met de URL van de mobiele app. De functie gebruikt deze URL om de vereiste REST bewerkingen te maken voor uw mobiele app. Maak een app-instelling in de functie-app die de URL van de mobiele app bevat en geef vervolgens de naam van de app-instelling op in de eigenschap `connection` in uw invoer binding. De URL ziet eruit als `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKeySetting**|De naam van een app-instelling met de API-sleutel van uw mobiele app. Geef de API-sleutel op als u [een API-sleutel in uw back-end van de node. js-app implementeert](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)of [een API-sleutel in uw back-end van uw .net-app implementeert](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Als u de sleutel wilt opgeven, maakt u een app-instelling in de functie-app die de API-sleutel bevat en voegt u vervolgens de eigenschap `apiKey` toe aan de invoer binding met de naam van de app-instelling. |

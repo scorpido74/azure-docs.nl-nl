@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: saudas
-ms.openlocfilehash: de3a3d9e5523341c2f549ff2a90c9c40a4e3cb50
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: df3ca877570b6b3e3a34dd20d617ce3896f1dd99
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889453"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120958"
 ---
 # <a name="aks-troubleshooting"></a>AKS problemen oplossen
 
@@ -45,7 +45,7 @@ Zie [IP-adres sering voor uw cluster plannen](configure-azure-cni.md#plan-ip-add
 Er kunnen verschillende redenen zijn waarom de pod in die modus vastloopt. U kunt het volgende bekijken:
 
 * De pod zelf, met behulp van `kubectl describe pod <pod-name>`.
-* De logboeken, met behulp van `kubectl log <pod-name>`.
+* De logboeken, met behulp van `kubectl logs <pod-name>`.
 
 Zie [fouten opsporen in toepassingen](https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/#debugging-pods)voor meer informatie over het oplossen van problemen met Pod.
 

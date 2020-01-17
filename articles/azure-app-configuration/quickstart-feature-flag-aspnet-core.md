@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 04/19/2019
 ms.author: yegu
-ms.openlocfilehash: 1b36bc1b1f28c687450acad4cc61fa5442cff082
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: e91de93c34189cf5506ebf93689a5a9b5c567394
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184987"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121393"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Snelstartgids: functie vlaggen toevoegen aan een ASP.NET Core-app
 
@@ -38,7 +38,7 @@ De .NET Core-functie beheer bibliotheken breiden het Framework uit met uitgebrei
 
 6. Selecteer **functie beheer** >  **+ toevoegen** om de volgende functie vlaggen toe te voegen:
 
-    | Sleutel | Status |
+    | Sleutel | Staat |
     |---|---|
     | Bèta | Uit |
 
@@ -84,8 +84,8 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
 1. Voer de volgende opdrachten uit om een verwijzing naar de `Microsoft.Azure.AppConfiguration.AspNetCore` en de `Microsoft.FeatureManagement.AspNetCore` NuGet-pakketten toe te voegen:
 
     ```
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-009470001-12
-    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 1.0.0-preview-009000001-1251
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-010560002-1165
+    dotnet add package Microsoft.FeatureManagement.AspNetCore --version 2.0.0-preview-010610001-1263
     ```
 
 1. Voer de volgende opdracht uit om de pakketten voor uw project te herstellen:
@@ -107,12 +107,6 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
     U gebruikt alleen de geheime beheerder als u de web-app lokaal wilt testen. Wanneer u de app op [Azure app service](https://azure.microsoft.com/services/app-service)implementeert, gebruikt u bijvoorbeeld een toepassings instelling met de naam **verbindings reeksen** in app service in plaats van de Connection String te gebruiken.
 
     U kunt dit geheim openen met de API voor app-configuratie. Een dubbele punt (:) werkt in de configuratie naam met de API voor app-configuratie op alle ondersteunde platforms. Zie [configuratie per omgeving](https://docs.microsoft.com/aspnet/core/fundamentals/configuration).
-
-1. Open *Program.cs*en voeg een verwijzing toe naar de .net core-app configuratie provider:
-
-    ```csharp
-    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
-    ```
 
 1. Werk de `CreateWebHostBuilder`-methode bij om app-configuratie te gebruiken door de `config.AddAzureAppConfiguration()`-methode aan te roepen.
     
@@ -264,7 +258,7 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
     </h1>
     ```
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
 
 1. Als u de app wilt bouwen met behulp van de .NET Core SLI, voert u de volgende opdracht uit in de opdracht shell:
 
@@ -282,11 +276,11 @@ Voeg het [hulp programma voor geheime beheer](https://docs.microsoft.com/aspnet/
 
     ![Quickstart voor het lokaal starten van een app](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
 
 1. Selecteer **functie beheer**en wijzig de status van de **bèta** sleutel **in op**:
 
-    | Sleutel | Status |
+    | Sleutel | Staat |
     |---|---|
     | Bèta | Aan |
 

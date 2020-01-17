@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 3680de5d8e0e761047e1263c2679da87b1fa2d0b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 70254e42b5964c7c7a3bf15c396f4c118f68a5ed
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769452"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121230"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Queue-opslag bindingen voor Azure Functions
 
@@ -249,7 +249,7 @@ Gebruik in [ C# class bibliotheken](functions-dotnet-class-library.md)de volgend
   }
   ```
 
-  U kunt de eigenschap `Connection` instellen om het opslag account op te geven dat moet worden gebruikt, zoals wordt weer gegeven in het volgende voor beeld:
+  U kunt de eigenschap `Connection` instellen om de app-instelling op te geven die het opslag account bevat dat connection string moet worden gebruikt, zoals wordt weer gegeven in het volgende voor beeld:
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -312,7 +312,7 @@ In C# en C# script opent u de bericht gegevens met behulp van een methode parame
 
 Als u probeert verbinding te maken met `CloudQueueMessage` en een fout bericht ontvangt, moet u ervoor zorgen dat u een verwijzing naar [de juiste versie van de Storage SDK](#azure-storage-sdk-version-in-functions-1x)hebt.
 
-Gebruik in Java script `context.bindings.<name>` om toegang te krijgen tot de nettolading van het wachtrij-item. Als de payload JSON is, wordt deze gedeserialiseerd tot een object.
+Gebruik in Java script `context.bindings.<name>` om toegang te krijgen tot de nettolading van het wachtrij-item. Als de payload JSON is, wordt deze gedeserialiseerd tot een object. Deze nettolading wordt ook door gegeven als de tweede para meter voor de functie.
 
 ## <a name="trigger---message-metadata"></a>Trigger - bericht-metagegevens
 
@@ -320,7 +320,7 @@ De trigger van de wachtrij biedt verschillende [Eigenschappen van meta gegevens]
 
 |Eigenschap|Type|Beschrijving|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|Nettolading van de wachtrij (als een geldige teken reeks). Als de nettolading van het wachtrij bericht als een teken reeks, `QueueTrigger` dezelfde waarde heeft als de variabele met de naam van de eigenschap `name` in *Function. json*.|
+|`QueueTrigger`|`string`|Nettolading van de wachtrij (als een geldige teken reeks). Als de nettolading van het wachtrij bericht een teken reeks is, heeft `QueueTrigger` dezelfde waarde als de variabele met de naam van de eigenschap `name` in *Function. json*.|
 |`DequeueCount`|`int`|Het aantal keren dat dit bericht in de wachtrij is geplaatst.|
 |`ExpirationTime`|`DateTimeOffset`|Het tijdstip waarop het bericht verloopt.|
 |`Id`|`string`|Bericht-ID van de wachtrij.|
@@ -411,7 +411,7 @@ Hier volgt de *function.json* bestand:
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -472,7 +472,7 @@ Hier volgt de *function.json* bestand:
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -506,7 +506,7 @@ module.exports = function(context) {
 
 ### <a name="output---java-example"></a>Uitvoer - Java-voorbeeld
 
- In het volgende voor beeld ziet u een Java-functie die een wachtrij bericht maakt voor wanneer door een HTTP-aanvraag wordt geactiveerd.
+ In het volgende voor beeld ziet u een Java-functie die een wachtrij bericht maakt wanneer het wordt geactiveerd door een HTTP-aanvraag.
 
 ```java
 @FunctionName("httpToQueue")
@@ -514,7 +514,7 @@ module.exports = function(context) {
  public String pushToQueue(
      @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
      final String message,
-     @HttpOutput(name = "response") final OutputBinding&lt;String&gt; result) {
+     @HttpOutput(name = "response") final OutputBinding<String> result) {
        result.setValue(message + " has been added.");
        return message;
  }

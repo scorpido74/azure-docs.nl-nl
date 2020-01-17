@@ -4,20 +4,25 @@ description: Geeft een uitleg over het plannen van voordat avere vFXT voor Azure
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: d4fc2a6b7def4b7c55faa37fbed756fbb830ff73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5ffa28a0f6080b94bd47519df578fd15309dbab5
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415425"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153633"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Uw Avere vFXT-systeem plannen
 
 In dit artikel wordt uitgelegd hoe u een nieuw avere vFXT voor Azure-cluster plant dat op de juiste wijze is gepositioneerd en aangepast aan uw behoeften.
 
-Voordat u naar de Azure Marketplace gaat of een virtuele machine maakt, moet u nadenken hoe het cluster met andere elementen in Azure zal werken. Plan waar cluster bronnen zich bevinden in uw particuliere netwerk en subnetten, en bepaal waar uw back-end-opslag zal worden uitgevoerd. Zorg ervoor dat de cluster knooppunten die u maakt krachtig genoeg zijn voor de ondersteuning van uw werk stroom.
+Voordat u naar de Azure Marketplace gaat of een virtuele machine maakt, moet u rekening houden met de volgende details:
+
+* Hoe werkt het cluster samen met andere Azure-bronnen?
+* Waar moeten cluster elementen zich bevinden in particuliere netwerken en subnetten?
+* Welk type back-end-opslag kunt u gebruiken en hoe krijgt het cluster toegang tot het?
+* Hoe krachtig moeten uw cluster knooppunten uw werk stroom ondersteunen?
 
 Lees verder voor meer informatie.
 
@@ -41,12 +46,14 @@ Denk na over waar de elementen van uw avere vFXT voor Azure-implementatie zullen
 
 ![Diagram waarin de cluster controller en de cluster-Vm's binnen één subnet worden weer gegeven. Rond de grens van het subnet bevindt zich een vnet-grens. Binnen het vnet is dit een zeshoek die het service-eind punt van de opslag aangeeft. deze is verbonden met een onderbroken pijl naar een Blob-opslag buiten het vnet.](media/avere-vfxt-components-option.png)
 
-Volg deze richt lijnen bij het plannen van de netwerk infrastructuur van uw avere vFXT-systeem:
+Volg deze richt lijnen bij het plannen van de netwerk infrastructuur van uw avere vFXT-cluster:
 
-* Maak een nieuw abonnement voor elke avere-vFXT voor Azure-implementatie en beheer alle onderdelen in dit abonnement. De voordelen zijn:
+* Maak een nieuw abonnement voor elke avere-vFXT voor Azure-implementatie. Alle onderdelen in dit abonnement beheren.
+
+  Voor delen van het gebruik van een nieuw abonnement voor elke implementatie zijn:
   * Eenvoudiger kosten bijhouden: Bekijk en controleer alle kosten van resources, infra structuur en reken cycli in één abonnement.
   * Eenvoudiger opschonen: u kunt het hele abonnement verwijderen wanneer u klaar bent met het project.
-  * Handig partitioneren van resource quota: Beveilig andere kritieke werk belastingen van mogelijke resource beperking door de avere vFXT-clients en het cluster in één abonnement te isoleren. Dit voor komt een conflict wanneer er een groot aantal clients wordt gemaakt voor een werk stroom met hoge prestaties.
+  * Handig partitioneren van resource quota: Isoleer de avere vFXT-clients en het cluster in één abonnement om andere kritieke werk belastingen te beschermen tegen mogelijke resource beperking. Deze schei ding voor komt conflicten bij het inbrengen van een groot aantal clients voor een werk stroom met hoge prestaties.
 
 * Zoek uw client Compute-systemen dicht bij het vFXT-cluster. Back-end-opslag kan extern zijn.  
 
@@ -54,9 +61,9 @@ Volg deze richt lijnen bij het plannen van de netwerk infrastructuur van uw aver
 
   * In hetzelfde virtuele netwerk
   * In dezelfde resource groep
-  * In hetzelfde opslag account
+  * Hetzelfde opslag account gebruiken
   
-  De sjabloon voor het automatisch maken van het cluster zorgt voor de meeste situaties.
+  De sjabloon voor het maken van het cluster verwerkt deze configuratie voor de meeste situaties.
 
 * Het cluster moet zich in een eigen subnet bevinden om IP-adres conflicten met clients of andere reken bronnen te voor komen.
 
@@ -69,7 +76,7 @@ Volg deze richt lijnen bij het plannen van de netwerk infrastructuur van uw aver
   | Resourcegroep | Ja, indien leeg | Moet leeg zijn|
   | Opslagaccount | **Ja** als er verbinding wordt gemaakt met een bestaande BLOB-container na het maken van het cluster <br/>  **Nee** , als u een nieuwe BLOB-container maakt tijdens het maken van het cluster | Bestaande BLOB-container moet leeg zijn <br/> &nbsp; |
   | Virtueel netwerk | Ja | Moet een service-eind punt voor opslag bevatten als er een nieuwe Azure Blob-container wordt gemaakt |
-  | Subnet | Ja |   |
+  | Subnet | Ja | Kan geen andere resources bevatten |
 
 ## <a name="ip-address-requirements"></a>Vereisten voor IP-adressen
 
@@ -79,7 +86,7 @@ Het avere vFXT-cluster maakt gebruik van de volgende IP-adressen:
 
 * Eén IP-adres voor cluster beheer. Dit adres kan van het ene naar het andere knoop punt in het cluster worden verplaatst, zodat deze altijd beschikbaar is. Gebruik dit adres om verbinding te maken met het configuratie hulpprogramma van het avere configuratie scherm.
 * Voor elk cluster knooppunt:
-  * Ten minste één client gerichte IP-adres. (Alle client adressen worden beheerd door de *vserver*van het cluster, waardoor ze naar behoefte kunnen worden verplaatst tussen knoop punten.)
+  * Ten minste één client gerichte IP-adres. (Alle client adressen worden beheerd door de *vserver*van het cluster, waardoor de IP-adressen naar wens kunnen worden verplaatst tussen de knoop punten.)
   * Eén IP-adres voor cluster communicatie
   * Een IP-adres van een exemplaar (toegewezen aan de virtuele machine)
 
@@ -102,9 +109,7 @@ Elk vFXT-knoop punt is identiek. Dat wil zeggen, als u een cluster met drie knoo
 
 Schijf cache per knoop punt kan worden geconfigureerd en kan rage van 1000 GB tot 8000 GB. 4 TB per knoop punt is de aanbevolen cache grootte voor Standard_E32s_v3 knooppunten.
 
-Lees de Microsoft Azure-documentatie voor meer informatie over deze Vm's:
-
-* [Grootte van virtuele machines geoptimaliseerd voor geheugen](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
+Lees de Microsoft Azure documentatie voor meer informatie over deze Vm's: [grootten van virtuele machines](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory) die zijn geoptimaliseerd voor geheugen
 
 ## <a name="account-quota"></a>Account quotum
 
@@ -112,11 +117,11 @@ Zorg ervoor dat uw abonnement de capaciteit heeft om het avere vFXT-cluster uit 
 
 ## <a name="back-end-data-storage"></a>Back-end-gegevens opslag
 
-Back-end-opslag systemen leveren beide bestanden aan de cache van het cluster en ontvangen ook gewijzigde gegevens van de cache. Bepaal of uw werkset lange termijn wordt opgeslagen in een nieuwe BLOB-container of in een bestaand opslag systeem voor de Cloud of hardware. Deze back-end-opslag systemen worden *kern bestanden*genoemd.
+Back-end-opslag systemen leveren beide bestanden aan de cache van het cluster en ontvangen ook gewijzigde gegevens van de cache. Bepaal of uw werkset lange termijn wordt opgeslagen in een nieuwe BLOB-container of in een bestaand opslag systeem (Cloud of hardware). Deze back-end-opslag systemen worden *kern bestanden*genoemd.
 
 ### <a name="hardware-core-filers"></a>Kern bestanden voor hardware
 
-Voeg hardwarematige opslag systemen toe aan het vFXT-cluster nadat u het cluster hebt gemaakt. U kunt een bestaand on-premises hardwaresysteem gebruiken, met inbegrip van on-premises systemen, zolang het opslag systeem kan worden bereikt vanuit het subnet van het cluster.
+Voeg hardwarematige opslag systemen toe aan het vFXT-cluster nadat u het cluster hebt gemaakt. U kunt verschillende populaire hardwaresystemen gebruiken, waaronder on-premises systemen, zolang het opslag systeem kan worden bereikt vanuit het subnet van het cluster.
 
 Lees [opslag configureren](avere-vfxt-add-storage.md) voor gedetailleerde instructies over het toevoegen van een bestaand opslag systeem aan het avere vFXT-cluster.
 
@@ -142,7 +147,7 @@ De toegangs opties zijn onder andere:
   > [!TIP]
   > Als u een openbaar IP-adres op de cluster controller instelt, kunt u het gebruiken als de Jump host. Lees de [cluster controller als Jump host](#cluster-controller-as-jump-host) voor meer informatie.
 
-* Virtueel particulier netwerk (VPN): Configureer een punt-naar-site-of site-naar-site-VPN naar uw particuliere netwerk.
+* Virtueel particulier netwerk (VPN): Configureer een punt-naar-site-of site-naar-site-VPN tussen uw particuliere netwerk in Azure en bedrijfs netwerken.
 
 * Azure-ExpressRoute: Configureer een particuliere verbinding via een ExpressRoute-partner.
 
@@ -156,20 +161,20 @@ Ter verbetering van de beveiliging van een controller met een openbaar IP-adres,
 
 Wanneer u het cluster maakt, kunt u kiezen of u een openbaar IP-adres op de cluster controller wilt maken.
 
-* Als u een **nieuw virtueel netwerk** of een **Nieuw subnet**maakt, wordt aan de cluster controller een **openbaar IP-adres**toegewezen.
+* Als u een **nieuw virtueel netwerk** of een **Nieuw subnet**maakt, wordt aan de cluster controller een **openbaar** IP-adres toegewezen.
 * Als u een bestaand virtueel netwerk en een subnet selecteert, heeft de cluster controller alleen **privé** -IP-adressen.
 
 ## <a name="vm-access-roles"></a>VM-toegangs rollen
 
 Azure gebruikt op [rollen gebaseerd toegangs beheer](../role-based-access-control/index.yml) (RBAC) om de cluster-vm's te autoriseren om bepaalde taken uit te voeren. Zo moet de cluster controller autorisatie hebben om de virtuele machines van het cluster knooppunt te maken en te configureren. Cluster knooppunten moeten IP-adressen toewijzen of opnieuw toewijzen aan andere cluster knooppunten.
 
-Er worden twee ingebouwde Azure-rollen gebruikt voor de avere vFXT voor Azure virtual machines:
+Er worden twee ingebouwde Azure-rollen gebruikt voor de virtuele avere-machines van vFXT:
 
 * De cluster controller maakt gebruik van de ingebouwde rol [Inzender voor avere](../role-based-access-control/built-in-roles.md#avere-contributor).
-* Cluster knooppunten gebruiken de ingebouwde rol [avere operator](../role-based-access-control/built-in-roles.md#avere-operator)
+* Cluster knooppunten gebruiken de ingebouwde rol [avere operator](../role-based-access-control/built-in-roles.md#avere-operator).
 
 Als u toegangs rollen voor avere vFXT-onderdelen wilt aanpassen, moet u uw eigen rol definiëren en deze vervolgens toewijzen aan de virtuele machines op het moment dat ze worden gemaakt. U kunt de implementatie sjabloon niet gebruiken in azure Marketplace. Neem contact op met de klanten service van micro soft door een ticket in de Azure Portal te openen, zoals wordt beschreven in [hulp vragen bij uw systeem](avere-vfxt-open-ticket.md).
 
 ## <a name="next-step-understand-the-deployment-process"></a>Volgende stap: inzicht in het implementatie proces
 
-[Implementatie overzicht](avere-vfxt-deploy-overview.md) geeft de grote afbeeldings weergave van de stappen die nodig zijn voor het maken van een avere vFXT voor het Azure-systeem en het voorbereiden op het verwerken van gegevens.
+[Implementatie overzicht](avere-vfxt-deploy-overview.md) biedt een grote weer gave van de stappen die nodig zijn voor het maken van een avere-VFXT voor Azure-systeem en het voorbereiden van de gegevens.

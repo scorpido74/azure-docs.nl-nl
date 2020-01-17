@@ -3,12 +3,12 @@ title: Fouten van bovenliggende resources
 description: Hierin wordt beschreven hoe u fouten oplost bij het werken met een bovenliggende resource in een Azure Resource Manager sjabloon.
 ms.topic: troubleshooting
 ms.date: 08/01/2018
-ms.openlocfilehash: 9fcf12db7375e6d19ef9e77ea4dcaf13130175b5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f1847389d60ddf3c6abc70bc3309940c2246084e
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484530"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154037"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>Fouten voor bovenliggende resources oplossen
 
@@ -34,7 +34,7 @@ Wanneer een resource een onderliggend item van een andere resource is, moet de b
   ...
 ```
 
-Als u zowel de server als de data base in dezelfde sjabloon implementeert, maar geen afhankelijkheid op de server opgeeft, wordt de implementatie van de data base mogelijk gestart voordat de server is geïmplementeerd. 
+Als u zowel de server als de data base in dezelfde sjabloon implementeert, maar geen afhankelijkheid op de server opgeeft, wordt de implementatie van de data base mogelijk gestart voordat de server is geïmplementeerd.
 
 Als de bovenliggende resource al bestaat en niet is geïmplementeerd in dezelfde sjabloon, wordt deze fout weer geven wanneer Resource Manager de onderliggende resource niet kan koppelen aan het bovenliggende item. Deze fout kan optreden wanneer de onderliggende resource niet de juiste indeling heeft of de onderliggende resource wordt geïmplementeerd naar een resource groep die verschilt van de resource groep voor de bovenliggende resource.
 
@@ -44,7 +44,7 @@ Als u deze fout wilt oplossen wanneer bovenliggende en onderliggende resources i
 
 ```json
 "dependsOn": [
-    "[variables('databaseServerName')]"
+  "[variables('databaseServerName')]"
 ]
 ```
 
@@ -52,29 +52,29 @@ Als u deze fout wilt oplossen wanneer de bovenliggende resource eerder in een an
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "sqlServerName": {
-            "type": "string"
-        },
-        "databaseName": {
-            "type": "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "sqlServerName": {
+      "type": "string"
     },
-    "resources": [
-        {
-            "apiVersion": "2014-04-01",
-            "type": "Microsoft.Sql/servers/databases",
-            "location": "[resourceGroup().location]",
-            "name": "[concat(parameters('sqlServerName'), '/', parameters('databaseName'))]",
-            "properties": {
-                "collation": "SQL_Latin1_General_CP1_CI_AS",
-                "edition": "Basic"
-            }
-        }
-    ],
-    "outputs": {}
+    "databaseName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Sql/servers/databases",
+      "apiVersion": "2014-04-01",
+      "name": "[concat(parameters('sqlServerName'), '/', parameters('databaseName'))]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "collation": "SQL_Latin1_General_CP1_CI_AS",
+        "edition": "Basic"
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 
