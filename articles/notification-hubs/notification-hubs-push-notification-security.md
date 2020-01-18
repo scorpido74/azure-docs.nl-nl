@@ -1,6 +1,6 @@
 ---
-title: Notification Hubs beveiliging
-description: In dit onderwerp wordt de beveiliging voor Azure Notification Hubs uitgelegd.
+title: Notification Hubs beveiligings model
+description: Meer informatie over het beveiligings model voor Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/23/2019
-ms.openlocfilehash: a9598f6a01e5536351fb20b7c352a5eaf5746042
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273623"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263758"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs beveiliging
 
@@ -46,13 +46,13 @@ De sleutel met **listen** -toegang kan een client-app voor elk label registreren
 
 ## <a name="security-claims"></a>Beveiligings claims
 
-Net als bij andere entiteiten zijn notification hub-bewerkingen toegestaan voor drie beveiligings claims: **Luis teren**, **verzenden**en **beheren**.
+Net als andere entiteiten zijn notification hub-bewerkingen toegestaan voor drie beveiligings claims: **Luis teren**, **verzenden**en **beheren**.
 
-| Claim   | Description                                          | Toegestane bewerkingen |
+| Claim   | Beschrijving                                          | Toegestane bewerkingen |
 | ------- | ---------------------------------------------------- | ------------------ |
 | Luisteren  | Enkelvoudige registraties maken/bijwerken, lezen en verwijderen | Registratie maken/bijwerken<br><br>Registratie lezen<br><br>Alle registraties voor een ingang lezen<br><br>Registratie verwijderen |
 | Verzenden    | Berichten verzenden naar de notification hub                | Bericht verzenden |
-| Beheren  | RUWE gegevens op Notification Hubs (inclusief het bijwerken van PNS-referenties en beveiligings sleutels) en het lezen van registraties op basis van Tags |Hubs maken/bijwerken/lezen/verwijderen<br><br>Registraties per tag lezen |
+| Beheer  | RUWE gegevens op Notification Hubs (inclusief het bijwerken van PNS-referenties en beveiligings sleutels) en het lezen van registraties op basis van Tags |Hubs maken/bijwerken/lezen/verwijderen<br><br>Registraties per tag lezen |
 
 Notification Hubs accepteert SAS-tokens die zijn gegenereerd met gedeelde sleutels die rechtstreeks op de hub zijn geconfigureerd.
 

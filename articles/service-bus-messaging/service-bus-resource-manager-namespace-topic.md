@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: een abonnement op de Azure Service Bus naam ruimte maken met behulp van Azure Resource Manager sjabloon'
+title: Azure Service Bus naam ruimte-onderwerp maken met behulp van een sjabloon
 description: 'Snelstartgids: een Service Bus naam ruimte met een onderwerp en een abonnement maken met behulp van Azure Resource Manager sjabloon'
 services: service-bus-messaging
 documentationcenter: .net
@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 11/05/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 661edf94fd0c505968fc78a367ceda6a93afe401
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 98ca0f95f5b2aab9651b97442f1f38651767f1df
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426877"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264489"
 ---
 # <a name="quickstart-create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Snelstartgids: een Service Bus naam ruimte met een onderwerp en een abonnement maken met behulp van een Azure Resource Manager sjabloon
 

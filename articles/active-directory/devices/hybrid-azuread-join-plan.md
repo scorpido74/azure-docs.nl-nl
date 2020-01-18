@@ -1,6 +1,6 @@
 ---
 title: Deelname aan een Hybrid Azure Active Directory-Azure Active Directory plannen
-description: Leer hoe u hybride Azure Active Directory-gekoppelde apparaten kunt configureren.
+description: Lees hoe u hybride Azure Active Directory-gekoppelde apparaten kunt configureren.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36dd80669c6a9495751f577748f48c02a782b920
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 0ad3bb41b6c5faa7bab0e618dd46c48427f364db
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029849"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167385"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: uw hybride Azure Active Directory deelname-implementatie plannen
 
@@ -64,7 +64,7 @@ Voor apparaten met het Windows-besturings systeem wordt de ondersteunde versie v
 ### <a name="windows-down-level-devices"></a>Windows-apparaten op lagere niveaus
 
 - Windows 8.1
-- Windows 7. Zie [ondersteuning voor Windows 7](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support)voor meer informatie over ondersteuning voor Windows 7.
+- Windows 7-ondersteuning is beëindigd op 14 januari 2020. Zie [ondersteuning voor Windows 7 is beëindigd](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020)voor meer informatie.
 - Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2. Zie voor ondersteunings informatie over Windows Server 2008 en 2008 R2 [voor bereiding op Windows server 2008-ondersteuning](https://www.microsoft.com/cloud-platform/windows-server-2008).

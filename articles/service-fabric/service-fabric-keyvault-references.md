@@ -3,12 +3,12 @@ title: Azure-Service Fabric-Service Fabric toepassing sleutel kluis verwijzingen
 description: In dit artikel wordt uitgelegd hoe u de KeyVaultReference-ondersteuning van service Fabric gebruikt voor toepassings geheimen.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: b0e882c2b39c06a3040d22fc6694599966ceeb39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3f4c4979d0ce1329ac8ba49b236dae20a4e88b53
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463031"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167129"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>KeyVaultReference-ondersteuning voor Service Fabric toepassingen (preview)
 
@@ -61,6 +61,7 @@ Een veelvoorkomende uitdaging bij het bouwen van Cloud toepassingen is het veili
 
     > [!NOTE] 
     > Het is raadzaam om een afzonderlijk versleutelings certificaat voor CSS te gebruiken. U kunt deze toevoegen onder de sectie ' CentralSecretService '.
+    
 
     ```json
         {
@@ -68,7 +69,18 @@ Een veelvoorkomende uitdaging bij het bouwen van Cloud toepassingen is het veili
             "value": "<EncryptionCertificateThumbprint for CSS>"
         }
     ```
-
+Om de wijzigingen van kracht te laten worden, moet u ook het upgrade beleid wijzigen om een geforceerde opnieuw op te geven van de Service Fabric runtime op elk knoop punt wanneer de upgrade wordt uitgevoerd via het cluster. Opnieuw opstarten zorgt ervoor dat de nieuw ingeschakelde systeem service wordt gestart en wordt uitgevoerd op elk knoop punt. In het onderstaande code fragment is forceRestart de essentiële instelling. Gebruik uw bestaande waarden voor de overige instellingen.
+```json
+"upgradeDescription": {
+    "forceRestart": true,
+    "healthCheckRetryTimeout": "00:45:00",
+    "healthCheckStableDuration": "00:05:00",
+    "healthCheckWaitDuration": "00:05:00",
+    "upgradeDomainTimeout": "02:00:00",
+    "upgradeReplicaSetCheckTimeout": "1.00:00:00",
+    "upgradeTimeout": "12:00:00"
+}
+```
 - Machtigingen voor beheerde identiteits toegang verlenen aan de sleutel kluis
 
     Raadpleeg dit [document](how-to-grant-access-other-resources.md) voor meer informatie over het verlenen van beheerde identiteits toegang tot de sleutel kluis. Opmerking Als u een door het systeem toegewezen beheerde identiteit gebruikt, wordt de beheerde identiteit alleen gemaakt na de implementatie van de toepassing.

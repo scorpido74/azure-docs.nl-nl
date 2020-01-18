@@ -1,7 +1,7 @@
 ---
-title: Een detectie model opgeven-Face-API
+title: Een detectie model opgeven-face
 titleSuffix: Azure Cognitive Services
-description: In dit artikel wordt uitgelegd hoe u kunt kiezen welk gezichts detectie model u wilt gebruiken met uw Azure Face-API-toepassing.
+description: In dit artikel wordt uitgelegd hoe u kunt kiezen welk gezichts detectie model u wilt gebruiken met uw Azure face-toepassing.
 services: cognitive-services
 author: yluiu
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 05/16/2019
 ms.author: yluiu
-ms.openlocfilehash: 4306a918d56240bfe038100124b3c2b94964cebc
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: f5b524ca6156dab7c0d1e38ad320b721f40a49ef
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70306687"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169761"
 ---
 # <a name="specify-a-face-detection-model"></a>Een model voor gezichtsdetectie opgeven
 
-In deze hand leiding wordt beschreven hoe u een gezichts detectie model voor de Azure Face-API opgeeft.
+In deze hand leiding wordt uitgelegd hoe u een gezichts detectie model voor de Azure face-service kunt opgeven.
 
-De Face-API gebruikt machine learning modellen voor het uitvoeren van bewerkingen op menselijke gezichten in installatie kopieën. We blijven de nauw keurigheid van onze modellen verbeteren op basis van feedback van klanten en de voor uitgang van onderzoek en wij leveren deze verbeteringen als model updates. Ontwikkel aars hebben de optie om op te geven welke versie van het gezichts detectie model ze willen gebruiken. ze kunnen het model kiezen dat het beste past bij hun gebruik.
+De face-service maakt gebruik van machine learning modellen voor het uitvoeren van bewerkingen op menselijke gezichten in installatie kopieën. We blijven de nauw keurigheid van onze modellen verbeteren op basis van feedback van klanten en de voor uitgang van onderzoek en wij leveren deze verbeteringen als model updates. Ontwikkel aars hebben de optie om op te geven welke versie van het gezichts detectie model ze willen gebruiken. ze kunnen het model kiezen dat het beste past bij hun gebruik.
 
-Lees in voor meer informatie over het opgeven van het gezichts detectie model in bepaalde gezichts bewerkingen. De Face-API maakt gebruik van gezichts detectie wanneer een afbeelding van een gezicht wordt omgezet in een andere vorm van gegevens.
+Lees in voor meer informatie over het opgeven van het gezichts detectie model in bepaalde gezichts bewerkingen. De face-service maakt gebruik van gezichts detectie wanneer een afbeelding van een gezicht wordt omgezet in een andere vorm van gegevens.
 
 Als u niet zeker weet of u het meest recente model moet gebruiken, gaat u naar de sectie [verschillende modellen evalueren](#evaluate-different-models) om het nieuwe model te evalueren en de resultaten te vergelijken met de huidige gegevensset.
 
@@ -38,7 +38,7 @@ U moet bekend zijn met het concept van AI-gezichts detectie. Als dat niet het ge
 
 Met gezichts herkenning vindt u de locatie van het begrenzingsvak van menselijke gezichten en identificeert u hun visuele bezienswaardigheden. De functies van het gezicht worden geëxtraheerd en opgeslagen voor toekomstig gebruik in [herkennings](../concepts/face-recognition.md) bewerkingen.
 
-Wanneer u de [Gezicht-detecteren] API gebruikt, kunt u de model versie toewijzen met `detectionModel` de para meter. De beschik bare waarden zijn:
+Wanneer u de [Gezicht-detecteren] API gebruikt, kunt u de model versie toewijzen met de para meter `detectionModel`. De beschik bare waarden zijn:
 
 * `detection_01`
 * `detection_02`
@@ -56,7 +56,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, false, false, rec
 
 ## <a name="add-face-to-person-with-specified-model"></a>Een gezicht toevoegen aan een persoon met een opgegeven model
 
-De Face-API kan gezichts gegevens uit een afbeelding extra heren en deze koppelen aan een **persoons** object via de [PersonGroup persoon-add face-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API. In deze API-aanroep kunt u het detectie model op dezelfde manier als in het [Gezicht-detecteren]opgeven.
+De face-service kan gezichts gegevens uit een afbeelding extra heren en deze koppelen aan een **persoons** object via de [PersonGroup persoon-add face-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) API. In deze API-aanroep kunt u het detectie model op dezelfde manier als in het [Gezicht-detecteren]opgeven.
 
 Zie het volgende code voorbeeld voor de .NET-client bibliotheek.
 
@@ -71,7 +71,7 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.PersonGroupPerson.AddFaceFromUrlAsync(personGroupId, personId, imageUrl, detectionModel: "detection_02");
 ```
 
-Met deze code wordt een **PersonGroup** met `mypersongroupid` id gemaakt en wordt hieraan een **persoon** toegevoegd. Vervolgens wordt er een gezicht aan deze **persoon** toegevoegd met `detection_02` behulp van het model. Als u de para meter *detectionModel* niet opgeeft, wordt het standaard model gebruikt door `detection_01`de API.
+Met deze code maakt u een **PersonGroup** met de id `mypersongroupid` en voegt u hieraan een **persoon** toe. Vervolgens wordt er een gezicht aan deze **persoon** toegevoegd met behulp van het `detection_02` model. Als u de para meter *detectionModel* niet opgeeft, gebruikt de API het standaard model `detection_01`.
 
 > [!NOTE]
 > U hoeft niet hetzelfde detectie model te gebruiken voor alle gezichten in een **persoons** object en u hoeft niet hetzelfde detectie model te gebruiken bij het detecteren van nieuwe gezichten om te vergelijken met een **persoons** object (bijvoorbeeld in de API voor het identificeren van het [Face - Identify] punt).
@@ -87,7 +87,7 @@ string imageUrl = "https://news.microsoft.com/ceo/assets/photos/06_web.jpg";
 await client.FaceList.AddFaceFromUrlAsync(faceListId, imageUrl, detectionModel: "detection_02");
 ```
 
-Deze code maakt een **FaceList** met `My face collection` de naam en voegt een gezicht toe aan `detection_02` het model. Als u de para meter *detectionModel* niet opgeeft, wordt het standaard model gebruikt door `detection_01`de API.
+Met deze code wordt een **FaceList** met de naam `My face collection` gemaakt en wordt er een gezicht aan toegevoegd met het `detection_02` model. Als u de para meter *detectionModel* niet opgeeft, gebruikt de API het standaard model `detection_01`.
 
 > [!NOTE]
 > U hoeft niet hetzelfde detectie model te gebruiken voor alle gezichten in een **FaceList** -object en u hoeft niet hetzelfde detectie model te gebruiken bij het detecteren van nieuwe gezichten om te vergelijken met een **FaceList** -object.
@@ -103,7 +103,7 @@ De verschillende gezichts detectie modellen zijn geoptimaliseerd voor verschille
 |Retourneert face-kenmerken (Head pose, Age, Emotion, enzovoort) als deze zijn opgegeven in de aanroep detectie. |  Retourneert geen face-kenmerken.     |
 |Retourneert gezichts bezienswaardigheden als deze zijn opgegeven in de detectie aanroep.   | Retourneert geen gezichts bezienswaardigheden.  |
 
-De beste manier om de prestaties van de `detection_01` -en `detection_02` -modellen te vergelijken, is door deze te gebruiken in een voorbeeld gegevensset. We raden u aan de API voor het detectie van het [Gezicht-detecteren] aanbod op diverse installatie kopieën aan te roepen, met name afbeeldingen van veel gezichten of gezichten die moeilijk te zien zijn, met behulp van elk detectie model. Let op het aantal gezichten dat elke model retourneert.
+De beste manier om de prestaties van de `detection_01` en `detection_02` modellen te vergelijken, is door deze te gebruiken in een voorbeeld gegevensset. We raden u aan de API voor het detectie van het [Gezicht-detecteren] aanbod op diverse installatie kopieën aan te roepen, met name afbeeldingen van veel gezichten of gezichten die moeilijk te zien zijn, met behulp van elk detectie model. Let op het aantal gezichten dat elke model retourneert.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 26609bc95bf6fd49ded23d8f117911a02577405a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b38b8508dbe17d42bf191149410f5db638cf834
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445899"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261616"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Berichten uitwisselen in de Cloud met behulp van Azure Logic Apps en Azure Service Bus
 
@@ -154,7 +154,9 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
 
 ## <a name="connector-reference"></a>Connector-verwijzing
 
-De Service Bus-Connector kan Maxi maal 1.500 unieke sessies tegelijk van een service bus naar de connector cache opslaan. Als het aantal sessies groter is dan deze limiet, worden oude sessies verwijderd uit de cache. Raadpleeg de [referentie pagina](/connectors/servicebus/)van de connector voor andere technische informatie over triggers, acties en limieten die worden beschreven door de OpenAPI (voorheen Swagger) van de connector.
+De Service Bus-Connector kan Maxi maal 1.500 unieke sessies tegelijk van een service bus naar de connector cache opslaan. Als het aantal sessies groter is dan deze limiet, worden oude sessies verwijderd uit de cache. Zie [Message Sessions](../service-bus-messaging/message-sessions.md)(Engelstalig) voor meer informatie.
+
+Raadpleeg de [referentie pagina](/connectors/servicebus/)van de connector voor andere technische informatie over triggers, acties en limieten die worden beschreven door de OpenAPI (voorheen Swagger) van de connector. Zie [Wat is Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md)? voor meer informatie over Azure Service Bus berichten.
 
 ## <a name="next-steps"></a>Volgende stappen
 

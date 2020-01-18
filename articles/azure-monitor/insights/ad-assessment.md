@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/10/2019
-ms.openlocfilehash: f0de484d58085f598988589d18495c9a6fe1b374
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1e97ce1655ae35f4986a915a382d456bb8d2ce4b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75406139"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167835"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimaliseer uw Active Directory-omgeving met de Active Directory Health Check-oplossing in Azure Monitor
 
@@ -166,6 +166,17 @@ Nadat de volgende geplande status controle standaard elke zeven dagen wordt uitg
 2. Als u later besluit dat u genegeerde aanbevelingen wilt zien, verwijdert u de IgnoreRecommendations. txt-bestanden of verwijdert u RecommendationIDs van de andere.
 
 ## <a name="ad-health-check-solutions-faq"></a>Veelgestelde vragen over de AD Health Check-oplossingen
+
+*Welke controles worden uitgevoerd door de AD-evaluatie-oplossing?*
+
+* Met de volgende query wordt een beschrijving weer gegeven van alle controles die op dit moment worden uitgevoerd:
+
+```Kusto
+ADAssessmentRecommendation
+| distinct RecommendationId, FocusArea, ActionArea, Recommendation, Description
+| sort by FocusArea,ActionArea, Recommendation
+```
+De resultaten kunnen vervolgens worden geëxporteerd naar Excel voor verder onderzoek.
 
 *Hoe vaak wordt een status controle uitgevoerd?*
 

@@ -1,5 +1,5 @@
 ---
-title: Bekijk de maandelijkse geschatte Lab-kosten trend in Azure DevTest Labs | Microsoft Docs
+title: Bekijk de maandelijkse geschatte Lab-kosten trend in Azure DevTest Labs
 description: Meer informatie over de Azure DevTest Labs maandelijkse grafiek met geschatte kosten.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 247327d001342fd0e2943ae7cf010e648761cdaa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 15ddaa6c73cedb32d920ef943627831c1e9b378b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976348"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169631"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Kosten bijhouden die zijn gekoppeld aan een lab in Azure DevTest Labs
 Dit artikel bevat informatie over het bijhouden van de kosten van uw Lab. U ziet hoe u de geschatte kosten Trent kunt weer geven voor de huidige kalender maand voor het lab. In dit artikel ziet u ook hoe u de kosten per resource kunt weer geven in het lab.

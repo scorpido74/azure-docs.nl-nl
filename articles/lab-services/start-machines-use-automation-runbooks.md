@@ -1,6 +1,6 @@
 ---
-title: Met Automation-runbooks in Azure DevTest Labs-machines starten | Microsoft Docs
-description: Leer hoe u virtuele machines in een lab in Azure DevTest Labs starten met behulp van Azure Automation-runbooks.
+title: Machines starten met Automation-runbooks in Azure DevTest Labs
+description: Meer informatie over het starten van virtuele machines in een lab in Azure DevTest Labs met behulp van Azure Automation runbooks.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,29 +10,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 8d3885ba25e479316f97ecbb0681a1680650fc09
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9bb97a73b7ca570ca122323e8e9c5a70c9348b15
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61083615"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166316"
 ---
-# <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Virtuele machines in een lab in volgorde met behulp van Azure Automation-runbooks starten
-De [autostart](devtest-lab-set-lab-policy.md#set-autostart) functie van DevTest Labs kunt u virtuele machines automatisch gestart op een bepaald tijdstip configureren. Deze functie biedt echter geen ondersteuning voor machines om te starten in een specifieke volgorde. Er zijn verschillende scenario's waarbij dit type automatisering handig kan zijn.  Een scenario is wanneer een Jumpbox-VM in een lab moet eerst worden gestart voordat de andere VM's, zoals de Jumpbox wordt gebruikt als het toegangspunt aan de andere virtuele machines.  Dit artikel leest u hoe het instellen van een Azure Automation-account met een PowerShell-runbook dat een script wordt uitgevoerd. Het script maakt gebruik van tags op virtuele machines in de testomgeving kunt u voor het beheren van de opstartvolgorde te wijzigen zonder dat het script wijzigen.
+# <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>Virtuele machines in een lab op volg orde starten met Azure Automation runbooks
+Met de functie [automatisch starten](devtest-lab-set-lab-policy.md#set-autostart) van DevTest Labs kunt u vm's zodanig configureren dat deze automatisch worden gestart op een opgegeven tijdstip. Deze functie biedt echter geen ondersteuning voor machines om in een specifieke volg orde te starten. Er zijn verschillende scenario's waarbij dit type automatisering nuttig zou zijn.  In één scenario moet een JumpBox-VM binnen een Lab eerst worden gestart, vóór de andere virtuele machines, omdat de JumpBox wordt gebruikt als het toegangs punt voor de andere Vm's.  In dit artikel wordt beschreven hoe u een Azure Automation account instelt met een Power shell-runbook dat een script uitvoert. Het script maakt gebruik van labels op Vm's in het Lab zodat u de opstart volgorde kunt beheren zonder het script te hoeven wijzigen.
 
 ## <a name="setup"></a>Instellen
-In dit voorbeeld VM's in het lab wilt hebben van de tag **StartupOrder** toegevoegd met de juiste waarde (0,1,2, enz.). Wijs elke machine die niet hoeven te worden gestart als de -1.
+In dit voor beeld moet de virtuele machine in het lab de tag **StartupOrder** toevoegen met de juiste waarde (0, 1, 2, enzovoort). Wijs een computer aan die niet moet worden gestart als-1.
 
 ## <a name="create-an-azure-automation-account"></a>Een Azure Automation-account maken
-Een Azure Automation-account maken met de instructies in [in dit artikel](../automation/automation-create-standalone-account.md). Kies de **Run As-Accounts** optie bij het maken van het account. Nadat het automation-account is gemaakt, opent u de **Modules** pagina en selecteer **Update Azure-Modules** op de menubalk. De standaardmodules zijn dat verschillende versies oude en zonder de update van het script kunnen niet worden gebruikt.
+Maak een Azure Automation-account door de instructies in [dit artikel](../automation/automation-create-standalone-account.md)te volgen. Kies de optie **uitvoeren als-accounts** bij het maken van het account. Zodra het Automation-account is gemaakt, opent u de pagina **modules** en selecteert u **Azure-modules bijwerken** op de menu balk. De standaard modules zijn verschillende versies oud en zonder de update kan het script niet worden gebruikt.
 
 ## <a name="add-a-runbook"></a>Een runbook toevoegen
-Selecteer nu een runbook toevoegen aan het automation-account, **Runbooks** in het menu links. Selecteer **toevoegen van een runbook** in het menu en de instructies volgen voor het [maken van een PowerShell-runbook](../automation/automation-first-runbook-textual-powershell.md).
+Als u nu een runbook wilt toevoegen aan het Automation-account, selecteert u **Runbooks** in het menu links. Selecteer **een Runbook toevoegen** in het menu en volg de instructies voor [het maken van een Power shell-runbook](../automation/automation-first-runbook-textual-powershell.md).
 
 ## <a name="powershell-script"></a>PowerShell-script
-Het volgende script neemt de naam van het abonnement, de labnaam als parameters. De stroom van het script is ontvangen van alle virtuele machines in de testomgeving en parseren en vervolgens de tag-informatie voor het maken van een lijst met de namen van de virtuele machine en de opstartvolgorde te wijzigen. Het script begeleid bij de virtuele machines in volgorde en start de virtuele machines. Als er meerdere virtuele machines in een aantal specifieke volgorde, kunt ze asynchroon met behulp van PowerShell-taken worden gestart. Voor deze virtuele machines waarvoor geen een label, opstartwaarde instellen op de laatste (10), worden ze gestart laatste, standaard.  Als de testomgeving niet automatisch worden gestart als de virtuele machine wilt, stel de tagwaarde op 11 en wordt dit genegeerd.
+Het volgende script neemt de naam van het abonnement, de naam van het Lab als para meters. De stroom van het script bestaat uit het ophalen van alle virtuele machines in het lab en vervolgens het parseren van de label gegevens om een lijst met de namen van de virtuele machines en de bijbehorende opstart volgorde te maken. Het script doorloopt de Vm's in de juiste volg orde en start de Vm's. Als er meerdere Vm's in een specifiek Volg nummer staan, worden ze asynchroon met Power shell-taken gestart. Voor de virtuele machines die geen tag hebben, stelt u de opstart waarde in op de laatste (10). de waarden worden standaard als laatste gestart.  Als de virtuele machine niet automatisch moet worden gestart door de Lab, stelt u de waarde van de tag in op 11 en wordt deze genegeerd.
 
 ```powershell
 #Requires -Version 3.0
@@ -133,9 +133,9 @@ While ($current -le 10) {
 ```
 
 ## <a name="create-a-schedule"></a>Een planning maken
-Om dit script uitvoeren dagelijks, [maakt u een planning](../automation/shared-resources/schedules.md#creating-a-schedule) in het automation-account. Zodra de planning is gemaakt, [koppelen aan het runbook](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook). 
+Als u dit script dagelijks wilt uitvoeren, [maakt u een planning](../automation/shared-resources/schedules.md#creating-a-schedule) in het Automation-account. Zodra de planning is gemaakt, [koppelt u deze aan het runbook](../automation/shared-resources/schedules.md#linking-a-schedule-to-a-runbook). 
 
-In een grootschalige situatie waarbij er meerdere abonnementen met meerdere labs, de parametergegevens opslaan in een bestand voor verschillende labs en het bestand aan het script in plaats van de afzonderlijke parameters doorgeven. Het script moet worden gewijzigd, maar de core worden uitgevoerd op dezelfde wijze worden. In dit voorbeeld maakt gebruik van de Azure Automation voor het uitvoeren van het PowerShell-script, maar er zijn andere opties, zoals het gebruik van een taak in een Build en Release-pijplijn.
+In een grote situatie waarbij meerdere abonnementen met meerdere Labs zijn, slaat u de parameter gegevens op in een bestand voor verschillende Labs en geeft u het bestand door aan het script in plaats van de afzonderlijke para meters. Het script moet worden gewijzigd, maar de kern uitvoering zou hetzelfde zijn. Hoewel in dit voor beeld de Azure Automation wordt gebruikt om het Power shell-script uit te voeren, zijn er nog andere opties, zoals het gebruik van een taak in een pijp lijn voor Build/release.
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie het volgende artikel voor meer informatie over Azure Automation: [Een inleiding tot Azure Automation](../automation/automation-intro.md).
+Raadpleeg het volgende artikel voor meer informatie over Azure Automation: [een inleiding tot Azure Automation](../automation/automation-intro.md).

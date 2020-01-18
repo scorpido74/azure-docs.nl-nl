@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 987e8d9e667339d7526e8acbc3164e58abcd3e4d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f528135445824a17a8d8c95913adf6934cc87eb0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895748"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260110"
 ---
 # <a name="configure-rules-preview-features"></a>Regels configureren (preview-functies)
 
@@ -33,7 +33,7 @@ Gebruik de sectie doel apparaten om te selecteren op welk soort apparaten deze r
 
 Voor waarden worden de regels geactiveerd. Wanneer u op dit moment meerdere voor waarden aan een regel toevoegt, zijn ze logisch en samen. Met andere woorden: aan alle voor waarden moet worden voldaan voordat de regel als waar kan worden geëvalueerd.  
 
-In de volgende scherm afbeelding worden de voor waarden gecontroleerd wanneer de Tempe ratuur groter is dan 90 en de vochtigheid kleiner is dan 10. Wanneer beide instructies waar zijn, evalueert de regel naar waar en wordt een actie geactiveerd.
+In de volgende scherm afbeelding worden de voor waarden gecontroleerd wanneer de Tempe ratuur groter is dan 70&deg; F en de vochtigheid kleiner is dan 10. Wanneer beide instructies waar zijn, evalueert de regel naar waar en wordt een actie geactiveerd.
 
 ![Voorwaarden](media/howto-configure-rules/conditions.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Voorbeeld: Gezichten in afbeeldingen identificeren - Face-API'
+title: 'Voor beeld: gezichten identificeren in afbeeldingen-gezicht'
 titleSuffix: Azure Cognitive Services
 description: In deze hand leiding wordt gedemonstreerd hoe u onbekende gezichten identificeert met behulp van PersonGroup-objecten, die van bekende mensen vooraf worden gemaakt.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: ec209eb2c60efcb1363c177aad0fe5a72ad2a239
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0b1cf99fe6e2aa4d7fcb12c3fb96b10b42c7c0b7
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977179"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169921"
 ---
 # <a name="example-identify-faces-in-images"></a>Voor beeld: gezichten identificeren in afbeeldingen
 
-In deze hand leiding wordt gedemonstreerd hoe u onbekende gezichten identificeert met behulp van PersonGroup-objecten, die van bekende mensen vooraf worden gemaakt. De voor beelden zijn geschreven C# in met behulp van de Azure Cognitive Services Face-API-client bibliotheek.
+In deze hand leiding wordt gedemonstreerd hoe u onbekende gezichten identificeert met behulp van PersonGroup-objecten, die van bekende mensen vooraf worden gemaakt. De voor beelden zijn geschreven C# in met behulp van de Azure Cognitive Services Face-client bibliotheek.
 
 ## <a name="preparation"></a>Voorbereiding
 
@@ -131,7 +131,7 @@ while(true)
 
 ## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>Stap 4: Een gezicht identificeren op basis van een gedefinieerde PersonGroup
 
-Wanneer de Face-API id's uitvoert, wordt de gelijkenis van een test vlak tussen alle gezichten in een groep berekend. Het retourneert de meest vergelijk bare personen voor het test gezicht. Dit proces wordt uitgevoerd door de API voor het identificeren van het [gezicht](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) of de methode IdentifyAsync van de client bibliotheek.
+Wanneer de face-service id's uitvoert, wordt de gelijkenis van een test vlak tussen alle gezichten in een groep berekend. Het retourneert de meest vergelijk bare personen voor het test gezicht. Dit proces wordt uitgevoerd door de API voor het identificeren van het [gezicht](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) of de methode IdentifyAsync van de client bibliotheek.
 
 Het test gezicht moet worden gedetecteerd met behulp van de vorige stappen. Vervolgens wordt de face-ID door gegeven aan de id-API als een tweede argument. Meerdere gezichts-Id's kunnen tegelijkertijd worden geïdentificeerd. Het resultaat bevat alle geïdentificeerde resultaten. Het identificatie proces retourneert standaard slechts één persoon die voldoet aan het test gezicht. U kunt desgewenst de optionele para meter maxNumOfCandidatesReturned opgeven, zodat het identificatie proces meer kandidaten retourneert.
 

@@ -4,15 +4,15 @@ description: Het ophalen van de pagina weergave en aantal sessies, webclientgege
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: Dawgfan
+ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 38f9872fb73f2c680264c2c0b84445db858cf203
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 83b167baa29a54e53f7fe8bdb7b7e5c88bc3eddf
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045830"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264081"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights voor webpagina’s
 
@@ -29,7 +29,10 @@ Application Insights kan met elke webpagina worden gebruikt. Het enige wat u hie
     * [Java script-fragment](#snippet-based-setup)
 
 > [!IMPORTANT]
-> U hoeft alleen een van de onderstaande methoden te gebruiken voor het toevoegen van de Application Insights java script SDK aan uw toepassing. Als u de installatie op basis van NPM gebruikt, gebruik dan niet de installatie op basis van het fragment. Hetzelfde geldt voor het omgekeerde scenario wanneer u de methode op basis van het fragment gebruikt. gebruik niet ook de op NPM gebaseerde installatie. 
+> > Gebruik slechts één methode om de Java script-SDK toe te voegen aan uw toepassing. Als u de NPM-instellingen gebruikt, gebruikt u het fragment niet en vice versa.
+
+> [!NOTE]
+> NPM Setup installeert de Java script-SDK als een afhankelijkheid van uw project, waardoor IntelliSense, terwijl het fragment de SDK tijdens runtime ophaalt. Beide ondersteunen dezelfde functies. Ontwikkel aars die behoefte hebben aan meer aangepaste gebeurtenissen en configuratie, kiezen meestal voor NPM-Setup, terwijl gebruikers op zoek zijn naar snelle activering van out-of-the-box Web Analytics voor het fragment.
 
 ### <a name="npm-based-setup"></a>installatie op basis van NPM
 
@@ -172,7 +175,7 @@ Selecteer **browser** en kies vervolgens **fouten** of **prestaties**.
 
 ![](./media/javascript/performance-dependencies.png)
 
-### <a name="analytics"></a>Analyse 
+### <a name="analytics"></a>Analytische gegevens 
 
 Als u een query wilt uitvoeren op uw telemetrie die is verzameld door de Java script-SDK, selecteert u de knop **weer gave op Logboeken (analyse)** Door een `where`-verklaring van `client_Type == "Browser"`toe te voegen, ziet u alleen gegevens van de Java script-SDK en alle telemetrie aan de server zijde die door andere Sdk's zijn verzameld, worden uitgesloten.
  
@@ -261,4 +264,3 @@ De Application Insights java script SDK is open source om de bron code weer te g
 * [Bijhouden van gebruik](usage-overview.md)
 * [Aangepaste gebeurtenissen en metrische gegevens](api-custom-events-metrics.md)
 * [Bouwen-meten-leren](usage-overview.md)
-

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/09/2020
-ms.openlocfilehash: 21ad0c38b8901c1e33e05ab162552cb074a392a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/17/2020
+ms.openlocfilehash: ac9ded703ed18abd9543b6e32e59afe6ccf711a9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969599"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263418"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Wat wordt er door Azure Monitor bewaakt?
 In dit artikel worden de verschillende toepassingen en services beschreven die door Azure Monitor worden bewaakt. 
@@ -78,7 +78,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Blockchain Service | Nee | Ja | Nee |  |
 |Blueprints | Nee | Nee | Nee |  |
 |Bot Service | Nee | Nee | Nee |  |
-|Cloud Services | Ja | Ja | Nee | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken.  |
+|Cloudservices | Ja | Ja | Nee | De agent die is vereist om het gast besturingssysteem en de werk stromen te bewaken.  |
 |Cloud Shell | Nee | Nee | Nee |  |
 |Cognitive Services | Ja | Ja | Nee |  |
 |Azure Container Instances | Ja | Nee | Nee |  |
@@ -121,7 +121,7 @@ De volgende tabel geeft een lijst van Azure-Services en de gegevens die ze in Az
 |Load Balancer | Ja | Ja | Nee |  |
 |Logische apps | Ja | Ja | Nee |  |
 |Machine Learning-service | Nee | Nee | Nee |  |
-|Managed Applications  | Nee | Nee | Nee |  |
+|Beheerde toepassingen  | Nee | Nee | Nee |  |
 |Kaarten  | Nee | Nee | Nee |  |
 |Media Services | Ja | Ja | Nee |  |
 |Microsoft Flow | Nee | Nee | Nee |  |
@@ -181,7 +181,7 @@ De services en oplossingen in de volgende tabel slaan hun gegevens op in een Log
 | [Azure Sentinel](/azure/sentinel/) | Maakt verbinding met verschillende bronnen, waaronder Office 365 en Amazon Web Services Cloud Trail. Zie [verbinding maken met gegevens bronnen](/azure/sentinel/connect-data-sources). |
 | [Key Vault-analyse](insights/azure-key-vault.md) | Analyseer Azure Key Vault audit event-Logboeken. |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Een diagnostische instelling maken om logboeken naar Azure Monitor te verzenden. Zie [logboek gegevens naar opslag, Event hubs of log Analytics verzenden in intune (preview)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor).  |
-| Netwerk  | [DNS-analyse](insights/dns-analytics.md) : verzamelt, analyseert en correleert Windows DNS analytic-en audit logboeken en andere gerelateerde gegevens van uw DNS-servers.<br>[Netwerkprestatiemeter](insights/network-performance-monitor.md) -Controleer de netwerk verbinding en prestaties voor service-en toepassings eindpunten.<br>[Azure-toepassing gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) -logboeken en metrische gegevens van Azure-toepassing gateway analyseren.<br>[Traffic Analytics](/azure/network-watcher/traffic-analytics) -Network Watcher netwerk beveiligings groep (NSG) stroom logboeken analyseren om inzicht te krijgen in de verkeers stroom in uw Azure-Cloud. |
+| Netwerk  | [Netwerkprestatiemeter](insights/network-performance-monitor.md) -Controleer de netwerk verbinding en prestaties voor service-en toepassings eindpunten.<br>[Azure-toepassing gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) -logboeken en metrische gegevens van Azure-toepassing gateway analyseren.<br>[Traffic Analytics](/azure/network-watcher/traffic-analytics) -Network Watcher netwerk beveiligings groep (NSG) stroom logboeken analyseren om inzicht te krijgen in de verkeers stroom in uw Azure-Cloud. |
 | [Office 365](insights/solution-office-365.md) | Uw Office 365-omgeving bewaken. Bijgewerkte versie met verbeterde onboarding beschikbaar via Azure Sentinel. |
 | [SQL Analytics](insights/azure-sql.md) | Bewaak de prestaties van Azure SQL-data bases, elastische Pools en beheerde exemplaren op schaal en op meerdere abonnementen. |
 | [Surface Hub](insights/surface-hubs.md) | De status en het gebruik van Surface Hub apparaten bijhouden. |
@@ -200,6 +200,7 @@ Andere oplossingen zijn beschikbaar voor het bewaken van verschillende toepassin
 | [Active Directory beoordeling](insights/ad-assessment.md) | Het risico en de status van uw Active Directory omgevingen evalueren. |
 | [Replicatie status van Active Directory](insights/ad-replication-status.md) | Bewaakt uw Active Directory-omgeving regel matig voor replicatie fouten. |
 | [Activiteiten logboek analyse](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | Analyseer vermeldingen in het activiteiten logboek met vooraf gedefinieerde logboek query's en weer gaven. |
+| [DNS-analyse (preview-versie)](insights/dns-analytics.md) | Verzamelt, analyseert en correleert Windows DNS analytic-en audit logboeken en andere gerelateerde gegevens van uw DNS-servers. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Verzamel, Bekijk en analyseer uw Cloud Foundry systeem status-en prestatie gegevens over meerdere implementaties. |
 | [Containers](insights/containers.md) | Docker-en Windows-container-hosts weer geven en beheren. |
 | [Evaluaties op aanvraag](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | De beschik baarheid, de beveiliging en de prestaties van uw on-premises, hybride en Cloud micro soft-technologie omgevingen beoordelen en optimaliseren. |

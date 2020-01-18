@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/14/2019
 ms.author: allensu
-ms.openlocfilehash: dc986d40d50b93720c87ba36d265ed3044b0abc9
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 9f824c1348420393f8fbf67bf96932e40b67bc32
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045392"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264913"
 ---
 # <a name="what-is-azure-load-balancer"></a>Wat is Azure Load Balancer?
 
 *Taak verdeling* verwijst naar een gelijkmatige verdeling van belasting (binnenkomend netwerk verkeer) in een groep back-endservers of servers. Azure biedt [verschillende opties voor taak verdeling](https://docs.microsoft.com/azure/architecture/guide/technology-choices/load-balancing-overview) die u kunt kiezen op basis van uw behoeften. In dit document worden de Azure Load Balancer beschreven.
 
-Azure Load Balancer werkt op laag 4 van het OSI-model (Open Systems Interconnection). Het is het enige contact punt voor clients. Met Load Balancer worden nieuwe inkomende stromen gedistribueerd die aan de front-end van de load balancer voor de exemplaren van een back-end-groep arriveren. Deze stromen zijn gebaseerd op geconfigureerde taakverdelings regels en status controles. De exemplaren van de back-end-pool kunnen Azure Virtual Machines of exemplaren in een schaalset voor virtuele machines zijn.
-
+Azure Load Balancer werkt op laag 4 van het OSI-model (Open Systems Interconnection). Het is het enige contact punt voor clients. Load Balancer distribueert inkomende stromen die binnenkomen bij de front-end van de load balancer voor back-endservers. Deze stromen zijn gebaseerd op geconfigureerde taakverdelings regels en status controles. De exemplaren van de back-endadresgroep kunnen Azure Virtual Machines of exemplaren in een schaalset voor virtuele machines zijn.
 
 Een **[open bare Load Balancer](./concepts-limitations.md#publicloadbalancer)** kan uitgaande verbindingen bieden voor virtuele machines (vm's) in uw virtuele netwerk. Deze verbindingen worden gerealiseerd door hun privé-IP-adressen te vertalen naar open bare IP-adressen. Open bare load balancers worden gebruikt voor het verdelen van het Internet verkeer naar uw Vm's.
 
@@ -40,14 +39,10 @@ Een **[intern (of privé) Load Balancer](./concepts-limitations.md#internalloadb
 
 Zie [Azure Load Balancer onderdelen en beperkingen](./concepts-limitations.md) voor meer informatie over de afzonderlijke Load Balancer onderdelen
 
->[!NOTE]
-> Micro soft raadt aan [Standard Load Balancer](./load-balancer-standard-overview.md).
-Zelfstandige virtuele machines, beschikbaarheidssets en virtuele-machineschaalsets kunnen worden verbonden met slechts één SKU, niet met beide. Load Balancer en de SKU van het open bare IP-adres moeten overeenkomen wanneer u ze gebruikt met open bare IP-adressen. Load Balancer en open bare IP-Sku's zijn niet onveranderbaar.
-
 ## <a name="why-use-azure-load-balancer"></a>Waarom Azure Load Balancer gebruiken?
-Met Azure Load Balancer kunt u uw toepassingen schalen en Maxi maal beschik bare Services maken. De Load Balancer ondersteunt zowel binnenkomende als uitgaande scenario's. De Load Balancer biedt lage latentie en hoge door Voer en schaalt Maxi maal miljoenen stromen voor alle TCP-en UDP-toepassingen.
+Met Standard Load Balancer kunt u uw toepassingen schalen en Maxi maal beschik bare Services maken. De Load Balancer ondersteunt zowel binnenkomende als uitgaande scenario's. De Load Balancer biedt lage latentie en hoge door Voer en schaalt Maxi maal miljoenen stromen voor alle TCP-en UDP-toepassingen.
 
-De belangrijkste scenario's die u kunt bereiken met Azure Load Balancer zijn onder andere:
+De belangrijkste scenario's die u kunt bereiken met Standard Load Balancer zijn onder andere:
 
 - Taak verdeling van **[intern](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-manage-portal)** en **[extern](https://docs.microsoft.com/azure/load-balancer/tutorial-load-balancer-standard-internal-portal)** verkeer naar virtuele machines van Azure.
 
@@ -61,7 +56,7 @@ De belangrijkste scenario's die u kunt bereiken met Azure Load Balancer zijn ond
 
 - Ondersteuning inschakelen voor **[taak verdeling](https://docs.microsoft.com/azure/virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell)** van **[IPv6](https://docs.microsoft.com/azure/virtual-network/ipv6-overview)** .
 
-- Profiteer van **[metrische gegevens en diagnostische gegevens](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)** voor Azure Load Balancer met **[Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview)** .
+- Standard Load Balancer biedt multidimensionale metrische gegevens via [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview).  Deze metrische gegevens kunnen worden gefilterd, gegroepeerd en uitgesplitst voor een bepaalde dimensie.  Ze bieden actuele en historische inzichten in de prestaties en status van uw service.  Resource Health wordt ook ondersteund. Raadpleeg **[Standard Load Balancer diagnostische](load-balancer-standard-diagnostics.md)** gegevens voor meer informatie.
 
 - Taak verdeling van services op **[meerdere poorten, meerdere IP-adressen of beide](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview)** .
 
@@ -69,20 +64,17 @@ De belangrijkste scenario's die u kunt bereiken met Azure Load Balancer zijn ond
 
 - Taak verdeling van de TCP-en UDP-stroom op alle poorten tegelijk met behulp van **[ha-poorten](https://docs.microsoft.com/azure/load-balancer/load-balancer-ha-ports-overview)** .
 
-## <a name="pricing"></a>Prijzen
+### <a name="securebydefault"></a>Standaard beveiligd
 
-Gebruik van Standard Load Balancer wordt in rekening gebracht.
+Standard Load Balancer is gebouwd op basis van het beveiligings model voor vertrouwens relaties van het netwerk. Standard Load Balancer standaard beveiligd en maakt deel uit van uw virtuele netwerk. Het virtuele netwerk is een privé-en geïsoleerd netwerk.  Dit betekent dat standaard load balancers en standaard open bare IP-adressen worden gesloten voor binnenkomende stromen, tenzij ze worden geopend door netwerk beveiligings groepen. Nsg's worden gebruikt om toegestaan verkeer expliciet toe te staan en te white list.  Als u geen NSG op een subnet of NIC van uw virtuele-machine bron hebt, mag het verkeer deze bron niet bereiken. Zie [netwerk beveiligings groepen](../virtual-network/security-overview.md)voor meer informatie over nsg's en hoe u deze kunt Toep assen voor uw scenario.
+Basis Load Balancer is standaard geopend met het internet.
 
-* Aantal geconfigureerde taakverdelings-en uitgaande regels. Inkomende NAT-regels tellen niet in het totale aantal regels.
-* De hoeveelheid gegevens die binnenkomend en uitgaand is verwerkt, onafhankelijk van regels.
+
+## <a name="pricing-and-sla"></a>Prijzen en SLA
 
 Zie [Load Balancer prijzen](https://azure.microsoft.com/pricing/details/load-balancer/)voor Standard Load Balancer prijs informatie.
-
 Basic Load Balancer wordt gratis aangeboden.
-
-## <a name="sla"></a>SLA
-
-Zie [Sla voor Load Balancer](https://aka.ms/lbsla)voor meer informatie over de Standard Load Balancer sla.
+Zie [Sla voor Load Balancer](https://aka.ms/lbsla). Basic Load Balancer heeft geen SLA.
 
 ## <a name="next-steps"></a>Volgende stappen
 

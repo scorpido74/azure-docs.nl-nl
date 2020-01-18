@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 2f6203deb5e06ba69a3b4d06297d5e702992c79d
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 77f526470204204ef2a801575bb4e8d7e364ffed
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708053"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260149"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Verwijder TLS 1,0 en 1,1 van gebruik met Azure cache voor redis
 
@@ -19,8 +19,8 @@ Er is sprake van een brede push naar het exclusieve gebruik van Transport Layer 
 
 Als onderdeel van deze inspanning brengen we de volgende wijzigingen aan in azure cache voor redis:
 
-* Vanaf 13 januari 2020 worden de standaard minimale TLS-versie ingesteld op 1,2 voor nieuw gemaakte cache-exemplaren.  Bestaande cache-exemplaren worden op dit moment niet bijgewerkt.  U kunt, indien nodig, [de minimale versie van TLS wijzigen](cache-configure.md#access-ports) in 1,0 of 1,1 voor achterwaartse compatibiliteit.  Deze wijziging kan worden aangebracht via de Azure Portal of andere beheer-Api's.
-* Vanaf 31 maart 2020 worden TLS-versies 1,0 en 1,1 niet meer ondersteund. Na deze wijziging moet uw toepassing TLS 1,2 of hoger gebruiken om met uw cache te communiceren.
+* **Fase 1:** We configureren de standaard minimum versie van TLS ingesteld op 1,2 voor nieuw gemaakte cache-exemplaren.  Bestaande cache-exemplaren worden op dit moment niet bijgewerkt.  U kunt, indien nodig, [de minimale versie van TLS wijzigen](cache-configure.md#access-ports) in 1,0 of 1,1 voor achterwaartse compatibiliteit.  Deze wijziging kan worden aangebracht via de Azure Portal of andere beheer-Api's.
+* **Fase 2:** De ondersteuning van TLS-versies 1,0 en 1,1 wordt gestopt. Na deze wijziging moet uw toepassing TLS 1,2 of hoger gebruiken om met uw cache te communiceren.
 
 Als onderdeel van deze wijziging wordt de ondersteuning voor oudere, onveilige coderings-suites ook verwijderd.  Onze ondersteunde coderings-suites worden beperkt tot het volgende wanneer de cache is geconfigureerd met een minimale TLS-versie van 1,2.
 
@@ -28,6 +28,15 @@ Als onderdeel van deze wijziging wordt de ondersteuning voor oudere, onveilige c
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
 
 Dit artikel bevat algemene richt lijnen over het detecteren van afhankelijkheden voor deze eerdere TLS-versies en het verwijderen van deze toepassingen uit uw toepassing.
+
+De datums waarop deze wijzigingen van kracht worden, zijn:
+
+| Cloud               | Begin datum fase 1 | Begin datum fase 2 |
+|---------------------|--------------------|--------------------|
+| Azure (globaal)      |  13 januari 2020  | 31 maart 2020     |
+| Azure Government    |  13 maart 2020    | 11 mei 2020       |
+| Azure Duitsland       |  13 maart 2020    | 11 mei 2020       |
+| Azure China         |  13 maart 2020    | 11 mei 2020       |
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Controleren of uw toepassing al compatibel is
 

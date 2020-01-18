@@ -1,5 +1,5 @@
 ---
-title: Containers installeren en uitvoeren-FACE-API
+title: Containers installeren en uitvoeren-gezicht
 titleSuffix: Azure Cognitive Services
 description: In dit artikel wordt beschreven hoe u containers kunt downloaden, installeren en uitvoeren voor een gezicht in deze stapsgewijze zelf studie.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 574f6bead9cac384c72d2d0cd35353eb571a9490
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e467b195ab1e2124286bfef74d7d1b71a4d99dd6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327038"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165983"
 ---
 # <a name="install-and-run-face-containers-preview"></a>Face-containers installeren en uitvoeren (preview-versie)
 
@@ -26,11 +26,11 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet voldoen aan de volgende vereisten voordat u de Face-API-containers gebruikt.
+U moet voldoen aan de volgende vereisten voordat u de face service-containers gebruikt.
 
-|Vereist|Doel|
+|Verplicht|Doel|
 |--|--|
-|Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)en [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Zie het [docker-overzicht](https://docs.docker.com/engine/docker-overview/)voor een primer op basis van docker en container.<br><br> Docker moet worden geconfigureerd, zodat de containers om te verbinden met en facturering gegevens verzenden naar Azure. <br><br> In Windows moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
+|Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)en [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Zie voor een uitleg van de basisprincipes van Docker en containers, de [dockeroverzicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker moet worden geconfigureerd, zodat de containers om te verbinden met en facturering gegevens verzenden naar Azure. <br><br> In Windows moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
 |Vertrouwd met docker | U hebt een basis informatie nodig over docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën. U hebt ook kennis nodig van basis `docker`-opdrachten.| 
 |Gezichts bron |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure **Face** -resource en de bijbehorende API-sleutel en de EINDPUNT-URI. Beide waarden zijn beschikbaar op het **overzicht** en op de pagina **sleutels** voor de resource. Ze zijn verplicht om de container te starten.<br><br>**{API_KEY}** : een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}** : het eind punt op de pagina **overzicht**
 
@@ -46,7 +46,7 @@ U moet voldoen aan de volgende vereisten voordat u de Face-API-containers gebrui
 
 ### <a name="container-requirements-and-recommendations"></a>Containervereisten en aanbevelingen
 
-De volgende tabel beschrijft de minimale en aanbevolen CPU-kernen en het geheugen die moeten worden toegewezen voor elke Face-API-container.
+In de volgende tabel worden de minimale en aanbevolen CPU-kernen en het geheugen voor elke face-service container beschreven.
 
 | Container | Minimum | Aanbevolen | Transacties per seconde<br>(Minimum, maximum)|
 |-----------|---------|-------------|--|
@@ -59,7 +59,7 @@ Core en geheugen komen overeen met de instellingen `--cpus` en `--memory` die wo
 
 ## <a name="get-the-container-image-with-docker-pull"></a>Container installatie kopie ophalen met docker-pull
 
-Er zijn container installatie kopieën voor de Face-API beschikbaar. 
+Container installatie kopieën voor de face-service zijn beschikbaar. 
 
 | Container | Opslagplaats |
 |-----------|------------|
@@ -94,7 +94,7 @@ Billing={ENDPOINT_URI} \
 ApiKey={API_KEY}
 ```
 
-Deze opdracht:
+Met deze opdracht gebeurt het volgende:
 
 * Voert een face-container uit vanuit de container installatie kopie.
 * Wijst één CPU-kern en 4 GB aan geheugen toe.
@@ -104,7 +104,7 @@ Deze opdracht:
 Er zijn meer [voor beelden](./face-resource-container-config.md#example-docker-run-commands) van de `docker run`-opdracht beschikbaar. 
 
 > [!IMPORTANT]
-> De opties `Eula`, `Billing`en `ApiKey` moeten worden opgegeven om de container uit te voeren of de container start niet. Zie [facturering](#billing)voor meer informatie.
+> De opties `Eula`, `Billing`en `ApiKey` moeten worden opgegeven om de container uit te voeren of de container start niet. Zie voor meer informatie, [facturering](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -132,11 +132,11 @@ Als u de container uitvoert met een uitvoer [koppeling](./face-resource-containe
 
 ## <a name="billing"></a>Billing
 
-De Face-API-containers verzenden facturerings gegevens naar Azure met behulp van een Face-API resource in uw Azure-account. 
+De face service-containers verzenden facturerings gegevens naar Azure met behulp van een gezichts bron in uw Azure-account. 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Zie [containers configureren](./face-resource-container-config.md)voor meer informatie over deze opties.
+Zie voor meer informatie over deze opties [containers configureren](./face-resource-container-config.md).
 
 <!--blogs/samples/video coures -->
 
@@ -144,11 +144,11 @@ Zie [containers configureren](./face-resource-container-config.md)voor meer info
 
 ## <a name="summary"></a>Samenvatting
 
-In dit artikel hebt u concepten en werk stromen geleerd om Face-API containers te downloaden, te installeren en uit te voeren. Samenvatting:
+In dit artikel hebt u concepten en werk stromen geleerd voor het downloaden, installeren en uitvoeren van Face service-containers. Samenvatting:
 
 * Container installatie kopieën worden gedownload van de Azure Container Registry.
 * Containerinstallatiekopieën uitvoeren in Docker.
-* U kunt de REST API of de SDK gebruiken om bewerkingen in Face-API containers aan te roepen door de URI van de host op te geven van de container.
+* U kunt de REST API of de SDK gebruiken voor het aanroepen van bewerkingen in face service-containers door de URI van de host op te geven van de container.
 * U moet de facturerings gegevens opgeven wanneer u een container maakt.
 
 > [!IMPORTANT]

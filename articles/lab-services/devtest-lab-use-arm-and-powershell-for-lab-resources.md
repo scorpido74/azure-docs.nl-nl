@@ -1,6 +1,6 @@
 ---
-title: Labs automatisch in PowerShell met Azure Resource Manager-sjablonen maken of wijzigen | Microsoft Docs
-description: Meer informatie over het gebruik van Azure Resource Manager-sjablonen met PowerShell voor labs automatisch in een DevTest lab maken of wijzigen
+title: Labs maken of wijzigen met behulp van Azure Resource Manager sjablonen
+description: Meer informatie over het gebruik van Azure Resource Manager sjablonen met Power shell om Labs automatisch te maken of te wijzigen in een DevTest-Lab
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,41 +12,41 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: cb5a08730b47cb5df3116aa4a54554ef0ee6f260
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 180081829387afeb7e63defe7a22378aa8d417d6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622454"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170296"
 ---
-# <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Labs automatisch met behulp van Azure Resource Manager-sjablonen en PowerShell maken of wijzigen
+# <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Labs automatisch maken of wijzigen met Azure Resource Manager sjablonen en Power shell
 
-DevTest Labs biedt veel Azure Resource Manager-sjablonen en PowerShell-scripts die u kunnen helpen u snel nieuwe labs automatisch maken of wijzigen van bestaande labs en implementeerte deze resources.
+DevTest Labs biedt veel Azure Resource Manager-sjablonen en Power shell-scripts waarmee u snel en automatisch nieuwe Labs kunt maken of bestaande Labs moet wijzigen en vervolgens deze bronnen kan implementeren.
 
-In dit artikel begeleidt u bij het proces van het gebruik van deze sjablonen en scripts voor het automatiseren van het maken, wijzigen en implementeren van uw labs. In dit artikel leest u ook waar u meer informatie over het gebruik van PowerShell voor het uitvoeren van enkele veelvoorkomende taken in DevTest Labs kunt vinden.
+Dit artikel helpt u bij het gebruik van deze sjablonen en scripts om het maken, aanpassen en implementeren van uw Labs te automatiseren. In dit artikel wordt ook beschreven waar u meer informatie kunt vinden over het gebruik van Power shell voor het uitvoeren van enkele veelvoorkomende taken in DevTest Labs.
 
-## <a name="step-1-gather-your-templates-and-scripts"></a>Stap 1: Verzamelen van de sjablonen en -scripts
-U kunt vinden en-klare [Azure Resource Manager-sjablonen](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) en [PowerShell-scripts](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts) op onze openbare [GitHub-opslagplaats](https://github.com/Azure/azure-devtestlab). Gebruik deze-is, of ze aanpassen aan uw behoeften en op te slaan in uw eigen [Git-opslagplaats voor persoonlijke](devtest-lab-add-artifact-repo.md).
+## <a name="step-1-gather-your-templates-and-scripts"></a>Stap 1: uw sjablonen en scripts verzamelen
+U kunt vooraf gemaakte [Azure Resource Manager sjablonen](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates) en [Power shell-scripts](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts) vinden in onze open bare [github-opslag plaats](https://github.com/Azure/azure-devtestlab). Gebruik ze als-is of pas ze aan uw eigen behoeften aan en sla ze op in uw eigen [persoonlijke Git-opslag plaats](devtest-lab-add-artifact-repo.md).
 
-## <a name="step-2-modify-your-azure-resource-manager-template"></a>Stap 2: Uw Azure Resource Manager-sjabloon aanpassen
-U kunt de stappen op [uw eerste Azure Resource Manager-sjabloon maken](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template) als u een sjabloon voor nooit hebt gemaakt.
+## <a name="step-2-modify-your-azure-resource-manager-template"></a>Stap 2: de Azure Resource Manager sjabloon wijzigen
+U kunt de stappen volgen in [uw eerste Azure Resource Manager sjabloon maken](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template) als u nog nooit een sjabloon hebt gemaakt.
 
-Bovendien [aanbevolen procedures voor het maken van Azure Resource Manager-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) biedt veel richtlijnen en suggesties voor het maken van Azure Resource Manager-sjablonen die zijn betrouwbare en eenvoudig te gebruiken. Normaal gesproken u gebruikt een variant van een van de wijze van aanpak of voorbeelden en de sjabloon aanpassen aan uw behoeften.
+Daarnaast bieden [Aanbevolen procedures voor het maken van Azure Resource Manager sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) veel richt lijnen en suggesties om u te helpen bij het maken van Azure Resource Manager sjablonen die betrouwbaar en eenvoudig te gebruiken zijn. Normaal gesp roken gebruikt u een variant van een van de benaderingen of voor beelden die worden weer gegeven en wijzigt u uw sjabloon voor uw behoeften.
 
-## <a name="step-3-deploy-resources-with-powershell"></a>Stap 3: Resources implementeren met PowerShell
-Nadat u de sjablonen en -scripts hebt aangepast, volgt u de benodigde stappen voor [resources implementeren met Resource Manager-sjablonen en Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). Het artikel bevat algemene informatie over het gebruik van Azure PowerShell met Azure Resource Manager-sjablonen voor het implementeren van uw resources naar Azure.
+## <a name="step-3-deploy-resources-with-powershell"></a>Stap 3: resources implementeren met Power shell
+Nadat u uw sjablonen en scripts hebt aangepast, volgt u de stappen die nodig zijn om [resources te implementeren met Resource Manager-sjablonen en Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy). Het artikel bevat algemene informatie over het gebruik van Azure PowerShell met Azure Resource Manager sjablonen om uw resources te implementeren in Azure.
 
 
-## <a name="common-tasks-you-can-perform-in-devtest-labs-using-powershell"></a>Algemene taken die u kunt uitvoeren in DevTest labs met behulp van PowerShell
-Er zijn veel andere algemene taken die u automatiseren kunt met behulp van PowerShell. De volgende secties van de documentatie beschrijven de stappen die nodig zijn om uit te voeren van deze taken.
+## <a name="common-tasks-you-can-perform-in-devtest-labs-using-powershell"></a>Algemene taken die u kunt uitvoeren in DevTest Labs met behulp van Power shell
+Er zijn veel andere veelvoorkomende taken die u kunt automatiseren met behulp van Power shell. In de volgende secties van de documentatie vindt u een overzicht van de stappen die nodig zijn om deze taken uit te voeren.
 
-* [Een aangepaste installatiekopie maken van een VHD-bestand met behulp van PowerShell](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
-* [VHD-bestand uploaden naar het lab storage-account met behulp van PowerShell](devtest-lab-upload-vhd-using-powershell.md)
-* [Een externe gebruiker toevoegen aan een lab met behulp van PowerShell](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell)
-* [Maak een aangepaste lab-rol met behulp van PowerShell](devtest-lab-grant-user-permissions-to-specific-lab-policies.md#creating-a-lab-custom-role-using-powershell)
+* [Een aangepaste installatie kopie maken van een VHD-bestand met behulp van Power shell](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
+* [VHD-bestand uploaden naar het opslag account van de Lab met behulp van Power shell](devtest-lab-upload-vhd-using-powershell.md)
+* [Een externe gebruiker toevoegen aan een Lab met behulp van Power shell](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell)
+* [Een aangepaste rol voor een lab maken met behulp van Power shell](devtest-lab-grant-user-permissions-to-specific-lab-policies.md#creating-a-lab-custom-role-using-powershell)
 
 ### <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het maken van een [privé-Git-opslagplaats](devtest-lab-add-artifact-repo.md) waar u uw aangepaste sjablonen of scripts worden opgeslagen.
-* Verken de [Azure Resource Manager-sjablonen van Azure Quickstart-sjablonen](https://github.com/Azure/azure-quickstart-templates).
+* Meer informatie over het maken van een [persoonlijke Git-opslag plaats](devtest-lab-add-artifact-repo.md) waar u uw aangepaste sjablonen of scripts opslaat.
+* Verken de [Azure Resource Manager sjablonen van de Azure Quick Start-sjabloon galerie](https://github.com/Azure/azure-quickstart-templates).

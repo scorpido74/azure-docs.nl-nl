@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 934f3f69d46362e4bef4e713bcee23e9a3e24eb6
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8cc89805ce53c141ff2c012fccb3c01ff2e9db49
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769350"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167906"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Uw eerste Power shell-functie maken in azure
 
@@ -20,9 +20,6 @@ Dit Quick Start-artikel helpt u bij het maken van uw eerste [serverloze](https:/
 ![Azure Functions code in een Visual Studio code-project](./media/functions-create-first-function-powershell/powershell-project-first-function.png)
 
 U gebruikt de [Azure Functions extension for Visual Studio Code] om een Power shell-functie lokaal te maken en deze vervolgens te implementeren in een nieuwe functie-app in Azure. De extensie is momenteel beschikbaar als preview-product. Zie de uitbreidingspagina [Azure Functions extension for Visual Studio Code] (Azure Functions-extensie voor Visual Studio Code) voor meer informatie.
-
-> [!NOTE]  
-> Power Shell-ondersteuning voor de uitbrei ding[Azure functions extensie voor Visual Studio code] voor de [Azure functions extensie]is momenteel standaard uitgeschakeld. Het inschakelen van Power Shell-ondersteuning is een van de stappen in dit artikel.
 
 De volgende stappen worden ondersteund op macOS-, Windows-en Linux-besturings systemen.
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 7e63afee87d69a80a656ba7c5923b6f313268e2f
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/16/2020
+ms.openlocfilehash: 41b5d7519776ca84cf002d463048eb7a8dec2410
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790449"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169154"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Leesreplica's in Azure Database for MariaDB
 
@@ -137,13 +137,13 @@ Als u de replicatie tussen een hoofd server en een lees replica stopt, wordt de 
 
 ### <a name="deleted-master-and-standalone-servers"></a>Verwijderde Master-en zelfstandige servers
 
-Wanneer een master server wordt verwijderd, wordt replicatie gestopt voor alle replica's. Deze replica's worden zelfstandige servers. De hoofd server zelf wordt verwijderd.
+Wanneer een master server wordt verwijderd, wordt replicatie gestopt voor alle replica's. Deze replica's worden automatisch zelfstandige servers en kunnen Lees-en schrijf bewerkingen accepteren. De hoofd server zelf wordt verwijderd.
 
 ### <a name="user-accounts"></a>Gebruikersaccounts
 
 Gebruikers op de hoofd server worden gerepliceerd naar de Lees replica's. U kunt alleen verbinding maken met een lees replica met behulp van de beschik bare gebruikers accounts op de master server.
 
-### <a name="server-parameters"></a>Server parameters
+### <a name="server-parameters"></a>Serverparameters
 
 Om problemen met de synchronisatie van gegevens en mogelijk verlies of beschadiging van gegevens te voorkomen, worden bepaalde serverparameters vergrendeld zodat ze niet kunnen worden bijgewerkt bij gebruik van replica's voor lezen.
 

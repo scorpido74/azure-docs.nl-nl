@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 12/04/2019
-ms.openlocfilehash: b7dd11c3a71c46bbc06b205c6b4300337683305a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 8d118170de01c7685ac9dba65c7e22cefb6d4829
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889016"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263128"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-your-own-virtual-network"></a>Quick Start: een Azure Databricks-werk ruimte maken in uw eigen Virtual Network
 
@@ -33,7 +33,7 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
 
-1. Selecteer in het menu Azure Portal de optie **een resource maken**. Selecteer vervolgens **netwerk > virtueel netwerk**.
+1. Selecteer **Een resource maken** in het Azure Portal-menu. Selecteer vervolgens **netwerk > virtueel netwerk**.
 
     ![Een virtueel netwerk maken op Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network-portal.png)
 
@@ -41,23 +41,30 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
     |Instelling|Voorgestelde waarde|Beschrijving|
     |-------|---------------|-----------|
-    |Name|databricks-Quick Start|Selecteer een naam voor het virtuele netwerk.|
-    |Adresruimte|10.1.0.0/16|Het adres bereik van het virtuele netwerk in CIDR-notatie. Het CIDR-bereik moet tussen/16 en/24 zijn|
     |Abonnement|\<Uw abonnement\>|Selecteer het Azure-abonnement dat u wilt gebruiken.|
     |Resourcegroep|databricks-Quick Start|Selecteer **nieuwe maken** en voer een nieuwe resource groeps naam in voor uw account.|
-    |Locatie|\<Selecteer de regio die het dichtst bij uw gebruikers is gelegen\>|Selecteer een geografische locatie waar u uw virtuele netwerk kunt hosten. Gebruik de locatie die het dichtst bij uw gebruikers is.|
+    |Name|databricks-Quick Start|Selecteer een naam voor het virtuele netwerk.|
+    |Regio|\<Selecteer de regio die het dichtst bij uw gebruikers is gelegen\>|Selecteer een geografische locatie waar u uw virtuele netwerk kunt hosten. Gebruik de locatie die het dichtst bij uw gebruikers is.|
+
+    ![Basis beginselen voor een virtueel netwerk op Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
+
+3. Selecteer **volgende: IP-adressen >** en pas de volgende instellingen toe. Selecteer vervolgens **controleren + maken**.
+    
+    |Instelling|Voorgestelde waarde|Beschrijving|
+    |-------|---------------|-----------|
+    |IPv4-adres ruimte|10.2.0.0/16|Het adres bereik van het virtuele netwerk in CIDR-notatie. Het CIDR-bereik moet tussen/16 en/24 zijn|
     |Subnetnaam|standaardinstelling|Selecteer een naam voor het standaard subnet in het virtuele netwerk.|
-    |Subnetadresbereik|10.1.0.0/24|Het adresbereik van het subnet in CIDR-notatie. Het moet deel uitmaken van de adres ruimte van het virtuele netwerk. Het adres bereik van een subnet dat wordt gebruikt, kan niet worden bewerkt.|
+    |Subnetadresbereik|10.2.0.0/24|Het adresbereik van het subnet in CIDR-notatie. Het moet deel uitmaken van de adres ruimte van het virtuele netwerk. Het adres bereik van een subnet dat wordt gebruikt, kan niet worden bewerkt.|
 
-    ![Een virtueel netwerk maken op Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network.png)
+    ![Stel IP-configuraties in voor een virtueel netwerk op Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-virtual-network-ip-config.png)
 
-3. Zodra de implementatie is voltooid, gaat u naar het virtuele netwerk en selecteert u **adres ruimte** onder **instellingen**. In het vak met de tekst *extra adres bereik toevoegen voegt*u `10.179.0.0/16` in en selecteert u **Opslaan**.
+4. Selecteer op het tabblad **controleren en maken** de optie **maken** om het virtuele netwerk te implementeren. Zodra de implementatie is voltooid, gaat u naar het virtuele netwerk en selecteert u **adres ruimte** onder **instellingen**. In het vak met de tekst *extra adres bereik toevoegen voegt*u `10.179.0.0/16` in en selecteert u **Opslaan**.
 
     ![Adres ruimte van het virtuele Azure-netwerk](./media/quickstart-create-databricks-workspace-vnet-injection/add-address-space.png)
 
 ## <a name="create-an-azure-databricks-workspace"></a>Een Azure Databricks-werkruimte maken
 
-1. Selecteer in het menu Azure Portal de optie **een resource maken**. Selecteer vervolgens **Analytics > Databricks**.
+1. Selecteer **Een resource maken** in het Azure Portal-menu. Selecteer vervolgens **Analytics > Databricks**.
 
     ![Een Azure Databricks-werk ruimte maken op Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace-portal.png)
 
@@ -70,6 +77,13 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/).
     |Resourcegroep|databricks-Quick Start|Selecteer dezelfde resource groep die u hebt gebruikt voor het virtuele netwerk.|
     |Locatie|\<Selecteer de regio die het dichtst bij uw gebruikers is gelegen\>|Kies dezelfde locatie als het virtuele netwerk.|
     |Prijsniveau|Kies tussen Standard of Premium.|Zie de [pagina met prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/)voor meer informatie over prijs categorieën.|
+
+    ![Basis beginselen van Azure Databricks werk ruimte maken](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
+
+3. Wanneer u klaar bent met het invoeren van de instellingen op de pagina **basis beginselen** , selecteert u **volgende: netwerk >** en past u de volgende instellingen toe:
+
+    |Instelling|Voorgestelde waarde|Beschrijving|
+    |-------|---------------|-----------|
     |Azure Databricks-werk ruimte in uw Virtual Network (VNet) implementeren|Ja|Met deze instelling kunt u een Azure Databricks-werk ruimte in uw virtuele netwerk implementeren.|
     |Virtual Network|databricks-Quick Start|Selecteer het virtuele netwerk dat u in de vorige sectie hebt gemaakt.|
     |Naam van openbaar subnet|openbaar subnet|Gebruik de standaard naam van het open bare subnet.|
@@ -77,7 +91,7 @@ Meld u aan bij de [Azure Portal](https://portal.azure.com/).
     |Naam van particulier subnet|persoonlijk subnet|De standaard naam van het particuliere subnet gebruiken.|
     |CIDR-bereik voor persoonlijk subnet|10.179.0.0/18|Gebruik een CIDR-bereik tot en met/26.|
 
-    ![Een Azure Databricks-werk ruimte maken op Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace.png)
+    ![VNet-informatie toevoegen aan Azure Databricks werk ruimte op Azure Portal](./media/quickstart-create-databricks-workspace-vnet-injection/create-databricks-workspace-vnet-config.png)
 
 3. Wanneer de implementatie is voltooid, gaat u naar de Azure Databricks-resource. U ziet dat de peering van het virtuele netwerk is uitgeschakeld. U ziet ook de resource groep en de beheerde resource groep op de pagina overzicht. 
 

@@ -4,21 +4,21 @@ description: Meer informatie over het installeren en configureren van een on-pre
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/14/2020
+ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 019da1810851c730ea8bfe4cf5eea0cfa900bea0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: f578840726543027a8c1b1db9bd88ea42f6e85fa
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029895"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264064"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Een on-premises gegevensgateway installeren en configureren
 
-Een on-premises gegevens gateway is vereist wanneer een of meer Azure Analysis Services servers in dezelfde regio verbinding maken met on-premises gegevens bronnen.  De gateway die u installeert, is hetzelfde als die wordt gebruikt door andere services, zoals Power BI, Power apps en Logic Apps, wanneer u voor Azure Analysis Services installeert, zijn er enkele extra stappen die u moet volt ooien. Dit installatie artikel is specifiek voor **Azure Analysis Services**.
+Een on-premises gegevens gateway is vereist wanneer een of meer Azure Analysis Services servers in dezelfde regio verbinding maken met on-premises gegevens bronnen.  De gateway die u installeert, is hetzelfde als die wordt gebruikt door andere services, zoals Power BI, Power apps en Logic Apps, wanneer u voor Azure Analysis Services installeert, zijn er enkele extra stappen die u moet volt ooien. Dit installatie artikel is specifiek voor **Azure Analysis Services**. 
 
-Zie [verbinding maken met on-premises gegevens bronnen](analysis-services-gateway.md)voor meer informatie over de gateway en hoe deze worden gebruikt door Azure Analysis Services.
+Zie [verbinding maken met on-premises gegevens bronnen](analysis-services-gateway.md)voor meer informatie over de werking van Azure Analysis Services met de gateway. Zie de [documentatie over on-premises gegevens gateways](/data-integration/gateway/service-gateway-onprem)voor meer informatie over geavanceerde installatie scenario's en de gateway in het algemeen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -35,11 +35,11 @@ Zie [verbinding maken met on-premises gegevens bronnen](analysis-services-gatewa
 
 **Belang rijke overwegingen:**
 
-* Tijdens de installatie wordt de standaard regio voor uw abonnement geselecteerd wanneer u uw gateway registreert bij Azure. U kunt een andere regio kiezen. Als u servers in meer dan één regio hebt, moet u een gateway voor elke regio installeren. 
+* Tijdens de installatie wordt de standaard regio voor uw abonnement geselecteerd wanneer u uw gateway registreert bij Azure. U kunt een ander abonnement en een andere regio kiezen. Als u servers in meer dan één regio hebt, moet u een gateway voor elke regio installeren. 
 * De gateway kan niet worden geïnstalleerd op een domein controller.
 * Er kan slechts één gateway op één computer worden geïnstalleerd.
 * Installeer de gateway op een computer die nog moet blijven en gaat niet naar de slaap stand.
-* Installeer de gateway niet op een computer die draadloos met uw netwerk is verbonden. Prestaties kunnen worden verminderd.
+* Installeer de gateway niet op een computer met een draadloze verbinding met uw netwerk. Prestaties kunnen worden verminderd.
 * Bij de installatie van de gateway moet het gebruikers account waarmee u bent aangemeld bij uw computer, aanmelden als service bevoegdheden hebben. Wanneer de installatie is voltooid, maakt de on-premises gegevens Gateway-Service gebruik van het NT SERVICE\PBIEgwService-account om u aan te melden als een service. U kunt een ander account opgeven tijdens de installatie of in Services nadat de installatie is voltooid. Zorg ervoor dat met groepsbeleid instellingen zowel het account waarmee u bent aangemeld bij het installeren en het service account dat u kiest aanmelden als service privileges.
 * Meld u aan bij Azure met een account in azure AD voor dezelfde [Tenant](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) als het abonnement waarmee u de gateway wilt registreren. Accounts voor Azure B2B (gast) worden niet ondersteund bij het installeren en registreren van een gateway.
 * Als gegevens bronnen zich op een Azure Virtual Network (VNet) bevinden, moet u de eigenschap [AlwaysUseGateway](analysis-services-vnet-gateway.md) van de server configureren.
@@ -87,7 +87,7 @@ Als u een gateway bron in azure wilt maken, moet u het lokale exemplaar dat u he
 
 ## <a name="create-resource"></a>Een Azure gateway-resource maken
 
-Nadat u de gateway hebt geïnstalleerd en geregistreerd, moet u een gateway bron maken in uw Azure-abonnement. Meld u aan bij Azure met hetzelfde account dat u hebt gebruikt bij het registreren van de gateway.
+Nadat u de gateway hebt geïnstalleerd en geregistreerd, moet u een gateway bron maken in Azure. Meld u aan bij Azure met hetzelfde account dat u hebt gebruikt bij het registreren van de gateway.
 
 1. In Azure Portal klikt u op **een resource maken**, zoekt u naar de **on-premises gegevens gateway**en klikt u vervolgens op **maken**.
 

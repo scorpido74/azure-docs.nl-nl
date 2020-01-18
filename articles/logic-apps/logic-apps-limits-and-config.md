@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: 8d34a0905973a8080ee53eeac878432db0c51128
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 96e7cbd09873192d8b73b57cb2b46bf5b7679742
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979076"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263452"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limieten en configuratie-informatie voor Azure Logic Apps
 
@@ -153,8 +153,15 @@ Sommige connector bewerkingen maken asynchrone aanroepen of Luis teren naar webh
 |------|--------------------|---------------------------------------|-------|
 | Berichtgrootte | 100 MB | 200 MB | Zie [grote berichten verwerken met Chunking](../logic-apps/logic-apps-handle-large-messages.md)om deze limiet te omzeilen. Sommige connectors en Api's ondersteunen echter mogelijk geen Chunking of zelfs de standaard limiet. |
 | Bericht grootte met Chunking | 1 GB | 5 GB | Deze limiet geldt voor acties die systeem eigen ondersteuning bieden voor Chunking of waarmee u Chunking in de runtime configuratie kunt inschakelen. <p>Voor de integratie service omgeving ondersteunt de Logic Apps-Engine deze limiet, maar connectors hebben hun eigen segment limieten tot de limiet van de engine. Zie de [API-naslag informatie voor de Azure Blob Storage-connector](https://docs.microsoft.com/connectors/azureblob/). Zie [grote berichten verwerken met Chunking](../logic-apps/logic-apps-handle-large-messages.md)voor meer informatie over chunks. |
-| Limiet voor evaluatie van expressie | 131.072 tekens | 131.072 tekens | De `@concat()`, `@base64()``@string()`-expressies mogen niet langer zijn dan deze limiet. |
-|||||
+|||||   
+
+#### <a name="character-limits"></a>Teken limieten
+
+| Name | Opmerkingen |
+|------|-------|
+| Limiet voor evaluatie van expressie | 131.072 tekens | De `@concat()`, `@base64()``@string()`-expressies mogen niet langer zijn dan deze limiet. |
+| Maximum aantal tekens van aanvraag-URL | 32K-tekens |
+|||
 
 #### <a name="retry-policy"></a>Beleid voor opnieuw proberen
 
@@ -221,7 +228,7 @@ Zie [Logic apps prijzen](https://azure.microsoft.com/pricing/details/logic-apps/
 | EDI-handels overeenkomsten | 10 | 1 | 1000 |
 | EDI-handels partners | 25 | 2 | 1000 |
 | Kaarten | 25 | 500 | 1000 |
-| Schema 's | 25 | 500 | 1000 |
+| Schema's | 25 | 500 | 1000 |
 | Assembly's | 10 | 25 | 1000 |
 | Certificaten | 25 | 2 | 1000 |
 | Batch configuraties | 5 | 1 | 50 |

@@ -1,5 +1,5 @@
 ---
-title: Gezichten detecteren in een installatie kopie-Face-API
+title: Gezichten detecteren in een afbeeldings gezicht
 titleSuffix: Azure Cognitive Services
 description: In deze hand leiding wordt gedemonstreerd hoe u gezichts detectie kunt gebruiken om kenmerken te extra heren, zoals geslacht, leeftijd of pose van een bepaalde afbeelding.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 9b66231d995ffb6980ce36852115c571cd102681
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7070cb3bcd1b519828a750cf4ba6caf7ecb34bbb
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744275"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169876"
 ---
 # <a name="get-face-detection-data"></a>Detectie gegevens van het gezicht ophalen
 
-In deze hand leiding wordt gedemonstreerd hoe u gezichts detectie kunt gebruiken om kenmerken te extra heren, zoals geslacht, leeftijd of pose van een bepaalde afbeelding. De code fragmenten in deze hand leiding worden geschreven in C# met behulp van de Azure Cognitive Services Face-API-client bibliotheek. Dezelfde functionaliteit is beschikbaar via de [rest API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+In deze hand leiding wordt gedemonstreerd hoe u gezichts detectie kunt gebruiken om kenmerken te extra heren, zoals geslacht, leeftijd of pose van een bepaalde afbeelding. De code fragmenten in deze hand leiding worden geschreven in C# met behulp van de Azure Cognitive Services Face-client bibliotheek. Dezelfde functionaliteit is beschikbaar via de [rest API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 In deze hand leiding wordt uitgelegd hoe u:
 

@@ -1,5 +1,5 @@
 ---
-title: Notification Hubs gebruiken met Java
+title: Azure Notification Hubs gebruiken met Java
 description: Meer informatie over het gebruik van Azure Notification Hubs van een Java-back-end.
 services: notification-hubs
 documentationcenter: ''
@@ -16,19 +16,19 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 532ffc7a7393f016f27264b67b4ee5d3e6e5888f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: d48973cc7c5ed1fc7ae3f96128d488f3f1df3a05
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213202"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263860"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Notification Hubs van Java gebruiken
 
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
 
 In dit onderwerp worden de belangrijkste functies van de nieuwe volledig ondersteunde officiële Azure notification hub Java SDK beschreven.
-Dit project is een open-source project en u kunt de volledige SDK-code weer geven op de [Java SDK].
+Dit project is een open-source project en u kunt de volledige SDK-code weer geven op de [Java-SDK].
 
 Over het algemeen hebt u toegang tot alle Notification Hubs-functies van een Java/PHP/python/ruby-back-end met behulp van de REST-interface van de notification hub, zoals beschreven in het MSDN-onderwerp [Notification hubs rest-api's](https://msdn.microsoft.com/library/dn223264.aspx). Deze Java-SDK biedt een smalle wrapper voor deze REST-interfaces in Java.
 
@@ -41,7 +41,7 @@ De SDK biedt momenteel ondersteuning voor:
 * Normale verzen dingen
 * Geplande verzen dingen
 * Asynchrone bewerkingen via Java NIO
-* Ondersteunde platforms: APNS (iOS), FCM (Android), WNS (Windows Store-apps), MPNS (Windows Phone), ADM (Amazon Kindle Fire), Baidu (Android zonder Google-Services)
+* Ondersteunde platforms: APNS (iOS), FCM (Android), WNS (Windows Store-apps), MPNS (Windows Phone), ADM (Amazon Kindle Fire), Baidu (Android zonder Google Services)
 
 ## <a name="sdk-usage"></a>SDK-gebruik
 
@@ -53,7 +53,7 @@ Bouwen:
 
     mvn package
 
-## <a name="code"></a>Code
+## <a name="code"></a>Coderen
 
 ### <a name="notification-hub-cruds"></a>Notification hub-ruw
 
@@ -188,7 +188,7 @@ Installatie-API is een alternatief mechanisme voor registratie beheer. In plaats
 
 De installatie bevat alles wat u nodig hebt: push Channel (apparaat-token), tags, sjablonen, secundaire tegels (voor WNS en APNS). U hoeft de service niet aan te roepen om ID meer op te halen: u hoeft alleen een GUID of andere id te genereren, deze op het apparaat te laten staan en te verzenden naar uw back-end met een push kanaal (apparaat-token).
 
-Op de back-end moet u slechts één aanroep doen naar `CreateOrUpdateInstallation`; het is een volledig idempotent, zodat u het opnieuw kunt proberen als dat nodig is.
+Op de backend moet u slechts één aanroep naar `CreateOrUpdateInstallation`doen; het is volledig idempotent, dus u kunt het opnieuw proberen als dat nodig is.
 
 Bijvoorbeeld voor Amazon Kindle Fire:
 
@@ -221,7 +221,7 @@ Installatie verwijderen:
     hub.deleteInstallation(installation.getInstallationId());
     ```
 
-`CreateOrUpdate`, `Patch`, en `Delete` zijn uiteindelijk consistent met `Get`. De aangevraagde bewerking gaat gewoon naar de systeem wachtrij tijdens de aanroep en wordt op de achtergrond uitgevoerd. Get is niet ontworpen voor het hoofd runtime-scenario, maar alleen voor fout opsporing en probleem oplossing, wordt het nauw keurig beperkt door de service.
+`CreateOrUpdate`, `Patch`en `Delete` zijn uiteindelijk consistent met `Get`. De aangevraagde bewerking gaat gewoon naar de systeem wachtrij tijdens de aanroep en wordt op de achtergrond uitgevoerd. Get is niet ontworpen voor het hoofd runtime-scenario, maar alleen voor fout opsporing en probleem oplossing, wordt het nauw keurig beperkt door de service.
 
 Verzend stroom voor installaties is hetzelfde als voor registraties. Als u een melding wilt ontvangen voor de specifieke installatie, gebruikt u tag "InstallationId: {desired-id}". Voor dit geval is de code:
 
@@ -294,7 +294,7 @@ U moet mogelijk een bulk bewerking uitvoeren op basis van registraties. Normaal 
 
 **URI met SAS-hand tekening:**
 
- Deze URL is de URL van een blob-bestand of BLOB-container plus een set para meters zoals machtigingen en verloop tijd plus hand tekening van al deze dingen die zijn gemaakt met behulp van de SAS-sleutel van het account. Azure Storage Java SDK biedt uitgebreide mogelijkheden, waaronder het maken van deze Uri's. Als eenvoudig alternatief bekijkt u de `ImportExportE2E` test klasse (vanaf de locatie van de GitHub) met basis-en compacte implementatie van het Ondertekeningsalgoritme.
+ Deze URL is de URL van een blob-bestand of BLOB-container plus een set para meters zoals machtigingen en verloop tijd plus hand tekening van al deze dingen die zijn gemaakt met behulp van de SAS-sleutel van het account. Azure Storage Java SDK biedt uitgebreide mogelijkheden, waaronder het maken van deze Uri's. Kijk eens naar de `ImportExportE2E` test klasse (vanaf de locatie van de GitHub) met de basis-en compacte implementatie van het handtekening algoritme.
 
 ### <a name="send-notifications"></a>Meldingen verzenden
 
@@ -376,7 +376,7 @@ Als u uw Java-code uitvoert, moet er nu een melding op uw doel apparaat worden w
 
 In dit onderwerp wordt uitgelegd hoe u een eenvoudige Java-REST-client maakt voor Notification Hubs. Hier kunt u het volgende doen:
 
-* Down load de volledige [Java SDK], die de volledige SDK-code bevat.
+* Down load de volledige [Java-SDK], die de volledige SDK-code bevat.
 * Spelen met de voor beelden:
   * [Aan de slag met Notification Hubs]
   * [Laatste nieuws verzenden]
@@ -384,7 +384,7 @@ In dit onderwerp wordt uitgelegd hoe u een eenvoudige Java-REST-client maakt voo
   * [Meldingen verzenden naar geverifieerde gebruikers]
   * [Kruis platform meldingen verzenden naar geverifieerde gebruikers]
 
-[Java SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
+[Java-SDK]: https://github.com/Azure/azure-notificationhubs-java-backend
 [Get started tutorial]: notification-hubs-ios-apple-push-notification-apns-get-started.md
 [Aan de slag met Notification Hubs]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [Laatste nieuws verzenden]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md

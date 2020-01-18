@@ -1,7 +1,7 @@
 ---
-title: Wat is de Face-API?
+title: Wat is de face-service?
 titleSuffix: Azure Cognitive Services
-description: De Azure Cognitive Services Face-API biedt algoritmen die worden gebruikt voor het detecteren, herkennen en analyseren van menselijke gezichten in installatie kopieën.
+description: De Azure Cognitive Services Face-service biedt algoritmen die worden gebruikt voor het detecteren, herkennen en analyseren van menselijke gezichten in installatie kopieën.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,25 +9,25 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 75f2969562dd2de041ffaa146c394f1a18c7756b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c4e2253229f4461bcb6a2a9fe3e561f3cde29760
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961536"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170258"
 ---
-# <a name="what-is-the-azure-face-api"></a>Wat is de Azure Face-API?
+# <a name="what-is-the-azure-face-service"></a>Wat is Azure face service?
 
-De Azure Cognitive Services Face-API biedt algoritmen die worden gebruikt voor het detecteren, herkennen en analyseren van menselijke gezichten in installatie kopieën. De mogelijkheid om informatie over Human gezicht te verwerken is belang rijk in veel verschillende software scenario's. Voorbeeld scenario's zijn beveiliging, natuurlijke gebruikers interface, analyse van afbeeldings inhoud en beheer, mobiele apps en Robotics.
+De Azure Cognitive Services Face-service biedt algoritmen die worden gebruikt voor het detecteren, herkennen en analyseren van menselijke gezichten in installatie kopieën. De mogelijkheid om informatie over Human gezicht te verwerken is belang rijk in veel verschillende software scenario's. Voorbeeld scenario's zijn beveiliging, natuurlijke gebruikers interface, analyse van afbeeldings inhoud en beheer, mobiele apps en Robotics.
 
-De Face-API biedt verschillende functies. Elke functie wordt beschreven in de volgende secties. Lees verder voor meer informatie hierover.
+De face-service biedt verschillende functies. Elke functie wordt beschreven in de volgende secties. Lees verder voor meer informatie hierover.
 
 ## <a name="face-detection"></a>Gezichtsherkenning
 
-De Face-API detecteert menselijke gezichten in een afbeelding en retourneert de rechthoek coördinaten van hun locaties. Een voor beeld van gezichts detectie kan een reeks kenmerken met betrekking tot het gezicht extra heren. Voor beelden zijn Head pose, gender, Age, Emotion, gezichts haar en glazen.
+De face-service detecteert menselijke gezichten in een afbeelding en retourneert de rechthoek coördinaten van hun locaties. Een voor beeld van gezichts detectie kan een reeks kenmerken met betrekking tot het gezicht extra heren. Voor beelden zijn Head pose, gender, Age, Emotion, gezichts haar en glazen.
 
 > [!NOTE]
-> De functie voor gezichts detectie is ook beschikbaar via de [Computer Vision-API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home). Als u verdere bewerkingen met gezichts gegevens wilt uitvoeren, gebruikt u de Face-API. Dit is de service die in dit artikel wordt besproken.
+> De functie voor gezichts detectie is ook beschikbaar via de [Computer Vision-API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home). Als u meer bewerkingen wilt uitvoeren met gezichts gegevens, gebruikt u de face-service, de service die in dit artikel wordt besproken.
 
 ![Een afbeelding van een vrouw en een man met rechthoeken die zijn getekend rond hun gezichten en de weer gegeven leeftijd en geslacht](./Images/Face.detection.jpg)
 
@@ -73,9 +73,9 @@ Voor meer informatie over persoons-id raadpleegt u de hand leiding voor [gezicht
 
 ## <a name="sample-apps"></a>Voorbeeld-apps
 
-De volgende voorbeeld toepassingen bevatten een aantal manieren om de Face-API te gebruiken:
+De volgende voorbeeld toepassingen bevatten een aantal manieren om de face-service te gebruiken:
 
-- [Micro soft face-API: Windows-client bibliotheek en](https://github.com/Microsoft/Cognitive-Face-Windows) -voor beeld is een WPF-app die verschillende Scenario's van gezichts detectie, analyses en identificatie toont.
+- [Face-API: Windows-client bibliotheek en](https://github.com/Microsoft/Cognitive-Face-Windows) -voor beeld is een WPF-app die verschillende Scenario's van gezichts detectie, analyse en identificatie toont.
 - [FAMILYNOTES UWP-app](https://github.com/Microsoft/Windows-appsample-familynotes) is een universeel Windows-platform-app (UWP) die gebruikmaakt van gezichts identificatie samen met spraak, Cortana, inkt en camera in een scenario voor het delen van familie notities.
 
 ## <a name="data-privacy-and-security"></a>Gegevensprivacy en -beveiliging

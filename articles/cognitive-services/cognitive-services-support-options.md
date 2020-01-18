@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 2dc5bfb7459e28a4d118c5d1629133bae3a5637f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 2cdf34bb7df121665548be98f9f2098cc5cfe99b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533700"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169083"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Ondersteunings-en Help-opties voor Azure Cognitive Services
 
@@ -28,7 +28,7 @@ Gaat u gewoon door met het verkennen van de functionaliteit van Azure Cognitive 
 > * Als u een probleem met een van de voor beelden op GitHub vindt, verhoogt u een *github* -probleem.
 > * Zoek naar een oplossing in het *UserVoice-forum*.
 
-## <a name="create-an-azure-support-request"></a>Een Azure-ondersteunings aanvraag maken
+## <a name="create-an-azure-support-request"></a>Een Azure-ondersteuningsaanvraag maken
 
 <div class='icon is-large'>
     <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
@@ -36,7 +36,7 @@ Gaat u gewoon door met het verkennen van de functionaliteit van Azure Cognitive 
 
 Bekijk het bereik van de [ondersteunings opties voor Azure en kies het abonnement dat het](https://azure.microsoft.com/support/plans) beste past, of u nu een ontwikkelaar bent die uw Cloud traject of een grote organisatie die bedrijfs kritieke, strategische toepassingen implementeert. Azure-klanten kunnen ondersteunings aanvragen maken en beheren in de Azure Portal.
 
-* [Azure-portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Azure Portal voor de Verenigde Staten overheid](https://portal.azure.us)
 
 ## <a name="post-a-question-on-stack-overflow"></a>Een vraag op Stack Overflow plaatsen
@@ -73,7 +73,7 @@ Als u nieuwe functies wilt aanvragen, plaatst u deze op UserVoice. Deel uw idee√
 | Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | Custom Vision                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | Face                          | https://cognitive.uservoice.com/forums/430315-face |
-| Formulieren                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
+| Formulier                          | https://cognitive.uservoice.com/forums/921556-form-recognizer |
 | Boeiende                     | https://feedback.azure.com/forums/34192--general-feedback |
 | Taalbegrip (Language Understanding Intelligent Service) | https://cognitive.uservoice.com/forums/551524-luis |
 | Personalizer                  | https://cognitive.uservoice.com/forums/921562-personalizer |
@@ -91,8 +91,8 @@ Als u nieuwe functies wilt aanvragen, plaatst u deze op UserVoice. Deel uw idee√
 
 De release opmerkingen worden bijgewerkt wanneer er nieuwe releases beschikbaar worden gesteld. De opmerkingen bevatten informatie over nieuwe functies, verbeteringen en oplossingen voor problemen.
 
- - [Custom Vision Service](custom-vision-service/release-notes.md)
- - [Face-API](face/releasenotes.md)
+ - [Custom Vision](custom-vision-service/release-notes.md)
+ - [Face](face/releasenotes.md)
  - [Language Understanding (LUIS)](luis/whats-new.md)
  - [Spraakservices](speech-service/releasenotes.md)
  - [SDK voor speech Services](speech-service/devices-sdk-release-notes.md)

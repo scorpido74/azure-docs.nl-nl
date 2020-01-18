@@ -16,19 +16,19 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eb369047574ef76dd31996fd16399380ea027c8
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f26af813fcd4032aabce2305ac8845307d1fca65
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74823303"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262119"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met uniFLOW online
 
 In deze zelf studie leert u hoe u uniFLOW online integreert met Azure Active Directory (Azure AD). Wanneer u uniFLOW online integreert met Azure AD, kunt u het volgende doen:
 
 * Controle in azure AD die toegang heeft tot uniFLOW online.
-* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij uniFLOW met hun Azure AD-accounts.
+* Stel uw gebruikers in staat om zich online aan te melden bij uniFLOW met hun Azure AD-accounts.
 * Beheer uw accounts op één centrale locatie: de Azure Portal.
 
 Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
@@ -38,7 +38,7 @@ Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Di
 U hebt de volgende items nodig om aan de slag te gaan:
 
 * Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
-* uniFLOW online abonnement voor eenmalige aanmelding (SSO) is ingeschakeld.
+* uniFLOW online Tenant.
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
@@ -64,11 +64,10 @@ Configureer en test Azure AD SSO met uniFLOW online met behulp van een test gebr
 Als u Azure AD SSO wilt configureren en testen met uniFLOW online, voert u de volgende bouw stenen uit:
 
 1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+   1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+   1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
 1. **[UniFLOW online-SSO configureren](#configure-uniflow-online-sso)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    * **[Maak een UniFLOW online test gebruiker](#create-uniflow-online-test-user)** -om een soort tegen te brengen van B. Simon in uniFLOW online dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
+    * **[Meld u online aan bij uniFLOW met behulp van de gemaakte test gebruiker](#sign-in-to-uniflow-online-using-the-created-test-user)** -om gebruikers aanmelding te testen aan de kant van de toepassing.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
@@ -86,35 +85,38 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     | | |
     |-|-|
-    | `https://<tenant_domain_name>.eu.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.us.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.sg.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.jp.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.au.uniFLOWonline.com`|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
+    | `https://<tenant_domain_name>.us.uniflowonline.com`|
+    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
+    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
+    | `https://<tenant_domain_name>.au.uniflowonline.com`|
 
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon:
 
     | | |
     |-|-|
-    | `https://<tenant_domain_name>.eu.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.us.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.sg.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.jp.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.au.uniFLOWonline.com`|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
+    | `https://<tenant_domain_name>.us.uniflowonline.com`|
+    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
+    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
+    | `https://<tenant_domain_name>.au.uniflowonline.com`|
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team van UniFLOW online](mailto:support@nt-ware.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team van UniFLOW online](mailto:support@nt-ware.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar de patronen die worden weer gegeven in de sectie **basis configuratie van SAML** in de Azure portal of verwijzen naar de antwoord-URL die wordt weer gegeven in uw uniFLOW online-Tenant.
 
 1. uniFLOW online-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![image](common/default-attributes.png)
+    ![installatiekopie](common/default-attributes.png)
 
 1. Daarnaast verwacht uniFLOW online toepassing nog maar weinig kenmerken om te worden door gegeven in een SAML-respons die hieronder wordt weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
 
-    | Naam |  Bronkenmerk|
+    | Name |  Bronkenmerk|
     | -----------| --------------- |
     | displayname | user.displayname |
     | naam | User. onpremisessamaccountname |
+
+   > [!NOTE]
+   > Het kenmerk `user.onpremisessamaccountname` bevat alleen een waarde als uw Azure AD-gebruikers worden gesynchroniseerd vanuit een lokale Windows-Active Directory.
 
 1. Klik op de pagina **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** op de knop kopiëren om de URL van de **app Federation-meta gegevens** te kopiëren en op uw computer op te slaan.
 
@@ -127,7 +129,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
+   1. Voer in het veld **Naam**`B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Maken**.
@@ -144,11 +146,14 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
-    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+   ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
 
 1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
 1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
 1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+
+> [!NOTE]
+> Als u wilt dat alle gebruikers toegang krijgen tot de toepassing zonder hand matige toewijzing, gaat u naar de sectie **beheren** en selecteert u **Eigenschappen**. Wijzig vervolgens de vereiste para meter voor de **gebruikers toewijzing** in **Nee**.
 
 ## <a name="configure-uniflow-online-sso"></a>UniFLOW online-SSO configureren
 
@@ -185,7 +190,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     a. Voer de weergave naam in, bijvoorbeeld: *AZUREAD SSO*.
 
-    b. Selecteer de optie **van URL** voor de **federatieve meta gegevens van ADGS**.
+    b. Selecteer de optie **van URL** voor de **meta gegevens**van de ADFS-federatie.
 
     c. Plak in het tekstvak **URL voor federatieve meta** gegevens de waarde van de URL voor de **federatieve meta gegevens** van de app die u hebt gekopieerd van de Azure Portal.
 
@@ -195,31 +200,13 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
     f. Klik op **Opslaan**.
 
-### <a name="create-uniflow-online-test-user"></a>UniFLOW online test gebruiker maken
+### <a name="sign-in-to-uniflow-online-using-the-created-test-user"></a>Meld u online aan bij uniFLOW met de gemaakte test gebruiker
 
-1. Meld u in een ander webbrowser venster aan bij uniFLOW online-website als beheerder.
+1. In een ander browser venster gaat u naar de uniFLOW online-URL voor uw Tenant.
 
-1. Selecteer tabblad **gebruiker** vanuit het navigatie venster aan de linkerkant.
+1. Selecteer de eerder gemaakte ID-provider om u aan te melden via uw Azure AD-exemplaar.
 
-    ![uniFLOW online configureren](./media/uniflow-online-tutorial/configure1.png)
-
-1. Klik op **gebruiker toevoegen**.
-
-    ![uniFLOW online configureren](./media/uniflow-online-tutorial/user1.png)
-
-1. Klik op **gebruiker hand matig maken**.
-
-    ![uniFLOW online configureren](./media/uniflow-online-tutorial/user2.png)
-
-1. Geef op het tabblad **hand matig gebruiker maken** de vereiste waarden op conform de vereisten van uw organisatie.
-
-    ![uniFLOW online configureren](./media/uniflow-online-tutorial/user3.png)
-
-## <a name="test-sso"></a>SSO testen
-
-In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
-
-Wanneer u op de tegel online uniFLOW klikt in het deel venster toegang, moet u automatisch worden aangemeld bij de uniFLOW online waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+1. Meld u aan met de test gebruiker.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 

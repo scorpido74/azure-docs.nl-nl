@@ -1,5 +1,5 @@
 ---
-title: Gebruiks instellingen configureren in de klassikale Labs van Azure Lab Services | Microsoft Docs
+title: Gebruiks instellingen configureren in de klassikale Labs van Azure Lab Services
 description: Meer informatie over het configureren van het aantal gebruikers voor het lab, het ontvangen van de items die zijn geregistreerd bij het lab, het aantal uren bepalen dat ze de virtuele machine mogen gebruiken en nog veel meer.
 services: lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 0ab8d8688c7856eeae7d75527620c2b77ae78029
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 80e8bc47f6e6293d70bbc9fae888abdf5527fe93
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584216"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169210"
 ---
 # <a name="add-and-manage-lab-users"></a>Labgebruikers toevoegen en beheren
 In dit artikel wordt beschreven hoe u gebruikers toevoegt aan het lab, ze aan het lab kunt toevoegen, het aantal uren bepaalt dat ze de virtuele machine kunnen gebruiken, en nog veel meer. 

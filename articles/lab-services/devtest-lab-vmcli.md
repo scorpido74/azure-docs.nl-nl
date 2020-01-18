@@ -1,5 +1,5 @@
 ---
-title: Virtuele machines in DevTest Labs maken en beheren met Azure CLI | Microsoft Docs
+title: Virtuele machines in DevTest Labs maken en beheren met Azure CLI
 description: Meer informatie over het gebruik van Azure DevTest Labs voor het maken en beheren van virtuele machines met Azure CLI
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 7a089eae935fe5ecbf3dd2836d86912d0c63ef84
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d3cd104e36cb407e9b1b833335869cac2c69d0ec
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773107"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167056"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Virtuele machines maken en beheren met DevTest Labs met behulp van Azure CLI
 Deze Snelstartgids helpt u bij het maken, starten, aansluiten, bijwerken en opschonen van een ontwikkel machine in uw Lab. 
@@ -30,13 +30,13 @@ Voordat u begint:
 * [Installeer de Azure cli](/cli/azure/install-azure-cli). Als u wilt starten, voert u AZ login uit om een verbinding te maken met Azure. 
 
 ## <a name="create-and-verify-the-virtual-machine"></a>De virtuele machine maken en verifiëren 
-Voordat u DevTest Labs-gerelateerde opdrachten uitvoert, stelt u de juiste Azure-context `az account set` in met behulp van de opdracht:
+Voordat u DevTest Labs-gerelateerde opdrachten uitvoert, stelt u de juiste Azure-context in met behulp van de `az account set` opdracht:
 
 ```azurecli
 az account set --subscription 11111111-1111-1111-1111-111111111111
 ```
 
-De opdracht voor het maken van een virtuele machine `az lab vm create`is:. De resource groep voor het lab, de naam van het lab en de naam van de virtuele machine zijn allemaal verplicht. De overige argumenten veranderen, afhankelijk van het type virtuele machine.
+De opdracht voor het maken van een virtuele machine is: `az lab vm create`. De resource groep voor het lab, de naam van het lab en de naam van de virtuele machine zijn allemaal verplicht. De overige argumenten veranderen, afhankelijk van het type virtuele machine.
 
 Met de volgende opdracht maakt u een Windows-installatie kopie op basis van de Azure-markt plaats. De naam van de installatie kopie is hetzelfde als die u ziet bij het maken van een virtuele machine met behulp van de Azure Portal. 
 
@@ -127,13 +127,13 @@ az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resou
 
 Als u in een Lab beschik bare artefacten wilt weer geven, voert u de volgende opdrachten uit.
 
-**Cloud shell-Power shell**: Let op het gebruik van de\`apostroffen () vóór de $ in $expand (dat wil zeggen $expand):
+**Cloud shell-Power shell**: Let op het gebruik van de apostroffen (\`) vóór de $ in $expand (dat wil zeggen $expand):
 
 ```azurecli-interactive
 az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(`$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
 ```
 
-**Cloud shell-bash**: Let op het gebruik van het slash\\-teken () vóór $ in de opdracht. 
+**Cloud shell-bash**: Let op het gebruik van het slash-teken (\\) vóór $ in de opdracht. 
 
 ```azurecli-interactive
 az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(\$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 3b2fff84b70c5c5e37d14faa87143e5dacc82bce
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 0b24c064424b00fa9acb96b03c0a3c5ca69f67f2
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73930190"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264349"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Een telemetrie-regel maken en meldingen instellen in uw Azure IoT Central-toepassing
 
@@ -27,7 +27,7 @@ Apparaten kunnen telemetrische metingen gebruiken om numerieke gegevens van het 
 
 ## <a name="create-a-telemetry-rule"></a>Een telemetrieregel maken
 
-Voor het maken van een telemetrie-regel moet er ten minste één telemetrie-meting zijn gedefinieerd. In dit voor beeld wordt gebruikgemaakt van een computer apparaat met een gekoelde verkoop, dat een telemetrie van de Tempe ratuur en vochtigheid verzendt. De regel controleert de door het apparaat gemelde Tempe ratuur en verzendt een e-mail wanneer deze meer dan 80 graden gaat.
+Voor het maken van een telemetrie-regel moet er ten minste één telemetrie-meting zijn gedefinieerd. In dit voor beeld wordt gebruikgemaakt van een computer apparaat met een gekoelde verkoop, dat een telemetrie van de Tempe ratuur en vochtigheid verzendt. De regel controleert de door het apparaat gemelde Tempe ratuur en verzendt een e-mail wanneer deze meer dan 70&deg; F overschrijdt.
 
 1. Ga op de pagina met **Apparaatinstellingen** naar de sjabloon voor het apparaat waarvoor u de regel wilt toevoegen.
 
@@ -43,7 +43,7 @@ Voor het maken van een telemetrie-regel moet er ten minste één telemetrie-meti
 
 1. Voer een naam in waarmee u de regel in deze apparaatprofiel kunt identificeren.
 
-1. Als u de regel onmiddellijk wilt inschakelen voor alle apparaten die voor deze sjabloon zijn gemaakt, schakelt u **regel inschakelen voor alle apparaten voor deze sjabloon**in.
+1. Als u de regel onmiddellijk wilt inschakelen voor alle apparaten die voor deze sjabloon zijn gemaakt, schakelt u **regel inschakelen voor alle apparaten van deze sjabloon**in.
 
    ![Regel Details](media/howto-create-telemetry-rules/rule_detail1.png)
 
@@ -58,8 +58,8 @@ Voor waarde definieert de criteria die door de regel worden bewaakt.
 1. Selecteer de telemetrie die u wilt bewaken in de vervolg keuzelijst voor **metingen** .
 
 1. Kies vervolgens **aggregatie**, **operator**en geef een **drempel** waarde op.
-   - Aggregatie is optioneel. Zonder aggregatie wordt de regel geactiveerd voor elk telemetrie-gegevens punt dat voldoet aan de voor waarde. Als de regel bijvoorbeeld zo is geconfigureerd dat deze wordt geactiveerd wanneer de Tempe ratuur hoger is dan 80, wordt de regel bijna direct geactiveerd wanneer het apparaat de Tempe ratuur > 80.
-   - Als een statistische functie zoals gemiddelde, min, Max, aantal is gekozen, moet de gebruiker een **geaggregeerd tijd venster** opgeven waarvoor de voor waarde moet worden geëvalueerd. Als u bijvoorbeeld de periode instelt op 5 minuten en uw regel zoekt naar de gemiddelde Tempe ratuur boven 80, wordt de regel geactiveerd wanneer de gemiddelde Tempe ratuur ten minste vijf minuten hoger is dan 80. De frequentie van de regel evaluatie is hetzelfde als het **cumulatieve tijd venster**, wat betekent, in dit voor beeld wordt de regel elke vijf minuten geëvalueerd.
+   - Aggregatie is optioneel. Zonder aggregatie wordt de regel geactiveerd voor elk telemetrie-gegevens punt dat voldoet aan de voor waarde. Als de regel bijvoorbeeld zo is geconfigureerd dat deze wordt geactiveerd wanneer de Tempe ratuur hoger is dan 70&deg; F, wordt de regel bijna direct geactiveerd wanneer het apparaat de Tempe ratuur > 70 rapporteert.
+   - Als een statistische functie zoals gemiddelde, min, Max, aantal is gekozen, moet de gebruiker een **geaggregeerd tijd venster** opgeven waarvoor de voor waarde moet worden geëvalueerd. Als u bijvoorbeeld de periode instelt op ' 5 minuten ' en uw regel zoekt naar de gemiddelde Tempe ratuur boven 70, wordt de regel geactiveerd wanneer de gemiddelde Tempe ratuur hoger is dan 70&deg; F gedurende ten minste vijf minuten. De frequentie van de regel evaluatie is hetzelfde als het **cumulatieve tijd venster**, wat betekent, in dit voor beeld wordt de regel elke vijf minuten geëvalueerd.
 
      ![Voorwaarde](media/howto-create-telemetry-rules/aggregate_condition_filled_out1.png)
 
@@ -90,7 +90,7 @@ U kunt andere acties toevoegen aan de regel, zoals Microsoft Flow en webhooks. U
 
 ## <a name="parameterize-the-rule"></a>De regel para meters
 
-Regels kunnen bepaalde graad van **Apparaateigenschappen** afleiden als para meters. Het gebruik van para meters is handig in scenario's waarbij de drempel waarden voor telemetrie verschillen voor verschillende apparaten. Wanneer u de regel maakt, kiest u een eigenschap van het apparaat waarmee de drempel waarde wordt opgegeven, zoals de **maximale ideale drempel**waarde, in plaats van een absoluut getal, zoals 80 graden. Wanneer de regel wordt uitgevoerd, komt deze overeen met de telemetrie van het apparaat met de waarde die is ingesteld in de eigenschap apparaat.
+Regels kunnen bepaalde graad van **Apparaateigenschappen** afleiden als para meters. Het gebruik van para meters is handig in scenario's waarbij de drempel waarden voor telemetrie verschillen voor verschillende apparaten. Wanneer u de regel maakt, kiest u een eigenschap van het apparaat waarmee de drempel waarde wordt opgegeven, zoals de **maximale ideale drempel**waarde, in plaats van een absoluut getal, zoals 70&deg; F. Wanneer de regel wordt uitgevoerd, komt deze overeen met de telemetrie van het apparaat met de waarde die is ingesteld in de eigenschap apparaat.
 
 Het gebruik van para meters is een efficiënte manier om het aantal regels te verminderen dat per apparaatprofiel moet worden beheerd.
 

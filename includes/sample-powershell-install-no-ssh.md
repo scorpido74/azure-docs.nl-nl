@@ -4,13 +4,13 @@ ms.topic: include
 ms.date: 01/30/2019
 ms.service: azure-powershell
 ms.author: sttramer
-ms.openlocfilehash: 5cfb93c51ae1f3aff9250601410e4808ed865a32
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 85a78200fa5c2b90908de6ac0de8723b20ffe56b
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059044"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263966"
 ---
-In dit voorbeeld vereist Azure PowerShell Az 1.0 of hoger. Voer `Get-Module -ListAvailable Az` om te zien welke versies zijn geïnstalleerd. Als u installeren wilt, Zie [Azure PowerShell-module installeren](/powershell/azure/install-az-ps). 
+Voor dit voor beeld is Azure PowerShell AZ 1,0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om te zien welke versies zijn geïnstalleerd. Als u wilt installeren, raadpleegt u [Azure PowerShell-module installeren](/powershell/azure/install-az-ps). 
 
-Voer [Connect AzAccount](/powershell/module/az.accounts/connect-azaccount) zich aanmeldt bij Azure.
+Voer [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) uit om u aan te melden bij Azure.

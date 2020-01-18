@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 544ca198b846ca5032bdf400b300ac076d729d88
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 332f33bb4046a9ca9d6abf9bec75f60bb4ca9e32
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834149"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169095"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Wat zijn Azure Cognitive Services?
 
@@ -27,7 +27,7 @@ Azure Cognitive Services zijn Api's, Sdk's en services die beschikbaar zijn om o
 |:-----------|:------------------|
 |[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")|De Computer Vision-service biedt u toegang tot geavanceerde algoritmen voor het verwerken van afbeeldingen en het retour neren van gegevens.|
 |[Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Custom Vision Service")|Met de Custom Vision Service kunt u aangepaste classificaties voor een installatie kopie maken.|
-|[Face-API](https://docs.microsoft.com/azure/cognitive-services/face/ "Face API")|Face-API biedt toegang tot geavanceerde gezichts algoritmen, waardoor detectie en herkenning van gezichts kenmerken mogelijk zijn.|
+|[Face](https://docs.microsoft.com/azure/cognitive-services/face/ "Face")| De face-service biedt toegang tot geavanceerde gezichts algoritmen, waardoor detectie en herkenning van gezichts kenmerken mogelijk zijn.|
 |[Formulier herkenning](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Form Recognizer") (preview-versie)|Met de formulier herkenning worden sleutel-waardeparen en tabel gegevens uit formulier documenten geïdentificeerd en opgehaald. vervolgens worden gestructureerde gegevens uitgevoerd, inclusief de relaties in het oorspronkelijke bestand.|
 |[Inkt herkenning](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Ink Recognizer") (preview-versie)|Met de functie voor inkt herkenning kunt u gegevens van digitale inkt, vormen en handgeschreven inhoud herkennen en analyseren, en een document structuur met alle herkende entiteiten uitvoeren.|
 |[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Met Video Indexer kunt u inzichten uit uw video halen.|
@@ -61,7 +61,7 @@ Azure Cognitive Services zijn Api's, Sdk's en services die beschikbaar zijn om o
 |:-----------|:------------------|
 |[Bing Nieuws zoeken](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/ "Bing Nieuws zoeken")|Bing News Search retourneert een lijst met nieuws artikelen die relevant zijn voor de query van de gebruiker.|
 |[Bing Video's zoeken](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search/ "Zoeken in Bing Video")|Bing Video Search retourneert een lijst met Video's waarvan is vastgesteld dat deze relevant zijn voor de query van de gebruiker.|
-|[Bing Webzoekopdrachten](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/ "Bing Webzoekopdrachten")|Bing Web Search retourneert een lijst met zoek resultaten die relevant zijn voor de query van de gebruiker.|
+|[Bing Webzoekopdrachten](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/ "Zoeken op het web met Bing")|Bing Web Search retourneert een lijst met zoek resultaten die relevant zijn voor de query van de gebruiker.|
 |[Bing Automatische suggesties](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest "Automatische suggesties van Bing")|Met Bing Automatische suggesties kunt u een term voor een gedeeltelijke Zoek query naar Bing verzenden en een lijst met voorgestelde query's terughalen.|
 |[Bing Aangepaste zoekopdrachten](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search "Bing Custom Search")|Met Bing Aangepaste zoekopdrachten kunt u op maat gemaakte zoek functies maken voor onderwerpen die u bevalt.|
 |[Bing Entiteiten zoeken](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/ "Bing Entiteiten zoeken")|Bing Entity Search retourneert informatie over entiteiten die worden bepaald door Bing, zijn relevant voor de query van een gebruiker.|

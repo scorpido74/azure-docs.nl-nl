@@ -1,6 +1,6 @@
 ---
-title: Inhoud leveren aan klanten | Microsoft Docs
-description: In dit onderwerp biedt een overzicht van wat is betrokken bij het leveren van uw inhoud met Azure Media Services.
+title: Inhoud aan klanten leveren | Microsoft Docs
+description: In dit onderwerp vindt u een overzicht van wat er is betrokken bij het leveren van uw inhoud met Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,148 +14,148 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5db2cb983c0c3cd0e2194f7686964d9ec3828d6f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 22d98656f42f52f2fba0845fac6f1d210d2cf0bd
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61232267"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264675"
 ---
-# <a name="deliver-content-to-customers"></a>Lever inhoud aan klanten
-Wanneer u uw inhoud streamen of video on demand aan klanten leveren bent, wordt het doel is om te hoge kwaliteit video leveren aan verschillende apparaten met verschillende netwerkomstandigheden.
+# <a name="deliver-content-to-customers"></a>Inhoud leveren aan klanten
+Wanneer u uw streaming-of video-on-demand inhoud levert aan klanten, is het doel om video van hoge kwaliteit te leveren aan verschillende apparaten onder verschillende netwerk omstandigheden.
 
-Als u wilt dit doel te bereiken, kunt u het volgende doen:
+Voor dit doel kunt u het volgende doen:
 
-* Uw stream coderen naar een multi-bitrate (adaptieve bitrate) videostream. Dit zorgt voor kwaliteit en netwerkomstandigheden.
-* Microsoft Azure Media Services gebruiken [dynamische verpakking](media-services-dynamic-packaging-overview.md) dynamisch de uw stream in verschillende protocollen opnieuw inpakken. Dit zorgt voor streaming op verschillende apparaten. Media Services ondersteunt de levering van de volgende adaptive bitrate streaming-technologieën: <br/>
-    * **HTTP Live Streaming** (HLS) - toevoegen ' (format = m3u8-aapl) ' pad naar het gedeelte '/ Manifest' van de URL om te zien van de server voor streaming oorsprong om terug te keren back HLS-inhoud voor gebruik op **Apple iOS** systeemeigen apparaten (voor meer informatie. Zie [locators](#locators) en [URL's](#URLs)),
-    * **MPEG-DASH** -toevoegen ' (format = mpd-time-csf) ' pad naar het gedeelte '/ Manifest' van de URL om te zien van de server voor streaming oorsprong om terug te keren MPEG-DASH back-ups maken (Zie voor meer informatie, [locators](#locators) en [URL's](#URLs)),
-    * **Smooth Streaming**.
+* Codeer uw stroom naar een video stroom met een multi-bitrate (Adaptive bitrate). Dit zorgt voor de kwaliteit en netwerk omstandigheden.
+* Gebruik Microsoft Azure Media Services [dynamische verpakking](media-services-dynamic-packaging-overview.md) om uw stroom dynamisch opnieuw te verpakken in verschillende protocollen. Dit zorgt ervoor dat streaming op verschillende apparaten wordt uitgevoerd. Media Services ondersteunt de levering van de volgende Adaptive Bitrate Streaming technologieën: <br/>
+    * **Http live streaming** (HLS)-Voeg ' (Format = M3U8-AAPL) ' toe aan het '/manifest-gedeelte van de URL om de bron server voor streaming te laten terugkeren naar de HLS-inhoud voor gebruik op systeem eigen **Apple IOS** -apparaten (Zie [Locators](#locators) en [url's](#URLs)) voor meer informatie.
+    * **MPEG-Dash** -add ' (Format = mpd-time-KVP) ' pad naar het '/manifest-gedeelte van de URL om de bron server voor streaming te laten terugkeren naar een MPEG-Dash (Zie [Locators](#locators) en [url's](#URLs)),
+    * **Smooth streaming**.
 
 >[!NOTE]
 >Wanneer uw AMS-account is gemaakt, wordt er een **standaardstreaming-eindpunt** met de status **Gestopt** toegevoegd aan uw account. Als u inhoud wilt streamen en gebruik wilt maken van dynamische pakketten en dynamische versleuteling, moet het streaming-eindpunt van waar u inhoud wilt streamen, de status **Wordt uitgevoerd** hebben. 
 
-In dit artikel biedt een overzicht van belangrijke contentlevering concepten.
+Dit artikel bevat een overzicht van belang rijke concepten voor het leveren van inhoud.
 
-Bekende problemen, Zie [bekende problemen](media-services-deliver-content-overview.md#known-issues).
+Zie [bekende problemen](media-services-deliver-content-overview.md#known-issues)als u bekende problemen wilt controleren.
 
 ## <a name="dynamic-packaging"></a>Dynamische verpakking
-Met de dynamische pakketten die Media Services biedt, dat kunt u uw adaptive bitrate MP4- of Smooth Streaming gecodeerde inhoud in de streaming-indelingen die worden ondersteund door Media Services (MPEG-DASH, HLS, Smooth Streaming) leveren zonder te hoeven opnieuw verpakken in een van deze streaming-indelingen. Het is raadzaam om uw inhoud met dynamische verpakking leveren.
+Met de dynamische verpakking die Media Services biedt, kunt u uw adaptieve bitrate MP4 of Smooth Streaming gecodeerde inhoud leveren in streaming-indelingen die worden ondersteund door Media Services (MPEG-DASH, HLS, Smooth Streaming,) zonder deze opnieuw in te pakken streaming-indelingen. We raden u aan uw inhoud met dynamische pakketten te leveren.
 
-Als u wilt profiteren van dynamische pakketten, moet u Codeer uw tussentijds (bron) bestand in een set adaptive bitrate MP4-bestanden of adaptive bitrate Smooth Streaming-bestanden.
+Als u gebruik wilt maken van dynamische pakketten, moet u uw mezzanine-bestand (bron) coderen in een set Adaptive-bitrate MP4-bestanden of adaptieve bitrate Smooth Streaming-bestanden.
 
-Met dynamische verpakking, opslaan en betaalt voor de bestanden in één opslagindeling. Media Services bouwt en levert de juiste reactie op basis van uw aanvragen.
+Met dynamische verpakking slaat u de bestanden op in één opslag indeling en betaalt u deze. Media Services bouwt en onderhoudt de juiste reactie op basis van uw aanvragen.
 
-Dynamische pakketten is beschikbaar voor standard en premium streaming-eindpunten. 
+Dynamische pakketten zijn beschikbaar voor standaard-en Premium-streaming-eind punten. 
 
-Zie voor meer informatie, [dynamische verpakking](media-services-dynamic-packaging-overview.md).
+Zie [dynamische verpakking](media-services-dynamic-packaging-overview.md)voor meer informatie.
 
 ## <a name="filters-and-dynamic-manifests"></a>Filters en dynamische manifesten
-U kunt filters definiëren voor uw activa met Media Services. Deze filters zijn serverzijde regels waarmee uw klanten die zaken als een bepaald deel van een video afspelen of een subset van audio en video voorinstelling die van uw klant apparaat kan verwerken (in plaats van alle voorinstelling die gekoppeld aan de asset zijn) opgeven. Dit filter wordt bereikt door *dynamische manifesten* die worden gemaakt wanneer de klant aanvraagt of het streamen van een video die op basis van een of meer filters hebt opgegeven.
+U kunt filters voor uw assets definiëren met Media Services. Deze filters zijn regels aan de server zijde waarmee uw klanten zaken kunnen doen, zoals het afspelen van een specifieke sectie van een video of het opgeven van een subset van audio-en video weergaven die het apparaat van uw klant kan verwerken (in plaats van alle vertoningen die aan de Asset zijn gekoppeld). Dit filter wordt bereikt via *dynamische manifesten* die worden gemaakt wanneer uw klant een video op basis van een of meer opgegeven filters wil streamen.
 
 Zie voor meer informatie, [Filters en dynamische manifesten](media-services-dynamic-manifest-overview.md).
 
 ## <a name="a-idlocatorslocators"></a><a id="locators"/>Locators
-Als u wilt uw gebruiker voorzien van een URL die kan worden gebruikt om te streamen of te downloaden van uw inhoud, moet u eerst uw asset publiceren door een locator te maken. Een locator biedt een invoerpunt voor toegang tot de bestanden die deel uitmaken van een asset. Media Services ondersteunt twee typen locators:
+Als u uw gebruiker een URL wilt geven die kan worden gebruikt om uw inhoud te streamen of te downloaden, moet u uw asset eerst publiceren door een Locator te maken. Een Locator biedt een toegangs punt voor toegang tot de bestanden in een Asset. Media Services ondersteunt twee typen locators:
 
-* OnDemandOrigin-locators. Deze worden gebruikt voor het streamen van media (bijvoorbeeld MPEG-DASH, HLS of Smooth Streaming) of bestanden progressief te downloaden.
-* Shared access signature (SAS)-URL locators. Deze worden gebruikt voor het downloaden van mediabestanden op uw lokale computer.
+* OnDemandOrigin-Locators. Deze worden gebruikt voor het streamen van media (bijvoorbeeld MPEG-DASH, HLS of Smooth Streaming) of het progressief downloaden van bestanden.
+* URL-Locators voor Shared Access Signature (SAS). Deze worden gebruikt om media bestanden te downloaden naar uw lokale computer.
 
-Een *toegangsbeleid* wordt gebruikt voor het definiëren van de machtigingen (zoals lezen, schrijven en lijst) en de duur waarvoor een client toegang voor een bepaalde asset heeft. Houd er rekening mee dat de machtiging van de lijst (AccessPermissions.List) niet moet worden gebruikt bij het maken van een OnDemandOrigin-locator.
+Een *toegangs beleid* wordt gebruikt voor het definiëren van de machtigingen (zoals lezen, schrijven en lijst) en de duur waarvoor een client toegang heeft voor een bepaalde Asset. Houd er rekening mee dat de lijst machtiging (AccessPermissions. List) niet moet worden gebruikt bij het maken van een OnDemandOrigin-Locator.
 
-Locators hebben een vervaldatum. De Azure-portal een vervaldatum in de toekomst 100 jaar voor locators ingesteld.
+Locators hebben verval datums. In de Azure Portal wordt een verval datum van 100 jaar in de toekomst ingesteld voor Locators.
 
 > [!NOTE]
-> Als u de Azure-portal gebruikt om locators te maken vóór maart 2015, worden de locators zijn ingesteld op verlopen na twee jaar.
+> Als u de Azure Portal hebt gebruikt voor het maken van Locators vóór maart 2015, zijn deze Locators na twee jaar ingesteld op verlopen.
 > 
 > 
 
 Als u de vervaldatum van een locator wilt bijwerken, gebruikt u [REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator)- of [.NET](https://go.microsoft.com/fwlink/?LinkID=533259)-API's. Wanneer u de vervaldatum van een SAS-locator bijwerkt, wordt de URL gewijzigd.
 
-Locators zijn niet ontworpen om toegangsbeheer per gebruiker. U kunt afzonderlijke gebruikers verschillende toegangsrechten geven met behulp van Digital Rights Management (DRM)-oplossingen. Zie voor meer informatie, [Media beveiligen](https://msdn.microsoft.com/library/azure/dn282272.aspx).
+Locators zijn niet ontworpen voor het beheren van toegangs beheer per gebruiker. U kunt verschillende toegangs rechten verlenen aan afzonderlijke gebruikers met behulp van DRM-oplossingen (Digital Rights Management). Zie [media beveiligen](https://msdn.microsoft.com/library/azure/dn282272.aspx)voor meer informatie.
 
-Wanneer u een locator maakt, is er mogelijk een vertraging van 30 seconden vanwege een vereiste voor opslag en doorgifte processen in Azure Storage.
+Wanneer u een Locator maakt, kan er een vertraging van 30 seconden optreden vanwege de vereiste processen voor opslag en doorgifte in Azure Storage.
 
-## <a name="adaptive-streaming"></a>Adaptieve streaming
-Adaptieve bitrate-technologieën kunt videospelertoepassingen voor netwerkomstandigheden bepalen en selecteren van verschillende bitsnelheden. Wanneer de netwerkcommunicatie minder, kan de client een lagere bitsnelheid selecteren zodat afspelen kunt doorgaan met videokwaliteit. Als netwerkomstandigheden verbeteren, wordt de client kunt overschakelen naar een hogere bitrate met verbeterde videokwaliteit. Azure Media Services ondersteunt de volgende adaptive bitrate-technologieën: HTTP Live Streaming (HLS), Smooth Streaming en MPEG-DASH.
+## <a name="adaptive-streaming"></a>Adaptief streamen
+Met adaptieve bitrate technologieën kunnen video speler-toepassingen netwerk omstandigheden bepalen en een aantal bitrates selecteren. Wanneer de netwerk communicatie wordt gedegradeerd, kan de client een lagere bitsnelheid selecteren, zodat het afspelen kan worden voortgezet met een lagere video kwaliteit. Wanneer de netwerk omstandigheden verbeteren, kan de client overschakelen naar een hogere bitrate met verbeterde video kwaliteit. Azure Media Services ondersteunt de volgende Adaptive bitrate technologieën: HTTP Live Streaming (HLS), Smooth Streaming en MPEG-DASH.
 
-Voor gebruikers met het streaming-URL's, moet u eerst een OnDemandOrigin-locator maken. Maakt de locator, ziet u het basispad aan de asset die met de inhoud die u wilt streamen. Als u deze inhoud streamen, moet u echter meer dit pad wijzigen. Kan geen volledige URL naar het manifestbestand van streaming, samenvoegen van de locator padwaarde en het manifest (filename.ism) bestandsnaam. Voeg **/Manifest** en een juiste indeling (indien nodig) naar het pad locator.
+Als u gebruikers wilt voorzien van streaming-Url's, moet u eerst een OnDemandOrigin-Locator maken. Het maken van de Locator geeft u het basispad dat de inhoud bevat die u wilt streamen. Als u deze inhoud echter wilt streamen, moet u dit pad verder aanpassen. Als u een volledige URL naar het streaming-manifest bestand wilt maken, moet u de pad-waarde van de Locator en de naam van het manifest bestand (bestandsnaam. ISM) samen voegen. Voeg vervolgens **/manifest** en de juiste indeling (indien nodig) toe aan het pad van de Locator.
 
 > [!NOTE]
-> U kunt ook uw inhoud streamen via een SSL-verbinding. Om dit te doen, zorg ervoor dat uw streaming-URL's beginnen met HTTPS. Houd er rekening mee dat op dit moment AMS biedt geen ondersteuning voor SSL met aangepaste domeinen.  
+> U kunt ook uw inhoud streamen via een SSL-verbinding. Om dit te doen, moet u ervoor zorgen dat uw streaming-Url's beginnen met HTTPS. Houd er rekening mee dat AMS op dit moment geen ondersteuning biedt voor SSL met aangepaste domeinen.  
 > 
 
-U kunt alleen streamen via SSL als het streaming-eindpunt van waaruit u uw inhoud leveren na 10 September 2014 is gemaakt. Als uw streaming-URL's zijn gebaseerd op het streaming-eindpunten die zijn gemaakt na 10 September 2014, bevat de URL "streaming.mediaservices.windows.net." Streaming-URL's die "origin.mediaservices.windows.net" (de oude indeling bevatten) bieden geen ondersteuning voor SSL. Als de URL in de oude notatie is en u wilt streamen via SSL, maakt u een nieuwe streaming-eindpunt. URL's op basis van het nieuwe streaming-eindpunt gebruiken om uw inhoud streamen via SSL.
+U kunt alleen streamen via SSL als het streaming-eind punt van waaruit u uw inhoud levert, is gemaakt na 10 september 2014. Als uw streaming-Url's zijn gebaseerd op de streaming-eind punten die zijn gemaakt na 10 september 2014, bevat de URL ' streaming.mediaservices.windows.net '. Streaming-Url's die "origin.mediaservices.windows.net" (de oude indeling) bevatten, bieden geen ondersteuning voor SSL. Als uw URL de oude indeling heeft en u via SSL wilt kunnen streamen, maakt u een nieuw streaming-eind punt. Gebruik Url's op basis van het nieuwe streaming-eind punt om uw inhoud te streamen via SSL.
 
-## <a name="a-idurlsstreaming-url-formats"></a><a id="URLs"/>Streaming-URL-indelingen
+## <a name="a-idurlsstreaming-url-formats"></a><a id="URLs"/>streaming-URL-indelingen
 
 ### <a name="mpeg-dash-format"></a>MPEG-DASH-indeling
-{streaming-eindpunt eindpuntnaam-media services-account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=mpd-time-csf)
+{streaming-eindpunt naam-Media Services-account naam}. streaming. Media Services. Windows. net/{Locator-ID} bestands (Format = mpd-time-KVP)
 
 http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)
 
-### <a name="apple-http-live-streaming-hls-v4-format"></a>Apple HTTP Live Streaming (HLS)-V4-indeling
-{streaming-eindpunt eindpuntnaam-media services-account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl)
+### <a name="apple-http-live-streaming-hls-v4-format"></a>Apple HTTP Live Streaming (HLS) v4-indeling
+{streaming-eindpunt naam-Media Services-account naam}. streaming. Media Services. Windows. net/{Locator-ID} bestands (Format = M3U8-AAPL)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (Format = M3U8-AAPL)
 
-### <a name="apple-http-live-streaming-hls-v3-format"></a>Apple HTTP Live Streaming (HLS) V3-indeling
-{streaming-eindpunt eindpuntnaam-media services-account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=m3u8-aapl-v3)
+### <a name="apple-http-live-streaming-hls-v3-format"></a>Indeling van Apple HTTP Live Streaming (HLS) v3
+{streaming-eindpunt naam-Media Services-account naam}. streaming. Media Services. Windows. net/{Locator-ID} bestands (Format = M3U8-AAPL-v3)
 
-http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3)
+http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest (Format = M3U8-AAPL-v3)
 
-### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Apple HTTP Live Streaming (HLS)-indeling met alleen audio-filter
-Standaard alleen audio-nummers zijn opgenomen in de HLS manifest. Dit is vereist voor de Apple Store-certificering voor mobiele netwerken. In dit geval, als een client beschikt niet over voldoende bandbreedte of is verbonden via een verbinding 2G, afspelen schakelt over naar alleen audio. Hierdoor blijven inhoudsstreaming zonder buffer, maar er is geen video. In sommige scenario's mogelijk player bufferfuncties voorkeur worden via alleen audio. Als u verwijderen van het spoor alleen audio wilt, voegt u toe **alleen audio = false** naar de URL.
+### <a name="apple-http-live-streaming-hls-format-with-audio-only-filter"></a>Apple HTTP Live Streaming-indeling (HLS) met filter voor alleen audio
+Audio-alleen tracks worden standaard opgenomen in het HLS-manifest. Dit is vereist voor de Apple Store-certificering voor mobiele netwerken. Als een client niet voldoende band breedte heeft of verbinding heeft via een 2G-verbinding, worden de afspeel switches alleen naar audio gestuurd. Zo kunt u het streamen van inhoud zonder buffering houden, maar er is geen video. In sommige gevallen is het mogelijk dat het bufferen van spelers de voor keur heeft voor alleen audio. Als u het audio schema alleen wilt verwijderen, voegt u **alleen audio toe = False** aan de URL.
 
 http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3,audio-only=false)
 
-Zie voor meer informatie, [ondersteuning voor dynamische Manifest van de samenstelling en HLS uitvoer extra functies](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
+Zie voor meer informatie [dynamische manifest compositie ondersteuning en HLS uitvoer extra functies](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/).
 
-### <a name="smooth-streaming-format"></a>Smooth Streaming-indeling
+### <a name="smooth-streaming-format"></a>Smooth Streaming indeling
 {streaming-eindpuntnaam-media services-accountnaam}.streaming.mediaservices.windows.net/{locator-id}/{bestandsnaam}.ism/Manifest
 
 Voorbeeld:
 
 http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest
 
-### <a id="fmp4_v20"></a>Smooth Streaming 2.0-manifest (verouderde manifest)
-Standaard bevat manifestindeling Smooth Streaming de herhalingen tag (-r-code). Sommige spelers bieden echter geen ondersteuning voor de r-code. Clients met deze spelers kunnen een indeling waarbij de r-code gebruiken:
+### <a id="fmp4_v20"></a>Smooth Streaming 2,0-manifest (verouderd manifest)
+Smooth Streaming manifest-indeling bevat standaard de herhalings code (r-tag). Sommige spelers bieden echter geen ondersteuning voor de r-tag. Clients met deze spelers kunnen een indeling gebruiken waarmee de r-code wordt uitgeschakeld:
 
-{streaming-eindpunt eindpuntnaam-media services-account name}.streaming.mediaservices.windows.net/{locator ID}/{filename}.ism/Manifest(format=fmp4-v20)
+{streaming-eindpunt naam-Media Services-account naam}. streaming. Media Services. Windows. net/{Locator-ID} bestands (Format = fmp4-V20)
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
+    http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=fmp4-v20)
 
-## <a name="progressive-download"></a>Progressief downloaden
-Met progressief downloaden, kunt u beginnen met het afspelen van media voordat het hele bestand is gedownload. U downloaden niet (ISM * ismv, isma, ismt of ismc)-bestanden progressief.
+## <a name="progressive-download"></a>Progressieve down load
+Met progressief downloaden kunt u beginnen met het afspelen van media voordat het hele bestand is gedownload. U kunt de bestanden van ISM * (ismv, ISMA, ismt en ismc) niet progressief downloaden.
 
-Voor het progressief downloaden van inhoud, gebruik het OnDemandOrigin type locator. Het volgende voorbeeld ziet u de URL die is gebaseerd op het OnDemandOrigin type locator:
+Als u inhoud progressief wilt downloaden, gebruikt u het OnDemandOrigin-type Locator. In het volgende voor beeld wordt de URL weer gegeven die is gebaseerd op het OnDemandOrigin type Locator:
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 
-U moet alle opslag versleuteld activa die u wilt streamen van de oorsprong-service voor het progressief downloaden decoderen.
+U moet alle door opslag versleutelde assets ontsleutelen die u wilt streamen van de oorspronkelijke service voor progressief downloaden.
 
-## <a name="download"></a>Downloaden
-Als u wilt uw inhoud naar een client-apparaat worden gedownload, moet u een SAS-Locator maken. De SAS-locator geeft u toegang tot de Azure Storage-container waarin uw bestand zich bevindt. U hebt voor het bouwen van de download-URL, om in te sluiten van de bestandsnaam tussen de host en de SAS-handtekening.
+## <a name="download"></a>Download
+Als u uw inhoud wilt downloaden naar een client apparaat, moet u een SAS-Locator maken. De SAS-Locator geeft u toegang tot de Azure Storage-container waarin uw bestand zich bevindt. Als u de download-URL wilt maken, moet u de bestands naam tussen de host en de SAS-hand tekening insluiten.
 
-Het volgende voorbeeld ziet u de URL die is gebaseerd op de SAS-locator:
+In het volgende voor beeld wordt de URL weer gegeven die is gebaseerd op de SAS-Locator:
 
     https://test001.blob.core.windows.net/asset-ca7a4c3f-9eb5-4fd8-a898-459cb17761bd/BigBuckBunny.mp4?sv=2012-02-12&se=2014-05-03T01%3A23%3A50Z&sr=c&si=7c093e7c-7dab-45b4-beb4-2bfdff764bb5&sig=msEHP90c6JHXEOtTyIWqD7xio91GtVg0UIzjdpFscHk%3D
 
 De volgende overwegingen zijn van toepassing:
 
-* U moet alle opslag versleuteld activa die u wilt streamen van de oorsprong-service voor het progressief downloaden decoderen.
-* Een download is niet voltooid binnen de 12 uur mislukken.
+* U moet alle door opslag versleutelde assets ontsleutelen die u wilt streamen van de oorspronkelijke service voor progressief downloaden.
+* Een down load die niet binnen 12 uur is voltooid, mislukt.
 
 ## <a name="streaming-endpoints"></a>Streaming-eindpunten
 
-Een streaming-eindpunt vertegenwoordigt een streamingservice waarmee inhoud kan worden geleverd rechtstreeks naar een clientafspeeltoepassing of naar een netwerk voor contentlevering (CDN) voor verdere distributie. De uitgaande stroom van een streaming-eindpunt-service is een live stream of een activum video on demand in Media Services-account. Er zijn twee soorten streaming-eindpunten, **standard** en **premium**. Zie [Streaming endpoints overview](media-services-streaming-endpoints-overview.md) (Overzicht van streaming-eindpunten) voor meer informatie.
+Een streaming-eind punt vertegenwoordigt een streaming-service die inhoud rechtstreeks kan leveren aan een client speler of een CDN (Content Delivery Network) voor verdere distributie. De uitgaande stroom van een streaming-eindpunt service kan een live stream of een video-on-demand-asset in uw Media Services-account zijn. Er zijn twee soorten streaming-eind punten, **Standard** en **Premium**. Zie [Streaming endpoints overview](media-services-streaming-endpoints-overview.md) (Overzicht van streaming-eindpunten) voor meer informatie.
 
 >[!NOTE]
 >Wanneer uw AMS-account is gemaakt, wordt er een **standaardstreaming-eindpunt** met de status **Gestopt** toegevoegd aan uw account. Als u inhoud wilt streamen en gebruik wilt maken van dynamische pakketten en dynamische versleuteling, moet het streaming-eindpunt van waar u inhoud wilt streamen, de status **Wordt uitgevoerd** hebben. 
 
 ## <a name="known-issues"></a>Bekende problemen
-### <a name="changes-to-smooth-streaming-manifest-version"></a>Wijzigingen in de Smooth Streaming manifest versie
-Vóór de release van juli 2016 service--wanneer activa die worden geproduceerd door Media Encoder Standard Media Encoder Premium Workflow, of de eerdere versie van Azure Media Encoder zijn gestreamd met behulp van dynamische pakketten--de Smooth Streaming manifest geretourneerd dan in overeenstemming zijn met versie 2.0. In versie 2.0 Gebruik de duur van het fragment niet de zogeheten herhalen (r)-codes. Bijvoorbeeld:
+### <a name="changes-to-smooth-streaming-manifest-version"></a>Wijzigingen in Smooth Streaming manifest versie
+Vóór de release van de juli 2016-service--wanneer activa die zijn geproduceerd door Media Encoder Standard, Media Encoder Premium Workflow of de eerdere Azure Media Encoder zijn gestreamd met behulp van dynamische pakketten, wordt het resulterende Smooth Streaming-manifest in overeenstemming gebracht met de versie 2,0. In versie 2,0 maken de fragment duur geen gebruik van de zogenaamde REPEAT-Tags (' r '). Bijvoorbeeld:
 
 
     <?xml version="1.0" encoding="UTF-8"?>
@@ -169,7 +169,7 @@ Vóór de release van juli 2016 service--wanneer activa die worden geproduceerd 
         </StreamIndex>
     </SmoothStreamingMedia>
 
-In de release van juli 2016-service voldoet het gegenereerde Smooth Streaming-manifest naar versie 2.2, met een fragment duur met herhalingen tags. Bijvoorbeeld:
+In de service release van juli 2016 voldoet het gegenereerde Smooth Streaming-manifest aan versie 2,2, met een fragment duur met behulp van herhalings codes. Bijvoorbeeld:
 
     <?xml version="1.0" encoding="UTF-8"?>
     <SmoothStreamingMedia MajorVersion="2" MinorVersion="2" Duration="8000" TimeScale="1000">
@@ -179,7 +179,7 @@ In de release van juli 2016-service voldoet het gegenereerde Smooth Streaming-ma
         </StreamIndex>
     </SmoothStreamingMedia>
 
-Sommige van de verouderde Smooth Streaming-clients bieden mogelijk geen ondersteuning voor de herhalingen tags en niet worden geladen van het manifest. Risico's te beperken, kunt u de parameter verouderde manifestindeling **(format = fmp4-v20)** of bijwerken van de client naar de nieuwste versie, die ondersteuning biedt voor herhalingen tags. Zie voor meer informatie, [Smooth Streaming 2.0](media-services-deliver-content-overview.md#fmp4_v20).
+Sommige van de verouderde Smooth Streaming-clients bieden mogelijk geen ondersteuning voor de herhalings codes en kunnen het manifest niet laden. Als u dit probleem wilt verhelpen, kunt u de verouderde manifest indelings parameter gebruiken **(Format = fmp4-V20)** of uw client bijwerken naar de meest recente versie, die herhaalde Tags ondersteunt. Zie [Smooth Streaming 2,0](media-services-deliver-content-overview.md#fmp4_v20)voor meer informatie.
 
 ## <a name="media-services-learning-paths"></a>Media Services-leertrajecten
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -188,5 +188,5 @@ Sommige van de verouderde Smooth Streaming-clients bieden mogelijk geen onderste
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Verwante onderwerpen
-[Locators voor Media Services bijwerken na gebruik opslagsleutels](media-services-roll-storage-access-keys.md)
+[Media Services Locators na Rolling Storage-sleutels bijwerken](media-services-roll-storage-access-keys.md)
 

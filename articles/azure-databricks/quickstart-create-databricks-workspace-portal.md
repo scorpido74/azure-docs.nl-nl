@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: 452efd5c790244ff035f06673342a36522db9580
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: e212c95a827b01485d4bdfdc557e459a92162c88
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889018"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263201"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Quickstart: Een Spark-taak uitvoeren op Azure Databricks met Azure portal
 
@@ -54,11 +54,8 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
     |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/management/overview.md) voor meer informatie. |
     |**Locatie**     | Selecteer **US - west 2**. Zie [Producten beschikbaar per regio](https://azure.microsoft.com/regions/services/) voor andere beschikbare regio's.        |
     |**Prijscategorie**     |  Kies tussen **Standard**, **Premium**of **proef versie**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
-    |**Virtueel netwerk**     |  Kies voor het implementeren van een Azure Databricks-werk ruimte in uw eigen Virtual Network (VNet). Zie [Deploy Azure Databricks in uw Azure Virtual Network (VNet-injectie)](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject)voor meer informatie.        |
 
-    Selecteer **Maken**.
-
-4. Het maken van de werkruimte duurt enkele minuten. Tijdens het maken van de werk ruimte kunt u de implementatie status weer geven in **meldingen**.
+4. Selecteer **controleren + maken**en vervolgens **maken**. Het maken van de werkruimte duurt enkele minuten. Tijdens het maken van de werk ruimte kunt u de implementatie status weer geven in **meldingen**.
 
     ![Tegel implementatie van Databricks](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Tegel implementatie van Databricks")
 

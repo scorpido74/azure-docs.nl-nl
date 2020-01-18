@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 50325b75280160a3fefa5b5487df29a25e53bddd
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: dcb12da680d70e1f0ce4cd763bee340bb3416c6b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966958"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169951"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Uw model gebruiken met de Voorspellings-API
 
@@ -110,8 +110,8 @@ In deze hand leiding maakt u gebruik van een lokale installatie kopie en kopieer
 
 1. Voer de volgende informatie in:
    * Stel het `namespace` veld in op de naam van uw project.
-   * Vervang de tijdelijke `<Your prediction key>` aanduiding door de sleutel waarde die u eerder hebt opgehaald.
-   * Vervang de tijdelijke `<Your prediction URL>` aanduiding door de URL die u eerder hebt opgehaald.
+   * Vervang de tijdelijke aanduiding `<Your prediction key>` door de sleutel waarde die u eerder hebt opgehaald.
+   * Vervang de tijdelijke aanduiding `<Your prediction URL>` door de URL die u eerder hebt opgehaald.
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
@@ -135,7 +135,7 @@ Wanneer u de toepassing uitvoert, wordt u gevraagd om een pad naar een afbeeldin
 In deze hand leiding hebt u geleerd hoe u installatie kopieën kunt verzenden naar de classificatie/detectie van uw aangepaste installatie kopie en hoe C# u via een programma een antwoord ontvangt met de SDK. Leer vervolgens hoe u end-to-end-scenario's kunt volt C#ooien met of aan de slag kunt met een andere taal-SDK.
 
 * [Snelstartgids: .NET SDK](csharp-tutorial.md)
-* [Snelstart: Python-SDK](python-tutorial.md)
-* [Snelstart: Java-SDK](java-tutorial.md)
-* [Snelstart: Node-SDK](node-tutorial.md)
-* [Snelstart: Go-SDK](go-tutorial.md)
+* [Snelstartgids: python SDK](python-tutorial.md)
+* [Snelstartgids: Java SDK](java-tutorial.md)
+* [Snelstartgids: node-SDK](node-tutorial.md)
+* [Snelstartgids: go-SDK](go-tutorial.md)

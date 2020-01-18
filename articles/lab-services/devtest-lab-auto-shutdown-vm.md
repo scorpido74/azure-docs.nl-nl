@@ -1,5 +1,5 @@
 ---
-title: Instellingen voor automatisch afsluiten configureren voor een virtuele machine in Azure DevTest Labs | Microsoft Docs
+title: Instellingen voor automatisch afsluiten configureren voor een virtuele machine in Azure DevTest Labs
 description: Meer informatie over het configureren van instellingen voor automatisch afsluiten voor een virtuele machine (VM), zodat de VM wordt afgesloten wanneer deze niet wordt gebruikt.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 934e8fd71c901c89f328c777103a8cb39bf21ac4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 4cca4fd4bc9cd880c5b7a75e54e8cfd8192bae1e
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68361568"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170195"
 ---
 # <a name="configure-autoshutdown-settings-for-a-vm-in-azure-devtest-labs"></a>Instellingen voor automatisch afsluiten configureren voor een virtuele machine in Azure DevTest Labs
 Met Azure DevTest Labs kunt u kosten besparen en verspiling in uw Labs minimaliseren door beleid (instellingen) voor elk lab te beheren. In dit artikel leest u hoe u het beleid voor automatisch afsluiten configureert voor een Lab-account en instellingen voor automatisch afsluiten configureert voor een lab in het lab-account. Zie [Lab-beleid in azure DevTest Labs definiëren](devtest-lab-set-lab-policy.md)voor meer informatie over het instellen van elk lab-beleid.  
@@ -29,7 +29,7 @@ Als eigenaar van het lab kunt u een afsluit schema configureren voor alle virtue
 
 1. Op de start pagina van uw Lab selecteert u **configuratie en beleid**.
 2. Selecteer **beleid voor automatisch afsluiten** in de sectie **schema's** van het menu links.
-3. Selecteer een van de opties. De volgende secties bevatten meer informatie over deze opties: Het set-beleid is alleen van toepassing op nieuwe virtuele machines die zijn gemaakt in het lab en niet op de bestaande virtuele machines. 
+3. Selecteer een van de opties. In de volgende secties vindt u meer informatie over deze opties: het set-beleid is alleen van toepassing op nieuwe virtuele machines die zijn gemaakt in het lab en niet op de bestaande virtuele machines. 
 
     ![Opties voor automatisch afsluiten van beleid](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 
@@ -38,7 +38,7 @@ Het beleid voor automatisch afsluiten helpt Lab-afval te minimaliseren door de t
 
 Voer de volgende stappen uit om de beleids regels voor een Lab weer te geven (en te wijzigen):
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 3. Selecteer in de lijst met Labs het gewenste Lab.   
 4. Selecteer **configuratie en beleid**.
@@ -47,7 +47,7 @@ Voer de volgende stappen uit om de beleids regels voor een Lab weer te geven (en
 5. Selecteer in het deel venster **configuratie en beleid** van de test **automatisch afsluiten** onder **planningen**.
    
     ![Automatisch afsluiten](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
-6. Selecteer **aan** om dit beleid in te scha kelen en **uit** te scha kelen.
+6. Selecteer aan om dit beleid **in te scha** kelen en **uit** te scha kelen.
 7. Als u dit beleid inschakelt, geeft u de tijd (en tijd zone) op om alle virtuele machines in het huidige Lab af te sluiten.
 8. Geef **Ja** of **Nee** op voor de optie voor het verzenden van een melding 15 minuten vóór de opgegeven tijd voor automatisch afsluiten. Als u **Ja**kiest, voert u het eind punt van de webhook-URL of het e-mail adres in waarmee u wilt dat de melding wordt gepost of verzonden. De gebruiker ontvangt een melding en krijgt de mogelijkheid om het afsluiten te vertragen. Zie de sectie [meldingen](#notifications) voor meer informatie. 
 9. Selecteer **Opslaan**.

@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/16/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 236d29d2c50a792bc4dc11916964db47ca092807
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: d95a3334fe5a7767446c92f8f8668e4da09fca42
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659590"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169859"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Snelstartgids: een Azure Stream Analytics-taak in Visual Studio code maken (preview)
 
@@ -179,9 +179,11 @@ Volg de instructies in [Query's testen lokaal met voorbeeld gegevens](visual-stu
    |IotHubNamespace|MyASAIoTHub|Kies of typ de naam van uw IoT-hub. IoT-hub-namen worden automatisch gedetecteerd als ze worden gemaakt in hetzelfde abonnement.|
    |SharedAccessPolicyName|iothubowner| |
 
-   U kunt de functie code lens gebruiken om een teken reeks op te geven, een selectie uit een vervolg keuzelijst te selecteren of de tekst rechtstreeks in het bestand te wijzigen. Op de volgende scherm afbeelding ziet u een voor beeld **van uw abonnementen** .
+   U kunt de functie code lens gebruiken om een teken reeks op te geven, een selectie uit een vervolg keuzelijst te selecteren of de tekst rechtstreeks in het bestand te wijzigen. Op de volgende scherm afbeelding ziet u een voor beeld **van uw abonnementen** . De referenties worden automatisch weer gegeven en opgeslagen in de lokale referentie beheerder.
 
    ![Invoer in Visual Studio code configureren](./media/quick-create-vs-code/configure-input.png)
+
+   ![Invoer waarde in Visual Studio code configureren](./media/quick-create-vs-code/configure-input-value.png)
 
 ## <a name="preview-input"></a>Preview-invoer
 

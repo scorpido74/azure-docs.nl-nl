@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2019
+ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 41a2fac48980cf376c833b022b833cfcf1e99821
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 07350ffe4a57bfe4a79bfce5d821b51535867935
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701878"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166998"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Zelfstudie: Custom Vision Service gebruiken om afbeeldingsclassificatie uit te voeren aan de rand
 
@@ -42,7 +42,7 @@ implementeren </center>
 >[!TIP]
 >Deze zelf studie is een vereenvoudigde versie van de [Custom Vision en Azure IOT Edge op een voorbeeld project van Raspberry Pi 3](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) . Deze zelf studie is ontworpen om te worden uitgevoerd op een virtuele machine in de Cloud en maakt gebruik van statische installatie kopieën om de afbeeldings classificatie te trainen en te testen, wat nuttig is voor iemand die alleen begint met het evalueren van Custom Vision op IoT Edge. Het voorbeeld project maakt gebruik van fysieke hardware en stelt een feed voor een live-camera in voor het trainen en testen van de classificatie van de installatie kopie, wat nuttig is voor iemand die een gedetailleerd, realistisch scenario wil uitproberen.
 
-Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door lopen om uw omgeving in te stellen voor Linux-container ontwikkeling: [ontwikkel IOT Edge-modules voor Linux-apparaten](tutorial-develop-for-linux.md). Door deze zelf studie te volt ooien, moet u aan de volgende vereisten voldoen: 
+Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door lopen om uw omgeving in te stellen voor Linux-container ontwikkeling: [ontwikkel IOT Edge-modules voor Linux-apparaten](tutorial-develop-for-linux.md). Door deze zelf studie te volt ooien, moet u aan de volgende vereisten voldoen:
 
 * Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 * Een [Linux-apparaat met Azure IOT Edge](quickstart-linux.md)
@@ -50,23 +50,23 @@ Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door 
 * [Visual Studio-code](https://code.visualstudio.com/) die is geconfigureerd met de [Azure IOT-hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 * [Docker CE](https://docs.docker.com/install/) is geconfigureerd voor het uitvoeren van Linux-containers.
 
-Als u een IoT Edge module wilt ontwikkelen met de Custom Vision-service, installeert u de volgende aanvullende vereisten op uw ontwikkel computer: 
+Als u een IoT Edge module wilt ontwikkelen met de Custom Vision-service, installeert u de volgende aanvullende vereisten op uw ontwikkel computer:
 
 * [Python](https://www.python.org/downloads/)
 * [Git](https://git-scm.com/downloads)
-* [Python-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 
+* [Python-extensie voor Visual Studio code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
 ## <a name="build-an-image-classifier-with-custom-vision"></a>Een afbeeldingsclassificatie bouwen met Custom Vision
 
 Voor het bouwen van een afbeeldingsclassificatie moet u een Custom Vision-project maken en trainingsafbeeldingen verstrekken. Zie [Een classificatie bouwen met Custom Vision](../cognitive-services/custom-vision-service/getting-started-build-a-classifier.md) voor meer informatie over de stappen die u in deze sectie uitvoert.
 
-Wanneer de afbeeldingsclassificatie is gemaakt en getraind, kunt u deze als een Docker-container exporteren en implementeren op een IoT Edge-apparaat. 
+Wanneer de afbeeldingsclassificatie is gemaakt en getraind, kunt u deze als een Docker-container exporteren en implementeren op een IoT Edge-apparaat.
 
 ### <a name="create-a-new-project"></a>Een nieuw project maken
 
 1. Navigeer in uw webbrowser naar de [Custom Vision-webpagina](https://customvision.ai/).
 
-2. Selecteer **Aanmelden** en meld u aan met het account dat u gebruikt om toegang te krijgen tot Azure-resources. 
+2. Selecteer **Aanmelden** en meld u aan met het account dat u gebruikt om toegang te krijgen tot Azure-resources.
 
 3. Selecteer **Nieuw project**.
 
@@ -74,7 +74,7 @@ Wanneer de afbeeldingsclassificatie is gemaakt en getraind, kunt u deze als een 
 
    | Veld | Waarde |
    | ----- | ----- |
-   | Naam | Geef een naam op voor uw project, bijvoorbeeld **EdgeTreeClassifier**. |
+   | Name | Geef een naam op voor uw project, bijvoorbeeld **EdgeTreeClassifier**. |
    | Beschrijving | Optionele projectbeschrijving. |
    | Bron | Selecteer een van de Azure-resource groepen die een Custom Vision Service Resource bevat of **Maak een nieuwe** als u deze nog niet hebt toegevoegd. |
    | Projecttypen | **Classificatie** |
@@ -86,21 +86,21 @@ Wanneer de afbeeldingsclassificatie is gemaakt en getraind, kunt u deze als een 
 
 ### <a name="upload-images-and-train-your-classifier"></a>Afbeeldingen uploaden en de classificatie trainen
 
-Om een afbeeldingsclassificatie te maken, hebt u een reeks trainingsafbeeldingen en testafbeeldingen nodig. 
+Om een afbeeldingsclassificatie te maken, hebt u een reeks trainingsafbeeldingen en testafbeeldingen nodig.
 
-1. U kunt voorbeeldafbeeldingen klonen of van de [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows)- opslagplaats downloaden naar uw lokale ontwikkelcomputer. 
+1. U kunt voorbeeldafbeeldingen klonen of van de [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows)- opslagplaats downloaden naar uw lokale ontwikkelcomputer.
 
    ```cmd/sh
    git clone https://github.com/Microsoft/Cognitive-CustomVision-Windows.git
    ```
 
-2. Ga terug naar uw Custom Vision-project en selecteer **Afbeeldingen toevoegen**. 
+2. Ga terug naar uw Custom Vision-project en selecteer **Afbeeldingen toevoegen**.
 
-3. Blader naar de git-opslagplaats die u lokaal hebt gekloond en navigeer naar de eerste afbeeldingenmap, **Cognitive-CustomVision-Windows / Samples / afbeeldingen / Hemlock**. Selecteer alle 10 de afbeeldingen in de map en kies **Openen**. 
+3. Blader naar de git-opslagplaats die u lokaal hebt gekloond en navigeer naar de eerste afbeeldingenmap, **Cognitive-CustomVision-Windows / Samples / afbeeldingen / Hemlock**. Selecteer alle 10 de afbeeldingen in de map en kies **Openen**.
 
-4. Voeg het label **hemlock** toe aan deze groep afbeeldingen en druk op **Enter** om het label toe te passen. 
+4. Voeg het label **hemlock** toe aan deze groep afbeeldingen en druk op **Enter** om het label toe te passen.
 
-5. Selecteer **10 bestanden uploaden**. 
+5. Selecteer **10 bestanden uploaden**.
 
    ![Met hemlock gelabelde bestanden uploaden naar Custom Vision](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
@@ -108,17 +108,17 @@ Om een afbeeldingsclassificatie te maken, hebt u een reeks trainingsafbeeldingen
 
 7. Selecteer opnieuw **Afbeeldingen toevoegen**.
 
-8. Blader naar de tweede afbeeldingenmap, **Cognitive-CustomVision-Windows / Samples / afbeeldingen / Japanese Cherry**. Selecteer alle 10 de afbeeldingen in de map en kies **Openen**. 
+8. Blader naar de tweede afbeeldingenmap, **Cognitive-CustomVision-Windows / Samples / afbeeldingen / Japanese Cherry**. Selecteer alle 10 de afbeeldingen in de map en kies **Openen**.
 
-9. Voeg het label **japanese cherry** toe aan deze groep afbeeldingen en druk op **Enter** om het label toe te passen. 
+9. Voeg het label **japanese cherry** toe aan deze groep afbeeldingen en druk op **Enter** om het label toe te passen.
 
-10. Selecteer **10 bestanden uploaden**. Wanneer de afbeeldingen zijn geüpload, selecteert u **Gereed**. 
+10. Selecteer **10 bestanden uploaden**. Wanneer de afbeeldingen zijn geüpload, selecteert u **Gereed**.
 
-11. Wanneer beide sets met afbeeldingen zijn gelabeld en geüpload, selecteert u **Trainen** om de classificatie te trainen. 
+11. Wanneer beide sets met afbeeldingen zijn gelabeld en geüpload, selecteert u **Trainen** om de classificatie te trainen.
 
 ### <a name="export-your-classifier"></a>De classificatie exporteren
 
-1. Nadat u de classificatie hebt getraind, selecteert u **Exporteren** op de pagina Prestaties van de classificatie. 
+1. Nadat u de classificatie hebt getraind, selecteert u **Exporteren** op de pagina Prestaties van de classificatie.
 
    ![De getrainde classificatie van de installatiekopie exporteren](./media/tutorial-deploy-custom-vision/export.png)
 
@@ -263,7 +263,8 @@ In deze sectie voegt u een nieuwe module aan dezelfde CustomVisionSolution toe e
                 print("Response from classification service: (" + str(response.status_code) + ") " + json.dumps(response.json()) + "\n")
             except Exception as e:
                 print(e)
-                print("Response from classification service: (" + str(response.status_code))
+                print("No response from classification service")
+                return None
 
         return json.dumps(response.json())
 
@@ -282,7 +283,8 @@ In deze sectie voegt u een nieuwe module aan dezelfde CustomVisionSolution toe e
 
             while True:
                 classification = sendFrameForProcessing(imagePath, imageProcessingEndpoint)
-                send_to_hub(classification)
+                if classification:
+                    send_to_hub(classification)
                 time.sleep(10)
 
         except KeyboardInterrupt:
@@ -326,15 +328,15 @@ In plaats van een echte camera te gebruiken om dit scenario een afbeeldingsfeed 
 
 3. Blader naar de map van uw IoT Edge-oplossing en plak de testafbeelding in de map **modules** / **cameraCapture**. De afbeelding moet zich in dezelfde map bevinden als het bestand main.py dat u in de vorige sectie hebt bewerkt. 
 
-3. Open in Visual Studio Code het bestand **Dockerfile.amd64** voor de cameraCapture-module. 
+4. Open in Visual Studio Code het bestand **Dockerfile.amd64** voor de cameraCapture-module.
 
-4. Voeg na de regel die de werkmap instelt, `WORKDIR /app`, de volgende regel code toe: 
+5. Voeg na de regel die de werkmap instelt, `WORKDIR /app`, de volgende regel code toe:
 
    ```Dockerfile
    ADD ./test_image.jpg .
    ```
 
-5. Sla de Dockerfile op. 
+6. Sla de Dockerfile op.
 
 ### <a name="prepare-a-deployment-manifest"></a>Een implementatiemanifest voorbereiden
 
@@ -358,7 +360,7 @@ De IoT Edge-extensie voor Visual Studio Code bevat een sjabloon in elke IoT Edge
 
     Als u de Custom Vision-module een andere naam hebt gegeven dan *classificatie*, werk dan de waarde van het afbeeldingsverwerkingseindpunt dienovereenkomstig bij. 
 
-5. Werk onderaan het bestand de parameter **routes** voor de module $edgeHub bij. U wilt de voorspellingsresultaten van cameraCapture omleiden naar IoT Hub. 
+6. Werk onderaan het bestand de parameter **routes** voor de module $edgeHub bij. U wilt de voorspellingsresultaten van cameraCapture omleiden naar IoT Hub.
 
     ```json
         "routes": {
@@ -410,7 +412,6 @@ Vanuit Visual Studio code klikt u met de rechter muisknop op de naam van uw IoT 
 
 De resultaten van de Custom Vision-module, die als berichten vanuit de module cameraCapture zijn verzonden, geven de waarschijnlijkheid aan dat de afbeelding een Canadese den of een Japanse kers is. Omdat het een afbeelding van een Canadese den is, moet u de waarschijnlijkheid 1.0 zien. 
 
-
 ## <a name="clean-up-resources"></a>Resources opschonen
 
 Als u van plan bent door te gaan met het volgende aanbevolen artikel, kunt u de resources en configuraties die u hebt gemaakt behouden en opnieuw gebruiken. U kunt ook hetzelfde IoT Edge-apparaat blijven gebruiken als een testapparaat. 
@@ -418,7 +419,6 @@ Als u van plan bent door te gaan met het volgende aanbevolen artikel, kunt u de 
 Anders kunt u de lokale configuraties en de Azure-resources die u in dit artikel hebt gebruikt, verwijderen om kosten te voor komen. 
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

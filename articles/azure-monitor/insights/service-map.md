@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: d4fd443959604f1a50dffbcb646bbe66fa159f8d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0f2181a388a5329dbc16ce8968da79529b22ea85
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402595"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168180"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Servicetoewijzing-oplossing gebruiken in azure
 
@@ -27,7 +27,7 @@ In dit artikel worden de details van het voorbereiden en gebruiken van Serviceto
 * De afhankelijkheids agent die is geïnstalleerd op de Windows-computer of de Linux-server.
 
 >[!NOTE]
->Als u Servicetoewijzing al hebt geïmplementeerd, kunt u nu ook uw Maps in Azure Monitor voor VM's weer geven, inclusief aanvullende functies voor het controleren van de status en prestaties van de virtuele machine. Zie [Azure monitor voor VM's-overzicht](../../azure-monitor/insights/vminsights-overview.md)voor meer informatie. Zie de volgende [Veelgestelde vragen](vminsights-faq.md#how-is-azure-monitor-for-vms-map-feature-different-from-service-map)voor meer informatie over de verschillen tussen de functie servicetoewijzing solution en Azure monitor voor VM's map.
+>Als u Servicetoewijzing al hebt geïmplementeerd, kunt u nu ook uw Maps in Azure Monitor voor VM's weer geven, inclusief aanvullende functies voor het controleren van de status en prestaties van de virtuele machine. Zie [Azure monitor voor VM's-overzicht](../../azure-monitor/insights/vminsights-overview.md)voor meer informatie. Zie de volgende [Veelgestelde vragen](../faq.md#azure-monitor-for-vms-preview)voor meer informatie over de verschillen tussen de functie servicetoewijzing solution en Azure monitor voor VM's map.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -321,7 +321,7 @@ Omdat er meerdere records kunnen bestaan voor een opgegeven proces en computer i
 
 ### <a name="connections"></a>Verbindingen
 
-Metrische verbindings gegevens worden geschreven naar een nieuwe tabel in Log Analytics-VMConnection. Deze tabel bevat informatie over de verbindingen voor een machine (inkomend en uitgaand). Verbindings gegevens worden ook weer gegeven met Api's die de mogelijkheid bieden om een specifieke metriek te verkrijgen tijdens een tijd venster.  TCP-verbindingen die voortkomen uit '*Accept*-ING ' op een luisterende socket zijn inkomend, terwijl ze zijn gemaakt door *verbinding te maken*met een bepaald IP-adres en poort uitgaand zijn. De richting van een verbinding wordt vertegenwoordigd door de eigenschap direction, die kan worden ingesteld op **Inkomend** of **uitgaand**. 
+Metrische verbindings gegevens worden geschreven naar een nieuwe tabel in Log Analytics-VMConnection. Deze tabel bevat informatie over de verbindingen voor een machine (inkomend en uitgaand). Verbindings gegevens worden ook weer gegeven met Api's die de mogelijkheid bieden om een specifieke metriek te verkrijgen tijdens een tijd venster.  TCP-verbindingen die het resultaat zijn van het accepteren van een luisterende socket zijn inkomend, terwijl deze worden gemaakt door verbinding te maken met een bepaald IP-adres en een andere poort. De richting van een verbinding wordt vertegenwoordigd door de eigenschap direction, die kan worden ingesteld op **Inkomend** of **uitgaand**. 
 
 Records in deze tabellen worden gegenereerd op basis van gegevens die zijn gerapporteerd door de afhankelijkheids agent. Elke record vertegenwoordigt een observatie over een tijds interval van één minuut. De eigenschap TimeGenerated geeft het begin van het tijds interval aan. Elke record bevat informatie voor het identificeren van de respectieve entiteit, dat wil zeggen, verbinding of poort, en de metrische gegevens die aan die entiteit zijn gekoppeld. Op dit moment worden alleen netwerk activiteiten gerapporteerd die worden uitgevoerd via TCP via IPv4.
 

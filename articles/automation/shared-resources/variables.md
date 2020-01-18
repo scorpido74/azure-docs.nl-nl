@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e56a1c9a158974266b810d31a0e9bb898262761a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: ac2c276f051155d7ba18ee91e4ca27acb0b35192
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849425"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167994"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Variabele assets in Azure Automation
 
@@ -28,7 +28,7 @@ Variabele assets zijn waarden die beschikbaar zijn voor alle runbooks en DSC-con
 
 Omdat Automation-variabelen persistent zijn, zijn ze beschikbaar, zelfs als het runbook of de DSC-configuratie mislukt. Met dit gedrag kan een waarde worden ingesteld met één runbook dat vervolgens wordt gebruikt door een andere, of wordt gebruikt door hetzelfde runbook of de DSC-configuratie de volgende keer dat deze wordt uitgevoerd.
 
-Wanneer een variabele is gemaakt, kunt u opgeven dat deze is versleuteld. Versleutelde variabelen worden veilig opgeslagen in Azure Automation en de waarde ervan kan niet worden opgehaald uit de cmdlet [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) die wordt geleverd als onderdeel van de Azure PowerShell-module. De enige manier waarop een versleutelde waarde kan worden opgehaald, is afkomstig uit de **Get-AutomationVariable-** activiteit in een RUNBOOK of DSC-configuratie. Als u een versleutelde variabele wilt wijzigen in niet-versleuteld, kunt u de variabele verwijderen en opnieuw maken als niet-versleuteld.
+Wanneer een variabele is gemaakt, kunt u opgeven dat deze is versleuteld. Versleutelde variabelen worden veilig opgeslagen in Azure Automation en de waarde ervan kan niet worden opgehaald uit de cmdlet [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) die wordt geleverd als onderdeel van de Azure PowerShell-module. De enige manier waarop een versleutelde waarde kan worden opgehaald, is afkomstig uit de **Get-AutomationVariable-** activiteit in een RUNBOOK of DSC-configuratie. Als u een versleutelde variabele wilt wijzigen in niet-versleuteld, moet u de variabele verwijderen en opnieuw maken als niet-versleuteld.
 
 >[!NOTE]
 >Beveilig assets in Azure Automation referenties, certificaten, verbindingen en versleutelde variabelen bevatten. Deze assets worden versleuteld en opgeslagen in Azure Automation met behulp van een unieke sleutel die wordt gegenereerd voor elk Automation-account. Deze sleutel wordt opgeslagen in een door het systeem beheerde Key Vault. Voordat u een beveiligde Asset opslaat, wordt de sleutel geladen uit Key Vault en vervolgens gebruikt om de Asset te versleutelen. Dit proces wordt beheerd door Azure Automation.

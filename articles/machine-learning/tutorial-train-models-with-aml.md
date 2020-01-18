@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: ab407ffbc0e22a2f65436741ce5c7019ac7fc540
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 95e5754c440cc591444df8960fde34de6fc384f0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533452"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261361"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Zelf studie: classificatie modellen van een installatie kopie trainen met MNIST-gegevens en scikit-informatie met behulp van Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,7 +105,9 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="create-or-attach-an-existing-compute-target"></a>Een bestaand Compute-doel maken of koppelen
 
-Met Azure Machine Learning Compute, een beheerde service, kunnen gegevenswetenschappers Machine Learning-modellen trainen op clusters met virtuele Azure-machines. Voorbeelden hiervan zijn virtuele machines met GPU-ondersteuning. In deze zelfstudie maakt u Azure Machine Learning Compute als uw trainingsomgeving. Met de onderstaande code wordt het rekencluster voor u gemaakt als dat nog niet in uw werkruimte bestaat.
+Met Azure Machine Learning Compute, een beheerde service, kunnen gegevenswetenschappers Machine Learning-modellen trainen op clusters met virtuele Azure-machines. Voorbeelden hiervan zijn virtuele machines met GPU-ondersteuning. In deze zelfstudie maakt u Azure Machine Learning Compute als uw trainingsomgeving. Verderop in de zelf studie gaat u naar de python-code verzenden om deze op deze VM uit te voeren. 
+
+Met de onderstaande code wordt het rekencluster voor u gemaakt als dat nog niet in uw werkruimte bestaat.
 
  **Het maken van het reken doel duurt ongeveer vijf minuten.** Als de compute-resource al in de werk ruimte staat, wordt deze door de code gebruikt en wordt het proces voor het maken overs Laan.
 
@@ -146,7 +148,7 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-U beschikt nu over de vereiste pakketten en rekenresources voor het trainen van een model in de cloud.
+U beschikt nu over de vereiste pakketten en rekenresources voor het trainen van een model in de cloud. 
 
 ## <a name="explore-data"></a>Gegevens verkennen
 
@@ -215,7 +217,7 @@ U hebt nu een beter beeld van hoe deze afbeeldingen eruit zien en wat u voor res
 
 ## <a name="train-on-a-remote-cluster"></a>Trainen op een extern cluster
 
-Voor deze taak verstuurt u de taak naar het cluster voor externe training dat u eerder hebt ingesteld.  Om een taak te verzenden, moet u het volgende doen:
+Voor deze taak dient u de taak in te voeren voor uitvoering op het externe trainings cluster dat u eerder hebt ingesteld.  Om een taak te verzenden, moet u het volgende doen:
 * Een map maken
 * Een trainingsscript maken
 * Een estimator-object maken

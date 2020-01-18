@@ -1,5 +1,5 @@
 ---
-title: Een lab configureren voor het gebruik van Extern bureaublad-gateway in Azure DevTest Labs | Microsoft Docs
+title: Een lab configureren om Extern bureaublad-gateway te gebruiken in Azure DevTest Labs
 description: Informatie over het configureren van een lab in Azure DevTest Labs met een extern bureau blad-gateway om beveiligde toegang tot de Lab-Vm's te garanderen zonder dat de RDP-poort moet worden weer gegeven.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 0f879a6389c7a77708e8041dd8b82dc3785679fa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 88daecdf4490ffd4eef45e6cd664a16f86bad113
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162632"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170284"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>Uw Lab in Azure DevTest Labs configureren voor het gebruik van een extern bureau blad-gateway
 In Azure DevTest Labs kunt u een extern bureau blad-gateway voor uw lab configureren om te zorgen voor veilige toegang tot de virtuele lab-machines (Vm's) zonder dat de RDP-poort moet worden weer gegeven. Het Lab biedt een centrale locatie voor uw Lab-gebruikers om te zien en verbinding te maken met alle virtuele machines waartoe ze toegang hebben. De knop **verbinding maken** op de pagina **virtuele machine** maakt een apparaat-specifiek RDP-bestand dat u kunt openen om verbinding te maken met de computer. U kunt de RDP-verbinding verder aanpassen en beveiligen door uw Lab te koppelen aan een extern bureau blad-gateway. 
@@ -39,7 +39,7 @@ Deze methode is veiliger omdat de test gebruiker zich rechtstreeks verifieert bi
 1. U opent het RDP-bestand met behulp van het RDP-verbindings programma van uw voor keur. Houd er rekening mee dat niet alle RDP-verbindings Programma's de verificatie van tokens ondersteunen. Het verificatie token heeft een verval datum, ingesteld door de functie-app. Maak verbinding met de VM van het lab voordat het token verloopt.
 1. Zodra de extern bureau blad-gateway computer het token verifieert in het RDP-bestand, wordt de verbinding doorgestuurd naar uw test machine.
 
-### <a name="solution-requirements"></a>Oplossings vereisten
+### <a name="solution-requirements"></a>Oplossingsvereisten
 Als u wilt werken met de DevTest Labs-token verificatie, zijn er enkele configuratie vereisten voor de gateway-computers, Domain Name Services (DNS) en functions.
 
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>Vereisten voor extern bureau blad-gateway computers
@@ -74,7 +74,7 @@ az resource show --name {lab-name} --resource-type 'Microsoft.DevTestLab/labs' -
 
 Configureer het lab voor het gebruik van de token verificatie met behulp van de volgende stappen:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de lijst.
 1. Selecteer in de lijst met Labs uw **Lab**.
 1. Selecteer op de pagina Lab de optie **configuratie en beleid**.

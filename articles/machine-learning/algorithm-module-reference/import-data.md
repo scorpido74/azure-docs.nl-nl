@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 8d099d0b8f8e31bf77f5ddfad320ac792c5c01e5
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f3a1bf518b8ef122e2df64f2815c8885929b127d
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529606"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166787"
 ---
 # <a name="import-data-module"></a>Gegevens module importeren
 
@@ -27,7 +27,7 @@ Gebruik deze module om gegevens te laden in een machine learning pijp lijn vanui
 > Nadat u een gegevensset hebt geregistreerd, kunt u deze vinden in de categorie **gegevens sets** -> **mijn gegevens sets** in de ontwerp interface. Deze module is gereserveerd voor Studio-gebruikers (klassiek) voor een vertrouwde ervaring. 
 >
 
-Kies eerst de bron waarvan u een lees bewerking hebt uitgevoerd en voltooi de aanvullende instellingen. De module **gegevens importeren** ondersteunt het lezen van gegevens uit de volgende bronnen:
+De module **gegevens importeren** ondersteunt het lezen van gegevens uit de volgende bronnen:
 
 - URL via HTTP
 - Azure-Cloud opslag via [**data stores**](../how-to-access-data.md))

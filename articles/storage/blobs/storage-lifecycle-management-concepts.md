@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 012ff33bb31c78b26791e6337ae434acfe4bc865
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6bf391f22843991bf224539b82037c0e29251e7b
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351357"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260950"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>De levenscyclus van Azure Blob-opslag beheren
 
@@ -246,6 +246,9 @@ Elke regel definitie bevat een set filters en een Actieset. Met de [Filterset](#
 ### <a name="sample-rule"></a>Voorbeeld regel
 
 Met de volgende voorbeeld regel filtert u het account voor het uitvoeren van de acties op objecten die zich in `container1` bevinden en begint u met `foo`.  
+
+>[!NOTE]
+>Levenscyclus beheer ondersteunt alleen het type blok-blob.  
 
 - Laag-BLOB naar cool laag 30 dagen na laatste wijziging
 - Laag-BLOB naar archief laag 90 dagen na laatste wijziging

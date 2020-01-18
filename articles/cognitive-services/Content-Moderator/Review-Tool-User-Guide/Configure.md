@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 2ba314c814bdc92f62a607e28aefa30372bf297f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757438"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169596"
 ---
 # <a name="configure-the-review-tool"></a>Het beoordelingsprogramma configureren
 
@@ -25,7 +25,7 @@ Het [hulp programma beoordeling](https://contentmoderator.cognitive.microsoft.co
 
 ## <a name="manage-team-and-subteams"></a>Team en subteams beheren
 
-Op het tabblad **team** kunt u uw team en subteams beheren &mdash;groups van gebruikers die kunnen worden gewaarschuwd wanneer bepaalde [mensen beoordelingen](../review-api.md#reviews) worden gestart. U kunt slechts één team gebruiken (dat u maakt wanneer u zich aanmeldt met het hulp programma beoordeling), maar u kunt meerdere subteams maken. De team beheerder kan leden uitnodigen, hun machtigingen instellen en ze toewijzen aan verschillende subteams.
+Op het tabblad **team** kunt u uw team en subteams beheren&mdash;groepen gebruikers die kunnen worden gewaarschuwd wanneer bepaalde [mensen beoordelingen](../review-api.md#reviews) worden gestart. U kunt slechts één team gebruiken (dat u maakt wanneer u zich aanmeldt met het hulp programma beoordeling), maar u kunt meerdere subteams maken. De team beheerder kan leden uitnodigen, hun machtigingen instellen en ze toewijzen aan verschillende subteams.
 
 ![Team instellingen voor het hulp programma bekijken](images/settings-2-team.png)
 
@@ -66,7 +66,7 @@ Als u lid bent van meer dan één subteam, kunt u scha kelen tussen deze subteam
 
 ## <a name="tags"></a>Tags
 
-Op het tabblad **labels** kunt u aangepaste toezicht Tags definiëren naast de twee standaard markeringen voor toezicht &mdash;**isadult** (**a**) en **isracy** (**r**). Wanneer u een aangepaste tag maakt, wordt deze beschikbaar in beoordelingen naast de standaard tags. U kunt wijzigen welke tags worden weer gegeven in beoordelingen door de instellingen voor zicht baarheid van hun voor beeld te scha kelen.
+Op het tabblad **labels** kunt u aangepaste toezicht Tags definiëren naast de twee standaard markeringen voor toezicht&mdash;**isadult** (**a**) en **isracy** (**r**). Wanneer u een aangepaste tag maakt, wordt deze beschikbaar in beoordelingen naast de standaard tags. U kunt wijzigen welke tags worden weer gegeven in beoordelingen door de instellingen voor zicht baarheid van hun voor beeld te scha kelen.
 
 ![De weer gave Tags, inclusief de selectie vakjes ' is zichtbaar '](images/tags-4-disable.png)
 
@@ -90,14 +90,14 @@ U kunt aangepaste tags verwijderen door het prullenbak pictogram naast hun verme
 
 Op het tabblad **connectors** kunt u uw connectors beheren. Dit zijn service-specifieke invoeg toepassingen die inhoud op verschillende manieren kunnen verwerken als onderdeel van [werk stromen](../review-api.md#workflows)voor inhoud.
 
-De standaard connector wanneer u een werk stroom maakt, is de Content Moderator-connector, waarmee inhoud als **volwassene** of **ongepaste**kan worden gemarkeerd, de woorden kunnen worden gevonden, enzovoort. U kunt echter andere connectors gebruiken die hier worden weer gegeven, op voor waarde dat u referenties voor de respectieve services hebt (om [Face-API](https://docs.microsoft.com/azure/cognitive-services/face/overview) bijvoorbeeld de face-API-connector te gebruiken).
+De standaard connector wanneer u een werk stroom maakt, is de Content Moderator-connector, waarmee inhoud als **volwassene** of **ongepaste**kan worden gemarkeerd, de woorden kunnen worden gevonden, enzovoort. U kunt echter andere connectors gebruiken die hier worden weer gegeven, mits u referenties voor hun respectieve services hebt (u moet bijvoorbeeld een [Face](https://docs.microsoft.com/azure/cognitive-services/face/overview) -abonnements sleutel ophalen).
 
 Het [hulp programma voor beoordeling](./human-in-the-loop.md) bevat de volgende connectors:
 
-- Emotion-API
-- Face API
+- Emotion
+- Face
 - PhotoDNA-Cloud service
-- Tekstanalyse-API
+- Tekstanalyse
 
 ### <a name="add-a-connector"></a>Een connector toevoegen
 

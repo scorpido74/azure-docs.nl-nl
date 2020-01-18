@@ -1,7 +1,7 @@
 ---
-title: 'Zelfstudie: Face API C#'
+title: 'Zelf studie: Face Connected service'
 titleSuffix: Azure Cognitive Services
-description: Maak een Windows-app die gebruikmaakt van de Cognitive Services Face-API om functies van gezichten in een installatie kopie te detecteren.
+description: Maak een Windows-app die gebruikmaakt van de Cognitive Services Face-service om functies van gezichten in een installatie kopie te detecteren.
 services: cognitive-services
 author: ghogen
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: ghogen
-ms.openlocfilehash: 4b204b9895a2afea4c78d1d92f2cca68f77ae708
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e0fe92fc7f19c3c899bcccfa9f9cc18029af049c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74970292"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170243"
 ---
-# <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Verbinding maken met de Cognitive Service Face-API met behulp van Connected Services in Visual Studio
+# <a name="connect-to-the-face-service-by-using-connected-services-in-visual-studio"></a>Verbinding maken met de face-service met behulp van verbonden services in Visual Studio
 
-Met behulp van de Cognitive Services Face-API, kunt u gezichten in foto's detecteren, analyseren, organiseren en taggen.
+Door gebruik te maken van de Azure face-service, kunt u gezichten in Foto's detecteren, analyseren, organiseren en labelen.
 
-Dit artikel en de bijbehorende artikelen bieden details voor het gebruik van de Visual Studio Connected Service-functie voor de Cognitive Services Face-API. De mogelijkheid is beschikbaar in Visual Studio 2017 15.7 of hoger, met de Cognitive Services-extensie geïnstalleerd.
+In dit artikel en de bijbehorende artikelen vindt u informatie over het gebruik van de functie van Visual Studio Connected service voor de face-service. De mogelijkheid is beschikbaar in Visual Studio 2017 15.7 of hoger, met de Cognitive Services-extensie geïnstalleerd.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -30,7 +30,7 @@ Dit artikel en de bijbehorende artikelen bieden details voor het gebruik van de 
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
-## <a name="create-a-project-and-add-support-for-cognitive-services-face-api"></a>Maak een project en voeg ondersteuning toe voor Cognitive Services Face-API
+## <a name="create-a-project-and-add-support-for-face"></a>Een project maken en ondersteuning voor gezicht toevoegen
 
 1. Maak een nieuw ASP.NET Core-webproject. Gebruik de sjabloon Leeg project. 
 
@@ -47,16 +47,16 @@ Dit artikel en de bijbehorende artikelen bieden details voor het gebruik van de 
 
    ![Selecteer uw abonnement](media/vs-face-connected-service/Cog-Face-Connected-Service-1.PNG)
 
-1. Selecteer het abonnement dat u wilt gebruiken, en kies een naam voor de Face-API, of kies de Bewerken-koppeling om de automatisch gegenereerde naam te wijzigen, een resourcegroep te kiezen en de prijscategorie te kiezen.
+1. Selecteer het abonnement dat u wilt gebruiken, en kies vervolgens een naam voor de face-service, of kies de Bewerk koppeling om de automatisch gegenereerde naam te wijzigen, kies de resource groep en de prijs categorie.
 
    ![Details van verbonden services bewerken](media/vs-face-connected-service/Cog-Face-Connected-Service-2.PNG)
 
    Volg de link voor meer informatie over de prijscategorieën.
 
 1. Kies Toevoegen om ondersteuning van Connected Service toe te voegen.
-   Visual Studio wijzigt uw project om NuGet-pakketten toe te voegen, configuratie in bestanden toe te voegen en andere wijzigingen voor de ondersteuning van een verbinding met Face-API toe te voegen.
+   Visual Studio wijzigt uw project om de NuGet-pakketten, vermeldingen van het configuratie bestand en andere wijzigingen toe te voegen om een verbinding met de face-service te ondersteunen.
 
-## <a name="use-the-face-api-to-detect-attributes-of-faces-in-an-image"></a>Gebruik de Face-API gebruiken voor het detecteren van kenmerken van gezichten in een afbeelding
+## <a name="use-the-face-service-to-detect-attributes-of-faces-in-an-image"></a>De face-service gebruiken om kenmerken van gezichten in een installatie kopie op te sporen
 
 1. Voeg het volgende toe in Startup.cs.
  
@@ -79,7 +79,7 @@ Dit artikel en de bijbehorende artikelen bieden details voor het gebruik van de 
       }
    ```
 
-1. Voeg in de wwwroot-map van uw project een afbeeldingenmap toe en voeg een afbeeldingsbestand toe aan de wwwroot-map. Een voorbeeld: u kunt een van de installatiekopieën gebruiken op deze [Face-API-pagina](https://azure.microsoft.com/services/cognitive-services/face/). Klik met de rechter muisknop op een van de installatie kopieën, sla het bestand op uw lokale harde schijf op, klik in Solution Explorer met de rechter muisknop op de map afbeeldingen en kies > **bestaand item** **toevoegen** om het toe te voegen aan uw project. Uw project ziet er ongeveer als volgt uit in Solution Explorer:
+1. Voeg in de wwwroot-map van uw project een afbeeldingenmap toe en voeg een afbeeldingsbestand toe aan de wwwroot-map. U kunt bijvoorbeeld een van de installatie kopieën op de [pagina gezicht](https://azure.microsoft.com/services/cognitive-services/face/) van het Azure Portal gebruiken. Klik met de rechter muisknop op een van de installatie kopieën, sla het bestand op uw lokale harde schijf op, klik in Solution Explorer met de rechter muisknop op de map afbeeldingen en kies > **bestaand item** **toevoegen** om het toe te voegen aan uw project. Uw project ziet er ongeveer als volgt uit in Solution Explorer:
  
    ![afbeeldingenmap met afbeeldingsbestand](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
 
@@ -87,7 +87,7 @@ Dit artikel en de bijbehorende artikelen bieden details voor het gebruik van de 
 
    ![Kopiëren indien nieuwer](media/vs-face-connected-service/Cog-Face-Connected-Service-5.PNG)
  
-1. Vervang de configuratiemethode door de volgende code voor toegang tot de Face-API en testen van een installatiekopie. Verander de imagePath-tekenreeks naar het juiste pad en bestandsnaam voor uw gezichtsafbeelding.
+1. Vervang de methode configure door de volgende code om toegang te krijgen tot de face-service en een installatie kopie te testen. Verander de imagePath-tekenreeks naar het juiste pad en bestandsnaam voor uw gezichtsafbeelding.
 
    ```csharp
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -231,9 +231,9 @@ Dit artikel en de bijbehorende artikelen bieden details voor het gebruik van de 
         }
    ```
 
-1. De webtoepassing uitvoeren en zien wat Face-API gevonden heeft in de afbeelding.
+1. Voer de webtoepassing uit en kijk wat de face-service in de installatie kopie heeft gevonden.
  
-   ![Face-API afbeelding opgemaakte resultaten](media/vs-face-connected-service/Cog-Face-Connected-Service-4.PNG)
+   ![Afbeelding van gezichts diensten en ingedeelde resultaten](media/vs-face-connected-service/Cog-Face-Connected-Service-4.PNG)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -245,4 +245,4 @@ Verwijder de resourcegroep als u deze niet meer nodig hebt. Hiermee verwijdert u
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de Face-API kunt u vinden in de [Face-API-documentatie](Overview.md).
+Lees de [gezichts documentatie](Overview.md)voor meer informatie over de face-service.

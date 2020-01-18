@@ -8,12 +8,12 @@ ms.date: 01/14/2020
 ms.author: girobins
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: c004031ec40bedcf83d77d08a34ce1d0e28fecd8
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 5f4728c4b604c606d12edcc7a00879b31e54bc85
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157016"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264268"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Problemen met query's oplossen bij het gebruik van Azure Cosmos DB
 
@@ -39,13 +39,11 @@ U kunt naar de onderstaande sectie verwijzen om inzicht te krijgen in de relevan
 
 #### <a name="retrieved-document-count-is-significantly-greater-than-output-document-count"></a>Het opgehaalde document aantal is aanzienlijk groter dan het aantal uitvoer documenten
 
-- [Zorg ervoor dat het indexerings beleid de benodigde paden bevat](#ensure-that-the-indexing-policy-includes-necessary-paths)
+- [Benodigde paden in het indexerings beleid toevoegen](#include-necessary-paths-in-the-indexing-policy)
 
 - [Begrijpen welke systeem functies de index gebruiken](#understand-which-system-functions-utilize-the-index)
 
-- [Query's met zowel een filter als een ORDER BY-component optimaliseren](#optimize-queries-with-both-a-filter-and-an-order-by-clause)
-
-- [Query's optimaliseren die gebruikmaken van DISTINCT](#optimize-queries-that-use-distinct)
+- [Query's met zowel een filter als een ORDER BY-component](#queries-with-both-a-filter-and-an-order-by-clause)
 
 - [Expressies voor samen voegen optimaliseren met behulp van een subquery](#optimize-join-expressions-by-using-a-subquery)
 
@@ -55,23 +53,23 @@ U kunt naar de onderstaande sectie verwijzen om inzicht te krijgen in de relevan
 
 - [Kruis partitie query's voor komen](#avoid-cross-partition-queries)
 
-- [Query's met een filter op meerdere eigenschappen optimaliseren](#optimize-queries-that-have-a-filter-on-multiple-properties)
+- [Filters op meerdere eigenschappen](#filters-on-multiple-properties)
 
-- [Query's met zowel een filter als een ORDER BY-component optimaliseren](#optimize-queries-with-both-a-filter-and-an-order-by-clause)
+- [Query's met zowel een filter als een ORDER BY-component](#queries-with-both-a-filter-and-an-order-by-clause)
 
 <br>
 
 ### <a name="querys-ru-charge-is-acceptable-but-latency-is-still-too-high"></a>De RU-kosten van de query zijn acceptabel, maar de latentie is nog te hoog
 
-- [De afstand tussen uw app en Azure Cosmos DB verbeteren](#improving-proximity-between-your-app-and-azure-cosmos-db)
+- [Proximity verhogen](#improve-proximity)
 
-- [Ingerichte door Voer verhogen](#increasing-provisioned-throughput)
+- [Ingerichte door Voer verhogen](#increase-provisioned-throughput)
 
-- [MaxConcurrency verhogen](#increasing-maxconcurrency)
+- [MaxConcurrency verhogen](#increase-maxconcurrency)
 
-- [MaxBufferedItemCount verhogen](#increasing-maxbuffereditemcount)
+- [MaxBufferedItemCount verhogen](#increase-maxbuffereditemcount)
 
-## <a name="optimizations-for-queries-where-retrieved-document-count-significantly-exceeds-output-document-count"></a>Optimalisaties voor query's waarbij het aantal opgehaalde documenten aanzienlijk groter is dan het aantal uitvoer documenten:
+## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>Query's waarbij het aantal opgehaalde documenten groter is dan het aantal uitvoer documenten
 
  Het opgehaalde document telt het aantal documenten dat door de query moet worden geladen. Het uitvoer document telt het aantal documenten dat nodig was voor de resultaten van de query. Als het aantal opgehaalde documenten aanzienlijk hoger is dan het aantal uitvoer documenten, was er ten minste één deel van de query die de index niet kan gebruiken en die nodig is om een scan uit te voeren.
 
@@ -113,7 +111,7 @@ Client Side Metrics
 
 Het opgehaalde document aantal (60.951) is aanzienlijk groter dan het aantal uitvoer documenten (7), zodat deze query nodig is om een scan uit te voeren. In dit geval gebruikt de systeem functie [Upper ()](sql-query-upper.md) niet de index.
 
-## <a name="ensure-that-the-indexing-policy-includes-necessary-paths"></a>Zorg ervoor dat het indexerings beleid de benodigde paden bevat
+## <a name="include-necessary-paths-in-the-indexing-policy"></a>Benodigde paden in het indexerings beleid toevoegen
 
 Het indexerings beleid moet betrekking hebben op alle eigenschappen die zijn opgenomen in `WHERE`-componenten, `ORDER BY`-componenten, `JOIN`en de meeste systeem functies. Het pad dat is opgegeven in het index beleid moet overeenkomen (hoofdletter gevoelig) de eigenschap in de JSON-documenten.
 
@@ -191,7 +189,7 @@ Enkele veelvoorkomende systeem functies die de index niet gebruiken en moeten el
 
 Andere onderdelen van de query kunnen de index nog steeds gebruiken ondanks het systeem werkt niet met de index.
 
-## <a name="optimize-queries-with-both-a-filter-and-an-order-by-clause"></a>Query's met zowel een filter als een ORDER BY-component optimaliseren
+## <a name="queries-with-both-a-filter-and-an-order-by-clause"></a>Query's met zowel een filter als een ORDER BY-component
 
 Hoewel query's met een filter en een `ORDER BY`-component normaal gesp roken gebruikmaken van een bereik index, zijn ze efficiënter als ze kunnen worden bediend vanuit een samengestelde index. Naast het wijzigen van het indexerings beleid, moet u alle eigenschappen in de samengestelde index toevoegen aan de component `ORDER BY`. Met deze gewijzigde query kunt u ervoor zorgen dat de samengestelde index wordt gebruikt.  U kunt het effect observeren door een query uit te voeren op de [voedings](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) gegevensset.
 
@@ -261,33 +259,6 @@ Bijgewerkt indexerings beleid:
 
 **Ru-kosten:** 8,86 ru
 
-## <a name="optimize-queries-that-use-distinct"></a>Query's optimaliseren die gebruikmaken van DISTINCT
-
-Het is efficiënter om de `DISTINCT` set resultaten te vinden als de dubbele resultaten opeenvolgend zijn. Door een `ORDER BY`-component aan de query toe te voegen en een samengestelde index, zorgt u ervoor dat dubbele resultaten opeenvolgend zijn. Als u meerdere eigenschappen wilt `ORDER BY`, voegt u een samengestelde index toe. U kunt het effect observeren door een query uit te voeren op de [voedings](https://github.com/CosmosDB/labs/blob/master/dotnet/setup/NutritionData.json) gegevensset.
-
-### <a name="original"></a>Origineel
-
-Query:
-
-```sql
-SELECT DISTINCT c.foodGroup 
-FROM c
-```
-
-**Ru-kosten:** 32,39 ru
-
-### <a name="optimized"></a>Geoptimaliseerd
-
-Bijgewerkte query:
-
-```sql
-SELECT DISTINCT c.foodGroup 
-FROM c 
-ORDER BY c.foodGroup
-```
-
-**Ru-kosten:** 3,38 ru
-
 ## <a name="optimize-join-expressions-by-using-a-subquery"></a>Expressies voor samen voegen optimaliseren met behulp van een subquery
 Subquery's voor meerdere waarden kunnen `JOIN`-expressies optimaliseren door predikaten te pushen na elke Select-many-expressie in plaats van na alle kruis koppelingen in de `WHERE`-component.
 
@@ -323,7 +294,7 @@ JOIN (SELECT VALUE s FROM s IN c.servings WHERE s.amount > 1)
 
 Stel dat er slechts één item in de matrix Tags overeenkomt met het filter en dat er vijf items zijn voor beide nutriënten en dat er matrices worden gereserveerd. De `JOIN`-expressies worden vervolgens uitgebreid naar 1 x 1 x 5 x 5 = 25 items, in tegens telling tot 1.000 items in de eerste query.
 
-## <a name="optimizations-for-queries-where-retrieved-document-count-is-approximately-equal-to-output-document-count"></a>Optimalisaties voor query's waarbij het aantal opgehaalde documenten ongeveer gelijk is aan het aantal uitvoer documenten:
+## <a name="queries-where-retrieved-document-count-is-equal-to-output-document-count"></a>Query's waarbij het aantal opgehaalde documenten gelijk is aan het aantal uitvoer documenten
 
 Als het aantal opgehaalde documenten ongeveer gelijk is aan het aantal uitvoer documenten, betekent dit dat de query geen veel onnodige documenten moet scannen. Voor veel query's, zoals die waarin het sleutel woord TOP wordt gebruikt, kan het aantal opgehaalde documenten groter zijn dan het aantal uitvoer documenten door 1. Dit mag niet leiden tot bezorgdheid.
 
@@ -359,7 +330,7 @@ SELECT * FROM c
 WHERE c.foodGroup > “Soups, Sauces, and Gravies” and c.description = "Mushroom, oyster, raw"
 ```
 
-## <a name="optimize-queries-that-have-a-filter-on-multiple-properties"></a>Query's met een filter op meerdere eigenschappen optimaliseren
+## <a name="filters-on-multiple-properties"></a>Filters op meerdere eigenschappen
 
 Hoewel query's met filters voor meerdere eigenschappen normaal gesp roken gebruikmaken van een bereik index, zijn ze efficiënter als ze kunnen worden geleverd vanuit een samengestelde index. Voor kleine hoeveel heden gegevens heeft deze optimalisatie geen aanzienlijke gevolgen. Het kan echter nuttig zijn voor grote hoeveel heden gegevens. U kunt Maxi maal één niet-gelijkheids filter per samengestelde index optimaliseren. Als uw query meerdere filters heeft die niet gelijk zijn aan de gelijkheid, moet u een ervan kiezen waarmee de samengestelde index wordt gebruikt. Voor het restant blijven de bereik indexen worden gebruikt. Het niet-gelijkheids filter moet als laatste worden gedefinieerd in de samengestelde index. [Meer informatie over samengestelde indexen](index-policy.md#composite-indexes)
 
@@ -402,23 +373,23 @@ Dit is de relevante samengestelde index:
 }
 ```
 
-## <a name="common-optimizations-that-reduce-query-latency-no-impact-on-ru-charge"></a>Algemene optimalisaties die de latentie van query's beperken (geen invloed op de RU-kosten):
+## <a name="optimizations-that-reduce-query-latency"></a>Optimalisaties die de latentie van query's beperken:
 
 In veel gevallen is het mogelijk dat de RU-kosten acceptabel zijn, maar dat de query latentie nog steeds te hoog is. De onderstaande secties geven een overzicht van tips voor het verminderen van de latentie van query's. Als u dezelfde query meerdere keren op dezelfde gegevensset uitvoert, heeft elke keer dezelfde RU-kosten. De query latentie kan echter verschillen tussen de uitvoering van query's.
 
-## <a name="improving-proximity-between-your-app-and-azure-cosmos-db"></a>De afstand tussen uw app en Azure Cosmos DB verbeteren
+## <a name="improve-proximity"></a>Proximity verhogen
 
 Query's die worden uitgevoerd vanuit een andere regio dan het Azure Cosmos DB account, hebben een hogere latentie dan wanneer ze in dezelfde regio worden uitgevoerd. Als u bijvoorbeeld code uitvoert op uw desktop computer, verwacht u dat latentie tien tallen of honderden (of meer) milliseconden groter dan als de query afkomstig is van een virtuele machine in dezelfde Azure-regio als Azure Cosmos DB. Het is eenvoudig om [gegevens wereld wijd te distribueren in azure Cosmos DB](distribute-data-globally.md) om ervoor te zorgen dat uw gegevens dichter bij uw app kunnen worden gebracht.
 
-## <a name="increasing-provisioned-throughput"></a>Ingerichte door Voer verhogen
+## <a name="increase-provisioned-throughput"></a>Ingerichte door Voer verhogen
 
 In Azure Cosmos DB wordt uw ingerichte door Voer gemeten in aanvraag eenheden (RU). Stel dat u een query hebt die 5 RU van de door Voer verbruikt. Als u bijvoorbeeld 1.000 RU inricht, kunt u die query 200 keer per seconde uitvoeren. Als u probeert de query uit te voeren terwijl er onvoldoende door Voer beschikbaar is, retourneert Azure Cosmos DB een HTTP 429-fout. Een van de huidige core-api's (SQL) API SDK voert deze query automatisch opnieuw uit nadat een korte periode is gewacht. Vertraagde aanvragen nemen langere tijd in beslag, waardoor het verhogen van de ingerichte door Voer de query latentie kan verbeteren. In de Blade metrische gegevens van de Azure Portal ziet u het [totale aantal](use-metrics.md#understand-how-many-requests-are-succeeding-or-causing-errors) aanvragen dat wordt beperkt.
 
-## <a name="increasing-maxconcurrency"></a>MaxConcurrency verhogen
+## <a name="increase-maxconcurrency"></a>MaxConcurrency verhogen
 
 Parallelle query's werken door meerdere partities parallel te doorzoeken. Gegevens uit een afzonderlijke gepartitioneerde verzameling worden echter serieel opgehaald ten opzichte van de query. Daarom is het aanpassen van de MaxConcurrency aan het aantal partities de maximale kans om de meest uitvoering van de query te bereiken, op voor waarde dat alle andere systeem omstandigheden hetzelfde blijven. Als u het aantal partities niet weet, kunt u de MaxConcurrency (of MaxDegreesOfParallelism in oudere SDK-versies) instellen op een hoog nummer, en het systeem kiest het minimum (aantal partities, door de gebruiker opgegeven invoer) als de maximale graad van parallelle uitvoering.
 
-## <a name="increasing-maxbuffereditemcount"></a>MaxBufferedItemCount verhogen
+## <a name="increase-maxbuffereditemcount"></a>MaxBufferedItemCount verhogen
 
 Query's zijn ontworpen om resultaten vooraf op te halen terwijl de huidige batch met resultaten door de client wordt verwerkt. Het vooraf ophalen helpt bij de algehele latentie verbetering van een query. Het instellen van de MaxBufferedItemCount beperkt het aantal vooraf opgehaalde resultaten. Door deze waarde in te stellen op het verwachte aantal geretourneerde resultaten (of een hoger getal), kan de query het maximale voor deel ontvangen van vooraf ophalen. Als u deze waarde instelt op-1, kan het systeem automatisch het aantal items bepalen dat moet worden gebufferd.
 

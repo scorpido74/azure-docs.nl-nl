@@ -12,19 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2019
+ms.date: 01/17/2020
 ms.author: spelluru
-ms.openlocfilehash: 1c13414bb252da1192f82675da5b134bf43a40f0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a2d0b9bdfba1b96ad42e45d54faf106b2361e29d
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772632"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264781"
 ---
-# <a name="manage-autoshutdown-policies-for-a-lab-in-azure-devtest-labs"></a>Beleid voor automatisch afsluiten beheren voor een lab in Azure DevTest Labs
+# <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Automatisch afsluiten configureren voor Lab-en Compute-virtuele machines in Azure DevTest Labs
+
+In dit artikel wordt uitgelegd hoe u instellingen voor automatisch afsluiten configureert voor Lab-Vm's in DevTest Labs en Compute-Vm's. 
+
+## <a name="configure-autoshutdown-for-lab-vms-devtest-labs"></a>Automatisch afsluiten configureren voor Lab-Vm's (DevTest Labs)
 Met Azure DevTest Labs kunt u kosten besparen en verspiling in uw Labs minimaliseren door beleid (instellingen) voor elk lab te beheren. In dit artikel leest u hoe u het beleid voor automatisch afsluiten configureert voor een Lab-account en instellingen voor automatisch afsluiten configureert voor een lab in het lab-account. Zie [Lab-beleid in azure DevTest Labs definiëren](devtest-lab-set-lab-policy.md)voor meer informatie over het instellen van elk lab-beleid.  
 
-## <a name="set-auto-shutdown-policy-for-a-lab"></a>Beleid voor automatisch afsluiten instellen voor een Lab
+### <a name="set-auto-shut-down-policy-for-a-lab"></a>Beleid voor automatisch afsluiten instellen voor een Lab
 Als eigenaar van het lab kunt u een afsluit schema configureren voor alle virtuele machines in uw Lab. Op die manier kunt u kosten besparen van het uitvoeren van machines die niet worden gebruikt (niet-actief). U kunt een afsluit beleid afdwingen op al uw virtuele lab-Vm's, maar ook uw Lab-gebruikers de moeite hebben om een planning in te stellen voor de afzonderlijke machines. Met deze functie kunt u het beleid op uw test schema instellen, te beginnen met het beheer van volledig beheer aan uw Lab-gebruikers. Als eigenaar van het lab kunt u dit beleid configureren door de volgende stappen uit te voeren:
 
 1. Op de start pagina van uw Lab selecteert u **configuratie en beleid**.
@@ -33,7 +37,7 @@ Als eigenaar van het lab kunt u een afsluit schema configureren voor alle virtue
 
     ![Opties voor automatisch afsluiten van beleid](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 
-## <a name="configure-auto-shutdown-settings"></a>Instellingen voor automatisch afsluiten configureren
+### <a name="configure-auto-shutdown-settings"></a>Instellingen voor automatisch afsluiten configureren
 Het beleid voor automatisch afsluiten helpt Lab-afval te minimaliseren door de tijd op te geven waarop de Vm's van deze Lab worden afgesloten.
 
 Voer de volgende stappen uit om de beleids regels voor een Lab weer te geven (en te wijzigen):
@@ -72,7 +76,7 @@ Als u uw Lab instelt op dit beleid, kunnen Lab-gebruikers het lab-schema niet ov
 
 ![Optie voor automatisch afsluiten van beleid-3](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
 
-## <a name="notifications"></a>Meldingen
+### <a name="notifications"></a>Meldingen
 Zodra automatisch afsluiten is ingesteld door de eigenaar van het lab, worden er 30 minuten meldingen verzonden naar de Lab-gebruikers als een van de Vm's wordt geactiveerd. Met deze optie kunnen gebruikers van het lab hun werk opslaan voordat ze worden afgesloten. De melding bevat ook koppelingen voor elke VM voor de volgende acties:
 
 - Automatisch afsluiten voor deze tijd overs Laan
@@ -82,7 +86,7 @@ Er wordt een melding verzonden via het geconfigureerde webhook-eind punt of een 
 
 We raden u aan om webhooks te gebruiken, omdat deze uitgebreid worden ondersteund door verschillende apps (bijvoorbeeld toegestane vertraging, Azure Logic Apps enzovoort) en u uw eigen manier voor het verzenden van meldingen kunt implementeren. In dit artikel wordt bijvoorbeeld uitgelegd hoe u automatisch afsluiten van e-mail berichten kunt ontvangen met behulp van Azure Logic Apps. Eerst gaan we snel de basis stappen door lopen om automatisch afsluiten in uw Lab in te scha kelen.   
 
-## <a name="create-a-logic-app-that-receives-email-notifications"></a>Een logische app maken die e-mail meldingen ontvangt
+### <a name="create-a-logic-app-that-receives-email-notifications"></a>Een logische app maken die e-mail meldingen ontvangt
 [Azure Logic apps](../logic-apps/logic-apps-overview.md) biedt veel kant-en-klare connectors waarmee u eenvoudig een service kunt integreren met andere clients, zoals Office 365 en Twitter. Op hoog niveau kunnen de stappen voor het instellen van een logische app voor e-mail meldingen worden onderverdeeld in vier fasen: 
 
 - Maak een logische app. 
@@ -185,5 +189,16 @@ Als u aan de slag wilt gaan, maakt u een logische app in uw Azure-abonnement met
 
     ![WebHook URL](./media/devtest-lab-auto-shutdown/webhook-url.png)
 
+## <a name="configure-autoshutdown-for-compute-vms"></a>Automatisch afsluiten configureren voor Compute-Vm's
+
+1. Selecteer op de pagina **virtuele machine** **automatisch afsluiten** in het menu links. 
+2. Selecteer op de pagina **automatisch afsluiten** de optie **aan om** dit beleid in te scha kelen en **uit** te scha kelen.
+3. Als u dit beleid inschakelt, geeft u de **tijd** (en **tijd zone**) op waarop de virtuele machine moet worden afgesloten.
+4. Geef **Ja** of **Nee** op voor de optie om een melding te verzenden 30 minuten vóór de opgegeven tijd voor automatisch afsluiten. Als u **Ja**kiest, voert u het eind punt van de webhook-URL of het e-mail adres in waarmee u wilt dat de melding wordt gepost of verzonden. De gebruiker ontvangt een melding en krijgt de mogelijkheid om het afsluiten te vertragen. Zie de sectie [meldingen](#notifications) voor meer informatie. 
+9. Selecteer **Opslaan**.
+
+    ![Automatisch afsluiten configureren voor een compute-VM](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
+
 ## <a name="next-steps"></a>Volgende stappen
 Zie [Lab-beleid in azure DevTest Labs definiëren](devtest-lab-set-lab-policy.md)voor meer informatie over het instellen van alle beleids regels.
+

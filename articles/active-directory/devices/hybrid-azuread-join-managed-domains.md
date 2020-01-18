@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 787900918035dc8b14d3a173496ab1a23b0f93bb
-ms.sourcegitcommit: c8a102b9f76f355556b03b62f3c79dc5e3bae305
+ms.openlocfilehash: 2768dedf80ab567582322bba4b4190b31400284f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68813091"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167479"
 ---
-# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Zelfstudie: Hybride Azure Active Directory-deelname configureren voor beheerde domeinen
+# <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>Zelfstudie: Hybride Azure Active Directory-koppeling configureren voor beheerde domeinen
 
 Net als bij een gebruiker in uw organisatie is een apparaat een kern identiteit die u wilt beveiligen. U kunt de identiteit van een apparaat gebruiken om uw resources te beschermen op elk gewenst moment en vanaf elke locatie. U kunt dit doel doen door de apparaat-id's te halen en te beheren in Azure Active Directory (Azure AD) met een van de volgende methoden:
 
@@ -53,7 +53,7 @@ In deze zelf studie wordt ervan uitgegaan dat u bekend bent met deze artikelen:
 
 Als u het scenario in dit artikel wilt configureren, hebt u de [nieuwste versie van Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) (1.1.819.0 of hoger) geïnstalleerd.
 
-Controleer of Azure AD Connect de computer objecten hebt gesynchroniseerd van de apparaten met wie u een hybride Azure AD wilt maken en lid wilt worden van Azure AD. Als de computer objecten deel uitmaken van specifieke organisatie-eenheden (Ou's), moet u ook de Ou's configureren om te synchroniseren in Azure AD Connect. Zie voor meer informatie over het synchroniseren van computer objecten met behulp van Azure AD Connect [filters configureren](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering)met behulp van Azure AD Connect.
+Controleer of Azure AD Connect de computer objecten hebt gesynchroniseerd van de apparaten met wie u een hybride Azure AD wilt maken en lid wilt worden van Azure AD. Als de computer objecten deel uitmaken van specifieke organisatie-eenheden (Ou's), moet u ook de Ou's configureren om te synchroniseren in Azure AD Connect. Zie voor meer informatie over het synchroniseren van computer objecten met behulp van Azure AD Connect [filters configureren met behulp van Azure AD Connect](../hybrid/how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering).
 
 Vanaf versie 1.1.819.0 bevat Azure AD Connect een wizard die u kunt gebruiken om hybride Azure AD-deelname te configureren. De wizard vereenvoudigt het configuratie proces aanzienlijk. Met de wizard wordt de service verbindings punten (Scp's) voor apparaatregistratie geconfigureerd.
 
@@ -64,7 +64,7 @@ Hybride Azure AD-deelname vereist dat apparaten toegang hebben tot de volgende m
 - `https://enterpriseregistration.windows.net`
 - `https://login.microsoftonline.com`
 - `https://device.login.microsoftonline.com`
-- `https://autologon.microsoftazuread-sso.com`(Als u naadloze SSO gebruikt of wilt gebruiken)
+- `https://autologon.microsoftazuread-sso.com` (als u naadloze SSO gebruikt of wilt gebruiken)
 
 Als uw organisatie toegang tot internet via een uitgaande proxy vereist, raadt micro soft aan om [Web Proxy Auto-Discovery (WPAD) te implementeren](https://docs.microsoft.com/previous-versions/tn-archive/cc995261(v%3dtechnet.10)) om Windows 10-computers in te scha kelen voor apparaatregistratie met Azure AD. Als u problemen ondervindt met het configureren en beheren van WPAD, raadpleegt u [problemen met automatische detectie oplossen](https://docs.microsoft.com/previous-versions/tn-archive/cc302643(v=technet.10)). 
 
@@ -88,7 +88,7 @@ Voor het configureren van een hybride Azure AD-koppeling via Azure AD Connect he
 
 1. Start Azure AD Connect en selecteer vervolgens **configureren**.
 
-   ![Bijwerken](./media/hybrid-azuread-join-managed-domains/11.png)
+   ![Welkom](./media/hybrid-azuread-join-managed-domains/11.png)
 
 1. Selecteer op de pagina **extra taken** de optie **Apparaatinstellingen configureren**en selecteer vervolgens **volgende**.
 
@@ -120,7 +120,7 @@ Voor het configureren van een hybride Azure AD-koppeling via Azure AD Connect he
 
 1. Selecteer **configureren**op de pagina **gereed voor configuratie** .
 
-   ![Gereed om te configureren](./media/hybrid-azuread-join-managed-domains/19.png)
+   ![Gereed voor configuratie](./media/hybrid-azuread-join-managed-domains/19.png)
 
 1. Selecteer op de pagina **configuratie voltooid** de optie **Afsluiten**.
 
@@ -133,6 +133,9 @@ Als sommige apparaten die lid zijn van het domein, Windows down level-apparaten 
 - De lokale intranetinstellingen voor apparaatregistratie configureren
 - Naadloze SSO configureren
 - Micro soft Workplace Join installeren voor Windows-down level computers
+
+> [!NOTE]
+> Windows 7-ondersteuning is beëindigd op 14 januari 2020. [Ondersteuning voor Windows 7 is beëindigd](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020)voor meer informatie.
 
 ### <a name="configure-the-local-intranet-settings-for-device-registration"></a>De lokale intranetinstellingen voor apparaatregistratie configureren
 
@@ -151,7 +154,7 @@ U moet ook [naadloze SSO configureren](../hybrid/how-to-connect-sso-quick-start.
 
 Voor het registreren van Windows down level-apparaten moeten organisaties [micro soft Workplace join installeren voor niet-Windows 10-computers](https://www.microsoft.com/download/details.aspx?id=53554). Micro soft Workplace Join voor niet-Windows 10-computers is beschikbaar in het micro soft Download centrum.
 
-U kunt het pakket implementeren met behulp van een software distributiesysteem als [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager). Het pakket ondersteunt de standaard opties voor installatie op de `quiet` achtergrond met de para meter. De huidige vertakking van Configuration Manager biedt voor delen ten opzichte van eerdere versies, zoals de mogelijkheid om voltooide registraties bij te houden.
+U kunt het pakket implementeren met behulp van een software distributiesysteem als [System Center Configuration Manager](https://www.microsoft.com/cloud-platform/system-center-configuration-manager). Het pakket ondersteunt de standaard opties voor installatie op de achtergrond met de para meter `quiet`. De huidige vertakking van Configuration Manager biedt voor delen ten opzichte van eerdere versies, zoals de mogelijkheid om voltooide registraties bij te houden.
 
 Het installatie programma maakt een geplande taak op het systeem dat wordt uitgevoerd in de gebruikers context. De taak wordt geactiveerd wanneer de gebruiker zich aanmeldt bij Windows. De taak wordt op de achtergrond met Azure AD toegevoegd aan het apparaat met behulp van de referenties van de gebruiker na verificatie met Azure AD.
 
@@ -167,7 +170,7 @@ Wanneer u de cmdlet **Get-MSolDevice** gebruikt om de service details te control
 
 **Details van de service controleren**:
 
-1. Open Windows Power shell als Administrator.
+1. Open Windows PowerShell als administrator.
 1. Voer `Connect-MsolService` in om verbinding te maken met uw Azure-Tenant.  
 1. Voer `get-msoldevice -deviceId <deviceId>` in.
 1. Verifieer dat **Ingeschakeld** is ingesteld op **Waar**.

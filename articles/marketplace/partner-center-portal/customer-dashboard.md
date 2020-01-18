@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d1d94e07fc38ae5de62793666df5a73dbf8b79eb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2eaaf2ec2f3dad1da345d0cfeadf1cae223a592
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480565"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264013"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Klanten dashboard in commerciële Marketplace-analyse
 
@@ -72,7 +72,7 @@ In het diagram **klant trends** wordt een telling weer gegeven van alle klanten,
 
 De tabel **klanten per orders/gebruik** heeft drie tabbladen: ' orders ', ' genormaliseerd gebruik ' en ' onbewerkt gebruik '. Het **bovenste klant percentiel** wordt weer gegeven langs de x-as, zoals bepaald door het aantal orders. Op de y-as wordt het aantal orders van de klant weer gegeven. Op de secundaire y-as (lijn diagram) wordt het cumulatieve percentage van het totale aantal orders weer gegeven. U kunt details weer geven door boven punten in het lijn diagram te bewegen.
 
-Zie bijvoorbeeld het volgende diagram voor genormaliseerd gebruik: het bovenste 30e percentiel van klanten draagt bij tot 87% van het genormaliseerde gebruik cumulatief. Het 30e percentiel van klanten is alleen bijdragen 1.57 M uur gebruik.
+Zie bijvoorbeeld het volgende diagram voor genormaliseerd gebruik: het bovenste 30e percentiel van klanten draagt bij tot 87% van het genormaliseerde gebruik cumulatief. Het 30e percentiel van klanten is slechts 1.570.000 uur gebruik.
 
 ### <a name="customers-by-skus"></a>Klanten per Sku's
 

@@ -33,7 +33,7 @@
         - name: Load Balancer
           items:
             - name: Wat is load balancer?
-              href: ../load-balancer/load-balancer-standard-overview.md
+              href: ../load-balancer/load-balancer-overview.md
             - name: Load Balancer Standard en beschikbaarheidszones
               href: ../load-balancer/load-balancer-standard-availability-zones.md
             - name: Een zoneredundante openbare load balancer van het type Standard maken

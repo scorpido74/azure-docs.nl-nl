@@ -11,14 +11,14 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 166fb9320672e63b8c53717133dc61aa93f57a62
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 305108e576ad4e60089c929c9b780e8cee559540
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868640"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167615"
 ---
-# <a name="what-is-identity-provisioning"></a>Wat is identiteits inrichting?
+# <a name="what-is-identity-provisioning"></a>Wat is identiteitsinrichting?
 
 Vandaag de dag maken organisaties en bedrijven steeds meer gebruik van een mix van on-premises toepassingen en cloudtoepassingen.  Gebruikers moeten on-premises en in de Cloud toegang hebben tot toepassingen. Er moet sprake zijn van een enkele identiteit in deze verschillende toepassingen (on-premises en in de Cloud).
 
@@ -50,9 +50,7 @@ Het meest voorkomende scenario zou zijn, wanneer een nieuwe werk nemer aan uw be
 
 ![Cloud inrichting](media/what-is-provisioning/cloud3.png)
 
-Het inrichten van apps omvat het inrichten van gebruikers en rollen in de toepassingen waartoe de gebruiker toegang nodig heeft.  
-
-Het meest voorkomende scenario zou zijn wanneer een gebruiker in azure AD is ingericht in O365 of Sales Force.
+In Azure Active Directory (Azure AD) verwijst de inrichting van de term **[app](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** naar het automatisch maken van gebruikers-id's en-rollen in de Cloud toepassingen waartoe gebruikers toegang nodig hebben. Naast het maken van gebruikers identiteiten, omvat automatische inrichting het onderhoud en de verwijdering van gebruikers identiteiten als status of rollen worden gewijzigd. Veelvoorkomende scenario's zijn onder andere het inrichten van een Azure AD-gebruiker in toepassingen zoals [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), [Sales Force](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)en meer.
 
 ## <a name="directory-provisioning"></a>Directory-inrichting
 

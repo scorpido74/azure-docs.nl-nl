@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/02/2019
+ms.date: 01/18/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 4a4fd2f89bc662f394b59aa6295c3a909cb8552b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b0847cda78c2e6d1df87eeaedc35850103840151
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468461"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264726"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Zelf studie: Azure Firewall implementeren en configureren in een hybride netwerk met behulp van de Azure Portal
 
@@ -47,13 +47,15 @@ Als u in plaats daarvan Azure PowerShell wilt gebruiken om deze procedure te vol
 
 ## <a name="prerequisites"></a>Vereisten
 
-Er zijn drie belangrijke vereisten voor de correcte werking van dit scenario:
+Een hybride netwerk gebruikt het hub-en-spoke-architectuur model om verkeer tussen Azure VNets en on-premises netwerken te routeren. De hub-en-spoke-architectuur heeft de volgende vereisten:
 
-- Een door de gebruiker gedefinieerde route (UDR) in het spoke-subnet die verwijst naar het IP-adres van Azure Firewall als de standaardgateway. Doorgifte van BGP-route moet zijn **Uitgeschakeld** voor deze routetabel.
-- Een door de gebruiker gedefinieerde route (UDR) in het subnet van de hubgateway moet verwijzen naar het IP-adres van de firewall als de volgende hop naar de spoke-netwerken.
+- Stel **AllowGatewayTransit** in als peering Vnet-hub naar Vnet-spoke. In een hub-en-spoke-netwerk architectuur kunnen met een gateway-Transit de virtuele spoke-netwerken de VPN-gateway in de hub delen, in plaats van dat VPN-gateways in elk spoke-virtueel netwerk worden geïmplementeerd. 
 
-   Er is geen door de gebruiker gedefinieerde route (UDR) nodig in het Azure Firewall-subnet, omdat het de routes overneemt van BGP.
-- Zorg dat u **AllowGatewayTransit** instelt voor de peering van VNet-Hub naar VNet-Spoke en **UseRemoteGateways** voor de peering van VNet-Spoke naar VNet-Hub.
+   Daarnaast worden routes naar de met gateways verbonden virtuele netwerken of on-premises netwerken automatisch door gegeven aan de routerings tabellen voor de gekoppelde virtuele netwerken met behulp van de gateway-door voer. Zie [VPN-gateway doorvoer configureren voor peering van virtuele netwerken](../vpn-gateway/vpn-gateway-peering-gateway-transit.md)voor meer informatie.
+
+- Stel **UseRemoteGateways** in wanneer u met Vnet-spoke naar Vnet-hub. Als **UseRemoteGateways** is ingesteld en **AllowGatewayTransit** op externe peering is ingesteld, gebruikt het spoke-virtuele netwerk gateways van het externe virtuele netwerk voor door voer.
+- Om het spoke-subnet verkeer via de hub-firewall te routeren, hebt u een door de gebruiker gedefinieerde route (UDR) nodig die naar de firewall wijst met de optie **BGP-route doorgifte uitschakelen** . Met de optie **BGP-route doorgifte uitschakelen** wordt route verdeling naar de spoke-subnetten voor komen. Dit voor komt dat geleerde routes conflicteren met uw UDR.
+- Configureer een UDR op het hub gateway-subnet dat verwijst naar het IP-adres van de firewall als de volgende hop naar de spoke-netwerken. Er is geen door de gebruiker gedefinieerde route (UDR) nodig in het Azure Firewall-subnet, omdat het de routes overneemt van BGP.
 
 Zie het gedeelte [Routes maken](#create-the-routes) in deze zelfstudie voor informatie over hoe deze routes worden gemaakt.
 
@@ -153,7 +155,7 @@ Implementeer de firewall nu in het virtuele netwerk van de firewall hub.
    |---------|---------|
    |Abonnement     |\<uw abonnement\>|
    |Resourcegroep     |**FW-Hybrid-test** |
-   |Naam     |**AzFW01**|
+   |Name     |**AzFW01**|
    |Locatie     |Selecteer dezelfde locatie die u eerder hebt gebruikt|
    |Een virtueel netwerk kiezen     |**Bestaande gebruiken**:<br> **VNet-hub**|
    |Openbaar IP-adres     |Nieuwe maken: <br>**Name** - **FW-PIP**. |
@@ -261,7 +263,7 @@ Maak de verbinding van het on-premises virtuele netwerk naar het virtuele hub-ne
 
 Na ongeveer vijf minuten moet de status van beide verbindingen worden **verbonden**.
 
-![Gateway verbindingen](media/tutorial-hybrid-portal/gateway-connections.png)
+![Gatewayverbindingen](media/tutorial-hybrid-portal/gateway-connections.png)
 
 ## <a name="peer-the-hub-and-spoke-virtual-networks"></a>De hub- en virtuele spoke-netwerken koppelen
 

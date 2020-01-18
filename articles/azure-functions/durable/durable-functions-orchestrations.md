@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 54e1eb0be18de8e5ed420e96629d6f23473272fe
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545710"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261548"
 ---
 # <a name="durable-orchestrations"></a>Duurzame integraties
 
@@ -55,7 +55,9 @@ Wanneer een Orchestration-functie meer werk heeft gekregen (bijvoorbeeld wanneer
 
 ## <a name="orchestration-history"></a>Orchestration-geschiedenis
 
-Het gedrag gebeurtenis-sourcing van het duurzame taak raamwerk is nauw gekoppeld aan de Orchestrator-functie code die u schrijft. Stel dat u een Orchestrator-functie voor het koppelen van activiteiten hebt, zoals C# de volgende Orchestrator-functie:
+Het gedrag gebeurtenis-sourcing van het duurzame taak raamwerk is nauw gekoppeld aan de Orchestrator-functie code die u schrijft. Stel dat u een Orchestrator-functie voor het koppelen van activiteiten hebt, zoals de volgende Orchestrator-functie:
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -73,7 +75,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-Als u codeert in Java script, kan de Orchestrator-functie van de activiteiten keten eruitzien als de volgende voorbeeld code:
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -88,6 +90,8 @@ module.exports = df.orchestrator(function*(context) {
     return output;
 });
 ```
+
+---
 
 Bij elke `await` (C#)-of `yield` (Java script)-instructie bewaart het duurzame taak raamwerk de uitvoerings status van de functie in een enkele duurzame opslag back-end (doorgaans Azure Table Storage). Deze status is wat de *Orchestration-geschiedenis*wordt genoemd.
 
@@ -106,10 +110,10 @@ Zodra het controle punt is voltooid, kan de Orchestrator-functie uit het geheuge
 
 Na voltooiing ziet de geschiedenis van de eerder weer gegeven functie er ongeveer uit zoals in de volgende tabel in azure Table Storage (afgekort voor afbeeldings doeleinden):
 
-| PartitionKey (InstanceId)                     | Type             | Tijdstempel               | Invoer | Naam             | Resultaat                                                    | Status |
+| PartitionKey (InstanceId)                     | EventType             | Tijdstempel               | Invoer | Name             | Resultaat                                                    | Status |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | Null  | E1_HelloSequence |                                                           |                     |
-| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362 Z |       |                  |                                                           |                     |
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | null  | E1_HelloSequence |                                                           |                     |
+| eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670 Z |       | E1_SayHello      |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670 Z |       |                  |                                                           |                     |
 | eaee885b | TaskCompleted         | 2017-05-05T18:45:34.201 Z |       |                  | "" "Hallo Tokyo!" "                                        |                     |
@@ -182,7 +186,7 @@ Orchestrator-functies kunnen ook beleid voor opnieuw proberen toevoegen aan de f
 
 Zie het artikel over de [fout afhandeling](durable-functions-error-handling.md) voor meer informatie en voor beelden.
 
-### <a name="critical-sections-durable-functions-2x"></a>Essentiële secties (Durable Functions 2. x)
+### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>Kritieke secties (Durable Functions 2. x, momenteel alleen .NET)
 
 Indelings instanties worden in één thread gestroomd, zodat u zich geen zorgen hoeft te maken over race voorwaarden *binnen* een indeling. Race conditions zijn echter mogelijk wanneer er met de integratie met externe systemen wordt gecommuniceerd. Voor het beperken van race voorwaarden bij interactie met externe systemen, kunnen Orchestrator-functies *essentiële secties* definiëren met behulp van een `LockAsync` methode in .net.
 
@@ -212,7 +216,9 @@ De functie essentiële sectie is ook handig voor het coördineren van wijziginge
 
 Orchestrator-functies zijn niet toegestaan voor I/O, zoals beschreven in de [functie code beperkingen van Orchestrator](durable-functions-code-constraints.md). De gebruikelijke tijdelijke oplossing voor deze beperking is het verpakken van code die I/O in een activiteit functie moet uitvoeren. Integraties die communiceren met externe systemen gebruiken vaak activiteit functies om HTTP-aanroepen te maken en het resultaat te retour neren naar de indeling.
 
-Om dit algemene patroon te vereenvoudigen, kunnen Orchestrator-functies de `CallHttpAsync`-methode in .NET gebruiken om rechtstreeks HTTP-Api's aan te roepen. Naast het ondersteunen van basis patronen voor aanvraag/antwoord ondersteunt `CallHttpAsync` automatische verwerking van veelvoorkomende asynchrone HTTP 202-polling patronen en wordt ook verificatie met externe services met [beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md)ondersteund.
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Om dit algemene patroon te vereenvoudigen, kunnen Orchestrator-functies de `CallHttpAsync`-methode gebruiken om rechtstreeks HTTP-Api's aan te roepen.
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -232,6 +238,8 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -244,6 +252,10 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
+Naast het ondersteunen van elementaire patronen voor aanvraag/antwoord, ondersteunt de methode automatische verwerking van veelvoorkomende asynchrone HTTP 202-polling patronen en wordt ook verificatie met externe services met [beheerde identiteiten](../../active-directory/managed-identities-azure-resources/overview.md)ondersteund.
+
 Zie het artikel [http-functies](durable-functions-http-features.md) voor meer informatie en voor meer gedetailleerde voor beelden.
 
 > [!NOTE]
@@ -251,9 +263,11 @@ Zie het artikel [http-functies](durable-functions-http-features.md) voor meer in
 
 ### <a name="passing-multiple-parameters"></a>Meerdere para meters door geven
 
-Het is niet mogelijk om rechtstreeks meerdere para meters door te geven aan een activiteit functie. De aanbeveling is om een matrix met objecten door te geven of om [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) -objecten in .net te gebruiken.
+Het is niet mogelijk om rechtstreeks meerdere para meters door te geven aan een activiteit functie. De aanbeveling is om een matrix met objecten of samengestelde objecten door te geven.
 
-In het volgende voor beeld worden nieuwe functies van [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) gebruikt die zijn toegevoegd met [ C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples):
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+In .NET kunt u ook [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) -objecten gebruiken. In het volgende voor beeld worden nieuwe functies van [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) gebruikt die zijn toegevoegd met [ C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples):
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -289,6 +303,36 @@ public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContex
     };
 }
 ```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+#### <a name="orchestrator"></a>Orchestrator
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const location = {
+        city: "Seattle",
+        state: "WA"
+    };
+    const weather = yield context.df.callActivity("GetWeather", location);
+
+    // ...
+};
+```
+
+#### <a name="activity"></a>Activiteit
+
+```javascript
+module.exports = async function (context, location) {
+    const {city, state} = location; // destructure properties into variables
+
+    // ...
+};
+```
+
+---
 
 ## <a name="next-steps"></a>Volgende stappen
 

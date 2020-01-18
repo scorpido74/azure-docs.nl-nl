@@ -1,5 +1,5 @@
 ---
-title: 'Voor beeld: gebruik de grootschalige functie-Face-API'
+title: 'Voor beeld: gebruik de grootschalige functie-face'
 titleSuffix: Azure Cognitive Services
 description: Deze hand leiding is een artikel over het opschalen van bestaande PersonGroup-en FaceList-objecten naar LargePersonGroup-en LargeFaceList-objecten.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 05/01/2019
 ms.author: sbowles
-ms.openlocfilehash: 976baaef11251715218ecea71986f08ec5f72996
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: dc0964e40e9214e414d865c06006f1d36e97eeb2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73743726"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169769"
 ---
 # <a name="example-use-the-large-scale-feature"></a>Voor beeld: gebruik de functie grootschalige schaal
 
@@ -23,14 +23,14 @@ Deze hand leiding is een geavanceerd artikel over het opschalen van bestaande Pe
 
 LargePersonGroup en LargeFaceList worden gezamenlijk aangeduid als grootschalige bewerkingen. LargePersonGroup kan Maxi maal 1.000.000 personen bevatten, elk met een maximum van 248 gezichten. LargeFaceList kan Maxi maal 1.000.000 gezichten bevatten. De grootschalige bewerkingen zijn vergelijkbaar met de conventionele PersonGroup en FaceList, maar hebben een aantal verschillen vanwege de nieuwe architectuur. 
 
-De voor beelden zijn geschreven C# in met behulp van de Azure Cognitive Services Face-API-client bibliotheek.
+De voor beelden zijn geschreven C# in met behulp van de Azure Cognitive Services Face-client bibliotheek.
 
 > [!NOTE]
 > Als u de prestaties van gezichts zoekopdrachten voor het identificeren en FindSimilar op grote schaal wilt inschakelen, moet u een Train bewerking uitvoeren om de LargeFaceList en LargePersonGroup voor te verwerken. De tijd van de training varieert van seconden tot ongeveer een halve uur op basis van de werkelijke capaciteit. Tijdens de cursus periode is het mogelijk om identificatie-en FindSimilar uit te voeren als een geslaagde training eerder is uitgevoerd. Het nadeel is dat de nieuwe toegevoegde personen en gezichten pas in het resultaat worden weer gegeven nadat een nieuwe migratie naar grootschalige trainingen is voltooid.
 
 ## <a name="step-1-initialize-the-client-object"></a>Stap 1: het client object initialiseren
 
-Wanneer u de Face-API-client bibliotheek gebruikt, worden de abonnements sleutel en het abonnements eindpunt door gegeven via de constructor van de FaceClient-klasse. Bijvoorbeeld:
+Wanneer u de face-client bibliotheek gebruikt, worden de abonnements sleutel en het abonnements eindpunt door gegeven via de constructor van de FaceClient-klasse. Bijvoorbeeld:
 
 ```csharp
 string SubscriptionKey = "<Subscription Key>";
@@ -63,9 +63,9 @@ Voeg alle gezichten en personen van de PersonGroup toe aan de nieuwe LargePerson
 
 | FaceList-API's | LargeFaceList-API's |
 |:---:|:---:|
-| Maken | Maken |
+| Create | Create |
 | Verwijderen | Verwijderen |
-| Ophalen | Ophalen |
+| Ontvang | Ontvang |
 | Lijst | Lijst |
 | Update | Update |
 | - | Trainen |
@@ -201,7 +201,7 @@ Hoewel de trein bewerking [FindSimilar](https://westus.dev.cognitive.microsoft.c
 |:---:|:---:|
 | 1000 | 1-2 sec |
 | 10.000 | 5-10 sec |
-| 100.000 | 1-2 minuten |
+| 100.000 | 1-2 min |
 | 1\.000.000 | 10-30 minuten |
 
 We raden u aan de volgende strategieën te gebruiken om de grootschalige functie beter te benutten.

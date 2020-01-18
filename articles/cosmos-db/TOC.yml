@@ -851,8 +851,6 @@
         - name: Consistentieniveaus beheren
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
           href: how-to-manage-consistency.md
-        - name: Aangepaste synchronisatie implementeren
-          href: how-to-custom-synchronization.md
         - name: Conflictoplossingsbeleid configureren
           href: how-to-manage-conflicts.md
     - name: Ingerichte doorvoer

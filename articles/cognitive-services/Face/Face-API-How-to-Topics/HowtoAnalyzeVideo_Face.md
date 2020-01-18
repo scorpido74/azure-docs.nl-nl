@@ -1,7 +1,7 @@
 ---
-title: 'Voorbeeld: video-analyse in realtime: Face-API'
+title: 'Voor beeld: realtime video analyse-face'
 titleSuffix: Azure Cognitive Services
-description: Gebruik de Face-API om bijna in realtime een analyse uit te voeren van de frames die uit een livevideostream zijn gehaald.
+description: Gebruik de face-service om bijna realtime analyses uit te voeren op frames die zijn gemaakt met een live video stroom.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: e2166354fb45d24e117156e917f4da726ee8406f
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: ab3f596000216e8555bb84d0d47aff9a6e969eeb
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114350"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169888"
 ---
-# <a name="example-how-to-analyze-videos-in-real-time"></a>Voorbeeld: Handleiding voor realtime video-analyse
+# <a name="example-how-to-analyze-videos-in-real-time"></a>Voorbeeld: video's in realtime analyseren
 
-In deze handleiding wordt uitgelegd hoe u bijna in realtime een analyse kunt uitvoeren van frames die afkomstig zijn uit een live-videostream. Dit zijn de basisstappen van een dergelijk systeem:
+In deze handleiding wordt uitgelegd hoe u bijna in realtime een analyse kunt uitvoeren van de frames die uit een livevideostream zijn gehaald. Dit zijn de basisstappen van een dergelijk systeem:
 
 - Frames verkrijgen uit een videobron
 - Selecteren welke frames u wilt analyseren
@@ -142,7 +142,7 @@ Om uw app zo snel mogelijk aan de praat te krijgen, gebruikt u een flexibele imp
 
 De bibliotheek bevat de klasse FrameGrabber, waarmee het hierboven beschreven systeem van producers en consumers wordt geïmplementeerd voor het verwerken van videoframes van een webcam. De gebruiker kan de exacte vorm van de API-aanroep opgeven. De klasse maakt tevens gebruik van gebeurtenissen om aan de aanroepende code door te geven wanneer er een nieuw frame is verkregen of een nieuw analyseresultaat beschikbaar is.
 
-Ter illustratie van enkele van de mogelijkheden, zijn er twee voorbeeld-apps die gebruikmaken van de bibliotheek. De eerste is een eenvoudige console-app, waarvan u hieronder een vereenvoudigde versie ziet. De app legt frames van de standaardwebcam vast en verzendt deze naar de Face-API voor gezichtsherkenning.
+Ter illustratie van enkele van de mogelijkheden, zijn er twee voorbeeld-apps die gebruikmaken van de bibliotheek. De eerste is een eenvoudige console-app, waarvan u hieronder een vereenvoudigde versie ziet. Er worden frames van de standaard webcam geplaatst en verzonden naar de gezichts service voor gezichts detectie.
 
 ```csharp
 using System;
@@ -159,7 +159,7 @@ namespace VideoFrameConsoleApplication
             // Create grabber, with analysis type Face[]. 
             FrameGrabber<Face[]> grabber = new FrameGrabber<Face[]>();
             
-            // Create Face API Client. Insert your Face API key here.
+            // Create Face Client. Insert your Face API key here.
             private readonly IFaceClient faceClient = new FaceClient(
             new ApiKeyServiceClientCredentials("<subscription key>"),
             new System.Net.Http.DelegatingHandler[] { });
@@ -203,13 +203,12 @@ Als u met dit voorbeeld aan de slag wilt, volgt u deze stappen:
 
 1. Haal API-sleutels voor de Vision-API's op uit [Abonnementen](https://azure.microsoft.com/try/cognitive-services/). Voor analyse van videoframes zijn dit de relevante API's:
     - [Computer Vision-API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [Emotion-API](https://docs.microsoft.com/azure/cognitive-services/emotion/home)
     - [Face-API](https://docs.microsoft.com/azure/cognitive-services/face/overview)
 
 2. Kloon de GitHub-opslagplaats [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)
 
 3. Open het voorbeeld in Visual Studio 2015, bouw de voorbeeldtoepassingen en voer ze uit:
-    - Voor BasicConsoleSample is de Face-API-sleutel rechtstreeks in  [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) in code vastgelegd.
+    - Voor BasicConsoleSample is de face-sleutel rechtstreeks vastgelegd in [BasicConsoleSample/Program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
     - Voor LiveCameraSample moeten de sleutels worden ingevoerd in het instellingenvenster van de app. De sleutels worden als gebruikersgegevens gehandhaafd tussen sessies.
         
 

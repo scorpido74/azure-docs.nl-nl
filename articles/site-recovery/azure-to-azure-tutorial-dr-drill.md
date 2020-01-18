@@ -2,21 +2,17 @@
 title: Een Azure VM-nood herstel analyse uitvoeren met Azure Site Recovery
 description: Meer informatie over het uitvoeren van een nood herstel analyse naar een secundaire regio voor Azure-Vm's met behulp van de Azure Site Recovery-service.
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 11/14/2019
-ms.author: raynew
+ms.date: 01/16/2020
 ms.custom: mvc
-ms.openlocfilehash: 817a220e36ac250b1d5a5aa90d0bddbfb155cc26
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: b2ce157f0f192135ab0507e4aae4c0a282bda1ea
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091337"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166180"
 ---
-# <a name="run-a-disaster-recovery-drill-to-a-secondary-region-for-azure-vms"></a>Een nood herstel analyse uitvoeren naar een secundaire regio voor virtuele Azure-machines 
+# <a name="run-a-disaster-recovery-drill-to-a-secondary-region-for-azure-vms"></a>Een nood herstel analyse uitvoeren naar een secundaire regio voor virtuele Azure-machines
 
 De [Azure Site Recovery](site-recovery-overview.md) service draagt bij aan uw strategie voor zakelijke continuïteit en noodherstel (BCDR) door te zorgen dat uw zakelijke apps beschikbaar blijven tijdens geplande en ongeplande uitval. Site Recovery beheert en orkestreert noodherstel van on-premises machines en virtuele Azure-machines (VM's), met inbegrip van replicatie, failover en herstel.
 
@@ -27,34 +23,34 @@ Deze tutorial laat zien hoe u een DR-herstelanalyse kunt uitvoeren voor een Azur
 > * Een testfailover uitvoeren voor één VM
 
 > [!NOTE]
-> Deze zelf studie helpt u bij het uitvoeren van een DR-analyse met minimale stappen. Als u meer wilt weten over de verschillende aspecten van het uitvoeren van een DR-analyse, inclusief netwerk overwegingen, automatisering of probleem oplossing, raadpleegt u de documenten onder ' How to ' voor Azure Vm's.
+> Deze zelf studie helpt u bij het uitvoeren van een nood herstel analyse met minimale stappen. Zie de documentatie voor Azure Vm's- [replicatie](azure-to-azure-how-to-enable-replication.md), [netwerken](azure-to-azure-about-networking.md), [automatisering](azure-to-azure-powershell.md)of [probleem oplossing](azure-to-azure-troubleshoot-errors.md)voor meer informatie over de verschillende functies die betrekking hebben op het uitvoeren van een nood herstel analyse.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Voordat u een failovertest uitvoert, wordt u aangeraden de VM-eigenschappen te controleren of alles is zoals verwacht.  Ga naar de VM-eigenschappen in **Gerepliceerde items**. In de **Essentials**-blade ziet u informatie over de instellingen en status van machines.
-- **Wij raden u aan om een apart VM-netwerk te gebruiken voor de failover** en niet het standaardnetwerk dat is ingesteld toen u replicatie inschakelde.
-- Afhankelijk van de configuratie van de bron netwerken voor elke NIC, kunt u optioneel **subnet, IP-adres, openbaar IP, netwerk beveiligings groep of interne Load Balancer** opgeven om aan elke NIC te koppelen onder de instellingen voor de Testfailover in compute &-netwerk voordat Dr-analyse wordt verricht.
+Controleer de volgende items voordat u deze zelf studie volgt:
 
+- Voordat u een testfailover uitvoert, wordt u aangeraden de eigenschappen van de virtuele machine te controleren om ervoor te zorgen dat deze is geconfigureerd voor herstel na nood gevallen. Ga naar de **bewerkingen** van de virtuele machine > **nood herstel** > **Eigenschappen** om de eigenschappen van replicatie en failover weer te geven.
+- **Wij raden u aan om een apart VM-netwerk te gebruiken voor de failover** en niet het standaardnetwerk dat is ingesteld toen u replicatie inschakelde.
+- Afhankelijk van de configuratie van de bron netwerken voor elke NIC, kunt u het **subnet**, het **persoonlijke IP-adres**, de **open bare IP**, de **netwerk beveiligings groep**of de **Load Balancer** toevoegen aan elke NIC onder failover-instellingen testen in **Compute en netwerk** , voordat u een nood herstel analyse uitvoert.
 
 ## <a name="run-a-test-failover"></a>Een testfailover uitvoeren
 
-1. Klik in **Instellingen** > **Gerepliceerde items** op het pictogram **+Failover testen** van de VM.
+In dit voor beeld ziet u hoe u een Recovery Services kluis gebruikt om een VM-testfailover uit te voeren.
 
-2. Selecteer in **Failover testen** een herstelpunt om voor de failover te gebruiken:
-
-    - **Nieuwste**: verwerkt alle gegevens in site Recovery en biedt de laagste RTO (Recovery Time doelstelling).
-    - **Laatst verwerkte**: voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt door Site Recovery. Het tijdstempel wordt weergegeven. Met deze optie wordt er geen tijd besteed aan het verwerken van gegevens, zodat er een lage RTO (Recovery Time Objective) is
+1. Selecteer een kluis en ga naar **beveiligde items** > **gerepliceerde items** en selecteer een virtuele machine.
+1. Selecteer in **failover testen**het herstel punt dat u voor de failover wilt gebruiken:
+   - **Nieuwste**: verwerkt alle gegevens in site Recovery en biedt de laagste RTO (Recovery Time doelstelling).
+   - **Laatst verwerkte**: voert een failover van de VM uit naar het laatste herstelpunt dat is verwerkt door Site Recovery. Het tijdstempel wordt weergegeven. Met deze optie wordt er geen tijd besteed aan het verwerken van gegevens, zodat er een lage RTO beschikbaar is.
    - **Laatste toepassingsconsistente punt**: met deze optie wordt er een failover uitgevoerd van alle VM’s naar het laatste toepassingsconsistente herstelpunt. Het tijdstempel wordt weergegeven.
    - **Aangepast**: failover naar een bepaald herstel punt. Aangepast is alleen beschikbaar wanneer u een failover hebt uitgevoerd voor één virtuele machine en niet voor failover met een herstel plan.
+1. Selecteer het virtuele Azure-doel netwerk dat door Azure Vm's in de secundaire regio wordt verbonden na de failover.
 
-3. Selecteer het virtuele Azure-doelnetwerk waarop Azure VM's in de secundaire regio na de failover worden aangesloten.
+   > [!NOTE]
+   > Als de instellingen van de testfailover vooraf zijn geconfigureerd voor het gerepliceerde item, is de vervolg keuzelijst voor het selecteren van een virtueel Azure-netwerk niet zichtbaar.
 
-    > [!NOTE]
-    > De vervolg keuzelijst voor het selecteren van een virtueel Azure-netwerk is niet zichtbaar als de failovertest voor het gerepliceerde item vooraf zijn geconfigureerd.
-
-4. Klik op **OK** om de failover te starten. Klik op de VM om de eigenschappen ervan te openen als u de voortgang wilt volgen. U kunt ook op de taak **Failover testen** klikken in kluisnaam > **Instellingen** > **Taken** > **Site Recovery-taken**.
-5. Nadat de failover is voltooid, wordt de replica-Azure-VM weergegeven in Azure Portal > **Virtuele machines**. Controleer of de VM draait, de juiste grootte heeft en aangesloten is op het juiste netwerk.
-6. Verwijder VM's die tijdens de testfailover zijn gemaakt door op het gerepliceerde item of het herstelplan op **Failovertest opschonen** te klikken. Leg in **Notities** eventuele opmerkingen over de testfailover vast en sla deze op.
+1. Selecteer **OK**om de failover te starten. Als u de voortgang van de kluis wilt volgen, gaat u naar **bewaking** > **site Recovery taken** en selecteert u de taak **testfailover** .
+1. Nadat de failover is voltooid, wordt de replica van de virtuele machine van Azure weer gegeven in de **virtual machines**van de Azure Portal. Controleer of de VM draait, de juiste grootte heeft en aangesloten is op het juiste netwerk.
+1. Als u de virtuele machines wilt verwijderen die tijdens de testfailover zijn gemaakt, selecteert u testfailover **opschonen** voor het gerepliceerde item of het herstel plan. Leg in **Notities** eventuele opmerkingen over de testfailover vast en sla deze op.
 
 ## <a name="next-steps"></a>Volgende stappen
 

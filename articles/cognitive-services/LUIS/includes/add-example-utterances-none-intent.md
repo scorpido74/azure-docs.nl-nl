@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: e4147fbb27c8538f801f6c49f8b535a283faf50f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c81aaa02af0895e6c3a851fe15273d85de9b55bc
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325912"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262742"
 ---
 De clienttoepassing moet weten of een uiting niet zinvol of gepast is voor de toepassing. De **enige** intentie wordt toegevoegd aan elke toepassing als onderdeel van het aanmaak proces om te bepalen of een utterance niet moet worden beantwoord door de client toepassing.
 
@@ -30,7 +30,6 @@ Als **u niets opgeeft** , wordt een utterance die buiten het onderwerp van het d
     |`None` voorbeeld uitingen|
     |--|
     |`Barking dogs are annoying`|
-    |`Order a pizza for me`|
     |`Penguins in the ocean`|
 
     Deze voor beelden mogen geen woorden gebruiken die u verwacht in uw onderwerps domein, zoals `pizza`, `cheese``crust``pickup` `deliver`.

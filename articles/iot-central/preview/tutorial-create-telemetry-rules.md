@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 793bb46e14725b14c766569e8b0fc2aa0246858e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3889378f34d66f54ea408da4aa43b12f86e7c586
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979050"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262612"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>Zelf studie: een regel maken en meldingen instellen in uw Azure IoT Central-toepassing (preview-functies)
 
@@ -25,11 +25,12 @@ U kunt Azure IoT Central gebruiken om uw verbonden apparaten op afstand te bewak
 
 Apparaten gebruiken telemetrie om numerieke gegevens van het apparaat te verzenden. Een regel die wordt geactiveerd wanneer de telemetrie van het geselecteerde apparaat een opgegeven drempel overschrijdt.
 
-In deze zelf studie maakt u een regel voor het verzenden van een e-mail bericht wanneer de Tempe ratuur in een omgevings sensor van het apparaat 80&deg; F overschrijdt.
+In deze zelf studie maakt u een regel voor het verzenden van een e-mail bericht wanneer de Tempe ratuur in een omgevings sensor van het apparaat 70&deg; F overschrijdt.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
+>
 > * Een regel maken
 > * Een e-mail actie toevoegen
 
@@ -39,7 +40,7 @@ Voordat u begint, moet u de [toepassing een Azure-IOT Central maken](./quick-dep
 
 ## <a name="create-a-rule"></a>Een regel maken
 
-Voor het maken van een telemetrie-regel moet er ten minste één telemetrie-meting zijn gedefinieerd. In deze zelf studie wordt een omgevings sensor apparaat gebruikt dat telemetrie van de Tempe ratuur en de vochtigheid verzendt. U hebt deze apparaat sjabloon toegevoegd en een gesimuleerd apparaat gemaakt in het Snelstartgids [een gesimuleerd apparaat toevoegen aan uw IOT Central-toepassing](./quick-create-pnp-device.md) Quick Start. De regel controleert de door het apparaat gemelde Tempe ratuur en verzendt een e-mail wanneer deze meer dan 80 graden gaat.
+Voor het maken van een telemetrie-regel moet er ten minste één telemetrie-meting zijn gedefinieerd. In deze zelf studie wordt een omgevings sensor apparaat gebruikt dat telemetrie van de Tempe ratuur en de vochtigheid verzendt. U hebt deze apparaat sjabloon toegevoegd en een gesimuleerd apparaat gemaakt in het Snelstartgids [een gesimuleerd apparaat toevoegen aan uw IOT Central-toepassing](./quick-create-pnp-device.md) Quick Start. De regel controleert de door het apparaat gemelde Tempe ratuur en verzendt een e-mail wanneer deze meer dan 70 graden gaat.
 
 1. Selecteer in het linkerdeel venster **regels**.
 
@@ -57,18 +58,18 @@ Voor het maken van een telemetrie-regel moet er ten minste één telemetrie-meti
 
 ### <a name="configure-the-rule-conditions"></a>De regel voorwaarden configureren
 
-Voor waarden worden de criteria gedefinieerd die de regel controleert. In deze zelf studie configureert u de regel die moet worden geactiveerd wanneer de Tempe ratuur 80&deg; F overschrijdt.
+Voor waarden worden de criteria gedefinieerd die de regel controleert. In deze zelf studie configureert u de regel die moet worden geactiveerd wanneer de Tempe ratuur 70&deg; F overschrijdt.
 
 1. Selecteer **Tempe ratuur** in de vervolg keuzelijst **telemetrie** .
 
-1. Vervolgens kiest u **groter dan** als de **operator** en voert u _80_ in als **waarde**.
+1. Vervolgens kiest u **groter dan** als de **operator** en voert u _70_ in als **waarde**.
 
     ![Voorwaarde](media/tutorial-create-telemetry-rules/condition-filled-out1.png)
 
 1. U kunt desgewenst een **tijd aggregatie**instellen. Wanneer u een tijd aggregatie selecteert, moet u ook een samenvoegings type selecteren, zoals het gemiddelde of de som van de aggregatie vervolg keuzelijst.
 
-    * Zonder aggregatie wordt de regel geactiveerd voor elk telemetrie-gegevens punt dat voldoet aan de voor waarde. Als de regel bijvoorbeeld zo is geconfigureerd dat deze wordt geactiveerd wanneer de Tempe ratuur hoger is dan 80, wordt de regel bijna direct geactiveerd wanneer het apparaat de Tempe ratuur > 80.
-    * Met aggregatie wordt de regel geactiveerd als de cumulatieve waarde van de telemetriegegevens van de gegevens punten in het tijd venster voldoet aan de voor waarde. Als de regel bijvoorbeeld zo is geconfigureerd dat deze wordt geactiveerd wanneer de Tempe ratuur hoger is dan 80, wordt tijd aggregatie ingesteld op 10 minuten en het aggregatie type gemiddelde, vervolgens wordt de regel geactiveerd wanneer het apparaat een gemiddelde Tempe ratuur > 80, berekend over een 10 minuten rapporteert bereik.
+    * Zonder aggregatie wordt de regel geactiveerd voor elk telemetrie-gegevens punt dat voldoet aan de voor waarde. Als de regel bijvoorbeeld zo is geconfigureerd dat deze wordt geactiveerd wanneer de Tempe ratuur hoger is dan 70, wordt de regel bijna direct geactiveerd wanneer het apparaat de Tempe ratuur > 70.
+    * Met aggregatie wordt de regel geactiveerd als de cumulatieve waarde van de telemetriegegevens van de gegevens punten in het tijd venster voldoet aan de voor waarde. Als de regel bijvoorbeeld zo is geconfigureerd dat deze wordt geactiveerd wanneer de Tempe ratuur hoger is dan 70, wordt tijd aggregatie ingesteld op 10 minuten en het aggregatie type gemiddelde, vervolgens wordt de regel geactiveerd wanneer het apparaat een gemiddelde Tempe ratuur > 70, berekend over een 10 minuten rapporteert bereik.
 
      ![Aggregatie voorwaarde](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
 

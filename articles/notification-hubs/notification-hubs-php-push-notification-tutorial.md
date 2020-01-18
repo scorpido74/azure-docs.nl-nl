@@ -1,5 +1,5 @@
 ---
-title: Notification Hubs gebruiken met PHP
+title: Azure Notification Hubs gebruiken met PHP
 description: Meer informatie over het gebruik van Azure Notification Hubs van een PHP-back-end.
 services: notification-hubs
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 4df48475af4b140e4446dde9069eafcc95d9d3b2
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9a77a9d9c8b2d71197089f66d81e07d56c780e11
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213168"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263843"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>Notification Hubs van PHP gebruiken
 
@@ -36,7 +36,7 @@ In dit onderwerp laten we zien hoe u:
 
 ## <a name="client-interface"></a>Client interface
 
-De hoofd client interface kan dezelfde methoden bieden als beschikbaar in de [.net notification hubs SDK](https://msdn.microsoft.com/library/jj933431.aspx), waarmee u alle zelf studies en voor beelden die momenteel op deze site beschikbaar zijn, kunt vertalen en die door de community zijn bijgedragen aan de browser.
+De hoofd client interface kan dezelfde methoden bieden die beschikbaar zijn in de [.net notification hubs SDK](https://msdn.microsoft.com/library/jj933431.aspx), waarmee u alle zelf studies en voor beelden die momenteel op deze site beschikbaar zijn, rechtstreeks kunt vertalen en die door de community op internet zijn bijgedragen.
 
 U kunt alle beschik bare code vinden in het voor [Voor beeld van PHP REST-wrapper].
 
@@ -106,7 +106,7 @@ Hier is de hoofd klasse die de-client implementeert, waarvan de constructor de c
 
 Raadpleeg de Azure-documentatie voor informatie over het [maken van een SAS-beveiligings token](https://docs.microsoft.com/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token).
 
-Voeg de `generateSasToken` methode toe aan `NotificationHub` de klasse om het token te maken op basis van de URI van de huidige aanvraag en de referenties die zijn geëxtraheerd uit de Connection String.
+Voeg de `generateSasToken` methode toe aan de klasse `NotificationHub` om het token te maken op basis van de URI van de huidige aanvraag en de referenties die zijn geëxtraheerd uit de connection string.
 
     ```php
     private function generateSasToken($uri) {
@@ -155,7 +155,7 @@ Deze klasse is een container voor een systeem eigen meldings hoofdtekst of een s
 
 Raadpleeg de [documentatie van Notification hubs rest-api's](https://msdn.microsoft.com/library/dn495827.aspx) en de specifieke indelingen voor het meldings platform voor alle beschik bare opties.
 
-In strijd met deze klasse kunnen we nu de methoden voor het verzenden van meldingen binnen `NotificationHub` de klasse schrijven:
+In strijd met deze klasse kunnen we nu de methoden voor het verzenden van meldingen binnen de `NotificationHub` klasse schrijven:
 
     ```php
     public function sendNotification($notification, $tagsOrTagExpression="") {
@@ -216,7 +216,7 @@ In strijd met deze klasse kunnen we nu de methoden voor het verzenden van meldin
     } 
     ```
 
-Met de bovenstaande methoden wordt een HTTP POST-aanvraag `/messages` verzonden naar het eind punt van uw notification hub, met de juiste hoofd tekst en kopteksten voor het verzenden van de melding.
+Met de bovenstaande methoden wordt een HTTP POST-aanvraag verzonden naar het `/messages`-eind punt van uw notification hub, met de juiste hoofd tekst en kopteksten om de melding te verzenden.
 
 ## <a name="complete-tutorial"></a>De zelf studie volt ooien
 

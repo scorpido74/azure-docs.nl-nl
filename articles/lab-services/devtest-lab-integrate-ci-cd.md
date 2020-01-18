@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs te integreren in uw Azure-pijplijnen continue integratie en levering pijplijn | Microsoft Docs
+title: Azure DevTest Labs integreren in uw Azure-pijp lijnen
 description: Meer informatie over het integreren van Azure DevTest Labs in uw Azure pijplijnen continue integratie en leveringspijplijn
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 20ba297d22e26aa8c7e20db300173f12582d257e
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 54b4e6e6a283f46e03f7b94ce96ba79a03f75523
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "71224470"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170383"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Azure DevTest Labs integreren in uw CI/CD-pijp lijn van Azure pipelines
 
 U kunt de uitbrei ding *Azure DevTest Labs taken* gebruiken voor het integreren van de continue integratie van Azure pipelines en de pijp lijnen voor continue levering (CI/cd) met Azure DevTest Labs. De uitbrei ding installeert verschillende taken, waaronder: 
 
-- Een virtuele machine maken (VM)
-- Een aangepaste installatiekopie van een virtuele machine maken
+- Een virtuele machine (VM) maken
+- Een aangepaste installatiekopie maken vanaf een virtuele machine
 - Een VM verwijderen 
 
 Met deze taken kunt u bijvoorbeeld snel een *gouden installatie kopie* -VM implementeren voor een specifieke test taak en vervolgens de virtuele machine verwijderen wanneer de test is voltooid.
@@ -106,7 +106,7 @@ Het script bestand maken:
 
 Een nieuwe release pijplijn maken:
 
-1. Selecteer**op de** pagina Azure DevOps-project **pijp lijnen** > in het linkernavigatievenster.
+1. Selecteer op de pagina Azure DevOps-project **pijp lijnen** > **releases** van de linkernavigatiebalk.
 1. Selecteer **nieuwe pijp lijn**.
 1. Schuif onder **Selecteer een sjabloon**omlaag, selecteer **lege taak**en selecteer vervolgens **Toep assen**.
 
@@ -120,7 +120,7 @@ Variabelen toevoegen voor de waarden:
    
 1. Selecteer voor elke variabele **toevoegen** en voer de naam en waarde in:
    
-   |Name|Value|
+   |Name|Waarde|
    |---|---|
    |*vmName*|De naam van de virtuele machine die u hebt toegewezen in de Resource Manager-sjabloon|
    |*Gebruikers*|Gebruikers naam voor toegang tot de virtuele machine|
@@ -130,7 +130,7 @@ Variabelen toevoegen voor de waarden:
 
 De volgende stap is het maken van de gouden installatie kopie-VM die moet worden gebruikt voor toekomstige implementaties. U maakt de virtuele machine in uw Azure DevTest Labs-exemplaar met behulp van de *Azure DEVTEST Labs VM* -taak maken.
 
-1. Selecteer op het tabblad pijp lijn van release **pijp lijn de** tekst met de Hyper link in **fase 1** om **fase taken weer te geven**en selecteer vervolgens **+** het plus teken naast **Agent taak**. 
+1. Selecteer op het tabblad **pijp** lijn van de release pijp lijn de hyperlink tekst in **fase 1** om **fase taken weer te geven**en selecteer vervolgens het plus teken **+** naast **Agent taak**. 
    
 1. Onder **taken toevoegen**selecteert u **Azure DevTest Labs virtuele machine maken**en selecteert u **toevoegen**. 
    
@@ -138,27 +138,27 @@ De volgende stap is het maken van de gouden installatie kopie-VM die moet worden
 
 1. Vul in het rechterdeel venster het formulier als volgt in:
    
-   |Veld|Value|
+   |Veld|Waarde|
    |---|---|
    |**Azure RM-abonnement**|Selecteer een service verbinding of abonnement bij **beschik bare Azure-service verbindingen** of **beschik bare Azure-abonnementen** in de vervolg keuzelijst en Selecteer indien nodig **autoriseren** .<br /><br />**Opmerking:** Zie [Azure Resource Manager service-eind punt](/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)voor meer informatie over het maken van een verbinding met beperkte machtigingen voor uw Azure-abonnement.|
    |**Naam van Lab**|Selecteer de naam van een bestaand Lab waarin de VM van het lab wordt gemaakt.|
    |**Sjabloon naam**|Geef het volledige pad en de naam op van het sjabloon bestand dat u hebt opgeslagen in de opslag plaats van de bron code. U kunt de ingebouwde eigenschappen gebruiken om het pad te vereenvoudigen, bijvoorbeeld:<br /><br />`$(System.DefaultWorkingDirectory)/Templates/CreateVMTemplate.json`|
    |**Sjabloon parameters**|Voer de para meters in voor de variabelen die u eerder hebt gedefinieerd:<br /><br />`-newVMName '$(vmName)' -userName '$(userName)' -password (ConvertTo-SecureString -String '$(password)' -AsPlainText -Force)`|
-   |**Uitvoer variabelen** > **Lab VM-id**|Voer de variabele voor de gemaakte Lab-VM-ID in. Als u de standaard **labVMId**gebruikt, kunt u naar de variabele in volgende taken verwijzen als *$ (labVMId)* .<br /><br />U kunt een andere naam dan de standaard waarde maken, maar vergeet niet om de juiste naam in volgende taken te gebruiken. U kunt de test-VM-ID in het volgende formulier schrijven:<br /><br />`/subscriptions/{subscription Id}/resourceGroups/{resource group Name}/providers/Microsoft.DevTestLab/labs/{lab name}/virtualMachines/{vmName}`|
+   |**Uitvoer variabelen** > **Lab-VM-id**|Voer de variabele voor de gemaakte Lab-VM-ID in. Als u de standaard **labVMId**gebruikt, kunt u naar de variabele in volgende taken verwijzen als *$ (labVMId)* .<br /><br />U kunt een andere naam dan de standaard waarde maken, maar vergeet niet om de juiste naam in volgende taken te gebruiken. U kunt de test-VM-ID in het volgende formulier schrijven:<br /><br />`/subscriptions/{subscription Id}/resourceGroups/{resource group Name}/providers/Microsoft.DevTestLab/labs/{lab name}/virtualMachines/{vmName}`|
 
 ### <a name="collect-the-details-of-the-devtest-labs-vm"></a>De details van de DevTest Labs-VM verzamelen
 
 Voer het script dat u eerder hebt voor het verzamelen van de details van de DevTest Labs-virtuele machine gemaakt. 
 
-1. Selecteer op het tabblad pijp lijn van release **pijp lijn de** tekst met de Hyper link in **fase 1** om **fase taken weer te geven**en selecteer vervolgens **+** het plus teken naast **Agent taak**. 
+1. Selecteer op het tabblad **pijp** lijn van de release pijp lijn de hyperlink tekst in **fase 1** om **fase taken weer te geven**en selecteer vervolgens het plus teken **+** naast **Agent taak**. 
    
 1. Selecteer onder **taken toevoegen**de optie **Azure PowerShell**en selecteer **toevoegen**. 
    
-1. Selecteer **Azure PowerShell script: FilePath** in het linkerdeel venster. 
+1. Selecteer **Azure PowerShell script: filepath** in het linkerdeel venster. 
    
 1. Vul in het rechterdeel venster het formulier als volgt in:
    
-   |Veld|Value|
+   |Veld|Waarde|
    |---|---|
    |**Type Azure-verbinding**|Selecteer **Azure Resource Manager**.|
    |**Azure-abonnement**|Selecteer uw service verbinding of abonnement.| 
@@ -172,20 +172,20 @@ Het script verzamelt de vereiste waarden en slaat ze op in omgevings variabelen 
 
 De volgende taak is het maken van een installatie kopie van de zojuist geïmplementeerde virtuele machine in uw Azure DevTest Labs-exemplaar. U kunt vervolgens de installatiekopie te maken van kopieën van de virtuele machine op aanvraag wanneer u wilt uitvoeren van een taak ontwikkelen of bepaalde tests worden uitgevoerd. 
 
-1. Selecteer op het tabblad pijp lijn van release **pijp lijn de** tekst met de Hyper link in **fase 1** om **fase taken weer te geven**en selecteer vervolgens **+** het plus teken naast **Agent taak**. 
+1. Selecteer op het tabblad **pijp** lijn van de release pijp lijn de hyperlink tekst in **fase 1** om **fase taken weer te geven**en selecteer vervolgens het plus teken **+** naast **Agent taak**. 
    
 1. Selecteer onder **taken toevoegen**de optie **Azure DevTest Labs aangepaste installatie kopie maken**en selecteer **toevoegen**. 
    
 1. De taak als volgt configureren:
    
-   |Veld|Value|
+   |Veld|Waarde|
    |---|---|
    |**Azure RM-abonnement**|Selecteer uw service verbinding of abonnement.|
    |**Naam van Lab**|Selecteer de naam van een bestaand Lab waarin de installatie kopie wordt gemaakt.|
    |**Naam van aangepaste installatie kopie**|Voer een naam in voor de aangepaste installatie kopie.|
-   |**Beschrijving** Beschrijving|Voer een beschrijving in zodat u de juiste installatie kopie later eenvoudig kunt selecteren.|
-   | > VM-id van bron Lab VM **-bron Lab**|Als u de standaard naam van de variabele LabVMId hebt gewijzigd, voert u deze hier in. De standaardwaarde is **$(labVMId)** .|
-   | > **Aangepaste installatie kopie-id** van uitvoer variabelen|U kunt de standaard naam van de variabele indien nodig bewerken.|
+   |**Beschrijving** (optioneel)|Voer een beschrijving in zodat u de juiste installatie kopie later eenvoudig kunt selecteren.|
+   |**Resource Lab VM** **- > bron Lab VM-id**|Als u de standaard naam van de variabele LabVMId hebt gewijzigd, voert u deze hier in. De standaardwaarde is **$(labVMId)** .|
+   |**Uitvoer variabelen** > **aangepaste installatie kopie-id**|U kunt de standaard naam van de variabele indien nodig bewerken.|
    
 ### <a name="deploy-your-app-to-the-devtest-labs-vm-optional"></a>Uw app implementeren op de DevTest Labs VM (optioneel)
 
@@ -197,7 +197,7 @@ De VM-gegevens die u nodig hebt voor de para meters van deze taken, worden opges
 
 De laatste taak is het verwijderen van de virtuele machine die u in uw Azure DevTest Labs-exemplaar hebt geïmplementeerd. Normaal gesproken verwijdert u de virtuele machine nadat u de dev-taken uitvoeren of Voer de tests die u nodig hebt op de geïmplementeerde virtuele machine. 
 
-1. Selecteer op het tabblad pijp lijn van release **pijp lijn de** tekst met de Hyper link in **fase 1** om **fase taken weer te geven**en selecteer vervolgens **+** het plus teken naast **Agent taak**. 
+1. Selecteer op het tabblad **pijp** lijn van de release pijp lijn de hyperlink tekst in **fase 1** om **fase taken weer te geven**en selecteer vervolgens het plus teken **+** naast **Agent taak**. 
    
 1. Onder **taken toevoegen**selecteert u **Azure DevTest Labs virtuele machine verwijderen**en selecteert u **toevoegen**. 
    

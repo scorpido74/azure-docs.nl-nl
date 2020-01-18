@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8aaa19a9d5bd5d7b2764320d5d91c8a6c010b3c8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d469d52a6db6c3640d07b46422ffe669a898dde8
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433324"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262993"
 ---
 # <a name="entity-functions"></a>Entiteit functies
 
@@ -49,11 +49,13 @@ Een entiteits bewerking kan ook de status van de entiteit maken, lezen, bijwerke
 
 ## <a name="define-entities"></a>Entiteiten definiëren
 
-Momenteel zijn de twee afzonderlijke Api's voor het definiëren van entiteiten een:
+Momenteel zijn de twee afzonderlijke Api's voor het definiëren van entiteiten:
 
 **Syntaxis op basis van**functies, waarbij entiteiten worden weer gegeven als functies en bewerkingen expliciet worden verzonden door de toepassing. Deze syntaxis werkt goed voor entiteiten met eenvoudige status, weinig bewerkingen of een dynamische set bewerkingen, zoals in Application Frameworks. Deze syntaxis kan lastig zijn om te onderhouden omdat het geen type fouten tijdens het compileren ophaalt.
 
-**Op klassen gebaseerde syntaxis**, waarbij entiteiten en bewerkingen worden vertegenwoordigd door klassen en methoden. Deze syntaxis produceert eenvoudiger lees bare code en maakt het mogelijk om bewerkingen op een type veilige manier te activeren. De op klassen gebaseerde syntaxis is een smalle laag boven op de functie gebaseerde syntaxis, zodat beide varianten door elkaar kunnen worden gebruikt in dezelfde toepassing.
+**Op klassen gebaseerde syntaxis (alleen .net)** , waarbij entiteiten en bewerkingen worden vertegenwoordigd door klassen en methoden. Deze syntaxis produceert eenvoudiger lees bare code en maakt het mogelijk om bewerkingen op een type veilige manier te activeren. De op klassen gebaseerde syntaxis is een smalle laag boven op de functie gebaseerde syntaxis, zodat beide varianten door elkaar kunnen worden gebruikt in dezelfde toepassing.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ### <a name="example-function-based-syntax---c"></a>Voor beeld: syntaxis op basis van een functie-C#
 
@@ -107,11 +109,13 @@ De status van deze entiteit is een object van het type `Counter`, dat een veld b
 
 Zie [entity branches definiëren](durable-functions-dotnet-entities.md#defining-entity-classes)voor meer informatie over de op klassen gebaseerde syntaxis en hoe u deze kunt gebruiken.
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ### <a name="example-javascript-entity"></a>Voor beeld: Java script-entiteit
 
 Duurzame entiteiten zijn beschikbaar in Java script vanaf versie **1.3.0** van het NPM-pakket van `durable-functions`. De volgende code is de `Counter` entiteit die is geïmplementeerd als een duurzame functie die is geschreven in Java script.
 
-**function.json**
+**Counter/function. json**
 ```json
 {
   "bindings": [
@@ -125,7 +129,7 @@ Duurzame entiteiten zijn beschikbaar in Java script vanaf versie **1.3.0** van h
 }
 ```
 
-**index.js**
+**Counter/index. js**
 ```javascript
 const df = require("durable-functions");
 
@@ -146,6 +150,8 @@ module.exports = df.entity(function(context) {
 });
 ```
 
+---
+
 ## <a name="access-entities"></a>Toegangs entiteiten
 
 U kunt toegang krijgen tot entiteiten via eenrichtings-of twee richtings communicatie. De volgende terminologie maakt onderscheid tussen de twee communicatie vormen: 
@@ -161,12 +167,14 @@ Entiteiten kunnen worden geopend vanuit client functies, vanuit Orchestrator-fun
 
 In de volgende voor beelden ziet u de verschillende manieren waarop entiteiten worden geopend.
 
-> [!NOTE]
-> In het volgende voor beeld wordt de syntaxis voor het openen van entiteiten weer gegeven. Over het algemeen raden wij u aan om [toegang te krijgen tot entiteiten via interfaces](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) , omdat het meer type controle biedt.
-
 ### <a name="example-client-signals-an-entity"></a>Voor beeld: client geeft een entiteit aan
 
 Als u toegang wilt krijgen tot entiteiten van een normale Azure-functie, ook wel bekend als een client functie, gebruikt u de [client binding](durable-functions-bindings.md#entity-client)van de entiteit. In het volgende voor beeld ziet u een door de wachtrij geactiveerde functie waarmee een entiteit wordt gesignaleerd met behulp van deze binding.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+> [!NOTE]
+> In het volgende voor beeld wordt de syntaxis voor het openen van entiteiten weer gegeven. Over het algemeen raden wij u aan om [toegang te krijgen tot entiteiten via interfaces](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) , omdat het meer type controle biedt.
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -181,6 +189,8 @@ public static Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -191,11 +201,15 @@ module.exports = async function (context) {
 };
 ```
 
+---
+
 De term *Signal* geeft aan dat de aanroep van de entiteits-API in één richting en asynchroon is. Het is niet mogelijk dat een client functie weet wanneer de entiteit de bewerking heeft verwerkt. De client functie kan ook geen resultaat waarden of uitzonde ringen observeren. 
 
 ### <a name="example-client-reads-an-entity-state"></a>Voor beeld: client leest de status van een entiteit
 
 Client functies kunnen ook een query uitvoeren op de status van een entiteit, zoals wordt weer gegeven in het volgende voor beeld:
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -209,6 +223,8 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -220,11 +236,15 @@ module.exports = async function (context) {
 };
 ```
 
+---
+
 Entiteits status query's worden verzonden naar het duurzame opslag archief en retour neren de laatst persistente status van de entiteit. Deze status is altijd een ' toegezegde ' status, dat wil zeggen dat er nooit een tijdelijke tussenliggende status wordt aangenomen in het midden van het uitvoeren van een bewerking. Het is echter mogelijk dat deze status is verlopen ten opzichte van de status in het geheugen van de entiteit. Alleen indelingen kunnen de in-memory status van een entiteit lezen, zoals wordt beschreven in de volgende sectie.
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>Voor beeld: Orchestration signalen en aanroepen van een entiteit
 
 Orchestrator-functies hebben toegang tot entiteiten met behulp van Api's in de [Orchestration-trigger binding](durable-functions-bindings.md#orchestration-trigger). De volgende voorbeeld code toont een Orchestrator-functie waarmee een `Counter` entiteit wordt aangeroepen en gesignaleerd.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -243,6 +263,8 @@ public static async Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -257,6 +279,8 @@ module.exports = df.orchestrator(function*(context){
 > [!NOTE]
 > Java script biedt momenteel geen ondersteuning voor het Signa leren van een entiteit vanuit een Orchestrator. Gebruik in plaats daarvan `callEntity`.
 
+---
+
 Alleen indelingen kunnen het aanroepen van entiteiten en het verkrijgen van een reactie zijn, wat een retour waarde of een uitzonde ring kan zijn. Client functies die gebruikmaken van de [client binding](durable-functions-bindings.md#entity-client) kunnen alleen entiteiten Signa leren.
 
 > [!NOTE]
@@ -266,6 +290,8 @@ Alleen indelingen kunnen het aanroepen van entiteiten en het verkrijgen van een 
 
 Een functie entiteit kan signalen verzenden naar andere entiteiten of zelfs zelf, terwijl er een bewerking wordt uitgevoerd.
 We kunnen bijvoorbeeld het voor beeld van de vorige `Counter` entiteit aanpassen zodat er een ' mijl paal '-signaal wordt verzonden naar een bepaalde monitor-entiteit wanneer de teller de waarde 100 bereikt.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
    case "add":
@@ -280,6 +306,8 @@ We kunnen bijvoorbeeld het voor beeld van de vorige `Counter` entiteit aanpassen
         break;
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
     case "add":
         const amount = context.df.getInput();
@@ -291,7 +319,9 @@ We kunnen bijvoorbeeld het voor beeld van de vorige `Counter` entiteit aanpassen
         break;
 ```
 
-## <a name="entity-coordination"></a>Entiteits coördinatie
+---
+
+## <a name="entity-coordination"></a>Entiteits coördinatie (alleen .NET)
 
 Het kan voor komen dat u bewerkingen tussen meerdere entiteiten moet coördineren. In een bank toepassing kunt u bijvoorbeeld entiteiten hebben die individuele Bank rekeningen vertegenwoordigen. Wanneer u fondsen van het ene naar het andere account overbrengt, moet u ervoor zorgen dat het bron account voldoende fondsen heeft. U moet er ook voor zorgen dat updates voor zowel de bron-als de doel accounts worden uitgevoerd op een transactionele consistente manier.
 

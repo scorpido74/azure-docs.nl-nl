@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell-script: Een marketplace-installatiekopie toevoegen aan een lab in Azure DevTest Labs | Microsoft Docs'
-description: Dit PowerShell-script voegt een marketplace-installatiekopie toe aan een lab in Azure DevTest Labs.
+title: 'Power shell: een Marketplace-installatie kopie toevoegen aan een lab in Azure DevTest Labs'
+description: Met dit Power shell-script wordt een Marketplace-installatie kopie toegevoegd aan een lab in Azure DevTest Labs.
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,25 +10,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: e099a29a198d43bf8d00487ab45e2648479aedbe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3d699a22ed06022c6d9df12ade7f202fb304648c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160602"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166450"
 ---
-# <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>PowerShell gebruiken voor een marketplace-installatiekopie toevoegen aan een lab in Azure DevTest Labs
+# <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>Power shell gebruiken om een Marketplace-installatie kopie toe te voegen aan een lab in Azure DevTest Labs
 
-Met dit PowerShell-voorbeeldscript wordt een marketplace-installatiekopie toegevoegd aan een lab in Azure DevTest Labs. 
+Met dit Power shell-voorbeeld script wordt een Marketplace-installatie kopie toegevoegd aan een lab in Azure DevTest Labs. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Vereisten
-* **Een lab**. Het script moet u een bestaande lab hebben. 
+* **Een Lab**. Het script vereist dat u een bestaand Lab hebt. 
 
 ## <a name="sample-script"></a>Voorbeeldscript
 
@@ -40,13 +40,13 @@ In dit script worden de volgende opdrachten gebruikt:
 
 | Opdracht | Opmerkingen |
 |---|---|
-| Find-AzResource | Zoekt naar resources op basis van de opgegeven parameters. |
-| [Get-AzResource](/powershell/module/az.resources/get-azresource) | -Resources ophaalt. |
-| [Set-AzResource](/powershell/module/az.resources/set-azresource) | Hiermee wijzigt u een resource. |
+| Find-AzResource | Zoekt naar bronnen op basis van opgegeven para meters. |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Haalt resources op. |
+| [Set-AzResource](/powershell/module/az.resources/set-azresource) | Wijzigt een resource. |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | Een resource maken. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie [Documentatie over Azure PowerShell](https://docs.microsoft.com/powershell/) voor meer informatie over Azure PowerShell.
 
-Aanvullende voorbeelden van Azure Lab Services PowerShell-scripts vindt u de [voorbeelden van Azure Lab Services PowerShell](../samples-powershell.md).
+Aanvullende Azure Lab Services Power shell-voorbeeld scripts vindt u in de [Azure Lab Services Power shell](../samples-powershell.md)-voor beelden.

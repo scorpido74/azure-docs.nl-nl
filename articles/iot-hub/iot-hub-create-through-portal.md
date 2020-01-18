@@ -1,123 +1,127 @@
 ---
-title: De Azure portal gebruiken voor het maken van een IoT-Hub | Microsoft Docs
-description: Het maken, beheren en verwijderen van Azure IoT hubs via de Azure-portal. Bevat informatie over Prijscategorieën, schaling, beveiliging en configuratie van berichten.
+title: De Azure Portal gebruiken om een IoT Hub te maken | Microsoft Docs
+description: Azure IoT hubs maken, beheren en verwijderen via de Azure Portal. Bevat informatie over prijs categorieën, schalen, beveiliging en configuratie van berichten.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
-ms.openlocfilehash: 6f070462dca6e835504a33014a7ed48e9949f874
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c43c142b22709d42416b2dd14dfc78812970916a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67432634"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169613"
 ---
-# <a name="create-an-iot-hub-using-the-azure-portal"></a>Een IoT-hub met behulp van de Azure portal maken
+# <a name="create-an-iot-hub-using-the-azure-portal"></a>Een IoT-hub maken met behulp van de Azure Portal
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-In dit artikel wordt beschreven hoe u maken en beheren van IoT-hubs met behulp van de [Azure-portal](https://portal.azure.com).
+In dit artikel wordt beschreven hoe u IoT-hubs maakt en beheert met behulp van de [Azure Portal](https://portal.azure.com).
 
-Voor het gebruik van de stappen in deze zelfstudie, moet u een Azure-abonnement. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u de stappen in deze zelf studie wilt gebruiken, hebt u een Azure-abonnement nodig. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="change-the-settings-of-the-iot-hub"></a>Wijzig de instellingen van de IoT-hub
+## <a name="change-the-settings-of-the-iot-hub"></a>De instellingen van de IoT-hub wijzigen
 
-U kunt de instellingen van een bestaande IoT-hub wijzigen nadat deze gemaakt in het deelvenster IoT-Hub.
+U kunt de instellingen van een bestaande IoT-hub wijzigen nadat deze is gemaakt in het deel venster IoT Hub.
 
-![Schermopname van de instellingen voor de IoT-hub](./media/iot-hub-create-through-portal/iot-hub-settings-panel.png)
+![Scherm afbeelding met de instellingen voor de IoT-hub](./media/iot-hub-create-through-portal/iot-hub-settings-panel.png)
 
-Hier volgen enkele van de eigenschappen die u voor een IoT-hub instellen kunt:
+Hier volgen enkele eigenschappen die u kunt instellen voor een IoT-hub:
 
-**Prijs- en schaalniveau**: U kunt deze eigenschap gebruiken om te migreren naar een andere laag of het aantal IoT Hub-eenheden ingesteld. 
+**Prijzen en schaal**: u kunt deze eigenschap gebruiken om naar een andere laag te migreren of het aantal IOT hub-eenheden in te stellen. 
 
-**Bewerkingen controleren**: Schakel de verschillende categorieën van de bewaking in of uit, zoals logboekregistratie voor gebeurtenissen met betrekking tot apparaat-naar-cloud-berichten of cloud-naar-apparaat-berichten.
+**Bewaking van bewerkingen**: Schakel de verschillende bewakings categorieën in of uit, zoals logboek registratie voor gebeurtenissen met betrekking tot apparaat-naar-Cloud-berichten of Cloud-naar-apparaat-berichten.
 
-**IP-Filter**: Geef een bereik van IP-adressen die worden geaccepteerd of geweigerd door de IoT-hub.
+**IP-filter**: Geef een bereik van IP-adressen op die worden geaccepteerd of geweigerd door de IOT-hub.
 
-**Eigenschappen**: Bevat de lijst met eigenschappen die u kunt kopiëren en ergens anders, zoals de resource-ID, resourcegroep, locatie, enzovoort te gebruiken.
+**Eigenschappen**: bevat de lijst met eigenschappen die u kunt kopiëren en gebruiken, zoals de resource-id, resource groep, locatie, enzovoort.
 
 ### <a name="shared-access-policies"></a>Gedeeld toegangsbeleid
 
-U kunt ook weergeven of wijzigen van de lijst met beleid voor gedeelde toegang door te klikken op **beleid voor gedeelde toegang** in de **instellingen** sectie. Deze beleidsregels definiëren de machtigingen voor apparaten en services om te verbinden met IoT Hub. 
+U kunt ook de lijst met gedeelde toegangs beleid weer geven of wijzigen door te klikken op **beleid voor gedeelde toegang** in de sectie **instellingen** . Met deze beleids regels definieert u de machtigingen voor apparaten en services om verbinding te maken met IoT Hub. 
 
-Klik op **toevoegen** openen de **toevoegen van een beleid voor gedeelde toegang** blade.  U kunt de naam van het nieuwe beleid en de machtigingen die u koppelen aan dit beleid, wilt zoals wordt weergegeven in de volgende afbeelding:
+Klik op **toevoegen** om de Blade **gedeelde-toegangs beleid toevoegen** te openen.  U kunt de nieuwe beleids naam en de machtigingen invoeren die u aan dit beleid wilt koppelen, zoals wordt weer gegeven in de volgende afbeelding:
 
-![Schermafbeelding van een beleid voor gedeelde toegang toevoegen](./media/iot-hub-create-through-portal/iot-hub-add-shared-access-policy.png)
+![Scherm opname van het toevoegen van een beleid voor gedeelde toegang](./media/iot-hub-create-through-portal/iot-hub-add-shared-access-policy.png)
 
-* De **register lezen** en **register schrijven** beleid lezen en schrijven rechten toekennen voor het id-register. Deze machtigingen worden gebruikt door de back-end cloudservices voor het beheren van apparaat-id's. Automatisch kiezen van de optie voor het schrijven, kiest de optie voor lezen.
+* Het **REGI ster lezen** en **REGI ster schrijven** beleid verlenen Lees-en schrijf rechten voor het identiteits register. Deze machtigingen worden gebruikt door de Cloud Services van de back-end om apparaat-id's te beheren. Als u de schrijf optie kiest, wordt automatisch de optie lezen gekozen.
 
-* De **Service verbinding maken met** beleid verleent toestemming voor toegang tot de service-eindpunten. Deze machtiging wordt gebruikt door de back-end cloudservices voor het verzenden en ontvangen van berichten van apparaten als goed te werken en te lezen van apparaat dubbel en module dubbele gegevens.
+* Het **service Connect** -beleid verleent machtigingen voor toegang tot service-eind punten. Deze machtiging wordt gebruikt door de Cloud Services van de back-end om berichten van apparaten te verzenden en te ontvangen en om dubbele gegevens van het apparaat bij te werken en te lezen.
 
-* De **apparaat verbinding maken met** beleid verleent machtigingen voor het verzenden en ontvangen van berichten met behulp van de IoT Hub apparaat-side-eindpunten. Deze machtiging wordt gebruikt door apparaten te verzenden en ontvangen van berichten van een IoT-hub, bijwerken en apparaat dubbel en module dubbele gegevens lezen en uitvoeren van het uploaden van bestanden.
+* Het beleid voor het **verbinden van apparaten** verleent machtigingen voor het verzenden en ontvangen van berichten met behulp van de eind punten van de IOT Hub apparaten. Deze machtiging wordt door apparaten gebruikt voor het verzenden en ontvangen van berichten van een IoT-hub, het bijwerken en lezen van het apparaat en de opslag van de module dubbele gegevens en het uitvoeren van uploads van bestanden.
 
-Klik op **maken** om toe te voegen zojuist gemaakte beleid aan de bestaande lijst.
+Klik op **maken** om dit zojuist gemaakte beleid toe te voegen aan de bestaande lijst.
 
-Zie voor meer informatie over de toegang wordt verleend door specifieke machtigingen, [IoT Hub machtigingen](./iot-hub-devguide-security.md#iot-hub-permissions).
+Zie [IOT hub-machtigingen](./iot-hub-devguide-security.md#iot-hub-permissions)voor meer gedetailleerde informatie over de toegang die wordt verleend door specifieke machtigingen.
+
+## <a name="register-a-new-device-in-the-iot-hub"></a>Een nieuw apparaat registreren in de IoT-hub
+
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="message-routing-for-an-iot-hub"></a>Bericht routering voor een IoT-hub
 
-Klik op **berichtroutering** onder **Messaging** om te zien van de routering van berichten in het deelvenster waar u routes en aangepaste eindpunten voor de hub definieert. [Berichtroutering](iot-hub-devguide-messages-d2c.md) kunt u beheren hoe gegevens van uw apparaten worden verzonden naar uw eindpunten. De eerste stap is het toevoegen van een nieuwe route. U kunt een bestaand eindpunt toevoegen aan de route, of een nieuwe maken van de typen worden ondersteund, zoals blob-opslag. 
+Klik op **bericht routering** onder **Messa ging** om het deel venster bericht routering te bekijken, waarin u routes en aangepaste eind punten voor de hub definieert. Met [bericht routering](iot-hub-devguide-messages-d2c.md) kunt u beheren hoe gegevens van uw apparaten naar uw eind punten worden verzonden. De eerste stap is het toevoegen van een nieuwe route. Vervolgens kunt u een bestaand eind punt toevoegen aan de route of een nieuw type maken dat wordt ondersteund, zoals Blob Storage. 
 
-![Routering berichtvenster](./media/iot-hub-create-through-portal/iot-hub-message-routing.png)
+![Deel venster bericht routering](./media/iot-hub-create-through-portal/iot-hub-message-routing.png)
 
 ### <a name="routes"></a>Routes
 
-Routes is het eerste tabblad in het deelvenster routering van berichten. Als u wilt een nieuwe route toevoegen, klikt u op +**toevoegen**. U ziet het volgende scherm. 
+Routes is het eerste tabblad in het deel venster bericht routering. Klik op +**toevoegen**om een nieuwe route toe te voegen. Het volgende scherm wordt weer gegeven. 
 
-![Schermafbeelding van een nieuwe route toevoegen](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
+![Scherm opname van het toevoegen van een nieuwe route](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
 
-Naam van uw hub. De naam moet uniek zijn binnen de lijst met routes voor deze hub. 
+Geef uw hub een naam. De naam moet uniek zijn in de lijst met routes voor die hub. 
 
-Voor **eindpunt**, u kunt een in de vervolgkeuzelijst selecteren of toevoegen van een nieuwe account. In dit voorbeeld wordt zijn een opslagaccount en container al beschikbaar. Als u wilt toevoegen als een eindpunt, klikt u op +**toevoegen** naast de eindpunt-vervolgkeuzelijst en selecteer **Blob-opslag**. Het volgende scherm ziet u waar het opslagaccount en container zijn opgegeven.
+Voor **eind punt**kunt u er een selecteren in de vervolg keuzelijst of een nieuw item toevoegen. In dit voor beeld zijn er al een opslag account en container beschikbaar. Als u deze wilt toevoegen als een eind punt, klikt u op +**toevoegen** naast de vervolg keuzelijst eind punt en selecteert u **Blob Storage**. In het volgende scherm ziet u waar het opslag account en de container zijn opgegeven.
 
-![Schermopname van het toevoegen van een storage-eindpunt voor de regel voor doorsturen](./media/iot-hub-create-through-portal/iot-hub-routing-add-storage-endpoint.png)
+![Scherm opname van het toevoegen van een opslag eindpunt voor de routerings regel](./media/iot-hub-create-through-portal/iot-hub-routing-add-storage-endpoint.png)
 
-Klik op **een container kiezen** om de storage-account en container te selecteren. Wanneer u deze velden hebt geselecteerd, wordt het deelvenster eindpunt. Gebruik de standaardinstellingen voor de rest van de velden en **maken** naar het eindpunt voor de storage-account maken en toe te voegen aan de regels voor doorsturen.
+Klik op **Kies een container** om het opslag account en de container te selecteren. Wanneer u deze velden hebt geselecteerd, wordt er een weer gegeven in het deel venster eindpunt. Gebruik de standaard waarden voor de rest van de velden en **Maak** het eind punt voor het opslag account en voeg het toe aan de routerings regels.
 
-Voor **gegevensbron**, selecteert u Telemetrieberichten van apparaten. 
+Voor **gegevens bron**selecteert u telemetrie-berichten van apparaten. 
 
-Voeg vervolgens een query routering. In dit voorbeeld wordt de berichten waarvoor de toepassingseigenschap van een met de naam `level` met een waarde die gelijk is aan `critical` worden doorgestuurd naar het opslagaccount.
+Voeg vervolgens een routerings query toe. In dit voor beeld worden de berichten met een toepassings eigenschap met de naam `level` met een waarde die gelijk is aan `critical`, doorgestuurd naar het opslag account.
 
-![Schermopname van het opslaan van een nieuwe regel voor doorsturen](./media/iot-hub-create-through-portal/iot-hub-add-route.png)
+![Scherm opname van het opslaan van een nieuwe routerings regel](./media/iot-hub-create-through-portal/iot-hub-add-route.png)
 
-Klik op **opslaan** om op te slaan van de regel voor doorsturen. U terugkeert naar het deelvenster berichtroutering en de nieuwe regel voor doorsturen wordt weergegeven.
+Klik op **Opslaan** om de routerings regel op te slaan. U keert terug naar het deel venster bericht Routering en uw nieuwe routerings regel wordt weer gegeven.
 
 ### <a name="custom-endpoints"></a>Aangepaste eindpunten
 
-Klik op de **aangepaste eindpunten** tabblad. Ziet u geen aangepaste eindpunten al gemaakt. Hier kunt u nieuwe eindpunten toevoegen of verwijderen van bestaande eindpunten. 
+Klik op het tabblad **aangepaste eind punten** . U ziet alle aangepaste eind punten die al zijn gemaakt. Hier kunt u nieuwe eind punten toevoegen of bestaande eind punten verwijderen. 
 
 > [!NOTE]
-> Als u een route verwijdert, wordt de eindpunten die zijn toegewezen aan deze route niet verwijderd. Als u wilt verwijderen van een eindpunt, klikt u op het tabblad met aangepaste eindpunten, selecteert u het eindpunt dat u wilt verwijderen en klik op verwijderen.
+> Als u een route verwijdert, worden de eind punten die aan die route zijn toegewezen, niet verwijderd. Als u een eind punt wilt verwijderen, klikt u op het tabblad Aangepaste eind punten, selecteert u het eind punt dat u wilt verwijderen en klikt u op verwijderen.
 >
 
-Meer informatie over aangepaste eindpunten in [referentie - eindpunten van IoT-hub](iot-hub-devguide-endpoints.md).
+Meer informatie over aangepaste eind punten vindt u in de [eind punten van de referentie-IOT-hub](iot-hub-devguide-endpoints.md).
 
-U kunt maximaal 10 aangepaste eindpunten voor een IoT-hub definiëren. 
+U kunt Maxi maal 10 aangepaste eind punten definiëren voor een IoT-hub. 
 
-Zie voor een compleet voorbeeld van hoe u aangepaste eindpunten met routering [berichtroutering met IoT Hub](tutorial-routing.md).
+Zie [bericht routering met IOT hub](tutorial-routing.md)voor een volledig voor beeld van het gebruik van aangepaste eind punten met route ring.
 
-## <a name="find-a-specific-iot-hub"></a>Een specifieke IoT-hub vinden
+## <a name="find-a-specific-iot-hub"></a>Een specifieke IoT-hub zoeken
 
-Hier volgen twee manieren om een specifieke IoT-hub niet vinden in uw abonnement:
+Hier volgen twee manieren om een specifieke IoT-hub te vinden in uw abonnement:
 
-1. Als u weet dat de resource groep waartoe de IoT-hub behoort, klikt u op **resourcegroepen**, selecteer vervolgens de resourcegroep in de lijst. De resource-group-scherm ziet u alle resources in die groep, met inbegrip van de IoT-hubs. Klik op de hub die u zoekt.
+1. Als u de resource groep kent waarvan de IoT-hub deel uitmaakt, klikt u op **resource groepen**en selecteert u vervolgens de resource groep in de lijst. In het scherm voor de resource groep worden alle resources in die groep weer gegeven, met inbegrip van de IoT-hubs. Klik op de hub die u wilt bekijken.
 
-2. Klik op **alle resources**. Op de **alle resources** deelvenster, er wordt een vervolgkeuzelijst die standaard `All types`. Klik op de vervolgkeuzelijst, schakel het selectievakje `Select all`. Zoek `IoT Hub` en controleren. Klik op de vervolgkeuzelijst om deze te sluiten en de vermeldingen worden gefilterd, met slechts uw IoT-hubs.
+2. Klik op **Alle resources**. In het deel venster **alle resources** ziet u een vervolg keuzelijst met de standaard `All types`. Klik op de vervolg keuzelijst en schakel `Select all`uit. Zoek `IoT Hub` en controleer het. Klik op de vervolg keuzelijst om de keuze lijst te sluiten en de items worden gefilterd, zodat alleen uw IoT-hubs worden weer gegeven.
 
 ## <a name="delete-the-iot-hub"></a>De IoT-hub verwijderen
 
-Als u wilt verwijderen van een Iot-hub, vinden de IoT-hub die u wilt verwijderen en klik vervolgens op de **verwijderen** knop onder de naam van de IoT-hub.
+Als u een IOT-hub wilt verwijderen, gaat u naar de IoT-hub die u wilt verwijderen en klikt u vervolgens op de knop **verwijderen** onder de naam van de IOT-hub.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Volg deze koppelingen voor meer informatie over het beheren van Azure IoT Hub:
 
-* [Met IoT Hub-berichtroutering](tutorial-routing.md)
-* [Metrische gegevens van IoT Hub](iot-hub-metrics.md)
+* [Bericht routering met IoT Hub](tutorial-routing.md)
+* [IoT Hub metrische gegevens](iot-hub-metrics.md)
 * [Controle van bewerkingen](iot-hub-operations-monitoring.md)

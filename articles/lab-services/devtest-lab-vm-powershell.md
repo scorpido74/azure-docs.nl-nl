@@ -1,5 +1,5 @@
 ---
-title: Een virtuele machine maken in DevTest Labs met Azure PowerShell | Microsoft Docs
+title: Een virtuele machine maken in DevTest Labs met Azure PowerShell
 description: Meer informatie over het gebruik van Azure DevTest Labs voor het maken en beheren van virtuele machines met Azure PowerShell.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 1a6938bd541e316dbe9f333c670c382faab6ad21
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 13014c39641203bddadf858c34cff67462b3a4b3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854269"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167113"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>Een virtuele machine maken met DevTest Labs met behulp van Azure PowerShell
 In dit artikel wordt beschreven hoe u een virtuele machine in Azure DevTest Labs maakt met behulp van Azure PowerShell. U kunt Power shell-scripts gebruiken voor het automatiseren van het maken van virtuele machines in een lab in Azure DevTest Labs. 
@@ -30,7 +30,7 @@ Voordat u begint:
 - [Installeer Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0) of gebruik de Azure Cloud shell die is geïntegreerd in de Azure Portal. 
 
 ## <a name="powershell-script"></a>PowerShell-script
-In het voorbeeld script in deze sectie wordt de cmdlet [invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) gebruikt.  Deze cmdlet neemt de resource-id van het lab, de naam van de actie`createEnvironment`die moet worden uitgevoerd () en de para meters die nodig zijn om die actie uit te voeren. De para meters bevinden zich in een hash-tabel die alle eigenschappen van de beschrijving van de virtuele machine bevat. 
+In het voorbeeld script in deze sectie wordt de cmdlet [invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) gebruikt.  Met deze cmdlet wordt de resource-ID van het lab gebruikt, de naam van de actie die moet worden uitgevoerd (`createEnvironment`) en de para meters die nodig zijn om die actie uit te voeren. De para meters bevinden zich in een hash-tabel die alle eigenschappen van de beschrijving van de virtuele machine bevat. 
 
 ```powershell
 [CmdletBinding()]
@@ -117,7 +117,7 @@ finally {
 
 Met de eigenschappen voor de virtuele machine in het bovenstaande script kunnen we een virtuele machine maken met Windows Server 2016 Data Center als het besturings systeem. Voor elk type virtuele machine is deze eigenschappen iets anders. In de sectie [virtuele machine definiëren](#define-virtual-machine) ziet u hoe u kunt bepalen welke eigenschappen in dit script moeten worden gebruikt.
 
-De volgende opdracht geeft een voor beeld van het uitvoeren van het script dat is opgeslagen in een bestands naam: Create-LabVirtualMachine.ps1. 
+De volgende opdracht geeft een voor beeld van het uitvoeren van het script dat is opgeslagen in een bestands naam: Create-LabVirtualMachine. ps1. 
 
 ```powershell
  PS> .\Create-LabVirtualMachine.ps1 -ResourceGroupName 'MyLabResourceGroup' -LabName 'MyLab' -userName 'AdminUser' -password 'Password1!' -VMName 'MyLabVM'
@@ -180,7 +180,7 @@ U kunt een Azure Resource Manager sjabloon genereren bij het maken van een virtu
 In dit voor beeld ziet u hoe u een definitie van een Azure Market Place-installatie kopie krijgt. Op dezelfde manier kunt u een definitie van een aangepaste installatie kopie, een formule of een omgeving verkrijgen. Voeg de benodigde artefacten voor de virtuele machine toe en stel de vereiste geavanceerde instellingen in. Nadat u waarden hebt opgegeven voor de vereiste velden en eventuele optionele velden, voordat u de knop **Opties voor automatisering** selecteert.
 
 ### <a name="use-azure-rest-api"></a>Azure REST API gebruiken
-De volgende procedure bevat stappen voor het ophalen van eigenschappen van een installatie kopie met behulp van de REST API: Deze stappen werken alleen voor een bestaande virtuele machine in een lab. 
+De volgende procedure bevat stappen voor het ophalen van eigenschappen van een installatie kopie met behulp van de REST API: deze stappen werken alleen voor een bestaande virtuele machine in een lab. 
 
 1. Ga naar de pagina [virtual machines-lijst](/rest/api/dtl/virtualmachines/list) , selecteer de knop **try it** . 
 2. Selecteer uw **Azure-abonnement**.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 91469f27e1ca86650cf94fde5cff5d1864300183
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ad7fd664f0dce08e4482b4fb2cba2831208396fc
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606351"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264828"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Klassikale Labs in Azure Lab Services beheren 
 In dit artikel wordt beschreven hoe u een leslokaal Lab maakt en verwijdert. U ziet ook hoe u alle klassikale Labs in een Lab-account kunt weer geven. 
@@ -90,7 +90,7 @@ Als u een leslokaallab in een labaccount instelt, moet u lid zijn van de rol **L
     2. Als u alle Vm's tegelijk wilt starten, selecteert u **Alles starten** op de werk balk. 
     3. Als u een specifieke virtuele machine wilt starten, selecteert u de pijl-omlaag in de **status**en selecteert u vervolgens **starten**. U kunt ook een virtuele machine starten door een virtuele machine in de eerste kolom te selecteren en vervolgens te klikken op **Start** op de werk balk.                
 
-### <a name="vm-sizes"></a>Formaten van virtuele machines  
+### <a name="vm-sizes"></a>VM-grootten  
 
 | Grootte | Cores | RAM | Beschrijving | 
 | ---- | ----- | --- | ----------- | 
@@ -101,6 +101,9 @@ Als u een leslokaallab in een labaccount instelt, moet u lid zijn van de rol **L
 | Kleine GPU (visualisatie) | 6 | 56 GB | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games, code ring met behulp van frameworks zoals OpenGL en DirectX. | 
 | Kleine GPU (Compute) | 6 | 56 GB | Deze grootte is het meest geschikt voor computerintensieve en netwerkintensieve toepassingen, zoals kunst matige intelligentie en toepassingen voor diepe trainingen. | 
 | Gemiddelde GPU (visualisatie) | 12 | 112 GB | Deze grootte is het meest geschikt voor externe visualisatie, streaming, games, code ring met behulp van frameworks zoals OpenGL en DirectX. | 
+
+> [!NOTE]
+> Azure Lab Services installeert en configureert de benodigde GPU-Stuur Programma's automatisch wanneer u een Lab met GPU-installatie kopieën maakt.  
 
 ## <a name="view-all-classroom-labs"></a>Alle klassikale Labs weer geven
 1. Navigeer naar [Azure Lab Services portal](https://labs.azure.com).

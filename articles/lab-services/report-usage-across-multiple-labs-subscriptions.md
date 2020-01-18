@@ -1,5 +1,5 @@
 ---
-title: Rapport Azure DevTest Labs gebruik in meerdere Labs en abonnementen-Azure | Microsoft Docs
+title: Azure DevTest Labs gebruik in meerdere Labs en abonnementen
 description: Meer informatie over het rapporteren van Azure DevTest Labs gebruik over meerdere Labs en abonnementen.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2018
+ms.date: 01/16/2020
 ms.author: takamath
-ms.openlocfilehash: 0d930263233056d8fa74ffe6ccb176ee39429121
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 912f510f6380c0ba1eb92b7c485091801123558e
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68829227"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169186"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Rapport Azure DevTest Labs gebruik in meerdere Labs en abonnementen
 
@@ -35,7 +35,7 @@ In deze sectie wordt beschreven hoe u resource gebruik voor één Lab exporteert
 Voordat u het resource gebruik van DevTest Labs kunt exporteren, moet u een Azure Storage-account instellen om de verschillende bestanden met de gebruiks gegevens te kunnen opslaan. Er zijn twee algemene manieren om het exporteren van gegevens uit te voeren:
 
 * [DevTest Labs REST API](https://docs.microsoft.com/rest/api/dtl/labs/exportresourceusage) 
-* De Power shell AZ. resource module [invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) met de actie `exportResourceUsage`, de test resource-id en de benodigde para meters. 
+* De Power shell AZ. resource module [invoke-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) met de actie van `exportResourceUsage`, de test resource-id en de benodigde para meters. 
 
     Het artikel [persoonlijke gegevens exporteren of verwijderen](personal-data-delete-export.md) bevat een Power shell-voorbeeld script met gedetailleerde informatie over de gegevens die worden geëxporteerd. 
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 9c2c8c1bacf4abfa775747a03d2a4a6121b67714
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9140114e7d31f24770bdcce9aae849b01aae9996
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106591"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263613"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Zelfstudie: Regels en acties voor uw apparaat configureren in Azure IoT Central
 
@@ -22,11 +22,12 @@ ms.locfileid: "74106591"
 
 [!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-In deze zelfstudie maakt u een regel die een e-mail verzendt wanneer de temperatuur in een aangesloten airconditioningapparaat hoger is dan 32 &deg;C.
+In deze zelf studie maakt u een regel waarmee een e-mail bericht wordt verzonden wanneer de Tempe ratuur van een aangesloten Air-voorwaarde apparaat 70&deg; F overschrijdt.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
+>
 > * Een regel op basis van telemetrie maken
 > * Een actie toevoegen
 
@@ -48,14 +49,14 @@ Voer voordat u begint de zelfstudie [Een nieuw apparaattype definiëren in uw to
 
     ![Weergave Regels](media/tutorial-configure-rules/newrule.png)
 
-5. Gebruik de informatie in de volgende tabel om uw regel te definiëren:
+4. Gebruik de informatie in de volgende tabel om uw regel te definiëren:
 
     | Instelling                                      | Waarde                             |
     | -------------------------------------------- | ------------------------------    |
-    | Naam                                         | Waarschuwing temperatuur airconditioner |
+    | Name                                         | Waarschuwing temperatuur airconditioner |
     | Regel inschakelen voor alle apparaten van deze sjabloon | Aan                                |
-    | Voorwaarde                                    | Temperatuur is hoger dan 32    |
-    | Aggregatie                                  | None                              |
+    | Voorwaarde                                    | De Tempe ratuur is groter dan 70    |
+    | Aggregatie                                  | Geen                              |
 
     ![Voorwaarde temperatuurregel](media/tutorial-configure-rules/temperaturerule.png)
 
@@ -71,10 +72,11 @@ Wanneer u een regel definieert, definieert u ook een actie die moet worden uitge
 
 2. Gebruik de informatie in de volgende tabel om uw actie te definiëren:
 
-    | Instelling   | Waarde                          |
-    | --------- | ------------------------------ |
-    | Handeling        | Uw e-mailadres             |
-    | Opmerkingen     | De temperatuur van de airconditioner heeft de drempelwaarde overschreden. |
+    | Instelling      | Waarde                                               |
+    | ------------ | --------------------------------------------------- |
+    | Weergavenaam | Waarschuwing voor e-mail temperatuur                             |
+    | Tot           | Uw e-mailadres                                  |
+    | Opmerkingen        | De temperatuur van de airconditioner heeft de drempelwaarde overschreden. |
 
     > [!NOTE]
     > Om een e-mailmelding te ontvangen, moet het e-mailadres een [gebruikers-ID in de toepassing](howto-administer.md) zijn, en moet die gebruiker zich minimaal één keer hebben aangemeld bij de toepassing.
@@ -92,16 +94,18 @@ Kort nadat u de regel hebt opgeslagen, wordt deze actief. Wanneer aan de voorwaa
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 <!-- Repeat task list from intro -->
 > [!div class="nextstepaction"]
+>
 > * Een regel op basis van telemetrie maken
 > * Een actie toevoegen
 
 Nu u een regel op basis van drempelwaarden hebt gedefinieerd, is de voorgestelde volgende stap [het aanpassen van de weergaven van de operator](tutorial-customize-operator.md).
 
 Zie voor meer informatie over verschillende soorten regels in Azure IoT Central en over het parametriseren van de regeldefinitie:
+
 * [Een telemetrieregel maken en meldingen instellen](howto-create-telemetry-rules.md).
 * [Een gebeurtenisregel maken en meldingen instellen](howto-create-event-rules.md).
 

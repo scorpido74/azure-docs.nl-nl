@@ -1,6 +1,6 @@
 ---
-title: Sjablonen
-description: In dit onderwerp worden sjablonen voor Azure notification hubs uitgelegd.
+title: Azure Notification Hubs-sjablonen
+description: Meer informatie over het gebruik van sjablonen voor Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 54c53fee260062960d6bce9c1822971c935d88d1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212983"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263741"
 ---
 # <a name="templates"></a>Sjablonen
 
@@ -133,19 +133,19 @@ Sjablonen zijn beperkt tot XML-of JSON-document indelingen. U kunt ook expressie
 
 In de volgende tabel ziet u de taal die is toegestaan in sjablonen:
 
-| Expressie       | Description |
+| Expressie       | Beschrijving |
 | ---------------- | --- |
 | $ (prop)          | Verwijzing naar een gebeurtenis eigenschap met de opgegeven naam. Eigenschaps namen zijn niet hoofdletter gevoelig. Deze expressie wordt omgezet in de tekst waarde van de eigenschap of in een lege teken reeks als de eigenschap niet aanwezig is. |
 | $ (prop, n)       | Net als hierboven wordt de tekst expliciet afgekapt bij n tekens, bijvoorbeeld $ (title, 20), clips de inhoud van de eigenschap Title op 20 tekens. |
 | . (prop, n)       | Net als hierboven, maar de tekst is een achtervoegsel met drie punten wanneer het is afgekapt. De totale grootte van de afgekapte teken reeks en het achtervoegsel mag niet langer zijn dan n tekens. . (titel, 20) met een invoer eigenschap van ' Dit is de titel regel ' resulteert in **Dit is de titel...** |
 | % (prop)          | Vergelijkbaar met $ (naam), behalve dat de uitvoer URI-gecodeerd is. |
-| # (prop)          | Wordt gebruikt in JSON-sjablonen (bijvoorbeeld voor iOS-en Android-sjablonen).<br><br>Deze functie werkt precies hetzelfde als $ (prop) eerder opgegeven, behalve wanneer het wordt gebruikt in JSON-sjablonen (bijvoorbeeld Apple-sjablonen). Als deze functie niet is omgeven door ' {', '} ' (bijvoorbeeld ' myJsonProperty ': ' # (naam) '), en resulteert in een getal in Java script-indeling, bijvoorbeeld regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*)) (\.&#91;0-9&#93;+)? ((e&#124;-e) (&#124;+-)? &#91;0-9&#93;+)?, is de JSON van de uitvoer een getal.<br><br>' Badge: ' # (name) ' wordt bijvoorbeeld ' badge ': 40 (en niet ' 40 '). |
+| # (prop)          | Wordt gebruikt in JSON-sjablonen (bijvoorbeeld voor iOS-en Android-sjablonen).<br><br>Deze functie werkt precies hetzelfde als $ (prop) eerder opgegeven, behalve wanneer het wordt gebruikt in JSON-sjablonen (bijvoorbeeld Apple-sjablonen). Als deze functie niet is omgeven door ' {', '} ' (bijvoorbeeld ' myJsonProperty ': ' # (naam) '), en resulteert in een getal in Java script-&#124;indeling, bijvoorbeeld regexp: (0 (&#91;1-9&#93;&#91;0-9&#93;*)) (\.&#91;0-9&#93;+)? ((e&#124;-e) (&#124;+-)? &#91;0-9&#93;+)?, is de JSON van de uitvoer een getal.<br><br>' Badge: ' # (name) ' wordt bijvoorbeeld ' badge ': 40 (en niet ' 40 '). |
 | ' tekst ' of ' tekst ' | Een letterlijke waarde. Letterlijke waarden bevatten wille keurige tekst tussen enkele of dubbele aanhalings tekens. |
 | expr1 + expr2    | De samenvoegings operator verbindt twee expressies tot één teken reeks. |
 
 De expressies kunnen een van de voor gaande formulieren zijn.
 
-Bij het gebruik van samen voegen moet de volledige expressie omgeven `{}`worden door. Bijvoorbeeld `{$(prop) + ‘ - ’ + $(prop2)}`.
+Als samen voeging wordt gebruikt, moet de volledige expressie tussen `{}`worden geplaatst. Bijvoorbeeld `{$(prop) + ‘ - ’ + $(prop2)}`.
 
 De volgende sjabloon is bijvoorbeeld geen geldige XML-sjabloon:
 
@@ -170,3 +170,7 @@ Zoals eerder is uitgelegd, moeten expressies in accolades worden verpakt wanneer
   </visual>
 </tile>
 ```
+
+## <a name="next-steps"></a>Volgende stappen
+
+[Meer informatie over Azure Notification Hubs](notification-hubs-push-notification-overview.md)

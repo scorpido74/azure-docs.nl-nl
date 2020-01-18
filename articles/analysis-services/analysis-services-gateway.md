@@ -4,19 +4,21 @@ description: Een on-premises gateway is nodig als uw Analysis Services-server in
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a896c98040773179f9a0911162bbfdc5689b1a2e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f1fc00ced0d933884ca0fe6dce91fed4602eb825
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768551"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263435"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Verbinding maken met on-premises gegevens bronnen met on-premises gegevens gateway
 
-De on-premises gegevens gateway biedt veilige gegevens overdracht tussen on-premises gegevens bronnen en uw Azure Analysis Services servers in de Cloud. Naast het werken met meerdere Azure Analysis Services servers in dezelfde regio, werkt de meest recente versie van de gateway ook met Azure Logic Apps, Power BI, Power apps en automatische energie. U kunt meerdere services in hetzelfde abonnement en dezelfde regio met één gateway koppelen. Hoewel de gateway die u installeert hetzelfde is voor al deze services, Azure Analysis Services en Logic Apps enkele extra stappen hebben.
+De on-premises gegevens gateway biedt veilige gegevens overdracht tussen on-premises gegevens bronnen en uw Azure Analysis Services servers in de Cloud. Naast het werken met meerdere Azure Analysis Services servers in dezelfde regio, werkt de meest recente versie van de gateway ook met Azure Logic Apps, Power BI, Power apps en automatische energie. Hoewel de gateway die u installeert hetzelfde is voor al deze services, Azure Analysis Services en Logic Apps enkele extra stappen hebben.
+
+De informatie die hier wordt gegeven, is specifiek voor de manier waarop Azure Analysis Services werkt met de on-premises gegevens gateway. Zie [Wat is een on-premises gegevens gateway?](/data-integration/gateway/service-gateway-onprem)voor meer informatie over de gateway in het algemeen en hoe deze werkt met andere services.
 
 Voor Azure Analysis Services is het voorbereiden van de installatie met de gateway de eerste keer een proces met vier delen:
 
@@ -24,9 +26,11 @@ Voor Azure Analysis Services is het voorbereiden van de installatie met de gatew
 
 - **Uw gateway registreren** : in deze stap geeft u een naam en herstel sleutel op voor uw gateway en selecteert u een regio, waarbij u uw gateway registreert bij de gateway-Cloud service. Uw gateway bron kan in elke regio worden geregistreerd, maar het wordt aangeraden dat deze zich in dezelfde regio bevindt als uw Analysis Services-servers. 
 
-- **Een gateway bron maken in azure** : in deze stap maakt u een gateway bron in uw Azure-abonnement.
+- **Een gateway bron maken in azure** : in deze stap maakt u een gateway bron in een Azure.
 
-- **Uw servers verbinden met uw gateway resource** : Zodra u een gateway bron in uw abonnement hebt, kunt u aan de slag gaan met het verbinden van uw servers. U kunt meerdere servers en andere bronnen verbinden, mits deze zich in hetzelfde abonnement en dezelfde regio bevinden.
+- **Uw servers verbinden met uw gateway resource** : Zodra u een gateway resource hebt, kunt u beginnen met het verbinden van uw servers. U kunt meerdere servers en andere bronnen verbinden, mits deze zich in dezelfde regio bevinden.
+
+
 
 ## <a name="how-it-works"> </a>Hoe werkt het?
 De gateway die u op een computer in uw organisatie installeert, wordt uitgevoerd als een Windows-service, **on-premises gegevens gateway**. Deze lokale service is geregistreerd bij de Gateway-cloudservice via Azure Service Bus. Vervolgens maakt u een on-premises gegevens gateway resource voor uw Azure-abonnement. Uw Azure Analysis Services-servers worden vervolgens verbonden met uw Azure gateway-resource. Wanneer modellen op uw server verbinding moeten maken met uw on-premises gegevens bronnen voor query's of verwerking, passeren een query en gegevens stroom de gateway resource, Azure Service Bus, de lokale on-premises gegevens Gateway Service en uw gegevens bronnen. 
@@ -48,7 +52,7 @@ Wanneer u voor een Azure Analysis Services omgeving installeert, is het belang r
 
 ## <a name="ports-and-communication-settings"></a>Poorten en communicatie-instellingen
 
-De gateway maakt een uitgaande verbinding naar de Azure Service Bus. De gateway communiceert via uitgaande poorten: TCP 443 (standaard), 5671, 5672, 9350 t/m 9354.  De gateway vereist geen inkomende poorten.
+De gateway maakt een uitgaande verbinding naar Azure Service Bus. De gateway communiceert via uitgaande poorten: TCP 443 (standaard), 5671, 5672, 9350 t/m 9354.  De gateway vereist geen inkomende poorten.
 
 Mogelijk moet u IP-adressen voor uw gegevens regio in uw firewall toevoegen. U kunt de lijst met IP-adressen van Microsoft Azure-datacenters [hier](https://www.microsoft.com/download/details.aspx?id=41653) downloaden. Deze lijst wordt wekelijks bijgewerkt. De adressen in de lijst met IP-adressen van Azure-datacenters worden vermeld in de CIDR-notatie. Zie [Klasseloze route ring tussen domeinen](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)voor meer informatie.
 

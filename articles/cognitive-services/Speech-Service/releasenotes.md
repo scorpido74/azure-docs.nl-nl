@@ -1,24 +1,65 @@
 ---
 title: Release opmerkingen-spraak service
 titleSuffix: Azure Cognitive Services
-description: Zie een actief logboek van functie releases, verbeteringen, fout oplossingen en bekende problemen voor de spraak service.
+description: Een actief logboek van de functie versies, verbeteringen, fout oplossingen en bekende problemen met betrekking tot de spraak service.
 services: cognitive-services
-author: BrianMouncer
+author: oscholz
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/05/2019
-ms.author: brianem
+ms.date: 01/15/2020
+ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 73f1739b09111052abd985920efe3ef944a89ca9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b421e7acd7f94654ea80e41340022c8ef7a130e
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75380351"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264217"
 ---
 # <a name="release-notes"></a>Releaseopmerkingen
+
+## <a name="speech-sdk-190-2020-january-release"></a>Speech SDK 1.9.0:2020-januari release
+
+**Nieuwe functies**
+
+- Conversatie met meerdere apparaten: Verbind meerdere apparaten in een spraak-of op tekst gebaseerde conversatie en zet optioneel berichten om die tussen hen worden verzonden. Meer informatie vindt u in [dit artikel](multi-device-conversation.md). 
+- Ondersteuning voor trefwoord herkenning is toegevoegd voor Android. aar-pakket en er is ondersteuning toegevoegd voor x86-en x64-versies. 
+- `SendMessage`-en `SetMessageProperty`-methoden worden toegevoegd aan `Connection`-object in doel-C. Raadpleeg [hier](https://docs.microsoft.com/objectivec/cognitive-services/speech/)de documentatie.
+- De C++ TTS API ondersteunt nu `std::wstring` als synthese-tekst invoer, waarbij een wstring moet worden geconverteerd naar een teken reeks voordat deze wordt door gegeven aan de SDK. Bekijk [hier](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#speaktextasync)meer informatie. 
+- De [taal-id](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) en configuratie van de [bron taal](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp) zijn nu beschikbaar in C#.
+
+
+**Belangrijke wijzigingen**
+
+- `OpenSSL` is bijgewerkt naar versie 1.1.1 b en is statisch gekoppeld aan de Speech SDK core-bibliotheek voor Linux. Dit kan een storing veroorzaken als uw postvak in-`OpenSSL` niet is geïnstalleerd in de `/usr/lib/ssl` Directory in het systeem. Raadpleeg [onze documentatie](how-to-configure-openssl-linux.md) onder documenten voor spraak-SDK om het probleem te omzeilen.
+- Het gegevens type dat is geretourneerd voor C# `WordLevelTimingResult.Offset`, is gewijzigd van `int` naar `long` om toegang te krijgen tot `WordLevelTimingResults` wanneer de spraak gegevens langer dan twee minuten zijn.
+
+
+**Oplossingen voor problemen**
+
+- Zie de `OpenSSL` update onder belang rijke wijzigingen hierboven. We hebben een crash en een prestatie probleem opgelost (conflicten met hoge belasting vergren delen) in Linux en Java. 
+- Heeft verbeteringen aangebracht in het sluiten van Java-objecten in een hoge gelijktijdigheids scenario.
+- Het Nuget-pakket is herstructureeerd. We hebben de drie kopieën van `Microsoft.CognitiveServices.Speech.core.dll` en `Microsoft.CognitiveServices.Speech.extension.kws.dll` onder lib folders verwijderd, waardoor het Nuget-pakket kleiner en sneller kan worden gedownload en er zijn headers toegevoegd die C++ nodig zijn om bepaalde systeem eigen apps te compileren.
+- [Hier vindt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp)u voor beelden van vaste Quick Start. Deze zijn afgesloten zonder weer gave van de uitzonde ring ' microfoon niet gevonden ' op Linux, MacOS, Windows.
+- Vaste SDK-crash met lange spraak herkennings resultaten voor bepaalde code paden zoals [dit voor beeld](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp/uwp/speechtotext-uwp).
+- Er is een vaste SDK-implementatie fout opgetreden in de Azure web app-omgeving om [deze klant probleem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/396)op te lossen
+- Er is een fout met TTS opgelost tijdens het gebruik van de code voor meerdere `<voice>` of `<audio>` om [Dit probleem van de klant](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/433)op te lossen. 
+- Er is een fout met TTS 401 opgelost tijdens het herstellen van de SDK vanuit Suspended.
+
+
+**Voorbeelden**
+
+- Voor beeld van trefwoord herkenning voor [Android is](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java/android/sdkdemo)toegevoegd.
+- Er is [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp)een voor beeld van TTS toegevoegd voor Server scenario. 
+- Quick starts voor multi-device- C++ gesprekken C# in [en .net zijn](multi-device-conversation.md)toegevoegd.
+
+
+**Andere wijzigingen**
+
+- Geoptimaliseerde grootte van de SDK-kern bibliotheek op Android.
+- De SDK in 1.9.0 en vervolgens ondersteunt zowel `int` als `string` typen in het veld voor de spraak handtekening versie voor de conversatie-transcriber.
 
 ## <a name="speech-sdk-180-2019-november-release"></a>Speech SDK 1.8.0:2019-november release
 

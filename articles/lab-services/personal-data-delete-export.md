@@ -1,5 +1,5 @@
 ---
-title: Persoonlijke gegevens verwijderen en exporteren uit Azure DevTest Labs | Microsoft Docs
+title: Persoonlijke gegevens verwijderen en exporteren uit Azure DevTest Labs
 description: Meer informatie over het verwijderen en exporteren van persoonlijke gegevens uit de Azure DevLast Labs-service ter ondersteuning van uw verplichtingen onder de AVG (AVG).
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 82ab8ef2e444b71f41fbbd87e4e9f8669e83e508
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: c87e2fb534480bbf9bbe625d67782e5a11eda18c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371164"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169685"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Persoonlijke gegevens exporteren of verwijderen uit Azure DevTest Labs
 In dit artikel worden de stappen beschreven voor het verwijderen en exporteren van persoonlijke gegevens uit de Azure DevTest Labs-service. 
@@ -39,10 +39,10 @@ DevTest Labs gebruikt het e-mail adres van de gebruiker voor het verzenden van e
 ### <a name="user-object-id"></a>Gebruikers object-ID
 DevTest Labs maakt gebruik van de gebruikers object-ID voor het weer geven van trends in de maand en kosten per resource-informatie voor Lab-beheerders. Hiermee kunnen ze kosten bijhouden en drempels voor hun Lab beheren. 
 
-**Schatting van de geschatte kosten voor de huidige kalender maand:** 
-![trend van de geschatte kosten voor de huidige kalender maand](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
+**Trend van de geschatte kosten voor de huidige kalender maand:** 
+![geschatte kosten trend voor de huidige kalender maand](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
 
-**Geschatte kosten van maand tot heden per resource:** 
+**Geschatte kosten van de maand tot heden per resource:** 
 ![geschatte kosten van de maand tot heden per resource](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
 
 
@@ -70,12 +70,12 @@ Als test gebruiker kunt u een export aanvragen voor de persoons gegevens die doo
 
     ![Resourcegroep selecteren](./media/personal-data-delete-export/select-resource-group.png)
 3. Selecteer het **opslag account** in de resource groep.
-4. Selecteer op de pagina **opslag account** de optie blobs.
+4. Selecteer op de pagina **opslag account** de optie **blobs**.
 
     ![Tegel blobs selecteren](./media/personal-data-delete-export/select-blobs-tile.png)
 5. Selecteer de container met de naam **labresourceusage** in de lijst met containers.
 
-    ![Blobcontainer selecteren](./media/personal-data-delete-export/select-blob-container.png)
+    ![BLOB-container selecteren](./media/personal-data-delete-export/select-blob-container.png)
 6. Selecteer de **map** met de naam na uw Lab. U vindt **CSV** -bestanden voor **schijven** en **virtuele machines** in uw Lab in deze map. U kunt deze CSV-bestanden downloaden, de inhoud filteren voor de test gebruiker die toegang vraagt, en deze delen met hen.
 
     ![CSV-bestand downloaden](./media/personal-data-delete-export/download-csv-file.png)
@@ -160,7 +160,7 @@ Laten we nu eens kijken naar de geëxporteerde gegevens. Zoals eerder is vermeld
 
 De **informatie. CSV** bevat de volgende gegevens kolommen:
 
-| Kolomnaam | Description |
+| Kolomnaam | Beschrijving |
 | ----------- | ----------- | 
 | SubscriptionId | De abonnements-id waarin het lab zich bevindt. |
 | LabUId | De unieke GUID-id voor het lab. |
@@ -171,9 +171,9 @@ De **informatie. CSV** bevat de volgende gegevens kolommen:
 | ResourceUId | GUID voor de virtuele machine |
 | Name | Naam van de virtuele machine. |
 | CreatedTime | De datum/tijd waarop de virtuele machine is gemaakt. |
-| DeletedDate | De datum/tijd waarop de virtuele machine is verwijderd. Als het leeg is, is het verwijderen nog niet uitgevoerd. |
+| GewisteDatum | De datum/tijd waarop de virtuele machine is verwijderd. Als het leeg is, is het verwijderen nog niet uitgevoerd. |
 | ResourceOwner | Eigenaar van de virtuele machine. Als de waarde leeg is, is het een claim bare VM of is deze gemaakt door een service-principal. |
-| PricingTier | Prijs categorie van de virtuele machine |
+| pricingTier | Prijs categorie van de virtuele machine |
 | ResourceStatus | Beschikbaarheids status van de virtuele machine. Actief, als deze nog bestaat of niet actief is, als de virtuele machine is verwijderd. |
 | ComputeResourceId | Fully Qualified Compute resource-id van de virtuele machine. |
 | Claim bare | Stel deze waarde in op True als de virtuele machine een claim bare VM is | 
@@ -188,18 +188,18 @@ De **informatie. CSV** bevat de volgende gegevens kolommen:
 
 De gegevens kolommen in **disks. CSV** worden hieronder weer gegeven:
 
-| Kolomnaam | Description | 
+| Kolomnaam | Beschrijving | 
 | ----------- | ----------- | 
 | SubscriptionId | ID van het abonnement dat het Lab bevat |
 | LabUId | GUID voor het lab |
-| LabName | Naam van het lab | 
+| LabName | naam van het lab | 
 | LabResourceId | Volledig gekwalificeerde Resource-ID voor het lab | 
 | ResourceGroupName | Naam van de resource groep die het Lab bevat | 
 | ResourceId | De volledig gekwalificeerde Resource-ID voor de virtuele machine. |
 | ResourceUId | GUID voor de virtuele machine |
  |Name | De naam van de gekoppelde schijf |
 | CreatedTime |De datum en tijd waarop de gegevens schijf is gemaakt. |
-| DeletedDate | De datum en tijd waarop de gegevens schijf is verwijderd. |
+| GewisteDatum | De datum en tijd waarop de gegevens schijf is verwijderd. |
 | ResourceStatus | De status van de resource. Actief, als de resource bestaat. Inactief na verwijdering. |
 | DiskBlobName | De naam van de BLOB voor de gegevens schijf. |
 | DiskSizeGB | De grootte van de gegevens schijf. |

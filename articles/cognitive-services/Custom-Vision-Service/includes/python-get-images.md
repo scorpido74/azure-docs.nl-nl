@@ -5,13 +5,13 @@ ms.subservice: custom-vision
 ms.topic: include
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 9f67c8028f5142117a5e245c90622fa0b4920d4d
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d7cfcffda19931027367e266cf41f2a0ab37a87e
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176359"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166614"
 ---
 ## <a name="get-the-sample-images"></a>Voorbeeldafbeeldingen ophalen
 
-In dit voorbeeld wordt de installatiekopieën van de **vision-voorbeelden-installatiekopieën** map van de [Cognitive Services Python SDK-voorbeelden](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) -bibliotheek op GitHub. Kloon of download deze opslagplaats in uw ontwikkelomgeving.
+In dit voor beeld worden de afbeeldingen uit de [Cognitive Services PYTHON SDK samples](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/tree/master/samples/vision/images) repository gebruikt op github. Kloon of download deze opslagplaats in uw ontwikkelomgeving. Onthoud de locatie van de map voor een latere stap.

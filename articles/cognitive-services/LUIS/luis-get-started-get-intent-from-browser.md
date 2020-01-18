@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: a99dbc594b53d00ae02b2581d149fe7b4573ab7d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ca0f9faf1623df9212072abbc960cba41a6414b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495220"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165750"
 ---
 # <a name="quickstart-get-intent-with-a-browser"></a>Quick Start: gebruik een browser voor de bedoeling
 
@@ -26,13 +26,13 @@ Om te begrijpen wat een LUIS-voorspellingseindpunt retourneert, kunt u het resul
 
 Als u een query wilt uitvoeren op een open bare app, hebt u het volgende nodig:
 
-* Uw eigen Language Understanding-sleutel (LUIS). Als u nog geen abonnement hebt om een sleutel te maken, kunt u zich registreren voor een [gratis account](https://azure.microsoft.com/free/). De LUIS-ontwerp sleutel werkt niet. 
+* Uw eigen Language Understanding (LUIS) ontwerpen of Voorspellings sleutel die kan worden verkregen via de [Luis-Portal (preview)](https://preview.luis.ai/). Als u nog geen abonnement hebt om een sleutel te maken, kunt u zich registreren voor een [gratis account](https://azure.microsoft.com/free/). 
 * De ID van de open bare app: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. 
 
 ## <a name="use-the-browser-to-see-predictions"></a>De browser gebruiken om voor spellingen te bekijken
 
 1. Open een webbrowser. 
-1. Gebruik de volledige Url's hieronder om `YOUR-KEY` te vervangen door uw eigen LUIS-sleutel. De aanvragen zijn GET-aanvragen en bevatten de autorisatie, met uw LUIS-sleutel, als een query reeks parameter.
+1. Gebruik de volledige Url's hieronder om `YOUR-KEY` te vervangen door uw eigen LUIS-ontwerp of Voorspellings sleutel. De aanvragen zijn GET-aanvragen en bevatten de autorisatie, met uw LUIS-ontwerp of Voorspellings sleutel, als een query reeks parameter.
 
     #### <a name="v3-prediction-requesttabv3-1-1"></a>[V3-Voorspellings aanvraag](#tab/V3-1-1)
     

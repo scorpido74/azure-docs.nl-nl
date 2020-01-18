@@ -1,6 +1,6 @@
 ---
 title: Notification Hubs gebruiken met python
-description: Meer informatie over het gebruik van Azure Notification Hubs van een back-end van python.
+description: Meer informatie over het gebruik van Azure Notification Hubs van een python-back-end.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5321802023d57bedc135e2d19b2289f1d66deb72
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: db5174ed6f008be0fed1fdf3c2c83d33277c3b4e
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213077"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263792"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Notification Hubs van python gebruiken
 
@@ -32,7 +32,7 @@ U hebt toegang tot alle Notification Hubs functies van een Java/PHP/python/ruby-
 > [!NOTE]
 > Dit is een voor beeld van een implementatie van een referentie voor het implementeren van de melding verzenden in Python en is niet de door de officiële ondersteunde meldingen hub-SDK. Het voor beeld is gemaakt met behulp van python 3,4.
 
-In dit artikel wordt beschreven hoe u:
+In dit artikel leest u informatie over:
 
 - Bouw een REST-client voor Notification Hubs functies in python.
 - Verzend meldingen via de Python-interface naar de notification hub-REST Api's.
@@ -103,7 +103,7 @@ class NotificationHub:
 ### <a name="create-security-token"></a>Beveiligings token maken
 
 De Details voor het maken van het beveiligings token zijn [hier](https://msdn.microsoft.com/library/dn495627.aspx)beschikbaar.
-Voeg de volgende methoden toe `NotificationHub` aan de klasse om het token te maken op basis van de URI van de huidige aanvraag en de referenties die zijn geëxtraheerd uit de Connection String.
+Voeg de volgende methoden toe aan de klasse `NotificationHub` om het token te maken op basis van de URI van de huidige aanvraag en de referenties die zijn geëxtraheerd uit de connection string.
 
 ```python
 @staticmethod
@@ -165,7 +165,7 @@ Deze klasse is een container voor een systeem eigen meldings hoofdtekst of een s
 
 Raadpleeg de [documentatie van Notification hubs rest-api's](https://msdn.microsoft.com/library/dn495827.aspx) en de specifieke indelingen voor het meldings platform voor alle beschik bare opties.
 
-Nu met deze klasse, schrijft u de methoden voor het verzenden van `NotificationHub` meldingen binnen de klasse.
+Nu met deze klasse, schrijft u de methoden voor het verzenden van meldingen binnen de `NotificationHub` klasse.
 
 ```python
 def make_http_request(self, url, payload, headers):
@@ -311,7 +311,7 @@ Initialiseer uw Notification Hubs-client (Vervang de connection string en de naa
 hub = NotificationHub("myConnectionString", "myNotificationHubName")
 ```
 
-Voeg vervolgens de verzend code toe, afhankelijk van uw mobiele doel platform. In dit voor beeld worden ook methoden op een hoger niveau toegevoegd om het verzenden van meldingen op basis van het platform, bijvoorbeeld send_windows_notification voor Windows, mogelijk te maken. send_apple_notification (voor Apple) etc.
+Voeg vervolgens de verzend code toe, afhankelijk van uw mobiele doel platform. Dit voor beeld voegt ook methoden op een hoger niveau toe om het verzenden van meldingen op basis van het platform mogelijk te maken, bijvoorbeeld send_windows_notification voor Windows. send_apple_notification (voor Apple) etc.
 
 ### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows Store en Windows Phone 8,1 (niet-Silverlight)
 
@@ -378,7 +378,7 @@ Als u de python-code uitvoert, moet er een melding op uw doel apparaat worden we
 
 ## <a name="examples"></a>Voorbeelden
 
-### <a name="enabling-the-debug-property"></a>De `debug` eigenschap inschakelen
+### <a name="enabling-the-debug-property"></a>De eigenschap `debug` in te scha kelen
 
 Wanneer u de vlag debug tijdens het initialiseren van de NotificationHub inschakelt, ziet u gedetailleerde HTTP-aanvraag-en reactie dump en NotificationOutcome zoals het volgende, waar u kunt zien welke HTTP-headers in de aanvraag worden door gegeven en welk HTTP-antwoord is Ontvangen van de notification hub:
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: 0d9c175db1370fe07b3278a46d910c59d81df860
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8aef46f0b9c3dc526f1fbed3d9bc59f97771b509
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969918"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169990"
 ---
 # <a name="quickstart-how-to-build-an-object-detector-with-custom-vision"></a>Quick Start: een object detector bouwen met Custom Vision
 
@@ -107,6 +107,8 @@ Nadat de training is voltooid, worden de prestaties van het model berekend en we
 ## <a name="manage-training-iterations"></a>Trainings herhalingen beheren
 
 Telkens wanneer u uw detector traint, maakt u een nieuwe _iteratie_ met de eigen bijgewerkte metrische gegevens voor prestaties. U kunt al uw iteraties bekijken in het linkerdeel venster van het tabblad **prestaties** . In het linkerdeel venster ziet u ook de knop **verwijderen** , die u kunt gebruiken om een herhaling te verwijderen als deze verouderd is. Wanneer u een herhaling verwijdert, verwijdert u alle installatie kopieën die uniek zijn gekoppeld.
+
+Zie [uw model gebruiken met de Voorspellings-API](./use-prediction-api.md) om te leren hoe u via een programma toegang hebt tot uw getrainde modellen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

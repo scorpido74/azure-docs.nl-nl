@@ -1,5 +1,5 @@
 ---
-title: Een omgeving maken met een Service Fabric cluster in Azure DevTest Labs | Microsoft Docs
+title: Een Service Fabric cluster omgeving maken in Azure DevTest Labs
 description: Leer hoe u een omgeving met een zelfstandig Service Fabric cluster maakt en het cluster start en stopt met planningen.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 01/16/2020
 ms.author: enewman
-ms.openlocfilehash: 1e192a2b27c9d617e43a56766431a0f40e87a752
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 71793b81d8735c80881fc25a9b7ec31bc4fc6762
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325257"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170340"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Een omgeving met een zelfstandig Service Fabric cluster maken in Azure DevTest Labs
 In dit artikel vindt u informatie over het maken van een omgeving met een zelfstandig Service Fabric cluster in Azure DevTest Labs. 
@@ -30,7 +30,7 @@ DevTest Labs kan op zichzelf staande test omgevingen maken, zoals gedefinieerd d
 ## <a name="create-a-service-fabric-cluster"></a>Een Service Fabric-cluster maken
 Service Fabric clusters worden gemaakt met omgevingen in DevTest Labs. Elke omgeving wordt gedefinieerd door een Azure Resource Manager sjabloon in een Git-opslag plaats. De [open bare Git-opslag plaats](https://github.com/Azure/azure-devtestlab/tree/master/Environments/) voor DevTest Labs bevat de Resource Manager-sjabloon voor het maken van een service Fabric cluster in de map [ServiceFabric-cluster](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster) . 
 
-1. Maak eerst een lab in Azure DevTest Labs met behulp van de instructies in het volgende artikel: [Maak een Lab](devtest-lab-create-lab.md). U ziet dat de optie **open bare omgevingen** standaard is **ingeschakeld** . 
+1. Maak eerst een lab in Azure DevTest Labs met behulp van instructies in het volgende artikel: [een lab maken](devtest-lab-create-lab.md). U ziet dat de optie **open bare omgevingen** standaard is **ingeschakeld** . 
 2. Controleer aan de hand van de volgende stappen of de Service Fabric provider is geregistreerd voor uw abonnement:
     1. Selecteer **abonnementen** in het navigatie menu links en selecteer uw **abonnement**
     2. Selecteer op de pagina **abonnement** de optie **resource providers** in het gedeelte **instellingen** van het menu aan de linkerkant. 
@@ -49,7 +49,7 @@ Service Fabric clusters worden gemaakt met omgevingen in DevTest Labs. Elke omge
     5. Voer voor het **certificaat**uw certificaat gegevens in als een base64-gecodeerde teken reeks. Als u een certificaat wilt maken, voert u de volgende stappen uit:
         1. Down load het bestand **Create-ClusterCertificate. ps1** uit de [Git-opslag plaats](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster). U kunt ook de opslag plaats op uw computer klonen. 
         2. Start **PowerShell**. 
-        3. Voer het **PS1** -bestand uit met `.\Create-ClusterCertificate.ps1`behulp van de opdracht. U ziet een tekst bestand dat in Klad blok wordt geopend met de informatie die u nodig hebt om de certificaat velden op deze pagina in te vullen. . 
+        3. Voer het **PS1** -bestand uit met behulp van de opdracht `.\Create-ClusterCertificate.ps1`. U ziet een tekst bestand dat in Klad blok wordt geopend met de informatie die u nodig hebt om de certificaat velden op deze pagina in te vullen. . 
     6. Voer het **wacht woord voor het certificaat in**.
     7. Geef de **vinger afdruk** voor het certificaat op.
     8. Selecteer **toevoegen** op de pagina **instellingen configureren** . 
@@ -109,7 +109,7 @@ Voer de volgende stappen uit om de instellingen voor afsluiten te wijzigen:
     1. Geef de **tijd** op voor het afsluiten.
     2. Geef de tijd **zone** voor het tijdstip op. 
     3. Geef op of u DevTest Labs **meldingen** wilt laten verzenden voordat het automatisch wordt afgesloten. 
-    4. Als u **Ja** hebt geselecteerd voor de optie melding, geeft u de webhook- **URL** en/of het **e-mail adres** op om meldingen te verzenden. 
+    4. Als u **Ja** hebt geselecteerd voor de optie melding, geeft u de **webhook-URL** en/of het **e-mail adres** op om meldingen te verzenden. 
     5. Selecteer **Opslaan** op de werkbalk.
 
         ![Pagina automatisch afsluiten](./media/create-environment-service-fabric-cluster/auto-shutdown-settings.png)

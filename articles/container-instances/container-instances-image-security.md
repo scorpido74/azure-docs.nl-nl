@@ -2,18 +2,18 @@
 title: Beveiliging voor container instanties
 description: Aanbevelingen voor het beveiligen van installatie kopieën en geheimen voor Azure Container Instances en algemene veiligheids overwegingen voor elk container platform
 ms.topic: article
-ms.date: 04/29/2019
+ms.date: 01/10/2020
 ms.custom: ''
-ms.openlocfilehash: b25cb4178ba211ff819ba512c9820165e0efbbf1
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: b5f2c4d9ca80318574e288110fd4ce7f490af00d
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481693"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260494"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>Beveiligings overwegingen voor Azure Container Instances
 
-In dit artikel worden beveiligings overwegingen geïntroduceerd voor het gebruik van Azure Container Instances om container-apps uit te voeren. Dit zijn een aantal van de onderwerpen:
+In dit artikel worden beveiligings overwegingen geïntroduceerd voor het gebruik van Azure Container Instances om container-apps uit te voeren. Dit zijn de onderwerpen:
 
 > [!div class="checklist"]
 > * **Beveiligings aanbevelingen** voor het beheren van installatie kopieën en geheimen voor Azure container instances
@@ -23,13 +23,17 @@ In dit artikel worden beveiligings overwegingen geïntroduceerd voor het gebruik
 
 ### <a name="use-a-private-registry"></a>Een persoonlijk REGI ster gebruiken
 
-Containers worden gemaakt van installatiekopieën die zijn opgeslagen in een of meer opslagplaatsen. Deze opslag plaatsen kunnen deel uitmaken van een openbaar REGI ster, zoals [docker hub](https://hub.docker.com)of een persoonlijk REGI ster. Een voorbeeld van een persoonlijk register is de [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/2.0/), dat lokaal kan worden geïnstalleerd of in een virtuele privécloud. U kunt ook in de cloud gebaseerde persoonlijke container register Services gebruiken, met inbegrip van [Azure container Registry](../container-registry/container-registry-intro.md). 
+Containers worden gemaakt van installatiekopieën die zijn opgeslagen in een of meer opslagplaatsen. Deze opslag plaatsen kunnen deel uitmaken van een openbaar REGI ster, zoals [docker hub](https://hub.docker.com)of een persoonlijk REGI ster. Een voorbeeld van een persoonlijk register is de [Docker Trusted Registry](https://docs.docker.com/datacenter/dtr/), dat lokaal kan worden geïnstalleerd of in een virtuele privécloud. U kunt ook in de cloud gebaseerde persoonlijke container register Services gebruiken, met inbegrip van [Azure container Registry](../container-registry/container-registry-intro.md). 
 
-Een openbaar beschik bare container installatie kopie biedt geen garantie voor beveiliging. Container installatie kopieën bestaan uit meerdere software lagen en elke software-laag heeft mogelijk beveiligings problemen. Om het risico van aanvallen te verminderen, moet u installatie kopieën opslaan en ophalen uit een persoonlijk REGI ster, zoals Azure Container Registry of een vertrouwd REGI ster van de docker. Naast het bieden van een beheerd persoonlijk REGI ster, Azure Container Registry ondersteunt [verificatie op basis van de Service-Principal](../container-registry/container-registry-authentication.md) via Azure Active Directory voor basis verificatie stromen. Deze verificatie omvat op rollen gebaseerde toegang voor de machtigingen alleen-lezen (pull), write (push) en owner.
+Een openbaar beschik bare container installatie kopie biedt geen garantie voor beveiliging. Container installatie kopieën bestaan uit meerdere software lagen en elke software-laag heeft mogelijk beveiligings problemen. Om het risico van aanvallen te verminderen, moet u installatie kopieën opslaan en ophalen uit een persoonlijk REGI ster, zoals Azure Container Registry of een vertrouwd REGI ster van de docker. Naast het bieden van een beheerd persoonlijk REGI ster, Azure Container Registry ondersteunt [verificatie op basis van de Service-Principal](../container-registry/container-registry-authentication.md) via Azure Active Directory voor basis verificatie stromen. Deze verificatie omvat op rollen gebaseerde toegang voor alleen-lezen (pull), write (push) en andere machtigingen.
 
 ### <a name="monitor-and-scan-container-images"></a>Container installatie kopieën controleren en scannen
 
-Oplossingen voor beveiligings bewaking en-scans, zoals [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) en een licht [blauwe beveiliging](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) , zijn beschikbaar via de Azure Marketplace. U kunt ze gebruiken om container installatie kopieën in een persoonlijk REGI ster te scannen en mogelijke beveiligings problemen te identificeren. Het is belang rijk om inzicht te krijgen in de diepte van de scans die door de verschillende oplossingen worden geboden. 
+Profiteer van oplossingen om container installatie kopieën in een persoonlijk REGI ster te scannen en mogelijke beveiligings problemen te identificeren. Het is belang rijk om inzicht te krijgen in de diepte van de detectie van bedreigingen die de verschillende oplossingen bieden.
+
+Azure Container Registry kan bijvoorbeeld optioneel worden [geïntegreerd met Azure Security Center](../security-center/azure-container-registry-integration.md) , zodat alle Linux-installatie kopieën die naar een REGI ster zijn gepusht, automatisch worden gescand. De geïntegreerde Qualys scanner van Azure Security Center detecteert beveiligings lekken van de installatie kopie, classificeert deze en biedt richt lijnen voor herstel.
+
+De beveiligings bewaking en oplossingen voor het scannen van afbeeldingen, zoals [Twistlock](https://azuremarketplace.microsoft.com/marketplace/apps/twistlock.twistlock?tab=Overview) en de licht [blauwe beveiliging](https://azuremarketplace.microsoft.com/marketplace/apps/aqua-security.aqua-security?tab=Overview) , zijn ook beschikbaar via Azure Marketplace.  
 
 ### <a name="protect-credentials"></a>Referenties beveiligen
 
@@ -90,13 +94,13 @@ Het concept van minimale bevoegdheden is een basis beveiligings best practice di
 
 U kunt ook de mogelijke kwets baarheid minimaliseren door ongebruikte of overbodige processen of bevoegdheden uit de container runtime te verwijderen. Geprivilegieerde containers worden uitgevoerd als root. Als een kwaadwillende gebruiker of werk belasting een escape-teken in een geprivilegieerde container heeft, wordt de container vervolgens als hoofdmap op dat systeem uitgevoerd.
 
-### <a name="whitelist-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>White List en uitvoer bare bestanden die de container mag openen of uitvoeren 
+### <a name="preapprove-files-and-executables-that-the-container-is-allowed-to-access-or-run"></a>Bestands-en uitvoer bare bestanden die de container mag openen of uitvoeren, vóór goed keuren 
 
-Het verminderen van het aantal variabelen of onbekende waarden helpt u bij het onderhouden van een stabiele, betrouw bare omgeving. Het beperken van containers zodat ze alleen voorgoedgekeurde of white list-bestanden kunnen openen of uitvoeren, is een bewezen methode om bloot stelling aan Risico's te beperken.  
+Het verminderen van het aantal variabelen of onbekende waarden helpt u bij het onderhouden van een stabiele, betrouw bare omgeving. Het beperken van containers zodat ze alleen voorgoedgekeurde of safelisted-bestanden kunnen openen of uitvoeren, is een bewezen methode om bloot stelling aan Risico's te beperken.  
 
-Het is veel eenvoudiger om een white list te beheren wanneer het vanaf het begin wordt geïmplementeerd. Een white list biedt een meting van de controle-en beheer baarheid, terwijl u leert welke bestanden en bestands uitvoer vereist zijn om de toepassing correct te laten functioneren. 
+Het is veel eenvoudiger om een Safelist te beheren wanneer het vanaf het begin wordt geïmplementeerd. Een Safelist biedt een meting van de controle-en beheer baarheid, terwijl u leert welke bestanden en bestands uitvoer vereist zijn om de toepassing correct te laten functioneren. 
 
-Een white list vermindert niet alleen de kwets baarheid van aanvallen, maar kan ook een basis lijn voor afwijkingen bieden en voor komen dat de gebruiks voorbeelden van de ' ruislijke buur ' en container groepen-scenario's worden verzorgd. 
+Een Safelist vermindert niet alleen de kwets baarheid van aanvallen, maar kan ook een basis lijn voor afwijkingen bieden en voor komen dat de gebruiks voorbeelden van de ' ruislijke buur ' en container groepen-scenario's worden verzorgd. 
 
 ### <a name="enforce-network-segmentation-on-running-containers"></a>Netwerk segmentatie afdwingen op actieve containers  
 
@@ -108,7 +112,7 @@ Het hulp programma partner licht [blauw](https://azuremarketplace.microsoft.com/
 
 Net als bij elke IT-omgeving moet u de activiteit en gebruikers toegang tot uw container ecosysteem consistent controleren om snel verdachte of schadelijke activiteiten te identificeren. Azure biedt oplossingen voor container bewaking, waaronder:
 
-* [Azure monitor containers voor](../azure-monitor/insights/container-insights-overview.md) het bewaken van de prestaties van uw workloads die zijn geïmplementeerd op Kubernetes-omgevingen die worden gehost op Azure Kubernetes service (AKS). Azure Monitor voor containers biedt u de zichtbaarheid van de prestaties door verzamelen geheugen en processors metrische gegevens van domeincontrollers, knooppunten en containers die beschikbaar in Kubernetes via de API voor metrische gegevens zijn. 
+* [Azure monitor voor containers](../azure-monitor/insights/container-insights-overview.md) bewaakt de prestaties van uw workloads die zijn geïmplementeerd op Kubernetes-omgevingen die worden gehost op Azure Kubernetes service (AKS). Azure Monitor voor containers biedt u de zichtbaarheid van de prestaties door verzamelen geheugen en processors metrische gegevens van domeincontrollers, knooppunten en containers die beschikbaar in Kubernetes via de API voor metrische gegevens zijn. 
 
 * Met de [Azure container monitoring-oplossing](../azure-monitor/insights/containers.md) kunt u andere docker-en Windows-container-hosts op één locatie weer geven en beheren. Bijvoorbeeld:
 
@@ -125,14 +129,18 @@ Bewaak uw resource activiteit, zoals bestanden, netwerk en andere bronnen die uw
 
 [Azure monitor](../azure-monitor/overview.md) maakt kern bewaking voor Azure-Services mogelijk door het verzamelen van metrische gegevens, activiteiten logboeken en diagnostische Logboeken toe te staan. Het activiteitenlogboek geeft bijvoorbeeld aan wanneer nieuwe resources worden gemaakt of gewijzigd. 
 
-Er zijn metrische gegevens beschikbaar met prestatiestatistieken voor verschillende resources en zelfs het besturingssysteem binnen een virtuele machine. U kunt deze gegevens bekijken met een van de verkenners in de Azure-portal en waarschuwingen maken op basis van deze metrische gegevens. Azure Monitor biedt de snelste metrische pijp lijn (5 minuten tot 1 minuut), dus moet u deze gebruiken voor tijdgebonden waarschuwingen en meldingen. 
+  Er zijn metrische gegevens beschikbaar met prestatiestatistieken voor verschillende resources en zelfs het besturingssysteem binnen een virtuele machine. U kunt deze gegevens bekijken met een van de verkenners in de Azure-portal en waarschuwingen maken op basis van deze metrische gegevens. Azure Monitor biedt de snelste pijplijn voor metrische gegevens (vijf minuten tot één minuut); gebruik het dus voor waarschuwingen en meldingen waarbij tijd van cruciaal belang is. 
 
 ### <a name="log-all-container-administrative-user-access-for-auditing"></a>Alle container gebruikers toegang voor controle voor auditing vastleggen 
 
-Behoud een nauw keurige controle spoor van beheerders toegang tot uw container-ecosysteem, container register en container installatie kopieën. Deze logboeken kunnen nood zakelijk zijn voor controle doeleinden en kunnen worden gebruikt als forensische-materiaal na een beveiligings incident. U kunt de [Azure container monitoring-oplossing](../azure-monitor/insights/containers.md) gebruiken om dit doel te verzorgen. 
+Behoud een nauw keurige controle spoor van beheerders toegang tot uw container ecosysteem, met inbegrip van uw Kubernetes-cluster, container register en container installatie kopieën. Deze logboeken kunnen nood zakelijk zijn voor controle doeleinden en kunnen worden gebruikt als forensische-materiaal na een beveiligings incident. Azure-oplossingen omvatten:
+
+* [Integratie van de Azure Kubernetes-service met Azure Security Center](../security-center/azure-kubernetes-service-integration.md) om de beveiligings configuratie van de cluster omgeving te controleren en aanbevelingen voor beveiliging te genereren
+* [Azure container bewakings oplossing](../azure-monitor/insights/containers.md)
+* Resource logboeken voor [Azure container instances](container-instances-log-analytics.md) en [Azure container Registry](../container-registry/container-registry-diagnostics-audit-logs.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het beheren van container beveiligings problemen met oplossingen van [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) en de licht [blauw](https://www.aquasec.com/solutions/azure-container-security/).
+* Meer informatie over het gebruik van [Azure Security Center](../security-center/container-security.md) voor realtime detectie van bedreigingen in uw container omgevingen.
 
-* Meer informatie over [container beveiliging in azure](https://azure.microsoft.com/resources/container-security-in-microsoft-azure/).
+* Meer informatie over het beheren van container beveiligings problemen met oplossingen van [Twistlock](https://www.twistlock.com/solutions/microsoft-azure-container-security/) en de licht [blauw](https://www.aquasec.com/solutions/azure-container-security/).

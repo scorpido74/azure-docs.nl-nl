@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: 094454123a945072bfb6d7fb81cf515816c4f6cb
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: efb4e4f68935898c083c1dbca6a6c64512544095
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73936209"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263469"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinding maken tussen Azure en ITSM-hulpprogram ma's met behulp van IT Service Management-connector
 
@@ -58,7 +58,7 @@ Voordat u een verbinding kunt maken, moet u de ITSM-connector-oplossing toevoege
 3. Selecteer in de sectie **OMS-werk ruimte** de Azure log Analytics-werk ruimte waar u de oplossing wilt installeren.
    >[!NOTE]
    > * Als onderdeel van de doorlopende overgang van Microsoft Operations Management Suite (OMS) naar Azure Monitor worden OMS-werk ruimten nu aangeduid als Log Analytics.
-   > * De ITSM-connector kan alleen worden geïnstalleerd in Log Analytics-werk ruimten in de volgende regio's: VS-Oost, Europa-west, Zuidoost-Azië, Zuidoost-Australië, VS-West-Centraal, Oost-Japan, Zuid-Brittannië, Centraal-India, Centraal-Canada.
+   > * De ITSM-connector kan alleen worden geïnstalleerd in Log Analytics-werk ruimten in de volgende regio's: VS-Oost, Europa-west, Zuidoost-Azië, Zuidoost-Australië, VS-West-Centraal, Oost-Japan, Zuid-Brittannië, Centraal-India, Centraal-Canada, West VS2, Zuid-Centraal vs.
 
 4. Selecteer in de sectie **OMS-werk ruimte** de ResourceGroup waar u de oplossings resource wilt maken.
 
@@ -66,7 +66,7 @@ Voordat u een verbinding kunt maken, moet u de ITSM-connector-oplossing toevoege
    >[!NOTE]
    >Als onderdeel van de doorlopende overgang van Microsoft Operations Management Suite (OMS) naar Azure Monitor worden OMS-werk ruimten nu aangeduid als Log Analytics.
 
-5. Klik op **Create**.
+5. Klik op **Maken**.
 
 Wanneer de oplossings resource is geïmplementeerd, verschijnt er een melding in de rechter bovenhoek van het venster.
 
@@ -152,7 +152,7 @@ Het dash board bevat ook informatie over connector status die kan worden gebruik
 
 U kunt de incidenten die zijn gesynchroniseerd met de betrokken computers ook visualiseren binnen de Servicetoewijzing oplossing.
 
-Servicetoewijzing detecteert automatisch de toepassings onderdelen op Windows-en Linux-systemen en wijst de communicatie tussen services toe. U kunt hiermee uw servers weer geven zoals u dat wilt, als onderling verbonden systemen die essentiële services leveren. Servicetoewijzing worden verbindingen tussen servers, processen en poorten weer gegeven in elke met TCP verbonden architectuur zonder dat hiervoor een andere configuratie nodig is dan de installatie van een agent. [Meer informatie](../../azure-monitor/insights/service-map.md).
+Servicetoewijzing detecteert automatisch de toepassings onderdelen op Windows-en Linux-systemen en wijst de communicatie tussen services toe. Zo kunt u uw servers beschouwen zoals u ze voor ogen ziet: als onderling verbonden systemen die kritieke services verlenen. Servicetoewijzing toont verbindingen tussen servers, processen en poorten in alle via TCP verbonden architectuur. U hoeft hiervoor niets meer te doen dan het installeren van een agent. [Meer informatie](../../azure-monitor/insights/service-map.md).
 
 Als u de Servicetoewijzing oplossing gebruikt, kunt u de Service Desk-items weer geven die zijn gemaakt in de ITSM-oplossingen, zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -179,7 +179,7 @@ ServiceDeskWorkItemType_s="Incident"
 
 - ServiceDeskConnectionName
 - Service Desk-ID
-- Status
+- Staat
 - Urgentie
 - Impact
 - Prioriteit
@@ -189,7 +189,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Gesloten door
 - Bron
 - Toegewezen aan
-- Categorie
+- Category
 - Titel
 - Beschrijving
 - Datum gemaakt
@@ -212,8 +212,8 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Toegewezen aan
 - Titel
 - Type
-- Categorie
-- Status
+- Category
+- Staat
 - Escalatie
 - Conflict status
 - Urgentie
@@ -237,7 +237,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Log Analytics veld | Het veld ServiceNow |
 |:--- |:--- |
 | ServiceDeskId_s| Aantal |
-| IncidentState_s | Status |
+| IncidentState_s | Staat |
 | Urgency_s |Urgentie |
 | Impact_s |Impact|
 | Priority_s | Prioriteit |
@@ -246,12 +246,12 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s  | Gesloten door |
 | Source_s| Type contact |
 | AssignedTo_s | Toegewezen aan  |
-| Category_s | Categorie |
+| Category_s | Category |
 | Title_s|  Korte beschrijving |
 | Description_s|  Opmerkingen |
-| CreatedDate_t|  Had |
+| CreatedDate_t|  Geopend |
 | ClosedDate_t| Gesloten|
-| ResolvedDate_t|Gecontroleerd|
+| ResolvedDate_t|Omgezet|
 | Computer  | Configuratie-item |
 
 ## <a name="output-data-for-a-servicenow-change-request"></a>Uitvoer gegevens voor een wijzigings aanvraag voor een ServiceNow
@@ -264,18 +264,18 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | AssignedTo_s | Toegewezen aan  |
 | Title_s|  Korte beschrijving |
 | Type_s|  Type |
-| Category_s|  Categorie |
-| CRState_s|  Status|
+| Category_s|  Category |
+| CRState_s|  Staat|
 | Urgency_s|  Urgentie |
 | Priority_s| Prioriteit|
 | Risk_s| Risico|
 | Impact_s| Impact|
 | RequestedDate_t  | Aangevraagd door datum |
-| ClosedDate_t | Gesloten datum |
+| ClosedDate_t | Datum gesloten |
 | PlannedStartDate_t  |     Geplande begin datum |
 | PlannedEndDate_t  |   Geplande eind datum |
-| WorkStartDate_t  | Werkelijke begin datum |
-| WorkEndDate_t | Werkelijke eind datum|
+| WorkStartDate_t  | Werkelijke begindatum |
+| WorkEndDate_t | Werkelijke einddatum|
 | Description_s | Beschrijving |
 | Computer  | Configuratie-item |
 

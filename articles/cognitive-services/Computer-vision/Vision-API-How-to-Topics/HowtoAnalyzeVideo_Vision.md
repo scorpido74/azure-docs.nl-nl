@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 4855451136edfe86baaace48e2582fc7080a9b12
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 18b158b7a4881619b93ab404de67f7bb25f92b6a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770370"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166836"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>Video's in bijna realtime analyseren
 
@@ -148,7 +148,7 @@ De bibliotheek bevat de `FrameGrabber`-klasse, waarmee het eerder besproken prod
 
 Om enkele van de mogelijkheden te illustreren, hebben we twee voor beelden gegeven van apps die gebruikmaken van de-bibliotheek. 
 
-De eerste voor beeld-app is een eenvoudige console-app die frames ophaalt van de standaard webcam en deze vervolgens verzendt naar de Face-API voor gezichts detectie. Een vereenvoudigde versie van de app wordt in de volgende code gereproduceerd:
+De eerste voor beeld-app is een eenvoudige console-app die frames ophaalt van de standaard webcam en deze vervolgens verzendt naar de face-service voor gezichts detectie. Een vereenvoudigde versie van de app wordt in de volgende code gereproduceerd:
 
 ```csharp
 using System;
@@ -169,7 +169,7 @@ namespace BasicConsoleSample
             // Create grabber.
             FrameGrabber<DetectedFace[]> grabber = new FrameGrabber<DetectedFace[]>();
 
-            // Create Face API Client.
+            // Create Face Client.
             FaceClient faceClient = new FaceClient(new ApiKeyServiceClientCredentials(ApiKey))
             {
                 Endpoint = Endpoint
@@ -185,7 +185,7 @@ namespace BasicConsoleSample
             grabber.AnalysisFunction = async frame =>
             {
                 Console.WriteLine($"Submitting frame acquired at {frame.Metadata.Timestamp}");
-                // Encode image and submit to Face API.
+                // Encode image and submit to Face service.
                 return (await faceClient.Face.DetectWithStreamAsync(frame.Image.ToMemoryStream(".jpg"))).ToArray();
             };
 
@@ -230,13 +230,13 @@ Met deze methode kunt u het gedetecteerde gezicht direct visualiseren. U kunt de
 
 Ga als volgt te werk om aan de slag te gaan met dit voor beeld:
 
-1. Haal API-sleutels voor de Vision-API's op uit [Abonnementen](https://azure.microsoft.com/try/cognitive-services/). Voor analyse van videoframes zijn dit de relevante API's:
-    - [De Computer Vision-API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [De Face-API](https://docs.microsoft.com/azure/cognitive-services/face/overview)
+1. Haal API-sleutels voor de Vision-API's op uit [Abonnementen](https://azure.microsoft.com/try/cognitive-services/). Voor video frame analyse zijn de volgende services van toepassing:
+    - [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
+    - [Face](https://docs.microsoft.com/azure/cognitive-services/face/overview)
 2. Kloon de [cognitieve-samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) github opslag plaats.
 
 3. Open het voor beeld in Visual Studio 2015 of hoger en bouw en voer de voorbeeld toepassingen uit:
-    - De Face-API-sleutel voor BasicConsoleSample is in code vastgelegd in [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
+    - Voor BasicConsoleSample is de face-sleutel rechtstreeks vastgelegd in [BasicConsoleSample/Program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
     - Voor LiveCameraSample voert u de sleutels in het deel venster **instellingen** van de app in. De sleutels worden opgeslagen in verschillende sessies als gebruikers gegevens.
 
 Wanneer u klaar bent om de voor beelden te integreren, verwijst u naar de VideoFrameAnalyzer-bibliotheek van uw eigen projecten.
@@ -245,7 +245,7 @@ Met de mogelijkheden van de afbeeldings-, spraak-, video-en tekst-informatie ove
 
 ## <a name="summary"></a>Samenvatting
 
-In dit artikel hebt u geleerd hoe u bijna realtime analyses kunt uitvoeren in live video-streams met behulp van de Face-API en de Computer Vision-API. U hebt ook geleerd hoe u onze voorbeeld code kunt gebruiken om aan de slag te gaan. Ga naar de [registratie pagina van Azure Cognitive Services](https://azure.microsoft.com/try/cognitive-services/)om aan de slag te gaan met het bouwen van uw app met behulp van gratis API-sleutels.
+In dit artikel hebt u geleerd hoe u bijna realtime analyses kunt uitvoeren op live video streams met behulp van het gezichts-en Computer Vision Services. U hebt ook geleerd hoe u onze voorbeeld code kunt gebruiken om aan de slag te gaan. Ga naar de [registratie pagina van Azure Cognitive Services](https://azure.microsoft.com/try/cognitive-services/)om aan de slag te gaan met het bouwen van uw app met behulp van gratis API-sleutels.
 
 U kunt feedback en suggesties bieden in de [github-opslag plaats](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/). Ga naar onze [UserVoice-site](https://cognitive.uservoice.com/)om uitgebreidere API-feedback te bieden.
 

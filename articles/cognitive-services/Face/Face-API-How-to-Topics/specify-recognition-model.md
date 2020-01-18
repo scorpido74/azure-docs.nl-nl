@@ -1,7 +1,7 @@
 ---
-title: Een herkennings model opgeven-Face-API
+title: Een herkennings model opgeven-gezicht
 titleSuffix: Azure Cognitive Services
-description: In dit artikel wordt uitgelegd hoe u kunt kiezen welk herkennings model u wilt gebruiken met uw Azure Face-API-toepassing.
+description: In dit artikel wordt uitgelegd hoe u kunt kiezen welk herkennings model u wilt gebruiken met uw Azure face-toepassing.
 services: cognitive-services
 author: longli0
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
-ms.openlocfilehash: 5b84e078e3b674a539b61c07c4bb4370719e4799
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 44392b807659ff8f13511b48d0afd33db080e4f6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771016"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166465"
 ---
 # <a name="specify-a-face-recognition-model"></a>Een model voor gezichtsherkenning opgeven
 
-In deze hand leiding wordt uitgelegd hoe u een gezichts herkennings model kunt opgeven voor de detectie van gezicht, identificatie en soort gelijke zoek opdracht met behulp van Azure Face-API.
+Deze hand leiding laat zien hoe u een gezichts herkennings model kunt opgeven voor gezichts detectie, identificatie en soort gelijke Zoek opdrachten met behulp van de Azure face-service.
 
-De Face-API gebruikt machine learning modellen voor het uitvoeren van bewerkingen op menselijke gezichten in installatie kopieën. We blijven de nauw keurigheid van onze modellen verbeteren op basis van feedback van klanten en de voor uitgang van onderzoek en wij leveren deze verbeteringen als model updates. Ontwikkel aars hebben de mogelijkheid om op te geven welke versie van het gezichts herkennings model ze willen gebruiken. ze kunnen het model kiezen dat het beste past bij hun gebruik.
+De face-service maakt gebruik van machine learning modellen voor het uitvoeren van bewerkingen op menselijke gezichten in installatie kopieën. We blijven de nauw keurigheid van onze modellen verbeteren op basis van feedback van klanten en de voor uitgang van onderzoek en wij leveren deze verbeteringen als model updates. Ontwikkel aars hebben de mogelijkheid om op te geven welke versie van het gezichts herkennings model ze willen gebruiken. ze kunnen het model kiezen dat het beste past bij hun gebruik.
 
 Als u een nieuwe gebruiker bent, raden we u aan het meest recente model te gebruiken. Lees in voor meer informatie over hoe u deze kunt opgeven in verschillende gezichts bewerkingen, terwijl model conflicten worden voor komen. Als u een ervaren gebruiker bent en niet zeker weet of u moet overschakelen naar het meest recente model, gaat u naar de sectie [verschillende modellen evalueren](#evaluate-different-models) om het nieuwe model te evalueren en resultaten te vergelijken met uw huidige gegevensset.
 
@@ -57,7 +57,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recog
 
 ## <a name="identify-faces-with-specified-model"></a>Gezichten identificeren met het opgegeven model
 
-De Face-API kan gezichts gegevens uit een afbeelding extra heren en koppelen aan een **persoons** object (bijvoorbeeld via de aanroep [Face](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) -API toevoegen), en meerdere **persoons** objecten kunnen samen worden opgeslagen in een **PersonGroup**. Vervolgens kan een nieuw gezicht worden vergeleken met een **PersonGroup** (met de aanroep voor het identificeren van het [Face - Identify] ) en kan de overeenkomende persoon binnen die groep worden geïdentificeerd.
+De face-service kan gezichts gegevens uit een afbeelding extra heren en deze koppelen aan een **persoons** object (bijvoorbeeld via de aanroep face-API [toevoegen](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) ), en meerdere **persoons** objecten kunnen samen worden opgeslagen in een **PersonGroup**. Vervolgens kan een nieuw gezicht worden vergeleken met een **PersonGroup** (met de aanroep voor het identificeren van het [Face - Identify] ) en kan de overeenkomende persoon binnen die groep worden geïdentificeerd.
 
 Een **PersonGroup** moet één uniek herkennings model hebben voor alle **personen**en u kunt dit opgeven met behulp van de para meter `recognitionModel` wanneer u de groep maakt ([PersonGroup - Create] of [LargePersonGroup - Create]). Als u deze para meter niet opgeeft, wordt het oorspronkelijke `recognition_01` model gebruikt. Een groep maakt altijd gebruik van het herkennings model waarmee het is gemaakt, en nieuwe gezichten worden gekoppeld aan dit model wanneer ze eraan worden toegevoegd. Dit kan niet worden gewijzigd nadat het maken van een groep is gemaakt. Als u wilt zien welk model a **PersonGroup** is geconfigureerd met, gebruikt u de [PersonGroup-Get] API met de para meter _returnRecognitionModel_ ingesteld op **True**.
 

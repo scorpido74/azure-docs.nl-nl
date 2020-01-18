@@ -4,15 +4,15 @@ description: Azure Analysis Services servers repliceren met scale-out. Client qu
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 01/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1b40238dfc579e42d0389ae14fdea4b5692ede06
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 56a3d4f172cde70bdd1a875c76213c43184cbbc3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572591"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167949"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Uitschalen van Azure Analysis Services
 
@@ -36,7 +36,7 @@ Wanneer u de eerste keer scale-out configureert, worden model databases op uw pr
 
 Hoewel een automatische synchronisatie alleen wordt uitgevoerd wanneer u een server voor de eerste keer uitbreidt, kunt u ook een hand matige synchronisatie uitvoeren. Bij het synchroniseren worden de gegevens van replica's in de query groep vergeleken met die van de primaire server. Wanneer modellen op de primaire server worden verwerkt (vernieuwd), moet er een synchronisatie worden uitgevoerd *nadat* de verwerkings bewerkingen zijn voltooid. Deze synchronisatie kopieert bijgewerkte gegevens van de bestanden van de primaire server in Blob Storage naar de tweede set bestanden. Replica's in de query groep worden vervolgens gehydrateerd met bijgewerkte gegevens uit de tweede set bestanden in Blob Storage. 
 
-Wanneer u een volgende uitschaal bewerking uitvoert, bijvoorbeeld het aantal replica's in de query groep verhogen van twee naar vijf, worden de nieuwe replica's gehydrateerd met gegevens uit de tweede set bestanden in Blob Storage. Er is geen synchronisatie. Als u een synchronisatie hebt uitgevoerd nadat u hebt geschaald, worden de nieuwe replica's in de query groep twee keer gehydrateerd: een redundante Hydration. Wanneer u een volgende scale-out-bewerking uitvoert, is het belang rijk dat u rekening houdt met het volgende:
+Wanneer u een volgende uitschaal bewerking uitvoert, bijvoorbeeld het aantal replica's in de query groep verhogen van twee naar vijf, worden de nieuwe replica's gehydrateerd met gegevens uit de tweede set bestanden in Blob Storage. Er is geen synchronisatie. Als u vervolgens een synchronisatie uitvoert nadat u uitschalen hebt uitgevoerd, worden de nieuwe replica's in de query groep twee keer gehydrateerd: een redundante Hydration. Wanneer u een volgende scale-out-bewerking uitvoert, is het belang rijk dat u rekening houdt met het volgende:
 
 * Voer een synchronisatie uit *vóór de uitschaal bewerking* om redundante Hydration van de toegevoegde replica's te voor komen. Gelijktijdige synchronisatie-en scale-out bewerkingen die op hetzelfde moment worden uitgevoerd, zijn niet toegestaan.
 
@@ -44,9 +44,29 @@ Wanneer u een volgende uitschaal bewerking uitvoert, bijvoorbeeld het aantal rep
 
 * Synchronisatie is ook toegestaan wanneer er geen replica's in de query groep zijn. Als u opschalen van nul naar een of meer replica's met nieuwe gegevens van een verwerkings bewerking op de primaire server, voert u de synchronisatie eerst uit zonder replica's in de query groep en vervolgens scale-out. Bij het synchroniseren van wordt geen redundante Hydration van de zojuist toegevoegde replica's voor komen.
 
-* Wanneer u een model database van de primaire server verwijdert, wordt deze niet automatisch verwijderd uit replica's in de query groep. U moet een synchronisatie bewerking uitvoeren met behulp van de Power shell [-opdracht Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) die het bestand/de s voor die data base verwijdert uit de gedeelde Blob-opslag locatie van de replica en vervolgens de model database op de replica's verwijdert. in de query groep. Als u wilt bepalen of een model database bestaat voor replica's in de query pool, maar niet op de primaire server, moet u ervoor zorgen dat de **afzonderlijke verwerkings server van de query groep** is ingesteld op **Ja**. Gebruik vervolgens SSMS om verbinding te maken met de primaire server met behulp van de `:rw` kwalificatie om te controleren of de data base bestaat. Maak vervolgens verbinding met replica's in de query groep door verbinding te maken zonder de `:rw` kwalificatie om te zien of dezelfde data base ook bestaat. Als de data base bestaat in replica's in de query groep, maar niet op de primaire server, voert u een synchronisatie bewerking uit.   
+* Wanneer u een model database van de primaire server verwijdert, wordt deze niet automatisch verwijderd uit replica's in de query groep. U moet een synchronisatie bewerking uitvoeren met behulp van de Power shell [-opdracht Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) die het bestand/de s voor die data base verwijdert uit de gedeelde Blob-opslag locatie van de replica en de model database vervolgens op de replica's in de query groep verwijdert. Als u wilt bepalen of een model database bestaat voor replica's in de query pool, maar niet op de primaire server, moet u ervoor zorgen dat de **afzonderlijke verwerkings server van de query groep** is ingesteld op **Ja**. Gebruik vervolgens SSMS om verbinding te maken met de primaire server met behulp van de `:rw` kwalificatie om te controleren of de data base bestaat. Maak vervolgens verbinding met replica's in de query groep door verbinding te maken zonder de `:rw` kwalificatie om te zien of dezelfde data base ook bestaat. Als de data base bestaat in replica's in de query groep, maar niet op de primaire server, voert u een synchronisatie bewerking uit.   
 
 * Bij het wijzigen van de naam van een Data Base op de primaire server is er een extra stap die nodig is om ervoor te zorgen dat de data base correct is gesynchroniseerd met replica's. Nadat u de naam hebt gewijzigd, voert u een synchronisatie uit met behulp van de opdracht [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) met de para meter `-Database` op te geven met de oude database naam. Deze synchronisatie verwijdert de data base en bestanden met de oude naam uit een of meer replica's. Voer vervolgens een andere synchronisatie uit met de para meter `-Database` met de naam van de nieuwe data base. Bij de tweede synchronisatie wordt de data base met de nieuwe naam gekopieerd naar de tweede set bestanden en worden eventuele replica's gehydrateerd. Deze synchronisaties kunnen niet worden uitgevoerd met behulp van de opdracht model synchroniseren in de portal.
+
+### <a name="synchronization-mode"></a>Synchronisatie modus
+
+Standaard worden query replica's volledig opnieuw gehydrateerd, niet incrementeel. Rehydratatie treedt op in fasen. Ze worden twee tegelijk losgekoppeld en gekoppeld (ervan uitgaande dat er ten minste drie replica's zijn) om ervoor te zorgen dat ten minste één replica online wordt gehouden voor query's op een bepaald moment. In sommige gevallen moeten clients mogelijk opnieuw verbinding maken met een van de online replica's terwijl dit proces plaatsvindt. Met behulp van de **ReplicaSyncMode** -instelling kunt u nu de synchronisatie van query's replica's opgeven, parallel. Parallelle synchronisatie biedt de volgende voor delen: 
+
+- Aanzienlijke vermindering van de synchronisatie tijd. 
+- Gegevens in replica's zijn waarschijnlijker consistent tijdens het synchronisatie proces. 
+- Omdat data bases tijdens het synchronisatie proces online blijven op alle replica's, hoeven clients niet opnieuw verbinding te maken. 
+- De cache in het geheugen wordt incrementeel bijgewerkt met alleen de gewijzigde gegevens. Dit kan sneller zijn dan het volledige reactiveren van het model. 
+
+#### <a name="setting-replicasyncmode"></a>ReplicaSyncMode instellen
+
+Gebruik SSMS om ReplicaSyncMode in te stellen in geavanceerde eigenschappen. De mogelijke waarden zijn: 
+
+- `1` (standaard): volledige replica database rehydratatie in fasen (incrementeel). 
+- `2`: geoptimaliseerde synchronisatie parallel. 
+
+![RelicaSyncMode-instelling](media/analysis-services-scale-out/aas-scale-out-sync-mode.png)
+
+Bij het instellen van **ReplicaSyncMode = 2**, afhankelijk van hoeveel van de cache moet worden bijgewerkt, kan extra geheugen worden gebruikt door de query replica's. Als u de data base online en beschikbaar wilt houden voor query's, afhankelijk van de hoeveelheid gegevens die is gewijzigd, kan het zijn dat de bewerking het geheugen van de replica moet *Double* hebben, omdat zowel de oude als de nieuwe segmenten tegelijkertijd in het geheugen worden bewaard. Replica knooppunten hebben dezelfde geheugen toewijzing als het primaire knoop punt en er is meestal extra geheugen op het primaire knoop punt voor de vernieuwings bewerkingen, waardoor het onwaarschijnlijk is dat er onvoldoende geheugen beschikbaar is voor de replica's. Daarnaast is het gebruikelijk dat de data base incrementeel wordt bijgewerkt op het primaire knoop punt en daarom de vereiste voor dubbele het geheugen ongebruikelijk moet zijn. Als er een fout optreedt in de synchronisatie bewerking, wordt de standaard techniek opnieuw geprobeerd (twee tegelijk koppelen/loskoppelen). 
 
 ### <a name="separate-processing-from-query-pool"></a>Afzonderlijke verwerking van de query pool
 
@@ -56,7 +76,7 @@ U kunt de verwerkings server scheiden van de query groep voor een maximale prest
 
 Als u wilt bepalen of uitschalen voor uw server nodig is, controleert u de server in Azure Portal met behulp van metrische gegevens. Als uw QPU regel matig uitdergelijke, betekent dit dat het aantal query's voor uw modellen de limiet van QPU voor uw abonnement overschrijdt. De metrische gegevens wachtrij lengte van de query pool neemt ook toe wanneer het aantal query's in de wachtrij van de query thread de beschik bare QPU overschrijdt. 
 
-Een andere goede metrische waarde om te kijken, is gemiddelde QPU door ServerResourceType. Deze metrische gegevens vergelijkt de gemiddelde QPU voor de primaire server met die van de query groep. 
+Een andere goede metrische waarde om te kijken, is gemiddelde QPU door ServerResourceType. Deze metrische gegevens vergelijkt de gemiddelde QPU voor de primaire server met de query groep. 
 
 ![Metrische gegevens van query uitschalen](media/analysis-services-scale-out/aas-scale-out-monitor.png)
 
@@ -107,7 +127,7 @@ Gebruik de **synchronisatie** bewerking.
 Retour status codes:
 
 
-|Code  |Beschrijving  |
+|Coderen  |Beschrijving  |
 |---------|---------|
 |-1     |  Ongeldig       |
 |0     | Repliceren        |

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: alzam
-ms.openlocfilehash: 7f05b850a0d886ac0df5c542de647f91fe62eb05
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b22581d012b2c69081bc7b4eee093227c060b4c2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382220"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169712"
 ---
 # <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Azure Multi-Factor Authentication (MFA) inschakelen voor VPN-gebruikers
 
@@ -22,27 +22,7 @@ Als u wilt dat gebruikers wordt gevraagd om een tweede authenticatie factor voor
 
 De vereiste voor deze configuratie is een geconfigureerde Azure AD-Tenant met behulp van de stappen in [een Tenant configureren](openvpn-azure-ad-tenant.md).
 
-## <a name="mfa"></a>De MFA-pagina openen
-
-1. Meld u aan bij Azure Portal.
-2. Ga naar **Azure Active Directory-> alle gebruikers**.
-3. Selecteer **multi-factor Authentication** om de pagina multi-factor Authentication te openen.
-
-   ![Aanmelden](./media/openvpn-azure-ad-mfa/mfa1.jpg)
-
-## <a name="users"></a>Gebruikers selecteren
-
-1. Selecteer op de pagina **multi-factor Authentication** de gebruiker (s) waarvoor u MFA wilt inschakelen.
-2. Selecteer **Inschakelen**.
-
-   ![Selecteer](./media/openvpn-azure-ad-mfa/mfa2.jpg)
-
-## <a name="enableauth"></a>Verificatie inschakelen
-
-1. Ga naar **Azure Active Directory-> bedrijfs toepassingen-> alle toepassingen**.
-2. Selecteer op de pagina **bedrijfs toepassingen-alle toepassingen** de optie **Azure VPN**.
-
-   ![Map-ID](./media/openvpn-azure-ad-mfa/user1.jpg)
+[!INCLUDE [MFA steps](../../includes/vpn-gateway-vwan-openvpn-azure-ad-mfa.md)]
 
 ## <a name="enablesign"></a>Aanmeldings instellingen configureren
 

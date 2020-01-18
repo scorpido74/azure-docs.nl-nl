@@ -1,14 +1,14 @@
 ---
 title: Meer informatie over gedelegeerd resourcebeheer
 description: Met beheerde services kunnen service providers resource beheer aanbiedingen verkopen aan klanten in azure Marketplace.
-ms.date: 07/11/2019
+ms.date: 01/17/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2baa66acb4abc250ff69a1560f1bc6fe9a531ba8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1fc3d95b1becccc014afeb4621d17770a03e38a4
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453627"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263911"
 ---
 # <a name="azure-delegated-resource-management"></a>Meer informatie over gedelegeerd resourcebeheer
 
@@ -38,6 +38,9 @@ Op hoog niveau is dit de manier waarop Azure gedelegeerd resource management wer
    - [Een Azure Marketplace Managed Services-aanbieding](../how-to/publish-managed-services-offers.md) (privé of openbaar) publiceren die door de klant wordt geaccepteerd
    - [Een Azure Resource Manager-sjabloon implementeren naar de Tenant van de klant](../how-to/onboard-customer.md) voor een of meer specifieke abonnementen of resource groepen
 3. Zodra de klant onboarded is, kunnen geautoriseerde gebruikers zich aanmelden bij de Tenant van de service provider en beheer taken uitvoeren op het opgegeven klant bereik, op basis van de toegang die u hebt gedefinieerd.
+
+> [!NOTE]
+> Overdracht van een abonnement tussen twee tenants in afzonderlijke Clouds wordt niet ondersteund.
 
 ## <a name="support-for-azure-delegated-resource-management"></a>Ondersteuning voor Azure delegated resource management
 

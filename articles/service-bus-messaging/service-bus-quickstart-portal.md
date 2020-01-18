@@ -1,22 +1,22 @@
 ---
-title: 'Quickstart: de Azure-portal gebruiken om een Service Bus-wachtrij te maken | Microsoft Docs'
+title: De Azure Portal gebruiken om een Service Bus wachtrij te maken
 description: In deze quickstart leert u hoe u een Service Bus-wachtrij kunt maken met behulp van de Azure-portal. Vervolgens gebruikt u een voorbeeldclienttoepassing om berichten te verzenden naar en te ontvangen van de wachtrij.
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/03/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: dc9b8260a8ddde6633bc9215d9efff7aaaa71ad3
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242385"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260834"
 ---
-# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Quickstart: De Azure-portal gebruiken om een Service Bus-wachtrij te maken
-In deze Quick Start wordt beschreven hoe u berichten verzendt en ontvangt van een Service Bus wachtrij, met behulp van de [Azure Portal][Azure portal] om een bericht naam ruimte en een wachtrij binnen die naam ruimte te maken en om de autorisatie referenties voor die naam ruimte te verkrijgen. De procedure laat vervolgens zien hoe u berichten naar deze wachtrij verzendt en van de wachtrij ontvangt met behulp van de [.NET Standard-bibliotheek](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
+# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Snelstartgids: Azure Portal gebruiken om een Service Bus wachtrij te maken
+In deze Quick Start wordt beschreven hoe u berichten verzendt en ontvangt van een Service Bus wachtrij, met behulp van de [Azure Portal][Azure portal] om een bericht naam ruimte en een wachtrij binnen die naam ruimte te maken en om de autorisatie referenties voor die naam ruimte te verkrijgen. De procedure laat vervolgens zien hoe u berichten naar deze wachtrij kunt verzenden en hoe u ze ervan kunt ontvangen met behulp van de [.NET Standard-bibliotheek](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
@@ -25,7 +25,7 @@ In deze Quick Start wordt beschreven hoe u berichten verzendt en ontvangt van ee
 Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
 - Een Azure-abonnement. Als u nog geen abonnement op Azure hebt, kunt u een [gratis account][] maken voordat u begint.
-- [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of hoger. U gebruikt Visual Studio om een voor beeld te maken waarmee berichten worden verzonden naar en ontvangen van een wachtrij. Het voor beeld is het testen van de wachtrij die u hebt gemaakt met behulp van Power shell. 
+- [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of later. U gebruikt Visual Studio om een voor beeld te maken waarmee berichten worden verzonden naar en ontvangen van een wachtrij. Het voor beeld is het testen van de wachtrij die u hebt gemaakt met behulp van Power shell. 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of later.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
@@ -82,7 +82,7 @@ Deze sectie bevat meer informatie over de werking van de voorbeeldcode.
 
 ### <a name="get-connection-string-and-queue"></a>Verbindingsreeks en wachtrij ophalen
 
-De Connection String-en wachtrij naam worden door gegeven `Main()` aan de methode als opdracht regel argumenten. `Main()` declareert twee tekenreeksvariabelen die deze waarden kunnen omvatten:
+De connection string-en wachtrij naam worden door gegeven aan de methode `Main()` als opdracht regel argumenten. `Main()` declareert twee tekenreeksvariabelen die deze waarden kunnen omvatten:
 
 ```csharp
 static void Main(string[] args)
@@ -119,7 +119,7 @@ De methode `Main()` start vervolgens de asynchrone berichtenlus `MainAsync()`.
 
 ### <a name="message-loop"></a>Berichtenlus
 
-Met de methode MainAsync () wordt een wachtrij-client gemaakt met de opdracht regel argumenten, wordt een ondersteunings bericht-handler aangeroepen met de naam `RegisterOnMessageHandlerAndReceiveMessages()`en wordt de set berichten verzonden:
+Met de methode MainAsync () wordt een wachtrij-client gemaakt met de opdracht regel argumenten, wordt een handler voor ontvangen berichten aangeroepen met de naam `RegisterOnMessageHandlerAndReceiveMessages()`en wordt de set met berichten verzonden:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)

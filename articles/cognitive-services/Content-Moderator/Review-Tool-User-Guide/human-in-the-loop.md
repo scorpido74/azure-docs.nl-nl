@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.author: pafarley
-ms.openlocfilehash: 465f24c3d9b7f53c0b494f387cc5d21aa6bd83b5
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: a23e6d46ee6e79fd7a5cabf4434c561f7d83b31b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72754233"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169509"
 ---
 # <a name="content-moderator-review-tool"></a>Hulp programma Content Moderator beoordeling
 
@@ -31,7 +31,7 @@ Als u het [hulp programma voor controle](https://contentmoderator.cognitive.micr
 - Automatiseer het maken van mensen [beoordelingen](../review-api.md#reviews) wanneer de resultaten van toezicht-api's binnenkomen.
 - Inhouds beoordelingen toewijzen of escaleren naar meerdere beoordelings teams, geordend op inhouds categorie of ervarings niveau.
 - Gebruik standaard-of aangepaste logische filters ([werk stromen](../review-api.md#workflows)) om inhoud te sorteren en te traceren zonder dat u code hoeft te schrijven.
-- Gebruik [connectors](./configure.md#connectors) voor het verwerken van inhoud met behulp van micro soft PhotoDNA, Text Analytics en face-api's naast de content moderator-api's.
+- Gebruik [connectors](./configure.md#connectors) om inhoud te verwerken met micro soft PhotoDNA, Text Analytics en face Services naast de content moderator-api's.
 - Bouw uw eigen connector om werk stromen te maken voor elke API of bedrijfs proces.
 - Prestatie gegevens van de belangrijkste prestaties van uw inhouds restrictie processen ophalen.
 
@@ -43,7 +43,7 @@ Op het tabblad **dash board** ziet u belang rijke metrische gegevens voor inhoud
 
 ## <a name="review-tool-credentials"></a>Referenties van het controle programma
 
-Wanneer u zich aanmeldt met het [hulp programma voor controle](https://contentmoderator.cognitive.microsoft.com), wordt u gevraagd een Azure-regio voor uw account te selecteren. Dit komt doordat het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com) een gratis proef versie genereert voor Azure content moderator Services. u hebt deze sleutel nodig om toegang te krijgen tot een van de services van een REST-aanroep of client-SDK. U kunt de URL van uw sleutel en API-eind punt weer geven door **instellingen**  > **referenties**te selecteren.
+Wanneer u zich aanmeldt met het [hulp programma voor controle](https://contentmoderator.cognitive.microsoft.com), wordt u gevraagd een Azure-regio voor uw account te selecteren. Dit komt doordat het [beoordelings programma](https://contentmoderator.cognitive.microsoft.com) een gratis proef versie genereert voor Azure content moderator Services. u hebt deze sleutel nodig om toegang te krijgen tot een van de services van een REST-aanroep of client-SDK. U kunt de URL van uw sleutel en API-eind punt weer geven door **instellingen** > **referenties**te selecteren.
 
 ![Content Moderator referenties](images/settings-6-credentials.png)
 

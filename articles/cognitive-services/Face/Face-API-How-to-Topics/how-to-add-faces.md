@@ -1,7 +1,7 @@
 ---
-title: 'Voor beeld: gezichten toevoegen aan een PersonGroup-Face-API'
+title: 'Voor beeld: gezichten toevoegen aan een PersonGroup'
 titleSuffix: Azure Cognitive Services
-description: Deze hand leiding laat zien hoe u een groot aantal personen en gezichten kunt toevoegen aan een PersonGroup-object met de Azure Cognitive Services Face-API.
+description: Deze hand leiding laat zien hoe u een groot aantal personen en gezichten kunt toevoegen aan een PersonGroup-object met de Azure Cognitive Services Face-service.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 891614caddf729acb58bc363df977031ad62fb07
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 240905d538afc5c0f4b7f0e0bf400fac23c3183f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156706"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169828"
 ---
 # <a name="add-faces-to-a-persongroup"></a>Gezichten toevoegen aan een PersonGroup
 
-Deze hand leiding laat zien hoe u een groot aantal personen en gezichten kunt toevoegen aan een PersonGroup-object. Dezelfde strategie geldt ook voor LargePersonGroup-, FaceList-en LargeFaceList-objecten. Dit voor beeld wordt geschreven C# in met behulp van de Azure Cognitive Services Face-API .net-client bibliotheek.
+Deze hand leiding laat zien hoe u een groot aantal personen en gezichten kunt toevoegen aan een PersonGroup-object. Dezelfde strategie geldt ook voor LargePersonGroup-, FaceList-en LargeFaceList-objecten. Dit voor beeld wordt geschreven C# in met behulp van de Azure Cognitive Services Face .net-client bibliotheek.
 
 ## <a name="step-1-initialization"></a>Stap 1: Initialisatie
 

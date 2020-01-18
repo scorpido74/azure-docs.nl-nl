@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus-onderwerpen en-abonnementen gebruiken met het Azure/service-bus node. js-pakket
-description: 'Snelstartgids: informatie over het gebruik van Service Bus-onderwerpen en abonnementen in azure vanuit een node. js-app.'
+title: Azure Service Bus-onderwerpen gebruiken met het Azure/service-bus node. js-pakket
+description: Meer informatie over het gebruik van Service Bus-onderwerpen en-abonnementen in azure vanuit een node. js-app met behulp van het Azure/service-bus-pakket.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: 3955b67bd0fd40eb903543a240795ed8bc36b3b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e6ac3c74a0a8346ad8a6820c676224bfcba0e8b4
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462115"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264438"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Snelstartgids: Service Bus-onderwerpen en-abonnementen gebruiken met node. js en het pakket Azure-SB
 > [!div class="op_multi_selector" title1="Programmeertaal" title2="Node. js pakket"]

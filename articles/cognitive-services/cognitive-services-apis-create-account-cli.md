@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
-ms.openlocfilehash: d715252f16a34f2261c108ebd3ff5d1f6f3424d8
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5d3aba2f6010ba16656be96433c521d2adae4c58
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887918"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169164"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Een Cognitive Services resource maken met behulp van de Azure-opdracht regel interface (CLI)
 
@@ -76,7 +76,7 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 
 ### <a name="multi-service"></a>Meerdere services
 
-| Service                    | type                      |
+| Service                    | Soort                      |
 |----------------------------|---------------------------|
 | Meerdere services. Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/) voor meer informatie.            | `CognitiveServices`     |
 
@@ -86,35 +86,35 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 
 ### <a name="vision"></a>Vision
 
-| Service                    | type                      |
+| Service                    | Soort                      |
 |----------------------------|---------------------------|
 | Computer Vision            | `ComputerVision`          |
 | Custom Vision-voor spelling | `CustomVision.Prediction` |
 | Custom Vision-training   | `CustomVision.Training`   |
-| Face-API                   | `Face`                    |
+| Face                       | `Face`                    |
 | Form Recognizer            | `FormRecognizer`          |
 | Ink Recognizer             | `InkRecognizer`           |
 
 ### <a name="search"></a>Search
 
-| Service            | type                  |
+| Service            | Soort                  |
 |--------------------|-----------------------|
 | Automatische suggesties van Bing   | `Bing.Autosuggest.v7` |
-| Bing Aangepaste zoekopdrachten | `Bing.CustomSearch`   |
+| Bing Custom Search | `Bing.CustomSearch`   |
 | Bing Entiteiten zoeken | `Bing.EntitySearch`   |
 | Bing Zoeken        | `Bing.Search.v7`      |
 | Bing-spellingcontrole   | `Bing.SpellCheck.v7`  |
 
-### <a name="speech"></a>Speech
+### <a name="speech"></a>Spraak
 
-| Service            | type                 |
+| Service            | Soort                 |
 |--------------------|----------------------|
 | Spraakservices    | `SpeechServices`     |
 | Spraakherkenning | `SpeakerRecognition` |
 
 ### <a name="language"></a>Taal
 
-| Service            | type                |
+| Service            | Soort                |
 |--------------------|---------------------|
 | Formulier uitleg | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
@@ -124,7 +124,7 @@ Wanneer u een nieuwe resource maakt, moet u weten wat de soort service is die u 
 
 ### <a name="decision"></a>Besluit
 
-| Service           | type               |
+| Service           | Soort               |
 |-------------------|--------------------|
 | Anomaly Detector  | `AnomalyDetector`  |
 | Content Moderator | `ContentModerator` |

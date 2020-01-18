@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1f5c837f1912df407960fca41387eb84986381e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 530f32a994f448247dd5f06a21336eb052193cbb
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423153"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167572"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>Zelfstudie: Hybride Azure Active Directory-koppeling configureren voor federatieve domeinen
 
@@ -154,6 +154,9 @@ Als sommige apparaten die lid zijn van het domein, Windows down level-apparaten 
 
 - De lokale intranetinstellingen voor apparaatregistratie configureren
 - Micro soft Workplace Join installeren voor Windows-down level computers
+
+> [!NOTE]
+> Windows 7-ondersteuning is beëindigd op 14 januari 2020. [Ondersteuning voor Windows 7 is beëindigd](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020)voor meer informatie.
 
 ### <a name="configure-the-local-intranet-settings-for-device-registration"></a>De lokale intranetinstellingen voor apparaatregistratie configureren
 

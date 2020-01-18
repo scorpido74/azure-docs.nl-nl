@@ -4,8 +4,6 @@
   items:
     - name: Wat is load balancer?
       href: load-balancer-overview.md
-    - name: Wat is een Standard Load Balancer?
-      href: load-balancer-standard-overview.md
 - name: Snelstartgids
   items:
     - name: Een Standard Load Balancer maken
