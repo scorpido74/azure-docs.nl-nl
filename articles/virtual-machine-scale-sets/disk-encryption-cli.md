@@ -1,20 +1,19 @@
 ---
 title: Schijven voor Azure-schaal sets versleutelen met Azure CLI
 description: Meer informatie over het gebruik van Azure PowerShell voor het versleutelen van VM-exemplaren en gekoppelde schijven in een Windows-schaalset voor virtuele machines
-services: virtual-machine-scale-sets
 author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2577eef95cad3405eb42af22e4c57511a660c1a6
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 557d5c023acbc7987d58c9e78bfe11e25f314879
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530808"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279082"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Besturings systeem en gekoppelde gegevens schijven versleutelen in een schaalset voor virtuele machines met Azure CLI
 
@@ -125,7 +124,7 @@ az vmss encryption enable \
 
 > [!NOTE]
 >  De syntaxis voor de waarde van de para meter voor schijf versleuteling-sleutel kluis is de volledige id-teken reeks:</br>
-/Subscriptions/[abonnement-ID-GUID]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[sleutel kluis-naam]</br></br>
+/subscriptions/[subscription-id-guid]/resourceGroups/[resource-group-name]/providers/Microsoft.KeyVault/vaults/[keyvault-name]</br></br>
 > De syntaxis voor de waarde van de para meter Key-Encryption-Key is de volledige URI naar de KEK, zoals in:</br>
 https://[sleutel kluis naam]. kluis. Azure. net/sleutels/[kekname]/[Kek-unique-id]
 
@@ -164,7 +163,7 @@ Wanneer VM-exemplaren worden versleuteld, rapporteert de status code *Encryption
 ]
 ```
 
-## <a name="disable-encryption"></a>Versleuteling uitschakelen
+## <a name="disable-encryption"></a>Schakel versleuteling uit
 
 Als u geen schijven met versleutelde VM-exemplaren meer wilt gebruiken, kunt u versleuteling als volgt uitschakelen met [AZ vmss Encryption Disable](/cli/azure/vmss/encryption?view=azure-cli-latest#az-vmss-encryption-disable) :
 
@@ -176,4 +175,4 @@ az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
 
 - In dit artikel hebt u de Azure CLI gebruikt om een schaalset voor virtuele machines te versleutelen. U kunt ook [Azure PowerShell](disk-encryption-powershell.md) -of [Azure Resource Manager sjablonen](disk-encryption-azure-resource-manager.md)gebruiken.
 - Als u Azure Disk Encryption wilt Toep assen nadat een andere uitbrei ding is ingericht, kunt u [extensie volgorde bepaling](virtual-machine-scale-sets-extension-sequencing.md)gebruiken. 
-- Een end-to-end batch-voorbeeld bestand voor het versleutelen van gegevens schijven voor Linux-schaal sets vindt u [hier](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat). In dit voor beeld wordt een resource groep, een Linux-schaalset gemaakt, een gegevens schijf van 5 GB gekoppeld en de schaalset voor virtuele machines versleuteld.
+- Een end-to-end batch-voorbeeld bestand voor het versleutelen van gegevens schijven voor Linux-schaal sets vindt u [hier](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat). In dit voorbeeld wordt een resourcegroep, het Linux-schaalset gemaakt, koppelt u een schijf van 5 GB aan gegevens en versleutelt de virtuele-machineschaalset.

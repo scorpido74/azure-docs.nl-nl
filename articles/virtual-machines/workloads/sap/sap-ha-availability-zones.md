@@ -4,7 +4,7 @@ description: Architectuur met hoge Beschik baarheid en scenario's voor SAP NetWe
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: msjuergent
-manager: patfilot
+manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/15/2019
+ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f5186f456003c341af41fc6067f3b5c08acb2b4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 698c198f58ead88b01b1c4b8b2e1fd9da4198c93
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078891"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277467"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP-werkbelastingconfiguraties met Azure-beschikbaarheidszones
 [Azure-beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview) is een van de functies voor hoge Beschik baarheid die Azure biedt. Met Beschikbaarheidszones verbetert u de algehele Beschik baarheid van SAP-workloads op Azure. Deze functie is al beschikbaar in sommige [Azure-regio's](https://azure.microsoft.com/global-infrastructure/regions/). In de toekomst is het beschikbaar in meer regio's.
@@ -30,7 +30,7 @@ In deze afbeelding wordt de basis architectuur van SAP-hoge Beschik baarheid wee
 
 ![Standaard configuratie voor hoge Beschik baarheid](./media/sap-ha-availability-zones/standard-ha-config.png)
 
-De SAP-toepassingslaag wordt geïmplementeerd in één Azure [](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)-beschikbaarheidsset. Voor een hoge Beschik baarheid van SAP Central-Services kunt u twee Vm's implementeren in een afzonderlijke beschikbaarheidsset. Gebruik Windows Server failover clustering of pacemaker (Linux) als een Framework met hoge Beschik baarheid met automatische failover in het geval van een infra structuur of software probleem. Zie voor meer informatie over deze implementaties:
+De SAP-toepassingslaag wordt geïmplementeerd in één Azure- [beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability). Voor een hoge Beschik baarheid van SAP Central-Services kunt u twee Vm's implementeren in een afzonderlijke beschikbaarheidsset. Gebruik Windows Server failover clustering of pacemaker (Linux) als een Framework met hoge Beschik baarheid met automatische failover in het geval van een infra structuur of software probleem. Zie voor meer informatie over deze implementaties:
 
 - [Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van een gedeelde cluster schijf](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
 - [Een SAP ASCS/SCS-exemplaar op een Windows-failovercluster clusteren met behulp van de bestands share](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
@@ -57,7 +57,7 @@ Wanneer u Azure-Vm's implementeert in Beschikbaarheidszones en failover-oplossin
 
 - U moet [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) gebruiken wanneer u implementeert in azure-beschikbaarheidszones. 
 - De toewijzing van zone-inventarisaties aan de fysieke zones wordt vastgesteld op basis van een Azure-abonnement. Als u verschillende abonnementen gebruikt om uw SAP-systemen te implementeren, moet u de ideale zones voor elk abonnement definiëren.
-- U kunt geen Azure-beschikbaarheids sets implementeren binnen een Azure-beschikbaarheids zone, tenzij u [Azure proximity placement Group](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)gebruikt. De manier waarop u de SAP-DBMS-laag en de centrale Services in meerdere zones kunt implementeren en tegelijkertijd de SAP-toepassingslaag implementeert met behulp van beschikbaarheids sets en de virtuele machines nog steeds dicht in de buurt ligt beschreven in het artikel [Azure proximity placement Groepen voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md). Als u geen gebruik maakt van Azure proximity placement groups, moet u een of de andere kiezen als een implementatie raamwerk voor virtuele machines.
+- U kunt geen Azure-beschikbaarheids sets implementeren binnen een Azure-beschikbaarheids zone, tenzij u [Azure proximity placement Group](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)gebruikt. De manier waarop u de SAP-DBMS-laag en de centrale Services in meerdere zones kunt implementeren en tegelijkertijd de SAP-toepassingslaag implementeert met behulp van beschikbaarheids sets en nog steeds dicht nabij de grenzen van de Vm's wordt beschreven in het artikel [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md). Als u geen gebruik maakt van Azure proximity placement groups, moet u een of de andere kiezen als een implementatie raamwerk voor virtuele machines.
 - U kunt geen [Azure Basic-Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) gebruiken om failover-cluster oplossingen te maken op basis van Windows Server failover clustering of Linux pacemaker. In plaats daarvan moet u de [Azure Standard Load Balancer-SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)gebruiken.
 
 
@@ -75,6 +75,8 @@ Als u de latentie tussen de verschillende zones wilt bepalen, moet u het volgend
 - Implementeer de VM-SKU die u wilt gebruiken voor uw DBMS-exemplaar in alle drie de zones. Zorg ervoor dat [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) is ingeschakeld wanneer u deze meting uitvoert.
 - Wanneer u de twee zones met de minste netwerk latentie vindt, implementeert u nog een of meer drie Vm's van de VM-SKU die u wilt gebruiken als de VM van de toepassingslaag op de drie Beschikbaarheidszones. Meet de netwerk latentie op basis van de twee DBMS-Vm's in de twee DBMS-zones die u hebt geselecteerd. 
 - Gebruik **niping** als meet programma. Dit hulp programma, van SAP, wordt beschreven in SAP-ondersteunings notities [#500235](https://launchpad.support.sap.com/#/notes/500235) en [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Focus op de opdrachten die zijn gedocumenteerd voor latentie metingen. Omdat **ping** niet werkt via de paden van de versnelde netwerk code van Azure, is het niet raadzaam om deze te gebruiken.
+
+U hoeft deze tests niet hand matig uit te voeren. U kunt een [latentie test voor de beschikbaarheids zone](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/master/AvZone-Latency-Test) van Power shell-procedures vinden die de latentie tests automatiseert die worden beschreven. 
 
 Op basis van uw metingen en de beschik baarheid van uw VM-Sku's in de Beschikbaarheidszones, moet u enkele beslissingen nemen:
 
@@ -103,7 +105,7 @@ Een vereenvoudigd schema van een actieve/actieve implementatie in twee zones kan
 De volgende overwegingen zijn van toepassing op deze configuratie:
 
 - Als u geen gebruik maakt van [Azure proximity placement Group](https://docs.microsoft.com/azure/virtual-machines/linux/co-location), behandelt u de Azure-beschikbaarheidszones als fout-en update domeinen voor alle virtuele machines, omdat beschikbaarheids sets niet in azure-beschikbaarheidszones kunnen worden geïmplementeerd.
-- Als u zonegebonden-implementaties wilt combi neren voor de DBMS-laag en de centrale Services, maar Azure-beschikbaarheids sets voor de toepassingslaag wilt gebruiken, moet u Azure-proximity-groepen gebruiken zoals beschreven in het artikel [Azure proximity placement groups voor optimale prestaties netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md).
+- Als u zonegebonden-implementaties voor de DBMS-laag en de centrale Services wilt combi neren, maar Azure-beschikbaarheids sets voor de toepassingslaag wilt gebruiken, moet u Azure-proximity-groepen gebruiken zoals beschreven in het artikel [Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen](sap-proximity-placement-scenarios.md).
 - Voor de load balancers van de failover-clusters van SAP Central Services en de DBMS-laag moet u de [standaard-SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)gebruiken. De basis Load Balancer werkt niet in verschillende zones.
 - Het virtuele Azure-netwerk dat u hebt geïmplementeerd om het SAP-systeem te hosten, samen met de bijbehorende subnetten, is uitgerekt over zones. U hebt geen afzonderlijke virtuele netwerken nodig voor elke zone.
 - Voor alle virtuele machines die u implementeert, moet u [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/)gebruiken. Niet-beheerde schijven worden niet ondersteund voor zonegebonden-implementaties.

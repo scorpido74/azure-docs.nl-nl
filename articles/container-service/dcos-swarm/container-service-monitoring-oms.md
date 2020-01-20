@@ -1,104 +1,102 @@
 ---
-title: (AFGESCHAFT) Monitor Azure DC/OS-cluster - operationeel Management
+title: KEUR Azure DC/OS-cluster bewaken-Operations Management
 description: Een Azure Container Service DC/OS-cluster bewaken met Log Analytics.
-services: container-service
 author: keikhara
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: 290141136672729060f5156d645c47ac303fa0c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ab8d1cf3eb38a17f0b3d6c8137e37237498a527
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60810003"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277324"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>(AFGESCHAFT) Een Azure Container Service DC/OS-cluster bewaken met Log Analytics
+# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>KEUR Een Azure Container Service DC/OS-cluster bewaken met Log Analytics
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-Log Analytics is van Microsoft cloud-gebaseerde IT-beheeroplossing waarmee u beheren kunt en beveiligen van uw on-premises en cloudinfrastructuur. Container-oplossing is een oplossing in Log Analytics, dat helpt u bij het weergeven van de container-inventaris, prestaties en logboeken op één locatie. U kunt controleren, containers oplossen door de logboeken in de centrale locatie bekijken en zoeken ruis verbruikt overtollige container op een host.
+Log Analytics is de Cloud oplossing van micro soft die u helpt bij het beheren en beveiligen van uw on-premises en Cloud infrastructuur. Container oplossing is een oplossing in Log Analytics, waarmee u de container inventaris, de prestaties en logboeken op één locatie kunt bekijken. U kunt controleren, problemen met containers oplossen door de logboeken op gecentraliseerde locatie te bekijken en te zoeken naar een overmatige container op een host.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-Zie voor meer informatie over Container-oplossing, de [Container-oplossing Log Analytics](../../azure-monitor/insights/containers.md).
+Zie de [container solution log Analytics](../../azure-monitor/insights/containers.md)voor meer informatie over container oplossing.
 
-## <a name="setting-up-log-analytics-from-the-dcos-universe"></a>Log Analytics instellen vanuit de DC/OS-universum
+## <a name="setting-up-log-analytics-from-the-dcos-universe"></a>Log Analytics instellen vanuit het DC/OS-universum
 
 
-In dit artikel wordt ervan uitgegaan dat u een DC/OS hebt geconfigureerd en eenvoudige web-containertoepassingen op het cluster hebt geïmplementeerd.
+In dit artikel wordt ervan uitgegaan dat u een DC/OS hebt ingesteld en eenvoudige web container toepassingen hebt geïmplementeerd op het cluster.
 
 ### <a name="pre-requisite"></a>Vereiste
-- [Microsoft Azure-abonnement](https://azure.microsoft.com/free/) -krijgt u een abonnement gratis.  
-- Meld u instellingen voor Analytics-werkruimte: Zie 'stap 3"hieronder
-- [DC/OS CLI](https://docs.mesosphere.com/1.12/cli) geïnstalleerd.
+- [Microsoft Azure abonnement](https://azure.microsoft.com/free/) : u kunt gratis een abonnement ontvangen.  
+- Log Analytics werk ruimte instellen: Zie ' stap 3 ' hieronder
+- [DC/OS cli](https://docs.mesosphere.com/1.12/cli) geïnstalleerd.
 
-1. Klik in het DC/OS-dashboard op universum en zoek naar OMS, zoals hieronder weergegeven.
+1. Klik in het DC/OS-dash board op universum en zoek naar ' OMS ', zoals hieronder wordt weer gegeven.
 
    >[!NOTE]
    >OMS wordt nu aangeduid als Log Analytics.
 
    ![](media/container-service-monitoring-oms/image2.png)
 
-2. Klik op **Install**. U ziet een pop-upvenster met de versie-informatie en een **pakket installeren** of **geavanceerde installatie** knop. Wanneer u klikt op **geavanceerde installatie**, die leidt u naar de **OMS specifieke configuratie-eigenschappen** pagina.
+2. Klik op **Installeren**. Er wordt een pop-upvenster weer gegeven met de versie-informatie en een knop voor een installatie **pakket** of een **Geavanceerde installatie** . Wanneer u op **Geavanceerde installatie**klikt, wordt u naar de OMS-pagina met **specifieke configuratie-eigenschappen** geleid.
 
    ![](media/container-service-monitoring-oms/image3.png)
 
    ![](media/container-service-monitoring-oms/image4.png)
 
-3. Hier kunt u wordt gevraagd om in te voeren de `wsid` (de Log Analytics-werkruimte-ID) en `wskey` (de primaire sleutel voor de werkruimte-ID). Om op te halen beide `wsid` en `wskey` u wilt maken van een account bij <https://mms.microsoft.com>.
-   Volg de stappen om een account te maken. Wanneer u klaar bent het account te maken, moet u eerst uw `wsid` en `wskey` door te klikken op **instellingen**, klikt u vervolgens **verbonden bronnen**, en vervolgens **Linux-Servers**, zoals hieronder weergegeven.
+3. Hier wordt u gevraagd om de `wsid` (de Log Analytics werk ruimte-ID) en de `wskey` (de primaire sleutel voor de werk ruimte-ID) in te voeren. Als u zowel `wsid` als `wskey` wilt, moet u een account maken op <https://mms.microsoft.com>.
+   Volg de stappen voor het maken van een account. Wanneer u klaar bent met het maken van het account, moet u uw `wsid` en `wskey` verkrijgen door te klikken op **instellingen**, vervolgens op **verbonden bronnen**en vervolgens op **Linux-servers**, zoals hieronder wordt weer gegeven.
 
    ![](media/container-service-monitoring-oms/image5.png)
 
-4. Selecteer het aantal exemplaren dat u wilt en klik op de knop 'Bekijken en installeren'. Meestal zult u het aantal exemplaren gelijk zijn aan het aantal VM's in uw cluster agent hebt. Log Analytics-agent voor Linux installeert als afzonderlijke containers op elke virtuele machine die het bedrijf wil verzamelen informatie voor bewaking en logboekregistratie.
+4. Selecteer het gewenste aantal exemplaren en klik op de knop controleren en installeren. Normaal gesp roken wilt u het aantal exemplaren dat gelijk is aan het aantal VM'S dat u in uw agent cluster hebt. Log Analytics-agent voor Linux wordt als afzonderlijke containers geïnstalleerd op elke virtuele machine die informatie wil verzamelen voor informatie over bewaking en logboek registratie.
 
    [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-## <a name="setting-up-a-simple-log-analytics-dashboard"></a>Instellen van een eenvoudige Log Analytics-dashboard
+## <a name="setting-up-a-simple-log-analytics-dashboard"></a>Een eenvoudig Log Analytics dash board instellen
 
-Nadat u de Log Analytics-agent voor Linux hebt geïnstalleerd op de virtuele machines, wordt de volgende stap is het instellen van de Log Analytics-dashboard. U kunt het dashboard via Azure-portal instellen.
+Nadat u de Log Analytics-agent voor Linux op de Vm's hebt geïnstalleerd, is de volgende stap het instellen van het Log Analytics dash board. U kunt het dash board instellen via Azure Portal.
 
 ### <a name="azure-portal"></a>Azure Portal 
 
-Meld u aan bij Azure portal op <https://portal.microsoft.com/>. Ga naar **Marketplace**, selecteer **bewaking en beheer** en klikt u op **Zie alle**. Typ vervolgens `containers` in het zoekvak. Hier ziet u 'containers' in de lijst met zoekresultaten. Selecteer **Containers** en klikt u op **maken**.
+Meld u aan bij Azure Portal op <https://portal.microsoft.com/>. Ga naar **Marketplace**, selecteer **bewaking en beheer** en klik op **alles weer geven**. Typ vervolgens `containers` in de zoek opdracht. U ziet ' containers ' in de zoek resultaten. Selecteer **containers** en klik op **maken**.
 
 ![](media/container-service-monitoring-oms/image9.png)
 
-Nadat u op **maken**, wordt u gevraagd u uw werkruimte. Selecteer uw werkruimte of als u een hebt, maakt u een nieuwe werkruimte.
+Nadat u op **maken**hebt geklikt, wordt u gevraagd om uw werk ruimte. Selecteer uw werk ruimte of maak een nieuwe werk ruimte als u er nog geen hebt.
 
 ![](media/container-service-monitoring-oms/image10.PNG)
 
-Nadat u uw werkruimte hebt geselecteerd, klikt u op **maken**.
+Wanneer u uw werk ruimte hebt geselecteerd, klikt u op **maken**.
 
 ![](media/container-service-monitoring-oms/image11.png)
 
-Raadpleeg voor meer informatie over de oplossing Log Analytics-Container, de [Container-oplossing Log Analytics](../../azure-monitor/insights/containers.md).
+Voor meer informatie over de Log Analytics-container oplossing raadpleegt u de [container oplossing log Analytics](../../azure-monitor/insights/containers.md).
 
-### <a name="how-to-scale-log-analytics-agent-with-acs-dcos"></a>Het schalen van Log Analytics-agent met ACS DC/OS 
+### <a name="how-to-scale-log-analytics-agent-with-acs-dcos"></a>Log Analytics-agent schalen met ACS DC/OS 
 
-In het geval moet u Log Analytics-agent aan het aantal daadwerkelijke knooppunten hebt geïnstalleerd of u omhoog van virtuele-machineschaalset schalen bent door meer VM toe te voegen, kunt u doen door te schalen de `msoms` service.
+Als u Log Analytics-agent van het werkelijke aantal knoop punten wilt installeren, of als u de schaalset voor virtuele machines wilt schalen door meer VM toe te voegen, kunt u dit doen door de `msoms`-service te schalen.
 
-U kunt gaat u naar de Marathon of op het tabblad Services van DC/OS-gebruikersinterface en het aantal knooppunten omhoog.
+U kunt door gaan naar marathon of het tabblad DC/OS UI Services en het aantal knoop punten omhoog schalen.
 
 ![](media/container-service-monitoring-oms/image12.PNG)
 
-Hierdoor wordt geïmplementeerd naar andere knooppunten die de Log Analytics-agent nog niet hebt geïmplementeerd.
+Hiermee wordt geïmplementeerd naar andere knoop punten die de Log Analytics-agent nog niet hebben geïmplementeerd.
 
 ## <a name="uninstall-ms-oms"></a>MS OMS verwijderen
 
-MS OMS invoeren voor het verwijderen van de volgende opdracht uit:
+Als u MS OMS wilt verwijderen, voert u de volgende opdracht in:
 
 ```bash
 $ dcos package uninstall msoms
 ```
 
-## <a name="let-us-know"></a>Laat het ons weten.
-Wat werkt? Wat ontbreekt? Wat moet u dit is nuttig voor u? Laat het ons weten op <a href="mailto:OMSContainers@microsoft.com">OMSContainers</a>.
+## <a name="let-us-know"></a>Laat het ons weten!!!
+Wat werkt er? Wat ontbreekt er? Wat moet u nog meer doen om dit nuttig te maken? Laat het ons weten op <a href="mailto:OMSContainers@microsoft.com">OMSContainers</a>.
 
 ## <a name="next-steps"></a>Volgende stappen
 
- Nu dat u Log Analytics hebt ingesteld voor het bewaken van uw containers[uw container-dashboard zien](../../azure-monitor/insights/containers.md).
+ Nu u Log Analytics hebt ingesteld om uw containers te bewaken,[raadpleegt u het container dashboard](../../azure-monitor/insights/containers.md).

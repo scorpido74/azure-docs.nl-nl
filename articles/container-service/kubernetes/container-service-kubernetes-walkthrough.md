@@ -1,25 +1,23 @@
 ---
 title: (AFGESCHAFT) Snelstartgids - Azure Kubernetes-cluster voor Linux
 description: Leer snel een Kubernetes-cluster te maken voor Linux-containers in Azure Container Service met de Azure CLI.
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 70c9fec818147b76feb306cc47ba2e72cd865fe8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5c182d6119f59daaf21e4b4e1304363eeb0c11e5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60335017"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273500"
 ---
 # <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>(AFGESCHAFT) Een Kubernetes-cluster voor Linux-containers implementeren
 
 > [!TIP]
-> Voor de bijgewerkte versie van deze snelstartgids die gebruikmaakt van Azure Kubernetes Service gaat u naar [Snelstartgids: Een AKS-cluster (Azure Kubernetes Service) implementeren](../../aks/kubernetes-walkthrough.md).
+> Voor de bijgewerkte versie van deze Snelstartgids die gebruikmaakt van de Azure Kubernetes-service, raadpleegt u [Quick Start: een Azure Kubernetes service (AKS)-cluster implementeren](../../aks/kubernetes-walkthrough.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -35,7 +33,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze snelstartgids de versie Azure CLI 2.0.4 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren]( /cli/azure/install-azure-cli). 
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze Quickstart gebruikmaken van Azure CLI versie 2.0.4 of hoger. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 

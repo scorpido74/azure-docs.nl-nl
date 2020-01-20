@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 1b421e7acd7f94654ea80e41340022c8ef7a130e
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 1cf9ce6d57c1e106472caeef6c1f2a4b008a09bd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264217"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277875"
 ---
 # <a name="release-notes"></a>Releaseopmerkingen
 
@@ -24,36 +24,43 @@ ms.locfileid: "76264217"
 
 **Nieuwe functies**
 
-- Conversatie met meerdere apparaten: Verbind meerdere apparaten in een spraak-of op tekst gebaseerde conversatie en zet optioneel berichten om die tussen hen worden verzonden. Meer informatie vindt u in [dit artikel](multi-device-conversation.md). 
+- Conversatie met meerdere apparaten: u kunt meerdere apparaten verbinden met dezelfde spraak of op tekst gebaseerd gesprek en optioneel berichten vertalen die ertussen worden verzonden. Meer informatie vindt u in [dit artikel](multi-device-conversation.md). 
 - Ondersteuning voor trefwoord herkenning is toegevoegd voor Android. aar-pakket en er is ondersteuning toegevoegd voor x86-en x64-versies. 
-- `SendMessage`-en `SetMessageProperty`-methoden worden toegevoegd aan `Connection`-object in doel-C. Raadpleeg [hier](https://docs.microsoft.com/objectivec/cognitive-services/speech/)de documentatie.
+- Doel-C: `SendMessage`-en `SetMessageProperty`-methoden zijn toegevoegd aan het `Connection`-object. Raadpleeg [hier](https://docs.microsoft.com/objectivec/cognitive-services/speech/)de documentatie.
 - De C++ TTS API ondersteunt nu `std::wstring` als synthese-tekst invoer, waarbij een wstring moet worden geconverteerd naar een teken reeks voordat deze wordt door gegeven aan de SDK. Bekijk [hier](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#speaktextasync)meer informatie. 
-- De [taal-id](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) en configuratie van de [bron taal](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp) zijn nu beschikbaar in C#.
+- C#: [Taal-id](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) en [bron taal configuratie](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp) zijn nu beschikbaar.
+- Java script: een functie toegevoegd aan `Connection`-object om aangepaste berichten door te geven van de speech-service als call back `receivedServiceMessage`.
+- Java script: er is ondersteuning toegevoegd voor `FromHost API` om het gebruik te vereenvoudigen met on-premises containers en soevereine Clouds. Raadpleeg [hier](speech-container-howto.md)de documentatie.
+- Java script: we gaan nu `NODE_TLS_REJECT_UNAUTHORIZED` dankzij een bijdrage van [orgads](https://github.com/orgads). Bekijk [hier](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)meer informatie.
 
 
 **Belangrijke wijzigingen**
 
 - `OpenSSL` is bijgewerkt naar versie 1.1.1 b en is statisch gekoppeld aan de Speech SDK core-bibliotheek voor Linux. Dit kan een storing veroorzaken als uw postvak in-`OpenSSL` niet is geïnstalleerd in de `/usr/lib/ssl` Directory in het systeem. Raadpleeg [onze documentatie](how-to-configure-openssl-linux.md) onder documenten voor spraak-SDK om het probleem te omzeilen.
 - Het gegevens type dat is geretourneerd voor C# `WordLevelTimingResult.Offset`, is gewijzigd van `int` naar `long` om toegang te krijgen tot `WordLevelTimingResults` wanneer de spraak gegevens langer dan twee minuten zijn.
+- `PushAudioInputStream` en `PullAudioInputStream` nu informatie over de WAV-header verzenden naar de spraak service op basis van `AudioStreamFormat`, eventueel opgegeven wanneer ze zijn gemaakt. Klanten moeten nu de [ondersteunde audio-invoer indeling](how-to-use-audio-input-streams.md)gebruiken. Andere indelingen krijgen de meest optimale herkennings resultaten of kunnen andere problemen veroorzaken. 
 
 
 **Oplossingen voor problemen**
 
 - Zie de `OpenSSL` update onder belang rijke wijzigingen hierboven. We hebben een crash en een prestatie probleem opgelost (conflicten met hoge belasting vergren delen) in Linux en Java. 
-- Heeft verbeteringen aangebracht in het sluiten van Java-objecten in een hoge gelijktijdigheids scenario.
+- Java: verbeteringen aangebracht in het sluiten van objecten in gelijktijdige scenario's.
 - Het Nuget-pakket is herstructureeerd. We hebben de drie kopieën van `Microsoft.CognitiveServices.Speech.core.dll` en `Microsoft.CognitiveServices.Speech.extension.kws.dll` onder lib folders verwijderd, waardoor het Nuget-pakket kleiner en sneller kan worden gedownload en er zijn headers toegevoegd die C++ nodig zijn om bepaalde systeem eigen apps te compileren.
 - [Hier vindt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp)u voor beelden van vaste Quick Start. Deze zijn afgesloten zonder weer gave van de uitzonde ring ' microfoon niet gevonden ' op Linux, MacOS, Windows.
 - Vaste SDK-crash met lange spraak herkennings resultaten voor bepaalde code paden zoals [dit voor beeld](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp/uwp/speechtotext-uwp).
 - Er is een vaste SDK-implementatie fout opgetreden in de Azure web app-omgeving om [deze klant probleem](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/396)op te lossen
 - Er is een fout met TTS opgelost tijdens het gebruik van de code voor meerdere `<voice>` of `<audio>` om [Dit probleem van de klant](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/433)op te lossen. 
 - Er is een fout met TTS 401 opgelost tijdens het herstellen van de SDK vanuit Suspended.
+- Java script: een circulaire invoer van audio gegevens is opgelost dankzij een bijdrage van [euirim](https://github.com/euirim). 
+- Java script: ondersteuning toegevoegd voor het instellen van service-eigenschappen, zoals toegevoegd in 1,7.
+- Java script: er is een probleem opgelost waarbij een verbindings fout kan leiden tot doorlopende, niet-geslaagde WebSocket-pogingen om verbinding te maken.
 
 
 **Voorbeelden**
 
 - Voor beeld van trefwoord herkenning voor [Android is](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java/android/sdkdemo)toegevoegd.
-- Er is [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp)een voor beeld van TTS toegevoegd voor Server scenario. 
-- Quick starts voor multi-device- C++ gesprekken C# in [en .net zijn](multi-device-conversation.md)toegevoegd.
+- Er is [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs)een voor beeld van TTS toegevoegd voor het Server scenario.
+- De Snelstartgids voor multi-device- C# conversaties C++ [voor en zijn](quickstarts/multi-device-conversation.md)toegevoegd.
 
 
 **Andere wijzigingen**

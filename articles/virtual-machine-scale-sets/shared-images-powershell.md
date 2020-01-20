@@ -1,28 +1,19 @@
 ---
-title: Gedeelde VM-installatie kopieën gebruiken om een schaalset in azure te maken | Microsoft Docs
+title: Gedeelde VM-installatie kopieën gebruiken om een schaalset in azure te maken
 description: Meer informatie over het gebruik van de Azure PowerShell voor het maken van gedeelde VM-installatie kopieën die u kunt gebruiken voor het implementeren van schaal sets voor virtuele machines in Azure.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: axayjo
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.custom: ''
-ms.openlocfilehash: 13c870ec87fa914f74bcfc4297dbe2fcc0bea282
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: b60a00828cfed8ef5d47704de2b2d7ede309ed6d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "67875613"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276297"
 ---
 # <a name="create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>Gedeelde installatie kopieën voor virtuele-machine schaal sets maken en gebruiken met de Azure PowerShell
 
@@ -34,7 +25,7 @@ De galerie is een resource op het hoogste niveau die volledige op rollen gebasee
 
 De functie gedeelde installatie kopie galerie heeft meerdere bron typen. We gebruiken of maken deze in dit artikel:
 
-| Resource | Description|
+| Bron | Beschrijving|
 |----------|------------|
 | **Beheerde installatie kopie** | Dit is een basis installatie kopie die alleen kan worden gebruikt of gebruikt om een **installatie kopie versie** in een galerie met installatie kopieën te maken. Beheerde installatie kopieën worden gemaakt op basis van gegeneraliseerde Vm's. Een beheerde installatie kopie is een speciaal type VHD dat kan worden gebruikt om meerdere virtuele machines te maken en kan nu worden gebruikt om versies van gedeelde installatie kopieën te maken. |
 | **Galerie met installatie kopieën** | Net als de Azure Marketplace is een **afbeeldings galerie** een opslag plaats voor het beheren en delen van installatie kopieën, maar u bepaalt wie toegang heeft. |
@@ -49,7 +40,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 In de onderstaande stappen wordt gedetailleerd beschreven hoe u van een bestaande virtuele machine een herbruikbare aangepaste installatiekopie maakt die u kunt gebruiken om nieuwe virtuele machines te maken.
 
-Om het voor beeld in dit artikel te volt ooien, moet u een bestaande beheerde installatie kopie hebben. U kunt zelf [studie volgen: Maak en gebruik een aangepaste installatie kopie voor virtuele-machine schaal sets](tutorial-use-custom-image-powershell.md) met Azure PowerShell om er een te maken, indien nodig. Als de beheerde installatie kopie een gegevens schijf bevat, kan de grootte van de gegevens schijf niet groter zijn dan 1 TB.
+Om het voor beeld in dit artikel te volt ooien, moet u een bestaande beheerde installatie kopie hebben. U kunt [zelf studie volgen: Maak en gebruik een aangepaste installatie kopie voor virtuele-machine schaal sets met Azure PowerShell](tutorial-use-custom-image-powershell.md) om er een te maken, indien nodig. Als de beheerde installatie kopie een gegevens schijf bevat, kan de grootte van de gegevens schijf niet groter zijn dan 1 TB.
 
 Wanneer u het artikel doorwerkt, vervangt u de naam van de resource groep en de VM waar nodig.
 

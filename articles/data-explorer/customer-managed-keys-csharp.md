@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 7987555dfd435aae1f580c73795a5617c192490a
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: ac37c0e1f1f7d769a881c5965744b29d40468486
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725700"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276671"
 ---
 # <a name="configure-customer-managed-keys-using-c"></a>Door de klant beheerde sleutels configureren metC#
 
@@ -32,13 +32,13 @@ In deze sectie wordt beschreven hoe u versleuteling van door de klant beheerde s
 
 * Als u nog geen abonnement op Azure hebt, maak dan een [gratis Azure-account](https://azure.microsoft.com/free/) aan voordat u begint.
 
-### <a name="install-c-nuget"></a>Nuget C# installeren
+### <a name="install-c-nuget"></a>NuGet C# installeren
 
-* Installeer het [Azure Data Explorer (Kusto) nuget-pakket](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Installeer het [Azure Data Explorer (Kusto) NuGet-pakket](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 
-* Installeer het [nuget-pakket micro soft. Identity model. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) voor verificatie.
+* Installeer het [NuGet-pakket micro soft. Identity model. clients. ActiveDirectory](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) voor verificatie.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 Als u de voor beelden in dit artikel wilt uitvoeren, [maakt u een Azure AD-toepassing](/azure/active-directory/develop/howto-create-service-principal-portal) en service-principal die toegang hebben tot resources. U kunt roltoewijzing toevoegen aan het abonnements bereik en de vereiste `Directory (tenant) ID`, `Application ID`en `Client Secret`ophalen.
 

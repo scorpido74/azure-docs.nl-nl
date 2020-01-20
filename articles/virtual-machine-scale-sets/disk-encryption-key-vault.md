@@ -2,21 +2,21 @@
 title: Een sleutel kluis voor Azure Disk Encryption maken en configureren
 description: In dit artikel worden de stappen beschreven voor het maken en configureren van een sleutel kluis voor gebruik met Azure Disk Encryption
 ms.service: virtual-machine-scale-sets
-ms.topic: article
+ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 10/10/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0252fff84307577ab307e591948e16dc30c38f66
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: eec5b42da709ab5e79da42f11600f6ffc81d247e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72749995"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279004"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption"></a>Een sleutel kluis voor Azure Disk Encryption maken en configureren
 
-Azure Disk Encryption gebruikt Azure Key Vault om sleutels en geheimen voor schijf versleuteling te beheren en te beheren.  Zie [aan de slag met Azure Key Vault](../key-vault/key-vault-get-started.md) en [uw sleutel kluis beveiligen](../key-vault/key-vault-secure-your-key-vault.md)voor meer informatie over sleutel kluizen.
+Azure Disk Encryption gebruikt Azure Key Vault om sleutels en geheimen voor schijf versleuteling te beheren en te beheren.  Zie voor meer informatie over sleutelkluizen [aan de slag met Azure Key Vault](../key-vault/key-vault-get-started.md) en [uw key vault beveiligen](../key-vault/key-vault-secure-your-key-vault.md).
 
 Een sleutel kluis maken en configureren voor gebruik met Azure Disk Encryption bestaat uit drie stappen:
 

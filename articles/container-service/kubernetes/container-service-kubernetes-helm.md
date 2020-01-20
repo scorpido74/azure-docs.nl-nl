@@ -1,155 +1,153 @@
 ---
-title: (AFGESCHAFT) Implementeer containers met Helm in Azure Kubernetes
-description: Het Helm verpakking-hulpprogramma gebruiken voor het implementeren van containers in een Kubernetes-cluster in Azure Container Service
-services: container-service
+title: KEUR Containers implementeren met helm in azure Kubernetes
+description: Gebruik het helm-verpakkings programma voor het implementeren van containers in een Kubernetes-cluster in Azure Container Service
 author: sauryadas
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 05edbf40e8cd5f8edbdc8b74b540962b1a25c8de
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a32c9fab3877a693d2df26571b9fae4aa7b4380c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712265"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271083"
 ---
-# <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>(AFGESCHAFT) Helm gebruiken voor het implementeren van containers in een Kubernetes-cluster
+# <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>KEUR Helm gebruiken om containers in een Kubernetes-cluster te implementeren
 
 > [!TIP]
-> Zie voor de bijgewerkte versie dit artikel die gebruikmaakt van Azure Kubernetes Service, [installeren van toepassingen met Helm in Azure Kubernetes Service (AKS)](../../aks/kubernetes-helm.md).
+> Zie [Installing Applications with helm in azure Kubernetes service (AKS) (Engelstalig)](../../aks/kubernetes-helm.md)voor de bijgewerkte versie van dit artikel waarin de Azure Kubernetes-service wordt gebruikt.
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-[Helm](https://github.com/kubernetes/helm/) is een open-source verpakking-hulpprogramma dat helpt u bij het installeren en beheren van de levenscyclus van toepassingen met Kubernetes. Net als bij Linux pakketmanagers zoals Apt-get en Yum, Helm wordt gebruikt voor het beheren van Kubernetes grafieken die pakketten van vooraf geconfigureerde Kubernetes-resources zijn. Dit artikel ziet u hoe u werkt met Helm op een Kubernetes-cluster geïmplementeerd in Azure Container Service.
+[Helm](https://github.com/kubernetes/helm/) is een open-source-verpakkings programma waarmee u de levens cyclus van Kubernetes-toepassingen kunt installeren en beheren. Net als Linux-pakket beheerders, zoals apt-get en yum, wordt helm gebruikt voor het beheren van Kubernetes-grafieken, die pakketten van vooraf geconfigureerde Kubernetes-resources zijn. Dit artikel laat u zien hoe u met helm kunt werken in een Kubernetes-cluster dat is geïmplementeerd in Azure Container Service.
 
-Helm bestaat uit twee onderdelen: 
-* De **Helm CLI** is een client die lokaal of in de cloud wordt uitgevoerd op uw computer  
+Helm heeft twee onderdelen: 
+* De **helm cli** is een client die lokaal of in de Cloud op uw computer draait  
 
-* **Tiller** is een server die wordt uitgevoerd op het Kubernetes-cluster en beheert de levenscyclus van uw toepassingen met Kubernetes 
+* **Tiller** is een server die wordt uitgevoerd op het Kubernetes-cluster en de levens cyclus van uw Kubernetes-toepassingen beheert 
  
 ## <a name="prerequisites"></a>Vereisten
 
-* [Maak een Kubernetes-cluster](container-service-kubernetes-walkthrough.md) in Azure Container Service
+* [Een Kubernetes-cluster maken](container-service-kubernetes-walkthrough.md) in azure container service
 
-* [Installeer en configureer `kubectl` ](../container-service-connect.md) op een lokale computer
+* [`kubectl`installeren en configureren](../container-service-connect.md) op een lokale computer
 
-* [Installeer Helm](https://github.com/kubernetes/helm/blob/master/docs/install.md) op een lokale computer
+* [Helm installeren](https://github.com/kubernetes/helm/blob/master/docs/install.md) op een lokale computer
 
-## <a name="helm-basics"></a>Helm-basisbeginselen 
+## <a name="helm-basics"></a>Basis beginselen van helm 
 
-Als u informatie over het Kubernetes-cluster dat u bent Tiller installeren en implementeren van uw toepassingen op, typ de volgende opdracht:
+Als u informatie wilt weer geven over het Kubernetes-cluster dat u Tiller installeert en uw toepassingen implementeert, typt u de volgende opdracht:
 
 ```bash
 kubectl cluster-info 
 ```
-![kubectl cluster-info](./media/container-service-kubernetes-helm/clusterinfo.png)
+![kubectl-cluster-info](./media/container-service-kubernetes-helm/clusterinfo.png)
  
-Nadat u Helm hebt geïnstalleerd, installeert u Tiller in uw Kubernetes-cluster door de volgende opdracht te typen:
+Nadat u helm hebt geïnstalleerd, installeert u Tiller op uw Kubernetes-cluster door de volgende opdracht te typen:
 
 ```bash
 helm init --upgrade
 ```
-Als deze voltooid is, ziet u de volgende uitvoer:
+Wanneer de bewerking is voltooid, ziet u uitvoer als de volgende:
 
 ![Tiller-installatie](./media/container-service-kubernetes-helm/tiller-install.png)
  
  
  
  
-Als u alle Helm-grafieken die beschikbaar in de opslagplaats, typt u de volgende opdracht uit:
+Als u alle beschik bare helm-grafieken in de opslag plaats wilt weer geven, typt u de volgende opdracht:
 
 ```bash 
 helm search 
 ```
 
-Ziet u de volgende uitvoer:
+De uitvoer ziet er als volgt uit:
 
-![Helm search](./media/container-service-kubernetes-helm/helm-search.png)
+![Helm zoeken](./media/container-service-kubernetes-helm/helm-search.png)
  
-Voor het bijwerken van de grafieken om op te halen van de meest recente versies, typt u:
+Als u de grafieken wilt bijwerken om de nieuwste versies op te halen, typt u:
 
 ```bash 
 helm repo update 
 ```
-## <a name="deploy-an-nginx-ingress-controller-chart"></a>Een diagram van Nginx inkomend controller implementeren 
+## <a name="deploy-an-nginx-ingress-controller-chart"></a>Een nginx ingress-controller diagram implementeren 
  
-Voor het implementeren van een grafiek van Nginx inkomend controller, typt u een enkele opdracht:
+Als u een nginx ingress-controller grafiek wilt implementeren, typt u één opdracht:
 
 ```bash
 helm install stable/nginx-ingress 
 ```
-![Controller voor binnenkomend verkeer implementeren](./media/container-service-kubernetes-helm/nginx-ingress.png)
+![Ingangs controller implementeren](./media/container-service-kubernetes-helm/nginx-ingress.png)
 
-Als u typt `kubectl get svc` als u wilt weergeven van alle services die worden uitgevoerd op het cluster, ziet u dat een IP-adres is toegewezen aan de controller voor binnenkomend verkeer. (Terwijl de toewijzing uitgevoerd wordt, ziet u `<pending>`. Het duurt enkele minuten om te voltooien.) 
+Als u `kubectl get svc` typt om alle services weer te geven die op het cluster worden uitgevoerd, ziet u dat er een IP-adres is toegewezen aan de ingangs controller. (Terwijl de toewijzing wordt uitgevoerd, ziet u `<pending>`. Het duurt enkele minuten om de bewerking uit te voeren.) 
 
-Na de IP-adres wordt toegewezen, gaat u naar de waarde van het externe IP-adres om te zien van de back-end van Nginx uitgevoerd. 
+Nadat het IP-adres is toegewezen, gaat u naar de waarde van het externe IP-adres om de nginx-back-end te zien. 
  
-![IP-adres voor inkomend verkeer](./media/container-service-kubernetes-helm/ingress-ip-address.png)
+![IP-adres ingangs](./media/container-service-kubernetes-helm/ingress-ip-address.png)
 
 
-Een lijst van grafieken geïnstalleerd in uw cluster wilt bekijken, typt u:
+Als u een lijst met grafieken wilt zien die op uw cluster zijn geïnstalleerd, typt u:
 
 ```bash
 helm list 
 ```
 
-U kunt ook opgeven de opdracht voor het `helm ls`.
+U kunt de opdracht afkorten tot `helm ls`.
  
  
  
  
-## <a name="deploy-a-mariadb-chart-and-client"></a>Een MariaDB grafiek en een client implementeren
+## <a name="deploy-a-mariadb-chart-and-client"></a>Een MariaDB-diagram en-client implementeren
 
-Implementeer nu een MariaDB-grafiek en een MariaDB-client verbinding maakt met de database.
+Implementeer nu een MariaDB-diagram en een MariaDB-client om verbinding te maken met de data base.
 
-Voor het implementeren van de grafiek MariaDB, typ de volgende opdracht:
+Typ de volgende opdracht om de MariaDB-grafiek te implementeren:
 
 ```bash
 helm install --name v1 stable/mariadb
 ```
 
-waar `--name` is een code die wordt gebruikt voor releases.
+waarbij `--name` een tag is die wordt gebruikt voor releases.
 
 > [!TIP]
-> Als de implementatie mislukt, voert u `helm repo update` en probeer het opnieuw.
+> Als de implementatie mislukt, voert u `helm repo update` uit en probeert u het opnieuw.
 >
  
  
-Als alle grafieken in uw cluster wordt geïmplementeerd, typt u:
+Als u alle grafieken wilt weer geven die zijn geïmplementeerd in uw cluster, typt u:
 
 ```bash 
 helm list
 ```
  
-Als alle implementaties die worden uitgevoerd op uw cluster, typt u:
+Als u alle implementaties wilt weer geven die op uw cluster worden uitgevoerd, typt u:
 
 ```bash
 kubectl get deployments 
 ``` 
  
  
-Ten slotte, als u wilt uitvoeren in een schil voor toegang tot de client, typt u:
+Ten slotte, om een pod uit te voeren voor toegang tot de client, typt u:
 
 ```bash
 kubectl run v1-mariadb-client --rm --tty -i --image bitnami/mariadb --command -- bash  
 ``` 
  
  
-Voor verbinding met de client, typt u de volgende opdracht, vervangt `v1-mariadb` met de naam van uw implementatie:
+Als u verbinding wilt maken met de client, typt u de volgende opdracht, waarbij u `v1-mariadb` vervangt door de naam van uw implementatie:
 
 ```bash
 sudo mysql –h v1-mariadb
 ```
  
  
-U kunt nu standaard SQL-opdrachten gebruiken om te maken van databases, tabellen, enzovoort. Bijvoorbeeld, `Create DATABASE testdb1;` wordt een lege database gemaakt. 
+U kunt nu standaard SQL-opdrachten gebruiken voor het maken van data bases, tabellen, enzovoort. `Create DATABASE testdb1;` maakt bijvoorbeeld een lege data base. 
  
  
  
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor meer informatie over het beheren van Kubernetes grafieken, de [Helm documentatie](https://github.com/kubernetes/helm/blob/master/docs/index.md). 
+* Zie de [helm-documentatie](https://github.com/kubernetes/helm/blob/master/docs/index.md)voor meer informatie over het beheren van Kubernetes-grafieken. 
 

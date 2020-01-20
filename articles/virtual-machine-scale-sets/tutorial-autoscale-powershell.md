@@ -1,29 +1,21 @@
 ---
-title: Zelfstudie - Een schaalset automatisch schalen met Azure PowerShell | Microsoft Docs
+title: Zelf studie-een schaalset automatisch schalen met Azure PowerShell
 description: Leer hoe u met Azure PowerShell automatisch een schaalset met virtuele machines schaalt wanneer de vraag naar CPU toeneemt en afneemt.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2d743b53f5ca74299c865d381f0832729fc956f4
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 50fb0c1c13ceba88b1894fa0f3165dd40b8e23cf
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677599"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278408"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Zelfstudie: Een virtuele-machineschaalset automatisch schalen met Azure PowerShell
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Zelfstudie: Een schaalset met virtuele machines automatisch schalen met Azure PowerShell
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
@@ -35,7 +27,7 @@ Wanneer u een schaalset maakt, definieert u het aantal VM-exemplaren dat u wilt 
 > * Stresstest uitvoeren voor VM-exemplaren en regels voor automatisch schalen activeren
 > * Automatisch terugschalen bij afname van de vraag
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 Er is een bekend probleem dat van invloed is op de Azure PowerShell-moduleversie 6.8.1 of hoger, inclusief de huidige versie van de Azure Cloud Shell. Voor deze zelfstudie kan alleen moduleversie 6.0.0 tot 6.8.0 van Azure PowerShell worden gebruikt. Voer `Get-Module -ListAvailable AzureRM` uit om de versie te bekijken. Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzureRmAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
@@ -72,7 +64,7 @@ We gaan een regel maken met [New-AzureRmAutoscaleRule](/powershell/module/AzureR
 
 De volgende parameters worden gebruikt voor deze regel:
 
-| Parameter               | Uitleg                                                                                                         | Value          |
+| Parameter               | Uitleg                                                                                                         | Waarde          |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
 | *-MetricName*           | De prestatiemeetwaarde die u wilt bewaken en waarvoor u acties wilt toepassen op de schaalset.                                                   | Percentage CPU |
 | *-TimeGrain*            | Hoe vaak de meetwaarden worden verzameld voor analyse.                                                                   | 1 minuut       |
@@ -81,7 +73,7 @@ De volgende parameters worden gebruikt voor deze regel:
 | *-Operator*             | De operator die wordt gebruikt voor het vergelijken van de meetwaarden met de drempelwaarde.                                                     | Greater Than   |
 | *-Threshold*            | De waarde die ervoor zorgt dat de regel voor automatisch schalen een actie activeert.                                                      | 70%            |
 | *-ScaleActionDirection* | Hiermee definieert u of de schaalset moet worden in- of uitgeschaald als de regel van toepassing is.                                             | Increase       |
-| *–ScaleActionScaleType* | Hiermee geeft u het aantal VM-exemplaren aan dat moet worden gewijzigd door een specifieke waarde.                                    | Change Count   |
+| *-ScaleActionScaleType* | Hiermee geeft u het aantal VM-exemplaren aan dat moet worden gewijzigd door een specifieke waarde.                                    | Change Count   |
 | *-ScaleActionValue*     | Het percentage VM-exemplaren dat moet worden gewijzigd wanneer de regel wordt geactiveerd.                                            | 3              |
 | *-ScaleActionCooldown*  | De tijd die moet worden gewacht voordat de regel opnieuw wordt toegepast, zodat de acties voor automatisch schalen voldoende tijd hebben om effectief te zijn. | 5 minuten      |
 
@@ -97,7 +89,7 @@ $myRuleScaleOut = New-AzureRmAutoscaleRule `
   -Operator "GreaterThan" `
   -Threshold 70 `
   -ScaleActionDirection "Increase" `
-  –ScaleActionScaleType "ChangeCount" `
+  -ScaleActionScaleType "ChangeCount" `
   -ScaleActionValue 3 `
   -ScaleActionCooldown 00:05:00
 ```
@@ -119,7 +111,7 @@ $myRuleScaleIn = New-AzureRmAutoscaleRule `
   -TimeWindow 00:05:00 `
   -ScaleActionCooldown 00:05:00 `
   -ScaleActionDirection "Decrease" `
-  –ScaleActionScaleType "ChangeCount" `
+  -ScaleActionScaleType "ChangeCount" `
   -ScaleActionValue 1
 ```
 
@@ -188,7 +180,7 @@ IpAddress
 52.168.121.216
 ```
 
-Maak een externe verbinding met uw eerste VM-exemplaar. Geef uw eigen openbare IP-adres en poortnummer van het vereiste VM-exemplaar op, zoals is gedaan in de voorgaande opdrachten. Wanneer u hierom wordt gevraagd, geeft u de referenties op die worden gebruikt bij het maken van de schaalset (standaard zijn dit *azureuser* en *\@P ssw0rd!* ). Als u Azure Cloud Shell gebruikt, voert u deze stap uit vanaf een lokale PowerShell-prompt of vanuit de Extern bureaublad-client. In het volgende voorbeeld wordt verbinding gemaakt met het VM-exemplaar *0*:
+Maak een externe verbinding met uw eerste VM-exemplaar. Geef uw eigen openbare IP-adres en poortnummer van het vereiste VM-exemplaar op, zoals is gedaan in de voorgaande opdrachten. Wanneer u hierom wordt gevraagd, geeft u de referenties op die worden gebruikt bij het maken van de schaalset (standaard zijn dit *azureuser* en *P\@ssw0rd!* ). Als u Azure Cloud Shell gebruikt, voert u deze stap uit vanaf een lokale PowerShell-prompt of vanuit de Extern bureaublad-client. In het volgende voorbeeld wordt verbinding gemaakt met het VM-exemplaar *0*:
 
 ```powershell
 mstsc /v 52.168.121.216:50001

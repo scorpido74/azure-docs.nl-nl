@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 13f86f0156299619d8bf8d92eb92bbcf8b4cb76c
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 3e10979e26cacdc0c2071a6030c945adad21a51c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173801"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277429"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Azure Data Explorer opname bewerkingen bewaken met Diagnostische logboeken (preview)
 
@@ -52,7 +52,7 @@ Diagnostische logboeken zijn standaard uitgeschakeld. Voer de volgende stappen u
     1. Selecteer een **naam** voor de diagnostische instelling.
     1. Selecteer een of meer doelen: een opslag account, Event hub of Log Analytics.
     1. Selecteer de logboeken die moeten worden verzameld: `SucceededIngestion` of `FailedIngestion`.
-    1. Selecteer de [metrische gegevens](using-metrics.md) die moeten worden verzameld (optioneel).   
+    1. Selecteer de [metrische gegevens](using-metrics.md#supported-azure-data-explorer-metrics) die moeten worden verzameld (optioneel).  
     1. Selecteer **Opslaan** om de nieuwe instellingen en metrische gegevens van de diagnostische logboeken op te slaan.
     1. Maak een **nieuwe ondersteunings aanvraag** in de Azure Portal om de activering van Diagnostische logboeken aan te vragen.
 
@@ -66,7 +66,7 @@ Alle [Azure monitor Diagnostische logboeken delen een gemeen schappelijk schema 
 
 JSON-teken reeksen in het logboek bevatten elementen die in de volgende tabel worden weer gegeven:
 
-|Naam               |Beschrijving
+|Name               |Beschrijving
 |---                |---
 |tijd               |Tijd van het rapport
 |resourceId         |Resource-ID Azure Resource Manager
@@ -100,7 +100,7 @@ JSON-teken reeksen in het logboek bevatten elementen die in de volgende tabel wo
 ```
 **Eigenschappen van een geslaagde bewerking diagnostisch logboek**
 
-|Naam               |Beschrijving
+|Name               |Beschrijving
 |---                |---
 |succeededOn        |Voltooiings tijd van opname
 |operationId        |Bewerkings-ID van Azure Data Explorer opname
@@ -141,7 +141,7 @@ JSON-teken reeksen in het logboek bevatten elementen die in de volgende tabel wo
 
 **Eigenschappen van een mislukte bewerking diagnose logboek**
 
-|Naam               |Beschrijving
+|Name               |Beschrijving
 |---                |---
 |failedOn           |Voltooiings tijd van opname
 |operationId        |Bewerkings-ID van Azure Data Explorer opname

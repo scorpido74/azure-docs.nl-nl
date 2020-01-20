@@ -3,17 +3,16 @@ title: Gpu's gebruiken op Azure Kubernetes service (AKS)
 description: Meer informatie over het gebruik van Gpu's voor high performance Compute of grafisch intensieve workloads op Azure Kubernetes service (AKS)
 services: container-service
 author: zr-msft
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: zarhoads
-ms.openlocfilehash: e805ca87a34a6b50e9f799909efe8fcbe859883c
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: a68bd124f323225062a86a3e1fc178d2fc089c5d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70899465"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276017"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>Gebruik Gpu's voor computerintensieve werk belastingen op Azure Kubernetes service (AKS)
 
@@ -40,7 +39,7 @@ Maak eerst een resource groep voor het cluster met behulp van de opdracht [AZ Gr
 az group create --name myResourceGroup --location eastus
 ```
 
-Maak nu een AKS-cluster met behulp van de opdracht [AZ AKS Create][az-aks-create] . In het volgende voor beeld wordt een cluster gemaakt met één knoop `Standard_NC6`punt van grootte:
+Maak nu een AKS-cluster met behulp van de opdracht [AZ AKS Create][az-aks-create] . In het volgende voor beeld wordt een cluster gemaakt met één knoop punt met een grootte `Standard_NC6`:
 
 ```azurecli-interactive
 az aks create \
@@ -130,7 +129,7 @@ NAME                       STATUS   ROLES   AGE   VERSION
 aks-nodepool1-28993262-0   Ready    agent   13m   v1.12.7
 ```
 
-Gebruik nu de opdracht [kubectl beschrijven knoop punt][kubectl-describe] om te bevestigen dat de gpu's Schedulable zijn. Onder het gedeelte *capaciteit* moet de GPU worden weer geven `nvidia.com/gpu:  1`als.
+Gebruik nu de opdracht [kubectl beschrijven knoop punt][kubectl-describe] om te bevestigen dat de gpu's Schedulable zijn. Onder het gedeelte *capaciteit* moet de GPU worden weer geven als `nvidia.com/gpu:  1`.
 
 In het volgende verkorte voor beeld ziet u dat er een GPU beschikbaar is op het knoop punt met de naam *AKS-nodepool1-18821093-0*:
 
@@ -189,7 +188,7 @@ Als u de GPU in actie wilt zien, moet u een werk belasting met GPU plannen met d
 Maak een bestand met de naam *samples-TF-mnist-demo. yaml* en plak het volgende YAML-manifest. Het volgende taak manifest bevat een resource limiet van `nvidia.com/gpu: 1`:
 
 > [!NOTE]
-> Als er een fout is opgetreden die niet overeenkomt bij het aanroepen van Stuur Programma's, zoals de versie van het CUDA-stuur programma is niet voldoende voor de CUDA-runtime versie, raadpleegt u de compatibiliteits grafiek voor nVidia-Stuur[https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
+> Als er een fout is opgetreden die niet overeenkomt bij het aanroepen van Stuur Programma's, zoals de versie van het CUDA-stuur programma is onvoldoende voor CUDA runtime versie, raadpleegt u de compatibiliteits grafiek voor de nVidia-stuur programma matrix- [https://docs.nvidia.com/deploy/cuda-compatibility/index.html](https://docs.nvidia.com/deploy/cuda-compatibility/index.html)
 
 ```yaml
 apiVersion: batch/v1
@@ -223,7 +222,7 @@ kubectl apply -f samples-tf-mnist-demo.yaml
 
 ## <a name="view-the-status-and-output-of-the-gpu-enabled-workload"></a>Bekijk de status en de uitvoer van de GPU-ingeschakelde werk belasting
 
-Bewaak de voortgang van de taak met behulp van de opdracht [kubectl Get Jobs][kubectl-get] with het `--watch` argument. Het kan een paar minuten duren voordat de installatie kopie is opgehaald en de gegevensset wordt verwerkt. Wanneer in de kolom *voltooiings* de *1/1*wordt weer gegeven, is de taak voltooid. Sluit de `kubetctl --watch` opdracht af met *CTRL-C*:
+Bewaak de voortgang van de taak met behulp van de opdracht [kubectl Get Jobs][kubectl-get] with het argument `--watch`. Het kan een paar minuten duren voordat de installatie kopie is opgehaald en de gegevensset wordt verwerkt. Wanneer in de kolom *voltooiings* de *1/1*wordt weer gegeven, is de taak voltooid. Sluit de `kubetctl --watch` opdracht met *CTRL-C*:
 
 ```console
 $ kubectl get jobs samples-tf-mnist-demo --watch
@@ -243,7 +242,7 @@ NAME                          READY   STATUS      RESTARTS   AGE
 samples-tf-mnist-demo-mtd44   0/1     Completed   0          4m39s
 ```
 
-Gebruik nu de [kubectl-logboeken][kubectl-logs] opdracht om de pod-logboeken weer te geven. In het volgende voor beeld worden pod-logboeken gecontroleerd of het juiste GPU `Tesla K80`-apparaat is gedetecteerd. Geef de naam op voor uw eigen Pod:
+Gebruik nu de [kubectl-logboeken][kubectl-logs] opdracht om de pod-logboeken weer te geven. In het volgende voor beeld worden pod-logboeken gecontroleerd of het juiste GPU-apparaat is gedetecteerd, `Tesla K80`. Geef de naam op voor uw eigen Pod:
 
 ```console
 $ kubectl logs samples-tf-mnist-demo-smnr6

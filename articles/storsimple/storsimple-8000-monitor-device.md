@@ -1,56 +1,48 @@
 ---
-title: De StorSimple 8000-apparaat controleren | Microsoft Docs
-description: Beschrijft hoe u de service StorSimple Device Manager gebruiken voor het bewaken van gebruik, i/o-prestaties en verbruik van de opslagcapaciteit.
-services: storsimple
-documentationcenter: NA
+title: Uw StorSimple 8000 Series-apparaat bewaken
+description: Hierin wordt beschreven hoe u de StorSimple Apparaatbeheer-service gebruikt om het gebruik, de I/O-prestaties en het capaciteits gebruik te bewaken.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 602514df69977891167f341db0ab20913bcacc9f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b3b77024606c5cdb02ff7bdd357c2d14a2415efa
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60634468"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277055"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>De StorSimple Device Manager-service gebruiken voor het bewaken van uw StorSimple-apparaat
+# <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>De StorSimple Apparaatbeheer-service gebruiken om uw StorSimple-apparaat te bewaken
 
 ## <a name="overview"></a>Overzicht
-U kunt de service StorSimple Device Manager gebruiken voor het bewaken van specifieke apparaten binnen uw StorSimple-oplossing. U kunt aangepaste diagrammen op basis van i/o-prestaties, gebruik van capaciteit, netwerkdoorvoer en maatstaven voor prestaties van apparaat maken en die aan het dashboard vastmaken. Ga voor meer informatie naar [aanpassen van uw portal-dashboard](../azure-portal/azure-portal-dashboards.md).
+U kunt de StorSimple Apparaatbeheer-service gebruiken voor het bewaken van specifieke apparaten in uw StorSimple-oplossing. U kunt aangepaste grafieken maken op basis van I/O-prestaties, capaciteits gebruik, netwerk doorvoer en metrische prestatie gegevens van apparaten en deze aan het dash board vastmaken. Ga naar [uw portal-dash board aanpassen](../azure-portal/azure-portal-dashboards.md)voor meer informatie.
 
-Als u wilt de controlegegevens voor een specifiek apparaat weergeven in Azure portal, selecteert u de service StorSimple Device Manager. Selecteer uw apparaat uit de lijst met apparaten en gaat u naar **Monitor**. Vervolgens ziet u de **capaciteit**, **gebruik**, en **prestaties** grafieken voor het geselecteerde apparaat.
+Als u de controle-informatie voor een specifiek apparaat wilt weer geven, selecteert u in de Azure Portal de StorSimple Apparaatbeheer-service. Selecteer uw apparaat in de lijst met apparaten en ga vervolgens naar **monitor**. U kunt vervolgens de grafieken **capaciteit**, **gebruik**en **prestaties** zien voor het geselecteerde apparaat.
 
 ## <a name="capacity"></a>Capaciteit
-**Capaciteit** houdt de ingerichte ruimte en de schijfruimte op het apparaat. De resterende capaciteit wordt vervolgens weergegeven zoals lokaal vastgemaakt of lagen.
+**Capaciteit** traceert de ingerichte ruimte en de resterende ruimte op het apparaat. De resterende capaciteit wordt vervolgens weer gegeven als lokaal vastgemaakt of gelaagd.
 
-De ingerichte en resterende capaciteit is verder opgedeeld per gelaagde en lokaal vastgemaakte volumes. Voor elk volume wordt de ingerichte capaciteit en de resterende capaciteit op het apparaat weergegeven.
+De ingerichte en resterende capaciteit wordt verder onderverdeeld in gelaagde en lokaal vastgemaakte volumes. Voor elk volume worden de ingerichte capaciteit en de resterende capaciteit op het apparaat weer gegeven.
 
 ![I/o-capaciteit](./media/storsimple-8000-monitor-device/device-capacity.png)
 
 
 
 ## <a name="usage"></a>Gebruik
-**Gebruik** metrische gegevens met betrekking tot de hoeveelheid opslagruimte die wordt gebruikt door de volumes, de volumecontainers of het apparaat wordt bijgehouden. U kunt rapporten op basis van het gebruik van de capaciteit van uw primaire opslag, uw cloudopslag of de apparaatopslag van uw kunt maken. Gebruik van capaciteit kan worden gemeten op een bepaald volume, de container voor een bepaald volume of alle volumecontainers.
-Standaard wordt het gebruik voor de afgelopen 24 uur vermeld. U kunt de grafiek om te wijzigen van de duur die het gebruik wordt gerapporteerd door te selecteren in bewerken:
+Het **gebruik** houdt de metrische gegevens bij die betrekking hebben op de hoeveelheid opslag ruimte die wordt gebruikt door de volumes, volume containers of het apparaat. U kunt rapporten maken op basis van het capaciteits gebruik van uw primaire opslag, uw Cloud opslag of uw opslag van uw apparaten. Het capaciteits gebruik kan worden gemeten op een specifiek volume, een specifieke volume container of alle volume containers.
+Het gebruik van de afgelopen 24 uur wordt standaard gerapporteerd. U kunt de grafiek bewerken om de duur te wijzigen waarover het gebruik wordt gerapporteerd door een van de volgende opties te selecteren:
 * Afgelopen 24 uur
 * Afgelopen 7 dagen
 * Afgelopen 30 dagen
 * Afgelopen 90 dagen
 * Afgelopen jaar
 
-Twee belangrijke metrices, groei en bereik worden gerapporteerd voor het gebruik van grafieken. Bereik verwijst naar de maximale waarde en de minimale waarde van het gebruik gerapporteerd over de geselecteerde periode (fo exemplaar, afgelopen 7 dagen).
+Er worden twee belang rijke metrische gegevens, groei en bereik gerapporteerd voor de gebruiks grafieken. Het bereik verwijst naar de maximum waarde en de minimum waarden van het gebruik dat is gerapporteerd gedurende de geselecteerde duur (fo-instantie, in de afgelopen 7 dagen).
 
-Groei verwijst naar de toename in gebruik van de eerste dag tot de laatste dag gedurende de geselecteerde periode. 
+De groei verwijst naar de toename van het gebruik van de eerste dag tot de laatste dag voor de geselecteerde duur. 
 
-Groei en bereik kunnen ook worden voorgesteld door de volgende vergelijkingen:
+Groei en bereik kunnen ook worden weer gegeven met de volgende vergelijkingen:
 
 ```
 Range = {Usage(minimum), Usage(maximum)}
@@ -60,93 +52,93 @@ Growth = Usage(Last day) - Usage(first day)
 Growth (%) = [{Usage(last day) - Usage(first day)} X 100]/Usage(first day)
 ```
 
-De primaire, cloud en lokale opslag die wordt gebruikt, kan als volgt worden beschreven:
+De primaire, Cloud en lokale opslag die worden gebruikt, kunnen als volgt worden beschreven:
 
-### <a name="primary-storage-usage"></a>Gebruik van primaire opslag
-Deze diagrammen tonen de hoeveelheid gegevens geschreven naar de StorSimple-volumes voordat de gegevens worden ontdubbeld en gecomprimeerd. U kunt de primaire opslag die wordt gebruikt door alle volumes in een volumecontainer of voor één volume weergeven. De gebruikte primaire opslag verder wordt onderverdeeld op basis van primair gelaagde opslag gebruikt en primaire lokaal vastgemaakte opslag gebruikt.
+### <a name="primary-storage-usage"></a>Primair opslag gebruik
+Deze grafieken tonen de hoeveelheid gegevens die is geschreven naar StorSimple-volumes voordat de gegevens worden ontdubbeld en gecomprimeerd. U kunt de primaire opslag weer geven die wordt gebruikt door alle volumes in een volume container of voor één volume. De gebruikte primaire opslag wordt verder onderverdeeld op basis van de primaire gelaagde opslag en de gebruikte primaire lokaal vastgemaakte opslag.
 
-De volgende diagrammen tonen de primaire opslag gebruikt voor een StorSimple-apparaat voordat en nadat u een cloudmomentopname werd gemaakt. Omdat deze alleen de gegevens van het volume, moet de primaire opslag niet wijzigen in een cloud-momentopname. Zoals u ziet, bevat het diagram geen verschil in de primaire gelaagde of lokaal vastgemaakte opslag gebruikt als gevolg van het maken van een cloudmomentopname. De cloudmomentopname aan de slag om ongeveer 11:50 uur op het apparaat.
+In de volgende grafieken ziet u de primaire opslag die wordt gebruikt voor een StorSimple-apparaat vóór en nadat een Cloud momentopname is gemaakt. Aangezien dit alleen volume gegevens zijn, mag een Cloud momentopname de primaire opslag niet wijzigen. Zoals u ziet, toont het diagram geen verschil in de primaire of lokaal vastgemaakte opslag die wordt gebruikt als resultaat van het maken van een Cloud momentopname. De Cloud momentopname is gestart om 11:50 uur op dat apparaat.
 
-![Primaire capaciteitsverbruik na cloud-momentopname](./media/storsimple-8000-monitor-device/device-primary-storage-after-cloudsnapshot.png)
+![Primair capaciteits gebruik na de Cloud momentopname](./media/storsimple-8000-monitor-device/device-primary-storage-after-cloudsnapshot.png)
 
-Als u i/o nu op de host verbonden is met uw StorSimple-apparaat uitvoeren, u een toename van primair gelaagde opslag ziet of primaire lokaal opslag die wordt gebruikt, afhankelijk vastgemaakte van welke volumes (gelaagd of lokaal vastgemaakt) schrijven u welke gegevens moeten worden. Hier volgen de grafieken voor het gebruik van primaire opslag voor een StorSimple-apparaat. Op dit apparaat voor de StorSimple-host aan de slag voor schrijfbewerkingen in ongeveer 14:30 uur op een gelaagd volume op het apparaat. Hier ziet u de piek in de geschreven bytes per seconde overeenkomt met de i/o die wordt uitgevoerd op de host.
+Als u nu i/o uitvoert op de host die is verbonden met uw StorSimple-apparaat, ziet u een toename van de primaire gelaagde opslag of primaire lokaal vastgemaakte opslag die wordt gebruikt, afhankelijk van welke volumes (gelaagd of lokaal vastgemaakt) u de gegevens schrijft. Hier vindt u de primaire gebruiks grafieken voor opslag voor een StorSimple-apparaat. Op dit apparaat is de StorSimple-host begonnen met het schrijven van 2:30 uur op een gelaagd volume op het apparaat. U kunt de piek in de geschreven bytes/s zien die overeenkomen met de i/o-bewerkingen die worden uitgevoerd op de host.
 
-![Prestaties bij i/o die wordt uitgevoerd op volumes gelaagde](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
+![Prestaties bij het uitvoeren van i/o op gelaagde volumes](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
 
-Als u naar de primair gelaagde opslag gebruikt kijkt, die is geworden van dat de primaire lokaal vastgemaakte gebruik blijft ongewijzigd, omdat er geen schrijfbewerkingen naar de lokaal vastgemaakte volumes op het apparaat verzonden.
+Als u de primaire gelaagde opslag gebruikt, wordt er een fout weer gegeven terwijl het primaire lokaal vastgemaakte gebruik ongewijzigd blijft omdat er geen schrijf bewerkingen worden uitgevoerd naar de lokaal vastgemaakte volumes op het apparaat.
 
-![Primaire capaciteitsverbruik bij het uitvoeren van i/o op gelaagde volumes](./media/storsimple-8000-monitor-device/device-primary-storage-io-from-initiator.png)
+![Primair capaciteits gebruik wanneer IO wordt uitgevoerd op gelaagde volumes](./media/storsimple-8000-monitor-device/device-primary-storage-io-from-initiator.png)
 
-Als u werkt met Update 3 of hoger, u kunt uitsplitsen naar de primaire verbruik van de opslagcapaciteit afzonderlijk volume, alle volumes, alle gelaagde volumes en alle lokaal vastgemaakte volumes zoals hieronder wordt weergegeven. Afbreken door alle lokaal vastgemaakte volumes kunt u snel nagaan welk deel van de lokale laag is verbruikt.
+Als u update 3 of hoger uitvoert, kunt u het gebruik van de primaire opslag capaciteit opdelen door een afzonderlijk volume, alle volumes, alle gelaagde volumes en alle lokaal vastgemaakte volumes, zoals hieronder wordt weer gegeven. Met alle lokaal vastgemaakte volumes kunt u snel bepalen hoeveel van de lokale laag er wordt gebruikt.
 
-![Gebruik van de primaire capaciteit voor alle gelaagde volumes](./media/storsimple-8000-monitor-device/monitor-usage3.png)
+![Primair capaciteits gebruik voor alle gelaagde volumes](./media/storsimple-8000-monitor-device/monitor-usage3.png)
 
-![Gebruik van de primaire capaciteit voor alle lokaal vastgemaakte volumes](./media/storsimple-8000-monitor-device/monitor-usage4.png)
+![Primair capaciteits gebruik voor alle lokaal vastgemaakte volumes](./media/storsimple-8000-monitor-device/monitor-usage4.png)
 
-U kunt verder klikt u op elk van de volumes in de lijst en Zie het bijbehorende gebruik.
+U kunt verder klikken op elk van de volumes in de lijst en het bijbehorende gebruik bekijken.
 
-![Gebruik van de primaire capaciteit voor alle lokaal vastgemaakte volumes](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
+![Primair capaciteits gebruik voor alle lokaal vastgemaakte volumes](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
 
-### <a name="cloud-storage-usage"></a>Gebruik van cloud-opslag
-Deze diagrammen tonen de hoeveelheid opslag in de cloud gebruikt. Deze gegevens worden ontdubbeld en gecomprimeerd. Dit bedrag omvat de cloudmomentopnamen die mogelijk gegevens bevatten die niet wordt weergegeven in een primaire volume en wordt opgeslagen voor bewaren van verouderde of vereist. U kunt de primaire vergelijken en cloud storage verbruik cijfers voor een beter beeld van de frequentie van gegevens beperken, hoewel het nummer niet exact.
+### <a name="cloud-storage-usage"></a>Gebruik van Cloud opslag
+Deze grafieken tonen de hoeveelheid gebruikte Cloud opslag. Deze gegevens worden ontdubbeld en gecomprimeerd. Dit bedrag omvat Cloud momentopnamen die gegevens kunnen bevatten die niet worden weer gegeven op een primair volume en die worden bewaard voor verouderde of vereiste Bewaar doeleinden. U kunt de gegevens voor het gebruik van de primaire en de Cloud opslag vergelijken om een idee te krijgen van het verkleinings tempo, hoewel het getal niet exact is.
 
-De volgende diagrammen tonen het gebruik van de cloud-opslag van een StorSimple-apparaat wanneer een cloudmomentopname werd gemaakt.
+In de volgende grafieken wordt het gebruik van de Cloud opslag van een StorSimple-apparaat weer gegeven wanneer er een Cloud momentopname is gemaakt.
 
-* De cloudmomentopname gestart om ongeveer 11:50 uur op het apparaat en kunt u zien dat voor de cloud momentopname, er geen cloudopslag die wordt gebruikt is. 
-* Nadat de cloudmomentopname is voltooid, het gebruik van de opslag cloud agenda van 0.89 GB. 
-* Terwijl de cloudmomentopname werd uitgevoerd, is er ook een bijbehorende piek in de i/o van het apparaat naar de cloud.
+* De Cloud momentopname is gestart om ongeveer 11:50 uur op dat apparaat en u kunt zien dat er geen Cloud opslag is gebruikt voordat de moment opname van de Cloud wordt gemaakt. 
+* Nadat de moment opname van de Cloud is voltooid, is het gebruik van de Cloud opslag 0,89 GB afgenomen. 
+* Terwijl de moment opname van de Cloud werd uitgevoerd, is er ook een corresponderende piek in de i/o van het apparaat naar de Cloud.
 
-    ![Gebruik van de cloud-opslag voor cloud-momentopname](./media/storsimple-8000-monitor-device/device-cloud-storage-before-cloudsnapshot.png)
+    ![Gebruik van Cloud opslag vóór de Cloud momentopname](./media/storsimple-8000-monitor-device/device-cloud-storage-before-cloudsnapshot.png)
 
-    ![Gebruik van de opslag na cloud-momentopname in de cloud](./media/storsimple-8000-monitor-device/device-cloud-storage-after-cloudsnapshot.png)
+    ![Gebruik van Cloud opslag na de Cloud momentopname](./media/storsimple-8000-monitor-device/device-cloud-storage-after-cloudsnapshot.png)
 
-    ![I/o van het apparaat naar cloud tijdens een cloud-momentopname](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
+    ![I/o van apparaat naar Cloud tijdens een Cloud momentopname](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
 
 
 ### <a name="local-storage-usage"></a>Gebruik van lokale opslag
-Het totale gebruik voor het apparaat dat meer dan primaire opslaggebruik is omdat het de lineaire SSD-laag omvat weergeven deze grafieken Deze laag bevat een hoeveelheid gegevens die ook bestaat op het apparaat de andere lagen. De capaciteit van de SSD-laag voor lineaire volgens zodat wanneer er nieuwe gegevens, wordt de oude gegevens worden verplaatst naar de HDD-laag (op dat moment is ontdubbeld en gecomprimeerd) en vervolgens naar de cloud.
+In deze grafieken wordt het totale gebruik van het apparaat weer gegeven. Dit is meer dan het gebruik van primaire opslag omdat het de lineaire laag SSD bevat. Deze laag bevat een hoeveelheid gegevens die ook op de andere lagen van het apparaat aanwezig is. De capaciteit van de lineaire laag SSD wordt gerecycled, zodat de oude gegevens worden verplaatst naar de HDD-laag (op het moment dat deze wordt ontdubbeld en gecomprimeerd) en vervolgens naar de Cloud.
 
-Over tijd, primaire opslag zullen gebruikt en lokale opslag die wordt gebruikt waarschijnlijk toenemen samen totdat de gegevens begint met het naar de cloud in tiers worden verdeeld. Op dat moment wordt de lokale opslag gebruikt zullen waarschijnlijk af te vlakken, maar de gebruikte primaire opslag naarmate er meer gegevens worden geschreven.
+In de loop van de tijd worden de gebruikte primaire opslag en de gebruikte lokale opslag meestal verhoogd totdat de gegevens naar de cloud worden gelaagd. Op dat moment wordt het gebruik van de gebruikte lokale opslag waarschijnlijk gestart, maar wordt de primaire opslag verhoogd naarmate er meer gegevens worden geschreven.
 
-De volgende diagrammen tonen de primaire opslag voor een StorSimple-apparaat gebruikt wanneer een cloudmomentopname werd gemaakt. De cloudmomentopname die is begonnen om 11:50 uur en de lokale opslag op dat moment verlagen. De gebruikte lokale opslag is verkeerd omlaag van 1.445 GB tot 1,09 GB. Dit geeft aan dat waarschijnlijk de niet-gecomprimeerde gegevens in de lineaire SSD-laag is ontdubbeld, gecomprimeerd en naar de HDD-laag verplaatst. Houd er rekening mee dat als het apparaat al een grote hoeveelheid gegevens in lagen van de SSD en HDD heeft, u niet deze verkleinen ziet mogelijk. In dit voorbeeld heeft het apparaat een kleine hoeveelheid gegevens.
+In de volgende grafieken ziet u de primaire opslag die wordt gebruikt voor een StorSimple-apparaat wanneer er een Cloud momentopname is gemaakt. De Cloud momentopname is gestart om 11:50 uur en de lokale opslag is op dat moment aflopend. De gebruikte lokale opslag is van 1,445 GB tot 1,09 GB. Dit geeft aan dat de niet-gecomprimeerde gegevens in de laag met lineaire SSD zijn ontdubbeld, gecomprimeerd en verplaatst naar de HDD-laag. Houd er rekening mee dat als het apparaat al een grote hoeveelheid gegevens in de lagen SSD en HDD heeft, dit afnemen mogelijk niet wordt weer gegeven. In dit voor beeld heeft het apparaat een kleine hoeveelheid gegevens.
 
-![Gebruik van de lokale opslag nadat cloud-momentopname](./media/storsimple-8000-monitor-device/device-local-storage-after-cloudsnapshot.png)
+![Gebruik van lokale opslag na de Cloud momentopname](./media/storsimple-8000-monitor-device/device-local-storage-after-cloudsnapshot.png)
 
 ## <a name="performance"></a>Prestaties
-**Prestaties** houdt metrische gegevens met betrekking tot het aantal lees- en schrijfbewerkingen tussen een de iSCSI-initiator-interfaces op de host-server en het apparaat of het apparaat en de cloud. Deze prestaties kan worden gemeten voor een bepaald volume, de container voor een bepaald volume of alle volumecontainers. Prestaties bevat ook de CPU-gebruik en de netwerkdoorvoer voor de verschillende netwerkinterfaces op uw apparaat.
+**Prestaties** traceren de metrische gegevens met betrekking tot het aantal lees-en schrijf bewerkingen tussen de iSCSI-initiator-interfaces op de hostserver en het apparaat of het apparaat en de Cloud. Deze prestaties kunnen worden gemeten voor een specifiek volume, een specifieke volume container of alle volume containers. Prestaties omvatten ook CPU-gebruik en netwerk doorvoer voor de verschillende netwerk interfaces op het apparaat.
 
-### <a name="io-performance-for-initiator-to-device"></a>I/o-prestaties voor de initiator naar apparaat
-Het onderstaande diagram ziet u de i/o voor de initiator op uw apparaat voor alle volumes voor een productie-apparaat. De metrische gegevens uitgezet worden gelezen en geschreven bytes per seconde. U kunt ook lezen, schrijven en openstaande i/o-, grafiek of lezen en latentie voor schrijfbewerkingen.
+### <a name="io-performance-for-initiator-to-device"></a>I/O-prestaties van de initiator op het apparaat
+In de volgende grafiek ziet u de I/O voor de initiator op het apparaat voor alle volumes van een productie apparaat. De metrische gegevens die zijn uitgezet, zijn gelezen en geschreven bytes per seconde. U kunt ook de grafiek Lees-, schrijf-en openstaande i/o-en lees-en schrijf latenties.
 
-![I/o-prestaties voor de initiator naar apparaat](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
+![I/o-prestaties van de initiator op het apparaat](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
 
-### <a name="io-performance-for-device-to-cloud"></a>I/o-prestaties voor apparaat naar de cloud
-Voor hetzelfde apparaat, worden de i/o-bewerkingen voor de gegevens van het apparaat naar de cloud voor alle volumecontainers getekend. Op dit apparaat, de gegevens is alleen in de lineaire laag en niets heeft zich verspreid in de cloud. Er zijn geen lezen / schrijven-bewerkingen plaatsvinden van apparaat naar de cloud. Daarom zijn de pieken in de grafiek op een interval van 5 minuten die overeenkomt met de frequentie waarmee de heartbeat tussen het apparaat en de service wordt gecontroleerd.
+### <a name="io-performance-for-device-to-cloud"></a>I/O-prestaties van het apparaat naar de Cloud
+Voor hetzelfde apparaat worden de I/O-bewerkingen uitgezet voor de gegevens van het apparaat naar de Cloud voor alle volume containers. De gegevens op dit apparaat bevindt zich alleen in de lineaire laag en er is niets overgelopen naar de Cloud. Er zijn geen lees-en schrijf bewerkingen van het apparaat naar de Cloud. De pieken in de grafiek hebben daarom een interval van 5 minuten die overeenkomt met de frequentie waarmee de heartbeat wordt gecontroleerd tussen het apparaat en de service.
 
-Bij hetzelfde apparaat, is een cloud-momentopname voor volumegegevens beginnen om 11:50 uur uitgevoerd. Dit heeft geresulteerd in gegevensstromen van het apparaat naar de cloud. Schrijfbewerkingen zijn geleverd in de cloud in deze duur. De i/o-grafiek bevat een piek in de geschreven Bytes per seconde overeenkomt met de tijd waarop de momentopname is gemaakt.
+Voor hetzelfde apparaat werd een Cloud momentopname gemaakt voor volume gegevens vanaf 11:50 uur. Dit heeft tot gevolg dat gegevens stromen van het apparaat naar de Cloud. Er zijn tijdens deze duur schrijf bewerkingen naar de Cloud verzonden. In de i/o-grafiek ziet u een piek in de geschreven bytes/s die overeenkomt met het tijdstip waarop de moment opname is gemaakt.
 
-![I/o van het apparaat naar cloud tijdens een cloud-momentopname](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
+![I/o van apparaat naar Cloud tijdens een Cloud momentopname](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
 
-### <a name="network-throughput-for-device-network-interfaces"></a>Netwerkdoorvoer van netwerkinterfaces van apparaat
-**De netwerkdoorvoer** metrische gegevens met betrekking tot de hoeveelheid gegevens die worden overgedragen van de netwerkinterfaces van de iSCSI-initiator op de host-server en het apparaat en tussen het apparaat en de cloud worden bijgehouden. U kunt deze metrische gegevens controleren voor elk van de iSCSI-netwerkinterfaces op uw apparaat.
+### <a name="network-throughput-for-device-network-interfaces"></a>Netwerk doorvoer voor netwerk interfaces van apparaat
+Met **netwerk doorvoer** worden metrische gegevens bijgehouden die betrekking hebben op de hoeveelheid van de iSCSI-initiator netwerk interfaces op de hostserver en op het apparaat en tussen het apparaat en de Cloud. U kunt deze metrische gegevens controleren voor elk van de iSCSI-netwerk interfaces op het apparaat.
 
-De volgende diagrammen tonen de netwerkdoorvoer voor de Data 0, 1-1 GbE-netwerk op uw apparaat, die beide ingeschakeld voor de cloud (standaard) en iSCSI-zijn ingeschakeld. Op dit apparaat op 14 juni om ongeveer 9 uur, gelaagde gegevens is in de cloud (geen cloudmomentopnamen zijn uitgevoerd op dat moment die verwijst naar meerdere lagen wordt het mechanisme voor het verplaatsen van de gegevens naar de cloud) wat leidde tot i/o naar de cloud wordt geleverd. Er is een bijbehorende piek in de grafiek van netwerk doorvoer voor hetzelfde moment en de meeste van het netwerkverkeer is uitgaand naar de cloud.
+In de volgende grafieken ziet u de netwerk doorvoer voor het data 0, 1 1 GbE-netwerk op uw apparaat, dat zowel voor de Cloud als voor iSCSI is ingeschakeld. Omdat de gegevens op dit apparaat op 14 juni worden gelaagd in de Cloud (er zijn op dat moment geen moment opnamen van de Cloud gemaakt, waardoor het niveau wordt gelaagd als het mechanisme voor het verplaatsen van de gegevens naar de Cloud), waardoor IO werd geleverd aan de Cloud. Er is een overeenkomende piek in de netwerk doorvoer grafiek voor dezelfde tijd en het grootste deel van het netwerk verkeer is uitgaande van de Cloud.
 
-![Netwerkdoorvoer voor Data 0](./media/storsimple-8000-monitor-device/device-network-throughput-data0.png)
+![Netwerk doorvoer voor de gegevens 0](./media/storsimple-8000-monitor-device/device-network-throughput-data0.png)
 
-Als we kijken naar de grafiek Data 1 interface doorvoer, een andere 1 GbE netwerkinterface die is alleen ingeschakeld voor iSCSI, wordt er vrijwel geen netwerkverkeer is in deze duur.
+Als we het doorvoer diagram van de data 1-interface bekijken, een andere 1 GbE-netwerk interface waarvoor alleen iSCSI is ingeschakeld, was er bijna geen netwerk verkeer tijdens deze periode.
 
-![Netwerkdoorvoer voor gegevens-1](./media/storsimple-8000-monitor-device/device-network-throughput-data1.png)
+![Netwerk doorvoer voor gegevens 1](./media/storsimple-8000-monitor-device/device-network-throughput-data1.png)
 
 
 ## <a name="cpu-utilization-for-device"></a>CPU-gebruik voor apparaat
-**CPU-gebruik** metrische gegevens met betrekking tot de CPU gebruikt op uw apparaat wordt bijgehouden. Het volgende diagram toont de statistieken van de CPU-gebruik voor een apparaat in productie.
+Met **CPU-gebruik** worden metrische gegevens bijgehouden die zijn gerelateerd aan de CPU die op het apparaat wordt gebruikt. In het volgende diagram ziet u de statistieken voor het CPU-gebruik van een apparaat in de productie omgeving.
 
 ![CPU-gebruik voor apparaat](./media/storsimple-8000-monitor-device/device-cpu-utilization.png)
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over het [het hulpprogramma voor het apparaat van de StorSimple Device Manager-servicedashboard](storsimple-device-dashboard.md).
-* Meer informatie over het [de StorSimple Device Manager-service gebruiken voor het beheren van uw StorSimple-apparaat](storsimple-manager-service-administration.md).
+* Meer informatie over [het gebruik van het StorSimple Apparaatbeheer service-dash board](storsimple-device-dashboard.md).
+* Meer informatie over [het gebruik van de StorSimple Apparaatbeheer-service voor het beheren van uw StorSimple-apparaat](storsimple-manager-service-administration.md).
 

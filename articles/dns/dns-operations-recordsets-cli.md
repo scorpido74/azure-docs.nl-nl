@@ -1,31 +1,27 @@
 ---
-title: DNS-records beheren in Azure DNS met behulp van de Azure CLI | Microsoft Docs
+title: DNS-records in Azure DNS beheren met de Azure CLI
 description: DNS-record sets en-records beheren op Azure DNS wanneer uw domein wordt gehost op Azure DNS.
-services: dns
-documentationcenter: na
 author: asudbring
-manager: jeconnoc
 ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
 ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: allensu
-ms.openlocfilehash: a0316710f78afc8810f5f65e108638b08fae3da2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: a7ecbb5eb2ff6e9b62091496b4debab14e906c55
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211640"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278577"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>DNS-records en-record sets beheren in Azure DNS met behulp van de Azure CLI
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
-> * [Azure CLI](dns-operations-recordsets-cli.md)
+> * [Azure-CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
 In dit artikel wordt beschreven hoe u DNS-records voor uw DNS-zone beheert met behulp van de platformoverschrijdende Azure CLI, die beschikbaar is voor Windows, Mac en Linux. U kunt ook uw DNS-records beheren met behulp van [Azure PowerShell](dns-operations-recordsets.md) of de [Azure Portal](dns-operations-recordsets-portal.md).
@@ -226,7 +222,7 @@ In tegens telling tot de meeste andere record types kan een CNAME-recordset alle
 
 Gebruik in plaats daarvan `az network dns record-set cname set-record`om een CNAME-record te wijzigen. Zie `az network dns record-set cname set-record --help` voor meer informatie
 
-In het voor beeld wordt de CNAME-recordset set *www* in de zone *contoso.com*in de resource groep *MyResourceGroup*gewijzigd in ' www.fabrikam.net ' in plaats van de bestaande waarde:
+Het voorbeeld wijzigt u de CNAME-Recordset *www* in de zone *contoso.com*, in de resourcegroep *MyResourceGroup*, om te verwijzen naar 'www.fabrikam.net' in plaats van de bestaande waarde:
 
 ```azurecli
 az network dns record-set cname set-record --resource-group myresourcegroup --zone-name contoso.com --record-set-name test-cname --cname www.fabrikam.net

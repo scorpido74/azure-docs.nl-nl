@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: d936f9f30f79b3be6035d668211a15533cb3fa85
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: cfb77548217cf173438ab0407320cbdff8db092e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157216"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276995"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Beveiligings waarschuwingen-een referentie gids
 
@@ -128,7 +128,7 @@ Typen waarschuwingen die zijn opgenomen in deze tabel:
 |**Code injectie gedetecteerd**|Code-injectie is het invoegen van uitvoerbare modules in actieve processen of threads. Deze techniek wordt gebruikt door schadelijke software om toegang te krijgen tot gegevens, terwijl ze zichzelf verbergen om te voor komen dat ze worden gevonden en verwijderd.<br>Met deze waarschuwing wordt aangegeven dat de crashdump een geïnjecteerde module bevat. Om onderscheid te maken tussen kwaad aardige en niet-schadelijke geïnjecteerde modules Security Center controleert of de geïnjecteerde module voldoet aan een profiel van verdacht gedrag.|-|
 |**Er is een verdacht code segment gedetecteerd**|Hiermee wordt aangegeven dat een code segment is toegewezen met behulp van niet-standaard methoden, zoals reflectieve injectie en verlegen van het proces. De waarschuwing bevat aanvullende kenmerken van het code segment dat is verwerkt om context te bieden voor de mogelijkheden en het gedrag van het gerapporteerde code segment.|-|
 |**Shell code gedetecteerd**|Shellcode is de nettolading die wordt uitgevoerd nadat de schadelijke software misbruik heeft gemaakt van een beveiligingslek in de software.<br>Deze waarschuwing geeft aan dat de crash dump analyse uitvoer bare code heeft gedetecteerd die het gedrag vertoont dat gewoonlijk wordt uitgevoerd door schadelijke nettoladingen. Hoewel niet-schadelijke software dit gedrag ook kan uitvoeren, is het niet gebruikelijk om normaal software te ontwikkelen.|-|
-|**Aanvals techniek met bestanden gedetecteerd**|Het geheugen van het opgegeven proces bevat een aanvals Toolkit met een bestand: Meterpreter. Aanvals toolkiten zonder bestanden hebben doorgaans geen aanwezigheid op het bestands systeem, waardoor detectie door traditionele antivirus software lastig is.|DefenseEvasion/uitvoering|
+|**Aanvals techniek met bestanden gedetecteerd**|Het geheugen van het opgegeven proces bevat een aanvals Toolkit met een bestand: [Toolkit naam]. Aanvals toolkiten zonder bestanden hebben doorgaans geen aanwezigheid op het bestands systeem, waardoor detectie door traditionele antivirus software lastig is.|DefenseEvasion/uitvoering|
 ||<a name="alerts-linux"></a><h3>Linux-machines</h3> [Meer details en opmerkingen](security-center-alerts-iaas.md#linux-)||
 |**Proces dat wordt weer gegeven op een ongebruikelijke manier toegang tot het bestand met SSH-geautoriseerde sleutels**|Een bestand met SSH-geautoriseerde sleutels is geopend in een methode die vergelijkbaar is met bekende malware-campagnes. Deze toegang kan erop wijzen dat een aanvaller permanente toegang tot een computer probeert te krijgen.|-|
 |**Gedetecteerde persistentie-poging**|Er is met de analyse van de hostgegevens gedetecteerd dat er een opstart script voor de modus voor één gebruiker is geïnstalleerd.<br>Omdat een rechtmatig proces zou moeten worden uitgevoerd in deze modus, kan dit erop wijzen dat een aanvaller een schadelijk proces heeft toegevoegd aan elk uitvoerings niveau om persistentie te garanderen. |Persistentie|

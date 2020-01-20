@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5000d79db0d9036fe8904322764e4c480111d6cc
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b301bc6c1674cad26288556957ba6214df74f18d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863390"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278663"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Beperking controleren en beperken om de latentie in Azure Time Series Insights te verminderen
 
@@ -30,7 +30,7 @@ U hebt hoogstwaarschijnlijk latentie en beperking bij het volgende:
 - Voeg een gebeurtenis bron toe die oude gegevens bevat die mogelijk de toegewezen ingangs snelheden overschrijden (Time Series Insights moet worden opgevangen).
 - Voeg meer gebeurtenis bronnen toe aan een omgeving, wat resulteert in een piek van aanvullende gebeurtenissen (wat de capaciteit van uw omgeving kan overschrijden).
 - Grote hoeveel heden historische gebeurtenissen naar een gebeurtenis bron pushen, wat resulteert in een vertraging (Time Series Insights moet worden opgevangen).
-- Koppel referentie gegevens met telemetrie, wat resulteert in een grotere gebeurtenis grootte.  Vanuit een beperkings perspectief wordt een ingangs gegevens pakket met een pakket grootte van 32 KB behandeld als 32-gebeurtenissen, die elk een grootte hebben van 1 KB. De Maxi maal toegestane gebeurtenis grootte is 32 KB; gegevens pakketten groter dan 32 KB worden afgekapt.
+- Koppel referentie gegevens met telemetrie, wat resulteert in een grotere gebeurtenis grootte. Vanuit een beperkings perspectief wordt een ingangs gegevens pakket met een pakket grootte van 32 KB behandeld als 32-gebeurtenissen, die elk een grootte hebben van 1 KB. De Maxi maal toegestane gebeurtenis grootte is 32 KB; gegevens pakketten groter dan 32 KB worden afgekapt.
 
 ## <a name="video"></a>Video
 
@@ -40,13 +40,13 @@ U hebt hoogstwaarschijnlijk latentie en beperking bij het volgende:
 
 ## <a name="monitor-latency-and-throttling-with-alerts"></a>Latentie controleren en beperken met waarschuwingen
 
-Waarschuwingen kunnen u helpen bij het vaststellen en oplossen van latentie problemen die door uw omgeving worden veroorzaakt.
+Waarschuwingen kunnen u helpen bij het vaststellen en oplossen van latentie problemen die in uw omgeving optreden.
 
 1. Selecteer uw Time Series Insights omgeving in het Azure Portal. Selecteer vervolgens **waarschuwingen**.
 
    [![een waarschuwing aan uw Time Series Insights omgeving toevoegen](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
-1. Het deel venster **regel maken** wordt weer gegeven. Selecteer **toevoegen** onder **voor waarde**.
+1. Selecteer **+ Nieuwe waarschuwingsregel**. Het deel venster **regel maken** wordt weer gegeven. Selecteer **toevoegen** onder **voor waarde**.
 
    [deel venster waarschuwing ![toevoegen](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 

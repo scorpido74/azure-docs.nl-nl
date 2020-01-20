@@ -1,22 +1,20 @@
 ---
 title: bestand opnemen
 description: bestand opnemen
-services: functions
 author: ggailey777
-manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
 ms.date: 10/19/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 3fd610512a87263eeb6599a24faef5ba23070823
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: a925076dfccd30c73febb2aadc8692667ea01525
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67608154"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279414"
 ---
-Besturingselementen voor de [functie steekproeven in Application Insights](../articles/azure-functions/functions-monitoring.md#configure-sampling).
+Hiermee bepaalt u de [sampling functie in Application Insights](../articles/azure-functions/functions-monitoring.md#configure-sampling).
 
 ```json
 {
@@ -29,7 +27,7 @@ Besturingselementen voor de [functie steekproeven in Application Insights](../ar
 }
 ```
 
-|Eigenschap  |Standaard | Description |
+|Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|isEnabled|true|Hiermee schakelt lijnen of.| 
-|maxTelemetryItemsPerSecond|5|De drempelwaarde op welke steekproeven wordt gestart.| 
+|isEnabled|waar|Hiermee worden steek proeven in-of uitgeschakeld.| 
+|maxTelemetryItemsPerSecond|5|De drempel waarde waarmee steek proeven worden gestart.| 

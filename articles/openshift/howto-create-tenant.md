@@ -1,49 +1,48 @@
 ---
-title: Maken van een Azure AD-tenant voor Azure Red Hat OpenShift | Microsoft Docs
-description: Hier is het maken van een tenant Azure Active Directory (Azure AD) voor het hosten van uw Microsoft Azure Red Hat OpenShift-cluster.
+title: Een Azure AD-Tenant maken voor Azure Red Hat open Shift
+description: U kunt als volgt een Azure Active Directory-Tenant (Azure AD) maken om uw Microsoft Azure Red Hat open Shift-cluster te hosten.
 author: jimzim
 ms.author: jzim
 ms.service: container-service
-manager: jeconnoc
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 560cdcf8a99a486c7f5177b675cff327c6fb6a41
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad03538cafcce9c1d660d0f2ac5eb3c6ae5f4f38
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306450"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270454"
 ---
-# <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Maken van een Azure AD-tenant voor Azure Red Hat OpenShift
+# <a name="create-an-azure-ad-tenant-for-azure-red-hat-openshift"></a>Een Azure AD-Tenant maken voor Azure Red Hat open Shift
 
-Microsoft Azure Red Hat OpenShift vereist een [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) tenant in te maken van uw cluster. Een *tenant* is een toegewezen exemplaar van Azure AD dat een organisatie of app-ontwikkelaar ontvangt wanneer ze een relatie met Microsoft maken door de registratie voor Azure, Microsoft Intune of Microsoft 365. Elke Azure AD-tenant is uniek en die is gescheiden van andere Azure AD-tenants en heeft een eigen werk en school-id's en app-registraties.
+Voor Microsoft Azure Red Hat open Shift is een [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) -Tenant vereist waarin u uw cluster kunt maken. Een *Tenant* is een toegewezen exemplaar van Azure AD dat een organisatie of app-ontwikkelaar ontvangt wanneer ze een relatie met micro soft maken door zich aan te melden voor Azure, Microsoft Intune of Microsoft 365. Elke Azure AD-Tenant is uniek en los van andere Azure AD-tenants en heeft zijn eigen werk-en school identiteiten en app-registraties.
 
-Als u nog een Azure AD-tenant hebt, volgt u deze instructies voor het maken van een.
+Als u nog geen Azure AD-Tenant hebt, volgt u deze instructies om er een te maken.
 
 ## <a name="create-a-new-azure-ad-tenant"></a>Een nieuwe Azure AD-tenant maken
 
-Een tenant maken:
+Een Tenant maken:
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com/) met behulp van het account dat u wilt koppelen aan uw Azure Red Hat OpenShift-cluster.
-2. Open de [Azure Active Directory-blade](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) naar een nieuwe tenant maken (ook wel bekend als een nieuwe *Azure Active Directory*).
-3. Geef een **organisatienaam**.
-4. Geef een **initiële domeinnaam**. Dit is *onmicrosoft.com* hieraan toegevoegd. U kunt de waarde voor hergebruiken *organisatienaam* hier.
-5. Kies een land of regio waar de tenant wordt gemaakt.
-6. Klik op **Create**.
-7. Nadat uw Azure AD-tenant is gemaakt, selecteert u de **Klik hier voor het beheren van uw nieuwe adreslijst** koppeling. De naam van uw nieuwe tenant moet worden weergegeven in de rechterbovenhoek van de Azure-portal:  
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) met het account dat u wilt koppelen aan uw Azure Red Hat open Shift-cluster.
+2. Open de [blade Azure Active Directory](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory) om een nieuwe Tenant te maken (ook wel een nieuwe *Azure Active Directory*genoemd).
+3. Geef een **naam**op voor de organisatie.
+4. Geef een **initiële domein naam**op. Er wordt een *onmicrosoft.com* aan toegevoegd. U kunt de waarde voor *organisatie naam* hier opnieuw gebruiken.
+5. Kies een land of regio waar de Tenant wordt gemaakt.
+6. Klik op **Maken**.
+7. Nadat uw Azure AD-Tenant is gemaakt, selecteert **u de koppeling Klik hier om uw nieuwe directory te beheren** . De naam van uw nieuwe Tenant wordt weer gegeven in de rechter bovenhoek van de Azure Portal:  
 
-    ![Schermafbeelding van de portal geeft de naam van de tenant in de rechterbovenhoek][tenantcallout]  
+    ![Scherm afbeelding van de portal met de naam van de Tenant in de rechter bovenhoek][tenantcallout]  
 
-8. Noteer de *tenant-ID* , zodat u kunt later opgeven waar u om uw Azure Red Hat OpenShift-cluster te maken. In de portal ziet u nu de overzichtsblade van Azure Active Directory voor de nieuwe tenant. Selecteer **eigenschappen** en kopieer de waarde voor uw **map-ID**. Er wordt verwezen naar deze waarde als `TENANT` in de [maken van een cluster Azure Red Hat OpenShift](tutorial-create-cluster.md) zelfstudie.
+8. Noteer de *Tenant-id* zodat u later kunt opgeven waar u uw Azure Red Hat open Shift-cluster wilt maken. In de portal ziet u nu de Blade Azure Active Directory overzicht voor uw nieuwe Tenant. Selecteer **Eigenschappen** en kopieer de waarde voor de **map-id**. We verwijzen naar deze waarde als `TENANT` in de zelf studie [een Azure Red Hat open Shift-cluster maken](tutorial-create-cluster.md) .
 
 [tenantcallout]: ./media/howto-create-tenant/tenant-callout.png
 
 ## <a name="resources"></a>Resources
 
-Bekijk [Azure Active Directory-documentatie](https://docs.microsoft.com/azure/active-directory/) voor meer informatie over [Azure AD-tenants](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
+Raadpleeg de [documentatie van Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) voor meer informatie over [Azure AD-tenants](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Informatie over het maken van een service-principal, een client-geheim en de verificatie callback-URL te genereren en maak een nieuwe Active Directory-gebruiker voor het testen van apps op uw cluster Azure Red Hat OpenShift.
+Meer informatie over het maken van een Service-Principal, het genereren van een client geheim en verificatie-call back-URL en het maken van een nieuwe Active Directory gebruiker voor het testen van apps op uw Azure Red Hat open Shift-cluster.
 
-[Een object voor Azure AD-app en gebruiker maken](howto-aad-app-configuration.md)
+[Een Azure AD-App-object en-gebruiker maken](howto-aad-app-configuration.md)

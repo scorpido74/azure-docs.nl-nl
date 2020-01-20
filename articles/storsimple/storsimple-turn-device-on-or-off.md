@@ -1,177 +1,170 @@
 ---
-title: De StorSimple 8000-apparaat in of uit te schakelen | Microsoft Docs
-description: Wordt uitgelegd hoe u een nieuwe StorSimple-apparaat inschakelen, inschakelen op een apparaat dat is afgesloten of verloren power en een actief apparaat uitschakelen.
-services: storsimple
-documentationcenter: ''
+title: Uw StorSimple 8000 Series-apparaat in-of uitschakelen
+description: In dit artikel wordt uitgelegd hoe u een nieuw StorSimple-apparaat inschakelt, een apparaat inschakelt dat is afgesloten of verloren is gegaan en u een actief apparaat uitschakelt.
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29a45c0d32e35b5d321670bf25334a2976b93e56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1319583569a8abc619ad902a87ee551b476f88eb
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64693681"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276881"
 ---
-# <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Schakel in of uit de StorSimple 8000-apparaat
+# <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Het StorSimple 8000 Series-apparaat in-of uitschakelen
 
 ## <a name="overview"></a>Overzicht
-Afsluiten van een Microsoft Azure StorSimple-apparaat is niet vereist als onderdeel van de werking van het normale systeem. U moet echter mogelijk inschakelen op een nieuw apparaat of een apparaat dat opnieuw moest worden afgesloten. Over het algemeen is een afsluiten vereist in gevallen waarin u moet mislukte hardware vervangen, fysiek verplaatsen een eenheid of duren voordat een apparaat buiten gebruik gesteld. Deze zelfstudie beschrijft de vereiste procedure voor het inschakelen van of afsluiten van uw StorSimple-apparaat in verschillende scenario's.
+Het afsluiten van een Microsoft Azure StorSimple apparaat is niet vereist als onderdeel van de normale werking van het systeem. Het is echter mogelijk dat u een nieuw apparaat of een apparaat moet inschakelen dat moet worden afgesloten. Normaal gesp roken is een afsluiting vereist in gevallen waarin het nodig is om hardware te vervangen, een eenheid fysiek te verplaatsen of een apparaat buiten gebruik te maken. In deze zelf studie wordt de vereiste procedure beschreven voor het inschakelen en afsluiten van uw StorSimple-apparaat in verschillende scenario's.
 
 ## <a name="turn-on-a-new-device"></a>Een nieuw apparaat inschakelen
-De stappen voor het inschakelen van een StorSimple-apparaat voor de eerste keer is afhankelijk van of het apparaat is een 8100 of een 8600-model. De 8100 heeft één primaire behuizing, terwijl de 8600 een dual-behuizing-apparaat met een primaire behuizing en een EBOD-behuizing is. De gedetailleerde stappen voor beide modellen worden in de volgende secties besproken.
+De stappen voor het inschakelen van een StorSimple-apparaat voor de eerste keer variëren, afhankelijk van het feit of het apparaat een 8100-of 8600-model is. De 8100 heeft één primaire behuizing, terwijl 8600 een apparaat met twee behuizingen is met een primaire behuizing en een EBOD behuizing. De gedetailleerde stappen voor beide modellen worden in de volgende secties besproken.
 
 * [Nieuw apparaat met alleen primaire behuizing](#new-device-with-primary-enclosure-only)
-* [Nieuw apparaat met EBOD behuizing](#new-device-with-ebod-enclosure)
+* [Nieuw apparaat met EBOD Enclosure](#new-device-with-ebod-enclosure)
 
 ### <a name="new-device-with-primary-enclosure-only"></a>Nieuw apparaat met alleen primaire behuizing
-Het StorSimple 8100-model is een apparaat met één behuizing. Uw apparaat bevat redundante voeding en koeling Modules (PCMs). Zowel PCMs moet worden geïnstalleerd en die zijn verbonden met verschillende energiebronnen om hoge beschikbaarheid te garanderen.
+Het StorSimple 8100-model is een apparaat met één behuizing. Uw apparaat bevat redundante voeding-en koel modules (PCMs). Beide PCMs moeten zijn geïnstalleerd en verbonden zijn met verschillende energie bronnen om hoge Beschik baarheid te garanderen.
 
-De volgende stappen uitvoeren om uw apparaat voor power bekabelen.
+Voer de volgende stappen uit om uw apparaat op de stroom te aansluiten.
 
 [!INCLUDE [storsimple-cable-8100-for-power](../../includes/storsimple-cable-8100-for-power.md)]
 
 > [!NOTE]
-> Voor apparaatconfiguratie voltooien en instructies bekabeling, gaat u naar [uw StorSimple 8100-apparaat installeert](storsimple-8100-hardware-installation.md). Zorg ervoor dat u de instructies precies volgen.
+> Ga naar [uw StorSimple 8100-apparaat installeren voor de](storsimple-8100-hardware-installation.md)volledige installatie-en bekabelings instructies van het apparaat. Zorg ervoor dat u de instructies precies volgt.
 > 
 > 
 
-### <a name="new-device-with-ebod-enclosure"></a>Nieuw apparaat met EBOD behuizing
-Het StorSimple 8600-model heeft zowel een primaire behuizing en een EBOD-behuizing. Hiervoor moet de eenheden op elkaar worden bekabeld voor SAS Serial Attached SCSI ()-connectiviteit en power.
+### <a name="new-device-with-ebod-enclosure"></a>Nieuw apparaat met EBOD Enclosure
+Het StorSimple 8600-model heeft zowel een primaire behuizing als een EBOD-behuizing. Hiervoor moeten de eenheden worden verbonden met een SAS-verbinding (Serial Attached SCSI) en kracht.
 
-Bij het instellen van dit apparaat voor de eerste keer, voer de stappen voor het SAS-bekabeling eerst en voltooit u de stappen voor het power-bekabeling.
+Wanneer u dit apparaat voor de eerste keer instelt, voert u de stappen voor SAS-bekabeling eerst uit en voert u de stappen voor energie bekabeling uit.
 
 [!INCLUDE [storsimple-sas-cable-8600](../../includes/storsimple-sas-cable-8600.md)]
 
 [!INCLUDE [storsimple-cable-8600-for-power](../../includes/storsimple-cable-8600-for-power.md)]
 
 > [!NOTE]
-> Voor apparaatconfiguratie voltooien en instructies bekabeling, gaat u naar [uw StorSimple 8600-apparaat installeert](storsimple-8600-hardware-installation.md). Zorg ervoor dat u de instructies precies volgen.
+> Ga naar [uw StorSimple 8600-apparaat installeren voor de](storsimple-8600-hardware-installation.md)volledige installatie-en bekabelings instructies van het apparaat. Zorg ervoor dat u de instructies precies volgt.
 
-## <a name="turn-on-a-device-after-shutdown"></a>Inschakelen op een apparaat dat na afsluiten
-De stappen voor het inschakelen van een StorSimple-apparaat nadat deze is uitgeschakeld zijn verschillend, afhankelijk van of het apparaat is een 8100 of een 8600-model. De 8100 heeft één primaire behuizing, terwijl de 8600 een dual-behuizing-apparaat met een primaire behuizing en een EBOD-behuizing is.
+## <a name="turn-on-a-device-after-shutdown"></a>Een apparaat inschakelen na afsluiten
+De stappen voor het inschakelen van een StorSimple-apparaat nadat het is uitgeschakeld, zijn afhankelijk van het feit of het apparaat een 8100-of 8600-model is. De 8100 heeft één primaire behuizing, terwijl 8600 een apparaat met twee behuizingen is met een primaire behuizing en een EBOD behuizing.
 
 * [Apparaat met alleen primaire behuizing](#device-with-primary-enclosure-only)
-* [Apparaat met EBOD behuizing](#device-with-ebod-enclosure)
+* [Apparaat met EBOD Enclosure](#device-with-ebod-enclosure)
 
 ### <a name="device-with-primary-enclosure-only"></a>Apparaat met alleen primaire behuizing
-Gebruik de volgende procedure om in te schakelen op een StorSimple-apparaat met een primaire behuizing en geen behuizing EBOD na een afsluiten.
+Gebruik na het afsluiten de volgende procedure om een StorSimple-apparaat in te scha kelen met een primaire behuizing en zonder EBOD behuizing.
 
-#### <a name="to-turn-on-a-device-with-a-primary-enclosure-only"></a>Om in te schakelen op een apparaat met een primaire behuizing alleen
-1. Zorg ervoor dat de kracht switches op beide stroom en koeling Modules (PCMs) op de positie OFF zijn. Als de switches niet op OFF positie, ze naar de positie OFF spiegelen en wacht tot de verlichting om uit te gaan.
-2. Schakel op het apparaat door de power-switches op beide PCMs op de positie van spiegelen. Het apparaat moet inschakelen.
-3. Controleer het volgende om te controleren of het apparaat volledig is ingeschakeld:
+#### <a name="to-turn-on-a-device-with-a-primary-enclosure-only"></a>Een apparaat met alleen primaire behuizing inschakelen
+1. Zorg ervoor dat de energie switches voor zowel energie-als koel modules (PCMs) in de buiten stand staan. Als de switches niet zijn uitgeschakeld, spiegelt u ze naar de buiten stand en wacht u totdat de lampjes uitvallen.
+2. Schakel het apparaat in door de Schakel opties voor beide PCMs te spie gelen naar de op-positie. Het apparaat moet worden ingeschakeld.
+3. Controleer het volgende om te controleren of het apparaat volledig is:
    
-   1. De OK-LED's op zowel PCM-modules zijn groen.
-   2. De status-LED's op beide controllers zijn groen.
-   3. De blauwe LED op een van de controllers is knipperende, wat aangeeft dat de domeincontroller actief is.
+   1. De OK-Led's op beide PCM-modules zijn groen.
+   2. De status-Led's op beide controllers zijn groen.
+   3. De blauwe LED op een van de controllers knippert, wat aangeeft dat de controller actief is.
       
-      Uw apparaat is niet in orde als niet aan een van deze voorwaarden wordt voldaan. Neem [Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+      Als aan een van deze voor waarden niet wordt voldaan, is uw apparaat niet in orde. Neem [contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md).
 
-### <a name="device-with-ebod-enclosure"></a>Apparaat met EBOD behuizing
-Gebruik de volgende procedure om in te schakelen op een StorSimple-apparaat met een primaire behuizing en een behuizing EBOD na een afsluiten. Elke stap precies zoals beschreven in volgorde uitvoert. Dit niet doet, kan leiden tot verlies van gegevens.
+### <a name="device-with-ebod-enclosure"></a>Apparaat met EBOD Enclosure
+Gebruik na het afsluiten de volgende procedure om een StorSimple-apparaat in te scha kelen met een primaire behuizing en een EBOD-behuizing. Voer elke stap in de juiste volg orde uit zoals beschreven. Als u dit niet doet, kan dit leiden tot gegevens verlies.
 
-#### <a name="to-turn-on-a-device-with-a-primary-and-an-ebod-enclosure"></a>Om in te schakelen op een apparaat met een primaire en een behuizing EBOD
-1. Zorg ervoor dat de behuizing EBOD is verbonden met de primaire behuizing. Zie voor meer informatie, [uw StorSimple 8600-apparaat installeert](storsimple-8600-hardware-installation.md).
-2. Zorg ervoor dat de stroom en koeling Modules (PCMs) op de EBOD en de primaire-behuizingen in de positie OFF zijn. Als de switches niet op OFF positie, ze naar de positie OFF spiegelen en wacht tot de verlichting om uit te gaan.
-3. De behuizing EBOD eerst inschakelen door de power-switches op beide PCMs op de positie van spiegelen. De PCM-LED's moeten groen. Een groene EBOD-controller LED op deze eenheid geeft aan dat de behuizing EBOD op.
-4. Schakel op de primaire behuizing door de power-switches op beide PCMs op de positie van spiegelen. Het hele systeem worden nu op.
-5. Controleer of de SAS-LED's zijn groen, die garandeert dat de verbinding tussen de behuizing EBOD en de primaire behuizing goed is.
+#### <a name="to-turn-on-a-device-with-a-primary-and-an-ebod-enclosure"></a>Een apparaat met een primaire en een EBOD-behuizing inschakelen
+1. Zorg ervoor dat de EBOD-behuizing is verbonden met de primaire behuizing. Zie [uw StorSimple 8600-apparaat installeren](storsimple-8600-hardware-installation.md)voor meer informatie.
+2. Zorg ervoor dat de voeding en koel modules (PCMs) op zowel de EBOD als de primaire behuizingen zich in de buiten stand bevinden. Als de switches niet zijn uitgeschakeld, spiegelt u ze naar de buiten stand en wacht u totdat de lampjes uitvallen.
+3. Schakel eerst de EBOD-behuizing in door de Schakel opties voor beide PCMs te spie gelen. De PCM-Led's moeten groen zijn. Een groene EBOD-controller in deze eenheid geeft aan dat de EBOD behuizing is ingeschakeld.
+4. Schakel de primaire behuizing in door de Schakel opties voor beide PCMs te spie gelen naar de op-positie. Het hele systeem moet nu zijn ingeschakeld.
+5. Controleer of de SAS-Led's groen zijn. Dit zorgt ervoor dat de verbinding tussen de EBOD behuizing en de primaire behuizing goed is.
 
-## <a name="turn-on-a-device-after-a-power-loss"></a>Inschakelen op een apparaat na een stroomstoring
-Een stroomstoring of onderbreking kunt afsluiten een StorSimple-apparaat. De stroomstoring kan gebeuren op een van de stroom wordt voorzien of beide voedingen. De herstelstappen zijn verschillend, afhankelijk van of het apparaat een model 8100 of 8600 is. De 8100 heeft één primaire behuizing, terwijl de 8600 een dual-behuizing-apparaat met een primaire behuizing en een EBOD-behuizing is. Deze sectie beschrijft de herstelprocedure voor elk scenario.
+## <a name="turn-on-a-device-after-a-power-loss"></a>Een apparaat inschakelen na een stroom storing
+Een stroom storing of-onderbreking kan een StorSimple-apparaat afsluiten. De stroom storing kan optreden bij een van de voedingen of beide energie-eenheden. De herstels tappen verschillen, afhankelijk van of het apparaat een 8100-of 8600-model is. De 8100 heeft één primaire behuizing, terwijl 8600 een apparaat met twee behuizingen is met een primaire behuizing en een EBOD behuizing. In deze sectie wordt de herstel procedure voor elk scenario beschreven.
 
 * [Apparaat met alleen primaire behuizing](#8100)
-* [Apparaat met EBOD behuizing](#8600)
+* [Apparaat met EBOD Enclosure](#8600)
 
 ### <a name="device-with-primary-enclosure-only-a-name8100"></a>Apparaat met alleen primaire behuizing <a name="8100">
-Het systeem kan de normale werking blijven als er plotseling uitvalt op een van de stroom wordt voorzien. Voor hoge beschikbaarheid van het apparaat, herstel echter power de voeding zo snel mogelijk.
+Het systeem kan de normale werking voortzetten als er sprake is van stroom storingen in een van de energie-eenheden. Als u echter een hoge Beschik baarheid van het apparaat wilt garanderen, moet u zo snel mogelijk de kracht van de voeding herstellen.
 
-Als er een stroomstoring of een stroomstoring op beide voedingen, wordt het systeem zich in een geordend en gecontroleerde manier afsluiten. Het systeem wordt automatisch ingeschakeld wanneer de stroom wordt hersteld.
+Als er sprake is van een stroom storing of een stroom onderbreking voor beide voedingen, wordt het systeem op een ordelijk en gecontroleerde manier afgesloten. Wanneer de stroom wordt hersteld, wordt het systeem automatisch ingeschakeld.
 
-### <a name="device-with-ebod-enclosure-a-name8600"></a>Apparaat met EBOD behuizing <a name="8600">
-#### <a name="power-loss-on-one-power-supply"></a>Een stroom plotseling uitvalt opgeven
-Het systeem kan de normale werking blijven als er plotseling uitvalt op een van de voedingen op de primaire behuizing of de EBOD-behuizing. Echter voor hoge beschikbaarheid van het apparaat, zet power de voeding zo snel mogelijk.
+### <a name="device-with-ebod-enclosure-a-name8600"></a>Apparaat met EBOD Enclosure <a name="8600">
+#### <a name="power-loss-on-one-power-supply"></a>Energie verlies bij één voeding
+Het systeem kan de normale werking voortzetten als er sprake is van stroom uitval van een van de voedingen op de primaire behuizing of de EBOD-behuizing. Als u echter een hoge Beschik baarheid van het apparaat wilt garanderen, moet u zo snel mogelijk de stroom naar de voeding herstellen.
 
-#### <a name="power-loss-on-both-power-supplies-on-primary-and-ebod-enclosures"></a>Beide voedingen op primaire en EBOD-behuizingen plotseling uitvalt
-Als er een stroomstoring of een stroomstoring op beide voedingen, de behuizing EBOD wordt onmiddellijk afgesloten en de primaire behuizing op een wijze geordend en gecontroleerde wordt afgesloten. Wanneer power wordt hersteld, wordt het apparaat wordt automatisch gestart.
+#### <a name="power-loss-on-both-power-supplies-on-primary-and-ebod-enclosures"></a>Stroom uitval voor beide voedings eenheden op primaire en EBOD Behuizingen
+Als er sprake is van een stroom storing of een stroom onderbreking voor beide voedingen, wordt de EBOD Enclosure onmiddellijk afgesloten en wordt de primaire behuizing op een ordelijk en gecontroleerde manier afgesloten. Wanneer de stroom wordt hersteld, wordt het apparaat automatisch gestart.
 
-Als de stroom handmatig wordt uitgeschakeld, klikt u vervolgens de volgende stappen om te zetten power op het systeem.
+Als de stroom hand matig is uitgeschakeld, voert u de volgende stappen uit om de kracht van het systeem te herstellen.
 
-1. Schakel de EBOD-behuizing.
-2. Nadat de EBOD-behuizing ingeschakeld is, schakelt u op de primaire behuizing.
+1. Schakel de EBOD-behuizing in.
+2. Wanneer de EBOD-behuizing is ingeschakeld, schakelt u de primaire behuizing in.
 
-### <a name="power-loss-on-both-power-supplies-on-ebod-enclosure"></a>Beide voedingen op EBOD behuizing plotseling uitvalt
-Bij het instellen van de kabels, moet u ervoor zorgen dat de EBOD nooit alleen is verbonden met een afzonderlijke PDU. Als de EBOD en primaire behuizing niet op hetzelfde moment, wordt het systeem wordt hersteld.
+### <a name="power-loss-on-both-power-supplies-on-ebod-enclosure"></a>Stroom uitval voor beide voedingen op EBOD behuizing
+Wanneer u de kabels hebt ingesteld, moet u ervoor zorgen dat de EBOD nooit alleen op een afzonderlijke PDU is aangesloten. Als de EBOD en de primaire behuizing op hetzelfde moment mislukken, zal het systeem herstellen.
 
-Als er slechts de behuizing EBOD op beide voedingen mislukt, wordt het systeem wordt niet automatisch hersteld. De volgende stappen om te schakelen op het systeem en het herstellen naar een goede status:
+Als alleen de EBOD behuizing van beide voedingen mislukt, wordt het systeem niet automatisch hersteld. Voer de volgende stappen uit om het systeem in te scha kelen en terug te zetten naar een goede status:
 
-1. Als de primaire behuizing is ingeschakeld, schakelen zowel voeding en koeling Modules (PCMs) uit.
-2. Wacht een paar minuten voor het systeem om af te sluiten.
-3. Schakel de EBOD-behuizing.
-4. Nadat de EBOD-behuizing ingeschakeld is, schakelt u op de primaire behuizing.
+1. Als de primaire behuizing is ingeschakeld, schakelt u zowel energie-als koel modules (PCMs) uit.
+2. Wacht een paar minuten totdat het systeem is afgesloten.
+3. Schakel de EBOD-behuizing in.
+4. Wanneer de EBOD-behuizing is ingeschakeld, schakelt u de primaire behuizing in.
 
 ## <a name="turn-on-a-device-after-the-primary-and-ebod-enclosure-connection-is-lost"></a>Een apparaat inschakelen nadat de primaire en EBOD behuizing verbinding is verbroken
-Als de verbinding verbroken tussen de stand-by-controller en de bijbehorende EBOD-controller wordt, blijft het apparaat werken. Als de verbinding tussen de actieve controller van systeem en de bijbehorende EBOD-controller verbroken is, failover moet worden uitgevoerd en het apparaat moet blijven werken die normaal werken.
+Als de verbinding tussen de stand-by-controller en de bijbehorende EBOD-controller is verbroken, blijft het apparaat werken. Als de verbinding tussen de systeem actieve controller en de bijbehorende EBOD-controller verloren gaat, moet de failover optreden en moet het apparaat normaal blijven werken.
 
-Wanneer beide SAS Serial Attached SCSI ()-kabels zijn verwijderd of de verbinding tussen de behuizing EBOD en de primaire behuizing is verbroken, wordt het apparaat niet meer werken. Op dit moment de volgende stappen uitvoeren.
+Wanneer beide SAS-kabels (Serial Attached SCSI) worden verwijderd of de verbinding tussen de EBOD-behuizing en de primaire behuizing ernstig is, werkt het apparaat niet meer. Voer op dit moment de volgende stappen uit.
 
-### <a name="to-turn-on-the-device-after-connection-is-lost"></a>Als u wilt inschakelen op het apparaat na de verbinding is verbroken
-1. Toegang tot de achterkant van het apparaat.
-2. Als de SAS-kabel-verbinding tussen de behuizing EBOD en de primaire behuizing verbroken is, worden alle SAS lane LED's op de behuizing EBOD uitschakelen.
-3. Zowel voeding en koeling Modules (PCMs) sluit de behuizing EBOD en de primaire behuizing.
-4. Wacht totdat de verlichting op de achterkant van zowel de bijlagen uitschakelen.
-5. U kunt de SAS-kabels en zorg ervoor dat er een goede verbinding tussen de behuizing EBOD en de primaire behuizing.
-6. De behuizing EBOD eerst inschakelen door het spiegelen van beide PCM-switches op de positie op.
-7. Zorg ervoor dat de behuizing EBOD op door te controleren dat de groene LED is ingesteld op ON.
-8. Schakel op de primaire behuizing.
-9. Zorg ervoor dat de primaire behuizing op door te controleren dat de controller groen-LED is ingesteld op ON.
-10. Controleer of de EBOD behuizing verbinding met de primaire behuizing is goed door te controleren dat de SAS-baan LED's (vier per EBOD-controller) zijn alle op.
+### <a name="to-turn-on-the-device-after-connection-is-lost"></a>Het apparaat inschakelen nadat de verbinding is verbroken
+1. Toegang tot de achtergrond van het apparaat.
+2. Als de SAS-kabel verbinding tussen de EBOD behuizing en de primaire behuizing is verbroken, worden alle SAS Lane-Led's op de EBOD-behuizing uitgeschakeld.
+3. Sluit zowel energie-als koel modules (PCMs) op de EBOD behuizing en de primaire behuizing af.
+4. Wacht totdat alle lampjes op de achtergrond van de behuizing zijn uitgeschakeld.
+5. Plaats de SAS-kabels opnieuw en zorg ervoor dat er een goede verbinding is tussen de EBOD behuizing en de primaire behuizing.
+6. Schakel eerst de EBOD-behuizing in door beide PCM-switches naar de op positie te spie gelen.
+7. Controleer of de EBOD-behuizing is ingeschakeld door te controleren of de groene LED is ingeschakeld.
+8. Schakel de primaire behuizing in.
+9. Controleer of de primaire behuizing is ingeschakeld door te controleren of de LED voor de controller groene is ingeschakeld.
+10. Controleer of de EBOD Enclosure-verbinding met de primaire behuizing goed is door te controleren of de SAS Lane-Led's (vier per EBOD-controller) zijn.
 
 > [!IMPORTANT]
-> Als de SAS-kabels beschadigd zijn of de verbinding tussen de behuizing EBOD en de primaire behuizing niet goed, is wanneer u op het systeem inschakelen, gaat deze in de herstelmodus. Neem [Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md) als dit het geval is.
+> Als de SAS-kabels defect zijn of de verbinding tussen de EBOD behuizing en de primaire behuizing niet goed is, wordt de herstel modus ingeschakeld wanneer u het systeem inschakelt. Neem [contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) als dit het geval is.
 
 
 ## <a name="turn-off-a-running-device"></a>Een actief apparaat uitschakelen
-Een actieve StorSimple-apparaat moet mogelijk worden afgesloten als deze wordt verplaatst, genomen buiten gebruik gesteld, of heeft een niet-functionerende onderdeel dat moet worden vervangen. De stappen zijn verschillend, afhankelijk van het StorSimple-apparaat is of een 8100 of een 8600-model. De 8100 heeft één primaire behuizing, terwijl de 8600 een dual-behuizing-apparaat met een primaire behuizing en een EBOD-behuizing is. In deze sectie worden de stappen om een actief apparaat af te sluiten.
+Een actief StorSimple-apparaat moet mogelijk worden afgesloten als het wordt verplaatst, buiten gebruik wordt gesteld of een defect onderdeel heeft dat moet worden vervangen. De stappen verschillen, afhankelijk van het feit of het StorSimple-apparaat een 8100-of 8600-model is. De 8100 heeft één primaire behuizing, terwijl 8600 een apparaat met twee behuizingen is met een primaire behuizing en een EBOD behuizing. In deze sectie vindt u informatie over de stappen voor het afsluiten van een actief apparaat.
 
 * [Apparaat met primaire behuizing](#8100a)
-* [Apparaat met EBOD behuizing](#8600a)
+* [Apparaat met EBOD Enclosure](#8600a)
 
 ### <a name="device-with-primary-enclosure-a-name8100a"></a>Apparaat met primaire behuizing <a name="8100a">
-Als u wilt op een wijze geordend en gecontroleerd op het apparaat wordt afgesloten, kunt u dit doen via Azure portal of via de Windows PowerShell voor StorSimple. 
+Als u het apparaat op een ordelijk en gecontroleerde manier wilt afsluiten, kunt u dit doen via de Azure Portal of via de Windows PowerShell voor StorSimple. 
 
 > [!IMPORTANT]
-> Niet een actief apparaat uitschakelen met behulp van de / uit-knop op de achterkant van het apparaat.
+> Sluit een actief apparaat niet af met behulp van de aan/uit-knop aan de achterkant van het apparaat.
 > 
-> Voordat het apparaat wordt afgesloten, ervoor zorgen dat alle onderdelen van het apparaat in orde zijn. In de Azure-portal, gaat u naar **apparaten** > **Monitor** > **hardwarestatus**, en controleer of de status van alle onderdelen is groen. Dit geldt alleen voor een systeem in orde. Als het systeem wordt afgesloten omlaag naar een niet-functionerende onderdeel vervangen, moet u ziet een mislukte (rode) of gedegradeerd (geel) de status voor het betreffende onderdeel in de **hardwarestatus**.
+> Voordat u het apparaat afsluit, controleert u of alle onderdelen van het apparaat in orde zijn. Ga in het Azure Portal naar **apparaten** > de status van > **Hardware**te **controleren** en controleer of de status van alle onderdelen groen is. Dit geldt alleen voor een goed systeem. Als het systeem wordt afgesloten om een defect onderdeel te vervangen, ziet u de status mislukt (rood) of gedegradeerd (geel) voor het respectieve onderdeel in de **Hardware-status**.
 > 
 > 
 
-Nadat u toegang de Windows PowerShell voor StorSimple of de Azure-portal tot, volgt u de stappen in [afgesloten een StorSimple-apparaat](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device). 
+Nadat u toegang hebt tot de Windows PowerShell voor StorSimple of de Azure Portal, volgt u de stappen in [een StorSimple-apparaat afsluiten](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device). 
 
-### <a name="device-with-ebod-enclosure-a-name8600a"></a>Apparaat met EBOD behuizing <a name="8600a">
+### <a name="device-with-ebod-enclosure-a-name8600a"></a>Apparaat met EBOD Enclosure <a name="8600a">
 > [!IMPORTANT]
-> Voordat u de primaire behuizing en de behuizing EBOD afsluit, zorg ervoor dat alle onderdelen van het apparaat in orde. In de Azure-portal, gaat u naar **apparaten** > **Monitor** > **hardwarestatus**, en controleer of alle onderdelen in orde zijn.
+> Voordat u de primaire behuizing en de EBOD-behuizing afsluit, moet u ervoor zorgen dat alle onderdelen van het apparaat in orde zijn. Ga in het Azure Portal naar **apparaten** > de status van > **Hardware**te **controleren** en controleer of alle onderdelen in orde zijn.
 
 
-#### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>Een actief apparaat met EBOD behuizing afsluiten
-1. Volg alle stappen die worden vermeld in [afgesloten een StorSimple-apparaat](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device) voor de primaire behuizing.
-2. Nadat de primaire behuizing is afgesloten, sluit u de EBOD door spiegelen uit zowel voeding en koeling-Module (PCM).
-3. Als u wilt controleren of de EBOD is afgesloten, Controleer of alle verlichting op de achterkant van de behuizing EBOD uitschakelen.
+#### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>Een actief apparaat afsluiten met EBOD Enclosure
+1. Volg alle stappen in [een StorSimple-apparaat afsluiten](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device) voor de primaire behuizing.
+2. Nadat de primaire behuizing is afgesloten, sluit u de EBOD af door te spie gelen van zowel de Schakel opties voor energie als koel module (PCM).
+3. Als u wilt controleren of de EBOD is uitgeschakeld, controleert u of alle lampjes aan de achterkant van de EBOD-behuizing zijn uitgeschakeld.
 
 > [!NOTE]
-> De SAS-kabels die worden gebruikt voor de behuizing EBOD verbinden met de primaire behuizing mogen niet worden verwijderd tot nadat het systeem wordt afgesloten.
+> De SAS-kabels die worden gebruikt om de EBOD-behuizing aan de primaire behuizing te koppelen, moeten pas worden verwijderd nadat het systeem is afgesloten.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md) als er problemen optreden bij het inschakelen van of een StorSimple-apparaat wordt afgesloten.
+[Neem contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) als u problemen ondervindt bij het inschakelen of afsluiten van een StorSimple-apparaat.
 

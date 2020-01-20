@@ -1,26 +1,20 @@
 ---
-title: Maak een Azure-schaalset die gebruikmaakt van Beschikbaarheidszones | Microsoft Docs
+title: Maak een Azure-schaalset die gebruikmaakt van Beschikbaarheidszones
 description: Meer informatie over het maken van schaal sets voor virtuele Azure-machines die gebruikmaken van Beschikbaarheidszones voor verhoogde redundantie tegen storingen
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 0a31ed174c7a5986594f7c07b7ce00b1649413c8
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 11695eb889a10dc689b00399a37382a3b9772eae
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907984"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274410"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Een schaalset voor virtuele machines maken die gebruikmaakt van Beschikbaarheidszones
 
@@ -45,7 +39,7 @@ Wanneer u een schaalset implementeert, hebt u ook de mogelijkheid om te implemen
 
 ### <a name="zone-balancing"></a>Zone-verdeling
 
-Ten slotte, voor schaal sets die zijn geïmplementeerd in meerdere zones, hebt u ook de mogelijkheid om "Best effort zone balances" of "strikte zone balans" te kiezen. Een schaalset wordt beschouwd als ' evenwichtig ' als elke zone hetzelfde aantal vm's of +\\-1 virtuele machines in alle andere zones voor de schaalset heeft. Bijvoorbeeld:
+Ten slotte, voor schaal sets die zijn geïmplementeerd in meerdere zones, hebt u ook de mogelijkheid om "Best effort zone balances" of "strikte zone balans" te kiezen. Een schaalset wordt beschouwd als ' evenwichtig ' als elke zone hetzelfde aantal Vm's of +\\-1 virtuele machine in alle andere zones voor de schaalset heeft. Bijvoorbeeld:
 
 - Een schaalset met 2 Vm's in zone 1, 3 Vm's in zone 2 en 3 virtuele machines in zone 3 wordt als evenwichtig beschouwd. Er is slechts één zone met een ander aantal VM'S en de waarde 1 is kleiner dan de andere zones. 
 - Een schaalset met 1 virtuele machine in zone 1, 3 Vm's in zone 2 en 3 Vm's in zone 3 wordt als niet-Balanced beschouwd. Zone 1 heeft twee virtuele machines dan zones 2 en 3.
@@ -64,12 +58,12 @@ Wanneer u een schaalset in één zone maakt, bepaalt u in welke zone alle VM-exe
 
 Als u Beschikbaarheidszones wilt gebruiken, moet uw schaalset worden gemaakt in een [ondersteunde Azure-regio](../availability-zones/az-overview.md#services-support-by-region). U kunt een schaalset maken die gebruikmaakt van Beschikbaarheidszones met een van de volgende methoden:
 
-- [Azure-portal](#use-the-azure-portal)
+- [Azure Portal](#use-the-azure-portal)
 - Azure-CLI
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure Resource Manager sjablonen](#use-azure-resource-manager-templates)
 
-## <a name="use-the-azure-portal"></a>Azure Portal gebruiken
+## <a name="use-the-azure-portal"></a>De Azure Portal gebruiken
 
 Het proces voor het maken van een schaalset die gebruikmaakt van een beschikbaarheids zone, is hetzelfde als de informatie in het [artikel aan](quick-create-portal.md)de slag. Wanneer u een ondersteunde Azure-regio selecteert, kunt u een schaalset maken in een of meer beschik bare zones, zoals wordt weer gegeven in het volgende voor beeld:
 
@@ -81,7 +75,7 @@ De schaalset en ondersteunende resources, zoals de Azure load balancer en het op
 
 Het proces voor het maken van een schaalset die gebruikmaakt van een beschikbaarheids zone, is hetzelfde als de informatie in het [artikel aan](quick-create-cli.md)de slag. Als u Beschikbaarheidszones wilt gebruiken, moet u uw schaalset maken in een ondersteunde Azure-regio.
 
-Voeg de `--zones` para meter toe aan de opdracht [AZ vmss Create](/cli/azure/vmss) en geef op welke zone moet worden gebruikt (bijvoorbeeld zone *1*, *2*of *3*). In het volgende voor beeld wordt een schaalset met één zone gemaakt met de naam *myScaleSet* in zone *1*:
+Voeg de para meter `--zones` toe aan de opdracht [AZ vmss Create](/cli/azure/vmss) en geef op welke zone u wilt gebruiken (zoals zone *1*, *2*of *3*). In het volgende voor beeld wordt een schaalset met één zone gemaakt met de naam *myScaleSet* in zone *1*:
 
 ```azurecli
 az vmss create \
@@ -100,7 +94,7 @@ Zie voor een volledig voor beeld van een schaalset met één zone en netwerk bro
 
 Als u een zone-redundante schaalset wilt maken, gebruikt u een openbaar IP-adres en load balancer voor de *standaard* -SKU. Voor uitgebreide redundantie maakt de *standaard* -SKU zone-redundante netwerk bronnen. Zie [Azure Load Balancer Standard-overzicht](../load-balancer/load-balancer-standard-overview.md) en [Standard Load Balancer en Beschikbaarheidszones](../load-balancer/load-balancer-standard-availability-zones.md)voor meer informatie.
 
-Als u een zone-redundante schaalset wilt maken, geeft u `--zones` meerdere zones op met de para meter. In het volgende voor beeld wordt een zone-redundante schaalset gemaakt met de naam *myScaleSet* voor de zones *1, 2, 3*:
+Als u een zone-redundante schaalset wilt maken, geeft u meerdere zones met de para meter `--zones` op. In het volgende voor beeld wordt een zone-redundante schaalset gemaakt met de naam *myScaleSet* voor de zones *1, 2, 3*:
 
 ```azurecli
 az vmss create \
@@ -117,7 +111,7 @@ Het duurt enkele minuten om alle resources en virtuele machines van de schaalset
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell gebruiken
 
-Als u Beschikbaarheidszones wilt gebruiken, moet u uw schaalset maken in een ondersteunde Azure-regio. Voeg de `-Zone` para meter toe aan de opdracht [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) en geef op welke zone u wilt gebruiken (zoals zone *1*, *2*of *3*).
+Als u Beschikbaarheidszones wilt gebruiken, moet u uw schaalset maken in een ondersteunde Azure-regio. Voeg de para meter `-Zone` toe aan de opdracht [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) en geef op welke zone u wilt gebruiken (zoals zone *1*, *2*of *3*).
 
 In het volgende voor beeld wordt een schaalset met één zone gemaakt met de naam *myScaleSet* in *VS-Oost 2* zone *1*. De Azure-netwerkresources voor het virtuele netwerk, het openbare IP-adres en de load balancer worden automatisch gemaakt. Geef desgevraagd uw eigen beheerdersreferenties op voor de VM-exemplaren in de schaalset:
 
@@ -136,7 +130,7 @@ New-AzVmss `
 
 ### <a name="zone-redundant-scale-set"></a>Zone-redundante schaalset
 
-Als u een zone-redundante schaalset wilt maken, geeft u `-Zone` meerdere zones op met de para meter. In het volgende voor beeld wordt een zone-redundante schaalset gemaakt met de naam *myScaleSet* in *VS-Oost 2* zones *1, 2, 3*. De zone-redundante Azure-netwerk resources voor het virtuele netwerk, het open bare IP-adres en de load balancer worden automatisch gemaakt. Geef desgevraagd uw eigen beheerdersreferenties op voor de VM-exemplaren in de schaalset:
+Als u een zone-redundante schaalset wilt maken, geeft u meerdere zones met de para meter `-Zone` op. In het volgende voor beeld wordt een zone-redundante schaalset gemaakt met de naam *myScaleSet* in *VS-Oost 2* zones *1, 2, 3*. De zone-redundante Azure-netwerk resources voor het virtuele netwerk, het open bare IP-adres en de load balancer worden automatisch gemaakt. Geef desgevraagd uw eigen beheerdersreferenties op voor de VM-exemplaren in de schaalset:
 
 ```powershell
 New-AzVmss `
@@ -153,7 +147,7 @@ New-AzVmss `
 
 ## <a name="use-azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen gebruiken
 
-Het proces voor het maken van een schaalset die gebruikmaakt van een beschikbaarheids zone, is hetzelfde als die wordt beschreven in het artikel aan de slag voor [Linux](quick-create-template-linux.md) of [Windows](quick-create-template-windows.md). Als u Beschikbaarheidszones wilt gebruiken, moet u uw schaalset maken in een ondersteunde Azure-regio. Voeg de `zones` eigenschap toe aan het resource type *micro soft. Compute/virtualMachineScaleSets* in uw sjabloon en geef op welke zone u wilt gebruiken (zoals zone *1*, *2*of *3*).
+Het proces voor het maken van een schaalset die gebruikmaakt van een beschikbaarheids zone, is hetzelfde als die wordt beschreven in het artikel aan de slag voor [Linux](quick-create-template-linux.md) of [Windows](quick-create-template-windows.md). Als u Beschikbaarheidszones wilt gebruiken, moet u uw schaalset maken in een ondersteunde Azure-regio. Voeg de eigenschap `zones` toe aan het resource type *micro soft. Compute/virtualMachineScaleSets* in uw sjabloon en geef op welke zone u wilt gebruiken (zoals zone *1*, *2*of *3*).
 
 In het volgende voor beeld wordt een Linux-schaalset met één zone gemaakt met de naam *myScaleSet* in *VS-Oost 2* zone *1*:
 
@@ -199,7 +193,7 @@ Zie voor een volledig voor beeld van een schaalset met één zone en netwerk bro
 
 ### <a name="zone-redundant-scale-set"></a>Zone-redundante schaalset
 
-Als u een zone-redundante schaalset wilt maken, geeft u `zones` meerdere waarden op in de eigenschap voor het resource type *micro soft. Compute/virtualMachineScaleSets* . In het volgende voor beeld wordt een zone-redundante schaalset gemaakt met de naam *myScaleSet* in *VS-Oost 2* zones *1, 2, 3*:
+Als u een zone-redundante schaalset wilt maken, geeft u meerdere waarden op in de eigenschap `zones` voor het resource type *micro soft. Compute/virtualMachineScaleSets* . In het volgende voor beeld wordt een zone-redundante schaalset gemaakt met de naam *myScaleSet* in *VS-Oost 2* zones *1, 2, 3*:
 
 ```json
 {
@@ -215,7 +209,7 @@ Als u een zone-redundante schaalset wilt maken, geeft u `zones` meerdere waarden
 }
 ```
 
-Als u een openbaar IP-adres of een Load Balancer maakt, geeft *u de "SKU": {"name" op: De* eigenschap Standard} om zone-redundante netwerk bronnen te maken. U moet ook een netwerk beveiligings groep en-regels maken om verkeer toe te staan. Zie [Azure Load Balancer Standard-overzicht](../load-balancer/load-balancer-standard-overview.md) en [Standard Load Balancer en Beschikbaarheidszones](../load-balancer/load-balancer-standard-availability-zones.md)voor meer informatie.
+Als u een openbaar IP-adres of een load balancer maakt, geeft u de eigenschap *"SKU": {"naam": "Standard"} "* op om zone-redundante netwerk bronnen te maken. U moet ook een netwerk beveiligings groep en-regels maken om verkeer toe te staan. Zie [Azure Load Balancer Standard-overzicht](../load-balancer/load-balancer-standard-overview.md) en [Standard Load Balancer en Beschikbaarheidszones](../load-balancer/load-balancer-standard-availability-zones.md)voor meer informatie.
 
 Zie voor een volledig voor beeld van een zone-redundante schaalset en netwerk bronnen [deze voorbeeld sjabloon voor Resource Manager](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 

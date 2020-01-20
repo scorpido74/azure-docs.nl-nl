@@ -1,104 +1,96 @@
 ---
-title: Azure Resource Manager-scripts gebruiken voor het beheren van StorSimple-apparaten | Microsoft Docs
-description: Informatie over het gebruik van Azure Resource Manager-scripts voor het automatiseren van taken voor StorSimple
-services: storsimple
-documentationcenter: NA
+title: Azure Resource Manager-scripts gebruiken voor het beheren van StorSimple-apparaten
+description: Meer informatie over het gebruik van Azure Resource Manager scripts voor het automatiseren van StorSimple-taken
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 646b862733e8727c9c8729f1ac038fa88cfa0580
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d1c98aa8c9b635f08bb14db2bde5485640a5d24d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60726414"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276652"
 ---
-# <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Op basis van een Azure Resource Manager SDK-scripts gebruiken voor het beheren van StorSimple-apparaten
+# <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Azure Resource Manager SDK-scripts gebruiken voor het beheren van StorSimple-apparaten
 
-Dit artikel wordt beschreven hoe op SDK van Azure Resource Manager gebaseerde scripts kunnen worden gebruikt voor het beheren van uw StorSimple 8000-apparaat. Een voorbeeld van een script is ook opgenomen om u te helpen u bij de stappen voor het configureren van uw omgeving voor het uitvoeren van deze scripts.
+In dit artikel wordt beschreven hoe u met Azure Resource Manager SDK gebaseerde scripts kunt gebruiken om uw StorSimple 8000 Series-apparaat te beheren. Er is ook een voorbeeld script opgenomen waarmee u de stappen voor het configureren van uw omgeving voor het uitvoeren van deze scripts kunt door lopen.
 
-In dit artikel is van toepassing op StorSimple 8000-serie-apparaten die worden uitgevoerd in Azure portal bevat.
+Dit artikel is van toepassing op apparaten met de StorSimple 8000-serie die alleen in Azure Portal worden uitgevoerd.
 
 ## <a name="sample-scripts"></a>Voorbeeldscripts
 
-De volgende voorbeelden van scripts zijn beschikbaar voor het automatiseren van verschillende taken voor StorSimple.
+De volgende voorbeeld scripts zijn beschikbaar voor het automatiseren van verschillende StorSimple-taken.
 
-#### <a name="table-of-azure-resource-manager-sdk-based-sample-scripts"></a>Tabel met de SDK van Azure Resource Manager gebaseerde voorbeeldscripts
+#### <a name="table-of-azure-resource-manager-sdk-based-sample-scripts"></a>Tabel met Azure Resource Manager SDK-voorbeeld scripts
 
-| Azure Resource Manager-Script                    | Description                                                                                                                                                                                                       |
+| Azure Resource Manager script                    | Beschrijving                                                                                                                                                                                                       |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Authorize-ServiceEncryptionRollover.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | Met dit script kunt u uw StorSimple-apparaat te wijzigen van de versleutelingssleutel voor servicegegevens autoriseren.                                                                                                           |
-| [Create-StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | Dit script maakt een 8010 of 8020 StorSimple Cloud Appliance. Het cloudapparaat kan vervolgens worden geconfigureerd en geregistreerd bij uw StorSimple Data Manager-service.                                                       |
-| [CreateOrUpdate-Volume.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/CreateOrUpdate-Volume.ps1)                        | Met dit script maakt of wijzigt u StorSimple-volumes.                                                                                                                                                             |
-| [Get-DeviceBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackup.ps1)                             | Met dit script geeft een lijst van alle de back-ups voor een apparaat is geregistreerd bij uw StorSimple Device Manager-service.                                                                                                          |
-| [Get-DeviceBackupPolicy.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackupPolicy.ps1)                       | Dit script alle back-upbeleid voor uw StorSimple-apparaat.                                                                                                                                                 |
-| [Get-DeviceJobs.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceJobs.ps1)                               | Met dit script worden alle van de StorSimple-taken die worden uitgevoerd op uw StorSimple Device Manager-service opgehaald.                                                                                                                     |
-| [Get-DeviceUpdateAvailability.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceUpdateAvailability.ps1)                 | Met dit script scant de updateserver en laat u weten dat als er updates zijn beschikbaar voor installatie op uw StorSimple-apparaat.                                                                                          |
-| [Install-DeviceUpdate.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Install-DeviceUpdate.ps1)                         | Met dit script worden de beschikbare updates geïnstalleerd op uw StorSimple-apparaat.                                                                                                                                           |
-| [Manage-CloudSnapshots.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Manage-CloudSnapshots.ps1)                        | Met dit script wordt een handmatige cloud-momentopname gestart en cloudmomentopnamen die ouder zijn dan de opgegeven bewaartermijn dagen wordt verwijderd.                                                                                                   |
-| [Monitor-Backups.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Monitor-Backups.ps1)                              | Deze Azure Automation-Runbook PowerShell-script rapporteert de status van alle back-uptaken.                                                                                                              |
-| [Remove-DeviceBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Remove-DeviceBackup.ps1)                          | Met dit script wordt één back-object verwijderd.                                                                                                                                                           |
-| [Start-DeviceBackupJob.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Start-DeviceBackupJob.ps1)                        | Dit script wordt een handmatige back-up van uw StorSimple-apparaat.                                                                                                                                       |
-| [Update-CloudApplianceServiceEncryptionKey.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Update-CloudApplianceServiceEncryptionKey.ps1)    | Met dit script werkt de versleutelingssleutel voor servicegegevens voor alle 8010/8020 StorSimple-Cloudapparaten geregistreerd bij uw StorSimple Device Manager-service.                                     |
-| [Verify-BackupScheduleAndBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Verify-BackupScheduleAndBackup.ps1)               | Met dit script ziet u de ontbrekende back-ups na het analyseren van alle schema's die zijn gekoppeld aan back-upbeleid. Hij controleert ook of de back-catalogus met de lijst van beschikbare back-ups.             |
+| [Authorize-ServiceEncryptionRollover.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | Met dit script kunt u uw StorSimple-apparaat toestemming geven om de versleutelings sleutel van de service gegevens te wijzigen.                                                                                                           |
+| [Create-StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | Met dit script maakt u een 8010-of 8020-StorSimple Cloud Appliance. Het Cloud apparaat kan vervolgens worden geconfigureerd en geregistreerd bij uw StorSimple Data Manager service.                                                       |
+| [CreateOrUpdate-Volume.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/CreateOrUpdate-Volume.ps1)                        | Met dit script worden StorSimple-volumes gemaakt of gewijzigd.                                                                                                                                                             |
+| [Get-DeviceBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackup.ps1)                             | Dit script bevat alle back-ups voor een apparaat dat is geregistreerd bij de StorSimple-Apparaatbeheer service.                                                                                                          |
+| [Get-DeviceBackupPolicy.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceBackupPolicy.ps1)                       | Dit script is alle back-upbeleid voor uw StorSimple-apparaat.                                                                                                                                                 |
+| [Get-DeviceJobs.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceJobs.ps1)                               | Met dit script worden alle StorSimple-taken opgehaald die worden uitgevoerd op uw StorSimple-Apparaatbeheer service.                                                                                                                     |
+| [Get-DeviceUpdateAvailability.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceUpdateAvailability.ps1)                 | Met dit script wordt de update server gescand en kunt u zien of er updates beschikbaar zijn voor installatie op uw StorSimple-apparaat.                                                                                          |
+| [Install-DeviceUpdate.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Install-DeviceUpdate.ps1)                         | Met dit script worden de beschik bare updates op uw StorSimple-apparaat geïnstalleerd.                                                                                                                                           |
+| [Manage-CloudSnapshots. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Manage-CloudSnapshots.ps1)                        | Met dit script wordt een hand matige Cloud momentopname gestart en worden Cloud momentopnamen ouder dan opgegeven Bewaar dagen verwijderd.                                                                                                   |
+| [Monitor-Backups. ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Monitor-Backups.ps1)                              | Met dit Azure Automation Power shell-script voor Runbook wordt de status van alle back-uptaken gerapporteerd.                                                                                                              |
+| [Remove-DeviceBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Remove-DeviceBackup.ps1)                          | Met dit script wordt één back-upobject verwijderd.                                                                                                                                                           |
+| [Start-DeviceBackupJob.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Start-DeviceBackupJob.ps1)                        | Met dit script wordt een hand matige back-up van uw StorSimple-apparaat gestart.                                                                                                                                       |
+| [Update-CloudApplianceServiceEncryptionKey.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Update-CloudApplianceServiceEncryptionKey.ps1)    | Met dit script wordt de versleutelings sleutel voor service gegevens bijgewerkt voor alle Cloud apparaten van 8010/8020 StorSimple die zijn geregistreerd bij uw StorSimple-Apparaatbeheer service.                                     |
+| [Verify-BackupScheduleAndBackup.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Verify-BackupScheduleAndBackup.ps1)               | Dit script markeert de ontbrekende back-ups na het analyseren van alle schema's die zijn gekoppeld aan het back-upbeleid. Ook wordt de back-catalogus gecontroleerd met behulp van de lijst met beschik bare back-ups.             |
 
 
 
 
-## <a name="configure-and-run-a-sample-script"></a>Configureren en een voorbeeld van een script uitvoeren
+## <a name="configure-and-run-a-sample-script"></a>Een voorbeeld script configureren en uitvoeren
 
-Deze sectie wordt een voorbeeld-script en details van de verschillende stappen die nodig zijn om uit te voeren van het script.
+In deze sectie wordt een voorbeeld script gebruikt en worden de verschillende stappen beschreven die nodig zijn om het script uit te voeren.
 
 ### <a name="prerequisites"></a>Vereisten
 
-Voordat u begint, zorg ervoor dat u hebt:
+Voordat u begint, moet u ervoor zorgen dat:
 
-*   Azure PowerShell is geïnstalleerd. Azure PowerShell-modules installeren:
-    * In een Windows-omgeving, volg de stappen in [installeren en configureren van Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). U kunt Azure PowerShell installeren op uw Windows Server-host voor uw StorSimple als met behulp van een.
-    * In een omgeving met Linux of MacOS, volg de stappen in [installeren en configureren van Azure PowerShell in MacOS of Linux](https://docs.microsoft.com/powershell/azure/azurerm/install-azurermps-maclinux).
+*   Azure PowerShell geïnstalleerd. Azure PowerShell-modules installeren:
+    * Volg in een Windows-omgeving de stappen in [Install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). U kunt Azure PowerShell op uw Windows Server-host installeren voor uw StorSimple als u er een gebruikt.
+    * Volg de stappen in [Install and configure Azure PowerShell in MacOS of Linux voor](https://docs.microsoft.com/powershell/azure/azurerm/install-azurermps-maclinux)een Linux-of MacOS-omgeving.
 
-Voor meer informatie over het gebruik van Azure PowerShell, gaat u naar [aan de slag met behulp van Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+Ga voor meer informatie over het gebruik van Azure PowerShell naar aan de [slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
-### <a name="run-azure-powershell-script"></a>Azure PowerShell-script uitvoeren
+### <a name="run-azure-powershell-script"></a>Azure PowerShell script uitvoeren
 
-Het script dat wordt gebruikt in dit voorbeeld geeft een lijst van alle taken op een StorSimple-apparaat. Dit omvat de taken die is geslaagd, mislukt of worden uitgevoerd. De volgende stappen uitvoeren om te downloaden en uitvoeren van het script.
+In het script dat in dit voor beeld wordt gebruikt, worden alle taken op een StorSimple-apparaat weer gegeven. Dit omvat de taken die geslaagd, mislukt of worden uitgevoerd. Voer de volgende stappen uit om het script te downloaden en uit te voeren.
 
-1. Start Azure PowerShell. Maak een nieuwe map en wijzig de map naar de nieuwe map.
+1. Start Azure PowerShell. Maak een nieuwe map en wijzig de map in de nieuwe map.
 
     ```
         mkdir C:\scripts\StorSimpleSDKTools
         cd C:\scripts\StorSimpleSDKTools
     ```    
-2. [NuGet-CLI downloaden](https://www.nuget.org/downloads) onder de map in de vorige stap hebt gemaakt. Er zijn verschillende versies van _nuget.exe_. Kies de versie die overeenkomt met de SDK. Elke downloadkoppeling verwijst rechtstreeks naar een _.exe_ bestand. Zorg ervoor dat u met de rechtermuisknop op en sla het bestand op uw computer in plaats van deze uitvoert vanuit de browser.
+2. [Down load NUGET cli](https://www.nuget.org/downloads) in de map die u in de vorige stap hebt gemaakt. Er zijn verschillende versies van _nuget. exe_. Kies de versie die overeenkomt met uw SDK. Elke download koppeling verwijst rechtstreeks naar een _exe_ -bestand. Zorg ervoor dat u met de rechter muisknop klikt en het bestand op uw computer opslaat in plaats van het uit te voeren vanuit de browser.
 
-    U kunt ook de volgende opdracht uit om te downloaden en opslaan van het script in dezelfde map die u eerder hebt gemaakt, uitvoeren.
+    U kunt ook de volgende opdracht uitvoeren om het script te downloaden en op te slaan in dezelfde map die u eerder hebt gemaakt.
     
     ```
         wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -Out C:\scripts\StorSimpleSDKTools\nuget.exe
     ```
-3. Download de SDK afhankelijk is.
+3. Down load de afhankelijke SDK.
 
     ```
         C:\scripts\StorSimpleSDKTools\nuget.exe install Microsoft.Azure.Management.Storsimple8000series
         C:\scripts\StorSimpleSDKTools\nuget.exe install Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.28.3
         C:\scripts\StorSimpleSDKTools\nuget.exe install Microsoft.Rest.ClientRuntime.Azure.Authentication -Version 2.2.9-preview
     ```    
-4. Het script downloaden uit het voorbeeld van GitHub-project.
+4. Down load het script uit het voorbeeld project GitHub.
 
     ```
         wget https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Get-DeviceJobs.ps1 -Out Get-DeviceJobs.ps1
 
     ```
 
-5. Voer het script uit. Wanneer u hierom wordt gevraagd om te verifiëren, Geef uw Azure-referenties. Met dit script moet uitvoer van een gefilterde lijst van alle taken die op uw StorSimple-apparaat.
+5. Voer het script uit. Geef uw Azure-referenties op wanneer u wordt gevraagd om te verifiëren. Met dit script wordt een gefilterde lijst met alle taken op uw StorSimple-apparaat uitgevoerd.
            
     ```           
         .\Get-StorSimpleJob.ps1 -SubscriptionId [subid] -TenantId [tenant id] -DeviceName [name of device] -ResourceGroupName [name of resource group] -ManagerName[name of device manager] -FilterByStatus [Filter for job status] -FilterByJobType [Filter for job type] -FilterByStartTime [Filter for start date time] -FilterByEndTime [Filter for end date time]
@@ -107,7 +99,7 @@ Het script dat wordt gebruikt in dit voorbeeld geeft een lijst van alle taken op
 
 ### <a name="sample-output"></a>Voorbeelduitvoer
 
-De volgende uitvoer wordt weergegeven wanneer het voorbeeld van een script wordt uitgevoerd. De uitvoer bevat alle taken die zijn uitgevoerd op een ingeschreven apparaat dat aan de slag op 25 September 2017 en uitgevoerd door 2 oktober 2017.
+De volgende uitvoer wordt weer gegeven wanneer het voorbeeld script wordt uitgevoerd. De uitvoer bevat alle taken die zijn uitgevoerd op een geregistreerd apparaat dat is gestart op 25 september 2017 en is voltooid op 2 oktober 2017.
 
 ```
 -----------------------------------------
@@ -176,4 +168,4 @@ PS C:\Scripts\StorSimpleSDKTools>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Gebruik StorSimple Device Manager-service voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
+[Gebruik StorSimple Apparaatbeheer service om uw StorSimple-apparaat te beheren](storsimple-8000-manager-service-administration.md).

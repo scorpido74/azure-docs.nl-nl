@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/02/2020
+ms.date: 01/17/2020
 ms.author: banders
-ms.openlocfilehash: 2beb1d3e4468ff96f629dd6ec7015376a7f3a904
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 75b6dd1b2d76d12087270e155551402d1bcd4965
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987262"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274028"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Meer informatie over uw Azure Enterprise Agreement-factuur
 
@@ -127,7 +127,7 @@ Meld u aan bij de [Enter prise Portal](https://ea.azure.com) en selecteer vervol
 
 ![Scherm opname van de optie M + C voor de gebruiks samenvatting.](./media/review-enterprise-agreement-bill/ea-portal-usage-sumary-cm-option.png)  
 
-Het totaal bij **Azure Marketplace** moet overeenkomen met dat bij **Totale verkoop** op uw Marketplace-factuur. Ga naar **Gebruiksgegevens downloaden** voor meer informatie over uw gebruikskosten. Onder de **kosten voor Marketplace** selecteert u **Downloaden**. Dit rapport bevat geen belastingen of eenmalige aankopen.  
+Het totaal bij **Azure Marketplace** moet overeenkomen met dat bij **Totale verkoop** op uw Marketplace-factuur. Ga naar **Gebruiksgegevens downloaden** voor meer informatie over uw gebruikskosten. Onder de **kosten voor Marketplace** selecteert u **Downloaden**. De prijs van Marketplace omvat een BTW zoals bepaald door de uitgever. Klanten ontvangen geen afzonderlijke factuur van de uitgever om de belasting voor de trans actie te innen.
 
 ![Scherm opname van de download optie onder kosten voor Marketplace.](./media/review-enterprise-agreement-bill/ea-portal-download-usage-marketplace.png)
 

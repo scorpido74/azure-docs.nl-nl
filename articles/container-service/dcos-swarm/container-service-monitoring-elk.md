@@ -1,68 +1,66 @@
 ---
-title: (AFGESCHAFT) Een Azure DC/OS-cluster - ELK-stack bewaken
-description: Een DC/OS-cluster in Azure Container Service-cluster met ELK (Elasticsearch, Logstash en Kibana) bewaken.
-services: container-service
+title: KEUR Een Azure DC/OS-cluster-ELK stack bewaken
+description: Bewaak een DC/OS-cluster in Azure Container Service cluster met ELK (Elasticsearch, Logstash en Kibana).
 author: sauryadas
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 342cf23db2df7d7c79a2b56df96d1a78d6ba215e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d34ebe22344be8acc6ec3cc974071639293e2b3
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61467710"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277759"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-cluster-with-elk"></a>(AFGESCHAFT) Een Azure Container Service-cluster met ELK bewaken
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-elk"></a>KEUR Een Azure Container Service cluster bewaken met ELK
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-In dit artikel wordt gedemonstreerd hoe u de ELK (Elasticsearch, Logstash, Kibana)-stack op een DC/OS-cluster in Azure Container Service implementeert. 
+In dit artikel laten we zien hoe u de ELK-stack (Elasticsearch, Logstash, Kibana) implementeert op een DC/OS-cluster in Azure Container Service. 
 
 ## <a name="prerequisites"></a>Vereisten
-[Implementeer](container-service-deployment.md) en [verbinding](../container-service-connect.md) een DC/OS-cluster dat is geconfigureerd door Azure Container Service. De DC/OS-dashboard en de Marathon-services verkennen [hier](container-service-mesos-marathon-ui.md). Installeer ook de [Marathon Load Balancer](container-service-load-balancing.md).
+[Implementeer](container-service-deployment.md) en [koppel](../container-service-connect.md) een DC/OS-cluster geconfigureerd door Azure container service. Bekijk [hier](container-service-mesos-marathon-ui.md)de DC/OS-dash board-en Marathon-Services. Installeer ook de [Marathon-Load Balancer](container-service-load-balancing.md).
 
 
 ## <a name="elk-elasticsearch-logstash-kibana"></a>ELK (Elasticsearch, Logstash, Kibana)
-ELK-stack is een combinatie van Elasticsearch, Logstash en Kibana waarmee een end-to-stack die kan worden gebruikt om te controleren en analyseren van Logboeken in uw cluster.
+ELK stack is een combi natie van Elasticsearch, Logstash en Kibana die een end-to-end stack biedt die kan worden gebruikt voor het bewaken en analyseren van Logboeken in uw cluster.
 
 ## <a name="configure-the-elk-stack-on-a-dcos-cluster"></a>De ELK-stack op een DC/OS-cluster configureren
-Toegang tot uw DC/OS-gebruikersinterface via [ http://localhost:80/ ](http://localhost:80/) eenmaal in de DC/OS-gebruikersinterface Navigeer naar **universum**. Zoeken en Elasticsearch, Logstash en Kibana installeren van de DC/OS-universum en in die specifieke volgorde. U kunt meer wilt weten over de configuratie als u gaat u naar de **geavanceerde installatie** koppeling.
+Toegang tot uw DC/OS-gebruikers interface via [http://localhost:80/](http://localhost:80/) eenmaal in de DC/OS-gebruikers interface naar een **universum**navigeren. Zoek en installeer Elasticsearch, Logstash en Kibana van het DC/OS-universum en in die specifieke volg orde. Meer informatie over de configuratie vindt u in de koppeling **Geavanceerd installeren** .
 
 ![ELK1](./media/container-service-monitoring-elk/elk1.PNG) ![ELK2](./media/container-service-monitoring-elk/elk2.PNG) ![ELK3](./media/container-service-monitoring-elk/elk3.PNG) 
 
-Zodra de ELK-containers en zijn ingesteld en geactiveerd, u Kibana moet toegankelijk via Marathon-LB inschakelen. Navigeer naar **Services** > **kibana**, en klikt u op **bewerken** zoals hieronder wordt weergegeven.
+Zodra de ELK-containers zijn geïnstalleerd en actief zijn, moet u ervoor zorgen dat Kibana toegankelijk zijn via Marathon-LB. Navigeer naar **Services** > **kibana**en klik op **bewerken** , zoals hieronder wordt weer gegeven.
 
 ![ELK4](./media/container-service-monitoring-elk/elk4.PNG)
 
 
-In-/ uitschakelen op **JSON-modus** en blader naar de sectie labels.
-U wilt toevoegen een `"HAPROXY_GROUP": "external"` vermelding hier zoals hieronder.
-Nadat u op **wijzigingen implementeren**, uw container opnieuw is opgestart.
+Schakel over naar de **JSON-modus** en schuif omlaag naar de sectie Labels.
+U moet hier een `"HAPROXY_GROUP": "external"` vermelding toevoegen, zoals hieronder wordt weer gegeven.
+Zodra u op **wijzigingen implementeren**hebt geklikt, wordt de container opnieuw opgestart.
 
 ![ELK5](./media/container-service-monitoring-elk/elk5.PNG)
 
 
-Als u controleren of wilt dat Kibana is geregistreerd als een service in het dashboard HAPROXY, moet u poort 9090 op het cluster agent openen terwijl HAPROXY wordt uitgevoerd op poort 9090.
-Standaard wordt geopend. poorten 80, 8080, en 443 in het DC/OS-agent-cluster.
-Vindt u instructies voor het openen van een poort en bieden openbare beoordelen [hier](container-service-enable-public-access.md).
+Als u wilt controleren of Kibana is geregistreerd als een service in het HAPROXY-dash board, moet u poort 9090 op het agent cluster openen als HAPROXY wordt uitgevoerd op poort 9090.
+Standaard worden poorten 80, 8080 en 443 in het DC/OS-agent cluster geopend.
+Instructies voor het openen van een poort en het bieden van een open bare beoordeling vindt u [hier](container-service-enable-public-access.md).
 
-Voor toegang tot het dashboard HAPROXY, opent u de Marathon-LB-beheerinterface op: `http://$PUBLIC_NODE_IP_ADDRESS:9090/haproxy?stats`.
-Navigeer naar de URL, ziet u het dashboard HAPROXY zoals hieronder wordt weergegeven en ziet u een servicevermelding voor Kibana.
+Voor toegang tot het HAPROXY-dash board opent u de marathon-LB-beheer interface op: `http://$PUBLIC_NODE_IP_ADDRESS:9090/haproxy?stats`.
+Als u naar de URL gaat, ziet u het HAPROXY-dash board zoals hieronder wordt weer gegeven. u moet een service vermelding voor Kibana zien.
 
 ![ELK6](./media/container-service-monitoring-elk/elk6.PNG)
 
 
-Voor toegang tot de Kibana-dashboard, dat is geïmplementeerd op poort 5601, moet u open poort 5601. Volg de instructies [hier](container-service-enable-public-access.md). Open de Kibana-dashboard op: `http://localhost:5601`.
+Voor toegang tot het Kibana-dash board, dat is geïmplementeerd op poort 5601, moet u poort 5601 openen. Volg de instructies [hier](container-service-enable-public-access.md). Open vervolgens het Kibana-dash board op: `http://localhost:5601`.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Voor systeem- en logboek doorsturen en instellingen, Zie [Log Management in DC/OS met ELK](https://docs.mesosphere.com/1.8/administration/logging/elk/).
+* Zie [logboek beheer in DC/OS met elk](https://docs.mesosphere.com/1.8/administration/logging/elk/)voor meer informatie over het door sturen en instellen van logboeken van toepassingen.
 
-* Om te filteren van Logboeken, Zie [Logboeken filteren met ELK](https://docs.mesosphere.com/1.8/administration/logging/filter-elk/). 
+* Zie [Logboeken filteren met elk](https://docs.mesosphere.com/1.8/administration/logging/filter-elk/)voor informatie over het filteren van Logboeken. 
 
  
 

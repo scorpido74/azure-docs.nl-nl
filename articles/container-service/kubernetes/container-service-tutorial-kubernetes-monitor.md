@@ -1,20 +1,18 @@
 ---
 title: (AFGESCHAFT) Zelfstudie voor Azure Container Service - Kubernetes bewaken
 description: Zelfstudie voor Azure Container Service - Kubernetes bewaken met Log Analytics
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 6f95aa701228730682c0122dc1fd46d8a2537ce1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 35f7c2fb968ea5285af5f2d597c67b3b22065906
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473231"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278223"
 ---
 # <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>(AFGESCHAFT) Een Kubernetes-cluster bewaken met Log Analytics
 
@@ -142,7 +140,7 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR 
 omsagent   3         3         3         0            3           <none>          5m
 ```
 
-Wanneer de agents worden uitgevoerd, duurt het een aantal minuten voordat de gegevens zijn opgenomen en verwerkt in Log Analytics.
+Wanneer de agents worden uitgevoerd, duurt het een aantal minuten voordat Log Analytics de gegevens heeft opgenomen en verwerkt.
 
 ## <a name="access-monitoring-data"></a>Toegang tot bewakingsgegevens
 
@@ -160,7 +158,7 @@ Zie de [Azure Log Analytics-documentatie](../../azure-monitor/log-query/log-quer
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u uw Kubernetes-cluster gecontroleerd met Log Analytics. Behandelde taken zijn:
+In deze zelfstudie hebt u uw Kubernetes-cluster bewaakt met Log Analytics. Behandelde taken zijn:
 
 > [!div class="checklist"]
 > * Instellingen voor Log Analytics-werkruimte ophalen

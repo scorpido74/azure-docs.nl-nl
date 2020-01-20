@@ -1,22 +1,20 @@
 ---
 title: bestand opnemen
 description: bestand opnemen
-services: functions
 author: ggailey777
-manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
 ms.date: 10/19/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 4d0a61bf7f4ee9e441a49e21ce6535dc3bff0edc
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: 9c51ce726545d1c64d69c86c36fc69ea43c3b882
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67608153"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279503"
 ---
-Hiermee geeft u het aantal functieaanroepen zijn samengevoegd wanneer [berekenen van de metrische gegevens voor Application Insights](../articles/azure-functions/functions-monitoring.md#configure-the-aggregator). 
+Hiermee geeft u op hoeveel functie aanroepen worden geaggregeerd bij het [berekenen van metrische gegevens voor Application Insights](../articles/azure-functions/functions-monitoring.md#configure-the-aggregator). 
 
 ```json
 {
@@ -27,9 +25,9 @@ Hiermee geeft u het aantal functieaanroepen zijn samengevoegd wanneer [berekenen
 }
 ```
 
-|Eigenschap |Standaard  | Description |
+|Eigenschap |Standaard  | Beschrijving |
 |---------|---------|---------| 
 |batchSize|1000|Maximum aantal aanvragen om samen te voegen.| 
-|flushTimeout|00:00:30|Maximale tijd periode om samen te voegen.| 
+|flushTimeout|00:00:30|Maximale tijds periode voor aggregatie.| 
 
-Functieaanroepen worden geaggregeerd als de eerste dag van de twee limieten zijn bereikt.
+Functie aanroepen worden geaggregeerd wanneer de eerste van de twee limieten is bereikt.

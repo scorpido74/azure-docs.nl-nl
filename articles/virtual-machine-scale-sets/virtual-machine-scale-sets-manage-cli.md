@@ -1,35 +1,27 @@
 ---
-title: Beheren van virtuele-Machineschaalsets met de Azure CLI | Microsoft Docs
-description: Algemene Azure CLI-opdrachten beheren van Virtual Machine Scale Sets, zoals het starten en stoppen van een exemplaar of de schaal wijzigen instellen capaciteit.
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Virtual Machine Scale Sets beheren met de Azure CLI
+description: Algemene Azure CLI-opdrachten voor het beheren van Virtual Machine Scale Sets, zoals het starten en stoppen van een exemplaar of het wijzigen van de capaciteit van de schaalset.
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: b49182ebdcc93c4a51a55f27c3e0bf7a45307b7f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d8f40708cf5a9989146a72e2093de7bad47ffde9
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60618078"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275739"
 ---
-# <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Een virtuele-machineschaalset met de Azure CLI beheren
-Gedurende de levenscyclus van een schaalset voor virtuele machines moet u mogelijk een of meer beheertaken uitvoeren. Bovendien wilt u misschien scripts maken die verschillende levenscyclustaken automatiseren. Dit artikel worden enkele van de algemene Azure CLI-opdrachten waarmee u kunnen deze taken uitvoeren.
+# <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Een schaalset voor virtuele machines beheren met de Azure CLI
+Gedurende de levenscyclus van een schaalset voor virtuele machines moet u mogelijk een of meer beheertaken uitvoeren. Bovendien wilt u misschien scripts maken die verschillende levenscyclustaken automatiseren. In dit artikel vindt u meer informatie over de algemene Azure CLI-opdrachten waarmee u deze taken kunt uitvoeren.
 
-Als u wilt deze beheertaken hebt voltooid, moet u de nieuwste Azure CLI. Zie voor meer informatie, [Azure CLI installeren](/cli/azure/install-azure-cli). Als u maken van een virtuele-machineschaalset wilt, kunt u [een schaalset maken met de Azure CLI](quick-create-cli.md).
+U hebt de nieuwste Azure CLI nodig om deze beheer taken te volt ooien. Zie [de Azure cli installeren](/cli/azure/install-azure-cli)voor meer informatie. Als u een schaalset voor virtuele machines wilt maken, kunt u [een schaalset maken met de Azure cli](quick-create-cli.md).
 
 
-## <a name="view-information-about-a-scale-set"></a>Informatie weergeven over een schaalset
-Als u wilt weergeven van de algemene informatie over een schaalset, gebruikt u [az vmss show](/cli/azure/vmss). Het volgende voorbeeld wordt informatie over de schaalset met de naam *myScaleSet* in de *myResourceGroup* resourcegroep. Voer uw eigen namen als volgt in:
+## <a name="view-information-about-a-scale-set"></a>Informatie over een schaalset weer geven
+Gebruik [AZ vmss show](/cli/azure/vmss)om de algemene informatie over een schaalset weer te geven. In het volgende voor beeld wordt informatie opgehaald over de schaalset met de naam *myScaleSet* in de resource groep *myResourceGroup* . Voer uw eigen namen als volgt in:
 
 ```azurecli
 az vmss show --resource-group myResourceGroup --name myScaleSet
@@ -37,7 +29,7 @@ az vmss show --resource-group myResourceGroup --name myScaleSet
 
 
 ## <a name="view-vms-in-a-scale-set"></a>Virtuele machines weergeven in een schaalset
-Een overzicht van VM-exemplaar in een schaalset, gebruikt u [az vmss list-instances](/cli/azure/vmss). Het volgende voorbeeld worden alle VM-exemplaren in de schaalset met de naam *myScaleSet* in de *myResourceGroup* resourcegroep. Geef uw eigen waarden op voor deze namen:
+Gebruik [AZ vmss list-instances](/cli/azure/vmss)om een lijst met VM-exemplaren in een schaalset weer te geven. In het volgende voor beeld worden alle VM-exemplaren in de schaalset met de naam *myScaleSet* in de resource groep *myResourceGroup* weer gegeven. Geef uw eigen waarden op voor deze namen:
 
 ```azurecli
 az vmss list-instances \
@@ -46,7 +38,7 @@ az vmss list-instances \
     --output table
 ```
 
-Als wilt weergeven als u meer informatie over een specifieke VM-exemplaar, voegt de `--instance-id` parameter [az vmss get-instance-view](/cli/azure/vmss) en geeft u een exemplaar om weer te geven. Het volgende voorbeeld wordt informatie opgevraagd over VM-exemplaar *0* in de schaalset met de naam *myScaleSet* en de *myResourceGroup* resourcegroep. Voer uw eigen namen als volgt in:
+Als u meer informatie wilt weer geven over een specifiek VM-exemplaar, voegt u de para meter `--instance-id` toe aan [AZ vmss Get-instance-View](/cli/azure/vmss) en geeft u een instantie op die u wilt weer geven. In het volgende voor beeld wordt informatie weer gegeven over het VM-exemplaar *0* in de schaalset met de naam *myScaleSet* en de resource groep *myResourceGroup* . Voer uw eigen namen als volgt in:
 
 ```azurecli
 az vmss get-instance-view \
@@ -56,8 +48,8 @@ az vmss get-instance-view \
 ```
 
 
-## <a name="list-connection-information-for-vms"></a>De verbindingsgegevens opvragen voor virtuele machines
-Verbinding maken met de virtuele machines in een schaalset, u SSH of RDP naar een toegewezen openbare IP-adres en poort nummer. Standaard worden de regels voor network address translation (NAT) toegevoegd aan de Azure load balancer die verbinding met extern verkeer wordt doorgestuurd naar elke virtuele machine. Als u de adressen en poorten verbinding maken met VM-exemplaren in een schaalset, gebruikt u [az vmss list-instance-connection-info](/cli/azure/vmss). Het volgende voorbeeld worden de verbindingsgegevens voor VM-exemplaren in de schaalset met de naam *myScaleSet* en in de *myResourceGroup* resourcegroep. Geef uw eigen waarden op voor deze namen:
+## <a name="list-connection-information-for-vms"></a>Verbindings gegevens voor Vm's weer geven
+Als u verbinding wilt maken met de virtuele machines in een schaalset, moet u SSH of RDP naar een toegewezen openbaar IP-adres en poort nummer. Network Address Translation (NAT) regels worden standaard toegevoegd aan de Azure-load balancer die het verkeer van externe verbindingen naar elke virtuele machine doorstuurt. Als u het adres en de poorten wilt weer geven om verbinding te maken met VM-exemplaren in een schaalset, gebruikt u [AZ vmss List-instance-Connection-info](/cli/azure/vmss). In het volgende voor beeld ziet u verbindings gegevens voor VM-exemplaren in de schaalset met de naam *myScaleSet* en in de resource groep *myResourceGroup* . Geef uw eigen waarden op voor deze namen:
 
 ```azurecli
 az vmss list-instance-connection-info \
@@ -67,7 +59,7 @@ az vmss list-instance-connection-info \
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>De capaciteit van een schaalset wijzigen
-De voorgaande opdrachten hebt u geleerd informatie over uw schaalset en de VM-exemplaren. Als u wilt vergroten of verkleinen van het aantal exemplaren in de schaalset, kunt u de capaciteit te wijzigen. De schaalset maakt of verwijdert u het vereiste aantal virtuele machines en configureert u de virtuele machines voor het ontvangen van toepassingsverkeer.
+De voor gaande opdrachten hebben informatie over de schaalset en de VM-exemplaren. Als u het aantal instanties in de schaalset wilt verg Roten of verkleinen, kunt u de capaciteit wijzigen. De schaalset maakt of verwijdert het vereiste aantal Vm's en configureert vervolgens de virtuele machines om toepassings verkeer te ontvangen.
 
 Als u het aantal instanties wilt weergeven dat zich momenteel in een schaalset bevindt, gebruikt u [az vmss show](/cli/azure/vmss) en voert u een query uit op *sku.capacity*:
 
@@ -79,7 +71,7 @@ az vmss show \
     --output table
 ```
 
-U kunt vervolgens het aantal virtuele machines in de schaalset handmatig vergroten of verkleinen met [az vmss scale](/cli/azure/vmss). Het volgende voorbeeld wordt het aantal virtuele machines in uw schaalset aan *5*:
+U kunt vervolgens het aantal virtuele machines in de schaalset handmatig vergroten of verkleinen met [az vmss scale](/cli/azure/vmss). In het volgende voor beeld wordt het aantal Vm's in de schaalset ingesteld op *5*:
 
 ```azurecli
 az vmss scale \
@@ -88,49 +80,49 @@ az vmss scale \
     --new-capacity 5
 ```
 
-Het duurt een paar minuten om de capaciteit van de schaalset bij te werken. Als u de capaciteit van een schaalset instellen, de virtuele machines met het hoogste exemplaar id's worden het eerst verwijderd.
+Het duurt een paar minuten om de capaciteit van de schaalset bij te werken. Als u de capaciteit van een schaalset verlaagt, worden de Vm's met de hoogste exemplaar-Id's eerst verwijderd.
 
 
-## <a name="stop-and-start-vms-in-a-scale-set"></a>Stoppen en starten van virtuele machines in een schaalset
-Als u wilt stoppen met een of meer virtuele machines in een schaalset, gebruikt u [az vmss stop](/cli/azure/vmss#az-vmss-stop). Met de parameter `--instance-ids` kunt u een of meer VM's opgeven om te stoppen. Als u geen exemplaar-id opgeeft, worden alle VM's in de schaalset gestopt. Als u wilt stoppen met meerdere virtuele machines, scheidt u elke instantie-ID met een spatie.
+## <a name="stop-and-start-vms-in-a-scale-set"></a>Vm's in een schaalset stoppen en starten
+Gebruik [AZ vmss stop](/cli/azure/vmss#az-vmss-stop)om een of meer vm's in een schaalset te stoppen. Met de parameter `--instance-ids` kunt u een of meer VM's opgeven om te stoppen. Als u geen exemplaar-id opgeeft, worden alle VM's in de schaalset gestopt. Als u meerdere Vm's wilt stoppen, scheidt u elke exemplaar-ID met een spatie.
 
-Het volgende voorbeeld stopt exemplaar *0* in de schaalset met de naam *myScaleSet* en de *myResourceGroup* resourcegroep. Geef uw eigen waarden als volgt:
+In het volgende voor beeld wordt instance *0* in de schaalset met de naam *myScaleSet* en de resource groep *myResourceGroup* gestopt. U kunt als volgt uw eigen waarden opgeven:
 
 ```azurecli
 az vmss stop --resource-group myResourceGroup --name myScaleSet --instance-ids 0
 ```
 
-Gestopte VM's blijven toegewezen en nog steeds rekenkosten in rekening gebracht. Als u wilt de VM's ongedaan worden gemaakt en alleen opslag kosten in rekening gebracht, gebruikt u [az vmss deallocate](/cli/azure/vmss). Voor de toewijzing ongedaan maken meerdere virtuele machines, scheidt u elke instantie-ID met een spatie. Het volgende voorbeeld wordt gestopt en wordt de toewijzing ingetrokken exemplaar *0* in de schaalset met de naam *myScaleSet* en de *myResourceGroup* resourcegroep. Geef uw eigen waarden als volgt:
+Gestopt Vm's blijven toegewezen en blijven reken kosten in beslag. Als u in plaats daarvan wilt dat de toewijzing van Vm's ongedaan wordt gemaakt en alleen opslag kosten in rekening worden gebracht, gebruikt u [AZ vmss deallocate](/cli/azure/vmss). Als u meerdere Vm's wilt detoewijzen, moet u elke exemplaar-ID scheiden met een spatie. In het volgende voor beeld wordt de toewijzing van instantie *0* in de schaalset met de naam *myScaleSet* en de resource groep *myResourceGroup* gestopt en ongedaan gemaakt. U kunt als volgt uw eigen waarden opgeven:
 
 ```azurecli
 az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance-ids 0
 ```
 
 
-### <a name="start-vms-in-a-scale-set"></a>Virtuele machines in een schaalset starten
-Gebruiken om een of meer virtuele machines starten in een schaalset, [az vmss start](/cli/azure/vmss). Met de parameter `--instance-ids` kunt u een of meer VM's opgeven om te starten. Als u geen exemplaar-id opgeeft, worden alle VM's in de schaalset gestart. Voor het starten van meerdere virtuele machines, scheidt u elke instantie-ID met een spatie.
+### <a name="start-vms-in-a-scale-set"></a>Vm's in een schaalset starten
+Gebruik [AZ vmss start](/cli/azure/vmss)om een of meer virtuele machines in een schaalset te starten. Met de parameter `--instance-ids` kunt u een of meer VM's opgeven om te starten. Als u geen exemplaar-id opgeeft, worden alle VM's in de schaalset gestart. Als u meerdere Vm's wilt starten, scheidt u elke exemplaar-ID met een spatie.
 
-Het volgende voorbeeld start exemplaar *0* in de schaalset met de naam *myScaleSet* en de *myResourceGroup* resourcegroep. Geef uw eigen waarden als volgt:
+In het volgende voor beeld wordt instantie *0* gestart in de schaalset met de naam *myScaleSet* en de resource groep *myResourceGroup* . U kunt als volgt uw eigen waarden opgeven:
 
 ```azurecli
 az vmss start --resource-group myResourceGroup --name myScaleSet --instance-ids 0
 ```
 
 
-## <a name="restart-vms-in-a-scale-set"></a>Virtuele machines in een schaalset opnieuw opstarten
-Als u wilt een of meer virtuele machines opnieuw opstarten in een schaalset, gebruikt u [az vmss start opnieuw op](/cli/azure/vmss). Met de parameter `--instance-ids` kunt u een of meer VM's opgeven om opnieuw op te starten. Als u geen exemplaar-id opgeeft, worden alle VM's in de schaalset opnieuw opgestart. Als u wilt meerdere virtuele machines opnieuw opstarten, scheidt u elke instantie-ID met een spatie.
+## <a name="restart-vms-in-a-scale-set"></a>Vm's in een schaalset opnieuw opstarten
+Gebruik [AZ vmss restart](/cli/azure/vmss)om een of meer vm's in een schaalset opnieuw op te starten. Met de parameter `--instance-ids` kunt u een of meer VM's opgeven om opnieuw op te starten. Als u geen exemplaar-id opgeeft, worden alle VM's in de schaalset opnieuw opgestart. Als u meerdere Vm's opnieuw wilt opstarten, scheidt u elke exemplaar-ID met een spatie.
 
-Het volgende voorbeeld wordt opnieuw opgestart exemplaar *0* in de schaalset met de naam *myScaleSet* en de *myResourceGroup* resourcegroep. Geef uw eigen waarden als volgt:
+In het volgende voor beeld wordt instantie *0* opnieuw gestart in de schaalset met de naam *myScaleSet* en de resource groep *myResourceGroup* . U kunt als volgt uw eigen waarden opgeven:
 
 ```azurecli
 az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-ids 0
 ```
 
 
-## <a name="remove-vms-from-a-scale-set"></a>Virtuele machines verwijderen uit een schaalset
-Als u wilt verwijderen van een of meer virtuele machines in een schaalset, gebruikt u [az vmss delete-exemplaren](/cli/azure/vmss). De `--instance-ids` parameter kunt u opgeven van een of meer virtuele machines te verwijderen. Als u opgeeft * voor het exemplaar-ID, alle virtuele machines in de schaalset worden verwijderd. Als u wilt verwijderen van meerdere virtuele machines, scheidt u elke instantie-ID met een spatie.
+## <a name="remove-vms-from-a-scale-set"></a>Vm's uit een schaalset verwijderen
+Als u een of meer virtuele machines in een schaalset wilt verwijderen, gebruikt u [AZ vmss delete-instances](/cli/azure/vmss). Met de para meter `--instance-ids` kunt u een of meer Vm's opgeven die moeten worden verwijderd. Als u * opgeeft voor de exemplaar-ID, worden alle Vm's in de schaalset verwijderd. Als u meerdere Vm's wilt verwijderen, moet u elke exemplaar-ID scheiden met een spatie.
 
-Het volgende voorbeeld verwijdert u exemplaar *0* in de schaalset met de naam *myScaleSet* en de *myResourceGroup* resourcegroep. Geef uw eigen waarden als volgt:
+In het volgende voor beeld wordt instantie *0* verwijderd uit de schaalset met de naam *myScaleSet* en de resource groep *myResourceGroup* . U kunt als volgt uw eigen waarden opgeven:
 
 ```azurecli
 az vmss delete-instances --resource-group myResourceGroup --name myScaleSet --instance-ids 0
@@ -138,4 +130,4 @@ az vmss delete-instances --resource-group myResourceGroup --name myScaleSet --in
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Andere algemene taken voor schaalsets zijn onder andere hoe u [implementeren van een toepassing](virtual-machine-scale-sets-deploy-app.md), en [VM-exemplaren een upgrade uitvoert](virtual-machine-scale-sets-upgrade-scale-set.md). U kunt ook Azure CLI voor [regels voor automatisch schalen configureren](virtual-machine-scale-sets-autoscale-overview.md).
+Andere algemene taken voor schaal sets zijn onder andere het [implementeren van een toepassing](virtual-machine-scale-sets-deploy-app.md)en het [bijwerken van VM-exemplaren](virtual-machine-scale-sets-upgrade-scale-set.md). U kunt ook Azure CLI gebruiken voor het [configureren van regels voor automatisch schalen](virtual-machine-scale-sets-autoscale-overview.md).

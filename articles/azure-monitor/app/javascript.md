@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 83b167baa29a54e53f7fe8bdb7b7e5c88bc3eddf
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: c98feda62b7e5de5551b02d6189a1142ca8c5f88
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264081"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276787"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights voor webpagina’s
 
@@ -29,7 +29,7 @@ Application Insights kan met elke webpagina worden gebruikt. Het enige wat u hie
     * [Java script-fragment](#snippet-based-setup)
 
 > [!IMPORTANT]
-> > Gebruik slechts één methode om de Java script-SDK toe te voegen aan uw toepassing. Als u de NPM-instellingen gebruikt, gebruikt u het fragment niet en vice versa.
+> Gebruik slechts één methode om de Java script-SDK toe te voegen aan uw toepassing. Als u de NPM-instellingen gebruikt, gebruikt u het fragment niet en vice versa.
 
 > [!NOTE]
 > NPM Setup installeert de Java script-SDK als een afhankelijkheid van uw project, waardoor IntelliSense, terwijl het fragment de SDK tijdens runtime ophaalt. Beide ondersteunen dezelfde functies. Ontwikkel aars die behoefte hebben aan meer aangepaste gebeurtenissen en configuratie, kiezen meestal voor NPM-Setup, terwijl gebruikers op zoek zijn naar snelle activering van out-of-the-box Web Analytics voor het fragment.

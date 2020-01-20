@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 03dbb679c25ea692d2c52f80b9493889e367823d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: c2f774401f32ff02ced690173c418dafc4c789b5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74112146"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278809"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-versies in azure Cognitive Search
 
@@ -32,9 +32,9 @@ Hieronder vindt u een moment opname van de huidige versies van alle programmeer 
 
 | Interfaces | Meest recente primaire versie | Status |
 | --- | --- | --- |
-| [.NET SDK](https://aka.ms/search-sdk) |9.0 |Algemeen beschikbaar, uitgebracht 2019 |
+| [.NET-SDK](https://aka.ms/search-sdk) |9.0 |Algemeen beschikbaar, uitgebracht 2019 |
 | [.NET SDK preview](https://aka.ms/search-sdk-preview) |8,0-Preview |Preview, uitgebracht: april 2019 |
-| [Service-REST-API](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Algemeen verkrijgbaar |
+| [Service REST API](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Algemeen verkrijgbaar |
 | [Service REST API 2019-05-06-preview](search-api-preview.md) |2019-05-06-preview |Preview |
 | [.NET Management SDK](https://aka.ms/search-mgmt-sdk) |3.0 |Algemeen verkrijgbaar |
 | [REST-API voor beheer](https://docs.microsoft.com/rest/api/searchmanagement/) |2015-08-19 |Algemeen verkrijgbaar |
@@ -49,6 +49,9 @@ Voor de REST-Api's, met inbegrip van de `api-version` op elke aanroep is vereist
 > De service REST API en het beheer REST API afzonderlijk van elkaar zijn geversied. Eventuele gelijkenisën met versie nummers zijn bijkomend.
 
 Algemeen beschik bare Api's (of GA) kunnen worden gebruikt in productie en zijn onderworpen aan Azure Service Level Agreements. Preview-versies hebben experimentele functies die niet altijd worden gemigreerd naar een GA-versie. **U wordt ten zeerste geadviseerd om Preview-Api's te gebruiken in productie toepassingen.**
+
+## <a name="update-to-the-latest-version-of-the-rest-api-by-october-15-2020"></a>Update naar de nieuwste versie van de REST API op 15 oktober 2020
+De volgende versies van de Azure Cognitive Search REST API worden buiten gebruik gesteld en worden niet meer ondersteund vanaf 15 oktober 2020: **2014-07-31-preview**, **2014-10-20-preview**, **2015-02-28-preview**en **2015-02-28**. Daarnaast worden versies van de Azure Cognitive Search .NET SDK die ouder zijn dan **3.0.0-RC** ook buiten gebruik gesteld, omdat ze een van deze rest API versies richten. Na deze datum zullen toepassingen die gebruikmaken van een van de afgeschafte REST API-of SDK-versies niet meer werken en moeten ze worden bijgewerkt. Net als bij elke wijziging van dit type, geven we de kennisgeving van 12 maanden, zodat u voldoende tijd hebt om aan te passen.  Als u Azure Cognitive Search wilt blijven gebruiken, moet u de bestaande code migreren die de [rest API](search-api-migration.md) voor [rest API versie 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) of hoger of de .net SDK naar [versie 3,0](search-dotnet-sdk-migration.md) of hoger op 15 oktober 2020.  Als u vragen hebt over het bijwerken van de nieuwste versie, stuurt u per 15 mei 2020 een e-mail naar azuresearch_contact@microsoft.com om ervoor te zorgen dat u voldoende tijd hebt om uw code bij te werken.
 
 ## <a name="about-preview-and-generally-available-versions"></a>Over een preview-versie en algemeen beschik bare versies
 Met Azure Cognitive Search worden eerst experimentele functies vooraf vrijgegeven via de REST API en vervolgens via voorlopige versies van de .NET SDK.

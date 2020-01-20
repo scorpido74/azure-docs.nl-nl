@@ -1,20 +1,18 @@
 ---
 title: (AFGESCHAFT) Service-principal voor Azure Kubernetes-cluster
 description: Een service-principal voor Azure Active Directory voor een Kubernetes-cluster in Azure Container Service maken en beheren
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 52ed101199126818abaddef47892e1f033eb3968
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3126339a1eb8ff9c0ef34a330333635d3d0f6433
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60609134"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274373"
 ---
 # <a name="deprecated-set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>(AFGESCHAFT) Een service-principal voor Azure Active Directory voor een Kubernetes-cluster in Container Service instellen
 
@@ -33,7 +31,7 @@ In dit artikel worden verschillende opties getoond om een service-principal in t
 
 U kunt een bestaande Azure AD-service-principal gebruiken die voldoet aan de volgende vereisten, maar u kunt ook een nieuwe maken.
 
-* **Bereik**: Resourcegroep
+* **Bereik**: resourcegroep
 
 * **Rol**: Inzender
 
@@ -43,7 +41,7 @@ U kunt een bestaande Azure AD-service-principal gebruiken die voldoet aan de vol
 > Als u een service-principal wilt maken, moet u beschikken over machtigingen voor het registreren van een toepassing bij uw Azure AD-tenant. U moet ook machtigingen hebben om de toepassing aan een rol toe te wijzen in uw abonnement. [Open de portal](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) om te controleren of u over de vereiste machtigingen beschikt.
 >
 
-## <a name="option-1-create-a-service-principal-in-azure-ad"></a>Optie 1: een service-principal maken in Azure Active Directory
+## <a name="option-1-create-a-service-principal-in-azure-ad"></a>Optie 1: een service-principal maken in Azure AD
 
 Azure biedt verschillende methoden om een Azure AD-service-principal te maken voordat u het Kubernetes-cluster implementeert.
 
@@ -80,7 +78,7 @@ In het volgende voorbeeld wordt één manier getoond om de parameters door te ge
 
 1. [Download](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-acs-kubernetes/azuredeploy.parameters.json) het bestand met sjabloonparameters `azuredeploy.parameters.json` van GitHub.
 
-2. Voer de waarden voor `servicePrincipalClientId` en `servicePrincipalClientSecret` in het bestand in om de service-principal op te geven. (U moet ook uw eigen waarden voor `dnsNamePrefix` en `sshRSAPublicKey` opgeven. De laatste waarde is de openbare SSH-sleutel voor toegang tot de cluster.) Sla het bestand op.
+2. Voer de waarden voor `servicePrincipalClientId` en `servicePrincipalClientSecret` in het bestand in om de service-principal op te geven. (U moet ook uw eigen waarden voor `dnsNamePrefix` en `sshRSAPublicKey` opgeven. De laatste is de open bare SSH-sleutel voor toegang tot het cluster.) Sla het bestand op.
 
     ![Parameters voor de service-principal doorgeven](./media/container-service-kubernetes-service-principal/service-principal-params.png)
 

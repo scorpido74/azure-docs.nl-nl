@@ -1,25 +1,18 @@
 ---
-title: Systeem vereisten voor de virtuele matrix Microsoft Azure StorSimple | Microsoft Docs
+title: Systeem vereisten voor de virtuele matrix Microsoft Azure StorSimple
 description: Meer informatie over de software-en netwerk vereisten voor uw virtuele StorSimple-matrix
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 65d2a21a9f40470cee1dd9d713f9f9cb5431a245
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 38f9c432191ac613c1c0f8c02458e8bc4bf8232a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516685"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273773"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Systeemvereisten voor StorSimple virtuele array
 
@@ -58,7 +51,7 @@ De software vereisten omvatten de informatie over de ondersteunde webbrowsers, S
 | Mini maal geheugen (RAM) |8 GB <br> Voor een bestands Server 8 GB voor minder dan 2.000.000 bestanden en 16 GB voor 2-4 miljoen bestanden|
 | Schijf ruimte<sup>1</sup> |BESTURINGSSYSTEEM schijf-80 GB <br></br>Gegevens schijf-500 GB tot 8 TB |
 | Minimum aantal netwerk interface (s) |1 |
-| Internet bandbreedte<sup>2</sup> |Minimale band breedte vereist: 5 Mbps <br> Aanbevolen band breedte: 100 Mbps <br> De snelheid van gegevens overdracht kan worden geschaald met de Internet bandbreedte. 100 GB aan gegevens duurt bijvoorbeeld 2 dagen om een overdracht uit te voeren met 5 Mbps, wat kan leiden tot back-upfouten omdat dagelijkse back-ups niet op een dag worden voltooid. Met een band breedte van 100 Mbps kan 100 GB aan gegevens worden overgebracht in 2,5 uur.   |
+| Internet bandbreedte<sup>2</sup> |Mini maal vereiste band breedte: 5 Mbps <br> Aanbevolen band breedte: 100 Mbps <br> De snelheid van gegevens overdracht kan worden geschaald met de Internet bandbreedte. 100 GB aan gegevens duurt bijvoorbeeld 2 dagen om een overdracht uit te voeren met 5 Mbps, wat kan leiden tot back-upfouten omdat dagelijkse back-ups niet op een dag worden voltooid. Met een band breedte van 100 Mbps kan 100 GB aan gegevens worden overgebracht in 2,5 uur.   |
 
 <sup>1</sup> -Thin-provisioned
 
@@ -91,10 +84,10 @@ De volgende software vereisten gelden voor de SMB-clients die toegang hebben tot
 
 
 ### <a name="supported-storage-format"></a>Ondersteunde opslag indeling
-Alleen de Azure Block Blob Storage wordt ondersteund. Pagina-blobs worden niet ondersteund. Meer informatie [over blok-blobs en pagina](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)-blobs.
+Alleen de Azure Block Blob Storage wordt ondersteund. Pagina-blobs worden niet ondersteund. Meer informatie [over blok-blobs en pagina-blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 
 ## <a name="networking-requirements"></a>Netwerk vereisten
-De volgende tabel geeft een lijst van de poorten die in uw firewall moeten worden geopend om iSCSI-, SMB-, Cloud-of beheer verkeer toe te staan. In *of* uitgaand van deze *tabel verwijst naar* de richting van waar inkomende clients toegang tot uw apparaat aanvragen. *Out* of uitgaand verwijst naar de richting waarin uw StorSimple-apparaat gegevens extern verzendt, behalve de implementatie: bijvoorbeeld uitgaand naar Internet.
+De volgende tabel geeft een lijst van de poorten die in uw firewall moeten worden geopend om iSCSI-, SMB-, Cloud-of beheer verkeer toe te staan. *In of* uitgaand van deze *tabel verwijst naar* de richting van waar inkomende clients toegang tot uw apparaat aanvragen. *Out* of *uitgaand* verwijst naar de richting waarin uw StorSimple-apparaat gegevens extern verzendt, behalve de implementatie: bijvoorbeeld uitgaand naar Internet.
 
 | **Poort nummer<sup>1</sup>** | **In of uit** | **Poort bereik** | **Vereist** | **Opmerkingen** |
 | --- | --- | --- | --- | --- |
@@ -127,14 +120,14 @@ We raden u aan om de firewall regels voor uitgaand verkeer, op basis van StorSim
 
 | URL-patroon | Onderdeel/functionaliteit |
 | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|StorSimple-apparaatbeheerservice<br>Toegangsbeheerservice<br>Azure Service Bus<br>Verificatieservice|
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|StorSimple-apparaatbeheerfunctie<br>Access Control Service<br>Service Bus van Azure<br>Verificatie service|
 | `http://*.backup.windowsazure.com` |Apparaatregistratie |
 | `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Certificaat intrekken |
 | `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure Storage-accounts en-bewaking |
 | `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update-servers<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
-| `https://*.partners.extranet.microsoft.com/*` |Ondersteuningspakket |
-| `https://*.data.microsoft.com` |Telemetrie-service in Windows, zie de [Update voor klant ervaring en diagnostische](https://support.microsoft.com/en-us/kb/3068708) telemetrie |
+| `https://*.partners.extranet.microsoft.com/*` |Ondersteunings pakket |
+| `https://*.data.microsoft.com` |Telemetrie-service in Windows, zie de [Update voor klant ervaring en diagnostische telemetrie](https://support.microsoft.com/en-us/kb/3068708) |
 
 ## <a name="next-steps"></a>Volgende stappen
 * [De portal voorbereiden om uw virtuele StorSimple-matrix te implementeren](storsimple-virtual-array-deploy1-portal-prep.md)

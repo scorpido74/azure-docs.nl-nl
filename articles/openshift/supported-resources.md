@@ -1,40 +1,38 @@
 ---
-title: Ondersteunde resources voor Azure Red Hat OpenShift | Microsoft Docs
-description: Krijg inzicht in welke Azure-regio's en grootten van virtuele machines worden ondersteund door Microsoft Azure Red Hat OpenShift.
-services: container-service
+title: Ondersteunde bronnen voor Azure Red Hat open Shift
+description: Begrijp welke Azure-regio's en virtuele-machine grootten worden ondersteund door Microsoft Azure Red Hat open SHIFT.
 author: jimzim
 ms.author: jzim
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: c226227797802ab58d1bcbaadb7e97e780b30560
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1b794852390141d31a3218a1a434c21133db914c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66306220"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274904"
 ---
-# <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift-resources
+# <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat open Shift-resources
 
-In dit onderwerp bevat de Azure-regio's en grootten van virtuele machines wordt ondersteund door de service Microsoft Azure Red Hat OpenShift.
+Dit onderwerp bevat een overzicht van de Azure-regio's en de grootte van virtuele machines die worden ondersteund door de Microsoft Azure Red Hat open Shift service.
 
 ## <a name="azure-regions"></a>Azure-regio's
 
-Zie [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) clusters voor een huidige lijst met regio's waarin u Azure Red Hat OpenShift kunt implementeren.
+Zie [producten beschikbaar per regio](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) voor een actuele lijst met regio's waarin u Azure Red Hat open Shift-clusters kunt implementeren.
 
 ## <a name="virtual-machine-sizes"></a>Grootten van virtuele machines
 
-Hier volgen de ondersteunde VM-groottes die u voor de rekenknooppunten in uw cluster Azure Red Hat OpenShift opgeven kunt.
+Hier vindt u de ondersteunde grootten voor virtuele machines die u kunt opgeven voor de reken knooppunten in uw Azure Red Hat open Shift-cluster.
 
 > [!Important]
-> Elke virtuele machine heeft een ander aantal stations dat kan worden gekoppeld. Dit mogelijk niet als onmiddellijk wissen als het geheugen of CPU-grootte.
-> Niet alle VM-grootten zijn beschikbaar in alle regio's. Zelfs als de API biedt ondersteuning voor de grootte die u opgeeft, kan er een foutbericht als de grootte is niet beschikbaar in de regio die u opgeeft.
-> Zie [huidige lijst van ondersteunde VM-grootten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) voor meer informatie.
+> Elke virtuele machine heeft een verschillend aantal stations dat kan worden bijgevoegd. Dit is mogelijk niet zo onmiddellijk als geheugen of CPU-grootte.
+> Niet alle VM-grootten zijn in alle regio's beschikbaar. Zelfs als de API de door u opgegeven grootte ondersteunt, krijgt u mogelijk een fout melding als de grootte niet beschikbaar is in de regio die u opgeeft.
+> Bekijk de [huidige lijst met ondersteunde VM-grootten per regio](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) voor meer informatie.
 
-## <a name="compute-node-sizes"></a>Knooppuntgrootten COMPUTE
+## <a name="compute-node-sizes"></a>Grootte van reken knooppunten
 
-De volgende grootte van rekenknooppunten worden ondersteund door de Azure Red Hat OpenShift REST-API:
+De volgende grootte van reken knooppunten worden ondersteund door de Azure Red Hat open Shift REST API:
 
 |Grootte|vCPU|RAM|
 |-|-|-|
@@ -49,12 +47,12 @@ De volgende grootte van rekenknooppunten worden ondersteund door de Azure Red Ha
 |Standard E32s v3|32|256 GB|
 |-|-|-|
 |Standard F8s versie 2|8|16 GB|
-|Standard F16s v2|16|32 GB|
+|Standard F16s versie 2|16|32 GB|
 |Standard F32s versie 2|32|64 GB|
 
-## <a name="master-node-sizes"></a>Grootte van master
+## <a name="master-node-sizes"></a>Grootte van hoofd knooppunt
 
-De volgende master / knooppuntgrootten infrastructuur worden ondersteund door de Azure Red Hat OpenShift REST-API:
+De volgende hoofd-en infrastructuur knooppunt grootten worden ondersteund door de Azure Red Hat open Shift REST API:
 
 |Grootte|vCPU|RAM|
 |-|-|-|
@@ -65,4 +63,4 @@ De volgende master / knooppuntgrootten infrastructuur worden ondersteund door de
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Probeer de [maken van een cluster Azure Red Hat OpenShift](tutorial-create-cluster.md) zelfstudie.
+Probeer de zelf studie [een Azure Red Hat open Shift-cluster maken](tutorial-create-cluster.md) .

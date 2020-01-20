@@ -1,121 +1,118 @@
 ---
-title: Azure Active Directory-integratie voor Azure Red Hat OpenShift | Microsoft Docs
-description: Informatie over het maken van een Azure AD-beveiligingsgroep en de gebruiker voor het testen van apps op uw Microsoft Azure Red Hat OpenShift-cluster.
+title: Azure Active Directory integratie voor Azure Red Hat open Shift
+description: Meer informatie over het maken van een Azure AD-beveiligings groep en-gebruiker voor het testen van apps op uw Microsoft Azure Red Hat open Shift-cluster.
 author: jimzim
 ms.author: jzim
 ms.service: container-service
-manager: jeconnoc
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 05/13/2019
-ms.openlocfilehash: 00609905d09f8d414660c21805c6efca5eb30843
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 285456c87835344aba083c68a7876ecc78d9e45e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67669385"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270558"
 ---
-# <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory-integratie voor Azure Red Hat OpenShift
+# <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory integratie voor Azure Red Hat open Shift
 
-Als u al een tenant Azure Active Directory (Azure AD) dat nog niet hebt gemaakt, volgt u de aanwijzingen in [maken van een Azure AD-tenant voor Azure Red Hat OpenShift](howto-create-tenant.md) voordat u doorgaat met deze instructies.
+Als u nog geen Azure Active Directory-Tenant (Azure AD) hebt gemaakt, volgt u de instructies in [een Azure AD-Tenant maken voor Azure Red Hat open Shift](howto-create-tenant.md) voordat u doorgaat met deze instructies.
 
-Microsoft Azure Red Hat OpenShift moet machtigingen voor het uitvoeren van taken namens uw cluster. Als uw organisatie nog niet over een Azure AD-gebruiker, Azure AD-beveiligingsgroep of een Azure AD-app-registratie als de service-principal wilt gebruiken, volgt u deze instructies om ze te maken.
+Microsoft Azure Red Hat open Shift moet machtigingen hebben om namens uw cluster taken uit te voeren. Als uw organisatie nog geen Azure AD-gebruiker, Azure AD-beveiligings groep of Azure AD-App-registratie heeft om te gebruiken als Service-Principal, volgt u deze instructies om ze te maken.
 
 ## <a name="create-a-new-azure-active-directory-user"></a>Een nieuwe Azure Active Directory-gebruiker maken
 
-In de [Azure-portal](https://portal.azure.com), zorg ervoor dat uw tenant wordt weergegeven onder de naam van de gebruiker in de rechterbovenhoek van de portal:
+Zorg er in de [Azure Portal](https://portal.azure.com)voor dat uw Tenant wordt weer gegeven onder uw gebruikers naam in de rechter bovenhoek van de portal:
 
-![Schermafbeelding van portal met de tenant die worden vermeld in de rechterbovenhoek](./media/howto-create-tenant/tenant-callout.png) als de verkeerde tenant wordt weergegeven, klikt u op de naam van de gebruiker in de rechterbovenhoek en klik vervolgens op **schakelen tussen mappen**, en selecteer de juiste tenant van de **alle Mappen** lijst.
+![scherm opname van de portal met de Tenant rechtsboven](./media/howto-create-tenant/tenant-callout.png) als de verkeerde Tenant wordt weer gegeven, klikt u in de rechter bovenhoek op uw gebruikers naam, klikt u op **Active Directory**en selecteert u de juiste Tenant in de lijst **alle directory's** .
 
-Maak een nieuwe gebruiker van de globale beheerder van Azure Active Directory te melden bij uw Azure Red Hat OpenShift-cluster.
+Maak een nieuwe Azure Active Directory globale beheerders gebruiker om zich aan te melden bij uw Azure Red Hat open Shift-cluster.
 
-1. Ga naar de [gebruikers alle gebruikers](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) blade.
-2. Klik op **+ nieuwe gebruiker** openen de **gebruiker** deelvenster.
-3. Voer een **naam** voor deze gebruiker.
-4. Maak een **gebruikersnaam** op basis van de naam van de tenant die u hebt gemaakt, met `.onmicrosoft.com` toegevoegd aan het einde. Bijvoorbeeld `yourUserName@yourTenantName.onmicrosoft.com`. Noteer de naam van deze gebruiker. U moet deze zich aanmeldt bij uw cluster.
-5. Klik op **maprol** naar het deelvenster van de rol van map openen en selecteer **hoofdbeheerder** en klik vervolgens op **Ok** aan de onderkant van het deelvenster.
-6. In de **gebruiker** deelvenster, klikt u op **wachtwoord weergeven** en noteer het tijdelijke wachtwoord. Nadat u de eerste keer aanmelden, wordt u gevraagd opnieuw in te stellen.
-7. Klik aan de onderkant van het deelvenster **maken** om de gebruiker te maken.
+1. Ga naar de Blade [gebruikers-alle gebruikers](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) .
+2. Klik op **+ nieuwe gebruiker** om het deel venster **gebruiker** te openen.
+3. Voer een **naam** in voor deze gebruiker.
+4. Maak een **gebruikers naam** op basis van de naam van de Tenant die u hebt gemaakt, met `.onmicrosoft.com` toegevoegd aan het einde. Bijvoorbeeld `yourUserName@yourTenantName.onmicrosoft.com`. Noteer deze gebruikers naam. U hebt deze nodig om u aan te melden bij uw cluster.
+5. Klik op **Directory functie** om het deel venster Directory-rollen te openen, en selecteer **globale beheerder** en klik onder aan het deel venster op **OK** .
+6. Klik in het deel venster **gebruiker** op **wacht woord weer geven** en het tijdelijke wacht woord vastleggen. Nadat u zich de eerste keer hebt aangemeld, wordt u gevraagd om deze opnieuw in te stellen.
+7. Klik onder aan het deel venster op **maken** om de gebruiker te maken.
 
-## <a name="create-an-azure-ad-security-group"></a>Een Azure AD-beveiligingsgroep maken
+## <a name="create-an-azure-ad-security-group"></a>Een Azure AD-beveiligings groep maken
 
-Cluster-beheerder om toegang te verlenen, worden de lidmaatschappen in een Azure AD-beveiligingsgroep gesynchroniseerd in de OpenShift groep 'osa-klant-admins'. Indien niet opgegeven, wordt er geen toegang tot de beheerder van het cluster worden verleend.
+Als u de toegang tot cluster beheer wilt verlenen, worden de lidmaatschappen in een Azure AD-beveiligings groep gesynchroniseerd met de open Shift-groep OSA-Customer-Administrators. Als u niets opgeeft, wordt er geen cluster beheer toegang verleend.
 
-1. Open de [Azure Active Directory-groepen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/AllGroups) blade.
+1. Open de Blade [Azure Active Directory groepen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/GroupsManagementMenuBlade/AllGroups) .
 2. Klik op **+ nieuwe groep**.
-3. Geef een naam en beschrijving.
-4. Stel **groepstype** naar **Security**.
-5. Stel **lidmaatschapstype** naar **toegewezen**.
+3. Geef een groeps naam en beschrijving op.
+4. Stel het **groeps type** in op **beveiliging**.
+5. Stel het **lidmaatschaps type** in op **toegewezen**.
 
-    De Azure AD-gebruiker die u hebt gemaakt in de vorige stap aan deze beveiligingsgroep toevoegen.
+    Voeg de Azure AD-gebruiker die u in de vorige stap hebt gemaakt, toe aan deze beveiligings groep.
 
-6. Klik op **leden** openen de **leden selecteren** deelvenster.
-7. Selecteer de Azure AD-gebruiker die u hierboven hebt gemaakt in de lijst met leden.
-8. Klik aan de onderkant van de portal en op **Selecteer** en vervolgens **maken** om de beveiligingsgroep te maken.
+6. Klik op **leden** om het deel venster **leden selecteren** te openen.
+7. Selecteer in de lijst leden de Azure AD-gebruiker die u hierboven hebt gemaakt.
+8. Klik onder aan de portal op **selecteren** en vervolgens op **maken** om de beveiligings groep te maken.
 
-    Noteer de groeps-ID-waarde.
+    Noteer de waarde van de groeps-ID.
 
-9. Wanneer de groep is gemaakt, ziet u deze in de lijst van alle groepen. Klik op de nieuwe groep.
-10. Op de pagina die wordt weergegeven, noteert de **Object-ID**. Er wordt verwezen naar deze waarde als `GROUPID` in de [maken van een cluster Azure Red Hat OpenShift](tutorial-create-cluster.md) zelfstudie.
+9. Wanneer de groep is gemaakt, wordt deze weer geven in de lijst met alle groepen. Klik op de nieuwe groep.
+10. Op de pagina die wordt weer gegeven, kopieert u de **object-id**. We verwijzen naar deze waarde als `GROUPID` in de zelf studie [een Azure Red Hat open Shift-cluster maken](tutorial-create-cluster.md) .
 
-## <a name="create-an-azure-ad-app-registration"></a>De registratie van een Azure AD-app maken
+## <a name="create-an-azure-ad-app-registration"></a>Een Azure AD-App-registratie maken
 
-U kunt automatisch een Azure Active Directory (Azure AD) app-registratie-client als onderdeel van het cluster is gemaakt door weg te laten maken de `--aad-client-app-id` vlag in op de `az openshift create` opdracht. Deze zelfstudie leert u over het maken van de Azure AD-app-registratie voor de volledigheid.
+U kunt automatisch een app-registratie-client voor Azure Active Directory (Azure AD) maken als onderdeel van het maken van het cluster door de `--aad-client-app-id` markering te weglaten aan de `az openshift create`-opdracht. In deze zelf studie leert u hoe u de Azure AD-App-registratie voor volledigheid maakt.
 
-Als uw organisatie niet al een app-registratie voor Azure Active Directory (Azure AD) om te gebruiken als een service-principal hebt, volgt u deze instructies voor het maken van een.
+Als uw organisatie nog geen app-registratie voor Azure Active Directory (Azure AD) heeft om als service-principal te gebruiken, volgt u deze instructies om er een te maken.
 
-1. Open de [blade App-registraties](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) en klikt u op **+ nieuwe registreren**.
-2. In de **registreren van een toepassing** deelvenster, voer een naam voor de registratie van uw toepassing.
-3. Zorg ervoor dat onder **ondersteund accounttypen** die **Accounts in deze organisatie-map alleen** is geselecteerd. Dit is de veiligste optie.
-4. Zodra we weten de URI van het cluster dat, zullen we later een omleidings-URI toevoegen. Klik op de **registreren** om te maken van de registratie van de Azure AD-toepassing.
-5. Op de pagina die wordt weergegeven, noteert de **(client) toepassings-ID**. Er wordt verwezen naar deze waarde als `APPID` in de [maken van een cluster Azure Red Hat OpenShift](tutorial-create-cluster.md) zelfstudie.
+1. Open de [blade app-registraties](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) en klik op **+ nieuwe registratie**.
+2. Voer in het deel venster **een toepassing registreren** een naam in voor de registratie van uw toepassing.
+3. Zorg ervoor dat onder de **ondersteunde account typen** **alleen accounts in deze organisatie Directory** zijn geselecteerd. Dit is de veiligste keuze.
+4. We gaan later een omleidings-URI toevoegen wanneer we de URI van het cluster kennen. Klik op de knop registreren om de registratie **van** de Azure AD-toepassing te maken.
+5. Op de pagina die wordt weer gegeven, kopieert u de **toepassings-id (client)** . We verwijzen naar deze waarde als `APPID` in de zelf studie [een Azure Red Hat open Shift-cluster maken](tutorial-create-cluster.md) .
 
-![Schermafbeelding van pagina voor app-object](./media/howto-create-tenant/get-app-id.png)
+![Scherm afbeelding van de pagina met app-objecten](./media/howto-create-tenant/get-app-id.png)
 
-### <a name="create-a-client-secret"></a>Een clientgeheim maken
+### <a name="create-a-client-secret"></a>Een client geheim maken
 
-Genereren van een clientgeheim voor het verifiëren van uw app naar Azure Active Directory.
+Genereer een client geheim om uw app te verifiëren voor Azure Active Directory.
 
-1. In de **beheren** sectie van de app-registraties pagina, klikt u op **certificaten en geheimen**.
-2. Op de **certificaten en geheimen** deelvenster, klikt u op **+ nieuwe clientgeheim**.  De **toevoegen van een clientgeheim** deelvenster wordt weergegeven.
-3. Geef een **beschrijving**.
-4. Stel **verloopt** aan de duur die u, bijvoorbeeld wilt **na twee jaar**.
-5. Klik op **toevoegen** en waarde van de sleutel wordt weergegeven in de **Client geheimen** sectie van de pagina.
-6. Noteer de sleutelwaarde. Er wordt verwezen naar deze waarde als `SECRET` in de [maken van een cluster Azure Red Hat OpenShift](tutorial-create-cluster.md) zelfstudie.
+1. Klik in het gedeelte **beheren** van de pagina app-registraties op **Certificaten & geheimen**.
+2. Klik in het deel venster **certificaten & geheimen** op **+ Nieuw client geheim**.  Het deel venster **een geheim van client toevoegen** wordt weer gegeven.
+3. Geef een **Beschrijving**op.
+4. Stel **verloopt** op de gewenste duur, bijvoorbeeld **in 2 jaar**.
+5. Klik op **toevoegen** en de sleutel waarde wordt weer gegeven in de sectie **client geheimen** van de pagina.
+6. Kopieer de sleutel waarde. We verwijzen naar deze waarde als `SECRET` in de zelf studie [een Azure Red Hat open Shift-cluster maken](tutorial-create-cluster.md) .
 
-![Schermafbeelding van het deelvenster certificaten en geheimen](./media/howto-create-tenant/create-key.png)
+![Scherm afbeelding van het deel venster certificaten en geheimen](./media/howto-create-tenant/create-key.png)
 
-Zie voor meer informatie over Azure-toepassingsobjecten [toepassing en service-principalobjecten in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
+Zie voor meer informatie over Azure-toepassing-objecten [toepassings-en Service-Principal-objecten in azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals).
 
-Voor meer informatie over het maken van een nieuwe Azure AD-toepassing, Zie [een app registreren met het eindpunt van de Azure Active Directory v1.0](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app).
+Zie [een app registreren bij het Azure Active Directory v 1.0-eind punt](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)voor meer informatie over het maken van een nieuwe Azure AD-toepassing.
 
 ## <a name="add-api-permissions"></a>API-machtigingen toevoegen
 
-1. In de **beheren** sectie Klik **API-machtigingen**.
+1. Klik in de sectie **beheren** op **API-machtigingen**.
 2. Klik op **machtiging toevoegen** en selecteer **Azure Active Directory Graph** vervolgens **gedelegeerde machtigingen**
-3. Vouw **gebruiker** op de onderstaande lijst en zorg ervoor dat **User.Read** is ingeschakeld.
-4. Blader omhoog en selecteer **Toepassingsmachtigingen**.
-5. Vouw **Directory** op de onderstaande lijst en inschakelen **Directory.ReadAll**
+3. Vouw de **gebruiker** uit op de onderstaande lijst en controleer of **User. Read** is ingeschakeld.
+4. Schuif omhoog en selecteer **toepassings machtigingen**.
+5. Vouw **map** in de onderstaande lijst uit en Schakel **Directory. ReadAll in.**
 6. Klik op **machtigingen toevoegen** om de wijzigingen te accepteren.
-7. Het deelvenster van de machtigingen API moet beide nu weergeven *User.Read* en *Directory.ReadAll*. Houd er rekening mee de waarschuwing in **beheerderstoestemming vereist** kolom naast *Directory.ReadAll*.
-8. Als u de *de beheerder van de Azure-abonnement*, klikt u op **beheerder toestemming voor *abonnementsnaam***  hieronder. Als u niet de *de beheerder van de Azure-abonnement*, vragen de toestemming van uw beheerder.
-![Schermopname van het paneel API-machtigingen. Machtigingen voor User.Read en Directory.ReadAll toegevoegd, beheerderstoestemming vereist voor Directory.ReadAll](./media/howto-aad-app-configuration/permissions-required.png)
+7. In het paneel API-machtigingen moeten nu zowel *User. Read* als *Directory. ReadAll*worden weer gegeven. Let op de waarschuwing in de **beheerders vergunning vereist** kolom naast *Directory. ReadAll*.
+8. Als u de beheerder van het *Azure-abonnement*bent, klikt u op **toestemming van beheerder verlenen voor *abonnements naam***  hieronder. Als u niet de beheerder van het *Azure-abonnement*bent, vraagt u de toestemming van de beheerder aan.
+![scherm opname van het paneel API-machtigingen. Gebruiker. Read en Directory. ReadAll machtigingen toegevoegd, toestemming van de beheerder vereist voor Directory. ReadAll-](./media/howto-aad-app-configuration/permissions-required.png)
 
 > [!IMPORTANT]
-> Synchronisatie van de beheerdersgroep cluster werkt alleen als toestemming heeft gekregen. Ziet u een groene cirkel met een vinkje en een bericht "verleend voor *abonnementsnaam*' in de *beheerderstoestemming vereist* kolom.
+> De synchronisatie van de groep cluster beheerders werkt pas nadat de toestemming is verleend. U ziet een groene cirkel met een vinkje en een bericht ' verleend voor *abonnements naam*' in de kolom *vereiste beheerder* .
 
-Zie voor meer informatie over het beheren van beheerders en andere functies [toevoegen of wijzigen Azure-abonnementbeheerders](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator).
+Zie [Azure-abonnements beheerders toevoegen of wijzigen](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator)voor meer informatie over het beheren van beheerders en andere rollen.
 
 ## <a name="resources"></a>Resources
 
-* [Toepassingen en service-principalobjecten in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
-* [Snelstart: Een app registreren met het eindpunt van de Azure Active Directory v1.0](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
+* [Toepassingen en Service-Principal-objecten in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)
+* [Snelstartgids: een app met het Azure Active Directory v 1.0-eind punt registreren](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u al hebt voldaan de [Azure Red Hat OpenShift vereisten](howto-setup-environment.md), u bent klaar om uw eerste cluster te maken!
+Als u aan alle [Azure Red Hat open Shift-vereisten](howto-setup-environment.md)hebt voldaan, kunt u uw eerste cluster maken.
 
-Raadpleeg de zelfstudie:
+Probeer de zelf studie:
 > [!div class="nextstepaction"]
 > [Een Azure Red Hat OpenShift-cluster maken](tutorial-create-cluster.md)

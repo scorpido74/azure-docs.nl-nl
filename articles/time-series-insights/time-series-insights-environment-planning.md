@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: ab8baa810c36c794bbefd264c5588f8b28cbd62a
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: a46627851eb8bbefaf9290691cd6e3fbda2110f3
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046199"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278650"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>Uw Azure Time Series Insights GA-omgeving plannen
 
@@ -68,7 +68,7 @@ U kunt de Bewaar periode aanpassen en scha kelen tussen de twee modi op de confi
 
 1. Voer in het vak **tijdstip van bewaren van gegevens (in dagen)** een waarde in tussen 1 en 400.
 
-   [Bewaar ![configureren](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
+   [Bewaar ![configureren](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
 > [!TIP]
 > Lees voor meer informatie over het implementeren van een geschikt Bewaar beleid voor gegevens [het configureren van Bewaar periode](./time-series-insights-how-to-configure-retention.md).

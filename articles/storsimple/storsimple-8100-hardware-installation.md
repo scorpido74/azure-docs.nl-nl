@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure StorSimple 8100-apparaat installeren | Microsoft Docs
+title: Microsoft Azure StorSimple 8100-apparaat installeren
 description: Hierin wordt beschreven hoe u het StorSimple 8100-apparaat uitpakt, koppelt en kabelt voordat u de software implementeert en configureert.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 6098a01e-c031-488a-a8d7-0b607ce665e1
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 0b2301c1c9b846e2ea005f049c5aadb3d4634a81
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963586"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277089"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>Uw StorSimple 8100-apparaat uitpakken, aan het rek koppelen en bekabelen
 
@@ -34,7 +27,7 @@ De volgende stappen bevatten duidelijke, gedetailleerde instructies voor het uit
 ### <a name="prepare-to-unpack-your-device"></a>Voorbereiden op het uitpakken van uw apparaat
 Lees de volgende informatie voordat u uw apparaat uitpakt.
 
-![Waarschuwing pictogram](./media/storsimple-safety/IC740879.png)![pictogram voor zwaar](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) gewicht **.**
+![waarschuwings pictogram](./media/storsimple-safety/IC740879.png)![pictogram met een dik gewicht](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **waarschuwing.**
 
 1. Zorg ervoor dat er twee mensen beschikbaar zijn voor het beheren van het gewicht van de behuizing als u deze hand matig verwerkt. Een volledig geconfigureerde behuizing kan tot 32 kg (70 lbs) wegen.
 2. Leg de doos op een vlak, horizontaal oppervlak.
@@ -49,7 +42,7 @@ Voer vervolgens de volgende stappen uit om uw apparaat uit te pakken.
    
     **Uitgepakte weer gave van uw opslag apparaat**
    
-   | Label | Description |
+   | Label | Beschrijving |
    | --- | --- |
    |   1 |Vak voor verpakking |
    |   2 |Onderste schuim |
@@ -90,7 +83,7 @@ Het apparaat moet worden geïnstalleerd in een standaard 19-inch rack met zowel 
 2. Controleer of de site waar u wilt instellen, een standaard AC van een onafhankelijke bron of een PDU (netstroom distributie-eenheid) met een nood voeding (UPS) heeft.
 3. Zorg ervoor dat er één 2U-sleuf beschikbaar is in het rek waarin u het apparaat wilt koppelen.
 
-![Waarschuwing pictogram](./media/storsimple-safety/IC740879.png)![pictogram voor zwaar](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) gewicht **.**
+![waarschuwings pictogram](./media/storsimple-safety/IC740879.png)![pictogram met een dik gewicht](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **waarschuwing.**
 
 Zorg ervoor dat er twee mensen beschikbaar zijn voor het beheren van het gewicht als u de apparaat-installatie hand matig uitvoert. Een volledig geconfigureerde behuizing kan tot 32 kg (70 lbs) wegen.
 
@@ -111,7 +104,7 @@ Er wordt een reeks montage rails meegeleverd voor gebruik met de 19-inch rack be
 
     **Binnenste Rail dia's aan de zijden van de behuizing koppelen**
    
-    Label | Description
+    Label | Beschrijving
     ----- | -----------
     1     | M 3x4 knop-Head schroefs
     2     | Chassis dia's
@@ -125,7 +118,7 @@ Er wordt een reeks montage rails meegeleverd voor gebruik met de 19-inch rack be
    
     **Buitenste Rail-assembly's aan het rek koppelen**
    
-   | Label | Description |
+   | Label | Beschrijving |
    | --- | --- |
    |   1 |Schroef bout |
    |   2 |Vier Kante opening voor rack-schroef |
@@ -151,7 +144,7 @@ Voer de volgende stappen uit om het apparaat in het rek te koppelen met behulp v
    
     **Flens cap's installeren**
    
-   | Label | Description |
+   | Label | Beschrijving |
    | --- | --- |
    |   1 |Schroef bout behuizing |
 
@@ -191,7 +184,7 @@ Ter ondersteuning van deze redundante Controller-failover moet u het netwerk van
    
     **Weer gave van het apparaat met gegevens poorten**
    
-   | Label | Description |
+   | Label | Beschrijving |
    | --- | --- |
    |   0,1,4,5 |1 GbE-netwerk interfaces |
    |   2,3 |10 GbE-netwerk interfaces |
@@ -202,9 +195,9 @@ Ter ondersteuning van deze redundante Controller-failover moet u het netwerk van
 
     **Netwerk kabels voor uw apparaat**
 
-   |Label | Description |
+   |Label | Beschrijving |
    |----- | ----------- |
-   | G    | LAN met Internet toegang |
+   | A    | LAN met Internet toegang |
    | B    | Controller 0 |
    | C    | PCM 0 |
    | D    | Controller 1 |
@@ -235,15 +228,15 @@ Raadpleeg de **netwerk interfaces** onder de [vereisten voor hoge Beschik baarhe
 Voer de volgende stappen uit om uw seriële poort te bekabelen.
 
 #### <a name="to-cable-for-serial-connection"></a>Naar kabel voor seriële verbinding
-1. Uw apparaat heeft een seriële poort op elke controller die wordt geïdentificeerd door een moersleutel-pictogram. Raadpleeg de afbeelding in het gedeelte [netwerk](#network-cabling) bekabeling om de seriële poorten van de backplane van uw apparaat te zoeken.
+1. Uw apparaat heeft een seriële poort op elke controller die wordt geïdentificeerd door een moersleutel-pictogram. Raadpleeg de afbeelding in het gedeelte [netwerk bekabeling](#network-cabling) om de seriële poorten van de backplane van uw apparaat te zoeken.
 2. Identificeer de actieve controller op de backplane van uw apparaat. Een knipperende blauwe LED geeft aan dat de controller actief is.
 3. Gebruik de meegeleverde seriële kabels (indien nodig, het USB-serieve conversie programma voor uw laptop) en verbind uw console of computer (met terminal emulatie op het apparaat) met de seriële poort van de actieve controller.
 4. Installeer de seriële USB-Stuur programma's (geleverd bij het apparaat) op uw computer.
-5. Stel de seriële verbinding als volgt in: 115.200 baud, 8 databits, 1 stopbit, geen pariteit en datatransport besturing zijn ingesteld op geen.
+5. Stel de seriële verbinding als volgt in: 115.200 baud, 8 databits, 1 stopbit, geen pariteit en datatransport besturing ingesteld op geen.
 6. Controleer of de verbinding werkt door op ENTER op de console te drukken. Er moet een seriële console worden weer gegeven.
 
 > [!NOTE]
-> **Licht beheer**: Wanneer het apparaat is geïnstalleerd in een extern Data Center of in een computer ruimte met beperkte toegang, moet u ervoor zorgen dat de seriële verbindingen met beide controllers altijd zijn verbonden met een seriële console-switch of vergelijk bare apparatuur. Dit maakt buiten-band beheer op afstand en ondersteunings bewerkingen mogelijk als er netwerk onderbrekingen of onverwachte storingen zijn.
+> **Licht beheer**: wanneer het apparaat is geïnstalleerd in een extern Data Center of in een computer ruimte met beperkte toegang, moet u ervoor zorgen dat de seriële verbindingen naar beide controllers altijd zijn verbonden met een seriële console-switch of vergelijk bare apparatuur. Dit maakt buiten-band beheer op afstand en ondersteunings bewerkingen mogelijk als er netwerk onderbrekingen of onverwachte storingen zijn.
 > 
 > 
 

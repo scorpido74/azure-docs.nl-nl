@@ -1,25 +1,23 @@
 ---
 title: '(AFGESCHAFT) Zelfstudie Azure Container Service: Toepassing implementeren'
 description: 'Zelfstudie Azure Container Service: Toepassing implementeren'
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: dafbb8d1221d5e9c6194611ad338b3714a089cea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e10fd982c19e45be8c5da4ffc7f7248276352c1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60309195"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275494"
 ---
 # <a name="deprecated-run-applications-in-kubernetes"></a>(AFGESCHAFT) Toepassingen uitvoeren in Kubernetes
 
 > [!TIP]
-> Voor de bijgewerkte versie van deze zelfstudie, die gebruikmaakt van Azure Kubernetes Service, raadpleegt u [Zelfstudie: Toepassingen uitvoeren in AKS (Azure Kubernetes Service)](../../aks/tutorial-kubernetes-deploy-application.md).
+> Voor de bijgewerkte versie van deze zelf studie die gebruikmaakt van de Azure Kubernetes-service, raadpleegt u [zelf studie: toepassingen uitvoeren in azure Kubernetes service (AKS)](../../aks/tutorial-kubernetes-deploy-application.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 

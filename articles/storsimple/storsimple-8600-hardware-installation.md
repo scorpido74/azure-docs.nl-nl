@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure StorSimple 8600-apparaat installeren | Microsoft Docs
+title: Microsoft Azure StorSimple 8600-apparaat installeren
 description: Hierin wordt beschreven hoe u het StorSimple 8600-apparaat uitpakt, koppelt en kabelt voordat u de software implementeert en configureert.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 571c8b729408d7b9e805b875baccfd9ac8d6b9be
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965272"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277114"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>Uw StorSimple 8600-apparaat uitpakken, aan het rek koppelen en bekabelen
 
@@ -34,7 +27,7 @@ De volgende stappen bevatten duidelijke, gedetailleerde instructies voor het uit
 ### <a name="prepare-to-unpack-your-device"></a>Voorbereiden op het uitpakken van uw apparaat
 Lees de volgende informatie voordat u uw apparaat uitpakt.
 
-![Waarschuwing pictogram](./media/storsimple-safety/IC740879.png)![pictogram voor zwaar](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) gewicht **.**
+![waarschuwings pictogram](./media/storsimple-safety/IC740879.png)![pictogram met een dik gewicht](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **waarschuwing.**
 
 1. Zorg ervoor dat er twee mensen beschikbaar zijn om het gewicht van het apparaat te beheren als u het hand matig verwerkt. Een volledig geconfigureerde behuizing kan tot 32 kg (70 lbs) wegen.
 2. Leg de doos op een vlak, horizontaal oppervlak.
@@ -49,7 +42,7 @@ Voer vervolgens de volgende stappen uit om uw apparaat uit te pakken.
    
     **Uitgepakte weer gave van uw opslag apparaat**
    
-   | Label | Description |
+   | Label | Beschrijving |
    | --- | --- |
    |   1 |Vak voor verpakking |
    |   2 |SAS-kabels (in accessoires en kabels lade) |
@@ -92,7 +85,7 @@ De behuizingen moeten worden geïnstalleerd in een standaard 19-inch rack met zo
 2. Controleer of de site waar u wilt instellen, een standaard AC van een onafhankelijke bron of een PDU (netstroom distributie-eenheid) met een nood voeding (UPS) heeft.
 3. Zorg ervoor dat er één 4U (2 X 2U)-sleuf beschikbaar is in het rek waarin u de bijlagen wilt koppelen.
 
-![Waarschuwing pictogram](./media/storsimple-safety/IC740879.png)![pictogram voor zwaar](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) gewicht **.**
+![waarschuwings pictogram](./media/storsimple-safety/IC740879.png)![pictogram met een dik gewicht](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **waarschuwing.**
 
  Zorg ervoor dat er twee mensen beschikbaar zijn voor het beheren van het gewicht als u de apparaat-installatie hand matig uitvoert. Een volledig geconfigureerde behuizing kan tot 32 kg (70 lbs) wegen.
 
@@ -113,7 +106,7 @@ Er wordt een reeks montage rails meegeleverd voor gebruik met de 19-inch rack be
    
     **Rail dia's koppelen aan de zijkanten van de behuizing**
    
-   | Label | Description |
+   | Label | Beschrijving |
    | --- | --- |
    |  1 |M 3x4 knop-Head schroefs |
    |  2 |Chassis dia's |
@@ -126,7 +119,7 @@ Er wordt een reeks montage rails meegeleverd voor gebruik met de 19-inch rack be
    
     **Rail-assembly's aan het rek koppelen**
    
-   | Label | Description |
+   | Label | Beschrijving |
    | --- | --- |
    |   1 |Schroef bout |
    |   2 |Vier Kante opening voor rack-schroef |
@@ -152,7 +145,7 @@ Voer de volgende stappen uit om de EBOD-behuizing in het rek te koppelen met beh
    
     **Flens cap's installeren**
    
-   | Label | Description |
+   | Label | Beschrijving |
    | --- | --- |
    |   1 |Schroef bout behuizing |
 
@@ -205,7 +198,7 @@ Ter ondersteuning van deze redundante Controller-failover moet u het netwerk van
    
     **Terug op het apparaat met de gegevens poorten**
    
-   | Label | Description |
+   | Label | Beschrijving |
    | --- | --- |
    |   0,1,4,5 |1 GbE-netwerk interfaces |
    |   2,3 |10 GbE-netwerk interfaces |
@@ -216,15 +209,15 @@ Ter ondersteuning van deze redundante Controller-failover moet u het netwerk van
 
 **Netwerk kabels voor uw apparaat**
 
-| Label | Description |
+| Label | Beschrijving |
 | --- | --- |
-| G |LAN met Internet toegang |
+| A |LAN met Internet toegang |
 | B |Controller 0 |
 | C |PCM 0 |
 | D |Controller 1 |
 | E |PCM 1 |
-| V |EBOD-controller 0 |
-| O |EBOD-controller 1 |
+| F |EBOD-controller 0 |
+| G |EBOD-controller 1 |
 | H,I |Hosts (bijvoorbeeld bestands servers) |
 | 0-5 |Netwerkinterfaces |
 | 6 |Primaire behuizing |

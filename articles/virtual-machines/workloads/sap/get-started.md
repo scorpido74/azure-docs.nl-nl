@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/16/2020
+ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3712e67e95c8957d2537660add14d6cdb09d609f
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 55872d48dcf2a85812e1627e4e85bcd98b25d576
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264811"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271327"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Azure gebruiken om SAP-werkbelasting scenario's te hosten en uit te voeren
 
@@ -120,6 +120,9 @@ Zie voor informatie over de integratie van Azure-Services in SAP-onderdelen:
 
 
 ## <a name="change-log"></a>Wijzigingenlogboek
+
+- 01/17/2020: wijziging in [Azure proximity-plaatsings groepen voor optimale netwerk latentie met SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) om de sectie van het verplaatsen van bestaande vm's in een proximity-plaatsings groep te wijzigen
+- 01/17/2020: wijziging in [SAP-werkbelasting configuraties met Azure-beschikbaarheidszones](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones) om naar een procedure te verwijzen waarmee de latentie tussen Beschikbaarheidszones wordt geautomatiseerd
 - 01/16/2020: wijzigen in [het installeren en configureren van SAP Hana (grote exemplaren) op Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation) om besturingssysteem releases aan te passen aan Hana IaaS-hardware Directory
 - 01/16/2020: wijzigingen in [hoge Beschik baarheid voor SAP NetWeaver op Azure vm's in de SLES-hand leiding voor multi-sid](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid) om instructies toe te voegen voor SAP-systemen met behulp van Server 2-architectuur (ENSA2)
 - 01/10/2020: wijzigingen in [SAP Hana uitschalen met het stand-by-knoop punt op virtuele machines van Azure met Azure NetApp files op SLES](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) en in [SAP Hana uitschalen met stand-by-knoop punt op virtuele machines van Azure met Azure NetApp files op RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel) om instructies toe te voegen voor het permanent maken van `nfs4_disable_idmapping` wijzigingen.

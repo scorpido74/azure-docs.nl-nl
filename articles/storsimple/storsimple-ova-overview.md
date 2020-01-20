@@ -1,25 +1,18 @@
 ---
-title: Overzicht van de Microsoft Azure StorSimple virtuele matrix | Microsoft Docs
+title: Overzicht van de Microsoft Azure StorSimple virtuele matrix
 description: Beschrijft de virtuele StorSimple-matrix, een geïntegreerde opslag oplossing voor het beheer van opslag taken tussen een on-premises virtuele matrix en Microsoft Azure Cloud opslag.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: cbfc69c7d8d9354ae4e727b9eb0180583165abab
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516710"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273874"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Inleiding tot de virtuele StorSimple-matrix
 
@@ -41,7 +34,7 @@ De volgende tabel bevat een overzicht van de belangrijkste functies van de virtu
 
 | Functie | StorSimple Virtual Array |
 | --- | --- |
-| Installatie vereisten |Maakt gebruik van virtualisatie-infra structuur (Hyper-V of VMware) |
+| Installatievereisten |Maakt gebruik van virtualisatie-infra structuur (Hyper-V of VMware) |
 | Beschikbaarheid |Eén knooppunt |
 | Totale capaciteit (inclusief Cloud) |Tot 64 TB bruikbare capaciteit per virtuele matrix |
 | Lokale capaciteit |390 GB tot 6,4 TB bruikbare capaciteit per virtuele array (moet 500 GB inrichten tot 8 TB aan schijf ruimte) |
@@ -52,11 +45,11 @@ De volgende tabel bevat een overzicht van de belangrijkste functies van de virtu
 | Ondersteuning |Virtualisatie-infra structuur die wordt ondersteund door de leverancier |
 | Prestaties |Varieert afhankelijk van de onderliggende infra structuur |
 | Gegevens mobiliteit |Kan herstellen op hetzelfde apparaat of herstel op item niveau (bestands server) |
-| Opslag lagen |Lokale Hyper Visor-opslag en Cloud |
+| Opslaglagen |Lokale Hyper Visor-opslag en Cloud |
 | Share grootte |Gelaagd: Maxi maal 20 TB; lokaal vastgemaakt: Maxi maal 2 TB |
-| Volume grootte |Gelaagde 500 GB tot 5 TB; lokaal vastgemaakt: 50 GB tot 200 GB <br> De maximale lokale reserve ring voor gelaagde volumes is 200 GB. |
+| Volume grootte |Gelaagd gelaagd: 500 GB tot 5 TB; lokaal vastgemaakt: 50 GB tot 200 GB <br> De maximale lokale reserve ring voor gelaagde volumes is 200 GB. |
 | Momentopnamen |Crash consistent |
-| Herstel op item niveau |Klikt gebruikers kunnen herstellen vanaf shares |
+| Herstel op itemniveau |Klikt gebruikers kunnen herstellen vanaf shares |
 
 ## <a name="why-use-storsimple"></a>Waarom StorSimple gebruiken?
 
@@ -76,9 +69,9 @@ In de volgende tabel worden enkele van de belangrijkste voor delen beschreven di
 
 Hieronder vindt u een overzicht van de ondersteunde StorSimple-werk belastingen.
 
-|Scenario     |Workload     |Ondersteund      |Beperkingen               | Versies van toepassing|
+|Scenario     |Werkbelasting     |Ondersteund      |Beperkingen               | Versies van toepassing|
 |-------------|-------------|---------------|---------------------------|--------------------|
-|Extern kantoor/filiaal (ROBO)  |Bestandsdeling     |Ja      |Zie [maximum aantal limieten voor bestands server](storsimple-ova-limits.md).<br></br>Zie [systeem vereisten voor ondersteunde SMB-versies](storsimple-ova-system-requirements.md).| Alle versies     |
+|Extern kantoor/filiaal (ROBO)  |Bestanden delen     |Ja      |Zie [maximum aantal limieten voor bestands server](storsimple-ova-limits.md).<br></br>Zie [systeem vereisten voor ondersteunde SMB-versies](storsimple-ova-system-requirements.md).| Alle versies     |
 |Cloud archivering  |Archiveren van bestands deling     |Ja      |Zie [maximum aantal limieten voor bestands server](storsimple-ova-limits.md).<br></br>Zie [systeem vereisten voor ondersteunde SMB-versies](storsimple-ova-system-requirements.md).| Alle versies     |
 
 De virtuele StorSimple-matrix is het meest geschikt voor zelden gebruikte gegevens. Hoewel de virtuele matrix een lokale cache heeft om prestaties te verbeteren, moeten gebruikers aannemen dat de services van het apparaat op de laagste laag van opslag (de Cloud). Elke virtuele array kan op ongeveer 100 Mbps schrijven en lezen naar Azure Storage. Deze koppeling wordt gedeeld met alle aanvragen die binnenkomen op het apparaat en kan een knel punt worden, zoals wordt weer gegeven in het onderstaande diagram.
@@ -89,7 +82,7 @@ Wanneer meerdere gelijktijdige gebruikers toegang hebben tot de virtuele matrix,
 
 De virtuele StorSimple-matrix is niet geschikt voor werk belastingen waarvoor hoge Beschik baarheid is vereist. De virtuele matrix is een apparaat met één knoop punt dat downtime ondervindt tijdens de installatie van software-updates. Beheerders moeten een onderhouds venster van 30 minuten 3-4 keer per jaar plannen.
 
-## <a name="workflows"></a>Workflows
+## <a name="workflows"></a>Werkstromen
 
 De virtuele StorSimple-matrix is met name geschikt voor de volgende werk stromen:
 
@@ -139,7 +132,7 @@ De virtuele matrix heeft de volgende functies:
 > [!NOTE]
 > Een virtuele matrix kan niet worden uitgevouwen. Daarom is het belang rijk om voldoende opslag ruimte in te richten bij het maken van de virtuele matrix.
 
-### <a name="storsimple-device-manager-service"></a>StorSimple-apparaatbeheerservice
+### <a name="storsimple-device-manager-service"></a>StorSimple-apparaatbeheerfunctie
 
 Microsoft Azure StorSimple biedt een webgebaseerde gebruikers interface, de StorSimple Apparaatbeheer-service, waarmee u StorSimple-opslag centraal kunt beheren. U kunt de StorSimple Apparaatbeheer-service gebruiken om de volgende taken uit te voeren:
 

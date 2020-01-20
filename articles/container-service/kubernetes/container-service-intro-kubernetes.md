@@ -1,20 +1,18 @@
 ---
 title: (AFGESCHAFT) Inleiding tot Azure Container Service voor Kubernetes
 description: Met Azure Container Service voor Kubernetes kunt u eenvoudig toepassingen op basis van containers implementeren en beheren in Azure.
-services: container-service
 author: gabrtv
-manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 07/21/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: e00ac57cc36b3331cfb847ecedc6c75132cdeb6b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0ef7255a087dd5dc26532316deab337f9eff715
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712533"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271571"
 ---
 # <a name="deprecated-introduction-to-azure-container-service-for-kubernetes"></a>(AFGESCHAFT) Inleiding tot Azure Container Service voor Kubernetes
 
@@ -48,7 +46,7 @@ Architectuurdiagram van Kubernetes geïmplementeerd via Azure Container Service:
 
 ![Azure Container Service geconfigureerd voor het gebruik van Kubernetes.](media/acs-intro/kubernetes.png)
 
-## <a name="videos"></a>Video's
+## <a name="videos"></a>Video’s
 
 Ondersteuning voor Kubernetes in Azure Container Service (Azure Friday, januari 2017):
 

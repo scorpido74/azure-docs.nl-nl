@@ -1,38 +1,30 @@
 ---
-title: Automatisch schalen van Azure gebruiken met metrische gegevens voor gasten in een Linux-schaalsetsjabloon | Microsoft Docs
-description: Leer hoe u automatisch schalen met metrische gegevens voor gasten in een sjabloon voor Linux virtuele-Machineschaalset opgehaald
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Automatisch schalen van Azure gebruiken met metrische gegevens van de gast in een sjabloon voor Linux-schaal sets
+description: Meer informatie over het automatisch schalen met behulp van metrische gegevens van een virtuele machine in een Linux-Schaalset
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: na
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: 8cd665ffd82547c4f554eb4a515a8da7dc5b3f5f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88f839b281e4d345b012a7e6acff3770dc536045
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868995"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271955"
 ---
-# <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Automatisch schalen met metrische gegevens voor gasten in een Linux-schaalsetsjabloon
+# <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Automatisch schalen met metrische gegevens van de gast in een sjabloon voor een Linux-schaalset
 
-Er zijn twee algemene typen metrische gegevens in Azure die worden verzameld van virtuele machines en schaalsets: Metrische gegevens voor hosts en metrische gegevens voor gasten. Op hoog niveau, als u wilt gebruiken standaard CPU, schijf en netwerk metrische gegevens, zijn klikt u vervolgens metrische gegevens voor hosts geschikt. Als u echter een grotere selectie van metrische gegevens moet, moeten metrische gegevens voor gasten in worden genomen.
+Er zijn twee soorten metrische gegevens in azure die worden verzameld uit Vm's en schaal sets: metrische gegevens voor de host en metrische gegevens van de gast. Op hoog niveau, als u standaard CPU-, schijf-en netwerk gegevens wilt gebruiken, zijn de metrische gegevens van de host goed. Als u echter een grotere selectie metrische gegevens nodig hebt, moeten de metrische gegevens van de gast worden weer gegeven.
 
-Metrische gegevens voor hosts vereisen geen aanvullende instellingen omdat ze worden verzameld door de host-VM, terwijl de metrische gegevens voor gasten vereisen dat u installeert de [Windows Azure Diagnostics-extensie](../virtual-machines/windows/extensions-diagnostics-template.md) of de [Linux Azure Diagnostics-extensie ](../virtual-machines/linux/diagnostic-extension.md) in de Gast-VM. Een veelvoorkomende reden voor het gebruik van metrische gegevens voor gasten in plaats van metrische gegevens voor hosts is dat metrische gegevens voor gasten een grotere selectie van metrische gegevens dan metrische gegevens voor hosts bieden. Een voorbeeld is het geheugengebruik metrische gegevens die alleen beschikbaar via de metrische gegevens voor gasten zijn. De metrische gegevens voor ondersteunde hosts staan [hier](../azure-monitor/platform/metrics-supported.md), en vindt u metrische gegevens voor veelgebruikte gasten [hier](../azure-monitor/platform/autoscale-common-metrics.md). Dit artikel wordt beschreven hoe u wijzigt de [basic levensvatbare schaalsets sjabloon](virtual-machine-scale-sets-mvss-start.md) gebruik regels voor automatisch schalen op basis van metrische gegevens voor gasten voor Linux-schaalsets.
+Voor metrische gegevens van de host is geen aanvullende installatie vereist omdat deze worden verzameld door de host-VM, terwijl voor metrische gegevens van de gast vereist is dat u de [Windows Azure Diagnostics-extensie](../virtual-machines/windows/extensions-diagnostics-template.md) of de [extensie Linux Azure Diagnostics](../virtual-machines/linux/diagnostic-extension.md) installeert in de gast-VM. Een veelvoorkomende reden voor het gebruik van metrische gegevens voor gasten in plaats van metrische gegevens over de host is dat de metrische gegevens van de gast een grotere selectie van metrische gegevens bieden dan metrische gegevens over de host. Een voor beeld hiervan zijn metrische gegevens over het geheugen verbruik, die alleen beschikbaar zijn via de metrische gegevens van de gast. De ondersteunde metrische gegevens van de host worden [hier](../azure-monitor/platform/metrics-supported.md)vermeld, en veelgebruikte metrische gegevens voor de gast worden [hier](../azure-monitor/platform/autoscale-common-metrics.md)weer gegeven. In dit artikel wordt beschreven hoe u de [sjabloon basis levensvat bare schaal](virtual-machine-scale-sets-mvss-start.md) kunt aanpassen voor het gebruik van regels voor automatisch schalen op basis van metrische gegevens van de gast voor Linux-schaal sets.
 
-## <a name="change-the-template-definition"></a>De sjabloondefinitie van de wijzigen
+## <a name="change-the-template-definition"></a>De sjabloon definitie wijzigen
 
-In een [vorige artikel](virtual-machine-scale-sets-mvss-start.md) we een eenvoudige schaalsetsjabloon hebt gemaakt. We nu deze oudere sjabloon gebruiken en wijzigen voor het maken van een sjabloon die een Linux-schaalset met metrische gegevens op basis van automatisch schalen te gast implementeert.
+In een [vorig artikel](virtual-machine-scale-sets-mvss-start.md) moesten we een basisschaalset-sjabloon maken. We gaan nu die eerdere sjabloon gebruiken en deze wijzigen om een sjabloon te maken waarmee een Linux-schaalset wordt geïmplementeerd met automatisch schalen op basis van de gast metriek.
 
-Voeg parameters voor het eerst toe `storageAccountName` en `storageAccountSasToken`. De diagnostics-agent slaat metrische gegevens op in een [tabel](../cosmos-db/table-storage-how-to-use-dotnet.md) in dit opslagaccount. Vanaf de diagnostische gegevens over Linux Agent versie 3.0, met behulp van een toegangssleutel voor opslag is niet meer ondersteund. Gebruik in plaats daarvan een [SAS-Token](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Voeg eerst para meters toe voor `storageAccountName` en `storageAccountSasToken`. In de diagnostische agent worden metrische gegevens opgeslagen in een [tabel](../cosmos-db/table-storage-how-to-use-dotnet.md) in dit opslag account. Vanaf de Linux Diagnostics agent versie 3,0, die een toegangs sleutel voor opslag gebruikt, wordt niet meer ondersteund. Gebruik in plaats daarvan een [SAS-token](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 ```diff
      },
@@ -48,7 +40,7 @@ Voeg parameters voor het eerst toe `storageAccountName` en `storageAccountSasTok
    },
 ```
 
-Wijzig vervolgens de schaalset `extensionProfile` om op te nemen van de extensie voor diagnostische gegevens. In deze configuratie geeft u de resource-ID van de schaalset voor het verzamelen van metrische gegevens uit, evenals de storage-account en de SAS-token te gebruiken voor het opslaan van de metrische gegevens. Geef op hoe vaak de metrische gegevens (in dit geval elke minuut) worden opgeteld en welke metrische gegevens om bij te houden (in dit geval, percentage gebruikt geheugen). Zie voor meer informatie over deze configuratie gedetailleerde en metrische gegevens dan percentage geheugen gebruikt, [deze documentatie](../virtual-machines/linux/diagnostic-extension.md).
+Wijzig vervolgens de `extensionProfile` voor de schaalset zodat de diagnostische gegevens worden toegevoegd. Geef in deze configuratie de resource-ID van de schaalset op waaruit u metrische gegevens wilt verzamelen, evenals het opslag account en het SAS-token dat moet worden gebruikt om de metrische gegevens op te slaan. Geef op hoe vaak de metrische gegevens worden geaggregeerd (in dit geval elke minuut) en welke metrische gegevens moeten worden gevolgd (in dit geval het percentage gebruikt geheugen). Raadpleeg [deze documentatie](../virtual-machines/linux/diagnostic-extension.md)voor meer informatie over deze configuratie en andere metrische gegevens dan het percentage gebruikt geheugen.
 
 ```diff
                  }
@@ -111,7 +103,7 @@ Wijzig vervolgens de schaalset `extensionProfile` om op te nemen van de extensie
        }
 ```
 
-Voeg een `autoscaleSettings` resource die u wilt configureren voor automatisch schalen op basis van deze metrische gegevens. Deze resource heeft een `dependsOn` component die verwijst naar de schaal instellen om ervoor te zorgen dat de schaalset bestaat voordat u probeert deze te schalen. Als u ervoor kiest een verschillende metrische waarde voor automatisch schalen op, gebruikt u de `counterSpecifier` uit de configuratie van de extensie voor diagnostische gegevens als de `metricName` in de configuratie voor automatisch schalen. Zie voor meer informatie over de configuratie voor automatisch schalen, de [aanbevolen procedures voor automatisch schalen](../azure-monitor/platform/autoscale-best-practices.md) en de [Azure Monitor REST API-referentiedocumentatie](/rest/api/monitor/autoscalesettings).
+Voeg ten slotte een `autoscaleSettings` resource toe om automatisch schalen te configureren op basis van deze metrische gegevens. Deze resource bevat een `dependsOn`-component die verwijst naar de schaalset om ervoor te zorgen dat de schaalset bestaat voordat u deze automatisch kunt schalen. Als u een andere metriek kiest voor automatisch schalen, gebruikt u de `counterSpecifier` van de diagnostische extensie configuratie als de `metricName` in de configuratie voor automatisch schalen. Zie voor meer informatie over de configuratie van automatisch schalen de [Aanbevolen procedures voor automatisch schalen](../azure-monitor/platform/autoscale-best-practices.md) en de [referentie documentatie voor de Azure monitor rest API](/rest/api/monitor/autoscalesettings).
 
 ```diff
 +    },

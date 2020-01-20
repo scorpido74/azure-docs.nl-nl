@@ -1,17 +1,17 @@
 ---
 title: Zelf studie-een Azure Database for MySQL-exemplaar koppelen aan uw Azure lente-Cloud toepassing
 description: In deze zelf studie wordt uitgelegd hoe u een Azure Database for MySQL exemplaar verbindt met uw Azure lente-Cloud toepassing
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.author: jeconnoc
-ms.openlocfilehash: a9911798e42db55d5aaae90c933cfb64945b244c
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.author: brendm
+ms.openlocfilehash: 657aa70d77fd1af9fd2121a3e98ea3aca7773642
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708811"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277548"
 ---
 # <a name="tutorial-bind-an-azure-database-for-mysql-instance-to-your-azure-spring-cloud-application"></a>Zelf studie: een Azure Database for MySQL-exemplaar binden aan uw Azure lente-Cloud toepassing 
 
@@ -21,7 +21,7 @@ Met Azure lente-Cloud kunt u de selectie van Azure-Services automatisch aan uw t
 
 * Een geïmplementeerd Azure veer Cloud-exemplaar
 * Een Azure Database for MySQL-account
-* Azure CLI
+* Azure-CLI
 
 Als u geen geïmplementeerd Azure lente-Cloud exemplaar hebt, volgt u de instructies in [Quick Start: een Azure lente-Cloud toepassing starten met behulp van de Azure Portal](spring-cloud-quickstart-launch-app-portal.md) om uw eerste lente-Cloud-app te implementeren.
 

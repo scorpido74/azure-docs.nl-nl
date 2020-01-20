@@ -1,26 +1,19 @@
 ---
-title: Een toepassing implementeren in een Azure virtual machine-schaalset | Microsoft Docs
+title: Een toepassing implementeren in een schaalset voor virtuele Azure-machines
 description: Meer informatie over het implementeren van toepassingen voor virtuele Linux-en Windows-machines in een schaalset
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: f8892199-f2e2-4b82-988a-28ca8a7fd1eb
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 0dc1c52e65090acd5f63d1b23d8da6f37e3cf567
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 6bc319ea50da4ff6a654b2c9ab09bbe218695533
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960728"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278108"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Uw toepassing implementeren op schaal sets voor virtuele machines
 
@@ -32,14 +25,14 @@ Wanneer u een van de installatie kopieën van het Azure-platform gebruikt om de 
 
 Om het configuratie beheer en de tijd voor het inrichten van een virtuele machine te beperken, kunt u een aangepaste VM-installatie kopie maken die gereed is voor het uitvoeren van uw toepassing zodra een exemplaar is ingericht in de schaalset. Zie de volgende zelf studies voor meer informatie over het maken en gebruiken van een aangepaste VM-installatie kopie met een schaalset:
 
-- [Azure CLI](tutorial-use-custom-image-cli.md)
+- [Azure-CLI](tutorial-use-custom-image-cli.md)
 - [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 
 ## <a name="already-provisioned"></a>Een app met de aangepaste script extensie installeren
 Met de aangepaste scriptextensie kunnen scripts worden gedownload en uitgevoerd op virtuele machines in Azure. Deze uitbreiding is handig voor post-implementatieconfiguraties, software-installaties of andere configuratie-/beheertaken. Scripts kunnen worden gedownload uit Azure Storage of GitHub, of worden geleverd in Azure Portal tijdens de uitvoering van extensies. Zie de volgende zelf studies voor meer informatie over het installeren van een app met een aangepaste script extensie:
 
-- [Azure CLI](tutorial-install-apps-cli.md)
+- [Azure-CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
 - [Azure Resource Manager-sjabloon](tutorial-install-apps-template.md)
 

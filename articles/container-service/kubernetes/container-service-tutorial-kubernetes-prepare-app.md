@@ -1,40 +1,38 @@
 ---
 title: '(AFGESCHAFT) Zelfstudie Azure Container Service: App voorbereiden'
 description: 'Zelfstudie Azure Container Service: app voorbereiden'
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 961f09d7581a26596b03e7a2f8e97d98fe83e6aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b67e3008bc2ad681e222af6b9edc4a08875732e4
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61217065"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275432"
 ---
 # <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>(AFGESCHAFT) Containerinstallatiekopieën maken om te gebruiken bij Azure Container Service
 
 > [!TIP]
-> Voor de bijgewerkte versie van deze zelfstudie, die gebruikmaakt van Azure Kubernetes Service, raadpleegt u [Zelfstudie: Toepassing voorbereiden voor Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-prepare-app.md).
+> Voor de bijgewerkte versie van deze zelf studie die gebruikmaakt van de Azure Kubernetes-service, raadpleegt u [zelf studie: een toepassing voorbereiden voor Azure Kubernetes service (AKS)](../../aks/tutorial-kubernetes-prepare-app.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-In deze zelfstudie, deel 1 van 7, wordt een toepassing met meerdere containers voorbereid op gebruik in Kubernetes. Dit zijn de uitgevoerde stappen:  
+In deze zelfstudie, deel een van zeven, wordt een toepassing met meerdere containers voorbereid voor gebruik in Kubernetes. Dit zijn de uitgevoerde stappen:  
 
 > [!div class="checklist"]
 > * Toepassingsbron klonen vanuit GitHub  
 > * Een containerinstallatiekopie maken uit de toepassingsbron
 > * De toepassing testen in een lokale Docker-omgeving
 
-Zodra de stappen zijn voltooid, is de volgende toepassing toegankelijk in uw lokale ontwikkelomgeving.
+Na voltooiing is de volgende toepassing toegankelijk in uw lokale ontwikkelomgeving.
 
 ![Afbeelding van Kubernetes-cluster in Azure](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-In de zelfstudies daarna leert u hoe u de installatiekopie van de container uploadt naar een Azure Container Registry en ontdekt u hoe u deze vervolgens uitvoert in een in Azure gehost Kubernetes-cluster.
+In de volgende zelfstudies wordt de containerinstallatiekopie geüpload naar een Azure Container Registry, en vervolgens uitgevoerd in een met Azure gehost Kubernetes-cluster.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 

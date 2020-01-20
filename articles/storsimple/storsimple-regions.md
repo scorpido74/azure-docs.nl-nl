@@ -1,25 +1,17 @@
 ---
-title: Beschik baarheid van StorSimple-regio | Microsoft Docs
+title: Beschik baarheid van StorSimple-regio
 description: Hierin worden de Azure-regio's beschreven waarin de verschillende StorSimple beschikbaar zijn.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 5b41f738c2419f806aef60374a545ff004a6f19e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965126"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275114"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Beschik bare regio's voor uw StorSimple
 
@@ -75,17 +67,17 @@ Als u een fysiek StorSimple 8100-of 8600-apparaat gebruikt, is het apparaat besc
 | 2  | Oostenrijk               | 17 | Hongarije            | 32 | Nigeria             | 47 | Zuid-Korea                |
 | 3  | Bahrein               | 18 | IJsland            | 33 | Noorwegen              | 48 | Spanje                      |
 | 4  | België               | 19 | India              | 34 | Peru                | 49 | Sri Lanka                  |
-| 5  | Brazilië                | 20 | Indonesië          | 35 | Filipijnen         | 50 | Zweden                     |
+| 5  | Brazilië                | 20 | Indonesië          | 35 | Filippijnen         | 50 | Zweden                     |
 | 6  | Canada                | 21 | Ierland            | 36 | Polen              | 51 | Zwitserland                |
 | 7  | Chili                 | 22 | Israël             | 37 | Portugal            | 52 | Taiwan                     |
-| 8  | Colombia              | 23 | Italië              | 38 | Porto Rico         | 53 | Thailand                   |
-| 9  | Tsjechische Republiek        | 24 | Japan              | 39 | Qatar               | 54 | Turkije                     |
+| 8  | Colombia              | 23 | Italië              | 38 | Puerto Rico         | 53 | Thailand                   |
+| 9  | Tsjechië        | 24 | Japan              | 39 | Qatar               | 54 | Turkije                     |
 | 10 | Denemarken               | 25 | Kenia              | 40 | Roemenië             | 55 | Oekraïne                    |
 | 11 | Egypte                 | 26 | Koeweit             | 41 | Rusland              | 56 | Verenigde Arabische Emiraten       |
-| 12 | Finland               | 27 | Macau SAR          | 42 | Saudi-Arabië        | 57 | Verenigd Koninkrijk             |
+| 12 | Finland               | 27 | Macau SAR          | 42 | Saoedi-Arabië        | 57 | Verenigd Koninkrijk             |
 | 13 | Frankrijk                | 28 | Maleisië           | 43 | Singapore           | 58 | Verenigde Staten              |
 | 14 | Duitsland               | 29 | Mexico             | 44 | Slowakije            | 59 | Vietnam                    |
-| 15 | Griekenland                | 30 | Nederland        | 45 | Slovenië            | 60 | Kroatië (Hrvatska)                    |
+| 15 | Griekenland                | 30 | Nederland        | 45 | Slovenië            | 60 | Kroatië                    |
 
 Deze lijst wordt gewijzigd naarmate er meer landen/regio's worden toegevoegd. Voor een actuele lijst van de geographs gaat u naar de voor waarden van de opslag matrix in de [product termen](https://www.microsoft.com/en-us/licensing/product-licensing/products).
 
@@ -96,7 +88,7 @@ Micro soft kan fysieke hardware leveren en vervanging van reserve onderdelen voo
 
 ### <a name="storsimple-cloud-appliance-models-80108020"></a>StorSimple Cloud Appliance (modellen 8010/8020)
 
-Als u een StorSimple Cloud Appliance 8010 of 8020 gebruikt, wordt het apparaat ondersteund en beschikbaar in alle regio's waar de onderliggende virtuele machine wordt ondersteund. De 8010 maakt gebruik van een _Standard_A3_ -VM die wordt ondersteund in alle Azure-regio's.
+Als u een StorSimple Cloud Appliance 8010 of 8020 gebruikt, wordt het apparaat ondersteund en beschikbaar in alle regio's waar de onderliggende virtuele machine wordt ondersteund. De 8010 maakt gebruik van een _Standard_A3_ virtuele machine die wordt ondersteund in alle Azure-regio's.
 
 De 8020 maakt gebruik van Premium Storage en _Standard_DS3_ VM om een Cloud apparaat te maken. De 8020 wordt ondersteund in azure-regio's die ondersteuning bieden voor Premium Storage en _Standard_DS3_ Azure-vm's. Gebruik [deze lijst](https://azure.microsoft.com/regions/services/) om te kijken of zowel **Virtuele Machines > DS-serie** als **Opslag > Schijfruimte** beschikbaar is in uw regio.
 

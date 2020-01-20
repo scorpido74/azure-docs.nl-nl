@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 01/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 41baacd4485e6702ec29057f5d539724b74e353b
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: bd6095daca51ddca0cfb4b34ca86e763df9a3d02
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383250"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276819"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>Naslag informatie voor de door de gebruiker gedefinieerde functies client bibliotheken
 
@@ -63,7 +63,7 @@ Op basis van een sensor-ID en het bijbehorende gegevens type haalt deze functie 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *sensorId*  | `guid` | Sensor-ID |
-| *param1*  | `string` | Gegevens type sensor |
+| *dataType*  | `string` | Gegevens type sensor |
 
 ### <a name="getspacevaluespaceid-valuename--value"></a>getSpaceValue (spaceId, waardenaam) ⇒ `value`
 
@@ -85,7 +85,7 @@ Op basis van een sensor-ID en het bijbehorende gegevens type haalt deze functie 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | Sensor-ID |
-| *param1* | `string` | Gegevens type sensor |
+| *dataType* | `string` | Gegevens type sensor |
 
 ### <a name="getspacehistoryvaluesspaceid-datatype--value"></a>getSpaceHistoryValues (spaceId, data type) ⇒ `value[]`
 
@@ -220,7 +220,7 @@ Deze functie stelt een waarde in voor het sensor-object met het opgegeven gegeve
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | Sensor-ID |
-| *param1*  | `string` | Gegevens type sensor |
+| *dataType*  | `string` | Gegevens type sensor |
 | *value*  | `string` | Waarde |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue (spaceId, data type, waarde)
@@ -232,7 +232,7 @@ Deze functie stelt een waarde in voor het Space-object met het opgegeven gegeven
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | Ruimte-id |
-| *param1* | `string` | Gegevenstype |
+| *dataType* | `string` | Gegevenstype |
 | *value* | `string` | Waarde |
 
 ### <a name="logmessage"></a>logboek (bericht)
@@ -255,7 +255,7 @@ Deze functie verzendt een aangepaste melding om te worden verzonden.
 | ------ | ------------------- | ------------ |
 | *topologyObjectId*  | `guid` | Object-id van grafiek. Voor beelden zijn ruimte, sensor en apparaat-ID.|
 | *topologyObjectType*  | `string` | Voor beelden zijn sensor en apparaat.|
-| *nettolading*  | `string` | De JSON-nettolading die met de melding moet worden verzonden. |
+| *payload*  | `string` | De JSON-nettolading die met de melding moet worden verzonden. |
 
 ## <a name="return-types"></a>Retour typen
 
@@ -318,7 +318,7 @@ Met deze functie wordt een melding met de opgegeven Payload verzonden.
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *nettolading* | `string` | JSON-nettolading die moet worden meegenomen in de melding |
+| *payload* | `string` | JSON-nettolading die moet worden meegenomen in de melding |
 
 ### <a name="device"></a>Apparaat
 
@@ -362,7 +362,7 @@ Met deze functie wordt een melding met de opgegeven Payload verzonden.
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *nettolading* | `string` | JSON-nettolading die moet worden meegenomen in de melding |
+| *payload* | `string` | JSON-nettolading die moet worden meegenomen in de melding |
 
 ### <a name="sensor"></a>Sensoren
 
@@ -418,7 +418,7 @@ Met deze functie wordt een melding met de opgegeven Payload verzonden.
 
 | Parameter  | Type                | Beschrijving  |
 | ------ | ------------------- | ------------ |
-| *nettolading* | `string` | JSON-nettolading die moet worden meegenomen in de melding |
+| *payload* | `string` | JSON-nettolading die moet worden meegenomen in de melding |
 
 ### <a name="value"></a>Waarde
 

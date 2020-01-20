@@ -4,7 +4,6 @@ description: Azure PowerShell-voorbeeldscript - Webverkeer beheren met een toepa
 services: application-gateway
 documentationcenter: networking
 author: vhorne
-manager: jpconnock
 editor: tysonn
 tags: azure-resource-manager
 ms.service: application-gateway
@@ -14,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b9b34f124d1260fe17d1f43c6e97f20fd116c5f8
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 89915cdd4ae88f1092c45e1d428679a99f1ac906
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65202845"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273403"
 ---
 # <a name="manage-web-traffic-with-azure-powershell"></a>Webverkeer beheren met Azure PowerShell
 
@@ -58,12 +57,12 @@ In dit script worden de volgende opdrachten gebruikt om de implementatie te make
 | [New-AzApplicationGatewayBackendHttpSettings](/powershell/module/az.network/new-azapplicationgatewaybackendhttpsetting) | Hiermee configureert u instellingen voor een back-endpool. |
 | [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) | Hiermee maakt u een listener. |
 | [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) | Hiermee maakt u een routeringsregel. |
-| [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) | Hiermee geeft u de laag en capaciteit voor een toepassingsgateway op. |
-| [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) | Maak een toepassingsgateway. |
+| [New-AzApplicationGatewaySku](/powershell/module/az.network/new-azapplicationgatewaysku) | Geef de laag en capaciteit voor een toepassingsgateway op. |
+| [New-AzApplicationGateway](/powershell/module/az.network/new-azapplicationgateway) | Hiermee maakt u een toepassingsgateway. |
 | [Set-AzVmssStorageProfile](/powershell/module/az.compute/set-azvmssstorageprofile) | Maak een opslagprofiel voor de schaalset. |
 | [Set-AzVmssOsProfile](/powershell/module/az.compute/set-azvmssosprofile) | Definieer het besturingssysteem voor de schaalset. |
 | [Add-AzVmssNetworkInterfaceConfiguration](/powershell/module/az.compute/add-azvmssnetworkinterfaceconfiguration) | Definieer de netwerkinterface voor de schaalset. |
-| [New-AzVmss](/powershell/module/az.compute/new-azvm) | Maak een virtuele-machineschaalset. |
+| [New-AzVmss](/powershell/module/az.compute/new-azvm) | Maak een schaalset voor virtuele machines. |
 | [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) | Hiermee haalt u het openbare IP-adres van een toepassingsgateway op. |
 |[Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep en alle daarin opgenomen resources. | 
 

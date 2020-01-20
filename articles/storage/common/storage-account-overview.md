@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8f912635fc0fb14fc54426a108af5f67d26213f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5034aaaee335bbd87e7ea42b448e4e8fbf6aacca
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975695"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274541"
 ---
 # <a name="storage-account-overview"></a>Overzicht van opslagaccounts
 
@@ -64,17 +64,15 @@ In de meeste gevallen moet u v2-accounts voor algemeen gebruik gebruiken. U kunt
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage-accounts
 
-Een BlockBlobStorage-account is een gespecialiseerd opslag account dat u gebruikt voor het opslaan van ongestructureerde object gegevens als blok-blobs. U kunt ook een BlockBlobStorage-account gebruiken om Premium-blok-blobs te maken. Dit type opslag account ondersteunt blok-blobs en toevoeg-blobs, maar niet pagina-blobs, tabellen of wacht rijen.
+Een BlockBlobStorage-account is een gespecialiseerd opslag account in de laag Premium-prestaties voor het opslaan van ongestructureerde object gegevens als blok-blobs of toevoeg-blobs. Vergeleken met v2-en BlobStorage-accounts voor algemeen gebruik bieden BlockBlobStorage-accounts een lage, consistente latentie en hogere transactie tarieven.
 
-Vergeleken met v2-en BlobStorage-accounts voor algemeen gebruik bieden BlockBlobStorage-accounts een lage en consistente latentie en hogere transactie tarieven.
-
-BlockBlobStorage-accounts ondersteunen momenteel geen lagen op dynamische, koele of archief toegangs lagen.
+BlockBlobStorage-accounts ondersteunen momenteel geen lagen op dynamische, koele of archief toegangs lagen. Dit type opslag account biedt geen ondersteuning voor pagina-blobs,-tabellen of-wacht rijen.
 
 ### <a name="filestorage-accounts"></a>FileStorage-accounts
 
 Een FileStorage-account is een gespecialiseerd opslag account dat wordt gebruikt voor het opslaan en maken van Premium-bestands shares. Dit type opslag account ondersteunt bestanden, maar geen blok-blobs, toevoeg-blobs, pagina-blobs, tabellen of wacht rijen.
 
-FileStorage-accounts bieden unieke prestatie gerichte kenmerken, zoals IOPS-bursting. Zie de sectie [prestatie lagen voor bestands shares](../files/storage-files-planning.md#file-share-performance-tiers) in de hand leiding voor het plannen van bestanden voor meer informatie over deze kenmerken.
+FileStorage-accounts bieden unieke prestatie kenmerken, zoals IOPS-bursting. Zie de sectie [prestatie lagen voor bestands shares](../files/storage-files-planning.md#file-share-performance-tiers) in de hand leiding voor het plannen van bestanden voor meer informatie over deze kenmerken.
 
 ## <a name="naming-storage-accounts"></a>Naamgeving van opslag accounts
 
@@ -85,12 +83,20 @@ Neem de volgende regels in acht als u het opslagaccount een naam geeft:
 
 ## <a name="performance-tiers"></a>Prestatielagen
 
+Afhankelijk van het type opslag account dat u maakt, kunt u kiezen tussen Standard-en Premium-prestatie lagen.
+
+### <a name="general-purpose-storage-accounts"></a>Opslagaccounts voor algemeen gebruik
+
 Opslag accounts voor algemeen gebruik kunnen worden geconfigureerd voor een van de volgende prestatie lagen:
 
 - Een standaard prestatie niveau voor het opslaan van blobs, bestanden, tabellen, wacht rijen en schijven van virtuele machines van Azure. Zie [schaalbaarheids doelen voor standaard opslag accounts](scalability-targets-standard-account.md)voor meer informatie over schaalbaarheids doelen voor standaard opslag accounts.
-- Een Premium-prestatie-laag voor het opslaan van niet-beheerde schijven van virtuele machines. Micro soft raadt aan gebruik te maken van beheerde schijven met virtuele Azure-machines in plaats van niet-beheerde schijven. Zie [schaalbaarheids doelen voor Premium-pagina-Blob Storage-accounts](../blobs/scalability-targets-premium-page-blobs.md)voor meer informatie over de schaalbaarheids doelen voor de laag Premium-prestaties.
+- Een Premium-prestatie niveau voor het opslaan van niet-beheerde schijven van virtuele machines. Micro soft raadt aan gebruik te maken van beheerde schijven met virtuele Azure-machines in plaats van niet-beheerde schijven. Zie [schaalbaarheids doelen voor Premium-pagina-Blob Storage-accounts](../blobs/scalability-targets-premium-page-blobs.md)voor meer informatie over de schaalbaarheids doelen voor de laag Premium-prestaties.
+
+### <a name="blockblobstorage-storage-accounts"></a>BlockBlobStorage-opslag accounts
 
 BlockBlobStorage-opslag accounts bieden een Premium-prestatie-laag voor het opslaan van blok-blobs en toevoeg-blobs. Zie [schaalbaarheids doelen voor Premium Block Blob Storage-accounts](../blobs/scalability-targets-premium-block-blobs.md)voor meer informatie.
+
+### <a name="filestorage-storage-accounts"></a>FileStorage-opslag accounts
 
 FileStorage-opslag accounts bieden een Premium-prestatie niveau voor Azure-bestands shares. Zie [Azure files schaal baarheid en prestatie doelen](../files/storage-files-scale-targets.md)voor meer informatie.
 
@@ -102,7 +108,7 @@ De beschik bare toegangs lagen zijn:
 
 - De **warme** Access-laag. Deze laag is geoptimaliseerd voor veelvuldige toegang tot objecten in het opslag account. Het verkrijgen van toegang tot gegevens in de warme laag is de meest rendabel, terwijl de opslag kosten hoger zijn. Nieuwe opslag accounts worden standaard in de warme laag gemaakt.
 - De laag van de **coolbar** . Deze laag is geoptimaliseerd voor het opslaan van grote hoeveel heden gegevens die niet regel matig worden geopend en die gedurende ten minste 30 dagen worden opgeslagen. Het opslaan van gegevens in de cool-laag is rendabeler, maar de toegang tot die gegevens kan duurder zijn dan de toegang tot gegevens in de warme laag.
-- De laag van het **Archief** . Deze laag is alleen beschikbaar voor afzonderlijke blok-blobs. De archief laag is geoptimaliseerd voor gegevens die een aantal uur van het ophalen van de latentie kunnen verdragen en die ten minste 180 dagen in de archief laag blijven. De archief laag is de meest rendabele optie voor het opslaan van gegevens. Het is echter wel duurder om toegang te krijgen tot gegevens in de warme of coole lagen.
+- De laag van het **Archief** . Deze laag is alleen beschikbaar voor afzonderlijke blok-blobs en toevoeg-blobs. De archief laag is geoptimaliseerd voor gegevens die een aantal uur van het ophalen van de latentie kunnen verdragen en die ten minste 180 dagen in de archief laag blijven. De archief laag is de meest rendabele optie voor het opslaan van gegevens. Het is echter wel duurder om toegang te krijgen tot gegevens in de warme of coole lagen.
 
 Als er een wijziging is in het gebruiks patroon van uw gegevens, kunt u op elk gewenst moment scha kelen tussen deze toegangs lagen. Zie [Azure Blob Storage: warme, cool en archief toegangs lagen](../blobs/storage-blob-storage-tiers.md)voor meer informatie over toegangs lagen.
 

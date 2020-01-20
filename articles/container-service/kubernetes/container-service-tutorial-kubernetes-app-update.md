@@ -1,25 +1,23 @@
 ---
 title: '(VEROUDERD) Zelfstudie Azure Container Service: Toepassing bijwerken'
 description: 'Zelfstudie Azure Container Service: Toepassing bijwerken'
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3c0be935a4ffb51c03d2f63b14ab7c0c713dd2ae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b4b893f185ba7e205ffebd7d939b8a2aa20a3e13
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60576686"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275549"
 ---
 # <a name="deprecated-update-an-application-in-kubernetes"></a>(VEROUDERD) Een toepassing bijwerken in Kubernetes
 
 > [!TIP]
-> Voor de bijgewerkte versie van deze zelfstudie, die gebruikmaakt van Azure Kubernetes Service, raadpleegt u [Zelfstudie: Een toepassing bijwerken in Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-app-update.md).
+> Voor de bijgewerkte versie van deze zelf studie die gebruikmaakt van de Azure Kubernetes-service, raadpleegt u [zelf studie: een toepassing bijwerken in azure Kubernetes service (AKS)](../../aks/tutorial-kubernetes-app-update.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -89,13 +87,13 @@ Haal de naam van de aanmeldingsserver op met de opdracht [az acr list](/cli/azur
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Gebruik [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) om de installatiekopie te taggen. Vervang `<acrLoginServer>` door de naam van de aanmeldingsserver van uw Azure Container Registry of de hostnaam van een openbaar register. Merk op dat de versie van de installatiekopie is bijgewerkt naar `redis-v2`.
+Gebruik [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) om de installatiekopie te taggen. Vervang `<acrLoginServer>` door de naam van de aanmeldingsserver van Azure Container Registry of de hostnaam van een openbaar register. Merk op dat de versie van de installatiekopie is bijgewerkt naar `redis-v2`.
 
 ```bash
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-Gebruik [docker push](https://docs.docker.com/engine/reference/commandline/push/) om de installatiekopie naar uw register te uploaden. Vervang `<acrLoginServer>` door de naam van de aanmeldingsserver van uw Azure Container Registry.
+Gebruik [docker push](https://docs.docker.com/engine/reference/commandline/push/) om de installatiekopie naar uw register te uploaden. Vervang `<acrLoginServer>` door de naam van de aanmeldingsserver van Azure Container Registry.
 
 ```bash
 docker push <acrLoginServer>/azure-vote-front:redis-v2
@@ -170,7 +168,7 @@ In deze zelfstudie hebt u een toepassing bijgewerkt en deze update geïmplemente
 > * De containerinstallatiekopie is gepusht naar Azure Container Registry
 > * De bijgewerkte toepassing is geïmplementeerd
 
-Ga naar de volgende zelfstudie om te leren hoe u Kubernetes bewaakt met Log Analytics.
+Ga naar de volgende zelfstudie om te leren hoe u Kubernetes controleert met Log Analytics.
 
 > [!div class="nextstepaction"]
 > [Kubernetes bewaken met Log Analystics](./container-service-tutorial-kubernetes-monitor.md)

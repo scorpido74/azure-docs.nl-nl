@@ -1,66 +1,58 @@
 ---
-title: Extensievolgorde gebruiken met Azure virtual machine scale sets | Microsoft Docs
-description: Informatie over het sequentiëren van de extensie wordt ingericht bij het implementeren van meerdere extensies op schaalsets voor virtuele machines.
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Uitbrei ding van extensie gebruiken met virtuele-machine schaal sets van Azure
+description: Meer informatie over het inrichten van Sequence-extensies bij het implementeren van meerdere uitbrei dingen in virtuele-machine schaal sets.
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: 2e5dfda16c4828b3113fc50d4cffc79fe6ff19e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cde3fb8b56d8509a45bde00dde55e3c69d015b8e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60620169"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278056"
 ---
-# <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Hiermee stelt u reeks extensie wordt ingericht in virtuele-machineschaalset
-Extensies voor Azure-machines bieden mogelijkheden, zoals configuratie na implementatie en beheer, bewaking, beveiliging en meer. Productie-implementaties gebruiken vaak een combinatie van meerdere extensies die zijn geconfigureerd voor de VM-exemplaren om gewenste resultaten te behalen.
+# <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Inrichten van Sequence-extensie in virtuele-machine schaal sets
+Extensies voor virtuele Azure-machines bieden mogelijkheden zoals configuratie en beheer na de implementatie, bewaking, beveiliging en meer. Productie-implementaties gebruiken meestal een combi natie van meerdere uitbrei dingen die zijn geconfigureerd voor de VM-exemplaren om de gewenste resultaten te krijgen.
 
-Wanneer u meerdere extensies op een virtuele machine, is het belangrijk om ervoor te zorgen dat dezelfde OS resources vereisen extensies worden niet bij het ophalen van deze resources op hetzelfde moment. Aantal extensies is ook afhankelijk van andere extensies voor de vereiste configuraties, zoals omgevingsinstellingen en geheimen. Zonder de juiste volgorde en uitvoeringsvolgorde vindt u in plaats, kunnen afhankelijke-extensie-implementaties mislukken.
+Wanneer u meerdere uitbrei dingen op een virtuele machine gebruikt, is het belang rijk om ervoor te zorgen dat uitbrei dingen waarvoor dezelfde resources van het besturings systeem zijn vereist, deze bronnen niet tegelijkertijd proberen op te halen. Sommige uitbrei dingen zijn ook afhankelijk van andere uitbrei dingen om vereiste configuraties te bieden, zoals omgevings instellingen en geheimen. Zonder dat de juiste volg orde en sequentiëren zijn geïmplementeerd, kunnen de implementaties van afhankelijke extensies mislukken.
 
-Dit artikel wordt uitgelegd hoe u kunt de sequencer gebruikt extensies voor de VM-exemplaren in schaalsets voor virtuele machines moet worden geconfigureerd.
+In dit artikel wordt beschreven hoe u de volg orde van extensies kunt configureren voor de VM-exemplaren in virtuele-machine schaal sets.
 
 ## <a name="prerequisites"></a>Vereisten
-In dit artikel wordt ervan uitgegaan dat u bekend met bent:
--   Virtuele Azure-machine [extensies](../virtual-machines/extensions/overview.md)
--   [Wijzigen van](virtual-machine-scale-sets-upgrade-scale-set.md) virtuele-machineschaalsets
+In dit artikel wordt ervan uitgegaan dat u bekend bent met:
+-   [Extensies](../virtual-machines/extensions/overview.md) voor virtuele Azure-machines
+-   Schaal sets voor virtuele machines [wijzigen](virtual-machine-scale-sets-upgrade-scale-set.md)
 
-## <a name="when-to-use-extension-sequencing"></a>Wanneer u de uitvoeringsvolgorde van extensies vindt
-Extensies voor sequentiëren in niet verplicht voor schaal wordt ingesteld en tenzij anders aangegeven, uitbreidingen kunnen worden ingericht op een scale set-instantie in een willekeurige volgorde.
+## <a name="when-to-use-extension-sequencing"></a>Wanneer moet u de extensie volgorde gebruiken?
+Uitbrei dingen voor sequentiëren in niet verplicht voor schaal sets, en tenzij opgegeven, kunnen uitbrei dingen worden ingericht op een exemplaar van een schaalset in een wille keurige volg orde.
 
-Bijvoorbeeld, als uw scale set-model twee extensies – ExtensionA en ExtensionB heeft – opgegeven in het model, optreden klikt u vervolgens een van de inrichting reeksen:
--   ExtensionA ExtensionB ->
--   ExtensionB -> ExtensionA
+Als uw Scale set-model bijvoorbeeld twee extensies heeft: Extensiona en ExtensionB, die in het model zijn opgegeven, kan een van de volgende inrichtings reeksen optreden:
+-   Extensiea-> ExtensionB
+-   ExtensionB-> Extensiona
 
-Als uw toepassing een extensie vereist moet altijd worden ingericht vóór extensie B, moet u extensievolgorde zoals beschreven in dit artikel gebruiken. Met de uitvoeringsvolgorde van extensies vindt, wordt nu slechts één reeks plaatsvinden:
--   ExtensionA - > ExtensionB
+Als voor uw toepassing extensie A vereist is om altijd te worden ingericht vóór de extensie B, moet u de uitbrei ding van de extensie gebruiken zoals beschreven in dit artikel. Met uitbrei ding van extensie wordt er slechts één reeks weer gegeven:
+-   Extensiea-> ExtensionB
 
-Geen extensies niet is opgegeven in een gedefinieerde inrichting reeks kunnen worden ingericht op elk gewenst moment, met inbegrip van voordat u, na of tijdens een opgegeven reeks. Extensievolgorde geeft alleen aan dat een bepaalde extensie na een andere specifieke extensie worden ingericht. Dit heeft geen invloed op de inrichting van een andere extensie gedefinieerd in het model.
+Extensies die niet in een gedefinieerde inrichtings volgorde zijn opgegeven, kunnen op elk gewenst moment worden ingericht, met inbegrip van vóór, na, of tijdens een gedefinieerde reeks. Uitbrei ding van extensie geeft alleen aan dat een specifieke extensie wordt ingericht na een andere specifieke uitbrei ding. Dit heeft geen invloed op het inrichten van een andere uitbrei ding die is gedefinieerd in het model.
 
-Bijvoorbeeld, als uw model met een schaalset drie extensies – extensie A, B-extensie en extensie C heeft – opgegeven in het model en extensie C om te worden ingericht na een extensie is ingesteld, optreden klikt u vervolgens een van de inrichting reeksen:
--   ExtensionA -> ExtensionC ExtensionB ->
--   ExtensionB -> ExtensionA ExtensionC ->
--   ExtensionA -> ExtensionB ExtensionC ->
+Als uw schaalset bijvoorbeeld drie extensies heeft: extensie A, extensie B en extensie C die is opgegeven in het model, en extension C is ingesteld om te worden ingericht na extensie A, dan kan een van de volgende inrichtings reeksen optreden:
+-   Extensiona-> ExtensionC-> ExtensionB
+-   ExtensionB-> Extensiona-> ExtensionC
+-   Extensiona-> ExtensionB-> ExtensionC
 
-Als u nodig hebt om ervoor te zorgen dat geen andere extensie wordt ingericht als de opgegeven extensie van de takenreeks wordt uitgevoerd, wordt u aangeraden alle uitbreidingen in uw model met een schaalset sequentiëren. In het bovenstaande voorbeeld kan de extensie B worden ingesteld op nadat de extensie C worden ingericht, zodat slechts één reeks kan plaatsvinden:
--   ExtensionA -> ExtensionC ExtensionB ->
+Als u er zeker van wilt zijn dat er geen andere uitbrei ding is ingericht tijdens de uitvoering van de gedefinieerde extensie reeks, kunt u het beste alle uitbrei dingen in het model voor de schaalset opgeven. In het bovenstaande voor beeld kan extension B worden ingesteld om te worden ingericht na extensie C, zodat er slechts één reeks kan optreden:
+-   Extensiona-> ExtensionC-> ExtensionB
 
 
-## <a name="how-to-use-extension-sequencing"></a>Het gebruik van de uitvoeringsvolgorde van extensies vindt
-Voor het inrichten van reeks extensie, moet u de definitie van de extensie in het model met een schaalset om op te nemen van de eigenschap 'provisionAfterExtensions', die een matrix van extensienamen accepteert bijwerken. De uitbreidingen die worden vermeld in de waarde van de eigenschap matrix moeten volledig worden gedefinieerd in het model met een schaalset.
+## <a name="how-to-use-extension-sequencing"></a>Instructies voor het gebruik van uitbrei dingen gebruiken
+Voor het inrichten van Sequence-extensies moet u de extensie definitie in het model voor schaal sets bijwerken met de eigenschap "provisionAfterExtensions", waarmee een matrix met extensie namen wordt geaccepteerd. De uitbrei dingen die worden vermeld in de waarde van de eigenschaps matrix, moeten volledig zijn gedefinieerd in het model voor schaal sets.
 
-### <a name="template-deployment"></a>Sjabloonimplementatie
-Het volgende voorbeeld wordt een sjabloon waarbij de schaalset drie extensies – ExtensionA, ExtensionB en ExtensionC – heeft zodat uitbreidingen zijn ingericht in de volgorde gedefinieerd:
--   ExtensionA -> ExtensionB ExtensionC ->
+### <a name="template-deployment"></a>Sjabloon implementatie
+In het volgende voor beeld wordt een sjabloon gedefinieerd waarbij de schaalset drie extensies bevat: Extensiona, ExtensionB en ExtensionC, zodat uitbrei dingen in de volg orde worden ingericht:
+-   Extensiona-> ExtensionB-> ExtensionC
 
 ```json
 "virtualMachineProfile": {
@@ -107,7 +99,7 @@ Het volgende voorbeeld wordt een sjabloon waarbij de schaalset drie extensies �
 }
 ```
 
-Omdat de eigenschap "provisionAfterExtensions" een matrix van extensienamen accepteert, kan het bovenstaande voorbeeld worden gewijzigd zodat ExtensionC na ExtensionA en ExtensionB is ingericht, maar er geen volgorde vereist tussen ExtensionA en ExtensionB is. De volgende sjabloon kan worden gebruikt voor het bereiken van dit scenario:
+Omdat de eigenschap ' provisionAfterExtensions ' een matrix met extensie namen accepteert, kan het bovenstaande voor beeld zodanig worden gewijzigd dat ExtensionC is ingericht na Extensiona en ExtensionB, maar er is geen volg orde vereist tussen Extensiona en ExtensionB. De volgende sjabloon kan worden gebruikt om dit scenario te verzorgen:
 
 ```json
 "virtualMachineProfile": {
@@ -151,8 +143,8 @@ Omdat de eigenschap "provisionAfterExtensions" een matrix van extensienamen acce
 }
 ```
 
-### <a name="rest-api"></a>REST-API
-Het volgende voorbeeld wordt een nieuwe extensie met de naam ExtensionC naar een model met een schaalset. ExtensionC heeft afhankelijkheden op ExtensionA en ExtensionB, die al zijn gedefinieerd in het model met een schaalset.
+### <a name="rest-api"></a>REST API
+In het volgende voor beeld wordt een nieuwe uitbrei ding met de naam ExtensionC toegevoegd aan een model met een schaalset. ExtensionC heeft afhankelijkheden voor Extensiona en ExtensionB, die al zijn gedefinieerd in het model voor schaal sets.
 
 ```
 PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/extensions/ExtensionC?api-version=2018-10-01`
@@ -174,7 +166,7 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 }
 ```
 
-Als ExtensionC is gedefinieerd, eerder in de Virtual Machine scale sets model en u nu wilt toevoegen de afhankelijkheden ervan, kunt u uitvoeren een `PATCH` de reeds geïmplementeerde extensie-eigenschappen bewerken.
+Als ExtensionC eerder is gedefinieerd in het model voor de schaalset en u nu de afhankelijkheden ervan wilt toevoegen, kunt u een `PATCH` uitvoeren om de al geïmplementeerde extensie-eigenschappen te bewerken.
 
 ```
 PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/extensions/ExtensionC?api-version=2018-10-01`
@@ -189,12 +181,12 @@ PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/provider
   }                  
 }
 ```
-Wijzigingen in bestaande exemplaren van de schaalset worden toegepast op de volgende [upgrade](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model).
+Wijzigingen in bestaande exemplaren van een schaalset worden toegepast bij de volgende [upgrade](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Gebruik de [toevoegen AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) cmdlet om de status van de toepassing-extensie toevoegen aan de schaal modeldefinitie instellen. Extensievolgorde vereist het gebruik van PowerShell Az 1.2.0 of hoger.
+Gebruik de cmdlet [add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) om de toepassings status extensie toe te voegen aan de model definitie van de schaalset. Voor extensie sequentiëren is het gebruik van AZ Power shell 1.2.0 of hoger vereist.
 
-Het volgende voorbeeld wordt de [toepassingsstatus extensie](virtual-machine-scale-sets-health-extension.md) naar de `extensionProfile` in een schaalsetmodel van een op basis van een Windows-schaalset. De extensie van de status van de toepassing worden ingericht na het inrichten van de [Custom Script Extension](../virtual-machines/extensions/custom-script-windows.md), die is al gedefinieerd in de schaalset.
+In het volgende voor beeld wordt de [toepassings status extensie](virtual-machine-scale-sets-health-extension.md) toegevoegd aan de `extensionProfile` in een model met schaal sets van een schaalset op basis van Windows. De uitbrei ding voor de toepassings status wordt ingericht na het inrichten van de [aangepaste script extensie](../virtual-machines/extensions/custom-script-windows.md), al gedefinieerd in de schaalset.
 
 ```azurepowershell-interactive
 # Define the scale set variables
@@ -229,9 +221,9 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Gebruik [az vmss extension set](/cli/azure/vmss/extension#az-vmss-extension-set) om toe te voegen van de uitbreiding van de status van de toepassing de definitie van model van de schaalset. Extensievolgorde vereist het gebruik van Azure CLI 2.0.55 of hoger.
+Gebruik [AZ vmss extension set](/cli/azure/vmss/extension#az-vmss-extension-set) om de toepassings status extensie toe te voegen aan de model definitie van de schaalset. Voor extensie sequentiëren is het gebruik van Azure CLI 2.0.55 of hoger vereist.
 
-Het volgende voorbeeld wordt de [toepassingsstatus extensie](virtual-machine-scale-sets-health-extension.md) model van een op Windows gebaseerde schaalset instellen voor de schaal. De extensie van de status van de toepassing worden ingericht na het inrichten van de [Custom Script Extension](../virtual-machines/extensions/custom-script-windows.md), die is al gedefinieerd in de schaalset.
+In het volgende voor beeld wordt de [toepassings status extensie](virtual-machine-scale-sets-health-extension.md) toegevoegd aan het model met schaal sets van een op Windows gebaseerde schaalset. De uitbrei ding voor de toepassings status wordt ingericht na het inrichten van de [aangepaste script extensie](../virtual-machines/extensions/custom-script-windows.md), al gedefinieerd in de schaalset.
 
 ```azurecli-interactive
 az vmss extension set \
@@ -247,13 +239,13 @@ az vmss extension set \
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
-### <a name="not-able-to-add-extension-with-dependencies"></a>Kan geen extensie met afhankelijkheden toevoegen?
-1. Controleer of de extensies die zijn opgegeven in provisionAfterExtensions zijn gedefinieerd in het model met een schaalset.
-2. Controleer of er zijn geen circulaire afhankelijkheden die zijn geïntroduceerd. Bijvoorbeeld, is niet de volgende reeks toegestaan: ExtensionA -> ExtensionB ExtensionC -> ExtensionA ->
-3. Zorg ervoor dat eventuele uitbreidingen die u afhankelijkheden uitvoeren op een eigenschap 'instellingen' onder 'Eigenschappen' extensie hebben. Bijvoorbeeld, als ExtentionB worden ingericht na ExtensionA moet, moet klikt u vervolgens ExtensionA hebben het veld 'instellingen' onder ExtensionA 'Eigenschappen'. U kunt een lege 'instellingen'-eigenschap opgeven als de extensie niet alle vereiste instellingen schrijft.
+### <a name="not-able-to-add-extension-with-dependencies"></a>Kan uitbrei ding met afhankelijkheden niet toevoegen?
+1. Zorg ervoor dat de uitbrei dingen die zijn opgegeven in provisionAfterExtensions zijn gedefinieerd in het model voor schaal sets.
+2. Zorg ervoor dat er geen circulaire afhankelijkheden worden geïntroduceerd. De volgende reeks is bijvoorbeeld niet toegestaan: Extensiona-> ExtensionB-> ExtensionC-> Extensiona
+3. Zorg ervoor dat alle uitbrei dingen waarvoor u afhankelijkheden maakt, een eigenschap "Settings" hebben onder extensie "Eigenschappen". Als ExtentionB bijvoorbeeld moeten worden ingericht na Extensiea, moet Extensiona het veld ' instellingen ' hebben onder Extensiona ' Eigenschappen '. U kunt een lege eigenschap "Settings" opgeven als de extensie de vereiste instellingen niet verplicht stelt.
 
-### <a name="not-able-to-remove-extensions"></a>Kunnen extensies verwijderen?
-Zorg ervoor dat de uitbreidingen die wordt verwijderd, niet worden vermeld in provisionAfterExtensions voor eventuele andere uitbreidingen.
+### <a name="not-able-to-remove-extensions"></a>Kunt u geen uitbrei dingen verwijderen?
+Zorg ervoor dat de uitbrei dingen die worden verwijderd, niet worden vermeld onder provisionAfterExtensions voor andere uitbrei dingen.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het [Implementeer uw toepassing](virtual-machine-scale-sets-deploy-app.md) ingesteld op de virtuele-machineschaalset.
+Meer informatie over het [implementeren van uw toepassing](virtual-machine-scale-sets-deploy-app.md) op virtuele-machine schaal sets.

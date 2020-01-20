@@ -1,22 +1,20 @@
 ---
-title: '(AFGESCHAFT) Snelstartgids: Azure Kubernetes-cluster voor Windows'
+title: KEUR Quick Start-Azure Kubernetes-cluster voor Windows
 description: Leer snel een Kubernetes-cluster te maken voor Windows-containers in Azure Container Service met de Azure CLI.
-services: container-service
 author: dlepow
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: d7ce702bb726fb89780d251f31023c9490112c36
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2e36de9f2a6af3643b6f609339d413968f6a8d6e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66148792"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277648"
 ---
-# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>(AFGESCHAFT) Kubernetes-cluster voor Windows-containers implementeren
+# <a name="deprecated-deploy-kubernetes-cluster-for-windows-containers"></a>KEUR Kubernetes-cluster voor Windows-containers implementeren
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -26,7 +24,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze snelstartgids de versie Azure CLI 2.0.4 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren]( /cli/azure/install-azure-cli). 
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze Quickstart gebruikmaken van Azure CLI versie 2.0.4 of hoger. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren]( /cli/azure/install-azure-cli). 
 
 > [!NOTE]
 > De ondersteuning voor Windows-containers in Kubernetes in Azure Container Service is momenteel beschikbaar als preview. 

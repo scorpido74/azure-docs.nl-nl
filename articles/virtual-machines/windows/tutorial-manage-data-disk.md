@@ -16,12 +16,12 @@ ms.date: 11/29/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.subservice: disks
-ms.openlocfilehash: 05ad0b95b106b56d92cdbc5a7acd23cc34de7ae4
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: b288091172c71be82e70d90eb8817b2130f2cbef
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780263"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277310"
 ---
 # <a name="tutorial---manage-azure-disks-with-azure-powershell"></a>Zelfstudie: Azure-schijven beheren met Azure PowerShell
 
@@ -44,7 +44,7 @@ Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek 
 
 Wanneer een virtuele Azure-machine wordt gemaakt, worden automatisch twee schijven aan de virtuele machine gekoppeld. 
 
-**Besturingssysteemschijf**: besturingssysteemschijven kunnen tot 4 terabytes groot zijn, en huisvesten het besturingssysteem van de VM's.  De besturingssysteemschijf krijgt standaard stationsletter *C:* toegewezen. De schijfcacheconfiguratie van de besturingssysteemschijf is geoptimaliseerd voor besturingssysteemprestaties. De besturingssysteemschijf kan **beter geen** toepassingen of gegevens bevatten. Gebruik voor toepassingen en gegevens een gegevensschijf, zoals verderop in dit artikel wordt beschreven.
+**Besturingssysteemschijf**: besturingssysteemschijven kunnen tot 4 terabytes groot zijn, en huisvesten het besturingssysteem van de VM's. Als u een nieuwe virtuele machine (VM) maakt op basis van een installatie kopie van [Azure Marketplace](https://azure.microsoft.com/marketplace/) , is dit doorgaans 127 GB (maar sommige installatie kopieën hebben een kleinere grootte van de besturingssysteem schijf). De besturingssysteemschijf krijgt standaard stationsletter *C:* toegewezen. De schijfcacheconfiguratie van de besturingssysteemschijf is geoptimaliseerd voor besturingssysteemprestaties. De besturingssysteemschijf kan **beter geen** toepassingen of gegevens bevatten. Gebruik voor toepassingen en gegevens een gegevensschijf, zoals verderop in dit artikel wordt beschreven.
 
 **Tijdelijke schijf**: tijdelijke schijven gebruiken een SSD-schijf die zich op dezelfde Azure-host bevindt als de virtuele machine. Tijdelijke schijven leveren zeer goede prestaties en kunnen worden gebruikt voor bewerkingen als tijdelijke gegevensverwerking. Als de virtuele machine wordt verplaatst naar een nieuwe host, worden gegevens die zijn opgeslagen op een tijdelijke schijf echter verwijderd. De grootte van de tijdelijke schijf wordt bepaald door de [VM-grootte](sizes.md). Tijdelijke schijven krijgen standaard de stationsletter *D:* toegewezen.
 

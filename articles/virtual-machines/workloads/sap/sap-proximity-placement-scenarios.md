@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/01/2019
+ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cef5058936a45badd700a573611c82398ca4d546
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 01ce1599f86082aef3ff53d298cc53896074af66
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805702"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277602"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure proximity placement groups voor optimale netwerk latentie met SAP-toepassingen
 SAP-toepassingen die zijn gebaseerd op de architectuur van SAP NetWeaver of SAP S/4HANA, zijn gevoelig voor netwerk latentie tussen de SAP-toepassingslaag en de SAP-gegevenslaag. Deze gevoeligheid is het resultaat van de meeste bedrijfs logica die wordt uitgevoerd in de toepassingslaag. Omdat de SAP-toepassingslaag de bedrijfs logica uitvoert, worden query's naar de data base-laag met een hoge frequentie, met een snelheid van duizenden of tien tallen per seconde, uitgegeven. In de meeste gevallen is de aard van deze query's eenvoudig. Ze kunnen vaak worden uitgevoerd op de database laag in 500 micro seconden of minder.
@@ -156,7 +156,7 @@ Het resultaat van deze implementatie is:
 > Omdat u een DBMS-VM in één zone en de tweede DBMS-VM in een andere zone implementeert om een configuratie met een hoge Beschik baarheid te maken, hebt u een andere proximity-plaatsings groep nodig voor elk van de zones. Dit geldt ook voor alle beschikbaarheids sets die u gebruikt.
 
 ## <a name="move-an-existing-system-into-proximity-placement-groups"></a>Een bestaand systeem verplaatsen naar proximity-plaatsings groepen
-Als er al SAP-systemen zijn geïmplementeerd, wilt u mogelijk de netwerk latentie van een aantal van uw kritieke systemen optimaliseren en de toepassingslaag en de DBMS-laag in hetzelfde Data Center vinden. Tijdens de open bare preview van proximity-plaatsings groepen moet u de Vm's verwijderen en nieuwe maken om het systeem te verplaatsen naar proximity placement groups. U kunt de virtuele machines op dit moment niet gewoon afsluiten en toewijzen aan proximity-plaatsings groepen.
+Als er al SAP-systemen zijn geïmplementeerd, wilt u mogelijk de netwerk latentie van een aantal van uw kritieke systemen optimaliseren en de toepassingslaag en de DBMS-laag in hetzelfde Data Center vinden. Als u de Vm's van een volledige Azure-beschikbaarheidsset wilt verplaatsen naar een bestaande proximity-plaatsings groep die al is scoped, moet u alle Vm's van de beschikbaarheidsset afsluiten en de beschikbaarheidsset toewijzen aan de bestaande plaatsings groep via Azure Portal. Power shell of CLI. Als u een virtuele machine die geen deel uitmaakt van een beschikbaarheidsset, wilt verplaatsen naar een bestaande proximity-plaatsings groep, hoeft u alleen de virtuele machine af te zetten en toe te wijzen aan een bestaande plaatsings groep. 
 
 
 ## <a name="next-steps"></a>Volgende stappen

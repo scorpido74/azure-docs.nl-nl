@@ -1,61 +1,53 @@
 ---
-title: Beveiliging-exemplaar voor Azure VM-schaalset instanties instellen | Microsoft Docs
-description: Informatie over het beveiligen van virtuele Azure-machine schaalsetinstanties uit bewerkingen voor in- en -schaalset.
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Instantie beveiliging voor instanties van de schaalset voor virtuele machines van Azure
+description: Meer informatie over het beveiligen van de schaalset-instanties van Azure virtual machine van scale-in en scale-set-bewerkingen.
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: manayar
-ms.openlocfilehash: 61430f5a43a04fa0e5b2f0c79ff03419c73aaf28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 071ea79f4d288e86cc5b9347f8607b4ff7190bc1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66416546"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275795"
 ---
-# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Beveiliging-exemplaar voor Azure VM-schaalset instanties (Preview) instellen
-Schaalsets voor virtuele Azure-machine inschakelen betere flexibiliteit voor uw workloads via [voor automatisch schalen](virtual-machine-scale-sets-autoscale-overview.md), zodat u configureren kunt wanneer de schaal van uw infrastructuur en wanneer deze worden geschaald in. Schaalsets ook kunnen u centraal beheren, configureren en bijwerken van een groot aantal virtuele machines via verschillende [Upgradebeleid](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) instellingen. U kunt een update voor het model met een schaalset configureren en de nieuwe configuratie wordt automatisch toegepast op elke schaal set-exemplaar als u het Upgradebeleid hebt ingesteld op automatische of Rolling.
+# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Instantie beveiliging voor instanties van de schaalset van virtuele machines van Azure (preview-versie)
+Met virtuele-machine schaal sets van Azure kunt u uw workloads beter belasten door automatisch te [schalen](virtual-machine-scale-sets-autoscale-overview.md), zodat u configureert wanneer uw infra structuur wordt geschaald en wanneer deze wordt geschaald. Met schaal sets kunt u ook een groot aantal virtuele machines centraal beheren, configureren en bijwerken met behulp van verschillende instellingen voor het [upgrade beleid](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) . U kunt een update configureren voor het model met de schaalset en de nieuwe configuratie wordt automatisch toegepast op elk exemplaar van de schaalset als u het upgrade beleid hebt ingesteld op automatisch of rolling.
 
-Als uw toepassing verwerkt verkeer, kunnen er situaties waar u specifieke exemplaren van de rest van de schaal anders worden behandeld exemplaar instellen. Bijvoorbeeld bepaalde exemplaren in de schaalset langlopende bewerkingen kunnen uitvoeren, en u niet wilt dat deze instanties worden geschaald bij tot de bewerkingen worden voltooid. U hebt mogelijk een paar exemplaren in de schaalset om uit te voeren extra of andere taken dan de andere leden van de schaalset ook speciale. U moet deze 'speciale' virtuele machines niet te worden gewijzigd met de andere exemplaren in de schaalset. Beveiliging-exemplaar biedt de extra besturingselementen voor het inschakelen van deze en andere scenario's voor uw toepassing.
+Als uw toepassing verkeer verwerkt, zijn er situaties waarin u wilt dat bepaalde instanties anders worden behandeld dan de rest van het exemplaar van de schaalset. Bepaalde instanties in de schaalset kunnen bijvoorbeeld langlopende bewerkingen uitvoeren en u wilt niet dat deze instanties worden geschaald, totdat de bewerkingen zijn voltooid. Mogelijk hebt u ook enkele instanties in de schaalset nodig om extra of andere taken uit te voeren dan de andere leden van de schaalset. U wilt dat deze ' speciale ' Vm's niet worden gewijzigd met de andere exemplaren in de schaalset. Instantie beveiliging biedt de extra besturings elementen om deze en andere scenario's voor uw toepassing in te scha kelen.
 
-Dit artikel wordt beschreven hoe u kunt toepassen en de mogelijkheden voor preventie van ander exemplaar met schaalsetinstanties gebruiken.
+In dit artikel wordt beschreven hoe u de verschillende functies voor instantie beveiliging kunt Toep assen en gebruiken met instanties van schaal sets.
 
 > [!NOTE]
->Beveiliging-exemplaar is momenteel in openbare Preview. Geen procedure aanmelden is nodig voor het gebruik van de openbare preview-functionaliteit die hieronder worden beschreven. Preview-versie van exemplaar protection wordt alleen ondersteund met API-versie 2019-03-01 en klik op schaalsets met beheerde schijven.
+>Instantie beveiliging bevindt zich momenteel in een open bare preview. Er is geen opt-in-procedure nodig om de open bare Preview-functionaliteit te gebruiken die hieronder wordt beschreven. Preview van instance Protection wordt alleen ondersteund met API versie 2019-03-01 en op schaal sets met beheerde schijven.
 
-## <a name="types-of-instance-protection"></a>Typen van de beveiliging van exemplaar
-Schaalsets bieden twee typen mogelijkheden voor preventie van exemplaar:
+## <a name="types-of-instance-protection"></a>Typen instantie beveiliging
+Schaal sets bieden twee typen mogelijkheden voor het beveiligen van exemplaren:
 
--   **Beveiligen van schaal**
-    - Ingeschakeld via de **protectFromScaleIn** eigenschap op schaal exemplaar instellen
-    - Exemplaar beschermt tegen schaal in voor automatisch schalen is gestart
-    - Bewerkingen voor de gebruiker geïnitieerde exemplaar (met inbegrip van exemplaar verwijderen) zijn **niet geblokkeerd**
-    - Bewerkingen, gestart op de schaalset (een upgrade uitvoert, installatiekopie terugzetten, toewijzing ongedaan maken, enz.) zijn **niet geblokkeerd**
+-   **Beveiligen tegen schalen**
+    - Ingeschakeld via de eigenschap **protectFromScaleIn** voor het exemplaar van de schaalset
+    - Beschermt het exemplaar van automatisch schalen gestarte inschalen
+    - Door de gebruiker geïnitieerde instantie bewerkingen (inclusief het verwijderen van instanties) worden **niet geblokkeerd**
+    - Bewerkingen die zijn gestart op de schaalset (upgrade, installatie kopie, toewijzing ongedaan maken, enz.) worden **niet geblokkeerd**
 
--   **Beschermen tegen scale set acties**
-    - Ingeschakeld via de **protectFromScaleSetActions** eigenschap op schaal exemplaar instellen
-    - Exemplaar beschermt tegen schaal in voor automatisch schalen is gestart
-    - Beveiligd exemplaar van bewerkingen, gestart op de schaalset (zoals een upgrade kan de installatiekopie terugzetten, toewijzing ongedaan maken, enz.)
-    - Bewerkingen voor de gebruiker geïnitieerde exemplaar (met inbegrip van exemplaar verwijderen) zijn **niet geblokkeerd**
-    - Het verwijderen van de volledige schaalset is **niet geblokkeerd**
+-   **Beveiligen tegen acties van schaal sets**
+    - Ingeschakeld via de eigenschap **protectFromScaleSetActions** voor het exemplaar van de schaalset
+    - Beschermt het exemplaar van automatisch schalen gestarte inschalen
+    - Beveiligt instantie van bewerkingen die zijn gestart op de schaalset (zoals upgrade, installatie kopie, toewijzing opheffen, enzovoort)
+    - Door de gebruiker geïnitieerde instantie bewerkingen (inclusief het verwijderen van instanties) worden **niet geblokkeerd**
+    - Verwijderen van de set met volledige schaal wordt **niet geblokkeerd**
 
-## <a name="protect-from-scale-in"></a>Beveiligen van schaal
-Beveiliging-exemplaar kan worden toegepast instanties van schaalset nadat de exemplaren worden gemaakt. Beveiliging is toegepast en alleen gewijzigd de [model met instanties](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view) en niet op de [Virtual Machine scale sets model](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model).
+## <a name="protect-from-scale-in"></a>Beveiligen tegen schalen
+Instantie beveiliging kan worden toegepast op instanties van schaal sets nadat de exemplaren zijn gemaakt. De beveiliging wordt alleen toegepast en gewijzigd op het [exemplaar model](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view) en niet in het model met de [schaalset](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model).
 
-Er zijn meerdere manieren om schaal beveiliging toepast op exemplaren in uw schaalset zoals beschreven in de onderstaande voorbeelden.
+Er zijn meerdere manieren voor het Toep assen van schaal beveiliging op de instanties van uw schaalset, zoals wordt beschreven in de onderstaande voor beelden.
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 
-Het volgende voorbeeld wordt de schaal beveiliging met een exemplaar in de schaalset.
+In het volgende voor beeld wordt scale-in-beveiliging toegepast op een exemplaar in de schaalset.
 
 ```
 PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instance-id}?api-version=2019-03-01`
@@ -73,13 +65,13 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 ```
 
 > [!NOTE]
->Beveiliging-exemplaar wordt alleen ondersteund met API-versie 2019-03-01 en hoger
+>Instantie beveiliging wordt alleen ondersteund met API-versie 2019-03-01 en hoger
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Gebruik de [Update AzVmssVM](/powershell/module/az.compute/update-azvmssvm) cmdlet schaal beveiliging toepassen op uw schaal ingesteld exemplaar.
+Gebruik de cmdlet [Update-AzVmssVM](/powershell/module/az.compute/update-azvmssvm) om beveiliging tegen schalen toe te passen op uw Scale set-exemplaar.
 
-Het volgende voorbeeld wordt de schaal beveiliging met een exemplaar in de schaalset met de exemplaar-ID 0.
+In het volgende voor beeld wordt scale-in-beveiliging toegepast op een exemplaar in de schaalset met exemplaar-ID 0.
 
 ```azurepowershell-interactive
 Update-AzVmssVM `
@@ -91,9 +83,9 @@ Update-AzVmssVM `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Gebruik [az vmss update](/cli/azure/vmss#az-vmss-update) schaal beveiliging toepassen op uw exemplaar van de schaalset.
+Gebruik [AZ vmss update](/cli/azure/vmss#az-vmss-update) om beveiliging tegen schalen toe te passen op uw Scale set-exemplaar.
 
-Het volgende voorbeeld wordt de schaal beveiliging met een exemplaar in de schaalset met de exemplaar-ID 0.
+In het volgende voor beeld wordt scale-in-beveiliging toegepast op een exemplaar in de schaalset met exemplaar-ID 0.
 
 ```azurecli-interactive
 az vmss update \  
@@ -103,16 +95,16 @@ az vmss update \
   --protect-from-scale-in true
 ```
 
-## <a name="protect-from-scale-set-actions"></a>Beschermen tegen scale set acties
-Beveiliging-exemplaar kan worden toegepast instanties van schaalset nadat de exemplaren worden gemaakt. Beveiliging is toegepast en alleen gewijzigd de [model met instanties](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view) en niet op de [Virtual Machine scale sets model](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model).
+## <a name="protect-from-scale-set-actions"></a>Beveiligen tegen acties van schaal sets
+Instantie beveiliging kan worden toegepast op instanties van schaal sets nadat de exemplaren zijn gemaakt. De beveiliging wordt alleen toegepast en gewijzigd op het [exemplaar model](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view) en niet in het model met de [schaalset](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model).
 
-Beveiligen van een exemplaar van de scale set acties ook voorkomt dat het exemplaar schalen in voor automatisch schalen is gestart.
+Het beveiligen van een exemplaar van de schaalset acties beschermt ook het exemplaar van automatisch schalen gestarte inschalen.
 
-Er zijn meerdere manieren van het toepassen van schaal acties de beveiliging instelt voor uw schaalset instanties zoals beschreven in de onderstaande voorbeelden.
+Er zijn meerdere manieren voor het Toep assen van acties voor het instellen van schaal sets op de instanties van uw schaalset, zoals wordt beschreven in de onderstaande voor beelden.
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 
-Het volgende voorbeeld wordt de beveiliging van de scale set acties met een exemplaar in de schaalset.
+In het volgende voor beeld wordt de beveiliging van schaal sets-acties toegepast op een exemplaar in de schaalset.
 
 ```
 PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vMScaleSetName}/virtualMachines/{instance-id}?api-version=2019-03-01`
@@ -131,14 +123,14 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 ```
 
 > [!NOTE]
->Beveiliging-exemplaar wordt alleen ondersteund met API-versie 2019-03-01 en hoger.</br>
-Beveiligen van een exemplaar van de scale set acties ook voorkomt dat het exemplaar schalen in voor automatisch schalen is gestart. U kunt geen 'protectFromScaleIn' opgeven: false bij het instellen van "protectFromScaleSetActions": true
+>Instantie beveiliging wordt alleen ondersteund met API-versie 2019-03-01 en hoger.</br>
+Het beveiligen van een exemplaar van de schaalset acties beschermt ook het exemplaar van automatisch schalen gestarte inschalen. U kunt ' protectFromScaleIn ' niet opgeven: False bij het instellen van ' protectFromScaleSetActions ': True
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Gebruik de [Update AzVmssVM](/powershell/module/az.compute/update-azvmssvm) cmdlet voor het toepassen van beveiliging tot schaal acties ingesteld op-exemplaar in uw schaalset.
+Gebruik de cmdlet [Update-AzVmssVM](/powershell/module/az.compute/update-azvmssvm) om beveiliging toe te passen op basis van de acties van de schaalset in het exemplaar van de schaalset.
 
-Het volgende voorbeeld wordt de beveiliging van de scale set acties met een exemplaar in de schaalset met de exemplaar-ID 0.
+In het volgende voor beeld wordt de beveiliging van schaal sets-acties toegepast op een exemplaar in de schaalset met exemplaar-ID 0.
 
 ```azurepowershell-interactive
 Update-AzVmssVM `
@@ -151,9 +143,9 @@ Update-AzVmssVM `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Gebruik [az vmss update](/cli/azure/vmss#az-vmss-update) beveiliging van de scale set acties aan-exemplaar in uw schaalset toepassen.
+Gebruik [AZ vmss update](/cli/azure/vmss#az-vmss-update) om beveiliging toe te passen op de schaalset-acties in het exemplaar van de schaalset.
 
-Het volgende voorbeeld wordt de beveiliging van de scale set acties met een exemplaar in de schaalset met de exemplaar-ID 0.
+In het volgende voor beeld wordt de beveiliging van schaal sets-acties toegepast op een exemplaar in de schaalset met exemplaar-ID 0.
 
 ```azurecli-interactive
 az vmss update \  
@@ -165,16 +157,16 @@ az vmss update \
 ```
 
 ## <a name="troubleshoot"></a>Problemen oplossen
-### <a name="no-protectionpolicy-on-scale-set-model"></a>Er is geen protectionPolicy op model met een schaalset
-Beveiliging-exemplaar is alleen van toepassing op schaalsetinstanties en niet op het model met een schaalset.
+### <a name="no-protectionpolicy-on-scale-set-model"></a>Geen protectionPolicy in model voor schaalset
+Exemplaar beveiliging is alleen van toepassing op instanties van een schaalset en niet in het model voor de schaalset.
 
-### <a name="no-protectionpolicy-on-scale-set-instance-model"></a>Er is geen protectionPolicy op schaal model met instanties instellen
-Standaard protection-beleid niet toegepast op een exemplaar wanneer deze wordt gemaakt.
+### <a name="no-protectionpolicy-on-scale-set-instance-model"></a>Geen protectionPolicy op het exemplaar model van de schaalset
+Beveiligings beleid wordt standaard niet toegepast op een exemplaar wanneer het wordt gemaakt.
 
-U kunt de beveiliging van het exemplaar instanties van schaalset nadat de exemplaren die zijn gemaakt toepassen.
+U kunt instantie beveiliging Toep assen op instanties van schaal sets nadat de instanties zijn gemaakt.
 
-### <a name="not-able-to-apply-instance-protection"></a>Kan geen exemplaar-beveiliging toepassen
-Beveiliging-exemplaar wordt alleen ondersteund met API-versie 2019-03-01 en hoger. Controleer de API-versie die wordt gebruikt en behoefte bijwerken. Mogelijk moet u ook uw PowerShell of CLI bijwerken naar de nieuwste versie.
+### <a name="not-able-to-apply-instance-protection"></a>Kan geen instantie beveiliging Toep assen
+Instantie beveiliging wordt alleen ondersteund met API-versie 2019-03-01 en hoger. Controleer of de gebruikte API-versie wordt gebruikt en werk de update indien nodig bij. Mogelijk moet u ook uw Power shell of CLI bijwerken naar de nieuwste versie.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over het [Implementeer uw toepassing](virtual-machine-scale-sets-deploy-app.md) ingesteld op de virtuele-machineschaalset.
+Meer informatie over het [implementeren van uw toepassing](virtual-machine-scale-sets-deploy-app.md) op virtuele-machine schaal sets.

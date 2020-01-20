@@ -2,7 +2,6 @@
 title: Zelf studie-CI/CD van Jenkins naar Azure Vm's met Azure DevOps Services
 description: In deze zelfstudie leert u hoe u continue integratie (CI) en continue implementatie (CD) van een Node.js-app kunt instellen met Jenkins voor Azure VM's vanuit Release Management in Visual Studio Team Services of Microsoft Team Foundation Server
 author: tomarchermsft
-manager: jpconnock
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -12,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 1265861a872b01d558646ea2adb6cba27fa3ebd4
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 0d82fd3269b9e99fb6969178f6066698f6b1a669
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778410"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277280"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Zelfstudie: Uw app implementeren voor Linux Virtual Machines in Azure met Jenkins en Azure DevOps Services
 
@@ -168,7 +167,7 @@ De release-pijplijn in Azure Pipelines maken:
 5. Open in uw browser de URL van een van de servers die u hebt toegevoegd aan de implementatiegroep. Typ bijvoorbeeld **http://{ip-adres-van-uw-server}** .
 6. Ga naar de Git-bronopslagplaats en wijzig de inhoud van de kop **h1** in het bestand app/views/index.jade met gewijzigde tekst.
 7. Voer uw wijziging door.
-8. Na een paar minuten ziet u dat er een nieuwe release is gemaakt op de pagina **Releases** van Azure DevOps. Open de release om te zien welke implementatie wordt uitgevoerd. Gefeliciteerd.
+8. Na een paar minuten ziet u dat er een nieuwe release is gemaakt op de pagina **Releases** van Azure DevOps. Open de release om te zien welke implementatie wordt uitgevoerd. Gefeliciteerd!
 
 ## <a name="troubleshooting-the-jenkins-plugin"></a>Problemen met de Jenkins-invoegtoepassing oplossen
 

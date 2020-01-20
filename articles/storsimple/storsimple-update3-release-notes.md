@@ -1,96 +1,89 @@
 ---
-title: Opmerkingen bij de release van de StorSimple 8000 met Update 3 | Microsoft Docs
-description: Beschrijft de nieuwe functies, problemen en tijdelijke oplossingen voor StorSimple 8000 met Update 3.
-services: storsimple
-documentationcenter: NA
+title: Release opmerkingen bij StorSimple 8000 Series update 3
+description: Hierin worden de nieuwe functies, problemen en tijdelijke oplossingen voor de StorSimple 8000 Series update 3 beschreven.
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 2158aa7a-4ac3-42ba-8796-610d1adb984d
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d18feba4ded3dfccb8f774112a7dc8d42b12f1d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4b61caecd67881eb08c82ea0c26522c63c3e8396
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60530957"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275338"
 ---
-# <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>3 opmerkingen bij de release voor uw StorSimple 8000-apparaat bijwerken
+# <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>Update 3 release opmerkingen voor uw StorSimple 8000 Series-apparaat
 
 ## <a name="overview"></a>Overzicht
-De volgende releaseopmerkingen beschrijven de nieuwe functies en de kritieke open problemen voor de StorSimple 8000 met Update 3 hebt geïdentificeerd. Ze bevatten ook een lijst van de StorSimple-software-updates in deze release is opgenomen. 
+In de volgende release opmerkingen worden de nieuwe functies beschreven en worden de essentiële openstaande problemen voor de StorSimple 8000 Series update 3 geïdentificeerd. Ze bevatten ook een lijst met de StorSimple software-updates die zijn opgenomen in deze release. 
 
-Update 3 kan worden toegepast op alle StorSimple-apparaat met Release (GA) of Update 0.1 via Update 2.2. De versie van het apparaat dat is gekoppeld met Update 3 is 6.3.9600.17759.
+Update 3 kan worden toegepast op elk StorSimple-apparaat met release (GA) of update 0,1 via update 2,2. De versie van het apparaat die is gekoppeld aan update 3 is 6.3.9600.17759.
 
-Lees de informatie in de opmerkingen bij de release voordat u de update in uw StorSimple-oplossing implementeert.
+Raadpleeg de informatie in de release opmerkingen voordat u de update in uw StorSimple-oplossing implementeert.
 
 > [!IMPORTANT]
-> * Update 3 is apparaatsoftware, LSI-stuurprogramma en firmware en Storport en Spaceport werkt. Het duurt ongeveer 1,5 tot 2 uur om deze update te installeren. 
-> * Voor nieuwe releases, kunnen er geen updates onmiddellijk dat er een gefaseerde implementatie van de updates. Wacht een paar dagen en vervolgens zoeken naar updates opnieuw als deze snel weer beschikbaar is.
+> * Update 3 heeft apparaatsoftware, het stuur programma en de firmware van het LSI en de updates voor Storport en Spaceport. Het duurt ongeveer 1,5 2 uur om deze update te installeren. 
+> * Voor nieuwe releases worden updates mogelijk niet onmiddellijk weer geven omdat er een gefaseerde implementatie van de updates wordt uitgevoerd. Wacht enkele dagen en zoek opnieuw naar updates, aangezien deze binnenkort beschikbaar worden.
 > 
 > 
 
-## <a name="whats-new-in-update-3"></a>Wat is er nieuw in Update 3
-De volgende belangrijke verbeteringen en oplossingen voor problemen zijn aangebracht in Update 3.
+## <a name="whats-new-in-update-3"></a>Wat is er nieuw in update 3
+De volgende belang rijke verbeteringen en oplossingen voor fouten zijn aangebracht in update 3.
 
-* **Ruimte vrijmaken wijzigingen automatisch** – vanaf Update 3, de algoritmen voor het vrijmaken van ruimte uitvoeren op de stand-by-controller van het systeem leidt tot sneller worden uitgevoerd. Raadpleeg voor meer informatie over de poorten die nodig zijn voor het werken met het vrijmaken van ruimte, de [StorSimple netwerkvereisten](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device).
-* **Prestatieverbeteringen** – Update 3 bevat verbeterde prestaties van de lezen / schrijven naar de cloud.
-* **Verbeteringen met betrekking tot migratie** : In deze release verschillende foutoplossingen en verbeteringen zijn uitgevoerd voor de functie voor migratie van apparaten uit de 5000/7000-serie 8000-serie-apparaten. Voor meer informatie over het gebruik van de migratiefunctie voor, gaat u naar [migratie van het apparaat uit de 5000/7000-serie 8000-serie apparaat](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b). 
-* **Bewaking van gerelateerde oplossingen** : In deze release, fouten met betrekking tot controlegrafieken, servicedashboard en device-dashboard zijn opgelost.
+* **Wijzigingen in automatische ruimte vrijmaken** : starten van update 3, de algoritmen voor het vrijmaken van ruimte worden uitgevoerd op de standby-controller van het systeem, wat resulteert in een snellere uitvoering. Raadpleeg de [StorSimple-netwerk vereisten](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device)voor meer informatie over de poorten die nodig zijn om te werken met ruimte vrijmaken.
+* **Verbeteringen in prestaties** : update 3 heeft betere Lees-en schrijf prestaties naar de Cloud.
+* **Verbeteringen** op het gebied van migratie: in deze release zijn verschillende oplossingen voor fouten en verbeteringen uitgevoerd voor de migratie functie van 5000/7000 serie apparaten naar 8000 Series-apparaten. Ga voor meer informatie over het gebruik van de migratie functie naar [migratie van een apparaat met een 5000/7000-serie naar een 8000-serie](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b). 
+* **Bewaking van gerelateerde oplossingen** : in deze release zijn fouten met betrekking tot bewakings grafieken, service dashboard en dash board voor apparaten opgelost.
 
-## <a name="issues-fixed-in-update-3"></a>Problemen opgelost met Update 3
-De volgende tabel bevat een samenvatting van problemen die zijn verholpen in Update 3.    
+## <a name="issues-fixed-in-update-3"></a>Problemen die zijn opgelost in update 3
+De volgende tabellen bevatten een samen vatting van problemen die zijn opgelost in update 3.    
 
-| Nee | Functie | Probleem | Is van toepassing op het fysieke apparaat | Is van toepassing op het virtuele apparaat |
+| Nee | Functie | Probleem | Is van toepassing op het fysieke apparaat | Is van toepassing op virtueel apparaat |
 | --- | --- | --- | --- | --- |
-| 1 |Host-zijde gegevensmigratie |In de eerdere versie, is de StorSimple-Cloudapparaat gaat offline tijdens de migratie van een host-side gegevens. Dit probleem is opgelost in deze release. |Nee |Ja |
-| 2 |Lokaal vastgemaakte volumes |In de vorige release zijn er problemen met betrekking tot i/o-fouten, volume conversie fouten en storingen gegevenspad voor lokaal vastgemaakte volumes. Deze problemen zijn hoofdmap veroorzaakt en opgelost in deze release. |Ja |Nee |
-| 3 |Bewaking |Er zijn meerdere problemen met betrekking tot eenheden rapportage- en bewakingsdoeleinden evenals apparaat dashboardgrafieken waar onjuiste informatie wordt weergegeven voor lokaal vastgemaakte volumes. Deze problemen zijn opgelost in deze release. |Ja |Nee |
-| 4 |I/o zware schrijfbewerkingen |Wanneer u StorSimple voor workloads met betrekking tot zware schrijfbewerkingen, de gebruiker zou uitvoeren in een onregelmatige bug waar de werkset is wordt doorverbonden naar de cloud. Deze fout is opgelost in deze release. |Ja |Ja |
-| 5 |Backup |In sommige zeldzame gevallen, in de vorige versies van software, wanneer de gebruiker heeft een back-up van een externe kloon, ze zou worden uitgevoerd in de cloud-fouten en de bewerking wordt een fout. In deze release, het probleem is opgelost en de bewerking is voltooid. |Ja |Ja |
-| 6 |Back-upbeleid |In sommige zeldzame gevallen, in de eerdere versies van software, er is een fout met betrekking tot het verwijderen van back-upbeleid. Dit probleem is opgelost in deze release. |Ja |Ja |
+| 1 |Gegevens migratie aan de host-zijde |In de eerdere versie werd de StorSimple Cloud Appliance offline gezet tijdens de migratie van gegevens van een host. Dit probleem is opgelost in deze release. |Nee |Ja |
+| 2 |Lokaal vastgemaakte volumes |In de vorige versie zijn er problemen met I/O-fouten, storingen in volume conversie en DataPath-fouten voor lokaal vastgemaakte volumes. Deze problemen bevinden zich in de hoofdmap en zijn opgelost in deze release. |Ja |Nee |
+| 3 |Controleren |Er zijn meerdere problemen met de rapportage-eenheden en bewaking, evenals de dashboard grafieken van het dash board waarin onjuiste informatie wordt weer gegeven voor lokaal vastgemaakte volumes. Deze problemen zijn opgelost in deze release. |Ja |Nee |
+| 4 |Zware schrijf bewerkingen I/O |Wanneer u StorSimple gebruikt voor workloads met zware schrijf bewerkingen, wordt de gebruiker uitgevoerd in een niet-frequente bug waarbij de werkset werd getierd in de Cloud. Deze fout is opgelost in deze release. |Ja |Ja |
+| 5 |Back-up |In bepaalde zeldzame gevallen, in de vorige versies van software, wanneer de gebruiker een back-up van een externe kloon heeft gemaakt, zouden ze in de Cloud fouten zouden uitvoeren en zou de bewerking fout zouden veroorzaken. In deze release is het probleem opgelost en de bewerking is voltooid. |Ja |Ja |
+| 6 |Back-upbeleid |In bepaalde zeldzame gevallen is er een fout opgetreden bij het verwijderen van het back-upbeleid in de eerdere versies van software. Dit probleem is opgelost in deze release. |Ja |Ja |
 
-## <a name="known-issues-in-update-3"></a>Bekende problemen in Update 3
-De volgende tabel bevat een overzicht van de bekende problemen in deze release.
+## <a name="known-issues-in-update-3"></a>Bekende problemen in update 3
+De volgende tabel bevat een samen vatting van bekende problemen in deze release.
 
-| Nee. | Functie | Probleem | Opmerkingen / tijdelijke oplossing | Is van toepassing op het fysieke apparaat | Is van toepassing op het virtuele apparaat |
+| Nee. | Functie | Probleem | Opmerkingen/tijdelijke oplossing | Is van toepassing op het fysieke apparaat | Is van toepassing op virtueel apparaat |
 | --- | --- | --- | --- | --- | --- |
-| 1 |Schijf quorum |In zeldzame gevallen, als het merendeel van de schijven in de behuizing EBOD van een 8600-apparaat zijn verbroken, wat resulteert in geen quorum schijf gaat vervolgens de opslaggroep offline. Dit wordt offline blijven, zelfs als de schijven opnieuw worden verbonden. |U moet het apparaat opnieuw opstarten. Als het probleem zich blijft voordoen, kunt u contact op met Microsoft Support voor de volgende stappen. |Ja |Nee |
-| 2 |Onjuiste besturings-ID |Wanneer een vervangende domeincontroller wordt uitgevoerd, kan controller 0 als controller 1 weergegeven. Tijdens de vervanging van de domeincontroller, wanneer de installatiekopie wordt geladen vanuit het peer-knooppunt kan de besturings-ID weergegeven in eerste instantie als de peer-controller-ID. In zeldzame gevallen kan dit gedrag ook worden weergegeven na het systeem opnieuw is opgestart. |Er is geen gebruikersactie vereist. Deze situatie wordt automatisch opgelost nadat de netwerkcontroller te vervangen voltooid is. |Ja |Nee |
-| 3 |Opslagaccounts |Met de Storage-service voor het verwijderen van het opslagaccount is een niet-ondersteund scenario. Dit zal leiden tot een situatie waarin de gebruikersgegevens kan niet worden opgehaald. | |Ja |Ja |
-| 4 |Failover van het apparaat |Meerdere failovers van een volumecontainer van het bronapparaat dezelfde aan verschillende doelapparaten wordt niet ondersteund. Failover van één dead apparaat naar meerdere apparaten wordt de volumecontainers van het eerste apparaat een failover geen eigenaar van gegevens maken. Na een failover wordt deze volumecontainers worden weergegeven of zich anders gedragen wanneer u ze in de klassieke Azure portal weergeven. | |Ja |Nee |
-| 5 |Installatie |Tijdens de StorSimple-Adapter voor SharePoint-installatie moet u voor een IP-adres van het apparaat in de volgorde voor de installatie met succes te voltooien. | |Ja |Nee |
-| 6 |Webproxy |Als uw webproxyconfiguratie HTTPS als het opgegeven protocol heeft, de apparaat-naar-servicecommunicatie worden beïnvloed en het apparaat gaat offline. Voor ondersteuningspakketten wordt ook gegenereerd in het proces, verbruikt behoorlijk aanspraak op uw apparaat. |Zorg ervoor dat de URL van proxy HTTP als het opgegeven protocol heeft. Zie [Configure web proxy for your device](storsimple-8000-configure-web-proxy.md) (Webproxy voor uw apparaat configureren) voor meer informatie. |Ja |Nee |
-| 7 |Webproxy |Als u configureren en webproxy op een geregistreerd apparaat inschakelt, moet u de actieve controller op uw apparaat opnieuw opstarten. | |Ja |Nee |
-| 8 |Cloud hoge latentie en hoge i/o-werkbelasting |Wanneer uw StorSimple-apparaat een combinatie van zeer hoge cloud latenties (volgorde van seconden) en hoge i/o-werkbelasting tegenkomt, de apparaatvolumes gaat u in een gedegradeerde status en de i/o's mislukken mogelijk vanwege een fout 'het apparaat is niet gereed'. |U moet handmatig opnieuw opstarten Apparaatcontrollers of uitvoeren van een failover van het apparaat deze situatie te herstellen. |Ja |Nee |
-| 9 |Azure PowerShell |Bij het gebruik van de StorSimple-cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object - eerst 1 - Wait** het eerste object selecteren, zodat u kunt een nieuwe maken **Upopslagaccount** object, de cmdlet retourneert alle objecten. |De cmdlet als volgt tussen haakjes verpakken: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |Ja |Ja |
-| 10 |Migratie |Wanneer meerdere volumecontainers voor migratie worden doorgegeven, is de verwachte Aankomsttijd voor de meest recente back-up nauwkeurige alleen voor de eerste volumecontainer. Bovendien begint parallelle migratie nadat de eerste 4 back-ups in de eerste volumecontainer worden gemigreerd. |Het is raadzaam dat u een volumecontainer tegelijk migreren. |Ja |Nee |
-| 11 |Migratie |Na het herstel, zijn de volumes niet toegevoegd aan het back-upbeleid of de groep van de virtuele schijf. |U moet deze volumes toevoegen aan een back-upbeleid om te kunnen maken van back-ups. |Ja |Ja |
-| 12 |Migratie |Nadat de migratie voltooid is, moet de 5000/7000-serie-apparaat geen toegang tot de gemigreerde gegevenscontainers. |Het is raadzaam dat u de gemigreerde gegevenscontainers verwijderen nadat de migratie voltooid en wordt doorgevoerd is. |Ja |Nee |
-| 13 |Kloon en DR |Een StorSimple-apparaat met Update 1 kan klonen of uitvoeren van herstel na noodgevallen naar een apparaat met 1 software vóór het bijwerken. |U moet het doelapparaat bijwerken op 1 om toe te staan van deze bewerkingen bijwerken |Ja |Ja |
-| 14 |Migratie |Back-up van configuratie voor de migratie mislukken op een apparaat uit de 5000-7000 serie wanneer er volumegroepen met geen gekoppelde volumes. |Verwijderen van alle groepen van een leeg volume met geen gekoppelde volumes en voer vervolgens de configuratie van back-up opnieuw uit. |Ja |Nee |
-| 15 |Azure PowerShell-cmdlets en lokaal vastgemaakte volumes |U kunt een lokaal vastgemaakt volume via Azure PowerShell-cmdlets kan niet maken. (Alle volumes die u via Azure PowerShell maakt worden gelaagd.) |Gebruik altijd de StorSimple Manager-service voor het configureren van lokaal vastgemaakte volumes. |Ja |Nee |
-| 16 |Beschikbare schijfruimte voor het lokaal vastgemaakte volumes |Als u een lokaal vastgemaakt volume verwijdert, worden de beschikbare schijfruimte voor nieuwe volumes mogelijk niet meteen bijgewerkt. De StorSimple Manager-service-updates de lokale ruimte die beschikbaar ongeveer elk uur. |Wacht een uur voordat u probeert te maken van het nieuwe volume. |Ja |Nee |
-| 17 |Lokaal vastgemaakte volumes |De hersteltaak wordt aangegeven dat de tijdelijke momentopnameback-up in de back-catalogus, maar alleen voor de duur van de hersteltaak. Bovendien het wordt aangegeven dat een groep virtuele schijf met het voorvoegsel **tmpCollection** op de **back-upbeleid** pagina, maar alleen voor de duur van de hersteltaak. |Dit probleem kan optreden als de hersteltaak alleen lokaal volumes of een combinatie van lokaal vastgemaakte en gelaagde volumes vastgemaakte is. Als de hersteltaak alleen gelaagde volumes bevat, wordt klikt u vervolgens dit gedrag niet uitgevoerd. Er is geen tussenkomst van de gebruiker is vereist. |Ja |Nee |
-| 18 |Lokaal vastgemaakte volumes |Als u een hersteltaak annuleren en een failover van de controller gebeurt onmiddellijk daarna wordt de hersteltaak wordt weergegeven **mislukt** in plaats van **geannuleerd**. Als een hersteltaak mislukt en er treedt een failover van de controller op direct daarna de hersteltaak wordt weergegeven **geannuleerd** in plaats van **mislukt**. |Dit probleem kan optreden als de hersteltaak alleen lokaal volumes of een combinatie van lokaal vastgemaakte en gelaagde volumes vastgemaakte is. Als de hersteltaak alleen gelaagde volumes bevat, wordt klikt u vervolgens dit gedrag niet uitgevoerd. Er is geen tussenkomst van de gebruiker is vereist. |Ja |Nee |
-| 19 |Lokaal vastgemaakte volumes |Als u een hersteltaak annuleert of als een herstelpunt is mislukt en treedt er een failover van de controller op, een extra hersteltaak wordt weergegeven op de **taken** pagina. |Dit probleem kan optreden als de hersteltaak alleen lokaal volumes of een combinatie van lokaal vastgemaakte en gelaagde volumes vastgemaakte is. Als de hersteltaak alleen gelaagde volumes bevat, wordt klikt u vervolgens dit gedrag niet uitgevoerd. Er is geen tussenkomst van de gebruiker is vereist. |Ja |Nee |
-| 20 |Lokaal vastgemaakte volumes |Als u probeert te converteren van een gelaagd volume (gemaakt en gekloonde met Update 1.2 of eerder) naar een lokaal vastgemaakt volume en uw apparaat bijna vol is of er een storing in de cloud is, kunnen de clone(s) worden beschadigd. |Dit probleem treedt alleen op volumes die gemaakt en gekloonde met vooraf Update 2.1-software zijn. Dit moet een onregelmatige scenario. | | |
-| 21 |Volumeconversie |De ACR's die zijn gekoppeld aan een volume, terwijl de volumeconversie van een uitgevoerd wordt, niet bijwerken (gelaagde in lokaal vastgemaakt of omgekeerd). Bijwerken van de ACR's kan leiden tot beschadigde gegevens. |Indien nodig, bijwerken van de ACR's voordat u de volumeconversie en maak geen verdere ACR updates tijdens de conversie uitgevoerd wordt. | | |
-| 22 |Updates |Bij het toepassen van Update 3, de **onderhoud** pagina in de klassieke Azure portal wordt weergegeven het volgende bericht weergegeven met betrekking tot Update 2 - 'StorSimple 8000 series Update 2 omvat de mogelijkheid voor Microsoft proactief verzamelen logboek gegevens van uw apparaat wordt geactiveerd wanneer er potentiële problemen detecteren'. Dit is misleidend, betekent dit dat het apparaat met Update 2 wordt bijgewerkt. Wanneer het apparaat met Update 3 is bijgewerkt, verdwijnt dit bericht. |Dit probleem wordt opgelost in een toekomstige release. |Ja |Nee |
+| 1 |Schijf quorum |Als het meren deel van de schijven in de EBOD Enclosure van een 8600-apparaat niet is verbonden met een niet-schijf quorum, wordt de opslag groep in zeldzame gevallen offline gezet. Het blijft offline, zelfs als de schijven opnieuw zijn verbonden. |U moet het apparaat opnieuw opstarten. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning om de volgende stappen uit te voeren. |Ja |Nee |
+| 2 |Onjuiste controller-ID |Wanneer een controller wordt vervangen, kan controller 0 als controller 1 worden weer gegeven. Wanneer de installatie kopie wordt geladen vanuit het knoop punt van de peer, kan de controller-ID in eerste instantie als de ID van de peer-controller worden weer gegeven tijdens het vervangen van de controller. Dit gedrag kan in zeldzame gevallen ook worden gezien nadat het systeem opnieuw is opgestart. |De gebruiker hoeft verder niets te doen. Deze situatie wordt vanzelf opgelost nadat de vervanging van de controller is voltooid. |Ja |Nee |
+| 3 |Opslagaccounts |Het gebruik van de opslag service om het opslag account te verwijderen, is een niet-ondersteund scenario. Dit leidt tot een situatie waarin gebruikers gegevens niet kunnen worden opgehaald. | |Ja |Ja |
+| 4 |Failover van apparaat |Meerdere failovers van een volume container van hetzelfde bron apparaat naar verschillende doel apparaten worden niet ondersteund. Failover van één Dead-apparaat naar meerdere apparaten zorgt ervoor dat de volume containers op het eerste mislukte apparaat gegevens eigendom verloren gaan. Na een dergelijke failover worden deze volume containers weer gegeven of werken ze anders wanneer u ze in de klassieke Azure-Portal bekijkt. | |Ja |Nee |
+| 5 |Installeren |Tijdens de installatie van de StorSimple-adapter voor share point moet u een IP-adres van het apparaat opgeven, zodat de installatie kan worden voltooid. | |Ja |Nee |
+| 6 |Webproxy |Als uw webproxy-configuratie HTTPS heeft als het opgegeven protocol, wordt de communicatie van uw apparaat naar service beïnvloed en wordt het apparaat offline gezet. Er worden ook ondersteunings pakketten gegenereerd in het proces, waarbij aanzienlijke bronnen op uw apparaat worden gebruikt. |Zorg ervoor dat de web proxy-URL HTTP heeft als het opgegeven protocol. Zie [Configure web proxy for your device](storsimple-8000-configure-web-proxy.md) (Webproxy voor uw apparaat configureren) voor meer informatie. |Ja |Nee |
+| 7 |Webproxy |Als u webproxy configureert en inschakelt op een geregistreerd apparaat, moet u de actieve controller opnieuw opstarten op het apparaat. | |Ja |Nee |
+| 8 |Hoge Cloud latentie en hoge I/O-werk belasting |Wanneer uw StorSimple-apparaat een combi natie van zeer hoge Cloud latenties (volg orde van seconden) en een hoge I/O-werk belasting tegen komt, worden de volumes van het apparaat gedegradeerd en kan het I/O's mislukken met de fout ' apparaat is niet gereed '. |U moet de controllers van het apparaat hand matig opnieuw opstarten of een failover voor het apparaat uitvoeren om deze situatie te herstellen. |Ja |Nee |
+| 9 |Azure PowerShell |Wanneer u de cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; van StorSimple gebruikt, selecteert u-object-eerste 1-wachten** om het eerste object te selecteren, zodat u een nieuw **upopslagaccount** -object kunt maken, de cmdlet alle objecten retourneert. |Laat de cmdlet tussen haakjes als volgt teruglopen: **(Get-Azure-StorSimpleStorageAccountCredential &#124; ) select-object-eerste 1-wait** |Ja |Ja |
+| 10 |Migratie |Wanneer meerdere volume containers worden door gegeven voor migratie, is de ETA voor de meest recente back-up alleen nauw keurig voor de eerste volume container. Daarnaast wordt parallelle migratie gestart nadat de eerste vier back-ups in de eerste volume container zijn gemigreerd. |U wordt aangeraden één volume container tegelijk te migreren. |Ja |Nee |
+| 11 |Migratie |Na het terugzetten worden er geen volumes meer toegevoegd aan het back-upbeleid of de virtuele-schijf groep. |Als u back-ups wilt maken, moet u deze volumes aan een back-upbeleid toevoegen. |Ja |Ja |
+| 12 |Migratie |Nadat de migratie is voltooid, mag het apparaat van de 5000/7000-serie geen toegang hebben tot de gemigreerde gegevens containers. |U wordt aangeraden de gemigreerde gegevens containers te verwijderen nadat de migratie is voltooid en doorgevoerd. |Ja |Nee |
+| 13 |Klonen en DR |Een StorSimple-apparaat met Update 1 kan geen nood herstel klonen of uitvoeren op een apparaat waarop de software van vóór update 1 wordt uitgevoerd. |U moet het doel apparaat bijwerken naar Update 1 om deze bewerkingen toe te staan |Ja |Ja |
+| 14 |Migratie |Configuratie back-up voor migratie mislukt mogelijk op een 5000-7000 series-apparaat wanneer er volume groepen zonder gekoppelde volumes zijn. |Verwijder alle lege volume groepen zonder gekoppelde volumes en voer de configuratie back-up opnieuw uit. |Ja |Nee |
+| 15 |Azure PowerShell-cmdlets en lokaal vastgemaakte volumes |U kunt geen lokaal vastgemaakt volume maken via Azure PowerShell-cmdlets. (Elk volume dat u maakt via Azure PowerShell wordt getierd.) |Gebruik altijd de StorSimple Manager-service voor het configureren van lokaal vastgemaakte volumes. |Ja |Nee |
+| 16 |Beschik bare ruimte voor lokaal vastgemaakte volumes |Als u een lokaal vastgemaakt volume verwijdert, wordt de beschik bare ruimte voor nieuwe volumes mogelijk niet onmiddellijk bijgewerkt. De StorSimple Manager-service werkt de lokale ruimte die ongeveer elk uur beschikbaar is, bij. |Wacht een uur voordat u het nieuwe volume probeert te maken. |Ja |Nee |
+| 17 |Lokaal vastgemaakte volumes |Met de herstel taak wordt de tijdelijke back-up van de moment opname in de back-upcatalogus weer gegeven, maar alleen voor de duur van de herstel taak. Daarnaast wordt er een virtuele schijf groep met prefix **tmpCollection** beschikbaar gemaakt op de pagina **back-upbeleiden** , maar alleen voor de duur van de herstel taak. |Dit gedrag kan optreden als uw herstel taak alleen lokaal vastgemaakte volumes of een combi natie van lokaal vastgemaakte en gelaagde volumes heeft. Als de herstel taak alleen gelaagde volumes bevat, wordt dit gedrag niet uitgevoerd. Er is geen tussenkomst van de gebruiker is vereist. |Ja |Nee |
+| 18 |Lokaal vastgemaakte volumes |Als u een herstel taak annuleert en de failover van de controller onmiddellijk daarna plaatsvindt, wordt de herstel **taak weer gegeven** in plaats van **geannuleerd**. Als een herstel taak mislukt en een failover van een controller onmiddellijk wordt uitgevoerd, worden in de herstel taak **geannuleerd** weer gegeven in plaats van **mislukt**. |Dit gedrag kan optreden als uw herstel taak alleen lokaal vastgemaakte volumes of een combi natie van lokaal vastgemaakte en gelaagde volumes heeft. Als de herstel taak alleen gelaagde volumes bevat, wordt dit gedrag niet uitgevoerd. Er is geen tussenkomst van de gebruiker is vereist. |Ja |Nee |
+| 19 |Lokaal vastgemaakte volumes |Als u een herstel taak annuleert of als een herstel mislukt en vervolgens een failover van een controller plaatsvindt, wordt er een extra herstel taak weer gegeven op de pagina **taken** . |Dit gedrag kan optreden als uw herstel taak alleen lokaal vastgemaakte volumes of een combi natie van lokaal vastgemaakte en gelaagde volumes heeft. Als de herstel taak alleen gelaagde volumes bevat, wordt dit gedrag niet uitgevoerd. Er is geen tussenkomst van de gebruiker is vereist. |Ja |Nee |
+| 20 |Lokaal vastgemaakte volumes |Als u probeert een gelaagd volume te converteren (gemaakt en gekloond met Update 1,2 of eerder) naar een lokaal vastgemaakt volume en er onvoldoende ruimte is op het apparaat of als er sprake is van een Cloud storing, kunnen de kloon (s) beschadigd zijn. |Dit probleem treedt alleen op bij volumes die zijn gemaakt en gekloond met software van vóór de update 2,1. Dit moet een incidenteel scenario zijn. | | |
+| 21 |Volume conversie |Werk het ACRs-object dat is gekoppeld aan een volume niet bij terwijl er een volume conversie wordt uitgevoerd (naar lokaal vastgemaakte of vice versa). Het bijwerken van het ACRs kan leiden tot beschadigde gegevens. |Indien nodig werkt u de ACRs bij vóór de volume conversie en maakt u geen verdere ACR-updates tijdens de conversie. | | |
+| 22 |Updates |Wanneer u update 3 toepast, wordt op de pagina **onderhoud** in de klassieke Azure-Portal het volgende bericht weer gegeven met betrekking tot update 2-"StorSimple 8000 Series update 2 bevat de mogelijkheid van micro soft om proactief logboek gegevens van uw apparaat te verzamelen wanneer er mogelijke problemen worden gedetecteerd. Dit is misleidend, omdat het aangeeft dat het apparaat wordt bijgewerkt naar Update 2. Zodra het apparaat is bijgewerkt naar Update 3, verdwijnt dit bericht. |Dit gedrag wordt in een toekomstige release opgelost. |Ja |Nee |
 
-## <a name="controller-and-firmware-updates-in-update-3"></a>Controller en firmware-updates in Update 3
-Deze release bevat LSI-stuurprogramma en firmware-updates. Zie voor meer informatie over het installeren van de LSI stuurprogramma's en firmware-updates [Update 3 installeren](storsimple-install-update-3.md) op uw StorSimple-apparaat.
+## <a name="controller-and-firmware-updates-in-update-3"></a>Controller-en firmware-updates in update 3
+Deze release heeft stuur programma-en firmware-updates voor LSI. Zie [Update 3 installeren](storsimple-install-update-3.md) op uw StorSimple-apparaat voor meer informatie over het installeren van het LSI-stuur programma en de firmware-updates.
 
-## <a name="virtual-device-updates-in-update-3"></a>Updates van de virtuele apparaat in Update 3
-Deze update kan niet worden toegepast op het StorSimple-Cloudapparaat (ook wel bekend als het virtuele apparaat). Nieuwe virtuele apparaten moet worden gemaakt. 
+## <a name="virtual-device-updates-in-update-3"></a>Updates van het virtuele apparaat in update 3
+Deze update kan niet worden toegepast op de StorSimple Cloud Appliance (ook wel bekend als het virtuele apparaat). Er moeten nieuwe virtuele apparaten worden gemaakt. 
 
 ## <a name="next-step"></a>Volgende stap
-Meer informatie over het [Update 3 installeren](storsimple-install-update-3.md) op uw StorSimple-apparaat.
+Meer informatie over het [installeren van update 3](storsimple-install-update-3.md) op uw StorSimple-apparaat.
 

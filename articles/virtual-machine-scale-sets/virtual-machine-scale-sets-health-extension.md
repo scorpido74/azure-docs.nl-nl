@@ -1,26 +1,18 @@
 ---
-title: De toepassings status extensie gebruiken met virtuele-machine schaal sets van Azure | Microsoft Docs
+title: De toepassings status extensie gebruiken met schaal sets voor virtuele Azure-machines
 description: Meer informatie over het gebruik van de toepassings status extensie voor het controleren van de status van uw toepassingen die zijn geïmplementeerd op schaal sets voor virtuele machines.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: e074d76f9ed095725d99bddc9eb21925f4b3697c
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 37d93b04e6755512eac6c2a168bd2a04f8ac298f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114473"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275877"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>De toepassings status uitbreiding gebruiken met schaal sets voor virtuele machines
 Het controleren van de status van uw toepassing is een belang rijk signaal voor het beheren en upgraden van uw implementatie. Virtuele-machine schaal sets van Azure bieden ondersteuning voor [rolling upgrades](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) , waaronder [automatische upgrades van besturings systemen](virtual-machine-scale-sets-automatic-upgrade.md), die afhankelijk zijn van de status controle van de afzonderlijke instanties om uw implementatie bij te werken.
@@ -75,13 +67,13 @@ De volgende JSON toont het schema voor de uitbrei ding van de toepassings status
 | Name | Waarde / voorbeeld | Gegevenstype
 | ---- | ---- | ----
 | protocol | `http` of `tcp` | string |
-| port | Optioneel wanneer protocol is `http`, verplicht wanneer protocol wordt`tcp` | int |
-| requestPath | Verplicht wanneer protocol is `http`, niet toegestaan als protocol wordt`tcp` | string |
+| poort | Optioneel wanneer protocol is `http`, verplicht wanneer protocol wordt `tcp` | int |
+| requestPath | Verplicht wanneer het protocol is `http`, niet toegestaan wanneer het protocol wordt `tcp` | string |
 
 ## <a name="deploy-the-application-health-extension"></a>De toepassings status uitbreiding implementeren
 Er zijn meerdere manieren om de toepassings status extensie te implementeren op uw schaal sets, zoals beschreven in de onderstaande voor beelden.
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 
 In het volgende voor beeld wordt de toepassings status extensie (met de naam myHealthExtension) toegevoegd aan de extensionProfile in het model met de schaalset van een op Windows gebaseerde schaalset.
 
@@ -111,7 +103,7 @@ Gebruik `PATCH` om een reeds geïmplementeerde extensie te bewerken.
 
 Gebruik de cmdlet [add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) om de toepassings status extensie toe te voegen aan de model definitie van de schaalset.
 
-In het volgende voor beeld wordt de toepassings status extensie `extensionProfile` toegevoegd aan de in het model Scale set van een op Windows gebaseerde schaalset. In het voor beeld wordt de nieuwe AZ Power shell-module gebruikt.
+In het volgende voor beeld wordt de toepassings status extensie toegevoegd aan de `extensionProfile` in het model voor schaal sets van een op Windows gebaseerde schaalset. In het voor beeld wordt de nieuwe AZ Power shell-module gebruikt.
 
 ```azurepowershell-interactive
 # Define the scale set variables

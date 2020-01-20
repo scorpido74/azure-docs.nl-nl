@@ -13,15 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: faf297ef4b07b76f98bb7773c636cd8f6228bbc0
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b4a2617bec145cf735058bc13c01bf8ebdfe6550
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201741"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275502"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Beveiligingsplaybook in Azure Security Center (Preview)
 In dit document wordt uitgelegd hoe u beveiligingsplaybooks gebruikt in Azure Security Center voor het reageren op beveiligingsproblemen.
+
+> [!NOTE]
+> De naam van de functie voor beveiligings Playbook is gewijzigd in werk stroom automatisering. Controleer de pagina [werk stroom automatisering (preview)](https://docs.microsoft.com/azure/security-center/workflow-automation) voor bijgewerkte inhouds informatie. Dit is tijdelijke gearchiveerde inhoud die beschikbaar is voor klanten die dit eerder hebben bekeken en die geleidelijk worden verwijderd. Een functie in Preview wordt begeleid door [aanvullende gebruiks voorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
 
 ## <a name="what-is-security-playbook-in-security-center"></a>Wat is een beveiligingsplaybook in Security Center?
 Beveiligingsplaybooks bestaan uit een verzameling procedures die in Security Center worden uitgevoerd nadat een bepaalde playbook is geactiveerd door de geselecteerde waarschuwing. Met behulp van beveiligingsplaybooks kunt u uw reactie op een specifieke beveiligingswaarschuwing van Security Center automatiseren en organiseren. Beveiligingsplaybooks in Security Center zijn gebaseerd op [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps), wat betekent dat u de sjablonen kunt gebruiken die worden aangeboden in de categorie Beveiliging van Logic Apps-sjablonen, dat u ze kunt aanpassen op basis van uw behoeften of dat u nieuwe playbooks kunt maken met de [werkstroom van Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app), waarbij u Security Center als de trigger gebruikt.
@@ -96,7 +99,7 @@ U kunt een bestaande playbook in Security Center wijzigen om een actie of voorwa
 
 
 ## <a name="see-also"></a>Zie ook
-In dit document hebt u kunnen lezen hoe u playbooks gebruikt in Azure Security Center. Zie de volgende onderwerpen voor meer informatie over het Azure Beveiligingscentrum:
+In dit document hebt u kunnen lezen hoe u playbooks gebruikt in Azure Security Center. Zie de volgende onderwerpen voor meer informatie over Azure Security Center:
 
 * [Beveiligingswaarschuwingen beheren en erop reageren in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Informatie over het beheren van waarschuwingen en het reageren op beveiligingsincidenten in Security Center.
 * [Beveiligingsstatus bewaken in Azure Security Center](security-center-monitoring.md). Meer informatie over het controleren van de status van uw Azure-resources.

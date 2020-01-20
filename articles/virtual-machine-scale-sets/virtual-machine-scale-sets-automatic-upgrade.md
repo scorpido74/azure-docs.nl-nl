@@ -1,26 +1,18 @@
 ---
-title: Automatische upgrades van de besturingssysteem installatie kopie met virtuele-machine schaal sets van Azure | Microsoft Docs
+title: Automatische installatie kopieën van besturings systemen met virtuele-machine schaal sets van Azure
 description: Meer informatie over het automatisch upgraden van de installatie kopie van het besturings systeem op VM-exemplaren in een schaalset
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: shandilvarun
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: vashan
-ms.openlocfilehash: 95a313b3c6995d55b86561c685641b447edae127
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: c452ba5b8abfce4227d72922139824d639c62755
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240928"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278166"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Upgrade van Azure virtual machine-schaal sets automatische installatie kopieën van besturings systemen
 
@@ -60,10 +52,10 @@ De volgende Sku's worden momenteel ondersteund (en worden regel matig toegevoegd
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18.04-LTS          |
-| Rogue-Wave (open Logic)  | CentOS        | 7,5                |
+| Rogue-Wave (open Logic)  | CentOS        | 7.5                |
 | CoreOS                  | CoreOS        | Stabiel             |
 | Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
-| Microsoft Corporation   | WindowsServer | 2016-Data Center    |
+| Microsoft Corporation   | WindowsServer | 2016-Datacenter    |
 | Microsoft Corporation   | WindowsServer | 2016-Data Center-Smalldisk |
 | Microsoft Corporation   | WindowsServer | 2016-Data Center-met-containers |
 | Microsoft Corporation   | WindowsServer | 2019-Data Center |
@@ -78,7 +70,7 @@ De volgende Sku's worden momenteel ondersteund (en worden regel matig toegevoegd
 - Gebruik de status tests van de toepassing of de [uitbrei ding van de toepassings status](virtual-machine-scale-sets-health-extension.md) voor niet-service Fabric schaal sets.
 - Gebruik Compute API versie 2018-10-01 of hoger.
 - Zorg ervoor dat de opgegeven externe resources in het model voor de schaalset beschikbaar en bijgewerkt zijn. Voor beelden zijn een SAS-URI voor de Boots trap ping in eigenschappen van VM-extensies, Payload in het opslag account, verwijzing naar geheimen in het model en meer.
-- Voor schaal sets met virtuele Windows-machines, beginnend met Compute API versie 2019-03-01, moet de eigenschap *virtualMachineProfile. osProfile. windowsConfiguration. enableAutomaticUpdates* worden ingesteld op *False* in het model voor schaal sets inhoudsindexdefinitie. Met de bovenstaande eigenschap kunt u in-VM-upgrades gebruiken waarbij ' Windows Update ' patches van besturings systemen toepast zonder de besturingssysteem schijf te vervangen. Als automatische installatie kopieën van besturings systemen zijn ingeschakeld voor uw schaalset, is een extra update via "Windows Update" niet vereist.
+- Voor schaal sets met virtuele Windows-machines, beginnend met Compute API versie 2019-03-01, moet de eigenschap *virtualMachineProfile. osProfile. windowsConfiguration. enableAutomaticUpdates* worden ingesteld op *False* in de model definitie van de schaalset. Met de bovenstaande eigenschap kunt u in-VM-upgrades gebruiken waarbij ' Windows Update ' patches van besturings systemen toepast zonder de besturingssysteem schijf te vervangen. Als automatische installatie kopieën van besturings systemen zijn ingeschakeld voor uw schaalset, is een extra update via "Windows Update" niet vereist.
 
 ### <a name="service-fabric-requirements"></a>Service Fabric vereisten
 
@@ -92,7 +84,7 @@ Zorg ervoor dat de duurzaamheids instellingen niet overeenkomen met het Service 
 ## <a name="configure-automatic-os-image-upgrade"></a>Automatische upgrade van installatie kopie van besturings systeem configureren
 Als u de automatische upgrade van de installatie kopie van het besturings systeem wilt configureren, controleert u of de eigenschap *automaticOSUpgradePolicy. enableAutomaticOSUpgrade* is ingesteld op *True* in de model definitie van de schaalset.
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 In het volgende voor beeld wordt beschreven hoe u automatische besturingssysteem upgrades instelt voor een schaalset-model:
 
 ```
@@ -171,7 +163,7 @@ Er zijn meerdere manieren om de toepassings status extensie te implementeren op 
 ## <a name="get-the-history-of-automatic-os-image-upgrades"></a>De geschiedenis van automatische upgrades van installatie kopieën van besturings systemen ophalen
 U kunt de geschiedenis controleren van de meest recente upgrade van het besturings systeem dat is uitgevoerd op uw schaalset met Azure PowerShell, Azure CLI 2,0 of de REST-Api's. U kunt in de afgelopen twee maanden geschiedenis ontvangen voor de laatste vijf besturingssysteem upgrade pogingen.
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 In het volgende voor beeld wordt [rest API](/rest/api/compute/virtualmachinescalesets/getosupgradehistory) gebruikt om de status te controleren voor de schaalset met de naam *myScaleSet* in de resource groep met de naam *myResourceGroup*:
 
 ```
@@ -233,7 +225,7 @@ az vmss get-os-upgrade-history --resource-group myResourceGroup --name myScaleSe
 
 U kunt de beschik bare installatie kopieën ophalen voor de automatische ondersteunde Sku's voor upgrades van besturings systemen met behulp van de onderstaande voor beelden:
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 ```
 GET on `/subscriptions/subscription_id/providers/Microsoft.Compute/locations/{location}/publishers/{publisherName}/artifacttypes/vmimage/offers/{offer}/skus/{skus}/versions?api-version=2018-10-01`
 ```
@@ -256,7 +248,7 @@ Voor specifieke gevallen waarin u niet wilt wachten totdat de Orchestrator de me
 > [!NOTE]
 > De hand matige trigger van upgrades van installatie kopieën biedt geen automatische terugdraai mogelijkheden. Als een exemplaar de status niet herstelt na een upgrade bewerking, kan de vorige besturingssysteem schijf niet worden hersteld.
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 Gebruik de [Start OS upgrade](/rest/api/compute/virtualmachinescalesetrollingupgrades/startosupgrade) API-aanroep om een rolling upgrade te starten om alle exemplaren van virtuele-machine schaal sets te verplaatsen naar de meest recente versie van het besturings systeem van de platform installatie kopie. Exemplaren die al de meest recente beschik bare versie van het besturings systeem uitvoeren, worden niet beïnvloed. In het volgende voor beeld wordt beschreven hoe u een rolling upgrade van een besturings systeem kunt starten op een schaalset met de naam *myScaleSet* in de resource groep met de naam *myResourceGroup*:
 
 ```

@@ -1,29 +1,21 @@
 ---
-title: Zelfstudie - Een schaalset voor virtuele Azure-machines maken en beheren | Microsoft Docs
+title: 'Zelf studie: een schaalset voor virtuele Azure-machines maken en beheren'
 description: Ontdek hoe u met Azure PowerShell een schaalset met virtuele Azure-machines maakt. Leer daarnaast hoe u enkele veelvoorkomende beheertaken uitvoert, zoals het starten en stoppen van een exemplaar of het wijzigen van de capaciteit van de schaalset.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 694fc0ba6d59497cfc53efb6f2607bc6a7d4ad2d
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 14616fcc9fd63731c50c5977c88b5030f60664ff
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66728681"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271415"
 ---
-# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Zelfstudie: Een virtuele-machineschaalset maken met Azure PowerShell
+# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Zelfstudie - Een schaalset met virtuele Azure-machines maken met Azure PowerShell
 
 Met een virtuele-machineschaalset kunt u een reeks identieke virtuele machines met automatisch schalen implementeren en beheren. Gedurende de levenscyclus van een schaalset voor virtuele machines moet u mogelijk een of meer beheertaken uitvoeren. In deze zelfstudie leert u het volgende:
 
@@ -34,7 +26,7 @@ Met een virtuele-machineschaalset kunt u een reeks identieke virtuele machines m
 > * Een schaalset handmatig schalen
 > * Algemene beheertaken voor schaalsets uitvoeren
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -140,7 +132,7 @@ IpAddress
 52.168.121.216
 ```
 
-Maak een externe verbinding met uw eerste VM-exemplaar. Geef uw openbare IP-adres en poortnummer van het vereiste VM-exemplaar op, zoals is gedaan in de voorgaande opdrachten. Voer desgevraagd de referenties gebruikt bij het maken van de schaalset (standaard in de voorbeeldopdrachten *azureuser* en *P\@ssw0rd!* ). Als u Azure Cloud Shell gebruikt, voert u deze stap uit vanaf een lokale PowerShell-prompt of vanuit de Extern bureaublad-client. In het volgende voorbeeld wordt verbinding gemaakt met het VM-exemplaar *1*:
+Maak een externe verbinding met uw eerste VM-exemplaar. Geef uw openbare IP-adres en poortnummer van het vereiste VM-exemplaar op, zoals is gedaan in de voorgaande opdrachten. Wanneer u hierom wordt gevraagd, geeft u de referenties op die worden gebruikt bij het maken van de schaalset (standaard in de voorbeeld opdrachten *azureuser* en *P\@ssw0rd!* ). Als u Azure Cloud Shell gebruikt, voert u deze stap uit vanaf een lokale PowerShell-prompt of vanuit de Extern bureaublad-client. In het volgende voorbeeld wordt verbinding gemaakt met het VM-exemplaar *1*:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -156,7 +148,7 @@ Azure Marketplace bevat allerlei installatiekopieën die kunnen worden gebruikt 
 Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-Gebruik [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) om een lijst met installatiekopieën voor een bepaalde uitgever weer te geven. De lijst met installatiekopieën kan ook worden gefilterd door `-PublisherName` of `–Offer`. In het volgende voorbeeld wordt de lijst gefilterd voor alle installatiekopieën met de uitgeversnaam *MicrosoftWindowsServer* en een aanbieding die overeenkomt met *WindowsServer*:
+Gebruik [Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) om een lijst met installatiekopieën voor een bepaalde uitgever weer te geven. De lijst met installatiekopieën kan ook worden gefilterd door `-PublisherName` of `-Offer`. In het volgende voorbeeld wordt de lijst gefilterd voor alle installatiekopieën met de uitgeversnaam *MicrosoftWindowsServer* en een aanbieding die overeenkomt met *WindowsServer*:
 
 ```azurepowershell-interactive
 Get-AzVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer"
@@ -205,7 +197,7 @@ De grootte van een VM-exemplaar, of *SKU*, bepaalt de hoeveelheid rekenresources
 ### <a name="vm-instance-sizes"></a>VM-exemplaargrootten
 In de volgende tabel worden enkele veelgebruikte VM-grootten gecategoriseerd naar gebruikssituatie.
 
-| Type                     | Veelgebruikte grootten           |    Description       |
+| Type                     | Veelgebruikte grootten           |    Beschrijving       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Algemeen doel](../virtual-machines/windows/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Evenwichtige CPU-geheugenverhouding. Ideaal voor ontwikkelen/testen en in kleine tot middelgrote toepassingen en gegevensoplossingen.  |
 | [Geoptimaliseerde rekenkracht](../virtual-machines/windows/sizes-compute.md)   | Fs, F             | Hoge CPU-geheugenverhouding. Goed voor middelgrootte verkeerstoepassingen, netwerkapparatuur en batchprocessen.        |

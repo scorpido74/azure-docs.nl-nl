@@ -1,191 +1,183 @@
 ---
-title: Extern verbinding maken met uw StorSimple-apparaat | Microsoft Docs
-description: Wordt uitgelegd hoe u uw apparaat voor beheer op afstand configureert en hoe u verbinding maakt met Windows PowerShell voor StorSimple via HTTP of HTTPS.
-services: storsimple
-documentationcenter: ''
+title: Extern verbinding maken met uw StorSimple-apparaat
+description: Hierin wordt uitgelegd hoe u uw apparaat configureert voor extern beheer en hoe u verbinding maakt met Windows PowerShell voor StorSimple via HTTP of HTTPS.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05bec60f4c56c98e9b910b50e858656a2e5554b2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 70d0246debc532260d287104bacea2f15c1b94d2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631783"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277283"
 ---
-# <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Extern verbinding maken met de StorSimple 8000-apparaat
+# <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Extern verbinding maken met uw StorSimple 8000 Series-apparaat
 
 ## <a name="overview"></a>Overzicht
 
-U kunt op afstand verbinding met uw apparaat via Windows PowerShell. Wanneer u op deze manier verbinding maakt, ziet u niet een menu. (Ziet u een menu alleen als u de seriële console op het apparaat om verbinding te maken.) Met Windows PowerShell voor externe toegang verbinding u met een specifieke runspace. U kunt ook de weergavetaal opgeven.
+Via Windows Power shell kunt u op afstand verbinding maken met uw apparaat. Wanneer u op deze manier verbinding maakt, wordt er geen menu weer geven. (U ziet een menu alleen als u de seriële console op het apparaat gebruikt om verbinding te maken.) Met Windows Power shell Remoting maakt u verbinding met een specifieke runs Pace. U kunt ook de weergave taal opgeven.
 
-Voor meer informatie over het gebruik van Windows PowerShell voor externe toegang om uw apparaat te beheren, gaat u naar [gebruik Windows PowerShell voor StorSimple voor het beheren van uw StorSimple-apparaat](storsimple-8000-windows-powershell-administration.md).
+Ga voor meer informatie over het gebruik van Windows Power shell voor externe toegang tot het beheren van uw apparaat naar [Windows PowerShell voor StorSimple gebruiken om uw StorSimple-apparaat te](storsimple-8000-windows-powershell-administration.md)beheren.
 
-In deze zelfstudie wordt uitgelegd hoe u uw apparaat voor beheer op afstand configureert en hoe u verbinding maakt met Windows PowerShell voor StorSimple. U kunt HTTP of HTTPS gebruiken op afstand verbinding maken via Windows PowerShell. Echter, wanneer u hoe u verbinding maakt met Windows PowerShell voor StorSimple beslist, houd rekening met de volgende informatie:
+In deze zelf studie wordt uitgelegd hoe u uw apparaat configureert voor extern beheer en hoe u verbinding maakt met Windows PowerShell voor StorSimple. U kunt HTTP of HTTPS gebruiken om extern verbinding te maken via Windows Power shell. Houd echter rekening met de volgende informatie als u wilt bepalen hoe u verbinding maakt met Windows PowerShell voor StorSimple:
 
-* Directe verbinding met de seriële console van het apparaat is beveiligd, maar geen verbinding maken met de seriële console via netwerkswitches is. Wees voorzichtig met van de beveiligingsrisico's het verbinding maken met de seriële console van het apparaat via netwerkswitches.
-* Verbinding maken via een HTTP-sessie biedt meer beveiliging dan verbinding maken via de seriële console via het netwerk mogelijk. Hoewel dit niet de meest beveiligde methode is, is het acceptabel in vertrouwde netwerken.
-* Verbinding maken via een HTTPS-sessie met een zelfondertekend certificaat is het veiligste niveau en de aanbevolen optie.
+* Rechtstreeks verbinding maken met de seriële console van het apparaat is beveiligd, maar het maken van verbinding met de seriële console via netwerk switches is niet. Wees voorzichtig met het beveiligings risico wanneer u verbinding maakt met de seriële console van het apparaat via netwerk switches.
+* Het maken van een verbinding via een HTTP-sessie kan meer beveiliging bieden dan via de seriële console via het netwerk verbinding kan maken. Hoewel dit niet de veiligste methode is, is het acceptabel voor vertrouwde netwerken.
+* Het is de veiligste en aanbevolen optie om verbinding te maken via een HTTPS-sessie met een zelfondertekend certificaat.
 
-U kunt extern verbinding maken met de Windows PowerShell-interface. Externe toegang tot uw StorSimple-apparaat via de Windows PowerShell-interface is echter niet standaard ingeschakeld. U moet eerst extern beheer op het apparaat inschakelen en klik vervolgens op de client die wordt gebruikt voor toegang tot uw apparaat.
+U kunt extern verbinding maken met de Windows Power shell-interface. Externe toegang tot uw StorSimple-apparaat via de Windows Power shell-interface is echter niet standaard ingeschakeld. U moet eerst extern beheer op het apparaat inschakelen en vervolgens op de client die wordt gebruikt om toegang te krijgen tot uw apparaat.
 
-De stappen in dit artikel zijn uitgevoerd op een hostsysteem met Windows Server 2012 R2.
+De stappen die in dit artikel worden beschreven, zijn uitgevoerd op een hostsysteem met Windows Server 2012 R2.
 
 ## <a name="connect-through-http"></a>Verbinding maken via HTTP
 
-Verbinding maken met Windows PowerShell voor StorSimple via een HTTP-sessie biedt meer beveiliging dan verbinding te maken via de seriële console van uw StorSimple-apparaat. Hoewel dit niet de meest beveiligde methode is, is het acceptabel in vertrouwde netwerken.
+Verbinding maken met Windows PowerShell voor StorSimple via een HTTP-sessie biedt meer beveiliging dan wanneer u verbinding maakt via de seriële console van uw StorSimple-apparaat. Hoewel dit niet de veiligste methode is, is het acceptabel voor vertrouwde netwerken.
 
-U kunt de Azure-portal of de seriële console extern beheer configureren. Selecteer in de volgende procedures:
+U kunt de Azure Portal of de seriële console gebruiken voor het configureren van extern beheer. Selecteer een van de volgende procedures:
 
-* De Azure portal gebruiken voor het inschakelen van extern beheer via HTTP
-* [Gebruik de seriële console extern beheer inschakelen via HTTP](#use-the-serial-console-to-enable-remote-management-over-http)
+* Het Azure Portal gebruiken om extern beheer via HTTP in te scha kelen
+* [De seriële console gebruiken om extern beheer via HTTP in te scha kelen](#use-the-serial-console-to-enable-remote-management-over-http)
 
-Nadat u extern beheer inschakelen, gebruik de volgende procedure de client voorbereiden voor een externe verbinding.
+Nadat u extern beheer hebt ingeschakeld, gebruikt u de volgende procedure om de-client voor te bereiden voor een externe verbinding.
 
 * [De client voorbereiden voor externe verbinding](#prepare-the-client-for-remote-connection)
 
-### <a name="use-the-azure-portal-to-enable-remote-management-over-http"></a>De Azure portal gebruiken voor het inschakelen van extern beheer via HTTP
+### <a name="use-the-azure-portal-to-enable-remote-management-over-http"></a>Het Azure Portal gebruiken om extern beheer via HTTP in te scha kelen
 
-Voer de volgende stappen uit in de Azure portal voor het inschakelen van extern beheer via HTTP.
+Voer de volgende stappen uit in de Azure Portal om extern beheer via HTTP in te scha kelen.
 
-#### <a name="to-enable-remote-management-through-the-azure-portal"></a>Extern beheer via de Azure-portal inschakelen
+#### <a name="to-enable-remote-management-through-the-azure-portal"></a>Extern beheer via de Azure Portal inschakelen
 
-1. Ga naar uw StorSimple-apparaatbeheerservice. Selecteer **apparaten** en selecteer en klik op het apparaat dat u wilt configureren voor extern beheer. Ga naar **apparaatinstellingen > beveiliging**.
-2. In de **beveiligingsinstellingen** blade, klikt u op **extern beheer**.
-3. In de **extern beheer** blade ingesteld **extern beheer inschakelen** naar **Ja**.
-4. U kunt nu verbinding maken via HTTP. (De standaardinstelling is verbinding maken via HTTPS.) Zorg ervoor dat HTTP is geselecteerd.
+1. Ga naar uw StorSimple-apparaatbeheerservice. Selecteer **apparaten** en selecteer en klik vervolgens op het apparaat dat u wilt configureren voor extern beheer. Ga naar **apparaatinstellingen > beveiliging**.
+2. Klik op **extern beheer**op de Blade **beveiligings instellingen** .
+3. Stel op de Blade **extern beheer** **extern beheer inschakelen** in op **Ja**.
+4. U kunt nu verbinding maken via HTTP. (De standaard instelling is om verbinding te maken via HTTPS.) Zorg ervoor dat HTTP is geselecteerd.
    
    > [!NOTE]
    > Verbinding maken via HTTP is alleen acceptabel in vertrouwde netwerken.
    
-5. Klik op **opslaan** en selecteer wanneer hierom wordt gevraagd om bevestiging, **Ja**.
+5. Klik op **Opslaan** en selecteer **Ja**als u om bevestiging wordt gevraagd.
 
-### <a name="use-the-serial-console-to-enable-remote-management-over-http"></a>Gebruik de seriële console extern beheer inschakelen via HTTP
-Voer de volgende stappen uit op de seriële console van het apparaat extern beheer inschakelen.
+### <a name="use-the-serial-console-to-enable-remote-management-over-http"></a>De seriële console gebruiken om extern beheer via HTTP in te scha kelen
+Voer de volgende stappen uit op de seriële console van het apparaat om extern beheer in te scha kelen.
 
 #### <a name="to-enable-remote-management-through-the-device-serial-console"></a>Extern beheer via de seriële console van het apparaat inschakelen
-1. Selecteer op het menu van de seriële console optie 1. Voor meer informatie over het gebruik van de seriële console op het apparaat, gaat u naar [verbinding maken met Windows PowerShell voor StorSimple via de seriële console apparaat](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
-2. Bij de opdrachtprompt, typt u: `Enable-HcsRemoteManagement –AllowHttp`
-3. U krijgt een melding over de beveiligingsproblemen van het gebruik van HTTP verbinding maken met het apparaat. Wanneer u wordt gevraagd, bevestigt u door te typen **Y**.
-4. Controleer of HTTP is ingeschakeld door te typen: `Get-HcsSystem`
-5. Controleer de **RemoteManagementMode** veld bevat **HttpsAndHttpEnabled**. De volgende afbeelding ziet deze instellingen in de PuTTY.
+1. Selecteer optie 1 in het menu van de seriële console. Ga voor meer informatie over het gebruik van de seriële console op het apparaat naar [verbinding maken met Windows PowerShell voor StorSimple via de seriële console](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)van het apparaat.
+2. Typ bij de prompt: `Enable-HcsRemoteManagement –AllowHttp`
+3. U wordt gewaarschuwd over de beveiligings problemen van het gebruik van HTTP om verbinding te maken met het apparaat. Wanneer u hierom wordt gevraagd, bevestigt u door **Y**te typen.
+4. Controleer of HTTP is ingeschakeld door het volgende te typen: `Get-HcsSystem`
+5. Controleer of in het veld RemoteManagementMode **HttpsAndHttpEnabled**wordt weer gegeven. In de volgende afbeelding ziet u deze instellingen in PuTTy.
    
-     ![Seriële HTTPS en HTTP-ingeschakeld](./media/storsimple-remote-connect/HCS_SerialHttpsAndHttpEnabled.png)
+     ![Seriële HTTPS en HTTP ingeschakeld](./media/storsimple-remote-connect/HCS_SerialHttpsAndHttpEnabled.png)
 
 ### <a name="prepare-the-client-for-remote-connection"></a>De client voorbereiden voor externe verbinding
-Voer de volgende stappen uit op de client extern beheer inschakelen.
+Voer de volgende stappen uit op de client om extern beheer in te scha kelen.
 
 #### <a name="to-prepare-the-client-for-remote-connection"></a>De client voorbereiden voor externe verbinding
-1. Start een Windows PowerShell-sessie als beheerder. Als u een Windows 10-client wordt standaard gebruikt, wordt de Windows Remote Management-service is ingesteld op handmatig. Mogelijk moet u start de service door te typen:
+1. Start een Windows PowerShell-sessie als beheerder. Als u een Windows 10-client gebruikt, wordt de Windows Remote Management-service standaard ingesteld op hand matig. Mogelijk moet u de service starten door het volgende te typen:
 
     `Start-Service WinRM`
     
-2. Typ de volgende opdracht om het IP-adres van de StorSimple-apparaat toevoegen aan lijst met vertrouwde hosts van de client:
+2. Typ de volgende opdracht om het IP-adres van het StorSimple-apparaat toe te voegen aan de lijst met vertrouwde hosts van de client:
    
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`
    
-     Vervang <*device_ip*> met het IP-adres van uw apparaat; bijvoorbeeld: 
+     Vervang <*device_ip*> met het IP-adres van uw apparaat. bijvoorbeeld: 
    
      `Set-Item wsman:\localhost\Client\TrustedHosts 10.126.173.90 -Concatenate -Force`
-3. Typ de volgende opdracht voor het opslaan van referenties van het apparaat in een variabele: 
+3. Typ de volgende opdracht om de referenties van het apparaat op te slaan in een variabele: 
    
     ```
     $cred = Get-Credential
     ```
     
-4. In het dialoogvenster dat wordt weergegeven:
+4. In het dialoog venster dat wordt weer gegeven:
    
-   1. Typ de naam van de gebruiker in deze indeling: *device_ip\SSAdmin*.
-   2. Typ het beheerderswachtwoord voor het apparaat dat is ingesteld wanneer het apparaat is geconfigureerd met de wizard setup. Is het standaardwachtwoord *Wachtwoord1*.
-5. Start een Windows PowerShell-sessie op het apparaat door deze opdracht te typen:
+   1. Typ de gebruikers naam in deze indeling: *device_ip \ssadmin*.
+   2. Typ het beheerders wachtwoord van het apparaat dat is ingesteld toen het apparaat werd geconfigureerd met de installatie wizard. Het standaard wachtwoord is *Wachtwoord1*.
+5. Start een Windows Power shell-sessie op het apparaat door de volgende opdracht te typen:
    
      `Enter-PSSession -Credential $cred -ConfigurationName SSAdminConsole -ComputerName <device_ip>`
    
    > [!NOTE]
-   > Toevoegen voor het maken van een Windows PowerShell-sessie voor gebruik met de StorSimple-apparaat, de `–Port` parameter en geeft u de openbare poort die u hebt geconfigureerd in externe toegang voor StorSimple Virtual Appliance.
+   > Als u een Windows Power shell-sessie wilt maken voor gebruik met het virtuele StorSimple-apparaat, voegt u de para meter `–Port` toe en geeft u de open bare poort op die u hebt geconfigureerd in externe toegang voor StorSimple-virtueel apparaat.
    
    
-Op dit moment moet u een actieve externe Windows PowerShell-sessie op het apparaat hebben.
+Op dit moment moet u een actieve externe Windows Power shell-sessie op het apparaat hebben.
    
-![PowerShell voor externe toegang met behulp van HTTP](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTP.png)
+![Externe communicatie met Power shell met HTTP](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTP.png)
 
 ## <a name="connect-through-https"></a>Verbinding maken via HTTPS
 
-Verbinding maken met Windows PowerShell voor StorSimple via een HTTPS-sessie is de veiligste en aanbevolen methode voor externe verbinding maken met uw Microsoft Azure StorSimple-apparaat. De volgende procedures wordt uitgelegd over het instellen van de seriële console- en client-computers, zodat u HTTPS verbinding maken met Windows PowerShell voor StorSimple kunt gebruiken.
+Verbinding maken met Windows PowerShell voor StorSimple via een HTTPS-sessie is de veiligste en aanbevolen methode om op afstand verbinding te maken met uw Microsoft Azure StorSimple apparaat. In de volgende procedures wordt uitgelegd hoe u de seriële console en client computers instelt, zodat u HTTPS kunt gebruiken om verbinding te maken met Windows PowerShell voor StorSimple.
 
-U kunt de Azure-portal of de seriële console extern beheer configureren. Selecteer in de volgende procedures:
+U kunt de Azure Portal of de seriële console gebruiken voor het configureren van extern beheer. Selecteer een van de volgende procedures:
 
-* De Azure portal gebruiken voor het inschakelen van extern beheer via HTTPS
-* [Gebruik de seriële console extern beheer via HTTPS inschakelen](#use-the-serial-console-to-enable-remote-management-over-https)
+* Het Azure Portal gebruiken om extern beheer via HTTPS in te scha kelen
+* [De seriële console gebruiken om extern beheer via HTTPS in te scha kelen](#use-the-serial-console-to-enable-remote-management-over-https)
 
-Nadat u extern beheer inschakelen, gebruikt u de volgende procedures voor het voorbereiden van de host voor een extern beheer en verbinding maken met het apparaat van de externe host.
+Nadat u extern beheer hebt ingeschakeld, moet u de volgende procedures gebruiken om de host voor te bereiden voor een extern beheer en verbinding te maken met het apparaat vanaf de externe host.
 
 * [De host voorbereiden voor extern beheer](#prepare-the-host-for-remote-management)
-* [Verbinding maken met het apparaat van de externe host](#connect-to-the-device-from-the-remote-host)
+* [Verbinding maken met het apparaat vanaf de externe host](#connect-to-the-device-from-the-remote-host)
 
-### <a name="use-the-azure-portal-to-enable-remote-management-over-https"></a>De Azure portal gebruiken voor het inschakelen van extern beheer via HTTPS
+### <a name="use-the-azure-portal-to-enable-remote-management-over-https"></a>Het Azure Portal gebruiken om extern beheer via HTTPS in te scha kelen
 
-Voer de volgende stappen uit in de Azure portal voor het inschakelen van extern beheer via HTTPS.
+Voer de volgende stappen uit in de Azure Portal om extern beheer via HTTPS in te scha kelen.
 
-#### <a name="to-enable-remote-management-over-https-from-the-azure-portal"></a>Extern beheer via HTTPS inschakelen vanuit de Azure-portal
+#### <a name="to-enable-remote-management-over-https-from-the-azure-portal"></a>Extern beheer via HTTPS inschakelen via de Azure Portal
 
-1. Ga naar uw StorSimple-apparaatbeheerservice. Selecteer **apparaten** en selecteer en klik op het apparaat dat u wilt configureren voor extern beheer. Ga naar **apparaatinstellingen > beveiliging**.
-2. In de **beveiligingsinstellingen** blade, klikt u op **extern beheer**.
+1. Ga naar uw StorSimple-apparaatbeheerservice. Selecteer **apparaten** en selecteer en klik vervolgens op het apparaat dat u wilt configureren voor extern beheer. Ga naar **apparaatinstellingen > beveiliging**.
+2. Klik op **extern beheer**op de Blade **beveiligings instellingen** .
 3. Stel **Extern beheer inschakelen** in op **Ja**.
-4. U kunt nu verbinding maken met behulp van HTTPS. (De standaardinstelling is verbinding maken via HTTPS.) Zorg ervoor dat HTTPS is geselecteerd.
-5. Klik op... en klik vervolgens op **certificaat voor extern beheer downloaden**. Geef een locatie als dit bestand wilt opslaan. U moet dit certificaat op de client of hostcomputer computer die u gebruiken wilt om verbinding met het apparaat te installeren.
-6. Klik op **opslaan** en klik vervolgens op **Ja** wanneer hierom wordt gevraagd om bevestiging.
+4. U kunt nu verbinding maken met behulp van HTTPS. (De standaard instelling is om verbinding te maken via HTTPS.) Controleer of HTTPS is geselecteerd.
+5. Klik op... en klik vervolgens op **certificaat voor extern beheer downloaden**. Geef een locatie op voor het opslaan van dit bestand. U moet dit certificaat installeren op de client of hostcomputer die u gaat gebruiken om verbinding te maken met het apparaat.
+6. Klik op **Opslaan** en klik vervolgens op **Ja** als u om bevestiging wordt gevraagd.
 
-### <a name="use-the-serial-console-to-enable-remote-management-over-https"></a>Gebruik de seriële console extern beheer via HTTPS inschakelen
+### <a name="use-the-serial-console-to-enable-remote-management-over-https"></a>De seriële console gebruiken om extern beheer via HTTPS in te scha kelen
 
-Voer de volgende stappen uit op de seriële console van het apparaat extern beheer inschakelen.
+Voer de volgende stappen uit op de seriële console van het apparaat om extern beheer in te scha kelen.
 
 #### <a name="to-enable-remote-management-through-the-device-serial-console"></a>Extern beheer via de seriële console van het apparaat inschakelen
-1. Selecteer op het menu van de seriële console optie 1. Voor meer informatie over het gebruik van de seriële console op het apparaat, gaat u naar [verbinding maken met Windows PowerShell voor StorSimple via de seriële console apparaat](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
-2. Bij de opdrachtprompt, typt u:
+1. Selecteer optie 1 in het menu van de seriële console. Ga voor meer informatie over het gebruik van de seriële console op het apparaat naar [verbinding maken met Windows PowerShell voor StorSimple via de seriële console](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)van het apparaat.
+2. Typ het volgende bij de prompt:
    
      `Enable-HcsRemoteManagement`
    
-    Dit moet HTTPS inschakelen op uw apparaat.
-3. Controleer of dat HTTPS is ingeschakeld door te typen: 
+    Hierdoor moet HTTPS op uw apparaat worden ingeschakeld.
+3. Controleer of HTTPS is ingeschakeld door het volgende te typen: 
    
      `Get-HcsSystem`
    
-    Zorg ervoor dat de **RemoteManagementMode** veld bevat **HttpsEnabled**. De volgende afbeelding ziet deze instellingen in de PuTTY.
+    Zorg ervoor dat in het veld **RemoteManagementMode** de **HttpsEnabled**wordt weer gegeven. In de volgende afbeelding ziet u deze instellingen in PuTTy.
    
-     ![Seriële HTTPS-functionaliteit](./media/storsimple-remote-connect/HCS_SerialHttpsEnabled.png)
-4. Uit de uitvoer van `Get-HcsSystem`, Kopieer het serienummer van het apparaat en bewaar het voor later gebruik.
+     ![Seriële HTTPS ingeschakeld](./media/storsimple-remote-connect/HCS_SerialHttpsEnabled.png)
+4. Kopieer vanaf de uitvoer van `Get-HcsSystem`het serie nummer van het apparaat en sla het op voor later gebruik.
    
    > [!NOTE]
-   > Het serienummer wordt toegewezen aan de CN-naam in het certificaat.
+   > Het serie nummer wordt toegewezen aan de CN-naam in het certificaat.
    
-5. Een certificaat voor extern beheer downloaden door te typen: 
+5. Verkrijg een extern beheer certificaat door het volgende te typen: 
    
      `Get-HcsRemoteManagementCert`
    
-    Een certificaat met de volgende strekking weergegeven.
+    Er wordt een certificaat weer gegeven dat lijkt op het volgende.
    
     ![Certificaat voor extern beheer ophalen](./media/storsimple-remote-connect/HCS_GetRemoteManagementCertificate.png)
-6. Kopieer de gegevens in het certificaat van **---BEGIN CERTIFICATE---** naar **---END CERTIFICATE---** in een teksteditor zoals Kladblok en sla deze op te geven als een cer-bestand. (U wordt dit bestand kopiëren naar uw externe host bij het voorbereiden van de host.)
+6. Kopieer de informatie in het certificaat van **-----begin certificaat-----** naar **-----eind certificaat-----** in een tekst editor zoals Klad blok en sla het op als een CER-bestand. (Als u de host voorbereidt, kopieert u dit bestand naar de externe host.)
    
    > [!NOTE]
-   > Voor het genereren van een nieuw certificaat, gebruikt u de `Set-HcsRemoteManagementCert` cmdlet.
+   > Als u een nieuw certificaat wilt genereren, gebruikt u de cmdlet `Set-HcsRemoteManagementCert`.
    
 ### <a name="prepare-the-host-for-remote-management"></a>De host voorbereiden voor extern beheer
 
-Als u wilt de hostcomputer voorbereiden op een externe verbinding die gebruikmaakt van een HTTPS-sessie, voert u de volgende procedures:
+Voer de volgende procedures uit om de hostcomputer voor te bereiden voor een externe verbinding die gebruikmaakt van een HTTPS-sessie:
 
-* [Het cer-bestand importeren in het basisarchief van de client of de externe host](#to-import-the-certificate-on-the-remote-host).
-* [De serienummers van apparaten toevoegen aan het hosts-bestand op de externe host](#to-add-device-serial-numbers-to-the-remote-host).
+* [Importeer het CER-bestand in het basis archief van de-client of de externe host](#to-import-the-certificate-on-the-remote-host).
+* [Voeg de serie nummers van het apparaat toe aan het hosts-bestand op uw externe host](#to-add-device-serial-numbers-to-the-remote-host).
 
 De bovenstaande procedures worden hieronder beschreven.
 
@@ -201,51 +193,51 @@ De bovenstaande procedures worden hieronder beschreven.
    
     ![Wizard Certificaat importeren 3](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 
-#### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>Serienummers van apparaten toevoegen aan de externe host
-1. Start Kladblok als administrator en open vervolgens het Hostsbestand dat zich bevindt in \Windows\System32\Drivers\etc.
-2. Voeg de volgende drie items toe aan het hosts-bestand: **DATA 0 IP-adres**, **vaste IP-adres van Controller 0**, en **Controller 1 vaste IP-adres**.
-3. Voer het serienummer van het apparaat dat u eerder hebt opgeslagen. Wijs dit toe aan het IP-adres zoals wordt weergegeven in de volgende afbeelding. Voor Controller 0 en Controller 1 append **Controller0** en **Controller1** aan het einde van het serienummer (CN-naam).
+#### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>Serie nummers van apparaten toevoegen aan de externe host
+1. Start Klad blok als beheerder en open vervolgens het hosts-bestand dat zich bevindt in \Windows\System32\Drivers\etc.
+2. Voeg de volgende drie vermeldingen toe aan het hosts-bestand: **Data 0 IP-adres**, **controller 0 vast IP-adres**en **Controller 1 vast IP-adres**.
+3. Voer het serie nummer van het apparaat in dat u eerder hebt opgeslagen. Wijs dit toe aan het IP-adres, zoals wordt weer gegeven in de volgende afbeelding. Voor controller 0 en controller 1 voegt u **Controller0** en **Controller1** toe aan het einde van het serie nummer (CN-naam).
    
-    ![De CN-naam toe te voegen aan hosts-bestand](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)
-4. Sla het hosts-bestand.
+    ![De CN-naam wordt toegevoegd aan het hosts-bestand](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)
+4. Sla het hosts-bestand op.
 
-### <a name="connect-to-the-device-from-the-remote-host"></a>Verbinding maken met het apparaat van de externe host
+### <a name="connect-to-the-device-from-the-remote-host"></a>Verbinding maken met het apparaat vanaf de externe host
 
-Gebruik Windows PowerShell en SSL in te voeren van een sessie SSAdmin op uw apparaat vanaf een externe host of -client. De sessie SSAdmin wordt toegewezen aan de optie 1 in de [seriële console](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) menu van uw apparaat.
+Windows Power shell en SSL gebruiken om een SSAdmin-sessie op uw apparaat in te voeren vanaf een externe host of client. De SSAdmin-sessie wordt toegewezen aan optie 1 in het menu van de [seriële console](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) van het apparaat.
 
-De volgende procedure uitvoeren op de computer van waaruit u wilt maken van de externe Windows PowerShell-verbinding.
+Voer de volgende procedure uit op de computer van waaruit u de externe Windows Power shell-verbinding wilt maken.
 
-#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-ssl"></a>Om in te voeren van een sessie SSAdmin op het apparaat met behulp van Windows PowerShell en SSL
-1. Start een Windows PowerShell-sessie als beheerder. Als u een Windows 10-client wordt standaard gebruikt, wordt de Windows Remote Management-service is ingesteld op handmatig. Mogelijk moet u start de service door te typen:
+#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-ssl"></a>Een SSAdmin-sessie invoeren op het apparaat met behulp van Windows Power shell en SSL
+1. Start een Windows PowerShell-sessie als beheerder. Als u een Windows 10-client gebruikt, wordt de Windows Remote Management-service standaard ingesteld op hand matig. Mogelijk moet u de service starten door het volgende te typen:
 
     `Start-Service WinRM`
 
-2. Het IP-adres van het apparaat toevoegen aan de vertrouwde hosts van de client door te typen:
+2. Voeg het IP-adres van het apparaat toe aan de vertrouwde hosts van de client door het volgende te typen:
    
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`
    
-    Waarbij <*device_ip*> is het IP-adres van uw apparaat, bijvoorbeeld: 
+    Waarbij <*device_ip*> het IP-adres van uw apparaat is; bijvoorbeeld: 
    
      `Set-Item wsman:\localhost\Client\TrustedHosts 10.126.173.90 -Concatenate -Force`
-3. Als u wilt een nieuwe referentie maken, typt u:
+3. Als u een nieuwe referentie wilt maken, typt u:
    
      `$cred = New-Object pscredential @("<IP of target device>\SSAdmin", (ConvertTo-SecureString -Force -AsPlainText "<Device Administrator Password>"))`
    
-    Waarbij <*IP-adres van het doelapparaat*> is het IP-adres van de DATA 0 voor uw apparaat; bijvoorbeeld, **10.126.173.90** zoals wordt weergegeven in de voorgaande afbeelding van het hosts-bestand. Ook, geef het beheerderswachtwoord voor uw apparaat.
-4. Geen sessie maken door te typen:
+    Waarbij <*IP van het doel apparaat*> het IP-adres van de gegevens 0 voor uw apparaat is. bijvoorbeeld **10.126.173.90** zoals weer gegeven in de voor gaande afbeelding van het hosts-bestand. Geef ook het beheerders wachtwoord voor uw apparaat op.
+4. Maak een sessie door het volgende te typen:
    
      `$session = New-PSSession -UseSSL -ComputerName <Serial number of target device> -Credential $cred -ConfigurationName "SSAdminConsole"`
    
-    Voor de parameter - ComputerName in de cmdlet, geeft u de <*serienummer van het doelapparaat*>. Dit serienummer is toegewezen aan het IP-adres van de DATA 0 in het hosts-bestand op de externe host; bijvoorbeeld, **SHX0991003G44MT** zoals wordt weergegeven in de volgende afbeelding.
+    Geef voor de para meter-ComputerName in de cmdlet het <*serie nummer van het doel apparaat*op >. Dit serie nummer is toegewezen aan het IP-adres van de gegevens 0 in het hosts-bestand op uw externe host; bijvoorbeeld **SHX0991003G44MT** zoals weer gegeven in de volgende afbeelding.
 5. Type:
    
      `Enter-PSSession $session`
-6. U moet over een paar minuten en vervolgens wordt u verbonden met het apparaat via HTTPS via SSL. U ziet het bericht weergegeven dat u bent verbonden met uw apparaat.
+6. U moet een paar minuten wachten. vervolgens wordt u via HTTPS via SSL verbonden met uw apparaat. Er wordt een bericht weer gegeven met de melding dat u verbinding hebt met uw apparaat.
    
-    ![PowerShell voor externe toegang met behulp van HTTPS en SSL](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
+    ![Externe communicatie met Power shell met HTTPS en SSL](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [met behulp van Windows PowerShell voor het beheren van uw StorSimple-apparaat](storsimple-8000-windows-powershell-administration.md).
-* Meer informatie over [met de StorSimple Device Manager-service voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
+* Meer informatie over [het gebruik van Windows Power shell voor het beheren van uw StorSimple-apparaat](storsimple-8000-windows-powershell-administration.md).
+* Meer informatie over [het gebruik van de StorSimple Apparaatbeheer-service voor het beheren van uw StorSimple-apparaat](storsimple-8000-manager-service-administration.md).
 

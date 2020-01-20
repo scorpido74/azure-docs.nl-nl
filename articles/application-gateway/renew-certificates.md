@@ -1,39 +1,38 @@
 ---
-title: Een Azure Application Gateway-certificaat vernieuwen
-description: Leer hoe u een certificaat dat is gekoppeld aan een listener van een application gateway te vernieuwen.
+title: Een Azure-toepassing gateway certificaat vernieuwen
+description: Meer informatie over het vernieuwen van een certificaat dat is gekoppeld aan een Application Gateway-listener.
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.date: 8/15/2018
 ms.author: victorh
-ms.openlocfilehash: 90200f7be6c71346441922365fc4439111dd8701
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c7c27f00b9f8b4fdcd8f735f842edb8f66803c6a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133696"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278006"
 ---
-# <a name="renew-application-gateway-certificates"></a>Application Gateway-certificaten vernieuwen
+# <a name="renew-application-gateway-certificates"></a>Application Gateway certificaten vernieuwen
 
-Op een bepaald moment moet u uw certificaten vernieuwen als u uw toepassingsgateway voor SSL-versleuteling hebt geconfigureerd.
+Op een bepaald moment moet u uw certificaten vernieuwen als u uw toepassings gateway voor SSL-versleuteling hebt geconfigureerd.
 
-U kunt een certificaat dat is gekoppeld aan een listener met de Azure portal, Azure PowerShell of Azure CLI vernieuwen:
+U kunt een certificaat dat is gekoppeld aan een listener vernieuwen met behulp van de Azure Portal, Azure PowerShell of Azure CLI:
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Een listener om certificaat te vernieuwen vanuit de portal, gaat u naar uw application gateway-listeners. Klik op de listener met een certificaat dat moet worden vernieuwd en klik vervolgens op **vernieuwen of bewerken van de geselecteerde certificaat**.
+Als u een listener-certificaat wilt vernieuwen vanuit de portal, gaat u naar de gateway-listeners van uw toepassing. Klik op de listener met een certificaat dat moet worden vernieuwd en klik vervolgens op het **geselecteerde certificaat vernieuwen of bewerken**.
 
 ![Certificaat vernieuwen](media/renew-certificate/ssl-cert.png)
 
-Het nieuwe PFX-certificaat uploaden, een naam geven, typt u het wachtwoord en klik vervolgens op **opslaan**.
+Upload uw nieuwe PFX-certificaat, geef het een naam, typ het wacht woord en klik vervolgens op **Opslaan**.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Uw om certificaat te vernieuwen met behulp van Azure PowerShell, gebruikt u het volgende script:
+Als u uw certificaat wilt vernieuwen met behulp van Azure PowerShell, gebruikt u het volgende script:
 
 ```azurepowershell-interactive
 $appgw = Get-AzApplicationGateway `
@@ -63,4 +62,4 @@ az network application-gateway ssl-cert update \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het configureren van SSL-Offloading met Azure Application Gateway, [SSL-Offload configureren](application-gateway-ssl-portal.md)
+Zie [SSL-offload configureren](application-gateway-ssl-portal.md) voor meer informatie over het configureren van SSL-offloading met Azure-toepassing gateway

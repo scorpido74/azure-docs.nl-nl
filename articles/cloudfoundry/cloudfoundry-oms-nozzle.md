@@ -3,21 +3,20 @@ title: Azure Log Analytics-spuit voor Cloud Foundry bewaking implementeren
 description: Stapsgewijze richt lijnen voor het implementeren van de Cloud Foundry loggregator-spuit voor Azure Log Analytics. Gebruik de spuit stuk om de gegevens over het Cloud Foundry systeem status en prestaties te bewaken.
 services: virtual-machines-linux
 author: ningk
-manager: jeconnoc
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: azure-monitor
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: d71f1d6af0944a676e35dfe6347fafb8706f21b8
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286644"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277364"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Azure Log Analytics-spuit voor Cloud Foundry systeem bewaking implementeren
 
@@ -220,7 +219,7 @@ Als u de spuit stuk wilt uitbreiden, gebruikt u apps beheren of de CF CLI om de 
 Loggregator verzendt een **LGR** -logboek bericht om problemen met het logboek registratie proces aan te geven. U kunt de waarschuwing bewaken om te bepalen of de loggregator omhoog moet worden geschaald.
 U kunt de loggregator omhoog schalen door de buffer grootte van Doppler te verhogen of extra Doppler server-instanties toe te voegen in het CF-manifest. Zie [de richt lijnen voor het schalen van de loggregator](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling)voor meer informatie.
 
-## <a name="update"></a>Bijwerken
+## <a name="update"></a>Update
 
 Als u de spuit stuk wilt bijwerken met een nieuwere versie, downloadt u de nieuwe spuit versie, volgt u de stappen in de sectie ' spuit stuk implementeren ' en pusht u de toepassing opnieuw.
 

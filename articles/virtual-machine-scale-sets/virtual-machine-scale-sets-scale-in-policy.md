@@ -1,22 +1,20 @@
 ---
-title: Aangepaste beleids regels voor schalen gebruiken met virtuele-machine schaal sets van Azure | Microsoft Docs
+title: Aangepaste beleids regels voor schalen gebruiken met virtuele-machine schaal sets van Azure
 description: Meer informatie over het gebruik van aangepaste schaal-in-beleids regels met virtuele-machine schaal sets van Azure die gebruikmaken van configuratie voor automatisch schalen om het aantal exemplaren te beheren
-services: virtual-machine-scale-sets
 author: avverma
-manager: vashan
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: avverma
-ms.openlocfilehash: c1618c398c0f7c4f0f54647e5232fdacc17de186
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8e51ebab36d75d1c9512446ee0370f7359a72551
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72453158"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271766"
 ---
 # <a name="preview-use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Voor beeld: aangepaste beleids regels voor schalen gebruiken met schaal sets voor virtuele Azure-machines
 
@@ -133,7 +131,7 @@ Virtuele-machine schaal sets bieden twee soorten [instantie beveiliging](./virtu
 1. Beveiligen tegen schalen
 2. Beveiligen tegen schaal acties
 
-Een beveiligde virtuele machine wordt niet verwijderd door een inschaal actie, ongeacht het toegepaste beleid voor de schaal aanpassing. Als bijvoorbeeld VM_0 (oudste VM in de schaalset) wordt beveiligd tegen schalen, en als de schaalset ' OldestVM ' is ingeschakeld, wordt VM_0 niet in overweging genomen in de schaalset, ook al is het de oudste VM in de schaalset. 
+Een beveiligde virtuele machine wordt niet verwijderd door een inschaal actie, ongeacht het toegepaste beleid voor de schaal aanpassing. Als VM_0 (oudste VM in de schaalset) bijvoorbeeld is beveiligd tegen schalen, en als de schaalset ' OldestVM ' is ingeschakeld, wordt VM_0 niet in aanmerking genomen voor het schalen in, zelfs als dit de oudste VM in de schaalset is. 
 
 Een beveiligde virtuele machine kan op elk gewenst moment hand matig worden verwijderd door de gebruiker, ongeacht het ingestelde beleid voor inschalen in de schaalset. 
 
@@ -145,7 +143,7 @@ In de onderstaande voor beelden ziet u hoe u met een schaalset voor virtuele mac
 
 | Gebeurtenis                 | Exemplaar-Id's in zone 1  | Exemplaar-Id's in Zone2  | Exemplaar-Id's in Zone3  | Selectie inschalen                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Itiaal               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
+| Oorspronkelijk               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
 | Inschalen              | 3, 4, 5, 10            | ***2***, 6, 9, 11      | 1, 7, 8                | Kies tussen Zone 1 en 2, zelfs als Zone 3 de oudste virtuele machine heeft. Verwijder VM2 uit Zone 2, omdat dit de oudste virtuele machine in die zone is.   |
 | Inschalen              | ***3***, 4, 5, 10      | 6, 9, 11               | 1, 7, 8                | Kies Zone 1 zelfs als Zone 3 de oudste virtuele machine heeft. Verwijder VM3 uit Zone 1, omdat dit de oudste virtuele machine in die zone is.                  |
 | Inschalen              | 4, 5, 10               | 6, 9, 11               | ***1***, 7, 8          | Zones zijn evenwichtig. Verwijder VM1 in Zone 3, omdat dit de oudste VM in de schaalset is.                                               |
@@ -159,7 +157,7 @@ Voor niet-zonegebonden virtuele-machine schaal sets selecteert het beleid de oud
 
 | Gebeurtenis                 | Exemplaar-Id's in zone 1  | Exemplaar-Id's in Zone2  | Exemplaar-Id's in Zone3  | Selectie inschalen                                                                                                               |
 |-----------------------|------------------------|------------------------|------------------------|----------------------------------------------------------------------------------------------------------------------------------|
-| Itiaal               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
+| Oorspronkelijk               | 3, 4, 5, 10            | 2, 6, 9, 11            | 1, 7, 8                |                                                                                                                                  |
 | Inschalen              | 3, 4, 5, 10            | 2, 6, 9, ***11***      | 1, 7, 8                | Kies tussen Zone 1 en 2. Verwijder VM11 uit Zone 2, omdat het de nieuwste VM in de twee zones is.                                |
 | Inschalen              | 3, 4, 5, ***10***      | 2, 6, 9                | 1, 7, 8                | Kies Zone 1 omdat het meer Vm's heeft dan de andere twee zones. Verwijder VM10 uit Zone 1, omdat dit de nieuwste virtuele machine in die zone is.          |
 | Inschalen              | 3, 4, 5                | 2, 6, ***9***          | 1, 7, 8                | Zones zijn evenwichtig. Verwijder VM9 in Zone 2, omdat dit de nieuwste VM in de schaalset is.                                                |

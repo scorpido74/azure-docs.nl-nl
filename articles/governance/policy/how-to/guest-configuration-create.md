@@ -3,12 +3,12 @@ title: Gast configuratie beleidsregels maken
 description: Meer informatie over het maken van een Azure Policy gast configuratie beleid voor Windows-of Linux-Vm's met Azure PowerShell.
 ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: dbdb4288812b8d1016c3ccc879582f76222d17cd
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 7a6c6bb68302d41cd750c59062432a40cf01e8bd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867325"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278457"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Gast configuratie beleidsregels maken
 
@@ -176,42 +176,6 @@ Para meters van de cmdlet `New-GuestConfigurationPackage`:
 
 Het voltooide pakket moet worden opgeslagen op een locatie die toegankelijk is voor de beheerde virtuele machines. Voor beelden zijn GitHub-opslag plaatsen, een Azure-opslag plaats of Azure-opslag. Als u het pakket liever niet openbaar wilt maken, kunt u een [SAS-token](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) in de URL toevoegen.
 U kunt ook [service-eind punten](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) implementeren voor computers in een particulier netwerk, hoewel deze configuratie alleen van toepassing is op toegang tot het pakket en niet communiceert met de service.
-
-### <a name="working-with-secrets-in-guest-configuration-packages"></a>Werken met geheimen in gast configuratie pakketten
-
-In Azure Policy gast configuratie is de optimale manier om geheimen te beheren die tijdens runtime worden gebruikt, om ze op te slaan in Azure Key Vault. Dit ontwerp wordt geïmplementeerd in aangepaste DSC-resources.
-
-1. Een door de gebruiker toegewezen beheerde identiteit maken in Azure.
-
-   De identiteit wordt door machines gebruikt om toegang te krijgen tot geheimen die zijn opgeslagen in Key Vault. Zie [een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)voor gedetailleerde stappen.
-
-1. Maak een Key Vault-exemplaar.
-
-   Zie voor gedetailleerde stappen [een geheim-Power shell instellen en ophalen](../../../key-vault/quick-create-powershell.md).
-   Wijs machtigingen toe aan het exemplaar om de door de gebruiker toegewezen identiteit toegang te geven tot geheimen die zijn opgeslagen in Key Vault. Zie voor gedetailleerde stappen [een geheim instellen en ophalen-.net](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
-
-1. Wijs de door de gebruiker toegewezen identiteit toe aan uw computer.
-
-   Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van Power shell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)voor gedetailleerde stappen.
-   Wijs deze identiteit toe met behulp van Azure Resource Manager via Azure Policy op schaal. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van een sjabloon](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)voor gedetailleerde stappen.
-
-1. Gebruik de client-ID die hierboven is gegenereerd in uw aangepaste resource om toegang te krijgen tot Key Vault met behulp van het token dat beschikbaar is op de computer.
-
-   De `client_id` en URL naar het Key Vault exemplaar kunnen worden door gegeven aan de resource als [Eigenschappen](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema) , zodat de resource niet hoeft te worden bijgewerkt voor meerdere omgevingen of als de waarden moeten worden gewijzigd.
-
-Het volgende code voorbeeld kan worden gebruikt in een aangepaste resource om geheimen van Key Vault op te halen met behulp van een door de gebruiker toegewezen identiteit. De geretourneerde waarde van de aanvraag voor Key Vault is tekst zonder opmaak. Als best practice, slaat u deze op in een referentie object.
-
-```azurepowershell-interactive
-# the following values should be input as properties
-$client_id = 'e3a78c9b-4dd2-46e1-8bfa-88c0574697ce'
-$keyvault_url = 'https://keyvaultname.vault.azure.net/secrets/mysecret'
-
-$access_token = ((Invoke-WebRequest -Uri "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=$client_id&resource=https%3A%2F%2Fvault.azure.net" -Method GET -Headers @{Metadata='true'}).Content | ConvertFrom-Json).access_token
-
-$value = ((Invoke-WebRequest -Uri $($keyvault_url+'?api-version=2016-10-01') -Method GET -Headers @{Authorization="Bearer $access_token"}).content | convertfrom-json).value |  ConvertTo-SecureString -asplaintext -force
-
-$credential = New-Object System.Management.Automation.PSCredential('secret',$value)
-```
 
 ## <a name="test-a-guest-configuration-package"></a>Een gast configuratie pakket testen
 

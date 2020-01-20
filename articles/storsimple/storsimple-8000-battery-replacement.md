@@ -1,111 +1,103 @@
 ---
-title: Vervang accu op Microsoft Azure StorSimple 8000-apparaat | Microsoft Docs
-description: Beschrijft hoe u verwijderen, vervangen en onderhouden van de back-upbatterij-module op uw StorSimple-apparaat.
-services: storsimple
-documentationcenter: ''
+title: Batterij vervangen door Microsoft Azure StorSimple serie apparaat 8000
+description: Hierin wordt beschreven hoe u de module back-upbatterij op uw StorSimple-apparaat kunt verwijderen, vervangen en onderhouden.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 4ebf3f28d40e0461d140a3fe74fb940720f26db6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f21bbf4777aa74e84ffb8c1af903f90608d5551f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64693758"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276905"
 ---
-# <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Vervang de back-upbatterij-module op uw StorSimple-apparaat
+# <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>De module back-upbatterij op uw StorSimple-apparaat vervangen
 
 ## <a name="overview"></a>Overzicht
-De primaire behuizing voeding en koeling-Module (PCM) op uw Microsoft Azure StorSimple-apparaat heeft een extra accu. Dit pakket biedt power zodat het StorSimple-apparaat kunt gegevens opslaan als er verlies van Netstroom zijn aangesloten op de primaire behuizing. Dit pack accu wordt aangeduid als de *back-upbatterij module*. De back-upbatterij module bestaat alleen voor de primaire behuizing in uw StorSimple-apparaat (de behuizing EBOD bevat een back-upbatterij-module).
+De primaire behuizing voor voeding en koeling module (PCM) op uw Microsoft Azure StorSimple-apparaat heeft een extra batterij pakket. Dit pakket biedt voeding zodat het StorSimple-apparaat gegevens kan opslaan als er geen netstroom meer is voor de primaire behuizing. Dit batterij pakket wordt de *module back-upbatterij*genoemd. De module back-upbatterij bestaat alleen voor de primaire behuizing in uw StorSimple-apparaat (de EBOD-behuizing bevat geen module voor back-upbatterij).
 
 In deze zelfstudie wordt het volgende uitgelegd:
 
-* De back-upbatterij-module verwijderen
-* Een nieuwe back-upbatterij-module installeren
+* De module back-upbatterij verwijderen
+* Een nieuwe batterij module voor back-ups installeren
 * De module back-upbatterij onderhouden
 
 > [!IMPORTANT]
-> Voordat verwijderen en het vervangen van een back-upbatterij-module, lees de veiligheidsinformatie in de [Inleiding tot StorSimple onderdeel Hardwarevervanging](storsimple-8000-hardware-component-replacement.md).
+> Voordat u een back-upbatterij module verwijdert en vervangt, raadpleegt u de informatie over beveiliging in de [Inleiding op StorSimple vervanging](storsimple-8000-hardware-component-replacement.md)van het hardware-onderdeel.
 
 
-## <a name="remove-the-backup-battery-module"></a>De back-upbatterij-module verwijderen
-De back-upbatterij-module voor uw StorSimple-apparaat is een field-replaceable unit. Voordat deze wordt geïnstalleerd in de PCM, moet de batterij-module worden opgeslagen in de oorspronkelijke verpakking. Voer de volgende stappen uit als u wilt verwijderen van de back-upbatterij.
+## <a name="remove-the-backup-battery-module"></a>De module back-upbatterij verwijderen
+De module back-upbatterij voor uw StorSimple-apparaat is een veld-vervangbaar-eenheid. Voordat deze in de PCM wordt geïnstalleerd, moet de batterij module worden opgeslagen in de oorspronkelijke verpakking. Voer de volgende stappen uit om de back-upbatterij te verwijderen.
 
-#### <a name="to-remove-the-backup-battery-module"></a>De back-upbatterij-module verwijderen
-1. In de Azure-portal, gaat u naar de serviceblade van uw StorSimple Device Manager. Ga naar **apparaten** en selecteer vervolgens het apparaat in de lijst met apparaten. Navigeer naar **Monitor** > **hardwarestatus**. Onder **Shared Components**, kijken naar de status van de accu.
-2. Identificeer de PCM waarin de batterij is mislukt. Afbeelding 1 ziet u de achterkant van het StorSimple-apparaat.
+#### <a name="to-remove-the-backup-battery-module"></a>De module back-upbatterij verwijderen
+1. Ga in het Azure Portal naar de Blade van uw StorSimple Apparaatbeheer-service. Ga naar **apparaten** en selecteer uw apparaat in de lijst met apparaten. Navigeren om de status van > **Hardware**te **controleren** . Bekijk de status van de accu onder **gedeelde onderdelen**.
+2. Identificeer de PCM waarin de accu is mislukt. In afbeelding 1 wordt de weer gave van het StorSimple-apparaat weer gegeven.
    
-    ![Backplane van apparaat primaire behuizing-Modules](./media/storsimple-battery-replacement/IC740994.png)
+    ![Backplane van modules voor primaire behuizing van apparaten](./media/storsimple-battery-replacement/IC740994.png)
    
-    **Afbeelding 1** achterzijde PCM en controller modules met het primaire apparaat
+    **Afbeelding 1** Achtergrond van primair apparaat met PCM-en controller modules
    
-   | Label | Description |
+   | Label | Beschrijving |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
    | 3 |Controller 0 |
    | 4 |Controller 1 |
    
-    Zoals wordt weergegeven door het cijfer 3 in de afbeelding 2, de controle indicator geleid in PCM 0 die overeenkomt met **accu fouttolerantie** moeten worden belicht.
+    Zoals aangegeven door nummer 3 in afbeelding 2, heeft de bewakings indicator op PCM 0, die overeenkomt met **accu fout** , lichter.
    
-    ![Backplane van apparaat PCM controle-LED 's](./media/storsimple-battery-replacement/IC740992.png)
+    ![Backplane van bewakings indicator-Led's van Device PCM](./media/storsimple-battery-replacement/IC740992.png)
    
-    **Afbeelding 2** terug van PCM met de bewakings-LED
+    **Afbeelding 2** Achterkant van PCM met de Led's voor de bewakings indicator
    
-   | Label | Description |
+   | Label | Beschrijving |
    |:--- |:--- |
-   | 1 |Fout in Echtheidsvoorwaarde power |
-   | 2 |Storing in de ventilator |
-   | 3 |Accu fouttolerantie |
+   | 1 |Netstroom storing |
+   | 2 |Fout met ventilator |
+   | 3 |Accu fout |
    | 4 |PCM OK |
-   | 5 |DC-stroomstoring |
+   | 5 |Stroom storing in gelijkstroom |
    | 6 |Accu in orde |
-3. Als u wilt verwijderen van de PCM met een mislukte batterij, volg de stappen in [verwijderen van een PCM](storsimple-8000-power-cooling-module-replacement.md#remove-a-pcm).
-4. Met de PCM verwijderd, lift ophalen om tot de batterij verwijderen en de ingang van de module accu omhoog draaien zoals aangegeven in de volgende afbeelding.
+3. Als u de PCM met een defecte batterij wilt verwijderen, volgt u de stappen in [een PCM verwijderen](storsimple-8000-power-cooling-module-replacement.md#remove-a-pcm).
+4. Terwijl de PCM is verwijderd, til en roteert u de module batterij modules omhoog, zoals aangegeven in de volgende afbeelding, en haalt u deze op om de accu te verwijderen.
    
-    ![Accu verwijderen in PCM](./media/storsimple-battery-replacement/IC741019.png)
+    ![Batterij verwijderen uit PCM](./media/storsimple-battery-replacement/IC741019.png)
    
-    **Afbeelding 3** de accu van de PCM verwijderen
-5. Plaats de module in het veld-replaceable unit verpakking.
-6. De defecte eenheid retourneren aan Microsoft voor de juiste service- en verwerken.
+    **Afbeelding 3** De batterij verwijderen uit de PCM
+5. Plaats de module in het veld-vervangbaar eenheids pakket.
+6. Retour neer de defecte eenheid naar micro soft voor de juiste onderhouds-en verwerking.
 
-## <a name="install-a-new-backup-battery-module"></a>Een nieuwe back-upbatterij-module installeren
-Voer de volgende stappen uit voor het installeren van de vervangende accu-module in de PCM in de primaire behuizing van uw StorSimple-apparaat.
+## <a name="install-a-new-backup-battery-module"></a>Een nieuwe batterij module voor back-ups installeren
+Voer de volgende stappen uit om de vervangende batterij module in de PCM te installeren in de primaire behuizing van uw StorSimple-apparaat.
 
-#### <a name="to-install-the-battery-module"></a>De batterij-module installeren
-1. Plaats de back-upbatterij-module in de juiste richting in de PCM.
-2. Houd de ingang van de module accu helemaal tot aan de connector seat.
-3. De PCM in de primaire behuizing vervangen door de richtlijnen in [vervangen door een stroom en koeling Module op uw StorSimple-apparaat](storsimple-8000-power-cooling-module-replacement.md).
-4. Nadat de vervanging voltooid is, gaat u naar uw apparaat en ga vervolgens naar **Monitor** > **hardwarestatus** in Azure portal. Controleer of de status van de batterij om ervoor te zorgen dat de installatie geslaagd is. Groene status geeft aan dat de batterij in orde is.
+#### <a name="to-install-the-battery-module"></a>De batterij module installeren
+1. Plaats de module back-upbatterij in de juiste stand in de PCM.
+2. Druk op de batterij module op alle manier om de connector te seat.
+3. Vervang de PCM in de primaire behuizing door de richt lijnen te volgen in [een module voor voeding en koeling vervangen op uw StorSimple-apparaat](storsimple-8000-power-cooling-module-replacement.md).
+4. Nadat de vervanging is voltooid, gaat u naar uw apparaat en gaat u naar de **Monitor** > **Hardware health** in de Azure Portal. Controleer de status van de accu om er zeker van te zijn dat de installatie is geslaagd. Een groene status geeft aan dat de accu in orde is.
 
 ## <a name="maintain-the-backup-battery-module"></a>De module back-upbatterij onderhouden
-In uw StorSimple-apparaat, wordt in de module back-upbatterij power naar de controller biedt tijdens een power-verlies-gebeurtenis. Hierdoor kan het StorSimple-apparaat op te slaan van kritieke gegevens voorafgaand aan het afsluiten van op een gecontroleerde manier. Met twee volledig opgeladen batterijen in de PCMs, kan twee opeenvolgende verlies gebeurtenissen worden verwerkt door het systeem.
+In uw StorSimple-apparaat biedt de module back-upbatterij stroom naar de controller tijdens een stroom storings gebeurtenis. Hiermee kan het StorSimple-apparaat essentiële gegevens opslaan voordat ze op een gecontroleerde manier worden afgesloten. Met twee volledig opgeladen batterijen in de PCMs kan het systeem twee opeenvolgende verlies gebeurtenissen verwerken.
 
-In de Azure-portal, de **hardwarestatus** onder de **Monitor** blade geeft aan of de batterij is defect of het einde van de levensduur nadert. De status van de accu wordt aangegeven door **accu in PCM 0** of **accu in PCM 1** onder **Shared Components**. Deze blade ziet u een **GEDEGRADEERD** staat voor het einde van de levensduur nadert, en **mislukt** voor het einde van de levenscyclus is bereikt.
+In de Azure Portal geeft de **status** van de hardware onder de Blade **monitor** aan of de accu defect is of dat het einde van de levens duur nadert. De accu status wordt aangegeven door de **batterij in PCM 0** of **batterij in PCM 1** onder **gedeelde onderdelen**. Op deze Blade wordt een **GEdegradeerde** status weer gegeven voor het einde van de levens duur en **is** het einde van de levens duur bereikt.
 
 > [!NOTE]
-> Kan rapporteren dat de batterij **mislukt** gewoon moet in rekening gebracht.
+> De accu **kan rapporteren wanneer** er eenvoudigweg moet worden gefactureerd.
 
 
-Als de **GEDEGRADEERD** status wordt weergegeven, wordt aangeraden de volgende cursus van actie:
+Als de status **verslechterd** wordt weer gegeven, raden we u aan de volgende cursus van actie uit te voeren:
 
-* Het systeem mogelijk ondervonden recente stroomuitval of de accu's kunnen momenteel periodiek onderhoud worden uitgevoerd. Bekijk het systeem 12 uur voordat u doorgaat.
+* Het systeem heeft mogelijk een recent stroom verlies ondervonden of de accu's kunnen periodiek onderhoud ondergaan. Bekijk het systeem gedurende 12 uur voordat u doorgaat.
   
-  * Als de status nog steeds is **GEDEGRADEERD** na 12 uur van continue verbinding met het AC met de domeincontrollers en PCMs uitgevoerd inschakelen, klikt u vervolgens de batterij moet worden vervangen. Neem [Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md) voor een module van de back-upbatterij vervangen.
-  * Als de status OK na 12 uur, de batterij operationeel is en deze alleen een toeslag onderhoud nodig is.
-* Als er een bijbehorende verlies van netstroom niet is en de PCM is ingeschakeld en aangesloten op netstroom, moet de batterij worden vervangen. [Neem contact op met Microsoft Support](storsimple-8000-contact-microsoft-support.md) rangschikken van een module van de back-upbatterij vervangen.
+  * Als de status nog steeds wordt **GEdegradeerd** na 12 uur doorlopende verbinding met de wisselstroom capaciteit van de controllers en de PCMs, moet de accu worden vervangen. Neem [contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) voor een nieuwe batterij module voor back-ups.
+  * Als de status van 12 uur OK is, is de accu operationeel en hebt u alleen onderhouds kosten nodig.
+* Als er geen stroom uitval van netstroom is en de PCM is ingeschakeld en aangesloten op netstroom, moet de accu worden vervangen. [Neem contact op met Microsoft ondersteuning](storsimple-8000-contact-microsoft-support.md) om een vervangende back-upbatterij module te best Ellen.
 
 > [!IMPORTANT]
-> Verwijderen van de mislukte accu op basis van nationale of regionale voorschriften.
+> De defecte batterij verwijderen volgens nationale en regionale voor Schriften.
 
 ## <a name="next-steps"></a>Volgende stappen
-Meer informatie over [StorSimple onderdeel Hardwarevervanging](storsimple-8000-hardware-component-replacement.md).
+Meer informatie over het [vervangen van StorSimple](storsimple-8000-hardware-component-replacement.md).
 

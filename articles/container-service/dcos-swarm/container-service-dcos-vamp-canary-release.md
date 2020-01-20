@@ -1,70 +1,68 @@
 ---
-title: (AFGESCHAFT) Canary-release met Vamp op Azure DC/OS-cluster
-description: Vamp canary-release-Services gebruiken en toepassen van slimme verkeer filteren op een Azure Container Service DC/OS-cluster
-services: container-service
+title: KEUR Canarische release met een versie van het Azure DC/OS-cluster
+description: Met behulp van de versie van het gebruik van de installatie van definitieve pakketten in een Azure Container Service DC/OS-cluster
 author: gggina
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: f1b3c08cce2cb33feab899ea082fc6fb40225182
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60ff148e044df81e64b54fc48c1cb6f67aee14df
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61458027"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275665"
 ---
-# <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(AFGESCHAFT) Microservices canary-release met Vamp op een Azure Container Service DC/OS-cluster
+# <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>KEUR Micro services van de Canarische release met een versie van een Azure Container Service DC/OS-cluster
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-In dit scenario wordt ingesteld Vamp in Azure Container Service met een DC/OS-cluster. We canary release van de Vamp demo-service "sava" en vervolgens incompatibiliteit van de service met Firefox oplossen door toe te passen slimme verkeer filteren. 
+In dit scenario hebben we met een DC/OS-cluster een op Azure Container Service ingestelde versie van het besturings systeem. Onze Canarische versie van de Sava-demo service is uitgebracht en vervolgens wordt de incompatibiliteit van de service met Firefox opgelost door slimme verkeer filteren toe te passen. 
 
 > [!TIP] 
-> In dit overzicht Vamp wordt uitgevoerd op een DC/OS-cluster, maar u kunt ook Vamp met Kubernetes gebruiken als de orchestrator.
+> In dit scenario is de installatie van een DC/OS-cluster voltooid, maar u kunt ook met Kubernetes als Orchestrator gebruiken.
 >
 
-## <a name="about-canary-releases-and-vamp"></a>Over canary releases en Vamp
+## <a name="about-canary-releases-and-vamp"></a>Over Canarische releases en de/vernieuwd
 
 
-[Canary vrijgeven](https://martinfowler.com/bliki/CanaryRelease.html) is een slimme implementatie-strategie door innovatieve organisaties zoals Netflix, Facebook en Spotify vastgesteld. Het is een benadering die zinvol, omdat deze problemen vermindert, veiligheid-netten introduceert en verhoogt de innovatie. Dus waarom niet alle bedrijven gebruikt? Uitbreiden van een CI/CD-pijplijn om op te nemen canary strategieën voegt complexiteit toe en uitgebreide devops kennis en ervaring voor nodig. Dat is voldoende zijn voor het blokkeren van kleinere bedrijven en ondernemingen die zowel voordat ze zelfs aan de slag. 
+Het [vrijgeven](https://martinfowler.com/bliki/CanaryRelease.html) van de distributie is een slimme implementatie strategie die is aangenomen door innovatieve organisaties zoals Netflix, Facebook en Spotify. Het is een aanpak die zinvol is, omdat deze problemen vermindert, veiligheids netten introduceert en innovatie verhoogt. Waarom worden niet alle bedrijven gebruikt? Door een CI/CD-pijp lijn uit te breiden, kunt u ook gebruikmaken van de complexiteits strategie en zijn er uitgebreide devops kennis en ervaring vereist. Dat is voldoende om kleinere bedrijven en ondernemingen te blok keren voordat ze zelfs aan de slag gaan. 
 
-[Vamp](https://vamp.io/) een open-source-systeem dat is ontworpen voor het vereenvoudigen van deze overgang en breng Canarische functies aan uw voorkeur container scheduler brengt. Canary functionaliteit van vamp gaat dan implementaties op basis van een percentage. Verkeer kan worden gefilterd en splitsen op een breed scala aan de voorwaarden, bijvoorbeeld voor richten op specifieke gebruikers, IP-adresbereiken of apparaten. Vamp worden bijgehouden en maatstaven voor prestaties, waardoor het automation op basis van echte gegevens analyseert. U kunt instellen van automatisch herstel op fouten of afzonderlijke service varianten op basis van de belasting of latentie te schalen.
+[Er is een](https://vamp.io/) open-source systeem ontworpen om deze overgang te vereenvoudigen en de functies van de Canarische-release uit te voeren voor uw voorkeurs container planner. De Canarische functionaliteit van de vernieuwd gaat verder dan op percentage gebaseerde implementaties. Verkeer kan worden gefilterd en gesplitst in een breed scala aan voor waarden, bijvoorbeeld om specifieke gebruikers, IP-bereiken of apparaten te bereiken. Er wordt getraceerd en geanalyseerd de metrische gegevens over prestaties, waardoor automatisering mogelijk is op basis van de werkelijke informatie. U kunt automatisch terugdraaien op fouten instellen, of afzonderlijke service varianten schalen op basis van de belasting of latentie.
 
-## <a name="set-up-azure-container-service-with-dcos"></a>Azure Container Service met DC/OS instellen
-
-
-
-1. [Een DC/OS-cluster implementeren](container-service-deployment.md) met één master en twee agents van standaardgrootte. 
-
-2. [Maken van een SSH-tunnel](../container-service-connect.md) verbinding maken met de DC/OS-cluster. In dit artikel wordt ervan uitgegaan dat u tunnel naar het cluster op de lokale poort 80.
+## <a name="set-up-azure-container-service-with-dcos"></a>Azure Container Service instellen met DC/OS
 
 
-## <a name="set-up-vamp"></a>Instellen van Vamp
 
-Nu dat u een actief DC/OS-cluster hebt, kunt u Vamp installeren vanuit de DC/OS-gebruikersinterface (http:\//localhost:80). 
+1. [Implementeer een DC/OS-cluster](container-service-deployment.md) met één master en twee agents van de standaard grootte. 
+
+2. [Maak een SSH-tunnel](../container-service-connect.md) om verbinding te maken met het DC/OS-cluster. In dit artikel wordt ervan uitgegaan dat u tunnelt naar het cluster op lokale poort 80.
+
+
+## <a name="set-up-vamp"></a>Instellen
+
+Nu u een DC/OS-cluster hebt, kunt u deze installeren via de DC/OS-gebruikers interface (http:\//localhost: 80). 
 
 ![DC/OS-webgebruikersinterface](./media/container-service-dcos-vamp-canary-release/01_set_up_vamp.png)
 
-Installatie is voltooid in twee fasen:
+De installatie wordt uitgevoerd in twee fasen:
 
 1. **Elasticsearch implementeren**.
 
-2. Vervolgens **Vamp implementeren** door het installeren van het pakket Vamp DC/OS-universum.
+2. **Implementeer** vervolgens vervolgens de versie van de versie van het pakket voor de installatie van de versie van het besturings systeem.
 
 ### <a name="deploy-elasticsearch"></a>Elasticsearch implementeren
 
-Elasticsearch vereist vamp voor het verzamelen van metrische gegevens en aggregatie. U kunt de [magneticio Docker-installatiekopieën](https://hub.docker.com/r/magneticio/elastic/) naar een compatibele Vamp Elasticsearch-stack implementeren.
+Voor Elasticsearch is de verzameling en aggregatie van metrische gegevens vereist. U kunt de [Magneticio docker-installatie kopieën](https://hub.docker.com/r/magneticio/elastic/) gebruiken voor het implementeren van een compatibele/Elasticsearch-stack.
 
-1. In de gebruikersinterface van DC/OS, gaat u naar **Services** en klikt u op **Service implementeren**.
+1. Ga in de DC/OS-gebruikers interface naar **Services** en klik op **service implementeren**.
 
-2. Selecteer **JSON-modus** uit de **nieuwe Service implementeren** pop-upvenster.
+2. Selecteer **JSON-modus** in het pop-upvenster **nieuwe service implementeren** .
 
-   ![Selecteer JSON-modus](./media/container-service-dcos-vamp-canary-release/02_deploy_service_json_mode.png)
+   ![JSON-modus selecteren](./media/container-service-dcos-vamp-canary-release/02_deploy_service_json_mode.png)
 
-3. Plak de volgende JSON. Deze configuratie voert de container met 1 GB aan RAM-geheugen en een eenvoudige statuscontrole op de poort Elasticsearch.
+3. Plak de volgende JSON. Deze configuratie voert de container uit met 1 GB RAM en een basis status controle op de Elasticsearch-poort.
   
    ```JSON
    {
@@ -93,51 +91,51 @@ Elasticsearch vereist vamp voor het verzamelen van metrische gegevens en aggrega
    ```
   
 
-3. Klik op **implementeren**.
+3. Klik op **Implementeren**.
 
-   DC/OS implementeert de Elasticsearch-container. U kunt de voortgang volgen op de **Services** pagina.  
+   DC/OS implementeert de Elasticsearch-container. U kunt de voortgang volgen op de pagina **Services** .  
 
    ![e implementeren? Elasticsearch](./media/container-service-dcos-vamp-canary-release/03_deply_elasticsearch.png)
 
-### <a name="deploy-vamp"></a>Vamp implementeren
+### <a name="deploy-vamp"></a>Met de installatie van.
 
-Als Elasticsearch als rapporteert **met**, kunt u de DC/OS-universum Vamp-pakket toevoegen. 
+Zodra de Elasticsearch-rapporten zijn **uitgevoerd**, kunt u het pakket voor de versie van het besturings systeem voor de/uit. 
 
-1. Ga naar **universum** en zoek naar de **vamp**. 
-   ![Vamp op DC/OS-universum](./media/container-service-dcos-vamp-canary-release/04_universe_deploy_vamp.png)
+1. Ga naar **universum** en zoek naar/of **vernieuwd**. 
+   ![voor het universum van DC/OS](./media/container-service-dcos-vamp-canary-release/04_universe_deploy_vamp.png)
 
-2. Klik op **installeren** naast de vamp verpakt en kies **geavanceerde installatie**.
+2. Klik op **installeren** naast het pakket bgeavanceerde en kies **Geavanceerde installatie**.
 
-3. Schuif naar beneden en voer de volgende elasticsearch-url: `http://elasticsearch.marathon.mesos:9200`. 
+3. Schuif omlaag en voer de volgende elasticsearch-URL in: `http://elasticsearch.marathon.mesos:9200`. 
 
    ![Elasticsearch-URL invoeren](./media/container-service-dcos-vamp-canary-release/05_universe_elasticsearch_url.png)
 
-4. Klik op **Bekijk en installeer**, klikt u vervolgens op **installeren** implementatie te starten.  
+4. Klik op **controleren en installeren**en klik vervolgens op **installeren** om de implementatie te starten.  
 
-   DC/OS implementeert alle vereiste Vamp-onderdelen. U kunt de voortgang volgen op de **Services** pagina.
+   DC/OS implementeert alle vereiste/vernieuwd-onderdelen. U kunt de voortgang volgen op de pagina **Services** .
   
-   ![Vamp als universum pakket implementeren](./media/container-service-dcos-vamp-canary-release/06_deploy_vamp.png)
+   ![Een versie van het universum-pakket implementeren](./media/container-service-dcos-vamp-canary-release/06_deploy_vamp.png)
   
-5. Als de implementatie is voltooid, kunt u de gebruikersinterface Vamp openen:
+5. Zodra de implementatie is voltooid, hebt u toegang tot de gebruikers interface van vernieuwd:
 
-   ![Vamp-service op DC/OS](./media/container-service-dcos-vamp-canary-release/07_deploy_vamp_complete.png)
+   ![De versie van de micro service op DC/OS](./media/container-service-dcos-vamp-canary-release/07_deploy_vamp_complete.png)
   
-   ![Vamp UI](./media/container-service-dcos-vamp-canary-release/08_vamp_ui.png)
+   ![Gebruikers interface van vernieuwd](./media/container-service-dcos-vamp-canary-release/08_vamp_ui.png)
 
 
 ## <a name="deploy-your-first-service"></a>Uw eerste service implementeren
 
-Nu dat Vamp actief en werkend is een service implementeren vanuit een blauwdruk. 
+Nu u hebt gemaakt, kunt u een service van een blauw druk implementeren. 
 
-In de meest eenvoudige vorm een [Vamp blauwdruk](https://vamp.io/documentation/using-vamp/blueprints/) beschrijving van de eindpunten (gateways), clusters en services te implementeren. Vamp maakt gebruik van clusters op verschillende varianten van dezelfde service te groeperen in logische groepen voor canary vrijgeven of A / B-tests.  
+In de meest eenvoudige vorm van een standaard [blauw druk](https://vamp.io/documentation/using-vamp/blueprints/) worden de eind punten (gateways), clusters en services beschreven die moeten worden geïmplementeerd. Er worden clusters gebruikt om verschillende varianten van dezelfde service te groeperen in logische groepen voor het vrijgeven van een groot aantal of A/B-tests.  
 
-In dit scenario maakt gebruik van een voorbeeld van een monolithische toepassing met de naam [ **sava**](https://github.com/magneticio/sava), die versie 1.0 is. De monoliet bevindt zich in een Docker-container in Docker Hub onder magneticio/sava:1.0.0 is. De app wordt normaal uitgevoerd op poort 8080, maar u wilt om in dit geval onder poort 9050 zichtbaar te maken. Implementeer de app via Vamp met behulp van een eenvoudige blauwdruk.
+In dit scenario wordt gebruikgemaakt van een voor beeld van een monolithische-toepassing met de naam [**Sava**](https://github.com/magneticio/sava), die op versie 1,0 is. De op is verpakt in een docker-container, die zich in docker hub onder magneticio/Sava: 1.0.0 bevindt. De app wordt normaal gesp roken uitgevoerd op poort 8080, maar u wilt deze beschikbaar maken onder poort 9050 in dit geval. Implementeer de app met behulp van een eenvoudige blauw druk.
 
 1. Ga naar **implementaties**.
 
-2. Klik op **Toevoegen**.
+2. Klik op **Add**.
 
-3. Plak de volgende blauwdruk YAML. Deze blauwdruk bevat één cluster met slechts één service-variant, waarin we wijzigingen kan in een latere stap aanbrengen:
+3. Plak de volgende blauw druk YAML. Deze blauw druk bevat één cluster met slechts één service variant, die in een latere stap wordt gewijzigd:
 
    ```YAML
    name: sava                        # deployment name
@@ -145,7 +143,6 @@ In dit scenario maakt gebruik van een voorbeeld van een monolithische toepassing
     9050: sava_cluster/webport      # stable endpoint
    clusters:
     sava_cluster:               # cluster to create
-     services:
         -
           breed:
             name: sava:1.0.0        # service variant name
@@ -154,59 +151,58 @@ In dit scenario maakt gebruik van een voorbeeld van een monolithische toepassing
               webport: 8080/http # cluster endpoint, used for canary releasing
    ```
 
-4. Klik op **Opslaan**. Vamp initieert de implementatie.
+4. Klik op **Opslaan**. Met de installatie wordt de implementatie gestart.
 
-De implementatie wordt weergegeven op de **implementaties** pagina. Klik op de implementatie voor het controleren van de status ervan.
+De implementatie wordt weer gegeven op de pagina **implementaties** . Klik op de implementatie om de status ervan te controleren.
 
-![UI - sava implementeren vamp](./media/container-service-dcos-vamp-canary-release/09_sava100.png)
+![Gebruikers interface voor het implementeren van Sava](./media/container-service-dcos-vamp-canary-release/09_sava100.png)
 
-![Sava service in de gebruikersinterface Vamp](./media/container-service-dcos-vamp-canary-release/09a_sava100.png)
+![Sava-service in de gebruikers interface van vernieuwd](./media/container-service-dcos-vamp-canary-release/09a_sava100.png)
 
-Twee gateways die zijn gemaakt, die worden weergegeven op de **Gateways** pagina:
+Er worden twee gateways gemaakt die worden vermeld op de pagina **gateways** :
 
-* een stabiele eindpunt voor toegang tot de service (poort 9050) 
-* een beheerde Vamp interne-gateway (deze gateway later meer). 
+* een stabiel eind punt voor toegang tot de actieve service (poort 9050) 
+* een met een webbeheerde interne gateway (meer op deze gateway). 
 
-![UI - sava gateways vamp](./media/container-service-dcos-vamp-canary-release/10_vamp_sava_gateways.png)
+![Sava-gateways voor de gebruikers interface](./media/container-service-dcos-vamp-canary-release/10_vamp_sava_gateways.png)
 
-De service sava is nu geïmplementeerd, maar u geen toegang tot het extern omdat de Azure Load Balancer voor het doorsturen van verkeer naar deze nog niet bekend is. Voor toegang tot de service, de Azure VPN-configuratie bijwerken
-
-
-## <a name="update-the-azure-network-configuration"></a>Werk de configuratie van de Azure-netwerk
-
-Vamp geïmplementeerd met de service sava op de DC/OS-agent-knooppunten om een stabiele eindpunt op poort 9050 vrij te geven. Voor toegang tot de service van buiten het DC/OS-cluster, moet u de volgende wijzigingen aanbrengen aan de configuratie van de Azure-netwerk in uw Clusterimplementatie: 
-
-1. **Configureren van de Azure Load Balancer** voor de agents (de resource met de naam **dcos-agent-lb-xxxx**) met een statustest en een regel voor het doorsturen van verkeer op poort 9050 naar de sava-exemplaren. 
-
-2. **Bijwerken van de netwerkbeveiligingsgroep** voor de openbare agents (de resource met de naam **XXXX-agent-openbare-nsg-XXXX**) voor verkeer op poort 9050.
-
-Zie voor gedetailleerde stappen voor het voltooien van deze taken via Azure portal [openbare toegang tot een Azure Container Service-toepassing](container-service-enable-public-access.md). Poort 9050 voor alle poortinstellingen opgeven.
+De Sava-service is nu geïmplementeerd, maar u kunt deze niet extern openen omdat de Azure Load Balancer nog niet weet dat er verkeer naar wordt doorgestuurd. Werk de Azure-netwerk configuratie bij om toegang te krijgen tot de service.
 
 
-Als alles is gemaakt, gaat u naar de **overzicht** blade van de load balancer voor DC/OS-agent (de resource met de naam **dcos-agent-lb-xxxx**). Zoek de **openbaar IP-adres**, en het gebruik van het adres voor toegang tot sava op poort 9050.
+## <a name="update-the-azure-network-configuration"></a>De Azure-netwerk configuratie bijwerken
 
-![Azure portal - openbare IP-adres ophalen](./media/container-service-dcos-vamp-canary-release/18_public_ip_address.png)
+Met de Sava-service op de knoop punten van de DC/OS-agent is een stabiel eind punt beschikbaar op poort 9050. Om toegang te krijgen tot de service van buiten het DC/OS-cluster, moet u de volgende wijzigingen aanbrengen in de configuratie van het Azure-netwerk in uw cluster implementatie: 
+
+1. **Configureer de Azure Load Balancer** voor de agents (de resource met de naam **DCOS-agent-lb-xxxx**) met een status test en een regel voor het door sturen van verkeer op poort 9050 naar de Sava-exemplaren. 
+
+2. **Werk de netwerk beveiligings groep** voor de open bare agents (de resource met de naam **xxxx-agent-Public-NSG-xxxx**) bij om verkeer op poort 9050 toe te staan.
+
+Zie [open bare toegang tot een Azure container service toepassing inschakelen](container-service-enable-public-access.md)voor gedetailleerde stappen voor het uitvoeren van deze taken met behulp van de Azure Portal. Geef poort 9050 voor alle poort instellingen op.
+
+
+Als alles eenmaal is gemaakt, gaat u naar de Blade **overzicht** van de DC/OS-agent Load Balancer (de resource met de naam **DCOS-agent-lb-xxxx**). Zoek het **open bare IP-adres**en gebruik het adres voor toegang tot Sava op poort 9050.
+
+![Azure Portal-openbaar IP-adres ophalen](./media/container-service-dcos-vamp-canary-release/18_public_ip_address.png)
 
 ![sava](./media/container-service-dcos-vamp-canary-release/19_sava100.png)
 
 
-## <a name="run-a-canary-release"></a>Canary-release uitvoeren
+## <a name="run-a-canary-release"></a>Een Canarische versie uitvoeren
 
-Stel dat u hebt een nieuwe versie van deze toepassing die u wilt canary-release in productie. U hebt deze opgenomen in een container als magneticio/sava:1.1.0 en klaar bent om door te gaan. Vamp kunt u eenvoudig nieuwe services toevoegen aan de actieve implementatie. Deze 'samengevoegde' services worden geïmplementeerd naast de bestaande services in het cluster en toegewezen een gewicht van 0%. Geen verkeer wordt doorgestuurd naar een nieuwe, samengevoegde service totdat u de distributie van verkeer aanpassen. De schuifregelaar gewicht in de gebruikersinterface Vamp biedt u volledige controle over de distributie, waardoor het incrementele aanpassingen (canary-release) of een directe terugdraaien.
+Stel dat u een nieuwe versie van deze toepassing hebt die u wilt vrijgeven voor de productie. U hebt deze container als magneticio/Sava: 1.1.0 en bent klaar om te gaan. Met kunt u eenvoudig nieuwe services toevoegen aan de actieve implementatie. Deze samengevoegde services worden geïmplementeerd naast de bestaande services in het cluster en krijgen een gewicht van 0% toegewezen. Er wordt geen verkeer doorgestuurd naar een nieuw samengevoegde service, totdat u de distributie van verkeer hebt aangepast. Met de schuif regelaar voor het gewicht in de gebruikers interface van vernieuwd kunt u volledige controle over de distributie, waardoor incrementele aanpassingen (Canarische release) of een onmiddellijke terugdraai actie worden toegestaan.
 
-### <a name="merge-a-new-service-variant"></a>Een nieuwe variant van de service samenvoegen
+### <a name="merge-a-new-service-variant"></a>Een nieuwe service variant samen voegen
 
-Samenvoegen van de nieuwe sava 1.1-service met de actieve implementatie:
+De nieuwe Sava 1,1-service samen voegen met de actieve implementatie:
 
-1. Klik in de gebruikersinterface Vamp **blauwdrukken**.
+1. Klik in de gebruikers interface van vernieuwd op **blauw drukken**.
 
-2. Klik op **toevoegen** en plak deze in de volgende YAML-blauwdruk: Deze blauwdruk wordt een nieuwe service-variant (sava: 1.1.0) te implementeren binnen het bestaande cluster (sava_cluster) beschreven.
+2. Klik op **toevoegen** en plakken in de volgende blauw druk YAML: in deze blauw druk wordt een nieuwe service variant (Sava: 1.1.0) beschreven die in het bestaande cluster (sava_cluster) moet worden geïmplementeerd.
 
    ```YAML
    name: sava:1.1.0      # blueprint name
    clusters:
     sava_cluster:       # cluster to update
-      services:
         -
           breed:
             name: sava:1.1.0    # service variant name
@@ -215,85 +211,85 @@ Samenvoegen van de nieuwe sava 1.1-service met de actieve implementatie:
               webport: 8080/http # cluster endpoint to update
    ```
   
-3. Klik op **Opslaan**. De blauwdruk is opgeslagen en weergegeven op de **blauwdrukken** pagina.
+3. Klik op **Opslaan**. De blauw druk wordt opgeslagen en weer gegeven op de pagina **blauw drukken** .
 
-4. Open het actiemenu van de blauwdruk sava: 1.1 en klikt u op **samenvoegt met**.
+4. Open het menu Actie op de blauw druk Sava: 1.1 en klik op **samen voegen naar**.
 
-   ![UI - blauwdrukken vamp](./media/container-service-dcos-vamp-canary-release/20_sava110_mergeto.png)
+   ![De gebruikers interface-blauw drukken](./media/container-service-dcos-vamp-canary-release/20_sava110_mergeto.png)
 
-5. Selecteer de **sava** implementatie en klik op **samenvoegen**.
+5. Selecteer de **Sava** -implementatie en klik op **samen voegen**.
 
-   ![UI - samenvoegen-blauwdruk voor implementatie vamp](./media/container-service-dcos-vamp-canary-release/21_sava110_merge.png)
+   ![De gebruikers interface-blauw druk voor samen voegen in implementatie](./media/container-service-dcos-vamp-canary-release/21_sava110_merge.png)
 
-Vamp implementeert u de nieuwe service-variant voor sava: 1.1.0 is beschreven in de blauwdruk naast sava: 1.0.0 in de **sava_cluster** van de actieve implementatie. 
+Met de nieuwe Sava: 1.1.0 Service variant die wordt beschreven in de blauw druk naast Sava: 1.0.0 in de **sava_cluster** van de actieve implementatie. 
 
-![UI - implementatie van bijgewerkte sava vamp](./media/container-service-dcos-vamp-canary-release/22_sava_cluster.png)
+![Gebruikers interface-bijgewerkte Sava-implementatie](./media/container-service-dcos-vamp-canary-release/22_sava_cluster.png)
 
-De **sava/sava_cluster/webport** gateway (het clustereindpunt) is ook bijgewerkt, een route toevoegen aan de zojuist geïmplementeerde sava: 1.1.0. Op dit moment geen verkeer wordt doorgestuurd hier (de **gewicht** is ingesteld op 0%).
+De **Sava/sava_cluster/webport** -gateway (het cluster eindpunt) is ook bijgewerkt, waarbij een route wordt toegevoegd aan de zojuist geïmplementeerde Sava: 1.1.0. Op dit moment wordt er hier geen verkeer gerouteerd (het **gewicht** wordt ingesteld op 0%).
 
-![UI - cluster gateway vamp](./media/container-service-dcos-vamp-canary-release/23_sava_cluster_webport.png)
+![De gebruikers interface-cluster gateway](./media/container-service-dcos-vamp-canary-release/23_sava_cluster_webport.png)
 
-### <a name="canary-release"></a>Canary-release
+### <a name="canary-release"></a>Release van de Canarische
 
-Aanpassen met beide versies van sava geïmplementeerd in hetzelfde cluster en de distributie van verkeer tussen beide door het verplaatsen van de **gewicht** schuifregelaar.
+Met beide versies van Sava die zijn geïmplementeerd in hetzelfde cluster, past u de distributie van verkeer ertussen aan door de schuif regelaar voor het **gewicht** te verplaatsen.
 
-1. Klik op ![Vamp UI - bewerken](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) naast **gewicht**.
+1. Klik op ![e/gebruikers interface:](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) bewerken naast **gewicht**.
 
-2. De gewichtsdistributie ingesteld op 50/50% en klikt u op **opslaan**.
+2. Stel de wegings verdeling in op 50%/50% en klik op **Opslaan**.
 
-   ![UI - gateway gewicht schuifregelaar vamp](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
+   ![Webgebruikersinterface-schuif regelaar voor gateway gewicht](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
 
-3. Ga terug naar uw browser en vernieuw de pagina sava nog een paar keer. De toepassing sava nu schakelt u tussen een sava: 1.0 en een sava: 1.1-pagina.
+3. Ga terug naar uw browser en vernieuw de pagina Sava nog enkele keren. De Sava-toepassing schakelt nu tussen een Sava: 1.0-pagina en een Sava: 1.1-pagina.
 
-   ![wisselende sava1.0 en sava1.1 services](./media/container-service-dcos-vamp-canary-release/25_sava_100_101.png)
+   ![afwisselend Sava 1.0 en Sava 1.1-services](./media/container-service-dcos-vamp-canary-release/25_sava_100_101.png)
 
 
   > [!NOTE]
-  > Deze alternatieven van de pagina werkt het beste met de 'Incognito' of 'Anoniem'-modus van uw browser vanwege het in cache plaatsen van statische assets.
+  > Deze afwisseling van de pagina werkt het beste met de modus "incognito" of "Anonymous" van uw browser vanwege het in de cache opslaan van statische activa.
   >
 
 ### <a name="filter-traffic"></a>Verkeer filteren
 
-Stel dat na de implementatie die u incompatibiliteit in sava: 1.1.0 ontdekt dat oorzaken problemen in Firefox-browser worden weergegeven. U kunt Vamp naar binnenkomend verkeer filteren en aangeven dat alle gebruikers van Firefox terug naar de bekende stabiele sava: 1.0.0 instellen. Dit filter herstelt direct de onderbreking voor gebruikers van Firefox, terwijl alle andere blijft om te profiteren van de voordelen van de verbeterde sava: 1.1.0.
+Stel dat u na de implementatie een incompatibiliteit hebt gedetecteerd in Sava: 1.1.0 dat weergave problemen in Firefox-browsers veroorzaakt. U kunt voor het filteren van inkomend verkeer instellen en alle Firefox-gebruikers terugsturen naar de bekende stabiele Sava: 1.0.0. Met dit filter wordt de onderbreking van Firefox-gebruikers onmiddellijk opgelost, terwijl iedereen anders de voor delen van de verbeterde Sava: 1.1.0 blijft benutten.
 
-Maakt gebruik van vamp **voorwaarden** op het filter verkeer tussen de routes in een gateway. Verkeer wordt eerst gefilterd en worden omgeleid op basis van de voorwaarden die zijn toegepast op elke route. Alle resterende verkeer wordt verdeeld volgens de instelling van de gateway gewicht.
+Er worden **voor waarden** gebruikt voor het filteren van verkeer tussen routes in een gateway. Verkeer wordt eerst gefilterd en doorgestuurd volgens de voor waarden die op elke route worden toegepast. Alle resterende verkeer wordt gedistribueerd op basis van de instelling voor het gewicht van de gateway.
 
-U kunt een voorwaarde om te filteren van alle Firefox-gebruikers en ze rechtstreeks naar de oude sava: 1.0.0 maken:
+U kunt een voor waarde maken om alle Firefox-gebruikers te filteren en deze te omleiden naar de oude Sava: 1.0.0:
 
-1. Op de sava/sava_cluster/webport **Gateways** pagina, klikt u op ![Vamp UI - bewerken](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) om toe te voegen een **voorwaarde** naar de sava/sava_cluster/sava:1.0.0/webport route. 
+1. Klik op de pagina Sava/sava_cluster/webport- **gateways** op ![/gebruikers interface:](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) bewerken om een **voor waarde** toe te voegen aan de route Sava/sava_cluster/Sava: 1.0.0/webport. 
 
-2. Voer de voorwaarde **gebruikersagent Firefox ==** en klikt u op ![Vamp UI - opslaan](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png).
+2. Voer de voor waarde **User-agent = = Firefox** in en klik op ![e/gebruikers interface opslaan](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png).
 
-   Vamp voegt de voorwaarde met een standaardwaarde van 0%. Als u wilt beginnen met het filteren van verkeer, moet u de sterkte van de voorwaarde aanpassen.
+   De voor waarde wordt toegevoegd met een standaard sterkte van 0%. Als u het filteren van verkeer wilt starten, moet u de voorwaarde sterkte aanpassen.
 
-3. Klik op ![Vamp UI - bewerken](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) wijzigen van de **sterkte** toegepast op de voorwaarde.
+3. Klik op ![e/gebruikers interface-](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) bewerken om de **sterkte** te wijzigen die op de voor waarde wordt toegepast.
  
-4. Stel de **sterkte** tot 100% en klikt u op ![Vamp UI - opslaan](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png) om op te slaan.
+4. Stel de **sterkte** in op 100% en klik op ![de gebruikers interface van niet op te slaan](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png) opslaan.
 
-   Vamp verzendt nu al het verkeer aan de voorwaarde (alle Firefox gebruikers) naar sava: 1.0.0.
+   Vervolgens wordt alle verkeer dat overeenkomt met de voor waarde (alle Firefox-gebruikers), verzonden naar Sava: 1.0.0.
 
-   ![Vamp UI - voorwaarde van toepassing op gateway](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
+   ![Gebruikers Interface: voor waarde Toep assen op Gateway](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
 
-5. Ten slotte het gewicht van de gateway voor het verzenden van alle resterende verkeer (alle niet-Firefox gebruikers) naar de nieuwe sava: 1.1.0 aanpassen. Klik op ![Vamp UI - bewerken](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) naast **gewicht** en stel de gewichtsdistributie zodat 100% wordt omgeleid naar de sava/sava_cluster/sava:1.1.0/webport route.
+5. Wijzig ten slotte het gewicht van de gateway om alle resterende verkeer (alle niet-Firefox-gebruikers) te verzenden naar de nieuwe Sava: 1.1.0. Klik op ![/gebruikers interface:](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png) bewerken naast **gewicht** en stel de gewogen distributie zo in dat 100% wordt omgeleid naar de route sava/sava_cluster/Sava: 1.1.0/webport.
 
-   Al het verkeer niet gefilterd door de voorwaarde wordt nu omgeleid naar de nieuwe sava: 1.1.0.
+   Al het verkeer dat niet door de voor waarde is gefilterd, wordt nu doorgestuurd naar de nieuwe Sava: 1.1.0.
 
-6. Als u wilt het filter in actie zien, opent u twee verschillende browsers (één Firefox en een andere browser) en toegang tot de service sava van beide. Alle Firefox-aanvragen worden verzonden naar sava: 1.0.0, terwijl alle andere browsers worden doorgestuurd naar sava: 1.1.0.
+6. Als u het filter in actie wilt zien, opent u twee verschillende browsers (één Firefox en een andere browser) en opent u de Sava-service van beide. Alle Firefox-aanvragen worden verzonden naar Sava: 1.0.0, terwijl alle andere browsers worden omgeleid naar Sava: 1.1.0.
 
-   ![UI - filter verkeer vamp](./media/container-service-dcos-vamp-canary-release/27_filter_traffic.png)
+   ![Gebruikers interface filter voor het filteren van gegevens](./media/container-service-dcos-vamp-canary-release/27_filter_traffic.png)
 
-## <a name="summing-up"></a>Tellen
+## <a name="summing-up"></a>Optellen
 
-In dit artikel is een korte inleiding over Vamp op een DC/OS-cluster. Om te beginnen, je Vamp omhoog en uitgevoerd op uw Azure Container Service DC/OS-cluster geïmplementeerd met een service met een blauwdruk Vamp en toegang tot het eindpunt van de beschikbaar gemaakte (gateway).
+Dit artikel is een korte inleiding tot de Snelstartgids op een DC/OS-cluster. Voor starters hebt u de beschikking over uw Azure Container Service DC/OS-cluster, waardoor u een service met een persoonlijke blauw druk hebt geïmplementeerd en deze kunt openen op het blootgestelde eind punt (gateway).
 
-We ook ingaan op enkele krachtige functies van Vamp: samenvoegen van een nieuwe variant van de service aan de actieve implementatie en het incrementeel introductie, wordt het filteren van verkeer om op te lossen van een bekende compatibiliteitsproblemen.
+We hebben ook een aantal krachtige functies van het bestand vernieuwd: het samen voegen van een nieuwe service variant voor de implementatie en het incrementeel introduceren van het verkeer om een bekende incompatibiliteit op te lossen.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over het beheren van Vamp acties via de [REST-API Vamp](https://vamp.io/documentation/api/api-reference/).
+* Meer informatie over het beheren van de handelingen van de/ [vernieuwd rest API](https://vamp.io/documentation/api/api-reference/).
 
-* Vamp automatiseringsscripts in Node.js bouwen en uitvoeren als [Vamp werkstromen](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow).
+* Ontwikkel documenten voor het maken van een geautomatiseerd Automation-script in [node. js](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow)en voer deze uit als de.
 
-* Zie de aanvullende [VAMP zelfstudies](https://vamp.io/documentation/tutorials/).
+* Zie extra nieuwe en [zelf studies](https://vamp.io/documentation/tutorials/).
 

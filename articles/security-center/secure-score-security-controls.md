@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 8f0b7b1225d78c7626c5be3e68c3dcd2dd557aa3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 0287a8011eb10120e273fb063c98ccd3c1a85782
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76158154"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278027"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>De verbeterde beveiligde Score (preview-versie) 
 
-In dit artikel wordt de verbeterde beveiligde Score geïntroduceerd (momenteel in Preview), de bijbehorende beveiligings controles en de voor delen die ze bieden.
+In dit artikel wordt de verbeterde beveiligde Score geïntroduceerd (momenteel in Preview), de bijbehorende beveiligings controles en de voor delen die ze bieden. Ook wordt uitgelegd hoe uw score wordt berekend.
 
 ## <a name="introduction-to-secure-score"></a>Inleiding tot beveiligde Score
 
@@ -32,11 +32,11 @@ Met Security Center worden uw resources, abonnementen en organisaties doorlopend
 
 De *verbeterde* beveiligde Score (momenteel in Preview) is **gericht op kwets** baarheid voor aanvallen en biedt drie voor delen:
 
-- Beveiligings maatregelen: beveiligings aanbevelingen worden nu gegroepeerd in logische sets die beter overeenkomen met uw kwets bare aanvals oppervlakken. Zie [How the Secure Score](secure-score-security-controls.md#how-the-secure-score-is-calculated) (Engelstalig) voor meer informatie.
+- **Beveiligings** maatregelen: beveiligings aanbevelingen worden nu gegroepeerd in logische sets die beter overeenkomen met uw kwets bare aanvals oppervlakken. Zie [How the Secure Score](secure-score-security-controls.md#how-the-secure-score-is-calculated) (Engelstalig) voor meer informatie.
 
-- De totale score is beter weerspiegelt de totale postuur-punten zijn toegekend op het niveau van aanbeveling. Met deze uitbrei ding wordt uw score alleen verbeterd wanneer u *alle* aanbevelingen voor één resource in een besturings element herstelt. Dit betekent dat uw score alleen verbetert wanneer de beveiliging van een resource wordt verbeterd. 
+- **De totale score is beter weerspiegelt de totale postuur** -punten zijn toegekend op het niveau van aanbeveling. Met deze uitbrei ding wordt uw score alleen verbeterd wanneer u *alle* aanbevelingen voor één resource in een besturings element herstelt. Dit betekent dat uw score alleen verbetert wanneer de beveiliging van een resource wordt verbeterd. 
 
-- De beveiligings status van afzonderlijke kwets bare Opper vlakken is meer zichtbaar-door de Score per beveiligings beheer weer te geven, wordt de pagina beveiligde Score de plek waar u een gedetailleerd overzicht krijgt van de manier waarop uw organisatie elke afzonderlijke kwets baarheid beveiligt.
+- De **beveiligings status van afzonderlijke kwets bare Opper vlakken is meer zichtbaar** -door de Score per beveiligings beheer weer te geven, wordt de pagina beveiligde Score de plek waar u een gedetailleerd overzicht krijgt van de manier waarop uw organisatie elke afzonderlijke kwets baarheid beveiligt.
 
 De verbeterde beveiligde score wordt weer gegeven als een percentage, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
@@ -63,7 +63,7 @@ Het beveiligings beheer met de naam ' systeem updates Toep assen ' heeft bijvoor
 
 [![het beveiligings beheer ' systeem updates Toep assen '](media/secure-score-security-controls/apply-system-updates-control.png)](media/secure-score-security-controls/apply-system-updates-control.png#lightbox)
 
-De waarde voor het beveiligings beheer ' systeem updates Toep assen ' in de bovenstaande scherm afbeelding toont ' 2% (1 punt) '. Dit betekent dat als u alle aanbevelingen in dit besturings element herstelt, uw score wordt verhoogd met 2% (in dit geval één punt). Ter vereenvoudiging worden de waarden in de kolom mogelijke toename van de lijst met aanbevelingen afgerond op gehele getallen. In de knop info worden de exacte waarden weer gegeven:
+De kans op het beveiligings beheer ' systeem updates Toep assen ' in de bovenstaande scherm afbeelding toont ' 2% (1 punt) '. Dit betekent dat als u alle aanbevelingen in dit besturings element herstelt, uw score wordt verhoogd met 2% (in dit geval één punt). Ter vereenvoudiging worden de waarden in de kolom mogelijke toename van de lijst met aanbevelingen afgerond op gehele getallen. In de knop info worden de exacte waarden weer gegeven:
 
 * **Mogelijke toename** : de resterende punten die voor u beschikbaar zijn in het besturings element. Om deze punten toe te voegen aan uw beveiligde Score, worden alle aanbevelingen van het besturings element opgelost. In het bovenstaande voor beeld is het één punt dat wordt weer gegeven voor het besturings element in feite 0,96 punten.
 * **Huidige Score** : de huidige score voor dit besturings element. Elk besturings element draagt bij aan de totale score. In dit voor beeld is het besturings element 5,04 punten bijdraagt aan het totaal. 

@@ -1,22 +1,20 @@
 ---
-title: '(AFGESCHAFT) Snelstartgids: Azure Docker CE-cluster voor Linux'
+title: 'KEUR Quick Start: Azure docker CE-cluster voor Linux'
 description: Leer snel hoe u een Docker CE-cluster voor Linux-containers in Azure Container Service maakt met de Azure CLI.
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: a7a7455ce9167a9c480d317d50fdce49e2ef06a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f492dd2bd270d3f067c05c1dc2235d54e481847
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60721778"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274877"
 ---
-# <a name="deprecated-deploy-docker-ce-cluster"></a>(AFGESCHAFT) Docker CE-cluster implementeren
+# <a name="deprecated-deploy-docker-ce-cluster"></a>KEUR Docker CE-cluster implementeren
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -26,13 +24,13 @@ Docker CE in Azure Container Service is in de preview-fase. **Gebruik dit daarom
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze snelstartgids de versie Azure CLI 2.0.4 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren]( /cli/azure/install-azure-cli).
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze Quickstart gebruikmaken van Azure CLI versie 2.0.4 of hoger. Voer `az --version` uit om de versie te bekijken. Als u uw CLI wilt installeren of upgraden, raadpleegt u [De Azure CLI installeren]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
 Een resourcegroep maken met de opdracht [az group create](/cli/azure/group#az-group-create). Een Azure-resourcegroep is een logische groep waarin Azure-resources worden geïmplementeerd en beheerd.
 
-Het volgende voorbeeld wordt een resourcegroep met de naam *myResourceGroup* in de *westus2* locatie.
+In het volgende voor beeld wordt een resource groep met de naam *myResourceGroup* gemaakt op de locatie *westus2* .
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus2
@@ -55,7 +53,7 @@ Uitvoer:
 
 ## <a name="create-docker-swarm-cluster"></a>Docker Swarm-cluster maken
 
-Maak een Dock CE-cluster in Azure Container Service met de opdracht [az acs create](/cli/azure/acs#az-acs-create). Zie voor meer informatie over regio availaiblity van Docker CE [ACS-regio's voor Docker CE](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
+Maak een Dock CE-cluster in Azure Container Service met de opdracht [az acs create](/cli/azure/acs#az-acs-create). Zie [ACS-regio's voor docker CE](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md) voor informatie over de regio Availaiblity van DOCKer CE
 
 In het volgende voorbeeld wordt een cluster gemaakt met de naam *mySwarmCluster* met een Linux-hoofdknooppunt en drie knooppunten van de Linux-agent.
 
@@ -106,7 +104,6 @@ Maak een bestand met de naam `azure-vote.yaml` en kopieer de volgende inhoud in 
 
 ```yaml
 version: '3'
-services:
   azure-vote-back:
     image: redis
     ports:
@@ -171,7 +168,7 @@ In deze snelstartgids zijn vooraf gemaakte containerinstallatiekopieën gebruikt
 
 In deze snelstartgids hebt u een Docker Swarm-cluster geïmplementeerd. Vervolgens hebt u een toepassing met meerdere containers op dit cluster geïmplementeerd.
 
-Voor meer informatie over het integreren van Docker swarm met Azure DevOps, blijven de CI/CD met Docker Swarm en Azure DevOps.
+Voor meer informatie over het integreren van docker Swarm met Azure DevOps, gaat u door naar de CI/CD met docker Swarm en Azure DevOps.
 
 > [!div class="nextstepaction"]
-> [CI/CD met Docker Swarm en Azure DevOps](./container-service-docker-swarm-setup-ci-cd.md)
+> [CI/CD met docker Swarm en Azure DevOps](./container-service-docker-swarm-setup-ci-cd.md)

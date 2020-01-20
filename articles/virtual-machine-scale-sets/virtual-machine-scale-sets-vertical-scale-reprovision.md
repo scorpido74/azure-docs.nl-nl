@@ -1,26 +1,21 @@
 ---
-title: Schaal sets voor virtuele Azure-machines verticaal schalen | Microsoft Docs
+title: Schaal sets voor virtuele Azure-machines verticaal schalen
 description: Een virtuele machine verticaal schalen als reactie op het controleren van waarschuwingen met Azure Automation
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: 16b17421-6b8f-483e-8a84-26327c44e9d3
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: manayar
-ms.openlocfilehash: 87d2b19f6143f567782778e35c8511f233d8b0e8
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: fa1dda2907e8400491c8d18897bb41fb9cff49fd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958149"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274436"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Verticaal automatisch schalen met schaal sets voor virtuele machines
 
@@ -43,7 +38,7 @@ U kunt verticaal schalen instellen om te worden geactiveerd op basis van waarsch
 4. Een waarschuwing toevoegen aan de schaalset voor virtuele machines met behulp van een webhook-melding.
 
 > [!NOTE]
-> Omdat de grootte van de eerste virtuele machine kan worden geschaald, kan de grootte worden beperkt door de beschik baarheid van de andere grootten in de cluster huidige virtuele machine wordt geïmplementeerd in. In de gepubliceerde Automation-runbooks die in dit artikel worden gebruikt, wordt dit geval in rekening gebracht en schaalt deze alleen binnen de onderstaande VM-grootte paren. Dit betekent dat een virtuele machine van Standard_D1v2 niet plotseling kan worden geschaald naar Standard_G5 of omlaag geschaald naar Basic_A0. Ook omhoog/omlaag schalen van beperkte virtuele machines wordt niet ondersteund. U kunt kiezen tussen de volgende combi Naties van grootten:
+> Omdat de grootte van de eerste virtuele machine kan worden geschaald, kan de grootte worden beperkt door de beschik baarheid van de andere grootten in de cluster huidige virtuele machine wordt geïmplementeerd in. In de gepubliceerde Automation-runbooks die in dit artikel worden gebruikt, wordt dit geval in rekening gebracht en schaalt deze alleen binnen de onderstaande VM-grootte paren. Dit betekent dat een Standard_D1v2 virtuele machine niet plotseling kan worden geschaald naar Standard_G5 of omlaag geschaald naar Basic_A0. Ook omhoog/omlaag schalen van beperkte virtuele machines wordt niet ondersteund. U kunt kiezen tussen de volgende combi Naties van grootten:
 > 
 > | Combi natie van VM-grootten schalen |  |
 > | --- | --- |
@@ -109,7 +104,7 @@ Kies in het menu Runbooks de optie Blader galerie:
 
 De runbooks die moeten worden geïmporteerd, worden weer gegeven. Selecteer het runbook op basis van of u verticaal wilt schalen met of zonder opnieuw inrichten:
 
-![Runbooks galerie][gallery]
+![Runbookgalerie][gallery]
 
 ## <a name="add-a-webhook-to-your-runbook"></a>Een webhook toevoegen aan uw runbook
 

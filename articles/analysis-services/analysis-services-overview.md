@@ -4,15 +4,15 @@ description: Meer informatie over Azure Analysis Services, een volledig beheerd 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/30/2019
+ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee107ffdc677a0feffbdaf1441d77a8ed05f2c94
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: f72da87ae53039e825f2102bebb12e59821706f8
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749685"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274796"
 ---
 # <a name="what-is-azure-analysis-services"></a>Wat is Azure Analysis Services?
 
@@ -34,7 +34,7 @@ Azure Analysis Services kan worden geïntegreerd met veel Azure-services, zodat 
 
 ## <a name="the-right-tier-when-you-need-it"></a>Altijd de juiste laag
 
-Azure Analysis Services is beschikbaar in de servicelagen **Developer**, **Basic** en **Standard**. Binnen elke servicelaag variëren de abonnementskosten afhankelijk van verwerkingskracht, QPU's en geheugen. Wanneer u een server maakt, selecteert u binnen een servicelaag een abonnement. U kunt een abonnement binnen dezelfde servicelaag omhoog of omlaag bijstellen en ook upgraden naar een hogere servicelaag. U kunt echter niet downgraden naar een lagere servicelaag.
+Azure Analysis Services is beschikbaar in de servicelagen **Developer**, **Basic** en **Standard**. Binnen elke laag zijn de plan kosten afhankelijk van de verwerkings kracht, Query's verwerkings eenheden (Qpu's) en geheugen grootte. Wanneer u een server maakt, selecteert u binnen een servicelaag een abonnement. U kunt een abonnement binnen dezelfde servicelaag omhoog of omlaag bijstellen en ook upgraden naar een hogere servicelaag. U kunt echter niet downgraden naar een lagere servicelaag.
 
 ### <a name="developer-tier"></a>Ontwikkelaarslaag
 
@@ -47,7 +47,7 @@ Deze laag wordt aanbevolen voor evaluatie-, ontwikkelings- en testscenario's. E�
 
 ### <a name="basic-tier"></a>Basic-laag
 
-Deze-laag wordt aanbevolen voor productieoplossingen met kleinere tabellarische modellen, een beperkt aantal gelijktijdige gebruikers en eenvoudige vereisten voor gegevensvernieuwing. Uitschalen van queryreplica’s *is niet beschikbaar* voor deze laag. Perspectieven, meerdere partities en functies van het tabellarische DirectQuery-model *worden niet ondersteund* in deze laag.  
+Deze-laag wordt aanbevolen voor productieoplossingen met kleinere tabellarische modellen, een beperkt aantal gelijktijdige gebruikers en eenvoudige vereisten voor gegevensvernieuwing. Het uitbreiden van de query replica *is niet beschikbaar* voor deze laag. Perspectieven, meerdere partities en functies van het tabellarische DirectQuery-model *worden niet ondersteund* in deze laag.  
 
 |Plan  |QPU's  |Geheugen (GB)  |
 |---------|---------|---------|
@@ -161,7 +161,7 @@ Op serverniveau biedt Analysis Services firewall, Azure-verificatie, serverbehee
 
 De firewall van Azure Analysis Services blokkeert alle clientverbindingen behalve die met IP-adressen die zijn opgegeven in regels. Firewall-beveiliging is standaard niet ingeschakeld voor nieuwe servers. Het verdient aanbeveling om onmiddellijk nadat de server is gemaakt de firewallbeveiliging in te schakelen en de regels te configureren als onderdeel van een serverinrichtingsscript of in de portal. Configureer regels voor toegestane IP-adressen als individuele client-IP-adressen of als een bereik. Verbindingen van Power BI (service) kunnen ook worden toegestaan of geblokkeerd. Configureer de firewall en regels in de portal of met behulp van PowerShell. Zie [Configure a server firewall](analysis-services-qs-firewall.md) (een serverfirewall configureren) voor meer informatie.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
 Gebruikersverificatie wordt afgehandeld door [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md). Bij het inloggen gebruiken gebruikers de identiteit van een organisatie-account met op rollen gebaseerde toegang tot de database. Gebruikers-id's moeten lid zijn van de standaard Azure Active Directory voor het abonnement waarin de server is ondergebracht. Raadpleeg voor meer informatie [Verificatie en gebruikersmachtigingen](analysis-services-manage-users.md).
 
@@ -232,7 +232,7 @@ Azure Analysis Services ondersteunt ook het gebruik van [DMV's (dynamische behee
 
 Specifieke documentatie bij Azure Analysis Services is hier opgenomen. Gebruik de inhoudsopgave aan de linkerkant van uw browserscherm om artikelen te zoeken. 
 
-Omdat Azure Analysis Services tabellaire modellen veel hetzelfde zijn als tabellaire modellen in SQL Server Analysis Services, is er een uitgebreide bibliotheek met gedeelde conceptuele, procedures, ontwikkel aars en naslag artikelen in [SQL Server Analysis Services documentatie](https://docs.microsoft.com/analysis-services/analysis-services-overview). Bij artikelen in de documentatie van SQL Server Analysis Services wordt aangegeven of ze ook van toepassing zijn op Azure Analysis Services door de banner VAN TOEPASSING OP onder de titel.
+Omdat Azure Analysis Services tabellaire modellen veel hetzelfde zijn als tabellaire modellen in SQL Server Analysis Services, is er een uitgebreide bibliotheek met zelf studies, concepten, procedures, ontwikkel aars en naslag informatie over gedeelde gegevens modellering in [SQL Server Analysis Services documentatie](https://docs.microsoft.com/analysis-services/analysis-services-overview). Bij artikelen in de documentatie van SQL Server Analysis Services wordt aangegeven of ze ook van toepassing zijn op Azure Analysis Services door de banner VAN TOEPASSING OP onder de titel.
 
 ![Gedeelde documentatie](./media/analysis-services-overview/aas-overview-applies-to.png)
 

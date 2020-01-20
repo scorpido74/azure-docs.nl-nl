@@ -1,26 +1,19 @@
 ---
-title: StorSimple Virtual array inrichten in VMware | Microsoft Docs
+title: StorSimple Virtual array inrichten in VMware
 description: In deze tweede zelf studie in StorSimple Virtual array implementation Series wordt een virtueel apparaat ingericht in VMware.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 0425b2a9-d36f-433d-8131-ee0cacef95f8
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab5ad8acc5d0769a19a4022c55e0461e7ce42762
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 5f5ded3faec3a080022eea70de2cca5d27529c4d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516828"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76272095"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple Virtual array implementeren-inrichten in VMware
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
@@ -31,7 +24,7 @@ ms.locfileid: "68516828"
 
 In deze zelf studie wordt beschreven hoe u een virtuele StorSimple-matrix inricht en verbindt op een hostsysteem met VMware ESXi 5,0, 5,5, 6,0 of 6,5. Dit artikel is van toepassing op de implementatie van StorSimple virtuele arrays in Azure Portal en de Microsoft Azure Government Cloud.
 
-U hebt beheerdersmachtigingen nodig voor het inrichten van een virtueel apparaat en om er verbinding mee te maken. De inrichting en de initiële installatie kan circa tien minuten duren.
+U hebt beheerdersmachtigingen nodig voor het inrichten van een virtueel apparaat en om er verbinding mee te maken. De inrichting en de initiële installatie kan ongeveer tien minuten duren.
 
 ## <a name="provisioning-prerequisites"></a>Vereisten inrichten
 De vereisten voor het inrichten van een virtueel apparaat op een hostsysteem met VMware ESXi 5,0, 5,5, 6,0 of 6,5, zijn als volgt.
@@ -40,7 +33,7 @@ De vereisten voor het inrichten van een virtueel apparaat op een hostsysteem met
 Zorg voordat u begint voor het volgende:
 
 * U hebt alle stappen [voor het voorbereiden van de virtuele StorSimple-matrix in de portal](storsimple-virtual-array-deploy1-portal-prep.md)voltooid.
-* U hebt de installatie kopie van het virtuele apparaat voor VMware gedownload van de Azure Portal. Zie **voor meer informatie stap 3: Down load de installatie kopie** van het virtuele apparaat van [de hand leiding voor het maken van de portal voor StorSimple Virtual array](storsimple-virtual-array-deploy1-portal-prep.md).
+* U hebt de installatie kopie van het virtuele apparaat voor VMware gedownload van de Azure Portal. Zie voor meer informatie **stap 3: de installatie kopie van het virtuele apparaat downloaden** van [de hand leiding voor het maken van de portal voor StorSimple Virtual array](storsimple-virtual-array-deploy1-portal-prep.md).
 
 ### <a name="for-the-storsimple-virtual-device"></a>Voor het virtuele StorSimple-apparaat
 Voordat u een virtueel apparaat implementeert, controleert u of:
@@ -65,7 +58,7 @@ Als u een virtueel apparaat wilt inrichten en er verbinding mee wilt maken, moet
 2. Een virtueel apparaat inrichten in uw Hyper Visor.
 3. Start het virtuele apparaat en haal het IP-adres op.
 
-## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>Stap 1: Zorg ervoor dat het hostsysteem voldoet aan de minimale vereisten voor virtuele apparaten
+## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>Stap 1: controleren of het hostsysteem voldoet aan de minimale vereisten voor virtuele apparaten
 Als u een virtueel apparaat wilt maken, hebt u het volgende nodig:
 
 * Toegang tot een hostsysteem met VMware ESXi Server 5,0, 5,5, 6,0 of 6,5.
@@ -76,13 +69,13 @@ Als u een virtueel apparaat wilt maken, hebt u het volgende nodig:
   * Eén netwerkinterface die is verbonden met het netwerk en verkeer naar internet kan routeren. De minimale Internet bandbreedte moet 5 Mbps zijn om optimaal te kunnen werken met het apparaat.
   * Een virtuele schijf van 500 GB voor gegevens.
 
-## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>Stap 2: Een virtueel apparaat in hypervisor inrichten
+## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>Stap 2: een virtueel apparaat inrichten in Hyper Visor
 Voer de volgende stappen uit voor het inrichten van een virtueel apparaat in de hypervisor.
 
 1. Kopieer de installatiekopie van het virtuele apparaat naar uw systeem. U hebt deze virtuele installatie kopie gedownload via de Azure Portal.
 
    1. Zorg ervoor dat u het meest recente afbeeldings bestand hebt gedownload. Als u de afbeelding eerder hebt gedownload, downloadt u deze opnieuw om te controleren of u over de meest recente installatie kopie beschikt. De nieuwste afbeelding heeft twee bestanden (in plaats van één).
-   2. Noteer de locatie waar u de installatiekopie naartoe hebt gekopieerd, want u hebt deze installatiekopie verderop in de procedure nodig.
+   2. Noteer de locatie waar u de installatiekopie naar hebt gekopieerd, want u gaat deze installatiekopie verderop in de procedure gebruiken.
 
 2. Meld u aan bij de ESXi-server met behulp van de vSphere-client. U moet beheerdersbevoegdheden hebben om een virtuele machine te kunnen maken.
 
@@ -108,7 +101,7 @@ Voer de volgende stappen uit voor het inrichten van een virtueel apparaat in de 
 9. De nieuwe map wordt weergegeven in het linkerdeelvenster van de **gegevensopslagbrowser**.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image9.png)
-10. Klik op het pictogram ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) uploaden en selecteer **bestand uploaden**.
+10. Klik op het pictogram voor uploaden ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) en selecteer **bestand uploaden**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image11.png)
 11. Blader en wijs naar de VMDK-bestanden die u hebt gedownload. Er zijn twee bestanden. Selecteer een bestand dat u wilt uploaden.
@@ -131,7 +124,7 @@ Voer de volgende stappen uit voor het inrichten van een virtueel apparaat in de 
 17. Selecteer op de pagina **opslag** een gegevens opslag die u wilt gebruiken om uw vm in te richten.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image18.png)
-18. Selecteer**op de pagina **versie van virtuele machine** de versie van de virtuele machine: 8**.
+18. Selecteer op de pagina **versie van virtuele machine** de versie van de **virtuele machine: 8**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
 19. Op de pagina **gast besturingssysteem** selecteert u het **gast besturingssysteem** als **Windows**. Selecteer voor **versie**in de vervolg keuzelijst de optie **micro soft Windows Server 2012 (64-bits)** .
@@ -161,7 +154,7 @@ Voer de volgende stappen uit voor het inrichten van een virtueel apparaat in de 
 27. Op de pagina **Gereed om te voltooien** controleert u alle instellingen voor de nieuwe virtuele machine. Controleer **de instellingen voor de virtuele machine voordat u de bewerking hebt voltooid**. Klik op **Doorgaan**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image28.png)
-28. Zoek op de pagina **virtual machines eigenschappen** op het tabblad **Hardware** de hardware van het apparaat. Selecteer **nieuwe harde schijf**. Klik op **Toevoegen**.
+28. Zoek op de pagina **virtual machines eigenschappen** op het tabblad **Hardware** de hardware van het apparaat. Selecteer **nieuwe harde schijf**. Klik op **Add**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
 29. U ziet het venster **Hardware toevoegen** . Selecteer op de pagina **type apparaat** onder **Kies het type apparaat dat u wilt toevoegen de**optie **harde schijf**en klik op **volgende**.
@@ -170,7 +163,7 @@ Voer de volgende stappen uit voor het inrichten van een virtueel apparaat in de 
 30. Kies op de pagina **een schijf selecteren** de optie **een nieuwe virtuele schijf maken**. Klik op **Volgende**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image31.png)
-31. Op de pagina **een schijf maken** wijzigt u de **schijf grootte** in 500 GB (of meer). Hoewel 500 GB de minimale vereiste is, kunt u altijd een grotere schijf inrichten. Houd er rekening mee dat u de schijf niet kunt uitbreiden of verkleinen wanneer deze eenmaal is ingericht. Raadpleeg de sectie grootte in het [document best practices](storsimple-ova-best-practices.md)voor meer informatie over de grootte van de schijf die moet worden ingericht. Onder **schijf inrichting**selecteert u **Thin**provisioning. Klik op **Volgende**.
+31. Op de pagina **een schijf maken** wijzigt u de **schijf grootte** in 500 GB (of meer). Hoewel 500 GB de minimale vereiste is, kunt u altijd een grotere schijf inrichten. Houd er rekening mee dat u de schijf niet kunt uitbreiden of verkleinen wanneer deze eenmaal is ingericht. Raadpleeg de sectie grootte in het [document best practices](storsimple-ova-best-practices.md)voor meer informatie over de grootte van de schijf die moet worden ingericht. Onder **schijf inrichting**selecteert u **Thin Provisioning**. Klik op **Volgende**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image32.png)
 32. Accepteer de standaard instellingen op de pagina **Geavanceerde opties** .
@@ -191,14 +184,14 @@ Uw virtuele machine is nu ingericht. De volgende stap is om deze machine te late
 > [!NOTE]
 > U wordt aangeraden VMware-hulpprogram ma's niet te installeren op uw virtuele array (zoals hierboven ingericht). Als u VMware-hulpprogramma's installeert, leidt dat tot een niet-ondersteunde configuratie.
 
-## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>Stap 3: Het virtuele apparaat starten en het IP-adres ophalen
+## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>Stap 3: het virtuele apparaat starten en het IP-adres ophalen
 Voer de volgende stappen uit om uw virtuele apparaat te starten en verbinding te maken met het apparaat.
 
 #### <a name="to-start-the-virtual-device"></a>Het virtuele apparaat starten
 1. Start het virtuele apparaat. Selecteer uw apparaat in de vSphere Configuration Manager in het linkerdeel venster en klik met de rechter muisknop om het context menu weer te geven. Selecteer **Aanzetten** en selecteer vervolgens **Inschakelen**. Nu zou uw virtuele machine moeten zijn ingeschakeld. U kunt de status bekijken in het deel venster met de onderste **recente taken** van de vSphere-client.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image37.png)
-2. Het duurt enkele minuten voordat de installatie taken zijn voltooid. Wanneer het apparaat wordt uitgevoerd, gaat u naar het tabblad **console** . CTRL + ALT + DELETE verzenden om u aan te melden bij het apparaat. U kunt ook de cursor naar het console venster wijzen en op CTRL + ALT + INSERT drukken. De standaard gebruiker is *StorSimpleAdmin* en het standaard wachtwoord is *Wachtwoord1*.
+2. Het duurt enkele minuten voordat de installatie taken zijn voltooid. Wanneer het apparaat wordt uitgevoerd, gaat u naar het tabblad **console** . Ctrl + Alt + Delete verzenden om u aan te melden bij het apparaat. U kunt ook de cursor naar het console venster wijzen en op CTRL + ALT + INSERT drukken. De standaard gebruiker is *StorSimpleAdmin* en het standaard wachtwoord is *Wachtwoord1*.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. Uit veiligheidsoverwegingen verloopt het beheerderswachtwoord voor het apparaat na de eerste aanmelding. U wordt gevraagd om het wachtwoord te wijzigen.
@@ -215,7 +208,7 @@ Voer de volgende stappen uit om uw virtuele apparaat te starten en verbinding te
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image42m.png)
 
    Configureer vervolgens het netwerk.
-7. Gebruik de `Get-HcsIpAddress` opdracht om de netwerk interfaces weer te geven die zijn ingeschakeld op het virtuele apparaat. Als voor uw apparaat één netwerkinterface is ingeschakeld, wordt `Ethernet` als standaardnaam aan deze interface toegewezen.
+7. Gebruik de opdracht `Get-HcsIpAddress` om de netwerk interfaces weer te geven die zijn ingeschakeld op het virtuele apparaat. Als voor uw apparaat één netwerkinterface is ingeschakeld, wordt `Ethernet` als standaardnaam aan deze interface toegewezen.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image43m.png)
 8. Gebruik de cmdlet `Set-HcsIpAddress` om het netwerk te configureren. Hieronder kunt u een voorbeeld bekijken:
@@ -223,7 +216,7 @@ Voer de volgende stappen uit om uw virtuele apparaat te starten en verbinding te
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image44.png)
-9. Nadat de initiële installatie voltooid is en het apparaat is opgestart, ziet u de bannertekst van het apparaat. Noteer het IP-adres en de URL die in de bannertekst worden weergegeven om het apparaat te beheren. U gebruikt dit IP-adres om verbinding te maken met de Web-UI van uw virtuele apparaat en de lokale installatie en registratie te volt ooien.
+9. Wanneer de initiële installatie is voltooid en het apparaat is opgestart, ziet u de bannertekst van het apparaat. Noteer het IP-adres en de URL die in de bannertekst worden weergegeven om het apparaat te beheren. U gebruikt dit IP-adres om verbinding te maken met de Web-UI van uw virtuele apparaat en de lokale installatie en registratie te volt ooien.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image45.png)
 10. Beschrijving Voer deze stap alleen uit als u uw apparaat in de Government Cloud implementeert. U schakelt nu de FIPS-modus (Verenigde Staten Federal Information Processing Standard) op het apparaat in. De FIPS 140-standaard definieert cryptografische algoritmen die zijn goedgekeurd voor gebruik door Amerikaanse Federal Government-computer systemen voor de beveiliging van gevoelige gegevens.
@@ -238,7 +231,7 @@ Voer de volgende stappen uit om uw virtuele apparaat te starten en verbinding te
        >
        >
 
-Als uw apparaat niet voldoet aan de minimale configuratievereisten, wordt er een fout weergegeven in de bannertekst (zie hieronder). U moet de apparaatconfiguratie wijzigen zodat er voldoende resources zijn om aan de minimale vereisten te voldoen. Daarna kunt u het apparaat opnieuw opstarten en verbinding maken met het apparaat. Raadpleeg de minimale configuratie vereisten in [stap 1: Zorg ervoor dat het hostsysteem voldoet aan de](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements)minimale vereisten voor virtuele apparaten.
+Als uw apparaat niet voldoet aan de minimale configuratievereisten, wordt er een fout weergegeven in de bannertekst (zie hieronder). U moet de apparaatconfiguratie wijzigen zodat er voldoende resources zijn om aan de minimale vereisten te voldoen. U kunt het apparaat vervolgens opnieuw opstarten en er verbinding mee maken. Raadpleeg de minimale configuratievereisten in [Stap 1: Controleren of het hostsysteem voldoet aan minimale vereisten voor virtuele apparaten](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements).
 
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image46.png)
 

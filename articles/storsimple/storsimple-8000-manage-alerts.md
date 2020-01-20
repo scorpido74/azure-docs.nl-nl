@@ -1,233 +1,225 @@
 ---
-title: Weergeven en beheren van waarschuwingen voor StorSimple 8000-apparaat | Microsoft Docs
-description: Beschrijving van waarschuwing StorSimple-voorwaarden en ernst, meldingen van waarschuwingen configureren en het gebruik van de StorSimple Device Manager-service voor het beheren van waarschuwingen.
-services: storsimple
-documentationcenter: NA
+title: Waarschuwingen voor StorSimple 8000 Series-apparaat weer geven en beheren
+description: Beschrijft StorSimple-waarschuwings voorwaarden en ernst, het configureren van waarschuwings meldingen en het gebruik van de StorSimple Apparaatbeheer-service voor het beheren van waarschuwingen.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: alkohli
-ms.openlocfilehash: c3be0cdf2ef33c26dfa9d177e9b34f808b1b862a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ff50836e1438b8d35f26ddfdf165084406f52faf
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60320335"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270826"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>De StorSimple Device Manager-service gebruiken voor het StorSimple-waarschuwingen weergeven en beheren
+# <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>De StorSimple Apparaatbeheer-service gebruiken voor het weer geven en beheren van StorSimple-waarschuwingen
 
 ## <a name="overview"></a>Overzicht
 
-De **waarschuwingen** blade in de StorSimple Device Manager-service biedt een manier om te controleren en het StorSimple-apparaat-meldingen op basis van realtime wissen. Vanaf deze blade kunt u de statusproblemen van uw StorSimple-apparaten en de algemene Microsoft Azure StorSimple-oplossing centraal te bewaken.
+De Blade **waarschuwingen** in de StorSimple-Apparaatbeheer service biedt u een manier om op basis van StorSimple-gerelateerde waarschuwingen te controleren en te wissen. Op deze Blade kunt u de status problemen van uw StorSimple-apparaten en de algehele Microsoft Azure StorSimple oplossing centraal bewaken.
 
-Deze zelfstudie beschrijft algemene voorwaarden van de waarschuwing, ernstniveau van waarschuwingen en meldingen van waarschuwingen configureren. Daarnaast bevat deze waarschuwing Naslaggids tabellen, zodat ze snel vinden van een specifieke waarschuwing en reageren op de juiste wijze.
+In deze zelf studie worden veelvoorkomende waarschuwings voorwaarden en waarschuwings Ernst niveaus beschreven en wordt uitgelegd hoe u waarschuwings meldingen kunt configureren. Daarnaast bevat het een snelle naslag tabel voor waarschuwingen, waarmee u snel een specifieke waarschuwing kunt vinden en op de juiste wijze kunt reageren.
 
-![Pagina met waarschuwingen](./media/storsimple-8000-manage-alerts/configure-alerts-email11.png)
+![Pagina waarschuwingen](./media/storsimple-8000-manage-alerts/configure-alerts-email11.png)
 
-## <a name="common-alert-conditions"></a>Algemene voorwaarden van de waarschuwing
+## <a name="common-alert-conditions"></a>Algemene waarschuwings voorwaarden
 
-Uw StorSimple-apparaat genereert waarschuwingen in reactie op tal van voorwaarden. Hier volgen de meest voorkomende typen waarschuwingen voorwaarden:
+Uw StorSimple-apparaat genereert waarschuwingen als reactie op verschillende voor waarden. Hier volgen de meest voorkomende typen waarschuwings voorwaarden:
 
-* **Hardwareproblemen** – deze meldingen laten u weten over de status van uw hardware. Ze laten u weten als firmware-upgrades nodig zijn, als een netwerkinterface heeft problemen of als er een probleem met een van uw schijven.
-* **Problemen met de netwerkverbinding** – deze waarschuwingen gegenereerd wanneer er problemen bij het overbrengen van gegevens. Communicatieproblemen kunnen optreden tijdens de overdracht van gegevens naar en vanuit de Azure storage-account of vanwege een gebrek aan connectiviteit tussen de apparaten en de StorSimple Device Manager-service. Communicatieproblemen zijn enkele van de moeilijkst om op te lossen omdat er zoveel Point of failure. U moet altijd eerst controleren of verbinding met het netwerk en toegang tot Internet beschikbaar zijn voordat u doorgaat u aan bij de meer geavanceerde probleemoplossing. Voor hulp bij het oplossen van problemen, gaat u naar [problemen oplossen met de cmdlet Test-Connection](storsimple-8000-troubleshoot-deployment.md).
-* **Prestatieproblemen** – deze waarschuwingen zijn veroorzaakt doordat het systeem is niet optimaal, zoals wanneer het zich onder een zware belasting.
+* **Hardwareproblemen** : deze waarschuwingen geven u informatie over de status van uw hardware. Ze laten u weten of firmware-upgrades nodig zijn, als een netwerk interface problemen heeft of als er een probleem is met een van uw gegevens stations.
+* **Connectiviteits problemen** : deze waarschuwingen treden op wanneer er problemen zijn bij het overbrengen van gegevens. Er kunnen communicatie problemen optreden tijdens de overdracht van gegevens naar en van het Azure-opslag account of vanwege een gebrek aan connectiviteit tussen de apparaten en de StorSimple-Apparaatbeheer service. Communicatie problemen zijn moeilijk te verhelpen, omdat er zoveel storings punten zijn. U moet altijd eerst controleren of de netwerk verbinding en Internet toegang beschikbaar zijn voordat u doorgaat met geavanceerdere probleem oplossing. Voor hulp bij het oplossen van problemen gaat u naar [problemen oplossen met de cmdlet Test-Connection](storsimple-8000-troubleshoot-deployment.md).
+* **Prestatie problemen** : deze waarschuwingen worden veroorzaakt wanneer uw systeem niet optimaal presteert, bijvoorbeeld wanneer het een zware belasting is.
 
-Bovendien ziet u mogelijk waarschuwingen met betrekking tot beveiliging, updates of mislukte.
+Daarnaast ziet u mogelijk waarschuwingen met betrekking tot beveiliging, updates of mislukte taken.
 
-## <a name="alert-severity-levels"></a>Ernstniveau van waarschuwingen
+## <a name="alert-severity-levels"></a>Ernst niveaus van waarschuwingen
 
-Waarschuwingen hebben verschillende niveaus, afhankelijk van de impact die de waarschuwing situatie heeft en de noodzaak van een reactie op de waarschuwing. De niveaus zijn:
+Waarschuwingen hebben verschillende ernst niveaus, afhankelijk van de impact die de waarschuwings situatie heeft en de nood zaak van een reactie op de waarschuwing. Dit zijn de vijf ernstniveaus:
 
-* **Kritieke** : deze waarschuwing wordt in reactie op een voorwaarde die invloed heeft op de geslaagde prestaties van uw systeem. Actie vereist om ervoor te zorgen dat de service niet wordt onderbroken StorSimple.
-* **Waarschuwing** – dit probleem kritiek kan worden als niet is opgelost. U moet de situatie onderzoeken en elke actie die vereist is om te wissen van het probleem.
-* **Informatie** : deze waarschuwing bevat informatie die nuttig zijn kan bij het bijhouden en beheren van uw systeem.
+* **Kritiek** : deze waarschuwing is in reactie op een voor waarde die van invloed is op de geslaagde prestaties van uw systeem. Actie is vereist om ervoor te zorgen dat de StorSimple-service niet wordt onderbroken.
+* **Waarschuwing** : dit probleem kan cruciaal worden als het niet is opgelost. U moet de situatie onderzoeken en alle acties uitvoeren die nodig zijn om het probleem op te lossen.
+* **Informatie** : deze waarschuwing bevat informatie die nuttig kan zijn bij het volgen en beheren van uw systeem.
 
 ## <a name="configure-alert-settings"></a>Instellingen voor waarschuwingen configureren
 
-U kunt kiezen of u wilt een melding per e-mail van de waarschuwing voorwaarden voor elk van uw StorSimple-apparaten. Bovendien kunt u andere ontvangers in waarschuwingsmeldingen identificeren door te voeren van hun e-mailadressen in de **andere e-mailontvangers** vak, gescheiden door puntkomma's.
+U kunt kiezen of u per e-mail wilt worden geïnformeerd over waarschuwings voorwaarden voor elk van uw StorSimple-apparaten. Daarnaast kunt u andere ontvangers van waarschuwings meldingen identificeren door hun e-mail adressen in te voeren in het vak **andere ontvangers van e-mail** , gescheiden door punt komma's.
 
 > [!NOTE]
-> U kunt maximaal 20 e-mailadressen per apparaat invoeren.
+> U kunt Maxi maal 20 e-mail adressen per apparaat invoeren.
 
-Nadat u e-mailmelding voor een apparaat hebt ingeschakeld, wordt een e-mailbericht telkens wanneer een kritieke waarschuwing wordt gegenereerd door leden van de meldingenlijst ontvangen. De berichten worden verzonden vanuit *storsimple-waarschuwingen-noreply\@mail.windowsazure.com* en vindt u een voorwaarde voor de waarschuwing. Ontvangers kunnen klikken op **Afmelden** om zelf te verwijderen uit de lijst met e-melding.
+Nadat u e-mail meldingen voor een apparaat hebt ingeschakeld, ontvangen leden van de lijst met meldingen een e-mail bericht telkens wanneer een kritieke waarschuwing wordt weer gegeven. De berichten worden verzonden vanuit *storsimple-Alerts-reply\@mail.windowsazure.com* en de waarschuwings voorwaarde wordt beschreven. Ontvangers kunnen klikken op **Afmelden** om zichzelf te verwijderen uit de lijst met e-mail meldingen.
 
-#### <a name="to-enable-email-notification-of-alerts-for-a-device"></a>Aan het e-mailmeldingen van waarschuwingen voor een apparaat inschakelen
-1. Ga naar uw StorSimple-apparaatbeheerservice. Selecteer in de lijst met apparaten en klikt u op het apparaat dat u wilt configureren.
-2. Ga naar **instellingen** > **algemene** voor het apparaat.
+#### <a name="to-enable-email-notification-of-alerts-for-a-device"></a>E-mail meldingen van waarschuwingen voor een apparaat inschakelen
+1. Ga naar uw StorSimple-apparaatbeheerservice. Selecteer in de lijst met apparaten en klik op het apparaat dat u wilt configureren.
+2. Ga naar **instellingen** > **Algemeen** voor het apparaat.
 
-   ![Waarschuwingen-blade](./media/storsimple-8000-manage-alerts/configure-alerts-email2.png)
+   ![Blade waarschuwingen](./media/storsimple-8000-manage-alerts/configure-alerts-email2.png)
    
-2. In de **algemene instellingen** blade, Ga naar **waarschuwingsinstellingen** en stel het volgende:
+2. Ga op de Blade **algemene instellingen** naar **instellingen voor waarschuwingen** en stel het volgende in:
    
-   1. In de **e-mailmelding verzenden** veld **Ja**.
-   2. In de **e-servicebeheerders** veld **Ja** naar de servicebeheerder en alle medebeheerders de waarschuwingsmeldingen moeten ontvangen.
-   3. In de **andere e-mailontvangers** en voer de e-mailadressen van alle andere ontvangers die de waarschuwingsmeldingen moeten ontvangen. Geef de namen in de indeling *iemand\@somewhere.com*. Gebruik puntkomma te scheiden van de e-mailadressen. U kunt maximaal 20 e-mailadressen per apparaat configureren. 
+   1. Selecteer **Ja**in het veld **e-mail melding verzenden** .
+   2. Selecteer in het veld **e-mail Service Administrators** de optie **Ja** om de service beheerder en alle mede beheerders de waarschuwings meldingen te laten ontvangen.
+   3. Voer in het veld **andere e-mail ontvangers** de e-mail adressen in van alle andere ontvangers die de meldingen moeten ontvangen. Voer namen in de notatie *iemand\@somewhere.com*in. Gebruik punt komma's om de e-mail adressen van elkaar te scheiden. U kunt Maxi maal 20 e-mail adressen per apparaat configureren. 
       
-3. Als u wilt een test-e-mailmelding verzenden, klikt u op **testbericht verzenden**. De StorSimple Device Manager-service wordt statusberichten weergegeven als de Testmelding wordt doorgestuurd.
+3. Als u een melding voor een test bericht wilt verzenden, klikt u op **test bericht verzenden**. In de StorSimple-Apparaatbeheer service worden status berichten weer gegeven wanneer de test melding wordt doorgestuurd.
 
-    ![instellingen voor waarschuwingen](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
+    ![Waarschuwings instellingen](./media/storsimple-8000-manage-alerts/configure-alerts-email3.png)
 
-4. U ziet een melding wanneer de test-e-mailbericht is verzonden. 
+4. U ziet een melding wanneer de test-e-mail wordt verzonden. 
    
-    ![Waarschuwingen test-e-mailmelding verzonden](./media/storsimple-8000-manage-alerts/configure-alerts-email4.png)
+    ![E-mail meldingen test melding verzonden](./media/storsimple-8000-manage-alerts/configure-alerts-email4.png)
    
    > [!NOTE]
-   > Als het meldingsbericht test kan niet worden verzonden, wordt de service StorSimple Device Manager een bijpassend foutbericht weergegeven. Wacht een paar minuten en probeer het vervolgens opnieuw uw test-melding verzenden. 
+   > Als het bericht van de test melding niet kan worden verzonden, wordt in de StorSimple-Apparaatbeheer-service een geschikt fout bericht weer gegeven. Wacht een paar minuten en probeer het bericht over het testen opnieuw te verzenden. 
 
-5. Nadat u de configuratie hebt voltooid, klikt u op **opslaan**. Klik op **Ja** als u om bevestiging wordt gevraagd.
+5. Wanneer u de configuratie hebt voltooid, klikt u op **Opslaan**. Klik op **Ja** als u om bevestiging wordt gevraagd.
 
-     ![Waarschuwingen test-e-mailmelding verzonden](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
+     ![E-mail meldingen test melding verzonden](./media/storsimple-8000-manage-alerts/configure-alerts-email5.png)
 
-## <a name="view-and-track-alerts"></a>Waarschuwingen weergeven en bijhouden
+## <a name="view-and-track-alerts"></a>Waarschuwingen weer geven en bijhouden
 
-De overzichtsblade van de StorSimple Device Manager-service biedt u een snelle weergave op het aantal waarschuwingen op uw apparaten, gerangschikt op ernstniveau.
+De Blade StorSimple Apparaatbeheer service overzicht bevat een kort overzicht van het aantal waarschuwingen op uw apparaten, gerangschikt op Ernst niveau.
 
-![Waarschuwingen-dashboard](./media/storsimple-8000-manage-alerts/device-summary4.png)
+![Waarschuwingen dashboard](./media/storsimple-8000-manage-alerts/device-summary4.png)
 
-Hiermee opent u de ernst op te klikken op de **waarschuwingen** blade. De resultaten bevatten alleen de waarschuwingen die overeenkomen met die ernstniveau.
+Als u op het niveau Ernst klikt, wordt de Blade **waarschuwingen** geopend. De resultaten omvatten alleen de waarschuwingen die overeenkomen met het Ernst niveau.
 
-Te klikken op een waarschuwing in de lijst geeft u aanvullende informatie voor de waarschuwing, de laatste keer dat de waarschuwing is gemeld, waaronder het aantal exemplaren van de waarschuwing op het apparaat en de aanbevolen actie de waarschuwing te verhelpen. Als dit een waarschuwing voor hardware is, identificeert deze ook de hardware-onderdeel.
+Als u op een waarschuwing in de lijst klikt, krijgt u extra informatie over de waarschuwing, waaronder de laatste keer dat de waarschuwing is gerapporteerd, het aantal instanties van de waarschuwing op het apparaat en de aanbevolen actie om de waarschuwing op te lossen. Als het een hardware-waarschuwing is, wordt het hardware-onderdeel ook geïdentificeerd.
 
-![Voorbeeld van de hardware-waarschuwing](./media/storsimple-8000-manage-alerts/configure-alerts-email14.png)
+![Voor beeld van hardware-waarschuwing](./media/storsimple-8000-manage-alerts/configure-alerts-email14.png)
 
-Als u de gegevens te verzenden naar Microsoft Support nodig hebt, kunt u de details van de waarschuwing kopiëren naar een tekstbestand. Nadat u de aanbeveling wordt gevolgd en de waarschuwingsvoorwaarde on-premises opgelost, moet u de waarschuwing van het apparaat wissen door het selecteren van de waarschuwing in de **waarschuwingen** blade en te klikken op **wissen**. Schakel meerdere waarschuwingen, elke waarschuwing selecteert, klikt u op een kolom met uitzondering van de **waarschuwing** kolom en klik vervolgens op **wissen** nadat u hebt geselecteerd de waarschuwingen worden gewist. Houd er rekening mee dat sommige waarschuwingen automatisch gewist wanneer het probleem opgelost is of wanneer het systeem de waarschuwing met nieuwe gegevens bijgewerkt.
+U kunt de waarschuwings Details naar een tekst bestand kopiëren als u de informatie naar Microsoft Ondersteuning moet verzenden. Nadat u de aanbeveling hebt gevolgd en de waarschuwings voorwaarde on-premises hebt opgelost, moet u de waarschuwing van het apparaat wissen door de waarschuwing te selecteren op de Blade **waarschuwingen** en op **wissen**te klikken. Als u meerdere waarschuwingen wilt wissen, selecteert u elke waarschuwing, klikt u op een wille keurige kolom, behalve de kolom **waarschuwing** , en klikt u vervolgens op **wissen** nadat u alle waarschuwingen hebt geselecteerd die moeten worden gewist. Houd er rekening mee dat sommige waarschuwingen automatisch worden gewist wanneer het probleem is opgelost of wanneer de waarschuwing door het systeem wordt bijgewerkt met nieuwe gegevens.
 
-Wanneer u klikt op **wissen**, hebt u de mogelijkheid om opmerkingen over de waarschuwing en de stappen die u hebt genomen om het probleem te verhelpen. Sommige gebeurtenissen worden verwijderd door het systeem als een andere gebeurtenis wordt geactiveerd met nieuwe gegevens. In dat geval ziet u het volgende bericht weergegeven.
+Wanneer u op **wissen**klikt, kunt u opmerkingen over de waarschuwing geven en de stappen die u hebt genomen om het probleem op te lossen. Sommige gebeurtenissen worden door het systeem gewist als een andere gebeurtenis wordt geactiveerd met nieuwe gegevens. In dat geval wordt het volgende bericht weer gegeven.
 
-![Waarschuwing wissen](./media/storsimple-manage-alerts/admin_alerts_system_clear.png)
+![Waarschuwings bericht wissen](./media/storsimple-manage-alerts/admin_alerts_system_clear.png)
 
-## <a name="sort-and-review-alerts"></a>Waarschuwingen voor sorteren en controleren
+## <a name="sort-and-review-alerts"></a>Waarschuwingen sorteren en controleren
 
-Wellicht vindt u het efficiënter uitvoeren van rapporten op waarschuwingen, zodat u kunt controleren en deze in groepen wissen. Bovendien de **waarschuwingen** blade kan maximaal 250 waarschuwingen worden weergegeven. Als u dit aantal waarschuwingen hebt overschreden, wordt niet alle waarschuwingen worden weergegeven in de standaardweergave. De volgende velden om aan te passen welke waarschuwingen worden weergegeven, kunt u combineren:
+Mogelijk vindt u het efficiënter om rapporten uit te voeren op waarschuwingen zodat u ze in groepen kunt controleren en wissen. Daarnaast kunnen de Blade **waarschuwingen** maxi maal 250 waarschuwingen weer geven. Als u het aantal waarschuwingen hebt overschreden, worden niet alle waarschuwingen weer gegeven in de standaard weergave. U kunt de volgende velden combi neren om aan te passen welke waarschuwingen worden weer gegeven:
 
-* **Status** – u kunt een weergeven **Active** of **uitgeschakeld** waarschuwingen. Actieve waarschuwingen worden nog steeds op uw systeem wordt geactiveerd terwijl uitgeschakeld waarschuwingen zijn handmatig verwijderd door een beheerder of via een programma is uitgeschakeld omdat het systeem voorwaarde voor de waarschuwing met nieuwe informatie bijgewerkt.
-* **Ernst** – u kunt waarschuwingen van alle niveaus (kritiek, waarschuwing, informatie), of alleen een bepaalde prioriteit, zoals alleen kritieke waarschuwingen weergeven.
-* **Bron** – u kunt waarschuwingen weergeven vanaf alle bronnen of beperken van de waarschuwingen die afkomstig van de service of één of alle apparaten zijn.
-* **Tijdsbereik** – door op te geven de **van** en **naar** datums en tijdstempels, u kunt kijken waarschuwingen gedurende de periode waarin u geïnteresseerd bent.
+* **Status** : u kunt **actieve** of **gewiste** waarschuwingen weer geven. Actieve waarschuwingen worden nog steeds op uw systeem geactiveerd, terwijl gewiste waarschuwingen hand matig zijn gewist door een beheerder of programmatisch zijn gewist omdat het systeem de waarschuwings voorwaarde heeft bijgewerkt met nieuwe gegevens.
+* **Ernst** : u kunt waarschuwingen weer geven van alle ernst niveaus (kritiek, waarschuwing, informatie) of alleen een bepaalde ernst, zoals alleen kritieke waarschuwingen.
+* **Bron** : u kunt waarschuwingen van alle bronnen weer geven of de waarschuwingen beperken tot de meldingen die afkomstig zijn van de service of van een of meer van de apparaten.
+* **Tijds bereik** : door de **begin** -en eind datum en tijds tempels op **te** geven, kunt u waarschuwingen bekijken tijdens de periode waarin u bent geïnteresseerd.
 
 ![Lijst met waarschuwingen](./media/storsimple-8000-manage-alerts/configure-alerts-email11.png)
 
-## <a name="alerts-quick-reference"></a>Snelzoekgids voor waarschuwingen
+## <a name="alerts-quick-reference"></a>Naslag informatie voor waarschuwingen
 
-De volgende tabellen worden enkele van de Microsoft Azure StorSimple-waarschuwingen die u tegenkomen kunt, evenals aanvullende informatie en aanbevelingen indien beschikbaar. StorSimple-apparaatwaarschuwingen kunnen worden onderverdeeld in een van de volgende categorieën:
+De volgende tabellen geven een lijst van enkele van de Microsoft Azure StorSimple waarschuwingen die u kunt tegen komen, evenals aanvullende informatie en aanbevelingen waar beschikbaar. Waarschuwingen voor StorSimple-apparaten vallen in een van de volgende categorieën:
 
-* [Connectiviteitswaarschuwingen cloud](#cloud-connectivity-alerts)
-* [Cluster-waarschuwingen](#cluster-alerts)
-* [Disaster recovery waarschuwingen](#disaster-recovery-alerts)
-* [Hardware-waarschuwingen](#hardware-alerts)
-* [Waarschuwingen voor taak](#job-failure-alerts)
-* [Lokaal vastgemaakt volume waarschuwingen](#locally-pinned-volume-alerts)
-* [Waarschuwingen voor netwerken](#networking-alerts)
-* [Waarschuwingen over toepassingsprestaties](#performance-alerts)
+* [Connectiviteits waarschuwingen voor de Cloud](#cloud-connectivity-alerts)
+* [Cluster waarschuwingen](#cluster-alerts)
+* [Waarschuwingen voor herstel na nood gevallen](#disaster-recovery-alerts)
+* [Waarschuwingen voor hardware](#hardware-alerts)
+* [Taak fout meldingen](#job-failure-alerts)
+* [Waarschuwingen lokaal vastgemaakt volume](#locally-pinned-volume-alerts)
+* [Netwerk waarschuwingen](#networking-alerts)
+* [Prestatie waarschuwingen](#performance-alerts)
 * [Beveiligingswaarschuwingen](#security-alerts)
-* [Ondersteuning voor pakket-waarschuwingen](#support-package-alerts)
+* [Ondersteunings pakket waarschuwingen](#support-package-alerts)
 
-### <a name="cloud-connectivity-alerts"></a>Connectiviteitswaarschuwingen cloud
+### <a name="cloud-connectivity-alerts"></a>Connectiviteits waarschuwingen voor de Cloud
 
-| Tekst van de waarschuwing | Gebeurtenis | Meer informatie / aanbevolen acties |
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| Verbinding met de <*cloud referentienaam*> kan niet tot stand worden gebracht. |Kan geen verbinding maken met de storage-account. |Het lijkt erop dat er mogelijk een connectiviteitsprobleem met uw apparaat. Voer de `Test-HcsmConnection` cmdlet uit de Windows PowerShell-Interface voor StorSimple op uw apparaat om te bepalen en corrigeer het probleem. Als de instellingen juist zijn, wordt het probleem mogelijk met de referenties van het opslagaccount waarvoor de waarschuwing is gegeven. In dit geval gebruiken de `Test-HcsStorageAccountCredential` cmdlet om te bepalen of er zijn problemen die u kunt oplossen.<ul><li>Controleer uw netwerkinstellingen.</li><li>Controleer de referenties van uw storage-account.</li></ul> |
-| Er geen heartbeat ontvangen van uw apparaat voor de afgelopen <*getal*> minuten. |Kan geen verbinding maken met apparaat. |Het lijkt erop dat er is een connectiviteitsprobleem met uw apparaat. Gebruik de `Test-HcsmConnection` cmdlet uit de Windows PowerShell-Interface voor StorSimple op uw apparaat om te identificeren en oplossen van het probleem of neem contact op met uw netwerkbeheerder. |
+| Er kan geen verbinding worden gemaakt met < naam van de*Cloud referentie*>. |Kan geen verbinding maken met het opslag account. |Het lijkt erop dat er een probleem is met de connectiviteit van uw apparaat. Voer de `Test-HcsmConnection`-cmdlet uit vanuit de Windows Power shell-interface voor StorSimple op uw apparaat om het probleem te identificeren en op te lossen. Als de instellingen juist zijn, is het probleem mogelijk te maken met de referenties van het opslag account waarvoor de waarschuwing is gegenereerd. In dit geval gebruikt u de cmdlet `Test-HcsStorageAccountCredential` om te bepalen of er problemen zijn die u kunt oplossen.<ul><li>Controleer de netwerk instellingen.</li><li>Controleer de referenties van uw opslag account.</li></ul> |
+| Er is geen heartbeat van uw apparaat ontvangen voor het laatste <*nummer*> minuten. |Kan geen verbinding maken met het apparaat. |Het lijkt erop dat er een probleem is met de connectiviteit met uw apparaat. Gebruik de `Test-HcsmConnection`-cmdlet uit de Windows Power shell-interface voor StorSimple op uw apparaat om het probleem te identificeren en op te lossen of neem contact op met de netwerk beheerder. |
 
-### <a name="storsimple-behavior-when-cloud-connectivity-fails"></a>StorSimple-gedrag wanneer cloudconnectiviteit is mislukt
+### <a name="storsimple-behavior-when-cloud-connectivity-fails"></a>StorSimple-gedrag wanneer de verbinding met de Cloud mislukt
 
-Wat gebeurt er als cloudconnectiviteit is mislukt voor de StorSimple-apparaat in productie?
+Wat gebeurt er als de Cloud connectiviteit mislukt voor mijn StorSimple-apparaat dat wordt uitgevoerd in de productie omgeving?
 
-Als cloud-connectiviteit op uw StorSimple-apparaat voor productie is mislukt, klikt u vervolgens afhankelijk van de status van uw apparaat, kan het volgende gebeuren:
+Als de verbinding met de Cloud op uw StorSimple-productie apparaat mislukt, kunnen de volgende problemen optreden, afhankelijk van de status van uw apparaat:
 
-* **Voor de lokale gegevens op uw apparaat**: Enige tijd zal er geen onderbreking en leesbewerkingen blijven worden geleverd. Als het aantal openstaande IO's verhoogt en een limiet overschrijdt, kunnen echter de leesbewerkingen worden niet gestart.
+* **Voor de lokale gegevens op uw apparaat**: voor enige tijd is er geen onderbreking en worden Lees bewerkingen nog steeds uitgevoerd. Omdat het aantal uitstaand IOs toeneemt en de limiet overschrijdt, kan de Lees bewerking echter worden gestart.
 
-    Afhankelijk van de hoeveelheid gegevens op uw apparaat blijft de schrijfbewerkingen ook worden uitgevoerd voor de eerste paar uur na de onderbreking in de cloud-connectiviteit. De schrijfbewerkingen wordt vervolgens vertragen en uiteindelijk starten mislukt als de cloudconnectiviteit is onderbroken voor enkele uren. (Er is tijdelijke opslagruimte op het apparaat voor gegevens die moet worden gepusht naar de cloud. Dit gebied wordt leeggemaakt wanneer de gegevens wordt verzonden. Als de verbinding is mislukt, gegevens in dit opslaggebied worden niet gepusht naar de cloud, en i/o mislukken.)
-* **Voor de gegevens in de cloud**: Voor de meeste fouten in de basisnetwerkverbinding cloud, is een fout geretourneerd. Zodra de verbinding is hersteld, worden de IOs hervat zonder dat de gebruiker op het volume online brengen. In zeldzame gevallen mogelijk tussenkomst van de gebruiker moet het volume online brengen van de Azure-portal.
-* **Voor cloudmomentopnamen Bezig**: De bewerking wordt opnieuw geprobeerd een paar keer binnen de 4 en 5 uur en als de verbinding is niet hersteld, de cloudmomentopnamen mislukken.
+    Afhankelijk van de hoeveelheid gegevens op uw apparaat, blijft de schrijf bewerkingen ook gedurende de eerste paar uur na de onderbreking van de verbinding met de Cloud plaatsvinden. De schrijf bewerkingen worden vervolgens langzamer en uiteindelijk mislukken als de verbinding van de Cloud gedurende enkele uren wordt onderbroken. (Er is een tijdelijke opslag op het apparaat voor gegevens die naar de Cloud moeten worden gepusht. Dit gebied wordt leeg gemaakt wanneer de gegevens worden verzonden. Als de verbinding mislukt, worden de gegevens in dit opslag gebied niet naar de Cloud gepusht en mislukt de IO.)
+* **Voor de gegevens in de Cloud**: voor de meeste connectiviteits fouten in de Cloud wordt een fout geretourneerd. Zodra de verbinding is hersteld, wordt de IOs hervat zonder dat de gebruiker het volume online kan brengen. In zeldzame gevallen kan het nodig zijn om het volume online terug te brengen vanaf de Azure Portal.
+* **Voor de uitvoering van Cloud momentopnamen**: de bewerking wordt binnen 4-5 uur opnieuw uitgevoerd. als de verbinding niet wordt hersteld, mislukken de moment opnamen van de Cloud.
 
-### <a name="cluster-alerts"></a>Cluster-waarschuwingen
+### <a name="cluster-alerts"></a>Cluster waarschuwingen
 
-| Tekst van de waarschuwing | Gebeurtenis | Meer informatie / aanbevolen acties |
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| Apparaat een failover naar <*apparaatnaam*>. |Apparaat is in de onderhoudsmodus bevindt. |Apparaat een failover vanwege activeren of afsluiten van de onderhoudsmodus. Dit is normaal en geen actie te ondernemen. Nadat u deze waarschuwing hebt bevestigd, wist u deze van de pagina met waarschuwingen. |
-| Apparaat een failover naar <*apparaatnaam*>. |Apparaatfirmware of software is zojuist hebt bijgewerkt. |Er is een clusterfailover vanwege een update. Dit is normaal en geen actie te ondernemen. Nadat u deze waarschuwing hebt bevestigd, wist u deze van de pagina met waarschuwingen. |
-| Apparaat een failover naar <*apparaatnaam*>. |Controller heeft afgesloten of opnieuw opgestart. |Apparaat een failover omdat de actieve controller heeft afgesloten of opnieuw door een beheerder opgestart. Er is geen actie nodig. Nadat u deze waarschuwing hebt bevestigd, wist u deze van de pagina met waarschuwingen. |
-| Apparaat een failover naar <*apparaatnaam*>. |Geplande failover. |Controleer of dat dit een geplande failover. Nadat u de juiste actie hebt ondernomen, moet u deze waarschuwing op de pagina met waarschuwingen wissen. |
-| Apparaat een failover naar <*apparaatnaam*>. |Niet-geplande failover. |StorSimple is gebouwd voor niet-geplande failovers automatisch worden hersteld. Als u een groot aantal van deze waarschuwingen ziet, moet u contact op met Microsoft Support. |
-| Apparaat een failover naar <*apparaatnaam*>. |Andere/onbekende oorzaak. |Als u een groot aantal van deze waarschuwingen ziet, moet u contact op met Microsoft Support. Nadat het probleem opgelost is, kunt u deze waarschuwing op de pagina met waarschuwingen wissen. |
-| Een service essentiële apparaat gerapporteerd als mislukt. |Gegevenspad-fout-service. |Neem voor hulp contact op met Microsoft Support. |
-| Virtueel IP-adres voor de netwerkinterface <*gegevens #* > status wordt gerapporteerd als mislukt. |Andere/onbekende oorzaak. |Soms tijdelijke omstandigheden kunnen leiden tot deze waarschuwingen. Als dit het geval is, wordt klikt u vervolgens deze waarschuwing automatisch gewist na enige tijd. Neem contact op met Microsoft Ondersteuning als het probleem zich blijft voordoen. |
-| Virtueel IP-adres voor de netwerkinterface <*gegevens #* > status wordt gerapporteerd als mislukt. |De naam van interface: <*gegevens #* > IP-adres `<IP address>` niet online worden gebracht omdat er een dubbel IP-adres is gedetecteerd op het netwerk. |Zorg ervoor dat het dubbele IP-adres is verwijderd uit het netwerk of de interface met een ander IP-adres configureren. |
+| Er is een failover voor het apparaat uitgevoerd naar <*apparaatnaam*>. |Het apparaat bevindt zich in de onderhouds modus. |Er is een failover voor het apparaat uitgevoerd vanwege het invoeren of afsluiten van de onderhouds modus. Dit is normaal en er is geen actie vereist. Nadat u deze waarschuwing hebt bevestigd, wist u deze van de pagina waarschuwingen. |
+| Er is een failover voor het apparaat uitgevoerd naar <*apparaatnaam*>. |De firmware of software van het apparaat is zojuist bijgewerkt. |Er is een failover van het cluster opgetreden vanwege een update. Dit is normaal en er is geen actie vereist. Nadat u deze waarschuwing hebt bevestigd, wist u deze van de pagina waarschuwingen. |
+| Er is een failover voor het apparaat uitgevoerd naar <*apparaatnaam*>. |De controller is afgesloten of opnieuw opgestart. |Er is een failover uitgevoerd voor het apparaat omdat de actieve controller is afgesloten of opnieuw is opgestart door een beheerder. Er is geen actie nodig. Nadat u deze waarschuwing hebt bevestigd, wist u deze van de pagina waarschuwingen. |
+| Er is een failover voor het apparaat uitgevoerd naar <*apparaatnaam*>. |Geplande failover. |Controleer of dit een geplande failover is. Nadat u de juiste actie hebt ondernomen, wist u deze waarschuwing van de pagina waarschuwingen. |
+| Er is een failover voor het apparaat uitgevoerd naar <*apparaatnaam*>. |Niet-geplande failover. |StorSimple is gebouwd om automatisch te herstellen van ongeplande failovers. Als er een groot aantal waarschuwingen wordt weer geven, neemt u contact op met Microsoft Ondersteuning. |
+| Er is een failover voor het apparaat uitgevoerd naar <*apparaatnaam*>. |Andere/onbekende oorzaak. |Als er een groot aantal waarschuwingen wordt weer geven, neemt u contact op met Microsoft Ondersteuning. Nadat het probleem is opgelost, wist u deze waarschuwing van de pagina waarschuwingen. |
+| Een kritieke status van de service rapporten van apparaten als mislukt. |DataPath-service fout. |Neem contact op met Microsoft Ondersteuning voor hulp. |
+| Het virtuele IP-adres voor de netwerk interface <*gegevens #* > de status van het rapport is mislukt. |Andere/onbekende oorzaak. |Soms kunnen tijdelijke voor waarden deze waarschuwingen veroorzaken. Als dit het geval is, wordt deze waarschuwing na enige tijd automatisch gewist. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning. |
+| Het virtuele IP-adres voor de netwerk interface <*gegevens #* > de status van het rapport is mislukt. |Interface naam: <*gegevens #* > IP-adres `<IP address>` kunnen niet online worden gebracht omdat er een dubbel IP-adres op het netwerk is gedetecteerd. |Zorg ervoor dat het dubbele IP-adres is verwijderd van het netwerk of configureer de interface opnieuw met een ander IP-adres. |
 
-### <a name="disaster-recovery-alerts"></a>Disaster recovery waarschuwingen
+### <a name="disaster-recovery-alerts"></a>Waarschuwingen voor herstel na nood gevallen
 
-| Tekst van de waarschuwing | Gebeurtenis | Meer informatie / aanbevolen acties |
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| Herstelbewerkingen kunnen niet alle instellingen voor deze service herstellen. Apparaat-configuratiegegevens zijn in een inconsistente status voor bepaalde apparaten. |Inconsistenties in de gegevens gedetecteerd nadat het herstel na noodgevallen. |Versleutelde gegevens op de service is niet gesynchroniseerd met die op het apparaat. Toestaan dat het apparaat <*apparaatnaam*> van StorSimple Device Manager het synchronisatieproces te starten. De Windows PowerShell-Interface voor StorSimple gebruiken om uit te voeren de `Restore-HcsmEncryptedServiceData` op apparaat <*apparaatnaam*> cmdlet, biedt het oude wachtwoord als invoer voor deze cmdlet om te herstellen van het beveiligingsprofiel. Voer vervolgens de `Invoke-HcsmServiceDataEncryptionKeyChange` cmdlet voor het bijwerken van de versleutelingssleutel voor servicegegevens. Nadat u de juiste actie hebt ondernomen, moet u deze waarschuwing op de pagina met waarschuwingen wissen. |
+| De herstel bewerkingen kunnen niet alle instellingen voor deze service herstellen. De configuratie gegevens van het apparaat hebben een inconsistente status voor sommige apparaten. |Er is een inconsistentie gedetecteerd in de gegevens na een nood herstel. |Versleutelde gegevens op de service zijn niet gesynchroniseerd met die op het apparaat. Autoriseer het apparaat <*apparaatnaam*> van StorSimple Apparaatbeheer om het synchronisatie proces te starten. Gebruik de Windows Power shell-interface voor StorSimple om de `Restore-HcsmEncryptedServiceData` op apparaat <*apparaatnaam*> cmdlet uit te voeren, waarbij u het oude wacht woord als invoer voor deze cmdlet opgeeft om het beveiligings profiel te herstellen. Voer vervolgens de cmdlet `Invoke-HcsmServiceDataEncryptionKeyChange` uit om de versleutelings sleutel voor de service gegevens bij te werken. Nadat u de juiste actie hebt ondernomen, wist u deze waarschuwing van de pagina waarschuwingen. |
 
-### <a name="hardware-alerts"></a>Hardware-waarschuwingen
+### <a name="hardware-alerts"></a>Waarschuwingen voor hardware
 
-| Tekst van de waarschuwing | Gebeurtenis | Meer informatie / aanbevolen acties |
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| Hardware-onderdeel <*onderdeel-ID*> gerapporteerd als <*status*>. | |Soms tijdelijke omstandigheden kunnen leiden tot deze waarschuwingen. Als dit het geval is, wordt deze waarschuwing automatisch gewist na enige tijd. Neem contact op met Microsoft Ondersteuning als het probleem zich blijft voordoen. |
-| Passieve controller functioneert niet goed. |De passieve controller (secundair) werkt niet. |Uw apparaat is operationeel, maar een van uw controllers functioneert. Probeer die controller opnieuw te starten. Als het probleem niet is opgelost, neem dan contact op met Microsoft Support. |
+| Het hardware-onderdeel <*onderdeel-ID*> status rapporteren als <*status*>. | |Soms kunnen tijdelijke voor waarden deze waarschuwingen veroorzaken. Als dit het geval is, wordt deze waarschuwing na enige tijd automatisch gewist. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning. |
+| De passieve controller functioneert niet goed. |De passieve controller (secundair) werkt niet. |Het apparaat is operationeel, maar een van uw controllers functioneert niet goed. Probeer die controller opnieuw op te starten. Als het probleem niet is opgelost, neemt u contact op met Microsoft Ondersteuning. |
 
-### <a name="job-failure-alerts"></a>Waarschuwingen voor taak
+### <a name="job-failure-alerts"></a>Taak fout meldingen
 
-| Tekst van de waarschuwing | Gebeurtenis | Meer informatie / aanbevolen acties |
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| Back-up van <*volume groeps-ID van bron*> is mislukt. |Back-uptaak is mislukt. |Problemen met de netwerkverbinding kunnen worden voorkomen dat de back-upbewerking is voltooid. Als er geen connectiviteitsproblemen zijn, is het mogelijk dat u het maximum aantal back-ups hebt bereikt. Verwijder alle back-ups die niet langer nodig zijn en probeer het opnieuw. Nadat u de juiste actie hebt ondernomen, moet u deze waarschuwing op de pagina met waarschuwingen wissen. |
-| Klonen van <*back-element-id's van bron*> op <*bestemming volume serienummers*> is mislukt. |Kloontaak is mislukt. |Vernieuw de back-lijst om te bevestigen dat de back-up nog geldig. Als de back-up geldig is, is het mogelijk dat problemen met de netwerkverbinding van de cloud voorkomen dat de kloonbewerking is voltooid. Als er geen connectiviteitsproblemen zijn, is het mogelijk dat u de opslaglimiet hebt bereikt. Verwijder alle back-ups die niet langer nodig zijn en probeer het opnieuw. Nadat u de passende maatregelen om het probleem te verhelpen hebt ondernomen, moet u deze waarschuwing op de pagina met waarschuwingen wissen. |
-| Herstellen van <*back-element-id's van bron*> is mislukt. |Terugzetten is mislukt. |Vernieuw de back-lijst om te bevestigen dat de back-up nog geldig. Als de back-up geldig is, is het mogelijk dat problemen met de netwerkverbinding van de cloud voorkomen dat de herstelbewerking is voltooid. Als er geen connectiviteitsproblemen zijn, is het mogelijk dat u de opslaglimiet hebt bereikt. Verwijder alle back-ups die niet langer nodig zijn en probeer het opnieuw. Nadat u de passende maatregelen om het probleem te verhelpen hebt ondernomen, moet u deze waarschuwing op de pagina met waarschuwingen wissen. |
+| Het maken van een back-up van de < *-bron volume groep-ID*> is mislukt |De back-uptaak is mislukt. |De back-upbewerking kan niet worden voltooid vanwege verbindings problemen. Als er geen verbindings problemen zijn, hebt u mogelijk het maximum aantal back-ups bereikt. Verwijder alle back-ups die niet meer nodig zijn en voer de bewerking opnieuw uit. Nadat u de juiste actie hebt ondernomen, wist u deze waarschuwing van de pagina waarschuwingen. |
+| De kloon van de <*bron-id van het back-upelement*> naar <*serie nummers van het doel volume*> mislukt. |De kloon taak is mislukt. |Vernieuw de lijst met back-ups om te controleren of de back-up nog geldig is. Als de back-up geldig is, is het mogelijk dat er problemen met de verbinding met de Cloud optreden waardoor de kloon bewerking niet kan worden voltooid. Als er geen verbindings problemen zijn, hebt u mogelijk de opslag limiet bereikt. Verwijder alle back-ups die niet meer nodig zijn en voer de bewerking opnieuw uit. Nadat u de juiste actie hebt ondernomen om het probleem op te lossen, wist u deze waarschuwing van de pagina waarschuwingen. |
+| Herstellen van <*bron-id van back-upelement*> is mislukt. |De herstel taak is mislukt. |Vernieuw de lijst met back-ups om te controleren of de back-up nog geldig is. Als de back-up geldig is, is het mogelijk dat er problemen met de verbinding met de Cloud zijn waardoor de herstel bewerking niet kan worden voltooid. Als er geen verbindings problemen zijn, hebt u mogelijk de opslag limiet bereikt. Verwijder alle back-ups die niet meer nodig zijn en voer de bewerking opnieuw uit. Nadat u de juiste actie hebt ondernomen om het probleem op te lossen, wist u deze waarschuwing van de pagina waarschuwingen. |
 
-### <a name="locally-pinned-volume-alerts"></a>Lokaal vastgemaakt volume waarschuwingen
+### <a name="locally-pinned-volume-alerts"></a>Waarschuwingen lokaal vastgemaakt volume
 
-| Tekst van de waarschuwing | Gebeurtenis | Meer informatie / aanbevolen acties |
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| Het maken van het lokale volume <*volumenaam*> is mislukt. |De taak voor het maken van volume is mislukt. <*Foutbericht overeenkomt met de mislukte foutcode*>. |Problemen met de netwerkverbinding kunnen worden voorkomen dat de bewerking voor het maken van ruimte is voltooid. Lokaal vastgemaakte volumes worden compact ingericht en het proces voor het maken van ruimte omvat gelekt van gelaagde volumes naar de cloud. Als er geen connectiviteitsproblemen zijn, verbruikt u mogelijk de lokale ruimte op het apparaat. Bepalen of er ruimte op het apparaat bestaat voordat u deze bewerking uitvoert. |
-| Uitbreiding van het lokale volume <*volumenaam*> is mislukt. |De taak van de wijziging volume is mislukt vanwege <*foutbericht overeenkomt met de mislukte foutcode*>. |Problemen met de netwerkverbinding kunnen worden voorkomen dat de volume-uitbreiding bewerking te voltooien. Lokaal vastgemaakte volumes worden compact ingericht en het proces voor het uitbreiden van de bestaande ruimte omvat gelekt van gelaagde volumes naar de cloud. Als er geen connectiviteitsproblemen zijn, verbruikt u mogelijk de lokale ruimte op het apparaat. Bepalen of er ruimte op het apparaat bestaat voordat u deze bewerking uitvoert. |
-| Conversie van volume <*volumenaam*> is mislukt. |De taak volume te converteren van het volumetype van lokaal vastgemaakt aan een gelaagd is mislukt. |Conversie van het volume van het type lokaal vastgemaakt aan lagen kan niet worden voltooid. Zorg ervoor dat er geen problemen met de netwerkverbinding te voorkomen dat de bewerking niet wordt voltooid. Voor het oplossen van verbindingsproblemen problemen gaat u naar [problemen met de cmdlet Test-HcsmConnection oplossen](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>De oorspronkelijke lokaal vastgemaakt volume is nu gemarkeerd als een gelaagd volume omdat sommige van de gegevens van de lokaal vastgemaakt volume heeft zich verspreid in de cloud tijdens de conversie. Het resulterende gelaagde volume bezet nog steeds lokale ruimte op het apparaat dat niet kan worden vrijgemaakt voor toekomstige lokale volumes.<br>Los eventuele connectiviteitsproblemen, wist u de waarschuwing en dit volume converteren naar het oorspronkelijke type lokaal vastgemaakt volume om ervoor te zorgen dat alle de gegevens beschikbaar worden gesteld lokaal opnieuw. |
-| Conversie van volume <*volumenaam*> is mislukt. |De taak moet worden geconverteerd van het volumetype van een gelaagd volume naar een lokaal vastgemaakt is mislukt. |Conversie van het volume van het type doorverbonden naar lokaal vastgemaakt kan niet worden voltooid. Zorg ervoor dat er geen problemen met de netwerkverbinding te voorkomen dat de bewerking niet wordt voltooid. Voor het oplossen van verbindingsproblemen problemen gaat u naar [problemen met de cmdlet Test-HcsmConnection oplossen](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>Het oorspronkelijke gelaagde volume worden nu gemarkeerd als een lokaal vastgemaakt volume als onderdeel van het conversieproces heeft nog steeds gegevens die zich bevinden in de cloud, terwijl de compact ingerichte ruimte op het apparaat voor dit volume niet meer kan worden vrijgemaakt voor toekomstige lokale volumes.<br>Los eventuele connectiviteitsproblemen, wist u de waarschuwing en dit volume converteren naar het oorspronkelijke type gelaagde volume om te controleren of de lokale ruimte compact ingericht op het apparaat kan worden vrijgemaakt. |
-| Ruimteverbruik voor lokale momentopnamen van <*volume groepsnaam*> |Lokale momentopnamen voor de back-upbeleid binnenkort geen schijfruimte meer mogelijk uitgevoerd en om te voorkomen dat de host-schrijffouten ongeldig worden gemaakt. |Regelmatig lokale momentopnamen samen met een hoog gegevensverloop in de volumes die zijn gekoppeld aan deze groep back-upbeleid veroorzaken lokale ruimte op het apparaat snel wordt verbruikt. Verwijder eventuele lokale momentopnamen die niet meer nodig zijn. Ook werken uw lokale momentopname schema's voor deze back-upbeleid minder frequente lokale momentopnamen en zorg ervoor dat cloudmomentopnamen regelmatig worden genomen. Als deze acties worden niet uitgevoerd, lokale ruimte voor deze momentopnamen binnenkort worden uitgeput en het systeem wordt automatisch verwijderen om ervoor te zorgen dat de host schrijfbewerkingen blijven worden verwerkt. |
-| Lokale momentopnamen voor <*volume groepsnaam*> zijn ongeldig gemaakt. |De lokale momentopnamen voor <*volume groepsnaam*> zijn ongeldig gemaakt en vervolgens verwijderd, omdat ze zijn meer dan de lokale ruimte op het apparaat. |Om ervoor te zorgen dat dit niet herhaald in de toekomst, Controleer de planningen voor lokale momentopname voor deze back-upbeleid en verwijder eventuele lokale momentopnamen die niet meer nodig zijn. Regelmatig lokale momentopnamen samen met een hoog gegevensverloop in de volumes die zijn gekoppeld aan deze groep back-upbeleid kunnen leiden tot lokale ruimte op het apparaat snel wordt verbruikt. |
-| Herstellen van <*back-element-id's van bron*> is mislukt. |De hersteltaak is mislukt. |Als u lokaal hebt vastgemaakt of een combinatie van lokaal vastgemaakte als gelaagde volumes in deze back-upbeleid het back-lijst om te controleren of vernieuwen wordt de back-up nog geldig is. Als de back-up geldig is, is het mogelijk dat problemen met de netwerkverbinding van de cloud voorkomen dat de herstelbewerking is voltooid. De lokaal vastgemaakte volumes die zijn als onderdeel van deze groep momentopname wordt hersteld niet beschikt over alle gegevens gedownload naar het apparaat en hebt u een combinatie van gelaagde en lokaal vastgemaakte volumes in deze groep momentopname, ze zich niet synchroon met elkaar. Als u wilt de herstelbewerking is voltooid, zet de volumes in deze groep offline op de host en voer de herstelbewerking opnieuw uit. Houd er rekening mee dat alle wijzigingen in de volumegegevens die zijn uitgevoerd tijdens het herstelproces, gaan verloren. |
+| Het maken van het lokale volume < de*volume naam*> is mislukt. |De taak voor het maken van een volume is mislukt. <*fout bericht dat overeenkomt met de mislukte fout code*>. |Connectiviteits problemen kunnen ertoe leiden dat de bewerking voor het maken van de ruimte niet kan worden voltooid. Lokaal vastgemaakte volumes zijn dik ingericht en het proces voor het maken van ruimte omvat het overlopen van gelaagde volumes naar de Cloud. Als er geen verbindings problemen zijn, hebt u mogelijk de lokale ruimte op het apparaat uitgeput. Bepaal of er ruimte op het apparaat aanwezig is voordat u deze bewerking opnieuw uitvoert. |
+| Uitbrei ding van lokale volume <*volume naam*> mislukt. |De volume wijzigings taak is mislukt vanwege <*fout bericht dat overeenkomt met de mislukte fout code*>. |Vanwege verbindings problemen kan worden voor komen dat de volume-uitbreidings bewerking is voltooid. Lokaal vastgemaakte volumes zijn dik ingericht en het proces van het uitbreiden van de bestaande ruimte omvat het overlopen van gelaagde volumes naar de Cloud. Als er geen verbindings problemen zijn, hebt u mogelijk de lokale ruimte op het apparaat uitgeput. Bepaal of er ruimte op het apparaat aanwezig is voordat u deze bewerking opnieuw uitvoert. |
+| Het converteren van de volume*naam*van het volume < > is mislukt. |De taak volume conversie voor het converteren van het volume type van lokaal vastgemaakt naar gelaagd is mislukt. |De conversie van het volume van het type lokaal vastgemaakt naar een laag kan niet worden voltooid. Zorg ervoor dat er geen verbindings problemen zijn waardoor de bewerking niet kan worden voltooid. Ga voor het oplossen van verbindings problemen naar [problemen oplossen met de cmdlet test-HcsmConnection](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>Het oorspronkelijke lokale vastgemaakte volume is nu gemarkeerd als een gelaagd volume omdat sommige gegevens van het lokaal vastgemaakte volume tijdens de conversie naar de Cloud zijn overgelopen. Het resulterende gelaagde volume neemt nog steeds lokale ruimte op het apparaat in beslag dat niet kan worden vrijgemaakt voor toekomstige lokale volumes.<br>Los eventuele verbindings problemen op, Wis de waarschuwing en converteer dit volume terug naar het oorspronkelijke lokaal vastgemaakte volume type om ervoor te zorgen dat alle gegevens lokaal beschikbaar worden gemaakt. |
+| Het converteren van de volume*naam*van het volume < > is mislukt. |De taak voor volume conversie waarmee het volume type wordt geconverteerd van gelaagd naar lokaal vastgemaakt, is mislukt. |De conversie van het volume van een gelaagd type naar lokaal vastgemaakt kan niet worden voltooid. Zorg ervoor dat er geen verbindings problemen zijn waardoor de bewerking niet kan worden voltooid. Ga voor het oplossen van verbindings problemen naar [problemen oplossen met de cmdlet test-HcsmConnection](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>Het oorspronkelijke gelaagde volume dat nu als onderdeel van het conversie proces is gemarkeerd als een lokaal vastgemaakt volume, blijft gegevens in de Cloud, terwijl de brede ingerichte ruimte op het apparaat voor dit volume niet meer kan worden vrijgemaakt voor toekomstige lokale volumes.<br>Los eventuele verbindings problemen op, Wis de waarschuwing en converteer dit volume terug naar het oorspronkelijke gelaagde volume type om ervoor te zorgen dat de lokale ruimte die op het apparaat wordt ingericht, dik kan worden vrijgemaakt. |
+| Het gebruik van lokale ruimte in de buurt van de lokale moment opnamen van < naam van de*volume groep*> |Lokale moment opnamen voor het back-upbeleid kunnen binnenkort bijna geen ruimte meer in beslag nemen en kunnen niet worden gevalideerd om het schrijven van hosts te voor komen. |Frequente lokale moment opnamen naast een hoog gegevens verloop in de volumes die zijn gekoppeld aan deze back-upbeleids groep, zorgen ervoor dat de lokale ruimte op het apparaat snel wordt verbruikt. Verwijder alle lokale moment opnamen die u niet meer nodig hebt. Werk ook de lokale planningen voor moment opnamen voor dit back-upbeleid bij om minder frequente lokale moment opnamen te maken, en zorg ervoor dat er regel matig Cloud momentopnamen worden gemaakt. Als deze acties niet worden uitgevoerd, worden de lokale ruimte voor deze moment opnamen mogelijk binnenkort uitgeput en worden ze automatisch verwijderd om ervoor te zorgen dat de schrijf bewerkingen van de host nog steeds worden uitgevoerd. |
+| Lokale moment opnamen voor de < naam van de*volume groep*> zijn ongeldig gemaakt. |De lokale moment opnamen voor <*naam van de volume groep*> ongeldig en vervolgens verwijderd omdat ze de lokale ruimte op het apparaat overschrijden. |Om ervoor te zorgen dat dit niet in de toekomst wordt herhaald, bekijkt u de lokale momentopname schema's voor dit back-upbeleid en verwijdert u de lokale moment opnamen die u niet meer nodig hebt. Veelvuldige lokale moment opnamen naast een hoog gegevens verloop in de volumes die zijn gekoppeld aan deze back-upbeleids groep, kunnen ertoe leiden dat lokale ruimte op het apparaat snel wordt verbruikt. |
+| Herstellen van <*bron-id van back-upelement*> is mislukt. |De herstel taak is mislukt. |Als u lokaal vastgemaakte of een combi natie van lokaal vastgemaakte en gelaagde volumes in dit back-upbeleid hebt, moet u de back-uplijst vernieuwen om te controleren of de back-up nog geldig is. Als de back-up geldig is, is het mogelijk dat er problemen met de verbinding met de Cloud zijn waardoor de herstel bewerking niet kan worden voltooid. De lokaal vastgemaakte volumes die als onderdeel van deze momentopname groep zijn hersteld, hebben niet alle gegevens gedownload naar het apparaat. Als u een combi natie van gelaagde en lokaal vastgemaakte volumes in deze momentopname groep hebt, worden deze niet met elkaar gesynchroniseerd. Als u de herstel bewerking wilt volt ooien, neemt u de volumes in deze groep offline op de host en voert u de herstel bewerking opnieuw uit. Houd er rekening mee dat wijzigingen in de volume gegevens die tijdens het herstel proces werden uitgevoerd, verloren gaan. |
 
-### <a name="networking-alerts"></a>Waarschuwingen voor netwerken
+### <a name="networking-alerts"></a>Netwerk waarschuwingen
 
-| Tekst van de waarschuwing | Gebeurtenis | Meer informatie / aanbevolen acties |
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| Kan de StorSimple-service(s) niet starten. |Gegevenspad-fout |Neem contact op met Microsoft Ondersteuning als het probleem zich blijft voordoen. |
-| Dubbel IP-adres gedetecteerd voor 'Data0'. | |Er is een conflict voor het IP-adres '10.0.0.1' is gedetecteerd. De netwerkbron 'Data0' op het apparaat  *\<device1 >* offline is. Zorg ervoor dat dit IP-adres niet wordt gebruikt door een andere entiteit in dit netwerk. Voor het oplossen van netwerkproblemen, gaat u naar [problemen met de cmdlet Get-NetAdapter oplossen](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Neem contact op met de netwerkbeheerder voor meer informatie over het oplossen van dit probleem. Neem contact op met Microsoft Ondersteuning als het probleem zich blijft voordoen. |
-| -(IPv4 of IPv6)-adres voor 'Data0' is offline. | |De netwerk-resource 'Data0' met de IP-adres '10.0.0.1.' en een voorvoegsellengte '22' op het apparaat  *\<device1 >* offline is. Zorg ervoor dat de switchpoorten waarmee deze interface is verbonden, operationeel zijn. Voor het oplossen van netwerkproblemen, gaat u naar [problemen met de cmdlet Get-NetAdapter oplossen](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
-| Kan geen verbinding maken met de service voor verificatie. |Gegevenspad-fout |De URLthat wordt gebruikt voor verificatie is niet bereikbaar. Zorg ervoor dat uw firewall-regels de URL-patronen die is opgegeven voor het StorSimple-apparaat bevatten. Voor meer informatie over URL-patronen in Azure portal, gaat u naar https:\//aka.ms/ss-8000-network-reqs. Als u Azure Government Cloud gebruikt, gaat u naar de URL-patronen in https:\//aka.ms/ss8000-gov-network-reqs.|
+| Kan de StorSimple-service (s) niet starten. |DataPath-fout |Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning. |
+| Er is een dubbel IP-adres gedetecteerd voor ' Data0 '. | |Het systeem heeft een conflict gevonden voor het IP-adres 10.0.0.1. De netwerk resource ' Data0 ' op het apparaat *\<device1 >* is offline. Zorg ervoor dat dit IP-adres niet wordt gebruikt door een andere entiteit in dit netwerk. Als u netwerk problemen wilt oplossen, gaat u naar [problemen oplossen met de cmdlet Get-netadapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Neem contact op met uw netwerk beheerder om dit probleem op te lossen. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning. |
+| Het IPv4-of IPv6-adres voor Data0 is offline. | |De netwerk resource Data0 met het IP-adres 10.0.0.1. de lengte van het voor voegsel ' 22 ' op het apparaat *\<device1 >* offline is. Zorg ervoor dat de switch poorten waarmee deze interface is verbonden, operationeel zijn. Als u netwerk problemen wilt oplossen, gaat u naar [problemen oplossen met de cmdlet Get-netadapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
+| Kan geen verbinding maken met de verificatie service. |DataPath-fout |De URLthat wordt gebruikt om te verifiëren is niet bereikbaar. Zorg ervoor dat de firewall regels de URL-patronen bevatten die zijn opgegeven voor het StorSimple-apparaat. Ga naar https:\//aka.ms/ss-8000-network-reqs voor meer informatie over URL-patronen in Azure Portal. Als u Azure Government Cloud gebruikt, gaat u naar de URL-patronen in https:\//aka.ms/ss8000-gov-network-reqs.|
 
-### <a name="performance-alerts"></a>Waarschuwingen over toepassingsprestaties
+### <a name="performance-alerts"></a>Prestatie waarschuwingen
 
-| Tekst van de waarschuwing | Gebeurtenis | Meer informatie / aanbevolen acties | |
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties | |
 |:--- |:--- |:--- | --- |
-| Belasting van het apparaat heeft overschreden <*drempelwaarde*>. |Langzamer dan verwacht reactietijden. |Uw apparaat rapporteert een zware belasting voor de invoer/uitvoer. Dit kan ertoe leiden dat niet werkt, evenals het moet het apparaat. Bekijk de werkbelastingen die u hebt gekoppeld aan het apparaat en bepalen of er zijn die kan worden verplaatst naar een ander apparaat of die niet meer nodig zijn.|
-| Kan de StorSimple-service(s) niet starten. |Gegevenspad-fout |Neem contact op met Microsoft Ondersteuning als het probleem zich blijft voordoen. |
+| De belasting van het apparaat heeft <*drempel waarde*> overschreden. |Trager dan de verwachte reactie tijden. |Uw apparaat rapporteert gebruik onder een zware invoer/uitvoer belasting. Dit kan ervoor zorgen dat uw apparaat niet werkt en het zou moeten doen. Bekijk de werk belastingen die u hebt gekoppeld aan het apparaat en bepaal of er een van de workloads kan worden verplaatst naar een ander apparaat of dat ze niet meer nodig zijn.|
+| Kan de StorSimple-service (s) niet starten. |DataPath-fout |Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning. |
 
 ### <a name="security-alerts"></a>Beveiligingswaarschuwingen
 
-| Tekst van de waarschuwing | Gebeurtenis | Meer informatie / aanbevolen acties |
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| Microsoft Support-sessie is gestart. |Externe toegang tot support-sessie. |Bevestig dat de toegang geautoriseerd. Nadat u de juiste actie hebt ondernomen, moet u deze waarschuwing op de pagina met waarschuwingen wissen. |
-| Wachtwoord voor <*element*> verloopt <*tijdsduur*>. |Wachtwoord verloopt bijna is bereikt. |Wijzig uw wachtwoord voordat dit verloopt. |
-| Informatie over de beveiligingsconfiguratie ontbreekt voor <*element-ID*>. | |De volumes die zijn gekoppeld aan deze volumecontainer kunnen niet worden gebruikt om uw StorSimple-configuratie te repliceren. Om ervoor te zorgen dat uw gegevens veilig worden opgeslagen, is het raadzaam dat u verwijdert de volumecontainer en alle volumes die zijn gekoppeld aan de volumecontainer. Nadat u de juiste actie hebt ondernomen, moet u deze waarschuwing op de pagina met waarschuwingen wissen. |
-| <*aantal*> mislukte aanmeldingspogingen voor <*element-ID*>. |Meerdere aanmeldingspogingen mislukte. |Uw apparaat wordt mogelijk aangevallen of een gemachtigde gebruiker gebruikt een onjuist wachtoord om verbinding te maken.<ul><li>Neem contact op met uw gemachtigde gebruikers en controleer of deze pogingen zijn van een betrouwbare bron. Als u een groot aantal mislukte aanmeldingspogingen blijft, kunt u extern beheer uitschakelen en contact opnemen met uw netwerkbeheerder. Nadat u de juiste actie hebt ondernomen, moet u deze waarschuwing op de pagina met waarschuwingen wissen.</li><li>Controleer of uw instanties van Snapshot Manager zijn geconfigureerd met het juiste wachtwoord. Nadat u de juiste actie hebt ondernomen, moet u deze waarschuwing op de pagina met waarschuwingen wissen.</li></ul>Ga voor meer informatie naar [wijzigen van het wachtwoord van een verlopen apparaat](storsimple-snapshot-manager-manage-devices.md#change-an-expired-device-password). |
-| Een of meer fouten opgetreden bij het wijzigen van de versleutelingssleutel voor servicegegevens. | |Er zijn fouten opgetreden tijdens het wijzigen van de versleutelingssleutel voor servicegegevens. Nadat u de fouten zijn opgelost, voert u de `Invoke-HcsmServiceDataEncryptionKeyChange` cmdlet uit de Windows PowerShell-Interface voor StorSimple op uw apparaat bij te werken van de service. Neem contact op met Microsoft Ondersteuning als het probleem zich blijft voordoen. Nadat u het probleem hebt opgelost, kunt u deze waarschuwing op de pagina met waarschuwingen wissen. |
+| Microsoft Ondersteuning sessie is gestart. |Ondersteunings sessie van derden. |Controleer of deze toegang is geautoriseerd. Nadat u de juiste actie hebt ondernomen, wist u deze waarschuwing van de pagina waarschuwingen. |
+| Het wacht woord voor <*element*> verloopt over <*tijds duur*>. |Het verlopen van het wacht woord is bijna bereikt. |Wijzig uw wacht woord voordat dit verloopt. |
+| Er ontbreken gegevens over de beveiligings configuratie voor de <*element-ID*>. | |De volumes die aan deze volume container zijn gekoppeld, kunnen niet worden gebruikt om uw StorSimple-configuratie te repliceren. Om ervoor te zorgen dat uw gegevens veilig worden opgeslagen, raden we u aan om de volume container en de volumes die aan de volume container zijn gekoppeld, te verwijderen. Nadat u de juiste actie hebt ondernomen, wist u deze waarschuwing van de pagina waarschuwingen. |
+| <*nummer*> aanmeldings pogingen zijn mislukt voor <*element-id*>. |Meerdere mislukte aanmeldings pogingen. |Uw apparaat wordt mogelijk aangevallen of een gemachtigde gebruiker probeert verbinding te maken met een onjuist wacht woord.<ul><li>Neem contact op met uw gemachtigde gebruikers en controleer of deze pogingen van een legitieme bron zijn. Als u een groot aantal mislukte aanmeldings pogingen blijft zien, kunt u overwegen om extern beheer uit te scha kelen en contact op te nemen met de netwerk beheerder. Nadat u de juiste actie hebt ondernomen, wist u deze waarschuwing van de pagina waarschuwingen.</li><li>Controleer of uw Snapshot Manager exemplaren zijn geconfigureerd met het juiste wacht woord. Nadat u de juiste actie hebt ondernomen, wist u deze waarschuwing van de pagina waarschuwingen.</li></ul>Ga voor meer informatie naar [een verlopen apparaatwachtwoord wijzigen](storsimple-snapshot-manager-manage-devices.md#change-an-expired-device-password). |
+| Er zijn een of meer fouten opgetreden tijdens het wijzigen van de versleutelings sleutel voor de service gegevens. | |Er zijn fouten opgetreden tijdens het wijzigen van de versleutelings sleutel voor de service gegevens. Nadat u de fout voorwaarden hebt opgelost, voert u de `Invoke-HcsmServiceDataEncryptionKeyChange`-cmdlet uit vanuit de Windows Power shell-interface voor StorSimple op uw apparaat om de service bij te werken. Neem contact op met micro soft ondersteuning als dit probleem zich blijft voordoen. Nadat u het probleem hebt opgelost, wist u deze waarschuwing van de pagina waarschuwingen. |
 
-### <a name="support-package-alerts"></a>Ondersteuning voor pakket-waarschuwingen
+### <a name="support-package-alerts"></a>Ondersteunings pakket waarschuwingen
 
-| Tekst van de waarschuwing | Gebeurtenis | Meer informatie / aanbevolen acties |
+| Waarschuwings tekst | Gebeurtenis | Meer informatie/aanbevolen acties |
 |:--- |:--- |:--- |
-| Het ondersteuningspakket niet maken. |StorSimple kan het pakket kan niet genereren. |Probeer het opnieuw. Neem contact op met Microsoft Ondersteuning als het probleem zich blijft voordoen. Nadat u het probleem hebt opgelost, kunt u deze waarschuwing op de pagina met waarschuwingen wissen. |
+| Het maken van het ondersteunings pakket is mislukt. |StorSimple kan het pakket niet genereren. |Probeer deze bewerking opnieuw uit te voeren. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning. Nadat u het probleem hebt opgelost, wist u deze waarschuwing van de pagina waarschuwingen. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [StorSimple fouten en het oplossen van problemen met implementatie van het apparaat](storsimple-8000-troubleshoot-deployment.md).
+Meer informatie over [StorSimple-fouten en het oplossen van problemen met de implementatie van apparaten](storsimple-8000-troubleshoot-deployment.md).
 

@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 12/05/2019
-ms.openlocfilehash: e8625b1d81db5b3ec90a177f426d05bd84bd10dd
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 925bc229aecc848032ab8847088b7d6ff377a137
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426959"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278281"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Snelstartgids: Azure-Sentinel op de trein
 
@@ -77,4 +77,4 @@ Nadat uw gegevens bronnen zijn verbonden, worden uw gegevens streamen naar Azure
 In dit document hebt u geleerd hoe u gegevens bronnen verbindt met Azure Sentinel. Raadpleeg de volgende artikelen voor meer informatie over Azure Sentinel:
 - Meer informatie over hoe u [inzicht krijgt in uw gegevens en mogelijke bedreigingen](quickstart-get-visibility.md).
 - Ga aan de slag [met het detecteren van bedreigingen met Azure Sentinel](tutorial-detect-threats-built-in.md).
-- Gegevens streamen van [algemene fout indelings toestellen](connect-common-event-format.md) in azure Sentinel.
+- Gegevens streamen van [algemene gebeurtenis indelings apparaten](connect-common-event-format.md) in azure Sentinel.

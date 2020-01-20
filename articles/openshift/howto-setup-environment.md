@@ -1,20 +1,18 @@
 ---
-title: Uw Azure Red Hat open Shift-ontwikkel omgeving instellen | Microsoft Docs
+title: Uw Azure Red Hat open Shift-ontwikkel omgeving instellen
 description: Hier volgen de vereisten voor het werken met Microsoft Azure Red Hat open SHIFT.
-services: openshift
 keywords: Setup van Red Hat open Shift instellen
 author: jimzim
 ms.author: jzim
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
-manager: jeconnoc
-ms.openlocfilehash: fa09ed90258a62d37dafeea5f4760e1fabdc210b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 559c932c4826e82f36c09b85ee8da4186d90d34d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581599"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276086"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Een Azure Red Hat OpenShift-ontwikkelaarsomgeving instellen
 
@@ -100,7 +98,7 @@ Als u deze providers en onderdelen hand matig wilt registreren, gebruikt u de vo
 
 De Azure Red Hat open Shift-service vereist een gekoppelde Azure Active Directory-Tenant (Azure AD) die uw organisatie en de relatie met micro soft vertegenwoordigt. Met uw Azure AD-Tenant kunt u apps registreren, bouwen en beheren, en andere Azure-Services gebruiken.
 
-Als u geen Azure AD kunt gebruiken als Tenant voor uw Azure Red Hat open Shift-cluster of als u een Tenant wilt maken voor het testen, volgt u de instructies in [een Azure AD-Tenant maken voor uw Azure Red Hat open Shift-cluster](howto-create-tenant.md) voordat u doorgaat met deze hand leiding .
+Als u geen Azure AD kunt gebruiken als Tenant voor uw Azure Red Hat open Shift-cluster of als u een Tenant wilt maken voor het testen, volgt u de instructies in [een Azure AD-Tenant maken voor uw Azure Red Hat open Shift-cluster](howto-create-tenant.md) voordat u doorgaat met deze hand leiding.
 
 ## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>Een Azure AD-gebruiker, beveiligings groep en toepassings object maken
 

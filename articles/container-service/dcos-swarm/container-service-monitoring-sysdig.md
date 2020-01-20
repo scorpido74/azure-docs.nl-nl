@@ -1,29 +1,27 @@
 ---
-title: (AFGESCHAFT) Een Azure Container Service-cluster met Sysdig bewaken
+title: KEUR Een Azure Container Service cluster bewaken met Sysdig
 description: Een Azure Container Service-cluster met Sysdig bewaken.
-services: container-service
 author: sauryadas
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/08/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 39cd5a3fe7db0c442608e7943e7cbd6e3198edfb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a22d48554573e2517b318f6172b759864bf46612
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60509510"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277739"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-cluster-with-sysdig"></a>(AFGESCHAFT) Een Azure Container Service-cluster met Sysdig bewaken
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-sysdig"></a>KEUR Een Azure Container Service cluster bewaken met Sysdig
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
 In dit artikel implementeren we Sysdig-agents op alle agentknooppunten in uw Azure Container Service-cluster. Voor deze configuratie hebt u een Sysdig-account nodig. 
 
 ## <a name="prerequisites"></a>Vereisten
-[Implementeer](container-service-deployment.md) en [verbind](../container-service-connect.md) een cluster dat door Azure Container Service is geconfigureerd. Verken de [Marathon-gebruikersinterface](container-service-mesos-marathon-ui.md). Ga naar [ https://app.sysdigcloud.com ](https://app.sysdigcloud.com) voor het instellen van een Sysdig-cloudaccount. 
+[Implementeer](container-service-deployment.md) en [verbind](../container-service-connect.md) een cluster dat door Azure Container Service is geconfigureerd. Verken de [Marathon-gebruikersinterface](container-service-mesos-marathon-ui.md). Ga naar [https://app.sysdigcloud.com](https://app.sysdigcloud.com) om een Sysdig-Cloud account in te stellen. 
 
 ## <a name="sysdig"></a>Sysdig
 Sysdig is een bewakingsservice waarmee u de containers in uw cluster kunt bewaken. Sysdig is handig bij het oplossen van problemen, maar biedt ook algemene bewakingswaarden voor CPU, netwerk, geheugen en I/O. Met Sysdig kunt u gemakkelijk zien welke containers het hardst werken of in wezen het geheugen en de CPU het meest gebruiken. Deze weergave vindt u in de sectie ‘Overview’ (Overzicht), die zich momenteel in de bètafase bevindt. 
@@ -33,7 +31,7 @@ Sysdig is een bewakingsservice waarmee u de containers in uw cluster kunt bewake
 ## <a name="configure-a-sysdig-deployment-with-marathon"></a>Een Sysdig-implementatie met Marathon configureren
 Deze stappen geven aan hoe u met Marathon Sysdig-toepassingen in uw cluster configureert en implementeert. 
 
-Toegang tot uw DC/OS-gebruikersinterface via [ http://localhost:80/ ](http://localhost:80/) eenmaal in de DC/OS-gebruikersinterface naar het 'universum', dat onderaan links is en zoek naar 'Sysdig'.
+Open uw DC/OS-gebruikers interface via [http://localhost:80/](http://localhost:80/) eenmaal in de DC/OS-gebruikers interface naar het ' universum ', dat linksonder is en zoek naar ' Sysdig '.
 
 ![Sysdig in het DC/OS-universum](./media/container-service-monitoring-sysdig/sysdig1.png)
 

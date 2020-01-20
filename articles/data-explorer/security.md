@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: cc16a40b0ea53d433a5a6c592f3b9ea364ef9089
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 5f3bceb8398f9837f6f8eaa390def41456daf08d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725830"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271598"
 ---
 # <a name="secure-azure-data-explorer-clusters-in-azure"></a>Azure Data Explorer-clusters beveiligen in azure
 
@@ -24,7 +24,7 @@ Een veelvoorkomende uitdaging bij het bouwen van Cloud toepassingen is referenti
 
 Met de functie beheerde identiteiten voor Azure-resources voor Azure Active Directory (Azure AD) kunt u dit probleem oplossen. De functie biedt Azure-services met een automatisch beheerde identiteit in Azure AD. U kunt de identiteit gebruiken voor verificatie bij alle services die ondersteuning bieden voor Azure AD-verificatie, inclusief Key Vault, zonder referenties in de code. Zie [Managed Identities voor Azure resources](/azure/active-directory/managed-identities-azure-resources/overview) Overview (pagina) voor meer informatie over deze service.
 
-## <a name="data-encryption"></a>Gegevensversleuteling
+## <a name="data-encryption"></a>Data-encryptie
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 

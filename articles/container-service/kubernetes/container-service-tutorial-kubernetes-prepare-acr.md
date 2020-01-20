@@ -1,25 +1,23 @@
 ---
 title: '(AFGESCHAFT) Zelfstudie Azure Container Service: ACR voorbereiden'
 description: 'Zelfstudie Azure Container Service: ACR voorbereiden'
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d0107e09bf8706ba7d4c813814103ca109262d8d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbd718b62246e820bfa01353080815b62912bd00
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60641174"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274135"
 ---
 # <a name="deprecated-deploy-and-use-azure-container-registry"></a>(AFGESCHAFT) Azure Container Registry implementeren en gebruiken
 
 > [!TIP]
-> Voor de bijgewerkte versie van deze zelfstudie, die gebruikmaakt van Azure Kubernetes Service, raadpleegt u [Zelfstudie: Azure Container Registry implementeren en gebruiken](../../aks/tutorial-kubernetes-prepare-acr.md).
+> Voor de bijgewerkte versie van deze zelf studie die gebruikmaakt van de Azure Kubernetes-service, raadpleegt [u zelf studie: implementeren en gebruiken Azure container Registry](../../aks/tutorial-kubernetes-prepare-acr.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -162,7 +160,7 @@ Bij het voltooien van de zelfstudie is de containerinstallatiekopie opgeslagen i
 In deze zelfstudie is een Azure Container Registry voorbereid voor gebruik in een ACS Kubernetes-cluster. De volgende stappen zijn voltooid:
 
 > [!div class="checklist"]
-> * Er is een Azure Container Registry-exemplaar geïmplementeerd
+> * Er is een exemplaar van Azure Container Registry (ACR) geïmplementeerd
 > * Er is een containerinstallatiekopie voor ACR getagd
 > * De installatiekopie is geüpload naar ACR
 

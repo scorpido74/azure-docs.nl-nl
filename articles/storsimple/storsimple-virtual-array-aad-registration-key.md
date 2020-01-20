@@ -1,25 +1,17 @@
 ---
-title: Nieuwe authenticatie voor StorSimple virtuele matrices | Microsoft Docs
+title: Nieuwe authenticatie voor StorSimple virtuele matrices
 description: Hierin wordt uitgelegd hoe u verificatie op basis van AAD gebruikt voor uw service, hoe u een nieuwe registratie sleutel genereert en hand matige registratie van de apparaten uitvoert.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 723d5e969ba2f635724ffa50d562a7abaf936dcf
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 89f367e866c1a794f4359c76b8b8a8a9cfefd50d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517142"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273813"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>De nieuwe verificatie voor uw StorSimple gebruiken
 
@@ -48,7 +40,7 @@ Als u virtuele StorSimple-matrix gebruikt, moet u ervoor zorgen dat de volgende 
 
 | URL-patroon                         | Cloud | Onderdeel/functionaliteit         |
 |------------------------------------|-------|---------------------------------|
-| `https://login.windows.net`        | Open bare Azure |AAD-verificatie service      |
+| `https://login.windows.net`        | Openbare Azure-peering |AAD-verificatie service      |
 | `https://login.microsoftonline.us` | Amerikaanse overheid |AAD-verificatie service      |
 
 Voor een volledige lijst met URL-patronen voor virtuele StorSimple-matrices gaat u naar [URL-patronen voor firewall regels](storsimple-ova-system-requirements.md#url-patterns-for-firewall-rules).
@@ -61,9 +53,9 @@ Als u een virtuele StorSimple-matrix gebruikt, gebruikt u de volgende tabel om t
 
 | Als uw apparaat wordt uitgevoerd  | De volgende actie uitvoeren                                    |
 |----------------------------|--------------------------------------------------------------|
-| Update 1,0 of hoger en is offline. <br> U ziet een waarschuwing dat de URL niet white list is.| 1. Wijzig de firewall regels zodanig dat ze de verificatie-URL bevatten. Zie [verificatie-url's](#url-changes-for-aad-authentication). <br> 2. [Haal de Aad-registratie sleutel op uit de service](#aad-based-registration-keys). <br> 3. Voer de stappen 1-5 om [verbinding te maken met de Windows Power shell-interface van de virtuele matrix](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br> 4. Gebruik `Invoke-HcsReRegister` de cmdlet om het apparaat te registreren via de Windows Power shell. Geef de sleutel op die u in de vorige stap hebt gekregen.|
-| Update 1,0 of hoger en het apparaat is online.| U hoeft geen actie te ondernemen.                                       |
-| Update 0,6 of een eerdere versie en het apparaat is offline. | 1. [Down load Update 1,0 via de catalogus server](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix).<br>2. [Installeer Update 1,0 via de lokale web-UI](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix).<br>3. [Haal de Aad-registratie sleutel op uit de service](#aad-based-registration-keys). <br>4. Voer de stappen 1-5 om [verbinding te maken met de Windows Power shell-interface van de virtuele matrix](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br>5. Gebruik `Invoke-HcsReRegister` de cmdlet om het apparaat te registreren via de Windows Power shell. Geef de sleutel op die u in de vorige stap hebt gekregen.|
+| Update 1,0 of hoger en is offline. <br> U ziet een waarschuwing dat de URL niet white list is.| 1. Wijzig de firewall regels zodat de verificatie-URL moet worden toegevoegd. Zie [verificatie-url's](#url-changes-for-aad-authentication). <br> 2. [Haal de Aad-registratie sleutel op uit de service](#aad-based-registration-keys). <br> 3. Voer de stappen 1-5 uit om [verbinding te maken met de Windows Power shell-interface van de virtuele matrix](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br> 4. gebruik `Invoke-HcsReRegister` cmdlet om het apparaat te registreren via de Windows Power shell. Geef de sleutel op die u in de vorige stap hebt gekregen.|
+| Update 1,0 of hoger en het apparaat is online.| Geen actie vereist.                                       |
+| Update 0,6 of een eerdere versie en het apparaat is offline. | 1. [down load Update 1,0 via de catalogus server](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix).<br>2. [Pas Update 1,0 toe via de lokale web-UI](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix).<br>3. [Haal de Aad-registratie sleutel op uit de service](#aad-based-registration-keys). <br>4. Voer de stappen 1-5 uit om [verbinding te maken met de Windows Power shell-interface van de virtuele matrix](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br>5. gebruik `Invoke-HcsReRegister` cmdlet om het apparaat te registreren via de Windows Power shell. Geef de sleutel op die u in de vorige stap hebt gekregen.|
 | Update 0,6 of een eerdere versie en het apparaat is online | Wijzig de firewall regels zodanig dat ze de verificatie-URL bevatten.<br> Installeer update 1,0 via de Azure Portal. |
 
 ## <a name="aad-based-registration-keys"></a>Registratie sleutels op basis van AAD
@@ -80,7 +72,7 @@ Voer de volgende stappen uit om een AAD-service registratie sleutel te genereren
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>De registratie sleutel voor AAD-Services genereren
 
-1. Ga in **StorSimple Apparaatbeheer**naar **beheer &gt;**  **sleutels**.
+1. Ga in **StorSimple Apparaatbeheer**naar **beheer &gt;** **sleutels**.
     
     ![Ga naar sleutels](./media/storsimple-virtual-array-aad-registration-key/aad-registration-key1.png)
 

@@ -1,27 +1,19 @@
 ---
-title: Overzicht van virtuele-machineschaalsets in Azure | Microsoft Docs
+title: Overzicht van virtuele-machine schaal sets van Azure
 description: Leer alles over schaalsets voor virtuele Azure-machines en hoe u toepassingen automatisch kunt schalen
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: manayar
-ms.openlocfilehash: 73580814dcfe8f967684aca4ce433a40e7bbedc0
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e6201f9ac2e9b813de5a4622fc7996eb1202a164
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679392"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273692"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Wat zijn schaalsets voor virtuele machines?
 Met behulp van schaalsets voor virtuele Azure-machines kunt u een groep identieke VM's met gelijke taakverdeling maken en beheren. Het aantal VM-exemplaren kan automatisch toenemen of afnemen in reactie op vraag of een ingesteld schema. Schaalsets bieden een hoge beschikbaarheid voor uw toepassingen. Een ander voordeel is dat u vanaf één plek een groot aantal virtuele machines kunt beheren, configureren en bijwerken. Met schaalsets voor virtuele machines kunt u grootschalige services bouwen voor zaken zoals rekenkracht, big data en containerworkloads.
@@ -53,7 +45,7 @@ Schaalsets voor virtuele Azure-machines bieden beheermogelijkheden voor toepassi
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Verschillen tussen virtuele machines en schaalsets
 Schaalsets zijn opgebouwd uit virtuele machines. Met schaalsets beschikt u automatisch over de beheer- en automatiseringslagen voor het uitvoeren en schalen van uw toepassingen. U kunt in plaats daarvan ook zelf afzonderlijke virtuele machines maken en beheren of bestaande hulpprogramma's integreren om een vergelijkbaar automatiseringsniveau te bereiken. In de volgende tabel worden de voordelen van schaalsets beschreven ten opzichte van het handmatig beheren van meerdere VM-exemplaren.
 
-| Scenario                           | Handmatig samengestelde groep VM's                                                                    | Virtuele-machineschaalset |
+| Scenario                           | Handmatig samengestelde groep VM's                                                                    | Schaalset voor virtuele machines |
 |------------------------------------|----------------------------------------------------------------------------------------|---------------------------|
 | Aanvullende VM-exemplaren toevoegen        | Handmatige proces voor maken, configureren en garanderen van naleving                             | Automatisch maken op basis van centrale configuratie |
 | Lastenverdeling en distributie van verkeer | Handmatig proces voor maken en configureren van Azure load balancer of Application Gateway      | Automatisch maken en integreren met Azure load balancer of Application Gateway |

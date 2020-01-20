@@ -1,26 +1,18 @@
 ---
-title: Melding beëindigen voor instanties van virtuele-machine schaal sets van Azure | Microsoft Docs
+title: Melding beëindigen voor instanties van virtuele-machine schaal sets van Azure
 description: Meer informatie over het inschakelen van beëindigings meldingen voor instanties van de schaalset voor virtuele machines van Azure
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: shandilvarun
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: vashan
-ms.openlocfilehash: d3d7f92b3803114321bc7420b5c4ba059aabcb9d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a1b1e07fa0622ae25d8086ec65827816ec52a5ce
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705925"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271742"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances-preview"></a>Melding beëindigen voor instanties van virtuele-machine schaal sets van Azure (preview-versie)
 Instanties van een schaalset kunnen zich aanmelden voor het ontvangen van meldingen voor het beëindigen van een exemplaar en het instellen van een vooraf gedefinieerde vertragings time-out voor de bewerking beëindigen. De beëindigings melding wordt verzonden via Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md), waarmee impact bewerkingen kunnen worden vertraagd, zoals het opnieuw opstarten en opnieuw implementeren. Met de preview-oplossing wordt een andere gebeurtenis toegevoegd: beëindigen: aan de lijst met Scheduled Events en de bijbehorende vertraging van de gebeurtenis Terminate is afhankelijk van de vertragings limiet, zoals opgegeven door gebruikers in de model configuraties van de schaalset.
@@ -35,7 +27,7 @@ Wanneer instanties van een schaalset eenmaal zijn geregistreerd in de-functie, h
 ## <a name="enable-terminate-notifications"></a>Meldingen voor beëindigen inschakelen
 Er zijn meerdere manieren om beëindigings meldingen in te scha kelen voor instanties van de schaalset, zoals beschreven in de onderstaande voor beelden.
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 
 In het volgende voor beeld wordt de melding beëindigen ingeschakeld voor het model met de schaalset.
 

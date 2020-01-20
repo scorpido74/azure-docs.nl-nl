@@ -1,101 +1,93 @@
 ---
-title: Opmerkingen bij de StorSimple Virtual Array Update 1.0 release | Microsoft Docs
-description: Beschrijving van kritieke openstaande problemen en oplossingen voor de StorSimple Virtual Array Update 1.0 uitgevoerd.
-services: storsimple
-documentationcenter: ''
+title: Release opmerkingen bij Update 1,0 StorSimple Virtual array
+description: Hierin worden essentiële openstaande problemen en oplossingen voor de virtuele StorSimple-matrix met Update 1,0 beschreven.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: fdf37a8360ec69017458fabee2a9e16aa2c160aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 48dec3a87ab540af224ae4ac59dd37cee7c9d0ee
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60789668"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271344"
 ---
-# <a name="storsimple-virtual-array-update-10-release-notes"></a>StorSimple Virtual Array Update 1.0 release-opmerkingen
+# <a name="storsimple-virtual-array-update-10-release-notes"></a>Release opmerkingen bij Update 1,0 StorSimple Virtual array
 
 ## <a name="overview"></a>Overzicht
 
-De volgende releaseopmerkingen identificeren de kritieke problemen voor het openen en de problemen opgelost voor Microsoft Azure StorSimple Virtual Array updates.
+In de volgende release opmerkingen worden de kritieke openstaande problemen en de opgeloste problemen voor het bijwerken Microsoft Azure StorSimple van de virtuele-matrix geïdentificeerd.
 
-Opmerkingen bij de release worden voortdurend bijgewerkt en als kritieke problemen waarvoor een tijdelijke oplossingen nodig zijn gedetecteerd, worden ze toegevoegd. Voordat u uw StorSimple Virtual Array implementeert, zorgvuldig door de informatie in de release-opmerkingen.
+De release opmerkingen worden voortdurend bijgewerkt en als er kritieke problemen worden gedetecteerd die een tijdelijke oplossing vereisen, worden deze toegevoegd. Lees de informatie in de release opmerkingen aandachtig door voordat u uw virtuele StorSimple-matrix implementeert.
 
-Update 1.0 komt overeen met de softwareversie **10.0.10296.0**.
+Update 1,0 komt overeen met de software versie **10.0.10296.0**.
 
 > [!IMPORTANT]
-> - Updates opnieuw moet worden opgestart en uw apparaat opnieuw opstarten. Als i/o's uitgevoerd worden, heeft het apparaat leidt tot downtime. Ga voor gedetailleerde instructies voor het toepassen van de update naar [Installeer Update 1.0](storsimple-virtual-array-install-update-1.md).
+> - Updates zijn storend en opnieuw opstarten van het apparaat. Als I/O wordt uitgevoerd, loopt het apparaat downtime. Ga voor meer informatie over het Toep assen van de update naar [update 1,0 installeren](storsimple-virtual-array-install-update-1.md).
 >
-> - Update 1 is alleen beschikbaar voor u via de Azure-portal als uw apparaat Update 0.6 wordt uitgevoerd.
+> - Update 1 is alleen beschikbaar via de Azure Portal als op uw apparaat Update 0,6 wordt uitgevoerd.
 
-## <a name="whats-new-in-update-10"></a>Wat is er nieuw in Update 1.0
+## <a name="whats-new-in-update-10"></a>Wat is er nieuw in update 1,0
 
-**Update 1.0 bevat wijzigingen die betrekking hebben op de verificatie van StorSimple Device Manager-service en moeten worden geïmplementeerd op uw zo snel mogelijk.** Deze update bevat de volgende verbeteringen en oplossingen voor problemen:
+**Update 1,0 bevat wijzigingen die betrekking hebben op de verificatie van StorSimple Apparaatbeheer service en moet zo snel mogelijk worden geïmplementeerd.** Deze update bevat de volgende verbeteringen en oplossingen:
 
- - **Gebruik van Azure Active Directory (AAD) om te verifiëren met StorSimple Device Manager-service** – van Update 1.0 en hoger, Azure Active Directory wordt gebruikt voor verificatie met de StorSimple Device Manager-service. Het oude verificatiemechanisme worden per December 2017 afgeschaft. Alle gebruikers moeten de nieuwe verificatie-URL's opnemen in hun firewall-regels. Voor meer informatie gaat u naar de verificatie-URL's die worden vermeld in de [netwerkvereisten voor uw StorSimple Virtual Array](storsimple-ova-system-requirements.md).
+ - **Gebruik van Azure Active Directory (Aad) voor verificatie met StorSimple Apparaatbeheer-service** – vanaf update 1,0 wordt Azure Active Directory gebruikt voor verificatie met de StorSimple Apparaatbeheer-service. Het oude verificatie mechanisme wordt vervangen door december 2017. Alle gebruikers moeten de nieuwe verificatie-Url's in hun firewall regels opnemen. Ga naar verificatie-Url's die worden vermeld in de [netwerk vereisten voor uw virtuele StorSimple-matrix](storsimple-ova-system-requirements.md)voor meer informatie.
  
-    Als de verificatie-URL niet in de firewall-regels opgenomen is, zien de gebruikers een kritieke waarschuwing dat het StorSimple-apparaat kan niet worden geverifieerd met de service. Als de gebruikers deze waarschuwing zien, moeten ze de nieuwe verificatie-URL. Ga voor meer informatie naar [StorSimple netwerken waarschuwingen](storsimple-virtual-array-manage-alerts.md).
+    Als de verificatie-URL niet is opgenomen in de firewall regels, krijgen de gebruikers een kritieke waarschuwing te zien dat hun StorSimple-apparaat niet kan worden geverifieerd bij de service. Als de gebruikers deze waarschuwing zien, moeten ze de nieuwe verificatie-URL toevoegen. Ga naar [StorSimple-netwerk waarschuwingen](storsimple-virtual-array-manage-alerts.md)voor meer informatie.
 
- - **Prestatieverbetering** -verschillende oplossingen voor problemen zijn uitgevoerd ter verbetering van de snelheid van leesbewerkingen van de cloud, laag-modules en bestandsserverapparaten. Prestaties van de back-up en herstel is als gevolg hiervan, verbeterd voor iSCSI- en file server-apparaten.
+ - **Verbetering** van de prestaties: er zijn verschillende oplossingen uitgevoerd om de snelheid van de Cloud Lees bewerkingen, de lagen en de lagen te verbeteren. Als gevolg hiervan zijn de prestaties van de back-up en het herstellen verbeterd voor iSCSI-en Bestands server apparaten.
 
- - **Garbagecollection verzameling verbetering** -deze release bevat oplossingen voor problemen die de prestaties van garbagecollection Verzamelfase wanneer het apparaat en storage-account zich in twee verafgelegen regio's verbeteren.
+ - **Verbetering van garbagecollection** : deze release bevat oplossingen voor problemen die de prestaties van de garbagecollection-cyclus verbeteren wanneer het apparaat en het opslag account zich in twee externe regio's bevinden.
 
- - **Logboekregistratie voor verbetering** -deze release bevat verbeteringen voor logboekregistratie met betrekking tot de garbage collector en i/o-pad.
+ - **Verbetering van logboek registratie** : deze release bevat verbeteringen voor logboek registratie met betrekking tot garbagecollection en I/O-pad.
 
 
-## <a name="issues-fixed-in-update-10"></a>Problemen opgelost in Update 1.0
+## <a name="issues-fixed-in-update-10"></a>Problemen die zijn opgelost in update 1,0
 
-De volgende tabel bevat een samenvatting van problemen in deze release worden opgelost.
+De volgende tabel bevat een overzicht van de problemen die in deze release zijn opgelost.
 
 | Nee. | Functie | Probleem |
 | --- | --- | --- |
-| 1 |Verificatie op basis van AAD| Deze release bevat wijzigingen die u kunt van AAD om te verifiëren met de StorSimple Device Manager.|
-| 2 |Garbagecollection| Dit probleem is opgetreden bij een klant waar het apparaat en storage-accounts worden in verschillende regio's en de klant gerapporteerd onregelmatige netwerkfouten, waardoor die invloed hebben op de facturering. In deze release, is dit probleem opgelost. |
-| 3 |Prestaties| Deze release bevat wijzigingen die leiden tot herstel/cloud leesbewerkingen/laag in / out prestatieverbetering laag.|
-| 4 |Update| Er is een probleem met update in de eerdere versie dat heeft geresulteerd in mislukte back-ups op een klantsite. Dit probleem is opgelost in deze release.|
+| 1 |Verificatie op basis van AAD| Deze release bevat wijzigingen waarmee AAD kan worden geverifieerd met de StorSimple-Apparaatbeheer.|
+| 2 |Garbagecollection| Dit probleem is gerapporteerd op de site van een klant waar het apparaat en de opslag accounts zich in verschillende regio's bevinden en de klant heeft periodieke netwerk fouten gerapporteerd die van invloed zijn op de facturering. In deze release is dit probleem opgelost. |
+| 3 |Prestaties| Deze release bevat wijzigingen die resulteren in het verbeteren van de prestaties van herstellen/lezen/in de Cloud/laag.|
+| 4 |Update| Er is een probleem opgetreden met de update in de eerdere versie die heeft geleid tot back-upfouten op een klant site. Dit probleem is opgelost in deze release.|
 
-## <a name="known-issues-in-update-10"></a>Bekende problemen in Update 1.0
+## <a name="known-issues-in-update-10"></a>Bekende problemen in update 1,0
 
-De volgende tabel bevat een overzicht van de bekende problemen voor de StorSimple Virtual Array en bevat de problemen release hebt genoteerd uit de vorige versies.
+De volgende tabel bevat een samen vatting van bekende problemen voor de virtuele StorSimple-matrix en bevat de release-items die zijn vermeld in de vorige releases.
 
 | Nee. | Functie | Probleem | Tijdelijke oplossing/opmerkingen |
 | --- | --- | --- | --- |
-| **1.** |Updates |De virtuele matrices die zijn gemaakt in de preview-versie kunnen niet worden bijgewerkt naar een ondersteunde versie voor algemene beschikbaarheid. |Deze virtuele matrices moeten failover voor de algemeen beschikbare versie met behulp van een werkstroom van disaster recovery (DR). |
-| **2.** |Ingerichte gegevensschijf |Nadat u een gegevensschijf van een bepaalde opgegeven grootte hebt ingericht en de bijbehorende StorSimple Virtual Array hebt gemaakt, moet u niet uitbreiden of verkleinen van de gegevensschijf. Er wordt geprobeerd om te doen, resulteert in een verlies van de gegevens in de lokale lagen van het apparaat. | |
-| **3.** |Groepsbeleid |Wanneer een apparaat is het domein, toepassen van een Groepsbeleid kan nadelige invloed heeft op het apparaat opnieuw. |Zorg ervoor dat uw virtuele array kan in een eigen organisatie-eenheid (OE) voor Active Directory en geen groepsbeleidsobjecten (GPO) worden toegepast. |
-| **4.** |Lokale web-UI |Als verbeterde beveiligingsfuncties zijn ingeschakeld in Internet Explorer (IE ESC), is het mogelijk dat sommige lokale web-UI-pagina's, zoals probleemoplossing of onderhoud niet goed werkt. Knoppen op deze pagina's kunnen ook niet werken. |Geavanceerde beveiligingsfuncties in Internet Explorer uitschakelen. |
-| **5.** |Lokale web-UI |In een Hyper-V virtuele machine, de netwerkinterfaces in de web-UI worden weergegeven als 10 Gbps-interfaces. |Dit gedrag is een weerspiegeling van Hyper-V. Hyper-V bevat altijd 10 Gbps voor virtuele netwerkadapters. |
-| **6.** |Gelaagde volumes of shares |Bytebereik vergrendelen voor toepassingen die werken met de StorSimple gelaagde volumes wordt niet ondersteund. Als byte bereik vergrendeling is ingeschakeld, werkt StorSimple lagen niet. |Aanbevolen maatregelen zijn onder andere: <br></br>Bytebereik vergrendelen in uw toepassingslogica uitschakelen.<br></br>Wilt u gegevens voor deze toepassing opnemen in de lokaal vastgemaakte volumes in plaats van gelaagde volumes.<br></br>*Voorbehoud*: Wanneer met behulp van lokaal volumes vastgemaakte en byte bereik vergrendeling is ingeschakeld, kan het lokaal vastgemaakte volume online zijn, zelfs nog voor het herstellen voltooid is. In dergelijke gevallen, als een herstelbewerking uitgevoerd wordt, moet klikt u vervolgens u wachten voor de herstelbewerking is voltooid. |
-| **7.** |Gelaagde bestandsshares |Werken met grote bestanden kan leiden tot trage laag uitschalen. |Als u werkt met grote bestanden, wordt u aangeraden het grootste bestand kleiner is dan 3% van de grootte van de bestandsshare is. |
-| **8.** |Capaciteitsplanning voor bestandsshares |U ziet mogelijk verbruik delen wanneer er geen gegevens op de share zijn. Dit verbruik is omdat de gebruikte capaciteit voor shares metagegevens bevat. | |
-| **9.** |Herstel na noodgeval |U kunt alleen het herstel na noodgevallen van een bestandsserver aan hetzelfde domein als die van het bronapparaat uitvoeren. Herstel na noodgevallen naar een doelapparaat in een ander domein wordt niet ondersteund in deze release. |Dit is geïmplementeerd in een latere versie. Ga voor meer informatie naar [Failover en herstel na noodgevallen voor uw StorSimple Virtual Array](storsimple-virtual-array-failover-dr.md) |
-| **10.** |Azure PowerShell |De virtuele StorSimple-matrices kan niet worden beheerd via de Azure PowerShell in deze release. |Het beheer van de virtuele apparaten moet worden gedaan via de Azure-portal en de lokale webgebruikersinterface. |
-| **11.** |Wachtwoord wijzigen |De console van het virtuele matrix accepteert alleen invoer in en-us indeling op het toetsenbord. | |
-| **12.** |CHAP |CHAP-referenties eenmaal is gemaakt, kunnen niet worden verwijderd. Bovendien, als u de CHAP-referenties wijzigt, moet u zet de volumes offline en brengt u deze online voor de wijziging door te voeren. |Dit probleem is opgelost in een latere versie. |
-| **13.** |iSCSI-server |De 'opslagruimte hebt gebruikt' weergegeven voor een iSCSI-volume kunnen mogelijk verschillen in de StorSimple Device Manager-service en de iSCSI-host. |De iSCSI-host is de weergave van het bestandssysteem.<br></br>Het apparaat ziet de blokken toegewezen wanneer het volume bij de maximale grootte is. |
-| **14.** |Bestandsserver |Als een bestand in een map is een alternatieve gegevens Stream (AD) die ermee verbonden zijn, wordt de ADVERTENTIES niet een back-up of via herstel na noodgevallen, klonen en herstel op itemniveau wordt hersteld. | |
+| **1.** |Updates |De virtuele matrices die in de preview-versie zijn gemaakt, kunnen niet worden bijgewerkt naar een ondersteunde versie van de algemene Beschik baarheid. |Voor deze virtuele matrices moet een failover worden uitgevoerd voor de release van de algemene Beschik baarheid met behulp van een nood herstel werk stroom (DR). |
+| **2.** |Ingerichte gegevens schijf |Wanneer u een gegevens schijf van een bepaalde grootte hebt ingericht en de bijbehorende virtuele StorSimple-matrix hebt gemaakt, moet u de gegevens schijf niet uitbreiden of verkleinen. Als u probeert resultaten te maken, gaan de gegevens in de lokale lagen van het apparaat verloren. | |
+| **3.** |Groeps beleid |Wanneer een apparaat lid is van een domein, kan het Toep assen van een groeps beleid een nadelige invloed hebben op de werking van het apparaat. |Zorg ervoor dat uw virtuele matrix zich in een eigen organisatie-eenheid (OE) bevindt voor Active Directory en dat er geen groeps beleidsobjecten worden toegepast. |
+| **4.** |Lokale web-UI |Als Verbeterde beveiligings functies zijn ingeschakeld in Internet Explorer (IE ESC), werken sommige lokale web-UI-pagina's, zoals het oplossen van problemen of het onderhoud mogelijk niet goed. De knoppen op deze pagina's werken mogelijk ook niet. |Verbeterde beveiligings functies uitschakelen in Internet Explorer. |
+| **5.** |Lokale web-UI |In een Hyper-V virtuele machine worden de netwerk interfaces in de Web-UI weer gegeven als 10 Gbps-interfaces. |Dit gedrag is een reflectie van Hyper-V. Hyper-V geeft altijd 10 Gbps weer voor virtuele netwerk adapters. |
+| **6.** |Gelaagde volumes of shares |Het vergren delen van een byte bereik voor toepassingen die werken met de StorSimple-gelaagde volumes, wordt niet ondersteund. Als het vergren delen van het byte bereik is ingeschakeld, werkt StorSimple lagen niet. |Aanbevolen maat regelen zijn onder andere: <br></br>Schakel de vergren deling van het byte bereik uit in uw toepassings logica.<br></br>U kunt ervoor kiezen om gegevens voor deze toepassing te plaatsen in lokaal vastgemaakte volumes, in tegens telling tot gelaagde volumes.<br></br>Voor *behoud*: wanneer lokaal vastgemaakte volumes en het vergren delen van het bereik van bytes is ingeschakeld, kan het lokaal vastgemaakte volume online zijn, zelfs voordat het herstel is voltooid. Als een herstel bewerking wordt uitgevoerd, moet u wachten tot de herstel bewerking is voltooid. |
+| **7.** |Gelaagde shares |Het werken met grote bestanden kan leiden tot trage lagen. |Wanneer u werkt met grote bestanden, raden we aan dat het grootste bestand kleiner is dan 3% van de share grootte. |
+| **8.** |Gebruikte capaciteit voor shares |U ziet mogelijk het verbruik delen als de share geen gegevens bevat. Dit verbruik is omdat de gebruikte capaciteit voor shares meta gegevens bevat. | |
+| **9.** |Herstel na noodgeval |U kunt alleen herstel na nood geval uitvoeren voor een bestands server naar hetzelfde domein als die van het bron apparaat. Herstel na nood gevallen naar een doel apparaat in een ander domein wordt niet ondersteund in deze release. |Dit is geïmplementeerd in een latere versie. Ga voor meer informatie naar [failover en herstel na nood gevallen voor uw virtuele StorSimple-matrix](storsimple-virtual-array-failover-dr.md) |
+| **10.** |Azure PowerShell |De virtuele StorSimple-matrices kunnen niet worden beheerd via de Azure PowerShell in deze release. |Het beheer van de virtuele apparaten moet worden uitgevoerd via de Azure Portal en de lokale webgebruikersinterface. |
+| **11.** |Wachtwoord wijzigen |De console van de virtuele matrix heeft alleen invoer in en-US-toetsenbord indeling toegestaan. | |
+| **12.** |CHAP |De CHAP-referenties kunnen niet worden verwijderd als deze eenmaal zijn gemaakt. Als u de CHAP-referenties wijzigt, moet u bovendien de volumes offline halen en deze vervolgens online brengen om de wijziging door te voeren. |Dit probleem wordt opgelost in een latere versie. |
+| **13.** |iSCSI-server |De gebruikte opslag ruimte die voor een iSCSI-volume wordt weer gegeven, kan verschillen in de StorSimple-Apparaatbeheer service en de iSCSI-host. |De iSCSI-host heeft de bestandssysteem weergave.<br></br>Het apparaat ziet de blokken die worden toegewezen wanneer het volume de maximum grootte heeft. |
+| **14.** |Bestandsserver |Als aan een bestand in een map een alternatieve gegevensstream (ADS) is gekoppeld, wordt er geen back-up gemaakt van de ADS of kan deze worden hersteld via herstel na nood gevallen, klonen en herstellen op item niveau. | |
 | **15.** |Bestandsserver |Symbolische koppelingen worden niet ondersteund. | |
-| **16.** |Bestandsserver |Bestanden beveiligd door Windows Encrypting File System (EFS) wanneer gekopieerd of opgeslagen op het resultaat van de StorSimple Virtual Array bestand server in een niet-ondersteunde configuratie.  | |
-| **17.** |Updates |Als u fout ziet code: 2359302 (hex 0x240006) bij een poging om een hotfix via de gebruikersinterface voor het lokaal te installeren, klikt u vervolgens dit houdt in dat de hotfix al is geïnstalleerd op uw apparaat.   | |
-| **18.** |Updates |Als u de lokale webgebruikersinterface Update 1 installeren op uw virtuele array gebruikt, moet u ervoor zorgen dat u Update 0.6 worden uitgevoerd. Als u een versie lager is dan Update 0.6, moet u eerst Update 0.6 installeren en vervolgens toepassen Update 1. Als u Update 1.0 voor het rechtstreeks vanaf een 0,6 versie vóór het bijwerken installeren, klikt u vervolgens wordt u bepaalde updates gemist en de bewakingsgrafieken werkt niet.   | |
+| **16.** |Bestandsserver |Bestanden die worden beveiligd door Windows Encrypting File System (EFS) wanneer deze worden gekopieerd naar of opgeslagen op de StorSimple-Bestands server van de virtuele matrix, resulteren in een niet-ondersteunde configuratie.  | |
+| **17.** |Updates |Als fout code: 2359302 (hex 0x240006) wordt weer geven tijdens het installeren van een hotfix via de lokale gebruikers interface, houdt dit in dat de hotfix al op uw apparaat is geïnstalleerd.   | |
+| **18.** |Updates |Als u de lokale web-UI gebruikt om update 1 op uw virtuele matrix te installeren, moet u ervoor zorgen dat u update 0,6 uitvoert. Als u een lagere versie dan Update 0,6 gebruikt, moet u eerst Update 0,6 installeren en vervolgens Update 1 Toep assen. Als u update 1,0 rechtstreeks installeert vanaf een versie van vóór de update 0,6, zullen sommige updates worden verwijderd en worden de bewakings grafieken niet meer gebruikt.   | |
 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Installeer Update 1.0](storsimple-virtual-array-install-update-1.md) op uw StorSimple Virtual Array.
+[Installeer Update 1,0](storsimple-virtual-array-install-update-1.md) op uw virtuele StorSimple-matrix.
 
-## <a name="references"></a>Verwijzingen
-Wilt u een oudere releaseopmerking? Ga naar:
-*  [Opmerkingen bij de StorSimple Virtual Array Update 0.6 Release](storsimple-virtual-array-update-06-release-notes.md)
-* [StorSimple Virtual Array Update 0.5 Release Notes](storsimple-virtual-array-update-05-release-notes.md)
-* [StorSimple Virtual Array Update 0.4 Release Notes](storsimple-virtual-array-update-04-release-notes.md)
-* [StorSimple Virtual Array Update 0.3 Release Notes](storsimple-ova-update-03-release-notes.md)
-* [StorSimple Virtual Array Update 0.1 en 0.2 opmerkingen bij de Release](storsimple-ova-update-01-release-notes.md)
-* [Opmerkingen bij de Release van StorSimple Virtual Array algemene beschikbaarheid](storsimple-ova-pp-release-notes.md)
+## <a name="references"></a>Naslaginformatie
+Zoekt u een oudere release-Opmerking? Ga naar:
+*  [Release opmerkingen bij Update 0,6 StorSimple Virtual array](storsimple-virtual-array-update-06-release-notes.md)
+* [Release opmerkingen bij Update 0,5 StorSimple Virtual array](storsimple-virtual-array-update-05-release-notes.md)
+* [Release opmerkingen bij Update 0,4 StorSimple Virtual array](storsimple-virtual-array-update-04-release-notes.md)
+* [Release opmerkingen bij Update 0,3 StorSimple Virtual array](storsimple-ova-update-03-release-notes.md)
+* [Release opmerkingen bij Update 0,1 en 0,2 voor StorSimple Virtual array](storsimple-ova-update-01-release-notes.md)
+* [Release opmerkingen bij de algemene Beschik baarheid van StorSimple Virtual array](storsimple-ova-pp-release-notes.md)

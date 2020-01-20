@@ -1,20 +1,20 @@
 ---
-author: jpconnock
+author: tanmaygore
+ms.author: tagore
 ms.service: cloud-services
 ms.topic: include
 ms.date: 11/25/2018
-ms.author: jeconnoc
-ms.openlocfilehash: a73e8b2d0c35fe4575f36598beee1c1e4bbca488
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a8fae34622e5306dd9f462ed49c876cbacb504ba
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68968856"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279526"
 ---
 > [!NOTE]
 > Als u deze sectie wilt volt ooien, moet u een werkende installatie van node. js en de Azure SDK voor node. js voor uw platform hebben.
 > 
-> * Installeer de Azure SDK voor node. js: [](https://go.microsoft.com/fwlink/?LinkId=254279) | [Down load](https://go.microsoft.com/fwlink/?LinkId=253472) voor[Mac Installer](https://go.microsoft.com/fwlink/?LinkId=253471) | Linux voor Windows Installer
+> * De Azure SDK voor node. js installeren: [Windows installer](https://go.microsoft.com/fwlink/?LinkId=254279) | [Mac Installer](https://go.microsoft.com/fwlink/?LinkId=253471) | [Linux downloaden](https://go.microsoft.com/fwlink/?LinkId=253472)
 > * Als u Mac of Linux gebruikt, installeert u node. js van [https://nodejs.org](https://nodejs.org). Het Windows-installatie programma bevat al node. js.
 > 
 > 

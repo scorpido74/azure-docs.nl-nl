@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.openlocfilehash: 64d4998e287f9981c666dee54fc3b67886791bbf
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.date: 01/21/2019
+ms.openlocfilehash: 81039aa4aa37f9587db887beadcdb6d263ec6a74
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708288"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274816"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Quick Start: een hybride modus-exemplaar maken met Azure Portal & Azure Database Migration Service
 
@@ -73,7 +73,7 @@ Registreer de resource provider micro soft. DataMigration voordat u uw eerste ex
     - Kies de **locatie** die zich het dichtst bij uw bron- of doelserver bevindt.
     - Voor **Service modus**selecteert u **hybride (preview-versie)** .
 
-           ![Create migration service - basics](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
+         ![Migratie service maken-basis beginselen](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
 4. Selecteer **Controleren + maken**.
 
@@ -186,7 +186,7 @@ Dit script is bedoeld voor snelle prototypen wanneer de gebruiker al over de ben
 > [!IMPORTANT]
 > In dit script wordt ervan uitgegaan dat er een bestaand exemplaar van Azure Database Migration Service in de hybride modus en dat het gebruikte Azure-account machtigingen heeft voor het maken van AdApps in de Tenant en voor het wijzigen van RBAC op het abonnement.
 
-Vul de para meters boven aan het script in en voer het script uit vanuit een Power shell-instantie voor beheerders.
+Vul de para meters boven aan het script in en voer het script uit vanuit een Power shell-instantie van Administrators.
 
 ## <a name="next-steps"></a>Volgende stappen
 

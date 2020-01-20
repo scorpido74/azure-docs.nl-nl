@@ -1,49 +1,47 @@
 ---
-title: (AFGESCHAFT) Azure DC/OS-cluster - Datadog bewaken
-description: Een Azure Container Service-cluster bewaken met Datadog. Gebruik de DC/OS-webgebruikersinterface voor het implementeren van de agents Datadog met uw cluster.
-services: container-service
+title: KEUR Azure DC/OS-cluster controleren-Datadog
+description: Een Azure Container Service cluster bewaken met Datadog. Gebruik de Web-UI van DC/OS om de Datadog-agents te implementeren in uw cluster.
 author: sauryadas
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/28/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: a094369d467b3b1f3d5fe93f870dccc9eae7519c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 530092dfabacb0b07f4002a82078dd3535cd7e8f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60508079"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275257"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>(AFGESCHAFT) Een Azure Container Service DC/OS-cluster bewaken met Datadog
+# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>KEUR Een Azure Container Service DC/OS-cluster bewaken met Datadog
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-In dit artikel implementeren we Datadog agents op alle agentknooppunten in uw Azure Container Service-cluster. Voor deze configuratie moet u een account met Datadog. 
+In dit artikel gaan we Datadog-agents implementeren op alle agent knooppunten in uw Azure Container Service-cluster. U hebt een account met Datadog nodig voor deze configuratie. 
 
 ## <a name="prerequisites"></a>Vereisten
-[Implementeer](container-service-deployment.md) en [verbind](../container-service-connect.md) een cluster dat door Azure Container Service is geconfigureerd. Verken de [Marathon-gebruikersinterface](container-service-mesos-marathon-ui.md). Ga naar [ https://datadoghq.com ](https://datadoghq.com) het instellen van een account met Datadog. 
+[Implementeer](container-service-deployment.md) en [verbind](../container-service-connect.md) een cluster dat door Azure Container Service is geconfigureerd. Verken de [Marathon-gebruikersinterface](container-service-mesos-marathon-ui.md). Ga naar [https://datadoghq.com](https://datadoghq.com) om een Datadog-account in te stellen. 
 
 ## <a name="datadog"></a>Datadog
-Datadog is een bewakingsservice waarmee gegevens uit uw containers in uw Azure Container Service-cluster verzamelt. Datadog heeft een Docker-integratie-Dashboard waar u specifieke metrische gegevens in uw containers kunt zien. Metrische gegevens die zijn verzameld uit uw containers worden georganiseerd door CPU, geheugen, netwerk- en i/o. Datadog splitst metrische gegevens in containers en afbeeldingen. Een voorbeeld van de gebruikersinterface ziet er als CPU-gebruik lager is dan.
+Datadog is een bewakings service waarmee bewakings gegevens worden verzameld van uw containers in uw Azure Container Service cluster. Datadog heeft een docker-integratie dashboard waarin u specifieke metrische gegevens in uw containers kunt bekijken. De metrische gegevens die uit uw containers zijn verzameld, zijn ingedeeld op basis van CPU, geheugen, netwerk en I/O. Datadog splitst metrische gegevens in containers en afbeeldingen. Hieronder ziet u een voor beeld van de werking van de gebruikers interface voor het CPU-gebruik.
 
-![Gebruikersinterface met Datadog](./media/container-service-monitoring/datadog4.png)
+![Datadog-gebruikers interface](./media/container-service-monitoring/datadog4.png)
 
-## <a name="configure-a-datadog-deployment-with-marathon"></a>Een implementatie met Datadog met Marathon configureren
-Deze stappen ziet u hoe u kunt configureren en implementeren van Datadog toepassingen in uw cluster met Marathon. 
+## <a name="configure-a-datadog-deployment-with-marathon"></a>Een Datadog-implementatie configureren met marathon
+In deze stappen wordt uitgelegd hoe u Datadog-toepassingen configureert en implementeert in uw cluster met marathon. 
 
-Toegang tot uw DC/OS-gebruikersinterface via [ http://localhost:80/ ](http://localhost:80/). Eenmaal in de DC/OS-gebruikersinterface Navigeer naar de "Universe" is onderaan links en zoek naar 'Datadog' en klik op "Installeren".
+Toegang tot uw DC/OS-gebruikers interface via [http://localhost:80/](http://localhost:80/). In de DC/OS-gebruikers interface navigeert u naar het ' universum ' aan de linkerkant en zoekt u naar ' Datadog ' en klikt u op installeren.
 
-![Pakket met Datadog binnen de DC/OS-universum](./media/container-service-monitoring/datadog1.png)
+![Datadog-pakket binnen het DC/OS-universum](./media/container-service-monitoring/datadog1.png)
 
-Nu de configuratie te voltooien moet u een Datadog-account of een gratis proefaccount. Nadat u bent aangemeld bij het zoeken van de website Datadog aan de linkerkant en gaat u naar integraties vervolgens -> [API's](https://app.datadoghq.com/account/settings#api). 
+Nu u de configuratie wilt volt ooien, hebt u een Datadog-account of een gratis proef account nodig. Zodra u bent aangemeld bij de Datadog-website, kijkt u naar links en gaat u naar integraties-> en [api's](https://app.datadoghq.com/account/settings#api). 
 
-![Datadog API-sleutel](./media/container-service-monitoring/datadog2.png)
+![Datadog-API-sleutel](./media/container-service-monitoring/datadog2.png)
 
-Voer vervolgens uw API-sleutel in de configuratie van de Datadog binnen de DC/OS-universum. 
+Voer vervolgens uw API-sleutel in de Datadog-configuratie in het DC/OS-universum in. 
 
-![Datadog configuratie in het DC/OS-universum](./media/container-service-monitoring/datadog3.png) 
+![Datadog-configuratie in het DC/OS-universum](./media/container-service-monitoring/datadog3.png) 
 
-In de bovenstaande configuratie exemplaren zijn ingesteld op 10000000, wanneer een nieuw knooppunt wordt toegevoegd aan het cluster Datadog wordt automatisch een agent worden geïmplementeerd met dat knooppunt. Dit is een tijdelijke oplossing. Nadat u het pakket moet u Ga terug naar de website Datadog en vinden hebt geïnstalleerd '[Dashboards](https://app.datadoghq.com/dash/list). " Daar ziet u aangepaste en integratie van Dashboards. De [Docker dashboard](https://app.datadoghq.com/screen/integration/docker) heeft alle de container metrische gegevens die u nodig hebt voor het bewaken van uw cluster. 
+In de bovenstaande configuratie-exemplaren worden ingesteld op 10000000, dus wanneer een nieuw knoop punt aan het cluster wordt toegevoegd, implementeert Datadog automatisch een agent op dat knoop punt. Dit is een tijdelijke oplossing. Nadat u het pakket hebt geïnstalleerd, gaat u terug naar de Datadog-website en vindt u '[Dash boards](https://app.datadoghq.com/dash/list)'. Hier ziet u aangepaste Dash boards en integratie dashboards. Het [docker-dash board](https://app.datadoghq.com/screen/integration/docker) heeft alle metrische gegevens over de container die u nodig hebt voor het controleren van het cluster. 
 

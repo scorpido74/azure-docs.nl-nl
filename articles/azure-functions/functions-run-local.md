@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: 80e4ff38-5174-43
-ms.openlocfilehash: feaecbf3b9a39d77f6a60593c8e5f57f14c24ad7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 4eafd0fbaed067a0852edea010408a1d82353392
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768976"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277966"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Werken met Azure Functions Core Tools
 
@@ -35,7 +35,7 @@ Er zijn drie versies van Azure Functions Core Tools. Welke versie u gebruikt, is
 
 + **Versie 1. x**: ondersteunt versie 1. x van de Azure functions runtime. Deze versie van de hulpprogram ma's wordt alleen ondersteund op Windows-computers en wordt geïnstalleerd vanuit een [NPM-pakket](https://www.npmjs.com/package/azure-functions-core-tools).
 
-+ [**Versie 2. x/3. x**](#v2): ondersteunt [versie 2. x of 3. x van de Azure functions runtime](functions-versions.md). Deze versies ondersteunen [Windows](#windows-npm), [macOS](#brew)en [Linux](#linux) en gebruiken platformspecifieke pakket beheerders of NPM voor installatie.
++ [**Versie 2. x/3. x**](#v2): ondersteunt [versie 2. x of 3. x van de Azure functions runtime](functions-versions.md). Deze versies ondersteunen [Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2), [macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)en [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2) en gebruiken platformspecifieke pakket beheerders of NPM voor installatie.
 
 Tenzij anders vermeld, zijn de voor beelden in dit artikel van versie 3. x.
 
@@ -45,12 +45,12 @@ Tenzij anders vermeld, zijn de voor beelden in dit artikel van versie 3. x.
 
 ### <a name="v2"></a>Versie 2. x en 3. x
 
-Versie 2. x/3. x van de hulpprogram ma's maakt gebruik van de Azure Functions runtime die is gebouwd op .NET core. Deze versie wordt ondersteund op alle platformen .NET core ondersteunt, waaronder [Windows](#windows-npm), [macOS](#brew)en [Linux](#linux). 
+Versie 2. x/3. x van de hulpprogram ma's maakt gebruik van de Azure Functions runtime die is gebouwd op .NET core. Deze versie wordt ondersteund op alle platformen .NET core ondersteunt, waaronder [Windows](/azure/azure-functions/functions-run-local?tabs=windows#v2), [macOS](/azure/azure-functions/functions-run-local?tabs=macos#v2)en [Linux](/azure/azure-functions/functions-run-local?tabs=linux#v2). 
 
 > [!IMPORTANT]
 > U kunt de vereiste voor het installeren van de .NET Core SDK overs Laan door gebruik te maken van [uitbreidings bundels].
 
-#### <a name="windows-npm"></a>Windows
+# <a name="windowstabwindows"></a>[Windows](#tab/windows)
 
 In de volgende stappen wordt NPM gebruikt om de belangrijkste Hulpprogram Ma's in Windows te installeren. U kunt ook [Choco lade](https://chocolatey.org/)gebruiken. Zie het Leesmij-bestand met [belangrijkste Hulpprogram ma's](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#windows)voor meer informatie.
 
@@ -76,7 +76,7 @@ In de volgende stappen wordt NPM gebruikt om de belangrijkste Hulpprogram Ma's i
 
 1. Als u geen [uitbreidings bundels]wilt gebruiken, installeert u de [.net Core 2. x SDK voor Windows](https://www.microsoft.com/net/download/windows).
 
-#### <a name="brew"></a>MacOS met Homebrew
+# <a name="macostabmacos"></a>[MacOS](#tab/macos)
 
 In de volgende stappen wordt homebrew gebruikt om de belangrijkste Hulpprogram Ma's voor macOS te installeren.
 
@@ -100,7 +100,7 @@ In de volgende stappen wordt homebrew gebruikt om de belangrijkste Hulpprogram M
     brew link --overwrite azure-functions-core-tools@3
     ```
 
-#### <a name="linux"></a>Linux (Ubuntu/Debian) met APT
+# <a name="linuxtablinux"></a>[Linux](#tab/linux)
 
 De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulpprogramma's te installeren op uw Ubuntu/Debian Linux-distributie. Raadpleeg het Leesmij-bestand voor de [belangrijkste Hulpprogram ma's](https://github.com/Azure/azure-functions-core-tools/blob/master/README.md#linux)voor andere Linux-distributies.
 
@@ -122,7 +122,7 @@ De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulppro
    Voer de volgende opdracht uit om de APT-bron lijst voor Debian in te stellen:
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
+    sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/debian/$(lsb_release -rs | cut -d'.' -f 1)/prod $(lsb_release -cs) main" > /etc/apt/sources.list.d/dotnetdev.list'
     ```
 
 1. Controleer het `/etc/apt/sources.list.d/dotnetdev.list`-bestand voor een van de juiste Linux-versie teken reeksen die hieronder worden weer gegeven:
@@ -149,6 +149,8 @@ De volgende stappen gebruiken [apt](https://wiki.debian.org/Apt) om kern hulppro
     ```
 
 1. Als u geen [uitbreidings bundels]wilt gebruiken, installeert u [.net Core 2. x SDK voor Linux](https://www.microsoft.com/net/download/linux).
+
+---
 
 ## <a name="create-a-local-functions-project"></a>Een lokaal Functions-project maken
 
@@ -292,9 +294,9 @@ U kunt deze opties ook opgeven in de opdracht met behulp van de volgende argumen
 | Argument     | Beschrijving                            |
 | ------------------------------------------ | -------------------------------------- |
 | **`--csx`** | (Versie 2. x) Hiermee worden dezelfde C# script-sjablonen (. CSX) gegenereerd die worden gebruikt in versie 1. x en in de portal. |
-| **`--language -l`**| De programmeer taal van de sjabloon, C#zoals F#, of Java script. Deze optie is vereist in versie 1. x. In versie 2. x gebruikt u deze optie niet of kiest u een taal die overeenkomt met de runtime van de werk nemer. |
-| **`--name -n`** | De functie naam. |
-| **`--template -t`** | Gebruik de `func templates list` opdracht om de volledige lijst met beschik bare sjablonen voor elke ondersteunde taal weer te geven.   |
+| **`--language`** , **`-l`**| De programmeer taal van de sjabloon, C#zoals F#, of Java script. Deze optie is vereist in versie 1. x. In versie 2. x gebruikt u deze optie niet of kiest u een taal die overeenkomt met de runtime van de werk nemer. |
+| **`--name`** , **`-n`** | De functie naam. |
+| **`--template`** , **`-t`** | Gebruik de `func templates list` opdracht om de volledige lijst met beschik bare sjablonen voor elke ondersteunde taal weer te geven.   |
 
 Als u bijvoorbeeld een Java script-trigger in één opdracht wilt maken, voert u het volgende uit:
 
@@ -351,13 +353,13 @@ func host start
 | **`--cert`** | Het pad naar een pfx-bestand dat een persoonlijke sleutel bevat. Wordt alleen gebruikt met `--useHttps`. Alleen versie 2. x. |
 | **`--cors-credentials`** | Alleen-lezen geverifieerde aanvragen (cookies en de verificatie header) versie 2. x toestaan. |
 | **`--cors`** | Een door komma's gescheiden lijst met CORS-oorsprong, zonder spaties. |
-| **`--language-worker`** | Argument voor het configureren van de taal medewerker. U kunt bijvoorbeeld fout opsporing voor taal werk nemer inschakelen door [poort voor fout opsporing en andere vereiste argumenten](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)op te geven. Alleen versie 2. x. |
-| **`--nodeDebugPort -n`** | De poort voor de node. js-fout opsporing die moet worden gebruikt. Standaard: een waarde van Launch. json of 5858. Alleen versie 1. x. |
+| **`--language-worker`** | Argumenten voor het configureren van de taal medewerker. U kunt bijvoorbeeld fout opsporing voor taal werk nemer inschakelen door [poort voor fout opsporing en andere vereiste argumenten](https://github.com/Azure/azure-functions-core-tools/wiki/Enable-Debugging-for-language-workers)op te geven. Alleen versie 2. x. |
+| **`--nodeDebugPort`** , **`-n`** | De poort voor de node. js-fout opsporing die moet worden gebruikt. Standaard: een waarde van Launch. json of 5858. Alleen versie 1. x. |
 | **`--password`** | Ofwel het wacht woord of een bestand dat het wacht woord voor een pfx-bestand bevat. Wordt alleen gebruikt met `--cert`. Alleen versie 2. x. |
-| **`--port -p`** | De lokale poort waarop moet worden geluisterd. Standaard waarde: 7071. |
+| **`--port`** , **`-p`** | De lokale poort waarop moet worden geluisterd. Standaard waarde: 7071. |
 | **`--pause-on-error`** | Wacht op extra invoer voordat het proces wordt afgesloten. Wordt alleen gebruikt bij het starten van kern Hulpprogramma's van een Integrated Development Environment (IDE).|
-| **`--script-root --prefix`** | Hiermee geeft u het pad op naar de hoofdmap van de functie-app die moet worden uitgevoerd of geïmplementeerd. Dit wordt gebruikt voor gecompileerde projecten die Project bestanden in een submap genereren. Wanneer u bijvoorbeeld een C# klassen bibliotheek project bouwt, worden de bestanden host. json, local. settings. json en function. json gegenereerd in een *hoofdmap* met een pad als `MyProject/bin/Debug/netstandard2.0`. In dit geval stelt u het voor voegsel in als `--script-root MyProject/bin/Debug/netstandard2.0`. Dit is de basis van de functie-app wanneer deze wordt uitgevoerd in Azure. |
-| **`--timeout -t`** | De time-out voor het starten van de functions-host, in seconden. Standaard: 20 seconden.|
+| **`--script-root`** , **`--prefix`** | Hiermee geeft u het pad op naar de hoofdmap van de functie-app die moet worden uitgevoerd of geïmplementeerd. Dit wordt gebruikt voor gecompileerde projecten die Project bestanden in een submap genereren. Wanneer u bijvoorbeeld een C# klassen bibliotheek project bouwt, worden de bestanden host. json, local. settings. json en function. json gegenereerd in een *hoofdmap* met een pad als `MyProject/bin/Debug/netstandard2.0`. In dit geval stelt u het voor voegsel in als `--script-root MyProject/bin/Debug/netstandard2.0`. Dit is de basis van de functie-app wanneer deze wordt uitgevoerd in Azure. |
+| **`--timeout`** , **`-t`** | De time-out voor het starten van de functions-host, in seconden. Standaard: 20 seconden.|
 | **`--useHttps`** | Maak een binding met `https://localhost:{port}` in plaats van te `http://localhost:{port}`. Met deze optie wordt standaard een vertrouwd certificaat op uw computer gemaakt.|
 
 Wanneer de functie host wordt gestart, wordt de URL van de met HTTP geactiveerde functies uitgevoerd:
@@ -437,10 +439,10 @@ U kunt een functie ook rechtstreeks aanroepen met behulp van `func run <Function
 
 | Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
-| **`--content -c`** | Inline-inhoud. |
-| **`--debug -d`** | Koppel een fout opsporingsprogramma aan het hostproces voordat u de functie uitvoert.|
-| **`--timeout -t`** | De tijd (in seconden) die moet worden gewacht totdat de lokale functions-host gereed is.|
-| **`--file -f`** | De bestands naam die moet worden gebruikt als inhoud.|
+| **`--content`** , **`-c`** | Inline-inhoud. |
+| **`--debug`** , **`-d`** | Koppel een fout opsporingsprogramma aan het hostproces voordat u de functie uitvoert.|
+| **`--timeout`** , **`-t`** | De tijd (in seconden) die moet worden gewacht totdat de lokale functions-host gereed is.|
+| **`--file`** , **`-f`** | De bestands naam die moet worden gebruikt als inhoud.|
 | **`--no-interactive`** | Er wordt niet gevraagd om invoer. Handig voor automatiserings scenario's.|
 
 Als u bijvoorbeeld een door HTTP geactiveerde functie wilt aanroepen en de hoofd tekst van de inhoud wilt door geven, voert u de volgende opdracht uit:
@@ -480,12 +482,12 @@ De volgende publicatie opties worden alleen ondersteund in versie 2. x:
 
 | Optie     | Beschrijving                            |
 | ------------ | -------------------------------------- |
-| **`--publish-settings-only -o`** |  Publiceer instellingen alleen en sla de inhoud over. De standaard instelling is prompt. |
+| **`--publish-settings-only`** , **`-o`** |  Publiceer instellingen alleen en sla de inhoud over. De standaard instelling is prompt. |
 |**`--list-ignored-files`** | Geeft een lijst weer van bestanden die worden genegeerd tijdens het publiceren, dat is gebaseerd op het. funcignore-bestand. |
 | **`--list-included-files`** | Geeft een lijst weer van bestanden die zijn gepubliceerd, die zijn gebaseerd op het. funcignore-bestand. |
 | **`--nozip`** | Hiermee schakelt u de standaard `Run-From-Package` modus uit. |
 | **`--build-native-deps`** | Slaat de map voor het genereren van wielen op tijdens het publiceren van python-functie-apps. |
-| **`--build`**<br/>**`-b`** | Voert een build-actie uit wanneer deze wordt geïmplementeerd in een Linux-functie-app. Accepteert: `remote` en `local`. |
+| **`--build`** , **`-b`** | Voert een build-actie uit wanneer deze wordt geïmplementeerd in een Linux-functie-app. Accepteert: `remote` en `local`. |
 | **`--additional-packages`** | Lijst met pakketten die moeten worden geïnstalleerd bij het bouwen van systeem eigen afhankelijkheden. Bijvoorbeeld: `python3-dev libevent-dev`. |
 | **`--force`** | Verificatie vooraf publiceren in bepaalde scenario's negeren. |
 | **`--csx`** | Publiceer een C# script-project (. CSX). |

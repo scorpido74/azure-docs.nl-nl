@@ -1,25 +1,23 @@
 ---
 title: '(AFGESCHAFT) Zelfstudie Azure Container Service: Cluster implementeren'
 description: 'Zelfstudie Azure Container Service: Cluster implementeren'
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 58fef0357a903f2ab1d238bbab7b2d9dca673eb4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5cb21bff2834751843061910184499f37bde834e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60576166"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275444"
 ---
 # <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(AFGESCHAFT) Een Kubernetes-cluster implementeren in Azure Container Service
 
 > [!TIP]
-> Voor de bijgewerkte versie van deze zelfstudie, die gebruikmaakt van Azure Kubernetes Service, raadpleegt u [Zelfstudie: Een AKS-cluster (Azure Kubernetes Service) implementeren](../../aks/tutorial-kubernetes-deploy-cluster.md).
+> Voor de bijgewerkte versie van deze zelf studie die gebruikmaakt van de Azure Kubernetes-service, raadpleegt u [zelf studie: een Azure Kubernetes service (AKS)-cluster implementeren](../../aks/tutorial-kubernetes-deploy-cluster.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
