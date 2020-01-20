@@ -66,8 +66,6 @@
           href: enable-browser-connection-lab-virtual-machines.md
         - name: Kostenbeheer configureren
           href: devtest-lab-configure-cost-management.md
-        - name: Meldingen over automatisch afsluiten verzenden
-          href: devtest-lab-auto-shutdown.md
         - name: Automatisch opstarten instellen voor virtuele machines van het lab
           href: devtest-lab-auto-startup-vm.md
         - name: Uw lab schalen
@@ -124,8 +122,8 @@
           href: devtest-lab-resize-vm.md
         - name: Een virtuele machine opnieuw implementeren
           href: devtest-lab-redeploy-vm.md
-        - name: Automatisch afsluiten van een VM configureren
-          href: devtest-lab-auto-shutdown-vm.md
+        - name: Automatisch afsluiten van compute- en lab-VM's configureren
+          href: devtest-lab-auto-shutdown.md
         - name: Claimbare virtuele machines maken en beheren
           href: devtest-lab-add-claimable-vm.md
         - name: Geheimen configureren
