@@ -173,8 +173,6 @@
           href: security-center-investigation.md
         - name: Onderzoek gebruikersgegevens beheren
           href: security-center-investigation-user-data.md
-        - name: Logic Apps-playbooks
-          href: security-center-playbooks.md
         - name: Planning en bewerkingen
           href: security-center-planning-and-operations-guide.md
 - name: Naslaginformatie
