@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 41d48bdd7cc7972536d0cf0e0cb78483f727d7f2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: eb0b5ea960aa7bc9158791d1fc9fa0986e7d99e6
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277025"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281339"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>De follower-Data Base gebruiken om data bases in azure Data Explorer te koppelen
 
@@ -383,6 +383,7 @@ De beheerder van de follower-data base kan het [cache beleid](/azure/kusto/manag
 
 * De volgers en de Leader clusters moeten zich in dezelfde regio bevinden.
 * [Streaming-opname](/azure/data-explorer/ingest-data-streaming) kan niet worden gebruikt voor een Data Base die wordt gevolgd.
+* Gegevens versleuteling met door de [klant beheerde sleutels](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault) wordt niet ondersteund voor zowel de leiders als de Volg clusters. 
 * U kunt een Data Base die aan een ander cluster is gekoppeld, niet verwijderen voordat u deze loskoppelt.
 * U kunt een cluster met een Data Base die is gekoppeld aan een ander cluster, niet verwijderen voordat u het loskoppelt.
 * U kunt een cluster dat is gekoppeld aan een of meer data base (s) niet stoppen. 

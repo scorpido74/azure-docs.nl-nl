@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 691c8e8d2f2c6c8e9472ba7a4ae83d8b76f2850c
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 7f7c348e29fa2234627a53095a99e913a6389a27
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868725"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280965"
 ---
 # <a name="tutorial-integrate-a-single-forest-with-a-single-azure-ad-tenant"></a>Zelf studie: Eén forest met één Azure AD-Tenant integreren
 
@@ -34,7 +34,7 @@ U kunt de omgeving die u in deze zelf studie maakt, gebruiken om te testen of om
 
 ### <a name="in-your-on-premises-environment"></a>In uw on-premises omgeving
 
-1. De identiteit van een hostserver die lid is van een domein en waarop Windows Server 2012 R2 of hoger wordt uitgevoerd met mini maal 4 GB RAM en .NET 4.7.1 + runtime 
+1. Een aan een domein gekoppelde hostserver met Windows Server 2012 R2 of hoger met mini maal 4 GB RAM-geheugen en .NET 4.7.1 + runtime identificeren 
 
 2. Als er een firewall is tussen uw servers en Azure AD, moet u de volgende items configureren:
    - Zorg ervoor dat agenten *uitgaande* aanvragen kunnen indienen bij Azure AD via de volgende poorten:
@@ -85,7 +85,7 @@ Voer de volgende stappen uit om te controleren of de agent wordt gezien door Azu
 
 1. Meld u aan bij Azure Portal.
 2. Selecteer aan de linkerkant **Azure Active Directory**, klik op **Azure AD Connect** en selecteer in het midden de optie **inrichting beheren (preview)** .</br>
-![Azure-portal](media/how-to-install/install6.png)</br>
+![Azure Portal](media/how-to-install/install6.png)</br>
 
 3.  Klik in het scherm **Azure AD inrichten (preview)** op **Alle agents controleren**.
 ![Azure AD-inrichtings](media/how-to-install/install7.png)</br>

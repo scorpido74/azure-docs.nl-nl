@@ -1,5 +1,5 @@
 ---
-title: Zoek uw Text Analytics resource-eind punt en-sleutel
+title: Zoek uw Text Analytics resource-eind punt en de sleutel-v3-client bibliotheek
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over het maken van een Cognitive Services Text Analytics resource.
 services: cognitive-services
@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/14/2019
 ms.author: aahi
-ms.openlocfilehash: b56bb8dfdce58de60f82693b511f7923b80fc37a
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: d432e2c9ccf0563e18d7f3958a030dd7ce32f4d0
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76159300"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281139"
 ---
 > [!IMPORTANT]
 > Ga naar de resource die u hebt gemaakt om uw sleutel en eind punt te vinden. Ze bevinden zich op de pagina **snel starten** van de resource, onder **resource beheer**.

@@ -18,12 +18,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 0b71566b802076f437fd23c08dfd6b23d4fd2fba
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 7f4466b6f6de5028db8b62389c9d5ddbdafc9d62
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170277"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280982"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Zelfstudie: Logboekregistratie van netwerkverkeer naar en van een virtuele machine met de Azure Portal
 
@@ -107,9 +107,8 @@ Voor NSG-stroomlogboekregistratie is de **Microsoft.Insights**-provider vereist.
 
 9. Selecteer het opslagaccount dat u in stap 3 hebt gemaakt.
    > [!NOTE]
-   > NSG-stroom logboeken werken niet met opslag accounts als:
-   > * Voor de opslag accounts is een firewall ingeschakeld.
-   > * Voor de opslag accounts is een [hiërarchische naam ruimte](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) ingeschakeld.
+   > NSG-stroom logboeken werken niet met een opslag account als:
+   > * Voor het opslag account is een [hiërarchische naam ruimte](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) ingeschakeld.
 1. Selecteer in de linkerbovenhoek van de portal de optie **Alle services**. Typ *Network Watcher* in het vak **Filteren**. Selecteer **Network Watcher** in de zoekresultaten.
 10. Stel **Bewaartermijn (dagen)** in op 5 en selecteer **Opslaan**.
 

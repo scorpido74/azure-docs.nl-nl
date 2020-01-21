@@ -4,17 +4,19 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 01/07/2020
 ms.author: orspodek
-ms.openlocfilehash: 5443ee6912c30b89cee6fdb43f84f3bc1fbcfe68
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0d78e48fead7b1f53e67860e6be8fe6d77469e87
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76020889"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280595"
 ---
 Azure Data Explorer versleutelt alle gegevens in een opslag account in rust. Standaard worden gegevens versleuteld met door micro soft beheerde sleutels. Voor extra controle over versleutelings sleutels kunt u door de klant beheerde sleutels leveren voor het gebruik van gegevens versleuteling. Door de klant beheerde sleutels moeten worden opgeslagen in een [Azure Key Vault](/azure/key-vault/key-vault-overview). U kunt uw eigen sleutels maken en deze opslaan in een sleutel kluis, maar u kunt ook een Azure Key Vault-API gebruiken om sleutels te genereren. Het Azure Data Explorer-cluster en de sleutel kluis moeten zich in dezelfde regio bevinden, maar ze kunnen zich in verschillende abonnementen bevinden. Voor een gedetailleerde uitleg over door de klant beheerde sleutels, Zie [door de klant beheerde sleutels met Azure Key Vault](/azure/storage/common/storage-service-encryption). Dit artikel laat u zien hoe u door de klant beheerde sleutels kunt configureren.
 
-> [!Note]
-> Als u door de klant beheerde sleutels wilt configureren met Azure Data Explorer, moet u [twee eigenschappen instellen op de sleutel kluis](/azure/key-vault/key-vault-ovw-soft-delete): **voorlopig verwijderen** en **niet wissen**. Deze eigenschappen zijn niet standaard ingeschakeld. Als u deze eigenschappen wilt inschakelen, gebruikt u [Power shell](/azure/key-vault/key-vault-soft-delete-powershell) of [Azure cli](/azure/key-vault/key-vault-soft-delete-cli). Alleen RSA-sleutels en sleutel grootte 2048 worden ondersteund.
+Als u door de klant beheerde sleutels wilt configureren met Azure Data Explorer, moet u [twee eigenschappen instellen op de sleutel kluis](/azure/key-vault/key-vault-ovw-soft-delete): **voorlopig verwijderen** en **niet wissen**. Deze eigenschappen zijn niet standaard ingeschakeld. Als u deze eigenschappen wilt inschakelen, gebruikt u [Power shell](/azure/key-vault/key-vault-soft-delete-powershell) of [Azure cli](/azure/key-vault/key-vault-soft-delete-cli). Alleen RSA-sleutels en sleutel grootte 2048 worden ondersteund.
+
+> [!NOTE]
+> Het versleutelen van gegevens met door de klant beheerde sleutels wordt niet ondersteund voor [leiders en volg clusters](/azure/data-explorer/follower). 
 
 ## <a name="assign-an-identity-to-the-cluster"></a>Een identiteit aan het cluster toewijzen
 

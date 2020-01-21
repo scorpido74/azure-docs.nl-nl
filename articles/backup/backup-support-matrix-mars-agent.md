@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor de MARS-agent
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning bij het maken van een back-up van computers waarop de Microsoft Azure Recovery Services-agent (MARS) wordt uitgevoerd.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 26f3dde0bb20443753e2b443ffc00ee23c9124c4
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 27ad81c42a079485d8eab95bb1250cba41e8fb5b
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893974"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281271"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Ondersteunings matrix voor back-up met de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -104,6 +104,8 @@ Zie [supported MABS and DPM Operating Systems](backup-support-matrix-mabs-dpm.md
 
 ## <a name="backup-limits"></a>Back-uplimieten
 
+### <a name="size-limits"></a>Maximale grootte
+
 Azure Backup beperkt de grootte van een gegevens bron van een bestand of map waarvan een back-up kan worden gemaakt. De items waarvan u een back-up hebt gemaakt vanaf één volume mogen niet groter zijn dan de grootte die in deze tabel wordt weer gegeven:
 
 **Besturingssysteem** | **Maximale grootte**
@@ -113,6 +115,10 @@ Windows Server 2008 R2 SP1 |1\.700 GB
 Windows Server 2008 SP2| 1\.700 GB
 Windows 8 of hoger| 54.400 GB
 Windows 7| 1\.700 GB
+
+### <a name="other-limitations"></a>Andere beperkingen
+
+- MARS biedt geen ondersteuning voor de beveiliging van meerdere machines met dezelfde naam naar één kluis.
 
 ## <a name="supported-file-types-for-backup"></a>Ondersteunde bestands typen voor back-up
 

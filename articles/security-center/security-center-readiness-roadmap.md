@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2018
 ms.author: yurid
-ms.openlocfilehash: ea029e62ac1273d9796e52edc3f7a46868964d2a
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 4603240a76ec72223b88853c63ed11152707201c
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520745"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281288"
 ---
 # <a name="azure-security-center-readiness-roadmap"></a>Roadmap naar Azure Security Center-gereedheid
 Dit document bevat een roadmap naar gereedheid die u helpt aan de slag te gaan met Azure Security Center.
@@ -32,7 +32,7 @@ Artikelen
 * [Inleiding tot Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 * [Snelstartgids voor Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-get-started)
 
-Video's
+Video’s
 * [Korte introductievideo](https://azure.microsoft.com/resources/videos/introduction-to-azure-security-center/)
 * [Overzicht van de Security Center-preventie-, detectie- en reactiemogelijkheden](https://azure.microsoft.com/resources/videos/azurecon-2015-new-azure-security-center-helps-you-prevent-detect-and-respond-to-threats/)
 
@@ -79,13 +79,13 @@ Als u de kosten en schade wilt beperken, is het belangrijk dat u een plan hebt v
 
 Gebruik de volgende bronnen als u wilt weten hoe Security Center kan worden opgenomen in het incidentreactieproces.
 
-Video's  
+Video’s  
 * [Azure Security Center in Incident Response](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Security-Center-in-Incident-Response) (Azure Security Center in incidentreacties)
 * [Respond quickly to threats with next-generation security operation, and investigation](https://youtu.be/e8iFCz5RM4g) (Snel op bedreigingen reageren met beveiligingsprocessen van een volgende generatie, en onderzoek)
 
 Artikelen    
 * [Beveiligingsincidenten afhandelen met Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-incident-response)
-* [Automate response with security playbook](https://docs.microsoft.com/azure/security-center/security-center-playbooks) (Reactie automatiseren met beveiligingsplaybook)
+* [Reactie automatiseren met werk stroom automatisering](workflow-automation.md)
 
 ## <a name="advanced-cloud-defense"></a>Geavanceerde cloudbeveiliging
 
@@ -93,7 +93,7 @@ Virtuele machines in Azure kunnen gebruikmaken van geavanceerde cloudverdediging
 
 Gebruik de volgende bronnen voor meer informatie over het gebruik van deze mogelijkheden in Security Center.
 
-Video's  
+Video’s  
 * [Azure Security Center: Just-in-time-VM-toegang](https://youtu.be/UOQb2FcdQnU)
 * [Azure Security Center - Adaptieve besturingselementen voor toepassingen](https://youtu.be/wWWekI1Y9ck)
 

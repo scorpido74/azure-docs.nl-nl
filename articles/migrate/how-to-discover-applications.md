@@ -3,12 +3,12 @@ title: Ontdek apps, functies en onderdelen op on-premises servers met Azure Migr
 description: Meer informatie over het detecteren van apps, functies en onderdelen op on-premises servers met Azure Migrate server-evaluatie.
 ms.topic: article
 ms.date: 11/20/2019
-ms.openlocfilehash: adc22925d1152639babe2377a1eae440e0ce418e
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 454d70a53c3ea00a4dc592703c0bc04d5517b97f
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029070"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280761"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Machine-apps,-functies en-functies detecteren
 
@@ -17,18 +17,18 @@ In dit artikel wordt beschreven hoe u toepassingen, functies en onderdelen detec
 Het detecteren van de inventaris van apps en rollen/functies die op uw on-premises machines worden uitgevoerd, helpt u bij het identificeren en plannen van een migratie naar Azure dat is afgestemd op uw workloads.
 
 > [!NOTE]
-> App-detectie wordt momenteel alleen ondersteund voor virtuele VMware-machines en is beperkt tot detectie. We bieden nog geen evaluatie op basis van een app.  Momenteel wordt door server evaluatie op dit moment een overzicht van on-premises VMware-Vm's, virtuele Hyper-V-machines en fysieke servers op computer niveau geëvalueerd voor liften en verschuivingen.
+> App-detectie wordt momenteel alleen ondersteund voor virtuele VMware-machines en is beperkt tot detectie. We bieden nog geen evaluatie op basis van een app. Evaluatie op basis van een machine voor on-premises virtuele VMware-machines, Hyper-V-Vm's en fysieke servers.
 
 App-detectie met Azure Migrate: Server evaluatie is zonder agent. Er hoeft niets te worden geïnstalleerd op machines en Vm's. Server Assessment gebruikt het Azure Migrate apparaat om detectie uit te voeren samen met de referenties van de computer gast. Het apparaat heeft op afstand toegang tot de VMware-machines met behulp van VMware-Api's.
 
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-1. Bekijk de [ondersteunings beperkingen](migrate-support-matrix-vmware.md#application-discovery) voor detectie op app-niveau.
-2. Zorg ervoor dat u een Azure Migrate project hebt [gemaakt](how-to-add-tool-first-time.md) .
-3. Als u al een project hebt gemaakt, moet u ervoor zorgen dat u het Azure Migrate: Server Assessment Tool hebt [toegevoegd](how-to-assess.md) .
+1. Zorg ervoor dat u een Azure Migrate project hebt [gemaakt](how-to-add-tool-first-time.md) .
+2. Zorg ervoor dat u het hulp programma voor de Azure Migrate: Server evaluatie hebt [toegevoegd](how-to-assess.md) aan een project.
 4. Raadpleeg de [VMware-vereisten](migrate-support-matrix-vmware.md#vmware-requirements) voor het detecteren en beoordelen van virtuele VMware-machines met het Azure migrate apparaat.
-4. Controleer de [vereisten](migrate-appliance.md) voor het implementeren van het Azure migrate apparaat.
+5. Controleer de [vereisten](migrate-appliance.md) voor het implementeren van het Azure migrate apparaat.
+6. [Controleer de ondersteuning en vereisten](/migrate-support-matrix-vmware.md#application-discovery) voor toepassings detectie.
 
 ## <a name="prepare-for-app-discovery"></a>App-detectie voorbereiden
 

@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 358895f84b43437a174214eaf75e77574b3f02e8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 239438133dc16630852626c49e8ffda08590976b
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462457"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280999"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Plannings- en bedieningsgids voor Azure Security Center
 Deze hand leiding is voor IT-professionals (IT), IT-architecten, gegevens beveiligings analisten en Cloud beheerders plannen om Azure Security Center te gebruiken.
@@ -239,7 +239,7 @@ Deze pagina bevat informatie over het tijdstip waarop de aanval plaatsvond, de h
 
 Vanaf deze pagina kunt u ook een [onderzoek](https://docs.microsoft.com/azure/security-center/security-center-investigation) starten om de tijdlijn van de aanval beter te begrijpen, een goed beeld te krijgen van de aanval, te zien welke systemen er mogelijk in gevaar zijn en welke referenties er zijn gebruikt. Daarnaast kunt u een grafische weergave bekijken van de hele aanvalsketen.
 
-Wanneer u het geïnfecteerde systeem hebt geïdentificeerd, kunt u [beveiligingsplaybooks](https://docs.microsoft.com/azure/security-center/security-center-playbooks) uitvoeren die eerder zijn gemaakt. Beveiligingsplaybooks bestaan uit een verzameling procedures die in Security Center worden uitgevoerd nadat een bepaalde playbook is geactiveerd door de geselecteerde waarschuwing.
+Zodra u het getroffen systeem hebt geïdentificeerd, kunt u een [werk stroom automatisering](workflow-automation.md) uitvoeren die eerder is gemaakt. Dit zijn een verzameling procedures die vanaf Security Center na activering door een waarschuwing kunnen worden uitgevoerd.
 
 In de video [over het gebruik van de Azure Security Center & Microsoft Operations Management Suite voor een reactie op incidenten](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) , ziet u enkele demonstraties die u kunnen helpen om te begrijpen hoe Security Center in elk van deze fasen kan worden gebruikt.
 

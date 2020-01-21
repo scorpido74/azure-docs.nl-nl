@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 5e4a8afdb9bea4f528e57c914149f611b0578c63
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 28e3f276da231ef0186dba8ecd9c064cdd10a5a8
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973477"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281220"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-firewalls en virtuele netwerken configureren
 
@@ -381,7 +381,7 @@ Wanneer u de instelling **vertrouwde micro soft-Services toestaan...** inschakel
 | Azure HDInsight          | Microsoft.HDInsight        | Richt de oorspronkelijke inhoud in van het standaard bestandssysteem voor een nieuw HDInsight-cluster. [Meer informatie](/azure/hdinsight/hdinsight-hadoop-use-blob-storage). |
 | Azure import-export      | Microsoft.ImportExport     | Hiermee kunt u gegevens importeren in Azure en gegevens uit Azure exporteren met de import/export-service. [Meer informatie](/azure/storage/common/storage-import-export-service).  |
 | Azure Monitor            | Microsoft.Insights         | Kan het schrijven van gegevens naar een beveiligde storage-account te controleren [meer](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security). |
-| Azure-netwerken         | Microsoft.Network          | Store en netwerk-verkeerslogboeken te analyseren. [Meer informatie](/azure/network-watcher/network-watcher-packet-capture-overview). |
+| Azure-netwerken         | Microsoft.Network          | Store en netwerk-verkeerslogboeken te analyseren. [Meer informatie](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview). |
 | Azure Site Recovery      | Microsoft.SiteRecovery     | Schakel replicatie in voor herstel na nood gevallen van virtuele Azure IaaS-machines wanneer u gebruikmaakt van cache-, bron-of doel opslag accounts die gebruikmaken van een firewall.  [Meer informatie](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
 
 Met de instelling **vertrouwde micro soft-Services toestaan...** kan ook een bepaald exemplaar van de onderstaande services toegang krijgen tot het opslag account, als u expliciet [een RBAC-rol toewijst](storage-auth-aad.md#assign-rbac-roles-for-access-rights) aan de door het [systeem toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md) voor dat bron exemplaar. In dit geval komt de reik wijdte van toegang voor het exemplaar overeen met de RBAC-rol die is toegewezen aan de beheerde identiteit.
