@@ -1,36 +1,34 @@
 ---
-title: Back-up van systeemstatus van Windows naar Azure
-description: Leer hoe u back up van de systeemstatus van Windows Server en/of Windows-computers naar Azure.
-services: backup
-author: saurabhsensharma
-manager: shivamg
-keywords: back-up maken; hoe u een back-up maakt; back-up van bestanden en mappen maken
-ms.service: backup
+title: Back-up van Windows-systeem status maken in azure
+description: Meer informatie over het maken van een back-up van de systeem status van Windows Server-en/of Windows-computers naar Azure.
+ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.author: saurse
-ms.openlocfilehash: 6d8cbac7eab797662896a96ed588c9d6370cb230
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 847ed8fc5a6c102284a03fa593587792767d7913
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60782535"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "76294011"
 ---
-# <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Back-up van systeemstatus van Windows in Resource Manager-implementatie
-In dit artikel wordt uitgelegd hoe u back-up van de systeemstatus van Windows Server naar Azure. Het artikel is bedoeld als handleiding waarmee u stapsgewijs de basis onder de knie krijgt.
+# <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Back-up van Windows-systeem status maken in Resource Manager-implementatie
+
+In dit artikel wordt uitgelegd hoe u een back-up maakt van de systeem status van Windows Server naar Azure. Het is bedoeld om u te helpen door de basis beginselen.
 
 Als u meer wilt weten over Azure Backup, lees dan dit [overzicht](backup-overview.md).
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan waarmee u toegang hebt tot alle services van Azure.
 
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
-Als u wilt back-up van de systeemstatus van Windows Server, moet u een Recovery Services-kluis maken in de regio waar u de gegevens worden opgeslagen. U moet ook bepalen op welke manier u uw opslag wilt repliceren.
+
+Als u een back-up wilt maken van de systeem status van Windows Server, moet u een Recovery Services kluis in de regio waar u de gegevens wilt opslaan. U moet ook bepalen op welke manier u uw opslag wilt repliceren.
 
 ### <a name="to-create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
-1. Meld u met uw Azure-abonnement aan bij de [Azure Portal](https://portal.azure.com/) als u dat nog niet hebt gedaan.
+
+1. Meld u met uw Azure-abonnement aan bij [Azure Portal](https://portal.azure.com/) als u dit nog niet hebt gedaan.
 2. Klik in het menu Hub op **Alle services**, typ in de lijst met resources **Recovery Services** en klik vervolgens op **Recovery Services-kluizen**.
 
-    ![Een Recovery Services-kluis maken, stap 1](./media/backup-azure-system-state/open-rs-vault-list.png) <br/>
+    ![Een Recovery Services-kluis maken, stap 1](./media/backup-azure-system-state/open-rs-vault-list.png)
 
     Als er Recovery Services-kluizen in het abonnement aanwezig zijn, worden deze weergegeven.
 3. Klik in het menu **Recovery Services-kluizen** op **Toevoegen**.
@@ -48,10 +46,10 @@ Als u wilt back-up van de systeemstatus van Windows Server, moet u een Recovery 
 6. In het gedeelte **Resourcegroep**:
 
     * selecteert u **Nieuw** als u een resourcegroep wilt maken,
-    of
+    Of
     * selecteert u **Bestaande gebruiken** en klikt u op de vervolgkeuzelijst om de lijst met beschikbare resourcegroepen te zien.
 
-   Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) voor meer informatie over resourcegroepen.
+   Zie [Overzicht van Azure Resource Manager](../azure-resource-manager/management/overview.md) voor meer informatie over resourcegroepen.
 
 7. Klik op **Locatie** om de geografische regio voor de kluis te selecteren. Deze keuze bepaalt de geografische regio waar uw back-upgegevens naartoe worden verzonden.
 
@@ -64,6 +62,7 @@ Als u wilt back-up van de systeemstatus van Windows Server, moet u een Recovery 
     Wanneer u uw kluis in de lijst met Recovery Services-kluizen ziet, kunt u de opslagredundantie instellen.
 
 ### <a name="set-storage-redundancy-for-the-vault"></a>Opslagredundantie instellen voor de kluis
+
 Wanneer u een Recovery Services-kluis maakt, zorg er dan voor dat de opslagredundantie op de gewenste manier is geconfigureerd.
 
 1. Klik op de blade **Recovery Services-kluizen** op de nieuwe kluis.
@@ -84,9 +83,10 @@ Wanneer u een Recovery Services-kluis maakt, zorg er dan voor dat de opslagredun
 
     Uw kluis heeft standaard geografisch redundante opslag. Als Azure uw primaire eindpunt is voor back-upopslag, blijf dan **Geografisch redundant** gebruiken. Als Azure niet uw primaire eindpunt is voor back-upopslag, kiest u **Lokaal redundant**, zodat u de kosten voor Azure-opslag verlaagt. U vindt meer informatie over de opties voor [geografisch redundante](../storage/common/storage-redundancy-grs.md) en [lokaal redundante ](../storage/common/storage-redundancy-lrs.md) opslag in dit [overzicht van opslagredundantie](../storage/common/storage-redundancy.md).
 
-Nu dat u een kluis hebt gemaakt, kunt u deze voor de back-ups van de systeemstatus van Windows configureren.
+Nu u een kluis hebt gemaakt, configureert u deze voor het maken van een back-up van de Windows-systeem status.
 
 ## <a name="configure-the-vault"></a>De kluis configureren
+
 1. Klik in het gedeelte Aan de slag van de blade van de Recovery Services-kluis (voor de kluis die u zojuist hebt gemaakt) op **Back-up** en dan op de blade **Aan de slag met black-ups**. Selecteer vervolgens **Doel van de back-up**.
 
     ![Open de blade back-updoelstelling](./media/backup-try-azure-backup-in-10-mins/open-backup-settings.png)
@@ -99,7 +99,7 @@ Nu dat u een kluis hebt gemaakt, kunt u deze voor de back-ups van de systeemstat
 
     U kiest **On-premises** omdat uw Windows Server of Windows-computer een fysieke machine is die zich niet in Azure bevindt.
 
-3. Uit de **waarvan wilt u back-up maken?** in het menu **systeemstatus**, en klikt u op **OK**.
+3. Selecteer in het menu **waarvan wilt u een back-up maken?** de optie **systeem status**en klik op **OK**.
 
     ![Bestanden en mappen configureren](./media/backup-azure-system-state/backup-goal-system-state.png)
 
@@ -127,11 +127,11 @@ Nu dat u een kluis hebt gemaakt, kunt u deze voor de back-ups van de systeemstat
 
     ![kluisreferenties downloaden](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    De kluisreferenties worden naar de map Downloads gedownload. Nadat de kluisreferenties zijn gedownload, ziet u een pop-upvenster waarin u wordt gevraagd of u de referenties wilt openen of opslaan. Klik op **Opslaan**. Als u per ongeluk klikt op **Openen**, kunt u het dialoogvenster waarmee wordt geprobeerd de kluisreferenties te openen, laten mislukken. U kunt de kluisreferenties niet openen. Ga door naar de volgende stap. De kluisreferenties bevinden zich in de map Downloads.   
+    De kluisreferenties worden naar de map Downloads gedownload. Nadat de kluisreferenties zijn gedownload, ziet u een pop-upvenster waarin u wordt gevraagd of u de referenties wilt openen of opslaan. Klik op **Opslaan**. Als u per ongeluk klikt op **Openen**, kunt u het dialoogvenster waarmee wordt geprobeerd de kluisreferenties te openen, laten mislukken. U kunt de kluisreferenties niet openen. Ga door naar de volgende stap. De kluisreferenties bevinden zich in de map Downloads.
 
     ![kluisreferenties downloaden is voltooid](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
    > [!NOTE]
-   > De kluisreferenties moeten worden opgeslagen alleen op een locatie die zich lokaal op de Windows-Server waarop u van plan bent de agent te gebruiken.
+   > De kluis referenties moeten alleen worden opgeslagen op een locatie die lokaal is voor de Windows-Server waarop u de agent wilt gebruiken.
    >
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
@@ -139,7 +139,7 @@ Nu dat u een kluis hebt gemaakt, kunt u deze voor de back-ups van de systeemstat
 ## <a name="install-and-register-the-agent"></a>De agent installeren en registreren
 
 > [!NOTE]
-> Het maken van back-ups via Azure Portal is nog niet beschikbaar. Gebruik de Microsoft Azure Recovery Services-Agent naar back-up van de systeemstatus van Windows Server.
+> Het maken van back-ups via Azure Portal is nog niet beschikbaar. Gebruik de Microsoft Azure Recovery Services-agent om een back-up te maken van de systeem status van Windows Server.
 >
 
 1. Zoek en dubbelklik op **MARSagentinstaller.exe** in de map Downloads (of een andere locatie waar het bestand is opgeslagen).
@@ -164,15 +164,16 @@ Nu dat u een kluis hebt gemaakt, kunt u deze voor de back-ups van de systeemstat
 De agent wordt nu geïnstalleerd en uw computer wordt geregistreerd bij de kluis. U kunt nu uw back-up configureren en plannen.
 
 ## <a name="back-up-windows-server-system-state"></a>Back-ups maken van Windows Server-systeemstatus
-De eerste back-up bestaat uit twee taken:
+
+De eerste back-up bevat twee taken:
 
 * De back-up plannen
-* Back-up van systeemstatus voor de eerste keer
+* De eerste keer een back-up maken van de systeem status
 
 Gebruik de Microsoft Azure Recovery Services-agent om de eerste back-up uit te voeren.
 
 > [!NOTE]
-> U kunt een back-up van de systeemstatus maken op Windows Server 2008 R2 tot en met Windows Server 2016. Systeemstatus terug is maximaal niet ondersteund op client-SKU's. Systeemstatus wordt niet weergegeven als een optie voor Windows-clients of Windows Server 2008 SP2-machines.
+> U kunt back-ups maken van de systeem status op Windows Server 2008 R2 via Windows Server 2016. Het maken van een back-up van de systeem status wordt niet ondersteund op client-Sku's. De systeem status wordt niet weer gegeven als een optie voor Windows-clients of Windows Server 2008 SP2-machines.
 >
 >
 
@@ -190,39 +191,43 @@ Gebruik de Microsoft Azure Recovery Services-agent om de eerste back-up uit te v
 
 4. Op de pagina Items selecteren voor back-up klikt u op **Items toevoegen**.
 
-5. Selecteer **systeemstatus** en klik vervolgens op **OK**.
+5. Selecteer **systeem status** en klik vervolgens op **OK**.
 
-6. Klik op **volgende**.
+6. Klik op **Volgende**.
 
-7. Selecteer de vereiste back-up-frequentie en het bewaarbeleid voor uw System State back-ups in de volgende pagina's.
+7. Selecteer de vereiste back-upfrequentie en het Bewaar beleid voor uw systeem status back-ups op de volgende pagina's.
 
 8. Lees de informatie op de pagina Bevestiging en klik vervolgens op **Voltooien**.
 
 9. Nadat u de wizard voor het maken van een back-upschema hebt doorlopen, klikt u op **Sluiten**.
 
-### <a name="to-back-up-windows-server-system-state-for-the-first-time"></a>Aan de back-up van de systeemstatus van Windows Server voor de eerste keer
+### <a name="to-back-up-windows-server-system-state-for-the-first-time"></a>Voor de eerste keer een back-up maken van de Windows Server-systeem status
 
-1. Zorg ervoor dat er zijn geen in behandeling zijnde updates voor Windows Server die opnieuw worden opgestart moeten.
+1. Zorg ervoor dat er geen updates in behandeling zijn voor Windows Server waarvoor opnieuw opstarten is vereist.
 
 2. Klik in de Recovery Services-agent op **Nu een back-up maken** om de eerste seeding via het netwerk te voltooien.
 
-    ![Nu back-up maken van Windows Server](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
+    ![Windows Server maakt nu een back-up](./media/backup-try-azure-backup-in-10-mins/backup-now.png)
 
-3. Selecteer **systeemstatus** op de **Selecteer back-upitem** scherm dat verschijnt en klik op **volgende**.
+3. Selecteer **systeem status** in het scherm **back-upitem selecteren** dat wordt weer gegeven en klik op **volgende**.
 
 4. Controleer op de pagina Bevestiging de instellingen die de wizard Nu back-up maken gebruikt om een back-up te maken van de machine. Klik vervolgens op **Back-up maken**.
 
-4. Klik op **Sluiten** om de wizard te sluiten. Als u de wizard sluit voordat het back-upproces is voltooid, blijft de wizard op de achtergrond aanwezig.
-
+5. Klik op **Sluiten** om de wizard te sluiten. Als u de wizard sluit voordat het back-upproces is voltooid, blijft de wizard op de achtergrond aanwezig.
+    > [!NOTE]
+    > De MARS-agent activeert SFC/verifyonly als onderdeel van de voor controle voor elke systeem status back-up. Dit is om ervoor te zorgen dat bestanden waarvan een back-up is gemaakt als onderdeel van de systeem status, de juiste versies hebben die overeenkomen met de Windows-versie. Meer informatie over System File Checker (SFC) vindt u in [dit artikel](https://docs.microsoft.com/windows-server/administration/windows-commands/sfc).
+    >
 
 Nadat de eerste back-up is voltooid, wordt de status **Taak voltooid** weergegeven in de back-upconsole.
 
   ![IR voltooid](./media/backup-try-azure-backup-in-10-mins/ircomplete.png)
 
 ## <a name="questions"></a>Vragen?
+
 Als u vragen hebt of als er een functie is die u graag opgenomen ziet worden, [stuur ons dan uw feedback](https://aka.ms/azurebackup_feedback).
 
 ## <a name="next-steps"></a>Volgende stappen
+
 * Meer informatie over [back-ups maken van Windows-machines](backup-configure-vault.md).
-* Nu u een van de systeemstatus van Windows Server up hebt gemaakt, kunt u [uw kluizen en -servers beheren](backup-azure-manage-windows-server.md).
+* Nu u een back-up hebt gemaakt van uw Windows Server-systeem status, kunt u [uw kluizen en servers beheren](backup-azure-manage-windows-server.md).
 * Als u een back-up moet herstellen, [zet de bestanden dan terug naar een Windows-machine](backup-azure-restore-windows-server.md) aan de hand van dit artikel.
