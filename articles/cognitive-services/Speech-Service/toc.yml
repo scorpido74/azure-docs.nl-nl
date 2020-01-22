@@ -201,7 +201,7 @@
           href: quickstarts/translate-speech-to-speech.md
     - name: Zelfstudies
       items:
-        - name: 'Een Flask-app bouwen om tekst om te zetten en samen te stellen, REST'
+        - name: Een Flask-app bouwen om tekst om te zetten en samen te stellen met REST API's
           href: ../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json
     - name: Naslaginformatie
       items:
@@ -327,7 +327,7 @@
       items:
         - name: Aangepaste opdrachten uitvoeren met de Speech-SDK
           href: how-to-custom-speech-commands-fulfill-sdk.md
-        - name: Parametervalidatie toevoegen aan aangepaste opdrachten
+        - name: Parametervalidatie toevoegen aan een aangepaste opdracht
           href: how-to-custom-speech-commands-validations.md
         - name: Een bevestiging toevoegen aan een aangepaste opdracht
           href: how-to-custom-speech-commands-confirmations.md
@@ -360,7 +360,7 @@
               href: how-to-custom-speech-train-model.md
             - name: Aangepaste model implementeren
               href: how-to-custom-speech-deploy-model.md
-            - name: Gids voor door mensen gelabelde transcripties maken
+            - name: door mensen gelabelde transcripties maken
               href: how-to-custom-speech-human-labeled-transcriptions.md
         - name: Tenantmodellen
           items:
@@ -395,7 +395,7 @@
               href: record-custom-voice-samples.md
         - name: Audio-inhoud maken
           items:
-            - name: 'Instructies: Audio-inhoud maken'
+            - name: Audio-inhoud maken
               href: how-to-audio-content-creation.md
     - name: Richtlijnen voor naamgeving van aangepaste trefwoorden
       href: speech-devices-sdk-kws-guidelines.md

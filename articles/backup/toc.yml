@@ -148,10 +148,28 @@
           href: backup-mabs-sharepoint-azure-stack.md
         - name: SQL Server-database beveiligen
           href: backup-mabs-sql-azure-stack.md
-    - name: Azure-bestandsshares
+    - name: Back-up van Azure-bestandsshare
       items:
-        - name: Een backup maken van Azure-bestandsshares
-          href: backup-azure-files.md
+        - name: Vanuit Azure Portal
+          items:
+            - name: Een backup maken van Azure-bestandsshares
+              href: backup-afs.md
+            - name: Azure-bestandsshares herstellen
+              href: restore-afs.md
+            - name: Back-ups van Azure-bestandsshares beheren
+              href: manage-afs-backup.md
+        - name: Met Azure CLI
+          items:
+            - name: Een back-up maken van Azure-bestandsshares met CLI
+              href: backup-afs-cli.md
+            - name: Azure-bestandsshares herstellen met CLI
+              href: restore-afs-cli.md
+            - name: Back-ups van Azure-bestandsshares beheren met CLI
+              href: manage-afs-backup-cli.md
+        - name: Met PowerShell
+          items:
+            - name: Een back-up van Azure-bestandsshare met Powershell
+              href: backup-azure-afs-automation.md
     - name: Back-ups maken van Azure-VM's
       items:
         - name: Over Azure VM Backup
@@ -222,8 +240,6 @@
           href: backup-dpm-automation.md
         - name: Windows Server in de Azure-portal
           href: backup-client-automation.md
-        - name: Azure-bestandsshares in de Azure-portal
-          href: backup-azure-afs-automation.md
         - name: SQL in back-ups van virtuele Azure-machines
           href: backup-azure-sql-automation.md
     - name: Azure Backup REST API gebruiken

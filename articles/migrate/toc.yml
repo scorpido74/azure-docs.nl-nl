@@ -124,6 +124,8 @@
           href: scale-vmware-assessment.md
         - name: Een groot aantal Hyper-V-VM's evalueren
           href: scale-hyper-v-assessment.md
+        - name: Een groot aantal fysieke servers evalueren
+          href: scale-physical-assessment.md
         - name: Migratie van een groot aantal VM's automatiseren
           href: how-to-migrate-at-scale.md
         - name: Migratievoorbeelden (Contoso-reeks)

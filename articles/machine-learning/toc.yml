@@ -93,6 +93,8 @@
       href: concept-designer.md
     - name: Overzichtskaart algoritmen
       href: /azure/machine-learning/algorithm-cheat-sheet
+    - name: Algoritmen selecteren
+      href: /azure/machine-learning/how-to-select-algorithms
     - name: Geautomatiseerde Machine Learning
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md
