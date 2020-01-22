@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 85459fe586ccbb5adb1e86b153ec63252c0cce2d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f100271162d20f5d13033efcd04bfa20081b6073
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466020"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314654"
 ---
 # <a name="multiclass-decision-forest-module"></a>Module voor de beslissings forest voor multi klassen
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om een machine learning model te maken op basis van het algoritme van het *beslissings forest* . Een besluitvormings forest is een ensemble model dat snel een reeks beslissings structuren bouwt, terwijl u leert van gelabelde gegevens.
 
@@ -76,12 +76,6 @@ De classificatie van het beslissings forest in Azure Machine Learning bestaat ui
 
 11. Voer de pijplijn uit.
 
-## <a name="results"></a>Resultaten
-
-Nadat de training is voltooid:
-
-+ Klik met de rechter muisknop op de uitvoer van de module [Train model](./train-model.md) en selecteer **visualiseren**om de structuur weer te geven die op elke iteratie is gemaakt.
-+ Als u de regels voor elk knoop punt wilt bekijken, klikt u op elke structuur om in te zoomen op de splitsingen.
 
 
 ## <a name="next-steps"></a>Volgende stappen

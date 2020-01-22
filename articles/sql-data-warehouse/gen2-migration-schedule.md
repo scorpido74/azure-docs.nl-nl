@@ -9,14 +9,14 @@ manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 01/21/2020
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 888f50d645c9b3babf95335e434db65423108ccb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f793fd68c83f90b87182647eef47a07eb452f45
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693033"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314773"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Upgrade uw data warehouse naar Gen2
 
@@ -33,41 +33,12 @@ De volgende tabel bevat een overzicht van de regio's wanneer de lagere Gen2-Comp
 
 | **Regio** | **Minder Gen2 beschikbaar** | **Begin van automatische upgrades** |
 |:--- |:--- |:--- |
-| Australië - oost |Beschikbaar |Voltooien |
-| Australië - zuidoost |Beschikbaar |Voltooien |
-| Brazilië - zuid |Beschikbaar |Voltooien |
-| Canada - midden |Beschikbaar |Voltooien |
-| Canada - oost |1 juni 2020 |1 juli 2020 |
-| US - centraal |Beschikbaar |Voltooien |
-| China East |\* |\* |
-| China - oost 2 |Beschikbaar |Voltooien |
+| Canada-Oost |1 juni 2020 |1 juli 2020 |
+| China - oost |\* |\* |
 | China - noord |\* |\* |
-| China - noord 2 |Beschikbaar |Voltooien |
-| Azië - oost |Beschikbaar |Voltooien |
-| US - oost |Beschikbaar |Voltooien |
-| US - oost 2 |Beschikbaar |Voltooien |
-| Frankrijk - centraal |Beschikbaar |In uitvoering |
 | Duitsland - centraal |\* |\* |
-| Duitsland - west-centraal |1 september 2019|1 oktober 2019 |
-| India - centraal |Beschikbaar |Voltooien |
-| India - zuid |Beschikbaar |Voltooien |
-| India - west |1 juli 2019 |In uitvoering |
-| Japan - oost |Beschikbaar |Voltooien |
-| Japan - west |Beschikbaar |Voltooien |
-| Korea - centraal |Beschikbaar |Voltooien |
-| Korea - zuid |Beschikbaar |Voltooien |
-| US - noord-centraal |Beschikbaar |Voltooien |
-| Europa - noord |Beschikbaar |Voltooien |
-| Zuid-Afrika - noord |12 juli 2019 |Voltooien |
-| US - zuid-centraal |Beschikbaar |Voltooien |
-| Azië - zuidoost |Beschikbaar |Voltooien |
-| VAE - noord |20 juli 2019 |Voltooien |
-| VK - zuid |Beschikbaar |In uitvoering |
-| Verenigd Koninkrijk West |Beschikbaar |In uitvoering |
-| US - west-centraal |1 november 2019 |1 december 2019|
-| Europa -west |Beschikbaar |Voltooien |
-| US - west |Beschikbaar |Voltooien |
-| US - west 2 |Beschikbaar |Voltooien |
+| Duitsland - west-centraal |Beschikbaar |1 mei 2020 |
+| India - west |Beschikbaar |1 mei 2020  |
 
 ## <a name="automatic-upgrade-process"></a>Automatisch upgrade proces
 

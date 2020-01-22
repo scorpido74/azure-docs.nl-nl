@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 659dcae0bee0fe1015ba6225797c31bad438013f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ce232fc9216166e94520203bb4afbf4c152aaf6f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497719"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314926"
 ---
 # <a name="partition-and-sample-module"></a>Partitie en voorbeeld module
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om steek proeven op een gegevensset uit te voeren of om partities te maken op basis van uw gegevensset.
 
@@ -44,8 +44,8 @@ Steek proeven zijn een belang rijk hulp middel in machine learning omdat u hierm
 
 Deze module ondersteunt meerdere methoden voor het delen van uw gegevens in partities of voor steek proeven. Kies eerst de methode en stel vervolgens aanvullende opties in die vereist zijn voor de methode.
 
-- Head
-- Steekproeven
+- Kop
+- Sampling
 - Aan vouwen toewijzen
 - Vouw kiezen
 
@@ -122,7 +122,7 @@ Gebruik deze optie als u de gegevensset wilt verdelen over subsets van de gegeve
 
     - **Partitie met aangepaste verhoudingen**: gebruik deze optie om de grootte van elke partitie op te geven als een lijst met door komma's gescheiden waarden.
 
-        Als u bijvoorbeeld drie partities wilt maken, met de eerste partitie met 50% van de gegevens en de resterende twee partities elk 25% van de gegevens bevatten, klikt u op de **lijst met verhoudingen gescheiden door komma's** en typt u deze getallen: @no_ _t_1_`.5, .25, .25`
+        Als u bijvoorbeeld drie partities wilt maken, met de eerste partitie met 50% van de gegevens en de resterende twee partities elk 25% van de gegevens bevatten, klikt u op de **lijst met verhoudingen gescheiden door komma's** en typt u deze getallen: `.5, .25, .25`
 
         De som van alle partitie grootten moet precies 1 zijn.
 

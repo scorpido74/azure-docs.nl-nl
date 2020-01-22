@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 0936de818303117797e1704f3cecb7f877a3935e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 723821a78ecae308443c93567402e3b232c036f0
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206546"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314705"
 ---
 # <a name="use-cloudsimple-private-cloud-site-to-host-a-virtual-desktop-infrastructure-using-vmware-horizon"></a>CloudSimple Privécloud-site gebruiken om een virtuele-bureaublad infrastructuur te hosten met behulp van VMware horizon
 
@@ -47,7 +47,7 @@ In de volgende secties wordt beschreven hoe u een VDI-oplossing implementeert me
 ### <a name="estimate-the-size-of-your-desktop-environment"></a>De grootte van uw desktop omgeving schatten
 
 * Controleer of de geïdentificeerde configuratie binnen de VMware-operationele limieten valt.
-* U kunt een schatting maken van de resources die nodig zijn op uw DR-site om uw on-premises omgeving te beveiligen.
+* Een schatting maken van de resources die nodig zijn voor al uw Desk tops en uw onderdelen van de horizon-management.
 
 ### <a name="create-a-private-cloud-for-your-environment"></a>Een Privécloud maken voor uw omgeving
 

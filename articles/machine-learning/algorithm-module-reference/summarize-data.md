@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 80e2acf08960796ccb2f3ad87c16674e477c9c00
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a037c959b44a6216724c285f932250b1b05cb509
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428456"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313740"
 ---
 # <a name="summarize-data"></a>Gegevens samenvatten
 
-In dit artikel wordt een module van Azure Machine Learning Designer (preview-versie) beschreven.
+In dit artikel wordt een module van Azure Machine Learning Designer beschreven.
 
 Gebruik de module gegevens samenvatten om een set standaard statistische maat eenheden te maken waarmee elke kolom in de invoer tabel wordt beschreven.
 
@@ -40,7 +40,7 @@ De module berekent de belang rijke scores voor elke kolom en retourneert een rij
 
 1. Er zijn geen aanvullende para meters vereist. Standaard analyseert de module alle kolommen die als invoer worden opgegeven en, afhankelijk van het type waarden in de kolommen, een relevante set statistieken, zoals beschreven in de sectie [resultaten](#results) .
 
-1. Voer de pijp lijn uit of klik met de rechter muisknop op de module en selecteer **geselecteerde uitvoeren**.
+1. Voer de pijplijn uit.
 
 ## <a name="results"></a>Resultaten
 

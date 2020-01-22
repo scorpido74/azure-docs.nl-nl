@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: af7431dd808a7d5eb106eff96a790eb876a20026
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b136f408bbc4fbf13bba902f76f7d33ce6b2ba96
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428612"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314569"
 ---
 # <a name="apply-math-operation"></a>Wiskundige bewerking toepassen
 
-In dit artikel wordt een module van Azure Machine Learning Designer (preview-versie) beschreven.
+In dit artikel wordt een module van Azure Machine Learning Designer beschreven.
 
 Gebruik de bewerking math Toep assen om berekeningen te maken die worden toegepast op numerieke kolommen in de invoer gegevensset. 
 
@@ -254,7 +254,7 @@ De volg orde waarin u de kolommen voor het delen en aftrekken hebt gekozen, lijk
 Bewerking|Num1|Num2|Resultaten kolom|Resultaat waarde|
 ----|----|----|----|----
 |Optelling|1|5|Toevoegen (Num2_Num1)| 4|
-|Vermenigvuldigen|1|5|Meerdere (Num2_Num1)|5|
+|Vermenigvuldiging|1|5|Meerdere (Num2_Num1)|5|
 |Aftrekking|1|5|Aftrekken (Num2_Num1)|4|
 |Aftrekking|0|1|Aftrekken (Num2_Num1)|0|
 |Deling|1|5|Delen (Num2_Num1)|5|

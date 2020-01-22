@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 05/30/2019
-ms.openlocfilehash: 72568be0cf87770e8878f95de4a9c82842b470df
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/17/2020
+ms.openlocfilehash: 388f43fec9242f6a4b448483d9486aa4413d2612
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646843"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314790"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream-gegevens als invoer in Stream Analytics
 
@@ -55,6 +55,7 @@ De volgende tabel bevat uitleg over elke eigenschap in de **nieuwe invoer** pagi
 | **Event Hub-naam** | De naam van de event hub te gebruiken als invoer. |
 | **De naam van een Event Hub-beleid** | Het beleid voor gedeelde toegang dat toegang tot de Event Hub biedt. Elk gedeeld toegangsbeleid heeft een naam, machtigingen die u instelt en toegangssleutels. Deze optie wordt automatisch ingevuld, tenzij u de optie voor de Event Hub-instellingen handmatig.|
 | **Event Hub-consumentengroep** (aanbevolen) | Het is raadzaam een afzonderlijke consumergroep gebruiken voor elke Stream Analytics-taak. Deze tekenreeks Hiermee geeft u de consumentengroep te gebruiken voor opname van gegevens uit de event hub. Als er geen consumentengroep is opgegeven, wordt in de Stream Analytics-taak de consumentengroep $Default gebruikt.  |
+| **Partitiesleutel** | Als uw invoer is gepartitioneerd door een eigenschap, kunt u de naam van deze eigenschap toevoegen. Partitie sleutels zijn optioneel en worden gebruikt voor het verbeteren van de prestaties van uw query als deze de component PARTITION BY of GROUP BY bevat voor deze eigenschap. |
 | **Serialisatie-indeling voor gebeurtenissen** | De serialisatie-indeling (JSON, CSV, AVRO of [Other (protobuf, XML, bedrijfs gegevens...)](custom-deserializer.md)) van de binnenkomende gegevens stroom.  Zorg ervoor dat de JSON-indeling worden uitgelijnd met de specificatie en toonaangevende 0 voor decimale getallen bevat geen. |
 | **Encoding** | UTF-8 is momenteel de enige ondersteunde coderingsindeling. |
 | **Gebeurteniscompressietype** | Het compressietype gebruikt om te lezen van de inkomende gegevensstroom, zoals None (standaard), GZip en Deflate. |
@@ -104,6 +105,7 @@ De volgende tabel bevat uitleg over elke eigenschap in de **nieuwe invoer** pagi
 | **Naam van het gedeelde toegangsbeleid** | Het beleid voor gedeelde toegang dat toegang tot de IoT-Hub biedt. Elk gedeeld toegangsbeleid heeft een naam, machtigingen die u instelt en toegangssleutels. |
 | **Beleid voor gedeelde toegangssleutel** | De gedeelde toegangssleutel toegang verlenen aan de IoT-Hub.  Deze optie wordt automatisch ingevuld, tenzij u de optie voor de Iot-Hub instellingen handmatig. |
 | **Consumentengroep** | Het is zeer raadzaam dat u een andere consumergroep voor elke Stream Analytics-taak gebruiken. De consumergroep wordt gebruikt voor opname van gegevens van de IoT-Hub. Stream Analytics maakt gebruik van de consumentengroep $Default, tenzij u iets anders opgeeft.  |
+| **Partitiesleutel** | Als uw invoer is gepartitioneerd door een eigenschap, kunt u de naam van deze eigenschap toevoegen. Partitie sleutels zijn optioneel en worden gebruikt voor het verbeteren van de prestaties van uw query als deze de component PARTITION BY of GROUP BY bevat voor deze eigenschap. |
 | **Serialisatie-indeling voor gebeurtenissen** | De serialisatie-indeling (JSON, CSV, AVRO of [Other (protobuf, XML, bedrijfs gegevens...)](custom-deserializer.md)) van de binnenkomende gegevens stroom.  Zorg ervoor dat de JSON-indeling worden uitgelijnd met de specificatie en toonaangevende 0 voor decimale getallen bevat geen. |
 | **Encoding** | UTF-8 is momenteel de enige ondersteunde coderingsindeling. |
 | **Gebeurteniscompressietype** | Het compressietype gebruikt om te lezen van de inkomende gegevensstroom, zoals None (standaard), GZip en Deflate. |
@@ -157,6 +159,7 @@ De volgende tabel bevat uitleg over elke eigenschap in de **nieuwe invoer** pagi
 | **Padpatroon** (optioneel) | Het pad dat wordt gebruikt om de blobs in de opgegeven container te vinden. Als u blobs wilt lezen uit de hoofdmap van de container, moet u geen patroon voor paden instellen. Binnen het pad kunt u een of meer exemplaren van de volgende drie variabelen opgeven: `{date}`, `{time}`, of `{partition}`<br/><br/>Voorbeeld 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>Voorbeeld 2: `cluster1/logs/{date}`<br/><br/>De `*` teken is niet een toegestane waarde voor het padvoorvoegsel. Alleen geldige <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure blob-tekens</a> zijn toegestaan. Neem geen container namen of bestands namen op. |
 | **Datumnotatie** (optioneel) | Als u de datum-variabele in het pad voor de datumnotatie waarin de bestanden zijn ingedeeld gebruiken. Voorbeeld: `YYYY/MM/DD` |
 | **Tijdnotatie** (optioneel) |  Als u de variabele in het pad voor de indeling waarin de bestanden zijn ingedeeld. De enige ondersteunde waarde is momenteel `HH` uur. |
+| **Partitiesleutel** | Als uw invoer is gepartitioneerd door een eigenschap, kunt u de naam van deze eigenschap toevoegen. Partitie sleutels zijn optioneel en worden gebruikt voor het verbeteren van de prestaties van uw query als deze de component PARTITION BY of GROUP BY bevat voor deze eigenschap. |
 | **Serialisatie-indeling voor gebeurtenissen** | De serialisatie-indeling (JSON, CSV, AVRO of [Other (protobuf, XML, bedrijfs gegevens...)](custom-deserializer.md)) van de binnenkomende gegevens stroom.  Zorg ervoor dat de JSON-indeling worden uitgelijnd met de specificatie en toonaangevende 0 voor decimale getallen bevat geen. |
 | **Encoding** | Voor CSV en JSON is UTF-8 momenteel de enige ondersteunde coderingsindeling. |
 | **Compressie** | Het compressietype gebruikt om te lezen van de inkomende gegevensstroom, zoals None (standaard), GZip en Deflate. |

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 9d6e6c11f0e2a8fb7e08385f7abf26fb4a8d21c8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d6140e97383fb07e65c87f74a555046f918ac41
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465960"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314858"
 ---
 # <a name="multiclass-logistic-regression-module"></a>Module logistiek-regressie voor multi klasse
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Met deze module kunt u een logistiek regressie model maken dat kan worden gebruikt om meerdere waarden te voors pellen.
 
@@ -60,9 +60,6 @@ In een logistiek-regressie met meerdere klassen kan de classificatie worden gebr
 
 9. Voer de pijplijn uit.
 
-## <a name="results"></a>Resultaten
-
-Nadat de training is voltooid, ziet u een samen vatting van de para meters van het model, samen met de functie gewichten die zijn geleerd van training, klikt u met de rechter muisknop op de uitvoer van de module [Train model](./train-model.md) en selecteert u **visualiseren**.
 
 
 ## <a name="next-steps"></a>Volgende stappen

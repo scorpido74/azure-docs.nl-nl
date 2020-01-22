@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 46c2cd49258b8eb6813caaf50e9895990ce67287
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 67cafbb7934381cd4c2936d6e6dfe7fb19d70735
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529558"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314688"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Poorten die worden gebruikt door Apache Hadoop Services in HDInsight
 
@@ -53,6 +53,7 @@ De volgende opties zijn beschikbaar voor specifieke cluster typen:
 | Livy |443 |HTTPS |Spark |Spark REST API. Zie [Apache Spark-taken extern verzenden met Apache livy](spark/apache-spark-livy-rest-interface.md) |
 | Spark Thrift-server |443 |HTTPS |Spark |Spark Thrift-server gebruikt om Hive-query's te verzenden. Zie [Beeline gebruiken met Apache Hive op HDInsight](hadoop/apache-hadoop-use-hive-beeline.md) |
 | Storm |443 |HTTPS |Storm |Storm web-gebruikers interface. Zie [Apache Storm-topologieën implementeren en beheren in HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md) |
+| Kafka rest-proxy |443 |HTTPS |Kafka |Kafka REST API. Bekijk [de interactie met Apache Kafka clusters in azure HDInsight met behulp van een rest-proxy](kafka/rest-proxy.md) |
 
 ### <a name="authentication"></a>Verificatie
 
@@ -104,7 +105,7 @@ Voorbeelden:
 | Resource Manager-toepassings interface |hoofd knooppunten |8050 |HTTP |Adres van de interface van de toepassings Manager |
 | NodeManager |Alle worker-knoop punten |30050 |&nbsp; |Het adres van de container beheerder |
 | NodeManager-webgebruikersinterface |Alle worker-knoop punten |30060 |HTTP |Resource Manager-interface |
-| Tijdlijn adres |Hoofdknooppunten |10200 |RPC'S |De RPC-service van de tijdlijn service. |
+| Tijdlijn adres |Hoofdknooppunten |10200 |RPC |De RPC-service van de tijdlijn service. |
 | Tijdlijn Web-UI |Hoofdknooppunten |8188 |HTTP |De Web-UI van de tijdlijn service |
 
 ### <a name="hive-ports"></a>Hive-poorten
@@ -140,7 +141,7 @@ Voorbeelden:
 | Service | Knooppunten | Port | Protocol | Beschrijving |
 | --- | --- | --- | --- | --- |
 | Tijd lijn (toepassings geschiedenis) |Hoofdknooppunten |6188 |HTTP |De Web-UI van de tijdlijn service |
-| Tijd lijn (toepassings geschiedenis) |Hoofdknooppunten |30200 |RPC'S |De Web-UI van de tijdlijn service |
+| Tijd lijn (toepassings geschiedenis) |Hoofdknooppunten |30200 |RPC |De Web-UI van de tijdlijn service |
 
 ### <a name="hbase-ports"></a>HBase-poorten
 
@@ -155,8 +156,9 @@ Voorbeelden:
 
 | Service | Knooppunten | Port | Protocol | Beschrijving |
 | --- | --- | --- | --- | --- |
-| Connection |Werkknooppunten |9092 |[Kafka wire-protocol](https://kafka.apache.org/protocol.html) |Gebruikt voor client communicatie |
+| Broker |Werkknooppunten |9092 |[Kafka Wire Protocol](https://kafka.apache.org/protocol.html) |Gebruikt voor client communicatie |
 | &nbsp; |ZooKeeper-knooppunten |2181 |&nbsp; |De poort die clients gebruiken om verbinding te maken met Zookeeper |
+| REST-proxy | Kafka-beheer knooppunten |9400 |HTTPS |[Kafka REST-specificatie](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) |
 
 ### <a name="spark-ports"></a>Spark-poorten
 
@@ -164,7 +166,7 @@ Voorbeelden:
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift-servers |Hoofdknooppunten |10002 |Thrift | &nbsp; | Service voor het maken van verbinding met Spark SQL (Thrift/JDBC) |
 | Livy-server | Hoofdknooppunten | 8998 | HTTP | &nbsp; | Service voor het uitvoeren van instructies, taken en toepassingen |
-| Jupyter-notebook | Hoofdknooppunten | 8001 | HTTP | &nbsp; | Website van Jupyter-notebook |
+| Jupyter Notebook | Hoofdknooppunten | 8001 | HTTP | &nbsp; | Website van Jupyter-notebook |
 
 Voorbeelden:
 

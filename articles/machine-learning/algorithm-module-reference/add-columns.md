@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 55981279cb1902424d1a0f77af097dc379d7222f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e5e1390cb45fc6f659883ddfc8624719e45f99ce
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493966"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314586"
 ---
 # <a name="add-columns-module"></a>Module kolommen toevoegen
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om twee gegevens sets samen te voegen. U combineert alle kolommen uit de twee gegevens sets die u opgeeft als invoer om één gegevensset te maken. Als u meer dan twee gegevens sets wilt samen voegen, gebruikt u meerdere exemplaren van de **kolom toevoegen**.
 
@@ -38,11 +38,11 @@ Gebruik deze module om twee gegevens sets samen te voegen. U combineert alle kol
 ### <a name="results"></a>Resultaten
 Nadat de pijp lijn is uitgevoerd:
 
-- Als u de eerste rijen van de nieuwe gegevensset wilt zien, klikt u met de rechter muisknop op de uitvoer van **kolommen toevoegen** en selecteert u visualiseren.
+- Als u de eerste rijen van de nieuwe gegevensset wilt zien, klikt u met de rechter muisknop op de module **kolommen toevoegen** en selecteert u visualiseren. Of selecteer de module en schakel over naar het tabblad **uitvoer** in het rechterdeel venster, klik op het histogram pictogram in de **poort uitvoer** om het resultaat te visualiseren.
 
 Het aantal kolommen in de nieuwe gegevensset is gelijk aan de som van de kolommen van beide invoer gegevens sets.
 
-Als er twee kolommen met dezelfde naam in de invoer gegevens sets staan, wordt een numeriek achtervoegsel toegevoegd aan de naam van de kolom. Als er bijvoorbeeld twee exemplaren van een kolom met de naam TargetOutcome zijn, wordt de naam van de linkerkolom gewijzigd in TargetOutcome_1 en wordt de naam van de rechter kolom gewijzigd TargetOutcome_2.
+Als er twee kolommen met dezelfde naam in de invoer gegevens sets staan, wordt een numeriek achtervoegsel toegevoegd aan de naam van de kolom. Als er bijvoorbeeld twee exemplaren van een kolom met de naam TargetOutcome zijn, wordt de naam van de linkerkolom TargetOutcome_1 gewijzigd en wordt de naam van de rechter kolom gewijzigd TargetOutcome_2.
 
 ## <a name="next-steps"></a>Volgende stappen
 

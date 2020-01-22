@@ -8,16 +8,16 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 98c59555f2b9b93ee3f78da91f85a7728679235d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 94e28c59c3281dc6c1d65ce782568233d0e23f03
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269386"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313838"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure Queue Storage-bewerkingen uitvoeren met Azure PowerShell
 
-Azure Queue-opslag is een service voor het opslaan van grote aantallen berichten die vanaf elke locatie in de wereld toegankelijk zijn via HTTP of HTTPS. Zie [Inleiding tot Azure queues](storage-queues-introduction.md)voor gedetailleerde informatie. In dit artikel wordt beschreven hoe algemene wachtrij opslag bewerkingen worden uitgevoerd. In deze zelfstudie leert u procedures om het volgende te doen:
+Azure Queue-opslag is een service voor het opslaan van grote aantallen berichten die vanaf elke locatie in de wereld toegankelijk zijn via HTTP of HTTPS. Zie [Inleiding tot Azure queues](storage-queues-introduction.md)voor gedetailleerde informatie. In dit artikel wordt beschreven hoe algemene wachtrij opslag bewerkingen worden uitgevoerd. Procedures voor:
 
 > [!div class="checklist"]
 >
@@ -47,7 +47,7 @@ Connect-AzAccount
 Als u niet weet welke locatie u kunt gebruiken, kunt u een lijst met de beschikbare locaties weergeven. Selecteer de gewenste locatie in de lijst. In deze oefening wordt gebruikgemaakt van **oostus**. Sla dit op in de **locatie** van de variabele voor toekomstig gebruik.
 
 ```powershell
-Get-AzLocation | select Location
+Get-AzLocation | Select-Object Location
 $location = "eastus"
 ```
 
@@ -98,7 +98,7 @@ $queue = Get-AzStorageQueue –Name $queueName –Context $ctx
 $queue
 
 # Retrieve all queues and show their names
-Get-AzStorageQueue -Context $ctx | select Name
+Get-AzStorageQueue -Context $ctx | Select-Object Name
 ```
 
 ## <a name="add-a-message-to-a-queue"></a>Een bericht aan een wachtrij toevoegen
@@ -109,17 +109,16 @@ In het volgende voor beeld ziet u hoe u een bericht aan uw wachtrij kunt toevoeg
 
 ```powershell
 # Create a new message using a constructor of the CloudQueueMessage class
-$queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
-  -ArgumentList "This is message 1"
+$queueMessage = [Microsoft.Azure.Storage.Queue.CloudQueueMessage]::new("This is message 1")
+
 # Add a new message to the queue
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
 
 # Add two more messages to the queue
-$queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
-  -ArgumentList "This is message 2"
+$queueMessage = [Microsoft.Azure.Storage.Queue.CloudQueueMessage]::new("This is message 2")
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
-$queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage,$($queue.CloudQueue.GetType().Assembly.FullName)" `
-  -ArgumentList "This is message 3"
+
+$queueMessage = [Microsoft.Azure.Storage.Queue.CloudQueueMessage]::new("This is message 3")
 $queue.CloudQueue.AddMessageAsync($QueueMessage)
 ```
 
@@ -129,7 +128,7 @@ Als u de [Azure Storage Explorer](https://storageexplorer.com)gebruikt, kunt u v
 
 Berichten worden in de best mogelijke eerst-try-volg orde gelezen. Dit is niet gegarandeerd. Wanneer u het bericht uit de wachtrij leest, wordt het onzichtbaar voor alle andere processen die in de wachtrij kijken. Dit zorgt ervoor dat als uw code het bericht niet kan verwerken vanwege een hardware-of software fout, een ander exemplaar van uw code hetzelfde bericht kan ophalen en probeer het opnieuw.  
 
-Deze **time-out voor onzichtbaarheid** bepaalt hoe lang het bericht onzichtbaar blijft voordat het weer beschikbaar is voor verwerking. De standaard waarde is 30 seconden.
+Deze **time-out voor onzichtbaarheid** bepaalt hoe lang het bericht onzichtbaar blijft voordat het weer beschikbaar is voor verwerking. De standaardwaarde is 30 seconden.
 
 Uw code leest een bericht uit de wachtrij in twee stappen. Wanneer u de methode [micro soft. Azure. storage. Queue. CloudQueue. GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage) aanroept, wordt het volgende bericht in de wachtrij weer gegeven. Een bericht dat wordt geretourneerd door **GetMessage**, wordt onzichtbaar voor andere codes die berichten lezen uit deze wachtrij. Als u het bericht uit de wachtrij wilt verwijderen, roept u de methode [micro soft. Azure. storage. Queue. CloudQueue. DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage) aan.
 

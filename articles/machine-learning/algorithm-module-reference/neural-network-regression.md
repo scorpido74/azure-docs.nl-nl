@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: d5cc0f06e9fb95894df30af1322d47337f51e314
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 38b37a386e4e9829b5d90e31067ec9f6aaf75502
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466010"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314909"
 ---
 # <a name="neural-network-regression-module"></a>Neural-module voor netwerk regressie
 
@@ -24,7 +24,7 @@ ms.locfileid: "73466010"
   
 ## <a name="module-overview"></a>Module overzicht  
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om een regressie model te maken met behulp van een aanpasbaar Neural-netwerk algoritme.
   
@@ -91,10 +91,7 @@ Neural-netwerken kunnen uitgebreid worden aangepast. In deze sectie wordt beschr
 
 Nadat de training is voltooid:
 
-+ Als u een samen vatting van de para meters van het model wilt weer geven, samen met de functie gewichten die zijn geleerd uit training en andere para meters van het Neural-netwerk, klikt u met de rechter muisknop op de uitvoer van [Train model](./train-model.md)en selecteert u **visualiseren**.  
-
-+ Als u een moment opname van het getrainde model wilt opslaan, klikt u met de rechter muisknop op de **getrainde model** uitvoer en selecteert u **Opslaan als opgeleid model**. Dit model wordt niet bijgewerkt op opeenvolgende uitvoeringen van dezelfde pijp lijn.
-
+- Als u een moment opname van het getrainde model wilt opslaan, selecteert u het tabblad **uitvoer** in het rechterdeel venster van de module **Train model** . Selecteer het pictogram **gegevensset registreren** om het model als een herbruikbare module op te slaan.
 
 ## <a name="next-steps"></a>Volgende stappen
 

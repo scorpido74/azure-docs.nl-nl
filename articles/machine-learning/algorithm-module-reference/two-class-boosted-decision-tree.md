@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7590cab00670c92e8a5b90006778542ec44bf83f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1cbbc3f0c78954b92c1265795ba365be9dc0e38c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490173"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315079"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Uitmuntende beslissings structuur module met twee klassen
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om een machine learning model te maken dat is gebaseerd op het boosted Decision Trees-algoritme. 
 
@@ -63,15 +63,14 @@ U kunt dit type model trainen met [Train model](././train-model.md).
 9. Train het model.
   
     + Als u de **modus trainer maken** instelt op **één para meter**, verbindt u een gecodeerde gegevensset en de module [Train model](./train-model.md) .  
-  
    
 ## <a name="results"></a>Resultaten
 
-Nadat de model training is voltooid, klikt u met de rechter muisknop op de uitvoer van [Train model](./train-model.md) om de resultaten weer te geven:
+Nadat de training is voltooid:
 
-+ Selecteer **visualiseren**om de structuur te zien die op elke iteratie is gemaakt. 
-+ Als u wilt inzoomen op de splitsingen en de regels voor elk knoop punt wilt weer geven, klikt u op elke boom structuur.
++ Als u een moment opname van het getrainde model wilt opslaan, selecteert u het tabblad **uitvoer** in het rechterdeel venster van de module **Train model** . Selecteer het pictogram **gegevensset registreren** om het model als een herbruikbare module op te slaan.
 
++ Als u het model voor scores wilt gebruiken, voegt u de module **score model** toe aan een pijp lijn.
 
 ## <a name="next-steps"></a>Volgende stappen
 

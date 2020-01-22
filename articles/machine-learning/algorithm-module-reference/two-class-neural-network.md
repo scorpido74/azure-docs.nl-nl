@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: d8e27d13de6b1ac6940972022f66811eb75c8986
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9c17cd36d91d113ad59db7b7155c092e4aa7fad1
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485889"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315062"
 ---
 # <a name="two-class-neural-network-module"></a>Neural-netwerk module met twee klassen
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module voor het maken van een Neural-netwerk model dat kan worden gebruikt voor het voors pellen van een doel met slechts twee waarden.
 
@@ -82,9 +82,9 @@ Voor het berekenen van de uitvoer van het netwerk voor een bepaalde invoer wordt
 
 Nadat de training is voltooid:
 
-+ Als u een samen vatting van de para meters van het model wilt weer geven, samen met de functie gewichten die zijn geleerd uit training en andere para meters van het Neural-netwerk, klikt u met de rechter muisknop op de uitvoer van [Train model](./train-model.md)en selecteert u **visualiseren**.  
++ Als u een moment opname van het getrainde model wilt opslaan, selecteert u het tabblad **uitvoer** in het rechterdeel venster van de module **Train model** . Selecteer het pictogram **gegevensset registreren** om het model als een herbruikbare module op te slaan.
 
-+ Als u een moment opname van het getrainde model wilt opslaan, klikt u met de rechter muisknop op de **getrainde model** uitvoer en selecteert u **Opslaan als opgeleid model**. Dit model wordt niet bijgewerkt op opeenvolgende uitvoeringen van dezelfde pijp lijn.
++ Als u het model voor scores wilt gebruiken, voegt u de module **score model** toe aan een pijp lijn.
 
 
 ## <a name="next-steps"></a>Volgende stappen

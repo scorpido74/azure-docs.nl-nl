@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 74d209adf745d1a3c319ef6567b2a7818a5fd514
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 9cf3bcc514118c7f8052981c39023d6cac361d22
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152253"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314722"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Veelvoorkomende fouten en waarschuwingen voor Indexeer functies in azure Cognitive Search oplossen
 
@@ -167,6 +167,11 @@ Het document is gelezen en verwerkt, maar als gevolg van een niet-overeenkomende
 In al deze gevallen raadpleegt u [ondersteunde gegevens typen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) en [gegevens type toewijzing voor Indexeer functies](https://docs.microsoft.com/rest/api/searchservice/data-type-map-for-indexers-in-azure-search) om er zeker van te zijn dat u het index schema correct bouwt en de juiste [toewijzings veld Toewijzingen](search-indexer-field-mappings.md)hebt ingesteld. Het fout bericht bevat details die kunnen helpen bij het volgen van de bron van de niet-overeenkomende bronnen.
 
 <a name="could-not-process-document-within-indexer-max-run-time"/>
+
+## <a name="error-integrated-change-tracking-policy-cannot-be-used-because-table-has-a-composite-primary-key"></a>Fout: het geïntegreerde beleid voor het bijhouden van wijzigingen kan niet worden gebruikt omdat de tabel een samengestelde primaire sleutel heeft
+
+Dit geldt voor SQL-tabellen. dit gebeurt meestal wanneer de sleutel wordt gedefinieerd als een samengestelde sleutel of wanneer de tabel een unieke geclusterde index heeft gedefinieerd (zoals in een SQL-index, geen Azure Search index). De belangrijkste reden hiervoor is dat het sleutel kenmerk is gewijzigd in een samengestelde primaire sleutel in het geval van een [unieke geclusterde index](https://docs.microsoft.com/sql/relational-databases/indexes/clustered-and-nonclustered-indexes-described?view=sql-server-ver15). Zorg er in dat geval voor dat uw SQL-tabel geen unieke geclusterde index heeft of dat u het sleutel veld toewijst aan een veld dat gegarandeerd geen dubbele waarden heeft.
+
 
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Fout: kan het document niet verwerken binnen de Indexeer functie Max. uitvoerings tijd
 

@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7a0cf3c41929eb6a020a9d4761b08a2a4f2f6caa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 69983502fb7d099f474fb1c4c084f5d381a173e9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460399"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314756"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>End-to-end-probleem oplossing met behulp van Azure Storage metrische gegevens en logboek registratie, AzCopy en Message Analyzer
 
@@ -143,10 +143,10 @@ Zie [metrische grafieken aanpassen](storage-monitor-storage-account.md#customize
 
 Azure Storage schrijft server logboek gegevens naar blobs, terwijl metrische waarden naar tabellen worden geschreven. Logboek-blobs zijn beschikbaar in de bekende `$logs` container voor uw opslag account. Logboek-blobs hebben een hiërarchische naam van jaar, maand, dag en uur, zodat u eenvoudig het tijds bereik kunt vinden dat u wilt onderzoeken. Zo is in het `storagesample`-account de container voor de logboek-blobs voor 01/02/2015, van 8-9 uur, `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`. De afzonderlijke blobs in deze container worden opeenvolgend benoemd, te beginnen met `000000.log`.
 
-U kunt het opdracht regel programma AzCopy gebruiken om deze logboek bestanden aan de server zijde te downloaden naar een locatie van uw keuze op uw lokale computer. U kunt bijvoorbeeld de volgende opdracht gebruiken om de logboek bestanden te downloaden voor BLOB-bewerkingen die plaatsvonden op 2 januari 2015 naar de map `C:\Temp\Logs\Server`; Vervang `<storageaccountname>` door de naam van uw opslag account en `<storageaccountkey>` met de toegangs sleutel voor uw account:
+U kunt het opdracht regel programma AzCopy gebruiken om deze logboek bestanden aan de server zijde te downloaden naar een locatie van uw keuze op uw lokale computer. U kunt bijvoorbeeld de volgende opdracht gebruiken om de logboek bestanden te downloaden voor BLOB-bewerkingen die plaatsvonden op 2 januari 2015 naar de map `C:\Temp\Logs\Server`; Vervang `<storageaccountname>` door de naam van uw opslag account:
 
 ```azcopy
-AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
+azcopy copy 'http://<storageaccountname>.blob.core.windows.net/$logs/blob/2015/01/02' 'C:\Temp\Logs\Server'  --recursive
 ```
 
 AzCopy is beschikbaar voor downloaden op de pagina [Azure-down loads](https://azure.microsoft.com/downloads/) . Zie [gegevens overdragen met het opdracht regel programma AzCopy](storage-use-azcopy.md)voor meer informatie over het gebruik van AzCopy.

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: dd8b23f92f5b24101a7d42ca65f5835a8d4e9ff2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1dd88eaa9c92a4f8ff5d491da950f7bb1cc48c20
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214560"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314501"
 ---
 # <a name="module-assign-data-to-clusters"></a>Module: gegevens toewijzen aan clusters
 
-In dit artikel wordt beschreven hoe u de module *gegevens toewijzen aan clusters* in azure machine learning Designer (preview) gebruikt. De module genereert voor spellingen via een cluster model dat is getraind met het algoritme *k-means clustering* .
+In dit artikel wordt beschreven hoe u de module *gegevens toewijzen aan clusters* in azure machine learning Designer kunt gebruiken. De module genereert voor spellingen via een cluster model dat is getraind met het algoritme *k-means clustering* .
 
 De module gegevens toewijzen aan clusters retourneert een gegevensset die de waarschijnlijke toewijzingen voor elk nieuw gegevens punt bevat. 
 
@@ -47,5 +47,5 @@ De module gegevens toewijzen aan clusters retourneert een gegevensset die de waa
   
 ### <a name="results"></a>Resultaten
 
-+  Als u de waarden in de gegevensset wilt weer geven, klikt u met de rechter muisknop op de module, selecteert u **resultaat gegevens sets**en selecteert u vervolgens **visualiseren**.
++  Als u de waarden in de gegevensset wilt weer geven, klikt u met de rechter muisknop op de module en selecteert u vervolgens **visualiseren**. Of selecteer de module en schakel over naar het tabblad **uitvoer** in het rechterdeel venster, klik op het histogram pictogram in de **poort uitvoer** om het resultaat te visualiseren.
 

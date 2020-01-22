@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 01/22/2020
 ms.author: victorh
-ms.openlocfilehash: 1267b3295762f6eb6af92b1cec909bae768886c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 89c6700d5df3bcef1332121c3cf7d8f720fe054c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974510"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315028"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall-logboeken en metrische gegevens
 
@@ -103,17 +103,19 @@ De volgende metrische gegevens zijn beschikbaar voor Azure Firewall:
 
     Eenheid: bytes
 
-- Status van **firewall** : geeft de status van de firewall aan.
+- Status van **firewall** : geeft de status van de firewall aan op basis van de beschik baarheid van de SNAT-poort.
 
     Eenheid: percentage
 
    Deze metriek heeft twee dimensies:
-  - **Status**: mogelijke waarden zijn *in orde*, *gedegradeerd*, *beschadigd.*
-  - **Reden**: geeft de reden aan van de bijbehorende status van de firewall. Het kan bijvoorbeeld duiden op *SNAT-poorten* als de firewall status wordt gedegradeerd of beschadigd.
+  - Status: mogelijke waarden zijn *in orde*, *gedegradeerd*, *beschadigd.*
+  - Reden: geeft de reden aan van de bijbehorende status van de firewall. 
 
+     Als er een SNAT-poort wordt gebruikt > 95%, worden deze als uitgeput beschouwd en is de status 50% met het**cijfer = verslechterd** en reden =**SNAT-poort**. De firewall verwerkt verkeer en bestaande verbindingen worden niet beïnvloed. Nieuwe verbindingen mogen echter niet af en toe tot stand worden gebracht.
 
+     Als er SNAT-poorten worden gebruikt < 95%, wordt de firewall als gezond beschouwd en wordt de status weer gegeven als 100%.
 
-
+     Als er geen gebruik wordt gerapporteerd van de SNAT-poorten, wordt de status weer gegeven als 0%. 
 
 - **SNAT-poort gebruik** : het percentage SNAT-poorten dat door de firewall is gebruikt.
 

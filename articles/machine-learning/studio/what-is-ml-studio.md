@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: c0dcd8f8f5ecd2d333e610c96ea89a44f8f4c547
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f3be29dc222e0e9b98ed51d8f921fb9926b018ca
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75528348"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314064"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Wat is Machine Learning Studio (klassiek)?
 
@@ -38,13 +38,13 @@ Er is geen programmering vereist. u kunt gegevens sets en modules visueel verbin
 <a name="compare"></a>
 ## <a name="how-does-machine-learning-studio-classic-differ-from-azure-machine-learning"></a>Wat is het verschil tussen Machine Learning Studio (klassiek) en Azure Machine Learning?
 
-[Azure machine learning](../overview-what-is-azure-ml.md) biedt **zowel sdk's als** de Azure machine learning Designer (preview) om snel gegevens te kunnen prepen, machine learning modellen te trainen en te implementeren. De Designer biedt een vergelijk bare functionaliteit voor slepen en neerzetten naar Studio (klassiek). Maar in tegens telling tot het eigen reken platform van Studio (klassiek) maakt de ontwerper gebruik van uw eigen reken resources en is deze volledig geïntegreerd in Azure Machine Learning.
+[Azure machine learning](../overview-what-is-azure-ml.md) biedt **zowel sdk's als** de Azure machine learning Designer voor het snel voorbereiden van gegevens, het trainen en implementeren van machine learning modellen. De Designer biedt een vergelijk bare functionaliteit voor slepen en neerzetten naar Studio (klassiek). Maar in tegens telling tot het eigen reken platform van Studio (klassiek) maakt de ontwerper gebruik van uw eigen reken resources en is deze volledig geïntegreerd in Azure Machine Learning.
 
 Hier volgt een snelle vergelijking:
 
 || Machine Learning Studio (klassiek) | Azure Machine Learning |
 |---| --- | --- |
-| Interface slepen en neerzetten | Ja | Ja, [Azure machine learning Designer (preview-versie)](../concept-designer.md) |
+| Interface slepen en neerzetten | Ja | Ja, [Azure machine learning Designer](../concept-designer.md) |
 | Experiment | Schaalbaar (10-GB training-gegevens limiet) | Schalen met Compute target |
 | Modules voor de interface voor slepen en neerzetten | Allerlei | Initiële set populaire [modules](../algorithm-module-reference/module-reference.md)|
 |Doelen van de trainings compute| Eigen reken doel, alleen CPU-ondersteuning| Ondersteunt Azure Machine Learning Compute (GPU of CPU) en virtuele notebook-Vm's.<br/>([Andere reken processen die worden ondersteund in SDK](../concept-compute-target.md#train))|

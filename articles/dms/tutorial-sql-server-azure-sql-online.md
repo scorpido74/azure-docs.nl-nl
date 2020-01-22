@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/07/2020
-ms.openlocfilehash: 60334666c0ace76bd29ded03712549ec44d68732
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.date: 01/21/2020
+ms.openlocfilehash: 012e6eca13c2b1afe00343da98dd58ca1f683dd5
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690973"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315096"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>Zelf studie: SQL Server migreren naar een enkele data base of gegroepeerde Data base in Azure SQL Database online met behulp van DMS
 
@@ -242,7 +242,7 @@ Voer de volgende stappen uit om het **AdventureWorks2012** -schema te migreren n
 
     ![Instellingen configureren van een Azure Database Migration Service-exemplaar](media/tutorial-sql-server-to-azure-sql-online/dms-settings2.png)
 
-7. Selecteer **Maken** om de service te maken.
+7. Selecteer **Maken** om de dienst te maken.
 
 ## <a name="create-a-migration-project"></a>Maak een migratieproject
 
