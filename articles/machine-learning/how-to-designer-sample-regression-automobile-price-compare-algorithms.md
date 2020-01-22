@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: f8cf20743ee5420312ed751a26796a0859956ae7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b2511feefbe419223f355509ecb435518ce8382e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771441"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311044"
 ---
 # <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Train & meerdere regressie modellen vergelijken om de prijzen van auto's te voors pellen met Azure Machine Learning Designer
 
-**Voor beeld van Designer (preview) 2**
+**Voor beeld van Designer 2**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Meer informatie over het bouwen van een machine learning pijp lijn zonder het schrijven van één regel code met behulp van de ontwerp functie (preview). Dit voor beeld van treinen en vergelijkt meerdere regressie modellen om de prijs van een auto te voors pellen op basis van de technische functies. We bieden de reden voor de keuzes die u in deze pijp lijn hebt gemaakt zodat u uw eigen machine learning problemen kunt aanpakken.
+Meer informatie over hoe u een machine learning pijp lijn bouwt zonder dat u maar één regel code hoeft te schrijven met behulp van de ontwerp functie. Dit voor beeld van treinen en vergelijkt meerdere regressie modellen om de prijs van een auto te voors pellen op basis van de technische functies. We bieden de reden voor de keuzes die u in deze pijp lijn hebt gemaakt zodat u uw eigen machine learning problemen kunt aanpakken.
 
 Als u net aan de slag gaat met machine learning, bekijkt u de [basis versie](how-to-designer-sample-regression-automobile-price-basic.md) van deze pijp lijn.
 

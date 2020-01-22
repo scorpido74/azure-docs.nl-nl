@@ -4,12 +4,12 @@ description: Meer informatie over het gebruik van Azure-toepassing Insights met 
 ms.assetid: 501722c3-f2f7-4224-a220-6d59da08a320
 ms.topic: conceptual
 ms.date: 04/04/2019
-ms.openlocfilehash: 4a182ddffd4c1ee4d2e71e7d9e6385df23e4260e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: dda62e3041d04d5becc9179fff1c56d0c587ba1e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978080"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292923"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions controleren
 
@@ -74,7 +74,7 @@ U kunt zien dat op beide pagina's een **uitvoeren in Application Insights** kopp
 
 ![Uitvoeren in Application Insights](media/functions-monitoring/run-in-ai.png)
 
-De volgende query wordt weer gegeven. U kunt zien dat de aanroep lijst is beperkt tot de afgelopen 30 dagen. De lijst bevat niet meer dan 20 rijen (`where timestamp > ago(30d) | take 20`). De lijst aanroep Details is voor de afgelopen 30 dagen zonder limiet.
+De volgende query wordt weer gegeven. U kunt zien dat de query resultaten beperkt zijn tot de afgelopen 30 dagen (`where timestamp > ago(30d)`). Daarnaast worden de resultaten niet meer dan 20 rijen (`take 20`) weer gegeven. De lijst met aanroep Details voor uw functie is daarentegen voor de afgelopen 30 dagen zonder limiet.
 
 ![Application Insights analyse aanroep lijst](media/functions-monitoring/ai-analytics-invocation-list.png)
 
@@ -98,7 +98,7 @@ De volgende gebieden van Application Insights kunnen nuttig zijn bij het evaluer
 | **[Performance](../azure-monitor/app/performance-counters.md)** | Analyseer prestatie problemen. |
 | **Servers** | Het resource gebruik en de door Voer per server weer geven. Deze gegevens kunnen nuttig zijn voor het opsporen van fouten in scenario's waarbij functies worden bogging van uw onderliggende resources. Servers worden aangeduid als instanties in de **Cloud**. |
 | **[Metrische gegevens](../azure-monitor/app/metrics-explorer.md)** | Grafieken en waarschuwingen maken op basis van metrische gegevens. Metrische gegevens bevatten het aantal functie-aanroepen, uitvoerings tijd en succes percentages. |
-| **[Live Metrics Stream](../azure-monitor/app/live-stream.md)** | Metrische gegevens weer geven terwijl deze in realtime worden gemaakt. |
+| **[Live Metrics Stream](../azure-monitor/app/live-stream.md)** | Metrische gegevens weer geven die in bijna realtime worden gemaakt. |
 
 ## <a name="query-telemetry-data"></a>Telemetrie-gegevens opvragen
 
@@ -155,7 +155,7 @@ Als u Logboeken in uw functie code schrijft, wordt de categorie `Function` in ve
 
 De Azure Functions logger bevat ook een *logboek niveau* voor elk logboek. [LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel) is een inventarisatie en de gehele code geeft het relatieve belang aan:
 
-|Logniveau    |Coderen|
+|LogLevel    |Coderen|
 |------------|---|
 |Tracering       | 0 |
 |Foutopsporing       | 1 |
@@ -337,7 +337,7 @@ U kunt Logboeken schrijven in uw functie code die wordt weer gegeven als traceri
 
 Gebruik een [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) -para meter in uw functies in plaats van een `TraceWriter` para meter. Logboeken die zijn gemaakt met behulp van `TraceWriter`, gaan naar Application Insights, maar met `ILogger` kunt u [gestructureerde logboek registratie](https://softwareengineering.stackexchange.com/questions/312197/benefits-of-structured-logging-vs-basic-logging)uitvoeren.
 
-Met een `ILogger`-object roept u `Log<level>` [extensie methoden aan op ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) om logboeken te maken. Met de volgende code worden `Information`-logboeken geschreven met de functie category.
+Met een `ILogger`-object roept u `Log<level>` [extensie methoden aan op ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.loggerextensions#methods) om logboeken te maken. Met de volgende code worden `Information`-logboeken geschreven met de functie. < YOUR_FUNCTION_NAME >. Gebruiker.
 
 ```cs
 public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger logger)
@@ -561,7 +561,7 @@ namespace functionapp0915
 
 Roep `TrackRequest` of `StartOperation<RequestTelemetry>` niet aan omdat er dubbele aanvragen voor een functie aanroep worden weer geven.  Met de functie runtime worden aanvragen automatisch bijgehouden.
 
-Stel `telemetryClient.Context.Operation.Id`niet in. Deze globale instelling veroorzaakt een onjuiste correlatie wanneer er meerdere functies tegelijkertijd worden uitgevoerd. Maak in plaats daarvan een nieuwe telemetrie-instantie (`DependencyTelemetry`, `EventTelemetry`) en wijzig de `Context` eigenschap. Geef vervolgens de telemetrie-instantie door aan de bijbehorende `Track` methode op `TelemetryClient` (`TrackDependency()`, `TrackEvent()`). Deze methode zorgt ervoor dat de telemetrie de juiste correlatie details heeft voor de huidige functie aanroep.
+Stel `telemetryClient.Context.Operation.Id`niet in. Deze globale instelling veroorzaakt een onjuiste correlatie wanneer er meerdere functies tegelijkertijd worden uitgevoerd. Maak in plaats daarvan een nieuwe telemetrie-instantie (`DependencyTelemetry`, `EventTelemetry`) en wijzig de `Context` eigenschap. Geef vervolgens de telemetrie-instantie door aan de bijbehorende `Track` methode op `TelemetryClient` (`TrackDependency()`, `TrackEvent()`, `TrackMetric()`). Deze methode zorgt ervoor dat de telemetrie de juiste correlatie details heeft voor de huidige functie aanroep.
 
 ## <a name="log-custom-telemetry-in-javascript-functions"></a>Aangepaste telemetrie vastleggen in Java script-functies
 
@@ -590,7 +590,7 @@ Met de para meter `tagOverrides` wordt de `operation_Id` ingesteld op de aanroep
 
 ## <a name="dependencies"></a>Afhankelijkheden
 
-Met functies v2 worden automatisch afhankelijkheden verzameld voor HTTP-aanvragen, ServiceBus en SQL.
+Met functies v2 worden automatisch afhankelijkheden verzameld voor HTTP-aanvragen, ServiceBus, EventHub en SQL.
 
 U kunt aangepaste code schrijven om de afhankelijkheden weer te geven. Zie voor voor beelden de voorbeeld code in de [ C# sectie Aangepaste telemetrie](#log-custom-telemetry-in-c-functions). De voorbeeld code resulteert in een *toepassings toewijzing* in Application Insights die eruitziet als de volgende afbeelding:
 
@@ -602,13 +602,13 @@ Als u een probleem wilt melden met Application Insights integratie in functions,
 
 ## <a name="streaming-logs"></a>Streaming-logboeken
 
-Tijdens het ontwikkelen van een toepassing wilt u vaak zien wat er in bijna realtime naar de logboeken wordt geschreven wanneer u in azure uitvoert.
+Tijdens het ontwikkelen van een toepassing wilt u vaak zien wat er in de buurt van real-time naar de logboeken wordt geschreven wanneer u in azure uitvoert.
 
 Er zijn twee manieren om een stroom weer te geven van de logboek bestanden die worden gegenereerd door uw functie-uitvoeringen.
 
 * **Ingebouwde logboek streaming**: met het app service-platform kunt u een stroom weer geven van de logboek bestanden van uw toepassing. Dit komt overeen met de uitvoer die wordt weer gegeven wanneer u tijdens de [lokale ontwikkeling](functions-develop-local.md) fouten opspoort in uw functies en wanneer u het tabblad **testen** in de portal gebruikt. Alle gegevens op basis van het logboek worden weer gegeven. Zie [Stream-logboeken](../app-service/troubleshoot-diagnostic-logs.md#stream-logs)voor meer informatie. Deze streaming-methode ondersteunt slechts één exemplaar en kan niet worden gebruikt met een app die wordt uitgevoerd op Linux in een verbruiks abonnement.
 
-* **Live Metrics stream**: als uw functie-app is [verbonden met Application Insights](#enable-application-insights-integration), kunt u de logboek gegevens en andere gegevens in bijna realtime weer geven in de Azure Portal met [Live Metrics stream](../azure-monitor/app/live-stream.md). Gebruik deze methode wanneer u functies bewaken die worden uitgevoerd op meerdere exemplaren of op Linux in een verbruiks abonnement. Met deze methode worden [voorbeeld gegevens](#configure-sampling)gebruikt.
+* **Live Metrics stream**: als uw functie-app is [verbonden met Application Insights](#enable-application-insights-integration), kunt u in bijna realtime logboek gegevens en andere gegevens weer geven in de Azure Portal met behulp van [Live Metrics stream](../azure-monitor/app/live-stream.md). Gebruik deze methode wanneer u functies bewaken die worden uitgevoerd op meerdere exemplaren of op Linux in een verbruiks abonnement. Met deze methode worden [voorbeeld gegevens](#configure-sampling)gebruikt.
 
 Logboek stromen kunnen zowel in de portal als in de meeste lokale ontwikkel omgevingen worden weer gegeven. 
 
@@ -642,7 +642,7 @@ Selecteer **Live Metrics stream**in Application Insights. [Voorbeeld logboek ver
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 U kunt streaming-logboeken inschakelen met behulp van de [Azure cli](/cli/azure/install-azure-cli). Gebruik de volgende opdrachten om u aan te melden, uw abonnement te kiezen en logboek bestanden te streamen:
 

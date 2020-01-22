@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 1c352ad5d18f891cd82d90eef7d0a8c6c3d1cdb9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcab5f76b95939b0a9a4232eab2bcf8b2a5fd40b
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441679"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309979"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>De Azure Cosmos-emulator gebruiken voor lokale ontwikkeling en tests
 
@@ -283,7 +283,6 @@ Standaard kunt u Maxi maal 25 containers met een vaste grootte maken (alleen ond
 Als u probeert een container te maken nadat het huidige aantal partities is overschreden, genereert de emulator een ServiceUnavailable-uitzonde ring met het volgende bericht.
 
 We ondervinden momenteel hoge vraag in deze regio en kunnen op dit moment niet aan uw aanvraag voldoen. We werken continu meer en meer capaciteit online en moedigen u aan om het opnieuw te proberen.
-U kunt op elk gewenst moment of om een andere reden geen e-mail berichten askcosmosdb@microsoft.com.
 ActivityId: 12345678-1234-1234-1234-123456789abc "
 
 Voer de volgende stappen uit om het aantal containers te wijzigen dat beschikbaar is in de Azure Cosmos-emulator:
@@ -496,7 +495,7 @@ Gebruik de volgende tips om problemen op te lossen die u tegen komt met de Azure
 
 - Als u een nieuwe versie van de emulator hebt geïnstalleerd en er fouten optreden, zorg dan dat u uw gegevens opnieuw instelt. U kunt uw gegevens opnieuw instellen door met de rechter muisknop op het pictogram van de Azure Cosmos-emulator in het systeemvak te klikken en vervolgens op gegevens opnieuw instellen te klikken.... Als de fouten niet worden opgelost, kunt u de emulator en eventuele oudere versies van de emulator verwijderen, indien gevonden, de map C:\Program files\Azure Cosmos DB emulator verwijderen en de emulator opnieuw installeren. Zie [De lokale emulator verwijderen](#uninstall) voor instructies.
 
-- Als de Azure Cosmos-emulator vastloopt, verzamelt u dump bestanden uit de map%LOCALAPPDATA%\CrashDumps, comprimeert u deze en koppelt u deze aan een e-mail bericht aan [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
+- Als de Azure Cosmos-emulator vastloopt, verzamelt u dump bestanden uit de map%LOCALAPPDATA%\CrashDumps, comprimeert u deze en opent u een ondersteunings ticket van de [Azure Portal](https://portal.azure.com).
 
 - Als u crasht in `Microsoft.Azure.Cosmos.ComputeServiceStartupEntryPoint.exe`, kan dit een symptoom zijn waarbij de status van de prestatie meter items beschadigd is. Als u de volgende opdracht uitvoert vanaf een opdracht prompt met beheerders rechten, wordt het probleem doorgaans opgelost:
 
@@ -504,7 +503,7 @@ Gebruik de volgende tips om problemen op te lossen die u tegen komt met de Azure
   lodctr /R
    ```
 
-- Als er sprake is van een verbindingsprobleem, [verzamelt u de traceringsbestanden](#trace-files), comprimeert u de bestanden en verstuurt u het gecomprimeerde bestand als bijlage bij een e-mail naar [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
+- Als u een connectiviteits probleem ondervindt, [verzamelt u tracerings bestanden](#trace-files), comprimeert u ze en opent u een ondersteunings ticket in de [Azure Portal](https://portal.azure.com).
 
 - Als u het bericht **Service niet beschikbaar** krijgt, is het mogelijk dat de emulator de netwerkstack niet kan initialiseren. Controleer of de veilige Pulse-client of Juniper-netwerkclient is geïnstalleerd. De netwerkfilterstuurprogramma's van deze clients kunnen mogelijk de oorzaak zijn van het probleem. Doorgaans kan het probleem worden opgelost door stuurprogramma's voor netwerkfilters van derden te verwijderen. U kunt ook de emulator starten met/DisableRIO, waarmee de emulator netwerk communicatie wordt overgeschakeld naar een regel matige Winsock. 
 
@@ -519,9 +518,9 @@ Voor het verzamelen van foutopsporingsgegevens, voert u de volgende opdrachten u
 3. `Microsoft.Azure.Cosmos.Emulator.exe /startwprtraces`
 4. `Microsoft.Azure.Cosmos.Emulator.exe`
 5. Reproduceer het probleem. Als Data Explorer niet werkt, hoeft u alleen te wachten tot de browser een paar seconden wordt geopend om de fout te achterhalen.
-5. `Microsoft.Azure.Cosmos.Emulator.exe /stopwprtraces`
-6. Ga naar `%ProgramFiles%\Azure Cosmos DB Emulator` en zoek het bestand docdbemulator_000001.etl op.
-7. Stuur het .etl-bestand samen met de reproductiestappen naar [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) om de fout op te sporen.
+6. `Microsoft.Azure.Cosmos.Emulator.exe /stopwprtraces`
+7. Ga naar `%ProgramFiles%\Azure Cosmos DB Emulator` en zoek het bestand docdbemulator_000001.etl op.
+8. Open een ondersteunings ticket in de [Azure Portal](https://portal.azure.com) en neem het ETL-bestand samen met reproduceren-stappen.
 
 ### <a id="uninstall"></a>De lokale emulator verwijderen
 

@@ -10,16 +10,16 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 58755a0ac49b9549813ddb507dfbd986d83dfce5
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305852"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289795"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>Mainframe herhosten op Azure virtual machines
 
-Als u werk belastingen migreert van mainframe omgevingen naar de Cloud, kunt u uw infra structuur moderniseren en vaak besparen op kosten. Veel werk belastingen kunnen worden overgebracht naar Azure met alleen kleine code wijzigingen, zoals het bijwerken van de namen van data bases.
+Als u werk belastingen migreert van mainframe omgevingen naar de Cloud, kunt u uw infra structuur moderniseren en vaak besparen op kosten. Veel workloads kunnen worden overgebracht naar Azure met slechts kleine codewijzigingen, zoals het bijwerken van de namen van databases.
 
 Normaal gesp roken is de term *mainframe* een groot computer systeem. De grote meerderheid die momenteel in gebruik is, zijn IBM-systeem Z-servers of IBM-plug-compatible systemen die MVS, DOS, VSE, OS/390 of Z/OS uitvoeren.
 
@@ -39,7 +39,7 @@ Opnieuw hosten, opnieuw bouwen, vervangen of buiten gebruik stellen? IaaS of Paa
 
 Micro Focus Enter prise server is een van de grootste platformen voor het hosten van mainframes die beschikbaar zijn. U kunt deze gebruiken om uw z/O'S-workloads uit te voeren op een minder duur x86-platform op Azure.
 
-Aan de slag:
+Aan de slag gaan:
 
 - [Enter prise server en Enter prise Developer installeren op Azure](./microfocus/set-up-micro-focus-azure.md)
 - [CICS BankDemo instellen voor Enter prise Developer op Azure](./microfocus/demo.md)
@@ -50,7 +50,7 @@ Aan de slag:
 
 TmaxSoft open frame is een populaire mainframe oplossing voor opnieuw hosten die wordt gebruikt in Lift-en Shift-scenario's. Een open frame-omgeving op Azure is geschikt voor ontwikkelings-, demonstratie-, test-of productie werk belastingen.
 
-Aan de slag:
+Aan de slag gaan:
 
 - [Aan de slag met TmaxSoft OpenFrame](./tmaxsoft/get-started.md)
 - [Het ebook downloaden](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
@@ -61,7 +61,7 @@ De IBM Z-ontwikkelings-en test omgeving (IBM zD & T) stelt een niet-productie om
 
 De emulatie omgeving van Azure kan verschillende soorten Z-instanties hosten via toepassings ontwikkelaars beheerde distributies (ADCDs). U kunt zD uitvoeren & T Personal Edition, zD & Sysplex en zD & T Enter prise Edition op Azure en Azure Stack.
 
-Aan de slag:
+Aan de slag gaan:
 
 - [IBM zD & T 12,0 op Azure instellen](./ibm/install-ibm-z-environment.md)
 - [ADCD instellen op zD & T](./ibm/demo.md)
@@ -76,7 +76,7 @@ Zie [IBM DB2 pureScale in azure](/azure/virtual-machines/linux/ibm-db2-purescale
 
 Wanneer u mainframe-workloads migreert naar Azure Infrastructure as a Service (IaaS), kunt u kiezen uit verschillende soorten, schaal bare computer bronnen op aanvraag, waaronder Azure-Vm's. Azure biedt een scala aan [Linux](/azure/virtual-machines/linux/overview) -en [Windows](/azure/virtual-machines/windows/overview) -vm's.
 
-### <a name="compute"></a>Compute
+### <a name="compute"></a>Computing
 
 Azure Compute-kracht vergelijkt de capaciteit van een mainframe. Als u een mainframe werk belasting wilt verplaatsen naar Azure, moet u de mainframe metriek van 1.000.000 instructies per seconde (MIPS) vergelijken met virtuele Cpu's. 
 
@@ -90,7 +90,7 @@ Met Azure IaaS, zoals een virtuele machine, bieden specifieke systeem functies f
 
 ### <a name="scalability"></a>Schaalbaarheid
 
-Mainframes worden doorgaans geschaald, terwijl Cloud omgevingen uitschalen. Azure biedt een scala aan [Linux](/azure/virtual-machines/linux/sizes) -en [Windows](/azure/virtual-machines/windows/sizes) -grootten die aan uw behoeften voldoen. De Cloud wordt ook omhoog of omlaag geschaald, zodat deze overeenkomt met de exacte specificaties van de gebruiker. Reken kracht, opslag en services kunnen [](/azure/architecture/best-practices/auto-scaling) op aanvraag worden geschaald onder een facturerings model op basis van gebruik.
+Mainframes worden doorgaans geschaald, terwijl Cloud omgevingen uitschalen. Azure biedt een scala aan [Linux](/azure/virtual-machines/linux/sizes) -en [Windows](/azure/virtual-machines/windows/sizes) -grootten die aan uw behoeften voldoen. De Cloud wordt ook omhoog of omlaag geschaald, zodat deze overeenkomt met de exacte specificaties van de gebruiker. Reken kracht, opslag en services kunnen op aanvraag worden [geschaald](/azure/architecture/best-practices/auto-scaling) onder een facturerings model op basis van gebruik.
 
 ### <a name="storage"></a>Storage
 
@@ -100,7 +100,7 @@ Meer informatie over het [verplaatsen van mainframe-opslag naar Azure](./concept
 
 ### <a name="backup-and-recovery"></a>Back-ups maken en herstellen
 
-Het onderhoud van uw eigen nood herstel site kan een dure toegevoegde zijn. Azure heeft eenvoudig te implementeren en rendabele opties voor [back-up](/azure/backup/backup-introduction-to-azure-backup), [herstel](/azure/site-recovery/site-recovery-overview)en redundantie [](/azure/storage/common/storage-redundancy) op lokaal of regionaal niveau, of via Geo-redundantie.
+Het onderhoud van uw eigen nood herstel site kan een dure toegevoegde zijn. Azure heeft eenvoudig te implementeren en rendabele opties voor [back-up](/azure/backup/backup-introduction-to-azure-backup), [herstel](/azure/site-recovery/site-recovery-overview)en [Redundantie](/azure/storage/common/storage-redundancy) op lokaal of regionaal niveau, of via Geo-redundantie.
 
 ## <a name="azure-government-for-mainframe-migrations"></a>Azure Government voor mainframe-migraties
 
@@ -112,13 +112,13 @@ Als u aan de slag wilt gaan, moet u [Microsoft Azure Government-Cloud voor mainf
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Vraag onze [partners](partner-workloads.md) om u te helpen uw mainframe-toepassingen te migreren of te hosten. Voor gedetailleerde informatie over het kiezen van een partner oplossing raadpleegt u de website van de [platform modernisatie-Alliantie](https://www.platformmodernization.org/pages/mainframe.aspx) .
+Vraag onze [partners](partner-workloads.md) om u te helpen uw mainframe-toepassingen te migreren of te hosten. 
 
 Zie ook:
 
 - [Technische documentatie over mainframe-onderwerpen](mainframe-white-papers.md)
 - [Mainframe migratie](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Problemen oplossen](/azure/virtual-machines/troubleshooting/)
+- [Probleemoplossing](/azure/virtual-machines/troubleshooting/)
 - [Ontrafelen mainframe naar Azure-migratie](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 135b425ca87a309bc171e252d8ff04b2027a3c50
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7451758e758d597bfe63d92fe4789c8fa81b3dff
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213918"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311475"
 ---
 # <a name="module-k-means-clustering"></a>Module: K-betekent clustering
 
-In dit artikel wordt beschreven hoe u de module *K-betekent clustering* in azure machine learning Designer (preview) gebruikt om een niet-getraind k-means clustering model te maken. 
+In dit artikel wordt beschreven hoe u de *clustering module K-betekent* in azure machine learning Designer kunt gebruiken om een niet-getraind k-means clustering model te maken. 
  
 K: is een van de eenvoudigste en *meest bekende* algoritmen voor leren. U kunt het algoritme gebruiken voor een aantal machine learning taken, zoals: 
 
@@ -115,9 +115,9 @@ Nadat u klaar bent met het configureren en trainen van het model, hebt u een mod
 
 Als u de module [clustering-model trainen](train-clustering-model.md) hebt gebruikt:
 
-1. Klik met de rechter muisknop op de module **clustering model trainen** .
+1. Selecteer de module **clustering model trainen** en open het rechter paneel.
 
-2. Selecteer **getraind model**en selecteer vervolgens **Opslaan als getraind model**.
+2. Selecteer het tabblad **uitvoer** . Selecteer het pictogram **gegevensset registreren** om een kopie van het getrainde model op te slaan.
 
 Het opgeslagen model vertegenwoordigt de trainings gegevens op het moment dat u het model hebt opgeslagen. Als u later de trainings gegevens die in de pijp lijn worden gebruikt, bijwerkt, wordt het opgeslagen model niet bijgewerkt. 
 
@@ -127,7 +127,7 @@ Als u de module [clustering-model trainen](train-clustering-model.md) hebt gebru
 
 1. Klik met de rechter muisknop op de module **clustering model trainen** .
 
-2. Selecteer **resultaten gegevensset**en selecteer vervolgens **visualiseren**.
+2. Selecteer **visualiseren**.
 
 ### <a name="tips-for-generating-the-best-clustering-model"></a>Tips voor het genereren van het beste cluster model  
 

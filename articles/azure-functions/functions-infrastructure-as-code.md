@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: df0c90ba3784acb96bd9f76a436ff2746f7efe2c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 8a3d8c8769ff5026ec1dde98f3c4167aac302bf8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262432"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292940"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>De implementatie van resources voor uw functie-app in Azure Functions automatiseren
 
@@ -129,6 +129,7 @@ De functie-app resource wordt gedefinieerd met behulp van een resource van het t
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
         "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
     ]
+}
 ```
 
 > [!IMPORTANT]
@@ -138,7 +139,7 @@ Een functie-app moet deze toepassings instellingen bevatten:
 
 | Naam van instelling                 | Beschrijving                                                                               | Voorbeeldwaarden                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
-| AzureWebJobsStorage          | Een connection string naar een opslag account dat de functions-runtime voor interne wachtrij bewerkingen | Zie [Storage-account](#storage)       |
+| AzureWebJobsStorage          | Een connection string naar een opslag account dat door de functions-runtime wordt gebruikt voor interne wachtrij gebruik | Zie [Storage-account](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | De versie van de Azure Functions runtime                                                | `~2`                                  |
 | FUNCTIONS_WORKER_RUNTIME     | De taal stack die moet worden gebruikt voor functies in deze app                                   | `dotnet`, `node`, `java`, `python`of `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | Dit is alleen nodig als u de `node` taal stack gebruikt. Hiermee geeft u de versie op die moet worden gebruikt              | `10.14.1`                             |
@@ -174,7 +175,7 @@ Deze eigenschappen zijn opgegeven in de verzameling `appSettings` van de eigensc
 
 ## <a name="deploy-on-consumption-plan"></a>Implementeren in verbruiks abonnement
 
-Het verbruiks plan wijst automatisch reken kracht toe wanneer uw code wordt uitgevoerd, wordt zo nodig geschaald om de belasting te verwerken en vervolgens wordt de schaal van de code verkleind wanneer deze niet wordt uitgevoerd. U hoeft niet te betalen voor niet-actieve Vm's en u hoeft de capaciteit niet vooraf te reserveren. Zie [Azure functions schalen en hosten](functions-scale.md#consumption-plan)voor meer informatie.
+Het verbruiks plan wijst automatisch reken kracht toe wanneer uw code wordt uitgevoerd, wordt zo nodig geschaald om de belasting te verwerken en vervolgens wordt geschaald wanneer code niet wordt uitgevoerd. U hoeft niet te betalen voor niet-actieve Vm's en u hoeft de capaciteit niet vooraf te reserveren. Zie [Azure functions schalen en hosten](functions-scale.md#consumption-plan)voor meer informatie.
 
 Zie [functie-app voor verbruiks abonnement]voor een voor beeld-Azure Resource Manager sjabloon.
 

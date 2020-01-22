@@ -3,12 +3,12 @@ title: Veelgestelde vragen-detectie, evaluatie en afhankelijkheids analyse in Az
 description: Krijg antwoorden op veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 12/29/2019
-ms.openlocfilehash: 0b7bb425bff1d26c2a0d6feeaf70be826eab2b9a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 5afda40f4953b8eb51a757034661eb5a3349cd10
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564047"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292362"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse
 
@@ -20,7 +20,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over detectie, evaluati
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Hoeveel Vm's kan ik vinden met een apparaat?
 
-U kunt Maxi maal 10.000 VMware-Vm's en Maxi maal 5.000 virtuele Hyper-V-machines detecteren met één apparaat. Als u meer computers in uw on-premises omgeving hebt, leest u over het schalen van de [Hyper-V-](scale-hyper-v-assessment.md) en [VMware](scale-vmware-assessment.md) -evaluatie.
+U kunt Maxi maal 10.000 VMware-Vm's detecteren, tot 5.000 Hyper-V-Vm's en Maxi maal 250 servers met één apparaat. Als u meer computers in uw on-premises omgeving hebt, leest u over het schalen van [Hyper-V](scale-hyper-v-assessment.md), [VMware](scale-vmware-assessment.md) en [fysieke](scale-physical-assessment.md) evaluatie.
 
 
 

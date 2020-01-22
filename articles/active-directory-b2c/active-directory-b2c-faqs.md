@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 577dc6d4344cd6d7a38c4d538218c9dd89e883aa
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 803c82c9926c3b75545b42a9a382fd5c327b7151
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643646"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289081"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: veelgestelde vragen (FAQ)
 
@@ -27,7 +27,7 @@ Er zijn twee veelvoorkomende redenen waarom de Azure AD-uitbrei ding niet werkt 
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Kan ik Azure AD B2C functies in mijn bestaande Azure AD-Tenant op basis van werk nemers gebruiken?
 
-Azure AD en Azure AD B2C zijn afzonderlijke product aanbiedingen en kunnen niet worden gecombineerd in dezelfde Tenant. Een Azure AD-Tenant vertegenwoordigt een organisatie. Een Azure AD B2C-Tenant vertegenwoordigt een verzameling identiteiten die moeten worden gebruikt met Relying Party toepassingen. Met aangepast beleid kan Azure AD B2C naar Azure AD communiceren met de verificatie van werk nemers in een organisatie.
+Azure AD en Azure AD B2C zijn afzonderlijke product aanbiedingen en kunnen niet worden gecombineerd in dezelfde Tenant. Een Azure AD-Tenant vertegenwoordigt een organisatie. Een Azure AD B2C-Tenant vertegenwoordigt een verzameling identiteiten die moeten worden gebruikt met Relying Party toepassingen. Wanneer u een **nieuwe OpenID Connect Connect provider** toevoegt onder **Azure AD B2C > ID-providers** of met aangepast beleid, kan Azure AD B2C met Azure AD communiceren met de verificatie van werk nemers in een organisatie.
 
 ### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Kan ik Azure AD B2C gebruiken om sociale aanmelding (Facebook en Google +) aan te bieden in Office 365?
 
@@ -52,7 +52,7 @@ Azure AD B2C biedt ook ondersteuning voor [aangepast beleid](active-directory-b2
 Nee. De standaard scopes die worden gebruikt voor onze ondersteunde providers voor sociale identificatie zijn:
 
 * Facebook: e-mail
-* Google +: e-mail
+* Google+: email
 * Microsoft-account: OpenID Connect-e-mail profiel
 * Amazon: profiel
 * LinkedIn: r_emailaddress, r_basicprofile
@@ -77,8 +77,8 @@ U kunt de [functie voor bedrijfs huisstijl](../active-directory/fundamentals/cus
 De e-mail handtekening bevat de naam van de Azure AD B2C Tenant die u hebt ingevoerd toen u de Azure AD B2C-Tenant voor het eerst hebt gemaakt. U kunt de naam wijzigen met behulp van de volgende instructies:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/) als globale beheerder.
-1. Open de Blade **Azure Active Directory** .
-1. Klik op het tabblad **Eigenschappen** .
+1. Open de blade **Azure Active Directory**.
+1. Klik op de **eigenschappen** tabblad.
 1. Wijzig het veld **naam** .
 1. Klik bovenaan de pagina op **Opslaan**.
 
@@ -150,7 +150,7 @@ U kunt de huidige **toepassingen** ervaring of onze nieuwe **Preview-ervaring (U
 1. Selecteer onder **beheren**de optie **gebruikers instellingen**.
 1. Indien aanwezig selecteert u onder **LinkedIn-account verbindingen**de optie **Nee**en selecteert u vervolgens **Opslaan**.
 1. Selecteer onder **beheren**de optie **Eigenschappen**
-1. Selecteer onder **toegangs beheer voor Azure-resources**de optie **Ja**en selecteer vervolgens **Opslaan**.
+1. Selecteer onder **Toegangsbeheer voor Azure-resources** **Ja** en selecteer vervolgens **Opslaan**.
 1. Meld u af bij de Azure Portal en meld u weer aan om uw toegang te vernieuwen.
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
 1. Selecteer op de pagina **overzicht** de optie **map verwijderen**. Volg de instructies op het scherm om het proces te volt ooien.
@@ -170,7 +170,7 @@ U kunt de huidige **toepassingen** ervaring of onze nieuwe **Preview-ervaring (U
 1. Selecteer onder **beheren**de optie **gebruikers instellingen**.
 1. Indien aanwezig selecteert u onder **LinkedIn-account verbindingen**de optie **Nee**en selecteert u vervolgens **Opslaan**.
 1. Selecteer onder **beheren**de optie **Eigenschappen**
-1. Selecteer onder **toegangs beheer voor Azure-resources**de optie **Ja**en selecteer vervolgens **Opslaan**.
+1. Selecteer onder **Toegangsbeheer voor Azure-resources** **Ja** en selecteer vervolgens **Opslaan**.
 1. Meld u af bij de Azure Portal en meld u weer aan om uw toegang te vernieuwen.
 1. Selecteer **Azure Active Directory** in het menu aan de linkerkant.
 1. Selecteer op de pagina **overzicht** de optie **map verwijderen**. Volg de instructies op het scherm om het proces te volt ooien.

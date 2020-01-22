@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: b3e2b6fbfb11c0ee89e56cd29fa3bf606c336235
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 10889f6d872510fb53e76ab3722343aa2ee6a5e8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278542"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293909"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Aan de slag met Azure Cost Management voor partners
 
@@ -120,7 +120,7 @@ Ongeacht het beleid kunnen partners ook de kosten weer geven als ze toegang hebb
 
 Partners gebruiken de volgende informatie om het beleid in te scha kelen voor het weer geven van Azure-gebruiks kosten voor hun klanten.
 
-Meld u aan bij de partner-Tenant in het Azure Portal en selecteer **Cost Management + facturering**. Selecteer een facturerings account en selecteer vervolgens **klanten**. De lijst met klanten is gekoppeld aan het facturerings account.
+Meld u aan bij de partner-Tenant in het Azure Portal en selecteer **Cost Management + facturering**. Selecteer de relevante facturerings account van micro soft partner overeenkomst en selecteer vervolgens **klanten**. De lijst met klanten is gekoppeld aan het facturerings account.
 
 Selecteer in de lijst met klanten de klant waarvoor u de kosten wilt weer geven.
 
@@ -137,7 +137,7 @@ Wanneer het kosten beleid is ingesteld op **Ja**, kunnen abonnements gebruikers 
 
 Wanneer het beleid voor het berekenen van de kosten is ingeschakeld, worden voor alle services waarvoor het abonnements abonnement geldt kosten op basis van betalen naar gebruik-tarieven weer gegeven. Het gebruik van de reserve ring wordt weer gegeven met nul kosten voor de werkelijke en afgeschreven kosten. Aankopen en rechten zijn niet gekoppeld aan een specifiek abonnement. Aankopen worden dus niet weer gegeven in het abonnements bereik.
 
-Als u de kosten voor de Tenant van de klant wilt weer geven, opent u Cost Management + facturering en selecteert u vervolgens facturerings accounts. Selecteer een facturerings account in de lijst met facturerings accounts.
+Als u de kosten voor de Tenant van de klant wilt weer geven, opent u **Cost Management + facturering** en selecteert u de relevante facturerings account van micro soft partner overeenkomst.
 
 ![Een facturerings account selecteren](./media/get-started-partners/select-billing-account.png)
 
@@ -263,7 +263,7 @@ Gebruikers met RBAC-toegang tot het abonnement kunnen de kosten gegevens ook exp
 
 ### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>Een export maken in een partner Tenant of klant Tenant
 
-Meld u aan bij de partner-Tenant of de Tenant van de klant in het Azure Portal en selecteer **Cost Management + facturering**. Selecteer een geschikt bereik, bijvoorbeeld een facturerings account, en selecteer vervolgens **kosten analyse**. Wanneer de pagina wordt geladen, selecteert u **exporteren**. Selecteer **alle exporteren weer geven** onder planning exporteren.
+Meld u aan bij de partner-Tenant of de Tenant van de klant in het Azure Portal en selecteer **Cost Management + facturering**. Selecteer een geschikt bereik, bijvoorbeeld een facturerings account voor een micro soft-partner overeenkomst, en selecteer vervolgens **kosten analyse**. Wanneer de pagina wordt geladen, selecteert u **exporteren**. Selecteer **alle exporteren weer geven** onder planning exporteren.
 
 ![Selecteer exporteren en alle exports weer geven](./media/get-started-partners/export01.png)
 

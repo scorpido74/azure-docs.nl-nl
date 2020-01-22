@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/15/2020
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29cf5eebfb485837ee9656909323688384a4b890
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 9f6ab2d5811060b7dc36323a80fed6961b8cf5a9
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028606"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290679"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Cisco WebEx
 
@@ -42,7 +41,11 @@ U hebt de volgende items nodig om aan de slag te gaan:
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. Cisco WebEx ondersteunt door **SP** geïnitieerde SSO en ondersteunt **geautomatiseerde** gebruikers inrichting.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+
+* Cisco WebEx ondersteunt door **SP** geïnitieerde SSO.
+* Cisco WebEx ondersteunt **geautomatiseerde** gebruikers inrichting.
+* Zodra u Cisco WebEx hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>Cisco Webex toevoegen vanuit de galerie
 
@@ -91,33 +94,15 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     Plak in het tekstvak **URL voor aanmelden** de waarde van de **antwoord-URL**, die automatisch wordt ingevuld door het uploaden van het meta gegevensbestand van het bestand.
 
-5. Cisco WebEx-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster gebruikerskenmerken te openen.
+1. In de Cisco Webex-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![installatiekopie](common/edit-attribute.png)
+    ![installatiekopie](common/default-attributes.png)
 
-6. Bovendien verwacht de Cisco Webex-toepassing nog enkele kenmerken die als SAML-antwoord moeten worden doorgestuurd. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel:
-    
+1. In aanvulling op hierboven verwacht de Cisco WebEx-toepassing nog maar weinig kenmerken om te worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
+  
     | Name |  Bronkenmerk|
     | ---------------|--------- |
     | uid | user.userprincipalname |
-
-    a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
-
-    ![installatiekopie](common/new-save-attribute.png)
-
-    ![installatiekopie](common/new-attribute-details.png)
-
-    b. In het tekstvak **Naam** typt u de naam van het kenmerk die voor die rij wordt weergegeven.
-
-    c. Laat **Naamruimte** leeg.
-
-    d. Selecteer Bron bij **Kenmerk**.
-
-    e. Typ de kenmerkwaarde voor die rij in de lijst met **bronkenmerken**.
-
-    f. Klik op **OK**.
-
-    g. Klik op **Opslaan**.
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
@@ -221,3 +206,7 @@ Wanneer u de Cisco WebEx-tegel in het toegangs venster selecteert, moet u automa
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Cisco WebEx proberen met Azure AD](https://aad.portal.azure.com)
+
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-webex)
+
+- [Cisco WebEx beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

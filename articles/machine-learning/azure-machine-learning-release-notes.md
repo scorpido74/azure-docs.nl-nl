@@ -8,20 +8,35 @@ ms.subservice: core
 ms.topic: reference
 ms.author: jmartens
 author: j-martens
-ms.date: 11/04/2019
+ms.date: 01/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0e613dd1c47a9942d95bd668f1e9f85e42649b5c
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 1cd9ca07aab1953d114caf748ca99170fae6b876
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122369"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293195"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Opmerkingen bij de release Azure Machine Learning
 
 In dit artikel vindt u meer informatie over Azure Machine Learning releases.  Ga voor de volledige SDK-referentie-inhoud naar de hoofd pagina van de hand leiding van de Azure Machine Learning van de [**SDK voor python**](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) .
 
 Zie [de lijst met bekende problemen](resource-known-issues.md) voor meer informatie over bekende problemen en oplossingen.
+
+## <a name="2020-01-21"></a>2020-01-21
+
+### <a name="azure-machine-learning-designer-generally-available-ga"></a>Azure Machine Learning Designer algemeen beschikbaar (GA)
+
+De ontwerp functie is nu algemeen beschikbaar.
+
++ **Nieuwe functies**
+    + De optie `Regenerate Output` module is toegevoegd om de ontwerp functie te forceren om de cache resultaten te negeren.
+    + Er zijn nieuwe weer gaven toegevoegd aan de details van de pijplijn uitvoering:
+        + Pipeline-lijst weergave.
+        + Logboek weergave in de browser.
+    + Labels zijn toegevoegd aan module-invoer-en uitvoer poorten.
+    + `Set as Default` pijplijn optie toegevoegd op het [tabblad eind punten](how-to-run-batch-predictions-designer.md#versioning-endpoints).
+    + Toegevoegde sneltoetsen en [toegankelijkheids functies](designer-accessibility.md)voor scherm lezers.
 
 ## <a name="2020-01-06"></a>2020-01-06
 

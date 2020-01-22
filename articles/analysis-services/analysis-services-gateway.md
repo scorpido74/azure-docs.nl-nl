@@ -4,15 +4,15 @@ description: Een on-premises gateway is nodig als uw Analysis Services-server in
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 01/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f1fc00ced0d933884ca0fe6dce91fed4602eb825
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 648646b6f973762245c344cd2629a874a219b170
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263435"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310149"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Verbinding maken met on-premises gegevens bronnen met on-premises gegevens gateway
 
@@ -24,11 +24,11 @@ Voor Azure Analysis Services is het voorbereiden van de installatie met de gatew
 
 - **Setup downloaden en uitvoeren** : met deze stap installeert u een gateway service op een computer in uw organisatie. U kunt zich ook aanmelden bij Azure met behulp van een account in de Azure AD [van uw Tenant](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) . Accounts van Azure B2B (gast) worden niet ondersteund.
 
-- **Uw gateway registreren** : in deze stap geeft u een naam en herstel sleutel op voor uw gateway en selecteert u een regio, waarbij u uw gateway registreert bij de gateway-Cloud service. Uw gateway bron kan in elke regio worden geregistreerd, maar het wordt aangeraden dat deze zich in dezelfde regio bevindt als uw Analysis Services-servers. 
+- **Uw gateway registreren** : in deze stap geeft u een naam en herstel sleutel op voor uw gateway en selecteert u een regio, waarbij u uw gateway registreert bij de gateway-Cloud service. Uw gateway resource kan in elke regio worden geregistreerd, maar het wordt aanbevolen dat deze zich in dezelfde regio bevindt als uw Analysis Services-servers. 
 
-- **Een gateway bron maken in azure** : in deze stap maakt u een gateway bron in een Azure.
+- **Een gateway bron maken in azure** : in deze stap maakt u een gateway bron in Azure.
 
-- **Uw servers verbinden met uw gateway resource** : Zodra u een gateway resource hebt, kunt u beginnen met het verbinden van uw servers. U kunt meerdere servers en andere bronnen verbinden, mits deze zich in dezelfde regio bevinden.
+- **Uw servers verbinden met uw gateway resource** : Zodra u een gateway resource hebt, kunt u aan de slag gaan met het verbinden van de servers. U kunt meerdere servers en andere resources verbinden, mits deze zich in dezelfde regio bevinden.
 
 
 
@@ -54,7 +54,7 @@ Wanneer u voor een Azure Analysis Services omgeving installeert, is het belang r
 
 De gateway maakt een uitgaande verbinding naar Azure Service Bus. De gateway communiceert via uitgaande poorten: TCP 443 (standaard), 5671, 5672, 9350 t/m 9354.  De gateway vereist geen inkomende poorten.
 
-Mogelijk moet u IP-adressen voor uw gegevens regio in uw firewall toevoegen. U kunt de lijst met IP-adressen van Microsoft Azure-datacenters [hier](https://www.microsoft.com/download/details.aspx?id=41653) downloaden. Deze lijst wordt wekelijks bijgewerkt. De adressen in de lijst met IP-adressen van Azure-datacenters worden vermeld in de CIDR-notatie. Zie [Klasseloze route ring tussen domeinen](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)voor meer informatie.
+Mogelijk moet u IP-adressen voor uw gegevens regio in uw firewall toevoegen. U kunt de lijst met IP-adressen van Microsoft Azure-datacenters [hier](https://www.microsoft.com/download/details.aspx?id=56519) downloaden. Deze lijst wordt wekelijks bijgewerkt. De adressen in de lijst met IP-adressen van Azure-datacenters worden vermeld in de CIDR-notatie. Zie [Klasseloze route ring tussen domeinen](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)voor meer informatie.
 
 Hieronder vindt u een volledig gekwalificeerde domein naam die wordt gebruikt door de gateway.
 

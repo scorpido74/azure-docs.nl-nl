@@ -1,5 +1,5 @@
 ---
-title: Filters, ordening en paginering van Media Services entiteiten
+title: Filters, ordening en paginering van Media Services v3-entiteiten
 titleSuffix: Azure Media Services
 description: Meer informatie over het filteren, ordenen en pagineren van Azure Media Services entiteiten.
 services: media-services
@@ -10,15 +10,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/11/2019
+ms.date: 01/21/2020
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 22b8c4e2454d6130ebcaf85346b767c843fbc1f0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: c5ae9839b7bbb86e28c9f8adab0aa0ec5e885087
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186253"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311696"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filters, ordening en paginering van Media Services entiteiten
 
@@ -45,7 +45,7 @@ Bereik operatoren:
 - `ge`: testen of een veld *groter is dan of gelijk is aan* een constante waarde.
 - `le`: testen of een veld *kleiner is dan of gelijk is aan* een constante waarde.
 
-## <a name="filter"></a>Filteren
+## <a name="filter"></a>Filter
 
 Gebruik `$filter` om een OData-filter parameter op te geven om alleen de objecten te vinden waarin u bent geïnteresseerd.
 
@@ -156,7 +156,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 In de volgende tabel ziet u hoe u de opties voor filteren en ordenen kunt Toep assen op verschillende entiteiten:
 
-|Naam van de entiteit|Naam van eigenschap|Filteren|Bestellen|
+|Naam van de entiteit|Naam van eigenschap|Filter|Bestelling|
 |---|---|---|---|
 |[Assets](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` en `desc`|
 ||properties.alternateId |`eq`||

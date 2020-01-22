@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.openlocfilehash: ea8e1565a5ebe4e5cb40049fbfcb329feb83bdda
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f1fdb9dffbe06430ea7e3eb9339e23f5239e4e36
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498202"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310829"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migreren naar gedetailleerde, op rollen gebaseerde toegang voor clusterconfiguraties
 
@@ -24,12 +24,12 @@ Voorheen kunnen geheimen worden verkregen via de HDInsight API door cluster gebr
 
 Vanaf 3 september 2019 heeft de `Microsoft.HDInsight/clusters/configurations/action` machtiging vereist om toegang te krijgen tot deze geheimen, wat betekent dat de gebruikers geen toegang meer hebben tot de rol van lezer. De functies die deze machtiging hebben, zijn Inzender, eigenaar en de nieuwe rol HDInsight-cluster operator (meer hierover).
 
-We introduceren ook een nieuwe rol van een [HDInsight-cluster operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) die geheimen kan ophalen zonder dat de beheerders machtigingen van Inzender of eigenaar worden toegewezen. Samenvatten:
+We introduceren ook een nieuwe rol van een [HDInsight-cluster operator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#hdinsight-cluster-operator) die geheimen kan ophalen zonder dat de beheerders machtigingen van Inzender of eigenaar worden toegewezen. Samenvatting:
 
 | Rol                                  | Verwijderd                                                                                       | Gaat verder       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
 | Lezer                                | -Lees toegang, inclusief geheimen                                                                   | -Lees toegang, met **uitzonde ring van** geheimen |           |   |   |
-| HDInsight-cluster operator<br>(Nieuwe rol) | N.v.t.                                                                                              | -Lees-en schrijf toegang, inclusief geheimen         |   |   |
+| HDInsight-cluster operator<br>(Nieuwe rol) | N/A                                                                                              | -Lees-en schrijf toegang, inclusief geheimen         |   |   |
 | Inzender                           | -Lees-en schrijf toegang, inclusief geheimen<br>-Alle typen Azure-resources maken en beheren.     | Geen wijziging |
 | Eigenaar                                 | -Lees-en schrijf toegang inclusief geheimen<br>-Volledige toegang tot alle resources<br>-Toegang tot anderen delegeren | Geen wijziging |
 
@@ -71,9 +71,9 @@ De volgende vervangings-Api's zijn toegevoegd:</span>
 
 - [ **/Configurations plaatsen**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#list-configurations)
     - Gebruik deze API om alle configuraties, inclusief geheimen, op te halen.
-- [ **/GetGatewaySettings plaatsen**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-gateway-settings)
+- [**POST /getGatewaySettings**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#get-gateway-settings)
     - Gebruik deze API om gateway instellingen te verkrijgen.
-- [ **/UpdateGatewaySettings plaatsen**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings)
+- [**POST /updateGatewaySettings**](https://docs.microsoft.com/rest/api/hdinsight/hdinsight-cluster#update-gateway-settings)
     - Gebruik deze API om gateway-instellingen (gebruikers naam en/of wacht woord) bij te werken.
 
 ### <a name="azure-hdinsight-tools-for-visual-studio-code"></a>Azure HDInsight-Hulpprogram Ma's voor Visual Studio code
@@ -132,9 +132,7 @@ Update naar [versie 1.0.0](https://pypi.org/project/azure-mgmt-hdinsight/1.0.0/)
 Update naar [versie 1.0.0](https://search.maven.org/artifact/com.microsoft.azure.hdinsight.v2018_06_01_preview/azure-mgmt-hdinsight/1.0.0/jar) of hoger van de HDINSIGHT-SDK voor Java. U kunt minimale code wijzigingen opgeven als u een methode gebruikt die wordt beïnvloed door deze wijzigingen:
 
 - [`ConfigurationsInner.get`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.get) worden **niet langer gevoelige para meters geretourneerd** , zoals opslag sleutels (kern site) of http-referenties (gateway).
-    - Gebruik [`ConfigurationsInner.list`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.configurationsinner.list?view=azure-java-stable) vooruit om alle configuraties, inclusief gevoelige para meters, op te halen.  Houd er rekening mee dat gebruikers met de rol ' lezer ' deze methode niet kunnen gebruiken. Dit biedt gedetailleerde controle over welke gebruikers toegang hebben tot gevoelige informatie voor een cluster. 
-    - Gebruik [`ClustersInner.getGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.getgatewaysettings?view=azure-java-stable)om alleen http-gateway referenties op te halen.
-- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) is nu afgeschaft en is vervangen door [`ClustersInner.updateGatewaySettings`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018_06_01_preview.implementation.clustersinner.updategatewaysettings?view=azure-java-stable).
+- [`ConfigurationsInner.update`](https://docs.microsoft.com/java/api/com.microsoft.azure.management.hdinsight.v2018__06__01__preview.implementation._configurations_inner.update) is nu afgeschaft.
 
 ### <a name="sdk-for-go"></a>SDK voor Go
 
@@ -145,7 +143,7 @@ Update naar [versie 27.1.0](https://github.com/Azure/azure-sdk-for-go/tree/maste
     - Gebruik [`ClustersClient.get_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ClustersClient.GetGatewaySettings)om alleen http-gateway referenties op te halen.
 - [`ConfigurationsClient.update`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ConfigurationsClient.Update) is nu afgeschaft en is vervangen door [`ClustersClient.update_gateway_settings`](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight#ClustersClient.UpdateGatewaySettings).
 
-### <a name="azhdinsight-powershell"></a>AZ. HDInsight Power shell
+### <a name="azhdinsight-powershell"></a>Az.HDInsight PowerShell
 Update naar [AZ Power shell version 2.0.0](https://www.powershellgallery.com/packages/Az) of hoger om onderbrekingen te voor komen.  U kunt minimale code wijzigingen aanbrengen als u een methode gebruikt die wordt beïnvloed door deze wijzigingen.
 - `Grant-AzHDInsightHttpServicesAccess` is nu afgeschaft en is vervangen door de nieuwe `Set-AzHDInsightGatewayCredential`-cmdlet.
 - `Get-AzHDInsightJobOutput` is bijgewerkt ter ondersteuning van granulaire op rollen gebaseerde toegang tot de opslag sleutel.

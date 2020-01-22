@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 01/16/2020
 ms.author: shvija
-ms.openlocfilehash: 96eaae81a25e361c0041fb02099b8e0cb9da8c28
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: de5b95bd10bf72f60ba5d63c4b3a799556fcce33
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260447"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309775"
 ---
 # <a name="troubleshooting-guide-for-azure-event-hubs"></a>Gids voor probleem oplossing voor Azure Event Hubs
 Dit artikel bevat enkele van de .NET-uitzonde ringen die worden gegenereerd door Event Hubs .NET Framework Api's en ook andere tips voor het oplossen van problemen. 
@@ -104,18 +104,7 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 De volgende stappen kunnen u helpen bij het oplossen van problemen met connectiviteit/certificaat/time-out voor alle services onder *. servicebus.windows.net. 
 
 - Blader naar of [wget](https://www.gnu.org/software/wget/) `https://<yournamespacename>.servicebus.windows.net/`. Het helpt te controleren of er problemen zijn met de IP-filtering of het virtuele netwerk of de certificaat keten (het meest gebruikelijk wanneer u Java SDK gebruikt).
-- Voer de volgende opdracht uit om te controleren of een poort is geblokkeerd op de firewall. De gebruikte poorten zijn 443 (HTTPS), 5671 (AMQP) en 9093 (Kafka). Afhankelijk van de bibliotheek die u gebruikt, worden ook andere poorten gebruikt. Hier volgt een voor beeld van de opdracht waarmee wordt gecontroleerd of de 5671-poort is geblokkeerd.
 
-    ```powershell
-    tnc <yournamespacename>.servicebus.windows.net -port 5671
-    ```
-
-    Op Linux:
-
-    ```shell
-    telnet <yournamespacename>.servicebus.windows.net 5671
-    ```
-    
     Een voor beeld van een geslaagd bericht:
     
     ```xml
@@ -131,6 +120,17 @@ De volgende stappen kunnen u helpen bij het oplossen van problemen met connectiv
             Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
         </Detail>
     </Error>
+    ```
+- Voer de volgende opdracht uit om te controleren of een poort is geblokkeerd op de firewall. De gebruikte poorten zijn 443 (HTTPS), 5671 (AMQP) en 9093 (Kafka). Afhankelijk van de bibliotheek die u gebruikt, worden ook andere poorten gebruikt. Hier volgt een voor beeld van de opdracht waarmee wordt gecontroleerd of de 5671-poort is geblokkeerd.
+
+    ```powershell
+    tnc <yournamespacename>.servicebus.windows.net -port 5671
+    ```
+
+    Op Linux:
+
+    ```shell
+    telnet <yournamespacename>.servicebus.windows.net 5671
     ```
 - Als er onregelmatige verbindings problemen zijn, voert u de volgende opdracht uit om te controleren of er verloren pakketten zijn. Met deze opdracht wordt geprobeerd 25 verschillende TCP-verbindingen elke 1 seconde te maken met de service. Vervolgens kunt u controleren of het aantal geslaagde/mislukte en ook TCP-verbindings latentie wordt weer geven. U kunt het `psping`-hulp programma [hier](/sysinternals/downloads/psping)downloaden.
 

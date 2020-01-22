@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7a3280e11d40a361c5a3305d71e58661b37b8bd1
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: e4bf079d46271cadc0176fe5602adcdc3954dee5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563425"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290713"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure IoT Edge-modules van de Azure-portal implementeren
 
@@ -53,7 +53,7 @@ De Azure portal heeft een wizard waarmee wordt beschreven hoe u het manifest van
 
 ### <a name="specify-routes"></a>Routes opgeven
 
-Op het tabblad **routes** definieert u hoe berichten worden door gegeven tussen modules en de IOT hub. Berichten worden gemaakt met behulp van naam/waarde-paren. Standaard wordt een route **route ring** genoemd en gedefinieerd als **van/messages/* naar $upstream * *. Dit betekent dat alle berichten die door modules worden uitgevoerd, worden verzonden naar uw IOT-hub.  
+Op het tabblad **routes** definieert u hoe berichten worden door gegeven tussen modules en de IOT hub. Berichten worden gemaakt met behulp van naam/waarde-paren. Een route wordt standaard **route ring** genoemd en gedefinieerd als **vanuit/messages/\* in $upstream**. Dit betekent dat alle berichten die door modules worden uitgevoerd, worden verzonden naar uw IOT-hub.  
 
 Voeg de routes toe of werk deze bij met informatie van [Declareer routes](module-composition.md#declare-routes)en selecteer vervolgens **volgende: controleren + maken** om door te gaan naar de volgende stap van de wizard.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met DocuSign | Microsoft Docs'
+title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met DocuSign | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en DocuSign.
 services: active-directory
 documentationCenter: na
@@ -11,19 +11,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/02/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f02492dd7c9563c8c0002a63f0b105bd0be8b14
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3022303f319ba7955f80ae0b52783fa9b5d411f2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345563"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290067"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met DocuSign
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met DocuSign
 
 In deze zelf studie leert u hoe u DocuSign integreert met Microsoft Azure Active Directory (Azure AD). Wanneer u DocuSign integreert met Azure AD, kunt u het volgende doen:
 
@@ -49,6 +48,7 @@ In deze zelf studie configureert en test u Azure AD SSO in een test omgeving om 
 * DocuSign biedt ondersteuning *voor Just-in-time* -gebruikers inrichting.
 
 * DocuSign ondersteunt [automatische gebruikers inrichting](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial).
+* Zodra u de DocuSign hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waardoor de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-docusign-from-the-gallery"></a>DocuSign toevoegen uit de galerie
 
@@ -72,7 +72,7 @@ Als u Azure AD SSO wilt configureren en testen met DocuSign, voltooit u de volge
     1. [Maak een Azure AD-test gebruiker om de](#create-an-azure-ad-test-user) eenmalige aanmelding van Azure ad te testen met B. Simon.
     1. [Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user) toe om B. Simon in te scha kelen voor het gebruik van eenmalige aanmelding voor Azure AD.
 1. [Configureer DOCUSIGN SSO](#configure-docusign-sso) voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-1. [Maak een DocuSign-test gebruiker](#create-docusign-test-user) voor het genereren van een tegen partij B. Simon in DocuSign dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+    1. [Maak een DocuSign-test gebruiker](#create-docusign-test-user) voor het genereren van een tegen partij B. Simon in DocuSign dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 1. [Test SSO](#test-sso) om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
@@ -96,13 +96,13 @@ Voer de volgende stappen uit om Azure AD SSO in te scha kelen in de Azure Portal
 
 1. Ga op de pagina **eenmalige aanmelding met SAML instellen** naar **certificaat (base64)** in het gedeelte **SAML-handtekening certificaat** . Selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
-    ![De downloadkoppeling certificaat](common/certificatebase64.png)
+    ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
 1. Kopieer in de sectie **DocuSign instellen** de juiste URL (of url's) op basis van uw vereisten.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker met de naam B. Simon in de Azure Portal.
 
@@ -110,7 +110,7 @@ In deze sectie maakt u een test gebruiker met de naam B. Simon in de Azure Porta
 1. Selecteer aan de bovenkant van het scherm de optie **nieuwe gebruiker**.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **naam** **B. Simon**in.  
-   1. Voer `<username>@<companydomain>.<extension>` in het veld **gebruikers naam** in. Bijvoorbeeld: `B.Simon@contoso.com`.
+   1. Voer `<username>@<companydomain>.<extension>`in het veld **gebruikers naam** in. Bijvoorbeeld: `B.Simon@contoso.com`.
    1. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .
    1. Selecteer **Maken**.
 
@@ -122,7 +122,7 @@ In deze sectie verleent u B. Simon toegang tot DocuSign, zodat deze gebruiker de
 1. Selecteer in de lijst toepassingen de optie **DocuSign**.
 1. Zoek op de pagina overzicht van de app de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-   ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **gebruiker toevoegen**en selecteer vervolgens in het dialoog venster **toewijzing toevoegen** de optie **gebruikers en groepen**.
 
@@ -227,7 +227,7 @@ In dit gedeelte test u de configuratie voor eenmalige aanmelding van Azure AD me
 
 Wanneer u de tegel DocuSign in het toegangs venster selecteert, wordt u automatisch aangemeld bij het DocuSign-exemplaar waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Zelf studies over het integreren van SaaS-apps met Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -236,6 +236,10 @@ Wanneer u de tegel DocuSign in het toegangs venster selecteert, wordt u automati
 - [Wat is voorwaardelijke toegang in azure AD?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Probeer DocuSign met Azure AD](https://aad.portal.azure.com/)
+
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [DocuSign beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

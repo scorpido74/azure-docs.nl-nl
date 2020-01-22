@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/07/2020
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3252b7b257fda96b3d711c5f47ec7c6eb7ee36cb
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: edb543a85779fb083b6990a58dc5ec0b8ef3eb9c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262148"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291410"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met werk plek via Facebook
 
@@ -50,6 +50,7 @@ In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 * Workplace by Facebook ondersteunt **just-in-time inrichten**
 * Workplace by Facebook ondersteunt **[automatisch inrichten van gebruikers](workplacebyfacebook-provisioning-tutorial.md)**
 * De mobiele toepassing voor werk plekken kan nu worden geconfigureerd met Azure AD om SSO in te scha kelen. In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+* Zodra u de werk plek hebt geconfigureerd op Facebook, kunt u sessie besturings elementen afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-workplace-by-facebook-from-the-gallery"></a>Workplace by Facebook toevoegen vanuit de galerie
 
@@ -244,3 +245,7 @@ Wanneer u in het toegangsvenster op de tegel Workplace by Facebook klikt, zou u 
 - [Inrichten van gebruikers configureren](workplacebyfacebook-provisioning-tutorial.md)
 
 - [Probeer werk plek van Facebook uit met Azure AD](https://aad.portal.azure.com)
+
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Werk plek beveiligen met Facebook met geavanceerde zicht baarheid en besturings elementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: e7ab953a7ac0907244ebaab70b3b86cbe6f0f4d9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 27838aae1d829598bed44a6c16f7a1d38a95b727
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497640"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314093"
 ---
 # <a name="score-model-module"></a>De module Score Model (Scoremodel)
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om voor spellingen te genereren met behulp van een getrainde classificatie of een regressie model.
 

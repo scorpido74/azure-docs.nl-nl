@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: ee15836906eef0b9205691f9a6003cea0b9fae80
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 809216aadb77f014b7fb461ba8439070c5e23d43
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036454"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291886"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Een OpenBSD-schijf kopie maken en uploaden naar Azure
 In dit artikel wordt beschreven hoe u een virtuele harde schijf (VHD) die het OpenBSD-besturings systeem bevat maakt en uploadt. Nadat u het hebt geüpload, kunt u dit als uw eigen installatie kopie gebruiken om een virtuele machine (VM) in azure te maken via Azure CLI.
@@ -30,7 +30,7 @@ In dit artikel wordt ervan uitgegaan dat u de volgende items hebt:
 
 * **Een Azure-abonnement** : als u geen account hebt, kunt u er een maken in slechts een paar minuten. Als u een MSDN-abonnement hebt, raadpleegt u het [maandelijkse Azure-tegoed voor Visual Studio-abonnees](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Anders leert u hoe u [een gratis proef account maakt](https://azure.microsoft.com/pricing/free-trial/).  
 * **Azure cli** : Zorg ervoor dat u de nieuwste [Azure cli](/cli/azure/install-azure-cli) hebt geïnstalleerd en bent aangemeld bij uw Azure-account met [AZ login](/cli/azure/reference-index).
-* **Het OpenBSD-besturings systeem is geïnstalleerd in een VHD-bestand** : een ondersteund OpenBSD-besturings systeem ([6,2 versie amd64](https://ftp.openbsd.org/pub/OpenBSD/6.2/amd64/)) moet zijn geïnstalleerd op een virtuele harde schijf. Er zijn meerdere hulpprogram ma's voor het maken van VHD-bestanden. U kunt bijvoorbeeld een virtualisatie-oplossing zoals Hyper-V gebruiken om het VHD-bestand te maken en het besturings systeem te installeren. Zie [hyper-v installeren en een virtuele machine maken](https://technet.microsoft.com/library/hh846766.aspx)voor instructies over het installeren en gebruiken van Hyper-v.
+* **Het OpenBSD-besturings systeem is geïnstalleerd in een VHD-bestand** : een ondersteund OpenBSD-besturings systeem ([6,6 versie amd64](https://ftp.openbsd.org/pub/OpenBSD/6.6/amd64/)) moet zijn geïnstalleerd op een virtuele harde schijf. Er zijn meerdere hulpprogram ma's voor het maken van VHD-bestanden. U kunt bijvoorbeeld een virtualisatie-oplossing zoals Hyper-V gebruiken om het VHD-bestand te maken en het besturings systeem te installeren. Zie [hyper-v installeren en een virtuele machine maken](https://technet.microsoft.com/library/hh846766.aspx)voor instructies over het installeren en gebruiken van Hyper-v.
 
 
 ## <a name="prepare-openbsd-image-for-azure"></a>OpenBSD-installatie kopie voorbereiden voor Azure
@@ -67,7 +67,7 @@ Voer de volgende procedures uit op de virtuele machine waarop u het OpenBSD-best
     ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
     ```
 
-6. De nieuwste versie van de Azure-agent kan altijd worden gevonden op [github](https://github.com/Azure/WALinuxAgent/releases). Installeer de agent als volgt:
+6. De nieuwste versie van de Azure-agent kan altijd worden gevonden op [github](https://github.com/Azure/WALinuxAgent/releases). Ga als volgt te werk om de agent te installeren:
 
     ```sh
     git clone https://github.com/Azure/WALinuxAgent 

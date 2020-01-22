@@ -5,19 +5,19 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 5/31/2019
+ms.date: 01/21/2020
 ms.author: mlearned
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 89bb7014ddb04b63a83dc8c5b520bcf500bdc707
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b0269a6c710fe16271e333a1e9414208b278a93d
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472705"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310200"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Snelstartgids: een AKS-cluster (Azure Kubernetes service) implementeren met behulp van de Azure Portal
 
-Azure Kubernetes Service (AKS) is een beheerde Kubernetes-service waarmee u snel clusters kunt implementeren en beheren. In deze quickstart implementeert u een AKS-cluster met behulp van Azure Portal. Een toepassing met meerdere containers die bestaat uit een web-front-end en een Redis-exemplaar wordt uitgevoerd in het cluster. U ziet vervolgens hoe u de status van het cluster en de pods die uw toepassing uitvoeren kunt bewaken.
+Azure Kubernetes Service (AKS) is een beheerde Kubernetes-service waarmee u snel clusters kunt implementeren en beheren. In deze quickstart implementeert u een AKS-cluster met behulp van Azure Portal. Een toepassing met meerdere containers die bestaat uit een web-front-end en een Redis-exemplaar wordt uitgevoerd in het cluster. Vervolgens ziet u hoe u de status van het cluster en de pods kunt bewaken die uw toepassing uitvoeren.
 
 ![Afbeelding van browsen naar de Azure Vote-voorbeeldtoepassing](media/container-service-kubernetes-walkthrough/azure-voting-application.png)
 
@@ -33,7 +33,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
 Voltooi de volgende stappen om een AKS-cluster te maken:
 
-1. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**.
+1. Selecteer in het menu van Azure Portal of op de **Startpagina** de optie **Een resource maken**.
 
 2. Selecteer **Containers** >  **Kubernetes-service**.
 
@@ -69,7 +69,7 @@ Open Cloud Shell met behulp van de knop `>_` aan de bovenkant van de Azure Porta
 
 ![Open Azure Cloud Shell in de portal](media/kubernetes-walkthrough-portal/aks-cloud-shell.png)
 
-Gebruik de opdracht `kubectl`az aks get-credentials[ om ][az-aks-get-credentials] zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties. In het volgende voorbeeld worden de referenties opgehaald voor de clusternaam *myAKSCluster* in de resourcegroep met de naam *myResourceGroup*:
+Gebruik de opdracht [az aks get-credentials][az-aks-get-credentials] om `kubectl` zodanig te configureren dat er verbinding wordt gemaakt met het Kubernetes-cluster. Bij deze opdracht worden referenties gedownload en wordt Kubernetes CLI geconfigureerd voor het gebruik van deze referenties. In het volgende voorbeeld worden de referenties opgehaald voor de clusternaam *myAKSCluster* in de resourcegroep met de naam *myResourceGroup*:
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -95,7 +95,7 @@ In een Kubernetes-manifestbestand wordt een gewenste status voor het cluster ged
 > [!TIP]
 > In deze snelstart maakt en implementeert u handmatig uw toepassingsmanifesten in het AKS-cluster. In meer Real-World scenario's kunt u [Azure dev Spaces][azure-dev-spaces] gebruiken om snel uw code te herhalen en fouten in het AKS-cluster op te sporen. U kunt Dev Spaces gebruiken op alle OS-platformen en in alle ontwikkelomgevingen, en u kunt samenwerken met andere leden van uw team.
 
-Gebruik `nano` of `vi` in Cloud shell om een bestand met de naam `azure-vote.yaml` te maken en kopieer de volgende YAML definitie:
+Gebruik in de Cloud shell de opdracht `nano azure-vote.yaml` of `vi azure-vote.yaml` om een bestand met de naam `azure-vote.yaml`te maken. Kopieer vervolgens de volgende YAML-definitie:
 
 ```yaml
 apiVersion: apps/v1
@@ -232,7 +232,7 @@ Het kan enkele minuten duren voordat deze gegevens in Azure Portal worden ingevu
 
 1. Kies onder **Bewaking** aan de linkerkant de optie **Inzichten**
 1. Kies bovenaan **+ Filter toevoegen**
-1. Selecteer *Namespace* als eigenschap en kies vervolgens  *\<Alles behalve kube-systeem\>*
+1. Selecteer *Namespace* als eigenschap en kies vervolgens *\<Alles behalve kube-systeem\>*
 1. Kies de weergave **Containers**.
 
 De containers *azure-vote-back* en *azure-vote-front* worden weergegeven, zoals in het volgende voorbeeld:

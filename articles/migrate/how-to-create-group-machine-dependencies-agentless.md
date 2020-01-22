@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 4bc2e67d276deeea01989ed76be7352ce27abd71
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: ff267aabe2f9e4cec38c307fe4382a84ba6d62df
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280812"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288949"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Visualisatie van de afhankelijkheid van agents instellen voor evaluatie
 
@@ -87,10 +87,10 @@ Kies de computers waarop u detectie van afhankelijkheden wilt inschakelen.
 
 1. Klik in **Azure migrate: Server evaluatie**op **gedetecteerde servers**.
 2. Klik op het pictogram **afhankelijkheids analyse** .
-3. Klik op **detectie van afhankelijkheid starten**.
-3. Kies op de pagina **detectie van afhankelijkheid starten** het apparaat dat de relevante computers detecteert.
+3. Klik op **servers toevoegen**.
+3. Kies op de pagina **servers toevoegen** het apparaat dat de relevante computers detecteert.
 4. Selecteer de machines in de lijst met computers.
-5. Klik op **detectie van afhankelijkheid starten**.
+5. Klik op **servers toevoegen**.
 
     ![Detectie van afhankelijkheid starten](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
@@ -123,10 +123,10 @@ Kies de computers waarop u de detectie van afhankelijkheden wilt stoppen.
 
 1. Klik in **Azure migrate: Server evaluatie**op **gedetecteerde servers**.
 2. Klik op het pictogram **afhankelijkheids analyse** .
-3. Klik op **detectie van afhankelijkheid stoppen**.
-3. Kies op de pagina **detectie van afhankelijkheid stoppen** het **apparaat** dat de vm's detecteert waarop u de detectie van de afhankelijkheid wilt stoppen.
+3. Klik op **servers verwijderen**.
+3. Kies op de pagina **servers verwijderen** het **apparaat** dat de vm's detecteert waarop u de detectie van de afhankelijkheid wilt stoppen.
 4. Selecteer de machines in de lijst met computers.
-5. Klik op **detectie van afhankelijkheid stoppen**
+5. Klik op **servers verwijderen**.
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -11,105 +11,82 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/25/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc91d51d49ac1a317b88835e4d2e51773216020
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3eace60445dc9d52f9690da74360282efbb4cbe5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159509"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291208"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-lucidchart"></a>Zelf studie: integratie Azure Active Directory met Lucidchart
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-lucidchart"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Lucidchart
 
-In deze zelf studie leert u hoe u Lucidchart integreert met Azure Active Directory (Azure AD).
-Het integreren van Lucidchart met Azure AD biedt de volgende voor delen:
+In deze zelf studie leert u hoe u Lucidchart integreert met Azure Active Directory (Azure AD). Wanneer u Lucidchart integreert met Azure AD, kunt u het volgende doen:
 
-* U kunt beheren in azure AD die toegang heeft tot Lucidchart.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Lucidchart (eenmalige aanmelding) met hun Azure AD-accounts.
-* U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
+* Controle in azure AD die toegang heeft tot Lucidchart.
+* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij Lucidchart met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met Lucidchart wilt configureren, hebt u de volgende items nodig:
+U hebt de volgende items nodig om aan de slag te gaan:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Abonnement voor eenmalige aanmelding Lucidchart ingeschakeld
+* Een Azure AD-abonnement Als u geen abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free/)aanvragen.
+* Lucidchart-abonnement dat is ingeschakeld voor eenmalige aanmelding (SSO).
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
 * Lucidchart ondersteunt door **SP** GEÏNITIEERDe SSO
 * Lucidchart ondersteunt **just-in-time** -gebruikers inrichting
+* Zodra u de Lucidchart hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waardoor de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-lucidchart-from-the-gallery"></a>Lucidchart toevoegen uit de galerie
 
 Als u de integratie van Lucidchart in azure AD wilt configureren, moet u Lucidchart uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Voer de volgende stappen uit om Lucidchart toe te voegen uit de galerie:**
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **toevoegen vanuit de galerie** **Lucidchart** in het zoekvak.
+1. Selecteer **Lucidchart** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
-    ![De knop Azure Active Directory](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-lucidchart"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor Lucidchart
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+Azure AD SSO met Lucidchart configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Lucidchart.
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+Als u Azure AD SSO wilt configureren en testen met Lucidchart, voltooit u de volgende bouw stenen:
 
-3. Als u de nieuwe toepassing wilt toevoegen, klikt u op de knop **Nieuwe toepassing** boven aan het dialoogvenster.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[LUCIDCHART SSO configureren](#configure-lucidchart-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    * **[Maak een Lucidchart-test gebruiker](#create-lucidchart-test-user)** -om een equivalent van B. Simon in Lucidchart te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-    ![De knop Nieuwe toepassing](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
-4. Typ **Lucidchart**in het zoekvak, selecteer **Lucidchart** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-     ![Lucidchart in de lijst met resultaten](common/search-new-app.png)
+1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina Toepassings integratie van **Lucidchart** de sectie **beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
+   ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Lucidchart op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Lucidchart tot stand worden gebracht.
+1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Lucidchart, moet u de volgende bouw stenen volt ooien:
+   Typ in het tekstvak **URL voor aanmelding** een URL als: `https://chart2.office.lucidchart.com/saml/sso/azure`
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Lucidchart eenmalige aanmelding configureren](#configure-lucidchart-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een Lucidchart-test gebruiker](#create-lucidchart-test-user)** -om een equivalent van Julia Simon in Lucidchart te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
-
-In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
-
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Lucidchart:
-
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Lucidchart** Application Integration de optie **eenmalige aanmelding**.
-
-    ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
-
-2. In het dialoogvenster **Een methode voor eenmalige aanmelding selecteren** selecteert u de modus **SAML/WS-Federation** om eenmalige aanmelding in te schakelen.
-
-    ![De modus Eenmalige aanmelding selecteren](common/select-saml-option.png)
-
-3. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u op het pictogram **Bewerken** om het dialoogvenster **Standaard SAML-configuratie** te openen.
-
-    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
-
-4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
-
-    ![Informatie over eenmalige aanmelding voor Lucidchart domein en Url's](common/sp-signonurl.png)
-
-    Typ in het tekstvak **URL voor aanmelding** een URL als: `https://chart2.office.lucidchart.com/saml/sso/azure`
-
-5. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
@@ -123,13 +100,43 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     c. Afmeldings-URL
 
-### <a name="configure-lucidchart-single-sign-on"></a>Eenmalige aanmelding voor Lucidchart configureren
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
+
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+   1. Voer in het veld **Naam**`B.Simon` in.  
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Maken**.
+
+### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
+
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Lucidchart.
+
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer in de lijst toepassingen de optie **Lucidchart**.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
+
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+
+## <a name="configure-lucidchart-sso"></a>Lucidchart SSO configureren
 
 1. Meld u in een ander webbrowser venster als beheerder aan bij de Lucidchart-bedrijfs site.
 
 2. Klik in het menu aan de bovenkant op **team**.
 
-    ![Stellen](./media/lucidchart-tutorial/ic791190.png "Stellen")
+    ![Stellen](./media/lucidchart-tutorial/ic791190.png "Team")
 
 3. Klik op **toepassingen \> SAML beheren**.
 
@@ -153,64 +160,13 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     ![Wijzigingen opslaan](./media/lucidchart-tutorial/ic791195.png "Wijzigingen opslaan")
 
-### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
-
-Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
-
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
-
-    ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
-
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-
-    ![Knop Nieuwe gebruiker](common/new-user.png)
-
-3. In Gebruikerseigenschappen voert u de volgende stappen uit.
-
-    ![Het dialoogvenster Gebruiker](common/user-properties.png)
-
-    a. Voer in het veld **Naam** **Britta Simon**in.
-  
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
-    Bijvoorbeeld: BrittaSimon@contoso.com
-
-    c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
-
-    d. Klik op **Maken**.
-
-### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
-
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Lucidchart.
-
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Lucidchart**.
-
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
-
-2. Selecteer in de lijst toepassingen de optie **Lucidchart**.
-
-    ![De koppeling Lucidchart in de lijst met toepassingen](common/all-applications.png)
-
-3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
-
-    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
-
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
-
-    ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
-
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
-
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
-
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
-
 ### <a name="create-lucidchart-test-user"></a>Lucidchart-test gebruiker maken
 
 Er is geen actie-item voor het configureren van de gebruikers inrichting voor Lucidchart.  Wanneer een toegewezen gebruiker zich probeert aan te melden bij Lucidchart via het toegangs venster, controleert Lucidchart of de gebruiker bestaat.  
 
 Als er nog geen gebruikers account beschikbaar is, wordt deze automatisch gemaakt door Lucidchart.
 
-### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
+## <a name="test-sso"></a>SSO testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
@@ -218,8 +174,14 @@ Wanneer u op de tegel Lucidchart in het toegangs venster klikt, moet u automatis
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Probeer Lucidchart met Azure AD](https://aad.portal.azure.com/)
+
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Lucidchart beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

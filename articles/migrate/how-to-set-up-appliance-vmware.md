@@ -3,12 +3,12 @@ title: Een Azure Migrate apparaat instellen voor VMware
 description: Meer informatie over het instellen van een Azure Migrate apparaat om VMware-Vm's te beoordelen en te migreren.
 ms.topic: article
 ms.date: 11/18/2019
-ms.openlocfilehash: da451149d0420bc71a355fdf4f4fb122b196d5a0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 139b694bafb9d67192e6f182ff879e86e2b73ce4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029055"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291937"
 ---
 # <a name="set-up-an-appliance-for-vmware-vms"></a>Een apparaat instellen voor VMware-Vm's
 
@@ -115,7 +115,7 @@ Het apparaat moet verbinding maken met vCenter Server om de configuratie-en pres
 3. Klik op **verbinding valideren** om te controleren of het apparaat verbinding kan maken met vCenter Server.
 
 ### <a name="specify-vm-credentials"></a>VM-referenties opgeven
-Voor de detectie van toepassingen, functies en onderdelen en het visualiseren van afhankelijkheden van de virtuele machines, kunt u een VM-referentie opgeven die toegang heeft tot de virtuele VMware-machines. U kunt één referentie toevoegen voor Windows-Vm's en één referentie voor Linux-Vm's. Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) over de benodigde toegangs rechten.
+Voor de detectie van toepassingen, functies en onderdelen en het visualiseren van afhankelijkheden van de virtuele machines, kunt u een VM-referentie opgeven die toegang heeft tot de virtuele VMware-machines. U kunt één referentie toevoegen voor Windows-Vm's en één referentie voor Linux-Vm's. Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) over de benodigde toegangs rechten.
 
 > [!NOTE]
 > Deze invoer is optioneel en is nodig voor het inschakelen van toepassings detectie en visualisatie van de afhankelijkheid van agents.

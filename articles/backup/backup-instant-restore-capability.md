@@ -4,12 +4,12 @@ description: Azure direct Restore-mogelijkheid en veelgestelde vragen over VM-ba
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 19ecd6843422f1843631278626ef8971b0791b1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 21e5ae82fc8274874e97d5e91a140b811b36c05e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391307"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293824"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Profiteer van verbeterde prestaties voor back-up en herstel met Azure Backup functie voor direct terugzetten
 
@@ -111,3 +111,15 @@ Het nieuwe model staat het verwijderen van het herstel punt (Tier2) niet toe, te
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Waarom is mijn moment opname na de ingestelde Bewaar periode in back-upbeleid al aanwezig?
 
 Als het herstel punt een moment opname heeft en de meest recente RP beschikbaar is, wordt deze bewaard tot het moment dat er een volgende geslaagde back-up is gemaakt. Dit is een voor beeld van het ontworpen beleid voor garbage collection (GC) dat ten minste één laatste RP verplicht is om altijd aanwezig te zijn in het geval dat alle back-ups verder mislukken als gevolg van een probleem in de virtuele machine. In normale scenario's worden RPs Maxi maal 24 uur na verloop van tijd opgeruimd.
+
+>[!NOTE]
+> Azure Backup ondersteunt nu selectieve back-up en herstel met behulp van de back-upoplossing van Azure virtual machine.
+>
+>Momenteel biedt Azure Backup ondersteuning voor het maken van back-ups van alle schijven (besturings systeem en gegevens) in een virtuele machine met behulp van de back-upoplossing van de VM. Met de functionaliteit voor uitsluiten van schijven krijgt u een optie om een back-up te maken van een of enkele van de vele gegevens schijven in een VM. Dit biedt een efficiënte en rendabele oplossing voor uw back-up-en herstel behoeften. Elk herstel punt bevat gegevens van de schijven die zijn opgenomen in de back-upbewerking, waarmee u een subset van schijven die zijn hersteld vanaf het opgegeven herstel punt tijdens de herstel bewerking kunt laten herstellen. Dit is van toepassing om beide te herstellen vanuit de moment opname en de kluis.
+>
+> Deze oplossing is met name handig in de volgende scenario's:
+>  
+>1. U hebt essentiële gegevens waarvan u een back-up wilt maken op slechts één schijf en u wilt geen back-up maken van de rest van de schijven die zijn gekoppeld aan een virtuele machine. Hierdoor worden de kosten voor back-upopslag geminimaliseerd.  
+>2. U hebt andere back-upoplossingen voor een deel van uw VM-gegevens. U maakt bijvoorbeeld een back-up van uw data bases of gegevens met een andere back-up van de werk belasting en u wilt back-ups op Azure-VM-niveau gebruiken voor de rest van uw schijven en gegevens om een efficiënt en robuust systeem te bouwen met de beste mogelijkheden die beschikbaar zijn.
+>
+>Als u zich wilt aanmelden voor de preview, schrijft u voor AskAzureBackupTeam@microsoft.com

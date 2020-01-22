@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb09228b561718819c0c48aac4fc66d8205fe384
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ff9af6a6f51ca89fa7e852609ceed1ee02c6e23f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424621"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294351"
 ---
 # <a name="authentication-basics"></a>Basisbeginselen van verificatie
 
@@ -168,4 +168,4 @@ MSAL maakt standaard gebruik van de systeem browser, met uitzonde ring van .NET 
 - Raadpleeg de [verklarende woorden lijst voor ontwikkel aars van micro soft Identity platform](developer-glossary.md) om vertrouwd te raken met algemene termen.
 - Zie [verificatie stromen en app-scenario's](authentication-flows-app-scenarios.md) voor meer informatie over andere scenario's voor het verifiëren van gebruikers die worden ondersteund door het micro soft Identity-platform.
 - Zie [MSAL-bibliotheken](msal-overview.md) voor meer informatie over de micro soft-bibliotheken die u helpen bij het ontwikkelen van toepassingen die werken met micro soft-accounts, Azure AD-accounts en Azure AD B2C gebruikers in één gestroomlijnd programmeer model.
-- Zie [app service integreren met Microsfot-identiteits platform](/azure/app-service/configure-authentication-provider-aad) voor meer informatie over het configureren van verificatie voor uw app service-app.
+- Zie [app service integreren met het micro soft Identity-platform](/azure/app-service/configure-authentication-provider-aad) voor meer informatie over het configureren van verificatie voor uw app service-app.

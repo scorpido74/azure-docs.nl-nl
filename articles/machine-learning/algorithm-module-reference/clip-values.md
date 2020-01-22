@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 68f73afbf81914938f78baad2cacda7327e7789a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ca35af997834a897572555e752597026b5159712
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428592"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314450"
 ---
 # <a name="clip-values"></a>Waarden inperken
 
-In dit artikel wordt een module van Azure Machine Learning Designer (preview-versie) beschreven.
+In dit artikel wordt een module van Azure Machine Learning Designer beschreven.
 
 Gebruik de module voor clip waarden voor het identificeren en vervangen van gegevens waarden die boven of onder een bepaalde drempel waarde vallen, met een gemiddelde, constante of andere vervanger.  
 
@@ -86,7 +86,7 @@ Als u knip methoden of andere criteria op sommige kolommen wilt Toep assen, moet
   
 1.  Voer de pijplijn uit.  
   
-    Klik met de rechter muisknop op de uitvoer van de module voor **clip waarden** en selecteer **visualiseren** om de waarden te controleren en ervoor te zorgen dat de knip bewerking aan uw verwachtingen voldoet.  
+    Klik met de rechter muisknop op de module **clip waarden** , selecteer **visualiseren** of selecteer de module en schakel over naar het tabblad **uitvoer** in het rechterdeel venster, klik op het histogram pictogram in de **poort uitvoer**om de waarden te controleren en ervoor te zorgen dat de knip bewerking aan uw verwachtingen voldoet.  
  
 ### <a name="examples-for-clipping-using-percentiles"></a>Voor beelden voor knippen met behulp van percentielen
 

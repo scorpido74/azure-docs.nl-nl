@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 68c50d3455c0ed240fa62532818a0b07b39ec772
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c4ed78dc9fd277fc61a923364519e338a9f720c2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889523"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290390"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migreren naar Azure Kubernetes service (AKS)
 
@@ -45,7 +45,7 @@ In dit artikel wordt een overzicht gegeven van de migratie gegevens voor:
 > * Zorg voor geldige quota's
 > * Hoge Beschik baarheid en bedrijfs continuïteit
 > * Overwegingen voor stateless toepassingen
-> * Overwegingen voor statefull-toepassingen
+> * Overwegingen voor stateful toepassingen
 > * Implementatie van uw cluster configuratie
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>AKS met Standard Load Balancer en Virtual Machine Scale Sets
@@ -111,7 +111,7 @@ De [Azure front-deur service](https://docs.microsoft.com/azure/frontdoor/front-d
 
 Stateless toepassings migratie is de meest eenvoudige situatie. Pas uw resource definities (YAML of helm) toe op het nieuwe cluster, Controleer of alles werkt zoals verwacht, en leid verkeer om om uw nieuwe cluster te activeren.
 
-### <a name="considers-for-stateful-applications"></a>Houdt rekening met stateful toepassingen
+### <a name="considerations-for-stateful-applications"></a>Overwegingen voor stateful toepassingen
 
 Plan uw migratie van stateful toepassingen om verlies van gegevens of onverwachte downtime te voor komen.
 
@@ -161,7 +161,7 @@ Sommige open source-hulpprogram ma's kunnen u helpen bij het maken van beheerde 
 
 ### <a name="deployment-of-your-cluster-configuration"></a>Implementatie van uw cluster configuratie
 
-We raden u aan om uw bestaande, doorlopende integratie (CI) en continue Delivery (CD)-pijp lijn te gebruiken voor het implementeren van een bekende, goede configuratie op AKS. U kunt Azure-pijp lijnen gebruiken om [uw toepassingen te bouwen en te implementeren om](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops) uw bestaande implementatie taken AKS te klonen en ervoor te zorgen dat `kubeconfig` naar het nieuwe AKS-cluster verwijst.
+We raden u aan om uw bestaande, doorlopende integratie (CI) en continue Delivery (CD)-pijp lijn te gebruiken voor het implementeren van een bekende, goede configuratie op AKS. U kunt Azure-pijp lijnen gebruiken om [uw toepassingen te bouwen en te implementeren in AKS](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops). Kloon uw bestaande implementatie taken en zorg ervoor dat `kubeconfig` naar het nieuwe AKS-cluster verwijst.
 
 Als dat niet mogelijk is, kunt u resource definities uit uw bestaande Kubernetes-cluster exporteren en vervolgens Toep assen op AKS. U kunt `kubectl` gebruiken om objecten te exporteren.
 
@@ -177,5 +177,5 @@ In dit artikel wordt een overzicht gegeven van de migratie Details voor:
 > * Zorg voor geldige quota's
 > * Hoge Beschik baarheid en bedrijfs continuïteit
 > * Overwegingen voor stateless toepassingen
-> * Overwegingen voor statefull-toepassingen
+> * Overwegingen voor stateful toepassingen
 > * Implementatie van uw cluster configuratie

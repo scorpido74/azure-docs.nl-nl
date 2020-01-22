@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 11/19/2019
-ms.openlocfilehash: b07bde671be73af2a351353d9794907972a022e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c984b38498085567441fb0c4f965602d437589e5
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232626"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311492"
 ---
 # <a name="join-data"></a>Gegevens samenvoegen
 
-In dit artikel wordt beschreven hoe u de module voor **samen** voegen in azure machine learning Designer (preview) gebruikt om twee gegevens sets samen te voegen met behulp van een Data Base-stijl-koppelings bewerking.  
+In dit artikel wordt beschreven hoe u de module **gegevens koppelen** in azure machine learning Designer gebruikt om twee gegevens sets samen te voegen met behulp van een Data Base-stijl-koppelings bewerking.  
 
 ## <a name="how-to-configure-join-data"></a>Koppelings gegevens configureren
 
@@ -62,9 +62,9 @@ Als u een koppeling wilt uitvoeren op twee gegevens sets, moeten deze worden ger
     * Selecteer deze optie om de sleutels uit beide invoer tabellen weer te geven.
     * Schakel deze optie uit als u de sleutel kolommen alleen wilt retour neren van de invoer links.
 
-1. Voer de pijp lijn uit of selecteer de module samenvoegings gegevens en de geselecteerde **uitvoering** om de koppeling uit te voeren.
+1. Voer de pijplijn uit.
 
-1. Als u de resultaten wilt weer geven, klikt u met de rechter muisknop op de **samenvoeg gegevens** > **resultaten gegevensset** > **visualiseren**.
+1. Als u de resultaten wilt weer geven, klikt u met de rechter muisknop op de **koppelings gegevens** en selecteert u **visualiseren**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

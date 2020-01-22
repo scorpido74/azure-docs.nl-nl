@@ -4,12 +4,12 @@ description: In dit artikel vindt u antwoorden op veelgestelde vragen over het m
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: b8e259c6212e9a1e81b6b0c8825287f3025f9068
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: d70f4832daba59739d6798517902e921927194d6
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75680525"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293977"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Veelgestelde vragen: back-ups maken van virtuele Azure-machines
 
@@ -92,6 +92,19 @@ De geplande back-up wordt binnen twee uur na de geplande back-uptijd geactiveerd
 ### <a name="what-is-the-minimum-allowed-retention-range-for-daily-backup-point"></a>Wat is de mini maal toegestane Bewaar termijn voor dagelijks back-uppunt?
 
 Het back-upbeleid van Azure Virtual Machine ondersteunt een minimale Bewaar termijn van zeven dagen tot 9999 dagen. Voor elke wijziging in een bestaand back-upbeleid voor de VM met minder dan zeven dagen is een update vereist om te voldoen aan de minimale Bewaar termijn van zeven dagen.
+
+### <a name="can-i-backup-or-restore-selective-disks-attached-to-a-vm"></a>Kan ik back-ups maken of herstellen van selectieve schijven die zijn gekoppeld aan een VM?
+
+Azure Backup ondersteunt nu selectieve back-up en herstel met behulp van de back-upoplossing van Azure virtual machine.
+
+Momenteel biedt Azure Backup ondersteuning voor het maken van back-ups van alle schijven (besturings systeem en gegevens) in een virtuele machine met behulp van de back-upoplossing van de VM. Met de functionaliteit voor uitsluiten van schijven krijgt u een optie om een back-up te maken van een of enkele van de vele gegevens schijven in een VM. Dit biedt een efficiënte en rendabele oplossing voor uw back-up-en herstel behoeften. Elk herstel punt bevat gegevens van de schijven die zijn opgenomen in de back-upbewerking, waarmee u een subset van schijven die zijn hersteld vanaf het opgegeven herstel punt tijdens de herstel bewerking kunt laten herstellen. Dit is van toepassing om beide te herstellen vanuit de moment opname en de kluis.
+
+Deze oplossing is met name handig in de volgende scenario's:
+  
+1. U hebt essentiële gegevens waarvan u een back-up wilt maken op slechts één schijf en u wilt geen back-up maken van de rest van de schijven die zijn gekoppeld aan een virtuele machine. Hierdoor worden de kosten voor back-upopslag geminimaliseerd.  
+2. U hebt andere back-upoplossingen voor een deel van uw VM-gegevens. U maakt bijvoorbeeld een back-up van uw data bases of gegevens met een andere back-up van de werk belasting en u wilt back-ups op Azure-VM-niveau gebruiken voor de rest van uw schijven en gegevens om een efficiënt en robuust systeem te bouwen met de beste mogelijkheden die beschikbaar zijn.
+
+Als u zich wilt aanmelden voor de preview, schrijft u voor AskAzureBackupTeam@microsoft.com
 
 ## <a name="restore"></a>Herstellen
 

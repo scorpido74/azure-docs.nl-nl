@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/28/2019
 ms.author: radeltch
-ms.openlocfilehash: ae2fb4c13633fa2ac22510a98e193bd9f01efb12
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 15abee96f81bca68575d61be1276d4394e9a6f55
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045380"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293807"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Connectiviteit van open bare eind punten voor Virtual Machines met behulp van Azure Standard Load Balancer in scenario's met hoge Beschik baarheid van SAP
 
@@ -35,7 +35,7 @@ Bij het implementeren van hoge Beschik baarheid voor SAP-oplossingen via cluster
 
 Standard Azure load balancer biedt enkele voor delen ten opzichte van de basis load balancer. Het werkt bijvoorbeeld in azure-beschikbaarheids zones, het heeft betere controle en logboek registratie mogelijkheden voor eenvoudiger probleem oplossing, minder latentie. De functie HA-poorten heeft betrekking op alle poorten, dat wil zeggen dat het niet langer nodig is om alle afzonderlijke poorten weer te geven.  
 
-Er zijn enkele belang rijke verschillen tussen de basis-en de standaard-SKU van Azure load balancer. Een van deze is de afhandeling van uitgaand verkeer naar het open bare eind punt. Zie [Load BALANCER SKU-vergelijking](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus)voor een volledige basis versus standaard SKU Load Balancer vergelijking.  
+Er zijn enkele belang rijke verschillen tussen de basis-en de standaard-SKU van Azure load balancer. Een van deze is de afhandeling van uitgaand verkeer naar het open bare eind punt. Zie [Load BALANCER SKU-vergelijking](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)voor een volledige basis versus standaard SKU Load Balancer vergelijking.  
  
 Wanneer Vm's zonder open bare IP-adressen in de back-end-groep van intern (geen openbaar IP-adres load balancer) worden geplaatst, is er geen uitgaande verbinding met open bare eind punten, tenzij er een extra configuratie wordt uitgevoerd.  
 
@@ -71,14 +71,14 @@ Lees eerst de volgende documenten:
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>Extra externe Azure-Standard Load Balancer voor uitgaande verbindingen met Internet
 
-Een optie voor het behalen van uitgaande verbindingen naar open bare eind punten, zonder inkomende connectiviteit met de virtuele machine vanaf een openbaar eind punt toe te staan, is het maken van een tweede load balancer met een openbaar IP-adres, het toevoegen van de virtuele machines aan de back-end-groep van de tweede load balancer en het definiëren van alleen [Uitgaande regels](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview).  
+Een optie voor het behalen van uitgaande connectiviteit met open bare eind punten, zonder inkomende connectiviteit met de virtuele machine vanaf een openbaar eind punt toe te staan, is het maken van een tweede load balancer met een openbaar IP-adres, het toevoegen van de virtuele machines aan de back-end-pool van de tweede load balancer en alleen [Uitgaande regels](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)definiëren.  
 Gebruik [netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview) om de open bare eind punten te beheren die toegankelijk zijn voor uitgaande oproepen van de virtuele machine.  
 Zie scenario 2 in [uitgaande verbindingen](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios)voor documenten voor meer informatie.  
 De configuratie zou er als volgt uitzien:  
 
 ![Connectiviteit met open bare eind punten beheren met netwerk beveiligings groepen](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-public.png)
 
-### <a name="important-considerations"></a>Belang rijke overwegingen
+### <a name="important-considerations"></a>Belangrijke overwegingen
 
 - U kunt één extra open bare Load Balancer voor meerdere Vm's in hetzelfde subnet gebruiken om uitgaande connectiviteit naar het open bare eind punt te verzorgen en de kosten te optimaliseren  
 - Gebruik [netwerk beveiligings groepen](https://docs.microsoft.com/azure/virtual-network/security-overview) om te bepalen welke open bare eind punten toegankelijk zijn vanaf de vm's. U kunt de netwerk beveiligings groep toewijzen aan het subnet of aan elke virtuele machine. Gebruik waar mogelijk [service Tags](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags) om de complexiteit van de beveiligings regels te reduceren.  
@@ -129,7 +129,7 @@ De architectuur ziet er als volgt uit:
 
 ![Uitgaande verbinding met Azure Firewall](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall.png)
 
-### <a name="important-considerations"></a>Belang rijke overwegingen
+### <a name="important-considerations"></a>Belangrijke overwegingen
 
 - Azure firewall is een native Cloud service, met ingebouwde hoge Beschik baarheid en ondersteunt de zonegebonden-implementatie.
 - Vereist extra subnet met de naam AzureFirewallSubnet. 
@@ -173,7 +173,7 @@ De architectuur ziet er als volgt uit:
 
 U kunt proxy gebruiken om pacemaker-aanroepen naar de open bare Azure Management API-eind punt toe te staan.  
 
-### <a name="important-considerations"></a>Belang rijke overwegingen
+### <a name="important-considerations"></a>Belangrijke overwegingen
 
   - Als er al een bedrijfs proxy aanwezig is, kunt u uitgaande oproepen naar open bare eind punten routeren. Uitgaande aanroepen naar open bare eind punten gaan door naar het bedrijfs controlepunt.  
   - Zorg ervoor dat de proxy configuratie uitgaande connectiviteit met de Azure-beheer-API toestaat: https://management.azure.com  

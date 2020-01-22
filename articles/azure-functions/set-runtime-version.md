@@ -3,16 +3,16 @@ title: Azure Functions runtime-versies instellen
 description: Azure Functions ondersteunt meerdere versies van de runtime. Meer informatie over het opgeven van de runtime versie van een functie-app die wordt gehost in Azure.
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.openlocfilehash: 0031fe08ee1e77c35a78b2128615f08846c1b612
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 60953d10aeb92083b0aad3432921c7c55bc77e39
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74942270"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294164"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Functions runtime-versies instellen
 
-Een functie-app wordt uitgevoerd op een specifieke versie van de Azure Functions runtime. Er zijn twee hoofd versies: [1. x en 2. x](functions-versions.md), met versie 3. x in preview. Standaard functie-apps die versie 2. x van de runtime hebben gemaakt. In dit artikel wordt uitgelegd hoe u een functie-app in azure kunt configureren om uit te voeren op de versie die u kiest. Zie voor meer informatie over het configureren van een lokale ontwikkel omgeving voor een specifieke versie [code en testen Azure functions lokaal](functions-run-local.md).
+Een functie-app wordt uitgevoerd op een specifieke versie van de Azure Functions runtime. Er zijn drie hoofd versies: [1. x, 2. x en 3. x](functions-versions.md). Functie-apps worden standaard gemaakt in versie 2. x van de runtime. In dit artikel wordt uitgelegd hoe u een functie-app in azure kunt configureren om uit te voeren op de versie die u kiest. Zie voor meer informatie over het configureren van een lokale ontwikkel omgeving voor een specifieke versie [code en testen Azure functions lokaal](functions-run-local.md).
 
 ## <a name="automatic-and-manual-version-updates"></a>Automatische en hand matige versie-updates
 

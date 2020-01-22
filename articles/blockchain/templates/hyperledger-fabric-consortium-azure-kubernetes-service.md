@@ -4,12 +4,12 @@ description: Het Hyperledger Fabric consortium-netwerk implementeren en configur
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
-ms.openlocfilehash: 6b9cbe1638034ed05bd4759926f6488693fe8ae3
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 59e13b671f68c29271227d481b41562256d66fd6
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780481"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289642"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric consortium op Azure Kubernetes service (AKS)
 
@@ -131,8 +131,8 @@ Zie [Azure shell](https://docs.microsoft.com/azure/cloud-shell/overview) voor me
 Down load het byn.sh-en Fabric-admin. yaml-bestand.
 
 ```bash-interactive
-curl https://raw.githubusercontent.com/ravastra/ARM-template-for-Hyperledger-Fabric-based-on-AKS/master/byn.sh -o byn.sh; chmod 777 byn.sh
-curl https://raw.githubusercontent.com/ravastra/ARM-template-for-Hyperledger-Fabric-based-on-AKS/master/fabric-admin.yaml -o fabric-admin.yaml
+curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/byn.sh -o byn.sh; chmod 777 byn.sh
+curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/fabric-admin.yaml -o fabric-admin.yaml
 ```
 **Stel onder omgevings variabelen in op Azure cli bash shell**:
 
@@ -143,7 +143,8 @@ SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 -
 ORDERER_AKS_SUBSCRIPTION=<ordererAKSClusterSubscriptionID>
 ORDERER_AKS_RESOURCE_GROUP=<ordererAKSClusterResourceGroup>
 ORDERER_AKS_NAME=<ordererAKSClusterName>
-ORDERER_DNS_ZONE=<ordererDNSZone>
+ORDERER_DNS_ZONE=
+ORDERER_DNS_ZONE=$(az aks show --resource-group $ORDERER_AKS_RESOURCE_GROUP --name $ORDERER_AKS_NAME --subscription $ORDERER_AKS_SUBSCRIPTION -o json | jq .addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName | tr -d '"')
 ORDERER_END_POINT="orderer1.$ORDERER_DNS_ZONE:443"
 CHANNEL_NAME=<channelName>
 ```
@@ -171,7 +172,7 @@ az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 az storage share create  --account-name $STORAGE_ACCOUNT  --account-key $STORAGE_KEY  --name $STORAGE_FILE_SHARE
-SAS_TOKEN=$(az storage account generate-sas --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT --expiry 2020-01-01 --https-only --permissions lruw --resource-types sco --services f | tr -d '"')
+SAS_TOKEN=$(az storage account generate-sas --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT --expiry `date -u -d "1 day" '+%Y-%m-%dT%H:%MZ'` --https-only --permissions lruwd --resource-types sco --services f | tr -d '"')
 AZURE_FILE_CONNECTION_STRING="https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN"
 ```
 **Opdrachten voor kanaal beheer**
@@ -265,7 +266,7 @@ cd app
 Voer de volgende opdracht uit om alle vereiste bestanden en pakketten te downloaden:
 
 ```bash-interactive
-curl https://raw.githubusercontent.com/ravastra/ARM-template-for-Hyperledger-Fabric-based-on-AKS/master/application/setup.sh | bash
+curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/application/setup.sh | bash
 ```
 Met deze opdracht wordt gebruikgemaakt van de tijd om alle pakketten te laden. Nadat de opdracht is uitgevoerd, ziet u een `node_modules` map in de huidige map. Alle vereiste pakketten worden geladen in de map `node_modules`.
 

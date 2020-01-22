@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: In deze Quick start ziet u hoe u Azure dev Spaces en Visual Studio code kunt gebruiken om fouten op te sporen en snel een node. js-toepassing te herhalen in azure Kubernetes service
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: f96806828b2169e9022b1eaf2ec1819879c729ab
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 557e5a541b175f1641142779de23bb83ab212831
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867710"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290506"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>Quick Start: fouten opsporen en herhalen op Kubernetes met Visual Studio code en node. js-Azure dev Spaces
 
@@ -28,7 +28,7 @@ Met Azure dev Spaces kunt u ook fouten opsporen en herhalen met:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+- Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 - [Visual Studio code is geïnstalleerd](https://code.visualstudio.com/download).
 - De [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) -extensie voor Visual Studio code is geïnstalleerd.
 - [Azure CLI geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).

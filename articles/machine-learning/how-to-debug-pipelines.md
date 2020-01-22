@@ -9,17 +9,17 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 12/12/2019
-ms.openlocfilehash: e0e4ea4689baeb8e85a765a33c3f8124d6bc4362
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 991f7ebf51be5f805a8b12fa0af0fefeff0ef582
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75764283"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309554"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Fouten opsporen en problemen oplossen machine learning pijp lijnen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In dit artikel leert u hoe u fouten opspoort en oplost [machine learning pijp lijnen](concept-ml-pipelines.md) in de [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) en [Azure machine learning Designer (preview)](https://docs.microsoft.com/azure/machine-learning/concept-designer).
+In dit artikel leert u hoe u fouten opspoort en oplost [machine learning pijp lijnen](concept-ml-pipelines.md) in de [Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) en [Azure machine learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer).
 
 
 ## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Fouten opsporen en oplossen in de Azure Machine Learning SDK
@@ -67,7 +67,7 @@ Klik op de module voor de specifieke stap. Ga naar het tabblad **Logboeken** . A
 > [!TIP]
 > Wordt uitgevoerd voor *gepubliceerde pijp lijnen* vindt u op het tabblad **eind punten** in uw werk ruimte. Wordt uitgevoerd voor *niet-gepubliceerde pijp lijnen* vindt u in **experimenten** of **pijp lijnen**.
 
-### <a name="troubleshooting-tips"></a>Tips voor probleemoplossing
+### <a name="troubleshooting-tips"></a>Tips om problemen op te lossen
 
 De volgende tabel bevat veelvoorkomende problemen bij het ontwikkelen van pijp lijnen met mogelijke oplossingen.
 
@@ -79,7 +79,7 @@ De volgende tabel bevat veelvoorkomende problemen bij het ontwikkelen van pijp l
 | Pijp lijn waarbij de stappen niet opnieuw worden gebruikt | Het opnieuw gebruiken van de stap is standaard ingeschakeld, maar zorg ervoor dat u deze niet hebt uitgeschakeld in een pijplijn stap. Als opnieuw gebruiken is uitgeschakeld, wordt de para meter `allow_reuse` in de stap ingesteld op `False`. |
 | De pijp lijn wordt onnodig opnieuw uitgevoerd | Om ervoor te zorgen dat de stappen alleen opnieuw worden uitgevoerd wanneer de onderliggende gegevens of scripts worden gewijzigd, moet u de mappen voor elke stap loskoppelen. Als u dezelfde bron directory voor meerdere stappen gebruikt, kan het nodig zijn om niet-uitgevoerde opnieuw uit te voeren. Gebruik de para meter `source_directory` voor een pijplijn stap object om naar uw geïsoleerde map voor die stap te verwijzen en zorg ervoor dat u niet hetzelfde `source_directory` pad gebruikt voor meerdere stappen. |
 
-## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Fouten opsporen en oplossen in Azure Machine Learning Designer (preview-versie)
+## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer"></a>Fouten opsporen en oplossen in Azure Machine Learning Designer
 
 In deze sectie vindt u een overzicht van het oplossen van problemen met pijp lijnen in de ontwerp functie.
 Voor pijp lijnen die in de ontwerp functie zijn gemaakt, kunt u de **logboek bestanden** vinden op de pagina ontwerpen of op de detail pagina van de pijplijn uitvoering.

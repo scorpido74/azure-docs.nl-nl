@@ -3,12 +3,12 @@ title: Veelgestelde vragen over het maken van een back-up van Azure-bestanden
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het beveiligen van uw Azure-bestands shares met de Azure Backup-service.
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: bc4d7f9ad6512831687b974ae68870314775457d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 053fe38b07fff5d289c72024ef185fbf5d647f70
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892564"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293994"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Vragen over het maken back-ups van Azure-bestanden
 
@@ -36,7 +36,7 @@ Als u een back-up gaat maken en het opslagaccount selecteert waarin u bestandssh
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Kan ik de kluis wijzigen waarnaar ik een back-up van mijn bestands shares Maak?
 
-Ja. U moet echter wel de [beveiliging stoppen](backup-azure-files.md#stop-protecting-an-azure-file-share) vanuit de gekoppelde kluis, de [registratie ongedaan maken](troubleshoot-azure-files.md#configuring-backup) van dit opslagaccount, en het account vervolgens met een andere kluis beveiligen.
+Ja. U moet de [beveiliging van een bestands share](manage-afs-backup.md#stop-protection-on-a-file-share) van de verbonden kluis echter stoppen, de [registratie](troubleshoot-azure-files.md#configuring-backup) van dit opslag account opheffen en vervolgens beveiligen tegen een andere kluis.
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares"></a>In welke geografische gebieden kan ik back-ups maken van Azure-bestands shares?
 
@@ -93,7 +93,7 @@ Met de preview-versie kunt u Azure-bestandsshares van maximaal 50 opslagaccounts
 
 Nee. Alle bestandsshares in een opslagaccount kunnen alleen in dezelfde kluis worden beveiligd.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Back-up
 
 ### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Hoeveel geplande back-ups kan ik per bestands share configureren?
 

@@ -9,15 +9,15 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 688bf923c07d9417b002b7cab6e3c0a0c8d20dae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 00a92d60e494920f516d1a52593a54463c050615
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497748"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311441"
 ---
 # <a name="linear-regression-module"></a>Lineaire regressie module
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om een lineair regressie model te maken voor gebruik in een pijp lijn.  Lineaire regressie pogingen om een lineaire relatie tot stand te brengen tussen een of meer onafhankelijke variabelen en een numeriek resultaat of een afhankelijke variabele. 
 
@@ -90,7 +90,6 @@ Deze module ondersteunt twee methoden voor het aanpassen van een regressie model
 
 Nadat de training is voltooid:
 
-+ Als u de para meters van het model wilt weer geven, klikt u met de rechter muisknop op de leider uitvoer en selecteert u **visualiseren**.
 
 + Als u voor spellingen wilt doen, verbindt u het getrainde model met de module [score model](./score-model.md) , samen met een gegevensset met nieuwe waarden. 
 

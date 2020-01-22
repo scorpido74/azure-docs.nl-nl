@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 798c368edb4a738124fce965f8990e6805fbdeba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ac66e46d449100fcdd004627820252473f6e2f3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472612"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293654"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor geavanceerde functies van scheduler in azure Kubernetes service (AKS)
 
@@ -44,7 +44,7 @@ Wanneer u een pod implementeert in een AKS-cluster, plant Kubernetes alleen een 
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
 ```
 
-Als er een Taint wordt toegepast op knoop punten, definieert u een tolerantie in de pod-specificatie waarmee u de knoop punten kunt plannen. In het volgende voor beeld worden de `sku: gpu` en `effect: NoSchedule` gedefinieerd om de Taint die in de vorige stap zijn toegepast op het knoop punt te verdragen:
+Als er een Taint wordt toegepast op knoop punten, definieert u een tolerantie in de pod-specificatie waarmee u de knoop punten kunt plannen. In het volgende voor beeld worden de `sku: gpu` en `effect: NoSchedule` gedefinieerd om de Taint die wordt toegepast op het knoop punt in de vorige stap, te verdragen:
 
 ```yaml
 kind: Pod

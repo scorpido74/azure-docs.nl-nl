@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met concur | Microsoft Docs'
+title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met concur | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Concur configureert.
 services: active-directory
 documentationCenter: na
@@ -11,19 +11,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de806e764b4a73414604fe6ea64b03aa96666f5f
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 0cfe569fde8f290c9272520630c2e903e770f223
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68988410"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293705"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met concur
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met concur
 
 In deze zelf studie leert u hoe u concur integreert met Azure Active Directory (Azure AD). Wanneer u concur integreert met Azure AD, kunt u het volgende doen:
 
@@ -46,6 +45,7 @@ In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
 * Concur ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 * Concur biedt ondersteuning voor het **Just In Time** inrichten van gebruikers
+* Zodra u de concur hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waardoor de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-concur-from-the-gallery"></a>Concur toevoegen vanuit de galerie
 
@@ -85,30 +85,30 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://www.concursolutions.com/UI/SSO/<OrganizationId>`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<customer-domain>.concursolutions.com`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://<customer-domain>.concursolutions.com`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [ondersteuningsteam van Concur](https://www.concur.co.in/contact) om deze waarden op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteuningsteam van Concur](https://www.concur.co.in/contact) om deze waarden op te vragen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 4. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , de **federatieve meta gegevens-XML** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
-    ![De downloadkoppeling certificaat](common/metadataxml.png)
+    ![De link om het certificaat te downloaden](common/metadataxml.png)
 
 6. Op de sectie **concur instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-    1. Voer in het veld **Naam** `B.Simon` in.  
-    1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+    1. Voer in het veld **Naam**`B.Simon` in.  
+    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
     1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-    1. Klik op **Create**.
+    1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -118,7 +118,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 1. Selecteer in de lijst toepassingen de optie **concur**.
 1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-    ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
+    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
@@ -130,7 +130,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-concur-sso"></a>Concur SSO configureren
 
-Als u eenmalige aanmelding wilt configureren op **concur** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [concur ondersteunings team](https://www.concur.co.in/contact). Ze stelt u deze optie om de SAML SSO-verbinding instellen goed aan beide zijden.
+Als u eenmalige aanmelding wilt configureren op **concur** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [concur ondersteunings team](https://www.concur.co.in/contact). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
   > [!NOTE]
   > De configuratie van uw Concur-abonnement voor federatieve eenmalige aanmelding via SAML is een afzonderlijke taak. Neem voor uitvoering van deze taak contact op met het [ondersteuningsteam van Concur](https://www.concur.co.in/contact).
@@ -141,11 +141,11 @@ In deze sectie wordt een gebruiker met de naam B. Simon gemaakt in concur. Concu
 
 ## <a name="test-sso"></a>SSO testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel Concur klikt, zou u automatisch moeten worden aangemeld bij het exemplaar van in het toegangsvenster waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
@@ -155,3 +155,6 @@ Wanneer u in het toegangsvenster op de tegel Concur klikt, zou u automatisch moe
 
 - [Probeer concur met Azure AD](https://aad.portal.azure.com)
 
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Concur beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

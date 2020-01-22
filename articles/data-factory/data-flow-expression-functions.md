@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: c85ce38f88ecf113a9d27e82b0be12bbfb0b3b47
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 8cbc067326bf77648d242cadaf91b491f50c3848
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122658"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294266"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Gegevens transformatie expressies in gegevens stroom toewijzen 
 
@@ -151,7 +151,7 @@ Hiermee wordt het huidige tijds tempel opgehaald wanneer de taak wordt uitgevoer
 ___
 ### <code>currentUTC</code>
 <code><b>currentUTC([<i>&lt;value1&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Hiermee wordt de huidige tijds tempel opgehaald als UTC. Als u wilt dat uw huidige tijd wordt geïnterpreteerd in een andere tijd zone dan de tijd zone van uw cluster, kunt u een optionele tijd zone door geven in de vorm ' GMT ', ' PST ', ' UTC ', ' America/Caymaneilanden '. De waarde wordt standaard ingesteld op de huidige tijd zone. Raadpleeg de SimpleDateFormat van Java voor beschik bare indelingen. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.htmlTo de UTC-tijd naar een andere tijd zone wilt converteren, gebruikt u fromUTC () * ``currentUTC() == toTimestamp('2050-12-12 19:18:12') -> false``
+Hiermee wordt de huidige tijds tempel opgehaald als UTC. Als u wilt dat uw huidige tijd wordt geïnterpreteerd in een andere tijd zone dan de tijd zone van uw cluster, kunt u een optionele tijd zone door geven in de vorm ' GMT ', ' PST ', ' UTC ', ' America/Caymaneilanden '. De waarde wordt standaard ingesteld op de huidige tijd zone. Raadpleeg de SimpleDateFormat van Java voor beschik bare indelingen. [https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html](https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html). Als u de UTC-tijd wilt converteren naar een andere tijd zone, gebruikt u fromUTC () * ``currentUTC() == toTimestamp('2050-12-12 19:18:12') -> false``
 * ``currentUTC() != toTimestamp('2050-12-12 19:18:12') -> true``
 * ``fromUTC(currentUTC(), 'Asia/Seoul') != toTimestamp('2050-12-12 19:18:12') -> true``
 ___

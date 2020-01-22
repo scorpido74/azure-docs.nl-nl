@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: In deze Quick Start leert u hoe u Azure dev Spaces en Visual Studio code kunt gebruiken om fouten op te sporen en snel een .NET core-toepassing te herhalen in azure Kubernetes service
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 0025f395c89a8a9f2eff4204ed0859cda0fa86fc
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: fe2bb61ccfc7285dc5f4a5c21f3c62abfecca343
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867528"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290594"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Quick Start: fouten opsporen en herhalen op Kubernetes: Visual Studio code en .NET core-Azure dev Spaces
 
@@ -96,13 +96,13 @@ Met deze opdracht wordt het project voor bereid om te worden uitgevoerd in azure
 > [!TIP]
 > De [Dockerfile-en helm-grafiek](how-dev-spaces-works.md#prepare-your-code) voor uw project wordt gebruikt door Azure dev Spaces om uw code te bouwen en uit te voeren, maar u kunt deze bestanden aanpassen als u wilt wijzigen hoe het project wordt gemaakt en uitgevoerd.
 
-## <a name="build-and-run-code-in-kubernetes-from-visual-studio"></a>Code maken en uitvoeren in Kubernetes vanuit Visual Studio
+## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>Code maken en uitvoeren in Kubernetes vanuit Visual Studio code
 
 Klik aan de linkerkant op het pictogram *fout opsporing* en klik bovenaan op *.net core starten (AZDS)* .
 
 ![](media/get-started-netcore/debug-configuration.png)
 
-Met deze opdracht wordt uw service in azure dev-ruimten gebouwd en uitgevoerd in de foutopsporingsmodus. In het *Terminal* venster onderaan ziet u de uitvoer en url's van de build voor uw service met Azure dev Spaces. In de *console fout opsporing* wordt de logboek uitvoer weer gegeven.
+Met deze opdracht wordt uw service in azure dev-ruimten gebouwd en uitgevoerd in de foutopsporingsmodus. In het *Terminal* venster onderaan ziet u de uitvoer van de build en de url's voor uw service die worden uitgevoerd in azure dev Spaces. In de *console fout opsporing* wordt de logboek uitvoer weer gegeven.
 
 > [!Note]
 > Als er geen Azure dev Space-opdrachten in het *opdracht palet*worden weer gegeven, moet u ervoor zorgen dat u de [Visual Studio code Extension voor Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)hebt geïnstalleerd. Controleer ook of u de map *dev-Spaces/samples/dotnetcore/Getting-Started/webfrontend* hebt geopend in Visual Studio code.

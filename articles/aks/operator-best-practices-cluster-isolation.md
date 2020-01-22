@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: e9f7a10f19ed23e4f3b4fefa38fbb2d1912f2ac0
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 88b2da863b30157de7bb749ae0ca4d040484af52
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71348784"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293637"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor cluster isolatie in azure Kubernetes service (AKS)
 
@@ -54,7 +54,7 @@ Een veelvoorkomende aanpak van cluster isolatie is het gebruik van fysiek gesche
 
 ![Fysieke isolatie van afzonderlijke Kubernetes-clusters in AKS](media/operator-best-practices-cluster-isolation/physical-isolation.png)
 
-Fysiek gescheiden clusters hebben doorgaans een lage pod-dichtheid. Wanneer elk team of werk belasting een eigen AKS-cluster heeft, is het cluster vaak overbelast met reken resources. Vaak is een klein aantal van peulen gepland op deze knoop punten. Ongebruikte capaciteit op de knoop punten kan niet worden gebruikt voor toepassingen of services in ontwikkeling door andere teams. Deze overtollige resources dragen bij aan de extra kosten in fysiek gescheiden clusters.
+Fysiek gescheiden clusters hebben doorgaans een lage pod-dichtheid. Wanneer elk team of werk belasting een eigen AKS-cluster heeft, is het cluster vaak overbelast met reken resources. Vaak wordt een klein aantal peulen op deze knoop punten gepland. Ongebruikte capaciteit op de knoop punten kan niet worden gebruikt voor toepassingen of services in ontwikkeling door andere teams. Deze overtollige resources dragen bij aan de extra kosten in fysiek gescheiden clusters.
 
 ## <a name="next-steps"></a>Volgende stappen
 

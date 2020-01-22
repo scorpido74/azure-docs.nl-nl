@@ -3,12 +3,12 @@ title: Back-ups maken en herstellen Azure Files met Power shell
 description: In dit artikel vindt u informatie over het maken van back-ups en het herstellen van Azure Files met behulp van de Azure Backup-service en Power shell.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 78000bc669eb7a61f8698ad8c39ef49f65b245a2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9665bbc3562faab760562e1e6729d8be0796acd
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224164"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294045"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Back-ups maken en herstellen Azure Files met Power shell
 
@@ -28,7 +28,7 @@ In dit artikel wordt uitgelegd hoe u:
 ## <a name="before-you-start"></a>Voordat u begint
 
 * [Meer informatie](backup-azure-recovery-services-vault-overview.md) over Recovery Services-kluizen.
-* Meer informatie over de preview-mogelijkheden voor het [maken van back-ups van Azure-bestands shares](backup-azure-files.md).
+* Meer informatie over de preview-mogelijkheden voor het [maken van back-ups van Azure-bestands shares](backup-afs.md).
 * Controleer de Power shell-object hiërarchie voor Recovery Services.
 
 ## <a name="recovery-services-object-hierarchy"></a>Object hiërarchie Recovery Services
@@ -419,4 +419,4 @@ $job.ErrorDetails
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over](backup-azure-files.md) het maken van een back-up van Azure files in de Azure Portal.
+[Meer informatie over](backup-afs.md) het maken van een back-up van Azure files in de Azure Portal.

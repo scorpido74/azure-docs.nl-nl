@@ -1,47 +1,47 @@
 ---
-title: Operator aanbevolen procedures - functies van Basic scheduler in Azure Kubernetes Services (AKS)
-description: Meer over de best practices uit de cluster-operator voor het gebruik van eenvoudige scheduler-functies zoals resourcequota en pod wordt onderbroken, budgetten in Azure Kubernetes Service (AKS)
+title: 'Best practices voor Opera tors: Basic scheduler-functies in azure Kubernetes Services (AKS)'
+description: Meer informatie over de aanbevolen procedures voor cluster operators voor het gebruik van elementaire scheduler-functies, zoals resource quota en pod-onderbrekingen budgetten in azure Kubernetes service (AKS)
 services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 3ce59784b2c7c1d145d99786b10927c230146c8b
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 3661f435b5c2dd88aa8e17ca396f9af43aea5224
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67614620"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293603"
 ---
-# <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor basic scheduler-functies in Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-basic-scheduler-features-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor Basic scheduler-functies in azure Kubernetes service (AKS)
 
-Wanneer u clusters in Azure Kubernetes Service (AKS) beheert, moet u vaak teams en workloads te isoleren. De Kubernetes-scheduler biedt functies die u kunnen de distributie van compute-resources beheren of beperken van de invloed van onderhoudsgebeurtenissen.
+Wanneer u clusters beheert in azure Kubernetes service (AKS), moet u vaak teams en workloads isoleren. De Kubernetes Scheduler biedt functies waarmee u de distributie van reken resources kunt beheren, of de impact van onderhouds gebeurtenissen wilt beperken.
 
-Deze aanbevolen procedures voor richt zich op basic Kubernetes planningsfuncties voor clusteroperators. In dit artikel leert u het volgende:
+Dit artikel Best practices is gericht op de basis functies voor Kubernetes planning voor cluster operators. In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Resourcequota gebruiken voor een vaste hoeveelheid resources aan teams of werkbelastingen
-> * De gevolgen van het geplande onderhoud met behulp van de schil wordt onderbroken budgetten beperken
-> * Controleren op ontbrekende pod resourceaanvragen en beperkingen met behulp van de `kube-advisor` hulpprogramma
+> * Resource quota gebruiken om een vaste hoeveelheid resources te bieden aan teams of workloads
+> * De impact van gepland onderhoud beperken met behulp van pod-verstorings budgetten
+> * Controleren op ontbrekende pod-resource aanvragen en-limieten met behulp van het `kube-advisor`
 
-## <a name="enforce-resource-quotas"></a>Resourcequota afdwingen
+## <a name="enforce-resource-quotas"></a>Resource quota afdwingen
 
-**Aanbevolen procedurerichtlijn** -plannen en resource-quota op het niveau van de naamruimte. Schillen niet definiëren resourceaanvragen en -limieten, dan wordt de implementatie geweigerd. Resourcegebruik te bewaken en quota's naar wens aanpassen.
+**Best Practice-richt lijnen** : plan en pas resource quota toe op het niveau van de naam ruimte. Als er in het Peul geen resource aanvragen en-limieten zijn gedefinieerd, moet u de implementatie afwijzen. Bewaak het resource gebruik en pas de quota's zo nodig aan.
 
-Resourceaanvragen en -limieten worden geplaatst in de schil-specificatie. Deze limieten worden gebruikt door de scheduler Kubernetes tijdens de implementatie voor een beschikbaar knooppunt niet vinden in het cluster. Deze beperkingen en aanvragen werkt op afzonderlijke pod-niveau. Zie voor meer informatie over het definiëren van deze waarden [definiëren pod resourceaanvragen en -limieten][resource-limits]
+Resource aanvragen en-limieten worden geplaatst in de pod-specificatie. Deze limieten worden tijdens de implementatie door de Kubernetes-planner gebruikt om een beschikbaar knoop punt in het cluster te vinden. Deze limieten en aanvragen werken op het niveau van de afzonderlijke pod. Zie [pod resource-aanvragen en-limieten definiëren][resource-limits] voor meer informatie over het definiëren van deze waarden.
 
-Als u wilt bieden een manier om te reserveren en resources voor een ontwikkelingsteam of project beperken, moet u *resourcequota*. Deze quota zijn gedefinieerd in een naamruimte, en kunnen worden gebruikt voor het instellen van quota op basis van de volgende:
+Als u een manier wilt bieden om resources te reserveren en te beperken in een ontwikkelings team of project, moet u *resource quota*gebruiken. Deze quota's worden gedefinieerd in een naam ruimte en kunnen worden gebruikt voor het instellen van quota's op basis van het volgende:
 
-* **Rekenresources**, zoals CPU en geheugen of GPU's.
-* **Storage-resources**, bevat het totale aantal volumes of de hoeveelheid schijfruimte voor een bepaalde opslagklasse.
-* **Aantal objecten**, zoals het maximum aantal geheimen, services of taken kunnen worden gemaakt.
+* **Reken bronnen**, zoals CPU en geheugen, of gpu's.
+* **Opslag resources**, inclusief het totale aantal volumes of de hoeveelheid schijf ruimte voor een bepaalde opslag klasse.
+* **Aantal objecten**, zoals het maximum aantal geheimen, services of taken, kunnen worden gemaakt.
 
-Kubernetes biedt geen resources overcommit. Zodra het cumulatieve totaal van resourceaanvragen of limieten voor het toegewezen quotum is geslaagd, is geen verdere implementaties zijn geslaagd.
+De resources worden door Kubernetes niet overgevoerd. Wanneer het cumulatieve totaal aan resource aanvragen of-limieten de toegewezen quota door gegeven, zijn er geen verdere implementaties geslaagd.
 
-Wanneer u resourcequota definieert, moeten alle schillen gemaakt in de naamruimte limieten of de aanvragen in hun pod-specificaties opgeven. Als ze deze waarden niet opgeeft, kunt u de implementatie kunt weigeren. In plaats daarvan kunt u [configureren standaard aanvragen en -limieten voor een naamruimte][configure-default-quotas].
+Wanneer u resource quota definieert, moeten alle in de naam ruimte gemaakte peulen limieten of aanvragen in hun pod-specificaties opgeven. Als ze deze waarden niet opgeven, kunt u de implementatie afwijzen. In plaats daarvan kunt u [standaard aanvragen en limieten voor een naam ruimte configureren][configure-default-quotas].
 
-Het volgende voorbeeld YAML-manifest met de naam *dev-app-team-quotas.yaml* Hiermee stelt u een vaste limiet van een totaal van *10* CPU's, *20Gi* van geheugen en *10*schillen:
+In het volgende voor beeld YAML-manifest met de naam *dev-app-team quota. yaml* wordt een vaste limiet ingesteld voor een totaal van *10* cpu's, *20Gi* geheugen en *10* peul:
 
 ```yaml
 apiVersion: v1
@@ -55,32 +55,32 @@ spec:
     pods: "10"
 ```
 
-Is dit resourcequotum voor kan worden toegepast door het opgeven van de naamruimte, zoals *dev-apps*:
+Dit resource quotum kan worden toegepast door de naam ruimte op te geven, zoals *dev-apps*:
 
 ```console
 kubectl apply -f dev-app-team-quotas.yaml --namespace dev-apps
 ```
 
-Werken met uw ontwikkelaars van toepassingen en -eigenaren aan de hand van hun behoeften en de juiste resourcequota toe te passen.
+Werk samen met de ontwikkel aars en eigen aren van uw toepassingen om inzicht te krijgen in hun behoeften en pas de juiste resource quota toe.
 
-Zie voor meer informatie over beschikbare resourceobjecten, bereiken en prioriteiten [resourcequota in Kubernetes][k8s-resource-quotas].
+Zie [resource quota in Kubernetes][k8s-resource-quotas]voor meer informatie over beschik bare Resource objecten, bereiken en prioriteiten.
 
-## <a name="plan-for-availability-using-pod-disruption-budgets"></a>Plan voor beschikbaarheid pod onderbreking budgetten gebruiken
+## <a name="plan-for-availability-using-pod-disruption-budgets"></a>Plan voor Beschik baarheid met behulp van pod-onderbrekingen budgetten
 
-**Aanbevolen procedurerichtlijn** : als u wilt onderhouden van de beschikbaarheid van toepassingen, het definiëren van de schil wordt onderbroken budgetten (PDB-bestanden) om ervoor te zorgen dat een minimum aantal schillen beschikbaar in het cluster zijn.
+**Richt lijnen voor best practices** : als u de beschik baarheid van toepassingen wilt behouden, definieert u pod-verstorings budgets (PDBs) om ervoor te zorgen dat het cluster mini maal beschikbaar is.
 
-Er zijn twee verstorende gebeurtenissen die ertoe leiden schillen dat moet worden verwijderd:
+Er zijn twee storende gebeurtenissen die ertoe leiden dat peul wordt verwijderd:
 
-* *Aantal onvrijwillige onderbrekingen* zijn gebeurtenissen buiten de normale controle van de cluster-operator of de eigenaar van toepassing.
-  * Deze onopzettelijk onderbrekingen bevatten een hardwarestoring optreedt op de fysieke machine, een kernelprobleem of het verwijderen van een VM-knooppunt
-* *Vrijwillige onderbrekingen* zijn gebeurtenissen die worden aangevraagd door de operator cluster of de eigenaar van toepassing.
-  * Deze vrijwillig onderbrekingen bevatten upgraden van clusters, een sjabloon voor de bijgewerkte implementatie of per ongeluk verwijderen van een schil.
+* *Onvrijwillige onderbrekingen* zijn gebeurtenissen die verder gaan dan de standaard controle van de cluster operator of de eigenaar van de toepassing.
+  * Deze onvrijwillige onderbrekingen omvatten een hardwarestoring op de fysieke machine, een kernel of het verwijderen van een VM-knoop punt
+* *Vrijwillige onderbrekingen* zijn gebeurtenissen die worden aangevraagd door de cluster operator of de eigenaar van de toepassing.
+  * Deze vrijwillige onderbrekingen zijn cluster upgrades, een bijgewerkte implementatie sjabloon of het per ongeluk verwijderen van een pod.
 
-Het aantal onvrijwillige onderbrekingen kunnen worden opgelost door het gebruik van meerdere replica's van uw schillen in een implementatie. Meerdere knooppunten in het AKS-cluster uitgevoerd helpt ook bij met deze onopzettelijk onderbrekingen. Kubernetes biedt voor vrijwillig onderbrekingen, *pod onderbreking budgetten* waarmee de cluster-operator een aantal minimale beschikbaar of maximaal niet beschikbaar resources definiëren. Deze onderbreking van de schil budgetten kunnen u plannen hoe implementaties of replicasets reageert wanneer een gebeurtenis in het vrijwillig wordt onderbroken.
+De onvrijwillige onderbrekingen kunnen worden verholpen door meerdere replica's van uw peul te gebruiken in een implementatie. Het uitvoeren van meerdere knoop punten in het AKS-cluster helpt ook bij deze onvrijwillige onderbrekingen. Voor vrijwillige onderbrekingen biedt Kubernetes *pod-verstoringen* waarmee de cluster operator een mini maal beschikbaar of Maxi maal niet-beschik bare resource telling kan definiëren. Met deze pod-verstoringen budgetten kunt u plannen hoe implementaties of replica sets reageren wanneer een vrijwillige onderbrekings gebeurtenis zich voordoet.
 
-Als een cluster moeten worden bijgewerkt of een sjabloon voor de implementatie bijgewerkt, de Kubernetes-scheduler kunt u ervoor dat aanvullende schillen zijn volgens de planning op andere knooppunten voordat de gebeurtenissen vrijwillig onderbreking kunnen worden voortgezet. De scheduler wordt gewacht voordat een knooppunt opnieuw wordt opgestart nadat het opgegeven aantal schillen zijn is gepland op andere knooppunten in het cluster.
+Als een cluster moet worden bijgewerkt of een implementatie sjabloon is bijgewerkt, zorgt de Kubernetes scheduler ervoor dat er meer peulen worden gepland op andere knoop punten voordat de vrijwillige onderbrekings gebeurtenissen kunnen door gaan. De scheduler wacht voordat een knoop punt opnieuw wordt opgestart totdat het gedefinieerde aantal peulen is gepland op andere knoop punten in het cluster.
 
-We bekijken een voorbeeld van een replica die is ingesteld op vijf schillen waarop NGINX wordt uitgevoerd. De schillen in de replica instellen als het label toegewezen `app: nginx-frontend`. Tijdens een onderbreking van de vrijwillig-gebeurtenis, zoals de clusterupgrade van een, die u wilt controleren of ten minste drie schillen worden uitgevoerd. De volgende YAML-manifest voor een *PodDisruptionBudget* object definieert deze vereisten:
+We bekijken een voor beeld van een replicaset met vijf peulen waarop NGINX wordt uitgevoerd. Het Peul in de replicaset wordt toegewezen aan het label `app: nginx-frontend`. Tijdens een vrijwillige onderbrekings gebeurtenis, zoals een cluster upgrade, wilt u er zeker van zijn dat er ten minste drie peulen worden uitgevoerd. Het volgende YAML-manifest voor een *PodDisruptionBudget* -object definieert deze vereisten:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -94,9 +94,9 @@ spec:
       app: nginx-frontend
 ```
 
-U kunt ook een percentage, zoals definiëren *60%* , omhoog schalen van het aantal schillen waarmee u automatisch compenseren voor de replica is ingesteld.
+U kunt ook een percentage definiëren, zoals *60%* , waarmee u automatisch de schaal van de replicaset kunt verhogen.
 
-U kunt een maximum aantal exemplaren is niet beschikbaar in een replicaset definiëren. Percentage voor de maximale pods die niet beschikbaar kan opnieuw, ook worden gedefinieerd. Het volgende pod onderbreking budget YAML-manifest dat niet meer dan twee schillen in de replica definieert set niet beschikbaar:
+U kunt een maximum aantal niet-beschik bare instanties definiëren in een replicaset. Ook hier kan een percentage van het maximum aantal niet-beschik bare peulen worden gedefinieerd. In het volgende pod-manifest van de YAML-onderbreking wordt gedefinieerd dat er niet meer dan twee peulen in de replicaset beschikbaar zijn:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -110,32 +110,32 @@ spec:
       app: nginx-frontend
 ```
 
-Als uw budget van de onderbreking van de schil is gedefinieerd, maakt u deze in uw AKS-cluster net als bij elk ander Kubernetes-object:
+Zodra het Pod-verstorings budget is gedefinieerd, maakt u het in uw AKS-cluster, net als bij elk ander Kubernetes-object:
 
 ```console
 kubectl apply -f nginx-pdb.yaml
 ```
 
-Werken met uw ontwikkelaars van toepassingen en eigenaren van inzicht in hun behoeften en de onderbreking van de juiste pod budgetten toepassen.
+Werk samen met de ontwikkel aars en eigen aren van uw toepassingen om inzicht te krijgen in hun behoeften en pas de toepasselijke budgetten voor pod-onderbrekingen toe.
 
-Zie voor meer informatie over het gebruik van de schil wordt onderbroken budgetten [opgeven van een onderbreking van de budget voor uw toepassing][k8s-pdbs].
+Zie voor meer informatie over het gebruik van pod-verstoringen budgetten [een onderbrekings budget voor uw toepassing opgeven][k8s-pdbs].
 
-## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>Regelmatig controleren op problemen met kube-advisor cluster
+## <a name="regularly-check-for-cluster-issues-with-kube-advisor"></a>Regel matig controleren op cluster problemen met uitvoeren-Advisor
 
-**Aanbevolen procedurerichtlijn** -Voer regelmatig de nieuwste versie van `kube-advisor` open source-hulpprogramma om problemen te detecteren in uw cluster. Als u resourcequota op een bestaand AKS-cluster toepast, voert u `kube-advisor` eerst te vinden schillen waarvoor geen resourceaanvragen en -limieten die zijn gedefinieerd.
+**Richt lijnen voor best practices** : Voer regel matig de meest recente versie van `kube-advisor` open source-hulp programma uit om problemen in uw cluster op te sporen. Als u resource quota toepast op een bestaand AKS-cluster, voert u `kube-advisor` eerst uit om een Peul te vinden waarvoor geen resource-aanvragen en-limieten zijn gedefinieerd.
 
-De [kube-advisor][kube-advisor] hulpprogramma is een bijbehorende AKS open source-project, die een Kubernetes-cluster wordt gescand en rapporten weergeven over problemen die worden gevonden. Een nuttige controle is het identificeren van schillen die niet over een bron aanvragen en -limieten in plaats.
+Het hulp programma [uitvoeren Advisor][kube-advisor] is een gekoppeld AKS open source-project waarmee een Kubernetes-cluster wordt gescand en rapporten worden gevonden over problemen die worden aangetroffen. Een nuttige controle is het identificeren van een Peul dat geen resource-aanvragen en limieten heeft.
 
-Het hulpprogramma kube-advisor kunt rapporteren resourceaanvraag en limieten ontbreekt in de PodSpecs voor Windows-toepassingen, evenals de Linux-toepassingen, maar het hulpprogramma kube-advisor zelf moet worden gepland op een Linux-schil. U kunt plannen dat een schil om uit te voeren op een knooppunt van toepassingen met een specifiek besturingssysteem met een [knooppunt selector][k8s-node-selector] in de configuratie van de schil.
+Het uitvoeren-hulp programma kan rapporteren over de resource aanvraag en limieten die ontbreken in PodSpecs voor Windows-toepassingen, evenals Linux-toepassingen, maar het hulp programma uitvoeren Advisor zelf moet op een Linux-pod worden gepland. U kunt een pod plannen om uit te voeren op een knooppunt groep met een specifiek besturings systeem met behulp van een [knooppunt kiezer][k8s-node-selector] in de configuratie van de pod.
 
-In een AKS-cluster die als host fungeert voor meerdere teams voor ontwikkeling en -toepassingen, kan het lastig zijn om bij te houden van schillen zonder deze resource-aanvragen en set beperkt. Als een best practice regelmatig uitgevoerd `kube-advisor` op uw AKS-clusters, met name als u geen resourcequota aan naamruimten toewijst.
+In een AKS-cluster dat meerdere ontwikkel teams en toepassingen host, kan het lastig zijn om het aantal te volgen zonder deze resource aanvragen en-limieten. Als best practice, voert u regel matig `kube-advisor` uit op uw AKS-clusters, met name als u geen resource quota aan naam ruimten toewijst.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel is gericht op Kubernetes scheduler basisfuncties. Zie voor meer informatie over de bewerkingen voor een cluster in AKS, de volgende aanbevolen procedures:
+Dit artikel is gericht op de basis functies van Kubernetes scheduler. Zie voor meer informatie over cluster bewerkingen in AKS de volgende aanbevolen procedures:
 
-* [Multitenancy en cluster-isolatie][aks-best-practices-cluster-isolation]
-* [Geavanceerde functies voor Kubernetes-scheduler][aks-best-practices-advanced-scheduler]
+* [Multitenancy en cluster isolatie][aks-best-practices-cluster-isolation]
+* [Geavanceerde functies van Kubernetes scheduler][aks-best-practices-advanced-scheduler]
 * [Verificatie en autorisatie][aks-best-practices-identity]
 
 <!-- EXTERNAL LINKS -->

@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: 9ea77a6822a851951ea7363b9cf496fa0df534ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8c9390ea498647d34e8643ed4be596372ffb8696
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982099"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293382"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API fout codes
  
@@ -54,7 +54,7 @@ De header ' autorisatie ' is het toegangs token dat vereist is voor elke aanroep
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>Het token heeft niet de juiste resource die eraan is gekoppeld. 
 
-Bij het aanvragen van een toegangs token van het Azure OAUTH-eind punt is een para meter met de naam ' resource ' verplicht. De waarde is belang rijk voor de token provider, omdat deze het token voor het beoogde gebruik van het bereik. De resource voor **alle* tokens voor toegang tot een Key Vault is <https:\//vault.keyvault.net> (zonder afsluitende slash).
+Bij het aanvragen van een toegangs token van het Azure OAUTH-eind punt is een para meter met de naam ' resource ' verplicht. De waarde is belang rijk voor de token provider, omdat deze het token voor het beoogde gebruik van het bereik. De resource voor **alle** tokens voor toegang tot een Key Vault is *https:\//Vault.keyvault.net* (zonder afsluitende slash).
 
 ### <a name="the-token-is-expired"></a>Het token is verlopen
 

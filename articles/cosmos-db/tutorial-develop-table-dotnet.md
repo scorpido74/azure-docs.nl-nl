@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 12/03/2019
-ms.openlocfilehash: 7341d86e68986a2e502f714a4dcf1f882200d384
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b3497df8acdb2e7d184dba54e93506146d842348
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441065"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314382"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Aan de slag met Azure Cosmos DB Table-API en Azure-tabel opslag met behulp van de .NET SDK
 
@@ -59,7 +59,7 @@ Voer de volgende stappen uit om het NuGet-pakket te verkrijgen:
 
 1. Klik met de rechtermuisknop op het project in **Solution Explorer** en kies **NuGet-pakketten beheren**.
 
-1. Zoek online naar `Microsoft.Azure.Cosmos.Table`, `Microsoft.Extensions.Configuration`, `Microsoft.Extensions.Configuration.Json`, `Microsoft.Extensions.Configuration.Binder` en selecteer **installeren** om de Microsoft Azure Cosmos DB tabel bibliotheek te installeren.
+1. Zoek online naar [`Microsoft.Azure.Cosmos.Table`](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table), [`Microsoft.Extensions.Configuration`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration), [`Microsoft.Extensions.Configuration.Json`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json), [`Microsoft.Extensions.Configuration.Binder`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder) en selecteer **installeren** om de Microsoft Azure Cosmos DB tabel bibliotheek te installeren.
 
 ## <a name="configure-your-storage-connection-string"></a>De opslagverbindingsreeks configureren
 

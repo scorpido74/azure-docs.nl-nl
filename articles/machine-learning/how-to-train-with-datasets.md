@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: b6ea5c9ef5e128116ef389675a09e6ab4b230b75
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 24a19487567f2753457d5886cbb9fa4bf438bad4
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982444"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311339"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Train met gegevens sets in Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,7 +83,7 @@ Deze code maakt een Gene riek Estimator-object, `est`, dat aangeeft
 
 * Een script Directory voor uw scripts. Alle bestanden in deze map worden naar de clusterknooppunten geüpload voor uitvoering.
 * Het trainings script, *train_titanic. py*.
-* De invoer gegevensset voor training, `titanic`.
+* De invoer gegevensset voor training, `titanic`. `as_named_input()` is vereist zodat naar de gegevensset van de invoer kan worden verwezen door de toegewezen naam in uw trainings script. 
 * Het reken doel voor het experiment.
 * De omgevings definitie voor het experiment.
 
@@ -126,7 +126,7 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>De Estimator configureren
 
-In plaats van de gegevensset via de para meter `inputs` in de Estimator door te geven, kunt u de gegevensset ook door geven via `script_params` en het gegevenspad (koppelings punt) ophalen in uw trainings script via argumenten. Op deze manier kunt u toegang krijgen tot uw gegevens en een bestaand trainings script gebruiken.
+Naast het door geven van de gegevensset via de para meter `inputs` in de Estimator, kunt u de gegevensset ook door geven via `script_params` en het gegevenspad (koppel punt) in uw trainings script ophalen via argumenten. Op deze manier kunt u uw trainings script onafhankelijk van de azureml-SDK blijven gebruiken. Met andere woorden, u kunt hetzelfde trainings script gebruiken voor lokale fout opsporing en externe training op elk cloud platform.
 
 Een [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) Estimator-object wordt gebruikt om de run for scikit-experimenten te verzenden. Meer informatie over training met de [SKlearn Estimator](how-to-train-scikit-learn.md).
 

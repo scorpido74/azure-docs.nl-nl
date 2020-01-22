@@ -1,75 +1,45 @@
 ---
-title: De Video Indexer-API's gebruiken voor het aanpassen van een taalmodel - Azure
+title: De Video Indexer-Api's gebruiken voor het aanpassen van een taal model-Azure
 titlesuffix: Azure Media Services
-description: In dit artikel laat zien hoe een taalmodel met Video Indexer-API's aanpassen.
+description: In dit artikel wordt beschreven hoe u een taal model kunt aanpassen met de Video Indexer-Api's.
 services: media-services
 author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 01/14/2020
 ms.author: anzaman
-ms.openlocfilehash: 4ef5354a94ae707df8dd1f2767efe04dfbacd7ad
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b7517c8a8745569635a9570c02c851854eebeb96
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799594"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289489"
 ---
-# <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Een taalmodel met Video Indexer-API's aanpassen
+# <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Een taal model aanpassen met de Video Indexer-Api's
 
-Video Indexer kunt u aangepaste taalmodellen voor het aanpassen van spraakherkenning door te uploaden aanpassing van woordenlijsten tekst, namelijk de tekst uit het domein waarvan u de engine om aan te passen dat wilt aan de woordenlijst maken. Nadat u uw model te trainen, kunt u nieuwe woorden die voorkomen in de aanpassing van woordenlijsten tekst wordt herkend. 
+Met Video Indexer kunt u aangepaste taal modellen maken om spraak herkenning aan te passen door de aanpassings tekst te uploaden, namelijk de tekst van het domein waarvan u wilt dat de engine aan de woorden lijst voldoet. Zodra u het model hebt getraind, worden nieuwe woorden in de aanpassings tekst herkend. 
 
-Zie voor een gedetailleerd overzicht en aanbevolen procedures voor het aangepaste taalmodellen [aanpassen van een taalmodel met Video Indexer](customize-language-model-overview.md).
+Zie [een taal model aanpassen met video indexer](customize-language-model-overview.md)voor een gedetailleerd overzicht en aanbevolen procedures voor aangepaste taal modellen.
 
-U kunt de Video Indexer-API's maken en bewerken van aangepaste taalmodellen in uw account, zoals beschreven in dit onderwerp. U kunt ook de website, zoals beschreven in [aanpassen taalmodel met behulp van de website Video Indexer](customize-language-model-with-api.md).
+U kunt de Video Indexer-Api's gebruiken om aangepaste taal modellen in uw account te maken en te bewerken, zoals wordt beschreven in dit onderwerp. U kunt ook de website gebruiken, zoals beschreven in [taal model aanpassen met behulp van de video indexer-website](customize-language-model-with-api.md).
 
-## <a name="create-a-language-model"></a>Een taalmodel maken
+## <a name="create-a-language-model"></a>Een taal model maken
 
-De volgende opdracht maakt een nieuwe aangepaste taalmodel in het opgegeven account. U kunt bestanden voor het taalmodel in deze aanroep uploaden. U kunt ook hier het taalmodel maken en uploaden van bestanden voor het model later door het taalmodel wordt bijgewerkt.
+Met de API [Create a language model](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Language-Model?) maakt u een nieuw aangepast taal model in het opgegeven account. U kunt bestanden voor het taal model uploaden in deze aanroep. U kunt ook het taal model hier maken en de bestanden voor het model later uploaden door het taal model bij te werken.
 
 > [!NOTE]
-> U moet nog steeds het model te trainen met de ingeschakelde bestanden voor het model voor meer informatie over de inhoud van de bestanden. Er zijn instructies voor het trainen van een taal in de volgende sectie.
+> U moet het model nog steeds trainen met de ingeschakelde bestanden voor het model om de inhoud van de bestanden te kunnen zien. Instructies voor het trainen van een taal vindt u in de volgende sectie.
 
-### <a name="request-url"></a>Aanvraag-URL
+Als u bestanden wilt uploaden die moeten worden toegevoegd aan het taal model, moet u bestanden in de hoofd tekst uploaden met behulp van formulier gegevens en waarden opgeven voor de vereiste para meters. Er zijn twee manieren om dit te doen: 
 
-Dit is een POST-aanvraag.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}
-```
-
-Hieronder vindt u de aanvraag in Curl.
-
-```curl
-curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language?accessToken={accessToken}&modelName={modelName}&language={language}"
-
---data-ascii "{body}" 
-```
-
-[Zie de vereiste parameters en testen met behulp van de Video Indexer-Ontwikkelaarsportal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?).
-
-### <a name="request-parameters"></a>Aanvraagparameters
-
-|**Naam**|**Type**|**Vereist**|**Beschrijving**|
-|---|---|---|---|
-|location|string|Ja|De Azure-regio waarnaar u de oproep worden gerouteerd. Zie voor meer informatie, [Azure-regio's en Video Indexer](regions.md).|
-|accountId|string|Ja|Unieke id voor de account|
-|accessToken|string|Ja|Toegangstoken (moet van het bereik [Account toegangstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) voor verificatie op basis van de aanroep. Toegangstokens verloopt binnen 1 uur.|
-|modelName|string|Ja|De naam van het taalmodel|
-|language|string|Ja|De taal van het taalmodel. <br/>De **taal** parameter moet de taal in de indeling van de BCP-47 van 'taal tag-gebied' krijgen (bijvoorbeeld: 'en-US'). Ondersteunde talen zijn Engels (en-US), Duits (nl-nl), Spaans (es-SP), Arabisch (ar-bijvoorbeeld), Frans (fr-FR), Hindi (High-Hallo), Italiaans (it-IT), Japans (ja-JP), Portugees (pt-BR), Russisch (ru-RU/s) en Chinees (zh-CN).  |
-
-### <a name="request-body"></a>Aanvraagbody
-
-Als u wilt uploaden van bestanden worden toegevoegd aan het taalmodel, moet u de bestanden in de hoofdtekst met formuliergegevens naast het opgeven van de waarden voor de bovenstaande vereiste parameters uploaden. Er zijn twee manieren om dit te doen: 
-
-1. Sleutel wordt de naam en waarde worden de txt-bestand
-2. Sleutel is de naam en waarde is een URL naar een txt-bestand
+1. De sleutel wordt de bestands naam en de waarde is het txt-bestand
+2. De sleutel wordt de bestands naam en de waarde is een URL naar een txt-bestand
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord bevat metagegevens voor de zojuist gemaakte taalmodel samen met de metagegevens op elk van de indeling van de voorbeeld-JSON-uitvoer bestanden van het model.
+Het antwoord geeft de meta gegevens van het zojuist gemaakte taal model samen met de meta gegevens op elk van de bestanden van het model, gevolgd door de indeling van het voor beeld van de JSON-uitvoer.
 
 ```json
 {
@@ -98,45 +68,16 @@ Het antwoord bevat metagegevens voor de zojuist gemaakte taalmodel samen met de 
 
 ```
 
-## <a name="train-a-language-model"></a>Een taalmodel te trainen
+## <a name="train-a-language-model"></a>Een taal model trainen
 
-De volgende opdracht traint een aangepast taalmodel in het opgegeven account met de inhoud van de bestanden die zijn geüpload naar en ingeschakeld in het taalmodel. 
+De [trein een taal model-API traint](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train) een aangepast taal model in het opgegeven account met de inhoud van de bestanden die zijn geüpload naar en ingeschakeld in het taal model. 
 
 > [!NOTE]
-> Eerst moet u het taalmodel maken en uploaden van bestanden. Bij het maken van het taalmodel of door het taalmodel wordt bijgewerkt, kunt u bestanden uploaden. 
-
-### <a name="request-url"></a>Aanvraag-URL
-
-Dit is een PUT-aanvraag.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Train?accessToken={accessToken}
-```
-
-Hieronder vindt u de aanvraag in Curl.
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Train?accessToken={accessToken}"
-```
- 
-[Zie de vereiste parameters en testen met behulp van de Video Indexer-Ontwikkelaarsportal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train).
-
-### <a name="request-parameters"></a>Aanvraagparameters
-
-|**Naam**|**Type**|**Vereist**|**Beschrijving**|
-|---|---|---|---|
-|location|string|Ja|De Azure-regio waarnaar u de oproep worden gerouteerd. Zie voor meer informatie, [Azure-regio's en Video Indexer](regions.md).|
-|accountID|string|Ja|Unieke id voor de account|
-|modelId|string|Ja|De taal model-id (gegenereerd wanneer het taalmodel wordt gemaakt).|
-|accessToken|string|Ja|Toegangstoken (moet van het bereik [Account toegangstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) voor verificatie op basis van de aanroep. Toegangstokens verloopt binnen 1 uur.|
-
-### <a name="request-body"></a>Aanvraagbody
-
-Er is geen verdere aanvraagtekst vereist voor deze aanroep.
+> U moet eerst het taal model maken en de bestanden uploaden. U kunt bestanden uploaden wanneer u het taal model maakt of door het taal model bij te werken. 
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord bevat metagegevens voor het nieuwe getrainde taalmodel, samen met de metagegevens op elk van de indeling van de voorbeeld-JSON-uitvoer bestanden van het model.
+Het antwoord geeft de meta gegevens van het zojuist getrainde taal model samen met de meta gegevens van elk van de bestanden van het model, gevolgd door de indeling van het voor beeld van de JSON-uitvoer.
 
 ```json
 {
@@ -164,91 +105,33 @@ Het antwoord bevat metagegevens voor het nieuwe getrainde taalmodel, samen met d
 }
 ```
 
-Vervolgens moet u gebruiken de **id** waarde van het taalmodel voor de **linguisticModelId** parameter wanneer [uploaden van video's naar index](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) en voor de  **languageModelId** parameter wanneer [indexeren van een video](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
+U moet de geretourneerde **id-** waarde van het taal model voor de para meter **linguisticModelId** gebruiken wanneer u [een video uploadt naar index](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) en voor de para meter **languageModelId** wanneer u [een video opnieuw indexeert](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?).
 
-## <a name="delete-a-language-model"></a>Een taalmodel verwijderen
-
-De volgende opdracht verwijdert een aangepast taalmodel van het opgegeven account. Een video die is met behulp van het verwijderde taalmodel blijft de dezelfde index totdat u de video opnieuw indexeren. Als u de video opnieuw indexeren, kunt u een nieuwe taalmodel toewijzen aan de video. Video Indexer wordt gebruik anders de standaardmodel opnieuw indexeren van de video.
-
-### <a name="request-url"></a>Aanvraag-URL
-
-Dit is een DELETE-aanvraag.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}
-```
-
-Hieronder vindt u de aanvraag in Curl.
-
-```curl
-curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}"
-```
  
-[Zie de vereiste parameters en testen met behulp van de Video Indexer-Ontwikkelaarsportal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete).
+## <a name="delete-a-language-model"></a>Een taal model verwijderen
 
-### <a name="request-parameters"></a>Aanvraagparameters 
-
-|**Naam**|**Type**|**Vereist**|**Beschrijving**|
-|---|---|---|---|
-|location|string|Ja|De Azure-regio waarnaar u de oproep worden gerouteerd. Zie voor meer informatie, [Azure-regio's en Video Indexer](regions.md).|
-|accountID|string|Ja|Unieke id voor de account|
-|modelId|string|Ja|De taal model-id (gegenereerd wanneer het taalmodel wordt gemaakt).|
-|accessToken|string|Ja|Toegangstoken (moet van het bereik [Account toegangstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) voor verificatie op basis van de aanroep. Toegangstokens verloopt binnen 1 uur.|
-
-### <a name="request-body"></a>Aanvraagbody
-
-Er is geen verdere aanvraagtekst vereist voor deze aanroep.
+Met de API voor het [verwijderen van een taal model](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete) wordt een aangepast taal model uit het opgegeven account verwijderd. Alle Video's die het verwijderde taal model gebruiken, blijven dezelfde index totdat u de video opnieuw indexeert. Als u de video opnieuw indexeert, kunt u een nieuw taal model toewijzen aan de video. Anders wordt het standaard model van Video Indexer gebruikt om de video opnieuw te indexeren.
 
 ### <a name="response"></a>Antwoord
 
-Er is geen geretourneerde inhoud wanneer het taalmodel is verwijderd.
+Er is geen inhoud geretourneerd tijdens het verwijderen van het taal model.
 
-## <a name="update-a-language-model"></a>Een taalmodel bijwerken
+## <a name="update-a-language-model"></a>Een taal model bijwerken
 
-De volgende opdracht werkt een aangepast taalmodel voor een persoon in het opgegeven account.
+Met de [Update een taal model](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update) -API wordt een aangepast persoonlijk taal model in het opgegeven account bijgewerkt.
 
 > [!NOTE]
-> U moet het taalmodel al hebt gemaakt. U kunt deze aanroep inschakelen of uitschakelen van alle bestanden onder het model, de naam van het taalmodel bijwerken en uploaden van bestanden worden toegevoegd aan het taalmodel.
+> U moet het taal model al hebben gemaakt. U kunt deze aanroep gebruiken om alle bestanden onder het model in of uit te scha kelen, de naam van het taal model bij te werken en bestanden te uploaden die moeten worden toegevoegd aan het taal model.
 
-### <a name="request-url"></a>Aanvraag-URL
+Als u bestanden wilt uploaden die moeten worden toegevoegd aan het taal model, moet u bestanden in de hoofd tekst uploaden met behulp van formulier gegevens en waarden opgeven voor de vereiste para meters. Er zijn twee manieren om dit te doen: 
 
-Dit is een PUT-aanvraag.
+1. De sleutel wordt de bestands naam en de waarde is het txt-bestand
+2. De sleutel wordt de bestands naam en de waarde is een URL naar een txt-bestand
 
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}[&modelName][&enable]
-```
-
-Hieronder vindt u de aanvraag in Curl.
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}?modelName={string}&enable={string}"
-
---data-ascii "{body}" 
-```
- 
-[Zie de vereiste parameters en testen met behulp van de Video Indexer-Ontwikkelaarsportal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update).
-
-### <a name="request-parameters"></a>Aanvraagparameters 
-
-|**Naam**|**Type**|**Vereist**|**Beschrijving**|
-|---|---|---|---|
-|location|string|Ja|De Azure-regio waarnaar u de oproep worden gerouteerd. Zie voor meer informatie, [Azure-regio's en Video Indexer](regions.md).|
-|accountID|string|Ja|Unieke id voor de account|
-|modelId|string|Ja|De taal model-id (gegenereerd wanneer het taalmodel wordt gemaakt).|
-|accessToken|string|Ja|Toegangstoken (moet van het bereik [Account toegangstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) voor verificatie op basis van de aanroep. Toegangstokens verloopt binnen 1 uur.|
-|modelName|string|Nee|Nieuwe naam die u tot het model geven kunt|
-|Inschakelen|booleaans|Nee|Kiezen of alle bestanden onder dit model worden ingeschakeld (true) of uitgeschakeld (ONWAAR)|
-
-### <a name="request-body"></a>Aanvraagbody
-
-Als u wilt uploaden van bestanden worden toegevoegd aan het taalmodel, moet u de bestanden in de hoofdtekst met formuliergegevens naast het opgeven van de waarden voor de bovenstaande vereiste parameters uploaden. Er zijn twee manieren om dit te doen: 
-
-1. Sleutel wordt de naam en waarde worden de txt-bestand
-2. Sleutel is de naam en waarde is een URL naar een txt-bestand
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord bevat metagegevens voor het nieuwe getrainde taalmodel, samen met de metagegevens op elk van de indeling van de voorbeeld-JSON-uitvoer bestanden van het model.
+Het antwoord geeft de meta gegevens van het zojuist getrainde taal model samen met de meta gegevens van elk van de bestanden van het model, gevolgd door de indeling van het voor beeld van de JSON-uitvoer.
 
 ```json
 {
@@ -275,47 +158,16 @@ Het antwoord bevat metagegevens voor het nieuwe getrainde taalmodel, samen met d
     ]
 }
 ```
-U kunt de **id** van de bestanden geretourneerd hier om te downloaden van de inhoud van het bestand.
 
-## <a name="update-a-file-from-a-language-model"></a>Een bestand uit een taalmodel bijwerken
+Gebruik de **id** van de bestanden die zijn geretourneerd in het antwoord op het downloaden van de inhoud van het bestand.
 
-De volgende opdracht kunt u de naam van de update en **inschakelen** status van een bestand in een aangepast taalmodel in het opgegeven account.
+## <a name="update-a-file-from-a-language-model"></a>Een bestand bijwerken vanuit een taal model
 
-### <a name="request-url"></a>Aanvraag-URL
-
-Dit is een PUT-aanvraag.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}[&fileName][&enable]
-```
-
-Hieronder vindt u de aanvraag in Curl.
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}?fileName={string}&enable={string}"
-```
- 
-[Zie de vereiste parameters en testen met behulp van de Video Indexer-Ontwikkelaarsportal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update).
-
-### <a name="request-parameters"></a>Aanvraagparameters 
-
-|**Naam**|**Type**|**Vereist**|**Beschrijving**|
-|---|---|---|---|
-|location|string|Ja|De Azure-regio waarnaar u de oproep worden gerouteerd. Zie voor meer informatie, [Azure-regio's en Video Indexer](regions.md).|
-|accountId|string|Ja|Unieke id voor de account|
-|modelId|string|Ja|Id van het taalmodel waarin het bestand (gegenereerd wanneer het taalmodel wordt gemaakt).|
-|fileId|string|Ja|Id van het bestand dat moet worden bijgewerkt (gegenereerd wanneer het bestand geüpload bij het maken of bijwerken van het taalmodel is)|
-|accessToken|string|Ja|Toegangstoken (moet van het bereik [Account toegangstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) voor verificatie op basis van de aanroep. Toegangstokens verloopt binnen 1 uur.|
-|fileName|string|Nee|Naam van de bestandsnaam om te werken|
-|Inschakelen|booleaans|Nee|Bijwerken of dit bestand is (true) of uitgeschakeld (ONWAAR) in het taalmodel|
-
-### <a name="request-body"></a>Aanvraagbody
-
-Er is geen verdere aanvraagtekst vereist voor deze aanroep.
+Met de [Update van een bestand](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update) kunt u de **naam en de** status van een bestand in een aangepast taal model in het opgegeven account bijwerken.
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord bevat metagegevens voor het bestand dat u de volgende de indeling van het voorbeeld van JSON-uitvoer onderstaande bijgewerkt.
+Het antwoord bevat meta gegevens voor het bestand dat u hebt bijgewerkt, volgens de indeling van de voor beeld-JSON-uitvoer hieronder.
 
 ```json
 {
@@ -326,43 +178,15 @@ Het antwoord bevat metagegevens voor het bestand dat u de volgende de indeling v
   "creationTime": "2018-04-27T20:10:10.5233333"
 }
 ```
-U kunt de **id** van het bestand geretourneerd hier om te downloaden van de inhoud van het bestand.
+Gebruik de **id** van het bestand dat is geretourneerd in het antwoord op het downloaden van de inhoud van het bestand.
 
-## <a name="get-a-specific-language-model"></a>Ophalen van een specifieke taalmodel
+## <a name="get-a-specific-language-model"></a>Een specifiek taal model ophalen
 
-De volgende opdracht retourneert informatie over de opgegeven taalmodel in het opgegeven account, zoals taal en de bestanden die zich in het taalmodel. 
-
-### <a name="request-url"></a>Aanvraag-URL
-
-Dit is een GET-aanvraag.
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}
-```
-
-Hieronder vindt u de aanvraag in Curl.
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}"
-```
- 
-[Zie de vereiste parameters en testen met behulp van de Video Indexer-Ontwikkelaarsportal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get).
-
-### <a name="request-parameters-and-request-body"></a>Parameters van de aanvraag en de hoofdtekst van de aanvraag
-
-|**Naam**|**Type**|**Vereist**|**Beschrijving**|
-|---|---|---|---|
-|location|string|Ja|De Azure-regio waarnaar u de oproep worden gerouteerd. Zie voor meer informatie, [Azure-regio's en Video Indexer](regions.md).|
-|accountID|string|Ja|Unieke id voor de account|
-|modelId|string|Ja|De taal model-id (gegenereerd wanneer het taalmodel wordt gemaakt).|
-|accessToken|string|Ja|Toegangstoken (moet van het bereik [Account toegangstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) voor verificatie op basis van de aanroep. Toegangstokens verloopt binnen 1 uur.|
-
-### <a name="request-body"></a>Aanvraagbody
-
-Er is geen verdere aanvraagtekst vereist voor deze aanroep.
+De [Get](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get) -API retourneert informatie over het opgegeven taal model in het opgegeven account, zoals taal en de bestanden in het taal model. 
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord bevat metagegevens voor de opgegeven taalmodel, samen met de metagegevens op elk van de indeling van het voorbeeld van JSON-uitvoer onderstaande bestanden van het model.
+Het antwoord geeft de meta gegevens van het opgegeven taal model samen met de meta gegevens op elk van de bestanden van het model, gevolgd door de indeling van de voor beeld-JSON-uitvoer hieronder.
 
 ```json
 {
@@ -390,43 +214,15 @@ Het antwoord bevat metagegevens voor de opgegeven taalmodel, samen met de metage
 }
 ```
 
-U kunt de **id** van het bestand geretourneerd hier om te downloaden van de inhoud van het bestand.
+Gebruik de **id** van het bestand dat is geretourneerd in het antwoord op het downloaden van de inhoud van het bestand.
 
-## <a name="get-all-the-language-models"></a>Alle taalmodellen ophalen
+## <a name="get-all-the-language-models"></a>Alle taal modellen ophalen
 
-De volgende opdracht retourneert alle van de aangepaste taalmodellen in het opgegeven account in een lijst.
-
-### <a name="request-url"></a>Aanvraag-URL
-
-Dit is een aanvraag ophalen.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language?accessToken={accessToken}
-```
-
-Hieronder vindt u de aanvraag in Curl.
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language?accessToken={accessToken}"
-```
- 
-[Zie de vereiste parameters en testen met behulp van de Video Indexer-Ontwikkelaarsportal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get).
-
-### <a name="request-parameters"></a>Aanvraagparameters
-
-|**Naam**|**Type**|**Vereist**|**Beschrijving**|
-|---|---|---|---|
-|location|string|Ja|De Azure-regio waarnaar u de oproep worden gerouteerd. Zie voor meer informatie, [Azure-regio's en Video Indexer](regions.md).|
-|accountID|string|Ja|Unieke id voor de account|
-|accessToken|string|Ja|Toegangstoken (moet van het bereik [Account toegangstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) voor verificatie op basis van de aanroep. Toegangstokens verloopt binnen 1 uur.|
-
-### <a name="request-body"></a>Aanvraagbody
-
-Er is geen verdere aanvraagtekst vereist voor deze aanroep.
+De [Alles ophalen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get) -API retourneert alle aangepaste taal modellen in het opgegeven account in een lijst.
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord bevat een lijst van alle modellen van de taal in uw account en elk van de metagegevens en de bestanden die de indeling van het voorbeeld van JSON-uitvoer onderstaande te volgen.
+Het antwoord bevat een lijst met alle taal modellen in uw account en elk van de meta gegevens en bestanden volgens de indeling van de voor beeld-JSON-uitvoer hieronder.
 
 ```json
 [
@@ -464,79 +260,21 @@ Het antwoord bevat een lijst van alle modellen van de taal in uw account en elk 
 ]
 ```
 
-## <a name="delete-a-file-from-a-language-model"></a>Een bestand verwijderen uit een taalmodel
+## <a name="delete-a-file-from-a-language-model"></a>Een bestand verwijderen uit een taal model
 
-De volgende opdracht verwijdert het opgegeven bestand uit de opgegeven taalmodel in het opgegeven account. 
-
-### <a name="request-url"></a>Aanvraag-URL
-
-Dit is een DELETE-aanvraag.
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}
-```
-
-Hieronder vindt u de aanvraag in Curl.
-
-```curl
-curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}"
-```
- 
-[Zie de vereiste parameters en testen met behulp van de Video Indexer-Ontwikkelaarsportal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete).
-
-### <a name="request-parameters"></a>Aanvraagparameters 
-
-|**Naam**|**Type**|**Vereist**|**Beschrijving**|
-|---|---|---|---|
-|location|string|Ja|De Azure-regio waarnaar u de oproep worden gerouteerd. Zie voor meer informatie, [Azure-regio's en Video Indexer](regions.md).|
-|accountID|string|Ja|Unieke id voor de account|
-|modelId|string|Ja|Id van het taalmodel waarin het bestand (gegenereerd wanneer het taalmodel wordt gemaakt).|
-|fileId|string|Ja|Id van het bestand dat moet worden bijgewerkt (gegenereerd wanneer het bestand geüpload bij het maken of bijwerken van het taalmodel is)|
-|accessToken|string|Ja|Toegangstoken (moet van het bereik [Account toegangstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) voor verificatie op basis van de aanroep. Toegangstokens verloopt binnen 1 uur.|
-
-### <a name="request-body"></a>Aanvraagbody
-
-Er is geen verdere aanvraagtekst vereist voor deze aanroep.
+Met de API [verwijderen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete) wordt het opgegeven bestand uit het opgegeven taal model in het opgegeven account verwijderd. 
 
 ### <a name="response"></a>Antwoord
 
-Er is geen geretourneerde inhoud wanneer het bestand wordt verwijderd uit het taalmodel is.
+Er is geen inhoud geretourneerd wanneer het bestand wordt verwijderd uit het taal model.
 
-## <a name="get-metadata-on-a-file-from-a-language-model"></a>Metagegevens ophalen voor een bestand van een taalmodel
+## <a name="get-metadata-on-a-file-from-a-language-model"></a>Meta gegevens ophalen voor een bestand van een taal model
 
-Dit retourneert de inhoud van en de metagegevens op het opgegeven bestand van de gekozen taalmodel in de uw account.
-
-### <a name="request-url"></a>Aanvraag-URL
-
-Dit is een GET-aanvraag.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}
-```
-
-Hieronder vindt u de aanvraag in Curl.
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}"
-```
- 
-[Zie de vereiste parameters en testen met behulp van de Video Indexer-Ontwikkelaarsportal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model).
-
-### <a name="request-parameters"></a>Aanvraagparameters 
-
-|**Naam**|**Type**|**Vereist**|**Beschrijving**|
-|---|---|---|---|
-|location|string|Ja|De Azure-regio waarnaar u de oproep worden gerouteerd. Zie voor meer informatie, [Azure-regio's en Video Indexer](regions.md).|
-|accountID|string|Ja|Unieke id voor de account|
-|modelId|string|Ja|Id van het taalmodel waarin het bestand (gegenereerd wanneer het taalmodel wordt gemaakt).|
-|fileId|string|Ja|Id van het bestand dat moet worden bijgewerkt (gegenereerd wanneer het bestand geüpload bij het maken of bijwerken van het taalmodel is)|
-|accessToken|string|Ja|Toegangstoken (moet van het bereik [Account toegangstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) voor verificatie op basis van de aanroep. Toegangstokens verloopt binnen 1 uur.|
-
-### <a name="request-body"></a>Aanvraagbody
-
-Er is geen verdere aanvraagtekst vereist voor deze aanroep.
+De [meta gegevens van een bestands](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model) -API ophalen retourneert de inhoud van en meta gegevens van het opgegeven bestand uit het gekozen taal model in uw account.
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord bevat de inhoud en metagegevens van het bestand in JSON-indeling, ongeveer als volgt uit:
+Het antwoord bevat de inhoud en meta gegevens van het bestand in de JSON-indeling, vergelijkbaar met het volgende:
 
 ```json
 {
@@ -550,43 +288,16 @@ Het antwoord bevat de inhoud en metagegevens van het bestand in JSON-indeling, o
 ```
 
 > [!NOTE]
-> De inhoud van dit voorbeeld van een bestand zijn de woorden "Hallo" en de wereld"in twee afzonderlijke regels.
+> De inhoud van dit voorbeeld bestand is de woorden ' Hello ' en ' World ' in twee afzonderlijke regels.
 
-## <a name="download-a-file-from-a-language-model"></a>Een bestand downloaden van een taalmodel
+## <a name="download-a-file-from-a-language-model"></a>Een bestand downloaden van een taal model
 
-De volgende opdracht wordt een tekstbestand met de inhoud van het opgegeven bestand uit de opgegeven taalmodel in het opgegeven account gedownload. Dit bestand moet overeenkomen met de inhoud van het tekstbestand dat oorspronkelijk is geüpload.
-
-### <a name="request-url"></a>Aanvraag-URL
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}/download?accessToken={accessToken}
-```
-
-Hieronder vindt u de aanvraag in Curl.
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}/download?accessToken={accessToken}"
-```
- 
-[Zie de vereiste parameters en testen met behulp van de Video Indexer-Ontwikkelaarsportal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?).
-
-### <a name="request-parameters"></a>Aanvraagparameters 
-
-|**Naam**|**Type**|**Vereist**|**Beschrijving**|
-|---|---|---|---|
-|location|string|Ja|De Azure-regio waarnaar u de oproep worden gerouteerd. Zie voor meer informatie, [Azure-regio's en Video Indexer](regions.md).|
-|accountID|string|Ja|Unieke id voor de account|
-|modelId|string|Ja|Id van het taalmodel waarin het bestand (gegenereerd wanneer het taalmodel wordt gemaakt).|
-|fileId|string|Ja|Id van het bestand dat moet worden bijgewerkt (gegenereerd wanneer het bestand geüpload bij het maken of bijwerken van het taalmodel is)|
-|accessToken|string|Ja|Toegangstoken (moet van het bereik [Account toegangstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)) voor verificatie op basis van de aanroep. Toegangstokens verloopt binnen 1 uur.|
-
-### <a name="request-body"></a>Aanvraagbody 
-
-Er is geen verdere aanvraagtekst vereist voor deze aanroep.
+Het [downloaden van een bestand](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?) -API downloadt een tekst bestand met de inhoud van het opgegeven bestand uit het opgegeven taal model in het opgegeven account. Dit tekst bestand moet overeenkomen met de inhoud van het tekst bestand dat oorspronkelijk is geüpload.
 
 ### <a name="response"></a>Antwoord
 
-Het antwoord is het downloaden van een tekstbestand met de inhoud van het bestand in de JSON-indeling. 
+Het antwoord is het downloaden van een tekst bestand met de inhoud van het bestand in de JSON-indeling. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Taalmodel via de website aanpassen](customize-language-model-with-website.md)
+[Taal model aanpassen met website](customize-language-model-with-website.md)

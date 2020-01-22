@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 1cf9ce6d57c1e106472caeef6c1f2a4b008a09bd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 15a118dc72ae9ffc4b6c99b0e0b527a252d3ded8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277875"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293586"
 ---
 # <a name="release-notes"></a>Releaseopmerkingen
 
@@ -26,7 +26,7 @@ ms.locfileid: "76277875"
 
 - Conversatie met meerdere apparaten: u kunt meerdere apparaten verbinden met dezelfde spraak of op tekst gebaseerd gesprek en optioneel berichten vertalen die ertussen worden verzonden. Meer informatie vindt u in [dit artikel](multi-device-conversation.md). 
 - Ondersteuning voor trefwoord herkenning is toegevoegd voor Android. aar-pakket en er is ondersteuning toegevoegd voor x86-en x64-versies. 
-- Doel-C: `SendMessage`-en `SetMessageProperty`-methoden zijn toegevoegd aan het `Connection`-object. Raadpleeg [hier](https://docs.microsoft.com/objectivec/cognitive-services/speech/)de documentatie.
+- Doel-C: `SendMessage`-en `SetMessageProperty`-methoden zijn toegevoegd aan het `Connection`-object. Raadpleeg [hier](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxconnection)de documentatie.
 - De C++ TTS API ondersteunt nu `std::wstring` als synthese-tekst invoer, waarbij een wstring moet worden geconverteerd naar een teken reeks voordat deze wordt door gegeven aan de SDK. Bekijk [hier](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#speaktextasync)meer informatie. 
 - C#: [Taal-id](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) en [bron taal configuratie](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp) zijn nu beschikbaar.
 - Java script: een functie toegevoegd aan `Connection`-object om aangepaste berichten door te geven van de speech-service als call back `receivedServiceMessage`.

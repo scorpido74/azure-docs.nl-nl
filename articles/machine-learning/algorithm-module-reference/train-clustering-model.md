@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 57cf5bab2afe58ed802ef5ec03c316f1ebec6673
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1f1a508e6188b68f932993eb60e13228b56f8e7e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232580"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313941"
 ---
 # <a name="train-clustering-model"></a>Clustermodel trainen
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om een cluster model te trainen.
 
@@ -49,10 +49,7 @@ De module heeft een niet-getraind cluster model dat u al hebt geconfigureerd met
 
 Nadat de training is voltooid:
 
-
-+  Als u de waarden in de gegevensset wilt weer geven, klikt u met de rechter muisknop op de module, selecteert u **resultaat gegevens sets**en klikt u op **visualiseren**.
-
-+ Als u het getrainde model voor later gebruik wilt opslaan, klikt u met de rechter muisknop op de module, selecteert u **getraind model**en klikt u op **Opslaan als getraind model**.
++ Als u een moment opname van het getrainde model wilt opslaan, selecteert u het tabblad **uitvoer** in het rechterdeel venster van de module **Train model** . Selecteer het pictogram **gegevensset registreren** om het model als een herbruikbare module op te slaan.
 
 + Als u scores wilt genereren op basis van het model, gebruikt u [gegevens toewijzen aan clusters](assign-data-to-clusters.md).
 

@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/20/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2bf769169b579cb0a06a48b3a5998efb89eb8fb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 843dd403bc5434e2c79ee0bb85eb781b56bf3ec9
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443334"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291444"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met workday
 
@@ -42,7 +41,11 @@ U hebt de volgende items nodig om aan de slag te gaan:
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. Workday ondersteunt door **SP** geïnitieerde SSO.
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+
+* Workday ondersteunt door **SP** geïnitieerde SSO.
+
+* Wanneer u de werkdag hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-workday-from-the-gallery"></a>Workday toevoegen vanuit de galerie
 
@@ -244,7 +247,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ### <a name="create-workday-test-user"></a>Test gebruiker voor workday maken
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in workday. Werk samen met het [werkdag-client ondersteunings team](https://www.workday.com/en-us/partners-services/services/support.html) om de gebruikers toe te voegen in het workday-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie maakt u een gebruiker met de naam B. Simon in workday. Werk samen met het [werkdag-client ondersteunings team](https://www.workday.com/partners-services/services/support.html) om de gebruikers toe te voegen in het workday-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ## <a name="test-sso"></a>SSO testen
 
@@ -259,3 +262,7 @@ Wanneer u de tegel werkdag selecteert in het toegangs venster, moet u automatisc
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Workday proberen met Azure AD](https://aad.portal.azure.com)
+
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-workday)
+
+- [Workday beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

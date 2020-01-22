@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cb2da2214cd5fab378368a363e6f18e02626b9d8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: dfa07b3df7071ed99a02b854ff41ad6a5137c8dc
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373106"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292838"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-figma"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Figma
 
@@ -85,22 +85,22 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://www.figma.com/saml/<TENANT ID>`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://www.figma.com/saml/<TENANT ID>/consume`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://www.figma.com/saml/<TENANT ID>/consume`
 
 1. Klik op **Extra URL's instellen** en voer de volgende stap uit als u de toepassing in de door **SP** geïnitieerde modus wilt configureren:
 
-    In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://www.figma.com/saml/<TENANT ID>/start`
+    In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://www.figma.com/saml/<TENANT ID>/start`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. U krijgt de `TENANT ID` van stap 11 van Figma artikel [configure Azure Active Directory SAML SSO process](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso).
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke-id, de antwoord-URL en de aanmeldings-URL. U krijgt de `TENANT ID` uit stap 11 van Figma artikel [configure Azure Active Directory SAML SSO process](https://help.figma.com/hc/en-us/articles/360040532413-Configure-and-Provision-SAML-SSO-with-Azure-Active-Directory).
 
 1. In de Figma-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![image](common/default-attributes.png)
+    ![installatiekopie](common/default-attributes.png)
 
 1. Daarnaast verwacht Figma toepassing nog maar weinig kenmerken die worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
 
-    | Naam | Bronkenmerk|
+    | Name | Bronkenmerk|
     | ---------------| --------- |
     | `externalId` | `user.mailnickname` |
     | `displayName` | `user.displayname` |
@@ -121,8 +121,8 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-   1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **Naam**`B.Simon` in.  
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Maken**.
 
@@ -146,7 +146,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-figma-sso"></a>Figma SSO configureren
 
-Als u eenmalige aanmelding wilt configureren op Figma, moet u het artikel van de Figma volgen [Azure Active Directory SAML SSO-proces configureren](https://help.figma.com/article/243-configure-azure-active-directory-saml-sso).
+Als u eenmalige aanmelding wilt configureren op Figma, moet u het artikel van de Figma volgen [Azure Active Directory SAML SSO-proces configureren](https://help.figma.com/hc/en-us/articles/360040532413-Configure-and-Provision-SAML-SSO-with-Azure-Active-Directory).
 
 ### <a name="create-figma-test-user"></a>Figma-testgebruiker maken
 

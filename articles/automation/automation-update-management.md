@@ -3,14 +3,14 @@ title: Updatebeheer oplossing in azure
 description: In dit artikel wordt beschreven hoe u de Azure Updatebeheer-oplossing gebruikt voor het beheren van updates voor uw Windows-en Linux-computers.
 services: automation
 ms.subservice: update-management
-ms.date: 01/14/2020
+ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0cf47538f7db1cef629c2b58a9fbde16640a50ae
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 4efe9fe8dd1f006cb21c60c4c0e086264af26561
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945129"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310098"
 ---
 # <a name="update-management-solution-in-azure"></a>Updatebeheer oplossing in azure
 
@@ -71,8 +71,9 @@ De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor u
 
 |Besturingssysteem  |Opmerkingen  |
 |---------|---------|
-|Windows Server 2019 (Data Center/Data Center core/Standard)<br><br>Windows Server 2016 (Data Center/Data Center core/Standard)<br><br>Windows Server 2012 R2 (Data Center/Standard)<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 (RTM en SP1 Standard)||
-|CentOS 6 (x86/x64) en 7 (x64)      | Linux-agents moeten toegang hebben tot een opslagplaats voor updates. Voor op classificatie gebaseerde patches is `yum` vereist om beveiligings gegevens te retour neren die CentOS niet hebben in de RTM-releases. Zie [Update classificaties in Linux](#linux-2)voor meer informatie over op CentOS gebaseerde patches op basis van classificatie.          |
+|Windows Server 2019 (Data Center/Data Center core/Standard)<br><br>Windows Server 2016 (Data Center/Data Center core/Standard)<br><br>Windows Server 2012 R2 (Data Center/Standard)<br><br>Windows Server 2012 || 
+|Windows Server 2008 R2 (RTM en SP1 Standard)| Updatebeheer biedt alleen ondersteuning voor het uitvoeren van evaluaties voor dit besturings systeem. patching wordt niet ondersteund omdat de [Hybrid Runbook worker](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) niet wordt ondersteund voor Windows Server 2008 R2. |
+|CentOS 6 (x86/x64) en 7 (x64)      | Linux-agents moeten toegang hebben tot een opslagplaats voor updates. Voor op classificatie gebaseerde patches is `yum` vereist om beveiligings gegevens te retour neren die CentOS niet hebben in de RTM-releases. Zie [Update classificaties in Linux](automation-view-update-assessments.md#linux-2)voor meer informatie over op CentOS gebaseerde patches op basis van classificatie.          |
 |Red Hat Enterprise 6 (x86/x64) en 7 (x64)     | Linux-agents moeten toegang hebben tot een opslagplaats voor updates.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) en 12 (x64)     | Linux-agents moeten toegang hebben tot een opslagplaats voor updates.        |
 |Ubuntu 14,04 LTS, 16,04 LTS en 18,04 (x86/x64)      |Linux-agents moeten toegang hebben tot een opslagplaats voor updates.         |
@@ -190,56 +191,6 @@ Zie [Hybrid worker Role ports](automation-hybrid-runbook-worker.md#hybrid-worker
 U wordt aangeraden de adressen te gebruiken die worden weer gegeven bij het definiëren van uitzonde ringen. Voor IP-adressen kunt u de [IP-adresbereiken van Microsoft Azure Data Center](https://www.microsoft.com/download/details.aspx?id=41653)downloaden. Dit bestand wordt wekelijks bijgewerkt en weerspiegelt de huidige geïmplementeerde bereiken en eventuele toekomstige wijzigingen in de IP-bereiken.
 
 Volg de instructies in [computers verbinden zonder Internet toegang](../azure-monitor/platform/gateway.md) voor het configureren van computers die geen toegang tot internet hebben.
-
-## <a name="view-update-assessments"></a>Update-evaluaties bekijken
-
-Selecteer in uw Automation-account **updatebeheer** om de status van uw computers weer te geven.
-
-Deze weer gave bevat informatie over uw computers, ontbrekende updates, update-implementaties en geplande update-implementaties. In de kolom **compatibiliteit** ziet u de laatste keer dat de computer is geëvalueerd. In de **gereedheids** kolom van de Update-Agent kunt u de status van de Update Agent controleren. Als er een probleem is, selecteert u de koppeling om naar probleemoplossings documentatie te gaan waarmee u het probleem kunt verhelpen.
-
-Als u een zoek opdracht in het logboek wilt uitvoeren die informatie over de computer, update of implementatie retourneert, selecteert u het bijbehorende item in de lijst. Het deel venster **Zoeken in Logboeken** wordt geopend met een query voor het geselecteerde item:
-
-![Standaard weergave Updatebeheer](media/automation-update-management/update-management-view.png)
-
-## <a name="view-missing-updates"></a>Ontbrekende updates weer geven
-
-Selecteer **ontbrekende updates** om de lijst met updates weer te geven die ontbreken op uw computers. Elke update wordt weer gegeven en kan worden geselecteerd. Informatie over het aantal machines dat moet worden bijgewerkt, het besturings systeem en een koppeling voor meer informatie wordt weer gegeven. In het deel venster **Zoeken in Logboeken** ziet u meer informatie over de updates.
-
-![Ontbrekende updates](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
-
-## <a name="update-classifications"></a>Updateclassificaties
-
-De volgende tabellen geven een lijst van de update classificaties in Updatebeheer, met een definitie voor elke classificatie.
-
-### <a name="windows"></a>Windows
-
-|Classificatie  |Beschrijving  |
-|---------|---------|
-|Essentiële updates     | Een update voor een specifiek probleem dat betrekking heeft op een kritieke bug die niet aan beveiliging voldoet.        |
-|Beveiligingsupdates     | Een update voor een productspecifiek, beveiligings probleem.        |
-|Updatepakketten     | Een cumulatieve set met hotfixes die samen zijn verpakt voor een eenvoudige implementatie.        |
-|Functiepakketten     | Nieuwe product functies die worden gedistribueerd buiten een product release.        |
-|Servicepacks     | Een cumulatieve set met hotfixes die op een toepassing worden toegepast.        |
-|Definitie-updates     | Een update van virus-of andere definitie bestanden.        |
-|Tools     | Een hulp programma of functie waarmee u een of meer taken kunt volt ooien.        |
-|Updates     | Een update voor een toepassing of bestand dat momenteel is geïnstalleerd.        |
-
-### <a name="linux-2"></a>Linux
-
-|Classificatie  |Beschrijving  |
-|---------|---------|
-|Essentiële en beveiligingsupdates     | Updates voor een specifiek probleem of een productspecifiek beveiligings probleem.         |
-|Andere Updates     | Alle andere updates die niet kritiek zijn of die geen beveiligings updates zijn.        |
-
-Voor Linux kan Updatebeheer een onderscheid maken tussen essentiële updates en beveiligings updates in de Cloud, terwijl evaluatie gegevens worden weer gegeven vanwege gegevens verrijking in de Cloud. Voor patching is Updatebeheer afhankelijk van de classificatie gegevens die op de computer beschikbaar zijn. In tegens telling tot andere distributies is CentOS deze informatie niet beschikbaar in de RTM-versie. Als er CentOS machines zijn geconfigureerd voor het retour neren van beveiligings gegevens voor de volgende opdracht, kunt Updatebeheer patch op basis van classificaties.
-
-```bash
-sudo yum -q --security check-update
-```
-
-Er is momenteel geen ondersteunde methode voor het inschakelen van systeem eigen classificatie-gegevens beschikbaarheid op CentOS. Op dit moment wordt alleen ondersteuning voor de beste werk belasting gegeven aan klanten die deze zelf kunnen hebben ingeschakeld. 
-
-Als u updates wilt classificeren voor Red Hat Enter prise versie 6, moet u de yum-beveiligings-invoeg toepassing installeren. Op Red Hat Enterprise Linux 7 maakt de invoeg toepassing al deel uit van yum. u hoeft niets te installeren. Zie het volgende Red Hat [Knowledge-artikel](https://access.redhat.com/solutions/10021)voor meer informatie.
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integreren met System Center Configuration Manager
 

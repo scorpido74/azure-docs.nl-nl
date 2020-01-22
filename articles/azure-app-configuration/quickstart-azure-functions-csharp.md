@@ -2,17 +2,17 @@
 title: Quickstart voor Azure-app-configuratie met Azure Functions | Microsoft Docs
 description: Een quickstart voor het gebruik van Azure-app-configuratie met Azure Functions.
 services: azure-app-configuration
-author: yegu-ms
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.author: yegu
-ms.openlocfilehash: 3c8dc27b9d7781a8420fa76e5aeac9637b87c569
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 1/9/2019
+ms.author: lcozzens
+ms.openlocfilehash: 268e6c5a999244eb643990143d1102d129b7af68
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75413764"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310053"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Snelstartgids: een Azure Functions-app maken met Azure-app configuratie
 
@@ -45,7 +45,7 @@ In deze Snelstartgids neemt u de Azure-app Configuration-service op in een Azure
 1. Klik met de rechter muisknop op het project en selecteer **NuGet-pakketten beheren**. Zoek op het tabblad **Bladeren** naar de volgende NuGet-pakketten en voeg deze toe aan uw project. Als u deze niet kunt vinden, schakelt u het selectie vakje **include Prerelease** in.
 
     ```
-    Microsoft.Extensions.Configuration.AzureAppConfiguration 2.1.0-preview-010380001-1099 or later
+    Microsoft.Extensions.Configuration.AzureAppConfiguration 3.0.0-preview-010550001-251 or later
     ```
 
 2. Open *Function1.cs*en voeg de naam ruimten van de .net core-configuratie en de configuratie provider voor de configuratie van de app toe.

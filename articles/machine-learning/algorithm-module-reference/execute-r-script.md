@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 11/19/2019
-ms.openlocfilehash: dce4fee57a6d712534ba265cc932e10e66fc9899
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0be7e1ac0f505f227c46e63a80a954a5dd176d66
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232641"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312274"
 ---
 # <a name="execute-r-script"></a>R-Script uitvoeren
 
-In dit artikel wordt beschreven hoe u de **script module Execute** r gebruikt voor het uitvoeren van r-code in uw Azure machine learning Designer (preview)-pijp lijn.
+In dit artikel wordt beschreven hoe u de **script module Execute** r gebruikt voor het uitvoeren van r-code in uw Azure machine learning Designer-pijp lijn.
 
 Met R kunt u taken uitvoeren die momenteel niet worden ondersteund door bestaande modules, zoals: 
 - Aangepaste gegevens transformaties maken
@@ -260,130 +260,130 @@ De huidige lijst met vooraf geïnstalleerde R-pakketten die beschikbaar zijn voo
 | askpass      | 1.1        | 
 | assertthat   | 0.2.1      | 
 | backports    | 1.1.4      | 
-| Baseer         | 3.5.1      | 
-| base64enc    | 0,1-3      | 
+| basis         | 3.5.1      | 
+| base64enc    | 0.1-3      | 
 | BH           | 1.69.0-1   | 
-| Binder        | 0.1.1      | 
+| bindr        | 0.1.1      | 
 | bindrcpp     | 0.2.2      | 
 | bitops       | 1.0-6      | 
-| modus         | 1,3-22     | 
+| boot         | 1,3-22     | 
 | broom        | 0.5.2      | 
-| aanroeper        | 3.2.0      | 
-| verplaatsen        | 6.0-84     | 
+| callr        | 3.2.0      | 
+| caret        | 6.0-84     | 
 | caTools      | 1.17.1.2   | 
-| CellRange   | 1.1.0      | 
+| cellranger   | 1.1.0      | 
 | Klasse        | 7.3-15     | 
 | cli          | 1.1.0      | 
 | Cliper        | 0.6.0      | 
 | cluster      | 2.0.7-1    | 
 | codetools    | 0,2-16     | 
 | colorspace   | 1.4-1      | 
-| Programma's     | 3.5.1      | 
-| potloden       | 1.3.4      | 
+| compiler     | 3.5.1      | 
+| crayon       | 1.3.4      | 
 | curl         | 3,3        | 
-| data. table   | 1.12.2     | 
+| data.table   | 1.12.2     | 
 | datasets     | 3.5.1      | 
 | DBI          | 1.0.0      | 
 | dbplyr       | 1.4.1      | 
 | digest       | 0.6.19     | 
 | dplyr        | 0.7.6      | 
 | e1071        | 1.7-2      | 
-| evalueren     | 0,14       | 
+| evalueren     | 0.14       | 
 | fansi        | 0.4.0      | 
 | forcats      | 0.3.0      | 
 | foreach      | 1.4.4      | 
-| ForeignName      | 0,8-71     | 
+| foreign      | 0,8-71     | 
 | be           | 1.3.1      | 
 | gdata        | 2.18.0     | 
 | algemene typen     | 0.0.2      | 
 | ggplot2      | 3.2.0      | 
 | glmnet       | 2,0-18     | 
-| Daardoor         | 1.3.1      | 
+| glue         | 1.3.1      | 
 | gower        | 0.2.1      | 
 | gplots       | 3.0.1.1    | 
-| PNG     | 3.5.1      | 
+| afbeeldingen     | 3.5.1      | 
 | grDevices    | 3.5.1      | 
-| YRaster         | 3.5.1      | 
+| grid         | 3.5.1      | 
 | gtable       | 0.3.0      | 
 | gtools       | 3.8.1      | 
-| recent        | 2.1.0      | 
-| hoger        | 0,8        | 
+| haven        | 2.1.0      | 
+| highr        | 0,8        | 
 | hms          | 0.4.2      | 
-| HTML-bestand    | 0.3.6      | 
+| htmltools    | 0.3.6      | 
 | httr         | 1.4.0      | 
 | ipred        | 0,9-9      | 
 | iterators    | 1.0.10     | 
 | jsonlite     | 1.6        | 
 | KernSmooth   | 2.23-15    | 
 | knitr        | 1,23       | 
-| Labels     | 0,3        | 
-| raster      | 0,20-38    | 
-| Lava         | 1.6.5      | 
+| labeling     | 0,3        | 
+| lattice      | 0,20-38    | 
+| lava         | 1.6.5      | 
 | lazyeval     | 0.2.2      | 
 | lubridate    | 1.7.4      | 
 | magrittr     | 1.5        | 
 | markdown     | 1          | 
-| KANSDICHTHEIDS         | 7.3-51.4   | 
-| Overzicht       | 1.2-17     | 
-| technieken      | 3.5.1      | 
+| MASS         | 7.3-51.4   | 
+| Matrix       | 1.2-17     | 
+| methoden      | 3.5.1      | 
 | mgcv         | 1.8-28     | 
-| -         | 0,7        | 
+| mime         | 0,7        | 
 | ModelMetrics | 1.2.2      | 
-| Modeler       | 0.1.4      | 
+| modelr       | 0.1.4      | 
 | munsell      | 0.5.0      | 
 | nlme         | 3.1-140    | 
 | nnet         | 7.3-12     | 
 | numDeriv     | 2016.8-1.1 | 
 | openssl      | 1.4        | 
 | parallel     | 3.5.1      | 
-| tweede       | 1.4.1      | 
+| pillar       | 1.4.1      | 
 | pkgconfig    | 2.0.2      | 
 | plogr        | 0.2.0      | 
 | plyr         | 1.8.4      | 
 | prettyunits  | 1.0.2      | 
-| proces-x     | 3.3.1      | 
+| processx     | 3.3.1      | 
 | prodlim      | 2018.04.18 | 
-| gang     | 1.2.2      | 
+| progress     | 1.2.2      | 
 | ps           | 1.3.0      | 
 | purrr        | 0.3.2      | 
-| quadprog     | 1,5-7      | 
-| quantmod     | 0,4-15     | 
+| quadprog     | 1.5-7      | 
+| quantmod     | 0.4-15     | 
 | R6           | 2.4.0      | 
 | randomForest | 4.6-14     | 
 | RColorBrewer | 1.1-2      | 
 | Rcpp         | 1.0.1      | 
 | RcppRoll     | 0.3.0      | 
-| Lees bewerking        | 1.3.1      | 
+| readr        | 1.3.1      | 
 | readxl       | 1.3.1      | 
 | recepten      | 0.1.5      | 
-| opnieuw zoeken      | 1.0.1      | 
+| rematch      | 1.0.1      | 
 | reprex       | 0.3.0      | 
 | reshape2     | 1.4.3      | 
-| reticulate   | 1,12       | 
+| reticulate   | 1.12       | 
 | rlang        | 0.4.0      | 
-| rmarkdown    | 1,13       | 
+| rmarkdown    | 1.13       | 
 | ROCR         | 1.0-7      | 
 | rpart        | 4.1-15     | 
 | rstudioapi   | 0.1        | 
 | rvest        | 0.3.4      | 
-| schalen       | 1.0.0      | 
-| kiezer      | 0,4-1      | 
-| ruimtelijke      | 7.3-11     | 
+| scales       | 1.0.0      | 
+| selectr      | 0.4-1      | 
+| spatial      | 7.3-11     | 
 | splines      | 3.5.1      | 
 | SQUAREM      | 2017.10-1  | 
-| statistieken        | 3.5.1      | 
+| stats        | 3.5.1      | 
 | stats4       | 3.5.1      | 
 | stringi      | 1.4.3      | 
-| teken reeks      | 1.3.1      | 
-| Survival     | 2.44-1.1   | 
-| laden          | 3,2        | 
+| stringr      | 1.3.1      | 
+| survival     | 2.44-1.1   | 
+| sys          | 3,2        | 
 | tcltk        | 3.5.1      | 
 | tibble       | 2.1.3      | 
-| opruimen        | 0.8.3      | 
+| tidyr        | 0.8.3      | 
 | tidyselect   | 0.2.5      | 
 | tidyverse    | 1.2.1      | 
 | timeDate     | 3043.102   | 
-| tinytex      | 0,13       | 
+| tinytex      | 0.13       | 
 | hulpprogramma's        | 3.5.1      | 
 | tseries      | 0,10-47    | 
 | TTR          | 0.23-4     | 
@@ -391,14 +391,14 @@ De huidige lijst met vooraf geïnstalleerde R-pakketten die beschikbaar zijn voo
 | utils        | 3.5.1      | 
 | vctrs        | 0.1.0      | 
 | viridisLite  | 0.3.0      | 
-| whisker      | 0,3-2      | 
-| met de        | 2.1.2      | 
+| whisker      | 0.3-2      | 
+| withr        | 2.1.2      | 
 | xfun         | 0,8        | 
 | xml2         | 1.2.0      | 
-| XTS          | 0,11-2     | 
+| xts          | 0,11-2     | 
 | yaml         | 2.2.0      | 
 | zeallot      | 0.1.0      | 
-| dieren          | 1.8-6      | 
+| zoo          | 1.8-6      | 
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 12/27/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8a8f3895f41ac987b934b86f8d646b281c37c93
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 79f5284f95f6157c70461179177179a9fbee4fe0
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561971"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293688"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met ServiceNow
 
@@ -46,9 +46,15 @@ U hebt de volgende items nodig om aan de slag te gaan:
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. ServiceNow ondersteunt door **SP** geïnitieerde SSO en [geautomatiseerde gebruikers inrichting](servicenow-provisioning-tutorial.md).
+In deze zelf studie configureert en test u Azure AD SSO in een test omgeving. 
 
-U kunt de klassieke ServiceNow-toepassing (Mobile) configureren met Azure AD voor het inschakelen van SSO. Het ondersteunt zowel Android-als iOS-gebruikers. In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+* ServiceNow ondersteunt door **SP** geïnitieerde SSO.
+
+* ServiceNow ondersteunt [geautomatiseerde gebruikers inrichting](servicenow-provisioning-tutorial.md).
+
+* Zodra u de ServiceNow hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waardoor de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+
+* U kunt de klassieke ServiceNow-toepassing (Mobile) configureren met Azure AD voor het inschakelen van SSO. Het ondersteunt zowel Android-als iOS-gebruikers. In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
 ## <a name="add-servicenow-from-the-gallery"></a>ServiceNow toevoegen vanuit de galerie
 
@@ -460,3 +466,7 @@ Wanneer u de tegel ServiceNow in het toegangs venster selecteert, wordt u automa
 - [Gebruikers inrichten configureren](servicenow-provisioning-tutorial.md)
 
 - [Probeer ServiceNow met Azure AD](https://aad.portal.azure.com)
+
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
+
+- [ServiceNow beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

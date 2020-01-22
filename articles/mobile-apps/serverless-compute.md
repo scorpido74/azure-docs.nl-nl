@@ -8,12 +8,12 @@ ms.assetid: 444f0959-aa7f-472c-a6c7-9eecea3a34b9
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: d59cca4b5c956134516aa2c8066894aa14e5d33d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ec7091a32a1be8d875e16d8e0a9b20b5e80de387
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453109"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291954"
 ---
 # <a name="build-mobile-back-end-components-with-compute-services"></a>Mobiele back-end-onderdelen bouwen met Compute-Services
 Voor elke mobiele toepassing is een back-end nodig die verantwoordelijk is voor gegevens opslag, bedrijfs logica en beveiliging. Voor het beheren van de infra structuur voor het hosten en uitvoeren van back-end-code moet u meerdere servers verg Roten of verkleinen, inrichten en schalen. U moet ook updates van het besturings systeem en de betrokken hardware beheren en beveiligings patches Toep assen. Vervolgens moet u al deze onderdelen van de infra structuur bewaken voor prestaties, Beschik baarheid en fout tolerantie. 
@@ -36,7 +36,7 @@ Gebruik de volgende services om serverloze reken mogelijkheden in uw mobiele app
 - Het gebruik van gebeurtenissen en schaal baarheid waarbij u triggers en bindingen kunt gebruiken om te definiëren wanneer een functie wordt aangeroepen en welke gegevens er worden verbonden.
 - Breng uw eigen afhankelijkheden, want functies bieden ondersteuning voor NuGet en NPM, zodat u uw favoriete bibliotheken kunt gebruiken.
 - Geïntegreerde beveiliging, zodat u met HTTP geactiveerde functies kunt beveiligen met OAuth-providers zoals Azure Active Directory, Facebook, Google, Twitter en micro soft-account.
-- Vereenvoudigde integratie met verschillende [Azure-Services](/azure/azure-functions/functions-overview#integrations) en software als een service (SaaS)-aanbiedingen.
+- Vereenvoudigde integratie met verschillende [Azure-Services](/azure/azure-functions/functions-overview) en software als een service (SaaS)-aanbiedingen.
 - Flexibele ontwikkeling, zodat u uw functies rechtstreeks kunt coderen in de Azure Portal, een continue integratie instellen en uw code implementeert via GitHub, Azure DevOps Services en andere ondersteunde ontwikkel Programma's.
 - Functions runtime is open source en beschikbaar op [github](https://github.com/azure/azure-webjobs-sdk-script).
 - Verbeterde ontwikkel ervaring waarbij u lokaal kunt coderen, testen en fouten opsporen met behulp van de voorkeurs editor of de gebruiks vriendelijke webinterface met bewaking met geïntegreerde hulpprogram ma's en ingebouwde DevOps-functies.

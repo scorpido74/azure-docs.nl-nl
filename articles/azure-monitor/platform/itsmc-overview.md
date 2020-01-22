@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: JYOTHIRMAISURI
 ms.author: v-jysur
 ms.date: 05/24/2018
-ms.openlocfilehash: efb4e4f68935898c083c1dbca6a6c64512544095
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 83d5b7ffb49a08d02d5dd34ad561ce725ead7e0e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263469"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289132"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Verbinding maken tussen Azure en ITSM-hulpprogram ma's met behulp van IT Service Management-connector
 
@@ -58,7 +58,7 @@ Voordat u een verbinding kunt maken, moet u de ITSM-connector-oplossing toevoege
 3. Selecteer in de sectie **OMS-werk ruimte** de Azure log Analytics-werk ruimte waar u de oplossing wilt installeren.
    >[!NOTE]
    > * Als onderdeel van de doorlopende overgang van Microsoft Operations Management Suite (OMS) naar Azure Monitor worden OMS-werk ruimten nu aangeduid als Log Analytics.
-   > * De ITSM-connector kan alleen worden geïnstalleerd in Log Analytics-werk ruimten in de volgende regio's: VS-Oost, Europa-west, Zuidoost-Azië, Zuidoost-Australië, VS-West-Centraal, Oost-Japan, Zuid-Brittannië, Centraal-India, Centraal-Canada, West VS2, Zuid-Centraal vs.
+   > * De ITSM-connector kan alleen worden geïnstalleerd in Log Analytics-werk ruimten in de volgende regio's: VS-Oost, West VS2, Zuid-Centraal VS, West-Centraal VS, Centraal-Canada, Europa-west, Zuid-Brittannië, Zuidoost-Azië, Oost-Japan, Centraal-India, Zuidoost-Australië.
 
 4. Selecteer in de sectie **OMS-werk ruimte** de ResourceGroup waar u de oplossings resource wilt maken.
 

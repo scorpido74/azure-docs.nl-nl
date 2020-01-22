@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 285456c87835344aba083c68a7876ecc78d9e45e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 09ae896d26d534d3f9d5651834e181d37581c8f3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76270558"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288950"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory integratie voor Azure Red Hat open Shift
 
@@ -90,8 +90,8 @@ Zie [een app registreren bij het Azure Active Directory v 1.0-eind punt](https:/
 ## <a name="add-api-permissions"></a>API-machtigingen toevoegen
 
 1. Klik in de sectie **beheren** op **API-machtigingen**.
-2. Klik op **machtiging toevoegen** en selecteer **Azure Active Directory Graph** vervolgens **gedelegeerde machtigingen**
-3. Vouw de **gebruiker** uit op de onderstaande lijst en controleer of **User. Read** is ingeschakeld.
+2. Klik op **machtiging toevoegen** en selecteer **Azure Active Directory Graph** vervolgens **gedelegeerde machtigingen**. 
+3. Vouw de **gebruiker** uit op de onderstaande lijst en schakel de machtiging **gebruiker. Read** in. Als **User. Read** standaard is ingeschakeld, moet u ervoor zorgen dat het de **Azure Active Directory Graph** permission **gebruiker. Read**, *niet* de **Microsoft Graph** permission **gebruiker. Read**.
 4. Schuif omhoog en selecteer **toepassings machtigingen**.
 5. Vouw **map** in de onderstaande lijst uit en Schakel **Directory. ReadAll in.**
 6. Klik op **machtigingen toevoegen** om de wijzigingen te accepteren.

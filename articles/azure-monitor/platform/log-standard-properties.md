@@ -7,18 +7,18 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: 31a6c53ec269c512ad641fcdc10469ccf16a1fe9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 514f98d95090f978395dd3f7decdcc0743a1628a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979746"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289149"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Standaard eigenschappen in Azure Monitor logboeken
 Gegevens in Azure Monitor logboeken worden [opgeslagen als een set records in een log Analytics werk ruimte of Application Insights toepassing](../log-query/logs-structure.md), elk met een bepaald gegevens type met een unieke set eigenschappen. Veel gegevens typen hebben standaard eigenschappen die gemeen schappelijk zijn voor meerdere typen. In dit artikel worden deze eigenschappen beschreven en vindt u voor beelden van hoe u deze kunt gebruiken in query's.
 
 > [!NOTE]
-> Sommige van de standaard-PERT-versies worden niet weer gegeven in de schema weergave of IntelliSense in Log Analytics en ze worden niet weer gegeven in query resultaten tenzij u de eigenschap expliciet opgeeft in de uitvoer.
+> Sommige van de standaard eigenschappen worden niet weer gegeven in de schema weergave of IntelliSense in Log Analytics en ze worden niet weer gegeven in query resultaten tenzij u de eigenschap expliciet opgeeft in de uitvoer.
 
 ## <a name="timegenerated-and-timestamp"></a>TimeGenerated en tijds tempel
 De eigenschappen van de **TimeGenerated** (log Analytics-werk ruimte) en de **Time Stamp** -eigenschap (Application Insights toepassing) bevatten de datum en tijd waarop de record is gemaakt door de gegevens bron. Zie [opname tijd van logboek gegevens in azure monitor](data-ingestion-time.md) voor meer informatie.

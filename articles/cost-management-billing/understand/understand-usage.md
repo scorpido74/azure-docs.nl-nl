@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 93fad58e971d761f626b79dc68f9576ccc2e1892
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a68393b2852f8ddc758e2a47b9e1b5d94befb7b4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75993997"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290135"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Meer informatie over de gebruiksvoorwaarden in uw bestand voor Azure-gebruik en -kosten
 
@@ -71,7 +71,7 @@ InvoiceSectionId<sup>1</sup> | EA, MCA | De unieke id voor de EA-afdeling of het
 InvoiceSectionName | EA, MCA | De naam voor de EA-afdeling of het MCA-factuurgedeelte.
 IsAzureCreditEligible | Alles | Geeft aan of de kosten in aanmerking komen voor betaling voor het gebruik van Azure-tegoed (waarden: True, false).
 Locatie | MCA | De locatie van het datacenter waarop de resource wordt uitgevoerd.
-MeterCategory | Alles | Naam van de classificatiecategorie voor de meter. Bijvoorbeeld *Cloudservices* en *Netwerken*.
+MeterCategory | Alles | De naam van de classificatiecategorie voor de meter. Bijvoorbeeld *Cloudservices* en *Netwerken*.
 MeterId<sup>1</sup> | Alles | De unieke id voor de meter.
 MeterName | Alles | De naam van de meter.
 MeterRegion | Alles | De naam van de datacenterlocatie voor services waarvan de prijs wordt bepaald aan de hand van de locatie. Zie Locatie.
@@ -90,11 +90,11 @@ PublisherType | Alles | Type Uitgever (waarden: **Azure**, **AWS**, **Marketplac
 Hoeveelheid | Alles | Het aantal eenheden dat is aangeschaft of verbruikt.
 ReservationId | EA, MCA | De unieke id voor de aangeschafte reserveringsinstantie.
 ReservationName | EA, MCA | De naam voor de aangeschafte reserveringsinstantie.
-ResourceGroup | Alles | De naam van de [resourcegroep](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) waarin de resource zich bevindt.
+ResourceGroup | Alles | De naam van de [resourcegroep](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) waarin de resource zich bevindt. Niet alle kosten zijn afkomstig van resources die zijn geïmplementeerd op resource groepen. Kosten die geen resource groep hebben, worden weer gegeven als null/leeg, **anderen**of **niet van toepassing**.
 ResourceId<sup>1</sup> | Alles | De unieke id van de [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources)-resource.
 ResourceLocation | Alles | De locatie van het datacenter waarop de resource wordt uitgevoerd. Zie Locatie.
-ResourceName | EA, PAYG | De naam van de resource.
-ResourceType | MCA | Het type resource-instantie.
+ResourceName | EA, PAYG | De naam van de resource. Niet alle kosten zijn afkomstig van geïmplementeerde resources. Kosten die geen resource type hebben, worden weer gegeven als null/leeg, **anderen**of **niet van toepassing**.
+ResourceType | MCA | Het type resource-instantie. Niet alle kosten zijn afkomstig van geïmplementeerde resources. Kosten die geen resource type hebben, worden weer gegeven als null/leeg, **anderen**of **niet van toepassing**.
 ServiceFamily | MCA | De servicereeks waarvan de service deel uitmaakt.
 ServiceInfo1 | Alles | Servicespecifieke metagegevens.
 ServiceInfo2 | Alles | Een verouderd veld met optionele, servicespecifieke metagegevens.

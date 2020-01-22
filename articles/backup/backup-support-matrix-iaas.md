@@ -3,12 +3,12 @@ title: Ondersteuningsmatrix voor back-up van Azure-VM
 description: Hierin wordt een overzicht gegeven van de ondersteunings instellingen en beperkingen bij het maken van back-ups van virtuele Azure-machines met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 36fbc4813cdc9849b77e8309c97a2d42511a31d0
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: c57f625e7f44dc5de6a801ec93bad5433e9a9a66
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829541"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294283"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Ondersteuningsmatrix voor back-up van Azure-VM
 
@@ -31,6 +31,18 @@ Directe back-ups van virtuele Azure-machines (alleen Windows)  | Maak een back-u
 Back-up van Azure VM maken op back-upserver  | Back-ups maken van bestanden/mappen/volumes; systeem status/bare metal bestanden; App-gegevens naar System Center DPM of naar Microsoft Azure Backup-Server (MABS).<br/><br/> DPM-MABS maakt vervolgens een back-up van de back-upkluis. | Installeer de DPM/MABS Protection-agent op de VM. De MARS-agent is geïnstalleerd op DPM-MABS.| Bestanden/mappen/volumes herstellen; systeem status/bare metal bestanden; App-gegevens.
 
 Meer informatie over back-ups [met behulp van een back-upserver](backup-architecture.md#architecture-back-up-to-dpmmabs) en over [ondersteunings vereisten](backup-support-matrix-mabs-dpm.md).
+
+>[!NOTE]
+> Azure Backup ondersteunt nu selectieve back-up en herstel met behulp van de back-upoplossing van Azure virtual machine.
+>
+>Momenteel biedt Azure Backup ondersteuning voor het maken van back-ups van alle schijven (besturings systeem en gegevens) in een virtuele machine met behulp van de back-upoplossing van de VM. Met de functionaliteit voor uitsluiten van schijven krijgt u een optie om een back-up te maken van een of enkele van de vele gegevens schijven in een VM. Dit biedt een efficiënte en rendabele oplossing voor uw back-up-en herstel behoeften. Elk herstel punt bevat gegevens van de schijven die zijn opgenomen in de back-upbewerking, waarmee u een subset van schijven die zijn hersteld vanaf het opgegeven herstel punt tijdens de herstel bewerking kunt laten herstellen. Dit is van toepassing om beide te herstellen vanuit de moment opname en de kluis.
+>
+> Deze oplossing is met name handig in de volgende scenario's:
+>  
+>1. U hebt essentiële gegevens waarvan u een back-up wilt maken op slechts één schijf en u wilt geen back-up maken van de rest van de schijven die zijn gekoppeld aan een virtuele machine. Hierdoor worden de kosten voor back-upopslag geminimaliseerd.  
+>2. U hebt andere back-upoplossingen voor een deel van uw VM-gegevens. U maakt bijvoorbeeld een back-up van uw data bases of gegevens met een andere back-up van de werk belasting en u wilt back-ups op Azure-VM-niveau gebruiken voor de rest van uw schijven en gegevens om een efficiënt en robuust systeem te bouwen met de beste mogelijkheden die beschikbaar zijn.
+>
+>Als u zich wilt aanmelden voor de preview, schrijft u voor AskAzureBackupTeam@microsoft.com
 
 ## <a name="supported-backup-actions"></a>Ondersteunde back-upacties
 

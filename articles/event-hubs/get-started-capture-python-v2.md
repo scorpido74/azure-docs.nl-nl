@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: spelluru
-ms.openlocfilehash: d7a0c757f7314e45d5b4d13273df984739912b27
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 43223f7cb9ed254340c99d235d494d1e93583c7f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942410"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293535"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-using-python"></a>Event Hubs gegevens vastleggen in Azure Storage en deze lezen met behulp van python 
 U kunt een Event Hub configureren gebruiken zodat de gegevens die naar een Event Hub worden verzonden, worden vastgelegd in een Azure Storage of Azure Data Lake Storage. Dit artikel laat u zien hoe u Python-code schrijven kunt gebruiken om gebeurtenissen te verzenden naar een Event Hub en de opgenomen gegevens te lezen uit een Azure Blob-opslag. Zie [Event hubs Capture-functie overzicht](event-hubs-capture-overview.md)voor meer informatie over deze functie.
@@ -42,9 +42,9 @@ In deze snelstart, gaat u het volgende doen:
 - Een Azure-abonnement. Als u nog geen abonnement hebt, [maakt u een gratis account](https://azure.microsoft.com/free/) voordat u begint.
 - [Maak een event hubs naam ruimte en een event hub in de naam ruimte](event-hubs-create.md). Noteer de naam van de Event Hubs naam ruimte, de naam van de Event Hub en de primaire toegangs sleutel voor de naam ruimte. Haal de toegangs sleutel op door de volgende instructies te volgen in het artikel: [Get Connection String](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). De naam van de standaardwaarde is: **RootManageSharedAccessKey**. U hebt de connection string voor de zelf studie niet nodig. U hebt alleen de primaire sleutel nodig. 
 - Volg deze stappen om een **Azure Storage-account** en een **BLOB-container**te maken:
-    1. [Maak een Azure Storage-account](/storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
-    2. [Maak een BLOB-container in de opslag](/storage/blobs/storage-quickstart-blobs-portal.md#create-a-container). 
-    3. [De connection string ophalen voor het opslag account](/storage/common/storage-configure-connection-string?#view-and-copy-a-connection-string)
+    1. [Maak een Azure Storage-account](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
+    2. [Maak een BLOB-container in de opslag](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container). 
+    3. [De Connection String ophalen voor het opslag account](../storage/common/storage-configure-connection-string.md#view-and-copy-a-connection-string).
 
         Noteer **Connection String** en de naam van de **container**. U zult deze later in de code gebruiken. 
 - Schakel de functie **vastleggen** in voor de Event hub door de volgende instructies uit te voeren: [Schakel Event hubs vastleggen in met behulp van de Azure Portal](event-hubs-capture-enable-through-portal.md). Selecteer het opslag account en de BLOB-container die u in de vorige stap hebt gemaakt. U kunt de functie ook inschakelen bij het maken van een Event Hub. 

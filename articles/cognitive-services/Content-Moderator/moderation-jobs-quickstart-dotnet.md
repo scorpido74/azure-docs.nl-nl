@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
-ms.openlocfilehash: bdc9e8cbea77b504cfdc2c3b1c83c74ea4ab8ed1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fe1b5b4171dc5e61c1c82abfd723d0b77a05a5b9
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72935978"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294334"
 ---
 # <a name="define-and-use-moderation-jobs-net"></a>Toezicht taken definiëren en gebruiken (.NET)
 
@@ -124,7 +124,7 @@ public static class Clients
 Voeg de volgende constanten en statische velden toe aan de klasse **Program** in Program.cs.
 
 > [!NOTE]
-> U stelt de constante TeamName in op de naam die u hebt gebruikt tijdens het maken van uw abonnement voor Content Moderator. U kunt de TeamName vinden op de [website van Content Moderator](https://westus.contentmoderator.cognitive.microsoft.com/).
+> U stelt de constante TeamName in op de naam die u hebt gebruikt tijdens het maken van uw abonnement voor Content Moderator. U haalt de team naam op via de website van Content Moderator.
 > Als u bent aangemeld, selecteert u **Credentials** in het menu **Settings** (tandwielpictogram).
 >
 > De naam van uw team is de waarde van het veld **Id** veld in de sectie **API**.
@@ -237,7 +237,7 @@ using (TextWriter writer = new StreamWriter(OutputFile, false))
 >
 > Een sleutel voor de gratis laag heeft een limiet van één RPS.
 
-## <a name="run-the-program-and-review-the-output"></a>Voer het programma uit en controleer de uitvoer
+## <a name="run-the-program-and-review-the-output"></a>Het programma uitvoeren en de uitvoer controleren
 
 U ziet de volgende voorbeelduitvoer in de console:
 
@@ -250,7 +250,7 @@ Meld u aan bij het Content Moderator-beoordelingsprogramma om de openstaande beo
 
 Gebruik de knop **Volgende** om de code te verzenden.
 
-![Beoordeling van afbeeldingen voor menselijke moderators](images/ocr-sample-image.PNG)
+![Beoordeling van afbeelding voor menselijke beoordelaars](images/ocr-sample-image.PNG)
 
 ## <a name="see-the-sample-output-in-the-log-file"></a>De voorbeelduitvoer in het logboekbestand bekijken
 
@@ -316,4 +316,4 @@ U ziet een reactie zoals in het volgende voorbeeld:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Download de [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) en de [Visual Studio-oplossing](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) voor deze en andere snelstartgidsen over Content Moderator voor .NET en begin met de integratie.
+Download de [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) en de [Visual Studio-oplossing](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) voor deze en andere snelstarts over Content Moderator voor .NET en begin met de integratie.

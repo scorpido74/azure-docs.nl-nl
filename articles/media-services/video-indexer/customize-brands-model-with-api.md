@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 01/14/2020
 ms.author: anzaman
-ms.openlocfilehash: 804cc7b2b0b51312ed756723fff5150b02f324cc
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 81ba4cc7be5f9361d21aaea2ba78d0fd6f0f8c95
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892801"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289914"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Een Brands model aanpassen met de Video Indexer-API
 
@@ -27,43 +27,15 @@ U kunt de Video Indexer-Api's gebruiken om aangepaste Brands modellen te maken, 
 
 ## <a name="create-a-brand"></a>Een merk maken
 
-Hiermee maakt u een nieuw aangepast merk en voegt u dit toe aan het aangepaste merk model voor het opgegeven account.
+Met de [Create a brand](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand) API maakt u een nieuw aangepast merk en voegt u dit toe aan het aangepaste merk model voor het opgegeven account. 
 
-### <a name="request-url"></a>Aanvraag-URL
+> [!NOTE]
+> Als de instelling is **ingeschakeld** (in de hoofd tekst) op True, wordt het merk in de lijst met *insluitingen* voor video indexer gedetecteerd. Als **de instelling is ingesteld op** False, wordt het merk in de *uitsluitings* lijst geplaatst, zodat video indexer dit niet detecteert.
 
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
-```
+Enkele andere para meters die u in de hoofd tekst kunt instellen:
 
-[Bekijk de vereiste para meters en test uit met behulp van de video indexer ontwikkelaars Portal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand).
-
-### <a name="request-parameters"></a>Aanvraag parameters
-
-|**Naam**|**Type**|**Vereist**|**Beschrijving**|
-|---|---|---|---|
-|location|string|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
-|accountId|string|Ja|GUID (Globally Unique Identifier) voor het account|
-|accessToken|string|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
-
-### <a name="request-body"></a>Aanvraagbody
-
-Naast deze para meters moet u een JSON-object van de aanvraag tekst opgeven die informatie biedt over het nieuwe merk, volgend de indeling van het voor beeld hieronder.
-
-```json
-{
-  "name": "Example",
-  "enabled": true,
-  "tags": ["Tag1", "Tag2"],
-  "description": "This is an example",
-  "referenceUrl": "https://en.wikipedia.org/wiki/Example"
-}
-```
-
-Als **deze optie is ingesteld op** True, wordt het merk in de lijst met *insluitingen* voor video indexer gedetecteerd. Als **de instelling is ingesteld op** False, wordt het merk in de *uitsluitings* lijst geplaatst, zodat video indexer dit niet detecteert.
-
-De **referenceUrl** -waarde kan bestaan uit een referentie websites voor het merk, zoals een koppeling naar de Wikipedia-pagina.
-
-De waarde **Tags** is een lijst met tags voor het merk. Dit wordt weer gegeven in het *categorie* veld van het merk op de website van video indexer. Het merk "Azure" kan bijvoorbeeld worden gelabeld of gecategoriseerd als "Cloud".
+* De **referenceUrl** -waarde kan bestaan uit een referentie websites voor het merk, zoals een koppeling naar de Wikipedia-pagina.
+* De waarde **Tags** is een lijst met tags voor het merk. Dit wordt weer gegeven in het *categorie* veld van het merk op de website van video indexer. Het merk "Azure" kan bijvoorbeeld worden gelabeld of gecategoriseerd als "Cloud".
 
 ### <a name="response"></a>Antwoord
 
@@ -89,28 +61,7 @@ Het antwoord bevat informatie over het merk dat u zojuist hebt gemaakt, in de in
 
 ## <a name="delete-a-brand"></a>Een merk verwijderen
 
-Hiermee verwijdert u een merk van het aangepaste Brands model voor het opgegeven account. Het account is opgegeven in de **accountId** -para meter. Zodra het merk is aangeroepen, bevallen de lijsten voor het *opnemen* of *uitsluiten* van merken niet meer.
-
-### <a name="request-url"></a>Aanvraag-URL
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
-```
-
-[Bekijk de vereiste para meters en test uit met behulp van de video indexer ontwikkelaars Portal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?).
-
-### <a name="request-parameters"></a>Aanvraag parameters
-
-|**Naam**|**Type**|**Vereist**|**Beschrijving**|
-|---|---|---|---|
-|location|string|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
-|accountId|string|Ja|GUID (Globally Unique Identifier) voor het account|
-|id|geheel getal|Ja|De merk-id (gegenereerd bij het maken van het merk)|
-|accessToken|string|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
-
-### <a name="request-body"></a>Aanvraagbody
-
-Er is geen verdere aanvraag tekst vereist voor deze aanroep.
+Met de brand-API [verwijderen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?) wordt een merk van het aangepaste merk model verwijderd voor het opgegeven account. Het account is opgegeven in de **accountId** -para meter. Zodra het merk is aangeroepen, bevallen de lijsten voor het *opnemen* of *uitsluiten* van merken niet meer.
 
 ### <a name="response"></a>Antwoord
 
@@ -118,28 +69,7 @@ Er is geen inhoud geretourneerd wanneer het merk wordt verwijderd.
 
 ## <a name="get-a-specific-brand"></a>Een specifiek merk ophalen
 
-Zo kunt u zoeken naar de details van een merk in het aangepaste merk model voor het opgegeven account met behulp van de merk-id.
-
-### <a name="request-url"></a>Aanvraag-URL
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
-```
-
-[Bekijk de vereiste para meters en test uit met behulp van de video indexer ontwikkelaars Portal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?).
-
-### <a name="request-parameters"></a>Aanvraag parameters
-
-|**Naam**|**Type**|**Vereist**|**Beschrijving**|
-|---|---|---|---|
-|location|string|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
-|accountId|string|Ja|GUID (Globally Unique Identifier) voor het account|
-|id|geheel getal|Ja|De merk-ID (gegenereerd bij het maken van het merk)|
-|accessToken|string|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
-
-### <a name="request-body"></a>Aanvraagbody
-
-Er is geen verdere aanvraag tekst vereist voor deze aanroep.
+Met de [een merk](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?) -API ophalen kunt u zoeken naar de details van een merk in het aangepaste merk model voor het opgegeven account met behulp van de merk-id.
 
 ### <a name="response"></a>Antwoord
 
@@ -168,44 +98,7 @@ Het antwoord bevat informatie over het merk dat u hebt gezocht (met behulp van m
 
 ## <a name="update-a-specific-brand"></a>Een specifiek merk bijwerken
 
-Zo kunt u zoeken naar de details van een merk in het aangepaste merk model voor het opgegeven account met behulp van de merk-ID.
-
-### <a name="request-url"></a>Aanvraag-URL
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
-```
-
-[Bekijk de vereiste para meters en test uit met behulp van de video indexer ontwikkelaars Portal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?).
-
-### <a name="request-parameters"></a>Aanvraag parameters
-
-|**Naam**|**Type**|**Vereist**|**Beschrijving**|
-|---|---|---|---|
-|location|string|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
-|accountId|string|Ja|GUID (Globally Unique Identifier) voor het account|
-|id|geheel getal|Ja|De merk-ID (gegenereerd bij het maken van het merk)|
-|accessToken|string|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
-
-### <a name="request-body"></a>Aanvraagbody
-
-Naast deze para meters moet u een JSON-object van de aanvraag tekst opgeven met de bijgewerkte informatie over het merk dat u wilt bijwerken, zoals hieronder wordt beschreven in het onderstaande voor beeld.
-
-```json
-{
-  "name": "Example",
-  "enabled": false,
-  "tags": ["Tag1", "NewTag2"],
-  "description": "This is an update example",
-  "referenceUrl": "https://en.wikipedia.org/wiki/Example",
-  "lastModifierUserName": "SampleUserName",
-  "created": "2018-04-25T14:59:52.7433333",
-  "lastModified": "2018-04-28T15:52:22.3413983",
-}
-```
-
-> [!NOTE]
-> In dit voor beeld wordt het merk dat in de hoofd tekst van de aanvraag is gemaakt in het gedeelte **een merk maken** , hier bijgewerkt met een nieuwe tag en een nieuwe beschrijving. De **ingeschakelde** waarde is ook gewijzigd in ONWAAR om deze in de *uitsluitings* lijst te plaatsen.
+Met de [Update een gloed](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?) -API kunt u zoeken naar de details van een merk in het aangepaste merk model voor het opgegeven account met behulp van de merk-id.
 
 ### <a name="response"></a>Antwoord
 
@@ -231,27 +124,7 @@ Het antwoord bevat de bijgewerkte informatie over het merk dat u hebt bijgewerkt
 
 ## <a name="get-all-of-the-brands"></a>Alle merken ophalen
 
-Dit retourneert alle Brands in het aangepaste Brands model voor het opgegeven account, ongeacht of het merk is bedoeld om te worden *opgenomen* in de lijst met merken of *uitsluiten* .
-
-### <a name="request-url"></a>Aanvraag-URL
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
-```
-
-[Bekijk de vereiste para meters en test uit met behulp van de video indexer ontwikkelaars Portal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?).
-
-### <a name="request-parameters"></a>Aanvraag parameters
-
-|**Naam**|**Type**|**Vereist**|**Beschrijving**|
-|---|---|---|---|
-|location|string|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
-|accountId|string|Ja|GUID (Globally Unique Identifier) voor het account|
-|accessToken|string|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
-
-### <a name="request-body"></a>Aanvraagbody
-
-Er is geen verdere aanvraag tekst vereist voor deze aanroep.
+De [all Brands](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?) -API ophalen retourneert alle Brands in het aangepaste Brands model voor het opgegeven account, ongeacht of het merk is bedoeld om te worden *opgenomen* in de lijst met merken of *uitsluiten* .
 
 ### <a name="response"></a>Antwoord
 
@@ -291,27 +164,7 @@ Het antwoord bevat een lijst met alle Brands in uw account en alle details op ba
 
 ## <a name="get-brands-model-settings"></a>Instellingen voor Brands model ophalen
 
-Hiermee worden de model instellingen voor Brands in het opgegeven account geretourneerd. De instellingen van het merk model geven aan of detectie van de Bing Brands-data base is ingeschakeld. Als Bing-merken niet zijn ingeschakeld, detecteert Video Indexer alleen Brands van het aangepaste merk model van het opgegeven account.
-
-### <a name="request-url"></a>Aanvraag-URL
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
-```
-
-[Bekijk de vereiste para meters en test uit met behulp van de video indexer ontwikkelaars Portal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands).
-
-### <a name="request-parameters"></a>Aanvraag parameters
-
-|**Naam**|**Type**|**Vereist**|**Beschrijving**|
-|---|---|---|---|
-|location|string|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
-|accountId|string|Ja|GUID (Globally Unique Identifier) voor het account|
-|accessToken|string|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
-
-### <a name="request-body"></a>Aanvraagbody
-
-Er is geen verdere aanvraag tekst vereist voor deze aanroep.
+Met de API-instellingen voor het [ophalen van Brands](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands) worden de model instellingen voor Brands in het opgegeven account geretourneerd. De instellingen van het merk model geven aan of detectie van de Bing Brands-data base is ingeschakeld. Als Bing-merken niet zijn ingeschakeld, detecteert Video Indexer alleen Brands van het aangepaste merk model van het opgegeven account.
 
 ### <a name="response"></a>Antwoord
 
@@ -329,35 +182,9 @@ In het antwoord wordt weer gegeven of Bing Brands is ingeschakeld volgens de ind
 
 ## <a name="update-brands-model-settings"></a>Model instellingen voor update Brands bijwerken
 
-Hiermee worden de instellingen van het merk model bijgewerkt in het opgegeven account. De instellingen van het merk model geven aan of detectie van de Bing Brands-data base is ingeschakeld. Als Bing-merken niet zijn ingeschakeld, detecteert Video Indexer alleen Brands van het aangepaste merk model van het opgegeven account.
+Met de [Update-Brands](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?) worden de instellingen van het merk model bijgewerkt in het opgegeven account. De instellingen van het merk model geven aan of detectie van de Bing Brands-data base is ingeschakeld. Als Bing-merken niet zijn ingeschakeld, detecteert Video Indexer alleen Brands van het aangepaste merk model van het opgegeven account.
 
-### <a name="request-url"></a>Aanvraag-URL:
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/BrandsModelSettings?accessToken={accessToken}
-```
-
-[Bekijk de vereiste para meters en test uit met behulp van de video indexer ontwikkelaars Portal](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?).
-
-### <a name="request-parameters"></a>Aanvraag parameters
-
-|**Naam**|**Type**|**Vereist**|**Beschrijving**|
-|---|---|---|---|
-|location|string|Ja|De Azure-regio waarnaar de aanroep moet worden gerouteerd. Zie [Azure-regio's en-video indexer](regions.md)voor meer informatie.|
-|accountId|string|Ja|GUID (Globally Unique Identifier) voor het account|
-|accessToken|string|Ja|Toegangs token (moet een [toegangs token](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)van het bereik account zijn) om te kunnen worden geverifieerd bij de aanroep. Toegangs tokens verlopen binnen 1 uur.|
-
-### <a name="request-body"></a>Aanvraagbody
-
-Naast deze para meters moet u een JSON-object van de aanvraag tekst opgeven die informatie biedt over het nieuwe merk, volgend de indeling van het voor beeld hieronder.
-
-```json
-{
-    "useBuiltIn":true
-}
-```
-
-> [!NOTE]
-> **useBuiltIn** wordt ingesteld op True, betekent dat Bing-merken zijn ingeschakeld. Als *useBuiltin* False is, zijn Bing-merken uitgeschakeld.
+De vlag **useBuiltIn** ingesteld op True geeft aan dat Bing-merken zijn ingeschakeld. Als *useBuiltin* False is, zijn Bing-merken uitgeschakeld.
 
 ### <a name="response"></a>Antwoord
 

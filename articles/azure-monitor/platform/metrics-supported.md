@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 67e2675dbf65daf929407a437447f5d977c7a6c3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 475e91957ab94538d07112ba808edd7c7d08f59e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75750407"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310778"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Ondersteunde metrische gegevens met Azure Monitor
 
@@ -1299,7 +1299,7 @@ Azure Monitor biedt verschillende manieren om te communiceren met metrische gege
 |Modelimplementatie gestart|Modelimplementatie gestart|Aantal|Totaal|Aantal model implementaties gestart in deze werk ruimte|Scenario|
 |Modelimplementatie geslaagd|Modelimplementatie geslaagd|Aantal|Totaal|Aantal model implementaties dat is geslaagd in deze werk ruimte|Scenario|
 |Modelimplementatie is mislukt|Modelimplementatie is mislukt|Aantal|Totaal|Aantal model implementaties die zijn mislukt in deze werk ruimte|Scenario, status code|
-|Totaal aantal knoop punten|Totaal aantal knoop punten|Aantal|Average|Totaal aantal knoop punten. Dit totaal omvat enkele actieve knoop punten, niet-actieve knoop punten, onbruikbaare knoop punten, Premepted knoop punten, waardoor knoop punten|Scenario, clustername|
+|Totaal aantal knoop punten|Totaal aantal knoop punten|Aantal|Average|Totaal aantal knoop punten. Dit totaal omvat enkele actieve knoop punten, niet-actieve knoop punten, niet-bruikbare knoop punten, afgebroken knoop punten, waardoor knoop punten|Scenario, clustername|
 |Actieve knoop punten|Actieve knoop punten|Aantal|Average|Aantal Active-knoop punten. Dit zijn de knoop punten waarop een taak actief wordt uitgevoerd.|Scenario, clustername|
 |Niet-actieve knoop punten|Niet-actieve knoop punten|Aantal|Average|Aantal niet-actieve knoop punten. Niet-actieve knoop punten zijn de knoop punten waarop geen taken worden uitgevoerd, maar u kunt wel een nieuwe taak accepteren, indien beschikbaar.|Scenario, clustername|
 |Niet-bruikbare knoop punten|Niet-bruikbare knoop punten|Aantal|Average|Aantal niet-bruikbare knoop punten. Niet-bruikbare knoop punten zijn niet functioneel vanwege een probleem met onherleidbare. Deze knoop punten worden door Azure gerecycled.|Scenario, clustername|

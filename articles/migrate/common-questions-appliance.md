@@ -3,12 +3,12 @@ title: Veelgestelde vragen over het Azure Migrate apparaat
 description: Antwoorden vinden op veelgestelde vragen over het Azure Migrate apparaat
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: c8bcebeee58401cb3d2b65ae82e51d31ab4dad0b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: c9727287160f996059e9c1fb2d1fb5aec5900ab5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029123"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292329"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate apparaat: veelgestelde vragen
 
@@ -83,9 +83,9 @@ Ja, voor beide.
 
 Nee. Er is een een-op-een-toewijzing tussen een apparaat en vCenter Server. Als u Vm's op meerdere exemplaren van vCenter Server wilt detecteren, moet u meerdere apparaten implementeren.
 
-### <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Hoeveel Vm's kan ik vinden met een apparaat?
+### <a name="how-many-vms-or-servers-can-i-discover-with-an-appliance"></a>Hoeveel Vm's of servers kan ik vinden met een apparaat?
 
-U kunt Maxi maal 10.000 VMware-Vm's en Maxi maal 5.000 virtuele Hyper-V-machines detecteren met één apparaat. Als u meer computers in uw on-premises omgeving hebt, leest u over het schalen van de [Hyper-V-](scale-hyper-v-assessment.md) en [VMware](scale-vmware-assessment.md) -evaluatie.
+U kunt Maxi maal 10.000 VMware-Vm's detecteren, tot 5.000 Hyper-V-Vm's en Maxi maal 250 servers met één apparaat. Als u meer computers in uw on-premises omgeving hebt, leest u over het schalen van [Hyper-V](scale-hyper-v-assessment.md), [VMware](scale-vmware-assessment.md) en [fysieke](scale-physical-assessment.md) evaluatie.
 
 ## <a name="can-i-delete-an-appliance"></a>Kan ik een apparaat verwijderen?
 

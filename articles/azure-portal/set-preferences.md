@@ -3,20 +3,20 @@ title: Uw Azure Portal voor keuren instellen | Microsoft Docs
 description: U kunt Azure Portal standaard instellingen wijzigen om te voldoen aan uw eigen voor keuren. De instellingen omvatten een inactieve sessietime-out, de standaard weergave, de menu modus, het contrast, het thema, de meldingen en de taal-en regionale notaties
 services: azure-portal
 keywords: instellingen, time-out, taal, regionale
-author: mblythe
+author: mgblythe
 ms.author: mblythe
 ms.date: 12/19/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 0c18ccbf5d9e4884af46e088f1a4ead67f50c3f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 7bcfdeec832b14eb53c0dab6cb2f53970d85c804
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75641363"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310676"
 ---
-# <a name="set-your-azure-portal-preferences"></a>Uw Azure Portal voor keuren instellen
+# <a name="set-your-azure-portal-preferences"></a>Uw voorkeuren voor de Azure-portal instellen
 
 U kunt de standaard instellingen van de Azure Portal wijzigen om te voldoen aan uw eigen voor keuren. Elk van de onderstaande instellingen kan worden gewijzigd:
 

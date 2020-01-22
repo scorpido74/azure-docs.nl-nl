@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 554101ac70f01f1dd92337a8cf424f8b26ca0fc9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0b321f3548910a2bc79e4473609de30eda8c8622
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456341"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314348"
 ---
 # <a name="score-svd-recommender"></a>Aanbevelingsfunctie voor SVD-score
 
-In dit artikel wordt beschreven hoe u de module Score SVD aanbevelen in Azure Machine Learning Designer (preview) gebruikt. Gebruik deze module om voor spellingen te maken met behulp van een getraind aanbevelings model op basis van het algoritme voor de ontleding van één waarde (SVD).
+In dit artikel wordt beschreven hoe u de module Score SVD aanbevelen in Azure Machine Learning Designer gebruikt. Gebruik deze module om voor spellingen te maken met behulp van een getraind aanbevelings model op basis van het algoritme voor de ontleding van één waarde (SVD).
 
 De SVD-aanbevolen functie kan twee verschillende soorten voor spellingen genereren:
 

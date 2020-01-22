@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 96966e4b9db5af40eee233d746d5790bbb769455
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4ed3e5c543f96876d9b6078f1bd47839a0a0396a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227501"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293416"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mcm"></a>Zelf studie: integratie Azure Active Directory met MCM
 
@@ -107,12 +107,12 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Microsoft Azure Acti
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://myaba.co.uk/client-access/<companyname>/saml.php`
 
-    b. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `https://myaba.co.uk/<companyname>`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://myaba.co.uk/<companyname>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [MCM-ondersteuningsteam](https://mcmtechnology.com/support/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [MCM-ondersteuningsteam](https://mcmtechnology.com/support) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-4. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+4. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
@@ -128,7 +128,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Microsoft Azure Acti
 
 ### <a name="configure-mcm-single-sign-on"></a>Eenmalige aanmelding met MCM configureren
 
-Als u eenmalige aanmelding aan de zijde van **MCM** wilt configureren, moet u het gedownloade **XML-bestand met federatieve metagegevens** en de correcte uit de Microsoft Azure-portal gekopieerde URL's verzenden naar het [MCM-ondersteuningsteam](https://mcmtechnology.com/support/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+Als u eenmalige aanmelding aan de zijde van **MCM** wilt configureren, moet u het gedownloade **XML-bestand met federatieve metagegevens** en de correcte uit de Microsoft Azure-portal gekopieerde URL's verzenden naar het [MCM-ondersteuningsteam](https://mcmtechnology.com/support). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -153,7 +153,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -167,7 +167,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
     ![De link MCM in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
+3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -183,7 +183,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 
 ### <a name="create-mcm-test-user"></a>MCM-testgebruiker maken
 
-In deze sectie gaat u in MCM een gebruiker maken met de naam Britta Simon. Werk samen met het  [MCM-ondersteuningsteam](https://mcmtechnology.com/support/) om de gebruikers aan het MCM-platform toe te voegen. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
+In deze sectie gaat u in MCM een gebruiker maken met de naam Britta Simon. Werk samen met het  [MCM-ondersteuningsteam](https://mcmtechnology.com/support) om de gebruikers aan het MCM-platform toe te voegen. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 >[!NOTE]
 >U kunt alle andere hulpprogram ma's voor het maken van MCM-gebruikers accounts of Api's die worden geleverd door MCM, gebruiken om Azure AD-gebruikers accounts in te richten.

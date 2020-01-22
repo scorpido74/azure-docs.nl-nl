@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 58e6e7b3cdf749909165d7ff071a2f3885d7e8b9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 7f161afe13bad8c548806d4b4ceb9372dc511cc3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028739"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289438"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>Virtuele VMware-machines beoordelen met behulp van Azure Migrate server-evaluatie
 
@@ -176,7 +176,7 @@ Het apparaat moet verbinding maken met vCenter Server om de configuratie-en pres
 1. Selecteer **verbinding valideren** om te controleren of het apparaat verbinding kan maken met vCenter Server.
 
 ### <a name="specify-vm-credentials"></a>VM-referenties opgeven
-Voor de detectie van toepassingen, functies en onderdelen, en voor het visualiseren van afhankelijkheden van de virtuele machines, kunt u VM-referenties opgeven die toegang hebben tot de VMware-Vm's. U kunt één referentie toevoegen voor Windows-Vm's en één referentie voor Linux-Vm's. Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) over de benodigde toegangs machtigingen.
+Voor de detectie van toepassingen, functies en onderdelen, en voor het visualiseren van afhankelijkheden van de virtuele machines, kunt u VM-referenties opgeven die toegang hebben tot de VMware-Vm's. U kunt één referentie toevoegen voor Windows-Vm's en één referentie voor Linux-Vm's. Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) over de benodigde toegangs machtigingen.
 
 > [!NOTE]
 > Deze invoer is optioneel, maar u hebt deze nodig als u de detectie van toepassingen en de visualisatie van de afhankelijkheid van agents wilt inschakelen.
@@ -210,7 +210,7 @@ Deze procedure is vereist voor server migratie zonder agent.
 1.  Selecteer uw vCenter Server-exemplaar in de vervolg keuzelijst.
 1.  Selecteer **rol maken**.
 1.  Voer een naam in voor de nieuwe rol (bijvoorbeeld <em>Azure_Migrate</em>).
-1.  Wijs [machtigingen](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) toe aan de nieuw gedefinieerde rol.
+1.  Wijs [machtigingen](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) toe aan de nieuw gedefinieerde rol.
 1.  Selecteer **OK**.
 
 #### <a name="3-assign-permissions-on-vcenter-objects"></a>3. machtigingen toewijzen voor vCenter-objecten
@@ -219,7 +219,7 @@ Er zijn twee benaderingen voor het toewijzen van machtigingen voor inventaris ob
 
 Voor Server evaluatie moet u de rol **alleen-lezen** Toep assen op het vCenter-gebruikers account voor alle bovenliggende objecten waar de vm's worden gehost die moeten worden gedetecteerd. Alle bovenliggende objecten worden opgenomen: host, map van hosts, cluster en map van clusters in de hiërarchie tot aan het Data Center. Deze machtigingen worden door gegeven aan onderliggende objecten in de hiërarchie.
 
-Op dezelfde manier voor server migratie moet u een door de gebruiker gedefinieerde rol Toep assen op de vCenter-gebruikers account voor alle bovenliggende objecten waar de virtuele machines worden [gehost die moeten](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) worden gemigreerd. Deze rol kan <em>Azure _Migrate</em>.
+Op dezelfde manier voor server migratie moet u een door de gebruiker gedefinieerde rol Toep assen op de vCenter-gebruikers account voor alle bovenliggende objecten waar de virtuele machines worden [gehost die moeten](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) worden gemigreerd. Deze rol kan <em>Azure _Migrate</em>.
 
 ![Machtigingen toewijzen](./media/tutorial-assess-vmware/assign-perms.png)
 

@@ -3,14 +3,14 @@ title: Ondersteunings matrix voor nood herstel voor VMware/fysiek in Azure Site 
 description: Hierin wordt een overzicht gegeven van de ondersteuning voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure met behulp van Azure Site Recovery.
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/10/2020
+ms.date: 1/21/2020
 ms.author: raynew
-ms.openlocfilehash: 1d6f5df59a318388a7a5fea75d1fd17e18cb7745
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 1ec49e7cab9a79ea2ae308afc096b19b10a8acd5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864329"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293739"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure
 
@@ -78,7 +78,7 @@ Windows 10, Windows 8.1, Windows 8 | Ondersteund.
 Windows 7 met SP1 64-bits | Ondersteund door [Update pakket 36](https://support.microsoft.com/help/4503156) (versie 9,22 van de Mobility-service). </br></br> Van [9,30](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery) van de Mobility Service-agent hebt u de [onderhouds stack update (Ssu)](https://support.microsoft.com/help/4490628) en de [SHA-2-update](https://support.microsoft.com/help/4474419) geïnstalleerd op Windows 7 SP1-computers.  SHA-1 wordt niet ondersteund vanaf september 2019, en als SHA-2-ondertekening niet is ingeschakeld, wordt de agent extensie niet op de verwachte wijze geïnstalleerd/bijgewerkt. Meer informatie over [SHA-2-upgrade en-vereisten](https://aka.ms/SHA-2KB).
 Linux | Alleen 64-bits systeem wordt ondersteund. 32-bits systeem wordt niet ondersteund.<br/><br/>Op elke Linux-server moeten [Lis-onderdelen (Linux Integration Services)](https://www.microsoft.com/download/details.aspx?id=55106) zijn geïnstalleerd. Het is vereist om de server op te starten in azure na een testfailover of failover. Als er LIS-onderdelen ontbreken, moet u ervoor zorgen dat u de [onderdelen](https://www.microsoft.com/download/details.aspx?id=55106) installeert voordat u replicatie inschakelt om de computers op te starten in Azure. <br/><br/> Site Recovery organiseert de failover voor het uitvoeren van Linux-servers in Azure. Linux-leveranciers kunnen echter wel de ondersteuning beperken tot distributie versies die geen einde van de levens duur hebben bereikt.<br/><br/> In Linux-distributies worden alleen de voorraad kernels ondersteund die deel uitmaken van de distributie secundaire versie/update.<br/><br/> Het bijwerken van beveiligde machines in grote Linux-distributie versies wordt niet ondersteund. Als u een upgrade wilt uitvoeren, schakelt u replicatie uit, voert u een upgrade van het besturings systeem uit en schakelt u de replicatie opnieuw in<br/><br/> Meer [informatie](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) over ondersteuning voor Linux en open-source technologie in Azure.
 Linux Red Hat Enterprise | 5,2 tot 5,11</b><br/> 6,1 tot 6,10</b> </br> 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, [7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8,0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) <br/> Servers met Red Hat Enterprise Linux 5.2-5,11 & 6.1-6.10 hebben geen [Lis-onderdelen (Linux Integration Services)](https://www.microsoft.com/download/details.aspx?id=55106) vooraf geïnstalleerd. Zorg ervoor dat u de [onderdelen](https://www.microsoft.com/download/details.aspx?id=55106) installeert voordat u replicatie inschakelt voor de computers om op te starten in Azure.
-Linux: CentOS | 5,2 tot 5,11</b><br/> 6,1 tot 6,10</b><br/> 7,0 tot 7,6<br/> <br/> Servers met CentOS 5.2-5,11 & 6.1-6.10 hebben geen [Lis-onderdelen (Linux Integration Services)](https://www.microsoft.com/download/details.aspx?id=55106) vooraf geïnstalleerd. Zorg ervoor dat u de [onderdelen](https://www.microsoft.com/download/details.aspx?id=55106) installeert voordat u replicatie inschakelt voor de computers om op te starten in Azure.
+Linux: CentOS | 5,2 tot 5,11</b><br/> 6,1 tot 6,10</b><br/> 7,0 tot 7,7</b><br/>8.0<br/><br/> Servers met CentOS 5.2-5,11 & 6.1-6.10 hebben geen [Lis-onderdelen (Linux Integration Services)](https://www.microsoft.com/download/details.aspx?id=55106) vooraf geïnstalleerd. Zorg ervoor dat u de [onderdelen](https://www.microsoft.com/download/details.aspx?id=55106) installeert voordat u replicatie inschakelt voor de computers om op te starten in Azure.
 Ubuntu | Ubuntu 14,04 LTS-server [(ondersteunde kernel-versies controleren)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16,04 LTS-server [(ondersteunde kernel-versies controleren)](#ubuntu-kernel-versions) </br> Ubuntu 18,04 LTS-server [(ondersteunde kernel-versies controleren)](#ubuntu-kernel-versions)
 Debian | Debian 7/Debian 8 [(ondersteunde kernel-versies controleren)](#debian-kernel-versions)
 SUSE Linux | SUSE Linux Enterprise Server 12 SP1, SP2, SP3, SP4 [(ondersteunde kernel-versies controleren)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/> SUSE Linux Enterprise Server 11 SP3, SUSE Linux Enterprise Server 11 SP4<br/> Het upgraden van gerepliceerde machines van SUSE Linux Enterprise Server 11 SP3 naar SP4 wordt niet ondersteund. Als u een upgrade wilt uitvoeren, schakelt u replicatie uit en schakelt u na de upgrade opnieuw in.

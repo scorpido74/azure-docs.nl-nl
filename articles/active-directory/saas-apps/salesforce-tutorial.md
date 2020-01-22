@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 12/23/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71521348c5510696add4399d3046833d3b42193c
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 8d0793c863f4f682c967c7a5ae61c5a0b78cdb4d
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561883"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292532"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-salesforce"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Sales Force
 
@@ -50,6 +50,7 @@ In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 * Salesforce biedt ondersteuning voor het **Just-In-Time** inrichten van gebruikers
 
 * Een Sales Force-app kan nu worden geconfigureerd met Azure AD om SSO in te scha kelen. In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
+* Zodra u de Sales Force configureert, kunt u sessie besturings elementen afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-salesforce-from-the-gallery"></a>Salesforce toevoegen vanuit de galerie
 
@@ -241,3 +242,7 @@ Wanneer u op de Salesforce-tegel in het toegangsvenster klikt, zou u automatisch
 - [Inrichten van gebruikers configureren](salesforce-provisioning-tutorial.md)
 
 - [Probeer Sales Force met Azure AD](https://aad.portal.azure.com)
+
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-salesforce)
+
+- [Sales Force beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

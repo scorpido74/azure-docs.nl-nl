@@ -9,14 +9,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 01/21/2020
 ms.author: banders
-ms.openlocfilehash: ddb906aeb8d1c2b0d1f0c97fc12bd389da431646
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5dbf885848d9866a184caee1da6b9000a26f83a9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989941"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314120"
 ---
 # <a name="azure-spending-limit"></a>Bestedingslimiet voor Azure
 
@@ -34,20 +34,21 @@ Azure verzendt e-mailmeldingen wanneer u de bestedingslimiet bereikt. Meld u aan
 
 Als u een gratis Azure-account hebt en de bestedingslimiet bereikt, kunt u een upgrade uitvoeren naar tarieven voor [betalen per gebruik](upgrade-azure-subscription.md) om de bestedingslimiet te verwijderen en uw abonnement automatisch weer in te schakelen.
 
-<a id="remove"></a>
-
 ## <a name="remove-the-spending-limit-in-azure-portal"></a>De bestedingslimiet verwijderen in de Azure-portal
+
+<a id="remove"></a>
 
 U kunt de bestedingslimiet op elk gewenst moment verwijderen zolang er een geldige betaalmethode aan uw Azure-abonnement is gekoppeld. Voor abonnementstypen met tegoeden die zijn verspreid over meerdere maanden, zoals Visual Studio Enterprise en Visual Studio Professional, kunt u de bestedingslimiet ook inschakelen aan het begin van uw volgende factureringsperiode.
 
 Ga als volgt te werk om de bestedingslimiet te verwijderen:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Selecteer een abonnement. Als de bestedingslimiet van het abonnement is bereikt, wordt het abonnement uitgeschakeld.
-1. Selecteer **Bestedingslimiet verwijderen** boven aan de pagina.
-1. Selecteer een voor u geschikte optie.
-
-![Een optie selecteren om de bestedingslimiet te verwijderen](./media/spending-limit/remove-spending-limit01.png)
+1. Navigeer naar **abonnementen**.
+1. Selecteer uw abonnement. Bijvoorbeeld *Visual Studio Enter prise*.
+1. Selecteer boven aan de pagina **beheren**. U wordt omgeleid naar https://account.azure.com/. Selecteer aan de rechter kant van de pagina **bestedings limiet verwijderen**.  
+  ![voor beeld van het verwijderen van bestedings limiet](./media/spending-limit/account-azure-com-spending-limit.png)
+1. U wordt teruggeleid naar de Azure Portal. Selecteer een optie die geschikt is voor u en selecteer vervolgens een betalings wijze. Selecteer **Finish**.  
+  ![Selecteer een optie om de bestedings limiet te verwijderen](./media/spending-limit/remove-spending-limit.png)
 
 | Optie | Effect |
 | --- | --- |
@@ -67,7 +68,7 @@ De bestedingslimiet kan ervoor zorgen dat u bepaalde Microsoft-services en servi
 Deze functie is alleen beschikbaar wanneer de bestedingslimiet voor onbepaalde tijd is verwijderd voor abonnementstypen met tegoeden die zijn verspreid over meerdere maanden. U kunt deze functie gebruiken om uw bestedingslimiet automatisch aan het begin van de volgende factureringsperiode in te schakelen.
 
 1. Meld u aan bij het [Accountcentrum](https://account.windowsazure.com/Subscriptions).
-1. Klik op de gele banner om de optie voor de bestedingslimiet te wijzigen.
+1. Selecteer de gele banner om de optie voor de bestedings limiet te wijzigen.
 1. Kies **Bestedingslimiet inschakelen in de volgende factureringsperiode \<begindatum van de factureringsperiode\>**
 
 ## <a name="custom-spending-limit"></a>Aangepast bestedingslimiet

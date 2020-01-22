@@ -4,12 +4,12 @@ description: Veelgestelde vragen over Service Fabric, inclusief mogelijkheden, u
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 7638a360821e73b7485014c8e6f006e91bbea551
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 17c1d05e119df8207c0599283f1d04b869e8297b
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614635"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293518"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Veelgestelde vragen over Service Fabric
 
@@ -183,4 +183,4 @@ Volg de [service Fabric blog](https://blogs.msdn.microsoft.com/azureservicefabri
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [kern service Fabric-concepten](service-fabric-technical-overview.md) en [Best practices](service-fabric-best-practices-overview.md) Ice-basis concepten] (Service-Fabric-Technical-Overview.MD) en [Aanbevolen procedures](service-fabric-best-practices-overview.md)
+Meer informatie over [belangrijkste service Fabric concepten](service-fabric-technical-overview.md) en [Aanbevolen procedures](service-fabric-best-practices-overview.md)

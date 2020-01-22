@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a52977a46c1222a1626fa5a4dcb4de7dd84f8dd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c04726bf3b4166255ada7c9f1252be0471dcc761
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638201"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291478"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Architectuur en scenario's met hoge Beschik baarheid voor SAP net-Weaver
 
@@ -294,7 +294,7 @@ Azure is bezig met het implementeren van een concept van [Azure-beschikbaarheids
 Er zijn enkele dingen die u kunt overwegen om Beschikbaarheidszones te gebruiken. De lijst met overwegingen zoals:
 
 - U kunt geen Azure-beschikbaarheids sets implementeren binnen een beschikbaarheids zone. U moet een beschikbaarheids zone of een Beschikbaarheidsset voor een VM kiezen.
-- U kunt de [basis Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) niet gebruiken om failover-cluster oplossingen te maken op basis van Windows Failover Cluster-Services of Linux-pacemaker. In plaats daarvan moet u de [Azure Standard load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) gebruiken
+- U kunt de [basis Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) niet gebruiken om failover-cluster oplossingen te maken op basis van Windows Failover Cluster-Services of Linux-pacemaker. In plaats daarvan moet u de [Azure Standard load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) gebruiken
 - Azure-beschikbaarheidszones geen garanties geven voor bepaalde afstanden tussen de verschillende zones binnen één regio
 - De netwerk latentie tussen de verschillende Azure-beschikbaarheidszones binnen de verschillende Azure-regio's kan verschillen van de Azure-regio naar de regio. Er zijn gevallen waarin u als klant redelijkerwijs de SAP-toepassingslaag kunt uitvoeren die in verschillende zones is geïmplementeerd, omdat de netwerk latentie van de ene zone naar de actieve DBMS-VM nog steeds acceptabel is voor een bedrijfs proces. Overwegende dat er klanten scenario's zijn waarbij de latentie tussen de actieve DBMS-VM in de ene zone en een SAP-toepassings exemplaar in een virtuele machine in een andere zone te opvallend en niet acceptabel voor de SAP-bedrijfs processen is. Als gevolg hiervan moeten de implementatie architecturen verschillen met een actieve/actieve architectuur voor de toepassing of de actieve/passieve architectuur als de latentie te hoog is.
 - Het gebruik van [Azure Managed disks](https://azure.microsoft.com/services/managed-disks/) is verplicht voor de implementatie in azure-beschikbaarheidszones 

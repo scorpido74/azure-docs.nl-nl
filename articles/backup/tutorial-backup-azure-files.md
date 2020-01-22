@@ -3,12 +3,12 @@ title: Zelf studie-back-ups maken van Azure Files bestands shares
 description: In deze zelf studie leert u hoe u de Azure Portal gebruikt voor het configureren van een Recovery Services kluis en het maken van back-ups van Azure-bestands shares.
 ms.date: 06/10/2019
 ms.topic: tutorial
-ms.openlocfilehash: b002d1ea092d2d0507dc761f56ca7835f1521fb3
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: ec9074a39f2ece7878c0c3ef828dc21748d0ab89
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921634"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293926"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Back-ups maken van Azure-bestands shares in de Azure Portal
 
@@ -43,29 +43,29 @@ In deze zelfstudie wordt ervan uitgegaan dat u al een Azure-bestandsshare hebt g
 
 1. Maak een Recovery Services-kluis in dezelfde regio als waarin de bestandsshare zich bevindt. Als u al een kluis hebt, opent u de overzichtspagina van uw kluis en klikt u op **Back-up**.
 
-    ![Klik op back-up op de overzichts pagina van uw kluis](./media/backup-file-shares/overview-backup-page.png)
+    ![Klik op back-up op de overzichts pagina van uw kluis](./media/tutorial-backup-azure-files/overview-backup-page.png)
 
 2. Kies in het menu doel van de **back-up** van waaruit wilt **u een back-up maken?** de optie Azure-bestands share.
 
-    ![Kies Azure-bestandsshare als back-updoel](./media/backup-file-shares/choose-azure-fileshare-from-backup-goal.png)
+    ![Kies Azure-bestandsshare als back-updoel](./media/tutorial-backup-azure-files/choose-azure-fileshare-from-backup-goal.png)
 
 3. Klik op **Back-up** om de Azure-bestandsshare naar de Recovery Services-kluis te configureren.
 
-   ![Klik op Back-up om de Azure-bestandsshare aan de kluis te koppelen](./media/backup-file-shares/set-backup-goal.png)
+   ![Klik op Back-up om de Azure-bestandsshare aan de kluis te koppelen](./media/tutorial-backup-azure-files/set-backup-goal.png)
 
     Zodra de kluis is gekoppeld aan de Azure-bestands share, wordt het menu back-up geopend en wordt u gevraagd een opslag account te selecteren. In het menu worden alle ondersteunde opslag accounts weer gegeven in de regio waar uw kluis zich bevindt die nog niet is gekoppeld aan een Recovery Services kluis.
 
-   ![Uw opslag account selecteren](./media/backup-file-shares/list-of-storage-accounts.png)
+   ![Uw opslag account selecteren](./media/tutorial-backup-azure-files/list-of-storage-accounts.png)
 
 4. Selecteer een account in de lijst met opslagaccounts en klik op **OK**. Azure zoekt naar het opslagaccount voor bestandsshares waarvan een back-up kan worden gemaakt. Als u uw bestandsshares recentelijk hebt toegevoegd en ze niet in de lijst worden weergegeven, kan het helpen om even te wachten.
 
-   ![Bestands shares worden gedetecteerd](./media/backup-file-shares/discover-file-shares.png)
+   ![Bestands shares worden gedetecteerd](./media/tutorial-backup-azure-files/discover-file-shares.png)
 
 5. Selecteer in de lijst **Bestands shares** een of meer van de bestands shares waarvan u een back-up wilt maken en klik op **OK**.
 
 6. Nadat u de bestandsshares hebt geselecteerd, schakelt het menu Back-up over naar het **Back-upbeleid**. In dit menu selecteert u een bestaand back-upbeleid of maakt u een nieuwe. Vervolgens klikt u op **Back-up inschakelen**.
 
-   ![Een back-upbeleid selecteren of een nieuwe maken](./media/backup-file-shares/apply-backup-policy.png)
+   ![Een back-upbeleid selecteren of een nieuwe maken](./media/tutorial-backup-azure-files/apply-backup-policy.png)
 
     Wanneer er een back-upbeleid is ingesteld, wordt er een momentopname van de bestandsshares genomen op het geplande tijdstip en wordt het herstelpunt gedurende de gekozen periode bewaard.
 
@@ -77,19 +77,19 @@ Nadat u het back-upbeleid hebt geconfigureerd, moet u een back-up op aanvraag ma
 
 1. Open de Recovery Services-kluis waarin de herstelpunten van de bestandsshares staan en klik op **Back-upitems**. De lijst met typen back-upitems wordt weergegeven.
 
-   ![Lijst met back-upitems](./media/backup-file-shares/list-of-backup-items.png)
+   ![Lijst met back-upitems](./media/tutorial-backup-azure-files/list-of-backup-items.png)
 
 2. Selecteer **Azure Storage (Azure-bestanden)** in de lijst. De lijst met Azure-bestandsshares wordt weergegeven.
 
-   ![Lijst met Azure-bestands shares](./media/backup-file-shares/list-of-azure-files-backup-items.png)
+   ![Lijst met Azure-bestands shares](./media/tutorial-backup-azure-files/list-of-azure-files-backup-items.png)
 
 3. Selecteer de gewenste bestandsshare uit de lijst met Azure-bestandsshares. Het menu Back-upitem wordt geopend voor de geselecteerde bestandsshare.
 
-   ![Menu back-upitem voor de geselecteerde bestands share](./media/backup-file-shares/backup-item-menu.png)
+   ![Menu back-upitem voor de geselecteerde bestands share](./media/tutorial-backup-azure-files/backup-item-menu.png)
 
 4. Klik in het menu Back-upitem op **Nu back-up maken**. Omdat dit een back-uptaak op aanvraag is, is er geen bewaarbeleid gekoppeld aan het herstelpunt. Het dialoogvenster **Nu back-up maken** wordt geopend. Geef de laatste dag op die u van het herstelpunt wilt bewaren.
 
-   ![Kies een datum voor de Bewaar periode van het herstel punt](./media/backup-file-shares/backup-now-menu.png)
+   ![Kies een datum voor de Bewaar periode van het herstel punt](./media/tutorial-backup-azure-files/backup-now-menu.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -103,4 +103,4 @@ In deze zelfstudie hebt u Azure Portal gebruikt voor het volgende:
 Ga door naar het volgende artikel om een back-up van een Azure-bestands share te herstellen.
 
 > [!div class="nextstepaction"]
-> [Herstellen vanaf een back-up van Azure-bestands shares](./backup-azure-files.md#restore-from-backup-of-azure-file-share)
+> [Herstellen vanaf een back-up van Azure-bestands shares](restore-afs.md)

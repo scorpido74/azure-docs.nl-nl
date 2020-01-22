@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met SuccessFactors | Microsoft Docs'
+title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met SuccessFactors | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en SuccessFactors configureert.
 services: active-directory
 documentationCenter: na
@@ -11,19 +11,18 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/13/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 38d40a2f72e73dde0f99ebbc9701e02c8d03738b
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: d49915271580b5665981bf7e212f3d5712c86456
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989490"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292976"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met SuccessFactors
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-successfactors"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met SuccessFactors
 
 In deze zelf studie leert u hoe u SuccessFactors integreert met Azure Active Directory (Azure AD). Wanneer u SuccessFactors integreert met Azure AD, kunt u het volgende doen:
 
@@ -44,7 +43,8 @@ U hebt de volgende items nodig om aan de slag te gaan:
 
 In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
-* SuccessFactors ondersteunt door **SP** geïnitieerde eenmalige aanmelding
+* SuccessFactors ondersteunt door **SP** geïnitieerde SSO.
+* Zodra u de SuccessFactors hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waardoor de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-successfactors-from-the-gallery"></a>SuccessFactors toevoegen vanuit de galerie
 
@@ -126,23 +126,23 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 4. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
-    ![De downloadkoppeling certificaat](common/certificatebase64.png)
+    ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
 6. Op de sectie **SuccessFactors instellen** kopieert u de gewenste URL ('s) op basis van uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
-    1. Voer in het veld **Naam** `B.Simon` in.  
-    1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+    1. Voer in het veld **Naam**`B.Simon` in.  
+    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
     1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-    1. Klik op **Create**.
+    1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -152,7 +152,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 1. Selecteer **SuccessFactors** in de lijst met toepassingen.
 1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-    ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
+    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
@@ -237,11 +237,11 @@ Om gebruikers toe te voegen in SuccessFactors, moet u contact opnemen met het [o
 
 ## <a name="test-sso"></a>SSO testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u in het toegangsvenster op de tegel SuccessFactors klikt, wordt u automatisch aangemeld bij de instantie van SuccessFactors waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
@@ -250,6 +250,10 @@ Wanneer u in het toegangsvenster op de tegel SuccessFactors klikt, wordt u autom
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Probeer SuccessFactors met Azure AD](https://aad.portal.azure.com)
+
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [SuccessFactors beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

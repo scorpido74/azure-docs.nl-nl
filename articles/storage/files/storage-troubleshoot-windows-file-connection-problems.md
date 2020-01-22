@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a466601bb68e9cec72408a590f2aec3d3dbfbf93
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 97fdb0b243f71701491f2d2424c04dbd19208ef0
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968261"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291190"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Problemen met Azure Files oplossen in Windows
 
@@ -139,28 +139,31 @@ Gebruik de Power shell [-cmdlet close-AzStorageFileHandle](https://docs.microsof
 > [!Note]  
 > De cmdlets Get-AzStorageFileHandle en Close-AzStorageFileHandle zijn opgenomen in AZ Power shell-module versie 2,4 of hoger. Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps)om de nieuwste AZ Power shell-module te installeren.
 
-<a id="authorizationfailureportal"></a>
-## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>Fout ' autorisatie fout ' bij het bladeren naar een Azure-bestands share in de portal
+<a id="noaaccessfailureportal"></a>
+## <a name="error-no-access-when-browsing-to-an-azure-file-share-in-the-portal"></a>Fout ' geen toegang ' bij het bladeren naar een Azure-bestands share in de portal
 
 Wanneer u naar een Azure-bestands share in de portal bladert, wordt mogelijk de volgende fout weer gegeven:
 
-Autorisatiefout  
-U hebt geen toegang 
+Geen toegang  
+Fout code: 403 
 
-### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>Oorzaak 1: uw gebruikers account heeft geen toegang tot het opslag account
+### <a name="cause-1-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Oorzaak 1: het virtuele netwerk of de firewall regels zijn ingeschakeld voor het opslag account
 
 ### <a name="solution-for-cause-1"></a>Oplossing voor oorzaak 1
 
-Blader naar het opslag account waar de Azure-bestands share zich bevindt, klik op **toegangs beheer (IAM)** en controleer of uw gebruikers account toegang heeft tot het opslag account. Zie [uw opslag account beveiligen met op rollen gebaseerd Access Control (RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)voor meer informatie.
+Controleer of regels voor het virtuele netwerk of de firewall juist zijn geconfigureerd in het opslagaccount. Als u wilt testen of het probleem wordt veroorzaakt door regels voor het virtuele netwerk of de firewall, wijzigt u de instelling in het opslagaccount in **Toegang toestaan vanaf alle netwerken**. Zie [Firewalls en virtuele netwerken voor Azure Storage configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security) voor meer informatie.
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>Oorzaak 2: het virtuele netwerk of de firewall regels zijn ingeschakeld voor het opslag account
+### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>Oorzaak 2: uw gebruikers account heeft geen toegang tot het opslag account
 
 ### <a name="solution-for-cause-2"></a>Oplossing voor oorzaak 2
 
-Controleer of regels voor het virtuele netwerk of de firewall juist zijn geconfigureerd in het opslagaccount. Als u wilt testen of het probleem wordt veroorzaakt door regels voor het virtuele netwerk of de firewall, wijzigt u de instelling in het opslagaccount in **Toegang toestaan vanaf alle netwerken**. Zie [Firewalls en virtuele netwerken voor Azure Storage configureren](https://docs.microsoft.com/azure/storage/common/storage-network-security) voor meer informatie.
+Blader naar het opslag account waar de Azure-bestands share zich bevindt, klik op **toegangs beheer (IAM)** en controleer of uw gebruikers account toegang heeft tot het opslag account. Zie [uw opslag account beveiligen met op rollen gebaseerd Access Control (RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)voor meer informatie.
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Een bestand of map in een Azure-bestands share kan niet worden verwijderd
+Wanneer u een bestand probeert te verwijderen, wordt mogelijk de volgende fout weer gegeven:
+
+De opgegeven resource is gemarkeerd voor verwijdering door een SMB-client.
 
 ### <a name="cause"></a>Oorzaak
 Dit probleem treedt doorgaans op als het bestand of de map een geopende ingang heeft. 

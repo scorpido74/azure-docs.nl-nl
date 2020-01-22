@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 01/21/2020
 ms.author: banders
-ms.openlocfilehash: 0671843b09cd90123b856b94db2618bac617dd5b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 24a673dc7949d5ce05aa1a701cc8b939a766fd99
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75995778"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313923"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-sql-data-warehouse"></a>Hoe reserveringskortingen van toepassing zijn op Azure SQL Data Warehouse
 
@@ -31,9 +31,9 @@ Voor warehouses die geen volledig uur worden uitgevoerd, wordt de reservering au
 
 De volgende voorbeelden laten zien hoe de korting voor gereserveerde capaciteit van SQL Data Warehouse wordt toegepast, afhankelijk van de implementaties.
 
-- **Voor beeld 1**: u koopt 5 eenheden van 100 gereserveerde cDWU capaciteit. U voert een uur lang een DW1500c-instantie van SQL Data Warehouse uit. In dit geval wordt het gebruik gegenereerd voor 15 eenheden van een gebruik van 100 cDWU. De reserveringskorting geldt voor de vijf eenheden die u hebt gebruikt. Er worden kosten in rekening gebracht op basis van betalen-per-gebruiktarieven voor de resterende 10 gebruikte eenheden van 100 cDWU-gebruik.
+- **Voor beeld 1**: u koopt 5 eenheden van 100 gereserveerde cDWU capaciteit. U voert een uur lang een DW1500c-instantie van SQL Data Warehouse uit. In dit geval wordt het gebruik gegenereerd voor 15 eenheden van een gebruik van 100 cDWU. De reserveringskorting geldt voor de vijf eenheden die u hebt gebruikt. Er worden kosten in rekening gebracht op basis van betalen-per-gebruiktarieven voor de resterende 10 gebruikte eenheden van 100 cDWU-gebruik. Met andere woorden, gedeeltelijke dekking kan worden uitgevoerd voor meerdere reserve ringen.
 
-- **Voor beeld 2**: u hebt 5 eenheden van 100 cDWU gereserveerde capaciteit aangeschaft. U voert een uur lang twee DW100c-instanties van SQL Data Warehouse uit. In dit geval worden twee gebruiksgebeurtenissen gegenereerd voor 1 eenheid 100 cDWU-gebruik. Beide gebruiksgebeurtenissen krijgen kortingen voor gereserveerde capaciteit. De resterende 3 eenheden van 100 cDWU gereserveerde capaciteit gaan verloren en worden niet overgedragen voor toekomstig gebruik.
+- **Voor beeld 2**: u hebt 5 eenheden van 100 cDWU gereserveerde capaciteit aangeschaft. U voert een uur lang twee DW100c-instanties van SQL Data Warehouse uit. In dit geval worden twee gebruiksgebeurtenissen gegenereerd voor 1 eenheid 100 cDWU-gebruik. Beide gebruiksgebeurtenissen krijgen kortingen voor gereserveerde capaciteit. De resterende 3 eenheden van 100 cDWU gereserveerde capaciteit gaan verloren en worden niet overgedragen voor toekomstig gebruik. Met andere woorden, een enkele reserve ring kan worden gekoppeld aan meerdere SQL Data Warehouse exemplaren.
 
 - **Voor beeld 3**: u koopt 1 eenheid van 100 gereserveerde cDWU capaciteit. U voert twee DW100c-instanties van SQL Data Warehouse uit. Elk instantie wordt 30 minuten uitgevoerd. In dit geval krijgen beide gebruiksgebeurtenissen kortingen voor gereserveerde capaciteit. Er wordt geen gebruik in rekening gebracht op basis van betalen-per-gebruiktarieven.
 

@@ -3,12 +3,12 @@ title: Problemen met het maken van back-ups van Azure-bestandsshares oplossen
 description: Dit artikel gaat over het oplossen van problemen die optreden bij het beveiligen van uw Azure-bestandsshares.
 ms.date: 08/20/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: 8b88ae568b07b36d2dd80c0ef30fe86646335043
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 050df5b96c265e468346535ff011e1baf7d86ad5
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664612"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293943"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Problemen bij het maken van back-ups van Azure-bestanden oplossen
 
@@ -69,5 +69,5 @@ De volgende tabel is bedoeld voor het configureren van de back-up:
 
 Zie voor meer informatie over het maken van back-ups van Azure-bestands shares:
 
-- [Een back-up maken van Azure-bestandsshares](backup-azure-files.md)
+- [Een back-up maken van Azure-bestandsshares](backup-afs.md)
 - [Back up Azure File share FAQ](backup-azure-files-faq.md) (Veelgestelde vragen over back-ups maken van Azure-bestandsshares)

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 28cc2e1f8782f1ffd37e3a20fcc68264b481e42e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b62e03184453c4daea8615ee2bea39c936de5c73
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490379"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313974"
 ---
-# <a name="train-model-module"></a>Train model-module
+# <a name="train-model-module"></a>Module Train-Model
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om een classificatie of regressie model te trainen. De training vindt plaats nadat u een model hebt gedefinieerd en de para meters hebt ingesteld, en dat gelabelde gegevens vereist. U kunt ook het **Train-model** gebruiken om een bestaand model opnieuw te trainen met nieuwe gegevens. 
 
@@ -68,10 +68,9 @@ In Azure Machine Learning is het maken en gebruiken van een machine learning mod
 
 Nadat het model is getraind:
 
-+ Als u de model parameters en functie-gewichten wilt weer geven, klikt u met de rechter muisknop op de uitvoer en selecteert u **visualiseren**.
-+ Als u het model in andere pijp lijnen wilt gebruiken, klikt u met de rechter muisknop op het model en selecteert u **model opslaan**. Typ een naam voor het model. 
 
-    Hiermee slaat u het model op als een moment opname die niet wordt bijgewerkt door herhaalde uitvoeringen van de pijp lijn.
++ Als u het model in andere pijp lijnen wilt gebruiken, selecteert u de module en selecteert u het pictogram **gegevensset registreren** onder het tabblad **uitvoer** in het rechterdeel venster. U kunt opgeslagen modellen openen in het module palet onder **gegevens sets**.
+
 + Als u het model wilt gebruiken bij het voors pellen van nieuwe waarden, verbindt u het met de module [score model](./score-model.md) , samen met nieuwe invoer gegevens.
 
 

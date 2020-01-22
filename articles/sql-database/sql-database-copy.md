@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 11/14/2019
-ms.openlocfilehash: b3bc99d0fbdb551af0fb3711d74db537d3f9b1a5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e1df345fb9a89972ad1857a937c22d6e10ad1fba
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421344"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289404"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Een transactioneel consistente kopie van een Azure-SQL database kopiëren
 
@@ -63,7 +63,7 @@ New-AzSqlDatabaseCopy -ResourceGroupName "<resourceGroup>" -ServerName $sourcese
 
 Het kopiëren van de data base is een asynchrone bewerking, maar de doel database wordt gemaakt onmiddellijk nadat de aanvraag is geaccepteerd. Als u de Kopieer bewerking wilt annuleren terwijl deze nog wordt uitgevoerd, verwijdert u de doel database met behulp van de cmdlet [Remove-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) .
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azure-cli
 az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myResourceGroup" --dest-server $targetserver `
@@ -151,7 +151,7 @@ Bewaak het kopieer proces door een query uit te geven op de weer gaven sys. data
 > Als u besluit het kopiëren te annuleren terwijl deze wordt uitgevoerd, voert u de instructie [Drop data base](https://msdn.microsoft.com/library/ms178613.aspx) uit op de nieuwe data base. U kunt ook het kopieer proces annuleren door de instructie DROP data base uit te voeren op de bron database.
 
 > [!IMPORTANT]
-> Als u een kopie met een aanzienlijk kleinere SLO moet maken dan de bron, heeft de doel database mogelijk niet voldoende bronnen om het seeding proces te volt ooien en kan dit ertoe leiden dat het kopiëren mislukt. In dit scenario gebruikt u een geo-Restore-aanvraag om een kopie te maken op een andere server en/of een andere regio. Zie [een Azure SQL database herstellen met behulp van database back-ups](sql-database-recovery-using-backups.md#geo-restore) voor meer informaing.
+> Als u een kopie met een aanzienlijk kleinere SLO moet maken dan de bron, is het mogelijk dat de doel database onvoldoende bronnen heeft om het seeding proces te volt ooien. Dit kan ertoe leiden dat de Kopieer bewerking mislukt. In dit scenario gebruikt u een geo-Restore-aanvraag om een kopie te maken op een andere server en/of een andere regio. Zie [een Azure-SQL database herstellen met behulp van database back-ups](sql-database-recovery-using-backups.md#geo-restore) voor meer informatie.
 
 ## <a name="resolve-logins"></a>Aanmeldingen oplossen
 

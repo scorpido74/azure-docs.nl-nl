@@ -2,13 +2,13 @@
 title: Fouten bij niet-gevonden resources
 description: Hierin wordt beschreven hoe u fouten oplost wanneer een resource niet kan worden gevonden bij het implementeren met een Azure Resource Manager sjabloon.
 ms.topic: troubleshooting
-ms.date: 06/06/2018
-ms.openlocfilehash: 81a2541be4f0a99aa28186eb6b7289bdb595e678
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 01/21/2020
+ms.openlocfilehash: c3e19af24fa7fb850eadf3deb346180476943241
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152422"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310659"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Niet-gevonden fouten voor Azure-resources oplossen
 
@@ -87,4 +87,16 @@ Zoek naar een expressie die de functie [Reference](template-functions-resource.m
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
+```
+
+## <a name="solution-4---get-managed-identity-from-resource"></a>Oplossing 4: beheerde identiteit ophalen van resource
+
+Als u een resource implementeert die impliciet een [beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md)maakt, moet u wachten tot de resource is geïmplementeerd voordat u waarden ophaalt voor de beheerde identiteit. Als u de naam van de beheerde identiteit doorgeeft aan de [referentie](template-functions-resource.md#reference) functie, probeert Resource Manager de referentie op te lossen voordat de resource en de identiteit worden geïmplementeerd. In plaats daarvan geeft u de naam op van de resource waarmee de identiteit wordt toegepast. Deze aanpak zorgt ervoor dat de resource en de beheerde identiteit worden geïmplementeerd voordat Resource Manager de referentie functie verhelpt.
+
+Gebruik in de functie verwijzing `Full` om alle eigenschappen op te halen, inclusief de beheerde identiteit.
+
+Als u bijvoorbeeld de Tenant-ID wilt ophalen voor een beheerde identiteit die wordt toegepast op een schaalset voor virtuele machines, gebruikt u:
+
+```json
+"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
 ```

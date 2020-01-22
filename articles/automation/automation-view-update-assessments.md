@@ -3,14 +3,14 @@ title: Azure Updatebeheer update-evaluaties weer geven
 description: In dit artikel wordt beschreven hoe update-evaluaties voor update-implementaties worden weer gegeven.
 services: automation
 ms.subservice: update-management
-ms.date: 05/17/2019
+ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: b6f86c72bfc1a1d51ed509a70d786e67f11d8166
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58d3cf6261456c09195ad6dafaeb781b55d9e5ee
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75419887"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310081"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>Azure Updatebeheer update-evaluaties weer geven
 
@@ -30,7 +30,7 @@ Selecteer **ontbrekende updates** om de lijst met updates weer te geven die ontb
 
 ## <a name="update-classifications"></a>Updateclassificaties
 
-De volgende tabellen geven een lijst van de update classificaties in Updatebeheer, met een definitie voor elke classificatie.
+De volgende tabellen geven een lijst van de ondersteunde update classificaties in Updatebeheer, met een definitie voor elke classificatie.
 
 ### <a name="windows"></a>Windows
 
@@ -59,6 +59,8 @@ sudo yum -q --security check-update
 ```
 
 Er is momenteel geen ondersteunde methode voor het inschakelen van systeem eigen classificatie-gegevens beschikbaarheid op CentOS. Op dit moment wordt alleen ondersteuning voor de beste werk belasting gegeven aan klanten die hun eigen functionaliteit hebben ingeschakeld.
+
+Als u updates wilt classificeren voor Red Hat Enter prise versie 6, moet u de yum-beveiligings-invoeg toepassing installeren. Op Red Hat Enterprise Linux 7 maakt de invoeg toepassing al deel uit van yum. u hoeft niets te installeren. Zie het volgende Red Hat [Knowledge-artikel](https://access.redhat.com/solutions/10021)voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

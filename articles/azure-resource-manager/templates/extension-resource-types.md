@@ -2,13 +2,13 @@
 title: Resourcetypen van extensies
 description: Een lijst met de Azure-resource typen wordt gebruikt om de mogelijkheden van andere resource typen uit te breiden.
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: af60bd648e41532cca364272fb0ded01c0c18239
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/20/2020
+ms.openlocfilehash: 47a98bca4912a1c59c8b2d9bad458769c6bf4ebf
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484673"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293263"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Resource typen die de mogelijkheden van andere resources uitbreiden
 
@@ -23,12 +23,14 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. AlertsManagement/alertsSummary
 - Micro soft. Authorization/checkAccess
 - Micro soft. Authorization/denyAssignments
+- Micro soft. Authorization/findOrphanRoleAssignments
 - Micro soft. autorisatie/vergren delingen
 - Micro soft. Authorization/permissions
 - Micro soft. Authorization/policyAssignments
 - Micro soft. Authorization/policyDefinitions
 - Micro soft. Authorization/policySetDefinitions
 - Micro soft. Authorization/roleAssignments
+- Micro soft. Authorization/roleAssignmentsUsageMetrics
 - Micro soft. Authorization/roleDefinitions
 - Micro soft. facturering/billingPeriods
 - Micro soft. facturering/billingPermissions
@@ -82,6 +84,7 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - micro soft. Insights/automatedExportSettings
 - micro soft. Insights/basis lijn
 - micro soft. Insights/calculatebaseline
+- micro soft. Insights/dataCollectionRuleAssociations
 - micro soft. Insights/diagnosticSettings
 - micro soft. Insights/diagnosticSettingsCategories
 - micro soft. Insights/eventtypes
@@ -94,6 +97,8 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - micro soft. Insights/metricbaselines
 - micro soft. Insights/metrische gegevens
 - micro soft. Insights/myWorkbooks
+- micro soft. Insights/topologie
+- micro soft. Insights/trans acties
 - micro soft. Insights/vmInsightsOnboardingStatuses
 - Micro soft. KubernetesConfiguration/sourceControlConfigurations
 - Micro soft. Maintenance/applyUpdates
@@ -109,6 +114,7 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. PolicyInsights/policyTrackedResources
 - Microsoft.PolicyInsights/remediations
 - Micro soft. Recovery Services/backupProtectedItems
+- Micro soft. Recovery Services/replicationEligibilityResults  
 - Micro soft. ResourceHealth/availabilityStatuses
 - Micro soft. ResourceHealth/childAvailabilityStatuses
 - Micro soft. ResourceHealth/childResources

@@ -17,34 +17,34 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe727afcfdec204c92c82c3e695961707af90e65
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a07a28837abf2fb6df3dd0583309ec1f3d278a58
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423814"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293484"
 ---
-# <a name="desktop-app-that-calls-web-apis---move-to-production"></a>Bureau blad-app voor het aanroepen van web-Api's-verplaatsen naar productie
+# <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Bureau blad-app voor het aanroepen van web-Api's: verplaatsen naar productie
 
-In dit artikel vindt u informatie over het verplaatsen van uw bureau blad-app die web-Api's aanroept voor productie.
+In dit artikel leert u hoe u uw bureau blad-app kunt verplaatsen die web-Api's aanroept voor productie.
 
-## <a name="handling-errors-in-desktop-applications"></a>Fouten afhandelen in bureaublad toepassingen
+## <a name="handle-errors-in-desktop-applications"></a>Fouten in bureaublad toepassingen afhandelen
 
-In de verschillende stromen hebt u geleerd hoe u de fouten voor de Stille stromen (zoals weer gegeven in code fragmenten) kunt afhandelen. U ziet ook dat er gevallen zijn waarin interactie nodig is (incrementele toestemming en voorwaardelijke toegang).
+In de verschillende stromen hebt u geleerd hoe u de fouten voor de Stille stromen kunt afhandelen, zoals wordt weer gegeven in de code fragmenten. U hebt ook gezien dat er sprake is van gevallen waarin interactie nodig is, zoals in incrementele toestemming en voorwaardelijke toegang.
 
-## <a name="how-to-have--the-user-consent-upfront-for-several-resources"></a>De gebruiker vooraf toestemming geven voor verschillende bronnen
+## <a name="have-the-user-consent-upfront-for-several-resources"></a>De gebruiker vooraf toestemming geven voor verschillende bronnen
 
 > [!NOTE]
 > Het verkrijgen van toestemming voor verschillende bronnen werkt voor micro soft Identity platform, maar niet voor Azure Active Directory (Azure AD) B2C. Azure AD B2C ondersteunt alleen beheerders toestemming en geen toestemming van de gebruiker.
 
-Met het micro soft Identity platform (v 2.0)-eind punt is het niet mogelijk om een token voor meerdere resources tegelijk op te halen. Daarom kan de para meter `scopes` alleen scopes voor één resource bevatten. U kunt ervoor zorgen dat de gebruiker vooraf toestuurt naar verschillende bronnen met behulp van de para meter `extraScopesToConsent`.
+U kunt geen token voor meerdere resources tegelijk ophalen met het micro soft Identity platform (v 2.0)-eind punt. De para meter `scopes` kan alleen bereiken voor één resource bevatten. U kunt ervoor zorgen dat de gebruiker vooraf toestuurt naar verschillende bronnen met behulp van de para meter `extraScopesToConsent`.
 
-Als u bijvoorbeeld twee resources hebt die elk twee bereiken hebben:
+U kunt bijvoorbeeld twee resources hebben met twee bereiken:
 
-- `https://mytenant.onmicrosoft.com/customerapi`-met 2 bereiken `customer.read` en `customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi`-met 2 bereiken `vendor.read` en `vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi` met de bereiken `customer.read` en `customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi` met de bereiken `vendor.read` en `vendor.write`
 
-Gebruik de `.WithAdditionalPromptToConsent` modificator met de para meter `extraScopesToConsent`.
+In dit voor beeld gebruikt u de `.WithAdditionalPromptToConsent` modificator met de para meter `extraScopesToConsent`.
 
 Bijvoorbeeld:
 
@@ -101,15 +101,15 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 Met deze aanroep krijgt u een toegangs token voor de eerste web-API.
 
-Wanneer u de tweede Web-API moet aanroepen, kunt u `AcquireTokenSilent`-API aanroepen:
+Wanneer u de tweede Web-API moet aanroepen, roept u de `AcquireTokenSilent`-API aan.
 
 ```csharp
 AcquireTokenSilent(scopesForVendorApi, accounts.FirstOrDefault()).ExecuteAsync();
 ```
 
-### <a name="microsoft-personal-account-requires-reconsenting-each-time-the-app-is-run"></a>Een persoonlijk micro soft-account moet elke keer dat de app wordt uitgevoerd, toestemming geven
+### <a name="microsoft-personal-account-requires-reconsent-each-time-the-app-runs"></a>Voor een persoonlijk micro soft-account moet u elke keer dat de app wordt uitgevoerd, toestemming geven
 
-Voor gebruikers van micro soft-persoonlijke accounts vraagt de vraag om toestemming op elke systeem eigen client (Desktop/mobiele app) om toestemming te verlenen is het beoogde gedrag. De systeem eigen client identiteit is inherent onveilig (in tegens telling tot de vertrouwelijke client toepassing die een geheim uitwisselt met het micro soft-identiteits platform om hun identiteit te bewijzen). Het micro soft Identity-platform heeft ervoor gekozen om deze inbeveiliging te beperken voor consumenten Services door de gebruiker om toestemming te vragen, telkens wanneer de toepassing wordt geautoriseerd.
+Voor gebruikers van een persoonlijk micro soft-account vraagt de vraag om toestemming op elke systeem eigen client (desktop of mobiele app) om toestemming te verlenen is het beoogde gedrag. De systeem eigen client identiteit is inherent onveilig, wat in strijd is met de id van de vertrouwelijke client toepassing. Vertrouwelijke client toepassingen wisselen een geheim uit met het micro soft-identiteits platform om hun identiteit te bewijzen. Het micro soft Identity-platform heeft ervoor gekozen om deze inbeveiliging te beperken voor consumenten Services door de gebruiker te vragen om toestemming telkens wanneer de toepassing wordt geautoriseerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

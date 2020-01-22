@@ -2,13 +2,13 @@
 title: 'Sjabloon functies: bronnen'
 description: Beschrijft de functies in een Azure Resource Manager-sjabloon gebruikt voor het ophalen van waarden over resources.
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 85e421d4d4e53d275613ff8848abd405fdf175c2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/20/2020
+ms.openlocfilehash: 56ace8c75ea27eb4d730b1630115b6fcbdc3f575
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979450"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310523"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Functies van de resource voor Azure Resource Manager-sjablonen
 
@@ -533,6 +533,16 @@ Bij het samen stellen van een volledig gekwalificeerde verwijzing naar een resou
 Bijvoorbeeld:
 
 de juiste `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` voor de `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` is onjuist
+
+### <a name="get-managed-identity"></a>Beheerde identiteit ophalen
+
+[Beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md) zijn [uitbreidings bron typen](extension-resource-types.md) die impliciet voor sommige resources worden gemaakt. Omdat de beheerde identiteit niet expliciet is gedefinieerd in de sjabloon, moet u verwijzen naar de resource waarmee de identiteit wordt toegepast. Gebruik `Full` om alle eigenschappen op te halen, met inbegrip van de impliciet gemaakte identiteit.
+
+Als u bijvoorbeeld de Tenant-ID wilt ophalen voor een beheerde identiteit die wordt toegepast op een schaalset voor virtuele machines, gebruikt u:
+
+```json
+"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+```
 
 ### <a name="reference-example"></a>Referentie voorbeeld
 

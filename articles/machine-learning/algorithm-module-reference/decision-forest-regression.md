@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: d930a6d856c6608e7792ce8ef3204b39aba0028a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 828301724dae58437f7818668cd0be879ae2ac70
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497972"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314178"
 ---
 # <a name="decision-forest-regression-module"></a>Regressie-module voor beslissings structuur
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om een regressie model te maken op basis van een ensemble van beslissings structuren.
 
@@ -38,7 +38,7 @@ Beslissings structuren hebben de volgende voor delen:
 
 Dit regressie model bestaat uit een ensemble van beslissings structuren. Elke structuur in een regressie-beslissings forest voert een Gaussiaanse distributie uit als een voor spelling. Er wordt een aggregatie uitgevoerd over de ensemble van structuren om een Gaussiaanse distributie te vinden die het dichtst bij de gecombineerde distributie ligt voor alle structuren in het model.
 
-Raadpleeg dit artikel voor meer informatie over het theoretische Framework voor deze algoritme en de implementatie ervan: [beslissings bossen: een uniform Framework voor classificatie, regressie, dichtheids schatting, verzamel leer en semi-Super visie leren ](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+Raadpleeg dit artikel voor meer informatie over het theoretische Framework voor deze algoritme en de implementatie ervan: [beslissings bossen: een uniform Framework voor classificatie, regressie, dichtheids schatting, verzamel leer en semi-Super visie leren](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Het regressie model voor beslissings structuur configureren
 
@@ -88,11 +88,7 @@ Raadpleeg dit artikel voor meer informatie over het theoretische Framework voor 
 
 Nadat de training is voltooid:
 
-+ Als u de structuur wilt zien die op elke iteratie is gemaakt, klikt u met de rechter muisknop op de uitvoer van de trainings module en selecteert u **visualiseren**.
-
-+ Als u de regels voor elk knoop punt wilt bekijken, klikt u op elke structuur en zoomt u in op de splitsingen.
-
-+ Als u een moment opname van het getrainde model wilt opslaan, klikt u met de rechter muisknop op de uitvoer van de trainings module en selecteert u **Opslaan als getraind model**. Deze kopie van het model wordt niet bijgewerkt op opeenvolgende uitvoeringen van de pijp lijn. 
++ Als u een moment opname van het getrainde model wilt opslaan, selecteert u de module training en gaat u naar het tabblad **uitvoer** in het rechterdeel venster. Klik op het pictogram **model registreren**.  U kunt het opgeslagen model vinden als een module in de boom structuur van de module. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

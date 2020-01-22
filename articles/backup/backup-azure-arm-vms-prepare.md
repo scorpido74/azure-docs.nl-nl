@@ -3,12 +3,12 @@ title: Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 description: Hierin wordt beschreven hoe u back-ups maakt van virtuele Azure-machines in een Recovery Services kluis met behulp van de Azure Backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: f2954ad2693d7b4f56e3f1b33e804a6936cf8a65
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 95c185c09558f3d1a525c9bcf15f3957118c4311
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450148"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294028"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 
@@ -295,6 +295,18 @@ U kunt Azure Firewall instellen om uitgaande toegang voor netwerk verkeer toe te
 
 * [Meer informatie over](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) het implementeren van Azure firewall.
 * [Meer informatie over](https://docs.microsoft.com/azure/firewall/fqdn-tags) FQDN-Tags.
+
+>[!NOTE]
+> Azure Backup ondersteunt nu selectieve back-up en herstel met behulp van de back-upoplossing van Azure virtual machine.
+>
+>Momenteel biedt Azure Backup ondersteuning voor het maken van back-ups van alle schijven (besturings systeem en gegevens) in een virtuele machine met behulp van de back-upoplossing van de VM. Met de functionaliteit voor uitsluiten van schijven krijgt u een optie om een back-up te maken van een of enkele van de vele gegevens schijven in een VM. Dit biedt een efficiënte en rendabele oplossing voor uw back-up-en herstel behoeften. Elk herstel punt bevat gegevens van de schijven die zijn opgenomen in de back-upbewerking, waarmee u een subset van schijven die zijn hersteld vanaf het opgegeven herstel punt tijdens de herstel bewerking kunt laten herstellen. Dit is van toepassing om beide te herstellen vanuit de moment opname en de kluis.
+>
+> Deze oplossing is met name handig in de volgende scenario's:
+>  
+>1. U hebt essentiële gegevens waarvan u een back-up wilt maken op slechts één schijf en u wilt geen back-up maken van de rest van de schijven die zijn gekoppeld aan een virtuele machine. Hierdoor worden de kosten voor back-upopslag geminimaliseerd.  
+>2. U hebt andere back-upoplossingen voor een deel van uw VM-gegevens. U maakt bijvoorbeeld een back-up van uw data bases of gegevens met een andere back-up van de werk belasting en u wilt back-ups op Azure-VM-niveau gebruiken voor de rest van uw schijven en gegevens om een efficiënt en robuust systeem te bouwen met de beste mogelijkheden die beschikbaar zijn.
+>
+>Als u zich wilt aanmelden voor de preview, schrijft u voor AskAzureBackupTeam@microsoft.com
 
 ## <a name="next-steps"></a>Volgende stappen
 

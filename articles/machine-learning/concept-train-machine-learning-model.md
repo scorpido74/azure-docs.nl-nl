@@ -9,12 +9,12 @@ ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: ac7ae0d7933e1d1b4d716eb157bf74152155a969
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4902c679fa9b8b0140f7da8f32b3382983a635ed
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541671"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311322"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Trainen van modellen met Azure Machine Learning
 
@@ -29,7 +29,7 @@ Azure Machine Learning biedt verschillende manieren om uw modellen te trainen, v
     | [Schattingen](#estimators) | Met Estimator-klassen kunt u **eenvoudig modellen trainen op basis van populaire machine learning Frameworks**. Er zijn Estimator-klassen voor **Scikit-Learn**, **PyTorch**, **tensor flow**en **Chainer**. Er is ook een algemene Estimator die kan worden gebruikt met frameworks die nog geen specifieke Estimator-klasse hebben. U hoeft zich geen zorgen te maken over het definiëren van een uitvoerings configuratie bij het gebruik van schattingen. |
     | [Machine learning-pijp lijn](#machine-learning-pipeline) | Pijp lijnen zijn geen andere Trainings methode, maar een **manier om een werk stroom te definiëren met behulp van modulaire, herbruikbare stappen**die training kunnen bevatten als onderdeel van de werk stroom. Machine learning-pijp lijnen ondersteunen het gebruik van geautomatiseerde machine learning, schattingen en het uitvoeren van een configuratie voor het trainen van modellen. Omdat pijp lijnen niet specifiek zijn gericht op training, zijn de redenen voor het gebruik van een pijp lijn meer gevarieerder dan de andere trainings methoden. Over het algemeen kunt u gebruikmaken van een pijp lijn wanneer:<br>* U wilt **processen zonder toezicht plannen** , zoals langlopende trainings taken of gegevens voorbereiding.<br>* Gebruik **meerdere stappen** die worden gecoördineerd over heterogene reken resources en opslag locaties.<br>* Gebruik de pijp lijn als een **herbruikbare sjabloon** voor specifieke scenario's, zoals retraining of batch scores.<br>**gegevens bronnen, invoer en uitvoer** van * bijhouden voor uw werk stroom.<br>* Uw werk stroom wordt **geïmplementeerd door verschillende teams die onafhankelijk werken met specifieke stappen**. Stappen kunnen vervolgens aan elkaar worden gekoppeld in een pijp lijn om de werk stroom te implementeren. |
 
-+ **Designer**: Azure machine learning Designer (preview) biedt een eenvoudig ingangs punt in machine learning voor het maken van een proef versie van concepten of voor gebruikers die weinig Codeer ervaring hebben. Het biedt u de mogelijkheid om modellen te trainen met behulp van een slepen-en-neerzetten op het web. U kunt python-code gebruiken als onderdeel van het ontwerp of modellen trainen zonder code te schrijven.
++ **Designer**: Azure machine learning Designer biedt een eenvoudig ingangs punt in machine learning voor het bouwen van een proef versie van concepten of voor gebruikers met weinig code ring. Het biedt u de mogelijkheid om modellen te trainen met behulp van een slepen-en-neerzetten op het web. U kunt python-code gebruiken als onderdeel van het ontwerp of modellen trainen zonder code te schrijven.
 
 + **Cli**: de machine learning cli bevat opdrachten voor algemene taken met Azure machine learning en wordt vaak gebruikt voor het **uitvoeren van scripts en het automatiseren van taken**. Als u bijvoorbeeld een trainings script of pijp lijn hebt gemaakt, kunt u de CLI gebruiken om een training te starten volgens een planning of wanneer de gegevens bestanden die worden gebruikt voor de training, worden bijgewerkt. Voor trainings modellen bevat deze opdrachten voor het verzenden van trainings taken. Het kan taken verzenden met behulp van run-configuraties of-pijp lijnen.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 8f243527461a95d963854d8d018602dd81115482
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: b6b9d0f146fd98fd90aa8858e522449be571842c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497277"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293161"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Inleiding tot de uitbrei ding van de desired state Configuration-handler van Azure
 
@@ -59,7 +59,7 @@ Wanneer de uitbrei ding voor de eerste keer wordt aangeroepen, wordt een versie 
 - Als de eigenschap **wmfVersion** is opgegeven, wordt die versie van WMF geïnstalleerd, tenzij die versie niet compatibel is met het besturings systeem van de virtuele machine.
 - Als er geen eigenschap **wmfVersion** is opgegeven, wordt de meest recente versie van WMF geïnstalleerd.
 
-Voor het installeren van WMF moet de computer opnieuw worden opgestart. Nadat het opnieuw is opgestart, wordt het zip-bestand gedownload dat is opgegeven in de eigenschap **modulesUrl** , indien opgegeven. Als deze locatie zich in Azure Blob-opslag bevindt, kunt u een SAS-token opgeven in de eigenschap **sasToken** om het bestand te openen. Nadat de zip is gedownload en uitgepakt, wordt de configuratie functie die is gedefinieerd in **configurationFunction** uitgevoerd om een. MOF-bestand te genereren. De uitbrei ding voert vervolgens `Start-DscConfiguration -Force` uit met behulp van het gegenereerde. MOF-bestand. De uitbrei ding legt uitvoer vast en schrijft deze naar het status kanaal van Azure.
+Voor het installeren van WMF moet de computer opnieuw worden opgestart. Nadat het opnieuw is opgestart, wordt het zip-bestand gedownload dat is opgegeven in de eigenschap **modulesUrl** , indien opgegeven. Als deze locatie zich in Azure Blob-opslag bevindt, kunt u een SAS-token opgeven in de eigenschap **sasToken** om het bestand te openen. Nadat de zip is gedownload en uitgepakt, wordt de configuratie functie die is gedefinieerd in **configurationFunction** uitgevoerd om een. MOF-bestand ([Managed Object Format](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)) te genereren. De uitbrei ding voert vervolgens `Start-DscConfiguration -Force` uit met behulp van het gegenereerde. MOF-bestand. De uitbrei ding legt uitvoer vast en schrijft deze naar het status kanaal van Azure.
 
 ### <a name="default-configuration-script"></a>Standaard configuratie script
 

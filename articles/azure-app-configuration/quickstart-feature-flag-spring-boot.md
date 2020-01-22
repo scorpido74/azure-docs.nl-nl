@@ -3,8 +3,7 @@ title: Quick start voor het toevoegen van functie vlaggen aan de lente-Azure-app
 description: Een Snelstartgids voor het toevoegen van functie vlaggen voor veer boot-apps en het beheren van deze in Azure-app configuratie
 services: azure-app-configuration
 documentationcenter: ''
-author: mrm9084
-manager: zhenlwa
+author: lisaguthrie
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,20 +11,20 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: Spring Boot
 ms.workload: tbd
-ms.date: 09/26/2019
-ms.author: mametcal
-ms.openlocfilehash: cae1e7b205869fd41850c1adfaeae97658dd02f0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 1/9/2019
+ms.author: lcozzens
+ms.openlocfilehash: 3e82354116969b01743700485b5c2dd75b4887e4
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184955"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310047"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Snelstartgids: functie vlaggen toevoegen aan een Spring boot-app
 
 In deze Snelstartgids neemt u Azure-app configuratie op in een Spring boot-web-app om een end-to-end-implementatie van functie beheer te maken. U kunt de app Configuration-service gebruiken om al uw functie vlaggen centraal op te slaan en hun status te bepalen.
 
-De bron voor het beheer van Spring boot-onderdelen breidt het Framework uit met uitgebreide ondersteuning voor functie vlaggen. Deze bibliotheken hebben **geen** afhankelijkheid van Azure libries. Ze kunnen naadloos worden geïntegreerd met de configuratie van apps via de configuratie provider voor veer boot.
+De bron voor het beheer van Spring boot-onderdelen breidt het Framework uit met uitgebreide ondersteuning voor functie vlaggen. Deze bibliotheken hebben **geen** afhankelijkheid van Azure-bibliotheken. Ze kunnen naadloos worden geïntegreerd met de configuratie van apps via de configuratie provider voor veer boot.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -39,7 +38,7 @@ De bron voor het beheer van Spring boot-onderdelen breidt het Framework uit met 
 
 6. Selecteer **functie beheer** >  **+ maken** om de volgende functie vlaggen toe te voegen:
 
-    | Sleutel | Status |
+    | Sleutel | Staat |
     |---|---|
     | Bèta | Uit |
 
@@ -54,7 +53,7 @@ U gebruikt de [lente initialisatie functie](https://start.spring.io/) om een nie
    - Genereer een **Maven**-project met **Java**.
    - Geef een **Spring boot** -versie op die gelijk is aan of groter is dan 2,0.
    - Geef de namen voor **Groep** en **Artefact** voor uw toepassing op.
-   - Voeg de afhankelijkheid **Web** toe.
+   - Voeg de **lente** webafhankelijkheid toe.
 
 3. Nadat u de vorige opties hebt opgegeven, selecteert u **project genereren**. Wanneer u hierom wordt gevraagd, downloadt u het project naar een pad op uw lokale computer.
 
@@ -68,12 +67,12 @@ U gebruikt de [lente initialisatie functie](https://start.spring.io/) om een nie
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M4</version>
+        <version>1.1.0</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.1.0.M4</version>
+        <version>1.1.0</version>
     </dependency>
     <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -86,27 +85,46 @@ U gebruikt de [lente initialisatie functie](https://start.spring.io/) om een nie
 
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
 
-1. Open `bootstrap.properties` die zich bevindt in de map resources van uw app en voeg de volgende regels toe aan het bestand. Voeg de informatie over de app-configuratie toe.
+1. Open _Boots trap. Properties_ in de map _resources_ van uw app. Als _Boots trap. eigenschappen_ niet bestaat, maakt u deze. Voeg de volgende regel toe aan het bestand.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-2. Ga in de app-configuratie portal voor uw configuratie archief naar toegangs sleutels. Selecteer het tabblad alleen-lezen sleutels. Op dit tabblad kopieert u de waarde van een van de verbindings reeksen en voegt u deze toe als een nieuwe omgevings variabele met de naam van de variabele `APP_CONFIGURATION_CONNECTION_STRING`.
+1. Ga in de app-configuratie portal voor uw configuratie archief naar toegangs sleutels. Selecteer het tabblad alleen-lezen sleutels. Op dit tabblad kopieert u de waarde van een van de verbindings reeksen en voegt u deze toe als een nieuwe omgevings variabele met de naam van de variabele `APP_CONFIGURATION_CONNECTION_STRING`.
 
-3. Open het Java-bestand van de hoofdtoepassing en voeg `@EnableConfigurationProperties` toe om deze functie in te schakelen.
+1. Open het Java-bestand van de hoofdtoepassing en voeg `@EnableConfigurationProperties` toe om deze functie in te schakelen.
 
     ```java
+    import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
-    public class AzureConfigApplication {
+    public class DemoApplication {
         public static void main(String[] args) {
-            SpringApplication.run(AzureConfigApplication.class, args);
+            SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
 
-4. Maak een nieuw Java-bestand met de naam *HelloController.java* in de pakketmap van uw app. Voeg de volgende regels toe:
+1. Maak een nieuw Java-bestand met de naam *MessageProperties.java* in de pakketmap van uw app. Voeg de volgende regels toe:
+
+    ```java
+    @ConfigurationProperties(prefix = "config")
+    public class MessageProperties {
+        private String message;
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
+    }
+    ```
+
+1. Maak een nieuw Java-bestand met de naam *HelloController.java* in de pakketmap van uw app. Voeg de volgende regels toe:
 
     ```java
     @Controller
@@ -127,7 +145,7 @@ U gebruikt de [lente initialisatie functie](https://start.spring.io/) om een nie
     }
     ```
 
-5. Maak een nieuw HTML-bestand met de naam *Welcome. html* in de map Sjablonen van uw app. Voeg de volgende regels toe:
+1. Maak een nieuw HTML-bestand met de naam *Welcome. html* in de map Sjablonen van uw app. Voeg de volgende regels toe:
 
     ```html
     <!DOCTYPE html>
@@ -184,7 +202,7 @@ U gebruikt de [lente initialisatie functie](https://start.spring.io/) om een nie
 
     ```
 
-6. Maak een nieuwe map met de naam CSS onder statisch en daarin een nieuw CSS-bestand met de naam *Main. CSS*. Voeg de volgende regels toe:
+1. Maak een nieuwe map met de naam CSS onder statisch en daarin een nieuw CSS-bestand met de naam *Main. CSS*. Voeg de volgende regels toe:
 
     ```css
     html {
@@ -217,7 +235,7 @@ U gebruikt de [lente initialisatie functie](https://start.spring.io/) om een nie
     }
     ```
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
 
 1. Maak een Spring boot-toepassing met maven en voer deze uit, bijvoorbeeld:
 
@@ -232,7 +250,7 @@ U gebruikt de [lente initialisatie functie](https://start.spring.io/) om een nie
 
 3. Selecteer in de portal voor app-configuratie **functie beheer**en wijzig de status van de **bèta** sleutel in **op**:
 
-    | Sleutel | Status |
+    | Sleutel | Staat |
     |---|---|
     | Bèta | Aan |
 

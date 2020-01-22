@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: b00948f8d0e1eb8538354a6c16febf81bd4d1f16
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b1c167c71907e5f8af1006dfabd8f81ce4425d09
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457381"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291155"
 ---
 # <a name="migrate-bulk-data-to-azure-file-sync"></a>Bulk gegevens migreren naar Azure File Sync
 U kunt op twee manieren bulk gegevens migreren naar Azure File Sync:
@@ -79,7 +79,7 @@ Wanneer de server de initiële synchronisatie van de naam ruimte voltooit, gebru
 U kunt de faserings share nu opschonen om kosten te besparen:
 
 1. Selecteer op de Blade eigenschappen van het **Server eindpunt** wanneer de status is **voltooid**de optie **offline gegevens overdracht uitschakelen**.
-2. U kunt de faserings share verwijderen om kosten te besparen. De staging-share bevat waarschijnlijk geen Acl's voor bestanden en mappen, dus het is niet erg nuttig. Voor back-uppunt-in-time-doel einden maakt u een echte [moment opname van de synchronisatie van de Azure-bestands share](storage-snapshots-files.md). U kunt [Azure backup instellen om moment opnamen te maken]( ../../backup/backup-azure-files.md) volgens een planning.
+2. U kunt de faserings share verwijderen om kosten te besparen. De staging-share bevat waarschijnlijk geen Acl's voor bestanden en mappen, dus het is niet erg nuttig. Voor back-uppunt-in-time-doel einden maakt u een echte [moment opname van de synchronisatie van de Azure-bestands share](storage-snapshots-files.md). U kunt [Azure backup instellen om moment opnamen te maken]( ../../backup/backup-afs.md) volgens een planning.
 
 Schakel de offline modus voor gegevens overdracht alleen uit wanneer de status is **voltooid** of wanneer u wilt annuleren vanwege een onjuiste configuratie. Als u tijdens een implementatie de modus uitschakelt, wordt het uploaden van bestanden vanaf de server gestart, zelfs als uw staging-share nog steeds beschikbaar is.
 

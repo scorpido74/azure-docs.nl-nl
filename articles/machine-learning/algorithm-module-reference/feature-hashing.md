@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 48960eae4941bb744a937639e1308e1b5f6aaf9f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 60a9c6b237423337abb520b335c98d3c8c7549be
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497838"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312194"
 ---
 # <a name="feature-hashing-module-reference"></a>Naslag informatie over functie hashing-module
 
-In dit artikel wordt een module beschreven die is opgenomen in Azure Machine Learning Designer (preview).
+In dit artikel wordt een module beschreven die is opgenomen in Azure Machine Learning Designer.
 
 Gebruik de functie hashing-module om een stroom van Engelse tekst te transformeren in een set integer-functies. U kunt deze hash-functie vervolgens door geven die is ingesteld op een machine learning algoritme voor het trainen van een tekst analyse model.
 
@@ -30,7 +30,7 @@ Hashing van functies werkt door unieke tokens te converteren naar gehele getalle
 
 Neem bijvoorbeeld een aantal eenvoudige zinnen zoals deze, gevolgd door een sentiment-Score. Stel dat u deze tekst wilt gebruiken om een model te bouwen.
 
-|Gebruikers tekst|Stemming|
+|Gebruikers tekst|Sentiment|
 |--------------|---------------|
 |Ik gek dit boek|3|
 |Ik Hated dit boek|1|
@@ -50,16 +50,16 @@ U kunt de grootte van het n-gram instellen met behulp van de eigenschap **n-gram
 
 |Term (unigrams)|Frequency|
 |------------|---------------|
-|telefoonlijst|3|
+|boek|3|
 |I|3|
-|houding|1|
+|boeken|1|
 |aangetroffen|1|
 
 Nadat de woorden lijst is gebouwd, zet de functie hashing module de woordenlijst termen om in hash-waarden. Vervolgens wordt berekend of een functie in elk geval is gebruikt. Voor elke rij met tekst gegevens voert de module een set kolommen uit, één kolom voor elke hash-functie.
 
 Zo kunnen de functie kolommen na hashing er ongeveer als volgt uitzien:
 
-|Vermogen|Hash-functie 1|Hash-functie 2|Hash-functie 3|
+|Classificatie|Hash-functie 1|Hash-functie 2|Hash-functie 3|
 |-----|-----|-----|-----|
 |4|1|1|0|
 |5|0|0|0|

@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/24/2019
-ms.openlocfilehash: c06a7551a5c0f14be94ed14072b81c189e359aa8
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/21/2020
+ms.openlocfilehash: 15334f0c58f602a2728e3daa6645b957dfcd7129
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541996"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290322"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Linux-computers verbinden met Azure Monitor
 
@@ -74,9 +74,10 @@ Voordat u de Log Analytics-agent voor Linux installeert, hebt u eerst de werkrui
 
 De Log Analytics-agent voor Linux bevindt zich in een zelfextraherende shell-script bundel en kan worden geïnstalleerd. Deze bundel bevat Debian-en RPM-pakketten voor elk van de agent onderdelen en kan rechtstreeks of geëxtraheerd worden geïnstalleerd om de afzonderlijke pakketten op te halen. Er is één bundel voor x64 en één voor x86-architecturen. 
 
-Voor virtuele Azure-machines wordt u aangeraden de agent te installeren met behulp van de [Azure log Analytics VM-extensie](../../virtual-machines/extensions/oms-linux.md) voor Linux. 
+> [!NOTE]
+> Voor virtuele Azure-machines wordt u aangeraden de agent te installeren met behulp van de [Azure log Analytics VM-extensie](../../virtual-machines/extensions/oms-linux.md) voor Linux. 
 
-1. De juiste bundel (x86 of x64) overdragen aan uw virtuele Linux-machine of fysieke computer met SCP/SFTP.
+1. [Down load](https://github.com/microsoft/OMS-Agent-for-Linux#azure-install-guide) en breng de juiste bundel (x64 of x86) om naar uw virtuele Linux-machine of fysieke computer met SCP/SFTP.
 
 2. Installeer de bundel met behulp van het argument `--install`. Als u tijdens de installatie wilt voorbereiden op een Log Analytics-werk ruimte, geeft u de `-w <WorkspaceID>` en `-s <workspaceKey>` para meters die u eerder hebt gekopieerd.
 

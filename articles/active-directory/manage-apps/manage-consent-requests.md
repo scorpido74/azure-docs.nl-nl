@@ -12,12 +12,12 @@ ms.date: 12/27/2019
 ms.author: mimart
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c6a77fa8c6c48c9c3d4f2eba3ba56ac9114707a
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 528aff73b931776ef9a6542437db271bb214c7fb
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122988"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290696"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Het beheren van toestemming voor toepassingen en het evalueren van toestemming aanvragen
 
@@ -42,7 +42,7 @@ Nadat de toestemming van de eind gebruiker is uitgeschakeld of beperkt, zijn er 
 
 3. Als uw organisatie de juiste licentie heeft:
 
-    * Gebruik extra [controle functies voor OAuth-toepassingen in Microsoft Cloud app Security](https://docs.microsoft.com/azure/cloud-app-security/investigate-risky-oauth).
+    * Gebruik extra [controle functies voor OAuth-toepassingen in Microsoft Cloud app Security](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth).
     * Gebruik [Azure monitor werkmappen om machtigingen en gerelateerde activiteiten te bewaken](../reports-monitoring/howto-use-azure-monitor-workbooks.md) . De *instemming* -werkmap van de toestemming biedt een overzicht van de apps op basis van het aantal mislukte toestemming aanvragen. Dit kan handig zijn om de prioriteit van toepassingen te bepalen en te bepalen of ze toestemming geven voor de beheerder.
 
 ### <a name="additional-considerations-for-reducing-friction"></a>Aanvullende overwegingen voor het verminderen van wrijving

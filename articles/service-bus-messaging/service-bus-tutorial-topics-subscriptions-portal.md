@@ -1,30 +1,30 @@
 ---
-title: 'Zelfstudie: het voorraadassortiment van een detailhandelsbedrijf bijwerken via het publiceren van/abonneren op kanalen en via onderwerpfilters met Azure Portal | Microsoft Docs'
+title: Voorraad bijwerken met Azure Portal en onderwerpen/abonnementen
 description: In deze zelfstudie leert u hoe u berichten kunt versturen naar en ontvangen van een onderwerp en abonnement, en hoe u filterregels kunt toevoegen en gebruiken met behulp van .NET.
 services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.author: spelluru
-ms.date: 09/22/2018
+ms.date: 01/21/2020
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 5424a07f8ecd7eab962a4f865fac91741810e4b1
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: b6a3f38e0b83dc927a225c630b8178be1dc539ce
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991921"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310115"
 ---
-# <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Zelfstudie: Voorraad bijwerken met Azure Portal en onderwerpen/abonnementen
+# <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Zelfstudie: voorraad bijwerken met Azure Portal en onderwerpen/abonnementen
 
-Microsoft Azure Service Bus is een multitenant-cloudberichtenservice waarmee u gegevens kunt versturen tussen toepassingen en services. Asynchrone bewerkingen bieden flexibele, Brokered Messaging, samen met gestructureerde FIFO-berichtenuitwisseling (first in, first out) en mogelijkheden voor publiceren/abonneren. In deze zelfstudie leert hoe u onderwerpen en abonnementen van Service Bus kunt gebruiken in een scenario met detailhandelvoorraad, waarbij gebruik wordt gemaakt van kanalen voor publiceren/abonneren met Azure Portal en .NET.
+Microsoft Azure Service Bus is een berichtenservice in de cloud met meerdere tenants die informatie tussen toepassingen en services verzendt. Met asynchrone bewerkingen krijgt u flexibele Brokered Messaging, samen met gestructureerde FIFO-messaging (first in, first out) en mogelijkheden voor publiceren/abonneren. In deze zelfstudie leert hoe u onderwerpen en abonnementen van Service Bus kunt gebruiken in een scenario met detailhandelvoorraad, waarbij gebruik wordt gemaakt van kanalen voor publiceren/abonneren met Azure Portal en .NET.
 
 In deze zelfstudie leert u het volgende:
 > [!div class="checklist"]
-> * Een Service Bus-onderwerp en een of meer abonnementen voor dat onderwerp maken met Azure Portal
+> * Een Service Bus-onderwerp en een of meer abonnementen op dat onderwerp kunt maken met Azure Portal.
 > * Onderwerpfilters toevoegen met .NET-code
-> * Twee berichten met verschillende inhoud maken
+> * Twee berichten met verschillende inhoud maken.
 > * De berichten verzenden en controleren of ze zijn ontvangen in de verwachte abonnementen
 > * Berichten ontvangen van de abonnementen
 
@@ -38,7 +38,7 @@ Als u nog geen abonnement op Azure hebt, kunt u een [gratis account][] maken voo
 
 Het volgende moet zijn geïnstalleerd om deze zelfstudie te voltooien:
 
-- [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of hoger.
+- [Visual Studio 2017 update 3 (versie 15.3, 26730.01)](https://www.visualstudio.com/vs) of later.
 - [NET Core SDK](https://www.microsoft.com/net/download/windows), versie 2.0 of later.
 
 ## <a name="service-bus-topics-and-subscriptions"></a>Service Bus-onderwerpen en -abonnementen
@@ -53,7 +53,7 @@ Elk [abonnement op een onderwerp](service-bus-messaging-overview.md#topics) kan 
 
 ## <a name="create-filter-rules-on-subscriptions"></a>Filterregels voor abonnementen maken
 
-Nadat de naamruimte en onderwerp/abonnementen zijn ingericht en u over de benodigde referenties beschikt, bent u klaar om filterregels voor de abonnementen te maken, en kunt u vervolgens berichten verzenden en ontvangen. U kunt de code in [deze GitHub-voorbeeldmap](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) controleren.
+Nadat de naamruimte en onderwerp/abonnementen zijn ingericht en u over de benodigde referenties beschikt, bent u klaar om filterregels voor de abonnementen te maken, en kunt u vervolgens berichten verzenden en ontvangen. U kunt de code controleren in [deze GitHub-voorbeeldmap](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
 
 ### <a name="send-and-receive-messages"></a>Berichten verzenden en ontvangen
 
@@ -395,16 +395,16 @@ private async Task ReceiveMessages(string subscription)
 ```
 
 > [!NOTE]
-> U kunt Service Bus-resources beheren [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). De Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus-naamruimte en berichtentiteiten op een eenvoudige manier te beheren. Het hulpprogramma biedt geavanceerde functies zoals import/export-functionaliteit of de mogelijkheid om te testen, onderwerp, wachtrijen, abonnementen, relayservices, notification hubs en gebeurtenissen hubs. 
+> U kunt Service Bus-resources beheren met [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Met de Service Bus Explorer kunnen gebruikers verbinding maken met een Service Bus naam ruimte en de Messa ging-entiteiten op een eenvoudige manier beheren. Het hulp programma biedt geavanceerde functies zoals de functionaliteit voor importeren/exporteren of de mogelijkheid om onderwerp, wacht rijen, abonnementen, relay-Services, Notification hubs en Events hubs te testen. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie hebt u resources ingericht met behulp van Azure Portal en vervolgens berichten verzonden en ontvangen van een Service Bus-onderwerp en de daarbij behorende abonnementen. U hebt geleerd hoe u:
 
 > [!div class="checklist"]
-> * Een Service Bus-onderwerp en een of meer abonnementen voor dat onderwerp maken met Azure Portal
+> * Een Service Bus-onderwerp en een of meer abonnementen op dat onderwerp kunt maken met Azure Portal.
 > * Onderwerpfilters toevoegen met .NET-code
-> * Twee berichten met verschillende inhoud maken
+> * Twee berichten met verschillende inhoud maken.
 > * De berichten verzenden en controleren of ze zijn ontvangen in de verwachte abonnementen
 > * Berichten ontvangen van de abonnementen
 

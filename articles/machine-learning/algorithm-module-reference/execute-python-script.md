@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 1ba10bf682d900a45f345f2ebe2707ba1275e94e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a28b77a25971128b9474f18d860f6204c3433c73
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497873"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312291"
 ---
 # <a name="execute-python-script-module"></a>Python-script module uitvoeren
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om python-code uit te voeren. Zie [het volgende artikel](https://docs.microsoft.com/azure/machine-learning/machine-learning-execute-python-scripts)voor meer informatie over de architectuur en ontwerp principes van python.
 
@@ -34,39 +34,39 @@ Azure Machine Learning maakt gebruik van de Anaconda-distributie van python, met
  -  Anaconda 4.5 + Distribution voor python 3,6 
 
 De vooraf geïnstalleerde pakketten zijn:
--  asn1crypto = = 0.24.0
-- attr = = 19.1.0
-- Azure-common = = 1.1.18
+-  asn1crypto==0.24.0
+- attrs==19.1.0
+- azure-common==1.1.18
 - Azure-Storage-BLOB = = 1.5.0
 - Azure-opslag-common = = 1.4.0
-- Certificeer = = 2019.3.9
-- cffi = = 1.12.2
-- chardet = = 3.0.4
+- certifi==2019.3.9
+- cffi==1.12.2
+- chardet==3.0.4
 - crypto grafie = = 2.6.1
 - distributie = = 1.4.0
 - IDNA = = 2.8
-- jsonschema = = 3.0.1
-- lightgbm = = 2.2.3
-- meer-ITER-extra = = 6.0.0
-- numpy = = 1.16.2
-- Pandas = = 0.24.2
-- Pillow = = 6.0.0
-- PIP = = 19.0.3
+- jsonschema==3.0.1
+- lightgbm==2.2.3
+- more-itertools==6.0.0
+- numpy==1.16.2
+- pandas==0.24.2
+- Pillow==6.0.0
+- pip==19.0.3
 - pyarrow = = 0.12.1
 - pycparser = = 2.19
 - pycryptodomex = = 3.7.3
-- pyrsistent = = 0.14.11
-- python-dateutil = = 2.8.0
-- pytz = = 2018.9
-- aanvragen = = 2.21.0
-- scikit-Learn = = 0.20.3
-- scipy = = 1.2.1
+- pyrsistent==0.14.11
+- python-dateutil==2.8.0
+- pytz==2018.9
+- requests==2.21.0
+- scikit-learn==0.20.3
+- scipy==1.2.1
 - installatie-instellingen = = 40.8.0
 - zes = = 1.12.0
-- Torch = = 1.0.1. post2
-- Torchvision = = 0.2.2. post3
-- urllib3 = = 1.24.1
-- wiel = = 0.33.1 
+- torch==1.0.1.post2
+- torchvision==0.2.2.post3
+- urllib3==1.24.1
+- wheel==0.33.1 
 
  Als u andere pakketten wilt installeren die niet in de vooraf geïnstalleerde lijst voor komt, bijvoorbeeld *scikit-misc*, voegt u de volgende code toe aan het script: 
 

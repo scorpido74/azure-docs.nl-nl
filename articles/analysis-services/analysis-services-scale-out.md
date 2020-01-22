@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 56a3d4f172cde70bdd1a875c76213c43184cbbc3
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: fd91701a20b8a760eadcafe6f93f9ba5857a1c9f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167949"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310183"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Uitschalen van Azure Analysis Services
 
@@ -50,7 +50,7 @@ Wanneer u een volgende uitschaal bewerking uitvoert, bijvoorbeeld het aantal rep
 
 ### <a name="synchronization-mode"></a>Synchronisatie modus
 
-Standaard worden query replica's volledig opnieuw gehydrateerd, niet incrementeel. Rehydratatie treedt op in fasen. Ze worden twee tegelijk losgekoppeld en gekoppeld (ervan uitgaande dat er ten minste drie replica's zijn) om ervoor te zorgen dat ten minste één replica online wordt gehouden voor query's op een bepaald moment. In sommige gevallen moeten clients mogelijk opnieuw verbinding maken met een van de online replica's terwijl dit proces plaatsvindt. Met behulp van de **ReplicaSyncMode** -instelling kunt u nu de synchronisatie van query's replica's opgeven, parallel. Parallelle synchronisatie biedt de volgende voor delen: 
+Standaard worden query replica's volledig opnieuw gehydrateerd, niet incrementeel. Rehydratatie treedt op in fasen. Ze worden twee tegelijk losgekoppeld en gekoppeld (ervan uitgaande dat er ten minste drie replica's zijn) om ervoor te zorgen dat ten minste één replica online wordt gehouden voor query's op een bepaald moment. In sommige gevallen moeten clients mogelijk opnieuw verbinding maken met een van de online replica's terwijl dit proces plaatsvindt. Met de instelling (in Preview) **ReplicaSyncMode** kunt u nu de synchronisatie van de query replica opgeven, parallel. Parallelle synchronisatie biedt de volgende voor delen: 
 
 - Aanzienlijke vermindering van de synchronisatie tijd. 
 - Gegevens in replica's zijn waarschijnlijker consistent tijdens het synchronisatie proces. 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 192aae4da4d9b07804f473ec6e98615f46e2ee86
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b6a019fbea2ebfed67db4f7c2a9b0f8085438aa8
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214569"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311645"
 ---
 # <a name="evaluate-model-module"></a>Model module evalueren
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om de nauw keurigheid van een getraind model te meten. U geeft een gegevensset op die uit een model gegenereerde scores bevat en de module **Evaluate model** berekent een aantal metrische gegevens over de evaluatie van de industrie standaard.
   
@@ -61,14 +61,11 @@ Deze functie is handig omdat u de resultaten van twee verschillende modellen op 
 
 1. Verbind de Score van de **gescoorde gegevensset** van het [score model](score-model.md) met de invoer van een **evaluatie model**. 
 2. Koppel de uitvoer van de module score model voor het tweede model aan de rechter invoer van het **Evalueer model**.
-3. Klik met de rechter muisknop op **model evalueren**en selecteer **geselecteerde uitvoeren** om de evaluatie scores te genereren.
+3. Voer de pijplijn uit.
 
 ## <a name="results"></a>Resultaten
 
-Nadat u het **model evalueren**hebt uitgevoerd, klikt u met de rechter muisknop op de module en selecteert u **evaluatie resultaten** om de resultaten te bekijken. U kunt:
-
-+ Sla de resultaten op als een gegevensset, zodat u gemakkelijker kunt analyseren met andere hulpprogram ma's
-+ Een visualisatie in de ontwerp functie genereren
+Nadat u het **model evalueren**hebt uitgevoerd, klikt u met de rechter muisknop op de module en selecteert u **evaluatie resultaten visualiseren** om de resultaten te bekijken.
 
 Als u gegevens sets verbindt met zowel de invoer van een **Evalueer model**, bevatten de resultaten metrische gegevens voor beide sets of beide modellen.
 Het model of de gegevens die aan de linker poort zijn gekoppeld, worden eerst in het rapport weer gegeven, gevolgd door de metrieken voor de gegevensset of het model dat is gekoppeld aan de juiste poort.  

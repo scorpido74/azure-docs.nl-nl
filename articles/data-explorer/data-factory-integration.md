@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 51683e529f832e06efbe8eb71466f3b27d95fcb1
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 01/20/2020
+ms.openlocfilehash: bb08cf4db45a378b35a8245eadd56a2ab3e48bab
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819136"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293620"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Azure Data Explorer integreren met Azure Data Factory
 
@@ -44,6 +44,14 @@ Zie [Azure Data Factory opdracht activiteit gebruiken om Azure Data Explorer-bes
 ### <a name="copy-in-bulk-from-a-database-template"></a>Bulksgewijs kopiëren uit een database sjabloon
 
 De [kopie in bulk van een Data Base naar Azure Data Explorer met behulp van de Azure Data Factory sjabloon](data-factory-template.md) is een vooraf gedefinieerde Azure Data Factory pijp lijn. De sjabloon wordt gebruikt om een groot aantal pijp lijnen per data base of per tabel te maken voor het sneller kopiëren van gegevens. 
+
+### <a name="mapping-data-flows"></a>Toewijzing gegevensstromen 
+
+[Azure Data Factory gegevens stromen](/azure/data-factory/concepts-data-flow-overview) zijn visueel ontworpen gegevens transformaties waarmee data engineers grafische gegevens transformatie logica kunnen ontwikkelen zonder code te hoeven schrijven. Als u een gegevens stroom en opname gegevens wilt maken naar Azure Data Explorer, gebruikt u de volgende methode:
+
+1. Maak de [toewijzings gegevens stroom](/azure/data-factory/data-flow-create).
+1. [De gegevens exporteren naar een Azure-Blob](/azure/data-factory/data-flow-sink). 
+1. Definieer [Event grid](/azure/data-explorer/ingest-data-event-grid) of een [ADF-Kopieer activiteit](/azure/data-explorer/data-factory-load-data) om de gegevens op te nemen in azure Data Explorer.
 
 ## <a name="select-between-copy-and-azure-data-explorer-command-activities-when-copy-data"></a>Selecteer tussen Kopieer-en Azure Data Explorer-opdracht activiteiten wanneer u gegevens kopieert 
 

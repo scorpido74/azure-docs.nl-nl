@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a004fdf0ed01c97fe5c21cc9011c46f5e4c51648
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00414bea82a7a78dd88ff4b1a592a6e35b5241c7
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428578"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314399"
 ---
 # <a name="convert-to-dataset"></a>Converteren naar gegevensset
 
-In dit artikel wordt beschreven hoe u de module converteren naar gegevensset in Azure Machine Learning Designer (preview) gebruikt om gegevens voor een pijp lijn te converteren naar de interne indeling van de ontwerp functie.
+In dit artikel wordt beschreven hoe u de module converteren naar gegevensset in Azure Machine Learning Designer kunt gebruiken om gegevens voor een pijp lijn om te zetten in de interne indeling van de ontwerp functie.
   
 Conversie is in de meeste gevallen niet vereist. Azure Machine Learning gegevens worden impliciet geconverteerd naar de indeling van de systeem eigen gegevensset wanneer een bewerking wordt uitgevoerd op de gegevens. 
 
@@ -51,11 +51,11 @@ U wordt aangeraden de module [meta gegevens bewerken](edit-metadata.md) te gebru
     Houd er rekening mee dat de bewerking **ReplaceValues** alleen van toepassing is op exacte overeenkomsten. Deze teken reeksen worden bijvoorbeeld niet beïnvloed: `obs.`, `obsolete`.  
  
   
-5.  Voer de pijp lijn uit of klik met de rechter muisknop op de module converteren naar gegevensset en selecteer **geselecteerde uitvoeren**.  
+5.  Voer de pijplijn uit.  
 
 ## <a name="results"></a>Resultaten
 
-+  Als u de resulterende gegevensset met een nieuwe naam wilt opslaan, klikt u met de rechter muisknop op de uitvoer van converteren naar dataset en selecteert u **Opslaan als gegevensset**.  
++  Als u de resulterende gegevensset met een nieuwe naam wilt opslaan, selecteert u op het pictogram **gegevensset registreren** onder het tabblad **uitvoer** in het rechterdeel venster van de module.  
   
 ## <a name="technical-notes"></a>Technische opmerkingen  
 

@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 227bf490d1ac264bb54ff3d1ecf0ccc2b3ef2e0e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: bfae0d8eed80a88475c447a141097022fed9adff
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763541"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311106"
 ---
 # <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Bouw een classificatie & gebruik functie selectie om inkomsten te voors pellen met Azure Machine Learning Designer
 
-**Voor beeld van Designer (preview) 3**
+**Voor beeld van Designer 3**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Meer informatie over het bouwen van een machine learning classificatie zonder het schrijven van één regel code met behulp van de ontwerp functie (preview). In dit voor beeld wordt een **geboostte beslissings structuur met twee klassen** getraind om inkomsten te voors pellen (> = 50.000 of < = 50.000).
+Meer informatie over het bouwen van een machine learning classificatie zonder een enkele regel code te schrijven met behulp van de ontwerp functie. In dit voor beeld wordt een **geboostte beslissings structuur met twee klassen** getraind om inkomsten te voors pellen (> = 50.000 of < = 50.000).
 
 Omdat de vraag ' die ene? ' beantwoordt Dit wordt een probleem met de classificatie genoemd. U kunt echter hetzelfde fundamentele proces Toep assen om alle soorten machine learning van problemen met regressie, classificatie, Clustering, enzovoort.
 

@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58e73061406bc1be3f224e5726bdfca5a7553be1
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: b6c54f8754b0ca67107f48b2dcfa912a98252b8b
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156129"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293297"
 ---
 # <a name="what-is-the-my-account-portal"></a>Wat is de portal Mijn account?
 
@@ -52,7 +52,7 @@ U krijgt toegang tot de portal van **Mijn account** (https://myprofile.microsoft
 
 - [Meld u aan om uw Office-product te beheren](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
 
-- [Ga naar de pagina **mijn mijn account** in Office](https://portal.office.com/account/#home)
+- [Ga naar de pagina **mijn mijn account** in Office](https://portal.office.com/account/)
 
 - [Ga naar de pagina Office **mijn installaties**](https://portal.office.com/account/#installs)
 

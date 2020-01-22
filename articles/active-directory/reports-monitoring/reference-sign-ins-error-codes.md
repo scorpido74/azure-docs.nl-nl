@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa19425de41b182db8c0a8c3b1a7940dbdf5701f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f7a025835275169b260dfd1f91b65341b5ba02ff
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429499"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294096"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Fout codes voor aanmeldings activiteiten rapport 
 
@@ -96,6 +96,7 @@ U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp
 |50072|De gebruiker moet zich inschrijven voor twee ledige verificatie (interactief).|
 |50074|Gebruiker heeft de MFA-controle niet doorstaan.|
 |50076|De gebruiker heeft de MFA-uitdaging niet door gegeven (niet interactief).|
+|50078|De gepresenteerde multi-factor Authentication is verlopen. u moet uw multi-factor Authentication vernieuwen voor toegang.|
 |50079|De gebruiker moet zich inschrijven voor twee ledige verificatie (niet-interactieve aanmeldingen).|
 |50085|Vernieuwingstoken vereist een sociale IDP-aanmelding. Meld u opnieuw aan met de gebruikers naam en het wacht woord van de gebruiker.|
 |50089|Stroom token verlopen-verificatie is mislukt. Meld u opnieuw aan met de gebruikers naam en het wacht woord van de gebruiker.|
@@ -184,7 +185,8 @@ U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp
 |90014| Er ontbreekt een vereist veld voor een protocol bericht. Neem contact op met de eigenaar van de toepassing. Als u de eigenaar van de toepassing bent, moet u ervoor zorgen dat u alle benodigde para meters voor de aanmeldings aanvraag hebt. |
 |90051| Ongeldig delegerings token. Er is een ongeldige nationale Cloud-ID ({cloudId}) opgegeven.|
 |90072| Het account moet eerst worden toegevoegd als externe gebruiker in de tenant. Meld u af en meld u opnieuw aan met een ander Azure AD-account.|
-|90094| De toekenning vereist beheerders machtigingen. Vraag uw Tenant beheerder om toestemming te geven voor deze toepassing.|
+|90094| De app heeft machtigingen aangevraagd waarvoor de aangemelde gebruiker niet toestemming mag geven en de gebruiker is geblokkeerd. |
+|90095| De app heeft machtigingen aangevraagd waarvoor de aangemelde gebruiker niet toestemming mag geven en de gebruiker heeft het aanvraag formulier voor de [beheerder toestemming](../manage-apps/configure-admin-consent-workflow.md) gegeven. |
 |500011| De resource-principal met de naam <site address> is niet gevonden in de Tenant met de naam <tenant ID>. Dit kan gebeuren als de toepassing niet is geïnstalleerd door de beheerder van de Tenant of is gezonden door een gebruiker in de Tenant. Mogelijk hebt u de verificatieaanvraag naar de verkeerde tenant verzonden.|
 |500021| De Tenant wordt beperkt door de bedrijfs proxy. De toegang tot de bron wordt geweigerd.|
 |500121| Verificatie is mislukt tijdens sterke verificatie aanvraag.|
@@ -193,6 +195,8 @@ U kunt ook programmatisch toegang krijgen tot de aanmeldings gegevens met behulp
 |530032|Geblokkeerd door beveiligings beleid.| 
 |700016|De toepassing met de id {appIdentifier} is niet gevonden in de map {tenantnaam}. Dit kan gebeuren als de toepassing niet is geïnstalleerd door de beheerder van de Tenant of is gezonden door een gebruiker in de Tenant. Mogelijk hebt u uw verificatie aanvraag verzonden naar de verkeerde Tenant.|
 |900432|De vertrouwelijke client wordt niet ondersteund in een cross-Cloud aanvraag.|
+|5000811|Kan hand tekening van SAML-token niet controleren. De id van de handtekening sleutel komt niet overeen met een geldige geregistreerde sleutel.|
+|7000215|Er is een ongeldig client geheim gegeven.|
 |7000218|De aanvraag tekst moet de volgende para meter bevatten: ' client_assertion ' of ' client_secret '.|
 
 

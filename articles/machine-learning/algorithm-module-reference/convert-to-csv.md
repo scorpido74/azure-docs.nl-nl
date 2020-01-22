@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 999f78ab08e1a2c9dd6b28d853e49fbb559fab83
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0e92201552b4d448a619a801d2ee64032c8bbefe
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493854"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314433"
 ---
 # <a name="convert-to-csv-module"></a>Converteren naar CSV-module
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om een gegevensset te converteren naar een CSV-indeling die kan worden gedownload, geëxporteerd of worden gedeeld met R-of python-script modules.
 
@@ -30,14 +30,14 @@ Zelfs als u het meren deel van uw werk in Azure Machine Learning hebt, zijn er s
 
 + Down load het CSV-bestand om het te openen met Excel of importeer het in een relationele data base.  
 + Sla het CSV-bestand op in de Cloud opslag en maak er verbinding mee vanuit Power BI om visualisaties te maken.  
-+ Gebruik de CSV-indeling om gegevens voor te bereiden voor gebruik in R en python. Klik met de rechter muisknop op de uitvoer van de module om de code te genereren die nodig is voor toegang tot de gegevens rechtstreeks vanuit Python of een Jupyter-notebook. 
++ Gebruik de CSV-indeling om gegevens voor te bereiden voor gebruik in R en python. 
 
-Wanneer u een gegevensset converteert naar CSV, wordt het bestand opgeslagen in uw Azure ML-werk ruimte. U kunt een Azure-opslag hulpprogramma gebruiken om het bestand rechtstreeks te openen en te gebruiken, of u kunt met de rechter muisknop op de module-uitvoer klikken en het CSV-bestand downloaden naar uw computer of gebruiken in R-of python-code.  
+Wanneer u een gegevensset converteert naar CSV, wordt het CSV-bestand opgeslagen in uw Azure ML-werk ruimte. U kunt een Azure-opslag programma gebruiken om het bestand rechtstreeks te openen en te gebruiken. U kunt ook het CSV-bestand in de ontwerp functie openen door de module **converteren naar CSV** te selecteren en vervolgens het histogram pictogram onder het tabblad **uitvoer** in het rechterdeel venster te selecteren om de uitvoer weer te geven. U kunt het CSV-bestand downloaden van de map met resultaten naar een lokale map.  
 
 ## <a name="how-to-configure-convert-to-csv"></a>Conversie naar CSV configureren
 
 
-1.  Voeg de module [Convert to CSV](./convert-to-csv.md) toe aan de pijp lijn. U kunt deze module vinden in de groep **gegevens indeling conversies** in de ontwerp functie. 
+1.  Voeg de module Convert to CSV toe aan de pijp lijn. U kunt deze module vinden in de **gegevens transformatie** groep in de ontwerp functie. 
 
 2. Verbind het met een wille keurige module die een gegevensset uitvoert.   
   
@@ -46,14 +46,11 @@ Wanneer u een gegevensset converteert naar CSV, wordt het bestand opgeslagen in 
 ### <a name="results"></a>Resultaten
   
 
-Dubbel klik op de uitvoer van [converteren naar CSV](./convert-to-csv.md)en selecteer een van deze opties.  
+Selecteer het tabblad **uitvoer** in het rechterdeel venster van **converteren naar CSV**en selecteer een van deze pictogrammen onder de **poort uitvoer**.  
 
- + **Resultaat gegevensset-> downloaden**: Hiermee opent u direct een kopie van de gegevens in CSV-indeling die u kunt opslaan in een lokale map. Als u geen map opgeeft, wordt een standaard bestands naam toegepast en wordt het CSV-bestand opgeslagen in de lokale bibliotheek met **down loads** .
++ **Gegevensset registreren**: Selecteer het pictogram en sla het CSV-bestand weer op in de Azure ml-werk ruimte als afzonderlijke gegevensset. U kunt de gegevensset vinden als een module in de module structuur onder de sectie **mijn gegevens sets** .
 
-
- + **Resultaat gegevensset-> opslaan als gegevensset**: slaat het CSV-bestand weer op in de Azure ml-werk ruimte als afzonderlijke gegevensset.
-
- + **Gegevens toegangs code genereren**: Azure ml genereert twee sets code voor toegang tot de gegevens, hetzij met behulp van python, hetzij met behulp van R. Kopieer het code fragment in uw toepassing om toegang te krijgen tot de gegevens. (*Gegevens toegangs code genereren wordt binnenkort beschikbaar.* )
+ + **Uitvoer weer geven**: Selecteer het oogpictogram en volg de instructies om door de **Results_dataset** map te bladeren en down load het bestand data. CSV.
 
 ## <a name="next-steps"></a>Volgende stappen
 

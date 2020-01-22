@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 54b4e6e6a283f46e03f7b94ce96ba79a03f75523
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9604da5252254120ac7bd3fca3f0cc97324aef92
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170383"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293212"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Azure DevTest Labs integreren in uw CI/CD-pijp lijn van Azure pipelines
 
@@ -140,7 +140,7 @@ De volgende stap is het maken van de gouden installatie kopie-VM die moet worden
    
    |Veld|Waarde|
    |---|---|
-   |**Azure RM-abonnement**|Selecteer een service verbinding of abonnement bij **beschik bare Azure-service verbindingen** of **beschik bare Azure-abonnementen** in de vervolg keuzelijst en Selecteer indien nodig **autoriseren** .<br /><br />**Opmerking:** Zie [Azure Resource Manager service-eind punt](/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)voor meer informatie over het maken van een verbinding met beperkte machtigingen voor uw Azure-abonnement.|
+   |**Azure RM-abonnement**|Selecteer een service verbinding of abonnement bij **beschik bare Azure-service verbindingen** of **beschik bare Azure-abonnementen** in de vervolg keuzelijst en Selecteer indien nodig **autoriseren** .<br /><br />**Opmerking:** Zie [Azure Resource Manager service-eind punt](/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager)voor meer informatie over het maken van een verbinding met beperkte machtigingen voor uw Azure-abonnement.|
    |**Naam van Lab**|Selecteer de naam van een bestaand Lab waarin de VM van het lab wordt gemaakt.|
    |**Sjabloon naam**|Geef het volledige pad en de naam op van het sjabloon bestand dat u hebt opgeslagen in de opslag plaats van de bron code. U kunt de ingebouwde eigenschappen gebruiken om het pad te vereenvoudigen, bijvoorbeeld:<br /><br />`$(System.DefaultWorkingDirectory)/Templates/CreateVMTemplate.json`|
    |**Sjabloon parameters**|Voer de para meters in voor de variabelen die u eerder hebt gedefinieerd:<br /><br />`-newVMName '$(vmName)' -userName '$(userName)' -password (ConvertTo-SecureString -String '$(password)' -AsPlainText -Force)`|

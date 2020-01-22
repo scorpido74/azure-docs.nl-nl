@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: b8dbbb2810277bef20cb3b9b47a63deeea3e0ff9
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 4c6a9a2b5991c9f99bf728ecfed144cc77e4c49a
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155448"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314331"
 ---
 # <a name="what-is-azure-machine-learning"></a>Wat is Azure Machine Learning?
 
@@ -66,7 +66,7 @@ U kunt [model training en-aanpassing ook automatiseren](tutorial-auto-train-mode
 
 Voor code-free of low-code training en implementatie kunt u het volgende proberen:
 
-+ **Azure Machine Learning Designer (preview-versie)**
++ **Azure Machine Learning Designer**
 
   Gebruik de ontwerp functie voor het voorbereiden van gegevens, het trainen, testen, implementeren, beheren en bijhouden van machine learning modellen zonder code te schrijven. Er is geen programmering vereist. u kunt gegevens sets en modules visueel verbinden om uw model samen te stellen. Probeer de [ontwerp zelf studie](tutorial-designer-automobile-price-train-score.md).
 

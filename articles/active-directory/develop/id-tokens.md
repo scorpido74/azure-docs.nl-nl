@@ -14,12 +14,12 @@ ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0aa868d5ed57e27a89f2791f617dcdda74e766b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f7e910faaf9875b6791135c8721090fa801a7e08
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167450"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294181"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Tokens van micro soft Identity platform ID
 
@@ -85,6 +85,12 @@ In deze lijst worden de claims weer gegeven die standaard in de meeste id_tokens
 |`unique_name` | Tekenreeks | Biedt een voor mensen leesbare waarde waarmee het onderwerp van het token wordt geïdentificeerd. Deze waarde is uniek op een bepaald moment, maar als e-mail berichten en andere id's opnieuw kunnen worden gebruikt, kan deze waarde opnieuw worden weer gegeven op andere accounts en moet daarom alleen worden gebruikt voor weergave doeleinden. Alleen uitgegeven in v 1.0 `id_tokens`. |
 |`uti` | Dekkende teken reeks | Een interne claim die door Azure wordt gebruikt om tokens opnieuw te valideren. Moet worden genegeerd. |
 |`ver` | Teken reeks, ofwel 1,0 of 2,0 | Hiermee wordt de versie van de id_token. |
+
+
+> [!NOTE]
+> De id_token v1 en v2 hebben verschillen in de hoeveelheid gegevens die ze in de bovenstaande voor beelden kunnen verwerken. Met de versie in wezen wordt het Azure AD-platform eindpunt opgegeven vanaf waar het is uitgegeven. [Azure AD OAuth-implementatie](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) is door de jaren ontwikkeld. Momenteel hebben we twee verschillende oAuth-eind punten voor AzureAD-toepassingen. U kunt elk van de nieuwe eind punten die zijn gecategoriseerd als v2 of de oude, gebruiken als v1. De OAuth-eind punten voor beide verschillen. Het v2-eind punt is de nieuwere versie van alle functies van v1-eind punt en raadt nieuwe ontwikkel aars aan om het v2-eind punt te gebruiken. 
+> - V1: Azure Active Directory eind punten: `https://login.microsoftonline.com/common/oauth2/authorize`
+> - V2: micro soft Identity platform-eind punten: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>Een id_token valideren
 

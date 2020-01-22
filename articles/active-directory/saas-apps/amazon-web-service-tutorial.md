@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/25/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 758b14a53927e00a5546147f8d67e556b45acc3c
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: fcf72566a0aa2547de7b88cb838b2f6ff1828c6f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689761"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293093"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-amazon-web-services-aws"></a>Zelf studie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met Amazon Web Services (AWS)
 
@@ -66,6 +65,7 @@ U hebt de volgende items nodig om aan de slag te gaan:
 In deze zelf studie configureert en test u Azure AD SSO in een test omgeving.
 
 * Amazon Web Services (AWS) ondersteunt door **SP en IDP** gestarte SSO
+* Nadat u de Amazon Web Services (AWS) hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waardoor exfiltration en infiltratie van de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > De id van deze toepassing is een vaste teken reeks waarde zodat slechts één exemplaar in één Tenant kan worden geconfigureerd.
@@ -374,6 +374,10 @@ Wanneer u in het toegangsvenster op de tegel Amazon Web Services (AWS) klikt, zo
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Probeer Amazon Web Services (AWS) met Azure AD](https://aad.portal.azure.com/)
+
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/protect-aws)
+
+- [Amazon Web Services beveiligen (AWS) met geavanceerde zicht baarheid en besturings elementen](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 [11]: ./media/amazon-web-service-tutorial/ic795031.png
 [12]: ./media/amazon-web-service-tutorial/ic795032.png

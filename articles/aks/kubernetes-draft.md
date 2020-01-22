@@ -7,23 +7,23 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: a9b942c4726c770f1ea0d35c924395cdff40e1c7
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 07e267af307fedd9b896e08919b7026a3a1c2bac
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732015"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292959"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Snelstartgids: ontwikkelen op Azure Kubernetes service (AKS) met Draft
 
 Concept is een open source-hulp programma waarmee u toepassings containers kunt inpakken en uitvoeren in een Kubernetes-cluster. Met concept kunt u een toepassing snel opnieuw implementeren naar Kubernetes wanneer er code wijzigingen optreden zonder dat u uw wijzigingen in versie beheer hoeft door te voeren. Zie de [documentatie over concepten op github][draft-documentation]voor meer informatie over concepten.
 
-In dit artikel leest u hoe u een concept pakket gebruikt en hoe u een toepassing uitvoert op AKS.
+In dit artikel wordt beschreven hoe u concept gebruikt om een toepassing te verpakken en uit te voeren op AKS.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 * [Azure CLI geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
 * Docker is geïnstalleerd en geconfigureerd. Docker biedt pakketten die docker configureren op een [Mac][docker-for-mac]-, [Windows][docker-for-windows]-of [Linux][docker-for-linux] -systeem.
 * [Helm v2 is geïnstalleerd][helm-install].

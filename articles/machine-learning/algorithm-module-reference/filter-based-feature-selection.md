@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 43565a72ce795c4ee0142ec48c13842a8c43e604
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e4e09ca77de00b7f189db2cbbcaca2e090dd7e72
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428527"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311628"
 ---
 # <a name="filter-based-feature-selection"></a>Functieselectie op basis van filters
 
-In dit artikel wordt beschreven hoe u de module voor het selecteren van functies op basis van filters in Azure Machine Learning Designer (preview) gebruikt. Deze module helpt u bij het identificeren van de kolommen in uw invoer gegevensset die de grootste voorspellende kracht hebben. 
+In dit artikel wordt beschreven hoe u de module voor het selecteren van functies op basis van filters in Azure Machine Learning Designer kunt gebruiken. Deze module helpt u bij het identificeren van de kolommen in uw invoer gegevensset die de grootste voorspellende kracht hebben. 
 
 In het algemeen verwijst het *selecteren van functies* naar het proces van het Toep assen van statistische tests op invoer, op basis van een opgegeven uitvoer. Het doel is om te bepalen welke kolommen meer voor spelling van de uitvoer zijn. De module op basis van filter functies bevat meerdere algoritmen voor het selecteren van onderdelen waaruit u kunt kiezen. De module bevat correlatie methoden, zoals Pearson-correlatie en Chi-kwadraat waarden. 
 
@@ -97,9 +97,9 @@ U kiest een standaard statistische metrische waarde. De module berekent de corre
 
 Nadat de verwerking is voltooid:
 
-+ Klik met de rechter muisknop op de module voor een volledige lijst met de geanalyseerde functie kolommen en de bijbehorende scores. Selecteer **functies**en selecteer vervolgens **visualiseren**.  
++ Klik met de rechter muisknop op de module en selecteer **visualiseren**om een volledige lijst met de geanalyseerde functie kolommen en de bijbehorende scores weer te geven.  
 
-+ Klik met de rechter muisknop op de module om de gegevensset weer te geven die wordt gegenereerd op basis van de selectie criteria van uw functie. Selecteer **gegevensset**en selecteer vervolgens **visualiseren**. 
++ Als u de gegevensset wilt weer geven op basis van de criteria voor de selectie van functies, klikt u met de rechter muisknop op de module en selecteert u **visualiseren**. 
 
 Als de gegevensset minder kolommen bevat dan u verwacht, controleert u de instellingen van de module. Controleer ook de gegevens typen van de kolommen die worden opgegeven als invoer. Als u bijvoorbeeld het **aantal gewenste functies** instelt op 1, bevat de uitvoer gegevensset slechts twee kolommen: de kolom Label en de meest gerangschikte functie kolom.
 

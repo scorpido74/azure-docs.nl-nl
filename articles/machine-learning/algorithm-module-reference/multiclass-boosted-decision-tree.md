@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 7f39d393b96b1515e4815abdc28ac4079f271c1b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 73a832d98d0b17f59a98e2d57cf801818c7ed1da
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232606"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311934"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>Versterkte beslissingsstructuur met meerdere klassen
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om een machine learning model te maken dat is gebaseerd op het boosted Decision Trees-algoritme.
 

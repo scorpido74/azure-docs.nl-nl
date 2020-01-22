@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: eb3e473535c394818772ac949808023254087555
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 21afb12bf2464218119ebf52ebd980745e3d731d
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448011"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311713"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Patronen toevoegen om de nauw keurigheid van de voor spelling te verbeteren
 Nadat een LUIS-app eind punt uitingen ontvangt, gebruikt u een [patroon](luis-concept-patterns.md) om de nauw keurigheid van de voor spelling te verbeteren voor uitingen die een patroon onthult in de woord volgorde en woord keuze. Patronen gebruiken specifieke [syntaxis](luis-concept-patterns.md#pattern-syntax) om de locatie van: [entiteiten](luis-concept-entity-types.md), entiteits [rollen](luis-concept-roles.md)en optionele tekst aan te geven.
@@ -42,7 +42,7 @@ Als u een patroon wilt toevoegen voor een entiteit, is de _eenvoudigste_ manier 
     > [!div class="mx-imgBorder"]
     > ![scherm afbeelding van het bevestigen van voor beeld utterance als sjabloon patroon op de detail pagina Details.](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
 
-1. Als u de sjabloon wilt bewerken, zoals het selecteren van tekst als optioneel, met behulp van de vier Kante haken `[]`, moet u deze bewerking instellen als de pagina **patronen** .
+1. Als u de sjabloon wilt bewerken, zoals het selecteren van tekst als optioneel, met behulp van de vier Kante haken `[]`, moet u deze bewerking op de pagina **patronen** maken.
 
 1. Selecteer in de navigatie balk **Train** om de app te trainen met het nieuwe patroon.
 

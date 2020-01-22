@@ -16,12 +16,12 @@ ms.author: twhitney
 ms.reviwer: hahamil
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: babbaf75b91dfb870ba5001d23f62c5461a28218
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 70f629af35978771d48d0a29f9ec625628c3b630
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030300"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291257"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Modus gedeeld apparaat voor Android-apparaten
 
@@ -39,7 +39,7 @@ De modus gedeeld apparaat biedt ook micro soft-identiteits beheer van het appara
 Als u een app voor gedeelde apparaten wilt maken, werken ontwikkel aars en beheerders van Cloud apparaten samen:
 
 - Ontwikkel aars schrijven een app met één account (apps met meerdere accounts worden niet ondersteund in de modus gedeeld apparaat), `"shared_device_mode_supported": true` toevoegen aan de configuratie van de app en code schrijven voor het afhandelen van dingen zoals het afmelden van een gedeeld apparaat.
-- Apparaat beheerders maken het apparaat klaar om te worden gedeeld door de verificator-app te installeren en het apparaat in te stellen op de gedeelde modus met de verificator-app. Alleen gebruikers met de rol [beheerder van Cloud apparaat](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#cloud-device-administrator) kunnen een apparaat in de gedeelde modus plaatsen met behulp van de [verificator-app](https://www.microsoft.com/account/authenticator). U kunt het lidmaatschap van uw organisatie rollen configureren in het Azure Portal via: **Azure Active Directory** > **rollen en beheerders** > beheerder van het **Cloud apparaat**.
+- Apparaat beheerders maken het apparaat klaar om te worden gedeeld door de verificator-app te installeren en het apparaat in te stellen op de gedeelde modus met de verificator-app. Alleen gebruikers met de rol [beheerder van Cloud apparaat](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#cloud-device-administrator) kunnen een apparaat in de gedeelde modus plaatsen met behulp van de [verificator-app](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-overview). U kunt het lidmaatschap van uw organisatie rollen configureren in het Azure Portal via: **Azure Active Directory** > **rollen en beheerders** > beheerder van het **Cloud apparaat**.
 
  In dit artikel wordt voornamelijk aandacht besteed aan ontwikkel aars.
 

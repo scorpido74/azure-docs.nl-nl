@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: f3a1bf518b8ef122e2df64f2815c8885929b127d
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f9815dac9e61eec51230911094f35a33a64e541c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166787"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311509"
 ---
 # <a name="import-data-module"></a>Gegevens module importeren
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om gegevens te laden in een machine learning pijp lijn vanuit bestaande Cloud Data Services. 
 
@@ -78,7 +78,7 @@ Als de bron gegevens worden gewijzigd, kunt u de gegevensset vernieuwen en nieuw
 
 Wanneer het importeren is voltooid, klikt u op de uitvoer gegevensset en selecteert u **visualiseren** om te zien of de gegevens zijn geïmporteerd.
 
-Als u de gegevens wilt opslaan voor hergebruik in plaats van een nieuwe set gegevens te importeren telkens wanneer de pijp lijn wordt uitgevoerd, klikt u met de rechter muisknop op de uitvoer en selecteert u **Opslaan als gegevensset**. Kies een naam voor de gegevensset. De opgeslagen gegevensset behoudt de gegevens op het moment van opslaan en er worden geen gegevens bijgewerkt wanneer de pijp lijn opnieuw wordt uitgevoerd, zelfs als de gegevensset in de pijp lijn wordt gewijzigd. Dit kan handig zijn voor het maken van moment opnamen van gegevens.
+Als u de gegevens wilt opslaan voor hergebruik in plaats van een nieuwe set gegevens te importeren telkens wanneer de pijp lijn wordt uitgevoerd, selecteert u het pictogram **gegevensset registreren** onder het tabblad **uitvoer** in het rechterdeel venster van de module. Kies een naam voor de gegevensset. De opgeslagen gegevensset behoudt de gegevens op het moment van opslaan, de gegevensset wordt niet bijgewerkt wanneer de pijp lijn opnieuw wordt uitgevoerd, zelfs als de gegevensset in de pijp lijn wordt gewijzigd. Dit kan handig zijn voor het maken van moment opnamen van gegevens.
 
 Na het importeren van de gegevens zijn mogelijk extra voor bereid voor het maken en analyseren van modellen nodig:
 

@@ -3,19 +3,19 @@ title: Favorieten toevoegen, verwijderen en rangschikken in Azure Portal | Micro
 description: Meer informatie over het toevoegen of verwijderen van items in de lijst met favorieten en het rangschikken van de volg orde van items
 services: azure-portal
 keywords: Favorieten, portal
-author: mblythe
+author: mgblythe
 ms.author: mblythe
 ms.date: 12/20/2019
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: 57ce053f268558886dad33d450d48f9a0889a10a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: d6b580accb02efb6a44c0c245af583d2e3850409
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640564"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310812"
 ---
 # <a name="add-remove-and-rearrange-favorites"></a>Favorieten toevoegen, verwijderen en opnieuw ordenen
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 3db20110571203588ac15f4f64a2ae0a6ab6ef27
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4dd2cd89e8edb4e636bf46d2a8125a0f1d00f2f3
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428408"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312240"
 ---
 # <a name="tune-model-hyperparameters"></a>Model Hyperparameters afstemmen
 
-In dit artikel wordt beschreven hoe u de module Tune model Hyper parameters gebruikt in Azure Machine Learning Designer (preview). Het doel is om de optimale Hyper parameters te bepalen voor een machine learning model. De module bouwt en test meerdere modellen met behulp van verschillende combi Naties van instellingen. Hiermee worden metrische gegevens van alle modellen vergeleken om de combi Naties van instellingen te verkrijgen. 
+In dit artikel wordt beschreven hoe u de module model Hyper parameters in Azure Machine Learning Designer kunt gebruiken. Het doel is om de optimale Hyper parameters te bepalen voor een machine learning model. De module bouwt en test meerdere modellen met behulp van verschillende combi Naties van instellingen. Hiermee worden metrische gegevens van alle modellen vergeleken om de combi Naties van instellingen te verkrijgen. 
 
 De termen *para meter* en *afstemming* kunnen verwarrend zijn. De *para meters* van het model zijn wat u in het deel venster Eigenschappen hebt ingesteld. In principe voert deze module een *opruiming* van de para meters uit op basis van de opgegeven parameter instellingen. Het leert een optimale set _Hyper parameters_, die mogelijk verschillend is voor elke specifieke beslissings structuur, gegevensset of regressie methode. Het proces van het vinden van de optimale configuratie wordt soms *afstemming*genoemd. 
 
@@ -81,11 +81,11 @@ In deze sectie wordt beschreven hoe u een eenvoudige para meter-sweep uitvoert, 
 
 Wanneer de training is voltooid:
 
-+ Als u een set nauw keurige metrische gegevens voor het beste model wilt weer geven, klikt u met de rechter muisknop op de module, selecteert u opschonings **resultaten**en selecteert u vervolgens **visualiseren**.
++ Als u een set nauw keurige metrische gegevens voor het beste model wilt weer geven, klikt u met de rechter muisknop op de module en selecteert u vervolgens **visualiseren**.
 
     De uitvoer bevat alle nauwkeurigheids gegevens die van toepassing zijn op het model type, maar de metrische gegevens die u hebt geselecteerd voor de rang schikking bepalen welk model als ' Best ' wordt beschouwd.
 
-+ Als u het model wilt gebruiken om te scoren in andere pijp lijnen zonder het afstemmings proces te herhalen, klikt u met de rechter muisknop op de model uitvoer en selecteert u **Opslaan als opgeleid model**. 
++ Als u een moment opname van het getrainde model wilt opslaan, selecteert u het tabblad **uitvoer** in het rechterdeel venster van de module **Train model** . Selecteer het pictogram **gegevensset registreren** om het model als een herbruikbare module op te slaan.
 
 
 ## <a name="technical-notes"></a>Technische opmerkingen

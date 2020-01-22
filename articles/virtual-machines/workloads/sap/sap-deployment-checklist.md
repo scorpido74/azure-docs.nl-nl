@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/08/2019
+ms.date: 01/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3a424c142fbfcbfe5e4c1802f3ba61da655f77f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 56b78f4296709206cefb762c87d4d1471bff2df7
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896038"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291512"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-workloads op Azure: controle lijst voor planning en implementatie
 
@@ -53,7 +53,7 @@ Tijdens deze fase plant u de migratie van uw SAP-werk belasting naar het Azure-p
         - Virtuele Azure-machines met SAP HANA-ondersteuning en [Hana grote instanties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) worden weer gegeven op de [SAP-website](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure).
         - [SAP-product beschikbaarheids matrix](https://support.sap.com/en/).
         - SAP-notities voor andere SAP-specifieke producten.     
-    - U kunt het beste strikte drie lagen ontwerpen voor SAP-productie systemen. Het is niet raadzaam om ASCS-en app-servers te combi neren op één virtuele machine. Het gebruik van multi-SID-cluster configuraties voor SAP Central-Services wordt ondersteund op Windows-gast besturingssystemen in Azure. Deze configuratie wordt echter niet ondersteund voor SAP Central-Services op Linux-besturings systemen in Azure. In deze artikelen vindt u documentatie voor het scenario voor het Windows-gast besturingssysteem:
+    - U kunt het beste strikte drie lagen ontwerpen voor SAP-productie systemen. Het is niet raadzaam om ASCS en/of DBMS en/of app-servers te combi neren op één virtuele machine. Het gebruik van multi-SID-cluster configuraties voor SAP Central-Services wordt ondersteund op Windows-gast besturingssystemen in Azure. Deze configuratie wordt echter niet ondersteund voor SAP Central-Services op Linux-besturings systemen in Azure. In deze artikelen vindt u documentatie voor het scenario voor het Windows-gast besturingssysteem:
         - [SAP ASCS/SCS instance multi-SID hoge Beschik baarheid met Windows Server Failover Clustering en gedeelde schijf op Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk)
         - [SAP ASCS/SCS instance multi-SID hoge Beschik baarheid met Windows Server Failover Clustering en file share op Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share)
     - Architectuur met hoge Beschik baarheid en herstel na nood gevallen.
@@ -135,7 +135,7 @@ U wordt aangeraden een volledige HADR-oplossing en beveiligings ontwerp in te st
         - Als u geen hoge Beschik baarheid voor SAP Central-Services en het DBMS nodig hebt, kunt u deze Vm's implementeren in dezelfde beschikbaarheidsset als de SAP-toepassingslaag.
         - Als u SAP Central-Services en de DBMS-laag voor hoge Beschik baarheid beveiligt met behulp van passieve replicatie, plaatst u de twee knoop punten voor SAP Central-Services in één afzonderlijke beschikbaarheidsset en de twee DBMS-knoop punten in een andere beschikbaarheidsset.
         - Als u in Azure-beschikbaarheidszones implementeert, kunt u geen beschikbaarheids sets gebruiken. Maar u moet ervoor zorgen dat u de knoop punten actief en passieve centrale Services implementeert in twee verschillende Beschikbaarheidszones. Gebruik Beschikbaarheidszones die de laagste latentie ertussen hebben.
-          Houd er rekening mee dat u [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) moet gebruiken voor het gebruik van om Windows-of pacemaker-failoverclusters te maken voor de DBMS en SAP Central Services-laag voor alle Beschikbaarheidszones. U kunt geen [basis Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) gebruiken voor zonegebonden-implementaties.
+          Houd er rekening mee dat u [Azure Standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) moet gebruiken voor het gebruik van om Windows-of pacemaker-failoverclusters te maken voor de DBMS en SAP Central Services-laag voor alle Beschikbaarheidszones. U kunt geen [basis Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) gebruiken voor zonegebonden-implementaties.
    5. Time-outinstellingen.
         - Controleer de SAP NetWeaver-ontwikkelaars traceringen van de SAP-exemplaren om ervoor te zorgen dat er geen verbindings onderbrekingen tussen de bewerkings-en SAP-processen zijn. U kunt deze verbindings onderbrekingen vermijden door deze twee register parameters in te stellen:
             - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000. Zie [KeepAliveTime](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10))voor meer informatie.

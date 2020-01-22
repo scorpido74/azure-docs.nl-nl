@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: sgilley
 ms.date: 12/25/2019
-ms.openlocfilehash: 9e0bae722430662ddbe252e82c5108eb820ce352
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 88f688608a0ae3d435699362f9326c7c02d494a4
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660099"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311111"
 ---
 # <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Versterkte beslissings structuur gebruiken om verloop te voors pellen met Azure Machine Learning Designer
 
-**Voor beeld van Designer (preview) 5**
+**Ontwerp voorbeeld 5**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Meer informatie over het bouwen van een complexe machine learning pijp lijn zonder dat u een regel code hoeft te schrijven met behulp van de ontwerp functie (preview).
+Meer informatie over hoe u een complexe machine learning pijp lijn bouwt zonder dat u maar één regel code hoeft te schrijven met behulp van de ontwerp functie.
 
 Deze pijp lijn treinen 2 **gestimuleerde classificaties voor de beslissings structuur van twee klassen** voor het voors pellen van algemene taken voor CRM-systemen (Customer Relationship Management)-klant verloop. De gegevens waarden en labels zijn gesplitst over meerdere gegevens bronnen en worden versleuteld naar anoniem maken klant gegevens. we kunnen de Designer echter nog steeds gebruiken om gegevens sets te combi neren en een model te trainen met behulp van de verborgen waarden.
 

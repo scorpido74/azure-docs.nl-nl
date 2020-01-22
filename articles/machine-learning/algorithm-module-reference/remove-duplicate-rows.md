@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: a0faba895c5717d061bacee2ce724c20464f8150
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91434a5392f37a297e474fedf00fac6b1e4d8362
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497701"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314161"
 ---
 # <a name="remove-duplicate-rows-module"></a>Module dubbele rijen verwijderen
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om potentiële duplicaten uit een gegevensset te verwijderen.
 
@@ -26,15 +26,15 @@ Stel dat uw gegevens er als volgt uitzien en dat er meerdere records worden aang
 
 | PatientID | Initialen| Geslacht|Leeftijd|Stoffen|
 |----|----|----|----|----|
-|1|F.M.| M| 53| Jan|
-|2| F.A.M.| M| 53| Jan|
-|3| F.A.M.| M| 24| Jan|
-|3| F.M.| M| 24| Februari|
-|4| F.M.| M| 23| Februari|
-| | F.M.| M| 23| |
-|5| F.A.M.| M| 53| |
-|6| F.A.M.| M| Ner| |
-|7| F.A.M.| M| Ner| |
+|1|F.M.| mln.| 53| jan|
+|2| F.A.M.| mln.| 53| jan|
+|3| F.A.M.| mln.| 24| jan|
+|3| F.M.| mln.| 24| Feb|
+|4| F.M.| mln.| 23| Feb|
+| | F.M.| mln.| 23| |
+|5| F.A.M.| mln.| 53| |
+|6| F.A.M.| mln.| NaN| |
+|7| F.A.M.| mln.| NaN| |
 
 Het is duidelijk dat dit voor beeld meerdere kolommen bevat met mogelijk dubbele gegevens. Of ze daad werkelijk worden gedupliceerd, is afhankelijk van uw kennis van de gegevens. 
 
@@ -71,7 +71,7 @@ Wanneer u de module uitvoert, wordt er een gegevensset voor kandidaten gemaakt e
 
 5. Voer de pijplijn uit.
 
-6. Als u de resultaten wilt bekijken, klikt u met de rechter muisknop op de module, selecteert u **resultaten gegevensset**en klikt u op **visualiseren**. 
+6. Als u de resultaten wilt bekijken, klikt u met de rechter muisknop op de module en selecteert u **visualiseren**. 
 
 > [!TIP]
 > Als de resultaten moeilijk te begrijpen zijn, of als u wilt voor komen dat sommige kolommen van overweging worden genomen, kunt u kolommen verwijderen met de module [kolommen in gegevensset selecteren](./select-columns-in-dataset.md) .

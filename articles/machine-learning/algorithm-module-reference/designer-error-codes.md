@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 12/03/2019
-ms.openlocfilehash: d491a67a44a2cb01e4968c4d31d20dee4b75a60a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a6aeb4022ee7cbce465f88a246303f80acfb883b
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980281"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311662"
 ---
-# <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Uitzonde ringen en fout codes voor de ontwerp functie (preview-versie)
+# <a name="exceptions-and-error-codes-for-the-designer"></a>Uitzonde ringen en fout codes voor de ontwerper
 
-In dit artikel worden de fout berichten en uitzonderings codes in Azure Machine Learning Designer (preview) beschreven om u te helpen bij het oplossen van problemen met uw machine learning pijp lijnen.
+In dit artikel worden de fout berichten en uitzonderings codes in Azure Machine Learning Designer beschreven om u te helpen bij het oplossen van problemen met uw machine learning pijp lijnen.
 
 Er zijn twee manieren om de volledige tekst van een fout bericht in de ontwerp functie te verkrijgen:  
 
@@ -1066,7 +1066,7 @@ Het fout bericht van Hive wordt normaal gesp roken weer gegeven in het fouten lo
 + Controleer of de query correct werkt buiten Azure Machine Learning door u aan te melden bij de Hive-console van uw Hadoop-cluster en de query uit te voeren.  
 + Probeer opmerkingen in het Hive-script op een afzonderlijke regel te plaatsen, in tegens telling tot het combi neren van uitvoer bare instructies en opmerkingen op één regel.  
 
-### <a name="resources"></a>Bronnen
+### <a name="resources"></a>Resources
 
 Raadpleeg de volgende artikelen voor meer informatie over Hive-query's voor machine learning:
 

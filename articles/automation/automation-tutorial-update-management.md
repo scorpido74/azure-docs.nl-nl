@@ -4,14 +4,14 @@ description: Dit artikel bevat een overzicht van het gebruik van Azure Automatio
 services: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 12/03/2019
+ms.date: 01/21/2020
 ms.custom: mvc
-ms.openlocfilehash: 2cb9f7824f0dab583ffe5ca770e175c071930cb9
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 3922f8a2478f00c632b6daf294f23c7b5ad8c261
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168060"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310132"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Updates en patches voor uw virtuele Azure-machines beheren
 
@@ -141,7 +141,7 @@ Geef onder **Nieuwe update-implementatie** de volgende informatie op:
 
 * **Bij te werken computers**: selecteer een opgeslagen zoekopdracht, geïmporteerde groep of kies een computer in de vervolgkeuzelijst en selecteer de afzonderlijke computers. Als u **Computers** selecteert, wordt de gereedheid van de computer weergegeven in de kolom **GEREEDHEID VOOR UPDATE-AGENT**. Zie [Computergroepen in Azure Monitorlogboeken](../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken
 
-* **Updateclassificatie**: selecteer de typen software die de update-implementatie moet opnemen in de implementatie. Voor deze zelfstudie laat u alle typen geselecteerd.
+* **Update classificatie**: Selecteer de ondersteunde update classificaties die beschikbaar zijn voor elk product dat kan worden opgenomen in de update-implementatie. Voor deze zelfstudie laat u alle typen geselecteerd.
 
   De classificatietypen zijn:
 

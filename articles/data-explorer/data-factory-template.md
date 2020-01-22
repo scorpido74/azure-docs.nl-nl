@@ -8,18 +8,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/08/2019
-ms.openlocfilehash: ca50a1ecd4d2a21593ddd11f83337ae7476cf916
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 884f4e956b37c2def6c25d0acdf20f15eddf7767
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300447"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293552"
 ---
 # <a name="copy-in-bulk-from-a-database-to-azure-data-explorer-by-using-the-azure-data-factory-template"></a>Bulksgewijs kopiëren van een Data Base naar Azure Data Explorer met behulp van de Azure Data Factory sjabloon 
 
 Azure Data Explorer is een snelle, volledig beheerde service voor gegevens analyse. Het biedt real-time analyse van grote hoeveel heden gegevens die streamen van veel bronnen, zoals toepassingen, websites en IoT-apparaten. 
 
-Azure Data Factory is een volledig beheerde, gegevens integratie service op basis van de Cloud. U kunt deze gebruiken om uw Azure Data Explorer-data base te vullen met gegevens van uw bestaande systeem. En het kan u helpen om tijd te besparen wanneer u analyse oplossingen bouwt. 
+Als u gegevens wilt kopiëren van een data base in Oracle Server, Netezza, Teradata of SQL Server naar Azure Data Explorer, moet u grote hoeveel heden gegevens uit meerdere tabellen laden. Normaal gesp roken moeten de gegevens in elke tabel worden gepartitioneerd, zodat u rijen met meerdere threads parallel vanuit één tabel kunt laden. In dit artikel wordt een sjabloon beschreven voor gebruik in deze scenario's.
 
 [Azure Data Factory sjablonen](/azure/data-factory/solution-templates-introduction) zijn vooraf gedefinieerde Data Factory pijp lijnen. Deze sjablonen kunnen u helpen om snel aan de slag te gaan met Data Factory en de ontwikkelings tijd voor gegevens integratie projecten te reduceren. 
 
@@ -53,7 +53,7 @@ ADXTableName varchar(255)
 
 De code-elementen worden beschreven in de volgende tabel:
 
-|Eigenschap  |Description  | Voorbeeld
+|Eigenschap  |Beschrijving  | Voorbeeld
 |---------|---------| ---------|
 |PartitionId   |  De Kopieer volgorde | 1  |  
 |SourceQuery   |  De query die aangeeft welke gegevens tijdens de pijplijn runtime worden gekopieerd | <br>`select * from table where lastmodifiedtime  LastModifytime >= ''2015-01-01 00:00:00''>` </br>    
@@ -79,7 +79,7 @@ Als uw ControlTableDataset zich in een andere indeling bevindt, maakt u een verg
 
     c. Selecteer in de vervolg keuzelijst **AzureDataExplorerTable** de tabel Azure Data Explorer. Als de gegevensset niet bestaat, [maakt u de gekoppelde Azure Data Explorer-Service](data-factory-load-data.md#create-the-azure-data-explorer-linked-service) om de gegevensset toe te voegen.
 
-    d. Selecteer **deze sjabloon gebruiken**.
+    d. Selecteer **Deze sjabloon gebruiken**.
 
     ![Het deel venster ' bulksgewijs kopiëren van de Data Base naar Azure Data Explorer '](media/data-factory-template/configure-bulk-copy-adx-template.png)
 

@@ -10,20 +10,20 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 06a88ba1e477054aa6080baa9c9644d4da396442
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 73861456edbb7493038fbf2adbf12300d170cab2
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771424"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311033"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Bouw een classificatie om de bedrijfs categorie te voors pellen met behulp van Azure Machine Learning Designer.
 
-**Voor beeld van Designer (preview) 7**
+**Voor beeld van Designer 7**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Dit voor beeld laat zien hoe u met behulp van tekst analyse modules een pijp lijn met tekst classificatie kunt bouwen in Azure Machine Learning Designer (preview).
+Dit voor beeld laat zien hoe u met behulp van tekst analyse modules een pijp lijn met tekst classificatie in Azure Machine Learning Designer kunt bouwen.
 
 Het doel van tekst classificatie is het toewijzen van een stuk tekst aan een of meer vooraf gedefinieerde klassen of categorieën. Het stuk tekst kan een document, nieuws artikel, zoek query, e-mail, Tweet, ondersteunings tickets, feedback van klanten, beoordeling van gebruikers producten, enzovoort zijn. Toepassingen van tekst classificatie zijn onder andere het categoriseren van kranten artikelen en de inhoud van nieuws draden in onderwerpen, het organiseren van webpagina's in hiërarchische categorieën, het filteren van ongewenste e-mail, sentiment analyse, het voors pellen van de gebruikers intentie van zoek query's, route ring ondersteunings tickets en analyse van feedback van klanten. 
 

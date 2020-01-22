@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/30/2019
-ms.openlocfilehash: 1002a19506ad0a59cb24ae4edb1f7c9726d68cb2
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 38966d537398d2770fba185a59b51956cf2223c3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170860"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290339"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Veelgestelde vragen over Azure Monitor
 
@@ -94,7 +94,7 @@ Alle gegevens worden opgehaald uit een Log Analytics-werk ruimte met behulp van 
 Alle door Azure Monitor verzamelde logboek gegevens worden opgeslagen in een Log Analytics-werk ruimte. Een werk ruimte is in feite een container waarin logboek gegevens worden verzameld uit verschillende bronnen. Mogelijk hebt u een enkele Log Analytics-werk ruimte voor al uw bewakings gegevens of hebt u vereisten voor meerdere werk ruimten. Zie [de implementatie van uw Azure monitor-logboeken ontwerpen](platform/design-logs-deployment.md).
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Kunt u een bestaande Log Analytics-werk ruimte verplaatsen naar een ander Azure-abonnement?
-U kunt een werk ruimte verplaatsen tussen resource groepen of abonnementen, maar niet naar een andere regio. Zie [een log Analytics-werk ruimte verplaatsen naar een ander abonnement of een andere resource groep](/platform/move-workspace.md).
+U kunt een werk ruimte verplaatsen tussen resource groepen of abonnementen, maar niet naar een andere regio. Zie [een log Analytics-werk ruimte verplaatsen naar een ander abonnement of een andere resource groep](platform/move-workspace.md).
 
 
 ## <a name="alerts"></a>Waarschuwingen
@@ -345,7 +345,7 @@ Gebruik één resource voor alle onderdelen of rollen in één bedrijfs systeem.
 ### <a name="what-are-the-user-and-session-counts"></a>Wat zijn de gebruikers-en sessie aantallen?
 
 * De Java script-SDK stelt een gebruikers cookie op de webclient in om terugkerende gebruikers te identificeren en een sessie cookie om activiteiten te groeperen.
-* Als er geen script aan de client zijde is, kunt u [cookies instellen op de server](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-app/).
+* Als er geen script aan de client zijde is, kunt u [cookies instellen op de server](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
 * Als een echte gebruiker uw site in verschillende browsers gebruikt of als u in-private/incognito Browse of verschillende computers gebruikt, worden deze meerdere keren geteld.
 * Als u een aangemelde gebruiker op verschillende computers en browsers wilt identificeren, voegt u een aanroep toe aan [setAuthenticatedUserContext ()](app/api-custom-events-metrics.md#authenticated-users).
 
@@ -455,7 +455,7 @@ Uw gateway moet verkeer routeren naar het basis adres van het eind punt. Vervang
 #### <a name="proxy-passthrough"></a>Passthrough van proxy
 
 Passthrough van de proxy kan worden bereikt door een computer niveau of proxy op toepassings niveau te configureren.
-Zie voor meer informatie het artikel van DOTNET op [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-app/file-schema/network/defaultproxy-element-network-settings).
+Zie voor meer informatie het artikel van DOTNET op [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
  
  Voor beeld van web. config:
  ```xml

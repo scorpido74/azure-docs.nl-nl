@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 3098e85fd21b6185defc4bbcf0a71d412846ab25
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: fb1e32d9f67febb09eadfb5d31221db33504eb05
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725739"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289472"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Problemen met de evaluatie/afhankelijkheid oplossen
 
@@ -92,6 +92,7 @@ Server Assessment rapporteert "PercentageOfCoresUtilizedMissing" of "PercentageO
 - Dit kan gebeuren als de virtuele machines tijdens de evaluatie duur zijn uitgeschakeld. Het apparaat kan geen prestatie gegevens voor een virtuele machine verzamelen wanneer deze is uitgeschakeld.
 - Als alleen de geheugen items ontbreken en u probeert virtuele Hyper-V-machines te evalueren, controleert u of u dynamisch geheugen hebt ingeschakeld op deze virtuele machines. Er is alleen een bekend probleem voor virtuele Hyper-V-machines, waarin een Azure Migrate apparaat geen geheugen gebruiks gegevens kan verzamelen voor Vm's waarvoor geen dynamisch geheugen is ingeschakeld.
 - Als een van de prestatie meter items ontbreekt, wordt de analyse van Azure Migrate server terugvallen op de toegewezen kernen en het geheugen en wordt een bijbehorende VM-grootte aanbevolen.
+- Als alle prestatie meter items ontbreken, controleert u of aan de toegangs vereisten voor de poort voor evaluatie is voldaan. Meer informatie over de toegangs vereisten voor de poort voor [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access), [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access) en [fysieke](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access) server beoordeling.
 
 ## <a name="is-the-operating-system-license-included"></a>Is de licentie voor het besturings systeem opgenomen?
 

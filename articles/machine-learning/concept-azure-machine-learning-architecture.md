@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9ed7ddc6287239c90cc074f1c171f2d28206732
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 452b0e597d0b4ad027ff62303afe2f0e7fd6abb9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154599"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314365"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>Hoe Azure Machine Learning werkt: architectuur en concepten
 
@@ -46,9 +46,9 @@ Gebruik deze hulpprogram ma's voor Azure Machine Learning:
 
 +  Communiceer met de service in een python-omgeving met de [Azure machine learning SDK voor python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py).
 + Communiceer met de service in een wille keurige R-omgeving met de [Azure machine learning SDK voor R](https://azure.github.io/azureml-sdk-for-r/reference/index.html).
-+ Automatiseer uw machine learning activiteiten met de [Azure machine learning cli](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli).
++ Automatiseer uw machine learning activiteiten met de [Azure machine learning cli](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli).
 + Code schrijven in Visual Studio code met [Azure machine learning VS code-extensie](tutorial-setup-vscode-extension.md)
-+ Gebruik [Azure machine learning Designer (preview)](concept-designer.md) om de werk stroom stappen uit te voeren zonder code te schrijven.
++ Gebruik [Azure machine learning Designer](concept-designer.md) om de werk stroom stappen uit te voeren zonder code te schrijven.
 
 
 > [!NOTE]

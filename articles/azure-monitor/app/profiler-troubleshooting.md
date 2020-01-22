@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6022bf975352f9f70c4ba8aa716a695ead590a32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9817205a419e2b61af66dba16d09620e2c1dec9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432389"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310860"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Problemen met het inschakelen of weer geven van Application Insights Profiler oplossen
 
@@ -47,6 +47,7 @@ Profiler schrijft traceer berichten en aangepaste gebeurtenissen naar uw Applica
 * Als uw web-app een ASP.NET Core toepassing is, moet er ten minste ASP.NET Core 2,0 worden uitgevoerd.
 * Als de gegevens die u probeert weer te geven ouder zijn dan een paar weken, probeert u het tijd filter te beperken en probeert u het opnieuw. Traceringen worden na zeven dagen verwijderd.
 * Zorg ervoor dat proxy's of een firewall de toegang tot https://gateway.azureserviceprofiler.net niet heeft geblokkeerd.
+* Profilering wordt niet ondersteund voor gratis of gedeelde app service-abonnementen. Als u een van deze abonnementen gebruikt, probeert u omhoog te schalen naar een van de basis plannen en Profiler moet aan de slag gaan.
 
 ### <a id="double-counting"></a>Dubbel tellen in parallelle threads
 

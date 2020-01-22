@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbaafdce6f2510b58966f4b6c18e45a3fcd4a664
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: dc3c4a943f24ba1f987aa1daf513b9e05ada65a7
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997085"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309996"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Veelgestelde vragen over Azure Active Directory Connect
 
@@ -58,7 +58,7 @@ Ja, het inrichten van Clouds maakt een service-principal voor de inrichtings con
 
 **V: wat gebeurt er wanneer een gesynchroniseerde gebruiker het wacht woord moet wijzigen bij de volgende aanmelding?**
 
-Als wacht woord-hash-synchronisatie is ingeschakeld in Cloud inrichting en de gesynchroniseerde gebruiker moet het wacht woord wijzigen bij de volgende aanmelding in on-premises AD, is de Cloud inrichting niet in staat om de wacht woord-hash in te stellen op Azure AD. Zodra de gebruiker het wacht woord heeft gewijzigd, wordt de hash van het gebruikers wachtwoord van AD naar Azure AD ingericht.
+Als wacht woord-hash-synchronisatie is ingeschakeld in de Cloud inrichting en de gesynchroniseerde gebruiker moet het wacht woord wijzigen bij de volgende aanmelding bij een on-premises AD, wordt in de Cloud inrichting niet de wachtwoord-hash voor Azure AD ingesteld op gewijzigd. Zodra de gebruiker het wacht woord heeft gewijzigd, wordt de hash van het gebruikers wachtwoord van AD naar Azure AD ingericht.
 
 **V: Cloud inrichting ondersteunt het terugschrijven van MS-DS-consistencyGUID voor elk object?**
 

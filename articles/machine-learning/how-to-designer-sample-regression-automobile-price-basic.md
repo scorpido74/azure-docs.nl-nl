@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 156b963fc1644d1f863d8ddd1d86c15b311e18a8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 18a9f9d49dce96b037f10a95a458e52d020fe6c7
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763382"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311067"
 ---
 # <a name="use-regression-to-predict-car-prices-with-azure-machine-learning-designer"></a>Regressie gebruiken om de prijzen van auto's te voors pellen met Azure Machine Learning Designer
 
-**Voor beeld van Designer (preview) 1**
+**Voor beeld van Designer 1**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Meer informatie over het bouwen van een machine learning regressie model zonder een enkele regel code te schrijven met behulp van de ontwerp functie (preview).
+Meer informatie over het bouwen van een machine learning regressie model zonder dat u een regel code hoeft te schrijven met behulp van de ontwerp functie.
 
 Deze pijp lijn traint een **lineaire regressor hierop** om de prijs van een auto te voors pellen op basis van technische functies zoals merk, model, paarden kracht en grootte. Omdat u probeert de vraag "hoeveel?" te beantwoorden Dit wordt een regressie probleem genoemd. U kunt echter dezelfde basis stappen in dit voor beeld Toep assen om elk type machine learning probleem op te doen, of het nu gaat om een regressie, classificatie, Clustering, enzovoort.
 

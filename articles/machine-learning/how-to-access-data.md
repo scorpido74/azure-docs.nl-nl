@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: ae04bf5268bb9973098735183842f7393e9d679b
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 4de8b032bd284ce0a2d6d8fd168b9ea3dd4937d3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121757"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289047"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Toegang tot gegevens in azure Storage-services
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -52,7 +52,7 @@ Data stores ondersteunen momenteel het opslaan van verbindings gegevens naar de 
 | Type opslag&nbsp; | Type verificatie&nbsp; | [Azure&nbsp;machine&nbsp;Learning Studio](https://ml.azure.com/) | [Azure&nbsp;machine&nbsp;Learning&nbsp; python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure&nbsp;machine&nbsp;Learning CLI](reference-azure-machine-learning-cli.md) | [Azure&nbsp;machine&nbsp;Learning&nbsp; rest API](https://docs.microsoft.com/rest/api/azureml/)
 ---|---|---|---|---|---
 [Azure&nbsp;BLOB&nbsp;opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| Accountcode <br> SAS-token | ✓ | ✓ | ✓ |✓
-[Bestands&nbsp;share van Azure&nbsp;]((https://docs.microsoft.com/azure/storage/files/storage-files-introduction))| Accountcode <br> SAS-token | ✓ | ✓ | ✓ |✓
+[Bestands&nbsp;share van Azure&nbsp;](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| Accountcode <br> SAS-token | ✓ | ✓ | ✓ |✓
 [Azure&nbsp;Data Lake&nbsp;Storage gen&nbsp;1](https://docs.microsoft.com/azure/data-lake-store/)| Service-principal| ✓ | ✓ | ✓ |✓
 [Azure&nbsp;Data Lake&nbsp;Storage gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Service-principal| ✓ | ✓ | ✓ |✓
 Azure&nbsp;SQL&nbsp;-data base| SQL-verificatie <br>Service-principal| ✓ | ✓ | ✓ |✓
@@ -271,7 +271,7 @@ In situaties waarin de SDK geen toegang biedt tot gegevens opslag, kunt u mogeli
 
 ## <a name="move-data-to-supported-azure-storage-solutions"></a>Gegevens verplaatsen naar ondersteunde Azure Storage oplossingen
 
-Azure Machine Learning ondersteunt het openen van gegevens vanuit Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database en Azure Database for PostgreSQL. Als u niet-ondersteunde opslag gebruikt, wordt u aangeraden uw gegevens naar ondersteunde Azure Storage oplossingen te verplaatsen met behulp van [Azure Data Factory en deze stappen]((https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool)). Het verplaatsen van gegevens naar ondersteunde opslag kan u helpen bij het opslaan van de kosten voor de uitvoer van gegevens tijdens machine learning experimenten. 
+Azure Machine Learning ondersteunt het openen van gegevens vanuit Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database en Azure Database for PostgreSQL. Als u niet-ondersteunde opslag gebruikt, wordt u aangeraden uw gegevens naar ondersteunde Azure Storage oplossingen te verplaatsen met behulp van [Azure Data Factory en deze stappen](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool). Het verplaatsen van gegevens naar ondersteunde opslag kan u helpen bij het opslaan van de kosten voor de uitvoer van gegevens tijdens machine learning experimenten. 
 
 Azure Data Factory biedt een efficiënte en robuuste gegevens overdracht met meer dan 80 vooraf ontwikkelde connectors zonder extra kosten. Deze connectors zijn onder andere Azure Data Services, on-premises gegevens bronnen, Amazon S3 en Redshift en Google BigQuery.
 

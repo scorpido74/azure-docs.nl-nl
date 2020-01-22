@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 11/27/2019
-ms.openlocfilehash: d5b3733947876958b4d72da4cb7bb0f10a3a9165
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.date: 01/21/2020
+ms.openlocfilehash: b8cf7992617b7263b86fd98e5def8be1d43ca68c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614950"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293365"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Wat is Azure SQL Database beheerde instantie?
 
@@ -325,7 +325,7 @@ De volgende tabel bevat verschillende eigenschappen, toegankelijk via Transact S
 
 |Eigenschap|Waarde|Opmerking|
 |---|---|---|
-|`@@VERSION`|Micro soft SQL Azure (RTM)-12.0.2000.8 2018-03-07 copyright (C) 2018 micro soft Corporation.|Deze waarde is hetzelfde als in SQL Database.|
+|`@@VERSION`|Micro soft SQL Azure (RTM)-12.0.2000.8 2018-03-07 copyright (C) 2018 micro soft Corporation.|Deze waarde is hetzelfde als in SQL Database. Dit duidt **niet** op SQL-engine versie 12 (SQL Server 2014). Beheerd exemplaar voert altijd de nieuwste stabiele SQL-engine versie uit, die gelijk is aan of hoger is dan de laatste beschik bare RTM-versie van SQL Server.  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Deze waarde is hetzelfde als in SQL Database.|
 |`SERVERPROPERTY('EngineEdition')`|8|Deze waarde is een unieke aanduiding voor een beheerd exemplaar.|
 |`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Volledige DNS-exemplaarnaam in de volgende indeling:`<instanceName>`.`<dnsPrefix>`.database.Windows.NET, waar `<instanceName>` is geleverd door de klant, terwijl `<dnsPrefix>` automatisch gegenereerde deel uitmaakt van de naam van de globale DNS-naam uniekheid garanderen ('wcus17662feb9ce98', bijvoorbeeld)|Voor beeld: my-managed-instance.wcus17662feb9ce98.database.windows.net|

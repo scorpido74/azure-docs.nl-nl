@@ -1,6 +1,6 @@
 ---
 title: Naslaginformatie over algoritmen en modules
-description: Meer informatie over de beschik bare modules in Azure Machine Learning Designer (preview)
+description: Meer informatie over de beschik bare modules in Azure Machine Learning Designer
 titleSuffix: Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
@@ -9,16 +9,16 @@ ms.topic: reference
 author: peterclu
 ms.author: peterlu
 ms.date: 12/17/2019
-ms.openlocfilehash: 659c205bd12d7ca27bfc28e3ab6e62f58d9743ac
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c265c2386b31fd02a5aa635c343be5d3cb227722
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978662"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312172"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Naslag informatie voor algoritme & module voor Azure Machine Learning Designer
 
-Deze referentie-inhoud bevat de technische achtergrond informatie over elk van de machine learning algoritmen en modules die beschikbaar zijn in Azure Machine Learning Designer (preview).
+Deze referentie-inhoud biedt de technische achtergrond informatie over elk van de machine learning algoritmen en modules die beschikbaar zijn in Azure Machine Learning Designer.
 
 Elke module vertegenwoordigt een set code die onafhankelijk kan worden uitgevoerd en een machine learning taak kan uitvoeren, op basis van de vereiste invoer. Een module kan een bepaald algoritme bevatten of een taak uitvoeren die belang rijk is in machine learning, zoals ontbrekende vervanging van waarden of statistische analyses.
 

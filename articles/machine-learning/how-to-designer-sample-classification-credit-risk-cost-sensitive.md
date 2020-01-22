@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 54ca0df005dccceacc88044a51f31ad784b7071b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1430db34f9c31cbd9d9df921650c628d265bccc5
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763399"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311084"
 ---
 # <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Een classificatie bouwen & python-scripts gebruiken om het krediet risico te voors pellen met behulp van Azure Machine Learning Designer
 
-**Voor beeld van Designer (preview) 4**
+**Ontwerp voorbeeld 4**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-In dit artikel wordt beschreven hoe u een complexe machine learning pijp lijn bouwt met behulp van de ontwerp functie (preview). U leert hoe u aangepaste logica implementeert met behulp van python-scripts en meerdere modellen vergelijkt om de beste optie te kiezen.
+In dit artikel wordt beschreven hoe u een complexe machine learning pijp lijn bouwt met behulp van de ontwerp functie. U leert hoe u aangepaste logica implementeert met behulp van python-scripts en meerdere modellen vergelijkt om de beste optie te kiezen.
 
 In dit voor beeld wordt een classificatie gebruikt om het krediet risico te voors pellen met behulp van informatie over krediet aanvragen, zoals krediet geschiedenis, leeftijd en aantal credit cards. U kunt echter de concepten in dit artikel Toep assen om uw eigen machine learning problemen op te lossen.
 

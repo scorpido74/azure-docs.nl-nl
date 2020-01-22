@@ -15,12 +15,12 @@ ms.author: billmath
 search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c903e3378e06734a8785531c1a16c695d4b6c21
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 111581def3ed0c366898534ee6b6c5f5b6d9e756
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814930"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293110"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>Wachtwoord-hashsynchronisatie met Azure AD Connect sync implementeren
 Dit artikel bevat gegevens die u nodig hebt om te synchroniseren van uw wachtwoorden van gebruikers uit een on-premises Active Directory-exemplaar naar een cloud-gebaseerde Azure Active Directory (Azure AD)-exemplaar.
@@ -98,9 +98,16 @@ Wanneer *EnforceCloudPasswordPolicyForPasswordSyncedUsers* is uitgeschakeld (dit
 `(Get-AzureADUser -objectID <User Object ID>).passwordpolicies`
 
 
-Als u de functie EnforceCloudPasswordPolicyForPasswordSyncedUsers wilt inschakelen, voert u de volgende opdracht uit met behulp van de MSOnline Power shell-module:
-
-`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers -Enable $true`
+Als u de functie EnforceCloudPasswordPolicyForPasswordSyncedUsers wilt inschakelen, voert u de volgende opdracht uit met behulp van de MSOnline Power shell-module, zoals hieronder wordt weer gegeven. U moet ja typen voor de para meter Enable zoals hieronder wordt weer gegeven:
+```
+`Set-MsolDirSyncFeature -Feature EnforceCloudPasswordPolicyForPasswordSyncedUsers`
+`cmdlet Set-MsolDirSyncFeature at command pipeline position 1`
+`Supply values for the following parameters:`
+`Enable: yes`
+`Confirm`
+`Continue with this operation?`
+`[Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): y`
+```
 
 Als deze functie is ingeschakeld, gaat Azure AD niet naar elke gesynchroniseerde gebruiker om de `DisablePasswordExpiration` waarde uit het kenmerk PasswordPolicies te verwijderen. In plaats daarvan wordt de waarde ingesteld op `None` tijdens de volgende wachtwoord synchronisatie voor elke gebruiker wanneer ze hun wacht woord vervolgens wijzigen in on-premises AD.  
 

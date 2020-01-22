@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 0221930f0b9fff0c9d4e398559f8d12999a66e91
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f053b30d344e5372617a5bf98c087056c4fe2911
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987563"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294147"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Quick Start: kosten verkennen en analyseren met kosten analyse
 
@@ -138,24 +138,29 @@ U kunt de volledige gegevensset weer geven voor elke weer gave. Welke selecties 
 
 De volgende tabel bevat een aantal van de meest voorkomende groeperings-en filter opties en wanneer u deze moet gebruiken.
 
-| Eigenschap | Wanneer gebruikt u dit? |
-| --- | --- |
-| **Facturerings periode** | Kosten opsplitsen per factuur maand. Deze optie is belang rijk voor betalen per gebruik en voor ontwikkelings-en test abonnementen, die niet zijn gekoppeld aan kalender maanden. EA/MCA-accounts kunnen kalender maanden in de datum kiezer of maandelijkse granulatie gebruiken om hetzelfde doel te bereiken. |
-| **Kosten type** | Onderbreek de kosten voor gebruik, aankoop, terugbetaling en ongebruikte reserve ringen. Reserverings aankopen en terugstortingen zijn alleen beschikbaar wanneer u actie kosten gebruikt en niet wanneer u afgeschreven kosten gebruikt. Ongebruikte reserverings kosten zijn alleen beschikbaar wanneer u de afgeschreven kosten bekijkt. |
-| **Cloud** | Verdeel de kosten met AWS en Azure. AWS-kosten zijn alleen beschikbaar voor beheer groepen, externe facturerings accounts en externe abonnementen. |
-| **Afdeling** / **factuur sectie** | Onderbreek de kosten per EA-afdeling of MCA-factuur gedeelte. Deze optie is alleen beschikbaar voor EA/MCA-facturerings accounts en MCA-facturerings profielen. |
-| **Inschrijvings account** | Kosten opsplitsen van EA-account eigenaar. Deze optie is alleen beschikbaar voor EA-facturerings accounts en-afdelingen. |
-| **Frequentie** | Op gebruik gebaseerde, eenmalige en terugkerende kosten opsplitsen. |
-| **Verbinding** | Kosten onderverdelen op basis van de gebruiks meter van Azure. Deze optie is alleen beschikbaar voor Azure-gebruik. Alle aankopen en Marketplace-gebruik worden weer gegeven als **niet opgegeven of niet** - **toegewezen**. |
-| **Type Uitgever** | Onderbreek de kosten voor AWS, Azure en Marketplace. |
-| **Boeking** | Verdeel de kosten per reserve ring. Een gebruik dat geen reserve ring bevat, wordt weer gegeven als **niet opgegeven**. |
-| **Resource** | Kosten per resource opsplitsen. Alle aankopen worden weer gegeven als **niet opgegeven**, omdat ze worden toegepast op een EA/payg-facturerings account of een MCA-facturerings profiel niveau.  |
-| **Resourcegroep** | Kosten opsplitsen per resource groep. Deze optie is alleen beschikbaar voor niet-klassiek gebruik. Klassiek resource gebruik wordt weer gegeven als **andere**en aankopen worden weer gegeven als **niet opgegeven**. |
-| **Resourcetype** | Kosten opsplitsen op resource type. Deze optie is alleen beschikbaar voor niet-klassiek gebruik. Klassiek resource gebruik wordt weer gegeven als **andere**en aankopen worden weer gegeven als **niet opgegeven**. |
-| **Service naam** of **meter categorie** | Onderbreek de kosten voor de Azure-service. Deze optie is alleen beschikbaar voor Azure-gebruik. Alle aankopen en Marketplace-gebruik worden weer gegeven als **niet opgegeven of niet** - **toegewezen**. |
-| **Service tier** of **meter subcategorie** | Kosten voor de subclassificatie van de Azure-gebruiks meter onderverdelen. Deze optie is alleen beschikbaar voor Azure-gebruik. Alle aankopen en Marketplace-gebruik worden weer gegeven als **niet opgegeven of niet** - **toegewezen**. |
-| **Abonnement** | Kosten opsplitsen per abonnement. Alle aankopen worden weer gegeven als **niet opgegeven**. |
-| **Tag** | Kosten opsplitsen op label waarden voor een specifieke tag-sleutel. |
+| Eigenschap | Wanneer gebruikt u dit? | Opmerkingen |
+| --- | --- | --- |
+| **Beschikbaarheids zones** | Onderbreek de AWS-kosten per beschikbaarheids zone. | Alleen van toepassing op AWS-bereiken en-beheer groepen. Azure-gegevens bevatten geen beschikbaarheids zone en worden weer gegeven als **niet van toepassing**. |
+| **Facturerings periode** | Onderbreek PAYG kosten per maand (of worden) gefactureerd. | Gebruik **facturerings periode** om een nauw keurige weer gave van gefactureerde payg-kosten te krijgen. 2 extra dagen voor en na de facturerings periode toevoegen als er wordt gefilterd op een aangepast datum bereik. Het beperken van de exacte datums van de facturerings periode komt niet overeen met de factuur. De kosten van alle facturen in de facturerings periode worden weer gegeven. **Factuur-ID** gebruiken om te filteren op een specifieke factuur. Alleen van toepassing op PAYG-abonnementen omdat EA en MCA worden gefactureerd per kalender maand. EA/MCA-accounts kunnen kalender maanden in de datum kiezer of maandelijkse granulatie gebruiken om hetzelfde doel te bereiken. |
+| **Kosten type** | Onderbreek de kosten voor gebruik, aankoop, terugbetaling en ongebruikte reserve ringen. | Reserverings aankopen en terugstortingen zijn alleen beschikbaar wanneer u werkelijke kosten gebruikt en niet wanneer u afgeschreven kosten gebruikt. Ongebruikte reserverings kosten zijn alleen beschikbaar wanneer u de afgeschreven kosten bekijkt. |
+| **Department** | Kosten per EA-afdeling opsplitsen. | Alleen beschikbaar voor EA-en beheer groepen. PAYG-abonnementen hebben geen afdeling en worden weer gegeven als **niet van toepassing of niet** - **toegewezen**. |
+| **Inschrijvings account** | Kosten opsplitsen van EA-account eigenaar. | Alleen beschikbaar voor EA-facturerings accounts,-afdelingen en-beheer groepen. PAYG-abonnementen hebben geen EA-inschrijvings accounts en worden weer gegeven als **niet-toepasselijk of niet** - **toegewezen**. |
+| **Frequentie** | Op gebruik gebaseerde, eenmalige en terugkerende kosten opsplitsen. | |
+| **Factuur-ID** | Kosten verdelen per gefactureerde factuur. | Niet-gefactureerde kosten hebben nog geen factuur-ID en de EA-kosten bevatten geen factuur Details en worden weer gegeven als **niet van toepassing**.  |
+| **Verbinding** | Kosten opsplitsen met gebruiks meter. | Het gebruik van aankopen en Marketplace wordt weer gegeven als **niet van toepassing**. Raadpleeg het **kosten type** voor de aanschaf en het type van de **Uitgever** om Marketplace-kosten te identificeren. |
+| **Bewerking** | Onderbreek de AWS-kosten per bewerking. | Alleen van toepassing op AWS-bereiken en-beheer groepen. Azure-gegevens omvatten geen bewerking en worden **in plaats daarvan** weer gegeven als **niet van toepassing** . |
+| **Prijs model** | Verdeel kosten op aanvraag, reserve ring of spot gebruik. | Aankopen worden weer gegeven als **OnDemand**. Als u **niet van toepassing**is, groeperen op **reserve ring** om te bepalen of het gebruik een reserve ring of op aanvraag gebruik en een **toeslag type** is voor het identificeren van aankopen.
+| **Provider** | Verdeel de kosten met AWS en Azure. | Alleen beschikbaar voor beheer groepen. |
+| **Type Uitgever** | Onderbreek de kosten voor AWS, Azure en Marketplace. |  |
+| **Boeking** | Verdeel de kosten per reserve ring. | Gebruik of aankopen die niet aan een reserve ring zijn gekoppeld, worden weer gegeven als **niet van toepassing**. Groeperen op **Uitgever type** om andere Azure-, AWS-of Marketplace-aankopen te identificeren. |
+| **Resource** | Kosten per resource opsplitsen. | Aankopen worden weer gegeven als **niet van toepassing**, omdat ze worden toegepast op een EA/payg-facturerings account of een MCA-facturerings profiel niveau en niet zijn gekoppeld aan een specifieke resource. Groeperen op **Uitgever type** om andere Azure-, AWS-of Marketplace-aankopen te identificeren. |
+| **Resourcegroep** | Kosten opsplitsen per resource groep. | Aankopen, Tenant bronnen die niet zijn gekoppeld aan abonnementen, abonnements resources die niet zijn geïmplementeerd voor een resource groep en klassieke resources hebben geen resource groep en worden weer gegeven als **andere**, **klassieke Services**, **$System**of **niet van toepassing**. |
+| **Resourcetype** | Kosten opsplitsen op resource type. | Aankopen en klassieke Services hebben geen Azure Resource Manager resource type en worden weer gegeven als **andere**, **klassieke Services**of **niet van toepassing**. |
+| **Resource locatie** | Kosten opsplitsen per locatie of regio. | Het gebruik van aankopen en Marketplace kan worden weer gegeven als niet- **toegewezen**, **onbekend**, niet- **toegewezen**of **niet van toepassing**. |
+| **Service naam** of **meter categorie** | Onderbreek de kosten voor de Azure-service. | Het gebruik van aankopen en Marketplace wordt weer gegeven als **niet van toepassing of niet** - **toegewezen**. |
+| **Service tier** of **meter subcategorie** | Kosten voor de subclassificatie van de Azure-gebruiks meter onderverdelen. | Het gebruik van aankopen en Marketplace wordt weer gegeven als **niet van toepassing of niet** - **toegewezen**. |
+| **Abonnement** | Kosten opsplitsen van een Azure-abonnement en een gekoppeld AWS-account. | Inkopen en Tenant bronnen kunnen worden weer gegeven als **niet van toepassing**. |
+| **Tag** | Kosten opsplitsen op label waarden voor een specifieke tag-sleutel. | Labels zijn niet beschikbaar voor aankopen, Tenant bronnen die niet zijn gekoppeld aan abonnementen, abonnements resources die niet zijn geïmplementeerd voor een resource groep of klassieke resources. Opmerking Sommige services bevatten geen tags in gebruiks gegevens. Meer informatie over [de ondersteuning van tags voor elk resource type](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support). |
 
 Zie [inzicht in de termen die worden gebruikt in het Azure-gebruiks-en-kosten bestand](../understand/understand-usage.md)voor meer informatie over de voor waarden.
 

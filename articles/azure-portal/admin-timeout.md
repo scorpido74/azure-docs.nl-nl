@@ -3,18 +3,18 @@ title: Time-out voor inactiviteit op Directory niveau instellen voor gebruikers 
 description: Beheerders kunnen het maximum aantal niet-actieve tijd afdwingen voordat een sessie wordt afgemeld. Het beleid voor time-out van inactiviteit is ingesteld op het niveau van de Directory.
 services: azure-portal
 keywords: instellingen, time-out
-author: mblythe
+author: mgblythe
 ms.author: mblythe
 ms.date: 12/19/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 55136b5418b0c455ef66bd322f519c1e52114b93
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 87de67eec9171825a1ebff9ab60782fea8836039
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640496"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310795"
 ---
 # <a name="set-directory-level-inactivity-timeout"></a>Time-out voor inactiviteit op Directory niveau instellen
 

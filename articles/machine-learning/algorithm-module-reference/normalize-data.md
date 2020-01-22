@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: bdf2fa700b96c6110143a4557985ac1a30ed9096
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e4bc440d59f41988a52b8b7b808b74f95acdf46
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466055"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314263"
 ---
 # <a name="normalize-data-module"></a>Gegevens module normaliseren
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Gebruik deze module om een gegevensset te transformeren met behulp van *normalisatie*.
 
@@ -98,11 +98,11 @@ U kunt per keer slechts één normalisatie methode Toep assen met behulp van dez
 
 In de module **normaliseren gegevens** worden twee uitvoer gegenereerd:
 
-- Als u de getransformeerde waarden wilt weer geven, klikt u met de rechter muisknop op de module, selecteert u **getransformeerde gegevensset**en klikt u op **visualiseren**.
+- Als u de getransformeerde waarden wilt weer geven, klikt u met de rechter muisknop op de module en selecteert u **visualiseren**.
 
     Standaard worden waarden getransformeerd. Als u de getransformeerde waarden wilt vergelijken met de oorspronkelijke waarden, gebruikt u de module [kolommen toevoegen](./add-columns.md) om de gegevens sets opnieuw samen te voegen en de kolommen naast elkaar weer te geven.
 
-- Als u de trans formatie wilt opslaan zodat u dezelfde normalisatie methode op een andere vergelijk bare gegevensset kunt Toep assen, klikt u met de rechter muisknop op de module, selecteert u **transformatie functie**en klikt u op **Opslaan als trans formatie**.
+- Als u de trans formatie wilt opslaan zodat u dezelfde normalisatie methode op een andere gegevensset kunt Toep assen, selecteert u de module en selecteert u **gegevensset registreren** onder het tabblad **uitvoer** in het rechterdeel venster.
 
     U kunt de opgeslagen trans formaties vervolgens laden vanuit de groep **trans formaties** van het navigatie deel venster links en deze Toep assen op een gegevensset met hetzelfde schema met behulp van de [./apply-trans formatie](apply-transformation.md).  
 

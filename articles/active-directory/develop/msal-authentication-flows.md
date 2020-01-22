@@ -14,12 +14,12 @@ ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c818b7d7508555e1233d4ef954502728f65abfb
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 9e224218217b18ffc5c35ec45011097d93e5d797
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74917196"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291581"
 ---
 # <a name="authentication-flows"></a>Verificatie stromen
 
@@ -32,21 +32,21 @@ In dit artikel worden de verschillende verificatie stromen beschreven die worden
 | [Autorisatie code](#authorization-code) | Wordt gebruikt in apps die op een apparaat zijn geïnstalleerd om toegang te krijgen tot beveiligde bronnen, zoals web-Api's. Zo kunt u aanmelden en API-toegang toevoegen aan uw mobiele en desktop-apps. | [Bureau blad-apps](scenario-desktop-overview.md), [mobiele apps](scenario-mobile-overview.md), [Web-apps](scenario-web-app-call-api-overview.md) | 
 | [Namens-van](#on-behalf-of) | Een toepassing roept een service of Web-API aan, die op zijn beurt een andere service of Web-API moet aanroepen. Het is verstandig om de gedelegeerde gebruikers identiteit en de machtigingen via de aanvraag keten door te geven. | [Web-API's](scenario-web-api-call-api-overview.md) |
 | [Clientreferenties](#client-credentials) | Hiermee krijgt u toegang tot webhoste bronnen met behulp van de identiteit van een toepassing. Wordt meestal gebruikt voor server-naar-server-interacties die op de achtergrond moeten worden uitgevoerd, zonder directe interactie met een gebruiker. | [Daemon-apps](scenario-daemon-overview.md) |
-| [Apparaatcode](#device-code) | Hiermee kunnen gebruikers zich aanmelden op apparaten met invoer beperkingen, zoals een Smart TV, IoT-apparaat of printer. | [Desktop/mobiele apps](scenario-desktop-acquire-token.md#command-line-tool-without-web-browser) |
+| [Apparaatcode](#device-code) | Hiermee kunnen gebruikers zich aanmelden op apparaten met invoer beperkingen, zoals een Smart TV, IoT-apparaat of printer. | [Desktop/mobiele apps](scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser) |
 | [Geïntegreerde Windows-verificatie](scenario-desktop-acquire-token.md#integrated-windows-authentication) | Hiermee kunnen toepassingen die lid zijn van een domein of Azure Active Directory (Azure AD), een token op de achtergrond verkrijgen (zonder interactie van de gebruikers interface van de gebruiker).| [Desktop/mobiele apps](scenario-desktop-acquire-token.md#integrated-windows-authentication) |
-| [Gebruikers naam/wacht woord](scenario-desktop-acquire-token.md#username--password) | Hiermee kan een toepassing zich aanmelden bij de gebruiker door rechtstreeks hun wacht woord af te handelen. Deze stroom wordt niet aanbevolen. | [Desktop/mobiele apps](scenario-desktop-acquire-token.md#username--password) |
+| [Gebruikers naam/wacht woord](scenario-desktop-acquire-token.md#username-and-password) | Hiermee kan een toepassing zich aanmelden bij de gebruiker door rechtstreeks hun wacht woord af te handelen. Deze stroom wordt niet aanbevolen. | [Desktop/mobiele apps](scenario-desktop-acquire-token.md#username-and-password) |
 
 ## <a name="how-each-flow-emits-tokens-and-codes"></a>Hoe elke stroom tokens en codes uitstraalt
  
 Afhankelijk van hoe uw client is gebouwd, kunnen er één (of meerdere) verificatie stromen worden gebruikt die worden ondersteund door het micro soft Identity-platform.  Deze stromen kunnen een aantal tokens (id_tokens, vernieuwings tokens, toegangs tokens) en autorisatie codes produceren, en vereisen verschillende tokens om ze te laten werken. Dit diagram bevat een overzicht:
  
-|Stroom | Vereist | id_token | Toegangs token | token vernieuwen | autorisatie code | 
+|Stroom | Vereist | id_token | toegangs token | token vernieuwen | autorisatie code | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Autorisatie code stroom](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Impliciete stroom](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
 |[Hybride OIDC-stroom](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
 |[Aflossingen van token vernieuwen](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | token vernieuwen | x | x | x| |
-|[Namens-stroom](v2-oauth2-on-behalf-of-flow.md) | Toegangs token| x| x| x| |
+|[Namens-stroom](v2-oauth2-on-behalf-of-flow.md) | toegangs token| x| x| x| |
 |[Toestel code stroom](v2-oauth2-device-code.md) | | x| x| x| |
 |[Clientreferenties](v2-oauth2-client-creds-grant-flow.md) | | | x (alleen app)| | |
  
@@ -164,7 +164,7 @@ In het bovenstaande diagram:
   - Voor alle werk-en school accounts (`https://login.microsoftonline.com/organizations/`).
 - Persoonlijke micro soft-accounts worden nog niet ondersteund door het Azure AD v 2.0-eind punt (u kunt de `/common`-of `/consumers`-tenants niet gebruiken).
 
-## <a name="integrated-windows-authentication"></a>Geïntegreerde Windows-authenticatie
+## <a name="integrated-windows-authentication"></a>Geïntegreerde Windows-verificatie
 
 MSAL biedt ondersteuning voor geïntegreerde Windows-verificatie (IWA) voor desktop-of mobiele toepassingen die worden uitgevoerd op een lid van een domein of een Windows-computer die is toegevoegd aan Azure AD. Met behulp van IWA kunnen deze toepassingen een token op de achtergrond verkrijgen (zonder interactie van de gebruikers interface van de gebruiker). 
 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: In deze Quick start ziet u hoe u team Kubernetes kunt ontwikkelen met containers en micro Services met Azure dev Spaces
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 86d8d559a2d6408eb6846705887a82b440d50d7b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b84bb67556eda3a453ede5a6fb745d8ae472fb6c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770829"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290407"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>Snelstartgids: team ontwikkeling op Kubernetes-Azure dev Spaces
 
@@ -25,7 +25,7 @@ In deze handleiding leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+- Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 - [Azure CLI geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
 - [Helm 2,13-2,16 geïnstalleerd][helm-installed].
 
@@ -137,7 +137,7 @@ azds space select -n dev/azureuser1 -y
 azds space select -n dev/azureuser2 -y
 ```
 
-Met de bovenstaande opdrachten maakt u twee onderliggende ruimten onder *dev* met de naam *azureuser1* en *azureuser2*. Deze twee onderliggende ruimten vertegenwoordigen afzonderlijke ontwikkel ruimten voor de *azureuser1* en *azureuser2* van ontwikkel aars voor het aanbrengen van wijzigingen aan de voorbeeld toepassing.
+Met de bovenstaande opdrachten maakt u twee onderliggende ruimten onder *dev* met de naam *azureuser1* en *azureuser2*. Deze twee onderliggende ruimten vertegenwoordigen afzonderlijke ontwikkel ruimten voor ontwikkel aars *azureuser1* en *azureuser2* om te gebruiken om wijzigingen aan te brengen in de voorbeeld toepassing.
 
 Gebruik de `azds space list` opdracht om alle ontwikkel ruimten weer te geven en te bevestigen dat *dev/azureuser2* is geselecteerd.
 

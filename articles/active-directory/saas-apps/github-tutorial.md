@@ -11,29 +11,26 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/11/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af5021d3a8bed48003f38f01c3d61eac4bdd96b0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: c61ab2279592c93fa22c1bb5102c868f3e13e473
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159216"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289881"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-github"></a>Zelf studie: integratie Azure Active Directory met GitHub
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met GitHub
 
-In deze zelfstudie leert u hoe u GitHub kunt integreren met Azure Active Directory (Azure AD).
-Als u GitHub integreert met Azure Active Directory biedt dit de volgende voordelen:
+In deze zelf studie leert u hoe u GitHub integreert met Azure Active Directory (Azure AD). Wanneer u GitHub integreert met Azure AD, kunt u het volgende doen:
 
-* U kunt in Azure AD bepalen wie toegang heeft tot GitHub.
-* U kunt inschakelen dat gebruikers automatisch met hun Azure AD-account worden aangemeld bij GitHub (eenmalige aanmelding).
-* U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
+* Controle in azure AD die toegang heeft tot GitHub.
+* Zorg ervoor dat uw gebruikers automatisch worden aangemeld bij GitHub met hun Azure AD-accounts.
+* Beheer uw accounts op één centrale locatie: de Azure Portal.
 
-Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
-Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+Zie [Wat is toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)voor meer informatie over SaaS-app-integratie met Azure AD.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -49,75 +46,55 @@ In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD 
 * GitHub ondersteunt door **SP** geïnitieerde eenmalige aanmelding
 
 * GitHub ondersteunt het [**geautomatiseerd** inrichten van gebruikers](github-provisioning-tutorial.md)
+* Zodra u de GitHub hebt geconfigureerd, kunt u sessie besturings elementen afdwingen, waardoor de gevoelige gegevens van uw organisatie in realtime worden beschermd. Sessie besturings elementen worden uitgebreid vanuit voorwaardelijke toegang. [Meer informatie over het afdwingen van sessie beheer met Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-github-from-the-gallery"></a>GitHub toevoegen vanuit de galerie
 
 Voor het configureren van de integratie van GitHub in Azure AD, moet u GitHub vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u GitHub wilt toevoegen vanuit de galerie, moet u de volgende stappen uitvoeren:**
+1. Meld u bij de [Azure-portal](https://portal.azure.com) aan met een werk- of schoolaccount of een persoonlijk Microsoft-account.
+1. Selecteer de **Azure Active Directory** -service in het navigatie deel venster aan de linkerkant.
+1. Ga naar **bedrijfs toepassingen** en selecteer **alle toepassingen**.
+1. Selecteer **nieuwe toepassing**om een nieuwe toepassing toe te voegen.
+1. Typ in de sectie **toevoegen vanuit de galerie** **github** in het zoekvak.
+1. Selecteer **github** uit het paneel resultaten en voeg vervolgens de app toe. Wacht een paar seconden wanneer de app aan uw Tenant is toegevoegd.
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
-    ![De knop Azure Active Directory](common/select-azuread.png)
+## <a name="configure-and-test-azure-ad-single-sign-on-for-github"></a>Eenmalige aanmelding voor Azure AD configureren en testen voor GitHub
 
-2. Navigeer naar **Bedrijfstoepassingen** en selecteer vervolgens de optie **Alle toepassingen**.
+Azure AD SSO met GitHub configureren en testen met behulp van een test gebruiker met de naam **B. Simon**. Voor het werken met SSO moet u een koppelings relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in GitHub.
 
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
+Als u Azure AD SSO wilt configureren en testen met GitHub, voltooit u de volgende bouw stenen:
 
-3. Als u de nieuwe toepassing wilt toevoegen, klikt u op de knop **Nieuwe toepassing** boven aan het dialoogvenster.
+1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+1. **[GITHUB SSO configureren](#configure-github-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+    * **[Maak een github-test gebruiker](#create-github-test-user)** -om een equivalent van B. Simon in github te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
-    ![De knop Nieuwe toepassing](common/add-new-app.png)
+## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
 
-4. Typ **github**in het zoekvak, selecteer **github.com** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
-     ![GitHub in de lijst met resultaten](common/search-new-app.png)
+1. Zoek in het [Azure Portal](https://portal.azure.com/)op de pagina Toepassings integratie van **github** de sectie **beheren** en selecteer **eenmalige aanmelding**.
+1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML**.
+1. Klik op de pagina **eenmalige aanmelding met SAML instellen** op het pictogram bewerken/pen voor **eenvoudige SAML-configuratie** om de instellingen te bewerken.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
+   ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-In deze sectie configureert en test u eenmalige aanmelding van Azure AD met GitHub op basis van een testgebruiker met de naam **Britta Simon**.
-Eenmalige aanmelding werkt alleen als er een koppelingsrelatie tussen een Azure AD-gebruiker en de daaraan gerelateerde gebruiker in GitHub tot stand is gebracht.
+1. Voer in de sectie **basis configuratie van SAML** de waarden in voor de volgende velden:
 
-Als u eenmalige aanmelding van Azure AD met GitHub wilt configureren en testen, dient u de volgende bouwstenen te voltooien:
+   a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://github.com/orgs/<entity-id>/sso`
 
-1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[GitHub-eenmalige aanmelding configureren](#configure-github-single-sign-on)** : als u de instellingen voor eenmalige aanmelding aan de clientzijde wil configureren.
-3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
-4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[GitHub-testgebruiker maken](#create-github-test-user)** : als u een equivalent van Britta Simon in GitHub wilt hebben dat is gekoppeld aan de Azure AD-weergave van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
-
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
-
-In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
-
-Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met GitHub wilt configureren:
-
-1. In de [Azure-portal](https://portal.azure.com/), op de pagina voor integratie van toepassingen met **GitHub**, selecteert u **Eenmalige aanmelding**.
-
-    ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
-
-2. In het dialoogvenster **Een methode voor eenmalige aanmelding selecteren** selecteert u de modus **SAML/WS-Federation** om eenmalige aanmelding in te schakelen.
-
-    ![De modus Eenmalige aanmelding selecteren](common/select-saml-option.png)
-
-3. Op de pagina **Eenmalige aanmelding met SAML instellen** klikt u op het pictogram **Bewerken** om het dialoogvenster **Standaard SAML-configuratie** te openen.
-
-    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
-
-4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
-
-    ![Informatie over eenmalige aanmelding voor domeinen en URL's van GitHub](common/sp-identifier.png)
-
-    a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://github.com/orgs/<entity-id>/sso`
-
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://github.com/orgs/<entity-id>`
+    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met het volgende patroon: `https://github.com/orgs/<entity-id>`
 
     > [!NOTE]
     > Houd er rekening mee dat dit niet de werkelijke waarden zijn. U dient deze waarden bij te werken met de werkelijke aanmeldings-URL en -id. Wij raden u aan hiervoor de unieke waarde van de tekenreeks in de id te gebruiken. Ga naar de sectie GitHub-beheerder om de waarden op te halen.
 
 5. In de GitHub-toepassing worden de SAML-asserties in een specifieke indeling verwacht. Hiervoor moet u aangepaste kenmerktoewijzingen toevoegen aan de configuratie van uw SAML-tokenkenmerken. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen aan **user.userprincipalname**. In de GitHub-toepassing wordt verwacht dat **nameidentifier** is toegewezen aan **user.mail**. Daarom moet u de kenmerktoewijzing bewerken door op het pictogram **Bewerken** te klikken en de kenmerktoewijzing te wijzigen.
 
-    ![image](common/edit-attribute.png)
+    ![installatiekopie](common/edit-attribute.png)
 
 6. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
@@ -133,7 +110,37 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met GitHub 
 
     c. Afmeldings-URL
 
-### <a name="configure-github-single-sign-on"></a>Eenmalige aanmelding van GitHub configureren
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
+
+In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
+
+1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
+1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
+   1. Voer in het veld **Naam**`B.Simon` in.  
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
+   1. Klik op **Maken**.
+
+### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
+
+In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan GitHub.
+
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**en selecteer vervolgens **alle toepassingen**.
+1. Selecteer **GitHub** in de lijst met toepassingen.
+1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
+
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
+
+1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
+
+    ![De koppeling gebruiker toevoegen](common/add-assign-user.png)
+
+1. Selecteer in het dialoog venster **gebruikers en groepen** **B. Simon** van de lijst gebruikers en klik vervolgens op de knop **selecteren** onder aan het scherm.
+1. Als u een wille keurige rol verwacht in de SAML-bewering, selecteert u in het dialoog venster **rol selecteren** de juiste rol voor de gebruiker in de lijst en klikt u op de knop **selecteren** onder aan het scherm.
+1. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
+
+## <a name="configure-github-sso"></a>GitHub SSO configureren
 
 1. Meld u in een ander venster van de webbrowser als beheerder aan bij de site van uw GitHub-organisatie.
 
@@ -157,7 +164,7 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met GitHub 
 
     d. Klik op het pictogram **Edit** om de **handtekeningmethode** en **samenvattingsmethode** vanuit **RSA-SHA1** en **SHA1** te bewerken tot **RSA-SHA256** en **SHA256**, zoals hieronder aangegeven.
 
-    ![image](./media/github-tutorial/tutorial_github_sha.png)
+    ![installatiekopie](./media/github-tutorial/tutorial_github_sha.png)
 
 5. Klik op **Test SAML configuration** om te controleren of er geen validatiefouten of -fouten tijdens eenmalige aanmelding zijn opgetreden.
 
@@ -167,57 +174,6 @@ Voer de volgende stappen uit als u eenmalige aanmelding van Azure AD met GitHub 
 
 > [!NOTE]
 > Eenmalige aanmelding in GitHub wordt geverifieerd met een specifieke organisatie in GitHub en is geen vervanging voor de verificatie van GitHub zelf. Dus als de gebruikerssessie op github.com is verlopen, kunt u worden gevraagd om u te verifiëren met de GitHub-id en het GitHub-wachtwoord tijdens het proces voor eenmalige aanmelding.
-
-### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
-
-Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
-
-1. Selecteer in het linkerdeelvenster in de Azure-portal de optie **Azure Active Directory**, selecteer **Gebruikers** en selecteer vervolgens **Alle gebruikers**.
-
-    ![De koppelingen Gebruikers en groepen en Alle gebruikers](common/users.png)
-
-2. Selecteer **Nieuwe gebruiker** boven aan het scherm.
-
-    ![Knop Nieuwe gebruiker](common/new-user.png)
-
-3. In Gebruikerseigenschappen voert u de volgende stappen uit.
-
-    ![Het dialoogvenster Gebruiker](common/user-properties.png)
-
-    a. Voer in het veld **Naam** **Britta Simon**in.
-  
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
-    Bijvoorbeeld: BrittaSimon@contoso.com
-
-    c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
-
-    d. Klik op **Maken**.
-
-### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
-
-In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige aanmelding met Azure door haar toegang te geven tot GitHub.
-
-1. Selecteer **Bedrijfstoepassingen** in de Azure-portal, selecteer **Alle toepassingen** en selecteer vervolgens **GitHub**.
-
-    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
-
-2. Selecteer **GitHub** in de lijst met toepassingen.
-
-    ![De GitHub-koppeling in de lijst Toepassingen](common/all-applications.png)
-
-3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
-
-    ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
-
-4. Klik op de knop**Gebruiker toevoegen** en selecteer vervolgens **Gebruikers en groepen** in het dialoogvenster **Toewijzing toevoegen**.
-
-    ![Het deelvenster Toewijzing toevoegen](common/add-assign-user.png)
-
-5. Selecteer in het dialoogvenster **Gebruikers en groepen** **Britta Simon** in de lijst met gebruikers en klik op de knop **Selecteren** onder aan het scherm.
-
-6. Als u een waarde voor een rol verwacht in de SAML-bewering, moet u in het dialoogvenster **Rol selecteren** de juiste rol voor de gebruiker in de lijst selecteren en vervolgens op de knop **Selecteren** onder aan het scherm klikken.
-
-7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
 ### <a name="create-github-test-user"></a>GitHub-testgebruiker maken
 
@@ -248,7 +204,7 @@ Het doel van deze sectie is om in GitHub een gebruiker te maken met de naam Brit
     > [!NOTE]
     > De houder van het Azure Active Directory-account ontvangt een e-mail en volgt een koppeling om zijn account te bevestigen voordat het actief wordt.
 
-### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
+## <a name="test-sso"></a>SSO testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
@@ -256,8 +212,14 @@ Wanneer u op de tegel GitHub in het toegangsvenster klikt, wordt u automatisch a
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory)
 
-- [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
+- [What is application access and single sign-on with Azure Active Directory? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat is toegang tot toepassingen en eenmalige aanmelding bij Azure Active Directory?)
 
 - [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Probeer GitHub met Azure AD](https://aad.portal.azure.com/)
+
+- [Wat is sessie beheer in Microsoft Cloud App Security?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [GitHub beveiligen met geavanceerde zicht baarheid en controles](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: b7c898c232dc39398b13f16beea814aa4e554845
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 680cf04e79a9cb6d5748723dad3cb37cf3c76468
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428549"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314212"
 ---
 # <a name="cross-validate-model"></a>Kruisvalidatie van model valideren
 
-In dit artikel wordt beschreven hoe u de module voor kruis validatie gebruikt in Azure Machine Learning Designer (preview). *Kruis validatie* is een techniek die vaak wordt gebruikt in machine learning om zowel de variabiliteit van een gegevensset als de betrouw baarheid te beoordelen van een model dat via deze gegevens is getraind.  
+In dit artikel wordt beschreven hoe u de module voor kruis validatie kunt gebruiken in Azure Machine Learning Designer. *Kruis validatie* is een techniek die vaak wordt gebruikt in machine learning om zowel de variabiliteit van een gegevensset als de betrouw baarheid te beoordelen van een model dat via deze gegevens is getraind.  
 
 De module voor kruis validatie maakt als invoer een gegevensset met een label, samen met een niet-uitgetrainde classificatie of regressie model. De gegevensset wordt onderverdeeld in een aantal subsets (*vouwen*), bouwt een model op elke vouw en retourneert vervolgens een set nauw keurige statistieken voor elke vouw. Door de nauw keurige statistieken voor alle vouwen te vergelijken, kunt u de kwaliteit van de gegevensset interpreteren. U kunt vervolgens begrijpen of het model gevoelig is voor variaties in de gegevens.  
 
@@ -76,7 +76,7 @@ In dit scenario moet u het model trainen en testen met behulp van het model krui
 
 7. Zie de sectie met [resultaten](#results) voor een beschrijving van de rapporten.
 
-    Als u een kopie van het model wilt ophalen en later opnieuw wilt gebruiken, klikt u met de rechter muisknop op de uitvoer van de module die het algoritme bevat (bijvoorbeeld de **twee class Bayes-punt machine**). Selecteer vervolgens **Opslaan als getraind model**.
+    Als u een kopie van het model later opnieuw wilt gebruiken, schakelt u over naar het tabblad **uitvoer** in het rechterdeel venster van de module die het algoritme bevat (bijvoorbeeld de **twee klasse Bayes-punt machine**). Selecteer vervolgens het pictogram **gegevensset registreren** om een kopie van het getrainde model in de module structuur op te slaan.
 
 ## <a name="results"></a>Resultaten
 
@@ -86,7 +86,7 @@ Nadat alle iteraties zijn voltooid, maakt het Kruis validatie model scores voor 
 
 De eerste uitvoer van de module levert de bron gegevens voor elke rij, samen met enkele voorspelde waarden en gerelateerde kansen. 
 
-Als u deze resultaten wilt weer geven, klikt u in de pijp lijn met de rechter muisknop op de model module Kruis valideren. Selecteer **resultaten**van de score en selecteer vervolgens **visualiseren**.
+Als u de resultaten wilt weer geven, klikt u in de pijp lijn met de rechter muisknop op de model module Kruis valideren. Selecteer **gescoorde resultaten visualiseren**.
 
 | Naam nieuwe kolom      | Beschrijving                              |
 | -------------------- | ---------------------------------------- |
@@ -100,7 +100,7 @@ Het tweede rapport is gegroepeerd op vouwen. Houd er rekening mee dat tijdens de
 
 In dit rapport worden de vouwen weer gegeven op index waarde, in oplopende volg orde.  Als u wilt sorteren op een andere kolom, kunt u de resultaten opslaan als een gegevensset.
 
-Als u deze resultaten wilt weer geven, klikt u in de pijp lijn met de rechter muisknop op de model module Kruis valideren. Selecteer **evaluatie resultaten door vouwen**en selecteer vervolgens **visualiseren**.
+Als u de resultaten wilt weer geven, klikt u in de pijp lijn met de rechter muisknop op de model module Kruis valideren. Selecteer **evaluatie resultaten visualiseren door te vouwen**.
 
 
 |Kolomnaam| Beschrijving|

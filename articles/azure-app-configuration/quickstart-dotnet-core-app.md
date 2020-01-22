@@ -2,17 +2,17 @@
 title: Quickstart voor Azure App Configuration met .NET Core | Microsoft Docs
 description: Een quickstart voor het gebruik van Azure App Configuration met .NET Core-apps
 services: azure-app-configuration
-author: yegu-ms
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.author: yegu
-ms.openlocfilehash: 46aab7bcb9ec941bee465b0d87430b7415b2dfeb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 1/9/2019
+ms.author: lcozzens
+ms.openlocfilehash: cf6c84e0fa3d3d5306e3295d082efc4a27cfdea6
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75413679"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310030"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Quick Start: een .NET core-app maken met app-configuratie
 
@@ -52,7 +52,7 @@ U gebruikt de [.net core-opdracht regel interface (CLI)](https://docs.microsoft.
 1. Voeg een verwijzing naar het NuGet-pakket van `Microsoft.Extensions.Configuration.AzureAppConfiguration` toe door de volgende opdracht uit te voeren:
 
     ```CLI
-        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 2.0.0-preview-009470001-1371
+        dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 3.0.0-preview-010550001-251
     ```
 
 2. Voer de volgende opdracht uit om de pakketten voor uw project te herstellen:

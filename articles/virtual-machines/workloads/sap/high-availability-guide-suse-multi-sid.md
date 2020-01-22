@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/16/2020
 ms.author: radeltch
-ms.openlocfilehash: 94cf30d2d3650212707cf92db83236882fe5e49f
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 7471fc6d7f10c849ba79fedf88961d6c3c99913f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76169357"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314195"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications-multi-sid-guide"></a>Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server voor de multi-SID-hand leiding voor SAP-toepassingen
 
@@ -129,8 +129,8 @@ De volgende lijst bevat de configuratie van de (A) SCS-en ERS-load balancer voor
 
 * Front-end configuratie
   * IP-adres voor NW1 10.3.1.15
-  * IP-adres voor NW1 10.3.1.17
-  * IP-adres voor NW1 10.3.1.19
+  * IP-adres voor NW2 10.3.1.17
+  * IP-adres voor NW3 10.3.1.19
 * Back-end-configuratie
   * Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het (A) SCS/ERS-cluster
 * Test poort

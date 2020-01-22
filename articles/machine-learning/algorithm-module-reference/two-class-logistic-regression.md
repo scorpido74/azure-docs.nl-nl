@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: f64352906da5d6e3a314b3af68e37f4dc5bb80bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ee52f3a0bec058f1b94820123ac5514e4e855c05
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485934"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311390"
 ---
 # <a name="two-class-logistic-regression-module"></a>Logistiek regressie module met twee klassen
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+In dit artikel wordt een module in Azure Machine Learning Designer beschreven.
 
 Met deze module kunt u een logistiek regressie model maken dat kan worden gebruikt om twee (en slechts twee) resultaten te voors pellen. 
 
@@ -45,7 +45,6 @@ De kolom Label kan bijvoorbeeld [gestemd] zijn met mogelijke waarden ' Yes ' of 
 3.  Geef bij **optimalisatie tolerantie**een drempel waarde op die moet worden gebruikt bij het optimaliseren van het model. Als de verbetering tussen herhalingen onder de opgegeven drempel waarde valt, wordt het algoritme gezien als geconvergeerd op een oplossing en stopt de training.  
   
 4.  Typ voor **L1 regularisatie Weight** en **L2 regularisatie Weight**een waarde om te gebruiken voor de regularisatie-para meters L1 en L2. Een andere waarde dan nul wordt aanbevolen voor beide.  
-  
      *Regularisatie* is een methode voor het voor komen van overmontage door het bestraffen van modellen met extreme coëfficiënt waarden. Regularisatie werkt door de sanctie toe te voegen die is gekoppeld aan coëfficiënt waarden voor de fout van de hypo these. Een nauw keurig model met extreme coëfficiënt waarden zou dus meer worden bestraft, maar een minder nauw keurig model met meer conservatieve waarden zou minder worden bestraft.  
   
      L1 en L2-regularisatie hebben verschillende effecten en worden gebruikt.  
@@ -79,8 +78,7 @@ De kolom Label kan bijvoorbeeld [gestemd] zijn met mogelijke waarden ' Yes ' of 
 ## <a name="results"></a>Resultaten
 
 Nadat de training is voltooid:
-
-+ Als u een samen vatting van de para meters van het model wilt weer geven, samen met de functie gewichten die zijn geleerd van training, klikt u met de rechter muisknop op de uitvoer van [Train model](./train-model.md) en selecteert u **visualiseren**.   
+ 
   
 + Als u voor spellingen wilt doen op nieuwe gegevens, gebruikt u het getrainde model en de nieuwe gegevens als invoer voor de module [score model](./score-model.md) . 
 
