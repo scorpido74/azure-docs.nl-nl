@@ -1,6 +1,6 @@
 ---
 title: Azure Relay metrische gegevens in Azure Monitor (preview) | Microsoft Docs
-description: Azure-bewaking gebruiken om Azure Relay te bewaken
+description: Dit artikel bevat informatie over hoe u Azure Monitor kunt gebruiken om te controleren op de status van Azure Relay.
 services: service-bus-relay
 documentationcenter: .NET
 author: spelluru
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 9933b7857580f29cbb6a54ebc82d4e7207456ad4
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5c548186ec51cf86f34942cb15d8f984afa60268
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261790"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514932"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Relay metrische gegevens in Azure Monitor (preview-versie)
 Azure Relay metrische gegevens geven u de status van resources in uw Azure-abonnement. Met een uitgebreide set metrische gegevens kunt u de algemene status van uw doorstuur bronnen beoordelen, niet alleen op het niveau van de naam ruimte, maar ook op het niveau van de entiteit. Deze statistieken kunnen van belang zijn wanneer u de status van Azure Relay kunt bewaken. Metrische gegevens kunnen ook helpen problemen hoofdoorzaak zonder contact opnemen met ondersteuning van Azure.
@@ -58,32 +58,32 @@ Alle metrische waarden worden verzonden naar Azure Monitor elke minuut. De tijdg
 
 ## <a name="connection-metrics"></a>Metrische verbindingsgegevens
 
-| Naam van meetwaarde | Description |
+| Naam van meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-| ListenerConnections-geslaagd (preview-versie) | Het aantal geslaagde listener-verbindingen dat gedurende een opgegeven periode is gemaakt aan Azure Relay. <br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
-|ListenerConnections-client error (preview-versie)|Het aantal client fouten op listener-verbindingen gedurende een opgegeven periode.<br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
-|ListenerConnections-server error (preview-versie)|Het aantal server fouten op de listener-verbindingen gedurende een opgegeven periode.<br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
-|SenderConnections-geslaagd (preview-versie)|Het aantal geslaagde verzender verbindingen dat gedurende een opgegeven periode is gemaakt.<br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
-|SenderConnections-client error (preview-versie)|Het aantal client fouten op de verbindingen van de afzender gedurende een opgegeven periode.<br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
-|SenderConnections-server error (preview-versie)|Het aantal server fouten op de verzender verbindingen gedurende een opgegeven periode.<br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
-|ListenerConnections-TotalRequests (preview-versie)|Het totale aantal listener-verbindingen gedurende een opgegeven periode.<br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
-|SenderConnections-TotalRequests (preview-versie)|De verbindings aanvragen van de afzenders gedurende een opgegeven periode.<br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
-|ActiveConnections (preview)|Het aantal actieve verbindingen gedurende een opgegeven periode.<br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
-|ActiveListeners (preview-versie)|Het aantal actieve listeners gedurende een opgegeven periode.<br/><br/> Teleenheid Count <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
-|ListenerDisconnects (preview-versie)|Het aantal niet-verbonden listeners gedurende een opgegeven periode.<br/><br/> Teleenheid Bytes <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
-|SenderDisconnects (preview-versie)|Het aantal niet-verbonden afzenders gedurende een opgegeven periode.<br/><br/> Teleenheid Bytes <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
+| ListenerConnections-geslaagd (preview-versie) | Het aantal geslaagde listener-verbindingen dat gedurende een opgegeven periode is gemaakt aan Azure Relay. <br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
+|ListenerConnections-client error (preview-versie)|Het aantal client fouten op listener-verbindingen gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
+|ListenerConnections-server error (preview-versie)|Het aantal server fouten op de listener-verbindingen gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
+|SenderConnections-geslaagd (preview-versie)|Het aantal geslaagde verzender verbindingen dat gedurende een opgegeven periode is gemaakt.<br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
+|SenderConnections-client error (preview-versie)|Het aantal client fouten op de verbindingen van de afzender gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
+|SenderConnections-server error (preview-versie)|Het aantal server fouten op de verzender verbindingen gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
+|ListenerConnections-TotalRequests (preview-versie)|Het totale aantal listener-verbindingen gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
+|SenderConnections-TotalRequests (preview-versie)|De verbindings aanvragen van de afzenders gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
+|ActiveConnections (preview)|Het aantal actieve verbindingen gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
+|ActiveListeners (preview-versie)|Het aantal actieve listeners gedurende een opgegeven periode.<br/><br/> Eenheid: aantal <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
+|ListenerDisconnects (preview-versie)|Het aantal niet-verbonden listeners gedurende een opgegeven periode.<br/><br/> Eenheid: Bytes <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
+|SenderDisconnects (preview-versie)|Het aantal niet-verbonden afzenders gedurende een opgegeven periode.<br/><br/> Eenheid: Bytes <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
 
 ## <a name="memory-usage-metrics"></a>Metrische gegevens over geheugen gebruik
 
-| Naam van meetwaarde | Description |
+| Naam van meetwaarde | Beschrijving |
 | ------------------- | ----------------- |
-|BytesTransferred (preview-versie)|Het aantal bytes dat is overgedragen gedurende een opgegeven periode.<br/><br/> Teleenheid Bytes <br/> Aggregatie type: Totaal <br/> Dimensielideigenschap EntityName|
+|BytesTransferred (preview-versie)|Het aantal bytes dat is overgedragen gedurende een opgegeven periode.<br/><br/> Eenheid: Bytes <br/> Aggregatietype: totaal <br/> Dimensie: EntityName|
 
 ## <a name="metrics-dimensions"></a>Metrische gegevens over dimensies
 
 Azure Relay ondersteunt de volgende dimensies voor metrische gegevens in Azure Monitor. Dimensies toevoegen aan uw metrische gegevens is optioneel. Als u dimensies niet toevoegt, worden de metrische gegevens opgegeven op het niveau van de naamruimte. 
 
-|Dimensie naam|Description|
+|Dimensie naam|Beschrijving|
 | ------------------- | ----------------- |
 |EntityName| Azure Relay ondersteunt Messa ging-entiteiten in de naam ruimte.|
 

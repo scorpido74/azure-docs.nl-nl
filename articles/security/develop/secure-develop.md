@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c1c7dd0bd017852144139a841ff609dabf0f1a27
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 9a4f5094837b0c642c4de75180039064de4e40c2
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928060"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513980"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Veilige toepassingen ontwikkelen in azure
 In dit artikel bieden we beveiligings activiteiten en-controles waarmee u rekening moet houden bij het ontwikkelen van toepassingen voor de Cloud. Beveiligings vragen en-concepten waarmee u rekening moet houden tijdens de implementatie-en verificatie fasen van micro soft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) vallen onder de dekking. Het doel is om u te helpen bij het definiëren van activiteiten en Azure-Services die u kunt gebruiken om een veiligere toepassing te ontwikkelen.
@@ -36,9 +36,9 @@ Stel dat uw toepassing wordt gebruikt op een manier die u niet wilt gebruiken. Z
 
 Voordat u code incheckt, voert u [code beoordelingen](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) uit om de algehele code kwaliteit te verbeteren en het risico op het maken van fouten te verminderen. U kunt [Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) gebruiken om het code controle proces te beheren.
 
-### <a name="perform-static-code-analysis"></a>Statische code analyse uitvoeren
+### <a name="perform-static-code-analysis"></a>Statische codeanalyse uitvoeren
 
-[Statische code analyse](https://www.owasp.org/index.php/Static_Code_Analysis) (ook wel bekend als de analyse van de *bron code*) wordt doorgaans uitgevoerd als onderdeel van een code controle. Statische code analyse verwijst doorgaans naar het uitvoeren van hulpprogram ma's voor statische code analyse om mogelijke beveiligings problemen in niet-actieve code te vinden met behulp van technieken als [Taint-controle](https://en.wikipedia.org/wiki/Taint_checking) en [gegevens stroom analyse](https://en.wikipedia.org/wiki/Data-flow_analysis).
+[Statische code analyse](https://www.owasp.org/index.php/Static_Code_Analysis) (ook wel bekend als *broncode analyse*) wordt gewoonlijk uitgevoerd als onderdeel van een code controle. Statische code analyse verwijst doorgaans naar het uitvoeren van hulpprogram ma's voor statische code analyse om mogelijke beveiligings problemen in niet-actieve code te vinden met behulp van technieken als [Taint-controle](https://en.wikipedia.org/wiki/Taint_checking) en [gegevens stroom analyse](https://en.wikipedia.org/wiki/Data-flow_analysis).
 
 Azure Marketplace biedt [ontwikkel hulpprogramma's](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review) voor het uitvoeren van een statische code analyse en hulp bij het evalueren van code.
 
@@ -97,15 +97,15 @@ Als de toepassing automatisch wacht woorden moet genereren, zorgt u ervoor dat d
 
 ### <a name="validate-file-uploads"></a>Uploads van bestanden valideren
 
-Als uw toepassing uploads van [bestanden](https://www.owasp.org/index.php/Unrestricted_File_Upload)toestaat, moet u rekening houden met voorzorgsmaatregelen die u voor deze Risk ante activiteit kunt nemen. De eerste stap in veel aanvallen is het verkrijgen van schadelijke code in een systeem dat wordt aangevallen. Als u een bestand uploadt, helpt de aanvaller dit te doen. OWASP biedt oplossingen voor het valideren van een bestand om ervoor te zorgen dat het bestand dat u uploadt veilig is.
+Als uw toepassing [uploads van bestanden](https://www.owasp.org/index.php/Unrestricted_File_Upload)toestaat, moet u rekening houden met voorzorgsmaatregelen die u voor deze Risk ante activiteit kunt nemen. De eerste stap in veel aanvallen is het verkrijgen van schadelijke code in een systeem dat wordt aangevallen. Als u een bestand uploadt, helpt de aanvaller dit te doen. OWASP biedt oplossingen voor het valideren van een bestand om ervoor te zorgen dat het bestand dat u uploadt veilig is.
 
-Met antimalware Protection kunt u virussen, spyware en andere schadelijke software identificeren en verwijderen. U kunt [micro soft antimalware](../fundamentals/antimalware.md) of een Endpoint Protection-oplossing van micro soft partner ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)en [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)) installeren.
+Met antimalware Protection kunt u virussen, spyware en andere schadelijke software identificeren en verwijderen. U kunt [micro soft antimalware](../fundamentals/antimalware.md) of een Endpoint Protection-oplossing van micro soft partner ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)en [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)) installeren.
 
 [Micro soft antimalware](../fundamentals/antimalware.md) bevat functies als realtime-beveiliging, geplande scans, malware-herstel, handtekening updates, engine-updates, voor beelden van rapporten en uitsluitings gebeurtenissen verzamelen. U kunt micro soft antimalware en partner oplossingen integreren met [Azure Security Center](../../security-center/security-center-partner-integration.md) voor een gemakkelijke implementatie en ingebouwde detecties (waarschuwingen en incidenten).
 
 ### <a name="dont-cache-sensitive-content"></a>Geen gevoelige inhoud opslaan in cache
 
-Sla gevoelige inhoud niet op in de cache van de browser. Browsers kunnen gegevens opslaan voor caching en geschiedenis. Bestanden in de cache worden opgeslagen in een map, zoals de map Tijdelijke Internet bestanden, in het geval van Internet Explorer. Wanneer deze pagina's weer worden genoemd, worden de pagina's uit de cache van de browser weer gegeven. Als gevoelige informatie (adres, creditcard gegevens, sofi-nummer, gebruikers naam) wordt weer gegeven aan de gebruiker, kan de informatie worden opgeslagen in de cache van de browser en kan worden opgehaald door de cache van de browser te controleren of door simpelweg op de browser **te drukken Knop terug** .
+Sla gevoelige inhoud niet op in de cache van de browser. Browsers kunnen gegevens opslaan voor caching en geschiedenis. Bestanden in de cache worden opgeslagen in een map, zoals de map Tijdelijke Internet bestanden, in het geval van Internet Explorer. Wanneer deze pagina's weer worden genoemd, worden de pagina's uit de cache van de browser weer gegeven. Als gevoelige informatie (adres, creditcard gegevens, sofi-nummer, gebruikers naam) wordt weer gegeven aan de gebruiker, kan de informatie worden opgeslagen in de cache van de browser en kan worden opgehaald door de cache van de browser te controleren of door simpelweg op de knop **terug** van de browser te drukken.
 
 ## <a name="verification"></a>Verificatie
 De verificatie fase omvat een uitgebreide inspanning om ervoor te zorgen dat de code voldoet aan de beveiligings-en privacyfuncties die in de voor gaande fasen zijn vastgelegd.
@@ -128,7 +128,7 @@ Dynamische test op toepassings beveiliging (DAST) is een proces van het testen v
 
 DAST wijkt af van de statische test van de toepassings beveiliging (SAST). SAST-hulpprogram ma's analyseren bron code of gecompileerde versies van code wanneer de code niet wordt uitgevoerd om beveiligings fouten te vinden.
 
-Voer DAST uit, bij voor keur met de hulp van een beveiligings [](../fundamentals/pen-testing.md) Professional (een indringings tester of beveiligings ervaring). Als een beveiligings Professional niet beschikbaar is, kunt u DAST zelf uitvoeren met een webproxy scanner en een aantal trainingen. Sluit in een vroeg stadium een DAST-scanner aan om ervoor te zorgen dat u geen duidelijke beveiligings problemen in uw code kunt introduceren. Zie de [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) -site voor een lijst met scanners voor beveiligings problemen met webtoepassingen.
+Voer DAST uit, bij voor keur met de hulp van een beveiligings Professional (een [indringings tester](../fundamentals/pen-testing.md) of beveiligings ervaring). Als een beveiligings Professional niet beschikbaar is, kunt u DAST zelf uitvoeren met een webproxy scanner en een aantal trainingen. Sluit in een vroeg stadium een DAST-scanner aan om ervoor te zorgen dat u geen duidelijke beveiligings problemen in uw code kunt introduceren. Zie de [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) -site voor een lijst met scanners voor beveiligings problemen met webtoepassingen.
 
 ### <a name="perform-fuzz-testing"></a>Fuzzy tests uitvoeren
 
@@ -144,7 +144,7 @@ U kunt een afbeelding van de kwets baarheid bouwen door de toepassing te scannen
 
 ### <a name="perform-security-penetration-testing"></a>Beveiligings indringings tests uitvoeren
 
-Om ervoor te zorgen dat uw toepassing veilig is, is het belang rijk dat u een andere functionaliteit test. Zorg voor indringings [test](../fundamentals/pen-testing.md) een standaard onderdeel van het build-en implementatie proces. Plan regel matige beveiligings tests en beveiligings problemen met het scannen van geïmplementeerde toepassingen en controleer op open poorten, eind punten en aanvallen.
+Om ervoor te zorgen dat uw toepassing veilig is, is het belang rijk dat u een andere functionaliteit test. Zorg voor [indringings test](../fundamentals/pen-testing.md) een standaard onderdeel van het build-en implementatie proces. Plan regel matige beveiligings tests en beveiligings problemen met het scannen van geïmplementeerde toepassingen en controleer op open poorten, eind punten en aanvallen.
 
 ### <a name="run-security-verification-tests"></a>Tests voor beveiligings verificatie uitvoeren
 

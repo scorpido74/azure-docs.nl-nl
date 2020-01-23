@@ -5,12 +5,12 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 12/22/2019
 ms.author: ramamill
-ms.openlocfilehash: 318b73011901e9ab07643bc2ecec28e5016e8702
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 43e6a39a52eb81573b4a4ba8ad63d48d0e51dedd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613904"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514804"
 ---
 # <a name="automate-mobility-service-installation"></a>De installatie van de Mobility-service automatiseren
 
@@ -19,8 +19,8 @@ In dit artikel wordt beschreven hoe u de installatie en updates voor de Mobility
 Wanneer u Site Recovery implementeert voor herstel na nood gevallen van on-premises VMware-Vm's en fysieke servers naar Azure, installeert u de Mobility Service-agent op elke computer die u wilt repliceren. De Mobility-service legt gegevens op de computer vast en stuurt deze door naar de Site Recovery process-server voor replicatie. U kunt de Mobility-service op verschillende manieren implementeren:
 
 - **Push-installatie**: laat site Recovery de Mobility Service-agent installeren wanneer u replicatie inschakelt voor een computer in de Azure Portal.
-- **Hand matige installatie**: Installeer de Mobility-service hand matig op elke computer. Meer [informatie](vmware-physical-mobility-service-overview.md) over push en hand matige installatie.
-- **Geautomatiseerde implementatie**: de installatie automatiseren met hulpprogram ma's voor software-implementatie, zoals System Center Configuration Manager, of hulpprogram ma's van derden, zoals Intigua JetPatch.
+- **Hand matige installatie**: Installeer de Mobility-service hand matig op elke computer. Meer [informatie](/vmware-physical-mobility-service-overview.md) over push en hand matige installatie.
+- **Geautomatiseerde implementatie**: de installatie automatiseren met hulpprogram ma's voor software-implementatie, zoals micro soft endpoint Configuration Manager, of hulpprogram ma's van derden, zoals Intigua JetPatch.
 
 Automatische installatie en update biedt een oplossing als:
 

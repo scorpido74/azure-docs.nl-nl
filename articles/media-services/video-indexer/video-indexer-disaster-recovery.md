@@ -1,5 +1,5 @@
 ---
-title: Video Indexer bedrijfs continuïteit en herstel na nood gevallen (BCDR)-Azure | Microsoft Docs
+title: Video Indexer bedrijfs continuïteit en herstel na nood geval-Azure
 description: Meer informatie over hoe u een failover naar een secundaire Video Indexer account kunt doen als er sprake is van een storing in een regionaal Data Center.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: ce788b4640f0a6c6f25b3280ce4f52fd018d1699
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 2f54c340226a9ea78643df8e0a984c8ed8475c94
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668304"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513572"
 ---
 # <a name="handle-video-indexer-business-continuity-and-disaster-recovery"></a>Video Indexer bedrijfs continuïteit en herstel na nood gevallen afhandelen
 
@@ -40,7 +40,7 @@ Voor het implementeren van BCDR moet u twee Video Indexer accounts hebben om red
 > [!TIP]
 > U kunt BCDR automatiseren door waarschuwingen voor activiteiten Logboeken in te stellen voor service status meldingen per [activiteit logboek waarschuwingen maken voor service meldingen](../../service-health/alerts-activity-log-service-notifications.md).
 
-Zie [meerdere tenants beheren](manage-multiple-tenants.md)voor meer informatie over het gebruik van meerdere tenants. Als u BCDR wilt implementeren, kiest u een van de volgende twee opties: [Video indexer account per Tenant](manage-multiple-tenants.md#video-indexer-account-per-tenant) of [Azure-abonnement per Tenant](manage-multiple-tenants.md#azure-subscription-per-tenant).
+Zie [meerdere tenants beheren](manage-multiple-tenants.md)voor meer informatie over het gebruik van meerdere tenants. Als u BCDR wilt implementeren, kiest u een van de volgende twee opties: [video indexer account per Tenant](manage-multiple-tenants.md#video-indexer-account-per-tenant) of [Azure-abonnement per Tenant](manage-multiple-tenants.md#azure-subscription-per-tenant).
 
 ## <a name="next-steps"></a>Volgende stappen
 

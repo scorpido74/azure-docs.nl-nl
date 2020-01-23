@@ -15,12 +15,12 @@ ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99c52f65bdec2b164cca86a6346d8865d210cf38
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 5e9b2119964ec2af792e2f2a5b942fde12cf7eab
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176056"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512848"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Een Azure Active Directory implementatie van het toegangs paneel plannen
 
@@ -36,7 +36,7 @@ Met behulp van het Azure AD-toegangs venster kunt u het volgende doen:
 
 Daarnaast kunnen beheerders het volgende beheren:
 
-* Service voorwaarden
+* Servicevoorwaarden
 * Organisaties
 * Toegangscontroles
 
@@ -59,7 +59,7 @@ Het Azure AD-toegangs venster biedt bedrijven op de volgende manieren:
 
 Het toegangs venster is gratis en er zijn geen licenties nodig om op basis niveau te gebruiken. Voor het aantal objecten in uw directory en de aanvullende functies die u wilt implementeren, kunnen echter extra licenties nodig zijn. Enkele algemene scenario's voor Azure AD met licentie vereisten zijn onder andere de volgende beveiligings functies:
 
-* [Azure Multi-Factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
+* [Azure multi-factor Authentication](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-how-it-works)
 
 * [Groepslid maatschap](https://docs.microsoft.com/azure/active-directory/active-directory-manage-groups)
 
@@ -83,16 +83,16 @@ De volgende tabel geeft een overzicht van de belangrijkste use cases voor een im
 
 | Gebied| Beschrijving |
 | - | - |
-| Access| De portal voor het toegangs paneel is toegankelijk vanaf zakelijke en persoonlijke apparaten in het bedrijfs netwerk. |
-|Access | De portal voor het toegangs paneel is toegankelijk vanaf zakelijke apparaten buiten het bedrijfs netwerk. |
+| Toegang| De portal voor het toegangs paneel is toegankelijk vanaf zakelijke en persoonlijke apparaten in het bedrijfs netwerk. |
+|Toegang | De portal voor het toegangs paneel is toegankelijk vanaf zakelijke apparaten buiten het bedrijfs netwerk. |
 | Controle| Gebruiks gegevens worden minstens elke 29 dagen in bedrijfs systemen gedownload. |
 | Beheer| De levens cyclus van de gebruikers toewijzingen aan toepassingen en groepen die zijn verbonden met Azure AD, wordt gedefinieerd en bewaakt. |
 | Beveiliging| Toegang tot bronnen wordt geregeld via gebruikers-en groeps toewijzingen. Alleen geautoriseerde gebruikers kunnen toegang tot resources beheren. |
 | Prestaties| De tijd lijnen voor het door geven van toegangs toewijzingen worden gedocumenteerd en gecontroleerd. |
-| Gebruikers ervaring| Gebruikers zijn op de hoogte van de mogelijkheden van het toegangs venster en hoe ze deze kunnen gebruiken.|
-| Gebruikers ervaring| Gebruikers kunnen hun toegang tot toepassingen en groepen beheren.|
-| Gebruikers ervaring| Gebruikers kunnen hun accounts beheren. |
-| Gebruikers ervaring| Gebruikers zijn op de hoogte van browser compatibiliteit. |
+| Ervaring gebruiker| Gebruikers zijn op de hoogte van de mogelijkheden van het toegangs venster en hoe ze deze kunnen gebruiken.|
+| Ervaring gebruiker| Gebruikers kunnen hun toegang tot toepassingen en groepen beheren.|
+| Ervaring gebruiker| Gebruikers kunnen hun accounts beheren. |
+| Ervaring gebruiker| Gebruikers zijn op de hoogte van browser compatibiliteit. |
 | Ondersteuning| Gebruikers kunnen ondersteuning voor problemen met het toegangs paneel vinden. |
 
 ### <a name="best-practices-for-deploying-the-azure-ad-access-panel"></a>Aanbevolen procedures voor het implementeren van het Azure AD-toegangs venster
@@ -149,7 +149,7 @@ Zie [configureren hoe eind gebruikers toestemming geven voor een toepassing in a
 
 Wanneer technologie projecten mislukken, worden ze doorgaans door niet-overeenkomende verwachtingen voor impact, resultaten en verantwoordelijkheden. Als u deze problemen wilt voor komen, moet [u ervoor zorgen dat u de juiste belanghebbenden gebruikt](../fundamentals/active-directory-deployment-plans.md) en dat de rol van belanghebbenden in het project goed zijn begrepen.
 
-### <a name="plan-communications"></a>Communicatie plannen
+### <a name="plan-communications"></a>De communicatie plannen
 
 Communicatie is van cruciaal belang voor het slagen van een nieuwe service. Laat uw gebruikers proactief weten hoe en wanneer hun ervaring wordt gewijzigd en hoe u zo nodig ondersteuning krijgt.
 
@@ -197,7 +197,7 @@ Als u SSO-toepassingen op basis van wacht woorden moet integreren, moet u een me
 
 * [groepsbeleid voor Internet Explorer](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 
-* [System Center Configuration Manager (SCCM) voor Internet Explorer](https://docs.microsoft.com/sccm/core/clients/deploy/deploy-clients-to-windows-computers)
+* [Configuration Manager voor Internet Explorer](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 
 * [Door de gebruiker gestuurde down load en configuratie voor Chrome, Firefox, micro soft Edge of IE](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
@@ -263,7 +263,7 @@ Azure AD biedt [rapporten die technische en zakelijke inzichten bieden](https://
 
 |   | beheer risico's.| Productiviteit verhogen| Governance en naleving |
 |  - |- | - | - |
-| Rapport typen|  Toepassings machtigingen en-gebruik| Activiteit voor het inrichten van accounts| Controleren wie toegang heeft tot de toepassingen |
+| Rapporttypen|  Toepassings machtigingen en-gebruik| Activiteit voor het inrichten van accounts| Controleren wie toegang heeft tot de toepassingen |
 | Mogelijke acties| Toegang controleren; machtigingen intrekken| Eventuele inrichtings fouten herstellen| Toegang intrekken |
 
 Azure AD houdt de meeste controle gegevens gedurende 30 dagen. De gegevens zijn beschikbaar via de Azure-beheer portal of-API die u kunt downloaden naar uw analyse systemen.
@@ -340,7 +340,7 @@ U moet de rol met de minste bevoegdheden gebruiken om een vereiste taak uit te v
 | - | -| -|
 | Helpdesk beheerder| Ondersteuning voor laag 1| Geen |
 | Identiteits beheerder| Configureren en fouten opsporen wanneer de problemen invloed hebben op Azure AD| Globale beheerder |
-| Toepassings beheerder| Gebruikers verklaring in toepassing, configuratie voor gebruikers met machtigingen| Geen |
+| Toepassingsbeheerder| Gebruikers verklaring in toepassing, configuratie voor gebruikers met machtigingen| Geen |
 | Infrastructuur beheerders| Eigenaar certificaat rollover| Globale beheerder |
 | Bedrijfs eigenaar/belanghebbende| Gebruikers verklaring in toepassing, configuratie voor gebruikers met machtigingen| Geen |
 

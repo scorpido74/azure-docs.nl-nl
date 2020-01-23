@@ -1,6 +1,6 @@
 ---
 title: Hand leiding voor Azure Relay Hybride verbindingen Protocol | Microsoft Docs
-description: Hand leiding voor Azure Relay Hybride verbindingen protocol.
+description: In dit artikel wordt de interactie aan de client zijde beschreven met de Hybride verbindingen relay voor het verbinden van clients in de rollen listener en Sender.
 services: service-bus-relay
 documentationcenter: na
 author: clemensv
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2018
+ms.date: 01/21/2020
 ms.author: clemensv
-ms.openlocfilehash: 45ba78645f754072c7f75b5b4f457c76bb9895b6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68668452152064584d1c419a3053ccb642b103f8
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355024"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514949"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay Hybride verbindingen-Protocol
 

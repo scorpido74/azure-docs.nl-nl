@@ -7,20 +7,20 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: aeb00b84ac254232e0d68fd9631fb539a928e67d
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: b2c59fd6ee925d531a5a5ff3bb26fdebea025b83
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931894"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513555"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Over de Mobility-service voor VMware-Vm's en fysieke servers
 
 Wanneer u herstel na nood gevallen instelt voor virtuele VMware-machines en fysieke servers met behulp van [Azure site Recovery](site-recovery-overview.md), installeert u de site Recovery Mobility-service op elke on-premises VMware-VM en fysieke server.  De Mobility-service legt gegevens op de computer vast en stuurt deze door naar de Site Recovery-proces server. U kunt de Mobility-service implementeren met behulp van de volgende methoden:
 
-- [Push-installatie](#push-installation): Site Recovery Mobility-agent op de server installeert wanneer de beveiliging is ingeschakeld via Azure Portal.
-- Hand matig installeren: U kunt de Mobility-service hand matig op elke computer installeren via de [gebruikers interface](#install-mobility-agent-through-ui) of de [opdracht prompt](#install-mobility-agent-through-command-prompt).
-- [Geautomatiseerde implementatie](vmware-azure-mobility-install-configuration-mgr.md): U kunt de installatie automatiseren met hulpprogram ma's voor software-implementatie, zoals System Center Configuration Manager.
+- [Push-installatie](#push-installation): site Recovery de mobiliteits agent op de server installeert wanneer de beveiliging is ingeschakeld via Azure Portal.
+- Hand matig installeren: u kunt de Mobility-service hand matig op elke computer installeren via de [gebruikers interface](#install-mobility-agent-through-ui) of de [opdracht prompt](#install-mobility-agent-through-command-prompt).
+- [Geautomatiseerde implementatie](vmware-azure-mobility-install-configuration-mgr.md): u kunt de installatie automatiseren met hulpprogram ma's voor software-implementatie, zoals Configuration Manager.
 
 ## <a name="anti-virus-on-replicated-machines"></a>Anti-virus op gerepliceerde computers
 
@@ -31,7 +31,7 @@ Als de computers die u wilt repliceren, actieve antivirus software hebben, moet 
 De push-installatie is een integraal onderdeel van de taak[replicatie inschakelen](vmware-azure-enable-replication.md#enable-replication)die is geactiveerd in de portal. Na het kiezen van de set virtuele machines die u wilt beveiligen en het activeren van replicatie inschakelen, pusht configuratie server Mobility-agent op de servers, installeert u de agent en voltooit u de registratie van de agent met de configuratie server. Als de bewerking is voltooid,
 
 - Zorg ervoor dat aan alle [vereisten](vmware-azure-install-mobility-service.md) voor de push-installatie is voldaan.
-- Zorg ervoor dat alle configuraties van servers onder de ondersteunings [matrix van VMware naar Azure Dr-scenario](vmware-physical-azure-support-matrix.md)vallen.
+- Zorg ervoor dat alle configuraties van servers onder de [ondersteunings matrix van VMware naar Azure Dr-scenario](vmware-physical-azure-support-matrix.md)vallen.
 
 Details van de werk stroom voor de push-installatie zijn beschreven in de volgende secties.
 
@@ -55,9 +55,9 @@ Tijdens de push-installatie van de Mobility-agent worden de volgende stappen uit
 
 ## <a name="install-mobility-agent-through-ui"></a>Mobility agent installeren via de gebruikers interface
 
-### <a name="prerequisite"></a>Vereiste
+### <a name="prerequisite"></a>Vereisten
 
-- Zorg ervoor dat alle configuraties van servers onder de ondersteunings [matrix van VMware naar Azure Dr-scenario](vmware-physical-azure-support-matrix.md)vallen.
+- Zorg ervoor dat alle configuraties van servers onder de [ondersteunings matrix van VMware naar Azure Dr-scenario](vmware-physical-azure-support-matrix.md)vallen.
 - [Zoek het installatie programma](#locate-installer-files) op basis van het besturings systeem van de server.
 
 >[!IMPORTANT]
@@ -83,9 +83,9 @@ Tijdens de push-installatie van de Mobility-agent worden de volgende stappen uit
 
 ## <a name="install-mobility-agent-through-command-prompt"></a>Mobility agent installeren via opdracht prompt
 
-### <a name="prerequisite"></a>Vereiste
+### <a name="prerequisite"></a>Vereisten
 
-- Zorg ervoor dat alle configuraties van servers onder de ondersteunings [matrix van VMware naar Azure Dr-scenario](vmware-physical-azure-support-matrix.md)vallen.
+- Zorg ervoor dat alle configuraties van servers onder de [ondersteunings matrix van VMware naar Azure Dr-scenario](vmware-physical-azure-support-matrix.md)vallen.
 - [Zoek het installatie programma](#locate-installer-files) op basis van het besturings systeem van de server.
 
 ### <a name="on-a-windows-machine"></a>Op een Windows-computer
@@ -115,10 +115,10 @@ Tijdens de push-installatie van de Mobility-agent worden de volgende stappen uit
 #### <a name="installation-settings"></a>Installatie-instellingen
 **Instelling** | **Details**
 --- | ---
-Gebruik | UnifiedAgent. exe/Role \<MS/MT >/InstallLocation \<-installatie locatie >/platform "VMware"/Silent
-Installatie logboeken | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
+Gebruik | UnifiedAgent. exe/Role \<MS/MT >/InstallLocation \<installatie locatie >/platform "VmWare"/Silent
+Installatielogboeken | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log.
 /Role | Verplichte installatie parameter. Hiermee geeft u op of de Mobility-service (MS) of het hoofd doel (MT) moet worden geïnstalleerd.
-/InstallLocation| Optionele para meter. Hiermee geeft u de installatie locatie van de Mobility-service (een map).
+/InstallLocation| Optionele parameter. Hiermee geeft u de installatie locatie van de Mobility-service (een map).
 /Platform | Verplicht. Hiermee geeft u het platform op waarop de Mobility-service is geïnstalleerd. **VMware** voor VMware-vm's/fysieke servers; **Azure** voor Azure-vm's.<br/><br/> Als u Azure-Vm's als fysieke machines behandelt, moet u **VMware**opgeven.
 /Silent| Optioneel. Hiermee geeft u op of het installatie programma moet worden uitgevoerd in de Stille modus.
 
@@ -154,9 +154,9 @@ Agent configuratie logboeken | Under %ProgramData%\ASRSetupLogs\ASRUnifiedAgentC
 #### <a name="installation-settings"></a>Installatie-instellingen
 **Instelling** | **Details**
 --- | ---
-Gebruik | ./install-d \<installatie locatie >-r \<MS/MT >-v VMware-q
+Gebruik | ./install-d \<installatie locatie >-r \<MS/MT->-v VmWare-q
 -r | Verplichte installatie parameter. Hiermee geeft u op of de Mobility-service (MS) of het hoofd doel (MT) moet worden geïnstalleerd.
--d | Optionele para meter. Hiermee geeft u de installatie locatie van de Mobility-service op:/usr/local/ASR
+-d | Optionele parameter. Hiermee geeft u de installatie locatie van de Mobility-service op:/usr/local/ASR
 -v | Verplicht. Hiermee geeft u het platform op waarop de Mobility-service is geïnstalleerd. **VMware** voor VMware-vm's/fysieke servers; **Azure** voor Azure-vm's.
 -q | Optioneel. Hiermee geeft u op of het installatie programma moet worden uitgevoerd in de Stille modus.
 
@@ -169,8 +169,8 @@ Gebruik | cd-/usr/local/ASR/Vx/bin<br/><br/> UnifiedAgentConfigurator.sh-i \<CSI
 
 ## <a name="azure-virtual-machine-agent"></a>Agent van de virtuele machine van Azure
 
-- **Virtuele Windows-machines**: Van versie 9.7.0.0 van de Mobility-service wordt de [Azure VM-agent](../virtual-machines/extensions/features-windows.md#azure-vm-agent) geïnstalleerd door het installatie programma van de Mobility-service. Op deze manier zorgt u ervoor dat wanneer de computer failover naar Azure wordt uitgevoerd, de Azure VM voldoet aan de installatie vereisten van de agent voor het gebruik van een VM-extensie.
-- **Virtuele Linux-machines**: De [WALinuxAgent](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) moet hand matig worden geïnstalleerd op de virtuele Azure-machine na een failover.
+- **Windows-vm's**: van versie 9.7.0.0 van de Mobility-service wordt de [Azure VM-agent](../virtual-machines/extensions/features-windows.md#azure-vm-agent) geïnstalleerd door het installatie programma van de Mobility-service. Op deze manier zorgt u ervoor dat wanneer de computer failover naar Azure wordt uitgevoerd, de Azure VM voldoet aan de installatie vereisten van de agent voor het gebruik van een VM-extensie.
+- **Virtuele Linux-machines**: de [WALinuxAgent](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent) moet hand matig worden geïnstalleerd op de virtuele Azure-machine na een failover.
 
 ## <a name="locate-installer-files"></a>Installatie bestanden zoeken
 

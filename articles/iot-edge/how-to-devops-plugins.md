@@ -1,6 +1,6 @@
 ---
-title: CI/CD met Jenkins - invoegtoepassing voor Azure IoT Edge inschakelen | Microsoft Docs
-description: De Azure IoT Edge-extensie voor Jenkins kunt u IoT Edge devlopment- en implementatietaken integreren in uw bestaande DevOps-oplossing.
+title: CI/CD met Jenkins-invoeg toepassing inschakelen-Azure IoT Edge | Microsoft Docs
+description: Met de Azure IoT Edge extensie voor Jenkins kunt u IoT Edge ontwikkelings-en implementatie taken integreren in uw bestaande DevOps-oplossing.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,19 +8,19 @@ ms.date: 01/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 173e6ff91acd2ad28d7203b2b5db65e0ee0ecc43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75ed5f5eda48f10776b854ce4de4d2f855a53634
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126338"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510240"
 ---
-# <a name="integrate-azure-iot-edge-with-jenkins-pipelines"></a>Azure IoT Edge integreren in Jenkins pipelines
+# <a name="integrate-azure-iot-edge-with-jenkins-pipelines"></a>Azure IoT Edge integreren met Jenkins-pijp lijnen
 
-Azure IoT Edge heeft ingebouwde ondersteuning voor Azure DevOps en Azure DevOps Projects, maar biedt ook een invoegtoepassing om uit te breiden van DevOps-functionaliteit met Jenkins. [Jenkins](https://jenkins.io/) is een open-source automatiseringsserver die gebruikmaakt van invoegtoepassingen ter ondersteuning van veel typen van de ontwikkeling en implementatie van projecten, met inbegrip van IoT Edge. 
+Azure IoT Edge heeft ingebouwde ondersteuning voor Azure DevOps en Azure DevOps Projects, maar biedt ook een invoeg toepassing om DevOps-functionaliteit uit te breiden naar Jenkins. [Jenkins](https://jenkins.io/) is een open-source automatiserings server die gebruikmaakt van invoeg toepassingen voor het ondersteunen van veel soorten ontwikkelings-en implementatie projecten, waaronder IOT Edge.
 
-De Azure IoT Edge-invoegtoepassing voor Jenkins is gericht op continue integratie en continue implementatie. U kunt een build- en push pijplijn maken die modules bouwt en hun containerinstallatiekopieën naar uw containerregister gepusht. Vervolgens maakt u een release-pijplijn waarmee modules in uw IoT Edge-apparaten wordt geïmplementeerd. 
+De Azure IoT Edge-invoeg toepassing voor Jenkins is gericht op continue integratie en continue implementatie. U kunt een build-en push-pijp lijn maken die modules bouwt en hun container installatie kopieën naar het container register pusht. Maak vervolgens een release pijplijn waarmee modules op uw IoT Edge-apparaten worden geïmplementeerd.
 
-Voordat u begint met het gebruik van de IoT Edge-invoegtoepassing voor Jenkins, moet u een IoT-hub in Azure en een container registry voor het opslaan van uw containerinstallatiekopieën. Gebruik een Service-Principal van Azure om Jenkins-bijdragerrechten naar uw IoT-hub zodat de invoegtoepassing kunt implementaties voor uw IoT-Edge-apparaten maken. 
+Voordat u begint met het gebruik van de IoT Edge-invoeg toepassing voor Jenkins, hebt u een IoT-hub in Azure en een container register nodig om de container installatie kopieën te bewaren. Gebruik een Azure-Service-Principal om Jenkins Inzender machtigingen voor uw IoT-hub te bieden zodat de invoeg toepassing implementaties voor uw IoT Edge-apparaten kan maken.
 
-Als u klaar bent om aan de slag, installatie vinden en gebruiken van details voor de [Azure IoT Edge-invoegtoepassing voor Jenkins](https://plugins.jenkins.io/azure-iot-edge).
+Als u klaar bent om aan de slag te gaan, kunt u de installatie en Details voor de [Azure IOT Edge-invoeg toepassing voor Jenkins](https://plugins.jenkins.io/azure-iot-edge)vinden.

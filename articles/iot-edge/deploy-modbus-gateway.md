@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: d4d9d2ff899a169ee81544761fe87fed3cca06c4
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912313"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511141"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Modbus TCP-apparaten verbinden via de gateway van een IoT Edge-apparaat
 
@@ -26,6 +26,7 @@ Dit artikel gaat over hoe u uw eigen containerinstallatiekopie maakt voor een Mo
 In dit artikel wordt ervan uitgegaan dat u het Modbus-protocol TCP gebruikt. Voor meer informatie over het configureren van de module ter ondersteuning van modbus RTU raadpleegt u het project [Modbus module Azure IOT Edge](https://github.com/Azure/iot-edge-modbus) op github.
 
 ## <a name="prerequisites"></a>Vereisten
+
 * Een Azure IoT Edge-apparaat. Zie [Azure IOT Edge implementeren in Windows](quickstart.md) of [Linux](quickstart-linux.md)voor een overzicht van het instellen van een account.
 * De verbindingsreeks van de primaire sleutel voor het IoT Edge-apparaat.
 * Een fysiek of gesimuleerd Modbus-apparaat dat Modbus TCP ondersteunt. U moet het IPv4-adres kennen.

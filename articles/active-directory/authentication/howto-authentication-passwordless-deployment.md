@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eb8398decd1a447d0676195d6369cdc7e791e40
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8323333f378f95f0a640313524f198bdd00dc340
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848490"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512569"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Een authenticatie-implementatie met een wacht woord volt ooien
 
@@ -108,7 +108,7 @@ Voor het inschakelen van Windows 10 sign in met behulp van FIDO2-beveiligings sl
    - InTune-implementatie is de aanbevolen optie.
 - [Referentie provider met een inrichtings pakket inschakelen](howto-authentication-passwordless-security-key-windows.md#enable-with-a-provisioning-package)
    - Als de intune-implementatie niet mogelijk is, moeten beheerders een pakket op elke computer implementeren om de functionaliteit van de referentie provider in te scha kelen. De installatie van het pakket kan worden uitgevoerd met een van de volgende opties:
-      - Groepsbeleid of System Center Configuration Manager (SCCM)
+      - groepsbeleid of Configuration Manager
       - Lokale installatie op een Windows 10-computer
 
 ### <a name="register-security-keys"></a>Beveiligings sleutels registreren

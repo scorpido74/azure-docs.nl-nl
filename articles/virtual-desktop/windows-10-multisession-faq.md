@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: 10724407b8ba5568b38a844f2bf475060e2b7699
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6bdac3f06834ccb5454efa0d77bec5a5a6c5b5bf
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227672"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515102"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>Veelgestelde vragen over meervoudige Windows 10 Enterprise-sessies
 
@@ -44,7 +44,7 @@ Pas de installatie kopie aan uw behoeften aan door LOB-toepassingen te installer
  
 ## <a name="how-do-i-manage-windows-10-enterprise-multi-session-after-deployment"></a>Hoe kan ik Windows 10 Enter prise multi-session beheren na de implementatie?
 
-U kunt elk ondersteund configuratie programma gebruiken, maar we raden System Center Configuration Manager 1906 aan omdat het Windows 10 Enter prise multi-session ondersteunt. Er wordt momenteel gewerkt aan Microsoft Intune ondersteuning.
+U kunt elk ondersteund configuratie programma gebruiken, maar we raden Configuration Manager versie 1906 aan omdat deze Windows 10 Enter prise multi-session ondersteunt. Er wordt momenteel gewerkt aan Microsoft Intune ondersteuning.
  
 ## <a name="can-windows-10-enterprise-multi-session-be-azure-active-directory-ad-joined"></a>Kan Windows 10 Enter prise Multi-Session worden Azure Active Directory (AD)-gekoppeld?
 

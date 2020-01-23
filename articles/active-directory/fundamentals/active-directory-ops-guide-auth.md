@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 85281088692d1c4b0245eb9d069519198f8f315d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 934fe8271796ed6196c9e50a0eddd5d7de3d8432
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919338"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511889"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Naslag Gids voor verificatie beheer van Azure Active Directory
 
@@ -127,8 +127,8 @@ Net als bij een gebruiker in uw organisatie is een apparaat een kern identiteit 
 
 U kunt dit doel doen door de apparaat-id's te halen en te beheren in azure AD met behulp van een van de volgende methoden:
 
-- Organisaties kunnen [Microsoft intune](https://docs.microsoft.com/intune/what-is-intune) gebruiken om het apparaat te beheren en nalevings beleid af te dwingen, de status van het apparaat te bevestigen en beleids regels voor voorwaardelijke toegang in te stellen op basis van het feit of het apparaat compatibel is. Microsoft Intune kunt iOS-apparaten, Mac-Bureau bladen (via JAMF-integratie), Windows-Bureau bladen (systeem eigen gebruik van Mobile Device Management voor Windows 10 en co-beheer met micro soft Endpoint Manager/System Center Configuration Manager) en mobiele Android-apparaten beheren.
-- [Hybride Azure AD join](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) biedt beheer met groeps beleid, System Center Configuration Manager of micro soft Endpoint Manager in een omgeving met Active Directory computers die lid zijn van een domein. Organisaties kunnen een beheerde omgeving implementeren via PHS of PTA met naadloze SSO. Door uw apparaten naar Azure AD te brengen, wordt de gebruikers productiviteit via SSO in uw Cloud en on-premises resources gemaximaliseerd, terwijl u de toegang tot uw Cloud en on-premises resources met [voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) tegelijk kunt beveiligen.
+- Organisaties kunnen [Microsoft intune](https://docs.microsoft.com/intune/what-is-intune) gebruiken om het apparaat te beheren en nalevings beleid af te dwingen, de status van het apparaat te bevestigen en beleids regels voor voorwaardelijke toegang in te stellen op basis van het feit of het apparaat compatibel is. Microsoft Intune kunt iOS-apparaten, Mac-Bureau bladen (via JAMF-integratie), Windows-Bureau bladen (systeem eigen gebruik van Mobile Device Management voor Windows 10 en co-beheer met micro soft endpoint Configuration Manager) en mobiele Android-apparaten beheren.
+- [Hybride Azure AD join](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) biedt beheer met groeps beleid of micro soft Endpoint-Configuration Manager in een omgeving met Active Directory computers die lid zijn van een domein. Organisaties kunnen een beheerde omgeving implementeren via PHS of PTA met naadloze SSO. Door uw apparaten naar Azure AD te brengen, wordt de gebruikers productiviteit via SSO in uw Cloud en on-premises resources gemaximaliseerd, terwijl u de toegang tot uw Cloud en on-premises resources met [voorwaardelijke toegang](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) tegelijk kunt beveiligen.
 
 Als u Windows-apparaten die lid zijn van een domein die niet zijn geregistreerd in de Cloud, of Windows-apparaten die lid zijn van het domein die zijn geregistreerd in de Cloud, maar geen beleid voor voorwaardelijke toegang, moet u de niet-geregistreerde apparaten registreren en in beide gevallen [hybride Azure AD join gebruiken als een besturings element](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices) in uw beleid voor voorwaardelijke toegang.
 

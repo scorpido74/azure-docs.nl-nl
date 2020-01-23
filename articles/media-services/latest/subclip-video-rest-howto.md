@@ -1,5 +1,5 @@
 ---
-title: Een video afspelen tijdens het coderen met Azure Media Services REST API
+title: Een video afspelen bij het coderen met Azure Media Services REST
 description: In dit onderwerp wordt beschreven hoe u een video bijhoudt tijdens het coderen met Azure Media Services met behulp van REST
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/10/2019
 ms.author: juliako
-ms.openlocfilehash: 3557aef6213955ef77542bffafe0a2b0c374ed68
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: c39aded55fe36cb130459a4f6f119f872b1adbc4
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68704449"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514320"
 ---
 # <a name="subclip-a-video-when-encoding-with-media-services---rest"></a>Een video bijsnijden bij het coderen met Media Services-REST
 
@@ -34,12 +34,12 @@ Als u wilt de in dit onderwerp beschreven stappen hebt voltooid, hebt u naar:
 - [Postman configureren voor Azure Media Services REST API-aanroepen](media-rest-apis-with-postman.md).
     
     Zorg ervoor dat u de laatste stap in het onderwerp [Azure AD-Token ophalen](media-rest-apis-with-postman.md#get-azure-ad-token)volgt. 
-- Maak een trans formatie en een uitvoer activa. U kunt zien hoe u een trans formatie maakt en een uitvoer activum in het [bestand code Ring a op basis van URL en de video-rest](stream-files-tutorial-with-rest.md) zelf studie streamen.
+- Maak een trans formatie en een uitvoer activa. U kunt zien hoe u een trans formatie maakt en een uitvoer activum in het [bestand code Ring a op basis van URL en de video-rest zelf studie streamen](stream-files-tutorial-with-rest.md) .
 - Bekijk het [Codeer concept](encoding-concept.md) onderwerp.
 
 ## <a name="create-a-subclipping-job"></a>Een subknipsel taak maken
 
-1. Selecteer in de Postman-verzameling die u hebt gedownload, **trans formaties en taken** -> **maken taak met subknipsel**.
+1. Selecteer in de Postman-verzameling die u hebt gedownload, **trans formaties en taken** -> **taak maken met subknipsel**.
     
     De **put** -aanvraag ziet er als volgt uit:
     

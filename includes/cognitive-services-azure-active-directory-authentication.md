@@ -4,12 +4,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/23/2019
-ms.openlocfilehash: fb3795ff807a87e9bac4d95400f5e446c68d1e4d
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: b08ffa79e012344cad6cf72df98a0f1ba5240ce0
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73897486"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76508553"
 ---
 ## <a name="authenticate-with-azure-active-directory"></a>Verifiëren bij Azure Active Directory
 
@@ -25,10 +25,10 @@ In de volgende secties gebruikt u de Azure Cloud Shell-omgeving of de Azure CLI 
 
 De eerste stap is het maken van een aangepast subdomein. Als u een bestaande Cognitive Services resource zonder aangepaste subdomeinnaam wilt gebruiken, volgt u de instructies in [Cognitive Services aangepaste subdomeinen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains#how-does-this-impact-existing-resources) om het aangepaste subdomein voor uw resource in te scha kelen.
 
-1. Begin met het openen van de Azure Cloud Shell. [Selecteer vervolgens een abonnement](https://docs.microsoft.com/powershell/module/servicemanagement/azure/select-azuresubscription?view=azuresmps-4.0.0#description):
+1. Begin met het openen van de Azure Cloud Shell. [Selecteer vervolgens een abonnement](https://docs.microsoft.com/powershell/module/az.accounts/set-azcontext?view=azps-3.3.0):
 
    ```azurecli-interactive
-   Select-AzureSubscription -SubscriptionName <YOUR_SUBCRIPTION>
+   Set-AzContext -SubscriptionName <SubscriptionName>
    ```
 
 2. Maak vervolgens [een Cognitive Services resource](https://docs.microsoft.com/powershell/module/az.cognitiveservices/new-azcognitiveservicesaccount?view=azps-1.8.0) met een aangepast subdomein. De naam van het subdomein moet globaal uniek zijn en mag geen speciale tekens bevatten, zoals: ".", "!", ",".
@@ -75,7 +75,7 @@ Nu u een aangepast subdomein hebt dat aan uw resource is gekoppeld, moet u een r
    New-AzRoleAssignment -ObjectId <SERVICE_PRINCIPAL_OBJECTID> -Scope <ACCOUNT_ID> -RoleDefinitionName "Cognitive Services User"
    ```
 
-### <a name="sample-request"></a>Voorbeeld aanvraag
+### <a name="sample-request"></a>Voorbeeld van een aanvraag
 
 In dit voor beeld wordt een wacht woord gebruikt voor het verifiëren van de Service-Principal. Het gegeven token wordt vervolgens gebruikt om de Computer Vision-API aan te roepen.
 

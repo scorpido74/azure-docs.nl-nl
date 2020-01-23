@@ -1,5 +1,5 @@
 ---
-title: Het gebruik van de Digital Rights Management-service voor dynamische versleuteling en licentielevering
+title: DRM-versleuteling en licentie bezorgings service Azure Media Services
 titleSuffix: Azure Media Services
 description: Informatie over het gebruik van dynamische DRM-versleuteling en licentie leverings service om stromen te leveren die zijn versleuteld met de micro soft PlayReady-, Google Widevine-of Apple FairPlay-licenties.
 services: media-services
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 3d2dc7793c25fb20e267332beaa683f11ddcbfbb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: bd5c026da27c68e249532b70629ba01afea655fe
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974067"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513062"
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Zelf studie: DRM dynamische versleuteling en licentie leverings service gebruiken
 
@@ -37,7 +37,7 @@ In het voorbeeld in dit artikel wordt het volgende resultaat bereikt:
 
 ![AMS met met DRM beveiligde video in Azure Media Player](./media/protect-with-drm/ams_player.png)
 
-In deze zelfstudie ontdekt u hoe u:
+In deze handleiding ontdekt u hoe u:
 
 > [!div class="checklist"]
 > * Een coderings transformatie maken.
@@ -150,7 +150,7 @@ De ContentKeyIdentifierClaim wordt in de ContentKeyPolicy gebruikt, wat inhoudt 
 
 ## <a name="build-a-streaming-url"></a>Een streaming-URL bouwen
 
-Nu de [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) is gemaakt, kunt u de streaming-URL's ophalen. Als u een URL wilt maken, moet u de hostnaam van de [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) en het pad van de **streaming-Locator** samen voegen. In dit voorbeeld wordt het *standaard* **streaming-eindpunt** gebruikt. Wanneer u voor het eerst een Media Service-account maakt, wordt dit *standaard* **streaming-eindpunt** gestopt. Daarom moet u **Start** aanroepen.
+Nu de [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) is gemaakt, kunt u de streaming-URL's ophalen. Als u een URL wilt maken, moet u de hostnaam van de [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/streamingendpoints) en het pad van de **streaming-Locator** samen voegen. In dit voor beeld wordt het *standaard* **streaming-eind punt** gebruikt. Wanneer u voor het eerst een media service-account maakt, heeft dit *standaard* **streaming-eind punt** een status gestopt, dus u moet **Start**aanroepen.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetMPEGStreamingUrl)]
 

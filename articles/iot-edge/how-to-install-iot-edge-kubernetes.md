@@ -8,16 +8,16 @@ ms.date: 04/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7f3627a79cad6833b5fb20f3c829c1e3bcbd9c3e
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: d11d23cf7d96482028a9d3738196fc5a787fec91
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457339"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510206"
 ---
 # <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>IoT Edge installeren op Kubernetes (preview-versie)
 
-IoT Edge kan worden geïntegreerd met Kubernetes als een robuuste, Maxi maal beschik bare infrastructuur laag. Hiermee wordt een IoT Edge *aangepaste resource definitie* (CRD) geregistreerd bij de KUBERNETES-API-server. Daarnaast biedt het een *operator* (IOT Edge-agent) die de gewenste status van de Cloud Managed reconcilieert met de status van het lokale cluster. 
+IoT Edge kan worden geïntegreerd met Kubernetes als een robuuste, Maxi maal beschik bare infrastructuur laag. Hiermee wordt een IoT Edge *aangepaste resource definitie* (CRD) geregistreerd bij de KUBERNETES-API-server. Daarnaast biedt het een *operator* (IOT Edge-agent) die de gewenste status van de Cloud Managed reconcilieert met de status van het lokale cluster.
 
 De levens duur van de module wordt beheerd door de Kubernetes scheduler, die de beschik baarheid van modules onderhoudt en de plaatsing kiest. IoT Edge beheert het Edge-toepassings platform dat op de voor grond draait en doorlopend de gewenste status die is opgegeven in IoT Hub met de status op het Edge-cluster. Het rand toepassings model is nog steeds het vertrouwde model op basis van IoT Edge modules en routes. De operator IoT Edge agent voert *automatische* omzetting naar de Kubernetes native-constructies uit, zoals een Peul, implementaties, services enzovoort.
 
@@ -34,13 +34,13 @@ Elk onderdeel van de Edge-implementatie ligt binnen het bereik van een Kubernete
 
 ### <a name="prerequisites"></a>Vereisten
 
-* Kubernetes 1,10 of nieuwer. Als u geen bestaande cluster installatie hebt, kunt u [Minikube](https://kubernetes.io/docs/setup/minikube/) gebruiken voor een lokale cluster omgeving. 
+* Kubernetes 1,10 of nieuwer. Als u geen bestaande cluster installatie hebt, kunt u [Minikube](https://kubernetes.io/docs/setup/minikube/) gebruiken voor een lokale cluster omgeving.
 
 * [Helm](https://helm.sh/docs/using_helm/#quickstart-guide), de Kubernetes-pakket Manager.
 
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) voor het weer geven en communiceren met het cluster.
 
-### <a name="setup-steps"></a>Installatie stappen
+### <a name="setup-steps"></a>Instellingsstappen
 
 1. **Minikube** starten
 
@@ -71,6 +71,7 @@ Elk onderdeel van de Edge-implementatie ligt binnen het bereik van een Kubernete
     --set "deviceConnectionString=replace-with-device-connection-string" \
     edgek8s/edge-kubernetes
     ```
+
 1. Het Kubernetes-dash board openen in de browser
 
     ```shell
@@ -93,6 +94,6 @@ helm delete --purge k8s-edge1
 
 ## <a name="next-steps"></a>Volgende stappen
 
-### <a name="deploy-as-a-highly-available-edge-gateway"></a>Implementeren als een Maxi maal beschik bare Edge-gateway 
+### <a name="deploy-as-a-highly-available-edge-gateway"></a>Implementeren als een Maxi maal beschik bare Edge-gateway
 
 Het edge-apparaat in een Kubernetes-cluster kan worden gebruikt als een IoT-gateway voor downstream-apparaten. Het kan zodanig worden geconfigureerd dat er een storing optreedt in het knoop punt, waardoor er hoge Beschik baarheid wordt geboden aan Edge-implementaties. Zie deze [gedetailleerde stapsgewijze instructies](https://github.com/Azure-Samples/iotedge-gateway-on-kubernetes) voor het gebruik van IOT Edge in dit scenario.

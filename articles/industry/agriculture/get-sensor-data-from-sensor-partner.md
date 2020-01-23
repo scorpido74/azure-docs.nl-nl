@@ -5,20 +5,20 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 7c40cfc8fbc6a9957281be842f6714fa9289a3c8
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 745e3f0b6c7bd4e6d984ce2df29b9965d4b8ca21
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122216"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513729"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Sensor gegevens ophalen van sensor partners
 
 Met Azure FarmBeats kunt u streaming-gegevens van uw IoT-apparaten en Sens oren naar Datahub brengen. Op dit moment worden de volgende partners van sensor apparaten ondersteund.
 
-  ![FarmBeats-partners](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
+  ![FarmBeats-partners](./media/get-sensor-data-from-sensor-partner/partner-information-2.png)
 
-Het integreren van apparaatgegevens met Azure FarmBeats helpt u bij het ophalen van de basis gegevens van de IoT-Sens oren die in uw farm zijn geïmplementeerd in de datahub. De gegevens, zodra beschikbaar, kunnen worden gevisualiseerd via de FarmBeats-Accelerator. De gegevens kunnen worden gebruikt voor gegevens fusie en het samen stellen van machine learning/kunst matige intelligentie (ML/AI) met behulp van FarmBeats.
+Het integreren van apparaatgegevens met Azure FarmBeats helpt u bij het ophalen van de basis gegevens van de IoT-Sens oren die in uw farm zijn geïmplementeerd, naar de data hub. De gegevens, zodra beschikbaar, kunnen worden gevisualiseerd via de FarmBeats-Accelerator. De gegevens kunnen worden gebruikt voor gegevens fusie en het samen stellen van machine learning/kunst matige intelligentie (ML/AI) met behulp van FarmBeats.
 
 Controleer het volgende om te beginnen met het streamen van sensor gegevens:
 
@@ -44,7 +44,7 @@ U kunt ook de referenties genereren door dit script uit Azure Cloud Shell uit te
 1. Down load het [zip-bestand](https://aka.ms/farmbeatspartnerscriptv2)en pak het uit naar uw lokale station. Er is één bestand in het zip-bestand.
 2. Meld u aan bij https://portal.azure.com/ en ga naar Azure Active Directory-> app-registraties
 
-3. Klik op de registratie van de app die is gemaakt als onderdeel van uw FarmBeats-implementatie. Deze heeft dezelfde naam als uw FarmBeats-Datahub.
+3. Klik op de registratie van de app die is gemaakt als onderdeel van uw FarmBeats-implementatie. Deze heeft dezelfde naam als uw FarmBeats data hub.
 
 4. Klik op "een API weer geven"-> Klik op "een client toepassing toevoegen" en voer **04b07795-8ddb-461A-bbee-02f9e1bf7b46** in en selecteer bereik autoriseren. Hiermee krijgt u toegang tot de Azure CLI (Cloud Shell) om de onderstaande stappen uit te voeren.
 

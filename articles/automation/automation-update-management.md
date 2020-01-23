@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4efe9fe8dd1f006cb21c60c4c0e086264af26561
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 9e03ba960ab6542198372d75de7e0d34bf8d9e1b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310098"
+ms.locfileid: "76513317"
 ---
 # <a name="update-management-solution-in-azure"></a>Updatebeheer oplossing in azure
 
@@ -100,7 +100,7 @@ In de volgende informatie worden OS-specifieke client vereisten beschreven. Zie 
 
 Windows-agents moeten worden geconfigureerd om te communiceren met een WSUS-server of moeten toegang hebben tot Microsoft Update.
 
-U kunt Updatebeheer gebruiken met System Center Configuration Manager. Zie [System Center Configuration Manager integreren met updatebeheer](oms-solution-updatemgmt-sccmintegration.md#configuration)voor meer informatie over integratie scenario's. De [Windows-agent](../azure-monitor/platform/agent-windows.md) is vereist. De agent wordt automatisch geïnstalleerd als u een virtuele Azure-machine onboardeert.
+U kunt Updatebeheer gebruiken met Configuration Manager. Zie [Configuration Manager integreren met updatebeheer](oms-solution-updatemgmt-sccmintegration.md#configuration)voor meer informatie over integratie scenario's. De [Windows-agent](../azure-monitor/platform/agent-windows.md) is vereist. De agent wordt automatisch geïnstalleerd als u een virtuele Azure-machine onboardeert.
 
 Standaard worden Windows-Vm's die zijn geïmplementeerd vanuit Azure Marketplace ingesteld voor het ontvangen van automatische updates van Windows Update service. Dit gedrag verandert niet wanneer u deze oplossing toevoegt of Windows-Vm's toevoegt aan uw werk ruimte. Als u updates niet actief beheert met behulp van deze oplossing, is het standaard gedrag van toepassing (om updates automatisch toe te passen).
 
@@ -192,15 +192,65 @@ U wordt aangeraden de adressen te gebruiken die worden weer gegeven bij het defi
 
 Volg de instructies in [computers verbinden zonder Internet toegang](../azure-monitor/platform/gateway.md) voor het configureren van computers die geen toegang tot internet hebben.
 
-## <a name="integrate-with-system-center-configuration-manager"></a>Integreren met System Center Configuration Manager
+## <a name="view-update-assessments"></a>Update-evaluaties bekijken
 
-Klanten die hebben geïnvesteerd in System Center Configuration Manager voor het beheren van Pc's, servers en mobiele apparaten, zijn ook afhankelijk van de kracht en de loop tijd van Configuration Manager om hen te helpen bij het beheren van software-updates. Configuration Manager maakt deel uit van de cyclus van software-update beheer (SUM).
+Selecteer in uw Automation-account **updatebeheer** om de status van uw computers weer te geven.
 
-Zie [System Center Configuration Manager met updatebeheer integreren](oms-solution-updatemgmt-sccmintegration.md)voor meer informatie over het integreren van de beheer oplossing met System Center Configuration Manager.
+Deze weer gave bevat informatie over uw computers, ontbrekende updates, update-implementaties en geplande update-implementaties. In de kolom **compatibiliteit** ziet u de laatste keer dat de computer is geëvalueerd. In de **gereedheids** kolom van de Update-Agent kunt u de status van de Update Agent controleren. Als er een probleem is, selecteert u de koppeling om naar probleemoplossings documentatie te gaan waarmee u het probleem kunt verhelpen.
+
+Als u een zoek opdracht in het logboek wilt uitvoeren die informatie over de computer, update of implementatie retourneert, selecteert u het bijbehorende item in de lijst. Het deel venster **Zoeken in Logboeken** wordt geopend met een query voor het geselecteerde item:
+
+![Standaard weergave Updatebeheer](media/automation-update-management/update-management-view.png)
+
+## <a name="view-missing-updates"></a>Ontbrekende updates weer geven
+
+Selecteer **ontbrekende updates** om de lijst met updates weer te geven die ontbreken op uw computers. Elke update wordt weer gegeven en kan worden geselecteerd. Informatie over het aantal machines dat moet worden bijgewerkt, het besturings systeem en een koppeling voor meer informatie wordt weer gegeven. In het deel venster **Zoeken in Logboeken** ziet u meer informatie over de updates.
+
+![Ontbrekende updates](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
+
+## <a name="update-classifications"></a>Updateclassificaties
+
+De volgende tabellen geven een lijst van de update classificaties in Updatebeheer, met een definitie voor elke classificatie.
+
+### <a name="windows"></a>Windows
+
+|Classificatie  |Beschrijving  |
+|---------|---------|
+|Essentiële updates     | Een update voor een specifiek probleem dat betrekking heeft op een kritieke bug die niet aan beveiliging voldoet.        |
+|Beveiligingsupdates     | Een update voor een productspecifiek, beveiligings probleem.        |
+|Updatepakketten     | Een cumulatieve set met hotfixes die samen zijn verpakt voor een eenvoudige implementatie.        |
+|Functiepakketten     | Nieuwe product functies die worden gedistribueerd buiten een product release.        |
+|Servicepacks     | Een cumulatieve set met hotfixes die op een toepassing worden toegepast.        |
+|Definitie-updates     | Een update van virus-of andere definitie bestanden.        |
+|Tools     | Een hulp programma of functie waarmee u een of meer taken kunt volt ooien.        |
+|Updates     | Een update voor een toepassing of bestand dat momenteel is geïnstalleerd.        |
+
+### <a name="linux-2"></a>Linux
+
+|Classificatie  |Beschrijving  |
+|---------|---------|
+|Essentiële en beveiligingsupdates     | Updates voor een specifiek probleem of een productspecifiek beveiligings probleem.         |
+|Andere Updates     | Alle andere updates die niet kritiek zijn of die geen beveiligings updates zijn.        |
+
+Voor Linux kan Updatebeheer een onderscheid maken tussen essentiële updates en beveiligings updates in de Cloud, terwijl evaluatie gegevens worden weer gegeven vanwege gegevens verrijking in de Cloud. Voor patching is Updatebeheer afhankelijk van de classificatie gegevens die op de computer beschikbaar zijn. In tegens telling tot andere distributies is CentOS deze informatie niet beschikbaar in de RTM-versie. Als er CentOS machines zijn geconfigureerd voor het retour neren van beveiligings gegevens voor de volgende opdracht, kunt Updatebeheer patch op basis van classificaties.
+
+```bash
+sudo yum -q --security check-update
+```
+
+Er is momenteel geen ondersteunde methode voor het inschakelen van systeem eigen classificatie-gegevens beschikbaarheid op CentOS. Op dit moment wordt alleen ondersteuning voor de beste werk belasting gegeven aan klanten die deze zelf kunnen hebben ingeschakeld. 
+
+Als u updates wilt classificeren voor Red Hat Enter prise versie 6, moet u de yum-beveiligings-invoeg toepassing installeren. Op Red Hat Enterprise Linux 7 maakt de invoeg toepassing al deel uit van yum. u hoeft niets te installeren. Zie het volgende Red Hat [Knowledge-artikel](https://access.redhat.com/solutions/10021)voor meer informatie.
+
+## <a name="integrate-with-configuration-manager"></a>Integreren met Configuration Manager
+
+Klanten die hebben geïnvesteerd in micro soft endpoint Configuration Manager voor het beheren van Pc's, servers en mobiele apparaten, zijn ook afhankelijk van de kracht en de loop tijd van Configuration Manager om hen te helpen bij het beheren van software-updates. Configuration Manager maakt deel uit van de cyclus van software-update beheer (SUM).
+
+Zie [Configuration Manager met updatebeheer integreren](oms-solution-updatemgmt-sccmintegration.md)voor meer informatie over het integreren van de beheer oplossing met Configuration Manager.
 
 ### <a name="third-party-patches-on-windows"></a>Patches van derden in Windows
 
-Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats voor patches die worden ondersteund door Windows-systemen. Dit is WSUS of Windows Update. Met hulpprogram ma's als [System Center updates Publisher](/sccm/sum/tools/updates-publisher) (updates Publisher) kunt u aangepaste updates publiceren in WSUS. Met dit scenario kunnen Updatebeheer patches voor machines die gebruikmaken van System Center Configuration Manager als update opslagplaats met software van derden. Zie [install updates Publisher](/sccm/sum/tools/install-updates-publisher)(Engelstalig) voor meer informatie over het configureren van updates Publisher.
+Updatebeheer is afhankelijk van de lokaal geconfigureerde update opslagplaats voor patches die worden ondersteund door Windows-systemen. Dit is WSUS of Windows Update. Met hulpprogram ma's als [System Center updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/updates-publisher) (updates Publisher) kunt u aangepaste updates publiceren in WSUS. Met dit scenario kunnen Updatebeheer patches voor machines die gebruikmaken van Configuration Manager als update opslagplaats met software van derden. Zie [install updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/install-updates-publisher)(Engelstalig) voor meer informatie over het configureren van updates Publisher.
 
 ## <a name="patch-linux-machines"></a>Linux-machines bijwerken
 

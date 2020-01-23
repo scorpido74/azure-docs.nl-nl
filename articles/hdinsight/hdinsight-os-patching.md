@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/01/2019
-ms.openlocfilehash: a97a03f7ef20ae56cec04341fe76b79ee657547b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.custom: hdinsightactive
+ms.date: 01/21/2020
+ms.openlocfilehash: 102ae56bb9dce2898c14bdc710420759a527a9e9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748473"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514694"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>Het patch schema voor het besturings systeem configureren voor HDInsight-clusters op basis van Linux
 
@@ -27,6 +27,19 @@ HDInsight biedt ondersteuning voor u om algemene taken uit te voeren op uw clust
 
 > [!NOTE]  
 > Met script acties worden updates voor alle toekomstige update cycli niet automatisch toegepast. Voer de scripts telkens uit wanneer er nieuwe updates moeten worden toegepast om de updates te installeren en start de virtuele machine vervolgens opnieuw op.
+
+## <a name="preparation"></a>Voorbereiding
+
+Patch voor een representatieve niet-productie omgeving voordat u de productie implementeert. Ontwikkel een plan om uw systeem op een afdoende wijze te testen voorafgaand aan uw werkelijke patches.
+
+Vanuit de tijd tot tijd, vanuit een SSH-sessie met uw cluster, wordt een bericht weer gegeven dat er een upgrade beschikbaar is. Het bericht kan er ongeveer als volgt uitzien:
+
+```
+New release '18.04.3 LTS' available.
+Run 'do-release-upgrade' to upgrade it
+```
+
+Patching is optioneel en op uw keuze.
 
 ## <a name="restart-nodes"></a>Knoop punten opnieuw starten
   
@@ -56,5 +69,5 @@ Het `install-updates-schedule-reboots` script accepteert twee numerieke para met
 
 Zie de volgende secties in de op [Linux gebaseerde HDInsight-clusters aanpassen met behulp van script actie](hdinsight-hadoop-customize-cluster-linux.md)voor specifieke stappen voor het gebruik van script acties:
 
-* [Een script actie gebruiken tijdens het maken van een cluster](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
-* [Een script actie Toep assen op een actief cluster](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)
+- [Een script actie gebruiken tijdens het maken van een cluster](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
+- [Een script actie Toep assen op een actief cluster](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)

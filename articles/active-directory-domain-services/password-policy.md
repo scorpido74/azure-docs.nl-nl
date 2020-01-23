@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 10/08/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f462a3743eb33bd33e2d392eba1c5944f40ade4f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b08c3854ef330081b4c55331cb410c5925f00dec
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704532"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512756"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Wacht woord-en account vergrendelings beleid in beheerde domeinen
 
@@ -65,7 +65,7 @@ Met deze standaard instellingen worden gebruikers accounts gedurende 30 minuten 
 
 Account vergrendelingen worden alleen uitgevoerd binnen het beheerde domein. Gebruikers accounts worden alleen vergrendeld in azure AD DS en alleen door mislukte aanmeldings pogingen voor het beheerde domein. Gebruikers accounts die zijn gesynchroniseerd vanuit Azure AD of on-premises, worden niet vergrendeld in hun bron mappen, alleen in azure AD DS.
 
-Als u een Azure AD-wachtwoord beleid hebt waarmee een maximale wachtwoord duur van meer dan 90 dagen wordt opgegeven, wordt de wachtwoord duur toegepast op het standaard beleid in azure AD DS. U kunt een aangepast wachtwoord beleid configureren om een andere maximale wachtwoord duur in azure AD DS te definiëren. Zorg ervoor dat u een korter maximale wachtwoord duur hebt geconfigureerd in een Azure AD DS wachtwoord beleid dan in azure AD of een on-premises AD DS omgeving. In dat geval kan het wacht woord van een gebruiker verlopen in azure AD DS voordat wordt gevraagd om te wijzigen in azure AD op een on-premises AD DS omgeving.
+Als u een Azure AD-wachtwoord beleid hebt waarmee een maximale wachtwoord duur van meer dan 90 dagen wordt opgegeven, wordt de wachtwoord duur toegepast op het standaard beleid in azure AD DS. U kunt een aangepast wachtwoord beleid configureren om een andere maximale wachtwoord duur in azure AD DS te definiëren. Zorg ervoor dat u een korter maximale wachtwoord duur hebt geconfigureerd in een Azure AD DS wachtwoord beleid dan in azure AD of een on-premises AD DS omgeving. In dat geval kan het wacht woord van een gebruiker verlopen in azure AD DS voordat wordt gevraagd om te wijzigen in azure AD of een on-premises AD DS omgeving.
 
 Voor gebruikers accounts die hand matig zijn gemaakt in een door Azure AD DS beheerd domein, worden de volgende aanvullende wachtwoord instellingen ook toegepast vanuit het standaard beleid. Deze instellingen zijn niet van toepassing op gebruikers accounts die zijn gesynchroniseerd vanuit Azure AD, omdat een gebruiker hun wacht woord niet rechtstreeks kan bijwerken in azure AD DS.
 
@@ -103,12 +103,12 @@ Als u een aangepast wachtwoord beleid wilt maken, gebruikt u de Active Directory
 1. Bewerk andere instellingen voor wachtwoord beleid naar wens. Onthoud de volgende belang rijke punten:
 
     * Instellingen zoals wachtwoord complexiteit, leeftijd of verloop tijd alleen voor gebruikers die hand matig zijn gemaakt in een door Azure AD DS beheerd domein.
-    * Account vergrendelings instellingen zijn van toepassing op alle gebruikers, maar worden alleen van kracht binnen het beheerde domein.
+    * Account vergrendelings instellingen zijn van toepassing op alle gebruikers, maar worden alleen van kracht binnen het beheerde domein en niet in azure AD zelf.
 
     ![Een aangepast beleid voor een verfijnd wacht woord maken](./media/how-to/custom-fgpp.png)
 
 1. Schakel **beveiligen tegen onopzettelijk verwijderen uit**. Als deze optie is geselecteerd, kunt u de FGPP niet opslaan.
-1. Selecteer in de sectie **direct van toepassing op** de knop **toevoegen** . Klik in het dialoog venster **gebruikers of groepen selecteren** op de knop **locaties** .
+1. Selecteer in de sectie **direct van toepassing op** de knop **toevoegen** . Selecteer in het dialoog venster **gebruikers of groepen selecteren** de knop **locaties** .
 
     ![Selecteer de gebruikers en groepen waarop u het wachtwoord beleid wilt Toep assen](./media/how-to/fgpp-applies-to.png)
 

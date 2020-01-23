@@ -3,12 +3,12 @@ title: 'Sjabloon functies: bronnen'
 description: Beschrijft de functies in een Azure Resource Manager-sjabloon gebruikt voor het ophalen van waarden over resources.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 56ace8c75ea27eb4d730b1630115b6fcbdc3f575
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 1b860876b0d8967a6a3f90c7bb68f20d6c442109
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310523"
+ms.locfileid: "76513861"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Functies van de resource voor Azure Resource Manager-sjablonen
 
@@ -32,7 +32,7 @@ Waarden van parameters, variabelen of de huidige implementatie Zie [waarde imple
 extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
 ```
 
-Retourneert de resource-ID voor een [extensie resource](extension-resource-types.md), een resource type dat wordt toegepast op een andere resource om aan de mogelijkheden ervan toe te voegen.
+Retourneert de resource-ID voor een [extensie resource](../management/extension-resource-types.md), een resource type dat wordt toegepast op een andere resource om aan de mogelijkheden ervan toe te voegen.
 
 ### <a name="parameters"></a>Parameters
 
@@ -536,7 +536,7 @@ de juiste `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` voor de `Mic
 
 ### <a name="get-managed-identity"></a>Beheerde identiteit ophalen
 
-[Beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md) zijn [uitbreidings bron typen](extension-resource-types.md) die impliciet voor sommige resources worden gemaakt. Omdat de beheerde identiteit niet expliciet is gedefinieerd in de sjabloon, moet u verwijzen naar de resource waarmee de identiteit wordt toegepast. Gebruik `Full` om alle eigenschappen op te halen, met inbegrip van de impliciet gemaakte identiteit.
+[Beheerde identiteiten voor Azure-resources](../../active-directory/managed-identities-azure-resources/overview.md) zijn [uitbreidings bron typen](../management/extension-resource-types.md) die impliciet voor sommige resources worden gemaakt. Omdat de beheerde identiteit niet expliciet is gedefinieerd in de sjabloon, moet u verwijzen naar de resource waarmee de identiteit wordt toegepast. Gebruik `Full` om alle eigenschappen op te halen, met inbegrip van de impliciet gemaakte identiteit.
 
 Als u bijvoorbeeld de Tenant-ID wilt ophalen voor een beheerde identiteit die wordt toegepast op een schaalset voor virtuele machines, gebruikt u:
 

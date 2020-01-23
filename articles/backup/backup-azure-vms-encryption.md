@@ -3,12 +3,12 @@ title: Back-up en herstel van versleutelde virtuele Azure-machines
 description: Hierin wordt beschreven hoe u back-ups van versleutelde virtuele Azure-machines maakt en herstelt met de Azure Backup-service.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 2ce0453c0b57ab682fa102f76c31afa567d80778
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 754a0899d25f2672c6a66eeafe5013f98b7a8f4d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449966"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513776"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Back-up en herstel van versleutelde Azure VM
 
@@ -53,7 +53,6 @@ Ga als volgt te werk voordat u begint:
 Daarnaast zijn er een aantal dingen die u in bepaalde omstandigheden mogelijk moet doen:
 
 - **Installeer de VM-agent op de VM**: Azure backup maakt back-ups van virtuele Azure-machines door een uitbrei ding te installeren in de Azure VM-agent die op de computer wordt uitgevoerd. Als uw virtuele machine is gemaakt op basis van een installatie kopie van Azure Marketplace, wordt de agent geïnstalleerd en uitgevoerd. Als u een aangepaste VM maakt of een on-premises machine migreert, moet u [de agent mogelijk hand matig installeren](backup-azure-arm-vms-prepare.md#install-the-vm-agent).
-- **Uitgaande toegang expliciet toestaan**: over het algemeen hoeft u geen expliciete netwerk toegang voor een virtuele Azure-machine toe te staan, zodat deze kan communiceren met Azure backup. Sommige Vm's kunnen echter verbindings problemen ondervinden, waarbij de **ExtensionSnapshotFailedNoNetwork** -fout wordt weer gegeven wanneer wordt geprobeerd verbinding te maken. Als dit het geval is, moet u [uitgaande toegang expliciet toestaan](backup-azure-arm-vms-prepare.md#explicitly-allow-outbound-access), zodat de Azure backup extensie kan communiceren met open bare IP-adressen van Azure voor back-upverkeer.
 
 ## <a name="configure-a-backup-policy"></a>Een back-upbeleid configureren
 

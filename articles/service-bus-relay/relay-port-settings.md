@@ -1,6 +1,6 @@
 ---
-title: Azure Relay-poortinstellingen | Microsoft Docs
-description: Als u meer informatie over Azure Relay-poortwaarden.
+title: Poort instellingen Azure Relay | Microsoft Docs
+description: Dit artikel bevat een tabel met een beschrijving van de vereiste configuratie voor poort waarden voor Azure Relay.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -12,45 +12,45 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/26/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 9d11179a8518ebf48f68f8607f94e0253d4edb80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 55bb6b620c7ba9ee13068213cbc867b165acc185
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60789923"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514881"
 ---
-# <a name="azure-relay-port-settings"></a>Azure Relay-poortinstellingen
+# <a name="azure-relay-port-settings"></a>Poort instellingen Azure Relay
 
-De volgende tabel beschrijft de vereiste configuratie voor poortwaarden voor de Azure Relay.
+In de volgende tabel wordt de vereiste configuratie voor poort waarden voor Azure Relay beschreven.
 
 ## <a name="hybrid-connections"></a>Hybride verbindingen
 
-Hybride verbindingen gebruikmaakt van WebSockets op poort 443 met SSL als onderliggend transportmechanisme, dat gebruikmaakt van **HTTPS** alleen. 
+Hybride verbindingen maakt gebruik van websockets op poort 443 met SSL als onderliggend transport mechanisme dat alleen **https** gebruikt. 
 
 ## <a name="wcf-relays"></a>WCF-relays
   
-|Binding|Transport Security|Poort|  
+|Binding|Transport beveiliging|Port|  
 |-------------|------------------------|----------|  
-|[Klasse BasicHttpRelayBinding](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (client)|Ja|HTTPS| 
+|[BasicHttpRelayBinding-klasse](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (client)|Ja|HTTPS| 
 |" |Nee|HTTP|  
-|[Klasse BasicHttpRelayBinding](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (service)|Een van beide|9351/HTTP|  
-|[Klasse NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (client)|Ja|9351/HTTPS|  
+|[BasicHttpRelayBinding-klasse](/dotnet/api/microsoft.servicebus.basichttprelaybinding) (Service)|Een van beide|9351/HTTP|  
+|[NetEventRelayBinding-klasse](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (client)|Ja|9351/HTTPS|  
 |" |Nee|9350/HTTP|  
-|[Klasse NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (service)|Een van beide|9351/HTTP|  
-|[NetTcpRelayBinding klasse](/dotnet/api/microsoft.servicebus.nettcprelaybinding) (client/service)|Een van beide|5671/9352/HTTP (9352/9353 als hybride)|  
-|[Klasse NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (client)|Ja|9351/HTTPS|  
+|[NetEventRelayBinding-klasse](/dotnet/api/microsoft.servicebus.neteventrelaybinding) (Service)|Een van beide|9351/HTTP|  
+|[NetTcpRelayBinding-klasse](/dotnet/api/microsoft.servicebus.nettcprelaybinding) (client/service)|Een van beide|5671/9352/HTTP (9352/9353 als u hybride gebruikt)|  
+|[NetOnewayRelayBinding-klasse](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (client)|Ja|9351/HTTPS|  
 |" |Nee|9350/HTTP|  
-|[Klasse NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (service)|Een van beide|9351/HTTP|  
-|[Klasse WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (client)|Ja|HTTPS|  
+|[NetOnewayRelayBinding-klasse](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) (Service)|Een van beide|9351/HTTP|  
+|[WebHttpRelayBinding-klasse](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (client)|Ja|HTTPS|  
 |" |Nee|HTTP|  
-|[Klasse WebHttpRelayBinding](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (service)|Een van beide|9351/HTTP|  
-|[Klasse WS2007HttpRelayBinding](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (client)|Ja|HTTPS|  
+|[WebHttpRelayBinding-klasse](/dotnet/api/microsoft.servicebus.webhttprelaybinding) (Service)|Een van beide|9351/HTTP|  
+|[WS2007HttpRelayBinding-klasse](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (client)|Ja|HTTPS|  
 |" |Nee|HTTP|  
-|[Klasse WS2007HttpRelayBinding](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (service)|Een van beide|9351/HTTP|
+|[WS2007HttpRelayBinding-klasse](/dotnet/api/microsoft.servicebus.ws2007httprelaybinding) (Service)|Een van beide|9351/HTTP|
 
 ## <a name="next-steps"></a>Volgende stappen
-Volg deze koppelingen voor meer informatie over Azure Relay:
+Ga voor meer informatie over Azure Relay naar deze koppelingen:
 * [Wat is Azure Relay?](relay-what-is-it.md)
 * [Veelgestelde vragen over Relay](relay-faq.md)

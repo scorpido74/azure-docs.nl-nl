@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 1c14d1dd171f9bca6b6bdc61e35c0d541b29cb3c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 1ba133acda414d9779e2fb10150bbdd57285e9a5
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026160"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511209"
 ---
 # <a name="what-is-azure-iot-edge"></a>Wat is Azure IoT Edge?
 
@@ -26,7 +26,7 @@ Analyses stimuleren bedrijfswaarde in IoT-oplossingen, maar niet alle analyses h
 Azure IoT Edge bestaat uit drie onderdelen:
 
 * **IOT Edge modules** zijn containers waarop Azure-Services, services van derden of uw eigen code worden uitgevoerd. De modules zijn geïmplementeerd op IoT Edge-apparaten en worden lokaal uitgevoerd op deze apparaten.
-* De **IOT Edge runtime** wordt op elk IOT edge apparaat uitgevoerd en beheert de modules die op elk apparaat zijn geïmplementeerd. 
+* De **IOT Edge runtime** wordt op elk IOT edge apparaat uitgevoerd en beheert de modules die op elk apparaat zijn geïmplementeerd.
 * Met een **Cloud interface** kunt u IOT edge apparaten op afstand bewaken en beheren.
 
 >[!NOTE]
@@ -62,7 +62,7 @@ De Azure IoT Edge runtime wordt uitgevoerd op een groot aantal IoT-apparaten waa
 
 ## <a name="iot-edge-cloud-interface"></a>Cloudinterface van IoT Edge
 
-Het is moeilijk om de levens cyclus van de software te beheren voor miljoenen IoT-apparaten die vaak verschillend zijn, en modellen of geografische sprei ding. Werk belastingen worden gemaakt en geconfigureerd voor een bepaald type apparaat, geïmplementeerd op al uw apparaten en worden bewaakt om apparaten te laten ondervinden die niet functioneren. Deze activiteiten kunnen niet per apparaat worden uitgevoerd, maar moeten op schaal worden uitgevoerd.
+Het is moeilijk om de levens cyclus van de software te beheren voor miljoenen IoT-apparaten die vaak verschillend zijn, en modellen of geografische sprei ding. Workloads worden gemaakt en geconfigureerd voor een specifiek type apparaat, geïmplementeerd op al uw apparaten en bewaakt om apparaten te detecteren die zich niet normaal gedragen. Deze activiteiten kunnen niet per apparaat worden uitgevoerd, maar moeten op schaal worden uitgevoerd.
 
 Azure IoT Edge integreert naadloos met Azure IoT-oplossingsversnellers en biedt één controlelaag voor de behoeften van uw oplossing. Met cloudservices kunt u het volgende doen:
 

@@ -1,18 +1,18 @@
 ---
 title: Gebeurtenis domeinen in Azure Event Grid
-description: Hierin wordt beschreven hoe gebeurtenis domeinen worden gebruikt voor het beheren van onderwerpen in Azure Event Grid.
+description: In dit artikel wordt beschreven hoe u gebeurtenis domeinen gebruikt voor het beheren van de stroom van aangepaste gebeurtenissen naar uw verschillende zakelijke organisaties, klanten of toepassingen.
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: ef0a9213d095d0b7ae4343e2af145236a7e005a1
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.date: 01/21/2020
+ms.openlocfilehash: df560df21740d5396bc177e20de5d0eb4bf47713
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305409"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511379"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Informatie over gebeurtenis domeinen voor het beheren van Event Grid onderwerpen
 
@@ -39,7 +39,7 @@ Het biedt u ook een enkel eind punt, waarmee u alle evenementen van uw klant kun
 
 ![Voor beeld van Contoso-constructie](./media/event-domains/contoso-construction-example.png)
 
-## <a name="access-management"></a>Toegangs beheer
+## <a name="access-management"></a>Toegangsbeheer
 
 Met een domein krijgt u een nauw keurige autorisatie en verificatie controle voor elk onderwerp via het op rollen gebaseerde toegangs beheer (RBAC). U kunt deze rollen gebruiken om elke Tenant in uw toepassing te beperken tot alleen de onderwerpen waaraan u hen toegang wilt verlenen.
 
@@ -65,7 +65,7 @@ Wanneer u een gebeurtenis domein maakt, krijgt u een publicatie-eind punt te zie
 
 Als u gebeurtenissen naar een onderwerp in een gebeurtenis domein wilt publiceren, moet u de gebeurtenissen naar het eind punt van het domein pushen op [dezelfde manier als voor een aangepast onderwerp](./post-to-custom-topic.md). Het enige verschil is dat u het onderwerp moet opgeven waarnaar de gebeurtenis moet worden geleverd.
 
-Als u bijvoorbeeld de volgende matrix met gebeurtenissen publiceert, wordt gebeurtenis verzonden `"id": "1111"` met het `foo` onderwerp, terwijl de `"id": "2222"` gebeurtenis met zou worden verzonden `bar`naar het onderwerp:
+Als u bijvoorbeeld de volgende matrix met gebeurtenissen publiceert, wordt gebeurtenis verzonden met `"id": "1111"` naar het onderwerp `foo` terwijl de gebeurtenis met `"id": "2222"` zou worden verzonden naar het onderwerp `bar`:
 
 ```json
 [{
@@ -96,7 +96,7 @@ Als u bijvoorbeeld de volgende matrix met gebeurtenissen publiceert, wordt gebeu
 
 Gebeurtenis domeinen verwerken het publiceren naar onderwerpen voor u. In plaats van gebeurtenissen te publiceren naar elk onderwerp dat u afzonderlijk beheert, kunt u al uw gebeurtenissen naar het eind punt van het domein publiceren. Event Grid zorgt ervoor dat elke gebeurtenis wordt verzonden naar het juiste onderwerp.
 
-## <a name="limits-and-quotas"></a>Limieten en quota
+## <a name="limits-and-quotas"></a>Limieten en quota’s
 Dit zijn de limieten en quota die betrekking hebben op gebeurtenis domeinen:
 
 - 100.000 onderwerpen per gebeurtenis domein 
@@ -105,7 +105,7 @@ Dit zijn de limieten en quota die betrekking hebben op gebeurtenis domeinen:
 - 50 domein bereik abonnementen 
 - 5\.000 gebeurtenissen per seconde opname frequentie (in een domein)
 
-Als deze limieten niet aansluiten bij u, kunt u het product team bereiken door een ondersteunings ticket te openen [askgrid@microsoft.com](mailto:askgrid@microsoft.com)of door een e-mail te verzenden naar. 
+Als deze limieten niet aansluiten bij u, kunt u het product team bereiken door een ondersteunings ticket te openen of door een e-mail bericht naar [askgrid@microsoft.com](mailto:askgrid@microsoft.com)te verzenden. 
 
 ## <a name="pricing"></a>Prijzen
 Gebeurtenis domeinen gebruiken dezelfde [prijzen voor bewerkingen](https://azure.microsoft.com/pricing/details/event-grid/) die alle andere functies in Event grid gebruiken.

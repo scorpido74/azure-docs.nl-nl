@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 50517db6a5bb1fc458ab2f563e905fca34f70cf4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c0c1a28dc399d3f176f92e656621fec1bc92dbfc
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442074"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513489"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Gebruik Azure Cosmos DB-wijzigingenfeed voor het visualiseren van realtime gegevensanalyse
 
@@ -93,7 +93,7 @@ De Azure-resources - Azure Cosmos DB, Storage-account maken, Event Hub, Stream A
 
 U maakt nu een verzameling voor het opslaan van gebeurtenissen voor e-commerce-site. Wanneer een gebruiker een item bekijkt, wordt een item toegevoegd aan hun winkelwagen of koopt van een item, de verzameling ontvangen een record met de actie ('weergegeven', 'toegevoegd' of 'gekocht'), de naam van het item is betrokken, de prijs van de betrokken item en de ID-nummer van de gebruiker winkelwagen i nvolved.
 
-1. Ga naar [Azure Portal](https://portal.azure.com/) en zoek de **Azure Cosmos DB-Account** die door de sjabloonimplementatie wordt gemaakt.  
+1. Ga naar [Azure Portal](https://portal.azure.com/) en zoek het **Azure Cosmos DB account** dat is gemaakt door de sjabloon implementatie.  
 
 2. Uit de **Data Explorer** venster **nieuwe verzameling** en vul het formulier met de volgende details:  
 
@@ -117,7 +117,7 @@ U maakt nu een verzameling voor het opslaan van gebeurtenissen voor e-commerce-s
 
 ### <a name="get-the-azure-cosmos-db-connection-string"></a>De Azure Cosmos DB-verbindingsreeks ophalen
 
-1. Ga naar [Azure Portal](https://portal.azure.com/) en zoek de **Azure Cosmos DB-Account** die door de sjabloonimplementatie wordt gemaakt.  
+1. Ga naar [Azure Portal](https://portal.azure.com/) en zoek het **Azure Cosmos DB account** dat is gemaakt door de sjabloon implementatie.  
 
 2. Navigeer naar de **sleutels** deelvenster, Kopieer de PRIMARY CONNECTION STRING en kopieer het naar een Kladblok of een ander document dat u toegang tot in de testomgeving hebt. U moet deze labelen **Cosmos DB-verbindingsreeks**. U moet de tekenreeks die later in uw code kopiëren, dus let en onthouden waar u deze opslaat.
 
@@ -177,7 +177,7 @@ Om te zien hoe wijzigingenfeed verwerkt nieuwe acties op een e-commerce-site, he
  
 6. Wacht totdat het programma om uit te voeren. De sterren betekent dat gegevens afkomstig is in! Houd het programma uitvoeren: het is belangrijk dat grote hoeveelheden gegevens worden verzameld.  
 
-7. Als u de navigatiefunctie [Azure Portal](https://portal.azure.com/) , klikt u vervolgens naar de Cosmos DB-account binnen de resourcegroep, klikt u vervolgens aan **Data Explorer**, ziet u de willekeurige gegevens geïmporteerd uw  **changefeedlabcollection** .
+7. Als u naar [Azure Portal](https://portal.azure.com/) navigeert, vervolgens naar het Cosmos DB-account in de resource groep en vervolgens naar **Data Explorer**, ziet u de wille keurige gegevens die in uw **changefeedlabcollection** zijn geïmporteerd.
  
    ![Gegevens die zijn gegenereerd in de portal](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
 
@@ -185,7 +185,7 @@ Om te zien hoe wijzigingenfeed verwerkt nieuwe acties op een e-commerce-site, he
 
 Azure Stream Analytics is een volledig beheerde cloudservice voor de verwerking van streaminggegevens in realtime. In dit lab gebruikt u stream analytics voor het verwerken van nieuwe gebeurtenissen van de Event Hub (dat wil zeggen wanneer een item wordt weergegeven, toegevoegd aan een winkelwagen of gekocht), nemen deze gebeurtenissen in realtime gegevensanalyse en ze verzenden naar Power BI voor visualisatie.
 
-1. Uit de [Azure Portal](https://portal.azure.com/), gaat u naar de resourcegroep, klikt u vervolgens aan **streamjob1** (de stream analytics-taak die u hebt gemaakt in de prelab).  
+1. Navigeer vanuit het [Azure Portal](https://portal.azure.com/)naar de resource groep en vervolgens naar **streamjob1** (de stream Analytics-taak die u hebt gemaakt in de prelab).  
 
 2. Selecteer **invoer** zoals hieronder wordt gedemonstreerd.  
 
@@ -320,7 +320,7 @@ Power BI is een suite met hulpprogramma's voor business analytics voor het analy
 
 Nu ziet u hoe u de nieuwe gegevens analysis tool kunt gebruiken om te verbinden met een echte e-commerce-site. Als u de e-commerce-site wilt maken, gebruikt u een Azure Cosmos-data base om de lijst met product categorieën (vrouwen, heren, unisex), de product catalogus en een lijst met veelgebruikte items op te slaan.
 
-1. Ga terug naar de [Azure Portal](https://portal.azure.com/), klikt u vervolgens aan uw **Cosmos DB-account**, klikt u vervolgens aan **Data Explorer**.  
+1. Ga terug naar de [Azure Portal](https://portal.azure.com/), vervolgens naar uw **Cosmos DB account**en vervolgens naar **Data Explorer**.  
 
    Toevoegen van twee verzamelingen onder **changefeedlabdatabase** - **producten** en **categorieën** met een vaste opslagcapaciteit.
 
@@ -390,9 +390,8 @@ Nu ziet u hoe u de nieuwe gegevens analysis tool kunt gebruiken om te verbinden 
 
 ## <a name="delete-the-resources"></a>De resources verwijderen
 
-Als u wilt verwijderen van de resources die u tijdens dit lab hebt gemaakt, gaat u naar de resourcegroep op [Azure Portal](https://portal.azure.com/)en selecteer vervolgens **resourcegroep verwijderen** in het menu aan de bovenkant van de pagina en volg de instructies opgegeven.
+Als u de resources wilt verwijderen die u hebt gemaakt tijdens dit lab, gaat u naar de resource groep op [Azure Portal](https://portal.azure.com/)en selecteert u **resource groep verwijderen** in het menu boven aan de pagina en volgt u de instructies die worden weer gegeven.
 
 ## <a name="next-steps"></a>Volgende stappen 
   
 * Zie voor meer informatie over de wijzigingenfeed [werken met change feed support in Azure Cosmos DB](change-feed.md) 
-* [Wijzigingenfeed oplossing notification](change-feed-hl7-fhir-logic-apps.md) voor gezondheidszorg organisatie met behulp van Azure Cosmos DB.

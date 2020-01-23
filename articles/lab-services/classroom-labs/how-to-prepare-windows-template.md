@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: d7cff4e2afff4678bf7aa437aefa9d8deea220bc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c52a1212d160adce3a0a0638164833bc2907a856
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428951"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515000"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Hand leiding voor het instellen van een Windows-sjabloon machine in Azure Lab Services
 
@@ -142,7 +142,7 @@ Als uw sjabloon machine Office nodig heeft, raden wij u aan Office te installere
 
 ### <a name="change-the-microsoft-office-365-update-channel"></a>Het Microsoft Office 365-update kanaal wijzigen
 
-Met het Office-configuratie programma kunt u instellen hoe vaak Office updates ontvangt.  Als u echter wilt wijzigen hoe vaak Office updates ontvangt na de installatie, kunt u de URL van het update kanaal wijzigen.  URL-adressen van het update kanaal kunt u vinden op [het update kanaal wijzigen nadat u Office 365-clients hebt ingeschakeld om updates te ontvangen van Configuration Manager]/ConfigMgr/Sum/Deploy-use/Manage-Office-365-ProPlus-updates # bkmk_channel). In het volgende voor beeld ziet u hoe u Office 365 instelt voor het gebruik van het maandelijkse update kanaal.
+Met het Office-configuratie programma kunt u instellen hoe vaak Office updates ontvangt. Als u echter wilt wijzigen hoe vaak Office updates ontvangt na de installatie, kunt u de URL van het update kanaal wijzigen. URL-adressen van het update kanaal vindt [u in het Office 365 ProPlus-update kanaal voor apparaten in uw organisatie wijzigen](https://docs.microsoft.com/deployoffice/change-update-channels). In het volgende voor beeld ziet u hoe u Office 365 instelt voor het gebruik van het maandelijkse update kanaal.
 
 ```powershell
 # Update to the Office 365 Monthly Channel

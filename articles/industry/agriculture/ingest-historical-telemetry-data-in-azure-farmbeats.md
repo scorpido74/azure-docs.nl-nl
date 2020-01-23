@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b4a567bc0495595da77ef7d6cd240ee7fb30f0ed
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 11dcf5dc0f05e51f3f427b09745cb581cc0d3780
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170157"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513929"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Historische telemetriegegevens opnemen
 
@@ -20,7 +20,7 @@ Het opnemen van historische gegevens uit Internet of Things IoT-resources zoals 
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voordat u verder gaat met dit artikel, moet u ervoor zorgen dat u FarmBeats hebt geïnstalleerd en historische gegevens hebt verzameld van IoT.
+Voordat u verder gaat met dit artikel, moet u ervoor zorgen dat u FarmBeats hebt geïnstalleerd en historische gegevens hebt verzameld van uw IoT-apparaten.
 U moet ook toegang tot de partner inschakelen zoals vermeld in de volgende stappen.
 
 ## <a name="enable-partner-access"></a>Partner toegang inschakelen
@@ -38,31 +38,36 @@ Volg deze stappen.
 >[!NOTE]
 > U moet een beheerder zijn om de volgende stappen uit te voeren.
 
-1. Down load dit [script](https://aka.ms/farmbeatspartnerscript)en pak het uit op uw lokale station. Twee bestanden bevinden zich in het zip-bestand.
-2. Meld u aan bij [Azure Portal](https://portal.azure.com/) en open Azure Cloud Shell. Deze optie is beschikbaar op de werk balk in de rechter bovenhoek van de portal.
+1. Down load het [zip-bestand](https://aka.ms/farmbeatspartnerscriptv2)en pak het uit naar uw lokale station. Er is één bestand in het zip-bestand.
+2. Meld u aan bij https://portal.azure.com/ en ga naar Azure Active Directory-> app-registraties
 
-    ![Azure Portal werk balk](./media/for-tutorials/navigation-bar-1.png)
+3. Klik op de registratie van de app die is gemaakt als onderdeel van uw FarmBeats-implementatie. Deze heeft dezelfde naam als uw FarmBeats-Datahub.
 
-3. Zorg ervoor dat de omgeving is ingesteld op **Power shell**.
+4. Klik op "een API weer geven"-> Klik op "een client toepassing toevoegen" en voer **04b07795-8ddb-461A-bbee-02f9e1bf7b46** in en selecteer bereik autoriseren. Hiermee krijgt u toegang tot de Azure CLI (Cloud Shell) om de onderstaande stappen uit te voeren.
 
-    ![Power shell-instelling](./media/for-tutorials/power-shell-new-1.png)
+5. Open Cloud Shell. Deze optie is beschikbaar op de werk balk in de rechter bovenhoek van de Azure Portal.
 
-4. Upload de twee bestanden die u hebt gedownload uit stap 1 van uw Cloud Shell-exemplaar.
+    ![Azure Portal werk balk](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-    ![Knop uploaden op de werk balk](./media/for-tutorials/power-shell-two-1.png)
+6. Zorg ervoor dat de omgeving is ingesteld op **Power shell**. Standaard is deze ingesteld op bash.
 
-5. Ga naar de map waarin de bestanden zijn geüpload.
+    ![Power shell-werkbalk instelling](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-   >[!NOTE]
-   > Standaard worden bestanden geüpload naar de map Home/Home/username.
-6. Voer het script uit met behulp van deze opdracht:
+7. Upload het bestand uit stap 1 in uw Cloud Shell-exemplaar.
 
-    ```azurepowershell-interactive
-    ./generateCredentials.ps1
+    ![Knop uploaden-werk balk](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+
+8. Ga naar de map waarin het bestand is geüpload. Standaard worden bestanden in de hoofdmap van de gebruikers naam geüpload naar de basismap.
+
+9. Voer het volgende script uit. Het script vraagt om de Tenant-ID die kan worden verkregen op basis van Azure Active Directory-> overzichts pagina.
+
+    ```azurepowershell-interactive 
+
+    ./generatePartnerCredentials.ps1   
+
     ```
 
-7. Volg de instructies op het scherm voor het vastleggen van de waarden voor het **API-eind punt**, **Tenant-ID**, **client-id**, **client geheim**en **EventHub-verbindings reeks**. De EventHub-connection string is beschikbaar als onderdeel van de API-reactie in Swagger.
-
+10. Volg de instructies op het scherm voor het vastleggen van de waarden voor het **API-eind punt**, **Tenant-ID**, **client-id**, **client geheim**en **EventHub-verbindings reeks**.
 ## <a name="create-device-or-sensor-metadata"></a>Meta gegevens van het apparaat of de sensor maken
 
  Nu u de vereiste referenties hebt, kunt u het apparaat en de Sens oren definiëren. Als u dit wilt doen, maakt u de meta gegevens door FarmBeats-Api's aan te roepen. Houd er rekening mee dat u de Api's moet aanroepen als de client-app die u hebt gemaakt in de bovenstaande sectie

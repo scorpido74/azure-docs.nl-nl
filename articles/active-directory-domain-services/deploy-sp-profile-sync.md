@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/12/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: a24ff1d5f94a50dc30819e6ab86318592da72e45
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f51744d79d34b734c9cc24cf72785a076a91a4f5
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705213"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509050"
 ---
 # <a name="configure-azure-active-directory-domain-services-to-support-user-profile-synchronization-for-sharepoint-server"></a>Azure Active Directory Domain Services configureren voor de ondersteuning van synchronisatie van gebruikers profielen voor share Point server
 
-Share Point server bevat een service voor het synchroniseren van gebruikers profielen. Met deze functie kunnen gebruikers profielen worden opgeslagen op een centrale locatie en toegankelijk op meerdere share point-sites en-farms. Als u de gebruikers profiel service van share Point server wilt configureren, moeten de juiste machtigingen worden verleend in een door Azure Active Directory Domain Services (Azure AD DS) beheerd domein. Zie [gebruikers profiel synchronisatie in share Point server](https://technet.microsoft.com/library/hh296982.aspx)voor meer informatie.
+Share Point server bevat een service voor het synchroniseren van gebruikers profielen. Met deze functie kunnen gebruikers profielen worden opgeslagen op een centrale locatie en toegankelijk via meerdere share point-sites en-farms. Als u de gebruikers profiel service van share Point server wilt configureren, moeten de juiste machtigingen worden verleend in een door Azure Active Directory Domain Services (Azure AD DS) beheerd domein. Zie [gebruikers profiel synchronisatie in share Point server](https://technet.microsoft.com/library/hh296982.aspx)voor meer informatie.
 
 In dit artikel wordt beschreven hoe u Azure AD DS configureert om de synchronisatie service voor gebruikers profielen van share Point server toe te staan.
 

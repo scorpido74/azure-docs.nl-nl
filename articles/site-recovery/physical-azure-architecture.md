@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f61d4beac5b5285b80fb05521cffc961f7f702c2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 72f21babd4d12e69cd346d8693e5ed4fe9117134
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356511"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513946"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Architectuur van fysieke server naar Azure voor herstel na nood gevallen
 
@@ -29,7 +29,7 @@ De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onder
 **Configuratieserver** | Er wordt één on-premises fysieke machine of VMware-VM geïmplementeerd om alle on-premises Site Recovery onderdelen uit te voeren. De VM voert de configuratie server, de proces server en de hoofddoel server uit. | De configuratieserver coördineert de communicatie tussen on-premises en Azure, en beheert de gegevensreplicatie.
  **Processerver**:  | Standaard geïnstalleerd in combi natie met de configuratie server. | Fungeert als replicatiegateway. Dit onderdeel ontvangt replicatiegegevens, optimaliseert de gegevens met caching, compressie en codering, en verzendt ze naar de Azure-opslag.<br/><br/> De proces server installeert ook de Mobility-service op servers die u wilt repliceren.<br/><br/> Naarmate uw implementatie groeit, kunt u extra, afzonderlijke proces servers toevoegen om grotere volumes van replicatie verkeer af te handelen.
  **Hoofddoelserver** | Standaard geïnstalleerd in combi natie met de configuratie server. | Hier worden de replicatiegegevens tijdens de failback vanuit Azure afgehandeld.<br/><br/> Voor grote implementaties kunt u een extra, afzonderlijke Master doel server toevoegen voor failback.
-**Gerepliceerde servers** | De Mobility-service wordt geïnstalleerd op elke server die u repliceert. | U wordt aangeraden automatische installatie vanaf de proces server toe te staan. U kunt de service ook hand matig installeren of een geautomatiseerde implementatie methode gebruiken, zoals System Center Configuration Manager.
+**Gerepliceerde servers** | De Mobility-service wordt geïnstalleerd op elke server die u repliceert. | U wordt aangeraden automatische installatie vanaf de proces server toe te staan. U kunt de service ook hand matig installeren of een geautomatiseerde implementatie methode gebruiken, zoals Configuration Manager.
 
 **Fysiek naar Azure-architectuur**
 

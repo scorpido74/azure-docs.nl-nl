@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd3a0341d9cf041155b09d41d8ff84d0b0cc3dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb0764b9c2c43faf88db165a11ae963c4f170f01
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424819"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512586"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Procedure: beheerde apparaten vereisen voor toegang tot Cloud-apps met voorwaardelijke toegang
 
@@ -69,7 +69,7 @@ Deze instelling geldt alleen voor apparaten met Windows 10 of lager niveau, zoal
 
 ![Voor waarden op basis van apparaten](./media/require-managed-devices/45.png)
 
-Wat is een hybride Azure AD-apparaat dat is gekoppeld aan een beheerd apparaat?  Voor apparaten die zijn gekoppeld aan een on-premises AD, wordt ervan uitgegaan dat de controle over deze apparaten wordt afgedwongen met behulp van beheer oplossingen als **System Center Configuration Manager (SCCM)** of **groeps beleid (GP)** om ze te beheren. Omdat er geen methode voor Azure AD is om te bepalen of een van deze methoden is toegepast op een apparaat, is het vereisen van een hybride Azure AD-apparaat dat is gekoppeld aan een relatief zwak mechanisme om een beheerd apparaat te vereisen. Het is aan u als beheerder om te beoordelen of de methoden die worden toegepast op uw on-premises apparaten die lid zijn van een domein krachtig genoeg zijn om een beheerd apparaat te vormen als een dergelijk apparaat ook een hybride Azure AD-apparaat is.
+Wat is een hybride Azure AD-apparaat dat is gekoppeld aan een beheerd apparaat?  Voor apparaten die zijn gekoppeld aan een on-premises AD, wordt ervan uitgegaan dat de controle over deze apparaten wordt afgedwongen met behulp van beheer oplossingen als **Configuration Manager** of **groeps beleid (GP)** om ze te beheren. Omdat er geen methode voor Azure AD is om te bepalen of een van deze methoden is toegepast op een apparaat, is het vereisen van een hybride Azure AD-apparaat dat is gekoppeld aan een relatief zwak mechanisme om een beheerd apparaat te vereisen. Het is aan u als beheerder om te beoordelen of de methoden die worden toegepast op uw on-premises apparaten die lid zijn van een domein krachtig genoeg zijn om een beheerd apparaat te vormen als een dergelijk apparaat ook een hybride Azure AD-apparaat is.
 
 ## <a name="require-device-to-be-marked-as-compliant"></a>Vereisen dat het apparaat wordt gemarkeerd als compatibel
 

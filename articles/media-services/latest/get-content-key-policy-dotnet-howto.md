@@ -1,6 +1,6 @@
 ---
-title: Ophalen van een ondertekeningssleutel van het bestaande beleid met behulp van Media Services v3 .NET SDK - Azure | Microsoft Docs
-description: Dit onderwerp leest hoe u een ondertekeningssleutel van het bestaande beleid met behulp van Media Services v3 .NET SDK.
+title: Een handtekening sleutel van een beleid ophalen met behulp van Azure Media Services v3 .NET
+description: In dit onderwerp wordt uitgelegd hoe u een handtekening sleutel van het bestaande beleid kunt ophalen met behulp van Media Services v3 .NET SDK.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,32 +12,32 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 58b6f49f4bbbd93fefb9b616f92baf7ef30f7deb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ff27ae0fd639316f03fe89ffc906561b3ef85f6f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60322631"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515068"
 ---
-# <a name="get-a-signing-key-from-the-existing-policy"></a>Een ondertekeningssleutel van het bestaande beleid ophalen
+# <a name="get-a-signing-key-from-the-existing-policy"></a>Een handtekening sleutel van het bestaande beleid ophalen
 
-Een van de belangrijkste principes van de API v3 is het beter beveiligen van de API. V3 API's retourneren geen geheimen of referenties op **ophalen** of **lijst** bewerkingen. Zie de gedetailleerde uitleg hier: Zie voor meer informatie, [RBAC en Media Services-accounts](rbac-overview.md)
+Een van de belangrijkste principes van de API v3 is het beter beveiligen van de API. V3-Api's retour neren geen geheimen of referenties voor **Get** -of **List** -bewerkingen. Zie de gedetailleerde uitleg hier: Zie [RBAC-en Media Services-accounts](rbac-overview.md) voor meer informatie.
 
-Het voorbeeld in dit artikel ziet hoe u met .NET op een ondertekeningssleutel van het bestaande beleid ophalen. 
+In het voor beeld in dit artikel ziet u hoe u .NET kunt gebruiken om een handtekening sleutel op te halen uit het bestaande beleid. 
  
-## <a name="download"></a>Downloaden 
+## <a name="download"></a>Download 
 
-Kloon een GitHub-opslagplaats met het volledige .NET-voorbeeld op de computer met de volgende opdracht:  
+Kloon een GitHub-opslag plaats met het volledige .NET-voor beeld naar uw computer met behulp van de volgende opdracht:  
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
  ```
  
-De ContentKeyPolicy met geheimen voorbeeld bevindt zich in de [EncryptWithDRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) map.
+Het voor beeld van ContentKeyPolicy met geheimen bevindt zich in de map [EncryptWithDRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) .
 
-## <a name="get-contentkeypolicy-with-secrets"></a>ContentKeyPolicy met geheimen ophalen 
+## <a name="get-contentkeypolicy-with-secrets"></a>ContentKeyPolicy ontvangen met geheimen 
 
-Als u naar de sleutel, gebruikt **GetPolicyPropertiesWithSecretsAsync**, zoals wordt weergegeven in het onderstaande voorbeeld.
+Als u de sleutel wilt weer geven, gebruikt u **GetPolicyPropertiesWithSecretsAsync**, zoals wordt weer gegeven in het onderstaande voor beeld.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#GetOrCreateContentKeyPolicy)]
 

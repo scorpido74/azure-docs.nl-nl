@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 255c18144fe0089a3f630d90f527a57d2b4ed68b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 47adda38bb39a95fe9abc0775a1822d677f19dab
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391852"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513844"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup fout oplossen: problemen met de agent of extensie
 
@@ -89,7 +89,6 @@ Nadat u een virtuele machine voor de Azure Backup-service hebt geregistreerd en 
 
 **Oorzaak 1: [de status van de moment opname kan niet worden opgehaald of een moment opname kan niet worden gemaakt](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **Oorzaak 2: [de back-upextensie kan niet worden bijgewerkt of geladen](#the-backup-extension-fails-to-update-or-load)**  
-**Oorzaak 3: [de virtuele machine heeft geen Internet toegang](#the-vm-has-no-internet-access)**
 
 ## <a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>Bewerking voor ExtensionOperationFailedForManagedDisks-VMSnapshot-extensie is mislukt
 
@@ -113,7 +112,7 @@ Nadat u een virtuele machine voor de Azure Backup-service hebt geregistreerd en 
 **Oorzaak 3: [de status van de moment opname kan niet worden opgehaald of een moment opname kan niet worden gemaakt](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **Oorzaak 4: [de back-upextensie kan niet worden bijgewerkt of geladen](#the-backup-extension-fails-to-update-or-load)**  
 **Oorzaak 5: de back-upservice heeft geen machtiging voor het verwijderen van de oude herstel punten vanwege een vergren deling van een resource groep** <br>
-**Oorzaak 6: [de virtuele machine heeft geen Internet toegang](#the-vm-has-no-internet-access)**
+
 
 ## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize: de geconfigureerde schijf grootte (s) wordt momenteel niet ondersteund door Azure Backup.
 
@@ -141,16 +140,6 @@ De recente back-uptaak is mislukt, omdat er een bestaande back-uptaak wordt uitg
 Als de geplande back-upbewerking langer duurt, conflicteert met de volgende back-upconfiguratie, raadpleegt u de [Aanbevolen procedures](backup-azure-vms-introduction.md#best-practices), [back-upprestaties](backup-azure-vms-introduction.md#backup-performance)en [Restore-overwegingen](backup-azure-vms-introduction.md#backup-and-restore-considerations).
 
 ## <a name="causes-and-solutions"></a>Oorzaken en oplossingen
-
-### <a name="the-vm-has-no-internet-access"></a>De virtuele machine heeft geen Internet toegang
-
-De virtuele machine heeft geen toegang tot internet volgens de implementatie vereiste. Het kan ook zijn dat er beperkingen gelden waardoor toegang tot de Azure-infra structuur wordt voor komen.
-
-Voor een juiste werking moet de back-upextensie verbinding hebben met open bare IP-adressen van Azure. De uitbrei ding verzendt opdrachten naar een Azure Storage-eind punt (HTTPs-URL) voor het beheren van de moment opnamen van de virtuele machine. Als de extensie geen toegang heeft tot het open bare Internet, mislukt het maken van de back-up uiteindelijk.
-
-#### <a name="solution"></a>Oplossing
-
-Zie [netwerk verbinding maken](backup-azure-arm-vms-prepare.md#establish-network-connectivity)om het netwerk probleem op te lossen.
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>De agent is geïnstalleerd op de VM, maar reageert niet (voor Windows-Vm's)
 

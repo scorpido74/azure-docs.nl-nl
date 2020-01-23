@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 1a6fb12311fe4474f03c22c91d9b478220adf5d1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c65e1f871fdab2c925f7a5e6747ad23fe8952d9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425538"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512773"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>Ontwerp overwegingen voor het virtuele netwerk en configuratie opties voor Azure AD Domain Services
 
-Als Azure Active Directory Domain Services (AD DS) biedt verificatie-en beheer services aan andere toepassingen en werk belastingen, is de netwerk verbinding een belang rijk onderdeel. Zonder de juiste geconfigureerde virtuele netwerk bronnen kunnen toepassingen en werk belastingen niet communiceren met en gebruikmaken van de functies van Azure AD DS. Als u het virtuele netwerk op de juiste wijze plant, moet u ervoor zorgen dat Azure AD DS uw toepassingen en werk belastingen naar behoefte kan leveren.
+Als Azure Active Directory Domain Services (AD DS) biedt verificatie-en beheer services aan andere toepassingen en werk belastingen, is de netwerk verbinding een belang rijk onderdeel. Zonder correct geconfigureerde virtuele netwerk bronnen kunnen toepassingen en werk belastingen niet communiceren met en gebruikmaken van de functies van Azure AD DS. Plan de vereisten van uw virtuele netwerk om ervoor te zorgen dat Azure AD DS uw toepassingen en werk belastingen naar behoefte kan leveren.
 
-In dit artikel vindt u een overzicht van overwegingen en vereisten voor het ontwerp van een virtueel Azure-netwerk dat Azure AD DS ondersteunt.
+In dit artikel vindt u een overzicht van overwegingen en vereisten voor het ontwerp van een virtueel Azure-netwerk ter ondersteuning van Azure AD DS.
 
 ## <a name="azure-virtual-network-design"></a>Azure Virtual Network-ontwerp
 
@@ -33,7 +33,7 @@ Wanneer u het virtuele netwerk voor Azure AD DS ontwerpt, zijn de volgende overw
 * Azure AD DS moet in dezelfde Azure-regio worden geïmplementeerd als uw virtuele netwerk.
     * Op dit moment kunt u slechts één door Azure AD DS beheerd domein implementeren per Azure AD-Tenant. Het beheerde domein van Azure AD DS wordt geïmplementeerd in een enkele regio. Zorg ervoor dat u een virtueel netwerk maakt of selecteert in een [regio die Azure-AD DS ondersteunt](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all).
 * Denk na over de nabijheid van andere Azure-regio's en de virtuele netwerken die als host fungeren voor de werk belasting van uw toepassing.
-    * Als u de latentie wilt minimaliseren, houdt u uw belangrijkste toepassingen dicht bij of in dezelfde regio als het subnet van het virtuele netwerk voor uw Azure AD DS beheerde domein. U kunt peering van virtuele netwerken of VPN-verbindingen (virtueel particulier netwerk) tussen virtuele netwerken van Azure gebruiken.
+    * Als u de latentie wilt minimaliseren, houdt u uw belangrijkste toepassingen dicht bij of in dezelfde regio als het subnet van het virtuele netwerk voor uw Azure AD DS beheerde domein. U kunt peering van virtuele netwerken of VPN-verbindingen (virtueel particulier netwerk) tussen virtuele netwerken van Azure gebruiken. Deze verbindings opties worden beschreven in een van de volgende secties.
 * Het virtuele netwerk is niet afhankelijk van de DNS-services die door Azure AD DS worden verschaft.
     * Azure AD DS biedt een eigen DNS-service. Het virtuele netwerk moet worden geconfigureerd voor het gebruik van deze DNS-service adressen. Naam omzetting voor extra naam ruimten kan worden uitgevoerd met behulp van voorwaardelijke doorstuur servers.
     * U kunt geen aangepaste DNS-server instellingen gebruiken om query's te sturen van andere DNS-servers, inclusief op Vm's. Resources in het virtuele netwerk moeten gebruikmaken van de DNS-service van Azure AD DS.
@@ -62,7 +62,7 @@ U kunt met behulp van een van de volgende methoden toepassings werkbelastingen d
 * Virtual Network-peering
 * VPN-verbinding (Virtual Private Network)
 
-### <a name="virtual-network-peering"></a>Virtual Network peering
+### <a name="virtual-network-peering"></a>Virtual Network-peering
 
 Peering op virtueel netwerk is een mechanisme dat twee virtuele netwerken in dezelfde regio verbindt via het Azure-backbone-netwerk. Wereld wijde virtuele netwerk peering kan virtueel netwerk verbinden tussen Azure-regio's. Als de twee virtuele netwerken zijn gekoppeld, kunnen resources, zoals virtuele machines, rechtstreeks communiceren met behulp van privé-IP-adressen. Met Virtual Network-peering kunt u een door Azure AD DS beheerd domein implementeren met uw toepassings werkbelastingen die in andere virtuele netwerken zijn geïmplementeerd.
 
@@ -70,7 +70,7 @@ Peering op virtueel netwerk is een mechanisme dat twee virtuele netwerken in dez
 
 Zie [overzicht van Azure Virtual Network-peering](../virtual-network/virtual-network-peering-overview.md)voor meer informatie.
 
-### <a name="virtual-private-networking"></a>Virtueel particulier netwerk
+### <a name="virtual-private-networking-vpn"></a>Virtueel particulier netwerk (VPN)
 
 U kunt een virtueel netwerk verbinden met een ander virtueel netwerk (VNet-naar-VNet) op dezelfde manier als u een virtueel netwerk op een on-premises site locatie kunt configureren. Beide verbindingen gebruiken een VPN-gateway om een beveiligde tunnel met IPsec/IKE te maken. Met dit verbindings model kunt u Azure-AD DS implementeren in een virtueel Azure-netwerk en vervolgens on-premises locaties of andere Clouds verbinden.
 
@@ -91,8 +91,8 @@ Een door Azure AD DS beheerd domein maakt sommige netwerk bronnen tijdens de imp
 | Azure-resource                          | Beschrijving |
 |:----------------------------------------|:---|
 | Netwerk interface kaart                  | Azure AD DS fungeert als host voor het beheerde domein op twee domein controllers (Dc's) die worden uitgevoerd op Windows Server als Azure-Vm's. Elke VM heeft een virtuele netwerk interface die verbinding maakt met het subnet van het virtuele netwerk. |
-| Dynamisch standaard openbaar IP-adres         | Azure AD DS communiceert met de synchronisatie-en beheer service met een standaard-SKU openbaar IP-adres. Zie [IP-adres typen en toewijzings methoden in azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md)voor meer informatie over open bare IP-adressen. |
-| Azure Standard load balancer               | Azure AD DS maakt gebruik van een standaard-SKU load balancer voor Network Address Translation (NAT) en taak verdeling (bij gebruik met beveiligde LDAP). Zie [Wat is Azure Load Balancer?](../load-balancer/load-balancer-overview.md) voor meer informatie over Azure load balancers. |
+| Dynamisch standaard openbaar IP-adres      | Azure AD DS communiceert met de synchronisatie-en beheer service met een standaard-SKU openbaar IP-adres. Zie [IP-adres typen en toewijzings methoden in azure](../virtual-network/virtual-network-ip-addresses-overview-arm.md)voor meer informatie over open bare IP-adressen. |
+| Azure Standard load balancer            | Azure AD DS maakt gebruik van een standaard-SKU load balancer voor Network Address Translation (NAT) en taak verdeling (bij gebruik met beveiligde LDAP). Zie [Wat is Azure Load Balancer?](../load-balancer/load-balancer-overview.md) voor meer informatie over Azure load balancers. |
 | NAT-regels (Network Address Translation) | Azure AD DS maakt en gebruikt drie NAT-regels voor de load balancer-één regel voor beveiligd HTTP-verkeer en twee regels voor beveiligde communicatie met Power shell. |
 | Regels voor load balancers                     | Wanneer een beheerd domein van Azure AD DS is geconfigureerd voor beveiligde LDAP op TCP-poort 636, worden er drie regels gemaakt en gebruikt in een load balancer om het verkeer te distribueren. |
 
@@ -160,7 +160,3 @@ Raadpleeg de volgende artikelen voor meer informatie over sommige netwerk bronne
 * [Peering van het virtuele netwerk van Azure](../virtual-network/virtual-network-peering-overview.md)
 * [Azure VPN-gateways](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
 * [Azure-netwerk beveiligings groepen](../virtual-network/security-overview.md)
-
-<!-- INTERNAL LINKS -->
-
-<!-- EXTERNAL LINKS -->

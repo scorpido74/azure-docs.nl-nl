@@ -1,19 +1,19 @@
 ---
 title: Azure Event Grid-gebeurtenis schema
-description: Beschrijft de eigenschappen die worden gegeven voor gebeurtenissen met Azure Event Grid
+description: Hierin worden de eigenschappen en schema's beschreven die voor alle gebeurtenissen aanwezig zijn. Gebeurtenissen bestaan uit een set van vijf vereiste teken reeks eigenschappen en een vereist gegevens object.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/20/2019
+ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 44cc611a9a7d71a3ac4ac7b0d779b18778d0aacd
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1fceda6fcbb6e8db1fa8afbc5181315bd0c98940
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607608"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512977"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid-gebeurtenis schema
 
@@ -85,14 +85,14 @@ Alle gebeurtenissen hebben dezelfde gegevens op het hoogste niveau:
 
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
-| onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld is niet beschrijfbaar. Event Grid levert deze waarde. |
-| Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenis onderwerp. |
-| Type | tekenreeks | Een van de geregistreerde gebeurtenis typen voor deze gebeurtenis bron. |
-| eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
-| id | tekenreeks | De unieke id voor de gebeurtenis. |
-| gegevens | object | Gebeurtenis gegevens die specifiek zijn voor de resource provider. |
-| dataVersion | tekenreeks | De schema versie van het gegevens object. De uitgever definieert de schema versie. |
-| metadataVersion | tekenreeks | De schema versie van de meta gegevens van de gebeurtenis. Event Grid definieert het schema van de eigenschappen op het hoogste niveau. Event Grid levert deze waarde. |
+| onderwerp | string | Volledige bronpad naar de bron van de gebeurtenis. Dit veld is niet beschrijfbaar. Event Grid biedt deze waarde. |
+| subject | string | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
+| eventType | string | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| eventTime | string | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
+| id | string | De unieke id voor de gebeurtenis. |
+| data | object | Gebeurtenis gegevens die specifiek zijn voor de resource provider. |
+| dataVersion | string | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
+| metadataVersion | string | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
 
 Zie de gebeurtenis bron voor meer informatie over de eigenschappen in het gegevens object:
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 651094f043162cdc5f6d522c90c7567ae94a4274
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 01/21/2020
+ms.openlocfilehash: b38838c20e4ab18b64cabcb2749ec39163f1b52d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746654"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515051"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mariadb"></a>Trage query Logboeken in Azure Database for MariaDB
 In Azure Database for MariaDB is het langzame query logboek beschikbaar voor gebruikers. Toegang tot het transactie logboek wordt niet ondersteund. Het logboek met trage query's kan worden gebruikt om prestatie knelpunten voor het oplossen van problemen te identificeren.
@@ -42,6 +42,10 @@ Andere para meters die u kunt aanpassen zijn onder andere:
 - **log_queries_not_using_indexes**: bepaalt of query's die geen indexen gebruiken, worden geregistreerd in het slow_query_log
 - **log_throttle_queries_not_using_indexes**: deze para meter beperkt het aantal niet-index query's dat naar het langzame query logboek kan worden geschreven. Deze para meter wordt van kracht als log_queries_not_using_indexes is ingesteld op aan.
 - **log_output**: als ' bestand ' is, kan het langzame query logboek worden geschreven naar zowel de lokale server opslag als Azure monitor Diagnostische logboeken. Als ' geen ' is, wordt het logboek met trage query's alleen naar Azure Monitor Diagnostische logboeken geschreven. 
+
+> [!IMPORTANT]
+> Als uw tabellen niet worden geïndexeerd, is het instellen van de `log_queries_not_using_indexes`-en `log_throttle_queries_not_using_indexes`-para meters op in mogelijk van invloed op de prestaties van MariaDB omdat alle query's die worden uitgevoerd op deze niet-geïndexeerde tabellen, worden geschreven naar het logboek voor langzame query's.<br><br>
+> Als u logboek registratie van langzame query's gedurende een lange periode wilt plannen, wordt aangeraden om `log_output` in te stellen op ' geen '. Als deze is ingesteld op ' bestand ', worden deze logboeken naar de lokale server opslag geschreven en kunnen ze de prestaties van MariaDB beïnvloeden. 
 
 Zie de documentatie voor MariaDB [langzame query logboeken](https://mariadb.com/kb/en/library/slow-query-log-overview/) voor volledige beschrijvingen van de para meters van de langzame query-Logboeken.
 
@@ -81,5 +85,61 @@ In de volgende tabel wordt de inhoud van elk logboek beschreven. Afhankelijk van
 | `thread_id_s` | Thread-id |
 | `\_ResourceId` | Resource-URI |
 
+## <a name="analyze-logs-in-azure-monitor-logs"></a>Logboeken analyseren in Azure Monitor-logboeken
+
+Als uw logboeken voor trage query's worden gepiped naar Azure Monitor logboeken via Diagnostische logboeken, kunt u uw trage query's verder analyseren. Hieronder vindt u enkele voor beelden van query's waarmee u aan de slag kunt gaan. Zorg ervoor dat u het onderstaande bijwerkt met de naam van uw server.
+
+- Query's die langer zijn dan 10 seconden op een bepaalde server
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | where query_time_d > 10
+    ```
+
+- Top 5 van de langste query's vermelden op een bepaalde server
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | order by query_time_d desc
+    | take 5
+    ```
+
+- Een overzicht van langzame query's op basis van de query tijd minimum, maximum, gemiddelde en standaard afwijking op een bepaalde server
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | summarize count(), min(query_time_d), max(query_time_d), avg(query_time_d), stdev(query_time_d), percentile(query_time_d, 95) by LogicalServerName_s
+    ```
+
+- De langzame query distributie op een bepaalde server tekenen
+
+    ```Kusto
+    AzureDiagnostics
+    | where LogicalServerName_s == '<your server name>'
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | summarize count() by LogicalServerName_s, bin(TimeGenerated, 5m)
+    | render timechart
+    ```
+
+- Query's die langer zijn dan 10 seconden weer geven op alle MariaDB-servers met Diagnostische logboeken ingeschakeld
+
+    ```Kusto
+    AzureDiagnostics
+    | where Category == 'MySqlSlowLogs'
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | where query_time_d > 10
+    ```    
+    
 ## <a name="next-steps"></a>Volgende stappen
-- [Het configureren en openen van server logboeken vanuit de Azure Portal](howto-configure-server-logs-portal.md).
+- [Langzame query logboeken configureren vanuit de Azure Portal](howto-configure-server-logs-portal.md)
+- [Langzame query logboeken configureren vanuit de Azure CLI](howto-configure-server-logs-cli.md)

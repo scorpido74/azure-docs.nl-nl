@@ -1,6 +1,6 @@
 ---
-title: Wat is een Azure AD toegevoegd apparaat?
-description: Meer informatie over hoe identiteit Apparaatbeheer kan u helpen om apparaten die toegang hebben tot bronnen in uw omgeving te beheren.
+title: Wat is een toegevoegd Azure AD-apparaat?
+description: Meer informatie over hoe het beheer van apparaat-id's u kan helpen bij het beheren van apparaten die toegang hebben tot resources in uw omgeving.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,45 +11,45 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4af3aea7218ea8792bb66188e8df7baf9f460b0b
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 24ec4373bceb3cc3c9e5be2c7a0dab1f62197b3c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462809"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512195"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD-gekoppelde apparaten
 
-Azure AD join is bedoeld voor organisaties die willen cloud-first of alleen in de cloud. Elke organisatie kunt implementeren in Azure AD gekoppelde apparaten, ongeacht de grootte of bepaalde industrie voldoen. Azure AD join werkt zelfs in een hybride omgeving, toegang tot zowel cloud en on-premises apps en resources.
+Deelname aan Azure AD is bedoeld voor organisaties die alleen in de Cloud of alleen in de Cloud moeten worden opgenomen. Elke organisatie kan aan Azure AD gekoppelde apparaten implementeren, ongeacht de omvang of de branche. Azure AD-deelname werkt zelfs in een hybride omgeving en biedt toegang tot zowel Cloud-als on-premises apps en bronnen.
 
-|   | Azure AD Join |
+|   | Azure AD-Join |
 | --- | --- |
-| **Definitie** | Alleen lid is van Azure AD-organisatie-account dat zich aanmeldt bij het apparaat |
-| **Primaire doelgroep** | Geschikt voor beide alleen in de cloud en hybride organisaties. |
+| **Definitie** | Alleen opgenomen in azure AD waarvoor een organisatie account is vereist om zich aan te melden bij het apparaat |
+| **Primaire doel groep** | Alleen geschikt voor Cloud-en hybride organisaties. |
 |   | Van toepassing op alle gebruikers in een organisatie |
-| **Eigendom van het apparaat** | Organisatie |
-| **Besturingssystemen** | Alle Windows 10-apparaten |
-| **Inrichten** | Self-service: Windows OOBE- of -instellingen |
+| **Eigendom van apparaat** | Organisatie |
+| **Besturings systemen** | Alle Windows 10-apparaten |
+| **Inrichten** | Self-service: Windows OOBE of instellingen |
 |   | Bulkinschrijving |
 |   | Windows Autopilot |
-| **Apparaat aanmeldopties** | Organisatie-accounts met behulp van: |
+| **Aanmeldings opties voor apparaten** | Organisatie accounts met: |
 |   | Wachtwoord |
 |   | Windows Hello voor Bedrijven |
-|   | Beveiligingssleutels FIDO2.0 (preview) |
-| **Apparaatbeheer** | Beheer van mobiele apparaten (voorbeeld: Microsoft Intune) |
-|   | CO-beheer met Microsoft Intune en System Center Configuration Manager |
-| **Belangrijkste mogelijkheden** | Eenmalige aanmelding tot zowel cloud en on-premises bronnen |
-|   | Voorwaardelijke toegang via MDM-registratie en evaluatie van de MDM-naleving |
-|   | Selfservice voor wachtwoordherstel en Windows Hello-PINCODE opnieuw instellen op het vergrendelingsscherm |
-|   | Enterprise State Roaming via apparaten |
+|   | FIDO 2.0-beveiligings sleutels (preview-versie) |
+| **Apparaatbeheer** | Beheer van mobiele apparaten (voor beeld: Microsoft Intune) |
+|   | Co-beheer met Microsoft Intune en micro soft-eind punt Configuration Manager |
+| **Belangrijkste mogelijkheden** | Eenmalige aanmelding voor zowel Cloud-als on-premises resources |
+|   | Voorwaardelijke toegang via MDM-inschrijving en MDM-nalevings evaluatie |
+|   | Selfservice voor wachtwoord herstel en Windows hello pincode opnieuw instellen op vergrendelings scherm |
+|   | Enterprise State Roaming op verschillende apparaten |
 
-Azure AD gekoppelde apparaten voor het gebruik van een organisatie zijn ondertekend in Azure AD-account. Toegang tot resources in de organisatie kan verder worden beperkt op basis van die Azure AD-account en [beleid voor voorwaardelijke toegang](../conditional-access/overview.md) toegepast op de apparaat-id.
+Aan Azure AD gekoppelde apparaten zijn aangemeld voor het gebruik van een Azure AD-account in de organisatie. Toegang tot resources in de organisatie kan verder worden beperkt op basis van het Azure AD-account en het [beleid voor voorwaardelijke toegang](../conditional-access/overview.md) dat wordt toegepast op de apparaat-id.
 
-Beheerders kunnen beveiligen en verdere controle Azure AD-apparaten met behulp van Mobile Device Management (MDM)-hulpprogramma's, zoals Microsoft Intune of in scenario's met CO-beheer met behulp van System Center Configuration Manager toegevoegd. Deze hulpprogramma's bieden een mogelijkheid organisatie vereist configuraties, zoals het vereisen van opslag moeten worden versleuteld, wachtwoordcomplexiteit, software-installaties en software-updates af te dwingen. Beheerders kunnen organisatie toepassingen beschikbaar te maken in Azure AD gekoppelde apparaten met behulp van [System Center Configuration Manager en de Microsoft Store voor bedrijven](https://docs.microsoft.com/sccm/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
+Beheerders kunnen apparaten die zijn toegevoegd aan Azure AD beveiligen en verder beheren met de MDM-hulpprogram ma's (Mobile Device Management), zoals Microsoft Intune of in scenario's voor co-beheer met micro soft endpoint Configuration Manager. Deze hulpprogram ma's bieden een manier om organisatie-vereiste configuraties af te dwingen, zoals het vereisen van een versleutelde opslag, wachtwoord complexiteit, software-installatie en software-updates. Beheerders kunnen organisatie toepassingen beschikbaar maken voor apparaten die lid zijn van Azure AD met behulp van Configuration Manager om [apps te beheren via de Microsoft Store voor bedrijven en onderwijs](https://docs.microsoft.com/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
 
-Azure AD join kan worden gerealiseerd met selfservice-opties, zoals de Out of Box Experience (OOBE), bulkinschrijving, of [Windows Autopilot](https://docs.microsoft.com/intune/enrollment-autopilot).
+Azure AD-deelname kan worden uitgevoerd met selfservice opties zoals out of Box Experience (OOBE), bulk inschrijving of [Windows auto pilot](https://docs.microsoft.com/intune/enrollment-autopilot).
 
-Azure AD gekoppelde apparaten gewoon nog steeds één aanmelding toegang tot de on-premises bronnen wanneer ze op het netwerk van de organisatie. Apparaten die toegevoegd aan Azure AD zijn kunnen nog steeds verifiëren met on-premises servers zoals bestand, afdrukken en andere toepassingen.
+Apparaten die aan Azure AD zijn toegevoegd, kunnen nog steeds toegang tot uw on-premises resources hebben bij het gebruik van eenmalige aanmelding wanneer ze zich op het netwerk van de organisatie bevinden. Apparaten die zijn toegevoegd aan Azure AD, kunnen nog steeds worden geverifieerd voor on-premises servers zoals bestanden, printers en andere toepassingen.
 
 ## <a name="scenarios"></a>Scenario's
 
@@ -58,7 +58,7 @@ Hoewel Azure AD-koppeling voornamelijk is bedoeld voor organisaties die geen on-
 - U wilt overstappen op cloudgebaseerde infrastructuur met behulp van Azure AD en MDM zoals Intune.
 - U geen on-premises domeinkoppeling kunt gebruiken, bijvoorbeeld als u mobiele apparaten zoals tablets en telefoons onder controle moet krijgen.
 - Uw gebruikers voornamelijk toegang nodig hebben tot Office 365 of andere SaaS-apps die zijn geïntegreerd met Azure AD.
-- U een groep gebruikers in Azure AD wilt beheren in plaats van in Active Directory. In dit scenario kunt toepassen, bijvoorbeeld op seizoenswerkers, aannemers of studenten.
+- U een groep gebruikers in Azure AD wilt beheren in plaats van in Active Directory. Dit scenario kan bijvoorbeeld van toepassing zijn op seizoen arbeiders, aannemers of studenten.
 - U koppelingsmogelijkheden wilt bieden aan medewerkers in externe filialen met beperkte on-premises infrastructuur.
 
 U kunt Azure AD-gekoppelde apparaten configureren voor Windows 10-apparaten.
@@ -68,7 +68,7 @@ Het doel van Azure AD-gekoppelde apparaten is vereenvoudiging van:
 - Windows-implementaties van apparaten die eigendom van het bedrijf zijn
 - Toegang tot apps en bronnen van de organisatie vanaf elk Windows-apparaat
 - Cloudgebaseerd beheer van apparaten die eigendom van het bedrijf zijn
-- Gebruikers zich aanmelden op hun apparaten met hun Azure AD of gesynchroniseerde Active Directory werk- of schoolaccount.
+- Gebruikers om zich aan te melden bij hun apparaten met hun Azure AD-of gesynchroniseerde Active Directory werk-of school account.
 
 ![Azure AD-gekoppelde apparaten](./media/concept-azure-ad-join/azure-ad-joined-device.png)
 
@@ -80,7 +80,7 @@ Azure AD-koppeling kan via een van de volgende methoden worden geïmplementeerd:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Uw Azure AD join-implementatie plannen](azureadjoin-plan.md)
-- [Over het beheren van de lokale groep administrators op de Azure AD gekoppelde apparaten](assign-local-admin.md)
-- [Apparaat-id's met behulp van de Azure-portal beheren](device-management-azure-portal.md)
-- [Verouderde apparaten beheren in Azure AD](manage-stale-devices.md)
+- [De implementatie van Azure AD-deelname plannen](azureadjoin-plan.md)
+- [De lokale groep Administrators beheren op apparaten die zijn toegevoegd aan Azure AD](assign-local-admin.md)
+- [Apparaat-id's beheren met de Azure Portal](device-management-azure-portal.md)
+- [Verouderde apparaten beheren in azure AD](manage-stale-devices.md)

@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6b7414d67a5c5b068c675ef7b57391b8990a7a16
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: dec6faab0dfc7f073639186429767bbf653ceda1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953075"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513606"
 ---
 # <a name="offline-evaluation"></a>Offline-evaluatie
 
-Offline-evaluatie is een methode waarmee u de effectiviteit van de Personaler service kunt testen en evalueren zonder uw code te wijzigen of de gebruikers ervaring te beïnvloeden. Offline-evaluatie maakt gebruik van vroegere gegevens, verzonden vanuit uw toepassing naar de Rank-API om te vergelijken hoe verschillende posities zijn uitgevoerd.
+Offline-evaluatie is een methode waarmee u de effectiviteit van de Personaler service kunt testen en evalueren zonder uw code te wijzigen of de gebruikers ervaring te beïnvloeden. Offline-evaluatie maakt gebruik van vroegere gegevens, verzonden vanuit uw toepassing naar de Rank-en belonings-Api's om te vergelijken hoe verschillende posities zijn uitgevoerd.
 
 Offline-evaluatie wordt uitgevoerd op een datum bereik. Het bereik kan worden voltooid zo laat als de huidige tijd. Het begin van het bereik kan niet groter zijn dan het aantal dagen dat is opgegeven voor het [bewaren van gegevens](how-to-settings.md).
 
@@ -56,9 +56,9 @@ Wanneer u een offline-evaluatie uitvoert, is het belang rijk om de _vertrouwens 
 
 ## <a name="how-offline-evaluations-are-done"></a>Hoe offline-evaluaties worden uitgevoerd
 
-Offline-evaluaties worden uitgevoerd met behulp van een methode met de naam **counterfactual Evaluation**. 
+Offline-evaluaties worden uitgevoerd met behulp van een methode met de naam **counterfactual Evaluation**.
 
-Personaler is gebouwd op basis van de veronderstelling dat het gedrag van gebruikers (en dus beloningen) niet retro actief kan voors pellen (Personaler kan niet weten wat er zou gebeuren als de gebruiker iets anders zou hebben weer gegeven dan het had zien) en alleen om te leren van gemeten beloningen. 
+Personaler is gebouwd op basis van de veronderstelling dat het gedrag van gebruikers (en dus beloningen) niet retro actief kan voors pellen (Personaler kan niet weten wat er zou gebeuren als de gebruiker iets anders zou hebben weer gegeven dan het had zien) en alleen om te leren van gemeten beloningen.
 
 Dit is het conceptuele proces dat wordt gebruikt voor evaluaties:
 
@@ -70,11 +70,11 @@ Dit is het conceptuele proces dat wordt gebruikt voor evaluaties:
     [For every chronological event in the logs]
     {
         - Perform a Rank call
-    
+
         - Compare the reward of the results against the logged user behavior.
             - If they match, train the model on the observed reward in the logs.
             - If they don't match, then what the user would have done is unknown, so the event is discarded and not used for training or measurement.
-        
+
     }
 
     Add up the rewards and statistics that were predicted, do some aggregation to aid visualizations, and save the results.

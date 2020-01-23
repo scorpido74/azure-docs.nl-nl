@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f0c2f4c48875ca2e13a026c2c8ded8f217a97a08
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 79a8119f1cd43e36ad639cd292afef5c4a4ed740
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293756"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513538"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Wat is Azure Private Link? (Preview)
 Met Azure private link kunt u toegang krijgen tot Azure PaaS-Services (bijvoorbeeld Azure Storage, Azure Cosmos DB en SQL Database) en Azure hostende klanten/partner services via een [persoonlijk eind punt](private-endpoint-overview.md) in uw virtuele netwerk. Verkeer tussen uw virtuele netwerk en de services wordt via het backbonenetwerk van Microsoft geleid, waarmee de risico's van het openbare internet worden vermeden. U kunt ook uw eigen [privé koppelings service](private-link-service-overview.md) maken in uw virtuele netwerk (VNet) en deze privé leveren aan uw klanten. De installatie en consumptie-ervaring met behulp van persoonlijke Azure-koppeling is consistent voor Azure PaaS-, klanten-en Shared partner services.
@@ -50,8 +50,6 @@ Persoonlijke Azure-koppeling biedt de volgende voor delen:
 |  |  Azure Database for PostgreSQL-één server         | Alle open bare regio's      |   Preview      |
 |  |  Azure Database voor MySQL         | Alle open bare regio's      |   Preview      |
 |  |  Azure Database voor MariaDB         | Alle open bare regio's      |   Preview      |
-|  |  Azure Cognitive Search | VS-West 2, West-Centraal VS, VS-Oost, VS Zuid-Centraal, Australië-oost, Australië-zuidoost | Preview <br/> [Meer informatie](/azure/search/service-create-private-endpoint) |
-
 Controleer de [pagina Azure Virtual Network updates](https://azure.microsoft.com/updates/?product=virtual-network)voor de meest recente meldingen.
 
 ## <a name="logging-and-monitoring"></a>Logboekregistratie en bewaking

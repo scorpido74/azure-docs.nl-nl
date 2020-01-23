@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: 96e7cbd09873192d8b73b57cb2b46bf5b7679742
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 3c921bda1b839ee18a91b28f875ba7c84c0dd944
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263452"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515034"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limieten en configuratie-informatie voor Azure Logic Apps
 
@@ -160,7 +160,7 @@ Sommige connector bewerkingen maken asynchrone aanroepen of Luis teren naar webh
 | Name | Opmerkingen |
 |------|-------|
 | Limiet voor evaluatie van expressie | 131.072 tekens | De `@concat()`, `@base64()``@string()`-expressies mogen niet langer zijn dan deze limiet. |
-| Maximum aantal tekens van aanvraag-URL | 32K-tekens |
+| Maximum aantal tekens van aanvraag-URL | 16.384 tekens |
 |||
 
 #### <a name="retry-policy"></a>Beleid voor opnieuw proberen

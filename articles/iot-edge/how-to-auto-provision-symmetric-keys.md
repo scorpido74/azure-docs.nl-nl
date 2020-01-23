@@ -9,21 +9,21 @@ ms.date: 10/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c42d13f4d2e00b67a2ef471a07c80e1ef61e9c07
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 3adefbdf248deaec6170037521ab65890356d184
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666321"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510886"
 ---
 # <a name="create-and-provision-an-iot-edge-device-using-symmetric-key-attestation"></a>Een IoT Edge apparaat maken en inrichten met behulp van symmetrische sleutel attest
 
-Azure IoT Edge apparaten kunnen automatisch worden ingericht met behulp van de [Device Provisioning Service](../iot-dps/index.yml) , net zoals apparaten die niet Edge-ingeschakeld zijn. Als u niet bekend bent met het proces van automatische inrichting, raadpleegt u de [concepten voor automatische inrichting](../iot-dps/concepts-auto-provisioning.md) voordat u doorgaat.
+Azure IoT Edge-apparaten kunnen worden automatisch kan worden ingericht met behulp van de [Device Provisioning Service](../iot-dps/index.yml) net als bij apparaten die niet Microsoft edge-functionaliteit. Als u niet bekend met het proces van automatische inrichting bent, raadpleegt u de [concepten voor automatische inrichting](../iot-dps/concepts-auto-provisioning.md) voordat u doorgaat.
 
 In dit artikel wordt beschreven hoe u een individuele inschrijving voor een Device Provisioning Service kunt maken met behulp van symmetrische sleutel attest op een IoT Edge apparaat, met de volgende stappen:
 
-* Maak een instantie van IoT Hub Device Provisioning Service (DPS).
-* Een afzonderlijke inschrijving voor het apparaat maken.
+* Maak een exemplaar van de IoT Hub Device Provisioning Service (DPS).
+* Maak een afzonderlijke inschrijving voor het apparaat.
 * Installeer de IoT Edge runtime en maak verbinding met de IoT Hub.
 
 Symmetrische-sleutel attest is een eenvoudige benadering voor het verifiëren van een apparaat met een Device Provisioning service-exemplaar. Deze Attestation-methode vertegenwoordigt een ' Hello World '-ervaring voor ontwikkel aars die nieuw zijn voor het inrichten van apparaten of waarvoor geen strikte beveiligings vereisten gelden. Attestation van apparaten met behulp van een [TPM](../iot-dps/concepts-tpm-attestation.md) of [X. 509-certificaten](../iot-dps/concepts-security.md#x509-certificates) is veiliger en moet worden gebruikt voor strengere beveiligings vereisten.
@@ -35,36 +35,32 @@ Symmetrische-sleutel attest is een eenvoudige benadering voor het verifiëren va
 
 ## <a name="set-up-the-iot-hub-device-provisioning-service"></a>De IoT Hub Device Provisioning Service instellen
 
-Maak een nieuw exemplaar van de IoT Hub Device Provisioning Service in Azure en koppel deze aan uw IoT-hub. U kunt de instructies voor [het instellen van de IOT hub DPS](../iot-dps/quick-setup-auto-provision.md)volgen.
+Maak een nieuw exemplaar van de IoT Hub Device Provisioning Service in Azure en een koppeling naar uw IoT hub. U kunt de instructies in [instellen van de IoT Hub-DPS](../iot-dps/quick-setup-auto-provision.md).
 
-Nadat u de Device Provisioning Service hebt uitgevoerd, kopieert u de waarde van **id-bereik** van de pagina overzicht. U gebruikt deze waarde bij het configureren van de IoT Edge runtime.
+Nadat u de Device Provisioning Service die wordt uitgevoerd hebt, kopieert u de waarde van **ID-bereik** van de overzichtspagina. U gebruikt deze waarde bij het configureren van de IoT Edge-runtime.
 
 ## <a name="choose-a-unique-registration-id-for-the-device"></a>Een unieke registratie-ID voor het apparaat kiezen
 
 Er moet een unieke registratie-ID worden gedefinieerd om elk apparaat te identificeren. U kunt het MAC-adres, serie nummer of unieke informatie van het apparaat gebruiken.
 
-In dit voor beeld gebruiken we een combi natie van een MAC-adres en serie nummer dat de volgende teken reeks voor een registratie-ID vormt.
-
-```
-sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
-```
+In dit voor beeld gebruiken we een combi natie van een MAC-adres en serie nummer met de volgende teken reeks voor een registratie-ID: `sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6`.
 
 Maak een unieke registratie-ID voor uw apparaat. Geldige tekens zijn kleine letters en streepjes ('-').
 
-## <a name="create-a-dps-enrollment"></a>Een DPS-inschrijving maken
+## <a name="create-a-dps-enrollment"></a>Maken van een DPS-inschrijving
 
 Gebruik de registratie-ID van uw apparaat om een afzonderlijke inschrijving in DPS te maken.
 
-Wanneer u een inschrijving in DPS maakt, hebt u de mogelijkheid om een **eerste dubbele toestand**van het apparaat te declareren. In het dubbele apparaat kunt u Tags instellen om apparaten te groeperen op elke gewenste metrische waarde in uw oplossing, zoals regio, omgeving, locatie of apparaattype. Deze tags worden gebruikt voor het maken van [automatische implementaties](how-to-deploy-monitor.md).
+Wanneer u een inschrijving in DPS maakt, hebt u de mogelijkheid om te declareren een **oorspronkelijke Apparaatdubbelstatus**. U kunt in de apparaatdubbel labels instellen om apparaten te groeperen door elke meetwaarde die u nodig hebt in uw oplossing, zoals regio, omgeving, locatie, of het apparaat. Deze tags zijn gebruikt voor het maken [automatische implementaties](how-to-deploy-monitor.md).
 
 > [!TIP]
 > Groeps registraties zijn ook mogelijk bij het gebruik van symmetrische sleutel attest en dezelfde beslissingen als afzonderlijke inschrijvingen.
 
 1. Ga in het [Azure Portal](https://portal.azure.com)naar uw exemplaar van IOT hub Device Provisioning Service.
 
-1. Selecteer onder **instellingen**de optie **inschrijvingen beheren**.
+1. Onder **instellingen**, selecteer **registraties beheren**.
 
-1. Selecteer **Individuele inschrijving toevoegen** en voer de volgende stappen uit om de registratie te configureren:  
+1. Selecteer **afzonderlijke registratie toevoegen** voltooit u de volgende stappen om de registratie te configureren:  
 
    1. Selecteer voor **mechanisme** **symmetrische sleutel**.
 
@@ -72,17 +68,17 @@ Wanneer u een inschrijving in DPS maakt, hebt u de mogelijkheid om een **eerste 
 
    1. Geef de **registratie-id** op die u hebt gemaakt voor uw apparaat.
 
-   1. Geef een **IOT hub apparaat-id** voor uw apparaat op als u wilt. U kunt apparaat-Id's gebruiken om een afzonderlijk apparaat te richten op het implementeren van een module. Als u geen apparaat-ID opgeeft, wordt de registratie-ID gebruikt.
+   1. Geef een **IOT hub apparaat-id** voor uw apparaat op als u wilt. Apparaat-id's kunt u richten op een afzonderlijk apparaat voor de implementatie van beleidsmodule. Als u geen apparaat-ID opgeeft, wordt de registratie-ID gebruikt.
 
    1. Selecteer **waar** om te declareren dat de inschrijving voor een IOT edge apparaat is. Voor de registratie van een groep moeten alle apparaten worden IoT Edge apparaten of geen van beide.
 
    1. Accepteer de standaard waarde van het toewijzings beleid van de Device Provisioning Service voor de **manier waarop u apparaten aan hubs wilt toewijzen** of kies een andere waarde die specifiek is voor deze inschrijving.
 
-   1. Kies de gekoppelde **IOT hub** waarmee u uw apparaat wilt verbinden. U kunt meerdere hubs kiezen en het apparaat wordt toegewezen aan een van deze op basis van het geselecteerde toewijzings beleid.
+   1. Kies de gekoppelde **IoT-Hub** dat u wilt verbinding maken met uw apparaat. U kunt meerdere hubs kiezen en het apparaat wordt toegewezen aan een van deze op basis van het geselecteerde toewijzings beleid.
 
    1. Kies **hoe u wilt dat apparaatgegevens worden verwerkt bij het opnieuw inrichten** wanneer apparaten na de eerste keer worden ingericht.
 
-   1. Voeg indien gewenst een tag-waarde toe aan de **eerste dubbele toestand** van het apparaat. U kunt tags gebruiken om groepen apparaten te richten op het implementeren van modules. Bijvoorbeeld:
+   1. Een tagwaarde toevoegen aan de **oorspronkelijke Apparaatdubbelstatus** als u wilt. U kunt tags voor doelgroepen van apparaten gebruiken voor de implementatie van beleidsmodule. Bijvoorbeeld:
 
       ```json
       {
@@ -153,9 +149,9 @@ echo "`n$derivedkey`n"
 Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
-## <a name="install-the-iot-edge-runtime"></a>De IoT Edge runtime installeren
+## <a name="install-the-iot-edge-runtime"></a>IoT Edge-runtime installeren
 
-De IoT Edge-runtime wordt op alle IoT Edge-apparaten geïmplementeerd. De onderdelen worden in containers uitgevoerd en bieden u de mogelijkheid om extra containers op het apparaat te implementeren, zodat u code aan de rand kunt uitvoeren.
+De IoT Edge-runtime wordt op alle IoT Edge-apparaten geïmplementeerd. De onderdelen in containers worden uitgevoerd, en kunnen u extra containers implementeren op het apparaat, zodat u kunt de code aan de rand uitvoeren.
 
 U hebt de volgende informatie nodig bij het inrichten van uw apparaat:
 
@@ -168,7 +164,7 @@ U hebt de volgende informatie nodig bij het inrichten van uw apparaat:
 
 ### <a name="linux-device"></a>Linux-apparaat
 
-Volg de instructies voor de architectuur van uw apparaat. Zorg ervoor dat u de IoT Edge-runtime configureert voor automatisch, niet hand matig, inrichten.
+Volg de instructies voor de architectuur van uw apparaat. Zorg ervoor dat u de IoT Edge-runtime voor het inrichten van automatische, niet handmatig configureren.
 
 [Installeer de Azure IoT Edge runtime op Linux](how-to-install-iot-edge-linux.md)
 
@@ -186,7 +182,7 @@ provisioning:
       symmetric_key: "{symmetric_key}"
 ```
 
-Vervang de waarden van de tijdelijke aanduidingen voor `{scope_id}`, `{registration_id}`en `{symmetric_key}` met de gegevens die u eerder hebt verzameld.
+Vervang de waarden van de tijdelijke aanduidingen voor `{scope_id}`, `{registration_id}`en `{symmetric_key}` met de gegevens die u eerder hebt verzameld. Zorg ervoor dat het **inrichten:** de regel heeft geen voorafgaande spatie en dat geneste items met twee spaties worden inge sprongen.
 
 ### <a name="windows-device"></a>Windows-apparaat
 
@@ -194,7 +190,7 @@ Installeer de IoT Edge runtime op het apparaat waarvoor u een afgeleide-apparaat
 
 Zie [install the Azure IOT Edge runtime on Windows](how-to-install-iot-edge-windows.md)(Engelstalig) voor meer informatie over het installeren van IOT Edge op Windows, inclusief vereisten en instructies voor taken zoals het beheren van containers en het bijwerken van IOT Edge.
 
-1. Open een Power shell-venster in de beheerders modus. Zorg ervoor dat u een AMD64-sessie van Power shell gebruikt bij het installeren van IoT Edge, niet in Power shell (x86).
+1. Open een PowerShell-venster in de beheerdersmodus. Zorg ervoor dat u een AMD64-sessie van Power shell gebruikt bij het installeren van IoT Edge, niet in Power shell (x86).
 
 1. Met de opdracht **Deploy-IoTEdge** wordt gecontroleerd of de Windows-computer een ondersteunde versie heeft, wordt de functie containers ingeschakeld, waarna de Moby-runtime en de IOT Edge-runtime worden gedownload. De opdracht wordt standaard ingesteld op het gebruik van Windows-containers.
 
@@ -214,9 +210,9 @@ Zie [install the Azure IOT Edge runtime on Windows](how-to-install-iot-edge-wind
    Initialize-IoTEdge -Dps -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
    ```
 
-## <a name="verify-successful-installation"></a>Geslaagde installatie controleren
+## <a name="verify-successful-installation"></a>Controleer of geslaagde installatie
 
-Als de runtime is gestart, kunt u naar uw IoT Hub gaan en IoT Edge modules op het apparaat implementeren. Gebruik de volgende opdrachten op het apparaat om te controleren of de runtime is geïnstalleerd en is gestart.
+Als de runtime is gestart, kunt u met ingang van uw IoT-Hub en begin met het implementeren van IoT Edge-modules naar uw apparaat. Gebruik de volgende opdrachten op uw apparaat om te controleren dat de runtime geïnstalleerd en gestart.
 
 ### <a name="linux-device"></a>Linux-apparaat
 
@@ -232,7 +228,7 @@ Bekijk service Logboeken.
 journalctl -u iotedge --no-pager --no-full
 ```
 
-Een lijst met actieve modules weer geven.
+Lijst met modules.
 
 ```cmd/sh
 iotedge list
@@ -252,7 +248,7 @@ Bekijk service Logboeken.
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Een lijst met actieve modules weer geven.
+Lijst met modules.
 
 ```powershell
 iotedge list
@@ -262,4 +258,4 @@ U kunt controleren of de afzonderlijke registratie die u hebt gemaakt in Device 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Met het inschrijvings proces voor Device Provisioning Service kunt u de apparaat-ID en de dubbele Tags van het apparaat instellen op hetzelfde moment als u het nieuwe apparaat inricht. U kunt deze waarden gebruiken om afzonderlijke apparaten of groepen apparaten te richten met behulp van automatische Apparaatbeheer. Meer informatie over [het implementeren en bewaken van IOT Edge modules op schaal met behulp van de Azure Portal](how-to-deploy-monitor.md) of [met behulp van Azure cli](how-to-deploy-monitor-cli.md).
+Het inschrijvingsproces Device Provisioning Service kunt u instellen de apparaat-ID en het apparaat dubbele tags op hetzelfde moment als u het nieuwe apparaat inrichten. Deze waarden kunt u afzonderlijke apparaten of groepen van apparaten met behulp van automatische Apparaatbeheer. Meer informatie over het [implementeren en te bewaken IoT Edge-modules op schaal met Azure portal](how-to-deploy-monitor.md) of [met behulp van Azure CLI](how-to-deploy-monitor-cli.md).

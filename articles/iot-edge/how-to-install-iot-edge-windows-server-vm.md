@@ -9,45 +9,47 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: gregman
-ms.openlocfilehash: b32bbfa5e849c1a0490bba5d09d1838268033b26
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 99474246bf1ff5cbcc39861d56f05aa38f177f31
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964660"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510036"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Azure IoT Edge uitvoeren op Windows Server Virtual Machines
 
-Met de Azure IoT Edge runtime wordt een apparaat omgezet in een IoT Edge apparaat. De runtime kan worden geïmplementeerd op apparaten als een Raspberry Pi of zo groot als een industriële server. Zodra een apparaat is geconfigureerd met de IoT Edge runtime, kunt u beginnen met het implementeren van bedrijfs logica vanuit de Cloud.
+De Azure IoT Edge-runtime is wat een apparaat verandert in een IoT Edge-apparaat. De runtime kan worden geïmplementeerd op apparaten als klein is als een Raspberry Pi of even groot zijn als een industrie-server. Wanneer een apparaat is geconfigureerd met de IoT Edge-runtime, kun u bedrijfslogica toe vanuit de cloud implementeren.
 
-Voor meer informatie over de werking van de IoT Edge runtime en welke onderdelen zijn opgenomen, raadpleegt u [de Azure IOT Edge runtime en de bijbehorende architectuur](iot-edge-runtime.md).
+Zie voor meer informatie over de werking van de IoT Edge-runtime en welke onderdelen zijn opgenomen, [inzicht in de Azure IoT Edge-runtime en de bijbehorende architectuur](iot-edge-runtime.md).
 
 In dit artikel worden de stappen beschreven voor het uitvoeren van de Azure IoT Edge runtime op een virtuele machine met Windows Server 2019, met behulp van de [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace-aanbieding. Volg de instructies in [de Azure IOT Edge runtime installeren](how-to-install-iot-edge-windows.md) op Windows voor gebruik met andere versies.
 
 ## <a name="deploy-from-the-azure-marketplace"></a>Implementeren vanuit Azure Marketplace
 
-1.  Ga naar de [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace-aanbieding of zoek in Windows Server op [Azure Marketplace](https://azuremarketplace.microsoft.com/)
-2.  Selecteer **nu downloaden** 
-3.  Zoek in **Software plan**' Windows Server 2019 Data Center Server Core with containers ' en selecteer vervolgens **door gaan** in het volgende dialoog venster.
+1. Ga naar de [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace-aanbieding of zoek in Windows Server op [Azure Marketplace](https://azuremarketplace.microsoft.com/)
+2. Selecteer **nu downloaden**
+3. Zoek in **Software plan**' Windows Server 2019 Data Center Server Core with containers ' en selecteer vervolgens **door gaan** in het volgende dialoog venster.
     * U kunt deze instructies ook gebruiken voor andere versies van Windows Server met containers
-4.  Selecteer in de Azure Portal **maken** en volg de wizard om de virtuele machine te implementeren. 
-    *   Als uw virtuele machine voor het eerst wordt gebruikt, is het handig om een wacht woord te gebruiken en om RDP en SSH in te scha kelen in het menu open bare binnenkomende poort. 
-    *   Als u een resource-intensieve werk belasting hebt, moet u de grootte van de virtuele machine upgraden door meer Cpu's en/of geheugen toe te voegen.
-5.  Wanneer de virtuele machine is geïmplementeerd, configureert u deze om verbinding te maken met uw IoT Hub:
-    1.  Kopieer uw apparaat connection string van uw IoT Edge apparaat dat u hebt gemaakt in uw IoT Hub. Zie de procedure [de Connection String ophalen in de Azure Portal](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal).
-    1.  Selecteer de zojuist gemaakte virtuele-machine bron in het Azure Portal en open de optie **opdracht uitvoeren**
-    1.  Selecteer de optie **RunPowerShellScript**
-    1.  Kopieer dit script naar het opdracht venster met uw apparaat connection string: 
+4. Selecteer in de Azure Portal **maken** en volg de wizard om de virtuele machine te implementeren.
+    * Als uw virtuele machine voor het eerst wordt gebruikt, is het handig om een wacht woord te gebruiken en om RDP en SSH in te scha kelen in het menu open bare binnenkomende poort.
+    * Als u een resource-intensieve werk belasting hebt, moet u de grootte van de virtuele machine upgraden door meer Cpu's en/of geheugen toe te voegen.
+5. Wanneer de virtuele machine is geïmplementeerd, configureert u deze om verbinding te maken met uw IoT Hub:
+    1. Kopieer uw apparaat connection string van uw IoT Edge apparaat dat u hebt gemaakt in uw IoT Hub. Zie de procedure [de Connection String ophalen in de Azure Portal](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal).
+    1. Selecteer de zojuist gemaakte virtuele-machine bron in het Azure Portal en open de optie **opdracht uitvoeren**
+    1. Selecteer de optie **RunPowerShellScript**
+    1. Kopieer dit script naar het opdracht venster met uw apparaat connection string:
+
         ```powershell
         . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
         Install-IoTEdge -Manual -DeviceConnectionString '<connection-string>'
         ```
-    1.  Voer het script uit om de IoT Edge runtime te installeren en stel de connection string in door **uitvoeren** te selecteren.
-    1.  Na een paar minuten wordt een bericht weer gegeven dat de Edge-runtime is geïnstalleerd en is ingericht.
+
+    1. Voer het script uit om de IoT Edge runtime te installeren en stel de connection string in door **uitvoeren** te selecteren.
+    1. Na een paar minuten wordt een bericht weer gegeven dat de Edge-runtime is geïnstalleerd en is ingericht.
 
 ## <a name="deploy-from-the-azure-portal"></a>Implementeren vanuit de Azure Portal
 
-1. Zoek vanuit het Azure Portal naar ' Windows Server ' en selecteer **Windows server 2019 Data Center** om de werk stroom voor het maken van vm's te starten. 
+1. Zoek vanuit het Azure Portal naar ' Windows Server ' en selecteer **Windows server 2019 Data Center** om de werk stroom voor het maken van vm's te starten.
 2. Kies voor **een software abonnement selecteren** "Windows Server 2019 Data Center Server Core with containers" en selecteer vervolgens **maken**
 3. Voltooi stap 5 in de bovenstaande instructies ' implementeren vanuit Azure Marketplace '.
 
@@ -69,7 +71,7 @@ In dit artikel worden de stappen beschreven voor het uitvoeren van de Azure IoT 
    1. Kopieer het veld SubscriptionID voor het abonnement dat u wilt gebruiken
    1. Voer deze opdracht uit met de ID die u hebt gekopieerd:
 
-      ```azurecli-interactive 
+      ```azurecli-interactive
       az account set -s {SubscriptionId}
       ```
 
@@ -96,7 +98,7 @@ In dit artikel worden de stappen beschreven voor het uitvoeren van de Azure IoT 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een IoT Edge apparaat hebt ingericht terwijl de runtime is geïnstalleerd, kunt u [IOT Edge modules implementeren](how-to-deploy-modules-portal.md).
+Nu u een IoT Edge-apparaat dat is ingericht met de runtime geïnstalleerd hebt, kunt u [IoT Edge-modules implementeren](how-to-deploy-modules-portal.md).
 
 Als u problemen ondervindt met het installeren van de Edge-runtime, raadpleegt u de pagina [probleem oplossing](troubleshoot.md) .
 

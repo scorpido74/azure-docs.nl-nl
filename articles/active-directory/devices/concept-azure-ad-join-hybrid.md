@@ -1,6 +1,6 @@
 ---
-title: Wat is een hybride Azure AD toegevoegd apparaat?
-description: Meer informatie over hoe identiteit Apparaatbeheer kan u helpen om apparaten die toegang hebben tot bronnen in uw omgeving te beheren.
+title: Wat is een hybride lid van Azure AD dat is gekoppeld aan het apparaat?
+description: Meer informatie over hoe het beheer van apparaat-id's u kan helpen bij het beheren van apparaten die toegang hebben tot resources in uw omgeving.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c57180ba10322cb790c05b3f8f48043ca08b545
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 15cdaba7d63d72aab25757e7ba6f5eadc48e026a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462744"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512246"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>Hybride Azure AD-gekoppelde apparaten
 
@@ -25,45 +25,45 @@ Al meer dan tien jaar gebruiken vele organisaties de domeinkoppeling naar hun on
 - IT-afdelingen vanaf een centrale locatie apparaten te laten beheren die eigendom van het bedrijf zijn.
 - Gebruikers zich bij hun apparaat te laten aanmelden met hun Active Directory-werkaccount of -schoolaccount.
 
-Organisaties met een on-premises voetafdruk zijn meestal afhankelijk van imaging-methoden om apparaten in te richten, en gebruiken vaak **System Center Configuration Manager (SCCM)** of **groepsbeleid (GP)** om ze te beheren.
+Organisaties met een on-premises footprint zijn doorgaans afhankelijk van de Imaging-methoden om apparaten in te richten en vaak gebruiken ze **Configuration Manager** of **groeps beleid (GP)** om ze te beheren.
 
-Als uw omgeving een on-premises AD-voetafdruk heeft en u ook wilt profiteren van de mogelijkheden die Azure Active Directory biedt, kunt u hybride Azure AD-gekoppelde apparaten implementeren. Deze apparaten zijn apparaten die zijn toegevoegd aan uw on-premises Active Directory en geregistreerd bij uw Azure Active Directory.
+Als uw omgeving een on-premises AD-voetafdruk heeft en u ook wilt profiteren van de mogelijkheden die Azure Active Directory biedt, kunt u hybride Azure AD-gekoppelde apparaten implementeren. Deze apparaten, zijn apparaten die zijn gekoppeld aan uw on-premises Active Directory en zijn geregistreerd bij uw Azure Active Directory.
 
-|   | Hybrid Azure AD Join |
+|   | Hybride Azure AD-deelname |
 | --- | --- |
-| **Definitie** | Verbonden met on-premises AD en Azure AD-organisatie-account dat zich aanmeldt bij het apparaat |
-| **Primaire doelgroep** | Geschikt voor hybride organisaties met bestaande on-premises AD-infrastructuur |
+| **Definitie** | Lid van on-premises AD en Azure AD waarvoor een organisatie account is vereist om zich aan te melden bij het apparaat |
+| **Primaire doel groep** | Geschikt voor hybride organisaties met een bestaande on-premises AD-infra structuur |
 |   | Van toepassing op alle gebruikers in een organisatie |
-| **Eigendom van het apparaat** | Organisatie |
-| **Besturingssystemen** | Windows 10, 8.1 en 7 |
+| **Eigendom van apparaat** | Organisatie |
+| **Besturings systemen** | Windows 10, 8,1 en 7 |
 |   | Windows Server 2008/R2, 2012/R2, 2016 en 2019 |
 | **Inrichten** | Windows 10, Windows Server 2016/2019 |
-|   | Lid van domein door IT en autojoin via Azure AD Connect of AD FS-configuratie |
-|   | Lid van domein door Windows Autopilot en autojoin via Azure AD Connect of AD FS-configuratie |
-|   | Windows 8.1, Windows 7, Windows Server 2012 R2, WindowsServer 2012 en Windows Server 2008 R2 - vereisen MSI |
-| **Apparaat aanmeldopties** | Organisatie-accounts met behulp van: |
+|   | Domein deelname door IT en autolid via Azure AD Connect of ADFS-configuratie |
+|   | Domein deelname door Windows auto pilot en autojoin's via Azure AD Connect of ADFS-configuratie |
+|   | Windows 8,1, Windows 7, Windows Server 2012 R2, Windows Server 2012 en Windows Server 2008 R2-MSI vereist |
+| **Aanmeldings opties voor apparaten** | Organisatie accounts met: |
 |   | Wachtwoord |
-|   | Windows Hello voor bedrijven voor Win10 |
+|   | Windows hello voor bedrijven voor Win10 |
 | **Apparaatbeheer** | Groepsbeleid |
-|   | System Center Configuration Manager zelfstandige of CO-beheer met Microsoft Intune |
-| **Belangrijkste mogelijkheden** | Eenmalige aanmelding tot zowel cloud en on-premises bronnen |
-|   | Voorwaardelijke toegang via lid van domein of via Intune als dezelfde beheerd |
-|   | Selfservice voor wachtwoordherstel en Windows Hello-PINCODE opnieuw instellen op het vergrendelingsscherm |
-|   | Enterprise State Roaming via apparaten |
+|   | Configuration Manager zelfstandig of gezamenlijk beheer met Microsoft Intune |
+| **Belangrijkste mogelijkheden** | Eenmalige aanmelding voor zowel Cloud-als on-premises resources |
+|   | Voorwaardelijke toegang via domein deelname of intune als gezamenlijk beheerd |
+|   | Selfservice voor wachtwoord herstel en Windows hello pincode opnieuw instellen op vergrendelings scherm |
+|   | Enterprise State Roaming op verschillende apparaten |
 
 ![Hybride Azure AD-gekoppelde apparaten](./media/concept-azure-ad-join-hybrid/azure-ad-hybrid-joined-device.png)
 
 ## <a name="scenarios"></a>Scenario's
 
-Hybride, gebruikt Azure AD gekoppelde apparaten als:
+Gebruik Azure AD Hybrid joind devices als:
 
 - U Win32-apps op deze apparaten hebt geïmplementeerd die afhankelijk zijn van Active Directory-machineverificatie.
-- Wilt u doorgaan met het groepsbeleid gebruiken voor het beheren van apparaatconfiguratie.
-- Wilt u echter ook doorgaan met de bestaande installatiekopieën oplossingen te implementeren en configureren van apparaten.
-- U moet ondersteuning voor downlevel Windows 7 en 8.1 naast Windows 10-apparaten
+- U wilt door gaan met het gebruik van groepsbeleid voor het beheren van de apparaatconfiguratie.
+- U wilt door gaan met het gebruik van bestaande imaging-oplossingen voor het implementeren en configureren van apparaten.
+- U moet naast Windows 10 Windows 7-en 8,1-apparaten op lagere niveaus ondersteunen
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Uw implementatie van hybride Azure AD-deelname plannen](hybrid-azuread-join-plan.md)
-- [Apparaat-id's met behulp van de Azure-portal beheren](device-management-azure-portal.md)
-- [Verouderde apparaten beheren in Azure AD](manage-stale-devices.md)
+- [Apparaat-id's beheren met de Azure Portal](device-management-azure-portal.md)
+- [Verouderde apparaten beheren in azure AD](manage-stale-devices.md)

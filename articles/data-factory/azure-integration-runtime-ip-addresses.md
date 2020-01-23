@@ -1,5 +1,5 @@
 ---
-title: Azure Integration Runtime IP-adressen
+title: IP-adressen van Azure Integration Runtime
 description: Meer informatie over welke IP-adressen u binnenkomend verkeer moet toestaan, om firewalls correct te configureren voor het beveiligen van netwerk toegang tot gegevens archieven.
 services: data-factory
 ms.author: abnarain
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: 1a2947eee31ccb193c8a81cff86cead577e6810c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: d64475ce524a3e859ed68a46552fedf30068f71d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863856"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514779"
 ---
-# <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime IP-adressen
+# <a name="azure-integration-runtime-ip-addresses"></a>IP-adressen van Azure Integration Runtime
 
 De IP-adressen die Azure Integration Runtime gebruikt, zijn afhankelijk van de regio waar uw Azure Integration runtime zich bevindt. *Alle* Azure Integration runtimes die zich in dezelfde regio bevinden, gebruiken dezelfde IP-adresbereiken.
 
@@ -45,6 +45,7 @@ Verkeer toestaan van de IP-adressen die worden vermeld voor Azure Integration ru
 | India          | India - centraal       | 52.140.104.128/25,</br>52.140.105.0/26,</br>20.43.121.48/28  |
 | Japan          | Japan - Oost          | 20.43.64.128/25,</br>20.43.65.0/26,</br>13.78.109.192/28     |
 | Korea          | Korea - centraal       | 20.41.64.128/25,</br>20.41.65.0/26,</br>52.231.20.64/28      |
+| Zuid-Afrika   | Zuid-Afrika - noord  | 102.133.124.104/29,</br>102.133.216.128/25,</br>102.133.217.0/26 |
 | Verenigd Koninkrijk | VK - zuid            | 51.104.24.128/25,</br>51.104.25.0/26,</br>51.104.9.32/28     |
 | Verenigde Staten  | VS - centraal          | 20.37.154.0/23,</br>20.37.156.0/26,</br>20.44.10.64/28       |
 |                | VS - oost             | 20.42.2.0/23,</br>20.42.4.0/26,</br>40.71.14.32/28           |

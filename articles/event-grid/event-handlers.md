@@ -1,18 +1,18 @@
 ---
 title: Gebeurtenis-handlers van Azure Event Grid
-description: Beschrijft ondersteunde gebeurtenis-handlers voor Azure Event Grid
+description: Hierin worden ondersteunde gebeurtenis-handlers voor Azure Event Grid beschreven. De handler heeft een aantal verdere acties nodig om de gebeurtenis te verwerken.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: c88ef8c3996b1e7d998d3eff12c15077ec2482ff
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 3cef32cd204e8bd4b21353cf66575a721315b387
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900734"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511311"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Gebeurtenis-handlers in Azure Event Grid
 

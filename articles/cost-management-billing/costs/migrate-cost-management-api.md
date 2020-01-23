@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/25/2019
+ms.date: 01/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 0dfb7245135097780f027185e4037b6cafbae690
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b0c30cd35efd598767d21dbdafc5100d8896380c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989356"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514711"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migreren van Enterprise Agreement naar Api's voor micro soft-gebruikers overeenkomsten
 
@@ -81,7 +81,7 @@ Als u bestaande EA-Api's gebruikt, moet u deze bijwerken voor ondersteuning van 
 | Doel | Oude aanbieding | Nieuwe aanbieding |
 | --- | --- | --- |
 | Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Azure Cost Management](https://azure.microsoft.com/services/cost-management/) |
-| Power BI | [Micro soft consumptie Insights](/power-bi/desktop-connect-azure-consumption-insights) -inhouds pakket en-connector | [Microsoft Azure Consumption Insights Power bi app](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview) en [Azure consumption Insights connector](/power-bi/desktop-connect-azure-consumption-insights) |
+| Power BI | [Micro soft consumptie Insights](/power-bi/desktop-connect-azure-consumption-insights) -inhouds pakket en-connector |  [Azure Consumption Insights-connector](/power-bi/desktop-connect-azure-consumption-insights) |
 
 ## <a name="apis-to-get-balance-and-credits"></a>Api's om saldo en tegoeden te verkrijgen
 
@@ -432,7 +432,7 @@ De oudere eigenschappen voor [Azure Resource Manager prijs lijst-api's](/rest/ap
 | --- | --- | --- |
 | Id van de meter | _meterId_ | Unieke identificatie voor de meter. Hetzelfde als meterID. |
 | Meter naam | meterName | Naam van de meter. Meter vertegenwoordigt de resource die kan worden geïmplementeerd voor de Azure-service. |
-| Meter categorie  | service | Naam van de classificatiecategorie voor de meter. Hetzelfde als de service in het prijzen overzicht van de micro soft-klanten overeenkomst. De exacte teken reeks waarden verschillen. |
+| Meter categorie  | service | De naam van de classificatiecategorie voor de meter. Hetzelfde als de service in het prijzen overzicht van de micro soft-klanten overeenkomst. De exacte teken reeks waarden verschillen. |
 | Subcategorie van de meter | meterSubCategory | De naam van de subclassificatiecategorie voor de meter. Op basis van de classificatie van de functie set-differentiatie op hoog niveau in de service. Bijvoorbeeld Basic SQL DB versus Standard SQL DB. |
 | Meter regio | meterRegion | &nbsp;  |
 | Eenheid | _Niet van toepassing_ | Kan worden geparseerd vanuit unitOfMeasure. |

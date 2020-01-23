@@ -4,16 +4,16 @@ description: In dit artikel wordt uitgelegd hoe u uw Azure Enterprise-factuur ku
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/02/2020
+ms.date: 01/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 95df54eb096588fe23da87f7334f9d693e54cf9d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7cb2966c94485d0a05febf3085ab367fcba97434
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75992320"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514354"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure Enterprise Enrollment-facturen
 
@@ -370,7 +370,7 @@ Ter referentie: wanneer u Excel gebruikt voor het modelleren van de regels over 
 | Prijzen afronden (2 decimalen) | = MROUND ({_source_}, 0,02) |
 | Prijzen afronden (0 decimalen) | =MROUND({_source_}, 2) |
 
-**Tabel**  **2**  **: de conversie van Cloud Services en virtuele machine-uren**
+**Tabel**  **2**  **– conversie van de Cloud-service en de uren van de virtuele machine**
 
 ### <a name="conversion-between-download-usage-file-and-usage-summary-portal-view"></a>Omzetting tussen Gebruiksbestand downloaden en Portal-weergave gebruiksoverzicht
 
@@ -417,7 +417,7 @@ Voor de diensten waarbij zones en regio's van invloed zijn op de prijsstelling, 
 | Zone 2 | Azië-Pacific - Oost <br> Azië Pacific - Zuidoost <br> Japan - Oost <br> Japan - West <br> Australië Oost <br> Australië Zuidoost | Azië-Pacific <br> Japan <br> Latijns-Amerika <br> Midden-Oosten/Afrika <br> Australië Oost <br> Australië Zuidoost |
 | Zone 3 | Brazilië - Zuid |   |
 
-**Tabel**  **4**  **-gegevensoverdracht regio's**
+**Tabel**  **4**  **– Regio's voor de gegevensoverdracht**
 
 Er worden geen kosten in rekening gebracht voor uitgaande gegevens tussen services (bijvoorbeeld O365 en Azure) die binnen hetzelfde datacentrum zijn gehuisvest.
 
@@ -557,7 +557,7 @@ Raadpleeg de volgende extra bronnen voor meer informatie. Deze bestanden worden 
 | [**Beschrijvende servicenamen**](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Geeft een lijst van alle actieve services met de servicecategorie, de beschrijvende servicenaam, de naam van de toezegging, het onderdeelnummer, de verbruiksnaam, het onderdeelnummer, de maateenheden en de conversiefactoren tussen het gemelde gebruik en weergegeven gebruik van de Enterprise Portal. | Friendly\_Service\_Names.xlsx |
 | [**Service Download Fields**](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | Dit werk blad bevat een lijst met alle mogelijke combinaties van de velden die aan de service zijn gerelateerd in het rapport voor het downloaden van het gebruik. | Service\_Download\_Fields.xlsx |
 
-**Tabel**  **5**  **: aanvullende informatie bronnen**
+**Tabel**  **5**  **– Extra informatiebronnen**
 
 ## <a name="power-bi-reporting"></a>Power BI-rapportage
 
@@ -585,7 +585,7 @@ Als u zich wilt aanmelden voor de gratis proefversie, gaat u naar het tandwiel-p
 1. Geef uw API-toegangssleutel op om verbinding te maken. U kunt de sleutel voor uw inschrijving vinden in het [Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26). Klik op **Aanmelden**.
 1. Het importproces wordt automatisch gestart. Wanneer dit is voltooid, worden er een nieuw dashboard, rapport en model weer gegeven in het navigatievenster. Klik op het dashboard om uw geïmporteerde gegevens weer te geven.
 
-Ga voor meer informatie over het genereren van de API-sleutel voor uw inschrijving naar het Help-bestand over API-rapporten op de [Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26). Download het [Microsoft Azure Consumption Insights](https://automaticbillingspec.blob.core.windows.net/spec/Microsoft%20Azure%20Consumption%20Insights.docx?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26)-document voor meer informatie over het nieuwe inhoudspakket.
+Ga voor meer informatie over het genereren van de API-sleutel voor uw inschrijving naar het Help-bestand over API-rapporten op de [Enterprise Portal](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26). Zie [Microsoft Azure consumption Insights](/power-bi/desktop-connect-azure-cost-management)voor meer informatie over het nieuwe inhouds pakket.
 
 ### <a name="to-access-the-legacy-power-bi-ea-content-pack"></a>Voor toegang tot het verouderde Power BI EA-inhoudspakket:
 

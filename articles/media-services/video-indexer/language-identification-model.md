@@ -1,5 +1,5 @@
 ---
-title: Automatisch de gesp roken taal identificeren met Video Indexer-Azure
+title: Gebruik Video Indexer om gesp roken talen automatisch te identificeren-Azure
 titleSuffix: Azure Media Services
 description: In dit artikel wordt beschreven hoe het Video Indexer language Identification model wordt gebruikt om automatisch de gesp roken taal in een video te identificeren.
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: ce3e488a6387f9a823d7c1b514b52af24944776b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7a2e03b8dacbf6c3ff20e02c804804b671e86d97
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838993"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513878"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatische identificatie van de gesp roken taal met taal identificatie model
 
@@ -29,7 +29,7 @@ Wanneer u Portal gebruikt, gaat u naar uw **account Video's** op de start pagina
 
 ![automatische detectie](./media/language-identification-model/auto-detect.png)
 
-## <a name="model-output"></a>Model uitvoer
+## <a name="model-output"></a>Uitvoer van model
 
 Video Indexer transcribeert de video op basis van de meest waarschijnlijke taal als het vertrouwen voor die taal `> 0.6`is. Als de taal niet met vertrouwen kan worden geïdentificeerd, wordt ervan uitgegaan dat de gesp roken taal Engels is. 
 

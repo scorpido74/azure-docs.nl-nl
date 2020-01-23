@@ -1,6 +1,6 @@
 ---
 title: Overzicht van Azure Relay-API | Microsoft Docs
-description: Overzicht van beschikbare Azure Relay-API 's
+description: In dit artikel vindt u een overzicht van de beschik bare Azure Relay Api's (.NET Standard, .NET Framework, node. js, enzovoort).
 services: event-hubs
 documentationcenter: na
 author: spelluru
@@ -12,51 +12,51 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 05d7ac56d6c1c48125eb458d0eee852ba396b300
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 41d9e2026c19c959dc6fe2546b0ef699571ec7cd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593344"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513963"
 ---
-# <a name="available-relay-apis"></a>Beschikbare Relay-API 's
+# <a name="available-relay-apis"></a>Beschik bare relay-Api's
 
-## <a name="runtime-apis"></a>Runtime-API 's
+## <a name="runtime-apis"></a>Runtime-Api's
 
-De volgende tabel bevat alle beschikbare Relay runtime-clients.
+De volgende tabel bevat alle momenteel beschik bare relay runtime-clients.
 
-De [aanvullende informatie](#additional-information) sectie vindt u meer informatie over de status van elke wisselaar runtime.
+De sectie [aanvullende informatie](#additional-information) bevat meer informatie over de status van elke runtime-bibliotheek.
 
-| Language/Platform | Beschikbare functie | Client-pakket | Opslagplaats |
+| Taal/platform | Beschik bare functie | Clientpakket | Opslagplaats |
 | --- | --- | --- | --- |
 | .NET Standard | Hybride verbindingen | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
-| .NET Framework | WCF-relay | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | N/A |
+| .NET Framework | WCF Relay | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | N/A |
 | Knooppunt | Hybride verbindingen | [Websockets: `hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[Websockets: `hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP-aanvragen: `hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
 ### <a name="additional-information"></a>Aanvullende informatie
 
 #### <a name="net"></a>.NET
 
-Het .NET-ecosysteem heeft meerdere runtimes, dus er zijn meerdere .NET-bibliotheken voor de Relay. De standaard .NET-bibliotheek kan worden uitgevoerd met behulp van .NET Core of .NET Framework, terwijl de .NET Framework-bibliotheek kan alleen worden uitgevoerd in een omgeving met .NET Framework. Zie voor meer informatie over .NET Frameworks [frameworkversies](/dotnet/articles/standard/frameworks).
+Het .NET-ecosysteem heeft meerdere runtimes, dus er zijn meerdere .NET-bibliotheken voor de relay. De .NET Standard-bibliotheek kan worden uitgevoerd met behulp van .NET core of de .NET Framework, terwijl de .NET Framework bibliotheek alleen kan worden uitgevoerd in een .NET Framework omgeving. Zie [Framework-versies](/dotnet/articles/standard/frameworks)(Engelstalig) voor meer informatie over .net frameworks.
 
-De .NET Framework-bibliotheek alleen ondersteuning biedt voor de WCF-programmeermodel en maakt gebruik van een eigen binaire protocol op basis van de WCF `net.tcp` transport. Dit protocol en de bibliotheek wordt bijgehouden voor achterwaartse compatibiliteit met bestaande toepassingen.
+De .NET Framework-bibliotheek ondersteunt alleen het WCF-programmeer model en maakt gebruik van een eigen binair protocol op basis van het WCF `net.tcp` Trans Port. Dit protocol en deze bibliotheek worden onderhouden voor achterwaartse compatibiliteit met bestaande toepassingen.
 
-De standaard .NET-bibliotheek is gebaseerd op de definitie van de open-protocol voor de hybride Relay-verbindingen die is gebaseerd op HTTP en WebSockets. De bibliotheek ondersteunt een abstractie stream via Websockets en een beweging van eenvoudige request response-API voor beantwoording HTTP-aanvragen. De [Web-API](https://github.com/Azure/azure-relay-dotnet) voorbeeld laat zien hoe u hybride verbindingen met ASP.NET Core integreert voor webservices.
+De .NET Standard-bibliotheek is gebaseerd op de open protocol definitie voor de Hybride verbindingen relay die gebaseerd is op HTTP-en websockets. De bibliotheek ondersteunt een stroom abstractie over websockets en een eenvoudige API-penbeweging voor aanvragen en antwoorden voor het beantwoorden van HTTP-aanvragen. De [Web-API](https://github.com/Azure/azure-relay-dotnet) -voor beeld laat zien hoe u hybride verbindingen integreert met ASP.net core voor webservices.
 
 #### <a name="nodejs"></a>Node.js
 
-De Hybrid Connections-modules die worden vermeld in de bovenstaande tabel vervangen of wijzigen van bestaande Node.js-modules met alternatieve implementaties die luisteren naar de Azure Relay-service in plaats van de lokale netwerken stack.
+De Hybride verbindingen-modules die in de bovenstaande tabel worden weer gegeven, vervangen of wijzigen bestaande node. js-modules met alternatieve implementaties die Luis teren op de Azure Relay-service in plaats van de lokale netwerk stack.
 
-De `hyco-https` module wijzigt en gedeeltelijk overschrijft de Node.js-kernmodules `http` en `https`, mits een HTTPS-listener-toepassing die compatibel is met veel bestaande Node.js-modules en toepassingen die afhankelijk van zijn deze core modules.
+De module `hyco-https` wijzigt en gedeeltelijk overschrijft de kern node. js-modules `http` en `https`, waardoor er een HTTPS-listener-implementatie is die compatibel is met veel bestaande node. js-modules en-toepassingen die afhankelijk zijn van deze kern modules.
 
-De `hyco-ws` en `hyco-websocket` modules wijziging van de populaire `ws` en `websocket` modules voor Node.js, bieden alternatieve listener-implementaties die modules en toepassingen die afhankelijk zijn van een module om te werken achter de hybride inschakelen Verbindingen Relay.
+De modules `hyco-ws` en `hyco-websocket` wijzigen de populaire `ws` en `websocket` modules voor node. js, met alternatieve listener-implementaties waarmee modules en toepassingen die afhankelijk zijn van een van beide module, kunnen werken achter de Hybride verbindingen relay.
 
-Meer informatie over deze modules kunnen u vinden in de [azure relay-knooppunten](https://github.com/Azure/azure-relay-node) GitHub-opslagplaats.
+Meer informatie over deze modules vindt u in de [Azure-relay-node github-](https://github.com/Azure/azure-relay-node) opslag plaats.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volg deze koppelingen voor meer informatie over Azure Relay:
+Ga voor meer informatie over Azure Relay naar deze koppelingen:
 * [Wat is Azure Relay?](relay-what-is-it.md)
 * [Veelgestelde vragen over Relay](relay-faq.md)

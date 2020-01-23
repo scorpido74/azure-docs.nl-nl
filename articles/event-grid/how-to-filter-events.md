@@ -1,30 +1,30 @@
 ---
-title: Het filteren van gebeurtenissen voor Azure Event Grid
-description: Laat zien hoe Azure Event Grid-abonnementen die gebeurtenissen filteren maken.
+title: Gebeurtenissen filteren voor Azure Event Grid
+description: In dit artikel wordt beschreven hoe u gebeurtenissen (op gebeurtenis type, op onderwerp, op basis van Opera tors en gegevens, enzovoort) filtert bij het maken van een Event Grid-abonnement.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 5bb95b80e12c818641e2be2b929cdfd01f8f5b5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 58da209c68449d3a28b08f52ec575f7db520f121
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304235"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514524"
 ---
 # <a name="filter-events-for-event-grid"></a>Gebeurtenissen filteren op Event Grid
 
-In dit artikel laat zien hoe filteren van gebeurtenissen bij het maken van een Event Grid-abonnement. Zie voor meer informatie over de opties voor het filteren van gebeurtenissen, [begrijpen gebeurtenis voor Event Grid-abonnementen filteren](event-filtering.md).
+In dit artikel wordt beschreven hoe u gebeurtenissen filtert bij het maken van een Event Grid-abonnement. Zie [gebeurtenis filters begrijpen voor Event grid-abonnementen](event-filtering.md)voor meer informatie over de opties voor het filteren van gebeurtenissen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="filter-by-event-type"></a>Filteren op gebeurtenistype
+## <a name="filter-by-event-type"></a>Filteren op gebeurtenis type
 
-Bij het maken van een Event Grid-abonnement, kunt u aangeven welke [gebeurtenistypen](event-schema.md) om naar het eindpunt te verzenden. De voorbeelden in deze sectie gebeurtenisabonnementen voor een resourcegroep maken, maar beperken van de gebeurtenissen die worden verzonden naar `Microsoft.Resources.ResourceWriteFailure` en `Microsoft.Resources.ResourceWriteSuccess`. Als u meer flexibiliteit nodig hebt bij het filteren van gebeurtenissen op gebeurtenistypen, ziet u filteren op geavanceerde operators en velden.
+Wanneer u een Event Grid-abonnement maakt, kunt u opgeven welke [gebeurtenis typen](event-schema.md) moeten worden verzonden naar het eind punt. De voor beelden in deze sectie maken gebeurtenis abonnementen voor een resource groep, maar beperken de gebeurtenissen die worden verzonden naar `Microsoft.Resources.ResourceWriteFailure` en `Microsoft.Resources.ResourceWriteSuccess`. Zie filteren op geavanceerde Opera tors en gegevens velden als u meer flexibiliteit nodig hebt bij het filteren van gebeurtenissen op gebeurtenis typen.
 
-Gebruik voor PowerShell de `-IncludedEventType` parameter bij het maken van het abonnement.
+Voor Power shell gebruikt u de para meter `-IncludedEventType` bij het maken van het abonnement.
 
 ```powershell
 $includedEventTypes = "Microsoft.Resources.ResourceWriteFailure", "Microsoft.Resources.ResourceWriteSuccess"
@@ -36,7 +36,7 @@ New-AzEventGridSubscription `
   -IncludedEventType $includedEventTypes
 ```
 
-Voor Azure CLI, gebruikt u de `--included-event-types` parameter. Het volgende voorbeeld maakt gebruik van Azure CLI in een Bash-shell:
+Voor Azure CLI gebruikt u de para meter `--included-event-types`. In het volgende voor beeld wordt Azure CLI gebruikt in een bash-shell:
 
 ```azurecli
 includedEventTypes="Microsoft.Resources.ResourceWriteFailure Microsoft.Resources.ResourceWriteSuccess"
@@ -48,7 +48,7 @@ az eventgrid event-subscription create \
   --included-event-types $includedEventTypes
 ```
 
-Voor een Resource Manager-sjabloon, gebruikt u de `includedEventTypes` eigenschap.
+Gebruik de eigenschap `includedEventTypes` voor een resource manager-sjabloon.
 
 ```json
 "resources": [
@@ -79,9 +79,9 @@ Voor een Resource Manager-sjabloon, gebruikt u de `includedEventTypes` eigenscha
 
 ## <a name="filter-by-subject"></a>Filteren op onderwerp
 
-U kunt gebeurtenissen filteren op het onderwerp in de gebeurtenisgegevens. U kunt een waarde voor het begin of einde van de certificaathouder opgeven. Als u meer flexibiliteit nodig hebt bij het filteren van gebeurtenissen op onderwerp, raadpleegt u filteren op geavanceerde operators en velden.
+U kunt gebeurtenissen filteren op het onderwerp in de gebeurtenis gegevens. U kunt een waarde opgeven die moet overeenkomen voor het begin of het einde van het onderwerp. Zie filteren op geavanceerde Opera tors en gegevens velden als u meer flexibiliteit nodig hebt bij het filteren van gebeurtenissen op onderwerp.
 
-In de volgende PowerShell-voorbeeld maakt u een gebeurtenisabonnement waarmee gefilterd door het begin van het onderwerp. U gebruikt de `-SubjectBeginsWith` parameter gebeurtenissen voor een specifieke resource te beperken. U kunt doorgeven de resource-ID van een netwerkbeveiligingsgroep.
+In het volgende Power shell-voor beeld maakt u een gebeurtenis abonnement dat wordt gefilterd op het begin van het onderwerp. U kunt de para meter `-SubjectBeginsWith` gebruiken om gebeurtenissen te beperken tot records voor een specifieke resource. U geeft de bron-ID van een netwerk beveiligings groep door.
 
 ```powershell
 $resourceId = (Get-AzResource -ResourceName demoSecurityGroup -ResourceGroupName myResourceGroup).ResourceId
@@ -93,7 +93,7 @@ New-AzEventGridSubscription `
   -SubjectBeginsWith $resourceId
 ```
 
-Het volgende PowerShell-voorbeeld maakt u een abonnement voor een blob-opslag. Hiermee beperkt u gebeurtenissen naar resources met een onderwerp dat eindigt op `.jpg`.
+In het volgende Power shell-voor beeld wordt een abonnement gemaakt voor een Blob-opslag. Er worden gebeurtenissen beperkt met een onderwerp dat eindigt op `.jpg`.
 
 ```powershell
 $storageId = (Get-AzStorageAccount -ResourceGroupName myResourceGroup -AccountName $storageName).Id
@@ -105,7 +105,7 @@ New-AzEventGridSubscription `
   -SubjectEndsWith ".jpg"
 ```
 
-In de volgende Azure CLI-voorbeeld maakt u een gebeurtenisabonnement waarmee gefilterd door het begin van het onderwerp. U gebruikt de `--subject-begins-with` parameter gebeurtenissen voor een specifieke resource te beperken. U kunt doorgeven de resource-ID van een netwerkbeveiligingsgroep.
+In het volgende Azure CLI-voor beeld maakt u een gebeurtenis abonnement dat wordt gefilterd op het begin van het onderwerp. U kunt de para meter `--subject-begins-with` gebruiken om gebeurtenissen te beperken tot records voor een specifieke resource. U geeft de bron-ID van een netwerk beveiligings groep door.
 
 ```azurecli
 resourceId=$(az resource show --name demoSecurityGroup --resource-group myResourceGroup --resource-type Microsoft.Network/networkSecurityGroups --query id --output tsv)
@@ -117,7 +117,7 @@ az eventgrid event-subscription create \
   --subject-begins-with $resourceId
 ```
 
-De volgende Azure CLI-voorbeeld maakt u een abonnement voor een blob-opslag. Hiermee beperkt u gebeurtenissen naar resources met een onderwerp dat eindigt op `.jpg`.
+In het volgende Azure CLI-voor beeld wordt een abonnement gemaakt voor een Blob-opslag. Er worden gebeurtenissen beperkt met een onderwerp dat eindigt op `.jpg`.
 
 ```azurecli
 storageid=$(az storage account show --name $storageName --resource-group myResourceGroup --query id --output tsv)
@@ -129,7 +129,7 @@ az eventgrid event-subscription create \
   --subject-ends-with ".jpg"
 ```
 
-In het volgende Sjabloonvoorbeeld Resource Manager maakt u een gebeurtenisabonnement waarmee gefilterd door het begin van het onderwerp. U gebruikt de `subjectBeginsWith` eigenschap gebeurtenissen voor een specifieke resource te beperken. U kunt doorgeven de resource-ID van een netwerkbeveiligingsgroep.
+In het volgende voor beeld van een resource manager-sjabloon maakt u een gebeurtenis abonnement dat wordt gefilterd op het begin van het onderwerp. U kunt de eigenschap `subjectBeginsWith` gebruiken om gebeurtenissen te beperken tot records voor een specifieke resource. U geeft de bron-ID van een netwerk beveiligings groep door.
 
 ```json
 "resources": [
@@ -155,7 +155,7 @@ In het volgende Sjabloonvoorbeeld Resource Manager maakt u een gebeurtenisabonne
 ]
 ```
 
-Het volgende voorbeeld van de Resource Manager-sjabloon maakt u een abonnement voor een blob-opslag. Hiermee beperkt u gebeurtenissen naar resources met een onderwerp dat eindigt op `.jpg`.
+In het volgende voor beeld van een resource manager-sjabloon wordt een abonnement gemaakt voor een Blob-opslag. Er worden gebeurtenissen beperkt met een onderwerp dat eindigt op `.jpg`.
 
 ```json
 "resources": [
@@ -181,15 +181,15 @@ Het volgende voorbeeld van de Resource Manager-sjabloon maakt u een abonnement v
 ]
 ```
 
-## <a name="filter-by-operators-and-data"></a>Operators en filteren
+## <a name="filter-by-operators-and-data"></a>Filteren op Opera tors en gegevens
 
-U kunt voor meer flexibiliteit bij het filteren van operators en eigenschappen van de gegevens te filteren van gebeurtenissen gebruiken.
+Voor meer flexibiliteit bij het filteren kunt u Opera tors en gegevens eigenschappen gebruiken om gebeurtenissen te filteren.
 
 ### <a name="subscribe-with-advanced-filters"></a>Abonneren met geavanceerde filters
 
-Zie voor meer informatie over de operators en de sleutels die u voor Geavanceerd filteren gebruiken kunt, [Geavanceerd filteren](event-filtering.md#advanced-filtering).
+Zie [Geavanceerde filtering](event-filtering.md#advanced-filtering)voor meer informatie over de Opera tors en sleutels die u kunt gebruiken voor geavanceerde filters.
 
-Deze voorbeelden wordt een aangepast onderwerp maken. Ze op het aangepaste onderwerp te abonneren en filteren op een waarde in het gegevensobject. Gebeurtenissen die door de eigenschap kleur is ingesteld op blauw, rood of groen worden verzonden naar het abonnement.
+In deze voor beelden wordt een aangepast onderwerp gemaakt. Ze abonneren zich op het aangepaste onderwerp en filteren op een waarde in het gegevens object. Gebeurtenissen waarvan de eigenschap Color is ingesteld op blauw, rood of groen, worden verzonden naar het abonnement.
 
 Gebruik voor Azure CLI:
 
@@ -234,9 +234,9 @@ New-AzEventGridSubscription `
   -AdvancedFilter @($AdvFilter1)
 ```
 
-### <a name="test-filter"></a>Test-filter
+### <a name="test-filter"></a>Test filter
 
-Als u wilt testen of het filter, een gebeurtenis te verzenden met het kleurveld is ingesteld op groen. Omdat groen is een van de waarden in het filter, de gebeurtenis naar het eindpunt wordt geleverd.
+Als u het filter wilt testen, verzendt u een gebeurtenis met het veld kleur ingesteld op groen. Omdat groen een van de waarden in het filter is, wordt de gebeurtenis aan het eind punt geleverd.
 
 Gebruik voor Azure CLI:
 
@@ -275,7 +275,7 @@ $body = "["+(ConvertTo-Json $htbody)+"]"
 Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
 ```
 
-Als u wilt testen in een scenario waarin de gebeurtenis niet verzonden, een gebeurtenis te verzenden met het kleurveld is ingesteld op geel. Gele is niet een van de waarden die zijn opgegeven in het abonnement, zodat de gebeurtenis wordt niet geleverd aan uw abonnement.
+Als u een scenario wilt testen waarbij de gebeurtenis niet wordt verzonden, verzendt u een gebeurtenis met het veld kleur ingesteld op geel. Geel is niet een van de waarden die zijn opgegeven in het abonnement, waardoor de gebeurtenis niet wordt bezorgd in uw abonnement.
 
 Gebruik voor Azure CLI:
 
@@ -306,6 +306,6 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie voor meer informatie over het controleren van de gebeurtenis leveringen [Monitor Event Grid berichtbezorging](monitor-event-delivery.md).
-* Zie voor meer informatie over de verificatiesleutel [Event Grid-beveiliging en verificatie](security-authentication.md).
-* Zie voor meer informatie over het maken van een Azure Event Grid-abonnement [Event Grid-abonnementsschema](subscription-creation-schema.md).
+* Zie [Event grid bericht bezorging bewaken](monitor-event-delivery.md)voor meer informatie over het bewaken van gebeurtenis leveringen.
+* Zie [Event grid beveiliging en verificatie](security-authentication.md)voor meer informatie over de verificatie sleutel.
+* Zie [Event grid Subscription schema](subscription-creation-schema.md)voor meer informatie over het maken van een Azure Event grid-abonnement.

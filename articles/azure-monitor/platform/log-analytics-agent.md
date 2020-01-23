@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 58d6c8d18e03ab248cfbebcf910ae13c5fee439e
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8e563ae095cf39cdce3e671d4099d2bf1592100a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530966"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513623"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>Logboek gegevens verzamelen met de Log Analytics-agent
 
@@ -142,9 +142,9 @@ U kunt de computers in uw Azure-abonnement of hybride omgeving rechtstreeks met 
 
 |Bron | Methode | Beschrijving|
 |-------|-------------|-------------|
-|Azure VM| -Log Analytics VM-extensie voor [Windows](../../virtual-machines/extensions/oms-windows.md) of [Linux](../../virtual-machines/extensions/oms-linux.md) met behulp van Azure CLI of met een Azure Resource Manager-sjabloon<br>- [hand matig van de Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md)<br>- [Azure Security Center automatische inrichting](../../security-center/security-center-enable-data-collection.md)| -De uitbrei ding installeert de Log Analytics agent op virtuele machines van Azure en registreert deze in een bestaande Azure Monitor-werk ruimte.<br>-Azure Security Center kunt de Log Analytics agent inrichten op alle ondersteunde Azure-Vm's en eventuele nieuwe virtuele machines die worden gemaakt als u deze inschakelt om te controleren op beveiligings problemen en bedreigingen. Als deze functie is ingeschakeld, wordt er een nieuwe of bestaande virtuele machine zonder geïnstalleerde agent ingericht.|
-| Hybride Windows-computer|- [Handmatige installatie](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Resource Manager-sjabloon met Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |De Microsoft Monitoring agent installeren vanaf de opdrachtregel of met behulp van een geautomatiseerde methode, zoals Azure Automation DSC, [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications), of met een Azure Resource Manager-sjabloon als u Microsoft hebt geïmplementeerd Azure Stack in uw datacenter.| 
-| Hybride Linux-computer| [Handmatige installatie](agent-linux.md)|Installeer de agent voor Linux die een wrapper-script aanroept dat wordt gehost op GitHub of de agent hand matig downloadt en installeert. | 
+|Azure VM| -Log Analytics VM-extensie voor [Windows](../../virtual-machines/extensions/oms-windows.md) of [Linux](../../virtual-machines/extensions/oms-linux.md) met behulp van Azure CLI of met een Azure Resource Manager-sjabloon<br>- [hand matig van de Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json)<br>- [Azure Security Center automatische inrichting](../../security-center/security-center-enable-data-collection.md)| -De uitbrei ding installeert de Log Analytics agent op virtuele machines van Azure en registreert deze in een bestaande Azure Monitor-werk ruimte.<br>-Azure Security Center kunt de Log Analytics agent inrichten op alle ondersteunde Azure-Vm's en eventuele nieuwe virtuele machines die worden gemaakt als u deze inschakelt om te controleren op beveiligings problemen en bedreigingen. Als deze functie is ingeschakeld, wordt er een nieuwe of bestaande virtuele machine zonder geïnstalleerde agent ingericht.|
+| Hybride Windows-computer|- [Handmatige installatie](agent-windows.md)<br>- [Azure Automation DSC](agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Resource Manager-sjabloon met Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |Installeer de micro soft Monitoring Agent vanaf de opdracht regel of met behulp van een geautomatiseerde methode, zoals Azure Automation DSC, [Configuration Manager](https://docs.microsoft.com/configmgr/apps/deploy-use/deploy-applications)of met een Azure Resource Manager-sjabloon als u Microsoft Azure stack in uw Data Center hebt geïmplementeerd.| 
+| Hybride Linux-computer| [Handmatige installatie](../../azure-monitor/learn/quick-collect-linux-computer.md)|Installeer de agent voor Linux aanroepen van een wrapper-scripts die worden gehost op GitHub. | 
 | System Center Operations Manager|[Operations Manager integreert met Log Analytics](om-agents.md) | Configureer de integratie tussen Operations Manager en Azure Monitor logboeken voor het door sturen van verzamelde gegevens van Windows-computers die rapporteren aan een beheer groep.|  
 
 ## <a name="next-steps"></a>Volgende stappen

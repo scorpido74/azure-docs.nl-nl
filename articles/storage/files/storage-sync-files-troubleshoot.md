@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/8/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 1b24258efdd75977b5571506b3eabf952a4ae0a4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 9318944004ae98eeb2a3300cabca07dfbe4e4fc7
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027778"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514626"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problemen met Azure Files Sync oplossen
 Gebruik Azure File Sync om de bestands shares van uw organisatie in Azure Files te centraliseren, terwijl u de flexibiliteit, prestaties en compatibiliteit van een on-premises Bestands server bijhoudt. Door Azure File Sync wordt Windows Server getransformeerd in een snelle cache van uw Azure-bestandsshare. U kunt elk protocol dat beschikbaar is op Windows Server gebruiken voor toegang tot uw gegevens lokaal, zoals SMB, NFS en FTPS. U kunt zoveel caches hebben als u nodig hebt in de hele wereld.
@@ -41,8 +41,15 @@ Als u probeert de synchronisatie agent te installeren op een Active Directory do
 
 U kunt dit oplossen door de PDC-functie over te dragen naar een andere domein controller met Windows Server 2012 R2 of meer recent en vervolgens de synchronisatie te installeren.
 
-<a id="server-registration-prerequisites"></a>**Bij de registratie van de server wordt het volgende bericht weer gegeven: "er ontbreken vereisten"**
+<a id="parameter-is-incorrect"></a>**Het is niet mogelijk om toegang te krijgen tot een volume op Windows Server 2012 R2 met de volgende fout: de para meter is onjuist**  
+Na het maken van een server eindpunt op Windows Server 2012 R2, treedt de volgende fout op bij het openen van het volume:
 
+stationsletter: \ is niet toegankelijk.  
+De parameter is onjuist.
+
+Installeer de meest recente updates voor Windows Server 2012 R2 en start de server opnieuw op om het probleem op te lossen.
+
+<a id="server-registration-prerequisites"></a>**Bij de registratie van de server wordt het volgende bericht weer gegeven: "er ontbreken vereisten"**  
 Dit bericht wordt weer gegeven als AZ of AzureRM Power shell-module niet is geïnstalleerd in Power shell 5,1. 
 
 > [!Note]  

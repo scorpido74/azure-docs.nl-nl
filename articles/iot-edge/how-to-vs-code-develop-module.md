@@ -8,16 +8,16 @@ ms.author: xshi
 ms.date: 08/07/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 09371cc66b54d822db5ad24679d28f40323eb871
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 42431c0db55219c3cb49968986c1a0c7f071b219
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561017"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509272"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Visual Studio code gebruiken voor het ontwikkelen en opsporen van fouten in modules voor Azure IoT Edge
 
-U kunt uw bedrijfs logica omzetten in modules voor Azure IoT Edge. Dit artikel laat u zien hoe u Visual Studio code kunt gebruiken als het belangrijkste hulp programma voor het ontwikkelen en opsporen van fouten in modules.
+U kunt uw bedrijfslogica in modules inschakelen voor Azure IoT Edge. Dit artikel laat u zien hoe u Visual Studio code kunt gebruiken als het belangrijkste hulp programma voor het ontwikkelen en opsporen van fouten in modules.
 
 Er zijn twee manieren om fouten op te sporen C#in modules die zijn geschreven in, node. js of java in Visual Studio code: u kunt een proces in een module container koppelen of de module code in de foutopsporingsmodus starten. Als u fouten wilt opsporen in modules die in Python of C zijn geschreven, kunt u alleen aan een proces in linux amd64-containers koppelen.
 
@@ -30,7 +30,7 @@ Dit artikel bevat instructies voor het ontwikkelen en debuggen van modules in me
 
 ## <a name="prerequisites"></a>Vereisten
 
-U kunt een computer of een virtuele machine met Windows, macOS of Linux gebruiken als uw ontwikkel computer. Op Windows-computers kunt u Windows-of linux-modules ontwikkelen. Voor het ontwikkelen van Windows-modules gebruikt u een Windows-computer met versie 1809/build 17763 of hoger. Voor het ontwikkelen van linux-modules gebruikt u een Windows-computer die voldoet aan de [vereisten voor docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install). 
+U kunt een computer of een virtuele machine met Windows, macOS of Linux gebruiken als uw ontwikkel computer. Op Windows-computers kunt u Windows-of linux-modules ontwikkelen. Voor het ontwikkelen van Windows-modules gebruikt u een Windows-computer met versie 1809/build 17763 of hoger. Voor het ontwikkelen van linux-modules gebruikt u een Windows-computer die voldoet aan de [vereisten voor docker Desktop](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install).
 
 Installeer eerst [Visual Studio code](https://code.visualstudio.com/) en voeg vervolgens de volgende uitbrei dingen toe:
 
@@ -56,16 +56,17 @@ Als u uw module-installatie kopie wilt bouwen en implementeren, moet u docker ge
 
 - [Docker Community Edition](https://docs.docker.com/install/) op uw ontwikkel computer.
 
-- [Azure container Registry](https://docs.microsoft.com/azure/container-registry/) of [docker hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
+- [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) of [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
 
     > [!TIP]
-    > U kunt een lokaal docker-REGI ster gebruiken voor prototype-en test doeleinden in plaats van een Cloud register.
+    > U kunt een lokale Docker-register voor prototype en in plaats van een cloud-register voor testdoeleinden gebruiken.
 
 Tenzij u uw module in C ontwikkelt, hebt u ook het op python gebaseerde [Azure IOT EdgeHub dev tool](https://pypi.org/project/iotedgehubdev/) nodig om uw lokale ontwikkel omgeving in te stellen voor het opsporen, uitvoeren en testen van uw IOT EDGE-oplossing. Als u dit nog niet hebt gedaan, installeert u [python (2.7/3.6/3.7) en PIP](https://www.python.org/) en installeert u **iotedgehubdev** door deze opdracht uit te voeren in uw Terminal.
 
    ```cmd
    pip install --upgrade iotedgehubdev
    ```
+   
 > [!NOTE]
 > Op dit moment gebruikt iotedgehubdev een docker-py-bibliotheek die niet compatibel is met python 3,8.
 >
@@ -77,9 +78,9 @@ Als u uw module op een apparaat wilt testen, hebt u een actieve IoT-hub met ten 
 
 In de volgende stappen wordt uitgelegd hoe u een IoT Edge module maakt in uw voorkeurs taal (waaronder Azure Functions, zoals beschreven C#in) met behulp van Visual Studio code en de Azure IOT-hulpprogram ma's. U begint met het maken van een oplossing en het genereren van de eerste module in die oplossing. Elke oplossing kan meerdere modules bevatten.
 
-1. Selecteer > **opdracht palet** **weer geven** .
+1. Selecteer **weergave** > **Command Palette**.
 
-1. Voer in het opdracht palet de opdracht **Azure IOT Edge: nieuwe IOT EDGE-oplossing**in en voer deze uit.
+1. Voer in het opdrachtenpalet en voer de opdracht **Azure IoT Edge: nieuwe IoT Edge-oplossing**.
 
    ![Nieuwe IoT Edge oplossing uitvoeren](./media/how-to-develop-csharp-module/new-solution.png)
 
@@ -91,7 +92,7 @@ In de volgende stappen wordt uitgelegd hoe u een IoT Edge module maakt in uw voo
 
 1. Voer een naam in voor uw module. Kies een unieke naam in het container register.
 
-1. Geef de naam op van de installatie kopie opslagplaats van de module. Visual Studio code vult de module naam automatisch in met **localhost: 5000/< uw module naam\>** . Vervang deze door uw eigen register gegevens. Als u een lokaal docker-REGI ster gebruikt voor het testen, is **localhost** prima. Als u Azure Container Registry gebruikt, gebruikt u de aanmeldings server uit de instellingen van het REGI ster. De aanmeldings server ziet eruit als  **_\<register naam\>_ . azurecr.io**. Vervang alleen het gedeelte **localhost: 5000** van de teken reeks, zodat het uiteindelijke resultaat eruitziet **\<*register naam*\>. azurecr.io/ _\<uw module naam\>_** .
+1. Geef de naam op van de installatie kopie opslagplaats van de module. Visual Studio code vult de module naam automatisch in met **localhost: 5000/< uw module naam\>** . Vervang deze door uw eigen gegevens. Als u een lokaal docker-REGI ster gebruikt voor het testen, is **localhost** prima. Als u Azure Container Registry gebruikt, gebruikt u de aanmeldingsserver van de instellingen van uw register. De aanmeldings server ziet eruit als  **_\<register naam\>_ . azurecr.io**. Vervang alleen het gedeelte **localhost: 5000** van de teken reeks, zodat het uiteindelijke resultaat eruitziet **\<*register naam*\>. azurecr.io/ _\<uw module naam\>_** .
 
    ![Opslagplaats voor Docker-installatiekopieën opgeven](./media/how-to-develop-csharp-module/repository.png)
 
@@ -116,18 +117,18 @@ Als u wilt zien hoe de gesimuleerde temperatuur module werkt, bekijkt u de [bron
 
 Als u extra modules wilt toevoegen aan uw oplossing, voert u de opdracht uit **Azure IOT Edge: IOT Edge module toevoegen** vanuit het opdracht palet. U kunt ook met de rechter muisknop op de map **modules** of het `deployment.template.json`-bestand in de Visual Studio code Explorer-weer gave klikken en vervolgens **IOT Edge module toevoegen**selecteren.
 
-## <a name="develop-your-module"></a>Uw module ontwikkelen
+## <a name="develop-your-module"></a>Uw-module ontwikkelen
 
 De standaard module code die bij de oplossing hoort, bevindt zich op de volgende locatie:
 
-- Azure function (C#): **modules > *&lt;uw module naam&gt;*  >  *&lt;de module naam&gt;* . cs.**
-- C#: **modules > *&lt;de naam van de module&gt;* > Program.cs**
+- Azure function (C#): **modules >  *&lt;uw module&gt;*  > *naamvandemodulenaam.cs&lt;&gt;***
+- C#: **modules > *&lt;uw module naam&gt;* > Program.cs**
 - Python: **modules > *&lt;de naam van de module&gt;* > main.py**
 - Node. js: **modules > *&lt;uw module naam&gt;* > app. js**
 - Java: **modules > *&lt;uw module naam&gt;* > src > main > java > com > edgemodulemodules > app. java**
 - C: **modules > *&lt;uw module naam&gt;* > main. c**
 
-De module en het JSON-bestand voor de implementatie. sjabloon worden zo ingesteld dat u de oplossing kunt bouwen, naar het container register pusht en deze implementeert op een apparaat om te testen zonder dat u code hoeft te gebruiken. De module is gebouwd om simpelweg invoer van een bron (in dit geval de SimulatedTemperatureSensor-module die gegevens simuleert) te maken en deze te IoT Hub.
+De module en het bestand deployment.template.json zijn ingesteld zodat u kunt de oplossing te bouwen, deze naar het containerregister pushen en implementeren op een apparaat om te testen zonder code aan te starten. De module is gebouwd om simpelweg invoer van een bron (in dit geval de SimulatedTemperatureSensor-module die gegevens simuleert) te maken en deze te IoT Hub.
 
 Wanneer u klaar bent om de sjabloon aan te passen met uw eigen code, gebruikt u de [Azure IOT hub sdk's](../iot-hub/iot-hub-devguide-sdks.md) om modules te bouwen die voldoen aan de belangrijkste behoeften voor IOT-oplossingen zoals beveiliging, Apparaatbeheer en betrouw baarheid.
 
@@ -197,7 +198,7 @@ Als u de Simulator wilt instellen en starten, voert u de opdracht uit **Azure IO
    > [!NOTE]
    > Als u Windows gebruikt, zorgt u ervoor dat de shell van uw Visual Studio code-geïntegreerde Terminal **Git Bash** of **WSL bash**is. U kunt de `curl`-opdracht niet uitvoeren vanuit een Power shell-of opdracht prompt.
    > [!TIP]
-   > U kunt ook [postman](https://www.getpostman.com/) of andere API-hulpprogram ma's gebruiken om berichten te verzenden in plaats van `curl`.
+   > U kunt ook [PostMan](https://www.getpostman.com/) of andere API's voor het verzenden van berichten via in plaats van `curl`.
 
 1. In de weer gave Visual Studio code debug ziet u de variabelen in het linkerdeel venster.
 
@@ -366,4 +367,4 @@ Raadpleeg dit [IOT-ontwikkelaars blog item](https://devblogs.microsoft.com/iotde
 
 Nadat u uw module hebt gemaakt, leert u hoe u [Azure IOT Edge-modules kunt implementeren vanuit Visual Studio code](how-to-deploy-modules-vscode.md).
 
-Voor het ontwikkelen van modules voor uw IoT Edge apparaten moet u [Azure IOT hub Sdk's begrijpen en gebruiken](../iot-hub/iot-hub-devguide-sdks.md).
+Voor het ontwikkelen van modules voor uw IoT Edge-apparaten, [begrijpen en gebruiken Azure IoT Hub SDK's](../iot-hub/iot-hub-devguide-sdks.md).

@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 791287d693903007d09c2e82025bfe195f9f15d1
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 2268c074480f99ca23117ca2ffd2c87c1dbb10a2
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464050"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513232"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migreren van Media Indexer en Media Indexer 2 naar Video Indexer
 
-De processor van [Azure media indexer](media-services-index-content.md) media wordt op 1 oktober 2020 buiten gebruik gesteld. De [Azure media indexer 2 Preview](media-services-process-content-with-indexer2.md) -media processors worden buiten gebruik gesteld op 1 januari van 2020.  [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) vervangt deze verouderde media processors.
+De media processor van [Azure media indexer](media-services-index-content.md) media en [Azure media indexer 2 Preview](media-services-process-content-with-indexer2.md) worden buiten gebruik gesteld. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](legacy-components.md) . [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) vervangt deze verouderde media processors.
 
 Azure Media Services Video Indexer is gebaseerd op Azure Media Analytics, Azure Cognitive Search, Cognitive Services (zoals de Face-API, micro soft Translator, de Computer Vision-API en Custom Speech Service). Hiermee kunt u inzichten ophalen uit uw video's met Video Indexer-modellen voor audio en video. Zie [video indexer video-en audio modellen](../video-indexer/video-indexer-overview.md)om te zien welke scenario's video indexer kunnen worden gebruikt in, welke functies worden aangeboden en hoe u aan de slag kunt gaan. 
 
@@ -33,9 +33,9 @@ U kunt inzichten uit uw video-en audio bestanden extra heren met behulp van de [
 
 In dit artikel worden de stappen beschreven voor het migreren van Azure Media Indexer en Azure Media Indexer 2 naar Azure Media Services Video Indexer.  
 
-## <a name="migration-options"></a>Migratie opties 
+## <a name="migration-options"></a>Migratieopties 
 
-|Als dat nodig is  |Kies |
+|Als dat nodig is  |vervolgens |
 |---|---|
 |een oplossing die een spraak-naar-tekst transcriptie biedt voor elke indeling van een media bestand in een ondertitelings bestand met de volgende indelingen: VTT, SRT of TTML<br/>evenals extra geluids inzichten zoals tref woorden, afnemen van onderwerpen, akoestische gebeurtenissen, sprekers diarization, extractie en vertaling van entiteiten| werk uw toepassingen bij om de mogelijkheden van Azure Video Indexer te gebruiken via de Video Indexer v2-REST API of de Azure Media Services v3-audio analyse vooraf.|
 |functies voor spraak naar tekst| Gebruik de Cognitive Services Speech API direct.|  
@@ -75,7 +75,7 @@ Enkele bekende verschillen zijn onder andere:
 
 * Cognitive Services speech Services biedt geen ondersteuning voor het uitpakken van tref woorden. Video Indexer en Media Services v3 AudioAnalyzerPreset bieden echter een robuustere set sleutel woorden in JSON-bestands indeling. 
 
-## <a name="need-help"></a>Hulp nodig?
+## <a name="need-help"></a>Hebt u hulp nodig?
 
 U kunt een ondersteunings ticket openen door te navigeren naar de [nieuwe ondersteunings aanvraag](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 

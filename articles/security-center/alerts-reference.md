@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: cfb77548217cf173438ab0407320cbdff8db092e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 322b7656a5e8cb5d0fd0274cc9f09adec2c2c5e1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76276995"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514762"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Beveiligings waarschuwingen-een referentie gids
 
@@ -27,27 +27,16 @@ Zie [beveiligings waarschuwingen beheren en erop reageren in azure Security Cent
 
 Zie [beveiligings waarschuwingen en aanbevelingen exporteren (preview)](continuous-export.md)voor meer informatie over het exporteren van waarschuwingen (en aanbevelingen).
 
-Onder de tabel waarschuwingen staat een tabel met een beschrijving van de Azure Security Center Kill-keten die wordt gebruikt om de intenties van deze waarschuwingen te categoriseren. 
+Onder de tabel met waarschuwingen vindt u een beschrijving van de Azure Security Center Kill-keten die wordt gebruikt om de intenties van deze waarschuwingen te categoriseren. 
 
-Typen waarschuwingen die zijn opgenomen in deze tabel:
-* [Waarschuwingen voor Windows-computers](#alerts-windows)
-* [Waarschuwingen voor Linux-machines](#alerts-linux)
-* [Waarschuwingen voor Azure App Service](#alerts-azureappserv)
-* [Waarschuwingen voor het AKS-cluster niveau](#alerts-akscluster)
-* [Waarschuwingen voor container niveau hostniveau](#alerts-containerhost)
-* [Waarschuwingen voor SQL Database en SQL Data Warehouse](#alerts-sql-db-and-warehouse)
-* [Waarschuwingen voor Azure Storage](#alerts-azurestorage)
-* [Waarschuwingen voor Azure Cosmos DB](#alerts-azurecosmos)
-* [Waarschuwingen voor Azure Network Layer](#alerts-azurenetlayer)
-* [Waarschuwingen voor Azure Resource Manager (preview-versie)](#alerts-azureresourceman)
-* [Waarschuwingen voor Azure Key Vault (preview-versie)](#alerts-azurekv)
-* [Waarschuwingen voor Azure DDoS Protection](#alerts-azureddos)
 
-## <a name="azure-security-center-alerts"></a>Azure Security Center waarschuwingen
+
+## <a name="alerts-windows"></a>Waarschuwingen voor Windows-computers
+
+[Meer details en opmerkingen](security-center-alerts-iaas.md#windows-)
 
 |Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
 |----|----|:----:|
-||<a name="alerts-windows"></a><h3>Windows-computers</h3> [Meer details en opmerkingen](security-center-alerts-iaas.md#windows-)||
 |**Er is een aanmelding met een schadelijk IP-adres gedetecteerd**|Een geslaagde externe verificatie voor het account ' Bart. schleining ' en het proces ' Advapi ' is opgetreden, maar het aanmeldings-IP-adres [IP-adres] is eerder gerapporteerd als schadelijk of zeer ongebruikelijk. Er is waarschijnlijk een geslaagde aanval opgetreden.|-|
 |**Er is een aanmelding van een schadelijk IP-adres gedetecteerd. [meerdere malen gezien]**|Een geslaagde externe authenticatie voor het account ' IUSR_10001 ' en het proces ' Advapi ' is opgetreden, maar het aanmeldings-IP-adres [IP-adres] is eerder gerapporteerd als schadelijk of zeer ongebruikelijk. Er is waarschijnlijk een geslaagde aanval opgetreden. Bestanden met de extensie. SCR zijn scherm beveiligings bestanden en zijn normaal en worden uitgevoerd vanuit de systeemmap van Windows.|-|
 |**Toevoeging van gast account aan lokale beheerders groep**|Bij de analyse van de hostgegevens is het ingebouwde gast account toegevoegd aan de lokale groep Administrators op% {aangetast host}, wat sterk is gekoppeld aan de aanvaller-activiteit.|-|
@@ -129,7 +118,15 @@ Typen waarschuwingen die zijn opgenomen in deze tabel:
 |**Er is een verdacht code segment gedetecteerd**|Hiermee wordt aangegeven dat een code segment is toegewezen met behulp van niet-standaard methoden, zoals reflectieve injectie en verlegen van het proces. De waarschuwing bevat aanvullende kenmerken van het code segment dat is verwerkt om context te bieden voor de mogelijkheden en het gedrag van het gerapporteerde code segment.|-|
 |**Shell code gedetecteerd**|Shellcode is de nettolading die wordt uitgevoerd nadat de schadelijke software misbruik heeft gemaakt van een beveiligingslek in de software.<br>Deze waarschuwing geeft aan dat de crash dump analyse uitvoer bare code heeft gedetecteerd die het gedrag vertoont dat gewoonlijk wordt uitgevoerd door schadelijke nettoladingen. Hoewel niet-schadelijke software dit gedrag ook kan uitvoeren, is het niet gebruikelijk om normaal software te ontwikkelen.|-|
 |**Aanvals techniek met bestanden gedetecteerd**|Het geheugen van het opgegeven proces bevat een aanvals Toolkit met een bestand: [Toolkit naam]. Aanvals toolkiten zonder bestanden hebben doorgaans geen aanwezigheid op het bestands systeem, waardoor detectie door traditionele antivirus software lastig is.|DefenseEvasion/uitvoering|
-||<a name="alerts-linux"></a><h3>Linux-machines</h3> [Meer details en opmerkingen](security-center-alerts-iaas.md#linux-)||
+||||
+
+
+## <a name="alerts-linux"></a>Waarschuwingen voor Linux-machines
+
+[Meer details en opmerkingen](security-center-alerts-iaas.md#linux-)
+
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
+|----|----|:----:|
 |**Proces dat wordt weer gegeven op een ongebruikelijke manier toegang tot het bestand met SSH-geautoriseerde sleutels**|Een bestand met SSH-geautoriseerde sleutels is geopend in een methode die vergelijkbaar is met bekende malware-campagnes. Deze toegang kan erop wijzen dat een aanvaller permanente toegang tot een computer probeert te krijgen.|-|
 |**Gedetecteerde persistentie-poging**|Er is met de analyse van de hostgegevens gedetecteerd dat er een opstart script voor de modus voor één gebruiker is geïnstalleerd.<br>Omdat een rechtmatig proces zou moeten worden uitgevoerd in deze modus, kan dit erop wijzen dat een aanvaller een schadelijk proces heeft toegevoegd aan elk uitvoerings niveau om persistentie te garanderen. |Persistentie|
 |**Wijziging in verdacht bestand tijds tempel**|Er is een verdachte wijziging van de tijds tempel gedetecteerd. Aanvallers kopiëren vaak tijds tempels van bestaande, rechtmatige bestanden naar nieuwe hulpprogram ma's om te voor komen dat deze nieuwe verwijderde bestanden worden gedetecteerd.|Persistentie/DefenseEvasion|
@@ -210,7 +207,15 @@ Typen waarschuwingen die zijn opgenomen in deze tabel:
 |**Verdachte wachtwoord toegang [meerdere malen gezien]**|Bij de analyse van de hostgegevens is verdachte toegang gedetecteerd tot de versleutelde gebruikers wachtwoorden op% {aangetast host}. Dit gedrag is vandaag [x] keer op de volgende computers: [computer namen]|-|
 |**Verdachte PHP-uitvoering gedetecteerd**|Computer logboeken geven aan dat een verdacht PHP-proces wordt uitgevoerd. De actie bevat een poging om besturingssysteem opdrachten of PHP-code uit te voeren vanaf de opdracht regel met behulp van het PHP-proces. Hoewel dit gedrag legitiem kan zijn, wordt dit gedrag in webtoepassingen ook waargenomen in schadelijke activiteiten, zoals pogingen om websites te infecteren met webshells.|-|
 |**Verdachte aanvraag voor Kubernetes-API**|Computer logboeken geven aan dat er een verdachte aanvraag is gedaan voor de Kubernetes-API. De aanvraag is verzonden vanaf een Kubernetes-knoop punt, mogelijk vanuit een van de containers die in het knoop punt worden uitgevoerd. Hoewel dit gedrag opzettelijk kan zijn, kan dit erop wijzen dat op het knoop punt een beschadigde container wordt uitgevoerd.|-|
-||<a name="alerts-azureappserv"></a><h3>Azure App Service</h3> [Meer details en opmerkingen](security-center-alerts-compute.md#azure-app-service-)||
+||||
+
+
+## <a name="alerts-azureappserv"></a>Waarschuwingen voor Azure App Service
+
+[Meer details en opmerkingen](security-center-alerts-compute.md#azure-app-service-)
+
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
+|----|----|:----:|
 |**Aanroep van verdacht WordPress-thema gedetecteerd**|Het App Service activiteiten logboek duidt op een mogelijke code-injectie activiteit op uw App Service-Resource.<br>Deze verdachte activiteit lijkt op een activiteit die een WordPress-thema bewerkt ter ondersteuning van de uitvoering van code aan de server zijde, gevolgd door een directe webaanvraag om het gemanipuleerde thema bestand aan te roepen. Dit type activiteit kan deel uitmaken van een aanvals campagne via WordPress.|-|
 |**Webvingerafdruking gedetecteerd**<br>(NMAP/blind Elephant)|Het App Service activiteiten logboek duidt op een mogelijke Web-vingerafdruk activiteit op uw App Service-bron.<br>Deze verdachte activiteit is gekoppeld aan een hulp programma met de naam blind Elephant. Het hulp programma vervingerafdrukt webservers en probeert de geïnstalleerde toepassingen en hun versies te detecteren. Aanvallers gebruiken dit hulp programma vaak om de webtoepassingen te zoeken om beveiligings problemen op te sporen. |-|
 |**Verdachte toegang tot mogelijk kwets bare webpagina gedetecteerd**|In het App Service activiteiten logboek wordt aangegeven dat een webpagina die vertrouwelijk lijkt te zijn geopend.<br>Deze verdachte activiteit is afkomstig van een bron adres waarvan het toegangs patroon op een webscanner lijkt. Dit soort activiteit is vaak gekoppeld aan een poging van een aanvaller om uw netwerk te scannen om toegang te krijgen tot gevoelige of kwets bare webpagina's. |-|
@@ -226,7 +231,15 @@ Typen waarschuwingen die zijn opgenomen in deze tabel:
 |**Verdachte gebruikers agent gedetecteerd**|Azure App Service activiteiten logboek duidt op aanvragen met verdachte gebruikers agent. Dit gedrag kan erop wijzen dat er wordt geprobeerd een beveiligingslek te misbruiken in uw App Service-toepassing.|-|
 |**PHP-bestand in uploadmap**|Het Azure App Service activiteiten logboek duidt op een toegang tot een verdachte PHP-pagina die zich in de map upload bevindt. Dit type map bevat doorgaans geen PHP-bestanden. Het bestaan van dit type bestand kan duiden op een voor deel dat er sprake is van een probleem met het uploaden van wille keurige bestanden.|-|
 |**Patroon voor afwijkende aanvragen gedetecteerd**|Het Azure App Service activiteiten logboek duidt op een afwijkende HTTP-activiteit van de App Service van% {source IP}. Deze activiteit lijkt op een patroon van de activiteit \ Brute Force.|-|
-||<a name="alerts-akscluster"></a><h3>AKS-cluster niveau</h3> [Meer details en opmerkingen](security-center-alerts-compute.md#azure-containers-)||
+||||
+
+
+## <a name="alerts-akscluster"></a>Waarschuwingen voor het AKS-cluster niveau
+
+[Meer details en opmerkingen](security-center-alerts-compute.md#azure-containers-)
+
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
+|----|----|:----:|
 |**PREVIEW-functie binding met de rol cluster-beheerder gedetecteerd**|Kubernetes-controle logboek analyse heeft een nieuwe binding met de rol cluster beheerder gedetecteerd, wat resulteert in Administrator bevoegdheden. Het is niet noodzakelijkerwijs mogelijk om beheerders bevoegdheden te bieden in het cluster.|Persistentie|
 |**VOOR beeld-weer gegeven Kubernetes-dash board gedetecteerd**|Kubernetes-controle logboek analyse heeft de bloot stelling van het Kubernetes-dash board door een Load Balancer-service gedetecteerd. Met beschik bare Dash boards kunt u niet-geverifieerde toegang tot het cluster beheer en een beveiligings risico vormen.|Persistentie|
 |**VOOR beeld-nieuwe rol met hoge bevoegdheden gedetecteerd**|Kubernetes-controle logboek analyse heeft een nieuwe rol met hoge bevoegdheden gedetecteerd. Een binding met een rol met hoge bevoegdheden geeft de gebruiker/groep verhoogde bevoegdheden in het cluster. Het is niet nood zakelijk dat verhoogde bevoegdheden worden geboden, maar kan leiden tot problemen met de escalatie van bevoegdheden in het cluster.|Persistentie|
@@ -234,7 +247,14 @@ Typen waarschuwingen die zijn opgenomen in deze tabel:
 |**PREVIEW-analyse container voor digitale valuta gedetecteerd**|Kubernetes-controle logboek analyse heeft een container gedetecteerd met een installatie kopie die is gekoppeld aan een hulp programma voor het analyseren van digitale valuta.|Uitvoering|
 |**VOOR beeld: geprivilegieerde container gedetecteerd**|Er is een nieuwe geprivilegieerde container gedetecteerd door de analyse van Kubernetes-controle Logboeken. Een geprivilegieerde container heeft toegang tot de resources van het knoop punt en verbreekt de isolatie tussen containers. Als er is geknoeid, kan een aanvaller de geprivilegieerde container gebruiken om toegang te krijgen tot het knoop punt.|PrivilegeEscalation|
 |**PREVIEW-container met een gevoelige volume koppeling gedetecteerd**|Kubernetes-controle logboek analyse heeft een nieuwe container met een gevoelige volume koppeling gedetecteerd. Het gedetecteerde volume is een hostPath-type dat een gevoelige bestand of map van het knoop punt koppelt aan de container. Als de container wordt aangetast, kan de aanvaller deze koppeling gebruiken om toegang te krijgen tot het knoop punt.|PrivilegeEscalation|
-||<a name="alerts-containerhost"></a><h3>Container niveau host</h3> [Meer details en opmerkingen](security-center-alerts-compute.md#azure-containers-)||
+||||
+
+## <a name="alerts-containerhost"></a>Waarschuwingen voor het hostniveau van containers
+
+[Meer details en opmerkingen](security-center-alerts-compute.md#azure-containers-)
+
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
+|----|----|:----:|
 |**Geprivilegieerde container gedetecteerd**|Computer logboeken geven aan dat een geprivilegieerde docker-container wordt uitgevoerd. Een gemachtigde container heeft volledige toegang tot de resources van de host. Als er is geknoeid, kan een aanvaller de geprivilegieerde container gebruiken om toegang te krijgen tot de hostmachine.|PrivilegeEscalation/uitvoering|
 |**Geprivilegieerde opdracht uitgevoerd in container**|Computer logboeken geven aan dat een geprivilegieerde opdracht is uitgevoerd in een docker-container. Een geprivilegieerde opdracht heeft uitgebreide bevoegdheden op de hostmachine.|PrivilegeEscalation|
 |**Weer gegeven docker-daemon gedetecteerd**|Computer logboeken geven aan dat uw docker daemon (dockerd) een TCP-socket beschrijft. Standaard maakt docker-configuratie geen gebruik van versleuteling of verificatie wanneer een TCP-socket is ingeschakeld. Iedereen met toegang tot de relevante poort kan vervolgens volledige toegang krijgen tot de docker-daemon.|Uitbuiting/uitvoering|
@@ -242,7 +262,15 @@ Typen waarschuwingen die zijn opgenomen in deze tabel:
 |**Er is een container met een Miner-installatie kopie gedetecteerd**|Met computer Logboeken wordt de uitvoering aangegeven van een docker-container met een installatie kopie die is gekoppeld aan digitale valuta analyse. Dit gedrag kan erop duiden dat uw resources worden misbruikt.|Uitvoering|
 |**Verdachte aanvraag voor Kubernetes-API**|Computer logboeken geven aan dat er een verdachte aanvraag is gedaan voor de Kubernetes-API. De aanvraag is verzonden vanaf een Kubernetes-knoop punt, mogelijk vanuit een van de containers die in het knoop punt worden uitgevoerd. Hoewel dit gedrag opzettelijk kan zijn, kan dit erop wijzen dat op het knoop punt een beschadigde container wordt uitgevoerd.|Uitvoering|
 |**Verdachte aanvraag naar het Kubernetes-dash board**|Computer logboeken geven aan dat er een verdachte aanvraag is gedaan aan het Kubernetes-dash board. De aanvraag is verzonden vanaf een Kubernetes-knoop punt, mogelijk vanuit een van de containers die in het knoop punt worden uitgevoerd. Hoewel dit gedrag opzettelijk kan zijn, kan dit erop wijzen dat op het knoop punt een beschadigde container wordt uitgevoerd.|-|
-||<a name="alerts-sql-db-and-warehouse"></a><h3>SQL Database en SQL Data Warehouse</h3> [Meer details en opmerkingen](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-) ||
+||||
+
+
+## <a name="alerts-sql-db-and-warehouse"></a>Waarschuwingen voor SQL Database en SQL Data Warehouse
+
+[Meer details en opmerkingen](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-)
+
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
+|----|----|:----:|
 |**Een mogelijk beveiligings probleem met SQL-injectie**|Een toepassing heeft een mislukte SQL-instructie gegenereerd in de data base. Dit kan duiden op een mogelijke kwets baarheid voor SQL-injectie aanvallen. Er zijn twee mogelijke redenen voor een defecte instructie. Een fout in de toepassings code kan de beschadigde SQL-instructie hebben opgebouwd. Het is ook mogelijk dat toepassings code of opgeslagen procedures geen gebruikers invoer opschonen bij het samen stellen van de foutieve SQL-instructie, die kan worden misbruikt voor SQL-injectie.|-|
 |**Mogelijke SQL-injectie**|Er is een actieve crack opgetreden op basis van een geïdentificeerde toepassing die kwetsbaar is voor SQL-injectie. Dit betekent dat een aanvaller schadelijke SQL-instructies wil injecteren door gebruik te maken van de code of opgeslagen procedures voor een kwets bare toepassing.|-|
 |**Aanmelden vanaf een ongewone locatie**|Er is een wijziging in het toegangs patroon SQL Server, waarbij iemand zich vanaf een ongebruikelijke geografische locatie heeft aangemeld bij de server. In sommige gevallen detecteert de waarschuwing een legitieme actie (een nieuwe toepassing of onderhoud door ontwikkelaars). In andere gevallen detecteert de waarschuwing een schadelijke actie (een voormalige werk nemer of externe aanvaller).|Misbruik|
@@ -252,7 +280,15 @@ Typen waarschuwingen die zijn opgenomen in deze tabel:
 |**Meld u aan bij een ongebruikelijk Azure Data Center**|Er is een wijziging in het toegangs patroon aangebracht in een SQL Server, waarbij iemand zich heeft aangemeld bij de server vanuit een ongebruikelijk Azure Data Center. In sommige gevallen detecteert de waarschuwing een legitieme actie (een nieuwe toepassing of Azure-service). In andere gevallen detecteert de waarschuwing een schadelijke actie (aanvaller die vanuit gekraakte resource in azure werkt).|Scannen|
 |**Mogelijk onveilige actie**|De uitgebreide SQL-opdracht die vaak wordt gebruikt in schadelijke sessies, is uitgevoerd in een SQL Server. U wordt aangeraden deze opdrachten standaard uit te scha kelen. In sommige gevallen detecteert de waarschuwing een legitieme actie (beheer script dat wordt uitgevoerd). In andere gevallen detecteert de waarschuwing een schadelijke actie (aanvaller die gebruikmaakt van SQL-vertrouwens relaties met een schending van Windows-laag).|Uitvoering|
 |**Ongebruikelijke export locatie**|Er is een wijziging aangebracht in de opslag bestemming voor het exporteren van een SQL-import-en-export bewerking. In sommige gevallen detecteert de waarschuwing een rechtmatige wijziging (nieuwe back-upbestemming). In andere gevallen detecteert de waarschuwing een schadelijke actie (kwaadwillende gebruiker kan eenvoudig gegevens naar een bestand exfiltrated).|Exfiltratie|
-||<a name="alerts-azurestorage"></a><h3>Azure Storage</h3> [Meer details en opmerkingen](security-center-alerts-data-services.md#azure-storage-)||
+||||
+
+
+## <a name="alerts-azurestorage"></a>Waarschuwingen voor Azure Storage
+
+[Meer details en opmerkingen](security-center-alerts-data-services.md#azure-storage-)
+
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
+|----|----|:----:|
 |**Toegang vanaf een ongebruikelijke locatie naar een opslag account**|Geeft aan dat er een wijziging is in het toegangs patroon voor een Azure Storage-account. Iemand heeft toegang verkregen tot dit account vanuit een IP-adres dat als niet-vertrouwd wordt beschouwd in vergelijking met recente activiteiten. Een aanvaller heeft toegang verkregen tot het account of een rechtmatige gebruiker heeft verbinding gemaakt vanaf een nieuwe of ongebruikelijke geografische locatie. Een voor beeld van de laatste is extern onderhoud van een nieuwe toepassing of ontwikkelaar.|Misbruik|
 |**Ongebruikelijke toepassing toegang tot een opslag account**|Geeft aan dat een ongebruikelijke toepassing toegang heeft gekregen tot dit opslag account. Een mogelijke oorzaak is dat een aanvaller met een nieuwe toepassing toegang heeft tot uw opslag account.|Misbruik|
 |**Anonieme toegang tot een opslag account**|Geeft aan dat er een wijziging is in het toegangs patroon voor een opslag account. Zo is bijvoorbeeld anoniem toegang gekregen tot het account (zonder enige verificatie). Dit is onverwacht vergeleken met het recente toegangs patroon voor dit account. Een mogelijke oorzaak is dat een aanvaller open bare Lees toegang heeft voor een container die Blob-opslag bevat.|Misbruik|
@@ -265,10 +301,26 @@ Typen waarschuwingen die zijn opgenomen in deze tabel:
 |**Ongebruikelijke toegangs inspectie in een opslag account**|Geeft aan dat de toegangs machtigingen van een opslag account op een ongebruikelijke manier zijn geïnspecteerd, vergeleken met de recente activiteit voor dit account. Een mogelijke oorzaak is dat een aanvaller Reconnaissance heeft uitgevoerd voor een toekomstige aanval.|Verzameling|
 |**Ongebruikelijke gegevens exploratie in een opslag account**|Geeft aan dat blobs of containers in een opslag account op een abnormale manier zijn geïnventariseerd, vergeleken met de recente activiteit van dit account. Een mogelijke oorzaak is dat een aanvaller Reconnaissance heeft uitgevoerd voor een toekomstige aanval.|Verzameling|
 |**VOOR beeld: mogelijke malware die is geüpload naar een opslag account**|Geeft aan dat een blob met mogelijke schadelijke software is geüpload naar een opslag account. Mogelijke oorzaken zijn het uploaden van opzettelijke schadelijke software door een aanvaller of een onbedoelde upload van een mogelijk schadelijke BLOB door een rechtmatige gebruiker.|LateralMovement|
-||<a name="alerts-azurecosmos"></a><h3>Azure Cosmos DB</h3> [Meer details en opmerkingen](security-center-alerts-data-services.md#azure-cosmos-db)||
+||||
+
+
+## <a name="alerts-azurecosmos"></a>Azure Cosmos DB
+
+[Meer details en opmerkingen](security-center-alerts-data-services.md#azure-cosmos-db)
+
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
+|----|----|:----:|
 |**Toegang vanaf een ongebruikelijke locatie naar een Cosmos DB-account**|Geeft aan dat er een wijziging is in het toegangs patroon voor een Azure Cosmos DB-account. Iemand heeft dit account geopend vanuit een onbekend IP-adres, vergeleken met de recente activiteit. Een aanvaller heeft toegang tot het account of een rechtmatige gebruiker heeft dit geopend vanaf een nieuwe en ongebruikelijke geografische locatie. Een voor beeld van de laatste is extern onderhoud van een nieuwe toepassing of ontwikkelaar.|Misbruik|
 |**Ongebruikelijke hoeveelheid gegevens die is geëxtraheerd uit een Cosmos DB-account**|Geeft aan dat er een wijziging is opgetreden in het patroon voor gegevens extractie van een Azure Cosmos DB-account. Iemand heeft een ongebruikelijke hoeveelheid gegevens geëxtraheerd in vergelijking met de recente activiteit. Een aanvaller kan een grote hoeveelheid gegevens uit een Azure Cosmos DB-Data Base (bijvoorbeeld gegevens exfiltration of lekkage of een niet-geautoriseerde overdracht van gegevens) hebben geëxtraheerd. Het is ook mogelijk dat een rechtmatige gebruiker of toepassing een ongebruikelijke hoeveelheid gegevens uit een container heeft geëxtraheerd (bijvoorbeeld voor onderhoud back-upactiviteit).|Exfiltratie|
-||<a name="alerts-azurenetlayer"></a><h3>Azure-netwerklaag</h3> [Meer details en opmerkingen](security-center-alerts-service-layer.md#azure-network-layer)||
+||||
+
+
+## <a name="alerts-azurenetlayer"></a>Waarschuwingen voor Azure Network Layer
+
+[Meer details en opmerkingen](security-center-alerts-service-layer.md#azure-network-layer)
+
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
+|----|----|:----:|
 |**Verkeer gedetecteerd van IP-adressen die worden aanbevolen voor blok kering**|Azure Security Center heeft binnenkomend verkeer gedetecteerd van IP-adressen die worden aanbevolen om te worden geblokkeerd. Dit gebeurt meestal wanneer dit IP-adres niet regel matig communiceert met deze bron. Het IP-adres is ook als schadelijk gemarkeerd door de Threat Intelligence-bronnen van Security Center.|Scannen|
 |**Netwerk communicatie met een schadelijke computer gedetecteerd**|Analyse van netwerk verkeer geeft aan dat uw computer (IP% {IP-adres van het slacht offer) heeft gecommuniceerd met wat mogelijk een opdracht-en beheer centrum is. Wanneer de aangetaste bron een load balancer of een toepassings gateway is, kan de verdachte activiteit erop wijzen dat een of meer van de resources in de back-end-pool (van de load balancer of toepassings gateway) zijn gecommuniceerd met wat mogelijk een opdracht is en Beheer centrum.|-|
 |**Mogelijke geïnfecteerde machine gedetecteerd**|Met bedreigings informatie wordt aangegeven dat uw computer (op IP% {machine IP}) mogelijk is aangetast door een malware van het type Conficker. Conficker was een computer worm die gericht is op het micro soft Windows-besturings systeem en is voor het eerst gedetecteerd in november 2008. Conficker geïnfecteerde miljoenen computers, waaronder overheids-, bedrijfs-en thuis computers in meer dan 200 landen, waardoor IT de grootste bekende computer worm infectie is sinds de 2003 Welchia-worm.|-|
@@ -285,7 +337,15 @@ Typen waarschuwingen die zijn opgenomen in deze tabel:
 |**Verdachte uitgaande RDP-netwerk activiteit naar meerdere bestemmingen**|Netwerk verkeer analyse heeft afwijkende uitgaande Remote Desktop Protocol (RDP)-communicatie gedetecteerd naar meerdere bestemmingen die afkomstig zijn van% {aangetast host} (% {Attack IP}), een resource in uw implementatie. Wanneer de aangetaste bron een load balancer of een toepassings gateway is, is het verdachte uitgaande verkeer afkomstig van naar een of meer resources in de back-end-groep (van de load balancer of toepassings gateway). Met name een voor beeld van netwerk gegevens toont de computer die verbinding maakt met% {aantal aangevallen Ip's} unieke IP-adressen, die als abnormaal worden beschouwd voor deze omgeving. Deze activiteit kan erop wijzen dat uw resource is aangetast en nu wordt gebruikt om externe RDP-eind punten te afdwingen. Houd er rekening mee dat dit type activiteit ervoor kan zorgen dat uw IP-adres wordt gemarkeerd als kwaadaardig bij externe entiteiten.|-|
 |**Verdachte uitgaande SSH-netwerk activiteit**|Analyse van netwerk verkeer heeft afwijkende uitgaande SSH-communicatie gedetecteerd in% {IP-adres van het slacht offer als gevolg van% {aangetast host} (% {Attack IP}), een resource in uw implementatie. Wanneer de aangetaste bron een load balancer of een toepassings gateway is, is het verdachte uitgaande verkeer afkomstig van naar een of meer resources in de back-end-groep (van de load balancer of toepassings gateway). Met name de voorbeeld netwerk gegevens tonen% {aantal verbindingen} uitgaande verbindingen van uw resource die als abnormaal worden beschouwd voor deze omgeving. Deze activiteit kan erop wijzen dat uw resource is aangetast en nu wordt gebruikt om externe SSH-eind punten te afdwingen. Houd er rekening mee dat dit type activiteit ervoor kan zorgen dat uw IP-adres wordt gemarkeerd als kwaadaardig bij externe entiteiten.|-|
 |**Verdachte uitgaande SSH-netwerk activiteit naar meerdere bestemmingen**|Netwerk verkeer analyse heeft afwijkende uitgaande SSH-communicatie gedetecteerd naar meerdere bestemmingen die afkomstig zijn van% {aangetast host} (% {Attack IP}), een resource in uw implementatie. Wanneer de aangetaste bron een load balancer of een toepassings gateway is, is het verdachte uitgaande verkeer afkomstig van naar een of meer resources in de back-end-groep (van de load balancer of toepassings gateway). Met name een voor beeld van netwerk gegevens toont uw bron waarmee verbinding wordt gemaakt met% {aantal aangevallen Ip's} unieke IP-adressen, die als abnormaal worden beschouwd voor deze omgeving. Deze activiteit kan erop wijzen dat uw resource is aangetast en nu wordt gebruikt om externe SSH-eind punten te afdwingen. Houd er rekening mee dat dit type activiteit ervoor kan zorgen dat uw IP-adres wordt gemarkeerd als kwaadaardig bij externe entiteiten.|-|
-||<a name="alerts-azureresourceman"></a><h3>Azure Resource Manager (preview-versie)</h3> [Meer details en opmerkingen](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)||
+||||
+
+
+## <a name="alerts-azureresourceman"></a>Waarschuwingen voor Azure Resource Manager (preview-versie)
+
+[Meer details en opmerkingen](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)
+
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
+|----|----|:----:|
 |**PREVIEW-functie voor de uitvoering van de microburst-Toolkit gedetecteerd**|Er is een bekend Reconnaissance-Toolkit voor Cloud omgevingen gedetecteerd in uw omgeving. Het hulp [programma dat](https://github.com/NetSPI/MicroBurst) door een aanvaller (of indringings tester) kan worden gebruikt voor het toewijzen van de resources van uw abonnementen, het identificeren van onveilige configuraties en het lekken van vertrouwelijke informatie.|-|
 |**PREVIEW-uitvoering van Azurite-Toolkit gedetecteerd**|Er is een bekend Reconnaissance-Toolkit voor Cloud omgevingen gedetecteerd in uw omgeving. Het hulp programma [Azurite](https://github.com/mwrlabs/Azurite) kan door een aanvaller (of indringings tester) worden gebruikt om de resources van uw abonnementen toe te wijzen en onveilige configuraties te identificeren.|-|
 |**VOOR beeld-verdachte beheer sessie met een inactief account gedetecteerd**|Logboeken voor abonnements activiteiten er is een verdacht gedrag gedetecteerd. Een principal die gedurende een lange periode niet wordt gebruikt, is nu bezig met het uitvoeren van acties waarmee persistentie voor een aanvaller kan worden beveiligd.|Persistentie|
@@ -295,7 +355,15 @@ Typen waarschuwingen die zijn opgenomen in deze tabel:
 |**Activiteit vanuit niet-gangbaar land**|Activiteit van een locatie die niet recent of ooit door een gebruiker in de organisatie is bezocht.<br>Deze detectie rekening gehouden met het verleden activiteit locaties om te bepalen van de nieuwe en onregelmatige locaties. De anomaliedetectie-engine bevat informatie over de voorgaande locaties die worden gebruikt door gebruikers in de organisatie.|-|
 |**Activiteit vanaf anonieme IP-adressen**|Gebruikers activiteit van een IP-adres dat is geïdentificeerd als een anonieme proxy-IP-adres is gedetecteerd.<br>Deze proxy's worden gebruikt door mensen die het IP-adres van hun apparaat willen verbergen en kunnen worden gebruikt voor kwaad aardige doel einden. Deze detectie maakt gebruik van een algoritme voor machine learning dat onjuiste positieven, zoals verkeerd gelabelde IP-adressen die veel worden gebruikt door gebruikers in de organisatie, vermindert.|-|
 |**Onmogelijke reis activiteit**|Er zijn twee gebruikers activiteiten (in één of meerdere sessies) opgetreden, afkomstig van geografische locaties. Dit gebeurt binnen een periode die korter is dan de tijd die de gebruiker zou hebben nodig om vanaf de eerste locatie naar de tweede te gaan. Dit geeft aan dat een andere gebruiker dezelfde referenties gebruikt.<br>Deze detectie maakt gebruik van een machine learning algoritme dat duidelijke fout-positieven negeert die bijdragen aan de niet-bestaans omstandigheden, zoals Vpn's en locaties die regel matig door andere gebruikers in de organisatie worden gebruikt. De detectie heeft een initiële leer periode van zeven dagen, waarbij het activiteiten patroon van een nieuwe gebruiker wordt geleerd. |-|
-||<a name="alerts-azurekv"></a><h3>Azure Key Vault (preview-versie)</h3> [Meer details en opmerkingen](security-center-alerts-service-layer.md#azure-keyvault)||
+||||
+
+
+## <a name="alerts-azurekv"></a>Waarschuwingen voor Azure Key Vault (preview-versie)
+
+[Meer details en opmerkingen](security-center-alerts-service-layer.md#azure-keyvault)
+
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
+|----|----|:----:|
 |**Toegang vanaf een TOR-eind knooppunt naar een Key Vault**|De Key Vault is geopend door iemand die het TOR IP anoniem maken-systeem gebruikt om de locatie te verbergen. Kwaad aardige actors proberen vaak hun locatie te verbergen wanneer er wordt geprobeerd om onbevoegde toegang te krijgen tot bronnen met Internet verbinding.|-|
 |**Verdachte beleids wijziging en geheime query in een Key Vault**|Er is een Key Vault-beleid gewijzigd en vervolgens worden de bewerkingen voor het weer geven en/of ontvangen van geheimen uitgevoerd. Daarnaast wordt dit bewerkings patroon niet normaal uitgevoerd door de gebruiker op deze kluis. Dit is zeer indicatief dat de Key Vault is aangetast en dat de geheimen binnen zijn gestolen door een schadelijke actor.|-|
 |**Verdachte geheime vermelding en query in een Key Vault**|Er is een geheime lijst bewerking gevolgd door veel geheime Get-bewerkingen. Dit bewerkings patroon wordt ook normaal gesp roken niet uitgevoerd door de gebruiker op deze kluis. Dit geeft aan dat iemand kan dumpen van de geheimen die zijn opgeslagen in de Key Vault voor mogelijk schadelijke doel einden.|-|
@@ -305,11 +373,18 @@ Typen waarschuwingen die zijn opgenomen in deze tabel:
 |**Ongebruikelijk bewerkings patroon in een Key Vault**|Er is een ongebruikelijke set Key Vault bewerkingen uitgevoerd in vergelijking met historische gegevens. Key Vault activiteit is doorgaans in de loop van de tijd hetzelfde. Dit kan een rechtmatige wijziging in de activiteit zijn. Het is ook mogelijk dat uw infra structuur is aangetast en dat er verdere onderzoeken nood zakelijk zijn.|-|
 |**Grote hoeveelheid bewerkingen in een Key Vault**|Er is een groter volume van Key Vault bewerkingen uitgevoerd in vergelijking met historische gegevens. Key Vault activiteit is doorgaans in de loop van de tijd hetzelfde. Dit kan een rechtmatige wijziging in de activiteit zijn. Het is ook mogelijk dat uw infra structuur is aangetast en dat er verdere onderzoeken nood zakelijk zijn.|-|
 |**Gebruiker heeft grote hoeveelheid sleutel kluizen geopend**|Het aantal kluizen dat een gebruiker of toepassing toegang heeft, is gewijzigd ten opzichte van historische gegevens. Key Vault activiteit is doorgaans in de loop van de tijd hetzelfde. Dit kan een rechtmatige wijziging in de activiteit zijn. Het is ook mogelijk dat uw infra structuur is aangetast en dat er verdere onderzoeken nood zakelijk zijn.|-|
-||<a name="alerts-azureddos"></a><h3>Azure DDoS-beveiliging</h3> [Meer details en opmerkingen](security-center-alerts-integration.md#azure-ddos)||
+||||
+
+
+## <a name="alerts-azureddos"></a>Waarschuwingen voor Azure DDoS Protection
+
+[Meer details en opmerkingen](security-center-alerts-integration.md#azure-ddos)
+
+|Waarschuwing|Beschrijving|Intentie ([meer informatie](#intentions))|
+|----|----|:----:|
 |**DDoS-aanval gedetecteerd voor openbaar IP-adres**|Er is een DDoS-aanval gedetecteerd voor open bare IP (IP-adres) en deze wordt verholpen.|Scannen|
 |**DDoS-aanval beperkt voor openbaar IP-adres**|DDoS-aanval voor open bare IP (IP-adres) wordt beperkt.|Scannen|
 ||||
-
 
 ## <a name="intentions"></a>Doel
 

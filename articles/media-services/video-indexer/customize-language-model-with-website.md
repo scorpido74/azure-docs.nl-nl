@@ -1,5 +1,5 @@
 ---
-title: De Video Indexer-website gebruiken om een taal model aan te passen-Azure
+title: Taal modellen aanpassen met de website van Video Indexer-Azure
 titleSuffix: Azure Media Services
 description: In dit artikel wordt beschreven hoe u een taal model kunt aanpassen met de Video Indexer-website.
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: 5d92cb02a0ac52b317cf9d4b6c8e0278f9291910
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 329da39914ef957d3a5376ba59e0c7103ad6a5dd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838447"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513912"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>Een taal model aanpassen met de Video Indexer-website
 

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 01/21/2020
-ms.openlocfilehash: b8cf7992617b7263b86fd98e5def8be1d43ca68c
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: fb9b665f5631e6992966679b1dc0864539fde543
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293365"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514552"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Wat is Azure SQL Database beheerde instantie?
 
@@ -72,7 +72,7 @@ De belangrijkste functies van beheerde exemplaren worden weer gegeven in de volg
 
 ## <a name="vcore-based-purchasing-model"></a>Aankoopmodel op basis van vCore
 
-Het [op vCore gebaseerde aankoop model](sql-database-service-tiers-vcore.md) voor beheerde instanties biedt flexibiliteit, controle, transparantie en een eenvoudige manier om on-premises werkbelasting vereisten te vertalen naar de Cloud. Met dit model kunt u de reken capaciteit, het geheugen en de opslag aanpassen op basis van de behoeften van uw werk belasting. Het vCore-model komt ook in aanmerking voor een besparing van Maxi maal 30 procent met de [Azure Hybrid Benefit voor SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).
+Het [op vCore gebaseerde aankoop model](sql-database-service-tiers-vcore.md) voor beheerde instanties biedt flexibiliteit, controle, transparantie en een eenvoudige manier om on-premises werkbelasting vereisten te vertalen naar de Cloud. Met dit model kunt u de reken capaciteit, het geheugen en de opslag aanpassen op basis van de behoeften van uw werk belasting. Het vCore-model is ook in aanmerking voor een besparing van Maxi maal 55 procent met de [Azure Hybrid Benefit voor SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 In vCore-model kunt u kiezen tussen generaties van hardware.
 

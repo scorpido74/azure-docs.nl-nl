@@ -4,12 +4,12 @@ description: In dit artikel vindt u informatie over het oplossen van fouten die 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 1e71f6f711bcee78538c573a8869b8fdfa2a10b0
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 9828309b080f5831a073fb7c5149455dc649fa13
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664625"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513793"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten op virtuele machines van Azure oplossen
 
@@ -262,7 +262,6 @@ Controleer de versie van de VM-agent op Windows-Vm's:
 
 VM-back-up is afhankelijk van het uitgeven van momentopname opdrachten aan onderliggende opslag. Als u geen toegang hebt tot opslag of vertragingen tijdens het uitvoeren van een taak voor een moment opname, kan de back-uptaak mislukken. De volgende voor waarden kunnen leiden tot een fout in een moment opname taak:
 
-* **Netwerk toegang tot opslag wordt geblokkeerd met behulp van NSG**. Meer informatie over het [tot stand brengen van netwerk toegang](backup-azure-arm-vms-prepare.md#establish-network-connectivity) tot opslag met behulp van de lijst met toegestane IP-adressen of een proxy server.
 * **Vm's met SQL Server back-up die is geconfigureerd, kunnen een vertraging voor de taak moment opname veroorzaken**. Standaard maakt VM-back-up een volledige VSS-back-up op Windows-Vm's. Vm's met SQL Server, met SQL Server back-up geconfigureerd, kunnen vertragingen in moment opnamen ondervinden. Als de vertraging van moment opnamen back-upfouten veroorzaken, stelt u de volgende register sleutel in:
 
    ```text
@@ -276,29 +275,9 @@ VM-back-up is afhankelijk van het uitgeven van momentopname opdrachten aan onder
 
 ## <a name="networking"></a>Networking
 
-Net als alle uitbrei dingen hebben back-upextensies toegang tot het open bare Internet nodig. Geen toegang tot het open bare Internet kan zich op verschillende manieren manifesteren:
+DHCP moet zijn ingeschakeld in de gast voor het werken met IaaS VM-back-up. Als u een statisch privé IP-adres nodig hebt, configureert u dit via de Azure Portal of Power shell. Zorg ervoor dat de DHCP-optie in de virtuele machine is ingeschakeld.
+Meer informatie over het instellen van een statisch IP-adres via Power shell:
 
-* De installatie van de extensie kan niet worden uitgevoerd.
-* Back-upbewerkingen zoals moment opnamen van schijven kunnen mislukken.
-* Het weer geven van de status van de back-upbewerking kan mislukken.
+* [Een statisch intern IP-adres toevoegen aan een bestaande virtuele machine](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
+* [De toewijzings methode wijzigen voor een privé-IP-adres dat is toegewezen aan een netwerk interface](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
 
-De nood zaak om open bare Internet adressen op te lossen wordt beschreven in [deze Azure-ondersteunings blog](https://blogs.msdn.com/b/mast/archive/2014/06/18/azure-vm-provisioning-stuck-on-quot-installing-extensions-on-virtual-machine-quot.aspx). Controleer de DNS-configuraties voor het VNET en controleer of de Azure-Uri's kunnen worden omgezet.
-
-Nadat de naam omzetting correct is uitgevoerd, moet u ook toegang tot de Azure-Ip's geven. Voer een van de volgende stappen uit om de toegang tot de Azure-infra structuur te blok keren:
-
-* Lijst met IP-bereiken van Azure Data Center toestaan:
-   1. Haal de lijst met [IP-adressen van data centers](https://www.microsoft.com/download/details.aspx?id=41653) op die zich in de acceptatie lijst bevinden.
-   1. Deblokkeren van de IP-adressen met behulp van de cmdlet [New-netroute](https://docs.microsoft.com/powershell/module/nettcpip/new-netroute) . Voer deze cmdlet uit in een Power shell-venster met verhoogde bevoegdheden in de Azure-VM. Als administrator uitvoeren.
-   1. Voeg regels toe aan de NSG, als u er een hebt in, om toegang tot de IP-adressen toe te staan.
-* Maak een pad voor het HTTP-verkeer dat moet worden geplaatst:
-   1. Als er een netwerk beperking aanwezig is, implementeert u een HTTP-proxy server om het verkeer te routeren. Een voor beeld is een netwerk beveiligings groep. Zie de stappen voor het implementeren van een HTTP-proxy server bij het [maken van een netwerk verbinding](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
-   1. Voeg regels toe aan de NSG, als u er één hebt, om toegang tot internet vanaf de HTTP-proxy toe te staan.
-
-> [!NOTE]
-> DHCP moet zijn ingeschakeld in de gast voor het werken met IaaS VM-back-up. Als u een statisch privé IP-adres nodig hebt, configureert u dit via de Azure Portal of Power shell. Zorg ervoor dat de DHCP-optie in de virtuele machine is ingeschakeld.
-> Meer informatie over het instellen van een statisch IP-adres via Power shell:
->
-> * [Een statisch intern IP-adres toevoegen aan een bestaande virtuele machine](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
-> * [De toewijzings methode wijzigen voor een privé-IP-adres dat is toegewezen aan een netwerk interface](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
->
->

@@ -1,6 +1,6 @@
 ---
-title: Beveiliging op kolomniveau
-description: Met beveiliging op kolom niveau (CLS) kunnen klanten de toegang tot database tabel kolommen beheren op basis van de uitvoerings context of het groepslid maatschap van de gebruiker. CLS vereenvoudigt het ontwerp en de code ring van beveiliging in uw toepassing. Met CLS kunt u beperkingen voor kolom toegang implementeren.
+title: Wat is beveiliging op kolom niveau voor SQL Data Warehouse?
+description: Met beveiliging op kolom niveau kunnen klanten de toegang tot database tabel kolommen beheren op basis van de uitvoerings context of het groepslid maatschap van de gebruiker, het ontwerp en de code ring van de beveiliging in uw toepassing vereenvoudigen en beperkingen voor de kolom implementeren. Access.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,21 +11,24 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 85f705022a0ff5970d30c61206d4f2631254b7ce
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 344701989a753e17d8a026f6bb771a6030bdb71f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077110"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513045"
 ---
 # <a name="column-level-security"></a>Beveiliging op kolom niveau
-Met beveiliging op kolom niveau (CLS) kunnen klanten de toegang tot database tabel kolommen beheren op basis van de uitvoerings context of het groepslid maatschap van de gebruiker.
-Bijwerken naar onderstaande video: omdat deze video is gepost, is de [beveiliging op rijniveau](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) ook beschikbaar in SQL Data Warehouse. 
+
+Met beveiliging op kolom niveau kunnen klanten de toegang tot tabel kolommen beheren op basis van de uitvoerings context of het groepslid maatschap van de gebruiker.
+
+
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
+Omdat deze video is gepost, is de [beveiliging op rijniveau](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) beschikbaar geworden voor SQL Data Warehouse. 
 
-CLS vereenvoudigt het ontwerp en de code ring van beveiliging in uw toepassing. Met CLS kunt u beperkingen voor kolom toegang implementeren om gevoelige gegevens te beveiligen. Bijvoorbeeld, om ervoor te zorgen dat specifieke gebruikers alleen toegang hebben tot bepaalde kolommen van een tabel die relevant is voor hun afdeling. De logica van de toegangs beperking bevindt zich in de database laag, in plaats van dat de gegevens in een andere toepassingslaag worden verwijderd. De-data base past de toegangs beperkingen toe telkens wanneer de toegang tot de gegevens vanuit een wille keurige laag wordt gestart. Deze beperking zorgt ervoor dat uw beveiligings systeem betrouwbaarder en robuuster is door de surface area van uw algehele beveiligings systeem te verminderen. Daarnaast elimineert CLS de nood zaak van de introductie van weer gaven om kolommen uit te filteren voor het opleggen van toegangs beperkingen voor de gebruikers.
+Beveiliging op kolom niveau vereenvoudigt het ontwerp en de code ring van beveiliging in uw toepassing, zodat u kolom toegang kunt beperken voor het beveiligen van gevoelige gegevens. Bijvoorbeeld, om ervoor te zorgen dat specifieke gebruikers alleen toegang hebben tot bepaalde kolommen van een tabel die relevant is voor hun afdeling. De logica van de toegangs beperking bevindt zich in de database laag, in plaats van dat de gegevens in een andere toepassingslaag worden verwijderd. De-data base past de toegangs beperkingen toe telkens wanneer gegevens toegang vanuit een wille keurige laag wordt uitgevoerd. Deze beperking zorgt ervoor dat uw beveiliging betrouwbaarder en robuuster wordt door de surface area van uw algehele beveiligings systeem te verminderen. Daarnaast elimineert beveiliging op kolom niveau ook de nood zaak van de introductie van weer gaven om kolommen uit te filteren voor het opleggen van toegangs beperkingen voor de gebruikers.
 
-U kunt CLS implementeren met de instructie [Grant](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL. Met dit mechanisme worden de authenticatie van SQL en Azure Active Directory (AAD) ondersteund.
+U kunt beveiliging op kolom niveau implementeren met de instructie [Grant](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL. Met dit mechanisme worden de authenticatie van SQL en Azure Active Directory (AAD) ondersteund.
 
 ![compatibiliteit](./media/column-level-security/cls.png)
 
@@ -48,9 +51,9 @@ GRANT <permission> [ ,...n ] ON
 ```
 
 ## <a name="example"></a>Voorbeeld
-In het volgende voor beeld ziet u hoe u ' test User ' beperkt tot de kolom ' SSN ' in de tabel ' Membership ':
+In het volgende voor beeld ziet u hoe u `TestUser` beperkt tot de `SSN` kolom van de tabel `Membership`:
 
-De tabel ' Membership ' maken met de kolom SSN die wordt gebruikt voor het opslaan van sociale-beveiligings nummers:
+`Membership` tabel maken met de kolom SSN die wordt gebruikt voor het opslaan van sociale-beveiligings nummers:
 
 ```sql
 CREATE TABLE Membership
@@ -62,13 +65,13 @@ CREATE TABLE Membership
    Email varchar(100) NULL);
 ```
 
-' Test User ' toestaan om toegang te krijgen tot alle kolommen, met uitzonde ring van de kolom SSN die gevoelige gegevens bevat:
+`TestUser` toegang tot alle kolommen toestaan, met uitzonde ring van de kolom SSN, die de gevoelige gegevens bevat:
 
 ```sql
 GRANT SELECT ON Membership(MemberID, FirstName, LastName, Phone, Email) TO TestUser;
 ```
 
-Query's die worden uitgevoerd als ' test User ' mislukken als ze de kolom SSN bevatten:
+Query's die worden uitgevoerd als `TestUser`, mislukken als ze de kolom SSN bevatten:
 
 ```sql
 SELECT * FROM Membership;
@@ -78,6 +81,8 @@ The SELECT permission was denied on the column 'SSN' of the object 'Membership',
 ```
 
 ## <a name="use-cases"></a>Gebruiksvoorbeelden
-Hier volgen enkele voor beelden van de manier waarop CLS vandaag wordt gebruikt:
+
+Hier volgen enkele voor beelden van de manier waarop beveiliging op kolom niveau momenteel wordt gebruikt:
+
 - Met een onderneming met financiële services kunnen alleen account beheerders toegang hebben tot sofi-nummers (Social Security Number) van klanten, telefoon nummers en andere persoons gegevens (PII).
-- Een Health Care-provider staat toe dat alleen artsen en verpleegt toegang hebben tot gevoelige medische records zonder dat leden van de facturerings afdeling deze gegevens kunnen bekijken.
+- Een Health Care-provider staat toe dat alleen artsen en verpleegt toegang hebben tot gevoelige medische records en dat leden van de facturerings afdeling deze gegevens niet kunnen bekijken.

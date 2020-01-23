@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 501214f87a65c71436e262608f7e9b3471cc9775
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f0719542eb693e52f9a7996e28699b7425b0e0fe
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705413"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509135"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>De status controleren van een door Azure Active Directory Domain Services beheerd domein
 
-Azure Active Directory Domain Services (Azure AD DS) voert enkele achtergrond taken uit om het beheerde domein in orde en up-to-date te houden. Deze taken omvatten het maken van back-ups, het Toep assen van beveiligings updates en het synchroniseren van gegevens vanuit Azure AD. Als er problemen zijn met het door Azure AD DS beheerde domein, kunnen deze taken mogelijk niet worden uitgevoerd. Als u problemen wilt controleren en oplossen, kunt u de status van een door Azure AD DS beheerd domein controleren met behulp van de Azure Portal.
+Azure Active Directory Domain Services (Azure AD DS) voert enkele achtergrond taken uit om het beheerde domein in orde en up-to-date te houden. Deze taken omvatten het maken van back-ups, het Toep assen van beveiligings updates en het synchroniseren van gegevens vanuit Azure AD. Als er problemen zijn met het door Azure AD DS beheerde domein, worden deze taken mogelijk niet voltooid. Als u problemen wilt controleren en oplossen, kunt u de status van een door Azure AD DS beheerd domein controleren met behulp van de Azure Portal.
 
-In dit artikel wordt uitgelegd hoe u de status van Azure AD DS kunt bekijken en de informatie of waarschuwingen kunt zien.
+In dit artikel leest u hoe u de status van Azure AD DS kunt bekijken en hoe u de informatie of waarschuwingen kunt zien.
 
 ## <a name="view-the-health-status"></a>De status weer geven
 
@@ -38,22 +38,22 @@ De *laatste geëvalueerde* tijds tempel van de status pagina wordt weer gegeven 
 
 Met de status in de rechter bovenhoek wordt de algemene status van het beheerde domein van Azure AD DS aangeduid. Met de status worden alle bestaande waarschuwingen in uw domein gemeten. De volgende tabel bevat een overzicht van de beschik bare status indicatoren:
 
-| Status | diapictogram | Uitleg |
+| Status | Pictogram | Uitleg |
 | --- | :----: | --- |
 | In uitvoering | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Het beheerde domein van Azure AD DS wordt correct uitgevoerd en heeft geen kritieke of waarschuwings meldingen. Het domein heeft mogelijk informatieve waarschuwingen. |
 | Aandacht vereist (waarschuwing) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Er zijn geen kritieke waarschuwingen op het beheerde domein van Azure AD DS, maar er zijn een of meer waarschuwingen die moeten worden behandeld. |
 | Aandacht vereist (kritiek) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | Er zijn een of meer kritieke waarschuwingen op de Azure AD DS beheerde domein die moeten worden geadresseerd. Mogelijk hebt u ook waarschuwings-en/of informatieve waarschuwingen. |
-| Installeert | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Het Azure AD DS domein wordt geïmplementeerd. |
+| Implementeren | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Het Azure AD DS domein wordt geïmplementeerd. |
 
 ## <a name="understand-monitors-and-alerts"></a>Monitors en waarschuwingen begrijpen
 
-Met de status voor een beheerd domein van Azure AD DS worden twee soorten informatie weer gegeven: monitors en waarschuwingen. Monitors tonen het tijdstip waarop de basis achtergrond taken zijn voltooid. Waarschuwingen bieden informatie of suggesties voor het verbeteren van de stabiliteit van het beheerde domein.
+Met de status voor een beheerd domein van Azure AD DS worden twee soorten informatie weer gegeven: *monitors*en *waarschuwingen*. Monitors tonen het tijdstip waarop de basis achtergrond taken zijn voltooid. Waarschuwingen bieden informatie of suggesties voor het verbeteren van de stabiliteit van het beheerde domein.
 
 ### <a name="monitors"></a>Monitors
 
-Monitors zijn gebieden van een Azure AD DS beheerde domein die regel matig worden gecontroleerd. Als er actieve waarschuwingen zijn voor het beheerde domein van Azure AD DS, kan dit ertoe leiden dat een van de monitors een probleem meldt. Azure AD Domain Services controleert momenteel de volgende gebieden:
+Monitors zijn gebieden van een Azure AD DS beheerde domein die regel matig worden gecontroleerd. Als er actieve waarschuwingen zijn voor het beheerde domein van Azure AD DS, kan dit ertoe leiden dat een van de monitors een probleem meldt. Azure AD Domain Services heeft momenteel monitors voor de volgende gebieden:
 
-* Backup
+* Back-up
 * Synchronisatie met Azure AD
 
 #### <a name="backup-monitor"></a>Back-upmonitor
@@ -68,7 +68,7 @@ De back-upmonitor controleert of geautomatiseerde reguliere back-ups van het beh
 
 #### <a name="synchronization-with-azure-ad-monitor"></a>Synchronisatie met Azure AD monitor
 
-Een door Azure AD DS beheerd domein wordt regel matig gesynchroniseerd met Azure Active Directory. Het aantal gebruikers en groeps objecten, en het aantal wijzigingen dat sinds de laatste synchronisatie in de Azure AD-adres lijst is aangebracht, is van invloed op hoe lang het duurt om te synchroniseren. Als de Azure AD DS Managed domain voor het laatst drie dagen geleden is gesynchroniseerd, moet u alle actieve waarschuwingen controleren en oplossen. Als de synchronisatie monitor de status niet bijwerkt om een recente synchronisatie weer te geven, [opent u een ondersteunings aanvraag voor Azure][azure-support].
+Een door Azure AD DS beheerd domein wordt regel matig gesynchroniseerd met Azure Active Directory. Het aantal gebruikers en groeps objecten, en het aantal wijzigingen dat sinds de laatste synchronisatie in de Azure AD-adres lijst is aangebracht, is van invloed op hoe lang het duurt om te synchroniseren. Als de Azure AD DS Managed domain voor het laatst drie dagen geleden is gesynchroniseerd, moet u alle actieve waarschuwingen controleren en oplossen. Als de synchronisatie monitor de status niet bijwerkt om een recente synchronisatie weer te geven nadat u actieve waarschuwingen hebt geadresseerd, [opent u een ondersteunings aanvraag voor Azure][azure-support].
 
 ### <a name="alerts"></a>Waarschuwingen
 

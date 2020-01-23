@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/03/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 61c9d887f1b193258161cd96ccfa3618e8371890
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: a25337cad39674bc6016f67bdc46a804518d0b03
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081010"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509016"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Veelgestelde vragen (FAQ)
 
@@ -41,10 +41,10 @@ Op deze pagina vindt u antwoorden op veelgestelde vragen over Azure Active Direc
 Nee. U kunt slechts één beheerd domein maken dat door Azure AD Domain Services wordt onderhouden voor één Azure AD-adres lijst.
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network"></a>Kan ik Azure AD Domain Services inschakelen in een klassiek virtueel netwerk?
-Klassieke virtuele netwerken worden niet ondersteund voor nieuwe implementaties. Bestaande beheerde domeinen die in klassieke virtuele netwerken zijn geïmplementeerd, worden nog steeds ondersteund.
+Klassieke virtuele netwerken worden niet ondersteund voor nieuwe implementaties. Bestaande beheerde domeinen die in klassieke virtuele netwerken zijn geïmplementeerd, worden nog steeds ondersteund. U kunt [Azure AD Domain Services ook migreren van het klassieke virtuele netwerk model naar Resource Manager (preview)](migrate-from-classic-vnet.md).
 
 ### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Kan ik Azure AD Domain Services inschakelen in een Azure Resource Manager virtueel netwerk?
-Ja. Azure AD Domain Services kan worden ingeschakeld in een Azure Resource Manager virtueel netwerk. Klassieke Azure Virtual Networks worden niet meer ondersteund voor wanneer u een nieuw beheerd domein maakt.
+Ja. Azure AD Domain Services kan worden ingeschakeld in een Azure Resource Manager virtueel netwerk. Klassieke virtuele netwerken van Azure zijn niet meer beschikbaar wanneer u een beheerd domein maakt.
 
 ### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>Kan ik mijn bestaande beheerde domein migreren van een klassiek virtueel netwerk naar een virtueel netwerk van Resource Manager?
 Ja, deze functie is beschikbaar als preview-versie. Zie [Azure AD Domain Services migreren van het klassieke virtuele netwerk model naar Resource Manager (preview)](migrate-from-classic-vnet.md)voor meer informatie.
@@ -62,7 +62,7 @@ De service zelf biedt geen rechtstreekse ondersteuning voor dit scenario. Uw beh
 Ja. Zie [Azure AD Domain Services inschakelen met behulp van Power shell](powershell-create-instance.md)voor meer informatie.
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Kan ik Azure AD Domain Services inschakelen met een resource manager-sjabloon?
-Ja, u kunt een Azure AD Domain Services beheerd domein maken met behulp van een resource manager-sjabloon. Een Service-Principal en een Azure AD-groep voor beheer moeten worden gemaakt met behulp van de Azure Portal of Azure PowerShell voordat de sjabloon wordt geïmplementeerd. Wanneer u een Azure AD Domain Services beheerd domein maakt in de Azure Portal, is er een optie om de sjabloon te exporteren voor gebruik met aanvullende implementaties. Er is ook een voorbeeld [sjabloon in de GitHub templates-voor](https://github.com/Azure/azure-quickstart-templates/tree/master/101-AAD-DomainServices)beeld-opslag plaats.
+Ja, u kunt een Azure AD Domain Services beheerd domein maken met behulp van een resource manager-sjabloon. Een Service-Principal en een Azure AD-groep voor beheer moeten worden gemaakt met behulp van de Azure Portal of Azure PowerShell voordat de sjabloon wordt geïmplementeerd. Zie [een door Azure AD DS beheerd domein maken met behulp van een Azure Resource Manager sjabloon](template-create-instance.md)voor meer informatie. Wanneer u een Azure AD Domain Services beheerd domein maakt in de Azure Portal, is er ook een optie om de sjabloon te exporteren voor gebruik met aanvullende implementaties.
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Kan ik domein controllers toevoegen aan een Azure AD Domain Services beheerd domein?
 Nee. Het door Azure AD Domain Services verschafte domein is een beheerd domein. U hoeft geen domein controllers in te richten, configureren of anderszins te beheren voor dit domein. Deze beheer activiteiten worden door micro soft als service verschaft. Daarom kunt u geen extra domein controllers (lezen/schrijven of alleen-lezen) toevoegen voor het beheerde domein.
@@ -104,7 +104,7 @@ Wijzigingen die zijn aangebracht in uw Azure AD-adres lijst met behulp van de Az
 Nee. Het schema wordt door micro soft beheerd voor het beheerde domein. Schema-uitbrei dingen worden niet ondersteund door Azure AD Domain Services.
 
 ### <a name="can-i-modify-or-add-dns-records-in-my-managed-domain"></a>Kan ik DNS-records in mijn beheerde domein wijzigen of toevoegen?
-Ja. Leden van de groep *Aad DC-Administrators* krijgen *DNS-administrator* bevoegdheden voor het wijzigen van DNS-records in het beheerde domein. Deze gebruikers kunnen de DNS-beheer console gebruiken op een computer met Windows Server die is gekoppeld aan het beheerde domein om DNS te beheren. Als u de DNS-beheer console wilt gebruiken, installeert u de *Hulpprogram ma's voor DNS-server*, die deel uitmaakt van de optionele functie *Remote Server Administration Tools* op de-server. Zie [DNS beheren in een Azure AD Domain Services beheerd domein](manage-dns.md)voor meer informatie.
+Ja. Leden van de groep *Aad DC-Administrators* krijgen *DNS-administrator* bevoegdheden voor het wijzigen van DNS-records in het beheerde domein. Deze gebruikers kunnen de DNS-beheer console gebruiken op een computer met Windows Server die is toegevoegd aan het beheerde domein voor het beheren van DNS. Als u de DNS-beheer console wilt gebruiken, installeert u de *Hulpprogram ma's voor DNS-server*, die deel uitmaakt van de optionele functie *Remote Server Administration Tools* op de-server. Zie [DNS beheren in een Azure AD Domain Services beheerd domein](manage-dns.md)voor meer informatie.
 
 ### <a name="what-is-the-password-lifetime-policy-on-a-managed-domain"></a>Wat is het beleid voor de levens duur van wacht woorden op een beheerd domein?
 De standaard levensduur van het wacht woord voor een Azure AD Domain Services beheerd domein is 90 dagen. De levens duur van het wacht woord is niet gesynchroniseerd met de levens duur van het wacht woord dat is geconfigureerd in azure AD. Daarom hebt u mogelijk een situatie waarin gebruikers wachtwoorden verlopen in uw beheerde domein, maar nog steeds geldig zijn in azure AD. In dergelijke scenario's moeten gebruikers hun wacht woord wijzigen in azure AD en wordt het nieuwe wacht woord gesynchroniseerd met uw beheerde domein. Daarnaast worden de kenmerken van het *wacht woord-niet-verlopen* en de *gebruiker die moet worden gewijzigd-bij de volgende aanmelding* voor gebruikers accounts niet gesynchroniseerd met uw beheerde domein.
@@ -131,7 +131,7 @@ Azure AD Domain Services is opgenomen in de gratis proef versie voor Azure. U ku
 Nee. Zodra u een Azure AD Domain Services beheerd domein hebt ingeschakeld, is de service beschikbaar in het geselecteerde virtuele netwerk totdat u het beheerde domein verwijdert. Er is geen manier om de service te onderbreken. De facturering blijft elk uur in beslag totdat u het beheerde domein verwijdert.
 
 ### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>Kan ik een failover-Azure AD Domain Services naar een andere regio voor een DR-gebeurtenis?
-Nee. Azure AD Domain Services biedt momenteel geen geo-redundant implementatie model. It'is beperkt tot één virtueel netwerk in een Azure-regio. Als u meerdere Azure-regio's wilt gebruiken, moet u uw Active Directory-domein-controllers uitvoeren op virtuele Azure IaaS-machines. Architectuur richtlijnen vindt u [hier](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain).
+Nee. Azure AD Domain Services biedt momenteel geen geo-redundant implementatie model. Het is beperkt tot één virtueel netwerk in een Azure-regio. Als u meerdere Azure-regio's wilt gebruiken, moet u uw Active Directory-domein-controllers uitvoeren op virtuele Azure IaaS-machines. Zie [uw on-premises Active Directory domein uitbreiden naar Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain)voor architectuur richtlijnen.
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Kan ik Azure AD Domain Services krijgen als onderdeel van de Enter prise Mobility Suite (EMS)? Heb ik Azure AD Premium nodig om Azure AD Domain Services te gebruiken?
 Nee. Azure AD Domain Services is een Azure-service voor betalen naar gebruik en maakt geen deel uit van EMS. Azure AD Domain Services kunnen worden gebruikt in combi natie met alle versies van Azure AD (gratis en Premium). U wordt gefactureerd per uur, afhankelijk van het gebruik.

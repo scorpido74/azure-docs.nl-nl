@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/29/2019
-ms.openlocfilehash: aacd41debfa8810facc41896051767eb4ab6e3b6
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: b4550f55d160a77c2fb149dd509ca1cfad784f79
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052495"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513453"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Gegevens verzameling, retentie en opslag in Application Insights
 
@@ -59,7 +59,7 @@ De belangrijkste categorieën zijn:
 * [Uitzonde ringen](../../azure-monitor/app/asp-net-exceptions.md) en crash- **stack dumps**, `build id`, CPU-type. 
 * [Afhankelijkheden](../../azure-monitor/app/asp-net-dependencies.md) : aanroepen naar externe services, zoals rest, SQL, Ajax. URI of connection string, duur, geslaagd, opdracht.
 * [Beschikbaarheids tests](../../azure-monitor/app/monitor-web-app-availability.md) : duur van testen en stappen, reacties.
-* [Traceer logboeken](../../azure-monitor/app/asp-net-trace-logs.md) en [aangepaste telemetrie](../../azure-monitor/app/api-custom-events-metrics.md)  - **Alles wat u in uw logboeken of telemetrie hebt gecodeerd**.
+* [Traceer logboeken](../../azure-monitor/app/asp-net-trace-logs.md) en [aangepaste telemetrie](../../azure-monitor/app/api-custom-events-metrics.md) - **Alles wat u in uw logboeken of telemetrie hebt gecodeerd**.
 
 [Meer details](#data-sent-by-application-insights).
 
@@ -84,7 +84,7 @@ Als er meer dan 90 dagen gegevens worden bewaard, worden er extra kosten in reke
 
 Samengevoegde gegevens (dat wil zeggen, aantallen, gemiddelden en andere statistische gegevens die u ziet in metrische Explorer) worden gedurende 90 dagen in een korrel van 1 minuut bewaard.
 
-[Debug-moment opnamen](../../azure-monitor/app/snapshot-debugger.md) worden 15 dagen bewaard. Dit Bewaar beleid is ingesteld op basis van elke toepassing. Als u deze waarde wilt verhogen, kunt u een verhoging aanvragen door een ondersteunings aanvraag te openen in de Azure Portal.
+[Debug-moment opnamen](../../azure-monitor/app/snapshot-debugger.md) worden 15 dagen bewaard. Deze bewaarbeleid is ingesteld op basis van de per toepassing. Als u nodig hebt om deze waarde te verhogen, kunt u een toename van aanvragen door een ondersteuningsaanvraag opent in de Azure-portal.
 
 ## <a name="who-can-access-the-data"></a>Wie heeft er toegang tot de gegevens?
 De gegevens zijn zichtbaar voor u en, als u een organisatie account hebt, uw team leden. 
@@ -118,7 +118,7 @@ Als u code deelt met andere projecten, vergeet dan niet om uw instrumentatie sle
 Alle gegevens worden versleuteld in rust en tijdens het verplaatsen tussen data centers.
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Worden de gegevens versleuteld tijdens de overdracht van mijn toepassing naar Application Insights servers?
-Ja, we gebruiken https om gegevens te verzenden naar de portal vanaf bijna alle Sdk's, inclusief webservers, apparaten en HTTPS-webpagina's. De enige uitzonde ring hierop is gegevens die worden verzonden vanuit webpagina's zonder HTTP-indeling.
+Ja, we gebruiken https om gegevens te verzenden naar de portal vanaf bijna alle Sdk's, inclusief webservers, apparaten en HTTPS-webpagina's. 
 
 ## <a name="does-the-sdk-create-temporary-local-storage"></a>Maakt de SDK tijdelijke lokale opslag?
 
@@ -179,7 +179,7 @@ Het `appInsights-node` van de map kan worden overschreven door de runtime-waarde
 
 ## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Hoe kan ik gegevens naar Application Insights verzenden met behulp van TLS 1,2?
 
-Om ervoor te zorgen dat de beveiliging van gegevens die onderweg zijn naar de eind punten van de Application Insights, raden we klanten ten zeerste aan om hun toepassing te configureren voor het gebruik van ten minste Transport Layer Security (TLS) 1,2. Oudere versies van TLS/Secure Sockets Layer (SSL) zijn kwetsbaar voor aanvallen en terwijl ze nog steeds werken om achterwaartse compatibiliteit mogelijk te maken, worden ze **niet aanbevolen**en wordt de branche snel verplaatst naar ondersteuning voor deze oudere protocollen. 
+Om ervoor te zorgen dat de beveiliging van gegevens die onderweg zijn naar de eind punten van de Application Insights, raden we klanten ten zeerste aan om hun toepassing te configureren voor het gebruik van ten minste Transport Layer Security (TLS) 1,2. Oudere versies van TLS/Secure Sockets Layer (SSL) kwetsbaar zijn gevonden en hoewel ze op dit moment nog steeds werken om toe te staan achterwaartse compatibiliteit, zijn ze onderling **niet aanbevolen**, en de branche is snel veranderende te breken ondersteuning voor deze oudere protocollen. 
 
 De [PCI Security Standards Council](https://www.pcisecuritystandards.org/) heeft een [deadline ingesteld van 30 juni 2018](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) om oudere versies van TLS/SSL uit te scha kelen en te upgraden naar meer beveiligde protocollen. Als de ondersteuning voor Azure is verbroken, kunt u, als uw toepassing/clients geen communicatie meer over ten minste TLS 1,2, gegevens verzenden naar Application Insights. De aanpak die u moet nemen om de TLS-ondersteuning van uw toepassing te testen en te valideren, varieert afhankelijk van het besturings systeem/platform en de taal/het Framework dat door uw toepassing wordt gebruikt.
 
@@ -190,16 +190,16 @@ Het wordt niet aanbevolen om uw toepassing expliciet in te stellen voor gebruik 
 |Platform/taal | Ondersteuning | Meer informatie |
 | --- | --- | --- |
 | Azure App Services  | Wordt ondersteund. de configuratie is mogelijk vereist. | Ondersteuning werd aangekondigd in april 2018. Lees de aankondiging voor [meer informatie](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)over de configuratie.  |
-| Azure function-apps | Wordt ondersteund. de configuratie is mogelijk vereist. | Ondersteuning werd aangekondigd in april 2018. Lees de aankondiging voor [meer informatie](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)over de configuratie. |
+| Azure Function-apps | Wordt ondersteund. de configuratie is mogelijk vereist. | Ondersteuning werd aangekondigd in april 2018. Lees de aankondiging voor [meer informatie](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/)over de configuratie. |
 |.NET | Ondersteund, de configuratie is afhankelijk van versie. | Raadpleeg [deze instructies](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12)voor gedetailleerde informatie over de configuratie van .net 4,7 en eerdere versies.  |
-|Status Monitor | Ondersteund, configuratie vereist | Status Monitor is afhankelijk van de [besturingssysteem configuratie](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)  + [.NET-configuratie](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) ter ondersteuning van TLS 1,2.
+|Status Monitor | Ondersteund, configuratie vereist | Status Monitor is afhankelijk van de [besturingssysteem configuratie](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) + [.NET-configuratie](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) ter ondersteuning van TLS 1,2.
 |Node.js |  In v 10.5.0 is configuratie mogelijk vereist. | Gebruik de [officiële node. js TLS/SSL-documentatie](https://nodejs.org/api/tls.html) voor elke toepassingsspecifieke configuratie. |
 |Java | Ondersteund, JDK-ondersteuning voor TLS 1,2 is toegevoegd in [JDK 6 update 121](https://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) en [JDK 7](https://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | JDK 8 maakt [standaard gebruik van TLS 1,2](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
-|Linux | Linux-distributies zijn vaak afhankelijk van [openssl](https://www.openssl.org) voor TLS 1,2-ondersteuning.  | Controleer de [openssl wijzigingen logboek](https://www.openssl.org/news/changelog.html) om te bevestigen dat uw versie van openssl wordt ondersteund.|
-| Windows 8,0-10 | Wordt ondersteund en is standaard ingeschakeld. | Om te bevestigen dat u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)gebruikt.  |
-| Windows Server 2012-2016 | Wordt ondersteund en is standaard ingeschakeld. | Controleren of u nog steeds de [standaard instellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) gebruikt |
-| Windows 7 SP1 en Windows Server 2008 R2 SP1 | Ondersteund, maar is niet standaard ingeschakeld. | Zie de pagina met [register instellingen voor Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) voor meer informatie over het inschakelen van.  |
-| Windows Server 2008 SP2 | Ondersteuning voor TLS 1,2 vereist een update. | Zie [Update voor het toevoegen van ondersteuning voor TLS 1,2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) in Windows Server 2008 SP2. |
+|Linux | Linux-distributies meestal afhankelijk zijn van [OpenSSL](https://www.openssl.org) voor ondersteuning van TLS 1.2.  | Controleer de [OpenSSL Changelog](https://www.openssl.org/news/changelog.html) om te bevestigen van uw versie van OpenSSL wordt ondersteund.|
+| Windows 8.0-10 | Ondersteund en standaard ingeschakeld. | Om te bevestigen dat u nog steeds gebruikt de [standaardinstellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings).  |
+| WindowsServer 2012-2016 | Ondersteund en standaard ingeschakeld. | Om te bevestigen dat u nog steeds gebruikt de [standaardinstellingen](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 en Windows Server 2008 R2 SP1 | Ondersteund, maar niet standaard ingeschakeld. | Zie de [registerinstellingen voor Transport Layer Security (TLS)](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings) pagina voor meer informatie over het inschakelen.  |
+| Windows Server 2008 SP2 | Ondersteuning voor TLS 1.2 is een update vereist. | Zie [Update voor het toevoegen van ondersteuning voor TLS 1.2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) in Windows Server 2008 SP2. |
 |Windows Vista | Niet ondersteund. | N/A
 
 ### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Controleren welke versie van OpenSSL uw Linux-distributie wordt uitgevoerd
@@ -240,7 +240,7 @@ De Sdk's verschillen tussen platforms en er zijn verschillende onderdelen die u 
 | [Java script-SDK toevoegen aan de webpagina][client] |ClientContext <br/>Afgeleid<br/>Pagina<br/>ClientPerf<br/>Ajax |
 | [Standaard eigenschappen definiëren][apiproperties] |**Eigenschappen** voor alle standaard-en aangepaste gebeurtenissen |
 | [TrackMetric aanroepen][api] |Numerieke waarden<br/>**Eigenschappen** |
-| [Nummer van oproep *][api] |Gebeurtenis naam<br/>**Eigenschappen** |
+| [Nummer van oproep *][api] |Gebeurtenisnaam<br/>**Eigenschappen** |
 | [TrackException aanroepen][api] |**Uitzonderingen**<br/>Stack dump<br/>**Eigenschappen** |
 | Er kunnen geen gegevens worden verzameld met de SDK. Bijvoorbeeld: <br/> -geen toegang tot prestatie meter items<br/> -uitzonde ring in de initialisatie functie voor telemetrie |SDK-diagnose |
 
@@ -258,7 +258,7 @@ Voor [sdk's voor andere platforms][platforms]raadpleegt u hun documenten.
 | Afgeleid |Geo-locatie van IP-adres, tijds tempel, besturings systeem, browser |
 | Metrische gegevens |Naam en waarde van de metriek |
 | Evenements |Gebeurtenis naam en-waarde |
-| Page views |URL en pagina naam of scherm naam |
+| PageViews |URL en pagina naam of scherm naam |
 | Client prestaties |URL/pagina naam, laad tijd browser |
 | Ajax |HTTP-aanroepen van de webpagina naar de server |
 | Aanvragen |URL, duur, respons code |

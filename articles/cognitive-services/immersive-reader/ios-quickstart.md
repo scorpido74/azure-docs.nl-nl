@@ -8,18 +8,18 @@ ms.subservice: immersive-reader
 ms.topic: quickstart
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: b82a86d6a3f7b2afd8feee18a863e34b7a6079a4
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 7f46f7697207fe194f4fb7c3584c40c87abdb727
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945479"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514201"
 ---
 # <a name="quickstart-create-an-ios-app-that-launches-the-immersive-reader-swift"></a>Snelstartgids: een iOS-app maken waarmee de insluitende lezer wordt gestart (SWIFT)
 
 De [insluitende lezer](https://www.onenote.com/learningtools) is een inclusief ontworpen hulp programma waarmee bewezen technieken worden geïmplementeerd om de Lees vaardigheid te verbeteren.
 
-In deze Snelstartgids bouwt u een volledig nieuwe iOS-app en integreert u de insluitende lezer. [Hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/samples/quickstart-swift)vindt u een volledig werkend voor beeld van deze Quick Start.
+In deze Snelstartgids bouwt u een volledig nieuwe iOS-app en integreert u de insluitende lezer. [Hier](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)vindt u een volledig werkend voor beeld van deze Quick Start.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
