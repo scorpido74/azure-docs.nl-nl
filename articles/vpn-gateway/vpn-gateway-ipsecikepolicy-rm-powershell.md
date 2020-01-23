@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: ed7b12b24e6129d6cf609f4345203abc783e9f62
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 8ed32ccedcd6cc4ffd159069399c0417842325d8
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864057"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514915"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>IPsec/IKE-beleid configureren voor S2S VPN-of VNet-naar-VNet-verbindingen
 
@@ -341,7 +341,7 @@ DhGroup             : DHGroup24
 PfsGroup            : PFS24
 ```
 
-Als er geen IPsec/IKE-beleid is geconfigureerd, haalt de opdracht (PS > $connection 6. Policy) een lege retour waarde op. Dit betekent niet dat IPsec/IKE niet is geconfigureerd voor de verbinding, maar dat er geen aangepast IPsec/IKE-beleid is. De werkelijke verbinding maakt gebruik van het standaard beleid dat wordt onderhandeld tussen uw on-premises VPN-apparaat en de Azure VPN-gateway.
+Als er geen IPsec/IKE-beleid is geconfigureerd, wordt de opdracht (PS > $connection 6. IpsecPolicies) haalt een lege retour waarde op. Dit betekent niet dat IPsec/IKE niet is geconfigureerd voor de verbinding, maar dat er geen aangepast IPsec/IKE-beleid is. De werkelijke verbinding maakt gebruik van het standaard beleid dat wordt onderhandeld tussen uw on-premises VPN-apparaat en de Azure VPN-gateway.
 
 #### <a name="2-add-or-update-an-ipsecike-policy-for-a-connection"></a>2. een IPsec/IKE-beleid voor een verbinding toevoegen of bijwerken
 

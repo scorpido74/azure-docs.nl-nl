@@ -8,18 +8,18 @@ ms.date: 01/09/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ad92d4cf0d5b61c778b87114d4be6c23557f8e26
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: ee4f01c3ec57b0cf9e3ecf47254b57be95ea051a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74457139"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510937"
 ---
 # <a name="create-and-provision-a-simulated-iot-edge-device-with-a-virtual-tpm-on-windows"></a>Een gesimuleerd IoT Edge-apparaat maken en inrichten met een virtuele TPM in Windows
 
-Azure IoT Edge apparaten kunnen automatisch worden ingericht met behulp van de [Device Provisioning Service](../iot-dps/index.yml) , net zoals apparaten die niet Edge-ingeschakeld zijn. Als u niet bekend bent met het proces van automatische inrichting, raadpleegt u de [concepten voor automatische inrichting](../iot-dps/concepts-auto-provisioning.md) voordat u doorgaat.
+Azure IoT Edge-apparaten kunnen worden automatisch kan worden ingericht met behulp van de [Device Provisioning Service](../iot-dps/index.yml) net als bij apparaten die niet Microsoft edge-functionaliteit. Als u niet bekend met het proces van automatische inrichting bent, raadpleegt u de [concepten voor automatische inrichting](../iot-dps/concepts-auto-provisioning.md) voordat u doorgaat.
 
-DPS ondersteunt symmetrische sleutel attest voor IoT Edge-apparaten in zowel individuele inschrijving als groeps inschrijving. Als u bij het inschrijven van de groep de optie ' is IoT Edge apparaat ' moet worden ingesteld op True voor symmetrische-sleutel attest, worden alle apparaten die zijn geregistreerd onder die registratie groep als IoT Edge-apparaten gemarkeerd. 
+DPS ondersteunt symmetrische sleutel attest voor IoT Edge-apparaten in zowel individuele inschrijving als groeps inschrijving. Als u bij het inschrijven van de groep de optie ' is IoT Edge apparaat ' moet worden ingesteld op True voor symmetrische-sleutel attest, worden alle apparaten die zijn geregistreerd onder die registratie groep als IoT Edge-apparaten gemarkeerd.
 
 In dit artikel leest u hoe u automatisch inrichten op een gesimuleerd IoT Edge apparaat kunt testen met de volgende stappen:
 
@@ -27,9 +27,6 @@ In dit artikel leest u hoe u automatisch inrichten op een gesimuleerd IoT Edge a
 * Een gesimuleerd apparaat maakt op uw Windows-machine met een gesimuleerde Trusted Platform Module (TPM) voor hardwarebeveiliging.
 * Maak een afzonderlijke inschrijving voor het apparaat.
 * Installeer de IoT Edge-runtime en verbind het apparaat met IoT Hub.
-
-> [!NOTE]
-> TPM 2,0 is vereist voor het gebruik van TPM-Attestation met DPS en kan alleen worden gebruikt voor het maken van afzonderlijke, niet-groeps registraties.
 
 > [!TIP]
 > In dit artikel wordt beschreven hoe u het automatisch inrichten kunt testen met behulp van TPM-Attestation op virtuele apparaten, maar dit is ook van toepassing bij gebruik van fysieke TPM-hardware.
@@ -39,11 +36,14 @@ In dit artikel leest u hoe u automatisch inrichten op een gesimuleerd IoT Edge a
 * Een Windows-ontwikkelcomputer. In dit artikel wordt gebruikgemaakt van Windows 10.
 * Een actieve IoT-Hub.
 
+> [!NOTE]
+> TPM 2,0 is vereist voor het gebruik van TPM-Attestation met DPS en kan alleen worden gebruikt voor het maken van afzonderlijke, niet-groeps registraties.
+
 ## <a name="set-up-the-iot-hub-device-provisioning-service"></a>De IoT Hub Device Provisioning Service instellen
 
-Maak een nieuw exemplaar van de IoT Hub Device Provisioning Service in Azure en een koppeling naar uw IoT hub. U kunt de instructies voor [het instellen van de IOT hub DPS](../iot-dps/quick-setup-auto-provision.md)volgen.
+Maak een nieuw exemplaar van de IoT Hub Device Provisioning Service in Azure en een koppeling naar uw IoT hub. U kunt de instructies in [instellen van de IoT Hub-DPS](../iot-dps/quick-setup-auto-provision.md).
 
-Nadat u de Device Provisioning Service hebt uitgevoerd, kopieert u de waarde van **id-bereik** van de pagina overzicht. U gebruikt deze waarde bij het configureren van de IoT Edge-runtime.
+Nadat u de Device Provisioning Service die wordt uitgevoerd hebt, kopieert u de waarde van **ID-bereik** van de overzichtspagina. U gebruikt deze waarde bij het configureren van de IoT Edge-runtime.
 
 > [!TIP]
 > Als u een fysiek TPM-apparaat gebruikt, moet u de **goedkeurings sleutel**bepalen, die uniek is voor elke TPM-chip en die is verkregen van de fabrikant van de TPM-chip die eraan is gekoppeld. U kunt een unieke **registratie-id** voor uw TPM-apparaat afleiden door bijvoorbeeld een SHA-256-hash van de goedkeurings sleutel te maken.
@@ -54,7 +54,7 @@ Nadat u de Device Provisioning Service hebt uitgevoerd, kopieert u de waarde van
 
 Maak een gesimuleerd TPM-apparaat op uw Windows-ontwikkelcomputer. Haal de **registratie-id** en **goedkeurings sleutel** voor uw apparaat op en gebruik deze om een afzonderlijke inschrijvings vermelding in DPS te maken.
 
-Wanneer u een inschrijving in DPS maakt, hebt u de mogelijkheid om een **eerste dubbele toestand**van het apparaat te declareren. U kunt in de apparaatdubbel labels instellen om apparaten te groeperen door elke meetwaarde die u nodig hebt in uw oplossing, zoals regio, omgeving, locatie, of het apparaat. Deze tags worden gebruikt voor het maken van [automatische implementaties](how-to-deploy-monitor.md).
+Wanneer u een inschrijving in DPS maakt, hebt u de mogelijkheid om te declareren een **oorspronkelijke Apparaatdubbelstatus**. U kunt in de apparaatdubbel labels instellen om apparaten te groeperen door elke meetwaarde die u nodig hebt in uw oplossing, zoals regio, omgeving, locatie, of het apparaat. Deze tags zijn gebruikt voor het maken [automatische implementaties](how-to-deploy-monitor.md).
 
 De SDK-taal die u gebruiken wilt voor het maken van het gesimuleerde apparaat kiezen en volg de stappen totdat u de afzonderlijke registratie maken.
 
@@ -68,7 +68,7 @@ Gesimuleerd apparaat en handleidingen voor afzonderlijke inschrijving:
 * [Node.js](../iot-dps/quick-create-simulated-device-tpm-node.md)
 * [Python](../iot-dps/quick-create-simulated-device-tpm-python.md)
 
-Nadat u de afzonderlijke inschrijving hebt gemaakt, slaat u de waarde van de **registratie-id**op. U gebruikt deze waarde bij het configureren van de IoT Edge-runtime.
+Na het maken van de afzonderlijke registratie, sla de waarde van de **registratie-ID**. U gebruikt deze waarde bij het configureren van de IoT Edge-runtime.
 
 ## <a name="install-the-iot-edge-runtime"></a>IoT Edge-runtime installeren
 
@@ -130,4 +130,4 @@ iotedge list
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Het inschrijvingsproces Device Provisioning Service kunt u instellen de apparaat-ID en het apparaat dubbele tags op hetzelfde moment als u het nieuwe apparaat inrichten. Deze waarden kunt u afzonderlijke apparaten of groepen van apparaten met behulp van automatische Apparaatbeheer. Meer informatie over [het implementeren en bewaken van IOT Edge modules op schaal met behulp van de Azure Portal](how-to-deploy-monitor.md) of [met Azure cli](how-to-deploy-monitor-cli.md)
+Het inschrijvingsproces Device Provisioning Service kunt u instellen de apparaat-ID en het apparaat dubbele tags op hetzelfde moment als u het nieuwe apparaat inrichten. Deze waarden kunt u afzonderlijke apparaten of groepen van apparaten met behulp van automatische Apparaatbeheer. Meer informatie over het [implementeren en te bewaken IoT Edge-modules op schaal met Azure portal](how-to-deploy-monitor.md) of [met behulp van Azure CLI](how-to-deploy-monitor-cli.md)

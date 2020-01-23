@@ -7,22 +7,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 2262c951b52ef58006bacde4be76dc92468a20ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5b5af034b116ec1cdcefc811630683c9f560c840
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364047"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513648"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager verbinden met Azure Monitor
-U kunt uw System Center Configuration Manager-omgeving verbinden met Azure Monitor om gegevens over de verzameling van apparaten te synchroniseren en naar deze verzamelingen te verwijzen in Azure Monitor en Azure Automation.  
+U kunt uw micro soft endpoint Configuration Manager-omgeving verbinden met Azure Monitor om gegevens van de apparaatgegevens te synchroniseren en naar deze verzamelingen te verwijzen in Azure Monitor en Azure Automation.  
 
 ## <a name="prerequisites"></a>Vereisten
 
-Azure Monitor ondersteunt System Center Configuration Manager huidige vertakking versie 1606 en hoger.
+Azure Monitor ondersteunt Configuration Manager huidige vertakking versie 1606 en hoger.
 
 >[!NOTE]
->De functie voor het verbinden van Configuration Manager met een Log Analytics-werk ruimte is optioneel en is niet standaard ingeschakeld. U moet deze functie inschakelen voordat u deze kunt gebruiken. Zie voor meer informatie [Enable optional features from updates](https://docs.microsoft.com/sccm/core/servers/manage/install-in-console-updates#bkmk_options).
+>De functie voor het verbinden van Configuration Manager met een Log Analytics-werk ruimte is optioneel en is niet standaard ingeschakeld. U moet deze functie inschakelen voordat u deze kunt gebruiken. Zie voor meer informatie [Enable optional features from updates](https://docs.microsoft.com/configmgr/core/servers/manage/install-in-console-updates#bkmk_options).
 
 ## <a name="configuration-overview"></a>Configuratieoverzicht
 
@@ -67,7 +67,7 @@ Raadpleeg het artikel [Windows-computers verbinden met Azure monitor in azure](a
 ## <a name="connect-configuration-manager-to-log-analytics-workspace"></a>Configuration Manager verbinden met Log Analytics werk ruimte
 
 >[!NOTE]
-> Om een Log Analytics verbinding toe te voegen, moet uw Configuration Manager omgeving een [service verbindings punt](https://docs.microsoft.com/sccm/core/servers/deploy/configure/about-the-service-connection-point) hebben dat is geconfigureerd voor de online modus.
+> Om een Log Analytics verbinding toe te voegen, moet uw Configuration Manager omgeving een [service verbindings punt](https://docs.microsoft.com/configmgr/core/servers/deploy/configure/about-the-service-connection-point) hebben dat is geconfigureerd voor de online modus.
 
 > [!NOTE]
 > U moet de site op het hoogste niveau in uw hiërarchie verbinden met Azure Monitor. Als u een zelfstandige primaire site verbindt met Azure Monitor en vervolgens een centrale beheer site toevoegt aan uw omgeving, moet u de verbinding in de nieuwe hiërarchie verwijderen en opnieuw maken.

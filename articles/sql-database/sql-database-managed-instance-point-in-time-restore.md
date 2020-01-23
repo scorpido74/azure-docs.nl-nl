@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: b106b1da5d012309e8d92c8e9555ee3982602e12
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9ed694ec524c4e3e033c3139735e8e079141ec4a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707655"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515119"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>Een SQL database in een beheerd exemplaar herstellen naar een eerder tijdstip
 
@@ -48,8 +48,8 @@ De volgende tabel toont scenario's voor herstel naar een bepaald tijdstip voor b
 
 |           |Bestaande Data Base naar hetzelfde beheerde exemplaar herstellen| Een bestaande data base herstellen naar een ander beheerd exemplaar|Verwijderde data base naar hetzelfde beheerde exemplaar herstellen|Verwijderde data base herstellen naar een ander beheerd exemplaar|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure-portal**| Ja|Nee |Nee|Nee|
-|**Azure CLI**|Ja |Ja |Nee|Nee|
+|**Azure Portal**| Ja|Nee |Nee|Nee|
+|**Azure-CLI**|Ja |Ja |Nee|Nee|
 |**PowerShell**| Ja|Ja |Ja|Ja|
 
 ## <a name="restore-an-existing-database"></a>Een bestaande data base herstellen
@@ -58,7 +58,7 @@ Een bestaande data base herstellen naar hetzelfde exemplaar met behulp van de Az
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). 
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). 
 2. Ga naar uw beheerde exemplaar en selecteer de data base die u wilt herstellen.
 3. Selecteer **herstellen** op de pagina Data Base:
 
@@ -110,7 +110,7 @@ Restore-AzSqlInstanceDatabase -FromPointInTimeBackup `
 
 Zie [Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)voor meer informatie.
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [de Azure cli installeren](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -136,7 +136,7 @@ Zie de [cli-documentatie voor het herstellen van een data base in een beheerd ex
 
 ## <a name="restore-a-deleted-database"></a>Een verwijderde database herstellen
 
-Het herstellen van een verwijderde data base kan alleen worden uitgevoerd met behulp van Power shell. De data base kan worden teruggezet naar hetzelfde exemplaar of een ander exemplaar.
+Het herstellen van een verwijderde data base kan worden uitgevoerd met behulp van Power shell of Azure Portal. Gebruik dit document om dit te doen in [Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#managed-instance-database-1). De data base kan worden teruggezet naar hetzelfde exemplaar of een ander exemplaar.
 
 Als u een verwijderde data base wilt herstellen met behulp van Power shell, geeft u de waarden voor de para meters op in de volgende opdracht. Voer vervolgens de opdracht uit:
 
@@ -195,7 +195,7 @@ Gebruik een van de volgende methoden om verbinding te maken met uw data base in 
 
 - [SSMS/Azure Data Studio via een virtuele machine van Azure](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
 - [Punt-naar-site](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [Openbaar eind punt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [Openbaar eindpunt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
@@ -215,7 +215,7 @@ $databaseName = "<Source database>"
 Remove-AzSqlInstanceDatabase -Name $databaseName -InstanceName $managedInstanceName -ResourceGroupName $resourceGroupName
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 Gebruik de volgende Azure CLI-opdracht om een bestaande Data Base uit een beheerd exemplaar te verwijderen:
 
@@ -237,7 +237,7 @@ Gebruik een van de volgende methoden om verbinding te maken met uw data base in 
 
 - [Virtuele Azure-machine](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
 - [Punt-naar-site](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
-- [Openbaar eind punt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
+- [Openbaar eindpunt](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
 ## <a name="next-steps"></a>Volgende stappen
 

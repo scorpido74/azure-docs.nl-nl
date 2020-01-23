@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 95dbed72aeca639041d259e9c92c2a3b73ef63fe
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/21/2020
+ms.openlocfilehash: 3803802a3d81655091d8be543ae9cb17221a98d8
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456925"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511566"
 ---
 # <a name="egress-and-endpoints-in-azure-digital-twins"></a>Uitgangen en eind punten in azure Digital Apparaatdubbels
 
@@ -23,7 +23,7 @@ Gebeurtenissen worden doorgestuurd naar eind punten volgens de vooraf gedefiniee
 
 Raadpleeg voor meer informatie over gebeurtenissen, route ring en gebeurtenis typen [routerings gebeurtenissen en berichten in azure Digital apparaatdubbels](./concepts-events-routing.md).
 
-## <a name="events"></a>Gebeurtenissen
+## <a name="events"></a>Evenements
 
 Gebeurtenissen worden verzonden door IoT-objecten (zoals apparaten en Sens oren) voor verwerking door Azure Message en Event brokers. Gebeurtenissen worden gedefinieerd door de volgende [Azure Event grid gebeurtenis schema verwijzing](../event-grid/event-schema.md).
 
@@ -49,14 +49,14 @@ Gebeurtenissen worden verzonden door IoT-objecten (zoals apparaten en Sens oren)
 
 | Kenmerk | Type | Beschrijving |
 | --- | --- | --- |
-| id | tekenreeks | De unieke id voor de gebeurtenis. |
-| subject | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenis onderwerp. |
+| id | string | De unieke id voor de gebeurtenis. |
+| subject | string | Het door de uitgever gedefinieerde pad naar het gebeurtenisonderwerp. |
 | data | object | Gebeurtenis gegevens die specifiek zijn voor de resource provider. |
-| eventType | tekenreeks | Een van de geregistreerde gebeurtenis typen voor deze gebeurtenis bron. |
-| eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
-| dataVersion | tekenreeks | De schema versie van het gegevens object. De uitgever definieert de schema versie. |
-| metadataVersion | tekenreeks | De schema versie van de meta gegevens van de gebeurtenis. Event Grid definieert het schema van de eigenschappen op het hoogste niveau. Event Grid levert deze waarde. |
-| onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld is niet beschrijfbaar. Event Grid levert deze waarde. |
+| eventType | string | Een van de geregistreerde gebeurtenistypen voor deze gebeurtenisbron. |
+| eventTime | string | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
+| dataVersion | string | De schemaversie van het gegevensobject. De uitgever definieert de schemaversie. |
+| metadataVersion | string | De schemaversie van de metagegevens van de gebeurtenis. Event Grid definieert het schema voor de eigenschappen op het hoogste niveau. Event Grid biedt deze waarde. |
+| onderwerp | string | Volledige bronpad naar de bron van de gebeurtenis. Dit veld is niet beschrijfbaar. Event Grid biedt deze waarde. |
 
 Voor meer informatie over het Event Grid-gebeurtenis schema:
 
@@ -248,7 +248,7 @@ De volgende voor beelden laten zien hoe u de ondersteunde eind punten kunt confi
 
 Een geverifieerde HTTP POST-aanvraag voor:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/endpoints
 ```
 

@@ -7,14 +7,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: d572e7f3fceaf2df8ad0ec684eaa421922389e71
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1e5af0b45b8d2e2eceac1b653a5219a236c25467
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922158"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512909"
 ---
-# <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Query's uitvoeren op gegevens in Azure Data Lake met behulp van Azure Data Explorer (preview-versie)
+# <a name="query-data-in-azure-data-lake-using-azure-data-explorer"></a>Query's uitvoeren op gegevens in Azure Data Lake met behulp van Azure Data Explorer
 
 Azure Data Lake Storage is een zeer schaal bare en kosteneffectieve data Lake-oplossing voor big data-analyses. Het combineert de kracht van een prestatiegericht bestandssysteem met enorme schaal en rendabiliteit om sneller tot inzichten te komen. Data Lake Storage Gen2 breidt de mogelijkheden van Azure Blob Storage uit en is geoptimaliseerd voor analyseworkloads.
  
