@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: ebe9a0368f2111fa6787b7fa4f4432d7ad4106c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 60ea2633ce09b828d1e3576cadf73ecb5c26c1bd
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485950"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546364"
 ---
 # <a name="two-class-decision-forest-module"></a>Module voor beslissings forest met twee klassen
 
@@ -87,17 +87,12 @@ Zie [Decision bossen](https://go.microsoft.com/fwlink/?LinkId=403677)voor meer i
 9. Koppel een gegevensset met een label en een van de [trainings modules](module-reference.md):  
   
     -   Als u de **modus trainer maken** instelt op **één para meter**, gebruikt u de module [Train model](./train-model.md) .  
-  
     
 ## <a name="results"></a>Resultaten
 
 Nadat de training is voltooid:
 
-+ Klik met de rechter muisknop op de uitvoer van de module [Train model](./train-model.md) en selecteer **visualiseren**om de structuur weer te geven die op elke iteratie is gemaakt.
-  
-    Klik op elke structuur om in te zoomen op de splitsingen en Bekijk de regels voor elk knoop punt.
-
-+ Als u een moment opname van het model wilt opslaan, klikt u met de rechter muisknop op de **getrainde model** uitvoer en selecteert u **model opslaan**. Het opgeslagen model wordt niet bijgewerkt op opeenvolgende uitvoeringen van de pijp lijn.
++ Als u een moment opname van het getrainde model wilt opslaan, selecteert u het tabblad **uitvoer** in het rechterdeel venster van de module **Train model** . Selecteer het pictogram **gegevensset registreren** om het model als een herbruikbare module op te slaan.
 
 + Als u het model voor scores wilt gebruiken, voegt u de module **score model** toe aan een pijp lijn.
 

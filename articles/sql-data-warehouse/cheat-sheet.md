@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 9355ae1522c653924574b94594e894fdaf3f764e
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: ea6e5b5ac829c95a0eca328e8f7f40e7d4a9a94d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646650"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547979"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Cheat-blad voor Azure Synapse Analytics (voorheen SQL DW)
 
@@ -23,7 +23,7 @@ Dit Cheat-blad bevat nuttige tips en aanbevolen procedures voor het bouwen van A
 
 De volgende afbeelding geeft het proces weer voor het ontwerpen van een datawarehouse:
 
-![Schema]
+![Schema](media/sql-data-warehouse-cheat-sheet/picture-flow.png)
 
 ## <a name="queries-and-operations-across-tables"></a>Query's en bewerkingen op tabellen
 
@@ -36,16 +36,16 @@ Als u de typen bewerkingen van tevoren kent, kunt u het ontwerp van uw tabellen 
 
 ## <a name="data-migration"></a>Gegevensmigratie
 
-Laad eerst uw gegevens in [Azure data Lake Storage](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-store) of Azure Blob Storage. Gebruik vervolgens poly Base om uw gegevens in faserings tabellen te laden. Gebruik de volgende configuratie:
+Laad eerst uw gegevens in [Azure data Lake Storage](../data-factory/connector-azure-data-lake-store.md) of Azure Blob Storage. Gebruik vervolgens poly Base om uw gegevens in faserings tabellen te laden. Gebruik de volgende configuratie:
 
-| Ontwerp | Aanbeveling |
+| Ontwerpen | Aanbeveling |
 |:--- |:--- |
 | Distributie | Round robin |
 | Indexeren | Heap |
-| Partitionering | None |
+| Partitionering | Geen |
 | Resourceklasse | largerc of xlargerc |
 
-Meer informatie over [gegevensmigratie], [gegevens laden], en het [ELT-proces (extraheren, laden en transformeren)](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading). 
+Meer informatie over [gegevensmigratie](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), [gegevens laden](design-elt-data-loading.md), en het [ELT-proces (extraheren, laden en transformeren)](design-elt-data-loading.md). 
 
 ## <a name="distributed-or-replicated-tables"></a>Gedistribueerde of gerepliceerde tabellen
 
@@ -62,10 +62,10 @@ Gebruik de volgende strategieën, afhankelijk van de eigenschappen van de tabel:
 * Zorg ervoor dat algemene hashsleutels dezelfde gegevensindeling hebben.
 * Distribueer niet in een varchar-indeling.
 * Dimensietabellen met een algemene hashsleutel voor een feitentabel met regelmatige samenvoegbewerkingen kunnen met hash worden verdeeld.
-* Gebruik *[sys.dm_pdw_nodes_db_partition_stats]* om eventuele asymmetrie in gegevens te analyseren.
-* Gebruik *[sys.dm_pdw_request_steps]* om gegevensverplaatsingen achter query's te analyseren, de tijdbroadcast te bewaken en de opnamevolgorde van bewerkingen te wijzigen. Dit is handig om uw distributiestrategie te controleren.
+* Gebruik *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql)* om eventuele asymmetrie in gegevens te analyseren.
+* Gebruik *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql)* om gegevensverplaatsingen achter query's te analyseren, de tijdbroadcast te bewaken en de opnamevolgorde van bewerkingen te wijzigen. Dit is handig om uw distributiestrategie te controleren.
 
-Meer informatie over [gerepliceerde tabellen] en [gedistribueerde tabellen].
+Meer informatie over [gerepliceerde tabellen](design-guidance-for-replicated-tables.md) en [gedistribueerde tabellen](sql-data-warehouse-tables-distribute.md).
 
 ## <a name="index-your-table"></a>Uw tabel indexeren
 
@@ -85,7 +85,7 @@ Indexeren is handig voor het snel lezen van tabellen. Er bestaat een unieke reek
 * Afhankelijk van de frequentie en grootte van incrementeel laden, wilt u automatiseren wanneer u uw indexen opnieuw indeelt of herbouwt. Een lenteschoonmaak is altijd handig.
 * Ga strategisch te werk bij het inkorten van een rijgroep. Hoe groot zijn de open rijgroepen? Hoeveel gegevens verwacht u dat er in de komende dagen worden geladen?
 
-Meer informatie over [indexen].
+Meer informatie over [indexen](sql-data-warehouse-tables-index.md).
 
 ## <a name="partitioning"></a>Partitionering
 U kunt uw tabel partitioneren wanneer het een grote feitentabel is (groter dan 1 miljard rijen). De partitiesleutel moet in 99 procent van de gevallen worden gebaseerd op datum. Zorg ervoor dat geen overpartitionering plaatsvindt, vooral wanneer u een geclusterde columnstore-index hebt.
@@ -93,22 +93,22 @@ U kunt uw tabel partitioneren wanneer het een grote feitentabel is (groter dan 1
 Met faseringstabellen waarvoor ELT is vereist, kan partitionering voordelen opleveren. Het vergemakkelijkt het beheer van de gegevenslevenscyclus.
 Zorg ervoor dat u uw gegevens niet overpartitioneert, vooral bij een geclusterde columnstore-index.
 
-Meer informatie over [partities].
+Meer informatie over [partities](sql-data-warehouse-tables-partition.md).
 
 ## <a name="incremental-load"></a>Incrementeel laden
 
-Als u uw gegevens incrementeel laadt, moet u eerst grotere resourceklassen toewijzen voor het laden van uw gegevens.  Dit is vooral belang rijk bij het laden in tabellen met geclusterde column Store-indexen.  Zie [resource klassen](https://docs.microsoft.com/azure/sql-data-warehouse/resource-classes-for-workload-management) voor meer informatie.  
+Als u uw gegevens incrementeel laadt, moet u eerst grotere resourceklassen toewijzen voor het laden van uw gegevens.  Dit is vooral belang rijk bij het laden in tabellen met geclusterde column Store-indexen.  Zie [resource klassen](resource-classes-for-workload-management.md) voor meer informatie.  
 
 We raden u aan poly base en ADF v2 te gebruiken voor het automatiseren van uw ELT-pijp lijnen in uw data warehouse.
 
-Voor een grote batch met updates in uw historische gegevens kunt u een [CTAS](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) gebruiken voor het schrijven van de gegevens die u in een tabel wilt houden, in plaats van INSERT, update en DELETE te gebruiken.
+Voor een grote batch met updates in uw historische gegevens kunt u een [CTAS](sql-data-warehouse-develop-ctas.md) gebruiken voor het schrijven van de gegevens die u in een tabel wilt houden, in plaats van INSERT, update en DELETE te gebruiken.
 
 ## <a name="maintain-statistics"></a>Statistieken bijhouden
  Totdat de automatische statistieken algemeen beschikbaar zijn, is hand matig onderhoud van statistieken vereist. Het is belangrijk om uw statistieken bij te werken wanneer er *significante* wijzigingen optreden in uw gegevens. Dit helpt u om uw queryplannen te optimaliseren. Als u vindt dat het onderhouden van al uw statistieken te lang duurt, kunt u selectiever zijn over welke kolommen statistieken bevatten. 
 
 U kunt ook de frequentie van de updates definiëren. Zo wilt u datumkolommen, waar nieuwe waarden kunnen zijn toegevoegd, misschien dagelijks bijwerken. U haalt het meeste voordeel uit statistieken bij kolommen die onderdeel uitmaken van samenvoegingen, kolommen met het WHERE-component en kolommen in GROUP BY.
 
-Meer informatie over [statistieken].
+Meer informatie over [statistieken](sql-data-warehouse-tables-statistics.md).
 
 ## <a name="resource-class"></a>Resourceklasse
 Resource groepen worden gebruikt als een manier om geheugen aan query's toe te wijzen. Als u meer geheugenruimte nodig hebt voor het verbeteren van de query- of laadsnelheid, kunt u hogere resourceklassen toewijzen. Aan de andere kant hebben grotere resourceklassen een impact op de gelijktijdigheid. Denk hier goed over na voordat u alle gebruikers naar een grote resourceklasse verplaatst.
@@ -117,7 +117,7 @@ Als u merkt dat query's te lang duren, controleert u of uw gebruikers niet in gr
 
 Ten slotte haalt elke resource klasse met behulp van Gen2 van [SQL-pool](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse)2,5 keer meer geheugen dan gen1.
 
-Meer informatie over het werken met [resourceklassen en gelijktijdigheid].
+Meer informatie over het werken met [resourceklassen en gelijktijdigheid](resource-classes-for-workload-management.md).
 
 ## <a name="lower-your-cost"></a>Uw kosten verlagen
 Een belang rijke functie van Azure Synapse is de mogelijkheid om [reken resources te beheren](sql-data-warehouse-manage-compute-overview.md). U kunt de SQL-groep onderbreken wanneer u deze niet gebruikt, waardoor de facturering van reken resources wordt gestopt. U kunt de schaal van resources aanpassen om te voldoen aan uw prestatievereisten. Voor onderbreken gebruikt u [Azure Portal](pause-and-resume-compute-portal.md) of [PowerShell](pause-and-resume-compute-powershell.md). Voor schaal aanpassen gebruikt u [Azure Portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md), [T-SQL](quickstart-scale-compute-tsql.md) of een [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
@@ -139,29 +139,3 @@ Implementeer met één klik op uw spokes in SQL-data bases uit de SQL-groep:
 <a href="https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json" target="_blank">
 <img src="https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png"/>
 </a>
-
-
-<!--Image references-->
-[Schema]:media/sql-data-warehouse-cheat-sheet/picture-flow.png
-
-<!--Article references-->
-[gegevens laden]:design-elt-data-loading.md
-[deeper guidance]:guidance-for-loading-data.md
-[indexen]:sql-data-warehouse-tables-index.md
-[partities]:sql-data-warehouse-tables-partition.md
-[statistieken]:sql-data-warehouse-tables-statistics.md
-[resourceklassen en gelijktijdigheid]:resource-classes-for-workload-management.md
-[gerepliceerde tabellen]:design-guidance-for-replicated-tables.md
-[gedistribueerde tabellen]:sql-data-warehouse-tables-distribute.md
-
-<!--MSDN references-->
-
-
-<!--Other Web references-->
-[typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/
-[is and is not]:https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
-[gegevensmigratie]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
-
-[Azure Data Lake Storage]: ../data-factory/connector-azure-data-lake-store.md
-[sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
-[sys.dm_pdw_request_steps]:/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql

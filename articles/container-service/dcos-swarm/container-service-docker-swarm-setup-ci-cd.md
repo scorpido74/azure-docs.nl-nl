@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 860c277e88918dc37eceb496d852691ced2af114
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 11a6debe735459b617f6f93c3f67a32350dd4623
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277909"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549050"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>KEUR Volledige CI/CD-pijp lijn voor het implementeren van een toepassing met meerdere containers op Azure Container Service met docker Swarm met Azure DevOps Services
 
@@ -50,7 +50,7 @@ Voordat u met deze zelf studie begint, moet u de volgende taken uitvoeren:
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]
 
-U hebt ook een Ubuntu-machine (14,04 of 16,04) nodig waarop docker is geïnstalleerd. Deze computer wordt door Azure DevOps Services gebruikt tijdens de processen van Azure pipeline. Een manier om deze machine te maken, is met behulp van de installatie kopie die beschikbaar is in [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/). 
+U hebt ook een Ubuntu-machine (14,04 of 16,04) nodig waarop docker is geïnstalleerd. Deze computer wordt door Azure DevOps Services gebruikt tijdens de processen van Azure pipeline. Een manier om deze machine te maken, is met behulp van de installatie kopie die beschikbaar is in azure Marketplace. 
 
 ## <a name="step-1-configure-your-azure-devops-services-organization"></a>Stap 1: uw Azure DevOps Services-organisatie configureren 
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/13/2018
+ms.date: 01/22/2020
 ms.author: kumud
-ms.openlocfilehash: ef2319f18b6df15fd7f33e9344e8506f853f47e6
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 23dcabf74284c36f0cb221db7e192859aa75f1f6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72532222"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544545"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection standaard overzicht
 
@@ -29,7 +29,7 @@ DDoS-aanvallen (Distributed Denial of Service-aanvallen) vormen een van de groot
 Azure DDoS Protection, in combi natie met aanbevolen procedures voor het ontwerpen van toepassingen, biedt verdediging tegen DDoS-aanvallen. Azure DDoS Protection biedt de volgende service lagen:
 
 - **Basic**: automatisch ingeschakeld als onderdeel van het Azure-platform. Controle over altijd verkeer en real-time beperking van veelvoorkomende aanvallen op netwerk niveau, bieden dezelfde verdedigings die worden gebruikt door de onlineservices van micro soft. De volledige schaal van het wereld wijde netwerk van Azure kan worden gebruikt voor het distribueren en beperken van het aanvals verkeer tussen regio's. Beveiliging is beschikbaar voor IPv4-en IPv6 Azure [open bare IP-adressen](virtual-network-public-ip-address.md).
-- **Standard**: biedt extra mogelijkheden voor risico beperking ten opzichte van de Basic-servicelaag die specifiek zijn afgestemd op Azure Virtual Network-Resources. DDoS Protection Standard is eenvoudig in te scha kelen en vereist geen wijzigingen in de toepassing. Beveiligings beleid wordt afgestemd met behulp van toegewezen verkeers bewaking en machine learning-algoritmen. Beleids regels worden toegepast op open bare IP-adressen die zijn gekoppeld aan resources die zijn geïmplementeerd in virtuele netwerken, zoals Azure Load Balancer, Azure-toepassing gateway en Azure Service Fabric instances, maar deze beveiliging is niet van toepassing op App Service omgevingen. Realtime-telemetrie is beschikbaar via Azure Monitor weergaven tijdens een aanval en voor geschiedenis. Uitgebreide aanvals beperkings analyse zijn beschikbaar via Diagnostische instellingen. U kunt de beveiliging van de toepassingslaag toevoegen via de [Azure-toepassing gateway Web Application firewall](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of door een firewall van een derde partij te installeren vanuit Azure Marketplace. Beveiliging is beschikbaar voor IPv4-en IPv6 Azure [open bare IP-adressen](virtual-network-public-ip-address.md).
+- **Standard**: biedt extra mogelijkheden voor risico beperking ten opzichte van de Basic-servicelaag die specifiek zijn afgestemd op Azure Virtual Network-Resources. DDoS Protection Standard is eenvoudig in te scha kelen en vereist geen wijzigingen in de toepassing. Beveiligingsbeleid is afgestemd door middel van specifieke controle van verkeer en algoritmen voor machine learning. Beleids regels worden toegepast op open bare IP-adressen die zijn gekoppeld aan resources die zijn geïmplementeerd in virtuele netwerken, zoals Azure Load Balancer, Azure-toepassing gateway en Azure Service Fabric instances, maar deze beveiliging is niet van toepassing op App Service omgevingen. Realtime-telemetrie is beschikbaar via Azure Monitor weergaven tijdens een aanval en voor geschiedenis. Uitgebreide aanvals beperkings analyse zijn beschikbaar via Diagnostische instellingen. U kunt de beveiliging van de toepassingslaag toevoegen via de [Azure-toepassing gateway Web Application firewall](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) of door een firewall van een derde partij te installeren vanuit Azure Marketplace. Beveiliging is beschikbaar voor IPv4-en IPv6 Azure [open bare IP-adressen](virtual-network-public-ip-address.md).
 
 |Functie                                         |DDoS Protection Basic                 |DDoS Protection standaard                      |
 |------------------------------------------------|--------------------------------------|----------------------------------------------|
@@ -84,7 +84,7 @@ Tijdens de risico beperking wordt het verkeer dat wordt verzonden naar de beveil
 - Communiceer met de client om te bepalen of het verkeer mogelijk een vervalst pakket is (bijvoorbeeld: SYN auth of SYN cookie of door een pakket voor de bron te verwijderen om het opnieuw te verzenden).
 - Aantal pakketten beperken als er geen andere afdwing methode kan worden uitgevoerd.
 
-Met DDoS Protection wordt het verkeer van aanvallen geblokkeerd en wordt het resterende verkeer doorgestuurd naar de bestemming. Binnen een paar minuten na de aanval wordt u hiervan op de hoogte gebracht met behulp van Azure Monitor metrische gegevens. Door logboek registratie in DDoS Protection standaard-telemetrie te configureren, kunt u de logboeken schrijven naar beschik bare opties voor toekomstige analyse. Metrische gegevens in Azure Monitor voor DDoS Protection standaard worden 30 dagen bewaard.
+DDoS-beveiliging blokkeert aanvalsverkeer en stuurt het resterende verkeer door naar de beoogde bestemming. Binnen een paar minuten na detectie van aanvallen wordt u op de hoogte gebracht met metrische gegevens van Azure Monitor. Door logboek registratie in DDoS Protection standaard-telemetrie te configureren, kunt u de logboeken schrijven naar beschik bare opties voor toekomstige analyse. Metrische gegevens in Azure Monitor voor DDoS Protection standaard worden 30 dagen bewaard.
 
 Micro soft heeft een samen werking met [BreakingPoint-Cloud](https://www.ixiacom.com/products/breakingpoint-cloud) voor het bouwen van een interface waarmee u verkeer kunt genereren op basis van DDoS Protection open bare IP-adressen voor simulaties. Met de Cloud simulatie onderbrekings punt kunt u:
 

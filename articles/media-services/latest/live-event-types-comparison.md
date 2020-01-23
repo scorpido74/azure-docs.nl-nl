@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 8377c4339b07e0b917e10ed413ffc79baef91fac
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2dd3b3ffae39d43a3b865804af2e743bad87f8ea
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888390"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543049"
 ---
 # <a name="live-event-types-comparison"></a>Vergelijking van live gebeurtenis typen
 
@@ -28,7 +28,7 @@ In Azure Media Services kan een [live-gebeurtenis](https://docs.microsoft.com/re
 
 In de volgende tabel worden de functies van de live-gebeurtenis typen vergeleken. De typen worden tijdens het maken ingesteld met behulp van [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype):
 
-* **LiveEventEncodingType. none** : een on-premises Live coderings programma verzendt een stream met meerdere bitrates. De opgenomen streams passeren de live-gebeurtenis zonder verdere verwerking. 
+* **LiveEventEncodingType. none** : een on-premises Live coderings programma verzendt een stream met meerdere bitrates. De opgenomen streams passeren de live-gebeurtenis zonder verdere verwerking. Dit wordt ook wel een Pass-through live-gebeurtenis genoemd.
 * **LiveEventEncodingType. Standard** : een on-premises Live coderings programma verzendt een stream met één bitsnelheid naar de live-gebeurtenis en Media Services maakt meerdere bitrate-streams. Als de bijdrage-feed van 720p of hoger is, wordt met de voor instelling **Default720p** een set van 6 omzetting/bitrate-paren gecodeerd (Details worden verderop in het artikel beschreven).
 * **LiveEventEncodingType. Premium1080p** : een on-premises Live coderings programma verzendt een stream met één bitsnelheid naar de live-gebeurtenis en Media Services maakt meerdere bitrate-streams. Met de Default1080p-voor instelling wordt de uitvoerset met omzettingen/bitrate-paren opgegeven (verderop in dit artikel vindt u meer informatie). 
 
@@ -52,6 +52,7 @@ In de volgende tabel worden de functies van de live-gebeurtenis typen vergeleken
 | Prijs|Bekijk de [pagina met prijzen](https://azure.microsoft.com/pricing/details/media-services/) en klik op het tabblad live video|Bekijk de [pagina met prijzen](https://azure.microsoft.com/pricing/details/media-services/) en klik op het tabblad live video|
 | Maximale uitvoerings tijd| 24 uur x 365 dagen, Live lineair | 24 uur x 365 dagen, Live lineair (preview-versie)|
 | De mogelijkheid om gegevens van Inge sloten CEA 608/708-bijschriften door te geven|Ja|Ja|
+| Mogelijkheid om live-transcriptie in te scha kelen|Ja|Ja|
 | Ondersteuning voor het invoegen van pastels|Nee|Nee|
 | Ondersteuning voor AD-Signa lering via API| Nee|Nee|
 | Ondersteuning voor AD-Signa lering via SCTE-35 in-band-berichten|Ja|Ja|

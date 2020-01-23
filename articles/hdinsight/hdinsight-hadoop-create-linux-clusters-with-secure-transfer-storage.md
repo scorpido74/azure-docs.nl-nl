@@ -7,24 +7,26 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/04/2019
-ms.openlocfilehash: bcb0e9551f4415b2aac9eb2d641c91df9f692437
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/22/2020
+ms.openlocfilehash: a8176cc07296b7de7b6aba5356485280ef5ebde1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979123"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548812"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Apache Hadoop cluster maken met opslag accounts voor veilige overdracht in azure HDInsight
 
 De functie [Veilige overdracht vereist](../storage/common/storage-require-secure-transfer.md) verhoogt de beveiliging van uw Azure-opslagaccount door alle aanvragen naar uw account af te dwingen via een beveiligde verbinding. Deze functie en het wasbs-schema worden alleen ondersteund door HDInsight-clusterversie 3.6 of nieuwer.
+
+**Het inschakelen van beveiligde opslag overdracht na het maken van een cluster kan leiden tot fouten bij het gebruik van uw opslag account en wordt niet aanbevolen. Het is beter om een nieuw cluster te maken waarop de eigenschap is ingeschakeld.**
 
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan dit artikel begint, hebt u het volgende nodig:
 
 * Azure-abonnement: als u een gratis proef account voor één maand wilt maken, gaat u naar [Azure.Microsoft.com/Free](https://azure.microsoft.com/free).
-* Een Azure Storage-account waarvoor beveiligde overdracht is ingeschakeld. Zie [Een opslagaccount maken](../storage/common/storage-account-create.md) en [Veilige overdracht vereisen](../storage/common/storage-require-secure-transfer.md) voor instructies. Voor het inschakelen van beveiligde opslag overdracht na het maken van een cluster zijn extra stappen vereist die niet in dit artikel worden besproken.
+* Een Azure Storage-account waarvoor beveiligde overdracht is ingeschakeld. Zie [Een opslagaccount maken](../storage/common/storage-account-create.md) en [Veilige overdracht vereisen](../storage/common/storage-require-secure-transfer.md) voor instructies. 
 * Een BLOB-container op het opslag account.
 
 ## <a name="create-cluster"></a>Cluster maken

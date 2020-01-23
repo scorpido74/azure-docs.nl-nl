@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 16920a46e64306daa331957df24babba8ac4b731
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: a9f9c6ebd55752ea5a3400da8d42b6c6487277df
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75612867"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514643"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Zelf studie: een IoT Edge apparaat configureren
 
@@ -262,7 +262,7 @@ Vervolgens worden de certificaten en de hostnaam bijgewerkt door de configuratie
       trusted_ca_certs: "/edgeMlCertificates/azure-iot-test-only.root.ca.cert.pem"
     ```
 
-    Zorg ervoor dat de "certificaten:" geen witruimte heeft en dat elk van de certificaten wordt voorafgegaan door twee spaties.
+    Zorg ervoor dat de regel **certificaten:** geen voor gaande witruimte heeft en dat alle geneste certificaten met twee spaties worden inge sprongen.
 
     Als u met de rechter muisknop op nano klikt, wordt de inhoud van het klem bord op de huidige cursor positie geplakt. Als u de teken reeks wilt vervangen, gebruikt u de pijlen voor het toetsen bord om te navigeren naar de teken reeks die u wilt vervangen, verwijdert u de teken reeks en klikt u met de rechter muisknop om uit de buffer te plakken.
 

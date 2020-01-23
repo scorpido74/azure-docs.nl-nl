@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 93a70bf0d9189368135b8007e95627fc64064c51
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: de1e01e56079753a1a9ee8debc2f2172e1dc8375
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932185"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548302"
 ---
 # <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Omgevingen hergebruiken voor training & implementatie met Azure Machine Learning.
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -248,6 +248,10 @@ Daarnaast gebruikt de service automatisch een van de op Ubuntu Linux gebaseerde 
 # Specify custom Docker base image and registry, if you don't want to use the defaults
 myenv.docker.base_image="your_base-image"
 myenv.docker.base_image_registry="your_registry_location"
+# Alternatively, you can specify the contents of dockerfile of your base image
+with open("docker_file_of_your_base_image", "r") as f:
+    dockerfile_contents_of_your_base_image=f.read()
+myenv.docker.base_dockerfile=dockerfile_contents_of_your_base_image 
 ```
 
 > [!NOTE]
@@ -344,6 +348,10 @@ service = Model.deploy(
 ## <a name="example-notebooks"></a>Voorbeeld-laptops
 
 In dit [voor beeld wordt het notitie blok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) uitgebreid op concepten en methoden die in dit artikel worden getoond.
+
+[Een model implementeren met behulp van een aangepaste docker-basis installatie kopie](how-to-deploy-custom-docker-image.md) laat zien hoe u een model implementeert met behulp van een aangepaste docker-basis installatie kopie.
+
+Dit [voor beeld](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/spark) laat zien hoe u een Spark-model als een webservice implementeert.
 
 ## <a name="create-and-manage-environments-with-the-cli"></a>Omgevingen maken en beheren met de CLI
 

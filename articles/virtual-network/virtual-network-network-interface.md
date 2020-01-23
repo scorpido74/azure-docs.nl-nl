@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/24/2017
+ms.date: 1/22/2020
 ms.author: kumud
-ms.openlocfilehash: df2eb0886b71a2d5daaa95f33ef29a2afc7e112a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 11e6285ef70ffde5344add951801997f8541eaad
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980721"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543100"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Een netwerk interface maken, wijzigen of verwijderen
 
@@ -90,7 +90,7 @@ U kunt de meeste instellingen voor een netwerk interface weer geven en wijzigen 
    - **Eigenschappen:** Geeft de sleutel instellingen weer over de netwerk interface, met inbegrip van het MAC-adres (leeg als de netwerk interface niet is gekoppeld aan een virtuele machine) en het abonnement dat bestaat in.
    - **Efficiënte beveiligings regels:**  Beveiligings regels worden weer gegeven als de netwerk interface is gekoppeld aan een actieve virtuele machine en een NSG is gekoppeld aan de netwerk interface, het subnet waaraan het is toegewezen, of beide. Zie [effectief beveiligings regels weer geven](#view-effective-security-rules)voor meer informatie over wat er wordt weer gegeven. Zie [netwerk beveiligings groepen](security-overview.md)voor meer informatie over nsg's.
    - **Efficiënte routes:** Routes worden weer gegeven als de netwerk interface is gekoppeld aan een actieve virtuele machine. De routes zijn een combi natie van de standaard routes van Azure, alle door de gebruiker gedefinieerde routes en eventuele BGP-routes die mogelijk bestaan voor het subnet waaraan de netwerk interface is toegewezen. Zie [werkelijke routes weer geven](#view-effective-routes)voor meer informatie over wat er wordt weer gegeven. Zie [route ring-overzicht](virtual-networks-udr-overview.md)voor meer informatie over de standaard routes van Azure en door de gebruiker gedefinieerde routes.
-   - **Algemene Azure Resource Manager-instellingen:**  Zie [activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md), [toegangs beheer (IAM)](../role-based-access-control/overview.md), [Tags](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [vergren delingen](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)en [automatiserings script](../azure-resource-manager/templates/export-template-portal.md)voor meer informatie over algemene Azure Resource Manager-instellingen.
+Algemene Azure Resource Manager-instellingen: Zie [activiteiten logboek](../azure-monitor/platform/platform-logs-overview.md), [toegangs beheer (IAM)](../role-based-access-control/overview.md), [Tags](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [vergren delingen](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)en [automatiserings script](../azure-resource-manager/templates/export-template-portal.md)voor meer informatie over algemene Azure Resource Manager-instellingen.
 
 <a name="view-settings-commands"></a>**Opdrachten**
 
@@ -168,7 +168,7 @@ U kunt het subnet wijzigen, maar niet het virtuele netwerk waaraan een netwerk i
 U kunt alleen een netwerk interface toevoegen aan of verwijderen uit een toepassings beveiligings groep met behulp van de portal als de netwerk interface is gekoppeld aan een virtuele machine. U kunt Power shell of de Azure CLI gebruiken om een netwerk interface toe te voegen aan of een netwerk interface uit een toepassings beveiligings groep te verwijderen, of de netwerk interface is gekoppeld aan een virtuele machine. Meer informatie over [toepassings beveiligings groepen](security-overview.md#application-security-groups) en het [maken van een toepassings beveiligings groep](manage-network-security-group.md).
 
 1. Begin in het vak *resources, services en documenten zoeken* bovenaan de Portal de naam van een virtuele machine met een netwerk interface die u wilt toevoegen aan of verwijderen uit een toepassings beveiligings groep. Wanneer de naam van uw virtuele machine wordt weer gegeven in de zoek resultaten, selecteert u deze.
-2. Selecteer onder **INSTELLINGEN** de optie **Netwerken**.  Selecteer **de toepassings beveiligings groepen configureren**, selecteer de toepassings beveiligings groepen waaraan u de netwerk interface wilt toevoegen, of schakel de selectie van de toepassings beveiligings groepen waarvan u de netwerk interface wilt verwijderen uit en selecteer vervolgens **Opslaan**. Alleen netwerk interfaces die zich in hetzelfde virtuele netwerk bevinden, kunnen worden toegevoegd aan dezelfde toepassings beveiligings groep. De toepassings beveiligings groep moet zich op dezelfde locatie bevinden als de netwerk interface.
+2. Selecteer onder **INSTELLINGEN** de optie **Netwerken**.  Selecteer **toepassings beveiligings** groepen en vervolgens **de beveiligings groepen**van de toepassing, selecteer de toepassings beveiligings groepen waaraan u de netwerk interface wilt toevoegen, of verwijder de selectie van de toepassings beveiligings groepen waarvan u de netwerk interface wilt verwijderen en selecteer vervolgens **Opslaan**. Alleen netwerk interfaces die zich in hetzelfde virtuele netwerk bevinden, kunnen worden toegevoegd aan dezelfde toepassings beveiligings groep. De toepassings beveiligings groep moet zich op dezelfde locatie bevinden als de netwerk interface.
 
 **Opdrachten**
 
@@ -196,8 +196,8 @@ U kunt alleen een netwerk interface toevoegen aan of verwijderen uit een toepass
 U kunt een netwerk interface verwijderen zolang deze niet is gekoppeld aan een virtuele machine. Als een netwerk interface is gekoppeld aan een virtuele machine, moet u eerst de virtuele machine in de status gestopt (toewijzing ongedaan gemaakt) plaatsen en vervolgens de netwerk interface loskoppelen van de virtuele machine. Als u een netwerk interface van een virtuele machine wilt loskoppelen, voert u de stappen uit om [een netwerk interface los van een virtuele machine te ontkoppelen](virtual-network-network-interface-vm.md#remove-a-network-interface-from-a-vm). U kunt een netwerk interface niet loskoppelen van een virtuele machine als dit de enige netwerk interface is die aan de virtuele machine is gekoppeld. Aan een virtuele machine moet altijd minstens één netwerk interface zijn gekoppeld. Als u een virtuele machine verwijdert, worden alle gekoppelde netwerk interfaces losgekoppeld, maar worden de netwerk interfaces niet verwijderd.
 
 1. In het vak met de tekst *zoeken resources* boven aan de Azure Portal, typt u *netwerk interfaces*. Wanneer de **netwerk interfaces** in de zoek resultaten worden weer gegeven, selecteert u deze.
-2. Selecteer **...** aan de rechter kant van de netwerk interface die u wilt verwijderen uit de lijst met netwerk interfaces.
-3. Selecteer **Verwijderen**.
+2. Selecteer de netwerk interface in de lijst die u wilt verwijderen.
+3. Selecteer onder **overzicht** de optie **verwijderen**.
 4. Selecteer **Ja** om te bevestigen dat de netwerk interface moet worden verwijderd.
 
 Wanneer u een netwerk interface verwijdert, worden alle hieraan toegewezen MAC-of IP-adressen vrijgegeven.

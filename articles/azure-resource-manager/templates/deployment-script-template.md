@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 01/22/2020
 ms.author: jgao
-ms.openlocfilehash: 5475f49acfdcd74a792a9a0f2f16cf1ea3272232
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 125fefbb1d83db8b6114b2d09f5bd6da885159ba
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121893"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547639"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Implementatie scripts gebruiken in sjablonen (preview-versie)
 
@@ -42,7 +42,7 @@ De voor delen van het implementatie script:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- **Een door de gebruiker toegewezen beheerde identiteit met de rol van Inzender op abonnements niveau**. Deze identiteit wordt gebruikt om implementatie scripts uit te voeren. Zie door de [gebruiker toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#user-assigned-managed-identity)als u er een wilt maken. U hebt de identiteits-ID nodig wanneer u de sjabloon implementeert. De indeling van de identiteit is:
+- **Een door de gebruiker toegewezen beheerde identiteit met de rol van Inzender op abonnements niveau**. Deze identiteit wordt gebruikt om implementatie scripts uit te voeren. Zie [een door de gebruiker toegewezen beheerde identiteit maken met behulp van de Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md) [, of met behulp van](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) [Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)als u er een wilt maken. U hebt de identiteits-ID nodig wanneer u de sjabloon implementeert. De indeling van de identiteit is:
 
   ```json
   /subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<IdentityID>

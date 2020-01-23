@@ -6,16 +6,16 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: d1058125d5bb3912b9561027bbe0a977637d3379
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e70d1dfebcf25ee8f4e90a062cee6dd72a663e02
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153569"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547520"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Het vFXT-cluster implementeren
 
-Deze procedure begeleidt u bij het gebruik van de implementatie wizard die beschikbaar is via Azure Marketplace. De wizard implementeert automatisch het cluster met behulp van een Azure Resource Manager sjabloon. Nadat u de para meters in het formulier hebt ingevoerd en op **maken**hebt geklikt, worden deze stappen automatisch door Azure voltooid:
+Deze procedure begeleidt u bij het gebruik van de implementatie wizard die beschikbaar is via Azure Marketplace. De wizard implementeert automatisch het cluster met behulp van een Azure Resource Manager sjabloon. Nadat u de para meters in het formulier hebt ingevoerd en op **maken**hebt geklikt, worden deze taken automatisch door Azure voltooid:
 
 * Maakt de cluster controller, een basis-VM die de software bevat die nodig is voor het implementeren en beheren van het cluster.
 * Hiermee stelt u de resource groep en de infra structuur van het virtuele netwerk in, inclusief het maken van nieuwe elementen.
@@ -28,10 +28,10 @@ Nadat u de instructies in dit document hebt gevolgd, hebt u een virtueel netwerk
 
 Voordat u de sjabloon voor maken gebruikt, moet u ervoor zorgen dat u deze vereisten hebt aangepakt:  
 
-1. [Nieuw abonnement](avere-vfxt-prereqs.md#create-a-new-subscription)
-1. [Machtigingen voor abonnements eigenaar](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
-1. [Quota voor het vFXT-cluster](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [Opslag service-eind punt (indien nodig)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) : vereist voor implementaties die gebruikmaken van een bestaand virtueel netwerk en Blob-opslag maken
+* [Nieuw abonnement](avere-vfxt-prereqs.md#create-a-new-subscription)
+* [Machtigingen voor abonnements eigenaar](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
+* [Quota voor het vFXT-cluster](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
+* [Opslag service-eind punt (indien nodig)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) : vereist voor implementaties die gebruikmaken van een bestaand virtueel netwerk en Blob-opslag maken
 
 Lees voor meer informatie over de stappen voor het implementeren van clusters en het plannen van het [overzicht](avere-vfxt-deploy-overview.md)van [uw avere vFXT-systeem](avere-vfxt-deploy-plan.md) en-implementatie.
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 3ee722f88f766178dd658600893b4497bf611be9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3d06f3e8be449e7050c65c75339a0cff6efe19e4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75372768"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544443"
 ---
 # <a name="escalate-private-cloud-vcenter-privileges-from-the-cloudsimple-portal"></a>Persoonlijke Cloud vCenter-bevoegdheden escaleren vanuit de CloudSimple-Portal
 
@@ -55,6 +55,9 @@ De escalatie van bevoegdheden begint en eindigt tot het einde van het geselectee
 
 > [!IMPORTANT]
 > Er kan slechts één gebruiker escalated privileges hebben.  U moet de bevoegdheden van de gebruiker deactiveren voordat u de bevoegdheden van een andere gebruiker kunt escaleren.
+
+> [!CAUTION]
+> Nieuwe gebruikers moeten alleen worden toegevoegd aan de *Cloud-eigenaar-groep*, *Cloud-Global-cluster-admin groep*, *Cloud-Global-Storage-admin-Group*, Cloud-Global: *Network-Administrator-* Group of Cloud-Global:- *beheer groep*.  Gebruikers die zijn toegevoegd aan de groep *Administrators* , worden automatisch verwijderd.  Alleen service accounts moeten worden toegevoegd aan de groep *Administrators* en service accounts moeten worden gebruikt om u aan te melden bij de vSphere-webgebruikersinterface.
 
 ## <a name="extend-privilege-escalation"></a>Escalatie van bevoegdheden uitbreiden
 

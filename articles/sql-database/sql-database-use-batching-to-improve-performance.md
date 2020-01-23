@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 175ba6b4e65b4a6e276dbfb586e210027a6cd9b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cacc01151edaf31db938cf8abf3d46e75397758f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822422"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545021"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Batch verwerking gebruiken om de prestaties van SQL Database-toepassingen te verbeteren
 
@@ -91,13 +91,13 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Trans acties worden feitelijk gebruikt in beide voor beelden. In het eerste voor beeld is elke afzonderlijke aanroep een impliciete trans actie. In het tweede voor beeld verloopt een expliciete trans actie alle aanroepen. In de documentatie voor het [transactie logboek voor schrijven](https://msdn.microsoft.com/library/ms186259.aspx)worden logboek records naar de schijf verwijderd wanneer de trans actie wordt doorgevoerd. Door meer aanroepen in een trans actie op te nemen, kan de schrijf bewerking naar het transactie logboek worden vertraagd totdat de trans actie is doorgevoerd. In feite schakelt u batch verwerking in voor de schrijf bewerkingen naar het transactie logboek van de server.
+Trans acties worden feitelijk gebruikt in beide voor beelden. In het eerste voor beeld is elke afzonderlijke aanroep een impliciete trans actie. In het tweede voor beeld verloopt een expliciete trans actie alle aanroepen. In de documentatie voor het [transactie logboek voor schrijven](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)worden logboek records naar de schijf verwijderd wanneer de trans actie wordt doorgevoerd. Door meer aanroepen in een trans actie op te nemen, kan de schrijf bewerking naar het transactie logboek worden vertraagd totdat de trans actie is doorgevoerd. In feite schakelt u batch verwerking in voor de schrijf bewerkingen naar het transactie logboek van de server.
 
 In de volgende tabel ziet u enkele ad hoc test resultaten. De tests hebben dezelfde sequentiële toevoegingen met en zonder trans acties uitgevoerd. Voor meer perspectief is de eerste set testen op afstand uitgevoerd vanaf een laptop naar de data base in Microsoft Azure. De tweede set tests is uitgevoerd vanuit een Cloud service en data base die zich in hetzelfde Microsoft Azure Data Center (VS-West) bevindt. De volgende tabel toont de duur in milliseconden van opeenvolgende toevoegingen met en zonder trans acties.
 
 **On-premises naar Azure**:
 
-| Bewerkingen | Geen trans actie (MS) | Trans actie (MS) |
+| Operations | Geen trans actie (MS) | Trans actie (MS) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
@@ -106,7 +106,7 @@ In de volgende tabel ziet u enkele ad hoc test resultaten. De tests hebben dezel
 
 **Azure naar Azure (hetzelfde Data Center)** :
 
-| Bewerkingen | Geen trans actie (MS) | Trans actie (MS) |
+| Operations | Geen trans actie (MS) | Trans actie (MS) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -124,7 +124,7 @@ In het vorige voor beeld ziet u dat u een lokale trans actie kunt toevoegen aan 
 
 Zie [lokale trans acties in ADO.net](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions)voor meer informatie over trans acties in ADO.net.
 
-### <a name="table-valued-parameters"></a>tabelwaardeparameter
+### <a name="table-valued-parameters"></a>Tabelwaardeparameter
 
 Para meters voor tabel waarden ondersteunen door de gebruiker gedefinieerde tabel typen als para meters in Transact-SQL-instructies, opgeslagen procedures en functies. Met deze batch techniek voor client zijde kunt u meerdere rijen met gegevens binnen de tabelwaardeparameter verzenden. Als u para meters met tabel waarden wilt gebruiken, moet u eerst een tabel type definiëren. Met de volgende Transact-SQL-instructie maakt u een tabel type met de naam **MyTableType**.
 
@@ -193,7 +193,7 @@ In de meeste gevallen hebben para meters met een tabel waarde dezelfde of betere
 
 In de volgende tabel ziet u de resultaten van ad hoc tests voor het gebruik van para meters met tabel waarden in milliseconden.
 
-| Bewerkingen | On-premises naar Azure (MS) | Azure hetzelfde Data Center (MS) |
+| Operations | On-premises naar Azure (MS) | Azure hetzelfde Data Center (MS) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -233,7 +233,7 @@ Er zijn enkele gevallen waarin bulksgewijs kopiëren de voor keur geeft aan de p
 
 De volgende ad hoc test resultaten tonen de prestaties van batching met **SqlBulkCopy** in milliseconden.
 
-| Bewerkingen | On-premises naar Azure (MS) | Azure hetzelfde Data Center (MS) |
+| Operations | On-premises naar Azure (MS) | Azure hetzelfde Data Center (MS) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -278,7 +278,7 @@ Dit voor beeld is bedoeld om het basis concept weer te geven. In een realistisch
 
 De volgende resultaten van ad hoc tests geven de prestaties van dit type instructie INSERT in milliseconden weer.
 
-| Bewerkingen | Tabelwaardeparameter (MS) | INSERT met één instructie (MS) |
+| Operations | Tabelwaardeparameter (MS) | INSERT met één instructie (MS) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |
@@ -291,7 +291,7 @@ De volgende resultaten van ad hoc tests geven de prestaties van dit type instruc
 
 Deze benadering kan iets sneller zijn voor batches die minder dan 100 rijen zijn. Hoewel de verbetering klein is, is deze techniek een andere optie die goed kan werken in uw specifieke toepassings scenario.
 
-### <a name="dataadapter"></a>Data
+### <a name="dataadapter"></a>DataAdapter
 
 Met de klasse **Data adapter** kunt u een object **DataSet** wijzigen en vervolgens de wijzigingen verzenden als insert-, update-en delete-bewerkingen. Als u de **Data adapter** op deze manier gebruikt, is het belang rijk te weten dat afzonderlijke aanroepen voor elke afzonderlijke bewerking worden uitgevoerd. U kunt de prestaties verbeteren door de eigenschap **UpdateBatchSize** te gebruiken voor het aantal bewerkingen dat per keer moet worden ingebatcheerd. Zie [batch bewerkingen uitvoeren met behulp van data adapters](https://msdn.microsoft.com/library/aadf8fk2.aspx)voor meer informatie.
 
@@ -321,11 +321,11 @@ Afhankelijk van uw architectuur kan batch verwerking gebruikmaken van een balans
 
 Als gevolg van deze balans, moet u het type bewerkingen evalueren dat u batcheert. Batch is agressief (grotere batches en langere tijd Vensters) met gegevens die minder kritiek zijn.
 
-### <a name="batch-size"></a>Batch grootte
+### <a name="batch-size"></a>Batchgrootte
 
 In onze tests is het niet handig om grote batches te verbreken in kleinere segmenten. Dit leidt er vaak toe dat deze indeling langzamer presteert dan het verzenden van één grote batch. Denk bijvoorbeeld aan een scenario waarin u 1000 rijen wilt invoegen. In de volgende tabel ziet u hoe lang het duurt om de para meters met tabel waarden te gebruiken om 1000 rijen in te voegen in kleinere batches.
 
-| Batch grootte | Iteraties | Tabelwaardeparameter (MS) |
+| Batchgrootte | Iteraties | Tabelwaardeparameter (MS) |
 | --- | --- | --- |
 | 1000 |1 |347 |
 | 500 |2 |355 |

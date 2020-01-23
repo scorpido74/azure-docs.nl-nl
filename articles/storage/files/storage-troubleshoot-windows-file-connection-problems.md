@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 97fdb0b243f71701491f2d2424c04dbd19208ef0
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 0321d253eb1db414dff2acbb704d3d36726010d9
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291190"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544953"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Problemen met Azure Files oplossen in Windows
 
@@ -140,9 +140,8 @@ Gebruik de Power shell [-cmdlet close-AzStorageFileHandle](https://docs.microsof
 > De cmdlets Get-AzStorageFileHandle en Close-AzStorageFileHandle zijn opgenomen in AZ Power shell-module versie 2,4 of hoger. Zie [de module Azure PowerShell installeren](https://docs.microsoft.com/powershell/azure/install-az-ps)om de nieuwste AZ Power shell-module te installeren.
 
 <a id="noaaccessfailureportal"></a>
-## <a name="error-no-access-when-browsing-to-an-azure-file-share-in-the-portal"></a>Fout ' geen toegang ' bij het bladeren naar een Azure-bestands share in de portal
-
-Wanneer u naar een Azure-bestands share in de portal bladert, wordt mogelijk de volgende fout weer gegeven:
+## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Fout ' geen toegang ' wanneer u een Azure-bestands share probeert te openen of verwijderen  
+Wanneer u probeert een Azure-bestands share in de portal te openen of verwijderen, wordt mogelijk de volgende fout weer gegeven:
 
 Geen toegang  
 Fout code: 403 
