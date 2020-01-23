@@ -16,6 +16,8 @@
       href: azure-resource-manager-security-controls.md
     - name: Resourceproviders per service
       href: azure-services-resource-providers.md
+    - name: Resourcetypen van extensies
+      href: extension-resource-types.md
     - name: Limiet van resource-exemplaar
       href: resources-without-resource-group-limit.md
 - name: Procedures
@@ -68,44 +70,44 @@
           href: tag-resources.md
         - name: Tag-ondersteuning
           href: tag-support.md
-    - name: Beheren
+    - name: Resourcegroepen beheren
       items:
-        - name: Resourcegroepen beheren
-          items:
-            - name: Azure Portal gebruiken
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-portal.md
-            - name: Azure CLI gebruiken
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-cli.md
-            - name: Azure PowerShell gebruiken
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-powershell.md
-        - name: Resources beheren
-          items:
-            - name: Azure Portal gebruiken
-              displayName: 'open,delete,deploy,move,lock,tag,monitor'
-              href: manage-resources-portal.md
-            - name: Azure CLI gebruiken
-              displayName: 'open,delete,deploy,move,lock,tag'
-              href: manage-resources-cli.md
-            - name: Azure PowerShell gebruiken
-              displayName: 'open,delete,deploy,move,lock,tag'
-              href: manage-resources-powershell.md
-        - name: Resourcegroepen en resources verwijderen
-          href: delete-resource-group.md
-        - name: Resources vergrendelen
-          href: lock-resources.md
-        - name: EA-abonnementen maken
+        - name: Azure Portal
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-portal.md
+        - name: Azure CLI
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-cli.md
+        - name: Azure PowerShell
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-powershell.md
+    - name: Resources beheren
+      items:
+        - name: Azure Portal
+          displayName: 'open,delete,deploy,move,lock,tag,monitor'
+          href: manage-resources-portal.md
+        - name: Azure CLI
+          displayName: 'open,delete,deploy,move,lock,tag'
+          href: manage-resources-cli.md
+        - name: Azure PowerShell
+          displayName: 'open,delete,deploy,move,lock,tag'
+          href: manage-resources-powershell.md
+    - name: EA-abonnementen
+      items:
+        - name: Maken
           href: programmatically-create-subscription.md
-        - name: Toegang verlenen om EA-abonnementen te maken
+        - name: Toegang geven om te maken
           href: grant-access-to-create-subscription.md
-        - name: Verifiëren in meerdere tenants
-          href: authenticate-multi-tenant.md
-    - name: Activiteitenlogboeken bekijken
-      href: view-activity-logs.md
     - name: Resourceproviders en -typen
       href: resource-providers-and-types.md
+    - name: Resourcegroepen en resources verwijderen
+      href: delete-resource-group.md
+    - name: Resources vergrendelen
+      href: lock-resources.md
+    - name: Verifiëren in meerdere tenants
+      href: authenticate-multi-tenant.md
+    - name: Activiteitenlogboeken bekijken
+      href: view-activity-logs.md
     - name: Aanvraagbeperkingen
       href: request-limits-and-throttling.md
     - name: Asynchrone bewerkingen bijhouden

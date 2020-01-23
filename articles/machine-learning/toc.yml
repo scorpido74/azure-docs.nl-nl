@@ -191,6 +191,9 @@
         - name: Afbeeldingen van labels voorzien
           displayName: 'data, dataset, labeling'
           href: how-to-label-images.md
+        - name: Gegevensset maken met labels
+          displayName: 'data, labels, torchvision'
+          href: how-to-use-labeled-dataset.md
     - name: Modellen trainen
       items:
         - name: De ontwerper gebruiken

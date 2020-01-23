@@ -309,7 +309,7 @@
                   href: vmware-physical-mobility-service-overview.md
                 - name: Voorbereiden voor push-installatie van de Mobility-service
                   href: vmware-azure-install-mobility-service.md
-                - name: De Mobility-service implementeren met behulp van System Center Configuration Manager
+                - name: De Mobility-service implementeren met behulp van Configuration Manager
                   href: vmware-azure-mobility-install-configuration-mgr.md
         - name: Failover en failback uitvoeren
           href: physical-to-azure-failover-failback.md

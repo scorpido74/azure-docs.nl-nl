@@ -57,7 +57,7 @@
           href: how-tos/create-locate-anchors-cpp-ndk.md
         - name: In C++/WinRT
           href: how-tos/create-locate-anchors-cpp-winrt.md
-    - name: Sensoren in apparaten gebruiken om dichtbijzijnde bladwijzers te ontdekken
+    - name: Gebruik coarse-relokalisatie om dichtbijzijnde ankers te ontdekken
       items:
         - name: 'In C#/Unity'
           href: how-tos/set-up-coarse-reloc-unity.md
