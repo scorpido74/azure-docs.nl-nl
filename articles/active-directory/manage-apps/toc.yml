@@ -139,6 +139,8 @@
               href: configure-linked-sign-on.md
         - name: Gebruikers toewijzen en toegang tot apps beheren
           items:
+            - name: Gebruikerstoestemming configureren
+              href: configure-user-consent.md
             - name: Toestemmingsaanvragen beheren en evalueren
               href: manage-consent-requests.md
             - name: Beheerderstoestemming verlenen voor de hele tenant
