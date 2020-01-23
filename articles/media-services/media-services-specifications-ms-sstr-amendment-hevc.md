@@ -1,5 +1,5 @@
 ---
-title: Wijziging van Azure Media Services-Smooth Streaming Protocol (MS-SSTR) voor HEVC | Microsoft Docs
+title: Wijziging van het Smooth Streaming Protocol (MS-SSTR) voor HEVC-Azure
 description: Deze specificatie beschrijft het protocol en de indeling voor gefragmenteerde op MP4 gebaseerde live streamen met HEVC in Azure Media Services. Alleen de wijzigingen die nodig zijn om HEVC te leveren, worden in dit artikel vermeld, met uitzonde ring van ' (geen wijziging) ' geeft aan dat tekst alleen ter verduidelijking wordt gekopieerd.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2019
 ms.author: johndeu
-ms.openlocfilehash: 6dd7e0dc7e58f33f952aa5531773a84ebd31a163
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: be4009d418f2f8f3dff755e2e990efee593f070b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74887863"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514218"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Wijziging van het Smooth Streaming Protocol (MS-SSTR) voor HEVC 
 

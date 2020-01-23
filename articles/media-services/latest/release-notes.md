@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.author: juliako
-ms.openlocfilehash: ecc2a8236b51013895bfe831d6785ff3e6925906
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 03674d8fb42d56d6b4b40d8111c1a7bbce7c312b
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979686"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514483"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
 
@@ -61,6 +61,7 @@ Er is ondersteuning toegevoegd voor de volgende nieuwe aanbevolen partner encode
 - [Restream.io](https://restream.io/)
 
 ### <a name="file-encoding-enhancements"></a>Verbeteringen voor bestands codering
+
 - Er is nu een nieuwe voor instelling voor het coderen van inhoud beschikbaar. Er wordt een set GOP terug-uitgelijnde Mp4's gemaakt met behulp van inhoud-bewuste code ring. Op basis van de invoer inhoud voert de service een eerste licht gewicht analyse van de invoer inhoud uit. Deze resultaten worden gebruikt om het optimale aantal lagen, de juiste bitsnelheid en resolutie-instellingen voor levering door adaptieve streaming te bepalen. Deze standaard instelling is met name van toepassing op Video's met een lage complexiteit en middel grote complexiteit, waarbij de uitvoer bestanden een lagere bitsnelheid hebben, maar met een kwaliteit die nog steeds een goede ervaring voor kijkers biedt. De uitvoer bevat MP4-bestanden met Interleaved video-en audio-indeling. Zie de [open API-specificaties](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/Encoding.json)voor meer informatie.
 - Verbeterde prestaties en meerdere threads voor de nieuwe grootte van Media Encoder Standard. Onder specifieke voor waarden moet de klant een prestatie verbetering van 5-40% VOD-code ring zien. Inhoud met weinig complexiteit die is gecodeerd in meerdere bitsnelheden, ziet de hoogste prestatie verhoging. 
 - Standaard codering onderhoudt nu een reguliere GOP terug-uitgebracht voor de VFR-inhoud (variable frame rate) tijdens VOD-code ring wanneer u de GOP terug-instelling op basis van tijd gebruikt.  Dit betekent dat de klant de prijs informatie voor gemengde frames indient die varieert tussen 15-30 fps, bijvoorbeeld de normale GOP terug-afstanden die worden berekend voor de uitvoer naar Adaptive Bitrate Streaming MP4-bestanden. Dit verbetert de mogelijkheid om naadloos tussen sporen te scha kelen bij het leveren van HLS of een streepje. 
@@ -82,7 +83,7 @@ Media Services v3 kondigt de preview van 24 uur x 365 dagen aan live lineaire co
 
 #### <a name="deprecation-of-media-processors"></a>Afschaffing van media processors
 
-Er wordt een afschaffing van *Azure media indexer* en *Azure media indexer 2 Preview*aangekondigd. De processor van [Azure media indexer](../previous/media-services-index-content.md) media wordt op 1 oktober 2020 buiten gebruik gesteld. De [Azure media indexer 2 Preview](../previous/media-services-process-content-with-indexer2.md) -media processors worden buiten gebruik gesteld op 1 januari van 2020. [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) vervangt deze verouderde media processors.
+Er wordt een afschaffing van *Azure media indexer* en *Azure media indexer 2 Preview*aangekondigd. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](../previous/legacy-components.md) . [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) vervangt deze verouderde media processors.
 
 Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](../previous/migrate-indexer-v1-v2.md)voor meer informatie.
 
@@ -100,7 +101,7 @@ Zie [Clouds en regio's waarin Media Services v3 bestaat](azure-clouds-regions.md
 
 #### <a name="deprecation-of-media-processors"></a>Afschaffing van media processors
 
-Er wordt een afschaffing van de media processors van *Windows Azure Media Encoder* (WAME) en *Azure Media Encoder* (AAM) aangekondigd die worden ingetrokken op 31 maart 2020.
+Er wordt een afschaffing van de media processors van *Windows Azure Media Encoder* (WAME) en *Azure Media Encoder* (AAM) aangekondigd. deze worden buiten gebruik gesteld. Voor de pensioen datums raadpleegt u dit onderwerp over [oudere onderdelen](../previous/legacy-components.md) .
 
 Zie [WAME migreren naar Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) en [aam migreren naar Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)voor meer informatie.
  

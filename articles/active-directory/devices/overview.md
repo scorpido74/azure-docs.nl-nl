@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73104cc1bcd9266cbb9e5b1985dac4a4566f0a74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d593e5f27dbcd676e2b42975251778a6c48a7d79
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423121"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511872"
 ---
 # <a name="what-is-a-device-identity"></a>Wat is een apparaat-id?
 
@@ -54,7 +54,7 @@ U hebt meerdere opties om een apparaat in azure AD op te halen:
 
 ## <a name="device-management"></a>Apparaatbeheer
 
-Apparaten in azure AD kunnen worden beheerd met behulp van Mobile Device Management (MDM)-hulpprogram ma's zoals Microsoft Intune, System Center Configuration Manager, groepsbeleid (Hybrid Azure AD-deelname), Mobile Application Management-hulpprogram ma's (MAM) of andere hulpprogram ma's van derden.
+Apparaten in azure AD kunnen worden beheerd met Mobile Device Management (MDM)-hulpprogram ma's zoals Microsoft Intune, micro soft endpoint Configuration Manager, groepsbeleid (Hybrid Azure AD-deelname), Mobile Application Management-hulpprogram ma's (MAM) of andere hulpprogram ma's van derden.
 
 ## <a name="resource-access"></a>Toegang tot bronnen
 

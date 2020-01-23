@@ -8,17 +8,17 @@ ms.date: 12/03/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8232a71140dcded907562a4f1c0f2196ff012c12
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cf073572cd5b371ec484c99f14cbefb4cba75ce7
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486246"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509900"
 ---
 # <a name="install-production-certificates-on-an-iot-edge-device"></a>Productie certificaten op een IoT Edge apparaat installeren
 
 Alle IoT Edge apparaten gebruiken certificaten voor het maken van beveiligde verbindingen tussen de runtime en alle modules die op het apparaat worden uitgevoerd.
-IoT Edge apparaten als gateways functioneren, gebruiken deze zelfde certificaten ook om verbinding te maken met hun downstream-apparaten. 
+IoT Edge apparaten als gateways functioneren, gebruiken deze zelfde certificaten ook om verbinding te maken met hun downstream-apparaten.
 
 Wanneer u IoT Edge voor het eerst installeert en uw apparaat inricht, wordt het apparaat ingesteld met tijdelijke certificaten, zodat u de service kunt testen.
 Deze tijdelijke certificaten verlopen over 90 dagen of kunnen opnieuw worden ingesteld door de computer opnieuw op te starten.
@@ -28,9 +28,9 @@ In dit artikel worden de stappen beschreven voor het installeren van certificate
 Zie [begrijpen hoe Azure IOT Edge certificaten gebruikt](iot-edge-certs.md)voor meer informatie over de verschillende typen certificaten en hun rollen in een IOT Edge scenario.
 
 >[!NOTE]
->De term ' basis-CA ' die in dit artikel wordt gebruikt, verwijst naar het open bare certificaat van de bovenste instantie van de certificaat keten voor uw IoT-oplossing. U hoeft niet de hoofdmap van het certificaat van een extern gepubliceerde certificerings instantie of de basis van de certificerings instantie van uw organisatie te gebruiken. In veel gevallen is het eigenlijk een openbaar certificaat van een tussenliggend CA. 
+>De term ' basis-CA ' die in dit artikel wordt gebruikt, verwijst naar het open bare certificaat van de bovenste instantie van de certificaat keten voor uw IoT-oplossing. U hoeft niet de hoofdmap van het certificaat van een extern gepubliceerde certificerings instantie of de basis van de certificerings instantie van uw organisatie te gebruiken. In veel gevallen is het eigenlijk een openbaar certificaat van een tussenliggend CA.
 
-## <a name="prerequisites"></a>Vereisten 
+## <a name="prerequisites"></a>Vereisten
 
 * Een IoT Edge apparaat, dat wordt uitgevoerd op [Windows](how-to-install-iot-edge-windows.md) of [Linux](how-to-install-iot-edge-linux.md).
 * Beschikken over een basis certificaat voor een certificerings instantie (CA), ofwel zelf ondertekend of gekocht bij een vertrouwde commerciële certificerings instantie, zoals Baltimore, VeriSign, DigiCert of GlobalSign.
@@ -40,17 +40,18 @@ Als u nog geen basis certificerings instantie hebt, maar IoT Edge functies wilt 
 ## <a name="create-production-certificates"></a>Productie certificaten maken
 
 U moet uw eigen certificerings instantie gebruiken om de volgende bestanden te maken:
+
 * Basis-CA
 * Device CA-certificaat
 * Persoonlijke sleutel van de apparaat-CA
 
-In dit artikel wordt verwezen naar de *basis-CA* , maar niet de hoogste certificerings instantie voor een organisatie. Het is de bovenste certificerings instantie voor het IoT Edge scenario, die door de IoT Edge hub-module, gebruikers modules en downstream-apparaten wordt gebruikt om een vertrouwens relatie tussen elkaar te leggen. 
+In dit artikel wordt verwezen naar de *basis-CA* , maar niet de hoogste certificerings instantie voor een organisatie. Het is de bovenste certificerings instantie voor het IoT Edge scenario, die door de IoT Edge hub-module, gebruikers modules en downstream-apparaten wordt gebruikt om een vertrouwens relatie tussen elkaar te leggen.
 
-Als u een voor beeld van deze certificaten wilt zien, bekijkt u de scripts die demo certificaten maken bij het [beheren van test-CA-certificaten voor voor beelden en zelf studies](https://github.com/Azure/iotedge/tree/master/tools/CACertificates). 
+Als u een voor beeld van deze certificaten wilt zien, bekijkt u de scripts die demo certificaten maken bij het [beheren van test-CA-certificaten voor voor beelden en zelf studies](https://github.com/Azure/iotedge/tree/master/tools/CACertificates).
 
 ## <a name="install-certificates-on-the-device"></a>Certificaten op het apparaat installeren
 
-Installeer uw certificaat keten op het IoT Edge apparaat en configureer de IoT Edge-runtime om te verwijzen naar de nieuwe certificaten. 
+Installeer uw certificaat keten op het IoT Edge apparaat en configureer de IoT Edge-runtime om te verwijzen naar de nieuwe certificaten.
 
 Als u bijvoorbeeld de voorbeeld scripts hebt gebruikt om [demo certificaten te maken](how-to-create-test-certificates.md), zijn de drie bestanden die u naar uw IOT edge-apparaat moet kopiëren, het volgende:
 
@@ -62,12 +63,12 @@ Als u bijvoorbeeld de voorbeeld scripts hebt gebruikt om [demo certificaten te m
 
    U kunt een service zoals [Azure Key Vault](https://docs.microsoft.com/azure/key-vault) of een functie zoals [Secure Copy Protocol](https://www.ssh.com/ssh/scp/) gebruiken om de certificaat bestanden te verplaatsen.  Als u de certificaten op het IoT Edge apparaat zelf hebt gegenereerd, kunt u deze stap overs Laan en het pad naar de werkmap gebruiken.
 
-2. Open het bestand met IoT Edge security daemon-configuratie. 
+2. Open het bestand met IoT Edge security daemon-configuratie.
 
    * Windows: `C:\ProgramData\iotedge\config.yaml`
    * Linux: `/etc/iotedge/config.yaml`
 
-3. Stel de **certificaat** eigenschappen in het bestand config. yaml in op de BESTANDS-URI van het certificaat en de sleutel bestanden op het IOT edge apparaat. Verwijder het `#` teken vóór de eigenschappen van het certificaat om de vier regels op te heffen. Houd er rekening mee dat inspringingen in YAML twee spaties bevatten. Bijvoorbeeld:
+3. Stel de **certificaat** eigenschappen in het bestand config. yaml in op de BESTANDS-URI van het certificaat en de sleutel bestanden op het IOT edge apparaat. Verwijder het `#` teken vóór de eigenschappen van het certificaat om de vier regels op te heffen. Zorg ervoor dat de regel **certificaten:** geen voor gaande witruimte heeft en dat geneste items met twee spaties worden inge sprongen. Bijvoorbeeld:
 
    * Windows:
 
@@ -77,8 +78,9 @@ Als u bijvoorbeeld de voorbeeld scripts hebt gebruikt om [demo certificaten te m
         device_ca_pk: "file:///c:/path/device-ca.key.pem"
         trusted_ca_certs: "file:///c:/path/root-ca.root.ca.cert.pem"
       ```
-   
-   * Linux: 
+
+   * Linux:
+
       ```yaml
       certificates:
         device_ca_cert: "file:///path/device-ca.cert.pem"
@@ -86,7 +88,7 @@ Als u bijvoorbeeld de voorbeeld scripts hebt gebruikt om [demo certificaten te m
         trusted_ca_certs: "file:///path/root-ca.root.ca.cert.pem"
       ```
 
-4. Controleer op Linux-apparaten of de gebruiker **iotedge** Lees machtigingen heeft voor de directory die de certificaten bevat. 
+4. Controleer op Linux-apparaten of de gebruiker **iotedge** Lees machtigingen heeft voor de directory die de certificaten bevat.
 
 ## <a name="next-steps"></a>Volgende stappen
 

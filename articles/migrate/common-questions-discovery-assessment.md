@@ -3,12 +3,12 @@ title: Veelgestelde vragen-detectie, evaluatie en afhankelijkheids analyse in Az
 description: Krijg antwoorden op veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse in Azure Migrate.
 ms.topic: conceptual
 ms.date: 12/29/2019
-ms.openlocfilehash: 5afda40f4953b8eb51a757034661eb5a3349cd10
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 0132563072ed04a52e4937da7a8df69196f1a91f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292362"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513283"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Veelgestelde vragen over detectie, evaluatie en afhankelijkheids analyse
 
@@ -99,7 +99,7 @@ Nee, de visualisatie van de afhankelijkheid kan niet worden geëxporteerd. Azure
 
 Gebruik dit [script om de afhankelijkheids agent te installeren](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples). Volg deze [instructies voor het installeren van MMA](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) met behulp van de opdracht regel of de automatisering. Voor MMA gebruikt u [Dit script](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 
-Naast scripts kunt u ook implementatie hulpprogramma's als System Center Configuration Manager en [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) gebruiken om de agents te implementeren.
+Naast scripts kunt u ook implementatie hulpprogramma's zoals micro soft endpoint Configuration Manager en [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) gebruiken om de agents te implementeren.
 
 
 ## <a name="what-operating-systems-does-mma-support"></a>Welke besturings systemen ondersteunt MMA?

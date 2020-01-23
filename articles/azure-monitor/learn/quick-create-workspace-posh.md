@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: 303f255057b414bc06cd7ae803fe368c2acc1a1a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 87550e7ee3008418fde84596a811d44d02191cee
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399452"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513521"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Een Log Analytics-werkruimte maken met Azure PowerShell
 
@@ -20,7 +20,7 @@ De Azure PowerShell-module wordt gebruikt voor het maken en beheren van Azure-re
 
 * Azure-resources in uw abonnement  
 * On-premises computers bewaakt door System Center Operations Manager  
-* Apparaatverzamelingen van System Center Configuration Manager  
+* Verzamelingen van apparaten uit Configuration Manager  
 * Diagnose- of logboekgegevens van Azure Storage  
  
 Zie de volgende onderwerpen voor andere bronnen, zoals Azure-VM's en Windows of Linux-VM's in uw omgeving:

@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5fe1e45f2ff80c1a212009291ab880a57f347fdf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ce7f6320ffa4d3e8c258c9d05542f12079ee355d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978395"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76508999"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Gegevens overdragen met de bibliotheek voor gegevensverplaatsing
 
-De Azure Storage-bibliotheek voor gegevens verplaatsing is een platformoverschrijdende open-bron bibliotheek die is ontworpen voor hoge prestaties uploaden, downloaden en kopiëren van blobs en bestanden. Deze bibliotheek is het belangrijkste Framework voor gegevens verplaatsing dat [AzCopy](../storage-use-azcopy.md). De bibliotheek voor gegevens verplaatsing biedt handige methoden die niet beschikbaar zijn in de Azure Storage-client bibliotheek voor .NET. Deze methoden bieden de mogelijkheid om het aantal parallelle bewerkingen in te stellen, de voortgang van de overdracht op te sporen, een geannuleerde overdracht eenvoudig te hervatten en nog veel meer.
+De Azure Storage-bibliotheek voor gegevens verplaatsing is een platformoverschrijdende open-bron bibliotheek die is ontworpen voor hoge prestaties uploaden, downloaden en kopiëren van blobs en bestanden. De bibliotheek voor gegevens verplaatsing biedt handige methoden die niet beschikbaar zijn in de Azure Storage-client bibliotheek voor .NET. Deze methoden bieden de mogelijkheid om het aantal parallelle bewerkingen in te stellen, de voortgang van de overdracht op te sporen, een geannuleerde overdracht eenvoudig te hervatten en nog veel meer.
 
 In deze bibliotheek wordt ook gebruikgemaakt van .NET core. Dit betekent dat u deze kunt gebruiken bij het maken van .NET-Apps voor Windows, Linux en macOS. Raadpleeg de [documentatie van .net core](https://dotnet.github.io/)voor meer informatie over .net core. Deze bibliotheek werkt ook voor traditionele .NET Framework-apps voor Windows.
 

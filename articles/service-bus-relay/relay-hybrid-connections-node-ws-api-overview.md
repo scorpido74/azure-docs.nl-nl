@@ -1,6 +1,6 @@
 ---
-title: Overzicht van de API's van Azure Relay knooppunt | Microsoft Docs
-description: Relay-knooppunt API-overzicht
+title: Overzicht van de Api's voor het Azure Relay-knoop punt | Microsoft Docs
+description: Dit artikel bevat een overzicht van de node. js-API voor de Azure Relay-service. Ook wordt uitgelegd hoe u het hyco-WS-knooppunt pakket gebruikt.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -12,32 +12,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 794e797e504d6064c13ffe0a4ed131e668d86e97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2877284c419da4999e23490fc986e5da44e5d92e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699381"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514507"
 ---
-# <a name="relay-hybrid-connections-node-api-overview"></a>Relay-hybride verbindingen knooppunt API-overzicht
+# <a name="relay-hybrid-connections-node-api-overview"></a>Overzicht van de API voor relay Hybride verbindingen-knoop punt
 
 ## <a name="overview"></a>Overzicht
 
-De [ `hyco-ws` ](https://www.npmjs.com/package/hyco-ws) knooppunt-pakket voor hybride Azure Relay-verbindingen is gebouwd op en breidt de ['ws'](https://www.npmjs.com/package/ws) NPM-pakket. Dit pakket opnieuw alle uitvoer van deze basispakket exporteert en voegt nieuwe uitvoer die mogelijk van integratie met de functie hybride verbindingen van Azure Relay-service. 
+Het [`hyco-ws`](https://www.npmjs.com/package/hyco-ws) knooppunt pakket voor Azure relay hybride verbindingen is gebaseerd op en uitgebreid het [WS](https://www.npmjs.com/package/ws) -NPM-pakket. Met dit pakket worden alle exports van het basis pakket opnieuw geëxporteerd en worden nieuwe exports toegevoegd waarmee integratie met de Azure Relay service Hybride verbindingen functie wordt ingeschakeld. 
 
-Bestaande toepassingen die `require('ws')` kunt dit pakket met `require('hyco-ws')` in plaats daarvan ook waarmee hybride scenario's waarin een toepassing kan luisteren voor WebSocket-verbindingen van 'binnen de firewall' lokaal en via hybride verbindingen, alles op tegelijkertijd.
+Bestaande toepassingen die `require('ws')` dit pakket kunnen gebruiken met `require('hyco-ws')` in plaats daarvan, waarbij ook hybride scenario's kunnen worden ingeschakeld waarin een toepassing lokaal naar WebSocket-verbindingen kan Luis teren vanuit de firewall en via Hybride verbindingen tegelijk.
   
 ## <a name="documentation"></a>Documentatie
 
-De API's zijn [beschreven in het pakket belangrijkste ws](https://github.com/websockets/ws/blob/master/doc/ws.md). Dit artikel wordt beschreven hoe dit pakket verschilt van die basislijn. 
+De Api's worden [beschreven in het hoofd pakket ' WS '](https://github.com/websockets/ws/blob/master/doc/ws.md). In dit artikel wordt beschreven hoe dit pakket afwijkt van die basis lijn. 
 
-De belangrijkste verschillen tussen het basis-pakket en deze 'hyco ws' is dat deze wordt toegevoegd een nieuwe serverklasse, geëxporteerd `require('hyco-ws').RelayedServer`, en een aantal methoden.
+De belangrijkste verschillen tussen het basis pakket en het ' hyco-WS ' zijn dat er een nieuwe server klasse wordt toegevoegd, die wordt geëxporteerd via `require('hyco-ws').RelayedServer`en een paar helper-methoden.
 
-### <a name="package-helper-methods"></a>Pakket Help-methoden
+### <a name="package-helper-methods"></a>Pakket helper-methoden
 
-Er zijn verschillende nuttige methoden beschikbaar op het pakket exporteren die u kunt verwijzen naar als volgt:
+Er zijn verschillende hulpprogramma methoden beschikbaar voor het exporteren van het pakket. u kunt als volgt een verwijzing maken:
 
 ```JavaScript
 const WebSocket = require('hyco-ws');
@@ -48,7 +48,7 @@ listenUri = WebSocket.appendRelayToken(listenUri, 'ruleName', '...key...')
 
 ```
 
-De Help-methoden zijn voor gebruik met dit pakket, maar kunnen ook worden gebruikt door een knooppunt-server voor het inschakelen van web- of apparaat clients listeners of afzenders te maken. De server maakt gebruik van deze methoden door deze URI's die eenvoudige insluittokens worden doorgegeven. Deze URI's kan ook worden gebruikt met algemene WebSocket-stacks die geen ondersteuning voor HTTP-headers van instelling voor de WebSocket-handshake. Autorisatietokens insluiten in de URI wordt voornamelijk voor deze bibliotheek-externe gebruiksscenario's ondersteund. 
+De helper-methoden zijn bestemd voor gebruik met dit pakket, maar kunnen ook worden gebruikt door een knooppunt server om web-of apparaatclients in te scha kelen om listeners of afzenders te maken. De server maakt gebruik van deze methoden door Uri's toe te voegen die de korte-levens tokens insluiten. Deze Uri's kunnen ook worden gebruikt met algemene WebSocket-stacks die geen ondersteuning bieden voor het instellen van HTTP-headers voor de WebSocket-handshake. Het insluiten van autorisatie tokens in de URI wordt voornamelijk ondersteund voor die bibliotheek-externe gebruiks scenario's. 
 
 #### <a name="createrelaylistenuri"></a>createRelayListenUri
 
@@ -56,14 +56,14 @@ De Help-methoden zijn voor gebruik met dit pakket, maar kunnen ook worden gebrui
 var uri = createRelayListenUri([namespaceName], [path], [[token]], [[id]])
 ```
 
-Hiermee maakt u een geldig Azure Relay Hybrid Connection listener URI voor de opgegeven naamruimte en het pad. Deze URI kan vervolgens worden gebruikt met de relay-versie van de klasse WebSocketServer.
+Hiermee maakt u een geldige Azure Relay URI voor de Hybrid Connection-listener voor de opgegeven naam ruimte en het pad. Deze URI kan vervolgens worden gebruikt met de relay-versie van de WebSocketServer-klasse.
 
-- `namespaceName` (vereist): de domein-gekwalificeerde naam van de Azure Relay-naamruimte te gebruiken.
-- `path` (vereist): de naam van een bestaande Azure Relay Hybrid-verbinding in die naamruimte.
-- `token` (optioneel): een eerder uitgegeven Relay access token dat is ingesloten in de URI-listener (Zie het volgende voorbeeld).
-- `id` (optioneel): een tracerings-id waarmee de end-to-end diagnostische tracering van aanvragen.
+- `namespaceName` (vereist): de domein gekwalificeerde naam van de Azure Relay naam ruimte die u wilt gebruiken.
+- `path` (vereist): de naam van een bestaande Azure Relay hybride verbinding in die naam ruimte.
+- `token` (optioneel): een eerder uitgegeven relay-toegangs token dat is inge sloten in de listener-URI (Zie het volgende voor beeld).
+- `id` (optioneel): een tracerings-ID die end-to-end diagnostische gegevens tracering van aanvragen mogelijk maakt.
 
-De `token` waarde is optioneel en mag alleen worden gebruikt wanneer het is niet mogelijk voor het verzenden van HTTP-headers, samen met de WebSocket-handshake, zoals het geval is met de W3C-WebSocket-stack.                  
+De `token`-waarde is optioneel en moet alleen worden gebruikt wanneer het niet mogelijk is om HTTP-headers samen met de WebSocket-Handshake te verzenden, evenals het geval met de W3C-WebSocket-stack.                  
 
 
 #### <a name="createrelaysenduri"></a>createRelaySendUri
@@ -72,14 +72,14 @@ De `token` waarde is optioneel en mag alleen worden gebruikt wanneer het is niet
 var uri = createRelaySendUri([namespaceName], [path], [[token]], [[id]])
 ```
 
-Hiermee maakt u een geldig Azure Relay Hybrid Connection verzenden URI voor de opgegeven naamruimte en het pad. Deze URI kan worden gebruikt met een willekeurige client WebSocket.
+Hiermee maakt u een geldige Azure Relay hybride verbinding Send URI voor de opgegeven naam ruimte en het pad. Deze URI kan worden gebruikt met een WebSocket-client.
 
-- `namespaceName` (vereist): de domein-gekwalificeerde naam van de Azure Relay-naamruimte te gebruiken.
-- `path` (vereist): de naam van een bestaande Azure Relay Hybrid-verbinding in die naamruimte.
-- `token` (optioneel): een eerder uitgegeven Relay access token dat is ingesloten in de URI (Zie het volgende voorbeeld).
-- `id` (optioneel): een tracerings-id waarmee de end-to-end diagnostische tracering van aanvragen.
+- `namespaceName` (vereist): de domein gekwalificeerde naam van de Azure Relay naam ruimte die u wilt gebruiken.
+- `path` (vereist): de naam van een bestaande Azure Relay hybride verbinding in die naam ruimte.
+- `token` (optioneel): een eerder uitgegeven relay-toegangs token dat is inge sloten in de verzend-URI (Zie het volgende voor beeld).
+- `id` (optioneel): een tracerings-ID die end-to-end diagnostische gegevens tracering van aanvragen mogelijk maakt.
 
-De `token` waarde is optioneel en mag alleen worden gebruikt wanneer het is niet mogelijk voor het verzenden van HTTP-headers, samen met de WebSocket-handshake, zoals het geval is met de W3C-WebSocket-stack.                   
+De `token`-waarde is optioneel en moet alleen worden gebruikt wanneer het niet mogelijk is om HTTP-headers samen met de WebSocket-Handshake te verzenden, evenals het geval met de W3C-WebSocket-stack.                   
 
 
 #### <a name="createrelaytoken"></a>createRelayToken 
@@ -88,14 +88,14 @@ De `token` waarde is optioneel en mag alleen worden gebruikt wanneer het is niet
 var token = createRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 ```
 
-Hiermee maakt u een Azure Relay Shared Access Signature (SAS)-token voor het opgegeven doel-URI, SAS-regel en SAS-sleutel voor regel die geldig is voor het opgegeven aantal seconden of voor een uur van de huidige instant als het argument vervaldatum wordt weggelaten.
+Hiermee maakt u een Azure Relay-Shared Access Signature (SAS)-token voor de opgegeven doel-URI, SAS-regel en SAS-regel sleutel die geldig zijn voor het opgegeven aantal seconden of voor een uur vanaf het huidige moment dat het argument Expires wordt wegge laten.
 
-- `uri` (vereist): de URI waarvoor het token is om te worden uitgegeven. De URI is genormaliseerd voor het gebruik van het HTTP-schema en querygegevens als tekenreeks wordt verwijderd.
-- `ruleName` (vereist) - regel SAS-naam voor een van beide de entiteit die wordt vertegenwoordigd door de opgegeven URI of voor de naamruimte die wordt vertegenwoordigd door het hostgedeelte van de URI.
-- `key` (vereist) - geldige sleutel voor de SAS-regel. 
-- `expirationSeconds` (optioneel): het aantal seconden totdat de gegenereerde token moet verlopen. Indien niet opgegeven, is de standaardwaarde is 1 uur (3600).
+- `uri` (vereist): de URI waarvoor het token moet worden uitgegeven. De URI wordt genormaliseerd voor het gebruik van het HTTP-schema en de query teken reeks gegevens worden verwijderd.
+- `ruleName` (vereist)-SAS-regel naam voor de entiteit die wordt vertegenwoordigd door de opgegeven URI of voor de naam ruimte die wordt vertegenwoordigd door het URI-host gedeelte.
+- `key` (vereist)-geldige sleutel voor de SAS-regel. 
+- `expirationSeconds` (optioneel): het aantal seconden tot het gegenereerde token moet verlopen. Als niet wordt opgegeven, is de standaard waarde 1 uur (3600).
 
-De uitgegeven tokens verleent de rechten voor in verband met de opgegeven SAS-regel voor de opgegeven duur.
+Het uitgegeven token verleent de rechten die zijn gekoppeld aan de opgegeven SAS-regel voor de opgegeven duur.
 
 #### <a name="appendrelaytoken"></a>appendRelayToken
 
@@ -103,13 +103,13 @@ De uitgegeven tokens verleent de rechten voor in verband met de opgegeven SAS-re
 var uri = appendRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 ```
 
-Deze methode is functioneel equivalent met de `createRelayToken` eerder beschreven methode retourneert, maar het token correct is toegevoegd aan de URI van de invoer.
+Deze methode is functioneel equivalent met de `createRelayToken`-methode die eerder is gedocumenteerd, maar retourneert het token correct toe aan de invoer-URI.
 
-### <a name="class-wsrelayedserver"></a>Klasse ws. RelayedServer
+### <a name="class-wsrelayedserver"></a>Klasse WS. RelayedServer
 
-De `hycows.RelayedServer` klasse is een alternatief voor de `ws.Server` klasse die luistert niet op het lokale netwerk, maar gemachtigden te hebben geluisterd naar de Azure Relay-service.
+De klasse `hycows.RelayedServer` is een alternatief voor de `ws.Server` klasse die niet luistert op het lokale netwerk, maar die luistert naar de Azure Relay-service.
 
-De twee klassen zijn voornamelijk contract die compatibel zijn, wat betekent dat een bestaande toepassing met de `ws.Server` klasse kan eenvoudig worden gewijzigd om de relayed versie te gebruiken. De belangrijkste verschillen zijn in de constructor en de beschikbare opties.
+De twee klassen zijn voornamelijk contract compatibel, wat inhoudt dat een bestaande toepassing die gebruikmaakt van de `ws.Server` klasse eenvoudig kan worden gewijzigd om de door gegeven versie te gebruiken. De belangrijkste verschillen bevinden zich in de constructor en in de beschik bare opties.
 
 #### <a name="constructor"></a>Constructor  
 
@@ -124,24 +124,24 @@ var wss = new server(
     });
 ```
 
-De `RelayedServer` constructor biedt ondersteuning voor een andere set argumenten gebruiken dan de `Server`, omdat het is niet een listener zelfstandige of kunnen worden ingesloten in een bestaand framework van de HTTP-listener. Er zijn ook minder opties beschikbaar omdat de WebSocket-management is grotendeels gedelegeerd naar de Relay-service.
+De `RelayedServer`-constructor ondersteunt een andere set argumenten dan de `Server`, omdat het geen zelfstandige listener is of kan worden inge sloten in een bestaand HTTP-listener-Framework. Er zijn ook minder opties beschikbaar, omdat het beheer van websockets grotendeels wordt overgedragen aan de Relay-service.
 
-Constructorargumenten:
+Constructor-argumenten:
 
-- `server` (required) - the fully qualified URI for a Hybrid Connection name on which to listen, usually constructed with the WebSocket.createRelayListenUri() helper method.
-- `token` (vereist): dit argument een eerder uitgegeven tokens tekenreeks of een retouraanroepfunctie die kan worden aangeroepen om op te halen van een token tekenreeks bevat. De callback-optie is de voorkeur, vernieuwing van het token is ingeschakeld.
+- `server` (vereist): de volledig gekwalificeerde URI voor de naam van een hybride verbinding waarop moet worden geluisterd, meestal gemaakt met de helper-methode WebSocket. createRelayListenUri ().
+- `token` (vereist): dit argument bevat een eerder uitgegeven token teken reeks of een call back-functie die kan worden aangeroepen om een dergelijke token teken reeks op te halen. De terugbel optie verdient de voor keur bij het vernieuwen van tokens.
 
-#### <a name="events"></a>Events
+#### <a name="events"></a>Evenements
 
-`RelayedServer` exemplaren van verzenden drie gebeurtenissen waarmee u kunt inkomende aanvragen worden verwerkt, verbindingen tot stand brengen en opsporen van fouten. U moet zich abonneren op de `connect` gebeurtenis om berichten te verwerken. 
+`RelayedServer` instanties bieden drie gebeurtenissen waarmee u binnenkomende aanvragen kunt afhandelen, verbindingen tot stand kunt brengen en fout voorwaarden kunt detecteren. U moet zich abonneren op de `connect` gebeurtenis om berichten te kunnen afhandelen. 
 
-##### <a name="headers"></a>Headers
+##### <a name="headers"></a>koppen
 
 ```JavaScript 
 function(headers)
 ```
 
-De `headers` gebeurtenis wordt geactiveerd vlak voordat een binnenkomende verbinding geaccepteerd, waardoor het wijzigen van de headers verzenden naar de client. 
+De `headers` gebeurtenis wordt geactiveerd net voordat een binnenkomende verbinding wordt geaccepteerd, waardoor het wijzigen van de headers kan worden verzonden naar de client. 
 
 ##### <a name="connection"></a>verbinding
 
@@ -149,7 +149,7 @@ De `headers` gebeurtenis wordt geactiveerd vlak voordat een binnenkomende verbin
 function(socket)
 ```
 
-Verzonden wanneer een nieuwe WebSocket-verbinding is geaccepteerd. Het object is van het type `ws.WebSocket`, net als met de basis-pakket.
+Verzonden wanneer een nieuwe WebSocket-verbinding wordt geaccepteerd. Het object is van het type `ws.WebSocket`, hetzelfde als bij het basis pakket.
 
 
 ##### <a name="error"></a>error
@@ -158,11 +158,11 @@ Verzonden wanneer een nieuwe WebSocket-verbinding is geaccepteerd. Het object is
 function(error)
 ```
 
-Als de onderliggende-server een fout verzendt, wordt deze hier doorgestuurd.  
+Als de onderliggende server een fout verzendt, wordt deze hier doorgestuurd.  
 
-#### <a name="helpers"></a>Hulpprogramma 's
+#### <a name="helpers"></a>Helpers
 
-Ter vereenvoudiging van een relayed server starten en Abonneer u onmiddellijk op binnenkomende verbindingen, het pakket wordt aangegeven dat een eenvoudige Help-functie, die ook wordt gebruikt in de voorbeelden als volgt:
+Om het starten van een omleidings server te vereenvoudigen en zich onmiddellijk te abonneren op binnenkomende verbindingen, wordt in het pakket een eenvoudige Help-functie weer gegeven, die ook in de voor beelden wordt gebruikt, als volgt:
 
 ##### <a name="createrelayedlistener"></a>createRelayedListener
 
@@ -191,11 +191,11 @@ var wss = WebSocket.createRelayedServer(
 var server = createRelayedServer([options], [connectCallback] )
 ```
 
-Deze methode roept de constructor voor het maken van een nieuw exemplaar van de RelayedServer en vervolgens de verstrekte callback aan de gebeurtenis 'verbinding' is geabonneerd.
+Met deze methode wordt de constructor aangeroepen om een nieuw exemplaar van de RelayedServer te maken en wordt de geleverde call back vervolgens geabonneerd op de gebeurtenis Connection.
  
 ##### <a name="relayedconnect"></a>relayedConnect
 
-Spiegelen gewoon de `createRelayedServer` helper in de functie, `relayedConnect` een clientverbinding maakt en de gebeurtenis 'open' op de resulterende socket op is geabonneerd.
+Het spie gelen van de `createRelayedServer` helper in functie, `relayedConnect` maakt een client verbinding en abonneert zich op de gebeurtenis openen op de resulterende socket.
 
 ```JavaScript
 var uri = WebSocket.createRelaySendUri(ns, path);
@@ -209,6 +209,6 @@ WebSocket.relayedConnect(
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Volg deze koppelingen voor meer informatie over Azure Relay:
+Ga voor meer informatie over Azure Relay naar deze koppelingen:
 * [Wat is Azure Relay?](relay-what-is-it.md)
-* [Beschikbare Relay-API 's](relay-api-overview.md)
+* [Beschik bare relay-Api's](relay-api-overview.md)

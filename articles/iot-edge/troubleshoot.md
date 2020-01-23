@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8022304af0f429024a796e02e64f6e23b938bd57
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 93e3a5ed442c975f75045d86d6b890ee4113c465
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912292"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514252"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Veelvoorkomende problemen en oplossingen voor Azure IoT Edge
 
@@ -105,7 +105,7 @@ In Windows:
 ### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Als de IoT Edge Security Manager wordt niet uitgevoerd, controleert u of uw yaml-configuratiebestand
 
 > [!WARNING]
-> YAML-bestanden kunnen geen tabbladen als inspringing bevatten. Gebruik in plaats daarvan 2 spaties.
+> YAML-bestanden kunnen geen tabbladen als inspringing bevatten. Gebruik in plaats daarvan 2 spaties. Elementen op het hoogste niveau mogen geen voorloop spaties bevatten.
 
 Op Linux:
 
@@ -121,7 +121,7 @@ In Windows:
 
 ### <a name="check-container-logs-for-issues"></a>Raadpleeg de containerlogboeken voor problemen
 
-Zodra de IoT Edge Security-Daemon wordt uitgevoerd, bekijkt u de logboeken van de containers om problemen te detecteren. Begin met uw geïmplementeerde containers en bekijk vervolgens de containers waaruit de IoT Edge runtime: edgeAgent en edgeHub. De logboeken van de IoT Edge-agent bevatten doorgaans informatie over de levens cyclus van elke container. De IoT Edge hub-logboeken bieden informatie over berichten en route ring. 
+Zodra de IoT Edge Security-Daemon wordt uitgevoerd, bekijkt u de logboeken van de containers om problemen te detecteren. Begin met uw geïmplementeerde containers en bekijk vervolgens de containers waaruit de IoT Edge runtime: edgeAgent en edgeHub. De logboeken van de IoT Edge-agent bevatten doorgaans informatie over de levens cyclus van elke container. De IoT Edge hub-logboeken bieden informatie over berichten en route ring.
 
    ```cmd
    iotedge logs <container name>
@@ -163,7 +163,7 @@ Vervang `env: {}` met:
    ```
 
    > [!WARNING]
-   > YAML-bestanden mag geen tabbladen als inspringing bevatten. Gebruik in plaats daarvan 2 spaties.
+   > YAML-bestanden mag geen tabbladen als inspringing bevatten. Gebruik in plaats daarvan 2 spaties. Items op het hoogste niveau kunnen geen voorloop spaties bevatten.
 
 Sla het bestand op en start de IoT Edge security manager opnieuw.
 
@@ -249,7 +249,7 @@ Een container kan niet worden uitgevoerd, en in de edgeAgent-Logboeken wordt een
 
 **Hoofd oorzaak**
 
-De IOT Edge-agent heeft geen machtigingen voor toegang tot de installatie kopie van een module.
+De IoT Edge-agent heeft geen machtigingen voor toegang tot de installatie kopie van een module.
 
 **Resolutie**
 
@@ -435,6 +435,6 @@ Zorg ervoor dat u dit ook instelt voor de *edgeAgent* -en *edgeHub* -modules.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Denkt u dat u een fout op het IoT Edge-platform hebt gevonden? [Verzend een probleem](https://github.com/Azure/iotedge/issues) zodat we verder kunnen blijven verbeteren. 
+Denkt u dat u een fout op het IoT Edge-platform hebt gevonden? [Verzend een probleem](https://github.com/Azure/iotedge/issues) zodat we verder kunnen blijven verbeteren.
 
 Als u meer vragen hebt, maakt u een [ondersteuningsaanvraag](https://portal.azure.com/#create/Microsoft.Support) voor hulp.

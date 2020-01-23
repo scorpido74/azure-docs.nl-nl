@@ -9,12 +9,12 @@ ms.date: 12/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1e15f237bddd586f81c3b04483111f7e211bfb10
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 0a20ea4236683e26c51bc75309435c65e24271d7
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563408"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510257"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Implementeren en bewaken van IoT Edge-modules op schaal met Azure portal
 
@@ -24,7 +24,7 @@ Zie [informatie over IOT Edge automatische implementaties voor één apparaat of
 
 ## <a name="identify-devices-using-tags"></a>Identificatie van apparaten met behulp van tags
 
-Voordat u een implementatie maken kunt, moet u opgeven welke apparaten die u wilt toepassen. Azure IoT Edge-apparaten met identificeert **tags** op het dubbele apparaat. Elk apparaat kan meerdere labels hebben die u op een wille keurige manier definieert voor uw oplossing. 
+Voordat u een implementatie maken kunt, moet u opgeven welke apparaten die u wilt toepassen. Azure IoT Edge-apparaten met identificeert **tags** op het dubbele apparaat. Elk apparaat kan meerdere labels hebben die u op een wille keurige manier definieert voor uw oplossing.
 
 Als u bijvoorbeeld een campus van Smart gebouwen beheert, kunt u locatie, type room en omgevings Tags toevoegen aan een apparaat:
 
@@ -63,7 +63,7 @@ Er zijn vijf stappen voor het maken van een implementatie. De volgende secties h
 
 U kunt Maxi maal 20 modules aan een implementatie toevoegen. Als u een implementatie zonder modules maakt, worden alle huidige modules van de doel apparaten verwijderd.
 
-In implementaties kunt u de instellingen voor de IoT Edge agent en IoT Edge hub-modules beheren. Selecteer **runtime-instellingen** om de twee runtime modules te configureren. In gelaagde implementaties zijn de runtime modules niet opgenomen en kunnen niet worden geconfigureerd. 
+In implementaties kunt u de instellingen voor de IoT Edge agent en IoT Edge hub-modules beheren. Selecteer **runtime-instellingen** om de twee runtime modules te configureren. In gelaagde implementaties zijn de runtime modules niet opgenomen en kunnen niet worden geconfigureerd.
 
 U kunt drie soorten modules toevoegen:
 
@@ -80,12 +80,12 @@ Aangepaste code als een module toevoegen of handmatig toevoegen van een Azure-se
 1. Selecteer **IOT Edge module** in de vervolg keuzelijst.
 1. Geef uw module een **IOT Edge module naam**.
 1. Voor de **URI installatiekopie** veld, voert u de container-installatiekopie voor uw module.
-1. Gebruik de vervolgkeuzelijst om te selecteren een **beleid voor opnieuw opstarten**. Kies in de volgende opties:
+1. Gebruik de vervolgkeuzelijst om te selecteren een **beleid voor opnieuw opstarten**. Kies uit de volgende opties:
    * **altijd** : de module wordt altijd opnieuw opgestart als deze om welke reden dan ook wordt afgesloten.
    * **nooit** : de module wordt nooit opnieuw opgestart als deze om welke reden dan ook wordt afgesloten.
-   * **on-failure** -de module wordt opnieuw opgestart als deze crasht, maar niet als deze wordt uitgeschakeld. 
-   * **bij een slechte** status: de module wordt opnieuw opgestart als deze niet meer reageert of een slecht resultaat heeft. Het is aan elke module voor het implementeren van de functie voor health-status. 
-1. Gebruik de vervolgkeuzelijst om te selecteren de **gewenste Status** voor de module. Kies in de volgende opties:
+   * **on-failure** -de module wordt opnieuw opgestart als deze crasht, maar niet als deze wordt uitgeschakeld.
+   * **bij een slechte** status: de module wordt opnieuw opgestart als deze niet meer reageert of een slecht resultaat heeft. Het is aan elke module voor het implementeren van de functie voor health-status.
+1. Gebruik de vervolgkeuzelijst om te selecteren de **gewenste Status** voor de module. Kies uit de volgende opties:
    * **actieve** uitvoering is de standaard optie. De module wordt gestart onmiddellijk na de implementatie wordt uitgevoerd.
    * **gestopt** : na de implementatie blijft de module inactief totdat het starten van u of een andere module wordt aangeroepen.
 1. Geef een **Container maken opties** die moeten worden doorgegeven aan de container. Zie voor meer informatie, [docker maken](https://docs.docker.com/engine/reference/commandline/create/).
@@ -113,9 +113,9 @@ Als u wilt toevoegen een module van Azure Stream Analytics, de volgende stappen 
 
 #### <a name="configure-module-settings"></a>Module-instellingen configureren
 
-Nadat u een module aan een implementatie hebt toegevoegd, kunt u de naam ervan selecteren om de pagina **IOT Edge module bijwerken** te openen. Op deze pagina kunt u de module-instellingen, omgevings variabelen, Create-opties en module twee bewerken. Als u een module van de Marketplace hebt toegevoegd, is het mogelijk dat sommige van deze para meters al zijn ingevuld. 
+Nadat u een module aan een implementatie hebt toegevoegd, kunt u de naam ervan selecteren om de pagina **IOT Edge module bijwerken** te openen. Op deze pagina kunt u de module-instellingen, omgevings variabelen, Create-opties en module twee bewerken. Als u een module van de Marketplace hebt toegevoegd, is het mogelijk dat sommige van deze para meters al zijn ingevuld.
 
-Als u een gelaagde implementatie maakt, kunt u een module configureren die zich in andere implementaties bevindt die gericht zijn op dezelfde apparaten. Als u de module wilt bijwerken, ongeacht of andere versies worden overschreven, opent u het tabblad voor de **module dubbele instellingen** . Maak een nieuwe **module dubbele eigenschap** met een unieke naam voor een Subsectie binnen de gewenste eigenschappen van de module, bijvoorbeeld `properties.desired.settings`. Als u in het veld `properties.desired` eigenschappen definieert, worden de gewenste eigenschappen overschreven voor de module die is gedefinieerd in een implementatie met een lagere prioriteit. 
+Als u een gelaagde implementatie maakt, kunt u een module configureren die zich in andere implementaties bevindt die gericht zijn op dezelfde apparaten. Als u de module wilt bijwerken, ongeacht of andere versies worden overschreven, opent u het tabblad voor de **module dubbele instellingen** . Maak een nieuwe **module dubbele eigenschap** met een unieke naam voor een Subsectie binnen de gewenste eigenschappen van de module, bijvoorbeeld `properties.desired.settings`. Als u in het veld `properties.desired` eigenschappen definieert, worden de gewenste eigenschappen overschreven voor de module die is gedefinieerd in een implementatie met een lagere prioriteit.
 
 ![Module dubbele eigenschap instellen voor gelaagde implementatie](./media/how-to-deploy-monitor/module-twin-property.png)
 
@@ -154,9 +154,9 @@ Gebruik de eigenschap tags van uw apparaten gericht op de specifieke apparaten d
 
 Omdat meerdere implementaties zijn op hetzelfde apparaat gericht kunnen, moet u elke implementatie enkele prioriteit geven. Als er ooit een conflict optreedt, wordt de implementatie met de hoogste prioriteit (hogere waarden duiden op een hogere prioriteit) WINS. Als twee implementaties hetzelfde prioriteitsnummer hebt, wordt het account waarmee de meeste is gemaakt onlangs wins.
 
-Als meerdere implementaties gericht zijn op hetzelfde apparaat, wordt er alleen een met de hogere prioriteit toegepast. Als meerdere gelaagde implementaties gericht zijn op hetzelfde apparaat, worden ze allemaal toegepast. Als er echter eigenschappen worden gedupliceerd, bijvoorbeeld als er twee routes met dezelfde naam zijn, wordt de rest van de implementatie met een hogere prioriteit overschreven. 
+Als meerdere implementaties gericht zijn op hetzelfde apparaat, wordt er alleen een met de hogere prioriteit toegepast. Als meerdere gelaagde implementaties gericht zijn op hetzelfde apparaat, worden ze allemaal toegepast. Als er echter eigenschappen worden gedupliceerd, bijvoorbeeld als er twee routes met dezelfde naam zijn, wordt de rest van de implementatie met een hogere prioriteit overschreven.
 
-Een gelaagde implementatie die gericht is op een apparaat, moet een hogere prioriteit hebben dan de basis implementatie om toe te passen. 
+Een gelaagde implementatie die gericht is op een apparaat, moet een hogere prioriteit hebben dan de basis implementatie om toe te passen.
 
 1. Voer een positief geheel getal voor de implementatie **prioriteit**.
 1. Voer een **voorwaarde als doel** om te bepalen welke apparaten doelgroepen voor deze implementatie. De voor waarde is gebaseerd op apparaatspecifieke Tags of dubbele gerapporteerde eigenschappen van het apparaat en moet overeenkomen met de indeling van de expressie. Bijvoorbeeld `tags.environment='test'` of `properties.reported.devicemodel='4000x'`.
@@ -179,7 +179,7 @@ Bekijk de details van een implementatie en controleren van de apparaten waarop d
 
 1. Controleer de implementatie-lijst. Voor elke implementatie kunt u de volgende gegevens bekijken:
    * **ID** -de naam van de implementatie.
-   * **Type** : het type implementatie, **implementatie** of **gelaagde implementatie**. 
+   * **Type** : het type implementatie, **implementatie** of **gelaagde implementatie**.
    * **Doel voorwaarde** : de tag die wordt gebruikt voor het definiëren van de doel apparaten.
    * **Prioriteit** -het getal prioriteit is toegewezen aan de implementatie.
    * **Systeemmeetgegevens** - **Targeted** Hiermee geeft u het aantal dubbele apparaten in IoT-Hub die overeenkomen met de doelitems voorwaarde, en **toegepast** geeft het aantal apparaten waarvoor was de implementatie-inhoud toegepast op hun moduledubbels in IoT Hub.

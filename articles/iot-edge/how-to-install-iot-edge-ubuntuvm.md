@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: 03c517ac80ed42f96cae00001a154e519ec94148
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 84dd1b6d657dfe5061f53698114f3dc4e0197571
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263333"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510053"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Azure IoT Edge uitvoeren op Ubuntu Virtual Machines
 
@@ -22,7 +22,7 @@ De Azure IoT Edge-runtime is wat een apparaat verandert in een IoT Edge-apparaat
 
 Zie voor meer informatie over de werking van de IoT Edge-runtime en welke onderdelen zijn opgenomen, [inzicht in de Azure IoT Edge-runtime en de bijbehorende architectuur](iot-edge-runtime.md).
 
-In dit artikel worden de stappen beschreven voor het uitvoeren van de Azure IoT Edge runtime op een virtuele machine met Ubuntu 16,04 met behulp van de vooraf geconfigureerde [Azure IOT Edge op Ubuntu Azure Marketplace-aanbieding](https://aka.ms/azure-iot-edge-ubuntuvm). 
+In dit artikel worden de stappen beschreven voor het uitvoeren van de Azure IoT Edge runtime op een virtuele machine met Ubuntu 16,04 met behulp van de vooraf geconfigureerde [Azure IOT Edge op Ubuntu Azure Marketplace-aanbieding](https://aka.ms/azure-iot-edge-ubuntuvm).
 
 Bij de eerste keer opstarten wordt de meest recente versie van de Azure IoT Edge runtime vooraf geïnstalleerd door de Azure IoT Edge op Ubuntu VM. Het bevat ook een script voor het instellen van de connection string en het opnieuw starten van de runtime, die extern kan worden geactiveerd via de Azure-VM-portal of de Azure-opdracht regel, zodat u het IoT Edge apparaat eenvoudig kunt configureren en verbinden zonder een SSH of extern te starten bureaublad sessie. Met dit script wordt gewacht tot de connection string ingesteld totdat de IoT Edge-client volledig is geïnstalleerd, zodat u deze niet hoeft te bouwen in uw automatisering.
 
@@ -52,22 +52,22 @@ Zoek in het Azure Portal naar ' Azure IoT Edge ' en selecteer **Ubuntu Server 16
    ```azurecli-interactive
    az login
    ```
-    
+
 1. Als u meerdere abonnementen hebt, selecteert u het abonnement dat u wilt gebruiken:
    1. Uw abonnementen weer geven:
-    
+
       ```azurecli-interactive
       az account list --output table
       ```
-    
+
    1. Kopieer het veld SubscriptionID voor het abonnement dat u wilt gebruiken.
 
    1. Stel uw werk abonnement in met de ID die u zojuist hebt gekopieerd:
-    
-      ```azurecli-interactive 
+
+      ```azurecli-interactive
       az account set -s {SubscriptionId}
       ```
-    
+
 1. Maak een nieuwe resource groep (of geef een bestaande op in de volgende stappen):
 
    ```azurecli-interactive
@@ -93,7 +93,6 @@ Zoek in het Azure Portal naar ' Azure IoT Edge ' en selecteer **Ubuntu Server 16
    ```
 
 Als u na de installatie SSH wilt gebruiken in deze VM, gebruikt u de publicIpAddress met de opdracht: `ssh azureuser@{publicIpAddress}`
-
 
 ## <a name="next-steps"></a>Volgende stappen
 

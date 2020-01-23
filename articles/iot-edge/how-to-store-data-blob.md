@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 12c5bf66de966faf8dc31c7265fdfb0180a95323
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bea00f429f31f2be62ee6a9c00f88873c595d94c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970834"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509815"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Gegevens opslaan aan de rand met Azure Blob Storage op IoT Edge
 
@@ -85,7 +85,6 @@ De naam van deze instelling is `deviceToCloudUploadProperties`. Als u de IoT Edg
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Hiermee kunt u de namen van de containers opgeven die u wilt uploaden naar Azure. Met deze module kunt u zowel de bron-als de doel container naam opgeven. Als u de naam van de doel container niet opgeeft, wordt de naam van de container automatisch toegewezen als `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`. U kunt sjabloon teken reeksen maken voor de naam van de doel container, de kolom mogelijke waarden bekijken. <br>*% h-> IoT Hub naam (3-50 tekens). <br>*% d-> IoT Edge apparaat-ID (1 tot 129 tekens). <br>*% m-> module naam (1 tot 64 tekens). <br>*% c-> Bron container naam (3 tot 63 tekens). <br><br>De maximum grootte van de container naam is 63 tekens, terwijl de naam van de doel container automatisch wordt toegewezen als de grootte van de container groter is dan 63 tekens, wordt elke sectie (IoTHubName, IotEdgeDeviceID, module naam, SourceContainerName) op 15 geknipt aantal. <br><br> Omgevings variabele: `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
 | deleteAfterUpload | waar of ONWAAR | Standaard ingesteld op `false`. Als deze is ingesteld op `true`, worden de gegevens automatisch verwijderd wanneer het uploaden naar de Cloud opslag is voltooid. <br><br> **Let**op: als u toevoeg-blobs gebruikt, wordt met deze instelling toevoeg-blobs uit de lokale opslag verwijderd nadat het uploaden is geslaagd, en eventuele toekomstige toevoeg bewerkingen voor het blok keren van deze blobs mislukken. Gebruik deze instelling voorzichtig, schakel dit niet in als uw toepassing incidenteel toevoeg bewerkingen uitvoert of geen ondersteuning biedt voor doorlopende toevoeg bewerkingen<br><br> Omgevings variabele: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}`. |
 
-
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
 De naam van deze instelling is `deviceAutoDeleteProperties`. Als u de IoT Edge Simulator gebruikt, stelt u de waarden in op de verwante omgevings variabelen voor deze eigenschappen, die u in de sectie uitleg kunt vinden.
@@ -97,6 +96,7 @@ De naam van deze instelling is `deviceAutoDeleteProperties`. Als u de IoT Edge S
 | retainWhileUploading | waar of ONWAAR | Standaard is deze ingesteld op `true`en behoudt de BLOB tijdens het uploaden naar de Cloud opslag als deleteAfterMinutes verloopt. U kunt deze instellen op `false` en de gegevens worden verwijderd zodra deleteAfterMinutes verloopt. Opmerking: voor deze eigenschap werkt uploadOn moet worden ingesteld op True.  <br><br> **Let**op: als u toevoeg-blobs gebruikt, wordt met deze instelling toevoeg-blobs uit de lokale opslag verwijderd wanneer de waarde verloopt en eventuele toekomstige toevoeg bewerkingen voor het blok keren van deze blobs mislukken. U kunt ervoor zorgen dat de verloop waarde groot genoeg is voor de verwachte frequentie van toevoeg bewerkingen die door uw toepassing worden uitgevoerd.<br><br> Omgevings variabele: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>SMB-share gebruiken als lokale opslag
+
 Als u een Windows-container van deze module op Windows host implementeert, kunt u SMB-share als uw lokale opslagpad opgeven.
 
 Zorg ervoor dat de SMB-share en het IoT-apparaat zich in wederzijds vertrouwde domeinen bevinden.
@@ -104,48 +104,58 @@ Zorg ervoor dat de SMB-share en het IoT-apparaat zich in wederzijds vertrouwde d
 U kunt `New-SmbGlobalMapping` Power shell-opdracht uitvoeren om de SMB-share lokaal toe te wijzen op het IoT-apparaat waarop Windows wordt uitgevoerd.
 
 Hieronder vindt u de configuratie stappen:
+
 ```PowerShell
 $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
-Voorbeeld: <br>
-`$creds = Get-Credential` <br>
-`New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:`
 
-Met deze opdracht worden de referenties gebruikt voor verificatie bij de externe SMB-server. Wijs vervolgens het externe sharepad toe aan G: stationsletter (kan elk ander beschik bare stationsletter zijn). Het IoT-apparaat heeft nu het gegevens volume toegewezen aan een pad op het station G:. 
+Bijvoorbeeld:
+
+```powershell
+$creds = Get-Credential
+New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:
+```
+
+Met deze opdracht worden de referenties gebruikt voor verificatie bij de externe SMB-server. Wijs vervolgens het externe sharepad toe aan G: stationsletter (kan elk ander beschik bare stationsletter zijn). Het IoT-apparaat heeft nu het gegevens volume toegewezen aan een pad op het station G:.
 
 Zorg ervoor dat de gebruiker in IoT-apparaat een lees-of schrijf bewerking naar de externe SMB-share kan uitvoeren.
 
-Voor uw implementatie kan de waarde van `<storage mount>` **G:/ContainerData: C:/BlobRoot**zijn. 
+Voor uw implementatie kan de waarde van `<storage mount>` **G:/ContainerData: C:/BlobRoot**zijn.
 
 ## <a name="granting-directory-access-to-container-user-on-linux"></a>Directory toegang verlenen aan de container gebruiker op Linux
+
 Als u [volume koppeling](https://docs.docker.com/storage/volumes/) voor opslag hebt gebruikt in uw Create-opties voor Linux-containers, hoeft u geen extra stappen uit te voeren, maar als u [BIND Mount](https://docs.docker.com/storage/bind-mounts/) hebt gebruikt, zijn deze stappen vereist om de service correct uit te voeren.
 
-Na het beginsel van de minimale bevoegdheid om de toegangs rechten voor gebruikers te beperken tot bare minimale machtigingen die ze nodig hebben om hun werk uit te voeren, bevat deze module een gebruiker (naam: absie, ID: 11000) en een gebruikers groep (naam: absie, ID: 11000). Als de container is gestart als **root** (standaard gebruiker is **hoofdmap**), wordt onze service gestart als de **absie** -gebruiker met lage bevoegdheden. 
+Na het beginsel van de minimale bevoegdheid om de toegangs rechten voor gebruikers te beperken tot bare minimale machtigingen die ze nodig hebben om hun werk uit te voeren, bevat deze module een gebruiker (naam: absie, ID: 11000) en een gebruikers groep (naam: absie, ID: 11000). Als de container is gestart als **root** (standaard gebruiker is **hoofdmap**), wordt onze service gestart als de **absie** -gebruiker met lage bevoegdheden.
 
 Dit gedrag maakt het configureren van de machtigingen op het hostvolume van cruciaal belang voor een goede werking van de service, anders wordt de service vastlopen met geweigerde toegang. Het pad dat wordt gebruikt in Directory binding moet toegankelijk zijn voor de container gebruiker (voor beeld: absie 11000). U kunt de container gebruiker toegang verlenen tot de Directory door de onderstaande opdrachten op de host uit te voeren:
 
 ```terminal
-sudo chown -R 11000:11000 <blob-dir> 
-sudo chmod -R 700 <blob-dir> 
+sudo chown -R 11000:11000 <blob-dir>
+sudo chmod -R 700 <blob-dir>
 ```
 
-Voorbeeld:<br>
-`sudo chown -R 11000:11000 /srv/containerdata` <br>
-`sudo chmod -R 700 /srv/containerdata`
+Bijvoorbeeld:
 
+```terminal
+sudo chown -R 11000:11000 /srv/containerdata
+sudo chmod -R 700 /srv/containerdata
+```
 
 Als u de service als een andere gebruiker dan **absie**moet uitvoeren, kunt u uw aangepaste gebruikers-id opgeven in CreateOptions onder gebruiker-eigenschap in het implementatie manifest. In dat geval moet u de standaard-of basis groep-ID `0`gebruiken.
 
 ```json
-"createOptions": { 
-  "User": "<custom user ID>:0" 
-} 
+"createOptions": {
+  "User": "<custom user ID>:0"
+}
 ```
+
 Verleen de container gebruiker nu toegang tot de Directory
+
 ```terminal
-sudo chown -R <user ID>:<group ID> <blob-dir> 
-sudo chmod -R 700 <blob-dir> 
+sudo chown -R <user ID>:<group ID> <blob-dir>
+sudo chmod -R 700 <blob-dir>
 ```
 
 ## <a name="configure-log-files"></a>Logboek bestanden configureren
@@ -158,11 +168,11 @@ U kunt de accountnaam en accountsleutel dat u hebt geconfigureerd voor de module
 
 Geef uw IoT Edge-apparaat als de blobeindpunt voor alle opslag aanvragen die u uitvoert. U kunt [maken van een verbindingsreeks voor een expliciete opslageindpunt](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint) met behulp van de gegevens van de IoT Edge-apparaat en de accountnaam op die u hebt geconfigureerd.
 
-- Voor modules die op hetzelfde apparaat worden geïmplementeerd als waar de Azure Blob Storage op IoT Edge module wordt uitgevoerd, is het eind punt van de blob: `http://<module name>:11002/<account name>`.
-- Voor modules of toepassingen die op een ander apparaat worden uitgevoerd, moet u het juiste eind punt voor uw netwerk kiezen. Afhankelijk van uw netwerk instellingen, kiest u een eindpunt indeling, zodat het gegevens verkeer van uw externe module of toepassing het apparaat kan bereiken waarop de Azure-Blob Storage op IoT Edge module wordt uitgevoerd. Het BLOB-eind punt voor dit scenario is een van:
-  - `http://<device IP >:11002/<account name>`
-  - `http://<IoT Edge device hostname>:11002/<account name>`
-  - `http://<fully qualified domain name>:11002/<account name>`
+* Voor modules die op hetzelfde apparaat worden geïmplementeerd als waar de Azure Blob Storage op IoT Edge module wordt uitgevoerd, is het eind punt van de blob: `http://<module name>:11002/<account name>`.
+* Voor modules of toepassingen die op een ander apparaat worden uitgevoerd, moet u het juiste eind punt voor uw netwerk kiezen. Afhankelijk van uw netwerk instellingen, kiest u een eindpunt indeling, zodat het gegevens verkeer van uw externe module of toepassing het apparaat kan bereiken waarop de Azure-Blob Storage op IoT Edge module wordt uitgevoerd. Het BLOB-eind punt voor dit scenario is een van:
+  * `http://<device IP >:11002/<account name>`
+  * `http://<IoT Edge device hostname>:11002/<account name>`
+  * `http://<fully qualified domain name>:11002/<account name>`
 
 ## <a name="azure-blob-storage-quickstart-samples"></a>Voor beelden van Azure Blob Storage Quick Start
 
@@ -202,7 +212,7 @@ U kunt [Azure Storage Explorer](https://azure.microsoft.com/features/storage-exp
 
 ## <a name="supported-storage-operations"></a>Ondersteunde opslagbewerkingen
 
-Blob-opslag modules op IoT Edge de Azure Storage Sdk's gebruiken en zijn consistent met de 2017-04-17-versie van de Azure Storage API voor blok-BLOB-eind punten. 
+Blob-opslag modules op IoT Edge de Azure Storage Sdk's gebruiken en zijn consistent met de 2017-04-17-versie van de Azure Storage API voor blok-BLOB-eind punten.
 
 Omdat niet alle Azure Blob Storage bewerkingen worden ondersteund door Azure Blob Storage op IoT Edge, wordt in deze sectie de status van elk weer gegeven.
 
@@ -271,6 +281,7 @@ Niet-ondersteund:
 * Blok van URL toevoegen
 
 ## <a name="event-grid-on-iot-edge-integration"></a>Event Grid op IoT Edge-integratie
+
 > [!CAUTION]
 > De integratie met Event Grid op IoT Edge is in de preview-versie
 

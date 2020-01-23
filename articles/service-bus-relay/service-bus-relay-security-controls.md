@@ -1,18 +1,18 @@
 ---
 title: Beveiligings controles voor Azure Service Bus relay
-description: Een controle lijst met beveiligings controles voor het evalueren van Azure Service Bus relay
+description: In deze artikelen vindt u een controle lijst met ingebouwde beveiligings controles voor het evalueren van Azure Service Bus relay.
 services: service-bus-relay
 ms.service: service-bus-relay
 author: spelluru
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 7f4e2a31673905a7e28d1dbb5520650aefc6f368
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 28d3ba14aa7769ac4f3fc22bd2b5bd7acd30557c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219985"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514014"
 ---
 # <a name="security-controls-for-azure-service-bus-relay"></a>Beveiligings controles voor Azure Service Bus relay
 
@@ -36,18 +36,18 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 | Logboek registratie en controle op het vlak van controle en beheer| Ja | Via [Azure Resource Manager](../azure-resource-manager/index.yml). |   |
 | Logboek registratie en controle van het gegevens vlak| Ja | Geslaagde/mislukte verbindingen en Logboeken.  |   |
 
-## <a name="identity"></a>Identiteit
+## <a name="identity"></a>Identity
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen| Documentatie |
 |---|---|--|--|
-| Authentication| Ja | Via SAS. | [Verificatie en autorisatie Azure Relay](relay-authentication-and-authorization.md) |
-| Authorization|  Ja | Via SAS. | [Verificatie en autorisatie Azure Relay](relay-authentication-and-authorization.md) |
+| Verificatie| Ja | Via SAS. | [Verificatie en autorisatie Azure Relay](relay-authentication-and-authorization.md) |
+| Autorisatie|  Ja | Via SAS. | [Verificatie en autorisatie Azure Relay](relay-authentication-and-authorization.md) |
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Databeveiliging
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen | Documentatie |
 |---|---|--|--|
-| Versleuteling aan server zijde bij rest: Door micro soft beheerde sleutels |  N/A | Relay is een WebSocket en er worden geen gegevens bewaard. |   |
+| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels |  N/A | Relay is een WebSocket en er worden geen gegevens bewaard. |   |
 | Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | Nee | Maakt gebruik van alleen micro soft TLS-certificaten.  |   |
 | Versleuteling op kolom niveau (Azure Data Services)| N/A | |   |
 | Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | Voor service is TLS vereist. |   |

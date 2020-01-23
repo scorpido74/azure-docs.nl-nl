@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: helohr
-ms.openlocfilehash: 44430f5a150952ba7cfc32b3e54d004cb0d0b761
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 318997e2ebd7a423d7793a75575617d06ab842ac
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312342"
+ms.locfileid: "76514269"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
@@ -105,8 +105,8 @@ De virtuele machines van Azure die u voor virtuele Windows-Bureau bladen maakt, 
 >U moet het Joker teken (*) gebruiken voor Url's waarbij service verkeer betrokken is. Als u liever geen * gebruikt voor verkeer dat betrekking heeft op agents, kunt u de Url's vinden zonder joker tekens:
 >
 >1. Registreer uw virtuele machines in de Windows-hostgroep voor virtueel bureau blad.
->2. Open **Logboeken** en navigeer naar **Windows** > - **toepassings logboeken** en zoek naar gebeurtenis-id 3712.
->3. White List de Url's die u vindt onder gebeurtenis-ID 3712. De Url's onder gebeurtenis-ID 3712 zijn specifiek voor een regio. U moet het white list-proces herhalen met de relevante Url's voor elke regio waarin u uw virtuele machines wilt implementeren.
+>2. Open **Logboeken** en navigeer naar **Windows** > - **toepassings logboeken** en zoek naar gebeurtenis-id 3702.
+>3. White List de Url's die u vindt onder gebeurtenis-ID 3702. De Url's onder gebeurtenis-ID 3702 zijn specifiek voor een regio. U moet het white list-proces herhalen met de relevante Url's voor elke regio waarin u uw virtuele machines wilt implementeren.
 
 Virtueel bureau blad van Windows bestaat uit de Windows-Desk tops en-apps die u levert aan gebruikers en de beheer oplossing, die als een service op Azure wordt gehost door micro soft. Desk tops en apps kunnen worden geïmplementeerd op virtuele machines (Vm's) in elke Azure-regio en de beheer oplossing en gegevens voor deze Vm's bevinden zich in de Verenigde Staten. Dit kan ertoe leiden dat gegevens worden overgedragen naar de Verenigde Staten.
 

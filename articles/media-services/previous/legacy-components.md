@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: juliako
-ms.openlocfilehash: 6a61c868da7b979b1ac5654f4be93b5245179105
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 457f5b8eb0a740800f9cc0fa69bd554f0679ae9a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74423927"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509169"
 ---
 # <a name="azure-media-services-legacy-components"></a>Azure Media Services verouderde onderdelen
 
@@ -26,7 +26,7 @@ Na verloop van tijd zijn er stabiele verbeteringen en verbeteringen aangebracht 
  
 ## <a name="retirement-plans-of-legacy-components-and-migration-guidance"></a>Pensioen plannen van verouderde onderdelen en migratie richtlijnen
 
-Er wordt een afschaffing van de media processors van *Windows Azure Media Encoder* (WAME) en *Azure Media Encoder* (AAM) aangekondigd. Deze processors worden op 31 maart 2020 buiten gebruik gesteld.
+Er wordt een afschaffing van de media processors van *Windows Azure Media Encoder* (WAME) en *Azure Media Encoder* (AAM) aangekondigd. Deze processors worden op 1 maart 2020 buiten gebruik gesteld.
 
 * [Migreren van Windows Azure Media Encoder naar Media Encoder Standard](migrate-windows-azure-media-encoder.md)
 * [Migreren van Azure Media Encoder naar Media Encoder Standard](migrate-azure-media-encoder.md)
@@ -35,7 +35,7 @@ We kondigen ook de volgende Media Analytics-media processors in de buiten gebrui
  
 |Naam van mediaprocessor|Buitengebruikstellings datum|Aanvullende opmerkingen|
 |---|---|
-|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| 1 januari van 2020|Deze media processor wordt vervangen door [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Zie [Migrate from Azure media indexer 2 to Azure Media Services video indexer](migrate-indexer-v1-v2.md)voor meer informatie.|
+|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| 1 oktober van 2020|Deze media processor wordt vervangen door [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Zie [Migrate from Azure media indexer 2 to Azure Media Services video indexer](migrate-indexer-v1-v2.md)voor meer informatie.|
 |[Azure Media Indexer](media-services-index-content.md)|1 oktober van 2020|Deze media processor wordt vervangen door [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Zie voor meer informatie [migreren van Azure media indexer naar Azure Media Services video indexer](migrate-indexer-v1-v2.md)
 
 ## <a name="next-steps"></a>Volgende stappen
